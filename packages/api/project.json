@@ -42,6 +42,14 @@
       "options": {
         "lintFilePatterns": ["packages/api/**/*.ts"]
       }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/packages/api"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/api"
+      }
     }
   },
   "tags": []
