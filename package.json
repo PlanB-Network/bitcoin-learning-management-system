@@ -1,0 +1,14 @@
+{
+  "name": "the-sovereign-academy",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "nx": "15.8.5",
+    "prettier": "^2.6.2"
+  }
+}
