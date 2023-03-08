@@ -1,7 +1,7 @@
 {
   "name": "api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/api/src",
+  "sourceRoot": "apps/api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/packages/api",
-        "main": "packages/api/src/main.ts",
-        "tsConfig": "packages/api/tsconfig.app.json",
-        "assets": ["packages/api/src/assets"],
+        "outputPath": "dist/apps/api",
+        "main": "apps/api/src/main.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "assets": ["apps/api/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "packages/api/webpack.config.js"
+        "webpackConfig": "apps/api/webpack.config.js"
       },
       "configurations": {
         "production": {
@@ -40,15 +40,15 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/api/**/*.ts"]
+        "lintFilePatterns": ["apps/api/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/packages/api"],
+      "outputs": ["coverage/apps/api"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/api"
+        "reportsDirectory": "../../coverage/apps/api"
       }
     }
   },

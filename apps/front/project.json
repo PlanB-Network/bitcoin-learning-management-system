@@ -1,7 +1,7 @@
 {
   "name": "front",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/front/src",
+  "sourceRoot": "apps/front/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/packages/front"
+        "outputPath": "dist/apps/front"
       },
       "configurations": {
         "development": {
@@ -25,7 +25,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "front:build",
-        "proxyConfig": "packages/front/proxy.conf.json"
+        "proxyConfig": "apps/front/proxy.conf.json"
       },
       "configurations": {
         "development": {
@@ -55,17 +55,17 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/packages/front"],
+      "outputs": ["coverage/apps/front"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/front"
+        "reportsDirectory": "../../coverage/apps/front"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/front/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
