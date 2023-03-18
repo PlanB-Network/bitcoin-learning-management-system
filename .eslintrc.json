@@ -5,6 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:import/recommended"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -18,13 +19,62 @@
               }
             ]
           }
+        ],
+        // Import rules
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "#*/**",
+                "group": "internal",
+                "position": "after"
+              }
+            ]
+          }
+        ],
+        "sort-imports": [
+          "warn",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": true, // Handled by import/order
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
+            "allowSeparatedGroups": false
+          }
         ]
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "extends": ["plugin:@nrwl/nx/typescript", "plugin:import/typescript"],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": ["packages/*/tsconfig.*?.json"]
+          },
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

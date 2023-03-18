@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@sovereign-academy/api": ["packages/api/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
