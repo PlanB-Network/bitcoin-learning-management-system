@@ -35,6 +35,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jsdom": "~20.0.3",
     "nx": "15.8.5",
+    "openapi-types": "12.1.0",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
     "swc-loader": "0.1.15",

@@ -17,37 +17,43 @@ import { sessionOptions } from '#src/session';
  * processing a request
  *
  */
-type CreateContextOptions = {
-  session: IronSession;
-};
+interface CreateInnerContextOptions {
+  session: IronSession | null;
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
  * it, you can export it from here
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+const createContextInner = (opts: CreateInnerContextOptions) => {
   return {
     session: opts.session,
   };
 };
+
+export type ContextInner = inferAsyncReturnType<typeof createContextInner>;
 
 /**
  * This is the actual context you'll use in your router. It will be used to
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateExpressContextOptions) => {
+export const createContext = async (opts: CreateExpressContextOptions) => {
   const { req, res } = opts;
 
   const session = await getIronSession(req, res, sessionOptions);
 
-  return createInnerTRPCContext({
-    session,
-  });
+  const contextInner = createContextInner({ session });
+
+  return {
+    ...contextInner,
+    req,
+    res,
+  } as ContextInner & CreateExpressContextOptions;
 };
 
-export type Context = inferAsyncReturnType<typeof createTRPCContext>;
+export type Context = inferAsyncReturnType<typeof createContext>;
 
 /**
  * 2. INITIALIZATION
