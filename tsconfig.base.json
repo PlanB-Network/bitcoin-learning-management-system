@@ -8,14 +8,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "esnext",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sovereign-academy/api": ["packages/api/src/index.ts"]
+      "@sovereign-academy/api-client": ["packages/api-client/src/index.ts"],
+      "@sovereign-academy/api-server": ["packages/api-server/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
