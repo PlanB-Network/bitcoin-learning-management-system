@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  api:
+    extends:
+      file: ./compose.base.yml
+      service: nx-app-base
+    command: pnpm nx run api:serve
+    environment:
+      HOST: 0.0.0.0
+    ports:
+      - 3000:3000
+
+  front:
+    extends:
+      file: ./compose.base.yml
+      service: nx-app-base
+    command: pnpm nx run front:serve
+    environment:
+      DOCKER: true
+    ports:
+      - 4200:4200

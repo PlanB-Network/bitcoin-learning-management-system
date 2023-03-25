@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -8,7 +8,7 @@ export default defineConfig({
 
   server: {
     port: 4200,
-    host: 'localhost',
+    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
   },
 
   preview: {

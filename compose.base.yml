@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  nx-app-base:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - /app/node_modules
