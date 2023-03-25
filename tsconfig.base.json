@@ -13,10 +13,12 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@sovereign-academy/api-client": ["packages/api-client/src/index.ts"],
-      "@sovereign-academy/api-server": ["packages/api-server/src/index.ts"]
+      "@sovereign-academy/api-server": ["packages/api-server/src/index.ts"],
+      "@sovereign-academy/db": ["packages/db/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

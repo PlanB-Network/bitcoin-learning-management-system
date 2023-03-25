@@ -1,0 +1,40 @@
+{
+  "name": "db",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/db/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/db"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/packages/db"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/db"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/db/**/*.ts",
+          "packages/db/migrations.json"
+        ]
+      }
+    },
+    "migrations:add": {
+      "executor": "@sovereign-academy/db:migrations-add"
+    },
+    "migrations:run": {
+      "executor": "@sovereign-academy/db:migrations-run"
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,14 @@
+{
+  "executors": {
+    "migrations-add": {
+      "implementation": "./src/executors/migrations/add/executor",
+      "schema": "./src/executors/migrations/add/schema.json",
+      "description": "Add a Postgres migration"
+    },
+    "migrations-run": {
+      "implementation": "./src/executors/migrations/run/executor",
+      "schema": "./src/executors/migrations/run/schema.json",
+      "description": "Run Postgres migrations"
+    }
+  }
+}

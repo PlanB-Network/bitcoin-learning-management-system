@@ -1,6 +1,18 @@
 version: '3.7'
 
 services:
+  postgres:
+    restart: unless-stopped
+    image: postgres:15.2
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres:/var/lib/postgresql
+
   api:
     extends:
       file: ./compose.base.yml
@@ -20,3 +32,6 @@ services:
       DOCKER: true
     ports:
       - 4200:4200
+
+volumes:
+  postgres:

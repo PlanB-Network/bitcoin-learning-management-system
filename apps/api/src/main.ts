@@ -1,4 +1,5 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
+import dotenv from 'dotenv';
 import express from 'express';
 import {
   createOpenApiExpressMiddleware,
@@ -6,6 +7,8 @@ import {
 } from 'trpc-openapi';
 
 import { appRouter, createContext } from '@sovereign-academy/api-server';
+
+dotenv.config();
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
