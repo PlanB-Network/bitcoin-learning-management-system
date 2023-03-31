@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('./assets/fonts/space_mono/SpaceMono-Bold.ttf') format('truetype');
+  src: url('./assets/fonts/space_mono/SpaceMono-BoldItalic.ttf')
+    format('truetype');
+  src: url('./assets/fonts/space_mono/SpaceMono-Italic.ttf') format('truetype');
+  src: url('./assets/fonts/space_mono/SpaceMono-Regular.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: 'Manrope', sans-serif;
+}
