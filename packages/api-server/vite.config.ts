@@ -1,19 +1,11 @@
 /// <reference types="vitest" />
-import { join } from 'path';
-
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/api-server',
 
   plugins: [
-    dts({
-      tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
-      skipDiagnostics: true,
-    }),
-
     viteTsConfigPaths({
       root: '../../',
     }),
@@ -27,24 +19,6 @@ export default defineConfig({
   //    }),
   //  ],
   // },
-
-  // Configuration for building your library.
-  // See: https://vitejs.dev/guide/build.html#library-mode
-  build: {
-    lib: {
-      // Could also be a dictionary or array of multiple entry points.
-      entry: 'src/index.ts',
-      name: 'api-server',
-      fileName: 'index',
-      // Change this to the formats you want to support.
-      // Don't forgot to update your package.json as well.
-      formats: ['es'],
-    },
-    rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: [],
-    },
-  },
 
   test: {
     globals: true,

@@ -51,5 +51,10 @@
         "{workspaceRoot}/.eslintignore"
       ]
     }
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }

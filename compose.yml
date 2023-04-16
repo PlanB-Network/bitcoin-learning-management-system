@@ -20,6 +20,11 @@ services:
     command: pnpm nx run api:serve
     environment:
       HOST: 0.0.0.0
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
     ports:
       - 3000:3000
 
@@ -32,6 +37,12 @@ services:
       DOCKER: true
     ports:
       - 4200:4200
+
+  watcher:
+    extends:
+      file: ./compose.base.yml
+      service: nx-app-base
+    command: pnpm nx watch --all -- nx run $$NX_PROJECT_NAME:build
 
 volumes:
   postgres:

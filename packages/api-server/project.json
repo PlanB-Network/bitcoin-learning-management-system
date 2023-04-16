@@ -5,19 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/vite:build",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/packages/api-server"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/packages/api-server",
+        "main": "packages/api-server/src/index.ts",
+        "tsConfig": "packages/api-server/tsconfig.lib.json",
+        "assets": ["packages/api-server/*.md"]
       }
     },
     "test": {
