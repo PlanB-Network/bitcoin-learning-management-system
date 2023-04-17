@@ -1,6 +1,6 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import dotenv from 'dotenv';
-import express from 'express';
+import express, { json } from 'express';
 import {
   createOpenApiExpressMiddleware,
   generateOpenApiDocument,
@@ -14,6 +14,7 @@ const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
+app.use(json());
 
 app.use((req, _res, next) => {
   // Basic request logger
