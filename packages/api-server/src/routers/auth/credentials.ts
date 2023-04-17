@@ -1,12 +1,20 @@
 import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
+import {
+  addCredentialsUser,
+  contributorIdExists,
+  generateUniqueContributorId,
+  getUserByAny,
+} from '../../services/users';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { contributorIdSchema } from '../../utils/validators';
 
 const registerCredentialsSchema = z.object({
   username: z.string().min(6),
   password: z.string().min(8),
   email: z.string().email().optional(),
+  contributor_id: contributorIdSchema.optional(),
 });
 
 const loginCredentialsSchema = z.object({
@@ -20,27 +28,38 @@ export const credentialsAuthRouter = createTRPCRouter({
     .input(registerCredentialsSchema)
     .output(z.object({ status: z.number(), message: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      if (ctx.session?.user) {
+      const { postgres, session } = ctx;
+
+      if (session?.user) {
         return {
           status: 401,
           message: 'Already logged in',
         };
       }
 
-      const hashedPassword = await hash(input.password);
-
-      // TODO: add to databse
-      /* 
-      {
-        username: input.username,
-        password: hashedPassword,
-        email: input.email,
+      if (
+        input.contributor_id &&
+        (await contributorIdExists(postgres, input.contributor_id))
+      ) {
+        return {
+          status: 400,
+          message: 'Contributor ID already exists',
+        };
       }
-      */
 
-      ctx.session.user = {
+      const hashedPassword = await hash(input.password);
+      const contributorId =
+        input.contributor_id || (await generateUniqueContributorId(postgres));
+
+      const [user] = await addCredentialsUser(postgres, {
         username: input.username,
+        passwordHash: hashedPassword,
+        contributorId,
         email: input.email,
+      });
+
+      session.user = {
+        username: user.username,
         isLoggedIn: true,
       };
 
@@ -50,22 +69,33 @@ export const credentialsAuthRouter = createTRPCRouter({
       return {
         status: 201,
         message: 'User created',
+        data: user,
       };
     }),
   login: publicProcedure
+    .meta({ openapi: { method: 'POST', path: '/auth/credentials/login' } })
     .input(loginCredentialsSchema)
+    .output(z.object({ status: z.number(), message: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      // TODO: get from database with input.username
-      const user: any = {};
+      const user = await getUserByAny(ctx.postgres, {
+        username: input.username,
+      });
 
-      if (!user?.password) {
+      if (!user) {
+        return {
+          status: 401,
+          message: 'Invalid credentials',
+        };
+      }
+
+      if (!user.password_hash) {
         return {
           status: 401,
           message: 'This user has no password, try another login method',
         };
       }
 
-      if (!user || !(await verifyHash(user.password, input.password))) {
+      if (!(await verifyHash(user.password_hash, input.password))) {
         return {
           status: 401,
           message: 'Invalid credentials',
