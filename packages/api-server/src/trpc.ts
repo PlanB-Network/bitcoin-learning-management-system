@@ -9,7 +9,7 @@ import { ZodError } from 'zod';
 import {
   type PostgresClient,
   createPostgresClient,
-} from '@sovereign-academy/db';
+} from '@sovereign-academy/database';
 
 import type { Session } from './session';
 

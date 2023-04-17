@@ -1,10 +1,10 @@
 import * as bip39 from 'bip39';
 
-import type { PostgresClient } from '@sovereign-academy/db';
+import type { PostgresClient } from '@sovereign-academy/database';
 import {
   anyContributorIdExistsQuery,
   contributorIdExistsQuery,
-} from '@sovereign-academy/db';
+} from '@sovereign-academy/database';
 
 /**
  * Generates a random word from the BIP39 English wordlist.

@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/db',
+  cacheDir: '../../node_modules/.vite/database',
 
   plugins: [
     viteTsConfigPaths({

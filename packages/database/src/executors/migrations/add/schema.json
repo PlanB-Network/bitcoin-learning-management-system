@@ -13,7 +13,7 @@
     "dir": {
       "type": "string",
       "description": "The directory where the migrations are located.",
-      "default": "packages/db/migrations"
+      "default": "packages/database/migrations"
     }
   },
   "required": ["name"]

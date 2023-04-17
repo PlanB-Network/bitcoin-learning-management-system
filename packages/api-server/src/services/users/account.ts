@@ -1,5 +1,5 @@
-import { firstRow } from '@sovereign-academy/db';
-import type { PostgresClient } from '@sovereign-academy/db';
+import { firstRow } from '@sovereign-academy/database';
+import type { PostgresClient } from '@sovereign-academy/database';
 
 export const addCredentialsUser = async (
   postgres: PostgresClient,

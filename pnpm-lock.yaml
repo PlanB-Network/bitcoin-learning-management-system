@@ -191,7 +191,7 @@ importers:
 
   packages/content: {}
 
-  packages/db: {}
+  packages/database: {}
 
   packages/github: {}
 

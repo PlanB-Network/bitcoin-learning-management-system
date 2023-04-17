@@ -1,25 +1,25 @@
 {
-  "name": "db",
+  "name": "database",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/db/src",
+  "sourceRoot": "packages/database/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/db",
-        "main": "packages/db/src/index.ts",
-        "tsConfig": "packages/db/tsconfig.lib.json",
-        "assets": ["packages/db/*.md"]
+        "outputPath": "dist/packages/database",
+        "main": "packages/database/src/index.ts",
+        "tsConfig": "packages/database/tsconfig.lib.json",
+        "assets": ["packages/database/*.md"]
       }
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/packages/db"],
+      "outputs": ["coverage/packages/database"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/db"
+        "reportsDirectory": "../../coverage/packages/database"
       }
     },
     "lint": {
@@ -27,16 +27,16 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/db/**/*.ts",
-          "packages/db/migrations.json"
+          "packages/database/**/*.ts",
+          "packages/database/migrations.json"
         ]
       }
     },
     "migrations:add": {
-      "executor": "@sovereign-academy/db:migrations-add"
+      "executor": "@sovereign-academy/database:migrations-add"
     },
     "migrations:run": {
-      "executor": "@sovereign-academy/db:migrations-run"
+      "executor": "@sovereign-academy/database:migrations-run"
     }
   },
   "tags": []

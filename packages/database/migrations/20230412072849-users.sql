@@ -1,4 +1,4 @@
--- Path: packages/db/migrations/20230412072849-users.sql
+-- Path: packages/database/migrations/20230412072849-users.sql
 
 CREATE SCHEMA IF NOT EXISTS users;
 

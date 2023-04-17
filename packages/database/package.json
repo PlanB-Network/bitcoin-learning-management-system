@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-academy/db",
+  "name": "@sovereign-academy/database",
   "version": "0.0.1",
   "executors": "executors.json",
   "type": "commonjs"
