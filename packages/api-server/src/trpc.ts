@@ -1,11 +1,19 @@
 import { TRPCError, initTRPC } from '@trpc/server';
 import type { inferAsyncReturnType } from '@trpc/server';
 import type { CreateExpressContextOptions } from '@trpc/server/adapters/express';
+import dotenv from 'dotenv';
 import superjson from 'superjson';
 import { OpenApiMeta } from 'trpc-openapi';
 import { ZodError } from 'zod';
 
+import {
+  type PostgresClient,
+  createPostgresClient,
+} from '@sovereign-academy/db';
+
 import type { Session } from './session';
+
+dotenv.config();
 
 /**
  * 1. CONTEXT
@@ -18,6 +26,7 @@ import type { Session } from './session';
  */
 interface CreateInnerContextOptions {
   session: Session;
+  postgres: PostgresClient;
 }
 
 /**
@@ -28,6 +37,7 @@ interface CreateInnerContextOptions {
 const createContextInner = (opts: CreateInnerContextOptions) => {
   return {
     session: opts.session,
+    postgres: opts.postgres,
   };
 };
 
@@ -43,8 +53,23 @@ export const createContext = async (opts: CreateExpressContextOptions) => {
 
   // TODO: manage session
   const session = {};
+  let postgres: PostgresClient;
+  try {
+    postgres = createPostgresClient({
+      host: process.env['DB_HOST'],
+      port: Number(process.env['DB_PORT']),
+      database: process.env['DB_NAME'],
+      username: process.env['DB_USER'],
+      password: process.env['DB_PASSWORD'],
+    });
 
-  const contextInner = createContextInner({ session });
+    await postgres.connect();
+  } catch (err) {
+    console.error('Failed to connect to database', err);
+    throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR' });
+  }
+
+  const contextInner = createContextInner({ session, postgres });
 
   return {
     ...contextInner,
