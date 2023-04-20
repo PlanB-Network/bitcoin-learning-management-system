@@ -8,7 +8,8 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/front',
   server: {
-    port: 4200,
+    port: 5555,
+    open: true,
     host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
     fs: {
       allow: ['../../'],

@@ -1,23 +1,18 @@
-import { Menubar } from 'primereact/menubar';
-import { MenuItem } from 'primereact/menuitem';
 import { useMemo } from 'react';
-import { CiBeerMugFull } from 'react-icons/ci';
 import { useNavigate } from 'react-router';
 
 import headerImage from '../../assets/db-academy-header-1.png';
-import franceFlag from '../../assets/france.png';
-import spainFlag from '../../assets/spain.png';
-import unitedKingdomFlag from '../../assets/united-kingdom.png';
+import libraryIcon from '../../assets/navigation-icons/library.png';
 import { useDisclosure } from '../../hooks';
 import { AuthModal } from '../AuthModal';
 
 import {
   headerExpandedImageStyle,
-  headerMenuStyle,
   headerShrinkedImageStyle,
   headerSideImageStyle,
   headerStyle,
 } from './index.css';
+import { MegaMenu } from './MegaMenu';
 
 export interface HeaderProps {
   isExpanded: boolean;
@@ -31,146 +26,131 @@ export const Header = ({ isExpanded }: HeaderProps) => {
     close: closeLoginModal,
   } = useDisclosure();
 
-  const items: MenuItem[] = useMemo(
+  const sections = useMemo(
     () => [
       {
-        label: 'Accueil',
-        className: 'menu-primary',
-        command: () => {
-          navigate('/');
-        },
-      },
-      {
-        label: 'Cours',
-        icon: 'pi pi-fw pi-book',
-        className: 'menu-primary',
+        id: 'courses',
+        title: 'Courses',
         items: [
           {
-            label: '1ère Année',
-            items: [{ label: 'BTC 101' }, { label: 'BTC 102' }],
-          },
-          {
-            label: '2nde Année',
+            id: 'annee-1',
+            title: '1ère année',
             items: [
-              { label: 'BTC 201' },
-              { label: 'ECON 201' },
-              { label: 'LN 201' },
-              { label: 'LN 202' },
-              { label: 'BTC 205' },
+              [
+                { id: 'btc-101', title: 'BTC 101' },
+                { id: 'ln-101', title: 'LN 101' },
+                { id: 'econ-101', title: 'ECON 101' },
+                { id: 'fin-101', title: 'FIN 101' },
+                { id: 'secu-101', title: 'SECU 101' },
+              ],
             ],
           },
           {
-            label: '3ème Année',
-            items: [{ label: 'CRYPTO 301' }],
+            id: 'annee-2',
+            title: '2nde année',
+            items: [
+              [
+                { id: 'btc-201', title: 'BTC 201' },
+                { id: 'btc-204', title: 'BTC 204' },
+                { id: 'econ-201', title: 'ECON 201' },
+                { id: 'ln-201', title: 'LN 201' },
+              ],
+              [
+                { id: 'ln-202', title: 'LN 202' },
+                { id: 'btc-205', title: 'BTC 205' },
+                { id: 'econ-203', title: 'ECON 203' },
+              ],
+            ],
+          },
+          {
+            id: 'annee-3',
+            title: '3ème année',
+            items: [
+              [
+                { id: 'crypto-301', title: 'CRYPTO 301' },
+                { id: 'seco-301', title: 'SECU 301' },
+                { id: 'fin-301', title: 'FIN 301' },
+              ],
+            ],
           },
         ],
       },
       {
-        label: 'Professeurs',
-        icon: 'pi pi-fw pi-users',
-        className: 'menu-primary',
+        id: 'ressources',
+        title: 'Ressources',
         items: [
           {
-            label: 'Rogzy',
-          },
-          {
-            label: 'Fanis Michalakis',
-          },
-          {
-            label: 'Théo Mogenet',
-          },
-          {
-            label: 'Loïc Morel',
-          },
-          {
-            label: 'Pierre',
+            id: 'search',
+            title: 'Recherche libre',
+            items: [
+              [
+                {
+                  id: 'librairie',
+                  title: 'Librairie',
+                  img: libraryIcon,
+                  description:
+                    'discover plenty of books to improve your knowledge on the bitcoin ecosystem and related economic topics',
+                },
+                { id: 'newsletter', title: 'Newsletter' },
+                { id: 'artiste', title: 'Artiste' },
+              ],
+              [
+                { id: 'business', title: 'Business' },
+                { id: 'citation', title: 'Citation' },
+                { id: 'bips', title: 'BIPs' },
+              ],
+              [
+                { id: 'lexique', title: 'Lexique' },
+                { id: 'bitcoin-calendar', title: 'Bitcoin Calendar' },
+                { id: 'articles', title: 'Articles' },
+                { id: 'learning', title: 'Learning tools' },
+              ],
+            ],
           },
         ],
       },
       {
-        label: 'Le Projet',
-        className: 'menu-primary',
-      },
-      {
-        label: 'Projets Annexes',
-        className: 'menu-primary',
+        id: 'tutorials',
+        title: 'Tutorials',
         items: [
-          {
-            label: 'Site principal',
-            icon: 'pi pi-fw pi-home',
-          },
-          {
-            label: 'Podcast',
-            icon: 'pi pi-fw pi-microphone',
-          },
-          {
-            label: 'Meetups Bitcoin',
-            icon: (
-              <CiBeerMugFull
-                style={{
-                  marginLeft: '4px',
-                  marginRight: '8px',
-                  color: 'var(--text-color-secondary)',
-                }}
-              />
-            ),
-          },
+          [
+            { id: 'wallets', title: 'Wallets' },
+            { id: 'exchanges', title: 'Exchanges' },
+            { id: 'lightning', title: 'Lightning' },
+            { id: 'ordinals', title: 'Ordinals' },
+          ],
+          [
+            { id: 'business', title: 'Business' },
+            { id: 'node', title: 'Node' },
+            { id: 'mining', title: 'Mining' },
+          ],
         ],
       },
       {
-        label: 'Connection',
-        icon: 'pi pi-fw pi-sign-in',
-        className: 'menu-primary',
+        id: 'about-us',
+        title: 'About us',
         items: [
-          {
-            label: 'Standard',
-            command: () => {
-              openLoginModal();
-            },
-          },
-          {
-            label: 'Avec LN',
-          },
+          [
+            { id: 'our-story', title: 'Our story' },
+            { id: 'sponsors', title: 'Sponsors & collaborators' },
+            { id: 'teachers', title: 'Teachers' },
+          ],
+          [
+            { id: 'teachers', title: 'Teachers' },
+            { id: 'support-us', title: 'Support Us' },
+            { id: 'press-kit', title: 'Press Kit' },
+          ],
         ],
       },
       {
-        label: 'Langue',
-        className: 'menu-primary',
-        items: [
-          {
-            label: 'Français',
-            icon: (
-              <img
-                style={{ height: '20px', marginRight: '15px' }}
-                src={franceFlag}
-                alt="France flag"
-              />
-            ),
-          },
-          {
-            label: 'English',
-            icon: (
-              <img
-                style={{ height: '20px', marginRight: '15px' }}
-                src={unitedKingdomFlag}
-                alt="UK flag"
-              />
-            ),
-          },
-          {
-            label: 'Espagnol',
-            icon: (
-              <img
-                style={{ height: '20px', marginRight: '15px' }}
-                src={spainFlag}
-                alt="Spain flag"
-              />
-            ),
-          },
-        ],
+        id: 'account',
+        title: 'Account',
+        action: () => {
+          openLoginModal();
+        },
       },
     ],
-    [navigate, openLoginModal]
+    [openLoginModal]
   );
 
   return (
@@ -190,11 +170,7 @@ export const Header = ({ isExpanded }: HeaderProps) => {
         alt="Decouvre Bitcoin header logo"
       />
 
-      <Menubar
-        className={headerMenuStyle}
-        style={{ marginTop: isExpanded ? '20px' : '0px' }}
-        model={items}
-      />
+      <MegaMenu sections={sections} />
 
       <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </header>
