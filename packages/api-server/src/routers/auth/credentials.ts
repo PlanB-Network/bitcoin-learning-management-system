@@ -37,6 +37,13 @@ export const credentialsAuthRouter = createTRPCRouter({
         };
       }
 
+      if (await getUserByAny(postgres, { username: input.username })) {
+        return {
+          status: 400,
+          message: 'Username already exists',
+        };
+      }
+
       if (
         input.contributor_id &&
         (await contributorIdExists(postgres, input.contributor_id))

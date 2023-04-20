@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users.accounts (
   email VARCHAR(255) UNIQUE,
   password_hash VARCHAR(255),
 
-  contributor_id VARCHAR(15) UNIQUE NOT NULL,
+  contributor_id VARCHAR(20) UNIQUE NOT NULL,
 
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
