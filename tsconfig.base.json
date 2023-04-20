@@ -18,7 +18,10 @@
     "paths": {
       "@sovereign-academy/api-client": ["packages/api-client/src/index.ts"],
       "@sovereign-academy/api-server": ["packages/api-server/src/index.ts"],
+      "@sovereign-academy/content": ["packages/content/src/index.ts"],
       "@sovereign-academy/database": ["packages/database/src/index.ts"],
+      "@sovereign-academy/github": ["packages/github/src/index.ts"],
+      "@sovereign-academy/types": ["packages/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
