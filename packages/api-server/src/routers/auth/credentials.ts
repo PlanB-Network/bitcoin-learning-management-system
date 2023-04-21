@@ -1,3 +1,4 @@
+import { TRPCError } from '@trpc/server';
 import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
@@ -26,16 +27,22 @@ export const credentialsAuthRouter = createTRPCRouter({
   register: publicProcedure
     .meta({ openapi: { method: 'POST', path: '/auth/credentials' } })
     .input(registerCredentialsSchema)
-    .output(z.object({ status: z.number(), message: z.string() }))
+    .output(
+      z.object({
+        status: z.number(),
+        message: z.string(),
+        user: z.object({ username: z.string(), email: z.string().optional() }),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
       const { dependencies, session } = ctx;
       const { postgres } = dependencies;
 
       if (session?.user) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'FORBIDDEN',
           message: 'Already logged in',
-        };
+        });
       }
 
       if (await getUserByAny(postgres, { username: input.username })) {
@@ -49,10 +56,10 @@ export const credentialsAuthRouter = createTRPCRouter({
         input.contributor_id &&
         (await contributorIdExists(postgres, input.contributor_id))
       ) {
-        return {
-          status: 400,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'Contributor ID already exists',
-        };
+        });
       }
 
       const hashedPassword = await hash(input.password);
@@ -71,19 +78,24 @@ export const credentialsAuthRouter = createTRPCRouter({
         isLoggedIn: true,
       };
 
-      // TODO: save session
-      // await ctx.session.save();
+      await ctx.session.save();
 
       return {
         status: 201,
         message: 'User created',
-        data: user,
+        user: { username: user.username, email: user.email ?? undefined },
       };
     }),
   login: publicProcedure
     .meta({ openapi: { method: 'POST', path: '/auth/credentials/login' } })
     .input(loginCredentialsSchema)
-    .output(z.object({ status: z.number(), message: z.string() }))
+    .output(
+      z.object({
+        status: z.number(),
+        message: z.string(),
+        isLoggedIn: z.boolean(),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
       const { dependencies, session } = ctx;
       const { postgres } = dependencies;
@@ -93,24 +105,24 @@ export const credentialsAuthRouter = createTRPCRouter({
       });
 
       if (!user) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
           message: 'Invalid credentials',
-        };
+        });
       }
 
       if (!user.password_hash) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'This user has no password, try another login method',
-        };
+        });
       }
 
       if (!(await verifyHash(user.password_hash, input.password))) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
           message: 'Invalid credentials',
-        };
+        });
       }
 
       session.user = {
@@ -119,10 +131,10 @@ export const credentialsAuthRouter = createTRPCRouter({
         isLoggedIn: true,
       };
 
-      // TODO: save session
-      // await session.save();
+      await ctx.session.save();
 
       return {
+        isLoggedIn: true,
         status: 200,
         message: 'Logged in',
       };

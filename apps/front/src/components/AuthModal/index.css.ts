@@ -36,3 +36,5 @@ export const switchButton = style({
   cursor: 'pointer',
   fontSize: 12,
 });
+
+export const errorMessage = style({ color: '#f51d00' });

@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
@@ -36,5 +37,13 @@ export default defineConfig({
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+  },
+  resolve: {
+    alias: [
+      {
+        find: '@sovereign-academy/api-client',
+        replacement: path.resolve('packages/api-client'),
+      },
+    ],
   },
 });

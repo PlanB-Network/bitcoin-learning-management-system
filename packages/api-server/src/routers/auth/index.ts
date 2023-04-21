@@ -8,8 +8,7 @@ export const authRouter = createTRPCRouter({
   lud4: LUD4AuthRouter,
   logout: publicProcedure.mutation(({ ctx }) => {
     if (ctx.session) {
-      // TODO: destroy session
-      // await ctx.session.destroy();
+      ctx.session.destroy();
     }
 
     return { isLoggedIn: false };
