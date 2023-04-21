@@ -51,6 +51,7 @@ export const groupByResource = (files: ChangedFile[], baseUrl: string) => {
       time: file.time,
       data: file.data,
       kind: file.kind,
+      url: file.url,
     });
 
     groupedResources.set(resourcePath, resource);

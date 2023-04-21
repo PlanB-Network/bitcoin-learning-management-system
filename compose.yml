@@ -26,7 +26,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
     env_file:
-      - ./packages/api/.env
+      - ./apps/api/.env
       - ./packages/github/.env
     ports:
       - 3000:3000
