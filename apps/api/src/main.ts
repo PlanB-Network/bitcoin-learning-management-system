@@ -7,7 +7,6 @@ import {
 } from 'trpc-openapi';
 
 import { appRouter, createContext } from '@sovereign-academy/api-server';
-import { createGitHubWebhooks } from '@sovereign-academy/github';
 
 dotenv.config();
 
@@ -16,14 +15,6 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
 app.use(json());
-
-const secret = process.env.GITHUB_WEBHOOK_SECRET;
-const { middleware: githubMiddleware } = createGitHubWebhooks(
-  '/api/github/webhooks',
-  secret
-);
-
-app.use(githubMiddleware);
 
 app.use((req, _res, next) => {
   // Basic request logger

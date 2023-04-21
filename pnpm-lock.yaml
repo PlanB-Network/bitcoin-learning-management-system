@@ -13,9 +13,9 @@ importers:
       '@octokit/plugin-rest-endpoint-methods':
         specifier: 7.0.1
         version: 7.0.1(@octokit/core@4.2.0)
-      '@octokit/webhooks':
-        specifier: 10.7.0
-        version: 10.7.0
+      '@octokit/webhooks-methods':
+        specifier: 3.0.2
+        version: 3.0.2
       '@trpc/client':
         specifier: 10.18.0
         version: 10.18.0(@trpc/server@10.18.0)
@@ -230,6 +230,8 @@ importers:
   packages/database: {}
 
   packages/github: {}
+
+  packages/types: {}
 
 packages:
 
