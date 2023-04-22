@@ -1,7 +1,57 @@
 import postgres from 'postgres';
-import type { MaybeRow, PendingQuery, RowList, Sql } from 'postgres';
+import type {
+  MaybeRow,
+  PendingQuery,
+  PostgresType,
+  RowList,
+  Sql,
+} from 'postgres';
 
-export interface PostgresClient extends Sql {
+export type PostgresTypes = {
+  bigint: PostgresType<number>;
+  numeric: PostgresType<number>;
+  timestamptz: PostgresType<number>;
+  // Placeholder for TypeScript to accept undefined values
+  null: PostgresType<undefined>;
+};
+
+export type PostgresTypesMapper = {
+  bigint: number;
+  numeric: number;
+  timestamptz: number;
+  // Placeholder for TypeScript to accept undefined values
+  null: undefined;
+};
+
+const types = {
+  bigint: {
+    to: 20,
+    from: [20],
+    parse: Number,
+    serialize: (x: number) => x.toString(),
+  },
+  numeric: {
+    to: 1700,
+    from: [1700],
+    parse: Number,
+    serialize: (x: number) => x.toString(),
+  },
+  timestamptz: {
+    to: 1184,
+    from: [1184],
+    parse: (value: string | Date) => new Date(value).getTime(),
+    serialize: (x: number | Date) => new Date(x).toISOString(),
+  },
+  // Placeholder for TypeScript to accept undefined values
+  null: {
+    to: 0,
+    from: [0],
+    parse: () => undefined,
+    serialize: () => null,
+  },
+} as PostgresTypes;
+
+export interface PostgresClient extends Sql<PostgresTypesMapper> {
   /**
    * Test if the client can connect to the database
    * and if the database is ready to accept queries
@@ -45,6 +95,13 @@ export const createPostgresClient = ({
     username: username || process.env['DB_USER'],
     password: password || process.env['DB_PASSWORD'],
     // onnotice: () => undefined,
+    types,
+    transform: {
+      // Convert undefined values to null postgres values
+      undefined: null,
+      // Convert null postgres values to undefined
+      value: (value) => value ?? undefined,
+    },
   }) as PostgresClient;
 
   client.exec = <R extends MaybeRow>(query: PendingQuery<R[]>) => {
