@@ -10,6 +10,11 @@ export interface PostgresClient extends Sql {
    */
   connect: () => Promise<void>;
   /**
+   * Disconnect from the database
+   * @returns
+   */
+  disconnect: () => Promise<void>;
+  /**
    * Execute a pending query
    *
    * @param query - Pending query
@@ -54,6 +59,10 @@ export const createPostgresClient = ({
     await client`SELECT 1;`;
     console.debug(`Connected ${host}:${port} on database ${database}`);
     connected = true;
+  };
+
+  client.disconnect = () => {
+    return client.end();
   };
 
   return client;

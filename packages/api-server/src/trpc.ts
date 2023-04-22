@@ -6,11 +6,7 @@ import superjson from 'superjson';
 import { OpenApiMeta } from 'trpc-openapi';
 import { ZodError } from 'zod';
 
-import {
-  type PostgresClient,
-  createPostgresClient,
-} from '@sovereign-academy/database';
-
+import type { Dependencies } from './dependencies';
 import type { Session } from './session';
 
 dotenv.config();
@@ -26,7 +22,7 @@ dotenv.config();
  */
 interface CreateInnerContextOptions {
   session: Session;
-  postgres: PostgresClient;
+  dependencies: Dependencies;
 }
 
 /**
@@ -37,7 +33,7 @@ interface CreateInnerContextOptions {
 const createContextInner = (opts: CreateInnerContextOptions) => {
   return {
     session: opts.session,
-    postgres: opts.postgres,
+    dependencies: opts.dependencies,
   };
 };
 
@@ -48,28 +44,16 @@ export type ContextInner = inferAsyncReturnType<typeof createContextInner>;
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createContext = async (opts: CreateExpressContextOptions) => {
+export const createContext = async (
+  opts: CreateExpressContextOptions,
+  dependencies: Dependencies
+) => {
   const { req, res } = opts;
 
   // TODO: manage session
   const session = {};
-  let postgres: PostgresClient;
-  try {
-    postgres = createPostgresClient({
-      host: process.env['DB_HOST'],
-      port: Number(process.env['DB_PORT']),
-      database: process.env['DB_NAME'],
-      username: process.env['DB_USER'],
-      password: process.env['DB_PASSWORD'],
-    });
 
-    await postgres.connect();
-  } catch (err) {
-    console.error('Failed to connect to database', err);
-    throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR' });
-  }
-
-  const contextInner = createContextInner({ session, postgres });
+  const contextInner = createContextInner({ session, dependencies });
 
   return {
     ...contextInner,

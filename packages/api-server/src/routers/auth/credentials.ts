@@ -28,7 +28,8 @@ export const credentialsAuthRouter = createTRPCRouter({
     .input(registerCredentialsSchema)
     .output(z.object({ status: z.number(), message: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      const { postgres, session } = ctx;
+      const { dependencies, session } = ctx;
+      const { postgres } = dependencies;
 
       if (session?.user) {
         return {
@@ -84,7 +85,10 @@ export const credentialsAuthRouter = createTRPCRouter({
     .input(loginCredentialsSchema)
     .output(z.object({ status: z.number(), message: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      const user = await getUserByAny(ctx.postgres, {
+      const { dependencies, session } = ctx;
+      const { postgres } = dependencies;
+
+      const user = await getUserByAny(postgres, {
         username: input.username,
       });
 
@@ -109,14 +113,14 @@ export const credentialsAuthRouter = createTRPCRouter({
         };
       }
 
-      ctx.session.user = {
+      session.user = {
         username: input.username,
         email: user.email || undefined,
         isLoggedIn: true,
       };
 
       // TODO: save session
-      // await ctx.session.save();
+      // await session.save();
 
       return {
         status: 200,
