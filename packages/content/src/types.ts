@@ -1,8 +1,12 @@
-import { ChangedFile } from '@sovereign-academy/types';
+import { ChangedAsset, ChangedFile } from '@sovereign-academy/types';
 
 export interface ChangedContent {
   path: string;
   type: string;
   sourceUrl: string;
-  files: ChangedFile[];
+  files: (ChangedFile | ChangedAsset)[];
 }
+
+export const isAsset = (
+  file: ChangedFile | ChangedAsset
+): file is ChangedAsset => 'url' in file;

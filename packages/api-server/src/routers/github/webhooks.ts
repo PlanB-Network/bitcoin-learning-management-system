@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { createProcessChangedFiles } from '@sovereign-academy/content';
 import {
   processWebhookPayload,
   verifyWebhookPayload,
@@ -30,9 +31,9 @@ export const webhooksProcedure = publicProcedure
       return;
     }
 
-    const { content, sourceUrl } = await processWebhookPayload(ctx.req.body);
-
-    // TODO: process changed files
-
-    return;
+    // Process the payload asynchronoulsy so we don't block the request
+    processWebhookPayload(ctx.req.body).then(async ({ content, sourceUrl }) => {
+      const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
+      await processChangedFiles(content, sourceUrl);
+    });
   });

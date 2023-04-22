@@ -2,7 +2,11 @@ import { verify } from '@octokit/webhooks-methods';
 import type { Commit, PushEvent } from '@octokit/webhooks-types';
 import * as async from 'async';
 
-import type { ChangeKind, ChangedFile } from '@sovereign-academy/types';
+import type {
+  ChangeKind,
+  ChangedAsset,
+  ChangedFile,
+} from '@sovereign-academy/types';
 
 import { downloadFileFromGithub, keepOnlyMostRecentCommits } from './utils';
 
@@ -14,7 +18,7 @@ const parseCommit = (commit: Commit) => {
       path,
       kind,
       commit: commit.id,
-      time: commit.timestamp,
+      time: new Date(commit.timestamp).getTime(),
     }))
   );
 };
@@ -46,24 +50,29 @@ export const verifyWebhookPayload = async (
 export const processWebhookPayload = async (payload: PushEvent) => {
   const repository = payload.repository.full_name;
   const sourceUrl = payload.repository.html_url;
-  const parsed: ChangedFile[] = payload.commits
-    .flatMap(parseCommit)
-    .map((item) => ({
-      ...item,
-      url: `https://raw.githubusercontent.com/${repository}/${item.commit}/${item.path}`,
-    }));
+  const parsed = payload.commits.flatMap(parseCommit);
 
   // We only need the most recent commit for each file as we are downloading the full file anyway
   const content = keepOnlyMostRecentCommits(parsed);
 
-  // Download all added or modified files
+  // Download all added or modified files (skip removed files)
   await async.eachLimit(content, 10, async (item) => {
-    if (item.kind === 'removed' || item.path.includes('assets')) return;
-    item.data = await downloadFileFromGithub(item.path);
+    if (item.kind === 'removed') return;
+
+    if (item.path.includes('assets')) {
+      (
+        item as ChangedAsset
+      ).url = `https://raw.githubusercontent.com/${repository}/${item.commit}/${item.path}`;
+    } else {
+      (item as ChangedFile).data = await downloadFileFromGithub(item.path);
+    }
   });
 
   return {
     content,
     sourceUrl,
+  } as {
+    content: (ChangedAsset | ChangedFile)[];
+    sourceUrl: string;
   };
 };

@@ -2,19 +2,24 @@ import { App } from '@octokit/app';
 import { Octokit } from '@octokit/core';
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
 
-import type { ChangedFile } from '@sovereign-academy/types';
-
 import { config } from './config';
 
 const OctokitWithRest = Octokit.plugin(restEndpointMethods);
 
-export const keepOnlyMostRecentCommits = (contents: ChangedFile[]) => {
-  const contentsMap = new Map<string, ChangedFile>();
+export const keepOnlyMostRecentCommits = <
+  T extends {
+    path: string;
+    time: number;
+  }
+>(
+  contents: T[]
+) => {
+  const contentsMap = new Map<string, T>();
 
   contents.forEach((content) => {
     if (
       !contentsMap.has(content.path) ||
-      content.time > (contentsMap.get(content.path) as ChangedFile).time
+      content.time > (contentsMap.get(content.path) as T).time
     )
       contentsMap.set(content.path, content);
   });

@@ -1,19 +1,17 @@
-import type { ChangedFile } from '@sovereign-academy/types';
+import type { ChangedAsset, ChangedFile } from '@sovereign-academy/types';
 
-import { processChangedResourceContent } from './parser';
+import type { Dependencies } from './dependencies';
+import { createProcessChangedResource, groupByResource } from './parser';
 
-const getContentType = (path: string) => {
-  const pathElements = path.split('/');
-  if (pathElements.length < 2) return 'unknown';
-  return pathElements[0];
-};
+export const createProcessChangedFiles =
+  (dependencies: Dependencies) =>
+  async (content: (ChangedFile | ChangedAsset)[], baseUrl: string) => {
+    // Resources
+    const processChangedResource = createProcessChangedResource(dependencies);
 
-export const processChangedFiles = async (
-  content: ChangedFile[],
-  baseUrl: string
-) => {
-  processChangedResourceContent(
-    content.filter((item) => getContentType(item.path) === 'resources'),
-    baseUrl
-  );
-};
+    const resources = groupByResource(content, baseUrl);
+
+    for (const resource of resources) {
+      await processChangedResource(resource);
+    }
+  };
