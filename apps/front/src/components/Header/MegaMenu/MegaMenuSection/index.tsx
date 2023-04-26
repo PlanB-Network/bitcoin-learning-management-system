@@ -1,3 +1,6 @@
+import { useMemo } from 'react';
+
+import { NavigationSection } from '../../props';
 import {
   firstLevelListItem,
   listElementTitle,
@@ -7,44 +10,42 @@ import {
 } from '../index.css';
 import { MegaMenuElement } from '../MegaMenuElement';
 import { MegaMenuSubSection } from '../MegaMenuSubSection';
-import { MegaMenuSection as IMegaMenuSection } from '../props';
-
-export interface HeaderProps {
-  isExpanded: boolean;
-}
 
 export interface MegaMenuSectionProps {
-  section: IMegaMenuSection;
+  section: NavigationSection;
 }
 
 export const MegaMenuSection = ({ section }: MegaMenuSectionProps) => {
-  return (
-    <li key={section.id} className={firstLevelListItem}>
-      {section.path ? (
+  const sectionTitle = useMemo(() => {
+    if ('path' in section)
+      return (
         <a className={listElementTitle} href={section.path}>
           {section.title}
         </a>
-      ) : (
+      );
+    if ('action' in section)
+      return (
         <button
           className={listElementTitle}
+          style={{ cursor: 'pointer' }}
           onClick={() => {
-            section.action?.();
+            section.action();
           }}
-          style={{ cursor: section.action ? 'pointer' : 'initial' }}
         >
           {section.title}
         </button>
-      )}
-      {section.items?.length && (
+      );
+    return <button className={listElementTitle}>{section.title}</button>;
+  }, [section]);
+
+  return (
+    <li key={section.id} className={firstLevelListItem}>
+      {sectionTitle}
+      {'items' in section && section.items.length && (
         <div className={megaMenu}>
           <div className={megaMenuContainer}>
             {section.items.map((subSectionOrElements, index) =>
-              'items' in subSectionOrElements ? (
-                <MegaMenuSubSection
-                  key={subSectionOrElements.id}
-                  subSection={subSectionOrElements}
-                />
-              ) : (
+              Array.isArray(subSectionOrElements) ? (
                 <ul key={`${section.id}-${index}`} className={megaMenuColumn}>
                   {subSectionOrElements.map((element) => (
                     <li key={element.id}>
@@ -52,6 +53,11 @@ export const MegaMenuSection = ({ section }: MegaMenuSectionProps) => {
                     </li>
                   ))}
                 </ul>
+              ) : (
+                <MegaMenuSubSection
+                  key={subSectionOrElements.id}
+                  subSection={subSectionOrElements}
+                />
               )
             )}
           </div>

@@ -133,6 +133,8 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       await ctx.session.save();
 
+      console.log('ctx.sessionctx.session', ctx.session);
+
       return {
         isLoggedIn: true,
         status: 200,

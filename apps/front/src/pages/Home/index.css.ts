@@ -12,16 +12,29 @@ export const heroSection = style({
   height: '100vh',
 });
 
-export const textualSection = style({});
+export const textualSection = style({
+  maxWidth: 500,
+  width: '50vw',
+});
 
 export const textTitle = style({
-  fontSize: '50px',
+  fontSize: '42px',
+  '@media': {
+    'screen and (min-width: 900px)': {
+      fontSize: '50px',
+    },
+  },
 });
 
 export const textParagraph = style({
-  maxWidth: '500px',
+  maxWidth: '100%',
   fontWeight: 200,
-  fontSize: 17,
+  fontSize: 15,
+  '@media': {
+    'screen and (min-width: 900px)': {
+      fontSize: 17,
+    },
+  },
 });
 
 export const heroSectionCtaContainer = style({
@@ -31,12 +44,12 @@ export const heroSectionCtaContainer = style({
 });
 
 export const heroSectionCtaButton = style({
-  marginTop: 10,
+  marginTop: '10px',
 });
 
 export const imageSection = style({});
 
-export const image = style({ height: '400px' });
+export const image = style({ maxWidth: 400, width: '25vw' });
 
 export const coursesSection = style({ background: 'var(--surface-0)' });
 

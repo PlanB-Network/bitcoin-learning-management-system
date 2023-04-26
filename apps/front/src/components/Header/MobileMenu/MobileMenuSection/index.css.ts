@@ -1,0 +1,23 @@
+import { style } from '@vanilla-extract/css';
+
+import { mobileMenuButton } from '../index.css';
+
+export const menuSectionButton = style([
+  mobileMenuButton,
+  {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+]);
+
+export const menuSectionListItem = style({
+  height: 'max-content',
+  overflow: 'hidden',
+});
+
+export const menuSectionListItemsContent = style({
+  height: 'max-content',
+  overflow: 'hidden',
+  transition: '0.3s',
+});

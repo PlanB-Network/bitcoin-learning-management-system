@@ -1,13 +1,10 @@
+import { NavigationSection } from '../props';
+
 import { listContainer, navContainer } from './index.css';
 import { MegaMenuSection } from './MegaMenuSection';
-import { MegaMenuSection as IMegaMenuSection } from './props';
-
-export interface HeaderProps {
-  isExpanded: boolean;
-}
 
 export interface MegaMenuProps {
-  sections: IMegaMenuSection[];
+  sections: NavigationSection[];
 }
 
 export const MegaMenu = ({ sections }: MegaMenuProps) => {

@@ -22,7 +22,15 @@ export const headerSideImageStyle = style({
 
 export const headerExpandedImageStyle = style({
   transition: '0.6s',
-  height: 80,
+  height: 40,
+  '@media': {
+    'screen and (min-width: 768px)': {
+      height: 60,
+    },
+    'screen and (min-width: 1000px)': {
+      height: 80,
+    },
+  },
 });
 
 export const headerShrinkedImageStyle = style({
@@ -36,3 +44,4 @@ export const headerMenuStyle = style({
   color: 'var(--text-secondary-color)',
   border: 'none',
 });
+

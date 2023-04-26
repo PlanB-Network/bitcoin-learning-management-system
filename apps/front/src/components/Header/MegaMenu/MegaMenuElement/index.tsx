@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 
+import { NavigationElement } from '../../props';
 import {
   megaMenuColumnItem,
   megaMenuColumnItemButton,
@@ -9,14 +10,9 @@ import {
   megaMenuColumnItemTitle,
   megaMenuImage,
 } from '../index.css';
-import { MegaMenuElement as IMegaMenuElement } from '../props';
-
-export interface HeaderProps {
-  isExpanded: boolean;
-}
 
 export interface MegaMenuElementProps {
-  element: IMegaMenuElement;
+  element: NavigationElement;
 }
 
 export const MegaMenuElement = ({ element }: MegaMenuElementProps) => {
@@ -39,7 +35,7 @@ export const MegaMenuElement = ({ element }: MegaMenuElementProps) => {
     [element.description, element.img, element.title]
   );
 
-  return element.path ? (
+  return 'path' in element ? (
     <div className={megaMenuColumnItem}>
       <a href={element.path} className={megaMenuColumnItemContentContainer}>
         {htmlElement}

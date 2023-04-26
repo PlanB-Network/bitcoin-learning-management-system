@@ -1,3 +1,4 @@
+import { NavigationSubSection } from '../../props';
 import {
   megaMenuColumn,
   megaMenuColumns,
@@ -5,10 +6,9 @@ import {
   megaMenuTitle,
 } from '../index.css';
 import { MegaMenuElement } from '../MegaMenuElement';
-import { MegaMenuSubSection as IMegaMenuSubSection } from '../props';
 
 export interface MegaMenuSubSectionProps {
-  subSection: IMegaMenuSubSection;
+  subSection: NavigationSubSection;
 }
 
 export const MegaMenuSubSection = ({ subSection }: MegaMenuSubSectionProps) => {
@@ -16,15 +16,16 @@ export const MegaMenuSubSection = ({ subSection }: MegaMenuSubSectionProps) => {
     <div key={subSection.id} className={megaMenuItem}>
       <h3 className={megaMenuTitle}>{subSection.title}</h3>
       <div className={megaMenuColumns}>
-        {subSection.items.map((col, index) => (
-          <ul key={`${subSection.id}-${index}`} className={megaMenuColumn}>
-            {col.map((element) => (
-              <li key={element.id}>
-                <MegaMenuElement element={element} />
-              </li>
-            ))}
-          </ul>
-        ))}
+        {'items' in subSection &&
+          subSection.items.map((col, index) => (
+            <ul key={`${subSection.id}-${index}`} className={megaMenuColumn}>
+              {col.map((element) => (
+                <li key={element.id}>
+                  <MegaMenuElement element={element} />
+                </li>
+              ))}
+            </ul>
+          ))}
       </div>
     </div>
   );

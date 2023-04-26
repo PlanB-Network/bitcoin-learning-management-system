@@ -42,6 +42,7 @@ export const megaMenu = style({
   position: 'absolute',
   left: '50vw',
   width: 'max-content',
+  maxWidth: '90vw',
 
   padding: '20px',
 

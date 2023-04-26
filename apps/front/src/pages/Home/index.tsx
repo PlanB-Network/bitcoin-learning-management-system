@@ -1,24 +1,23 @@
 import { useScroll } from '@react-hooks-library/core';
 import { Button } from 'primereact/button';
-import { useOverlayScrollListener } from 'primereact/hooks';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import dbHomeImg1 from '../../assets/db-home-img-1.png';
 import { Header } from '../../components';
 
 import { CoursePreview } from './CoursePreview';
 import {
+  courseContainer,
+  courseTitle,
+  coursesSection,
   heroSection,
-  textualSection,
+  heroSectionCtaButton,
+  heroSectionCtaContainer,
+  image,
   imageSection,
   textParagraph,
-  image,
-  heroSectionCtaContainer,
-  heroSectionCtaButton,
   textTitle,
-  coursesSection,
-  courseTitle,
-  courseContainer,
+  textualSection,
 } from './index.css';
 
 const course1 = {

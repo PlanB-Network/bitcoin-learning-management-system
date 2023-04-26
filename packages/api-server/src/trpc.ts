@@ -7,17 +7,8 @@ import superjson from 'superjson';
 import { OpenApiMeta } from 'trpc-openapi';
 import { ZodError } from 'zod';
 
-<<<<<<< HEAD
 import type { Dependencies } from './dependencies';
-import type { Session } from './session';
-=======
-import {
-  type PostgresClient,
-  createPostgresClient,
-} from '@sovereign-academy/database';
-
 import { sessionOptions } from './session';
->>>>>>> a268aec (feat(front): bootstrap authentication)
 
 dotenv.config();
 
@@ -36,13 +27,8 @@ type IronSession = Awaited<ReturnType<typeof getIronSession>>;
  *
  */
 interface CreateInnerContextOptions {
-<<<<<<< HEAD
-  session: Session;
-  dependencies: Dependencies;
-=======
   session: IronSession;
-  postgres: PostgresClient;
->>>>>>> a268aec (feat(front): bootstrap authentication)
+  dependencies: Dependencies;
 }
 
 /**
@@ -70,29 +56,7 @@ export const createContext = async (
 ) => {
   const { req, res } = opts;
 
-<<<<<<< HEAD
-  // TODO: manage session
-  const session = {};
-=======
-  console.log(req.body);
-
   const session = await getIronSession(req, res, sessionOptions);
-  let postgres: PostgresClient;
-  try {
-    postgres = createPostgresClient({
-      host: process.env['DB_HOST'],
-      port: Number(process.env['DB_PORT']),
-      database: process.env['DB_NAME'],
-      username: process.env['DB_USER'],
-      password: process.env['DB_PASSWORD'],
-    });
-
-    await postgres.connect();
-  } catch (err) {
-    console.error('Failed to connect to database', err);
-    throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR' });
-  }
->>>>>>> a268aec (feat(front): bootstrap authentication)
 
   const contextInner = createContextInner({ session, dependencies });
 

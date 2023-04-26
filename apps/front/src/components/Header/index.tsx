@@ -1,9 +1,14 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router';
+import { FaBars } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 import headerImage from '../../assets/db-academy-header-1.png';
 import libraryIcon from '../../assets/navigation-icons/library.png';
-import { useDisclosure } from '../../hooks';
+import { useAppSelector, useDisclosure } from '../../hooks';
 import { AuthModal } from '../AuthModal';
 
 import {
@@ -13,6 +18,9 @@ import {
   headerStyle,
 } from './index.css';
 import { MegaMenu } from './MegaMenu';
+import { MobileMenu } from './MobileMenu';
+
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export interface HeaderProps {
   isExpanded: boolean;
@@ -25,6 +33,8 @@ export const Header = ({ isExpanded }: HeaderProps) => {
     isOpen: isLoginModalOpen,
     close: closeLoginModal,
   } = useDisclosure();
+
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
   const sections = useMemo(
     () => [
@@ -142,35 +152,46 @@ export const Header = ({ isExpanded }: HeaderProps) => {
           ],
         ],
       },
-      {
-        id: 'account',
-        title: 'Account',
-        action: () => {
-          openLoginModal();
-        },
-      },
+      isLoggedIn
+        ? { id: 'my-account', title: 'My Account' }
+        : {
+            id: 'account',
+            title: 'Account',
+            action: () => {
+              openLoginModal();
+            },
+          },
     ],
-    [openLoginModal]
+    [isLoggedIn, openLoginModal]
   );
+
+  const isScreenMd = useGreater('sm');
 
   return (
     <header className={`${headerStyle}`}>
-      {!isExpanded && (
-        <img
-          className={headerSideImageStyle}
-          src={headerImage}
-          alt="Decouvre Bitcoin header logo"
-        />
+      {isScreenMd ? (
+        isExpanded ? null : (
+          <img
+            className={headerSideImageStyle}
+            src={headerImage}
+            alt="Decouvre Bitcoin header logo"
+          />
+        )
+      ) : (
+        <MobileMenu sections={sections} />
       )}
+
       <img
         src={headerImage}
         className={
-          isExpanded ? headerExpandedImageStyle : headerShrinkedImageStyle
+          isExpanded || !isScreenMd
+            ? headerExpandedImageStyle
+            : headerShrinkedImageStyle
         }
         alt="Decouvre Bitcoin header logo"
       />
 
-      <MegaMenu sections={sections} />
+      {isScreenMd && <MegaMenu sections={sections} />}
 
       <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </header>
