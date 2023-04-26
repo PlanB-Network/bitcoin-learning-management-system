@@ -10,6 +10,8 @@ import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { useAppDispatch } from '../../../hooks';
+import { userSlice } from '../../../store/slices/user.slice';
 import { ErrorMessage } from '../../ErrorMessage';
 import {
   createAccountText,
@@ -37,6 +39,7 @@ const signinSchema = z.object({
 
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const login = trpc.auth.credentials.login.useMutation();
+  const dispatch = useAppDispatch();
   const handleLogin = useCallback(
     async (
       values: {
@@ -51,8 +54,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
       await login.mutate(values);
+      dispatch(userSlice.actions.login(values.username));
     },
-    [login]
+    [dispatch, login]
   );
 
   useEffect(() => {
