@@ -10,6 +10,8 @@ import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { useAppDispatch } from '../../../hooks';
+import { userSlice } from '../../../store';
 import { ErrorMessage } from '../../ErrorMessage';
 import {
   createAccountText,
@@ -78,7 +80,20 @@ interface AccountData {
 }
 
 export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
-  const register = trpc.auth.credentials.register.useMutation();
+  const dispatch = useAppDispatch();
+
+  const register = trpc.auth.credentials.register.useMutation({
+    onSuccess: (data) => {
+      dispatch(
+        userSlice.actions.login({
+          username: data.user.username,
+          accessToken: data.accessToken,
+        })
+      );
+      onClose();
+    },
+  });
+
   const handleCreateUserAccount = useCallback(
     async (values: AccountData, actions: FormikHelpers<AccountData>) => {
       const errors = await actions.validateForm();

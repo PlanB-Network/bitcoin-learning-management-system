@@ -45,6 +45,10 @@ export default defineConfig({
         find: '@sovereign-academy/api-client',
         replacement: path.resolve('packages/api-client'),
       },
+      {
+        find: '@sovereign-academy/types',
+        replacement: path.resolve('packages/types'),
+      },
     ],
   },
 });

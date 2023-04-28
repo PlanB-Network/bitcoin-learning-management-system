@@ -1,18 +1,12 @@
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter, protectedProcedure } from '../../trpc';
+import { signAccessToken } from '../../utils/access-token';
 
 export const userRouter = createTRPCRouter({
-  getUser: publicProcedure.query(({ ctx }) => {
-    console.log('ctx.session', ctx.session);
-    if (ctx.session?.user) {
-      return {
-        username: ctx.session.user.username,
-        isLoggedIn: true,
-      };
-    }
-
+  getMe: protectedProcedure.query(({ ctx }) => {
     return {
-      username: null,
-      isLoggedIn: false,
+      user: ctx.user,
+      accessToken: signAccessToken(ctx.user),
+      isLoggedIn: true,
     };
   }),
 });

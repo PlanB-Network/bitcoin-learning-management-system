@@ -1,4 +1,5 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
+import cors from 'cors';
 import express from 'express';
 import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
@@ -17,6 +18,9 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   // Parse JSON bodies
   app.use(express.json());
+
+  // Enable cors
+  app.use(cors({ origin: 'http://localhost:5555' }));
 
   // Basic request logger
   app.use((req, _res, next) => {

@@ -5,7 +5,7 @@ import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -38,8 +38,21 @@ const signinSchema = z.object({
 });
 
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
-  const login = trpc.auth.credentials.login.useMutation();
   const dispatch = useAppDispatch();
+
+  const login = trpc.auth.credentials.login.useMutation({
+    onSuccess: (data) => {
+      console.log('datdatadatdatd', data);
+      dispatch(
+        userSlice.actions.login({
+          username: data.user.username,
+          accessToken: data.accessToken,
+        })
+      );
+      onClose();
+    },
+  });
+
   const handleLogin = useCallback(
     async (
       values: {
@@ -54,16 +67,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
       await login.mutate(values);
-      dispatch(userSlice.actions.login(values.username));
     },
-    [dispatch, login]
+    [login]
   );
-
-  useEffect(() => {
-    if (login.data?.isLoggedIn) {
-      onClose();
-    }
-  }, [login, login.data?.isLoggedIn, onClose]);
 
   return (
     <Dialog

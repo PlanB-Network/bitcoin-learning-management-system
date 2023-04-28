@@ -9,6 +9,7 @@ import {
   getUserByAny,
 } from '../../services/users';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
 
 const registerCredentialsSchema = z.object({
@@ -32,24 +33,18 @@ export const credentialsAuthRouter = createTRPCRouter({
         status: z.number(),
         message: z.string(),
         user: z.object({ username: z.string(), email: z.string().optional() }),
+        accessToken: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies, session } = ctx;
+      const { dependencies } = ctx;
       const { postgres } = dependencies;
 
-      if (session?.user) {
-        throw new TRPCError({
-          code: 'FORBIDDEN',
-          message: 'Already logged in',
-        });
-      }
-
       if (await getUserByAny(postgres, { username: input.username })) {
-        return {
-          status: 400,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'Username already exists',
-        };
+        });
       }
 
       if (
@@ -73,17 +68,11 @@ export const credentialsAuthRouter = createTRPCRouter({
         email: input.email,
       });
 
-      session.user = {
-        username: user.username,
-        isLoggedIn: true,
-      };
-
-      await ctx.session.save();
-
       return {
         status: 201,
         message: 'User created',
         user: { username: user.username, email: user.email ?? undefined },
+        accessToken: signAccessToken(user),
       };
     }),
   login: publicProcedure
@@ -93,11 +82,12 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        isLoggedIn: z.boolean(),
+        user: z.object({ username: z.string(), email: z.string().optional() }),
+        accessToken: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies, session } = ctx;
+      const { dependencies } = ctx;
       const { postgres } = dependencies;
 
       const user = await getUserByAny(postgres, {
@@ -125,20 +115,11 @@ export const credentialsAuthRouter = createTRPCRouter({
         });
       }
 
-      session.user = {
-        username: input.username,
-        email: user.email || undefined,
-        isLoggedIn: true,
-      };
-
-      await ctx.session.save();
-
-      console.log('ctx.sessionctx.session', ctx.session);
-
       return {
-        isLoggedIn: true,
         status: 200,
         message: 'Logged in',
+        user: { username: user.username, email: user.email ?? undefined },
+        accessToken: signAccessToken(user),
       };
     }),
 });

@@ -2,20 +2,18 @@ import { TRPCError, initTRPC } from '@trpc/server';
 import type { inferAsyncReturnType } from '@trpc/server';
 import type { CreateExpressContextOptions } from '@trpc/server/adapters/express';
 import dotenv from 'dotenv';
-import { getIronSession } from 'iron-session';
+import { verify } from 'jsonwebtoken';
 import superjson from 'superjson';
 import { OpenApiMeta } from 'trpc-openapi';
 import { ZodError } from 'zod';
 
+import { JwtAuthTokenPayload } from '@sovereign-academy/types';
+
 import type { Dependencies } from './dependencies';
-import { sessionOptions } from './session';
 
 dotenv.config();
 
-/**
- * Session data is declared inside ./session/index.ts
- */
-type IronSession = Awaited<ReturnType<typeof getIronSession>>;
+const AUTH_HEADER_KEY = 'authorization';
 
 /**
  * 1. CONTEXT
@@ -27,7 +25,6 @@ type IronSession = Awaited<ReturnType<typeof getIronSession>>;
  *
  */
 interface CreateInnerContextOptions {
-  session: IronSession;
   dependencies: Dependencies;
 }
 
@@ -38,7 +35,6 @@ interface CreateInnerContextOptions {
  */
 const createContextInner = (opts: CreateInnerContextOptions) => {
   return {
-    session: opts.session,
     dependencies: opts.dependencies,
   };
 };
@@ -56,9 +52,7 @@ export const createContext = async (
 ) => {
   const { req, res } = opts;
 
-  const session = await getIronSession(req, res, sessionOptions);
-
-  const contextInner = createContextInner({ session, dependencies });
+  const contextInner = createContextInner({ dependencies });
 
   return {
     ...contextInner,
@@ -118,14 +112,24 @@ export const publicProcedure = t.procedure;
  * Reusable middleware that enforces users are logged in before running the
  * procedure
  */
-const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+const enforceAuthenticatedUser = t.middleware(({ ctx, next }) => {
+  const authHeader = ctx.req.headers[AUTH_HEADER_KEY];
+  if (!authHeader || Array.isArray(authHeader))
+    throw new TRPCError({ code: 'UNAUTHORIZED' });
+
+  let payload: JwtAuthTokenPayload;
+  try {
+    payload = verify(
+      authHeader,
+      process.env['JWT_SECRET'] as string
+    ) as JwtAuthTokenPayload; // TODO validate payload with zod insteadƒ
+  } catch {
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
 
   return next({
     ctx: {
-      session: { ...ctx.session, user: ctx.session.user },
+      user: payload,
     },
   });
 });
@@ -139,4 +143,4 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+export const protectedProcedure = t.procedure.use(enforceAuthenticatedUser);

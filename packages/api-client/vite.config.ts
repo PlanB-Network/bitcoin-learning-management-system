@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { join } from 'path';
+import { resolve, join } from 'path';
 
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -44,6 +44,15 @@ export default defineConfig({
       // External packages that should not be bundled into your library.
       external: [],
     },
+  },
+
+  resolve: {
+    alias: [
+      {
+        find: '@sovereign-academy/api-client',
+        replacement: resolve('packages/api-client'),
+      },
+    ],
   },
 
   test: {

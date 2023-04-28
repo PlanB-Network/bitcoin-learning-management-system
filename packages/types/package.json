@@ -1,5 +1,6 @@
 {
   "name": "@sovereign-academy/types",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "main": "src/index.ts"
 }
