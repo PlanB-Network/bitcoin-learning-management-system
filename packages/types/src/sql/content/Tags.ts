@@ -8,7 +8,7 @@ export type TagsId = number;
 export default interface Tags {
   id: TagsId;
 
-  tag_name: string;
+  name: string;
 
   description: string | null;
 }
@@ -18,7 +18,7 @@ export interface TagsInitializer {
   /** Default value: nextval('content.tags_id_seq'::regclass) */
   id?: TagsId;
 
-  tag_name: string;
+  name: string;
 
   description?: string | null;
 }
@@ -27,7 +27,7 @@ export interface TagsInitializer {
 export interface TagsMutator {
   id?: TagsId;
 
-  tag_name?: string;
+  name?: string;
 
   description?: string | null;
 }

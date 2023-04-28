@@ -50,3 +50,17 @@ CREATE TABLE IF NOT EXISTS content.articles (
 
   UNIQUE (resource_id, language)
 );
+
+-- Tags (e.g. bitcoin, lightning, etc.)
+CREATE TABLE IF NOT EXISTS content.tags (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  description TEXT
+);
+
+-- Junction table for resources and tags
+CREATE TABLE IF NOT EXISTS content.resource_tags (
+  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
+  tag_id INTEGER NOT NULL REFERENCES content.tags(id),
+  PRIMARY KEY (resource_id, tag_id)
+);

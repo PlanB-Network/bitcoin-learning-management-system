@@ -2,6 +2,7 @@
  * EXPORTS
  */
 export type { default as Resource } from './sql/content/Resources';
+export type { default as Tag } from './sql/content/Tags';
 
 export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 

@@ -1,5 +1,10 @@
 import { firstRow } from '@sovereign-academy/database';
-import type { ChangedAsset, ChangedFile, Resource } from '@sovereign-academy/types';
+import type {
+  ChangedAsset,
+  ChangedFile,
+  Resource,
+  Tag,
+} from '@sovereign-academy/types';
 
 import { Dependencies } from '../dependencies';
 
@@ -53,6 +58,9 @@ const parseResourcePath = (path: string) => {
   };
 };
 
+export const filterOutTagsFile = (files: (ChangedAsset | ChangedFile)[]) =>
+  files.filter((file) => file.path !== 'resources/tags.yml');
+
 export const groupByResource = (
   files: (ChangedFile | ChangedAsset)[],
   baseUrl: string
@@ -74,14 +82,14 @@ export const groupByResource = (
       assets: [],
     };
 
-    file.path = file.path.replace(resourcePath + '/', '')
+    file.path = file.path.replace(resourcePath + '/', '');
 
     if (isAsset(file)) {
       resource.assets.push(file);
     } else {
       resource.files.push({
         ...file,
-        language
+        language,
       });
     }
 
@@ -104,49 +112,60 @@ export const createProcessChangedResource =
     );
 
     return postgres.begin(async (transaction) => {
-      if(resourceFile) {
-        switch (resourceFile.kind) {
-          case 'added':
-          case 'modified': {
-            // If new or updated resource file, insert or update resource
-            const parsedResource = parseResource(resourceFile.data);
+      if (resourceFile) {
+        if (resourceFile.kind === 'removed') {
+          // If resource file was removed, delete the main resource and all its translations (with cascade)
+          await transaction`
+            DELETE FROM content.resources WHERE path = ${resource.path} 
+          `;
 
-            await transaction`
-              INSERT INTO content.resources (type, path, original_language, last_updated, last_commit)
-              VALUES (
-                ${resource.type}, 
-                ${resource.path}, 
-                ${parsedResource.original}, 
-                ${lastUpdated.time}, 
-                ${lastUpdated.commit}
-              )
-              ON CONFLICT (type, path) DO UPDATE SET
-                original_language = ${parsedResource.original},
-                last_updated = ${lastUpdated.time},
-                last_commit = ${lastUpdated.commit}
-            `
+          return;
+        }
 
-            break;
-          }
-          case 'removed': {
-            // If resource file was removed, delete the main resource and all its translations (with cascade)
-            await transaction`
-              DELETE FROM content.resources WHERE path = ${resource.path} 
-            `;
+        if (resourceFile.kind === 'renamed') {
+          // If resource file was moved, update the path
+          // We assume the whole resource folder was moved
+          await transaction`
+            UPDATE content.resources
+            SET path = ${resource.path}
+            WHERE path = ${resourceFile.previousPath.replace(
+              '/resource.yml',
+              ''
+            )}
+          `;
+        }
 
-            return;
-          }
-          case 'renamed': {
-            // If resource file was moved, update the path
-            // We assume the whole resource folder was moved
-            await transaction`
-              UPDATE content.resources
-              SET path = ${resource.path}
-              WHERE path = ${resourceFile.previousPath}
-            `;
-          
-            break;
-          }
+        if (
+          resourceFile.kind === 'added' ||
+          resourceFile.kind === 'modified' ||
+          resourceFile.kind === 'renamed'
+        ) {
+          // If new or updated resource file, insert or update resource
+          const parsedResource = parseResource(resourceFile.data);
+
+          const result = await transaction<Resource[]>`
+            INSERT INTO content.resources (type, path, original_language, last_updated, last_commit)
+            VALUES (
+              ${resource.type}, 
+              ${resource.path}, 
+              ${parsedResource.original}, 
+              ${lastUpdated.time}, 
+              ${lastUpdated.commit}
+            )
+            ON CONFLICT (type, path) DO UPDATE SET
+              original_language = ${parsedResource.original},
+              last_updated = ${lastUpdated.time},
+              last_commit = ${lastUpdated.commit}
+            RETURNING *
+          `.then(firstRow);
+
+          await transaction`
+            INSERT INTO content.resource_tags (resource_id, tag_id)
+            SELECT
+              ${result!.id}, 
+              id FROM content.tags WHERE name = ANY(${parsedResource.tags})
+            ON CONFLICT DO NOTHING
+          `;
         }
       }
 
@@ -244,4 +263,26 @@ export const createProcessChangedResource =
         }
       }
     });
+  };
+
+export const createProcessTagsFile =
+  (dependencies: Dependencies) =>
+  async (files: (ChangedAsset | ChangedFile)[]) => {
+    const { postgres } = dependencies;
+
+    const tagsFile = files.find((file) => file.path === 'resources/tags.yml');
+
+    if (!tagsFile) {
+      return;
+    }
+
+    const tags = yamlToObject<Omit<Tag, 'id'>[]>(
+      (tagsFile as ChangedFile).data
+    );
+
+    await postgres`
+      INSERT INTO content.tags ${postgres(tags, 'name', 'description')}
+      ON CONFLICT (name) DO UPDATE SET
+        description = EXCLUDED.description
+    `;
   };
