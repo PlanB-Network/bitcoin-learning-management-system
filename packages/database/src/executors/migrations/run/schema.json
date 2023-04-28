@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "cli": "nx",
   "title": "MigrationUp executor",
   "description": "Execute migrations in the database",
   "type": "object",

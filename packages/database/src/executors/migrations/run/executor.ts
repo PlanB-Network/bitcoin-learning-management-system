@@ -1,6 +1,6 @@
 import path from 'path';
 
-import type { ExecutorContext } from '@nrwl/devkit';
+import type { ExecutorContext } from '@nx/devkit';
 import dotenv from 'dotenv';
 
 import { createPostgresClient } from '../../../client';

@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "cli": "nx",
   "title": "MigrationAdd executor",
   "description": "Add a new Postgres migration to the migrations directory.",
   "type": "object",
@@ -16,5 +15,7 @@
       "default": "packages/database/migrations"
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

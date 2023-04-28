@@ -10,7 +10,7 @@
   "npmScope": "sovereign-academy",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "generators": {
-    "@nrwl/react": {
+    "@nx/react": {
       "application": {
         "style": "css",
         "linter": "eslint",
@@ -53,7 +53,7 @@
     }
   },
   "pluginsConfig": {
-    "@nrwl/js": {
+    "@nx/js": {
       "analyzeSourceFiles": true
     }
   }
