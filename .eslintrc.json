@@ -20,7 +20,6 @@
             ]
           }
         ],
-        // Import rules
         "import/first": "error",
         "import/newline-after-import": "error",
         "import/no-duplicates": "error",
@@ -54,7 +53,7 @@
           "warn",
           {
             "ignoreCase": false,
-            "ignoreDeclarationSort": true, // Handled by import/order
+            "ignoreDeclarationSort": true,
             "ignoreMemberSort": false,
             "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
             "allowSeparatedGroups": false
@@ -80,6 +79,11 @@
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
       "rules": {}
     }
   ]

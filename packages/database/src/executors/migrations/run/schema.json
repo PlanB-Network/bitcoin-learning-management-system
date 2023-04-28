@@ -13,6 +13,11 @@
       "type": "string",
       "description": "The directory where the migrations are located.",
       "default": "packages/database/migrations"
+    },
+    "database": {
+      "type": "string",
+      "description": "The database to run the migrations against.",
+      "default": "postgres"
     }
   },
   "required": []

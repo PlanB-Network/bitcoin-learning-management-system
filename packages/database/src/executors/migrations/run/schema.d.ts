@@ -1,4 +1,5 @@
 export interface MigrationRunExecutorSchema {
-  file?: string;
   dir: string;
+  file?: string;
+  database?: string;
 }

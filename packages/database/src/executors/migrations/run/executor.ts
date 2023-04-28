@@ -26,7 +26,9 @@ export default async function runExecutor(
     console.log(`🚀 Running migrations from ${options.dir}`);
   }
 
-  const client = createPostgresClient();
+  const client = createPostgresClient({
+    database: options.database,
+  });
 
   await runMigrations(client, migrationPath);
 
