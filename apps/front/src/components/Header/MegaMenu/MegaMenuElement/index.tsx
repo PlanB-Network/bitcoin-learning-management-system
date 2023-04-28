@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 
 import { NavigationElement } from '../../props';
 import {
@@ -37,9 +38,9 @@ export const MegaMenuElement = ({ element }: MegaMenuElementProps) => {
 
   return 'path' in element ? (
     <div className={megaMenuColumnItem}>
-      <a href={element.path} className={megaMenuColumnItemContentContainer}>
+      <Link to={element.path} className={megaMenuColumnItemContentContainer}>
         {htmlElement}
-      </a>
+      </Link>
     </div>
   ) : (
     <div

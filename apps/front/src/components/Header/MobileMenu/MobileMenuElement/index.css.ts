@@ -1,12 +1,16 @@
 import { style } from '@vanilla-extract/css';
 
+import { menuLinkElement } from '../../index.css';
 import { mobileMenuButton } from '../index.css';
 
-export const mobileMenuElementContent = style({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-});
+export const mobileMenuElementContent = style([
+  menuLinkElement,
+  {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+]);
 
 export const mobileMenuElementButton = style([
   mobileMenuElementContent,

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 
 import { NavigationSection } from '../../props';
 import {
@@ -19,9 +20,9 @@ export const MegaMenuSection = ({ section }: MegaMenuSectionProps) => {
   const sectionTitle = useMemo(() => {
     if ('path' in section)
       return (
-        <a className={listElementTitle} href={section.path}>
+        <Link className={listElementTitle} to={section.path}>
           {section.title}
-        </a>
+        </Link>
       );
     if ('action' in section)
       return (

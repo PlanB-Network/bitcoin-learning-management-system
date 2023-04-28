@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 
 import { NavigationElement } from '../../props';
 
@@ -38,9 +39,9 @@ export const MobileMenuElement = ({ element }: MobileMenuElementProps) => {
 
   return 'path' in element ? (
     <div>
-      <a className={mobileMenuElementContent} href={element.path}>
+      <Link className={mobileMenuElementContent} to={element.path}>
         {htmlElement}
-      </a>
+      </Link>
     </div>
   ) : (
     <div

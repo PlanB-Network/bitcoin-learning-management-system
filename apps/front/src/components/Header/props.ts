@@ -5,10 +5,12 @@ export interface NavigationBaseItem {
 
 type ActionOrPath = { action: () => void } | { path: string };
 
-export type NavigationElement = NavigationBaseItem & {
+export type NavigationElement = (NavigationBaseItem & {
   img?: string;
   description?: string;
-} & ActionOrPath;
+}) &
+  ActionOrPath;
+
 export type NavigationSubSection = NavigationBaseItem &
   (
     | { action: () => void }

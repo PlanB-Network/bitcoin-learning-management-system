@@ -45,3 +45,7 @@ export const headerMenuStyle = style({
   border: 'none',
 });
 
+export const menuLinkElement = style({
+  textDecoration: 'none',
+  color: 'var(--primary-text)',
+});

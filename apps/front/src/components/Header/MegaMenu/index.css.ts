@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
+import { menuLinkElement } from '../index.css';
+
 export const navContainer = style({
   fontSize: 0,
 });
@@ -17,22 +19,25 @@ export const listElementContainer = style({
   padding: '0 15px',
 });
 
-export const listElementTitle = style({
-  color: '#fff',
-  display: 'block',
-  padding: '20px 0',
-  border: 'none',
-  margin: 0,
-  background: 'none',
-  borderBottom: '3px solid transparent',
-  transition: 'all .3s ease',
-  selectors: {
-    [`${listElementContainer}:hover &`]: {
-      color: 'var(--text-color-secondary)',
-      borderBottom: '3px solid var(--text-color-secondary)',
+export const listElementTitle = style([
+  menuLinkElement,
+  {
+    color: '#fff',
+    display: 'block',
+    padding: '20px 0',
+    border: 'none',
+    margin: 0,
+    background: 'none',
+    borderBottom: '3px solid transparent',
+    transition: 'all .3s ease',
+    selectors: {
+      [`${listElementContainer}:hover &`]: {
+        color: 'var(--text-color-secondary)',
+        borderBottom: '3px solid var(--text-color-secondary)',
+      },
     },
   },
-});
+]);
 
 export const dropDown = style({});
 
@@ -105,14 +110,17 @@ export const megaMenuColumnItem = style({
   },
 });
 
-export const megaMenuColumnItemContentContainer = style({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
+export const megaMenuColumnItemContentContainer = style([
+  menuLinkElement,
+  {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
 
-  cursor: 'pointer',
-  textAlign: 'left',
-});
+    cursor: 'pointer',
+    textAlign: 'left',
+  },
+]);
 
 export const megaMenuColumnItemTextContent = style({
   display: 'flex',

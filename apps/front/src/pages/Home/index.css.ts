@@ -7,9 +7,8 @@ export const heroSection = style({
   justifyContent: 'space-evenly',
   width: '100%',
   color: 'var(--text-color)',
-  paddingTop: '100px',
   background: 'var(--surface-100)',
-  height: '100vh',
+  height: 'calc(100vh - 150px)', // screen height minus layout padding top
 });
 
 export const textualSection = style({

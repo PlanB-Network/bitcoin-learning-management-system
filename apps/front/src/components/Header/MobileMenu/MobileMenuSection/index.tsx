@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import { useDisclosure } from '../../../../hooks';
+import { menuLinkElement } from '../../index.css';
 import { NavigationSection } from '../../props';
 import { arrowIcon, listContainer, listElement } from '../index.css';
 import { MobileMenuElement } from '../MobileMenuElement';
@@ -20,7 +22,12 @@ export interface MegaMenuSectionProps {
 export const MobileMenuSection = ({ section }: MegaMenuSectionProps) => {
   const { toggle, isOpen } = useDisclosure();
   const sectionTitle = useMemo(() => {
-    if ('path' in section) return <a href={section.path}>{section.title}</a>;
+    if ('path' in section)
+      return (
+        <Link className={menuLinkElement} to={section.path}>
+          {section.title}
+        </Link>
+      );
     if ('action' in section)
       return (
         <button

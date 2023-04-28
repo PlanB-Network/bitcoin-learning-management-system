@@ -6,8 +6,12 @@ import { LocalStorageKey } from '@sovereign-academy/types';
 
 import { useAppDispatch } from './hooks';
 import { Home } from './pages';
+import { Companies } from './pages/Companies';
+import { Company } from './pages/Company';
 import { userSlice } from './store';
+import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
+
 import './App.css';
 
 export const App = () => {
@@ -44,13 +48,9 @@ export const App = () => {
     <Routes>
       <Route path="/">
         <Route index element={<Home />} />
-        {/* <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} /> */}
-
-        {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-              routes for. */}
-        {/* <Route path="*" element={<NoMatch />} /> */}
+        <Route path={RoutesEnum.Companies} element={<Companies />} />
+        <Route path={RoutesEnum.Company} element={<Company />} />
+        <Route path="*" element={<h1>TODO</h1>} />
       </Route>
     </Routes>
   );

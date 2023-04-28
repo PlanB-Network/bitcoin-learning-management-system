@@ -1,9 +1,7 @@
-import { useScroll } from '@react-hooks-library/core';
 import { Button } from 'primereact/button';
-import { useRef, useState } from 'react';
 
 import dbHomeImg1 from '../../assets/db-home-img-1.png';
-import { Header } from '../../components';
+import { MainLayout } from '../../components';
 
 import { CoursePreview } from './CoursePreview';
 import {
@@ -49,18 +47,8 @@ const course2 = {
 };
 
 export const Home = () => {
-  const box = useRef<HTMLDivElement | null>(null);
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useScroll(box, ({ scrollX, scrollY }) => {
-    setHasScrolled(scrollY > 0);
-  });
-
   return (
-    <div ref={box} style={{ height: '100vh', overflow: 'auto' }}>
-      {/* Header */}
-      <Header isExpanded={!hasScrolled} />
-
+    <MainLayout>
       {/* Hero Section */}
       <div className={heroSection}>
         <div className={textualSection}>
@@ -112,6 +100,6 @@ export const Home = () => {
           <CoursePreview {...course2} />
         </div>
       </div>
-    </div>
+    </MainLayout>
   );
 };
