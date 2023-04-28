@@ -1,4 +1,9 @@
-export type ChangeKind = 'added' | 'modified' | 'removed';
+/*
+ * EXPORTS
+ */
+export type { default as Resource } from './sql/content/Resources';
+
+export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 
 /**
  * Changed content in a repository (agnostic to the repository)
@@ -14,23 +19,33 @@ export type ChangeKind = 'added' | 'modified' | 'removed';
  * }
  * ```
  */
-export interface ChangedFileBase {
+export type ChangedFileBase = {
   /** Path to the file */
   path: string;
-  /** Type of the change */
-  kind: ChangeKind;
   /** Commit hash */
   commit: string;
   /** Commit timestamp */
   time: number;
-}
+} & (
+  | {
+      /** Change kind */
+      kind: Exclude<ChangeKind, 'renamed'>;
+      previousPath?: undefined;
+    }
+  | {
+      /** Change kind */
+      kind: Extract<ChangeKind, 'renamed'>;
+      /** Previous path */
+      previousPath: string;
+    }
+);
 
-export interface ChangedAsset extends ChangedFileBase {
+export type ChangedAsset = ChangedFileBase & {
   /** URL to the file */
   url: string;
-}
+};
 
-export interface ChangedFile extends ChangedFileBase {
+export type ChangedFile = ChangedFileBase & {
   /** Raw data */
   data: string;
-}
+};

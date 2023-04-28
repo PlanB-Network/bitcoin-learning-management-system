@@ -62,7 +62,9 @@
   "dependencies": {
     "@octokit/app": "13.1.2",
     "@octokit/core": "4.2.0",
+    "@octokit/plugin-paginate-rest": "6.0.0",
     "@octokit/plugin-rest-endpoint-methods": "7.0.1",
+    "@octokit/rest": "19.0.7",
     "@octokit/webhooks-methods": "3.0.2",
     "@trpc/client": "10.18.0",
     "@trpc/server": "10.18.0",

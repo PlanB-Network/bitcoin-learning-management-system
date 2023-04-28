@@ -1,5 +1,5 @@
 import { verify } from '@octokit/webhooks-methods';
-import type { Commit, PushEvent } from '@octokit/webhooks-types';
+import type { PushEvent } from '@octokit/webhooks-types';
 import * as async from 'async';
 
 import type {
@@ -8,20 +8,7 @@ import type {
   ChangedFile,
 } from '@sovereign-academy/types';
 
-import { downloadFileFromGithub, keepOnlyMostRecentCommits } from './utils';
-
-const parseCommit = (commit: Commit) => {
-  const kinds: ChangeKind[] = ['added', 'modified', 'removed'];
-
-  return kinds.flatMap((kind) =>
-    commit[kind].map((path) => ({
-      path,
-      kind,
-      commit: commit.id,
-      time: new Date(commit.timestamp).getTime(),
-    }))
-  );
-};
+import { GithubOctokit, createDownloadFile, createGetDiff } from './utils';
 
 /**
  * GitHub sends its JSON with no indentation and no line break at the end
@@ -47,32 +34,81 @@ export const verifyWebhookPayload = async (
   );
 };
 
-export const processWebhookPayload = async (payload: PushEvent) => {
-  const repository = payload.repository.full_name;
-  const sourceUrl = payload.repository.html_url;
-  const parsed = payload.commits.flatMap(parseCommit);
+export const createProcessWebhookPayload =
+  (octokit: GithubOctokit) => async (payload: PushEvent) => {
+    const getDiff = createGetDiff(octokit);
+    const downloadFile = createDownloadFile(octokit);
 
-  // We only need the most recent commit for each file as we are downloading the full file anyway
-  const content = keepOnlyMostRecentCommits(parsed);
+    const commits = payload.commits;
+    const repository = payload.repository.full_name;
 
-  // Download all added or modified files (skip removed files)
-  await async.eachLimit(content, 10, async (item) => {
-    if (item.kind === 'removed') return;
+    // Get the diff between the last commit before and after the push
+    const files = await getDiff(repository, payload.before, payload.after);
 
-    if (item.path.includes('assets')) {
-      (
-        item as ChangedAsset
-      ).url = `https://raw.githubusercontent.com/${repository}/${item.commit}/${item.path}`;
-    } else {
-      (item as ChangedFile).data = await downloadFileFromGithub(item.path);
-    }
-  });
+    // Download all added or modified files (skip removed files)
+    const content = await async.mapLimit(
+      files,
+      10,
+      async (item: (typeof files)[number]) => {
+        // Get the most recent commit for this file
+        const commit = commits
+          .filter(
+            (c) =>
+              c.modified.includes(item.filename) ||
+              c.added.includes(item.filename) ||
+              c.removed.includes(item.filename)
+          )
+          .sort(
+            (a, b) =>
+              new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+          );
 
-  return {
-    content,
-    sourceUrl,
-  } as {
-    content: (ChangedAsset | ChangedFile)[];
-    sourceUrl: string;
+        // Get the timestamp of the commit, default to the latest commit timestamp if none found
+        const time = new Date(
+          commit[0]
+            ? commit[0].timestamp
+            : payload.head_commit
+            ? payload.head_commit.timestamp
+            : Date.now()
+        ).getTime();
+
+        const kind = item.status as ChangeKind;
+        const common = {
+          path: item.filename,
+          commit: commit[0] ? commit[0].id : payload.after,
+          time,
+        };
+
+        if (item.filename.includes('assets')) {
+          const asset: ChangedAsset = {
+            ...common,
+            url: item.raw_url,
+            ...(isRenamed(kind)
+              ? { kind: 'renamed', previousPath: item.previous_filename as string }
+              : { kind }),
+          };
+
+          return asset;
+        }
+
+        const file: ChangedFile = {
+          ...common,
+          data: await downloadFile(repository, item.filename),
+          ...(isRenamed(kind)
+            ? { kind: 'renamed', previousPath: item.previous_filename as string }
+            : { kind }),
+        };
+
+        return file;
+      }
+    );
+
+    return {
+      content,
+      sourceUrl: payload.repository.html_url,
+    };
   };
-};
+
+function isRenamed(changeKind: ChangeKind): changeKind is Extract<ChangeKind, 'renamed'> {
+  return changeKind === 'renamed';
+}

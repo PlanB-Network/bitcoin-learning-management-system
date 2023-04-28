@@ -1,5 +1,5 @@
 import { firstRow } from '@sovereign-academy/database';
-import type { ChangedAsset, ChangedFile } from '@sovereign-academy/types';
+import type { ChangedAsset, ChangedFile, Resource } from '@sovereign-academy/types';
 
 import { Dependencies } from '../dependencies';
 
@@ -11,7 +11,7 @@ import {
   Podcast,
   isAsset,
 } from './types';
-import type { Resource, ResourceType } from './types';
+import type { FullResource, ResourceType } from './types';
 import {
   ValidationError,
   getContentType,
@@ -20,10 +20,8 @@ import {
   yamlToObject,
 } from './utils';
 
-const parseResource = (data: string | undefined) => {
-  if (!data) return undefined;
-
-  const resource = yamlToObject<Resource>(data);
+const parseResource = (data: string) => {
+  const resource = yamlToObject<FullResource>(data);
 
   // Validate values
   if (!resource.original || !supportedLanguages.includes(resource.original)) {
@@ -76,23 +74,14 @@ export const groupByResource = (
       assets: [],
     };
 
-    const base = {
-      path: file.path.replace(resourcePath + '/', ''),
-      commit: file.commit,
-      time: file.time,
-      kind: file.kind,
-    };
+    file.path = file.path.replace(resourcePath + '/', '')
 
     if (isAsset(file)) {
-      resource.assets.push({
-        ...base,
-        url: file.url,
-      });
+      resource.assets.push(file);
     } else {
       resource.files.push({
-        ...base,
-        language,
-        data: file.data,
+        ...file,
+        language
       });
     }
 
@@ -114,25 +103,15 @@ export const createProcessChangedResource =
       ({ path }) => path === 'resource.yml'
     );
 
-    return postgres.begin(async (tx) => {
-      if (resourceFile?.kind === 'removed') {
-        // If resource file was removed, delete the main resource and all its translations (with cascade)
-        await tx`
-          DELETE FROM content.resources WHERE path = ${resource.path} 
-        `;
+    return postgres.begin(async (transaction) => {
+      if(resourceFile) {
+        switch (resourceFile.kind) {
+          case 'added':
+          case 'modified': {
+            // If new or updated resource file, insert or update resource
+            const parsedResource = parseResource(resourceFile.data);
 
-        return;
-      }
-
-      // If new or updated resource file, insert or update resource, otherwise just get the id
-      const parsedResource = parseResource(resourceFile?.data);
-      const resourceId = await tx<
-        {
-          id: number;
-        }[]
-      >`${
-        parsedResource
-          ? postgres`
+            await transaction`
               INSERT INTO content.resources (type, path, original_language, last_updated, last_commit)
               VALUES (
                 ${resource.type}, 
@@ -145,15 +124,41 @@ export const createProcessChangedResource =
                 original_language = ${parsedResource.original},
                 last_updated = ${lastUpdated.time},
                 last_commit = ${lastUpdated.commit}
-              RETURNING id
             `
-          : postgres`SELECT id FROM content.resources WHERE path = ${resource.path}`
-      }`
-        .then(firstRow)
-        .then((row) => row?.id ?? 0);
 
-      console.log(resourceId);
-      console.log(resource);
+            break;
+          }
+          case 'removed': {
+            // If resource file was removed, delete the main resource and all its translations (with cascade)
+            await transaction`
+              DELETE FROM content.resources WHERE path = ${resource.path} 
+            `;
+
+            return;
+          }
+          case 'renamed': {
+            // If resource file was moved, update the path
+            // We assume the whole resource folder was moved
+            await transaction`
+              UPDATE content.resources
+              SET path = ${resource.path}
+              WHERE path = ${resourceFile.previousPath}
+            `;
+          
+            break;
+          }
+        }
+      }
+
+      const resourceId = await transaction<Resource[]>`
+          SELECT id FROM content.resources WHERE path = ${resource.path}
+        `
+        .then(firstRow)
+        .then((row) => row?.id);
+
+      if (!resourceId) {
+        throw new Error('Resource not found');
+      }
 
       for (const file of resource.files) {
         if (file.path === 'resource.yml') {
@@ -162,7 +167,7 @@ export const createProcessChangedResource =
 
         if (file.kind === 'removed') {
           // If file was deleted, delete the translation from the database
-          await tx`
+          await transaction`
             DELETE FROM ${postgres(`content.${resource.type}s`)} 
             WHERE
               resource_id = ${resourceId} 
@@ -175,7 +180,7 @@ export const createProcessChangedResource =
           case 'book': {
             const parsed = yamlToObject<Book>(file.data);
 
-            await tx`
+            await transaction`
               INSERT INTO content.books (resource_id, language, title, author, description, publication_date, cover)
               VALUES (
                 ${resourceId},
@@ -199,7 +204,7 @@ export const createProcessChangedResource =
           case 'podcast': {
             const parsed = yamlToObject<Podcast>(file.data);
 
-            await tx`
+            await transaction`
               INSERT INTO content.podcasts (resource_id, language, name, description, platform_url)
               VALUES (
                 ${resourceId},
@@ -218,7 +223,7 @@ export const createProcessChangedResource =
           case 'article': {
             const parsed = yamlToObject<Article>(file.data);
 
-            await tx`
+            await transaction`
               INSERT INTO content.articles (resource_id, language, title, author, description, publication_date)
               VALUES (
                 ${resourceId},

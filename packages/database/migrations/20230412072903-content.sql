@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS content.resources (
 -- Tables per type of content
 CREATE TABLE IF NOT EXISTS content.books (
   id SERIAL PRIMARY KEY,
-  resource_id INTEGER REFERENCES content.resources(id) ON DELETE CASCADE,
+  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
   language VARCHAR(10) NOT NULL,
   title TEXT NOT NULL,
   author TEXT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS content.books (
 
 CREATE TABLE IF NOT EXISTS content.podcasts (
   id SERIAL PRIMARY KEY,
-  resource_id INTEGER REFERENCES content.resources(id) ON DELETE CASCADE,
+  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
   language VARCHAR(10) NOT NULL,
   name TEXT NOT NULL,
   description TEXT,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS content.podcasts (
 
 CREATE TABLE IF NOT EXISTS content.articles (
   id SERIAL PRIMARY KEY,
-  resource_id INTEGER REFERENCES content.resources(id) ON DELETE CASCADE,
+  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
   language VARCHAR(10) NOT NULL,
   title TEXT NOT NULL,
   author TEXT NOT NULL,

@@ -15,7 +15,7 @@ export interface ChangedResource extends ChangedContent {
   assets: ChangedAsset[];
 }
 
-export interface Resource {
+export interface FullResource {
   type: ResourceType;
   original: Language;
   tags: Tag[];
