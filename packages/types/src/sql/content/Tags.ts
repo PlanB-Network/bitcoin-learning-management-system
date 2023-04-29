@@ -9,8 +9,6 @@ export default interface Tags {
   id: TagsId;
 
   name: string;
-
-  description: string | null;
 }
 
 /** Represents the initializer for the table content.tags */
@@ -19,8 +17,6 @@ export interface TagsInitializer {
   id?: TagsId;
 
   name: string;
-
-  description?: string | null;
 }
 
 /** Represents the mutator for the table content.tags */
@@ -28,6 +24,4 @@ export interface TagsMutator {
   id?: TagsId;
 
   name?: string;
-
-  description?: string | null;
 }

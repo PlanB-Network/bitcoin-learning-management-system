@@ -3,6 +3,7 @@
  */
 export type { default as Resource } from './sql/content/Resources';
 export type { default as Tag } from './sql/content/Tags';
+export type { default as Book } from './sql/content/Books';
 
 export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 

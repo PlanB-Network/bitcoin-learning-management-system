@@ -20,6 +20,8 @@ export default interface Articles {
 
   description: string | null;
 
+  publication_date: Date | null;
+
   article_url: string;
 }
 
@@ -38,6 +40,8 @@ export interface ArticlesInitializer {
 
   description?: string | null;
 
+  publication_date?: Date | null;
+
   article_url: string;
 }
 
@@ -54,6 +58,8 @@ export interface ArticlesMutator {
   author?: string;
 
   description?: string | null;
+
+  publication_date?: Date | null;
 
   article_url?: string;
 }

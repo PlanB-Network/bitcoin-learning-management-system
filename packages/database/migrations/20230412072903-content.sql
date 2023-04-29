@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS content.resources (
   id SERIAL PRIMARY KEY,
   type VARCHAR(255) NOT NULL,
   path VARCHAR(255) NOT NULL,
+  level VARCHAR(255),
   original_language VARCHAR(10) NOT NULL,
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_commit VARCHAR(40) NOT NULL,
@@ -28,6 +29,13 @@ CREATE TABLE IF NOT EXISTS content.books (
   UNIQUE (resource_id, language)
 );
 
+CREATE TABLE IF NOT EXISTS content.book_summaries (
+  id SERIAL PRIMARY KEY,
+  book_id INTEGER NOT NULL REFERENCES content.books(id) ON DELETE CASCADE,
+  contributor_id VARCHAR (20),
+  summary TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS content.podcasts (
   id SERIAL PRIMARY KEY,
   resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
@@ -46,6 +54,7 @@ CREATE TABLE IF NOT EXISTS content.articles (
   title TEXT NOT NULL,
   author TEXT NOT NULL,
   description TEXT,
+  publication_date DATE,
   article_url TEXT NOT NULL,
 
   UNIQUE (resource_id, language)
@@ -54,8 +63,7 @@ CREATE TABLE IF NOT EXISTS content.articles (
 -- Tags (e.g. bitcoin, lightning, etc.)
 CREATE TABLE IF NOT EXISTS content.tags (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) UNIQUE NOT NULL,
-  description TEXT
+  name VARCHAR(255) UNIQUE NOT NULL
 );
 
 -- Junction table for resources and tags

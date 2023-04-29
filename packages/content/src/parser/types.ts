@@ -18,28 +18,33 @@ export interface ChangedResource extends ChangedContent {
 export interface FullResource {
   type: ResourceType;
   original: Language;
-  tags: Tag[];
+  level?: string;
+  tags?: Tag[];
 }
 
 interface BaseResource {
   contributors?: string[];
 }
 
-export interface Book extends BaseResource {
+export interface ParsedBook extends BaseResource {
   title: string;
   author: string;
   description: string;
   publication_date: string;
+  summary?: {
+    by?: string;
+    text: string;
+  }
   cover: string;
 }
 
-export interface Podcast extends BaseResource {
+export interface ParsedPodcast extends BaseResource {
   name: string;
   description: string;
   platform_url: string;
 }
 
-export interface Article extends BaseResource {
+export interface ParsedArticle extends BaseResource {
   title: string;
   author: string;
   description: string;

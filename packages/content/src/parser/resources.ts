@@ -1,19 +1,19 @@
 import { firstRow } from '@sovereign-academy/database';
 import type {
+  Book,
   ChangedAsset,
   ChangedFile,
   Resource,
-  Tag,
 } from '@sovereign-academy/types';
 
 import { Dependencies } from '../dependencies';
 
 import {
-  Article,
-  Book,
   ChangedResource,
   Language,
-  Podcast,
+  ParsedArticle,
+  ParsedBook,
+  ParsedPodcast,
   isAsset,
 } from './types';
 import type { FullResource, ResourceType } from './types';
@@ -57,9 +57,6 @@ const parseResourcePath = (path: string) => {
     language: pathElements[3].replace(/\..*/, '') as Language,
   };
 };
-
-export const filterOutTagsFile = (files: (ChangedAsset | ChangedFile)[]) =>
-  files.filter((file) => file.path !== 'resources/tags.yml');
 
 export const groupByResource = (
   files: (ChangedFile | ChangedAsset)[],
@@ -144,28 +141,36 @@ export const createProcessChangedResource =
           const parsedResource = parseResource(resourceFile.data);
 
           const result = await transaction<Resource[]>`
-            INSERT INTO content.resources (type, path, original_language, last_updated, last_commit)
+            INSERT INTO content.resources (type, path, level, original_language, last_updated, last_commit)
             VALUES (
               ${resource.type}, 
-              ${resource.path}, 
+              ${resource.path},
+              ${parsedResource.level},
               ${parsedResource.original}, 
               ${lastUpdated.time}, 
               ${lastUpdated.commit}
             )
             ON CONFLICT (type, path) DO UPDATE SET
+              level = ${parsedResource.level},
               original_language = ${parsedResource.original},
               last_updated = ${lastUpdated.time},
               last_commit = ${lastUpdated.commit}
             RETURNING *
           `.then(firstRow);
 
-          await transaction`
-            INSERT INTO content.resource_tags (resource_id, tag_id)
-            SELECT
-              ${result!.id}, 
-              id FROM content.tags WHERE name = ANY(${parsedResource.tags})
-            ON CONFLICT DO NOTHING
-          `;
+          if(result && parsedResource.tags && parsedResource.tags.length > 0) {
+            await transaction`
+              WITH new_tags AS (
+                INSERT INTO content.tags ${transaction(parsedResource.tags)}
+                ON CONFLICT DO NOTHING
+              )
+              INSERT INTO content.resource_tags (resource_id, tag_id)
+              SELECT
+                ${result.id}, 
+                id FROM content.tags WHERE name = ANY(${parsedResource.tags})
+              ON CONFLICT DO NOTHING
+            `;
+          }
         }
       }
 
@@ -197,9 +202,9 @@ export const createProcessChangedResource =
 
         switch (resource.type) {
           case 'book': {
-            const parsed = yamlToObject<Book>(file.data);
+            const parsed = yamlToObject<ParsedBook>(file.data);
 
-            await transaction`
+            const book = await transaction<Book[]>`
               INSERT INTO content.books (resource_id, language, title, author, description, publication_date, cover)
               VALUES (
                 ${resourceId},
@@ -216,12 +221,23 @@ export const createProcessChangedResource =
                 description = ${parsed.description},
                 publication_date = ${parsed.publication_date},
                 cover = ${parsed.cover}
-            `;
+              RETURNING id
+            `.then(firstRow);
+
+            if(parsed.summary && book) {
+              await transaction`
+                INSERT INTO content.book_summaries (book_id, contributor_id, summary)
+                VALUES (${book.id}, ${parsed.summary.by}, ${parsed.summary.text})
+                ON CONFLICT (book_id) DO UPDATE SET
+                  contributor_id = ${parsed.summary.by},
+                  summary = ${parsed.summary.text}
+              `;
+            }
 
             break;
           }
           case 'podcast': {
-            const parsed = yamlToObject<Podcast>(file.data);
+            const parsed = yamlToObject<ParsedPodcast>(file.data);
 
             await transaction`
               INSERT INTO content.podcasts (resource_id, language, name, description, platform_url)
@@ -240,7 +256,7 @@ export const createProcessChangedResource =
             break;
           }
           case 'article': {
-            const parsed = yamlToObject<Article>(file.data);
+            const parsed = yamlToObject<ParsedArticle>(file.data);
 
             await transaction`
               INSERT INTO content.articles (resource_id, language, title, author, description, publication_date)
@@ -263,26 +279,4 @@ export const createProcessChangedResource =
         }
       }
     });
-  };
-
-export const createProcessTagsFile =
-  (dependencies: Dependencies) =>
-  async (files: (ChangedAsset | ChangedFile)[]) => {
-    const { postgres } = dependencies;
-
-    const tagsFile = files.find((file) => file.path === 'resources/tags.yml');
-
-    if (!tagsFile) {
-      return;
-    }
-
-    const tags = yamlToObject<Omit<Tag, 'id'>[]>(
-      (tagsFile as ChangedFile).data
-    );
-
-    await postgres`
-      INSERT INTO content.tags ${postgres(tags, 'name', 'description')}
-      ON CONFLICT (name) DO UPDATE SET
-        description = EXCLUDED.description
-    `;
   };

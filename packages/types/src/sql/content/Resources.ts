@@ -12,6 +12,8 @@ export default interface Resources {
 
   path: string;
 
+  level: string | null;
+
   original_language: string;
 
   last_updated: number;
@@ -28,6 +30,8 @@ export interface ResourcesInitializer {
 
   path: string;
 
+  level?: string | null;
+
   original_language: string;
 
   /** Default value: now() */
@@ -43,6 +47,8 @@ export interface ResourcesMutator {
   type?: string;
 
   path?: string;
+
+  level?: string | null;
 
   original_language?: string;
 
