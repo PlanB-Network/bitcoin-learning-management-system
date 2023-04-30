@@ -1,31 +1,18 @@
 import { Formik, FormikHelpers } from 'formik';
 import { isEmpty } from 'lodash';
 import PasswordValidator from 'password-validator';
-import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { useCallback } from 'react';
+import { BsCheck } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { Button } from '../../../atoms/Button';
+import { Modal } from '../../../atoms/Modal';
+import { TextInput } from '../../../atoms/TextInput';
 import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
-import { ErrorMessage } from '../../ErrorMessage';
-import {
-  createAccountText,
-  dialogContainer,
-  dialogContent,
-  inputContainer,
-  inputStyle,
-  signinForm,
-  submitButton,
-  switchButton,
-} from '../index.css';
 import { AuthModalState } from '../props';
-
-import { createdAccountContainer, createdAccountIcon } from './index.css';
 
 const password = new PasswordValidator();
 
@@ -90,7 +77,6 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           accessToken: data.accessToken,
         })
       );
-      onClose();
     },
   });
 
@@ -110,25 +96,21 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   );
 
   return (
-    <Dialog
-      dismissableMask
-      resizable={false}
-      draggable={false}
-      visible={isOpen}
-      onHide={onClose}
-      className={dialogContainer}
-      header={register.data ? 'Account created' : 'Créer un compte'}
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      headerText={register.data ? 'Account created' : 'Créer un compte'}
     >
       {register.data ? (
-        <div className={createdAccountContainer}>
-          <i className={createdAccountIcon} />
-          <p>
+        <div className="flex flex-col items-center">
+          <BsCheck className="my-8 w-20 h-20 text-lg text-success-300" />
+          <p className="text-center">
             Your account has been created, {register.data.user.username}! <br />
             You can now save your progression on the Bitcoin Academy
           </p>
         </div>
       ) : (
-        <div className={dialogContent}>
+        <div className="flex flex-col items-center">
           <Formik
             initialValues={{
               username: '',
@@ -159,89 +141,68 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className={signinForm}
+                className="flex flex-col items-center w-full"
               >
-                <span className={inputContainer}>
-                  <InputText
-                    name="username"
-                    id="username"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.username}
-                    className={inputStyle}
-                  />
-                  <label htmlFor="username">Username*</label>
-                </span>
-                {touched.username && <ErrorMessage text={errors.username} />}
+                <TextInput
+                  name="username"
+                  labelText="Username*"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.username}
+                  className="mt-4 w-96"
+                  error={touched.username ? errors.username : null}
+                />
 
-                <span className={inputContainer}>
-                  <Password
-                    name="password"
-                    inputId="password"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    toggleMask
-                    feedback={false}
-                  />
-                  <label htmlFor="password">Password*</label>
-                </span>
-                {touched.password && <ErrorMessage text={errors.password} />}
+                <TextInput
+                  name="password"
+                  type="password"
+                  labelText="Password*"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  className="mt-4 w-96"
+                  error={touched.password ? errors.password : null}
+                />
 
-                <span className={inputContainer}>
-                  <Password
-                    name="confirmation"
-                    inputId="confirmation"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.confirmation}
-                    toggleMask
-                    feedback={false}
-                  />
-                  <label htmlFor="confirmation">Confirmation*</label>
-                </span>
-                {touched.confirmation && (
-                  <ErrorMessage text={errors.confirmation} />
-                )}
+                <TextInput
+                  name="confirmation"
+                  type="password"
+                  labelText="Confirmation*"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.confirmation}
+                  className="mt-4 w-96"
+                  error={touched.confirmation ? errors.confirmation : null}
+                />
 
-                <span className={inputContainer}>
-                  <InputText
-                    name="email"
-                    id="email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    className={inputStyle}
-                  />
-                  <label htmlFor="email">Email</label>
-                </span>
-                {touched.email && <ErrorMessage text={errors.email} />}
+                <TextInput
+                  name="email"
+                  labelText="Email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  className="mt-4 w-96"
+                  error={touched.email ? errors.email : null}
+                />
 
-                <span className={inputContainer}>
-                  <InputText
-                    name="contributorId"
-                    id="contributorId"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.contributorId}
-                    className={inputStyle}
-                  />
-                  <label htmlFor="contributorId">
-                    Identifiant contributeur
-                  </label>
-                </span>
-                {touched.contributorId && (
-                  <ErrorMessage text={errors.contributorId} />
-                )}
+                <TextInput
+                  name="contributorId"
+                  labelText="Identifiant contributeur"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.contributorId}
+                  className="mt-4 w-96"
+                  error={touched.contributorId ? errors.contributorId : null}
+                />
 
-                <Button className={submitButton}>Créer un compte</Button>
+                <Button className="mt-10 mb-5">Créer un compte</Button>
               </form>
             )}
           </Formik>
-          <p className={createAccountText}>
+          <p className="mb-0 text-xs">
             Vous avez déjà un compte ?{' '}
             <button
-              className={switchButton}
+              className="text-xs underline bg-transparent border-none cursor-pointer"
               onClick={() => goTo(AuthModalState.Signin)}
             >
               Connectez vous !
@@ -249,6 +210,6 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       )}
-    </Dialog>
+    </Modal>
   );
 };

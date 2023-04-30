@@ -9,13 +9,8 @@ import { client, trpc } from '@sovereign-academy/api-client';
 import { App } from './App';
 import { store } from './store';
 
-// prime react theme & core
-import './assets/css/theme-light.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-
 // global styles
-import './styles.css';
+import './index.css';
 
 const queryClient = new QueryClient();
 

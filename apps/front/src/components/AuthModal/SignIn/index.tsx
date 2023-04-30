@@ -1,29 +1,16 @@
 import { Formik, FormikHelpers } from 'formik';
 import { isEmpty } from 'lodash';
-import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
-import { Divider } from 'primereact/divider';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { Button } from '../../../atoms/Button';
+import { Divider } from '../../../atoms/Divider';
+import { Modal } from '../../../atoms/Modal';
+import { TextInput } from '../../../atoms/TextInput';
 import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store/slices/user.slice';
-import { ErrorMessage } from '../../ErrorMessage';
-import {
-  createAccountText,
-  dialogContainer,
-  dialogContent,
-  inputContainer,
-  inputStyle,
-  loginWithLNButton,
-  signinForm,
-  submitButton,
-  switchButton,
-} from '../index.css';
 import { AuthModalState } from '../props';
 
 interface SignInModalProps {
@@ -42,7 +29,6 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
 
   const login = trpc.auth.credentials.login.useMutation({
     onSuccess: (data) => {
-      console.log('datdatadatdatd', data);
       dispatch(
         userSlice.actions.login({
           username: data.user.username,
@@ -72,22 +58,12 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   );
 
   return (
-    <Dialog
-      dismissableMask
-      resizable={false}
-      draggable={false}
-      visible={isOpen}
-      onHide={onClose}
-      className={dialogContainer}
-      header="Se connecter"
-    >
-      <div className={dialogContent}>
-        <Button className={loginWithLNButton} rounded>
+    <Modal isOpen={isOpen} onClose={onClose} headerText="Se connecter">
+      <div className="flex flex-col items-center">
+        <Button className="my-5" rounded>
           Connect with LN
         </Button>
-        <Divider layout="horizontal" className="p-divider-center">
-          OR
-        </Divider>
+        <Divider>OR</Divider>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -109,52 +85,49 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
             values,
             handleSubmit,
           }) => (
-            <form onSubmit={handleSubmit} className={signinForm}>
-              <span className={inputContainer}>
-                <InputText
-                  name="username"
-                  id="username"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                  className={inputStyle}
-                />
-                <label htmlFor="password">Username</label>
-              </span>
-              {touched.username && <ErrorMessage text={errors.username} />}
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center w-full"
+            >
+              <TextInput
+                name="username"
+                labelText="Username*"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.username}
+                className="mt-4 w-96"
+                error={touched.username ? errors.username : null}
+              />
 
-              <span className={inputContainer}>
-                <Password
-                  name="password"
-                  inputId="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  feedback={false}
-                  toggleMask
-                />
-                <label htmlFor="password">Password</label>
-              </span>
-              {touched.password && <ErrorMessage text={errors.password} />}
+              <TextInput
+                name="password"
+                type="password"
+                labelText="Password*"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                className="mt-4 w-96"
+                error={touched.password ? errors.password : null}
+              />
 
-              <Button type="submit" className={submitButton}>
+              <Button type="submit" className="mt-10 mb-5">
                 Se connecter
               </Button>
             </form>
           )}
         </Formik>
-        <p className={createAccountText}>
+        <p className="mb-0 text-xs">
           Vous n'avez pas encore de compte ?
           <button
-            className={switchButton}
+            className="ml-1 text-xs underline bg-transparent border-none cursor-pointer"
             onClick={() => goTo(AuthModalState.Signup)}
           >
             Créez-en un !
           </button>
         </p>
-        <p className={createAccountText}>
+        <p className="mt-2 mb-0 text-xs">
           <button
-            className={switchButton}
+            className="text-xs underline bg-transparent border-none cursor-pointer"
             onClick={() => goTo(AuthModalState.PasswordReset)}
           >
             Mot de passe oublié ?
@@ -162,21 +135,10 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         </p>
       </div>
 
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-100px',
-          left: 0,
-          background: 'var(--surface-0)',
-          width: '100%',
-          padding: '15px 30px',
-          borderRadius: '4px',
-          fontSize: 12,
-        }}
-      >
+      <div className="absolute left-0 -bottom-24 px-8 py-4 w-full text-sm bg-white rounded-sm">
         Le savais tu ? Pas besoin de compte pour commencer à apprendre sur
         l'Académie Bitcoin!
       </div>
-    </Dialog>
+    </Modal>
   );
 };

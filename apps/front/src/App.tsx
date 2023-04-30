@@ -12,8 +12,6 @@ import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
 
-import './App.css';
-
 export const App = () => {
   const dispatch = useAppDispatch();
   const accessToken = useMemo(() => getItem(LocalStorageKey.AccessToken), []);

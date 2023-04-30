@@ -16,7 +16,6 @@ enum AuthModalState {
 }
 
 export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
-  const [openedAt, setOpenedAt] = useState<number>();
   const [currentState, setCurrentState] = useState<AuthModalState | null>(
     AuthModalState.Signin
   );
@@ -30,15 +29,15 @@ export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
   };
 
   useEffect(() => {
-    if (isOpen) setOpenedAt(new Date().getTime());
-    else setCurrentState(AuthModalState.Signin);
+    if (!isOpen) {
+      setCurrentState(AuthModalState.Signin);
+    }
   }, [isOpen]);
 
   return (
     <>
       {/* SignIn Dialog */}
       <SignIn
-        key={`${openedAt}_signin`}
         isOpen={isOpen && currentState === AuthModalState.Signin}
         onClose={onClose}
         goTo={goTo}
@@ -46,7 +45,6 @@ export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
 
       {/* Signup Dialog */}
       <SignUp
-        key={`${openedAt}_signup`}
         isOpen={isOpen && currentState === AuthModalState.Signup}
         onClose={onClose}
         goTo={goTo}
@@ -54,7 +52,6 @@ export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
 
       {/* Password Reset Dialog */}
       <PasswordReset
-        key={`${openedAt}_pwd_reset`}
         isOpen={isOpen && currentState === AuthModalState.PasswordReset}
         onClose={onClose}
         goTo={goTo}

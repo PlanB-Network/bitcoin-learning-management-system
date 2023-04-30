@@ -3,72 +3,66 @@ import { FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import { useDisclosure } from '../../../../hooks';
-import { menuLinkElement } from '../../index.css';
+import { compose } from '../../../../utils';
+import { MenuElement } from '../../MenuElement';
 import { NavigationSection } from '../../props';
-import { arrowIcon, listContainer, listElement } from '../index.css';
-import { MobileMenuElement } from '../MobileMenuElement';
 import { MobileMenuSubSection } from '../MobileMenuSubSection';
 
-import {
-  menuSectionButton,
-  menuSectionListItem,
-  menuSectionListItemsContent,
-} from './index.css';
-
-export interface MegaMenuSectionProps {
+export interface MobileMenuSectionProps {
   section: NavigationSection;
 }
 
-export const MobileMenuSection = ({ section }: MegaMenuSectionProps) => {
+const buttonClasses =
+  'flex flex-row justify-between py-3 px-4 my-2 w-full text-left text-gray-500 rounded-md border border-gray-200 border-solid duration-500 cursor-pointer';
+
+export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const { toggle, isOpen } = useDisclosure();
   const sectionTitle = useMemo(() => {
     if ('path' in section)
       return (
-        <Link className={menuLinkElement} to={section.path}>
+        <Link className="no-underline font-primary-700" to={section.path}>
           {section.title}
         </Link>
       );
     if ('action' in section)
       return (
         <button
-          className={menuSectionButton}
-          style={{ cursor: 'pointer' }}
+          className={buttonClasses}
           onClick={() => {
             section.action();
           }}
         >
           <span>{section.title}</span>
-          <FiChevronDown
-            className={arrowIcon}
-            style={{ transform: isOpen ? 'rotateZ(180deg)' : 'rotateZ(0)' }}
-          />
         </button>
       );
+
     return (
-      <button className={menuSectionButton} onClick={() => toggle()}>
+      <button className={buttonClasses} onClick={() => toggle()}>
         <span>{section.title}</span>
         <FiChevronDown
-          className={arrowIcon}
-          style={{ transform: isOpen ? 'rotateZ(180deg)' : 'rotateZ(0)' }}
+          className={compose(
+            'p-0 m-0 w-6 h-6 duration-300',
+            isOpen ? 'rotate-180' : 'rotate-0'
+          )}
         />
       </button>
     );
   }, [isOpen, section, toggle]);
 
   return (
-    <li key={section.id} className={menuSectionListItem}>
+    <li key={section.id} className="overflow-hidden h-max">
       {sectionTitle}
       {'items' in section && (
-        <div
-          className={menuSectionListItemsContent}
-          style={{ maxHeight: isOpen ? '300vh' : '0vh' }}
-        >
+        <div className={compose('overflow-hidden', isOpen ? 'h-max' : 'h-0')}>
           {section?.items?.map((subSectionOrElements, index) =>
             Array.isArray(subSectionOrElements) ? (
-              <ul key={`${section.id}-${index}`} className={listContainer}>
+              <ul
+                key={`${section.id}-${index}`}
+                className="overflow-auto flex-1 pl-0 my-0 list-none"
+              >
                 {subSectionOrElements.map((element) => (
-                  <li className={listElement} key={element.id}>
-                    <MobileMenuElement element={element} />
+                  <li className="pl-0 my-1 ml-0 list-none" key={element.id}>
+                    <MenuElement key={element.id} element={element} />
                   </li>
                 ))}
               </ul>

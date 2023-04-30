@@ -1,22 +1,8 @@
-import { Button } from 'primereact/button';
-
 import dbHomeImg1 from '../../assets/db-home-img-1.png';
+import { Button } from '../../atoms/Button';
 import { MainLayout } from '../../components';
 
 import { CoursePreview } from './CoursePreview';
-import {
-  courseContainer,
-  courseTitle,
-  coursesSection,
-  heroSection,
-  heroSectionCtaButton,
-  heroSectionCtaContainer,
-  image,
-  imageSection,
-  textParagraph,
-  textTitle,
-  textualSection,
-} from './index.css';
 
 const course1 = {
   author: {
@@ -50,52 +36,53 @@ export const Home = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <div className={heroSection}>
-        <div className={textualSection}>
+      <div className="flex flex-row justify-evenly items-center w-full h-full bg-gray-100 text-primary-700 font-primary">
+        <div className="max-w-lg w-[50vw]">
           <section>
-            <h1 className={textTitle}>
+            <h1 className="mb-10 text-4xl font-primary lg:text-5xl">
               Développe ton
               <br />
               expertise Bitcoin
             </h1>
-            <p className={textParagraph}>
+            <p className="max-w-full text-base font-thin text-gray-600 lg:text-lg">
               Suis les cours d’expert Bitcoin et décroche ton diplôme Bitcoin.
               Tous les cours sont 100% gratuits et pensés pour tous les niveaux.
             </p>
-            <p className={textParagraph}>De débutant à expert.</p>
+            <p className="max-w-full text-base font-thin text-gray-600 lg:text-lg">
+              De débutant à expert.
+            </p>
 
-            <div className={heroSectionCtaContainer}>
+            <div className="flex flex-col mt-12">
+              <Button className="justify-center mt-3" type="button">
+                BTC 101 - Pour débuter en toute sécurité!
+              </Button>
               <Button
-                className={heroSectionCtaButton}
-                label="BTC 101 - Pour débuter en toute sécurité!"
-                type="button"
-              ></Button>
-              <Button
-                className={heroSectionCtaButton}
-                label="Notre dernière formation : BTC 205"
+                className="justify-center mt-3"
+                variant="secondary"
                 type="button"
                 outlined
-              ></Button>
+              >
+                Notre dernière formation : BTC 205
+              </Button>
             </div>
           </section>
         </div>
-        <div className={imageSection}>
+        <div>
           <img
             src={dbHomeImg1}
             alt="Decouvre bitcoin home hero"
-            className={image}
-            style={{ clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }}
+            className="max-w-sm w-[25vw]"
           />
         </div>
       </div>
 
       {/* Formations */}
-      <div className={coursesSection}>
-        <h2 className={courseTitle}>
+      <div className="bg-white">
+        <h2 className="mx-auto my-8 w-max text-3xl font-primary text-primary-700">
           8 formations pour se lancer dans Bitcoin !
         </h2>
 
-        <div className={courseContainer}>
+        <div className="flex flex-row justify-center items-center py-8">
           <CoursePreview {...course1} />
           <CoursePreview {...course2} />
         </div>

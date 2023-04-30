@@ -1,19 +1,9 @@
 import { Formik, FormikHelpers } from 'formik';
-import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
 import { useCallback } from 'react';
 
-import {
-  createAccountText,
-  dialogContainer,
-  dialogContent,
-  inputContainer,
-  inputStyle,
-  signinForm,
-  submitButton,
-  switchButton,
-} from '../index.css';
+import { Button } from '../../../atoms/Button';
+import { Modal } from '../../../atoms/Modal';
+import { TextInput } from '../../../atoms/TextInput';
 import { AuthModalState } from '../props';
 
 interface LoginModalProps {
@@ -38,47 +28,50 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   );
 
   return (
-    <Dialog
-      dismissableMask
-      resizable={false}
-      draggable={false}
-      visible={isOpen}
-      onHide={onClose}
-      className={dialogContainer}
-      header="Réinitilisation de mot de passe"
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      headerText="Réinitilisation de mot de passe"
     >
-      <div className={dialogContent}>
+      <div className="flex flex-col items-center">
         <Formik initialValues={{ email: '' }} onSubmit={handlePasswordReset}>
-          {(props) => (
-            <form onSubmit={props.handleSubmit} className={signinForm}>
-              <span className={inputContainer}>
-                <InputText
-                  required
-                  name="email"
-                  id="email"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.email}
-                  className={inputStyle}
-                />
-                <label htmlFor="password">Addresse email</label>
-              </span>
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            errors,
+          }) => (
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center w-full"
+            >
+              <TextInput
+                name="email"
+                labelText="Addresse email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                className="mt-8 w-96"
+                error={touched.email ? errors.email : null}
+              />
 
-              <Button type="submit" className={submitButton}>
+              <Button type="submit" className="mt-10 mb-5">
                 Envoyer un lien
               </Button>
             </form>
           )}
         </Formik>
-        <p className={createAccountText}>
+        <p className="mb-0 text-xs">
           <button
-            className={switchButton}
+            className="text-xs underline bg-transparent border-none cursor-pointer"
             onClick={() => goTo(AuthModalState.Signin)}
           >
             Retour
           </button>
         </p>
       </div>
-    </Dialog>
+    </Modal>
   );
 };

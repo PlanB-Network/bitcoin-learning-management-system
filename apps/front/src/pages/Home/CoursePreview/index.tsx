@@ -1,16 +1,9 @@
-import { Avatar } from 'primereact/avatar';
-import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
-import { Tag } from 'primereact/tag';
+import { BsArrowRight } from 'react-icons/bs';
 
-import { startButton } from '../index.css';
-
-import {
-  coursePreviewCard,
-  coursePreviewFooter,
-  coursePreviewImg,
-  coursePreviewTag,
-} from './index.css';
+import { Avatar } from '../../../atoms/Avatar';
+import { Button } from '../../../atoms/Button';
+import { Card } from '../../../atoms/Card';
+import { Tag } from '../../../atoms/Tag';
 
 interface CoursePreviewProps {
   author: {
@@ -33,32 +26,32 @@ export const CoursePreview = ({
   preview,
   author,
 }: CoursePreviewProps) => {
-  const header = (
-    <img className={coursePreviewImg} alt="Card" src={preview.img} />
-  );
-
-  const footer = (
-    <div className={coursePreviewFooter}>
-      <Avatar image={author.img} size="xlarge" shape="circle" />
-      <Button label="Je me lance!" className={startButton} />
-    </div>
-  );
-
   return (
-    <Card
-      title={title}
-      subTitle={subTitle}
-      footer={footer}
-      header={header}
-      className={coursePreviewCard}
-    >
-      <div>
+    <Card image={preview.img}>
+      <h5 className="mb-4 text-2xl font-bold tracking-tight text-primary-900">
+        {title}
+      </h5>
+      <div className="mb-2">
         {tags.map((tag) => (
-          <Tag className={coursePreviewTag} key={tag } value={tag} />
+          <Tag className="ml-1" key={tag}>
+            {tag}
+          </Tag>
         ))}
       </div>
-
-      <p className="m-0">{preview.text}</p>
+      <div className="overflow-hidden mb-3 text-sm text-gray-600 text-ellipsis line-clamp-3">
+        {preview.text}
+      </div>
+      <div className="flex flex-row justify-between items-center mt-8 w-full">
+        <Avatar
+          rounded
+          image={author.img}
+          alt="Rogzy presenting a course in El Salavor"
+          size="m"
+        />
+        <Button size="m" iconRight={<BsArrowRight />}>
+          Je me lance!
+        </Button>
+      </div>
     </Card>
   );
 };

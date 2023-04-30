@@ -1,6 +1,4 @@
-import { Tooltip } from 'primereact/tooltip';
-
-import { errorMessage } from './index.css';
+import { Tooltip } from '../../atoms/Tooltip';
 
 interface ErrorMessageProps {
   text?: string;
@@ -9,16 +7,14 @@ interface ErrorMessageProps {
 export const ErrorMessage = ({ text }: ErrorMessageProps) => {
   if (!text) return null;
   return (
-    <>
-      <Tooltip target="#error" />
+    <Tooltip text="text">
       <small
-        id="error"
         data-pr-tooltip={text}
         data-pr-position="bottom"
-        className={errorMessage}
+        className="overflow-hidden w-64 whitespace-nowrap text-danger-300 text-ellipsis"
       >
         {text}
       </small>
-    </>
+    </Tooltip>
   );
 };

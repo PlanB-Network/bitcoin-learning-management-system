@@ -17,8 +17,8 @@ export const MainLayout = ({
 
   return (
     <div
+      className="overflow-auto pt-28 h-screen sm:pt-36 md:pt-44 lg:pt-52"
       ref={box}
-      style={{ height: '100vh', overflow: 'auto', paddingTop: '150px' }}
     >
       {/* Header */}
       <Header isExpanded={!hasScrolled} />

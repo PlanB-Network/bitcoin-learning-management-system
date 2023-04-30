@@ -2,28 +2,21 @@ import { useParams } from 'react-router-dom';
 
 import companyImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
-
-import {
-  companyImageContent,
-  companyText,
-  contentContainer,
-  textualContainer,
-  title,
-} from './index.css';
+import { PageTitle } from '../../components/PageTitle';
 
 export const Company = () => {
   const { companyId } = useParams();
   return (
     <MainLayout>
-      <h1 className={title}>{companyId}</h1>
-      <div className={contentContainer}>
+      <PageTitle>{companyId}</PageTitle>
+      <div className="flex flex-row justify-evenly items-start m-10">
         <img
-          className={companyImageContent}
+          className="mx-12 my-4 w-64 h-auto"
           src={companyImage}
           alt="something representing the company"
         />
-        <div className={textualContainer}>
-          <p className={companyText}>
+        <div className="flex flex-col mr-12">
+          <p className="max-w-xl text-justify">
             SeedSigner est un projet visant à réduire le coût et la complexité
             de l'utilisation des portefeuilles multi-signature Bitcoin. Il
             permet de créer un dispositif de signature Bitcoin hors ligne,
@@ -34,7 +27,7 @@ export const Company = () => {
             modèle de signature d'échange QR sécurisé et isolé.
           </p>
 
-          <p className={companyText}>
+          <p className="max-w-xl text-justify">
             Les principales fonctionnalités de SeedSigner comprennent :
             <ul>
               <li>
@@ -60,7 +53,7 @@ export const Company = () => {
             </ul>
           </p>
 
-          <p className={companyText}>
+          <p className="max-w-xl text-justify">
             SeedSigner utilise une version spécifique du Raspberry Pi Zero
             (version 1.3) sans WiFi ni Bluetooth, garantissant la sécurité des
             clés privées. La communication avec le logiciel de portefeuille se
