@@ -112,3 +112,35 @@ export const createGetChangedFiles =
       );
     }
   };
+
+export const createGetAllRepoFiles =
+  (octokit: GithubOctokit) =>
+  async (repository: string, from?: number, to?: number) => {
+    const { repoOwner, repoName } = parseRepository(repository);
+
+    const getChangedFiles = createGetChangedFiles(octokit);
+
+    const commits = await octokit.paginate(octokit.rest.repos.listCommits, {
+      owner: repoOwner,
+      repo: repoName,
+      ...(from && { since: new Date(from).toISOString() }),
+      ...(to && { until: new Date(to).toISOString() }),
+    });
+
+    const oldestCommit = commits[commits.length - 1];
+    const newestCommit = commits[0];
+
+    const files = await getChangedFiles(
+      repository,
+      oldestCommit.sha,
+      newestCommit.sha
+    );
+
+    return files;
+  };
+
+const isRenamed = (
+  changeKind: ChangeKind
+): changeKind is Extract<ChangeKind, 'renamed'> => {
+  return changeKind === 'renamed';
+};
