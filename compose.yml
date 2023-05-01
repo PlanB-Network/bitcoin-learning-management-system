@@ -40,6 +40,7 @@ services:
       DOCKER: true
     ports:
       - 4200:4200
+      - 5555:5555
 
   watcher:
     extends:
