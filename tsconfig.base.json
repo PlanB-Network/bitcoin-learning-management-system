@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "esModuleInterop": true,
+    "noErrorTruncation": false,
     "baseUrl": ".",
     "paths": {
       "@sovereign-academy/api-client": ["packages/api-client/src/index.ts"],

@@ -1,11 +1,5 @@
 import postgres from 'postgres';
-import type {
-  MaybeRow,
-  PendingQuery,
-  PostgresType,
-  RowList,
-  Sql,
-} from 'postgres';
+import type { PostgresType, Sql } from 'postgres';
 
 export type PostgresTypes = {
   bigint: PostgresType<number>;
@@ -64,13 +58,6 @@ export interface PostgresClient extends Sql<PostgresTypesMapper> {
    * @returns
    */
   disconnect: () => Promise<void>;
-  /**
-   * Execute a pending query
-   *
-   * @param query - Pending query
-   * @returns Promise that resolves to the query result
-   */
-  exec: <R extends MaybeRow>(query: PendingQuery<R[]>) => Promise<RowList<R[]>>;
 }
 
 export const createPostgresClient = ({
@@ -103,10 +90,6 @@ export const createPostgresClient = ({
       value: (value) => value ?? undefined,
     },
   }) as PostgresClient;
-
-  client.exec = <R extends MaybeRow>(query: PendingQuery<R[]>) => {
-    return client<Array<Readonly<R>>>`${query}`;
-  };
 
   client.connect = async () => {
     if (connected) {

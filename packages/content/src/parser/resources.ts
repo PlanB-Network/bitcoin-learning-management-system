@@ -158,12 +158,15 @@ export const createProcessChangedResource =
             RETURNING *
           `.then(firstRow);
 
-          if(result && parsedResource.tags && parsedResource.tags.length > 0) {
+          if (result && parsedResource.tags && parsedResource.tags.length > 0) {
             await transaction`
-              WITH new_tags AS (
-                INSERT INTO content.tags ${transaction(parsedResource.tags)}
-                ON CONFLICT DO NOTHING
-              )
+              INSERT INTO content.tags ${transaction(
+                parsedResource.tags.map((tag) => ({ name: tag }))
+              )}
+              ON CONFLICT DO NOTHING
+            `;
+
+            await transaction`
               INSERT INTO content.resource_tags (resource_id, tag_id)
               SELECT
                 ${result.id}, 
@@ -224,7 +227,7 @@ export const createProcessChangedResource =
               RETURNING id
             `.then(firstRow);
 
-            if(parsed.summary && book) {
+            if (parsed.summary && book) {
               await transaction`
                 INSERT INTO content.book_summaries (book_id, contributor_id, summary)
                 VALUES (${book.id}, ${parsed.summary.by}, ${parsed.summary.text})

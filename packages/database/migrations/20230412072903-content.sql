@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS content.books (
 
 CREATE TABLE IF NOT EXISTS content.book_summaries (
   id SERIAL PRIMARY KEY,
-  book_id INTEGER NOT NULL REFERENCES content.books(id) ON DELETE CASCADE,
+  book_id INTEGER UNIQUE NOT NULL REFERENCES content.books(id) ON DELETE CASCADE,
   contributor_id VARCHAR (20),
   summary TEXT NOT NULL
 );
