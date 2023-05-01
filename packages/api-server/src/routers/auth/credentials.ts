@@ -1,3 +1,4 @@
+import { TRPCError } from '@trpc/server';
 import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
@@ -8,6 +9,7 @@ import {
   getUserByAny,
 } from '../../services/users';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
 
 const registerCredentialsSchema = z.object({
@@ -26,33 +28,33 @@ export const credentialsAuthRouter = createTRPCRouter({
   register: publicProcedure
     .meta({ openapi: { method: 'POST', path: '/auth/credentials' } })
     .input(registerCredentialsSchema)
-    .output(z.object({ status: z.number(), message: z.string() }))
+    .output(
+      z.object({
+        status: z.number(),
+        message: z.string(),
+        user: z.object({ username: z.string(), email: z.string().optional() }),
+        accessToken: z.string(),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies, session } = ctx;
+      const { dependencies } = ctx;
       const { postgres } = dependencies;
 
-      if (session?.user) {
-        return {
-          status: 401,
-          message: 'Already logged in',
-        };
-      }
-
       if (await getUserByAny(postgres, { username: input.username })) {
-        return {
-          status: 400,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'Username already exists',
-        };
+        });
       }
 
       if (
         input.contributor_id &&
         (await contributorIdExists(postgres, input.contributor_id))
       ) {
-        return {
-          status: 400,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'Contributor ID already exists',
-        };
+        });
       }
 
       const hashedPassword = await hash(input.password);
@@ -66,26 +68,26 @@ export const credentialsAuthRouter = createTRPCRouter({
         email: input.email,
       });
 
-      session.user = {
-        username: user.username,
-        isLoggedIn: true,
-      };
-
-      // TODO: save session
-      // await ctx.session.save();
-
       return {
         status: 201,
         message: 'User created',
-        data: user,
+        user: { username: user.username, email: user.email ?? undefined },
+        accessToken: signAccessToken(user),
       };
     }),
   login: publicProcedure
     .meta({ openapi: { method: 'POST', path: '/auth/credentials/login' } })
     .input(loginCredentialsSchema)
-    .output(z.object({ status: z.number(), message: z.string() }))
+    .output(
+      z.object({
+        status: z.number(),
+        message: z.string(),
+        user: z.object({ username: z.string(), email: z.string().optional() }),
+        accessToken: z.string(),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies, session } = ctx;
+      const { dependencies } = ctx;
       const { postgres } = dependencies;
 
       const user = await getUserByAny(postgres, {
@@ -93,38 +95,31 @@ export const credentialsAuthRouter = createTRPCRouter({
       });
 
       if (!user) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
           message: 'Invalid credentials',
-        };
+        });
       }
 
       if (!user.password_hash) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
           message: 'This user has no password, try another login method',
-        };
+        });
       }
 
       if (!(await verifyHash(user.password_hash, input.password))) {
-        return {
-          status: 401,
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
           message: 'Invalid credentials',
-        };
+        });
       }
-
-      session.user = {
-        username: input.username,
-        email: user.email || undefined,
-        isLoggedIn: true,
-      };
-
-      // TODO: save session
-      // await session.save();
 
       return {
         status: 200,
         message: 'Logged in',
+        user: { username: user.username, email: user.email ?? undefined },
+        accessToken: signAccessToken(user),
       };
     }),
 });
