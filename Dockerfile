@@ -15,6 +15,7 @@ RUN pnpm add argon2@0.30.3
 RUN rm -rf pnpm-lock.yaml package.json
 
 COPY pnpm-lock.yaml ./
+COPY patches ./patches
 
 RUN pnpm fetch
 
