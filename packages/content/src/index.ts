@@ -1,10 +1,7 @@
 import type { ChangedAsset, ChangedFile } from '@sovereign-academy/types';
 
 import type { Dependencies } from './dependencies';
-import {
-  createProcessChangedResource,
-  groupByResource,
-} from './parser';
+import { createProcessChangedResource, groupByResource } from './parser';
 
 export const createProcessChangedFiles =
   (dependencies: Dependencies) =>
@@ -18,3 +15,5 @@ export const createProcessChangedFiles =
       await processChangedResource(resource);
     }
   };
+
+export * from './parser';

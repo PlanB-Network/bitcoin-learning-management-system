@@ -19,3 +19,10 @@ export class ValidationError extends Error {
     super(message);
   }
 }
+
+export const computeAssetRawUrl = (
+  repositoryUrl: string,
+  commit: string,
+  resourcePath: string,
+  assetPath: string
+) => `${repositoryUrl}/raw/${commit}/${resourcePath}/assets/${assetPath}`;
