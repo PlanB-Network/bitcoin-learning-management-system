@@ -36,8 +36,8 @@ export const webhooksProcedure = publicProcedure
     );
 
     // Process the payload asynchronoulsy so we don't block the request
-    processWebhookPayload(ctx.req.body).then(async ({ content, sourceUrl }) => {
+    processWebhookPayload(ctx.req.body).then(async ({ files, sourceUrl }) => {
       const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
-      await processChangedFiles(content, sourceUrl);
+      await processChangedFiles(files, sourceUrl);
     });
   });
