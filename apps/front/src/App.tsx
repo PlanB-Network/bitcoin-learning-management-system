@@ -6,8 +6,10 @@ import { LocalStorageKey } from '@sovereign-academy/types';
 
 import { useAppDispatch } from './hooks';
 import { Home } from './pages';
+import { Book } from './pages/Book';
 import { Companies } from './pages/Companies';
 import { Company } from './pages/Company';
+import { Library } from './pages/Library';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
@@ -47,6 +49,8 @@ export const App = () => {
       <Route path="/">
         <Route index element={<Home />} />
         <Route path={RoutesEnum.Companies} element={<Companies />} />
+        <Route path={RoutesEnum.Librairy} element={<Library />} />
+        <Route path={RoutesEnum.Book} element={<Book />} />
         <Route path={RoutesEnum.Company} element={<Company />} />
         <Route path="*" element={<h1>TODO</h1>} />
       </Route>

@@ -12,6 +12,8 @@ export enum Routes {
   Newsletter = '/newletters',
   Articles = '/articles',
   Article = '/articles/:articleId',
+  Interviews = '/interview',
+  Interview = '/interview/:interviewId',
   Videos = '/videos',
   Video = '/videos/:videoId',
   Podcasts = '/podcasts',

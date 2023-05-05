@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import companyImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
 import { PageTitle } from '../../components/PageTitle';
+import { RelatedRessources } from '../../components/RelatedRessources';
+import { Routes } from '../../types';
+import { replaceDynamicParam } from '../../utils';
 
 export const Company = () => {
   const { companyId } = useParams();
@@ -15,7 +18,7 @@ export const Company = () => {
           src={companyImage}
           alt="something representing the company"
         />
-        <div className="flex flex-col mr-12">
+        <div className="flex flex-col mr-12 space-y-4 text-sm">
           <p className="max-w-xl text-justify">
             SeedSigner est un projet visant à réduire le coût et la complexité
             de l'utilisation des portefeuilles multi-signature Bitcoin. Il
@@ -29,7 +32,7 @@ export const Company = () => {
 
           <p className="max-w-xl text-justify">
             Les principales fonctionnalités de SeedSigner comprennent :
-            <ul>
+            <ul className="pl-4 list-disc">
               <li>
                 Génération et stockage temporaire de phrases de départ BIP39
               </li>
@@ -61,6 +64,26 @@ export const Company = () => {
             compatible avec Spectre-Desktop, Sparrow Wallet et BlueWallet
             Multisig Vaults.
           </p>
+
+          <RelatedRessources
+            tutoriel={[{ label: 'Seed signer Device' }]}
+            interview={[
+              {
+                label: 'CEO Interview',
+                path: replaceDynamicParam(Routes.Interview, {
+                  interviewId: 'ja78172',
+                }),
+              },
+            ]}
+            course={[
+              {
+                label: 'BTC 204',
+                path: replaceDynamicParam(Routes.Course, {
+                  courseId: 'btc-204',
+                }),
+              },
+            ]}
+          />
         </div>
       </div>
     </MainLayout>

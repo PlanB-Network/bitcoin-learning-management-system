@@ -17,7 +17,7 @@ export const MainLayout = ({
 
   return (
     <div
-      className="overflow-auto pt-28 h-screen sm:pt-36 md:pt-44 lg:pt-52"
+      className="overflow-auto pt-28 h-screen bg-gray-100 sm:pt-36 md:pt-44 lg:pt-52"
       ref={box}
     >
       {/* Header */}
