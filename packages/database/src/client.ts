@@ -1,5 +1,9 @@
 import postgres from 'postgres';
-import type { PostgresType, Sql } from 'postgres';
+import type {
+  TransactionSql as OriginalTransactionSql,
+  PostgresType,
+  Sql,
+} from 'postgres';
 
 export type PostgresTypes = {
   bigint: PostgresType<number>;
@@ -44,6 +48,8 @@ const types = {
     serialize: () => null,
   },
 } as PostgresTypes;
+
+export type TransactionSql = OriginalTransactionSql<PostgresTypesMapper>;
 
 export interface PostgresClient extends Sql<PostgresTypesMapper> {
   /**

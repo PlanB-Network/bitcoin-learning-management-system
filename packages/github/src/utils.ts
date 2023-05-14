@@ -1,10 +1,6 @@
 import * as async from 'async';
 
-import {
-  ChangeKind,
-  ChangedAsset,
-  ChangedFile,
-} from '@sovereign-academy/types';
+import { ChangeKind, ChangedFile } from '@sovereign-academy/types';
 
 import { GithubOctokit } from './octokit';
 
@@ -72,36 +68,26 @@ export const createGetChangedFiles =
         ).getTime();
 
         const kind = item.status as ChangeKind;
-        const common = {
+        const isAsset = item.filename.includes('assets');
+
+        const file: ChangedFile = {
           path: item.filename,
           commit: commit.sha,
           time,
-        };
-
-        if (item.filename.includes('assets')) {
-          const asset: ChangedAsset = {
-            ...common,
-            url: item.raw_url,
-            ...(isRenamed(kind)
-              ? {
-                  kind: 'renamed',
-                  previousPath: item.previous_filename as string,
-                }
-              : { kind }),
-          };
-
-          return asset;
-        }
-
-        const file: ChangedFile = {
-          ...common,
-          data: await downloadFile(repository, item.filename),
           ...(isRenamed(kind)
-            ? {
+            ? // If the file was renamed, we need to add the previous path so we can update it
+              {
                 kind: 'renamed',
                 previousPath: item.previous_filename as string,
               }
             : { kind }),
+          ...(isAsset
+            ? // If the file is an asset, we don't need to download the raw data as we will
+              // get it directl from the GitHub CDN
+              { isAsset }
+            : // If the file isn't an asset, then it is a text file (markdown, yaml, etc.) and
+              // we need to download the raw data
+              { isAsset, data: await downloadFile(repository, item.filename) }),
         };
 
         return file;

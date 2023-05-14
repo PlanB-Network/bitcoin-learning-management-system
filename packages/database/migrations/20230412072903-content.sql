@@ -2,73 +2,103 @@
 
 CREATE SCHEMA IF NOT EXISTS content;
 
--- Main resource table
+--- MAIN RESOURCES
 CREATE TABLE IF NOT EXISTS content.resources (
   id SERIAL PRIMARY KEY,
-  type VARCHAR(255) NOT NULL,
+
+  category VARCHAR(255) NOT NULL,
   path VARCHAR(255) NOT NULL,
-  level VARCHAR(255),
-  original_language VARCHAR(10) NOT NULL,
+
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_commit VARCHAR(40) NOT NULL,
 
-  UNIQUE (type, path)
+  UNIQUE (category, path)
 );
 
--- Tables per type of content
-CREATE TABLE IF NOT EXISTS content.books (
-  id SERIAL PRIMARY KEY,
-  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
-  language VARCHAR(10) NOT NULL,
-  title TEXT NOT NULL,
-  author TEXT NOT NULL,
-  description TEXT,
-  publication_date DATE,
-  cover TEXT,
-
-  UNIQUE (resource_id, language)
-);
-
-CREATE TABLE IF NOT EXISTS content.book_summaries (
-  id SERIAL PRIMARY KEY,
-  book_id INTEGER UNIQUE NOT NULL REFERENCES content.books(id) ON DELETE CASCADE,
-  contributor_id VARCHAR (20),
-  summary TEXT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS content.podcasts (
-  id SERIAL PRIMARY KEY,
-  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
-  language VARCHAR(10) NOT NULL,
-  name TEXT NOT NULL,
-  description TEXT,
-  platform_url TEXT,
-
-  UNIQUE (resource_id, language)
-);
-
-CREATE TABLE IF NOT EXISTS content.articles (
-  id SERIAL PRIMARY KEY,
-  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
-  language VARCHAR(10) NOT NULL,
-  title TEXT NOT NULL,
-  author TEXT NOT NULL,
-  description TEXT,
-  publication_date DATE,
-  article_url TEXT NOT NULL,
-
-  UNIQUE (resource_id, language)
-);
-
--- Tags (e.g. bitcoin, lightning, etc.)
 CREATE TABLE IF NOT EXISTS content.tags (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) UNIQUE NOT NULL
 );
 
--- Junction table for resources and tags
 CREATE TABLE IF NOT EXISTS content.resource_tags (
   resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
-  tag_id INTEGER NOT NULL REFERENCES content.tags(id),
+  tag_id INTEGER NOT NULL REFERENCES content.tags(id) ON DELETE CASCADE,
+
   PRIMARY KEY (resource_id, tag_id)
+);
+
+CREATE TABLE content.contributions (
+  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
+  language VARCHAR(255),
+  contributor_id VARCHAR(20) NOT NULL REFERENCES users.accounts(contributor_id),
+
+  PRIMARY KEY (resource_id, language, contributor_id)
+);
+
+--- BOOKS
+CREATE TABLE IF NOT EXISTS content.books (
+  resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
+
+  level VARCHAR(255),
+  author TEXT NOT NULL,
+  website_url TEXT
+);
+
+CREATE TABLE IF NOT EXISTS content.books_localized (
+  book_id INTEGER NOT NULL REFERENCES content.books(resource_id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+  original BOOLEAN NOT NULL,
+
+  -- Per translation
+  title TEXT NOT NULL,
+  translator TEXT,
+  description TEXT,
+  publication_date INTEGER,
+  cover TEXT,
+  summary_text TEXT,
+  summary_contributor_id VARCHAR(20),
+
+  -- Links
+  shop_url TEXT,
+  download_url TEXT,
+
+  PRIMARY KEY (book_id, language)
+);
+
+--- BUILDERS
+CREATE TABLE IF NOT EXISTS content.builders (
+  resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
+
+  name TEXT NOT NULL,
+
+  -- Links
+  website_url TEXT,
+  twitter_url TEXT,
+  github_url TEXT,
+  nostr TEXT
+);
+
+CREATE TABLE IF NOT EXISTS content.builders_localized (
+  builder_id INTEGER NOT NULL REFERENCES content.builders(resource_id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+
+  description TEXT,
+
+  PRIMARY KEY (builder_id, language)
+);
+
+--- PODCASTS
+CREATE TABLE IF NOT EXISTS content.podcasts (
+  resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+
+  name TEXT NOT NULL,
+  host TEXT NOT NULL,
+  description TEXT,
+
+    -- Links
+  website_url TEXT,
+  twitter_url TEXT,
+  podcast_url TEXT,
+  nostr TEXT
 );

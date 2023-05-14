@@ -8,13 +8,9 @@ export type ResourcesId = number;
 export default interface Resources {
   id: ResourcesId;
 
-  type: string;
+  category: string;
 
   path: string;
-
-  level: string | null;
-
-  original_language: string;
 
   last_updated: number;
 
@@ -26,13 +22,9 @@ export interface ResourcesInitializer {
   /** Default value: nextval('content.resources_id_seq'::regclass) */
   id?: ResourcesId;
 
-  type: string;
+  category: string;
 
   path: string;
-
-  level?: string | null;
-
-  original_language: string;
 
   /** Default value: now() */
   last_updated?: number;
@@ -44,13 +36,9 @@ export interface ResourcesInitializer {
 export interface ResourcesMutator {
   id?: ResourcesId;
 
-  type?: string;
+  category?: string;
 
   path?: string;
-
-  level?: string | null;
-
-  original_language?: string;
 
   last_updated?: number;
 

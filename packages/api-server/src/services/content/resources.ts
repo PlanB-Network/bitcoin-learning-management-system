@@ -15,7 +15,7 @@ export const createGetBooks = (dependencies: Dependencies) => async () => {
       JOIN content.resources r ON r.id = b.resource_id
     `;
 
-  return result.map((row) => ({
+  /* return result.map((row) => ({
     ...row,
     cover:
       row.cover !== undefined && row.cover !== null
@@ -26,5 +26,7 @@ export const createGetBooks = (dependencies: Dependencies) => async () => {
             row.cover
           )
         : undefined,
-  }));
+  })); */
+
+  return [];
 };

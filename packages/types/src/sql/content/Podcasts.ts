@@ -3,51 +3,65 @@
 
 import type { ResourcesId } from './Resources';
 
-/** Identifier type for content.podcasts */
-export type PodcastsId = number;
-
 /** Represents the table content.podcasts */
 export default interface Podcasts {
-  id: PodcastsId;
-
   resource_id: ResourcesId;
 
   language: string;
 
   name: string;
 
+  host: string;
+
   description: string | null;
 
-  platform_url: string | null;
+  website_url: string | null;
+
+  twitter_url: string | null;
+
+  podcast_url: string | null;
+
+  nostr: string | null;
 }
 
 /** Represents the initializer for the table content.podcasts */
 export interface PodcastsInitializer {
-  /** Default value: nextval('content.podcasts_id_seq'::regclass) */
-  id?: PodcastsId;
-
   resource_id: ResourcesId;
 
   language: string;
 
   name: string;
 
+  host: string;
+
   description?: string | null;
 
-  platform_url?: string | null;
+  website_url?: string | null;
+
+  twitter_url?: string | null;
+
+  podcast_url?: string | null;
+
+  nostr?: string | null;
 }
 
 /** Represents the mutator for the table content.podcasts */
 export interface PodcastsMutator {
-  id?: PodcastsId;
-
   resource_id?: ResourcesId;
 
   language?: string;
 
   name?: string;
 
+  host?: string;
+
   description?: string | null;
 
-  platform_url?: string | null;
+  website_url?: string | null;
+
+  twitter_url?: string | null;
+
+  podcast_url?: string | null;
+
+  nostr?: string | null;
 }

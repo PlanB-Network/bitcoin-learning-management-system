@@ -1,12 +1,12 @@
-import { ChangedAsset, ChangedFile } from '@sovereign-academy/types';
+import { ChangedAssetFile, ChangedTextFile } from '@sovereign-academy/types';
+
+import { ContentType, Language } from './const';
 
 export interface ChangedContent {
+  type: ContentType;
   path: string;
-  type: string;
   sourceUrl: string;
-  files: (ChangedFile | ChangedAsset)[];
+  main?: ChangedTextFile;
+  files: (ChangedTextFile & { language?: Language })[];
+  assets: ChangedAssetFile[];
 }
-
-export const isAsset = (
-  file: ChangedFile | ChangedAsset
-): file is ChangedAsset => 'url' in file;
