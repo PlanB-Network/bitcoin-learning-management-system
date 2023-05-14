@@ -93,10 +93,10 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             ${parsed.original ?? false},
             ${parsed.title},
             ${parsed.translator},
-            ${parsed.description},
+            ${parsed.description.trim()},
             ${parsed.publication_date},
             ${parsed.cover},
-            ${parsed.summary?.text},
+            ${parsed.summary?.text.trim()},
             ${parsed.summary?.by},
             ${parsed.shop_url},
             ${parsed.download_url}

@@ -50,8 +50,10 @@ export const createProcessChangedPodcast = (dependencies: Dependencies) => {
             resource_id, name, host, description website_url, twitter_url, podcast_url, nostr
           )
           VALUES (
-            ${id}, ${parsed.name}, ${parsed.host}, ${parsed.description}, ${parsed.links.website}, 
-            ${parsed.links.twitter}, ${parsed.links.podcast}, ${parsed.links.nostr}
+            ${id}, ${parsed.name}, ${parsed.host}, 
+            ${parsed.description.trim()}, ${parsed.links.website}, 
+            ${parsed.links.twitter}, ${parsed.links.podcast}, 
+            ${parsed.links.nostr}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             name = EXCLUDED.name,

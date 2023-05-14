@@ -102,3 +102,38 @@ CREATE TABLE IF NOT EXISTS content.podcasts (
   podcast_url TEXT,
   nostr TEXT
 );
+
+--- COURSES
+CREATE TABLE IF NOT EXISTS content.courses (
+  id VARCHAR(20) PRIMARY KEY,
+
+  level VARCHAR(255) NOT NULL,
+  hours FLOAT NOT NULL,
+
+  last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  last_commit VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS content.courses_localized (
+  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+
+  -- Per translation
+  name TEXT NOT NULL,
+  goal TEXT NOT NULL,
+  raw_description TEXT NOT NULL,
+
+  PRIMARY KEY (course_id, language)
+);
+
+CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
+  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+  chapter INTEGER NOT NULL,
+
+  -- Per chapter
+  title TEXT NOT NULL,
+  raw_content TEXT NOT NULL,
+
+  PRIMARY KEY (course_id, language, chapter)
+);
