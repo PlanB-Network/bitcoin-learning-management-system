@@ -21,7 +21,8 @@ interface BookLocal extends BaseResource {
   /** Name of the author or collective of authors of the translation */
   translator?: string;
   description: string;
-  publication_date: string;
+  publisher?: string;
+  publication_date?: string;
   summary?: {
     by?: string;
     text: string;
@@ -84,8 +85,9 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
 
         await transaction`
           INSERT INTO content.books_localized (
-            book_id, language, original, title, translator, description, publication_date, 
-            cover, summary_text, summary_contributor_id, shop_url, download_url
+            book_id, language, original, title, translator, description, publisher, 
+            publication_date, cover, summary_text, summary_contributor_id, shop_url, 
+            download_url
           )
           VALUES (
             ${id},
@@ -94,6 +96,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             ${parsed.title},
             ${parsed.translator},
             ${parsed.description.trim()},
+            ${parsed.publisher},
             ${parsed.publication_date},
             ${parsed.cover},
             ${parsed.summary?.text.trim()},
@@ -105,6 +108,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             title = EXCLUDED.title,
             translator = EXCLUDED.translator,
             description = EXCLUDED.description,
+            publisher = EXCLUDED.publisher,
             publication_date = EXCLUDED.publication_date,
             cover = EXCLUDED.cover,
             summary_text = EXCLUDED.summary_text,
