@@ -2,6 +2,7 @@
  * EXPORTS
  */
 export type { default as Resource } from './sql/content/Resources';
+export type { default as Tutorial } from './sql/content/Tutorials';
 export type { default as Course } from './sql/content/Courses';
 export type { default as Tag } from './sql/content/Tags';
 export type { default as Book } from './sql/content/Books';

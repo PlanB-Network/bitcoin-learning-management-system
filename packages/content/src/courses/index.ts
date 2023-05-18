@@ -7,7 +7,12 @@ import type { ChangedFile, Course } from '@sovereign-academy/types';
 import type { Language } from '../const';
 import { Dependencies } from '../dependencies';
 import { ChangedContent } from '../types';
-import { getContentType, separateContentFiles, yamlToObject } from '../utils';
+import {
+  getContentType,
+  getRelativePath,
+  separateContentFiles,
+  yamlToObject,
+} from '../utils';
 
 interface CourseDetails {
   id: string;
@@ -18,25 +23,6 @@ interface CourseDetails {
 export interface ChangedCourse extends ChangedContent {
   id: string;
 }
-
-/**
- * Get the relative path of the file compared to the course directory if it's a regular file
- * or the course assets directory if it's an asset.
- *
- * Examples:
- *  - `courses/btc101/en.yml` -> `en.yml`
- *  - `courses/btc101/assets/logo.png` -> `logo.png`
- *
- * @param path - Path of the file
- * @returns Relative path of the file
- */
-const getRelativePath = (path: string) => {
-  const pathElements = path.split('/');
-
-  return (
-    pathElements[2] === 'assets' ? pathElements.slice(3) : pathElements.slice(2)
-  ).join('/');
-};
 
 /**
  * Parse course details from path
@@ -81,12 +67,12 @@ export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
     if (file.isAsset) {
       course.assets.push({
         ...file,
-        path: getRelativePath(file.path),
+        path: getRelativePath(file.path, coursePath),
       });
     } else {
       course.files.push({
         ...file,
-        path: getRelativePath(file.path),
+        path: getRelativePath(file.path, coursePath),
         language,
       });
     }

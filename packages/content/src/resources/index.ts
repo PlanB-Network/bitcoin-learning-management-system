@@ -3,7 +3,7 @@ import type { ChangedFile } from '@sovereign-academy/types';
 import type { Language } from '../const';
 import { Dependencies } from '../dependencies';
 import { ChangedContent } from '../types';
-import { getContentType } from '../utils';
+import { getContentType, getRelativePath } from '../utils';
 
 import { createProcessChangedBook } from './categories/books';
 import { createProcessChangedBuilder } from './categories/builders';
@@ -24,25 +24,6 @@ export interface BaseResource {
 export interface ChangedResource extends ChangedContent {
   category: ResourceCategory;
 }
-
-/**
- * Get the relative path of the file compared to the resource directory if it's a regular file
- * or the resource assets directory if it's an asset.
- *
- * Examples:
- *  - `resources/books/bitcoin/en.yml` -> `en.yml`
- *  - `resources/books/bitcoin/assets/logo.png` -> `logo.png`
- *
- * @param path - Path of the file
- * @returns Relative path of the file
- */
-const getRelativePath = (path: string) => {
-  const pathElements = path.split('/');
-
-  return (
-    pathElements[3] === 'assets' ? pathElements.slice(4) : pathElements.slice(3)
-  ).join('/');
-};
 
 /**
  * Parse resource details from path
@@ -95,12 +76,12 @@ export const groupByResource = (files: ChangedFile[], baseUrl: string) => {
     if (file.isAsset) {
       resource.assets.push({
         ...file,
-        path: getRelativePath(file.path),
+        path: getRelativePath(file.path, resourcePath),
       });
     } else {
       resource.files.push({
         ...file,
-        path: getRelativePath(file.path),
+        path: getRelativePath(file.path, resourcePath),
         language,
       });
     }

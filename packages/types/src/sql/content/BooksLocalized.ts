@@ -20,6 +20,8 @@ export default interface BooksLocalized {
 
   description: string | null;
 
+  publisher: string | null;
+
   publication_date: number | null;
 
   cover: string | null;
@@ -47,6 +49,8 @@ export interface BooksLocalizedInitializer {
 
   description?: string | null;
 
+  publisher?: string | null;
+
   publication_date?: number | null;
 
   cover?: string | null;
@@ -73,6 +77,8 @@ export interface BooksLocalizedMutator {
   translator?: string | null;
 
   description?: string | null;
+
+  publisher?: string | null;
 
   publication_date?: number | null;
 

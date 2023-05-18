@@ -138,3 +138,28 @@ CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
 
   PRIMARY KEY (course_id, language, chapter)
 );
+
+--- TUTORIALS
+CREATE TABLE IF NOT EXISTS content.tutorials (
+  id SERIAL PRIMARY KEY,
+  path VARCHAR(255) UNIQUE NOT NULL,
+
+  level VARCHAR(255) NOT NULL,
+  builder VARCHAR(255),
+
+  last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  last_commit VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS content.tutorials_localized (
+  tutorial_id INTEGER NOT NULL REFERENCES content.tutorials(id) ON DELETE CASCADE,
+  language VARCHAR(10) NOT NULL,
+
+  -- Per translation
+  name TEXT NOT NULL,
+  goal TEXT NOT NULL,
+  raw_description TEXT NOT NULL,
+  raw_content TEXT NOT NULL,
+
+  PRIMARY KEY (tutorial_id, language)
+);

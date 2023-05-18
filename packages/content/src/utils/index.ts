@@ -32,3 +32,35 @@ export const separateContentFiles = (
   files: resource.files.filter((file) => file.path !== mainFileName),
   assets: resource.assets,
 });
+
+/**
+ * Get the relative path of the file compared to the item (course, resource, etc) directory
+ * if it's a regular file or the item's assets directory if it's an asset.
+ *
+ * Examples:
+ *  - `courses/btc101/en.yml` -> `en.yml`
+ *  - `courses/btc101/assets/logo.png` -> `logo.png`
+ *
+ * @param fullPath - Full path of the file
+ * @param directoryPath - Path of the item directory (optional), to be truncated from the full path
+ * @returns Relative path of the file
+ */
+export const getRelativePath = (fullPath: string, directoryPath?: string) => {
+  const path = directoryPath ? fullPath.replace(directoryPath, '') : fullPath;
+  const pathElements = path.split('/');
+
+  return pathElements[0] === 'assets' ? pathElements.slice(1).join('/') : path;
+};
+
+/**
+ * Returns the file extension
+ *
+ * @param path - Path of the file
+ * @returns File extension
+ */
+export const getFileExtension = (path: string) => {
+  const pathElements = path.split('/');
+  const fileName = pathElements[pathElements.length - 1];
+  const fileNameElements = fileName.split('.');
+  return fileNameElements[fileNameElements.length - 1];
+};
