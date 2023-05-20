@@ -91,23 +91,9 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                   'Get a better understanding of bitcoin with this lessons',
               },
               {
-                id: 'fin-101',
-                title: 'FIN 101',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'fin-101',
-                }),
-
-                icon: AiOutlineBook,
-                description:
-                  'Get a better understanding of bitcoin with this lessons',
-              },
-              {
-                id: 'secu-101',
-                title: 'SECU 101',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'secu-101',
-                }),
-
+                id: 'more-xxx-101',
+                title: 'More',
+                path: Routes.Courses,
                 icon: AiOutlineBook,
                 description:
                   'Get a better understanding of bitcoin with this lessons',
@@ -123,17 +109,6 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                 title: 'BTC 201',
                 path: replaceDynamicParam(Routes.Course, {
                   courseId: 'btc-201',
-                }),
-
-                icon: AiOutlineBook,
-                description:
-                  'Get a better understanding of bitcoin with this lessons',
-              },
-              {
-                id: 'btc-204',
-                title: 'BTC 204',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'btc-204',
                 }),
 
                 icon: AiOutlineBook,
@@ -162,36 +137,10 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                 description:
                   'Get a better understanding of bitcoin with this lessons',
               },
-
               {
-                id: 'ln-202',
-                title: 'LN 202',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'ln-202',
-                }),
-
-                icon: AiOutlineBook,
-                description:
-                  'Get a better understanding of bitcoin with this lessons',
-              },
-              {
-                id: 'btc-205',
-                title: 'BTC 205',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'btc-205',
-                }),
-
-                icon: AiOutlineBook,
-                description:
-                  'Get a better understanding of bitcoin with this lessons',
-              },
-              {
-                id: 'econ-203',
-                title: 'ECON 203',
-                path: replaceDynamicParam(Routes.Course, {
-                  courseId: 'econ-203',
-                }),
-
+                id: 'more-xxx-201',
+                title: 'More',
+                path: Routes.Courses,
                 icon: AiOutlineBook,
                 description:
                   'Get a better understanding of bitcoin with this lessons',
@@ -241,8 +190,8 @@ export const Header = ({ isExpanded }: HeaderProps) => {
         title: 'Ressources',
         items: [
           {
-            id: 'search',
-            title: 'Recherche libre',
+            id: 'medias',
+            title: 'Médias',
             items: [
               {
                 id: 'librairie',
@@ -252,6 +201,25 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                   'discover plenty of books to improve your knowledge on the bitcoin ecosystem and related economic topics',
                 path: Routes.Librairy,
               },
+              {
+                id: 'newsletter',
+                title: 'Newsletter',
+                path: Routes.Newsletter,
+                icon: BsNewspaper,
+              },
+              {
+                id: 'articles',
+                title: 'Articles',
+                path: Routes.Articles,
+                icon: GrArticle,
+              },
+              { id: 'learning', title: 'Learning tools', path: Routes.Tools },
+            ],
+          },
+          {
+            id: 'people',
+            title: 'People',
+            items: [
               {
                 id: 'companies',
                 title: 'Bitcoin Companies',
@@ -267,17 +235,23 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                 icon: BiPalette,
               },
               {
-                id: 'newsletter',
-                title: 'Newsletter',
-                path: Routes.Newsletter,
-                icon: BsNewspaper,
-              },
-              {
                 id: 'conferences',
                 title: 'Conferences',
                 path: Routes.Conferences,
                 icon: BsMic,
               },
+              {
+                id: 'bitcoin-calendar',
+                title: 'Bitcoin Calendar',
+                path: Routes.Calendar,
+                icon: BsCalendarDate,
+              },
+            ],
+          },
+          {
+            id: 'tech',
+            title: 'Technical',
+            items: [
               {
                 id: 'bips',
                 title: 'BIPs',
@@ -290,19 +264,6 @@ export const Header = ({ isExpanded }: HeaderProps) => {
                 path: Routes.Lexique,
                 icon: BsBook,
               },
-              {
-                id: 'bitcoin-calendar',
-                title: 'Bitcoin Calendar',
-                path: Routes.Calendar,
-                icon: BsCalendarDate,
-              },
-              {
-                id: 'articles',
-                title: 'Articles',
-                path: Routes.Articles,
-                icon: GrArticle,
-              },
-              { id: 'learning', title: 'Learning tools', path: Routes.Tools },
             ],
           },
         ],

@@ -12,7 +12,7 @@ export const MenuElement = ({ element }: MenuElementProps) => {
     () => (
       <div
         key={element.id}
-        className="flex relative gap-x-6 p-4 w-full rounded-lg duration-100 cursor-pointer group hover:bg-gray-100"
+        className="flex relative gap-x-6 p-4 w-full max-w-sm rounded-lg duration-100 cursor-pointer group hover:bg-gray-100"
       >
         {element.icon && (
           <div className="flex flex-none justify-center items-center mt-1 w-11 h-11 bg-gray-100 rounded-lg duration-200 group-hover:bg-white">
