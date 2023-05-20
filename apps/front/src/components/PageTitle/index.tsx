@@ -1,11 +1,24 @@
+import rabbitWithBook from '../../assets/rabbit-with-book.svg';
+
 interface PageTitleProps {
   children?: string;
+  variant?: 'primary' | 'alternate';
 }
 
-export const PageTitle = ({ children }: PageTitleProps) => {
+export const PageTitle = ({ children, variant }: PageTitleProps) => {
+  if (variant === 'alternate')
+    return (
+      <h1 className="my-8 ml-24 w-96 text-5xl font-bold leading-tight uppercase border-b-4 border-solid text-primary-800 border-b-primary-800 font-primary-800">
+        {children}
+      </h1>
+    );
+
   return (
-    <h1 className="my-8 ml-24 w-96 text-5xl font-bold leading-tight uppercase border-b-4 border-solid text-primary-800 border-b-primary-800 font-primary-800">
-      {children}
-    </h1>
+    <div className='flex flex-row items-center'>
+      <h1 className="p-4 mx-8 my-4 w-max text-6xl font-bold text-white uppercase bg-secondary-400">
+        {children}
+      </h1>
+      <img src={rabbitWithBook} className="h-full"></img>
+    </div>
   );
 };

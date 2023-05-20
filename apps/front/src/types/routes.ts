@@ -30,6 +30,7 @@ export enum Routes {
   Calendar = '/calendar',
   // Tutorials
   Tutorials = '/tutorials',
+  Tutorial = '/tutorial/:tutorialType',
   Wallets = '/tutorials/wallets',
   Exchanges = '/tutorials/exchanges',
   Ordinal = '/tutorials/ordinal',

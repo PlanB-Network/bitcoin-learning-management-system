@@ -37,11 +37,8 @@ import { NavigationSection } from './props';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
-export interface HeaderProps {
-  isExpanded: boolean;
-}
-
-export const Header = ({ isExpanded }: HeaderProps) => {
+export const Header = () => {
+  const isExpanded = false; // TODO: change that
   const {
     open: openLoginModal,
     isOpen: isLoginModalOpen,
@@ -188,6 +185,7 @@ export const Header = ({ isExpanded }: HeaderProps) => {
       {
         id: 'ressources',
         title: 'Ressources',
+        path: Routes.Ressources,
         items: [
           {
             id: 'medias',
@@ -271,6 +269,7 @@ export const Header = ({ isExpanded }: HeaderProps) => {
       {
         id: 'tutorials',
         title: 'Tutorials',
+        path: Routes.Tutorials,
         items: [
           {
             id: 'tutorial-nested',
@@ -391,27 +390,16 @@ export const Header = ({ isExpanded }: HeaderProps) => {
   const isScreenMd = useGreater('sm');
 
   return (
-    <header className="flex fixed top-0 left-0 z-20 flex-col justify-center items-center py-6 w-screen bg-primary-900">
+    <header className="flex fixed top-0 left-0 z-20 flex-col justify-center items-center py-6 w-screen bg-primary-900 min-h-[96px]">
       {isScreenMd ? (
-        isExpanded ? null : (
-          <img
-            className="absolute left-8 h-10"
-            src={headerImage}
-            alt="Decouvre Bitcoin header logo"
-          />
-        )
+        <img
+          className="absolute left-8 h-10"
+          src={headerImage}
+          alt="Decouvre Bitcoin header logo"
+        />
       ) : (
         <MobileMenu sections={sections} />
       )}
-
-      <img
-        className={compose(
-          'duration-500 mb-4',
-          isExpanded || !isScreenMd ? 'h-16 md:h-20 lg:h-24 xl:h-28' : 'h-0'
-        )}
-        src={headerImage}
-        alt="Decouvre Bitcoin header logo"
-      />
 
       {isScreenMd && <FlyingMenu sections={sections} />}
 

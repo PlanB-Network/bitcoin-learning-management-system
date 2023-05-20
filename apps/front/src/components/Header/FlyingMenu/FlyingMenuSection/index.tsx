@@ -15,7 +15,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
 
   const sectionTitle = useMemo(() => {
     if ('path' in section)
-      return <Link to={section.path}>link {section.title}</Link>;
+      return <Link to={section.path}>{section.title}</Link>;
     if ('action' in section)
       return (
         <button

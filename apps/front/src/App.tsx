@@ -13,6 +13,8 @@ import { Library } from './pages/Library';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
+import { Tutorials } from './pages/Tutorials';
+import { Ressources } from './pages/Ressources';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -49,9 +51,15 @@ export const App = () => {
       <Route path="/">
         <Route index element={<Home />} />
         <Route path={RoutesEnum.Companies} element={<Companies />} />
+        <Route path={RoutesEnum.Company} element={<Company />} />
+
         <Route path={RoutesEnum.Librairy} element={<Library />} />
         <Route path={RoutesEnum.Book} element={<Book />} />
-        <Route path={RoutesEnum.Company} element={<Company />} />
+
+        <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
+
+        <Route path={RoutesEnum.Ressources} element={<Ressources />} />
+
         <Route path="*" element={<h1>TODO</h1>} />
       </Route>
     </Routes>
