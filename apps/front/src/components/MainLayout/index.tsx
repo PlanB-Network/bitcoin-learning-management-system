@@ -10,7 +10,7 @@ export const MainLayout = ({
   const box = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="mt-24 h-screen bg-gray-100" ref={box}>
+    <div className="pt-24 h-screen bg-gray-100" ref={box}>
       {/* Header */}
       <Header />
 
