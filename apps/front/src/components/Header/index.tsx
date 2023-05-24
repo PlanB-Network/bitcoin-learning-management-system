@@ -24,11 +24,12 @@ import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GrArticle, GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 import headerImage from '../../assets/db-academy-header-1.png';
 import { useAppSelector, useDisclosure } from '../../hooks';
 import { Routes } from '../../types';
-import { compose, replaceDynamicParam } from '../../utils';
+import { replaceDynamicParam } from '../../utils';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
@@ -38,7 +39,6 @@ import { NavigationSection } from './props';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
-  const isExpanded = false; // TODO: change that
   const {
     open: openLoginModal,
     isOpen: isLoginModalOpen,
@@ -370,19 +370,19 @@ export const Header = () => {
       },
       isLoggedIn
         ? {
-            id: 'my-account',
-            title: 'My Account',
-            action: () => {
-              console.log('hello');
-            },
-          }
-        : {
-            id: 'account',
-            title: 'Account',
-            action: () => {
-              openLoginModal();
-            },
+          id: 'my-account',
+          title: 'My Account',
+          action: () => {
+            console.log('hello');
           },
+        }
+        : {
+          id: 'account',
+          title: 'Account',
+          action: () => {
+            openLoginModal();
+          },
+        },
     ],
     [isLoggedIn, openLoginModal]
   );
@@ -392,11 +392,14 @@ export const Header = () => {
   return (
     <header className="flex fixed top-0 left-0 z-20 flex-col justify-center items-center py-6 w-screen bg-primary-900 min-h-[96px]">
       {isScreenMd ? (
-        <img
-          className="absolute left-8 h-10"
-          src={headerImage}
-          alt="Decouvre Bitcoin header logo"
-        />
+        <Link
+          to={Routes.Home}>
+          <img
+            className="absolute left-8 h-10"
+            src={headerImage}
+            alt="Decouvre Bitcoin header logo"
+          />
+        </Link>
       ) : (
         <MobileMenu sections={sections} />
       )}
