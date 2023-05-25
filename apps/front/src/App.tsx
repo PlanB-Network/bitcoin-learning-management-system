@@ -12,6 +12,7 @@ import { Builders } from './pages/Builders';
 import { Library } from './pages/Library';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
+import { UnderConstruction } from './pages/UnderConstruction';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
@@ -50,6 +51,10 @@ export const App = () => {
     <Routes>
       <Route path="/">
         <Route index element={<Home />} />
+        <Route
+          path={RoutesEnum.UnderConstruction}
+          element={<UnderConstruction />}
+        />
 
         <Route path={RoutesEnum.Resources} element={<Resources />} />
         <Route path={RoutesEnum.Library} element={<Library />} />
