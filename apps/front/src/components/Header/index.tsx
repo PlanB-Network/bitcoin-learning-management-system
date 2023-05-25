@@ -189,15 +189,15 @@ export const Header = () => {
         items: [
           {
             id: 'medias',
-            title: 'Médias',
+            title: 'Medias',
             items: [
               {
-                id: 'librairie',
-                title: 'Librairie',
+                id: 'library',
+                title: 'Library',
                 icon: IoLibraryOutline,
                 description:
                   'discover plenty of books to improve your knowledge on the bitcoin ecosystem and related economic topics',
-                path: Routes.Librairy,
+                path: Routes.Library,
               },
               {
                 id: 'newsletter',

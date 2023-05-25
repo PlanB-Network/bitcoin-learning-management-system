@@ -10,11 +10,11 @@ import { Book } from './pages/Book';
 import { Companies } from './pages/Companies';
 import { Company } from './pages/Company';
 import { Library } from './pages/Library';
+import { Ressources } from './pages/Ressources';
+import { Tutorials } from './pages/Tutorials';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
-import { Tutorials } from './pages/Tutorials';
-import { Ressources } from './pages/Ressources';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -53,7 +53,7 @@ export const App = () => {
         <Route path={RoutesEnum.Companies} element={<Companies />} />
         <Route path={RoutesEnum.Company} element={<Company />} />
 
-        <Route path={RoutesEnum.Librairy} element={<Library />} />
+        <Route path={RoutesEnum.Library} element={<Library />} />
         <Route path={RoutesEnum.Book} element={<Book />} />
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />

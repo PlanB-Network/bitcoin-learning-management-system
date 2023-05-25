@@ -7,8 +7,8 @@ export enum Routes {
   Course = '/courses/:courseId',
   // Ressources
   Ressources = '/ressources',
-  Librairy = '/librairy',
-  Book = '/librairy/:bookId',
+  Library = '/library',
+  Book = '/library/:bookId',
   Newsletter = '/newletters',
   Articles = '/articles',
   Article = '/articles/:articleId',
