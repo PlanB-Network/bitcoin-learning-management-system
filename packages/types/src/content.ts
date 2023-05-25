@@ -4,8 +4,13 @@
 export type { default as Resource } from './sql/content/Resources';
 export type { default as Tutorial } from './sql/content/Tutorials';
 export type { default as Course } from './sql/content/Courses';
+export type { default as CourseLocalized } from './sql/content/CoursesLocalized';
 export type { default as Tag } from './sql/content/Tags';
+export type { default as Podcast } from './sql/content/Podcasts';
 export type { default as Book } from './sql/content/Books';
+export type { default as BookLocalized } from './sql/content/BooksLocalized';
+export type { default as Builder } from './sql/content/Builders';
+export type { default as BuilderLocalized } from './sql/content/BuildersLocalized';
 
 export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 
