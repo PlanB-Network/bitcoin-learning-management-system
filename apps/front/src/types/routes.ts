@@ -1,14 +1,42 @@
 // TODO document each route
 
 export enum Routes {
+  /**
+   * Available in MVP
+   */
   Home = '/',
-  // Course
+  AboutUs = '/about-us',
+  UnderConstruction = '/under-construction',
+
+  // Courses
   Courses = '/courses',
   Course = '/courses/:courseId',
   // Resources
   Resources = '/resources',
+  // Resource per type
   Library = '/library',
-  Book = '/library/:bookId',
+  Book = '/library/:bookId/:language',
+  Podcasts = '/podcasts',
+  Podcast = '/podcasts/:podcastId',
+  Builders = '/builders',
+  Builder = '/builder/:builderId/:language',
+
+  // Tutorials
+  Tutorials = '/tutorials',
+  Tutorial = '/tutorial/:tutorialType',
+
+  Wallets = '/tutorials/wallets',
+  Exchanges = '/tutorials/exchanges',
+  Merchants = '/tutorials/merchants',
+  Mining = '/tutorials/mining',
+  Lightning = '/tutorials/lightning',
+  Node = '/tutorials/nodes',
+
+  Profile = '/profile',
+
+  /**
+   * For later use
+   */
   Newsletter = '/newletters',
   Articles = '/articles',
   Article = '/articles/:articleId',
@@ -16,27 +44,14 @@ export enum Routes {
   Interview = '/interview/:interviewId',
   Videos = '/videos',
   Video = '/videos/:videoId',
-  Podcasts = '/podcasts',
-  Podcast = '/podcasts/:podcastId',
   Tools = '/tools',
   Tool = '/tools/:toolId',
   BIPs = '/bips',
   BIP = '/bips/:bipId',
   Conferences = '/conferences',
   Conference = '/conferences/:conferenceId',
-  Companies = '/companies',
-  Company = '/companies/:companyId',
   Lexique = '/lexique',
   Calendar = '/calendar',
-  // Tutorials
-  Tutorials = '/tutorials',
-  Tutorial = '/tutorial/:tutorialType',
-  Wallets = '/tutorials/wallets',
-  Exchanges = '/tutorials/exchanges',
-  Ordinal = '/tutorials/ordinal',
-  Lightning = '/tutorials/lightning',
-  Node = '/tutorials/nodes',
-  Mining = '/tutorials/mining',
   // Contact
   Contact = '/contact',
 }

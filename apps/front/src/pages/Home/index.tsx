@@ -60,7 +60,6 @@ export const Home = () => {
                 className="justify-center mt-3"
                 variant="secondary"
                 type="button"
-                outlined
               >
                 Notre dernière formation : BTC 205
               </Button>

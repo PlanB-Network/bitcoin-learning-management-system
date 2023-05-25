@@ -11,14 +11,16 @@ export const FlyingMenuSubSection = ({
 }: FlyingMenuSubSectionProps) => {
   return (
     <div className="m-6">
-      <h3
-        className={compose(
-          'text-lg text-primary-800 font-primary',
-          'items' in subSection ? 'mb-3' : ''
-        )}
-      >
-        {subSection.title}
-      </h3>
+      {subSection.title && (
+        <h3
+          className={compose(
+            'text-lg text-primary-800 font-primary',
+            'items' in subSection ? 'mb-3' : ''
+          )}
+        >
+          {subSection.title}
+        </h3>
+      )}
       {'items' in subSection &&
         subSection.items.map((item) => (
           <MenuElement key={item.id} element={item} />

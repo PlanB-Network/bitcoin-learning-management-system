@@ -2,7 +2,7 @@ import { IconType } from 'react-icons';
 
 export interface NavigationBaseItem {
   id: string;
-  title: string;
+  title?: string;
 }
 
 type ActionOrPath = { action: () => void } | { path: string };

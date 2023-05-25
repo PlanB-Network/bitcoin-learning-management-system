@@ -46,7 +46,7 @@ services:
     extends:
       file: ./compose.base.yml
       service: nx-app-base
-    command: pnpm nx watch --all -- nx run $$NX_PROJECT_NAME:build
+    command: pnpm nx watch --projects=api,api-server,api-client,content,database,types --includeDependentProjects -- nx run $$NX_PROJECT_NAME:build
 
 volumes:
   postgres:

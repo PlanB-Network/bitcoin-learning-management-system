@@ -3,17 +3,18 @@ import { ButtonHTMLAttributes, DetailedHTMLProps, useMemo } from 'react';
 import { compose } from '../../utils';
 import { BaseAtomProps } from '../types';
 
-interface ButtonProps extends BaseAtomProps {
+interface ButtonProps
+  extends BaseAtomProps,
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    > {
   children: string;
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  variant?: 'primary' | 'secondary' | 'soft' | 'text';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
   rounded?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
-  buttonProps?: DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >;
 }
 
 const classesBySize = {
@@ -27,6 +28,7 @@ const classesBySize = {
 const classesByVariant = {
   primary:
     'text-white bg-primary-700 hover:bg-primary-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
+  tertiary: 'bg-orange-800 text-white font-normal',
   secondary:
     'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-primary-100',
   soft: 'bg-primary-50 text-primary-600 shadow-sm hover:bg-primary-100',
@@ -38,10 +40,10 @@ export const Button = ({
   size,
   variant,
   rounded,
-  buttonProps,
   iconLeft,
   iconRight,
   className,
+  ...buttonProps
 }: ButtonProps) => {
   const classes = useMemo(
     () => [
