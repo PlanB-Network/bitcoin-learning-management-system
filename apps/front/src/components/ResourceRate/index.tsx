@@ -1,10 +1,10 @@
 import { compose } from '../../utils';
 
-interface RessourceRateProps {
+interface ResourceRateProps {
   rate: number;
 }
 
-export const ResourceRate = ({ rate }: RessourceRateProps) => {
+export const ResourceRate = ({ rate }: ResourceRateProps) => {
   return (
     <div>
       <div className="mx-auto mb-2 w-max text-2xl font-semibold uppercase text-primary-800">

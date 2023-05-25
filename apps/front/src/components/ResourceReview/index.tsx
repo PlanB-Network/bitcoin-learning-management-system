@@ -2,7 +2,7 @@ import { Card } from '../../atoms/Card';
 import { Contributor } from '../Contributor';
 import { ResourceRate } from '../ResourceRate';
 
-interface RessourceReviewProps {
+interface ResourceReviewProps {
   comments: { content: string }[];
 }
 
