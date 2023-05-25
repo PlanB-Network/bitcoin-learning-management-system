@@ -183,9 +183,9 @@ export const Header = () => {
         ],
       },
       {
-        id: 'ressources',
-        title: 'Ressources',
-        path: Routes.Ressources,
+        id: 'resources',
+        title: 'Resources',
+        path: Routes.Resources,
         items: [
           {
             id: 'medias',

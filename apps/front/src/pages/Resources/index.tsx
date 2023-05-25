@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
-import articleSvg from '../../assets/ressources/article.svg';
-import bookSvg from '../../assets/ressources/book.svg';
-import couchSvg from '../../assets/ressources/couch.svg';
-import documentarySvg from '../../assets/ressources/documentary.svg';
-import microSvg from '../../assets/ressources/micro.svg';
-import newsletterSvg from '../../assets/ressources/newsletter.svg';
-import rabbitInLibrary from '../../assets/ressources/rabbit-in-library.svg';
-import videoSvg from '../../assets/ressources/video.svg';
+
+import articleSvg from '../../assets/resources/article.svg';
+import bookSvg from '../../assets/resources/book.svg';
+import couchSvg from '../../assets/resources/couch.svg';
+import documentarySvg from '../../assets/resources/documentary.svg';
+import microSvg from '../../assets/resources/micro.svg';
+import newsletterSvg from '../../assets/resources/newsletter.svg';
+import rabbitInLibrary from '../../assets/resources/rabbit-in-library.svg';
+import videoSvg from '../../assets/resources/video.svg';
 import { MainLayout } from '../../components';
 import { Routes } from '../../types';
 
-enum RessourceKinds {
+enum ResourceKinds {
   Book = 'book',
   Article = 'article',
   Documentary = 'documentary',
@@ -20,52 +21,52 @@ enum RessourceKinds {
   Video = 'video',
 }
 
-const ressourceKinds = [
+const resourceKinds = [
   {
-    kind: RessourceKinds.Book,
+    kind: ResourceKinds.Book,
     title: 'Book',
     image: bookSvg,
     route: Routes.Library
   },
   {
-    kind: RessourceKinds.Article,
+    kind: ResourceKinds.Article,
     title: 'Article',
     image: articleSvg,
     route: Routes.Article
   },
   {
-    kind: RessourceKinds.Documentary,
+    kind: ResourceKinds.Documentary,
     title: 'Movie Documentary',
     image: documentarySvg,
     route: Routes.Home
   },
   {
-    kind: RessourceKinds.Newsletter,
+    kind: ResourceKinds.Newsletter,
     title: 'Newsletter',
     image: newsletterSvg,
     route: Routes.Newsletter
   },
   {
-    kind: RessourceKinds.Podcast,
+    kind: ResourceKinds.Podcast,
     title: 'Podcast',
     image: microSvg,
     route: Routes.Podcasts
   },
   {
-    kind: RessourceKinds.Conference,
+    kind: ResourceKinds.Conference,
     title: 'Conference',
     image: couchSvg,
     route: Routes.Conferences
   },
   {
-    kind: RessourceKinds.Video,
+    kind: ResourceKinds.Video,
     title: 'Video',
     image: videoSvg,
     route: Routes.Videos
   },
 ];
 
-export const Ressources = () => {
+export const Resources = () => {
   return (
     <MainLayout>
       <div className="bg-primary-700">
@@ -86,25 +87,25 @@ export const Ressources = () => {
               <p>Rogzy</p>
             </div>
           </div>
-          <img className="mt-10 mb-20 h-96" src={rabbitInLibrary} />
+          <img className="mt-10 mb-40 h-96" src={rabbitInLibrary} />
         </div>
 
         <div className="box-content ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-[50px] bg-primary-700">
-          {ressourceKinds.map((ressourceKind) => (
-            <Link to={ressourceKind.route}>
+          {resourceKinds.map((resourceKind) => (
+            <Link to={resourceKind.route}>
               <div
                 className="box-content flex relative flex-row p-2 my-4 w-60 h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
-                key={ressourceKind.kind}
+                key={resourceKind.kind}
               >
                 <div className="flex absolute z-0 w-24 h-24 rounded-full bg-secondary-400">
                   <img
                     className="h-16 m-auto"
-                    src={ressourceKind.image}
+                    src={resourceKind.image}
                   />
                 </div>
                 <div className="flex relative flex-row items-center ml-14">
                   <h3 className="relative ml-12 text-2xl text-white z-1">
-                    {ressourceKind.title}
+                    {resourceKind.title}
                   </h3>
                 </div>
               </div>

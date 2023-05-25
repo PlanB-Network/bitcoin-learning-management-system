@@ -1,20 +1,20 @@
-interface OtherSimilarRessourcesProps {
-  ressources: { title: string; id: string; image?: string }[];
+interface OtherSimilarResourcesProps {
+  resources: { title: string; id: string; image?: string }[];
   title?: string;
 }
 
-export const OtherSimilarRessources = ({
-  ressources,
+export const OtherSimilarResources = ({
+  resources,
   title,
-}: OtherSimilarRessourcesProps) => {
+}: OtherSimilarResourcesProps) => {
   return (
     <div className="pt-12 pb-20 w-full bg-primary-900">
       <h4 className="mx-auto mb-8 w-max text-4xl text-white">
-        {title ?? 'Other similar ressources'}
+        {title ?? 'Other similar resources'}
       </h4>
 
       <div className="flex flex-row justify-center space-x-10">
-        {ressources.map(({ id, image, title }) =>
+        {resources.map(({ id, image, title }) =>
           image ? (
             <div
               key={id}
@@ -22,7 +22,7 @@ export const OtherSimilarRessources = ({
             >
               <img
                 className="w-full opacity-100 duration-200 group-hover:opacity-0"
-                alt="ressource preview"
+                alt="resource preview"
                 src={image}
               />
               <div className="absolute top-1/2 left-1/2 w-max max-w-full text-center text-transparent duration-300 -translate-x-1/2 -translate-y-1/2 group-hover:text-primary-800">

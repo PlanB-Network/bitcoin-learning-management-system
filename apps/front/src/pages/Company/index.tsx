@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import companyImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
 import { PageTitle } from '../../components/PageTitle';
-import { RelatedRessources } from '../../components/RelatedRessources';
+import { RelatedResources } from '../../components/RelatedResources';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 
@@ -65,7 +65,7 @@ export const Company = () => {
             Multisig Vaults.
           </p>
 
-          <RelatedRessources
+          <RelatedResources
             tutoriel={[{ label: 'Seed signer Device' }]}
             interview={[
               {

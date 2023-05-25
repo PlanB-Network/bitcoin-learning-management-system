@@ -4,7 +4,7 @@ interface RessourceRateProps {
   rate: number;
 }
 
-export const RessourceRate = ({ rate }: RessourceRateProps) => {
+export const ResourceRate = ({ rate }: RessourceRateProps) => {
   return (
     <div>
       <div className="mx-auto mb-2 w-max text-2xl font-semibold uppercase text-primary-800">

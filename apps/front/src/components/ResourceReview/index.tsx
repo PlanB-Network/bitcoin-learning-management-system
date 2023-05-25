@@ -1,15 +1,15 @@
 import { Card } from '../../atoms/Card';
 import { Contributor } from '../Contributor';
-import { RessourceRate } from '../RessourceRate';
+import { ResourceRate } from '../ResourceRate';
 
 interface RessourceReviewProps {
   comments: { content: string }[];
 }
 
-export const RessourceReview = () => {
+export const ResourceReview = () => {
   return (
     <div className="flex flex-col justify-between w-full h-full">
-      <RessourceRate rate={4.2} />
+      <ResourceRate rate={4.2} />
 
       <Card>
         <div className="flex flex-row">

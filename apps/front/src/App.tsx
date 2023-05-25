@@ -10,7 +10,7 @@ import { Book } from './pages/Book';
 import { Companies } from './pages/Companies';
 import { Company } from './pages/Company';
 import { Library } from './pages/Library';
-import { Ressources } from './pages/Ressources';
+import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
@@ -58,7 +58,7 @@ export const App = () => {
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
-        <Route path={RoutesEnum.Ressources} element={<Ressources />} />
+        <Route path={RoutesEnum.Resources} element={<Resources />} />
 
         <Route path="*" element={<h1>TODO</h1>} />
       </Route>

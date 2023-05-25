@@ -1,9 +1,9 @@
 import { Button } from '../../atoms/Button';
 import { Tag } from '../../atoms/Tag';
 import { MainLayout } from '../../components';
-import { OtherSimilarRessources } from '../../components/OtherSimilarRessources';
-import { RelatedRessources } from '../../components/RelatedRessources';
-import { RessourceReview } from '../../components/RessourceReview';
+import { OtherSimilarResources } from '../../components/OtherSimilarResources';
+import { RelatedResources } from '../../components/RelatedResources';
+import { ResourceReview } from '../../components/ResourceReview';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 
@@ -65,7 +65,7 @@ export const Book = () => {
               </p>
             </div>
 
-            <RelatedRessources
+            <RelatedResources
               audioBook={[{ label: 'Need to be recorded!' }]}
               interview={[
                 {
@@ -100,13 +100,13 @@ export const Book = () => {
           />
 
           <div className="py-4 max-w-lg">
-            <RessourceReview />
+            <ResourceReview />
           </div>
         </div>
 
-        <OtherSimilarRessources
+        <OtherSimilarResources
           title="Proposition de lecture"
-          ressources={[
+          resources={[
             {
               title: 'Discours de la servitude volontaire',
               id: 'discours-de-la-servitude-volontaire',
