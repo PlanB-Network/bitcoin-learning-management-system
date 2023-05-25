@@ -14,12 +14,14 @@ export const syncProcedure = publicProcedure
     const getAllRepoFiles = createGetAllRepoFiles(ctx.dependencies.octokit);
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
-    getAllRepoFiles('blc-org/sovereignacademy-data').then(async (files) => {
-      processChangedFiles(
-        files,
-        'https://github.com/blc-org/sovereignacademy-data'
-      );
-    });
+    getAllRepoFiles('DecouvreBitcoin/sovereign-university-data').then(
+      async (files) => {
+        processChangedFiles(
+          files,
+          'https://github.com/DecouvreBitcoin/sovereign-university-data'
+        );
+      }
+    );
 
     return;
   });
