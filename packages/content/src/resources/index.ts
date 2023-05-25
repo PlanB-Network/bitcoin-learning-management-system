@@ -56,37 +56,41 @@ export const groupByResource = (files: ChangedFile[], baseUrl: string) => {
   const groupedResources = new Map<string, ChangedResource>();
 
   for (const file of resourceFiles) {
-    const {
-      category,
-      path: resourcePath,
-      language,
-    } = parseDetailsFromPath(file.path);
-
-    const resource =
-      groupedResources.get(resourcePath) ||
-      ({
-        type: 'resources',
+    try {
+      const {
         category,
         path: resourcePath,
-        sourceUrl: `${baseUrl}/blob/${file.commit}/${resourcePath}`,
-        files: [],
-        assets: [],
-      } as ChangedResource);
-
-    if (file.isAsset) {
-      resource.assets.push({
-        ...file,
-        path: getRelativePath(file.path, resourcePath),
-      });
-    } else {
-      resource.files.push({
-        ...file,
-        path: getRelativePath(file.path, resourcePath),
         language,
-      });
-    }
+      } = parseDetailsFromPath(file.path);
 
-    groupedResources.set(resourcePath, resource);
+      const resource =
+        groupedResources.get(resourcePath) ||
+        ({
+          type: 'resources',
+          category,
+          path: resourcePath,
+          sourceUrl: `${baseUrl}/blob/${file.commit}/${resourcePath}`,
+          files: [],
+          assets: [],
+        } as ChangedResource);
+
+      if (file.isAsset) {
+        resource.assets.push({
+          ...file,
+          path: getRelativePath(file.path, resourcePath),
+        });
+      } else {
+        resource.files.push({
+          ...file,
+          path: getRelativePath(file.path, resourcePath),
+          language,
+        });
+      }
+
+      groupedResources.set(resourcePath, resource);
+    } catch {
+      console.warn(`Unsupported path ${file.path}, skipping file...`);
+    }
   }
 
   return Array.from(groupedResources.values());

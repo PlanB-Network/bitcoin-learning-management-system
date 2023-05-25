@@ -57,37 +57,41 @@ export const groupByTutorial = (files: ChangedFile[], baseUrl: string) => {
   const groupedTutorials = new Map<string, ChangedTutorial>();
 
   for (const file of tutorialsFiles) {
-    const {
-      category,
-      path: tutorialPath,
-      language,
-    } = parseDetailsFromPath(file.path);
-
-    const course =
-      groupedTutorials.get(tutorialPath) ||
-      ({
-        type: 'tutorials',
+    try {
+      const {
         category,
         path: tutorialPath,
-        sourceUrl: `${baseUrl}/blob/${file.commit}/${tutorialPath}`,
-        files: [],
-        assets: [],
-      } as ChangedTutorial);
-
-    if (file.isAsset) {
-      course.assets.push({
-        ...file,
-        path: getRelativePath(file.path, tutorialPath),
-      });
-    } else {
-      course.files.push({
-        ...file,
-        path: getRelativePath(file.path, tutorialPath),
         language,
-      });
-    }
+      } = parseDetailsFromPath(file.path);
 
-    groupedTutorials.set(tutorialPath, course);
+      const course =
+        groupedTutorials.get(tutorialPath) ||
+        ({
+          type: 'tutorials',
+          category,
+          path: tutorialPath,
+          sourceUrl: `${baseUrl}/blob/${file.commit}/${tutorialPath}`,
+          files: [],
+          assets: [],
+        } as ChangedTutorial);
+
+      if (file.isAsset) {
+        course.assets.push({
+          ...file,
+          path: getRelativePath(file.path, tutorialPath),
+        });
+      } else {
+        course.files.push({
+          ...file,
+          path: getRelativePath(file.path, tutorialPath),
+          language,
+        });
+      }
+
+      groupedTutorials.set(tutorialPath, course);
+    } catch {
+      console.warn(`Unsupported path ${file.path}, skipping file...`);
+    }
   }
 
   return Array.from(groupedTutorials.values());
@@ -96,8 +100,6 @@ export const groupByTutorial = (files: ChangedFile[], baseUrl: string) => {
 export const createProcessChangedTutorial =
   (dependencies: Dependencies) => async (tutorial: ChangedTutorial) => {
     const { postgres } = dependencies;
-
-    console.log(tutorial);
 
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 

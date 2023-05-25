@@ -46,10 +46,20 @@ export const separateContentFiles = (
  * @returns Relative path of the file
  */
 export const getRelativePath = (fullPath: string, directoryPath?: string) => {
-  const path = directoryPath ? fullPath.replace(directoryPath, '') : fullPath;
-  const pathElements = path.split('/');
+  let path = fullPath;
 
-  return pathElements[0] === 'assets' ? pathElements.slice(1).join('/') : path;
+  if (directoryPath) {
+    path = fullPath.replace(directoryPath, '');
+  }
+
+  if (path.startsWith('/')) {
+    path = path.slice(1);
+  }
+
+  const pathElements = path.split('/');
+  return pathElements[0] === 'assets'
+    ? pathElements.slice(1).join('/')
+    : pathElements.join('/');
 };
 
 /**

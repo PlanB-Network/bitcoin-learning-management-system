@@ -51,33 +51,41 @@ export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
   const groupedCourses = new Map<string, ChangedCourse>();
 
   for (const file of coursesFiles) {
-    const { id, path: coursePath, language } = parseDetailsFromPath(file.path);
-
-    const course =
-      groupedCourses.get(coursePath) ||
-      ({
-        type: 'courses',
+    try {
+      const {
         id,
         path: coursePath,
-        sourceUrl: `${baseUrl}/blob/${file.commit}/${coursePath}`,
-        files: [],
-        assets: [],
-      } as ChangedCourse);
-
-    if (file.isAsset) {
-      course.assets.push({
-        ...file,
-        path: getRelativePath(file.path, coursePath),
-      });
-    } else {
-      course.files.push({
-        ...file,
-        path: getRelativePath(file.path, coursePath),
         language,
-      });
-    }
+      } = parseDetailsFromPath(file.path);
 
-    groupedCourses.set(coursePath, course);
+      const course =
+        groupedCourses.get(coursePath) ||
+        ({
+          type: 'courses',
+          id,
+          path: coursePath,
+          sourceUrl: `${baseUrl}/blob/${file.commit}/${coursePath}`,
+          files: [],
+          assets: [],
+        } as ChangedCourse);
+
+      if (file.isAsset) {
+        course.assets.push({
+          ...file,
+          path: getRelativePath(file.path, coursePath),
+        });
+      } else {
+        course.files.push({
+          ...file,
+          path: getRelativePath(file.path, coursePath),
+          language,
+        });
+      }
+
+      groupedCourses.set(coursePath, course);
+    } catch {
+      console.warn(`Unsupported path ${file.path}, skipping file...`);
+    }
   }
 
   return Array.from(groupedCourses.values());
@@ -115,8 +123,6 @@ const extractChapters = (markdown: string): Chapter[] => {
 export const createProcessChangedCourse =
   (dependencies: Dependencies) => async (course: ChangedCourse) => {
     const { postgres } = dependencies;
-
-    console.log(course);
 
     const { main, files } = separateContentFiles(course, 'course.yml');
 

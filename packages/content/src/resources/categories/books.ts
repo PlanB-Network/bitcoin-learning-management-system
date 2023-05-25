@@ -40,10 +40,9 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
 
   return async (resource: ChangedResource) => {
     return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-
       const { main, files } = separateContentFiles(resource, 'book.yml');
 
+      const processMainFile = createProcessMainFile(transaction);
       await processMainFile(resource, main);
 
       const id = await transaction<Resource[]>`

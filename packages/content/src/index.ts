@@ -1,5 +1,6 @@
 import type { ChangedFile } from '@sovereign-academy/types';
 
+import { supportedContentTypes } from './const';
 import { createProcessChangedCourse, groupByCourse } from './courses';
 import type { Dependencies } from './dependencies';
 import { createProcessChangedResource, groupByResource } from './resources';
@@ -10,6 +11,10 @@ export { computeAssetRawUrl } from './utils';
 export const createProcessChangedFiles =
   (dependencies: Dependencies) =>
   async (content: ChangedFile[], baseUrl: string) => {
+    const filteredFiles = content.filter((file) =>
+      supportedContentTypes.some((value) => file.path.startsWith(value))
+    );
+
     const processChangedResource = createProcessChangedResource(dependencies);
     const processChangedCourse = createProcessChangedCourse(dependencies);
     const processChangedTutorial = createProcessChangedTutorial(dependencies);
@@ -17,7 +22,7 @@ export const createProcessChangedFiles =
     /*
      * Resources
      */
-    const resources = groupByResource(content, baseUrl);
+    const resources = groupByResource(filteredFiles, baseUrl);
     for (const resource of resources) {
       // console.log(resource);
       await processChangedResource(resource);
@@ -26,7 +31,7 @@ export const createProcessChangedFiles =
     /*
      * Courses
      */
-    const courses = groupByCourse(content, baseUrl);
+    const courses = groupByCourse(filteredFiles, baseUrl);
     for (const course of courses) {
       await processChangedCourse(course);
     }
@@ -34,7 +39,7 @@ export const createProcessChangedFiles =
     /*
      * Tutorials
      */
-    const tutorials = groupByTutorial(content, baseUrl);
+    const tutorials = groupByTutorial(filteredFiles, baseUrl);
     for (const tutorial of tutorials) {
       await processChangedTutorial(tutorial);
     }

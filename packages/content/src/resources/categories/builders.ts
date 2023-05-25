@@ -77,7 +77,7 @@ export const createProcessChangedBuilder = (dependencies: Dependencies) => {
 
         await transaction`
           INSERT INTO content.builders_localized (builder_id, language, description)
-          VALUES (${id}, ${file.language}, ${parsed.description})
+          VALUES (${id}, ${file.language}, ${parsed.description.trim()})
           ON CONFLICT (builder_id, language) DO UPDATE SET
             description = EXCLUDED.description
         `.then(firstRow);
