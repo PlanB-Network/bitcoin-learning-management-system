@@ -5,14 +5,14 @@ import { PageTitle } from '../../components/PageTitle';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 
-export const Companies = () => {
+export const Builders = () => {
   return (
     <MainLayout>
       <div>
-        <PageTitle>Companies</PageTitle>
+        <PageTitle>Builders</PageTitle>
 
         <Link
-          to={replaceDynamicParam(Routes.Company, { companyId: 'seedsigner' })}
+          to={replaceDynamicParam(Routes.Builder, { builderId: 'seedsigner' })}
         >
           Seedsigner
         </Link>

@@ -1,21 +1,21 @@
 import { useParams } from 'react-router-dom';
 
-import companyImage from '../../assets/placeholder-assets/seedsigner.jpg';
+import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
 import { PageTitle } from '../../components/PageTitle';
 import { RelatedResources } from '../../components/RelatedResources';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 
-export const Company = () => {
-  const { companyId } = useParams();
+export const Builder = () => {
+  const { builderId } = useParams();
   return (
     <MainLayout>
-      <PageTitle>{companyId}</PageTitle>
+      <PageTitle>{builderId}</PageTitle>
       <div className="flex flex-row justify-evenly items-start m-10">
         <img
           className="mx-12 my-4 w-64 h-auto"
-          src={companyImage}
+          src={builderImage}
           alt="something representing the company"
         />
         <div className="flex flex-col mr-12 space-y-4 text-sm">
