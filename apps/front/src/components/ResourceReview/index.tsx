@@ -19,7 +19,7 @@ export const ResourceReview = () => {
                 username: 'Asi0',
                 title: 'Bitcoiner',
                 image:
-                  'https://s3-alpha-sig.figma.com/img/f78f/1e1b/31b02829439b7d99accf532e11433adb?Expires=1684108800&Signature=XX34dFwoAxGVmh2oqiWSHvy0Ib4cv63pHM3I-ZTobT~DupI42GWVAUjhGpeC5~hRPa~cT-QHeLmk1-plXSvuu55v29uy7bv80l6xo4OLKc4HgFKSoRh9-fOiA~SE5Hb8bcq4flhELEQhfLhKmeF8fykdrNmEtsYB0VlR~C8iIB80ghRWIGzko4lE0VqOeOg9nXh8PMBtLC7DEwtE2XlqtohPOD-htwnMjkmjUn~wKYPfw04N7o8nwDM7KzjsEKxCyb~qpPr899vKVy6Mame9wBoUX83ESzgE~xCgLduQI~4t77UTDXjxG5Qkdsvm4no7ec0oamB0fHKaTwPoViiZbA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                  'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
               }}
             />
           </div>

@@ -53,11 +53,11 @@ export const Home = () => {
             </p>
 
             <div className="flex flex-col mt-12">
-              <Button className="justify-center mt-3" type="button">
+              <Button className="mt-3" type="button">
                 BTC 101 - Pour débuter en toute sécurité!
               </Button>
               <Button
-                className="justify-center mt-3"
+                className="mt-3"
                 variant="secondary"
                 type="button"
               >

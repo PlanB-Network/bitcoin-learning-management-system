@@ -5,10 +5,10 @@ import { BaseAtomProps } from '../types';
 
 interface ButtonProps
   extends BaseAtomProps,
-    DetailedHTMLProps<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    > {
+  DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   children: string;
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
@@ -58,7 +58,7 @@ export const Button = ({
     <button
       className={compose(
         ...classes,
-        'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
+        'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
         className ?? ''
       )}
       {...buttonProps}

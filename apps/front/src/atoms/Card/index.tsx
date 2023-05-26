@@ -10,7 +10,7 @@ export const Card = ({ image, children, className }: CardProps) => {
   return (
     <div
       className={compose(
-        'm-2 bg-white rounded-lg border border-gray-200 shadow',
+        'm-2 bg-gray-100 rounded-3xl border border-gray-200 shadow',
         className ?? ''
       )}
     >
