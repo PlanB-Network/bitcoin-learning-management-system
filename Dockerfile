@@ -4,7 +4,8 @@ RUN apk add -U \
      python3 \
      g++ \
      make \
-     cmake 
+     cmake \
+     git 
 
 RUN npm install --global pnpm@7
 
@@ -23,6 +24,6 @@ COPY package.json pnpm-workspace.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
-RUN apk del python3 cmake make g++ git
+RUN apk del python3 cmake make g++
 
 COPY . .

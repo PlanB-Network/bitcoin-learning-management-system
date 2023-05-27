@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { createProcessChangedFiles } from '@sovereign-academy/content';
-import { createGetAllRepoFiles } from '@sovereign-academy/github';
+import { getAllRepoFiles } from '@sovereign-academy/github';
 
 import { publicProcedure } from '../../trpc';
 
@@ -11,17 +11,16 @@ export const syncProcedure = publicProcedure
   .input(z.void())
   .output(z.void())
   .mutation(async ({ ctx }) => {
-    const getAllRepoFiles = createGetAllRepoFiles(ctx.dependencies.octokit);
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
-    getAllRepoFiles('DecouvreBitcoin/sovereign-university-data').then(
-      async (files) => {
-        processChangedFiles(
-          files,
-          'https://github.com/DecouvreBitcoin/sovereign-university-data'
-        );
-      }
-    );
+    getAllRepoFiles(
+      'https://github.com/DecouvreBitcoin/sovereign-university-data.git'
+    ).then(async (files) => {
+      processChangedFiles(
+        files,
+        'https://github.com/DecouvreBitcoin/sovereign-university-data'
+      );
+    });
 
     return;
   });

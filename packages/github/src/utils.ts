@@ -1,4 +1,8 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
 import * as async from 'async';
+import { simpleGit } from 'simple-git';
 
 import { ChangeKind, ChangedFile } from '@sovereign-academy/types';
 
@@ -99,31 +103,93 @@ export const createGetChangedFiles =
     }
   };
 
-export const createGetAllRepoFiles =
-  (octokit: GithubOctokit) =>
-  async (repository: string, from?: number, to?: number) => {
-    const { repoOwner, repoName } = parseRepository(repository);
+/**
+ * Walk a directory recursively to get files inside it
+ *
+ * @param directory - Directory path
+ * @param ignore - Ignore some patterns
+ * @param only - Get only those files
+ * @returns List of files in the directory
+ */
+export const walk = async (
+  directory: string,
+  ignore: string[] = []
+): Promise<string[]> => {
+  const files = await fs.readdir(directory);
 
-    const getChangedFiles = createGetChangedFiles(octokit);
+  const parsedFiles = await async.map(files, async (file: string) => {
+    const filePath = path.join(directory, file);
+    const stats = await fs.stat(filePath);
 
-    const commits = await octokit.paginate(octokit.rest.repos.listCommits, {
-      owner: repoOwner,
-      repo: repoName,
-      ...(from && { since: new Date(from).toISOString() }),
-      ...(to && { until: new Date(to).toISOString() }),
+    if (stats.isDirectory() && !ignore.includes(file)) {
+      return walk(filePath, ignore);
+    }
+
+    if (stats.isFile() && !ignore.some((x) => file.includes(x))) {
+      return [filePath];
+    }
+
+    return [];
+  });
+
+  return parsedFiles.flat();
+};
+
+const pathExists = async (path: string) =>
+  fs
+    .stat(path)
+    .then(() => true)
+    .catch(() => false);
+
+export const getAllRepoFiles = async (repository: string) => {
+  const tmpDir = `/tmp/sovereign-university-data`;
+
+  const git = simpleGit();
+
+  try {
+    // Check if the repository already exists locally
+    if (
+      (await pathExists(tmpDir)) &&
+      (await pathExists(path.join(tmpDir, '.git')))
+    ) {
+      // Pull updates
+      await git.cwd(tmpDir).pull();
+    } else {
+      // Clone the repository
+      await git.clone(repository, tmpDir);
+    }
+
+    // Read all the files
+    const files = await walk(path.resolve(tmpDir), ['.git']);
+
+    const finalFiles = await async.mapLimit(files, 10, async (file: string) => {
+      const relativePath = file.replace(`${tmpDir}/`, '');
+
+      const fileLog = await git.log({ file });
+      const isAsset = relativePath.includes('assets');
+
+      return {
+        path: relativePath,
+        commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+        time: new Date(
+          fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
+        ).getTime(),
+        kind: 'added',
+        ...(isAsset
+          ? // If the file is an asset, we don't need to read the raw data as we will
+            // get it directl from the GitHub CDN
+            { isAsset }
+          : // If the file isn't an asset, then it is a text file (markdown, yaml, etc.) and
+            // we need to read the raw data
+            { isAsset, data: await fs.readFile(file, 'utf-8') }),
+      } as ChangedFile;
     });
 
-    const oldestCommit = commits[commits.length - 1];
-    const newestCommit = commits[0];
-
-    const files = await getChangedFiles(
-      repository,
-      oldestCommit.sha,
-      newestCommit.sha
-    );
-
-    return files;
-  };
+    return finalFiles;
+  } catch (error) {
+    throw new Error(`Failed to clone and read all repo files: ${error}`);
+  }
+};
 
 const isRenamed = (
   changeKind: ChangeKind

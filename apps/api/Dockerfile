@@ -12,7 +12,9 @@ ENV PORT=3000
 WORKDIR /app
 
 RUN addgroup --system api && \
-          adduser --system -G api api
+    adduser --system -G api api
+
+RUN apk add -U git
 
 COPY dist/apps/api api
 RUN chown -R api:api .
