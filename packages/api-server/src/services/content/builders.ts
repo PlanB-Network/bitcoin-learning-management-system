@@ -1,16 +1,6 @@
-import { Builder, BuilderLocalized, Resource } from '@sovereign-academy/types';
+import { JoinedBuilder } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
-
-type JoinedBuilder = Pick<
-  Resource,
-  'id' | 'path' | 'last_updated' | 'last_commit'
-> &
-  Pick<
-    Builder,
-    'name' | 'website_url' | 'twitter_url' | 'github_url' | 'nostr'
-  > &
-  Pick<BuilderLocalized, 'language' | 'description'>;
 
 export const createGetBuilders =
   (dependencies: Dependencies) => async (language?: string) => {

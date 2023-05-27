@@ -1,7 +1,13 @@
+import {
+  JoinedBook,
+  JoinedBuilder,
+  JoinedPodcast,
+} from '@sovereign-academy/types';
+
 import { sql } from '../../index';
 
 export const getBookQuery = (id: number, language?: string) => {
-  return sql`
+  return sql<JoinedBook[]>`
     SELECT 
       r.id, r.path, bl.language, b.level, bl.title, b.author, bl.translator, 
       bl.description, bl.publisher, bl.publication_date, bl.cover, bl.summary_text, 
@@ -16,7 +22,7 @@ export const getBookQuery = (id: number, language?: string) => {
 };
 
 export const getBuilderQuery = (id: number, language?: string) => {
-  return sql`
+  return sql<JoinedBuilder[]>`
     SELECT 
       r.id, r.path, bl.language, b.name, b.website_url, b.twitter_url, 
       b.github_url, b.nostr, bl.description, r.last_updated, r.last_commit
@@ -29,7 +35,7 @@ export const getBuilderQuery = (id: number, language?: string) => {
 };
 
 export const getPodcastQuery = (id: number, language?: string) => {
-  return sql`
+  return sql<JoinedPodcast[]>`
     SELECT 
       r.id, r.path, p.language, p.name, p.host, p.description, p.website_url, 
       p.twitter_url, p.podcast_url, p.nostr, r.last_updated, r.last_commit

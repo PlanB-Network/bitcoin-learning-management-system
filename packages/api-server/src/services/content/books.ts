@@ -1,28 +1,7 @@
 import { computeAssetRawUrl } from '@sovereign-academy/content';
-import { Book, BookLocalized, Resource } from '@sovereign-academy/types';
+import { JoinedBook } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
-
-type JoinedBook = Pick<
-  Resource,
-  'id' | 'path' | 'last_updated' | 'last_commit'
-> &
-  Pick<Book, 'author' | 'level' | 'website_url'> &
-  Pick<
-    BookLocalized,
-    | 'language'
-    | 'title'
-    | 'translator'
-    | 'description'
-    | 'publisher'
-    | 'publication_date'
-    | 'cover'
-    | 'summary_text'
-    | 'summary_contributor_id'
-    | 'shop_url'
-    | 'download_url'
-    | 'original'
-  >;
 
 export const createGetBooks =
   (dependencies: Dependencies) => async (language?: string) => {

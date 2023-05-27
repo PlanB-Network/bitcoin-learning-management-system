@@ -1,22 +1,6 @@
-import { Podcast, Resource } from '@sovereign-academy/types';
+import { JoinedPodcast } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
-
-type JoinedPodcast = Pick<
-  Resource,
-  'id' | 'path' | 'last_updated' | 'last_commit'
-> &
-  Pick<
-    Podcast,
-    | 'language'
-    | 'name'
-    | 'host'
-    | 'description'
-    | 'website_url'
-    | 'twitter_url'
-    | 'podcast_url'
-    | 'nostr'
-  >;
 
 export const createGetPodcasts =
   (dependencies: Dependencies) => async (language?: string) => {
