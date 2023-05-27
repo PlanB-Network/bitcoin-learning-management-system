@@ -10,7 +10,7 @@ export enum Routes {
 
   // Courses
   Courses = '/courses',
-  Course = '/courses/:courseId',
+  Course = '/course/:courseId',
   // Resources
   Resources = '/resources',
   // Resource per type
