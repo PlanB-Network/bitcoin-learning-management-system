@@ -48,7 +48,7 @@ export const Book = () => {
 
                   <div className="text-xs">
                     <h5>{book?.author}</h5>
-                    <h5>Date: {book?.publication_date}</h5>
+                    <h5>Date: {book?.publication_year}</h5>
                   </div>
                 </div>
 

@@ -18,7 +18,7 @@ export type JoinedBook = Pick<
     | 'translator'
     | 'description'
     | 'publisher'
-    | 'publication_date'
+    | 'publication_year'
     | 'cover'
     | 'summary_text'
     | 'summary_contributor_id'

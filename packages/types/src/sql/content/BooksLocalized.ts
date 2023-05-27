@@ -22,7 +22,7 @@ export default interface BooksLocalized {
 
   publisher: string | null;
 
-  publication_date: number | null;
+  publication_year: number | null;
 
   cover: string | null;
 
@@ -51,7 +51,7 @@ export interface BooksLocalizedInitializer {
 
   publisher?: string | null;
 
-  publication_date?: number | null;
+  publication_year?: number | null;
 
   cover?: string | null;
 
@@ -80,7 +80,7 @@ export interface BooksLocalizedMutator {
 
   publisher?: string | null;
 
-  publication_date?: number | null;
+  publication_year?: number | null;
 
   cover?: string | null;
 

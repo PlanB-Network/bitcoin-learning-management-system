@@ -10,7 +10,7 @@ export const createGetBooks =
     const result = await postgres<JoinedBook[]>`
       SELECT 
         r.id, r.path, bl.language, b.level, bl.title, b.author, bl.translator, 
-        bl.description, bl.publisher, bl.publication_date, bl.cover, bl.summary_text, 
+        bl.description, bl.publisher, bl.publication_year, bl.cover, bl.summary_text, 
         bl.summary_contributor_id, bl.shop_url, bl.download_url, b.website_url,
         bl.original, r.last_updated, r.last_commit
       FROM content.books b

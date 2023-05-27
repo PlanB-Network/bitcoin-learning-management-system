@@ -22,7 +22,7 @@ interface BookLocal extends BaseResource {
   translator?: string;
   description: string;
   publisher?: string;
-  publication_date?: string;
+  publication_year?: number;
   summary?: {
     by?: string;
     text: string;
@@ -52,7 +52,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error('Resource not found');
+        throw new Error(`Resource not found for path ${resource.path}`);
       }
 
       if (main) {
@@ -85,7 +85,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
         await transaction`
           INSERT INTO content.books_localized (
             book_id, language, original, title, translator, description, publisher, 
-            publication_date, cover, summary_text, summary_contributor_id, shop_url, 
+            publication_year, cover, summary_text, summary_contributor_id, shop_url, 
             download_url
           )
           VALUES (
@@ -96,7 +96,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             ${parsed.translator},
             ${parsed.description.trim()},
             ${parsed.publisher},
-            ${parsed.publication_date},
+            ${parsed.publication_year},
             ${parsed.cover},
             ${parsed.summary?.text.trim()},
             ${parsed.summary?.by},
@@ -108,7 +108,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             translator = EXCLUDED.translator,
             description = EXCLUDED.description,
             publisher = EXCLUDED.publisher,
-            publication_date = EXCLUDED.publication_date,
+            publication_year = EXCLUDED.publication_year,
             cover = EXCLUDED.cover,
             summary_text = EXCLUDED.summary_text,
             summary_contributor_id = EXCLUDED.summary_contributor_id,

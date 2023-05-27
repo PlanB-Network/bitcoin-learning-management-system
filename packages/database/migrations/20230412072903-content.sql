@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS content.books_localized (
   translator TEXT,
   description TEXT,
   publisher VARCHAR(255),
-  publication_date INTEGER,
+  publication_year INTEGER,
   cover TEXT,
   summary_text TEXT,
   summary_contributor_id VARCHAR(20),
