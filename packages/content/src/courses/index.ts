@@ -211,10 +211,13 @@ export const createProcessChangedCourse =
           continue;
         }
 
-        const header = matter(file.data, { excerpt: true });
+        const header = matter(file.data, {
+          excerpt: true,
+          excert_separator: '+++',
+        });
 
         if (header.excerpt) {
-          header.content = header.content.replace(`${header.excerpt}---\n`, '');
+          header.content = header.content.replace(`${header.excerpt}+++\n`, '');
           header.excerpt = header.excerpt.trim();
         }
 
@@ -237,7 +240,8 @@ export const createProcessChangedCourse =
             raw_description = EXCLUDED.raw_description
         `;
 
-        await transaction`
+        if (chapters.length > 0)
+          await transaction`
             INSERT INTO content.course_chapters_localized ${transaction(
               chapters.map((chapter, index) => ({
                 course_id: course.id,

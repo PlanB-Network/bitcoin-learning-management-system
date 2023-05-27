@@ -12,9 +12,10 @@ interface PodcastMain {
   name: string;
   /** Name of the host */
   host: string;
-  description: string;
-  links: {
-    website: string;
+  language: string;
+  description?: string;
+  links?: {
+    website?: string;
     twitter?: string;
     podcast?: string;
     nostr?: string;
@@ -26,10 +27,9 @@ export const createProcessChangedPodcast = (dependencies: Dependencies) => {
 
   return async (resource: ChangedResource) => {
     return postgres.begin(async (transaction) => {
+      const { main } = separateContentFiles(resource, 'podcast.yml');
+
       const processMainFile = createProcessMainFile(transaction);
-
-      const { main } = separateContentFiles(resource, 'builder.yml');
-
       await processMainFile(resource, main);
 
       const id = await transaction<Resource[]>`
@@ -39,7 +39,7 @@ export const createProcessChangedPodcast = (dependencies: Dependencies) => {
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error('Resource not found');
+        throw new Error(`Resource not found for path ${resource.path}`);
       }
 
       if (main) {
@@ -47,13 +47,13 @@ export const createProcessChangedPodcast = (dependencies: Dependencies) => {
 
         await transaction`
           INSERT INTO content.podcasts (
-            resource_id, name, host, description website_url, twitter_url, podcast_url, nostr
+            resource_id, language, name, host, description, website_url, twitter_url, podcast_url, nostr
           )
           VALUES (
-            ${id}, ${parsed.name}, ${parsed.host}, 
-            ${parsed.description.trim()}, ${parsed.links.website}, 
-            ${parsed.links.twitter}, ${parsed.links.podcast}, 
-            ${parsed.links.nostr}
+            ${id}, ${parsed.language}, ${parsed.name}, ${parsed.host}, 
+            ${parsed.description?.trim()}, ${parsed.links?.website}, 
+            ${parsed.links?.twitter}, ${parsed.links?.podcast}, 
+            ${parsed.links?.nostr}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             name = EXCLUDED.name,
