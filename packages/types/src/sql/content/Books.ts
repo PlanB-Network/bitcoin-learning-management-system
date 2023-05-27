@@ -7,31 +7,31 @@ import type { ResourcesId } from './Resources';
 export default interface Books {
   resource_id: ResourcesId;
 
-  level: string | null;
+  level?: string;
 
   author: string;
 
-  website_url: string | null;
+  website_url?: string;
 }
 
 /** Represents the initializer for the table content.books */
 export interface BooksInitializer {
   resource_id: ResourcesId;
 
-  level?: string | null;
+  level?: string;
 
   author: string;
 
-  website_url?: string | null;
+  website_url?: string;
 }
 
 /** Represents the mutator for the table content.books */
 export interface BooksMutator {
   resource_id?: ResourcesId;
 
-  level?: string | null;
+  level?: string;
 
   author?: string;
 
-  website_url?: string | null;
+  website_url?: string;
 }

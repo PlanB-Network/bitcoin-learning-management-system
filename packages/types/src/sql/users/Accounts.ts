@@ -10,9 +10,9 @@ export default interface Accounts {
 
   username: string;
 
-  email: string | null;
+  email?: string;
 
-  password_hash: string | null;
+  password_hash?: string;
 
   contributor_id: string;
 
@@ -28,9 +28,9 @@ export interface AccountsInitializer {
 
   username: string;
 
-  email?: string | null;
+  email?: string;
 
-  password_hash?: string | null;
+  password_hash?: string;
 
   contributor_id: string;
 
@@ -47,9 +47,9 @@ export interface AccountsMutator {
 
   username?: string;
 
-  email?: string | null;
+  email?: string;
 
-  password_hash?: string | null;
+  password_hash?: string;
 
   contributor_id?: string;
 

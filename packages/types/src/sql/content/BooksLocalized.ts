@@ -16,23 +16,23 @@ export default interface BooksLocalized {
 
   title: string;
 
-  translator: string | null;
+  translator?: string;
 
-  description: string | null;
+  description?: string;
 
-  publisher: string | null;
+  publisher?: string;
 
-  publication_year: number | null;
+  publication_year?: number;
 
-  cover: string | null;
+  cover?: string;
 
-  summary_text: string | null;
+  summary_text?: string;
 
-  summary_contributor_id: string | null;
+  summary_contributor_id?: string;
 
-  shop_url: string | null;
+  shop_url?: string;
 
-  download_url: string | null;
+  download_url?: string;
 }
 
 /** Represents the initializer for the table content.books_localized */
@@ -45,23 +45,23 @@ export interface BooksLocalizedInitializer {
 
   title: string;
 
-  translator?: string | null;
+  translator?: string;
 
-  description?: string | null;
+  description?: string;
 
-  publisher?: string | null;
+  publisher?: string;
 
-  publication_year?: number | null;
+  publication_year?: number;
 
-  cover?: string | null;
+  cover?: string;
 
-  summary_text?: string | null;
+  summary_text?: string;
 
-  summary_contributor_id?: string | null;
+  summary_contributor_id?: string;
 
-  shop_url?: string | null;
+  shop_url?: string;
 
-  download_url?: string | null;
+  download_url?: string;
 }
 
 /** Represents the mutator for the table content.books_localized */
@@ -74,21 +74,21 @@ export interface BooksLocalizedMutator {
 
   title?: string;
 
-  translator?: string | null;
+  translator?: string;
 
-  description?: string | null;
+  description?: string;
 
-  publisher?: string | null;
+  publisher?: string;
 
-  publication_year?: number | null;
+  publication_year?: number;
 
-  cover?: string | null;
+  cover?: string;
 
-  summary_text?: string | null;
+  summary_text?: string;
 
-  summary_contributor_id?: string | null;
+  summary_contributor_id?: string;
 
-  shop_url?: string | null;
+  shop_url?: string;
 
-  download_url?: string | null;
+  download_url?: string;
 }

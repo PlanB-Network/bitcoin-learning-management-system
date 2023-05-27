@@ -1,4 +1,7 @@
-const { defaultGenerateIdentifierType } = require('kanel')
+const {
+  defaultGenerateIdentifierType,
+  defaultGetPropertyMetadata,
+} = require('kanel');
 
 /** @type {import('kanel').Config} */
 module.exports = {
@@ -12,13 +15,27 @@ module.exports = {
   },
   enumStyle: 'type',
   generateIdentifierType: (column, details, config) => {
-    const result = defaultGenerateIdentifierType(column, details, config)
+    const result = defaultGenerateIdentifierType(column, details, config);
 
     result.typeDefinition[0] = result.typeDefinition[0].replace(
       / & \{ __brand: '(.*)' \}/,
       ''
-    )
+    );
 
-    return result
+    return result;
   },
-}
+  getPropertyMetadata(property, details, generateFor, config) {
+    const def = defaultGetPropertyMetadata(
+      property,
+      details,
+      generateFor,
+      config
+    );
+
+    return {
+      ...def,
+      nullableOverride: false,
+      ...(property.isNullable && { optionalOverride: true }),
+    };
+  },
+};

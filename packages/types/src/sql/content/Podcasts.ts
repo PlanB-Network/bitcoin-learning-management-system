@@ -13,15 +13,15 @@ export default interface Podcasts {
 
   host: string;
 
-  description: string | null;
+  description?: string;
 
-  website_url: string | null;
+  website_url?: string;
 
-  twitter_url: string | null;
+  twitter_url?: string;
 
-  podcast_url: string | null;
+  podcast_url?: string;
 
-  nostr: string | null;
+  nostr?: string;
 }
 
 /** Represents the initializer for the table content.podcasts */
@@ -34,15 +34,15 @@ export interface PodcastsInitializer {
 
   host: string;
 
-  description?: string | null;
+  description?: string;
 
-  website_url?: string | null;
+  website_url?: string;
 
-  twitter_url?: string | null;
+  twitter_url?: string;
 
-  podcast_url?: string | null;
+  podcast_url?: string;
 
-  nostr?: string | null;
+  nostr?: string;
 }
 
 /** Represents the mutator for the table content.podcasts */
@@ -55,13 +55,13 @@ export interface PodcastsMutator {
 
   host?: string;
 
-  description?: string | null;
+  description?: string;
 
-  website_url?: string | null;
+  website_url?: string;
 
-  twitter_url?: string | null;
+  twitter_url?: string;
 
-  podcast_url?: string | null;
+  podcast_url?: string;
 
-  nostr?: string | null;
+  nostr?: string;
 }

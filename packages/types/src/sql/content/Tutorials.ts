@@ -12,7 +12,7 @@ export default interface Tutorials {
 
   level: string;
 
-  builder: string | null;
+  builder?: string;
 
   last_updated: number;
 
@@ -28,7 +28,7 @@ export interface TutorialsInitializer {
 
   level: string;
 
-  builder?: string | null;
+  builder?: string;
 
   /** Default value: now() */
   last_updated?: number;
@@ -44,7 +44,7 @@ export interface TutorialsMutator {
 
   level?: string;
 
-  builder?: string | null;
+  builder?: string;
 
   last_updated?: number;
 

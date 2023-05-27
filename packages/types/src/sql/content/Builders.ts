@@ -9,13 +9,13 @@ export default interface Builders {
 
   name: string;
 
-  website_url: string | null;
+  website_url?: string;
 
-  twitter_url: string | null;
+  twitter_url?: string;
 
-  github_url: string | null;
+  github_url?: string;
 
-  nostr: string | null;
+  nostr?: string;
 }
 
 /** Represents the initializer for the table content.builders */
@@ -24,13 +24,13 @@ export interface BuildersInitializer {
 
   name: string;
 
-  website_url?: string | null;
+  website_url?: string;
 
-  twitter_url?: string | null;
+  twitter_url?: string;
 
-  github_url?: string | null;
+  github_url?: string;
 
-  nostr?: string | null;
+  nostr?: string;
 }
 
 /** Represents the mutator for the table content.builders */
@@ -39,11 +39,11 @@ export interface BuildersMutator {
 
   name?: string;
 
-  website_url?: string | null;
+  website_url?: string;
 
-  twitter_url?: string | null;
+  twitter_url?: string;
 
-  github_url?: string | null;
+  github_url?: string;
 
-  nostr?: string | null;
+  nostr?: string;
 }

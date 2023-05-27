@@ -12,7 +12,7 @@ export default interface BuildersLocalized {
 
   language: BuildersLocalizedLanguage;
 
-  description: string | null;
+  description?: string;
 }
 
 /** Represents the initializer for the table content.builders_localized */
@@ -21,7 +21,7 @@ export interface BuildersLocalizedInitializer {
 
   language: BuildersLocalizedLanguage;
 
-  description?: string | null;
+  description?: string;
 }
 
 /** Represents the mutator for the table content.builders_localized */
@@ -30,5 +30,5 @@ export interface BuildersLocalizedMutator {
 
   language?: BuildersLocalizedLanguage;
 
-  description?: string | null;
+  description?: string;
 }
