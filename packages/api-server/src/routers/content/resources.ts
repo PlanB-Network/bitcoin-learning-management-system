@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
+import type { ResourceCategory } from '@sovereign-academy/content';
 import {
+  firstRow,
   getBookQuery,
   getBuilderQuery,
   getPodcastQuery,
@@ -13,76 +15,60 @@ import {
 } from '../../services/content';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
-const resourceType = z.enum(['books', 'builders', 'podcasts']);
-const getResourcesRequestSchema = z.object({
-  category: resourceType,
-  language: z.string().optional(),
-});
+const createGetResourcesProcedure = (category: ResourceCategory) => {
+  return publicProcedure
+    .meta({
+      openapi: {
+        method: 'GET',
+        path: `/content/resources/${category}`,
+      },
+    })
+    .input(z.object({ language: z.string().optional() }).optional())
+    .output(z.any());
+};
 
-type ResourceType = z.infer<typeof resourceType>;
-
-const getResourcesResponseSchema = z.array(z.any());
-
-const getResourcesProcedure = publicProcedure
-  .meta({ openapi: { method: 'GET', path: '/content/resources' } })
-  .input(getResourcesRequestSchema)
-  .output(getResourcesResponseSchema)
-  .query(async ({ ctx, input }) => {
-    const { category, language } = input;
-
-    const getResourceHandler = (resourceType: ResourceType) => {
-      switch (resourceType) {
-        case 'books':
-          return createGetBooks(ctx.dependencies);
-        case 'builders':
-          return createGetBuilders(ctx.dependencies);
-        case 'podcasts':
-          return createGetPodcasts(ctx.dependencies);
-        default:
-          return assertNever(resourceType);
-      }
-    };
-
-    const handler = getResourceHandler(category);
-    return handler(language);
-  });
-
-const getResourceProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/resources/{category}/{id}/{language}',
-    },
-  })
-  .input(
-    z.object({ category: resourceType, id: z.number(), language: z.string() })
-  )
-  .output(z.any())
-  .query(async ({ ctx, input }) => {
-    const { category, id, language } = input;
-
-    const getResourceQuery = (resourceType: ResourceType) => {
-      switch (resourceType) {
-        case 'books':
-          return getBookQuery;
-        case 'builders':
-          return getBuilderQuery;
-        case 'podcasts':
-          return getPodcastQuery;
-        default:
-          return assertNever(resourceType);
-      }
-    };
-
-    const query = getResourceQuery(category);
-    return ctx.dependencies.postgres.exec(query(id, language));
-  });
+const createGetResourceProcedure = (category: ResourceCategory) => {
+  return publicProcedure
+    .meta({
+      openapi: {
+        method: 'GET',
+        path: `/content/resources/${category}/{id}/{language}`,
+      },
+    })
+    .input(z.object({ id: z.number(), language: z.string() }))
+    .output(z.any());
+};
 
 export const resourcesRouter = createTRPCRouter({
-  getResources: getResourcesProcedure,
-  getResource: getResourceProcedure,
+  // Books
+  getBooks: createGetResourcesProcedure('books').query(async ({ ctx, input }) =>
+    createGetBooks(ctx.dependencies)(input?.language)
+  ),
+  getBook: createGetResourceProcedure('books').query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres
+      .exec(getBookQuery(input.id, input.language))
+      .then(firstRow)
+  ),
+  // Builders
+  getBuilders: createGetResourcesProcedure('builders').query(
+    async ({ ctx, input }) =>
+      createGetBuilders(ctx.dependencies)(input?.language)
+  ),
+  getBuilder: createGetResourceProcedure('builders').query(
+    async ({ ctx, input }) =>
+      ctx.dependencies.postgres
+        .exec(getBuilderQuery(input.id, input.language))
+        .then(firstRow)
+  ),
+  // Podcasts
+  getPodcasts: createGetResourcesProcedure('podcasts').query(
+    async ({ ctx, input }) =>
+      createGetPodcasts(ctx.dependencies)(input?.language)
+  ),
+  getPodcast: createGetResourceProcedure('podcasts').query(
+    async ({ ctx, input }) =>
+      ctx.dependencies.postgres
+        .exec(getPodcastQuery(input.id, input.language))
+        .then(firstRow)
+  ),
 });
-
-function assertNever(value: never): never {
-  throw new Error(`Unsupported category: ${JSON.stringify(value)}`);
-}

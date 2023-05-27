@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import { trpc } from '@sovereign-academy/api-client';
 
 import { Button } from '../../atoms/Button';
@@ -13,8 +15,12 @@ import { replaceDynamicParam } from '../../utils';
 import { BookSummary } from './BookSummary';
 
 export const Book = () => {
-  const query = trpc.content.getResources.useQuery({ category: 'books' });
-  const book = query.data?.slice(1, 2)[0];
+  const { bookId, language } = useParams();
+
+  const { data: book } = trpc.content.getBook.useQuery({
+    id: Number(bookId),
+    language: language as any, // TODO: understand why React think route params can be undefined and fix it
+  });
 
   return (
     <MainLayout>
@@ -23,14 +29,14 @@ export const Book = () => {
           <Card className="max-w-8xl px-6">
             <div className="flex flex-row justify-between mx-auto my-6 w-screen max-w-4xl">
               <div className="flex flex-col justify-between py-4 mr-12 w-max">
-                <img
-                  className="w-100"
-                  alt="book cover"
-                  src={book?.cover}
-                />
+                <img className="w-100" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
-                  <Button size="s" variant="tertiary" className="mx-2 w-full">PDF / E-book</Button>
-                  <Button size="s" variant="tertiary" className="mx-2 w-full">Buy</Button>
+                  <Button size="s" variant="tertiary" className="mx-2 w-full">
+                    PDF / E-book
+                  </Button>
+                  <Button size="s" variant="tertiary" className="mx-2 w-full">
+                    Buy
+                  </Button>
                 </div>
               </div>
 
@@ -130,6 +136,6 @@ export const Book = () => {
           ]}
         />
       </div>
-    </MainLayout >
+    </MainLayout>
   );
 };

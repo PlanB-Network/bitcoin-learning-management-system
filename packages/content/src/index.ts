@@ -7,6 +7,7 @@ import { createProcessChangedResource, groupByResource } from './resources';
 import { createProcessChangedTutorial, groupByTutorial } from './tutorials';
 
 export { computeAssetRawUrl } from './utils';
+export { ResourceCategory } from './resources/const';
 
 export const createProcessChangedFiles =
   (dependencies: Dependencies) =>
