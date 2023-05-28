@@ -1,3 +1,17 @@
 {
-  "eslint.validate": ["json"]
+  "eslint.validate": ["json"],
+  "settings": {
+    "i18n-ally.keystyle": "nested",
+    "i18n-ally.localesPaths": ["apps/front/public/locales"],
+    "i18n-ally.autoDetection": true,
+    "i18n-ally.enabledFrameworks": ["react"],
+    "i18n-ally.indent": 2,
+    "i18n-ally.tabStyle": "space",
+    "i18n-ally.editor.preferEditor": true,
+    "i18n-ally.sortKeys": true,
+    "i18n-ally.keepFulfilled": false,
+    "i18n-ally.enabledParsers": ["json"],
+    "i18n-ally.extract.autoDetect": true,
+    "i18n-ally.sourceLanguage": "en"
+  }
 }
