@@ -25,7 +25,6 @@ export const createProcessChangedFiles =
      */
     const resources = groupByResource(filteredFiles, baseUrl);
     for (const resource of resources) {
-      // console.log(resource);
       await processChangedResource(resource);
     }
 
@@ -42,6 +41,7 @@ export const createProcessChangedFiles =
      */
     const tutorials = groupByTutorial(filteredFiles, baseUrl);
     for (const tutorial of tutorials) {
-      await processChangedTutorial(tutorial);
+      // TODO: Uncomment when we have tutorials
+      // await processChangedTutorial(tutorial);
     }
   };
