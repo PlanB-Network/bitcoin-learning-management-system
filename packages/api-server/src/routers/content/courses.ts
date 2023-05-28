@@ -1,27 +1,30 @@
 import { z } from 'zod';
 
 import {
-  createGetCourses,
-  createGetCoursesChapters,
-} from '../../services/content';
+  firstRow,
+  getCourseChapterQuery,
+  getCourseChaptersQuery,
+  getCourseQuery,
+  getCoursesQuery,
+} from '@sovereign-academy/database';
+
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 const getCoursesProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/courses' } })
   .input(
-    z.object({
-      language: z.string().optional(),
-    })
+    z
+      .object({
+        language: z.string().optional(),
+      })
+      .optional()
   )
-  .output(z.array(z.any()))
-  .query(async ({ ctx, input }) => {
-    const { language } = input;
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres.exec(getCoursesQuery(input?.language))
+  );
 
-    const getCourses = createGetCourses(ctx.dependencies);
-    return getCourses(language);
-  });
-
-const getCoursesChaptersProcedure = publicProcedure
+const getCourseProcedure = publicProcedure
   .meta({
     openapi: { method: 'GET', path: '/content/courses/{id}/{language}' },
   })
@@ -31,15 +34,63 @@ const getCoursesChaptersProcedure = publicProcedure
       language: z.string(),
     })
   )
-  .output(z.array(z.any()))
-  .query(async ({ ctx, input }) => {
-    const { id, language } = input;
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres
+      .exec(getCourseQuery(input.id, input.language))
+      .then(firstRow)
+  );
 
-    const getChaptersCourses = createGetCoursesChapters(ctx.dependencies);
-    return getChaptersCourses(id, language);
-  });
+const getCourseChaptersProcedure = publicProcedure
+  .meta({
+    openapi: {
+      method: 'GET',
+      path: '/content/courses/{id}/{language}/chapters',
+    },
+  })
+  .input(
+    z.object({
+      id: z.string(),
+      language: z.string(),
+    })
+  )
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres.exec(
+      getCourseChaptersQuery(input.id, input.language)
+    )
+  );
+
+const getCourseChapterProcedure = publicProcedure
+  .meta({
+    openapi: {
+      method: 'GET',
+      path: '/content/courses/{courseId}/{language}/chapters/{chapterIndex}',
+    },
+  })
+  .input(
+    z.object({
+      courseId: z.string(),
+      language: z.string(),
+      chapterIndex: z.string(),
+    })
+  )
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres
+      .exec(
+        getCourseChapterQuery(
+          input.courseId,
+          Number(input.chapterIndex),
+          input.language
+        )
+      )
+      .then(firstRow)
+  );
 
 export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,
-  getCoursesChapters: getCoursesChaptersProcedure,
+  getCourse: getCourseProcedure,
+  getCourseChapters: getCourseChaptersProcedure,
+  getCourseChapter: getCourseChapterProcedure,
 });

@@ -10,14 +10,16 @@ export enum Routes {
 
   // Courses
   Courses = '/courses',
-  Course = '/course/:courseId',
+  Course = '/course/:courseId/:language',
+  CourseChapter = '/course/:courseId/:language/:chapterIndex',
+
   // Resources
   Resources = '/resources',
   // Resource per type
   Library = '/library',
   Book = '/library/:bookId/:language',
   Podcasts = '/podcasts',
-  Podcast = '/podcasts/:podcastId',
+  Podcast = '/podcast/:podcastId',
   Builders = '/builders',
   Builder = '/builder/:builderId/:language',
 

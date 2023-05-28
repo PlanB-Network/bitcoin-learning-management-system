@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import { Routes } from '../types';
 
 const dynamicParamRegex = new RegExp(/\/:[A-Za-z0-9-]+/g);
@@ -17,3 +19,6 @@ export const replaceDynamicParam = (
 
   return dynamicRoute;
 };
+
+export const useRequiredParams = <T extends Record<string, string>>() =>
+  useParams() as T;

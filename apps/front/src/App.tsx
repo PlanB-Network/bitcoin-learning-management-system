@@ -9,7 +9,7 @@ import { Home } from './pages';
 import { Book } from './pages/Book';
 import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
-import { Courses } from './pages/Courses';
+import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 import { Library } from './pages/Library';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
@@ -64,7 +64,10 @@ export const App = () => {
         <Route path={RoutesEnum.Builders} element={<Builders />} />
         <Route path={RoutesEnum.Builder} element={<Builder />} />
 
-        <Route path={RoutesEnum.Courses} element={<Courses />} />
+        <Route path={RoutesEnum.Courses} element={<CoursesExplorer />} />
+        <Route path={RoutesEnum.Course} element={<CourseDetails />} />
+        <Route path={RoutesEnum.CourseChapter} element={<CourseChapter />} />
+
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
         <Route path="*" element={<h1>TODO</h1>} />
