@@ -31,6 +31,7 @@ export const webhooksProcedure = publicProcedure
       return;
     }
 
+    /*     
     const processWebhookPayload = createProcessWebhookPayload(
       ctx.dependencies.octokit
     );
@@ -39,5 +40,6 @@ export const webhooksProcedure = publicProcedure
     processWebhookPayload(ctx.req.body).then(async ({ files, sourceUrl }) => {
       const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
       await processChangedFiles(files, sourceUrl);
-    });
+    }); 
+    */
   });
