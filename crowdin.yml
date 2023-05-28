@@ -1,0 +1,3 @@
+files:
+  - source: /apps/front/public/locales/en.json
+    translation: /apps/front/public/locales/%two_letters_code%.json
