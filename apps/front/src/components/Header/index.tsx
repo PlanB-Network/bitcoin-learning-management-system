@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import {
@@ -26,12 +27,15 @@ import { replaceDynamicParam } from '../../utils';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
+import { LanguageSelector } from './LanguageSelector';
 import { MobileMenu } from './MobileMenu';
 import { NavigationSection } from './props';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
+  const { t } = useTranslation();
+
   const {
     open: openLoginModal,
     isOpen: isLoginModalOpen,
@@ -43,7 +47,7 @@ export const Header = () => {
   const sections: NavigationSection[] = [
     {
       id: 'courses',
-      title: 'Courses',
+      title: t('words.courses'),
       path: Routes.Courses,
       items: [
         {
@@ -177,7 +181,7 @@ export const Header = () => {
     },
     {
       id: 'resources',
-      title: 'Resources',
+      title: t('words.resources'),
       path: Routes.Resources,
       items: [
         {
@@ -211,7 +215,7 @@ export const Header = () => {
     },
     {
       id: 'tutorials',
-      title: 'Tutorials',
+      title: t('words.tutorials'),
       path: Routes.Tutorials,
       items: [
         {
@@ -270,7 +274,7 @@ export const Header = () => {
     },
     {
       id: 'about-us',
-      title: 'About us',
+      title: t('words.about-us'),
       path: Routes.AboutUs,
       items: [
         {
@@ -314,7 +318,7 @@ export const Header = () => {
   const isScreenMd = useGreater('sm');
 
   return (
-    <header className="flex fixed top-0 left-0 z-20 flex-row justify-between place-items-center px-12 py-2 w-screen bg-primary-900 min-h-[92px]">
+    <header className="flex fixed top-0 left-0 z-20 flex-row justify-between place-items-center px-12 w-screen bg-primary-900 min-h-[92px]">
       {isScreenMd ? (
         <Link to={Routes.Home}>
           <img className="h-16" src={headerImage} alt="DecouvreBitcoin Logo" />
@@ -325,8 +329,9 @@ export const Header = () => {
 
       {isScreenMd && <FlyingMenu sections={sections} />}
       {isScreenMd && (
-        <div>
-          {isLoggedIn && <FlyingMenu sections={sections} />}
+        <div className="flex flex-row space-x-6 place-items-center">
+          <LanguageSelector />
+          {isLoggedIn && <div className="text-white">Account</div>}
 
           {!isLoggedIn && (
             <div className="flex flex-row space-x-4">

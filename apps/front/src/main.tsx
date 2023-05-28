@@ -12,6 +12,9 @@ import { store } from './store';
 // global styles
 import './index.css';
 
+// Internationalization
+import './i18n';
+
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
