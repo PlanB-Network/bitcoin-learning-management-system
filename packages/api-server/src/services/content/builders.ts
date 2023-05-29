@@ -1,8 +1,8 @@
-import { computeAssetRawUrl } from '@sovereign-academy/content';
-import { firstRow, getBuilderQuery } from '@sovereign-academy/database';
 import { JoinedBuilder } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
+import {firstRow, getBuilderQuery} from "@sovereign-academy/database";
+import {computeAssetRawUrl} from "@sovereign-academy/content";
 
 export const createGetBuilders =
   (dependencies: Dependencies) => async (language?: string) => {
@@ -22,7 +22,7 @@ export const createGetBuilders =
       GROUP BY r.id, bl.language, b.name, b.website_url, b.twitter_url,
       b.github_url, b.nostr, bl.description
     `;
-
+      console.log(result)
     return result.map((row) => ({
       ...row,
       logo: computeAssetRawUrl(
