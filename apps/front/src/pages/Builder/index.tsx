@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 
+import { trpc } from "@sovereign-academy/api-client";
+
 import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
 import { PageTitle } from '../../components/PageTitle';
@@ -9,9 +11,13 @@ import { replaceDynamicParam } from '../../utils';
 
 export const Builder = () => {
   const { builderId } = useParams();
+  const { data: builder } = trpc.content.getBuilder.useQuery({
+    id: Number(builderId), language: 'en',
+  });
+
   return (
     <MainLayout>
-      <PageTitle>{builderId}</PageTitle>
+      <PageTitle>{builder?.name}</PageTitle>
       <div className="flex flex-row justify-evenly items-start m-10">
         <img
           className="mx-12 my-4 w-64 h-auto"
@@ -20,17 +26,10 @@ export const Builder = () => {
         />
         <div className="flex flex-col mr-12 space-y-4 text-sm">
           <p className="max-w-xl text-justify">
-            SeedSigner est un projet visant à réduire le coût et la complexité
-            de l'utilisation des portefeuilles multi-signature Bitcoin. Il
-            permet de créer un dispositif de signature Bitcoin hors ligne,
-            vérifiable et sans état en utilisant des composants matériels peu
-            coûteux (généralement ~50$). SeedSigner facilite la génération de
-            clés privées sans confiance, la configuration de portefeuilles
-            multi-signatures et la réalisation de transactions Bitcoin via un
-            modèle de signature d'échange QR sécurisé et isolé.
+            {builder?.description}
           </p>
 
-          <p className="max-w-xl text-justify">
+          <div className="max-w-xl text-justify">
             Les principales fonctionnalités de SeedSigner comprennent :
             <ul className="pl-4 list-disc">
               <li>
@@ -54,7 +53,7 @@ export const Builder = () => {
               </li>
               <li>demande Interface utilisateur réactive et événementielle</li>
             </ul>
-          </p>
+          </div>
 
           <p className="max-w-xl text-justify">
             SeedSigner utilise une version spécifique du Raspberry Pi Zero
