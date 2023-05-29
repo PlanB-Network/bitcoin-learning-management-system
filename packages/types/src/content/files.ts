@@ -1,55 +1,38 @@
 export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 
-/**
- * Changed content in a repository (agnostic to the repository)
- *
- * @example
- * ```
- * {
- *  path: 'resources/books/1/resource.yml',
- *  commit: '0e4e4c599c6a171463bec46611049dd63d293f59',
- *  time: '2021-05-01T12:00:00Z',
- * }
- * ```
- */
-interface ChangedFileBase {
+interface ModifiedBaseFile {
   /** Path to the file */
   path: string;
   /** Commit hash */
   commit: string;
   /** Commit timestamp */
   time: number;
+  /** Raw data */
+  data: string;
 }
 
-interface RenamedFile extends ChangedFileBase {
+export interface RenamedFile extends ModifiedBaseFile {
   /** Change kind */
   kind: Extract<ChangeKind, 'renamed'>;
   /** Previous path */
   previousPath: string;
 }
 
-interface ModifiedFile extends ChangedFileBase {
+export interface ModifiedFile extends ModifiedBaseFile {
   /** Change kind */
-  kind: Exclude<ChangeKind, 'renamed'>;
+  kind: Exclude<ChangeKind, 'renamed' | 'removed'>;
+  /** Previous path */
   previousPath?: undefined;
 }
 
-interface AssetFile extends ChangedFileBase {
-  /** The file is an asset */
-  isAsset: true;
-  data?: undefined;
+export interface RemovedFile {
+  /** Path to the file */
+  path: string;
+  /** Change kind */
+  kind: Extract<ChangeKind, 'removed'>;
 }
 
-interface TextFile extends ChangedFileBase {
-  /** The file is not an asset */
-  isAsset: false;
-  /** Raw data */
-  data: string;
-}
-
-export type ChangedAssetFile = AssetFile & (ModifiedFile | RenamedFile);
-export type ChangedTextFile = TextFile & (ModifiedFile | RenamedFile);
-export type ChangedFile = ChangedAssetFile | ChangedTextFile;
-
-export const isAssetFile = (file: ChangedFile): file is ChangedAssetFile =>
-  file.isAsset;
+/**
+ * Changed content in a repository (agnostic to the repository)
+ */
+export type ChangedFile = ModifiedFile | RenamedFile | RemovedFile;

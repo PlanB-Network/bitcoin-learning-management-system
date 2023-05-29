@@ -30,7 +30,6 @@ export const separateContentFiles = (
 ) => ({
   main: resource.files.find((file) => file.path === mainFileName),
   files: resource.files.filter((file) => file.path !== mainFileName),
-  assets: resource.assets,
 });
 
 /**

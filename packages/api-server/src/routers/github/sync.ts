@@ -13,14 +13,7 @@ export const syncProcedure = publicProcedure
   .mutation(async ({ ctx }) => {
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
-    getAllRepoFiles(
+    await getAllRepoFiles(
       'https://github.com/DecouvreBitcoin/sovereign-university-data.git'
-    ).then(async (files) => {
-      processChangedFiles(
-        files,
-        'https://github.com/DecouvreBitcoin/sovereign-university-data'
-      );
-    });
-
-    return;
+    ).then(processChangedFiles);
   });
