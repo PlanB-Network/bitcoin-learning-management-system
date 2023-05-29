@@ -14,4 +14,6 @@ export type JoinedBuilder = Pick<
     Builder,
     'name' | 'website_url' | 'twitter_url' | 'github_url' | 'nostr'
   > &
-  Pick<BuilderLocalized, 'language' | 'description'>;
+  Pick<BuilderLocalized, 'language' | 'description'> & {
+    tags: string[];
+  };

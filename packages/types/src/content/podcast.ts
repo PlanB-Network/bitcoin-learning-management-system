@@ -18,4 +18,6 @@ export type JoinedPodcast = Pick<
     | 'twitter_url'
     | 'podcast_url'
     | 'nostr'
-  >;
+  > & {
+    tags: string[];
+  };

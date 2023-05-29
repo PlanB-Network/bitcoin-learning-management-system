@@ -25,4 +25,6 @@ export type JoinedBook = Pick<
     | 'shop_url'
     | 'download_url'
     | 'original'
-  >;
+  > & {
+    tags: string[];
+  };
