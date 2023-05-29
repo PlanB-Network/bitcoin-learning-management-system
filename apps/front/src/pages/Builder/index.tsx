@@ -12,8 +12,11 @@ import { replaceDynamicParam } from '../../utils';
 export const Builder = () => {
   const { builderId } = useParams();
   const { data: builder } = trpc.content.getBuilder.useQuery({
-    id: Number(builderId), language: 'en',
+    id: Number(builderId), language: 'en'
   });
+
+  console.log(builderId)
+  console.log(builderId)
 
   return (
     <MainLayout>
