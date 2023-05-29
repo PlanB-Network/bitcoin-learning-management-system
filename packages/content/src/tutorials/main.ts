@@ -1,5 +1,10 @@
 import { TransactionSql, firstRow } from '@sovereign-academy/database';
-import { ChangedTextFile, Tutorial } from '@sovereign-academy/types';
+import {
+  ChangedFile,
+  ModifiedFile,
+  RenamedFile,
+  Tutorial,
+} from '@sovereign-academy/types';
 
 import { yamlToObject } from '../utils';
 
@@ -13,7 +18,7 @@ interface TutorialMain {
 
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
-  async (tutorial: ChangedTutorial, file?: ChangedTextFile) => {
+  async (tutorial: ChangedTutorial, file?: ChangedFile) => {
     if (!file) return;
 
     if (file.kind === 'removed') {
@@ -48,9 +53,11 @@ export const createProcessMainFile =
       // Only get the tags from the main tutorial file
       const parsedTutorial = yamlToObject<TutorialMain>(file.data);
 
-      const lastUpdated = [...tutorial.files, ...tutorial.assets].sort(
-        (a, b) => b.time - a.time
-      )[0];
+      const lastUpdated = tutorial.files
+        .filter(
+          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed'
+        )
+        .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Tutorial[]>`
         INSERT INTO content.tutorials (category, path, last_updated, last_commit)

@@ -10,9 +10,8 @@ export { computeAssetRawUrl } from './utils';
 export { ResourceCategory } from './resources/const';
 
 export const createProcessChangedFiles =
-  (dependencies: Dependencies) =>
-  async (content: ChangedFile[], baseUrl: string) => {
-    const filteredFiles = content.filter((file) =>
+  (dependencies: Dependencies) => async (files: ChangedFile[]) => {
+    const filteredFiles = files.filter((file) =>
       supportedContentTypes.some((value) => file.path.startsWith(value))
     );
 
@@ -23,7 +22,7 @@ export const createProcessChangedFiles =
     /*
      * Resources
      */
-    const resources = groupByResource(filteredFiles, baseUrl);
+    const resources = groupByResource(filteredFiles);
     for (const resource of resources) {
       await processChangedResource(resource);
     }
@@ -31,7 +30,7 @@ export const createProcessChangedFiles =
     /*
      * Courses
      */
-    const courses = groupByCourse(filteredFiles, baseUrl);
+    const courses = groupByCourse(filteredFiles);
     for (const course of courses) {
       await processChangedCourse(course);
     }
@@ -39,7 +38,7 @@ export const createProcessChangedFiles =
     /*
      * Tutorials
      */
-    const tutorials = groupByTutorial(filteredFiles, baseUrl);
+    const tutorials = groupByTutorial(filteredFiles);
     for (const tutorial of tutorials) {
       // TODO: Uncomment when we have tutorials
       // await processChangedTutorial(tutorial);

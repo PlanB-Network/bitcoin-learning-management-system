@@ -2,7 +2,12 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 
 import { firstRow } from '@sovereign-academy/database';
-import type { ChangedFile, Course } from '@sovereign-academy/types';
+import type {
+  ChangedFile,
+  Course,
+  ModifiedFile,
+  RenamedFile,
+} from '@sovereign-academy/types';
 
 import type { Language } from '../const';
 import { Dependencies } from '../dependencies';
@@ -43,7 +48,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   };
 };
 
-export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
+export const groupByCourse = (files: ChangedFile[]) => {
   const coursesFiles = files.filter(
     (item) => getContentType(item.path) === 'courses'
   );
@@ -58,29 +63,18 @@ export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
         language,
       } = parseDetailsFromPath(file.path);
 
-      const course =
-        groupedCourses.get(coursePath) ||
-        ({
-          type: 'courses',
-          id,
-          path: coursePath,
-          sourceUrl: `${baseUrl}/blob/${file.commit}/${coursePath}`,
-          files: [],
-          assets: [],
-        } as ChangedCourse);
+      const course: ChangedCourse = groupedCourses.get(coursePath) || {
+        type: 'courses',
+        id,
+        path: coursePath,
+        files: [],
+      };
 
-      if (file.isAsset) {
-        course.assets.push({
-          ...file,
-          path: getRelativePath(file.path, coursePath),
-        });
-      } else {
-        course.files.push({
-          ...file,
-          path: getRelativePath(file.path, coursePath),
-          language,
-        });
-      }
+      course.files.push({
+        ...file,
+        path: getRelativePath(file.path, coursePath),
+        language,
+      });
 
       groupedCourses.set(coursePath, course);
     } catch {
@@ -158,9 +152,12 @@ export const createProcessChangedCourse =
           // Only get the tags from the main resource file
           const parsedCourse = yamlToObject<CourseMain>(main.data);
 
-          const lastUpdated = [...course.files, ...course.assets].sort(
-            (a, b) => b.time - a.time
-          )[0];
+          const lastUpdated = course.files
+            .filter(
+              (file): file is ModifiedFile | RenamedFile =>
+                file.kind !== 'removed'
+            )
+            .sort((a, b) => b.time - a.time)[0];
 
           const result = await transaction<Course[]>`
             INSERT INTO content.courses (id, level, hours, last_updated, last_commit)

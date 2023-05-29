@@ -40,10 +40,10 @@ export const createProcessChangedBuilder = (dependencies: Dependencies) => {
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error('Resource not found');
+        throw new Error(`Resource not found for path ${resource.path}`);
       }
 
-      if (main) {
+      if (main && main.kind !== 'removed') {
         const parsed = yamlToObject<BuilderMain>(main.data);
 
         await transaction`

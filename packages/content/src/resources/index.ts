@@ -48,7 +48,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
   };
 };
 
-export const groupByResource = (files: ChangedFile[], baseUrl: string) => {
+export const groupByResource = (files: ChangedFile[]) => {
   const resourceFiles = files.filter(
     (item) => getContentType(item.path) === 'resources'
   );
@@ -63,29 +63,18 @@ export const groupByResource = (files: ChangedFile[], baseUrl: string) => {
         language,
       } = parseDetailsFromPath(file.path);
 
-      const resource =
-        groupedResources.get(resourcePath) ||
-        ({
-          type: 'resources',
-          category,
-          path: resourcePath,
-          sourceUrl: `${baseUrl}/blob/${file.commit}/${resourcePath}`,
-          files: [],
-          assets: [],
-        } as ChangedResource);
+      const resource: ChangedResource = groupedResources.get(resourcePath) || {
+        type: 'resources',
+        category,
+        path: resourcePath,
+        files: [],
+      };
 
-      if (file.isAsset) {
-        resource.assets.push({
-          ...file,
-          path: getRelativePath(file.path, resourcePath),
-        });
-      } else {
-        resource.files.push({
-          ...file,
-          path: getRelativePath(file.path, resourcePath),
-          language,
-        });
-      }
+      resource.files.push({
+        ...file,
+        path: getRelativePath(file.path, resourcePath),
+        language,
+      });
 
       groupedResources.set(resourcePath, resource);
     } catch {

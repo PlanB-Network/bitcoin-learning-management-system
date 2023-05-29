@@ -42,7 +42,7 @@ export const createProcessChangedPodcast = (dependencies: Dependencies) => {
         throw new Error(`Resource not found for path ${resource.path}`);
       }
 
-      if (main) {
+      if (main && main.kind !== 'removed') {
         const parsed = yamlToObject<PodcastMain>(main.data);
 
         await transaction`

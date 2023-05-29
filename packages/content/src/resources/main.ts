@@ -1,5 +1,10 @@
 import { TransactionSql, firstRow } from '@sovereign-academy/database';
-import { ChangedTextFile, Resource } from '@sovereign-academy/types';
+import {
+  ChangedFile,
+  ModifiedFile,
+  RenamedFile,
+  Resource,
+} from '@sovereign-academy/types';
 
 import { yamlToObject } from '../utils';
 
@@ -7,7 +12,7 @@ import { ChangedResource } from '.';
 
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
-  async (resource: ChangedResource, file?: ChangedTextFile) => {
+  async (resource: ChangedResource, file?: ChangedFile) => {
     if (!file) return;
 
     if (file.kind === 'removed') {
@@ -45,9 +50,11 @@ export const createProcessMainFile =
         tags?: string[];
       }>(file.data);
 
-      const lastUpdated = [...resource.files, ...resource.assets].sort(
-        (a, b) => b.time - a.time
-      )[0];
+      const lastUpdated = resource.files
+        .filter(
+          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed'
+        )
+        .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Resource[]>`
         INSERT INTO content.resources (category, path, last_updated, last_commit)

@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import { simpleGit } from 'simple-git';
+import { DiffResultTextFile, ResetMode, simpleGit } from 'simple-git';
 
 import { ChangeKind, ChangedFile } from '@sovereign-academy/types';
 
@@ -12,6 +12,12 @@ const parseRepository = (repository: string) => {
   const [repoOwner, repoName] = repository.split('/');
   return { repoOwner, repoName };
 };
+
+const extractRepositoryFromUrl = (url: string) =>
+  url.split('/').splice(-1)[0].replace('.git', '');
+
+const computeTemporaryDirectory = (url: string) =>
+  path.join('/tmp', extractRepositoryFromUrl(url));
 
 export const createDownloadFile =
   (octokit: GithubOctokit) => async (repository: string, path: string) => {
@@ -38,70 +44,123 @@ export const createDownloadFile =
     }
   };
 
-export const createGetChangedFiles =
-  (octokit: GithubOctokit) =>
-  async (repository: string, before: string, after: string) => {
-    try {
-      const { repoOwner, repoName } = parseRepository(repository);
-      const downloadFile = createDownloadFile(octokit);
+const syncRepository = async (repository: string, directory: string) => {
+  const git = simpleGit();
 
-      const response = await octokit.rest.repos.compareCommits({
-        owner: repoOwner,
-        repo: repoName,
-        base: before,
-        head: after,
-      });
+  try {
+    // Check if the repository already exists locally
+    if (
+      (await pathExists(directory)) &&
+      (await pathExists(path.join(directory, '.git')))
+    ) {
+      // Reset local changes
+      await git.cwd(directory).reset(ResetMode.HARD);
 
-      const { files } = response.data;
-      if (!files) return [];
+      // Fetch the remote changes
+      await git.fetch();
 
-      return async.mapLimit(files, 10, async (item: typeof files[number]) => {
-        // We know for sure that every file has a commit because we are getting the diff
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const commit = response.data.commits.find(
-          (commit) => commit.sha === item.contents_url.slice(-40)
-        )!;
+      // Reset the current branch to match the remote branch
+      await git.reset(ResetMode.HARD, ['origin/HEAD']);
 
-        const time = new Date(
-          commit.commit.committer?.date
-            ? commit.commit.committer.date
-            : commit.commit.author?.date
-            ? commit.commit.author.date
-            : // Fallback to the current time if no commit date is found
-              Date.now()
-        ).getTime();
+      await git.pull();
+    } else {
+      // Clone the repository
+      await git.clone(repository, directory);
+    }
 
-        const kind = item.status as ChangeKind;
-        const isAsset = item.filename.includes('assets');
+    return git;
+  } catch (error: any) {
+    throw new Error(
+      `Failed to sync repository ${repository}: ${error.message}`
+    );
+  }
+};
 
-        const file: ChangedFile = {
-          path: item.filename,
-          commit: commit.sha,
-          time,
-          ...(isRenamed(kind)
+export const compareCommits = async (
+  repositoryUrl: string,
+  beforeCommit: string,
+  afterCommit: string
+): Promise<ChangedFile[]> => {
+  const repoDir = computeTemporaryDirectory(repositoryUrl);
+
+  try {
+    const git = await syncRepository(repositoryUrl, repoDir);
+
+    const diffSummary = await git.diffSummary([beforeCommit, afterCommit]);
+
+    const textFiles = diffSummary.files.filter(
+      (file) => !file.binary
+    ) as DiffResultTextFile[];
+
+    const finalFiles = await async.mapLimit(
+      textFiles,
+      10,
+      async (file: typeof textFiles[number]) => {
+        let relativePath = file.file;
+        let previousPath: string | undefined;
+
+        // SimpleGit doesn't support renamed files, so we need to do it manually
+        if (file.file.includes(' => ')) {
+          // The file was renamed, check if path of type { .* => .* }
+          const elementChanged = file.file.match(/\{(.*) => (.*)\}/);
+          if (elementChanged) {
+            const [full, previousSub, newSub] = elementChanged;
+            previousPath = file.file.replace(full, previousSub);
+            relativePath = file.file.replace(full, newSub);
+          } else {
+            [previousPath, relativePath] = file.file.split(' => ');
+          }
+        }
+
+        const fullPath = path.join(repoDir, relativePath);
+
+        let kind: ChangeKind = 'modified';
+        if (previousPath) {
+          kind = 'renamed';
+        } else if (file.changes === file.insertions && file.deletions === 0) {
+          kind = 'added';
+        } else if (
+          file.changes === file.deletions &&
+          file.insertions === 0 &&
+          !(await pathExists(fullPath))
+        ) {
+          kind = 'removed';
+        }
+
+        if (kind === 'removed') {
+          return {
+            path: relativePath,
+            kind,
+          };
+        }
+
+        const fileLog = await git.log({ file: relativePath });
+
+        return {
+          path: relativePath,
+          commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+          time: new Date(
+            fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
+          ).getTime(),
+          data: await fs.readFile(fullPath, 'utf-8'),
+          ...(kind === 'renamed'
             ? // If the file was renamed, we need to add the previous path so we can update it
               {
                 kind: 'renamed',
-                previousPath: item.previous_filename as string,
+                previousPath,
               }
             : { kind }),
-          ...(isAsset
-            ? // If the file is an asset, we don't need to download the raw data as we will
-              // get it directl from the GitHub CDN
-              { isAsset }
-            : // If the file isn't an asset, then it is a text file (markdown, yaml, etc.) and
-              // we need to download the raw data
-              { isAsset, data: await downloadFile(repository, item.filename) }),
-        };
+        } as ChangedFile;
+      }
+    );
 
-        return file;
-      });
-    } catch (error: any) {
-      throw new Error(
-        `Failed to getting diff between ${before} and ${after} in ${repository}: ${error.message}`
-      );
-    }
-  };
+    return finalFiles;
+  } catch (error: any) {
+    throw new Error(
+      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}: ${error.message}`
+    );
+  }
+};
 
 /**
  * Walk a directory recursively to get files inside it
@@ -141,58 +200,37 @@ const pathExists = async (path: string) =>
     .then(() => true)
     .catch(() => false);
 
-export const getAllRepoFiles = async (repository: string) => {
-  const tmpDir = `/tmp/sovereign-university-data`;
-
-  const git = simpleGit();
+export const getAllRepoFiles = async (repositoryUrl: string) => {
+  const repoDir = computeTemporaryDirectory(repositoryUrl);
 
   try {
-    // Check if the repository already exists locally
-    if (
-      (await pathExists(tmpDir)) &&
-      (await pathExists(path.join(tmpDir, '.git')))
-    ) {
-      // Pull updates
-      await git.cwd(tmpDir).pull();
-    } else {
-      // Clone the repository
-      await git.clone(repository, tmpDir);
-    }
+    const git = await syncRepository(repositoryUrl, repoDir);
 
     // Read all the files
-    const files = await walk(path.resolve(tmpDir), ['.git']);
+    const files = await walk(path.resolve(repoDir), ['.git']);
 
-    const finalFiles = await async.mapLimit(files, 10, async (file: string) => {
-      const relativePath = file.replace(`${tmpDir}/`, '');
+    const finalFiles: ChangedFile[] = await async.mapLimit(
+      files.filter((file) => !file.includes('/assets/')),
+      10,
+      async (file: string) => {
+        const relativePath = file.replace(`${repoDir}/`, '');
 
-      const fileLog = await git.log({ file });
-      const isAsset = relativePath.includes('assets');
+        const fileLog = await git.log({ file });
 
-      return {
-        path: relativePath,
-        commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-        time: new Date(
-          fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
-        ).getTime(),
-        kind: 'added',
-        ...(isAsset
-          ? // If the file is an asset, we don't need to read the raw data as we will
-            // get it directl from the GitHub CDN
-            { isAsset }
-          : // If the file isn't an asset, then it is a text file (markdown, yaml, etc.) and
-            // we need to read the raw data
-            { isAsset, data: await fs.readFile(file, 'utf-8') }),
-      } as ChangedFile;
-    });
+        return {
+          path: relativePath,
+          commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+          time: new Date(
+            fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
+          ).getTime(),
+          kind: 'added' as const,
+          data: await fs.readFile(file, 'utf-8'),
+        };
+      }
+    );
 
     return finalFiles;
   } catch (error) {
     throw new Error(`Failed to clone and read all repo files: ${error}`);
   }
-};
-
-const isRenamed = (
-  changeKind: ChangeKind
-): changeKind is Extract<ChangeKind, 'renamed'> => {
-  return changeKind === 'renamed';
 };
