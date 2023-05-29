@@ -1,4 +1,5 @@
 import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { firstRow, getBookQuery } from '@sovereign-academy/database';
 import { JoinedBook } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
@@ -7,7 +8,7 @@ export const createGetBooks =
   (dependencies: Dependencies) => async (language?: string) => {
     const { postgres } = dependencies;
 
-    const result = await postgres<JoinedBook[]>`
+    const books = await postgres<JoinedBook[]>`
       SELECT 
         r.id, r.path, bl.language, b.level, bl.title, b.author, bl.translator, 
         bl.description, bl.publisher, bl.publication_year, bl.cover, bl.summary_text, 
@@ -25,16 +26,38 @@ export const createGetBooks =
       bl.original
     `;
 
-    return result.map((row) => ({
-      ...row,
-      cover:
-        row.cover !== undefined && row.cover !== null
+    return books.map((book) => ({
+      ...book,
+      cover: book.cover
+        ? computeAssetRawUrl(
+            'https://github.com/DecouvreBitcoin/sovereign-university-data',
+            book.last_commit,
+            book.path,
+            book.cover
+          )
+        : undefined,
+    }));
+  };
+
+export const createGetBook =
+  (dependencies: Dependencies) => async (id: number, language?: string) => {
+    const { postgres } = dependencies;
+
+    const book = await postgres.exec(getBookQuery(id, language)).then(firstRow);
+
+    if (book) {
+      return {
+        ...book,
+        cover: book.cover
           ? computeAssetRawUrl(
               'https://github.com/DecouvreBitcoin/sovereign-university-data',
-              row.last_commit,
-              row.path,
-              row.cover
+              book.last_commit,
+              book.path,
+              book.cover
             )
           : undefined,
-    }));
+      };
+    }
+
+    return;
   };

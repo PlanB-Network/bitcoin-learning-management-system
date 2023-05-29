@@ -1,3 +1,5 @@
+import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { firstRow, getPodcastQuery } from '@sovereign-academy/database';
 import { JoinedPodcast } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
@@ -20,5 +22,36 @@ export const createGetPodcasts =
       p.twitter_url, p.podcast_url, p.nostr
     `;
 
-    return result;
+    return result.map((row) => ({
+      ...row,
+      logo: computeAssetRawUrl(
+        'https://github.com/DecouvreBitcoin/sovereign-university-data',
+        row.last_commit,
+        row.path,
+        'logo.jpg'
+      ),
+    }));
+  };
+
+export const createGetPodcast =
+  (dependencies: Dependencies) => async (id: number, language?: string) => {
+    const { postgres } = dependencies;
+
+    const podcast = await postgres
+      .exec(getPodcastQuery(id, language))
+      .then(firstRow);
+
+    if (podcast) {
+      return {
+        ...podcast,
+        logo: computeAssetRawUrl(
+          'https://github.com/DecouvreBitcoin/sovereign-university-data',
+          podcast.last_commit,
+          podcast.path,
+          'logo.jpg'
+        ),
+      };
+    }
+
+    return;
   };
