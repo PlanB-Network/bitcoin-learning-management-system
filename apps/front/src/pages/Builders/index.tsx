@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
+import {JoinedBuilder} from "@sovereign-academy/types";
 
 import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
@@ -9,12 +10,8 @@ import { PageTitle } from '../../components/PageTitle';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 
-type Builder = {
-    id: number,
-    logo: string,
-    name: string,
-    language: string,
-    category?: string,  // Category is optional
+interface Builder extends JoinedBuilder {
+    category?: string
 }
 
 export const Builders = () => {

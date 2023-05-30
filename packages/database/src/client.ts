@@ -81,7 +81,6 @@ export const createPostgresClient = ({
 } = {}) => {
   let connected = false;
 
-
   const client = postgres({
     host: host || process.env['DB_HOST'],
     port: port || Number(process.env['DB_PORT']),

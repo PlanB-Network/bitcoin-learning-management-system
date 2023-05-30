@@ -1,14 +1,14 @@
+import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { firstRow, getBuilderQuery } from '@sovereign-academy/database';
 import { JoinedBuilder } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
-import {firstRow, getBuilderQuery} from "@sovereign-academy/database";
-import {computeAssetRawUrl} from "@sovereign-academy/content";
 
 export const createGetBuilders =
-  (dependencies: Dependencies) => async (language?: string) => {
-    const { postgres } = dependencies;
+    (dependencies: Dependencies) => async (language?: string) => {
+        const { postgres } = dependencies;
 
-    const result = await postgres<JoinedBuilder[]>`
+        const result = await postgres<JoinedBuilder[]>`
       SELECT 
         r.id, r.path, bl.language, b.name, b.website_url, b.twitter_url, 
         b.github_url, b.nostr, bl.description, r.last_updated, r.last_commit,
@@ -22,37 +22,37 @@ export const createGetBuilders =
       GROUP BY r.id, bl.language, b.name, b.website_url, b.twitter_url,
       b.github_url, b.nostr, bl.description
     `;
-      console.log(result)
-    return result.map((row) => ({
-      ...row,
-      logo: computeAssetRawUrl(
-        'https://github.com/DecouvreBitcoin/sovereign-university-data',
-        row.last_commit,
-        row.path,
-        'logo.jpg'
-      ),
-    }));
-  };
+
+        return result.map((row) => ({
+            ...row,
+            logo: computeAssetRawUrl(
+                'https://github.com/DecouvreBitcoin/sovereign-university-data',
+                row.last_commit,
+                row.path,
+                'logo.jpg'
+            ),
+        }));
+    };
 
 export const createGetBuilder =
-  (dependencies: Dependencies) => async (id: number, language?: string) => {
-    const { postgres } = dependencies;
+    (dependencies: Dependencies) => async (id: number, language?: string) => {
+        const { postgres } = dependencies;
 
-    const builder = await postgres
-      .exec(getBuilderQuery(id, language))
-      .then(firstRow);
+        const builder = await postgres
+            .exec(getBuilderQuery(id, language))
+            .then(firstRow);
 
-    if (builder) {
-      return {
-        ...builder,
-        logo: computeAssetRawUrl(
-          'https://github.com/DecouvreBitcoin/sovereign-university-data',
-          builder.last_commit,
-          builder.path,
-          'logo.jpg'
-        ),
-      };
-    }
+        if (builder) {
+            return {
+                ...builder,
+                logo: computeAssetRawUrl(
+                    'https://github.com/DecouvreBitcoin/sovereign-university-data',
+                    builder.last_commit,
+                    builder.path,
+                    'logo.jpg'
+                ),
+            };
+        }
 
-    return;
-  };
+        return;
+    };
