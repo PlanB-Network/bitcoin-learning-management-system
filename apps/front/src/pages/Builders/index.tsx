@@ -18,6 +18,7 @@ type Builder = {
 }
 
 export const Builders = () => {
+
     const [searchTerm, setSearchTerm] = useState("");
 
     // Fetching data from the API
@@ -97,7 +98,6 @@ export const Builders = () => {
                         </Card>
                     );
                 })}
-
             </div>
         </MainLayout>
     );
