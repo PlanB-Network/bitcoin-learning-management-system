@@ -45,8 +45,6 @@ export const Builders = () => {
     const enlargedImage = 'min-w-[100px] min-h-[130px] transform p-2 hover:bg-secondary-400 hover:scale-125 rounded-full w-20 m-auto transition duration-500 ease-in-out group';
     const enlargedName = 'text-white text-center opacity-0 group-hover:opacity-100 transition duration-300 font-light text-xs';
 
-    console.log(typedBuilders)
-
     return (
         <MainLayout>
             <div className={mainContent}>

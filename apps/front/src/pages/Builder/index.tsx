@@ -15,8 +15,6 @@ export const Builder = () => {
     id: Number(builderId), language: 'en'
   });
 
-  console.log(builder?.logo)
-
   return (
     <MainLayout>
       <PageTitle>{builder?.name}</PageTitle>
