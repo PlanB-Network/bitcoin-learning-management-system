@@ -15,8 +15,7 @@ export const Builder = () => {
     id: Number(builderId), language: 'en'
   });
 
-  console.log(builderId)
-  console.log(builderId)
+  console.log(builder?.logo)
 
   return (
     <MainLayout>
@@ -24,7 +23,7 @@ export const Builder = () => {
       <div className="flex flex-row justify-evenly items-start m-10">
         <img
           className="mx-12 my-4 w-64 h-auto"
-          src={builderImage}
+          src={builder?.logo || builderImage}
           alt="something representing the company"
         />
         <div className="flex flex-col mr-12 space-y-4 text-sm">
