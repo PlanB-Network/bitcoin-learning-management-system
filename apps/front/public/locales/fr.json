@@ -1,8 +1,23 @@
 {
+  "courses": {
+    "details": {
+      "duration": "Durée: {{hours}} heures",
+      "numberOfChapters": "Nombre de chapitres : {{number}}",
+      "teachers": "Professeurs : {{teachers}}",
+      "level": "Niveau : $t(words.level.{{level}})"
+    },
+    "goal": "OBJECTIF : {{goal}}"
+  },
   "words": {
+    "about-us": "A Propos",
     "courses": "Cours",
+    "level": {
+      "advanced": "Avancé",
+      "beginner": "Débutant",
+      "expert": "Expert",
+      "intermediate": "Intermédiaire"
+    },
     "resources": "Ressources",
-    "tutorials": "Tutoriels",
-    "about-us": "A Propos"
+    "tutorials": "Tutoriels"
   }
 }
