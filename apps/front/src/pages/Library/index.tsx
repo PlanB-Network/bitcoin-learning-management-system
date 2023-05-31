@@ -2,12 +2,9 @@ import { Link } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import { Card } from '../../atoms/Card';
-import { FilterBar, MainLayout, Pagination } from '../../components';
-import { PageTitle } from '../../components/PageTitle';
-import { replaceDynamicParam } from '../../utils';
-import { Routes } from '../../types';
 import { RessourceLayout } from '../../components/RessourceLayout';
+import { Routes } from '../../types';
+import { replaceDynamicParam } from '../../utils';
 
 export const Library = () => {
   const books = trpc.content.getBooks.useQuery();
@@ -32,9 +29,9 @@ export const Library = () => {
                   language: book.language,
                 })}
               >
-                <div className="box-border flex flex-col justify-between items-center p-2 h-full bg-gray-100 rounded-xl border-2 border-gray-200 shadow duration-200 hover:border-secondary-400 hover:scale-95">
+                <div className="box-border flex flex-col items-center justify-between h-full p-2 duration-200 bg-gray-100 border-2 border-gray-200 shadow rounded-xl hover:border-secondary-400 hover:scale-95">
                   <img
-                    className="max-w-full max-h-80 rounded-t-lg"
+                    className="max-w-full rounded-t-lg max-h-80"
                     src={book.cover}
                     alt={book.title}
                   />

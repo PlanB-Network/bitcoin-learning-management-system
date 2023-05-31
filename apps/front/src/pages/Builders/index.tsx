@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import { Card } from '../../atoms/Card';
+import { RessourceLayout } from '../../components/RessourceLayout';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
-import { RessourceLayout } from '../../components/RessourceLayout';
 
 export const Builders = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,7 +41,7 @@ export const Builders = () => {
       tagLine="This portal is open-source & open to contribution. Thanks for
     grading and sharing!"
       filterBar={{
-        onChange: () => {},
+        onChange: setSearchTerm,
         label: 'Find the perfect resources for your needs:',
       }}
     >
@@ -58,7 +58,7 @@ export const Builders = () => {
 
         return (
           <Card key={category} className="m-8 bg-gray-200 rounded-3xl">
-            <h3 className="px-4 py-1 mb-2 w-full text-xl italic font-semibold uppercase bg-orange-500 rounded-md text-primary-700">
+            <h3 className="w-full px-4 py-1 mb-2 text-xl italic font-semibold uppercase bg-orange-500 rounded-md text-primary-700">
               {category}
             </h3>
             <div className="flex flex-row flex-wrap items-center">
@@ -71,14 +71,14 @@ export const Builders = () => {
                   })}
                   key={index}
                 >
-                  <div className="relative px-2 pt-2 m-auto mb-2 rounded-t-full transition duration-500 ease-in-out h-fit group-hover:scale-125 group-hover:bg-secondary-400">
+                  <div className="relative px-2 pt-2 m-auto mb-2 transition duration-500 ease-in-out rounded-t-full h-fit group-hover:scale-125 group-hover:bg-secondary-400">
                     <img
                       className="mx-auto bg-white rounded-full h-30"
                       src={builder.logo}
                       alt={builder.name}
                     />
-                    <p className="absolute inset-x-0 px-4 py-2 w-full text-xs font-light text-center text-white rounded-b-lg transition-colors duration-500 ease-in-out h-fit wrap align-center inset-y-end group-hover:bg-secondary-400">
-                      <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                    <p className="absolute inset-x-0 w-full px-4 py-2 text-xs font-light text-center text-white transition-colors duration-500 ease-in-out rounded-b-lg h-fit wrap align-center inset-y-end group-hover:bg-secondary-400">
+                      <span className="transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
                         {builder.name}
                       </span>
                     </p>
