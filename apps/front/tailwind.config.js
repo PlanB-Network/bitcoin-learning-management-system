@@ -10,6 +10,9 @@ const theme = {
   success: '#A4DBBC',
   warning: '#FFCF99',
   error: '#DE6E75',
+  fontSize: {
+    xxs: ['10px', '14px'],
+  },
 };
 
 export default {
@@ -22,9 +25,6 @@ export default {
       normal: '400',
       semibold: '600',
       bold: '700',
-    },
-    fontSize: {
-      xxs: ['10px', '14px'],
     },
     colors: {
       transparent: 'transparent',
