@@ -26,43 +26,43 @@ const resourceKinds = [
     kind: ResourceKinds.Book,
     title: 'Book',
     image: bookSvg,
-    route: Routes.Library
+    route: Routes.Library,
   },
   {
     kind: ResourceKinds.Article,
     title: 'Article',
     image: articleSvg,
-    route: Routes.Article
+    route: Routes.Article,
   },
   {
     kind: ResourceKinds.Documentary,
     title: 'Movie Documentary',
     image: documentarySvg,
-    route: Routes.Home
+    route: Routes.Home,
   },
   {
     kind: ResourceKinds.Newsletter,
     title: 'Newsletter',
     image: newsletterSvg,
-    route: Routes.Newsletter
+    route: Routes.Newsletter,
   },
   {
     kind: ResourceKinds.Podcast,
     title: 'Podcast',
     image: microSvg,
-    route: Routes.Podcasts
+    route: Routes.Podcasts,
   },
   {
     kind: ResourceKinds.Conference,
     title: 'Conference',
     image: couchSvg,
-    route: Routes.Conferences
+    route: Routes.Conferences,
   },
   {
     kind: ResourceKinds.Video,
     title: 'Video',
     image: videoSvg,
-    route: Routes.Videos
+    route: Routes.Videos,
   },
 ];
 
@@ -90,7 +90,7 @@ export const Resources = () => {
           <img className="mt-10 mb-40 h-96" src={rabbitInLibrary} />
         </div>
 
-        <div className="box-content ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-[50px] bg-primary-700">
+        <div className="box-content max-w-5xl ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-full bg-primary-700">
           {resourceKinds.map((resourceKind) => (
             <Link to={resourceKind.route}>
               <div
@@ -98,10 +98,7 @@ export const Resources = () => {
                 key={resourceKind.kind}
               >
                 <div className="flex absolute z-0 w-24 h-24 rounded-full bg-secondary-400">
-                  <img
-                    className="h-16 m-auto"
-                    src={resourceKind.image}
-                  />
+                  <img className="h-16 m-auto" src={resourceKind.image} />
                 </div>
                 <div className="flex relative flex-row items-center ml-14">
                   <h3 className="relative ml-12 text-2xl text-white z-1">
@@ -110,7 +107,6 @@ export const Resources = () => {
                 </div>
               </div>
             </Link>
-
           ))}
         </div>
       </div>
