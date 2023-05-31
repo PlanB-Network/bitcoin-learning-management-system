@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { trpc } from "@sovereign-academy/api-client";
+import { trpc } from '@sovereign-academy/api-client';
 
 import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { MainLayout } from '../../components';
@@ -12,7 +12,8 @@ import { replaceDynamicParam } from '../../utils';
 export const Builder = () => {
   const { builderId } = useParams();
   const { data: builder } = trpc.content.getBuilder.useQuery({
-    id: Number(builderId), language: 'en'
+    id: Number(builderId),
+    language: 'en',
   });
 
   return (
@@ -25,9 +26,7 @@ export const Builder = () => {
           alt="something representing the company"
         />
         <div className="flex flex-col mr-12 space-y-4 text-sm">
-          <p className="max-w-xl text-justify">
-            {builder?.description}
-          </p>
+          <p className="max-w-xl text-justify">{builder?.description}</p>
 
           <div className="max-w-xl text-justify">
             Les principales fonctionnalités de SeedSigner comprennent :
