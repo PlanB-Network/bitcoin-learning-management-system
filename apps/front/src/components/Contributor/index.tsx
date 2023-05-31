@@ -15,7 +15,7 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
       {prefix && (
         <div className="mb-1 text-sm font-thin text-primary-900">{prefix}</div>
       )}
-      <div className="flex flex-row">
+      <div className="flex flex-row float-right">
         {contributor?.image && (
           <Avatar
             rounded
