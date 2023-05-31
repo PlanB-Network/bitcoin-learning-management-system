@@ -87,6 +87,7 @@ export const createPostgresClient = ({
     database: database || process.env['DB_NAME'],
     username: username || process.env['DB_USER'],
     password: password || process.env['DB_PASSWORD'],
+
     // onnotice: () => undefined,
     types,
     transform: {
@@ -96,6 +97,14 @@ export const createPostgresClient = ({
       value: (value) => value ?? undefined,
     },
   }) as PostgresClient;
+
+  console.log({
+    host: host || process.env['DB_HOST'],
+    port: port || Number(process.env['DB_PORT']),
+    database: database || process.env['DB_NAME'],
+    username: username || process.env['DB_USER'],
+    password: password || process.env['DB_PASSWORD'],
+  });
 
   client.connect = async () => {
     if (connected) {
