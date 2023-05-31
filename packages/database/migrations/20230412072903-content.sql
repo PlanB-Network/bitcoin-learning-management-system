@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS content.builders (
   resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
 
   name TEXT NOT NULL,
+  category VARCHAR(255) NOT NULL,
 
   -- Links
   website_url TEXT,

@@ -30,7 +30,7 @@ export const getBookQuery = (id: number, language?: string) => {
 export const getBuilderQuery = (id: number, language?: string) => {
   return sql<JoinedBuilder[]>`
     SELECT 
-      r.id, r.path, bl.language, b.name, b.website_url, b.twitter_url, 
+      r.id, r.path, bl.language, b.name, b.category, b.website_url, b.twitter_url, 
       b.github_url, b.nostr, bl.description, r.last_updated, r.last_commit,
       ARRAY_AGG(t.name) AS tags
     FROM content.builders b
@@ -40,7 +40,7 @@ export const getBuilderQuery = (id: number, language?: string) => {
     LEFT JOIN content.tags t ON t.id = rt.tag_id
     WHERE r.id = ${id}
     ${language ? sql`AND bl.language = ${language}` : sql``}
-    GROUP BY r.id, bl.language, b.name, b.website_url, b.twitter_url,
+    GROUP BY r.id, bl.language, b.name, b.category, b.website_url, b.twitter_url,
     b.github_url, b.nostr, bl.description
   `;
 };

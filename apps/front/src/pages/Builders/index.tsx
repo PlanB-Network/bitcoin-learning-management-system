@@ -17,63 +17,54 @@ export const Builders = () => {
     language: 'en',
   });
 
-  const categories = ['EXCHANGES', 'HARDWARE', 'GAMING'];
-
   // Adding a category to each builder
-  const typedBuilders = builders
-    ? builders.map((builder) => ({
-        ...builder,
-        category: categories[Math.floor(Math.random() * categories.length)],
-      }))
+  const sortedBuilders = builders
+    ? builders.sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
-  // Variables for styling
-  const mainContent = 'bg-primary-900 relative block p-[3em]';
-  const cards = 'bg-primary-100 m-8 rounded-3xl';
-  const search = 'bg-primary-100 mx-8 px-4 rounded-full';
-  const builderWrapper = 'grid grid-cols-6 m-2';
-  const builderWrapperRow = 'p-2 my-1';
-  const rowTitle =
-    'font-bold text-lg mb-2 py-2 px-4 rounded-md bg-orange-500 text:bg-primary-100 w-full';
+  const categorizedBuilders = sortedBuilders.reduce((acc, builder) => {
+    if (!acc[builder.category]) {
+      acc[builder.category] = [];
+    }
+    acc[builder.category].push(builder);
+    return acc;
+  }, {} as Record<string, typeof sortedBuilders>);
 
-  // variables for enlarging the image on hover
-  const enlargedImage =
-    'min-w-[100px] min-h-[130px] transform p-2 hover:bg-secondary-400 hover:scale-125 rounded-full w-20 m-auto transition duration-500 ease-in-out group';
-  const enlargedName =
-    'text-white text-center opacity-0 group-hover:opacity-100 transition duration-300 font-light text-xs';
+  const categories = [
+    ...new Set(sortedBuilders.map((builder) => builder.category)),
+  ].sort(
+    (a, b) => categorizedBuilders[b].length - categorizedBuilders[a].length
+  );
 
   return (
     <MainLayout>
-      <div className={mainContent}>
-        <PageTitle>The Builders' Portal</PageTitle>
-        <p className="text-justify mx-8 pb-3 text-white">
-          This portal is open-source & open to contribution. Thanks for grading
-          and sharing!
-        </p>
-        <Card className={cards && search}>
-          <div className={'grid grid-cols-2'}>
-            <div className="cols-1">
-              <p className={'py-2'}>
-                Find the perfect resources for your needs:
-              </p>
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-                className="w-2/3 rounded-full inline-block py-2 placeholder-gray-500 placeholder-opacity-50 border-0 focus:outline-none focus:ring focus:ring-gray-300 focus:border-gray-100 dark:bg-gray-700 focus:black dark:black dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-              />
-            </div>
-            <div className="col-1 flex justify-end items-center">
-              <button className="text-justify underline">
-                Additional criteria
-              </button>
-            </div>
+      <div className="bg-primary-900 w-full min-h-screen h-fit  p-[3em] space-y-10">
+        <div className="">
+          <PageTitle>The Builders' Portal</PageTitle>
+          <p className="text-justify mx-8 pb-3 text-white">
+            This portal is open-source & open to contribution. Thanks for
+            grading and sharing!
+          </p>
+        </div>
+        <div className="flex flex-row justify-between items-center bg-white mx-8 px-6 py-2 rounded-full text-xs">
+          <div className="grow">
+            <p className="text-primary-700 mb-1">
+              Find the perfect resources for your needs:
+            </p>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className="w-2/3 h-fit text-sm bg-gray-100 rounded-full inline-block py-1 placeholder-gray-500 placeholder-opacity-50 border-0 focus:outline-none focus:ring focus:ring-gray-300 focus:border-gray-100 dark:bg-gray-700 focus:black dark:black dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+            />
           </div>
-        </Card>
+          <button className="text-justify italic font-thin underline">
+            Additional criteria
+          </button>
+        </div>
         {categories.map((category) => {
-          const filteredBuilders = typedBuilders.filter(
+          const filteredBuilders = categorizedBuilders[category].filter(
             (builder) =>
-              builder.category === category &&
               builder.name.toLowerCase().includes(searchTerm.toLowerCase())
           );
 
@@ -83,27 +74,33 @@ export const Builders = () => {
           }
 
           return (
-            <Card key={category} className={cards}>
-              <h3 className={rowTitle}>{category}</h3>
-              <div className={builderWrapper}>
+            <Card key={category} className="bg-gray-200 m-8 rounded-3xl">
+              <h3 className="font-semibold uppercase italic text-xl mb-2 py-1 px-4 rounded-md bg-orange-500 text-primary-700 w-full">
+                {category}
+              </h3>
+              <div className="flex flex-row flex-wrap items-center">
                 {filteredBuilders.map((builder, index) => (
-                  <div className={builderWrapperRow} key={index}>
-                    <Link
-                      to={replaceDynamicParam(Routes.Builder, {
-                        builderId: builder.id.toString(),
-                        language: builder.language,
-                      })}
-                    >
-                      <div className={enlargedImage}>
-                        <img
-                          className="rounded-full w-20 m-auto"
-                          src={builder.logo}
-                          alt={builder.name}
-                        />
-                        <p className={enlargedName}>{builder.name}</p>
-                      </div>
-                    </Link>
-                  </div>
+                  <Link
+                    className="mx-2 mb-5 h-fit min-w-[100px] w-20 z-10 hover:z-20 delay-100 hover:delay-0 m-auto group"
+                    to={replaceDynamicParam(Routes.Builder, {
+                      builderId: builder.id.toString(),
+                      language: builder.language,
+                    })}
+                    key={index}
+                  >
+                    <div className="relative px-2 pt-2 mb-2 h-fit m-auto rounded-t-full group-hover:scale-125 group-hover:bg-secondary-400 transition duration-500 ease-in-out">
+                      <img
+                        className="rounded-full bg-white h-30 mx-auto"
+                        src={builder.logo}
+                        alt={builder.name}
+                      />
+                      <p className="w-full h-fit absolute wrap align-center rounded-b-lg inset-x-0 inset-y-end px-4 py-2 font-light text-xs text-white group-hover:bg-secondary-400 transition-colors duration-500 ease-in-out text-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+                          {builder.name}
+                        </span>
+                      </p>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </Card>

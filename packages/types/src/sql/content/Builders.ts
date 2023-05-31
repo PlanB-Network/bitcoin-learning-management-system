@@ -9,6 +9,8 @@ export default interface Builders {
 
   name: string;
 
+  category: string;
+
   website_url?: string;
 
   twitter_url?: string;
@@ -24,6 +26,8 @@ export interface BuildersInitializer {
 
   name: string;
 
+  category: string;
+
   website_url?: string;
 
   twitter_url?: string;
@@ -38,6 +42,8 @@ export interface BuildersMutator {
   resource_id?: ResourcesId;
 
   name?: string;
+
+  category?: string;
 
   website_url?: string;
 
