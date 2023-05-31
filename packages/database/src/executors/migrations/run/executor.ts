@@ -33,6 +33,7 @@ export default async function runExecutor(
       tmpClient = createPostgresClient({
         database: 'tmp',
       });
+      await tmpClient.connect();
     } catch (error) {
       const client = createPostgresClient({
         database: options.database,
