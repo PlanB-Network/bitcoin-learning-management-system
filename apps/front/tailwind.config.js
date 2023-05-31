@@ -23,6 +23,9 @@ export default {
       semibold: '600',
       bold: '700',
     },
+    fontSize: {
+      xxs: ['10px', '14px'],
+    },
     colors: {
       transparent: 'transparent',
       primary: {

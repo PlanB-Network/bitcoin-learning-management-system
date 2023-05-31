@@ -5,16 +5,17 @@ import { BaseAtomProps } from '../types';
 
 interface ButtonProps
   extends BaseAtomProps,
-  DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    > {
   children: string;
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
   rounded?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  icon?: JSX.Element;
 }
 
 const classesBySize = {
@@ -42,6 +43,7 @@ export const Button = ({
   rounded,
   iconLeft,
   iconRight,
+  icon,
   className,
   ...buttonProps
 }: ButtonProps) => {
@@ -53,6 +55,20 @@ export const Button = ({
     ],
     [rounded, size, variant]
   );
+
+  if (icon)
+    return (
+      <button
+        className={compose(
+          ...classes,
+          'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
+          className ?? ''
+        )}
+        {...buttonProps}
+      >
+        {icon}
+      </button>
+    );
 
   return (
     <button

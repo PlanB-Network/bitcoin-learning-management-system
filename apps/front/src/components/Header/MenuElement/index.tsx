@@ -38,11 +38,11 @@ export const MenuElement = ({ element }: MenuElementProps) => {
   );
 
   return 'path' in element ? (
-    <Link className="block w-full" to={element.path}>
+    <Link className="block w-full text-primary-800" to={element.path}>
       {item}
     </Link>
   ) : (
-    <button className="block w-full" onClick={element.action}>
+    <button className="block w-full text-primary-800" onClick={element.action}>
       {item}
     </button>
   );

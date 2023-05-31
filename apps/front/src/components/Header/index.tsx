@@ -18,6 +18,8 @@ import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import { VscTools } from 'react-icons/vsc';
+import { GiOldMicrophone } from 'react-icons/gi';
 
 import headerImage from '../../assets/lapin-diplome.png';
 import { Button } from '../../atoms/Button';
@@ -329,7 +331,7 @@ export const Header = () => {
 
       {isScreenMd && <FlyingMenu sections={sections} />}
       {isScreenMd && (
-        <div className="flex flex-row space-x-6 place-items-center">
+        <div className="flex flex-row place-items-center space-x-6">
           <LanguageSelector />
           {isLoggedIn && <div className="text-white">Account</div>}
 
@@ -507,22 +509,33 @@ const sections: NavigationSection[] = useMemo(
                 title: 'Library',
                 icon: IoLibraryOutline,
                 description:
-                  'discover plenty of books to improve your knowledge on the bitcoin ecosystem and related economic topics',
+                  'Discover plenty of books to improve your knowledge on the bitcoin ecosystem and related economic topics.',
                 path: Routes.Library,
               },
               {
                 id: 'newsletter',
                 title: 'Newsletter',
                 path: Routes.Newsletter,
+                description:
+                  'Find out the most relevant newsletters of the ecosystem.',
                 icon: BsNewspaper,
               },
               {
                 id: 'articles',
                 title: 'Articles',
                 path: Routes.Articles,
+                description:
+                  'Read the latest books qbout topics like Bitcoin, tech, privacy and economy.',
                 icon: GrArticle,
               },
-              { id: 'learning', title: 'Learning tools', path: Routes.Tools },
+              {
+                id: 'podcasts',
+                title: 'Podcasts',
+                path: Routes.Podcasts,
+                icon: GiOldMicrophone,
+                description:
+                  'Listen to the latest recorded podcast and catch up on the hot topics.',
+              },
             ],
           },
           {
@@ -534,24 +547,28 @@ const sections: NavigationSection[] = useMemo(
                 title: 'Bitcoin Companies',
                 icon: IoBusinessOutline,
                 description:
-                  'Learn about the companies that work at making bitcoin better and growing its adoption',
+                  'Learn about the companies that work at making bitcoin better and growing its adoption.',
                 path: Routes.Companies,
               },
               {
                 id: 'artiste',
                 title: 'Artiste',
                 path: Routes.Articles,
+                description: 'Discover your next favorite bitcoin artists.',
                 icon: BiPalette,
               },
               {
                 id: 'conferences',
                 title: 'Conferences',
                 path: Routes.Conferences,
+                description:
+                  'Find out where to meet great people around Bitcoin topics.',
                 icon: BsMic,
               },
               {
                 id: 'bitcoin-calendar',
                 title: 'Bitcoin Calendar',
+                description: 'Check out the next important Bitcoin dates.',
                 path: Routes.Calendar,
                 icon: BsCalendarDate,
               },
@@ -566,12 +583,24 @@ const sections: NavigationSection[] = useMemo(
                 title: 'BIPs',
                 path: Routes.BIPs,
                 icon: AiOutlineFileText,
+                description:
+                  'Get explanations about all the major Bitcoin Improvement Proposals',
               },
               {
                 id: 'lexique',
                 title: 'Lexique',
                 path: Routes.Lexique,
+                description:
+                  "Don't get lost in a dialog thanks to this lexical repertory",
                 icon: BsBook,
+              },
+              {
+                id: 'learning',
+                title: 'Learning tools',
+                icon: VscTools,
+                path: Routes.Tools,
+                description:
+                  'Various curated tools to educate yourself on Bitcoin',
               },
             ],
           },

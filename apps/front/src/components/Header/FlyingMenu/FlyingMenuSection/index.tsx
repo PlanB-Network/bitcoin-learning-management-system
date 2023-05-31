@@ -17,7 +17,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
     if ('path' in section)
       return (
         <Link
-          className="uppercase font-thin text-lg text-white"
+          className="text-lg font-thin text-white uppercase"
           to={section.path}
         >
           {section.title}
@@ -26,7 +26,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
     if ('action' in section)
       return (
         <button
-          className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 text-gray-100 cursor-pointer"
+          className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 cursor-pointer"
           onClick={() => {
             section.action();
           }}
@@ -36,7 +36,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       );
 
     return (
-      <Popover.Button className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 text-gray-100">
+      <Popover.Button className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6">
         {section.title}
       </Popover.Button>
     );

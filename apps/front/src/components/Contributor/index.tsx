@@ -20,7 +20,7 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
           <Avatar
             rounded
             size="s"
-            alt="asio profile pic"
+            alt="contributor profile pic"
             image={contributor.image}
           />
         )}

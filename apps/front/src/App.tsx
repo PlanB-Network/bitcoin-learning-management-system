@@ -14,9 +14,11 @@ import { Library } from './pages/Library';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
 import { UnderConstruction } from './pages/UnderConstruction';
+import { Podcasts } from './pages/Podcasts';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
+import { WIP } from './pages/WIP';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -58,6 +60,8 @@ export const App = () => {
         />
 
         <Route path={RoutesEnum.Resources} element={<Resources />} />
+        <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
+
         <Route path={RoutesEnum.Library} element={<Library />} />
         <Route path={RoutesEnum.Book} element={<Book />} />
 
@@ -70,7 +74,7 @@ export const App = () => {
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
-        <Route path="*" element={<h1>TODO</h1>} />
+        <Route path="*" element={<WIP />} />
       </Route>
     </Routes>
   );

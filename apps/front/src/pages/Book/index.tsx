@@ -22,14 +22,22 @@ export const Book = () => {
     language: language as any, // TODO: understand why React think route params can be undefined and fix it
   });
 
+  // TODO: to be extracted from book data
+  const contributor = {
+    username: 'Asi0',
+    title: 'Bitcoiner',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/09/23/47/tree-snake-7982626_960_720.jpg',
+  };
+
   return (
     <MainLayout>
       <div className="flex flex-col bg-primary-800">
         <div className="flex flex-row justify-center">
-          <Card className="max-w-8xl px-6">
+          <Card className="px-6 max-w-8xl">
             <div className="flex flex-row justify-between mx-auto my-6 w-screen max-w-4xl">
               <div className="flex flex-col justify-between py-4 mr-12 w-max">
-                <img className="w-100" alt="book cover" src={book?.cover} />
+                <img className="max-w-xs" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
                   <Button size="s" variant="tertiary" className="mx-2 w-full">
                     PDF / E-book
@@ -91,18 +99,13 @@ export const Book = () => {
 
         <div className="flex flex-row justify-center pb-48">
           <BookSummary
-            contributor={{
-              username: 'Asi0',
-              title: 'Bitcoiner',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-            }}
+            contributor={contributor}
             title="A journey into sovreignty"
             content="If it's not the Presentation mode that's causing the issue, it's possible that you accidentally triggered a different mode or setting in Figma that is causing the screen to display in black and white with a purple overlay. One thing you could try is to reset your Figma preferences. To do this, click on your user icon in the bottom left-hand corner of the Figma interface, and then select 'Help & Account' from the dropdown menu. From there, select 'Troubleshooting' and then click the 'Reset Figma' button. This should reset your preferences and return Figma to its default settings. If resetting your preferences doesn't work, it's possible that there is another issue causing the problem. You might try clearing your browser's cache and cookies, or trying to access Figma using a different browser or device to see if the issue persists. If none of these solutions work, you may want to contact Figma's support team for further assistance."
           />
 
           <div className="py-4 max-w-lg">
-            <ResourceReview />
+            <ResourceReview contributor={contributor} />
           </div>
         </div>
 
@@ -113,24 +116,24 @@ export const Book = () => {
               title: 'Discours de la servitude volontaire',
               id: 'discours-de-la-servitude-volontaire',
               image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
+                'https://cdn.pixabay.com/photo/2023/05/09/23/47/tree-snake-7982626_960_720.jpg',
             },
             {
               title: 'Check your financiel priviledge',
               id: 'check-your-financiel-priviledge',
               image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
+                'https://cdn.pixabay.com/photo/2023/05/09/23/47/tree-snake-7982626_960_720.jpg',
             },
             {
               title: "L'ordre mondial en mutation",
               id: 'l-ordre-mondial-en-mutation',
               image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
+                'https://cdn.pixabay.com/photo/2023/05/09/23/47/tree-snake-7982626_960_720.jpg',
             },
             {
               title: 'Le prix de demain',
               image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
+                'https://cdn.pixabay.com/photo/2023/05/09/23/47/tree-snake-7982626_960_720.jpg',
               id: 'le-prix-de-demain',
             },
           ]}

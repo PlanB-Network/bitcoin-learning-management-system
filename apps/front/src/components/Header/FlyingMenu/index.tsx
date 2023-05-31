@@ -9,7 +9,7 @@ export interface FlyingMenuProps {
 export const FlyingMenu = ({ sections }: FlyingMenuProps) => {
   return (
     <nav>
-      <ul className="flex flex-row text-white space-x-10">
+      <ul className="flex flex-row space-x-10 text-white">
         {sections.map((section, index) => (
           <li className="font-primary" key={section.id}>
             <FlyingMenuSection section={section} />
