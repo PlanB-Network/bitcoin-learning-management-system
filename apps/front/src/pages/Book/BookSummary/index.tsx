@@ -41,7 +41,8 @@ export const BookSummary = ({
           <img onClick={DoExpand} className="absolute -bottom-4 right-10 w-8" src={arrowForward} />
         </>
       );
-    } else return null
+    } else return <span className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin'>this summary is linked to github, for any modification or addition</span>
+
   }
 
   return (
@@ -49,9 +50,6 @@ export const BookSummary = ({
       <h4 className="text-4xl font-bold text-white ml-4 mb-8">The book summary</h4>
       <Card className={compose('max-w-[740px] px-6 pb-2 relative ', isExtended ? '' : 'max-h-52')}>
         {/* remove max h if not needed here */}
-
-        <BottomButtons />
-
         <div className={(isExtended ? '' : 'max-h-36 overflow-hidden')}>
           <header className="flex flex-row justify-between">
             <div>
@@ -63,12 +61,15 @@ export const BookSummary = ({
 
           {contributor && (
             <div className='float-right'>
-              <Contributor prefix="Offered by a generous contributor <3" contributor={contributor} />
+              <Contributor prefix="Offered by a generous contributor" contributor={contributor} />
             </div>
           )}
-
         </div>
+
+        <BottomButtons />
+
       </Card>
+
     </>
   );
 };
