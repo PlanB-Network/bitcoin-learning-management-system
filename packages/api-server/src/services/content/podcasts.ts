@@ -1,4 +1,4 @@
-import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { computeAssetCdnUrl } from '@sovereign-academy/content';
 import { firstRow, getPodcastQuery } from '@sovereign-academy/database';
 import { JoinedPodcast } from '@sovereign-academy/types';
 
@@ -24,8 +24,8 @@ export const createGetPodcasts =
 
     return result.map((row) => ({
       ...row,
-      logo: computeAssetRawUrl(
-        'https://github.com/DecouvreBitcoin/sovereign-university-data',
+      logo: computeAssetCdnUrl(
+        process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
         'logo.jpg'
@@ -44,8 +44,8 @@ export const createGetPodcast =
     if (podcast) {
       return {
         ...podcast,
-        logo: computeAssetRawUrl(
-          'https://github.com/DecouvreBitcoin/sovereign-university-data',
+        logo: computeAssetCdnUrl(
+          process.env['CDN_URL'] || 'http://localhost:8080',
           podcast.last_commit,
           podcast.path,
           'logo.jpg'

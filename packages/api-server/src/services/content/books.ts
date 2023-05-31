@@ -1,4 +1,4 @@
-import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { computeAssetCdnUrl } from '@sovereign-academy/content';
 import { firstRow, getBookQuery } from '@sovereign-academy/database';
 import { JoinedBook } from '@sovereign-academy/types';
 
@@ -29,8 +29,8 @@ export const createGetBooks =
     return books.map((book) => ({
       ...book,
       cover: book.cover
-        ? computeAssetRawUrl(
-            'https://github.com/DecouvreBitcoin/sovereign-university-data',
+        ? computeAssetCdnUrl(
+            process.env['CDN_URL'] || 'http://localhost:8080',
             book.last_commit,
             book.path,
             book.cover
@@ -49,8 +49,8 @@ export const createGetBook =
       return {
         ...book,
         cover: book.cover
-          ? computeAssetRawUrl(
-              'https://github.com/DecouvreBitcoin/sovereign-university-data',
+          ? computeAssetCdnUrl(
+              process.env['CDN_URL'] || 'http://localhost:8080',
               book.last_commit,
               book.path,
               book.cover

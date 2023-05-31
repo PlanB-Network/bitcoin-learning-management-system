@@ -215,13 +215,13 @@ export const getAllRepoFiles = async (repositoryUrl: string) => {
       async (file: string) => {
         const relativePath = file.replace(`${repoDir}/`, '');
 
-        const fileLog = await git.log({ file });
+        const parentDirectoryLog = await git.log({ file: path.dirname(file) });
 
         return {
           path: relativePath,
-          commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+          commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
           time: new Date(
-            fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
+            parentDirectoryLog.latest?.date ?? Date.now() // Cannot happen (I think)
           ).getTime(),
           kind: 'added' as const,
           data: await fs.readFile(file, 'utf-8'),
@@ -232,5 +232,39 @@ export const getAllRepoFiles = async (repositoryUrl: string) => {
     return finalFiles;
   } catch (error) {
     throw new Error(`Failed to clone and read all repo files: ${error}`);
+  }
+};
+
+export const syncCdnRepository = async (
+  repositoryDirectory: string,
+  cdnDirectory: string
+) => {
+  const git = simpleGit();
+
+  try {
+    const files = await walk(path.resolve(repositoryDirectory), ['.git']);
+    const assets = files.filter((file) => file.includes('/assets/'));
+
+    for (const asset of assets) {
+      const parentDirectoryLog = await git
+        .cwd(repositoryDirectory)
+        .log({ file: asset.replace(/\/assets\/.*/, '') });
+      const relativePath = asset.replace(`${repositoryDirectory}/`, '');
+
+      if (!parentDirectoryLog.latest) continue;
+
+      const cdnPath = path.join(
+        cdnDirectory,
+        parentDirectoryLog.latest.hash,
+        relativePath
+      );
+
+      if (!(await pathExists(cdnPath))) {
+        await fs.mkdir(path.dirname(cdnPath), { recursive: true });
+        await fs.copyFile(asset, cdnPath);
+      }
+    }
+  } catch (error) {
+    throw new Error(`Failed to sync CDN repository: ${error}`);
   }
 };

@@ -1,4 +1,4 @@
-import { computeAssetRawUrl } from '@sovereign-academy/content';
+import { computeAssetCdnUrl } from '@sovereign-academy/content';
 import { firstRow, getBuilderQuery } from '@sovereign-academy/database';
 import { JoinedBuilder } from '@sovereign-academy/types';
 
@@ -25,8 +25,8 @@ export const createGetBuilders =
 
     return result.map((row) => ({
       ...row,
-      logo: computeAssetRawUrl(
-        'https://github.com/DecouvreBitcoin/sovereign-university-data',
+      logo: computeAssetCdnUrl(
+        process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
         'logo.jpg'
@@ -45,8 +45,8 @@ export const createGetBuilder =
     if (builder) {
       return {
         ...builder,
-        logo: computeAssetRawUrl(
-          'https://github.com/DecouvreBitcoin/sovereign-university-data',
+        logo: computeAssetCdnUrl(
+          process.env['CDN_URL'] || 'http://localhost:8080',
           builder.last_commit,
           builder.path,
           'logo.jpg'

@@ -17,12 +17,12 @@ export const getContentType = (path: string) => {
   return rootPath;
 };
 
-export const computeAssetRawUrl = (
-  repositoryUrl: string,
+export const computeAssetCdnUrl = (
+  cdnUrl: string,
   commit: string,
   contentPath: string,
   assetPath: string
-) => `${repositoryUrl}/raw/${commit}/${contentPath}/assets/${assetPath}`;
+) => `${cdnUrl}/${commit}/${contentPath}/assets/${assetPath}`;
 
 export const separateContentFiles = (
   resource: ChangedContent,
