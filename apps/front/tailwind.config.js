@@ -13,6 +13,9 @@ const theme = {
   fontSize: {
     xxs: ['10px', '14px'],
   },
+  spacing: {
+    '23':'5.75rem'
+  }
 };
 
 export default {
