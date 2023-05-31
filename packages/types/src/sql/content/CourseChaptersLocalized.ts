@@ -19,6 +19,8 @@ export default interface CourseChaptersLocalized {
 
   title: string;
 
+  sections: string[];
+
   raw_content: string;
 }
 
@@ -32,6 +34,8 @@ export interface CourseChaptersLocalizedInitializer {
 
   title: string;
 
+  sections: string[];
+
   raw_content: string;
 }
 
@@ -44,6 +48,8 @@ export interface CourseChaptersLocalizedMutator {
   chapter?: CourseChaptersLocalizedChapter;
 
   title?: string;
+
+  sections?: string[];
 
   raw_content?: string;
 }

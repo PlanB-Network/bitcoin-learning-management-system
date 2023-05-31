@@ -4,10 +4,10 @@ import {
   firstRow,
   getCourseChapterQuery,
   getCourseChaptersQuery,
-  getCourseQuery,
   getCoursesQuery,
 } from '@sovereign-academy/database';
 
+import { createGetCourse } from '../../services/content';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 const getCoursesProcedure = publicProcedure
@@ -32,13 +32,16 @@ const getCourseProcedure = publicProcedure
     z.object({
       id: z.string(),
       language: z.string(),
+      includeChapters: z.boolean().optional(),
     })
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    ctx.dependencies.postgres
-      .exec(getCourseQuery(input.id, input.language))
-      .then(firstRow)
+    createGetCourse(ctx.dependencies)(
+      input.id,
+      input.language,
+      input.includeChapters
+    )
   );
 
 const getCourseChaptersProcedure = publicProcedure
