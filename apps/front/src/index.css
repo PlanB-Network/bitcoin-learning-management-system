@@ -44,7 +44,11 @@
     url('./assets/fonts/poppins-v5-latin-700.woff') format('woff');
 }
 
-body {
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
   margin: 0;
 }
 
