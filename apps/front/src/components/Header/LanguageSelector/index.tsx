@@ -18,9 +18,9 @@ export const LanguageSelector = () => {
     <Popover
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className="relative"
+      className="relative px-2"
     >
-      <Popover.Button className="my-4 inline-flex place-items-center text-sm font-semibold leading-6 text-gray-100">
+      <Popover.Button className="flex place-items-center z-0 text-sm font-semibold text-gray-100">
         <Flag code={i18n.language} />
       </Popover.Button>
       <Transition
@@ -35,24 +35,20 @@ export const LanguageSelector = () => {
       >
         <Popover.Panel
           static
-          className="absolute flex fixed z-10 px-4 w-screen max-w-max -translate-x-1/2 -translate-y-[3.25rem] left-1/2 top-full"
+          className="absolute z-20 -top-3 -right-1 flex flex-col text-sm bg-white rounded-3xl shadow-lg ring-gray-600/5"
         >
-          <div className="overflow-hidden flex-auto w-screen max-w-max text-sm leading-6 bg-white rounded-3xl ring-1 shadow-lg ring-gray-600/5">
-            <div className="flex flex-col">
-              {[
-                i18n.language,
-                ...languages.filter((lng) => lng !== i18n.language).sort(),
-              ].map((language) => (
-                <button
-                  key={language}
-                  className="m-3"
-                  onClick={() => changeLanguage(language)}
-                >
-                  <Flag code={language} />
-                </button>
-              ))}
-            </div>
-          </div>
+          {[
+            i18n.language,
+            ...languages.filter((lng) => lng !== i18n.language).sort(),
+          ].map((language) => (
+            <button
+              key={language}
+              className="m-3"
+              onClick={() => changeLanguage(language)}
+            >
+              <Flag code={language} />
+            </button>
+          ))}
         </Popover.Panel>
       </Transition>
     </Popover>
