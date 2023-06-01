@@ -79,7 +79,7 @@ export const Book = () => {
           <Card className="">
             <div className="flex flex-row justify-between mx-auto my-6 max-w-8xl">
               <div className="flex flex-col mr-10 max-w-[50%]">
-                <img className="h-100 max-w-[10rem] sm:max-w-none" alt="book cover" src={book?.cover} />
+                <img className="h-100 max-w-[10rem] max-h-[40rem] sm:max-w-none" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
                   <Button size={buttonSize} variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={DownloadEbook}>
                     {t('book.buttonPdf')}

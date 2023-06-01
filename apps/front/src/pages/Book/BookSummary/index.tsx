@@ -39,7 +39,7 @@ export const BookSummary = ({
               <img key={i} className="w-15" src={blueEllipse} />
             ))}
           </div>
-          <img onClick={DoExpand} className="absolute top-full right-10 w-8" src={arrowForward} />
+          <img onClick={DoExpand} className="absolute -bottom-4 right-10 w-8" src={arrowForward} />
         </>
       );
     } else return <p className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin whitespace-nowrap'>{t('book.bookSummary.notice')}</p>
