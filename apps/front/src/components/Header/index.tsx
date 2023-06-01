@@ -2,7 +2,6 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { capitalize } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
@@ -15,25 +14,16 @@ import {
   BsWallet2,
 } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
-import { GiOldMicrophone } from 'react-icons/gi';
 import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
-import { VscTools } from 'react-icons/vsc';
-import { Link } from 'react-router-dom';
 
-import { trpc } from '@sovereign-academy/api-client';
-import { JoinedCourse } from '@sovereign-academy/types';
-
-import headerImage from '../../assets/lapin-diplome.png';
-import { Button } from '../../atoms/Button';
-import { useAppSelector, useDisclosure } from '../../hooks';
+import { useDisclosure } from '../../hooks';
 import { Routes } from '../../types';
 import { replaceDynamicParam } from '../../utils';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
-import { LanguageSelector } from './LanguageSelector';
 import { MobileMenu } from './MobileMenu';
 import { NavigationSection } from './props';
 
@@ -47,8 +37,6 @@ export const Header = () => {
     isOpen: isLoginModalOpen,
     close: closeLoginModal,
   } = useDisclosure();
-
-  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
   /* 
   const { data: courses } = trpc.content.getCourses.useQuery();
@@ -361,46 +349,30 @@ export const Header = () => {
     },
   ];
 
-  const homeSection: NavigationSection[] = [{
-    id: 'home',
-    title: t('words.home'),
-    path: Routes.Home
-  }];
+  const homeSection: NavigationSection[] = [
+    {
+      id: 'home',
+      title: t('words.home'),
+      path: Routes.Home,
+    },
+  ];
 
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = useGreater('md');
 
   return (
-    <header className="flex fixed top-0 left-0 z-20 flex-row justify-between place-items-center px-12 w-screen bg-primary-900 min-h-[92px]">
+    <header className="flex fixed top-0 left-0 z-20 flex-row justify-between place-items-center px-4 lg:px-12 w-screen bg-primary-900 min-h-[92px]">
       {isScreenMd ? (
-        <Link to={Routes.Home}>
-          <img className="h-16" src={headerImage} alt="DecouvreBitcoin Logo" />
-        </Link>
+        <FlyingMenu
+          onClickLogin={openLoginModal}
+          onClickRegister={openLoginModal}
+          sections={sections}
+        />
       ) : (
-        <MobileMenu sections={homeSection.concat(sections)} />
-      )}
-
-      {isScreenMd && <FlyingMenu sections={sections} />}
-      {isScreenMd && (
-        <div className="flex flex-row space-x-6 place-items-center">
-          <LanguageSelector />
-          {isLoggedIn && <div className="text-white">Account</div>}
-
-          {!isLoggedIn && (
-            <div className="flex flex-row space-x-4">
-              <Button
-                className="my-4"
-                variant="tertiary"
-                rounded
-                onClick={openLoginModal}
-              >
-                Register
-              </Button>
-              <Button className="my-4" rounded onClick={openLoginModal}>
-                Login
-              </Button>
-            </div>
-          )}
-        </div>
+        <MobileMenu
+          onClickLogin={openLoginModal}
+          onClickRegister={openLoginModal}
+          sections={homeSection.concat(sections)}
+        />
       )}
 
       <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />

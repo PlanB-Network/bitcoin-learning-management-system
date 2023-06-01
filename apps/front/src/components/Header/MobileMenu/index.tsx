@@ -2,15 +2,22 @@ import { FaBars } from 'react-icons/fa';
 
 import { useDisclosure } from '../../../hooks';
 import { compose } from '../../../utils';
+import { MetaElements } from '../MetaElements';
 import { NavigationSection } from '../props';
 
 import { MobileMenuSection } from './MobileMenuSection';
 
 export interface MobileMenuProps {
   sections: NavigationSection[];
+  onClickLogin: () => void;
+  onClickRegister: () => void;
 }
 
-export const MobileMenu = ({ sections }: MobileMenuProps) => {
+export const MobileMenu = ({
+  sections,
+  onClickLogin,
+  onClickRegister,
+}: MobileMenuProps) => {
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
 
@@ -31,7 +38,7 @@ export const MobileMenu = ({ sections }: MobileMenuProps) => {
       />
       <nav
         className={compose(
-          'flex fixed top-0 left-0 flex-col px-2 pt-28 pb-5 w-screen h-screen bg-white duration-300',
+          'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-screen bg-white duration-300',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -40,6 +47,11 @@ export const MobileMenu = ({ sections }: MobileMenuProps) => {
             <MobileMenuSection section={section} key={section.id} />
           ))}
         </ul>
+
+        <MetaElements
+          onClickLogin={onClickLogin}
+          onClickRegister={onClickRegister}
+        />
       </nav>
     </>
   );

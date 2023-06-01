@@ -13,28 +13,33 @@ export interface FlyingMenuProps {
 
 export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
-  const currentSection = "/".concat(window.location.pathname.split('/').slice(0, 2).join(''));
+  const currentSection = '/'.concat(
+    window.location.pathname.split('/').slice(0, 2).join('')
+  );
 
   const sectionTitle = useMemo(() => {
     if ('path' in section) {
-      let fontWeight = 'font-thin';
-      if (currentSection && currentSection !== '/' && section.path.includes(currentSection)) {
-        fontWeight = 'font-semibold';
-      }
+      const fontWeight =
+        currentSection &&
+        currentSection !== '/' &&
+        section.path.includes(currentSection)
+          ? 'font-semibold'
+          : 'font-thin';
 
       return (
         <Link
-          className={compose("text-lg text-white uppercase", fontWeight)}
+          className={compose('text-base text-white uppercase lg:text-lg', fontWeight)}
           to={section.path}
         >
           {section.title}
         </Link>
       );
     }
+
     if ('action' in section)
       return (
         <button
-          className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 cursor-pointer"
+          className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 cursor-pointer lg:text-lg"
           onClick={() => {
             section.action();
           }}
@@ -44,11 +49,11 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       );
 
     return (
-      <Popover.Button className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6">
+      <Popover.Button className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 lg:text-lg">
         {section.title}
       </Popover.Button>
     );
-  }, [section]);
+  }, [currentSection, section]);
 
   if (!('items' in section)) return sectionTitle;
 
