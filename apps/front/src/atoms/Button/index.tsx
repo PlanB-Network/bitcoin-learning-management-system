@@ -5,13 +5,13 @@ import { BaseAtomProps } from '../types';
 
 interface ButtonProps
   extends BaseAtomProps,
-    DetailedHTMLProps<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    > {
+  DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   children: string;
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text' | 'disabled';
   rounded?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
@@ -34,6 +34,7 @@ const classesByVariant = {
     'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-primary-100',
   soft: 'bg-primary-50 text-primary-600 shadow-sm hover:bg-primary-100',
   text: '',
+  disabled: 'bg-gray-300 text-white font-normal cursor-default',
 };
 
 export const Button = ({
@@ -59,9 +60,11 @@ export const Button = ({
   if (icon)
     return (
       <button
+        disabled={(variant === 'disabled')}
         className={compose(
           ...classes,
-          'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
+          (variant === 'disabled') ? 'active:none' : 'active:scale-95',
+          'flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
           className ?? ''
         )}
         {...buttonProps}
@@ -72,9 +75,11 @@ export const Button = ({
 
   return (
     <button
+      disabled={(variant === 'disabled')}
       className={compose(
         ...classes,
-        'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
+        (variant === 'disabled') ? 'active:none' : 'active:scale-95',
+        'flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
         className ?? ''
       )}
       {...buttonProps}

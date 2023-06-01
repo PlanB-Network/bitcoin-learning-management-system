@@ -54,12 +54,12 @@ export const Book = () => {
           <Card className="">
             <div className="flex flex-row justify-between mx-auto my-6 max-w-8xl">
               <div className="flex flex-col justify-between mr-10">
-                <img className="w-100 max-w-sm" alt="book cover" src={book?.cover} />
+                <img className="w-100" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
                   <Button size="s" variant="tertiary" className="mx-2 w-full" onClick={DownloadEbook}>
                     PDF / E-book
                   </Button>
-                  <Button size="s" variant="tertiary" className="mx-2 w-full" onClick={BuyBook}>
+                  <Button size="s" variant="disabled" className="mx-2 w-full" onClick={BuyBook}>
                     Buy
                   </Button>
                 </div>
