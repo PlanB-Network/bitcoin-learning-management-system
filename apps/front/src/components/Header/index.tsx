@@ -361,6 +361,12 @@ export const Header = () => {
     },
   ];
 
+  const homeSection: NavigationSection[] = [{
+    id: 'home',
+    title: t('words.home'),
+    path: Routes.Home
+  }];
+
   const isScreenMd = useGreater('sm');
 
   return (
@@ -370,7 +376,7 @@ export const Header = () => {
           <img className="h-16" src={headerImage} alt="DecouvreBitcoin Logo" />
         </Link>
       ) : (
-        <MobileMenu sections={sections} />
+        <MobileMenu sections={homeSection.concat(sections)} />
       )}
 
       {isScreenMd && <FlyingMenu sections={sections} />}
