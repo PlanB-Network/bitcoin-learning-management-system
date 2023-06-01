@@ -11,7 +11,6 @@ import readingRabbit from '../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { ResourceLayout } from '../../components';
-import { PageTitle } from '../../components/PageTitle';
 
 import { BookSummary } from './BookSummary';
 

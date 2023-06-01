@@ -3,11 +3,9 @@ import { useParams } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
-import { MainLayout } from '../../components';
-import { PageTitle } from '../../components/PageTitle';
-import { RelatedResources } from '../../components/RelatedResources';
-import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
+import { Card } from '../../atoms/Card';
+import { Tag } from '../../atoms/Tag';
+import { ResourceLayout } from '../../components';
 
 export const Builder = () => {
   const { builderId } = useParams();
@@ -17,53 +15,31 @@ export const Builder = () => {
   });
 
   return (
-    <MainLayout>
-      <PageTitle>{builder?.name}</PageTitle>
-      <div className="flex flex-row justify-evenly items-start m-10">
-        <img
-          className="mx-12 my-4 w-64 h-auto"
-          src={builder?.logo || builderImage}
-          alt="something representing the company"
-        />
-        <div className="flex flex-col mr-12 space-y-4 text-sm">
-          <p className="max-w-xl text-justify">{builder?.description}</p>
-
-          <div className="max-w-xl text-justify">
-            Les principales fonctionnalités de SeedSigner comprennent :
-            <ul className="pl-4 list-disc">
-              <li>
-                Génération et stockage temporaire de phrases de départ BIP39
-              </li>
-              <li>
-                Création de SeedQR pour une saisie rapide Prise en charge de la
-              </li>
-              <li>
-                phrase de passe BIP39 / mot 25 Génération native Segwit Multisig
-              </li>
-              <li>
-                XPUB avec affichage QR Numérisation et analyse des données de
-              </li>
-              <li>
-                transaction à partir de codes QR animés Prise en charge de
-                Bitcoin
-              </li>
-              <li>
-                Mainnet & Testnet Vérification de l'adresse de réception à la
-              </li>
-              <li>demande Interface utilisateur réactive et événementielle</li>
-            </ul>
+    <ResourceLayout title={builder?.name ?? ''}>
+      <Card className="max-w-[90vw] sm:max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 grid-rows-6 px-4 my-4 w-full sm:grid-cols-3 sm:px-8">
+          <h3 className="col-span-1 row-span-1 mb-8 text-3xl font-semibold uppercase sm:text-4xl text-primary-900">
+            {builder?.name}
+          </h3>
+          <div className="col-span-2 row-span-1">
+            <Tag>OpenSource</Tag>
+            <Tag>BTC Only</Tag>
           </div>
 
-          <p className="max-w-xl text-justify">
-            SeedSigner utilise une version spécifique du Raspberry Pi Zero
-            (version 1.3) sans WiFi ni Bluetooth, garantissant la sécurité des
-            clés privées. La communication avec le logiciel de portefeuille se
-            fait via un échange de codes QR bidirectionnel. SeedSigner est
-            compatible avec Spectre-Desktop, Sparrow Wallet et BlueWallet
-            Multisig Vaults.
-          </p>
+          <div className="flex flex-row row-span-5 pb-10 mb-4 border-b-4 border-solid sm:mb-0 sm:border-b-0 sm:border-r-4 sm:pb-0 sm:pr-16 border-primary-900 sm:flex-col">
+            <img
+              src={builder?.logo || builderImage}
+              className="w-full"
+              alt="something representing the company"
+            />
 
-          <RelatedResources
+            <div className="mx-2 my-6">Social medias</div>
+          </div>
+
+          <div className="flex flex-col col-span-2 row-span-5 ml-0 space-y-4 text-sm sm:ml-12">
+            <p className="text-justify">{builder?.description}</p>
+
+            {/* <RelatedResources
             tutoriel={[{ label: 'Seed signer Device' }]}
             interview={[
               {
@@ -81,9 +57,10 @@ export const Builder = () => {
                 }),
               },
             ]}
-          />
+          /> */}
+          </div>
         </div>
-      </div>
-    </MainLayout>
+      </Card>
+    </ResourceLayout>
   );
 };
