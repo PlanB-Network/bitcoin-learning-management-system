@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import articleSvg from '../../assets/resources/article.svg';
@@ -67,32 +68,25 @@ const resourceKinds = [
 ];
 
 export const Resources = () => {
+  const { t } = useTranslation();
+
   return (
     <MainLayout>
       <div className="bg-primary-700 flex flex-col justify-center">
         <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
           <div>
-            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">Resources</h1>
-            <div className="max-w-sm text-s text-justify">
-              <p>
-                Welcome into the infinit rabbit hole of Bitcoin ! In this
-                section we will offer you in depth tutoriel on most bitcoin
-                project out there. This pages in maintain by benevolel and
-                passionate bitcoin who support thie open source project. If you
-                fee we made a mistake please reach out. To see our financial
-                attachement ot the project mention refer to our transparancie
-                repport. Thanks for your trust in this university and enjoy the
-                ride.
-              </p>
-              <p>Rogzy</p>
+            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">{t('resources.pageTitle')}</h1>
+            <div className="space-y-6 max-w-sm text-s text-justify">
+              <p>{t('resources.headerText')}</p>
+              <p>{t('resources.headerSignature')}</p>
             </div>
           </div>
           <img className="h-96" src={rabbitInLibrary} />
         </div>
 
         <div className="flex flex-wrap justify-evenly self-center max-w-[90vw] w-[950px] py-8 bg-primary-700">
-          {resourceKinds.map((resourceKind) => (
-            <Link to={resourceKind.route}>
+          {resourceKinds.map((resourceKind, i) => (
+            <Link key={i} to={resourceKind.route}>
               <div
                 className="box-content flex relative flex-row p-2 my-4 w-44 sm:w-60 h-16 sm:h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
                 key={resourceKind.kind}
