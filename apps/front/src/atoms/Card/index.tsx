@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
-import { compose } from '../../utils';
 import { isString } from 'lodash';
+import { ReactNode } from 'react';
+
+import { compose } from '../../utils';
 
 interface CardProps {
   image?: string | { src: string; alt: string };

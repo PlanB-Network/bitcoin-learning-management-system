@@ -10,3 +10,4 @@ export * from './RelatedResources';
 export * from './ResourceRate';
 export * from './ResourceReview';
 export * from './Pagination';
+export * from './ResourceLayout';
