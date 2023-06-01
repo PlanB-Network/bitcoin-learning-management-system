@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { Fragment, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { compose } from '../../../../utils';
 import { MenuElement } from '../../MenuElement';
 import { NavigationSection } from '../../props';
 import { FlyingMenuSubSection } from '../FlyingMenuSubSection';
@@ -12,17 +13,24 @@ export interface FlyingMenuProps {
 
 export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
+  const currentSection = "/".concat(window.location.pathname.split('/').slice(0, 2).join(''));
 
   const sectionTitle = useMemo(() => {
-    if ('path' in section)
+    if ('path' in section) {
+      let fontWeight = 'font-thin';
+      if (currentSection && currentSection !== '/' && section.path.includes(currentSection)) {
+        fontWeight = 'font-semibold';
+      }
+
       return (
         <Link
-          className="text-lg font-thin text-white uppercase"
+          className={compose("text-lg text-white uppercase", fontWeight)}
           to={section.path}
         >
           {section.title}
         </Link>
       );
+    }
     if ('action' in section)
       return (
         <button
