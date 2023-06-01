@@ -11,14 +11,14 @@ import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 import { Library } from './pages/Library';
+import { Podcasts } from './pages/Podcasts';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
 import { UnderConstruction } from './pages/UnderConstruction';
-import { Podcasts } from './pages/Podcasts';
+import { WIP } from './pages/WIP';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
-import { WIP } from './pages/WIP';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -59,18 +59,16 @@ export const App = () => {
           element={<UnderConstruction />}
         />
 
-        <Route path={RoutesEnum.Resources} element={<Resources />} />
-        <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
-
-        <Route path={RoutesEnum.Library} element={<Library />} />
-        <Route path={RoutesEnum.Book} element={<Book />} />
-
-        <Route path={RoutesEnum.Builders} element={<Builders />} />
-        <Route path={RoutesEnum.Builder} element={<Builder />} />
-
         <Route path={RoutesEnum.Courses} element={<CoursesExplorer />} />
         <Route path={RoutesEnum.Course} element={<CourseDetails />} />
         <Route path={RoutesEnum.CourseChapter} element={<CourseChapter />} />
+
+        <Route path={RoutesEnum.Resources} element={<Resources />} />
+        <Route path={RoutesEnum.Library} element={<Library />} />
+        <Route path={RoutesEnum.Book} element={<Book />} />
+        <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
+        <Route path={RoutesEnum.Builders} element={<Builders />} />
+        <Route path={RoutesEnum.Builder} element={<Builder />} />
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
