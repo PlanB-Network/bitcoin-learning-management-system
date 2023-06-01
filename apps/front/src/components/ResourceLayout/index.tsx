@@ -24,7 +24,7 @@ export const ResourceLayout = ({
 }: Props) => {
   return (
     <MainLayout>
-      <div className="p-2 space-y-10 w-full min-h-screen sm:p-10 bg-primary-900 h-fit">
+      <div className="p-2 w-full min-h-screen sm:p-10 bg-primary-900 h-fit">
         <div>
           <PageTitle>{title}</PageTitle>
           {tagLine && (
@@ -35,7 +35,7 @@ export const ResourceLayout = ({
         </div>
 
         {filterBar && (
-          <div className="mt-16">
+          <div className="mt-6 sm:mt-12 md:mt-16">
             <FilterBar {...filterBar} />
           </div>
         )}
