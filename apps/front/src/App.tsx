@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 import { LocalStorageKey } from '@sovereign-academy/types';
 
-import { useAppDispatch } from './hooks';
+import { useAppDispatch, useScrollToTop } from './hooks';
 import { Home } from './pages';
 import { Book } from './pages/Book';
 import { Builder } from './pages/Builder';
@@ -21,6 +21,7 @@ import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
 
 export const App = () => {
+  useScrollToTop();
   const dispatch = useAppDispatch();
   const accessToken = useMemo(() => getItem(LocalStorageKey.AccessToken), []);
   const userQuery = trpc.user.getMe.useQuery(undefined, {
