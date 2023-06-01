@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 import { compose } from '../../../../src/utils';
@@ -22,7 +23,7 @@ export const BookSummary = ({
   content,
   title
 }: BookSummaryProps) => {
-
+  const { t } = useTranslation();
   const [isExtended, setIsExtended] = useState(false);
 
   function DoExpand() {
@@ -41,13 +42,13 @@ export const BookSummary = ({
           <img onClick={DoExpand} className="absolute -bottom-4 right-10 w-8" src={arrowForward} />
         </>
       );
-    } else return <span className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin'>this summary is linked to github, for any modification or addition</span>
+    } else return <span className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin'>{t('book.bookSummary.notice')}</span>
 
   }
 
   return (
     <>
-      <h4 className="text-4xl font-bold text-white ml-4 mb-8">The book summary</h4>
+      <h4 className="text-4xl font-bold text-white ml-4 mb-8">{t('book.bookSummary.title')}</h4>
       <Card className={compose('max-w-[740px] px-6 pb-2 relative ', isExtended ? '' : 'max-h-52')}>
         {/* remove max h if not needed here */}
         <div className={(isExtended ? '' : 'max-h-36 overflow-hidden')}>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -10,12 +11,15 @@ import { PageTitle } from '../../components/PageTitle';
 
 import { BookSummary } from './BookSummary';
 
+
 export const Book = () => {
+  const { t } = useTranslation();
   const { bookId, language } = useParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language: language as any, // TODO: understand why React think route params can be undefined and fix it
   });
+
   if (book?.summary_contributor_id) {
     const userid = parseInt(book.summary_contributor_id, 0);
     const { data: contributor } = trpc.content.getBuilder.useQuery({
@@ -46,8 +50,8 @@ export const Book = () => {
       <div className="flex flex-col bg-primary-800">
         <div className="flex flex-row justify-center">
           <div className="max-w-5xl w-screen mb-4">
-            <PageTitle>The library</PageTitle>
-            <span className='text-white uppercase ml-8 text-sm'>This library is open-source & open to contribution. Thanks for grading and sharing !</span>
+            <PageTitle>{t('book.pageTitle')}</PageTitle>
+            <span className='text-white uppercase ml-8 text-sm'>{t('book.pageSubtitle')}</span>
           </div>
         </div>
         <div className="flex flex-row justify-center">
@@ -56,11 +60,11 @@ export const Book = () => {
               <div className="flex flex-col justify-between mr-10">
                 <img className="w-100" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
-                  <Button size="s" variant="tertiary" className="mx-2 w-full" onClick={DownloadEbook}>
-                    PDF / E-book
+                  <Button size="s" variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={DownloadEbook}>
+                    {t('book.buttonPdf')}
                   </Button>
-                  <Button size="s" variant="disabled" className="mx-2 w-full" onClick={BuyBook}>
-                    Buy
+                  <Button size="s" variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={BuyBook}>
+                    {t('book.buttonBuy')}
                   </Button>
                 </div>
               </div>
@@ -77,14 +81,14 @@ export const Book = () => {
                 </div>
 
                 <div className='mt-2 text-primary-700'>
-                  <span className="italic font-thin text-xs">Topics addressed : </span>
+                  <span className="italic font-thin text-xs">{t('book.topicsAddressed')}</span>
                   {book?.tags
                     .map((object, i) => <span key={i}>{i > 0 && ", "}{object.toUpperCase()}</span>)
                   }
                 </div>
 
                 <div className="border-l-4 pl-4 mt-6 border-primary-600">
-                  <h3 className="mb-4 text-lg text-primary-900 font-semibold">Abstract</h3>
+                  <h3 className="mb-4 text-lg text-primary-900 font-semibold">{t('book.abstract')}</h3>
                   <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
                     {book?.description}
                   </p>
