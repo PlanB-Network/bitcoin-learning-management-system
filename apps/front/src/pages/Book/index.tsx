@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
@@ -11,6 +15,8 @@ import { PageTitle } from '../../components/PageTitle';
 
 import { BookSummary } from './BookSummary';
 
+
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
   const { t } = useTranslation();
@@ -28,6 +34,8 @@ export const Book = () => {
     })
   }
 
+  const isScreenMd = useGreater('sm');
+
   /* During dev */
   const fakeContributor = {
     username: 'Asi0',
@@ -44,26 +52,39 @@ export const Book = () => {
     alert(book?.shop_url);
   }
 
+  function displayAbstract() {
+    return <div className="border-l-4 pl-4 mt-6 border-primary-600">
+      <h3 className="mb-4 text-lg text-primary-900 font-semibold">{t('book.abstract')}</h3>
+      <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
+        {book?.description}
+      </p>
+    </div>
+  }
+
+  let buttonSize = 'xs';
+  if (isScreenMd) {
+    buttonSize = 's';
+  }
+
   return (
     <MainLayout>
-
       <div className="flex flex-col bg-primary-800">
         <div className="flex flex-row justify-center">
           <div className="max-w-5xl w-screen mb-4">
             <PageTitle>{t('book.pageTitle')}</PageTitle>
-            <span className='text-white uppercase ml-8 text-sm'>{t('book.pageSubtitle')}</span>
+            <span className='text-white uppercase ml-8 block text-xs sm:text-sm'>{t('book.pageSubtitle')}</span>
           </div>
         </div>
         <div className="flex flex-row justify-center">
           <Card className="">
             <div className="flex flex-row justify-between mx-auto my-6 max-w-8xl">
-              <div className="flex flex-col justify-between mr-10">
-                <img className="w-100" alt="book cover" src={book?.cover} />
+              <div className="flex flex-col mr-10 max-w-[50%]">
+                <img className="h-100 max-w-[10rem] sm:max-w-none" alt="book cover" src={book?.cover} />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
-                  <Button size="s" variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={DownloadEbook}>
+                  <Button size={buttonSize} variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={DownloadEbook}>
                     {t('book.buttonPdf')}
                   </Button>
-                  <Button size="s" variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={BuyBook}>
+                  <Button size={buttonSize} variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={BuyBook}>
                     {t('book.buttonBuy')}
                   </Button>
                 </div>
@@ -86,22 +107,17 @@ export const Book = () => {
                     .map((object, i) => <span key={i}>{i > 0 && ", "}{object.toUpperCase()}</span>)
                   }
                 </div>
-
-                <div className="border-l-4 pl-4 mt-6 border-primary-600">
-                  <h3 className="mb-4 text-lg text-primary-900 font-semibold">{t('book.abstract')}</h3>
-                  <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
-                    {book?.description}
-                  </p>
-                </div>
+                {isScreenMd && displayAbstract()}
               </div>
             </div>
+            {!isScreenMd && displayAbstract()}
           </Card>
         </div>
 
         <div className="flex flex-row justify-between mx-auto my-6 p-2 max-w-5xl">
-          <img className="flex flex-col mt-10 -ml-20 h-80 mr-10" src={readingRabbit} />
+          <img className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex" src={readingRabbit} />
 
-          <div className="flex flex-col float-right">
+          <div className="flex flex-col">
             {!book?.summary_text &&
               <BookSummary
                 contributor={fakeContributor}

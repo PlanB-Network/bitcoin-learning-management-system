@@ -36,13 +36,13 @@ export const BookSummary = ({
         <>
           <div className="flex gap-1 absolute -bottom-2 left-12">
             {_.times(3, (i) => (
-              <img className="w-15" src={blueEllipse} />
+              <img key={i} className="w-15" src={blueEllipse} />
             ))}
           </div>
-          <img onClick={DoExpand} className="absolute -bottom-4 right-10 w-8" src={arrowForward} />
+          <img onClick={DoExpand} className="absolute top-full right-10 w-8" src={arrowForward} />
         </>
       );
-    } else return <span className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin'>{t('book.bookSummary.notice')}</span>
+    } else return <p className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin whitespace-nowrap'>{t('book.bookSummary.notice')}</p>
 
   }
 
@@ -68,9 +68,7 @@ export const BookSummary = ({
         </div>
 
         <BottomButtons />
-
       </Card>
-
     </>
   );
 };
