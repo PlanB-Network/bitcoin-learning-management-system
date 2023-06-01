@@ -14,8 +14,8 @@ export const PageTitle = ({ children, variant }: PageTitleProps) => {
     );
 
   return (
-    <div className='flex flex-row items-center'>
-      <h1 className="p-4 mx-8 mt-4 mb-1 w-max text-xl sm:text-6xl 2xl:text-xl font-bold text-white uppercase bg-secondary-400">
+    <div className="flex flex-row items-center">
+      <h1 className="p-4 mx-8 mt-4 mb-1 w-max text-xl font-bold text-white uppercase sm:text-2xl lg:text-4xl 2xl:text-6xl bg-secondary-400">
         {children}
       </h1>
       <img src={rabbitWithBook} className="h-full"></img>
