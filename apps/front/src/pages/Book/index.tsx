@@ -15,7 +15,6 @@ import { PageTitle } from '../../components/PageTitle';
 
 import { BookSummary } from './BookSummary';
 
-
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
@@ -30,8 +29,8 @@ export const Book = () => {
     const userid = parseInt(book.summary_contributor_id, 0);
     const { data: contributor } = trpc.content.getBuilder.useQuery({
       id: userid,
-      language: "en"
-    })
+      language: 'en',
+    });
   }
 
   const isScreenMd = useGreater('sm');
@@ -42,7 +41,7 @@ export const Book = () => {
     title: 'Bitcoiner',
     image:
       'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
-  }
+  };
 
   function DownloadEbook() {
     alert(book?.download_url);
@@ -53,12 +52,16 @@ export const Book = () => {
   }
 
   function displayAbstract() {
-    return <div className="border-l-4 pl-4 mt-6 border-primary-600">
-      <h3 className="mb-4 text-lg text-primary-900 font-semibold">{t('book.abstract')}</h3>
-      <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
-        {book?.description}
-      </p>
-    </div>
+    return (
+      <div className="pl-4 mt-6 border-l-4 border-primary-600">
+        <h3 className="mb-4 text-lg font-semibold text-primary-900">
+          {t('book.abstract')}
+        </h3>
+        <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
+          {book?.description}
+        </p>
+      </div>
+    );
   }
 
   let buttonSize = 'xs';
@@ -70,21 +73,39 @@ export const Book = () => {
     <MainLayout>
       <div className="flex flex-col bg-primary-800">
         <div className="flex flex-row justify-center">
-          <div className="max-w-5xl w-screen mb-4">
+          <div className="mb-4 w-screen max-w-5xl">
             <PageTitle>{t('book.pageTitle')}</PageTitle>
-            <span className='text-white uppercase ml-8 block text-xs sm:text-sm'>{t('book.pageSubtitle')}</span>
+            <span className="block ml-8 text-xs text-white uppercase sm:text-sm">
+              {t('book.pageSubtitle')}
+            </span>
           </div>
         </div>
         <div className="flex flex-row justify-center">
           <Card className="">
             <div className="flex flex-row justify-between mx-auto my-6 max-w-8xl">
               <div className="flex flex-col mr-10 max-w-[50%]">
-                <img className="h-100 max-w-[10rem] max-h-[40rem] sm:max-w-none" alt="book cover" src={book?.cover} />
+                <img
+                  className="h-100 max-w-[10rem] max-h-[40rem] sm:max-w-none"
+                  alt="book cover"
+                  src={book?.cover}
+                />
                 <div className="flex flex-row justify-evenly mt-4 w-full">
-                  <Button size={buttonSize} variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={DownloadEbook}>
+                  <Button
+                    size={buttonSize}
+                    disabled={!book?.download_url}
+                    variant={'tertiary'}
+                    className="mx-2 w-full"
+                    onClick={DownloadEbook}
+                  >
                     {t('book.buttonPdf')}
                   </Button>
-                  <Button size={buttonSize} variant={(book?.download_url ? 'tertiary' : 'disabled')} className="mx-2 w-full" onClick={BuyBook}>
+                  <Button
+                    size={buttonSize}
+                    disabled={!book?.download_url}
+                    variant={'tertiary'}
+                    className="mx-2 w-full"
+                    onClick={BuyBook}
+                  >
                     {t('book.buttonBuy')}
                   </Button>
                 </div>
@@ -96,16 +117,23 @@ export const Book = () => {
                     {book?.title}
                   </h2>
 
-                  <div className="text-sm mt-2">
-                    <h5 className="italic font-thin">{book?.author}, {book?.publication_year}.</h5>
+                  <div className="mt-2 text-sm">
+                    <h5 className="italic font-thin">
+                      {book?.author}, {book?.publication_year}.
+                    </h5>
                   </div>
                 </div>
 
-                <div className='mt-2 text-primary-700'>
-                  <span className="italic font-thin text-xs">{t('book.topicsAddressed')}</span>
-                  {book?.tags
-                    .map((object, i) => <span key={i}>{i > 0 && ", "}{object.toUpperCase()}</span>)
-                  }
+                <div className="mt-2 text-primary-700">
+                  <span className="text-xs italic font-thin">
+                    {t('book.topicsAddressed')}
+                  </span>
+                  {book?.tags.map((object, i) => (
+                    <span key={i}>
+                      {i > 0 && ', '}
+                      {object.toUpperCase()}
+                    </span>
+                  ))}
                 </div>
                 {isScreenMd && displayAbstract()}
               </div>
@@ -114,17 +142,22 @@ export const Book = () => {
           </Card>
         </div>
 
-        <div className="flex flex-row justify-between mx-auto my-6 p-2 max-w-5xl">
-          <img className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex" src={readingRabbit} />
+        <div className="flex flex-row justify-between p-2 mx-auto my-6 max-w-5xl">
+          <img
+            className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex"
+            src={readingRabbit}
+          />
 
           <div className="flex flex-col">
-            {!book?.summary_text &&
+            {!book?.summary_text && (
               <BookSummary
                 contributor={fakeContributor}
-                title={book?.title ? book?.title : ""}
-                content={book?.summary_text ? book?.summary_text : book?.description} /* TEMP FOR UI DEV, replace book.description with '' */
+                title={book?.title ? book?.title : ''}
+                content={
+                  book?.summary_text ? book?.summary_text : book?.description
+                } /* TEMP FOR UI DEV, replace book.description with '' */
               />
-            }
+            )}
           </div>
         </div>
       </div>
