@@ -1,14 +1,14 @@
 {
   "book": {
-    "pageTitle":"The library",
-    "pageSubtitle":"This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "buttonPdf":"PDF / E-book",
-    "buttonBuy":"Buy",
-    "topicsAddressed":"Topics addressed : ",
-    "abstract":"Abstract",
-    "bookSummary":{
-      "title":"The book summary",
-      "notice":"this summary is linked to github, for any modification or addition"
+    "pageTitle": "The library",
+    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
+    "buttonPdf": "PDF / E-book",
+    "buttonBuy": "Buy",
+    "topicsAddressed": "Topics addressed: ",
+    "abstract": "Abstract",
+    "bookSummary": {
+      "title": "The book summary",
+      "notice": "this summary is linked to github, for any modification or addition"
     }
   },
   "courses": {
@@ -21,14 +21,14 @@
     "goal": "GOAL: {{goal}}"
   },
   "resources": {
-    "pageTitle":"Resources",
-    "headerText":"Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
-    "headerSignature":"Rogzy"
+    "pageTitle": "Resources",
+    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "headerSignature": "Rogzy"
   },
   "words": {
     "about-us": "About Us",
     "courses": "Courses",
-    "home":"Home",
+    "home": "Home",
     "level": {
       "advanced": "Advanced",
       "beginner": "Beginner",
