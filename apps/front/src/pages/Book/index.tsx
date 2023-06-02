@@ -21,26 +21,28 @@ export const Book = () => {
   const { bookId, language } = useParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
-    language: language as any, // TODO: understand why React think route params can be undefined and fix it
+    language: language as never, // TODO: understand why React think route params can be undefined and fix it
   });
+
+  let contributor;
 
   if (book?.summary_contributor_id) {
     const userid = parseInt(book.summary_contributor_id, 0);
-    const { data: contributor } = trpc.content.getBuilder.useQuery({
+    contributor = trpc.content.getBuilder.useQuery({
       id: userid,
       language: 'en',
-    });
+    }).data;
+  } else {
+    /* During dev */
+    contributor = {
+      username: 'Asi0',
+      title: 'Bitcoiner',
+      image:
+        'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
+    };
   }
 
   const isScreenMd = useGreater('sm');
-
-  /* During dev */
-  const fakeContributor = {
-    username: 'Asi0',
-    title: 'Bitcoiner',
-    image:
-      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
-  };
 
   function DownloadEbook() {
     alert(book?.download_url);
@@ -63,13 +65,13 @@ export const Book = () => {
     );
   }
 
-  let buttonSize = 'xs';
+  let buttonSize: 'xs' | 's' = 'xs';
   if (isScreenMd) {
     buttonSize = 's';
   }
 
   return (
-    <ResourceLayout
+    book && <ResourceLayout
       title={t('book.pageTitle')}
       tagLine={t('book.pageSubtitle')}
     >
@@ -141,12 +143,13 @@ export const Book = () => {
         <img
           className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex"
           src={readingRabbit}
+          alt={t('imagesAlt.readingRabbit')}
         />
 
         <div className="flex flex-col">
           {!book?.summary_text && (
             <BookSummary
-              contributor={fakeContributor}
+              contributor={contributor}
               title={book?.title ? book?.title : ''}
               content={
                 book?.summary_text ? book?.summary_text : book?.description
