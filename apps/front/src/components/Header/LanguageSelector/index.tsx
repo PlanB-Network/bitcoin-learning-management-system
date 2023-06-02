@@ -17,6 +17,7 @@ export const LanguageSelector = ({
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    setOpen(false);
   };
 
   const languages = ['fr', 'en', 'es', 'de', 'it'];
