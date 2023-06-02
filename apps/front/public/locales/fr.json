@@ -13,9 +13,9 @@
   },
   "courses": {
     "details": {
-      "duration": "Durée: {{hours}} heures",
       "numberOfChapters": "Nombre de chapitres : {{number}}",
       "teachers": "Professeurs : {{teachers}}",
+      "duration": "Durée: {{hours}} heures",
       "level": "Niveau : $t(words.level.{{level}})"
     },
     "goal": "OBJECTIF : {{goal}}"
