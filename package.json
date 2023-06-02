@@ -2,7 +2,9 @@
   "name": "the-sovereign-academy",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "private": true,
   "devDependencies": {
     "@nrwl/storybook": "16.1.4",
@@ -57,9 +59,11 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "8.0.3",
     "jsdom": "~20.0.3",
     "jsonc-eslint-parser": "^2.3.0",
     "kanel": "3.3.0",
+    "lint-staged": "13.2.2",
     "nx": "16.1.4",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
@@ -132,5 +136,8 @@
     "patchedDependencies": {
       "postgres@3.3.4": "patches/postgres@3.3.4.patch"
     }
+  },
+  "lint-staged": {
+    "**/*": "prettier --loglevel warn --write --ignore-unknown"
   }
 }
