@@ -21,8 +21,8 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
     if ('path' in section) {
       const fontWeight =
         currentSection &&
-        currentSection !== '/' &&
-        section.path.includes(currentSection)
+          currentSection !== '/' &&
+          section.path.includes(currentSection)
           ? 'font-semibold'
           : 'font-thin';
 
@@ -57,6 +57,9 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
 
   if (!('items' in section)) return sectionTitle;
 
+  const hasMultipleSubSection = section.items.length > 1;
+
+
   return (
     <Popover
       onMouseEnter={() => setOpen(true)}
@@ -76,7 +79,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       >
         <Popover.Panel
           static
-          className="flex fixed left-1/2 z-10 px-4 mt-5 w-screen max-w-max -translate-x-1/2"
+          className={compose("flex fixed z-10 px-4 mt-5 w-screen max-w-max", hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : '')}
         >
           <div className="overflow-hidden flex-auto w-screen max-w-max text-sm leading-6 bg-white rounded-3xl ring-1 shadow-lg ring-gray-600/5">
             <div className="flex flex-row">
