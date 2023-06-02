@@ -24,35 +24,35 @@ const tutorialKinds = [
     title: 'Wallet',
     image: walletSvg,
     description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Wallets
+    route: Routes.Wallets,
   },
   {
     kind: TutorialKinds.Node,
     title: 'Node',
     image: nodeSvg,
     description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Node
+    route: Routes.Node,
   },
   {
     kind: TutorialKinds.Mining,
     title: 'Mining',
     image: miningSvg,
     description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Mining
+    route: Routes.Mining,
   },
   {
     kind: TutorialKinds.Lightning,
     title: 'Lightning',
     image: lightningSvg,
     description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Lightning
+    route: Routes.Lightning,
   },
   {
     kind: TutorialKinds.Merchant,
     title: 'Merchant',
     image: merchantSvg,
     description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Home
+    route: Routes.Home,
   },
 ];
 
@@ -64,7 +64,9 @@ export const Tutorials = () => {
       <div className="bg-primary-700 flex flex-col justify-center">
         <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
           <div>
-            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">{t('tutorials.pageTitle')}</h1>
+            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">
+              {t('tutorials.pageTitle')}
+            </h1>
             <div className="space-y-6 max-w-sm text-s text-justify">
               <p>{t('tutorials.headerText')}</p>
               <p>{t('tutorials.headerSignature')}</p>
@@ -86,9 +88,7 @@ export const Tutorials = () => {
                 <div className="flex relative flex-row items-center mt-4 -ml-8">
                   <div className="relative ml-32 pl-2 text-white z-1">
                     <h3 className="text-2xl">{tutorialKind.title}</h3>
-                    <p className="text-xs italic">
-                      {tutorialKind.description}
-                    </p>
+                    <p className="text-xs italic">{tutorialKind.description}</p>
                   </div>
                 </div>
               </div>

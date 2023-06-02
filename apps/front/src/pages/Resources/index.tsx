@@ -75,7 +75,9 @@ export const Resources = () => {
       <div className="bg-primary-700 flex flex-col justify-center">
         <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
           <div>
-            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">{t('resources.pageTitle')}</h1>
+            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">
+              {t('resources.pageTitle')}
+            </h1>
             <div className="space-y-6 max-w-sm text-s text-justify">
               <p>{t('resources.headerText')}</p>
               <p>{t('resources.headerSignature')}</p>
@@ -92,7 +94,10 @@ export const Resources = () => {
                 key={resourceKind.kind}
               >
                 <div className="flex absolute z-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-secondary-400">
-                  <img className="h-12 sm:h-16 m-auto" src={resourceKind.image} />
+                  <img
+                    className="h-12 sm:h-16 m-auto"
+                    src={resourceKind.image}
+                  />
                 </div>
                 <div className="flex relative flex-row items-center ml-10 sm:ml-14">
                   <h3 className="relative ml-12 text-sm sm:text-2xl text-white z-1">

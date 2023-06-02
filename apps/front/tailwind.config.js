@@ -14,8 +14,8 @@ const theme = {
     xxs: ['10px', '14px'],
   },
   spacing: {
-    '23':'5.75rem'
-  }
+    23: '5.75rem',
+  },
 };
 
 export default {

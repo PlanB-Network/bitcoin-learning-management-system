@@ -95,7 +95,7 @@ export const compareCommits = async (
     const finalFiles = await async.mapLimit(
       textFiles,
       10,
-      async (file: typeof textFiles[number]) => {
+      async (file: (typeof textFiles)[number]) => {
         let relativePath = file.file;
         let previousPath: string | undefined;
 

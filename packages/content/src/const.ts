@@ -5,7 +5,7 @@ export const supportedContentTypes = [
   'tutorials',
 ] as const;
 
-export type ContentType = typeof supportedContentTypes[number];
+export type ContentType = (typeof supportedContentTypes)[number];
 
 type AssertSupportedContentType = (path: string) => asserts path is ContentType;
 
@@ -21,4 +21,4 @@ export const assertSupportedContentPath: AssertSupportedContentType = (
 
 // TODO: import all languages list
 export const supportedLanguages = ['en', 'fr', 'es'] as const;
-export type Language = typeof supportedLanguages[number];
+export type Language = (typeof supportedLanguages)[number];
