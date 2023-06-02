@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import tutoRabbitPng from '../../assets/tutorial-rabbit.png';
@@ -56,27 +57,20 @@ const tutorialKinds = [
 ];
 
 export const Tutorials = () => {
+  const { t } = useTranslation();
+
   return (
     <MainLayout>
-      <div className="bg-primary-700">
-        <div className="flex relative flex-row flex-wrap justify-evenly px-12 pt-8 text-white bg-primary-900">
+      <div className="bg-primary-700 flex flex-col justify-center">
+        <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
           <div>
-            <h1 className="-ml-8 text-[128px] font-thin">Tutorials</h1>
+            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">{t('tutorials.pageTitle')}</h1>
             <div className="space-y-6 max-w-sm text-s text-justify">
-              <p>
-                Welcome into the infinit rabbit hole of Bitcoin ! In this
-                section we will offer you in depth tutoriel on most bitcoin
-                project out there. This pages in maintain by benevolel and
-                passionate bitcoin who support thie open source project. If you
-                fee we made a mistake please reach out. To see our financial
-                attachement ot the project mention refer to our transparancie
-                repport. Thanks for your trust in this university and enjoy the
-                ride.
-              </p>
-              <p>Rogzy</p>
+              <p>{t('tutorials.headerText')}</p>
+              <p>{t('tutorials.headerSignature')}</p>
             </div>
           </div>
-          <img className="mt-10 mb-40 h-96" src={tutoRabbitPng} />
+          <img className="max-h-96 mt-6" src={tutoRabbitPng} />
         </div>
 
         <div className="box-content ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-[50px] bg-primary-700">
@@ -87,10 +81,7 @@ export const Tutorials = () => {
                 key={tutorialKind.kind}
               >
                 <div className="flex absolute z-0 w-24 h-24 rounded-full bg-secondary-400">
-                  <img
-                    className="h-16 m-auto"
-                    src={tutorialKind.image}
-                  />
+                  <img className="h-16 m-auto" src={tutorialKind.image} />
                 </div>
                 <div className="flex relative flex-row items-center mt-4 -ml-8">
                   <div className="relative ml-32 pl-2 text-white z-1">

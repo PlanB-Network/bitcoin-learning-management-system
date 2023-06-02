@@ -81,7 +81,7 @@ export const Resources = () => {
               <p>{t('resources.headerSignature')}</p>
             </div>
           </div>
-          <img className="h-96" src={rabbitInLibrary} />
+          <img className="max-h-96 mt-6" src={rabbitInLibrary} />
         </div>
 
         <div className="flex flex-wrap justify-evenly self-center max-w-[90vw] w-[950px] py-8 bg-primary-700">
