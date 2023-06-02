@@ -42,7 +42,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
     if ('action' in section)
       return (
         <button
-          className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 cursor-pointer lg:text-lg"
+          className="inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg"
           onClick={() => {
             section.action();
           }}
@@ -52,7 +52,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       );
 
     return (
-      <Popover.Button className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 lg:text-lg">
+      <Popover.Button className="inline-flex items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg">
         {section.title}
       </Popover.Button>
     );
@@ -86,7 +86,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
             hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : ''
           )}
         >
-          <div className="overflow-hidden flex-auto w-screen max-w-max text-sm leading-6 bg-white rounded-3xl ring-1 shadow-lg ring-gray-600/5">
+          <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">
             <div className="flex flex-row">
               {'items' in section &&
                 section.items.map((subSectionOrElement, index) => {

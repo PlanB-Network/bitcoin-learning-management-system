@@ -37,7 +37,7 @@ export const LanguageSelector = ({
       onMouseLeave={() => setOpen(false)}
       className="relative px-2"
     >
-      <Popover.Button className="flex z-0 place-items-center text-sm font-semibold text-gray-100">
+      <Popover.Button className="z-0 flex place-items-center text-sm font-semibold text-gray-100">
         <Flag code={i18n.language} />
       </Popover.Button>
       <Transition

@@ -28,7 +28,7 @@ export const CoursePreview = ({
 }: CoursePreviewProps) => {
   return (
     <Card image={preview.img}>
-      <h5 className="mb-4 text-2xl font-bold tracking-tight text-primary-900">
+      <h5 className="text-primary-900 mb-4 text-2xl font-bold tracking-tight">
         {title}
       </h5>
       <div className="mb-2">
@@ -38,10 +38,10 @@ export const CoursePreview = ({
           </Tag>
         ))}
       </div>
-      <div className="overflow-hidden mb-3 text-sm text-gray-600 text-ellipsis line-clamp-3">
+      <div className="mb-3 line-clamp-3 overflow-hidden text-ellipsis text-sm text-gray-600">
         {preview.text}
       </div>
-      <div className="flex flex-row justify-between items-center mt-8 w-full">
+      <div className="mt-8 flex w-full flex-row items-center justify-between">
         <Avatar
           rounded
           image={author.img}

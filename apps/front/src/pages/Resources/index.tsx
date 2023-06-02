@@ -73,34 +73,34 @@ export const Resources = () => {
   return (
     <MainLayout>
       <div className="bg-primary-700 flex flex-col justify-center">
-        <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
+        <div className="bg-primary-900 flex flex-wrap justify-evenly px-6 pb-12 pt-8 text-white sm:pb-40">
           <div>
-            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">
+            <h1 className="-ml-6 text-[62px] font-thin xl:text-[128px]">
               {t('resources.pageTitle')}
             </h1>
-            <div className="space-y-6 max-w-sm text-s text-justify">
+            <div className="text-s max-w-sm space-y-6 text-justify">
               <p>{t('resources.headerText')}</p>
               <p>{t('resources.headerSignature')}</p>
             </div>
           </div>
-          <img className="max-h-96 mt-6" src={rabbitInLibrary} />
+          <img className="mt-6 max-h-96" src={rabbitInLibrary} />
         </div>
 
-        <div className="flex flex-wrap justify-evenly self-center max-w-[90vw] w-[950px] py-8 bg-primary-700">
+        <div className="bg-primary-700 flex w-[950px] max-w-[90vw] flex-wrap justify-evenly self-center py-8">
           {resourceKinds.map((resourceKind, i) => (
             <Link key={i} to={resourceKind.route}>
               <div
-                className="box-content flex relative flex-row p-2 my-4 w-44 sm:w-60 h-16 sm:h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
+                className="hover:bg-primary-600 relative my-4 box-content flex h-16 w-44 cursor-pointer flex-row rounded-lg p-2 duration-300 sm:h-24 sm:w-60"
                 key={resourceKind.kind}
               >
-                <div className="flex absolute z-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-secondary-400">
+                <div className="bg-secondary-400 absolute z-0 flex h-20 w-20 rounded-full sm:h-24 sm:w-24">
                   <img
-                    className="h-12 sm:h-16 m-auto"
+                    className="m-auto h-12 sm:h-16"
                     src={resourceKind.image}
                   />
                 </div>
-                <div className="flex relative flex-row items-center ml-10 sm:ml-14">
-                  <h3 className="relative ml-12 text-sm sm:text-2xl text-white z-1">
+                <div className="relative ml-10 flex flex-row items-center sm:ml-14">
+                  <h3 className="z-1 relative ml-12 text-sm text-white sm:text-2xl">
                     {resourceKind.title}
                   </h3>
                 </div>

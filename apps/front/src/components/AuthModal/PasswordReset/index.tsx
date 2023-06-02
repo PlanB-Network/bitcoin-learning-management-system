@@ -45,7 +45,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center w-full"
+              className="flex w-full flex-col items-center"
             >
               <TextInput
                 name="email"
@@ -57,7 +57,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 error={touched.email ? errors.email : null}
               />
 
-              <Button type="submit" className="mt-10 mb-5">
+              <Button type="submit" className="mb-5 mt-10">
                 Envoyer un lien
               </Button>
             </form>
@@ -65,7 +65,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         </Formik>
         <p className="mb-0 text-xs">
           <button
-            className="text-xs underline bg-transparent border-none cursor-pointer"
+            className="cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.Signin)}
           >
             Retour

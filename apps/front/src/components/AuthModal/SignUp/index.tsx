@@ -103,7 +103,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data ? (
         <div className="flex flex-col items-center">
-          <BsCheck className="my-8 w-20 h-20 text-lg text-success-300" />
+          <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
             Your account has been created, {register.data.user.username}! <br />
             You can now save your progression on the Bitcoin Academy
@@ -141,7 +141,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="flex flex-col items-center w-full"
+                className="flex w-full flex-col items-center"
               >
                 <TextInput
                   name="username"
@@ -195,14 +195,14 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   error={touched.contributorId ? errors.contributorId : null}
                 />
 
-                <Button className="mt-10 mb-5">Créer un compte</Button>
+                <Button className="mb-5 mt-10">Créer un compte</Button>
               </form>
             )}
           </Formik>
           <p className="mb-0 text-xs">
             Vous avez déjà un compte ?{' '}
             <button
-              className="text-xs underline bg-transparent border-none cursor-pointer"
+              className="cursor-pointer border-none bg-transparent text-xs underline"
               onClick={() => goTo(AuthModalState.Signin)}
             >
               Connectez vous !

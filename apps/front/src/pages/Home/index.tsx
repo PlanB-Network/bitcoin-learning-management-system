@@ -35,10 +35,10 @@ export const Home = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <div className="flex flex-row justify-evenly items-center w-full h-full bg-gray-100 text-primary-700 font-primary">
-        <div className="max-w-lg w-[50vw]">
+      <div className="text-primary-700 font-primary flex h-full w-full flex-row items-center justify-evenly bg-gray-100">
+        <div className="w-[50vw] max-w-lg">
           <section>
-            <h1 className="mb-10 text-4xl font-primary lg:text-5xl">
+            <h1 className="font-primary mb-10 text-4xl lg:text-5xl">
               Développe ton
               <br />
               expertise Bitcoin
@@ -51,7 +51,7 @@ export const Home = () => {
               De débutant à expert.
             </p>
 
-            <div className="flex flex-col mt-12">
+            <div className="mt-12 flex flex-col">
               <Button className="mt-3" type="button">
                 BTC 101 - Pour débuter en toute sécurité!
               </Button>
@@ -65,18 +65,18 @@ export const Home = () => {
           <img
             src={dbHomeImg1}
             alt="Decouvre bitcoin home hero"
-            className="max-w-sm w-[25vw]"
+            className="w-[25vw] max-w-sm"
           />
         </div>
       </div>
 
       {/* Formations */}
       <div className="bg-white">
-        <h2 className="mx-auto my-8 w-max text-3xl font-primary text-primary-700">
+        <h2 className="font-primary text-primary-700 mx-auto my-8 w-max text-3xl">
           8 formations pour se lancer dans Bitcoin !
         </h2>
 
-        <div className="flex flex-row justify-center items-center py-8">
+        <div className="flex flex-row items-center justify-center py-8">
           <CoursePreview {...course1} />
           <CoursePreview {...course2} />
         </div>

@@ -7,7 +7,7 @@ export const UnderConstruction = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <div className="flex flex-col items-center w-full p-10 space-y-16 h-full bg-gray-100 text-primary-700 font-primary">
+      <div className="text-primary-700 font-primary flex h-full w-full flex-col items-center space-y-16 bg-gray-100 p-10">
         <section className="max-w-4xl ">
           <h1 className="mb-10 text-4xl font-bold lg:text-5xl">Oops.</h1>
           <p className="text-base font-bold lg:text-lg">
@@ -29,7 +29,7 @@ export const UnderConstruction = () => {
           <img
             src={underConstructionImage}
             alt="Illustration of several rabbits working on a construction site"
-            className="max-w-3xl w-[70vw] lg:w-[50vw]"
+            className="w-[70vw] max-w-3xl lg:w-[50vw]"
           />
         </div>
       </div>

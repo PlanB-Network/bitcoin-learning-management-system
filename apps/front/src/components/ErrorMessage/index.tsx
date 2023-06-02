@@ -11,7 +11,7 @@ export const ErrorMessage = ({ text }: ErrorMessageProps) => {
       <small
         data-pr-tooltip={text}
         data-pr-position="bottom"
-        className="overflow-hidden w-64 whitespace-nowrap text-danger-300 text-ellipsis"
+        className="text-danger-300 w-64 overflow-hidden text-ellipsis whitespace-nowrap"
       >
         {text}
       </small>

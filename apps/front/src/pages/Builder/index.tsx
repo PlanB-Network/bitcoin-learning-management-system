@@ -16,9 +16,9 @@ export const Builder = () => {
 
   return (
     <ResourceLayout title={builder?.name ?? ''}>
-      <Card className="max-w-[90vw] sm:max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 grid-rows-6 px-4 my-4 w-full sm:grid-cols-3 sm:px-8">
-          <h3 className="col-span-1 row-span-1 mb-8 text-3xl font-semibold uppercase sm:text-4xl text-primary-900">
+      <Card className="mx-auto max-w-[90vw] sm:max-w-6xl">
+        <div className="my-4 grid w-full grid-cols-1 grid-rows-6 px-4 sm:grid-cols-3 sm:px-8">
+          <h3 className="text-primary-900 col-span-1 row-span-1 mb-8 text-3xl font-semibold uppercase sm:text-4xl">
             {builder?.name}
           </h3>
           <div className="col-span-2 row-span-1">
@@ -26,7 +26,7 @@ export const Builder = () => {
             <Tag>BTC Only</Tag>
           </div>
 
-          <div className="flex flex-row row-span-5 pb-10 mb-4 border-b-4 border-solid sm:mb-0 sm:border-b-0 sm:border-r-4 sm:pb-0 sm:pr-16 border-primary-900 sm:flex-col">
+          <div className="border-primary-900 row-span-5 mb-4 flex flex-row border-b-4 border-solid pb-10 sm:mb-0 sm:flex-col sm:border-b-0 sm:border-r-4 sm:pb-0 sm:pr-16">
             <img
               src={builder?.logo || builderImage}
               className="w-full"
@@ -36,7 +36,7 @@ export const Builder = () => {
             <div className="mx-2 my-6">Social medias</div>
           </div>
 
-          <div className="flex flex-col col-span-2 row-span-5 ml-0 space-y-4 text-sm sm:ml-12">
+          <div className="col-span-2 row-span-5 ml-0 flex flex-col space-y-4 text-sm sm:ml-12">
             <p className="text-justify">{builder?.description}</p>
 
             {/* <RelatedResources

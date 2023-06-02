@@ -14,12 +14,12 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
   return (
     <div>
       {prefix && (
-        <div className="mb-1 text-sm font-thin text-gray-500 italic flex">
+        <div className="mb-1 flex text-sm font-thin italic text-gray-500">
           {prefix}
           <img className="ml-1" src={grayHeart} />
         </div>
       )}
-      <div className="flex flex-row float-right bg-white border-2 rounded-l-3xl rounded-r-lg">
+      <div className="float-right flex flex-row rounded-l-3xl rounded-r-lg border-2 bg-white">
         {contributor?.image && (
           <Avatar
             rounded
@@ -28,8 +28,8 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
             image={contributor.image}
           />
         )}
-        <div className="flex flex-col justify-center ml-2">
-          <span className="text-sm leading-tight mr-2">
+        <div className="ml-2 flex flex-col justify-center">
+          <span className="mr-2 text-sm leading-tight">
             {contributor.username}
           </span>
         </div>

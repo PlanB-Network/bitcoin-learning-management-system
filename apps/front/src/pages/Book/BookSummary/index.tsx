@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { compose } from '../../../../src/utils';
 import arrowForward from '../../../assets/icons/arrow_forward.svg';
@@ -34,7 +34,7 @@ export const BookSummary = ({
     if (!isExtended) {
       return (
         <>
-          <div className="flex gap-1 absolute -bottom-2 left-12">
+          <div className="absolute -bottom-2 left-12 flex gap-1">
             {_.times(3, (i) => (
               <img key={i} className="w-15" src={blueEllipse} />
             ))}
@@ -48,7 +48,7 @@ export const BookSummary = ({
       );
     } else
       return (
-        <p className="flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin whitespace-nowrap">
+        <p className="text-primary-200 absolute -bottom-6 right-12 flex whitespace-nowrap text-xs font-thin italic">
           {t('book.bookSummary.notice')}
         </p>
       );
@@ -56,7 +56,7 @@ export const BookSummary = ({
 
   return (
     <>
-      <h4 className="text-4xl font-bold text-white ml-4 mb-8">
+      <h4 className="mb-8 ml-4 text-4xl font-bold text-white">
         {t('book.bookSummary.title')}
       </h4>
       <Card
@@ -73,7 +73,7 @@ export const BookSummary = ({
             </div>
           </header>
 
-          <p className="mt-8 mb-4 text-xs text-justify">{content}</p>
+          <p className="mb-4 mt-8 text-justify text-xs">{content}</p>
 
           {contributor && (
             <div className="float-right">

@@ -57,27 +57,27 @@ export const Builders = () => {
         }
 
         return (
-          <Card key={category} className="m-8 bg-gray-200 rounded-3xl">
-            <h3 className="px-4 py-1 mb-2 w-full text-xl italic font-semibold uppercase bg-orange-500 rounded-md text-primary-700">
+          <Card key={category} className="m-8 rounded-3xl bg-gray-200">
+            <h3 className="text-primary-700 mb-2 w-full rounded-md bg-orange-500 px-4 py-1 text-xl font-semibold uppercase italic">
               {category}
             </h3>
             <div className="flex flex-row flex-wrap items-center">
               {filteredBuilders.map((builder, index) => (
                 <Link
-                  className="mx-2 mb-5 h-fit min-w-[100px] w-20 z-10 hover:z-20 delay-100 hover:delay-0 m-auto group"
+                  className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
                   to={replaceDynamicParam(Routes.Builder, {
                     builderId: builder.id.toString(),
                     language: builder.language,
                   })}
                   key={index}
                 >
-                  <div className="relative px-2 pt-2 m-auto mb-2 rounded-t-full transition duration-500 ease-in-out h-fit group-hover:scale-125 group-hover:bg-secondary-400">
+                  <div className="group-hover:bg-secondary-400 relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                     <img
-                      className="mx-auto bg-white rounded-full h-30"
+                      className="h-30 mx-auto rounded-full bg-white"
                       src={builder.logo}
                       alt={builder.name}
                     />
-                    <p className="absolute inset-x-0 px-4 py-2 w-full text-xs font-light text-center text-white rounded-b-lg transition-colors duration-500 ease-in-out h-fit wrap align-center inset-y-end group-hover:bg-secondary-400">
+                    <p className="wrap align-center inset-y-end group-hover:bg-secondary-400 absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out">
                       <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                         {builder.name}
                       </span>

@@ -19,7 +19,7 @@ export const FlyingMenu = ({
   onClickLogin,
 }: FlyingMenuProps) => {
   return (
-    <nav className="flex flex-row justify-between items-center w-full">
+    <nav className="flex w-full flex-row items-center justify-between">
       <Link to={Routes.Home}>
         <img
           className="h-10 lg:h-16"

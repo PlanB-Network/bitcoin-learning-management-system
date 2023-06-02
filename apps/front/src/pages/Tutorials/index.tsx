@@ -62,31 +62,31 @@ export const Tutorials = () => {
   return (
     <MainLayout>
       <div className="bg-primary-700 flex flex-col justify-center">
-        <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
+        <div className="bg-primary-900 flex flex-wrap justify-evenly px-6 pb-12 pt-8 text-white sm:pb-40">
           <div>
-            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">
+            <h1 className="-ml-6 text-[62px] font-thin xl:text-[128px]">
               {t('tutorials.pageTitle')}
             </h1>
-            <div className="space-y-6 max-w-sm text-s text-justify">
+            <div className="text-s max-w-sm space-y-6 text-justify">
               <p>{t('tutorials.headerText')}</p>
               <p>{t('tutorials.headerSignature')}</p>
             </div>
           </div>
-          <img className="max-h-96 mt-6" src={tutoRabbitPng} />
+          <img className="mt-6 max-h-96" src={tutoRabbitPng} />
         </div>
 
-        <div className="box-content ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-[50px] bg-primary-700">
+        <div className="bg-primary-700 ml-[50%] box-content flex w-[950px] max-w-[90vw] -translate-x-1/2 flex-row flex-wrap justify-evenly rounded-[50px] px-12 py-8">
           {tutorialKinds.map((tutorialKind) => (
             <Link to={tutorialKind.route}>
               <div
-                className="box-content flex relative flex-row p-2 my-4 w-64 h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
+                className="hover:bg-primary-600 relative my-4 box-content flex h-24 w-64 cursor-pointer flex-row rounded-lg p-2 duration-300"
                 key={tutorialKind.kind}
               >
-                <div className="flex absolute z-0 w-24 h-24 rounded-full bg-secondary-400">
-                  <img className="h-16 m-auto" src={tutorialKind.image} />
+                <div className="bg-secondary-400 absolute z-0 flex h-24 w-24 rounded-full">
+                  <img className="m-auto h-16" src={tutorialKind.image} />
                 </div>
-                <div className="flex relative flex-row items-center mt-4 -ml-8">
-                  <div className="relative ml-32 pl-2 text-white z-1">
+                <div className="relative -ml-8 mt-4 flex flex-row items-center">
+                  <div className="z-1 relative ml-32 pl-2 text-white">
                     <h3 className="text-2xl">{tutorialKind.title}</h3>
                     <p className="text-xs italic">{tutorialKind.description}</p>
                   </div>

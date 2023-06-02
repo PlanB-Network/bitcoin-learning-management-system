@@ -24,11 +24,11 @@ export const ResourceLayout = ({
 }: Props) => {
   return (
     <MainLayout>
-      <div className="p-2 w-full min-h-screen sm:p-10 bg-primary-900 h-fit">
+      <div className="bg-primary-900 h-fit min-h-screen w-full p-2 sm:p-10">
         <div>
           <PageTitle>{title}</PageTitle>
           {tagLine && (
-            <p className="pb-3 mx-4 mt-2 text-sm font-thin text-justify text-white uppercase sm:text-base sm:mx-8">
+            <p className="mx-4 mt-2 pb-3 text-justify text-sm font-thin uppercase text-white sm:mx-8 sm:text-base">
               {tagLine}
             </p>
           )}

@@ -36,9 +36,9 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout>
-      <div className="flex flex-col w-full pt-8 px-[10%] md:px-[20%] text-white bg-primary-900">
-        <h1 className="-ml-4 text-[62px] md:text-[128px] font-thin">Courses</h1>
-        <div className="space-y-6 text-justify text-s">
+      <div className="bg-primary-900 flex w-full flex-col px-[10%] pt-8 text-white md:px-[20%]">
+        <h1 className="-ml-4 text-[62px] font-thin md:text-[128px]">Courses</h1>
+        <div className="text-s space-y-6 text-justify">
           <p className="font-bold">
             Welcome to the core of the Sovereign University: the gate to the
             educational portal.
@@ -53,7 +53,7 @@ export const CoursesExplorer = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col items-center w-full bg-primary-900 md:h-full">
+      <div className="bg-primary-900 flex w-full flex-col items-center md:h-full">
         <SolarSystem courses={coursesWithUnreleased} />
       </div>
     </MainLayout>

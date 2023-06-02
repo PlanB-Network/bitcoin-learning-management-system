@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ResourceReview as ResourceReview } from '.';
+import { ResourceReview } from '.';
 
 const meta: Meta<typeof ResourceReview> = {
   title: 'Components/ResourceReview',

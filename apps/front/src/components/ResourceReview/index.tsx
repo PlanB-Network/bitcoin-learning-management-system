@@ -13,7 +13,7 @@ interface ResourceReviewProps {
 
 export const ResourceReview = ({ contributor }: ResourceReviewProps) => {
   return (
-    <div className="flex flex-col justify-between w-full h-full">
+    <div className="flex h-full w-full flex-col justify-between">
       <ResourceRate rate={4.2} />
 
       <Card>
@@ -22,11 +22,11 @@ export const ResourceReview = ({ contributor }: ResourceReviewProps) => {
             <Contributor contributor={contributor} />
           </div>
 
-          <div className="flex flex-col flex-1">
-            <h5 className="mb-4 leading-tight border-b border-gray-200 border-solid">
+          <div className="flex flex-1 flex-col">
+            <h5 className="mb-4 border-b border-solid border-gray-200 leading-tight">
               Best book to learn about Bitcoin
             </h5>
-            <p className="text-xs line-clamp-4 text-ellipsis">
+            <p className="line-clamp-4 text-ellipsis text-xs">
               Thanks to this, I have been able to complete a battle in my sixth
               novel and nearly write thirty pages in under three days. Thank you
               so much for this truly amazing mix!

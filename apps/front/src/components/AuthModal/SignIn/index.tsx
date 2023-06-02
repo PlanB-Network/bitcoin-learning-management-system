@@ -87,7 +87,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center w-full"
+              className="flex w-full flex-col items-center"
             >
               <TextInput
                 name="username"
@@ -110,7 +110,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                 error={touched.password ? errors.password : null}
               />
 
-              <Button type="submit" className="mt-10 mb-5">
+              <Button type="submit" className="mb-5 mt-10">
                 Se connecter
               </Button>
             </form>
@@ -119,15 +119,15 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         <p className="mb-0 text-xs">
           Vous n'avez pas encore de compte ?
           <button
-            className="ml-1 text-xs underline bg-transparent border-none cursor-pointer"
+            className="ml-1 cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.Signup)}
           >
             Créez-en un !
           </button>
         </p>
-        <p className="mt-2 mb-0 text-xs">
+        <p className="mb-0 mt-2 text-xs">
           <button
-            className="text-xs underline bg-transparent border-none cursor-pointer"
+            className="cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.PasswordReset)}
           >
             Mot de passe oublié ?
@@ -135,7 +135,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         </p>
       </div>
 
-      <div className="absolute left-0 -bottom-24 px-8 py-4 w-full text-sm bg-white rounded-sm">
+      <div className="absolute -bottom-24 left-0 w-full rounded-sm bg-white px-8 py-4 text-sm">
         Le savais tu ? Pas besoin de compte pour commencer à apprendre sur
         l'Académie Bitcoin!
       </div>

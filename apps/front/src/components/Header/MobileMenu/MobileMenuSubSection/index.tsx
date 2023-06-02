@@ -18,7 +18,7 @@ export const MobileMenuSubSection = ({
     <div className="pl-5" key={subSection.id}>
       <button
         onClick={toggle}
-        className="flex flex-row justify-between px-4 py-3 my-1 w-full text-left text-gray-500 rounded-md border border-gray-200 border-solid duration-300"
+        className="my-1 flex w-full flex-row justify-between rounded-md border border-solid border-gray-200 px-4 py-3 text-left text-gray-500 duration-300"
       >
         <span>{subSection.title}</span>
         <FiChevronDown
@@ -33,9 +33,9 @@ export const MobileMenuSubSection = ({
           subSection.items.map((element, index) => (
             <ul
               key={`${subSection.id}-${index}`}
-              className="overflow-auto flex-1 pl-0 my-0 list-none"
+              className="my-0 flex-1 list-none overflow-auto pl-0"
             >
-              <li className="pl-0 my-1 ml-0 list-none" key={element.id}>
+              <li className="my-1 ml-0 list-none pl-0" key={element.id}>
                 <MenuElement element={element} />
               </li>
             </ul>

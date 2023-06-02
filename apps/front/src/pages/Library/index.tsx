@@ -19,7 +19,7 @@ export const Library = () => {
         label: 'Find the perfect resources for your needs:',
       }}
     >
-      <div className="grid grid-cols-2 gap-y-4 gap-x-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {books.data &&
           books.data.map((book) => {
             return (
@@ -29,9 +29,9 @@ export const Library = () => {
                   language: book.language,
                 })}
               >
-                <div className="box-border flex flex-col justify-between items-center p-2 h-full bg-gray-100 rounded-xl border-2 border-gray-200 shadow duration-200 hover:border-secondary-400 hover:scale-95">
+                <div className="hover:border-secondary-400 box-border flex h-full flex-col items-center justify-between rounded-xl border-2 border-gray-200 bg-gray-100 p-2 shadow duration-200 hover:scale-95">
                   <img
-                    className="max-w-full max-h-80 rounded-t-lg"
+                    className="max-h-80 max-w-full rounded-t-lg"
                     src={book.cover}
                     alt={book.title}
                   />

@@ -19,13 +19,13 @@ export const RelatedResources = (
   );
 
   return (
-    <div className="flex flex-col px-6 pt-3 pb-6 my-2 w-full rounded-xl bg-secondary-400 text-primary-800">
+    <div className="bg-secondary-400 text-primary-800 my-2 flex w-full flex-col rounded-xl px-6 pb-6 pt-3">
       <h5 className="mb-2 text-base font-semibold">Related resources</h5>
-      <div className="flex flex-row justify-between w-full text-sm">
+      <div className="flex w-full flex-row justify-between text-sm">
         {resourceTypes.map((key) => (
           <div key={key}>
             <h6>{resourcesTypeLabelByKey[key]}: </h6>
-            <ul className="pl-4 text-xs list-disc">
+            <ul className="list-disc pl-4 text-xs">
               {resources[key]?.map((resource, index) =>
                 resource.path ? (
                   <Link

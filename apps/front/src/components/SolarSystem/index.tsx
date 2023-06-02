@@ -286,7 +286,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
   }, [orbits, isScreenMd, navigate]);
 
   return (
-    <div className="relative w-full mx-auto my-5 overflow-hidden">
+    <div className="relative mx-auto my-5 w-full overflow-hidden">
       <svg ref={ref} />
     </div>
   );

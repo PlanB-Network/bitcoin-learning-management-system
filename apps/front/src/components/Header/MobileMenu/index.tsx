@@ -42,7 +42,7 @@ export const MobileMenu = ({
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <ul className="overflow-auto flex-1 pl-0 mt-0 mb-0 list-none">
+        <ul className="my-0 flex-1 list-none overflow-auto pl-0">
           {sections.map((section) => (
             <MobileMenuSection section={section} key={section.id} />
           ))}
