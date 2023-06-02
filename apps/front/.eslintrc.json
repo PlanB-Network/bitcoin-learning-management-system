@@ -1,5 +1,10 @@
 {
-  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
+  "plugins": ["tailwindcss"],
+  "extends": [
+    "plugin:@nx/react",
+    "../../.eslintrc.json",
+    "plugin:tailwindcss/recommended"
+  ],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {

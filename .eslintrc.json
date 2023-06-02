@@ -5,7 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["plugin:import/recommended"],
+      "extends": ["plugin:import/recommended", "plugin:prettier/recommended"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -83,6 +83,7 @@
     },
     {
       "files": "*.json",
+      "extends": ["plugin:prettier/recommended"],
       "parser": "jsonc-eslint-parser",
       "rules": {}
     }
