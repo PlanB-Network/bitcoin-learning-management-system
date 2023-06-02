@@ -10,6 +10,12 @@ const theme = {
   success: '#A4DBBC',
   warning: '#FFCF99',
   error: '#DE6E75',
+  fontSize: {
+    xxs: ['10px', '14px'],
+  },
+  spacing: {
+    '23':'5.75rem'
+  }
 };
 
 export default {

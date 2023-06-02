@@ -1,141 +1,160 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import readingRabbit from '../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
-import { Tag } from '../../atoms/Tag';
-import { MainLayout } from '../../components';
-import { OtherSimilarResources } from '../../components/OtherSimilarResources';
-import { RelatedResources } from '../../components/RelatedResources';
-import { ResourceReview } from '../../components/ResourceReview';
-import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
+import { ResourceLayout } from '../../components';
 
 import { BookSummary } from './BookSummary';
 
-export const Book = () => {
-  const { bookId, language } = useParams();
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
+export const Book = () => {
+  const { t } = useTranslation();
+  const { bookId, language } = useParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language: language as any, // TODO: understand why React think route params can be undefined and fix it
   });
 
+  if (book?.summary_contributor_id) {
+    const userid = parseInt(book.summary_contributor_id, 0);
+    const { data: contributor } = trpc.content.getBuilder.useQuery({
+      id: userid,
+      language: 'en',
+    });
+  }
+
+  const isScreenMd = useGreater('sm');
+
+  /* During dev */
+  const fakeContributor = {
+    username: 'Asi0',
+    title: 'Bitcoiner',
+    image:
+      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
+  };
+
+  function DownloadEbook() {
+    alert(book?.download_url);
+  }
+
+  function BuyBook() {
+    alert(book?.shop_url);
+  }
+
+  function displayAbstract() {
+    return (
+      <div className="pl-4 mt-6 border-l-4 border-primary-600">
+        <h3 className="mb-4 text-lg font-semibold text-primary-900">
+          {t('book.abstract')}
+        </h3>
+        <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
+          {book?.description}
+        </p>
+      </div>
+    );
+  }
+
+  let buttonSize = 'xs';
+  if (isScreenMd) {
+    buttonSize = 's';
+  }
+
   return (
-    <MainLayout>
-      <div className="flex flex-col bg-primary-800">
-        <div className="flex flex-row justify-center">
-          <Card className="max-w-8xl px-6">
-            <div className="flex flex-row justify-between mx-auto my-6 w-screen max-w-4xl">
-              <div className="flex flex-col justify-between py-4 mr-12 w-max">
-                <img className="w-100" alt="book cover" src={book?.cover} />
-                <div className="flex flex-row justify-evenly mt-4 w-full">
-                  <Button size="s" variant="tertiary" className="mx-2 w-full">
-                    PDF / E-book
-                  </Button>
-                  <Button size="s" variant="tertiary" className="mx-2 w-full">
-                    Buy
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between">
-                <div>
-                  <h2 className="mb-3 text-2xl font-semibold text-primary-800">
-                    {book?.title}
-                  </h2>
-
-                  <div className="text-xs">
-                    <h5>{book?.author}</h5>
-                    <h5>Date: {book?.publication_year}</h5>
-                  </div>
-                </div>
-
-                <div>
-                  <Tag>Bitcoin</Tag>
-                  <Tag>Technology</Tag>
-                  <Tag>Philosophy</Tag>
-                </div>
-
-                <div>
-                  <h3 className="mb-4 text-lg">Abstract</h3>
-                  <p className="max-w-lg text-xs text-justify text-ellipsis line-clamp-[9]">
-                    {book?.description}
-                  </p>
-                </div>
-
-                <RelatedResources
-                  audioBook={[{ label: 'Need to be recorded!' }]}
-                  interview={[
-                    {
-                      label: 'CEO Interview',
-                      path: replaceDynamicParam(Routes.Interview, {
-                        interviewId: 'ja78172',
-                      }),
-                    },
-                  ]}
-                  course={[
-                    {
-                      label: 'BTC 204',
-                      path: replaceDynamicParam(Routes.Course, {
-                        courseId: 'btc-204',
-                      }),
-                    },
-                  ]}
+    <ResourceLayout
+      title={t('book.pageTitle')}
+      tagLine={t('book.pageSubtitle')}
+    >
+      <div className="flex flex-row justify-center">
+        <Card>
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between mx-auto sm:my-6 max-w-[90vw] sm:max-w-8xl">
+            <div className="flex flex-col mr-10">
+              <div>
+                <img
+                  className="mx-auto max-h-72 sm:max-h-96"
+                  alt="book cover"
+                  src={book?.cover}
                 />
               </div>
+              <div className="flex flex-row justify-evenly mt-4">
+                <Button
+                  size={buttonSize}
+                  disabled={!book?.download_url}
+                  variant="tertiary"
+                  className="mx-2 w-32"
+                  onClick={DownloadEbook}
+                >
+                  {t('book.buttonPdf')}
+                </Button>
+                <Button
+                  size={buttonSize}
+                  disabled={!book?.download_url}
+                  variant="tertiary"
+                  className="mx-2 w-32"
+                  onClick={BuyBook}
+                >
+                  {t('book.buttonBuy')}
+                </Button>
+              </div>
             </div>
-          </Card>
-        </div>
 
-        <div className="flex flex-row justify-center pb-48">
-          <BookSummary
-            contributor={{
-              username: 'Asi0',
-              title: 'Bitcoiner',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-            }}
-            title="A journey into sovreignty"
-            content="If it's not the Presentation mode that's causing the issue, it's possible that you accidentally triggered a different mode or setting in Figma that is causing the screen to display in black and white with a purple overlay. One thing you could try is to reset your Figma preferences. To do this, click on your user icon in the bottom left-hand corner of the Figma interface, and then select 'Help & Account' from the dropdown menu. From there, select 'Troubleshooting' and then click the 'Reset Figma' button. This should reset your preferences and return Figma to its default settings. If resetting your preferences doesn't work, it's possible that there is another issue causing the problem. You might try clearing your browser's cache and cookies, or trying to access Figma using a different browser or device to see if the issue persists. If none of these solutions work, you may want to contact Figma's support team for further assistance."
-          />
+            <div className="flex flex-col mb-4">
+              <div>
+                <h2 className="mb-2 max-w-lg text-2xl font-bold sm:text-4xl text-primary-800">
+                  {book?.title}
+                </h2>
 
-          <div className="py-4 max-w-lg">
-            <ResourceReview />
+                <div className="mt-2 text-sm">
+                  <h5 className="italic font-thin">
+                    {book?.author}, {book?.publication_year}.
+                  </h5>
+                </div>
+              </div>
+
+              <div className="mt-2 text-primary-700">
+                <span className="text-xs italic font-thin">
+                  {t('book.topicsAddressed')}
+                </span>
+                {book?.tags.map((object, i) => (
+                  <span key={i}>
+                    {i > 0 && ', '}
+                    {object.toUpperCase()}
+                  </span>
+                ))}
+              </div>
+              {isScreenMd && displayAbstract()}
+            </div>
           </div>
-        </div>
-
-        <OtherSimilarResources
-          title="Proposition de lecture"
-          resources={[
-            {
-              title: 'Discours de la servitude volontaire',
-              id: 'discours-de-la-servitude-volontaire',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-            },
-            {
-              title: 'Check your financiel priviledge',
-              id: 'check-your-financiel-priviledge',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-            },
-            {
-              title: "L'ordre mondial en mutation",
-              id: 'l-ordre-mondial-en-mutation',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-            },
-            {
-              title: 'Le prix de demain',
-              image:
-                'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-              id: 'le-prix-de-demain',
-            },
-          ]}
-        />
+          {!isScreenMd && displayAbstract()}
+        </Card>
       </div>
-    </MainLayout>
+
+      <div className="flex flex-row justify-between p-2 mx-auto my-6 max-w-5xl">
+        <img
+          className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex"
+          src={readingRabbit}
+        />
+
+        <div className="flex flex-col">
+          {!book?.summary_text && (
+            <BookSummary
+              contributor={fakeContributor}
+              title={book?.title ? book?.title : ''}
+              content={
+                book?.summary_text ? book?.summary_text : book?.description
+              } /* TEMP FOR UI DEV, replace book.description with '' */
+            />
+          )}
+        </div>
+      </div>
+    </ResourceLayout>
   );
 };

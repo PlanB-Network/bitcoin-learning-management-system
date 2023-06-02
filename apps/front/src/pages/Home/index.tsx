@@ -1,8 +1,7 @@
 import dbHomeImg1 from '../../assets/db-home-img-1.png';
 import { Button } from '../../atoms/Button';
 import { MainLayout } from '../../components';
-
-import { CoursePreview } from './CoursePreview';
+import { CoursePreview } from '../../components/CoursePreview';
 
 const course1 = {
   author: {
@@ -56,11 +55,7 @@ export const Home = () => {
               <Button className="mt-3" type="button">
                 BTC 101 - Pour débuter en toute sécurité!
               </Button>
-              <Button
-                className="mt-3"
-                variant="secondary"
-                type="button"
-              >
+              <Button className="mt-3" variant="secondary" type="button">
                 Notre dernière formation : BTC 205
               </Button>
             </div>

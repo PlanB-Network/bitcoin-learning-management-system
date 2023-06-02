@@ -10,21 +10,23 @@ export enum Routes {
 
   // Courses
   Courses = '/courses',
-  Course = '/course/:courseId',
+  Course = '/course/:courseId/:language',
+  CourseChapter = '/course/:courseId/:language/:chapterIndex',
+
   // Resources
   Resources = '/resources',
+
   // Resource per type
-  Library = '/library',
-  Book = '/library/:bookId/:language',
-  Podcasts = '/podcasts',
-  Podcast = '/podcasts/:podcastId',
-  Builders = '/builders',
-  Builder = '/builder/:builderId/:language',
+  Library = '/resources/library',
+  Book = '/resources/library/:bookId/:language',
+  Podcasts = '/resources/podcasts',
+  Podcast = '/resources/podcast/:podcastId',
+  Builders = '/resources/builders',
+  Builder = '/resources/builder/:builderId/:language',
 
   // Tutorials
   Tutorials = '/tutorials',
   Tutorial = '/tutorial/:tutorialType',
-
   Wallets = '/tutorials/wallets',
   Exchanges = '/tutorials/exchanges',
   Merchants = '/tutorials/merchants',
@@ -52,6 +54,5 @@ export enum Routes {
   Conference = '/conferences/:conferenceId',
   Lexique = '/lexique',
   Calendar = '/calendar',
-  // Contact
   Contact = '/contact',
 }

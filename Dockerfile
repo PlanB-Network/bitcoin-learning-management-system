@@ -7,7 +7,7 @@ RUN apk add -U \
      cmake \
      git 
 
-RUN npm install --global pnpm@7
+RUN npm install --global pnpm@8
 
 WORKDIR /app
 

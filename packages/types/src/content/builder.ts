@@ -12,6 +12,9 @@ export type JoinedBuilder = Pick<
 > &
   Pick<
     Builder,
-    'name' | 'website_url' | 'twitter_url' | 'github_url' | 'nostr'
+    'name' | 'category' | 'website_url' | 'twitter_url' | 'github_url' | 'nostr'
   > &
-  Pick<BuilderLocalized, 'language' | 'description'>;
+  Pick<BuilderLocalized, 'language' | 'description'> & {
+    tags: string[];
+    category?: string;
+  };

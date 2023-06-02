@@ -27,7 +27,8 @@ services:
       DB_PASSWORD: postgres
     env_file:
       - ./apps/api/.env
-      - ./packages/github/.env
+    volumes:
+      - cdn:$CDN_PATH
     ports:
       - 3000:3000
 
@@ -42,6 +43,14 @@ services:
       - 4200:4200
       - 5555:5555
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - cdn:/var/www/cdn
+
   watcher:
     extends:
       file: ./compose.base.yml
@@ -50,3 +59,4 @@ services:
 
 volumes:
   postgres:
+  cdn:

@@ -1,3 +1,4 @@
+import grayHeart from '../../assets/icons/gray_heart.svg'
 import { Avatar } from '../../atoms/Avatar';
 
 interface ContributorProps {
@@ -13,24 +14,23 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
   return (
     <div>
       {prefix && (
-        <div className="mb-1 text-sm font-thin text-primary-900">{prefix}</div>
+        <div className="mb-1 text-sm font-thin text-gray-500 italic flex">
+          {prefix}
+          <img className="ml-1" src={grayHeart} />
+        </div>
+
       )}
-      <div className="flex flex-row">
+      <div className="flex flex-row float-right bg-white border-2 rounded-l-3xl rounded-r-lg">
         {contributor?.image && (
           <Avatar
             rounded
-            size="s"
-            alt="asio profile pic"
+            size="xs"
+            alt="contributor profile pic"
             image={contributor.image}
           />
         )}
         <div className="flex flex-col justify-center ml-2">
-          <span className="text-lg leading-tight">{contributor.username}</span>
-          {contributor?.title && (
-            <span className="text-xs italic font-thin text-gray-400">
-              {contributor.title}
-            </span>
-          )}
+          <span className="text-sm leading-tight mr-2">{contributor.username}</span>
         </div>
       </div>
     </div>

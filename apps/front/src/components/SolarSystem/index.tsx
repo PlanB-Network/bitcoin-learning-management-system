@@ -10,9 +10,9 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export interface Course {
   id: string;
-  title: string;
-  description: string;
+  name: string;
   level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  language: string;
   unreleased?: boolean;
 }
 
@@ -59,12 +59,35 @@ const Planet = ({
     .attr('r', 4)
     .style('fill', course.unreleased ? '#17284F' : '#2d4c95');
 
-  scaleGroup
-    .append('text')
-    .attr('dy', '.35em')
-    .text(course.id.toUpperCase())
-    .style('fill', course.unreleased ? '#ADB4BC' : 'white')
-    .style('font-size', '0.1em');
+  const courseId = course.id.toUpperCase();
+  if (courseId.length > 7) {
+    // Split course id into letters and numbers
+    const letters = courseId.match(/[A-Za-z]+/)?.[0] || '';
+    const numbers = courseId.match(/\d+/)?.[0] || '';
+
+    // Append letters
+    scaleGroup
+      .append('text')
+      .attr('dy', '-.05em') // Adjust dy for letters
+      .text(letters)
+      .style('fill', course.unreleased ? '#ADB4BC' : 'white')
+      .style('font-size', '0.1em');
+
+    // Append numbers
+    scaleGroup
+      .append('text')
+      .attr('dy', '1em') // Adjust dy for numbers
+      .text(numbers)
+      .style('fill', course.unreleased ? '#ADB4BC' : 'white')
+      .style('font-size', '0.1em');
+  } else {
+    scaleGroup
+      .append('text')
+      .attr('dy', '.35em')
+      .text(courseId)
+      .style('fill', course.unreleased ? '#ADB4BC' : 'white')
+      .style('font-size', '0.1em');
+  }
 
   scaleGroup
     .append('circle')
@@ -101,7 +124,7 @@ const Planet = ({
     const tooltipText = tooltip
       .append('text')
       .attr('dy', '4em') // position it below the planet
-      .text(course.title)
+      .text(course.name)
       .style('fill', '#fff')
       .style('font-size', '0.12em')
       .style('visibility', 'hidden');
@@ -140,7 +163,7 @@ const Planet = ({
 
   scaleGroup.on('click', (event) => {
     event.stopPropagation();
-    if (hovered) navigate(`/course/${course.id}`);
+    if (hovered) navigate(`/course/${course.id}/${course.language}`);
   });
 };
 
@@ -188,7 +211,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
           Math.PI / 4 + ((i / orbits.length) * 2 * Math.PI) / 2;
 
         // Offset the orbits a bit so they are not concentric
-        const orbitCenterOffset = 1;
+        const orbitCenterOffset = 0.5;
         const rotationAngle = (i / orbits.length) * 5 * Math.PI;
         const offsetX = orbitCenterOffset * Math.cos(rotationAngle);
         const offsetY = orbitCenterOffset * Math.sin(rotationAngle);

@@ -1,8 +1,7 @@
 import { verify } from '@octokit/webhooks-methods';
 import type { PushEvent } from '@octokit/webhooks-types';
 
-import type { GithubOctokit } from './octokit';
-import { createGetChangedFiles } from './utils';
+import { compareCommits } from './utils';
 
 /**
  * GitHub sends its JSON with no indentation and no line break at the end
@@ -28,21 +27,10 @@ export const verifyWebhookPayload = async (
   );
 };
 
-export const createProcessWebhookPayload =
-  (octokit: GithubOctokit) => async (payload: PushEvent) => {
-    const getChangedFiles = createGetChangedFiles(octokit);
-
-    const repository = payload.repository.full_name;
-
-    // Get the diff between the last commit before and after the push
-    const files = await getChangedFiles(
-      repository,
-      payload.before,
-      payload.after
-    );
-
-    return {
-      files,
-      sourceUrl: payload.repository.html_url,
-    };
-  };
+export const processWebhookPayload = async (payload: PushEvent) => {
+  return compareCommits(
+    payload.repository.html_url,
+    payload.before,
+    payload.after
+  );
+};

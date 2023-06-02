@@ -5,16 +5,17 @@ import { BaseAtomProps } from '../types';
 
 interface ButtonProps
   extends BaseAtomProps,
-  DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    > {
   children: string;
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
   rounded?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  icon?: JSX.Element;
 }
 
 const classesBySize = {
@@ -42,7 +43,9 @@ export const Button = ({
   rounded,
   iconLeft,
   iconRight,
+  icon,
   className,
+  disabled,
   ...buttonProps
 }: ButtonProps) => {
   const classes = useMemo(
@@ -54,12 +57,36 @@ export const Button = ({
     [rounded, size, variant]
   );
 
+  const disabledClass = disabled
+    ? '  active:none bg-gray-300 text-white font-normal cursor-default'
+    : '';
+
+  if (icon)
+    return (
+      <button
+        disabled={disabled}
+        className={compose(
+          ...classes,
+          disabled ? 'active:none' : 'active:scale-95',
+          'flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
+          className ?? '',
+          disabledClass
+        )}
+        {...buttonProps}
+      >
+        {icon}
+      </button>
+    );
+
   return (
     <button
+      disabled={disabled}
       className={compose(
         ...classes,
-        'active:scale-95 flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
-        className ?? ''
+        disabled ? 'active:none' : 'active:scale-95',
+        'flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
+        className ?? '',
+        disabledClass
       )}
       {...buttonProps}
     >

@@ -49,7 +49,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   };
 };
 
-export const groupByTutorial = (files: ChangedFile[], baseUrl: string) => {
+export const groupByTutorial = (files: ChangedFile[]) => {
   const tutorialsFiles = files.filter(
     (item) => getContentType(item.path) === 'tutorials'
   );
@@ -64,29 +64,18 @@ export const groupByTutorial = (files: ChangedFile[], baseUrl: string) => {
         language,
       } = parseDetailsFromPath(file.path);
 
-      const course =
-        groupedTutorials.get(tutorialPath) ||
-        ({
-          type: 'tutorials',
-          category,
-          path: tutorialPath,
-          sourceUrl: `${baseUrl}/blob/${file.commit}/${tutorialPath}`,
-          files: [],
-          assets: [],
-        } as ChangedTutorial);
+      const course: ChangedTutorial = groupedTutorials.get(tutorialPath) || {
+        type: 'tutorials',
+        category,
+        path: tutorialPath,
+        files: [],
+      };
 
-      if (file.isAsset) {
-        course.assets.push({
-          ...file,
-          path: getRelativePath(file.path, tutorialPath),
-        });
-      } else {
-        course.files.push({
-          ...file,
-          path: getRelativePath(file.path, tutorialPath),
-          language,
-        });
-      }
+      course.files.push({
+        ...file,
+        path: getRelativePath(file.path, tutorialPath),
+        language,
+      });
 
       groupedTutorials.set(tutorialPath, course);
     } catch {
@@ -114,7 +103,7 @@ export const createProcessChangedTutorial =
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error('Resource not found');
+        throw new Error(`Resource not found for path ${tutorial.path}`);
       }
 
       for (const file of files) {

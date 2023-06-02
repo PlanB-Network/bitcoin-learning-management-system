@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { createProcessChangedFiles } from '@sovereign-academy/content';
 import {
-  createProcessWebhookPayload,
+  processWebhookPayload,
   verifyWebhookPayload,
 } from '@sovereign-academy/github';
 
@@ -31,13 +31,13 @@ export const webhooksProcedure = publicProcedure
       return;
     }
 
-    const processWebhookPayload = createProcessWebhookPayload(
-      ctx.dependencies.octokit
-    );
-
     // Process the payload asynchronoulsy so we don't block the request
-    processWebhookPayload(ctx.req.body).then(async ({ files, sourceUrl }) => {
-      const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
-      await processChangedFiles(files, sourceUrl);
+    processWebhookPayload(ctx.req.body).then(async (files) => {
+      try {
+        const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
+        await processChangedFiles(files);
+      } catch (error: any) {
+        console.error(`Error processing webhook payload: ${error.message}`);
+      }
     });
   });

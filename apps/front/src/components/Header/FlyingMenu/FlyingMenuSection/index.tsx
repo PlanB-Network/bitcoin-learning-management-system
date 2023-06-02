@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { Fragment, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { compose } from '../../../../utils';
 import { MenuElement } from '../../MenuElement';
 import { NavigationSection } from '../../props';
 import { FlyingMenuSubSection } from '../FlyingMenuSubSection';
@@ -12,21 +13,33 @@ export interface FlyingMenuProps {
 
 export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
+  const currentSection = '/'.concat(
+    window.location.pathname.split('/').slice(0, 2).join('')
+  );
 
   const sectionTitle = useMemo(() => {
-    if ('path' in section)
+    if ('path' in section) {
+      const fontWeight =
+        currentSection &&
+        currentSection !== '/' &&
+        section.path.includes(currentSection)
+          ? 'font-semibold'
+          : 'font-thin';
+
       return (
         <Link
-          className="uppercase font-thin text-lg text-white"
+          className={compose('text-base text-white uppercase lg:text-lg', fontWeight)}
           to={section.path}
         >
           {section.title}
         </Link>
       );
+    }
+
     if ('action' in section)
       return (
         <button
-          className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 text-gray-100 cursor-pointer"
+          className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 cursor-pointer lg:text-lg"
           onClick={() => {
             section.action();
           }}
@@ -36,11 +49,11 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       );
 
     return (
-      <Popover.Button className="inline-flex gap-x-1 items-center text-sm font-semibold leading-6 text-gray-100">
+      <Popover.Button className="inline-flex gap-x-1 items-center text-base font-semibold leading-6 lg:text-lg">
         {section.title}
       </Popover.Button>
     );
-  }, [section]);
+  }, [currentSection, section]);
 
   if (!('items' in section)) return sectionTitle;
 

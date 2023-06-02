@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import articleSvg from '../../assets/resources/article.svg';
@@ -26,91 +27,80 @@ const resourceKinds = [
     kind: ResourceKinds.Book,
     title: 'Book',
     image: bookSvg,
-    route: Routes.Library
+    route: Routes.Library,
   },
   {
     kind: ResourceKinds.Article,
     title: 'Article',
     image: articleSvg,
-    route: Routes.Article
+    route: Routes.Article,
   },
   {
     kind: ResourceKinds.Documentary,
     title: 'Movie Documentary',
     image: documentarySvg,
-    route: Routes.Home
+    route: Routes.Home,
   },
   {
     kind: ResourceKinds.Newsletter,
     title: 'Newsletter',
     image: newsletterSvg,
-    route: Routes.Newsletter
+    route: Routes.Newsletter,
   },
   {
     kind: ResourceKinds.Podcast,
     title: 'Podcast',
     image: microSvg,
-    route: Routes.Podcasts
+    route: Routes.Podcasts,
   },
   {
     kind: ResourceKinds.Conference,
     title: 'Conference',
     image: couchSvg,
-    route: Routes.Conferences
+    route: Routes.Conferences,
   },
   {
     kind: ResourceKinds.Video,
     title: 'Video',
     image: videoSvg,
-    route: Routes.Videos
+    route: Routes.Videos,
   },
 ];
 
 export const Resources = () => {
+  const { t } = useTranslation();
+
   return (
     <MainLayout>
-      <div className="bg-primary-700">
-        <div className="flex relative flex-row flex-wrap justify-evenly px-12 pt-8 text-white bg-primary-900">
+      <div className="bg-primary-700 flex flex-col justify-center">
+        <div className="flex flex-wrap justify-evenly px-6 pt-8 pb-12 sm:pb-40 text-white bg-primary-900">
           <div>
-            <h1 className="-ml-8 text-[128px] font-thin">Resources</h1>
+            <h1 className="-ml-6 text-[62px] xl:text-[128px] font-thin">{t('resources.pageTitle')}</h1>
             <div className="space-y-6 max-w-sm text-s text-justify">
-              <p>
-                Welcome into the infinit rabbit hole of Bitcoin ! In this
-                section we will offer you in depth tutoriel on most bitcoin
-                project out there. This pages in maintain by benevolel and
-                passionate bitcoin who support thie open source project. If you
-                fee we made a mistake please reach out. To see our financial
-                attachement ot the project mention refer to our transparancie
-                repport. Thanks for your trust in this university and enjoy the
-                ride.
-              </p>
-              <p>Rogzy</p>
+              <p>{t('resources.headerText')}</p>
+              <p>{t('resources.headerSignature')}</p>
             </div>
           </div>
-          <img className="mt-10 mb-40 h-96" src={rabbitInLibrary} />
+          <img className="h-96" src={rabbitInLibrary} />
         </div>
 
-        <div className="box-content ml-[50%] -translate-x-1/2 flex flex-row flex-wrap justify-evenly px-12 py-8 w-[950px] max-w-[90vw] rounded-[50px] bg-primary-700">
-          {resourceKinds.map((resourceKind) => (
-            <Link to={resourceKind.route}>
+        <div className="flex flex-wrap justify-evenly self-center max-w-[90vw] w-[950px] py-8 bg-primary-700">
+          {resourceKinds.map((resourceKind, i) => (
+            <Link key={i} to={resourceKind.route}>
               <div
-                className="box-content flex relative flex-row p-2 my-4 w-60 h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
+                className="box-content flex relative flex-row p-2 my-4 w-44 sm:w-60 h-16 sm:h-24 rounded-lg duration-300 cursor-pointer hover:bg-primary-600"
                 key={resourceKind.kind}
               >
-                <div className="flex absolute z-0 w-24 h-24 rounded-full bg-secondary-400">
-                  <img
-                    className="h-16 m-auto"
-                    src={resourceKind.image}
-                  />
+                <div className="flex absolute z-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-secondary-400">
+                  <img className="h-12 sm:h-16 m-auto" src={resourceKind.image} />
                 </div>
-                <div className="flex relative flex-row items-center ml-14">
-                  <h3 className="relative ml-12 text-2xl text-white z-1">
+                <div className="flex relative flex-row items-center ml-10 sm:ml-14">
+                  <h3 className="relative ml-12 text-sm sm:text-2xl text-white z-1">
                     {resourceKind.title}
                   </h3>
                 </div>
               </div>
             </Link>
-
           ))}
         </div>
       </div>

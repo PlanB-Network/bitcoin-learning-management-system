@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS content.builders (
   resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
 
   name TEXT NOT NULL,
+  category VARCHAR(255) NOT NULL,
 
   -- Links
   website_url TEXT,
@@ -110,6 +111,7 @@ CREATE TABLE IF NOT EXISTS content.courses (
 
   level VARCHAR(255) NOT NULL,
   hours FLOAT NOT NULL,
+  teacher TEXT NOT NULL,
 
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_commit VARCHAR(40) NOT NULL
@@ -122,6 +124,7 @@ CREATE TABLE IF NOT EXISTS content.courses_localized (
   -- Per translation
   name TEXT NOT NULL,
   goal TEXT NOT NULL,
+  objectives TEXT[] NOT NULL,
   raw_description TEXT NOT NULL,
 
   PRIMARY KEY (course_id, language)
@@ -134,6 +137,7 @@ CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
 
   -- Per chapter
   title TEXT NOT NULL,
+  sections TEXT[] NOT NULL,
   raw_content TEXT NOT NULL,
 
   PRIMARY KEY (course_id, language, chapter)

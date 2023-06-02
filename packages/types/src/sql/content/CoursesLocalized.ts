@@ -16,6 +16,8 @@ export default interface CoursesLocalized {
 
   goal: string;
 
+  objectives: string[];
+
   raw_description: string;
 }
 
@@ -29,6 +31,8 @@ export interface CoursesLocalizedInitializer {
 
   goal: string;
 
+  objectives: string[];
+
   raw_description: string;
 }
 
@@ -41,6 +45,8 @@ export interface CoursesLocalizedMutator {
   name?: string;
 
   goal?: string;
+
+  objectives?: string[];
 
   raw_description?: string;
 }

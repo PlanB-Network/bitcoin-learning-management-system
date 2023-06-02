@@ -16,6 +16,7 @@ interface BuilderMain {
     github?: string;
     nostr?: string;
   };
+  category: string;
 }
 
 interface BuilderLocal extends BaseResource {
@@ -40,20 +41,22 @@ export const createProcessChangedBuilder = (dependencies: Dependencies) => {
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error('Resource not found');
+        throw new Error(`Resource not found for path ${resource.path}`);
       }
 
-      if (main) {
+      if (main && main.kind !== 'removed') {
         const parsed = yamlToObject<BuilderMain>(main.data);
 
         await transaction`
-          INSERT INTO content.builders (resource_id, name, website_url, twitter_url, github_url, nostr)
+          INSERT INTO content.builders (resource_id, name, category, website_url, twitter_url, github_url, nostr)
           VALUES (
-            ${id}, ${parsed.name}, ${parsed.links.website}, ${parsed.links.twitter}, 
+            ${id}, ${parsed.name}, ${parsed.category.toLowerCase()}, 
+            ${parsed.links.website}, ${parsed.links.twitter},
             ${parsed.links.github}, ${parsed.links.nostr}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             name = EXCLUDED.name,
+            category = EXCLUDED.category,
             website_url = EXCLUDED.website_url,
             twitter_url = EXCLUDED.twitter_url,
             github_url = EXCLUDED.github_url,

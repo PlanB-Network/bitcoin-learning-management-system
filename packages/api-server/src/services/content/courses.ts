@@ -1,39 +1,28 @@
-import { Course, CourseLocalized } from '@sovereign-academy/types';
+import {
+  firstRow,
+  getCourseChaptersQuery,
+  getCourseQuery,
+} from '@sovereign-academy/database';
 
 import { Dependencies } from '../../dependencies';
 
-type JoinedCourse = Pick<
-  Course,
-  'id' | 'level' | 'hours' | 'last_updated' | 'last_commit'
-> &
-  Pick<CourseLocalized, 'language' | 'name' | 'goal' | 'raw_description'>;
-
-export const createGetCourses =
-  (dependencies: Dependencies) => async (language?: string) => {
+export const createGetCourse =
+  (dependencies: Dependencies) =>
+  async (id: string, language: string, includeChapters = false) => {
     const { postgres } = dependencies;
 
-    const result = await postgres<JoinedCourse[]>`
-      SELECT 
-        c.id, cl.language, c.level, c.hours, cl.name, cl.goal,
-        cl.raw_description, c.last_updated, c.last_commit
-      FROM content.courses c
-      JOIN content.courses_localized cl ON c.id = cl.course_id
-      ${language ? postgres`WHERE cl.language = ${language}` : postgres``}
-    `;
+    const course = await postgres
+      .exec(getCourseQuery(id, language))
+      .then(firstRow);
 
-    return result;
-  };
+    if (course) {
+      return {
+        ...course,
+        ...(includeChapters && {
+          chapters: await postgres.exec(getCourseChaptersQuery(id, language)),
+        }),
+      };
+    }
 
-export const createGetCoursesChapters =
-  (dependencies: Dependencies) => async (id: string, language?: string) => {
-    const { postgres } = dependencies;
-
-    const result = await postgres<any[]>`
-      SELECT chapter AS index, title, raw_content
-      FROM content.course_chapters_localized
-      WHERE course_id = ${id} 
-      ${language ? postgres`AND language = ${language}` : postgres``}
-    `;
-
-    return result;
+    return;
   };

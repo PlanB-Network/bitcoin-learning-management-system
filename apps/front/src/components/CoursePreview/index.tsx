@@ -1,9 +1,9 @@
 import { BsArrowRight } from 'react-icons/bs';
 
-import { Avatar } from '../../../atoms/Avatar';
-import { Button } from '../../../atoms/Button';
-import { Card } from '../../../atoms/Card';
-import { Tag } from '../../../atoms/Tag';
+import { Avatar } from '../../atoms/Avatar';
+import { Button } from '../../atoms/Button';
+import { Card } from '../../atoms/Card';
+import { Tag } from '../../atoms/Tag';
 
 interface CoursePreviewProps {
   author: {

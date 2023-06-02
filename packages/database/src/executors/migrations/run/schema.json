@@ -18,6 +18,11 @@
       "type": "string",
       "description": "The database to run the migrations against.",
       "default": "postgres"
+    },
+    "drop": {
+      "type": "boolean",
+      "description": "Drop the database before running the migrations.",
+      "default": false
     }
   },
   "required": []

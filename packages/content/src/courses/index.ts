@@ -2,7 +2,12 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 
 import { firstRow } from '@sovereign-academy/database';
-import type { ChangedFile, Course } from '@sovereign-academy/types';
+import type {
+  ChangedFile,
+  Course,
+  ModifiedFile,
+  RenamedFile,
+} from '@sovereign-academy/types';
 
 import type { Language } from '../const';
 import { Dependencies } from '../dependencies';
@@ -43,7 +48,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   };
 };
 
-export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
+export const groupByCourse = (files: ChangedFile[]) => {
   const coursesFiles = files.filter(
     (item) => getContentType(item.path) === 'courses'
   );
@@ -58,29 +63,18 @@ export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
         language,
       } = parseDetailsFromPath(file.path);
 
-      const course =
-        groupedCourses.get(coursePath) ||
-        ({
-          type: 'courses',
-          id,
-          path: coursePath,
-          sourceUrl: `${baseUrl}/blob/${file.commit}/${coursePath}`,
-          files: [],
-          assets: [],
-        } as ChangedCourse);
+      const course: ChangedCourse = groupedCourses.get(coursePath) || {
+        type: 'courses',
+        id,
+        path: coursePath,
+        files: [],
+      };
 
-      if (file.isAsset) {
-        course.assets.push({
-          ...file,
-          path: getRelativePath(file.path, coursePath),
-        });
-      } else {
-        course.files.push({
-          ...file,
-          path: getRelativePath(file.path, coursePath),
-          language,
-        });
-      }
+      course.files.push({
+        ...file,
+        path: getRelativePath(file.path, coursePath),
+        language,
+      });
 
       groupedCourses.set(coursePath, course);
     } catch {
@@ -94,11 +88,19 @@ export const groupByCourse = (files: ChangedFile[], baseUrl: string) => {
 interface CourseMain {
   level: string;
   hours: number;
+  teacher: string;
   tags?: string[];
+}
+
+interface CourseLocalized {
+  name: string;
+  goal: string;
+  objectives?: string[];
 }
 
 interface Chapter {
   title: string;
+  sections: string[];
   raw_content: string;
 }
 
@@ -110,10 +112,15 @@ const extractChapters = (markdown: string): Chapter[] => {
     if (token.type === 'heading' && token.depth === 1) {
       chapters.push({
         title: token.text,
+        sections: [],
         raw_content: '',
       });
     } else if (chapters.length > 0) {
       chapters[chapters.length - 1].raw_content += token.raw;
+
+      if (token.type === 'heading' && token.depth === 2) {
+        chapters[chapters.length - 1].sections.push(token.text);
+      }
     }
   });
 
@@ -158,16 +165,20 @@ export const createProcessChangedCourse =
           // Only get the tags from the main resource file
           const parsedCourse = yamlToObject<CourseMain>(main.data);
 
-          const lastUpdated = [...course.files, ...course.assets].sort(
-            (a, b) => b.time - a.time
-          )[0];
+          const lastUpdated = course.files
+            .filter(
+              (file): file is ModifiedFile | RenamedFile =>
+                file.kind !== 'removed'
+            )
+            .sort((a, b) => b.time - a.time)[0];
 
           const result = await transaction<Course[]>`
-            INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
+            INSERT INTO content.courses (id, level, hours, teacher, last_updated, last_commit)
             VALUES (
               ${course.id}, 
               ${parsedCourse.level},
               ${parsedCourse.hours},
+              ${parsedCourse.teacher},
               ${lastUpdated.time}, 
               ${lastUpdated.commit}
             )
@@ -213,8 +224,12 @@ export const createProcessChangedCourse =
 
         const header = matter(file.data, {
           excerpt: true,
-          excert_separator: '+++',
+          excerpt_separator: '+++',
         });
+
+        if (course.id === 'btc101') console.log(header);
+
+        const data = header.data as CourseLocalized;
 
         if (header.excerpt) {
           header.content = header.content.replace(`${header.excerpt}+++\n`, '');
@@ -225,18 +240,20 @@ export const createProcessChangedCourse =
 
         await transaction`
           INSERT INTO content.courses_localized (
-            course_id, language, name, goal, raw_description
+            course_id, language, name, goal, objectives, raw_description
           )
           VALUES (
             ${course.id},
             ${file.language},
-            ${header.data['name']},
-            ${header.data['goal']?.trim()},
+            ${data.name},
+            ${data.goal?.trim()},
+            ${data.objectives || []},
             ${header.excerpt}
           )
           ON CONFLICT (course_id, language) DO UPDATE SET
             name = EXCLUDED.name,
             goal = EXCLUDED.goal,
+            objectives = EXCLUDED.objectives,
             raw_description = EXCLUDED.raw_description
         `;
 
@@ -248,16 +265,19 @@ export const createProcessChangedCourse =
                 language: file.language,
                 chapter: index + 1,
                 title: chapter.title,
+                sections: chapter.sections,
                 raw_content: chapter.raw_content.trim(),
               })),
               'course_id',
               'language',
               'chapter',
               'title',
+              'sections',
               'raw_content'
             )}
             ON CONFLICT (course_id, language, chapter) DO UPDATE SET
               title = EXCLUDED.title,
+              sections = EXCLUDED.sections,
               raw_content = EXCLUDED.raw_content
           `;
       }

@@ -12,6 +12,8 @@ export default interface Courses {
 
   hours: number;
 
+  teacher: string;
+
   last_updated: number;
 
   last_commit: string;
@@ -24,6 +26,8 @@ export interface CoursesInitializer {
   level: string;
 
   hours: number;
+
+  teacher: string;
 
   /** Default value: now() */
   last_updated?: number;
@@ -38,6 +42,8 @@ export interface CoursesMutator {
   level?: string;
 
   hours?: number;
+
+  teacher?: string;
 
   last_updated?: number;
 

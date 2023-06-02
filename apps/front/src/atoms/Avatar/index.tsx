@@ -6,10 +6,11 @@ interface AvatarProps {
   image: string;
   alt: string;
   rounded?: boolean;
-  size?: 's' | 'm' | 'l';
+  size?: 'xs' | 's' | 'm' | 'l';
 }
 
 const classesBySize = {
+  xs: 'w-8 h-8',
   s: 'w-10 h-10',
   m: 'w-16 h-16',
   l: 'w-24 h-24',

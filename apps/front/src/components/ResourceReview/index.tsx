@@ -4,9 +4,14 @@ import { ResourceRate } from '../ResourceRate';
 
 interface ResourceReviewProps {
   comments: { content: string }[];
+  contributor: {
+    username: string;
+    title?: string;
+    image?: string;
+  };
 }
 
-export const ResourceReview = () => {
+export const ResourceReview = ({ contributor }: ResourceReviewProps) => {
   return (
     <div className="flex flex-col justify-between w-full h-full">
       <ResourceRate rate={4.2} />
@@ -14,14 +19,7 @@ export const ResourceReview = () => {
       <Card>
         <div className="flex flex-row">
           <div className="mr-6">
-            <Contributor
-              contributor={{
-                username: 'Asi0',
-                title: 'Bitcoiner',
-                image:
-                  'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/books/21-lessons/assets/cover-en.jpg?raw=true',
-              }}
-            />
+            <Contributor contributor={contributor} />
           </div>
 
           <div className="flex flex-col flex-1">

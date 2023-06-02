@@ -1,16 +1,13 @@
 import { z } from 'zod';
 
-import type { ResourceCategory } from '@sovereign-academy/content';
-import {
-  firstRow,
-  getBookQuery,
-  getBuilderQuery,
-  getPodcastQuery,
-} from '@sovereign-academy/database';
+import { type ResourceCategory } from '@sovereign-academy/content';
 
 import {
+  createGetBook,
   createGetBooks,
+  createGetBuilder,
   createGetBuilders,
+  createGetPodcast,
   createGetPodcasts,
 } from '../../services/content';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
@@ -45,9 +42,7 @@ export const resourcesRouter = createTRPCRouter({
     createGetBooks(ctx.dependencies)(input?.language)
   ),
   getBook: createGetResourceProcedure('books').query(async ({ ctx, input }) =>
-    ctx.dependencies.postgres
-      .exec(getBookQuery(input.id, input.language))
-      .then(firstRow)
+    createGetBook(ctx.dependencies)(input.id, input.language)
   ),
   // Builders
   getBuilders: createGetResourcesProcedure('builders').query(
@@ -56,9 +51,7 @@ export const resourcesRouter = createTRPCRouter({
   ),
   getBuilder: createGetResourceProcedure('builders').query(
     async ({ ctx, input }) =>
-      ctx.dependencies.postgres
-        .exec(getBuilderQuery(input.id, input.language))
-        .then(firstRow)
+      createGetBuilder(ctx.dependencies)(input.id, input.language)
   ),
   // Podcasts
   getPodcasts: createGetResourcesProcedure('podcasts').query(
@@ -67,8 +60,6 @@ export const resourcesRouter = createTRPCRouter({
   ),
   getPodcast: createGetResourceProcedure('podcasts').query(
     async ({ ctx, input }) =>
-      ctx.dependencies.postgres
-        .exec(getPodcastQuery(input.id, input.language))
-        .then(firstRow)
+      createGetPodcast(ctx.dependencies)(input.id, input.language)
   ),
 });

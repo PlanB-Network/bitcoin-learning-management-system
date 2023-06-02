@@ -55,7 +55,7 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
         throw new Error(`Resource not found for path ${resource.path}`);
       }
 
-      if (main) {
+      if (main && main.kind !== 'removed') {
         const parsed = yamlToObject<BookMain>(main.data);
 
         await transaction`

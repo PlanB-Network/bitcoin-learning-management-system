@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { createProcessChangedFiles } from '@sovereign-academy/content';
-import { getAllRepoFiles } from '@sovereign-academy/github';
+import { getAllRepoFiles, syncCdnRepository } from '@sovereign-academy/github';
 
 import { publicProcedure } from '../../trpc';
 
@@ -13,14 +13,14 @@ export const syncProcedure = publicProcedure
   .mutation(async ({ ctx }) => {
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
-    getAllRepoFiles(
+    await getAllRepoFiles(
       'https://github.com/DecouvreBitcoin/sovereign-university-data.git'
-    ).then(async (files) => {
-      processChangedFiles(
-        files,
-        'https://github.com/DecouvreBitcoin/sovereign-university-data'
-      );
-    });
+    ).then(processChangedFiles);
 
-    return;
+    syncCdnRepository(
+      '/tmp/sovereign-university-data',
+      process.env['CDN_PATH'] || '/tmp/cdn'
+    ).catch((error) => {
+      console.error(error);
+    });
   });
