@@ -1,6 +1,6 @@
-import { useParams, Link } from 'react-router-dom';
-import { BsGithub, BsTwitter, BsLink } from 'react-icons/bs';
+import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
+import { Link, useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
