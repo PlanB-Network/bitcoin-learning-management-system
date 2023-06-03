@@ -1,6 +1,9 @@
 import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
+import headerImage from '../../../assets/lapin-diplome.png';
 import { useDisclosure } from '../../../hooks';
+import { Routes } from '../../../types/routes';
 import { compose } from '../../../utils';
 import { MetaElements } from '../MetaElements';
 import { NavigationSection } from '../props';
@@ -23,6 +26,15 @@ export const MobileMenu = ({
 
   return (
     <>
+      <div className="flex w-full flex-row justify-center">
+        <Link className="justify-center" to={Routes.Home}>
+          <img
+            className="h-10 lg:h-16"
+            src={headerImage}
+            alt="DecouvreBitcoin Logo"
+          />
+        </Link>
+      </div>
       <FaBars
         className={compose(
           'absolute z-40 cursor-pointer left-[4vw]',

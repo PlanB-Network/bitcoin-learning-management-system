@@ -351,7 +351,7 @@ export const Header = () => {
   const isScreenMd = useGreater('md');
 
   return (
-    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex min-h-[92px] w-screen flex-row place-items-center justify-between px-4 lg:px-12">
+    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 md:min-h-[92px] md:p-0 lg:px-12">
       {isScreenMd ? (
         <FlyingMenu
           onClickLogin={openLoginModal}
