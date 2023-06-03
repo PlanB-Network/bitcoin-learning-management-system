@@ -35,13 +35,13 @@ export const Builder = () => {
               </Link>
             ))}
           </div>
-          <div className="border-primary-900 row-span-5 mb-4 flex flex-row items-center border-b-4 border-solid pb-10 sm:mb-0 sm:flex-col sm:border-b-0 sm:border-r-4 sm:pb-0 sm:pr-16">
+          <div className="border-primary-900 row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid pb-10 sm:mb-0 sm:flex-col sm:border-b-0 sm:border-r-4 sm:pb-0 sm:pr-16">
             <img
               src={builder?.logo || builderImage}
               className="w-full"
               alt="something representing the company"
             />
-            <div className="mx-2 my-6 flex justify-around  w-full sm:grid-cols-2">
+            <div className="mx-2 my-6 flex justify-around w-full">
               <a
                 href={builder?.github_url}
                 target="_blank"
