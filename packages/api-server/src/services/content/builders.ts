@@ -29,7 +29,7 @@ export const createGetBuilders =
         process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
-        'logo.jpg'
+        'logo.jpeg'
       ),
     }));
   };
@@ -49,7 +49,7 @@ export const createGetBuilder =
           process.env['CDN_URL'] || 'http://localhost:8080',
           builder.last_commit,
           builder.path,
-          'logo.jpg'
+          'logo.jpeg'
         ),
       };
     }
