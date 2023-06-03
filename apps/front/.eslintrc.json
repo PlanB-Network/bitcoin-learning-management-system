@@ -9,7 +9,14 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "tailwindcss/no-custom-classname": [
+          1,
+          {
+            "config": "apps/front/tailwind.config.js"
+          }
+        ]
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],
