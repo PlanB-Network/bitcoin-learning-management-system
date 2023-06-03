@@ -136,7 +136,9 @@ export const CourseDetails: React.FC = () => {
                 <ul className="text-primary-700 space-y-2 font-thin uppercase">
                   {course.objectives?.map((goal, index) => (
                     <li className="flex flex-row space-x-3" key={index}>
-                      <BsCheckCircle className="mt-1 h-[20px] w-[20px]" />
+                      <div>
+                        <BsCheckCircle className="mt-1 h-4 w-4" />
+                      </div>
                       <span>{goal}</span>
                     </li>
                   ))}
