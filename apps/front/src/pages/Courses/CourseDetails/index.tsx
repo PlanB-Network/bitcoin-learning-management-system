@@ -69,35 +69,35 @@ export const CourseDetails: React.FC = () => {
             </div>
             <hr className="my-8 w-full max-w-5xl border-2 border-gray-300" />
             <div className="grid max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch gap-y-8 md:my-2 md:grid-cols-2 md:grid-rows-1">
-              <div className="w-full px-2 md:px-10">
+              <div className="w-full px-2 md:pl-2 md:pr-10">
                 <img
                   src="https://github.com/DecouvreBitcoin/sovereign-university-data/raw/main/courses/btc101/assets/thumbnail.png"
-                  alt=""
+                  alt="Course thumbnail"
                 />
               </div>
-              <div className="grid w-full grid-rows-4 px-3 md:px-0 ">
-                <div className="flex flex-row items-center space-x-5">
-                  <FaChalkboardTeacher size="30" className="text-orange-600" />
+              <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
+                <div className="flex flex-row items-start space-x-5">
+                  <FaChalkboardTeacher size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.teachers', { teachers: 'Rogzy' })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <HiOutlineAcademicCap size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <HiOutlineAcademicCap size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t(`courses.details.level`, { level: course.level })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <HiOutlineBookOpen size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <HiOutlineBookOpen size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.numberOfChapters', {
                       number: course.chapters?.length,
                     })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <IoMdStopwatch size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <IoMdStopwatch size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.duration', { hours: course.hours })}
                   </span>
@@ -182,7 +182,10 @@ export const CourseDetails: React.FC = () => {
                           />
                           <Link
                             className="text-primary-700"
-                            to={`/course/${courseId}/${language}/${chapter.chapter}#${index}`}
+                            to={generatePath(Routes.CourseChapter, {
+                              courseId,
+                              chapterIndex: chapter.chapter.toString(),
+                            })}
                           >
                             {section}
                           </Link>
