@@ -17,10 +17,10 @@ import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
+import { generatePath } from 'react-router-dom';
 
 import { useDisclosure } from '../../hooks';
 import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
@@ -57,7 +57,7 @@ export const Header = () => {
       items: courses.map((course) => ({
         id: course.id,
         title: course.name,
-        path: replaceDynamicParam(Routes.Course, {
+        path: generatePath(Routes.Course, {
           courseId: course.id,
         }),
         icon: AiOutlineBook,
@@ -75,7 +75,7 @@ export const Header = () => {
         {
           id: 'btc101',
           title: 'BTC101',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'btc101',
             language: 'fr',
           }),
@@ -86,7 +86,7 @@ export const Header = () => {
         {
           id: 'ln101',
           title: 'LN 101',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'ln101',
             language: 'fr',
           }),
@@ -97,7 +97,7 @@ export const Header = () => {
         {
           id: 'econ101',
           title: 'ECON 101',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'econ101',
             language: 'fr',
           }),
@@ -122,7 +122,7 @@ export const Header = () => {
         {
           id: 'btc201',
           title: 'BTC 201',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'btc201',
             language: 'fr',
           }),
@@ -134,7 +134,7 @@ export const Header = () => {
         {
           id: 'econ201',
           title: 'ECON 201',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'econ201',
             language: 'fr',
           }),
@@ -146,7 +146,7 @@ export const Header = () => {
         {
           id: 'ln201',
           title: 'LN 201',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'ln201',
             language: 'fr',
           }),
@@ -172,7 +172,7 @@ export const Header = () => {
         {
           id: 'crypto301',
           title: 'CRYPTO 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'crypto301',
             language: 'fr',
           }),
@@ -183,7 +183,7 @@ export const Header = () => {
         {
           id: 'secu301',
           title: 'SECU 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'secu301',
             language: 'fr',
           }),
@@ -194,7 +194,7 @@ export const Header = () => {
         {
           id: 'fin301',
           title: 'FIN 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'fin301',
             language: 'fr',
           }),

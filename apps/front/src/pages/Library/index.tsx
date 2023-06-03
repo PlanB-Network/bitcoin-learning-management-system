@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
 import { ResourceLayout } from '../../components/ResourceLayout';
 import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
 
 export const Library = () => {
   const books = trpc.content.getBooks.useQuery();
@@ -24,7 +23,7 @@ export const Library = () => {
           books.data.map((book) => {
             return (
               <Link
-                to={replaceDynamicParam(Routes.Book, {
+                to={generatePath(Routes.Book, {
                   bookId: book.id.toString(),
                   language: book.language,
                 })}

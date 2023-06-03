@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
 import { Card } from '../../atoms/Card';
 import { ResourceLayout } from '../../components';
 import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
 
 export const Builders = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,7 +64,7 @@ export const Builders = () => {
               {filteredBuilders.map((builder, index) => (
                 <Link
                   className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
-                  to={replaceDynamicParam(Routes.Builder, {
+                  to={generatePath(Routes.Builder, {
                     builderId: builder.id.toString(),
                     language: builder.language,
                   })}

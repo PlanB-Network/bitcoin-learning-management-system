@@ -1,6 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 patchedDependencies:
+  '@remix-run/router@1.6.2':
+    hash: whikki63x6wjno6uvfoc4s6tny
+    path: patches/@remix-run__router@1.6.2.patch
   postgres@3.3.4:
     hash: jx62nn7sidloevpl3xtkwchdui
     path: patches/postgres@3.3.4.patch
@@ -3723,10 +3730,11 @@ packages:
       reselect: 4.1.8
     dev: false
 
-  /@remix-run/router@1.6.2:
+  /@remix-run/router@1.6.2(patch_hash=whikki63x6wjno6uvfoc4s6tny):
     resolution: {integrity: sha512-LzqpSrMK/3JBAVBI9u3NWtOhWNw5AMQfrUFYB0+bDHTSw17z++WJLsPsxAuK+oSddsxk4d7F/JcdDPM1M5YAhA==}
     engines: {node: '>=14'}
     dev: false
+    patched: true
 
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -13072,7 +13080,7 @@ packages:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.6.2
+      '@remix-run/router': 1.6.2(patch_hash=whikki63x6wjno6uvfoc4s6tny)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 6.11.2(react@18.2.0)
@@ -13084,7 +13092,7 @@ packages:
     peerDependencies:
       react: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.6.2
+      '@remix-run/router': 1.6.2(patch_hash=whikki63x6wjno6uvfoc4s6tny)
       react: 18.2.0
     dev: false
 

@@ -44,7 +44,7 @@ export const Builder = () => {
             interview={[
               {
                 label: 'CEO Interview',
-                path: replaceDynamicParam(Routes.Interview, {
+                path: generatePath(Routes.Interview, {
                   interviewId: 'ja78172',
                 }),
               },
@@ -52,7 +52,7 @@ export const Builder = () => {
             course={[
               {
                 label: 'BTC 204',
-                path: replaceDynamicParam(Routes.Course, {
+                path: generatePath(Routes.Course, {
                   courseId: 'btc-204',
                 }),
               },
