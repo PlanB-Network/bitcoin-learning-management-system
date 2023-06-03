@@ -12,6 +12,11 @@
     "topicsAddressed": "Sujets traités : "
   },
   "courses": {
+    "chapter": {
+      "count": "Chapter n°{{count}}/{{total}}",
+      "finish": "Finish the course",
+      "next": "Done, let's go to the next chapter!"
+    },
     "details": {
       "curriculum": "Curriculum",
       "description": "Description",
