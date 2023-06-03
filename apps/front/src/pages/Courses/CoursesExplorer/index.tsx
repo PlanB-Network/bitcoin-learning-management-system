@@ -61,7 +61,7 @@ export const CoursesExplorer = () => {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout footerVariant="dark">
       <div className="bg-primary-900 flex w-full flex-col px-[10%] pt-8 text-white md:px-[20%]">
         <h1 className="-ml-4 text-[62px] font-thin md:text-[128px]">Courses</h1>
         <div className="space-y-6 text-justify text-sm">

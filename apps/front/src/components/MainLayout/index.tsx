@@ -1,12 +1,18 @@
 import { useRef } from 'react';
 
-import { Header } from '../../components';
+import { Footer, Header } from '../../components';
+
+interface MainLayoutProps {
+  children: JSX.Element | JSX.Element[];
+  footerVariant?: 'light' | 'dark' | 'course';
+  footerColor?: string;
+}
 
 export const MainLayout = ({
   children,
-}: {
-  children: JSX.Element | JSX.Element[];
-}) => {
+  footerVariant,
+  footerColor,
+}: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -16,6 +22,9 @@ export const MainLayout = ({
 
       {/* Content */}
       {children}
+
+      {/* Footer */}
+      <Footer variant={footerVariant} color={footerColor} />
     </div>
   );
 };

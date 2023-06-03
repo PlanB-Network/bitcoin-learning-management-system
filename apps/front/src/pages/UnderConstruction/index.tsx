@@ -5,7 +5,7 @@ import { MainLayout } from '../../components';
 
 export const UnderConstruction = () => {
   return (
-    <MainLayout>
+    <MainLayout footerColor="bg-gray-100">
       {/* Hero Section */}
       <div className="text-primary-700 font-primary flex h-full w-full flex-col items-center space-y-16 bg-gray-100 p-10">
         <section className="max-w-4xl ">

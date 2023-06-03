@@ -71,7 +71,7 @@ export const Resources = () => {
   const { t } = useTranslation();
 
   return (
-    <MainLayout>
+    <MainLayout footerVariant="dark">
       <div className="bg-primary-700 flex flex-col justify-center">
         <div className="bg-primary-900 flex flex-wrap justify-evenly px-6 pb-12 pt-8 text-white sm:pb-40">
           <div>
