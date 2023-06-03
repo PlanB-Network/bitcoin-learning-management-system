@@ -13,6 +13,7 @@ interface Props {
     onChange: (v: string) => void;
   };
   pagination?: {};
+  style?: string;
 }
 
 export const ResourceLayout = ({
@@ -21,10 +22,13 @@ export const ResourceLayout = ({
   children,
   filterBar,
   pagination,
+  style,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
-      <div className="bg-primary-900 h-fit min-h-screen w-full p-2 sm:p-10">
+      <div
+        className={`bg-primary-900 h-fit min-h-screen w-full p-2 sm:p-10 ${style}`}
+      >
         <div>
           <PageTitle>{title}</PageTitle>
           {tagLine && (
