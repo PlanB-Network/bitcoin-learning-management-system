@@ -185,6 +185,7 @@ export const createProcessChangedCourse =
             ON CONFLICT (id) DO UPDATE SET
               level = EXCLUDED.level,
               hours = EXCLUDED.hours,
+              teacher = EXCLUDED.teacher,
               last_updated = EXCLUDED.last_updated,
               last_commit = EXCLUDED.last_commit
             RETURNING *
