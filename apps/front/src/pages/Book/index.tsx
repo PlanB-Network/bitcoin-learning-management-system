@@ -3,7 +3,6 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
@@ -11,17 +10,18 @@ import readingRabbit from '../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { ResourceLayout } from '../../components';
+import { useRequiredParams } from '../../utils';
 
 import { BookSummary } from './BookSummary';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
-  const { t } = useTranslation();
-  const { bookId, language } = useParams();
+  const { t, i18n } = useTranslation();
+  const { bookId, language } = useRequiredParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
-    language: language as never, // TODO: understand why React think route params can be undefined and fix it
+    language,
   });
 
   let contributor;
@@ -38,7 +38,7 @@ export const Book = () => {
       username: 'Asi0',
       title: 'Bitcoiner',
       image:
-        'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
+        'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
     };
   }
 

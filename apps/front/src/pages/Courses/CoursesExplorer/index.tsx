@@ -1,44 +1,70 @@
+import { useTranslation } from 'react-i18next';
+
 import { trpc } from '@sovereign-academy/api-client';
+import { JoinedCourse } from '@sovereign-academy/types';
 
 import { MainLayout } from '../../../components';
+import { CoursePreview } from '../../../components/CoursePreview';
 import { SolarSystem } from '../../../components/SolarSystem';
 import type { Course } from '../../../components/SolarSystem';
 
 // Hardcoded unreleased courses
 const unreleasedCourses: Course[] = [
   {
+    id: 'fin101',
+    name: 'Introduction à la finance',
+    level: 'beginner',
+    language: 'fr',
+    unreleased: true,
+  },
+  {
     id: 'btc301',
-    name: 'Le parcours Bitcoin',
+    name: 'Coldcard et Sparrow',
     level: 'advanced',
-    language: 'en',
+    language: 'fr',
     unreleased: true,
   },
   {
     id: 'ln301',
-    name: 'Le parcours Bitcoin',
+    name: 'Cours théorique avancé sur le Lightning Network',
     level: 'advanced',
-    language: 'en',
+    language: 'fr',
     unreleased: true,
   },
   {
-    id: 'btc999',
-    name: 'Le parcours Bitcoin',
-    level: 'expert',
-    language: 'en',
+    id: 'fin205',
+    name: 'Analyse des crises financières majeures',
+    level: 'intermediate',
+    language: 'fr',
+    unreleased: true,
+  },
+  {
+    id: 'econ205',
+    name: 'Etude des hyperinflations',
+    level: 'intermediate',
+    language: 'fr',
     unreleased: true,
   },
 ];
 
 export const CoursesExplorer = () => {
+  const { i18n } = useTranslation();
   const { data: courses } = trpc.content.getCourses.useQuery();
 
-  const coursesWithUnreleased = [...(courses || []), ...unreleasedCourses];
+  const coursesInLanguage = courses?.filter(
+    (course) => course.language === i18n.language
+  );
+
+  const coursesWithUnreleased = [
+    ...(coursesInLanguage || []),
+    ...unreleasedCourses,
+  ];
 
   return (
     <MainLayout>
       <div className="bg-primary-900 flex w-full flex-col px-[10%] pt-8 text-white md:px-[20%]">
         <h1 className="-ml-4 text-[62px] font-thin md:text-[128px]">Courses</h1>
-        <div className="text-s space-y-6 text-justify">
+        <div className="space-y-6 text-justify text-sm">
           <p className="font-bold">
             Welcome to the core of the Sovereign University: the gate to the
             educational portal.

@@ -1,29 +1,30 @@
 {
   "book": {
-    "pageTitle": "The library",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "buttonPdf": "PDF / E-book",
-    "buttonBuy": "Buy",
-    "topicsAddressed": "Topics addressed: ",
     "abstract": "Abstract",
     "bookSummary": {
-      "title": "The book summary",
-      "notice": "this summary is linked to github, for any modification or addition"
-    }
+      "notice": "this summary is linked to github, for any modification or addition",
+      "title": "The book summary"
+    },
+    "buttonBuy": "Buy",
+    "buttonPdf": "PDF / E-book",
+    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
+    "pageTitle": "The library",
+    "topicsAddressed": "Topics addressed: "
   },
   "courses": {
     "details": {
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "teachers": "Teachers: {{teachers}}",
       "duration": "Duration: {{hours}} hours",
-      "level": "Level: $t(words.level.{{level}})"
+      "level": "Level: $t(words.level.{{level}})",
+      "numberOfChapters": "Number of chapters: {{number}}",
+      "objectivesTitle": "",
+      "teachers": "Teachers: {{teachers}}"
     },
     "goal": "GOAL: {{goal}}"
   },
   "resources": {
-    "pageTitle": "Resources",
+    "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
-    "headerSignature": "Rogzy"
+    "pageTitle": "Resources"
   },
   "words": {
     "about-us": "Quiénes somos",

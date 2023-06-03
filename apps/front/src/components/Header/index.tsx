@@ -77,7 +77,6 @@ export const Header = () => {
           title: 'BTC101',
           path: generatePath(Routes.Course, {
             courseId: 'btc101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:
@@ -88,7 +87,6 @@ export const Header = () => {
           title: 'LN 101',
           path: generatePath(Routes.Course, {
             courseId: 'ln101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:
@@ -99,7 +97,6 @@ export const Header = () => {
           title: 'ECON 101',
           path: generatePath(Routes.Course, {
             courseId: 'econ101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:
@@ -124,7 +121,6 @@ export const Header = () => {
           title: 'BTC 201',
           path: generatePath(Routes.Course, {
             courseId: 'btc201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
@@ -136,7 +132,6 @@ export const Header = () => {
           title: 'ECON 201',
           path: generatePath(Routes.Course, {
             courseId: 'econ201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
@@ -148,7 +143,6 @@ export const Header = () => {
           title: 'LN 201',
           path: generatePath(Routes.Course, {
             courseId: 'ln201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
@@ -174,7 +168,6 @@ export const Header = () => {
           title: 'CRYPTO 301',
           path: generatePath(Routes.Course, {
             courseId: 'crypto301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:
@@ -185,7 +178,6 @@ export const Header = () => {
           title: 'SECU 301',
           path: generatePath(Routes.Course, {
             courseId: 'secu301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:
@@ -196,7 +188,6 @@ export const Header = () => {
           title: 'FIN 301',
           path: generatePath(Routes.Course, {
             courseId: 'fin301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
           description:

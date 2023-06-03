@@ -10,8 +10,8 @@ export enum Routes {
 
   // Courses
   Courses = '/courses',
-  Course = '/course/:courseId/:language',
-  CourseChapter = '/course/:courseId/:language/:chapterIndex',
+  Course = '/course/:courseId/:language?',
+  CourseChapter = '/course/:courseId/:language?/chapter/:chapterIndex',
 
   // Resources
   Resources = '/resources',
