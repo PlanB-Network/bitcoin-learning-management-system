@@ -23,7 +23,7 @@ export const ResourceLayout = ({
   pagination,
 }: Props) => {
   return (
-    <MainLayout>
+    <MainLayout footerVariant="dark">
       <div className="bg-primary-900 h-fit min-h-screen w-full p-2 sm:p-10">
         <div>
           <PageTitle>{title}</PageTitle>

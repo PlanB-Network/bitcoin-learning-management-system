@@ -11,11 +11,11 @@ import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 import { Library } from './pages/Library';
+import { NotFound } from './pages/NotFound';
 import { Podcasts } from './pages/Podcasts';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
 import { UnderConstruction } from './pages/UnderConstruction';
-import { WIP } from './pages/WIP';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils/local-storage';
@@ -73,7 +73,7 @@ export const App = () => {
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
-        <Route path="*" element={<WIP />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

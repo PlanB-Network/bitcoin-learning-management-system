@@ -51,13 +51,13 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-white' : 'bg-primary-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
           )}
         >
           <div
             className={compose(
               'relative flex w-full flex-col pt-10',
-              color ?? (variant === 'light' ? 'bg-white' : 'bg-primary-900')
+              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
             )}
           >
             <City className="z-10 m-auto mb-6 h-fit w-1/2 self-end" />
@@ -122,12 +122,12 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
             <Tree className="absolute -left-20 -top-44 m-auto h-80 w-[25%] scale-x-[-1]" />
             <Tree className="absolute -top-16 right-0 z-10 m-auto h-80 w-[25%]" />
             <BigTree className="absolute -top-48 right-0 m-auto h-80 w-[25%]" />
-            <div className="mb-3 flex w-4/5 flex-row justify-center self-center">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="flex flex-row">
-                  <BackRabbit className="h-16" />
-                  <BackRabbit2 className="h-16" />
-                  <BackRabbit className="h-16 scale-x-[-1]" />
+            <div className="flex w-full flex-row justify-center space-x-3 self-center overflow-hidden pb-3">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="flex flex-row space-x-3">
+                  <BackRabbit className="h-20 w-fit" />
+                  <BackRabbit2 className="h-20 w-fit" />
+                  <BackRabbit className="h-20 w-fit scale-x-[-1]" />
                 </div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-white' : 'bg-primary-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
           )}
         >
           <Cloud
