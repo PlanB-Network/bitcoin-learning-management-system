@@ -17,7 +17,7 @@ import { BookSummary } from './BookSummary';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { bookId, language } = useRequiredParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
@@ -78,7 +78,7 @@ export const Book = () => {
       >
         <div className="flex flex-row justify-center">
           <Card>
-            <div className="sm:max-w-8xl mx-auto flex max-w-[90vw] flex-col-reverse items-center justify-between sm:my-6 sm:flex-row">
+            <div className="mx-auto flex max-w-[90vw] flex-col-reverse items-center justify-between sm:my-6 sm:max-w-6xl sm:flex-row">
               <div className="mr-10 flex flex-col">
                 <div>
                   <img
@@ -142,7 +142,7 @@ export const Book = () => {
 
         <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
           <img
-            className="-ml-20 mr-10 mt-10 flex hidden h-80 max-w-[40%] flex-col sm:flex"
+            className="-ml-20 mr-10 mt-10 hidden h-80 max-w-[40%] flex-col sm:flex"
             src={readingRabbit}
             alt={t('imagesAlt.readingRabbit')}
           />

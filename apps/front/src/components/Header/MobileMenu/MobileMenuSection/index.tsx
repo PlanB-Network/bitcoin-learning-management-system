@@ -20,7 +20,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const sectionTitle = useMemo(() => {
     if ('path' in section)
       return (
-        <Link className="font-primary-700 no-underline" to={section.path}>
+        <Link className="text-primary-700 no-underline" to={section.path}>
           {section.title}
         </Link>
       );

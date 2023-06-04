@@ -67,7 +67,7 @@ export const Tutorials = () => {
             <h1 className="-ml-6 text-[62px] font-thin xl:text-[128px]">
               {t('tutorials.pageTitle')}
             </h1>
-            <div className="text-s max-w-sm space-y-6 text-justify">
+            <div className="max-w-sm space-y-6 text-justify text-sm">
               <p>{t('tutorials.headerText')}</p>
               <p>{t('tutorials.headerSignature')}</p>
             </div>
@@ -86,7 +86,7 @@ export const Tutorials = () => {
                   <img className="m-auto h-16" src={tutorialKind.image} />
                 </div>
                 <div className="relative -ml-8 mt-4 flex flex-row items-center">
-                  <div className="z-1 relative ml-32 pl-2 text-white">
+                  <div className="relative z-10 ml-32 pl-2 text-white">
                     <h3 className="text-2xl">{tutorialKind.title}</h3>
                     <p className="text-xs italic">{tutorialKind.description}</p>
                   </div>

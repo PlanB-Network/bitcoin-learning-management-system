@@ -78,7 +78,7 @@ export const Resources = () => {
             <h1 className="-ml-6 text-[62px] font-thin xl:text-[128px]">
               {t('resources.pageTitle')}
             </h1>
-            <div className="text-s max-w-sm space-y-6 text-justify">
+            <div className="max-w-sm space-y-6 text-justify text-sm">
               <p>{t('resources.headerText')}</p>
               <p>{t('resources.headerSignature')}</p>
             </div>
@@ -100,7 +100,7 @@ export const Resources = () => {
                   />
                 </div>
                 <div className="relative ml-10 flex flex-row items-center sm:ml-14">
-                  <h3 className="z-1 relative ml-12 text-sm text-white sm:text-2xl">
+                  <h3 className="relative z-10 ml-12 text-sm text-white sm:text-2xl">
                     {resourceKind.title}
                   </h3>
                 </div>

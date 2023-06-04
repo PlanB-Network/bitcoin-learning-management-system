@@ -74,7 +74,7 @@ export const TextInput = ({
       <div className="flex justify-between px-1">
         <label
           htmlFor="email"
-          className="block text-sm font-medium leading-6 text-gray-900"
+          className="block text-sm font-normal leading-6 text-gray-600"
         >
           {labelText}
         </label>

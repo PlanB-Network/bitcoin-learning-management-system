@@ -35,14 +35,16 @@ const Flag: React.FC<Props> = ({
     });
   }, [code, size]);
 
+  const nonTailwindClasses = `flag size-${size}`;
+
   return (
     <div
-      className={`flag
+      className={`
+    ${nonTailwindClasses}
     ${gradient}
-    size-${size}
     ${hasBorder ? 'border' : ''}
     ${hasDropShadow ? 'drop-shadow' : ''}
-    ${hasBorderRadius ? 'border-radius' : ''}
+    ${hasBorderRadius ? 'rounded-sm' : ''}
     ${className ? className.replace(/\s\s+/g, ' ').trim() : ''}`}
     >
       {imgSrc && <img src={imgSrc} alt={code} />}

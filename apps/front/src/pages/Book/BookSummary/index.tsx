@@ -36,12 +36,18 @@ export const BookSummary = ({
         <>
           <div className="absolute -bottom-2 left-12 flex gap-1">
             {_.times(3, (i) => (
-              <img key={i} className="w-15" src={blueEllipse} />
+              <img
+                key={i}
+                className="w-4"
+                src={blueEllipse}
+                alt="a blue ellipse"
+              />
             ))}
           </div>
           <img
             onClick={DoExpand}
             className="absolute -bottom-4 right-10 w-8"
+            alt="an arrow forward"
             src={arrowForward}
           />
         </>
