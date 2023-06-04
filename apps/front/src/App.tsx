@@ -6,6 +6,7 @@ import { LocalStorageKey } from '@sovereign-academy/types';
 
 import { useAppDispatch, useScrollToTop } from './hooks';
 import { Home } from './pages';
+import { About } from './pages/About';
 import { Book } from './pages/Book';
 import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
@@ -18,7 +19,7 @@ import { Tutorials } from './pages/Tutorials';
 import { UnderConstruction } from './pages/UnderConstruction';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
-import { getItem, removeItem } from './utils/local-storage';
+import { getItem, removeItem } from './utils';
 
 export const App = () => {
   useScrollToTop();
@@ -70,6 +71,7 @@ export const App = () => {
         <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
         <Route path={RoutesEnum.Builders} element={<Builders />} />
         <Route path={RoutesEnum.Builder} element={<Builder />} />
+        <Route path={RoutesEnum.AboutUs} element={<About />} />
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
 
