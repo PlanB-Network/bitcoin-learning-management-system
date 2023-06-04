@@ -1,16 +1,37 @@
-import { Popover, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
+import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
 import { ResourceLayout } from '../../components';
+import { Routes } from '../../types';
 
 export const Podcasts = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Fetching data from the API
   const { data: podcasts } = trpc.content.getPodcasts.useQuery({
     language: 'en',
   });
+
+  // Adding a category to each builder
+  const sortedPodcasts = podcasts
+    ? podcasts.sort((a, b) => a.name.localeCompare(b.name))
+    : [];
+
+  const categorizedPodcasts = sortedPodcasts.reduce((acc, podcast) => {
+    if (!acc[podcast.name]) {
+      acc[podcast.name] = [];
+    }
+    acc[podcast.name].push(podcast);
+    return acc;
+  }, {} as Record<string, typeof sortedPodcasts>);
+
+  const categories = [
+    ...new Set(sortedPodcasts.map((podcast) => podcast.name)),
+  ].sort(
+    (a, b) => categorizedPodcasts[b].length - categorizedPodcasts[a].length
+  );
 
   return (
     <ResourceLayout
@@ -21,51 +42,54 @@ export const Podcasts = () => {
         label: 'Find the perfect resources for your needs:',
       }}
     >
-      <div className="my-20 grid grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {podcasts
-          ?.filter(({ name }) => name.includes(searchTerm))
-          .map((podcast) => (
-            <Popover key={podcast.logo} className="relative">
-              <Popover.Button>
-                <div
-                  className="group max-h-64 cursor-pointer"
-                  key={podcast.logo}
-                >
-                  <img
-                    className="group-hover:border-secondary-400 mx-auto h-full rounded-none border-2 border-solid border-transparent duration-200 group-hover:rounded-3xl"
-                    src={podcast.logo}
-                    alt={podcast.name}
-                  />
-                </div>
-              </Popover.Button>
+      <div className="my-20 grid grid-cols-4 gap-x-8 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {categories.map((category) => {
+          const filteredPodcats = categorizedPodcasts[category].filter(
+            (podcast) =>
+              podcast.name.toLowerCase().includes(searchTerm.toLowerCase())
+          );
 
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-1"
-              >
-                <Popover.Panel className="bg-primary-100 absolute z-10">
-                  <div className="bg-secondary-400 flex w-52 flex-col p-2">
+          // If no result, do not show an empty card.
+          if (filteredPodcats.length === 0) {
+            return null;
+          }
+
+          return (
+            <div>
+              {filteredPodcats.map((podcast, index) => (
+                <Link
+                  className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
+                  to={generatePath(Routes.Podcast, {
+                    podcastId: podcast.id.toString(),
+                  })}
+                  key={podcast.id}
+                >
+                  <div className="z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-secondary-400">
                     <img
-                      className="group-hover:border-secondary-400 mx-auto h-full rounded-none border-2 border-solid border-transparent duration-200 group-hover:rounded-3xl"
+                      className="h-30 mx-auto"
                       src={podcast.logo}
                       alt={podcast.name}
                     />
-
-                    <h4 className="text-xs">{podcast.name}</h4>
-                    <h5 className="text-xxs italic">{podcast.host}</h5>
-                    <h5 className="text-xxs italic">
-                      {podcast.tags.join(', ')}
-                    </h5>
+                    <div className="wrap align-center inset-y-end font-light absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs text-white transition-colors duration-500 ease-in-out group-hover:bg-secondary-400">
+                      <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                        <li className={'pb-1 text-lg font-bold'}>
+                          {podcast.name}
+                        </li>
+                        <li className={'pb-1 text-xs italic'}>
+                          Written by {podcast.host}
+                        </li>
+                        <li className={'pb-1 text-xs italic'}>Publisher in</li>
+                        <li className={'truncate pb-1 text-xs'}>
+                          {podcast.description}
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </Popover.Panel>
-              </Transition>
-            </Popover>
-          ))}
+                </Link>
+              ))}
+            </div>
+          );
+        })}
       </div>
     </ResourceLayout>
   );
