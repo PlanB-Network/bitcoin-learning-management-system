@@ -105,7 +105,7 @@ export const CourseDetails: React.FC = () => {
               </div>
             </div>
             <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
-            <div className="my-4 grid h-fit max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
+            <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
               <div className="mb-5 flex w-full flex-col md:mb-0">
                 <h4 className="mb-1 text-sm font-normal uppercase italic">
                   {t('courses.details.description')}
@@ -126,7 +126,7 @@ export const CourseDetails: React.FC = () => {
                   }}
                 ></ReactMarkdown>
               </div>
-              <div className="flex w-full flex-col ">
+              <div className="flex w-full flex-col">
                 <h4 className="mb-1 text-sm font-thin uppercase italic">
                   {t('courses.details.objectives')}
                 </h4>
@@ -144,7 +144,6 @@ export const CourseDetails: React.FC = () => {
                   ))}
                 </ul>
               </div>
-              <div></div>
             </div>
             <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
             <div className="my-4 h-fit max-w-5xl grid-cols-2 place-items-stretch justify-items-stretch gap-x-20 px-2 md:grid">

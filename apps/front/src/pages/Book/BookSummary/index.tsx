@@ -62,7 +62,7 @@ export const BookSummary = ({
 
   return (
     <>
-      <h4 className="mb-8 ml-4 text-4xl font-bold text-white">
+      <h4 className="mb-8 ml-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
         {t('book.bookSummary.title')}
       </h4>
       <Card

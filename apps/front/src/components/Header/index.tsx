@@ -300,7 +300,7 @@ export const Header = () => {
     {
       id: 'about-us',
       title: t('words.about-us'),
-      path: Routes.UnderConstruction,
+      path: Routes.AboutUs,
       items: [
         {
           id: 'about-us-nested',
