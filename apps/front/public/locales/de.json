@@ -1,70 +1,4 @@
 {
-  "home": {
-    "hero": {
-      "tagLine": "Let’s embark into your Bitcoin educational journey"
-    },
-    "first": {
-      "title": "E-learning platform about Bitcoin",
-      "tagLine": "To learn the basics as well as the advanced",
-      "extensive": "Extensive courses",
-      "extensiveEmphasized": "Extensive",
-      "free": "All free",
-      "freeEmphasized": "free",
-      "forEveryone": "For everyone",
-      "forEveryoneEmphasized": "everyone",
-      "languages": "In many languages",
-      "levels": "From beginner to expert",
-      "levelsEmphasized": "beginner to expert"
-    },
-    "second": {
-      "title": "All useful tutorials",
-      "tagLine": "To navigate your way among Bitcoin technological solutions",
-      "exchange": "Exchange",
-      "merchant": "Merchant",
-      "mining": "Mining",
-      "node": "Node",
-      "privacy": "Privacy tools",
-      "wallet": "Wallet"
-    },
-    "third": {
-      "title": "All kinds of resources about Bitcoin",
-      "tagLine": "To access all published knowledge in one open-source platform",
-      "books": "books",
-      "podcasts": "podcasts",
-      "videos": "videos",
-      "more": "- & more ~"
-    },
-    "fourth": {
-      "title": "A link to the builders of the industry",
-      "tagLine": "To connect learners with their dream Bitcoin job",
-      "text": "Get an overview and connect with the different actors of the industry"
-    },
-    "about": {
-      "title": "A little bit about us",
-      "p1": "The Sovereign University aims at providing a Bitcoin high-quality, extensive, free and accessible education for all. We believe that education and comprehension is the key to mass adoption.",
-      "p2": "As Bitcoin grows stronger everyday, so does its community.",
-      "p3": "Community is our biggest strength, as our educational content is based upon volunteering teachers, passionate about transmitting their knowledge.",
-      "p4": "The Sovereign University is a project powered by DécouvreBitcoin.",
-      "values": {
-        "openSource": {
-          "title": "Open Source",
-          "text": "We aim to promote the free flow of knowledge."
-        },
-        "bitcoinOnly": {
-          "title": "Bitcoin only",
-          "text": "We focus on the Bitcoin revolution as a whole without falling into trading or shitcoinery."
-        },
-        "privacyFocused": {
-          "title": "Privacy Focused",
-          "text": "We consider privacy to be one of the most fundamental human rights and most necessary for progress."
-        },
-        "communityDriven": {
-          "title": "Community Driven",
-          "text": "We are first & foremost a community of enthusiastics helping each other in their Bitcoin journey."
-        }
-      }
-    }
-  },
   "book": {
     "abstract": "Abstract",
     "bookSummary": {
@@ -94,7 +28,76 @@
       "objectivesTitle": "What will you learn with this course?",
       "teachers": "Teachers: {{teachers}}"
     },
-    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing."
+    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "preview": {
+      "by": "by {{teacher}}"
+    }
+  },
+  "home": {
+    "about": {
+      "p1": "The Sovereign University aims at providing a Bitcoin high-quality, extensive, free and accessible education for all. We believe that education and comprehension is the key to mass adoption.",
+      "p2": "As Bitcoin grows stronger everyday, so does its community.",
+      "p3": "Community is our biggest strength, as our educational content is based upon volunteering teachers, passionate about transmitting their knowledge.",
+      "p4": "The Sovereign University is a project powered by DécouvreBitcoin.",
+      "title": "A little bit about us",
+      "values": {
+        "bitcoinOnly": {
+          "text": "We focus on the Bitcoin revolution as a whole without falling into trading or shitcoinery.",
+          "title": "Bitcoin only"
+        },
+        "communityDriven": {
+          "text": "We are first & foremost a community of enthusiastics helping each other in their Bitcoin journey.",
+          "title": "Community Driven"
+        },
+        "openSource": {
+          "text": "We aim to promote the free flow of knowledge.",
+          "title": "Open Source"
+        },
+        "privacyFocused": {
+          "text": "We consider privacy to be one of the most fundamental human rights and most necessary for progress.",
+          "title": "Privacy Focused"
+        }
+      }
+    },
+    "first": {
+      "extensive": "Extensive courses",
+      "extensiveEmphasized": "Extensive",
+      "forEveryone": "For everyone",
+      "forEveryoneEmphasized": "everyone",
+      "free": "All free",
+      "freeEmphasized": "free",
+      "languages": "In many languages",
+      "levels": "From beginner to expert",
+      "levelsEmphasized": "beginner to expert",
+      "tagLine": "To learn the basics as well as the advanced",
+      "title": "E-learning platform about Bitcoin"
+    },
+    "fourth": {
+      "tagLine": "To connect learners with their dream Bitcoin job",
+      "text": "Get an overview and connect with the different actors of the industry",
+      "title": "A link to the builders of the industry"
+    },
+    "hero": {
+      "tagLine": "Let’s embark into your Bitcoin educational journey"
+    },
+    "second": {
+      "exchange": "Exchange",
+      "merchant": "Merchant",
+      "mining": "Mining",
+      "node": "Node",
+      "privacy": "Privacy tools",
+      "tagLine": "To navigate your way among Bitcoin technological solutions",
+      "title": "All useful tutorials",
+      "wallet": "Wallet"
+    },
+    "third": {
+      "books": "books",
+      "more": "- & more ~",
+      "podcasts": "podcasts",
+      "tagLine": "To access all published knowledge in one open-source platform",
+      "title": "All kinds of resources about Bitcoin",
+      "videos": "videos"
+    }
   },
   "imagesAlt": {
     "readingRabbit": "A rabbit reading a book"
@@ -107,7 +110,31 @@
   "tutorials": {
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
-    "pageTitle": "Tutorials"
+    "pageTitle": "Tutorials",
+    "wallet": {
+      "title": "Wallet",
+      "description": "Security solutions and usage of your bitcoins"
+    },
+    "node": {
+      "title": "Node",
+      "description": "Solutions to operate a bitcoin node and join the network"
+    },
+    "mining": {
+      "title": "Mining",
+      "description": "Bitcoin mining solutions"
+    },
+    "merchant": {
+      "title": "Merchant",
+      "description": "Solutions for businesses to accept Bitcoin"
+    },
+    "exchange": {
+      "title": "Exchange",
+      "description": "Bitcoin buying-selling solutions, KYC and non-KYC"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Tools for backup and maintaining privacy"
+    }
   },
   "words": {
     "about-us": "About Us",
