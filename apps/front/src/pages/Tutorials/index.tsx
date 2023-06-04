@@ -2,12 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import tutoRabbitPng from '../../assets/tutorial-rabbit.png';
-import lightningSvg from '../../assets/tutorials/lightning.svg';
+import exchangeSvg from '../../assets/tutorials/exchange.svg';
 import merchantSvg from '../../assets/tutorials/merchant.svg';
 import miningSvg from '../../assets/tutorials/mining.svg';
 import nodeSvg from '../../assets/tutorials/node.svg';
+import privacySvg from '../../assets/tutorials/privacy.svg';
 import walletSvg from '../../assets/tutorials/wallet.svg';
-import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
 import { Routes } from '../../types';
 
@@ -15,50 +15,58 @@ enum TutorialKinds {
   Wallet = 'wallet',
   Node = 'node',
   Mining = 'mining',
-  Lightning = 'lightning',
   Merchant = 'merchant',
+  Exchange = 'exchange',
+  Privacy = 'privacy',
 }
-
-const tutorialKinds = [
-  {
-    kind: TutorialKinds.Wallet,
-    title: 'Wallet',
-    image: walletSvg,
-    description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Wallets,
-  },
-  {
-    kind: TutorialKinds.Node,
-    title: 'Node',
-    image: nodeSvg,
-    description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Node,
-  },
-  {
-    kind: TutorialKinds.Mining,
-    title: 'Mining',
-    image: miningSvg,
-    description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Mining,
-  },
-  {
-    kind: TutorialKinds.Lightning,
-    title: 'Lightning',
-    image: lightningSvg,
-    description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Lightning,
-  },
-  {
-    kind: TutorialKinds.Merchant,
-    title: 'Merchant',
-    image: merchantSvg,
-    description: "Solution de sécurisation et d'utilisation de vos bitcoins",
-    route: Routes.Home,
-  },
-];
 
 export const Tutorials = () => {
   const { t } = useTranslation();
+
+  const tutorialKinds = [
+    {
+      kind: TutorialKinds.Wallet,
+      title: t('tutorials.wallet.title'),
+      image: walletSvg,
+      description: t('tutorials.wallet.description'),
+      route: Routes.UnderConstruction,
+    },
+    {
+      kind: TutorialKinds.Node,
+      title: t('tutorials.node.title'),
+      image: nodeSvg,
+      description: t('tutorials.node.description'),
+      route: Routes.UnderConstruction,
+    },
+    {
+      kind: TutorialKinds.Mining,
+      title: t('tutorials.mining.title'),
+      image: miningSvg,
+      description: t('tutorials.mining.description'),
+      route: Routes.UnderConstruction,
+    },
+    {
+      kind: TutorialKinds.Merchant,
+      title: t('tutorials.merchant.title'),
+      image: merchantSvg,
+      description: t('tutorials.merchant.description'),
+      route: Routes.UnderConstruction,
+    },
+    {
+      kind: TutorialKinds.Exchange,
+      title: t('tutorials.exchange.title'),
+      image: exchangeSvg,
+      description: t('tutorials.exchange.description'),
+      route: Routes.UnderConstruction,
+    },
+    {
+      kind: TutorialKinds.Privacy,
+      title: t('tutorials.privacy.title'),
+      image: privacySvg,
+      description: t('tutorials.privacy.description'),
+      route: Routes.UnderConstruction,
+    },
+  ];
 
   return (
     <MainLayout footerVariant="light">
@@ -89,15 +97,17 @@ export const Tutorials = () => {
                 >
                   <div className="bg-secondary-400 absolute z-0 flex h-24 w-24 rounded-full">
                     <img
-                      className="m-auto h-16"
+                      className="absolute -left-1/4 bottom-0 m-auto h-14"
                       src={tutorialKind.image}
                       alt=""
                     />
                   </div>
-                  <div className="relative z-10 -ml-8 mt-4 flex flex-row items-center">
-                    <div className="relative ml-32 pl-2 text-white">
-                      <h3 className="text-2xl">{tutorialKind.title}</h3>
-                      <p className="text-xs italic">
+                  <div className="z-10 -ml-8 mt-4 flex flex-row items-center">
+                    <div className="ml-32 pl-2 text-white">
+                      <h3 className="absolute left-[2.5em] top-[1em] text-2xl">
+                        {tutorialKind.title}
+                      </h3>
+                      <p className="absolute left-[6em] top-[4.5em] text-xs italic">
                         {tutorialKind.description}
                       </p>
                     </div>
