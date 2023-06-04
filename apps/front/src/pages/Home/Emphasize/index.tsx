@@ -26,8 +26,6 @@ export const Emphasize = ({
         [toReplaceEnd, undefined],
       ].map(([s, e]) => acc.remainingString.slice(s, e));
 
-      console.log({ before, toReplace, after });
-
       return {
         newNodes: [
           ...acc.newNodes,
