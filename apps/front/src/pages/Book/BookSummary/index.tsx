@@ -36,12 +36,18 @@ export const BookSummary = ({
         <>
           <div className="absolute -bottom-2 left-12 flex gap-1">
             {_.times(3, (i) => (
-              <img key={i} className="w-15" src={blueEllipse} />
+              <img
+                key={i}
+                className="w-4"
+                src={blueEllipse}
+                alt="a blue ellipse"
+              />
             ))}
           </div>
           <img
             onClick={DoExpand}
             className="absolute -bottom-4 right-10 w-8"
+            alt="an arrow forward"
             src={arrowForward}
           />
         </>
@@ -56,7 +62,7 @@ export const BookSummary = ({
 
   return (
     <>
-      <h4 className="mb-8 ml-4 text-4xl font-bold text-white">
+      <h4 className="mb-8 ml-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
         {t('book.bookSummary.title')}
       </h4>
       <Card

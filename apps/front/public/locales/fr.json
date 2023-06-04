@@ -27,6 +27,26 @@
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
     "pageTitle": "Ressources"
   },
+  "tutorials": {
+    "wallet": {
+      "description": "Solutions de sécurisation et d'utilisation de vos bitcoins"
+    },
+    "node": {
+      "description": "Solutions pour faire tourner un noeud bitcoin et intégrer le réseau"
+    },
+    "mining": {
+      "description": "Solutions de minage de bitcoins"
+    },
+    "merchant": {
+      "description": "Solutions pour entreprises d'acceptation du Bitcoin"
+    },
+    "exchange": {
+      "description": "Solutions d'achat-vente Bitcoin, KYC et non-KYC"
+    },
+    "privacy": {
+      "description": "Outils de sauvegarde et de maintien de la vie privée"
+    }
+  },
   "words": {
     "about-us": "A Propos",
     "courses": "Cours",

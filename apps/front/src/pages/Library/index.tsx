@@ -14,7 +14,7 @@ export const Library = () => {
       tagLine="This library is open-source & open to contribution. Thanks for grading
       and sharing !"
       filterBar={{
-        onChange: () => {},
+        onChange: () => undefined,
         label: 'Find the perfect resources for your needs:',
       }}
     >

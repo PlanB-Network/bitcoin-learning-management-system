@@ -8,7 +8,7 @@ interface PageTitleProps {
 export const PageTitle = ({ children, variant }: PageTitleProps) => {
   if (variant === 'alternate')
     return (
-      <h1 className="text-primary-800 border-b-primary-800 font-primary-800 my-8 ml-24 w-96 border-b-4 border-solid text-5xl font-bold uppercase leading-tight">
+      <h1 className="text-primary-800 border-b-primary-800 my-8 ml-24 w-96 border-b-4 border-solid text-5xl font-bold uppercase leading-tight">
         {children}
       </h1>
     );

@@ -17,7 +17,7 @@ import { BookSummary } from './BookSummary';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { bookId, language } = useRequiredParams();
   const { data: book } = trpc.content.getBook.useQuery({
     id: Number(bookId),
@@ -58,7 +58,7 @@ export const Book = () => {
         <h3 className="text-primary-900 mb-4 text-lg font-semibold">
           {t('book.abstract')}
         </h3>
-        <p className="line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line text-justify text-sm">
+        <p className="mb-4 line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line pr-4 text-justify text-sm md:pr-8">
           {book?.description}
         </p>
       </div>
@@ -71,23 +71,21 @@ export const Book = () => {
   }
 
   return (
-    book && (
-      <ResourceLayout
-        title={t('book.pageTitle')}
-        tagLine={t('book.pageSubtitle')}
-      >
-        <div className="flex flex-row justify-center">
-          <Card>
-            <div className="sm:max-w-8xl mx-auto flex max-w-[90vw] flex-col-reverse items-center justify-between sm:my-6 sm:flex-row">
-              <div className="mr-10 flex flex-col">
-                <div>
-                  <img
-                    className="mx-auto max-h-72 sm:max-h-96"
-                    alt="book cover"
-                    src={book?.cover}
-                  />
-                </div>
-                <div className="mt-4 flex flex-row justify-evenly">
+    <ResourceLayout
+      title={t('book.pageTitle')}
+      tagLine={t('book.pageSubtitle')}
+    >
+      {book && (
+        <div className="w-full">
+          <Card className="mx-2 md:mx-auto">
+            <div className="my-4 w-full grid-cols-1 grid-rows-1 sm:grid-cols-3 md:grid">
+              <div className="border-primary-800 flex flex-col items-center justify-center border-b-4 md:mr-10 md:border-0">
+                <img
+                  className="max-h-72 sm:max-h-96"
+                  alt="book cover"
+                  src={book?.cover}
+                />
+                <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                   <Button
                     size={buttonSize}
                     disabled={!book?.download_url}
@@ -109,7 +107,7 @@ export const Book = () => {
                 </div>
               </div>
 
-              <div className="mb-4 flex flex-col">
+              <div className="col-span-2 my-4 flex flex-col md:mt-0">
                 <div>
                   <h2 className="text-primary-800 mb-2 max-w-lg text-2xl font-bold sm:text-4xl">
                     {book?.title}
@@ -138,28 +136,28 @@ export const Book = () => {
             </div>
             {!isScreenMd && displayAbstract()}
           </Card>
-        </div>
 
-        <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
-          <img
-            className="-ml-20 mr-10 mt-10 flex hidden h-80 max-w-[40%] flex-col sm:flex"
-            src={readingRabbit}
-            alt={t('imagesAlt.readingRabbit')}
-          />
+          <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
+            <img
+              className="-ml-20 mr-10 mt-10 hidden h-80 max-w-[40%] flex-col sm:flex"
+              src={readingRabbit}
+              alt={t('imagesAlt.readingRabbit')}
+            />
 
-          <div className="flex flex-col">
-            {!book?.summary_text && (
-              <BookSummary
-                contributor={contributor}
-                title={book?.title ? book?.title : ''}
-                content={
-                  book?.summary_text ? book?.summary_text : book?.description
-                } /* TEMP FOR UI DEV, replace book.description with '' */
-              />
-            )}
+            <div className="flex flex-col">
+              {!book?.summary_text && (
+                <BookSummary
+                  contributor={contributor}
+                  title={book?.title ? book?.title : ''}
+                  content={
+                    book?.summary_text ? book?.summary_text : book?.description
+                  } /* TEMP FOR UI DEV, replace book.description with '' */
+                />
+              )}
+            </div>
           </div>
         </div>
-      </ResourceLayout>
-    )
+      )}
+    </ResourceLayout>
   );
 };

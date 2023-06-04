@@ -16,7 +16,11 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
       {prefix && (
         <div className="mb-1 flex text-sm font-thin italic text-gray-500">
           {prefix}
-          <img className="ml-1" src={grayHeart} />
+          <img
+            className="ml-1"
+            src={grayHeart}
+            alt="a heart for nice contributor"
+          />
         </div>
       )}
       <div className="float-right flex flex-row rounded-l-3xl rounded-r-lg border-2 bg-white">

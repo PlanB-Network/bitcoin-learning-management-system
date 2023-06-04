@@ -12,8 +12,8 @@ interface Props {
     value?: string;
     onChange: (v: string) => void;
   };
-  pagination?: {};
-  style?: string;
+  pagination?: boolean;
+  className?: string;
 }
 
 export const ResourceLayout = ({
@@ -22,35 +22,37 @@ export const ResourceLayout = ({
   children,
   filterBar,
   pagination,
-  style,
+  className,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
       <div
-        className={`bg-primary-900 h-fit min-h-screen w-full p-2 sm:p-10 ${style}`}
+        className={`bg-primary-900 flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
       >
-        <div>
-          <PageTitle>{title}</PageTitle>
-          {tagLine && (
-            <p className="mx-4 mt-2 pb-3 text-justify text-sm font-thin uppercase text-white sm:mx-8 sm:text-base">
-              {tagLine}
-            </p>
+        <div className="max-w-6xl">
+          <div>
+            <PageTitle>{title}</PageTitle>
+            {tagLine && (
+              <p className="mx-4 mt-2 pb-3 text-justify text-sm font-thin uppercase text-white sm:mx-8 sm:text-base">
+                {tagLine}
+              </p>
+            )}
+          </div>
+
+          {filterBar && (
+            <div className="my-6 sm:my-12 md:my-16">
+              <FilterBar {...filterBar} />
+            </div>
+          )}
+
+          <div className="my-6 sm:my-12 md:my-16">{children}</div>
+
+          {pagination && (
+            <div className="mx-auto w-max">
+              <Pagination />
+            </div>
           )}
         </div>
-
-        {filterBar && (
-          <div className="my-6 sm:my-12 md:my-16">
-            <FilterBar {...filterBar} />
-          </div>
-        )}
-
-        <div>{children}</div>
-
-        {pagination && (
-          <div className="mx-auto w-max">
-            <Pagination />
-          </div>
-        )}
       </div>
     </MainLayout>
   );

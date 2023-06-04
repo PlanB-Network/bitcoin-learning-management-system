@@ -40,7 +40,7 @@ export const CourseDetails: React.FC = () => {
     <CourseLayout>
       <div>
         {course && (
-          <div className="flex h-full w-full flex-col items-center justify-center px-2 py-10">
+          <div className="flex h-full w-full flex-col items-center justify-center px-2 py-6 md:py-10">
             <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
               {isScreenLg ? (
                 <div
@@ -69,35 +69,35 @@ export const CourseDetails: React.FC = () => {
             </div>
             <hr className="my-8 w-full max-w-5xl border-2 border-gray-300" />
             <div className="grid max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch gap-y-8 md:my-2 md:grid-cols-2 md:grid-rows-1">
-              <div className="w-full px-2 md:px-10">
+              <div className="w-full px-2 md:pl-2 md:pr-10">
                 <img
                   src="https://github.com/DecouvreBitcoin/sovereign-university-data/raw/main/courses/btc101/assets/thumbnail.png"
-                  alt=""
+                  alt="Course thumbnail"
                 />
               </div>
-              <div className="grid w-full grid-rows-4 px-3 md:px-0 ">
-                <div className="flex flex-row items-center space-x-5">
-                  <FaChalkboardTeacher size="30" className="text-orange-600" />
+              <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
+                <div className="flex flex-row items-start space-x-5">
+                  <FaChalkboardTeacher size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.teachers', { teachers: 'Rogzy' })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <HiOutlineAcademicCap size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <HiOutlineAcademicCap size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t(`courses.details.level`, { level: course.level })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <HiOutlineBookOpen size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <HiOutlineBookOpen size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.numberOfChapters', {
                       number: course.chapters?.length,
                     })}
                   </span>
                 </div>
-                <div className="flex flex-row items-center space-x-5">
-                  <IoMdStopwatch size="30" className="text-orange-600" />
+                <div className="flex flex-row items-start space-x-5">
+                  <IoMdStopwatch size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.duration', { hours: course.hours })}
                   </span>
@@ -105,7 +105,7 @@ export const CourseDetails: React.FC = () => {
               </div>
             </div>
             <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
-            <div className="my-4 grid h-fit max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
+            <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
               <div className="mb-5 flex w-full flex-col md:mb-0">
                 <h4 className="mb-1 text-sm font-normal uppercase italic">
                   {t('courses.details.description')}
@@ -126,7 +126,7 @@ export const CourseDetails: React.FC = () => {
                   }}
                 ></ReactMarkdown>
               </div>
-              <div className="flex w-full flex-col ">
+              <div className="flex w-full flex-col">
                 <h4 className="mb-1 text-sm font-thin uppercase italic">
                   {t('courses.details.objectives')}
                 </h4>
@@ -136,13 +136,14 @@ export const CourseDetails: React.FC = () => {
                 <ul className="text-primary-700 space-y-2 font-thin uppercase">
                   {course.objectives?.map((goal, index) => (
                     <li className="flex flex-row space-x-3" key={index}>
-                      <BsCheckCircle className="mt-1 h-[20px] w-[20px]" />
+                      <div>
+                        <BsCheckCircle className="mt-1 h-4 w-4" />
+                      </div>
                       <span>{goal}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div></div>
             </div>
             <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
             <div className="my-4 h-fit max-w-5xl grid-cols-2 place-items-stretch justify-items-stretch gap-x-20 px-2 md:grid">
@@ -182,7 +183,10 @@ export const CourseDetails: React.FC = () => {
                           />
                           <Link
                             className="text-primary-700"
-                            to={`/course/${courseId}/${language}/${chapter.chapter}#${index}`}
+                            to={generatePath(Routes.CourseChapter, {
+                              courseId,
+                              chapterIndex: chapter.chapter.toString(),
+                            })}
                           >
                             {section}
                           </Link>

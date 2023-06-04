@@ -6,7 +6,6 @@ export const useDisclosure = () => {
   return {
     isOpen,
     close: () => {
-      console.log('hi');
       setIsOpen(false);
     },
     open: () => setIsOpen(true),

@@ -228,8 +228,6 @@ export const createProcessChangedCourse =
           excerpt_separator: '+++',
         });
 
-        if (course.id === 'btc101') console.log(header);
-
         const data = header.data as CourseLocalized;
 
         if (header.excerpt) {
