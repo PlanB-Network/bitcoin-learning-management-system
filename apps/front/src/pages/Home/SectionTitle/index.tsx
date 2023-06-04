@@ -19,7 +19,7 @@ export const SectionTitle = ({
     <div
       className={compose(
         position === 'right'
-          ? 'flex-row-reverse pr-4 sm:pr-8 lg:pr-14'
+          ? 'flex-row-reverse pr-4 md:pr-8 lg:pr-14'
           : 'flex-row pl-4 sm:pl-8 lg:pl-14',
         'relative h-24 sm:h-36 lg:h-48 flex items-center'
       )}
@@ -53,7 +53,7 @@ export const SectionTitle = ({
         <h2
           className={compose(
             position === 'right' ? 'text-right' : 'text-left',
-            'text-lg sm:text-xl lg:text-3xl font-semibold mb-1'
+            'text-base sm:text-xl lg:text-3xl font-semibold mb-1'
           )}
         >
           {title}

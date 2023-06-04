@@ -23,12 +23,12 @@ export const Home = () => {
   return (
     <MainLayout footerVariant="dark">
       {/* Hero section */}
-      <div className="bg-primary-900 flex flex-col items-center px-24 py-8 md:flex-row md:py-36">
+      <div className="bg-primary-900 flex flex-col items-center px-10 py-8 md:flex-row md:px-24 md:py-36">
         <div>
-          <h1 className="max-w-4xl text-xl text-white sm:text-3xl md:text-5xl  lg:text-6xl xl:text-8xl">
+          <h1 className="max-w-4xl text-4xl text-white md:text-5xl lg:text-6xl xl:text-8xl">
             The Sovereign University
           </h1>
-          <p className=" mt-10 text-base font-thin italic tracking-wide text-white sm:text-xl lg:text-2xl">
+          <p className="mt-10 text-base font-thin italic tracking-wide text-white sm:text-xl lg:text-2xl">
             {t('home.hero.tagLine')}
           </p>
         </div>
