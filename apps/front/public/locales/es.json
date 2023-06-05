@@ -1,4 +1,26 @@
 {
+  "auth": {
+    "passwordReinit": "Réinitilisation de mot de passe",
+    "sendLink": "Envoyer un lien",
+    "emailAddress": "Adresse email",
+    "usernameRequired": "username is required",
+    "passwordRequired": "password is required",
+    "connectWithLn": "Connect with LN",
+    "connect": "Se connecter",
+    "noAccountYet": "Vous n'avez pas encore de compte ?",
+    "createOne": "Créez-en un !",
+    "forgottenPassword": "Mot de passe oublié ?",
+    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
+    "usernameRules": "username must contain at least 6 characters",
+    "passwordsDontMatch": "Passwords don't match",
+    "accountCreated": "Your account has been created, {userName}!",
+    "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
+    "headerAccountCreated": "Account created",
+    "createAccount": "Créer un compte",
+    "contributorId": "Identifiant contributeur",
+    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "getConnected": "Connectez vous !"
+  },
   "book": {
     "abstract": "Abstract",
     "bookSummary": {
@@ -32,9 +54,13 @@
       "objectivesTitle": "What will you learn with this course?",
       "teachers": "Teachers: {{teachers}}"
     },
+    "footer": {
+      "": ""
+    },
     "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
     "preview": {
-      "by": "by {{teacher}}"
+      "by": "by {{teacher}}",
+      "letsgo": "Let's go"
     }
   },
   "home": {
@@ -104,11 +130,30 @@
     }
   },
   "imagesAlt": {
-    "readingRabbit": "A rabbit reading a book"
+    "readingRabbit": "A rabbit reading a book",
+    "contributorHeart": "a heart for nice contributor",
+    "contributorPP": "contributor profile pic",
+    "decouvreBitcoinLogo": "DecouvreBitcoin Logo"
   },
   "library": {
     "pageTitle": "The library",
     "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !"
+  },
+  "menu": {
+    "btc101Description": "Get a better understanding of bitcoin with this lessons",
+    "libraryDescription": "Discover plenty of books to improve your knowledge",
+    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
+    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
+    "walletsDescription": "Secure and use your bitcoins",
+    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
+    "lightningDescription": "Manage your lightning node and use the lightning network",
+    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
+    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
+    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
+    "ourStoryDescription": "Learn about the story of the university",
+    "sponsorsDescription": "Discover our sponsors and collaborators",
+    "teachersDescription": "Get to know our university teachers, apassionate bitcoiners",
+    "supportUsDescription": "Find ways to support us, by any manner"
   },
   "podcasts": {
     "pageTitle": "The Podcast Portal",
@@ -118,7 +163,8 @@
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
-    "pageTitle": "Resources"
+    "pageTitle": "Resources",
+    "publicGrade": "Public grade: {grade}/5"
   },
   "tutorials": {
     "exchange": {
@@ -151,23 +197,61 @@
     }
   },
   "words": {
+    "about": "About",
     "about-us": "Quiénes somos",
+    "account": "Account",
+    "additionalCriteria": "Additional criteria",
+    "advanced": "Advanced",
+    "audioBook": "Audio Book",
     "article": "Article",
+    "back": "Back",
+    "beginner": "Beginner",
     "book": "Book",
+    "builders": "Builders",
     "conference": "Conference",
+    "content": "Content",
+    "course": "Course",
     "courses": "Cursos",
+    "donations": "Donations",
+    "email": "Email",
+    "exchanges": "Exchanges",
+    "followUs": "Follow us",
+    "helpUs": "Help us",
     "home": "Home",
+    "intermediate": "Intermediate",
+    "interview": "Interview",
     "level": {
       "advanced": "Advanced",
       "beginner": "Beginner",
       "expert": "Expert",
       "intermediate": "Intermediate"
     },
+    "library": "Library",
+    "lightning": "Lightning",
+    "login": "Login",
+    "merchandising": "Merchandising",
+    "merchants": "Merchants",
+    "mining": "Mining",
+    "more": "More",
     "movieDocumentary": "Movie Documentary",
     "newsletter": "Newsletter",
+    "node": "Node",
+    "or": "or",
+    "ourStory": "Our story",
     "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "register": "Register",
+    "relatedResources": "Related resources",
+    "review": "Review",
     "resources": "Recursos",
+    "sponsorUs": "Sponsor Us",
+    "sponsoringAndContributors": "Sponsoring & contributors",
+    "supportUs": "Support us",
+    "teachers": "Teachers",
+    "termsAndConditions": "Terms and conditions",
+    "tutorial": "Tutorial",
     "tutorials": "Tutoriales",
-    "video": "Video"
+    "video": "Video",
+    "wallets": "Wallets"
   }
 }
