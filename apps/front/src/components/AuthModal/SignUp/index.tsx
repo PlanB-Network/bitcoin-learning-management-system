@@ -1,4 +1,5 @@
 import { Formik, FormikHelpers } from 'formik';
+import { t } from 'i18next';
 import { isEmpty } from 'lodash';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
@@ -34,8 +35,8 @@ password
 const signupSchema = z
   .object({
     username: z
-      .string({ required_error: 'username is required' })
-      .min(6, 'username must contain at least 6 characters'),
+      .string({ required_error: t('auth.usernameRequired') })
+      .min(6, t('auth.usernameRules')),
     password: z.string().refine(
       (pwd) => password.validate(pwd),
       (pwd) => {
@@ -48,7 +49,7 @@ const signupSchema = z
     contributor_id: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmation, {
-    message: "Passwords don't match",
+    message: t('auth.passwordsDontMatch'),
     path: ['confirmation'],
   });
 
@@ -99,14 +100,16 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      headerText={register.data ? 'Account created' : 'Créer un compte'}
+      headerText={
+        register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
+      }
     >
       {register.data ? (
         <div className="flex flex-col items-center">
           <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
-            Your account has been created, {register.data.user.username}! <br />
-            You can now save your progression on the Bitcoin Academy
+            {t('auth.accountCreated', register.data.user.username)} <br />
+            {t('auth.canSaveProgress')}
           </p>
         </div>
       ) : (
@@ -177,7 +180,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
                 <TextInput
                   name="email"
-                  labelText="Email"
+                  labelText={t('words.email')}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -187,7 +190,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
                 <TextInput
                   name="contributorId"
-                  labelText="Identifiant contributeur"
+                  labelText={t('auth.contributorId')}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.contributorId}
@@ -195,17 +198,19 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   error={touched.contributorId ? errors.contributorId : null}
                 />
 
-                <Button className="mb-5 mt-10">Créer un compte</Button>
+                <Button className="mb-5 mt-10">
+                  {t('auth.createAccount')}
+                </Button>
               </form>
             )}
           </Formik>
           <p className="mb-0 text-xs">
-            Vous avez déjà un compte ?{' '}
+            {t('auth.alreadyAnAccount')}{' '}
             <button
               className="cursor-pointer border-none bg-transparent text-xs underline"
               onClick={() => goTo(AuthModalState.Signin)}
             >
-              Connectez vous !
+              {t('auth.getConnected')}
             </button>
           </p>
         </div>

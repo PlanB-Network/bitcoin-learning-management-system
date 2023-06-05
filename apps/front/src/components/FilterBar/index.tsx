@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   label?: string;
@@ -11,6 +12,7 @@ export const FilterBar = ({
   value: initialValue = '',
   onChange,
 }: Props) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState(initialValue);
 
   return (
@@ -31,7 +33,7 @@ export const FilterBar = ({
         />
       </div>
       <button className="text-right font-thin italic underline">
-        Additional criteria
+        {t('words.additionalCriteria')}
       </button>
     </div>
   );

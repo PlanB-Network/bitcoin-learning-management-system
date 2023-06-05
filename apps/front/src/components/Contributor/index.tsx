@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import grayHeart from '../../assets/icons/gray_heart.svg';
 import { Avatar } from '../../atoms/Avatar';
 
@@ -11,6 +13,7 @@ interface ContributorProps {
 }
 
 export const Contributor = ({ prefix, contributor }: ContributorProps) => {
+  const { t } = useTranslation();
   return (
     <div>
       {prefix && (
@@ -19,7 +22,7 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
           <img
             className="ml-1"
             src={grayHeart}
-            alt="a heart for nice contributor"
+            alt={t('imagesAlt.contributorHeart')}
           />
         </div>
       )}
@@ -28,7 +31,7 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
           <Avatar
             rounded
             size="xs"
-            alt="contributor profile pic"
+            alt={t('imagesAlt.contributorPP')}
             image={contributor.image}
           />
         )}

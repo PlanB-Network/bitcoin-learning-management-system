@@ -45,7 +45,7 @@ export const CoursePreview = ({
             variant="tertiary"
             className="text-primary-900"
           >
-            Let's go
+            {t('courses.preview.letsgo')}
           </Button>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
 import headerImage from '../../../assets/lapin-diplome.png';
@@ -24,7 +25,7 @@ export const FlyingMenu = ({
         <img
           className="h-10 lg:h-16"
           src={headerImage}
-          alt="DecouvreBitcoin Logo"
+          alt={t('imagesAlt.decouvreBitcoinLogo')}
         />
       </Link>
 

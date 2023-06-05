@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import rabbitWithBook from '../../assets/rabbit-with-book.svg';
 
 interface PageTitleProps {
@@ -6,6 +8,7 @@ interface PageTitleProps {
 }
 
 export const PageTitle = ({ children, variant }: PageTitleProps) => {
+  const { t } = useTranslation();
   if (variant === 'alternate')
     return (
       <h1 className="text-primary-800 border-b-primary-800 my-8 ml-24 w-96 border-b-4 border-solid text-5xl font-bold uppercase leading-tight">
@@ -20,7 +23,7 @@ export const PageTitle = ({ children, variant }: PageTitleProps) => {
       </h1>
       <img
         src={rabbitWithBook}
-        alt="a rabbit reading a book"
+        alt={t('imagesAlt.readingRabbit')}
         className="ml-4 h-full sm:ml-8"
       ></img>
     </div>

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { compose } from '../../utils';
 
 interface ResourceRateProps {
@@ -5,13 +7,14 @@ interface ResourceRateProps {
 }
 
 export const ResourceRate = ({ rate }: ResourceRateProps) => {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="text-primary-800 mx-auto mb-2 w-max text-2xl font-semibold uppercase">
-        Review
+        {t('words.review')}
       </div>
       <div className="text-primary-800 mx-auto w-max text-sm font-thin">
-        Public grade: {rate.toFixed(1)}/5
+        {t('resources.publicGrade', rate.toFixed(1))}
       </div>
       <div className="mt-3 flex flex-row justify-evenly space-x-5">
         {new Array(5)

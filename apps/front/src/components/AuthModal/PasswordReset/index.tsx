@@ -1,5 +1,6 @@
 import { Formik, FormikHelpers } from 'formik';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../../atoms/Button';
 import { Modal } from '../../../atoms/Modal';
@@ -13,6 +14,7 @@ interface LoginModalProps {
 }
 
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
+  const { t } = useTranslation();
   const handlePasswordReset = useCallback(
     (
       values: {
@@ -31,7 +33,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      headerText="Réinitilisation de mot de passe"
+      headerText={t('auth.passwordReinit')}
     >
       <div className="flex flex-col items-center">
         <Formik initialValues={{ email: '' }} onSubmit={handlePasswordReset}>
@@ -49,7 +51,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             >
               <TextInput
                 name="email"
-                labelText="Addresse email"
+                labelText={t('auth.emailAddress')}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -58,7 +60,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               />
 
               <Button type="submit" className="mb-5 mt-10">
-                Envoyer un lien
+                {t('auth.sendLink')}
               </Button>
             </form>
           )}
@@ -68,7 +70,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             className="cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.Signin)}
           >
-            Retour
+            {t('words.back')}
           </button>
         </p>
       </div>

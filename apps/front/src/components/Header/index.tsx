@@ -70,7 +70,7 @@ export const Header = () => {
   const coursesItems = [
     {
       id: 'beginners',
-      title: 'Beginner',
+      title: t('words.beginner'),
       items: [
         {
           id: 'btc101',
@@ -79,8 +79,7 @@ export const Header = () => {
             courseId: 'btc101',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'ln101',
@@ -89,8 +88,7 @@ export const Header = () => {
             courseId: 'ln101',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'econ101',
@@ -99,22 +97,20 @@ export const Header = () => {
             courseId: 'econ101',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'more-xxx-101',
-          title: 'More',
+          title: t('words.more'),
           path: Routes.Courses,
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
     {
       id: 'intermediate',
-      title: 'Intermediate',
+      title: t('words.intermediate'),
       items: [
         {
           id: 'btc201',
@@ -124,8 +120,7 @@ export const Header = () => {
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'econ201',
@@ -135,8 +130,7 @@ export const Header = () => {
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'ln201',
@@ -146,22 +140,20 @@ export const Header = () => {
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'more-xxx-201',
-          title: 'More',
+          title: t('words.more'),
           path: Routes.Courses,
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
     {
       id: 'advanced',
-      title: 'Advanced',
+      title: t('words.advanced'),
       items: [
         {
           id: 'crypto301',
@@ -170,8 +162,7 @@ export const Header = () => {
             courseId: 'crypto301',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'secu301',
@@ -180,8 +171,7 @@ export const Header = () => {
             courseId: 'secu301',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'fin301',
@@ -190,8 +180,7 @@ export const Header = () => {
             courseId: 'fin301',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
@@ -214,23 +203,22 @@ export const Header = () => {
           items: [
             {
               id: 'library',
-              title: 'Library',
+              title: t('words.library'),
               icon: IoLibraryOutline,
-              description: 'Discover plenty of books to improve your knowledge',
+              description: t('menu.libraryDescription'),
               path: Routes.Library,
             },
             {
               id: 'podcasts',
-              title: 'Podcasts',
-              description: 'Explore the bitcoin ecosystem through podcasts',
+              title: t('words.podcasts'),
+              description: t('menu.podcastsDescription'),
               path: Routes.Podcasts,
               icon: BsMic,
             },
             {
               id: 'builders',
-              title: 'Builders',
-              description:
-                'Learn about the companies and projects that work at making bitcoin better and growing its adoption',
+              title: t('words.builders'),
+              description: t('menu.buildersDescription'),
               path: Routes.Builders,
               icon: IoBusinessOutline,
             },
@@ -248,50 +236,45 @@ export const Header = () => {
           items: [
             {
               id: 'wallets',
-              title: 'Wallets',
+              title: t('words.wallets'),
               path: Routes.Wallets,
               icon: BsWallet2,
-              description: 'Secure and use your bitcoins',
+              description: t('menu.walletsDescription'),
             },
             {
               id: 'exchanges',
-              title: 'Exchanges',
+              title: t('words.exchanges'),
               path: Routes.Exchanges,
               icon: BsCurrencyExchange,
-              description:
-                'Buy and sell bitcoins on exchanges and learn about P2P',
+              description: t('menu.exchangesDescription'),
             },
             {
               id: 'lightning',
-              title: 'Lightning',
+              title: t('words.lightning'),
               path: Routes.Lightning,
               icon: BsLightningCharge,
-              description:
-                'Manage your lightning node and use the lightning network',
+              description: t('menu.lightningDescription'),
             },
             {
               id: 'node',
-              title: 'Node',
+              title: t('words.node'),
               path: Routes.Node,
               icon: SiRaspberrypi,
-              description:
-                'Learn how to be self-sovereign with your own bitcoin node',
+              description: t('menu.nodeDescription'),
             },
             {
               id: 'mining',
-              title: 'Mining',
+              title: t('words.mining'),
               path: Routes.Mining,
               icon: BsCpu,
-              description:
-                'Mine your own bitcoins and learn about the mining industry',
+              description: t('menu.miningDescription'),
             },
             {
               id: 'merchants',
-              title: 'Merchants',
+              title: t('words.merchants'),
               path: Routes.Merchants,
               icon: BsCart,
-              description:
-                'Accept bitcoin payments and discover tools for merchants',
+              description: t('menu.merchantsDescription'),
             },
           ],
         },
@@ -307,30 +290,29 @@ export const Header = () => {
           items: [
             {
               id: 'our-story',
-              title: 'Our story',
-              description: 'Learn about the story of the university',
+              title: t('words.ourStory'),
+              description: t('menu.ourStoryDescription'),
               path: Routes.UnderConstruction,
               icon: GrHistory,
             },
             {
               id: 'sponsors',
-              title: 'Sponsors & collaborators',
-              description: 'Discover our sponsors and collaborators',
+              title: t('words.sponsoringAndContributors'),
+              description: t('menu.sponsorsDescription'),
               path: Routes.UnderConstruction,
               icon: SiGithubsponsors,
             },
             {
               id: 'teachers',
-              title: 'Teachers',
-              description:
-                'Get to know our university teachers, apassionate bitcoiners',
+              title: t('words.teachers'),
+              description: t('menu.teachersDescription'),
               path: Routes.UnderConstruction,
               icon: FaChalkboardTeacher,
             },
             {
               id: 'support-us',
-              title: 'Support Us',
-              description: 'Find ways to support us, by any manner',
+              title: t('words.supportUs'),
+              description: t('menu.supportUsDescription'),
               path: Routes.UnderConstruction,
               icon: BiDonateHeart,
             },

@@ -1,6 +1,7 @@
 import { Formik, FormikHelpers } from 'formik';
 import { isEmpty } from 'lodash';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -19,13 +20,14 @@ interface SignInModalProps {
   goTo: (newState: AuthModalState) => void;
 }
 
-const signinSchema = z.object({
-  username: z.string().min(1, 'username is required'),
-  password: z.string().min(1, 'password is required'),
-});
-
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
+  const signinSchema = z.object({
+    username: z.string().min(1, t('auth.usernameRequired')),
+    password: z.string().min(1, t('auth.passwordRequired')),
+  });
 
   const login = trpc.auth.credentials.login.useMutation({
     onSuccess: (data) => {
@@ -58,12 +60,12 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} headerText="Se connecter">
+    <Modal isOpen={isOpen} onClose={onClose} headerText={t('auth.connect')}>
       <div className="flex flex-col items-center">
         <Button className="my-5" rounded>
-          Connect with LN
+          {t('auth.connectWithLn')}
         </Button>
-        <Divider>OR</Divider>
+        <Divider>{t('words.or').toUpperCase()}</Divider>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -111,18 +113,18 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
               />
 
               <Button type="submit" className="mb-5 mt-10">
-                Se connecter
+                {t('auth.connect')}
               </Button>
             </form>
           )}
         </Formik>
         <p className="mb-0 text-xs">
-          Vous n'avez pas encore de compte ?
+          {t('auth.noAccountYet')}
           <button
             className="ml-1 cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.Signup)}
           >
-            Créez-en un !
+            {t('auth.createOne')}
           </button>
         </p>
         <p className="mb-0 mt-2 text-xs">
@@ -130,14 +132,13 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
             className="cursor-pointer border-none bg-transparent text-xs underline"
             onClick={() => goTo(AuthModalState.PasswordReset)}
           >
-            Mot de passe oublié ?
+            {t('auth.forgottenPassword')}
           </button>
         </p>
       </div>
 
       <div className="absolute -bottom-24 left-0 w-full rounded-sm bg-white px-8 py-4 text-sm">
-        Le savais tu ? Pas besoin de compte pour commencer à apprendre sur
-        l'Académie Bitcoin!
+        {t('auth.noAccountNeeded')}
       </div>
     </Modal>
   );

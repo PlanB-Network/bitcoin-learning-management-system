@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { useTranslation } from 'react-i18next';
 import {
   BsDiscord,
   BsFacebook,
@@ -43,6 +44,7 @@ const Media = ({ className = '', size = 30 }) => (
 );
 
 export const Footer = ({ variant = 'light', color }: FooterProps) => {
+  const { t } = useTranslation();
   const isScreenMd = useGreater('sm');
 
   return (
@@ -74,37 +76,37 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               <div className="flex flex-row space-x-10">
                 <div className="flex flex-col">
                   <h4 className="mb-2 text-base font-semibold text-white">
-                    Content
+                    {t('words.content')}
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>Courses</li>
-                    <li>Resources</li>
-                    <li>Tutorials</li>
+                    <li>{t('words.courses')}</li>
+                    <li>{t('words.resources')}</li>
+                    <li>{t('words.tutorials')}</li>
                   </ul>
                 </div>
                 <div className="flex flex-col">
                   <h4 className="mb-2 text-base font-semibold text-white">
-                    About
+                    {t('words.about')}
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>Our story</li>
-                    <li>Sponsoring & contributors</li>
-                    <li>Teachers</li>
+                    <li>{t('words.ourStory')}</li>
+                    <li>{t('words.sponsoringAndContributors')}</li>
+                    <li>{t('words.Teachers')}</li>
                   </ul>
                 </div>
                 <div className="flex flex-col">
                   <h4 className="mb-2 text-base font-semibold text-white">
-                    Help us
+                    {t('words.helpUs')}
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>Donations</li>
-                    <li>Merchandising</li>
+                    <li>{t('words.donations')}</li>
+                    <li>{t('words.merchandising')}</li>
                   </ul>
                 </div>
               </div>
               <div className="flex flex-col">
                 <h4 className="mb-2 text-base font-semibold text-white">
-                  Follow us
+                  {t('words.followUs')}
                 </h4>
                 <div className="flex flex-row place-items-center space-x-6 text-sm text-white">
                   <BsYoutube size={35} />
@@ -115,7 +117,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                 </div>
               </div>
               <h4 className="text-xs font-semibold text-white">
-                Terms and conditions
+                {t('words.termsAndConditions')}
               </h4>
             </div>
             <Rabbit className="absolute -right-2 top-24 z-10 m-auto h-16" />
@@ -151,10 +153,12 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-800 px-10 pt-20 text-white">
             <div className="space-y-2 text-left text-xl">
               <Media className="mb-7 px-1" size={40} />
-              <h4>Home</h4>
-              <h4>About</h4>
-              <h4>Sponsor Us</h4>
-              <h5 className="pt-6 text-base font-thin">Terms and conditions</h5>
+              <h4>{t('words.home')}</h4>
+              <h4>{t('words.about')}</h4>
+              <h4>{t('words.sponsorUs')}</h4>
+              <h5 className="pt-6 text-base font-thin">
+                {t('words.termsAndConditions')}
+              </h5>
             </div>
           </div>
         </div>

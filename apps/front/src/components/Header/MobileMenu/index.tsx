@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ export const MobileMenu = ({
   onClickLogin,
   onClickRegister,
 }: MobileMenuProps) => {
+  const { t } = useTranslation();
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
 
@@ -39,7 +41,7 @@ export const MobileMenu = ({
           <img
             className="h-10 lg:h-16"
             src={headerImage}
-            alt="DecouvreBitcoin Logo"
+            alt={t('imagesAlt.decouvreBitcoinLogo')}
           />
         </Link>
       </div>
