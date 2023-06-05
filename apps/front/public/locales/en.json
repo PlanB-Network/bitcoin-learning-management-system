@@ -121,32 +121,33 @@
     "pageTitle": "Resources"
   },
   "tutorials": {
+    "exchange": {
+      "description": "Bitcoin buying-selling solutions, KYC and non-KYC",
+      "title": "Exchange"
+    },
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
-    "pageTitle": "Tutorials",
-    "wallet": {
-      "title": "Wallet",
-      "description": "Security solutions and usage of your bitcoins"
-    },
-    "node": {
-      "title": "Node",
-      "description": "Solutions to operate a bitcoin node and join the network"
+    "merchant": {
+      "description": "Solutions for businesses to accept Bitcoin",
+      "title": "Merchant"
     },
     "mining": {
-      "title": "Mining",
-      "description": "Bitcoin mining solutions"
+      "description": "Bitcoin mining solutions",
+      "title": "Mining"
     },
-    "merchant": {
-      "title": "Merchant",
-      "description": "Solutions for businesses to accept Bitcoin"
+    "node": {
+      "description": "Solutions to operate a bitcoin node and join the network",
+      "title": "Node"
     },
-    "exchange": {
-      "title": "Exchange",
-      "description": "Bitcoin buying-selling solutions, KYC and non-KYC"
-    },
+    "pageTitle": "Tutorials",
     "privacy": {
-      "title": "Privacy",
-      "description": "Tools for backup and maintaining privacy"
+      "description": "Tools for backup and maintaining privacy",
+      "title": "Privacy"
+    },
+    "soon": "We have tons of tutorials in the works! Just some editing for that brand new website to be done and we will be good to go! Come back in a few days!",
+    "wallet": {
+      "description": "Security solutions and usage of your bitcoins",
+      "title": "Wallet"
     }
   },
   "words": {
