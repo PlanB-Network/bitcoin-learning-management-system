@@ -23,6 +23,7 @@ export const Library = () => {
           books.data.map((book) => {
             return (
               <Link
+                key={book.id}
                 to={generatePath(Routes.Book, {
                   bookId: book.id.toString(),
                   language: book.language,
