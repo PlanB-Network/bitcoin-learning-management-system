@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -7,6 +8,7 @@ import { ResourceLayout } from '../../components';
 import { Routes } from '../../types';
 
 export const Podcasts = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   // Fetching data from the API
@@ -35,11 +37,11 @@ export const Podcasts = () => {
 
   return (
     <ResourceLayout
-      title="The Podcast Portal"
-      tagLine="This PORTAL is open-source & open to contribution. Thanks for grading and sharing !"
+      title={t('podcasts.pageTitle')}
+      tagLine={t('podcasts.pageSubtitle')}
       filterBar={{
-        onChange: setSearchTerm,
-        label: 'Find the perfect resources for your needs:',
+        onChange: () => setSearchTerm,
+        label: t('resources.filterBarLabel'),
       }}
     >
       <div className="my-20 grid grid-cols-4 gap-x-8 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

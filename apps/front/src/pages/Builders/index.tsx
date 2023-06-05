@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -8,6 +9,7 @@ import { ResourceLayout } from '../../components';
 import { Routes } from '../../types';
 
 export const Builders = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   // Fetching data from the API
@@ -36,12 +38,11 @@ export const Builders = () => {
 
   return (
     <ResourceLayout
-      title="The Builders' Portal"
-      tagLine="This portal is open-source & open to contribution. Thanks for
-    grading and sharing!"
+      title={t('builders.pageTitle')}
+      tagLine={t('builders.pageSubtitle')}
       filterBar={{
-        onChange: setSearchTerm,
-        label: 'Find the perfect resources for your needs:',
+        onChange: () => setSearchTerm,
+        label: t('resources.filterBarLabel'),
       }}
     >
       {categories.map((category) => {
@@ -76,7 +77,7 @@ export const Builders = () => {
                       src={builder.logo}
                       alt={builder.name}
                     />
-                    <p className="inset-y-end group-hover:bg-secondary-400 absolute inset-x-0 h-fit w-full flex-wrap items-center rounded-b-lg px-4 py-2 text-center text-xs font-thin text-white transition-colors duration-500 ease-in-out">
+                    <p className="group-hover:bg-secondary-400 absolute inset-x-0 h-fit w-full flex-wrap items-center rounded-b-lg px-4 py-2 text-center text-xs font-thin text-white transition-colors duration-500 ease-in-out">
                       <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                         {builder.name}
                       </span>

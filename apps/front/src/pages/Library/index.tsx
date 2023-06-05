@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -6,16 +7,16 @@ import { ResourceLayout } from '../../components/ResourceLayout';
 import { Routes } from '../../types';
 
 export const Library = () => {
+  const { t } = useTranslation();
   const books = trpc.content.getBooks.useQuery();
 
   return (
     <ResourceLayout
-      title="The Library"
-      tagLine="This library is open-source & open to contribution. Thanks for grading
-      and sharing !"
+      title={t('library.pageTitle')}
+      tagLine={t('library.pageSubtitle')}
       filterBar={{
         onChange: () => undefined,
-        label: 'Find the perfect resources for your needs:',
+        label: t('resources.filterBarLabel'),
       }}
     >
       <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

@@ -13,62 +13,62 @@ import { MainLayout } from '../../components';
 import { Routes } from '../../types';
 
 enum ResourceKinds {
-  Book = 'book',
-  Article = 'article',
-  Documentary = 'documentary',
-  Newsletter = 'newsletter',
-  Podcast = 'podcast',
-  Conference = 'conference',
-  Video = 'video',
+  Book,
+  Article,
+  Documentary,
+  Newsletter,
+  Podcast,
+  Conference,
+  Video,
 }
-
-const resourceKinds = [
-  {
-    kind: ResourceKinds.Book,
-    title: 'Book',
-    image: bookSvg,
-    route: Routes.Library,
-  },
-  {
-    kind: ResourceKinds.Article,
-    title: 'Article',
-    image: articleSvg,
-    route: Routes.Article,
-  },
-  {
-    kind: ResourceKinds.Documentary,
-    title: 'Movie Documentary',
-    image: documentarySvg,
-    route: Routes.Home,
-  },
-  {
-    kind: ResourceKinds.Newsletter,
-    title: 'Newsletter',
-    image: newsletterSvg,
-    route: Routes.Newsletter,
-  },
-  {
-    kind: ResourceKinds.Podcast,
-    title: 'Podcast',
-    image: microSvg,
-    route: Routes.Podcasts,
-  },
-  {
-    kind: ResourceKinds.Conference,
-    title: 'Conference',
-    image: couchSvg,
-    route: Routes.Conferences,
-  },
-  {
-    kind: ResourceKinds.Video,
-    title: 'Video',
-    image: videoSvg,
-    route: Routes.Videos,
-  },
-];
 
 export const Resources = () => {
   const { t } = useTranslation();
+
+  const resourceKinds = [
+    {
+      kind: ResourceKinds.Book,
+      title: t('words.book'),
+      image: bookSvg,
+      route: Routes.Library,
+    },
+    {
+      kind: ResourceKinds.Article,
+      title: t('words.article'),
+      image: articleSvg,
+      route: Routes.Article,
+    },
+    {
+      kind: ResourceKinds.Documentary,
+      title: t('words.movieDocumentary'),
+      image: documentarySvg,
+      route: Routes.Home,
+    },
+    {
+      kind: ResourceKinds.Newsletter,
+      title: t('words.newsletter'),
+      image: newsletterSvg,
+      route: Routes.Newsletter,
+    },
+    {
+      kind: ResourceKinds.Podcast,
+      title: t('words.podcast'),
+      image: microSvg,
+      route: Routes.Podcasts,
+    },
+    {
+      kind: ResourceKinds.Conference,
+      title: t('words.conference'),
+      image: couchSvg,
+      route: Routes.Conferences,
+    },
+    {
+      kind: ResourceKinds.Video,
+      title: t('words.video'),
+      image: videoSvg,
+      route: Routes.Videos,
+    },
+  ];
 
   return (
     <MainLayout footerVariant="light">
