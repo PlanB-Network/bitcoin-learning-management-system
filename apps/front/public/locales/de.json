@@ -11,6 +11,10 @@
     "pageTitle": "The library",
     "topicsAddressed": "Topics addressed: "
   },
+  "builders": {
+    "pageTitle": "The Builders' Portal",
+    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!"
+  },
   "courses": {
     "chapter": {
       "count": "Chapter n°{{count}}/{{total}}",
@@ -78,7 +82,7 @@
       "title": "A link to the builders of the industry"
     },
     "hero": {
-      "tagLine": "Let’s embark into your Bitcoin educational journey"
+      "tagLine": "Let's embark into your Bitcoin educational journey"
     },
     "second": {
       "exchange": "Exchange",
@@ -102,42 +106,55 @@
   "imagesAlt": {
     "readingRabbit": "A rabbit reading a book"
   },
+  "library": {
+    "pageTitle": "The library",
+    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !"
+  },
+  "podcasts": {
+    "pageTitle": "The Podcast Portal",
+    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing !"
+  },
   "resources": {
+    "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
     "pageTitle": "Resources"
   },
   "tutorials": {
+    "exchange": {
+      "description": "Bitcoin buying-selling solutions, KYC and non-KYC",
+      "title": "Exchange"
+    },
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
-    "pageTitle": "Tutorials",
-    "wallet": {
-      "title": "Wallet",
-      "description": "Security solutions and usage of your bitcoins"
-    },
-    "node": {
-      "title": "Node",
-      "description": "Solutions to operate a bitcoin node and join the network"
+    "merchant": {
+      "description": "Solutions for businesses to accept Bitcoin",
+      "title": "Merchant"
     },
     "mining": {
-      "title": "Mining",
-      "description": "Bitcoin mining solutions"
+      "description": "Bitcoin mining solutions",
+      "title": "Mining"
     },
-    "merchant": {
-      "title": "Merchant",
-      "description": "Solutions for businesses to accept Bitcoin"
+    "node": {
+      "description": "Solutions to operate a bitcoin node and join the network",
+      "title": "Node"
     },
-    "exchange": {
-      "title": "Exchange",
-      "description": "Bitcoin buying-selling solutions, KYC and non-KYC"
-    },
+    "pageTitle": "Tutorials",
     "privacy": {
-      "title": "Privacy",
-      "description": "Tools for backup and maintaining privacy"
+      "description": "Tools for backup and maintaining privacy",
+      "title": "Privacy"
+    },
+    "soon": "We have tons of tutorials in the works! Just some editing for that brand new website to be done and we will be good to go! Come back in a few days!",
+    "wallet": {
+      "description": "Security solutions and usage of your bitcoins",
+      "title": "Wallet"
     }
   },
   "words": {
     "about-us": "About Us",
+    "article": "Article",
+    "book": "Book",
+    "conference": "Conference",
     "courses": "Courses",
     "home": "Home",
     "level": {
@@ -146,7 +163,11 @@
       "expert": "Expert",
       "intermediate": "Intermediate"
     },
+    "movieDocumentary": "Movie Documentary",
+    "newsletter": "Newsletter",
+    "podcast": "Podcast",
     "resources": "Resources",
-    "tutorials": "Tutorials"
+    "tutorials": "Tutorials",
+    "video": "Video"
   }
 }
