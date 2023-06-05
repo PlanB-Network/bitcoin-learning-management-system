@@ -243,7 +243,9 @@ export const syncCdnRepository = async (
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);
-    const assets = files.filter((file) => file.includes('/assets/'));
+    const assets = files.filter(
+      (file) => file.includes('/assets/') || file.includes('/soon/')
+    );
 
     for (const asset of assets) {
       const parentDirectoryLog = await git
