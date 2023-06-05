@@ -108,7 +108,10 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         <div className="flex flex-col items-center">
           <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
-            {t('auth.accountCreated', register.data.user.username)} <br />
+            {t('auth.accountCreated', {
+              userName: register.data.user.username,
+            })}{' '}
+            <br />
             {t('auth.canSaveProgress')}
           </p>
         </div>

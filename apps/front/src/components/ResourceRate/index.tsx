@@ -14,7 +14,7 @@ export const ResourceRate = ({ rate }: ResourceRateProps) => {
         {t('words.review')}
       </div>
       <div className="text-primary-800 mx-auto w-max text-sm font-thin">
-        {t('resources.publicGrade', rate.toFixed(1))}
+        {t('resources.publicGrade', { grade: rate.toFixed(1) })}
       </div>
       <div className="mt-3 flex flex-row justify-evenly space-x-5">
         {new Array(5)

@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { t } from 'i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 import { Link, useParams } from 'react-router-dom';
@@ -25,9 +26,8 @@ export const Builder = () => {
 
   return (
     <ResourceLayout
-      title="The Builders' Portal"
-      tagLine="This portal is open-source & open to contribution. Thanks for
-      grading and sharing!"
+      title={t('builders.pageTitle')}
+      tagLine={t('builders.pageSubtitle')}
     >
       <Card className="mx-2 md:mx-auto">
         <div className="my-4 w-full grid-cols-1 grid-rows-6 px-4 sm:grid-cols-3 sm:px-8 md:grid">
@@ -47,7 +47,7 @@ export const Builder = () => {
             <img
               src={builder?.logo || builderImage}
               className="w-full"
-              alt="something representing the company"
+              alt={t('imagesAlt.sthRepresentingCompany')}
             />
             <div className="mx-2 my-6 flex w-full justify-around">
               {builder?.github_url && (

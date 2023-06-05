@@ -1,29 +1,30 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import headerImage from '../../assets/lapin-diplome.png';
 import { MainLayout, ResourceLayout } from '../../components';
 
 export const About = () => {
+  const { t } = useTranslation();
+
   // Static array of About category
   const aboutCategories = [
-    'Rabbit-Hole Digger',
-    'Hare Explorer',
-    'Bunny Forerunner',
-    'Early Beleivers',
-    'Professors',
-    'Developpers',
-    'Designers',
-    'Helpers',
+    t('about.categories.rabbitholeDigger'),
+    t('about.categories.hareExplorer'),
+    t('about.categories.bunnyForerunner'),
+    t('about.categories.earlyBelievers'),
+    t('about.categories.professors'),
+    t('about.categories.developpers'),
+    t('about.categories.designers'),
+    t('about.categories.helpers'),
   ];
   // Static array of About category
   const thanks = [
     {
-      content:
-        'A special thanks to our early-believers, who have helped us persevere throughout the years.',
+      content: t('about.thanks1'),
     },
     {
-      content:
-        'The Sovereign University is a community effort. It’s been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them.',
+      content: t('about.thanks2'),
     },
   ];
 
@@ -73,15 +74,13 @@ export const About = () => {
         <div className="flex flex-wrap justify-evenly text-center text-xl  text-white sm:py-20">
           <div>
             <img className="mx-auto h-48" src={headerImage} alt="Rabbit" />
-            <h2 className="my-8 w-full px-4 py-1">
-              The Sovereign University offers free Bitcoin education to all.
-            </h2>
+            <h2 className="my-8 w-full px-4 py-1">{t('about.pageSubtitle')}</h2>
             <Link
               className="group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md bg-secondary-400 px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
               to="/learn-more"
               style={{ fontSize: '20px', padding: '10px 20px' }}
             >
-              Become a community sponsor
+              {t('about.headerLink')}
             </Link>
           </div>
         </div>

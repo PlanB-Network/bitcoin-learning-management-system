@@ -66,21 +66,23 @@ export const Podcasts = () => {
                   })}
                   key={podcast.id}
                 >
-                  <div className="z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-secondary-400">
+                  <div className="group-hover:bg-secondary-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                     <img
-                      className="h-30 mx-auto"
+                      className="mx-auto"
                       src={podcast.logo}
                       alt={podcast.name}
                     />
-                    <div className="wrap align-center inset-y-end font-light absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs text-white transition-colors duration-500 ease-in-out group-hover:bg-secondary-400">
+                    <div className="wrap align-center inset-y-end group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out">
                       <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                         <li className={'pb-1 text-lg font-bold'}>
                           {podcast.name}
                         </li>
                         <li className={'pb-1 text-xs italic'}>
-                          Written by {podcast.host}
+                          {t('podcasts.writtenBy', { host: podcast.host })}
                         </li>
-                        <li className={'pb-1 text-xs italic'}>Publisher in</li>
+                        <li className={'pb-1 text-xs italic'}>
+                          {t('podcasts.publishedIn', { date: '' })}
+                        </li>
                         <li className={'truncate pb-1 text-xs'}>
                           {podcast.description}
                         </li>

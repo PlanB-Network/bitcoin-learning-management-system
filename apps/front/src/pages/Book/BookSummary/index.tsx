@@ -40,14 +40,14 @@ export const BookSummary = ({
                 key={i}
                 className="w-4"
                 src={blueEllipse}
-                alt="a blue ellipse"
+                alt={t('imagesAlt.blueEllipse')}
               />
             ))}
           </div>
           <img
             onClick={DoExpand}
             className="absolute -bottom-4 right-10 w-8"
-            alt="an arrow forward"
+            alt={t('imagesAlt.forwardArrow')}
             src={arrowForward}
           />
         </>
@@ -84,7 +84,7 @@ export const BookSummary = ({
           {contributor && (
             <div className="float-right">
               <Contributor
-                prefix="Offered by a generous contributor"
+                prefix={t('book.offeredBy')}
                 contributor={contributor}
               />
             </div>

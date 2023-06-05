@@ -33,7 +33,7 @@ export const Book = () => {
       language: 'en',
     }).data;
   } else {
-    /* During dev */
+    /* TODO During dev */
     contributor = {
       username: 'Asi0',
       title: 'Bitcoiner',
@@ -82,7 +82,7 @@ export const Book = () => {
               <div className="border-primary-800 flex flex-col items-center justify-center border-b-4 md:mr-10 md:border-0">
                 <img
                   className="max-h-72 sm:max-h-96"
-                  alt="book cover"
+                  alt={t('imagesAlt.bookCover')}
                   src={book?.cover}
                 />
                 <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
@@ -151,7 +151,7 @@ export const Book = () => {
                   title={book?.title ? book?.title : ''}
                   content={
                     book?.summary_text ? book?.summary_text : book?.description
-                  } /* TEMP FOR UI DEV, replace book.description with '' */
+                  } /* TODO TEMP FOR UI DEV, replace book.description with '' */
                 />
               )}
             </div>

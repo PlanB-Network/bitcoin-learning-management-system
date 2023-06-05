@@ -45,7 +45,7 @@ export const CourseDetails: React.FC = () => {
               {isScreenLg ? (
                 <div
                   className="flex h-40 w-40 flex-col items-center justify-center rounded-full bg-orange-800 text-5xl font-bold uppercase text-white"
-                  title={`Course ID: ${course.id}`}
+                  title={t('courses.details.courseId', { courseId: course.id })}
                 >
                   <span>{course.id.match(/[A-Za-z]+/)?.[0] || ''}</span>
                   <span>{course.id.match(/\d+/)?.[0] || ''}</span>
@@ -53,7 +53,7 @@ export const CourseDetails: React.FC = () => {
               ) : (
                 <div
                   className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-5xl font-bold uppercase text-white"
-                  title={`Course ID: ${course.id}`}
+                  title={t('courses.details.courseId', { courseId: course.id })}
                 >
                   {course.id}
                 </div>
@@ -72,14 +72,16 @@ export const CourseDetails: React.FC = () => {
               <div className="w-full px-2 md:pl-2 md:pr-10">
                 <img
                   src="https://github.com/DecouvreBitcoin/sovereign-university-data/raw/main/courses/btc101/assets/thumbnail.png"
-                  alt="Course thumbnail"
+                  alt={t('imagesAlt.courseThumbnail')}
                 />
               </div>
               <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
                 <div className="flex flex-row items-start space-x-5">
                   <FaChalkboardTeacher size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
-                    {t('courses.details.teachers', { teachers: 'Rogzy' })}
+                    {t('courses.details.teachers', {
+                      teachers: t('words.rogzy'),
+                    })}
                   </span>
                 </div>
                 <div className="flex flex-row items-start space-x-5">
@@ -201,7 +203,7 @@ export const CourseDetails: React.FC = () => {
                   <img
                     className="h-full w-full object-contain"
                     src={curriculumImage}
-                    alt="Curriculum"
+                    alt={t('imagesAlt.curriculum')}
                   />
                 </div>
               )}
