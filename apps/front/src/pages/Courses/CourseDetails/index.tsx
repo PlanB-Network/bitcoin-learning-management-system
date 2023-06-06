@@ -44,7 +44,7 @@ export const CourseDetails: React.FC = () => {
             <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
               {isScreenLg ? (
                 <div
-                  className="flex h-40 w-40 flex-col items-center justify-center rounded-full bg-orange-800 text-5xl font-bold uppercase text-white"
+                  className="flex flex-col items-center justify-center rounded-full bg-orange-800 p-8 text-5xl font-bold uppercase text-white"
                   title={t('courses.details.courseId', { courseId: course.id })}
                 >
                   <span>{course.id.match(/[A-Za-z]+/)?.[0] || ''}</span>

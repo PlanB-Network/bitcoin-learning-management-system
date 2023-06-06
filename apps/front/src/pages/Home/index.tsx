@@ -184,7 +184,6 @@ export const Home = () => {
           <p>{t('home.about.p1')}</p>
           <p>{t('home.about.p2')}</p>
           <p>{t('home.about.p3')}</p>
-          <p>{t('home.about.p4')}</p>
         </div>
 
         <div className=" mx-auto mt-28 flex w-max grid-cols-3 grid-rows-3 flex-col space-y-12 px-12 md:grid md:space-y-0 lg:mt-36">

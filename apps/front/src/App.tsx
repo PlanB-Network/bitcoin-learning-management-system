@@ -8,10 +8,10 @@ import { useAppDispatch, useScrollToTop } from './hooks';
 import { Home } from './pages';
 import { About } from './pages/About';
 import { Book } from './pages/Book';
+import { Books } from './pages/Books';
 import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
-import { Library } from './pages/Library';
 import { NotFound } from './pages/NotFound';
 import { Podcasts } from './pages/Podcasts';
 import { Resources } from './pages/Resources';
@@ -66,7 +66,7 @@ export const App = () => {
         <Route path={RoutesEnum.CourseChapter} element={<CourseChapter />} />
 
         <Route path={RoutesEnum.Resources} element={<Resources />} />
-        <Route path={RoutesEnum.Library} element={<Library />} />
+        <Route path={RoutesEnum.Books} element={<Books />} />
         <Route path={RoutesEnum.Book} element={<Book />} />
         <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
         <Route path={RoutesEnum.Builders} element={<Builders />} />

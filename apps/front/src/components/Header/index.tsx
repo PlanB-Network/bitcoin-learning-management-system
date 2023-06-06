@@ -206,7 +206,7 @@ export const Header = () => {
               title: t('words.library'),
               icon: IoLibraryOutline,
               description: t('menu.libraryDescription'),
-              path: Routes.Library,
+              path: Routes.Books,
             },
             {
               id: 'podcasts',
@@ -333,7 +333,7 @@ export const Header = () => {
   const isScreenMd = useGreater('md');
 
   return (
-    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 md:min-h-[92px] md:p-0 lg:px-12">
+    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 px-8 md:min-h-[92px] lg:px-12">
       {isScreenMd ? (
         <FlyingMenu
           onClickLogin={openLoginModal}

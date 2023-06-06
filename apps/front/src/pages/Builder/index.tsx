@@ -5,7 +5,7 @@ import {
 import { t } from 'i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
@@ -17,12 +17,15 @@ import { ResourceLayout } from '../../components';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Builder = () => {
+  const navigate = useNavigate();
   const { builderId } = useParams();
   const isScreenMd = useGreater('sm');
-  const { data: builder } = trpc.content.getBuilder.useQuery({
+  const { data: builder, isFetched } = trpc.content.getBuilder.useQuery({
     id: Number(builderId),
     language: 'en',
   });
+
+  if (!builder && isFetched) navigate('/404');
 
   return (
     <ResourceLayout

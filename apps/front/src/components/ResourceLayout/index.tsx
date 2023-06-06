@@ -40,7 +40,7 @@ export const ResourceLayout = ({
           </div>
 
           {filterBar && (
-            <div className="my-6 sm:my-12 md:my-16">
+            <div className="my-3 sm:my-6 md:my-8">
               <FilterBar {...filterBar} />
             </div>
           )}

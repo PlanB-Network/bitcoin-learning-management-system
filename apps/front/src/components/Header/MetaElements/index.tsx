@@ -21,11 +21,12 @@ export const MetaElements = ({
 }: MetaElementsProps) => {
   const { t } = useTranslation();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-  const isScreenMd = useGreater('md');
+  const isScreenLg = useGreater('md');
+  const isScreenXl = useGreater('lg');
 
   return (
     <div className="flex flex-row place-items-center space-x-6">
-      <LanguageSelector direction={isScreenMd ? 'down' : 'up'} />
+      <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
       {isLoggedIn ? (
         <div className="text-white">{t('words.account')}</div>
@@ -36,6 +37,7 @@ export const MetaElements = ({
             variant="tertiary"
             rounded
             onClick={onClickLogin}
+            size={isScreenXl ? 'm' : 's'}
           >
             {t('words.register')}
           </Button>

@@ -57,7 +57,10 @@ export const Builders = () => {
         }
 
         return (
-          <Card key={category} className="m-8 rounded-3xl bg-gray-200">
+          <Card
+            key={category}
+            className="mx-2 mb-8 rounded-3xl bg-gray-200 md:mx-8"
+          >
             <h3 className="text-primary-700 mb-2 w-full rounded-md px-4 py-1 text-xl font-semibold uppercase italic">
               {category}
             </h3>

@@ -7,7 +7,7 @@ import { trpc } from '@sovereign-academy/api-client';
 import { ResourceLayout } from '../../components';
 import { Routes } from '../../types';
 
-export const Library = () => {
+export const Books = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -33,14 +33,14 @@ export const Library = () => {
 
   return (
     <ResourceLayout
-      title={t('books.pageTitle')}
-      tagLine={t('books.pageSubtitle')}
+      title={t('library.pageTitle')}
+      tagLine={t('library.pageSubtitle')}
       filterBar={{
         onChange: () => setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
     >
-      <div className="my-20 grid grid-cols-4 gap-x-8 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
         {categories.map((category) => {
           const filteredBooks = categorizedBooks[category].filter((book) =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,33 +55,39 @@ export const Library = () => {
             <div>
               {filteredBooks.map((book, index) => (
                 <Link
-                  className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
+                  className="group z-10 m-auto mx-2 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
                   to={generatePath(Routes.Book, {
                     bookId: book.id.toString(),
                     language: book.language,
                   })}
                   key={book.id}
                 >
-                  <div className="z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-secondary-400">
+                  <div className="group-hover:bg-secondary-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                     <img
                       className="mx-auto"
                       src={book.cover}
                       alt={book.title}
                     />
-                    <div className="wrap align-center inset-y-end font-light absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs text-white transition-colors duration-500 ease-in-out group-hover:bg-secondary-400">
+                    <div className="group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-thin text-white transition-colors duration-500 ease-in-out">
                       <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                         <li className={'pb-1 text-lg font-bold'}>
                           {book.title}
                         </li>
-                        <li className={'pb-1 text-xs italic'}>
-                          {t('books.writtenBy', { host: book.title })}
-                        </li>
-                        <li className={'pb-1 text-xs italic'}>
-                          {t('books.publishedIn', { date: '' })}
-                        </li>
-                        <li className={'truncate pb-1 text-xs'}>
+                        {book.author && (
+                          <li className={'pb-1 text-xs italic'}>
+                            {t('library.writtenBy', { author: book.author })}
+                          </li>
+                        )}
+                        {book.publication_year && (
+                          <li className={'pb-1 text-xs italic'}>
+                            {t('library.publishedIn', {
+                              date: book.publication_year,
+                            })}
+                          </li>
+                        )}
+                        {/* <li className={'truncate pb-1 text-xs'}>
                           {book.description}
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>

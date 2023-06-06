@@ -36,6 +36,7 @@ export const getCourseChaptersQuery = (id: string, language?: string) => {
     FROM content.course_chapters_localized
     WHERE course_id = ${id} 
     ${language ? sql`AND language = ${language}` : sql``}
+    ORDER BY chapter ASC
   `;
 };
 

@@ -91,7 +91,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
                     <li>{t('words.ourStory')}</li>
                     <li>{t('words.sponsoringAndContributors')}</li>
-                    <li>{t('words.Teachers')}</li>
+                    <li>{t('words.teachers')}</li>
                   </ul>
                 </div>
                 <div className="flex flex-col">

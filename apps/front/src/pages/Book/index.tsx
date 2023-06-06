@@ -3,6 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 import { trpc } from '@sovereign-academy/api-client';
 
@@ -17,30 +18,39 @@ import { BookSummary } from './BookSummary';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { bookId, language } = useRequiredParams();
-  const { data: book } = trpc.content.getBook.useQuery({
+  const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language,
   });
 
-  let contributor;
+  if (!book && isFetched) navigate('/404');
 
-  if (book?.summary_contributor_id) {
+  // TODO: change when we have contributors
+  const contributor = {
+    username: 'Asi0',
+    title: 'Bitcoiner',
+    image:
+      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
+  };
+
+  /* if (book?.summary_contributor_id) {
     const userid = parseInt(book.summary_contributor_id, 0);
     contributor = trpc.content.getBuilder.useQuery({
       id: userid,
       language: 'en',
     }).data;
   } else {
-    /* TODO During dev */
+    // TODO: during dev
     contributor = {
       username: 'Asi0',
       title: 'Bitcoiner',
       image:
         'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
     };
-  }
+  } */
 
   const isScreenMd = useGreater('sm');
 

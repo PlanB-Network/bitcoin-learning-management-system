@@ -14,7 +14,7 @@ interface BookSummaryProps {
     title?: string;
     image?: string;
   };
-  content: string;
+  content?: string;
   title: string;
 }
 
@@ -26,48 +26,14 @@ export const BookSummary = ({
   const { t } = useTranslation();
   const [isExtended, setIsExtended] = useState(false);
 
-  function DoExpand() {
-    setIsExtended(true);
-  }
-
-  function BottomButtons() {
-    if (!isExtended) {
-      return (
-        <>
-          <div className="absolute -bottom-2 left-12 flex gap-1">
-            {_.times(3, (i) => (
-              <img
-                key={i}
-                className="w-4"
-                src={blueEllipse}
-                alt={t('imagesAlt.blueEllipse')}
-              />
-            ))}
-          </div>
-          <img
-            onClick={DoExpand}
-            className="absolute -bottom-4 right-10 w-8"
-            alt={t('imagesAlt.forwardArrow')}
-            src={arrowForward}
-          />
-        </>
-      );
-    } else
-      return (
-        <p className="text-primary-200 absolute -bottom-6 right-12 flex whitespace-nowrap text-xs font-thin italic">
-          {t('book.bookSummary.notice')}
-        </p>
-      );
-  }
-
   return (
-    <>
+    <div className="flex flex-col">
       <h4 className="mb-8 ml-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
         {t('book.bookSummary.title')}
       </h4>
       <Card
         className={compose(
-          'max-w-[740px] px-6 pb-2 relative ',
+          'max-w-[740px] px-6 pb-2 relative',
           isExtended ? '' : 'max-h-52'
         )}
       >
@@ -90,9 +56,30 @@ export const BookSummary = ({
             </div>
           )}
         </div>
-
-        <BottomButtons />
       </Card>
-    </>
+      {isExtended ? (
+        <p className="text-primary-200 flex self-end whitespace-nowrap text-xs font-thin italic md:mr-8 lg:mr-10">
+          {t('book.bookSummary.notice')}
+        </p>
+      ) : (
+        <div className="flex w-full -translate-y-7 flex-row items-center justify-between px-14">
+          <div className="flex gap-1">
+            {_.times(3, (i) => (
+              <img
+                key={i}
+                className="w-4"
+                src={blueEllipse}
+                alt={t('imagesAlt.blueEllipse')}
+              />
+            ))}
+          </div>
+          <img
+            onClick={() => setIsExtended(true)}
+            alt={t('imagesAlt.forwardArrow')}
+            src={arrowForward}
+          />
+        </div>
+      )}
+    </div>
   );
 };

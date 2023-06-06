@@ -17,8 +17,8 @@ export enum Routes {
   Resources = '/resources',
 
   // Resource per type
-  Library = '/resources/library',
-  Book = '/resources/library/:bookId/:language',
+  Books = '/resources/books',
+  Book = '/resources/books/:bookId/:language',
   Podcasts = '/resources/podcasts',
   Podcast = '/resources/podcast/:podcastId',
   Builders = '/resources/builders',
