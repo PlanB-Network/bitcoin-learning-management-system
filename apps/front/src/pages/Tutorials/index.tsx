@@ -145,7 +145,7 @@ export const Tutorials = () => {
                       <img
                         className="m-1 h-16 w-16 rounded-full md:m-2"
                         src={computeAssetCdnUrl(
-                          'f1389fcae8a3c2642bda8f6ff3196ec1b46e027a',
+                          'main',
                           `soon/tutorials/${tutorials.kind}/${index}.png`
                         )}
                         alt=""

@@ -257,7 +257,7 @@ export const syncCdnRepository = async (
 
       const cdnPath = path.join(
         cdnDirectory,
-        parentDirectoryLog.latest.hash,
+        asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
         relativePath
       );
 
