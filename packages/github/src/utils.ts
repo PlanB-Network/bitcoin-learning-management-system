@@ -57,12 +57,15 @@ const syncRepository = async (repository: string, directory: string) => {
       await git.cwd(directory).reset(ResetMode.HARD);
 
       // Fetch the remote changes
-      await git.fetch();
+      await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
+
+      // Get the branch name
+      await git.checkout(['-B', 'main']);
 
       // Reset the current branch to match the remote branch
-      await git.reset(ResetMode.HARD, ['origin/HEAD']);
+      await git.reset(ResetMode.HARD, ['origin/main']); // change this to your actual branch name if not 'main'
 
-      await git.pull();
+      await git.pull('origin');
     } else {
       // Clone the repository
       await git.clone(repository, directory);
