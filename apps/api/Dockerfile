@@ -11,16 +11,23 @@ ENV PORT=3000
 
 WORKDIR /app
 
+RUN apk add -U \
+     python3 \
+     g++ \
+     make \
+     cmake \
+     git \
+     findutils \
+     shadow
+
+RUN npm install --location=global pnpm@8.6 
+
 RUN addgroup --system api && \
     adduser --system -G api api
-
-RUN apk add -U git
 
 COPY dist/apps/api api
 RUN chown -R api:api .
 
-# You can remove this install step if you build with `--bundle` option.
-# The bundled output will include external dependencies.
-RUN npm --prefix api --omit=dev -f install
+RUN pnpm --prefix api install --prod
 
 CMD [ "node", "api" ]
