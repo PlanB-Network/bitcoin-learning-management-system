@@ -15,7 +15,7 @@ import { trpc } from '@sovereign-academy/api-client';
 import { ReactComponent as ProgressRabbit } from '../../../assets/courses/progress_rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { Routes } from '../../../types';
-import { compose, useRequiredParams } from '../../../utils';
+import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -195,7 +195,10 @@ export const CourseChapter = () => {
                   uriTransformer(
                     src.startsWith('http')
                       ? src
-                      : `http://localhost:8080/${chapter.last_commit}/courses/${courseId}/${src}`
+                      : computeAssetCdnUrl(
+                          chapter.last_commit,
+                          `courses/${courseId}/${src}`
+                        )
                   )
                 }
               />

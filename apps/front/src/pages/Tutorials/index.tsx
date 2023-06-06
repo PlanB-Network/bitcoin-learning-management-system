@@ -11,6 +11,7 @@ import walletSvg from '../../assets/tutorials/wallet.svg';
 import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
 import { Routes } from '../../types';
+import { computeAssetCdnUrl } from '../../utils';
 
 enum TutorialKinds {
   Wallet = 'wallet',
@@ -143,7 +144,10 @@ export const Tutorials = () => {
                     <div className="">
                       <img
                         className="m-1 h-16 w-16 rounded-full md:m-2"
-                        src={`http://localhost:8080/f1389fcae8a3c2642bda8f6ff3196ec1b46e027a/soon/tutorials/${tutorials.kind}/${index}.png`}
+                        src={computeAssetCdnUrl(
+                          'f1389fcae8a3c2642bda8f6ff3196ec1b46e027a',
+                          `soon/tutorials/${tutorials.kind}/${index}.png`
+                        )}
                         alt=""
                       />
                     </div>

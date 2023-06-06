@@ -18,7 +18,7 @@ export const UnderConstruction = () => {
             {t('underConstruction.p1')}
             <Link
               className="mx-1 underline"
-              to="https://github.com/blc-org/sovereign-academy"
+              to="https://github.com/DecouvreBitcoin/sovereign-university"
             >
               {t('underConstruction.github')}
             </Link>

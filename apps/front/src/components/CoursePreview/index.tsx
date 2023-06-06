@@ -7,7 +7,7 @@ import { Avatar } from '../../atoms/Avatar';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { Tag } from '../../atoms/Tag';
-import { compose } from '../../utils';
+import { compose, computeAssetCdnUrl } from '../../utils';
 
 interface CoursePreviewProps {
   course: JoinedCourse;
@@ -22,7 +22,10 @@ export const CoursePreview = ({
 
   return (
     <Card
-      image={`http://localhost:8080/${course.last_commit}/courses/${course.id}/assets/thumbnail.png`}
+      image={computeAssetCdnUrl(
+        course.last_commit,
+        `courses/${course.id}/assets/thumbnail.png`
+      )}
       className={compose(
         'overflow-hidden border-4 border-orange-800',
         className
