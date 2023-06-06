@@ -18,15 +18,15 @@ import { Routes } from '../../../types';
 import { useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails: React.FC = () => {
   const { courseId, language } = useRequiredParams();
 
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const isScreenMd = useGreater('sm');
-  const isScreenLg = useGreater('md');
+  const isScreenMd = isGreater('sm');
+  const isScreenLg = isGreater('md');
 
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,

@@ -27,7 +27,7 @@ import { FlyingMenu } from './FlyingMenu';
 import { MobileMenu } from './MobileMenu';
 import { NavigationSection } from './props';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -330,11 +330,9 @@ export const Header = () => {
     },
   ];
 
-  const isScreenMd = useGreater('md');
-
   return (
     <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 md:min-h-[92px] md:p-0 lg:px-12">
-      {isScreenMd ? (
+      {isGreater('md') ? (
         <FlyingMenu
           onClickLogin={openLoginModal}
           onClickRegister={openLoginModal}

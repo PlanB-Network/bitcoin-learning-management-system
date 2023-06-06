@@ -13,7 +13,7 @@ export interface MetaElementsProps {
   onClickRegister: () => void;
 }
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({
   onClickRegister,
@@ -21,7 +21,7 @@ export const MetaElements = ({
 }: MetaElementsProps) => {
   const { t } = useTranslation();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-  const isScreenMd = useGreater('md');
+  const isScreenMd = isGreater('md');
 
   return (
     <div className="flex flex-row place-items-center space-x-6">

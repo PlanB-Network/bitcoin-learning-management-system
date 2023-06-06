@@ -98,10 +98,10 @@ export const Home = () => {
               t('home.second.privacy'),
               t('home.second.wallet'),
             ].map((w, index) => (
-              <>
-                <span>{w}</span> <Emphasize>|</Emphasize>{' '}
-                {index % 2 !== 0 && <br />}
-              </>
+              <span key={`${w}-${index}`}>
+                {w}
+                <Emphasize>|</Emphasize> {index % 2 !== 0 && <br />}
+              </span>
             ))}
           </p>
 

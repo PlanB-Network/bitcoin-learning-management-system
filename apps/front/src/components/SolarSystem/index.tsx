@@ -6,7 +6,7 @@ import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export interface Course {
   id: string;
@@ -169,7 +169,7 @@ const Planet = ({
 
 export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
   const navigate = useNavigate();
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
   const [, setHoveredCourse] = useState<Course | null>(null);
 
   const ref = useRef<SVGSVGElement | null>(null);

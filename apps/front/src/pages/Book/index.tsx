@@ -14,7 +14,7 @@ import { useRequiredParams } from '../../utils';
 
 import { BookSummary } from './BookSummary';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
   const { t } = useTranslation();
@@ -42,7 +42,7 @@ export const Book = () => {
     };
   }
 
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
 
   function DownloadEbook() {
     alert(book?.download_url);

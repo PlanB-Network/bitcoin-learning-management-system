@@ -14,11 +14,11 @@ import { Card } from '../../atoms/Card';
 import { Tag } from '../../atoms/Tag';
 import { ResourceLayout } from '../../components';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Builder = () => {
   const { builderId } = useParams();
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
   const { data: builder } = trpc.content.getBuilder.useQuery({
     id: Number(builderId),
     language: 'en',

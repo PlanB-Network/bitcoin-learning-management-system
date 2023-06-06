@@ -7,7 +7,7 @@ import { BsFillHeartFill } from 'react-icons/bs';
 
 import { MainLayout } from '../../../components/MainLayout';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseLayout = ({
   children,
@@ -16,7 +16,7 @@ export const CourseLayout = ({
 }) => {
   const { t } = useTranslation();
 
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
 
   return (
     <MainLayout>

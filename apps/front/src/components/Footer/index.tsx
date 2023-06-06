@@ -21,7 +21,7 @@ import { ReactComponent as Rabbit } from '../../assets/footer/rabbit.svg';
 import { ReactComponent as Tree } from '../../assets/footer/tree.svg';
 import { compose } from '../../utils';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface FooterProps {
   variant?: 'light' | 'dark' | 'course';
@@ -45,7 +45,7 @@ const Media = ({ className = '', size = 30 }) => (
 
 export const Footer = ({ variant = 'light', color }: FooterProps) => {
   const { t } = useTranslation();
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
 
   return (
     <footer className="w-full">

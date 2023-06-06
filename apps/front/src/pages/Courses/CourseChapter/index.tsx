@@ -18,13 +18,13 @@ import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { isGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseChapter = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { courseId, language, chapterIndex } = useRequiredParams();
-  const isScreenMd = useGreater('sm');
+  const isScreenMd = isGreater('sm');
 
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
     courseId,
