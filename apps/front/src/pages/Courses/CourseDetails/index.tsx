@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
@@ -14,11 +10,10 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import curriculumImage from '../../../assets/courses/curriculum.png';
+import { useGreater } from '../../../hooks/useGreater';
 import { Routes } from '../../../types';
 import { useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails: React.FC = () => {
   const { courseId, language } = useRequiredParams();

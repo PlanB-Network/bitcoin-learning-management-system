@@ -1,19 +1,14 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../../atoms/Button';
 import { useAppSelector } from '../../../hooks';
+import { useGreater } from '../../../hooks/useGreater';
 import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
 }
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({
   onClickRegister,

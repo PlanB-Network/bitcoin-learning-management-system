@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 import {
   BsDiscord,
@@ -19,9 +15,8 @@ import { ReactComponent as Cloud } from '../../assets/footer/cloud.svg';
 import { ReactComponent as Hill } from '../../assets/footer/hill.svg';
 import { ReactComponent as Rabbit } from '../../assets/footer/rabbit.svg';
 import { ReactComponent as Tree } from '../../assets/footer/tree.svg';
+import { useGreater } from '../../hooks/useGreater';
 import { compose } from '../../utils';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface FooterProps {
   variant?: 'light' | 'dark' | 'course';

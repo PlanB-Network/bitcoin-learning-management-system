@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
@@ -14,11 +10,10 @@ import { trpc } from '@sovereign-academy/api-client';
 
 import { ReactComponent as ProgressRabbit } from '../../../assets/courses/progress_rabbit.svg';
 import { Button } from '../../../atoms/Button';
+import { useGreater } from '../../../hooks/useGreater';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseChapter = () => {
   const navigate = useNavigate();

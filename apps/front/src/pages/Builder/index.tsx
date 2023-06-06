@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { t } from 'i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
@@ -13,8 +9,7 @@ import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { Card } from '../../atoms/Card';
 import { Tag } from '../../atoms/Tag';
 import { ResourceLayout } from '../../components';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+import { useGreater } from '../../hooks/useGreater';
 
 export const Builder = () => {
   const { builderId } = useParams();

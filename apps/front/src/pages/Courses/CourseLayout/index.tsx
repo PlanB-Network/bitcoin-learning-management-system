@@ -1,13 +1,8 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 import { BsFillHeartFill } from 'react-icons/bs';
 
 import { MainLayout } from '../../../components/MainLayout';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+import { useGreater } from '../../../hooks/useGreater';
 
 export const CourseLayout = ({
   children,

@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -10,11 +6,10 @@ import readingRabbit from '../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { ResourceLayout } from '../../components';
+import { useGreater } from '../../hooks/useGreater';
 import { useRequiredParams } from '../../utils';
 
 import { BookSummary } from './BookSummary';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
   const { t } = useTranslation();

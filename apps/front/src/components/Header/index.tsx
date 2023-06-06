@@ -1,7 +1,4 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
@@ -20,14 +17,13 @@ import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
 import { generatePath } from 'react-router-dom';
 
 import { useDisclosure } from '../../hooks';
+import { useGreater } from '../../hooks/useGreater';
 import { Routes } from '../../types';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
 import { MobileMenu } from './MobileMenu';
 import { NavigationSection } from './props';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -332,22 +328,31 @@ export const Header = () => {
 
   const isScreenMd = useGreater('md');
 
-  return (
-    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 md:min-h-[92px] md:p-0 lg:px-12">
-      {isScreenMd ? (
+  const menu = useMemo(() => {
+    if (isScreenMd === null) return null;
+
+    if (isScreenMd)
+      return (
         <FlyingMenu
           onClickLogin={openLoginModal}
           onClickRegister={openLoginModal}
           sections={sections}
         />
-      ) : (
-        <MobileMenu
-          onClickLogin={openLoginModal}
-          onClickRegister={openLoginModal}
-          sections={homeSection.concat(sections)}
-        />
-      )}
+      );
 
+    return (
+      <MobileMenu
+        onClickLogin={openLoginModal}
+        onClickRegister={openLoginModal}
+        sections={homeSection.concat(sections)}
+      />
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScreenMd, openLoginModal, sections]);
+
+  return (
+    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 md:min-h-[92px] md:p-0 lg:px-12">
+      {menu}
       <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </header>
   );

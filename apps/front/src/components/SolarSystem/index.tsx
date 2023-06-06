@@ -1,12 +1,8 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+import { useGreater } from '../../hooks/useGreater';
 
 export interface Course {
   id: string;
