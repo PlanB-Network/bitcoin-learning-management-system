@@ -227,11 +227,14 @@
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
   },
+  "podcast": {
+    "abstract": "Abstract",
+    "discover": "Discover this podcast"
+  },
   "podcasts": {
+    "hostedBy": "Hosted by {{host}}",
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{host}}"
+    "pageTitle": "The Podcast Portal"
   },
   "resources": {
     "filterBarLabel": "Find the perfect resources for your needs:",
