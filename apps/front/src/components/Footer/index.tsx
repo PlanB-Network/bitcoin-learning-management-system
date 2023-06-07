@@ -71,7 +71,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               )}
             />
           </div>
-          <div className="relative z-10 flex h-96 w-full flex-col justify-center bg-green-800">
+          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-hidden bg-green-800">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
               <div className="flex flex-row space-x-10">
                 <div className="flex flex-col">

@@ -30,7 +30,7 @@ export const MobileMenu = ({
   useEffect(() => {
     if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = 'auto';
     };
   });
 
