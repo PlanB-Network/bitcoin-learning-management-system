@@ -1,6 +1,5 @@
 {
   "about": {
-    "": "",
     "categories": {
       "bunnyForerunner": "Bunny Forerunner",
       "designers": "Designers",
@@ -53,7 +52,7 @@
   },
   "builders": {
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builders' Portal"
+    "pageTitle": "The Builder Portal"
   },
   "courses": {
     "categories": {
@@ -82,9 +81,9 @@
       "teachers": "Teachers: {{teachers}}"
     },
     "explorer": {
+      "footerTitle": "Our professors are here for you !",
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "footerTitle": "Our professors are here for you !",
       "moreToCome": ".... and more to come !",
       "pageTitle": "Courses",
       "s1p1": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. Please look up at the courses index, organized in circles to adapt to anyone's path of learning.",
@@ -113,10 +112,9 @@
   },
   "home": {
     "about": {
-      "p1": "The Sovereign University aims at providing a Bitcoin high-quality, extensive, free and accessible education for all. We believe that education and comprehension is the key to mass adoption.",
-      "p2": "As Bitcoin grows stronger everyday, so does its community.",
-      "p3": "Community is our biggest strength, as our educational content is based upon volunteering teachers, passionate about transmitting their knowledge.",
-      "p4": "The Sovereign University is a project powered by DécouvreBitcoin.",
+      "p1": "The Sovereign University aims to simplify Bitcoin learning, enabling millions of people to explore this revolutionary technology in depth.",
+      "p2": "We create and share the right tools for learners, teachers and builders to be more efficient on their Bitcoin journey. Our tools range from high-quality courses to in-depth tutorials, resources, seminars, workshops and more. ",
+      "p3": "Everything is 100% free and provided by passionate bitcoiners from all around the word. ",
       "title": "A little bit about us",
       "values": {
         "bitcoinOnly": {
@@ -204,7 +202,9 @@
   },
   "library": {
     "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library"
+    "pageTitle": "The library",
+    "publishedIn": "Published in {{date}}",
+    "writtenBy": "Written by {{author}}"
   },
   "menu": {
     "btc101Description": "Get a better understanding of bitcoin with this lessons",
@@ -228,7 +228,7 @@
     "pageTitle": "Oops."
   },
   "podcasts": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing !",
+    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
     "pageTitle": "The Podcast Portal",
     "publishedIn": "Published in {{date}}",
     "writtenBy": "Written by {{host}}"
@@ -283,15 +283,19 @@
     "additionalCriteria": "Additional criteria",
     "advanced": "Advanced",
     "article": "Article",
+    "articles": "Articles",
     "audioBook": "Audio Book",
     "back": "Back",
     "beginner": "Beginner",
     "book": "Book",
+    "books": "Books",
     "builders": "Builders",
     "conference": "Conference",
+    "conferences": "Conferences",
     "content": "Content",
     "course": "Course",
     "courses": "Courses",
+    "documentaries": "Documentaries",
     "donations": "Donations",
     "email": "Email",
     "exchanges": "Exchanges",
@@ -315,6 +319,7 @@
     "more": "More",
     "movieDocumentary": "Movie Documentary",
     "newsletter": "Newsletter",
+    "newsletters": "Newsletters",
     "node": "Node",
     "or": "or",
     "ourStory": "Our story",
@@ -325,8 +330,8 @@
     "resources": "Resources",
     "review": "Review",
     "rogzy": "Rogzy",
-    "sponsoringAndContributors": "Sponsoring & contributors",
     "sponsorUs": "Sponsor Us",
+    "sponsoringAndContributors": "Sponsoring & contributors",
     "supportUs": "Support us",
     "teachers": "Teachers",
     "termsAndConditions": "Terms and conditions",
@@ -334,6 +339,7 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "video": "Video",
+    "videos": "Videos",
     "wallets": "Wallets"
   }
 }
