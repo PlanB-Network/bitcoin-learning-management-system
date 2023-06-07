@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { capitalize } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
@@ -11,6 +12,7 @@ import {
   BsCurrencyExchange,
   BsLightningCharge,
   BsMic,
+  BsPlus,
   BsWallet2,
 } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
@@ -18,6 +20,9 @@ import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
 import { generatePath } from 'react-router-dom';
+
+import { trpc } from '@sovereign-academy/api-client';
+import { JoinedCourse } from '@sovereign-academy/types';
 
 import { useDisclosure } from '../../hooks';
 import { Routes } from '../../types';
@@ -30,7 +35,7 @@ import { NavigationSection } from './props';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const {
     open: openLoginModal,
@@ -38,8 +43,9 @@ export const Header = () => {
     close: closeLoginModal,
   } = useDisclosure();
 
-  /* 
-  const { data: courses } = trpc.content.getCourses.useQuery();
+  const { data: courses } = trpc.content.getCourses.useQuery({
+    language: i18n.language ?? 'en',
+  });
 
   const coursesByLevel = courses?.reduce((acc, course) => {
     if (acc[course.level]) {
@@ -51,23 +57,39 @@ export const Header = () => {
   }, {} as Record<string, JoinedCourse[]>);
 
   const coursesItems = Object.entries(coursesByLevel ?? {}).map(
-    ([level, courses]) => ({
-      id: level,
-      title: capitalize(level),
-      items: courses.map((course) => ({
+    ([level, courses]) => {
+      const formatted = courses.map((course) => ({
         id: course.id,
-        title: course.name,
+        title: course.id.toUpperCase(),
         path: generatePath(Routes.Course, {
           courseId: course.id,
         }),
         icon: AiOutlineBook,
-        description: course.goal,
-      })),
-    })
-  );
- */
+        description: course.name,
+      }));
 
-  const coursesItems = [
+      return {
+        id: level,
+        title: capitalize(level),
+        items:
+          formatted.length > 4
+            ? [
+                ...formatted.slice(0, 4),
+                {
+                  id: 'more',
+                  title: t('words.more'),
+                  path: generatePath(Routes.Courses, {
+                    level,
+                  }),
+                  icon: BsPlus,
+                },
+              ]
+            : formatted,
+      };
+    }
+  );
+
+  /*   const coursesItems = [
     {
       id: 'beginners',
       title: t('words.beginner'),
@@ -83,7 +105,7 @@ export const Header = () => {
         },
         {
           id: 'ln101',
-          title: 'LN 101',
+          title: 'LN101',
           path: generatePath(Routes.Course, {
             courseId: 'ln101',
           }),
@@ -92,7 +114,7 @@ export const Header = () => {
         },
         {
           id: 'econ101',
-          title: 'ECON 101',
+          title: 'ECON101',
           path: generatePath(Routes.Course, {
             courseId: 'econ101',
           }),
@@ -114,7 +136,7 @@ export const Header = () => {
       items: [
         {
           id: 'btc201',
-          title: 'BTC 201',
+          title: 'BTC201',
           path: generatePath(Routes.Course, {
             courseId: 'btc201',
           }),
@@ -124,7 +146,7 @@ export const Header = () => {
         },
         {
           id: 'econ201',
-          title: 'ECON 201',
+          title: 'ECON201',
           path: generatePath(Routes.Course, {
             courseId: 'econ201',
           }),
@@ -134,7 +156,7 @@ export const Header = () => {
         },
         {
           id: 'ln201',
-          title: 'LN 201',
+          title: 'LN201',
           path: generatePath(Routes.Course, {
             courseId: 'ln201',
           }),
@@ -184,7 +206,7 @@ export const Header = () => {
         },
       ],
     },
-  ];
+  ]; */
 
   const sections: NavigationSection[] = [
     {

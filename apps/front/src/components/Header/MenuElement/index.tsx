@@ -22,7 +22,7 @@ export const MenuElement = ({ element }: MenuElementProps) => {
             />
           </div>
         )}
-        <div>
+        <div className="flex flex-col items-start justify-center">
           <h5 className="text-left text-sm font-semibold text-gray-600">
             {element.title}
           </h5>
