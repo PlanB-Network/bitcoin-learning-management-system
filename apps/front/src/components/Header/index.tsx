@@ -47,16 +47,25 @@ export const Header = () => {
     language: i18n.language ?? 'en',
   });
 
-  const coursesByLevel = courses?.reduce((acc, course) => {
-    if (acc[course.level]) {
+  const coursesByLevel = courses?.reduce(
+    (acc, course) => {
       acc[course.level].push(course);
-    } else {
-      acc[course.level] = [course];
+      return acc;
+    },
+    {
+      beginner: [],
+      intermediate: [],
+      advanced: [],
+      expert: [],
+    } as {
+      beginner: JoinedCourse[];
+      intermediate: JoinedCourse[];
+      advanced: JoinedCourse[];
+      expert: JoinedCourse[];
     }
-    return acc;
-  }, {} as Record<string, JoinedCourse[]>);
+  );
 
-  const coursesItems = Object.entries(coursesByLevel ?? {}).map(
+  const coursesItems = Object.entries(coursesByLevel ?? {}).flatMap(
     ([level, courses]) => {
       const formatted = courses.map((course) => ({
         id: course.id,
@@ -68,24 +77,28 @@ export const Header = () => {
         description: course.name,
       }));
 
-      return {
-        id: level,
-        title: capitalize(level),
-        items:
-          formatted.length > 4
-            ? [
-                ...formatted.slice(0, 4),
-                {
-                  id: 'more',
-                  title: t('words.more'),
-                  path: generatePath(Routes.Courses, {
-                    level,
-                  }),
-                  icon: BsPlus,
-                },
-              ]
-            : formatted,
-      };
+      return formatted.length === 0
+        ? []
+        : [
+            {
+              id: level,
+              title: capitalize(level),
+              items:
+                formatted.length > 4
+                  ? [
+                      ...formatted.slice(0, 4),
+                      {
+                        id: 'more',
+                        title: t('words.more'),
+                        path: generatePath(Routes.Courses, {
+                          level,
+                        }),
+                        icon: BsPlus,
+                      },
+                    ]
+                  : formatted,
+            },
+          ];
     }
   );
 

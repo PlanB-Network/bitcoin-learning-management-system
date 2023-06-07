@@ -13,6 +13,7 @@ import { Builder } from './pages/Builder';
 import { Builders } from './pages/Builders';
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 import { NotFound } from './pages/NotFound';
+import { Podcast } from './pages/Podcast';
 import { Podcasts } from './pages/Podcasts';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
@@ -69,6 +70,7 @@ export const App = () => {
         <Route path={RoutesEnum.Books} element={<Books />} />
         <Route path={RoutesEnum.Book} element={<Book />} />
         <Route path={RoutesEnum.Podcasts} element={<Podcasts />} />
+        <Route path={RoutesEnum.Podcast} element={<Podcast />} />
         <Route path={RoutesEnum.Builders} element={<Builders />} />
         <Route path={RoutesEnum.Builder} element={<Builder />} />
         <Route path={RoutesEnum.AboutUs} element={<About />} />
