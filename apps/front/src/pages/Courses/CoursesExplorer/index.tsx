@@ -114,8 +114,11 @@ export const CoursesExplorer = () => {
             {t('courses.explorer.s3t1')}
           </h3>
           <div className="grid grid-cols-1 items-center justify-center px-5 text-base md:grid-cols-2 xl:grid-cols-3">
-            {categories.map(({ prefix, topic }) => (
-              <div className="my-5 flex flex-row place-items-center space-x-3">
+            {categories.map(({ prefix, topic }, index) => (
+              <div
+                className="my-5 flex flex-row place-items-center space-x-3"
+                key={index}
+              >
                 <div className="flex h-16 w-16 place-items-center justify-center rounded-full border-4 border-orange-900 text-lg font-semibold uppercase lg:h-24 lg:w-24 lg:text-2xl">
                   {prefix}
                 </div>
@@ -131,7 +134,7 @@ export const CoursesExplorer = () => {
         {coursesInLanguage
           ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
           .map((course) => (
-            <CoursePreview course={course} className="h-auto" />
+            <CoursePreview course={course} className="h-auto" key={course.id} />
           ))}
       </div>
       <div className="bg-primary-900 w-full px-10 pb-6 pt-3 text-right text-orange-900 md:px-[12%] ">

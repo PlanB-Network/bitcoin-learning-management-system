@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
+import { Link, generatePath } from 'react-router-dom';
 
 import { JoinedCourse } from '@sovereign-academy/types';
 
@@ -7,6 +8,7 @@ import { Avatar } from '../../atoms/Avatar';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { Tag } from '../../atoms/Tag';
+import { Routes } from '../../types';
 import { compose, computeAssetCdnUrl } from '../../utils';
 
 interface CoursePreviewProps {
@@ -42,14 +44,16 @@ export const CoursePreview = ({
           {course.goal}
         </div>
         <div className="mt-5 flex w-full grow flex-row items-end justify-end self-end justify-self-end">
-          <Button
-            size="s"
-            iconRight={<BsArrowRight />}
-            variant="tertiary"
-            className="text-primary-900"
-          >
-            {t('courses.preview.letsgo')}
-          </Button>
+          <Link to={generatePath(Routes.Course, { courseId: course.id })}>
+            <Button
+              size="s"
+              iconRight={<BsArrowRight />}
+              variant="tertiary"
+              className="text-primary-900"
+            >
+              {t('courses.preview.letsgo')}
+            </Button>
+          </Link>
         </div>
       </div>
     </Card>
