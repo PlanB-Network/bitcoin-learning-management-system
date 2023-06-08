@@ -15,7 +15,7 @@ import { trpc } from '@sovereign-academy/api-client';
 
 import curriculumImage from '../../../assets/courses/curriculum.png';
 import { Routes } from '../../../types';
-import { useRequiredParams } from '../../../utils';
+import { computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 import { CourseLayout } from '../CourseLayout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -71,7 +71,10 @@ export const CourseDetails: React.FC = () => {
             <div className="grid max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch gap-y-8 md:my-2 md:grid-cols-2 md:grid-rows-1">
               <div className="w-full px-2 md:pl-2 md:pr-10">
                 <img
-                  src="https://github.com/DecouvreBitcoin/sovereign-university-data/raw/main/courses/btc101/assets/thumbnail.png"
+                  src={computeAssetCdnUrl(
+                    course.last_commit,
+                    `courses/${course.id}/assets/thumbnail.png`
+                  )}
                   alt={t('imagesAlt.courseThumbnail')}
                 />
               </div>
