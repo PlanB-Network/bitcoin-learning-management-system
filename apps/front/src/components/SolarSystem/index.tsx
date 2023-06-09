@@ -103,7 +103,6 @@ const Planet = ({
     return;
   }
 
-  let hovered = false;
   scaleGroup.on('mouseover', () => {
     setHoveredCourse(course);
 
@@ -152,18 +151,16 @@ const Planet = ({
       .duration(150)
       .style('visibility', 'visible');
 
-    hovered = true;
-
     planetGroup.on('mouseout', function () {
       tooltip.remove();
       setHoveredCourse(null);
-      hovered = false;
     });
   });
 
   scaleGroup.on('click', (event) => {
     event.stopPropagation();
-    if (hovered) navigate(`/course/${course.id}/${course.language}`);
+    event.sourceEvent.stopPropagation();
+    navigate(`/course/${course.id}/${course.language}`);
   });
 };
 
@@ -185,7 +182,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
         .select(ref.current)
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr('viewBox', '-50 -50 100 100')
+        .attr('viewBox', '-70 -50 140 100')
         .attr('font-family', 'Poppins')
         .attr('text-anchor', 'middle');
 

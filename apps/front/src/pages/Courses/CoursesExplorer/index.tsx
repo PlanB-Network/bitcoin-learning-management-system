@@ -88,18 +88,18 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="bg-primary-900 flex w-full flex-col px-[10%] pt-8 text-white md:px-[20%]">
-        <h1 className="-ml-4 text-[62px] font-thin md:text-[128px]">
+      <div className="bg-primary-900 flex w-full flex-col pt-8 text-white">
+        <h1 className="-ml-4 px-[10%] text-[62px] font-thin md:px-[20%] md:text-[128px]">
           {t('courses.explorer.pageTitle')}
         </h1>
-        <div className="space-y-6 text-justify text-base lg:text-lg">
+        <div className="space-y-6 px-[10%] text-justify text-base md:px-[20%] lg:text-lg">
           <p className="font-bold">{t('courses.explorer.s1t1')}</p>
           <p>{t('courses.explorer.s1p1')}</p>
         </div>
         <div className="bg-primary-900 flex w-full flex-col items-center md:h-full">
           <SolarSystem courses={coursesWithUnreleased} />
         </div>
-        <div className="mb-16 flex w-full flex-col">
+        <div className="mb-16 flex w-full flex-col px-[10%] md:px-[20%]">
           <h3 className="mb-5 text-xl font-semibold">
             {t('courses.explorer.s2t1')}
           </h3>
@@ -109,7 +109,7 @@ export const CoursesExplorer = () => {
             <span>{t('courses.explorer.s2p3')}</span>
           </div>
         </div>
-        <div className="mb-16 flex w-full flex-col">
+        <div className="mb-16 flex w-full flex-col px-[10%] md:px-[20%]">
           <h3 className="mb-10 text-xl font-semibold">
             {t('courses.explorer.s3t1')}
           </h3>
