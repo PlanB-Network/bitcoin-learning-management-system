@@ -4,15 +4,15 @@
       "bunnyForerunner": "Bunny Forerunner",
       "designers": "Designers",
       "developpers": "Developpers",
-      "earlyBelievers": "Early Believers",
       "hareExplorer": "Hare Explorer",
       "helpers": "Helpers",
       "professors": "Professors",
-      "rabbitholeDigger": "Rabbit-Hole Digger"
+      "rabbitholeDigger": "Rabbit-Hole Digger",
+      "earlySupporters": "Early Supporters"
     },
     "headerLink": "Become a community sponsor",
     "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
-    "thanks1": "A special thanks to our early-believers, who have helped us persevere throughout the years.",
+    "thanks1": "A special thanks to our early-supporters, who have helped us persevere throughout the years.",
     "thanks2": "The Sovereign University is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
   },
   "auth": {
