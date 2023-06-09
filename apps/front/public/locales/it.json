@@ -1,348 +1,348 @@
 {
   "about": {
     "categories": {
-      "bunnyForerunner": "Bunny Forerunner",
+      "bunnyForerunner": "Forerunner Coniglio",
       "designers": "Designers",
-      "developpers": "Developpers",
-      "earlyBelievers": "Early Believers",
-      "hareExplorer": "Hare Explorer",
+      "developpers": "Sviluppatori",
+      "hareExplorer": "Esploratore Di Lepre",
       "helpers": "Helpers",
-      "professors": "Professors",
-      "rabbitholeDigger": "Rabbit-Hole Digger"
+      "professors": "Professori",
+      "rabbitholeDigger": "Digger Coniglio-Foro",
+      "earlySupporters": "Credenti Anticipati"
     },
-    "headerLink": "Become a community sponsor",
-    "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
-    "thanks1": "A special thanks to our early-believers, who have helped us persevere throughout the years.",
-    "thanks2": "The Sovereign University is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
+    "headerLink": "Diventa uno sponsor della comunità",
+    "pageSubtitle": "La Sovrana Università offre gratuitamente l'istruzione Bitcoin a tutti.",
+    "thanks1": "Un ringraziamento speciale ai nostri primi credenti, che ci hanno aiutato a perseverare nel corso degli anni.",
+    "thanks2": "La Sovrana Università è uno sforzo comunitario. E 'stato reso possibile grazie a numerosi collaboratori che sono stati presi vari ruoli, come professori, sviluppatori, progettisti e aiutanti di molti tipi. Molte grazie a tutti loro."
   },
   "auth": {
-    "accountCreated": "Your account has been created, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
-    "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
+    "accountCreated": "Il tuo account è stato creato, {{userName}}!",
+    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "canSaveProgress": "Ora puoi salvare la tua progressione sulla Bitcoin Academy",
     "connect": "Se connecter",
-    "connectWithLn": "Connect with LN",
+    "connectWithLn": "Connettiti con LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Créez-en un !",
+    "createAccount": "Créer un compte",
+    "createOne": "Creжez-en un !",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
+    "forgottenPassword": "Mot de passe oublié ?",
     "getConnected": "Connectez vous !",
-    "headerAccountCreated": "Account created",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
+    "headerAccountCreated": "Account creato",
+    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
     "noAccountYet": "Vous n'avez pas encore de compte ?",
-    "passwordReinit": "Réinitilisation de mot de passe",
-    "passwordRequired": "password is required",
-    "passwordsDontMatch": "Passwords don't match",
+    "passwordReinit": "Réinitilisation de mot de passe",
+    "passwordRequired": "la password è obbligatoria",
+    "passwordsDontMatch": "Le password non corrispondono",
     "sendLink": "Envoyer un lien",
-    "usernameRequired": "username is required",
-    "usernameRules": "username must contain at least 6 characters"
+    "usernameRequired": "nome utente obbligatorio",
+    "usernameRules": "il nome utente deve contenere almeno 6 caratteri"
   },
   "book": {
-    "abstract": "Abstract",
+    "abstract": "Astratto",
     "bookSummary": {
-      "notice": "this summary is linked to github, for any modification or addition",
-      "title": "The book summary"
+      "notice": "questo sommario è collegato a github, per qualsiasi modifica o aggiunta",
+      "title": "Riepilogo del libro"
     },
-    "buttonBuy": "Buy",
+    "buttonBuy": "Acquista",
     "buttonPdf": "PDF / E-book",
-    "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "offeredBy": "Offerto da un generoso contributore",
+    "pageSubtitle": "Questa libreria è open source e aperta al contributo. Grazie per aver valutato e condiviso !",
+    "pageTitle": "La biblioteca",
+    "topicsAddressed": "Argomenti trattati: "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "Questo portale è open-source e aperto al contributo. Grazie per la classificazione e la condivisione!",
+    "pageTitle": "Il Portale Del Costruttore"
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "econ": "Austrian Economics",
-      "fin": "Finance",
-      "ln": "Lightning Network",
-      "min": "Mining",
-      "secu": "Security & Privacy"
+      "econ": "Economia Austriaca",
+      "fin": "Finanza",
+      "ln": "Rete Lightning",
+      "min": "Estrazione",
+      "secu": "Sicurezza & Privacy"
     },
     "chapter": {
-      "count": "Chapter n°{{count}}/{{total}}",
-      "finish": "Finish the course",
-      "next": "Done, let's go to the next chapter!"
+      "count": "Capitolo n°{{count}}/{{total}}",
+      "finish": "Termina il corso",
+      "next": "Fatto, andiamo al prossimo capitolo!"
     },
     "details": {
-      "courseId": "Course ID: {{courseId}}",
+      "courseId": "ID corso: {{courseId}}",
       "curriculum": "Curriculum",
-      "description": "Description",
-      "duration": "Duration: {{hours}} hours",
+      "description": "Descrizione",
+      "duration": "Durata: {{hours}} ore",
       "goal": "GOAL: {{goal}}",
-      "level": "Level: $t(words.level.{{level}})",
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "objectives": "Objectives",
-      "objectivesTitle": "What will you learn with this course?",
-      "teachers": "Teachers: {{teachers}}"
+      "level": "Livello: $t(words.level.{{level}})",
+      "numberOfChapters": "Numero di capitoli: {{number}}",
+      "objectives": "Obiettivi",
+      "objectivesTitle": "Cosa imparerai con questo corso?",
+      "teachers": "Insegnanti: {{teachers}}"
     },
     "explorer": {
-      "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "moreToCome": ".... and more to come !",
-      "pageTitle": "Courses",
-      "s1p1": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. Please look up at the courses index, organized in circles to adapt to anyone's path of learning.",
-      "s1t1": "Welcome to the core of the Sovereign University: the gate to the educational portal.",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
-      "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you.",
-      "s2t1": "Bitcoin education is a journey not a destination",
-      "s3t1": "All courses are named after their main topic"
+      "footerTitle": "I nostri professori sono qui per te!",
+      "footerp1": "Alla Sovrana Università, i nostri professori hanno piena autonomia sul loro contenuto e sugli strumenti che vogliono esplorare, purché seguano il codice etico. Sono bitcoiner appassionati provenienti da vari sfondi.",
+      "footerp2": "Se si desidera migliorare su un corso o fornire il proprio, si può semplicemente farlo tramite GitHub. Per sostenere un professore si può entrambi il corso di laurea, suggerire il professore direttamente o diventare un membro universitario per sostenere la piattaforma.",
+      "moreToCome": ".... e altro ancora da venire!",
+      "pageTitle": "Corsi",
+      "s1p1": "Qui sarai in grado di trovare un gran numero di corsi relativi a Bitcoin nel suo complesso, con una vasta gamma di soggetti. Questo contenuto educativo è organico, crescendo con la crescita di Bitcoin. Tutti i contenuti sono gratuiti, open source e accessibili a tutti. Si prega di consultare l'indice dei corsi, organizzato in circoli per adattarsi al percorso di apprendimento di chiunque.",
+      "s1t1": "Benvenuti nel cuore della Sovrana Università: il cancello al portale educativo.",
+      "s2p1": "Se hai iniziato ad esplorare il foro di coniglio Bitcoin, devi sapere che è un viaggio infinito con molti percorsi. Qui all'università, lo capiamo e progettiamo i nostri contenuti educativi per essere non lineari, autonomi e altrettanto estesi possibile.",
+      "s2p2": "Sarete in grado di scegliere il proprio percorso e andare lungo di esso, guadagnando abilità e conoscenza per quanto riguarda la vostra motivazione.",
+      "s2p3": "Tutti i nostri corsi sono gratuiti al 100% quindi niente può fermarti.",
+      "s2t1": "L'educazione ai Bitcoin è un viaggio non una destinazione",
+      "s3t1": "Tutti i corsi sono chiamati dopo il loro argomento principale"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "freeBanner": "Tutti i nostri corsi sono offerti gratuitamente. L'università si basa sull'appartenenza attraverso donazione e condivisione.",
     "preview": {
-      "by": "by {{teacher}}",
-      "letsgo": "Let's go"
+      "by": "da {{teacher}}",
+      "letsgo": "Andiamo ad andare"
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
+      "financeIntroduction": "Introduzione alla finanza",
+      "financialCrisis": "Analisi delle crisi finanziarie",
       "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
     }
   },
   "home": {
     "about": {
-      "p1": "The Sovereign University aims to simplify Bitcoin learning, enabling millions of people to explore this revolutionary technology in depth.",
-      "p2": "We create and share the right tools for learners, teachers and builders to be more efficient on their Bitcoin journey. Our tools range from high-quality courses to in-depth tutorials, resources, seminars, workshops and more. ",
-      "p3": "Everything is 100% free and provided by passionate bitcoiners from all around the word. ",
-      "title": "A little bit about us",
+      "p1": "La Sovrana Università mira a semplificare l'apprendimento Bitcoin, consentendo a milioni di persone di esplorare questa tecnologia rivoluzionaria in profondità.",
+      "p2": "Creiamo e condividiamo gli strumenti giusti per gli studenti, gli insegnanti e i costruttori per essere più efficienti nel loro viaggio in Bitcoin. I nostri strumenti spaziano da corsi di alta qualità a tutorial approfonditi, risorse, seminari, workshop e altro ancora. ",
+      "p3": "Tutto è gratuito al 100% e fornito da appassionati bitcoiner da tutto il mondo. ",
+      "title": "Un po' su di noi",
       "values": {
         "bitcoinOnly": {
-          "text": "We focus on the Bitcoin revolution as a whole without falling into trading or shitcoinery.",
-          "title": "Bitcoin only"
+          "text": "Ci concentriamo sulla rivoluzione Bitcoin nel suo insieme senza cadere in trading o shitcoinery.",
+          "title": "Solo Bitcoin"
         },
         "communityDriven": {
-          "text": "We are first & foremost a community of enthusiastics helping each other in their Bitcoin journey.",
+          "text": "Siamo prima di tutto una comunità di appassionati che si aiutano a vicenda nel loro viaggio in Bitcoin.",
           "title": "Community Driven"
         },
         "openSource": {
-          "text": "We aim to promote the free flow of knowledge.",
+          "text": "Il nostro obiettivo è promuovere il libero flusso della conoscenza.",
           "title": "Open Source"
         },
         "privacyFocused": {
-          "text": "We consider privacy to be one of the most fundamental human rights and most necessary for progress.",
+          "text": "Riteniamo che la privacy sia uno dei diritti umani più fondamentali e più necessari per il progresso.",
           "title": "Privacy Focused"
         }
       }
     },
     "first": {
-      "extensive": "Extensive courses",
-      "extensiveEmphasized": "Extensive",
-      "forEveryone": "For everyone",
-      "forEveryoneEmphasized": "everyone",
-      "free": "All free",
-      "freeEmphasized": "free",
-      "languages": "In many languages",
-      "levels": "From beginner to expert",
-      "levelsEmphasized": "beginner to expert",
-      "tagLine": "To learn the basics as well as the advanced",
-      "title": "E-learning platform about Bitcoin"
+      "extensive": "Corsi estesi",
+      "extensiveEmphasized": "Ampia",
+      "forEveryone": "Per tutti",
+      "forEveryoneEmphasized": "tutti",
+      "free": "Tutti liberi",
+      "freeEmphasized": "gratis",
+      "languages": "In molte lingue",
+      "levels": "Dal principiante all'esperto",
+      "levelsEmphasized": "principiante a esperto",
+      "tagLine": "Per imparare le basi così come l'avanzato",
+      "title": "Piattaforma di e-learning su Bitcoin"
     },
     "fourth": {
-      "tagLine": "To connect learners with their dream Bitcoin job",
-      "text": "Get an overview and connect with the different actors of the industry",
-      "title": "A link to the builders of the industry"
+      "tagLine": "Per collegare gli studenti con il loro sogno lavoro Bitcoin",
+      "text": "Ottenere una panoramica e connettersi con i diversi attori del settore",
+      "title": "Un collegamento con i costruttori del settore"
     },
     "hero": {
-      "tagLine": "Let's embark into your Bitcoin educational journey"
+      "tagLine": "Iniziamo nel tuo viaggio educativo in Bitcoin"
     },
     "second": {
-      "exchange": "Exchange",
-      "merchant": "Merchant",
-      "mining": "Mining",
-      "node": "Node",
-      "privacy": "Privacy tools",
-      "tagLine": "To navigate your way among Bitcoin technological solutions",
-      "title": "All useful tutorials",
-      "wallet": "Wallet"
+      "exchange": "Borsa",
+      "merchant": "Commerciante",
+      "mining": "Estrazione",
+      "node": "Nodo",
+      "privacy": "Strumenti per la privacy",
+      "tagLine": "Per navigare tra le soluzioni tecnologiche Bitcoin",
+      "title": "Tutti i tutorial utili",
+      "wallet": "Portafoglio"
     },
     "third": {
-      "books": "books",
-      "more": "- & more ~",
-      "podcasts": "podcasts",
-      "tagLine": "To access all published knowledge in one open-source platform",
-      "title": "All kinds of resources about Bitcoin",
-      "videos": "videos"
+      "books": "libri",
+      "more": "- & più ~",
+      "podcasts": "podcast",
+      "tagLine": "Per accedere a tutte le conoscenze pubblicate in una piattaforma open-source",
+      "title": "Tutti i tipi di risorse su Bitcoin",
+      "videos": "video"
     }
   },
   "imagesAlt": {
-    "bitcoinCurrency": "the sign of bitcoin currency",
-    "blueEllipse": "a blue ellipse",
-    "bookCover": "a book cover",
-    "community": "3 people",
-    "contributorHeart": "a heart for nice contributor",
-    "contributorPP": "contributor profile pic",
-    "courseThumbnail": "Course thumbnail",
+    "bitcoinCurrency": "il segno della valuta bitcoin",
+    "blueEllipse": "un'ellisse blu",
+    "bookCover": "una copertina del libro",
+    "community": "3 persone",
+    "contributorHeart": "un cuore per un buon collaboratore",
+    "contributorPP": "foto profilo collaboratore",
+    "courseThumbnail": "Miniatura corso",
     "curriculum": "Curriculum",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
-    "favorite": "a heart inside a circle",
-    "forwardArrow": "a forward arrow",
-    "github": "the icon of github",
-    "rabbitClassroom": "rabbits inside a classroom",
-    "rabbitLibrary": "a rabbit reading a book",
-    "rabbitMeetup": "a rabbit meetup",
-    "rabbitPodcast": "a rabbit listenning to a podcast",
-    "rabbitStudying": "rabbit studying in a workshop",
-    "rabbitVideos": "a rabbit filming a video",
-    "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
-    "readingRabbit": "A rabbit reading a book",
-    "sthRepresentingCompany": "something representing the company",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign"
+    "favorite": "un cuore all'interno di un cerchio",
+    "forwardArrow": "una freccia in avanti",
+    "github": "l'icona di github",
+    "rabbitClassroom": "conigli all'interno di un'aula",
+    "rabbitLibrary": "un coniglio che legge un libro",
+    "rabbitMeetup": "una riunione di coniglio",
+    "rabbitPodcast": "un coniglio che ascolta un podcast",
+    "rabbitStudying": "coniglio che studia in un laboratorio",
+    "rabbitVideos": "un coniglio che riprende un video",
+    "rabbitWithBackpackAndBtcSign": "un coniglio con uno zaino e un segno btc",
+    "readingRabbit": "Un coniglio che legge un libro",
+    "sthRepresentingCompany": "qualcosa che rappresenta l'azienda",
+    "underConstructionImage": "Illustrazione di diversi conigli che lavorano su un cantiere",
+    "visibilityOff": "l'icona occhi senza segno spento"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{author}}"
+    "pageSubtitle": "Questa libreria è open source e aperta al contributo. Grazie per aver valutato e condiviso !",
+    "pageTitle": "La biblioteca",
+    "publishedIn": "Pubblicato in {{date}}",
+    "writtenBy": "Scritto da {{author}}"
   },
   "menu": {
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
-    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "lightningDescription": "Manage your lightning node and use the lightning network",
-    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
-    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
-    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "ourStoryDescription": "Learn about the story of the university",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
-    "sponsorsDescription": "Discover our sponsors and collaborators",
-    "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, apassionate bitcoiners",
-    "walletsDescription": "Secure and use your bitcoins"
+    "btc101Description": "Ottieni una migliore comprensione dei bitcoin con queste lezioni",
+    "buildersDescription": "Scopri le aziende e i progetti che lavorano per rendere bitcoin migliore e crescere la sua adozione",
+    "exchangesDescription": "Compra e vende bitcoin sugli scambi e impara su P2P",
+    "libraryDescription": "Scopri un sacco di libri per migliorare la tua conoscenza",
+    "lightningDescription": "Gestisci il tuo nodo fulmine e utilizza la rete fulmini",
+    "merchantsDescription": "Accetta i pagamenti bitcoin e scopri gli strumenti per i commercianti",
+    "miningDescription": "Mina i tuoi bitcoin e scopri il settore minerario",
+    "nodeDescription": "Impara ad essere sovrano con il tuo nodo bitcoin",
+    "ourStoryDescription": "Scopri la storia dell'università",
+    "podcastsDescription": "Esplora l'ecosistema bitcoin attraverso podcast",
+    "sponsorsDescription": "Scopri i nostri sponsor e collaboratori",
+    "supportUsDescription": "Trova modi per supportarci, in qualsiasi modo",
+    "teachersDescription": "Conosci i nostri insegnanti universitari, bitcoiner apassionati",
+    "walletsDescription": "Proteggi e utilizza i tuoi bitcoin"
   },
   "notFound": {
-    "here": "Here",
-    "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
+    "here": "Qui",
+    "pageSubtitle": "Sembra che qualcuno sia caduto troppo in profondità nel buco del coniglio e si sia perso. Per tornare in superficie, clicca",
     "pageTitle": "Oops."
   },
   "podcast": {
-    "abstract": "Abstract",
-    "discover": "Discover this podcast"
+    "abstract": "Astratto",
+    "discover": "Scopri questo podcast"
   },
   "podcasts": {
-    "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal"
+    "hostedBy": "Ospitato da {{host}}",
+    "pageSubtitle": "Questo portale è open-source e aperto al contributo. Grazie per la classificazione e la condivisione!",
+    "pageTitle": "Il Portale Podcast"
   },
   "resources": {
-    "filterBarLabel": "Find the perfect resources for your needs:",
+    "filterBarLabel": "Trova le risorse perfette per le tue esigenze:",
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
-    "pageTitle": "Resources",
-    "publicGrade": "Public grade: {{grade}}/5"
+    "headerText": "Benvenuto nel foro coniglio infinito di Bitcoin! In questa sezione ti offriremo un tutoriel approfondito sulla maggior parte dei progetti bitcoin là fuori. Queste pagine in mantenere da benevolel e appassionato bitcoin che supportano il progetto open source. Se dovessi pagare abbiamo commesso un errore, ti preghiamo di contattarci. Per vedere il nostro allegato finanziario per la menzione del progetto fai riferimento al nostro repport trasparente. Grazie per la vostra fiducia in questa università e godetevi il viaggio.",
+    "pageTitle": "Risorse",
+    "publicGrade": "Grado pubblico: {{grade}}/5"
   },
   "tutorials": {
     "exchange": {
-      "description": "Bitcoin buying-selling solutions, KYC and non-KYC",
-      "title": "Exchange"
+      "description": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
+      "title": "Borsa"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Benvenuto nel foro coniglio infinito di Bitcoin! In questa sezione ti offriremo un tutoriel approfondito sulla maggior parte dei progetti bitcoin là fuori. Queste pagine in mantenere da benevolel e appassionato bitcoin che supportano il progetto open source. Se doveste pagare abbiamo commesso un errore, vi preghiamo di contattarlo.Per vedere il nostro allegato finanziario per la menzione del progetto si rimanda alla nostra relazione sulla trasparenza. Grazie per la vostra fiducia in questa università e godetevi il viaggio.",
     "merchant": {
-      "description": "Solutions for businesses to accept Bitcoin",
-      "title": "Merchant"
+      "description": "Soluzioni per le aziende per accettare Bitcoin",
+      "title": "Commerciante"
     },
     "mining": {
-      "description": "Bitcoin mining solutions",
-      "title": "Mining"
+      "description": "Soluzioni di mining Bitcoin",
+      "title": "Estrazione"
     },
     "node": {
-      "description": "Solutions to operate a bitcoin node and join the network",
-      "title": "Node"
+      "description": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
+      "title": "Nodo"
     },
-    "pageTitle": "Tutorials",
+    "pageTitle": "Tutorial",
     "privacy": {
-      "description": "Tools for backup and maintaining privacy",
+      "description": "Strumenti per il backup e il mantenimento della privacy",
       "title": "Privacy"
     },
-    "soon": "We have tons of tutorials in the works! Just some editing for that brand new website to be done and we will be good to go! Come back in a few days!",
+    "soon": "Abbiamo tonnellate di tutorial nelle opere! Solo un po 'di editing per quel nuovo sito web da fare e saremo bravi ad andare! Torna tra qualche giorno!",
     "wallet": {
-      "description": "Security solutions and usage of your bitcoins",
-      "title": "Wallet"
+      "description": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
+      "title": "Portafoglio"
     }
   },
   "underConstruction": {
     "github": "GitHub",
-    "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
-    "p2": "and consider joining our community!",
+    "p1": "Un coniglio ha abbattuto un buco. A causa di questa avventura inaspettata, questa pagina è sotto un po 'di costruzione al momento. Ci scusiamo per qualsiasi inconveniente. Il nostro team è in pieno equipaggiamento per completare questa pagina. Se siete interessati a prestare una mano, non esitate a controllare il nostro",
+    "p2": "e considerare di unirsi alla nostra comunità!",
     "pageTitle": "Oops."
   },
   "words": {
-    "about": "About",
-    "about-us": "About Us",
+    "about": "Informazioni",
+    "about-us": "Chi Siamo",
     "account": "Account",
-    "additionalCriteria": "Additional criteria",
-    "advanced": "Advanced",
-    "article": "Article",
-    "articles": "Articles",
-    "audioBook": "Audio Book",
-    "back": "Back",
-    "beginner": "Beginner",
-    "book": "Book",
-    "books": "Books",
-    "builders": "Builders",
-    "conference": "Conference",
-    "conferences": "Conferences",
-    "content": "Content",
-    "course": "Course",
+    "additionalCriteria": "Criteri supplementari",
+    "advanced": "Avanzate",
+    "article": "Articolo",
+    "articles": "Articoli",
+    "audioBook": "Audiolibro",
+    "back": "Indietro",
+    "beginner": "Principiante",
+    "book": "Libro",
+    "books": "Libri",
+    "builders": "Costruttori",
+    "conference": "Conferenza",
+    "conferences": "Conferenze",
+    "content": "Contenuto",
+    "course": "Corso",
     "courses": "Corsi",
-    "documentaries": "Documentaries",
-    "donations": "Donations",
+    "documentaries": "Documentari",
+    "donations": "Donazioni",
     "email": "Email",
-    "exchanges": "Exchanges",
-    "followUs": "Follow us",
-    "helpUs": "Help us",
+    "exchanges": "Scambi",
+    "followUs": "Seguici su",
+    "helpUs": "Aiutaci",
     "home": "Home",
-    "intermediate": "Intermediate",
-    "interview": "Interview",
+    "intermediate": "Intermedio",
+    "interview": "Intervista",
     "level": {
-      "advanced": "Advanced",
-      "beginner": "Beginner",
-      "expert": "Expert",
-      "intermediate": "Intermediate"
+      "advanced": "Avanzate",
+      "beginner": "Principiante",
+      "expert": "Esperto",
+      "intermediate": "Intermedio"
     },
-    "library": "Library",
-    "lightning": "Lightning",
-    "login": "Login",
+    "library": "Libreria",
+    "lightning": "Fulmine",
+    "login": "Accedi",
     "merchandising": "Merchandising",
-    "merchants": "Merchants",
-    "mining": "Mining",
-    "more": "More",
-    "movieDocumentary": "Movie Documentary",
+    "merchants": "Mercanti",
+    "mining": "Estrazione",
+    "more": "Altro",
+    "movieDocumentary": "Documentario Del Film",
     "newsletter": "Newsletter",
     "newsletters": "Newsletters",
-    "node": "Node",
-    "or": "or",
-    "ourStory": "Our story",
+    "node": "Nodo",
+    "or": "o",
+    "ourStory": "La nostra storia",
     "podcast": "Podcast",
-    "podcasts": "Podcasts",
-    "register": "Register",
-    "relatedResources": "Related resources",
-    "resources": "Resources",
-    "review": "Review",
+    "podcasts": "Podcast",
+    "register": "Registrati",
+    "relatedResources": "Risorse correlate",
+    "resources": "Risorse",
+    "review": "Riesame",
     "rogzy": "Rogzy",
     "sponsorUs": "Sponsor Us",
-    "sponsoringAndContributors": "Sponsoring & contributors",
-    "supportUs": "Support us",
-    "teachers": "Teachers",
-    "termsAndConditions": "Terms and conditions",
-    "theSovereignUniversity": "The Sovereign University",
+    "sponsoringAndContributors": "Sponsorizzazione & contributori",
+    "supportUs": "Sostienici",
+    "teachers": "Insegnanti",
+    "termsAndConditions": "Termini e condizioni",
+    "theSovereignUniversity": "Università Sovrana",
     "tutorial": "Tutorial",
-    "tutorials": "Tutorials",
+    "tutorials": "Tutorial",
     "video": "Video",
-    "videos": "Videos",
-    "wallets": "Wallets"
+    "videos": "Video",
+    "wallets": "Portafogli"
   }
 }
