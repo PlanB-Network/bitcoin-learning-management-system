@@ -57,12 +57,15 @@ const syncRepository = async (repository: string, directory: string) => {
       await git.cwd(directory).reset(ResetMode.HARD);
 
       // Fetch the remote changes
-      await git.fetch();
+      await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
+
+      // Get the branch name
+      await git.checkout(['-B', 'main']);
 
       // Reset the current branch to match the remote branch
-      await git.reset(ResetMode.HARD, ['origin/HEAD']);
+      await git.reset(ResetMode.HARD, ['origin/main']); // change this to your actual branch name if not 'main'
 
-      await git.pull();
+      await git.pull('origin');
     } else {
       // Clone the repository
       await git.clone(repository, directory);
@@ -95,7 +98,7 @@ export const compareCommits = async (
     const finalFiles = await async.mapLimit(
       textFiles,
       10,
-      async (file: typeof textFiles[number]) => {
+      async (file: (typeof textFiles)[number]) => {
         let relativePath = file.file;
         let previousPath: string | undefined;
 
@@ -243,7 +246,9 @@ export const syncCdnRepository = async (
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);
-    const assets = files.filter((file) => file.includes('/assets/'));
+    const assets = files.filter(
+      (file) => file.includes('/assets/') || file.includes('/soon/')
+    );
 
     for (const asset of assets) {
       const parentDirectoryLog = await git
@@ -255,7 +260,7 @@ export const syncCdnRepository = async (
 
       const cdnPath = path.join(
         cdnDirectory,
-        parentDirectoryLog.latest.hash,
+        asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
         relativePath
       );
 

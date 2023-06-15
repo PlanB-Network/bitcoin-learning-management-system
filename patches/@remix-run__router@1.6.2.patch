@@ -1,0 +1,107 @@
+diff --git a/dist/utils.d.ts b/dist/utils.d.ts
+index 10bfa9865310c776f2493001f83fbd0cd3732411..5e85b761defb919575fbfc318641cfeadafebcac 100644
+--- a/dist/utils.d.ts
++++ b/dist/utils.d.ts
+@@ -217,7 +217,7 @@ export declare type AgnosticDataNonIndexRouteObject = AgnosticNonIndexRouteObjec
+  */
+ export declare type AgnosticDataRouteObject = AgnosticDataIndexRouteObject | AgnosticDataNonIndexRouteObject;
+ export declare type RouteManifest = Record<string, AgnosticDataRouteObject | undefined>;
+-declare type _PathParam<Path extends string> = Path extends `${infer L}/${infer R}` ? _PathParam<L> | _PathParam<R> : Path extends `:${infer Param}` ? Param extends `${infer Optional}?` ? Optional : Param : never;
++declare type _PathParam<Path extends string> = Path extends `${infer L}/${infer R}` ? _PathParam<L> | _PathParam<R> : Path extends `:${infer Param}` ? Param : never;
+ /**
+  * Examples:
+  * "/a/b/*" -> "*"
+@@ -228,9 +228,13 @@ declare type _PathParam<Path extends string> = Path extends `${infer L}/${infer
+  * "/:a/b/:c/*" -> "a" | "c" | "*"
+  */
+ declare type PathParam<Path extends string> = Path extends "*" | "/*" ? "*" : Path extends `${infer Rest}/*` ? "*" | _PathParam<Rest> : _PathParam<Path>;
+-export declare type ParamParseKey<Segment extends string> = [
+-    PathParam<Segment>
+-] extends [never] ? string : PathParam<Segment>;
++export declare type Optional<Path extends string> = {
++    [key in PathParam<Path> as key extends `${infer K}?` ? K : key extends "*" ? "*" : never]?: string;
++};
++export declare type Required<Path extends string> = {
++    [key in PathParam<Path> as key extends `${infer _}?` ? never : key extends "*" ? never : key]: string;
++};
++export declare type ParamParseKey<Segment extends string> = [keyof Required<Segment> & Optional<Segment>] extends [never] ? string : keyof Required<Segment> & Optional<Segment>;
+ /**
+  * The parameters that were parsed from the URL path.
+  */
+@@ -272,9 +276,11 @@ export declare function matchRoutes<RouteObjectType extends AgnosticRouteObject
+  *
+  * @see https://reactrouter.com/utils/generate-path
+  */
+-export declare function generatePath<Path extends string>(originalPath: Path, params?: {
+-    [key in PathParam<Path>]: string | null;
+-}): string;
++export declare function generatePath<Path extends string>(
++    originalPath: Path, ...routeParams: keyof Required<Path> extends never
++    ? [Optional<Path>?]
++    : [Optional<Path> & Required<Path>]
++): string;
+ /**
+  * A PathPattern is used to match on some portion of a URL pathname.
+  */
+diff --git a/utils.ts b/utils.ts
+index 0b8b18d8c702cb05cd64f2013e081f5ebf691a67..653c23450fe0b2607c94d5ed8d61c74c98f70fa4 100644
+--- a/utils.ts
++++ b/utils.ts
+@@ -280,9 +280,7 @@ type _PathParam<Path extends string> =
+     ? _PathParam<L> | _PathParam<R>
+     : // find params after `:`
+     Path extends `:${infer Param}`
+-    ? Param extends `${infer Optional}?`
+-      ? Optional
+-      : Param
++    ? Param
+     : // otherwise, there aren't any params present
+       never;
+ 
+@@ -305,12 +303,30 @@ type PathParam<Path extends string> =
+     : // look for params in the absence of wildcards
+       _PathParam<Path>;
+ 
++type Optional<Path extends string> = {
++  [key in PathParam<Path> as key extends `${infer K}?`
++    ? K
++    : key extends "*"
++    ? "*"
++    : never]?: string;
++};
++
++type Required<Path extends string> = {
++  [key in PathParam<Path> as key extends `${infer _}?`
++    ? never
++    : key extends "*"
++    ? never
++    : key]: string;
++};
++
+ // Attempt to parse the given string segment. If it fails, then just return the
+ // plain string type as a default fallback. Otherwise return the union of the
+ // parsed string literals that were referenced as dynamic segments in the route.
+ export type ParamParseKey<Segment extends string> =
+   // if could not find path params, fallback to `string`
+-  [PathParam<Segment>] extends [never] ? string : PathParam<Segment>;
++  [keyof Required<Segment> & Optional<Segment>] extends [never]
++    ? string
++    : keyof Required<Segment> & Optional<Segment>;
+ 
+ /**
+  * The parameters that were parsed from the URL path.
+@@ -712,10 +728,11 @@ function matchRouteBranch<
+  */
+ export function generatePath<Path extends string>(
+   originalPath: Path,
+-  params: {
+-    [key in PathParam<Path>]: string | null;
+-  } = {} as any
++  ...routeParams: keyof Required<Path> extends never
++    ? [Optional<Path>?]
++    : [Optional<Path> & Required<Path>]
+ ): string {
++  const params = routeParams[0] || ({} as any);
+   let path: string = originalPath;
+   if (path.endsWith("*") && path !== "*" && !path.endsWith("/*")) {
+     warning(

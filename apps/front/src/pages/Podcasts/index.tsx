@@ -1,70 +1,74 @@
-import { Popover, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
+import { JoinedPodcast } from '@sovereign-academy/types';
 
 import { ResourceLayout } from '../../components';
+import { Routes } from '../../types';
 
 export const Podcasts = () => {
+  const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Fetching data from the API
   const { data: podcasts } = trpc.content.getPodcasts.useQuery({
-    language: 'en',
+    language: i18n.language ?? 'en',
   });
+
+  // Sort podcasts alphabetically
+  const sortedPodcasts: JoinedPodcast[] = podcasts
+    ? podcasts.sort((a, b) => a.name.localeCompare(b.name))
+    : [];
 
   return (
     <ResourceLayout
-      title="The Podcast Portal"
-      tagLine="This PORTAL is open-source & open to contribution. Thanks for grading and sharing !"
+      title={t('podcasts.pageTitle')}
+      tagLine={t('podcasts.pageSubtitle')}
       filterBar={{
         onChange: setSearchTerm,
-        label: 'Find the perfect resources for your needs:',
+        label: t('resources.filterBarLabel'),
       }}
     >
-      <div className="grid grid-cols-2 gap-x-8 gap-y-16 my-20 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {podcasts
-          ?.filter(({ name }) => name.includes(searchTerm))
+      <div className="grid grid-cols-2 gap-4 px-10 sm:grid-cols-3 sm:px-0 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+        {sortedPodcasts
+          .filter((podcast) =>
+            podcast.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
           .map((podcast) => (
-            <Popover key={podcast.logo} className="relative">
-              <Popover.Button>
-                <div
-                  className="max-h-64 cursor-pointer group"
-                  key={podcast.logo}
-                >
+            <div>
+              <Link
+                className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
+                to={generatePath(Routes.Podcast, {
+                  podcastId: podcast.id.toString(),
+                })}
+                key={podcast.id}
+              >
+                <div className="group-hover:bg-secondary-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                   <img
-                    className="mx-auto h-full rounded-none border-2 border-transparent border-solid duration-200 group-hover:rounded-3xl group-hover:border-secondary-400"
+                    className="mx-auto"
                     src={podcast.logo}
                     alt={podcast.name}
                   />
-                </div>
-              </Popover.Button>
-
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-1"
-              >
-                <Popover.Panel className="absolute z-10 bg-primary-100">
-                  <div className="flex flex-col p-2 w-52 bg-secondary-400">
-                    <img
-                      className="mx-auto h-full rounded-none border-2 border-transparent border-solid duration-200 group-hover:rounded-3xl group-hover:border-secondary-400"
-                      src={podcast.logo}
-                      alt={podcast.name}
-                    />
-
-                    <h4 className="text-xs">{podcast.name}</h4>
-                    <h5 className="italic text-xxs">{podcast.host}</h5>
-                    <h5 className="italic text-xxs">
-                      {podcast.tags.join(', ')}
-                    </h5>
+                  <div className="group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-thin text-white transition-colors duration-500 ease-in-out">
+                    <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                      <li className={'pb-1 text-lg font-bold'}>
+                        {podcast.name}
+                      </li>
+                      {podcast.host && (
+                        <li className={'pb-1 text-xs italic'}>
+                          {t('podcasts.hostedBy', { host: podcast.host })}
+                        </li>
+                      )}
+                      {/* <li className={'truncate pb-1 text-xs'}>
+                          {podcast.description}
+                        </li> */}
+                    </ul>
                   </div>
-                </Popover.Panel>
-              </Transition>
-            </Popover>
+                </div>
+              </Link>
+            </div>
           ))}
       </div>
     </ResourceLayout>

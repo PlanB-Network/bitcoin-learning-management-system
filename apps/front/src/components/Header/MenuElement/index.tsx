@@ -12,22 +12,22 @@ export const MenuElement = ({ element }: MenuElementProps) => {
     () => (
       <div
         key={element.id}
-        className="flex relative gap-x-6 p-4 w-full max-w-sm rounded-lg duration-100 cursor-pointer group hover:bg-gray-100"
+        className="group relative flex w-full max-w-sm cursor-pointer gap-x-6 rounded-lg p-4 duration-100 hover:bg-gray-100"
       >
         {element.icon && (
-          <div className="flex flex-none justify-center items-center mt-1 w-11 h-11 bg-gray-100 rounded-lg duration-200 group-hover:bg-white">
+          <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
             <element.icon
-              className="w-6 h-6 text-gray-600 group-hover:text-primary-700"
+              className="group-hover:text-primary-700 h-6 w-6 text-gray-600"
               aria-hidden="true"
             />
           </div>
         )}
-        <div>
-          <h5 className="text-sm font-semibold text-left text-gray-600">
+        <div className="flex flex-col items-start justify-center">
+          <h5 className="text-left text-sm font-semibold text-gray-600">
             {element.title}
           </h5>
           {element.description && (
-            <p className="mt-1 text-xs text-left text-gray-600">
+            <p className="mt-1 text-left text-xs text-gray-600">
               {element.description}
             </p>
           )}
@@ -38,11 +38,11 @@ export const MenuElement = ({ element }: MenuElementProps) => {
   );
 
   return 'path' in element ? (
-    <Link className="block w-full text-primary-800" to={element.path}>
+    <Link className="text-primary-800 block w-full" to={element.path}>
       {item}
     </Link>
   ) : (
-    <button className="block w-full text-primary-800" onClick={element.action}>
+    <button className="text-primary-800 block w-full" onClick={element.action}>
       {item}
     </button>
   );

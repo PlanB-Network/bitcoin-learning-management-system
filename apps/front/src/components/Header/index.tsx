@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { capitalize } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
@@ -11,16 +12,20 @@ import {
   BsCurrencyExchange,
   BsLightningCharge,
   BsMic,
+  BsPlus,
   BsWallet2,
 } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
+import { generatePath } from 'react-router-dom';
+
+import { trpc } from '@sovereign-academy/api-client';
+import { JoinedCourse } from '@sovereign-academy/types';
 
 import { useDisclosure } from '../../hooks';
 import { Routes } from '../../types';
-import { replaceDynamicParam } from '../../utils';
 import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
@@ -30,7 +35,7 @@ import { NavigationSection } from './props';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const {
     open: openLoginModal,
@@ -38,173 +43,183 @@ export const Header = () => {
     close: closeLoginModal,
   } = useDisclosure();
 
-  /* 
-  const { data: courses } = trpc.content.getCourses.useQuery();
+  const { data: courses } = trpc.content.getCourses.useQuery({
+    language: i18n.language ?? 'en',
+  });
 
-  const coursesByLevel = courses?.reduce((acc, course) => {
-    if (acc[course.level]) {
+  const coursesByLevel = courses?.reduce(
+    (acc, course) => {
       acc[course.level].push(course);
-    } else {
-      acc[course.level] = [course];
+      return acc;
+    },
+    {
+      beginner: [],
+      intermediate: [],
+      advanced: [],
+      expert: [],
+    } as {
+      beginner: JoinedCourse[];
+      intermediate: JoinedCourse[];
+      advanced: JoinedCourse[];
+      expert: JoinedCourse[];
     }
-    return acc;
-  }, {} as Record<string, JoinedCourse[]>);
+  );
 
-  const coursesItems = Object.entries(coursesByLevel ?? {}).map(
-    ([level, courses]) => ({
-      id: level,
-      title: capitalize(level),
-      items: courses.map((course) => ({
+  const coursesItems = Object.entries(coursesByLevel ?? {}).flatMap(
+    ([level, courses]) => {
+      const formatted = courses.map((course) => ({
         id: course.id,
-        title: course.name,
-        path: replaceDynamicParam(Routes.Course, {
+        title: course.id.toUpperCase(),
+        path: generatePath(Routes.Course, {
           courseId: course.id,
         }),
         icon: AiOutlineBook,
-        description: course.goal,
-      })),
-    })
-  );
- */
+        description: course.name,
+      }));
 
-  const coursesItems = [
+      return formatted.length === 0
+        ? []
+        : [
+            {
+              id: level,
+              title: capitalize(level),
+              items:
+                formatted.length > 4
+                  ? [
+                      ...formatted.slice(0, 4),
+                      {
+                        id: 'more',
+                        title: t('words.more'),
+                        path: generatePath(Routes.Courses, {
+                          level,
+                        }),
+                        icon: BsPlus,
+                      },
+                    ]
+                  : formatted,
+            },
+          ];
+    }
+  );
+
+  /*   const coursesItems = [
     {
       id: 'beginners',
-      title: 'Beginner',
+      title: t('words.beginner'),
       items: [
         {
           id: 'btc101',
           title: 'BTC101',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'btc101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'ln101',
-          title: 'LN 101',
-          path: replaceDynamicParam(Routes.Course, {
+          title: 'LN101',
+          path: generatePath(Routes.Course, {
             courseId: 'ln101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'econ101',
-          title: 'ECON 101',
-          path: replaceDynamicParam(Routes.Course, {
+          title: 'ECON101',
+          path: generatePath(Routes.Course, {
             courseId: 'econ101',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'more-xxx-101',
-          title: 'More',
+          title: t('words.more'),
           path: Routes.Courses,
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
     {
       id: 'intermediate',
-      title: 'Intermediate',
+      title: t('words.intermediate'),
       items: [
         {
           id: 'btc201',
-          title: 'BTC 201',
-          path: replaceDynamicParam(Routes.Course, {
+          title: 'BTC201',
+          path: generatePath(Routes.Course, {
             courseId: 'btc201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'econ201',
-          title: 'ECON 201',
-          path: replaceDynamicParam(Routes.Course, {
+          title: 'ECON201',
+          path: generatePath(Routes.Course, {
             courseId: 'econ201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'ln201',
-          title: 'LN 201',
-          path: replaceDynamicParam(Routes.Course, {
+          title: 'LN201',
+          path: generatePath(Routes.Course, {
             courseId: 'ln201',
-            language: 'fr',
           }),
 
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'more-xxx-201',
-          title: 'More',
+          title: t('words.more'),
           path: Routes.Courses,
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
     {
       id: 'advanced',
-      title: 'Advanced',
+      title: t('words.advanced'),
       items: [
         {
           id: 'crypto301',
           title: 'CRYPTO 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'crypto301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'secu301',
           title: 'SECU 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'secu301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
         {
           id: 'fin301',
           title: 'FIN 301',
-          path: replaceDynamicParam(Routes.Course, {
+          path: generatePath(Routes.Course, {
             courseId: 'fin301',
-            language: 'fr',
           }),
           icon: AiOutlineBook,
-          description:
-            'Get a better understanding of bitcoin with this lessons',
+          description: t('menu.btc101Description'),
         },
       ],
     },
-  ];
+  ]; */
 
   const sections: NavigationSection[] = [
     {
@@ -223,23 +238,22 @@ export const Header = () => {
           items: [
             {
               id: 'library',
-              title: 'Library',
+              title: t('words.library'),
               icon: IoLibraryOutline,
-              description: 'Discover plenty of books to improve your knowledge',
-              path: Routes.Library,
+              description: t('menu.libraryDescription'),
+              path: Routes.Books,
             },
             {
               id: 'podcasts',
-              title: 'Podcasts',
-              description: 'Explore the bitcoin ecosystem through podcasts',
+              title: t('words.podcasts'),
+              description: t('menu.podcastsDescription'),
               path: Routes.Podcasts,
               icon: BsMic,
             },
             {
               id: 'builders',
-              title: 'Builders',
-              description:
-                'Learn about the companies and projects that work at making bitcoin better and growing its adoption',
+              title: t('words.builders'),
+              description: t('menu.buildersDescription'),
               path: Routes.Builders,
               icon: IoBusinessOutline,
             },
@@ -257,50 +271,45 @@ export const Header = () => {
           items: [
             {
               id: 'wallets',
-              title: 'Wallets',
+              title: t('words.wallets'),
               path: Routes.Wallets,
               icon: BsWallet2,
-              description: 'Secure and use your bitcoins',
+              description: t('menu.walletsDescription'),
             },
             {
               id: 'exchanges',
-              title: 'Exchanges',
+              title: t('words.exchanges'),
               path: Routes.Exchanges,
               icon: BsCurrencyExchange,
-              description:
-                'Buy and sell bitcoins on exchanges and learn about P2P',
+              description: t('menu.exchangesDescription'),
             },
             {
               id: 'lightning',
-              title: 'Lightning',
+              title: t('words.lightning'),
               path: Routes.Lightning,
               icon: BsLightningCharge,
-              description:
-                'Manage your lightning node and use the lightning network',
+              description: t('menu.lightningDescription'),
             },
             {
               id: 'node',
-              title: 'Node',
+              title: t('words.node'),
               path: Routes.Node,
               icon: SiRaspberrypi,
-              description:
-                'Learn how to be self-sovereign with your own bitcoin node',
+              description: t('menu.nodeDescription'),
             },
             {
               id: 'mining',
-              title: 'Mining',
+              title: t('words.mining'),
               path: Routes.Mining,
               icon: BsCpu,
-              description:
-                'Mine your own bitcoins and learn about the mining industry',
+              description: t('menu.miningDescription'),
             },
             {
               id: 'merchants',
-              title: 'Merchants',
+              title: t('words.merchants'),
               path: Routes.Merchants,
               icon: BsCart,
-              description:
-                'Accept bitcoin payments and discover tools for merchants',
+              description: t('menu.merchantsDescription'),
             },
           ],
         },
@@ -309,37 +318,36 @@ export const Header = () => {
     {
       id: 'about-us',
       title: t('words.about-us'),
-      path: Routes.UnderConstruction,
+      path: Routes.AboutUs,
       items: [
         {
           id: 'about-us-nested',
           items: [
             {
               id: 'our-story',
-              title: 'Our story',
-              description: 'Learn about the story of the university',
+              title: t('words.ourStory'),
+              description: t('menu.ourStoryDescription'),
               path: Routes.UnderConstruction,
               icon: GrHistory,
             },
             {
               id: 'sponsors',
-              title: 'Sponsors & collaborators',
-              description: 'Discover our sponsors and collaborators',
+              title: t('words.sponsoringAndContributors'),
+              description: t('menu.sponsorsDescription'),
               path: Routes.UnderConstruction,
               icon: SiGithubsponsors,
             },
             {
               id: 'teachers',
-              title: 'Teachers',
-              description:
-                'Get to know our university teachers, apassionate bitcoiners',
+              title: t('words.teachers'),
+              description: t('menu.teachersDescription'),
               path: Routes.UnderConstruction,
               icon: FaChalkboardTeacher,
             },
             {
               id: 'support-us',
-              title: 'Support Us',
-              description: 'Find ways to support us, by any manner',
+              title: t('words.supportUs'),
+              description: t('menu.supportUsDescription'),
               path: Routes.UnderConstruction,
               icon: BiDonateHeart,
             },
@@ -360,7 +368,7 @@ export const Header = () => {
   const isScreenMd = useGreater('md');
 
   return (
-    <header className="flex fixed top-0 left-0 z-20 flex-row justify-between place-items-center px-4 lg:px-12 w-screen bg-primary-900 min-h-[92px]">
+    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-screen flex-row place-items-center justify-between p-3 px-8 md:min-h-[92px] lg:px-12">
       {isScreenMd ? (
         <FlyingMenu
           onClickLogin={openLoginModal}

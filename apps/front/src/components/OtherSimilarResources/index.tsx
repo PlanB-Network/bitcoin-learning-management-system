@@ -8,7 +8,7 @@ export const OtherSimilarResources = ({
   title,
 }: OtherSimilarResourcesProps) => {
   return (
-    <div className="pt-12 pb-20 w-full bg-primary-900">
+    <div className="bg-primary-900 w-full pb-20 pt-12">
       <h4 className="mx-auto mb-8 w-max text-4xl text-white">
         {title ?? 'Other similar resources'}
       </h4>
@@ -18,14 +18,14 @@ export const OtherSimilarResources = ({
           image ? (
             <div
               key={id}
-              className="relative w-44 bg-gray-100 rounded-md cursor-pointer group"
+              className="group relative w-44 cursor-pointer rounded-md bg-gray-100"
             >
               <img
                 className="w-full opacity-100 duration-200 group-hover:opacity-0"
                 alt="resource preview"
                 src={image}
               />
-              <div className="absolute top-1/2 left-1/2 w-max max-w-full text-center text-transparent duration-300 -translate-x-1/2 -translate-y-1/2 group-hover:text-primary-800">
+              <div className="group-hover:text-primary-800 absolute left-1/2 top-1/2 w-max max-w-full -translate-x-1/2 -translate-y-1/2 text-center text-transparent duration-300">
                 {title}
               </div>
             </div>

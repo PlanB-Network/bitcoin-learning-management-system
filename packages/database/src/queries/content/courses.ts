@@ -1,4 +1,5 @@
 import {
+  Course,
   CourseChapter,
   CourseChapterLocalized,
   JoinedCourse,
@@ -35,6 +36,7 @@ export const getCourseChaptersQuery = (id: string, language?: string) => {
     FROM content.course_chapters_localized
     WHERE course_id = ${id} 
     ${language ? sql`AND language = ${language}` : sql``}
+    ORDER BY chapter ASC
   `;
 };
 
@@ -44,13 +46,15 @@ export const getCourseChapterQuery = (
   language?: string
 ) => {
   return sql<
-    Pick<
+    (Pick<
       CourseChapterLocalized,
       'chapter' | 'language' | 'title' | 'raw_content'
-    >[]
+    > &
+      Pick<Course, 'last_commit' | 'last_updated'>)[]
   >`
-    SELECT chapter, language, title, raw_content
+    SELECT chapter, language, title, raw_content, c.last_updated, c.last_commit
     FROM content.course_chapters_localized
+    JOIN content.courses c ON c.id = course_id
     WHERE
       course_id = ${courseId} 
       AND chapter = ${chapterIndex}

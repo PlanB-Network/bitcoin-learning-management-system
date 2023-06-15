@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../../atoms/Button';
 import { useAppSelector } from '../../../hooks';
@@ -18,15 +19,17 @@ export const MetaElements = ({
   onClickRegister,
   onClickLogin,
 }: MetaElementsProps) => {
+  const { t } = useTranslation();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-  const isScreenMd = useGreater('md');
+  const isScreenLg = useGreater('md');
+  const isScreenXl = useGreater('lg');
 
   return (
     <div className="flex flex-row place-items-center space-x-6">
-      <LanguageSelector direction={isScreenMd ? 'down' : 'up'} />
+      <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
       {isLoggedIn ? (
-        <div className="text-white">Account</div>
+        <div className="text-white">{t('words.account')}</div>
       ) : (
         <div className="flex flex-row space-x-4">
           <Button
@@ -34,11 +37,12 @@ export const MetaElements = ({
             variant="tertiary"
             rounded
             onClick={onClickLogin}
+            size={isScreenXl ? 'm' : 's'}
           >
-            Register
+            {t('words.register')}
           </Button>
           <Button className="my-4" rounded onClick={onClickRegister}>
-            Login
+            {t('words.login')}
           </Button>
         </div>
       )}

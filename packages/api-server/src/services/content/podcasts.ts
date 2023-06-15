@@ -28,7 +28,7 @@ export const createGetPodcasts =
         process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
-        'logo.jpg'
+        'logo.jpeg'
       ),
     }));
   };
@@ -48,7 +48,7 @@ export const createGetPodcast =
           process.env['CDN_URL'] || 'http://localhost:8080',
           podcast.last_commit,
           podcast.path,
-          'logo.jpg'
+          'logo.jpeg'
         ),
       };
     }

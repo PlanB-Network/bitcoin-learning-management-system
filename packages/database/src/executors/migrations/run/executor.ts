@@ -1,7 +1,7 @@
 import path from 'path';
 
 import type { ExecutorContext } from '@nx/devkit';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 import { PostgresClient, createPostgresClient } from '../../../client';
 import { runMigrations } from '../../../utils/migrations';

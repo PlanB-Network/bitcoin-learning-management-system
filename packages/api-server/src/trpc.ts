@@ -1,7 +1,7 @@
 import { TRPCError, initTRPC } from '@trpc/server';
 import type { inferAsyncReturnType } from '@trpc/server';
 import type { CreateExpressContextOptions } from '@trpc/server/adapters/express';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { verify } from 'jsonwebtoken';
 import superjson from 'superjson';
 import { OpenApiMeta } from 'trpc-openapi';

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
 import headerImage from '../../../assets/lapin-diplome.png';
@@ -19,12 +20,12 @@ export const FlyingMenu = ({
   onClickLogin,
 }: FlyingMenuProps) => {
   return (
-    <nav className="flex flex-row justify-between items-center w-full">
+    <nav className="flex w-full flex-row items-center justify-between">
       <Link to={Routes.Home}>
         <img
           className="h-10 lg:h-16"
           src={headerImage}
-          alt="DecouvreBitcoin Logo"
+          alt={t('imagesAlt.decouvreBitcoinLogo')}
         />
       </Link>
 

@@ -1,21 +1,30 @@
 import { useRef } from 'react';
 
-import { Header } from '../../components';
+import { Footer, Header } from '../../components';
+
+interface MainLayoutProps {
+  children: JSX.Element | JSX.Element[];
+  footerVariant?: 'light' | 'dark' | 'course';
+  footerColor?: string;
+}
 
 export const MainLayout = ({
   children,
-}: {
-  children: JSX.Element | JSX.Element[];
-}) => {
+  footerVariant,
+  footerColor,
+}: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="pt-23 w-full h-full bg-gray-100" ref={box}>
+    <div className="h-full w-full bg-gray-100 pt-16 md:pt-24" ref={box}>
       {/* Header */}
       <Header />
 
       {/* Content */}
       {children}
+
+      {/* Footer */}
+      <Footer variant={footerVariant} color={footerColor} />
     </div>
   );
 };

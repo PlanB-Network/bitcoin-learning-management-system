@@ -1,35 +1,35 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import underConstructionImage from '../../assets/under-construction.png';
 import { MainLayout } from '../../components';
 
 export const UnderConstruction = () => {
+  const { t } = useTranslation();
   return (
-    <MainLayout>
+    <MainLayout footerColor="bg-gray-100">
       {/* Hero Section */}
-      <div className="flex flex-col items-center w-full p-10 space-y-16 h-full bg-gray-100 text-primary-700 font-primary">
+      <div className="text-primary-700 font-primary flex w-full flex-col items-center space-y-16 bg-gray-100 p-10">
         <section className="max-w-4xl ">
-          <h1 className="mb-10 text-4xl font-bold lg:text-5xl">Oops.</h1>
+          <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+            {t('underConstruction.pageTitle')}
+          </h1>
           <p className="text-base font-bold lg:text-lg">
-            A rabbit has tumbled down a hole. Because of this unexpected
-            adventure, this page is under a bit of construction at the moment.
-            We apologize for any inconvenience. Our team is in full gear to
-            complete this page. If you're interested in lending a hand, please
-            don't hesitate to check out our
+            {t('underConstruction.p1')}
             <Link
               className="mx-1 underline"
-              to="https://github.com/blc-org/sovereign-academy"
+              to="https://github.com/DecouvreBitcoin/sovereign-university"
             >
-              GitHub
+              {t('underConstruction.github')}
             </Link>
-            and consider joining our community!
+            {t('underConstruction.p2')}
           </p>
         </section>
         <div>
           <img
             src={underConstructionImage}
-            alt="Illustration of several rabbits working on a construction site"
-            className="max-w-3xl w-[70vw] lg:w-[50vw]"
+            alt={t('imagesAlt.underConstructionImage')}
+            className="w-[70vw] max-w-3xl lg:w-[50vw]"
           />
         </div>
       </div>

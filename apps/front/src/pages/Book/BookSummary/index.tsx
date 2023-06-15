@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { compose } from '../../../../src/utils';
 import arrowForward from '../../../assets/icons/arrow_forward.svg';
@@ -14,61 +14,72 @@ interface BookSummaryProps {
     title?: string;
     image?: string;
   };
-  content: string;
+  content?: string;
   title: string;
 }
 
 export const BookSummary = ({
   contributor,
   content,
-  title
+  title,
 }: BookSummaryProps) => {
   const { t } = useTranslation();
   const [isExtended, setIsExtended] = useState(false);
 
-  function DoExpand() {
-    setIsExtended(true);
-  }
-
-  function BottomButtons() {
-    if (!isExtended) {
-      return (
-        <>
-          <div className="flex gap-1 absolute -bottom-2 left-12">
-            {_.times(3, (i) => (
-              <img key={i} className="w-15" src={blueEllipse} />
-            ))}
-          </div>
-          <img onClick={DoExpand} className="absolute -bottom-4 right-10 w-8" src={arrowForward} />
-        </>
-      );
-    } else return <p className='flex absolute -bottom-6 right-12 text-xs text-primary-200 italic font-thin whitespace-nowrap'>{t('book.bookSummary.notice')}</p>
-
-  }
-
   return (
-    <>
-      <h4 className="text-4xl font-bold text-white ml-4 mb-8">{t('book.bookSummary.title')}</h4>
-      <Card className={compose('max-w-[740px] px-6 pb-2 relative ', isExtended ? '' : 'max-h-52')}>
+    <div className="flex flex-col">
+      <h4 className="mb-8 ml-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+        {t('book.bookSummary.title')}
+      </h4>
+      <Card
+        className={compose(
+          'max-w-[740px] px-6 pb-2 relative',
+          isExtended ? '' : 'max-h-52'
+        )}
+      >
         {/* remove max h if not needed here */}
-        <div className={(isExtended ? '' : 'max-h-36 overflow-hidden')}>
+        <div className={isExtended ? '' : 'max-h-36 overflow-hidden'}>
           <header className="flex flex-row justify-between">
             <div>
               <h5 className="mt-2 font-semibold">{title}</h5>
             </div>
           </header>
 
-          <p className="mt-8 mb-4 text-xs text-justify">{content}</p>
+          <p className="mb-4 mt-8 text-justify text-xs">{content}</p>
 
           {contributor && (
-            <div className='float-right'>
-              <Contributor prefix="Offered by a generous contributor" contributor={contributor} />
+            <div className="float-right">
+              <Contributor
+                prefix={t('book.offeredBy')}
+                contributor={contributor}
+              />
             </div>
           )}
         </div>
-
-        <BottomButtons />
       </Card>
-    </>
+      {isExtended ? (
+        <p className="text-primary-200 flex self-end whitespace-nowrap text-xs font-thin italic md:mr-8 lg:mr-10">
+          {t('book.bookSummary.notice')}
+        </p>
+      ) : (
+        <div className="flex w-full -translate-y-7 flex-row items-center justify-between px-14">
+          <div className="flex gap-1">
+            {_.times(3, (i) => (
+              <img
+                key={i}
+                className="w-4"
+                src={blueEllipse}
+                alt={t('imagesAlt.blueEllipse')}
+              />
+            ))}
+          </div>
+          <img
+            onClick={() => setIsExtended(true)}
+            alt={t('imagesAlt.forwardArrow')}
+            src={arrowForward}
+          />
+        </div>
+      )}
+    </div>
   );
 };

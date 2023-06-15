@@ -1,4 +1,5 @@
-import { BsSkipEnd, BsSkipStart, BsPlay } from 'react-icons/bs';
+import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
+
 import { Button } from '../../atoms/Button';
 import { compose } from '../../utils';
 

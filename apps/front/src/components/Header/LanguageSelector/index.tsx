@@ -1,9 +1,11 @@
 import { Popover, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Flag from '../../../atoms/Flag';
 import { compose } from '../../../utils';
+
+const languages = ['fr', 'en', 'es', 'de', 'it'];
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';
@@ -12,23 +14,30 @@ interface LanguageSelectorProps {
 export const LanguageSelector = ({
   direction = 'down',
 }: LanguageSelectorProps) => {
-  const [open, setOpen] = useState(false);
   const { i18n } = useTranslation();
+
+  const [open, setOpen] = useState(false);
+  const [activeLanguage, setActiveLanguage] = useState(
+    i18n.resolvedLanguage ?? 'en'
+  );
+
+  useEffect(() => {
+    setActiveLanguage(languages.includes(i18n.language) ? i18n.language : 'en');
+  }, [i18n.language]);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    setOpen(false);
   };
 
-  const languages = ['fr', 'en', 'es', 'de', 'it'];
-
   const filteredLanguages = languages
-    .filter((lng) => lng !== i18n.language)
+    .filter((lng) => lng !== activeLanguage)
     .sort();
 
   const orderedLanguages =
     direction === 'down'
-      ? [i18n.language, ...filteredLanguages]
-      : [...filteredLanguages, i18n.language];
+      ? [activeLanguage, ...filteredLanguages]
+      : [...filteredLanguages, activeLanguage];
 
   return (
     <Popover
@@ -36,8 +45,8 @@ export const LanguageSelector = ({
       onMouseLeave={() => setOpen(false)}
       className="relative px-2"
     >
-      <Popover.Button className="flex z-0 place-items-center text-sm font-semibold text-gray-100">
-        <Flag code={i18n.language} />
+      <Popover.Button className="z-0 flex place-items-center text-sm font-semibold text-gray-100">
+        <Flag code={activeLanguage} />
       </Popover.Button>
       <Transition
         show={open}

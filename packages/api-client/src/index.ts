@@ -6,11 +6,13 @@ import type { AppRouter } from '@sovereign-academy/api-server';
 import { LocalStorageKey } from '@sovereign-academy/types';
 
 export const trpc = createTRPCReact<AppRouter>();
-
 export const client = trpc.createClient({
   links: [
     httpBatchLink({
-      url: 'http://localhost:3000/api/trpc',
+      url:
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:3000/api/trpc'
+          : 'https://api.sovereignuniversity.org/trpc',
       headers: () => {
         return {
           authorization:

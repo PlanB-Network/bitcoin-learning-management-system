@@ -14,8 +14,8 @@ const theme = {
     xxs: ['10px', '14px'],
   },
   spacing: {
-    '23':'5.75rem'
-  }
+    23: '5.75rem',
+  },
 };
 
 export default {
@@ -80,6 +80,12 @@ export default {
         400: '#737F8C',
         500: '#4D555E',
         600: '#2E3338',
+      },
+      green: {
+        300: '#2C6E49',
+        500: '#2C6E49',
+        600: '#204B35',
+        800: '#172A1E',
       },
     },
     extend: theme,

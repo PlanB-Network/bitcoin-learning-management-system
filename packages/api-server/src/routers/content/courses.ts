@@ -1,13 +1,14 @@
 import { z } from 'zod';
 
 import {
-  firstRow,
-  getCourseChapterQuery,
   getCourseChaptersQuery,
   getCoursesQuery,
 } from '@sovereign-academy/database';
 
-import { createGetCourse } from '../../services/content';
+import {
+  createGetCourse,
+  createGetCourseChapter,
+} from '../../services/content';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 const getCoursesProcedure = publicProcedure
@@ -80,15 +81,11 @@ const getCourseChapterProcedure = publicProcedure
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    ctx.dependencies.postgres
-      .exec(
-        getCourseChapterQuery(
-          input.courseId,
-          Number(input.chapterIndex),
-          input.language
-        )
-      )
-      .then(firstRow)
+    createGetCourseChapter(ctx.dependencies)(
+      input.courseId,
+      Number(input.chapterIndex),
+      input.language
+    )
   );
 
 export const coursesRouter = createTRPCRouter({

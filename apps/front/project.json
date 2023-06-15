@@ -105,6 +105,10 @@
           "buildTarget": "front:build-storybook:ci"
         }
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/front/Dockerfile . -t university-front"
     }
   },
   "tags": []

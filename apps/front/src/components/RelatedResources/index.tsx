@@ -1,31 +1,36 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 type ResourceType = 'tutoriel' | 'course' | 'interview' | 'audioBook';
 
-const resourcesTypeLabelByKey: Record<ResourceType, string> = {
-  tutoriel: 'Tutoriel',
-  course: 'Course',
-  interview: 'Interview',
-  audioBook: 'AudioBook',
-};
-
 export const RelatedResources = (
   resources: Partial<Record<ResourceType, { label: string; path?: string }[]>>
 ) => {
+  const { t } = useTranslation();
+
+  const resourcesTypeLabelByKey: Record<ResourceType, string> = {
+    tutoriel: t('words.tutorial'),
+    course: t('words.course'),
+    interview: t('words.interview'),
+    audioBook: t('words.audioBook'),
+  };
+
   const resourceTypes = useMemo(
     () => Object.keys(resources) as ResourceType[],
     [resources]
   );
 
   return (
-    <div className="flex flex-col px-6 pt-3 pb-6 my-2 w-full rounded-xl bg-secondary-400 text-primary-800">
-      <h5 className="mb-2 text-base font-semibold">Related resources</h5>
-      <div className="flex flex-row justify-between w-full text-sm">
+    <div className="bg-secondary-400 text-primary-800 my-2 flex w-full flex-col rounded-xl px-6 pb-6 pt-3">
+      <h5 className="mb-2 text-base font-semibold">
+        {t('words.relatedResources')}
+      </h5>
+      <div className="flex w-full flex-row justify-between text-sm">
         {resourceTypes.map((key) => (
           <div key={key}>
             <h6>{resourcesTypeLabelByKey[key]}: </h6>
-            <ul className="pl-4 text-xs list-disc">
+            <ul className="list-disc pl-4 text-xs">
               {resources[key]?.map((resource, index) =>
                 resource.path ? (
                   <Link

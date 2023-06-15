@@ -15,7 +15,5 @@
       "default": "packages/database/migrations"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": ["name"]
 }

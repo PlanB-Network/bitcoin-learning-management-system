@@ -20,7 +20,10 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const sectionTitle = useMemo(() => {
     if ('path' in section)
       return (
-        <Link className="no-underline font-primary-700" to={section.path}>
+        <Link
+          className="text-2xl font-thin uppercase text-white no-underline"
+          to={section.path}
+        >
           {section.title}
         </Link>
       );
@@ -50,7 +53,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   }, [isOpen, section, toggle]);
 
   return (
-    <li key={section.id} className="overflow-hidden h-max">
+    <li key={section.id} className="h-max overflow-hidden">
       {sectionTitle}
       {'items' in section && (
         <div className={compose('overflow-hidden', isOpen ? 'h-max' : 'h-0')}>
@@ -58,10 +61,10 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
             Array.isArray(subSectionOrElements) ? (
               <ul
                 key={`${section.id}-${index}`}
-                className="overflow-auto flex-1 pl-0 my-0 list-none"
+                className="my-0 flex-1 list-none overflow-auto pl-0"
               >
                 {subSectionOrElements.map((element) => (
-                  <li className="pl-0 my-1 ml-0 list-none" key={element.id}>
+                  <li className="my-1 ml-0 list-none pl-0" key={element.id}>
                     <MenuElement key={element.id} element={element} />
                   </li>
                 ))}

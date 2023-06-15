@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   label?: string;
@@ -11,13 +12,14 @@ export const FilterBar = ({
   value: initialValue = '',
   onChange,
 }: Props) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState(initialValue);
 
   return (
-    <div className="flex flex-row justify-between items-center px-4 py-2 mx-2 bg-white rounded-3xl sm:rounded-full sm:px-6 text-xxs sm:text-xs sm:mx-8">
+    <div className="text-xxs mx-2 flex flex-row items-center justify-between rounded-3xl bg-white px-4 py-2 sm:mx-8 sm:rounded-full sm:px-6 sm:text-xs">
       <div className="mr-3 grow">
         {label && (
-          <label className="block mb-1 sm:mb-2 text-primary-700">{label}</label>
+          <label className="text-primary-700 mb-1 block sm:mb-2">{label}</label>
         )}
 
         <input
@@ -27,11 +29,11 @@ export const FilterBar = ({
             setValue(event.target.value);
             onChange(event.target.value);
           }}
-          className="inline-block py-1 w-full max-w-xl text-sm placeholder-gray-500 placeholder-opacity-50 bg-gray-100 rounded-full border-0 sm:text-base h-fit focus:outline-none focus:ring focus:ring-gray-300 focus:border-gray-100 dark:bg-gray-700 focus:black dark:black dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+          className="focus:black dark:black inline-block h-fit w-full max-w-xl rounded-full border-0 bg-gray-100 py-1 text-sm placeholder:text-gray-500 placeholder:text-opacity-50 focus:border-gray-100 focus:outline-none focus:ring focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:border-gray-500 dark:focus:ring-gray-900 sm:text-base"
         />
       </div>
-      <button className="italic font-thin text-right underline">
-        Additional criteria
+      <button className="text-right font-thin italic underline">
+        {t('words.additionalCriteria')}
       </button>
     </div>
   );

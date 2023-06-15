@@ -45,13 +45,13 @@ export const TextInput = ({
     if (isPassword) {
       return showValue ? (
         <BsEyeSlash
-          className="w-5 h-5 cursor-pointer"
+          className="h-5 w-5 cursor-pointer"
           onClick={() => setShowValue(false)}
           aria-hidden="true"
         />
       ) : (
         <BsEye
-          className="w-5 h-5 cursor-pointer"
+          className="h-5 w-5 cursor-pointer"
           onClick={() => setShowValue(true)}
           aria-hidden="true"
         />
@@ -61,7 +61,7 @@ export const TextInput = ({
     if (error)
       return (
         <BsExclamationTriangle
-          className="w-5 h-5 text-danger-100"
+          className="text-danger-100 h-5 w-5"
           aria-hidden="true"
         />
       );
@@ -74,7 +74,7 @@ export const TextInput = ({
       <div className="flex justify-between px-1">
         <label
           htmlFor="email"
-          className="block text-sm font-medium leading-6 text-gray-900"
+          className="block text-sm font-normal leading-6 text-gray-600"
         >
           {labelText}
         </label>
@@ -91,12 +91,12 @@ export const TextInput = ({
           {...(showValue && { type: 'text' })}
         />
         {/* Input right icon */}
-        <div className="flex absolute inset-y-0 right-0 items-center pr-3">
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           {inputIcon}
         </div>
       </div>
       {error && (
-        <p className="px-1 mt-0.5 text-sm text-danger-300" id="email-error">
+        <p className="text-danger-300 mt-0.5 px-1 text-sm" id="email-error">
           {error}
         </p>
       )}

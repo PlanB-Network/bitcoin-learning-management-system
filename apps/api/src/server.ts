@@ -1,6 +1,6 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import cors from 'cors';
-import express from 'express';
+import express, { Router } from 'express';
 import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
 import { appRouter, createContext } from '@sovereign-academy/api-server';
@@ -15,12 +15,20 @@ import { Dependencies } from './dependencies';
 
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const app = express();
+  const router = Router();
 
   // Parse JSON bodies
   app.use(express.json());
 
   // Enable cors
-  app.use(cors({ origin: 'http://localhost:5555' }));
+  app.use(
+    cors({
+      origin:
+        process.env.NODE_ENV === 'development'
+          ? '*'
+          : 'https://sovereignuniversity.org',
+    })
+  );
 
   // Basic request logger
   app.use((req, _res, next) => {
@@ -29,8 +37,8 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   });
 
   // Register tRPC routes
-  app.use(
-    '/api/trpc',
+  router.use(
+    '/trpc',
     createExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
@@ -38,8 +46,8 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   );
 
   // Register REST (OpenAPI) routes
-  app.use(
-    '/api',
+  router.use(
+    '/',
     createOpenApiExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
@@ -55,6 +63,12 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
           : undefined,
     })
   );
+
+  if (process.env.NODE_ENV === 'development') {
+    app.use('/api', router);
+  } else {
+    app.use('/', router);
+  }
 
   const server = app.listen(port, '0.0.0.0');
 

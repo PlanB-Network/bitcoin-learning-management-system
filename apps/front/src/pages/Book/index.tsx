@@ -3,7 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { trpc } from '@sovereign-academy/api-client';
 
@@ -11,36 +11,48 @@ import readingRabbit from '../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { ResourceLayout } from '../../components';
+import { useRequiredParams } from '../../utils';
 
 import { BookSummary } from './BookSummary';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
-  const { bookId, language } = useParams();
-  const { data: book } = trpc.content.getBook.useQuery({
+  const { bookId, language } = useRequiredParams();
+  const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
-    language: language as any, // TODO: understand why React think route params can be undefined and fix it
+    language,
   });
 
-  if (book?.summary_contributor_id) {
-    const userid = parseInt(book.summary_contributor_id, 0);
-    const { data: contributor } = trpc.content.getBuilder.useQuery({
-      id: userid,
-      language: 'en',
-    });
-  }
+  if (!book && isFetched) navigate('/404');
 
-  const isScreenMd = useGreater('sm');
-
-  /* During dev */
-  const fakeContributor = {
+  // TODO: change when we have contributors
+  const contributor = {
     username: 'Asi0',
     title: 'Bitcoiner',
     image:
-      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpg?raw=true',
+      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
   };
+
+  /* if (book?.summary_contributor_id) {
+    const userid = parseInt(book.summary_contributor_id, 0);
+    contributor = trpc.content.getBuilder.useQuery({
+      id: userid,
+      language: 'en',
+    }).data;
+  } else {
+    // TODO: during dev
+    contributor = {
+      username: 'Asi0',
+      title: 'Bitcoiner',
+      image:
+        'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
+    };
+  } */
+
+  const isScreenMd = useGreater('sm');
 
   function DownloadEbook() {
     alert(book?.download_url);
@@ -52,18 +64,18 @@ export const Book = () => {
 
   function displayAbstract() {
     return (
-      <div className="pl-4 mt-6 border-l-4 border-primary-600">
-        <h3 className="mb-4 text-lg font-semibold text-primary-900">
+      <div className="border-primary-600 mt-6 border-l-4 pl-4">
+        <h3 className="text-primary-900 mb-4 text-lg font-semibold">
           {t('book.abstract')}
         </h3>
-        <p className="max-w-2xl text-sm text-justify whitespace-pre-line text-ellipsis line-clamp-[20]">
+        <p className="mb-4 line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line pr-4 text-justify text-sm md:pr-8">
           {book?.description}
         </p>
       </div>
     );
   }
 
-  let buttonSize = 'xs';
+  let buttonSize: 'xs' | 's' = 'xs';
   if (isScreenMd) {
     buttonSize = 's';
   }
@@ -73,88 +85,89 @@ export const Book = () => {
       title={t('book.pageTitle')}
       tagLine={t('book.pageSubtitle')}
     >
-      <div className="flex flex-row justify-center">
-        <Card>
-          <div className="flex flex-col-reverse sm:flex-row items-center justify-between mx-auto sm:my-6 max-w-[90vw] sm:max-w-8xl">
-            <div className="flex flex-col mr-10">
-              <div>
+      {book && (
+        <div className="w-full">
+          <Card className="mx-2 md:mx-auto">
+            <div className="my-4 w-full grid-cols-1 grid-rows-1 sm:grid-cols-3 md:grid">
+              <div className="border-primary-800 flex flex-col items-center justify-center border-b-4 md:mr-10 md:border-0">
                 <img
-                  className="mx-auto max-h-72 sm:max-h-96"
-                  alt="book cover"
+                  className="max-h-72 sm:max-h-96"
+                  alt={t('imagesAlt.bookCover')}
                   src={book?.cover}
                 />
-              </div>
-              <div className="flex flex-row justify-evenly mt-4">
-                <Button
-                  size={buttonSize}
-                  disabled={!book?.download_url}
-                  variant="tertiary"
-                  className="mx-2 w-32"
-                  onClick={DownloadEbook}
-                >
-                  {t('book.buttonPdf')}
-                </Button>
-                <Button
-                  size={buttonSize}
-                  disabled={!book?.download_url}
-                  variant="tertiary"
-                  className="mx-2 w-32"
-                  onClick={BuyBook}
-                >
-                  {t('book.buttonBuy')}
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex flex-col mb-4">
-              <div>
-                <h2 className="mb-2 max-w-lg text-2xl font-bold sm:text-4xl text-primary-800">
-                  {book?.title}
-                </h2>
-
-                <div className="mt-2 text-sm">
-                  <h5 className="italic font-thin">
-                    {book?.author}, {book?.publication_year}.
-                  </h5>
+                <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
+                  <Button
+                    size={buttonSize}
+                    disabled={!book?.download_url}
+                    variant="tertiary"
+                    className="mx-2 w-32"
+                    onClick={DownloadEbook}
+                  >
+                    {t('book.buttonPdf')}
+                  </Button>
+                  <Button
+                    size={buttonSize}
+                    disabled={!book?.download_url}
+                    variant="tertiary"
+                    className="mx-2 w-32"
+                    onClick={BuyBook}
+                  >
+                    {t('book.buttonBuy')}
+                  </Button>
                 </div>
               </div>
 
-              <div className="mt-2 text-primary-700">
-                <span className="text-xs italic font-thin">
-                  {t('book.topicsAddressed')}
-                </span>
-                {book?.tags.map((object, i) => (
-                  <span key={i}>
-                    {i > 0 && ', '}
-                    {object.toUpperCase()}
+              <div className="col-span-2 my-4 flex flex-col md:mt-0">
+                <div>
+                  <h2 className="text-primary-800 mb-2 max-w-lg text-2xl font-bold sm:text-4xl">
+                    {book?.title}
+                  </h2>
+
+                  <div className="mt-2 text-sm">
+                    <h5 className="font-thin italic">
+                      {book?.author}, {book?.publication_year}.
+                    </h5>
+                  </div>
+                </div>
+
+                <div className="text-primary-700 mt-2">
+                  <span className="text-xs font-thin italic">
+                    {t('book.topicsAddressed')}
                   </span>
-                ))}
+                  {book?.tags.map((object, i) => (
+                    <span key={i}>
+                      {i > 0 && ', '}
+                      {object.toUpperCase()}
+                    </span>
+                  ))}
+                </div>
+                {isScreenMd && displayAbstract()}
               </div>
-              {isScreenMd && displayAbstract()}
+            </div>
+            {!isScreenMd && displayAbstract()}
+          </Card>
+
+          <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
+            <img
+              className="-ml-20 mr-10 mt-10 hidden h-80 max-w-[40%] flex-col sm:flex"
+              src={readingRabbit}
+              alt={t('imagesAlt.readingRabbit')}
+            />
+
+            <div className="flex flex-col">
+              {!book?.summary_text && (
+                <BookSummary
+                  contributor={contributor}
+                  title={book?.title ? book?.title : ''}
+                  content={
+                    book?.summary_text ? book?.summary_text : book?.description
+                  } /* TODO TEMP FOR UI DEV, replace book.description with '' */
+                />
+              )}
             </div>
           </div>
-          {!isScreenMd && displayAbstract()}
-        </Card>
-      </div>
-
-      <div className="flex flex-row justify-between p-2 mx-auto my-6 max-w-5xl">
-        <img
-          className="flex flex-col mt-10 -ml-20 h-80 mr-10 max-w-[40%] hidden sm:flex"
-          src={readingRabbit}
-        />
-
-        <div className="flex flex-col">
-          {!book?.summary_text && (
-            <BookSummary
-              contributor={fakeContributor}
-              title={book?.title ? book?.title : ''}
-              content={
-                book?.summary_text ? book?.summary_text : book?.description
-              } /* TEMP FOR UI DEV, replace book.description with '' */
-            />
-          )}
         </div>
-      </div>
+      )}
     </ResourceLayout>
   );
 };

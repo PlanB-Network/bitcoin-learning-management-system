@@ -74,7 +74,7 @@
       "description": "Beschreibung",
       "duration": "Dauer: {{hours}} Stunden",
       "goal": "GOAL: {{goal}}",
-      "level": "Stufe: $t(Worte.level.{{level}})",
+      "level": "Stufe: $t(words.level.{{level}})",
       "numberOfChapters": "Anzahl der Kapitel: {{number}}",
       "objectives": "Ziele",
       "objectivesTitle": "Was werden Sie mit diesem Kurs lernen?",

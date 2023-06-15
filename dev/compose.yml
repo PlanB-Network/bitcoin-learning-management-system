@@ -26,7 +26,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
     env_file:
-      - ./apps/api/.env
+      - ../apps/api/.env
     volumes:
       - cdn:$CDN_PATH
     ports:
@@ -43,19 +43,19 @@ services:
       - 4200:4200
       - 5555:5555
 
-  nginx:
+  cdn:
     image: nginx:latest
     ports:
       - 8080:80
     volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../docker/cdn/nginx.conf:/etc/nginx/nginx.conf
       - cdn:/var/www/cdn
 
   watcher:
     extends:
       file: ./compose.base.yml
       service: nx-app-base
-    command: pnpm nx watch --projects=api,api-server,api-client,content,database,types --includeDependentProjects -- nx run $$NX_PROJECT_NAME:build
+    command: pnpm nx watch --projects=api,api-server,api-client,content,database,types --includeDependentProjects -- nx run $$NX_PROJECT_NAME:build:development
 
 volumes:
   postgres:

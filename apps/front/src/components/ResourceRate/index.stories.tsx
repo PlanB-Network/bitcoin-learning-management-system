@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ResourceRate as ResourceRate } from '.';
+import { ResourceRate } from '.';
 
 const meta: Meta<typeof ResourceRate> = {
   title: 'Components/ResourceRate',

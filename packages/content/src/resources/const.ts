@@ -1,6 +1,6 @@
 export const supportedCategories = ['books', 'podcasts', 'builders'] as const;
 
-export type ResourceCategory = typeof supportedCategories[number];
+export type ResourceCategory = (typeof supportedCategories)[number];
 
 type AssertSupportedCategory = (
   path: string

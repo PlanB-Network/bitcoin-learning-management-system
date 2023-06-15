@@ -185,6 +185,7 @@ export const createProcessChangedCourse =
             ON CONFLICT (id) DO UPDATE SET
               level = EXCLUDED.level,
               hours = EXCLUDED.hours,
+              teacher = EXCLUDED.teacher,
               last_updated = EXCLUDED.last_updated,
               last_commit = EXCLUDED.last_commit
             RETURNING *
@@ -226,8 +227,6 @@ export const createProcessChangedCourse =
           excerpt: true,
           excerpt_separator: '+++',
         });
-
-        if (course.id === 'btc101') console.log(header);
 
         const data = header.data as CourseLocalized;
 
