@@ -1,25 +1,25 @@
 {
   "about": {
     "categories": {
-      "bunnyForerunner": "Hasen Vorläufer",
-      "designers": "Designer",
+      "bunnyForerunner": "Vorläufer Hase",
+      "designers": "Designers",
       "developpers": "Entwickler",
       "hareExplorer": "Hare Entdecker",
       "helpers": "Helfer",
       "professors": "Professoren",
-      "rabbitholeDigger": "Kaninchen-Loch Gräber",
-      "earlySupporters": "Frühe Gläubige"
+      "rabbitholeDigger": "Kaninchenbau Entdecker",
+      "earlySupporters": "Frühe Unterstützer"
     },
     "headerLink": "Werde ein Community-Sponsor",
-    "pageSubtitle": "Die Sovereign University bietet allen kostenlose Bitcoin-Ausbildung an.",
-    "thanks1": "Ein besonderes Dankeschön an unsere frühen Gläubigen, die uns über die Jahre hinweg geholfen haben.",
-    "thanks2": "Die Sovereign University ist eine Gemeinschaftsanstrengung. Es ist möglich dank zahlreicher Mitwirkender wie Professoren, Entwicklern, Designern und Helfern vieler Arten. Herzlichen Dank an alle von ihnen."
+    "pageSubtitle": "Die Sovereign University bietet allen eine kostenlose Bitcoin-Ausbildung an.",
+    "thanks1": "Ein besonderes Dankeschön an unsere frühen Unterstützer, die uns über die Jahre hinweg geholfen haben, weiterzumachen.",
+    "thanks2": "Die Sovereign University ist eine Gemeinschaftsprojekt. Sie ist dank zahlreicher Mitwirkende wie Professoren, Entwicklern, Designern und Helfern vieler Arten möglich. Herzlichen Dank an alle von ihnen."
   },
   "auth": {
     "accountCreated": "Ihr Konto wurde angelegt, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyAnAccount": "Haben Sie schon ein Konto ?",
     "canSaveProgress": "Du kannst jetzt deinen Fortschritt in der Bitcoin-Akademie speichern",
-    "connect": "Se connecter",
+    "connect": "Einloggen",
     "connectWithLn": "Mit LN verbinden",
     "contributorId": "Identifiant contributeur",
     "createAccount": "Créer un compte",
