@@ -21,50 +21,50 @@
     "canSaveProgress": "Du kannst jetzt deinen Fortschritt in der Bitcoin-Akademie speichern",
     "connect": "Einloggen",
     "connectWithLn": "Mit LN verbinden",
-    "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Cre<unk> ez-de un !",
-    "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
-    "getConnected": "Connectez vous !",
+    "contributorId": "Mitverfasser Id",
+    "createAccount": "Konto erstellen",
+    "createOne": "Erstellen Sie eins !",
+    "emailAddress": "Email Adresse",
+    "forgottenPassword": "Passwort vergessen ?",
+    "getConnected": "Loggen Sie sich ein!",
     "headerAccountCreated": "Konto erstellt",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
-    "passwordReinit": "Réinitilisation de mot de passe",
+    "noAccountNeeded": "Wusstest du das ? Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
+    "noAccountYet": "Haben Sie noch kein Konto?",
+    "passwordReinit": "Passwort Reinitialisierung",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordsDontMatch": "Passwörter stimmen nicht überein",
-    "sendLink": "Envoyer un lien",
-    "usernameRequired": "Benutzername ist erforderlich",
-    "usernameRules": "Benutzername muss mindestens 6 Zeichen enthalten"
+    "sendLink": "Link versenden",
+    "usernameRequired": "Benutzername erforderlich",
+    "usernameRules": "Der Benutzername muss mindestens 6 Zeichen enthalten"
   },
   "book": {
     "abstract": "Abstrakt",
     "bookSummary": {
-      "notice": "diese Zusammenfassung ist mit github, für jede Änderung oder Ergänzung verbunden",
-      "title": "Die Buchzusammenfassung"
+      "notice": "diese Inhaltsübersicht ist mit github verknüpft, für jede Änderung oder Ergänzung",
+      "title": "Die Buchübersicht"
     },
     "buttonBuy": "Kaufen",
     "buttonPdf": "PDF / E-Book",
     "offeredBy": "Von einem großzügigen Mitwirkenden angeboten",
-    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für einen Beitrag. Danke für die Bewertung und Freigabe !",
+    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für Änderungen. Danke fürs bewerten und teilen !",
     "pageTitle": "Die Bibliothek",
-    "topicsAddressed": "Themen angesprochen: "
+    "topicsAddressed": "Aufgegriffene Themen: "
   },
   "builders": {
-    "pageSubtitle": "Dieses Portal ist Open Source & offen für einen Beitrag. Vielen Dank für die Bewertung und das Teilen!",
-    "pageTitle": "Das Erbauerportal"
+    "pageSubtitle": "Dieses Portal ist Open Source & offen für Ergänzungen. Vielen Dank fürs bewerten und teilen!",
+    "pageTitle": "Das Builder Portal"
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "econ": "Österreichische Wirtschaft",
+      "econ": "Österreichische Ökonomie ",
       "fin": "Finanzen",
-      "ln": "Blitznetzwerk",
-      "min": "Bergbau",
+      "ln": "Lightning Network",
+      "min": "Mining",
       "secu": "Sicherheit & Privatsphäre"
     },
     "chapter": {
-      "count": "Kapitel n°{{count}}/{{total}}",
+      "count": "Kapitel {{count}}/{{total}}",
       "finish": "Kurs beenden",
       "next": "Fertig, gehen wir zum nächsten Kapitel!"
     },
@@ -73,8 +73,8 @@
       "curriculum": "Lehrplan",
       "description": "Beschreibung",
       "duration": "Dauer: {{hours}} Stunden",
-      "goal": "GOAL: {{goal}}",
-      "level": "Stufe: $t(words.level.{{level}})",
+      "goal": "ZIEL: {{goal}}",
+      "level": "Stufe: $t(Worte.level.{{level}})",
       "numberOfChapters": "Anzahl der Kapitel: {{number}}",
       "objectives": "Ziele",
       "objectivesTitle": "Was werden Sie mit diesem Kurs lernen?",
@@ -82,7 +82,7 @@
     },
     "explorer": {
       "footerTitle": "Unsere Professoren sind für Sie da!",
-      "footerp1": "An der Sovereign University verfügen unsere Professoren über vollständige Autonomie hinsichtlich ihres Inhalts und der Werkzeuge, die Sie erforschen möchten, solange sie den Code der Ethik befolgen. Sie sind leidenschaftliche Bitcoiner aus verschiedenen Hintergründen.",
+      "footerp1": "An der Sovereign University verfügen unsere Professoren über vollständige Autonomie hinsichtlich ihres Inhalts und der Werkzeuge, die Sie erforschen möchten, solange sie unseren Ethikkodex befolgen. Sie sind leidenschaftliche Bitcoiner aus verschiedenen Hintergründen.",
       "footerp2": "Wenn Sie einen Kurs verbessern oder einen eigenen Kurs anbieten möchten, können Sie dies einfach über den GitHub tun. Um einen Professor zu unterstützen, können Sie entweder den eigenen Kurs bewerten, den Professor direkt tippen oder ein Universitätsmitglied werden, um die Plattform zu unterstützen.",
       "moreToCome": ".... und mehr zu kommen!",
       "pageTitle": "Kurse",
