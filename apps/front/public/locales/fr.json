@@ -92,18 +92,18 @@
       "s2p2": "Vous serez en mesure de choisir votre propre voie et de la suivre, en acquérant des compétences et des connaissances aussi loin que votre motivation vous emmènera.",
       "s2p3": "Toutes nos formations sont 100% gratuits et rien ne peut vous arrêter.",
       "s2t1": "L'éducation Bitcoin n'est pas une destination",
-      "s3t1": "Tous les cours portent le nom de leur sujet principal"
+      "s3t1": "Toutes les cours portent le nom de leur sujet principal"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "Tous nos cours sont offerts gratuitement. L'université est basée sur l'adhésion par don et partage.",
+    "freeBanner": "Tous nos cours sont offerts gratuitement. L'université est basée sur l'adhésion par don et le partage.",
     "preview": {
       "by": "par {{teacher}}",
       "letsgo": "Allons-y"
     },
     "unreleased": {
-      "colcardAndSparrow": "Carte froide et moelle",
+      "colcardAndSparrow": "ColdCard et Sparrow",
       "financeIntroduction": "Introduction à la finance",
       "financialCrisis": "Analyse des crises majeures",
       "hyperinflation": "Etude des hyperinflations",
@@ -113,39 +113,39 @@
   "home": {
     "about": {
       "p1": "L'université vise à simplifier l'apprentissage du Bitcoin, permettant à des millions de personnes d'explorer en profondeur cette technologie révolutionnaire.",
-      "p2": "Nous créons et partageons les bons outils pour les apprenants, les enseignants et les constructeurs afin d'être plus efficaces dans leur voyage Bitcoin. Nos outils vont de cours de haute qualité à des tutoriels approfondis, des ressources, des séminaires, des ateliers et plus encore. ",
-      "p3": "Tout est 100% gratuit et fourni par des bitcoins passionnés de tout le monde. ",
-      "title": "Un peu à propos de nous",
+      "p2": "Nous créons et partageons les bons outils pour les apprenants, les enseignants et les constructeurs afin qu'ils puissent être plus efficaces dans leur voyage Bitcoin. Nos outils couvrent une large gamme de supports, allant de formations de haute qualité à des tutoriels approfondis, des ressources, des séminaires, des ateliers et plus encore. ",
+      "p3": "Tout est 100% gratuit et fourni par des bitcoineurs passionnés de partout dans le monde. ",
+      "title": "Notre histoire & nos valeurs",
       "values": {
         "bitcoinOnly": {
-          "text": "Nous nous concentrons sur la révolution du Bitcoin dans son ensemble sans tomber dans le commerce ou la merchandise.",
-          "title": "Bitcoin uniquement"
+          "text": "Nous nous concentrons sur la révolution du Bitcoin dans son ensemble sans tomber dans le trading et les arnaques.",
+          "title": "Bitcoin only"
         },
         "communityDriven": {
           "text": "Nous sommes avant tout une communauté d’enthousiastes qui s’entraident dans leur voyage Bitcoin.",
-          "title": "Conduite communautaire"
+          "title": "Community Driven"
         },
         "openSource": {
           "text": "Nous visons à promouvoir la libre circulation des connaissances.",
           "title": "Open Source"
         },
         "privacyFocused": {
-          "text": "Nous considérons la vie privée comme l'un des droits de l'homme les plus fondamentaux et le plus nécessaire pour progresser.",
-          "title": "Confidentialité centrée sur"
+          "text": "Nous considérons la vie privée comme l'un des droits les plus fondamentaux et nécessaire pour le progrès de notre société.",
+          "title": "Confidentialité"
         }
       }
     },
     "first": {
-      "extensive": "Cours étendus",
-      "extensiveEmphasized": "Étendue",
+      "extensive": "Large panel de formations",
+      "extensiveEmphasized": "Large panel de formations",
       "forEveryone": "Pour tous",
       "forEveryoneEmphasized": "tout le monde",
-      "free": "Tous gratuits",
+      "free": "Tout gratuit",
       "freeEmphasized": "gratuit",
       "languages": "Dans de nombreuses langues",
       "levels": "Du débutant à l'expert",
       "levelsEmphasized": "débutant vers un expert",
-      "tagLine": "Apprendre les bases aussi bien que les avancés",
+      "tagLine": "Apprendre les bases aussi bien que les sujets techniques",
       "title": "Plateforme d'apprentissage en ligne sur Bitcoin"
     },
     "fourth": {
