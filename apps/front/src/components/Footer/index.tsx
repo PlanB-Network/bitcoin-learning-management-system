@@ -10,6 +10,7 @@ import {
   BsTwitter,
   BsYoutube,
 } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as BackRabbit } from '../../assets/footer/back_rabbit.svg';
 import { ReactComponent as BackRabbit2 } from '../../assets/footer/back_rabbit_2.svg';
@@ -19,6 +20,7 @@ import { ReactComponent as Cloud } from '../../assets/footer/cloud.svg';
 import { ReactComponent as Hill } from '../../assets/footer/hill.svg';
 import { ReactComponent as Rabbit } from '../../assets/footer/rabbit.svg';
 import { ReactComponent as Tree } from '../../assets/footer/tree.svg';
+import { Routes } from '../../types';
 import { compose } from '../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -71,7 +73,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               )}
             />
           </div>
-          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-hidden bg-green-800">
+          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-800">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
               <div className="flex flex-row space-x-10">
                 <div className="flex flex-col">
@@ -79,9 +81,15 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                     {t('words.content')}
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>{t('words.courses')}</li>
-                    <li>{t('words.resources')}</li>
-                    <li>{t('words.tutorials')}</li>
+                    <li>
+                      <Link to={Routes.Courses}>{t('words.courses')}</Link>
+                    </li>
+                    <li>
+                      <Link to={Routes.Resources}>{t('words.resources')}</Link>
+                    </li>
+                    <li>
+                      <Link to={Routes.Tutorials}>{t('words.tutorials')}</Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="flex flex-col">
@@ -89,18 +97,30 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                     {t('words.about')}
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>{t('words.ourStory')}</li>
-                    <li>{t('words.sponsoringAndContributors')}</li>
-                    <li>{t('words.teachers')}</li>
+                    <li>
+                      <Link to={'#'}>{t('words.ourStory')}</Link>
+                    </li>
+                    <li>
+                      <Link to={'#'}>
+                        {t('words.sponsoringAndContributors')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={'#'}>{t('words.teachers')}</Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="flex flex-col">
                   <h4 className="mb-2 text-base font-semibold text-white">
-                    {t('words.helpUs')}
+                    <Link to={'#'}>{t('words.helpUs')}</Link>
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
-                    <li>{t('words.donations')}</li>
-                    <li>{t('words.merchandising')}</li>
+                    <li>
+                      <Link to={'#'}>{t('words.donations')}</Link>
+                    </li>
+                    <li>
+                      <Link to={'#'}>{t('words.merchandising')}</Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -109,11 +129,21 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   {t('words.followUs')}
                 </h4>
                 <div className="flex flex-row place-items-center space-x-6 text-sm text-white">
-                  <BsYoutube size={35} />
-                  <BsTwitter size={30} />
-                  <BsFacebook size={30} />
-                  <BsInstagram size={30} />
-                  <BsDiscord size={30} />
+                  <Link to={'https://www.youtube.com/@DecouvreBitcoin'}>
+                    <BsYoutube size={35} />
+                  </Link>
+                  <Link to={'https://twitter.com/DecouvreBitcoin'}>
+                    <BsTwitter size={30} />
+                  </Link>
+                  <Link to={'https://facebook.com/decouvreBitcoin'}>
+                    <BsFacebook size={30} />
+                  </Link>
+                  <Link to={'https://www.instagram.com/rogzy_21M'}>
+                    <BsInstagram size={30} />
+                  </Link>
+                  <Link to={'https://discord.gg/q9CFPmRNAD'}>
+                    <BsDiscord size={30} />
+                  </Link>
                 </div>
               </div>
               <h4 className="text-xs font-semibold text-white">
