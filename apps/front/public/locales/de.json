@@ -83,55 +83,55 @@
     "explorer": {
       "footerTitle": "Unsere Professoren sind für Sie da!",
       "footerp1": "An der Sovereign University verfügen unsere Professoren über vollständige Autonomie hinsichtlich ihres Inhalts und der Werkzeuge, die Sie erforschen möchten, solange sie unseren Ethikkodex befolgen. Sie sind leidenschaftliche Bitcoiner aus verschiedenen Hintergründen.",
-      "footerp2": "Wenn Sie einen Kurs verbessern oder einen eigenen Kurs anbieten möchten, können Sie dies einfach über den GitHub tun. Um einen Professor zu unterstützen, können Sie entweder den eigenen Kurs bewerten, den Professor direkt tippen oder ein Universitätsmitglied werden, um die Plattform zu unterstützen.",
-      "moreToCome": ".... und mehr zu kommen!",
+      "footerp2": "Wenn du einen Kurs verbessern oder einen eigenen Kurs anbieten möchtest, kannst du dies einfach über GitHub tun. Um einen Professor zu unterstützen, kannst du entweder seinen Kurs bewerten, den Professor direkt tippen oder ein Universitätsmitglied werden, um die Plattform zu unterstützen.",
+      "moreToCome": ".... und mehr am kommen!",
       "pageTitle": "Kurse",
-      "s1p1": "Hier finden Sie eine große Anzahl von Kursen rund um Bitcoin als Ganzes dieser Bildungsinhalt ist biologisch und wächst mit Bitcoin weiter. Alle Inhalte sind kostenlos, Open-Source und für jedermann zugänglich. Bitte schauen Sie sich den Kursindex an, der in Kreisen organisiert ist, um sich an den Lernpfad eines jeden anzupassen.",
-      "s1t1": "Willkommen im Herzen der Souveränen Universität: das Tor zur Bitcoin-Bildung.",
-      "s2p1": "Wenn Sie angefangen haben, das Bitcoin Kaninchenloch zu erkunden, müssen Sie wissen, dass es eine endlose Reise mit vielen Pfaden ist. Hier an der Universität verstehen wir dies und gestalten unsere Bildungsinhalte als nicht-linear, autonom und so umfangreich, wie es sein kann.",
-      "s2p2": "Sie werden in der Lage sein, Ihren eigenen Weg zu wählen und ihn zu beschreiten, indem Sie Fähigkeiten und Wissen gewinnen, soweit Ihre Motivation geht.",
-      "s2p3": "Alle unsere Kurse sind 100% kostenlos, so dass Sie durch nichts gestoppt werden können.",
-      "s2t1": "Bitcoin-Ausbildung ist eine Reise ohne Ziel",
-      "s3t1": "Alle Kurse sind nach ihrem Hauptthema benannt"
+      "s1p1": "Hier findest du eine große Anzahl an Kursen rund um Bitcoin als Ganzes und mehr Themen. Die Bildungsinhalte wachsen organisch, wie Bitcoin auch weiterwächst. Alle Inhalte sind kostenlos, Open-Source und für jedermann zugänglich. Bitte schaue dir deine Kursübersicht an, die in Kreisen organisiert ist, um sich an den jeweiligen Lernweg anzupassen.",
+      "s1t1": "Willkommen im Herzen der Sovereign University: das Tor zur Bitcoin-Bildung.",
+      "s2p1": "Wenn du angefangen hast, den Bitcoin Kaninchenbau zu erkunden, musst du wissen, dass es eine endlose Reise mit vielen Gängen ist. Hier an der Universität verstehen wir dies und gestalten unsere Bildungsinhalte als nicht-linear, autonom und so umfangreich, wie es sein kann.",
+      "s2p2": "Du wirst in der Lage sein, deinen eigenen Weg zu wählen und ihn zu beschreiten, indem du Fähigkeiten und Wissen gewonnst, soweit deine Motivation geht.",
+      "s2p3": "Alle unsere Kurse sind 100% kostenlos, sodass du durch nichts gestoppt werden kannst.",
+      "s2t1": "Bitcoin-Bildung ist eine Reise ohne Ziel",
+      "s3t1": "Alle Kurse sind nach deren Hauptthema benannt"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "Alle unsere Kurse werden kostenlos angeboten. Die Universität basiert auf der Mitgliedschaft durch Spenden und Teilen.",
+    "freeBanner": "Alle unsere Kurse werden kostenlos angeboten. Die Universität basiert auf Mitgliedschaften durch Spenden und Teilen.",
     "preview": {
       "by": "von {{teacher}}",
       "letsgo": "Los geht's"
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Einführung a<unk> la finance",
+      "financeIntroduction": "Einführung in Finanzen",
       "financialCrisis": "Analyse der Finanzkrisen",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "hyperinflation": "Analyse der Hyperinflation",
+      "theoreticalLightning": "Theoretischer Kurs über das Lightning Netzwerk für Fortgeschrittene"
     }
   },
   "home": {
     "about": {
       "p1": "Die Sovereign University hat sich zum Ziel gesetzt, Bitcoin Lernen zu vereinfachen und es Millionen von Menschen zu ermöglichen, diese revolutionäre Technologie gründlich zu erforschen.",
-      "p2": "Wir erstellen und teilen die richtigen Werkzeuge für Lernende, Lehrer und Bauherren, um auf ihrer Bitcoin-Reise effizienter zu sein. Unsere Tools reichen von qualitativ hochwertigen Kursen über vertiefte Tutorials, Ressourcen, Seminare, Workshops und vieles mehr. ",
+      "p2": "Wir erstellen und teilen die richtigen Werkzeuge für Lernende, Lehrer und Mitwirkende, um auf ihrer Bitcoin-Reise effizienter zu sein. Unsere Tools reichen von qualitativ hochwertigen Kursen über vertiefte Tutorials, Ressourcen, Seminare, Workshops und vieles mehr. ",
       "p3": "Alles ist 100% kostenlos und von leidenschaftlichen Bitcoinern aus aller Welt zur Verfügung gestellt. ",
-      "title": "Ein wenig über uns",
+      "title": "Etwas über uns",
       "values": {
         "bitcoinOnly": {
-          "text": "Wir konzentrieren uns auf die Bitcoin-Revolution als Ganzes, ohne in Handel oder Shitcoinerie zu verfallen.",
-          "title": "Nur Bitcoin"
+          "text": "Wir konzentrieren uns auf die Bitcoin-Revolution als Ganzes, ohne in trading oder shotcoinerei zu verfallen.",
+          "title": "Bitcoin only"
         },
         "communityDriven": {
-          "text": "Wir sind in erster Linie eine Gemeinschaft von Enthusiasmus, die einander auf ihrer Bitcoin-Reise behilflich ist.",
-          "title": "Community-Driven"
+          "text": "Wir sind in erster Linie eine Gemeinschaft von Enthusiasten, die einander auf ihrer Bitcoin-Reise helfen.",
+          "title": "Community gesteuert"
         },
         "openSource": {
-          "text": "Unser Ziel ist es, den freien Wissensfluss zu fördern.",
+          "text": "Unser Ziel ist es, den freien Fluss von Wissen zu fördern.",
           "title": "Open Source"
         },
         "privacyFocused": {
-          "text": "Wir halten die Privatsphäre für eines der grundlegendsten Menschenrechte und für den Fortschritt am wichtigsten.",
-          "title": "Datenschutz fokussiert"
+          "text": "Wir halten die Privatsphäre für eines der grundlegendsten Menschenrechte und wichtig für den Fortschritt.",
+          "title": "Fokus auf Privatsphäre"
         }
       }
     },
@@ -338,7 +338,7 @@
     "supportUs": "Unterstütze uns",
     "teachers": "Lehrer",
     "termsAndConditions": "Nutzungsbedingungen",
-    "theSovereignUniversity": "Die staatliche Universität",
+    "theSovereignUniversity": "Die Souveräne Universität",
     "tutorial": "Tutorial",
     "tutorials": "Anleitungen",
     "video": "Video",
