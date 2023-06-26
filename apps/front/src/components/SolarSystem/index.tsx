@@ -166,6 +166,8 @@ const Planet = ({
 export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
   const navigate = useNavigate();
   const isScreenMd = useGreater('sm');
+  const isScreenLg = useGreater('md');
+  const isScreenXl = useGreater('lg');
   const [, setHoveredCourse] = useState<Course | null>(null);
 
   const ref = useRef<SVGSVGElement | null>(null);
@@ -181,7 +183,14 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
         .select(ref.current)
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr('viewBox', '-70 -50 140 100')
+        .attr(
+          'viewBox',
+          isScreenXl
+            ? '-100 -50 200 100'
+            : isScreenLg
+            ? '-70 -50 140 100'
+            : '-50 -50 100 100'
+        )
         .attr('font-family', 'Poppins')
         .attr('text-anchor', 'middle');
 
@@ -279,7 +288,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
         svg.style('pointer-events', 'none');
       }
     }
-  }, [orbits, isScreenMd, navigate]);
+  }, [orbits, isScreenMd, isScreenLg, isScreenXl, navigate]);
 
   return (
     <div className="relative mx-auto my-5 w-full overflow-hidden">
