@@ -79,7 +79,7 @@ export const Resources = () => {
     <MainLayout footerVariant="light">
       <div className="flex flex-col justify-center bg-gray-100">
         <div className="bg-primary-900 relative mb-10 flex flex-col items-center px-5 pb-10 pt-8 text-white md:mb-40 md:pb-80 lg:px-16 lg:pb-60">
-          <div className="flex w-full grid-cols-2 flex-col items-center justify-evenly md:grid md:pl-8 lg:space-x-5 lg:pl-12">
+          <div className="flex grid-cols-2 flex-col items-center justify-evenly md:grid md:pl-8 lg:space-x-5 lg:pl-12">
             <div className="px-5 lg:px-0">
               <h1 className="z-10 -ml-6 mb-5 text-[62px] font-thin md:text-7xl lg:text-8xl xl:text-[112px]">
                 {t('resources.pageTitle')}
