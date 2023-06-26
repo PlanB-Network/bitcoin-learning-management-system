@@ -23,13 +23,13 @@ export const FlyingMenu = ({
     <nav className="flex w-full flex-row items-center justify-between">
       <Link to={Routes.Home}>
         <img
-          className="h-10 lg:h-16"
+          className="h-10 md:h-12 lg:h-16"
           src={headerImage}
           alt={t('imagesAlt.decouvreBitcoinLogo')}
         />
       </Link>
 
-      <ul className="flex flex-row space-x-6 text-white lg:space-x-10">
+      <ul className="flex flex-row items-center space-x-5 text-white lg:space-x-10">
         {sections.map((section, index) => (
           <li className="font-primary" key={section.id}>
             <FlyingMenuSection section={section} />
