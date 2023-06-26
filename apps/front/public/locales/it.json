@@ -4,11 +4,11 @@
       "bunnyForerunner": "Forerunner Coniglio",
       "designers": "Designers",
       "developpers": "Sviluppatori",
+      "earlySupporters": "Credenti Anticipati",
       "hareExplorer": "Esploratore Di Lepre",
       "helpers": "Aiutanti",
       "professors": "Professori",
-      "rabbitholeDigger": "Digger Coniglio-Foro",
-      "earlySupporters": "Credenti Anticipati"
+      "rabbitholeDigger": "Digger Coniglio-Foro"
     },
     "headerLink": "Diventa uno sponsor della comunità",
     "pageSubtitle": "La Sovrana Università offre gratuitamente l'istruzione Bitcoin a tutti.",
@@ -217,7 +217,7 @@
     "nodeDescription": "Impara ad essere sovrano con il tuo nodo bitcoin",
     "ourStoryDescription": "Scopri la storia dell'università",
     "podcastsDescription": "Esplora l'ecosistema bitcoin attraverso podcast",
-    "sponsorsDescription": "Scopri i nostri sponsor e collaboratori",
+    "sponsorsDescription": "Scopri i nostri sponsor e i principali contributori",
     "supportUsDescription": "Trova modi per supportarci, in qualsiasi modo",
     "teachersDescription": "Conosci i nostri insegnanti universitari, bitcoiner apassionati",
     "walletsDescription": "Proteggi e utilizza i tuoi bitcoin"

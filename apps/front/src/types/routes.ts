@@ -5,8 +5,12 @@ export enum Routes {
    * Available in MVP
    */
   Home = '/',
-  AboutUs = '/about-us',
   UnderConstruction = '/under-construction',
+
+  // About Us
+  AboutUs = '/about-us',
+  Manifesto = '/manifesto',
+  SponsorsAndContributors = '/sponsors-and-contributors',
 
   // Courses
   Courses = '/courses',

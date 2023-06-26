@@ -5,20 +5,19 @@ import {
 import { capitalize } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
-import { BiDonateHeart } from 'react-icons/bi';
 import {
   BsCart,
   BsCpu,
   BsCurrencyExchange,
+  BsFileText,
+  BsHeart,
   BsLightningCharge,
   BsMic,
   BsPlus,
   BsWallet2,
 } from 'react-icons/bs';
-import { FaChalkboardTeacher } from 'react-icons/fa';
-import { GrHistory } from 'react-icons/gr';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
-import { SiGithubsponsors, SiRaspberrypi } from 'react-icons/si';
+import { SiRaspberrypi } from 'react-icons/si';
 import { generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -324,20 +323,20 @@ export const Header = () => {
           id: 'about-us-nested',
           items: [
             {
-              id: 'our-story',
-              title: t('words.ourStory'),
-              description: t('menu.ourStoryDescription'),
-              path: Routes.UnderConstruction,
-              icon: GrHistory,
+              id: 'manifesto',
+              title: t('words.manifesto'),
+              description: t('menu.manifestoDescription'),
+              path: Routes.Manifesto,
+              icon: BsFileText,
             },
             {
-              id: 'sponsors',
+              id: 'sponsors-and-contributors',
               title: t('words.sponsoringAndContributors'),
               description: t('menu.sponsorsDescription'),
               path: Routes.UnderConstruction,
-              icon: SiGithubsponsors,
+              icon: BsHeart,
             },
-            {
+            /*             {
               id: 'teachers',
               title: t('words.teachers'),
               description: t('menu.teachersDescription'),
@@ -350,7 +349,7 @@ export const Header = () => {
               description: t('menu.supportUsDescription'),
               path: Routes.UnderConstruction,
               icon: BiDonateHeart,
-            },
+            }, */
           ],
         },
       ],

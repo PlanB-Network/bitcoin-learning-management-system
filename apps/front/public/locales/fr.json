@@ -4,11 +4,11 @@
       "bunnyForerunner": "Lapin précurseur",
       "designers": "Designers",
       "developpers": "Développeurs",
+      "earlySupporters": "Soutiens de la première heure",
       "hareExplorer": "Lièvre Explorateur",
       "helpers": "Soutiens",
       "professors": "Professeurs",
-      "rabbitholeDigger": "Rabbit-Hole Digger",
-      "earlySupporters": "Soutiens de la première heure"
+      "rabbitholeDigger": "Rabbit-Hole Digger"
     },
     "headerLink": "Devenir sponsor de la communauté",
     "pageSubtitle": "L'Université Sovereign offre gratuitement une éducation Bitcoin à tous.",
@@ -217,7 +217,7 @@
     "nodeDescription": "Apprenez à être autosouverain avec votre propre nœud bitcoin",
     "ourStoryDescription": "En savoir plus sur l'histoire de l'université",
     "podcastsDescription": "Explorez l'écosystème bitcoin à travers des podcasts",
-    "sponsorsDescription": "Découvrez nos sponsors et collaborateurs",
+    "sponsorsDescription": "Découvrez nos sponsors et principaux contributeurs",
     "supportUsDescription": "Trouver des moyens de nous soutenir, de quelque manière que ce soit",
     "teachersDescription": "Apprenez à connaître nos professeurs universitaires, nos Bitcoiners apassionnés",
     "walletsDescription": "Sécurisez et utilisez vos bitcoins"
