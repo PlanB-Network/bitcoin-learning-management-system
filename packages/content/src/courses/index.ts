@@ -149,9 +149,9 @@ export const createProcessChangedCourse =
           // If course file was moved, update the id
 
           await transaction`
-            UPDATE content.resources
+            UPDATE content.courses
             SET id = ${course.id}
-            WHERE path = ${main.previousPath.split('/')[1]}
+            WHERE id = ${main.previousPath.split('/')[1]}
           `;
         }
 
