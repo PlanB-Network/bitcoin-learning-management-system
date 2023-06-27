@@ -40,7 +40,6 @@ export const createProcessChangedFiles =
      */
     const tutorials = groupByTutorial(filteredFiles);
     for (const tutorial of tutorials) {
-      // TODO: Uncomment when we have tutorials
-      // await processChangedTutorial(tutorial);
+      await processChangedTutorial(tutorial);
     }
   };

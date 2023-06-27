@@ -10,6 +10,10 @@ export default interface Tutorials {
 
   path: string;
 
+  category: string;
+
+  subcategory?: string;
+
   level: string;
 
   builder?: string;
@@ -26,6 +30,10 @@ export interface TutorialsInitializer {
 
   path: string;
 
+  category: string;
+
+  subcategory?: string;
+
   level: string;
 
   builder?: string;
@@ -41,6 +49,10 @@ export interface TutorialsMutator {
   id?: TutorialsId;
 
   path?: string;
+
+  category?: string;
+
+  subcategory?: string;
 
   level?: string;
 

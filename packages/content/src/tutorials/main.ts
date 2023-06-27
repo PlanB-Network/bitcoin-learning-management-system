@@ -12,6 +12,7 @@ import { ChangedTutorial, parseDetailsFromPath } from '.';
 
 interface TutorialMain {
   level: string;
+  category?: string;
   builder?: string;
   tags?: string[];
 }
@@ -32,7 +33,7 @@ export const createProcessMainFile =
     }
 
     if (file.kind === 'renamed') {
-      // If tutorial file was moved, update the id
+      // If tutorial file was moved, update the path
 
       const { path: previousPath } = parseDetailsFromPath(file.previousPath);
 
@@ -60,14 +61,19 @@ export const createProcessMainFile =
         .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (category, path, last_updated, last_commit)
+        INSERT INTO content.tutorials (path, category, subcategory, level, builder, last_updated, last_commit)
         VALUES (
-          ${tutorial.category}, 
           ${tutorial.path},
+          ${tutorial.category},
+          ${parsedTutorial.category}, 
+          ${parsedTutorial.level},
+          ${parsedTutorial.builder},
           ${lastUpdated.time}, 
           ${lastUpdated.commit}
         )
-        ON CONFLICT (category, path) DO UPDATE SET
+        ON CONFLICT (path) DO UPDATE SET
+          category = EXCLUDED.category,
+          subcategory = EXCLUDED.subcategory,
           level = EXCLUDED.level,
           builder = EXCLUDED.builder,
           last_updated = EXCLUDED.last_updated,

@@ -14,10 +14,6 @@ export default interface TutorialsLocalized {
 
   name: string;
 
-  goal: string;
-
-  raw_description: string;
-
   raw_content: string;
 }
 
@@ -29,10 +25,6 @@ export interface TutorialsLocalizedInitializer {
 
   name: string;
 
-  goal: string;
-
-  raw_description: string;
-
   raw_content: string;
 }
 
@@ -43,10 +35,6 @@ export interface TutorialsLocalizedMutator {
   language?: TutorialsLocalizedLanguage;
 
   name?: string;
-
-  goal?: string;
-
-  raw_description?: string;
 
   raw_content?: string;
 }

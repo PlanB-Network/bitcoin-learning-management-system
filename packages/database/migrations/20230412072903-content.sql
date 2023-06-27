@@ -143,10 +143,20 @@ CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
   PRIMARY KEY (course_id, language, chapter)
 );
 
+CREATE TABLE IF NOT EXISTS content.course_tags (
+  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  tag_id INTEGER NOT NULL REFERENCES content.tags(id) ON DELETE CASCADE,
+
+  PRIMARY KEY (course_id, tag_id)
+);
+
 --- TUTORIALS
 CREATE TABLE IF NOT EXISTS content.tutorials (
   id SERIAL PRIMARY KEY,
   path VARCHAR(255) UNIQUE NOT NULL,
+
+  category VARCHAR(255) NOT NULL,
+  subcategory VARCHAR(255),
 
   level VARCHAR(255) NOT NULL,
   builder VARCHAR(255),
@@ -161,9 +171,14 @@ CREATE TABLE IF NOT EXISTS content.tutorials_localized (
 
   -- Per translation
   name TEXT NOT NULL,
-  goal TEXT NOT NULL,
-  raw_description TEXT NOT NULL,
   raw_content TEXT NOT NULL,
 
   PRIMARY KEY (tutorial_id, language)
+);
+
+CREATE TABLE IF NOT EXISTS content.tutorial_tags (
+  tutorial_id INTEGER NOT NULL REFERENCES content.tutorials(id) ON DELETE CASCADE,
+  tag_id INTEGER NOT NULL REFERENCES content.tags(id) ON DELETE CASCADE,
+
+  PRIMARY KEY (tutorial_id, tag_id)
 );

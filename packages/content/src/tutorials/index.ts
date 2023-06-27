@@ -34,7 +34,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (tutorials/)
-  if (pathElements.length < 2) throw new Error('Invalid resource path');
+  if (pathElements.length < 4) throw new Error('Invalid resource path');
 
   // If pathElements has 'assets', get the path until 'assets'
   // If not, get the direct parent of the file
@@ -45,7 +45,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   return {
     category: pathElements[1],
     path: tutorialPath,
-    language: pathElements[2].replace(/\..*/, '') as Language,
+    language: pathElements.at(-1)?.replace(/\..*/, '') as Language,
   };
 };
 
@@ -112,7 +112,7 @@ export const createProcessChangedTutorial =
 
           await transaction`
             DELETE FROM content.tutorials_localized
-            WHERE course_id = ${id} AND language = ${file.language}
+            WHERE tutorial_id = ${id} AND language = ${file.language}
           `;
 
           continue;
@@ -127,20 +127,16 @@ export const createProcessChangedTutorial =
 
         await transaction`
           INSERT INTO content.tutorials_localized (
-            tutorial_id, language, name, goal, raw_description, raw_content
+            tutorial_id, language, name, raw_content
           )
           VALUES (
             ${id},
             ${file.language},
-            ${header.data['name']},
-            ${header.data['goal']?.trim()},
-            ${header.excerpt},
+            ${header.data['name'] ?? 'Temporary name'},
             ${header.content.trim()}
           )
           ON CONFLICT (tutorial_id, language) DO UPDATE SET
             name = EXCLUDED.name,
-            goal = EXCLUDED.goal,
-            raw_description = EXCLUDED.raw_description,
             raw_content = EXCLUDED.raw_content
         `;
       }
