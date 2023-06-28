@@ -18,6 +18,7 @@ import { Podcast } from './pages/Podcast';
 import { Podcasts } from './pages/Podcasts';
 import { Resources } from './pages/Resources';
 import { Tutorials } from './pages/Tutorials';
+import { TutorialCategory } from './pages/Tutorials/TutorialCategory';
 import { UnderConstruction } from './pages/UnderConstruction';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
@@ -81,6 +82,10 @@ export const App = () => {
         />
 
         <Route path={RoutesEnum.Tutorials} element={<Tutorials />} />
+        <Route
+          path={RoutesEnum.TutorialCategory}
+          element={<TutorialCategory />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Route>

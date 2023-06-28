@@ -16,7 +16,24 @@ const getTutorialsProcedure = publicProcedure
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    ctx.dependencies.postgres.exec(getTutorialsQuery(input?.language))
+    ctx.dependencies.postgres.exec(
+      getTutorialsQuery(undefined, input?.language)
+    )
+  );
+
+const getTutorialsByCategoryProcedure = publicProcedure
+  .meta({ openapi: { method: 'GET', path: '/content/tutorials/{category}' } })
+  .input(
+    z.object({
+      category: z.string(),
+      language: z.string().optional(),
+    })
+  )
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    ctx.dependencies.postgres.exec(
+      getTutorialsQuery(input.category, input.language)
+    )
   );
 
 const getTutorialProcedure = publicProcedure
@@ -35,6 +52,7 @@ const getTutorialProcedure = publicProcedure
   );
 
 export const tutorialsRouter = createTRPCRouter({
+  getTutorialsByCategory: getTutorialsByCategoryProcedure,
   getTutorials: getTutorialsProcedure,
   getTutorial: getTutorialProcedure,
 });

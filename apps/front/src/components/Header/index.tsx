@@ -5,25 +5,15 @@ import {
 import { capitalize } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
-import {
-  BsCart,
-  BsCpu,
-  BsCurrencyExchange,
-  BsFileText,
-  BsHeart,
-  BsLightningCharge,
-  BsMic,
-  BsPlus,
-  BsWallet2,
-} from 'react-icons/bs';
+import { BsFileText, BsHeart, BsMic, BsPlus } from 'react-icons/bs';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
-import { SiRaspberrypi } from 'react-icons/si';
 import { generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 import { JoinedCourse } from '@sovereign-academy/types';
 
 import { useDisclosure } from '../../hooks';
+import { TUTORIALS_CATEGORIES } from '../../pages/Tutorials/types';
 import { Routes } from '../../types';
 // import { AuthModal } from '../AuthModal';
 
@@ -101,125 +91,6 @@ export const Header = () => {
     }
   );
 
-  /*   const coursesItems = [
-    {
-      id: 'beginners',
-      title: t('words.beginner'),
-      items: [
-        {
-          id: 'btc101',
-          title: 'BTC101',
-          path: generatePath(Routes.Course, {
-            courseId: 'btc101',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'ln101',
-          title: 'LN101',
-          path: generatePath(Routes.Course, {
-            courseId: 'ln101',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'econ101',
-          title: 'ECON101',
-          path: generatePath(Routes.Course, {
-            courseId: 'econ101',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'more-xxx-101',
-          title: t('words.more'),
-          path: Routes.Courses,
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-      ],
-    },
-    {
-      id: 'intermediate',
-      title: t('words.intermediate'),
-      items: [
-        {
-          id: 'btc201',
-          title: 'BTC201',
-          path: generatePath(Routes.Course, {
-            courseId: 'btc201',
-          }),
-
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'econ201',
-          title: 'ECON201',
-          path: generatePath(Routes.Course, {
-            courseId: 'econ201',
-          }),
-
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'ln201',
-          title: 'LN201',
-          path: generatePath(Routes.Course, {
-            courseId: 'ln201',
-          }),
-
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'more-xxx-201',
-          title: t('words.more'),
-          path: Routes.Courses,
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-      ],
-    },
-    {
-      id: 'advanced',
-      title: t('words.advanced'),
-      items: [
-        {
-          id: 'crypto301',
-          title: 'CRYPTO 301',
-          path: generatePath(Routes.Course, {
-            courseId: 'crypto301',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'secu301',
-          title: 'SECU 301',
-          path: generatePath(Routes.Course, {
-            courseId: 'secu301',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-        {
-          id: 'fin301',
-          title: 'FIN 301',
-          path: generatePath(Routes.Course, {
-            courseId: 'fin301',
-          }),
-          icon: AiOutlineBook,
-          description: t('menu.btc101Description'),
-        },
-      ],
-    },
-  ]; */
-
   const sections: NavigationSection[] = [
     {
       id: 'courses',
@@ -267,50 +138,13 @@ export const Header = () => {
       items: [
         {
           id: 'tutorial-nested',
-          items: [
-            {
-              id: 'wallets',
-              title: t('words.wallets'),
-              path: Routes.Wallets,
-              icon: BsWallet2,
-              description: t('menu.walletsDescription'),
-            },
-            {
-              id: 'exchanges',
-              title: t('words.exchanges'),
-              path: Routes.Exchanges,
-              icon: BsCurrencyExchange,
-              description: t('menu.exchangesDescription'),
-            },
-            {
-              id: 'lightning',
-              title: t('words.lightning'),
-              path: Routes.Lightning,
-              icon: BsLightningCharge,
-              description: t('menu.lightningDescription'),
-            },
-            {
-              id: 'node',
-              title: t('words.node'),
-              path: Routes.Node,
-              icon: SiRaspberrypi,
-              description: t('menu.nodeDescription'),
-            },
-            {
-              id: 'mining',
-              title: t('words.mining'),
-              path: Routes.Mining,
-              icon: BsCpu,
-              description: t('menu.miningDescription'),
-            },
-            {
-              id: 'merchants',
-              title: t('words.merchants'),
-              path: Routes.Merchants,
-              icon: BsCart,
-              description: t('menu.merchantsDescription'),
-            },
-          ],
+          items: TUTORIALS_CATEGORIES.map((category) => ({
+            id: category.name,
+            title: t(`tutorials.${category.name}.title`),
+            path: category.route,
+            icon: category.icon,
+            description: t(`tutorials.${category.name}.description`),
+          })),
         },
       ],
     },

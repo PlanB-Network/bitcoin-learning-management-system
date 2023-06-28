@@ -127,12 +127,13 @@ export const createProcessChangedTutorial =
 
         await transaction`
           INSERT INTO content.tutorials_localized (
-            tutorial_id, language, name, raw_content
+            tutorial_id, language, name, description, raw_content
           )
           VALUES (
             ${id},
             ${file.language},
-            ${header.data['name'] ?? 'Temporary name'},
+            ${header.data['name']},
+            ${header.data['description']},
             ${header.content.trim()}
           )
           ON CONFLICT (tutorial_id, language) DO UPDATE SET

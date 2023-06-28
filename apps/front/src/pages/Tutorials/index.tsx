@@ -2,79 +2,14 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import tutoRabbitPng from '../../assets/tutorial-rabbit.png';
-import exchangeSvg from '../../assets/tutorials/exchange.svg';
-import merchantSvg from '../../assets/tutorials/merchant.svg';
-import miningSvg from '../../assets/tutorials/mining.svg';
-import nodeSvg from '../../assets/tutorials/node.svg';
-import privacySvg from '../../assets/tutorials/privacy.svg';
-import walletSvg from '../../assets/tutorials/wallet.svg';
 import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
-import { Routes } from '../../types';
 import { computeAssetCdnUrl } from '../../utils';
 
-enum TutorialKinds {
-  Wallet = 'wallet',
-  Node = 'node',
-  Mining = 'mining',
-  Merchant = 'merchant',
-  Exchange = 'exchange',
-  Privacy = 'privacy',
-}
+import { TUTORIALS_CATEGORIES } from './types';
 
 export const Tutorials = () => {
   const { t } = useTranslation();
-
-  const tutorialKinds = [
-    {
-      kind: TutorialKinds.Wallet,
-      title: t('tutorials.wallet.title'),
-      image: walletSvg,
-      description: t('tutorials.wallet.description'),
-      route: Routes.UnderConstruction,
-      images: 23,
-    },
-    {
-      kind: TutorialKinds.Node,
-      title: t('tutorials.node.title'),
-      image: nodeSvg,
-      description: t('tutorials.node.description'),
-      route: Routes.UnderConstruction,
-      images: 5,
-    },
-    {
-      kind: TutorialKinds.Mining,
-      title: t('tutorials.mining.title'),
-      image: miningSvg,
-      description: t('tutorials.mining.description'),
-      route: Routes.UnderConstruction,
-      images: 2,
-    },
-    {
-      kind: TutorialKinds.Merchant,
-      title: t('tutorials.merchant.title'),
-      image: merchantSvg,
-      description: t('tutorials.merchant.description'),
-      route: Routes.UnderConstruction,
-      images: 3,
-    },
-    {
-      kind: TutorialKinds.Exchange,
-      title: t('tutorials.exchange.title'),
-      image: exchangeSvg,
-      description: t('tutorials.exchange.description'),
-      route: Routes.UnderConstruction,
-      images: 12,
-    },
-    {
-      kind: TutorialKinds.Privacy,
-      title: t('tutorials.privacy.title'),
-      image: privacySvg,
-      description: t('tutorials.privacy.description'),
-      route: Routes.UnderConstruction,
-      images: 4,
-    },
-  ];
 
   return (
     <MainLayout footerVariant="light">
@@ -97,26 +32,26 @@ export const Tutorials = () => {
             />
           </div>
           <div className="bg-primary-700 inset-x-0 bottom-0 left-1/2 z-10 flex w-full max-w-min flex-row flex-wrap justify-evenly rounded-3xl px-12 py-8 shadow md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 lg:max-w-5xl">
-            {tutorialKinds.map((tutorialKind) => (
-              <Link to={tutorialKind.route} onClick={(e) => e.preventDefault()}>
+            {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
+              <Link to={tutorialCategory.route}>
                 <div
                   className="hover:bg-primary-600 relative my-4 box-content flex h-24 w-64 cursor-pointer flex-row rounded-lg p-2 duration-300"
-                  key={tutorialKind.kind}
+                  key={tutorialCategory.name}
                 >
                   <div className="bg-secondary-400 absolute z-0 flex h-24 w-24 rounded-full">
                     <img
                       className="absolute -left-1/4 bottom-0 m-auto h-14"
-                      src={tutorialKind.image}
+                      src={tutorialCategory.image}
                       alt=""
                     />
                   </div>
                   <div className="z-10 -ml-8 mt-4 flex flex-row items-center">
                     <div className="ml-32 pl-2 text-white">
                       <h3 className="absolute left-[2.5em] top-[1em] text-2xl">
-                        {tutorialKind.title}
+                        {t(`tutorials.${tutorialCategory.name}.title`)}
                       </h3>
                       <p className="absolute left-[6em] top-[4.5em] text-xs italic">
-                        {tutorialKind.description}
+                        {t(`tutorials.${tutorialCategory.name}.description`)}
                       </p>
                     </div>
                   </div>
@@ -129,15 +64,14 @@ export const Tutorials = () => {
           {t('tutorials.soon')}
         </div>
         <div className="mx-auto grid max-w-6xl md:grid-cols-2 ">
-          {tutorialKinds
-            .sort((a, b) => b.images - a.images)
-            .map((tutorials, index) => (
+          {TUTORIALS_CATEGORIES.sort((a, b) => b.images - a.images).map(
+            (tutorials, index) => (
               <Card
-                key={tutorials.kind}
+                key={tutorials.name}
                 className="m-4 rounded-3xl bg-gray-200"
               >
                 <h3 className="text-primary-700 mb-2 w-full rounded-md px-4 py-1 text-xl font-semibold uppercase italic">
-                  {tutorials.kind}
+                  {tutorials.name}
                 </h3>
                 <div className="mt-3 flex flex-row flex-wrap items-center pl-2">
                   {Array.from({ length: tutorials.images }).map((_, index) => (
@@ -146,7 +80,7 @@ export const Tutorials = () => {
                         className="m-1 h-16 w-16 rounded-full md:m-2"
                         src={computeAssetCdnUrl(
                           'main',
-                          `soon/tutorials/${tutorials.kind}/${index}.png`
+                          `soon/tutorials/${tutorials.name}/${index}.png`
                         )}
                         alt=""
                       />
@@ -154,7 +88,8 @@ export const Tutorials = () => {
                   ))}
                 </div>
               </Card>
-            ))}
+            )
+          )}
         </div>
       </div>
     </MainLayout>

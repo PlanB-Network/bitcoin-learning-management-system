@@ -171,6 +171,7 @@ CREATE TABLE IF NOT EXISTS content.tutorials_localized (
 
   -- Per translation
   name TEXT NOT NULL,
+  description TEXT,
   raw_content TEXT NOT NULL,
 
   PRIMARY KEY (tutorial_id, language)

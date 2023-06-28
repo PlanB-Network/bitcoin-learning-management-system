@@ -30,13 +30,15 @@ export enum Routes {
 
   // Tutorials
   Tutorials = '/tutorials',
-  Tutorial = '/tutorial/:tutorialType',
-  Wallets = '/tutorials/wallets',
-  Exchanges = '/tutorials/exchanges',
-  Merchants = '/tutorials/merchants',
-  Mining = '/tutorials/mining',
-  Lightning = '/tutorials/lightning',
-  Node = '/tutorials/nodes',
+  TutorialCategory = '/tutorials/:category',
+  Tutorial = '/tutorials/:category/:tutorialId',
+
+  TutorialsWallet = '/tutorials/wallet',
+  TutorialsExchange = '/tutorials/exchange',
+  TutorialsMerchant = '/tutorials/merchant',
+  TutorialsMining = '/tutorials/mining',
+  TutorialsPrivacy = '/tutorials/privacy',
+  TutorialsNode = '/tutorials/node',
 
   Profile = '/profile',
 
