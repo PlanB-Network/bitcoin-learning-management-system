@@ -38,17 +38,20 @@ const getTutorialsByCategoryProcedure = publicProcedure
 
 const getTutorialProcedure = publicProcedure
   .meta({
-    openapi: { method: 'GET', path: '/content/tutorials/{id}/{language}' },
+    openapi: {
+      method: 'GET',
+      path: '/content/tutorials/{tutorialId}/{language}',
+    },
   })
   .input(
     z.object({
-      id: z.number(),
+      tutorialId: z.number(),
       language: z.string(),
     })
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetTutorial(ctx.dependencies)(input.id, input.language)
+    createGetTutorial(ctx.dependencies)(input.tutorialId, input.language)
   );
 
 export const tutorialsRouter = createTRPCRouter({

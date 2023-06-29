@@ -13,7 +13,7 @@ import { trpc } from '@sovereign-academy/api-client';
 import { JoinedCourse } from '@sovereign-academy/types';
 
 import { useDisclosure } from '../../hooks';
-import { TUTORIALS_CATEGORIES } from '../../pages/Tutorials/types';
+import { TUTORIALS_CATEGORIES } from '../../pages/Tutorials/utils';
 import { Routes } from '../../types';
 // import { AuthModal } from '../AuthModal';
 

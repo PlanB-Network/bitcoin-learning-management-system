@@ -31,7 +31,7 @@ export enum Routes {
   // Tutorials
   Tutorials = '/tutorials',
   TutorialCategory = '/tutorials/:category',
-  Tutorial = '/tutorials/:category/:tutorialId',
+  Tutorial = '/tutorials/:category/:tutorialId/:language?',
 
   TutorialsWallet = '/tutorials/wallet',
   TutorialsExchange = '/tutorials/exchange',

@@ -6,7 +6,7 @@ import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
 import { computeAssetCdnUrl } from '../../utils';
 
-import { TUTORIALS_CATEGORIES } from './types';
+import { TUTORIALS_CATEGORIES } from './utils';
 
 export const Tutorials = () => {
   const { t } = useTranslation();
