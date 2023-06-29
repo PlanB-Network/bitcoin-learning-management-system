@@ -26,7 +26,7 @@ export const Home = () => {
         <div className="flex flex-col space-y-5 p-10 sm:flex-row lg:max-w-6xl">
           <div>
             <h1 className="text-4xl text-white md:max-w-xl md:text-5xl lg:max-w-4xl lg:text-7xl xl:text-8xl">
-              {t('words.theSovereignUniversity')}
+              The Sovereign University
             </h1>
             <p className="mt-10 text-base font-thin italic tracking-wide text-white sm:text-xl lg:text-2xl">
               {t('home.hero.tagLine')}
