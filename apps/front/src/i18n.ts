@@ -13,7 +13,7 @@ i18n
     backend: {
       loadPath: '/locales/{{lng}}.json',
     },
-    debug: true,
+    debug: false,
     fallbackLng: 'en',
     returnNull: false,
     interpolation: {
