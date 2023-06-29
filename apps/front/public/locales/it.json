@@ -245,31 +245,31 @@
   },
   "tutorials": {
     "exchange": {
-      "description": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
+      "shortDescription": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
       "title": "Borsa"
     },
     "headerSignature": "Rogzy",
     "headerText": "Benvenuto nel foro coniglio infinito di Bitcoin! In questa sezione ti offriremo un tutoriel approfondito sulla maggior parte dei progetti bitcoin là fuori. Queste pagine in mantenere da benevolel e appassionato bitcoin che supportano il progetto open source. Se doveste pagare abbiamo commesso un errore, vi preghiamo di contattarlo.Per vedere il nostro allegato finanziario per la menzione del progetto si rimanda alla nostra relazione sulla trasparenza. Grazie per la vostra fiducia in questa università e godetevi il viaggio.",
     "merchant": {
-      "description": "Soluzioni per le aziende per accettare Bitcoin",
+      "shortDescription": "Soluzioni per le aziende per accettare Bitcoin",
       "title": "Commerciante"
     },
     "mining": {
-      "description": "Soluzioni di mining Bitcoin",
+      "shortDescription": "Soluzioni di mining Bitcoin",
       "title": "Estrazione"
     },
     "node": {
-      "description": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
+      "shortDescription": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
       "title": "Nodo"
     },
     "pageTitle": "Tutorial",
     "privacy": {
-      "description": "Strumenti per il backup e il mantenimento della privacy",
+      "shortDescription": "Strumenti per il backup e il mantenimento della privacy",
       "title": "Privacy"
     },
     "soon": "Abbiamo tonnellate di tutorial nelle opere! Solo un po 'di editing per quel nuovo sito web da fare e saremo bravi ad andare! Torna tra qualche giorno!",
     "wallet": {
-      "description": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
+      "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Portafoglio"
     }
   },

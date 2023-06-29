@@ -59,7 +59,10 @@ export const TutorialLayout = ({
                               open ? 'font-bold' : ''
                             )}
                           >
-                            {t(tutorialCategory.name)}
+                            {t([
+                              `tutorials.${tutorialCategory.name}.name`,
+                              tutorialCategory.name,
+                            ])}
                           </span>
                         </Disclosure.Button>
 
@@ -89,7 +92,10 @@ export const TutorialLayout = ({
                                           open ? 'font-semibold' : ''
                                         )}
                                       >
-                                        {t(subCategory)}
+                                        {t([
+                                          `tutorials.${tutorialCategory.name}.${subCategory}.name`,
+                                          subCategory,
+                                        ])}
                                       </span>
                                     </Disclosure.Button>
 

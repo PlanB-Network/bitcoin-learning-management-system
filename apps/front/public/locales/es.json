@@ -245,31 +245,31 @@
   },
   "tutorials": {
     "exchange": {
-      "description": "Soluciones de compra de Bitcoin, KYC y no KYC",
+      "shortDescription": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "title": "Intercambio"
     },
     "headerSignature": "Rogzy",
     "headerText": "¡Bienvenido al agujero de conejo infinito de Bitcoin! En esta sección te ofreceremos un tutorial en profundidad en la mayoría de los proyectos de bitcoin ahí fuera. Esta página en mantenimiento por Bevolel y pasionados bitcoin que apoyan el proyecto de código abierto. Para ver nuestro archivo adjunto financiero del proyecto mencionado, refiérase a nuestro informe de transparencia. Gracias por su confianza en esta universidad y disfrute del viaje.",
     "merchant": {
-      "description": "Soluciones para que las empresas acepten bitcoin",
+      "shortDescription": "Soluciones para que las empresas acepten bitcoin",
       "title": "Comerciante"
     },
     "mining": {
-      "description": "Soluciones mineras de Bitcoin",
+      "shortDescription": "Soluciones mineras de Bitcoin",
       "title": "Minería"
     },
     "node": {
-      "description": "Soluciones para operar un nodo bitcoin y unirse a la red",
+      "shortDescription": "Soluciones para operar un nodo bitcoin y unirse a la red",
       "title": "Nodo"
     },
     "pageTitle": "Tutoriales",
     "privacy": {
-      "description": "Herramientas para respaldar y mantener la privacidad",
+      "shortDescription": "Herramientas para respaldar y mantener la privacidad",
       "title": "Privacidad"
     },
     "soon": "¡Tenemos toneladas de tutoriales en las obras! Sólo un poco de edición para ese nuevo sitio web por hacer y estaremos encantados de ir!",
     "wallet": {
-      "description": "Soluciones de seguridad y uso de sus bitcoins",
+      "shortDescription": "Soluciones de seguridad y uso de sus bitcoins",
       "title": "Cartera"
     }
   },

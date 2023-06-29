@@ -245,31 +245,31 @@
   },
   "tutorials": {
     "exchange": {
-      "description": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
+      "shortDescription": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
       "title": "Échanger"
     },
     "headerSignature": "Rogzy",
     "headerText": "Bienvenue dans le trou infini du lapin de Bitcoin ! Dans cette section, nous vous proposerons un tutoriel approfondi sur la plupart des projets bitcoin là-bas. Ces pages sont maintenues par le bienfaiteur et passionné bitcoin qui soutiennent ce projet open source. Si vous payez des frais, nous vous prions de bien vouloir nous en informer. Pour voir notre attachement financier à la mention du projet, reportez-vous à notre rapport de transparence. Merci de votre confiance dans cette université et de profiter de la course.",
     "merchant": {
-      "description": "Solutions pour entreprises d'acceptation du Bitcoin",
+      "shortDescription": "Solutions pour entreprises d'acceptation du Bitcoin",
       "title": "Marchand"
     },
     "mining": {
-      "description": "Solutions de minage de bitcoins",
+      "shortDescription": "Solutions de minage de bitcoins",
       "title": "Extraction"
     },
     "node": {
-      "description": "Solutions pour faire tourner un nœud bitcoin et intégrer le réseau",
+      "shortDescription": "Solutions pour faire tourner un nœud bitcoin et intégrer le réseau",
       "title": "Noeud"
     },
     "pageTitle": "Tutoriels",
     "privacy": {
-      "description": "Outils de sauvegarde et de maintien de la vie privée",
+      "shortDescription": "Outils de sauvegarde et de maintien de la vie privée",
       "title": "Confidentialité"
     },
     "soon": "Nous avons des tonnes de tutoriels dans les travaux! Un peu de montage pour ce tout nouveau site web à faire et nous serons ravis d'y aller !",
     "wallet": {
-      "description": "Solutions de sécurisation et d'utilisation de vos bitcoins",
+      "shortDescription": "Solutions de sécurisation et d'utilisation de vos bitcoins",
       "title": "Portefeuille"
     }
   },

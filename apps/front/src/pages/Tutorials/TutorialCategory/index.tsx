@@ -55,12 +55,7 @@ export const TutorialCategory = () => {
           </h1>
         </div>
         <p className="text-primary-800 flex w-full text-justify md:text-left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quae
-          voluptatum, voluptate, quos, quas voluptas quia quibusdam dolorum
-          voluptatibus quod fugit. Quisquam quae voluptatum, voluptate, quos,
-          quas voluptas quia quibusdam dolorum voluptatibus quod fugit. Quisquam
-          quae voluptatum, voluptate, quos, quas voluptas quia quibusdam dolorum
-          voluptatibus quod fugit.
+          {t(`tutorials.${category}.description`)}
         </p>
         {tutorials && (
           <div className="w-full px-2 py-16 sm:px-0">
@@ -78,7 +73,10 @@ export const TutorialCategory = () => {
                       )
                     }
                   >
-                    {subCategory}
+                    {t([
+                      `tutorials.${category}.${subCategory}.name`,
+                      subCategory,
+                    ])}
                   </Tab>
                 ))}
               </Tab.List>
@@ -87,11 +85,7 @@ export const TutorialCategory = () => {
                   <Tab.Panel key={subCategory}>
                     <div className="flex flex-col">
                       <div className="text-primary-900 px-10 py-6 text-sm font-thin italic">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quisquam quae voluptatum, voluptate, quos, quas voluptas
-                        quia quibusdam dolorum voluptatibus quod fugit. Quisquam
-                        quae voluptatum, voluptate, quos, quas voluptas quia
-                        quibusdam dolorum voluptatibus quod fugit.
+                        {t(`tutorials.${category}.${subCategory}.description`)}
                       </div>
                       {tutorials
                         .filter(

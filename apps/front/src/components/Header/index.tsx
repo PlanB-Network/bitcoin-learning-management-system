@@ -143,7 +143,7 @@ export const Header = () => {
             title: t(`tutorials.${category.name}.title`),
             path: category.route,
             icon: category.icon,
-            description: t(`tutorials.${category.name}.description`),
+            description: t(`tutorials.${category.name}.shortDescription`),
           })),
         },
       ],

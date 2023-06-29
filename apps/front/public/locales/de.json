@@ -245,31 +245,31 @@
   },
   "tutorials": {
     "exchange": {
-      "description": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
+      "shortDescription": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
       "title": "Umtausch"
     },
     "headerSignature": "Rogzy",
     "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! Diese Seiten werden von benevolel und leidenschaftlichen Bitcoin gepflegt und unterstützen dieses Open-Source-Projekt. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an uns. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
     "merchant": {
-      "description": "Lösungen für Unternehmen, die Bitcoin akzeptieren",
+      "shortDescription": "Lösungen für Unternehmen, die Bitcoin akzeptieren",
       "title": "Händler"
     },
     "mining": {
-      "description": "Bitcoin Mining Lösungen",
+      "shortDescription": "Bitcoin Mining Lösungen",
       "title": "Bergbau"
     },
     "node": {
-      "description": "Lösungen für den Betrieb eines Bitcoin-Knotens und den Beitritt zum Netzwerk",
+      "shortDescription": "Lösungen für den Betrieb eines Bitcoin-Knotens und den Beitritt zum Netzwerk",
       "title": "Knoten"
     },
     "pageTitle": "Anleitungen",
     "privacy": {
-      "description": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
+      "shortDescription": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
       "title": "Privatsphäre"
     },
     "soon": "Wir haben tonnenweise Tutorials in den Werken! Nur ein paar Änderungen für diese brandneue Website zu machen und wir werden gut gehen! Kommen Sie in ein paar Tagen wieder!",
     "wallet": {
-      "description": "Sicherheitslösungen und Nutzung Ihrer Bitcoins",
+      "shortDescription": "Sicherheitslösungen und Nutzung Ihrer Bitcoins",
       "title": "Wallet"
     }
   },
