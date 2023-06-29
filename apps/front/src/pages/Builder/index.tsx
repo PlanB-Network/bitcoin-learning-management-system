@@ -9,7 +9,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import builderImage from '../../assets/placeholder-assets/seedsigner.jpg';
 import { Card } from '../../atoms/Card';
 import { Tag } from '../../atoms/Tag';
 import { ResourceLayout } from '../../components';
@@ -48,7 +47,7 @@ export const Builder = () => {
           </div>
           <div className="border-primary-900 row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
             <img
-              src={builder?.logo || builderImage}
+              src={builder?.logo}
               className="w-full"
               alt={t('imagesAlt.sthRepresentingCompany')}
             />
