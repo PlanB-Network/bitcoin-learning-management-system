@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ResourceRate } from '.';
 
 const meta: Meta<typeof ResourceRate> = {
-  title: 'Components/ResourceRate',
+  title: 'Components/Resources/ResourceRate',
   component: ResourceRate,
   tags: ['autodocs'],
 };

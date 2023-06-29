@@ -5,7 +5,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { BsFillHeartFill } from 'react-icons/bs';
 
-import { MainLayout } from '../../../components/MainLayout';
+import { MainLayout } from '../../MainLayout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

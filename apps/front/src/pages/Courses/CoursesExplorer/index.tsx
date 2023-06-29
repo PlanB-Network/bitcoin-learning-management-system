@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { trpc } from '@sovereign-academy/api-client';
 
 import { MainLayout } from '../../../components';
-import { CoursePreview } from '../../../components/CoursePreview';
-import { SolarSystem } from '../../../components/SolarSystem';
-import type { Course } from '../../../components/SolarSystem';
+import { CoursePreview } from '../../../components/Courses/CoursePreview';
+import { SolarSystem } from '../../../components/Courses/SolarSystem';
+import type { Course } from '../../../components/Courses/SolarSystem';
 
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();

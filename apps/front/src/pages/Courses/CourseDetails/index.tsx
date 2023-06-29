@@ -14,9 +14,9 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import curriculumImage from '../../../assets/courses/curriculum.png';
+import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { Routes } from '../../../types';
 import { computeAssetCdnUrl, useRequiredParams } from '../../../utils';
-import { CourseLayout } from '../CourseLayout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { FilterBar, MainLayout, Pagination } from '..';
-import { PageTitle } from '../PageTitle';
+import { FilterBar, MainLayout, Pagination } from '../..';
+import { PageTitle } from '../../PageTitle';
 
 interface Props {
   title: string;

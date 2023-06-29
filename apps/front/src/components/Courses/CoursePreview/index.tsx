@@ -4,12 +4,10 @@ import { Link, generatePath } from 'react-router-dom';
 
 import { JoinedCourse } from '@sovereign-academy/types';
 
-import { Avatar } from '../../atoms/Avatar';
-import { Button } from '../../atoms/Button';
-import { Card } from '../../atoms/Card';
-import { Tag } from '../../atoms/Tag';
-import { Routes } from '../../types';
-import { compose, computeAssetCdnUrl } from '../../utils';
+import { Button } from '../../../atoms/Button';
+import { Card } from '../../../atoms/Card';
+import { Routes } from '../../../types';
+import { compose, computeAssetCdnUrl } from '../../../utils';
 
 interface CoursePreviewProps {
   course: JoinedCourse;

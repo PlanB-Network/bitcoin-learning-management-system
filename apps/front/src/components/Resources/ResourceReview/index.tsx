@@ -1,5 +1,5 @@
-import { Card } from '../../atoms/Card';
-import { Contributor } from '../Contributor';
+import { Card } from '../../../atoms/Card';
+import { Contributor } from '../../Contributor';
 import { ResourceRate } from '../ResourceRate';
 
 interface ResourceReviewProps {

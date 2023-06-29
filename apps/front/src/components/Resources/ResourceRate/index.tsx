@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { compose } from '../../utils';
+import { compose } from '../../../utils';
 
 interface ResourceRateProps {
   rate: number;

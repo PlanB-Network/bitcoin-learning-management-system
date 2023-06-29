@@ -19,9 +19,9 @@ import { trpc } from '@sovereign-academy/api-client';
 
 import { ReactComponent as ProgressRabbit } from '../../../assets/courses/progress_rabbit.svg';
 import { Button } from '../../../atoms/Button';
+import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
-import { CourseLayout } from '../CourseLayout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
