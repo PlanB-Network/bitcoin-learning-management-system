@@ -249,30 +249,65 @@
   "tutorials": {
     "exchange": {
       "description": "Soluciones de compra de Bitcoin, KYC y no KYC",
+      "centralized": {
+        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+      },
+      "peer-to-peer": {
+        "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
+      },
+      "shortDescription": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "title": "Intercambio"
     },
     "headerSignature": "Rogzy",
     "headerText": "¡Bienvenido al agujero de conejo infinito de Bitcoin! En esta sección te ofreceremos un tutorial en profundidad en la mayoría de los proyectos de bitcoin ahí fuera. Esta página en mantenimiento por Bevolel y pasionados bitcoin que apoyan el proyecto de código abierto. Para ver nuestro archivo adjunto financiero del proyecto mencionado, refiérase a nuestro informe de transparencia. Gracias por su confianza en esta universidad y disfrute del viaje.",
     "merchant": {
-      "description": "Soluciones para que las empresas acepten bitcoin",
+      "shortDescription": "Soluciones para que las empresas acepten bitcoin",
       "title": "Comerciante"
     },
     "mining": {
-      "description": "Soluciones mineras de Bitcoin",
+      "shortDescription": "Soluciones mineras de Bitcoin",
       "title": "Minería"
     },
     "node": {
+      "bitcoin": {
+        "description": "A Bitcoin Core node is the ground zero of your Bitcoin sovereignty stack. It allows you to run the Bitcoin software and be part of the network. You will validate blocks and transactions, decide which rules you want to apply within the network, and stop using intermediaries to propagate your transactions. There are many ways to run a Bitcoin node, some more user-friendly than others."
+      },
       "description": "Soluciones para operar un nodo bitcoin y unirse a la red",
+      "lightning-network": {
+        "name": "Lightning Network",
+        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet."
+      },
+      "rgb": {
+        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+      },
+      "shortDescription": "Soluciones para operar un nodo bitcoin y unirse a la red",
       "title": "Nodo"
     },
     "pageTitle": "Tutoriales",
     "privacy": {
+      "bitcoin": {
+        "description": "Privacy on Bitcoin"
+      },
       "description": "Herramientas para respaldar y mantener la privacidad",
+      "general": {
+        "description": "General privacy"
+      },
+      "shortDescription": "Herramientas para respaldar y mantener la privacidad",
       "title": "Privacidad"
     },
     "soon": "¡Tenemos toneladas de tutoriales en las obras! Sólo un poco de edición para ese nuevo sitio web por hacer y estaremos encantados de ir!",
     "wallet": {
       "description": "Soluciones de seguridad y uso de sus bitcoins",
+      "desktop": {
+        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+      },
+      "hardware": {
+        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+      },
+      "mobile": {
+        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+      },
+      "shortDescription": "Soluciones de seguridad y uso de sus bitcoins",
       "title": "Cartera"
     }
   },
@@ -342,7 +377,6 @@
     "supportUs": "Ayúdenos",
     "teachers": "Profesores",
     "termsAndConditions": "Términos y condiciones",
-    "theSovereignUniversity": "La Universidad Soberana",
     "tutorial": "Tutorial",
     "tutorials": "Tutoriales",
     "video": "Vídeo",
