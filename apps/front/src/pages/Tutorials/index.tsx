@@ -51,7 +51,9 @@ export const Tutorials = () => {
                         {t(`tutorials.${tutorialCategory.name}.title`)}
                       </h3>
                       <p className="absolute left-[6em] top-[4.5em] text-xs italic">
-                        {t(`tutorials.${tutorialCategory.name}.description`)}
+                        {t(
+                          `tutorials.${tutorialCategory.name}.shortDescription`
+                        )}
                       </p>
                     </div>
                   </div>
