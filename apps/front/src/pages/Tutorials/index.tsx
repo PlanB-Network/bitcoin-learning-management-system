@@ -2,9 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import tutoRabbitPng from '../../assets/tutorial-rabbit.png';
-import { Card } from '../../atoms/Card';
 import { MainLayout } from '../../components';
-import { computeAssetCdnUrl } from '../../utils';
 
 import { TUTORIALS_CATEGORIES } from './utils';
 
@@ -61,37 +59,6 @@ export const Tutorials = () => {
               </Link>
             ))}
           </div>
-        </div>
-        <div className="text-primary-800 mx-5 mb-10 max-w-3xl text-justify text-3xl md:mx-auto">
-          {t('tutorials.soon')}
-        </div>
-        <div className="mx-auto grid max-w-6xl md:grid-cols-2 ">
-          {TUTORIALS_CATEGORIES.sort((a, b) => b.images - a.images).map(
-            (tutorials, index) => (
-              <Card
-                key={tutorials.name}
-                className="m-4 rounded-3xl bg-gray-200"
-              >
-                <h3 className="text-primary-700 mb-2 w-full rounded-md px-4 py-1 text-xl font-semibold uppercase italic">
-                  {tutorials.name}
-                </h3>
-                <div className="mt-3 flex flex-row flex-wrap items-center pl-2">
-                  {Array.from({ length: tutorials.images }).map((_, index) => (
-                    <div className="">
-                      <img
-                        className="m-1 h-16 w-16 rounded-full md:m-2"
-                        src={computeAssetCdnUrl(
-                          'main',
-                          `soon/tutorials/${tutorials.name}/${index}.png`
-                        )}
-                        alt=""
-                      />
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            )
-          )}
         </div>
       </div>
     </MainLayout>
