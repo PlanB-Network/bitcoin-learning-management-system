@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -26,6 +27,7 @@ import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils';
 
 export const App = () => {
+  const { i18n } = useTranslation();
   useScrollToTop();
   const dispatch = useAppDispatch();
   const accessToken = useMemo(() => getItem(LocalStorageKey.AccessToken), []);
@@ -33,6 +35,12 @@ export const App = () => {
     enabled: !!accessToken,
     retry: 1,
   });
+
+  // Temporary fix: the default language can be en-GB (or equivalent), until it is properly set with the selector
+  // and these aren't supported. Fallback to 'en' in that case for now.
+  if (i18n.language.includes('-')) {
+    i18n.changeLanguage('en');
+  }
 
   useEffect(() => {
     // Expired token
