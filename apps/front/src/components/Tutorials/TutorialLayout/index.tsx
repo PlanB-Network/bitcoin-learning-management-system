@@ -36,7 +36,7 @@ export const TutorialLayout = ({
     <MainLayout>
       <div className="grid h-max min-h-screen w-full grid-cols-4 items-start bg-gray-100 px-3 md:px-6">
         <div className="hidden w-full pr-10 pt-8 lg:block">
-          <div className="w-full rounded-2xl bg-white p-2 drop-shadow">
+          <div className="w-full min-w-min max-w-[16rem] rounded-2xl bg-white p-2 drop-shadow">
             <h3 className="mx-2 mb-2 border-b-2 border-b-orange-600 py-1 text-lg font-semibold uppercase text-orange-600">
               Tutorials
             </h3>
@@ -82,7 +82,7 @@ export const TutorialLayout = ({
                           </Link>
                         </Disclosure.Button>
 
-                        <Disclosure.Panel className="px-4 text-sm text-gray-500">
+                        <Disclosure.Panel className="pl-4 text-sm text-gray-500">
                           {allTutorials &&
                             extractSubCategories(
                               allTutorials.filter(
@@ -118,7 +118,7 @@ export const TutorialLayout = ({
                                       </span>
                                     </Disclosure.Button>
 
-                                    <Disclosure.Panel className="px-8 py-1 text-sm text-gray-500">
+                                    <Disclosure.Panel className="py-1 pl-8 pr-2 text-sm text-gray-500">
                                       <ul className="space-y-1">
                                         {allTutorials
                                           .filter(
