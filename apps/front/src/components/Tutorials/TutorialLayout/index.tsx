@@ -6,17 +6,24 @@ import { Link } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import { MainLayout } from '../../../components/MainLayout';
+import {
+  TUTORIALS_CATEGORIES,
+  extractSubCategories,
+} from '../../../pages/Tutorials/utils';
 import { Routes } from '../../../types';
 import { compose } from '../../../utils';
-import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
+import { MainLayout } from '../../MainLayout';
 
 export const TutorialLayout = ({
   children,
   currentCategory,
+  currentSubcategory,
+  currentTutorialId,
 }: {
   children?: JSX.Element | JSX.Element[];
   currentCategory?: string;
+  currentSubcategory?: string;
+  currentTutorialId?: number;
 }) => {
   const { t } = useTranslation();
 
@@ -27,7 +34,7 @@ export const TutorialLayout = ({
 
   return (
     <MainLayout>
-      <div className="grid h-max w-full grid-cols-4 items-start bg-gray-100 px-3 md:px-6">
+      <div className="grid h-max min-h-screen w-full grid-cols-4 items-start bg-gray-100 px-3 md:px-6">
         <div className="hidden w-full pr-10 pt-8 lg:block">
           <div className="w-full rounded-2xl bg-white p-2 drop-shadow">
             <h3 className="mx-2 mb-2 border-b-2 border-b-orange-600 py-1 text-lg font-semibold uppercase text-orange-600">
@@ -39,7 +46,10 @@ export const TutorialLayout = ({
                   (tutorial) => tutorial.category === tutorialCategory.name
                 ).length > 0 ? (
                   <Disclosure
-                    key={tutorialCategory.name}
+                    key={
+                      /* Trick to rerender the disclosure on current category change, so it opens the correct panel */
+                      `${tutorialCategory.name}-${currentCategory}`
+                    }
                     defaultOpen={tutorialCategory.name === currentCategory}
                   >
                     {({ open }) => (
@@ -53,17 +63,23 @@ export const TutorialLayout = ({
                                 : 'text-primary-600 rotate-90 align-middle'
                             }
                           />
-                          <span
-                            className={compose(
-                              'text-primary-800 align-middle uppercase',
-                              open ? 'font-bold' : ''
-                            )}
+                          <Link
+                            to={generatePath(Routes.TutorialCategory, {
+                              category: tutorialCategory.name,
+                            })}
                           >
-                            {t([
-                              `tutorials.${tutorialCategory.name}.name`,
-                              tutorialCategory.name,
-                            ])}
-                          </span>
+                            <span
+                              className={compose(
+                                'text-primary-800 align-middle uppercase',
+                                open ? 'font-bold' : ''
+                              )}
+                            >
+                              {t([
+                                `tutorials.${tutorialCategory.name}.name`,
+                                tutorialCategory.name,
+                              ])}
+                            </span>
+                          </Link>
                         </Disclosure.Button>
 
                         <Disclosure.Panel className="px-4 text-sm text-gray-500">
@@ -74,7 +90,10 @@ export const TutorialLayout = ({
                                   tutorial.category === tutorialCategory.name
                               )
                             ).map((subCategory) => (
-                              <Disclosure key={subCategory}>
+                              <Disclosure
+                                key={subCategory}
+                                defaultOpen={subCategory === currentSubcategory}
+                              >
                                 {({ open }) => (
                                   <>
                                     <Disclosure.Button className="flex w-full items-center justify-start space-x-3 rounded-lg px-5 py-1 text-left text-sm">
@@ -118,7 +137,13 @@ export const TutorialLayout = ({
                                             >
                                               <BsFillCircleFill
                                                 size={6}
-                                                className="text-primary-600 group-hover:text-orange-600"
+                                                className={compose(
+                                                  ' group-hover:text-orange-600',
+                                                  tutorial.id ===
+                                                    currentTutorialId
+                                                    ? 'text-orange-600'
+                                                    : 'text-primary-600'
+                                                )}
                                               />
                                               <Link
                                                 to={generatePath(
@@ -130,7 +155,13 @@ export const TutorialLayout = ({
                                                     language: tutorial.language,
                                                   }
                                                 )}
-                                                className="text-primary-800 text-sm group-hover:text-orange-800"
+                                                className={compose(
+                                                  'text-sm group-hover:text-orange-800',
+                                                  tutorial.id ===
+                                                    currentTutorialId
+                                                    ? 'text-orange-800'
+                                                    : 'text-primary-800 '
+                                                )}
                                               >
                                                 {t(tutorial.name)}
                                               </Link>

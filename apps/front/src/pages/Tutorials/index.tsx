@@ -31,7 +31,7 @@ export const Tutorials = () => {
           </div>
           <div className="bg-primary-700 inset-x-0 bottom-0 left-1/2 z-10 flex w-full max-w-min flex-row flex-wrap justify-evenly rounded-3xl px-12 py-8 shadow md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 lg:max-w-5xl">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
-              <Link to={tutorialCategory.route}>
+              <Link key={tutorialCategory.name} to={tutorialCategory.route}>
                 <div
                   className="hover:bg-primary-600 relative my-4 box-content flex h-24 w-64 cursor-pointer flex-row rounded-lg p-2 duration-300"
                   key={tutorialCategory.name}

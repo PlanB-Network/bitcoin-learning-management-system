@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { trpc } from '@sovereign-academy/api-client';
 
 import { MarkdownBody } from '../../../components/MarkdownBody';
+import { TutorialLayout } from '../../../components/Tutorials/TutorialLayout';
 import { computeAssetCdnUrl, useRequiredParams } from '../../../utils';
-import { TutorialLayout } from '../TutorialLayout';
 
 export const Tutorial = () => {
   const { i18n } = useTranslation();
@@ -16,7 +16,11 @@ export const Tutorial = () => {
   });
 
   return (
-    <TutorialLayout>
+    <TutorialLayout
+      currentCategory={tutorial?.category}
+      currentSubcategory={tutorial?.subcategory}
+      currentTutorialId={tutorial?.id}
+    >
       {tutorial && (
         <div className="flex w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
           <div className="w-full max-w-5xl px-5 md:px-0">

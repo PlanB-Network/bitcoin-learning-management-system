@@ -5,13 +5,13 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { TutorialLayout } from '../../../components/Tutorials/TutorialLayout';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
-import { TutorialLayout } from '../TutorialLayout';
 import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
 
 export const TutorialCategory = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { category } = useRequiredParams();
 
@@ -35,12 +35,12 @@ export const TutorialCategory = () => {
 
   useEffect(() => {
     if (tutorials) {
-      setSubCategories(extractSubCategories(tutorials));
+      setSubCategories(extractSubCategories(tutorials).sort());
     }
   }, [tutorials]);
 
   return (
-    <TutorialLayout>
+    <TutorialLayout currentCategory={category}>
       <div className="col-span-3 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
         <div className="flex w-full flex-row items-end justify-start py-10">
           <div className="bg-secondary-400 relative z-0 flex h-20 w-20 self-center rounded-full md:h-24 md:w-24">
@@ -83,10 +83,16 @@ export const TutorialCategory = () => {
               <Tab.Panels className="rounded-b-xl bg-gray-200 pb-3">
                 {subCategories.map((subCategory) => (
                   <Tab.Panel key={subCategory}>
-                    <div className="flex flex-col">
-                      <div className="text-primary-900 px-10 py-6 text-sm font-thin italic">
-                        {t(`tutorials.${category}.${subCategory}.description`)}
-                      </div>
+                    <div className="flex flex-col pt-3">
+                      {i18n.exists(
+                        `tutorials.${category}.${subCategory}.description`
+                      ) && (
+                        <div className="text-primary-900 px-10 pb-6 pt-3 text-sm font-thin italic">
+                          {t(
+                            `tutorials.${category}.${subCategory}.description`
+                          )}
+                        </div>
+                      )}
                       {tutorials
                         .filter(
                           (tutorial) => tutorial.subcategory === subCategory
