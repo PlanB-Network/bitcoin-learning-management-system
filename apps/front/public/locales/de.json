@@ -261,10 +261,12 @@
     "headerSignature": "Rogzy",
     "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! Diese Seiten werden von benevolel und leidenschaftlichen Bitcoin gepflegt und unterstützen dieses Open-Source-Projekt. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an uns. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
     "merchant": {
+      "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Lösungen für Unternehmen, die Bitcoin akzeptieren",
       "title": "Händler"
     },
     "mining": {
+      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
       "shortDescription": "Bitcoin Mining Lösungen",
       "title": "Bergbau"
     },
@@ -286,16 +288,15 @@
     "pageTitle": "Anleitungen",
     "privacy": {
       "bitcoin": {
-        "description": "Privacy on Bitcoin"
+        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
       },
       "description": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
       "general": {
-        "description": "General privacy"
+        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
       },
       "shortDescription": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
       "title": "Privatsphäre"
     },
-    "soon": "Wir haben tonnenweise Tutorials in den Werken! Nur ein paar Änderungen für diese brandneue Website zu machen und wir werden gut gehen! Kommen Sie in ein paar Tagen wieder!",
     "wallet": {
       "description": "Sicherheitslösungen und Nutzung Ihrer Bitcoins",
       "desktop": {
