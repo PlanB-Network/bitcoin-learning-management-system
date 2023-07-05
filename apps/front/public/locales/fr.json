@@ -261,10 +261,12 @@
     "headerSignature": "Rogzy",
     "headerText": "Bienvenue dans le trou infini du lapin de Bitcoin ! Dans cette section, nous vous proposerons un tutoriel approfondi sur la plupart des projets bitcoin là-bas. Ces pages sont maintenues par le bienfaiteur et passionné bitcoin qui soutiennent ce projet open source. Si vous payez des frais, nous vous prions de bien vouloir nous en informer. Pour voir notre attachement financier à la mention du projet, reportez-vous à notre rapport de transparence. Merci de votre confiance dans cette université et de profiter de la course.",
     "merchant": {
+      "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions pour entreprises d'acceptation du Bitcoin",
       "title": "Marchand"
     },
     "mining": {
+      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
       "shortDescription": "Solutions de minage de bitcoins",
       "title": "Extraction"
     },
@@ -286,16 +288,15 @@
     "pageTitle": "Tutoriels",
     "privacy": {
       "bitcoin": {
-        "description": "Privacy on Bitcoin"
+        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
       },
       "description": "Outils de sauvegarde et de maintien de la vie privée",
       "general": {
-        "description": "General privacy"
+        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
       },
       "shortDescription": "Outils de sauvegarde et de maintien de la vie privée",
       "title": "Confidentialité"
     },
-    "soon": "Nous avons des tonnes de tutoriels dans les travaux! Un peu de montage pour ce tout nouveau site web à faire et nous serons ravis d'y aller !",
     "wallet": {
       "description": "Solutions de sécurisation et d'utilisation de vos bitcoins",
       "desktop": {
