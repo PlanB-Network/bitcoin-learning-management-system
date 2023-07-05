@@ -118,12 +118,7 @@ export const createProcessChangedTutorial =
           continue;
         }
 
-        const header = matter(file.data, { excerpt: true });
-
-        if (header.excerpt) {
-          header.content = header.content.replace(`${header.excerpt}---\n`, '');
-          header.excerpt = header.excerpt.trim();
-        }
+        const header = matter(file.data, { excerpt: false });
 
         await transaction`
           INSERT INTO content.tutorials_localized (
