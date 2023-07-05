@@ -1,7 +1,7 @@
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -45,7 +45,7 @@ export const MarkdownBody = ({
           </li>
         ),
         table: ({ children }) => (
-          <table className="border-primary-900  w-full border-collapse border">
+          <table className="border-primary-900 w-full border-collapse border">
             {children}
           </table>
         ),
@@ -71,12 +71,12 @@ export const MarkdownBody = ({
           ),
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');
-          return !inline && match ? (
+          return !inline ? (
             <SyntaxHighlighter
               {...props}
               children={String(children).replace(/\n$/, '')}
-              style={dark}
-              language={match[1]}
+              style={atomDark}
+              language={match ? match[1] : undefined}
               PreTag="div"
             />
           ) : (
