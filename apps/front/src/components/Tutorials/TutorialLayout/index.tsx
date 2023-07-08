@@ -25,7 +25,7 @@ export const TutorialLayout = ({
   currentSubcategory?: string;
   currentTutorialId?: number;
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: allTutorials } = trpc.content.getTutorials.useQuery({
     language: i18n.language,
