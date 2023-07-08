@@ -28,8 +28,7 @@ export const TutorialLayout = ({
   const { t } = useTranslation();
 
   const { data: allTutorials } = trpc.content.getTutorials.useQuery({
-    // Add once translations are available
-    // language: i18n.language,
+    language: i18n.language,
   });
 
   return (

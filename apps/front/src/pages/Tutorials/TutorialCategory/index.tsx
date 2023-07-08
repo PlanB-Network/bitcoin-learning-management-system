@@ -23,8 +23,7 @@ export const TutorialCategory = () => {
 
   const { data: tutorials } = trpc.content.getTutorialsByCategory.useQuery({
     category,
-    // Add once translations are available
-    // language: i18n.language,
+    language: i18n.language,
   });
 
   useEffect(() => {
