@@ -106,7 +106,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data ? (
         <div className="flex flex-col items-center">
-          <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
+          <BsCheck className="my-8 h-20 w-20 text-lg text-success-300" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
@@ -155,7 +155,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="mt-4 w-96"
+                  className="mt-4 w-80"
                   error={touched.username ? errors.username : null}
                 />
 
@@ -166,7 +166,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="mt-4 w-96"
+                  className="mt-4 w-80"
                   error={touched.password ? errors.password : null}
                 />
 
@@ -177,7 +177,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmation}
-                  className="mt-4 w-96"
+                  className="mt-4 w-80"
                   error={touched.confirmation ? errors.confirmation : null}
                 />
 
@@ -187,7 +187,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className="mt-4 w-96"
+                  className="mt-4 w-80"
                   error={touched.email ? errors.email : null}
                 />
 
@@ -197,7 +197,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.contributorId}
-                  className="mt-4 w-96"
+                  className="mt-4 w-80"
                   error={touched.contributorId ? errors.contributorId : null}
                 />
 
