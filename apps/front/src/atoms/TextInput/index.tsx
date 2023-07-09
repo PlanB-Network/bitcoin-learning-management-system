@@ -31,7 +31,7 @@ export const TextInput = ({
   const [showValue, setShowValue] = useState(false);
   const classes = useMemo(
     () => [
-      'block w-full rounded-md border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset px-3',
+      'block w-full rounded-lg border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset px-3 bg-secondary-400',
       error
         ? 'text-danger-300 ring-danger-200 placeholder:text-danger-200 focus:ring-danger-300'
         : 'text-gray-600 shadow-sm ring-gray-300 placeholder:text-gray-400 focus:ring-primary-600',
@@ -71,10 +71,10 @@ export const TextInput = ({
 
   return (
     <div className={compose('mx-4 my-2', className ?? '')}>
-      <div className="flex justify-between px-1">
+      <div className="flex justify-between px-1 flex-col items-c text-center">
         <label
           htmlFor="email"
-          className="block text-sm font-normal leading-6 text-gray-600"
+          className="block text-sm font-normal leading-6 text-gray-600 mb-1"
         >
           {labelText}
         </label>

@@ -15,7 +15,7 @@ import { JoinedCourse } from '@sovereign-academy/types';
 import { useDisclosure } from '../../hooks';
 import { TUTORIALS_CATEGORIES } from '../../pages/Tutorials/utils';
 import { Routes } from '../../types';
-// import { AuthModal } from '../AuthModal';
+import { AuthModal } from '../AuthModal';
 
 import { FlyingMenu } from './FlyingMenu';
 import { MobileMenu } from './MobileMenu';
@@ -28,8 +28,8 @@ export const Header = () => {
 
   const {
     open: openLoginModal,
-    /* isOpen: isLoginModalOpen,
-    close: closeLoginModal, */
+    isOpen: isLoginModalOpen,
+    close: closeLoginModal,
   } = useDisclosure();
 
   const { data: courses } = trpc.content.getCourses.useQuery({
@@ -216,7 +216,7 @@ export const Header = () => {
         />
       )}
 
-      {/* <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} /> */}
+      {<AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />}
     </header>
   );
 };
