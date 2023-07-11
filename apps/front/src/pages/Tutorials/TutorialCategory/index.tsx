@@ -102,7 +102,6 @@ export const TutorialCategory = () => {
                             to={generatePath(Routes.Tutorial, {
                               category: tutorial.category,
                               tutorialId: tutorial.id.toString(),
-                              language: tutorial.language,
                             })}
                             className="my-2 flex flex-row items-start justify-start space-x-8 rounded-md px-8 py-2.5"
                           >
