@@ -4,9 +4,9 @@ import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import { Card } from '../../atoms/Card';
-import { ResourceLayout } from '../../components';
-import { Routes } from '../../types';
+import { Card } from '../../../atoms/Card';
+import { ResourceLayout } from '../../../components';
+import { Routes } from '../../../types';
 
 export const Builders = () => {
   const { t } = useTranslation();

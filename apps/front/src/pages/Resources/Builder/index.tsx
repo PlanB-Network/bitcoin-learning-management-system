@@ -9,9 +9,9 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import { Card } from '../../atoms/Card';
-import { Tag } from '../../atoms/Tag';
-import { ResourceLayout } from '../../components';
+import { Card } from '../../../atoms/Card';
+import { Tag } from '../../../atoms/Tag';
+import { ResourceLayout } from '../../../components';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

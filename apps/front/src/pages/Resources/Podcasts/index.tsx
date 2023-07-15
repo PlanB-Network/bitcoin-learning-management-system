@@ -5,8 +5,8 @@ import { Link, generatePath } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 import { JoinedPodcast } from '@sovereign-academy/types';
 
-import { ResourceLayout } from '../../components';
-import { Routes } from '../../types';
+import { ResourceLayout } from '../../../components';
+import { Routes } from '../../../types';
 
 export const Podcasts = () => {
   const { t, i18n } = useTranslation();

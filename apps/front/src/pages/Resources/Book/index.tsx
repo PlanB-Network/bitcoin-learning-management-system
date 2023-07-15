@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router';
 
 import { trpc } from '@sovereign-academy/api-client';
 
-import readingRabbit from '../../assets/resources/reading-rabbit.svg';
-import { Button } from '../../atoms/Button';
-import { Card } from '../../atoms/Card';
-import { ResourceLayout } from '../../components';
-import { useRequiredParams } from '../../utils';
+import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
+import { Button } from '../../../atoms/Button';
+import { Card } from '../../../atoms/Card';
+import { ResourceLayout } from '../../../components';
+import { useRequiredParams } from '../../../utils';
 
 import { BookSummary } from './BookSummary';
 

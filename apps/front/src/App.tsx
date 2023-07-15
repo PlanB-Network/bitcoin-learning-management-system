@@ -7,21 +7,26 @@ import { LocalStorageKey } from '@sovereign-academy/types';
 
 import { useAppDispatch, useScrollToTop } from './hooks';
 import { Home } from './pages';
+// About
 import { Manifesto } from './pages/About/Manifesto';
 import { SponsorsAndContributors } from './pages/About/SponsorsAndContributors';
-import { Book } from './pages/Book';
-import { Books } from './pages/Books';
-import { Builder } from './pages/Builder';
-import { Builders } from './pages/Builders';
+// Courses
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
-import { NotFound } from './pages/NotFound';
-import { Podcast } from './pages/Podcast';
-import { Podcasts } from './pages/Podcasts';
+// Misc
+import { NotFound } from './pages/Misc/NotFound';
+import { UnderConstruction } from './pages/Misc/UnderConstruction';
+// Resources
 import { Resources } from './pages/Resources';
+import { Book } from './pages/Resources/Book';
+import { Books } from './pages/Resources/Books';
+import { Builder } from './pages/Resources/Builder';
+import { Builders } from './pages/Resources/Builders';
+import { Podcast } from './pages/Resources/Podcast';
+import { Podcasts } from './pages/Resources/Podcasts';
+// Tutorials
 import { Tutorials } from './pages/Tutorials';
 import { Tutorial } from './pages/Tutorials/Tutorial';
 import { TutorialCategory } from './pages/Tutorials/TutorialCategory';
-import { UnderConstruction } from './pages/UnderConstruction';
 import { userSlice } from './store';
 import { Routes as RoutesEnum } from './types';
 import { getItem, removeItem } from './utils';

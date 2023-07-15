@@ -5,8 +5,8 @@ import { Link, generatePath } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 import { JoinedBook } from '@sovereign-academy/types';
 
-import { ResourceLayout } from '../../components';
-import { Routes } from '../../types';
+import { ResourceLayout } from '../../../components';
+import { Routes } from '../../../types';
 
 export const Books = () => {
   const { t } = useTranslation();
