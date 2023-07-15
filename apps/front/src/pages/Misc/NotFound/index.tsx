@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as LostRabbit } from '../../assets/404.svg';
-import { MainLayout } from '../../components/MainLayout';
+import { ReactComponent as LostRabbit } from '../../../assets/404.svg';
+import { MainLayout } from '../../../components/MainLayout';
 
 export const NotFound = () => {
   const { t } = useTranslation();

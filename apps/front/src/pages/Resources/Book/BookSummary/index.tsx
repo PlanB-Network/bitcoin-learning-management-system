@@ -2,11 +2,11 @@ import _ from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { compose } from '../../../../src/utils';
-import arrowForward from '../../../assets/icons/arrow_forward.svg';
-import blueEllipse from '../../../assets/resources/blue-ellipse.svg';
-import { Card } from '../../../atoms/Card';
-import { Contributor } from '../../../components/Contributor';
+import arrowForward from '../../../../assets/icons/arrow_forward.svg';
+import blueEllipse from '../../../../assets/resources/blue-ellipse.svg';
+import { Card } from '../../../../atoms/Card';
+import { Contributor } from '../../../../components/Contributor';
+import { compose } from '../../../../utils';
 
 interface BookSummaryProps {
   contributor?: {

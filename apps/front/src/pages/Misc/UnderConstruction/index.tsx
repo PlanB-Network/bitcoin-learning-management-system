@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import underConstructionImage from '../../assets/under-construction.png';
-import { MainLayout } from '../../components';
+import underConstructionImage from '../../../assets/under-construction.png';
+import { MainLayout } from '../../../components';
 
 export const UnderConstruction = () => {
   const { t } = useTranslation();
