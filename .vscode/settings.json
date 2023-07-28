@@ -1,5 +1,14 @@
 {
-  "eslint.validate": ["json"],
+  "eslint.validate": [
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "settings": {
     "i18n-ally.keystyle": "nested",
     "i18n-ally.localesPaths": ["apps/front/public/locales"],

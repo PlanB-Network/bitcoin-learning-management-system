@@ -136,10 +136,6 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           </button>
         </p>
       </div>
-
-      <div className="absolute -bottom-24 left-0 w-full rounded-sm bg-white px-8 py-4 text-sm">
-        {t('auth.noAccountNeeded')}
-      </div>
     </Modal>
   );
 };
