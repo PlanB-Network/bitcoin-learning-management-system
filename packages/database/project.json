@@ -11,7 +11,8 @@
         "outputPath": "dist/packages/database",
         "main": "packages/database/src/index.ts",
         "tsConfig": "packages/database/tsconfig.lib.json",
-        "assets": ["packages/database/*.md"]
+        "assets": ["packages/database/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "test": {

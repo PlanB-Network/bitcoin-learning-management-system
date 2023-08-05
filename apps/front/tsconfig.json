@@ -15,7 +15,7 @@
       "path": "./tsconfig.app.json"
     },
     {
-      "path": "./.storybook/tsconfig.json"
+      "path": "./tsconfig.storybook.json"
     }
   ]
 }

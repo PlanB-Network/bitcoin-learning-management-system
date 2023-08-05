@@ -11,7 +11,8 @@
         "outputPath": "dist/packages/api-client",
         "main": "packages/api-client/src/index.ts",
         "tsConfig": "packages/api-client/tsconfig.lib.json",
-        "assets": ["packages/api-client/*.md"]
+        "assets": ["packages/api-client/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "development": {
