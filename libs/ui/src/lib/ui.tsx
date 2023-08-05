@@ -1,11 +1,9 @@
-import styles from './ui.module.css';
-
 /* eslint-disable-next-line */
 export interface UiProps {}
 
 export function Ui(props: UiProps) {
   return (
-    <div className={styles['container']}>
+    <div className="text-lg w-full text-center">
       <h1>Welcome to Ui!</h1>
     </div>
   );
