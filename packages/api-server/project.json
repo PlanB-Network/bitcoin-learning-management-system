@@ -11,7 +11,8 @@
         "outputPath": "dist/packages/api-server",
         "main": "packages/api-server/src/index.ts",
         "tsConfig": "packages/api-server/tsconfig.lib.json",
-        "assets": ["packages/api-server/*.md"]
+        "assets": ["packages/api-server/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "test": {

@@ -11,7 +11,8 @@
         "outputPath": "dist/packages/types",
         "main": "packages/types/src/index.ts",
         "tsConfig": "packages/types/tsconfig.lib.json",
-        "assets": ["packages/types/*.md"]
+        "assets": ["packages/types/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

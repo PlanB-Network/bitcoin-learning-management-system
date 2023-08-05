@@ -11,7 +11,8 @@
         "outputPath": "dist/packages/content",
         "main": "packages/content/src/index.ts",
         "tsConfig": "packages/content/tsconfig.lib.json",
-        "assets": ["packages/content/*.md"]
+        "assets": ["packages/content/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "development": {
