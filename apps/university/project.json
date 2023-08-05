@@ -1,7 +1,7 @@
 {
-  "name": "sovereign-university",
+  "name": "university",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/sovereign-university/src",
+  "sourceRoot": "apps/university/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/sovereign-university"
+        "outputPath": "dist/apps/university"
       },
       "configurations": {
         "development": {
@@ -24,15 +24,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "sovereign-university:build"
+        "buildTarget": "university:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "sovereign-university:build:development",
+          "buildTarget": "university:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "sovereign-university:build:production",
+          "buildTarget": "university:build:production",
           "hmr": false
         }
       }
@@ -41,36 +41,36 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "sovereign-university:build"
+        "buildTarget": "university:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "sovereign-university:build:development"
+          "buildTarget": "university:build:development"
         },
         "production": {
-          "buildTarget": "sovereign-university:build:production"
+          "buildTarget": "university:build:production"
         }
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/sovereign-university"],
+      "outputs": ["coverage/apps/university"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/sovereign-university"
+        "reportsDirectory": "../../coverage/apps/university"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/sovereign-university/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/university/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "sovereign-university:build"
+        "buildTarget": "university:build"
       }
     }
   },
