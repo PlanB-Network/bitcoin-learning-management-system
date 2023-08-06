@@ -1,7 +1,7 @@
 {
-  "name": "university",
+  "name": "web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/university/src",
+  "sourceRoot": "apps/web/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/university"
+        "outputPath": "dist/apps/web"
       },
       "configurations": {
         "development": {
@@ -24,16 +24,16 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "university:build",
-        "proxyConfig": "apps/university/proxy.conf.json"
+        "buildTarget": "web:build",
+        "proxyConfig": "apps/web/proxy.conf.json"
       },
       "configurations": {
         "development": {
-          "buildTarget": "university:build:development",
+          "buildTarget": "web:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "university:build:production",
+          "buildTarget": "web:build:production",
           "hmr": false
         }
       }
@@ -42,36 +42,36 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "university:build"
+        "buildTarget": "web:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "university:build:development"
+          "buildTarget": "web:build:development"
         },
         "production": {
-          "buildTarget": "university:build:production"
+          "buildTarget": "web:build:production"
         }
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/university"],
+      "outputs": ["coverage/apps/web"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/university"
+        "reportsDirectory": "../../coverage/apps/web"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/university/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "university:build"
+        "buildTarget": "web:build"
       }
     }
   },
