@@ -10,6 +10,14 @@
       "options": {
         "lintFilePatterns": ["libs/types/**/*.ts"]
       }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "sh ./scripts/generate-db-types.sh",
+        "cwd": "libs/types"
+      }
     }
   },
   "tags": []

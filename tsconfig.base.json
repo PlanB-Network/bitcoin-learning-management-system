@@ -13,12 +13,11 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@sovereign-university/api/content": ["libs/api/content/src/index.ts"],
-      "@sovereign-university/api/core/database": [
-        "libs/api/core/database/src/index.ts"
-      ],
+      "@sovereign-university/database": ["libs/database/src/index.ts"],
       "@sovereign-university/api/github": ["libs/api/github/src/index.ts"],
       "@sovereign-university/api/server": ["libs/api/server/src/index.ts"],
       "@sovereign-university/types": ["libs/types/src/index.ts"],

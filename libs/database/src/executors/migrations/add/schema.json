@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "MigrationAdd executor",
+  "description": "Add a new Postgres migration to the migrations directory.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the migration."
+    },
+    "dir": {
+      "type": "string",
+      "description": "The directory where the migrations are located.",
+      "default": "libs/database/migrations"
+    }
+  },
+  "required": ["name"]
+}

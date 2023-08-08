@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "@ts-safeql/eslint-plugin"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -19,6 +19,36 @@
             ]
           }
         ]
+        /* "@ts-safeql/check-sql": [
+          "error",
+          {
+            "connections": [
+              {
+                "migrationsDir": "./libs/database/migrations",
+                "targets": [
+                  {
+                    "tag": "postgres",
+                    "transform": "{type}[]"
+                  },
+                  {
+                    "tag": "sql",
+                    "transform": "{type}[]"
+                    // "fieldTransform": "camel"
+                  }
+                ],
+                "overrides": {
+                  "types": {
+                    "bigint": "number",
+                    "timestamptz": "number",
+                    "undefined": "number"
+                  }
+                },
+                "nullAsUndefined": true,
+                "nullAsOptional": true
+              }
+            ]
+          }
+        ] */
       }
     },
     {
@@ -29,6 +59,11 @@
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
       "rules": {}
     }
   ]
