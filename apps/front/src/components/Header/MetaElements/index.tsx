@@ -2,10 +2,10 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-// import { Button } from '../../../atoms/Button';
-// import { useAppSelector } from '../../../hooks';
+import { Button } from '../../../atoms/Button';
+import { useAppSelector } from '../../../hooks';
 import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
@@ -19,16 +19,16 @@ export const MetaElements = ({
   onClickRegister,
   onClickLogin,
 }: MetaElementsProps) => {
-  // const { t } = useTranslation();
-  // const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const { t } = useTranslation();
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
   const isScreenLg = useGreater('md');
-  // const isScreenXl = useGreater('lg');
+  const isScreenXl = useGreater('lg');
 
   return (
     <div className="flex flex-row place-items-center space-x-2 lg:space-x-6">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
-      {/* {isLoggedIn ? (
+      {isLoggedIn ? (
         <div className="text-white">{t('words.account')}</div>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
@@ -39,7 +39,7 @@ export const MetaElements = ({
             onClick={onClickLogin}
             size={isScreenXl ? 'm' : 's'}
           >
-            {t('words.register')}
+            {t('words.login')}
           </Button>
           <Button
             className="my-4"
@@ -47,10 +47,10 @@ export const MetaElements = ({
             onClick={onClickRegister}
             size={isScreenXl ? 'm' : 's'}
           >
-            {t('words.login')}
+            {t('words.register')}
           </Button>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
