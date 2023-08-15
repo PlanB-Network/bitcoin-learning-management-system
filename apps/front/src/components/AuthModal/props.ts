@@ -1,5 +1,5 @@
 export enum AuthModalState {
-  Signin,
-  Signup,
+  SignIn,
+  Register,
   PasswordReset,
 }

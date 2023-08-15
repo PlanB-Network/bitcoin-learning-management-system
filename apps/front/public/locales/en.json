@@ -23,18 +23,19 @@
     "connect": "Se connecter",
     "connectWithLn": "Connect with LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Créez-en un !",
+    "createAccount": "Register",
+    "createOne": "Register here!",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
+    "forgottenPassword": "Forgot your password?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account created",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
+    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountYet": "Don't have an account?",
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "password is required",
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
+    "signIn": "Sign In",
     "usernameRequired": "username is required",
     "usernameRules": "username must contain at least 6 characters"
   },
@@ -248,10 +249,10 @@
   },
   "tutorials": {
     "exchange": {
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
       "centralized": {
         "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
       },
+      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
       "peer-to-peer": {
         "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
       },
@@ -276,8 +277,8 @@
       },
       "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
       "lightning-network": {
-        "name": "Lightning Network",
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet."
+        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "name": "Lightning Network"
       },
       "rgb": {
         "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
@@ -335,8 +336,10 @@
     "conference": "Conference",
     "conferences": "Conferences",
     "content": "Content",
+    "continue": "Continue",
     "course": "Course",
     "courses": "Courses",
+    "didYouKnow": "Did you know?",
     "documentaries": "Documentaries",
     "donations": "Donations",
     "email": "Email",
@@ -354,7 +357,6 @@
     },
     "library": "Library",
     "lightning": "Lightning",
-    "login": "Login",
     "manifesto": "Manifesto",
     "merchandising": "Merchandising",
     "merchants": "Merchants",
@@ -373,6 +375,7 @@
     "resources": "Resources",
     "review": "Review",
     "rogzy": "Rogzy",
+    "signIn": "Sign In",
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsoring & contributors",
     "supportUs": "Support us",

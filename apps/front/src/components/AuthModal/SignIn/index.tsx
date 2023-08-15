@@ -24,7 +24,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const signinSchema = z.object({
+  const signInSchema = z.object({
     username: z.string().min(1, t('auth.usernameRequired')),
     password: z.string().min(1, t('auth.passwordRequired')),
   });
@@ -60,7 +60,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} headerText={t('auth.connect')}>
+    <Modal isOpen={isOpen} onClose={onClose} headerText={t('words.signIn')}>
       <div className="flex flex-col items-center">
         <Button className="my-5" rounded>
           {t('auth.connectWithLn')}
@@ -71,7 +71,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           onSubmit={handleLogin}
           validate={(values) => {
             try {
-              signinSchema.parse(values);
+              signInSchema.parse(values);
             } catch (error) {
               if (error instanceof ZodError) {
                 return error.flatten().fieldErrors;
@@ -89,31 +89,39 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col items-center"
+              className="flex w-full flex-col items-center py-6"
             >
-              <TextInput
-                name="username"
-                labelText="Username*"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.username}
-                className="mt-4 w-96"
-                error={touched.username ? errors.username : null}
-              />
+              <div className="flex w-full flex-col items-center">
+                <TextInput
+                  name="username"
+                  labelText="Username"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.username}
+                  className="w-96"
+                  error={touched.username ? errors.username : null}
+                />
 
-              <TextInput
-                name="password"
-                type="password"
-                labelText="Password*"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                className="mt-4 w-96"
-                error={touched.password ? errors.password : null}
-              />
+                <TextInput
+                  name="password"
+                  type="password"
+                  labelText="Password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  className="w-96"
+                  error={touched.password ? errors.password : null}
+                />
+              </div>
 
-              <Button type="submit" className="mb-5 mt-10">
-                {t('auth.connect')}
+              {login.error && (
+                <p className="text-danger-300 mt-2 text-base font-semibold">
+                  {login.error.message}
+                </p>
+              )}
+
+              <Button type="submit" className="mt-6" rounded>
+                {t('words.continue')}
               </Button>
             </form>
           )}
@@ -122,11 +130,14 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           {t('auth.noAccountYet')}
           <button
             className="ml-1 cursor-pointer border-none bg-transparent text-xs underline"
-            onClick={() => goTo(AuthModalState.Signup)}
+            onClick={() => goTo(AuthModalState.Register)}
           >
             {t('auth.createOne')}
           </button>
         </p>
+        {/* 
+        // Add back when we support emails
+
         <p className="mb-0 mt-2 text-xs">
           <button
             className="cursor-pointer border-none bg-transparent text-xs underline"
@@ -134,7 +145,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           >
             {t('auth.forgottenPassword')}
           </button>
-        </p>
+        </p> 
+        
+        */}
       </div>
     </Modal>
   );

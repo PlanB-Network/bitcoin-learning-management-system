@@ -5,7 +5,8 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../../atoms/Button';
-import { useAppSelector } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { userSlice } from '../../../store';
 import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
@@ -24,12 +25,21 @@ export const MetaElements = ({
   const isScreenLg = useGreater('md');
   const isScreenXl = useGreater('lg');
 
+  const dispatch = useAppDispatch();
+
   return (
     <div className="flex flex-row place-items-center space-x-2 lg:space-x-6">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
       {isLoggedIn ? (
-        <div className="text-white">{t('words.account')}</div>
+        <div
+          className="text-white"
+          onClick={() => {
+            dispatch(userSlice.actions.logout());
+          }}
+        >
+          {t('words.account')}
+        </div>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
           <Button
@@ -39,7 +49,7 @@ export const MetaElements = ({
             onClick={onClickLogin}
             size={isScreenXl ? 'm' : 's'}
           >
-            {t('words.login')}
+            {t('words.signIn')}
           </Button>
           <Button
             className="my-4"

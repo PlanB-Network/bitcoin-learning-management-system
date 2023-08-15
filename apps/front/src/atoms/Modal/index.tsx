@@ -1,11 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { IoMdClose } from 'react-icons/io';
 
 import rabbitHikingModal from '../../assets/rabbit-modal-auth.svg';
 
 interface ModalProps {
   isOpen: boolean;
+  closeButtonEnabled?: boolean;
   onClose: () => void;
   children: JSX.Element | JSX.Element[];
   headerText?: string;
@@ -13,12 +15,13 @@ interface ModalProps {
 
 export const Modal = ({
   isOpen,
+  closeButtonEnabled,
   onClose,
   children,
   headerText,
 }: ModalProps) => {
-  const cancelButtonRef = useRef(null);
   const { t } = useTranslation();
+  const cancelButtonRef = useRef(null);
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -52,27 +55,32 @@ export const Modal = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel>
-                <div className="overflow-hidden bg-white rounded-[1.5em]  border-4 border-orange-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all max-w-xs sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6">
-                  {' '}
-                  {/*   <button>
-                    <IoMdClose
-                      className="flex h-6 w-6 items-center justify-between"
-                      onClick={onClose}
-                    />
-                  </button> */}
-                  <header className="my-6 flex h-6 flex-col items-center justify-between uppercase text-gray-400 text-xl font-medium">
+                <div className="max-w-xs overflow-hidden rounded-[1.5em] border-4 border-orange-800 bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6">
+                  {closeButtonEnabled && (
+                    <button>
+                      <IoMdClose
+                        className="flex h-6 w-6 items-center justify-between"
+                        onClick={onClose}
+                      />
+                    </button>
+                  )}
+                  <header className="my-6 flex h-6 flex-col items-center justify-between text-xl font-semibold uppercase text-gray-400">
                     {headerText && <h4>{headerText}</h4>}
                   </header>
                   {children}
                 </div>
-                <div className="relative max-w-xs sm:max-w-lg">
+                {/* TODO: move this outside of the modal atom */}
+                <div className="relative my-14 max-w-xs sm:max-w-lg">
                   <img
                     src={rabbitHikingModal}
                     alt={t('imagesAlt.rabbitHikingModal')}
-                    className="absolute hidden sm:h-m h-23 sm:bottom-14 sm:-left-10 z-[+1] sm:flex"
+                    className="h-23 absolute z-[+1] hidden sm:-left-10 sm:bottom-14 sm:flex"
                   ></img>
-                  <div className="relative rounded-[1em] justify-center bg-secondary-400 border-orange-800 text-white border-4 overflow-hidden shadow-xl transition-all my-10 sm:max-w-lg p-7  sm:rounded-[1.5em]">
-                    <div>{t('auth.noAccountNeeded')}</div>
+                  <div className="bg-secondary-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-800 py-4 text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em]">
+                    <span className="text-primary-800 italic">
+                      {t('words.didYouKnow')}
+                      <div>{t('auth.noAccountNeeded')}</div>
+                    </span>
                   </div>
                 </div>
               </Dialog.Panel>

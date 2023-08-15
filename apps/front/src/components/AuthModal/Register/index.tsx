@@ -15,12 +15,10 @@ import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { AuthModalState } from '../props';
 
-const password = new PasswordValidator();
-
-password
-  .is()
-  .min(10)
-  .has()
+const password = new PasswordValidator().is().min(10);
+// I am not a big fan of conditions in password validation, that lowers the entropy
+// in some way.
+/* .has()
   .uppercase()
   .has()
   .lowercase()
@@ -30,9 +28,9 @@ password
   .symbols()
   .has()
   .not()
-  .spaces();
+  .spaces(); */
 
-const signupSchema = z
+const registerSchema = z
   .object({
     username: z
       .string({ required_error: t('auth.usernameRequired') })
@@ -45,8 +43,6 @@ const signupSchema = z
       }
     ),
     confirmation: z.string(),
-    email: z.string().email().optional(),
-    contributor_id: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmation, {
     message: t('auth.passwordsDontMatch'),
@@ -59,15 +55,9 @@ interface LoginModalProps {
   goTo: (newState: AuthModalState) => void;
 }
 
-interface AccountData {
-  username: string;
-  password: string;
-  confirmation: string;
-  email?: string;
-  contributorId?: string;
-}
+type AccountData = z.infer<typeof registerSchema>;
 
-export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
+export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const dispatch = useAppDispatch();
 
   const register = trpc.auth.credentials.register.useMutation({
@@ -86,11 +76,9 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
 
-      await register.mutate({
-        email: values.email,
+      register.mutate({
         password: values.password,
         username: values.username,
-        contributor_id: values.contributorId,
       });
     },
     [register]
@@ -104,13 +92,13 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
       }
     >
-      {register.data ? (
-        <div className="flex flex-col items-center">
-          <BsCheck className="my-8 h-20 w-20 text-lg text-success-300" />
+      {register.data && !register.error ? (
+        <div className="mb-8 flex flex-col items-center">
+          <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
-            })}{' '}
+            })}
             <br />
             {t('auth.canSaveProgress')}
           </p>
@@ -125,7 +113,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             }}
             validate={(values) => {
               try {
-                signupSchema.parse(values);
+                registerSchema.parse(values);
               } catch (error) {
                 if (error instanceof ZodError) {
                   return error.flatten().fieldErrors;
@@ -147,61 +135,49 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="flex w-full flex-col items-center"
+                className="flex w-full flex-col items-center py-6"
               >
-                <TextInput
-                  name="username"
-                  labelText="Username*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                  className="mt-4 w-80"
-                  error={touched.username ? errors.username : null}
-                />
+                <div className="flex w-full flex-col items-center">
+                  <TextInput
+                    name="username"
+                    labelText="Username*"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.username}
+                    className="w-80"
+                    error={touched.username ? errors.username : null}
+                  />
 
-                <TextInput
-                  name="password"
-                  type="password"
-                  labelText="Password*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  className="mt-4 w-80"
-                  error={touched.password ? errors.password : null}
-                />
+                  <TextInput
+                    name="password"
+                    type="password"
+                    labelText="Password*"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    className="w-80"
+                    error={touched.password ? errors.password : null}
+                  />
 
-                <TextInput
-                  name="confirmation"
-                  type="password"
-                  labelText="Confirmation*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmation}
-                  className="mt-4 w-80"
-                  error={touched.confirmation ? errors.confirmation : null}
-                />
+                  <TextInput
+                    name="confirmation"
+                    type="password"
+                    labelText="Confirmation*"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmation}
+                    className="w-80"
+                    error={touched.confirmation ? errors.confirmation : null}
+                  />
+                </div>
 
-                <TextInput
-                  name="email"
-                  labelText={t('words.email')}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  className="mt-4 w-80"
-                  error={touched.email ? errors.email : null}
-                />
+                {register.error && (
+                  <p className="text-danger-300 mt-2 text-base font-semibold">
+                    {register.error.message}
+                  </p>
+                )}
 
-                <TextInput
-                  name="contributorId"
-                  labelText={t('auth.contributorId')}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.contributorId}
-                  className="mt-4 w-80"
-                  error={touched.contributorId ? errors.contributorId : null}
-                />
-
-                <Button className="mb-5 mt-10">
+                <Button className="mt-6" rounded>
                   {t('auth.createAccount')}
                 </Button>
               </form>
@@ -211,7 +187,7 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             {t('auth.alreadyAnAccount')}{' '}
             <button
               className="cursor-pointer border-none bg-transparent text-xs underline"
-              onClick={() => goTo(AuthModalState.Signin)}
+              onClick={() => goTo(AuthModalState.SignIn)}
             >
               {t('auth.getConnected')}
             </button>
