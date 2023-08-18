@@ -9,7 +9,7 @@ interface ButtonProps
       ButtonHTMLAttributes<HTMLButtonElement>,
       HTMLButtonElement
     > {
-  children: string | JSX.Element | JSX.Element[];
+  children?: string | JSX.Element | JSX.Element[];
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
   rounded?: boolean;

@@ -114,9 +114,9 @@ export const CourseChapter = () => {
                             courseId,
                             chapterIndex: current.chapter.toString(),
                           })}
+                          key={index}
                         >
                           <div
-                            key={index}
                             className={compose(
                               'h-4 grow',
                               current.chapter < chapter.chapter
@@ -130,7 +130,10 @@ export const CourseChapter = () => {
                       );
 
                     return (
-                      <div className="relative flex grow overflow-visible">
+                      <div
+                        className="relative flex grow overflow-visible"
+                        key={index}
+                      >
                         <div
                           className={compose(
                             'h-4 w-2/3 bg-orange-600',

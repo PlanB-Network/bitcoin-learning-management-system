@@ -22,7 +22,7 @@ export const Tutorial = () => {
       currentTutorialId={tutorial?.id}
     >
       {tutorial && (
-        <div className="flex w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
+        <div className="flex w-full flex-col items-center justify-center md:px-2">
           <div className="w-full max-w-5xl px-5 md:px-0">
             <h1 className="text-primary-800 w-full border-b-[0.2rem] border-gray-400/50 py-2 text-left text-2xl font-bold uppercase md:text-4xl">
               {tutorial.name}
