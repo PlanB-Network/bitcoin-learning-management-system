@@ -113,7 +113,10 @@ export const TutorialCategory = () => {
                                       tutorial.builder.last_commit,
                                       `${tutorial.builder.path}/assets/logo.jpeg`
                                     )
-                                  : undefined
+                                  : computeAssetCdnUrl(
+                                      tutorial.last_commit,
+                                      `${tutorial.path}/assets/logo.jpeg`
+                                    )
                               }
                               alt=""
                             />

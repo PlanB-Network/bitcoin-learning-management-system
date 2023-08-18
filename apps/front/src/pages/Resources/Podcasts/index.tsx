@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, generatePath } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
-import { JoinedPodcast } from '@sovereign-academy/types';
 
 import { ResourceLayout } from '../../../components';
 import { Routes } from '../../../types';
@@ -18,7 +17,7 @@ export const Podcasts = () => {
   });
 
   // Sort podcasts alphabetically
-  const sortedPodcasts: JoinedPodcast[] = podcasts
+  const sortedPodcasts = podcasts
     ? podcasts.sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
