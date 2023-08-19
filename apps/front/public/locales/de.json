@@ -65,7 +65,7 @@
     },
     "chapter": {
       "count": "Kapitel {{count}}/{{total}}",
-      "finish": "Kurs beenden",
+      "finishCourse": "Kurs beenden",
       "next": "Fertig, gehen wir zum nächsten Kapitel!"
     },
     "details": {

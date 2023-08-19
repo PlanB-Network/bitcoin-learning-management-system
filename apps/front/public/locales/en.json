@@ -67,7 +67,7 @@
     },
     "chapter": {
       "count": "Chapter n°{{count}}/{{total}}",
-      "finish": "Finish the course",
+      "finishCourse": "Finish the course",
       "next": "Done, let's go to the next chapter!"
     },
     "details": {
@@ -339,6 +339,7 @@
     "continue": "Continue",
     "course": "Course",
     "courses": "Courses",
+    "dashboard": "Dashboard",
     "didYouKnow": "Did you know?",
     "documentaries": "Documentaries",
     "donations": "Donations",

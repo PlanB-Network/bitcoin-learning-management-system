@@ -30,6 +30,17 @@ export const CourseChapter = () => {
     chapterIndex,
   });
 
+  const completeChapterMutation =
+    trpc.user.courses.completeChapter.useMutation();
+
+  const completeChapter = () => {
+    completeChapterMutation.mutate({
+      courseId,
+      language: language ?? i18n.language,
+      chapter: Number(chapterIndex),
+    });
+  };
+
   if (!chapter && isFetched) navigate('/404');
 
   return (
@@ -173,7 +184,7 @@ export const CourseChapter = () => {
                     chapterIndex: (chapter.chapter + 1).toString(),
                   })}
                 >
-                  <Button>
+                  <Button onClick={completeChapter}>
                     <span>{t('courses.chapter.next')}</span>
                     <BiSkipNext className="ml-2 h-8 w-8" />
                   </Button>
@@ -185,8 +196,8 @@ export const CourseChapter = () => {
                     courseId,
                   })}
                 >
-                  <Button>
-                    <span>{t('courses.chapter.finish')}</span>
+                  <Button onClick={completeChapter}>
+                    <span>{t('courses.chapter.finishCourse')}</span>
                     <BsCheckLg className="ml-2 h-6 w-6" />
                   </Button>
                 </Link>
