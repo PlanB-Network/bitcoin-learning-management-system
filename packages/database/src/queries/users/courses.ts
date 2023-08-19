@@ -45,9 +45,9 @@ export const completeChapterQuery = (
         RETURNING *
     ),
 
-    -- Calculate the count of completed chapters for the user and course after the insertion
+    -- Calculate the count of completed chapters for the user and course (plus one as the newly completed chapter is not yet in the table)
     chapter_count AS (
-        SELECT COUNT(*) as completed_count 
+        SELECT COUNT(*) + 1 as completed_count 
         FROM users.course_completed_chapters
         WHERE
           uid = ${uid}
@@ -70,9 +70,9 @@ export const completeChapterQuery = (
       ${uid} as uid,
       ${courseId} as course_id,
       ${language} as language,
-      chapter_count.completed_count + 1 as completed_chapters_count,
+      chapter_count.completed_count as completed_chapters_count,
       NOW() as last_updated,
-      ((chapter_count.completed_count::FLOAT + 1) / total_chapters.total) * 100 as progress_percentage
+      (chapter_count.completed_count::FLOAT / total_chapters.total) * 100 as progress_percentage
     FROM chapter_count, total_chapters
     ON CONFLICT (uid, course_id, language) DO UPDATE
     SET
