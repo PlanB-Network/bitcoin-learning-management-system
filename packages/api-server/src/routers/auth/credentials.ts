@@ -2,13 +2,14 @@ import { TRPCError } from '@trpc/server';
 import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
+import { publicProcedure } from '../../procedures';
 import {
   addCredentialsUser,
   contributorIdExists,
   generateUniqueContributorId,
   getUserByAny,
 } from '../../services/users';
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
 import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
 

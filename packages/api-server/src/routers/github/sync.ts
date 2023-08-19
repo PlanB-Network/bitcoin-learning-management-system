@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createProcessChangedFiles } from '@sovereign-academy/content';
 import { getAllRepoFiles, syncCdnRepository } from '@sovereign-academy/github';
 
-import { publicProcedure } from '../../trpc';
+import { publicProcedure } from '../../procedures';
 
 // TODO: Protect this endpoint (admin only when we have roles)
 export const syncProcedure = publicProcedure

@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import { type ResourceCategory } from '@sovereign-academy/content';
 
+import { publicProcedure } from '../../procedures';
 import {
   createGetBook,
   createGetBooks,
@@ -10,7 +11,7 @@ import {
   createGetPodcast,
   createGetPodcasts,
 } from '../../services/content';
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
 
 const createGetResourcesProcedure = (category: ResourceCategory) => {
   return publicProcedure

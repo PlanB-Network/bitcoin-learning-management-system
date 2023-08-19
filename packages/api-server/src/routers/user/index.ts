@@ -1,4 +1,5 @@
-import { createTRPCRouter, protectedProcedure } from '../../trpc';
+import { protectedProcedure } from '../../procedures';
+import { createTRPCRouter } from '../../trpc';
 import { signAccessToken } from '../../utils/access-token';
 
 export const userRouter = createTRPCRouter({
