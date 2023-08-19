@@ -6,7 +6,7 @@ export const userRouter = createTRPCRouter({
   getMe: protectedProcedure.query(({ ctx }) => {
     return {
       user: ctx.user,
-      accessToken: signAccessToken(ctx.user),
+      accessToken: signAccessToken(ctx.user.uid),
       isLoggedIn: true,
     };
   }),

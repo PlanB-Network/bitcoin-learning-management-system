@@ -33,7 +33,11 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        user: z.object({ username: z.string(), email: z.string().optional() }),
+        user: z.object({
+          uid: z.string(),
+          username: z.string(),
+          email: z.string().optional(),
+        }),
         accessToken: z.string(),
       })
     )
@@ -72,8 +76,12 @@ export const credentialsAuthRouter = createTRPCRouter({
       return {
         status: 201,
         message: 'User created',
-        user: { username: user.username, email: user.email ?? undefined },
-        accessToken: signAccessToken(user),
+        user: {
+          uid: user.uid,
+          username: user.username,
+          email: user.email ?? undefined,
+        },
+        accessToken: signAccessToken(user.uid),
       };
     }),
   login: publicProcedure
@@ -83,7 +91,11 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        user: z.object({ username: z.string(), email: z.string().optional() }),
+        user: z.object({
+          uid: z.string(),
+          username: z.string(),
+          email: z.string().optional(),
+        }),
         accessToken: z.string(),
       })
     )
@@ -119,8 +131,12 @@ export const credentialsAuthRouter = createTRPCRouter({
       return {
         status: 200,
         message: 'Logged in',
-        user: { username: user.username, email: user.email ?? undefined },
-        accessToken: signAccessToken(user),
+        user: {
+          uid: user.uid,
+          username: user.username,
+          email: user.email ?? undefined,
+        },
+        accessToken: signAccessToken(user.uid),
       };
     }),
 });

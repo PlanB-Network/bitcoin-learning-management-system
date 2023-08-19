@@ -2,13 +2,9 @@ import { sign } from 'jsonwebtoken';
 
 import { JwtAuthTokenPayload } from '@sovereign-academy/types';
 
-export const signAccessToken = (user: {
-  username: string;
-  email?: string | null;
-}) => {
+export const signAccessToken = (uid: string) => {
   const payload: JwtAuthTokenPayload = {
-    username: user.username,
-    email: user.email || undefined,
+    uid,
   };
 
   return sign(payload, process.env['JWT_SECRET'] as string, {

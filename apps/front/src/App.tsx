@@ -58,7 +58,7 @@ export const App = () => {
     if (isLoggedIn && accessToken && user)
       dispatch(
         userSlice.actions.login({
-          username: user.username,
+          uid: user.uid,
           accessToken: accessToken,
         })
       );
