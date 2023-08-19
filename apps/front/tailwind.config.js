@@ -23,12 +23,6 @@ export default {
   content: [join(__dirname, './src/**/*.{js,ts,jsx,tsx}')],
   theme: {
     fontFamily: { primary: ['Poppins'], body: ['SpaceMono'] },
-    fontWeight: {
-      thin: '300',
-      normal: '400',
-      semibold: '600',
-      bold: '700',
-    },
     colors: {
       transparent: 'transparent',
       primary: {

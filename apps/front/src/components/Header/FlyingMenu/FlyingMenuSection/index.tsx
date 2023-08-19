@@ -24,7 +24,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
         currentSection !== '/' &&
         section.path.includes(currentSection)
           ? 'font-semibold'
-          : 'font-thin';
+          : 'font-light';
 
       return (
         <Link

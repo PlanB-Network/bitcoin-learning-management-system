@@ -28,7 +28,7 @@ export const Home = () => {
             <h1 className="text-4xl text-white md:max-w-xl md:text-5xl lg:max-w-4xl lg:text-7xl xl:text-8xl">
               The Sovereign University
             </h1>
-            <p className="mt-10 text-base font-thin italic tracking-wide text-white sm:text-xl lg:text-2xl">
+            <p className="mt-10 text-base font-light italic tracking-wide text-white sm:text-xl lg:text-2xl">
               {t('home.hero.tagLine')}
             </p>
           </div>

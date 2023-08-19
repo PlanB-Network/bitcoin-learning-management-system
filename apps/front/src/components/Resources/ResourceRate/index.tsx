@@ -13,7 +13,7 @@ export const ResourceRate = ({ rate }: ResourceRateProps) => {
       <div className="text-primary-800 mx-auto mb-2 w-max text-2xl font-semibold uppercase">
         {t('words.review')}
       </div>
-      <div className="text-primary-800 mx-auto w-max text-sm font-thin">
+      <div className="text-primary-800 mx-auto w-max text-sm font-light">
         {t('resources.publicGrade', { grade: rate.toFixed(1) })}
       </div>
       <div className="mt-3 flex flex-row justify-evenly space-x-5">

@@ -62,7 +62,7 @@ export const CourseDetails: React.FC = () => {
                 <h1 className="text-primary-700 text-5xl font-semibold">
                   {course.name}
                 </h1>
-                <h2 className="text-primary-700 text-lg font-thin italic">
+                <h2 className="text-primary-700 text-lg font-light italic">
                   {t('courses.details.goal', { goal: course.goal })}
                 </h2>
               </div>
@@ -132,13 +132,13 @@ export const CourseDetails: React.FC = () => {
                 ></ReactMarkdown>
               </div>
               <div className="flex w-full flex-col">
-                <h4 className="mb-1 text-sm font-thin uppercase italic">
+                <h4 className="mb-1 text-sm font-light uppercase italic">
                   {t('courses.details.objectives')}
                 </h4>
                 <h3 className="text-primary-800 mb-5 text-2xl font-normal">
                   {t('courses.details.objectivesTitle')}
                 </h3>
-                <ul className="text-primary-700 space-y-2 font-thin uppercase">
+                <ul className="text-primary-700 space-y-2 font-light uppercase">
                   {course.objectives?.map((goal, index) => (
                     <li className="flex flex-row space-x-3" key={index}>
                       <div>
@@ -153,7 +153,7 @@ export const CourseDetails: React.FC = () => {
             <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
             <div className="my-4 h-fit max-w-5xl grid-cols-2 place-items-stretch justify-items-stretch gap-x-20 px-2 md:grid">
               <div className="flex h-fit flex-col">
-                <h4 className="mb-5 text-sm font-thin uppercase italic">
+                <h4 className="mb-5 text-sm font-light uppercase italic">
                   {t('courses.details.curriculum')}
                 </h4>
                 <ul className="ml-5 space-y-5">
@@ -172,7 +172,7 @@ export const CourseDetails: React.FC = () => {
                           })}
                           key={chapter.chapter}
                         >
-                          <p className="text-lg font-thin uppercase text-orange-800 ">
+                          <p className="text-lg font-light uppercase text-orange-800 ">
                             {chapter.title}
                           </p>
                         </Link>

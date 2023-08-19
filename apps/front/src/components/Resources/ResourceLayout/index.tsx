@@ -33,7 +33,7 @@ export const ResourceLayout = ({
           <div>
             <PageTitle>{title}</PageTitle>
             {tagLine && (
-              <p className="mx-4 mt-2 pb-3 text-justify text-sm font-thin uppercase text-white sm:mx-8 sm:text-base">
+              <p className="mx-4 mt-2 pb-3 text-justify text-sm font-light uppercase text-white sm:mx-8 sm:text-base">
                 {tagLine}
               </p>
             )}

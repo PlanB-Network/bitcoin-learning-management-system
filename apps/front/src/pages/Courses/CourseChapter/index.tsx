@@ -55,7 +55,7 @@ export const CourseChapter = () => {
                 }`}
               </h1>
               {isScreenMd ? (
-                <div className="font-body flex flex-row justify-between text-lg font-thin tracking-wide">
+                <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
                   <div>
                     {t('courses.chapter.count', {
                       count: chapter.chapter,
