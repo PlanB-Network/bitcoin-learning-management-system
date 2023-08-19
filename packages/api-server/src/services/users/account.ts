@@ -1,5 +1,6 @@
 import { firstRow } from '@sovereign-academy/database';
 import type { PostgresClient } from '@sovereign-academy/database';
+import { Account } from '@sovereign-academy/types';
 
 export const addCredentialsUser = async (
   postgres: PostgresClient,
@@ -16,17 +17,11 @@ export const addCredentialsUser = async (
   }
 ) => {
   return postgres<
-    {
-      id: string;
-      username: string;
-      password_hash: string;
-      email: string | null;
-      contributor_id: string;
-    }[]
+    Pick<Account, 'uid' | 'username' | 'email' | 'contributor_id'>[]
   >`
     INSERT INTO users.accounts (username, password_hash, email, contributor_id)
     VALUES (${username}, ${passwordHash}, ${email || null}, ${contributorId})
-    RETURNING *;
+    RETURNING uid, username, email, contributor_id;
   `;
 };
 
@@ -40,20 +35,12 @@ export const getUserByAny = async (
     uid?: string;
   } = {}
 ) => {
-  return postgres<
-    {
-      id: string;
-      username: string;
-      password_hash: string;
-      email: string | null;
-      contributor_id: string;
-    }[]
-  >`
+  return postgres<Account[]>`
     SELECT *
     FROM users.accounts
     WHERE
       ${username ? postgres`username = ${username}` : postgres``}
       ${username && uid ? postgres`OR` : postgres``}
-      ${uid ? postgres`id = ${uid}` : postgres``};
+      ${uid ? postgres`uid = ${uid}` : postgres``};
   `.then(firstRow);
 };

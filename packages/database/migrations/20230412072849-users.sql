@@ -4,7 +4,7 @@ CREATE SCHEMA IF NOT EXISTS users;
 
 -- Users
 CREATE TABLE IF NOT EXISTS users.accounts (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  uid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   
   username VARCHAR(255) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE,
