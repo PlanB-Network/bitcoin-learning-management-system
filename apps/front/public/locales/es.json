@@ -11,7 +11,7 @@
       "rabbitholeDigger": "Digger agujero de conejo"
     },
     "headerLink": "Conviértete en un patrocinador comunitario",
-    "manifesto": "We are DB.\n\nWe believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe are DB. We simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
+    "manifesto": "Somos DB.\n\nCreemos en el futuro descentralizado que ofrece Bitcoin.\n\nNuestra misión es introducir Bitcoin a mil millones de personas en una década. Nuestras herramientas son la educación y la información.\n\nApoyamos a las comunidades locales de Bitcoiners proporcionando contenido educativo de código abierto y ofreciendo una red de mentores de Bitcoin.\n\nNuestra filosofía está inspirada en el manifiesto cypherpunk. Así como ellos defendieron la privacidad, nosotros defendemos la educación. Creemos que el conocimiento es la base de la libertad y el cambio.\n\nSomos solo Bitcoin.\n\nAbogamos por la responsabilidad individual y la independencia que ofrece tener tus propias claves.\n\nInstamos a la verificación, no a la confianza ciega.\n\nCreemos que al arreglar el dinero, arreglamos el mundo.\n\nSomos descentralizados y de código abierto, evitando cualquier punto único de fallo.\n\nFomentamos la libre difusión de nuestro contenido.\n\nAspiramos a un mundo que opera de abajo hacia arriba, donde el individuo está en el centro.\n\nSomos DB. Simplificamos, educamos, compartimos.\n\nÚnete a nosotros en nuestra misión de hacer que el mundo tome la píldora naranja.\n",
     "pageSubtitle": "La Universidad de Soberano ofrece educación gratuita en Bitcoin a todos.",
     "thanks1": "Un agradecimiento especial a nuestros creyentes tempranos, que nos han ayudado a perseverar a lo largo de los años.",
     "thanks2": "La Universidad de Soberanía es un esfuerzo comunitario. Se ha hecho posible gracias a numerosos colaboradores que han asumido varios papeles, como profesores, desarrolladores, diseñadores y ayudantes de muchos tipos. Muchas gracias a todos."
@@ -214,7 +214,7 @@
     "exchangesDescription": "Compra y vende bitcoins en los intercambios y aprende sobre P2P",
     "libraryDescription": "Descubre muchos libros para mejorar tu conocimiento",
     "lightningDescription": "Administre su nodo de iluminación y utilice la red de iluminación",
-    "manifestoDescription": "Read DecouvreBitcoin's manifesto",
+    "manifestoDescription": "Lee el manifiesto de DecouvreBitcoin",
     "merchantsDescription": "Acepta pagos bitcoin y descubre herramientas para comerciantes",
     "miningDescription": "Extrae tus propios bitcoins y aprende sobre la industria minera",
     "nodeDescription": "Aprende cómo ser autosoberano con tu propio nodo bitcoin",
@@ -250,10 +250,10 @@
     "exchange": {
       "description": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "centralized": {
-        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+        "description": "Los intercambios centralizados son generalmente entidades reguladas que actúan como intermediarios entre el sistema bancario y el ecosistema bitcoin. Te permiten comprar y vender grandes cantidades de bitcoin y retirarlo a tu billetera o cuenta bancaria. Por lo general, requieren KYC, y por lo tanto, monitorean tu actividad, reportándola a instituciones de vigilancia financiera para respetar las leyes locales."
       },
       "peer-to-peer": {
-        "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
+        "description": "Los intercambios de persona a persona son mercados donde los individuos intercambian bitcoin por otras monedas entre sí. Estos intercambios pueden estar regulados o no y generalmente no piden mucha información (si es que piden alguna) sobre ti. Simplemente facilitan la relación entre los usuarios. Sus tarifas podrían ser más altas que los intercambios tradicionales y su liquidez un poco menor. Es la opción preferida para los bitcoiners que intentan evitar el KYC."
       },
       "shortDescription": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "title": "Intercambio"
@@ -261,26 +261,26 @@
     "headerSignature": "Rogzy",
     "headerText": "¡Bienvenido al agujero de conejo infinito de Bitcoin! En esta sección te ofreceremos un tutorial en profundidad en la mayoría de los proyectos de bitcoin ahí fuera. Esta página en mantenimiento por Bevolel y pasionados bitcoin que apoyan el proyecto de código abierto. Para ver nuestro archivo adjunto financiero del proyecto mencionado, refiérase a nuestro informe de transparencia. Gracias por su confianza en esta universidad y disfrute del viaje.",
     "merchant": {
-      "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
+      "description": "¿Alguna vez te has preguntado cómo aceptar bitcoin fácilmente para un negocio? Explora nuestras diversas soluciones para convertirte en un experto y configurar fácilmente una solución para comerciantes en las tiendas a tu alrededor. La solución de Punto de Venta varía según las necesidades del comerciante (físico o en línea), su volumen y la complejidad de sus operaciones. Una buena aproximación general es simplemente comenzar con una billetera LN básica, pasar a una solución fácil y eficiente (como un PoS móvil) y finalmente explorar BTC Pay Server para soluciones avanzadas, complejas y profesionales.",
       "shortDescription": "Soluciones para que las empresas acepten bitcoin",
       "title": "Comerciante"
     },
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
+      "description": "La industria de la minería es un tema complejo lleno de laberintos internos. Aquí, intentaremos acompañarte en tu viaje utilizando hardware y software. Desde modificar un S9 para convertirlo en un calentador doméstico hasta intentar ganar la lotería con un minero nerd.",
       "shortDescription": "Soluciones mineras de Bitcoin",
       "title": "Minería"
     },
     "node": {
       "bitcoin": {
-        "description": "A Bitcoin Core node is the ground zero of your Bitcoin sovereignty stack. It allows you to run the Bitcoin software and be part of the network. You will validate blocks and transactions, decide which rules you want to apply within the network, and stop using intermediaries to propagate your transactions. There are many ways to run a Bitcoin node, some more user-friendly than others."
+        "description": "Un nodo de Bitcoin Core es el punto de partida de tu pila de soberanía Bitcoin. Te permite ejecutar el software de Bitcoin y ser parte de la red. Validarás bloques y transacciones, decidirás qué reglas quieres aplicar dentro de la red y dejarás de usar intermediarios para propagar tus transacciones. Hay muchas formas de ejecutar un nodo de Bitcoin, algunas más amigables para el usuario que otras."
       },
       "description": "Soluciones para operar un nodo bitcoin y unirse a la red",
       "lightning-network": {
         "name": "Lightning Network",
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet."
+        "description": "Un nodo Lightning te permite participar en el protocolo de capa 2 de Bitcoin llamado Lightning. Podrás abrir canales, gestionar su liquidez, participar en el gráfico y convertirte en no custodio con respecto a tu cartera Lightning."
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB es un sistema escalable y confidencial de contratos inteligentes para Bitcoin y la red Lightning. Es una capa de programabilidad para Bitcoin, con conceptos de propiedad privada y mutua, abstracción y separación de preocupaciones y representa \"post-blockchain\"."
       },
       "shortDescription": "Soluciones para operar un nodo bitcoin y unirse a la red",
       "title": "Nodo"
@@ -288,11 +288,11 @@
     "pageTitle": "Tutoriales",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "Bitcoin no es privado por defecto, está diseñado intencionadamente para ser seudónimo, y cada transacción es pública y se almacena para siempre. Para recuperar cierta confidencialidad, debemos usar las mejores prácticas del usuario y herramientas específicas integradas en nuestro software. Desde evitar la reutilización de direcciones hasta CoinJoin, pasando por mezclar tus monedas y conectar a tu propio nodo, te ayudaremos en tu camino hacia la privacidad."
       },
       "description": "Herramientas para respaldar y mantener la privacidad",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "En la era de la vigilancia masiva, recuperar un cierto nivel de privacidad en tu vida diaria es esencial. Dado que cada usuario tendrá un cierto grado de paranoia y conocimiento tecnológico, es perfectamente normal usar ciertas herramientas y adaptarlas a tus necesidades. Aquí, exploraremos diferentes soluciones de protección como VPNs, Tor, Tails OS, PGP, mensajes cifrados y mucho más."
       },
       "shortDescription": "Herramientas para respaldar y mantener la privacidad",
       "title": "Privacidad"
@@ -300,13 +300,13 @@
     "wallet": {
       "description": "Soluciones de seguridad y uso de sus bitcoins",
       "desktop": {
-        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+        "description": "Las carteras de escritorio suelen ser para usuarios más avanzados ya que combinan el uso de dispositivos de hardware y el software de cartera de escritorio. Es como tener una nueva interfaz más personalizada e intensiva en funcionalidad para que tu dispositivo de hardware la utilice. Dichas carteras ofrecen opciones de multi-firma, características de privacidad, mecanismos de integración de herencia y más."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Las carteras de hardware suelen utilizarse para almacenar tus ahorros de bitcoin a largo plazo. Son dispositivos físicos que no están conectados a internet (a menudo llamados \"carteras frías\") y suelen ser muy seguros. Aunque estos dispositivos suelen ser de código abierto en cuanto a su software, el hardware cuesta alrededor de 50 a 300 euros. Considera estos dispositivos como una cuenta bancaria para cantidades más grandes de ahorros que usarías de vez en cuando."
       },
       "mobile": {
-        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+        "description": "Las carteras móviles se utilizan normalmente para gastos diarios. Integran la Red Lightning para transacciones instantáneas y con bajas comisiones. Suelen estar conectadas a internet (a menudo llamadas \"carteras calientes\") y por lo tanto son menos seguras que las carteras de hardware. Deberían usarse solo para almacenar pequeñas cantidades de bitcoin, considéralas como tu cartera diaria en tu bolsillo."
       },
       "shortDescription": "Soluciones de seguridad y uso de sus bitcoins",
       "title": "Cartera"
@@ -355,7 +355,7 @@
     "library": "Biblioteca",
     "lightning": "Relámpago",
     "login": "Ingresar",
-    "manifesto": "Manifesto",
+    "manifesto": "Manifiesto",
     "merchandising": "Mercadotecnia",
     "merchants": "Comerciantes",
     "mining": "Minería",
