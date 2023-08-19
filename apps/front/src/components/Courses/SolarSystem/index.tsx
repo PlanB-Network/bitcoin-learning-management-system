@@ -227,9 +227,9 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
           .attr('cx', offsetX)
           .attr('cy', offsetY)
           .attr('r', radius)
-          .style('stroke', '#1c3faa')
-          .style('stroke-width', 0.2)
-          .style('stroke-dasharray', '0.2,1')
+          .style('stroke', '#6c87c6')
+          .style('stroke-width', 0.3)
+          .style('stroke-dasharray', '0.6,1.2')
           .style('fill', 'none');
 
         // Draw planets for each orbit
