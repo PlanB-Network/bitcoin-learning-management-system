@@ -18,9 +18,9 @@
   },
   "auth": {
     "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
-    "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin",
-    "connect": "Se connecter",
+    "alreadyAnAccount": "¿Ya tiene una cuenta?",
+    "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin.",
+    "connect": "Iniciar sesión",
     "connectWithLn": "Conectar con LN",
     "contributorId": "Identifiant contributeur",
     "createAccount": "Créer un compte",
