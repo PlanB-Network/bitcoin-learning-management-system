@@ -27,8 +27,9 @@
     "createOne": "Register here!",
     "emailAddress": "Adresse email",
     "errors": {
+      "usernameRegex": "Username can only contain letters, digits, _, . and -",
       "usernameRequired": "Username is required",
-      "usernameTooShort": "Il nome utente deve contenere almeno 6 caratteri"
+      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri"
     },
     "forgottenPassword": "Forgot your password?",
     "getConnected": "Connectez vous !",
