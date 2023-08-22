@@ -2,6 +2,7 @@ import { useRef } from 'react';
 
 import { Footer, Header } from '../../components';
 import { compose } from '../../utils';
+import ScrollToTopButton from '../Utils/ScrollToTopButton';
 
 interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -40,6 +41,8 @@ export const MainLayout = ({
 
       {/* Footer */}
       {showFooter && <Footer variant={footerVariant} color={footerColor} />}
+
+      <ScrollToTopButton />
     </div>
   );
 };
