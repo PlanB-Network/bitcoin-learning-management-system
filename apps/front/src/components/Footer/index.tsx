@@ -80,7 +80,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     {t('words.content')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
                     <li>
                       <Link to={Routes.Courses}>{t('words.courses')}</Link>
                     </li>
@@ -96,7 +96,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     {t('words.about')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
                     <li>
                       <Link to={'#'}>{t('words.ourStory')}</Link>
                     </li>
@@ -114,7 +114,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     <Link to={'#'}>{t('words.helpUs')}</Link>
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-thin text-white">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
                     <li>
                       <Link to={'#'}>{t('words.donations')}</Link>
                     </li>
@@ -186,7 +186,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               <h4>{t('words.home')}</h4>
               <h4>{t('words.about')}</h4>
               <h4>{t('words.sponsorUs')}</h4>
-              <h5 className="pt-6 text-base font-thin">
+              <h5 className="pt-6 text-base font-light">
                 {t('words.termsAndConditions')}
               </h5>
             </div>

@@ -55,7 +55,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                className="mt-8 w-96"
+                className="w-4/5"
                 error={touched.email ? errors.email : null}
               />
 
@@ -68,7 +68,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         <p className="mb-0 text-xs">
           <button
             className="cursor-pointer border-none bg-transparent text-xs underline"
-            onClick={() => goTo(AuthModalState.Signin)}
+            onClick={() => goTo(AuthModalState.SignIn)}
           >
             {t('words.back')}
           </button>

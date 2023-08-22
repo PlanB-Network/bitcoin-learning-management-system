@@ -6,7 +6,7 @@ import {
   verifyWebhookPayload,
 } from '@sovereign-academy/github';
 
-import { publicProcedure } from '../../trpc';
+import { publicProcedure } from '../../procedures';
 
 export const webhooksProcedure = publicProcedure
   .meta({ openapi: { method: 'POST', path: '/github/webhooks' } })

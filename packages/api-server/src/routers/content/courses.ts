@@ -5,11 +5,12 @@ import {
   getCoursesQuery,
 } from '@sovereign-academy/database';
 
+import { publicProcedure } from '../../procedures';
 import {
   createGetCourse,
   createGetCourseChapter,
 } from '../../services/content';
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
 
 const getCoursesProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/courses' } })

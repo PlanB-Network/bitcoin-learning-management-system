@@ -2,8 +2,9 @@ import { z } from 'zod';
 
 import { getTutorialsQuery } from '@sovereign-academy/database';
 
+import { publicProcedure } from '../../procedures';
 import { createGetTutorial } from '../../services/content';
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
 
 const getTutorialsProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/tutorials' } })

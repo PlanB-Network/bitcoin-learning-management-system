@@ -68,7 +68,11 @@
         "import/resolver": {
           "typescript": {
             "alwaysTryTypes": true,
-            "project": ["packages/*/tsconfig.*?.json", "tsconfig.base.json"]
+            "project": [
+              "*/*/tsconfig.*?.json",
+              "*/*/tsconfig.json",
+              "tsconfig.base.json"
+            ]
           },
           "node": {
             "extensions": [".js", ".jsx", ".ts", ".tsx"]

@@ -17,7 +17,7 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
   return (
     <div>
       {prefix && (
-        <div className="mb-1 flex text-sm font-thin italic text-gray-500">
+        <div className="mb-1 flex text-sm font-light italic text-gray-500">
           {prefix}
           <img
             className="ml-1"

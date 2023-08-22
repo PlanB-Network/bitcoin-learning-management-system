@@ -50,7 +50,7 @@ export const Podcasts = () => {
                     src={podcast.logo}
                     alt={podcast.name}
                   />
-                  <div className="group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-thin text-white transition-colors duration-500 ease-in-out">
+                  <div className="group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out">
                     <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                       <li className={'pb-1 text-lg font-bold'}>
                         {podcast.name}

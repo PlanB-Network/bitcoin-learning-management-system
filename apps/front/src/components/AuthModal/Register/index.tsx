@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { Formik, FormikHelpers } from 'formik';
 import { t } from 'i18next';
 import { isEmpty } from 'lodash';
@@ -15,12 +19,12 @@ import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { AuthModalState } from '../props';
 
-const password = new PasswordValidator();
+const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
-password
-  .is()
-  .min(10)
-  .has()
+const password = new PasswordValidator().is().min(10);
+// I am not a big fan of conditions in password validation, that lowers the entropy
+// in some way.
+/* .has()
   .uppercase()
   .has()
   .lowercase()
@@ -30,13 +34,13 @@ password
   .symbols()
   .has()
   .not()
-  .spaces();
+  .spaces(); */
 
-const signupSchema = z
+const registerSchema = z
   .object({
     username: z
-      .string({ required_error: t('auth.usernameRequired') })
-      .min(6, t('auth.usernameRules')),
+      .string({ required_error: t('auth.errors.usernameRequired') })
+      .min(6, { message: t('auth.errors.usernameTooShort') }),
     password: z.string().refine(
       (pwd) => password.validate(pwd),
       (pwd) => {
@@ -45,8 +49,6 @@ const signupSchema = z
       }
     ),
     confirmation: z.string(),
-    email: z.string().email().optional(),
-    contributor_id: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmation, {
     message: t('auth.passwordsDontMatch'),
@@ -59,22 +61,17 @@ interface LoginModalProps {
   goTo: (newState: AuthModalState) => void;
 }
 
-interface AccountData {
-  username: string;
-  password: string;
-  confirmation: string;
-  email?: string;
-  contributorId?: string;
-}
+type AccountData = z.infer<typeof registerSchema>;
 
-export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
+export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const dispatch = useAppDispatch();
+  const isMobile = useSmaller('md');
 
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: (data) => {
       dispatch(
         userSlice.actions.login({
-          username: data.user.username,
+          uid: data.user.uid,
           accessToken: data.accessToken,
         })
       );
@@ -86,11 +83,9 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
 
-      await register.mutate({
-        email: values.email,
+      register.mutate({
         password: values.password,
         username: values.username,
-        contributor_id: values.contributorId,
       });
     },
     [register]
@@ -98,19 +93,21 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
   return (
     <Modal
+      closeButtonEnabled={isMobile || (register.data && !register.error)}
       isOpen={isOpen}
       onClose={onClose}
       headerText={
         register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
       }
+      showAccountHelper
     >
-      {register.data ? (
-        <div className="flex flex-col items-center">
+      {register.data && !register.error ? (
+        <div className="mb-8 flex flex-col items-center">
           <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
-            })}{' '}
+            })}
             <br />
             {t('auth.canSaveProgress')}
           </p>
@@ -125,9 +122,10 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             }}
             validate={(values) => {
               try {
-                signupSchema.parse(values);
+                registerSchema.parse(values);
               } catch (error) {
                 if (error instanceof ZodError) {
+                  console.log(error.flatten().fieldErrors);
                   return error.flatten().fieldErrors;
                 }
               }
@@ -147,73 +145,61 @@ export const SignUp = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="flex w-full flex-col items-center"
+                className="flex w-full flex-col items-center py-6"
               >
-                <TextInput
-                  name="username"
-                  labelText="Username*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                  className="mt-4 w-96"
-                  error={touched.username ? errors.username : null}
-                />
+                <div className="flex w-full flex-col items-center">
+                  <TextInput
+                    name="username"
+                    labelText="Username"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.username}
+                    className="w-4/5"
+                    error={touched.username ? errors.username : null}
+                  />
 
-                <TextInput
-                  name="password"
-                  type="password"
-                  labelText="Password*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  className="mt-4 w-96"
-                  error={touched.password ? errors.password : null}
-                />
+                  <TextInput
+                    name="password"
+                    type="password"
+                    labelText="Password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    className="w-4/5"
+                    error={touched.password ? errors.password : null}
+                  />
 
-                <TextInput
-                  name="confirmation"
-                  type="password"
-                  labelText="Confirmation*"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmation}
-                  className="mt-4 w-96"
-                  error={touched.confirmation ? errors.confirmation : null}
-                />
+                  <TextInput
+                    name="confirmation"
+                    type="password"
+                    labelText="Confirmation"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmation}
+                    className="w-4/5"
+                    error={touched.confirmation ? errors.confirmation : null}
+                  />
+                </div>
 
-                <TextInput
-                  name="email"
-                  labelText={t('words.email')}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  className="mt-4 w-96"
-                  error={touched.email ? errors.email : null}
-                />
+                {register.error && (
+                  <p className="text-danger-300 mt-2 text-base font-semibold">
+                    {register.error.message}
+                  </p>
+                )}
 
-                <TextInput
-                  name="contributorId"
-                  labelText={t('auth.contributorId')}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.contributorId}
-                  className="mt-4 w-96"
-                  error={touched.contributorId ? errors.contributorId : null}
-                />
-
-                <Button className="mb-5 mt-10">
+                <Button type="submit" className="mt-6" rounded>
                   {t('auth.createAccount')}
                 </Button>
               </form>
             )}
           </Formik>
           <p className="mb-0 text-xs">
-            {t('auth.alreadyAnAccount')}{' '}
+            {t('auth.alreadyHaveAccount')}{' '}
             <button
               className="cursor-pointer border-none bg-transparent text-xs underline"
-              onClick={() => goTo(AuthModalState.Signin)}
+              onClick={() => goTo(AuthModalState.SignIn)}
             >
-              {t('auth.getConnected')}
+              {t('words.signIn')}
             </button>
           </p>
         </div>

@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
 
 import { PasswordReset } from './PasswordReset';
+import { AuthModalState } from './props';
+import { Register } from './Register';
 import { SignIn } from './SignIn';
-import { SignUp } from './SignUp';
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialState?: AuthModalState;
 }
 
-enum AuthModalState {
-  Signin,
-  Signup,
-  PasswordReset,
-}
-
-export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
+export const AuthModal = ({
+  isOpen,
+  onClose,
+  initialState = AuthModalState.SignIn,
+}: LoginModalProps) => {
   const [currentState, setCurrentState] = useState<AuthModalState | null>(
-    AuthModalState.Signin
+    initialState
   );
 
   const goTo = (newState: AuthModalState) => {
@@ -30,7 +30,7 @@ export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
 
   useEffect(() => {
     if (!isOpen) {
-      setCurrentState(AuthModalState.Signin);
+      setCurrentState(AuthModalState.SignIn);
     }
   }, [isOpen]);
 
@@ -38,14 +38,14 @@ export const AuthModal = ({ isOpen, onClose }: LoginModalProps) => {
     <>
       {/* SignIn Dialog */}
       <SignIn
-        isOpen={isOpen && currentState === AuthModalState.Signin}
+        isOpen={isOpen && currentState === AuthModalState.SignIn}
         onClose={onClose}
         goTo={goTo}
       />
 
-      {/* Signup Dialog */}
-      <SignUp
-        isOpen={isOpen && currentState === AuthModalState.Signup}
+      {/* Register Dialog */}
+      <Register
+        isOpen={isOpen && currentState === AuthModalState.Register}
         onClose={onClose}
         goTo={goTo}
       />

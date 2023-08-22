@@ -17,19 +17,13 @@
   },
   "auth": {
     "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
     "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin",
     "connect": "Se connecter",
     "connectWithLn": "Conectar con LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Créz un !",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Cuenta creada",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "se requiere contraseña",
     "passwordsDontMatch": "Las contraseñas no coinciden",
@@ -65,7 +59,7 @@
     },
     "chapter": {
       "count": "Capítulo n°{{count}}/{{total}}",
-      "finish": "Terminar el curso",
+      "finishCourse": "Terminar el curso",
       "next": "Hecho, vamos al siguiente capítulo!"
     },
     "details": {

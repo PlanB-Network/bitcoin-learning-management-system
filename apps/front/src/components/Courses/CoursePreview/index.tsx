@@ -35,7 +35,7 @@ export const CoursePreview = ({
         <h5 className="text-primary-900 text-xl font-semibold uppercase tracking-tight">
           {course.name}
         </h5>
-        <h6 className="mt-2 text-xs font-thin">
+        <h6 className="mt-2 text-xs font-light">
           {t('courses.preview.by', { teacher: course.teacher })}
         </h6>
         <div className="mt-3 line-clamp-4 overflow-hidden text-ellipsis text-sm italic tracking-wide text-gray-600">

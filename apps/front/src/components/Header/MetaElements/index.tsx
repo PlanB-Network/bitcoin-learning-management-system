@@ -2,10 +2,14 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import { IoLogOutOutline } from 'react-icons/io5';
+import { Link, useNavigate } from 'react-router-dom';
 
-// import { Button } from '../../../atoms/Button';
-// import { useAppSelector } from '../../../hooks';
+import { Button } from '../../../atoms/Button';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { userSlice } from '../../../store';
+import { Routes } from '../../../types';
 import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
@@ -13,23 +17,30 @@ export interface MetaElementsProps {
   onClickRegister: () => void;
 }
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
+const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({
   onClickRegister,
   onClickLogin,
 }: MetaElementsProps) => {
-  // const { t } = useTranslation();
-  // const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const isMobile = useSmaller('md');
   const isScreenLg = useGreater('md');
-  // const isScreenXl = useGreater('lg');
+  const isScreenXl = useGreater('lg');
+
+  const buttonSize = isScreenXl || isMobile ? 'm' : 's';
 
   return (
-    <div className="flex flex-row place-items-center space-x-2 lg:space-x-6">
+    <div className="flex flex-row place-items-center space-x-6 md:space-x-2 lg:space-x-6">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
-      {/* {isLoggedIn ? (
-        <div className="text-white">{t('words.account')}</div>
+      {isLoggedIn ? (
+        <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
+          <Link to={Routes.Dashboard}>{t('words.dashboard')}</Link>
+        </Button>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
           <Button
@@ -37,20 +48,32 @@ export const MetaElements = ({
             variant="tertiary"
             rounded
             onClick={onClickLogin}
-            size={isScreenXl ? 'm' : 's'}
+            size={buttonSize}
           >
-            {t('words.register')}
+            {t('words.signIn')}
           </Button>
           <Button
             className="my-4"
             rounded
             onClick={onClickRegister}
-            size={isScreenXl ? 'm' : 's'}
+            size={buttonSize}
           >
-            {t('words.login')}
+            {t('words.register')}
           </Button>
         </div>
-      )} */}
+      )}
+
+      {isLoggedIn && isMobile && (
+        <div
+          className="text-white"
+          onClick={() => {
+            dispatch(userSlice.actions.logout());
+            navigate('/');
+          }}
+        >
+          <IoLogOutOutline size={28} />
+        </div>
+      )}
     </div>
   );
 };

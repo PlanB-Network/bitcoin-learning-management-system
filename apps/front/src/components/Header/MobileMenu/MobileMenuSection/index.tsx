@@ -21,7 +21,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
     if ('path' in section)
       return (
         <Link
-          className="text-2xl font-thin uppercase text-white no-underline"
+          className="text-2xl font-light uppercase text-white no-underline"
           to={section.path}
         >
           {section.title}

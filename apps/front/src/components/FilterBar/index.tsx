@@ -32,7 +32,7 @@ export const FilterBar = ({
           className="focus:black dark:black inline-block h-fit w-full max-w-xl rounded-full border-0 bg-gray-100 py-1 text-sm placeholder:text-gray-500 placeholder:text-opacity-50 focus:border-gray-100 focus:outline-none focus:ring focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:border-gray-500 dark:focus:ring-gray-900 sm:text-base"
         />
       </div>
-      <button className="text-right font-thin italic underline">
+      <button className="text-right font-light italic underline">
         {t('words.additionalCriteria')}
       </button>
     </div>

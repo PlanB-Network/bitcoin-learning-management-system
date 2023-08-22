@@ -13,6 +13,8 @@ import { SponsorsAndContributors } from './pages/About/SponsorsAndContributors';
 // Courses
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 // Misc
+
+import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/Misc/NotFound';
 import { UnderConstruction } from './pages/Misc/UnderConstruction';
 // Resources
@@ -58,7 +60,7 @@ export const App = () => {
     if (isLoggedIn && accessToken && user)
       dispatch(
         userSlice.actions.login({
-          username: user.username,
+          uid: user.uid,
           accessToken: accessToken,
         })
       );
@@ -101,6 +103,8 @@ export const App = () => {
           path={RoutesEnum.TutorialCategory}
           element={<TutorialCategory />}
         />
+
+        <Route path={RoutesEnum.Dashboard} element={<Dashboard />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

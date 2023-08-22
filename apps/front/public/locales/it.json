@@ -17,25 +17,22 @@
   },
   "auth": {
     "accountCreated": "Il tuo account è stato creato, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "",
     "canSaveProgress": "Ora puoi salvare la tua progressione sulla Bitcoin Academy",
     "connect": "Se connecter",
     "connectWithLn": "Connettiti con LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Creжez-en un !",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
+    "errors": {
+      "usernameRequired": "",
+      "usernameTooShort": "Il nome utente deve contenere almeno 6 caratteri"
+    },
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account creato",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "la password è obbligatoria",
     "passwordsDontMatch": "Le password non corrispondono",
-    "sendLink": "Envoyer un lien",
-    "usernameRequired": "nome utente obbligatorio",
-    "usernameRules": "il nome utente deve contenere almeno 6 caratteri"
+    "sendLink": "Envoyer un lien"
   },
   "book": {
     "abstract": "Astratto",
@@ -65,7 +62,7 @@
     },
     "chapter": {
       "count": "Capitolo n°{{count}}/{{total}}",
-      "finish": "Termina il corso",
+      "finishCourse": "Termina il corso",
       "next": "Fatto, andiamo al prossimo capitolo!"
     },
     "details": {

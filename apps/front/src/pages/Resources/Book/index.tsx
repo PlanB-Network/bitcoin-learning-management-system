@@ -124,14 +124,14 @@ export const Book = () => {
                   </h2>
 
                   <div className="mt-2 text-sm">
-                    <h5 className="font-thin italic">
+                    <h5 className="font-light italic">
                       {book?.author}, {book?.publication_year}.
                     </h5>
                   </div>
                 </div>
 
                 <div className="text-primary-700 mt-2">
-                  <span className="text-xs font-thin italic">
+                  <span className="text-xs font-light italic">
                     {t('book.topicsAddressed')}
                   </span>
                   {book?.tags.map((object, i) => (

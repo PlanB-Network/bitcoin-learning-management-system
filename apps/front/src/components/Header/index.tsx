@@ -3,6 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { capitalize } from 'lodash';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsFileText, BsHeart, BsMic, BsPlus } from 'react-icons/bs';
@@ -15,7 +16,8 @@ import { JoinedCourse } from '@sovereign-academy/types';
 import { useDisclosure } from '../../hooks';
 import { TUTORIALS_CATEGORIES } from '../../pages/Tutorials/utils';
 import { Routes } from '../../types';
-// import { AuthModal } from '../AuthModal';
+import { AuthModal } from '../AuthModal';
+import { AuthModalState } from '../AuthModal/props';
 
 import { FlyingMenu } from './FlyingMenu';
 import { MobileMenu } from './MobileMenu';
@@ -27,10 +29,15 @@ export const Header = () => {
   const { t, i18n } = useTranslation();
 
   const {
-    open: openLoginModal,
-    /* isOpen: isLoginModalOpen,
-    close: closeLoginModal, */
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
   } = useDisclosure();
+
+  // Change this when better auth flow is implemented (this is awful)
+  const [authMode, setAuthMode] = useState<AuthModalState>(
+    AuthModalState.SignIn
+  );
 
   const { data: courses } = trpc.content.getCourses.useQuery({
     language: i18n.language ?? 'en',
@@ -201,22 +208,40 @@ export const Header = () => {
   const isScreenMd = useGreater('md');
 
   return (
-    <header className="bg-primary-900 fixed left-0 top-0 z-20 flex w-full flex-row place-items-center justify-between p-3 px-4 md:min-h-[96px] lg:px-12">
+    <header className="bg-primary-900 sticky left-0 top-0 z-20 flex w-full flex-row place-items-center justify-between p-3 px-4 md:min-h-[96px] lg:px-12">
       {isScreenMd ? (
         <FlyingMenu
-          onClickLogin={openLoginModal}
-          onClickRegister={openLoginModal}
+          onClickLogin={() => {
+            setAuthMode(AuthModalState.SignIn);
+            openAuthModal();
+          }}
+          onClickRegister={() => {
+            setAuthMode(AuthModalState.Register);
+            openAuthModal();
+          }}
           sections={sections}
         />
       ) : (
         <MobileMenu
-          onClickLogin={openLoginModal}
-          onClickRegister={openLoginModal}
+          onClickLogin={() => {
+            setAuthMode(AuthModalState.SignIn);
+            openAuthModal();
+          }}
+          onClickRegister={() => {
+            setAuthMode(AuthModalState.Register);
+            openAuthModal();
+          }}
           sections={homeSection.concat(sections)}
         />
       )}
 
-      {/* <AuthModal isOpen={isLoginModalOpen} onClose={closeLoginModal} /> */}
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={authMode}
+        />
+      )}
     </header>
   );
 };

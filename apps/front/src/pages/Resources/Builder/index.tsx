@@ -36,7 +36,7 @@ export const Builder = () => {
           <h3 className="text-primary-900 col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase sm:text-4xl md:mb-8">
             {builder?.name}
           </h3>
-          <div className="col-span-2 row-span-1 mb-5 mt-1 font-thin md:mb-0 md:ml-12">
+          <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
             {builder?.tags.map((tag) => (
               <Link to={`/builders?tag=${tag}`} key={tag}>
                 <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>

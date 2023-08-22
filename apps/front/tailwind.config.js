@@ -23,12 +23,6 @@ export default {
   content: [join(__dirname, './src/**/*.{js,ts,jsx,tsx}')],
   theme: {
     fontFamily: { primary: ['Poppins'], body: ['SpaceMono'] },
-    fontWeight: {
-      thin: '300',
-      normal: '400',
-      semibold: '600',
-      bold: '700',
-    },
     colors: {
       transparent: 'transparent',
       primary: {
@@ -65,6 +59,18 @@ export default {
         300: '#204B35',
         400: '#172A1E',
       },
+      blue: {
+        100: '#EBF0F9',
+        200: '#C4D1EE',
+        300: '#9CB2E2',
+        400: '#7593D7',
+        500: '#4D74CB',
+        600: '#345AB2',
+        700: '#28468A',
+        800: '#20376C',
+        900: '#17284F',
+        950: '#1B263E',
+      },
       orange: {
         200: '#FFCF99',
         400: '#FFAC4C',
@@ -83,7 +89,7 @@ export default {
       },
       green: {
         300: '#2C6E49',
-        500: '#2C6E49',
+        500: '#5EBA8B',
         600: '#204B35',
         800: '#172A1E',
       },

@@ -86,7 +86,7 @@ export const TutorialCategory = () => {
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`
                       ) && (
-                        <div className="text-primary-900 px-10 pb-6 pt-3 text-sm font-thin italic">
+                        <div className="text-primary-900 px-10 pb-6 pt-3 text-sm font-light italic">
                           {t(
                             `tutorials.${category}.${subCategory}.description`
                           )}

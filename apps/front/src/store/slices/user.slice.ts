@@ -7,7 +7,7 @@ import { removeItem, setItem } from '../../utils/local-storage';
 
 interface UserState {
   isLoggedIn: boolean;
-  username?: string;
+  uid?: string;
 }
 
 const initialState: UserState = {
@@ -20,10 +20,10 @@ export const userSlice = createSlice({
   reducers: {
     login: (
       state,
-      action: PayloadAction<{ username: string; accessToken: string }>
+      action: PayloadAction<{ uid: string; accessToken: string }>
     ) => {
       state.isLoggedIn = true;
-      state.username = action.payload.accessToken;
+      state.uid = action.payload.uid;
       setItem(LocalStorageKey.AccessToken, action.payload.accessToken);
     },
     logout: (state) => {

@@ -90,7 +90,7 @@ export const CoursesExplorer = () => {
     <MainLayout footerVariant="dark">
       <div className="bg-primary-900 flex w-full flex-col items-center justify-center px-5">
         <div className="flex flex-col items-center justify-center pt-8 text-white lg:max-w-3xl">
-          <h1 className="-ml-4 w-full text-left text-[62px] font-thin md:text-[128px] lg:-ml-14">
+          <h1 className="-ml-4 w-full text-left text-[62px] font-light md:text-[128px] lg:-ml-14">
             {t('courses.explorer.pageTitle')}
           </h1>
           <div className="space-y-6 text-justify text-base lg:text-lg">
@@ -106,7 +106,7 @@ export const CoursesExplorer = () => {
             <h3 className="mb-5 text-xl font-semibold">
               {t('courses.explorer.s2t1')}
             </h3>
-            <div className="flex flex-col space-y-5 text-base font-thin">
+            <div className="flex flex-col space-y-5 text-base font-light">
               <span>{t('courses.explorer.s2p1')}</span>
               <span>{t('courses.explorer.s2p2')}</span>
               <span>{t('courses.explorer.s2p3')}</span>
@@ -125,7 +125,7 @@ export const CoursesExplorer = () => {
                   <div className="flex h-16 w-16 place-items-center justify-center rounded-full border-4 border-orange-900 text-lg font-semibold uppercase lg:h-20 lg:w-20 lg:text-xl">
                     {prefix}
                   </div>
-                  <span className="w-1/2 text-base font-thin uppercase lg:text-base">
+                  <span className="w-1/2 text-base font-light uppercase lg:text-base">
                     {topic}
                   </span>
                 </div>
