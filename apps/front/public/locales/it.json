@@ -18,25 +18,28 @@
   },
   "auth": {
     "accountCreated": "Il tuo account è stato creato, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "Already have an account?",
     "canSaveProgress": "Ora puoi salvare la tua progressione sulla Bitcoin Academy",
     "connect": "Se connecter",
     "connectWithLn": "Connettiti con LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Creжez-en un !",
+    "createAccount": "Register",
+    "createOne": "Register here!",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
+    "errors": {
+      "usernameRequired": "Username is required",
+      "usernameTooShort": "Il nome utente deve contenere almeno 6 caratteri"
+    },
+    "forgottenPassword": "Forgot your password?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account creato",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
+    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountYet": "Don't have an account?",
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "la password è obbligatoria",
     "passwordsDontMatch": "Le password non corrispondono",
     "sendLink": "Envoyer un lien",
-    "usernameRequired": "nome utente obbligatorio",
-    "usernameRules": "il nome utente deve contenere almeno 6 caratteri"
+    "signIn": "Sign In"
   },
   "book": {
     "abstract": "Astratto",
@@ -66,7 +69,7 @@
     },
     "chapter": {
       "count": "Capitolo n°{{count}}/{{total}}",
-      "finish": "Termina il corso",
+      "finishCourse": "Termina il corso",
       "next": "Fatto, andiamo al prossimo capitolo!"
     },
     "details": {
@@ -246,12 +249,15 @@
     "pageTitle": "Risorse",
     "publicGrade": "Grado pubblico: {{grade}}/5"
   },
+  "settings": {
+    "changePassword": "Change password"
+  },
   "tutorials": {
     "exchange": {
-      "description": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
       "centralized": {
         "description": "Gli exchange centralizzati sono solitamente entità regolamentate che agiscono come intermediari tra il sistema bancario e l'ecosistema di bitcoin. Ti permettono di acquistare e vendere grandi quantità di bitcoin e ritirarlo nel tuo portafoglio o conto bancario. Di solito richiedono il KYC e, pertanto, monitorano la tua attività, segnalandola alle istituzioni di sorveglianza finanziaria per rispettare le leggi locali."
       },
+      "description": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
       "peer-to-peer": {
         "description": "Gli scambi peer-to-peer sono mercati dove gli individui scambiano bitcoin per altre valute tra loro. Questi scambi potrebbero essere regolamentati o meno e di solito non chiedono molte informazioni (se ne chiedono) su di te. Semplicemente facilitano la relazione tra gli utenti. Le loro commissioni potrebbero essere più alte rispetto agli scambi tradizionali e la loro liquidità un po' inferiore. È l'opzione preferita per i bitcoiners che cercano di evitare il KYC."
       },
@@ -276,8 +282,8 @@
       },
       "description": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
       "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Un nodo Lightning ti permette di prendere parte al protocollo di secondo livello di Bitcoin chiamato Lightning. Sarai in grado di aprire canali, gestire la loro liquidità, partecipare al grafico e diventare non custodiale riguardo al tuo portafoglio Lightning."
+        "description": "Un nodo Lightning ti permette di prendere parte al protocollo di secondo livello di Bitcoin chiamato Lightning. Sarai in grado di aprire canali, gestire la loro liquidità, partecipare al grafico e diventare non custodiale riguardo al tuo portafoglio Lightning.",
+        "name": "Lightning Network"
       },
       "rgb": {
         "description": "RGB è un sistema di smart contract scalabile e riservato per Bitcoin e la rete Lightning. È uno strato di programmabilità per Bitcoin, con concetti di proprietà privata e reciproca, astrazione e separazione delle preoccupazioni e rappresenta \"post-blockchain\"."
@@ -335,8 +341,11 @@
     "conference": "Conferenza",
     "conferences": "Conferenze",
     "content": "Contenuto",
+    "continue": "Continue",
     "course": "Corso",
     "courses": "Corsi",
+    "dashboard": "Dashboard",
+    "didYouKnow": "Did you know?",
     "documentaries": "Documentari",
     "donations": "Donazioni",
     "email": "Email",
@@ -354,7 +363,6 @@
     },
     "library": "Libreria",
     "lightning": "Fulmine",
-    "login": "Accedi",
     "manifesto": "Manifesto",
     "merchandising": "Merchandising",
     "merchants": "Mercanti",
@@ -373,6 +381,7 @@
     "resources": "Risorse",
     "review": "Riesame",
     "rogzy": "Rogzy",
+    "signIn": "Sign In",
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsorizzazione & contributori",
     "supportUs": "Sostienici",
@@ -380,6 +389,7 @@
     "termsAndConditions": "Termini e condizioni",
     "tutorial": "Tutorial",
     "tutorials": "Tutorial",
+    "update": "Update",
     "video": "Video",
     "videos": "Video",
     "wallets": "Portafogli"
