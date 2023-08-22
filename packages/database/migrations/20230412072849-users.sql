@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users.accounts (
   uid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   
   username VARCHAR(255) UNIQUE NOT NULL,
+  display_name VARCHAR(255) UNIQUE,
   email VARCHAR(255) UNIQUE,
   password_hash VARCHAR(255),
 

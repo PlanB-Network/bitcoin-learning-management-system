@@ -1,13 +1,12 @@
-import {
-  CourseCompletedChapters,
+import type {
+  CourseCompletedChapter,
   CourseProgress,
-  CourseProgressWithName,
 } from '@sovereign-academy/types';
 
 import { sql } from '../../index';
 
 export const getUserCompletedChaptersQuery = (uid: string) => {
-  return sql<Omit<CourseCompletedChapters, 'uid'>[]>`
+  return sql<Omit<CourseCompletedChapter, 'uid'>[]>`
     SELECT course_id, language, chapter, completed_at FROM users.course_completed_chapters
     WHERE uid = ${uid};
   `;
@@ -18,7 +17,7 @@ export const getUserCompletedChaptersByCourseQuery = (
   courseId: string,
   language: string
 ) => {
-  return sql<Pick<CourseCompletedChapters, 'chapter' | 'completed_at'>[]>`
+  return sql<Pick<CourseCompletedChapter, 'chapter' | 'completed_at'>[]>`
     SELECT
       chapter,
       completed_at
@@ -84,10 +83,22 @@ export const completeChapterQuery = (
 };
 
 export const getCoursesProgressQuery = (uid: string) => {
-  return sql<CourseProgressWithName[]>`
+  return sql<
+    (CourseProgress & {
+      name: string;
+      total_chapters: number;
+    })[]
+  >`
     SELECT 
       cp.*,
-      c.name
+      c.name,
+      (
+        SELECT COUNT(*) 
+        FROM content.course_chapters_localized ccl
+        WHERE 
+            ccl.course_id = cp.course_id
+            AND ccl.language = cp.language
+      ) as total_chapters
     FROM users.course_progress cp
     JOIN content.courses_localized c ON c.course_id = cp.course_id AND c.language = cp.language
     WHERE uid = ${uid};

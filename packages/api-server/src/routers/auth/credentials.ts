@@ -4,10 +4,10 @@ import { z } from 'zod';
 
 import { publicProcedure } from '../../procedures';
 import {
-  addCredentialsUser,
   contributorIdExists,
+  createAddCredentialsUser,
+  createGetUserByAny,
   generateUniqueContributorId,
-  getUserByAny,
 } from '../../services/users';
 import { createTRPCRouter } from '../../trpc';
 import { signAccessToken } from '../../utils/access-token';
@@ -45,7 +45,9 @@ export const credentialsAuthRouter = createTRPCRouter({
       const { dependencies } = ctx;
       const { postgres } = dependencies;
 
-      if (await getUserByAny(postgres, { username: input.username })) {
+      const getUserByAny = createGetUserByAny(dependencies);
+
+      if (await getUserByAny({ username: input.username })) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Username already exists',
@@ -66,7 +68,8 @@ export const credentialsAuthRouter = createTRPCRouter({
       const contributorId =
         input.contributor_id || (await generateUniqueContributorId(postgres));
 
-      const [user] = await addCredentialsUser(postgres, {
+      const addCredentialsUser = createAddCredentialsUser(dependencies);
+      const user = await addCredentialsUser({
         username: input.username,
         passwordHash: hashedPassword,
         contributorId,
@@ -101,9 +104,10 @@ export const credentialsAuthRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const { dependencies } = ctx;
-      const { postgres } = dependencies;
 
-      const user = await getUserByAny(postgres, {
+      const getUserByAny = createGetUserByAny(dependencies);
+
+      const user = await getUserByAny({
         username: input.username,
       });
 

@@ -18,7 +18,7 @@
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "Already have an account?",
     "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
     "connect": "Se connecter",
     "connectWithLn": "Connect with LN",
@@ -26,6 +26,10 @@
     "createAccount": "Register",
     "createOne": "Register here!",
     "emailAddress": "Adresse email",
+    "errors": {
+      "usernameRequired": "Username is required",
+      "usernameTooShort": "Username must contain at least 6 characters"
+    },
     "forgottenPassword": "Forgot your password?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account created",
@@ -35,9 +39,7 @@
     "passwordRequired": "password is required",
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
-    "signIn": "Sign In",
-    "usernameRequired": "username is required",
-    "usernameRules": "username must contain at least 6 characters"
+    "signIn": "Sign In"
   },
   "book": {
     "abstract": "Abstract",
@@ -247,6 +249,9 @@
     "pageTitle": "Resources",
     "publicGrade": "Public grade: {{grade}}/5"
   },
+  "settings": {
+    "changePassword": "Change password"
+  },
   "tutorials": {
     "exchange": {
       "centralized": {
@@ -384,6 +389,7 @@
     "termsAndConditions": "Terms and conditions",
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
+    "update": "Update",
     "video": "Video",
     "videos": "Videos",
     "wallets": "Wallets"

@@ -11,6 +11,7 @@ interface ModalProps {
   onClose: () => void;
   children: JSX.Element | JSX.Element[];
   headerText?: string;
+  showAccountHelper?: boolean;
 }
 
 export const Modal = ({
@@ -19,6 +20,7 @@ export const Modal = ({
   onClose,
   children,
   headerText,
+  showAccountHelper = false,
 }: ModalProps) => {
   const { t } = useTranslation();
   const cancelButtonRef = useRef(null);
@@ -64,25 +66,27 @@ export const Modal = ({
                       />
                     </button>
                   )}
-                  <header className="my-6 flex h-6 flex-col items-center justify-between text-xl font-semibold uppercase text-gray-400">
+                  <header className="flex flex-col items-center justify-between text-center text-3xl font-semibold uppercase text-gray-400 md:my-6">
                     {headerText && <h4>{headerText}</h4>}
                   </header>
                   {children}
                 </div>
                 {/* TODO: move this outside of the modal atom */}
-                <div className="relative my-14 max-w-xs sm:max-w-lg">
-                  <img
-                    src={rabbitHikingModal}
-                    alt={t('imagesAlt.rabbitHikingModal')}
-                    className="h-23 absolute z-[+1] hidden sm:-left-10 sm:bottom-14 sm:flex"
-                  ></img>
-                  <div className="bg-secondary-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-800 py-4 text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em]">
-                    <span className="text-primary-800 italic">
-                      {t('words.didYouKnow')}
-                      <div>{t('auth.noAccountNeeded')}</div>
-                    </span>
+                {showAccountHelper && (
+                  <div className="relative my-14 max-w-xs sm:max-w-lg">
+                    <img
+                      src={rabbitHikingModal}
+                      alt={t('imagesAlt.rabbitHikingModal')}
+                      className="sm:h-23 absolute -left-10 bottom-12 z-[+1] flex h-20 sm:-left-10 sm:bottom-14"
+                    ></img>
+                    <div className="bg-secondary-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-800 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
+                      <span className="text-primary-800 italic">
+                        {t('words.didYouKnow')}
+                        <div>{t('auth.noAccountNeeded')}</div>
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
               </Dialog.Panel>
             </Transition.Child>
           </div>

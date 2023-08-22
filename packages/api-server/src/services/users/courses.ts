@@ -35,11 +35,15 @@ export const createGetCoursesProgress =
         .map(({ chapter, completed_at }) => ({
           chapter,
           completed_at,
-        }));
+        }))
+        .sort((a, b) => a.chapter - b.chapter);
+
+      const lastCompletedChapter = chapters[chapters.length - 1];
 
       return {
         ...course,
         chapters,
+        lastCompletedChapter,
       };
     });
   };

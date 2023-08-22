@@ -17,7 +17,7 @@
   },
   "auth": {
     "accountCreated": "Votre compte a été créé, {{userName}} !",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "canSaveProgress": "Vous pouvez maintenant enregistrer votre progression sur l'Académie Bitcoin",
     "connect": "Se connecter",
     "connectWithLn": "Se connecter avec LN",
@@ -25,6 +25,10 @@
     "createAccount": "Créer un compte",
     "createOne": "Créez-en un !",
     "emailAddress": "Adresse email",
+    "errors": {
+      "usernameRequired": "Le nom d'utilisateur est requis",
+      "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 6 caractères"
+    },
     "forgottenPassword": "Mot de passe oublié ?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Compte créé",
@@ -33,9 +37,7 @@
     "passwordReinit": "Réinitialisation du mot de passe",
     "passwordRequired": "Le mot de passe est requis",
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
-    "sendLink": "Envoyer un lien",
-    "usernameRequired": "Le nom d'utilisateur est requis",
-    "usernameRules": "Le nom d'utilisateur doit contenir au moins 6 caractères"
+    "sendLink": "Envoyer un lien"
   },
   "book": {
     "abstract": "Résumé",

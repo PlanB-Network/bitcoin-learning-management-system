@@ -55,7 +55,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                className="mt-8 w-96"
+                className="w-4/5"
                 error={touched.email ? errors.email : null}
               />
 

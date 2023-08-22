@@ -14,6 +14,8 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import curriculumImage from '../../../assets/courses/curriculum.png';
+import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
+import { Button } from '../../../atoms/Button';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { Routes } from '../../../types';
 import { computeAssetCdnUrl, useRequiredParams } from '../../../utils';
@@ -24,6 +26,7 @@ export const CourseDetails: React.FC = () => {
   const { courseId, language } = useRequiredParams();
 
   const navigate = useNavigate();
+
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
   const isScreenLg = useGreater('md');
@@ -52,14 +55,14 @@ export const CourseDetails: React.FC = () => {
                 </div>
               ) : (
                 <div
-                  className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-5xl font-bold uppercase text-white"
+                  className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
                   title={t('courses.details.courseId', { courseId: course.id })}
                 >
                   {course.id}
                 </div>
               )}
               <div className="max-w-3xl space-y-3">
-                <h1 className="text-primary-700 text-5xl font-semibold">
+                <h1 className="text-primary-700 text-3xl font-semibold lg:text-5xl">
                   {course.name}
                 </h1>
                 <h2 className="text-primary-700 text-lg font-light italic">
@@ -109,7 +112,22 @@ export const CourseDetails: React.FC = () => {
                 </div>
               </div>
             </div>
-            <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
+            <div className="relative my-8 w-full max-w-5xl">
+              <hr className="border-2 border-gray-300" />
+              <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
+                <div className="relative">
+                  <Button variant="tertiary" rounded>
+                    <span className="md:px-6">Start the course</span>
+                  </Button>
+                  <img
+                    src={rabbitHikingModal}
+                    alt=""
+                    className="absolute bottom-1 left-1 z-[+1] h-14 -translate-x-1/2"
+                  ></img>
+                </div>
+              </div>
+            </div>
+
             <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
               <div className="mb-5 flex w-full flex-col md:mb-0">
                 <h4 className="mb-1 text-sm font-normal uppercase italic">

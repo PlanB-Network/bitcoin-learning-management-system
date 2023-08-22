@@ -17,7 +17,6 @@
   },
   "auth": {
     "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
     "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin",
     "connect": "Se connecter",
     "connectWithLn": "Conectar con LN",

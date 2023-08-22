@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { Formik, FormikHelpers } from 'formik';
 import { isEmpty } from 'lodash';
 import { useCallback } from 'react';
@@ -7,12 +11,13 @@ import { ZodError, z } from 'zod';
 import { trpc } from '@sovereign-academy/api-client';
 
 import { Button } from '../../../atoms/Button';
-import { Divider } from '../../../atoms/Divider';
 import { Modal } from '../../../atoms/Modal';
 import { TextInput } from '../../../atoms/TextInput';
 import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store/slices/user.slice';
 import { AuthModalState } from '../props';
+
+const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -23,9 +28,10 @@ interface SignInModalProps {
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const isMobile = useSmaller('md');
 
   const signInSchema = z.object({
-    username: z.string().min(1, t('auth.usernameRequired')),
+    username: z.string().min(1, t('auth.errors.usernameRequired')),
     password: z.string().min(1, t('auth.passwordRequired')),
   });
 
@@ -60,12 +66,18 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} headerText={t('words.signIn')}>
+    <Modal
+      closeButtonEnabled={isMobile}
+      isOpen={isOpen}
+      onClose={onClose}
+      headerText={t('words.signIn')}
+      showAccountHelper
+    >
       <div className="flex flex-col items-center">
-        <Button className="my-5" rounded>
+        {/* <Button className="my-5" rounded>
           {t('auth.connectWithLn')}
         </Button>
-        <Divider>{t('words.or').toUpperCase()}</Divider>
+        <Divider>{t('words.or').toUpperCase()}</Divider> */}
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -98,7 +110,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="w-96"
+                  className="w-4/5"
                   error={touched.username ? errors.username : null}
                 />
 
@@ -109,7 +121,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="w-96"
+                  className="w-4/5"
                   error={touched.password ? errors.password : null}
                 />
               </div>
