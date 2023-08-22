@@ -18,7 +18,7 @@
   },
   "auth": {
     "accountCreated": "Ihr Konto wurde angelegt, {{userName}}!",
-    "alreadyAnAccount": "Haben Sie schon ein Konto ?",
+    "alreadyHaveAccount": "Haben Sie schon ein Konto ?",
     "canSaveProgress": "Du kannst jetzt deinen Fortschritt in der Bitcoin-Akademie speichern",
     "connect": "Einloggen",
     "connectWithLn": "Mit LN verbinden",
@@ -26,17 +26,20 @@
     "createAccount": "Konto erstellen",
     "createOne": "Erstellen Sie eins !",
     "emailAddress": "Email Adresse",
+    "errors": {
+      "usernameRequired": "Benutzername erforderlich",
+      "usernameTooShort": "Der Benutzername muss mindestens 6 Zeichen enthalten"
+    },
     "forgottenPassword": "Passwort vergessen ?",
     "getConnected": "Loggen Sie sich ein!",
     "headerAccountCreated": "Konto erstellt",
-    "noAccountNeeded": "Wusstest du das ? Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
+    "noAccountNeeded": "Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
     "noAccountYet": "Haben Sie noch kein Konto?",
     "passwordReinit": "Passwort Reinitialisierung",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordsDontMatch": "Passwörter stimmen nicht überein",
     "sendLink": "Link versenden",
-    "usernameRequired": "Benutzername erforderlich",
-    "usernameRules": "Der Benutzername muss mindestens 6 Zeichen enthalten"
+    "signIn": "Sign In"
   },
   "book": {
     "abstract": "Abstrakt",
@@ -66,7 +69,7 @@
     },
     "chapter": {
       "count": "Kapitel {{count}}/{{total}}",
-      "finish": "Kurs beenden",
+      "finishCourse": "Kurs beenden",
       "next": "Fertig, gehen wir zum nächsten Kapitel!"
     },
     "details": {
@@ -246,12 +249,15 @@
     "pageTitle": "Ressourcen",
     "publicGrade": "Öffentliche Klasse: {{grade}}/5"
   },
+  "settings": {
+    "changePassword": "Change password"
+  },
   "tutorials": {
     "exchange": {
-      "description": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
       "centralized": {
         "description": "Zentralisierte Börsen sind in der Regel regulierte Einheiten, die als Vermittler zwischen dem Bankensystem und dem Bitcoin-Ökosystem agieren. Sie ermöglichen es Ihnen, große Mengen von Bitcoin zu kaufen und zu verkaufen und es auf Ihr Wallet oder Bankkonto abzuheben. Sie erfordern in der Regel eine KYC-Überprüfung und überwachen daher Ihre Aktivitäten, wobei sie diese an Finanzaufsichtsinstitutionen melden, um lokale Gesetze zu beachten."
       },
+      "description": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
       "peer-to-peer": {
         "description": "Peer-to-Peer-Börsen sind Marktplätze, auf denen Einzelpersonen Bitcoin gegen andere Währungen untereinander tauschen. Diese Börsen könnten reguliert sein oder auch nicht und fragen normalerweise nicht nach vielen Informationen (falls überhaupt) über dich. Sie erleichtern lediglich die Beziehung zwischen den Benutzern. Ihre Gebühren könnten höher sein als bei traditionellen Börsen und ihre Liquidität etwas geringer. Es ist die bevorzugte Option für Bitcoin-Nutzer, die versuchen, KYC zu vermeiden."
       },
@@ -276,8 +282,8 @@
       },
       "description": "Lösungen für den Betrieb eines Bitcoin-Knotens und den Beitritt zum Netzwerk",
       "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Ein Lightning-Knoten ermöglicht Ihnen die Teilnahme am Bitcoin Layer-2-Protokoll namens Lightning. Sie werden in der Lage sein, Kanäle zu öffnen, ihre Liquidität zu verwalten, am Graphen teilzunehmen und bezüglich Ihres Lightning-Wallets nicht-verwahrend zu werden."
+        "description": "Ein Lightning-Knoten ermöglicht Ihnen die Teilnahme am Bitcoin Layer-2-Protokoll namens Lightning. Sie werden in der Lage sein, Kanäle zu öffnen, ihre Liquidität zu verwalten, am Graphen teilzunehmen und bezüglich Ihres Lightning-Wallets nicht-verwahrend zu werden.",
+        "name": "Lightning Network"
       },
       "rgb": {
         "description": "RGB ist ein skalierbares und vertrauliches Smart-Contract-System für Bitcoin und das Lightning-Netzwerk. Es handelt sich um eine Programmierbarkeitsschicht für Bitcoin, mit Konzepten von privatem und gegenseitigem Eigentum, Abstraktion und Trennung von Anliegen und stellt \"Post-Blockchain\" dar."
@@ -335,8 +341,11 @@
     "conference": "Konferenz",
     "conferences": "Konferenzen",
     "content": "Inhalt",
+    "continue": "Continue",
     "course": "Kurs",
     "courses": "Kurse",
+    "dashboard": "Dashboard",
+    "didYouKnow": "Did you know?",
     "documentaries": "Dokumentationen",
     "donations": "Spenden",
     "email": "E-Mail",
@@ -354,7 +363,6 @@
     },
     "library": "Bibliothek",
     "lightning": "Blitz",
-    "login": "Anmelden",
     "manifesto": "Das Manifest",
     "merchandising": "Merchandising",
     "merchants": "Händler",
@@ -373,6 +381,7 @@
     "resources": "Ressourcen",
     "review": "Überprüfen",
     "rogzy": "Rogzy",
+    "signIn": "Sign In",
     "sponsorUs": "Sponsor uns",
     "sponsoringAndContributors": "Sponsoring & Mitwirkende",
     "supportUs": "Unterstütze uns",
@@ -380,6 +389,7 @@
     "termsAndConditions": "Nutzungsbedingungen",
     "tutorial": "Tutorial",
     "tutorials": "Anleitungen",
+    "update": "Update",
     "video": "Video",
     "videos": "Videos",
     "wallets": "Wallets"
