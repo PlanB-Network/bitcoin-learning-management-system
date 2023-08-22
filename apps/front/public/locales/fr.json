@@ -18,7 +18,7 @@
   },
   "auth": {
     "accountCreated": "Votre compte a été créé, {{userName}} !",
-    "alreadyAnAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "canSaveProgress": "Vous pouvez maintenant enregistrer votre progression sur l'Académie Bitcoin",
     "connect": "Se connecter",
     "connectWithLn": "Se connecter avec LN",
@@ -26,17 +26,20 @@
     "createAccount": "Créer un compte",
     "createOne": "Créez-en un !",
     "emailAddress": "Adresse email",
+    "errors": {
+      "usernameRequired": "Le nom d'utilisateur est requis",
+      "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 6 caractères"
+    },
     "forgottenPassword": "Mot de passe oublié ?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Compte créé",
-    "noAccountNeeded": "Le savais-tu ? Pas besoin de compte pour commencer à apprendre sur l'Université Souveraine !",
+    "noAccountNeeded": "Pas besoin de compte pour commencer à apprendre sur The Sovereign University !",
     "noAccountYet": "Vous n'avez pas encore de compte ?",
     "passwordReinit": "Réinitialisation du mot de passe",
     "passwordRequired": "Le mot de passe est requis",
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
     "sendLink": "Envoyer un lien",
-    "usernameRequired": "Le nom d'utilisateur est requis",
-    "usernameRules": "Le nom d'utilisateur doit contenir au moins 6 caractères"
+    "signIn": "Sign In"
   },
   "book": {
     "abstract": "Résumé",
@@ -66,7 +69,7 @@
     },
     "chapter": {
       "count": "Chapitre n°{{count}}/{{total}}",
-      "finish": "Terminer le cours",
+      "finishCourse": "Terminer le cours",
       "next": "Terminé, passons au chapitre suivant !"
     },
     "details": {
@@ -246,12 +249,15 @@
     "pageTitle": "Ressources",
     "publicGrade": "Note publique : {{grade}}/5"
   },
+  "settings": {
+    "changePassword": "Change password"
+  },
   "tutorials": {
     "exchange": {
-      "description": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
       "centralized": {
         "description": "Les échanges centralisés sont généralement des entités régulées qui agissent comme intermédiaires entre le système bancaire et l'écosystème bitcoin. Ils vous permettent d'acheter et de vendre de grandes quantités de bitcoin et de le retirer dans votre portefeuille ou compte bancaire. Ils exigent généralement une vérification KYC, et surveillent donc votre activité, la signalant aux institutions de surveillance financière pour respecter les lois locales."
       },
+      "description": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
       "peer-to-peer": {
         "description": "Les échanges de pair à pair sont des marchés où les individus échangent des bitcoins contre d'autres monnaies entre eux. Ces échanges peuvent être réglementés ou non et ne demandent généralement pas beaucoup d'informations (le cas échéant) sur vous. Ils facilitent simplement la relation entre les utilisateurs. Leurs frais pourraient être plus élevés que ceux des bourses traditionnelles et leur liquidité un peu plus basse. C'est l'option préférée pour les bitcoiners cherchant à éviter le KYC."
       },
@@ -276,8 +282,8 @@
       },
       "description": "Solutions pour faire tourner un nœud bitcoin et intégrer le réseau",
       "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Un nœud Lightning vous permet de participer au protocole de couche 2 de Bitcoin appelé Lightning. Vous pourrez ouvrir des canaux, gérer leur liquidité, participer au graphe et devenir non dépositaire concernant votre portefeuille Lightning."
+        "description": "Un nœud Lightning vous permet de participer au protocole de couche 2 de Bitcoin appelé Lightning. Vous pourrez ouvrir des canaux, gérer leur liquidité, participer au graphe et devenir non dépositaire concernant votre portefeuille Lightning.",
+        "name": "Lightning Network"
       },
       "rgb": {
         "description": "RGB est un système de contrats intelligents évolutif et confidentiel pour Bitcoin et le réseau Lightning. C'est une couche de programmabilité pour Bitcoin, avec des concepts de propriété privée et mutuelle, d'abstraction et de séparation des préoccupations et représente \"post-blockchain\"."
@@ -335,8 +341,11 @@
     "conference": "Conférence",
     "conferences": "Conférences",
     "content": "Contenus",
+    "continue": "Continue",
     "course": "Cours",
     "courses": "Cours",
+    "dashboard": "Dashboard",
+    "didYouKnow": "Le saviez-vous?",
     "documentaries": "Documents",
     "donations": "Dons",
     "email": "Courriel",
@@ -354,7 +363,6 @@
     },
     "library": "Bibliothèque",
     "lightning": "Éclair",
-    "login": "Se connecter",
     "manifesto": "Manifeste",
     "merchandising": "Marchandising",
     "merchants": "Marchands",
@@ -373,6 +381,7 @@
     "resources": "Ressources",
     "review": "Évaluer",
     "rogzy": "Rogzy",
+    "signIn": "Se connecter",
     "sponsorUs": "Sponsorisez-Nous",
     "sponsoringAndContributors": "Sponsoring & contributeurs",
     "supportUs": "Soutenez-nous",
@@ -380,6 +389,7 @@
     "termsAndConditions": "Termes et conditions",
     "tutorial": "Tutoriel",
     "tutorials": "Tutoriels",
+    "update": "Update",
     "video": "Vidéo",
     "videos": "Vidéos",
     "wallets": "Portefeuilles"
