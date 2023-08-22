@@ -40,7 +40,10 @@ const registerSchema = z
   .object({
     username: z
       .string({ required_error: t('auth.errors.usernameRequired') })
-      .min(6, { message: t('auth.errors.usernameTooShort') }),
+      .min(5, { message: t('auth.errors.usernameTooShort') })
+      .regex(/^[a-zA-Z0-9_\\.-]+$/, {
+        message: t('auth.errors.usernameRegex'),
+      }),
     password: z.string().refine(
       (pwd) => password.validate(pwd),
       (pwd) => {
@@ -155,7 +158,11 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onBlur={handleBlur}
                     value={values.username}
                     className="w-4/5"
-                    error={touched.username ? errors.username : null}
+                    error={
+                      touched.username && errors.username
+                        ? errors.username[0]
+                        : null
+                    }
                   />
 
                   <TextInput
@@ -166,7 +173,11 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onBlur={handleBlur}
                     value={values.password}
                     className="w-4/5"
-                    error={touched.password ? errors.password : null}
+                    error={
+                      touched.password && errors.password
+                        ? errors.password[0]
+                        : null
+                    }
                   />
 
                   <TextInput
@@ -177,7 +188,11 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onBlur={handleBlur}
                     value={values.confirmation}
                     className="w-4/5"
-                    error={touched.confirmation ? errors.confirmation : null}
+                    error={
+                      touched.confirmation && errors.confirmation
+                        ? errors.confirmation[0]
+                        : null
+                    }
                   />
                 </div>
 

@@ -26,4 +26,4 @@ CREATE TABLE IF NOT EXISTS users.course_progress (
   progress_percentage INTEGER NOT NULL DEFAULT 0,
 
   PRIMARY KEY (uid, course_id, language)
-)
+);

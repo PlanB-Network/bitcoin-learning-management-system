@@ -116,9 +116,16 @@ export const CourseDetails: React.FC = () => {
               <hr className="border-2 border-gray-300" />
               <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
                 <div className="relative">
-                  <Button variant="tertiary" rounded>
-                    <span className="md:px-6">Start the course</span>
-                  </Button>
+                  <Link
+                    to={generatePath(Routes.CourseChapter, {
+                      courseId,
+                      chapterIndex: '1',
+                    })}
+                  >
+                    <Button variant="tertiary" rounded>
+                      <span className="md:px-6">Start the course</span>
+                    </Button>
+                  </Link>
                   <img
                     src={rabbitHikingModal}
                     alt=""

@@ -25,7 +25,7 @@
     "emailAddress": "Adresse email",
     "errors": {
       "usernameRequired": "",
-      "usernameTooShort": "Il nome utente deve contenere almeno 6 caratteri"
+      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri"
     },
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account creato",

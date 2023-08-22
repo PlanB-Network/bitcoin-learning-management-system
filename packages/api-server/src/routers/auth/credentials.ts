@@ -47,7 +47,7 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       const getUserByAny = createGetUserByAny(dependencies);
 
-      if (await getUserByAny({ username: input.username })) {
+      if (await getUserByAny({ username: input.username.toLowerCase() })) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Username already exists',

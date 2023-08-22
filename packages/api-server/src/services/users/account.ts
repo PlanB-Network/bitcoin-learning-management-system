@@ -6,7 +6,6 @@ import {
   firstRow,
   getUserDetailsQuery,
 } from '@sovereign-academy/database';
-import type { PostgresClient } from '@sovereign-academy/database';
 import { Account, UserDetails } from '@sovereign-academy/types';
 
 import { Dependencies } from '../../dependencies';
@@ -29,7 +28,7 @@ export const createAddCredentialsUser =
     return postgres<UserDetails[]>`
       INSERT INTO users.accounts (username, display_name, password_hash, email, contributor_id)
       VALUES (
-        ${username},
+        ${username.toLowerCase()},
         ${username},
         ${passwordHash},
         ${email || null}, 

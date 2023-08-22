@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import {
   BsDiscord,
   BsFacebook,
+  BsGithub,
   BsInstagram,
   BsTwitter,
   BsYoutube,
@@ -143,6 +144,9 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   </Link>
                   <Link to={'https://discord.gg/q9CFPmRNAD'}>
                     <BsDiscord size={30} />
+                  </Link>
+                  <Link to={'https://github.com/DecouvreBitcoin'}>
+                    <BsGithub size={30} />
                   </Link>
                 </div>
               </div>
