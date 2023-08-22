@@ -18,25 +18,28 @@
   },
   "auth": {
     "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
-    "alreadyAnAccount": "¿Ya tiene una cuenta?",
+    "alreadyHaveAccount": "Already have an account?",
     "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin.",
     "connect": "Iniciar sesión",
     "connectWithLn": "Conectar con LN",
     "contributorId": "Identifiant contributeur",
-    "createAccount": "Créer un compte",
-    "createOne": "Créz un !",
+    "createAccount": "Register",
+    "createOne": "Register here!",
     "emailAddress": "Adresse email",
-    "forgottenPassword": "Mot de passe oublié ?",
+    "errors": {
+      "usernameRequired": "Username is required",
+      "usernameTooShort": "Username must contain at least 6 characters"
+    },
+    "forgottenPassword": "Forgot your password?",
     "getConnected": "Connectez vous !",
     "headerAccountCreated": "Cuenta creada",
-    "noAccountNeeded": "Le savais tu ? Pas besoin de compte pour commencer à apprendre sur l'Académie Bitcoin!",
-    "noAccountYet": "Vous n'avez pas encore de compte ?",
+    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountYet": "Don't have an account?",
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "se requiere contraseña",
     "passwordsDontMatch": "Las contraseñas no coinciden",
     "sendLink": "Envoyer un lien",
-    "usernameRequired": "nombre de usuario requerido",
-    "usernameRules": "el nombre de usuario debe contener al menos 6 caracteres"
+    "signIn": "Sign In"
   },
   "book": {
     "abstract": "Resumen",
@@ -66,7 +69,7 @@
     },
     "chapter": {
       "count": "Capítulo n°{{count}}/{{total}}",
-      "finish": "Terminar el curso",
+      "finishCourse": "Terminar el curso",
       "next": "Hecho, vamos al siguiente capítulo!"
     },
     "details": {
@@ -246,12 +249,15 @@
     "pageTitle": "Recursos",
     "publicGrade": "Grado público: {{grade}}/5"
   },
+  "settings": {
+    "changePassword": "Change password"
+  },
   "tutorials": {
     "exchange": {
-      "description": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "centralized": {
         "description": "Los intercambios centralizados son generalmente entidades reguladas que actúan como intermediarios entre el sistema bancario y el ecosistema bitcoin. Te permiten comprar y vender grandes cantidades de bitcoin y retirarlo a tu billetera o cuenta bancaria. Por lo general, requieren KYC, y por lo tanto, monitorean tu actividad, reportándola a instituciones de vigilancia financiera para respetar las leyes locales."
       },
+      "description": "Soluciones de compra de Bitcoin, KYC y no KYC",
       "peer-to-peer": {
         "description": "Los intercambios de persona a persona son mercados donde los individuos intercambian bitcoin por otras monedas entre sí. Estos intercambios pueden estar regulados o no y generalmente no piden mucha información (si es que piden alguna) sobre ti. Simplemente facilitan la relación entre los usuarios. Sus tarifas podrían ser más altas que los intercambios tradicionales y su liquidez un poco menor. Es la opción preferida para los bitcoiners que intentan evitar el KYC."
       },
@@ -276,8 +282,8 @@
       },
       "description": "Soluciones para operar un nodo bitcoin y unirse a la red",
       "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Un nodo Lightning te permite participar en el protocolo de capa 2 de Bitcoin llamado Lightning. Podrás abrir canales, gestionar su liquidez, participar en el gráfico y convertirte en no custodio con respecto a tu cartera Lightning."
+        "description": "Un nodo Lightning te permite participar en el protocolo de capa 2 de Bitcoin llamado Lightning. Podrás abrir canales, gestionar su liquidez, participar en el gráfico y convertirte en no custodio con respecto a tu cartera Lightning.",
+        "name": "Lightning Network"
       },
       "rgb": {
         "description": "RGB es un sistema escalable y confidencial de contratos inteligentes para Bitcoin y la red Lightning. Es una capa de programabilidad para Bitcoin, con conceptos de propiedad privada y mutua, abstracción y separación de preocupaciones y representa \"post-blockchain\"."
@@ -335,8 +341,11 @@
     "conference": "Conferencia",
     "conferences": "Conferencias",
     "content": "Contenido",
+    "continue": "Continue",
     "course": "Curso",
     "courses": "Cursos",
+    "dashboard": "Dashboard",
+    "didYouKnow": "Did you know?",
     "documentaries": "Documentarios",
     "donations": "Donaciones",
     "email": "E-mail",
@@ -354,7 +363,6 @@
     },
     "library": "Biblioteca",
     "lightning": "Relámpago",
-    "login": "Ingresar",
     "manifesto": "Manifiesto",
     "merchandising": "Mercadotecnia",
     "merchants": "Comerciantes",
@@ -373,6 +381,7 @@
     "resources": "Recursos",
     "review": "Revisión",
     "rogzy": "Rogzy",
+    "signIn": "Sign In",
     "sponsorUs": "Patrocinarnos",
     "sponsoringAndContributors": "Patrocinación y colaboradores",
     "supportUs": "Ayúdenos",
@@ -380,6 +389,7 @@
     "termsAndConditions": "Términos y condiciones",
     "tutorial": "Tutorial",
     "tutorials": "Tutoriales",
+    "update": "Update",
     "video": "Vídeo",
     "videos": "Vídeo",
     "wallets": "Carteras"
