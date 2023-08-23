@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import { ReactComponent as RabbitFace } from '../../assets/placeholder-assets/rabbit-face.svg';
 import { MainLayout } from '../../components';
 import { useAppDispatch } from '../../hooks';
 import { userSlice } from '../../store';
@@ -102,11 +103,12 @@ export const Dashboard = () => {
             <div className="w-full px-2">
               <div className="flex w-full items-center space-x-2 rounded-3xl bg-orange-400">
                 <div className="p-1">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src="https://via.placeholder.com/65x63"
-                    alt=""
-                  />
+                  <div className="h-10 w-10 overflow-hidden rounded-full bg-white">
+                    <RabbitFace
+                      className="scale-125"
+                      viewBox="-53 150 300 300"
+                    />
+                  </div>
                 </div>
                 <div className="text-primary-900 text-lg font-medium italic">
                   {user?.username}
