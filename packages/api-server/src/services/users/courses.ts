@@ -8,12 +8,10 @@ import { Dependencies } from '../../dependencies';
 
 export const createCompleteChapter =
   (dependencies: Dependencies) =>
-  async (uid: string, courseId: string, language: string, chapter: number) => {
+  async (uid: string, courseId: string, chapter: number) => {
     const { postgres } = dependencies;
 
-    return postgres.exec(
-      completeChapterQuery(uid, courseId, language, chapter)
-    );
+    return postgres.exec(completeChapterQuery(uid, courseId, chapter));
   };
 
 export const createGetCoursesProgress =
@@ -27,11 +25,7 @@ export const createGetCoursesProgress =
 
     return progress.map((course) => {
       const chapters = completedChapters
-        .filter(
-          (chapter) =>
-            chapter.course_id === course.course_id &&
-            chapter.language === course.language
-        )
+        .filter((chapter) => chapter.course_id === course.course_id)
         .map(({ chapter, completed_at }) => ({
           chapter,
           completed_at,

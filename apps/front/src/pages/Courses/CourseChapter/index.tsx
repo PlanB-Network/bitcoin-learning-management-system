@@ -36,7 +36,6 @@ export const CourseChapter = () => {
   const completeChapter = () => {
     completeChapterMutation.mutate({
       courseId,
-      language: language ?? i18n.language,
       chapter: Number(chapterIndex),
     });
   };

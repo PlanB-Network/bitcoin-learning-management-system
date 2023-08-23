@@ -15,7 +15,6 @@ export const userCoursesRouter = createTRPCRouter({
     .input(
       z.object({
         courseId: z.string(),
-        language: z.string(),
         chapter: z.number(),
       })
     )
@@ -24,7 +23,6 @@ export const userCoursesRouter = createTRPCRouter({
       createCompleteChapter(ctx.dependencies)(
         ctx.user.uid,
         input.courseId,
-        input.language,
         input.chapter
       )
     ),
