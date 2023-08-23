@@ -34,15 +34,28 @@ interface FooterProps {
 const Media = ({ className = '', size = 30 }) => (
   <div
     className={compose(
-      'flex flex-row place-items-center space-x-6 text-sm',
+      'flex flex-row place-items-center space-x-6 text-sm text-white',
       className
     )}
   >
-    <BsYoutube size={size + 5} />
-    <BsTwitter size={size} />
-    <BsFacebook size={size} />
-    <BsInstagram size={size} />
-    <BsDiscord size={size} />
+    <Link to={'https://www.youtube.com/@DecouvreBitcoin'}>
+      <BsYoutube size={size + 5} />
+    </Link>
+    <Link to={'https://twitter.com/DecouvreBitcoin'}>
+      <BsTwitter size={size} />
+    </Link>
+    <Link to={'https://facebook.com/decouvreBitcoin'}>
+      <BsFacebook size={size} />
+    </Link>
+    <Link to={'https://www.instagram.com/rogzy_21M'}>
+      <BsInstagram size={size} />
+    </Link>
+    <Link to={'https://discord.gg/q9CFPmRNAD'}>
+      <BsDiscord size={size} />
+    </Link>
+    <Link to={'https://github.com/DecouvreBitcoin'}>
+      <BsGithub size={size} />
+    </Link>
   </div>
 );
 
@@ -97,7 +110,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     {t('words.about')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white/50">
                     <li>
                       <Link to={'#'}>{t('words.ourStory')}</Link>
                     </li>
@@ -115,7 +128,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     <Link to={'#'}>{t('words.helpUs')}</Link>
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white/50">
                     <li>
                       <Link to={'#'}>{t('words.donations')}</Link>
                     </li>
@@ -129,30 +142,18 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                 <h4 className="mb-2 text-base font-semibold text-white">
                   {t('words.followUs')}
                 </h4>
-                <div className="flex flex-row place-items-center space-x-6 text-sm text-white">
-                  <Link to={'https://www.youtube.com/@DecouvreBitcoin'}>
-                    <BsYoutube size={35} />
-                  </Link>
-                  <Link to={'https://twitter.com/DecouvreBitcoin'}>
-                    <BsTwitter size={30} />
-                  </Link>
-                  <Link to={'https://facebook.com/decouvreBitcoin'}>
-                    <BsFacebook size={30} />
-                  </Link>
-                  <Link to={'https://www.instagram.com/rogzy_21M'}>
-                    <BsInstagram size={30} />
-                  </Link>
-                  <Link to={'https://discord.gg/q9CFPmRNAD'}>
-                    <BsDiscord size={30} />
-                  </Link>
-                  <Link to={'https://github.com/DecouvreBitcoin'}>
-                    <BsGithub size={30} />
-                  </Link>
-                </div>
+                <Media />
               </div>
-              <h4 className="text-xs font-semibold text-white">
-                {t('words.termsAndConditions')}
-              </h4>
+              <div className="flex flex-row place-items-center space-x-6 text-sm text-white">
+                <h4 className="text-xs font-semibold text-white">
+                  {t('words.termsAndConditions')}
+                </h4>
+                <Link to={'/bitcoin.pdf'} target="_blank">
+                  <h4 className="text-xs font-semibold text-white">
+                    {t('words.bitcoinWhitepaper')}
+                  </h4>
+                </Link>
+              </div>
             </div>
             <Rabbit className="absolute -right-2 top-24 z-10 m-auto h-16" />
             <Tree className="absolute -left-20 -top-44 m-auto h-80 w-[25%] scale-x-[-1]" />
@@ -186,12 +187,21 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           <City className="relative z-10 -mb-5 h-fit w-full " />
           <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-800 px-10 pt-20 text-white">
             <div className="space-y-2 text-left text-xl">
-              <Media className="mb-7 px-1" size={40} />
-              <h4>{t('words.home')}</h4>
-              <h4>{t('words.about')}</h4>
-              <h4>{t('words.sponsorUs')}</h4>
-              <h5 className="pt-6 text-base font-light">
+              <Media className="mb-7 px-1" />
+              <h4>
+                <Link to={Routes.Home}>{t('words.home')}</Link>
+              </h4>
+              <h4>
+                <Link to={Routes.Manifesto}>{t('words.about')}</Link>
+              </h4>
+              <h4 className="text-white/50">{t('words.sponsorUs')}</h4>
+              <h5 className="pt-6 text-base font-light text-white/50">
                 {t('words.termsAndConditions')}
+              </h5>
+              <h5 className="pt-2 text-base font-light">
+                <Link to={'/bitcoin.pdf'} target="_blank">
+                  {t('words.bitcoinWhitepaper')}
+                </Link>
               </h5>
             </div>
           </div>

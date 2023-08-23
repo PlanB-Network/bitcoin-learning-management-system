@@ -13,7 +13,6 @@ import { SponsorsAndContributors } from './pages/About/SponsorsAndContributors';
 // Courses
 import { CourseChapter, CourseDetails, CoursesExplorer } from './pages/Courses';
 // Misc
-
 import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/Misc/NotFound';
 import { UnderConstruction } from './pages/Misc/UnderConstruction';
