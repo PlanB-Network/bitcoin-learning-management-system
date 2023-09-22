@@ -57,13 +57,12 @@ export const MarkdownBody = ({
         td: ({ children }) => (
           <td className="border-primary-900 border px-2 py-1">{children}</td>
         ),
-        // Aqui va la seccion del video aun no funciona
+        // Aqui va la seccion del icono del video es funcional pero debo mejorarla
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
                 <VideoSVG className="mb-2 ml-14 h-10 w-10" />{' '}
-                {/* Ajusta el tamaño */}
                 <div className="ml-2">
                   <p className="text-primary-800 text-sm font-medium">Video</p>
                 </div>
