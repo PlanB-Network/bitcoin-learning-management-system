@@ -58,21 +58,23 @@ export const MarkdownBody = ({
           <td className="border-primary-900 border px-2 py-1">{children}</td>
         ),
         // Aqui va la seccion del video aun no funciona
-        div: ({ children }) => (
-          <div className="mb-10 flex items-center">
-            <VideoSVG />
-            <p className="text-primary-800 ml-2 text-sm font-medium">Video</p>
-            {children}
-          </div>
-        ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-            <ReactPlayer
-              className="mx-auto flex max-w-full justify-center rounded-lg py-6"
-              controls={true}
-              url={src}
-              src={alt}
-            />
+            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
+              <div className=" flex items-center">
+                <VideoSVG className="mb-2 ml-14 h-10 w-10" />{' '}
+                {/* Ajusta el tamaño */}
+                <div className="ml-2">
+                  <p className="text-primary-800 text-sm font-medium">Video</p>
+                </div>
+              </div>
+              <ReactPlayer
+                className="mx-auto mb-2 max-w-full rounded-lg"
+                controls={true}
+                url={src}
+                src={alt}
+              />
+            </div>
           ) : (
             <img
               className="mx-auto flex justify-center rounded-lg py-6"

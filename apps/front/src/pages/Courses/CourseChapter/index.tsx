@@ -48,12 +48,31 @@ export const CourseChapter = () => {
     <CourseLayout>
       <div>
         {chapter && (
-          <div className="flex h-full w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
+          <div className="flex h-full w-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
+            <div className="mb-6 w-full max-w-5xl">
+              <span className="font-poppins mb-2 w-full text-left text-lg font-normal leading-6 text-orange-800">
+                <Link to="/courses">Courses</Link> &gt;{' '}
+                <Link
+                  to={generatePath(Routes.Course, {
+                    courseId,
+                  })}
+                >
+                  {`${chapter.course?.id.toUpperCase()} > ${chapter.title}`}
+                </Link>
+              </span>
+            </div>
+            {/* <h4 className="mb-1 text-left text-sm font-light uppercase italic">
+              {t('courses.details.objectivesTitle')}
+            </h4> */}
             <div className="w-full max-w-5xl px-5 md:px-0">
               <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
-                {`${chapter.course?.id.toUpperCase()} - ${
+                <Link
+                  to={generatePath(Routes.Course, {
+                    courseId,
+                  })}
+                >{`${chapter.course?.id.toUpperCase()} - ${
                   chapter.course?.name
-                }`}
+                }`}</Link>
               </h1>
               {isScreenMd ? (
                 <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
@@ -172,26 +191,14 @@ export const CourseChapter = () => {
               <h2 className="h-33 text-primary-800 flex flex-col justify-center self-stretch text-2xl font-normal uppercase italic md:text-3xl">
                 {chapter?.title}
               </h2>
-              {/* <div>
-                vA COMPONENTE DE COURSETHEME
-              </div> */}
-              <div>
-                {/* <div className="mb-0 flex items-center">
-                  <Video className="h-8 w-8 shrink-0" />
-                  <p className="text-primary-800 ml-2 text-sm font-medium">
-                    Video
-                  </p>
-                </div> */}
 
-                <MarkdownBody
-                  content={chapter?.raw_content}
-                  assetPrefix={computeAssetCdnUrl(
-                    chapter.last_commit,
-                    `courses/${courseId}`
-                  )}
-                />
-              </div>
-
+              <MarkdownBody
+                content={chapter?.raw_content}
+                assetPrefix={computeAssetCdnUrl(
+                  chapter.last_commit,
+                  `courses/${courseId}`
+                )}
+              />
               {chapter.chapter !== chapter.course?.chapters?.length ? (
                 <Link
                   className="flex w-full justify-end pt-10"
