@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import { ReactComponent as VideoSVG } from '../../assets/resources/video.svg';
+
 export const MarkdownBody = ({
   content,
   assetPrefix,
@@ -55,12 +57,21 @@ export const MarkdownBody = ({
         td: ({ children }) => (
           <td className="border-primary-900 border px-2 py-1">{children}</td>
         ),
+        // Aqui va la seccion del video aun no funciona
+        div: ({ children }) => (
+          <div className="mb-10 flex items-center">
+            <VideoSVG />
+            <p className="text-primary-800 ml-2 text-sm font-medium">Video</p>
+            {children}
+          </div>
+        ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <ReactPlayer
               className="mx-auto flex max-w-full justify-center rounded-lg py-6"
               controls={true}
               url={src}
+              src={alt}
             />
           ) : (
             <img

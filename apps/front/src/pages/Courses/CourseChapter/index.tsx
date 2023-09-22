@@ -10,8 +10,10 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 import { trpc } from '@sovereign-academy/api-client';
 
 import { ReactComponent as ProgressRabbit } from '../../../assets/courses/progress_rabbit.svg';
+import { ReactComponent as Video } from '../../../assets/resources/video.svg';
 import { Button } from '../../../atoms/Button';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
+import { CourseThemes } from '../../../components/Courses/CourseThemes';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
@@ -164,16 +166,31 @@ export const CourseChapter = () => {
               )}
             </div>
             <div className="text-primary-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
-              <h2 className="text-primary-800 text-2xl font-normal uppercase italic md:text-3xl">
+              <span className="text-primary-700 mb-2 font-mono text-base font-normal">
+                chapter {chapter.chapter}{' '}
+              </span>
+              <h2 className="h-33 text-primary-800 flex flex-col justify-center self-stretch text-2xl font-normal uppercase italic md:text-3xl">
                 {chapter?.title}
               </h2>
-              <MarkdownBody
-                content={chapter?.raw_content}
-                assetPrefix={computeAssetCdnUrl(
-                  chapter.last_commit,
-                  `courses/${courseId}`
-                )}
-              />
+              {/* <div>
+                vA COMPONENTE DE COURSETHEME
+              </div> */}
+              <div>
+                {/* <div className="mb-0 flex items-center">
+                  <Video className="h-8 w-8 shrink-0" />
+                  <p className="text-primary-800 ml-2 text-sm font-medium">
+                    Video
+                  </p>
+                </div> */}
+
+                <MarkdownBody
+                  content={chapter?.raw_content}
+                  assetPrefix={computeAssetCdnUrl(
+                    chapter.last_commit,
+                    `courses/${courseId}`
+                  )}
+                />
+              </div>
 
               {chapter.chapter !== chapter.course?.chapters?.length ? (
                 <Link

@@ -65,7 +65,7 @@ export const TutorialCategory = () => {
                     key={subCategory}
                     className={({ selected }) =>
                       compose(
-                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-2.5 font-medium text-primary-800 capitalize',
+                        'text-primary-800 w-full py-2.5 font-medium capitalize first:rounded-tl-xl last:rounded-tr-xl',
                         selected
                           ? 'bg-orange-800 shadow'
                           : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-800'

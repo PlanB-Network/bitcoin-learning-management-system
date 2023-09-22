@@ -73,7 +73,7 @@
     "prettier-plugin-tailwindcss": "0.3.0",
     "storybook-addon-designs": "7.0.0-beta.2",
     "swc-loader": "0.2.3",
-    "tailwind": "link:@nx/react/tailwind",
+    "tailwind": "@nx/react/tailwind",
     "tailwindcss": "^3.3.2",
     "ts-node": "10.9.1",
     "tsc-alias": "1.8.6",
