@@ -2,9 +2,10 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
-import { BsCheckLg } from 'react-icons/bs';
+import { BsCheckCircle, BsCheckLg } from 'react-icons/bs';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
@@ -13,8 +14,8 @@ import { ReactComponent as ProgressRabbit } from '../../../assets/courses/progre
 import { ReactComponent as Video } from '../../../assets/resources/video.svg';
 import { Button } from '../../../atoms/Button';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
-import { CourseThemes } from '../../../components/Courses/CourseThemes';
 import { MarkdownBody } from '../../../components/MarkdownBody';
+import { TutorialLayout } from '../../../components/Tutorials/TutorialLayout';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 
@@ -42,6 +43,7 @@ export const CourseChapter = () => {
     });
   };
 
+  const [isContentExpanded, setIsContentExpanded] = useState(false);
   if (!chapter && isFetched) navigate('/404');
 
   return (
@@ -61,9 +63,7 @@ export const CourseChapter = () => {
                 </Link>
               </span>
             </div>
-            {/* <h4 className="mb-1 text-left text-sm font-light uppercase italic">
-              {t('courses.details.objectivesTitle')}
-            </h4> */}
+
             <div className="w-full max-w-5xl px-5 md:px-0">
               <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
                 <Link
@@ -188,9 +188,46 @@ export const CourseChapter = () => {
               <span className="text-primary-700 mb-2 font-mono text-base font-normal">
                 chapter {chapter.chapter}{' '}
               </span>
-              <h2 className="h-33 text-primary-800 flex flex-col justify-center self-stretch text-2xl font-normal uppercase italic md:text-3xl">
+              <h2 className="h-33 text-primary-800 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase  md:text-3xl">
                 {chapter?.title}
               </h2>
+
+              {/* Mostrar la tabla de objetivos del curso Learn*/}
+
+              <div className="text-primary-700 space-y-2 font-light uppercase">
+                <div
+                  className={`pb-25 pl-25 gap-13 flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+                    isContentExpanded ? 'bg-gray-200' : 'bg-gray-200'
+                  } ${isContentExpanded ? 'h-auto p-3' : 'mt-1 h-14'}`}
+                >
+                  <h3
+                    className="text-primary-800 text-1xl mb-3 ml-2 mt-4 flex cursor-pointer items-center font-semibold"
+                    onClick={() => setIsContentExpanded(!isContentExpanded)}
+                  >
+                    <span className="mr-2">
+                      {isContentExpanded ? '>' : '>'}
+                    </span>
+                    {t('courses.details.objectivesTitle').toLowerCase()}{' '}
+                    {/* Convierte el texto a minúsculas */}
+                  </h3>
+                  {isContentExpanded && (
+                    <div className="ml-2 px-5">
+                      <ul className="mt-2 list-inside pl-5">
+                        {chapter.course?.objectives?.map(
+                          (goal: string, index: number) => (
+                            <li key={index}>
+                              <span className="mr-2 opacity-50">{'▶'}</span>
+                              <span className="capitalize">
+                                {goal.toLowerCase()}
+                              </span>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <MarkdownBody
                 content={chapter?.raw_content}

@@ -62,8 +62,6 @@ export const CourseDetails: React.FC = () => {
                 </div>
               )}
               <div className="max-w-3xl space-y-3">
-                {/* ################################################################ */}
-                {/* titulo a camabiar (api) */}
                 <h1 className="text-primary-700 text-3xl font-semibold lg:text-5xl">
                   {course.name}
                 </h1>
