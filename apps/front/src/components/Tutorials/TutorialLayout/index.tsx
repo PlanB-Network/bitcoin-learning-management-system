@@ -106,7 +106,7 @@ export const TutorialLayout = ({
                                       />
                                       <span
                                         className={compose(
-                                          'text-primary-800 align-middle uppercase text-sm',
+                                          'text-primary-800 align-middle text-sm uppercase',
                                           open ? 'font-semibold' : ''
                                         )}
                                       >

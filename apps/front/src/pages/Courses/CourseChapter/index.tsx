@@ -15,7 +15,6 @@ import { ReactComponent as Video } from '../../../assets/resources/video.svg';
 import { Button } from '../../../atoms/Button';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { MarkdownBody } from '../../../components/MarkdownBody';
-import { TutorialLayout } from '../../../components/Tutorials/TutorialLayout';
 import { Routes } from '../../../types';
 import { compose, computeAssetCdnUrl, useRequiredParams } from '../../../utils';
 
@@ -51,7 +50,9 @@ export const CourseChapter = () => {
       <div>
         {chapter && (
           <div className="flex h-full w-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
-            <div className="mb-6 w-full max-w-5xl">
+            <div
+              className={`mb-6 w-full max-w-5xl ${isScreenMd ? '' : 'hidden'}`}
+            >
               <span className="font-poppins mb-2 w-full text-left text-lg font-normal leading-6 text-orange-800">
                 <Link to="/courses">Courses</Link> &gt;{' '}
                 <Link
@@ -64,15 +65,39 @@ export const CourseChapter = () => {
               </span>
             </div>
 
-            <div className="w-full max-w-5xl px-5 md:px-0">
-              <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
-                <Link
-                  to={generatePath(Routes.Course, {
-                    courseId,
-                  })}
-                >{`${chapter.course?.id.toUpperCase()} - ${
-                  chapter.course?.name
-                }`}</Link>
+            <div className="mb-0 w-full max-w-5xl px-5 md:px-0">
+              <h1
+                className={`mb-5 w-full text-left md:text-5xl ${
+                  isScreenMd
+                    ? 'text-3xl font-semibold text-orange-800'
+                    : 'text-4xl font-bold text-white'
+                }`}
+              >
+                {isScreenMd ? (
+                  <Link
+                    to={generatePath(Routes.Course, {
+                      courseId,
+                    })}
+                  >{`${chapter.course?.id.toUpperCase()} - ${
+                    chapter.course?.name
+                  }`}</Link>
+                ) : (
+                  <div className="flex items-center justify-center">
+                    <div
+                      className="mr-2 rounded-full bg-orange-800 p-2 text-sm"
+                      title={t('courses.details.courseId', {
+                        courseId: chapter.course?.id,
+                      })}
+                    >
+                      <span className="uppercase text-white">
+                        {chapter.course?.id}
+                      </span>
+                    </div>
+                    <h1 className="mb-1 mr-2 text-base  font-semibold text-orange-800">
+                      {chapter.course?.name}
+                    </h1>
+                  </div>
+                )}
               </h1>
               {isScreenMd ? (
                 <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
@@ -85,48 +110,62 @@ export const CourseChapter = () => {
                   <div>{chapter.course?.teacher}</div>
                 </div>
               ) : (
-                <div className="flex flex-row items-center justify-between text-lg ">
-                  <Link
-                    className="h-6"
-                    to={
-                      chapter.chapter === 1
-                        ? generatePath(Routes.Course, {
-                            courseId,
-                          })
-                        : generatePath(Routes.CourseChapter, {
-                            courseId,
-                            chapterIndex: (chapter.chapter - 1).toString(),
-                          })
-                    }
-                  >
-                    <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
-                      <BiSkipPrevious className="h-6 w-6" />
-                    </div>
-                  </Link>
+                <div className="flex flex-col  ">
+                  <div className="flex items-center justify-center p-1 font-thin text-gray-500">
+                    <div className="h-0 grow border-t border-gray-300"></div>
+                    <span className="px-3">
+                      {t('courses.chapter.count', {
+                        count: chapter.chapter,
+                        total: chapter.course?.chapters?.length,
+                      })}
+                    </span>
+                    <div className="h-0 grow border-t border-gray-300"></div>
+                  </div>
 
-                  <div className="text-primary-800 font-normal">
-                    {t('courses.chapter.count', {
+                  <div className="flex flex-row items-center justify-between text-lg ">
+                    <Link
+                      className="h-6"
+                      to={
+                        chapter.chapter === 1
+                          ? generatePath(Routes.Course, {
+                              courseId,
+                            })
+                          : generatePath(Routes.CourseChapter, {
+                              courseId,
+                              chapterIndex: (chapter.chapter - 1).toString(),
+                            })
+                      }
+                    >
+                      <div className="bg-primary-500 flex h-6 w-6 items-center justify-center rounded-full text-white">
+                        <BiSkipPrevious className="h-6 w-6" />
+                      </div>
+                    </Link>
+
+                    <div className="text-primary-800 p-1 font-semibold">
+                      {chapter?.title}
+                      {/* {t('courses.chapter.count', {
                       count: chapter.chapter,
                       total: chapter.course?.chapters?.length,
-                    })}
-                  </div>
-                  <Link
-                    className="h-6"
-                    to={
-                      chapter.chapter === chapter.course?.chapters?.length
-                        ? generatePath(Routes.Course, {
-                            courseId,
-                          })
-                        : generatePath(Routes.CourseChapter, {
-                            courseId,
-                            chapterIndex: (chapter.chapter + 1).toString(),
-                          })
-                    }
-                  >
-                    <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
-                      <BiSkipNext className="h-6 w-6" />
+                    })} */}
                     </div>
-                  </Link>
+                    <Link
+                      className="h-6"
+                      to={
+                        chapter.chapter === chapter.course?.chapters?.length
+                          ? generatePath(Routes.Course, {
+                              courseId,
+                            })
+                          : generatePath(Routes.CourseChapter, {
+                              courseId,
+                              chapterIndex: (chapter.chapter + 1).toString(),
+                            })
+                      }
+                    >
+                      <div className="bg-primary-500 flex h-6 w-6 items-center justify-center rounded-full text-white">
+                        <BiSkipNext className="h-6 w-6" />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               )}
 
@@ -184,21 +223,29 @@ export const CourseChapter = () => {
                 </div>
               )}
             </div>
-            <div className="text-primary-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
-              <span className="text-primary-700 mb-2 font-mono text-base font-normal">
+            <div className="text-primary-900 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
+              <span
+                className={`text-primary-700  mb-2 font-mono text-base font-normal ${
+                  isScreenMd ? '' : 'hidden'
+                }`}
+              >
                 chapter {chapter.chapter}{' '}
               </span>
-              <h2 className="h-33 text-primary-800 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase  md:text-3xl">
+              <h2
+                className={`h-33 text-primary-800 m-1 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase  md:text-3xl ${
+                  isScreenMd ? '' : 'mb-1 hidden'
+                }`}
+              >
                 {chapter?.title}
               </h2>
 
               {/* Mostrar la tabla de objetivos del curso Learn*/}
 
-              <div className="text-primary-700 space-y-2 font-light uppercase">
+              <div className="text-primary-700 mt-1 space-y-2 font-light uppercase">
                 <div
-                  className={`pb-25 pl-25 gap-13 flex flex-col self-stretch rounded-lg p-0 shadow-md ${
-                    isContentExpanded ? 'bg-gray-200' : 'bg-gray-200'
-                  } ${isContentExpanded ? 'h-auto p-3' : 'mt-1 h-14'}`}
+                  className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+                    isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+                  } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
                 >
                   <h3
                     className="text-primary-800 text-1xl mb-3 ml-2 mt-4 flex cursor-pointer items-center font-semibold"
@@ -211,7 +258,7 @@ export const CourseChapter = () => {
                     {/* Convierte el texto a minúsculas */}
                   </h3>
                   {isContentExpanded && (
-                    <div className="ml-2 px-5">
+                    <div className="ml-2 px-5 lowercase">
                       <ul className="mt-2 list-inside pl-5">
                         {chapter.course?.objectives?.map(
                           (goal: string, index: number) => (
@@ -236,6 +283,7 @@ export const CourseChapter = () => {
                   `courses/${courseId}`
                 )}
               />
+
               {chapter.chapter !== chapter.course?.chapters?.length ? (
                 <Link
                   className="flex w-full justify-end pt-10"
