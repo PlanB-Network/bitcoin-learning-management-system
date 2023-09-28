@@ -18,6 +18,7 @@ import { trpc } from '@sovereign-academy/api-client';
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
 import curriculumImage from '../../../assets/courses/curriculum.png';
+import rocketSVG from '../../../assets/courses/rocketcourse.svg';
 import book from '../../../assets/livre.svg';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import rabitPen from '../../../assets/rabbit-with-pen.svg';
@@ -176,27 +177,56 @@ export const CourseDetails: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="relative my-8 w-full max-w-5xl">
-              <hr className="border-2 border-gray-300" />
-              <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
-                <div className="relative">
-                  <Link
-                    to={generatePath(Routes.CourseChapter, {
-                      courseId,
-                      chapterIndex: '1',
-                    })}
-                  >
-                    <Button variant="tertiary" rounded>
-                      <span className="md:px-6">Start the course</span>
-                    </Button>
-                  </Link>
-                  <img
-                    src={rabbitHikingModal}
-                    alt=""
-                    className="absolute bottom-1 left-1 z-[+1] h-14 -translate-x-1/2"
-                  ></img>
+            <div className="relative my-8 w-full max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
+              {isScreenLg ? (
+                <div>
+                  <hr className="border-2 border-gray-300" />
+                  <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
+                    <div className="relative">
+                      <Link
+                        to={generatePath(Routes.CourseChapter, {
+                          courseId,
+                          chapterIndex: '1',
+                        })}
+                      >
+                        <Button variant="tertiary" rounded>
+                          <span className="md:px-6">Start the course</span>
+                        </Button>
+                      </Link>
+                      <img
+                        src={rabbitHikingModal}
+                        alt=""
+                        className="absolute bottom-1 left-1 z-[+1] h-14 -translate-x-1/2"
+                      ></img>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div flex-row>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Link
+                      to={generatePath(Routes.CourseChapter, {
+                        courseId,
+                        chapterIndex: '1',
+                      })}
+                    >
+                      <div className="flex">
+                        <Button variant="tertiary" rounded>
+                          <span className="relative z-10 text-sm font-normal md:px-6	">
+                            Start the course
+                          </span>
+                          <span className="absolute inset-0 bg-orange-500 before:absolute before:inset-y-0 before:left-0 before:w-2 before:bg-orange-500 before:content-[''] after:absolute after:inset-y-0 after:right-0 after:w-2 after:bg-orange-500 after:content-['']"></span>
+                          <img
+                            src={rocketSVG}
+                            alt=""
+                            className="m-0 h-5 w-5 "
+                          />
+                        </Button>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
