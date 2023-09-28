@@ -256,7 +256,17 @@ export const createProcessChangedCourse =
             raw_description = EXCLUDED.raw_description
         `;
 
-        if (chapters.length > 0)
+        if (chapters.length > 0) {
+          await transaction`
+            INSERT INTO content.course_chapters ${transaction(
+              chapters.map((_, index) => ({
+                course_id: course.id,
+                chapter: index + 1,
+              }))
+            )}
+            ON CONFLICT DO NOTHING
+          `;
+
           await transaction`
             INSERT INTO content.course_chapters_localized ${transaction(
               chapters.map((chapter, index) => ({
@@ -279,6 +289,7 @@ export const createProcessChangedCourse =
               sections = EXCLUDED.sections,
               raw_content = EXCLUDED.raw_content
           `;
+        }
       }
     });
   };

@@ -1,4 +1,4 @@
--- Path: packages/database/migrations/20230412072903-content.sql
+-- Path: libs/database/migrations/20230412072903-content.sql
 
 CREATE SCHEMA IF NOT EXISTS content;
 
@@ -130,17 +130,34 @@ CREATE TABLE IF NOT EXISTS content.courses_localized (
   PRIMARY KEY (course_id, language)
 );
 
+CREATE TABLE IF NOT EXISTS content.course_chapters (
+  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  chapter INTEGER NOT NULL,
+
+  PRIMARY KEY (course_id, chapter)
+);
+
 CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
   course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
-  language VARCHAR(10) NOT NULL,
   chapter INTEGER NOT NULL,
+  language VARCHAR(10) NOT NULL,
 
   -- Per chapter
   title TEXT NOT NULL,
   sections TEXT[] NOT NULL,
   raw_content TEXT NOT NULL,
 
-  PRIMARY KEY (course_id, language, chapter)
+  PRIMARY KEY (course_id, chapter, language),
+
+  CONSTRAINT fk_course_chapters_localized_to_course_chapters
+    FOREIGN KEY (course_id, chapter)
+    REFERENCES content.course_chapters(course_id, chapter)
+    ON DELETE CASCADE,
+
+  CONSTRAINT fk_course_chapters_localized_to_courses_localized
+    FOREIGN KEY (course_id, language)
+    REFERENCES content.courses_localized(course_id, language)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS content.course_tags (

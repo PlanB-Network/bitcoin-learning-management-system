@@ -11,7 +11,8 @@ import {
   createGetPodcasts,
 } from '@sovereign-university/api/content';
 
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
+import { publicProcedure } from '../../procedures';
 
 const createGetResourcesProcedure = (category: ResourceCategory) => {
   return publicProcedure

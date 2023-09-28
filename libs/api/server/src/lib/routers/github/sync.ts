@@ -6,7 +6,7 @@ import {
   syncCdnRepository,
 } from '@sovereign-university/api/github';
 
-import { publicProcedure } from '../../trpc';
+import { publicProcedure } from '../../procedures';
 
 // TODO: Protect this endpoint (admin only when we have roles)
 export const syncProcedure = publicProcedure

@@ -7,7 +7,8 @@ import {
   createGetCourses,
 } from '@sovereign-university/api/content';
 
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
+import { publicProcedure } from '../../procedures';
 
 const getCoursesProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/courses' } })

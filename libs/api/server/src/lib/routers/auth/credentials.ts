@@ -3,14 +3,17 @@ import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
 import {
-  addCredentialsUser,
   contributorIdExists,
   generateUniqueContributorId,
-  getUserByAny,
 } from '../../services/users';
-import { createTRPCRouter, publicProcedure } from '../../trpc';
+import { createTRPCRouter } from '../../trpc';
 import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
+import {
+  createGetUser,
+  createNewCredentialsUser,
+} from '@sovereign-university/api/user';
+import { publicProcedure } from '../../procedures';
 
 const registerCredentialsSchema = z.object({
   username: z.string().min(6),
@@ -32,7 +35,11 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        user: z.object({ username: z.string(), email: z.string().optional() }),
+        user: z.object({
+          uid: z.string(),
+          username: z.string(),
+          email: z.string().optional(),
+        }),
         accessToken: z.string(),
       })
     )
@@ -40,7 +47,9 @@ export const credentialsAuthRouter = createTRPCRouter({
       const { dependencies } = ctx;
       const { postgres } = dependencies;
 
-      if (await getUserByAny(postgres, { username: input.username })) {
+      const getUser = createGetUser(dependencies);
+
+      if (await getUser({ username: input.username })) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Username already exists',
@@ -61,7 +70,9 @@ export const credentialsAuthRouter = createTRPCRouter({
       const contributorId =
         input.contributor_id || (await generateUniqueContributorId(postgres));
 
-      const [user] = await addCredentialsUser(postgres, {
+      const newCredentialsUser = createNewCredentialsUser(dependencies);
+
+      const user = await newCredentialsUser({
         username: input.username,
         passwordHash: hashedPassword,
         contributorId,
@@ -71,8 +82,12 @@ export const credentialsAuthRouter = createTRPCRouter({
       return {
         status: 201,
         message: 'User created',
-        user: { username: user.username, email: user.email ?? undefined },
-        accessToken: signAccessToken(user),
+        user: {
+          uid: user.uid,
+          username: user.username,
+          email: user.email ?? undefined,
+        },
+        accessToken: signAccessToken(user.uid),
       };
     }),
   login: publicProcedure
@@ -88,9 +103,10 @@ export const credentialsAuthRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const { dependencies } = ctx;
-      const { postgres } = dependencies;
 
-      const user = await getUserByAny(postgres, {
+      const getUser = createGetUser(dependencies);
+
+      const user = await getUser({
         username: input.username,
       });
 
@@ -118,8 +134,12 @@ export const credentialsAuthRouter = createTRPCRouter({
       return {
         status: 200,
         message: 'Logged in',
-        user: { username: user.username, email: user.email ?? undefined },
-        accessToken: signAccessToken(user),
+        user: {
+          uid: user.uid,
+          username: user.username,
+          email: user.email ?? undefined,
+        },
+        accessToken: signAccessToken(user.uid),
       };
     }),
 });

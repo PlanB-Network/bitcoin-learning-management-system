@@ -1,14 +1,21 @@
-import express from 'express';
+import * as dotenv from 'dotenv';
 
-const host = process.env.HOST ?? 'localhost';
+import { startDependencies, stopDependencies } from './dependencies';
+import { startServer } from './server';
+
+dotenv.config();
+
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-const app = express();
+const start = async () => {
+  const dependencies = await startDependencies();
+  const server = await startServer(dependencies, port);
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
+  server.once('close', async () => {
+    await stopDependencies();
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+    server.close();
+  });
+};
+
+start();
