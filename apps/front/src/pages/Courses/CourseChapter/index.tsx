@@ -143,10 +143,6 @@ export const CourseChapter = () => {
 
                     <div className="text-primary-800 p-1 font-semibold">
                       {chapter?.title}
-                      {/* {t('courses.chapter.count', {
-                      count: chapter.chapter,
-                      total: chapter.course?.chapters?.length,
-                    })} */}
                     </div>
                     <Link
                       className="h-6"
@@ -258,7 +254,7 @@ export const CourseChapter = () => {
                     {/* Convierte el texto a minúsculas */}
                   </h3>
                   {isContentExpanded && (
-                    <div className="ml-2 px-5 lowercase">
+                    <div className="mb-2 ml-2 px-5 lowercase">
                       <ul className="mt-2 list-inside pl-5">
                         {chapter.course?.objectives?.map(
                           (goal: string, index: number) => (

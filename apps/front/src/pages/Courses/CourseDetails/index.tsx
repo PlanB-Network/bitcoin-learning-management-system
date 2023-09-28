@@ -1,3 +1,5 @@
+import { title } from 'process';
+
 import {
   BreakPointHooks,
   breakpointsTailwind,
@@ -13,8 +15,12 @@ import { Link, generatePath, useNavigate } from 'react-router-dom';
 
 import { trpc } from '@sovereign-academy/api-client';
 
+import graduateImg from '../../../assets/birrete.png';
+import watch from '../../../assets/cloclk.png';
 import curriculumImage from '../../../assets/courses/curriculum.png';
+import book from '../../../assets/livre.svg';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
+import rabitPen from '../../../assets/rabbit-with-pen.svg';
 import { Button } from '../../../atoms/Button';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { Routes } from '../../../types';
@@ -54,23 +60,81 @@ export const CourseDetails: React.FC = () => {
                   <span>{course.id.match(/\d+/)?.[0] || ''}</span>
                 </div>
               ) : (
-                <div
-                  className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
-                  title={t('courses.details.courseId', { courseId: course.id })}
-                >
-                  {course.id}
+                <div className="mb-4 flex flex-col items-center ">
+                  <div className="mt-2  flex items-center">
+                    <div
+                      className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
+                      title={t('courses.details.courseId', {
+                        courseId: course.id,
+                      })}
+                    >
+                      {course.id}
+                    </div>
+                    <h1 className="text-primary-700 px-1 text-xl font-semibold lg:text-5xl">
+                      {course.name}
+                    </h1>
+                  </div>
+                  <h2 className="text-primary-700 mt-2 text-base font-light italic">
+                    {t('courses.details.goal', { goal: course.goal })}
+                  </h2>
+                  {/* Aqui se muestran los datos del curso cel version */}
+                  <div className="flex flex-col space-y-2 p-3 md:px-0">
+                    <div className="flex flex-wrap ">
+                      <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
+                        <img
+                          src={rabitPen}
+                          alt="Icono de estudio"
+                          className="mr-2 h-4 w-4"
+                        />
+                        <span className="text-primary-500 text-sm">
+                          {course?.teacher}
+                        </span>
+                      </div>
+                      <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
+                        <img
+                          src={graduateImg}
+                          alt="Icono de estudio"
+                          className="mr-2 h-4 w-4"
+                        />
+                        <span className="text-primary-500 text-sm">
+                          {course?.level}
+                        </span>
+                      </div>
+                      <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
+                        <img
+                          src={book}
+                          alt="Icono de estudio"
+                          className="mr-2 h-4 w-4"
+                        />
+                        <span className="text-primary-500 text-sm">
+                          {course?.chapters?.length} {t('Chapters')}
+                        </span>
+                      </div>
+                      <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
+                        <img
+                          src={watch}
+                          alt="Icono de estudio"
+                          className="mr-2 h-4 w-4"
+                        />
+                        <span className="text-primary-500 text-sm">
+                          {course?.hours} {t('hours')}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
-              <div className="max-w-3xl space-y-3">
-                <h1 className="text-primary-700 text-3xl font-semibold lg:text-5xl">
+              {/* Agregamos clases para ocultar el div en dispositivos móviles */}
+              <div className="hidden md:block lg:block xl:block 2xl:block">
+                <h1 className="text-primary-700  text-3xl font-semibold  lg:text-5xl">
                   {course.name}
                 </h1>
-                <h2 className="text-primary-700 text-lg font-light italic">
+                <h2 className="text-primary-700 mt-4 text-lg font-light italic">
                   {t('courses.details.goal', { goal: course.goal })}
                 </h2>
               </div>
             </div>
-            <hr className="my-8 w-full max-w-5xl border-2 border-gray-300" />
+            <hr className="invisible my-8 w-full max-w-5xl border-2 border-gray-300 md:visible lg:visible" />
             <div className="grid max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch gap-y-8 md:my-2 md:grid-cols-2 md:grid-rows-1">
               <div className="w-full px-2 md:pl-2 md:pr-10">
                 <img
@@ -81,8 +145,8 @@ export const CourseDetails: React.FC = () => {
                   alt={t('imagesAlt.courseThumbnail')}
                 />
               </div>
-              <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
-                <div className="flex flex-row items-start space-x-5">
+              <div className="  hidden w-full flex-col space-y-5 p-3 md:block md:px-0 lg:block xl:block 2xl:block ">
+                <div className="flex flex-row items-start space-x-5 ">
                   <FaChalkboardTeacher size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.teachers', {
