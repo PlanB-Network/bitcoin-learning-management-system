@@ -17,8 +17,12 @@ import { trpc } from '@sovereign-academy/api-client';
 
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
+import checkBoxSVG from '../../../assets/courses/checkboxFilled.svg';
+import crayonSVG from '../../../assets/courses/Crayon.svg';
 import curriculumImage from '../../../assets/courses/curriculum.png';
 import rocketSVG from '../../../assets/courses/rocketcourse.svg';
+import staricon from '../../../assets/courses/star.png';
+import yellowNote from '../../../assets/courses/yellowbook.png';
 import book from '../../../assets/livre.svg';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import rabitPen from '../../../assets/rabbit-with-pen.svg';
@@ -75,7 +79,7 @@ export const CourseDetails: React.FC = () => {
                       {course.name}
                     </h1>
                   </div>
-                  <h2 className="text-primary-700 mt-2 text-base font-light italic">
+                  <h2 className="text-primary-700 mt-2 text-sm font-light italic">
                     {t('courses.details.goal', { goal: course.goal })}
                   </h2>
                   {/* Aqui se muestran los datos del curso cel version */}
@@ -97,7 +101,7 @@ export const CourseDetails: React.FC = () => {
                           alt="Icono de estudio"
                           className="mr-2 h-4 w-4"
                         />
-                        <span className="text-primary-500 text-sm">
+                        <span className="text-primary-500 text-sm capitalize">
                           {course?.level}
                         </span>
                       </div>
@@ -203,27 +207,32 @@ export const CourseDetails: React.FC = () => {
                 </div>
               ) : (
                 <div flex-row>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Link
-                      to={generatePath(Routes.CourseChapter, {
-                        courseId,
-                        chapterIndex: '1',
-                      })}
-                    >
-                      <div className="flex">
-                        <Button variant="tertiary" rounded>
-                          <span className="relative z-10 text-sm font-normal md:px-6	">
-                            Start the course
-                          </span>
-                          <span className="absolute inset-0 bg-orange-500 before:absolute before:inset-y-0 before:left-0 before:w-2 before:bg-orange-500 before:content-[''] after:absolute after:inset-y-0 after:right-0 after:w-2 after:bg-orange-500 after:content-['']"></span>
-                          <img
-                            src={rocketSVG}
-                            alt=""
-                            className="m-0 h-5 w-5 "
-                          />
-                        </Button>
+                  <div className="flex items-center justify-center">
+                    <div className="h-0 grow border-t-2 border-orange-600"></div>
+                    <div className=" p-2">
+                      <div className=" mx-1 flex items-center justify-center">
+                        <Link
+                          to={generatePath(Routes.CourseChapter, {
+                            courseId,
+                            chapterIndex: '1',
+                          })}
+                        >
+                          <div className="flex">
+                            <Button variant="tertiary" rounded>
+                              <span className="relative z-10 text-sm font-normal md:px-6	">
+                                Start the course
+                              </span>
+                              <img
+                                src={rocketSVG}
+                                alt=""
+                                className="m-0 h-5 w-5 "
+                              />
+                            </Button>
+                          </div>
+                        </Link>
                       </div>
-                    </Link>
+                    </div>
+                    <div className="h-0 grow border-t-2 border-orange-600"></div>
                   </div>
                 </div>
               )}
@@ -231,19 +240,29 @@ export const CourseDetails: React.FC = () => {
 
             <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
               <div className="mb-5 flex w-full flex-col md:mb-0">
-                <h4 className="mb-1 text-sm font-normal uppercase italic">
+                <div className="flex flex-row sm:hidden">
+                  <img
+                    src={crayonSVG}
+                    alt=""
+                    className="m-0 block h-5  w-5   "
+                  />
+                  <h4 className="text-primary-800 mb-1 text-sm font-semibold uppercase italic sm:hidden">
+                    {t('courses.details.description')}
+                  </h4>
+                </div>
+                <h4 className="mb-1 hidden text-sm font-normal uppercase italic sm:block">
                   {t('courses.details.description')}
                 </h4>
                 <ReactMarkdown
                   children={course.raw_description}
                   components={{
                     h1: ({ children }) => (
-                      <h3 className="text-primary-800 mb-5 text-2xl font-normal">
+                      <h3 className="text-primary-700 sm:text-primary-800 mb-5 text-base font-normal sm:text-2xl sm:font-normal">
                         {children}
                       </h3>
                     ),
                     p: ({ children }) => (
-                      <p className="text-primary-700 mb-3 text-sm">
+                      <p className="text-primary-700 mb-3 text-justify text-xs sm:text-sm ">
                         {children}
                       </p>
                     ),
@@ -251,31 +270,56 @@ export const CourseDetails: React.FC = () => {
                 ></ReactMarkdown>
               </div>
               <div className="flex w-full flex-col">
-                <h4 className="mb-1 text-sm font-light uppercase italic">
+                <div className="mb-3 flex flex-row sm:hidden">
+                  <img
+                    src={staricon}
+                    alt=""
+                    className=" block h-5 w-5  p-1   "
+                  />
+                  <h4 className="text-primary-700 mb-1 py-1 text-xs font-semibold uppercase italic sm:hidden">
+                    {t('courses.details.objectives')}
+                  </h4>
+                </div>
+                <h4 className="mb-1 hidden text-sm font-light uppercase italic sm:block">
                   {t('courses.details.objectives')}
                 </h4>
-                <h3 className="text-primary-800 mb-5 text-2xl font-normal">
+                <h3 className="text-primary-800 mb-5 hidden text-2xl  font-normal sm:block md:text-2xl lg:text-xl xl:text-lg 2xl:text-lg">
                   {t('courses.details.objectivesTitle')}
                 </h3>
-                <ul className="text-primary-700 space-y-2 font-light uppercase">
+                <ul className="text-primary-700 space-y-2 font-light capitalize  sm:uppercase">
                   {course.objectives?.map((goal, index) => (
                     <li className="flex flex-row space-x-3" key={index}>
                       <div>
-                        <BsCheckCircle className="mt-1 h-4 w-4" />
+                        <BsCheckCircle className="mt-1 hidden h-4 w-4 sm:block" />
                       </div>
+                      <img
+                        src={checkBoxSVG}
+                        alt=""
+                        className="mt-1 block h-4 w-4 sm:hidden"
+                      />
                       <span>{goal}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
+            <hr className="my-4 hidden w-full max-w-5xl border-2 border-gray-300 sm:block md:my-8 " />
             <div className="my-4 h-fit max-w-5xl grid-cols-2 place-items-stretch justify-items-stretch gap-x-20 px-2 md:grid">
               <div className="flex h-fit flex-col">
-                <h4 className="mb-5 text-sm font-light uppercase italic">
+                <div className="mb-3 flex flex-row sm:hidden">
+                  <img
+                    src={yellowNote}
+                    alt=""
+                    className="m-0 block h-5  w-5   "
+                  />
+                  <h4 className="text-primary-800 mb-1 text-sm  font-semibold uppercase italic sm:hidden">
+                    {t('courses.details.curriculum')}
+                  </h4>
+                </div>
+                <h4 className="mb-5 hidden text-sm font-light italic sm:block">
                   {t('courses.details.curriculum')}
                 </h4>
-                <ul className="ml-5 space-y-5">
+                <ul className="ml-5 space-y-5 capitalize  sm:uppercase">
                   {course.chapters?.map((chapter, index) => (
                     <li key={index}>
                       <div className="mb-1 flex flex-row">
@@ -291,7 +335,7 @@ export const CourseDetails: React.FC = () => {
                           })}
                           key={chapter.chapter}
                         >
-                          <p className="text-lg font-light uppercase text-orange-800 ">
+                          <p className="ml-1 text-lg font-semibold capitalize text-orange-800 sm:uppercase ">
                             {chapter.title}
                           </p>
                         </Link>
