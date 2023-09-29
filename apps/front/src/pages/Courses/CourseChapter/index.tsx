@@ -83,16 +83,24 @@ export const CourseChapter = () => {
                   }`}</Link>
                 ) : (
                   <div className="flex items-center justify-center">
-                    <div
-                      className="mr-2 rounded-full bg-orange-800 p-2 text-sm"
-                      title={t('courses.details.courseId', {
-                        courseId: chapter.course?.id,
+                    {/* linkaqui */}
+                    <Link
+                      to={generatePath(Routes.Course, {
+                        courseId,
                       })}
                     >
-                      <span className="uppercase text-white">
-                        {chapter.course?.id}
-                      </span>
-                    </div>
+                      <div
+                        className="mr-2 rounded-full bg-orange-800 p-2 text-sm"
+                        title={t('courses.details.courseId', {
+                          courseId: chapter.course?.id,
+                        })}
+                      >
+                        <span className="uppercase text-white">
+                          {chapter.course?.id}
+                        </span>
+                      </div>
+                    </Link>
+
                     <h1 className="mb-1 mr-2 text-base  font-semibold text-orange-800">
                       {chapter.course?.name}
                     </h1>
