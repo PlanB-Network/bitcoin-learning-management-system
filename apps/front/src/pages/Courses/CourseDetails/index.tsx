@@ -286,7 +286,7 @@ export const CourseDetails: React.FC = () => {
                 <h3 className="text-primary-800 mb-5 hidden text-2xl  font-normal sm:block md:text-2xl lg:text-xl xl:text-lg 2xl:text-lg">
                   {t('courses.details.objectivesTitle')}
                 </h3>
-                <ul className="text-primary-700 space-y-2 font-light capitalize  sm:uppercase">
+                <ul className="text-primary-700 space-y-2 text-xs font-light capitalize sm:text-base sm:uppercase">
                   {course.objectives?.map((goal, index) => (
                     <li className="flex flex-row space-x-3" key={index}>
                       <div>
@@ -297,7 +297,7 @@ export const CourseDetails: React.FC = () => {
                         alt=""
                         className="mt-1 block h-4 w-4 sm:hidden"
                       />
-                      <span>{goal}</span>
+                      <span className="p-1">{goal}</span>
                     </li>
                   ))}
                 </ul>
@@ -319,7 +319,7 @@ export const CourseDetails: React.FC = () => {
                 <h4 className="mb-5 hidden text-sm font-light italic sm:block">
                   {t('courses.details.curriculum')}
                 </h4>
-                <ul className="ml-5 space-y-5 capitalize  sm:uppercase">
+                <ul className="ml-5 space-y-5 text-xs capitalize sm:text-base sm:uppercase">
                   {course.chapters?.map((chapter, index) => (
                     <li key={index}>
                       <div className="mb-1 flex flex-row">
@@ -335,7 +335,7 @@ export const CourseDetails: React.FC = () => {
                           })}
                           key={chapter.chapter}
                         >
-                          <p className="ml-1 text-lg font-semibold capitalize text-orange-800 sm:uppercase ">
+                          <p className="ml-1 text-base font-semibold capitalize text-orange-800 sm:text-lg sm:uppercase ">
                             {chapter.title}
                           </p>
                         </Link>

@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import { ReactComponent as YellowPen } from '../../assets/courses/pencil.svg';
 import { ReactComponent as VideoSVG } from '../../assets/resources/video.svg';
 
 export const MarkdownBody = ({
@@ -21,12 +22,15 @@ export const MarkdownBody = ({
       children={content}
       components={{
         h2: ({ children }) => (
-          <h2 className="mt-6 text-xl font-semibold md:mt-10 md:text-2xl">
-            {children}
+          <h2 className="mt-6 text-xl font-semibold text-orange-600 md:mt-10 md:text-2xl ">
+            <div className="flex  w-auto items-center">
+              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              {children}
+            </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl font-normal">{children}</h3>
+          <h3 className="ml-2 text-xl font-semibold">{children}</h3>
         ),
         p: ({ children }) => (
           <p className=" text-justify text-base tracking-wide ">{children}</p>
