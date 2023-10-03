@@ -48,7 +48,8 @@ export default async function runExecutor(
       });
     }
 
-    const database = options.database || process.env['DB_NAME'] || 'postgres';
+    const database =
+      options.database || process.env['POSTGRES_NAME'] || 'postgres';
     const databaseSql = tmpClient(database);
 
     await tmpClient`SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = ${database} AND pid <> pg_backend_pid();`;

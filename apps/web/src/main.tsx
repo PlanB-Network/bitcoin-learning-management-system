@@ -1,15 +1,23 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import App from './app/app';
+import { App } from './app';
+import { AppProvider } from './providers/app';
 
-import './styles.css';
+// Styles
+import '@sovereign-university/ui/styles/global.css';
+
+// Internationalization
+import './utils/i18n';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </StrictMode>
 );

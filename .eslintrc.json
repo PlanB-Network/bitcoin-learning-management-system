@@ -1,10 +1,11 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx", "@ts-safeql/eslint-plugin"],
+  "plugins": ["@nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:import/recommended", "plugin:prettier/recommended"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -18,37 +19,46 @@
               }
             ]
           }
-        ]
-        /* "@ts-safeql/check-sql": [
+        ],
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "import/order": [
           "error",
           {
-            "connections": [
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "newlines-between": "always",
+            "pathGroups": [
               {
-                "migrationsDir": "./libs/database/migrations",
-                "targets": [
-                  {
-                    "tag": "postgres",
-                    "transform": "{type}[]"
-                  },
-                  {
-                    "tag": "sql",
-                    "transform": "{type}[]"
-                    // "fieldTransform": "camel"
-                  }
-                ],
-                "overrides": {
-                  "types": {
-                    "bigint": "number",
-                    "timestamptz": "number",
-                    "undefined": "number"
-                  }
-                },
-                "nullAsUndefined": true,
-                "nullAsOptional": true
+                "pattern": "@sovereign-university/**",
+                "group": "internal",
+                "position": "before"
               }
-            ]
+            ],
+            "pathGroupsExcludedImportTypes": []
           }
-        ] */
+        ],
+        "sort-imports": [
+          "warn",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
+            "allowSeparatedGroups": false
+          }
+        ]
       }
     },
     {

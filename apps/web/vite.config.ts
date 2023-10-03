@@ -1,27 +1,25 @@
 /// <reference types="vitest" />
+/// <reference types="vite-plugin-svgr/client" />
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/web',
 
   server: {
     port: 4200,
-    host: 'localhost',
+    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
   },
 
   preview: {
     port: 4300,
-    host: 'localhost',
+    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+  plugins: [react(), svgr(), nxViteTsPaths()],
 
   test: {
     globals: true,

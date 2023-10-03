@@ -82,11 +82,11 @@ export const createPostgresClient = ({
   let connected = false;
 
   const client = postgres({
-    host: host || process.env['DB_HOST'],
-    port: port || Number(process.env['DB_PORT']),
-    database: database || process.env['DB_NAME'],
-    username: username || process.env['DB_USER'],
-    password: password || process.env['DB_PASSWORD'],
+    host: host || process.env['POSTGRES_HOST'],
+    port: port || Number(process.env['POSTGRES_PORT']),
+    database: database || process.env['POSTGRES_NAME'],
+    username: username || process.env['POSTGRES_USER'],
+    password: password || process.env['POSTGRES_PASSWORD'],
     // onnotice: () => undefined,
     types,
     transform: {
