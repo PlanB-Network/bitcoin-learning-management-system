@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { trpc } from '@sovereign-academy/api-client';
 
 import { MainLayout } from '../../../components';
 import { CoursePreview } from '../../../components/Courses/CoursePreview';
+import { LevelPicker } from '../../../components/Courses/PickerCourse';
 import { SolarSystem } from '../../../components/Courses/SolarSystem';
 import type { Course } from '../../../components/Courses/SolarSystem';
 
@@ -80,6 +82,7 @@ export const CoursesExplorer = () => {
       topic: t('courses.categories.min'),
     },
   ];
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const coursesWithUnreleased = [
     ...(coursesInLanguage || []),
@@ -90,29 +93,34 @@ export const CoursesExplorer = () => {
     <MainLayout footerVariant="dark">
       <div className="bg-primary-900 flex w-full flex-col items-center justify-center px-5">
         <div className="flex flex-col items-center justify-center pt-8 text-white lg:max-w-3xl">
-          <h1 className="-ml-4 w-full text-left text-[62px] font-light md:text-[128px] lg:-ml-14">
+          <h1 className="w-full text-left text-[24px] font-bold sm:-ml-4 sm:text-[62px]  sm:font-normal md:text-[128px] lg:-ml-14">
             {t('courses.explorer.pageTitle')}
           </h1>
-          <div className="space-y-6 text-justify text-base lg:text-lg">
-            <p className="font-bold">{t('courses.explorer.s1t1')}</p>
+          <div className=" space-y-6 text-justify text-sm sm:text-base lg:text-lg">
+            <p className="font-semibold sm:font-bold">
+              {t('courses.explorer.s1t1')}
+            </p>
             <p>{t('courses.explorer.s1p1')}</p>
           </div>
         </div>
-        <div className="bg-primary-900 flex w-full flex-col items-center md:h-full">
+        {/* <LevelPicker courseId={t('courses.explorer.pageTitle')} /> */}
+
+        <div className="bg-primary-800 sm:bg-primary-900 mt-2 flex w-full flex-col items-center sm:mt-0 md:h-full">
           <SolarSystem courses={coursesWithUnreleased} />
         </div>
         <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
-          <div className="mb-16 flex w-full flex-col">
+          <div className="mb-16 hidden w-full flex-col sm:flex">
             <h3 className="mb-5 text-xl font-semibold">
               {t('courses.explorer.s2t1')}
             </h3>
-            <div className="flex flex-col space-y-5 text-base font-light">
+            <div className="flex flex-col justify-between space-y-5 text-base font-light">
               <span>{t('courses.explorer.s2p1')}</span>
               <span>{t('courses.explorer.s2p2')}</span>
               <span>{t('courses.explorer.s2p3')}</span>
             </div>
           </div>
-          <div className="mb-16 flex w-full flex-col">
+
+          <div className="mb-16 hidden w-full flex-col sm:flex ">
             <h3 className="mb-6 text-xl font-semibold">
               {t('courses.explorer.s3t1')}
             </h3>
@@ -132,19 +140,52 @@ export const CoursesExplorer = () => {
               ))}
             </div>
           </div>
+
+          {/* Aqui empieza picker nuevo, aun no esta terminado  */}
+          {/* <h3 className="mb-6 text-xl font-semibold">
+            {t('courses.explorer.s3t1')}
+          </h3>
+          <div className="bg-primary-700 mb-16 hidden w-full flex-col rounded-lg border-2  border-white sm:flex">
+            <div className=" grid grid-cols-1 items-center justify-center px-5 text-base md:grid-cols-4 xl:grid-cols-3">
+              {categories.map(({ prefix, topic }, index) => (
+                <div
+                  className="my-3 flex flex-row place-items-center space-x-2"
+                  key={index}
+                >
+                  <div
+                    className={`flex h-8 w-14 place-items-center justify-center rounded-lg border-2 border-orange-900 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
+                      activeCategory === prefix
+                        ? 'bg-orange-900'
+                        : 'bg-primary-900'
+                    }`}
+                    onClick={() => setActiveCategory(prefix)}
+                  >
+                    {prefix}
+                  </div>
+                  <span className="w-1/2 text-base font-light capitalize lg:text-base">
+                    {topic}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="grid  place-content-center items-center">
+              <LevelPicker courseId={t('courses.explorer.pageTitle')} />
+            </div>
+          </div>*/}
         </div>
+
         <div className="bg-primary-900 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
           {coursesInLanguage
             ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
             .map((course) => (
               <CoursePreview
                 course={course}
-                className="h-auto"
+                className="h-auto "
                 key={course.id}
               />
             ))}
         </div>
-        <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
+        <div className="flex max-w-3xl flex-col items-center pt-8 text-white">
           <div className="bg-primary-900 w-full pb-6 pt-3 text-right text-orange-900">
             {t('courses.explorer.moreToCome')}
           </div>

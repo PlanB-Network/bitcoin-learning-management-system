@@ -22,36 +22,41 @@ export const CoursePreview = ({
 
   return (
     <Card
-      image={computeAssetCdnUrl(
-        course.last_commit,
-        `courses/${course.id}/assets/thumbnail.png`
-      )}
       className={compose(
-        'overflow-hidden border-4 border-orange-800',
-        className
+        'overflow-hidden border-2 border-orange-800  sm:border-4'
       )}
     >
-      <div className="flex h-full flex-col">
-        <h5 className="text-primary-900 text-xl font-semibold uppercase tracking-tight">
-          {course.name}
-        </h5>
-        <h6 className="mt-2 text-xs font-light">
-          {t('courses.preview.by', { teacher: course.teacher })}
-        </h6>
-        <div className="mt-3 line-clamp-4 overflow-hidden text-ellipsis text-sm italic tracking-wide text-gray-600">
-          {course.goal}
-        </div>
-        <div className="mt-5 flex w-full grow flex-row items-end justify-end self-end justify-self-end">
-          <Link to={generatePath(Routes.Course, { courseId: course.id })}>
-            <Button
-              size="s"
-              iconRight={<BsArrowRight />}
-              variant="tertiary"
-              className="text-primary-900"
-            >
-              {t('courses.preview.letsgo')}
-            </Button>
-          </Link>
+      <div className=" flex-row">
+        <img
+          src={computeAssetCdnUrl(
+            course.last_commit,
+            `courses/${course.id}/assets/thumbnail.png`
+          )}
+          alt="Course Thumbnail"
+          className="hidden md:w-auto"
+        />
+        <div className="flex h-full flex-col">
+          <h5 className="text-primary-900 text-xs font-semibold uppercase tracking-tight sm:text-xl">
+            {course.name}
+          </h5>
+          <h6 className="text-xxs mt-2 font-light sm:text-xs">
+            {t('courses.preview.by', { teacher: course.teacher })}
+          </h6>
+          <div className="text-xxs mt-1 overflow-hidden text-ellipsis italic tracking-wide text-gray-600 sm:mt-3 sm:line-clamp-4 sm:text-sm">
+            {course.goal}
+          </div>
+          <div className="mt-5 hidden w-full grow flex-row items-end justify-end self-end justify-self-end sm:flex">
+            <Link to={generatePath(Routes.Course, { courseId: course.id })}>
+              <Button
+                size="s"
+                iconRight={<BsArrowRight />}
+                variant="tertiary"
+                className="text-primary-900"
+              >
+                {t('courses.preview.letsgo')}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </Card>
