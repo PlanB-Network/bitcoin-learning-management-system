@@ -27,6 +27,7 @@ import book from '../../../assets/livre.svg';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import rabitPen from '../../../assets/rabbit-with-pen.svg';
 import { Button } from '../../../atoms/Button';
+import { CourseButton } from '../../../components/Courses/CourseButton';
 import { CourseLayout } from '../../../components/Courses/CourseLayout';
 import { Routes } from '../../../types';
 import { computeAssetCdnUrl, useRequiredParams } from '../../../utils';
@@ -53,6 +54,7 @@ export const CourseDetails: React.FC = () => {
   return (
     <CourseLayout>
       <div>
+        <CourseButton firstChapterRoute={`/course/${courseId}/chapter/1`} />
         {course && (
           <div className="flex h-full w-full flex-col items-center justify-center px-2 py-6 md:py-10">
             <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">

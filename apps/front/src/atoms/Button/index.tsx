@@ -68,7 +68,7 @@ export const Button = ({
         className={compose(
           ...classes,
           disabled ? 'active:none' : 'active:scale-95',
-          'flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
+          'flex flex-row items-center font-normal leading-normal transition-colors duration-150',
           className ?? '',
           disabledClass
         )}
@@ -84,7 +84,7 @@ export const Button = ({
       className={compose(
         ...classes,
         disabled ? 'active:none' : 'active:scale-95',
-        'flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
+        'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',
         className ?? '',
         disabledClass
       )}

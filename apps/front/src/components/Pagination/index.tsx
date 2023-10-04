@@ -46,7 +46,7 @@ export const Pagination = ({
       <div
         className={compose(
           commonClasses,
-          'flex flex-row justify-center items-center px-3 w-20 font-normal text-white rounded-full'
+          'flex w-20 flex-row items-center justify-center rounded-full px-3 font-normal text-white'
         )}
       >
         {currentPage} / {totalPages}

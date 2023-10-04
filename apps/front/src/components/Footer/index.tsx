@@ -82,7 +82,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
             <Hill className="absolute bottom-0  w-full text-clip" />
             <Cloud
               className={compose(
-                'absolute m-auto left-20 top-20 w-32',
+                'absolute left-20 top-20 m-auto w-32',
                 variant === 'light' ? 'text-gray-200' : 'text-gray-300'
               )}
             />
