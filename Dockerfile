@@ -8,21 +8,21 @@ RUN apt-get update && \
 
 # https://nodejs.org/api/corepack.html
 RUN corepack enable && \
-    mkdir -p $PNPM_HOME && chown -R node:node $PNPM_HOME
+    mkdir -p $PNPM_HOME
 
 # Try to cache the node-gyp stuff
 RUN pnpm add argon2@0.31.0
+RUN rm -rf pnpm-lock.yaml package.json
 
-WORKDIR /home/node
+WORKDIR /app
 
-USER node
-
-COPY --chown=node:node package.json pnpm-lock.yaml .npmrc nx.json tsconfig.base.json ./
-COPY --chown=node:node patches ./patches
+COPY pnpm-lock.yaml ./
+COPY patches ./patches
 
 RUN --mount=type=cache,uid=1000,gid=1000,id=l2clear,target=/pnpm/store pnpm fetch
 
-COPY --chown=node:node libs ./libs
-COPY --chown=node:node apps ./apps
+COPY package.json ./
 
 RUN pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
+
+COPY . .

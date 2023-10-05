@@ -1,7 +1,7 @@
 version: '3.7'
 
 x-defaults: &defaults
-  restart: unless-stopped
+  restart: always
   init: true
   env_file:
     - .env
@@ -22,9 +22,6 @@ x-defaults: &defaults
       max-file: '10'
       tag: '{{.Name}}'
 
-  volumes:
-    - .:/app
-
   healthcheck: &healthcheck
     interval: 15s
     timeout: 7s
@@ -33,7 +30,10 @@ x-defaults: &defaults
 
 x-base: &base
   build: .
-  user: node
+
+  volumes:
+    - .:/app
+    - /app/node_modules
 
 services:
   postgres:
@@ -68,7 +68,9 @@ services:
       <<: *environment
       HOST: 0.0.0.0
     volumes:
+      - .:/app
       - cdn:$CDN_PATH
+      - /app/node_modules
     depends_on:
       - postgres
     healthcheck:
@@ -84,10 +86,6 @@ services:
     healthcheck:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '4200']
-
-  watcher:
-    <<: [*defaults, *base]
-    command: pnpm nx watch --all -- nx run $$NX_PROJECT_NAME:build:development
 
   # storybook:
   #   <<: [*defaults, *base]
