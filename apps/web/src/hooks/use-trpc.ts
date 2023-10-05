@@ -23,7 +23,10 @@ export const useTrpc = () => {
 
   const onError = (error: unknown) => {
     if (error instanceof TRPCClientError) {
-      if (['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)) {
+      if (
+        error.shape &&
+        ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
+      ) {
         // useSessionStore.getState().logout();
       }
       console.log(error.message);
@@ -58,13 +61,7 @@ export const useTrpc = () => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `https://${getDomain()}/trpc`,
-          fetch: (url, options) => {
-            return fetch(url, {
-              ...options,
-              credentials: 'include',
-            });
-          },
+          url: 'http://localhost:3000/api/trpc',
           headers: () => {
             return {
               authorization:
