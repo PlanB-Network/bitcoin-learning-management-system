@@ -89,14 +89,14 @@ services:
     <<: [*defaults, *base]
     command: pnpm nx watch --all -- nx run $$NX_PROJECT_NAME:build:development
 
-  storybook:
-    <<: [*defaults, *base]
-    command: pnpm nx run ui:storybook
-    ports:
-      - 4400:4400
-    healthcheck:
-      <<: *healthcheck
-      test: ['CMD', 'nc', '-zv', 'localhost', '4400']
+  # storybook:
+  #   <<: [*defaults, *base]
+  #   command: pnpm nx run ui:storybook
+  #   ports:
+  #     - 4400:4400
+  #   healthcheck:
+  #     <<: *healthcheck
+  #     test: ['CMD', 'nc', '-zv', 'localhost', '4400']
 
 volumes:
   postgres:
