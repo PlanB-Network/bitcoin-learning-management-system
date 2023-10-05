@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from '@tanstack/router';
+import { Link } from '@tanstack/react-router';
 
 import { ReactComponent as LostRabbit } from '../assets/404.svg';
 
@@ -20,7 +20,7 @@ export const NotFound = () => {
           .
         </p>
       </section>
-      <LostRabbit className="w-[70vw] max-w-3xl lg:w-[50vw]" />
+      {/* TODOTRIGGER <LostRabbit className="w-[70vw] max-w-3xl lg:w-[50vw]" /> */}
     </div>
   );
 };

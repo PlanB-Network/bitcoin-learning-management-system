@@ -1,11 +1,11 @@
-import { Route } from '@tanstack/router';
+import { Route } from '@tanstack/react-router';
 import { rootRoute } from './root';
 import { NotFound } from '../pages/not-found';
 import { UnderConstruction } from '../pages/under-construction';
 
 const miscRootRoute = new Route({
   getParentRoute: () => rootRoute,
-  id: 'misc',
+  path: 'misc',
 });
 
 export const notFoundRoute = new Route({

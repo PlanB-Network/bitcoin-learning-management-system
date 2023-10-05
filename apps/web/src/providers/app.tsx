@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { RouterProvider } from '@tanstack/router';
+import { RouterProvider } from '@tanstack/react-router';
 import type { PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,6 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
     <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
       <QueryClientProvider client={trpcQueryClient}>
         <RouterProvider router={router} />
-        {children}
       </QueryClientProvider>
     </trpc.Provider>
   );

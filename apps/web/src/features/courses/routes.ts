@@ -1,5 +1,6 @@
-import { Route } from '@tanstack/router';
+import { Route } from '@tanstack/react-router';
 import { rootRoute } from '../../routes/root';
+import { CoursesExplorer } from './pages/explorer';
 
 const coursesRootRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -9,6 +10,7 @@ const coursesRootRoute = new Route({
 export const coursesIndexRoute = new Route({
   getParentRoute: () => coursesRootRoute,
   path: '/',
+  component: CoursesExplorer
 });
 
 export const coursesDetailsRoute = new Route({

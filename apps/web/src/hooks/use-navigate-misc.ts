@@ -1,4 +1,4 @@
-import { useNavigate } from '@tanstack/router';
+import { useNavigate } from '@tanstack/react-router';
 import { notFoundRoute, underConstructionRoute } from '../routes/misc';
 
 export const useNavigateMisc = () => {

@@ -1,4 +1,4 @@
-import { Router } from '@tanstack/router';
+import { Router } from '@tanstack/react-router';
 
 import { rootRoute } from './root';
 
@@ -9,7 +9,7 @@ const routeTree = rootRoute.addChildren([coursesRoutes, miscRoutes]);
 
 export const router = new Router({ routeTree });
 
-declare module '@tanstack/router' {
+declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
   }

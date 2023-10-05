@@ -5,10 +5,13 @@ import { App } from './app';
 import { AppProvider } from './providers/app';
 
 // Styles
-import '@sovereign-university/ui/styles/global.css';
+// TODOTRIGGER
+//import '@sovereign-university/ui/styles/global.css';
 
 // Internationalization
 import './utils/i18n';
+import { RouterProvider } from '@tanstack/react-router';
+import { router } from './routes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
