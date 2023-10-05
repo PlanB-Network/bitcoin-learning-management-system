@@ -2,12 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 import React from 'react';
 
-import { Button } from '../../atoms/Button';
-import { Card } from '../../atoms/Card';
-import { Routes } from '../../routes/routes';
-import { compose, computeAssetCdnUrl } from '../../utils';
+import { Button } from '../../../atoms/Button';
+import { Card } from '../../../atoms/Card';
+import { Routes } from '../../../routes/routes';
+import { compose, computeAssetCdnUrl } from '../../../utils';
 import { Link } from '@tanstack/react-router';
-import { JoinedCourse } from '../../../../../libs/types/src';
+import { JoinedCourse } from '../../../../../../libs/types/src';
+import { coursesDetailsRoute } from '../routes';
 
 interface CoursePreviewProps {
   course: JoinedCourse;
@@ -42,7 +43,10 @@ export const CoursePreview = ({
           {course.goal}
         </div>
         <div className="mt-5 flex w-full grow flex-row items-end justify-end self-end justify-self-end">
-          {/* TODO TRIGGER <Link to={generatePath(Routes.Course, { courseId: course.id })}>
+          <Link
+            to={coursesDetailsRoute.fullPath}
+            params={{ courseId: course.id }}
+          >
             <Button
               size="s"
               iconRight={<BsArrowRight />}
@@ -51,7 +55,7 @@ export const CoursePreview = ({
             >
               {t('courses.preview.letsgo')}
             </Button>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </Card>

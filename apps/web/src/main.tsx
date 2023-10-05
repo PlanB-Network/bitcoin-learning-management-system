@@ -5,7 +5,7 @@ import { App } from './app';
 import { AppProvider } from './providers/app';
 
 // Styles
-// TODOTRIGGER
+// TODO TRIGGER
 //import '@sovereign-university/ui/styles/global.css';
 
 // Internationalization

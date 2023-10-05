@@ -97,7 +97,7 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        user: z.object({ username: z.string(), email: z.string().optional() }),
+        user: z.object({ uid: z.string(), username: z.string(), email: z.string().optional() }),
         accessToken: z.string(),
       })
     )

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from '@tanstack/react-router';
 
-import { ReactComponent as LostRabbit } from '../assets/404.svg';
+import lostRabbit from '../../assets/404.svg';
 
 export const NotFound = () => {
   const { t } = useTranslation();
@@ -20,7 +20,12 @@ export const NotFound = () => {
           .
         </p>
       </section>
-      {/* TODOTRIGGER <LostRabbit className="w-[70vw] max-w-3xl lg:w-[50vw]" /> */}
+      {/* <LostRabbit className="w-[70vw] max-w-3xl lg:w-[50vw]" /> */}
+      <img
+        src={lostRabbit}
+        className="w-[70vw] max-w-3xl lg:w-[50vw]"
+        alt={t('imagesAlt.rabbit404')}
+      />
     </div>
   );
 };

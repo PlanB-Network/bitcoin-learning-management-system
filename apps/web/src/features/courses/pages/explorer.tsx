@@ -1,7 +1,7 @@
 import { trpc } from '../../../utils/trpc';
 import { useTranslation } from 'react-i18next';
-import { CoursePreview } from '../../../components/Courses/coursePreview';
-import { Course, SolarSystem } from '../../../components/Courses/solarSystem';
+import { CoursePreview } from '../components/coursePreview';
+import { Course, SolarSystem } from '../components/solarSystem';
 
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();

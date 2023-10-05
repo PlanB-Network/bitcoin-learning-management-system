@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { useTrpc } from '../hooks';
 import { router } from '../routes';
 import { trpc } from '../utils/trpc';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
@@ -18,10 +20,12 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   }
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
-      <QueryClientProvider client={trpcQueryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </trpc.Provider>
+    <Provider store={store}>
+      <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
+        <QueryClientProvider client={trpcQueryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </trpc.Provider>
+    </Provider>
   );
 };

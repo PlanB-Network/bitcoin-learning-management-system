@@ -22,13 +22,10 @@ import { coursesChapterRoute, coursesDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
-// TODOTRIGGER fix theses tslint errors
-/* tslint:disable */
-export const CourseDetails: React.FC = () => {
-  // @ts-ignore
+// TODO TRIGGER fix theses tslint errors
+export const CourseChapter: React.FC = () => {
   const { courseId } = useParams({
-    // @ts-ignore
-    from: coursesDetailsRoute.id,
+    from: coursesChapterRoute.id,
   });
 
   const { navigateTo404 } = useNavigateMisc();

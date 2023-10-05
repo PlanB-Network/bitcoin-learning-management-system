@@ -1,5 +1,3 @@
-// TODO document each route
-
 export enum Routes {
   /**
    * Available in MVP
