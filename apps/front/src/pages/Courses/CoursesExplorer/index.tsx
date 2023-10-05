@@ -142,7 +142,7 @@ export const CoursesExplorer = () => {
           </div>
 
           {/* Aqui empieza picker nuevo, aun no esta terminado  */}
-          {/* <h3 className="mb-6 text-xl font-semibold">
+          <h3 className="mb-6 text-xl font-semibold">
             {t('courses.explorer.s3t1')}
           </h3>
           <div className="bg-primary-700 mb-16 hidden w-full flex-col rounded-lg border-2  border-white sm:flex">
@@ -171,7 +171,7 @@ export const CoursesExplorer = () => {
             <div className="grid  place-content-center items-center">
               <LevelPicker courseId={t('courses.explorer.pageTitle')} />
             </div>
-          </div>*/}
+          </div>
         </div>
 
         <div className="bg-primary-900 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
