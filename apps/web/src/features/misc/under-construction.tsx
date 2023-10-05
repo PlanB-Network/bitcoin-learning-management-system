@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import underConstructionImage from '../assets/under-construction.png';
+// TODOtrigger
+// import underConstructionImage from '../assets/under-construction.png';
 
 export const UnderConstruction = () => {
   const { t } = useTranslation();
@@ -22,11 +23,11 @@ export const UnderConstruction = () => {
         </p>
       </section>
       <div>
-        <img
+        {/* <img
           src={underConstructionImage}
           alt={t('imagesAlt.underConstructionImage')}
           className="w-[70vw] max-w-3xl lg:w-[50vw]"
-        />
+        /> */}
       </div>
     </div>
   );

@@ -58,7 +58,7 @@ export const useTrpc = () => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `https://api.${getDomain()}/trpc`,
+          url: `https://${getDomain()}/trpc`,
           fetch: (url, options) => {
             return fetch(url, {
               ...options,

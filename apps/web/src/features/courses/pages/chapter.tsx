@@ -47,6 +47,7 @@ export const CourseDetails: React.FC = () => {
 
   return (
     <div>
+      <h1>DETAIL TODO TRIGGER</h1>
       {course && (
         <div className="flex h-full w-full flex-col items-center justify-center px-2 py-6 md:py-10">
           <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
