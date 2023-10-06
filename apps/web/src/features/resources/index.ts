@@ -1,0 +1,1 @@
+export { resourcesRoutes } from './routes';

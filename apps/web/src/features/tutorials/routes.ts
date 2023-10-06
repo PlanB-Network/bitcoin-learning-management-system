@@ -27,8 +27,6 @@ export const tutorialDetailsRoute = new Route({
     component: TutorialDetails
 })
 
-
-
 export const tutorialsRoutes = tutorialsRootRoute.addChildren([
     tutorialsIndexRoute,
     tutorialCategoryRoute,

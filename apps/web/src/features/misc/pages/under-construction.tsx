@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import underConstructionImage from '../../assets/under-construction.png';
+import underConstructionImage from '../../../assets/under-construction.png';
 
 export const UnderConstruction = () => {
   const { t } = useTranslation();

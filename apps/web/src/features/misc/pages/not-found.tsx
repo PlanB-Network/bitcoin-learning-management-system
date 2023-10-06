@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from '@tanstack/react-router';
 
-import lostRabbit from '../../assets/404.svg';
+import lostRabbit from '../../../assets/404.svg';
 
 export const NotFound = () => {
   const { t } = useTranslation();

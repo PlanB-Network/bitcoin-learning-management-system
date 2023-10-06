@@ -10,6 +10,8 @@ import {
 } from '@tanstack/react-router';
 import { compose } from '../utils';
 import { Header } from '../components/Header';
+import ScrollToTopButton from '../components/ScrollToTopButton';
+import { Footer } from '../components/Footer';
 
 // Create a root route
 export const rootRoute = new RootRoute({
@@ -30,16 +32,16 @@ function Root() {
       //     ? 'bg-blue-200'
       //     : 'bg-primary'
       // )}
-      className={compose(
-        'h-full w-full',
-        'bg-primary' //TODO TRIGGER -900
-      )}
+      className={compose('h-full w-full', 'bg-primary-900')}
       ref={box}
     >
       <Header />
       <Outlet />
 
-      {/* TODO TRIGGER footer */}
+      {/* TODO TRIGGER footer with good params */}
+      {/* {showFooter && <Footer variant={footerVariant} color={footerColor} />} */}
+      <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }

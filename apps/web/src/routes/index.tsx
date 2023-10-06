@@ -5,10 +5,14 @@ import { rootRoute } from './root';
 import { coursesRoutes } from '../features/courses';
 import { miscRoutes } from '../features/misc/routes';
 import { tutorialsRoutes } from '../features/tutorials';
+import { dashboardRoutes } from '../features/dashboard';
+import { resourcesRoutes } from '../features/resources';
 
 const routeTree = rootRoute.addChildren([
   coursesRoutes,
+  dashboardRoutes,
   miscRoutes,
+  resourcesRoutes,
   tutorialsRoutes,
 ]);
 
