@@ -1,7 +1,7 @@
 import { Route } from '@tanstack/react-router';
-import { rootRoute } from './root';
-import { NotFound } from '../features/misc/not-found';
-import { UnderConstruction } from '../features/misc/under-construction';
+import { rootRoute } from '../../routes/root';
+import { NotFound } from './not-found';
+import { UnderConstruction } from './under-construction';
 
 const miscRootRoute = new Route({
   getParentRoute: () => rootRoute,

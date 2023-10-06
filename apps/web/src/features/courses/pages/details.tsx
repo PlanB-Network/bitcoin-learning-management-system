@@ -18,7 +18,7 @@ import { coursesChapterRoute, coursesDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
-export const CourseDetails: React.FC = () => {
+export const CourseDetails = () => {
   const { courseId, language } = useParams({
     from: coursesDetailsRoute.id,
   });
@@ -115,10 +115,10 @@ export const CourseDetails: React.FC = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
-                  to={coursesChapterRoute.fullPath}
+                  to={coursesChapterRoute.id}
                   params={{
                     courseId,
-                    chapterId: '1',
+                    chapterIndex: '1',
                   }}
                 >
                   <Button variant="tertiary" rounded>
@@ -187,10 +187,10 @@ export const CourseDetails: React.FC = () => {
                         size={20}
                       />
                       <Link
-                        to={coursesChapterRoute.fullPath}
+                        to={coursesChapterRoute.id}
                         params={{
                           courseId,
-                          chapterId: chapter.chapter.toString(),
+                          chapterIndex: chapter.chapter.toString(),
                         }}
                         key={chapter.chapter}
                       >
@@ -210,10 +210,10 @@ export const CourseDetails: React.FC = () => {
                         />
                         <Link
                           className="text-primary-700"
-                          to={coursesChapterRoute.fullPath}
+                          to={coursesChapterRoute.id}
                           params={{
                             courseId,
-                            chapterId: chapter.chapter.toString(),
+                            chapterIndex: chapter.chapter.toString(),
                           }}
                         >
                           {section}

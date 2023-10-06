@@ -1,247 +1,229 @@
-// @ts-nocheck
 import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { BsCheckCircle, BsCircleFill } from 'react-icons/bs';
-import { FaChalkboardTeacher } from 'react-icons/fa';
-import { HiOutlineAcademicCap, HiOutlineBookOpen } from 'react-icons/hi';
-import { IoMdStopwatch } from 'react-icons/io';
-import { RxTriangleDown } from 'react-icons/rx';
-import ReactMarkdown from 'react-markdown';
-
-import { Button } from '@sovereign-university/ui';
-
-import curriculumImage from '../../../assets/courses/curriculum.png';
-import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
-import { useNavigateMisc } from '../../../hooks/use-navigate-misc';
-import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { coursesChapterRoute, coursesDetailsRoute } from '../routes';
+import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
+import { BsCheckLg } from 'react-icons/bs';
+import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg';
+import { Button } from '../../../atoms/Button';
+import { MarkdownBody } from '../../../components/MarkdownBody';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import {
+  coursesChapterRoute,
+  coursesDetailsRoute,
+  coursesIndexRoute,
+} from '../routes';
+import { trpc } from '../../../utils/trpc';
+import { notFoundRoute } from '../../misc/routes';
+import { compose, computeAssetCdnUrl } from '../../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
-// TODO TRIGGER fix theses tslint errors
-export const CourseChapter: React.FC = () => {
-  const { courseId } = useParams({
+export const CourseChapter = () => {
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const { courseId, language, chapterIndex } = useParams({
     from: coursesChapterRoute.id,
   });
-
-  const { navigateTo404 } = useNavigateMisc();
-
-  const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
-  const isScreenLg = useGreater('md');
 
-  const { data: course, isFetched } = trpc.content.getCourse.useQuery({
-    id: courseId,
-    language: i18n.language,
-    includeChapters: true,
+  const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
+    courseId,
+    language: language ?? i18n.language,
+    chapterIndex,
   });
 
-  if (!course && isFetched) navigateTo404();
+  const completeChapterMutation =
+    trpc.user.courses.completeChapter.useMutation();
+
+  const completeChapter = () => {
+    completeChapterMutation.mutate({
+      courseId,
+      chapter: Number(chapterIndex),
+    });
+  };
+
+  if (!chapter && isFetched) {
+    navigate({ to: notFoundRoute.id });
+  }
 
   return (
+    // <CourseLayout>
     <div>
-      <h1>DETAIL TODO TRIGGER</h1>
-      {course && (
-        <div className="flex h-full w-full flex-col items-center justify-center px-2 py-6 md:py-10">
-          <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
-            {isScreenLg ? (
-              <div
-                className="flex flex-col items-center justify-center rounded-full bg-orange-800 p-8 text-5xl font-bold uppercase text-white"
-                title={t('courses.details.courseId', { courseId: course.id })}
-              >
-                <span>{course.id.match(/[A-Za-z]+/)?.[0] || ''}</span>
-                <span>{course.id.match(/\d+/)?.[0] || ''}</span>
+      {chapter && (
+        <div className="flex h-full w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
+          <div className="w-full max-w-5xl px-5 md:px-0">
+            <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
+              {`${chapter.course?.id.toUpperCase()} - ${chapter.course?.name}`}
+            </h1>
+            {isScreenMd ? (
+              <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
+                <div>
+                  {t('courses.chapter.count', {
+                    count: chapter.chapter,
+                    total: chapter.course?.chapters?.length,
+                  })}
+                </div>
+                <div>{chapter.course?.teacher}</div>
               </div>
             ) : (
-              <div
-                className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
-                title={t('courses.details.courseId', { courseId: course.id })}
-              >
-                {course.id}
+              <div className="flex flex-row items-center justify-between text-lg ">
+                <Link
+                  className="h-6"
+                  to={
+                    chapter.chapter === 1
+                      ? coursesDetailsRoute.id
+                      : coursesChapterRoute.id
+                  }
+                  params={
+                    chapter.chapter === 1
+                      ? { courseId }
+                      : {
+                          courseId,
+                          chapterIndex: (chapter.chapter - 1).toString(),
+                        }
+                  }
+                >
+                  <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                    <BiSkipPrevious className="h-6 w-6" />
+                  </div>
+                </Link>
+
+                <div className="text-primary-800 font-normal">
+                  {t('courses.chapter.count', {
+                    count: chapter.chapter,
+                    total: chapter.course?.chapters?.length,
+                  })}
+                </div>
+                <Link
+                  className="h-6"
+                  to={
+                    chapter.chapter === chapter.course?.chapters?.length
+                      ? coursesDetailsRoute.id
+                      : coursesChapterRoute.id
+                  }
+                  params={
+                    chapter.chapter === chapter.course?.chapters?.length
+                      ? {
+                          courseId,
+                        }
+                      : {
+                          courseId,
+                          chapterIndex: (chapter.chapter + 1).toString(),
+                        }
+                  }
+                >
+                  <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                    <BiSkipNext className="h-6 w-6" />
+                  </div>
+                </Link>
               </div>
             )}
-            <div className="max-w-3xl space-y-3">
-              <h1 className="text-primary-700 text-3xl font-semibold lg:text-5xl">
-                {course.name}
-              </h1>
-              <h2 className="text-primary-700 text-lg font-light italic">
-                {t('courses.details.goal', { goal: course.goal })}
-              </h2>
-            </div>
-          </div>
-          <hr className="my-8 w-full max-w-5xl border-2 border-gray-300" />
-          <div className="grid max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch gap-y-8 md:my-2 md:grid-cols-2 md:grid-rows-1">
-            <div className="w-full px-2 md:pl-2 md:pr-10">
-              <img
-                src={computeAssetCdnUrl(
-                  course.last_commit,
-                  `courses/${course.id}/assets/thumbnail.png`
-                )}
-                alt={t('imagesAlt.courseThumbnail')}
-              />
-            </div>
-            <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
-              <div className="flex flex-row items-start space-x-5">
-                <FaChalkboardTeacher size="35" className="text-orange-600" />
-                <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
-                  {t('courses.details.teachers', {
-                    teachers: t('words.rogzy'),
-                  })}
-                </span>
-              </div>
-              <div className="flex flex-row items-start space-x-5">
-                <HiOutlineAcademicCap size="35" className="text-orange-600" />
-                <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
-                  {t(`courses.details.level`, { level: course.level })}
-                </span>
-              </div>
-              <div className="flex flex-row items-start space-x-5">
-                <HiOutlineBookOpen size="35" className="text-orange-600" />
-                <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
-                  {t('courses.details.numberOfChapters', {
-                    number: course.chapters?.length,
-                  })}
-                </span>
-              </div>
-              <div className="flex flex-row items-start space-x-5">
-                <IoMdStopwatch size="35" className="text-orange-600" />
-                <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
-                  {t('courses.details.duration', { hours: course.hours })}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="relative my-8 w-full max-w-5xl">
-            <hr className="border-2 border-gray-300" />
-            <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
-              <div className="relative">
-                <Link
-                  to={coursesChapterRoute.id}
-                  params={{
-                    courseId,
-                    chapterId: '1',
-                  }}
-                >
-                  {/* TODO TRIGGER is was <Button variant="tertiary" rounded> */}
-                  <Button variant="secondary">
-                    <span className="md:px-6">Start the course</span>
-                  </Button>
-                </Link>
-                <img
-                  src={rabbitHikingModal}
-                  alt=""
-                  className="absolute bottom-1 left-1 z-[+1] h-14 -translate-x-1/2"
-                ></img>
-              </div>
-            </div>
-          </div>
 
-          <div className="my-4 max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-x-20">
-            <div className="mb-5 flex w-full flex-col md:mb-0">
-              <h4 className="mb-1 text-sm font-normal uppercase italic">
-                {t('courses.details.description')}
-              </h4>
-              <ReactMarkdown
-                children={course.raw_description}
-                components={{
-                  h1: ({ children }) => (
-                    <h3 className="text-primary-800 mb-5 text-2xl font-normal">
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="text-primary-700 mb-3 text-sm">{children}</p>
-                  ),
-                }}
-              ></ReactMarkdown>
-            </div>
-            <div className="flex w-full flex-col">
-              <h4 className="mb-1 text-sm font-light uppercase italic">
-                {t('courses.details.objectives')}
-              </h4>
-              <h3 className="text-primary-800 mb-5 text-2xl font-normal">
-                {t('courses.details.objectivesTitle')}
-              </h3>
-              <ul className="text-primary-700 space-y-2 font-light uppercase">
-                {course.objectives?.map((goal, index) => (
-                  <li className="flex flex-row space-x-3" key={index}>
-                    <div>
-                      <BsCheckCircle className="mt-1 h-4 w-4" />
-                    </div>
-                    <span>{goal}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <hr className="my-4 w-full max-w-5xl border-2 border-gray-300 md:my-8" />
-          <div className="my-4 h-fit max-w-5xl grid-cols-2 place-items-stretch justify-items-stretch gap-x-20 px-2 md:grid">
-            <div className="flex h-fit flex-col">
-              <h4 className="mb-5 text-sm font-light uppercase italic">
-                {t('courses.details.curriculum')}
-              </h4>
-              <ul className="ml-5 space-y-5">
-                {course.chapters?.map((chapter, index) => (
-                  <li key={index}>
-                    <div className="mb-1 flex flex-row">
-                      <RxTriangleDown
-                        className="mr-2 mt-1 text-orange-800"
-                        size={20}
-                      />
+            {isScreenMd && (
+              <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
+                {chapter.course?.chapters?.map((current, index) => {
+                  const firstChapter = current.chapter === 1;
+                  const lastChapter =
+                    current.chapter === chapter.course?.chapters?.length;
+
+                  if (current.chapter !== chapter.chapter)
+                    return (
                       <Link
+                        className="h-4 grow"
                         to={coursesChapterRoute.id}
                         params={{
                           courseId,
-                          chapterId: chapter.chapter.toString(),
+                          chapterIndex: current.chapter.toString(),
                         }}
-                        key={chapter.chapter}
-                      >
-                        <p className="text-lg font-light uppercase text-orange-800 ">
-                          {chapter.title}
-                        </p>
-                      </Link>
-                    </div>
-                    {chapter.sections?.map((section, index) => (
-                      <div
-                        className="mb-0.5 ml-10 flex flex-row items-center"
                         key={index}
                       >
-                        <BsCircleFill
-                          className="text-primary-300 mr-2"
-                          size={7}
+                        <div
+                          className={compose(
+                            'h-4 grow',
+                            current.chapter < chapter.chapter
+                              ? 'bg-orange-600'
+                              : 'bg-gray-300',
+                            firstChapter ? 'rounded-l-full' : '',
+                            lastChapter ? 'rounded-r-full' : ''
+                          )}
                         />
-                        <Link
-                          className="text-primary-700"
-                          to={coursesChapterRoute.id}
-                          params={{
-                            courseId,
-                            chapterId: chapter.chapter.toString(),
-                          }}
-                        >
-                          {section}
-                        </Link>
-                      </div>
-                    ))}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {isScreenMd && (
-              <div className="h-4/5">
-                <img
-                  className="h-full w-full object-contain"
-                  src={curriculumImage}
-                  alt={t('imagesAlt.curriculum')}
-                />
+                      </Link>
+                    );
+
+                  return (
+                    <div
+                      className="relative flex grow overflow-visible"
+                      key={index}
+                    >
+                      <div
+                        className={compose(
+                          'h-4 w-2/3 bg-orange-600',
+                          firstChapter ? 'rounded-l-full' : ''
+                        )}
+                      />
+                      <div
+                        className={compose(
+                          'h-4 w-1/3 bg-gray-300',
+                          lastChapter ? 'rounded-r-full' : ''
+                        )}
+                      />
+                      <img
+                        src={ProgressRabbit}
+                        className="absolute inset-0 bottom-4 m-auto h-12 w-full"
+                        // alt={t('imagesAlt.')}
+                      />
+                    </div>
+                  );
+                })}
               </div>
+            )}
+          </div>
+          <div className="text-primary-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
+            <h2 className="text-primary-800 text-2xl font-normal uppercase italic md:text-3xl">
+              {chapter?.title}
+            </h2>
+            <MarkdownBody
+              content={chapter?.raw_content}
+              assetPrefix={computeAssetCdnUrl(
+                chapter.last_commit,
+                `courses/${courseId}`
+              )}
+            />
+
+            {chapter.chapter !== chapter.course?.chapters?.length ? (
+              <Link
+                className="flex w-full justify-end pt-10"
+                to={coursesChapterRoute.id}
+                params={{
+                  courseId,
+                  chapterIndex: (chapter.chapter + 1).toString(),
+                }}
+              >
+                <Button onClick={completeChapter}>
+                  <span>{t('courses.chapter.next')}</span>
+                  <BiSkipNext className="ml-2 h-8 w-8" />
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                className="flex w-full justify-end pt-10"
+                to={coursesIndexRoute.id}
+                params={{
+                  courseId,
+                }}
+              >
+                <Button onClick={completeChapter}>
+                  <span>{t('courses.chapter.finishCourse')}</span>
+                  <BsCheckLg className="ml-2 h-6 w-6" />
+                </Button>
+              </Link>
             )}
           </div>
         </div>
       )}
     </div>
+    // </CourseLayout>
   );
 };
