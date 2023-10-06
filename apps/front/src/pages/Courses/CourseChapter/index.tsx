@@ -55,7 +55,7 @@ export const CourseChapter = () => {
             <div
               className={`mb-6 w-full max-w-5xl ${isScreenMd ? '' : 'hidden'}`}
             >
-              <span className="font-poppins mb-2 w-full text-left text-lg font-normal leading-6 text-orange-800">
+              <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-800">
                 <Link to="/courses">Courses</Link> &gt;{' '}
                 <Link
                   to={generatePath(Routes.Course, {
@@ -229,7 +229,8 @@ export const CourseChapter = () => {
                 </div>
               )}
             </div>
-            <div className="flex ">
+            {/* Esta es vista desktop */}
+            <div className=" hidden sm:flex ">
               <div className="grow">
                 <div className="text-primary-900 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
                   <span
@@ -320,13 +321,102 @@ export const CourseChapter = () => {
                   )}
                 </div>
               </div>
-              <div className="ml-10 mt-7 shrink-0 ">
+              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
                 <VerticalTable
                   chapters={chapter.course?.chapters || []}
                   courseTitle={chapter.course?.id || ''}
                   style={{ position: 'sticky', top: '2rem' }}
                 />
               </div>
+            </div>
+            {/* esta es la vista de celular */}
+            <div className="text-primary-900 block w-3/4 sm:hidden sm:w-full sm:max-w-xl md:mt-8 md:px-2">
+              <span
+                className={`text-primary-700  mb-2 font-mono text-base font-normal ${
+                  isScreenMd ? '' : 'hidden'
+                }`}
+              >
+                chapter {chapter.chapter}{' '}
+              </span>
+              <h2
+                className={`h-33 text-primary-800 m-1 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase  md:text-3xl ${
+                  isScreenMd ? '' : 'mb-1 hidden'
+                }`}
+              >
+                {chapter?.title}
+              </h2>
+
+              {/* Mostrar la tabla de objetivos del curso Learn*/}
+
+              <div className="text-primary-700 my-1 space-y-2 font-light uppercase">
+                <div
+                  className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+                    isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+                  } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
+                >
+                  <h3
+                    className="text-primary-800 text-1xl mb-3 ml-2 mt-4 flex cursor-pointer items-center font-semibold"
+                    onClick={() => setIsContentExpanded(!isContentExpanded)}
+                  >
+                    <span className="mr-2">
+                      {isContentExpanded ? '>' : '>'}
+                    </span>
+                    {t('courses.details.objectivesTitle').toLowerCase()}{' '}
+                    {/* Convierte el texto a minúsculas */}
+                  </h3>
+                  {isContentExpanded && (
+                    <div className="mb-2 ml-2 px-5 lowercase">
+                      <ul className="mt-2 list-inside pl-5">
+                        {chapter.course?.objectives?.map(
+                          (goal: string, index: number) => (
+                            <li key={index}>
+                              <span className="mr-2 opacity-50">{'▶'}</span>
+                              <span className="capitalize">
+                                {goal.toLowerCase()}
+                              </span>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <MarkdownBody
+                content={chapter?.raw_content}
+                assetPrefix={computeAssetCdnUrl(
+                  chapter.last_commit,
+                  `courses/${courseId}`
+                )}
+              />
+
+              {chapter.chapter !== chapter.course?.chapters?.length ? (
+                <Link
+                  className="flex w-full justify-end pt-10"
+                  to={generatePath(Routes.CourseChapter, {
+                    courseId,
+                    chapterIndex: (chapter.chapter + 1).toString(),
+                  })}
+                >
+                  <Button onClick={completeChapter}>
+                    <span>{t('courses.chapter.next')}</span>
+                    <BiSkipNext className="ml-2 h-8 w-8" />
+                  </Button>
+                </Link>
+              ) : (
+                <Link
+                  className="flex w-full justify-end pt-10"
+                  to={generatePath(Routes.Course, {
+                    courseId,
+                  })}
+                >
+                  <Button onClick={completeChapter}>
+                    <span>{t('courses.chapter.finishCourse')}</span>
+                    <BsCheckLg className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}
