@@ -1,17 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
-import community from '../../assets/home/community.svg';
-import bitcoinCurrency from '../../assets/home/currency_bitcoin.svg';
-import favorite from '../../assets/home/favorite.svg';
-import github from '../../assets/home/github.svg';
-import rabbitClassroom from '../../assets/home/rabbit-classroom.svg';
-import rabbitLibrary from '../../assets/home/rabbit-library.svg';
-import rabbitMeetup from '../../assets/home/rabbit-meetup.svg';
-import rabbitPodcast from '../../assets/home/rabbit-podcast.svg';
-import rabbitStudying from '../../assets/home/rabbit-studying.svg';
-import rabbitVideos from '../../assets/home/rabbit-videos.svg';
-import rabbitWithBackpackAndBtcSign from '../../assets/home/rabbit-with-backpack-and-btc-sign.svg';
-import visibilityOff from '../../assets/home/visibility_off.svg';
+import community from '../../../assets/home/community.svg';
+import bitcoinCurrency from '../../../assets/home/currency_bitcoin.svg';
+import favorite from '../../../assets/home/favorite.svg';
+import github from '../../../assets/home/github.svg';
+import rabbitClassroom from '../../../assets/home/rabbit-classroom.svg';
+import rabbitLibrary from '../../../assets/home/rabbit-library.svg';
+import rabbitMeetup from '../../../assets/home/rabbit-meetup.svg';
+import rabbitPodcast from '../../../assets/home/rabbit-podcast.svg';
+import rabbitStudying from '../../../assets/home/rabbit-studying.svg';
+import rabbitVideos from '../../../assets/home/rabbit-videos.svg';
+import rabbitWithBackpackAndBtcSign from '../../../assets/home/rabbit-with-backpack-and-btc-sign.svg';
+import visibilityOff from '../../../assets/home/visibility_off.svg';
 import { SectionTitle } from '../components/SectionTitle';
 import { Emphasize } from '../components/Emphasize';
 

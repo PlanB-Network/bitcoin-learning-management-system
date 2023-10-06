@@ -11,11 +11,10 @@ import { resourcesRoutes } from '../features/resources';
 const routeTree = rootRoute.addChildren([
   coursesRoutes,
   dashboardRoutes,
-  miscRoutes,
   resourcesRoutes,
   tutorialsRoutes,
+  ...miscRoutes,
 ]);
-
 export const router = new Router({ routeTree });
 
 declare module '@tanstack/react-router' {

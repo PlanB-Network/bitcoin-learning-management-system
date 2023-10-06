@@ -4,45 +4,49 @@ import { NotFound } from './pages/not-found';
 import { UnderConstruction } from './pages/under-construction';
 import { Manifesto } from './pages/manifesto';
 import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
+import { Home } from './pages/home';
 
-const miscRootRoute = new Route({
+export const homeRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
+  component: Home,
 });
 
-// export const homeRoute = new Route({
-//   getParentRoute: () => miscRootRoute,
-//   path: '/',
-// });
-
 export const manifestoRoute = new Route({
-  getParentRoute: () => miscRootRoute,
-  path: 'manifesto',
+  getParentRoute: () => rootRoute,
+  path: '/manifesto',
   component: Manifesto,
 });
 
 export const notFoundRoute = new Route({
-  getParentRoute: () => miscRootRoute,
+  getParentRoute: () => rootRoute,
   path: '/404',
   component: NotFound,
 });
 
+export const globalNotFoundRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '*',
+  component: NotFound,
+});
+
 export const sponsorsAndContributorsRoute = new Route({
-  getParentRoute: () => miscRootRoute,
-  path: 'sponsors-and-contributors',
+  getParentRoute: () => rootRoute,
+  path: '/sponsors-and-contributors',
   component: SponsorsAndContributors,
 });
 
 export const underConstructionRoute = new Route({
-  getParentRoute: () => miscRootRoute,
+  getParentRoute: () => rootRoute,
   path: '/under-construction',
   component: UnderConstruction,
 });
 
-export const miscRoutes = miscRootRoute.addChildren([
-  //homeRoute,
+export const miscRoutes = [
+  globalNotFoundRoute,
+  homeRoute,
   manifestoRoute,
   notFoundRoute,
   sponsorsAndContributorsRoute,
   underConstructionRoute,
-]);
+];
