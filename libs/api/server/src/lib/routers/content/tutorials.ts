@@ -4,8 +4,9 @@ import {
   createGetTutorial,
   createGetTutorials,
 } from '@sovereign-university/api/content';
-import { createTRPCRouter } from '../../trpc';
+
 import { publicProcedure } from '../../procedures';
+import { createTRPCRouter } from '../../trpc';
 
 const getTutorialsProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/tutorials' } })
@@ -14,11 +15,11 @@ const getTutorialsProcedure = publicProcedure
       .object({
         language: z.string().optional(),
       })
-      .optional()
+      .optional(),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetTutorials(ctx.dependencies)(undefined, input?.language)
+    createGetTutorials(ctx.dependencies)(undefined, input?.language),
   );
 
 const getTutorialsByCategoryProcedure = publicProcedure
@@ -27,11 +28,11 @@ const getTutorialsByCategoryProcedure = publicProcedure
     z.object({
       category: z.string(),
       language: z.string().optional(),
-    })
+    }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetTutorials(ctx.dependencies)(input.category, input.language)
+    createGetTutorials(ctx.dependencies)(input.category, input.language),
   );
 
 const getTutorialProcedure = publicProcedure
@@ -45,11 +46,11 @@ const getTutorialProcedure = publicProcedure
     z.object({
       tutorialId: z.number(),
       language: z.string(),
-    })
+    }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetTutorial(ctx.dependencies)(input.tutorialId, input.language)
+    createGetTutorial(ctx.dependencies)(input.tutorialId, input.language),
   );
 
 export const tutorialsRouter = createTRPCRouter({

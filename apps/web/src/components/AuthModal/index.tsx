@@ -17,7 +17,7 @@ export const AuthModal = ({
   initialState = AuthModalState.SignIn,
 }: LoginModalProps) => {
   const [currentState, setCurrentState] = useState<AuthModalState | null>(
-    initialState
+    initialState,
   );
 
   const goTo = (newState: AuthModalState) => {

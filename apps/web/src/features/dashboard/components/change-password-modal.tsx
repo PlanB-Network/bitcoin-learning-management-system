@@ -20,7 +20,7 @@ const changePasswordSchema = z
       (pwd) => {
         const result = password.validate(pwd, { details: true });
         return { message: Array.isArray(result) ? result[0].message : '' };
-      }
+      },
     ),
     newPasswordConfirmation: z.string(),
   })
@@ -47,7 +47,7 @@ export const ChangePasswordModal = ({
   const handleChangePassword = useCallback(
     async (
       values: ChangePasswordForm,
-      actions: FormikHelpers<ChangePasswordForm>
+      actions: FormikHelpers<ChangePasswordForm>,
     ) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
@@ -57,7 +57,7 @@ export const ChangePasswordModal = ({
         newPassword: values.newPassword,
       });
     },
-    [changePassword]
+    [changePassword],
   );
 
   return (
@@ -139,7 +139,7 @@ export const ChangePasswordModal = ({
               </div>
 
               {changePassword.error && (
-                <p className="text-red-300 mt-2 text-base font-semibold">
+                <p className="mt-2 text-base font-semibold text-red-300">
                   {changePassword.error.message}
                 </p>
               )}

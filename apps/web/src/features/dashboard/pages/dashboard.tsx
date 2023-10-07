@@ -3,19 +3,20 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useNavigate } from '@tanstack/react-router';
-import { useAppDispatch } from '../../../hooks';
 import { useState } from 'react';
 import {
   IoGridOutline,
   IoLogOutOutline,
   IoSettingsOutline,
 } from 'react-icons/io5';
-import { DashboardTabMobile } from '../components/dashboard-tab-mobile';
-import { SettingsTab } from '../components/settings-tab';
+
+import RabbitFace from '../../../assets/placeholder-assets/rabbit-face.svg';
+import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { trpc } from '../../../utils';
 import { DashboardTab } from '../components/dashboard-tab';
-import RabbitFace from '../../../assets/placeholder-assets/rabbit-face.svg';
+import { DashboardTabMobile } from '../components/dashboard-tab-mobile';
+import { SettingsTab } from '../components/settings-tab';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -95,7 +96,7 @@ export const Dashboard = () => {
 
   return (
     // <MainLayout variant="dark" footerVariant="dark">
-    <div className="bg-blue-900 min-h-screen p-10">
+    <div className="min-h-screen bg-blue-900 p-10">
       <div className="mx-auto grid min-h-[800px] max-w-4xl grid-cols-4 overflow-hidden rounded-3xl bg-gray-200 shadow xl:max-w-5xl">
         <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-500 p-4">
           <div className="w-full px-2">
@@ -109,7 +110,7 @@ export const Dashboard = () => {
                   />
                 </div>
               </div>
-              <div className="text-blue-900 text-lg font-medium italic">
+              <div className="text-lg font-medium italic text-blue-900">
                 {user?.username}
               </div>
             </div>

@@ -50,7 +50,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 
 export const groupByResource = (files: ChangedFile[]) => {
   const resourceFiles = files.filter(
-    (item) => getContentType(item.path) === 'resources'
+    (item) => getContentType(item.path) === 'resources',
   );
 
   const groupedResources = new Map<string, ChangedResource>();

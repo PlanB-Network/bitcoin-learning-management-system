@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { LocalStorageKey } from '@sovereign-university/types';
+
 import { removeItem, setItem } from '../../utils/local-storage';
 
 interface UserState {
@@ -19,7 +20,7 @@ export const userSlice = createSlice({
   reducers: {
     login: (
       state,
-      action: PayloadAction<{ uid: string; accessToken: string }>
+      action: PayloadAction<{ uid: string; accessToken: string }>,
     ) => {
       state.isLoggedIn = true;
       state.uid = action.payload.uid;

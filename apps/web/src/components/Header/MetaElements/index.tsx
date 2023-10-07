@@ -2,13 +2,13 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
-import { Link, useNavigate } from '@tanstack/react-router';
 
 import { Button } from '../../../atoms/Button';
-import { LanguageSelector } from '../LanguageSelector';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
   onClickLogin: () => void;
@@ -38,7 +38,6 @@ export const MetaElements = ({
       {isLoggedIn ? (
         <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
           <span>{t('words.dashboard')}</span>
-          {/* @ts-ignore */}
           <Link to="/dashboard">{t('words.dashboard')}</Link>
         </Button>
       ) : (

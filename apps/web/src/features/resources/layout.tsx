@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { PageTitle } from './components/PageTitle';
+
 import { FilterBar } from './components/FilterBar';
+import { PageTitle } from './components/PageTitle';
 import { Pagination } from './components/Pagination';
 
 interface Props {
@@ -27,7 +28,7 @@ export const ResourceLayout = ({
   return (
     // <MainLayout footerVariant="dark">
     <div
-      className={`bg-blue-900 flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
+      className={`flex h-fit min-h-screen justify-center bg-blue-900 p-2 sm:p-10 ${className}`}
     >
       <div className="max-w-6xl">
         <div>

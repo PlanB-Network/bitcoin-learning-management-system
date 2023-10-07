@@ -24,7 +24,7 @@ export const Tooltip = ({ inline, children, text, position }: TooltipProps) => {
       'absolute z-[1000] p-2 text-xs text-white bg-gray-600 rounded transition-all scale-0 group-hover:scale-100 w-max max-w-full',
       classesByPosition[position ?? 'bottom'],
     ],
-    [position]
+    [position],
   );
 
   if (inline)

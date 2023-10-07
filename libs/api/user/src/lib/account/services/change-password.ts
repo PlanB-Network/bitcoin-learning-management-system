@@ -1,8 +1,10 @@
-import { firstRow } from '@sovereign-university/database';
-import { Dependencies } from '../../../dependencies';
-import { changePasswordQuery, getUserQuery } from '../queries';
 import { TRPCError } from '@trpc/server';
 import { hash, verify as verifyHash } from 'argon2';
+
+import { firstRow } from '@sovereign-university/database';
+
+import { Dependencies } from '../../../dependencies';
+import { changePasswordQuery, getUserQuery } from '../queries';
 
 export const createChangePassword =
   (dependencies: Dependencies) =>
@@ -21,7 +23,7 @@ export const createChangePassword =
       .exec(
         getUserQuery({
           uid,
-        })
+        }),
       )
       .then(firstRow);
 

@@ -1,6 +1,6 @@
-import { Dependencies } from "../../dependencies";
-import { getPodcastsQuery } from "../queries";
-import { computeAssetCdnUrl } from "../../utils";
+import { Dependencies } from '../../dependencies';
+import { computeAssetCdnUrl } from '../../utils';
+import { getPodcastsQuery } from '../queries';
 
 export const createGetPodcasts =
   (dependencies: Dependencies) => async (language?: string) => {
@@ -14,7 +14,7 @@ export const createGetPodcasts =
         process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
-        'logo.jpeg'
+        'logo.jpeg',
       ),
     }));
   };

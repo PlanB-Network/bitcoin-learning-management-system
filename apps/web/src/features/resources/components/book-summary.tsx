@@ -34,7 +34,7 @@ export const BookSummary = ({
       <Card
         className={compose(
           'max-w-[740px] px-6 pb-2 relative',
-          isExtended ? '' : 'max-h-52'
+          isExtended ? '' : 'max-h-52',
         )}
       >
         {/* remove max h if not needed here */}
@@ -58,7 +58,7 @@ export const BookSummary = ({
         </div>
       </Card>
       {isExtended ? (
-        <p className="text-blue-200 flex self-end whitespace-nowrap text-xs font-light italic md:mr-8 lg:mr-10">
+        <p className="flex self-end whitespace-nowrap text-xs font-light italic text-blue-200 md:mr-8 lg:mr-10">
           {t('book.bookSummary.notice')}
         </p>
       ) : (

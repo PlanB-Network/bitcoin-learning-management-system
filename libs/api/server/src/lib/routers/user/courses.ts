@@ -1,11 +1,12 @@
 import { z } from 'zod';
 
-import { protectedProcedure } from '../../procedures';
-import { createTRPCRouter } from '../../trpc';
 import {
   createCompleteChapter,
   createGetProgress,
 } from '@sovereign-university/api/user';
+
+import { protectedProcedure } from '../../procedures';
+import { createTRPCRouter } from '../../trpc';
 
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: protectedProcedure
@@ -16,7 +17,7 @@ export const userCoursesRouter = createTRPCRouter({
       z.object({
         courseId: z.string(),
         chapter: z.number(),
-      })
+      }),
     )
     .output(z.any())
     .mutation(({ ctx, input }) =>
@@ -24,7 +25,7 @@ export const userCoursesRouter = createTRPCRouter({
         uid: ctx.user.uid,
         courseId: input.courseId,
         chapter: input.chapter,
-      })
+      }),
     ),
   getProgress: protectedProcedure
     .meta({
@@ -33,6 +34,6 @@ export const userCoursesRouter = createTRPCRouter({
     .input(z.void())
     .output(z.any())
     .query(({ ctx }) =>
-      createGetProgress(ctx.dependencies)({ uid: ctx.user.uid })
+      createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
     ),
 });

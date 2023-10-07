@@ -13,10 +13,10 @@ import { ZodError, z } from 'zod';
 import { Button } from '../../../atoms/Button';
 import { Modal } from '../../../atoms/Modal';
 import { TextInput } from '../../../atoms/TextInput';
-import { userSlice } from '../../../store';
-import { AuthModalState } from '../props';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { userSlice } from '../../../store';
 import { trpc } from '../../../utils/trpc';
+import { AuthModalState } from '../props';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -48,7 +48,7 @@ const registerSchema = z
       (pwd) => {
         const result = password.validate(pwd, { details: true });
         return { message: Array.isArray(result) ? result[0].message : '' };
-      }
+      },
     ),
     confirmation: z.string(),
   })
@@ -75,7 +75,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         userSlice.actions.login({
           uid: data.user.uid,
           accessToken: data.accessToken,
-        })
+        }),
       );
     },
   });
@@ -90,7 +90,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         username: values.username,
       });
     },
-    [register]
+    [register],
   );
 
   return (
@@ -105,7 +105,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
-          <BsCheck className="text-green-300 my-8 h-20 w-20 text-lg" />
+          <BsCheck className="my-8 h-20 w-20 text-lg text-green-300" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
@@ -196,7 +196,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 </div>
 
                 {register.error && (
-                  <p className="text-red-300 mt-2 text-base font-semibold">
+                  <p className="mt-2 text-base font-semibold text-red-300">
                     {register.error.message}
                   </p>
                 )}

@@ -16,14 +16,14 @@ const toNormalizedJsonString = (payload: any) => {
 export const verifyWebhookPayload = async (
   secret: string,
   payload: object | string,
-  signature: string
+  signature: string,
 ) => {
   if (!secret) throw new Error('GitHub Webhooks secret is required');
 
   return verify(
     secret,
     typeof payload === 'object' ? toNormalizedJsonString(payload) : payload,
-    signature
+    signature,
   );
 };
 
@@ -31,6 +31,6 @@ export const processWebhookPayload = async (payload: PushEvent) => {
   return compareCommits(
     payload.repository.html_url,
     payload.before,
-    payload.after
+    payload.after,
   );
 };

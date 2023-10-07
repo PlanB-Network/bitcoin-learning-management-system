@@ -1,9 +1,9 @@
-import { LocalStorageKey } from "@sovereign-university/types";
+import { LocalStorageKey } from '@sovereign-university/types';
 
 export const setItem = (key: LocalStorageKey, value: unknown) => {
   return localStorage.setItem(
     key,
-    typeof value === 'string' ? value : JSON.stringify(value)
+    typeof value === 'string' ? value : JSON.stringify(value),
   );
 };
 

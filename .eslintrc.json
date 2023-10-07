@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "react-refresh"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -58,13 +58,30 @@
             "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
             "allowSeparatedGroups": false
           }
-        ]
+        ],
+        "react-refresh/only-export-components": "warn"
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "extends": ["plugin:@nx/typescript", "plugin:import/typescript"],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": [
+              "tsconfig.base.json",
+              "*/*/*/tsconfig.*?.json",
+              "*/*/*/tsconfig.json",
+              "*/*/tsconfig.*?.json",
+              "*/*/tsconfig.json"
+            ]
+          },
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

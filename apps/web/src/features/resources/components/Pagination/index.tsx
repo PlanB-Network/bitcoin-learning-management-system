@@ -1,12 +1,13 @@
+import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
+
 import { Button } from '../../../../atoms/Button';
 import { compose } from '../../../../utils';
-import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
 
 const commonClasses = 'bg-orange-400';
 
 const buttonClasses = compose(
   commonClasses,
-  'hover:bg-orange-500 duration-200'
+  'hover:bg-orange-500 duration-200',
 );
 
 const iconClasses = 'w-8 h-8';
@@ -45,7 +46,7 @@ export const Pagination = ({
       <div
         className={compose(
           commonClasses,
-          'flex flex-row justify-center items-center px-3 w-20 font-normal text-white rounded-full'
+          'flex flex-row justify-center items-center px-3 w-20 font-normal text-white rounded-full',
         )}
       >
         {currentPage} / {totalPages}

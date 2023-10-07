@@ -3,17 +3,18 @@ import { hash, verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
 import {
+  createGetUser,
+  createNewCredentialsUser,
+} from '@sovereign-university/api/user';
+
+import { publicProcedure } from '../../procedures';
+import {
   contributorIdExists,
   generateUniqueContributorId,
 } from '../../services/users';
 import { createTRPCRouter } from '../../trpc';
 import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
-import {
-  createGetUser,
-  createNewCredentialsUser,
-} from '@sovereign-university/api/user';
-import { publicProcedure } from '../../procedures';
 
 const registerCredentialsSchema = z.object({
   username: z.string().min(6),
@@ -41,7 +42,7 @@ export const credentialsAuthRouter = createTRPCRouter({
           email: z.string().optional(),
         }),
         accessToken: z.string(),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
       const { dependencies } = ctx;
@@ -97,9 +98,13 @@ export const credentialsAuthRouter = createTRPCRouter({
       z.object({
         status: z.number(),
         message: z.string(),
-        user: z.object({ uid: z.string(), username: z.string(), email: z.string().optional() }),
+        user: z.object({
+          uid: z.string(),
+          username: z.string(),
+          email: z.string().optional(),
+        }),
         accessToken: z.string(),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
       const { dependencies } = ctx;

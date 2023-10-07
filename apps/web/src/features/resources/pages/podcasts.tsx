@@ -1,8 +1,9 @@
-import { trpc } from '../../../utils';
+import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
-import { Link } from '@tanstack/react-router';
 import { podcastDetailsRoute } from '../routes';
 
 export const Podcasts = () => {
@@ -31,7 +32,7 @@ export const Podcasts = () => {
       <div className="grid grid-cols-2 gap-4 px-10 sm:grid-cols-3 sm:px-0 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
         {sortedPodcasts
           .filter((podcast) =>
-            podcast.name.toLowerCase().includes(searchTerm.toLowerCase())
+            podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
           )
           .map((podcast) => (
             <div>
@@ -43,13 +44,13 @@ export const Podcasts = () => {
                 }}
                 key={podcast.id}
               >
-                <div className="group-hover:bg-orange-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
+                <div className="z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-orange-400">
                   <img
                     className="mx-auto"
                     src={podcast.logo}
                     alt={podcast.name}
                   />
-                  <div className="group-hover:bg-orange-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out">
+                  <div className="absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
                     <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                       <li className={'pb-1 text-lg font-bold'}>
                         {podcast.name}

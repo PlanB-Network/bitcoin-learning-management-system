@@ -1,4 +1,5 @@
 import { firstRow } from '@sovereign-university/database';
+
 import { Dependencies } from '../../../dependencies';
 import { getUserQuery } from '../queries';
 

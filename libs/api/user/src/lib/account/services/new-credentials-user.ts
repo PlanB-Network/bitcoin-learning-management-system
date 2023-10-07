@@ -1,7 +1,8 @@
+import { firstRow } from '@sovereign-university/database';
 import { UserDetails } from '@sovereign-university/types';
+
 import { Dependencies } from '../../../dependencies';
 import { newCredentialsUserQuery } from '../queries/new-credentials-user';
-import { firstRow } from '@sovereign-university/database';
 
 interface NewCredentialsUser {
   (options: {

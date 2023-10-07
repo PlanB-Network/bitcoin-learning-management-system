@@ -7,7 +7,7 @@ import { MigrationAddExecutorSchema } from './schema';
 
 export default async function runExecutor(
   options: MigrationAddExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   // Serialize the date to a string in the format YYYYMMDDHHMMSS
   const now = new Date();

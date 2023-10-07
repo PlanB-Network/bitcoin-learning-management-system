@@ -1,8 +1,9 @@
 import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
-import { createGetCourse } from './get-course';
 import { getCourseChapterQuery } from '../queries';
+
+import { createGetCourse } from './get-course';
 
 export const createGetCourseChapter =
   (dependencies: Dependencies) =>

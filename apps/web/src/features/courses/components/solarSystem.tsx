@@ -2,9 +2,9 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { ToPathOption, useNavigate } from '@tanstack/react-router';
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
-import { ToPathOption, useNavigate } from '@tanstack/react-router';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -50,7 +50,7 @@ const Planet = ({
       'transform',
       `translate(${radius * Math.cos(angle) + offsetX}, ${
         radius * Math.sin(angle) + offsetY
-      })`
+      })`,
     );
 
   const scaleGroup = planetGroup.append('g').style('pointer-events', 'all');
@@ -175,7 +175,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
 
   const levels = ['beginner', 'intermediate', 'advanced', 'expert'];
   const orbits = levels.map((level) =>
-    courses.filter((course) => course.level === level)
+    courses.filter((course) => course.level === level),
   );
 
   useEffect(() => {
@@ -190,7 +190,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
             ? '-100 -50 200 100'
             : isScreenLg
             ? '-70 -50 140 100'
-            : '-50 -50 100 100'
+            : '-50 -50 100 100',
         )
         .attr('font-family', 'Poppins')
         .attr('text-anchor', 'middle');

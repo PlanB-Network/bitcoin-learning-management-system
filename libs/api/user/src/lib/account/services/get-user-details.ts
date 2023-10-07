@@ -1,7 +1,9 @@
+import { TRPCError } from '@trpc/server';
+
 import { firstRow } from '@sovereign-university/database';
+
 import { Dependencies } from '../../../dependencies';
 import { getUserDetailsQuery } from '../queries';
-import { TRPCError } from '@trpc/server';
 
 export const createGetUserDetails =
   (dependencies: Dependencies) =>

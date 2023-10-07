@@ -12,12 +12,12 @@ dotenv.config();
 
 export default async function runExecutor(
   options: MigrationRunExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   const migrationPath = path.join(
     context.root,
     options.dir,
-    options.file || ''
+    options.file || '',
   );
 
   if (options.file) {

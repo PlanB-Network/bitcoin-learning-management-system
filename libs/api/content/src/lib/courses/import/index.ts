@@ -50,7 +50,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
 
 export const groupByCourse = (files: ChangedFile[]) => {
   const coursesFiles = files.filter(
-    (item) => getContentType(item.path) === 'courses'
+    (item) => getContentType(item.path) === 'courses',
   );
 
   const groupedCourses = new Map<string, ChangedCourse>();
@@ -168,7 +168,7 @@ export const createProcessChangedCourse =
           const lastUpdated = course.files
             .filter(
               (file): file is ModifiedFile | RenamedFile =>
-                file.kind !== 'removed'
+                file.kind !== 'removed',
             )
             .sort((a, b) => b.time - a.time)[0];
 
@@ -195,7 +195,7 @@ export const createProcessChangedCourse =
           if (result && parsedCourse.tags && parsedCourse.tags?.length > 0) {
             await transaction`
               INSERT INTO content.tags ${transaction(
-                parsedCourse.tags.map((tag) => ({ name: tag }))
+                parsedCourse.tags.map((tag) => ({ name: tag })),
               )}
               ON CONFLICT DO NOTHING
             `;
@@ -262,7 +262,7 @@ export const createProcessChangedCourse =
               chapters.map((_, index) => ({
                 course_id: course.id,
                 chapter: index + 1,
-              }))
+              })),
             )}
             ON CONFLICT DO NOTHING
           `;
@@ -282,7 +282,7 @@ export const createProcessChangedCourse =
               'chapter',
               'title',
               'sections',
-              'raw_content'
+              'raw_content',
             )}
             ON CONFLICT (course_id, language, chapter) DO UPDATE SET
               title = EXCLUDED.title,

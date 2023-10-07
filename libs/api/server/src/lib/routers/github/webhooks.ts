@@ -17,7 +17,7 @@ export const webhooksProcedure = publicProcedure
     const matchesSignature = await verifyWebhookPayload(
       process.env['GITHUB_WEBHOOK_SECRET'] || '',
       ctx.req.body,
-      ctx.req.headers['x-hub-signature-256'] as string
+      ctx.req.headers['x-hub-signature-256'] as string,
     );
 
     if (!matchesSignature) {

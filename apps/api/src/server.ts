@@ -27,7 +27,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
         process.env.NODE_ENV === 'development'
           ? '*'
           : 'https://sovereignuniversity.org',
-    })
+    }),
   );
 
   // Basic request logger
@@ -42,7 +42,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     createExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
-    })
+    }),
   );
 
   // Register REST (OpenAPI) routes
@@ -57,11 +57,11 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
               console.error(
                 `❌ OpenAPI failed on ${req.url ?? '<no-path>'}: ${
                   error.message
-                }`
+                }`,
               );
             }
           : undefined,
-    })
+    }),
   );
 
   if (process.env.NODE_ENV === 'development') {

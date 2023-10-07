@@ -4,7 +4,7 @@ import { CourseProgress } from '@sovereign-university/types';
 export const completeChapterQuery = (
   uid: string,
   courseId: string,
-  chapter: number
+  chapter: number,
 ) => {
   return sql<CourseProgress[]>`
     WITH 

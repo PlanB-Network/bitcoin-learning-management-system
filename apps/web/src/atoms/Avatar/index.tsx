@@ -19,7 +19,7 @@ const classesBySize = {
 export const Avatar = ({ rounded, size, image, alt }: AvatarProps) => {
   const classes = useMemo(
     () => [rounded ? 'rounded-full' : 'rounded', classesBySize[size ?? 'm']],
-    [rounded, size]
+    [rounded, size],
   );
 
   return <img className={compose(...classes)} src={image} alt={alt}></img>;

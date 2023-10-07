@@ -7,7 +7,7 @@ export const createGetTutorials =
     const { postgres } = dependencies;
 
     const tutorials = await postgres.exec(
-      getTutorialsQuery(category, language)
+      getTutorialsQuery(category, language),
     );
 
     return tutorials;

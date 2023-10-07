@@ -79,8 +79,8 @@ export const Modal = ({
                       alt={t('imagesAlt.rabbitHikingModal')}
                       className="sm:h-23 absolute -left-10 bottom-12 z-[+1] flex h-20 sm:-left-10 sm:bottom-14"
                     ></img>
-                    <div className="bg-orange-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
-                      <span className="text-blue-800 italic">
+                    <div className="relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
+                      <span className="italic text-blue-800">
                         {t('words.didYouKnow')}
                         <div>{t('auth.noAccountNeeded')}</div>
                       </span>

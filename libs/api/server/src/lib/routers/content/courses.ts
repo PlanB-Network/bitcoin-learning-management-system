@@ -7,8 +7,8 @@ import {
   createGetCourses,
 } from '@sovereign-university/api/content';
 
-import { createTRPCRouter } from '../../trpc';
 import { publicProcedure } from '../../procedures';
+import { createTRPCRouter } from '../../trpc';
 
 const getCoursesProcedure = publicProcedure
   .meta({ openapi: { method: 'GET', path: '/content/courses' } })
@@ -17,11 +17,11 @@ const getCoursesProcedure = publicProcedure
       .object({
         language: z.string().optional(),
       })
-      .optional()
+      .optional(),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetCourses(ctx.dependencies)(input?.language)
+    createGetCourses(ctx.dependencies)(input?.language),
   );
 
 const getCourseProcedure = publicProcedure
@@ -33,15 +33,15 @@ const getCourseProcedure = publicProcedure
       id: z.string(),
       language: z.string(),
       includeChapters: z.boolean().optional(),
-    })
+    }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
     createGetCourse(ctx.dependencies)(
       input.id,
       input.language,
-      input.includeChapters
-    )
+      input.includeChapters,
+    ),
   );
 
 const getCourseChaptersProcedure = publicProcedure
@@ -55,11 +55,11 @@ const getCourseChaptersProcedure = publicProcedure
     z.object({
       id: z.string(),
       language: z.string(),
-    })
+    }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetCourseChapters(ctx.dependencies)(input.id, input.language)
+    createGetCourseChapters(ctx.dependencies)(input.id, input.language),
   );
 
 const getCourseChapterProcedure = publicProcedure
@@ -74,15 +74,15 @@ const getCourseChapterProcedure = publicProcedure
       courseId: z.string(),
       language: z.string(),
       chapterIndex: z.string(),
-    })
+    }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,
       Number(input.chapterIndex),
-      input.language
-    )
+      input.language,
+    ),
   );
 
 export const coursesRouter = createTRPCRouter({

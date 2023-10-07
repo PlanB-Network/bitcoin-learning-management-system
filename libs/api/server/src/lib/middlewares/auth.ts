@@ -17,7 +17,7 @@ export const enforceAuthenticatedUserMiddleware = createMiddleware(
     try {
       payload = verify(
         authHeader,
-        process.env['JWT_SECRET'] as string
+        process.env['JWT_SECRET'] as string,
       ) as JwtAuthTokenPayload; // TODO validate payload with zod insteadƒ
     } catch {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
@@ -28,5 +28,5 @@ export const enforceAuthenticatedUserMiddleware = createMiddleware(
         user: payload,
       },
     });
-  }
+  },
 );

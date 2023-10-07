@@ -10,7 +10,7 @@ export type ContentType = (typeof supportedContentTypes)[number];
 type AssertSupportedContentType = (path: string) => asserts path is ContentType;
 
 export const assertSupportedContentPath: AssertSupportedContentType = (
-  path
+  path,
 ) => {
   if (!supportedContentTypes.includes(path as ContentType)) {
     throw new Error(`Invalid content type path: ${path}`);

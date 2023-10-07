@@ -7,7 +7,7 @@ export const createGetCourseChapters =
     const { postgres } = dependencies;
 
     const chapters = await postgres.exec(
-      getCourseChaptersQuery(courseId, language)
+      getCourseChaptersQuery(courseId, language),
     );
 
     return chapters;

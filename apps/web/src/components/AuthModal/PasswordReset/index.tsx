@@ -22,11 +22,11 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       },
       actions: FormikHelpers<{
         email: string;
-      }>
+      }>,
     ) => {
       console.log(values);
     },
-    []
+    [],
   );
 
   return (

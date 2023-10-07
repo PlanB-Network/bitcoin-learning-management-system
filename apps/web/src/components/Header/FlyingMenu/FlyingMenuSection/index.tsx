@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react';
-import { Fragment, useMemo, useState } from 'react';
 import { Link } from '@tanstack/react-router';
+import { Fragment, useMemo, useState } from 'react';
 
 import { compose } from '../../../../utils';
 import { MenuElement } from '../../MenuElement';
@@ -14,7 +14,7 @@ export interface FlyingMenuProps {
 export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
   const currentSection = '/'.concat(
-    window.location.pathname.split('/').slice(0, 2).join('')
+    window.location.pathname.split('/').slice(0, 2).join(''),
   );
 
   const sectionTitle = useMemo(() => {
@@ -27,11 +27,10 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           : 'font-light';
 
       return (
-        // @ts-ignore
         <Link
           className={compose(
             'text-base text-white uppercase xl:text-lg',
-            fontWeight
+            fontWeight,
           )}
           to={section.path}
         >
@@ -84,7 +83,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           static
           className={compose(
             'flex fixed z-10 px-4 mt-5 w-screen max-w-max',
-            hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : ''
+            hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : '',
           )}
         >
           <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">

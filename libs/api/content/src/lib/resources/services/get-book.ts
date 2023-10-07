@@ -1,7 +1,8 @@
-import { firstRow } from "@sovereign-university/database";
-import { Dependencies } from "../../dependencies";
-import { getBookQuery } from "../queries";
-import { computeAssetCdnUrl } from "../../utils";
+import { firstRow } from '@sovereign-university/database';
+
+import { Dependencies } from '../../dependencies';
+import { computeAssetCdnUrl } from '../../utils';
+import { getBookQuery } from '../queries';
 
 export const createGetBook =
   (dependencies: Dependencies) => async (id: number, language?: string) => {
@@ -17,7 +18,7 @@ export const createGetBook =
               process.env['CDN_URL'] || 'http://localhost:8080',
               book.last_commit,
               book.path,
-              book.cover
+              book.cover,
             )
           : undefined,
       };

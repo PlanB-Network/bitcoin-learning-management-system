@@ -37,7 +37,7 @@ export const generateRandomContributorId = () => {
  */
 export const anyCombinationExists = async (
   postgres: PostgresClient,
-  words: string[]
+  words: string[],
 ) => {
   const combinations = [];
 
@@ -61,7 +61,7 @@ export const anyCombinationExists = async (
  */
 export const contributorIdExists = async (
   postgres: PostgresClient,
-  id: string
+  id: string,
 ) => {
   const [result] = await postgres.exec(contributorIdExistsQuery(id));
 

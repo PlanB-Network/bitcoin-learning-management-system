@@ -51,7 +51,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
 
 export const groupByTutorial = (files: ChangedFile[]) => {
   const tutorialsFiles = files.filter(
-    (item) => getContentType(item.path) === 'tutorials'
+    (item) => getContentType(item.path) === 'tutorials',
   );
 
   const groupedTutorials = new Map<string, ChangedTutorial>();

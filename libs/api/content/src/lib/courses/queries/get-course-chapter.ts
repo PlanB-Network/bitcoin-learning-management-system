@@ -4,7 +4,7 @@ import { Course, CourseChapterLocalized } from '@sovereign-university/types';
 export const getCourseChapterQuery = (
   courseId: string,
   chapterIndex: number,
-  language?: string
+  language?: string,
 ) => {
   return sql<
     (Pick<

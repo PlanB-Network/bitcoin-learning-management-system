@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import {
   BsDiscord,
@@ -20,10 +21,9 @@ import Cloud from '../../assets/footer/cloud.svg';
 import Hill from '../../assets/footer/hill.svg';
 import Rabbit from '../../assets/footer/rabbit.svg';
 import Tree from '../../assets/footer/tree.svg';
-import { compose } from '../../utils';
-import { Link } from '@tanstack/react-router';
-import { tutorialsIndexRoute } from '../../features/tutorials/routes';
 import { coursesIndexRoute } from '../../features/courses/routes';
+import { tutorialsIndexRoute } from '../../features/tutorials/routes';
+import { compose } from '../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -36,7 +36,7 @@ const Media = ({ className = '', size = 30 }) => (
   <div
     className={compose(
       'flex flex-row place-items-center space-x-6 text-sm text-white',
-      className
+      className,
     )}
   >
     <Link to={'https://www.youtube.com/@DecouvreBitcoin'}>
@@ -70,13 +70,13 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
           )}
         >
           <div
             className={compose(
               'relative flex w-full flex-col pt-10',
-              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
+              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
             )}
           >
             <img src={City} className="z-10 m-auto mb-6 h-fit w-1/2 self-end" />
@@ -85,7 +85,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               src={Cloud}
               className={compose(
                 'absolute m-auto left-20 top-20 w-32',
-                variant === 'light' ? 'text-gray-200' : 'text-gray-300'
+                variant === 'light' ? 'text-gray-200' : 'text-gray-300',
               )}
             />
           </div>
@@ -195,14 +195,14 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
           )}
         >
           <img
             src={Cloud}
             className={compose(
               'absolute left-16 top-10 w-20',
-              variant === 'light' ? 'text-gray-200' : 'text-gray-300'
+              variant === 'light' ? 'text-gray-200' : 'text-gray-300',
             )}
           />
           <img src={City} className="relative z-10 -mb-5 h-fit w-full " />

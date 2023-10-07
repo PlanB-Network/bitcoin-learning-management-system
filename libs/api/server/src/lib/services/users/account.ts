@@ -13,7 +13,7 @@ export const addCredentialsUser = async (
     passwordHash: string;
     contributorId: string;
     email?: string;
-  }
+  },
 ) => {
   return postgres<
     {
@@ -38,7 +38,7 @@ export const getUserByAny = async (
   }: {
     username?: string;
     uid?: string;
-  } = {}
+  } = {},
 ) => {
   return postgres<
     {

@@ -1,16 +1,17 @@
 import { Disclosure } from '@headlessui/react';
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import { compose, trpc } from '../../utils';
 import { Routes } from '../../routes/routes';
-import { Link } from '@tanstack/react-router';
-import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils';
+import { compose, trpc } from '../../utils';
+
 import {
   tutorialCategoryRoute,
   tutorialDetailsRoute,
   tutorialsIndexRoute,
 } from './routes';
+import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils';
 
 export const TutorialLayout = ({
   children,
@@ -39,7 +40,7 @@ export const TutorialLayout = ({
           {allTutorials &&
             TUTORIALS_CATEGORIES.map((tutorialCategory) =>
               allTutorials.filter(
-                (tutorial) => tutorial.category === tutorialCategory.name
+                (tutorial) => tutorial.category === tutorialCategory.name,
               ).length > 0 ? (
                 <Disclosure
                   key={
@@ -55,8 +56,8 @@ export const TutorialLayout = ({
                           size={10}
                           className={
                             open
-                              ? 'text-blue-700 rotate-180 align-middle'
-                              : 'text-blue-600 rotate-90 align-middle'
+                              ? 'rotate-180 align-middle text-blue-700'
+                              : 'rotate-90 align-middle text-blue-600'
                           }
                         />
                         <Link
@@ -68,7 +69,7 @@ export const TutorialLayout = ({
                           <span
                             className={compose(
                               'text-blue-800 align-middle uppercase',
-                              open ? 'font-bold' : ''
+                              open ? 'font-bold' : '',
                             )}
                           >
                             {t([
@@ -84,8 +85,8 @@ export const TutorialLayout = ({
                           extractSubCategories(
                             allTutorials.filter(
                               (tutorial) =>
-                                tutorial.category === tutorialCategory.name
-                            )
+                                tutorial.category === tutorialCategory.name,
+                            ),
                           ).map((subCategory) => (
                             <Disclosure
                               key={subCategory}
@@ -98,14 +99,14 @@ export const TutorialLayout = ({
                                       size={8}
                                       className={
                                         open
-                                          ? 'text-blue-700 rotate-180 align-middle'
-                                          : 'text-blue-600 rotate-90 align-middle'
+                                          ? 'rotate-180 align-middle text-blue-700'
+                                          : 'rotate-90 align-middle text-blue-600'
                                       }
                                     />
                                     <span
                                       className={compose(
                                         'text-blue-800 align-middle uppercase text-sm',
-                                        open ? 'font-semibold' : ''
+                                        open ? 'font-semibold' : '',
                                       )}
                                     >
                                       {t([
@@ -122,7 +123,8 @@ export const TutorialLayout = ({
                                           (tutorial) =>
                                             tutorial.category ===
                                               tutorialCategory.name &&
-                                            tutorial.subcategory === subCategory
+                                            tutorial.subcategory ===
+                                              subCategory,
                                         )
                                         .map((tutorial) => (
                                           <li
@@ -138,7 +140,7 @@ export const TutorialLayout = ({
                                                 tutorial.id ===
                                                   currentTutorialId
                                                   ? 'text-orange-500'
-                                                  : 'text-blue-600'
+                                                  : 'text-blue-600',
                                               )}
                                             />
                                             <Link
@@ -154,7 +156,7 @@ export const TutorialLayout = ({
                                                 tutorial.id ===
                                                   currentTutorialId
                                                   ? 'text-orange-600'
-                                                  : 'text-blue-800 '
+                                                  : 'text-blue-800 ',
                                               )}
                                             >
                                               {t(tutorial.name)}
@@ -171,7 +173,7 @@ export const TutorialLayout = ({
                     </>
                   )}
                 </Disclosure>
-              ) : null
+              ) : null,
             )}
         </div>
       </div>

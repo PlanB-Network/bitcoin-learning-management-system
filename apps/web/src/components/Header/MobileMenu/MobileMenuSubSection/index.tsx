@@ -1,9 +1,9 @@
 import { FiChevronDown } from 'react-icons/fi';
 
+import { useDisclosure } from '../../../../hooks/use-disclosure';
 import { compose } from '../../../../utils';
 import { MenuElement } from '../../MenuElement';
 import { NavigationSubSection } from '../../props';
-import { useDisclosure } from '../../../../hooks/use-disclosure';
 
 export interface MobileMenuSubSectionProps {
   subSection: NavigationSubSection;
@@ -24,7 +24,7 @@ export const MobileMenuSubSection = ({
         <FiChevronDown
           className={compose(
             'p-0 m-0 w-6 h-6 duration-300',
-            isOpen ? 'rotate-180' : 'rotate-0'
+            isOpen ? 'rotate-180' : 'rotate-0',
           )}
         />
       </button>

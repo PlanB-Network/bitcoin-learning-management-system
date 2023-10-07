@@ -1,12 +1,15 @@
 import { z } from 'zod';
-import { protectedProcedure } from '../../procedures';
-import { createTRPCRouter } from '../../trpc';
-import { signAccessToken } from '../../utils/access-token';
-import { userCoursesRouter } from './courses';
+
 import {
   createChangePassword,
   createGetUserDetails,
 } from '@sovereign-university/api/user';
+
+import { protectedProcedure } from '../../procedures';
+import { createTRPCRouter } from '../../trpc';
+import { signAccessToken } from '../../utils/access-token';
+
+import { userCoursesRouter } from './courses';
 
 export const userRouter = createTRPCRouter({
   getMe: protectedProcedure.query(({ ctx }) => {
@@ -21,7 +24,7 @@ export const userRouter = createTRPCRouter({
     .input(z.void())
     .output(z.any())
     .query(async ({ ctx }) =>
-      createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid })
+      createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid }),
     ),
   changePassword: protectedProcedure
     .meta({ openapi: { method: 'POST', path: '/users/change-password' } })
@@ -29,7 +32,7 @@ export const userRouter = createTRPCRouter({
       z.object({
         oldPassword: z.string(),
         newPassword: z.string(),
-      })
+      }),
     )
     .output(z.any())
     .mutation(async ({ ctx, input }) =>
@@ -37,7 +40,7 @@ export const userRouter = createTRPCRouter({
         uid: ctx.user.uid,
         oldPassword: input.oldPassword,
         newPassword: input.newPassword,
-      })
+      }),
     ),
   courses: userCoursesRouter,
 });

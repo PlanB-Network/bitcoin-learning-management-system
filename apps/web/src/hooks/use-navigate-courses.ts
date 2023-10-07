@@ -1,4 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
+
 import { coursesIndexRoute } from '../features/courses/routes';
 
 export const useNavigateCourses = () => {

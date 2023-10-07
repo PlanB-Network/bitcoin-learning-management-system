@@ -19,7 +19,7 @@ export const FilterBar = ({
     <div className="text-xxs mx-2 flex flex-row items-center justify-between rounded-3xl bg-white px-4 py-2 sm:mx-8 sm:rounded-full sm:px-6 sm:text-xs">
       <div className="mr-3 grow">
         {label && (
-          <label className="text-blue-700 mb-1 block sm:mb-2">{label}</label>
+          <label className="mb-1 block text-blue-700 sm:mb-2">{label}</label>
         )}
 
         <input

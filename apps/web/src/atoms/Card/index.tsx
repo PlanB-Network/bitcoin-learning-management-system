@@ -15,7 +15,7 @@ export const Card = ({ image, children, className }: CardProps) => {
     <div
       className={compose(
         'flex flex-col m-2 bg-gray-100 rounded-3xl border border-gray-200 shadow',
-        className ?? ''
+        className ?? '',
       )}
     >
       {image &&

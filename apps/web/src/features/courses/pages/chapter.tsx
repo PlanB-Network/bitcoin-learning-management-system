@@ -2,21 +2,22 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
+
 import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { compose, computeAssetCdnUrl } from '../../../utils';
+import { trpc } from '../../../utils/trpc';
+import { notFoundRoute } from '../../misc/routes';
 import {
   coursesChapterRoute,
   coursesDetailsRoute,
   coursesIndexRoute,
 } from '../routes';
-import { trpc } from '../../../utils/trpc';
-import { notFoundRoute } from '../../misc/routes';
-import { compose, computeAssetCdnUrl } from '../../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -85,12 +86,12 @@ export const CourseChapter = () => {
                         }
                   }
                 >
-                  <div className="bg-blue-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                  <div className="flex h-6 flex-row items-center rounded-full bg-blue-700 px-3 py-2 text-white">
                     <BiSkipPrevious className="h-6 w-6" />
                   </div>
                 </Link>
 
-                <div className="text-blue-800 font-normal">
+                <div className="font-normal text-blue-800">
                   {t('courses.chapter.count', {
                     count: chapter.chapter,
                     total: chapter.course?.chapters?.length,
@@ -114,7 +115,7 @@ export const CourseChapter = () => {
                         }
                   }
                 >
-                  <div className="bg-blue-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                  <div className="flex h-6 flex-row items-center rounded-full bg-blue-700 px-3 py-2 text-white">
                     <BiSkipNext className="h-6 w-6" />
                   </div>
                 </Link>
@@ -146,7 +147,7 @@ export const CourseChapter = () => {
                               ? 'bg-orange-500'
                               : 'bg-gray-300',
                             firstChapter ? 'rounded-l-full' : '',
-                            lastChapter ? 'rounded-r-full' : ''
+                            lastChapter ? 'rounded-r-full' : '',
                           )}
                         />
                       </Link>
@@ -160,13 +161,13 @@ export const CourseChapter = () => {
                       <div
                         className={compose(
                           'h-4 w-2/3 bg-orange-500',
-                          firstChapter ? 'rounded-l-full' : ''
+                          firstChapter ? 'rounded-l-full' : '',
                         )}
                       />
                       <div
                         className={compose(
                           'h-4 w-1/3 bg-gray-300',
-                          lastChapter ? 'rounded-r-full' : ''
+                          lastChapter ? 'rounded-r-full' : '',
                         )}
                       />
                       <img
@@ -180,15 +181,15 @@ export const CourseChapter = () => {
               </div>
             )}
           </div>
-          <div className="text-blue-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
-            <h2 className="text-blue-800 text-2xl font-normal uppercase italic md:text-3xl">
+          <div className="mt-8 w-full space-y-6 px-5 text-blue-900 md:mt-16 md:max-w-3xl md:px-0">
+            <h2 className="text-2xl font-normal uppercase italic text-blue-800 md:text-3xl">
               {chapter?.title}
             </h2>
             <MarkdownBody
               content={chapter?.raw_content}
               assetPrefix={computeAssetCdnUrl(
                 chapter.last_commit,
-                `courses/${courseId}`
+                `courses/${courseId}`,
               )}
             />
 

@@ -2,17 +2,17 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
 import { Card } from '../../../atoms/Card';
 import { Tag } from '../../../atoms/Tag';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
-import { builderDetailsRoute, buildersRoute } from '../routes';
 import { trpc } from '../../../utils';
 import { notFoundRoute } from '../../misc/routes';
 import { ResourceLayout } from '../layout';
+import { builderDetailsRoute, buildersRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -38,7 +38,7 @@ export const Builder = () => {
     >
       <Card className="mx-2 md:mx-auto">
         <div className="my-4 w-full grid-cols-1 grid-rows-6 px-4 sm:grid-cols-3 sm:px-8 md:grid">
-          <h3 className="text-blue-900 col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase sm:text-4xl md:mb-8">
+          <h3 className="col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase text-blue-900 sm:text-4xl md:mb-8">
             {builder?.name}
           </h3>
           <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
@@ -56,7 +56,7 @@ export const Builder = () => {
               </Link>
             ))}
           </div>
-          <div className="border-blue-900 row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
+          <div className="row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
             <img
               src={builder?.logo}
               className="w-full"

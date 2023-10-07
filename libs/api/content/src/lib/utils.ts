@@ -21,12 +21,12 @@ export const computeAssetCdnUrl = (
   cdnUrl: string,
   commit: string,
   contentPath: string,
-  assetPath: string
+  assetPath: string,
 ) => `${cdnUrl}/${commit}/${contentPath}/assets/${assetPath}`;
 
 export const separateContentFiles = (
   resource: ChangedContent,
-  mainFileName: string
+  mainFileName: string,
 ) => ({
   main: resource.files.find((file) => file.path === mainFileName),
   files: resource.files.filter((file) => file.path !== mainFileName),

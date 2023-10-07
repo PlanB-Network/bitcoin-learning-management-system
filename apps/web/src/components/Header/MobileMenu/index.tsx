@@ -1,15 +1,15 @@
+import { Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
-import { Link } from '@tanstack/react-router';
 
 import headerImage from '../../../assets/lapin-diplome.png';
+import { useDisclosure } from '../../../hooks/use-disclosure';
 import { compose } from '../../../utils';
 import { MetaElements } from '../MetaElements';
 import { NavigationSection } from '../props';
 
 import { MobileMenuSection } from './MobileMenuSection';
-import { useDisclosure } from '../../../hooks/use-disclosure';
 
 export interface MobileMenuProps {
   sections: NavigationSection[];
@@ -47,7 +47,7 @@ export const MobileMenu = ({
       <FaBars
         className={compose(
           'absolute z-40 cursor-pointer left-[6vw] text-white',
-          isMobileMenuOpen ? 'rotate-90' : 'rotate-0'
+          isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
         )}
         style={{
           transition: 'transform 0.4s, color 0.2s',
@@ -59,7 +59,7 @@ export const MobileMenu = ({
       <nav
         className={compose(
           'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-blue-900 duration-300',
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
         <ul className="my-0 flex-1 list-none space-y-6 overflow-auto pl-10">

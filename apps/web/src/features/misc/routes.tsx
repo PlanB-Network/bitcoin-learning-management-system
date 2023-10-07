@@ -1,10 +1,12 @@
 import { Route } from '@tanstack/react-router';
+
 import { rootRoute } from '../../routes/root';
-import { NotFound } from './pages/not-found';
-import { UnderConstruction } from './pages/under-construction';
-import { Manifesto } from './pages/manifesto';
-import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
+
 import { Home } from './pages/home';
+import { Manifesto } from './pages/manifesto';
+import { NotFound } from './pages/not-found';
+import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
+import { UnderConstruction } from './pages/under-construction';
 
 export const homeRoute = new Route({
   getParentRoute: () => rootRoute,

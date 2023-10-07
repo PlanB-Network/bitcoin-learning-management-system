@@ -8,7 +8,7 @@ export const createGetProgress =
 
     const progress = await postgres.exec(getProgressQuery(uid));
     const completedChapters = await postgres.exec(
-      getCompletedChaptersQuery(uid)
+      getCompletedChaptersQuery(uid),
     );
 
     return progress.map((course) => {

@@ -17,12 +17,12 @@ export const syncProcedure = publicProcedure
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
     await getAllRepoFiles(
-      'https://github.com/DecouvreBitcoin/sovereign-university-data.git'
+      'https://github.com/DecouvreBitcoin/sovereign-university-data.git',
     ).then(processChangedFiles);
 
     syncCdnRepository(
       '/tmp/sovereign-university-data',
-      process.env['CDN_PATH'] || '/tmp/cdn'
+      process.env['CDN_PATH'] || '/tmp/cdn',
     ).catch((error) => {
       console.error(error);
     });

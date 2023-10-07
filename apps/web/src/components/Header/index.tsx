@@ -8,20 +8,23 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsFileText, BsHeart, BsMic, BsPlus } from 'react-icons/bs';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
-import { FlyingMenu } from './FlyingMenu';
-import { MobileMenu } from './MobileMenu';
-import { NavigationSection } from './props';
-import { useDisclosure } from '../../hooks/use-disclosure';
-import { trpc } from '../../utils/trpc';
-import { Routes } from '../../routes/routes';
-import { AuthModalState } from '../AuthModal/props';
+
 import { JoinedCourse } from '@sovereign-university/types';
-import { AuthModal } from '../AuthModal';
-import { TUTORIALS_CATEGORIES } from '../../utils/tutorials';
+
 import {
   coursesDetailsRoute,
   coursesIndexRoute,
 } from '../../features/courses/routes';
+import { useDisclosure } from '../../hooks/use-disclosure';
+import { Routes } from '../../routes/routes';
+import { trpc } from '../../utils/trpc';
+import { TUTORIALS_CATEGORIES } from '../../utils/tutorials';
+import { AuthModal } from '../AuthModal';
+import { AuthModalState } from '../AuthModal/props';
+
+import { FlyingMenu } from './FlyingMenu';
+import { MobileMenu } from './MobileMenu';
+import { NavigationSection } from './props';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -36,7 +39,7 @@ export const Header = () => {
 
   // Change this when better auth flow is implemented (this is awful)
   const [authMode, setAuthMode] = useState<AuthModalState>(
-    AuthModalState.SignIn
+    AuthModalState.SignIn,
   );
 
   const { data: courses } = trpc.content.getCourses.useQuery({
@@ -58,7 +61,7 @@ export const Header = () => {
       intermediate: JoinedCourse[];
       advanced: JoinedCourse[];
       expert: JoinedCourse[];
-    }
+    },
   );
 
   const coursesItems = Object.entries(coursesByLevel ?? {}).flatMap(
@@ -91,7 +94,7 @@ export const Header = () => {
                   : formatted,
             },
           ];
-    }
+    },
   );
 
   const sections: NavigationSection[] = [
@@ -99,6 +102,7 @@ export const Header = () => {
       id: 'courses',
       title: t('words.courses'),
       path: Routes.Courses,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       items: coursesItems,
     },
@@ -205,7 +209,7 @@ export const Header = () => {
   const isScreenMd = useGreater('md');
 
   return (
-    <header className="bg-blue-900 sticky left-0 top-0 z-20 flex w-full flex-row place-items-center justify-between p-3 px-4 md:min-h-[96px] lg:px-12">
+    <header className="sticky left-0 top-0 z-20 flex w-full flex-row place-items-center justify-between bg-blue-900 p-3 px-4 md:min-h-[96px] lg:px-12">
       {isScreenMd ? (
         <FlyingMenu
           onClickLogin={() => {

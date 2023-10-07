@@ -10,7 +10,7 @@ export const Emphasize = ({
   words?: string[];
 }) => {
   if (!words)
-    return <span className="text-orange-400 uppercase">{children}</span>;
+    return <span className="uppercase text-orange-400">{children}</span>;
 
   const replaced = words.reduce(
     (acc, s, index) => {
@@ -32,7 +32,7 @@ export const Emphasize = ({
           <span key={`${serialize(before)}-${index}`}>{before}</span>,
           <span
             key={`${serialize(toReplace)}-${index}`}
-            className="text-orange-400 uppercase"
+            className="uppercase text-orange-400"
           >
             {toReplace}
           </span>,
@@ -40,7 +40,7 @@ export const Emphasize = ({
         remainingString: after,
       };
     },
-    { newNodes: [] as ReactNode[], remainingString: children }
+    { newNodes: [] as ReactNode[], remainingString: children },
   );
 
   return (

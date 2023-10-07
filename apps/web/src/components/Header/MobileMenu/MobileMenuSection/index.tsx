@@ -1,12 +1,12 @@
+import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { Link } from '@tanstack/react-router';
 
+import { useDisclosure } from '../../../../hooks/use-disclosure';
 import { compose } from '../../../../utils';
 import { MenuElement } from '../../MenuElement';
 import { NavigationSection } from '../../props';
 import { MobileMenuSubSection } from '../MobileMenuSubSection';
-import { useDisclosure } from '../../../../hooks/use-disclosure';
 
 export interface MobileMenuSectionProps {
   section: NavigationSection;
@@ -20,6 +20,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const sectionTitle = useMemo(() => {
     if ('path' in section)
       return (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         <Link
           className="text-2xl font-light uppercase text-white no-underline"
@@ -46,7 +47,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
         <FiChevronDown
           className={compose(
             'p-0 m-0 w-6 h-6 duration-300',
-            isOpen ? 'rotate-180' : 'rotate-0'
+            isOpen ? 'rotate-180' : 'rotate-0',
           )}
         />
       </button>
@@ -75,7 +76,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
                 key={subSectionOrElements.id}
                 subSection={subSectionOrElements}
               />
-            )
+            ),
           )}
         </div>
       )}

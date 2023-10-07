@@ -1,11 +1,12 @@
 import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 import { TRPCClientError, httpBatchLink } from '@trpc/client';
 import { useState } from 'react';
-
 // import { useSessionStore } from '../stores/session.ts';
-import { getDomain, trpc } from '../utils/index.js';
 import superjson from 'superjson';
+
 import { LocalStorageKey } from '@sovereign-university/types';
+
+import { trpc } from '../utils/index.js';
 
 interface Meta {
   globalErrorHandler?: boolean;
@@ -54,7 +55,7 @@ export const useTrpc = () => {
             onError(error);
           },
         }),
-      })
+      }),
   );
 
   const [trpcClient] = useState(() =>
@@ -72,7 +73,7 @@ export const useTrpc = () => {
         }),
       ],
       transformer: superjson,
-    })
+    }),
   );
 
   return {

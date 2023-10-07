@@ -18,7 +18,7 @@ export const LanguageSelector = ({
 
   const [open, setOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(
-    i18n.resolvedLanguage ?? 'en'
+    i18n.resolvedLanguage ?? 'en',
   );
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const LanguageSelector = ({
           static
           className={compose(
             'flex absolute -right-1  z-20 flex-col text-sm bg-white rounded-3xl shadow-lg ring-gray-600/5',
-            direction === 'down' ? '-top-3' : '-bottom-3'
+            direction === 'down' ? '-top-3' : '-bottom-3',
           )}
         >
           {orderedLanguages.map((language) => (

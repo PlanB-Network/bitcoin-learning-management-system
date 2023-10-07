@@ -1,5 +1,5 @@
-import type { default as CourseProgress } from '../sql/users/CourseProgress';
 import type { default as CourseCompletedChapter } from '../sql/users/CourseCompletedChapters';
+import type { default as CourseProgress } from '../sql/users/CourseProgress';
 
 export type { default as CourseProgress } from '../sql/users/CourseProgress';
 export type { default as CourseCompletedChapter } from '../sql/users/CourseCompletedChapters';

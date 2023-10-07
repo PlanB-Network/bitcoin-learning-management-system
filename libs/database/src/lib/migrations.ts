@@ -22,7 +22,7 @@ const getExistingMigrations = async (client: PostgresClient) => {
 
 export const runMigrations = async (
   client: PostgresClient,
-  fileOrFolder: string
+  fileOrFolder: string,
 ) => {
   const migrationPath = path.resolve(fileOrFolder);
   const migrations = [];
@@ -33,7 +33,7 @@ export const runMigrations = async (
     // Run all migrations in directory
     const files = await fs.readdir(migrationPath);
     migrations.push(
-      ...files.map((f) => ({ name: f, path: path.join(migrationPath, f) }))
+      ...files.map((f) => ({ name: f, path: path.join(migrationPath, f) })),
     );
   } else if (stats.isFile()) {
     // Run a single migration
@@ -48,12 +48,12 @@ export const runMigrations = async (
   await createMigrationsTable(client);
   const existingMigrations = await getExistingMigrations(client);
   const migrationsToRun = migrations.filter(
-    (m) => !existingMigrations.includes(m.name)
+    (m) => !existingMigrations.includes(m.name),
   );
 
   if (migrationsToRun.length === 0) {
     console.log(
-      '👍 No migrations to run (all migrations have already been executed)'
+      '👍 No migrations to run (all migrations have already been executed)',
     );
     return;
   }
@@ -64,7 +64,7 @@ export const runMigrations = async (
     console.log(
       `🔄 Running migration ${Number(index) + 1} out of ${
         migrationsToRun.length
-      }: ${migration.name}`
+      }: ${migration.name}`,
     );
 
     try {

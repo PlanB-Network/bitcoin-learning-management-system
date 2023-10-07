@@ -1,12 +1,12 @@
 import { Router } from '@tanstack/react-router';
 
-import { rootRoute } from './root';
-
 import { coursesRoutes } from '../features/courses';
-import { miscRoutes } from '../features/misc/routes';
-import { tutorialsRoutes } from '../features/tutorials';
 import { dashboardRoutes } from '../features/dashboard';
+import { miscRoutes } from '../features/misc/routes';
 import { resourcesRoutes } from '../features/resources';
+import { tutorialsRoutes } from '../features/tutorials';
+
+import { rootRoute } from './root';
 
 const routeTree = rootRoute.addChildren([
   coursesRoutes,

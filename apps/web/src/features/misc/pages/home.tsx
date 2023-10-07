@@ -12,8 +12,8 @@ import rabbitStudying from '../../../assets/home/rabbit-studying.svg';
 import rabbitVideos from '../../../assets/home/rabbit-videos.svg';
 import rabbitWithBackpackAndBtcSign from '../../../assets/home/rabbit-with-backpack-and-btc-sign.svg';
 import visibilityOff from '../../../assets/home/visibility_off.svg';
-import { SectionTitle } from '../components/SectionTitle';
 import { Emphasize } from '../components/Emphasize';
+import { SectionTitle } from '../components/SectionTitle';
 
 export const Home = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export const Home = () => {
   return (
     // <MainLayout footerVariant="dark">
     <>
-      <div className="bg-blue-900 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="flex flex-col space-y-5 p-10 sm:flex-row lg:max-w-6xl">
           <div>
             <h1 className="text-4xl text-white md:max-w-xl md:text-5xl lg:max-w-4xl lg:text-7xl xl:text-8xl">
@@ -41,7 +41,7 @@ export const Home = () => {
       </div>
 
       {/* 1rst Section */}
-      <div className="bg-blue-800 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-800 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="w-full max-w-6xl py-10">
           <SectionTitle
             title={t('home.first.title')}
@@ -81,7 +81,7 @@ export const Home = () => {
       </div>
 
       {/* 2nd section */}
-      <div className="bg-blue-900 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="w-full max-w-6xl py-10">
           <SectionTitle
             title={t('home.second.title')}
@@ -120,7 +120,7 @@ export const Home = () => {
       </div>
 
       {/* 3rd section */}
-      <div className="bg-blue-800 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-800 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="w-full max-w-6xl py-10">
           <SectionTitle
             title={t('home.third.title')}
@@ -154,14 +154,14 @@ export const Home = () => {
               <p className="my-2 text-xl sm:my-8">{t('home.third.videos')}</p>
             </div>
           </div>
-          <p className="text-orange-400 my-8 w-full text-center italic">
+          <p className="my-8 w-full text-center italic text-orange-400">
             {t('home.third.more')}
           </p>
         </div>
       </div>
 
       {/* 4rth section */}
-      <div className="bg-blue-900 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="w-full max-w-6xl py-10">
           <SectionTitle
             title={t('home.fourth.title')}
@@ -185,7 +185,7 @@ export const Home = () => {
       </div>
 
       {/* About us */}
-      <div className="bg-blue-700 flex w-full justify-center px-5 md:px-10 lg:px-32 xl:px-0">
+      <div className="flex w-full justify-center bg-blue-700 px-5 md:px-10 lg:px-32 xl:px-0">
         <div className="w-full max-w-6xl pb-32 pt-12 text-white">
           <h2 className="mb-16 text-center text-4xl italic ">
             {t('home.about.title')}
@@ -217,7 +217,7 @@ export const Home = () => {
               </p>
             </div>
             <div className="relative col-start-2 row-start-2 flex flex-col items-center justify-center">
-              <div className="bg-blue-900 absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full lg:h-48 lg:w-48" />
+              <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-900 lg:h-48 lg:w-48" />
               <img
                 className="relative top-1 z-10 my-12 h-16 md:my-0 md:h-24"
                 src={favorite}

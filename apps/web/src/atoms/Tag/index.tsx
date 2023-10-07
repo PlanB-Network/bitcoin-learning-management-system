@@ -18,7 +18,7 @@ export const Tag = ({ children, size, className }: TagProps) => {
       className={compose(
         'inline-block font-semibold text-gray-500 bg-gray-200 rounded-full',
         classesBySize[size ?? 'm'],
-        className ?? ''
+        className ?? '',
       )}
     >
       {children}

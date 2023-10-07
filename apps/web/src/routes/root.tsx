@@ -1,17 +1,10 @@
-import React, { StrictMode, useRef } from 'react';
-import ReactDOM from 'react-dom/client';
-import {
-  Outlet,
-  RouterProvider,
-  Link,
-  Router,
-  Route,
-  RootRoute,
-} from '@tanstack/react-router';
-import { compose } from '../utils';
+import { Outlet, RootRoute } from '@tanstack/react-router';
+import { useRef } from 'react';
+
+import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import ScrollToTopButton from '../components/ScrollToTopButton';
-import { Footer } from '../components/Footer';
+import { compose } from '../utils';
 
 // Create a root route
 export const rootRoute = new RootRoute({

@@ -7,5 +7,5 @@ import { tutorialsRouter } from './tutorials';
 export const contentRouter = mergeTRPCRouters(
   coursesRouter,
   resourcesRouter,
-  tutorialsRouter
+  tutorialsRouter,
 );

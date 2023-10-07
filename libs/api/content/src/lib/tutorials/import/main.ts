@@ -56,7 +56,7 @@ export const createProcessMainFile =
 
       const lastUpdated = tutorial.files
         .filter(
-          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed'
+          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
         )
         .sort((a, b) => b.time - a.time)[0];
 
@@ -85,7 +85,7 @@ export const createProcessMainFile =
       if (result && parsedTutorial.tags && parsedTutorial.tags?.length > 0) {
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedTutorial.tags.map((tag) => ({ name: tag }))
+            parsedTutorial.tags.map((tag) => ({ name: tag })),
           )}
           ON CONFLICT DO NOTHING
         `;

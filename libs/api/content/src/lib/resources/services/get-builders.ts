@@ -1,6 +1,6 @@
-import { Dependencies } from "../../dependencies";
-import { getBuildersQuery } from "../queries";
-import { computeAssetCdnUrl } from "../../utils";
+import { Dependencies } from '../../dependencies';
+import { computeAssetCdnUrl } from '../../utils';
+import { getBuildersQuery } from '../queries';
 
 export const createGetBuilders =
   (dependencies: Dependencies) => async (language?: string) => {
@@ -14,7 +14,7 @@ export const createGetBuilders =
         process.env['CDN_URL'] || 'http://localhost:8080',
         row.last_commit,
         row.path,
-        'logo.jpeg'
+        'logo.jpeg',
       ),
     }));
   };

@@ -54,7 +54,7 @@ export const Button = ({
       classesByVariant[variant ?? 'primary'],
       rounded ? 'rounded-full' : 'rounded-md',
     ],
-    [rounded, size, variant]
+    [rounded, size, variant],
   );
 
   const disabledClass = disabled
@@ -70,7 +70,7 @@ export const Button = ({
           disabled ? 'active:none' : 'active:scale-95',
           'flex flex-row items-center duration-150 transition-colors font-normal leading-normal',
           className ?? '',
-          disabledClass
+          disabledClass,
         )}
         {...buttonProps}
       >
@@ -86,7 +86,7 @@ export const Button = ({
         disabled ? 'active:none' : 'active:scale-95',
         'flex flex-row items-center duration-150 transition-colors font-normal leading-normal justify-center',
         className ?? '',
-        disabledClass
+        disabledClass,
       )}
       {...buttonProps}
     >

@@ -1,7 +1,8 @@
-import { firstRow } from "@sovereign-university/database";
-import { Dependencies } from "../../dependencies";
-import { getPodcastQuery } from "../queries";
-import { computeAssetCdnUrl } from "../../utils";
+import { firstRow } from '@sovereign-university/database';
+
+import { Dependencies } from '../../dependencies';
+import { computeAssetCdnUrl } from '../../utils';
+import { getPodcastQuery } from '../queries';
 
 export const createGetPodcast =
   (dependencies: Dependencies) => async (id: number, language?: string) => {
@@ -18,7 +19,7 @@ export const createGetPodcast =
           process.env['CDN_URL'] || 'http://localhost:8080',
           podcast.last_commit,
           podcast.path,
-          'logo.jpeg'
+          'logo.jpeg',
         ),
       };
     }

@@ -2,6 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
@@ -9,11 +10,11 @@ import { HiOutlineAcademicCap, HiOutlineBookOpen } from 'react-icons/hi';
 import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
+
 import curriculumImage from '../../../assets/courses/curriculum.png';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import { Button } from '../../../atoms/Button';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { coursesChapterRoute, coursesDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -60,10 +61,10 @@ export const CourseDetails = () => {
               </div>
             )}
             <div className="max-w-3xl space-y-3">
-              <h1 className="text-blue-700 text-3xl font-semibold lg:text-5xl">
+              <h1 className="text-3xl font-semibold text-blue-700 lg:text-5xl">
                 {course.name}
               </h1>
-              <h2 className="text-blue-700 text-lg font-light italic">
+              <h2 className="text-lg font-light italic text-blue-700">
                 {t('courses.details.goal', { goal: course.goal })}
               </h2>
             </div>
@@ -74,7 +75,7 @@ export const CourseDetails = () => {
               <img
                 src={computeAssetCdnUrl(
                   course.last_commit,
-                  `courses/${course.id}/assets/thumbnail.png`
+                  `courses/${course.id}/assets/thumbnail.png`,
                 )}
                 alt={t('imagesAlt.courseThumbnail')}
               />
@@ -143,12 +144,12 @@ export const CourseDetails = () => {
                 children={course.raw_description}
                 components={{
                   h1: ({ children }) => (
-                    <h3 className="text-blue-800 mb-5 text-2xl font-normal">
+                    <h3 className="mb-5 text-2xl font-normal text-blue-800">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-blue-700 mb-3 text-sm">{children}</p>
+                    <p className="mb-3 text-sm text-blue-700">{children}</p>
                   ),
                 }}
               ></ReactMarkdown>
@@ -157,10 +158,10 @@ export const CourseDetails = () => {
               <h4 className="mb-1 text-sm font-light uppercase italic">
                 {t('courses.details.objectives')}
               </h4>
-              <h3 className="text-blue-800 mb-5 text-2xl font-normal">
+              <h3 className="mb-5 text-2xl font-normal text-blue-800">
                 {t('courses.details.objectivesTitle')}
               </h3>
-              <ul className="text-blue-700 space-y-2 font-light uppercase">
+              <ul className="space-y-2 font-light uppercase text-blue-700">
                 {course.objectives?.map((goal, index) => (
                   <li className="flex flex-row space-x-3" key={index}>
                     <div>
@@ -204,7 +205,7 @@ export const CourseDetails = () => {
                         className="mb-0.5 ml-10 flex flex-row items-center"
                         key={index}
                       >
-                        <BsCircleFill className="text-blue-300 mr-2" size={7} />
+                        <BsCircleFill className="mr-2 text-blue-300" size={7} />
                         <Link
                           className="text-blue-700"
                           to={coursesChapterRoute.id}

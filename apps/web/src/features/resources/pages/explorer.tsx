@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import articleSvg from '../../../assets/resources/article.svg';
@@ -8,7 +9,6 @@ import newsletterSvg from '../../../assets/resources/newsletter.svg';
 import rabbitInLibrary from '../../../assets/resources/rabbit-in-library.svg';
 import { Routes } from '../../../routes/routes';
 import { compose } from '../../../utils';
-import { Link } from '@tanstack/react-router';
 
 enum ResourceKinds {
   Books,
@@ -77,7 +77,7 @@ export const Resources = () => {
   return (
     // <MainLayout footerVariant="light">
     <div className="flex flex-col justify-center bg-gray-100">
-      <div className="bg-blue-900 relative mb-10 flex flex-col items-center px-5 pb-10 pt-8 text-white md:mb-40 md:pb-80 lg:px-16 lg:pb-60">
+      <div className="relative mb-10 flex flex-col items-center bg-blue-900 px-5 pb-10 pt-8 text-white md:mb-40 md:pb-80 lg:px-16 lg:pb-60">
         <div className="flex grid-cols-2 flex-col items-center justify-evenly md:grid md:pl-8 lg:space-x-5 lg:pl-12">
           <div className="px-5 lg:px-0">
             <h1 className="z-10 -ml-6 mb-5 text-[62px] font-light md:text-7xl lg:text-8xl xl:text-[112px]">
@@ -94,18 +94,18 @@ export const Resources = () => {
             alt=""
           />
         </div>
-        <div className="bg-blue-700 inset-x-0 bottom-0 left-1/2 z-10 grid w-full grid-cols-1 gap-x-2 rounded-3xl px-12 py-8 shadow sm:place-items-center md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 md:grid-cols-2 md:justify-evenly lg:max-w-5xl lg:grid-cols-3">
+        <div className="inset-x-0 bottom-0 left-1/2 z-10 grid w-full grid-cols-1 gap-x-2 rounded-3xl bg-blue-700 px-12 py-8 shadow sm:place-items-center md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 md:grid-cols-2 md:justify-evenly lg:max-w-5xl lg:grid-cols-3">
           {resourceKinds.map((resourceKind, i) => (
             <Link key={i} to={resourceKind.route}>
               <div
                 className={compose(
                   'hover:bg-blue-600 ld:my-4 relative my-2 box-content flex h-16 w-fit cursor-pointer flex-row flex-wrap items-center rounded-lg p-2 pr-20 duration-300 sm:h-24 sm:w-60',
-                  resourceKind.unreleased ? 'opacity-50' : 'opacity-100'
+                  resourceKind.unreleased ? 'opacity-50' : 'opacity-100',
                 )}
                 onClick={(e) => resourceKind.unreleased && e.preventDefault()}
                 key={resourceKind.kind}
               >
-                <div className="bg-orange-400 relative z-0 flex h-20 w-20 rounded-full sm:h-24 sm:w-24">
+                <div className="relative z-0 flex h-20 w-20 rounded-full bg-orange-400 sm:h-24 sm:w-24">
                   <img
                     className="absolute bottom-0 left-[-0.75em] m-auto h-12 sm:h-16"
                     src={resourceKind.image}

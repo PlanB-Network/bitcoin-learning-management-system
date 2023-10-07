@@ -45,15 +45,15 @@ export const MarkdownBody = ({
           </li>
         ),
         table: ({ children }) => (
-          <table className="border-blue-900 w-full border-collapse border">
+          <table className="w-full border-collapse border border-blue-900">
             {children}
           </table>
         ),
         th: ({ children }) => (
-          <th className="border-blue-900 border px-2 py-1">{children}</th>
+          <th className="border border-blue-900 px-2 py-1">{children}</th>
         ),
         td: ({ children }) => (
-          <td className="border-blue-900 border px-2 py-1">{children}</td>
+          <td className="border border-blue-900 px-2 py-1">{children}</td>
         ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (

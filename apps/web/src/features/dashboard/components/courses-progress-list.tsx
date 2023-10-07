@@ -1,8 +1,10 @@
+import { Link } from '@tanstack/react-router';
+
 import { CourseProgressExtended } from '@sovereign-university/types';
+
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
 import { coursesChapterRoute, coursesIndexRoute } from '../../courses/routes';
-import { Link } from '@tanstack/react-router';
 
 export const CoursesProgressList = ({
   courses,
@@ -28,7 +30,7 @@ export const CoursesProgressList = ({
             <div className="flex h-2 w-full overflow-hidden rounded-r-full">
               {Array.from({ length: course.total_chapters }).map((_, index) => {
                 const isCompleted = course.chapters?.some(
-                  (chapter) => chapter.chapter === index + 1
+                  (chapter) => chapter.chapter === index + 1,
                 );
 
                 return (
@@ -44,7 +46,7 @@ export const CoursesProgressList = ({
                     <div
                       className={compose(
                         'h-2 grow border-x border-white last-child:rounded-r-full',
-                        isCompleted ? 'bg-orange-500' : 'bg-gray-200'
+                        isCompleted ? 'bg-orange-500' : 'bg-gray-200',
                       )}
                     />
                   </Link>
@@ -56,7 +58,7 @@ export const CoursesProgressList = ({
             <div
               className={compose(
                 'self-end pt-2 pr-0 md:p-2 md:pr-0',
-                course.progress_percentage === 100 ? 'invisible' : ''
+                course.progress_percentage === 100 ? 'invisible' : '',
               )}
             >
               <Link
@@ -80,7 +82,7 @@ export const CoursesProgressList = ({
         </div>
       ))
     ) : (
-      <div className="text-blue-800 w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic md:rounded-none md:bg-transparent">
+      <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic text-blue-800 md:rounded-none md:bg-transparent">
         <Link to={coursesIndexRoute.id} className="text-orange-600">
           Start a course
         </Link>{' '}

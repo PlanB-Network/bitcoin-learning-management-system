@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
 import { Link } from '@tanstack/react-router';
+import { useMemo } from 'react';
 
 import { NavigationElement } from '../props';
 
@@ -17,7 +17,7 @@ export const MenuElement = ({ element }: MenuElementProps) => {
         {element.icon && (
           <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
             <element.icon
-              className="group-hover:text-blue-700 h-6 w-6 text-gray-600"
+              className="h-6 w-6 text-gray-600 group-hover:text-blue-700"
               aria-hidden="true"
             />
           </div>
@@ -34,16 +34,17 @@ export const MenuElement = ({ element }: MenuElementProps) => {
         </div>
       </div>
     ),
-    [element]
+    [element],
   );
 
   return 'path' in element ? (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <Link className="text-blue-800 block w-full" to={element.path}>
+    <Link className="block w-full text-blue-800" to={element.path}>
       {item}
     </Link>
   ) : (
-    <button className="text-blue-800 block w-full" onClick={element.action}>
+    <button className="block w-full text-blue-800" onClick={element.action}>
       {item}
     </button>
   );

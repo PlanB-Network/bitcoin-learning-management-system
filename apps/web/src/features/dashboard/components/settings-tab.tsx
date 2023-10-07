@@ -1,5 +1,6 @@
 import { Button } from '../../../atoms/Button';
 import { useDisclosure } from '../../../hooks';
+
 import { ChangePasswordModal } from './change-password-modal';
 import {
   SettingsSection,

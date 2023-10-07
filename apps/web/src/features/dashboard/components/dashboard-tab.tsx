@@ -1,8 +1,9 @@
 import { trpc } from '../../../utils';
+
 import { CoursesProgressList } from './courses-progress-list';
 
 const CoursesCardTitle = ({ children }: { children: string }) => (
-  <div className="text-blue-800 px-2 text-lg font-medium italic">
+  <div className="px-2 text-lg font-medium italic text-blue-800">
     {children}
   </div>
 );
@@ -21,16 +22,16 @@ export const DashboardTab = () => {
   const { data: progress } = trpc.user.courses.getProgress.useQuery();
 
   const completedCourses = progress?.filter(
-    (course) => course.progress_percentage === 100
+    (course) => course.progress_percentage === 100,
   );
 
   const inProgressCourses = progress?.filter(
-    (course) => course.progress_percentage !== 100
+    (course) => course.progress_percentage !== 100,
   );
 
   return (
     <div className="space-y-8">
-      <div className="text-blue-700 px-8 text-lg font-semibold uppercase">
+      <div className="px-8 text-lg font-semibold uppercase text-blue-700">
         Let's check where you're at !
       </div>
       <CoursesCard>

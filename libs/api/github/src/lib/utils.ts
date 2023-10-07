@@ -74,7 +74,7 @@ const syncRepository = async (repository: string, directory: string) => {
     return git;
   } catch (error: any) {
     throw new Error(
-      `Failed to sync repository ${repository}: ${error.message}`
+      `Failed to sync repository ${repository}: ${error.message}`,
     );
   }
 };
@@ -82,7 +82,7 @@ const syncRepository = async (repository: string, directory: string) => {
 export const compareCommits = async (
   repositoryUrl: string,
   beforeCommit: string,
-  afterCommit: string
+  afterCommit: string,
 ): Promise<ChangedFile[]> => {
   const repoDir = computeTemporaryDirectory(repositoryUrl);
 
@@ -92,13 +92,13 @@ export const compareCommits = async (
     const diffSummary = await git.diffSummary([beforeCommit, afterCommit]);
 
     const textFiles = diffSummary.files.filter(
-      (file) => !file.binary
+      (file) => !file.binary,
     ) as DiffResultTextFile[];
 
     const finalFiles = await async.mapLimit(
       textFiles,
       10,
-      async (file: typeof textFiles[number]) => {
+      async (file: (typeof textFiles)[number]) => {
         let relativePath = file.file;
         let previousPath: string | undefined;
 
@@ -143,7 +143,7 @@ export const compareCommits = async (
           path: relativePath,
           commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
           time: new Date(
-            fileLog.latest?.date ?? Date.now() // Cannot happen (I think)
+            fileLog.latest?.date ?? Date.now(), // Cannot happen (I think)
           ).getTime(),
           data: await fs.readFile(fullPath, 'utf-8'),
           ...(kind === 'renamed'
@@ -154,13 +154,13 @@ export const compareCommits = async (
               }
             : { kind }),
         } as ChangedFile;
-      }
+      },
     );
 
     return finalFiles;
   } catch (error: any) {
     throw new Error(
-      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}: ${error.message}`
+      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}: ${error.message}`,
     );
   }
 };
@@ -175,7 +175,7 @@ export const compareCommits = async (
  */
 export const walk = async (
   directory: string,
-  ignore: string[] = []
+  ignore: string[] = [],
 ): Promise<string[]> => {
   const files = await fs.readdir(directory);
 
@@ -224,12 +224,12 @@ export const getAllRepoFiles = async (repositoryUrl: string) => {
           path: relativePath,
           commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
           time: new Date(
-            parentDirectoryLog.latest?.date ?? Date.now() // Cannot happen (I think)
+            parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
           ).getTime(),
           kind: 'added' as const,
           data: await fs.readFile(file, 'utf-8'),
         };
-      }
+      },
     );
 
     return finalFiles;
@@ -240,14 +240,14 @@ export const getAllRepoFiles = async (repositoryUrl: string) => {
 
 export const syncCdnRepository = async (
   repositoryDirectory: string,
-  cdnDirectory: string
+  cdnDirectory: string,
 ) => {
   const git = simpleGit();
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);
     const assets = files.filter(
-      (file) => file.includes('/assets/') || file.includes('/soon/')
+      (file) => file.includes('/assets/') || file.includes('/soon/'),
     );
 
     for (const asset of assets) {
@@ -261,7 +261,7 @@ export const syncCdnRepository = async (
       const cdnPath = path.join(
         cdnDirectory,
         asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
-        relativePath
+        relativePath,
       );
 
       if (!(await pathExists(cdnPath))) {

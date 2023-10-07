@@ -1,6 +1,6 @@
-import { Dependencies } from "../../dependencies";
-import { computeAssetCdnUrl } from "../../utils";
-import { getBooksQuery } from "../queries";
+import { Dependencies } from '../../dependencies';
+import { computeAssetCdnUrl } from '../../utils';
+import { getBooksQuery } from '../queries';
 
 export const createGetBooks =
   (dependencies: Dependencies) => async (language?: string) => {
@@ -15,7 +15,7 @@ export const createGetBooks =
             process.env['CDN_URL'] || 'http://localhost:8080',
             book.last_commit,
             book.path,
-            book.cover
+            book.cover,
           )
         : undefined,
     }));

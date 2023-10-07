@@ -1,5 +1,7 @@
 import { Route, redirect } from '@tanstack/react-router';
+
 import { rootRoute } from './root';
+
 import { router } from '.';
 
 export const authenticatedRoute = new Route({

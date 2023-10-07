@@ -15,7 +15,7 @@ import {
 export const createProcessChangedFiles =
   (dependencies: Dependencies) => async (files: ChangedFile[]) => {
     const filteredFiles = files.filter((file) =>
-      supportedContentTypes.some((value) => file.path.startsWith(value))
+      supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
 
     const processChangedResource = createProcessChangedResource(dependencies);

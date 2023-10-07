@@ -1,5 +1,7 @@
 import { Route } from '@tanstack/react-router';
+
 import { rootRoute } from '../../routes/root';
+
 import { Dashboard } from './pages/dashboard';
 
 const dashboardRootRoute = new Route({
@@ -10,8 +12,8 @@ const dashboardRootRoute = new Route({
 export const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRootRoute,
   path: '/',
-  component: Dashboard
-})
+  component: Dashboard,
+});
 
 export const dashboardRoutes = dashboardRootRoute.addChildren([
   dashboardIndexRoute,

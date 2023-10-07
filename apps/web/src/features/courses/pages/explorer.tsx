@@ -1,5 +1,6 @@
-import { trpc } from '../../../utils/trpc';
 import { useTranslation } from 'react-i18next';
+
+import { trpc } from '../../../utils/trpc';
 import { CoursePreview } from '../components/coursePreview';
 import { Course, SolarSystem } from '../components/solarSystem';
 
@@ -8,7 +9,7 @@ export const CoursesExplorer = () => {
   const { data: courses } = trpc.content.getCourses.useQuery();
 
   const coursesInLanguage = courses?.filter(
-    (course) => course.language === i18n.language
+    (course) => course.language === i18n.language,
   );
 
   // Hardcoded unreleased courses
@@ -85,7 +86,7 @@ export const CoursesExplorer = () => {
   return (
     // TODO TRIGGER put dark footer
     // <MainLayout footerVariant="dark">
-    <div className="bg-blue-900 flex w-full flex-col items-center justify-center px-5">
+    <div className="flex w-full flex-col items-center justify-center bg-blue-900 px-5">
       <div className="flex flex-col items-center justify-center pt-8 text-white lg:max-w-3xl">
         <h1 className="-ml-4 w-full text-left text-[62px] font-light md:text-[128px] lg:-ml-14">
           {t('courses.explorer.pageTitle')}
@@ -95,7 +96,7 @@ export const CoursesExplorer = () => {
           <p>{t('courses.explorer.s1p1')}</p>
         </div>
       </div>
-      <div className="bg-blue-900 flex w-full flex-col items-center md:h-full">
+      <div className="flex w-full flex-col items-center bg-blue-900 md:h-full">
         <SolarSystem courses={coursesWithUnreleased} />
       </div>
       <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
@@ -130,7 +131,7 @@ export const CoursesExplorer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-blue-900 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+      <div className="grid grid-cols-1 bg-blue-900 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
         {coursesInLanguage
           ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
           .map((course) => (
@@ -138,10 +139,10 @@ export const CoursesExplorer = () => {
           ))}
       </div>
       <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
-        <div className="bg-blue-900 w-full pb-6 pt-3 text-right text-orange-700">
+        <div className="w-full bg-blue-900 pb-6 pt-3 text-right text-orange-700">
           {t('courses.explorer.moreToCome')}
         </div>
-        <div className="bg-blue-900 flex w-full flex-col space-y-3 text-base text-white">
+        <div className="flex w-full flex-col space-y-3 bg-blue-900 text-base text-white">
           <h4 className="mb-3 text-center text-xl font-semibold lg:text-3xl">
             {t('courses.explorer.footerTitle')}
           </h4>

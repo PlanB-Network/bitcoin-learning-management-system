@@ -43,7 +43,7 @@ export type ContextInner = inferAsyncReturnType<typeof createContextInner>;
  */
 export const createContext = async (
   opts: CreateExpressContextOptions,
-  dependencies: Dependencies
+  dependencies: Dependencies,
 ) => {
   const { req, res } = opts;
 

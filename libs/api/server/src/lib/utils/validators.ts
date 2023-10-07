@@ -12,5 +12,5 @@ export const contributorIdSchema = z.string().refine(
   {
     message:
       "Contributor ID must be in the format 'word1-word2' where both words are from the BIP39 English wordlist",
-  }
+  },
 );

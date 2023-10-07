@@ -11,10 +11,10 @@ import { ZodError, z } from 'zod';
 import { Button } from '../../../atoms/Button';
 import { Modal } from '../../../atoms/Modal';
 import { TextInput } from '../../../atoms/TextInput';
-import { userSlice } from '../../../store/slices/user.slice';
-import { AuthModalState } from '../props';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { userSlice } from '../../../store/slices/user.slice';
 import { trpc } from '../../../utils/trpc';
+import { AuthModalState } from '../props';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -40,7 +40,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         userSlice.actions.login({
           uid: data.user.uid,
           accessToken: data.accessToken,
-        })
+        }),
       );
       onClose();
     },
@@ -55,13 +55,13 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       actions: FormikHelpers<{
         username: string;
         password: string;
-      }>
+      }>,
     ) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
       await login.mutate(values);
     },
-    [login]
+    [login],
   );
 
   return (
@@ -126,7 +126,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
               </div>
 
               {login.error && (
-                <p className="text-red-300 mt-2 text-base font-semibold">
+                <p className="mt-2 text-base font-semibold text-red-300">
                   {login.error.message}
                 </p>
               )}

@@ -1,13 +1,12 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
-import React from 'react';
+
+import { JoinedCourse } from '@sovereign-university/types';
 
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
-import { Routes } from '../../../routes/routes';
 import { compose, computeAssetCdnUrl } from '../../../utils';
-import { Link } from '@tanstack/react-router';
-import { JoinedCourse } from '../../../../../../libs/types/src';
 import { coursesDetailsRoute } from '../routes';
 
 interface CoursePreviewProps {
@@ -25,15 +24,15 @@ export const CoursePreview = ({
     <Card
       image={computeAssetCdnUrl(
         course.last_commit,
-        `courses/${course.id}/assets/thumbnail.png`
+        `courses/${course.id}/assets/thumbnail.png`,
       )}
       className={compose(
         'overflow-hidden border-4 border-orange-600',
-        className
+        className,
       )}
     >
       <div className="flex h-full flex-col">
-        <h5 className="text-blue-900 text-xl font-semibold uppercase tracking-tight">
+        <h5 className="text-xl font-semibold uppercase tracking-tight text-blue-900">
           {course.name}
         </h5>
         <h6 className="mt-2 text-xs font-light">

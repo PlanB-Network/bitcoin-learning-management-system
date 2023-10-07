@@ -36,7 +36,7 @@ export const TextInput = ({
         ? 'text-red-300 ring-red-200 ring-1 placeholder:text-red-200 focus:ring-red-300'
         : 'text-gray-600 shadow-sm placeholder:text-gray-400 focus:ring-blue-600',
     ],
-    [error]
+    [error],
   );
 
   const isPassword = rest?.type === 'password';
@@ -61,7 +61,7 @@ export const TextInput = ({
     if (error)
       return (
         <BsExclamationTriangle
-          className="text-red-100 h-5 w-5"
+          className="h-5 w-5 text-red-100"
           aria-hidden="true"
         />
       );
@@ -71,10 +71,10 @@ export const TextInput = ({
 
   return (
     <div className={compose('mx-4 my-2', className ?? '')}>
-      <div className="flex justify-between px-1 flex-col items-c text-center">
+      <div className="items-c flex flex-col justify-between px-1 text-center">
         <label
           htmlFor="email"
-          className="block text-lg font-normal leading-6 text-gray-600 mb-1"
+          className="mb-1 block text-lg font-normal leading-6 text-gray-600"
         >
           {labelText}
         </label>
@@ -96,7 +96,7 @@ export const TextInput = ({
         </div>
       </div>
       {error && (
-        <p className="text-red-300 mt-0.5 px-1 text-sm" id="email-error">
+        <p className="mt-0.5 px-1 text-sm text-red-300" id="email-error">
           {error}
         </p>
       )}
