@@ -33,7 +33,7 @@ export const TutorialLayout = ({
     <div className="grid h-max min-h-screen w-full grid-cols-4 items-start bg-gray-100 px-3 py-5 md:px-6 md:py-10">
       <div className="hidden w-full pl-0 pr-10 lg:block xl:pl-10">
         <div className="w-full min-w-min max-w-[16rem] rounded-2xl bg-white p-2 drop-shadow">
-          <h3 className="mx-2 mb-2 border-b-2 border-b-orange-600 py-1 text-lg font-semibold uppercase text-orange-600">
+          <h3 className="mx-2 mb-2 border-b-2 border-b-orange-500 py-1 text-lg font-semibold uppercase text-orange-500">
             Tutorials
           </h3>
           {allTutorials &&
@@ -55,8 +55,8 @@ export const TutorialLayout = ({
                           size={10}
                           className={
                             open
-                              ? 'text-primary-700 rotate-180 align-middle'
-                              : 'text-primary-600 rotate-90 align-middle'
+                              ? 'text-blue-700 rotate-180 align-middle'
+                              : 'text-blue-600 rotate-90 align-middle'
                           }
                         />
                         <Link
@@ -67,7 +67,7 @@ export const TutorialLayout = ({
                         >
                           <span
                             className={compose(
-                              'text-primary-800 align-middle uppercase',
+                              'text-blue-800 align-middle uppercase',
                               open ? 'font-bold' : ''
                             )}
                           >
@@ -98,13 +98,13 @@ export const TutorialLayout = ({
                                       size={8}
                                       className={
                                         open
-                                          ? 'text-primary-700 rotate-180 align-middle'
-                                          : 'text-primary-600 rotate-90 align-middle'
+                                          ? 'text-blue-700 rotate-180 align-middle'
+                                          : 'text-blue-600 rotate-90 align-middle'
                                       }
                                     />
                                     <span
                                       className={compose(
-                                        'text-primary-800 align-middle uppercase text-sm',
+                                        'text-blue-800 align-middle uppercase text-sm',
                                         open ? 'font-semibold' : ''
                                       )}
                                     >
@@ -134,11 +134,11 @@ export const TutorialLayout = ({
                                             <BsFillCircleFill
                                               size={6}
                                               className={compose(
-                                                ' group-hover:text-orange-600',
+                                                ' group-hover:text-orange-500',
                                                 tutorial.id ===
                                                   currentTutorialId
-                                                  ? 'text-orange-600'
-                                                  : 'text-primary-600'
+                                                  ? 'text-orange-500'
+                                                  : 'text-blue-600'
                                               )}
                                             />
                                             <Link
@@ -150,11 +150,11 @@ export const TutorialLayout = ({
                                                 language: tutorial.language,
                                               }}
                                               className={compose(
-                                                'text-sm group-hover:text-orange-800',
+                                                'text-sm group-hover:text-orange-600',
                                                 tutorial.id ===
                                                   currentTutorialId
-                                                  ? 'text-orange-800'
-                                                  : 'text-primary-800 '
+                                                  ? 'text-orange-600'
+                                                  : 'text-blue-800 '
                                               )}
                                             >
                                               {t(tutorial.name)}

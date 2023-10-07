@@ -26,7 +26,7 @@ export const SettingsTab = () => {
         <SettingsSectionTitle>Security</SettingsSectionTitle>
         <SettingsSectionCard>
           <div className="flex items-center justify-between">
-            <div className="text-primary-700">Password</div>
+            <div className="text-blue-700">Password</div>
             <Button
               variant="tertiary"
               size="s"

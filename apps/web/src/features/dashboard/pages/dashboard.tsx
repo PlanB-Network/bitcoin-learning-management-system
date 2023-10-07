@@ -40,7 +40,7 @@ const MenuItem = ({
 }) => (
   <div
     className={`flex cursor-pointer flex-row items-center justify-center space-x-4 px-4 py-2 ${
-      active ? 'text-primary-800' : 'text-white'
+      active ? 'text-blue-800' : 'text-white'
     }`}
     onClick={onClick}
   >
@@ -66,7 +66,7 @@ export const Dashboard = () => {
           {/* {currentTab === 'courses' && <CoursesTab />} */}
           {currentTab === 'settings' && <SettingsTab />}
         </div>
-        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around bg-orange-800 md:hidden">
+        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around bg-orange-600 md:hidden">
           <MenuItem
             text="Dashboard"
             icon={<IoGridOutline size={28} />}
@@ -95,9 +95,9 @@ export const Dashboard = () => {
 
   return (
     // <MainLayout variant="dark" footerVariant="dark">
-    <div className="bg-primary-900 min-h-screen p-10">
+    <div className="bg-blue-900 min-h-screen p-10">
       <div className="mx-auto grid min-h-[800px] max-w-4xl grid-cols-4 overflow-hidden rounded-3xl bg-gray-200 shadow xl:max-w-5xl">
-        <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-600 p-4">
+        <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-500 p-4">
           <div className="w-full px-2">
             <div className="flex w-full items-center space-x-2 rounded-3xl bg-orange-400">
               <div className="p-1">
@@ -109,7 +109,7 @@ export const Dashboard = () => {
                   />
                 </div>
               </div>
-              <div className="text-primary-900 text-lg font-medium italic">
+              <div className="text-blue-900 text-lg font-medium italic">
                 {user?.username}
               </div>
             </div>

@@ -2,11 +2,11 @@ import { Button } from '../../../../atoms/Button';
 import { compose } from '../../../../utils';
 import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
 
-const commonClasses = 'bg-secondary-400';
+const commonClasses = 'bg-orange-400';
 
 const buttonClasses = compose(
   commonClasses,
-  'hover:bg-secondary-500 duration-200'
+  'hover:bg-orange-500 duration-200'
 );
 
 const iconClasses = 'w-8 h-8';

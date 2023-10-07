@@ -31,10 +31,10 @@ export const TextInput = ({
   const [showValue, setShowValue] = useState(false);
   const classes = useMemo(
     () => [
-      'block w-full rounded-[15px] border-0 focus:ring-2 focus:ring-inset px-3 py-4 bg-secondary-400',
+      'block w-full rounded-[15px] border-0 focus:ring-2 focus:ring-inset px-3 py-4 bg-orange-400',
       error
-        ? 'text-danger-300 ring-danger-200 ring-1 placeholder:text-danger-200 focus:ring-danger-300'
-        : 'text-gray-600 shadow-sm placeholder:text-gray-400 focus:ring-primary-600',
+        ? 'text-red-300 ring-red-200 ring-1 placeholder:text-red-200 focus:ring-red-300'
+        : 'text-gray-600 shadow-sm placeholder:text-gray-400 focus:ring-blue-600',
     ],
     [error]
   );
@@ -61,7 +61,7 @@ export const TextInput = ({
     if (error)
       return (
         <BsExclamationTriangle
-          className="text-danger-100 h-5 w-5"
+          className="text-red-100 h-5 w-5"
           aria-hidden="true"
         />
       );
@@ -96,7 +96,7 @@ export const TextInput = ({
         </div>
       </div>
       {error && (
-        <p className="text-danger-300 mt-0.5 px-1 text-sm" id="email-error">
+        <p className="text-red-300 mt-0.5 px-1 text-sm" id="email-error">
           {error}
         </p>
       )}

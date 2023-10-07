@@ -45,7 +45,7 @@ export const CourseDetails = () => {
           <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
             {isScreenLg ? (
               <div
-                className="flex flex-col items-center justify-center rounded-full bg-orange-800 p-8 text-5xl font-bold uppercase text-white"
+                className="flex flex-col items-center justify-center rounded-full bg-orange-600 p-8 text-5xl font-bold uppercase text-white"
                 title={t('courses.details.courseId', { courseId: course.id })}
               >
                 <span>{course.id.match(/[A-Za-z]+/)?.[0] || ''}</span>
@@ -53,17 +53,17 @@ export const CourseDetails = () => {
               </div>
             ) : (
               <div
-                className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
+                className="h-fit w-fit rounded-xl bg-orange-600 p-2 text-left text-4xl font-bold uppercase text-white"
                 title={t('courses.details.courseId', { courseId: course.id })}
               >
                 {course.id}
               </div>
             )}
             <div className="max-w-3xl space-y-3">
-              <h1 className="text-primary-700 text-3xl font-semibold lg:text-5xl">
+              <h1 className="text-blue-700 text-3xl font-semibold lg:text-5xl">
                 {course.name}
               </h1>
-              <h2 className="text-primary-700 text-lg font-light italic">
+              <h2 className="text-blue-700 text-lg font-light italic">
                 {t('courses.details.goal', { goal: course.goal })}
               </h2>
             </div>
@@ -81,7 +81,7 @@ export const CourseDetails = () => {
             </div>
             <div className=" flex w-full flex-col space-y-5 p-3 md:px-0 ">
               <div className="flex flex-row items-start space-x-5">
-                <FaChalkboardTeacher size="35" className="text-orange-600" />
+                <FaChalkboardTeacher size="35" className="text-orange-500" />
                 <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                   {t('courses.details.teachers', {
                     teachers: t('words.rogzy'),
@@ -89,13 +89,13 @@ export const CourseDetails = () => {
                 </span>
               </div>
               <div className="flex flex-row items-start space-x-5">
-                <HiOutlineAcademicCap size="35" className="text-orange-600" />
+                <HiOutlineAcademicCap size="35" className="text-orange-500" />
                 <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                   {t(`courses.details.level`, { level: course.level })}
                 </span>
               </div>
               <div className="flex flex-row items-start space-x-5">
-                <HiOutlineBookOpen size="35" className="text-orange-600" />
+                <HiOutlineBookOpen size="35" className="text-orange-500" />
                 <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                   {t('courses.details.numberOfChapters', {
                     number: course.chapters?.length,
@@ -103,7 +103,7 @@ export const CourseDetails = () => {
                 </span>
               </div>
               <div className="flex flex-row items-start space-x-5">
-                <IoMdStopwatch size="35" className="text-orange-600" />
+                <IoMdStopwatch size="35" className="text-orange-500" />
                 <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                   {t('courses.details.duration', { hours: course.hours })}
                 </span>
@@ -143,12 +143,12 @@ export const CourseDetails = () => {
                 children={course.raw_description}
                 components={{
                   h1: ({ children }) => (
-                    <h3 className="text-primary-800 mb-5 text-2xl font-normal">
+                    <h3 className="text-blue-800 mb-5 text-2xl font-normal">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-primary-700 mb-3 text-sm">{children}</p>
+                    <p className="text-blue-700 mb-3 text-sm">{children}</p>
                   ),
                 }}
               ></ReactMarkdown>
@@ -157,10 +157,10 @@ export const CourseDetails = () => {
               <h4 className="mb-1 text-sm font-light uppercase italic">
                 {t('courses.details.objectives')}
               </h4>
-              <h3 className="text-primary-800 mb-5 text-2xl font-normal">
+              <h3 className="text-blue-800 mb-5 text-2xl font-normal">
                 {t('courses.details.objectivesTitle')}
               </h3>
-              <ul className="text-primary-700 space-y-2 font-light uppercase">
+              <ul className="text-blue-700 space-y-2 font-light uppercase">
                 {course.objectives?.map((goal, index) => (
                   <li className="flex flex-row space-x-3" key={index}>
                     <div>
@@ -183,7 +183,7 @@ export const CourseDetails = () => {
                   <li key={index}>
                     <div className="mb-1 flex flex-row">
                       <RxTriangleDown
-                        className="mr-2 mt-1 text-orange-800"
+                        className="mr-2 mt-1 text-orange-600"
                         size={20}
                       />
                       <Link
@@ -194,7 +194,7 @@ export const CourseDetails = () => {
                         }}
                         key={chapter.chapter}
                       >
-                        <p className="text-lg font-light uppercase text-orange-800 ">
+                        <p className="text-lg font-light uppercase text-orange-600 ">
                           {chapter.title}
                         </p>
                       </Link>
@@ -204,12 +204,9 @@ export const CourseDetails = () => {
                         className="mb-0.5 ml-10 flex flex-row items-center"
                         key={index}
                       >
-                        <BsCircleFill
-                          className="text-primary-300 mr-2"
-                          size={7}
-                        />
+                        <BsCircleFill className="text-blue-300 mr-2" size={7} />
                         <Link
-                          className="text-primary-700"
+                          className="text-blue-700"
                           to={coursesChapterRoute.id}
                           params={{
                             courseId,

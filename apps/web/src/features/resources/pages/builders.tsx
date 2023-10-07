@@ -60,7 +60,7 @@ export const Builders = () => {
             key={category}
             className="mx-2 mb-8 rounded-3xl bg-gray-200 md:mx-8"
           >
-            <h3 className="text-primary-700 mb-2 w-full rounded-md px-4 py-1 text-xl font-semibold uppercase italic">
+            <h3 className="text-blue-700 mb-2 w-full rounded-md px-4 py-1 text-xl font-semibold uppercase italic">
               {category}
             </h3>
             <div className="flex flex-row flex-wrap items-center">
@@ -74,13 +74,13 @@ export const Builders = () => {
                   }}
                   key={index}
                 >
-                  <div className="group-hover:bg-secondary-400 relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
+                  <div className="group-hover:bg-orange-400 relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                     <img
                       className="mx-auto rounded-full bg-white"
                       src={builder.logo}
                       alt={builder.name}
                     />
-                    <p className="group-hover:bg-secondary-400 absolute inset-x-0 h-fit w-full flex-wrap items-center rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out">
+                    <p className="group-hover:bg-orange-400 absolute inset-x-0 h-fit w-full flex-wrap items-center rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out">
                       <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                         {builder.name}
                       </span>

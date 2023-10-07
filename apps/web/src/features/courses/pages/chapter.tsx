@@ -54,7 +54,7 @@ export const CourseChapter = () => {
       {chapter && (
         <div className="flex h-full w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
           <div className="w-full max-w-5xl px-5 md:px-0">
-            <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
+            <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-600 md:text-5xl">
               {`${chapter.course?.id.toUpperCase()} - ${chapter.course?.name}`}
             </h1>
             {isScreenMd ? (
@@ -85,12 +85,12 @@ export const CourseChapter = () => {
                         }
                   }
                 >
-                  <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                  <div className="bg-blue-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
                     <BiSkipPrevious className="h-6 w-6" />
                   </div>
                 </Link>
 
-                <div className="text-primary-800 font-normal">
+                <div className="text-blue-800 font-normal">
                   {t('courses.chapter.count', {
                     count: chapter.chapter,
                     total: chapter.course?.chapters?.length,
@@ -114,7 +114,7 @@ export const CourseChapter = () => {
                         }
                   }
                 >
-                  <div className="bg-primary-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
+                  <div className="bg-blue-700 flex h-6 flex-row items-center rounded-full px-3 py-2 text-white">
                     <BiSkipNext className="h-6 w-6" />
                   </div>
                 </Link>
@@ -143,7 +143,7 @@ export const CourseChapter = () => {
                           className={compose(
                             'h-4 grow',
                             current.chapter < chapter.chapter
-                              ? 'bg-orange-600'
+                              ? 'bg-orange-500'
                               : 'bg-gray-300',
                             firstChapter ? 'rounded-l-full' : '',
                             lastChapter ? 'rounded-r-full' : ''
@@ -159,7 +159,7 @@ export const CourseChapter = () => {
                     >
                       <div
                         className={compose(
-                          'h-4 w-2/3 bg-orange-600',
+                          'h-4 w-2/3 bg-orange-500',
                           firstChapter ? 'rounded-l-full' : ''
                         )}
                       />
@@ -180,8 +180,8 @@ export const CourseChapter = () => {
               </div>
             )}
           </div>
-          <div className="text-primary-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
-            <h2 className="text-primary-800 text-2xl font-normal uppercase italic md:text-3xl">
+          <div className="text-blue-900 mt-8 w-full space-y-6 px-5 md:mt-16 md:max-w-3xl md:px-0">
+            <h2 className="text-blue-800 text-2xl font-normal uppercase italic md:text-3xl">
               {chapter?.title}
             </h2>
             <MarkdownBody

@@ -14,7 +14,7 @@ export const FlyingMenuSubSection = ({
       {subSection.title && (
         <h3
           className={compose(
-            'text-lg text-primary-800 font-primary',
+            'text-lg text-blue-800 font-primary',
             'items' in subSection ? 'mb-3' : ''
           )}
         >

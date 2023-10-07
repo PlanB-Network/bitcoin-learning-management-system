@@ -28,12 +28,12 @@ export const CoursePreview = ({
         `courses/${course.id}/assets/thumbnail.png`
       )}
       className={compose(
-        'overflow-hidden border-4 border-orange-800',
+        'overflow-hidden border-4 border-orange-600',
         className
       )}
     >
       <div className="flex h-full flex-col">
-        <h5 className="text-primary-900 text-xl font-semibold uppercase tracking-tight">
+        <h5 className="text-blue-900 text-xl font-semibold uppercase tracking-tight">
           {course.name}
         </h5>
         <h6 className="mt-2 text-xs font-light">
@@ -51,7 +51,7 @@ export const CoursePreview = ({
               size="s"
               iconRight={<BsArrowRight />}
               variant="tertiary"
-              className="text-primary-900"
+              className="text-blue-900"
             >
               {t('courses.preview.letsgo')}
             </Button>

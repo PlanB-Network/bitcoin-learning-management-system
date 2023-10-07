@@ -69,13 +69,13 @@ export const SponsorsAndContributors = () => {
 
   return (
     // <MainLayout footerVariant="dark">
-    <div className="bg-primary-900 flex flex-col justify-center">
+    <div className="bg-blue-900 flex flex-col justify-center">
       <div className="flex flex-wrap justify-evenly text-center text-xl  text-white sm:py-20">
         <div>
           <img className="mx-auto h-48" src={headerImage} alt="Rabbit" />
           <h2 className="my-8 w-full px-4 py-1">{t('about.pageSubtitle')}</h2>
           <Link
-            className="bg-secondary-400 group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
+            className="bg-orange-400 group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
             to="/learn-more"
             style={{ fontSize: '20px', padding: '10px 20px' }}
           >
@@ -102,13 +102,13 @@ export const SponsorsAndContributors = () => {
                     target="_blank"
                     key={id}
                   >
-                    <div className="group-hover:bg-secondary-400 relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
+                    <div className="group-hover:bg-orange-400 relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                       <img
                         className="mx-auto h-24 rounded-full bg-white"
                         src={`${profile.image}`} // Placeholder for profile image URL
                         alt={`Profile ${id + 1}`}
                       />
-                      <p className="wrap align-center inset-y-end group-hover:bg-secondary-400 absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out">
+                      <p className="wrap align-center inset-y-end group-hover:bg-orange-400 absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out">
                         <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                           {`${profile.name}`}
                         </span>

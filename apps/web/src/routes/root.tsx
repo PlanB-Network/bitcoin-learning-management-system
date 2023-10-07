@@ -32,7 +32,7 @@ function Root() {
       //     ? 'bg-blue-200'
       //     : 'bg-primary'
       // )}
-      className={compose('h-full w-full', 'bg-primary-900')}
+      className={compose('h-full w-full', 'bg-blue-900')}
       ref={box}
     >
       <Header />

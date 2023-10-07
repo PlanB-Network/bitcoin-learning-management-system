@@ -27,7 +27,7 @@ export const SectionTitle = ({
       {/* blue circle in bkg */}
       <div
         className={compose(
-          variant === 'primary' ? 'bg-primary-600' : 'bg-secondary-400',
+          variant === 'primary' ? 'bg-blue-600' : 'bg-orange-400',
           position === 'right' ? 'right-0' : 'left-0',
           'w-24 sm:w-36 lg:w-48 h-full rounded-full absolute'
         )}
@@ -35,7 +35,7 @@ export const SectionTitle = ({
 
       <div
         className={compose(
-          variant === 'primary' ? 'text-secondary-400' : 'text-primary-700',
+          variant === 'primary' ? 'text-orange-400' : 'text-blue-700',
           'relative z-1 text-3xl sm:text-5xl lg:text-8xl font-bold'
         )}
       >

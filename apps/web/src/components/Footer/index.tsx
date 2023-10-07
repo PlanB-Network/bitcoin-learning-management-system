@@ -70,13 +70,13 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
           )}
         >
           <div
             className={compose(
               'relative flex w-full flex-col pt-10',
-              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
+              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
             )}
           >
             <img src={City} className="z-10 m-auto mb-6 h-fit w-1/2 self-end" />
@@ -89,7 +89,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               )}
             />
           </div>
-          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-800">
+          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-900">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
               <div className="flex flex-row space-x-10">
                 <div className="flex flex-col">
@@ -195,7 +195,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={compose(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-primary-900')
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900')
           )}
         >
           <img
@@ -206,7 +206,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
             )}
           />
           <img src={City} className="relative z-10 -mb-5 h-fit w-full " />
-          <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-800 px-10 pt-20 text-white">
+          <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-900 px-10 pt-20 text-white">
             <div className="space-y-2 text-left text-xl">
               <Media className="mb-7 px-1" />
               <h4>

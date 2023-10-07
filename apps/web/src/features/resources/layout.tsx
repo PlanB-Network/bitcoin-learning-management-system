@@ -27,7 +27,7 @@ export const ResourceLayout = ({
   return (
     // <MainLayout footerVariant="dark">
     <div
-      className={`bg-primary-900 flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
+      className={`bg-blue-900 flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
     >
       <div className="max-w-6xl">
         <div>

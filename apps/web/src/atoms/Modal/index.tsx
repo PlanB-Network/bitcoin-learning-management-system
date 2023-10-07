@@ -57,7 +57,7 @@ export const Modal = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel>
-                <div className="max-w-xs overflow-hidden rounded-[1.5em] border-4 border-orange-800 bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6">
+                <div className="max-w-xs overflow-hidden rounded-[1.5em] border-4 border-orange-600 bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6">
                   {closeButtonEnabled && (
                     <button>
                       <IoMdClose
@@ -79,8 +79,8 @@ export const Modal = ({
                       alt={t('imagesAlt.rabbitHikingModal')}
                       className="sm:h-23 absolute -left-10 bottom-12 z-[+1] flex h-20 sm:-left-10 sm:bottom-14"
                     ></img>
-                    <div className="bg-secondary-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-800 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
-                      <span className="text-primary-800 italic">
+                    <div className="bg-orange-400 relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
+                      <span className="text-blue-800 italic">
                         {t('words.didYouKnow')}
                         <div>{t('auth.noAccountNeeded')}</div>
                       </span>

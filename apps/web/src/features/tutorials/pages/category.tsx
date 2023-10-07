@@ -48,18 +48,18 @@ export const TutorialCategory = () => {
     <TutorialLayout currentCategory={category}>
       <div className="col-span-3 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
         <div className="flex w-full flex-row items-end justify-start py-10">
-          <div className="bg-secondary-400 relative z-0 flex h-20 w-20 self-center rounded-full md:h-24 md:w-24">
+          <div className="bg-orange-400 relative z-0 flex h-20 w-20 self-center rounded-full md:h-24 md:w-24">
             <img
               className="absolute inset-0 m-auto h-12 md:h-14"
               src={tutorialCategory.image}
               alt=""
             />
           </div>
-          <h1 className="text-primary-700 py-3 pl-4 text-5xl font-bold uppercase italic md:pl-8 lg:text-6xl">
+          <h1 className="text-blue-700 py-3 pl-4 text-5xl font-bold uppercase italic md:pl-8 lg:text-6xl">
             {tutorialCategory.name}
           </h1>
         </div>
-        <p className="text-primary-800 flex w-full text-justify md:text-left">
+        <p className="text-blue-800 flex w-full text-justify md:text-left">
           {t(`tutorials.${category}.description`)}
         </p>
         {tutorials && (
@@ -71,10 +71,10 @@ export const TutorialCategory = () => {
                     key={subCategory}
                     className={({ selected }) =>
                       compose(
-                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-2.5 font-medium text-primary-800 capitalize',
+                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-2.5 font-medium text-blue-800 capitalize',
                         selected
-                          ? 'bg-orange-800 shadow'
-                          : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-800'
+                          ? 'bg-orange-600 shadow'
+                          : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-600'
                       )
                     }
                   >
@@ -92,7 +92,7 @@ export const TutorialCategory = () => {
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`
                       ) && (
-                        <div className="text-primary-900 px-10 pb-6 pt-3 text-sm font-light italic">
+                        <div className="text-blue-900 px-10 pb-6 pt-3 text-sm font-light italic">
                           {t(
                             `tutorials.${category}.${subCategory}.description`
                           )}
@@ -129,10 +129,10 @@ export const TutorialCategory = () => {
                               alt=""
                             />
                             <div className="flex flex-col">
-                              <h2 className="text-primary-700 text-lg font-semibold uppercase">
+                              <h2 className="text-blue-700 text-lg font-semibold uppercase">
                                 {tutorial.name}
                               </h2>
-                              <p className="text-primary-700 max-w-md text-xs capitalize">
+                              <p className="text-blue-700 max-w-md text-xs capitalize">
                                 {tutorial.description}
                               </p>
                             </div>

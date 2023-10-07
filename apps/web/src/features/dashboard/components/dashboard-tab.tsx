@@ -2,7 +2,7 @@ import { trpc } from '../../../utils';
 import { CoursesProgressList } from './courses-progress-list';
 
 const CoursesCardTitle = ({ children }: { children: string }) => (
-  <div className="text-primary-800 px-2 text-lg font-medium italic">
+  <div className="text-blue-800 px-2 text-lg font-medium italic">
     {children}
   </div>
 );
@@ -30,7 +30,7 @@ export const DashboardTab = () => {
 
   return (
     <div className="space-y-8">
-      <div className="text-primary-700 px-8 text-lg font-semibold uppercase">
+      <div className="text-blue-700 px-8 text-lg font-semibold uppercase">
         Let's check where you're at !
       </div>
       <CoursesCard>

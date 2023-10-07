@@ -139,7 +139,7 @@ export const ChangePasswordModal = ({
               </div>
 
               {changePassword.error && (
-                <p className="text-danger-300 mt-2 text-base font-semibold">
+                <p className="text-red-300 mt-2 text-base font-semibold">
                   {changePassword.error.message}
                 </p>
               )}

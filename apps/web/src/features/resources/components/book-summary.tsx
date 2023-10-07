@@ -58,7 +58,7 @@ export const BookSummary = ({
         </div>
       </Card>
       {isExtended ? (
-        <p className="text-primary-200 flex self-end whitespace-nowrap text-xs font-light italic md:mr-8 lg:mr-10">
+        <p className="text-blue-200 flex self-end whitespace-nowrap text-xs font-light italic md:mr-8 lg:mr-10">
           {t('book.bookSummary.notice')}
         </p>
       ) : (

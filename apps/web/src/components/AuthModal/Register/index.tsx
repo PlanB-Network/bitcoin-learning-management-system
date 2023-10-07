@@ -105,7 +105,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
-          <BsCheck className="text-success-300 my-8 h-20 w-20 text-lg" />
+          <BsCheck className="text-green-300 my-8 h-20 w-20 text-lg" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
@@ -196,7 +196,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 </div>
 
                 {register.error && (
-                  <p className="text-danger-300 mt-2 text-base font-semibold">
+                  <p className="text-red-300 mt-2 text-base font-semibold">
                     {register.error.message}
                   </p>
                 )}

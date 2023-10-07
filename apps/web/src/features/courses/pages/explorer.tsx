@@ -85,7 +85,7 @@ export const CoursesExplorer = () => {
   return (
     // TODO TRIGGER put dark footer
     // <MainLayout footerVariant="dark">
-    <div className="bg-primary-900 flex w-full flex-col items-center justify-center px-5">
+    <div className="bg-blue-900 flex w-full flex-col items-center justify-center px-5">
       <div className="flex flex-col items-center justify-center pt-8 text-white lg:max-w-3xl">
         <h1 className="-ml-4 w-full text-left text-[62px] font-light md:text-[128px] lg:-ml-14">
           {t('courses.explorer.pageTitle')}
@@ -95,7 +95,7 @@ export const CoursesExplorer = () => {
           <p>{t('courses.explorer.s1p1')}</p>
         </div>
       </div>
-      <div className="bg-primary-900 flex w-full flex-col items-center md:h-full">
+      <div className="bg-blue-900 flex w-full flex-col items-center md:h-full">
         <SolarSystem courses={coursesWithUnreleased} />
       </div>
       <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
@@ -119,7 +119,7 @@ export const CoursesExplorer = () => {
                 className="my-5 flex flex-row place-items-center space-x-2"
                 key={index}
               >
-                <div className="flex h-16 w-16 place-items-center justify-center rounded-full border-4 border-orange-900 text-lg font-semibold uppercase lg:h-20 lg:w-20 lg:text-xl">
+                <div className="flex h-16 w-16 place-items-center justify-center rounded-full border-4 border-orange-700 text-lg font-semibold uppercase lg:h-20 lg:w-20 lg:text-xl">
                   {prefix}
                 </div>
                 <span className="w-1/2 text-base font-light uppercase lg:text-base">
@@ -130,7 +130,7 @@ export const CoursesExplorer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-primary-900 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+      <div className="bg-blue-900 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
         {coursesInLanguage
           ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
           .map((course) => (
@@ -138,10 +138,10 @@ export const CoursesExplorer = () => {
           ))}
       </div>
       <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
-        <div className="bg-primary-900 w-full pb-6 pt-3 text-right text-orange-900">
+        <div className="bg-blue-900 w-full pb-6 pt-3 text-right text-orange-700">
           {t('courses.explorer.moreToCome')}
         </div>
-        <div className="bg-primary-900 flex w-full flex-col space-y-3 text-base text-white">
+        <div className="bg-blue-900 flex w-full flex-col space-y-3 text-base text-white">
           <h4 className="mb-3 text-center text-xl font-semibold lg:text-3xl">
             {t('courses.explorer.footerTitle')}
           </h4>

@@ -126,7 +126,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
               </div>
 
               {login.error && (
-                <p className="text-danger-300 mt-2 text-base font-semibold">
+                <p className="text-red-300 mt-2 text-base font-semibold">
                   {login.error.message}
                 </p>
               )}

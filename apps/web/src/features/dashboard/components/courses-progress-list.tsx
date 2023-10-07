@@ -18,10 +18,10 @@ export const CoursesProgressList = ({
         >
           <div className="flex w-full flex-col items-start justify-start space-y-2 py-2">
             <div className="flex w-full items-center justify-between">
-              <span className="font-bold uppercase text-orange-800">
+              <span className="font-bold uppercase text-orange-600">
                 {course.course_id}
               </span>
-              <div className="italic text-orange-800">
+              <div className="italic text-orange-600">
                 {course.progress_percentage}%
               </div>
             </div>
@@ -44,7 +44,7 @@ export const CoursesProgressList = ({
                     <div
                       className={compose(
                         'h-2 grow border-x border-white last-child:rounded-r-full',
-                        isCompleted ? 'bg-orange-600' : 'bg-gray-200'
+                        isCompleted ? 'bg-orange-500' : 'bg-gray-200'
                       )}
                     />
                   </Link>
@@ -80,8 +80,8 @@ export const CoursesProgressList = ({
         </div>
       ))
     ) : (
-      <div className="text-primary-800 w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic md:rounded-none md:bg-transparent">
-        <Link to={coursesIndexRoute.id} className="text-orange-800">
+      <div className="text-blue-800 w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic md:rounded-none md:bg-transparent">
+        <Link to={coursesIndexRoute.id} className="text-orange-600">
           Start a course
         </Link>{' '}
         to see your progress here!

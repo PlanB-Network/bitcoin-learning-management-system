@@ -17,7 +17,7 @@ export const MenuElement = ({ element }: MenuElementProps) => {
         {element.icon && (
           <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
             <element.icon
-              className="group-hover:text-primary-700 h-6 w-6 text-gray-600"
+              className="group-hover:text-blue-700 h-6 w-6 text-gray-600"
               aria-hidden="true"
             />
           </div>
@@ -39,11 +39,11 @@ export const MenuElement = ({ element }: MenuElementProps) => {
 
   return 'path' in element ? (
     // @ts-ignore
-    <Link className="text-primary-800 block w-full" to={element.path}>
+    <Link className="text-blue-800 block w-full" to={element.path}>
       {item}
     </Link>
   ) : (
-    <button className="text-primary-800 block w-full" onClick={element.action}>
+    <button className="text-blue-800 block w-full" onClick={element.action}>
       {item}
     </button>
   );

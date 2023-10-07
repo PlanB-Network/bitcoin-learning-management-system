@@ -43,13 +43,13 @@ export const Podcasts = () => {
                 }}
                 key={podcast.id}
               >
-                <div className="group-hover:bg-secondary-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
+                <div className="group-hover:bg-orange-400 z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125">
                   <img
                     className="mx-auto"
                     src={podcast.logo}
                     alt={podcast.name}
                   />
-                  <div className="group-hover:bg-secondary-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out">
+                  <div className="group-hover:bg-orange-400 absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out">
                     <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                       <li className={'pb-1 text-lg font-bold'}>
                         {podcast.name}

@@ -28,11 +28,11 @@ const classesBySize = {
 
 const classesByVariant = {
   primary:
-    'text-white bg-primary-700 hover:bg-primary-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
-  tertiary: 'bg-orange-800 text-white font-normal',
+    'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
+  tertiary: 'bg-orange-600 text-white font-normal',
   secondary:
-    'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-primary-100',
-  soft: 'bg-primary-50 text-primary-600 shadow-sm hover:bg-primary-100',
+    'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-100',
+  soft: 'bg-blue-50 text-blue-600 shadow-sm hover:bg-blue-100',
   text: '',
 };
 
