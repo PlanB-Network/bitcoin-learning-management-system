@@ -5,7 +5,8 @@ import { App } from './app';
 import { AppProvider } from './providers/app';
 // Internationalization
 import './utils/i18n';
-import { router } from './routes';
+
+import './styles/global.css';
 
 // Styles
 // TODO TRIGGER
