@@ -15,13 +15,12 @@ import curriculumImage from '../../../assets/courses/curriculum.png';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import { Button } from '../../../atoms/Button';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { coursesChapterRoute, coursesDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails = () => {
   const { courseId, language } = useParams({
-    from: coursesDetailsRoute.id,
+    from: '/courses/$courseId',
   });
 
   const navigate = useNavigate();
@@ -36,7 +35,7 @@ export const CourseDetails = () => {
     includeChapters: true,
   });
 
-  if (!course && isFetched) navigate({ to: '/misc/404' });
+  if (!course && isFetched) navigate({ to: '/404' });
 
   return (
     // TODO trigger <CourseLayout>
@@ -116,7 +115,7 @@ export const CourseDetails = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
-                  to={coursesChapterRoute.id}
+                  to={'/courses/$courseId/$chapterIndex'}
                   params={{
                     courseId,
                     chapterIndex: '1',
@@ -188,7 +187,7 @@ export const CourseDetails = () => {
                         size={20}
                       />
                       <Link
-                        to={coursesChapterRoute.id}
+                        to={'/courses/$courseId/$chapterIndex'}
                         params={{
                           courseId,
                           chapterIndex: chapter.chapter.toString(),
@@ -208,7 +207,7 @@ export const CourseDetails = () => {
                         <BsCircleFill className="mr-2 text-blue-300" size={7} />
                         <Link
                           className="text-blue-700"
-                          to={coursesChapterRoute.id}
+                          to={'/courses/$courseId/$chapterIndex'}
                           params={{
                             courseId,
                             chapterIndex: chapter.chapter.toString(),

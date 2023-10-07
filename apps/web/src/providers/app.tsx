@@ -24,6 +24,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
       <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
         <QueryClientProvider client={trpcQueryClient}>
           <RouterProvider router={router} />
+          {children}
         </QueryClientProvider>
       </trpc.Provider>
     </Provider>

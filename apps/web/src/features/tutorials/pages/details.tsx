@@ -4,12 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 import { TutorialLayout } from '../layout';
-import { tutorialDetailsRoute, tutorialsIndexRoute } from '../routes';
 
 export const TutorialDetails = () => {
   const { i18n } = useTranslation();
   const { tutorialId, language } = useParams({
-    from: tutorialDetailsRoute.id,
+    from: '/tutorials/$category/$tutorialId/$language',
   });
 
   const { data: tutorial } = trpc.content.getTutorial.useQuery({

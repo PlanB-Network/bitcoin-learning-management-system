@@ -7,7 +7,6 @@ import { JoinedCourse } from '@sovereign-university/types';
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
 import { compose, computeAssetCdnUrl } from '../../../utils';
-import { coursesDetailsRoute } from '../routes';
 
 interface CoursePreviewProps {
   course: JoinedCourse;
@@ -42,10 +41,7 @@ export const CoursePreview = ({
           {course.goal}
         </div>
         <div className="mt-5 flex w-full grow flex-row items-end justify-end self-end justify-self-end">
-          <Link
-            to={coursesDetailsRoute.fullPath}
-            params={{ courseId: course.id }}
-          >
+          <Link to={'/courses/$courseId'} params={{ courseId: course.id }}>
             <Button
               size="s"
               iconRight={<BsArrowRight />}

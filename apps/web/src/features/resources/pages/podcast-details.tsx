@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { useNavigate, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
@@ -11,7 +11,6 @@ import { Card } from '../../../atoms/Card';
 import { trpc } from '../../../utils';
 import { notFoundRoute } from '../../misc/routes';
 import { ResourceLayout } from '../layout';
-import { podcastDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -19,7 +18,7 @@ export const Podcast = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { podcastId, language } = useParams({
-    from: podcastDetailsRoute.id,
+    from: '/resources/podcast/$podcastId',
   });
 
   const { data: podcast, isFetched } = trpc.content.getPodcast.useQuery({
@@ -61,7 +60,7 @@ export const Podcast = () => {
                 />
                 <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                   {podcast?.podcast_url && (
-                    <Link to={podcast.podcast_url}>
+                    <a href={podcast.podcast_url}>
                       <Button
                         size={isScreenMd ? 's' : 'xs'}
                         variant="tertiary"
@@ -69,7 +68,7 @@ export const Podcast = () => {
                       >
                         {t('podcast.discover')}
                       </Button>
-                    </Link>
+                    </a>
                   )}
                 </div>
               </div>

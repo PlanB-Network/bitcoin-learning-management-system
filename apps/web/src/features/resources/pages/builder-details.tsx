@@ -12,7 +12,6 @@ import { Tag } from '../../../atoms/Tag';
 import { trpc } from '../../../utils';
 import { notFoundRoute } from '../../misc/routes';
 import { ResourceLayout } from '../layout';
-import { builderDetailsRoute, buildersRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -20,7 +19,7 @@ export const Builder = () => {
   const navigate = useNavigate();
 
   const { builderId } = useParams({
-    from: builderDetailsRoute.id,
+    from: '/resources/builder/$builderId',
   });
 
   const isScreenMd = useGreater('sm');
@@ -44,7 +43,7 @@ export const Builder = () => {
           <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
             {builder?.tags.map((tag) => (
               <Link
-                to={buildersRoute.id}
+                to={'/resources/builders'}
                 params={{
                   tag,
                 }}

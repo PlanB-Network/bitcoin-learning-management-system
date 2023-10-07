@@ -6,7 +6,6 @@ import { JoinedBook } from '@sovereign-university/types';
 
 import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
-import { bookDetailsRoute } from '../routes';
 
 export const Books = () => {
   const { t } = useTranslation();
@@ -38,7 +37,7 @@ export const Books = () => {
             <div key={book.id}>
               <Link
                 className="group z-10 m-auto mx-2 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
-                to={bookDetailsRoute.id}
+                to={'/resources/book/$bookId'}
                 params={{
                   bookId: book.id.toString(),
                   // language: book.language, TODO trigger

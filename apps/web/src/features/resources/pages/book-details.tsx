@@ -12,7 +12,6 @@ import { trpc } from '../../../utils';
 import { notFoundRoute } from '../../misc/routes';
 import { BookSummary } from '../components/book-summary';
 import { ResourceLayout } from '../layout';
-import { bookDetailsRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -21,7 +20,7 @@ export const Book = () => {
   const { t } = useTranslation();
 
   const { bookId, language } = useParams({
-    from: bookDetailsRoute.id,
+    from: '/resources/book/$bookId',
   });
   const isScreenMd = useGreater('sm');
 

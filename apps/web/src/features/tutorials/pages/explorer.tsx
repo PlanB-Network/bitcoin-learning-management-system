@@ -1,8 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import tutoRabbitPng from '../../../assets/tutorial-rabbit.png';
-import { tutorialCategoryRoute } from '../routes';
 import { TUTORIALS_CATEGORIES } from '../utils';
 
 export const TutorialExplorer = () => {
@@ -31,7 +29,7 @@ export const TutorialExplorer = () => {
           {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
             <Link
               key={tutorialCategory.name}
-              to={tutorialCategoryRoute.id}
+              to={'/tutorials/$category'}
               params={{ category: tutorialCategory.name }}
             >
               <div

@@ -5,17 +5,12 @@ import { useTranslation } from 'react-i18next';
 
 import { compose, computeAssetCdnUrl, trpc } from '../../../utils';
 import { TutorialLayout } from '../layout';
-import {
-  tutorialCategoryRoute,
-  tutorialDetailsRoute,
-  tutorialsIndexRoute,
-} from '../routes';
 import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
 
 export const TutorialCategory = () => {
   const { t, i18n } = useTranslation();
   const { category } = useParams({
-    from: tutorialCategoryRoute.id,
+    from: '/tutorials/$category',
   });
   const navigate = useNavigate();
 
@@ -33,7 +28,7 @@ export const TutorialCategory = () => {
   useEffect(() => {
     if (!TUTORIALS_CATEGORIES.some((c) => c.name === category)) {
       navigate({
-        to: tutorialsIndexRoute.id,
+        to: '/tutorials',
       });
     }
   }, [category, navigate]);
@@ -104,7 +99,7 @@ export const TutorialCategory = () => {
                         )
                         .map((tutorial) => (
                           <Link
-                            to={tutorialDetailsRoute.id}
+                            to={'/tutorials/$category/$tutorialId/$language'}
                             params={{
                               category: tutorial.category,
                               tutorialId: tutorial.id.toString(),

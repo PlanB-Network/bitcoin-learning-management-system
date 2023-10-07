@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
-import { podcastDetailsRoute } from '../routes';
 
 export const Podcasts = () => {
   const { t, i18n } = useTranslation();
@@ -38,7 +37,7 @@ export const Podcasts = () => {
             <div>
               <Link
                 className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
-                to={podcastDetailsRoute.id}
+                to={'/resources/podcast/$podcastId'}
                 params={{
                   podcastId: podcast.id.toString(),
                 }}

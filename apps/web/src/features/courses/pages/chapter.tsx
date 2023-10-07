@@ -13,11 +13,6 @@ import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { trpc } from '../../../utils/trpc';
 import { notFoundRoute } from '../../misc/routes';
-import {
-  coursesChapterRoute,
-  coursesDetailsRoute,
-  coursesIndexRoute,
-} from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -25,8 +20,9 @@ export const CourseChapter = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { courseId, language, chapterIndex } = useParams({
-    from: coursesChapterRoute.id,
+    from: '/courses/$courseId/$chapterIndex',
   });
+
   const isScreenMd = useGreater('sm');
 
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
@@ -74,8 +70,8 @@ export const CourseChapter = () => {
                   className="h-6"
                   to={
                     chapter.chapter === 1
-                      ? coursesDetailsRoute.id
-                      : coursesChapterRoute.id
+                      ? '/courses/$courseId'
+                      : '/courses/$courseId/$chapterIndex'
                   }
                   params={
                     chapter.chapter === 1
@@ -101,8 +97,8 @@ export const CourseChapter = () => {
                   className="h-6"
                   to={
                     chapter.chapter === chapter.course?.chapters?.length
-                      ? coursesDetailsRoute.id
-                      : coursesChapterRoute.id
+                      ? '/courses/$courseId'
+                      : '/courses/$courseId/$chapterIndex'
                   }
                   params={
                     chapter.chapter === chapter.course?.chapters?.length
@@ -133,7 +129,7 @@ export const CourseChapter = () => {
                     return (
                       <Link
                         className="h-4 grow"
-                        to={coursesChapterRoute.id}
+                        to={'/courses/$courseId/$chapterIndex'}
                         params={{
                           courseId,
                           chapterIndex: current.chapter.toString(),
@@ -196,7 +192,7 @@ export const CourseChapter = () => {
             {chapter.chapter !== chapter.course?.chapters?.length ? (
               <Link
                 className="flex w-full justify-end pt-10"
-                to={coursesChapterRoute.id}
+                to={'/courses/$courseId/$chapterIndex'}
                 params={{
                   courseId,
                   chapterIndex: (chapter.chapter + 1).toString(),
@@ -210,7 +206,7 @@ export const CourseChapter = () => {
             ) : (
               <Link
                 className="flex w-full justify-end pt-10"
-                to={coursesIndexRoute.id}
+                to={'/courses/$courseId'}
                 params={{
                   courseId,
                 }}
