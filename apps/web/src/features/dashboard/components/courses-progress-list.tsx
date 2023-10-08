@@ -4,7 +4,6 @@ import { CourseProgressExtended } from '@sovereign-university/types';
 
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
-import { coursesChapterRoute, coursesIndexRoute } from '../../courses/routes';
 
 export const CoursesProgressList = ({
   courses,
@@ -36,7 +35,7 @@ export const CoursesProgressList = ({
                 return (
                   <Link
                     className="h-2 grow rounded-r-full"
-                    to={coursesChapterRoute.id}
+                    to={'/courses/$courseId/$chapterIndex'}
                     params={{
                       courseId: course.course_id,
                       chapterIndex: String(index + 1),
@@ -62,7 +61,7 @@ export const CoursesProgressList = ({
               )}
             >
               <Link
-                to={coursesChapterRoute.id}
+                to={'/courses/$courseId/$chapterIndex'}
                 params={{
                   courseId: course.course_id,
                   chapterIndex: String(course.lastCompletedChapter.chapter + 1),
@@ -83,7 +82,7 @@ export const CoursesProgressList = ({
       ))
     ) : (
       <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic text-blue-800 md:rounded-none md:bg-transparent">
-        <Link to={coursesIndexRoute.id} className="text-orange-600">
+        <Link to={'/courses'} className="text-orange-600">
           Start a course
         </Link>{' '}
         to see your progress here!

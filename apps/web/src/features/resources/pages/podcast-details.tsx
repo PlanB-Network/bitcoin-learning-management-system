@@ -2,20 +2,21 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { useNavigate, useParams } from '@tanstack/react-router';
+import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
+import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils';
-import { notFoundRoute } from '../../misc/routes';
 import { ResourceLayout } from '../layout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Podcast = () => {
-  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
+
   const { t, i18n } = useTranslation();
   const { podcastId, language } = useParams({
     from: '/resources/podcast/$podcastId',
@@ -26,7 +27,7 @@ export const Podcast = () => {
     language: language ?? i18n.language,
   });
 
-  if (!podcast && isFetched) navigate({ to: notFoundRoute.id });
+  if (!podcast && isFetched) navigateTo404();
 
   const isScreenMd = useGreater('sm');
 

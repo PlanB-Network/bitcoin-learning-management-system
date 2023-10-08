@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
@@ -10,14 +10,14 @@ import { BsCheckLg } from 'react-icons/bs';
 import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
+import { useNavigateMisc } from '../../../hooks';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { trpc } from '../../../utils/trpc';
-import { notFoundRoute } from '../../misc/routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseChapter = () => {
-  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { courseId, language, chapterIndex } = useParams({
     from: '/courses/$courseId/$chapterIndex',
@@ -41,9 +41,7 @@ export const CourseChapter = () => {
     });
   };
 
-  if (!chapter && isFetched) {
-    navigate({ to: notFoundRoute.id });
-  }
+  if (!chapter && isFetched) navigateTo404();
 
   return (
     // <CourseLayout>
@@ -169,7 +167,7 @@ export const CourseChapter = () => {
                       <img
                         src={ProgressRabbit}
                         className="absolute inset-0 bottom-4 m-auto h-12 w-full"
-                        // alt={t('imagesAlt.')}
+                        alt=""
                       />
                     </div>
                   );

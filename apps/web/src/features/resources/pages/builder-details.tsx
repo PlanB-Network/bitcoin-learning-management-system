@@ -2,21 +2,21 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
 import { Card } from '../../../atoms/Card';
 import { Tag } from '../../../atoms/Tag';
+import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils';
-import { notFoundRoute } from '../../misc/routes';
 import { ResourceLayout } from '../layout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Builder = () => {
-  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
 
   const { builderId } = useParams({
     from: '/resources/builder/$builderId',
@@ -28,7 +28,7 @@ export const Builder = () => {
     language: 'en',
   });
 
-  if (!builder && isFetched) navigate({ to: notFoundRoute.id });
+  if (!builder && isFetched) navigateTo404();
 
   return (
     <ResourceLayout

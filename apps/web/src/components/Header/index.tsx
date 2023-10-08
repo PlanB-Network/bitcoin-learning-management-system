@@ -11,10 +11,6 @@ import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 
 import { JoinedCourse } from '@sovereign-university/types';
 
-import {
-  coursesDetailsRoute,
-  coursesIndexRoute,
-} from '../../features/courses/routes';
 import { useDisclosure } from '../../hooks/use-disclosure';
 import { Routes } from '../../routes/routes';
 import { trpc } from '../../utils/trpc';
@@ -69,7 +65,7 @@ export const Header = () => {
       const formatted = courses.map((course) => ({
         id: course.id,
         title: course.id.toUpperCase(),
-        path: `${coursesIndexRoute.fullPath}/${course.id}`,
+        path: `/courses/${course.id}`,
         icon: AiOutlineBook,
         description: course.name,
       }));

@@ -2,21 +2,21 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { useNavigate, useParams } from '@tanstack/react-router';
+import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
+import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils';
-import { notFoundRoute } from '../../misc/routes';
 import { BookSummary } from '../components/book-summary';
 import { ResourceLayout } from '../layout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
-  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
   const { t } = useTranslation();
 
   const { bookId, language } = useParams({
@@ -31,7 +31,7 @@ export const Book = () => {
     language,
   });
 
-  if (!book && isFetched) navigate({ to: notFoundRoute.id });
+  if (!book && isFetched) navigateTo404();
 
   // TODO: change when we have contributors
   const contributor = {

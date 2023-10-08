@@ -23,8 +23,6 @@ import Cloud from '../../assets/footer/cloud.svg';
 import Hill from '../../assets/footer/hill.svg';
 import Rabbit from '../../assets/footer/rabbit.svg';
 import Tree from '../../assets/footer/tree.svg';
-import { coursesIndexRoute } from '../../features/courses/routes';
-import { tutorialsIndexRoute } from '../../features/tutorials/routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -108,19 +106,13 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   </h4>
                   <ul className="flex flex-col space-y-1 text-sm font-light text-white">
                     <li>
-                      <Link to={coursesIndexRoute.id}>
-                        {t('words.courses')}
-                      </Link>
+                      <Link to={'/courses'}>{t('words.courses')}</Link>
                     </li>
                     <li>
-                      <Link to={coursesIndexRoute.id}>
-                        {t('words.resources')}
-                      </Link>
+                      <Link to={'/resources'}>{t('words.resources')}</Link>
                     </li>
                     <li>
-                      <Link to={tutorialsIndexRoute.id}>
-                        {t('words.tutorials')}
-                      </Link>
+                      <Link to={'/tutorials'}>{t('words.tutorials')}</Link>
                     </li>
                   </ul>
                 </div>

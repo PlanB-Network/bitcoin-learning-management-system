@@ -3,14 +3,8 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import { Routes } from '../../routes/routes';
 import { compose, trpc } from '../../utils';
 
-import {
-  tutorialCategoryRoute,
-  tutorialDetailsRoute,
-  tutorialsIndexRoute,
-} from './routes';
 import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils';
 
 export const TutorialLayout = ({
@@ -61,7 +55,7 @@ export const TutorialLayout = ({
                           }
                         />
                         <Link
-                          to={tutorialCategoryRoute.id}
+                          to={'/tutorials/$category'}
                           params={{
                             category: tutorialCategory.name,
                           }}
@@ -144,7 +138,9 @@ export const TutorialLayout = ({
                                               )}
                                             />
                                             <Link
-                                              to={tutorialDetailsRoute.id}
+                                              to={
+                                                '/tutorials/$category/$tutorialId/$language'
+                                              }
                                               params={{
                                                 category: tutorial.category,
                                                 tutorialId:

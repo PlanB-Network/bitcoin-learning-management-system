@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
@@ -14,6 +14,7 @@ import ReactMarkdown from 'react-markdown';
 import curriculumImage from '../../../assets/courses/curriculum.png';
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 import { Button } from '../../../atoms/Button';
+import { useNavigateMisc } from '../../../hooks';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -23,7 +24,7 @@ export const CourseDetails = () => {
     from: '/courses/$courseId',
   });
 
-  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
 
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
@@ -35,7 +36,7 @@ export const CourseDetails = () => {
     includeChapters: true,
   });
 
-  if (!course && isFetched) navigate({ to: '/404' });
+  if (!course && isFetched) navigateTo404();
 
   return (
     // TODO trigger <CourseLayout>
