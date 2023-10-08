@@ -90,9 +90,9 @@
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
       "moreToCome": ".... and more to come !",
+      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
+      "pageSubtitle": "Welcome to the core of the Sovereign University: the gate to the e-learning platform.",
       "pageTitle": "Courses",
-      "s1p1": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. Please look up at the courses index, organized in circles to adapt to anyone's path of learning.",
-      "s1t1": "Welcome to the core of the Sovereign University: the gate to the educational portal.",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
       "s2p3": "All our courses are 100% free so nothing can stop you.",
@@ -245,10 +245,30 @@
     "pageTitle": "The Podcast Portal"
   },
   "resources": {
+    "articles": {
+      "title": "Articles"
+    },
+    "books": {
+      "title": "Books"
+    },
+    "builders": {
+      "title": "Builders"
+    },
+    "conferences": {
+      "title": "Conferences"
+    },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "newsletters": {
+      "title": "Newsletters"
+    },
+    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
+    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
     "pageTitle": "Resources",
+    "podcasts": {
+      "title": "Podcasts"
+    },
     "publicGrade": "Public grade: {{grade}}/5"
   },
   "settings": {
@@ -293,6 +313,8 @@
       "shortDescription": "Solutions to operate a bitcoin node and join the network",
       "title": "Node"
     },
+    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
+    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
     "pageTitle": "Tutorials",
     "privacy": {
       "bitcoin": {

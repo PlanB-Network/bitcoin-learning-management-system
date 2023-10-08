@@ -1,126 +1,59 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import articleSvg from '../../../assets/resources/article.svg';
-import bookSvg from '../../../assets/resources/book.svg';
-import couchSvg from '../../../assets/resources/couch.svg';
-import microSvg from '../../../assets/resources/micro.svg';
-import newsletterSvg from '../../../assets/resources/newsletter.svg';
-import rabbitInLibrary from '../../../assets/resources/rabbit-in-library.svg';
-import { Routes } from '../../../routes/routes';
-import { compose } from '../../../utils';
+import { cn } from '@sovereign-university/ui';
 
-enum ResourceKinds {
-  Books,
-  Podcasts,
-  Builders,
-  Articles,
-  Newsletters,
-  Conferences,
-  /* Videos, */
-}
+import {
+  PageDescription,
+  PageHeader,
+  PageSubtitle,
+  PageTitle,
+} from '../../../components/PageHeader';
+import { RESOURCES_CATEGORIES } from '../utils';
 
 export const Resources = () => {
   const { t } = useTranslation();
 
-  const resourceKinds = [
-    {
-      kind: ResourceKinds.Books,
-      title: t('words.books'),
-      image: bookSvg,
-      route: Routes.Books,
-      unreleased: false,
-    },
-    {
-      kind: ResourceKinds.Builders,
-      title: t('words.builders'),
-      image: couchSvg,
-      route: Routes.Builders,
-      unreleased: false,
-    },
-    {
-      kind: ResourceKinds.Podcasts,
-      title: t('words.podcasts'),
-      image: microSvg,
-      route: Routes.Podcasts,
-      unreleased: false,
-    },
-    {
-      kind: ResourceKinds.Articles,
-      title: t('words.articles'),
-      image: articleSvg,
-      route: Routes.Article,
-      unreleased: true,
-    },
-    {
-      kind: ResourceKinds.Newsletters,
-      title: t('words.newsletters'),
-      image: newsletterSvg,
-      route: Routes.Newsletter,
-      unreleased: true,
-    },
-    {
-      kind: ResourceKinds.Conferences,
-      title: t('words.conferences'),
-      image: couchSvg,
-      route: Routes.Conferences,
-      unreleased: true,
-    },
-    /* {
-      kind: ResourceKinds.Videos,
-      title: t('words.videos'),
-      image: videoSvg,
-      route: Routes.Videos,
-    }, */
-  ];
-
   return (
-    // <MainLayout footerVariant="light">
     <div className="flex flex-col justify-center bg-gray-100">
-      <div className="relative mb-10 flex flex-col items-center bg-blue-900 px-5 pb-10 pt-8 text-white md:mb-40 md:pb-80 lg:px-16 lg:pb-60">
-        <div className="flex grid-cols-2 flex-col items-center justify-evenly md:grid md:pl-8 lg:space-x-5 lg:pl-12">
-          <div className="px-5 lg:px-0">
-            <h1 className="z-10 -ml-6 mb-5 text-[62px] font-light md:text-7xl lg:text-8xl xl:text-[112px]">
-              {t('resources.pageTitle')}
-            </h1>
-            <div className="space-y-6 text-justify text-base md:max-w-xs lg:max-w-sm xl:max-w-md">
-              <p>{t('resources.headerText')}</p>
-              <p>{t('resources.headerSignature')}</p>
-            </div>
-          </div>
-          <img
-            className="z-0 mb-10 mt-6 max-h-72 md:max-h-60 lg:max-h-80 xl:max-h-96"
-            src={rabbitInLibrary}
-            alt=""
-          />
-        </div>
-        <div className="inset-x-0 bottom-0 left-1/2 z-10 grid w-full grid-cols-1 gap-x-2 rounded-3xl bg-blue-700 px-12 py-8 shadow sm:place-items-center md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 md:grid-cols-2 md:justify-evenly lg:max-w-5xl lg:grid-cols-3">
-          {resourceKinds.map((resourceKind, i) => (
-            <Link key={i} to={resourceKind.route}>
+      <PageHeader>
+        <PageTitle>{t('resources.pageTitle')}</PageTitle>
+        <PageSubtitle>{t('resources.pageSubtitle')}</PageSubtitle>
+        <PageDescription>{t('resources.pageDescription')}</PageDescription>
+
+        <div className="grid w-full grid-cols-2 bg-blue-900 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
+          {RESOURCES_CATEGORIES.map((resourceCategory) => (
+            <Link
+              key={resourceCategory.name}
+              to={`/resources/${resourceCategory.name}`}
+            >
               <div
-                className={compose(
-                  'hover:bg-blue-600 ld:my-4 relative my-2 box-content flex h-16 w-fit cursor-pointer flex-row flex-wrap items-center rounded-lg p-2 pr-20 duration-300 sm:h-24 sm:w-60',
-                  resourceKind.unreleased ? 'opacity-50' : 'opacity-100',
-                )}
-                onClick={(e) => resourceKind.unreleased && e.preventDefault()}
-                key={resourceKind.kind}
+                onClick={(event) =>
+                  resourceCategory.unreleased && event.preventDefault()
+                }
               >
-                <div className="relative z-0 flex h-20 w-20 rounded-full bg-orange-400 sm:h-24 sm:w-24">
-                  <img
-                    className="absolute bottom-0 left-[-0.75em] m-auto h-12 sm:h-16"
-                    src={resourceKind.image}
-                    alt=""
-                  />
+                <div
+                  className={cn(
+                    'group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4 sm:p-2 duration-300',
+                    resourceCategory.unreleased ? 'opacity-50' : 'opacity-100',
+                  )}
+                >
+                  <div className="relative flex h-12 w-12 shrink-0 rounded-full bg-orange-500 sm:h-20 sm:w-20">
+                    <img
+                      className="absolute inset-0 m-auto h-8 sm:h-14"
+                      src={resourceCategory.image}
+                      alt=""
+                    />
+                  </div>
+                  <h3 className="text-base font-semibold text-white group-hover:text-orange-500 sm:text-xl lg:text-2xl">
+                    {t(`resources.${resourceCategory.name}.title`)}
+                  </h3>
                 </div>
-                <h3 className="absolute left-[3em] top-[1em] z-10 text-xl text-white sm:text-2xl">
-                  {resourceKind.title}
-                </h3>
               </div>
             </Link>
           ))}
         </div>
-      </div>
+      </PageHeader>
     </div>
-    // </MainLayout>
   );
 };

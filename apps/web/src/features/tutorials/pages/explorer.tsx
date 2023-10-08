@@ -1,63 +1,47 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import {
+  PageDescription,
+  PageHeader,
+  PageSubtitle,
+  PageTitle,
+} from '../../../components/PageHeader';
 import { TUTORIALS_CATEGORIES } from '../utils';
 
 export const TutorialExplorer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className=" flex flex-col justify-center bg-gray-100">
-      <div className="relative mb-10 flex flex-col items-center bg-blue-900 px-5 pb-10 pt-8 text-white md:mb-80 md:pb-80 lg:mb-60 lg:px-16 lg:pb-60">
-        <div className="flex grid-cols-2 flex-col flex-wrap items-center justify-evenly md:grid md:pl-8 lg:space-x-5 lg:pl-12">
-          <div className="px-5 lg:px-0">
-            <h1 className="z-10 -ml-6 mb-5 text-[62px] font-light md:text-7xl lg:text-8xl xl:text-[112px]">
-              {t('tutorials.pageTitle')}
-            </h1>
-            <div className="space-y-6 text-justify text-base md:max-w-xs lg:max-w-sm xl:max-w-md">
-              <p>{t('tutorials.headerText')}</p>
-              <p>{t('tutorials.headerSignature')}</p>
-            </div>
-          </div>
-          <img
-            className="z-0 mb-10 mt-6 max-h-72 md:max-h-60 lg:max-h-80 xl:max-h-96"
-            src={tutoRabbitPng}
-            alt=""
-          />
-        </div>
-        <div className="inset-x-0 bottom-0 left-1/2 z-10 flex w-full max-w-min flex-row flex-wrap justify-evenly rounded-3xl bg-blue-700 px-12 py-8 shadow md:absolute md:max-w-3xl md:-translate-x-1/2 md:translate-y-1/2 lg:max-w-5xl">
+    <div className="flex flex-col justify-center bg-gray-100">
+      <PageHeader>
+        <PageTitle>{t('tutorials.pageTitle')}</PageTitle>
+        <PageSubtitle>{t('tutorials.pageSubtitle')}</PageSubtitle>
+        <PageDescription>{t('tutorials.pageDescription')}</PageDescription>
+
+        <div className="grid w-full grid-cols-2 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
           {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
             <Link
               key={tutorialCategory.name}
               to={'/tutorials/$category'}
               params={{ category: tutorialCategory.name }}
             >
-              <div
-                className="relative my-4 box-content flex h-24 w-64 cursor-pointer flex-row rounded-lg p-2 duration-300 hover:bg-blue-600"
-                key={tutorialCategory.name}
-              >
-                <div className="absolute z-0 flex h-24 w-24 rounded-full bg-orange-400">
+              <div className="group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4 sm:p-2">
+                <div className="relative flex h-12 w-12 shrink-0 rounded-full bg-orange-500 sm:h-20 sm:w-20">
                   <img
-                    className="absolute -left-1/4 bottom-0 m-auto h-14"
+                    className="absolute inset-0 m-auto h-8 sm:h-14"
                     src={tutorialCategory.image}
                     alt=""
                   />
                 </div>
-                <div className="z-10 -ml-8 mt-4 flex flex-row items-center">
-                  <div className="ml-32 pl-2 text-white">
-                    <h3 className="absolute left-[2.5em] top-[1em] text-2xl">
-                      {t(`tutorials.${tutorialCategory.name}.title`)}
-                    </h3>
-                    <p className="absolute left-[6em] top-[4.5em] text-xs italic">
-                      {t(`tutorials.${tutorialCategory.name}.shortDescription`)}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-white group-hover:text-orange-500 sm:text-xl lg:text-2xl">
+                  {t(`tutorials.${tutorialCategory.name}.title`)}
+                </h3>
               </div>
             </Link>
           ))}
         </div>
-      </div>
+      </PageHeader>
     </div>
   );
 };

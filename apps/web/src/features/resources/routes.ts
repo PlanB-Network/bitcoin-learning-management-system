@@ -57,6 +57,21 @@ export const podcastDetailsRoute = new Route({
   component: Podcast,
 });
 
+export const articlesRoute = new Route({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/articles',
+});
+
+export const newslettersRoute = new Route({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/newsletters',
+});
+
+export const conferencesRoute = new Route({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/conferences',
+});
+
 export const resourcesRoutes = resourcesRootRoute.addChildren([
   resourcesIndexRoute,
   booksRoute,
@@ -65,4 +80,8 @@ export const resourcesRoutes = resourcesRootRoute.addChildren([
   builderDetailsRoute,
   podcastsRoute,
   podcastDetailsRoute,
+  // Later
+  articlesRoute,
+  newslettersRoute,
+  conferencesRoute,
 ]);

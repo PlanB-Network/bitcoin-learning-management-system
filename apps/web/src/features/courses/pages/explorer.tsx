@@ -1,5 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
+import {
+  PageDescription,
+  PageHeader,
+  PageSubtitle,
+  PageTitle,
+} from '../../../components/PageHeader';
 import { trpc } from '../../../utils/trpc';
 import { CoursePreview } from '../components/coursePreview';
 import { Course, SolarSystem } from '../components/solarSystem';
@@ -86,20 +92,19 @@ export const CoursesExplorer = () => {
   return (
     // TODO TRIGGER put dark footer
     // <MainLayout footerVariant="dark">
-    <div className="flex w-full flex-col items-center justify-center bg-blue-900 px-5">
-      <div className="flex flex-col items-center justify-center pt-8 text-white lg:max-w-3xl">
-        <h1 className="-ml-4 w-full text-left text-[62px] font-light md:text-[128px] lg:-ml-14">
-          {t('courses.explorer.pageTitle')}
-        </h1>
-        <div className="space-y-6 text-justify text-base lg:text-lg">
-          <p className="font-bold">{t('courses.explorer.s1t1')}</p>
-          <p>{t('courses.explorer.s1p1')}</p>
-        </div>
-      </div>
+    <div className="flex w-full flex-col items-center justify-center bg-blue-900">
+      <PageHeader>
+        <PageTitle>{t('courses.explorer.pageTitle')}</PageTitle>
+        <PageSubtitle>{t('courses.explorer.pageSubtitle')}</PageSubtitle>
+        <PageDescription>
+          {t('courses.explorer.pageDescription')}
+        </PageDescription>
+      </PageHeader>
+
       <div className="flex w-full flex-col items-center bg-blue-900 md:h-full">
         <SolarSystem courses={coursesWithUnreleased} />
       </div>
-      <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
+      <div className="flex max-w-3xl flex-col items-center justify-center px-5 pt-8 text-white">
         <div className="mb-16 flex w-full flex-col">
           <h3 className="mb-5 text-xl font-semibold">
             {t('courses.explorer.s2t1')}
@@ -131,14 +136,14 @@ export const CoursesExplorer = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 bg-blue-900 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+      <div className="grid grid-cols-1 bg-blue-900 px-5 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
         {coursesInLanguage
           ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
           .map((course) => (
             <CoursePreview course={course} className="h-auto" key={course.id} />
           ))}
       </div>
-      <div className="flex max-w-3xl flex-col items-center justify-center pt-8 text-white">
+      <div className="flex max-w-3xl flex-col items-center justify-center px-5 pt-8 text-white">
         <div className="w-full bg-blue-900 pb-6 pt-3 text-right text-orange-700">
           {t('courses.explorer.moreToCome')}
         </div>
