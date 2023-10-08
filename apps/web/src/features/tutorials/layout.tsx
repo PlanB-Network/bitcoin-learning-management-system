@@ -173,7 +173,7 @@ export const TutorialLayout = ({
             )}
         </div>
       </div>
-      <div className="col-span-4 lg:col-span-3 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
+      <div className="col-span-4 lg:col-span-3 lg:max-w-3xl xl:max-w-none xl:pr-16 2xl:col-span-2 2xl:pr-0">
         {children}
       </div>
     </div>
