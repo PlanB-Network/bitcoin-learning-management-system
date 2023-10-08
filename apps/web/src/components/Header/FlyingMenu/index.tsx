@@ -2,7 +2,6 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
 import headerImage from '../../../assets/lapin-diplome.png';
-import { Routes } from '../../../routes/routes';
 import { MetaElements } from '../MetaElements';
 import { NavigationSection } from '../props';
 

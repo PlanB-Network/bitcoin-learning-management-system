@@ -8,6 +8,7 @@ import { IoLogOutOutline } from 'react-icons/io5';
 
 import { Button } from '../../../atoms/Button';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { userSlice } from '../../../store';
 import { LanguageSelector } from '../LanguageSelector';
 
 export interface MetaElementsProps {
@@ -65,10 +66,11 @@ export const MetaElements = ({
       {isLoggedIn && isMobile && (
         <div
           className="text-white"
-          // TODO TRIGGERonClick={() => {
-          //   dispatch(userSlice.actions.logout());
-          //   navigate('/');
-          // }}
+          // TODO: Trigger
+          onClick={() => {
+            dispatch(userSlice.actions.logout());
+            navigate({ to: '/' });
+          }}
         >
           <IoLogOutOutline size={28} />
         </div>

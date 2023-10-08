@@ -71,7 +71,7 @@ export const TextInput = ({
 
   return (
     <div className={compose('mx-4 my-2', className ?? '')}>
-      <div className="items-c flex flex-col justify-between px-1 text-center">
+      <div className="flex flex-col justify-between px-1 text-center">
         <label
           htmlFor="email"
           className="mb-1 block text-lg font-normal leading-6 text-gray-600"

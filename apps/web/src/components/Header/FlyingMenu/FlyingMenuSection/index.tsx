@@ -33,6 +33,9 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
             fontWeight,
           )}
           to={section.path}
+          /* TODO: fix */
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          params={{} as any}
         >
           {section.title}
         </Link>

@@ -6,14 +6,10 @@ import { Header } from '../components/Header';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import { compose } from '../utils';
 
-// Create a root route
-export const rootRoute = new RootRoute({
-  component: Root,
-});
-
-function Root() {
+// eslint-disable-next-line react-refresh/only-export-components
+const Root = () => {
   const box = useRef<HTMLDivElement | null>(null);
-  const variant = '';
+  // const variant = '';
 
   return (
     <div
@@ -37,4 +33,9 @@ function Root() {
       <ScrollToTopButton />
     </div>
   );
-}
+};
+
+// Create a root route
+export const rootRoute = new RootRoute({
+  component: Root,
+});

@@ -85,7 +85,7 @@ export const Dashboard = () => {
             icon={<IoLogOutOutline size={28} />}
             onClick={() => {
               dispatch(userSlice.actions.logout());
-              navigate('/');
+              navigate({ to: '/' });
             }}
           />
         </div>
@@ -107,6 +107,7 @@ export const Dashboard = () => {
                     src={RabbitFace}
                     className="scale-125"
                     // TODO TRIGGER  viewBox="-53 150 300 300"
+                    alt=""
                   />
                 </div>
               </div>
@@ -141,7 +142,7 @@ export const Dashboard = () => {
               icon={<IoLogOutOutline size={20} />}
               onClick={() => {
                 dispatch(userSlice.actions.logout());
-                navigate('/');
+                navigate({ to: '/' });
               }}
             />
           </div>

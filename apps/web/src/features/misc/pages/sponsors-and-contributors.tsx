@@ -76,7 +76,7 @@ export const SponsorsAndContributors = () => {
           <h2 className="my-8 w-full px-4 py-1">{t('about.pageSubtitle')}</h2>
           <Link
             className="group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md bg-orange-400 px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
-            to="/learn-more"
+            to="/"
             style={{ fontSize: '20px', padding: '10px 20px' }}
           >
             {t('about.headerLink')}
@@ -96,11 +96,12 @@ export const SponsorsAndContributors = () => {
               ;
               <div className="grid max-w-6xl grid-cols-6">
                 {twitterProfile.map((profile, id) => (
-                  <Link
+                  <a
                     className="group m-auto mx-6 mb-8 h-fit w-32 delay-100 hover:z-20 hover:delay-0"
-                    to={profile.link}
+                    href={profile.link}
                     target="_blank"
                     key={id}
+                    rel="noreferrer"
                   >
                     <div className="relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-orange-400">
                       <img
@@ -108,13 +109,13 @@ export const SponsorsAndContributors = () => {
                         src={`${profile.image}`} // Placeholder for profile image URL
                         alt={`Profile ${id + 1}`}
                       />
-                      <p className="wrap align-center inset-y-end absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
+                      <p className="absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
                         <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                           {`${profile.name}`}
                         </span>
                       </p>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
               {index % 2 === 1 && Math.floor(index / 2) < thanks.length && (

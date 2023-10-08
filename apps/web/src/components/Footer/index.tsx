@@ -13,6 +13,8 @@ import {
   BsYoutube,
 } from 'react-icons/bs';
 
+import { cn } from '@sovereign-university/ui';
+
 import BackRabbit from '../../assets/footer/back_rabbit.svg';
 import BackRabbit2 from '../../assets/footer/back_rabbit_2.svg';
 import BigTree from '../../assets/footer/big_tree.svg';
@@ -23,7 +25,6 @@ import Rabbit from '../../assets/footer/rabbit.svg';
 import Tree from '../../assets/footer/tree.svg';
 import { coursesIndexRoute } from '../../features/courses/routes';
 import { tutorialsIndexRoute } from '../../features/tutorials/routes';
-import { compose } from '../../utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -34,29 +35,29 @@ interface FooterProps {
 
 const Media = ({ className = '', size = 30 }) => (
   <div
-    className={compose(
+    className={cn(
       'flex flex-row place-items-center space-x-6 text-sm text-white',
       className,
     )}
   >
-    <Link to={'https://www.youtube.com/@DecouvreBitcoin'}>
+    <a href="https://www.youtube.com/@DecouvreBitcoin">
       <BsYoutube size={size + 5} />
-    </Link>
-    <Link to={'https://twitter.com/DecouvreBitcoin'}>
+    </a>
+    <a href="https://twitter.com/DecouvreBitcoin">
       <BsTwitter size={size} />
-    </Link>
-    <Link to={'https://facebook.com/decouvreBitcoin'}>
+    </a>
+    <a href="https://facebook.com/decouvreBitcoin">
       <BsFacebook size={size} />
-    </Link>
-    <Link to={'https://www.instagram.com/rogzy_21M'}>
+    </a>
+    <a href="https://www.instagram.com/rogzy_21M">
       <BsInstagram size={size} />
-    </Link>
-    <Link to={'https://discord.gg/q9CFPmRNAD'}>
+    </a>
+    <a href="https://discord.gg/q9CFPmRNAD">
       <BsDiscord size={size} />
-    </Link>
-    <Link to={'https://github.com/DecouvreBitcoin'}>
+    </a>
+    <a href="https://github.com/DecouvreBitcoin">
       <BsGithub size={size} />
-    </Link>
+    </a>
   </div>
 );
 
@@ -68,25 +69,34 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
     <footer className="w-full">
       {isScreenMd && (
         <div
-          className={compose(
+          className={cn(
             'relative flex w-full flex-col pt-10',
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
           )}
         >
           <div
-            className={compose(
+            className={cn(
               'relative flex w-full flex-col pt-10',
               color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
             )}
           >
-            <img src={City} className="z-10 m-auto mb-6 h-fit w-1/2 self-end" />
-            <img src={Hill} className="absolute bottom-0  w-full text-clip" />
+            <img
+              src={City}
+              className="z-10 m-auto mb-6 h-fit w-1/2 self-end"
+              alt=""
+            />
+            <img
+              src={Hill}
+              className="absolute bottom-0  w-full text-clip"
+              alt=""
+            />
             <img
               src={Cloud}
-              className={compose(
+              className={cn(
                 'absolute m-auto left-20 top-20 w-32',
                 variant === 'light' ? 'text-gray-200' : 'text-gray-300',
               )}
+              alt=""
             />
           </div>
           <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-900">
@@ -156,35 +166,43 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                 <h4 className="text-xs font-semibold text-white">
                   {t('words.termsAndConditions')}
                 </h4>
-                <Link to={'/bitcoin.pdf'} target="_blank">
+                <a href="/bitcoin.pdf" target="_blank">
                   <h4 className="text-xs font-semibold text-white">
                     {t('words.bitcoinWhitepaper')}
                   </h4>
-                </Link>
+                </a>
               </div>
             </div>
             <img
               src={Rabbit}
               className="absolute -right-2 top-24 z-10 m-auto h-16"
+              alt=""
             />
             <img
               src={Tree}
               className="absolute -left-20 -top-44 m-auto h-80 w-[25%] scale-x-[-1]"
+              alt=""
             />
             <img
               src={Tree}
               className="absolute -top-16 right-0 z-10 m-auto h-80 w-[25%]"
+              alt=""
             />
             <img
               src={BigTree}
               className="absolute -top-48 right-0 m-auto h-80 w-[25%]"
+              alt=""
             />
             <div className="flex w-full flex-row justify-center space-x-3 self-center overflow-hidden pb-3">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex flex-row space-x-3">
-                  <img src={BackRabbit} className="h-20 w-fit" />
-                  <img src={BackRabbit2} className="h-20 w-fit" />
-                  <img src={BackRabbit} className="h-20 w-fit scale-x-[-1]" />
+                  <img src={BackRabbit} className="h-20 w-fit" alt="" />
+                  <img src={BackRabbit2} className="h-20 w-fit" alt="" />
+                  <img
+                    src={BackRabbit}
+                    className="h-20 w-fit scale-x-[-1]"
+                    alt=""
+                  />
                 </div>
               ))}
             </div>
@@ -193,36 +211,41 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       )}
       {!isScreenMd && (
         <div
-          className={compose(
+          className={cn(
             'relative flex w-full flex-col pt-10',
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
           )}
         >
           <img
             src={Cloud}
-            className={compose(
+            className={cn(
               'absolute left-16 top-10 w-20',
               variant === 'light' ? 'text-gray-200' : 'text-gray-300',
             )}
+            alt=""
           />
-          <img src={City} className="relative z-10 -mb-5 h-fit w-full " />
+          <img
+            src={City}
+            className="relative z-10 -mb-5 h-fit w-full "
+            alt=""
+          />
           <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-900 px-10 pt-20 text-white">
             <div className="space-y-2 text-left text-xl">
               <Media className="mb-7 px-1" />
               <h4>
-                <Link to={''}>{t('words.home')}</Link>
+                <Link to={'/'}>{t('words.home')}</Link>
               </h4>
               <h4>
-                <Link to={''}>{t('words.about')}</Link>
+                <Link to={'/manifesto'}>{t('words.about')}</Link>
               </h4>
               <h4 className="text-white/50">{t('words.sponsorUs')}</h4>
               <h5 className="pt-6 text-base font-light text-white/50">
                 {t('words.termsAndConditions')}
               </h5>
               <h5 className="pt-2 text-base font-light">
-                <Link to={'/bitcoin.pdf'} target="_blank">
+                <a href="/bitcoin.pdf" target="_blank">
                   {t('words.bitcoinWhitepaper')}
-                </Link>
+                </a>
               </h5>
             </div>
           </div>

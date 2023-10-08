@@ -17,17 +17,17 @@ export const MenuElement = ({ element }: MenuElementProps) => {
         {element.icon && (
           <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
             <element.icon
-              className="h-6 w-6 text-gray-600 group-hover:text-blue-700"
+              className="h-6 w-6 text-blue-700 group-hover:text-blue-700"
               aria-hidden="true"
             />
           </div>
         )}
         <div className="flex flex-col items-start justify-center">
-          <h5 className="text-left text-sm font-semibold text-gray-600">
+          <h5 className="text-left text-sm font-semibold text-blue-700">
             {element.title}
           </h5>
           {element.description && (
-            <p className="mt-1 text-left text-xs text-gray-600">
+            <p className="mt-1 text-left text-xs text-blue-700">
               {element.description}
             </p>
           )}
