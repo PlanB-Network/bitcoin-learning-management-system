@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { CategoryIcon } from '../../../components/CategoryIcon';
 import {
   PageDescription,
   PageHeader,
@@ -27,13 +28,7 @@ export const TutorialExplorer = () => {
               params={{ category: tutorialCategory.name }}
             >
               <div className="group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4 sm:p-2">
-                <div className="relative flex h-12 w-12 shrink-0 rounded-full bg-orange-500 sm:h-20 sm:w-20">
-                  <img
-                    className="absolute inset-0 m-auto h-8 sm:h-14"
-                    src={tutorialCategory.image}
-                    alt=""
-                  />
-                </div>
+                <CategoryIcon src={tutorialCategory.image} />
                 <h3 className="text-lg font-semibold text-white group-hover:text-orange-500 sm:text-xl lg:text-2xl">
                   {t(`tutorials.${tutorialCategory.name}.title`)}
                 </h3>

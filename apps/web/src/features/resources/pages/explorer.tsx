@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
+import { CategoryIcon } from '../../../components/CategoryIcon';
 import {
   PageDescription,
   PageHeader,
@@ -38,13 +39,7 @@ export const Resources = () => {
                     resourceCategory.unreleased ? 'opacity-50' : 'opacity-100',
                   )}
                 >
-                  <div className="relative flex h-12 w-12 shrink-0 rounded-full bg-orange-500 sm:h-20 sm:w-20">
-                    <img
-                      className="absolute inset-0 m-auto h-8 sm:h-14"
-                      src={resourceCategory.image}
-                      alt=""
-                    />
-                  </div>
+                  <CategoryIcon src={resourceCategory.image} />
                   <h3 className="text-base font-semibold text-white group-hover:text-orange-500 sm:text-xl lg:text-2xl">
                     {t(`resources.${resourceCategory.name}.title`)}
                   </h3>
