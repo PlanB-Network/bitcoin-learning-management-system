@@ -9,9 +9,14 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/web',
 
+  assetsInclude: ['../../libs/ui/src/assets'],
+
   server: {
     port: 4200,
     host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
+    fs: {
+      allow: ['../../libs/ui/src/assets'],
+    },
   },
 
   preview: {

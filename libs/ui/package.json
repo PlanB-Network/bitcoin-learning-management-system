@@ -1,8 +1,0 @@
-{
-  "name": "@sovereign-university/ui",
-  "version": "0.0.0",
-  "type": "module",
-  "exports": {
-    "./styles/global.css": "./styles/global.css"
-  }
-}

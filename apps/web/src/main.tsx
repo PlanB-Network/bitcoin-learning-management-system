@@ -6,11 +6,10 @@ import { AppProvider } from './providers/app';
 // Internationalization
 import './utils/i18n';
 
-import './styles/global.css';
-
 // Styles
 // TODO TRIGGER
-//import '@sovereign-university/ui/styles/global.css';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import '../../../libs/ui/src/styles/global.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
