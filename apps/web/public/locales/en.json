@@ -275,6 +275,13 @@
     "changePassword": "Change password"
   },
   "tutorials": {
+    "details": {
+      "madeBy": "This tutorial has been made by",
+      "source": "Original source : ",
+      "tipTooltip": "Like it? Tip.",
+      "enjoyed": "Enjoyed this tutorial?",
+      "checkAuthor": "Check out the author's other contributions and support his work."
+    },
     "exchange": {
       "centralized": {
         "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."

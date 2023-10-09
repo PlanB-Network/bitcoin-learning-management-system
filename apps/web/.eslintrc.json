@@ -15,7 +15,8 @@
           {
             "config": "apps/web/tailwind.config.js"
           }
-        ]
+        ],
+        "import/order": "warn"
       }
     },
     {

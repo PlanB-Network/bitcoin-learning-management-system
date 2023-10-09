@@ -13,6 +13,7 @@
     "@octokit/webhooks-methods": "^4.0.0",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@react-hooks-library/core": "^0.5.1",
     "@reduxjs/toolkit": "^1.9.7",
     "@swc/helpers": "0.5.2",
