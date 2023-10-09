@@ -13,10 +13,10 @@ interface CoursePreviewProps {
   className?: string;
 }
 
-export const CoursePreview = ({
+export default function CoursePreview({
   course,
   className = '',
-}: CoursePreviewProps) => {
+}: CoursePreviewProps) {
   const { t } = useTranslation();
 
   return (
@@ -55,4 +55,4 @@ export const CoursePreview = ({
       </div>
     </Card>
   );
-};
+}

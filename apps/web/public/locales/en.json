@@ -107,6 +107,16 @@
       "by": "by {{teacher}}",
       "letsgo": "Let's go"
     },
+    "quizz": {
+      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
+      "quizz": "Quizz",
+      "quizzResults": "Quizz results",
+      "quizzReview": "Quizz review",
+      "resultPerfect": "Absolutely perfect ! Congrats !",
+      "resultCongrats": "Congratulations, you did well !",
+      "resultNotBad": "Not too bad !",
+      "resultItsOk": "Don't give up, you'll do better next time !"
+    },
     "unreleased": {
       "colcardAndSparrow": "Coldcard et Sparrow",
       "financeIntroduction": "Introduction à la finance",

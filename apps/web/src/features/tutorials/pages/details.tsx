@@ -1,5 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
-
 import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 

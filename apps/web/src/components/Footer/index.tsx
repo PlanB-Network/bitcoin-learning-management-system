@@ -1,5 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
-
 import {
   BreakPointHooks,
   breakpointsTailwind,

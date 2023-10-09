@@ -109,6 +109,9 @@ const baseConfig = {
         800: '#B2941A',
         900: '#957B14',
       },
+      grayblue: {
+        300: "#B6BFD3"
+      }
     },
     extend: {
       colors: {

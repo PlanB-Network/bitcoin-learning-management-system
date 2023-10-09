@@ -8,7 +8,7 @@ import {
   PageTitle,
 } from '../../../components/PageHeader';
 import { trpc } from '../../../utils/trpc';
-import { CoursePreview } from '../components/coursePreview';
+import CoursePreview from '../components/coursePreview';
 import { Course, SolarSystem } from '../components/solarSystem';
 
 export const CoursesExplorer = () => {

@@ -1,5 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
-
 import NostrIcon from '../../../assets/icons/nostr.svg?react';
 import TwitterIcon from '../../../assets/icons/twitter.svg?react';
 import WebIcon from '../../../assets/icons/web.svg?react';
