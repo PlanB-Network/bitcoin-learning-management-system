@@ -7,12 +7,12 @@
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "production",
       "options": {
         "platform": "node",
         "outputPath": "dist/apps/api",
         "format": ["cjs"],
-        "bundle": true,
+        "bundle": false,
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
         "assets": [
@@ -70,5 +70,5 @@
       "command": "docker build -f apps/api/Dockerfile . -t university-api"
     }
   },
-  "tags": []
+  "tags": ["back"]
 }

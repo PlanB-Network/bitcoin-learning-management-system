@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "react-refresh"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -41,7 +41,7 @@
             "newlines-between": "always",
             "pathGroups": [
               {
-                "pattern": "@sovereign-academy/**",
+                "pattern": "@sovereign-university/**",
                 "group": "internal",
                 "position": "before"
               }
@@ -58,7 +58,8 @@
             "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
             "allowSeparatedGroups": false
           }
-        ]
+        ],
+        "react-refresh/only-export-components": "warn"
       }
     },
     {
@@ -69,9 +70,11 @@
           "typescript": {
             "alwaysTryTypes": true,
             "project": [
+              "tsconfig.base.json",
+              "*/*/*/tsconfig.*?.json",
+              "*/*/*/tsconfig.json",
               "*/*/tsconfig.*?.json",
-              "*/*/tsconfig.json",
-              "tsconfig.base.json"
+              "*/*/tsconfig.json"
             ]
           },
           "node": {

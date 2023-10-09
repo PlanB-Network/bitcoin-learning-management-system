@@ -1,0 +1,24 @@
+{
+  "name": "types",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/types/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/types/**/*.ts"]
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "sh ./scripts/generate-db-types.sh",
+        "cwd": "libs/types"
+      }
+    }
+  },
+  "tags": []
+}

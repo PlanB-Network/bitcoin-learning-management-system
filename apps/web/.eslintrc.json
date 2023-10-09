@@ -1,0 +1,30 @@
+{
+  "plugins": ["tailwindcss"],
+  "extends": [
+    "plugin:@nx/react",
+    "../../.eslintrc.json",
+    "plugin:tailwindcss/recommended"
+  ],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "tailwindcss/no-custom-classname": [
+          1,
+          {
+            "config": "apps/web/tailwind.config.js"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
+}

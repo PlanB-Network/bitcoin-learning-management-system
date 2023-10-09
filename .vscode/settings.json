@@ -11,7 +11,7 @@
   },
   "settings": {
     "i18n-ally.keystyle": "nested",
-    "i18n-ally.localesPaths": ["apps/front/public/locales"],
+    "i18n-ally.localesPaths": ["apps/web/public/locales"],
     "i18n-ally.autoDetection": true,
     "i18n-ally.enabledFrameworks": ["react"],
     "i18n-ally.indent": 2,

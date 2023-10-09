@@ -1,0 +1,101 @@
+version: '3.7'
+
+x-defaults: &defaults
+  restart: always
+  init: true
+  env_file:
+    - .env
+
+  environment: &environment
+    DOCKER: true
+    NODE_ENV: development
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_USER: postgres
+    POSTGRES_DB: postgres
+    POSTGRES_HOST: postgres
+    POSTGRES_PORT: 5432
+
+  logging:
+    driver: 'json-file'
+    options:
+      max-size: '5m'
+      max-file: '10'
+      tag: '{{.Name}}'
+
+  healthcheck: &healthcheck
+    interval: 15s
+    timeout: 7s
+    retries: 3
+    start_period: 10s
+
+x-base: &base
+  build: .
+
+  volumes:
+    - .:/app
+    - /app/node_modules
+
+services:
+  postgres:
+    <<: *defaults
+    image: postgres:15.4-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '5432']
+
+  cdn:
+    <<: *defaults
+    image: nginx:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf
+      - cdn:/var/www/cdn
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '80']
+
+  api:
+    <<: [*defaults, *base]
+    command: pnpm nx run api:serve
+    ports:
+      - 3000:3000
+    environment:
+      <<: *environment
+      HOST: 0.0.0.0
+    volumes:
+      - .:/app
+      - cdn:$CDN_PATH
+      - /app/node_modules
+    depends_on:
+      - postgres
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '3000']
+
+  front:
+    <<: [*defaults, *base]
+    command: pnpm nx run web:serve
+    ports:
+      - 4200:4200
+      - 4300:4300
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '4200']
+
+  # storybook:
+  #   <<: [*defaults, *base]
+  #   command: pnpm nx run ui:storybook
+  #   ports:
+  #     - 4400:4400
+  #   healthcheck:
+  #     <<: *healthcheck
+  #     test: ['CMD', 'nc', '-zv', 'localhost', '4400']
+
+volumes:
+  postgres:
+  cdn:

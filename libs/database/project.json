@@ -1,0 +1,26 @@
+{
+  "name": "database",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/database/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/database/**/*.ts",
+          "libs/database/executors.json",
+          "libs/database/package.json"
+        ]
+      }
+    },
+    "migrations:add": {
+      "executor": "@sovereign-university/database:migrations-add"
+    },
+    "migrations:run": {
+      "executor": "@sovereign-university/database:migrations-run"
+    }
+  },
+  "tags": []
+}
