@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import headerImage from '../../../assets/lapin-diplome.png';
+import { MainLayout } from '../../../components/MainLayout';
 
 export const SponsorsAndContributors = () => {
   const { t } = useTranslation();
@@ -68,66 +69,66 @@ export const SponsorsAndContributors = () => {
   ];
 
   return (
-    // <MainLayout footerVariant="dark">
-    <div className="flex flex-col justify-center bg-blue-900">
-      <div className="flex flex-wrap justify-evenly text-center text-xl  text-white sm:py-20">
-        <div>
-          <img className="mx-auto h-48" src={headerImage} alt="Rabbit" />
-          <h2 className="my-8 w-full px-4 py-1">{t('about.pageSubtitle')}</h2>
-          <Link
-            className="group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md bg-orange-400 px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
-            to="/"
-            style={{ fontSize: '20px', padding: '10px 20px' }}
-          >
-            {t('about.headerLink')}
-          </Link>
+    <MainLayout footerVariant="dark">
+      <div className="flex flex-col justify-center bg-blue-900">
+        <div className="flex flex-wrap justify-evenly text-center text-xl  text-white sm:py-20">
+          <div>
+            <img className="mx-auto h-48" src={headerImage} alt="Rabbit" />
+            <h2 className="my-8 w-full px-4 py-1">{t('about.pageSubtitle')}</h2>
+            <Link
+              className="group m-auto mx-2 mb-1 h-fit w-20 min-w-[100px] rounded-md bg-orange-400 px-4 py-2 text-center text-white delay-100 hover:z-20 hover:delay-0"
+              to="/"
+              style={{ fontSize: '20px', padding: '10px 20px' }}
+            >
+              {t('about.headerLink')}
+            </Link>
+          </div>
+        </div>
+        <div className="grid grid-rows-2 items-center justify-center">
+          {aboutCategories.map((category, index) => {
+            return (
+              <div className="my-10 flex flex-col items-center justify-center">
+                <h3
+                  key={category}
+                  className="mb-8 text-center text-5xl font-bold text-white"
+                >
+                  {category}
+                </h3>
+                ;
+                <div className="grid max-w-6xl grid-cols-6">
+                  {twitterProfile.map((profile, id) => (
+                    <a
+                      className="group m-auto mx-6 mb-8 h-fit w-32 delay-100 hover:z-20 hover:delay-0"
+                      href={profile.link}
+                      target="_blank"
+                      key={id}
+                      rel="noreferrer"
+                    >
+                      <div className="relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-orange-400">
+                        <img
+                          className="mx-auto h-24 rounded-full bg-white"
+                          src={`${profile.image}`} // Placeholder for profile image URL
+                          alt={`Profile ${id + 1}`}
+                        />
+                        <p className="absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
+                          <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                            {`${profile.name}`}
+                          </span>
+                        </p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                {index % 2 === 1 && Math.floor(index / 2) < thanks.length && (
+                  <div className="mt-4 flex max-w-[60%] flex-col border-t border-white pt-4 text-center text-white">
+                    <span>{thanks[Math.floor(index / 2)].content}</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="grid grid-rows-2 items-center justify-center">
-        {aboutCategories.map((category, index) => {
-          return (
-            <div className="my-10 flex flex-col items-center justify-center">
-              <h3
-                key={category}
-                className="mb-8 text-center text-5xl font-bold text-white"
-              >
-                {category}
-              </h3>
-              ;
-              <div className="grid max-w-6xl grid-cols-6">
-                {twitterProfile.map((profile, id) => (
-                  <a
-                    className="group m-auto mx-6 mb-8 h-fit w-32 delay-100 hover:z-20 hover:delay-0"
-                    href={profile.link}
-                    target="_blank"
-                    key={id}
-                    rel="noreferrer"
-                  >
-                    <div className="relative m-auto mb-2 h-fit rounded-t-full px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-orange-400">
-                      <img
-                        className="mx-auto h-24 rounded-full bg-white"
-                        src={`${profile.image}`} // Placeholder for profile image URL
-                        alt={`Profile ${id + 1}`}
-                      />
-                      <p className="absolute inset-x-0 h-fit w-full rounded-b-lg px-4 py-2 text-center text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
-                        <span className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-                          {`${profile.name}`}
-                        </span>
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              {index % 2 === 1 && Math.floor(index / 2) < thanks.length && (
-                <div className="mt-4 flex max-w-[60%] flex-col border-t border-white pt-4 text-center text-white">
-                  <span>{thanks[Math.floor(index / 2)].content}</span>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    // </MainLayout>
+    </MainLayout>
   );
 };

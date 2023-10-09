@@ -11,6 +11,7 @@ import {
 } from 'react-icons/io5';
 
 import RabbitFace from '../../../assets/placeholder-assets/rabbit-face.svg';
+import { MainLayout } from '../../../components/MainLayout';
 import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { trpc } from '../../../utils';
@@ -60,37 +61,37 @@ export const Dashboard = () => {
 
   if (isMobile) {
     return (
-      //   <MainLayout variant="blue" showFooter={false}>
-      <>
-        <div className="p-6">
-          {currentTab === 'dashboard' && <DashboardTabMobile />}
-          {/* {currentTab === 'courses' && <CoursesTab />} */}
-          {currentTab === 'settings' && <SettingsTab />}
-        </div>
-        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around bg-orange-600 md:hidden">
-          <MenuItem
-            text="Dashboard"
-            icon={<IoGridOutline size={28} />}
-            active={currentTab === 'dashboard'}
-            onClick={() => setCurrentTab('dashboard')}
-          />
-          <MenuItem
-            text="Settings"
-            icon={<IoSettingsOutline size={28} />}
-            active={currentTab === 'settings'}
-            onClick={() => setCurrentTab('settings')}
-          />
-          <MenuItem
-            text="Sign Out"
-            icon={<IoLogOutOutline size={28} />}
-            onClick={() => {
-              dispatch(userSlice.actions.logout());
-              navigate({ to: '/' });
-            }}
-          />
-        </div>
-      </>
-      //   </MainLayout>
+      <MainLayout variant="blue" showFooter={false}>
+        <>
+          <div className="p-6">
+            {currentTab === 'dashboard' && <DashboardTabMobile />}
+            {/* {currentTab === 'courses' && <CoursesTab />} */}
+            {currentTab === 'settings' && <SettingsTab />}
+          </div>
+          <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around bg-orange-600 md:hidden">
+            <MenuItem
+              text="Dashboard"
+              icon={<IoGridOutline size={28} />}
+              active={currentTab === 'dashboard'}
+              onClick={() => setCurrentTab('dashboard')}
+            />
+            <MenuItem
+              text="Settings"
+              icon={<IoSettingsOutline size={28} />}
+              active={currentTab === 'settings'}
+              onClick={() => setCurrentTab('settings')}
+            />
+            <MenuItem
+              text="Sign Out"
+              icon={<IoLogOutOutline size={28} />}
+              onClick={() => {
+                dispatch(userSlice.actions.logout());
+                navigate({ to: '/' });
+              }}
+            />
+          </div>
+        </>
+      </MainLayout>
     );
   }
 
