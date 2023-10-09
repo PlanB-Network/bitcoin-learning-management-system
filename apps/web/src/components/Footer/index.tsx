@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import {
   BreakPointHooks,
   breakpointsTailwind,
@@ -19,7 +21,7 @@ import BackRabbit from '../../assets/footer/back_rabbit.svg';
 import BackRabbit2 from '../../assets/footer/back_rabbit_2.svg';
 import BigTree from '../../assets/footer/big_tree.svg';
 import City from '../../assets/footer/city.svg';
-import Cloud from '../../assets/footer/cloud.svg';
+import Cloud from '../../assets/footer/cloud.svg?react';
 import Hill from '../../assets/footer/hill.svg';
 import Rabbit from '../../assets/footer/rabbit.svg';
 import Tree from '../../assets/footer/tree.svg';
@@ -88,13 +90,11 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               className="absolute bottom-0  w-full text-clip"
               alt=""
             />
-            <img
-              src={Cloud}
+            <Cloud
               className={cn(
                 'absolute m-auto left-20 top-20 w-32',
                 variant === 'light' ? 'text-gray-200' : 'text-gray-300',
               )}
-              alt=""
             />
           </div>
           <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-900">
@@ -208,13 +208,11 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
           )}
         >
-          <img
-            src={Cloud}
+          <Cloud
             className={cn(
               'absolute left-16 top-10 w-20',
               variant === 'light' ? 'text-gray-200' : 'text-gray-300',
             )}
-            alt=""
           />
           <img
             src={City}
