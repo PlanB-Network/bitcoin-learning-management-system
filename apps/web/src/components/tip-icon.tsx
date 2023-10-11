@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';

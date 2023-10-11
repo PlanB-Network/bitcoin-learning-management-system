@@ -2,27 +2,28 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useParams } from '@tanstack/react-router';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
-import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg';
+import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
-import { useNavigateMisc } from '../../../hooks';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { trpc } from '../../../utils/trpc';
-import QuizzCard from '../components/quizz-card';
+import { VerticalTable } from '../components/vertical-table';
 import { CourseLayout } from '../layout';
+import { coursesChapterRoute } from '../routes';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseChapter = () => {
-  const { navigateTo404 } = useNavigateMisc();
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { courseId, language, chapterIndex } = useParams({
-    from: '/courses/$courseId/$chapterIndex',
+    from: coursesChapterRoute.id,
   });
 
   const isScreenMd = useGreater('sm');
@@ -43,30 +44,86 @@ export const CourseChapter = () => {
     });
   };
 
-  if (!chapter && isFetched) navigateTo404();
+  const [isContentExpanded, setIsContentExpanded] = useState(false);
+  if (!chapter && isFetched) {
+    navigate({ to: '/404' });
+  }
 
   return (
     <CourseLayout>
       <div>
         {chapter && (
-          <>
-            <div className="flex h-full w-full flex-col items-center justify-center py-5 md:px-2 md:py-10">
-              <div className="w-full max-w-5xl px-5 md:px-0">
-                <h1 className="mb-5 w-full text-left text-3xl font-semibold text-orange-600 md:text-5xl">
-                  {`${chapter.course?.id.toUpperCase()} - ${chapter.course
-                    ?.name}`}
-                </h1>
+          <div className="flex h-full w-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
+            <div
+              className={`mb-6 w-full max-w-5xl ${isScreenMd ? '' : 'hidden'}`}
+            >
+              <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-800">
+                <Link to="/courses">Courses</Link>
+                <Link to={'/courses/$courseId'} params={{ courseId }}>
+                  {`${chapter.course?.id.toUpperCase()} > ${chapter.title}`}
+                </Link>
+              </span>
+            </div>
+
+            <div className="mb-0 w-full max-w-5xl px-5 md:px-0">
+              <h1
+                className={`mb-5 w-full text-left md:text-5xl ${
+                  isScreenMd
+                    ? 'text-3xl font-semibold text-orange-800'
+                    : 'text-4xl font-bold text-white'
+                }`}
+              >
                 {isScreenMd ? (
-                  <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
-                    <div>
+                  <Link
+                    to={'/courses/$courseId'}
+                    params={{ courseId }}
+                  >{`${chapter.course?.id.toUpperCase()} - ${chapter.course
+                    ?.name}`}</Link>
+                ) : (
+                  <div className="flex items-center justify-center">
+                    {/* linkaqui */}
+                    <Link to={'/courses/$courseId'} params={{ courseId }}>
+                      <div
+                        className="mr-2 rounded-full bg-orange-800 p-2 text-sm"
+                        title={t('courses.details.courseId', {
+                          courseId: chapter.course?.id,
+                        })}
+                      >
+                        <span className="uppercase text-white">
+                          {chapter.course?.id}
+                        </span>
+                      </div>
+                    </Link>
+
+                    <h1 className="mb-1 mr-2 text-base  font-semibold text-orange-800">
+                      {chapter.course?.name}
+                    </h1>
+                  </div>
+                )}
+              </h1>
+              {isScreenMd ? (
+                <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
+                  <div>
+                    {t('courses.chapter.count', {
+                      count: chapter.chapter,
+                      total: chapter.course?.chapters?.length,
+                    })}
+                  </div>
+                  <div>{chapter.course?.teacher}</div>
+                </div>
+              ) : (
+                <div className="flex flex-col  ">
+                  <div className="flex items-center justify-center p-1 font-thin text-gray-500">
+                    <div className="h-0 grow border-t border-gray-300"></div>
+                    <span className="px-3">
                       {t('courses.chapter.count', {
                         count: chapter.chapter,
                         total: chapter.course?.chapters?.length,
                       })}
-                    </div>
-                    <div>{chapter.course?.teacher}</div>
+                    </span>
+                    <div className="h-0 grow border-t border-gray-300"></div>
                   </div>
-                ) : (
+
                   <div className="flex flex-row items-center justify-between text-lg ">
                     <Link
                       className="h-6"
@@ -84,16 +141,13 @@ export const CourseChapter = () => {
                             }
                       }
                     >
-                      <div className="flex h-6 flex-row items-center rounded-full bg-blue-700 px-3 py-2 text-white">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-white">
                         <BiSkipPrevious className="h-6 w-6" />
                       </div>
                     </Link>
 
-                    <div className="font-normal text-blue-800">
-                      {t('courses.chapter.count', {
-                        count: chapter.chapter,
-                        total: chapter.course?.chapters?.length,
-                      })}
+                    <div className="p-1 font-semibold text-blue-900">
+                      {chapter?.title}
                     </div>
                     <Link
                       className="h-6"
@@ -113,118 +167,265 @@ export const CourseChapter = () => {
                             }
                       }
                     >
-                      <div className="flex h-6 flex-row items-center rounded-full bg-blue-700 px-3 py-2 text-white">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-white">
                         <BiSkipNext className="h-6 w-6" />
                       </div>
                     </Link>
                   </div>
-                )}
+                </div>
+              )}
 
-                {isScreenMd && (
-                  <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
-                    {chapter.course?.chapters?.map((current, index) => {
-                      const firstChapter = current.chapter === 1;
-                      const lastChapter =
-                        current.chapter === chapter.course?.chapters?.length;
+              {isScreenMd && (
+                <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
+                  {chapter.course?.chapters?.map((current, index) => {
+                    const firstChapter = current.chapter === 1;
+                    const lastChapter =
+                      current.chapter === chapter.course?.chapters?.length;
 
-                      if (current.chapter !== chapter.chapter)
-                        return (
-                          <Link
-                            className="h-4 grow"
-                            to={'/courses/$courseId/$chapterIndex'}
-                            params={{
-                              courseId,
-                              chapterIndex: current.chapter.toString(),
-                            }}
-                            key={index}
-                          >
-                            <div
-                              className={compose(
-                                'h-4 grow',
-                                current.chapter < chapter.chapter
-                                  ? 'bg-orange-500'
-                                  : 'bg-gray-300',
-                                firstChapter ? 'rounded-l-full' : '',
-                                lastChapter ? 'rounded-r-full' : '',
-                              )}
-                            />
-                          </Link>
-                        );
-
+                    if (current.chapter !== chapter.chapter)
                       return (
-                        <div
-                          className="relative flex grow overflow-visible"
+                        <Link
+                          className="h-4 grow"
+                          to={'/courses/$courseId/$chapterIndex'}
+                          params={{
+                            courseId,
+                            chapterIndex: current.chapter.toString(),
+                          }}
                           key={index}
                         >
                           <div
                             className={compose(
-                              'h-4 w-2/3 bg-orange-500',
+                              'h-4 grow',
+                              current.chapter < chapter.chapter
+                                ? 'bg-orange-600'
+                                : 'bg-gray-300',
                               firstChapter ? 'rounded-l-full' : '',
-                            )}
-                          />
-                          <div
-                            className={compose(
-                              'h-4 w-1/3 bg-gray-300',
                               lastChapter ? 'rounded-r-full' : '',
                             )}
                           />
-                          <img
-                            src={ProgressRabbit}
-                            className="absolute inset-0 bottom-4 m-auto h-12 w-full"
-                            alt=""
-                          />
-                        </div>
+                        </Link>
                       );
-                    })}
-                  </div>
-                )}
-              </div>
-              <div className="mt-8 w-full space-y-6 px-5 text-blue-900 md:mt-16 md:max-w-3xl md:px-0">
-                <h2 className="text-2xl font-normal uppercase italic text-blue-800 md:text-3xl">
-                  {chapter?.title}
-                </h2>
-                <MarkdownBody
-                  content={chapter?.raw_content}
-                  assetPrefix={computeAssetCdnUrl(
-                    chapter.last_commit,
-                    `courses/${courseId}`,
-                  )}
-                />
 
-                {chapter.chapter !== chapter.course?.chapters?.length ? (
-                  <Link
-                    className="flex w-full justify-end pt-10"
-                    to={'/courses/$courseId/$chapterIndex'}
-                    params={{
-                      courseId,
-                      chapterIndex: (chapter.chapter + 1).toString(),
-                    }}
+                    return (
+                      <div
+                        className="relative flex grow overflow-visible"
+                        key={index}
+                      >
+                        <div
+                          className={compose(
+                            'h-4 w-2/3 bg-orange-600',
+                            firstChapter ? 'rounded-l-full' : '',
+                          )}
+                        />
+                        <div
+                          className={compose(
+                            'h-4 w-1/3 bg-gray-300',
+                            lastChapter ? 'rounded-r-full' : '',
+                          )}
+                        />
+                        <ProgressRabbit className="absolute inset-0 bottom-4 m-auto h-12 w-full" />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            {/* Esta es vista desktop */}
+            <div className=" hidden sm:flex ">
+              <div className="grow">
+                <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
+                  <span
+                    className={`mb-2  font-mono text-base font-normal text-blue-800 ${
+                      isScreenMd ? '' : 'hidden'
+                    }`}
                   >
-                    <Button onClick={completeChapter}>
-                      <span>{t('courses.chapter.next')}</span>
-                      <BiSkipNext className="ml-2 h-8 w-8" />
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link
-                    className="flex w-full justify-end pt-10"
-                    to={'/courses/$courseId'}
-                    params={{
-                      courseId,
-                    }}
+                    chapter {chapter.chapter}{' '}
+                  </span>
+                  <h2
+                    className={`m-1 flex h-32 flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
+                      isScreenMd ? '' : 'mb-1 hidden'
+                    }`}
                   >
-                    <Button onClick={completeChapter}>
-                      <span>{t('courses.chapter.finishCourse')}</span>
-                      <BsCheckLg className="ml-2 h-6 w-6" />
-                    </Button>
-                  </Link>
-                )}
+                    {chapter?.title}
+                  </h2>
+
+                  {/* Mostrar la tabla de objetivos del curso Learn*/}
+
+                  <div className="mt-1 space-y-2 font-light uppercase text-blue-800">
+                    <div
+                      className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+                        isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+                      } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
+                    >
+                      <h3
+                        className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-semibold text-blue-900"
+                        onClick={() => setIsContentExpanded(!isContentExpanded)}
+                      >
+                        <span className="mr-2">
+                          {isContentExpanded ? '>' : '>'}
+                        </span>
+                        {t('courses.details.objectivesTitle').toLowerCase()}{' '}
+                        {/* Convierte el texto a minúsculas */}
+                      </h3>
+                      {isContentExpanded && (
+                        <div className="mb-2 ml-2 px-5 lowercase">
+                          <ul className="mt-2 list-inside pl-5">
+                            {chapter.course?.objectives?.map(
+                              (goal: string, index: number) => (
+                                <li key={index}>
+                                  <span className="mr-2 opacity-50">
+                                    {'▶'}
+                                  </span>
+                                  <span className="capitalize">
+                                    {goal.toLowerCase()}
+                                  </span>
+                                </li>
+                              ),
+                            )}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <MarkdownBody
+                    content={chapter?.raw_content}
+                    assetPrefix={computeAssetCdnUrl(
+                      chapter.last_commit,
+                      `courses/${courseId}`,
+                    )}
+                  />
+
+                  {chapter.chapter !== chapter.course?.chapters?.length ? (
+                    <Link
+                      className="flex w-full justify-end pt-10"
+                      to={'/courses/$courseId/$chapterIndex'}
+                      params={{
+                        courseId,
+                        chapterIndex: (chapter.chapter + 1).toString(),
+                      }}
+                    >
+                      <Button onClick={completeChapter}>
+                        <span>{t('courses.chapter.next')}</span>
+                        <BiSkipNext className="ml-2 h-8 w-8" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link
+                      className="flex w-full justify-end pt-10"
+                      to={'/courses/$courseId'}
+                      params={{
+                        courseId,
+                      }}
+                    >
+                      <Button onClick={completeChapter}>
+                        <span>{t('courses.chapter.finishCourse')}</span>
+                        <BsCheckLg className="ml-2 h-6 w-6" />
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
+                <VerticalTable
+                  chapters={chapter.course?.chapters || []}
+                  courseTitle={chapter.course?.id || ''}
+                  style={{ position: 'sticky', top: '2rem' }}
+                />
               </div>
             </div>
-            <div className="flex h-full w-full flex-col items-center justify-center ">
-              <QuizzCard name="BTC 101" chapter="2.1" />
+            {/* esta es la vista de celular */}
+            <div className="text-blue-1000 block w-3/4 sm:hidden sm:w-full sm:max-w-xl md:mt-8 md:px-2">
+              <span
+                className={`mb-2  font-mono text-base font-normal text-blue-800 ${
+                  isScreenMd ? '' : 'hidden'
+                }`}
+              >
+                chapter {chapter.chapter}{' '}
+              </span>
+              <h2
+                className={`m-1 flex h-32 flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
+                  isScreenMd ? '' : 'mb-1 hidden'
+                }`}
+              >
+                {chapter?.title}
+              </h2>
+
+              {/* Mostrar la tabla de objetivos del curso Learn*/}
+
+              <div className="my-1 space-y-2 font-light uppercase text-blue-800">
+                <div
+                  className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+                    isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+                  } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
+                >
+                  <h3
+                    className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-semibold text-blue-900"
+                    onClick={() => setIsContentExpanded(!isContentExpanded)}
+                  >
+                    <span className="mr-2">
+                      {isContentExpanded ? '>' : '>'}
+                    </span>
+                    {t('courses.details.objectivesTitle').toLowerCase()}{' '}
+                    {/* Convierte el texto a minúsculas */}
+                  </h3>
+                  {isContentExpanded && (
+                    <div className="mb-2 ml-2 px-5 lowercase">
+                      <ul className="mt-2 list-inside pl-5">
+                        {chapter.course?.objectives?.map(
+                          (goal: string, index: number) => (
+                            <li key={index}>
+                              <span className="mr-2 opacity-50">{'▶'}</span>
+                              <span className="capitalize">
+                                {goal.toLowerCase()}
+                              </span>
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <MarkdownBody
+                content={chapter?.raw_content}
+                assetPrefix={computeAssetCdnUrl(
+                  chapter.last_commit,
+                  `courses/${courseId}`,
+                )}
+              />
+
+              {chapter.chapter !== chapter.course?.chapters?.length ? (
+                <Link
+                  className="flex w-full justify-end pt-10"
+                  to={'/courses/$courseId/$chapterIndex'}
+                  params={{
+                    courseId,
+                    chapterIndex: (chapter.chapter + 1).toString(),
+                  }}
+                >
+                  <Button onClick={completeChapter}>
+                    <span>{t('courses.chapter.next')}</span>
+                    <BiSkipNext className="ml-2 h-8 w-8" />
+                  </Button>
+                </Link>
+              ) : (
+                <Link
+                  className="flex w-full justify-end pt-10"
+                  to={'/courses/$courseId'}
+                  params={{
+                    courseId,
+                  }}
+                >
+                  <Button onClick={completeChapter}>
+                    <span>{t('courses.chapter.finishCourse')}</span>
+                    <BsCheckLg className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
+              )}
             </div>
-          </>
+          </div>
         )}
       </div>
     </CourseLayout>

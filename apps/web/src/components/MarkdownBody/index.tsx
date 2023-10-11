@@ -7,6 +7,9 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import YellowPen from '../../assets/courses/pencil.svg?react';
+import VideoSVG from '../../assets/resources/video.svg?react';
+
 export const MarkdownBody = ({
   content,
   assetPrefix,
@@ -19,12 +22,15 @@ export const MarkdownBody = ({
       children={content}
       components={{
         h2: ({ children }) => (
-          <h2 className="mt-6 text-xl font-semibold md:mt-10 md:text-2xl">
-            {children}
+          <h2 className="mt-6 text-xl font-semibold text-orange-600 md:mt-10 md:text-2xl ">
+            <div className="flex  w-auto items-center">
+              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              {children}
+            </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl font-normal">{children}</h3>
+          <h3 className="ml-2 text-xl font-semibold">{children}</h3>
         ),
         p: ({ children }) => (
           <p className=" text-justify text-base tracking-wide ">{children}</p>
@@ -57,11 +63,20 @@ export const MarkdownBody = ({
         ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-            <ReactPlayer
-              className="mx-auto flex max-w-full justify-center rounded-lg py-6"
-              controls={true}
-              url={src}
-            />
+            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
+              <div className=" flex items-center">
+                <VideoSVG className="mb-2 ml-14 h-10 w-10" />{' '}
+                <div className="ml-2">
+                  <p className="text-sm font-medium text-blue-900">Video</p>
+                </div>
+              </div>
+              <ReactPlayer
+                className="mx-auto mb-2 max-w-full rounded-lg"
+                controls={true}
+                url={src}
+                src={alt}
+              />
+            </div>
           ) : (
             <img
               className="mx-auto flex justify-center rounded-lg py-6"
