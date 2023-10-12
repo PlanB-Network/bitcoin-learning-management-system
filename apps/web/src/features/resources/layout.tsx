@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { ReactNode } from 'react';
 
 import { MainLayout } from '../../components/MainLayout';
@@ -17,6 +18,7 @@ interface Props {
   };
   pagination?: boolean;
   className?: string;
+  link?: string;
 }
 
 export const ResourceLayout = ({
@@ -26,6 +28,7 @@ export const ResourceLayout = ({
   filterBar,
   pagination,
   className,
+  link,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
@@ -34,7 +37,13 @@ export const ResourceLayout = ({
       >
         <div className="max-w-6xl">
           <div>
-            <PageTitle>{title}</PageTitle>
+            {link ? (
+              <Link to={link}>
+                <PageTitle>{title}</PageTitle>
+              </Link>
+            ) : (
+              <PageTitle>{title}</PageTitle>
+            )}
             {tagLine && (
               <p className="mx-4 mt-2 pb-3 text-justify text-sm font-light uppercase text-white sm:mx-8 sm:text-base">
                 {tagLine}

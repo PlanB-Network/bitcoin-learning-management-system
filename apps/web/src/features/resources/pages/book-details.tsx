@@ -3,6 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useParams } from '@tanstack/react-router';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
@@ -18,44 +19,31 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 export const Book = () => {
   const { navigateTo404 } = useNavigateMisc();
   const { t } = useTranslation();
-
   const { bookId, language } = useParams({
     from: '/resources/book/$bookId',
   });
   const isScreenMd = useGreater('sm');
+  const navigateTo404Called = useRef(false);
 
-  console.log(bookId);
+  // TODO: change when we have contributors
+  const contributor = {
+    username: 'HARDCODED',
+    title: 'Bitcoiner',
+    image:
+      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
+  };
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language,
   });
 
-  if (!book && isFetched) navigateTo404();
-
-  // TODO: change when we have contributors
-  const contributor = {
-    username: 'Asi0',
-    title: 'Bitcoiner',
-    image:
-      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
-  };
-
-  /* if (book?.summary_contributor_id) {
-      const userid = parseInt(book.summary_contributor_id, 0);
-      contributor = trpc.content.getBuilder.useQuery({
-        id: userid,
-        language: 'en',
-      }).data;
-    } else {
-      // TODO: during dev
-      contributor = {
-        username: 'Asi0',
-        title: 'Bitcoiner',
-        image:
-          'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
-      };
-    } */
+  useEffect(() => {
+    if (!book && isFetched && !navigateTo404Called.current) {
+      navigateTo404();
+      navigateTo404Called.current = true;
+    }
+  }, [book, isFetched, navigateTo404]);
 
   function DownloadEbook() {
     alert(book?.download_url);
@@ -87,6 +75,7 @@ export const Book = () => {
     <ResourceLayout
       title={t('book.pageTitle')}
       tagLine={t('book.pageSubtitle')}
+      link={'/resources/books'}
     >
       {book && (
         <div className="w-full">

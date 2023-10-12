@@ -3,6 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useParams } from '@tanstack/react-router';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
@@ -16,20 +17,23 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Podcast = () => {
   const { navigateTo404 } = useNavigateMisc();
-
   const { t, i18n } = useTranslation();
   const { podcastId, language } = useParams({
     from: '/resources/podcast/$podcastId',
   });
-
   const { data: podcast, isFetched } = trpc.content.getPodcast.useQuery({
     id: Number(podcastId),
     language: language ?? i18n.language,
   });
-
-  if (!podcast && isFetched) navigateTo404();
-
   const isScreenMd = useGreater('sm');
+  const navigateTo404Called = useRef(false);
+
+  useEffect(() => {
+    if (!podcast && isFetched && !navigateTo404Called.current) {
+      navigateTo404();
+      navigateTo404Called.current = true;
+    }
+  }, [podcast, isFetched, navigateTo404]);
 
   function displayAbstract() {
     return (
@@ -48,6 +52,7 @@ export const Podcast = () => {
     <ResourceLayout
       title={t('podcasts.pageTitle')}
       tagLine={t('podcasts.pageSubtitle')}
+      link={'/resources/podcasts'}
     >
       {podcast && (
         <div className="w-full">
