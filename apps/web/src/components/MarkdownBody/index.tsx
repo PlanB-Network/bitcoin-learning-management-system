@@ -35,6 +35,16 @@ export const MarkdownBody = ({
         p: ({ children }) => (
           <p className=" text-justify text-base tracking-wide ">{children}</p>
         ),
+        a: ({ children, href }) => (
+          <a
+            href={href}
+            target="_blank"
+            className=" text-blue-500 "
+            rel="noreferrer"
+          >
+            {children}
+          </a>
+        ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col px-10 text-justify text-base tracking-wide">
             {children}
