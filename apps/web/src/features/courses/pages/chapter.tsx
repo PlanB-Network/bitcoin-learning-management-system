@@ -232,7 +232,7 @@ export const CourseChapter = () => {
             </div>
             {/* Esta es vista desktop */}
             <div className=" hidden sm:flex ">
-              <div className="grow">
+              <div className="grow break-words">
                 <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
                   <span
                     className={`mb-2  font-mono text-base font-normal text-blue-800 ${
