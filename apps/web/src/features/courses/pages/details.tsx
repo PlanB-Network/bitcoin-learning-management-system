@@ -150,7 +150,7 @@ export const CourseDetails: React.FC = () => {
                   <FaChalkboardTeacher size="35" className="text-orange-600" />
                   <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
                     {t('courses.details.teachers', {
-                      teachers: t('words.rogzy'),
+                      teachers: course.teacher,
                     })}
                   </span>
                 </div>
