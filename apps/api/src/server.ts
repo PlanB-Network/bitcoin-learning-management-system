@@ -8,7 +8,7 @@ import { appRouter, createContext } from '@sovereign-university/api/server';
 import { Dependencies } from './dependencies';
 
 /* const openApiDocument = generateOpenApiDocument(appRouter, {
-  title: 'The Sovereign Academy API',
+  title: 'The Sovereign University API',
   version: '0.0.1',
   baseUrl: `http://${host}:${port}/api`,
 }); */
