@@ -45,6 +45,8 @@
   "book": {
     "abstract": "Abstract",
     "bookSummary": {
+      "modifyTooltip": "Write or modify",
+      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
       "notice": "this summary is linked to github, for any modification or addition",
       "title": "The book summary"
     },
@@ -213,6 +215,7 @@
     "rabbitVideos": "a rabbit filming a video",
     "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
     "readingRabbit": "A rabbit reading a book",
+    "stylus": "a stylus",
     "sthRepresentingCompany": "something representing the company",
     "underConstructionImage": "Illustration of several rabbits working on a construction site",
     "visibilityOff": "the eyes icon without off sign"

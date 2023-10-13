@@ -26,12 +26,12 @@ export const Book = () => {
   const navigateTo404Called = useRef(false);
 
   // TODO: change when we have contributors
-  const contributor = {
+  /*const contributor = {
     username: 'HARDCODED',
     title: 'Bitcoiner',
     image:
       'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
-  };
+  };*/
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
@@ -55,14 +55,16 @@ export const Book = () => {
 
   function displayAbstract() {
     return (
-      <div className="mt-6 border-l-4 border-blue-600 pl-4">
-        <h3 className="mb-4 text-lg font-semibold text-blue-900">
-          {t('book.abstract')}
-        </h3>
-        <p className="mb-4 line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line pr-4 text-justify text-sm md:pr-8">
-          {book?.description}
-        </p>
-      </div>
+      book?.description && (
+        <div className="mt-6 border-l-4 border-blue-600 pl-4">
+          <h3 className="mb-4 text-lg font-semibold text-blue-900">
+            {t('book.abstract')}
+          </h3>
+          <p className="mb-4 line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line pr-4 text-justify text-sm md:pr-8">
+            {book?.description}
+          </p>
+        </div>
+      )
     );
   }
 
@@ -149,11 +151,9 @@ export const Book = () => {
             <div className="flex flex-col">
               {!book?.summary_text && (
                 <BookSummary
-                  contributor={contributor}
+                  // contributor={contributor}
+                  content={book?.summary_text}
                   title={book?.title ? book?.title : ''}
-                  content={
-                    book?.summary_text ? book?.summary_text : book?.description
-                  } /* TODO TEMP FOR UI DEV, replace book.description with '' */
                 />
               )}
             </div>

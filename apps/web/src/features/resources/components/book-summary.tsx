@@ -1,11 +1,14 @@
+import { Navigate } from '@tanstack/react-router';
 import _ from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import arrowForward from '../../../assets/icons/arrow_forward.svg';
+import stylusCircle from '../../../assets/icons/stylus_circle.svg';
 import blueEllipse from '../../../assets/resources/blue-ellipse.svg';
 import { Card } from '../../../atoms/Card';
 import { Contributor } from '../../../components/Contributor';
+import { TooltipWithContent } from '../../../components/tooptip-with-content';
 import { compose } from '../../../utils';
 
 interface BookSummaryProps {
@@ -45,7 +48,9 @@ export const BookSummary = ({
             </div>
           </header>
 
-          <p className="mb-4 mt-8 text-justify text-xs">{content}</p>
+          <p className="mb-4 mt-8 text-justify text-xs">
+            {content ? content : t('book.bookSummary.noSummary')}
+          </p>
 
           {contributor && (
             <div className="float-right">
@@ -73,11 +78,32 @@ export const BookSummary = ({
               />
             ))}
           </div>
-          <img
-            onClick={() => setIsExtended(true)}
-            alt={t('imagesAlt.forwardArrow')}
-            src={arrowForward}
-          />
+          <div className="flex flex-row gap-2">
+            {contributor ? (
+              <img
+                onClick={() => setIsExtended(true)}
+                alt={t('imagesAlt.forwardArrow')}
+                src={arrowForward}
+              />
+            ) : (
+              <TooltipWithContent
+                text={t('book.bookSummary.modifyTooltip')}
+                position="top"
+              >
+                <img
+                  onClick={() => {
+                    window.open(
+                      'https://github.com/DecouvreBitcoin/sovereign-university-data',
+                      '_blank',
+                      'noopener,noreferrer',
+                    );
+                  }}
+                  alt={t('imagesAlt.stylus')}
+                  src={stylusCircle}
+                />
+              </TooltipWithContent>
+            )}
+          </div>
         </div>
       )}
     </div>

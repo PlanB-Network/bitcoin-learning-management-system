@@ -1,8 +1,9 @@
 import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import { MarkdownBody } from '../../../components/MarkdownBody';
-import { TipIcon } from '../../../components/tip-icon';
+import { TooltipWithContent } from '../../../components/tooptip-with-content';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 import { AuthorCard } from '../components/author-card';
 import { TutorialLayout } from '../layout';
@@ -54,7 +55,12 @@ export const TutorialDetails = () => {
                 {headerAndFooterText()}
 
                 <div>
-                  <TipIcon />
+                  <TooltipWithContent
+                    text={t('tutorials.details.tipTooltip')}
+                    position="bottom"
+                  >
+                    <DonateLightning />
+                  </TooltipWithContent>
                 </div>
               </div>
             </div>

@@ -40,7 +40,6 @@ export const Books = () => {
                 to={'/resources/book/$bookId'}
                 params={{
                   bookId: book.id.toString(),
-                  // language: book.language, TODO trigger
                 }}
                 key={book.id}
               >
@@ -61,9 +60,6 @@ export const Books = () => {
                           })}
                         </li>
                       )}
-                      {/* <li className={'truncate pb-1 text-xs'}>
-                          {book.description}
-                        </li> */}
                     </ul>
                   </div>
                 </div>

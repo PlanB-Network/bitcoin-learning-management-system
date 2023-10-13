@@ -1,13 +1,18 @@
+import { useTranslation } from 'react-i18next';
+
+import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import NostrIcon from '../../../assets/icons/nostr.svg?react';
 import TwitterIcon from '../../../assets/icons/twitter.svg?react';
 import WebIcon from '../../../assets/icons/web.svg?react';
-import { TipIcon } from '../../../components/tip-icon';
+import { TooltipWithContent } from '../../../components/tooptip-with-content';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
   name: string;
 }
 
 export const AuthorCard = ({ name, ...props }: AuthorCardProps) => {
+  const { t } = useTranslation();
+
   return (
     <div {...props}>
       <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
@@ -59,7 +64,12 @@ export const AuthorCard = ({ name, ...props }: AuthorCardProps) => {
                   Wanna say thanks ? TIp.
                 </div>
                 <div className="ml-4 h-8 w-8">
-                  <TipIcon />
+                  <TooltipWithContent
+                    text={t('tutorials.details.tipTooltip')}
+                    position="bottom"
+                  >
+                    <DonateLightning />
+                  </TooltipWithContent>
                 </div>
               </div>
             </div>
