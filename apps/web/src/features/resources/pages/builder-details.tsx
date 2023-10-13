@@ -5,6 +5,7 @@ import {
 import { Link, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
@@ -18,13 +19,14 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Builder = () => {
   const { navigateTo404 } = useNavigateMisc();
+  const { t, i18n } = useTranslation();
   const { builderId } = useParams({
     from: '/resources/builder/$builderId',
   });
   const isScreenMd = useGreater('sm');
   const { data: builder, isFetched } = trpc.content.getBuilder.useQuery({
     id: Number(builderId),
-    language: 'en',
+    language: i18n.language ?? 'en',
   });
   const navigateTo404Called = useRef(false);
 

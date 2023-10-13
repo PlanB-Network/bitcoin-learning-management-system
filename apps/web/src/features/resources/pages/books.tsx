@@ -8,13 +8,13 @@ import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
 
 export const Books = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetching data from the API
-  const { data: books } = trpc.content.getBooks.useQuery();
+  const { data: books } = trpc.content.getBooks.useQuery({
+    language: i18n.language ?? 'en',
+  });
 
-  // Sort books alphabetically
   const sortedBooks: JoinedBook[] = books
     ? books.sort((a, b) => a.title.localeCompare(b.title))
     : [];

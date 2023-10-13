@@ -9,12 +9,10 @@ export const Podcasts = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetching data from the API
   const { data: podcasts } = trpc.content.getPodcasts.useQuery({
     language: i18n.language ?? 'en',
   });
 
-  // Sort podcasts alphabetically
   const sortedPodcasts = podcasts
     ? podcasts.sort((a, b) => a.name.localeCompare(b.name))
     : [];

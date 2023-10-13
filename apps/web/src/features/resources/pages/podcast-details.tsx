@@ -18,12 +18,12 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 export const Podcast = () => {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
-  const { podcastId, language } = useParams({
+  const { podcastId } = useParams({
     from: '/resources/podcast/$podcastId',
   });
   const { data: podcast, isFetched } = trpc.content.getPodcast.useQuery({
     id: Number(podcastId),
-    language: language ?? i18n.language,
+    language: i18n.language ?? 'en',
   });
   const isScreenMd = useGreater('sm');
   const navigateTo404Called = useRef(false);

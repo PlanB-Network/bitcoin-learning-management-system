@@ -18,8 +18,8 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Book = () => {
   const { navigateTo404 } = useNavigateMisc();
-  const { t } = useTranslation();
-  const { bookId, language } = useParams({
+  const { t, i18n } = useTranslation();
+  const { bookId } = useParams({
     from: '/resources/book/$bookId',
   });
   const isScreenMd = useGreater('sm');
@@ -35,7 +35,7 @@ export const Book = () => {
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
-    language,
+    language: i18n.language ?? 'en',
   });
 
   useEffect(() => {

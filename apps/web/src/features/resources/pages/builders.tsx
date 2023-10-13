@@ -7,15 +7,13 @@ import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
 
 export const Builders = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetching data from the API
   const { data: builders } = trpc.content.getBuilders.useQuery({
-    language: 'en',
+    language: i18n.language ?? 'en',
   });
 
-  // Adding a category to each builder
   const sortedBuilders = builders
     ? builders.sort((a, b) => a.name.localeCompare(b.name))
     : [];
