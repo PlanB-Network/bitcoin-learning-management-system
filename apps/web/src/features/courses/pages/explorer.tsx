@@ -125,7 +125,7 @@ export const CoursesExplorer = () => {
           </div>
 
           <div className="mb-16 hidden w-full flex-col px-8 sm:flex">
-            <div className="rounded-lg border-2 border-white bg-blue-800 px-5 text-base ">
+            <div className="rounded-3xl border-2 border-white bg-blue-800 px-5 text-base ">
               <div className="flex flex-col">
                 <div className="flex flex-row gap-6 xl:gap-12">
                   <span className="mt-4 whitespace-nowrap font-semibold">
@@ -158,18 +158,6 @@ export const CoursesExplorer = () => {
                 key={course.id}
               />
             ))}
-        </div>
-        <div className="flex max-w-3xl flex-col items-center px-5 pt-8 text-white">
-          <div className="w-full bg-blue-900 pb-6 pt-3 text-right text-orange-700">
-            {t('courses.explorer.moreToCome')}
-          </div>
-          <div className="flex w-full flex-col space-y-3 bg-blue-900 text-base text-white">
-            <h4 className="mb-3 text-center text-xl font-semibold lg:text-3xl">
-              {t('courses.explorer.footerTitle')}
-            </h4>
-            <span>{t('courses.explorer.footerp1')}</span>
-            <span>{t('courses.explorer.footerp2')}</span>
-          </div>
         </div>
       </div>
     </MainLayout>

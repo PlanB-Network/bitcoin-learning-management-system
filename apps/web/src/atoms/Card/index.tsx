@@ -1,6 +1,8 @@
 import { isString } from 'lodash';
 import { ReactNode } from 'react';
 
+import { cn } from '@sovereign-university/ui';
+
 import { compose } from '../../utils';
 
 interface CardProps {
@@ -8,9 +10,15 @@ interface CardProps {
   alt?: string;
   children?: ReactNode;
   className?: string;
+  withPadding?: boolean;
 }
 
-export const Card = ({ image, children, className }: CardProps) => {
+export const Card = ({
+  image,
+  children,
+  className,
+  withPadding = true,
+}: CardProps) => {
   return (
     <div
       className={compose(
@@ -24,7 +32,7 @@ export const Card = ({ image, children, className }: CardProps) => {
         ) : (
           <img className="rounded-t-lg" src={image.src} alt={image.alt} />
         ))}
-      <div className="grow p-5">{children}</div>
+      <div className={cn('grow', withPadding ? 'p-5' : '')}>{children}</div>
     </div>
   );
 };
