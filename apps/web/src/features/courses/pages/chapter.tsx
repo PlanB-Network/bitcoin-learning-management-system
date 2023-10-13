@@ -441,6 +441,7 @@ export const CourseChapter = () => {
                   chapters={chapter.course.chapters}
                   currentChapterIndex={chapter.chapter}
                   courseTitle={chapter.course?.id || ''}
+                  courseId={chapter.course?.id || ''}
                   style={{ position: 'sticky', top: '2rem' }}
                 />
               </div>

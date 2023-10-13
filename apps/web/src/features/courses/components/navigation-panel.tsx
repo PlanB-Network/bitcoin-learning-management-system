@@ -12,6 +12,7 @@ interface Chapter {
 interface Props {
   chapters: Chapter[];
   currentChapterIndex: number;
+  courseId: string;
   courseTitle: string;
   style?: CSSProperties;
 }
@@ -19,6 +20,7 @@ interface Props {
 export const NavigationPanel: React.FC<Props> = ({
   chapters,
   currentChapterIndex,
+  courseId,
   courseTitle,
   style,
 }) => {
@@ -46,7 +48,7 @@ export const NavigationPanel: React.FC<Props> = ({
               <Link
                 to={'/courses/$courseId/$chapterIndex'}
                 params={{
-                  courseId: 'btc101',
+                  courseId: courseId,
                   chapterIndex: String(index + 1),
                 }}
               >
