@@ -40,7 +40,7 @@ export const Builders = () => {
       title={t('builders.pageTitle')}
       tagLine={t('builders.pageSubtitle')}
       filterBar={{
-        onChange: () => setSearchTerm,
+        onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
     >
@@ -50,7 +50,6 @@ export const Builders = () => {
             builder.name.toLowerCase().includes(searchTerm.toLowerCase()),
         );
 
-        // If no result, do not show an empty card.
         if (filteredBuilders.length === 0) {
           return null;
         }
@@ -70,7 +69,6 @@ export const Builders = () => {
                   to={'/resources/builder/$builderId'}
                   params={{
                     builderId: builder.id.toString(),
-                    // language: builder.language, TODO trigger
                   }}
                   key={index}
                 >
