@@ -93,13 +93,15 @@
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
       "moreToCome": ".... and more to come !",
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the core of the Sovereign University: the gate to the e-learning platform.",
+      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
       "pageTitle": "Courses",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you.",
+      "s2p3": "All our courses are 100% free so nothing can stop you !",
       "s2t1": "Bitcoin education is a journey not a destination",
-      "s3t1": "All courses are named after their main topic"
+      "s3t1": "Build your own path down the rabbit hole",
+      "s3PickTopic": "Pick a topic :",
+      "s3PickLevel": "Pick a level :"
     },
     "footer": {
       "": ""

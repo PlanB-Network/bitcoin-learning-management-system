@@ -12,6 +12,7 @@ import { trpc } from '../../../utils/trpc';
 import { CoursePreview } from '../components/coursePreview';
 import { LevelPicker } from '../components/level-picker';
 import { Course, SolarSystem } from '../components/solarSystem';
+import { TopicPicker } from '../components/topic-picker';
 
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();
@@ -105,12 +106,12 @@ export const CoursesExplorer = () => {
           </PageDescription>
         </PageHeader>
 
-        <div className="flex w-full flex-col items-center bg-blue-900 md:h-full">
+        <div className="my-5 w-full">
           <SolarSystem courses={coursesWithUnreleased} />
         </div>
-        <div className="flex max-w-3xl flex-col items-center justify-center px-5 pt-8 text-white">
-          <div className="mb-16 hidden w-full flex-col sm:flex">
-            <h3 className="mb-5 text-xl font-semibold">
+        <div className="flex max-w-6xl flex-col items-center justify-center  text-white">
+          <div className="mb-4 hidden w-full flex-col px-8 sm:flex">
+            <h3 className="font-semibold sm:text-2xl">
               {t('courses.explorer.s2t1')}
             </h3>
             <div className="flex flex-col justify-between space-y-5 text-base font-light">
@@ -118,37 +119,31 @@ export const CoursesExplorer = () => {
               <span>{t('courses.explorer.s2p2')}</span>
               <span>{t('courses.explorer.s2p3')}</span>
             </div>
+            <h3 className="mt-12 text-xl font-semibold">
+              {t('courses.explorer.s3t1')}
+            </h3>
           </div>
 
-          {/* Aqui empieza picker nuevo, aun no esta terminado  */}
-          <h3 className="mb-6 text-xl font-semibold">
-            {t('courses.explorer.s3t1')}
-          </h3>
-          <div className="mb-16 hidden w-full flex-col rounded-lg border-2 border-white  bg-blue-800 sm:flex">
-            <div className=" grid grid-cols-1 items-center justify-center px-5 text-base md:grid-cols-4 xl:grid-cols-3">
-              {categories.map(({ prefix, topic }, index) => (
-                <div
-                  className="my-3 flex flex-row place-items-center space-x-2"
-                  key={index}
-                >
-                  <div
-                    className={`flex h-8 w-14 place-items-center justify-center rounded-lg border-2 border-orange-700 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
-                      activeCategory === prefix
-                        ? 'bg-orange-700'
-                        : 'bg-blue-1000'
-                    }`}
-                    onClick={() => setActiveCategory(prefix)}
-                  >
-                    {prefix}
-                  </div>
-                  <span className="w-1/2 text-base font-light capitalize lg:text-base">
-                    {topic}
+          <div className="mb-16 hidden w-full flex-col px-8 sm:flex">
+            <div className="rounded-lg border-2 border-white bg-blue-800 px-5 text-base ">
+              <div className="flex flex-col">
+                <div className="flex flex-row gap-6 xl:gap-12">
+                  <span className="mt-4 whitespace-nowrap font-semibold">
+                    {t('courses.explorer.s3PickTopic')}
                   </span>
+                  <TopicPicker
+                    categories={categories}
+                    activeCategory={activeCategory}
+                    setActiveCategory={setActiveCategory}
+                  />
                 </div>
-              ))}
-            </div>
-            <div className="grid  place-content-center items-center">
-              <LevelPicker courseId={t('courses.explorer.pageTitle')} />
+                <div className="flex flex-row gap-6 xl:gap-12">
+                  <span className="mt-6 whitespace-nowrap font-semibold">
+                    {t('courses.explorer.s3PickLevel')}
+                  </span>
+                  <LevelPicker courseId={t('courses.explorer.pageTitle')} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

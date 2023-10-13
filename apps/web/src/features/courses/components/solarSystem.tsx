@@ -184,14 +184,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
         .select(ref.current)
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr(
-          'viewBox',
-          isScreenXl
-            ? '-100 -50 200 100'
-            : isScreenLg
-            ? '-70 -50 140 100'
-            : '-50 -50 100 100',
-        )
+        .attr('viewBox', '-50 -50 100 100')
         .attr('font-family', 'Poppins')
         .attr('text-anchor', 'middle');
 
@@ -292,8 +285,8 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ courses }) => {
   }, [orbits, isScreenMd, isScreenLg, isScreenXl, navigate]);
 
   return (
-    <div className="relative mx-auto my-5 w-full overflow-hidden">
-      <svg ref={ref} />
+    <div className="flex w-full flex-col items-center overflow-hidden px-4 md:px-10">
+      <svg className="max-w-5xl" ref={ref} />
     </div>
   );
 };
