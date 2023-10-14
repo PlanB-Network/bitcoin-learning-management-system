@@ -2,6 +2,7 @@ import { Route } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root';
 
+import { BET } from './pages/bet';
 import { Book } from './pages/book-details';
 import { Books } from './pages/books';
 import { Builder } from './pages/builder-details';
@@ -31,6 +32,12 @@ export const bookDetailsRoute = new Route({
   getParentRoute: () => resourcesRootRoute,
   path: '/book/$bookId',
   component: Book,
+});
+
+export const betRoute = new Route({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/bet',
+  component: BET,
 });
 
 export const buildersRoute = new Route({
@@ -79,6 +86,7 @@ export const resourcesRoutes = resourcesRootRoute.addChildren([
   buildersRoute,
   builderDetailsRoute,
   podcastsRoute,
+  betRoute,
   podcastDetailsRoute,
   // Later
   articlesRoute,

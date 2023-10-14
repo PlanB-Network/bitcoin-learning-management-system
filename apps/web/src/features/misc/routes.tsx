@@ -4,6 +4,7 @@ import { rootRoute } from '../../routes/root';
 
 import { Home } from './pages/home';
 import { Manifesto } from './pages/manifesto';
+import { nodeNetwork } from './pages/nodenetwork';
 import { NotFound } from './pages/not-found';
 import { ProfessorDetail } from './pages/professor-detail';
 import { ProfessorExplorer } from './pages/professor-explorer';
@@ -58,9 +59,16 @@ export const underConstructionRoute = new Route({
   component: UnderConstruction,
 });
 
+export const nodeNetworkRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/nodenetwork',
+  component: nodeNetwork,
+});
+
 export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
+  nodeNetworkRoute,
   manifestoRoute,
   notFoundRoute,
   sponsorsAndContributorsRoute,

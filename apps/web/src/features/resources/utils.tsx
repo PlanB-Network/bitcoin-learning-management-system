@@ -35,4 +35,9 @@ export const RESOURCES_CATEGORIES = [
     image: couchSvg,
     unreleased: true,
   },
+  {
+    name: 'BET',
+    image: couchSvg,
+    unreleased: false,
+  },
 ] as const;
