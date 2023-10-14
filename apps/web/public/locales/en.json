@@ -64,6 +64,7 @@
   "courses": {
     "categories": {
       "btc": "Bitcoin",
+      "crypto": "Cryptography",
       "econ": "Austrian Economics",
       "fin": "Finance",
       "ln": "Lightning Network",
@@ -100,8 +101,8 @@
       "s2p3": "All our courses are 100% free so nothing can stop you !",
       "s2t1": "Bitcoin education is a journey not a destination",
       "s3t1": "Build your own path down the rabbit hole",
-      "s3PickTopic": "Pick a topic :",
-      "s3PickLevel": "Pick a level :"
+      "s3PickTopic": "Pick topics :",
+      "s3PickLevel": "Pick levels :"
     },
     "footer": {
       "": ""

@@ -17,6 +17,8 @@ import { TopicPicker } from '../components/topic-picker';
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();
   const { data: courses } = trpc.content.getCourses.useQuery();
+  const [activeCategories, setActiveCategories] = useState<string[]>(['btc']);
+  const [activeLevels, setActiveLevels] = useState<string[]>(['beginner']);
 
   const coursesInLanguage = courses?.filter(
     (course) => course.language === i18n.language,
@@ -83,17 +85,59 @@ export const CoursesExplorer = () => {
       topic: t('courses.categories.fin'),
     },
     {
+      prefix: 'crypto',
+      topic: t('courses.categories.crypto'),
+    },
+    {
       prefix: 'min',
       topic: t('courses.categories.min'),
     },
   ];
 
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const levels = [
+    {
+      prefix: '100',
+      name: 'beginner',
+      translatedName: t('words.level.beginner'),
+    },
+    {
+      prefix: '200',
+      name: 'intermediate',
+      translatedName: t('words.level.intermediate'),
+    },
+    {
+      prefix: '300',
+      name: 'expert',
+      translatedName: t('words.level.expert'),
+    },
+  ];
 
   const coursesWithUnreleased = [
     ...(coursesInLanguage || []),
     ...unreleasedCourses,
   ];
+
+  function handleSetActiveCategories(category: string) {
+    const newActiveCategories = [...activeCategories];
+    if (newActiveCategories.includes(category)) {
+      const categoryIndex = newActiveCategories.indexOf(category);
+      newActiveCategories.splice(categoryIndex, 1);
+    } else {
+      newActiveCategories.push(category);
+    }
+    setActiveCategories(newActiveCategories);
+  }
+
+  function handleSetActiveLevels(level: string) {
+    const newActiveLevels = [...activeLevels];
+    if (newActiveLevels.includes(level)) {
+      const categoryIndex = newActiveLevels.indexOf(level);
+      newActiveLevels.splice(categoryIndex, 1);
+    } else {
+      newActiveLevels.push(level);
+    }
+    setActiveLevels(newActiveLevels);
+  }
 
   return (
     <MainLayout footerVariant="dark">
@@ -133,15 +177,19 @@ export const CoursesExplorer = () => {
                   </span>
                   <TopicPicker
                     categories={categories}
-                    activeCategory={activeCategory}
-                    setActiveCategory={setActiveCategory}
+                    activeCategories={activeCategories}
+                    setActiveCategories={handleSetActiveCategories}
                   />
                 </div>
                 <div className="flex flex-row gap-6 xl:gap-12">
                   <span className="mt-6 whitespace-nowrap font-semibold">
                     {t('courses.explorer.s3PickLevel')}
                   </span>
-                  <LevelPicker courseId={t('courses.explorer.pageTitle')} />
+                  <LevelPicker
+                    levels={levels}
+                    activelevels={activeLevels}
+                    setActivelevels={handleSetActiveLevels}
+                  />
                 </div>
               </div>
             </div>
@@ -150,7 +198,22 @@ export const CoursesExplorer = () => {
 
         <div className="grid grid-cols-1 bg-blue-900 px-5 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
           {coursesInLanguage
-            ?.filter(({ id }) => id !== 'btc102' && id !== 'min201')
+            ?.filter(({ id }) => {
+              return (
+                activeCategories.length === 0 ||
+                activeCategories.some((category) =>
+                  id.toLowerCase().startsWith(category.toLowerCase()),
+                )
+              );
+            })
+            ?.filter(({ level }) => {
+              return (
+                activeLevels.length === 0 ||
+                activeLevels.some((lev) => {
+                  return level.toLowerCase() === lev.toLowerCase();
+                })
+              );
+            })
             .map((course) => (
               <CoursePreview
                 course={course}

@@ -1,13 +1,13 @@
 interface TopicPickerProps {
   categories: { prefix: string; topic: string }[];
-  activeCategory: string | null;
-  setActiveCategory: (category: string) => void;
+  activeCategories: string[];
+  setActiveCategories: (category: string) => void;
 }
 
 export const TopicPicker: React.FC<TopicPickerProps> = ({
   categories,
-  activeCategory,
-  setActiveCategory,
+  activeCategories,
+  setActiveCategories,
 }: TopicPickerProps) => {
   return (
     <div className="grid grid-cols-2 items-center justify-center md:grid-cols-3 xl:grid-cols-4">
@@ -17,10 +17,12 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
           key={index}
         >
           <div
-            className={`flex h-8 w-14 place-items-center justify-center rounded-2xl border-2 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
-              activeCategory === prefix ? 'bg-orange-500' : 'bg-blue-1000'
+            className={`flex h-8 w-20 place-items-center justify-center rounded-2xl border-2 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-20 lg:text-base  ${
+              activeCategories.includes(prefix)
+                ? 'bg-orange-500'
+                : 'bg-blue-1000'
             }`}
-            onClick={() => setActiveCategory(prefix)}
+            onClick={() => setActiveCategories(prefix)}
           >
             {prefix}
           </div>

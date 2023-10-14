@@ -160,7 +160,7 @@ const Planet = ({
 
   scaleGroup.on('click', (event) => {
     event.stopPropagation();
-    navigate(`/course/${course.id}/${course.language}`);
+    navigate({ to: `/courses/${course.id}` });
   });
 };
 
