@@ -60,10 +60,10 @@ const syncRepository = async (repository: string, directory: string) => {
       await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
 
       // Get the branch name
-      await git.checkout(['-B', 'main']);
+      await git.checkout(['-B', 'dev']);
 
       // Reset the current branch to match the remote branch
-      await git.reset(ResetMode.HARD, ['origin/main']); // change this to your actual branch name if not 'main'
+      await git.reset(ResetMode.HARD, ['origin/dev']); // change this to your actual branch name if not 'main'
 
       await git.pull('origin');
     } else {
