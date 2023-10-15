@@ -3,6 +3,7 @@ import type { default as QuizQuestionLocalized } from '../sql/content/QuizQuesti
 
 export type { default as QuizQuestion } from '../sql/content/QuizQuestions';
 export type { default as QuizQuestionLocalized } from '../sql/content/QuizQuestionsLocalized';
+export type { default as QuizAttempt } from '../sql/users/QuizAttempts';
 
 export type JoinedQuizQuestion = QuizQuestion &
   Pick<

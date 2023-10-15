@@ -39,3 +39,17 @@ CREATE TABLE IF NOT EXISTS content.quiz_question_tags (
 
   PRIMARY KEY (quiz_question_id, tag_id)
 );
+
+CREATE TABLE IF NOT EXISTS users.quiz_attempts (
+  uid UUID NOT NULL REFERENCES users.accounts(uid) ON DELETE CASCADE,
+  course_id VARCHAR(20) NOT NULL,
+  part INTEGER NOT NULL,
+  chapter INTEGER NOT NULL,
+  
+  questions_count INTEGER NOT NULL,
+  correct_answers_count INTEGER NOT NULL,
+
+  done_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+  PRIMARY KEY (uid, course_id, part, chapter)
+);
