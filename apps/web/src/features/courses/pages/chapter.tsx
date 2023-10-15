@@ -3,7 +3,8 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
-import { useState } from 'react';
+import { t } from 'i18next';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
@@ -14,6 +15,7 @@ import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 // import { NavigationPanel } from '../components/navigation-panel';
+import QuizzCard, { Question } from '../components/quizz-card';
 import { CourseLayout } from '../layout';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -75,7 +77,7 @@ const Title = ({ chapter }: { chapter: Chapter }) => {
   return (
     <div className={`mb-6 w-full max-w-5xl ${isScreenMd ? '' : 'hidden'}`}>
       <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
-        <Link to="/courses">Courses</Link>
+        <Link to="/courses">{t('words.courses') + ` > `}</Link>
         <Link
           to={'/courses/$courseId'}
           params={{ courseId: chapter.course.id }}
@@ -437,6 +439,44 @@ const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
+function getRandomQuestions(
+  questionArray: Question[],
+  count: number,
+): Question[] {
+  if (count >= questionArray.length) {
+    return questionArray;
+  }
+
+  const shuffledArray = shuffleArray(questionArray.slice());
+  return shuffledArray.slice(0, count);
+}
+
+function mapQuizzToQuestions(quizzArray: any[]): Question[] {
+  const questions: any[] = quizzArray.map((quizz) => {
+    const answers = [quizz.answer, ...quizz.wrong_answers];
+    const shuffledAnswers = shuffleArray(answers);
+    const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
+
+    return {
+      question: quizz.question,
+      answers: shuffledAnswers,
+      explanation: quizz.explanation,
+      correctAnswer,
+    };
+  });
+
+  return questions;
+}
+
+function shuffleArray(array: any[]): any[] {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
 export const CourseChapter = () => {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
@@ -452,6 +492,24 @@ export const CourseChapter = () => {
     partIndex,
     chapterIndex,
   });
+
+  const { data: quizzArray } = trpc.content.getCourseChapterQuizzes.useQuery({
+    courseId,
+    language: language ?? i18n.language,
+    partIndex,
+    chapterIndex,
+  });
+
+  const questionsArray: Question[] = useMemo(() => {
+    if (quizzArray !== undefined) {
+      const temp = mapQuizzToQuestions(quizzArray);
+      return getRandomQuestions(temp, 5);
+    } else {
+      return [];
+    }
+  }, [quizzArray]);
+
+  console.log('QUIZZEZ', quizzArray);
 
   if (!chapter && isFetched) {
     navigate({ to: '/404' });
@@ -476,6 +534,11 @@ export const CourseChapter = () => {
                   <HeaderBig chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
                   <BottomButton chapter={chapter} />
+                  <QuizzCard
+                    name={chapter.course.id}
+                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                    questions={questionsArray}
+                  />
                 </div>
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
@@ -494,6 +557,11 @@ export const CourseChapter = () => {
                 <HeaderSmall chapter={chapter} />
                 <MarkdownContent chapter={chapter} />
                 <BottomButton chapter={chapter} />
+                <QuizzCard
+                  name={chapter.course.id}
+                  chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                  questions={questionsArray}
+                />
               </div>
             </div>
           </div>

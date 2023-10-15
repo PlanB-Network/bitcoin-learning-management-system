@@ -199,41 +199,22 @@ export const CoursesExplorer = () => {
         </div>
 
         <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
-          {coursesInLanguage
-            // ?.filter(({ id }) => {
-            //   return (
-            //     activeCategories.length === 0 ||
-            //     activeCategories.some((category) =>
-            //       id.toLowerCase().startsWith(category.toLowerCase()),
-            //     )
-            //   );
-            // })
-            // ?.filter(({ level }) => {
-            //   return (
-            //     activeLevels.length === 0 ||
-            //     activeLevels.some((lev) => {
-            //       return level.toLowerCase() === lev.toLowerCase();
-            //     })
-            //   );
-            // })
-            ?.map((course) => (
-              <CoursePreview
-                course={course}
-                key={course.id}
-                selected={
-                  (activeCategories.length === 0 ||
-                    activeCategories.some((category) =>
-                      course.id
-                        .toLowerCase()
-                        .startsWith(category.toLowerCase()),
-                    )) &&
-                  (activeLevels.length === 0 ||
-                    activeLevels.some(
-                      (lev) => course.level.toLowerCase() === lev.toLowerCase(),
-                    ))
-                }
-              />
-            ))}
+          {coursesInLanguage?.map((course) => (
+            <CoursePreview
+              course={course}
+              key={course.id}
+              selected={
+                (activeCategories.length === 0 ||
+                  activeCategories.some((category) =>
+                    course.id.toLowerCase().startsWith(category.toLowerCase()),
+                  )) &&
+                (activeLevels.length === 0 ||
+                  activeLevels.some(
+                    (lev) => course.level.toLowerCase() === lev.toLowerCase(),
+                  ))
+              }
+            />
+          ))}
         </div>
       </div>
     </MainLayout>

@@ -325,7 +325,7 @@ export const CourseDetails: React.FC = () => {
                           to={'/courses/$courseId/$partIndex/$chapterIndex'}
                           params={{
                             courseId,
-                            partIndex: partIndex.toString(),
+                            partIndex: (partIndex + 1).toString(),
                             chapterIndex: '1',
                           }}
                         >
@@ -347,7 +347,7 @@ export const CourseDetails: React.FC = () => {
                             to={'/courses/$courseId/$partIndex/$chapterIndex'}
                             params={{
                               courseId,
-                              partIndex: partIndex.toString(),
+                              partIndex: (partIndex + 1).toString(),
                               chapterIndex: chapter.chapter.toString(),
                             }}
                           >

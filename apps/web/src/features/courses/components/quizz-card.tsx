@@ -4,12 +4,25 @@ import QuizzCardQuestion from './quizz-card-question';
 import QuizzCardResults from './quizz-card-results';
 import QuizzCardReview from './quizz-card-review';
 
+export interface Question {
+  question: string;
+  answers: string[];
+  explanation: string;
+  correctAnswer: number;
+}
+
 interface QuizzCardProps extends React.HTMLProps<HTMLDivElement> {
   name: string;
   chapter: string;
+  questions: Question[];
 }
 
-export default function QuizzCard({ name, chapter, ...props }: QuizzCardProps) {
+export default function QuizzCard({
+  name,
+  chapter,
+  questions,
+  ...props
+}: QuizzCardProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([
@@ -27,25 +40,6 @@ export default function QuizzCard({ name, chapter, ...props }: QuizzCardProps) {
     '#FAF7E7',
   ]);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
-
-  const questions = [
-    {
-      name: 'What is the purpose of creating an inheritance plan for your bitcoins?',
-      answers: [
-        'To ensure that your bitcoins will be properly managed after your death',
-        'To avoid taxes on your bitcoins',
-        'To increase the value of your bitcoins',
-        'To prevent your bitcoins from being stolen',
-      ],
-      explanation:
-        'An inheritance plan ensures that your bitcoins will be properly managed after your death. It can include a handwritten letter detailing your assets, their access methods, and the contact information of trusted individuals to be contacted.',
-      correctAnswer: 0,
-    },
-    { name: 'Q2', answers: ['2A', '2B', '2C', '2D'], correctAnswer: 1 },
-    { name: 'Q3', answers: ['3A', '3B', '3C', '3D'], correctAnswer: 3 },
-    { name: 'Q4', answers: ['4A', '4B', '4C', '4D'], correctAnswer: 0 },
-    { name: 'Q5', answers: ['5A', '5B', '5C', '5D'], correctAnswer: 2 },
-  ];
 
   function handleNextQuestion(selectedAnswer: number) {
     const updatedSelectedAnswer = [...selectedAnswers];
@@ -100,7 +94,7 @@ export default function QuizzCard({ name, chapter, ...props }: QuizzCardProps) {
         <QuizzCardQuestion
           name={name}
           chapter={chapter}
-          question={questions[currentQuestionIndex].name}
+          question={questions[currentQuestionIndex].question}
           correctAnswer={questions[currentQuestionIndex].correctAnswer}
           answers={questions[currentQuestionIndex].answers}
           answersColors={answersColors}
@@ -121,7 +115,7 @@ export default function QuizzCard({ name, chapter, ...props }: QuizzCardProps) {
         <QuizzCardReview
           name={name}
           chapter={chapter}
-          question={questions[currentQuestionIndex].name}
+          question={questions[currentQuestionIndex].question}
           questionIndex={currentQuestionIndex}
           answers={questions[currentQuestionIndex].answers}
           selectedAnswer={selectedAnswers[currentQuestionIndex] as number}
