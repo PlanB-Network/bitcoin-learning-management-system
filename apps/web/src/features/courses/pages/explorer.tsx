@@ -17,8 +17,8 @@ import { TopicPicker } from '../components/topic-picker';
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();
   const { data: courses } = trpc.content.getCourses.useQuery();
-  const [activeCategories, setActiveCategories] = useState<string[]>(['btc']);
-  const [activeLevels, setActiveLevels] = useState<string[]>(['beginner']);
+  const [activeCategories, setActiveCategories] = useState<string[]>([]);
+  const [activeLevels, setActiveLevels] = useState<string[]>([]);
 
   const coursesInLanguage = courses?.filter(
     (course) => course.language === i18n.language,
@@ -168,11 +168,11 @@ export const CoursesExplorer = () => {
             </h3>
           </div>
 
-          <div className="mb-16 hidden w-full flex-col px-8 sm:flex">
-            <div className="rounded-3xl border-2 border-white bg-blue-800 px-5 text-base ">
+          <div className="mb-4 flex w-full flex-col px-3 sm:mb-16 sm:px-8">
+            <div className="px-5 text-base sm:rounded-3xl sm:border-2 sm:border-white sm:bg-blue-800 ">
               <div className="flex flex-col">
-                <div className="flex flex-row gap-6 xl:gap-12">
-                  <span className="mt-4 whitespace-nowrap font-semibold">
+                <div className="flex flex-col sm:flex-row xl:gap-12">
+                  <span className="mt-4 whitespace-nowrap font-semibold text-orange-500 sm:text-white">
                     {t('courses.explorer.s3PickTopic')}
                   </span>
                   <TopicPicker
@@ -181,44 +181,56 @@ export const CoursesExplorer = () => {
                     setActiveCategories={handleSetActiveCategories}
                   />
                 </div>
-                <div className="flex flex-row gap-6 xl:gap-12">
-                  <span className="mt-6 whitespace-nowrap font-semibold">
+                <div className="flex flex-col gap-0 sm:flex-row sm:gap-6 xl:gap-12">
+                  <span className="mt-6 whitespace-nowrap font-semibold text-orange-500 sm:text-white">
                     {t('courses.explorer.s3PickLevel')}
                   </span>
-                  <LevelPicker
-                    levels={levels}
-                    activelevels={activeLevels}
-                    setActivelevels={handleSetActiveLevels}
-                  />
+                  <div className="my-0 sm:my-4">
+                    <LevelPicker
+                      levels={levels}
+                      activelevels={activeLevels}
+                      setActivelevels={handleSetActiveLevels}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 bg-blue-900 px-5 sm:grid-cols-2  md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+        <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
           {coursesInLanguage
-            ?.filter(({ id }) => {
-              return (
-                activeCategories.length === 0 ||
-                activeCategories.some((category) =>
-                  id.toLowerCase().startsWith(category.toLowerCase()),
-                )
-              );
-            })
-            ?.filter(({ level }) => {
-              return (
-                activeLevels.length === 0 ||
-                activeLevels.some((lev) => {
-                  return level.toLowerCase() === lev.toLowerCase();
-                })
-              );
-            })
-            .map((course) => (
+            // ?.filter(({ id }) => {
+            //   return (
+            //     activeCategories.length === 0 ||
+            //     activeCategories.some((category) =>
+            //       id.toLowerCase().startsWith(category.toLowerCase()),
+            //     )
+            //   );
+            // })
+            // ?.filter(({ level }) => {
+            //   return (
+            //     activeLevels.length === 0 ||
+            //     activeLevels.some((lev) => {
+            //       return level.toLowerCase() === lev.toLowerCase();
+            //     })
+            //   );
+            // })
+            ?.map((course) => (
               <CoursePreview
                 course={course}
-                className="h-auto"
                 key={course.id}
+                selected={
+                  activeCategories.length === 0 ||
+                  (activeCategories.some((category) =>
+                    course.id.toLowerCase().startsWith(category.toLowerCase()),
+                  ) &&
+                    (activeLevels.length === 0 ||
+                      activeLevels.some(
+                        (lev) =>
+                          course.level.toLowerCase() === lev.toLowerCase(),
+                      )))
+                }
               />
             ))}
         </div>

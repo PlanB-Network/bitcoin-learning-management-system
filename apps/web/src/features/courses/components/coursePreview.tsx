@@ -1,4 +1,8 @@
-import { Link } from '@tanstack/react-router';
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
@@ -8,37 +12,59 @@ import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
+
 interface CoursePreviewProps {
   course: JoinedCourse;
-  className?: string;
+  selected: boolean;
 }
 
-export const CoursePreview = ({
-  course,
-  className = '',
-}: CoursePreviewProps) => {
+export const CoursePreview = ({ course, selected }: CoursePreviewProps) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const isScreenMd = useGreater('sm');
+
+  function handleCardClick() {
+    if (!isScreenMd) {
+      navigate({ to: '/' });
+    }
+  }
 
   return (
     <Card
       withPadding={false}
       className={compose(
-        'overflow-hidden border-2 border-orange-800  sm:border-4 !p-0',
+        'overflow-hidden border-2 border-orange-500 relative sm:border-4 !p-0',
+        selected
+          ? ''
+          : 'after:top-0 after:left-0 after:w-full after:h-full after:absolute after:bg-blue-1000 after:bg-opacity-50 after:content-[""]',
       )}
     >
-      <div className="relative h-full flex-row">
-        <img
-          src={computeAssetCdnUrl(
-            course.last_commit,
-            `courses/${course.id}/assets/thumbnail.png`,
-          )}
-          alt="Course Thumbnail"
-          className="w-full"
-        />
+      <div
+        className="relative flex h-full cursor-pointer flex-row items-center sm:cursor-auto sm:flex-col"
+        onClick={handleCardClick}
+      >
+        <div className="flex w-[100px] flex-col items-center sm:w-auto">
+          <span className="inline font-bold uppercase text-orange-500 sm:hidden">
+            {course.id}
+          </span>
+          <img
+            src={computeAssetCdnUrl(
+              course.last_commit,
+              `courses/${course.id}/assets/thumbnail.png`,
+            )}
+            alt="Course Thumbnail"
+            className="ml-2 h-20 max-w-[100px] rounded-lg sm:ms-0 sm:h-auto sm:w-full sm:max-w-none sm:rounded-none"
+          />
+        </div>
         <div className="flex h-full flex-col px-5 py-3">
-          <h5 className="text-blue-1000 text-xs font-semibold uppercase tracking-tight sm:text-xl">
-            {course.name}
+          <h5 className="text-blue-1000 text-base font-semibold uppercase tracking-tight sm:text-xl">
+            <span className="text-sm:inline hidden">
+              {course.id} - {course.name}
+            </span>
+            <span className="text-sm:hidden inline">{course.name}</span>
           </h5>
+          <hr className="border-blue-1000 mt-1 hidden w-24 sm:inline" />
           <h6 className="mt-2 text-xs font-light sm:text-xs">
             {t('courses.preview.by', { teacher: course.teacher })}
           </h6>

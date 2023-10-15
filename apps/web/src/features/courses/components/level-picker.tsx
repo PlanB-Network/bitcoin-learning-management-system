@@ -17,12 +17,13 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
 
   const { t } = useTranslation();
   return (
-    <div className="my-4">
-      <div className="flex space-x-2 text-base">
-        <div className="my-3 flex flex-row gap-12">
-          {levels.map((level, index) => (
+    <div className="flex space-x-2 text-base">
+      <div className="my-1 flex flex-wrap gap-2 sm:my-3 sm:flex-row sm:gap-12">
+        {levels.map((level, index) => (
+          <>
+            {/* Desktop */}
             <div
-              className="flex flex-row place-items-center space-x-2"
+              className="hidden flex-row place-items-center space-x-2 sm:flex"
               key={index}
             >
               <div
@@ -40,8 +41,24 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
                 {level.translatedName}
               </span>
             </div>
-          ))}
-        </div>
+            {/* Mobile */}
+            <div
+              className="mt-1 flex flex-row place-items-center sm:my-3 sm:hidden"
+              key={index}
+            >
+              <div
+                className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs  ${
+                  activelevels.includes(level.name)
+                    ? 'bg-orange-500 font-medium'
+                    : 'bg-white'
+                }`}
+                onClick={() => handleLevelClick(t(level.name))}
+              >
+                {level.translatedName}
+              </div>
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );
