@@ -3,6 +3,7 @@ import type { ChangedFile } from '@sovereign-university/types';
 import { supportedContentTypes } from './const';
 import { createProcessChangedCourse, groupByCourse } from './courses/import';
 import type { Dependencies } from './dependencies';
+import { createProcessChangedQuiz, groupByQuiz } from './quizzes/import';
 import {
   createProcessChangedResource,
   groupByResource,
@@ -21,6 +22,7 @@ export const createProcessChangedFiles =
     const processChangedResource = createProcessChangedResource(dependencies);
     const processChangedCourse = createProcessChangedCourse(dependencies);
     const processChangedTutorial = createProcessChangedTutorial(dependencies);
+    const processChangedQuiz = createProcessChangedQuiz(dependencies);
 
     /*
      * Resources
@@ -44,5 +46,13 @@ export const createProcessChangedFiles =
     const tutorials = groupByTutorial(filteredFiles);
     for (const tutorial of tutorials) {
       await processChangedTutorial(tutorial);
+    }
+
+    /**
+     * Quizzes
+     */
+    const quizzes = groupByQuiz(filteredFiles);
+    for (const quiz of quizzes) {
+      await processChangedQuiz(quiz);
     }
   };

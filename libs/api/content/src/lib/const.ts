@@ -3,6 +3,7 @@ export const supportedContentTypes = [
   'courses',
   'resources',
   'tutorials',
+  'quizzes',
 ] as const;
 
 export type ContentType = (typeof supportedContentTypes)[number];

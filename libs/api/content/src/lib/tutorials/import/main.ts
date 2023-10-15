@@ -38,7 +38,7 @@ export const createProcessMainFile =
       const { path: previousPath } = parseDetailsFromPath(file.previousPath);
 
       await transaction`
-        UPDATE content.resources
+        UPDATE content.tutorials
         SET path = ${tutorial.path}
         WHERE path = ${previousPath}
       `;

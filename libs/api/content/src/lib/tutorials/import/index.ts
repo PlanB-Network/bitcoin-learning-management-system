@@ -103,7 +103,7 @@ export const createProcessChangedTutorial =
         .then((row) => row?.id);
 
       if (!id) {
-        throw new Error(`Resource not found for path ${tutorial.path}`);
+        throw new Error(`Tutorial not found for path ${tutorial.path}`);
       }
 
       for (const file of files) {
