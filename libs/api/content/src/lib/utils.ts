@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-import { assertSupportedContentPath } from './const';
+import { supportedContentTypes } from './const';
 import { ChangedContent } from './types';
 
 export const yamlToObject = <T = unknown>(data: string) => yaml.load(data) as T;
@@ -11,10 +11,13 @@ export const getContentType = (path: string) => {
   // Validate that the path has at least 1 element (content/)
   if (pathElements.length < 1) throw new Error('Invalid content path');
 
-  const rootPath = pathElements[0];
-  assertSupportedContentPath(rootPath);
+  const contentType = supportedContentTypes.find((value) =>
+    path.startsWith(value),
+  );
 
-  return rootPath;
+  if (!contentType) throw new Error(`Invalid content type path: ${path}`);
+
+  return contentType;
 };
 
 export const computeAssetCdnUrl = (

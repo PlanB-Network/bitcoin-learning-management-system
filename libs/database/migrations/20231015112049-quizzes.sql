@@ -1,6 +1,6 @@
 -- Path: libs/database/migrations/20231015112049-quizz.sql
 
-CREATE TABLE IF NOT EXISTS content.quizzes (
+CREATE TABLE IF NOT EXISTS content.quiz_questions (
   id INTEGER PRIMARY KEY,
 
   course_id VARCHAR(20) NOT NULL,
@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS content.quizzes (
     ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS content.quizzes_localized (
-  quiz_id INTEGER NOT NULL REFERENCES content.quizzes(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS content.quiz_questions_localized (
+  quiz_question_id INTEGER NOT NULL REFERENCES content.quiz_questions(id) ON DELETE CASCADE,
   language VARCHAR(10) NOT NULL,
 
   -- Per quiz
@@ -30,12 +30,12 @@ CREATE TABLE IF NOT EXISTS content.quizzes_localized (
   wrong_answers TEXT[] NOT NULL,
   explanation TEXT,
 
-  PRIMARY KEY (quiz_id, language)
+  PRIMARY KEY (quiz_question_id, language)
 );
 
-CREATE TABLE IF NOT EXISTS content.quiz_tags (
-  quiz_id INTEGER NOT NULL REFERENCES content.quizzes(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS content.quiz_question_tags (
+  quiz_question_id INTEGER NOT NULL REFERENCES content.quiz_questions(id) ON DELETE CASCADE,
   tag_id INTEGER NOT NULL REFERENCES content.tags(id) ON DELETE CASCADE,
 
-  PRIMARY KEY (quiz_id, tag_id)
+  PRIMARY KEY (quiz_question_id, tag_id)
 );

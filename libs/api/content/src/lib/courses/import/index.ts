@@ -214,7 +214,7 @@ export const createProcessChangedCourse =
               INSERT INTO content.tags ${transaction(
                 parsedCourse.tags.map((tag) => ({ name: tag })),
               )}
-              ON CONFLICT DO NOTHING
+              ON CONFLICT (name) DO NOTHING
             `;
 
             await transaction`

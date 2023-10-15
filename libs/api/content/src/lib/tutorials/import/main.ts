@@ -87,7 +87,7 @@ export const createProcessMainFile =
           INSERT INTO content.tags ${transaction(
             parsedTutorial.tags.map((tag) => ({ name: tag })),
           )}
-          ON CONFLICT DO NOTHING
+          ON CONFLICT (name) DO NOTHING
         `;
 
         await transaction`

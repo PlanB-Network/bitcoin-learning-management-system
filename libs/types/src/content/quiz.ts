@@ -1,12 +1,12 @@
-import type { default as Quiz } from '../sql/content/Quizzes';
-import type { default as QuizLocalized } from '../sql/content/QuizzesLocalized';
+import type { default as QuizQuestion } from '../sql/content/QuizQuestions';
+import type { default as QuizQuestionLocalized } from '../sql/content/QuizQuestionsLocalized';
 
-export type { default as Quiz } from '../sql/content/Quizzes';
-export type { default as QuizLocalized } from '../sql/content/QuizzesLocalized';
+export type { default as QuizQuestion } from '../sql/content/QuizQuestions';
+export type { default as QuizQuestionLocalized } from '../sql/content/QuizQuestionsLocalized';
 
-export type JoinedQuiz = Quiz &
+export type JoinedQuizQuestion = QuizQuestion &
   Pick<
-    QuizLocalized,
+    QuizQuestionLocalized,
     'language' | 'question' | 'answer' | 'wrong_answers' | 'explanation'
   > & {
     tags: string[];

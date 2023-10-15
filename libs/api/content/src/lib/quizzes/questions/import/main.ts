@@ -2,15 +2,15 @@ import { TransactionSql, firstRow } from '@sovereign-university/database';
 import {
   ChangedFile,
   ModifiedFile,
-  Quiz,
+  QuizQuestion,
   RenamedFile,
 } from '@sovereign-university/types';
 
-import { yamlToObject } from '../../utils';
+import { yamlToObject } from '../../../utils';
 
-import { ChangedQuiz, parseDetailsFromPath } from '.';
+import { ChangedQuizQuestion, parseDetailsFromPath } from '.';
 
-interface QuizMain {
+interface QuizQuestionMain {
   course: string;
   part: string;
   chapter: string;
@@ -22,27 +22,27 @@ interface QuizMain {
 
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
-  async (quiz: ChangedQuiz, file?: ChangedFile) => {
+  async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
     if (!file) return;
 
     if (file.kind === 'removed') {
-      // If quiz file was removed, delete the main quiz and all its translations (with cascade)
+      // If quiz question file was removed, delete the main quiz question and all its translations (with cascade)
 
       await transaction`
-        DELETE FROM content.quizzes WHERE id = ${quiz.id} 
+        DELETE FROM content.quiz_questions WHERE id = ${quizQuestion.id} 
       `;
 
       return;
     }
 
     if (file.kind === 'renamed') {
-      // If quiz file was moved, update the id
+      // If quiz question file was moved, update the id
 
       const { id: previousId } = parseDetailsFromPath(file.previousPath);
 
       await transaction`
-        UPDATE content.quizzes
-        SET id = ${quiz.id}
+        UPDATE content.quiz_questions
+        SET id = ${quizQuestion.id}
         WHERE id = ${previousId}
       `;
     }
@@ -55,25 +55,25 @@ export const createProcessMainFile =
       // If new or updated quiz file, insert or update quiz
 
       // Only get the tags from the main quiz file
-      const parsedQuiz = yamlToObject<QuizMain>(file.data);
+      const parsedQuizQuestion = yamlToObject<QuizQuestionMain>(file.data);
 
-      const lastUpdated = quiz.files
+      const lastUpdated = quizQuestion.files
         .filter(
           (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
         )
         .sort((a, b) => b.time - a.time)[0];
 
-      const result = await transaction<Quiz[]>`
-        INSERT INTO content.quizzes
+      const result = await transaction<QuizQuestion[]>`
+        INSERT INTO content.quiz_questions
         (id, course_id, part, chapter, difficulty, author, duration, last_updated, last_commit)
         VALUES (
-          ${quiz.id},
-          ${parsedQuiz.course}, 
-          ${parsedQuiz.part},
-          ${parsedQuiz.chapter},
-          ${parsedQuiz.difficulty},
-          ${parsedQuiz.author},
-          ${parsedQuiz.duration},
+          ${quizQuestion.id},
+          ${parsedQuizQuestion.course}, 
+          ${parsedQuizQuestion.part},
+          ${parsedQuizQuestion.chapter},
+          ${parsedQuizQuestion.difficulty},
+          ${parsedQuizQuestion.author},
+          ${parsedQuizQuestion.duration},
           ${lastUpdated.time}, 
           ${lastUpdated.commit}
         )
@@ -90,19 +90,23 @@ export const createProcessMainFile =
       `.then(firstRow);
 
       // If the quiz has tags, insert them into the tags table and link them to the quiz
-      if (result && parsedQuiz.tags && parsedQuiz.tags?.length > 0) {
+      if (
+        result &&
+        parsedQuizQuestion.tags &&
+        parsedQuizQuestion.tags?.length > 0
+      ) {
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedQuiz.tags.map((tag) => ({ name: tag })),
+            parsedQuizQuestion.tags.map((tag) => ({ name: tag })),
           )}
-          ON CONFLICT DO NOTHING
+          ON CONFLICT (name) DO NOTHING
         `;
 
         await transaction`
-          INSERT INTO content.quiz_tags (quiz_id, tag_id)
+          INSERT INTO content.quiz_question_tags (quiz_question_id, tag_id)
           SELECT
             ${result.id}, 
-            id FROM content.tags WHERE name = ANY(${parsedQuiz.tags})
+            id FROM content.tags WHERE name = ANY(${parsedQuizQuestion.tags})
           ON CONFLICT DO NOTHING
         `;
       }

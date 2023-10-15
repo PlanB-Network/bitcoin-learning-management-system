@@ -1,5 +1,5 @@
 export * from './lib/courses';
-export * from './lib/quizzes';
+export * from './lib/quizzes/questions';
 export * from './lib/resources';
 export * from './lib/tutorials';
 

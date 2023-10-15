@@ -1,7 +1,7 @@
-import { Dependencies } from '../../dependencies';
-import { getCourseChapterQuizzesQuery } from '../queries';
+import { Dependencies } from '../../../dependencies';
+import { getCourseChapterQuizQuestionsQuery } from '../queries';
 
-export const createGetCourseChapterQuizzes =
+export const createGetCourseChapterQuizQuestions =
   (dependencies: Dependencies) =>
   async ({
     courseId,
@@ -16,8 +16,8 @@ export const createGetCourseChapterQuizzes =
   }) => {
     const { postgres } = dependencies;
 
-    const quizzes = await postgres.exec(
-      getCourseChapterQuizzesQuery({
+    const quizQuestions = await postgres.exec(
+      getCourseChapterQuizQuestionsQuery({
         courseId,
         partIndex,
         chapterIndex,
@@ -25,5 +25,5 @@ export const createGetCourseChapterQuizzes =
       }),
     );
 
-    return quizzes;
+    return quizQuestions;
   };

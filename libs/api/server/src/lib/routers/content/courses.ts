@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   createGetCourse,
   createGetCourseChapter,
-  createGetCourseChapterQuizzes,
+  createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
   createGetCourses,
 } from '@sovereign-university/api/content';
@@ -83,11 +83,11 @@ const getCourseChapterProcedure = publicProcedure
     ),
   );
 
-const getCourseChapterQuizzesProcedure = publicProcedure
+const getCourseChapterQuizQuestionsProcedure = publicProcedure
   .meta({
     openapi: {
       method: 'GET',
-      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}/quizzes',
+      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}/questions',
     },
   })
   .input(
@@ -100,7 +100,7 @@ const getCourseChapterQuizzesProcedure = publicProcedure
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetCourseChapterQuizzes(ctx.dependencies)({
+    createGetCourseChapterQuizQuestions(ctx.dependencies)({
       courseId: input.courseId,
       partIndex: Number(input.partIndex),
       chapterIndex: Number(input.chapterIndex),
@@ -113,5 +113,5 @@ export const coursesRouter = createTRPCRouter({
   getCourse: getCourseProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
-  getCourseChapterQuizzes: getCourseChapterQuizzesProcedure,
+  getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
 });

@@ -1,11 +1,11 @@
 import { TransactionSql } from '@sovereign-university/database';
 
-import { ChangedFileWithLanguage } from '../../types';
-import { yamlToObject } from '../../utils';
+import { ChangedFileWithLanguage } from '../../../types';
+import { yamlToObject } from '../../../utils';
 
-import { ChangedQuiz } from '.';
+import { ChangedQuizQuestion } from '.';
 
-interface QuizLocal {
+interface QuizQuestionLocal {
   question: string;
   answer: string;
   wrong_answers: string[];
@@ -14,13 +14,13 @@ interface QuizLocal {
 
 export const createProcessLocalFile =
   (transaction: TransactionSql) =>
-  async (quiz: ChangedQuiz, file: ChangedFileWithLanguage) => {
+  async (quizQuestion: ChangedQuizQuestion, file: ChangedFileWithLanguage) => {
     if (file.kind === 'removed') {
       // If file was deleted, delete the translation from the database
 
       await transaction`
-        DELETE FROM content.quizzes_localized
-        WHERE quiz_id = ${quiz.id} AND language = ${file.language}
+        DELETE FROM content.quiz_questions_localized
+        WHERE quiz_question_id = ${quizQuestion.id} AND language = ${file.language}
       `;
     }
 
@@ -29,21 +29,21 @@ export const createProcessLocalFile =
       file.kind === 'modified' ||
       file.kind === 'renamed'
     ) {
-      const parsed = yamlToObject<QuizLocal>(file.data);
+      const parsed = yamlToObject<QuizQuestionLocal>(file.data);
 
       await transaction`
-        INSERT INTO content.quizzes_localized (
-          quiz_id, language, question, answer, wrong_answers, explanation
+        INSERT INTO content.quiz_questions_localized (
+          quiz_question_id, language, question, answer, wrong_answers, explanation
         )
         VALUES (
-          ${quiz.id},
+          ${quizQuestion.id},
           ${file.language},
           ${parsed.question},
           ${parsed.answer},
           ${parsed.wrong_answers},
           ${parsed.explanation}
         )
-        ON CONFLICT (quiz_id, language) DO UPDATE SET
+        ON CONFLICT (quiz_question_id, language) DO UPDATE SET
           question = EXCLUDED.question,
           answer = EXCLUDED.answer,
           wrong_answers = EXCLUDED.wrong_answers,

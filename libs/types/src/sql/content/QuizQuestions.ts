@@ -5,12 +5,12 @@ import type { CoursesId } from './Courses';
 import type { CoursePartsPart } from './CourseParts';
 import type { CourseChaptersChapter } from './CourseChapters';
 
-/** Identifier type for content.quizzes */
-export type QuizzesId = number;
+/** Identifier type for content.quiz_questions */
+export type QuizQuestionsId = number;
 
-/** Represents the table content.quizzes */
-export default interface Quizzes {
-  id: QuizzesId;
+/** Represents the table content.quiz_questions */
+export default interface QuizQuestions {
+  id: QuizQuestionsId;
 
   course_id: CoursesId;
 
@@ -29,9 +29,9 @@ export default interface Quizzes {
   last_commit: string;
 }
 
-/** Represents the initializer for the table content.quizzes */
-export interface QuizzesInitializer {
-  id: QuizzesId;
+/** Represents the initializer for the table content.quiz_questions */
+export interface QuizQuestionsInitializer {
+  id: QuizQuestionsId;
 
   course_id: CoursesId;
 
@@ -51,9 +51,9 @@ export interface QuizzesInitializer {
   last_commit: string;
 }
 
-/** Represents the mutator for the table content.quizzes */
-export interface QuizzesMutator {
-  id?: QuizzesId;
+/** Represents the mutator for the table content.quiz_questions */
+export interface QuizQuestionsMutator {
+  id?: QuizQuestionsId;
 
   course_id?: CoursesId;
 
