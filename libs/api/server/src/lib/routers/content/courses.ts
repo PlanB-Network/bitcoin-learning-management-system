@@ -3,6 +3,7 @@ import { z } from 'zod';
 import {
   createGetCourse,
   createGetCourseChapter,
+  createGetCourseChapterQuizzes,
   createGetCourseChapters,
   createGetCourses,
 } from '@sovereign-university/api/content';
@@ -82,9 +83,35 @@ const getCourseChapterProcedure = publicProcedure
     ),
   );
 
+const getCourseChapterQuizzesProcedure = publicProcedure
+  .meta({
+    openapi: {
+      method: 'GET',
+      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}/quizzes',
+    },
+  })
+  .input(
+    z.object({
+      courseId: z.string(),
+      language: z.string(),
+      partIndex: z.string(),
+      chapterIndex: z.string(),
+    }),
+  )
+  .output(z.any())
+  .query(async ({ ctx, input }) =>
+    createGetCourseChapterQuizzes(ctx.dependencies)({
+      courseId: input.courseId,
+      partIndex: Number(input.partIndex),
+      chapterIndex: Number(input.chapterIndex),
+      language: input.language,
+    }),
+  );
+
 export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,
   getCourse: getCourseProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
+  getCourseChapterQuizzes: getCourseChapterQuizzesProcedure,
 });
