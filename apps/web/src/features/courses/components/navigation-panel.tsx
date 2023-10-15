@@ -1,31 +1,41 @@
 import { Link } from '@tanstack/react-router';
 import { CSSProperties } from 'react';
-import { BsFillTriangleFill } from 'react-icons/bs';
+import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
 import { TRPCRouterOutput } from '../../../utils/trpc';
 
+interface Part {
+  part: number;
+}
 interface Chapter {
-  id: string;
   title: string;
+  chapter: number;
+  part: Part;
+}
+
+interface ChapterFromArray {
+  title: string;
+  chapter: number;
+  part: number;
 }
 
 interface Props {
   course: TRPCRouterOutput['content']['getCourse'];
-  currentPartIndex: number;
-  currentChapterIndex: number;
-  courseId: string;
-  courseTitle: string;
+  chapters: ChapterFromArray[];
+  currentChapter: Chapter;
   style?: CSSProperties;
 }
 
 export const NavigationPanel: React.FC<Props> = ({
   course,
-  currentPartIndex,
-  currentChapterIndex,
+  chapters,
+  currentChapter,
   style,
 }) => {
+  console.log('curzzz', currentChapter);
+  console.log('chapterszzz', chapters);
   return (
     <div
       className="mt-2  h-auto w-48 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
@@ -37,33 +47,50 @@ export const NavigationPanel: React.FC<Props> = ({
       <div>
         <ul className="flex flex-col gap-2">
           {chapters.map((chapter, index) => (
-            <li
-              key={chapter.id}
-              className={cn(
-                'text-xs font-semibold',
-                index < currentChapterIndex - 1
-                  ? 'text-orange-500'
-                  : 'text-gray-500',
-                index === currentChapterIndex - 1 ? 'text-orange-700' : '',
-              )}
-            >
-              <Link
-                to={'/course/$courseId/$partIndex/$chapterIndex'}
-                params={{
-                  courseId: course.id,
-                  chapterIndex: String(index + 1),
-                }}
-              >
+            <>
+              {chapter.chapter === 1 && (
                 <div className="grid grid-cols-8 items-center gap-1">
-                  <div className="col-span-1">
-                    <BsFillTriangleFill size={10} className="mr-2 rotate-90" />
-                  </div>
-                  <div className="col-span-7">
-                    <span>{chapter.title}</span>
-                  </div>
+                  <BsFillCircleFill size={10} />
+                  <span>{chapter.part}</span>
                 </div>
-              </Link>
-            </li>
+              )}
+              <li
+                key={index + 1000}
+                className={cn(
+                  'text-xs font-semibold',
+                  chapter.part < currentChapter.part.part ||
+                    (chapter.part === currentChapter.part.part &&
+                      chapter.chapter < currentChapter.chapter)
+                    ? 'text-orange-500'
+                    : 'text-gray-500',
+                  chapter.part === currentChapter.part.part &&
+                    chapter.chapter === currentChapter.chapter
+                    ? 'text-orange-500'
+                    : '',
+                )}
+              >
+                <Link
+                  to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                  params={{
+                    courseId: course.id,
+                    partIndex: chapter.part.toString(),
+                    chapterIndex: chapter.chapter.toString(),
+                  }}
+                >
+                  <div className="grid grid-cols-8 items-center gap-1">
+                    <div className="col-span-1">
+                      <BsFillTriangleFill
+                        size={10}
+                        className="mr-2 rotate-90"
+                      />
+                    </div>
+                    <div className="col-span-7">
+                      <span>{chapter.title}</span>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            </>
           ))}
         </ul>
       </div>

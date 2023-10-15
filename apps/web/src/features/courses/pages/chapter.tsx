@@ -15,6 +15,7 @@ import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 // import { NavigationPanel } from '../components/navigation-panel';
+import { NavigationPanel } from '../components/navigation-panel';
 import QuizzCard, { Question } from '../components/quizz-card';
 import { CourseLayout } from '../layout';
 
@@ -486,6 +487,11 @@ export const CourseChapter = () => {
 
   const isScreenMd = useGreater('sm');
 
+  const { data: chapters } = trpc.content.getCourseChapters.useQuery({
+    id: courseId,
+    language: language ?? i18n.language,
+  });
+
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
     courseId,
     language: language ?? i18n.language,
@@ -493,12 +499,13 @@ export const CourseChapter = () => {
     chapterIndex,
   });
 
-  const { data: quizzArray } = trpc.content.getCourseChapterQuizzes.useQuery({
-    courseId,
-    language: language ?? i18n.language,
-    partIndex,
-    chapterIndex,
-  });
+  const { data: quizzArray } =
+    trpc.content.getCourseChapterQuizQuestions.useQuery({
+      courseId,
+      language: language ?? i18n.language,
+      partIndex,
+      chapterIndex,
+    });
 
   const questionsArray: Question[] = useMemo(() => {
     if (quizzArray !== undefined) {
@@ -508,8 +515,6 @@ export const CourseChapter = () => {
       return [];
     }
   }, [quizzArray]);
-
-  console.log('QUIZZEZ', quizzArray);
 
   if (!chapter && isFetched) {
     navigate({ to: '/404' });
@@ -534,21 +539,26 @@ export const CourseChapter = () => {
                   <HeaderBig chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
                   <BottomButton chapter={chapter} />
-                  <QuizzCard
-                    name={chapter.course.id}
-                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                    questions={questionsArray}
-                  />
+                  {questionsArray && questionsArray.length > 0 ? (
+                    <QuizzCard
+                      name={chapter.course.id}
+                      chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                      questions={questionsArray}
+                    />
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
-                {/* TODO: Trigger */}
-                {/* <NavigationPanel
-                  course={chapter.course}
-                  currentPartIndex={chapter.part.part}
-                  currentChapterIndex={chapter.chapter}
-                  style={{ position: 'sticky', top: '2rem' }}
-                /> */}
+                {chapters && (
+                  <NavigationPanel
+                    course={chapter.course}
+                    chapters={chapters}
+                    currentChapter={chapter}
+                    style={{ position: 'sticky', top: '2rem' }}
+                  />
+                )}
               </div>
             </div>
             {/* Only on small screens */}
@@ -557,11 +567,15 @@ export const CourseChapter = () => {
                 <HeaderSmall chapter={chapter} />
                 <MarkdownContent chapter={chapter} />
                 <BottomButton chapter={chapter} />
-                <QuizzCard
-                  name={chapter.course.id}
-                  chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                  questions={questionsArray}
-                />
+                {questionsArray && questionsArray.length > 0 ? (
+                  <QuizzCard
+                    name={chapter.course.id}
+                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                    questions={questionsArray}
+                  />
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </div>
