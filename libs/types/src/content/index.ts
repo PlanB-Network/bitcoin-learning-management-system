@@ -9,5 +9,6 @@ export * from './builder';
 export * from './course';
 export * from './files';
 export * from './podcast';
+export * from './professor';
 export * from './quiz';
 export * from './tutorial';

@@ -4,6 +4,7 @@ export const supportedContentTypes = [
   'resources',
   'tutorials',
   'quizzes/questions',
+  'professors',
 ] as const;
 
 export type ContentType = (typeof supportedContentTypes)[number];

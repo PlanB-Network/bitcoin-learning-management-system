@@ -69,7 +69,7 @@ const syncRepository = async (
       // Reset the current branch to match the remote branch
       await git.reset(ResetMode.HARD, [`origin/${branch}`]);
 
-      await git.pull('origin');
+      await git.pull('origin', branch);
     } else {
       // Clone the repository
       await git.clone(repository, directory);

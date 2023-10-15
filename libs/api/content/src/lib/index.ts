@@ -4,6 +4,10 @@ import { supportedContentTypes } from './const';
 import { createProcessChangedCourse, groupByCourse } from './courses/import';
 import type { Dependencies } from './dependencies';
 import {
+  createProcessChangedProfessor,
+  groupByProfessor,
+} from './professors/import';
+import {
   createProcessChangedQuizQuestion,
   groupByQuizQuestion,
 } from './quizzes/questions/import';
@@ -27,6 +31,7 @@ export const createProcessChangedFiles =
     const processChangedTutorial = createProcessChangedTutorial(dependencies);
     const processChangedQuizQuestion =
       createProcessChangedQuizQuestion(dependencies);
+    const processChangedProfessor = createProcessChangedProfessor(dependencies);
 
     /*
      * Resources
@@ -58,5 +63,13 @@ export const createProcessChangedFiles =
     const quizQuestions = groupByQuizQuestion(filteredFiles);
     for (const quizQuestion of quizQuestions) {
       await processChangedQuizQuestion(quizQuestion);
+    }
+
+    /**
+     * Professors
+     */
+    const professors = groupByProfessor(filteredFiles);
+    for (const professor of professors) {
+      await processChangedProfessor(professor);
     }
   };
