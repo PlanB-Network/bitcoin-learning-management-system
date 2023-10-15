@@ -221,15 +221,16 @@ export const CoursesExplorer = () => {
                 course={course}
                 key={course.id}
                 selected={
-                  activeCategories.length === 0 ||
-                  (activeCategories.some((category) =>
-                    course.id.toLowerCase().startsWith(category.toLowerCase()),
-                  ) &&
-                    (activeLevels.length === 0 ||
-                      activeLevels.some(
-                        (lev) =>
-                          course.level.toLowerCase() === lev.toLowerCase(),
-                      )))
+                  (activeCategories.length === 0 ||
+                    activeCategories.some((category) =>
+                      course.id
+                        .toLowerCase()
+                        .startsWith(category.toLowerCase()),
+                    )) &&
+                  (activeLevels.length === 0 ||
+                    activeLevels.some(
+                      (lev) => course.level.toLowerCase() === lev.toLowerCase(),
+                    ))
                 }
               />
             ))}

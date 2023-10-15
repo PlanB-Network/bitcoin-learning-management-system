@@ -58,11 +58,11 @@ export const CoursePreview = ({ course, selected }: CoursePreviewProps) => {
           />
         </div>
         <div className="flex h-full flex-col px-5 py-3">
-          <h5 className="text-blue-1000 text-base font-semibold uppercase tracking-tight sm:text-xl">
-            <span className="text-sm:inline hidden">
+          <h5 className="text-blue-1000 font-semibold uppercase tracking-tight">
+            <span className="hidden text-base sm:inline">
               {course.id} - {course.name}
             </span>
-            <span className="text-sm:hidden inline">{course.name}</span>
+            <span className="inline text-base sm:hidden">{course.name}</span>
           </h5>
           <hr className="border-blue-1000 mt-1 hidden w-24 sm:inline" />
           <h6 className="mt-2 text-xs font-light sm:text-xs">
