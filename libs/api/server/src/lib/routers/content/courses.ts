@@ -32,16 +32,11 @@ const getCourseProcedure = publicProcedure
     z.object({
       id: z.string(),
       language: z.string(),
-      includeChapters: z.boolean().optional(),
     }),
   )
   .output(z.any())
   .query(async ({ ctx, input }) =>
-    createGetCourse(ctx.dependencies)(
-      input.id,
-      input.language,
-      input.includeChapters,
-    ),
+    createGetCourse(ctx.dependencies)(input.id, input.language),
   );
 
 const getCourseChaptersProcedure = publicProcedure
@@ -66,13 +61,14 @@ const getCourseChapterProcedure = publicProcedure
   .meta({
     openapi: {
       method: 'GET',
-      path: '/content/courses/{courseId}/{language}/chapters/{chapterIndex}',
+      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}',
     },
   })
   .input(
     z.object({
       courseId: z.string(),
       language: z.string(),
+      partIndex: z.string(),
       chapterIndex: z.string(),
     }),
   )
@@ -80,6 +76,7 @@ const getCourseChapterProcedure = publicProcedure
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,
+      Number(input.partIndex),
       Number(input.chapterIndex),
       input.language,
     ),

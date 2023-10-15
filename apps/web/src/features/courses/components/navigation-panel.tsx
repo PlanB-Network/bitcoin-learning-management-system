@@ -4,13 +4,16 @@ import { BsFillTriangleFill } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
+import { TRPCRouterOutput } from '../../../utils/trpc';
+
 interface Chapter {
   id: string;
   title: string;
 }
 
 interface Props {
-  chapters: Chapter[];
+  course: TRPCRouterOutput['content']['getCourse'];
+  currentPartIndex: number;
   currentChapterIndex: number;
   courseId: string;
   courseTitle: string;
@@ -18,10 +21,9 @@ interface Props {
 }
 
 export const NavigationPanel: React.FC<Props> = ({
-  chapters,
+  course,
+  currentPartIndex,
   currentChapterIndex,
-  courseId,
-  courseTitle,
   style,
 }) => {
   return (
@@ -30,7 +32,7 @@ export const NavigationPanel: React.FC<Props> = ({
       style={style}
     >
       <h2 className=" mb-2 border-b-2 border-b-orange-500 py-1 text-base font-semibold uppercase text-orange-500">
-        {courseTitle}
+        {course.id}
       </h2>
       <div>
         <ul className="flex flex-col gap-2">
@@ -46,9 +48,9 @@ export const NavigationPanel: React.FC<Props> = ({
               )}
             >
               <Link
-                to={'/courses/$courseId/$chapterIndex'}
+                to={'/course/$courseId/$partIndex/$chapterIndex'}
                 params={{
-                  courseId: courseId,
+                  courseId: course.id,
                   chapterIndex: String(index + 1),
                 }}
               >

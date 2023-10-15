@@ -4,14 +4,15 @@ import { CourseProgress } from '@sovereign-university/types';
 export const completeChapterQuery = (
   uid: string,
   courseId: string,
+  part: number,
   chapter: number,
 ) => {
   return sql<CourseProgress[]>`
     WITH 
     -- Insert into course_completed_chapters and return the affected rows
     inserted AS (
-        INSERT INTO users.course_completed_chapters (uid, course_id, chapter)
-        VALUES (${uid}, ${courseId}, ${chapter})
+        INSERT INTO users.course_completed_chapters (uid, course_id, part, chapter)
+        VALUES (${uid}, ${courseId}, ${part}, ${chapter})
         RETURNING *
     ),
 

@@ -130,15 +130,50 @@ CREATE TABLE IF NOT EXISTS content.courses_localized (
   PRIMARY KEY (course_id, language)
 );
 
-CREATE TABLE IF NOT EXISTS content.course_chapters (
+CREATE TABLE IF NOT EXISTS content.course_parts (
   course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  part INTEGER NOT NULL,
+
+  PRIMARY KEY (course_id, part)
+);
+
+CREATE TABLE IF NOT EXISTS content.course_parts_localized (
+  course_id VARCHAR(20) NOT NULL,
+  part INTEGER NOT NULL,
+  language VARCHAR(10) NOT NULL,
+
+  -- Per part
+  title TEXT NOT NULL,
+
+  PRIMARY KEY (course_id, part, language),
+
+  CONSTRAINT fk_course_parts_localized_to_course_parts
+    FOREIGN KEY (course_id, part)
+    REFERENCES content.course_parts(course_id, part)
+    ON DELETE CASCADE,
+
+  CONSTRAINT fk_course_parts_localized_to_course_localized
+    FOREIGN KEY (course_id, language)
+    REFERENCES content.courses_localized(course_id, language)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS content.course_chapters (
+  course_id VARCHAR(20) NOT NULL,
+  part INTEGER NOT NULL,
   chapter INTEGER NOT NULL,
 
-  PRIMARY KEY (course_id, chapter)
+  PRIMARY KEY (course_id, part, chapter),
+
+  CONSTRAINT fk_course_chapters_to_course_parts
+    FOREIGN KEY (course_id, part)
+    REFERENCES content.course_parts(course_id, part)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
-  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  course_id VARCHAR(20) NOT NULL,
+  part INTEGER NOT NULL,
   chapter INTEGER NOT NULL,
   language VARCHAR(10) NOT NULL,
 
@@ -147,16 +182,21 @@ CREATE TABLE IF NOT EXISTS content.course_chapters_localized (
   sections TEXT[] NOT NULL,
   raw_content TEXT NOT NULL,
 
-  PRIMARY KEY (course_id, chapter, language),
+  PRIMARY KEY (course_id, part, chapter, language),
 
   CONSTRAINT fk_course_chapters_localized_to_course_chapters
-    FOREIGN KEY (course_id, chapter)
-    REFERENCES content.course_chapters(course_id, chapter)
+    FOREIGN KEY (course_id, part, chapter)
+    REFERENCES content.course_chapters(course_id, part, chapter)
     ON DELETE CASCADE,
 
-  CONSTRAINT fk_course_chapters_localized_to_courses_localized
+  CONSTRAINT fk_course_chapters_localized_to_course_localized
     FOREIGN KEY (course_id, language)
     REFERENCES content.courses_localized(course_id, language)
+    ON DELETE CASCADE,
+
+  CONSTRAINT fk_course_chapters_localized_to_course_parts_localized
+    FOREIGN KEY (course_id, part, language)
+    REFERENCES content.course_parts_localized(course_id, part, language)
     ON DELETE CASCADE
 );
 

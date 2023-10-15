@@ -1,9 +1,9 @@
 import { createTRPCReact } from '@trpc/react-query';
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
-/**
- * To get this type we need to add a ref in our app tsconfig
- * With ref we can import only the type
- */
 import type { AppRouter } from '@sovereign-university/api/server';
+
+export type TRPCRouterInput = inferRouterInputs<AppRouter>;
+export type TRPCRouterOutput = inferRouterOutputs<AppRouter>;
 
 export const trpc = createTRPCReact<AppRouter>();

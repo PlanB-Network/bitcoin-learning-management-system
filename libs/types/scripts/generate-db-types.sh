@@ -3,7 +3,7 @@
 set -e
 
 psql() {
-	docker exec -u postgres dev-postgres-1 psql "$@"
+	docker exec -u postgres sovereign-university-postgres-1 psql "$@"
 }
 
 # create types databases

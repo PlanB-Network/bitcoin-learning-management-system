@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { ToPathOption, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
 
@@ -29,7 +29,7 @@ type PlanetProps = {
   offsetX: number;
   offsetY: number;
   course: Course;
-  navigate: ToPathOption;
+  navigate: ReturnType<typeof useNavigate>;
   setHoveredCourse: React.Dispatch<React.SetStateAction<Course | null>>;
 };
 
@@ -160,7 +160,7 @@ const Planet = ({
 
   scaleGroup.on('click', (event) => {
     event.stopPropagation();
-    navigate({ to: `/courses/${course.id}` });
+    navigate({ to: '/courses/$courseId', params: { courseId: course.id } });
   });
 };
 

@@ -72,7 +72,6 @@
       "secu": "Security & Privacy"
     },
     "chapter": {
-      "count": "Chapter n°{{count}}/{{total}}",
       "finishCourse": "Finish the course",
       "next": "Done, let's go to the next chapter!"
     },
@@ -83,6 +82,10 @@
       "duration": "Duration: {{hours}} hours",
       "goal": "GOAL: {{goal}}",
       "level": "Level: $t(words.level.{{level}})",
+      "mobile": {
+        "chapters": "{{chapters}} chapters",
+        "hours": "{{hours}} hours"
+      },
       "numberOfChapters": "Number of chapters: {{number}}",
       "objectives": "Objectives",
       "objectivesTitle": "What will you learn with this course?",
@@ -108,6 +111,9 @@
       "": ""
     },
     "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "part": {
+      "count": "Part n°{{count}}/{{total}}"
+    },
     "preview": {
       "by": "by {{teacher}}",
       "letsgo": "Let's go"
@@ -117,10 +123,10 @@
       "quizz": "Quizz",
       "quizzResults": "Quizz results",
       "quizzReview": "Quizz review",
-      "resultPerfect": "Absolutely perfect ! Congrats !",
       "resultCongrats": "Congratulations, you did well !",
+      "resultItsOk": "Don't give up, you'll do better next time !",
       "resultNotBad": "Not too bad !",
-      "resultItsOk": "Don't give up, you'll do better next time !"
+      "resultPerfect": "Absolutely perfect ! Congrats !"
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard et Sparrow",
@@ -218,8 +224,8 @@
     "rabbitVideos": "a rabbit filming a video",
     "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
     "readingRabbit": "A rabbit reading a book",
-    "stylus": "a stylus",
     "sthRepresentingCompany": "something representing the company",
+    "stylus": "a stylus",
     "underConstructionImage": "Illustration of several rabbits working on a construction site",
     "visibilityOff": "the eyes icon without off sign"
   },
@@ -292,11 +298,11 @@
   },
   "tutorials": {
     "details": {
+      "checkAuthor": "Check out the author's other contributions and support his work.",
+      "enjoyed": "Enjoyed this tutorial?",
       "madeBy": "This tutorial has been made by",
       "source": "Original source : ",
-      "tipTooltip": "Like it? Tip.",
-      "enjoyed": "Enjoyed this tutorial?",
-      "checkAuthor": "Check out the author's other contributions and support his work."
+      "tipTooltip": "Like it? Tip."
     },
     "exchange": {
       "centralized": {

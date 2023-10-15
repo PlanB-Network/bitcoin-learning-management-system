@@ -61,7 +61,6 @@
       "secu": "Sicurezza & Privacy"
     },
     "chapter": {
-      "count": "Capitolo n°{{count}}/{{total}}",
       "finishCourse": "Termina il corso",
       "next": "Fatto, andiamo al prossimo capitolo!"
     },
@@ -72,6 +71,10 @@
       "duration": "Durata: {{hours}} ore",
       "goal": "GOAL: {{goal}}",
       "level": "Livello: $t(words.level.{{level}})",
+      "mobile": {
+        "chapters": "{{chapters}} capitoli",
+        "hours": "{{hours}} ore"
+      },
       "numberOfChapters": "Numero di capitoli: {{number}}",
       "objectives": "Obiettivi",
       "objectivesTitle": "Cosa imparerai con questo corso?",
@@ -95,6 +98,9 @@
       "": ""
     },
     "freeBanner": "Tutti i nostri corsi sono offerti gratuitamente. L'università si basa sull'appartenenza attraverso donazione e condivisione.",
+    "part": {
+      "count": "Parte n°{{count}}/{{total}}"
+    },
     "preview": {
       "by": "da {{teacher}}",
       "letsgo": "Andiamo ad andare"

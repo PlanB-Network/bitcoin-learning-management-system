@@ -30,6 +30,7 @@ export const verifyWebhookPayload = async (
 export const processWebhookPayload = async (payload: PushEvent) => {
   return compareCommits(
     payload.repository.html_url,
+    payload.repository.default_branch,
     payload.before,
     payload.after,
   );

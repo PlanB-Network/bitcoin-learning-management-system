@@ -25,7 +25,7 @@ export const coursesDetailsRoute = new Route({
 
 export const coursesChapterRoute = new Route({
   getParentRoute: () => coursesRootRoute,
-  path: '/$courseId/$chapterIndex',
+  path: '/$courseId/$partIndex/$chapterIndex',
   component: CourseChapter,
 });
 

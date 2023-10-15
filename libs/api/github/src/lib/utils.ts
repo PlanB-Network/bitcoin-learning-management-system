@@ -44,7 +44,11 @@ export const createDownloadFile =
     }
   };
 
-const syncRepository = async (repository: string, directory: string) => {
+const syncRepository = async (
+  repository: string,
+  branch: string,
+  directory: string,
+) => {
   const git = simpleGit();
 
   try {
@@ -60,10 +64,10 @@ const syncRepository = async (repository: string, directory: string) => {
       await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
 
       // Get the branch name
-      await git.checkout(['-B', 'dev']);
+      await git.checkout(['-B', branch]);
 
       // Reset the current branch to match the remote branch
-      await git.reset(ResetMode.HARD, ['origin/dev']); // change this to your actual branch name if not 'main'
+      await git.reset(ResetMode.HARD, [`origin/${branch}`]);
 
       await git.pull('origin');
     } else {
@@ -81,13 +85,14 @@ const syncRepository = async (repository: string, directory: string) => {
 
 export const compareCommits = async (
   repositoryUrl: string,
+  branch: string,
   beforeCommit: string,
   afterCommit: string,
 ): Promise<ChangedFile[]> => {
   const repoDir = computeTemporaryDirectory(repositoryUrl);
 
   try {
-    const git = await syncRepository(repositoryUrl, repoDir);
+    const git = await syncRepository(repositoryUrl, branch, repoDir);
 
     const diffSummary = await git.diffSummary([beforeCommit, afterCommit]);
 
@@ -203,11 +208,14 @@ const pathExists = async (path: string) =>
     .then(() => true)
     .catch(() => false);
 
-export const getAllRepoFiles = async (repositoryUrl: string) => {
+export const getAllRepoFiles = async (
+  repositoryUrl: string,
+  branch = 'main',
+) => {
   const repoDir = computeTemporaryDirectory(repositoryUrl);
 
   try {
-    const git = await syncRepository(repositoryUrl, repoDir);
+    const git = await syncRepository(repositoryUrl, branch, repoDir);
 
     // Read all the files
     const files = await walk(path.resolve(repoDir), ['.git']);

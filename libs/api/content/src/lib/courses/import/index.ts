@@ -98,33 +98,50 @@ interface CourseLocalized {
   objectives?: string[];
 }
 
+interface Part {
+  title: string;
+  chapters: Chapter[];
+}
+
 interface Chapter {
   title: string;
   sections: string[];
   raw_content: string;
 }
 
-const extractChapters = (markdown: string): Chapter[] => {
+const extractParts = (markdown: string): Part[] => {
   const tokens = marked.lexer(markdown);
-  const chapters: Chapter[] = [];
+  const parts: Part[] = [];
 
   tokens.forEach((token) => {
     if (token.type === 'heading' && token.depth === 1) {
-      chapters.push({
+      parts.push({
         title: token.text,
-        sections: [],
-        raw_content: '',
+        chapters: [],
       });
-    } else if (chapters.length > 0) {
-      chapters[chapters.length - 1].raw_content += token.raw;
+    } else if (parts.length > 0) {
+      const currentPart = parts[parts.length - 1];
 
       if (token.type === 'heading' && token.depth === 2) {
-        chapters[chapters.length - 1].sections.push(token.text);
+        currentPart.chapters.push({
+          title: token.text,
+          sections: [],
+          raw_content: '',
+        });
+      } else if (currentPart.chapters.length > 0) {
+        const currentChapter =
+          currentPart.chapters[currentPart.chapters.length - 1];
+
+        currentChapter.raw_content += token.raw;
+
+        if (token.type === 'heading' && token.depth === 3) {
+          currentChapter.sections.push(token.text);
+        }
       }
     }
   });
 
-  return chapters;
+  return parts;
 };
 
 export const createProcessChangedCourse =
@@ -223,6 +240,13 @@ export const createProcessChangedCourse =
           continue;
         }
 
+        if (!file.language) {
+          console.warn(
+            `Course file ${file.path} does not have a language, skipping...`,
+          );
+          continue;
+        }
+
         const header = matter(file.data, {
           excerpt: true,
           excerpt_separator: '+++',
@@ -235,7 +259,7 @@ export const createProcessChangedCourse =
           header.excerpt = header.excerpt.trim();
         }
 
-        const chapters = extractChapters(header.content);
+        const parts = extractParts(header.content);
 
         await transaction`
           INSERT INTO content.courses_localized (
@@ -256,39 +280,73 @@ export const createProcessChangedCourse =
             raw_description = EXCLUDED.raw_description
         `;
 
-        if (chapters.length > 0) {
+        if (parts.length > 0) {
           await transaction`
-            INSERT INTO content.course_chapters ${transaction(
-              chapters.map((_, index) => ({
+            INSERT INTO content.course_parts ${transaction(
+              parts.map((_, index) => ({
                 course_id: course.id,
-                chapter: index + 1,
+                part: index + 1,
               })),
             )}
             ON CONFLICT DO NOTHING
           `;
 
           await transaction`
-            INSERT INTO content.course_chapters_localized ${transaction(
-              chapters.map((chapter, index) => ({
+            INSERT INTO content.course_parts_localized ${transaction(
+              parts.map((part, index) => ({
                 course_id: course.id,
+                part: index + 1,
                 language: file.language,
-                chapter: index + 1,
-                title: chapter.title,
-                sections: chapter.sections,
-                raw_content: chapter.raw_content.trim(),
+                title: part.title,
               })),
               'course_id',
+              'part',
               'language',
-              'chapter',
               'title',
-              'sections',
-              'raw_content',
             )}
-            ON CONFLICT (course_id, language, chapter) DO UPDATE SET
+            ON CONFLICT (course_id, language, part)
+            DO UPDATE SET title = EXCLUDED.title
+          `;
+
+          // if there is at least one chapter across all parts
+          if (parts.some((part) => part.chapters.length > 0)) {
+            await transaction`
+            INSERT INTO content.course_chapters ${transaction(
+              parts.flatMap((part, partIndex) =>
+                part.chapters.map((_, chapterIndex) => ({
+                  course_id: course.id,
+                  part: partIndex + 1,
+                  chapter: chapterIndex + 1,
+                })),
+              ),
+            )}
+            ON CONFLICT DO NOTHING
+          `;
+
+            await transaction`
+            INSERT INTO content.course_chapters_localized ${transaction(
+              parts.flatMap((part, partIndex) =>
+                part.chapters.map((chapter, chapterIndex) => ({
+                  course_id: course.id,
+                  part: partIndex + 1,
+                  chapter: chapterIndex + 1,
+                  language: file.language,
+                  title: chapter.title,
+                  sections: chapter.sections,
+                  raw_content: chapter.raw_content.trim(),
+                })),
+              ),
+            )}
+            ON CONFLICT (course_id, part, chapter, language) DO UPDATE SET
               title = EXCLUDED.title,
               sections = EXCLUDED.sections,
               raw_content = EXCLUDED.raw_content
           `;
+          } else {
+            console.warn(
+              `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,
+            );
+          }
         }
       }
     });

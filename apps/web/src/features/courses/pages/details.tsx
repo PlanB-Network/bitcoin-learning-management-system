@@ -44,7 +44,6 @@ export const CourseDetails: React.FC = () => {
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
     language: language ?? i18n.language,
-    includeChapters: true,
   });
 
   if (!course && isFetched) navigateTo404();
@@ -58,14 +57,14 @@ export const CourseDetails: React.FC = () => {
             <div className="flex max-w-5xl flex-col space-y-2 px-2 md:flex-row md:items-center md:space-x-10">
               {isScreenLg ? (
                 <div
-                  className="flex flex-col items-center justify-center rounded-full bg-orange-800 p-8 text-5xl font-bold uppercase text-white"
+                  className="flex shrink-0 grow-0 flex-col items-center justify-center rounded-full bg-orange-500 p-8 text-5xl font-bold uppercase text-white"
                   title={t('courses.details.courseId', { courseId: course.id })}
                 >
                   <span>{course.id.match(/\d+/)?.[0] || ''}</span>
                 </div>
               ) : (
                 <div className="mb-4 flex flex-col items-center ">
-                  <div className="mt-2  flex items-center">
+                  <div className="mt-2 flex items-center">
                     <div
                       className="h-fit w-fit rounded-xl bg-orange-800 p-2 text-left text-4xl font-bold uppercase text-white"
                       title={t('courses.details.courseId', {
@@ -85,29 +84,27 @@ export const CourseDetails: React.FC = () => {
                   <div className="flex flex-col space-y-2 p-3 md:px-0">
                     <div className="flex flex-wrap ">
                       <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                        <img
-                          src={rabitPen}
-                          alt="Icono de estudio"
-                          className="mr-2 h-4 w-4"
-                        />
-                        <span className="text-primary-500 text-sm">
-                          {course?.teacher}
+                        <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
+                        <span className="text-sm text-blue-800">
+                          {course.teacher}
                         </span>
                       </div>
                       <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
                         <img
                           src={graduateImg}
-                          alt="Icono de estudio"
+                          alt=""
                           className="mr-2 h-4 w-4"
                         />
-                        <span className="text-primary-500 text-sm capitalize">
-                          {course?.level}
+                        <span className="text-sm capitalize text-blue-800">
+                          {course.level}
                         </span>
                       </div>
                       <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
                         <Book />
-                        <span className="text-primary-500 text-sm">
-                          {course?.chapters?.length} {t('Chapters')}
+                        <span className="text-sm text-blue-800">
+                          {t('courses.details.mobile.chapters', {
+                            chapters: course.chaptersCount,
+                          })}
                         </span>
                       </div>
                       <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
@@ -116,8 +113,10 @@ export const CourseDetails: React.FC = () => {
                           alt="Icono de estudio"
                           className="mr-2 h-4 w-4"
                         />
-                        <span className="text-primary-500 text-sm">
-                          {course?.hours} {t('hours')}
+                        <span className="text-sm text-blue-800">
+                          {t('courses.details.mobile.hours', {
+                            hours: course.hours,
+                          })}
                         </span>
                       </div>
                     </div>
@@ -142,35 +141,35 @@ export const CourseDetails: React.FC = () => {
                     course.last_commit,
                     `courses/${course.id}/assets/thumbnail.png`,
                   )}
-                  alt={t('imagesAlt.courseThumbnail')}
+                  alt=""
                 />
               </div>
               <div className="hidden w-full flex-col space-y-5 p-3 md:block md:px-0 lg:block xl:block 2xl:block ">
                 <div className="flex flex-row items-start space-x-5 ">
                   <FaChalkboardTeacher size="35" className="text-orange-600" />
-                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
+                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
                     {t('courses.details.teachers', {
-                      teachers: course.teacher,
+                      teachers: t('words.rogzy'),
                     })}
                   </span>
                 </div>
                 <div className="flex flex-row items-start space-x-5">
                   <HiOutlineAcademicCap size="35" className="text-orange-600" />
-                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
+                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
                     {t(`courses.details.level`, { level: course.level })}
                   </span>
                 </div>
                 <div className="flex flex-row items-start space-x-5">
                   <HiOutlineBookOpen size="35" className="text-orange-600" />
-                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
+                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
                     {t('courses.details.numberOfChapters', {
-                      number: course.chapters?.length,
+                      number: course.chaptersCount,
                     })}
                   </span>
                 </div>
                 <div className="flex flex-row items-start space-x-5">
                   <IoMdStopwatch size="35" className="text-orange-600" />
-                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1">
+                  <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
                     {t('courses.details.duration', { hours: course.hours })}
                   </span>
                 </div>
@@ -183,9 +182,10 @@ export const CourseDetails: React.FC = () => {
                   <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
                     <div className="relative">
                       <Link
-                        to={'/courses/$courseId/$chapterIndex'}
+                        to={'/courses/$courseId/$partIndex/$chapterIndex'}
                         params={{
                           courseId,
+                          partIndex: '1',
                           chapterIndex: '1',
                         }}
                       >
@@ -204,9 +204,10 @@ export const CourseDetails: React.FC = () => {
                     <div className=" p-2">
                       <div className=" mx-1 flex items-center justify-center">
                         <Link
-                          to={'/courses/$courseId/$chapterIndex'}
+                          to={'/courses/$courseId/$partIndex/$chapterIndex'}
                           params={{
                             courseId,
+                            partIndex: '1',
                             chapterIndex: '1',
                           }}
                         >
@@ -309,48 +310,50 @@ export const CourseDetails: React.FC = () => {
                     {t('courses.details.curriculum')}
                   </h4>
                 </div>
-                <h4 className="mb-5 hidden text-sm font-light italic sm:block">
+                <h4 className="mb-5 hidden text-2xl font-light uppercase italic text-gray-400 sm:block">
                   {t('courses.details.curriculum')}
                 </h4>
                 <ul className="ml-5 space-y-5 text-xs capitalize sm:text-base sm:uppercase">
-                  {course.chapters?.map((chapter, index) => (
-                    <li key={index}>
+                  {course.parts?.map((part, partIndex) => (
+                    <li key={partIndex}>
                       <div className="mb-1 flex flex-row">
                         <RxTriangleDown
-                          className="mr-2 mt-1 text-orange-800"
+                          className="mr-2 mt-1 text-orange-500"
                           size={20}
                         />
                         <Link
-                          to={'/courses/$courseId/$chapterIndex'}
+                          to={'/courses/$courseId/$partIndex/$chapterIndex'}
                           params={{
                             courseId,
-                            chapterIndex: chapter.chapter.toString(),
+                            partIndex: partIndex.toString(),
+                            chapterIndex: '1',
                           }}
-                          key={chapter.chapter}
                         >
-                          <p className="ml-1 text-base font-semibold capitalize text-orange-800 sm:text-lg sm:uppercase ">
-                            {chapter.title}
+                          <p className="ml-1 text-base font-normal capitalize text-orange-500 sm:text-lg sm:uppercase">
+                            {part.title}
                           </p>
                         </Link>
                       </div>
-                      {chapter.sections?.map((section, index) => (
+                      {part.chapters?.map((chapter, index) => (
                         <div
                           className="mb-0.5 ml-10 flex flex-row items-center"
                           key={index}
                         >
                           <BsCircleFill
-                            className="text-primary-300 mr-2"
+                            className="mr-2 text-blue-500"
                             size={7}
                           />
                           <Link
-                            className="text-blue-700"
-                            to={'/courses/$courseId/$chapterIndex'}
+                            to={'/courses/$courseId/$partIndex/$chapterIndex'}
                             params={{
                               courseId,
+                              partIndex: partIndex.toString(),
                               chapterIndex: chapter.chapter.toString(),
                             }}
                           >
-                            {section}
+                            <p className="capitalize text-blue-700">
+                              {chapter.title}
+                            </p>
                           </Link>
                         </div>
                       ))}
@@ -363,7 +366,7 @@ export const CourseDetails: React.FC = () => {
                   <img
                     className="h-full w-full object-contain"
                     src={curriculumImage}
-                    alt={t('imagesAlt.curriculum')}
+                    alt=""
                   />
                 </div>
               )}

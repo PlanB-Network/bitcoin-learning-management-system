@@ -16,8 +16,13 @@ export const syncProcedure = publicProcedure
   .mutation(async ({ ctx }) => {
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
+    if (!process.env['DATA_REPOSITORY_URL']) {
+      throw new Error('DATA_REPOSITORY_URL is not defined');
+    }
+
     await getAllRepoFiles(
-      'https://github.com/DecouvreBitcoin/sovereign-university-data.git',
+      process.env['DATA_REPOSITORY_URL'],
+      process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
 
     syncCdnRepository(
