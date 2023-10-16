@@ -32,7 +32,7 @@ export const TutorialExplorer = () => {
           <PageDescription>{t('tutorials.pageDescription')}</PageDescription>
         </PageHeader>
 
-        <div className="flex w-full content-center justify-center bg-blue-900 px-8 pb-10 pt-6 sm:pb-32 sm:pt-10 ">
+        <div className="flex w-full content-center justify-center bg-blue-900 px-8 pb-10 sm:pb-32 sm:pt-10 ">
           <div className="grid w-[64rem] grid-cols-2 gap-x-12 md:grid-cols-3">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
@@ -50,14 +50,14 @@ export const TutorialExplorer = () => {
             ))}
           </div>
         </div>
-        <div className="relative flex w-screen flex-col items-center bg-gray-100 pt-10">
-          <div className="absolute -top-10 w-[48rem]">
-            <FilterBar
-              label={t('resources.filterBarLabel')}
-              onChange={setSearchTerm}
-            />
-          </div>
-          <div className="max-w-2xl pb-6 pt-4 text-center">
+        <div className="-mt-10 flex w-full flex-col items-center">
+          <FilterBar
+            label={t('resources.filterBarLabel')}
+            onChange={setSearchTerm}
+          />
+        </div>
+        <div className="flex w-screen flex-col items-center bg-gray-100 pt-10">
+          <div className="-mt-6 hidden max-w-2xl pb-6 text-center sm:block">
             <span className="font-medium">
               {t('tutorials.explorer.didYouKnow')}
             </span>
