@@ -9,12 +9,13 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
+import { addSpaceToCourseId } from '@sovereign-university/ui';
+
 import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
-// import { NavigationPanel } from '../components/navigation-panel';
 import { NavigationPanel } from '../components/navigation-panel';
 import QuizzCard, { Question } from '../components/quizz-card';
 import { CourseLayout } from '../layout';
@@ -83,7 +84,17 @@ const Title = ({ chapter }: { chapter: Chapter }) => {
           to={'/courses/$courseId'}
           params={{ courseId: chapter.course.id }}
         >
-          {`${chapter.course.id.toUpperCase()} > ${chapter.title}`}
+          {`${chapter.course.id.toUpperCase()} > `}
+        </Link>
+        <Link
+          to={'/courses/$courseId/$partIndex/$chapterIndex'}
+          params={{
+            courseId: chapter.course.id,
+            partIndex: chapter.part.part.toString(),
+            chapterIndex: chapter.chapter.toString(),
+          }}
+        >
+          {`${chapter.title}`}
         </Link>
       </span>
     </div>
@@ -109,7 +120,9 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
                 courseId: chapter.course.id,
               })}
             >
-              <span className="uppercase text-white">{chapter.course.id}</span>
+              <span className="uppercase text-white">
+                {addSpaceToCourseId(chapter.course.id)}
+              </span>
             </div>
           </Link>
           <h1 className="mb-1 mr-2 text-base  font-semibold text-orange-500">
@@ -178,7 +191,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
           params={{ courseId: chapter.course.id }}
           className="text-orange-500"
         >
-          {`${chapter.course.id.toUpperCase()} 
+          {`${addSpaceToCourseId(chapter.course.id.toUpperCase())} 
         - 
         ${chapter.course.name}`}
         </Link>
@@ -290,28 +303,34 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
         </h2>
       </div>
 
-      <div className="mt-1 space-y-2 font-light uppercase text-blue-800">
+      <div className="mt-1 space-y-2 uppercase text-blue-800">
         <div
           className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
             isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
           } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
         >
           <h3
-            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-semibold text-blue-900"
+            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-medium text-blue-700"
             onClick={() => setIsContentExpanded(!isContentExpanded)}
           >
-            <span className="mr-2">{isContentExpanded ? '>' : '>'}</span>
-            {t('courses.details.objectivesTitle').toLowerCase()}{' '}
-            {/* Convierte el texto a minúsculas */}
+            <span className="mr-1 text-2xl">{'> '}</span>
+            <span>{t('courses.details.objectivesTitle')}</span>
           </h3>
           {isContentExpanded && (
-            <div className="mb-2 ml-2 px-5 lowercase">
-              <ul className="mt-2 list-inside pl-5">
+            <div className="mb-2 ml-2 px-5 lowercase ">
+              <ul className="list-inside pl-2 text-sm">
                 {chapter.course.objectives?.map(
                   (goal: string, index: number) => (
-                    <li key={index}>
-                      <span className="mr-2 opacity-50">{'▶'}</span>
-                      <span className="capitalize">{goal.toLowerCase()}</span>
+                    <li className="mt-1" key={index}>
+                      <span className="mr-2 text-blue-300 opacity-50">
+                        {'▶'}
+                      </span>
+                      <span className="text-blue-800">
+                        <span style={{ textTransform: 'uppercase' }}>
+                          {goal.charAt(0)}
+                        </span>
+                        {goal.slice(1)}
+                      </span>
                     </li>
                   ),
                 )}

@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import { cn } from '@sovereign-university/ui';
+import { addSpaceToCourseId, cn } from '@sovereign-university/ui';
 
 import { TRPCRouterOutput } from '../../../utils/trpc';
 
@@ -34,16 +34,16 @@ export const NavigationPanel: React.FC<Props> = ({
   currentChapter,
   style,
 }) => {
-  console.log('curzzz', currentChapter);
-  console.log('chapterszzz', chapters);
   return (
     <div
       className="mt-2  h-auto w-48 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
       style={style}
     >
-      <h2 className=" mb-2 border-b-2 border-b-orange-500 py-1 text-base font-semibold uppercase text-orange-500">
-        {course.id}
-      </h2>
+      <Link to={'/courses/$courseId'} params={{ courseId: course.id }}>
+        <h2 className=" mb-2 border-b-2 border-b-orange-500 py-1 text-base font-semibold uppercase text-orange-500">
+          {addSpaceToCourseId(course.id)}
+        </h2>
+      </Link>
       <div>
         <ul className="flex flex-col gap-2">
           {chapters.map((chapter, index) => (
