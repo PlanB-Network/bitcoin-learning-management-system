@@ -1,11 +1,12 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import cors from 'cors';
 import express, { Router } from 'express';
 import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
 import { appRouter, createContext } from '@sovereign-university/api/server';
 
 import { Dependencies } from './dependencies';
+import { createCorsMiddleware } from './middlewares/cors';
+import { createCookieSessionMiddleware } from './middlewares/session/cookie';
 
 /* const openApiDocument = generateOpenApiDocument(appRouter, {
   title: 'The Sovereign University API',
@@ -21,14 +22,9 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   app.use(express.json());
 
   // Enable cors
-  app.use(
-    cors({
-      origin:
-        process.env.NODE_ENV === 'development'
-          ? '*'
-          : 'https://sovereignuniversity.org',
-    }),
-  );
+  app.use(createCorsMiddleware());
+
+  app.use(createCookieSessionMiddleware(dependencies));
 
   // Basic request logger
   app.use((req, _res, next) => {

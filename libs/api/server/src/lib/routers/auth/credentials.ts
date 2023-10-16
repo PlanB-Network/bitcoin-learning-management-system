@@ -13,7 +13,6 @@ import {
   generateUniqueContributorId,
 } from '../../services/users';
 import { createTRPCRouter } from '../../trpc';
-import { signAccessToken } from '../../utils/access-token';
 import { contributorIdSchema } from '../../utils/validators';
 
 const registerCredentialsSchema = z.object({
@@ -41,11 +40,10 @@ export const credentialsAuthRouter = createTRPCRouter({
           username: z.string(),
           email: z.string().optional(),
         }),
-        accessToken: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies } = ctx;
+      const { dependencies, req } = ctx;
       const { postgres } = dependencies;
 
       const getUser = createGetUser(dependencies);
@@ -80,6 +78,8 @@ export const credentialsAuthRouter = createTRPCRouter({
         email: input.email,
       });
 
+      req.session.uid = user.uid;
+
       return {
         status: 201,
         message: 'User created',
@@ -88,7 +88,6 @@ export const credentialsAuthRouter = createTRPCRouter({
           username: user.username,
           email: user.email ?? undefined,
         },
-        accessToken: signAccessToken(user.uid),
       };
     }),
   login: publicProcedure
@@ -103,11 +102,10 @@ export const credentialsAuthRouter = createTRPCRouter({
           username: z.string(),
           email: z.string().optional(),
         }),
-        accessToken: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies } = ctx;
+      const { dependencies, req } = ctx;
 
       const getUser = createGetUser(dependencies);
 
@@ -136,6 +134,8 @@ export const credentialsAuthRouter = createTRPCRouter({
         });
       }
 
+      req.session.uid = user.uid;
+
       return {
         status: 200,
         message: 'Logged in',
@@ -144,7 +144,6 @@ export const credentialsAuthRouter = createTRPCRouter({
           username: user.username,
           email: user.email ?? undefined,
         },
-        accessToken: signAccessToken(user.uid),
       };
     }),
 });

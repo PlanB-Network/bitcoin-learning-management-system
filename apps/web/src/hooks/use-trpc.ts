@@ -1,12 +1,10 @@
 import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
-import { TRPCClientError, httpBatchLink } from '@trpc/client';
+import { TRPCClientError } from '@trpc/client';
 import { useState } from 'react';
 // import { useSessionStore } from '../stores/session.ts';
-import superjson from 'superjson';
-
-import { LocalStorageKey } from '@sovereign-university/types';
 
 import { trpc } from '../utils/index.js';
+import { tRPCClientOptions } from '../utils/trpc.js';
 
 interface Meta {
   globalErrorHandler?: boolean;
@@ -58,23 +56,7 @@ export const useTrpc = () => {
       }),
   );
 
-  const [trpcClient] = useState(() =>
-    trpc.createClient({
-      links: [
-        httpBatchLink({
-          url: 'http://localhost:3000/api/trpc',
-          headers: () => {
-            return {
-              authorization:
-                window?.localStorage?.getItem(LocalStorageKey.AccessToken) ??
-                '',
-            };
-          },
-        }),
-      ],
-      transformer: superjson,
-    }),
-  );
+  const [trpcClient] = useState(() => trpc.createClient(tRPCClientOptions));
 
   return {
     trpcQueryClient,

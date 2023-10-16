@@ -74,7 +74,6 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       dispatch(
         userSlice.actions.login({
           uid: data.user.uid,
-          accessToken: data.accessToken,
         }),
       );
     },

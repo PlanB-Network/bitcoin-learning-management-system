@@ -39,7 +39,6 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       dispatch(
         userSlice.actions.login({
           uid: data.user.uid,
-          accessToken: data.accessToken,
         }),
       );
       onClose();

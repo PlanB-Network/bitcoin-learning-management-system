@@ -36,6 +36,12 @@ const createContextInner = (opts: CreateInnerContextOptions) => {
 
 export type ContextInner = inferAsyncReturnType<typeof createContextInner>;
 
+interface UserContext {
+  user?: {
+    uid: string;
+  };
+}
+
 /**
  * This is the actual context you'll use in your router. It will be used to
  * process every request that goes through your tRPC endpoint
@@ -53,10 +59,11 @@ export const createContext = async (
     ...contextInner,
     req,
     res,
+    sessionId: req.session?.id,
   } as ContextInner & CreateExpressContextOptions;
 };
 
-export type Context = inferAsyncReturnType<typeof createContext>;
+export type Context = inferAsyncReturnType<typeof createContext> & UserContext;
 
 /**
  * 2. INITIALIZATION
