@@ -27,7 +27,7 @@ const FigmaBox = ({ title, description, figmaUrl, imgFig }) => {
 const FigmaBoxContent = ({ title, description, figmaUrl, imgFig }) => {
   return (
     <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
-      <div className="w-11/12 rounded-lg bg-green-300 p-2 shadow-md hover:bg-blue-500 sm:w-full sm:p-4">
+      <div className="w-11/12 rounded-lg bg-green-600 p-2 shadow-md hover:bg-blue-500 sm:w-full sm:p-4">
         <img
           src={imgFig}
           alt={title}
@@ -45,7 +45,7 @@ const FigmaBoxContent = ({ title, description, figmaUrl, imgFig }) => {
 export const BET = () => {
   const { t, i18n } = useTranslation();
 
-  // Definir los datos de las cajas de Figma
+  // Define the Figma box data. For now, the links and images have not been created.
   const figmaData = [
     {
       title: 'Adil Infography',
@@ -119,8 +119,6 @@ export const BET = () => {
         'the beT - A Bitcoin open-source ToolKIt for all educational projects',
       )}
     >
-      {/* grid grid-cols-2 gap-4 px-10 sm:grid-cols-3 sm:px-0 md:grid-cols-4
-      md:gap-8 lg:grid-cols-5 */}
       <div className=" px-2">
         <p className="mx-6 pl-0 pr-10  text-gray-100">
           The Sovereign University supports bitcoin educators and local
@@ -133,7 +131,7 @@ export const BET = () => {
           BET IS HERE FOR YOU!
         </h1>
         <div className="mt-4 grid  ">
-          {/* Sección de Educational Content */}
+          {/* Section of Educational Content */}
           <div className="mb-2  ">
             <h2 className="mb-0 text-2xl font-normal text-gray-100">
               Educational Content
@@ -153,7 +151,7 @@ export const BET = () => {
             </div>
           </div>
 
-          {/* Sección de Visual Content */}
+          {/* Section of Visual Content */}
           <div className="mt-2">
             <h2 className="mb-0 text-2xl font-normal text-gray-100">
               Visual Content
@@ -177,7 +175,7 @@ export const BET = () => {
           <p className="mx-8 my-5 px-6 text-center uppercase text-gray-100">
             This toolkit is open to contribution. It uses Figma, so anyone can
             add, modify and translate. To coLlaBorate, add a category or
-            discuss, don’t hesitate to join our discord.
+            discuss, don't hesitate to join our discord.
           </p>
           <hr />
         </div>

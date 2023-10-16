@@ -19,7 +19,6 @@ import stageOne from '../../../assets/home/stage1.svg';
 import stageTwo from '../../../assets/home/stage2.svg';
 import stageFour from '../../../assets/home/stage3.svg';
 import visibilityOff from '../../../assets/home/visibility_off.svg';
-import arrowForward from '../../../assets/icons/arrow_forward.svg';
 import { Button } from '../../../atoms/Button';
 import { MainLayout } from '../../../components/MainLayout';
 import { SectionTitle } from '../components/SectionTitle';

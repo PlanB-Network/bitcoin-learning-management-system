@@ -21,6 +21,11 @@ export const RESOURCES_CATEGORIES = [
     unreleased: false,
   },
   {
+    name: 'bet',
+    image: couchSvg,
+    unreleased: false,
+  },
+  {
     name: 'articles',
     image: articleSvg,
     unreleased: true,
@@ -34,10 +39,5 @@ export const RESOURCES_CATEGORIES = [
     name: 'conferences',
     image: couchSvg,
     unreleased: true,
-  },
-  {
-    name: 'BET',
-    image: couchSvg,
-    unreleased: false,
   },
 ] as const;
