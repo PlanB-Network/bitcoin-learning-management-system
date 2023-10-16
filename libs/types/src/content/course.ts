@@ -25,6 +25,12 @@ export type CoursePart = Pick<
   'part' | 'language' | 'title'
 >;
 
+export type JoinedCourseChapter = Pick<
+  CourseChapter,
+  'part' | 'chapter' | 'language' | 'title' | 'sections' | 'raw_content'
+> &
+  'part_title';
+
 export type CourseChapter = Pick<
   CourseChapterLocalized,
   'part' | 'chapter' | 'language' | 'title' | 'sections' | 'raw_content'

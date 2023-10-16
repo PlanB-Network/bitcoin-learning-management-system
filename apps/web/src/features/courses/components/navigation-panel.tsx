@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
+import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
 import { addSpaceToCourseId, cn } from '@sovereign-university/ui';
 
@@ -19,6 +20,7 @@ interface ChapterFromArray {
   title: string;
   chapter: number;
   part: number;
+  part_title: string;
 }
 
 interface Props {
@@ -26,6 +28,14 @@ interface Props {
   chapters: ChapterFromArray[];
   currentChapter: Chapter;
   style?: CSSProperties;
+}
+
+function isChapterPast(chapter: ChapterFromArray, currentChapter: Chapter) {
+  return (
+    chapter.part < currentChapter.part.part ||
+    (chapter.part === currentChapter.part.part &&
+      chapter.chapter <= currentChapter.chapter)
+  );
 }
 
 export const NavigationPanel: React.FC<Props> = ({
@@ -36,39 +46,42 @@ export const NavigationPanel: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className="mt-2  h-auto w-48 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
+      className="mt-2 h-auto w-60 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
       style={style}
     >
       <Link to={'/courses/$courseId'} params={{ courseId: course.id }}>
-        <h2 className=" mb-2 border-b-2 border-b-orange-500 py-1 text-base font-semibold uppercase text-orange-500">
-          {addSpaceToCourseId(course.id)}
-        </h2>
+        <div className="-ml-2 grid grid-cols-8">
+          <IoIosArrowDropdownCircle
+            size={40}
+            className="col-span-2 text-orange-500"
+          />
+          <h2 className=" col-span-6 py-1 text-3xl font-semibold uppercase text-orange-500">
+            {addSpaceToCourseId(course.id)}
+          </h2>
+        </div>
       </Link>
+      <hr className="mb-2 border-orange-400" />
       <div>
         <ul className="flex flex-col gap-2">
           {chapters.map((chapter, index) => (
             <>
               {chapter.chapter === 1 && (
-                <div className="grid grid-cols-8 items-center gap-1">
-                  <BsFillCircleFill size={10} />
-                  <span>{chapter.part}</span>
-                </div>
+                <li
+                  className={cn(
+                    'grid grid-cols-8 items-center gap-1 text-sm font-semibold mt-1',
+                    isChapterPast(chapter, currentChapter)
+                      ? 'text-orange-500'
+                      : 'text-gray-500',
+                  )}
+                >
+                  <BsFillTriangleFill
+                    size={10}
+                    className="col-span-1 mr-2 rotate-90"
+                  />
+                  <span className="col-span-7">{chapter.part_title}</span>
+                </li>
               )}
-              <li
-                key={index + 1000}
-                className={cn(
-                  'text-xs font-semibold',
-                  chapter.part < currentChapter.part.part ||
-                    (chapter.part === currentChapter.part.part &&
-                      chapter.chapter < currentChapter.chapter)
-                    ? 'text-orange-500'
-                    : 'text-gray-500',
-                  chapter.part === currentChapter.part.part &&
-                    chapter.chapter === currentChapter.chapter
-                    ? 'text-orange-500'
-                    : '',
-                )}
-              >
+              <li key={index + 1000}>
                 <Link
                   to={'/courses/$courseId/$partIndex/$chapterIndex'}
                   params={{
@@ -79,13 +92,27 @@ export const NavigationPanel: React.FC<Props> = ({
                 >
                   <div className="grid grid-cols-8 items-center gap-1">
                     <div className="col-span-1">
-                      <BsFillTriangleFill
+                      <BsFillCircleFill
                         size={10}
-                        className="mr-2 rotate-90"
+                        className={cn(
+                          'text-xs',
+                          isChapterPast(chapter, currentChapter)
+                            ? 'text-orange-400'
+                            : 'text-gray-300',
+                        )}
                       />
                     </div>
                     <div className="col-span-7">
-                      <span>{chapter.title}</span>
+                      <span
+                        className={cn(
+                          'text-xs',
+                          isChapterPast(chapter, currentChapter)
+                            ? 'text-orange-500'
+                            : 'text-gray-500',
+                        )}
+                      >
+                        {chapter.title}
+                      </span>
                     </div>
                   </div>
                 </Link>

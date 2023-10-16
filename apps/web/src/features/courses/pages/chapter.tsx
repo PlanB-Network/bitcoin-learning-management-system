@@ -575,7 +575,7 @@ export const CourseChapter = () => {
                     course={chapter.course}
                     chapters={chapters}
                     currentChapter={chapter}
-                    style={{ position: 'sticky', top: '2rem' }}
+                    style={{ position: 'sticky', top: '6rem' }}
                   />
                 )}
               </div>

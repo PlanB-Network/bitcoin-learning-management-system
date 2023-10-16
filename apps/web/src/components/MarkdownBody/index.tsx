@@ -30,10 +30,14 @@ export const MarkdownBody = ({
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="ml-2 text-xl font-semibold">{children}</h3>
+          <h3 className="ml-2 text-xl font-semibold text-orange-500">
+            {children}
+          </h3>
         ),
         p: ({ children }) => (
-          <p className=" text-justify text-base tracking-wide ">{children}</p>
+          <p className=" text-blue-1000 text-justify text-base tracking-wide">
+            {children}
+          </p>
         ),
         a: ({ children, href }) => (
           <a
