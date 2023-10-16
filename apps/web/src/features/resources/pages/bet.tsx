@@ -66,6 +66,7 @@ export const BET = () => {
       description: 'Descripción del proyecto 3',
       figmaUrl:
         'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: figmaImage,
     },
     {
       title: 'Bitcoin accepted here',
