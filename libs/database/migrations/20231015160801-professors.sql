@@ -54,3 +54,21 @@ CREATE TABLE IF NOT EXISTS content.course_professors (
 
   PRIMARY KEY (course_id, contributor_id)
 );
+
+CREATE TABLE IF NOT EXISTS content.tutorial_credits (
+  tutorial_id INTEGER NOT NULL REFERENCES content.tutorials(id) ON DELETE CASCADE,
+
+  contributor_id VARCHAR(20) REFERENCES content.contributors(id) ON DELETE CASCADE,
+
+  name VARCHAR(255),
+  link TEXT,
+
+    -- Tips
+  lightning_address TEXT,
+  lnurl_pay TEXT,
+  paynym TEXT,
+  silent_payment TEXT,
+  tips_url TEXT,
+
+  PRIMARY KEY (tutorial_id)
+);

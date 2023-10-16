@@ -14,6 +14,22 @@ interface TutorialMain {
   level: string;
   category?: string;
   builder?: string;
+  credits?:
+    | {
+        professor: string;
+        link: string;
+      }
+    | {
+        name: string;
+        link: string;
+        tips?: {
+          lightning_address?: string;
+          lnurl_pay?: string;
+          paynym?: string;
+          silent_payment?: string;
+          url?: string;
+        };
+      };
   tags?: string[];
 }
 
@@ -81,8 +97,61 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
+      if (!result) {
+        throw new Error('Could not insert tutorial');
+      }
+
+      if (parsedTutorial.credits) {
+        if ('professor' in parsedTutorial.credits) {
+          await transaction`
+            INSERT INTO content.contributors (id)
+            VALUES (${parsedTutorial.credits.professor})
+            ON CONFLICT DO NOTHING
+          `;
+
+          await transaction`
+            INSERT INTO content.tutorial_credits (tutorial_id, contributor_id, link)
+            VALUES (${result.id}, ${parsedTutorial.credits.professor}, ${parsedTutorial.credits.link})
+            ON CONFLICT (tutorial_id) DO UPDATE SET
+              contributor_id = EXCLUDED.contributor_id,
+              link = EXCLUDED.link,
+              name = NULL,
+              lightning_address = NULL,
+              lnurl_pay = NULL,
+              paynym = NULL,
+              silent_payment = NULL,
+              tips_url = NULL
+          `;
+        } else {
+          await transaction`
+            INSERT INTO content.tutorial_credits (
+              tutorial_id, name, link, lightning_address, 
+              lnurl_pay, paynym, silent_payment, tips_url
+            ) VALUES (
+              ${result.id},
+              ${parsedTutorial.credits.name},
+              ${parsedTutorial.credits.link},
+              ${parsedTutorial.credits.tips?.lightning_address},
+              ${parsedTutorial.credits.tips?.lnurl_pay},
+              ${parsedTutorial.credits.tips?.paynym},
+              ${parsedTutorial.credits.tips?.silent_payment},
+              ${parsedTutorial.credits.tips?.url}
+            )
+            ON CONFLICT (tutorial_id) DO UPDATE SET
+              contributor_id = NULL,
+              name = EXCLUDED.name,
+              link = EXCLUDED.link,
+              lightning_address = EXCLUDED.lightning_address,
+              lnurl_pay = EXCLUDED.lnurl_pay,
+              paynym = EXCLUDED.paynym,
+              silent_payment = EXCLUDED.silent_payment,
+              tips_url = EXCLUDED.tips_url
+          `;
+        }
+      }
+
       // If the resource has tags, insert them into the tags table and link them to the resource
-      if (result && parsedTutorial.tags && parsedTutorial.tags?.length > 0) {
+      if (parsedTutorial.tags && parsedTutorial.tags?.length > 0) {
         await transaction`
           INSERT INTO content.tags ${transaction(
             parsedTutorial.tags.map((tag) => ({ name: tag })),

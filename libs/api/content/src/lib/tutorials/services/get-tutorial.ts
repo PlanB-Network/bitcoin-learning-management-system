@@ -1,7 +1,7 @@
 import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
-import { getTutorialQuery } from '../queries';
+import { getCreditsQuery, getTutorialQuery } from '../queries';
 
 export const createGetTutorial =
   (dependencies: Dependencies) => async (id: number, language: string) => {
@@ -11,5 +11,12 @@ export const createGetTutorial =
       .exec(getTutorialQuery(id, language))
       .then(firstRow);
 
-    return tutorial;
+    if (!tutorial) return;
+
+    const credits = await postgres.exec(getCreditsQuery(id)).then(firstRow);
+
+    return {
+      ...tutorial,
+      credits,
+    };
   };
