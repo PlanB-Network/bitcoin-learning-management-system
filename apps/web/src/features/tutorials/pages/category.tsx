@@ -13,11 +13,10 @@ import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
 const TutorialItem = ({ tutorial }: { tutorial: JoinedTutorial }) => {
   return (
     <Link
-      to={'/tutorials/$category/$tutorialId/$language'}
+      to={'/tutorials/$category/$tutorialId'}
       params={{
         category: tutorial.category,
         tutorialId: tutorial.id.toString(),
-        language: 'fr', // TODO TRIGGER
       }}
       key={tutorial.id}
     >

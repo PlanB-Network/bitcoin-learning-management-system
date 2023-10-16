@@ -481,7 +481,7 @@ function shuffleArray(array: any[]): any[] {
 export const CourseChapter = () => {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const { courseId, language, partIndex, chapterIndex } = useParams({
+  const { courseId, partIndex, chapterIndex } = useParams({
     from: '/courses/$courseId/$partIndex/$chapterIndex',
   });
 
@@ -489,12 +489,12 @@ export const CourseChapter = () => {
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
     id: courseId,
-    language: language ?? i18n.language,
+    language: i18n.language,
   });
 
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
     courseId,
-    language: language ?? i18n.language,
+    language: i18n.language,
     partIndex,
     chapterIndex,
   });
@@ -502,7 +502,7 @@ export const CourseChapter = () => {
   const { data: quizzArray } =
     trpc.content.getCourseChapterQuizQuestions.useQuery({
       courseId,
-      language: language ?? i18n.language,
+      language: i18n.language,
       partIndex,
       chapterIndex,
     });

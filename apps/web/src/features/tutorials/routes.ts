@@ -25,7 +25,7 @@ export const tutorialCategoryRoute = new Route({
 
 export const tutorialDetailsRoute = new Route({
   getParentRoute: () => tutorialsRootRoute,
-  path: '/$category/$tutorialId/$language',
+  path: '/$category/$tutorialId',
   component: TutorialDetails,
 });
 

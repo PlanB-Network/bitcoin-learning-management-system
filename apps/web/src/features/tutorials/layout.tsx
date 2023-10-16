@@ -141,13 +141,12 @@ export const TutorialLayout = ({
                                               />
                                               <Link
                                                 to={
-                                                  '/tutorials/$category/$tutorialId/$language'
+                                                  '/tutorials/$category/$tutorialId'
                                                 }
                                                 params={{
                                                   category: tutorial.category,
                                                   tutorialId:
                                                     tutorial.id.toString(),
-                                                  language: tutorial.language,
                                                 }}
                                                 className={compose(
                                                   'text-sm group-hover:text-orange-600',

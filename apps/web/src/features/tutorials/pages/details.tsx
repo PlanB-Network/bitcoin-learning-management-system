@@ -10,13 +10,13 @@ import { TutorialLayout } from '../layout';
 
 export const TutorialDetails = () => {
   const { i18n } = useTranslation();
-  const { tutorialId, language } = useParams({
-    from: '/tutorials/$category/$tutorialId/$language',
+  const { tutorialId } = useParams({
+    from: '/tutorials/$category/$tutorialId',
   });
 
   const { data: tutorial } = trpc.content.getTutorial.useQuery({
     tutorialId: Number(tutorialId),
-    language: language ?? i18n.language,
+    language: i18n.language,
   });
 
   const { t } = useTranslation();

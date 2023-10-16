@@ -318,6 +318,10 @@
       "shortDescription": "Bitcoin buying-selling solutions, KYC and non-KYC",
       "title": "Exchange"
     },
+    "explorer": {
+      "didYouKnow": "Did you know?",
+      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!"
+    },
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
     "merchant": {
