@@ -1,6 +1,9 @@
+import _ from 'lodash';
+
 import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
+import { formatProfessor } from '../../professors/services/utils';
 import { getCreditsQuery, getTutorialQuery } from '../queries';
 
 export const createGetTutorial =
@@ -15,8 +18,32 @@ export const createGetTutorial =
 
     const credits = await postgres.exec(getCreditsQuery(id)).then(firstRow);
 
+    if (!credits)
+      return {
+        ...tutorial,
+        credits: undefined,
+      };
+
     return {
       ...tutorial,
-      credits,
+      credits: {
+        ..._.omit(credits, [
+          'tutorial_id',
+          'contributor_id',
+          'lightning_address',
+          'lnurl_pay',
+          'paynym',
+          'silent_payment',
+          'tips_url',
+        ]),
+        professor: formatProfessor(credits.professor),
+        tips: {
+          lightningAddress: credits.lightning_address,
+          lnurlPay: credits.lnurl_pay,
+          paynym: credits.paynym,
+          silentPayment: credits.silent_payment,
+          url: credits.tips_url,
+        },
+      },
     };
   };
