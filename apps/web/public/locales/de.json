@@ -74,7 +74,7 @@
       "curriculum": "Lehrplan",
       "description": "Beschreibung",
       "duration": "Dauer: {{hours}} Stunden",
-      "goal": "ZIEL: {{goal}}",
+      "goal": "ZIEL: ",
       "level": "Stufe: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} Kapitel",

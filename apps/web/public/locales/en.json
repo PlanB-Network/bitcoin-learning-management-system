@@ -80,7 +80,7 @@
       "curriculum": "Curriculum",
       "description": "Description",
       "duration": "Duration: {{hours}} hours",
-      "goal": "GOAL: {{goal}}",
+      "goal": "GOAL: ",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapters",
@@ -119,7 +119,7 @@
     },
     "preview": {
       "by": "by {{teacher}}",
-      "letsgo": "Let's go"
+      "lets go": "Let's go"
     },
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",

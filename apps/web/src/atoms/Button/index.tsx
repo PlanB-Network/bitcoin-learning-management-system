@@ -52,7 +52,7 @@ export const Button = ({
     () => [
       classesBySize[size ?? 'm'],
       classesByVariant[variant ?? 'primary'],
-      rounded ? 'rounded-full' : 'rounded-md',
+      rounded ? 'rounded-full' : 'rounded-2xl',
     ],
     [rounded, size, variant],
   );

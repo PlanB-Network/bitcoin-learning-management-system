@@ -17,8 +17,8 @@ export const AuthorCard = ({ name, ...props }: AuthorCardProps) => {
   return (
     <div {...props}>
       <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
-        <div className="flex w-[610px] items-start">
-          <div className="border-blue-1000 flex w-32 shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2">
+        <div className="flex max-w-[610px] items-start">
+          <div className="border-blue-1000 w-32 shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2 sm:flex">
             <img
               src="https://raw.githubusercontent.com/DecouvreBitcoin/sovereign-university-data/main/resources/professors/rogzy/assets/profil.jpg"
               alt="Professor"

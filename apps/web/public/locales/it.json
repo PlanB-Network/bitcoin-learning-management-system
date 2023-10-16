@@ -69,7 +69,7 @@
       "curriculum": "Curriculum",
       "description": "Descrizione",
       "duration": "Durata: {{hours}} ore",
-      "goal": "GOAL: {{goal}}",
+      "goal": "GOAL: ",
       "level": "Livello: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} capitoli",

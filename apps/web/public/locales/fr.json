@@ -74,7 +74,7 @@
       "curriculum": "Syllabus",
       "description": "Description",
       "duration": "Durée : {{hours}} heures",
-      "goal": "OBJECTIF : {{goal}}",
+      "goal": "OBJECTIF : ",
       "level": "Niveau : $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapitres",

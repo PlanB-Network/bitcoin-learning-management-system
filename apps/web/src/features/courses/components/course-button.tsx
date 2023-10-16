@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
 
@@ -8,6 +9,7 @@ interface CourseButtonProps {
 }
 
 export const CourseButton: React.FC<CourseButtonProps> = ({ courseId }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -39,15 +41,16 @@ export const CourseButton: React.FC<CourseButtonProps> = ({ courseId }) => {
     >
       <div className="relative flex h-12 w-auto">
         <Link
-          to={'/courses/$courseId/$chapterIndex'}
+          to={'/courses/$courseId/$partIndex/$chapterIndex'}
           params={{
-            courseId: courseId,
+            courseId,
+            partIndex: '1',
             chapterIndex: '1',
           }}
         >
           <button className="relative z-10 flex h-12 w-auto items-center justify-center rounded-full bg-orange-800 text-white">
             <span className="m-2 px-2 text-sm font-normal md:px-3">
-              Let's go
+              {t('courses.preview.letsgo')}
             </span>
           </button>
         </Link>
