@@ -2,10 +2,10 @@ import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
+import { AuthorCard } from '../../../components/author-card';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { TooltipWithContent } from '../../../components/tooptip-with-content';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { AuthorCard } from '../components/author-card';
 import { TutorialLayout } from '../layout';
 
 export const TutorialDetails = () => {

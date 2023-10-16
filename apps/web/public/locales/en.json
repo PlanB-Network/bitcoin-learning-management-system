@@ -89,6 +89,9 @@
       "numberOfChapters": "Number of chapters: {{number}}",
       "objectives": "Objectives",
       "objectivesTitle": "What will you learn with this course?",
+      "professor": "Professor",
+      "startCourse": "Start the course",
+      "taughtBy": "This course is being taught by :",
       "teachers": "Teachers: {{teachers}}"
     },
     "explorer": {
