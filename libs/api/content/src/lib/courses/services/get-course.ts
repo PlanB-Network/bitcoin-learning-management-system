@@ -1,6 +1,7 @@
 import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
+import { getProfessorsQuery } from '../../professors/queries';
 import { getCourseChaptersQuery, getCourseQuery } from '../queries';
 import { getCoursePartsQuery } from '../queries/get-course-parts';
 
@@ -20,6 +21,9 @@ export const createGetCourse =
     const chapters = await postgres.exec(
       getCourseChaptersQuery({ courseId: id, language }),
     );
+    const professors = await postgres.exec(
+      getProfessorsQuery({ contributorIds: course.professors, language }),
+    );
 
     const partsWithChapters = parts.map((part) => ({
       ...part,
@@ -28,6 +32,7 @@ export const createGetCourse =
 
     return {
       ...course,
+      professors,
       parts: partsWithChapters,
       partsCount: parts.length,
       chaptersCount: chapters.length,

@@ -1,5 +1,9 @@
 -- Path: libs/database/migrations/20231015160801-professors.sql
 
+CREATE TABLE IF NOT EXISTS content.contributors (
+  id VARCHAR(20) PRIMARY KEY
+);
+
 CREATE TABLE IF NOT EXISTS content.professors (
   id SERIAL PRIMARY KEY,
   path VARCHAR(255) UNIQUE NOT NULL,
@@ -7,6 +11,8 @@ CREATE TABLE IF NOT EXISTS content.professors (
   name VARCHAR(255) UNIQUE NOT NULL,
   company VARCHAR(255),
   affiliations VARCHAR(255)[],
+
+  contributor_id VARCHAR(20) UNIQUE NOT NULL REFERENCES content.contributors(id) ON DELETE CASCADE,
   
   -- Links
   website_url TEXT,
@@ -40,4 +46,11 @@ CREATE TABLE IF NOT EXISTS content.professor_tags (
   tag_id INTEGER NOT NULL REFERENCES content.tags(id) ON DELETE CASCADE,
 
   PRIMARY KEY (professor_id, tag_id)
+);
+
+CREATE TABLE IF NOT EXISTS content.course_professors (
+  course_id VARCHAR(20) NOT NULL REFERENCES content.courses(id) ON DELETE CASCADE,
+  contributor_id VARCHAR(20) NOT NULL REFERENCES content.contributors(id) ON DELETE CASCADE,
+
+  PRIMARY KEY (course_id, contributor_id)
 );

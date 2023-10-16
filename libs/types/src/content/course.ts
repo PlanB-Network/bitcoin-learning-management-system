@@ -17,6 +17,7 @@ export type JoinedCourse = Pick<
     'language' | 'name' | 'goal' | 'objectives' | 'raw_description'
   > & {
     level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+    professors: string[];
   };
 
 export type CoursePart = Pick<

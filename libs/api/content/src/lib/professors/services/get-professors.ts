@@ -7,7 +7,7 @@ export const createGetProfessors =
   (dependencies: Dependencies) => async (language?: string) => {
     const { postgres } = dependencies;
 
-    const professors = await postgres.exec(getProfessorsQuery(language));
+    const professors = await postgres.exec(getProfessorsQuery({ language }));
 
     return professors.map(formatProfessor);
   };

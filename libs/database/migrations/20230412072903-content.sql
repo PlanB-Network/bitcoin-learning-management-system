@@ -27,14 +27,6 @@ CREATE TABLE IF NOT EXISTS content.resource_tags (
   PRIMARY KEY (resource_id, tag_id)
 );
 
-CREATE TABLE content.contributions (
-  resource_id INTEGER NOT NULL REFERENCES content.resources(id) ON DELETE CASCADE,
-  language VARCHAR(255),
-  contributor_id VARCHAR(20) NOT NULL REFERENCES users.accounts(contributor_id),
-
-  PRIMARY KEY (resource_id, language, contributor_id)
-);
-
 --- BOOKS
 CREATE TABLE IF NOT EXISTS content.books (
   resource_id INTEGER PRIMARY KEY REFERENCES content.resources(id) ON DELETE CASCADE,
@@ -111,7 +103,6 @@ CREATE TABLE IF NOT EXISTS content.courses (
 
   level VARCHAR(255) NOT NULL,
   hours FLOAT NOT NULL,
-  teacher TEXT NOT NULL,
 
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_commit VARCHAR(40) NOT NULL

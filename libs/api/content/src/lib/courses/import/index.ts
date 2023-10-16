@@ -88,7 +88,7 @@ export const groupByCourse = (files: ChangedFile[]) => {
 interface CourseMain {
   level: string;
   hours: number;
-  teacher: string;
+  professors: string[];
   tags?: string[];
 }
 
@@ -190,26 +190,45 @@ export const createProcessChangedCourse =
             .sort((a, b) => b.time - a.time)[0];
 
           const result = await transaction<Course[]>`
-            INSERT INTO content.courses (id, level, hours, teacher, last_updated, last_commit)
+            INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
             VALUES (
               ${course.id}, 
               ${parsedCourse.level},
               ${parsedCourse.hours},
-              ${parsedCourse.teacher},
               ${lastUpdated.time}, 
               ${lastUpdated.commit}
             )
             ON CONFLICT (id) DO UPDATE SET
               level = EXCLUDED.level,
               hours = EXCLUDED.hours,
-              teacher = EXCLUDED.teacher,
               last_updated = EXCLUDED.last_updated,
               last_commit = EXCLUDED.last_commit
             RETURNING *
           `.then(firstRow);
 
+          if (!result) {
+            throw new Error('Could not insert course');
+          }
+
+          await transaction`
+            INSERT INTO content.contributors ${transaction(
+              parsedCourse.professors.map((professor) => ({
+                id: professor,
+              })),
+            )}
+            ON CONFLICT DO NOTHING
+          `;
+
+          await transaction`
+            INSERT INTO content.course_professors (course_id, contributor_id)
+            SELECT
+              ${result.id}, 
+              id FROM content.contributors WHERE id = ANY(${parsedCourse.professors})
+            ON CONFLICT DO NOTHING
+          `;
+
           // If the resource has tags, insert them into the tags table and link them to the resource
-          if (result && parsedCourse.tags && parsedCourse.tags?.length > 0) {
+          if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
             await transaction`
               INSERT INTO content.tags ${transaction(
                 parsedCourse.tags.map((tag) => ({ name: tag })),

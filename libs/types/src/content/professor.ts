@@ -7,4 +7,5 @@ export type { default as ProfessorLocalized } from '../sql/content/ProfessorsLoc
 export type JoinedProfessor = Professor &
   Pick<ProfessorLocalized, 'language' | 'bio' | 'short_bio'> & {
     tags: string[];
+    courses_count: number;
   };
