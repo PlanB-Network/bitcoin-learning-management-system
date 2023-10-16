@@ -35,6 +35,16 @@
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
+  font-weight: 500;
+  src:
+    local(''),
+    url('../assets/fonts/poppins-v5-latin-500.woff2') format('woff2'),
+    url('../assets/fonts/poppins-v5-latin-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
   font-weight: 600;
   src:
     local(''),
