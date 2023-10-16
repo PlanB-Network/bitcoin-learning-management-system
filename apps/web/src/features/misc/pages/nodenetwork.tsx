@@ -1,4 +1,5 @@
 import { Link, useParams } from '@tanstack/react-router';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AmityLogo from '../../../assets/home/AmityAgeLogo.png';
@@ -9,27 +10,32 @@ import cuboPlusLogo from '../../../assets/home/cuboPlusLogo.png';
 import bitcoinCurrency from '../../../assets/home/currency_bitcoin.svg';
 import favorite from '../../../assets/home/favorite.svg';
 import NodeImg from '../../../assets/home/fnode.png';
-import github from '../../../assets/home/github.svg';
 import hbsLogo from '../../../assets/home/hbsLogo.png';
 import kiveclairLogo from '../../../assets/home/kiveclairLogo.png';
 import NodeMap from '../../../assets/home/nodemap.svg';
 import planBLogo from '../../../assets/home/planBLogo.png';
-import rabbitLibrary from '../../../assets/home/rabbit-library.svg';
-import rabbitMeetup from '../../../assets/home/rabbit-meetup.svg';
-import rabbitPodcast from '../../../assets/home/rabbit-podcast.svg';
-import rabbitStudying from '../../../assets/home/rabbit-studying.svg';
-import rabbitVideos from '../../../assets/home/rabbit-videos.svg';
-import rocketForm from '../../../assets/home/rocket_stroke only.svg';
+import rocketForm from '../../../assets/home/rocket_strokeonly.svg';
 import stageOne from '../../../assets/home/stage1.svg';
 import stageTwo from '../../../assets/home/stage2.svg';
 import stageFour from '../../../assets/home/stage3.svg';
 import visibilityOff from '../../../assets/home/visibility_off.svg';
+import arrowForward from '../../../assets/icons/arrow_forward.svg';
 import { Button } from '../../../atoms/Button';
 import { MainLayout } from '../../../components/MainLayout';
 import { SectionTitle } from '../components/SectionTitle';
 
 export const nodeNetwork = () => {
-  const { t } = useTranslation();
+  const [openSection, setOpenSection] = useState(null);
+
+  const toggleSection = (sectionIndex) => {
+    if (openSection === sectionIndex) {
+      // Si la sección está abierta, ciérrala haciendo clic nuevamente.
+      setOpenSection(null);
+    } else {
+      // Si la sección está cerrada, ábrela.
+      setOpenSection(sectionIndex);
+    }
+  };
 
   return (
     <MainLayout footerVariant="dark">
@@ -91,7 +97,7 @@ export const nodeNetwork = () => {
               </div>
 
               <div className=" max-w-sm content-center pr-0  md:ml-2 lg:max-w-2xl">
-                <img src={NodeMap} alt={t('imagesAlt.rabbitStudying')} />
+                <img src={NodeMap} alt="Rabbit Studying" />
               </div>
             </div>
           </div>
@@ -266,6 +272,141 @@ export const nodeNetwork = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        {/* Q&A section */}
+        <div className="flex w-full flex-col items-center justify-center bg-blue-900   xl:px-0">
+          <div className="mt-3 w-full max-w-6xl px-5 py-2 md:px-16 lg:px-12">
+            <div className="mb-0 px-2 sm:px-8 ">
+              <div className="flex h-6 w-full flex-row sm:h-10 ">
+                <h2 className="text-base font-semibold text-orange-600 sm:text-3xl">
+                  Q&A
+                </h2>
+              </div>
+              <div className="mt-5">
+                <h2
+                  className="cursor-pointer text-base font-medium text-orange-600 sm:text-2xl"
+                  onClick={() => toggleSection(0)}
+                >
+                  <span className="mr-2">{'>'}</span>
+                  What's a Node ?
+                </h2>
+                {openSection === 0 && (
+                  <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                    A node is simply a bitcoin community that wants to move to
+                    the next step and accelerate its own local Bitcoin adoption!
+                    There is no minimum size to start with.
+                  </p>
+                )}
+              </div>
+              <div className="mt-5">
+                <h2
+                  className="cursor-pointer text-base font-medium text-orange-600 sm:text-2xl"
+                  onClick={() => toggleSection(1)}
+                >
+                  <span className="mr-2">{'>'}</span>
+                  What do I gain ?
+                </h2>
+                {openSection === 1 && (
+                  <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                    At Plan B we aim to improve the educational bitcoin
+                    ecosystem by providing the right tools to build and educate
+                    on Bitcoin. By becoming a node, your community will get
+                    access to a large range of resources, services, special
+                    educational training and more. Make your community count as
+                    a reference in the Bitcoin world.
+                  </p>
+                )}
+              </div>
+              <div className="mt-5">
+                <h2
+                  className="cursor-pointer text-base font-medium text-orange-600 sm:text-2xl"
+                  onClick={() => toggleSection(2)}
+                >
+                  <span className="mr-2">{'>'}</span>
+                  What are the requirements?
+                </h2>
+                {openSection === 2 && (
+                  <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                    To be part of the network you must align on some core
+                    values. These are:
+                    <ul className="ml-8 list-disc">
+                      <li>Be Bitcoin only</li>
+                      <li>Value privacy</li>
+                      <li>Care for the open source work</li>
+                    </ul>
+                  </p>
+                )}
+              </div>
+              <div className="mt-5">
+                <h2
+                  className="cursor-pointer text-base font-medium text-orange-600 sm:text-2xl"
+                  onClick={() => toggleSection(3)}
+                >
+                  <span className="mr-2">{'>'}</span>
+                  What size is a Node?
+                </h2>
+                {openSection === 3 && (
+                  <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                    A Bitcoin node can be of any size. Based on some requirement
+                    different name will be attribute. A node with an
+                    hackerspace, a gym, some office place will be considered a
+                    ”Citadel” while your first bitcoin home town office will be
+                    known as “nodes”.
+                  </p>
+                )}
+              </div>
+              <div className="mt-5">
+                <h2
+                  className="cursor-pointer text-base font-medium text-orange-600 sm:text-2xl"
+                  onClick={() => toggleSection(4)}
+                >
+                  <span className="mr-2">{'>'}</span>
+                  What are the requirements ?
+                </h2>
+                {openSection === 4 && (
+                  <div>
+                    <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                      We wish to offer a safe heaven for bitcoiners around the
+                      world.
+                    </p>
+                    <p className="mt-1 text-xs text-gray-100 sm:text-base">
+                      We beleive that by helping local hubs grow, we will be
+                      able to create a network of citadels where bitcoiners will
+                      be welcome to work, create, share and discuss safely.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="mb-9 mt-4 flex items-center justify-center sm:mt-2 sm:h-20 ">
+            {/* Links missing for the form */}
+            <a
+              href="https://docs.google.com/forms/u/0/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="relative flex h-12 w-auto cursor-pointer items-center justify-center rounded-xl bg-orange-500 transition duration-300 ease-in-out hover:bg-blue-500">
+                <span className="ml-2 text-xs text-white sm:ml-11 sm:text-lg">
+                  Become part of the revolution!
+                </span>
+                <a
+                  href="https://docs.google.com/forms/u/0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="ml-1 mr-2 flex items-center rounded  bg-gray-100 px-2 py-1 text-xs transition duration-300 ease-in-out hover:bg-gray-200 sm:ml-4 sm:mr-11 sm:text-lg">
+                    <span className=" text-xs sm:mr-1 sm:text-base">Apply</span>
+                    <img
+                      className="text-blue-1000 h-5 w-5"
+                      src={rocketForm}
+                      alt="Cohetelogo"
+                    />
+                  </button>
+                </a>
+              </div>
+            </a>
           </div>
         </div>
       </>
