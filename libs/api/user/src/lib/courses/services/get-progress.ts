@@ -32,7 +32,12 @@ export const createGetProgress =
           ),
           completed_at,
         }))
-        .sort((a, b) => a.chapter - b.chapter);
+        .sort((a, b) => {
+          if (a.part !== b.part) {
+            return a.part - b.part;
+          }
+          return a.chapter - b.chapter;
+        });
 
       const lastCompletedChapter = chapters[chapters.length - 1];
 

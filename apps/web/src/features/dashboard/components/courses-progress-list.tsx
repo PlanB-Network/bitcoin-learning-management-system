@@ -1,6 +1,8 @@
 import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 
 import { CourseProgressExtended } from '@sovereign-university/types';
+import { addSpaceToCourseId } from '@sovereign-university/ui';
 
 import BitcoinEgg from '../../../assets/icons/bitcoin_egg.svg?react';
 import { Button } from '../../../atoms/Button';
@@ -11,7 +13,7 @@ export const CoursesProgressList = ({
 }: {
   courses: CourseProgressExtended[] | undefined;
 }) => (
-  <div className="flex flex-col justify-start">
+  <div className="flex flex-col justify-start gap-4 md:gap-0">
     {courses && courses.length > 0 ? (
       courses.map((course) => (
         <div
@@ -20,8 +22,8 @@ export const CoursesProgressList = ({
         >
           <div className="flex w-full flex-col items-start justify-start space-y-2 py-2">
             <div className="flex w-full items-center justify-between">
-              <span className="font-bold uppercase text-orange-600">
-                {course.course_id}
+              <span className="text-xl font-semibold uppercase text-orange-600 sm:text-base">
+                {addSpaceToCourseId(course.course_id)}
               </span>
               <div className="italic text-orange-600">
                 {course.progress_percentage}%
@@ -37,38 +39,56 @@ export const CoursesProgressList = ({
                 style={{ marginLeft: `${course.progress_percentage - 2}%` }}
                 className="absolute top-[-12px]"
               />
-              {/* const isCompleted = course.chapters?.some(
-                  (chapter) => chapter.chapter === index + 1,
-                ); */}
-              {/* {course.progress_percentage}% */}
             </div>
           </div>
-          {course.progress_percentage !== 10 && (
-            <div
-              className={compose(
-                'self-end pt-2 pr-0 md:p-2 md:pr-0',
-                course.progress_percentage === 100 ? 'invisible' : '',
-              )}
+          {/* Only for courses in progress */}
+          <div
+            className={compose(
+              'flex flex-row gap-2 self-end pt-2 pr-0 md:p-2 md:pr-0',
+              course.progress_percentage === 100 ? 'hidden' : '',
+            )}
+          >
+            <Link
+              to={'/courses/$courseId/$partIndex/$chapterIndex'}
+              params={{
+                courseId: course.course_id,
+                partIndex: String(course.lastCompletedChapter.part), // TODO .part et faire +1 sur un des 2
+                chapterIndex: String(course.lastCompletedChapter.chapter),
+              }}
             >
-              <Link
-                to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                params={{
-                  courseId: course.course_id,
-                  partIndex: '1', // TODO .part et faire +1 sur un des 2
-                  chapterIndex: '1', //String(course.lastCompletedChapter.chapter + 1),
-                }}
+              <Button variant="tertiary" size="xs" rounded className="px-3">
+                {t('words.resume').toLowerCase()}
+              </Button>
+            </Link>
+            <Link to={''}>
+              <Button variant="secondary" size="xs" rounded className="px-3">
+                {t('words.details').toLowerCase()}
+              </Button>
+            </Link>
+          </div>
+          {/* Only for Completed course */}
+          <div
+            className={compose(
+              'flex flex-row gap-2 self-end pt-2 pr-0 md:p-2 md:pr-0',
+              course.progress_percentage !== 100 ? 'hidden' : '',
+            )}
+          >
+            <Link to={''}>
+              <Button
+                variant="primary"
+                size="xs"
+                rounded
+                className="bg-green-600 px-3"
               >
-                <Button
-                  variant="tertiary"
-                  size="xs"
-                  rounded
-                  className="bg-green-500"
-                >
-                  resume
-                </Button>
-              </Link>
-            </div>
-          )}
+                {t('words.certificate').toLowerCase()}
+              </Button>
+            </Link>
+            <Link to={''}>
+              <Button variant="secondary" size="xs" rounded className="px-3">
+                {t('words.details').toLowerCase()}
+              </Button>
+            </Link>
+          </div>
         </div>
       ))
     ) : (

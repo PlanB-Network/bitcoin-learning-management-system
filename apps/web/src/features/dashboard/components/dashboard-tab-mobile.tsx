@@ -3,7 +3,7 @@ import { trpc } from '../../../utils';
 import { CoursesProgressList } from './courses-progress-list';
 
 const CoursesSectionTitle = ({ children }: { children: string }) => (
-  <div className="px-2 text-lg font-medium italic text-blue-800">
+  <div className="px-2 text-center text-lg font-medium uppercase text-blue-800">
     {children}
   </div>
 );

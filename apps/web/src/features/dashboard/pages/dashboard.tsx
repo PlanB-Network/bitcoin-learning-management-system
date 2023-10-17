@@ -96,64 +96,65 @@ export const Dashboard = () => {
   }
 
   return (
-    // <MainLayout variant="dark" footerVariant="dark">
-    <div className="min-h-screen bg-blue-900 p-10">
-      <div className="mx-auto grid min-h-[800px] max-w-4xl grid-cols-4 overflow-hidden rounded-3xl bg-gray-200 shadow xl:max-w-5xl">
-        <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-500 p-4">
-          <div className="w-full px-2">
-            <div className="flex w-full items-center space-x-2 rounded-3xl bg-orange-400">
-              <div className="p-1">
-                <div className="h-10 w-10 overflow-hidden rounded-full bg-white">
-                  <img
-                    src={RabbitFace}
-                    className="scale-125"
-                    // TODO TRIGGER  viewBox="-53 150 300 300"
-                    alt=""
-                  />
+    <MainLayout variant="dark" footerVariant="dark">
+      <div className="min-h-screen bg-blue-900 p-10">
+        <div className="mx-auto grid min-h-[800px] max-w-4xl grid-cols-4 overflow-hidden rounded-3xl bg-gray-200 shadow xl:max-w-5xl">
+          <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-500 p-4">
+            <div className="w-full px-2">
+              <div className="flex w-full items-center space-x-2 rounded-3xl bg-orange-400">
+                <div className="p-1">
+                  <div className="h-10 w-10 overflow-hidden rounded-full bg-white">
+                    <img
+                      src={RabbitFace}
+                      className="scale-125"
+                      // TODO TRIGGER  viewBox="-53 150 300 300"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="text-lg font-medium italic text-blue-900">
+                  {user?.username}
                 </div>
               </div>
-              <div className="text-lg font-medium italic text-blue-900">
-                {user?.username}
-              </div>
             </div>
-          </div>
-          <div className="flex h-full flex-col items-start justify-between">
-            <div className="flex flex-col items-start justify-center">
-              <MenuItem
-                text="Dashboard"
-                icon={<IoGridOutline size={20} />}
-                active={currentTab === 'dashboard'}
-                onClick={() => setCurrentTab('dashboard')}
-              />
-              {/* <MenuItem
+            <div className="flex h-full flex-col items-start justify-between">
+              <div className="flex flex-col items-start justify-center">
+                <MenuItem
+                  text="Dashboard"
+                  icon={<IoGridOutline size={20} />}
+                  active={currentTab === 'dashboard'}
+                  onClick={() => setCurrentTab('dashboard')}
+                />
+                {/* <MenuItem
                       text="My Courses"
                       icon={<AiOutlineBook />}
                       active={currentTab === 'courses'}
                       onClick={() => setCurrentTab('courses')}
                     /> */}
+                <MenuItem
+                  text="Settings"
+                  icon={<IoSettingsOutline size={20} />}
+                  active={currentTab === 'settings'}
+                  onClick={() => setCurrentTab('settings')}
+                />
+              </div>
               <MenuItem
-                text="Settings"
-                icon={<IoSettingsOutline size={20} />}
-                active={currentTab === 'settings'}
-                onClick={() => setCurrentTab('settings')}
+                text="Sign Out"
+                icon={<IoLogOutOutline size={20} />}
+                onClick={() => {
+                  dispatch(userSlice.actions.logout());
+                  navigate({ to: '/' });
+                }}
               />
             </div>
-            <MenuItem
-              text="Sign Out"
-              icon={<IoLogOutOutline size={20} />}
-              onClick={() => {
-                dispatch(userSlice.actions.logout());
-                navigate({ to: '/' });
-              }}
-            />
+          </div>
+          <div className="col-span-3 p-10">
+            {currentTab === 'dashboard' && <DashboardTab />}
+            {/* {currentTab === 'courses' && <CoursesTab />} */}
+            {currentTab === 'settings' && <SettingsTab />}
           </div>
         </div>
-        <div className="col-span-3 p-10">
-          {currentTab === 'dashboard' && <DashboardTab />}
-          {/* {currentTab === 'courses' && <CoursesTab />} */}
-          {currentTab === 'settings' && <SettingsTab />}
-        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 };
