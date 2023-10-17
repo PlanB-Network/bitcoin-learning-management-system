@@ -65,7 +65,6 @@ export const MetaElements = ({
       {isLoggedIn && isMobile && (
         <div
           className="text-white"
-          // TODO: Trigger
           onClick={() => {
             dispatch(userSlice.actions.logout());
             navigate({ to: '/' });

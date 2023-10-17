@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -10,6 +14,8 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
+
 export const MarkdownBody = ({
   content,
   assetPrefix,
@@ -17,12 +23,13 @@ export const MarkdownBody = ({
   content: string;
   assetPrefix: string;
 }) => {
+  const isScreenMd = useGreater('sm');
   return (
     <ReactMarkdown
       children={content}
       components={{
         h2: ({ children }) => (
-          <h2 className="mt-6 text-xl font-semibold text-orange-600 md:mt-10 md:text-2xl ">
+          <h2 className="mt-6 text-xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
             <div className="flex  w-auto items-center">
               <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
               {children}
@@ -84,12 +91,15 @@ export const MarkdownBody = ({
                   <p className="text-sm font-medium text-blue-900">Video</p>
                 </div>
               </div>
-              <ReactPlayer
-                className="mx-auto mb-2 max-w-full rounded-lg"
-                controls={true}
-                url={src}
-                src={alt}
-              />
+              <div>
+                <ReactPlayer
+                  width={isScreenMd ? 'auto' : 400}
+                  className="mx-auto mb-2 rounded-lg"
+                  controls={true}
+                  url={src}
+                  src={alt}
+                />
+              </div>
             </div>
           ) : (
             <img

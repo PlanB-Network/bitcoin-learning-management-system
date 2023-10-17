@@ -27,7 +27,7 @@ export const TutorialLayout = ({
 
   return (
     <MainLayout>
-      <div className="grid h-max min-h-screen w-full grid-cols-4 items-start bg-gray-100 px-3 py-5 md:px-6 md:py-10">
+      <div className=":px-6 grid h-max min-h-screen w-full grid-cols-4 items-start bg-gray-100 px-3 py-5 md:py-10">
         <div className="hidden w-full pl-0 pr-10 lg:block xl:pl-10">
           <div className="w-full min-w-min max-w-[16rem] rounded-2xl bg-white p-2 drop-shadow">
             <h3 className="mx-2 mb-2 border-b-2 border-b-orange-500 py-1 text-lg font-semibold uppercase text-orange-500">
@@ -173,7 +173,7 @@ export const TutorialLayout = ({
               )}
           </div>
         </div>
-        <div className="col-span-4 lg:col-span-3 lg:max-w-3xl xl:max-w-none xl:pr-16 2xl:col-span-2 2xl:pr-0">
+        <div className="col-span-4 lg:col-span-3 2xl:col-span-2">
           {children}
         </div>
       </div>

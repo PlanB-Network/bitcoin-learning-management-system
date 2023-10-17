@@ -26,14 +26,6 @@ export const createGetCourse =
       getProfessorsQuery({ contributorIds: course.professors, language }),
     );
 
-    // TODO
-    // let professorsAugmented;
-    // if (professors) {
-    //   professorsAugmented = professors.map((professor) => {
-    //     return formatProfessor(professor);
-    //   });
-    // }
-
     const partsWithChapters = parts.map((part) => ({
       ...part,
       chapters: chapters.filter((chapter) => chapter.part === part.part),
@@ -41,7 +33,7 @@ export const createGetCourse =
 
     return {
       ...course,
-      professors,
+      professors: professors.map(formatProfessor),
       parts: partsWithChapters,
       partsCount: parts.length,
       chaptersCount: chapters.length,
