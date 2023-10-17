@@ -141,12 +141,11 @@ export const TutorialLayout = ({
                                               />
                                               <Link
                                                 to={
-                                                  '/tutorials/$category/$tutorialId'
+                                                  '/tutorials/$category/$name'
                                                 }
                                                 params={{
                                                   category: tutorial.category,
-                                                  tutorialId:
-                                                    tutorial.id.toString(),
+                                                  name: tutorial.name,
                                                 }}
                                                 className={compose(
                                                   'text-sm group-hover:text-orange-600',
@@ -156,7 +155,7 @@ export const TutorialLayout = ({
                                                     : 'text-blue-800 ',
                                                 )}
                                               >
-                                                {t(tutorial.name)}
+                                                {t(tutorial.title)}
                                               </Link>
                                             </li>
                                           ))}

@@ -12,7 +12,7 @@ export default interface TutorialsLocalized {
 
   language: TutorialsLocalizedLanguage;
 
-  name: string;
+  title: string;
 
   description?: string;
 
@@ -25,7 +25,7 @@ export interface TutorialsLocalizedInitializer {
 
   language: TutorialsLocalizedLanguage;
 
-  name: string;
+  title: string;
 
   description?: string;
 
@@ -38,7 +38,7 @@ export interface TutorialsLocalizedMutator {
 
   language?: TutorialsLocalizedLanguage;
 
-  name?: string;
+  title?: string;
 
   description?: string;
 

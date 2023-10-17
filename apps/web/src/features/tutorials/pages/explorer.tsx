@@ -17,11 +17,9 @@ import { TUTORIALS_CATEGORIES } from '../utils';
 export const TutorialExplorer = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery({
+  const { data: tutorials } = trpc.content.getTutorials.useQuery({
     language: i18n.language,
   });
-
-  console.log(tutorials);
 
   return (
     <MainLayout footerVariant="light">
@@ -70,10 +68,10 @@ export const TutorialExplorer = () => {
               )
               .map((tutorial) => (
                 <Link
-                  to={'/tutorials/$category/$tutorialId'}
+                  to={'/tutorials/$category/$name'}
                   params={{
                     category: tutorial.category,
-                    tutorialId: tutorial.id.toString(),
+                    name: tutorial.name,
                   }}
                   key={tutorial.id}
                 >

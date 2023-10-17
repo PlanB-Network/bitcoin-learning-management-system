@@ -1,18 +1,23 @@
 import { sql } from '@sovereign-university/database';
 import { JoinedTutorial } from '@sovereign-university/types';
 
-export const getTutorialQuery = (id: number, language?: string) => {
+export const getTutorialQuery = (
+  category: string,
+  name: string,
+  language?: string,
+) => {
   return sql<JoinedTutorial[]>`
     WITH tutorial AS (
       SELECT 
           t.id, 
           t.path, 
+          t.name,
           tl.language, 
           t.level, 
           t.category, 
           t.subcategory, 
           t.builder, 
-          tl.name, 
+          tl.title, 
           tl.description, 
           tl.raw_content, 
           t.last_updated, 
@@ -29,7 +34,7 @@ export const getTutorialQuery = (id: number, language?: string) => {
           WHERE tt.tutorial_id = t.id
       ) AS tag_agg ON TRUE
 
-      WHERE t.id = ${id} 
+      WHERE t.category = ${category} AND t.name = ${name} 
       ${language ? sql`AND tl.language = ${language}` : sql``}
       GROUP BY 
           t.id, 
@@ -38,7 +43,7 @@ export const getTutorialQuery = (id: number, language?: string) => {
           t.category, 
           t.subcategory, 
           t.builder, 
-          tl.name, 
+          tl.title, 
           tl.description, 
           tl.raw_content, 
           t.last_updated, 

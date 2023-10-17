@@ -13,10 +13,10 @@ import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
 const TutorialItem = ({ tutorial }: { tutorial: JoinedTutorial }) => {
   return (
     <Link
-      to={'/tutorials/$category/$tutorialId'}
+      to={'/tutorials/$category/$name'}
       params={{
         category: tutorial.category,
-        tutorialId: tutorial.id.toString(),
+        name: tutorial.name,
       }}
       key={tutorial.id}
     >
@@ -38,7 +38,7 @@ const TutorialItem = ({ tutorial }: { tutorial: JoinedTutorial }) => {
         />
         <div className="flex flex-col self-start">
           <h2 className="text-xl font-semibold uppercase text-orange-500">
-            {tutorial.name}
+            {tutorial.title}
           </h2>
           <p className="max-w-md text-xs font-light capitalize text-blue-900">
             {tutorial.description}

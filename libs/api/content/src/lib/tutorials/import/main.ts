@@ -77,9 +77,10 @@ export const createProcessMainFile =
         .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (path, category, subcategory, level, builder, last_updated, last_commit)
+        INSERT INTO content.tutorials (path, name, category, subcategory, level, builder, last_updated, last_commit)
         VALUES (
           ${tutorial.path},
+          ${tutorial.name},
           ${tutorial.category},
           ${parsedTutorial.category}, 
           ${parsedTutorial.level},

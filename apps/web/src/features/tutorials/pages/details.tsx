@@ -10,12 +10,13 @@ import { TutorialLayout } from '../layout';
 
 export const TutorialDetails = () => {
   const { i18n } = useTranslation();
-  const { tutorialId } = useParams({
-    from: '/tutorials/$category/$tutorialId',
+  const { category, name } = useParams({
+    from: '/tutorials/$category/$name',
   });
 
   const { data: tutorial } = trpc.content.getTutorial.useQuery({
-    tutorialId: Number(tutorialId),
+    category,
+    name,
     language: i18n.language,
   });
 
@@ -49,7 +50,7 @@ export const TutorialDetails = () => {
           <div className="mt-4 space-y-6 px-5 text-blue-900 md:max-w-3xl md:px-0">
             <div className="max-w-5xl px-5 md:px-0">
               <h1 className="border-b-[0.2rem] border-gray-400/50 py-2 text-left text-2xl font-bold uppercase text-blue-800 md:text-4xl">
-                {tutorial.name}
+                {tutorial.title}
               </h1>
               <div className="mt-4 flex flex-row justify-between">
                 {headerAndFooterText()}

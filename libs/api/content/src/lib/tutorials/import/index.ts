@@ -21,6 +21,7 @@ interface TutorialDetails {
 }
 
 export interface ChangedTutorial extends ChangedContent {
+  name: string;
   category: string;
 }
 
@@ -40,11 +41,11 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   // If not, get the direct parent of the file
   const pathIndex = pathElements.indexOf('assets');
   const pathEnd = pathIndex > -1 ? pathIndex : pathElements.length - 1;
-  const tutorialPath = pathElements.slice(0, pathEnd).join('/');
+  const tutorialElements = pathElements.slice(0, pathEnd);
 
   return {
     category: pathElements[1],
-    path: tutorialPath,
+    path: tutorialElements.join('/'),
     language: pathElements.at(-1)?.replace(/\..*/, '') as Language,
   };
 };
@@ -66,6 +67,7 @@ export const groupByTutorial = (files: ChangedFile[]) => {
 
       const course: ChangedTutorial = groupedTutorials.get(tutorialPath) || {
         type: 'tutorials',
+        name: tutorialPath.split('/').at(-1) as string,
         category,
         path: tutorialPath,
         files: [],
@@ -122,7 +124,7 @@ export const createProcessChangedTutorial =
 
         await transaction`
           INSERT INTO content.tutorials_localized (
-            tutorial_id, language, name, description, raw_content
+            tutorial_id, language, title, description, raw_content
           )
           VALUES (
             ${id},
@@ -132,7 +134,7 @@ export const createProcessChangedTutorial =
             ${header.content.trim()}
           )
           ON CONFLICT (tutorial_id, language) DO UPDATE SET
-            name = EXCLUDED.name,
+            title = EXCLUDED.title,
             raw_content = EXCLUDED.raw_content
         `;
       }

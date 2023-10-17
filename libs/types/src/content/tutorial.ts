@@ -13,6 +13,7 @@ export type JoinedTutorial = Pick<
   Tutorial,
   | 'id'
   | 'path'
+  | 'name'
   | 'level'
   | 'category'
   | 'subcategory'
@@ -21,7 +22,7 @@ export type JoinedTutorial = Pick<
 > &
   Pick<
     TutorialLocalized,
-    'language' | 'name' | 'description' | 'raw_content'
+    'language' | 'title' | 'description' | 'raw_content'
   > & {
     tags: string[];
   } & {

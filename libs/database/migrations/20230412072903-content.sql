@@ -203,6 +203,7 @@ CREATE TABLE IF NOT EXISTS content.tutorials (
   id SERIAL PRIMARY KEY,
   path VARCHAR(255) UNIQUE NOT NULL,
 
+  name VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
   subcategory VARCHAR(255),
 
@@ -210,7 +211,9 @@ CREATE TABLE IF NOT EXISTS content.tutorials (
   builder VARCHAR(255),
 
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  last_commit VARCHAR(40) NOT NULL
+  last_commit VARCHAR(40) NOT NULL,
+
+  UNIQUE (name, category)
 );
 
 CREATE TABLE IF NOT EXISTS content.tutorials_localized (
@@ -218,7 +221,7 @@ CREATE TABLE IF NOT EXISTS content.tutorials_localized (
   language VARCHAR(10) NOT NULL,
 
   -- Per translation
-  name TEXT NOT NULL,
+  title TEXT NOT NULL,
   description TEXT,
   raw_content TEXT NOT NULL,
 

@@ -7,16 +7,27 @@ import { formatProfessor } from '../../professors/services/utils';
 import { getCreditsQuery, getTutorialQuery } from '../queries';
 
 export const createGetTutorial =
-  (dependencies: Dependencies) => async (id: number, language: string) => {
+  (dependencies: Dependencies) =>
+  async ({
+    category,
+    name,
+    language,
+  }: {
+    category: string;
+    name: string;
+    language: string;
+  }) => {
     const { postgres } = dependencies;
 
     const tutorial = await postgres
-      .exec(getTutorialQuery(id, language))
+      .exec(getTutorialQuery(category, name, language))
       .then(firstRow);
 
     if (!tutorial) return;
 
-    const credits = await postgres.exec(getCreditsQuery(id)).then(firstRow);
+    const credits = await postgres
+      .exec(getCreditsQuery(tutorial.id))
+      .then(firstRow);
 
     if (!credits)
       return {
