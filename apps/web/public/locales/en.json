@@ -252,7 +252,7 @@
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "sponsorsDescription": "Discover our sponsors and main contributors",
     "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, apassionate bitcoiners",
+    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
     "walletsDescription": "Secure and use your bitcoins"
   },
   "notFound": {
@@ -268,6 +268,10 @@
     "hostedBy": "Hosted by {{host}}",
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
     "pageTitle": "The Podcast Portal"
+  },
+  "professors": {
+    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
+    "pageTitle": "Professors"
   },
   "resources": {
     "articles": {
@@ -437,6 +441,7 @@
     "ourStory": "Our story",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
+    "professors": "Professors",
     "register": "Register",
     "relatedResources": "Related resources",
     "resources": "Resources",

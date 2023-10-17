@@ -5,6 +5,7 @@ import { rootRoute } from '../../routes/root';
 import { Home } from './pages/home';
 import { Manifesto } from './pages/manifesto';
 import { NotFound } from './pages/not-found';
+import { ProfessorExplorer } from './pages/professor-explorer';
 import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
 import { UnderConstruction } from './pages/under-construction';
 
@@ -38,6 +39,12 @@ export const sponsorsAndContributorsRoute = new Route({
   component: SponsorsAndContributors,
 });
 
+export const professorExplorer = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/professors',
+  component: ProfessorExplorer,
+});
+
 export const underConstructionRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/under-construction',
@@ -50,5 +57,6 @@ export const miscRoutes = [
   manifestoRoute,
   notFoundRoute,
   sponsorsAndContributorsRoute,
+  professorExplorer,
   underConstructionRoute,
 ];

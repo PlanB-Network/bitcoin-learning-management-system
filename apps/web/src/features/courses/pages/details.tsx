@@ -36,7 +36,7 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 
 export const CourseDetails: React.FC = () => {
-  const { courseId, language } = useParams({
+  const { courseId } = useParams({
     from: '/courses/$courseId',
   });
   const { navigateTo404 } = useNavigateMisc();
@@ -45,7 +45,7 @@ export const CourseDetails: React.FC = () => {
 
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
-    language: language ?? i18n.language,
+    language: i18n.language,
   });
 
   // const { data: professor } = trpc.content.getProfessor.useQuery({

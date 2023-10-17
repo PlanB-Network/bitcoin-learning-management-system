@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsFileText, BsHeart, BsMic, BsPlus } from 'react-icons/bs';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
 
 import { JoinedCourse } from '@sovereign-university/types';
@@ -174,14 +175,14 @@ export const Header = () => {
               path: Routes.UnderConstruction,
               icon: BsHeart,
             },
-            /*             {
-              id: 'teachers',
-              title: t('words.teachers'),
+            {
+              id: 'professors',
+              title: t('words.professors'),
               description: t('menu.teachersDescription'),
-              path: Routes.UnderConstruction,
+              path: Routes.Professors,
               icon: FaChalkboardTeacher,
             },
-            {
+            /*{
               id: 'support-us',
               title: t('words.supportUs'),
               description: t('menu.supportUsDescription'),

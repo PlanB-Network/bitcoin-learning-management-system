@@ -110,8 +110,8 @@ const baseConfig = {
         900: '#957B14',
       },
       grayblue: {
-        300: "#B6BFD3"
-      }
+        300: '#B6BFD3',
+      },
     },
     extend: {
       colors: {
@@ -136,6 +136,14 @@ const baseConfig = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      backgroundImage: {
+        'gradient-diagonal':
+          'linear-gradient(175deg, #20376C 83%, rgba(255,255,255,1) 85%);',
+      },
+      boxShadow: {
+        'md-dark':
+          '0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);',
       },
     },
   },
