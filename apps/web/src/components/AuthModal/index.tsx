@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { LnurlAuth } from './LnurlAuth';
 import { PasswordReset } from './PasswordReset';
 import { AuthModalState } from './props';
 import { Register } from './Register';
@@ -53,6 +54,13 @@ export const AuthModal = ({
       {/* Password Reset Dialog */}
       <PasswordReset
         isOpen={isOpen && currentState === AuthModalState.PasswordReset}
+        onClose={onClose}
+        goTo={goTo}
+      />
+
+      {/* LnurlAuth Dialog */}
+      <LnurlAuth
+        isOpen={isOpen && currentState === AuthModalState.LnurlAuth}
         onClose={onClose}
         goTo={goTo}
       />

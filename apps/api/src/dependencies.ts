@@ -1,11 +1,14 @@
-import { Redis } from 'ioredis';
+import { EventEmitter } from 'eventemitter3';
 
-import type { PostgresClient } from '@sovereign-university/database';
 import { createPostgresClient } from '@sovereign-university/database';
+import type { PostgresClient } from '@sovereign-university/database';
+import { RedisClient } from '@sovereign-university/redis';
+import type { ApiEvents } from '@sovereign-university/types';
 
 export interface Dependencies {
-  redis: Redis;
+  redis: RedisClient;
   postgres: PostgresClient;
+  events: EventEmitter<ApiEvents>;
 }
 
 export const startDependencies = async () => {
@@ -17,17 +20,20 @@ export const startDependencies = async () => {
     password: process.env['POSTGRES_PASSWORD'],
   });
 
-  const redis = new Redis({
+  const redis = new RedisClient({
     host: process.env['REDIS_HOST'],
     port: Number(process.env['REDIS_PORT']),
     password: process.env['REDIS_PASSWORD'],
   });
+
+  const events = new EventEmitter<ApiEvents>();
 
   await postgres.connect();
 
   const dependencies = {
     redis,
     postgres,
+    events,
   } as Dependencies;
 
   const stopDependencies = async () => {

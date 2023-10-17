@@ -4,7 +4,7 @@ import { protectedProcedure } from '../../procedures';
 import { createTRPCRouter } from '../../trpc';
 
 import { credentialsAuthRouter } from './credentials';
-import { LUD4AuthRouter } from './lud4';
+import { lud4AuthRouter } from './lud4';
 
 const logoutProcedure = protectedProcedure
   .meta({
@@ -40,6 +40,6 @@ const logoutProcedure = protectedProcedure
 
 export const authRouter = createTRPCRouter({
   credentials: credentialsAuthRouter,
-  lud4: LUD4AuthRouter,
+  lud4: lud4AuthRouter,
   logout: logoutProcedure,
 });

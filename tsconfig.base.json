@@ -23,6 +23,7 @@
       "@sovereign-university/api/server": ["libs/api/server/src/index.ts"],
       "@sovereign-university/api/user": ["libs/api/user/src/index.ts"],
       "@sovereign-university/database": ["libs/database/src/index.ts"],
+      "@sovereign-university/redis": ["libs/redis/src/index.ts"],
       "@sovereign-university/types": ["libs/types/src/index.ts"],
       "@sovereign-university/ui": ["libs/ui/src/index.ts"]
     }

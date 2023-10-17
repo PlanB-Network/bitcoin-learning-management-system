@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
 
 import { Button } from '../../../atoms/Button';
+import { Divider } from '../../../atoms/Divider';
 import { Modal } from '../../../atoms/Modal';
 import { TextInput } from '../../../atoms/TextInput';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
@@ -34,7 +35,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     password: z.string().min(1, t('auth.passwordRequired')),
   });
 
-  const login = trpc.auth.credentials.login.useMutation({
+  const credentialsLogin = trpc.auth.credentials.login.useMutation({
     onSuccess: (data) => {
       dispatch(
         userSlice.actions.login({
@@ -58,9 +59,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     ) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
-      await login.mutate(values);
+      await credentialsLogin.mutate(values);
     },
-    [login],
+    [credentialsLogin],
   );
 
   return (
@@ -72,10 +73,14 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       showAccountHelper
     >
       <div className="flex flex-col items-center">
-        {/* <Button className="my-5" rounded>
+        <Button
+          className="my-5"
+          rounded
+          onClick={() => goTo(AuthModalState.LnurlAuth)}
+        >
           {t('auth.connectWithLn')}
         </Button>
-        <Divider>{t('words.or').toUpperCase()}</Divider> */}
+        <Divider>{t('words.or').toUpperCase()}</Divider>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -124,9 +129,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                 />
               </div>
 
-              {login.error && (
+              {credentialsLogin.error && (
                 <p className="mt-2 text-base font-semibold text-red-300">
-                  {login.error.message}
+                  {credentialsLogin.error.message}
                 </p>
               )}
 

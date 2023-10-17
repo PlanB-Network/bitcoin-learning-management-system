@@ -16,3 +16,13 @@ CREATE TABLE IF NOT EXISTS users.accounts (
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS users.lud4_public_keys (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  uid UUID NOT NULL REFERENCES users.accounts(uid) ON DELETE CASCADE,
+  
+  public_key TEXT NOT NULL UNIQUE,
+
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);

@@ -60,7 +60,10 @@ export const createContext = async (
     req,
     res,
     sessionId: req.session?.id,
-  } as ContextInner & CreateExpressContextOptions;
+  } as ContextInner &
+    CreateExpressContextOptions & {
+      sessionId: string | undefined;
+    };
 };
 
 export type Context = inferAsyncReturnType<typeof createContext> & UserContext;

@@ -1,10 +1,8 @@
 import * as bip39 from 'bip39';
 
 import type { PostgresClient } from '@sovereign-university/database';
-import {
-  anyContributorIdExistsQuery,
-  contributorIdExistsQuery,
-} from '@sovereign-university/database';
+
+import { anyContributorIdExistsQuery } from '../queries';
 
 /**
  * Generates a random word from the BIP39 English wordlist.
@@ -47,39 +45,9 @@ export const anyCombinationExists = async (
     }
   }
 
-  const result = await postgres.exec(anyContributorIdExistsQuery(combinations));
+  const [result] = await postgres.exec(
+    anyContributorIdExistsQuery(combinations),
+  );
 
-  return result.count > 0;
-};
-
-/**
- * Checks if the given contributor ID exists in the database.
- *
- * @param postgres - A PostgresClient instance.
- * @param id - The contributor ID to check.
- * @returns A promise that resolves to a boolean indicating if the ID exists.
- */
-export const contributorIdExists = async (
-  postgres: PostgresClient,
-  id: string,
-) => {
-  const [result] = await postgres.exec(contributorIdExistsQuery(id));
-
-  return result['count'] > 0;
-};
-
-/**
- * Generates a unique contributor ID that is not already used in the database.
- *
- * @param postgres - A PostgresClient instance.
- * @returns A promise that resolves to a unique contributor ID.
- */
-export const generateUniqueContributorId = async (postgres: PostgresClient) => {
-  let id: string;
-
-  do {
-    id = generateRandomContributorId();
-  } while (await contributorIdExists(postgres, id));
-
-  return id;
+  return result && result.exists;
 };

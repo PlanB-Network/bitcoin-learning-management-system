@@ -9,6 +9,9 @@ type GetUserOptions =
     }
   | {
       username: string;
+    }
+  | {
+      lud4PublicKey: string;
     };
 
 export const createGetUser =
