@@ -38,7 +38,6 @@ export const MetaElements = ({
 
       {isLoggedIn ? (
         <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
-          <span>{t('words.dashboard')}</span>
           <Link to="/dashboard">{t('words.dashboard')}</Link>
         </Button>
       ) : (

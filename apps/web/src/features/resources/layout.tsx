@@ -57,7 +57,7 @@ export const ResourceLayout = ({
             </div>
           )}
 
-          <div className="my-6 sm:my-12 md:my-16">{children}</div>
+          <div className="my-4 sm:my-6">{children}</div>
 
           {pagination && (
             <div className="mx-auto w-max">
