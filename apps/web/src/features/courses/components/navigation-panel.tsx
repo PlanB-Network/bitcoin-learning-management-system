@@ -46,7 +46,7 @@ export const NavigationPanel: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className="mt-2 h-auto w-60 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
+      className="z-50 mt-2 h-auto w-60 rounded-b-3xl border-r bg-gray-200 p-4 shadow-xl "
       style={style}
     >
       <Link to={'/courses/$courseId'} params={{ courseId: course.id }}>
