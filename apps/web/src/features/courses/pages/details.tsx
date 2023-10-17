@@ -48,10 +48,9 @@ export const CourseDetails: React.FC = () => {
     language: i18n.language,
   });
 
-  // const { data: professor } = trpc.content.getProfessor.useQuery({
-  //   professorId: Number(course?.teacher),
-  //   language: language ?? i18n.language,
-  // });
+  const professorNames = course?.professors
+    .map((professor) => professor.name)
+    .join(', ');
 
   if (!course && isFetched) navigateTo404();
 
@@ -71,10 +70,8 @@ export const CourseDetails: React.FC = () => {
                 {course.name}
               </h1>
               <h2 className="mt-4 text-lg font-light italic text-blue-800">
-                <span className="font-semibold">
-                  {t('courses.details.goal')}
-                </span>
-                {course.goal}
+                <span>{t('courses.details.goal')}</span>
+                <span>{course.goal}</span>
               </h2>
             </div>
           </>
@@ -84,21 +81,20 @@ export const CourseDetails: React.FC = () => {
               <div className="h-fit w-fit rounded-2xl bg-orange-500 px-3 py-2 text-left text-3xl font-bold uppercase text-white">
                 {addSpaceToCourseId(course.id)}
               </div>
-              <h1 className="mt-2 px-1 text-xl font-semibold text-orange-500 lg:text-5xl">
+              <h1 className="mt-2 px-1 text-center text-xl font-semibold text-orange-500 lg:text-5xl">
                 {course.name}
               </h1>
             </div>
             <h2 className="mt-2 text-sm font-light italic text-blue-800">
-              {t('courses.details.goal')}
-              {course.goal}
+              <span className="font-semibold">{t('courses.details.goal')}</span>
+              <span>{course.goal}</span>
             </h2>
-            {/* Aqui se muestran los datos del curso cel version */}
             <div className="flex flex-col space-y-2 p-3 sm:px-0">
-              <div className="flex flex-wrap ">
+              <div className="flex flex-wrap gap-2">
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
                   <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
                   <span className="text-sm text-blue-800">
-                    {course.teacher}
+                    {professorNames}
                   </span>
                 </div>
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
@@ -152,7 +148,7 @@ export const CourseDetails: React.FC = () => {
             <FaChalkboardTeacher size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.teachers', {
-                teachers: t('words.rogzy'),
+                teachers: professorNames,
               })}
             </span>
           </div>
@@ -313,7 +309,7 @@ export const CourseDetails: React.FC = () => {
 
   const Curriculum = ({ course }: { course: Course }) => {
     return (
-      <div className="my-4 max-w-5xl px-2">
+      <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
             <img src={yellowBook} alt="" className="h-5 w-5" />
@@ -324,7 +320,7 @@ export const CourseDetails: React.FC = () => {
           <h4 className="mb-5 hidden text-2xl font-light uppercase italic text-gray-400 sm:block">
             {t('courses.details.curriculum')}
           </h4>
-          <ul className="ml-5 space-y-5 text-xs capitalize sm:text-base sm:uppercase">
+          <ul className="space-y-5 text-xs capitalize sm:text-base sm:uppercase">
             {course.parts?.map((part, partIndex) => (
               <li key={partIndex}>
                 <div className="mb-1 flex flex-row">
@@ -386,7 +382,9 @@ export const CourseDetails: React.FC = () => {
           <h4 className="hidden self-center text-2xl font-light uppercase italic text-gray-400 sm:block">
             {t('courses.details.taughtBy')}
           </h4>
-          <AuthorCard className="mt-4" name="ARMAN THE PARMAND"></AuthorCard>
+          {course.professors.map((professor) => (
+            <AuthorCard className="sm:mt-4" professor={professor}></AuthorCard>
+          ))}
         </div>
       </div>
     );

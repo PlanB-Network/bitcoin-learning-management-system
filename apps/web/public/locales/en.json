@@ -73,7 +73,8 @@
     },
     "chapter": {
       "finishCourse": "Finish the course",
-      "next": "Done, let's go to the next chapter!"
+      "next": "Done, let's go to the next chapter!",
+      "thanksTip": "Wanna say thanks ? Tip."
     },
     "details": {
       "courseId": "Course ID: {{courseId}}",
@@ -119,7 +120,7 @@
     },
     "preview": {
       "by": "by {{teacher}}",
-      "lets go": "Let's go"
+      "letsgo": "Let's go"
     },
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",

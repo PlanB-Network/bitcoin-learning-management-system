@@ -38,22 +38,46 @@ const Media = ({ className = '', size = 30 }) => (
       className,
     )}
   >
-    <a href="https://www.youtube.com/@DecouvreBitcoin">
+    <a
+      href="https://www.youtube.com/@DecouvreBitcoin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsYoutube size={size + 5} />
     </a>
-    <a href="https://twitter.com/DecouvreBitcoin">
+    <a
+      href="https://twitter.com/DecouvreBitcoin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsTwitter size={size} />
     </a>
-    <a href="https://facebook.com/decouvreBitcoin">
+    <a
+      href="https://facebook.com/decouvreBitcoin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsFacebook size={size} />
     </a>
-    <a href="https://www.instagram.com/rogzy_21M">
+    <a
+      href="https://www.instagram.com/rogzy_21M"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsInstagram size={size} />
     </a>
-    <a href="https://discord.gg/q9CFPmRNAD">
+    <a
+      href="https://discord.gg/q9CFPmRNAD"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsDiscord size={size} />
     </a>
-    <a href="https://github.com/DecouvreBitcoin">
+    <a
+      href="https://github.com/DecouvreBitcoin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <BsGithub size={size} />
     </a>
   </div>
@@ -118,17 +142,19 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   <h4 className="mb-2 text-base font-semibold text-white">
                     {t('words.about')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white/50">
+                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
                     <li>
-                      <Link to={''}>{t('words.ourStory')}</Link>
+                      <Link to={''} className="text-white/50">
+                        {t('words.ourStory')}
+                      </Link>
                     </li>
                     <li>
-                      <Link to={''}>
+                      <Link to={''} className="text-white/50">
                         {t('words.sponsoringAndContributors')}
                       </Link>
                     </li>
                     <li>
-                      <Link to={''}>{t('words.teachers')}</Link>
+                      <Link to={'/professors'}>{t('words.professors')}</Link>
                     </li>
                   </ul>
                 </div>
