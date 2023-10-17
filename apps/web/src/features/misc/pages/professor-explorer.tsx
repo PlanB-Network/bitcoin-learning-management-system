@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import { AuthorCard } from '../../..//components/author-card';
@@ -25,7 +26,7 @@ export const ProfessorExplorer = () => {
                 <div className="hidden sm:block">
                   <ProfessorCard professor={professor} />
                 </div>
-                <div className="w-full sm:hidden">
+                <div className=" w-[28rem] sm:hidden">
                   <AuthorCard professor={professor} />
                 </div>
               </>

@@ -20,6 +20,7 @@ export const createGetProgress =
         .filter((chapter) => chapter.course_id === course.course_id)
         .map(({ part, chapter, completed_at }) => ({
           chapter,
+          part,
           quiz: _.pick(
             quizAttempts.find(
               (attempt) =>

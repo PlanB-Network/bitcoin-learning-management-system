@@ -2,6 +2,7 @@ import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
 import { getProfessorsQuery } from '../../professors/queries';
+import { formatProfessor } from '../../professors/services/utils';
 import { getCourseChaptersQuery, getCourseQuery } from '../queries';
 import { getCoursePartsQuery } from '../queries/get-course-parts';
 
@@ -24,6 +25,14 @@ export const createGetCourse =
     const professors = await postgres.exec(
       getProfessorsQuery({ contributorIds: course.professors, language }),
     );
+
+    // TODO
+    // let professorsAugmented;
+    // if (professors) {
+    //   professorsAugmented = professors.map((professor) => {
+    //     return formatProfessor(professor);
+    //   });
+    // }
 
     const partsWithChapters = parts.map((part) => ({
       ...part,

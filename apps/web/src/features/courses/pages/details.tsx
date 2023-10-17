@@ -382,9 +382,11 @@ export const CourseDetails: React.FC = () => {
           <h4 className="hidden self-center text-2xl font-light uppercase italic text-gray-400 sm:block">
             {t('courses.details.taughtBy')}
           </h4>
-          {course.professors.map((professor) => (
-            <AuthorCard className="sm:mt-4" professor={professor}></AuthorCard>
-          ))}
+          <div className="flex flex-col gap-4">
+            {course.professors.map((professor) => (
+              <AuthorCard className="sm:mt-4" professor={professor} />
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -396,8 +398,12 @@ export const CourseDetails: React.FC = () => {
         <div className="flex h-fit flex-col">
           <Link
             className="bottom-2"
-            to={'/courses/$courseId'}
-            params={{ courseId: course.id }}
+            to={'/courses/$courseId/$partIndex/$chapterIndex'}
+            params={{
+              courseId,
+              partIndex: '1',
+              chapterIndex: '1',
+            }}
           >
             <Button
               size="s"

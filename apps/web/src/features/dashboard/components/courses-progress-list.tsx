@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 
 import { CourseProgressExtended } from '@sovereign-university/types';
 
+import BitcoinEgg from '../../../assets/icons/bitcoin_egg.svg?react';
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
 
@@ -26,31 +27,20 @@ export const CoursesProgressList = ({
                 {course.progress_percentage}%
               </div>
             </div>
-            <div className="flex h-2 w-full overflow-hidden rounded-r-full">
-              {Array.from({ length: course.total_chapters }).map((_, index) => {
-                const isCompleted = course.chapters?.some(
+            <div className="relative flex h-2 w-full rounded-r-full">
+              <div className="absolute h-2 w-full bg-orange-200"></div>
+              <div
+                style={{ width: `${course.progress_percentage}%` }}
+                className={`absolute h-2 bg-orange-500`}
+              ></div>
+              <BitcoinEgg
+                style={{ marginLeft: `${course.progress_percentage - 2}%` }}
+                className="absolute top-[-12px]"
+              />
+              {/* const isCompleted = course.chapters?.some(
                   (chapter) => chapter.chapter === index + 1,
-                );
-
-                return (
-                  <Link
-                    className="h-2 grow rounded-r-full"
-                    to={'/courses/$courseId/$chapterIndex'}
-                    params={{
-                      courseId: course.course_id,
-                      chapterIndex: String(index + 1),
-                    }}
-                    key={index}
-                  >
-                    <div
-                      className={compose(
-                        'h-2 grow border-x border-white last-child:rounded-r-full',
-                        isCompleted ? 'bg-orange-500' : 'bg-gray-200',
-                      )}
-                    />
-                  </Link>
-                );
-              })}
+                ); */}
+              {/* {course.progress_percentage}% */}
             </div>
           </div>
           {course.progress_percentage !== 10 && (
@@ -61,10 +51,11 @@ export const CoursesProgressList = ({
               )}
             >
               <Link
-                to={'/courses/$courseId/$chapterIndex'}
+                to={'/courses/$courseId/$partIndex/$chapterIndex'}
                 params={{
                   courseId: course.course_id,
-                  chapterIndex: String(course.lastCompletedChapter.chapter + 1),
+                  partIndex: '1', // TODO .part et faire +1 sur un des 2
+                  chapterIndex: '1', //String(course.lastCompletedChapter.chapter + 1),
                 }}
               >
                 <Button

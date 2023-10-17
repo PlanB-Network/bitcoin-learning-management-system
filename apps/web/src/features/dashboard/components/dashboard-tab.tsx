@@ -19,13 +19,15 @@ const CoursesCard = ({
 );
 
 export const DashboardTab = () => {
-  const { data: progress } = trpc.user.courses.getProgress.useQuery();
+  const { data: courses } = trpc.user.courses.getProgress.useQuery();
 
-  const completedCourses = progress?.filter(
+  console.log('COURSES FOR PROGRESS:', courses);
+
+  const completedCourses = courses?.filter(
     (course) => course.progress_percentage === 100,
   );
 
-  const inProgressCourses = progress?.filter(
+  const inProgressCourses = courses?.filter(
     (course) => course.progress_percentage !== 100,
   );
 

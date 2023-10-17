@@ -57,7 +57,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             </div>
           </div>
           <div className="border-blue-1000 bg-beige-300 flex flex-col self-stretch rounded-r-2xl border">
-            <div className="border-blue-1000 text-beige-300 flex w-[18.5rem] rounded-tr-2xl border-b bg-orange-500 px-5 py-2 text-3xl font-semibold">
+            <div className="border-blue-1000 text-beige-300 flex w-[18.5rem] rounded-tr-2xl border-b bg-orange-500 px-5 py-2 text-3xl font-semibold sm:w-auto">
               {professor.name}
             </div>
             <div className="relative grow flex-col py-2">
