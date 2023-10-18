@@ -10,5 +10,5 @@ export const createGetTutorials =
       getTutorialsQuery(category, language),
     );
 
-    return tutorials;
+    return [...tutorials];
   };

@@ -1,8 +1,11 @@
 import { firstRow } from '@sovereign-university/database';
 
 import { Dependencies } from '../../dependencies';
-import { getProfessorQuery } from '../queries';
-import { getProfessorCoursesQuery } from '../queries/get-professor-courses';
+import {
+  getProfessorCoursesQuery,
+  getProfessorQuery,
+  getProfessorTutorialsQuery,
+} from '../queries';
 
 import { formatProfessor } from './utils';
 
@@ -23,5 +26,12 @@ export const createGetProfessor =
       }),
     );
 
-    return { ...formatProfessor(professor), courses };
+    const tutorials = await postgres.exec(
+      getProfessorTutorialsQuery({
+        contributorId: professor.contributor_id,
+        language,
+      }),
+    );
+
+    return { ...formatProfessor(professor), courses, tutorials };
   };

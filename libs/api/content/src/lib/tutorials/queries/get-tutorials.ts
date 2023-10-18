@@ -2,7 +2,7 @@ import { sql } from '@sovereign-university/database';
 import { JoinedTutorial } from '@sovereign-university/types';
 
 export const getTutorialsQuery = (category?: string, language?: string) => {
-  return sql<JoinedTutorial[]>`
+  return sql<Omit<JoinedTutorial, 'raw_content'>[]>`
     WITH tutorial AS (
       SELECT 
           t.id, 
@@ -15,7 +15,6 @@ export const getTutorialsQuery = (category?: string, language?: string) => {
           t.builder, 
           tl.title, 
           tl.description, 
-          tl.raw_content, 
           t.last_updated, 
           t.last_commit,
           COALESCE(tag_agg.tags, ARRAY[]::text[]) AS tags
@@ -47,8 +46,7 @@ export const getTutorialsQuery = (category?: string, language?: string) => {
           t.subcategory, 
           t.builder, 
           tl.title, 
-          tl.description, 
-          tl.raw_content, 
+          tl.description,
           t.last_updated, 
           t.last_commit,
           tag_agg.tags

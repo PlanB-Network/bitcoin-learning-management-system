@@ -3,14 +3,17 @@ import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { JoinedTutorial } from '@sovereign-university/types';
-
 import { CategoryIcon } from '../../../components/CategoryIcon';
 import { compose, computeAssetCdnUrl, trpc } from '../../../utils';
+import { TRPCRouterOutput } from '../../../utils/trpc';
 import { TutorialLayout } from '../layout';
 import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
 
-const TutorialItem = ({ tutorial }: { tutorial: JoinedTutorial }) => {
+const TutorialItem = ({
+  tutorial,
+}: {
+  tutorial: NonNullable<TRPCRouterOutput['content']['getTutorials']>[number];
+}) => {
   return (
     <Link
       to={'/tutorials/$category/$name'}
