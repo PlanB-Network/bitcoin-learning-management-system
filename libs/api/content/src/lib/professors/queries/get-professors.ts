@@ -11,6 +11,7 @@ export const getProfessorsQuery = ({
   return sql<JoinedProfessor[]>`
     SELECT 
       p.*, 
+      pl.language,
       pl.bio, 
       pl.short_bio, 
       COALESCE(ca.courses_count, 0) AS courses_count, 

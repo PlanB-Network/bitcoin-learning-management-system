@@ -47,7 +47,9 @@ export const createGetTutorial =
           'silent_payment',
           'tips_url',
         ]),
-        professor: formatProfessor(credits.professor),
+        professor: credits.professor
+          ? formatProfessor(credits.professor)
+          : undefined,
         tips: {
           lightningAddress: credits.lightning_address,
           lnurlPay: credits.lnurl_pay,

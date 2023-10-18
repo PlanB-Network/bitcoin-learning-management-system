@@ -7,9 +7,11 @@ import { trpc } from '../../../utils/trpc';
 import { ResourceLayout } from '../../resources/layout';
 
 export const ProfessorExplorer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { data: professors } = trpc.content.getProfessors.useQuery();
+  const { data: professors } = trpc.content.getProfessors.useQuery({
+    language: i18n.language,
+  });
 
   return (
     <ResourceLayout

@@ -4,9 +4,7 @@ import { JoinedProfessor } from '@sovereign-university/types';
 
 import { computeAssetCdnUrl } from '../../utils';
 
-export const formatProfessor = (professor?: JoinedProfessor) => {
-  if (!professor) return;
-
+export const formatProfessor = (professor: JoinedProfessor) => {
   return {
     ..._.omit(professor, [
       'website_url',
