@@ -284,15 +284,11 @@ export const Home = () => {
           <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
             <div className="flex flex-wrap gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
               {resources.map((resource) => (
-                <Link
-                  key={resource}
-                  to={'/resources/$category'}
-                  params={{ category: resource.toLowerCase() }}
-                >
+                <a key={resource} href={'/resources/' + resource.toLowerCase()}>
                   <Button variant="tertiary" className="rounded-3xl">
                     {resource}
                   </Button>
-                </Link>
+                </a>
               ))}
             </div>
             <Link to={'/resources'}>
