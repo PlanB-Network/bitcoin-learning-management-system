@@ -1,6 +1,6 @@
 import type { default as CourseChapterLocalized } from '../sql/content/CourseChaptersLocalized';
-import type { default as Course } from '../sql/content/Courses';
 import type { default as CoursePartLocalized } from '../sql/content/CoursePartsLocalized';
+import type { default as Course } from '../sql/content/Courses';
 import type { default as CourseLocalized } from '../sql/content/CoursesLocalized';
 
 export type { default as Course } from '../sql/content/Courses';

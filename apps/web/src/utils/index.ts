@@ -1,14 +1,11 @@
+import { getDomain, isDevelopmentEnvironment } from './misc';
+
 export { trpc } from './trpc';
 
-export const getDomain = () => {
-  return window.location.hostname;
-};
-
 export const computeAssetCdnUrl = (commitHash: string, path: string) => {
-  const baseUrl =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:8080'
-      : 'https://cdn.sovereignuniversity.org';
+  const baseUrl = isDevelopmentEnvironment()
+    ? 'http://localhost:8080'
+    : `https://cdn.${getDomain()}`;
 
   return `${baseUrl}/${commitHash}/${path}`;
 };

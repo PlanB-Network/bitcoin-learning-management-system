@@ -1,0 +1,135 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Check formatting
+        run: pnpx nx format:check
+
+      - name: Lint Code
+        run: pnpx nx affected -t lint --parallel=3
+
+      - name: Run Tests
+        run: pnpx nx affected -t test --parallel=3
+
+      - name: Build Project
+        run: pnpx nx affected -t build --parallel=3
+
+  deploy:
+    needs: build_and_test
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Build and push Docker image
+        run: INPUT_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pnpm nx run-many --target container --configuration=production --parallel=3
+
+      - name: Push Docker images
+        run: |
+          # Temporary until I fix the automatic push in the Nx target
+          docker push ghcr.io/decouvrebitcoin/sovereign-university-api:${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+          docker push ghcr.io/decouvrebitcoin/sovereign-university-web:${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+
+      - name: Copy Docker files to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: 'docker/compose.yml,docker/cdn'
+          overwrite: true
+          strip_components: 1
+          target: ${{ github.ref == 'refs/heads/main' && 'mainnet' || 'testnet' }}
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ github.ref == 'refs/heads/main' && 'mainnet' || 'testnet' }}
+            docker compose pull
+            docker compose stop || true
+            docker compose rm -f || true
+            docker compose up -d

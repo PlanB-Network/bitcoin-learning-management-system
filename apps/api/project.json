@@ -65,9 +65,27 @@
         "lintFilePatterns": ["apps/api/**/*.ts"]
       }
     },
-    "docker-build": {
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
       "dependsOn": ["build"],
-      "command": "docker build -f apps/api/Dockerfile . -t university-api"
+      "options": {
+        "engine": "docker",
+        "file": "apps/api/docker/Dockerfile",
+        "push": false,
+        "metadata": {
+          "images": [
+            "sovereign-university-api",
+            "ghcr.io/decouvrebitcoin/sovereign-university-api"
+          ],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=sha,prefix=sha-"
+          ]
+        }
+      }
     }
   },
   "tags": ["back"]

@@ -1,0 +1,10 @@
+{
+  "name": "@sovereign-university/api",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "pnpm": {
+    "patchedDependencies": {
+      "postgres@3.3.5": "patches/postgres@3.3.5.patch"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import type { Session, SessionData } from 'express-session';
+
 import type { NonFunctionProperties } from './utils';
 
 type RedisSession = NonFunctionProperties<Session> & SessionData;

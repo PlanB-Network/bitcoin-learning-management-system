@@ -1,7 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*"],
-  "exclude": ["./src/sql/**/*"],
+  "ignorePatterns": ["!**/*", "src/sql/**"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

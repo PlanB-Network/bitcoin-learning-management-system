@@ -9,7 +9,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/web"
+        "outputPath": "dist/apps/web",
+        "skipTypeCheck": true
       },
       "configurations": {
         "development": {
@@ -72,6 +73,28 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "web:build"
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "defaultConfiguration": "local",
+      "options": {
+        "engine": "docker",
+        "file": "apps/web/docker/Dockerfile",
+        "metadata": {
+          "images": [
+            "sovereign-university-web",
+            "ghcr.io/decouvrebitcoin/sovereign-university-web"
+          ],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=sha,prefix=sha-"
+          ]
+        }
       }
     }
   },

@@ -1,0 +1,31 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+entryPoints:
+  http:
+    address: ':80'
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+
+  https:
+    address: ':443'
+
+certificatesResolvers:
+  security:
+    acme:
+      email: 'security@louneskmt.com'
+      storage: '/acme.json'
+      httpChallenge:
+        entryPoint: 'http'
+
+providers:
+  docker:
+    exposedByDefault: false
+
+metrics:
+  prometheus:
+    addRoutersLabels: true

@@ -18,6 +18,7 @@ export const createGetProgress =
       getCompletedChaptersQuery(uid),
     );
     const nextChapters = await postgres.exec(getNextChaptersQuery(uid));
+
     const quizAttempts = await postgres.exec(getQuizAttemptsQuery(uid));
 
     return progress.map((course) => {

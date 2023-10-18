@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:v2.10.5
+    container_name: traefik
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/acme.json:/acme.json
+      - ./traefik.yml:/etc/traefik/traefik.yml
+    networks:
+      - university_testnet
+      - university_mainnet
+
+networks:
+  university_testnet:
+    external: true
+  university_mainnet:
+    external: true

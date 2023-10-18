@@ -1,24 +1,46 @@
 version: '3.7'
 
+x-defaults: &defaults
+  restart: always
+  init: true
+
+  env_file:
+    - .env
+
+  environment: &environment
+    DOCKER: true
+    NODE_ENV: production
+    REDIS_HOST: redis
+    REDIS_PORT: 6379
+    POSTGRES_HOST: postgres
+    POSTGRES_PORT: 5432
+
+  logging:
+    driver: 'json-file'
+    options:
+      max-size: '5m'
+      max-file: '10'
+      tag: '{{.Name}}'
+
 services:
   postgres:
-    restart: unless-stopped
+    <<: *defaults
     image: postgres:15.2
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+    restart: unless-stopped
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
-    networks:
-      - university
+
+  redis:
+    <<: *defaults
+    image: redis:7.2-alpine
+    volumes:
+      - ./data/redis:/data
 
   api:
-    image: university-api
-    restart: always
-    env_file:
-      - ./.env
+    <<: *defaults
+    image: ghcr.io/decouvrebitcoin/sovereign-university-api:${IMAGE_TAG}
     environment:
+      <<: *environment
       HOST: 0.0.0.0
       PORT: 3000
     expose:
@@ -27,43 +49,40 @@ services:
       - ./data/cdn:$CDN_PATH
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-api.rule=Host(`api.sovereignuniversity.org`)
+      - traefik.http.routers.university-api.rule=Host(`api.${DOMAIN}`)
       - traefik.http.routers.university-api.entrypoints=https,http
       - traefik.http.routers.university-api.tls=true
       - traefik.http.routers.university-api.tls.certresolver=security
       - traefik.http.services.university-api.loadbalancer.server.port=3000
       - traefik.http.routers.university-api.service=university-api
-    networks:
-      - university
+    depends_on:
+      - postgres
 
   cdn:
+    <<: *defaults
     image: nginx:latest
     volumes:
-      - ./config/cdn/nginx.conf:/etc/nginx/nginx.conf
+      - ./cdn/nginx.conf:/etc/nginx/nginx.conf
       - ./data/cdn:/var/www/cdn
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-cdn.rule=Host(`cdn.sovereignuniversity.org`)
+      - traefik.http.routers.university-cdn.rule=Host(`cdn.${DOMAIN}`)
       - traefik.http.routers.university-cdn.entrypoints=https,http
       - traefik.http.routers.university-cdn.tls=true
       - traefik.http.routers.university-cdn.tls.certresolver=security
-    networks:
-      - university
 
-  front:
-    image: university-front
-    volumes:
-      - ./config/front/nginx.conf:/etc/nginx/conf.d/default.conf
+  web:
+    <<: *defaults
+    image: ghcr.io/decouvrebitcoin/sovereign-university-web:${IMAGE_TAG}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-front.rule=Host(`sovereignuniversity.org`)
-      - traefik.http.routers.university-front.entrypoints=https,http
-      - traefik.http.routers.university-front.tls=true
-      - traefik.http.routers.university-front.tls.certresolver=security
-      - traefik.http.middlewares.university-front.compress=true
-    networks:
-      - university
+      - traefik.http.routers.university-web.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.university-web.entrypoints=https,http
+      - traefik.http.routers.university-web.tls=true
+      - traefik.http.routers.university-web.tls.certresolver=security
+      - traefik.http.middlewares.university-web.compress=true
 
 networks:
-  university:
+  default:
+    name: ${DOCKER_NETWORK}
     external: true

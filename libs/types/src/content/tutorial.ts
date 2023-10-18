@@ -1,6 +1,6 @@
+import type { default as TutorialCredits } from '../sql/content/TutorialCredits';
 import type { default as Tutorial } from '../sql/content/Tutorials';
 import type { default as TutorialLocalized } from '../sql/content/TutorialsLocalized';
-import type { default as TutorialCredits } from '../sql/content/TutorialCredits';
 
 import { JoinedBuilder } from './builder';
 import { JoinedProfessor } from './professor';
