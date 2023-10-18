@@ -141,69 +141,54 @@
     }
   },
   "home": {
-    "about": {
-      "p1": "The Sovereign University aims to simplify Bitcoin learning, enabling millions of people to explore this revolutionary technology in depth.",
-      "p2": "We create and share the right tools for learners, teachers and builders to be more efficient on their Bitcoin journey. Our tools range from high-quality courses to in-depth tutorials, resources, seminars, workshops and more. ",
-      "p3": "Everything is 100% free and provided by passionate bitcoiners from all around the word. ",
-      "title": "A little bit about us",
-      "values": {
-        "bitcoinOnly": {
-          "text": "We focus on the Bitcoin revolution as a whole without falling into trading or shitcoinery.",
-          "title": "Bitcoin only"
-        },
-        "communityDriven": {
-          "text": "We are first & foremost a community of enthusiastics helping each other in their Bitcoin journey.",
-          "title": "Community Driven"
-        },
-        "openSource": {
-          "text": "We aim to promote the free flow of knowledge.",
-          "title": "Open Source"
-        },
-        "privacyFocused": {
-          "text": "We consider privacy to be one of the most fundamental human rights and most necessary for progress.",
-          "title": "Privacy Focused"
-        }
-      }
+    "header": {
+      "globalNetwork": "Global Bitcoin Network",
+      "forEducators": "For educators and builders",
+      "content1": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty.",
+      "content2": "From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "link": "Be part of the network"
     },
-    "first": {
-      "extensive": "Extensive courses",
-      "extensiveEmphasized": "Extensive",
-      "forEveryone": "For everyone",
-      "forEveryoneEmphasized": "everyone",
-      "free": "All free",
-      "freeEmphasized": "free",
-      "languages": "In many languages",
-      "levels": "From beginner to expert",
-      "levelsEmphasized": "beginner to expert",
-      "tagLine": "To learn the basics as well as the advanced",
-      "title": "E-learning platform about Bitcoin"
+    "section1": {
+      "interested": "Interested in Bitcoin ?",
+      "allLevels": "From beginner to advanced, learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding.",
+      "content2": " From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
+      "content3": "There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Check the academy"
     },
-    "fourth": {
-      "tagLine": "To connect learners with their dream Bitcoin job",
-      "text": "Get an overview and connect with the different actors of the industry",
-      "title": "A link to the builders of the industry"
+    "section2": {
+      "noBarrier": "No language barrier here.",
+      "everythingTranslated": "Everything is translated to local languages",
+      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all.",
+      "content2": "The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
+      "content3": "You too can start bootstrapping your own local network in your country!",
+      "link": "Help us translate the academy "
     },
-    "hero": {
-      "tagLine": "Let's embark into your Bitcoin educational journey"
+    "section3": {
+      "helpingCommunities": "Helping Bitcoin communities grow is our mission ",
+      "letsHelpYou": "Let us help you master the technology, read and hear about Bitcoin!",
+      "content1": "Beside courses, our large amount of tutorials will help you master different technologies, such as wallets, merchant solutions, exchanges, nodes, mining, and privacy solutions... And because that’s still not enough, a large amount of resources such as books, podcasts or videos, are classified, ordered and made available on the platform.",
+      "content2": "Our goal is to provide you with the tools to succeed.",
+      "seeTutorials": "See all tutorials",
+      "seeResources": "See all resources",
+      "aboutUs": "A little bit about us",
+      "content3": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
+      "openSourceTitle": "Open source",
+      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "communityTitle": "Community",
+      "communityTitleMobile": "Community focused",
+      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
+      "bitcoinFocusTitle": "Bitcoin focus",
+      "bitcoinFocusTitleMobile": "Bitcoin focused",
+      "bitcoinFocusContent": "We focus on the Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "privacyTitle": "Privacy",
+      "privacyTitleMobile": "Privacy focused",
+      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
     },
-    "second": {
-      "exchange": "Exchange",
-      "merchant": "Merchant",
-      "mining": "Mining",
-      "node": "Node",
-      "nostr": "Nostr",
-      "privacy": "Privacy tools",
-      "tagLine": "To navigate your way among Bitcoin technological solutions",
-      "title": "All useful tutorials",
-      "wallet": "Wallet"
-    },
-    "third": {
-      "books": "books",
-      "more": "- & more ~",
-      "podcasts": "podcasts",
-      "tagLine": "To access all published knowledge in one open-source platform",
-      "title": "All kinds of resources about Bitcoin",
-      "videos": "videos"
+    "section4": {
+      "together": "Together let's make Bitcoin education better ! ",
+      "planB": "The PlanB Network is 100% open-source thanks to our generous patreon",
+      "content1": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible ! "
     }
   },
   "imagesAlt": {
@@ -417,6 +402,7 @@
     "documentaries": "Documentaries",
     "donations": "Donations",
     "email": "Email",
+    "economy": "Economy",
     "exchanges": "Exchanges",
     "followUs": "Follow us",
     "helpUs": "Help us",
@@ -457,6 +443,7 @@
     "supportUs": "Support us",
     "teachers": "Teachers",
     "termsAndConditions": "Terms and conditions",
+    "toolkits": "Toolkits",
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "update": "Update",

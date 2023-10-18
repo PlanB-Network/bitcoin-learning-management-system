@@ -1,261 +1,405 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { AiOutlineRight } from 'react-icons/ai';
 
-import community from '../../../assets/home/community.svg';
-import bitcoinCurrency from '../../../assets/home/currency_bitcoin.svg';
-import favorite from '../../../assets/home/favorite.svg';
-import github from '../../../assets/home/github.svg';
-import rabbitClassroom from '../../../assets/home/rabbit-classroom.svg';
-import rabbitLibrary from '../../../assets/home/rabbit-library.svg';
-import rabbitMeetup from '../../../assets/home/rabbit-meetup.svg';
-import rabbitPodcast from '../../../assets/home/rabbit-podcast.svg';
-import rabbitStudying from '../../../assets/home/rabbit-studying.svg';
-import rabbitVideos from '../../../assets/home/rabbit-videos.svg';
-import rabbitWithBackpackAndBtcSign from '../../../assets/home/rabbit-with-backpack-and-btc-sign.svg';
-import visibilityOff from '../../../assets/home/visibility_off.svg';
+import { cn } from '@sovereign-university/ui';
+
+import BitcoinWithHat from '../../../assets/home/bitcoin_with_hat.svg?react';
+import CoursesInCircle from '../../../assets/home/courses_in_circle.svg?react';
+import CoursesInCircle2 from '../../../assets/home/courses_in_circle2.svg?react';
+import CoursesInCircle3 from '../../../assets/home/courses_in_circle3.svg?react';
+import FlagsInCircle from '../../../assets/home/flags_in_circle.svg?react';
+import Spiral from '../../../assets/home/spiral.svg?react';
+import SponsorBSun from '../../../assets/home/sponsor_b_sun.jpeg';
+import SponsorBase58 from '../../../assets/home/sponsor_base58.jpeg';
+import SponsorBlockstream from '../../../assets/home/sponsor_blockstream.jpeg';
+import SponsorBtcPay from '../../../assets/home/sponsor_btcpay.png';
+import SponsorCuboPlus from '../../../assets/home/sponsor_cuboplus.jpeg';
+import SponsorDB from '../../../assets/home/sponsor_db.png';
+import SponsorKeet from '../../../assets/home/sponsor_keet.png';
+import SponsorLnMarkets from '../../../assets/home/sponsor_lnmarkets.jpeg';
+import SponsorLuganoPlanB from '../../../assets/home/sponsor_lugano_planb.svg?react';
+import SponsorSynonym from '../../../assets/home/sponsor_synonym.jpeg';
+import SponsorTether from '../../../assets/home/sponsor_tether.png';
+import SponsorV from '../../../assets/home/sponsor_v.png';
+import SponsorWizardSardine from '../../../assets/home/sponsor_wizardsardine.jpeg';
+import WorldMap from '../../../assets/home/world_map.svg?react';
+import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
+import Groups from '../../../assets/icons/groups.svg?react';
+import OpenSource from '../../../assets/icons/open_source.svg?react';
+import VisibilityOff from '../../../assets/icons/visibility_off.svg?react';
+import { Button } from '../../../atoms/Button';
+import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
-import { Emphasize } from '../components/Emphasize';
-import { SectionTitle } from '../components/SectionTitle';
+import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
 
 export const Home = () => {
   const { t } = useTranslation();
+  const topics = [
+    'Bitcoin',
+    t('words.economy'),
+    'Lightning network',
+    t('courses.categories.fin'),
+    t('courses.categories.min'),
+    t('courses.categories.crypto'),
+    t('courses.categories.secu'),
+  ];
+  const resources = [
+    t('words.books'),
+    t('words.podcasts'),
+    t('words.builders'),
+    t('words.toolkits'),
+  ];
+  const sectionClass = 'flex flex-col w-screen items-center py-6';
+  const subSectionClass =
+    'px-6 md:px-32 w-auto md:w-[60rem] lg:w-[70rem] xl:w-[90rem]';
 
-  return (
-    <MainLayout footerVariant="dark">
+  const Page = () => {
+    return (
+      <MainLayout footerVariant="dark">
+        <div className="flex flex-col">
+          <HeaderSection />
+          <Section1 />
+          <Section2 />
+          <Section3 />
+          <Section4 />
+        </div>
+      </MainLayout>
+    );
+  };
+
+  const HeaderSection = () => {
+    return (
+      <div className={cn('bg-blue-1000 text-white', sectionClass)}>
+        <div
+          className={cn(
+            'grid w-[80rem] grid-cols-1 md:grid-cols-2',
+            subSectionClass,
+          )}
+        >
+          <div className="col-span-1">
+            <div className="flex flex-row text-[49px] font-semibold">
+              <span>Plan</span>
+              <BitcoinWithHat height={70} width={65} />
+              <span>Network</span>
+            </div>
+            <p className="pt-6 text-[31px] font-semibold text-orange-500">
+              {t('home.header.globalNetwork')}
+            </p>
+            <p className="-mt-2 text-[31px] font-semibold">
+              {t('home.header.forEducators')}
+            </p>
+            <p className="mt-6 text-[20px]">{t('home.header.content1')}</p>
+            <p className="mt-6 text-[20px]">{t('home.header.content2')}</p>
+            <Button
+              variant="tertiary"
+              className="mt-6 hidden md:flex "
+              iconRight={<AiOutlineRight />}
+            >
+              {t('home.header.link')}
+            </Button>
+          </div>
+          <div className="col-span-1">
+            <WorldMap style={{ width: '100%' }} />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const Section1 = () => {
+    return (
       <>
-        <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="flex flex-col space-y-5 p-10 sm:flex-row lg:max-w-6xl">
-            <div>
-              <h1 className="text-4xl text-white md:max-w-xl md:text-5xl lg:max-w-4xl lg:text-7xl xl:text-8xl">
-                The Sovereign University
-              </h1>
-              <p className="mt-10 text-base font-light italic tracking-wide text-white sm:text-xl lg:text-2xl">
-                {t('home.hero.tagLine')}
-              </p>
-            </div>
-            <div className="max-w-[30%] place-self-end lg:pt-24">
-              <img
-                src={rabbitWithBackpackAndBtcSign}
-                alt={t('imagesAlt.rabbitWithBackpackAndBtcSign')}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* 1rst Section */}
-        <div className="flex w-full justify-center bg-blue-800 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="w-full max-w-6xl py-10">
-            <SectionTitle
-              title={t('home.first.title')}
-              tagLine={t('home.first.tagLine')}
-              num={1}
-            />
-
-            <div className="mt-12 flex flex-col items-center justify-around px-5 md:flex-row">
-              <div className="max-w-sm lg:max-w-xl">
-                <img
-                  src={rabbitClassroom}
-                  alt={t('imagesAlt.rabbitClassroom')}
-                />
-              </div>
-              <ul className="ml-0 mt-6 list-disc space-y-4 text-lg text-white sm:text-xl md:ml-16 md:mt-0 lg:ml-24 lg:text-2xl">
-                <li>
-                  <Emphasize words={[t('home.first.extensiveEmphasized')]}>
-                    {t('home.first.extensive')}
-                  </Emphasize>
-                </li>
-                <li>
-                  <Emphasize words={[t('home.first.freeEmphasized')]}>
-                    {t('home.first.free')}
-                  </Emphasize>
-                </li>
-                <li>
-                  <Emphasize words={[t('home.first.forEveryoneEmphasized')]}>
-                    {t('home.first.forEveryone')}
-                  </Emphasize>
-                </li>
-                <li>{t('home.first.languages')}</li>
-                <li>
-                  <Emphasize words={[t('home.first.levelsEmphasized')]}>
-                    {t('home.first.levels')}
-                  </Emphasize>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* 2nd section */}
-        <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="w-full max-w-6xl py-10">
-            <SectionTitle
-              title={t('home.second.title')}
-              tagLine={t('home.second.tagLine')}
-              num={2}
-              position="right"
-              variant="secondary"
-            />
-
-            <div className="my-12 flex flex-col-reverse items-center justify-around px-5 md:flex-row">
-              <div className="flex flex-col text-lg leading-[50px] text-white sm:text-2xl lg:space-y-4">
-                <div className="flex space-x-3">
-                  <span>{t('home.second.merchant')}</span>
-                  <Emphasize>|</Emphasize>
-                  <span>{t('home.second.exchange')}</span>
-                </div>
-                <div className="flex space-x-3">
-                  <span>{t('home.second.mining')}</span>
-                  <Emphasize>|</Emphasize>
-                  <span>{t('home.second.node')}</span>
-                  <Emphasize>|</Emphasize>
-                  <span>{t('home.second.nostr')}</span>
-                </div>
-                <div className="flex space-x-3">
-                  <span>{t('home.second.privacy')}</span>
-                  <Emphasize>|</Emphasize>
-                  <span>{t('home.second.wallet')}</span>
-                </div>
-              </div>
-
-              <div className="my-12 max-w-sm md:my-0 md:ml-24 lg:max-w-xl">
-                <img src={rabbitStudying} alt={t('imagesAlt.rabbitStudying')} />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 3rd section */}
-        <div className="flex w-full justify-center bg-blue-800 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="w-full max-w-6xl py-10">
-            <SectionTitle
-              title={t('home.third.title')}
-              tagLine={t('home.third.tagLine')}
-              num={3}
-            />
-
-            <div className="mt-6 flex flex-row flex-wrap items-center justify-center md:mt-20">
-              <div className="flex flex-col items-center p-5 text-white md:mx-0">
-                <img
-                  className="h-48"
-                  src={rabbitLibrary}
-                  alt={t('imagesAlt.rabbitLibrary')}
-                />
-                <p className="my-2 text-xl sm:my-8">{t('home.third.books')}</p>
-              </div>
-              <div className="flex flex-col items-center p-5 text-white md:mx-0">
-                <img
-                  className="h-48"
-                  src={rabbitPodcast}
-                  alt={t('imagesAlt.rabbitPodcast')}
-                />
-                <p className="my-2 text-xl sm:my-8">
-                  {t('home.third.podcasts')}
-                </p>
-              </div>
-              <div className="flex flex-col items-center p-5 text-white md:mx-0">
-                <img
-                  className="h-48"
-                  src={rabbitVideos}
-                  alt={t('imagesAlt.rabbitVideos')}
-                />
-                <p className="my-2 text-xl sm:my-8">{t('home.third.videos')}</p>
-              </div>
-            </div>
-            <p className="my-8 w-full text-center italic text-orange-400">
-              {t('home.third.more')}
+        <div className={cn('bg-blue-1000 text-white', sectionClass)}>
+          <div className={cn('flex w-[80rem] flex-col', subSectionClass)}>
+            <p className="text-[31px] font-semibold text-orange-500">
+              {t('home.section1.interested')}
+            </p>
+            <p className="text-[31px] font-semibold">
+              {t('home.section1.allLevels')}
             </p>
           </div>
         </div>
 
-        {/* 4rth section */}
-        <div className="flex w-full justify-center bg-blue-900 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="w-full max-w-6xl py-10">
-            <SectionTitle
-              title={t('home.fourth.title')}
-              tagLine={t('home.fourth.tagLine')}
-              num={4}
-              position="right"
-              variant="secondary"
-            />
-
-            <div className="my-12 flex flex-col items-center justify-around md:flex-row">
-              <div className="my-12 max-w-sm md:my-0 md:mr-24 lg:max-w-xl ">
-                <img src={rabbitMeetup} alt={t('imagesAlt.rabbitMeetup')} />
-              </div>
-              <div>
-                <p className="max-w-xs text-lg text-white sm:text-xl sm:leading-10 lg:text-2xl lg:leading-[50px]">
-                  {t('home.fourth.text')}
-                </p>
-              </div>
+        <div
+          className={cn(
+            'bg-blue-1000 text-white relative !py-0 !md:py-6',
+            sectionClass,
+          )}
+        >
+          <div
+            className={cn(
+              'grid grid-cols-1 md:grid-cols-2 pb-6',
+              subSectionClass,
+            )}
+          >
+            <div className="col-span-1 hidden md:block">
+              <p className="w-fit">
+                <CoursesInCircle3
+                  height={500}
+                  style={{
+                    // position: 'absolute',
+                    // left: '0px',
+                    // top: '0px',
+                    marginLeft: 'calc(-50vw + 520px)',
+                    // width: '100%',
+                    filter: 'grayscale(1) contrast(1) opacity(0.5) ',
+                    // background:
+                    //   'linear-gradient(51deg, #1B253E, rgba(27, 37, 62, 0.00) 95.34%)',
+                  }}
+                />
+              </p>
             </div>
-          </div>
-        </div>
-
-        {/* About us */}
-        <div className="flex w-full justify-center bg-blue-700 px-5 md:px-10 lg:px-32 xl:px-0">
-          <div className="w-full max-w-6xl pb-32 pt-12 text-white">
-            <h2 className="mb-16 text-center text-4xl italic ">
-              {t('home.about.title')}
-            </h2>
-
-            <div className="mx-auto mb-16 max-w-3xl space-y-6 px-6 text-justify sm:px-0">
-              <p>{t('home.about.p1')}</p>
-              <p>{t('home.about.p2')}</p>
-              <p>{t('home.about.p3')}</p>
-            </div>
-
-            <div className=" mx-auto mt-28 flex w-max grid-cols-3 grid-rows-3 flex-col space-y-12 px-12 md:grid md:space-y-0 lg:mt-36">
-              <div className="col-start-1 flex max-w-[180px] flex-col items-center space-y-4 lg:max-w-[250px]">
-                <img className="h-8" src={github} alt={t('imagesAlt.github')} />
-                <h4>{t('home.about.values.openSource.title')}</h4>
-                <p className="text-center">
-                  {t('home.about.values.openSource.text')}
-                </p>
+            <div className="col-span-1 flex flex-col">
+              <p className="text-[20px]">{t('home.section1.content1')}</p>
+              <p className="mt-6 text-[20px]">{t('home.section1.content2')}</p>
+              <p className="mt-6 text-[20px]">{t('home.section1.content3')}</p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                {topics.map((topic) => {
+                  return (
+                    <Button variant="secondary">{topic.toUpperCase()}</Button>
+                  );
+                })}
               </div>
-              <div className="col-start-3 flex max-w-[180px] flex-col items-center space-y-4 lg:max-w-[250px]">
-                <img
-                  className="h-8"
-                  src={bitcoinCurrency}
-                  alt={t('imagesAlt.bitcoinCurrency')}
-                />
-                <h4>{t('home.about.values.bitcoinOnly.title')}</h4>
-                <p className="text-center">
-                  {t('home.about.values.bitcoinOnly.text')}
-                </p>
-              </div>
-              <div className="relative col-start-2 row-start-2 flex flex-col items-center justify-center">
-                <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-900 lg:h-48 lg:w-48" />
-                <img
-                  className="relative top-1 z-10 my-12 h-16 md:my-0 md:h-24"
-                  src={favorite}
-                  alt={t('imagesAlt.favorite')}
-                />
-              </div>
-              <div className="row-start-3 flex max-w-[180px] flex-col items-center space-y-4 lg:max-w-[250px]">
-                <img
-                  className="h-8"
-                  src={visibilityOff}
-                  alt={t('imagesAlt.visibilityOff')}
-                />
-                <h4>{t('home.about.values.privacyFocused.title')}</h4>
-                <p className="text-center">
-                  {t('home.about.values.privacyFocused.text')}
-                </p>
-              </div>
-              <div className="col-start-3 row-start-3 flex max-w-[180px] flex-col items-center space-y-4 lg:max-w-[250px]">
-                <img
-                  className="h-8"
-                  src={community}
-                  alt={t('imagesAlt.community')}
-                />
-                <h4>{t('home.about.values.communityDriven.title')}</h4>
-                <p className="text-center">
-                  {t('home.about.values.communityDriven.text')}
-                </p>
-              </div>
+              <Button
+                variant="tertiary"
+                className="mt-6 self-center"
+                iconRight={<AiOutlineRight />}
+              >
+                {t('home.section1.link')}
+              </Button>
             </div>
           </div>
         </div>
       </>
-    </MainLayout>
-  );
+    );
+  };
+
+  const Section2 = () => {
+    return (
+      <div className={cn('bg-beige-300 text-blue-1000', sectionClass)}>
+        <div className={cn('grid grid-cols-1 md:grid-cols-2', subSectionClass)}>
+          <div className="col-span-1 flex flex-col md:items-center md:text-center">
+            <p className="text-[31px] font-semibold text-orange-500">
+              {t('home.section2.noBarrier')}
+            </p>
+            <p className="text-[31px] font-medium">
+              {t('home.section2.everythingTranslated')}
+            </p>
+            <p className="mt-6 text-[20px]">{t('home.section2.content1')}</p>
+            <p className="mt-6 text-[20px]">{t('home.section2.content2')}</p>
+            <p className="mt-6 text-[20px]">{t('home.section2.content3')}</p>
+            <Button
+              variant="tertiary"
+              className="mt-6"
+              iconRight={<AiOutlineRight />}
+            >
+              {t('home.section2.link')}
+            </Button>
+          </div>
+          <div className="col-span-1 hidden md:block">
+            <FlagsInCircle />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const Section3 = () => {
+    return (
+      <div className={cn('bg-blue-1000 text-white', sectionClass)}>
+        <div className={cn('flex flex-col', subSectionClass)}>
+          <p className="text-[31px] font-semibold text-orange-500">
+            {t('home.section3.helpingCommunities')}
+          </p>
+          <p className="text-[31px] font-medium">
+            {t('home.section3.letsHelpYou')}
+          </p>
+          <p className="mt-6 text-[20px]">{t('home.section3.content1')}</p>
+          <p className="mt-6 text-[20px]">{t('home.section3.content2')}</p>
+
+          <p className="mt-6 text-[31px] font-medium">
+            {t('words.tutorials').toUpperCase()}
+          </p>
+          <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 px-8 py-4 md:py-6">
+            <div className="grid grid-cols-3 gap-x-20 lg:gap-x-32">
+              {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
+                <Link
+                  key={tutorialCategory.name}
+                  to={'/tutorials/$category'}
+                  params={{ category: tutorialCategory.name }}
+                >
+                  <div className="group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4">
+                    <CategoryIcon src={tutorialCategory.image} />
+                    <h3 className="text-base font-semibold text-white group-hover:text-orange-500 md:text-xl lg:text-2xl">
+                      {t(`tutorials.${tutorialCategory.name}.title`)}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <Button
+              variant="text"
+              className="absolute bottom-[-20px] bg-white text-center text-orange-500 md:right-6"
+              iconRight={<AiOutlineRight />}
+            >
+              {t('home.section3.seeTutorials')}
+            </Button>
+          </div>
+
+          <p className="mt-6 text-[31px] font-medium">
+            {t('words.resources').toUpperCase()}
+          </p>
+          <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
+            <div className="flex flex-wrap gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
+              {resources.map((resource) => (
+                <Link
+                  key={resource}
+                  to={'/tutorials/$category'}
+                  params={{ category: resource }}
+                >
+                  <Button variant="tertiary">{resource}</Button>
+                </Link>
+              ))}
+            </div>
+            <Button
+              variant="text"
+              className="absolute bottom-[-20px] bg-white text-center text-orange-500 md:right-6"
+              iconRight={<AiOutlineRight />}
+            >
+              {t('home.section3.seeResources')}
+            </Button>
+          </div>
+
+          <p className="mt-6 text-[31px] font-medium">
+            {t('home.section3.aboutUs')}
+          </p>
+          <p className="mt-6 text-[20px]">{t('home.section3.content3')}</p>
+
+          {/* Big screen */}
+          <div className="mt-6 hidden flex-row  items-center  justify-evenly md:flex">
+            <div className="relative flex h-[32rem] flex-col text-center md:h-[38rem] lg:h-[34rem] xl:h-[32rem]">
+              <div className="flex flex-col items-center">
+                <OpenSource />
+                <div className="mt-2 text-[25px] font-semibold">
+                  {t('home.section3.openSourceTitle').toUpperCase()}
+                </div>
+                <div className="mt-2 text-[20px] font-light">
+                  {t('home.section3.openSourceContent')}
+                </div>
+              </div>
+              <div className="absolute top-40 flex flex-col items-center">
+                <BitcoinCircle className="mt-32" />
+                <div className="mt-2 text-[25px] font-semibold">
+                  {t('home.section3.bitcoinFocusTitle').toUpperCase()}
+                </div>
+                <div className="mt-2 text-[20px] font-light">
+                  {t('home.section3.bitcoinFocusContent')}
+                </div>
+              </div>
+            </div>
+            <div>
+              <Spiral />
+            </div>
+            <div className="relative flex h-[32rem] flex-col text-center md:h-[38rem] lg:h-[34rem] xl:h-[32rem]">
+              <div className="flex h-[30rem] flex-col items-center">
+                <Groups />
+                <div className="mt-2 text-[25px] font-semibold">
+                  {t('home.section3.communityTitle').toUpperCase()}
+                </div>
+                <div className="mt-2 text-[20px] font-light">
+                  {t('home.section3.communityContent')}
+                </div>
+              </div>
+              <div className="absolute top-40 flex flex-col items-center">
+                <VisibilityOff className="mt-32" />
+                <div className="mt-2 text-[25px] font-semibold">
+                  {t('home.section3.privacyTitle').toUpperCase()}
+                </div>
+                <div className="mt-2 text-[20px] font-light">
+                  {t('home.section3.privacyContent')}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Small screen*/}
+          <div className="bg-beige-300 mx-8 my-6 flex flex-col rounded-2xl p-2 md:hidden">
+            <div className="border-blue-1000 flex flex-col gap-4 rounded-2xl border-2 p-5 text-blue-800">
+              <div className="flex w-full flex-row items-center justify-between">
+                <OpenSource />
+                <span className="text-2xl font-medium uppercase">
+                  {t('home.section3.openSourceTitle')}
+                </span>
+              </div>
+
+              <div className="flex w-full flex-row items-center justify-between">
+                <Groups />
+                <span className="text-2xl font-medium uppercase">
+                  {t('home.section3.communityTitleMobile')}
+                </span>
+              </div>
+
+              <div className="flex w-full flex-row items-center justify-between">
+                <BitcoinCircle />
+                <span className="text-2xl font-medium uppercase">
+                  {t('home.section3.bitcoinFocusTitleMobile')}
+                </span>
+              </div>
+
+              <div className="flex w-full flex-row items-center justify-between">
+                <VisibilityOff />
+                <span className="text-2xl font-medium uppercase">
+                  {t('home.section3.privacyTitleMobile')}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const Section4 = () => {
+    const sponsorSrcs = [
+      SponsorBtcPay,
+      SponsorBase58,
+      SponsorSynonym,
+      SponsorKeet,
+      SponsorTether,
+      SponsorV,
+      SponsorLnMarkets,
+      SponsorBSun,
+      SponsorWizardSardine,
+      SponsorBlockstream,
+      SponsorCuboPlus,
+      SponsorDB,
+    ];
+    return (
+      <div className={cn('bg-beige-300 text-blue-1000', sectionClass)}>
+        <div className={cn('flex flex-col', subSectionClass)}>
+          <p className="text-[31px] font-semibold text-orange-500">
+            {t('home.section4.together')}
+          </p>
+          <p className="text-[31px] font-medium">{t('home.section4.planB')}</p>
+          <p className="mt-6 text-[20px]">{t('home.section3.content1')}</p>
+          <p className="flex flex-col items-center">
+            <SponsorLuganoPlanB />
+          </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            {sponsorSrcs.map((sponsorSrc) => {
+              return (
+                <img
+                  className="h-20 w-20 rounded-full"
+                  src={sponsorSrc}
+                  alt="sponsor"
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return <Page />;
 };
