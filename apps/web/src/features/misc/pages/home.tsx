@@ -97,7 +97,7 @@ export const Home = () => {
             <p className="pt-6 text-3xl font-semibold text-orange-500">
               {t('home.header.globalNetwork')}
             </p>
-            <p className="-mt-2 text-3xl font-semibold">
+            <p className="text-3xl font-semibold">
               {t('home.header.forEducators')}
             </p>
             <p className="mt-6 text-xl">{t('home.header.content1')}</p>
@@ -207,10 +207,10 @@ export const Home = () => {
       <div className={cn('bg-beige-300 text-blue-1000', sectionClass)}>
         <div className={cn('grid grid-cols-1 md:grid-cols-2', subSectionClass)}>
           <div className="col-span-1 flex flex-col md:items-center md:text-center">
-            <p className="text-3xl font-semibold leading-9 text-orange-500">
+            <p className="text-3xl font-semibold text-orange-500">
               {t('home.section2.noBarrier')}
             </p>
-            <p className="text-3xl font-medium leading-9">
+            <p className="text-3xl font-medium">
               {t('home.section2.everythingTranslated')}
             </p>
             <p className="mt-6 text-xl">{t('home.section2.content1')}</p>
@@ -265,15 +265,17 @@ export const Home = () => {
                 </Link>
               ))}
             </div>
-            <Button
-              variant="text"
-              className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
-              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
-            >
-              {isScreenMd
-                ? t('home.section3.seeTutorials')
-                : t('home.section3.seeTutorialsMobile')}
-            </Button>
+            <Link to={'/tutorials'}>
+              <Button
+                variant="text"
+                className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+                iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
+              >
+                {isScreenMd
+                  ? t('home.section3.seeTutorials')
+                  : t('home.section3.seeTutorialsMobile')}
+              </Button>
+            </Link>
           </div>
 
           <p className="ml-6 mt-6 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
@@ -284,8 +286,8 @@ export const Home = () => {
               {resources.map((resource) => (
                 <Link
                   key={resource}
-                  to={'/tutorials/$category'}
-                  params={{ category: resource }}
+                  to={'/resources/$category'}
+                  params={{ category: resource.toLowerCase() }}
                 >
                   <Button variant="tertiary" className="rounded-3xl">
                     {resource}
@@ -293,15 +295,17 @@ export const Home = () => {
                 </Link>
               ))}
             </div>
-            <Button
-              variant="text"
-              className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
-              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
-            >
-              {isScreenMd
-                ? t('home.section3.seeResources')
-                : t('home.section3.seeResourcesMobile')}
-            </Button>
+            <Link to={'/resources'}>
+              <Button
+                variant="text"
+                className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+                iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
+              >
+                {isScreenMd
+                  ? t('home.section3.seeResources')
+                  : t('home.section3.seeResourcesMobile')}
+              </Button>
+            </Link>
           </div>
 
           <p className="mt-12 text-center text-3xl font-medium md:mt-6 md:text-left">
@@ -420,9 +424,7 @@ export const Home = () => {
           <p className="text-3xl font-semibold text-orange-500">
             {t('home.section4.together')}
           </p>
-          <p className="mt-2 text-3xl font-medium">
-            {t('home.section4.planB')}
-          </p>
+          <p className="text-3xl font-medium">{t('home.section4.planB')}</p>
           <p className="mt-6 text-xl">{t('home.section4.content1')}</p>
           <p className="flex flex-col items-center md:mb-6">
             <SponsorLuganoPlanB width={isScreenMd ? 250 : 200} />

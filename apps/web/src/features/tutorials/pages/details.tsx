@@ -110,10 +110,18 @@ export const TutorialDetails = () => {
               </h2>
               <p className="text-xl">{t('tutorials.details.checkAuthor')}</p>
               {tutorial.credits?.professor && (
-                <AuthorCard
-                  className="py-4"
-                  professor={tutorial.credits?.professor}
-                ></AuthorCard>
+                <Link
+                  to={'/professor/$professorId'}
+                  params={{
+                    professorId: tutorial.credits.professor.id.toString(),
+                  }}
+                  key={tutorial.credits.professor.id}
+                >
+                  <AuthorCard
+                    className="py-4"
+                    professor={tutorial.credits.professor}
+                  ></AuthorCard>
+                </Link>
               )}
             </div>
           </div>

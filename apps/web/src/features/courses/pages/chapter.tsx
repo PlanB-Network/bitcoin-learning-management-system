@@ -225,7 +225,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
                 ) {
                   return (
                     <Link
-                      className="h-4 grow border-l-[1.5px] border-blue-800 first:border-l-0"
+                      className="border-beige-300 h-4 grow border-l-[1.5px] first:border-l-0"
                       to={'/courses/$courseId/$partIndex/$chapterIndex'}
                       params={{
                         courseId: chapter.course.id,
@@ -283,7 +283,7 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
   const isScreenMd = useGreater('sm');
 
-  const [isContentExpanded, setIsContentExpanded] = useState(false);
+  const [isContentExpanded, setIsContentExpanded] = useState(true);
 
   return (
     <>
@@ -307,7 +307,7 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
       <div className="mt-1 space-y-2 uppercase text-blue-800">
         <div
           className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
-            isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+            isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
           } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
         >
           <h3
@@ -372,7 +372,7 @@ const HeaderSmall = ({ chapter }: { chapter: Chapter }) => {
       <div className="my-1 space-y-2 font-light uppercase text-blue-800">
         <div
           className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
-            isContentExpanded ? 'bg-gray-200' : 'h-auto bg-gray-200'
+            isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
           } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
         >
           <h3
@@ -558,7 +558,6 @@ export const CourseChapter = () => {
                 <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
                   <HeaderBig chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
-                  <BottomButton chapter={chapter} />
                   {questionsArray && questionsArray.length > 0 ? (
                     <QuizzCard
                       name={chapter.course.id}
@@ -568,6 +567,7 @@ export const CourseChapter = () => {
                   ) : (
                     ''
                   )}
+                  <BottomButton chapter={chapter} />
                 </div>
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
@@ -586,7 +586,6 @@ export const CourseChapter = () => {
               <div className="text-blue-1000 w-3/4 md:mt-8 md:px-2">
                 <HeaderSmall chapter={chapter} />
                 <MarkdownContent chapter={chapter} />
-                <BottomButton chapter={chapter} />
                 {questionsArray && questionsArray.length > 0 ? (
                   <QuizzCard
                     name={chapter.course.id}
@@ -596,6 +595,7 @@ export const CourseChapter = () => {
                 ) : (
                   ''
                 )}
+                <BottomButton chapter={chapter} />
               </div>
             </div>
           </div>

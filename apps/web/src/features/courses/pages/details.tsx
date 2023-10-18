@@ -384,7 +384,15 @@ export const CourseDetails: React.FC = () => {
           </h4>
           <div className="flex flex-col gap-4">
             {course.professors.map((professor) => (
-              <AuthorCard className="sm:mt-4" professor={professor} />
+              <Link
+                to={'/professor/$professorId'}
+                params={{
+                  professorId: professor.id.toString(),
+                }}
+                key={professor.id}
+              >
+                <AuthorCard className="sm:mt-4" professor={professor} />
+              </Link>
             ))}
           </div>
         </div>
@@ -406,7 +414,7 @@ export const CourseDetails: React.FC = () => {
             }}
           >
             <Button
-              size="s"
+              size={isScreenMd ? 'l' : 's'}
               iconRight={<BsRocketTakeoff />}
               variant="tertiary"
               className="text-blue-1000 mb-auto"
