@@ -256,9 +256,9 @@ export const Home = () => {
                   to={'/tutorials/$category'}
                   params={{ category: tutorialCategory.name }}
                 >
-                  <div className="group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4">
+                  <div className="flex items-center space-x-2 rounded-lg py-2 sm:space-x-4">
                     <CategoryIcon src={tutorialCategory.image} />
-                    <h3 className="text-base font-semibold text-white group-hover:text-orange-500 md:text-xl lg:text-2xl">
+                    <h3 className="text-base font-semibold text-white md:text-xl lg:text-2xl">
                       {t(`tutorials.${tutorialCategory.name}.title`)}
                     </h3>
                   </div>

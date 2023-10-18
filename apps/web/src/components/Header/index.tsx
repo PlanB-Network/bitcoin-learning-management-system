@@ -164,26 +164,27 @@ export const Header = () => {
           id: 'about-us-nested',
           items: [
             {
-              id: 'manifesto',
-              title: t('words.manifesto'),
-              description: t('menu.manifestoDescription'),
-              path: Routes.Manifesto,
-              icon: BsFileText,
-            },
-            {
-              id: 'sponsors-and-contributors',
-              title: t('words.sponsoringAndContributors'),
-              description: t('menu.sponsorsDescription'),
-              path: Routes.UnderConstruction,
-              icon: BsHeart,
-            },
-            {
               id: 'professors',
               title: t('words.professors'),
               description: t('menu.teachersDescription'),
               path: Routes.Professors,
               icon: FaChalkboardTeacher,
             },
+            {
+              id: 'manifesto',
+              title: t('words.manifesto'),
+              description: t('menu.manifestoDescription'),
+              path: Routes.Manifesto,
+              icon: BsFileText,
+            },
+            // {
+            //   id: 'sponsors-and-contributors',
+            //   title: t('words.sponsoringAndContributors'),
+            //   description: t('menu.sponsorsDescription'),
+            //   path: Routes.UnderConstruction,
+            //   icon: BsHeart,
+            // },
+
             /*{
               id: 'support-us',
               title: t('words.supportUs'),
