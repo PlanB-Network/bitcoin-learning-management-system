@@ -1,3 +1,4 @@
+import { CourseChapter } from '../content';
 import type { default as CourseCompletedChapter } from '../sql/users/CourseCompletedChapters';
 import type { default as CourseProgress } from '../sql/users/CourseProgress';
 
@@ -7,9 +8,10 @@ export type { default as CourseCompletedChapter } from '../sql/users/CourseCompl
 export interface CourseProgressExtended extends CourseProgress {
   name: string;
   total_chapters: number;
-  chapters: Pick<CourseCompletedChapter, 'chapter' | 'completed_at'>[];
+  chapters: Pick<CourseCompletedChapter, 'part' | 'chapter' | 'completed_at'>[];
+  nextChapter: Pick<CourseChapter, 'part' | 'chapter'>;
   lastCompletedChapter: Pick<
     CourseCompletedChapter,
-    'chapter' | 'completed_at'
+    'part' | 'chapter' | 'completed_at'
   >;
 }

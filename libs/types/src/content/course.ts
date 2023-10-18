@@ -6,6 +6,7 @@ import type { default as CourseLocalized } from '../sql/content/CoursesLocalized
 export type { default as Course } from '../sql/content/Courses';
 export type { default as CourseLocalized } from '../sql/content/CoursesLocalized';
 export type { default as CoursePartLocalized } from '../sql/content/CoursePartsLocalized';
+export type { default as CourseChapter } from '../sql/content/CourseChapters';
 export type { default as CourseChapterLocalized } from '../sql/content/CourseChaptersLocalized';
 
 export type JoinedCourse = Pick<
@@ -26,12 +27,7 @@ export type CoursePart = Pick<
 >;
 
 export type JoinedCourseChapter = Pick<
-  CourseChapter,
+  CourseChapterLocalized,
   'part' | 'chapter' | 'language' | 'title' | 'sections' | 'raw_content'
 > &
   'part_title';
-
-export type CourseChapter = Pick<
-  CourseChapterLocalized,
-  'part' | 'chapter' | 'language' | 'title' | 'sections' | 'raw_content'
->;

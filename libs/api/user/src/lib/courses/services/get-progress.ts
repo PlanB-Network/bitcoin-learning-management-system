@@ -1,8 +1,12 @@
 import _ from 'lodash';
 
 import { Dependencies } from '../../../dependencies';
-import { getCompletedChaptersQuery, getProgressQuery } from '../queries';
-import { getQuizAttemptsQuery } from '../queries/get-quiz-attempts';
+import {
+  getCompletedChaptersQuery,
+  getNextChaptersQuery,
+  getProgressQuery,
+  getQuizAttemptsQuery,
+} from '../queries';
 
 export const createGetProgress =
   (dependencies: Dependencies) =>
@@ -13,6 +17,7 @@ export const createGetProgress =
     const completedChapters = await postgres.exec(
       getCompletedChaptersQuery(uid),
     );
+    const nextChapters = await postgres.exec(getNextChaptersQuery(uid));
     const quizAttempts = await postgres.exec(getQuizAttemptsQuery(uid));
 
     return progress.map((course) => {
@@ -39,11 +44,16 @@ export const createGetProgress =
           return a.chapter - b.chapter;
         });
 
+      const nextChapter = nextChapters.find(
+        (chapter) => chapter.course_id === course.course_id,
+      );
+
       const lastCompletedChapter = chapters[chapters.length - 1];
 
       return {
         ...course,
         chapters,
+        nextChapter,
         lastCompletedChapter,
       };
     });
