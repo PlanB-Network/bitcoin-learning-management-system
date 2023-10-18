@@ -129,7 +129,7 @@ export const nodeNetwork = () => {
           <div className=" w-full max-w-6xl flex-col place-items-start items-center justify-center px-5 py-2 leading-[50px] text-gray-100 sm:mt-3  md:px-20 ">
             <div className="place-items-center items-center justify-center">
               <h4 className="text-lg font-semibold text-gray-100 ">
-                Every country needs a Plan B !{' '}
+                Every country needs a Plan B !
               </h4>
               <p className="mt-3  text-xs font-thin sm:text-base">
                 By joining our network, we'll guide you in transitioning from a
