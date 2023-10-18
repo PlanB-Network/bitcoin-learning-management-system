@@ -136,7 +136,7 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="flex w-full flex-col items-center justify-center bg-blue-900">
+      <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
         <PageHeader>
           <PageTitle>{t('courses.explorer.pageTitle')}</PageTitle>
           <PageSubtitle>{t('courses.explorer.pageSubtitle')}</PageSubtitle>
@@ -164,7 +164,7 @@ export const CoursesExplorer = () => {
           </div>
 
           <div className="mb-4 flex w-full flex-col px-3 sm:mb-16 sm:px-8">
-            <div className="px-5 text-base sm:rounded-3xl sm:border-2 sm:border-white sm:bg-blue-800 ">
+            <div className="px-5 text-base sm:rounded-3xl sm:border-2 sm:border-white sm:bg-blue-900 ">
               <div className="flex flex-col">
                 <div className="flex flex-col sm:flex-row xl:gap-12">
                   <span className="mt-4 whitespace-nowrap font-semibold text-orange-500 sm:text-white">

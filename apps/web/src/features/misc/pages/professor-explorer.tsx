@@ -18,7 +18,7 @@ export const ProfessorExplorer = () => {
       title={t('professors.pageTitle')}
       tagLine={t('professors.pageSubtitle')}
     >
-      <div className="flex flex-col items-center justify-center bg-blue-900">
+      <div className="bg-blue-1000 flex flex-col items-center justify-center">
         <div className="flex max-w-[22rem] flex-wrap  justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
           {professors?.map((professor) => {
             return (

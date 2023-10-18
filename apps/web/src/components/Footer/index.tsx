@@ -93,13 +93,13 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={cn(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
           <div
             className={cn(
               'relative flex w-full flex-col pt-10',
-              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
+              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
             )}
           >
             <img
@@ -229,7 +229,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div
           className={cn(
             'relative flex w-full flex-col pt-10',
-            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-900'),
+            color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
           <Cloud

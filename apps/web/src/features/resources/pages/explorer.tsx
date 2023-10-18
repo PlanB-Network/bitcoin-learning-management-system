@@ -24,7 +24,7 @@ export const Resources = () => {
           <PageSubtitle>{t('resources.pageSubtitle')}</PageSubtitle>
           <PageDescription>{t('resources.pageDescription')}</PageDescription>
 
-          <div className="grid w-full grid-cols-2 bg-blue-900 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
+          <div className="bg-blue-1000 grid w-full grid-cols-2 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}

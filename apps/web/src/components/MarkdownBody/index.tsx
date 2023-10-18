@@ -23,7 +23,8 @@ export const MarkdownBody = ({
   content: string;
   assetPrefix: string;
 }) => {
-  const isScreenMd = useGreater('sm');
+  const isScreenSm = useGreater('sm');
+
   return (
     <ReactMarkdown
       children={content}
@@ -86,14 +87,14 @@ export const MarkdownBody = ({
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-14 h-10 w-10" />{' '}
+                <VideoSVG className="mb-2 ml-14 h-10 w-10" />
                 <div className="ml-2">
                   <p className="text-sm font-medium text-blue-900">Video</p>
                 </div>
               </div>
               <div>
                 <ReactPlayer
-                  width={isScreenMd ? 'auto' : 400}
+                  width={'auto'}
                   className="mx-auto mb-2 rounded-lg"
                   controls={true}
                   url={src}
