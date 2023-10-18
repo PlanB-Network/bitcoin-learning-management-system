@@ -8,8 +8,8 @@ export enum Routes {
   // About Us
   AboutUs = '/about-us',
   Manifesto = '/manifesto',
-  Professors = '/professors',
   NodeNetwork = '/node-network',
+  Professors = '/professors',
   SponsorsAndContributors = '/sponsors-and-contributors',
 
   // Courses

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import btcHere from '../../../assets/resources/btchere.png';
+import btcHere from '../../../assets/resources/btcherep.png';
 import figmaImage from '../../../assets/resources/figmaimg.png';
 import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
@@ -73,7 +73,7 @@ export const BET = () => {
       description: 'Stickers designs',
       figmaUrl:
         'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+      imgFig: figmaImage,
     },
     {
       title: 'Bitcoin meme',
