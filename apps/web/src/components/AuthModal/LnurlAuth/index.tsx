@@ -28,16 +28,7 @@ export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
   const dispatch = useAppDispatch();
   const isMobile = useSmaller('md');
 
-  const { data } = trpc.auth.lud4.generate.useQuery();
-
-  useEffect(() => {
-    if (isOpen) {
-      console.log('invalidating');
-      const queryKey = getQueryKey(trpc.auth.lud4.generate);
-      queryClient.resetQueries({ queryKey });
-      queryClient.refetchQueries({ queryKey });
-    }
-  }, [isOpen, queryClient]);
+  const [lnurl, setLnurl] = useState('');
 
   useEffect(() => {
     const poll = async () => {
@@ -57,8 +48,27 @@ export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
       onClose();
     };
 
-    poll();
-  }, [data, dispatch, onClose]);
+    const fetchLnurl = async () => {
+      const data = await trpcClient.auth.lud4.generate.query();
+
+      setLnurl(data.lnurl);
+
+      poll();
+    };
+
+    if (isOpen) {
+      fetchLnurl();
+
+      return () => {
+        const generateQueryKey = getQueryKey(trpc.auth.lud4.generate);
+        queryClient.removeQueries(generateQueryKey);
+
+        const pollQueryKey = getQueryKey(trpc.auth.lud4.poll);
+        queryClient.cancelQueries(pollQueryKey);
+        queryClient.removeQueries(pollQueryKey);
+      };
+    }
+  }, [isOpen, queryClient, dispatch, onClose]);
 
   return (
     <Modal
@@ -69,9 +79,9 @@ export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
       showAccountHelper
     >
       <div className="flex flex-col items-center">
-        {data && (
+        {lnurl && (
           <div>
-            <QRCodeSVG value={data.lnurl} size={300} />
+            <QRCodeSVG value={lnurl} size={300} />
           </div>
         )}
       </div>

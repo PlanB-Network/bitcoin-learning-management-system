@@ -23,19 +23,18 @@ const logoutProcedure = protectedProcedure
   .mutation(async ({ ctx }) => {
     const { req } = ctx;
 
-    console.log(req.session);
-    if (req.session) {
-      req.session.destroy((error) => {
+    return new Promise((resolve) => {
+      req.session.regenerate((error) => {
         if (error) {
           console.error(error);
         }
-      });
-    }
 
-    return {
-      status: 200,
-      message: 'Logged out successfully',
-    };
+        resolve({
+          status: 200,
+          message: 'Logged out successfully',
+        });
+      });
+    });
   });
 
 export const authRouter = createTRPCRouter({
