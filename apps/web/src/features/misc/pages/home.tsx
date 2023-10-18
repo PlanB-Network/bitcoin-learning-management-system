@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
@@ -33,8 +37,14 @@ import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
 import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
 
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
+
 export const Home = () => {
   const { t } = useTranslation();
+  const isScreenXl = useGreater('xl');
+  const isScreenLg = useGreater('lg');
+  const isScreenMd = useGreater('md');
+
   const topics = [
     'Bitcoin',
     t('words.economy'),
@@ -50,9 +60,10 @@ export const Home = () => {
     t('words.builders'),
     t('words.toolkits'),
   ];
-  const sectionClass = 'flex flex-col w-screen items-center py-6';
+  const sectionClass =
+    'flex flex-col w-[100%] items-center py-6 overflow-hidden font-light md:font-normal';
   const subSectionClass =
-    'px-6 md:px-32 w-auto md:w-[60rem] lg:w-[70rem] xl:w-[90rem]';
+    'px-6 md:px-12 lg:px-32 w-auto md:w-[50rem] lg:w-[70rem] xl:w-[90rem]';
 
   const Page = () => {
     return (
@@ -83,24 +94,24 @@ export const Home = () => {
               <BitcoinWithHat height={70} width={65} />
               <span>Network</span>
             </div>
-            <p className="pt-6 text-[31px] font-semibold text-orange-500">
+            <p className="pt-6 text-3xl font-semibold text-orange-500">
               {t('home.header.globalNetwork')}
             </p>
-            <p className="-mt-2 text-[31px] font-semibold">
+            <p className="-mt-2 text-3xl font-semibold">
               {t('home.header.forEducators')}
             </p>
-            <p className="mt-6 text-[20px]">{t('home.header.content1')}</p>
-            <p className="mt-6 text-[20px]">{t('home.header.content2')}</p>
+            <p className="mt-6 text-xl">{t('home.header.content1')}</p>
+            <p className="mt-6 text-xl">{t('home.header.content2')}</p>
             <Button
               variant="tertiary"
-              className="mt-6 hidden md:flex "
+              className="mt-6 hidden rounded-3xl md:flex"
               iconRight={<AiOutlineRight />}
             >
               {t('home.header.link')}
             </Button>
           </div>
-          <div className="col-span-1">
-            <WorldMap style={{ width: '100%' }} />
+          <div className="col-span-1 flex items-center">
+            <WorldMap className="mt-4 h-[100%] w-[100]" />
           </div>
         </div>
       </div>
@@ -108,14 +119,25 @@ export const Home = () => {
   };
 
   const Section1 = () => {
+    let coursesInCircleMarginLeft = '';
+    if (isScreenXl) {
+      coursesInCircleMarginLeft = 'calc(-240px)';
+    } else if (isScreenLg) {
+      coursesInCircleMarginLeft = 'calc(-50vw + 240px)';
+    } else if (isScreenMd) {
+      coursesInCircleMarginLeft = 'calc(-50vw + 160px)';
+    }
+
     return (
       <>
-        <div className={cn('bg-blue-1000 text-white', sectionClass)}>
+        <div
+          className={cn(sectionClass, 'bg-blue-1000 text-white py-0 md:py-6')}
+        >
           <div className={cn('flex w-[80rem] flex-col', subSectionClass)}>
-            <p className="text-[31px] font-semibold text-orange-500">
+            <p className="text-3xl font-semibold text-orange-500">
               {t('home.section1.interested')}
             </p>
-            <p className="text-[31px] font-semibold">
+            <p className="text-3xl font-semibold">
               {t('home.section1.allLevels')}
             </p>
           </div>
@@ -133,15 +155,15 @@ export const Home = () => {
               subSectionClass,
             )}
           >
-            <div className="col-span-1 hidden md:block">
+            <div className="col-span-1 hidden items-center md:flex">
               <p className="w-fit">
                 <CoursesInCircle3
-                  height={500}
+                  height={isScreenLg ? 600 : 450}
                   style={{
                     // position: 'absolute',
                     // left: '0px',
                     // top: '0px',
-                    marginLeft: 'calc(-50vw + 520px)',
+                    marginLeft: coursesInCircleMarginLeft,
                     // width: '100%',
                     filter: 'grayscale(1) contrast(1) opacity(0.5) ',
                     // background:
@@ -151,19 +173,24 @@ export const Home = () => {
               </p>
             </div>
             <div className="col-span-1 flex flex-col">
-              <p className="text-[20px]">{t('home.section1.content1')}</p>
-              <p className="mt-6 text-[20px]">{t('home.section1.content2')}</p>
-              <p className="mt-6 text-[20px]">{t('home.section1.content3')}</p>
-              <div className="mt-6 flex flex-wrap gap-4">
+              <p className="text-xl">{t('home.section1.content1')}</p>
+              <p className="mt-6 text-xl">{t('home.section1.content2')}</p>
+              <p className="mt-6 text-xl">{t('home.section1.content3')}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
                 {topics.map((topic) => {
                   return (
-                    <Button variant="secondary">{topic.toUpperCase()}</Button>
+                    <Button
+                      variant="secondary"
+                      className=" md:text-blue-1000 rounded-3xl md:border-[3px] md:border-orange-500 md:uppercase"
+                    >
+                      {topic}
+                    </Button>
                   );
                 })}
               </div>
               <Button
                 variant="tertiary"
-                className="mt-6 self-center"
+                className="mt-6 self-center rounded-3xl md:self-start"
                 iconRight={<AiOutlineRight />}
               >
                 {t('home.section1.link')}
@@ -180,24 +207,24 @@ export const Home = () => {
       <div className={cn('bg-beige-300 text-blue-1000', sectionClass)}>
         <div className={cn('grid grid-cols-1 md:grid-cols-2', subSectionClass)}>
           <div className="col-span-1 flex flex-col md:items-center md:text-center">
-            <p className="text-[31px] font-semibold text-orange-500">
+            <p className="text-3xl font-semibold leading-9 text-orange-500">
               {t('home.section2.noBarrier')}
             </p>
-            <p className="text-[31px] font-medium">
+            <p className="text-3xl font-medium leading-9">
               {t('home.section2.everythingTranslated')}
             </p>
-            <p className="mt-6 text-[20px]">{t('home.section2.content1')}</p>
-            <p className="mt-6 text-[20px]">{t('home.section2.content2')}</p>
-            <p className="mt-6 text-[20px]">{t('home.section2.content3')}</p>
+            <p className="mt-6 text-xl">{t('home.section2.content1')}</p>
+            <p className="mt-6 text-xl">{t('home.section2.content2')}</p>
+            <p className="mt-6 text-xl">{t('home.section2.content3')}</p>
             <Button
               variant="tertiary"
-              className="mt-6"
+              className="mt-6 w-fit self-center rounded-3xl"
               iconRight={<AiOutlineRight />}
             >
               {t('home.section2.link')}
             </Button>
           </div>
-          <div className="col-span-1 hidden md:block">
+          <div className="col-span-1 hidden flex-col items-center justify-center md:flex">
             <FlagsInCircle />
           </div>
         </div>
@@ -209,17 +236,17 @@ export const Home = () => {
     return (
       <div className={cn('bg-blue-1000 text-white', sectionClass)}>
         <div className={cn('flex flex-col', subSectionClass)}>
-          <p className="text-[31px] font-semibold text-orange-500">
+          <p className="text-3xl font-semibold text-orange-500">
             {t('home.section3.helpingCommunities')}
           </p>
-          <p className="text-[31px] font-medium">
+          <p className="text-3xl font-medium">
             {t('home.section3.letsHelpYou')}
           </p>
-          <p className="mt-6 text-[20px]">{t('home.section3.content1')}</p>
-          <p className="mt-6 text-[20px]">{t('home.section3.content2')}</p>
+          <p className="mt-6 text-xl">{t('home.section3.content1')}</p>
+          <p className="mt-6 text-xl">{t('home.section3.content2')}</p>
 
-          <p className="mt-6 text-[31px] font-medium">
-            {t('words.tutorials').toUpperCase()}
+          <p className="ml-6 mt-6 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
+            {t('words.tutorials')}
           </p>
           <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 px-8 py-4 md:py-6">
             <div className="grid grid-cols-3 gap-x-20 lg:gap-x-32">
@@ -240,15 +267,17 @@ export const Home = () => {
             </div>
             <Button
               variant="text"
-              className="absolute bottom-[-20px] bg-white text-center text-orange-500 md:right-6"
-              iconRight={<AiOutlineRight />}
+              className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
             >
-              {t('home.section3.seeTutorials')}
+              {isScreenMd
+                ? t('home.section3.seeTutorials')
+                : t('home.section3.seeTutorialsMobile')}
             </Button>
           </div>
 
-          <p className="mt-6 text-[31px] font-medium">
-            {t('words.resources').toUpperCase()}
+          <p className="ml-6 mt-6 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
+            {t('words.resources')}
           </p>
           <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
             <div className="flex flex-wrap gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
@@ -258,33 +287,39 @@ export const Home = () => {
                   to={'/tutorials/$category'}
                   params={{ category: resource }}
                 >
-                  <Button variant="tertiary">{resource}</Button>
+                  <Button variant="tertiary" className="rounded-3xl">
+                    {resource}
+                  </Button>
                 </Link>
               ))}
             </div>
             <Button
               variant="text"
-              className="absolute bottom-[-20px] bg-white text-center text-orange-500 md:right-6"
-              iconRight={<AiOutlineRight />}
+              className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
             >
-              {t('home.section3.seeResources')}
+              {isScreenMd
+                ? t('home.section3.seeResources')
+                : t('home.section3.seeResourcesMobile')}
             </Button>
           </div>
 
-          <p className="mt-6 text-[31px] font-medium">
+          <p className="mt-12 text-center text-3xl font-medium md:mt-6 md:text-left">
             {t('home.section3.aboutUs')}
           </p>
-          <p className="mt-6 text-[20px]">{t('home.section3.content3')}</p>
+          <p className="mt-6 text-center text-xl md:text-left">
+            {t('home.section3.content3')}
+          </p>
 
           {/* Big screen */}
-          <div className="mt-6 hidden flex-row  items-center  justify-evenly md:flex">
-            <div className="relative flex h-[32rem] flex-col text-center md:h-[38rem] lg:h-[34rem] xl:h-[32rem]">
+          <div className="mt-6 hidden flex-row  items-center  justify-evenly md:flex xl:px-20">
+            <div className="relative flex h-[32rem] flex-col text-center md:h-[37rem] lg:h-[36rem] xl:h-[34rem]">
               <div className="flex flex-col items-center">
                 <OpenSource />
                 <div className="mt-2 text-[25px] font-semibold">
                   {t('home.section3.openSourceTitle').toUpperCase()}
                 </div>
-                <div className="mt-2 text-[20px] font-light">
+                <div className="mt-2 text-xl font-light">
                   {t('home.section3.openSourceContent')}
                 </div>
               </div>
@@ -293,21 +328,21 @@ export const Home = () => {
                 <div className="mt-2 text-[25px] font-semibold">
                   {t('home.section3.bitcoinFocusTitle').toUpperCase()}
                 </div>
-                <div className="mt-2 text-[20px] font-light">
+                <div className="mt-2 text-xl font-light">
                   {t('home.section3.bitcoinFocusContent')}
                 </div>
               </div>
             </div>
             <div>
-              <Spiral />
+              <Spiral className="lg:mx-16" />
             </div>
-            <div className="relative flex h-[32rem] flex-col text-center md:h-[38rem] lg:h-[34rem] xl:h-[32rem]">
+            <div className="relative flex h-[32rem] flex-col text-center md:h-[37rem] lg:h-[36rem] xl:h-[34rem]">
               <div className="flex h-[30rem] flex-col items-center">
                 <Groups />
                 <div className="mt-2 text-[25px] font-semibold">
                   {t('home.section3.communityTitle').toUpperCase()}
                 </div>
-                <div className="mt-2 text-[20px] font-light">
+                <div className="mt-2 text-xl font-light">
                   {t('home.section3.communityContent')}
                 </div>
               </div>
@@ -316,7 +351,7 @@ export const Home = () => {
                 <div className="mt-2 text-[25px] font-semibold">
                   {t('home.section3.privacyTitle').toUpperCase()}
                 </div>
-                <div className="mt-2 text-[20px] font-light">
+                <div className="mt-2 text-xl font-light">
                   {t('home.section3.privacyContent')}
                 </div>
               </div>
@@ -375,21 +410,31 @@ export const Home = () => {
       SponsorDB,
     ];
     return (
-      <div className={cn('bg-beige-300 text-blue-1000', sectionClass)}>
+      <div
+        className={cn(
+          'bg-beige-300 text-blue-1000 md:text-left text-center',
+          sectionClass,
+        )}
+      >
         <div className={cn('flex flex-col', subSectionClass)}>
-          <p className="text-[31px] font-semibold text-orange-500">
+          <p className="text-3xl font-semibold text-orange-500">
             {t('home.section4.together')}
           </p>
-          <p className="text-[31px] font-medium">{t('home.section4.planB')}</p>
-          <p className="mt-6 text-[20px]">{t('home.section3.content1')}</p>
-          <p className="flex flex-col items-center">
-            <SponsorLuganoPlanB />
+          <p className="mt-2 text-3xl font-medium">
+            {t('home.section4.planB')}
           </p>
-          <div className="flex flex-wrap justify-center gap-8">
+          <p className="mt-6 text-xl">{t('home.section4.content1')}</p>
+          <p className="flex flex-col items-center md:mb-6">
+            <SponsorLuganoPlanB width={isScreenMd ? 250 : 200} />
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {sponsorSrcs.map((sponsorSrc) => {
               return (
                 <img
-                  className="h-20 w-20 rounded-full"
+                  className={cn(
+                    'rounded-full',
+                    isScreenMd ? 'h-20 w-20' : 'h-16 w-16',
+                  )}
                   src={sponsorSrc}
                   alt="sponsor"
                 />

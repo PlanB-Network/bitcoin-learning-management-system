@@ -171,6 +171,8 @@
       "content2": "Our goal is to provide you with the tools to succeed.",
       "seeTutorials": "See all tutorials",
       "seeResources": "See all resources",
+      "seeTutorialsMobile": "Get a look at all our tutorials",
+      "seeResourcesMobile": "Get a look at all our resources",
       "aboutUs": "A little bit about us",
       "content3": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
       "openSourceTitle": "Open source",
@@ -186,7 +188,7 @@
       "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
     },
     "section4": {
-      "together": "Together let's make Bitcoin education better ! ",
+      "together": "Together let's make Bitcoin education better! ",
       "planB": "The PlanB Network is 100% open-source thanks to our generous patreon",
       "content1": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible ! "
     }
