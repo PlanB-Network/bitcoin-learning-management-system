@@ -37,8 +37,7 @@ export const createGenerateLnurlAuth =
     const host =
       process.env['NODE_ENVIRONMENT'] === 'production'
         ? `https://api.${process.env['DOMAIN']}`
-        : // : 'http://localhost:3000/api';
-          'https://0e36-2a01-e0a-21c-7130-7829-eb2c-2dd0-3ef4.ngrok-free.app/api';
+        : 'http://localhost:3000/api';
 
     const url = new URL(`${host}/auth/lud4`);
     url.searchParams.append('tag', tag);
