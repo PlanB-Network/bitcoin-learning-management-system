@@ -18,13 +18,13 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
 
   return (
     <div {...props}>
-      <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
-        <div className="flex max-w-[610px] items-start">
-          <div className="border-blue-1000 w-32 shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2 sm:flex">
+      <div className="border-blue-1000 bg-beige-300 flex w-full flex-col items-start gap-2.5 rounded-2xl border p-2">
+        <div className="flex w-full max-w-[610px] items-start">
+          <div className="border-blue-1000 w-fit shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2 sm:flex">
             <img
               src={professor.picture}
               alt="Professor"
-              className="mt-4 h-28 w-28 rounded-full"
+              className="mt-4 h-20 w-20 rounded-full sm:h-28 sm:w-28"
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.nostr && (
@@ -56,8 +56,8 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
               )}
             </div>
           </div>
-          <div className="border-blue-1000 bg-beige-300 flex flex-col self-stretch rounded-r-2xl border">
-            <div className="border-blue-1000 text-beige-300 flex w-[18.5rem] rounded-tr-2xl border-b bg-orange-500 px-5 py-2 text-3xl font-semibold sm:w-auto">
+          <div className="border-blue-1000 bg-beige-300 flex w-full flex-col self-stretch rounded-r-2xl border">
+            <div className="border-blue-1000 text-beige-300 flex w-full min-w-[14rem] break-all rounded-tr-2xl border-b bg-orange-500 px-4 py-2 text-3xl font-semibold sm:w-auto">
               {professor.name}
             </div>
             <div className="relative grow flex-col py-2">
@@ -78,7 +78,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   </div>
                 </div>
 
-                <div className="mt-2 flex flex-wrap content-start items-start gap-2.5 self-stretch text-sm text-blue-700 sm:mt-4 sm:text-lg">
+                <div className="mt-2 flex flex-wrap content-start items-start gap-2.5 self-stretch text-xs text-blue-700 sm:mt-4 sm:text-lg">
                   {professor.tags?.map((tag) => {
                     return (
                       <div className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-4 py-1">

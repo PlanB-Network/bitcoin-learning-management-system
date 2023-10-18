@@ -77,7 +77,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
 
   return (
     <div {...props}>
-      <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
+      <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-1">
         <div className="flex w-[240px] flex-col items-start">
           <div className="border-blue-1000 flex flex-col items-center self-stretch rounded-t-2xl border bg-orange-500 px-5 py-2">
             <span className="text-beige-300 break-words text-xl font-semibold">
@@ -85,7 +85,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
             </span>
           </div>
           <div className="border-blue-1000 flex flex-col items-center justify-center gap-2.5 self-stretch border px-0">
-            <div className="bg-gradient-diagonal mt-2 flex w-full flex-col items-center">
+            <div className="bg-gradient-diagonal flex w-full flex-col items-center">
               <img
                 src={professor.picture}
                 alt="Professor"

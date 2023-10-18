@@ -18,8 +18,8 @@ export const ProfessorExplorer = () => {
       title={t('professors.pageTitle')}
       tagLine={t('professors.pageSubtitle')}
     >
-      <div className="flex flex-col justify-center bg-blue-900">
-        <div className="flex flex-wrap justify-evenly gap-4 text-center text-xl text-white">
+      <div className="flex flex-col items-center justify-center bg-blue-900">
+        <div className="flex max-w-[22rem] flex-wrap  justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
           {professors?.map((professor) => {
             return (
               <Link
@@ -32,7 +32,7 @@ export const ProfessorExplorer = () => {
                 <div className="hidden sm:block">
                   <ProfessorCard professor={professor} />
                 </div>
-                <div className=" w-[28rem] sm:hidden">
+                <div className="w-[28rem] sm:hidden">
                   <AuthorCard professor={professor} />
                 </div>
               </Link>
