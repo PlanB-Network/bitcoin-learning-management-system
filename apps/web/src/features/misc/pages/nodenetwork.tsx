@@ -323,7 +323,7 @@ export const nodeNetwork = () => {
                   onClick={() => toggleSection(2)}
                 >
                   <span className="mr-2">{'>'}</span>
-                  What are the requirements?
+                  What are the requirements ?
                 </h2>
                 {openSection === 2 && (
                   <p className="mt-1 text-xs text-gray-100 sm:text-base">
