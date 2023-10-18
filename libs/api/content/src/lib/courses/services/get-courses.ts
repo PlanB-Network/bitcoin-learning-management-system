@@ -1,5 +1,6 @@
 import { Dependencies } from '../../dependencies';
 import { getProfessorsQuery } from '../../professors/queries';
+import { formatProfessor } from '../../professors/services/utils';
 import { getCoursesQuery } from '../queries';
 
 export const createGetCourses =
@@ -14,11 +15,12 @@ export const createGetCourses =
         language,
       }),
     );
-
     return courses.map((course) => ({
       ...course,
-      professors: professors.filter((professor) =>
-        course.professors.includes(professor.contributor_id),
-      ),
+      professors: professors
+        .map(formatProfessor)
+        .filter((professor) =>
+          course.professors.includes(professor.contributor_id),
+        ),
     }));
   };
