@@ -1,17 +1,17 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { CourseProgressExtended } from '@sovereign-university/types';
 import { addSpaceToCourseId } from '@sovereign-university/ui';
 
 import BitcoinEgg from '../../../assets/icons/bitcoin_egg.svg?react';
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
+import { TRPCRouterOutput } from '../../../utils/trpc';
 
 export const CoursesProgressList = ({
   courses,
 }: {
-  courses: CourseProgressExtended[] | undefined;
+  courses?: NonNullable<TRPCRouterOutput['user']['courses']['getProgress']>;
 }) => (
   <div className="flex flex-col justify-start gap-4 md:gap-0">
     {courses && courses.length > 0 ? (

@@ -107,7 +107,7 @@
       "count": "Teilenummer {{count}}/{{total}}"
     },
     "preview": {
-      "by": "von {{teacher}}",
+      "by": "von {{professor}}",
       "letsgo": "Los geht's"
     },
     "unreleased": {

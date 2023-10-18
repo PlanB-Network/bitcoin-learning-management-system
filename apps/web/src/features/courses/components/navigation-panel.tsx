@@ -16,21 +16,17 @@ interface Chapter {
   part: Part;
 }
 
-interface ChapterFromArray {
-  title: string;
-  chapter: number;
-  part: number;
-  part_title: string;
-}
-
 interface Props {
   course: TRPCRouterOutput['content']['getCourse'];
-  chapters: ChapterFromArray[];
+  chapters: TRPCRouterOutput['content']['getCourseChapters'];
   currentChapter: Chapter;
   style?: CSSProperties;
 }
 
-function isChapterPast(chapter: ChapterFromArray, currentChapter: Chapter) {
+function isChapterPast(
+  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
+  currentChapter: Chapter,
+) {
   return (
     chapter.part < currentChapter.part.part ||
     (chapter.part === currentChapter.part.part &&

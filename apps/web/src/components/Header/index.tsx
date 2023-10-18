@@ -14,7 +14,7 @@ import { JoinedCourse } from '@sovereign-university/types';
 
 import { useDisclosure } from '../../hooks/use-disclosure';
 import { Routes } from '../../routes/routes';
-import { trpc } from '../../utils/trpc';
+import { TRPCRouterOutput, trpc } from '../../utils/trpc';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials';
 import { AuthModal } from '../AuthModal';
 import { AuthModalState } from '../AuthModal/props';
@@ -24,6 +24,8 @@ import { MobileMenu } from './MobileMenu';
 import { NavigationSection } from './props';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
+
+type Course = NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -54,10 +56,10 @@ export const Header = () => {
       advanced: [],
       expert: [],
     } as {
-      beginner: JoinedCourse[];
-      intermediate: JoinedCourse[];
-      advanced: JoinedCourse[];
-      expert: JoinedCourse[];
+      beginner: Course[];
+      intermediate: Course[];
+      advanced: Course[];
+      expert: Course[];
     },
   );
 

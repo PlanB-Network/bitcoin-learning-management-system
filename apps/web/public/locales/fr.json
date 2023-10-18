@@ -107,7 +107,7 @@
       "count": "Partie n°{{count}}/{{total}}"
     },
     "preview": {
-      "by": "par {{teacher}}",
+      "by": "par {{professor}}",
       "letsgo": "Allons-y"
     },
     "unreleased": {

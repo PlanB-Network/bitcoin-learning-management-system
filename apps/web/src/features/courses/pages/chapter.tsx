@@ -15,6 +15,7 @@ import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
+import { joinWords } from '../../../utils/string';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 import { NavigationPanel } from '../components/navigation-panel';
 import QuizzCard, { Question } from '../components/quizz-card';
@@ -203,7 +204,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             total: chapter.course.parts.length,
           })}
         </div>
-        <div>{chapter.course.teacher}</div>
+        <div>{joinWords(chapter.course.professors.map((p) => p.name))}</div>
       </div>
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">

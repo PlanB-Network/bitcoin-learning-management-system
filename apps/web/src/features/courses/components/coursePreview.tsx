@@ -6,16 +6,16 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
-import { JoinedCourse } from '@sovereign-university/types';
-
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
 import { compose, computeAssetCdnUrl } from '../../../utils';
+import { joinWords } from '../../../utils/string';
+import { TRPCRouterOutput } from '../../../utils/trpc';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface CoursePreviewProps {
-  course: JoinedCourse;
+  course: NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
   selected: boolean;
 }
 
@@ -66,7 +66,9 @@ export const CoursePreview = ({ course, selected }: CoursePreviewProps) => {
           </h5>
           <hr className="border-blue-1000 mt-1 hidden w-24 sm:inline" />
           <h6 className="mt-2 text-xs font-light sm:text-xs">
-            {t('courses.preview.by', { teacher: course.teacher })}
+            {t('courses.preview.by', {
+              professor: joinWords(course.professors.map((p) => p.name)),
+            })}
           </h6>
           <div className="text-blue-1000 mt-1 overflow-hidden text-ellipsis text-xs italic tracking-wide sm:mt-3 sm:line-clamp-4 sm:text-sm">
             {course.goal}

@@ -29,5 +29,4 @@ export type CoursePart = Pick<
 export type JoinedCourseChapter = Pick<
   CourseChapterLocalized,
   'part' | 'chapter' | 'language' | 'title' | 'sections' | 'raw_content'
-> &
-  'part_title';
+> & { part_title: string };

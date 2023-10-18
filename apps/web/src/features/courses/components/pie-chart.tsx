@@ -41,13 +41,13 @@ export default function PieChart({
     const data = [1, 1, 1, 1, 1];
 
     // Calculate angles for the pie slices
-    const pie = d3.pie()(data);
+    const pie = d3.pie<number>()(data);
 
     // Create an arc generator
     const arcGenerator = d3
-      .arc()
+      .arc<d3.PieArcDatum<number>>()
       .innerRadius(0)
-      .outerRadius((d, i) =>
+      .outerRadius((_, i) =>
         selectedPieNumber === i
           ? Math.min(width, height) / 2
           : Math.min(width, height) / 2 - 10,

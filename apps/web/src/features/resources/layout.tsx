@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router';
+import { Link, RegisteredRouter, ToPathOption } from '@tanstack/react-router';
 import { ReactNode } from 'react';
 
 import { MainLayout } from '../../components/MainLayout';
@@ -18,7 +18,7 @@ interface Props {
   };
   pagination?: boolean;
   className?: string;
-  link?: string;
+  link?: ToPathOption<RegisteredRouter['routeTree']>;
 }
 
 export const ResourceLayout = ({

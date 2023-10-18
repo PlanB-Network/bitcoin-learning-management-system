@@ -16,13 +16,11 @@ import { TopicPicker } from '../components/topic-picker';
 
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();
-  const { data: courses } = trpc.content.getCourses.useQuery();
+  const { data: courses } = trpc.content.getCourses.useQuery({
+    language: i18n.language,
+  });
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [activeLevels, setActiveLevels] = useState<string[]>([]);
-
-  const coursesInLanguage = courses?.filter(
-    (course) => course.language === i18n.language,
-  );
 
   // Hardcoded unreleased courses
   const unreleasedCourses: Course[] = [
@@ -112,10 +110,7 @@ export const CoursesExplorer = () => {
     },
   ];
 
-  const coursesWithUnreleased = [
-    ...(coursesInLanguage || []),
-    ...unreleasedCourses,
-  ];
+  const coursesWithUnreleased = [...(courses || []), ...unreleasedCourses];
 
   function handleSetActiveCategories(category: string) {
     const newActiveCategories = [...activeCategories];
@@ -199,7 +194,7 @@ export const CoursesExplorer = () => {
         </div>
 
         <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
-          {coursesInLanguage?.map((course) => (
+          {courses?.map((course) => (
             <CoursePreview
               course={course}
               key={course.id}

@@ -102,7 +102,7 @@
       "count": "Parte n°{{count}}/{{total}}"
     },
     "preview": {
-      "by": "da {{teacher}}",
+      "by": "da {{professor}}",
       "letsgo": "Andiamo ad andare"
     },
     "unreleased": {
