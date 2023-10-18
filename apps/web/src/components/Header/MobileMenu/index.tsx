@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
-import headerImage from '../../../assets/lapin-diplome.png';
+import PlanBLogo from '../../../assets/planb_logo.svg?react';
 import { useDisclosure } from '../../../hooks/use-disclosure';
 import { compose } from '../../../utils';
 import { MetaElements } from '../MetaElements';
@@ -37,11 +37,7 @@ export const MobileMenu = ({
     <>
       <div className="flex w-full flex-row justify-center">
         <Link className="justify-center" to="/">
-          <img
-            className="h-10 lg:h-16"
-            src={headerImage}
-            alt={t('imagesAlt.decouvreBitcoinLogo')}
-          />
+          <PlanBLogo className="h-10 lg:h-16" />
         </Link>
       </div>
       <FaBars
