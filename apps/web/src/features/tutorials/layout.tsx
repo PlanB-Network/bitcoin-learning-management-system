@@ -174,6 +174,23 @@ export const TutorialLayout = ({
           </div>
         </div>
         <div className="col-span-4 lg:col-span-3 2xl:col-span-2">
+          {/* Menu to add */}
+          {/* <div className="w-96 bg-blue-200 lg:hidden">
+            {TUTORIALS_CATEGORIES.map((tutorialCategory) => {
+              return (
+                <div className="grid grid-cols-5">
+                  <img
+                    className="col-span-1"
+                    src={tutorialCategory.image}
+                    alt="category"
+                  />
+                  <span className="col-span-4 uppercase text-blue-800">
+                    {tutorialCategory.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div> */}
           {children}
         </div>
       </div>

@@ -93,6 +93,13 @@ export const TutorialCategory = () => {
 
   return (
     <TutorialLayout currentCategory={category}>
+      <div className="mb-6 mt-[-1rem] w-full max-w-5xl lg:hidden">
+        <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
+          <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
+          <span className="capitalize">{tutorialCategory.name}</span>
+        </span>
+      </div>
+
       <div className="col-span-3 space-y-4 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
         <div className="flex w-full flex-row items-center justify-start">
           <CategoryIcon
@@ -115,9 +122,9 @@ export const TutorialCategory = () => {
                     key={subCategory}
                     className={({ selected }) =>
                       compose(
-                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-2.5 font-medium text-blue-800 capitalize',
+                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-4 font-medium text-blue-800 capitalize',
                         selected
-                          ? 'bg-orange-600 shadow'
+                          ? 'bg-blue-800 text-white shadow'
                           : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-600',
                       )
                     }

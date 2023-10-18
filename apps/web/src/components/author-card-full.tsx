@@ -66,25 +66,16 @@ export const AuthorCardFull = ({
             <div className="relative grow flex-col py-2">
               <div className="flex flex-col justify-between px-5 py-0">
                 <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
-                  <div className="flex items-center gap-2 ">
-                    <div className="font-semibold">
-                      {professor.courses_count}
-                    </div>
-                    <div className="">{t('words.courses')}</div>
-                  </div>
-                  <span className="text-lg sm:text-3xl">•</span>
-                  <div className="flex items-center gap-2">
-                    <div className="font-semibold">
-                      {professor.tutorials_count}
-                    </div>
-                    <div className="">{t('words.tutorials')}</div>
-                  </div>
+                  <p className="text-sm">{professor.bio}</p>
                 </div>
 
                 <div className="mt-2 flex flex-wrap content-start items-start gap-2.5 self-stretch text-sm text-blue-700 sm:mt-4 sm:text-lg">
                   {professor.tags?.map((tag) => {
                     return (
-                      <div className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-4 py-1">
+                      <div
+                        key={tag}
+                        className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-4 py-1 text-xs"
+                      >
                         {tag}
                       </div>
                     );

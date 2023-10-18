@@ -6,9 +6,9 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';
-import { AuthorCard } from '../../../components/author-card';
-import { ProfessorCard } from '../../../components/professor-card';
+import { AuthorCardFull } from '../../../components/author-card-full';
 import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils/trpc';
 import { ResourceLayout } from '../../resources/layout';
@@ -27,6 +27,7 @@ export const ProfessorDetail = () => {
     language: i18n.language,
   });
   const navigateTo404Called = useRef(false);
+  console.log('Prof:', professor);
 
   useEffect(() => {
     if (!professor && isFetched && !navigateTo404Called.current) {
@@ -43,14 +44,19 @@ export const ProfessorDetail = () => {
     >
       {professor && (
         <div className="text-white">
-          <AuthorCard professor={professor} />
+          <div className="mt-4 flex w-full flex-col items-center">
+            <AuthorCardFull professor={professor} />
+          </div>
           <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
             <img src={handWriting} alt="" className=" h-5 w-5" />
             <span>{t('words.courses')}</span>
           </div>
           <p>-----</p>
           <p>-----</p>
-          <p>TUTORIALS</p>
+          <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
+            <img src={yellowBook} alt="" className=" h-5 w-5" />
+            <span>{t('words.tutorials')}</span>
+          </div>
           <p>-----</p>
           <p>-----</p>
         </div>
