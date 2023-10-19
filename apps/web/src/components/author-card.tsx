@@ -39,15 +39,22 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   href={professor.links.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
                 >
                   <TwitterIcon className="h-20" />
                 </a>
               )}
               {professor.links.website && (
                 <a
+                  className="z-[5000]"
                   href={professor.links.website}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
                 >
                   <WebIcon className="h-20" />
                 </a>
@@ -96,7 +103,11 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 </div>
                 <div
                   className="z-50 ml-4 h-8 w-8 self-start"
-                  onClick={openTipModal}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openTipModal();
+                  }}
                 >
                   <TooltipWithContent
                     text={t('tutorials.details.tipTooltip')}
