@@ -21,10 +21,15 @@ export const RESOURCES_CATEGORIES = [
     unreleased: false,
   },
   {
+    name: 'bet',
+    image: articleSvg,
+    unreleased: false,
+  },
+  /* {
     name: 'articles',
     image: articleSvg,
     unreleased: true,
-  },
+  }, */
   {
     name: 'newsletters',
     image: newsletterSvg,

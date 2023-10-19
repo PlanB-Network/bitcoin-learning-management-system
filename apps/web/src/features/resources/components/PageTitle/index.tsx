@@ -18,13 +18,13 @@ export const PageTitle = ({ children, variant }: PageTitleProps) => {
 
   return (
     <div className="flex h-12 flex-row items-center sm:h-max">
-      <h1 className="mx-2 mb-1 mt-2 w-max bg-orange-400 p-2 text-xl font-bold uppercase text-white sm:mx-8 sm:mt-4 sm:p-4 sm:text-2xl lg:text-4xl 2xl:text-6xl">
+      <h1 className="mx-2 w-max bg-orange-500 p-2 pb-1 text-xl font-bold uppercase text-white sm:mx-8 sm:mt-4 sm:px-4 sm:text-2xl lg:text-4xl 2xl:text-6xl">
         {children}
       </h1>
       <img
         src={rabbitWithBook}
         alt={t('imagesAlt.readingRabbit')}
-        className="ml-4 h-full sm:ml-8"
+        className="h-full self-end"
       ></img>
     </div>
   );

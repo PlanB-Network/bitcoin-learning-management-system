@@ -1,6 +1,7 @@
 import { Route } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root';
+import { NodeNetwork } from '../resources/pages/node-network';
 
 import { Home } from './pages/home';
 import { Manifesto } from './pages/manifesto';
@@ -58,9 +59,16 @@ export const underConstructionRoute = new Route({
   component: UnderConstruction,
 });
 
+export const nodeNetworkRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/node-network',
+  component: NodeNetwork,
+});
+
 export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
+  nodeNetworkRoute,
   manifestoRoute,
   notFoundRoute,
   sponsorsAndContributorsRoute,
