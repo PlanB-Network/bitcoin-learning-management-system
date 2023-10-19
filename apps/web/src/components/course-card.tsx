@@ -26,7 +26,7 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
 
   function handleCardClick() {
     if (!isScreenMd) {
-      navigate({ to: '/' });
+      navigate({ to: '/courses/$courseId', params: { courseId: course.id } });
     }
   }
 
