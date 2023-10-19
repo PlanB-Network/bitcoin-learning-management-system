@@ -22,14 +22,14 @@ export const RESOURCES_CATEGORIES = [
   },
   {
     name: 'bet',
-    image: couchSvg,
+    image: articleSvg,
     unreleased: false,
   },
-  {
+  /* {
     name: 'articles',
     image: articleSvg,
     unreleased: true,
-  },
+  }, */
   {
     name: 'newsletters',
     image: newsletterSvg,

@@ -1,51 +1,164 @@
-import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+
+import { cn } from '@sovereign-university/ui';
 
 import btcHere from '../../../assets/resources/btcherep.png';
 import figmaImage from '../../../assets/resources/figmaimg.png';
 import { ResourceLayout } from '../layout';
 
-const FigmaBox = ({ title, description, figmaUrl, imgFig }) => {
+const LinkBox = ({
+  title,
+  description,
+  figmaUrl,
+  imgFig,
+  cardColor,
+  hoverColor,
+}: {
+  title: string;
+  description: string;
+  figmaUrl: string;
+  imgFig: string;
+  cardColor: string;
+  hoverColor: string;
+}) => {
   return (
     <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
-      <div className="rounded-lg bg-red-600 p-2 shadow-md hover:bg-blue-600 sm:p-4">
+      <div
+        className={cn(
+          'shrink-0 h-full rounded-lg bg-red-600 p-3 shadow-md hover:bg-blue-600 sm:p-4',
+          cardColor,
+          hoverColor,
+        )}
+      >
         <img
           src={imgFig}
           alt={title}
           className="mb-4 h-32 w-full object-cover"
         />
-        <h3 className="mb-2 text-base font-semibold text-gray-100 sm:text-lg">
-          {title}
-        </h3>
-        <p className="text-xs text-gray-100 sm:text-base">{description}</p>
+        <h3 className="mb-2 font-semibold">{title}</h3>
+        <p className="text-xs sm:text-sm">{description}</p>
       </div>
     </a>
   );
 };
 
-const FigmaBoxContent = ({ title, description, figmaUrl, imgFig }) => {
+const Section = ({ children }: { children: React.ReactNode }) => {
+  return <div className="space-y-2">{children}</div>;
+};
+
+const SectionTitle = ({ children }: { children: string }) => {
   return (
-    <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
-      <div className="w-11/12 rounded-lg bg-green-700 p-2 shadow-md hover:bg-blue-500 sm:w-full sm:p-4">
-        <img
-          src={imgFig}
-          alt={title}
-          className="mb-4 h-32 w-full object-cover"
-        />
-        <h3 className="mb-2 text-base font-semibold text-gray-100 sm:text-lg">
-          {title}
-        </h3>
-        <p className="text-xs text-gray-100 sm:text-base">{description}</p>
+    <h2 className="text-xl font-normal underline decoration-orange-600 decoration-[3px] underline-offset-[5px] sm:text-2xl">
+      {children}
+    </h2>
+  );
+};
+
+const SectionDescription = ({ children }: { children: string }) => {
+  return <p className="text-xs font-light italic sm:text-base">{children}</p>;
+};
+
+const SectionGrid = ({
+  elements,
+  cardColor,
+  hoverColor,
+}: {
+  elements: {
+    title: string;
+    description: string;
+    figmaUrl: string;
+    imgFig: string;
+  }[];
+  cardColor: string;
+  hoverColor: string;
+}) => {
+  return (
+    <div className="overflow-x-auto py-6">
+      <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+        {elements.map((item, index) => (
+          <LinkBox
+            key={index}
+            {...item}
+            cardColor={cardColor}
+            hoverColor={hoverColor}
+          />
+        ))}
       </div>
-    </a>
+    </div>
   );
 };
 
 export const BET = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // Define the Figma box data. For now, the links and images have not been created.
-  const figmaData = [
+  const EDUCATIONAL_CONTENT = [
+    {
+      title: 'Adil Infography',
+      description: 'By Adil',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: figmaImage,
+    },
+    {
+      title: 'Proyecto 2',
+      description: 'Example',
+      figmaUrl:
+        'https://www.figma.com/file/8N8qLeToPHxXmz0y3xLXAZ/University?type=design&node-id=60%3A12430&mode=design&t=AYsecW2YENpMp9I0-1',
+      imgFig: figmaImage,
+    },
+    {
+      title: 'Proyecto 3',
+      description: 'Descripción del proyecto 3',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: figmaImage,
+    },
+    {
+      title: 'Bitcoin accepted here',
+      description: 'Stickers designs',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: figmaImage,
+    },
+    {
+      title: 'Bitcoin meme',
+      description: 'Memes of Bitcoin',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: btcHere,
+    },
+    {
+      title: 'Propaganda Posters',
+      description: 'Propaganda Bitcoin posters',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: btcHere,
+    },
+    {
+      title: 'Hyperinflations Bills',
+      description: 'Corporate Billing',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: btcHere,
+    },
+    {
+      title: 'Bitcoin book',
+      description: 'Bitcoin Guides',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: btcHere,
+    },
+    {
+      title: 'Company and project logos',
+      description: 'Bitcoin Companies',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
+      imgFig: btcHere,
+    },
+  ];
+
+  const VISUAL_CONTENT = [
     {
       title: 'Adil Infography',
       description: 'By Adil',
@@ -112,72 +225,42 @@ export const BET = () => {
   ];
 
   return (
-    <ResourceLayout
-      title={t('Bitcoin Educational  ')}
-      tagLine={t(
-        'the beT - A Bitcoin open-source ToolKIt for all educational projects',
-      )}
-    >
-      <div className=" px-2">
-        <p className="mx-6 pl-0 pr-10  text-gray-100">
-          The Sovereign University supports bitcoin educators and local
-          communities all over the world, to helpspread bitcoin adoption.
-          Towards that goal, we collect and make accessible a large database, of
-          both educational content (created by us and by others), as well as
-          visual data.
+    <ResourceLayout title={t('bet.pageTitle')} tagLine={t('bet.pageSubtitle')}>
+      <div className="space-y-8 px-4 text-gray-100 sm:px-8">
+        <div className="max-w-3xl space-y-4">
+          <p className="max-w-3xl">{t('bet.pageDescription')}</p>
+          <h1 className="font-semibold ">{t('bet.hereForYou')}</h1>
+        </div>
+
+        {/* Section of Educational Content */}
+        <Section>
+          <SectionTitle>{t('bet.educationalContent.title')}</SectionTitle>
+          <SectionDescription>
+            {t('bet.educationalContent.description')}
+          </SectionDescription>
+          <SectionGrid
+            elements={EDUCATIONAL_CONTENT.slice(0, 4)}
+            cardColor="bg-red-600"
+            hoverColor="hover:bg-blue-600"
+          />
+        </Section>
+
+        {/* Section of Visual Content */}
+        <Section>
+          <SectionTitle>{t('bet.visualContent.title')}</SectionTitle>
+          <SectionDescription>
+            {t('bet.visualContent.description')}
+          </SectionDescription>
+          <SectionGrid
+            elements={VISUAL_CONTENT.slice(5, 8)}
+            cardColor="bg-green-600"
+            hoverColor="hover:bg-blue-500"
+          />
+        </Section>
+
+        <p className="border-y-2 px-8 py-5 text-center uppercase">
+          {t('bet.contribute')}
         </p>
-        <h1 className="my-4 px-6 font-semibold text-gray-100">
-          BET IS HERE FOR YOU!
-        </h1>
-        <div className="mt-4 grid  ">
-          {/* Section of Educational Content */}
-          <div className="mb-2  ">
-            <h2 className="mb-0 text-2xl font-normal text-gray-100">
-              Educational Content
-              <hr className="mb-2 w-64 border-t-2 border-orange-600" />
-            </h2>
-            <p className=" text-base font-light italic text-gray-100">
-              This content is meant to be ready to use for educational events
-              and use.
-            </p>
-
-            <div className="mt-6   overflow-x-auto">
-              <div className=" grid grid-cols-2 gap-4   sm:w-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-                {figmaData.slice(0, 4).map((item, index) => (
-                  <FigmaBox key={index} {...item} />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Section of Visual Content */}
-          <div className="mt-2">
-            <h2 className="mb-0 text-2xl font-normal text-gray-100">
-              Visual Content
-              <hr className="mb-2 w-44 border-t-2 border-orange-600" />
-            </h2>
-            <p className=" text-base font-light italic text-gray-100">
-              This content is raw visual data, to be used for your creations.
-            </p>
-
-            <div className="mt-6  overflow-x-auto">
-              <div className="grid  w-auto grid-cols-2 place-content-center  gap-4 sm:w-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-                {figmaData.slice(5, 8).map((item, index) => (
-                  <FigmaBoxContent key={index} {...item} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="my-6 items-center">
-          <hr />
-          <p className="mx-8 my-5 px-6 text-center uppercase text-gray-100">
-            This toolkit is open to contribution. It uses Figma, so anyone can
-            add, modify and translate. To coLlaBorate, add a category or
-            discuss, don't hesitate to join our discord.
-          </p>
-          <hr />
-        </div>
       </div>
     </ResourceLayout>
   );

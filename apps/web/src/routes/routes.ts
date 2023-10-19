@@ -24,7 +24,7 @@ export enum Routes {
   Books = '/resources/books',
   Book = '/resources/books/:bookId/:language',
   Podcasts = '/resources/podcasts',
-  BET = 'resources/bet',
+  BET = '/resources/bet',
   Podcast = '/resources/podcast/:podcastId',
   Builders = '/resources/builders',
   Builder = '/resources/builder/:builderId/:language',

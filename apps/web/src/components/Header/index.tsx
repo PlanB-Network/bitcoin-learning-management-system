@@ -8,7 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsFileText, BsMic, BsPlus } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
-import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
+import {
+  IoBusinessOutline,
+  IoLibraryOutline,
+  IoSchoolOutline,
+} from 'react-icons/io5';
 
 import { useDisclosure } from '../../hooks/use-disclosure';
 import { Routes } from '../../routes/routes';
@@ -130,6 +134,13 @@ export const Header = () => {
               description: t('menu.buildersDescription'),
               path: Routes.Builders,
               icon: IoBusinessOutline,
+            },
+            {
+              id: 'bet',
+              title: t('bet.pageTitle'),
+              description: t('menu.betDescription'),
+              path: Routes.BET,
+              icon: IoSchoolOutline,
             },
           ],
         },

@@ -42,6 +42,21 @@
     "sendLink": "Envoyer un lien",
     "signIn": "Sign In"
   },
+  "bet": {
+    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
+    "educationalContent": {
+      "description": "This content is meant to be ready to use for educational events and use.",
+      "title": "Educational Content"
+    },
+    "hereForYou": "The BET is here for you!",
+    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
+    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
+    "pageTitle": "Bitcoin Educational Toolkit",
+    "visualContent": {
+      "description": "This content is raw visual data, to be used for your creations.",
+      "title": "Visual Content"
+    }
+  },
   "book": {
     "abstract": "Abstract",
     "bookSummary": {
@@ -227,6 +242,7 @@
     "writtenBy": "Written by {{author}}"
   },
   "menu": {
+    "betDescription": "Collection of content that you can use for your educational projects",
     "btc101Description": "Get a better understanding of bitcoin with this lessons",
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
     "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
@@ -269,6 +285,9 @@
   "resources": {
     "articles": {
       "title": "Articles"
+    },
+    "bet": {
+      "title": "Educational Toolkit"
     },
     "books": {
       "title": "Books"
