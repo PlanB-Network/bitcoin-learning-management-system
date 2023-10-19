@@ -69,7 +69,7 @@ export const TipModal = ({
           </>
         ) : (
           <p className="text-center text-xs font-light text-blue-800 md:text-base">
-            This professor do not accept tips at the moment.
+            {t('professors.tips.noTipsYet')}
           </p>
         )}
       </div>

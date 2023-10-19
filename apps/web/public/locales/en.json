@@ -262,7 +262,8 @@
     "pageTitle": "Professors",
     "tips": {
       "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "thanksNoName": "Thanks for supporting my work !",
+      "noTipsYet": "This professor does not accept tips at the moment."
     }
   },
   "resources": {
