@@ -115,12 +115,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             to={'/courses/$courseId'}
             params={{ courseId: chapter.course.id }}
           >
-            <div
-              className="mr-2 rounded-full bg-orange-500 p-2 text-sm"
-              title={t('courses.details.courseId', {
-                courseId: chapter.course.id,
-              })}
-            >
+            <div className="mr-2 rounded-full bg-orange-500 p-2 text-center text-sm">
               <span className="uppercase text-white">
                 {addSpaceToCourseId(chapter.course.id)}
               </span>
@@ -553,7 +548,7 @@ export const CourseChapter = () => {
             )}
 
             {/* Only on big screens */}
-            <div className=" hidden sm:flex ">
+            <div className=" hidden md:flex ">
               <div className="grow break-words">
                 <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
                   <HeaderBig chapter={chapter} />
@@ -582,8 +577,8 @@ export const CourseChapter = () => {
               </div>
             </div>
             {/* Only on small screens */}
-            <div className="block sm:hidden sm:w-full sm:max-w-xl">
-              <div className="text-blue-1000 w-3/4 md:mt-8 md:px-2">
+            <div className="flex w-full flex-col items-center justify-center md:hidden">
+              <div className="text-blue-1000 w-full px-5 ">
                 <HeaderSmall chapter={chapter} />
                 <MarkdownContent chapter={chapter} />
                 {questionsArray && questionsArray.length > 0 ? (

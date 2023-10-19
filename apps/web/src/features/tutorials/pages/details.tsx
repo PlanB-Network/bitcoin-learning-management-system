@@ -6,6 +6,7 @@ import { AuthorCard } from '../../../components/author-card';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { TooltipWithContent } from '../../../components/tooptip-with-content';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
+import { TRPCRouterOutput } from '../../../utils/trpc';
 import { TutorialLayout } from '../layout';
 
 export const TutorialDetails = () => {
@@ -46,6 +47,34 @@ export const TutorialDetails = () => {
     );
   }
 
+  function header(
+    tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>,
+  ) {
+    return (
+      <div className="px-5 sm:px-0">
+        <h1 className="border-b-[0.2rem] border-gray-400/50 py-2 text-left text-2xl font-bold uppercase text-blue-800 sm:text-4xl">
+          {tutorial.title}
+        </h1>
+        <div className="mt-4 flex flex-row justify-between">
+          {headerAndFooterText(
+            tutorial.credits?.name as string,
+            tutorial.credits?.link as string,
+          )}
+          {(tutorial.credits?.name || tutorial.credits?.link) && (
+            <div>
+              <TooltipWithContent
+                text={t('tutorials.details.tipTooltip')}
+                position="bottom"
+              >
+                <DonateLightning />
+              </TooltipWithContent>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <TutorialLayout
       currentCategory={tutorial?.category}
@@ -67,29 +96,9 @@ export const TutorialDetails = () => {
               <span className="capitalize">{tutorial.title}</span>
             </span>
           </div>
-          <div className="flex flex-col items-center justify-center sm:px-2">
-            <div className="mt-4 space-y-6 px-5 text-blue-900 sm:max-w-3xl md:px-0">
-              <div className="px-5 sm:px-0">
-                <h1 className="border-b-[0.2rem] border-gray-400/50 py-2 text-left text-2xl font-bold uppercase text-blue-800 sm:text-4xl">
-                  {tutorial.title}
-                </h1>
-                <div className="mt-4 flex flex-row justify-between">
-                  {headerAndFooterText(
-                    tutorial.credits?.name as string,
-                    tutorial.credits?.link as string,
-                  )}
-                  {(tutorial.credits?.name || tutorial.credits?.link) && (
-                    <div>
-                      <TooltipWithContent
-                        text={t('tutorials.details.tipTooltip')}
-                        position="bottom"
-                      >
-                        <DonateLightning />
-                      </TooltipWithContent>
-                    </div>
-                  )}
-                </div>
-              </div>
+          <div className="flex w-full flex-col items-center justify-center px-2">
+            <div className="mt-4 w-full space-y-6 text-blue-900 md:max-w-3xl">
+              {header(tutorial)}
               <MarkdownBody
                 content={tutorial.raw_content}
                 assetPrefix={computeAssetCdnUrl(
