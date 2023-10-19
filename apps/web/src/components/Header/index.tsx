@@ -6,11 +6,9 @@ import { capitalize } from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
-import { BsFileText, BsHeart, BsMic, BsPlus } from 'react-icons/bs';
+import { BsFileText, BsMic, BsPlus } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { IoBusinessOutline, IoLibraryOutline } from 'react-icons/io5';
-
-import { JoinedCourse } from '@sovereign-university/types';
 
 import { useDisclosure } from '../../hooks/use-disclosure';
 import { Routes } from '../../routes/routes';
@@ -36,7 +34,7 @@ export const Header = () => {
     close: closeAuthModal,
   } = useDisclosure();
 
-  // Change this when better auth flow is implemented (this is awful)
+  // Todo change this when better auth flow is implemented (this is awful)
   const [authMode, setAuthMode] = useState<AuthModalState>(
     AuthModalState.SignIn,
   );
@@ -96,13 +94,12 @@ export const Header = () => {
     },
   );
 
-  const sections: NavigationSection[] = [
+  // Todo, refactor desktop/mobile duplication
+  const desktopSections: NavigationSection[] = [
     {
       id: 'courses',
       title: t('words.courses'),
       path: Routes.Courses,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       items: coursesItems,
     },
     {
@@ -177,21 +174,89 @@ export const Header = () => {
               path: Routes.Manifesto,
               icon: BsFileText,
             },
-            // {
-            //   id: 'sponsors-and-contributors',
-            //   title: t('words.sponsoringAndContributors'),
-            //   description: t('menu.sponsorsDescription'),
-            //   path: Routes.UnderConstruction,
-            //   icon: BsHeart,
-            // },
+          ],
+        },
+      ],
+    },
+  ];
 
-            /*{
-              id: 'support-us',
-              title: t('words.supportUs'),
-              description: t('menu.supportUsDescription'),
-              path: Routes.UnderConstruction,
-              icon: BiDonateHeart,
-            }, */
+  const mobileSections: NavigationSection[] = [
+    {
+      id: 'courses',
+      title: t('words.courses'),
+      path: Routes.Courses,
+      items: coursesItems,
+    },
+    {
+      id: 'resources',
+      title: t('words.resources'),
+      path: Routes.Resources,
+      items: [
+        {
+          id: 'resources-nested',
+          items: [
+            {
+              id: 'library',
+              title: t('words.library'),
+              icon: IoLibraryOutline,
+              description: t('menu.libraryDescription'),
+              path: Routes.Books,
+            },
+            {
+              id: 'podcasts',
+              title: t('words.podcasts'),
+              description: t('menu.podcastsDescription'),
+              path: Routes.Podcasts,
+              icon: BsMic,
+            },
+            {
+              id: 'builders',
+              title: t('words.builders'),
+              description: t('menu.buildersDescription'),
+              path: Routes.Builders,
+              icon: IoBusinessOutline,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'tutorials',
+      title: t('words.tutorials'),
+      path: Routes.Tutorials,
+      items: [
+        {
+          id: 'tutorial-nested',
+          items: TUTORIALS_CATEGORIES.map((category) => ({
+            id: category.name,
+            title: t(`tutorials.${category.name}.title`),
+            path: category.route,
+            icon: category.icon,
+            description: t(`tutorials.${category.name}.shortDescription`),
+          })),
+        },
+      ],
+    },
+    {
+      id: 'professors',
+      title: t('words.professors'),
+      path: Routes.Professors,
+    },
+    {
+      id: 'about-us',
+      title: t('words.about-us'),
+      path: Routes.Manifesto,
+      items: [
+        {
+          id: 'about-us-nested',
+          items: [
+            {
+              id: 'manifesto',
+              title: t('words.manifesto'),
+              description: t('menu.manifestoDescription'),
+              path: Routes.Manifesto,
+              icon: BsFileText,
+            },
           ],
         },
       ],
@@ -220,7 +285,7 @@ export const Header = () => {
             setAuthMode(AuthModalState.Register);
             openAuthModal();
           }}
-          sections={sections}
+          sections={desktopSections}
         />
       ) : (
         <MobileMenu
@@ -232,7 +297,7 @@ export const Header = () => {
             setAuthMode(AuthModalState.Register);
             openAuthModal();
           }}
-          sections={homeSection.concat(sections)}
+          sections={homeSection.concat(mobileSections)}
         />
       )}
 

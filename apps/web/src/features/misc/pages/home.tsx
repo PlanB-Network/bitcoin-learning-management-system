@@ -187,13 +187,18 @@ export const Home = () => {
                   );
                 })}
               </div>
-              <Button
-                variant="tertiary"
+              <Link
+                to={'/courses'}
                 className="mt-6 self-center rounded-3xl md:self-start"
-                iconRight={<AiOutlineRight />}
               >
-                {t('home.section1.link')}
-              </Button>
+                <Button
+                  variant="tertiary"
+                  className=" rounded-3xl"
+                  iconRight={<AiOutlineRight />}
+                >
+                  {t('home.section1.link')}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
