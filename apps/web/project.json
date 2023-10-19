@@ -9,8 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/web",
-        "skipTypeCheck": true
+        "outputPath": "dist/apps/web"
       },
       "configurations": {
         "development": {

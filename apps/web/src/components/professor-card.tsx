@@ -6,7 +6,7 @@ import WebIcon from '../assets/icons/web_blue.svg?react';
 import { TRPCRouterOutput } from '../utils/trpc';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
+  professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
 }
 
 const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {

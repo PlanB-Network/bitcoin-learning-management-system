@@ -10,7 +10,7 @@ import { TipModal } from './tip-modal';
 import { TooltipWithContent } from './tooptip-with-content';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
+  professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
 }
 
 export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
