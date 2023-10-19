@@ -391,7 +391,11 @@ export const CourseDetails: React.FC = () => {
                 }}
                 key={professor.id}
               >
-                <AuthorCard className="sm:mt-4" professor={professor} />
+                <AuthorCard
+                  key={professor.id}
+                  className="sm:mt-4"
+                  professor={professor}
+                />
               </Link>
             ))}
           </div>

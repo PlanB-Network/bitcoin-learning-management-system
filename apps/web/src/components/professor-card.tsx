@@ -32,7 +32,10 @@ const TopicTags = ({ professor }: ProfessorCardProps) => {
     <div className="mt-4 flex flex-wrap  items-start gap-2.5 self-stretch text-xs text-blue-700">
       {professor.tags.map((tag) => {
         return (
-          <div className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-2 py-1">
+          <div
+            key={tag}
+            className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-2 py-1"
+          >
             {tag}
           </div>
         );
@@ -43,7 +46,7 @@ const TopicTags = ({ professor }: ProfessorCardProps) => {
 
 const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-2 flex justify-between self-stretch px-1">
+    <div className="mt-2 flex w-full justify-evenly self-stretch px-1">
       {professor.links.twitter && (
         <a
           href={professor.links.twitter}
@@ -90,7 +93,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               <CourseAndTutorials professor={professor} />
               <TopicTags professor={professor} />
             </div>
-            <div className="flex w-full flex-col px-16">
+            <div className="flex w-full flex-col px-4">
               <SocialLinks professor={professor} />
             </div>
           </div>

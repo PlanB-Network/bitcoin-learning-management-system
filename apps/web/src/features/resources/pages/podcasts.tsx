@@ -32,7 +32,7 @@ export const Podcasts = () => {
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
           )
           .map((podcast) => (
-            <div>
+            <div key={podcast.id}>
               <Link
                 className="group z-10 m-auto mx-2 mb-5 h-fit w-20 min-w-[100px] delay-100 hover:z-20 hover:delay-0"
                 to={'/resources/podcast/$podcastId'}

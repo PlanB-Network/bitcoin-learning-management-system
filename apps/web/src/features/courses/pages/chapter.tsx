@@ -208,7 +208,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
           const lastPart = currentPart.part === chapter.course.parts.length;
 
           return (
-            <div className="flex h-4 grow flex-row">
+            <div className="flex h-4 grow flex-row" key={currentPart.part}>
               {currentPart.chapters.map((currentChapter, chapterIndex) => {
                 const firstChapter = currentChapter.chapter === 1;
                 const lastChapter =

@@ -44,7 +44,10 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
             </p>
             <div className="flex flex-row items-center justify-start space-x-2 pt-3">
               {tutorial.tags.map((tag) => (
-                <div className="rounded-lg bg-gray-100 px-1.5 py-1 text-xs text-blue-800 shadow-md">
+                <div
+                  key={tag}
+                  className="rounded-lg bg-gray-100 px-1.5 py-1 text-xs text-blue-800 shadow-md"
+                >
                   {tag}
                 </div>
               ))}
@@ -83,7 +86,10 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
 
             <div className="flex flex-wrap items-center justify-start gap-2 pt-3">
               {tutorial.tags.map((tag) => (
-                <div className="rounded-lg bg-gray-100 px-1.5 py-1 text-xs text-blue-800 shadow-md">
+                <div
+                  key={tag}
+                  className="rounded-lg bg-gray-100 px-1.5 py-1 text-xs text-blue-800 shadow-md"
+                >
                   {tag}
                 </div>
               ))}

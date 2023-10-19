@@ -60,11 +60,11 @@ export const NavigationPanel: React.FC<Props> = ({
       <div>
         <ul className="flex flex-col gap-2">
           {chapters.map((chapter, index) => (
-            <>
+            <div key={`${chapter.part}${chapter.chapter}`}>
               {chapter.chapter === 1 && (
                 <li
                   className={cn(
-                    'grid grid-cols-8 items-center gap-1 text-sm font-semibold mt-1',
+                    'grid grid-cols-8 items-center gap-1 text-sm font-semibold mt-1 mb-1',
                     isChapterPast(chapter, currentChapter)
                       ? 'text-orange-500'
                       : 'text-gray-500',
@@ -113,7 +113,7 @@ export const NavigationPanel: React.FC<Props> = ({
                   </div>
                 </Link>
               </li>
-            </>
+            </div>
           ))}
         </ul>
       </div>

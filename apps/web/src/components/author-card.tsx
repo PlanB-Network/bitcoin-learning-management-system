@@ -79,7 +79,10 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="mt-2 flex flex-wrap content-start items-start gap-2.5 self-stretch text-xs text-blue-700 sm:mt-4 sm:text-lg">
                   {professor.tags?.map((tag) => {
                     return (
-                      <div className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-4 py-1">
+                      <div
+                        key={tag}
+                        className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-4 py-1"
+                      >
                         {tag}
                       </div>
                     );

@@ -58,7 +58,7 @@ export const ProfessorDetail = () => {
           <div className="flex flex-wrap justify-center">
             {professor.courses.map((course) => {
               return (
-                <div className="w-full md:w-72">
+                <div key={course.id} className="w-full md:w-72">
                   <CourseCard course={course} selected={true} key={course.id} />
                 </div>
               );
