@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { Dependencies } from '../../dependencies';
 import { getProfessorsQuery } from '../../professors/queries';
 import { formatProfessor } from '../../professors/services/utils';
@@ -9,18 +11,19 @@ export const createGetCourses =
 
     const courses = await postgres.exec(getCoursesQuery(language));
 
-    const professors = await postgres.exec(
-      getProfessorsQuery({
-        contributorIds: courses.flatMap((course) => course.professors),
-        language,
-      }),
-    );
+    const professors = await postgres
+      .exec(
+        getProfessorsQuery({
+          contributorIds: courses.flatMap((course) => course.professors),
+          language,
+        }),
+      )
+      .then((professors) => professors.map(formatProfessor));
+
     return courses.map((course) => ({
       ...course,
-      professors: professors
-        .map(formatProfessor)
-        .filter((professor) =>
-          course.professors.includes(professor.contributor_id),
-        ),
+      professors: professors.filter((professor) =>
+        course.professors.includes(professor.contributor_id),
+      ),
     }));
   };
