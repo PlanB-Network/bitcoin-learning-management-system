@@ -22,7 +22,7 @@ export const AuthorCardFull = ({
   return (
     <div {...props}>
       <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
-        <div className="flex max-w-[610px] items-start">
+        <div className="flex max-w-[44rem] items-start">
           <div className="border-blue-1000 w-fit shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2 sm:flex">
             <img
               src={professor.picture}
@@ -64,7 +64,7 @@ export const AuthorCardFull = ({
               {professor.name}
             </div>
             <div className="relative grow flex-col py-2">
-              <div className="flex flex-col justify-between px-5 py-0">
+              <div className="flex flex-col justify-between px-5 pb-0 pt-2 md:pt-4">
                 <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
                   <p className="text-sm">{professor.bio}</p>
                 </div>

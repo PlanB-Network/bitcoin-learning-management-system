@@ -9,7 +9,8 @@ import { useTranslation } from 'react-i18next';
 import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';
 import { AuthorCardFull } from '../../../components/author-card-full';
-import { CoursePreview } from '../../../components/coursePreview';
+import { CourseCard } from '../../../components/course-card';
+import { TutorialCard } from '../../../components/tutorial-card';
 import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils/trpc';
 import { ResourceLayout } from '../../resources/layout';
@@ -44,7 +45,7 @@ export const ProfessorDetail = () => {
       link={'/professors'}
     >
       {professor && (
-        <div className="text-white">
+        <div className="flex flex-col text-white">
           <div className="mt-4 flex w-full flex-col items-center">
             <AuthorCardFull professor={professor} />
           </div>
@@ -52,15 +53,11 @@ export const ProfessorDetail = () => {
             <img src={handWriting} alt="" className=" h-5 w-5" />
             <span>{t('words.courses')}</span>
           </div>
-          <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+          <div className="flex flex-wrap justify-center px-5">
             {professor.courses.map((course) => {
               return (
-                <div className="w-72">
-                  <CoursePreview
-                    course={course}
-                    selected={true}
-                    key={course.id}
-                  />
+                <div className="w-full md:w-72">
+                  <CourseCard course={course} selected={true} key={course.id} />
                 </div>
               );
             })}
@@ -69,8 +66,17 @@ export const ProfessorDetail = () => {
             <img src={yellowBook} alt="" className=" h-5 w-5" />
             <span>{t('words.tutorials')}</span>
           </div>
-          <p>-----</p>
-          <p>-----</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            {professor.tutorials.map((tutorial) => {
+              return (
+                <TutorialCard
+                  className="w-[25rem]"
+                  tutorial={tutorial}
+                  key={tutorial.id}
+                />
+              );
+            })}
+          </div>
         </div>
       )}
     </ResourceLayout>

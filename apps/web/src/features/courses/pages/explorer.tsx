@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CoursePreview } from '../../../components/coursePreview';
+import { CourseCard } from '../../../components/course-card';
 import { MainLayout } from '../../../components/MainLayout';
 import {
   PageDescription,
@@ -193,9 +193,9 @@ export const CoursesExplorer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+        <div className="grid grid-cols-1 px-5 md:grid-cols-3 lg:max-w-6xl lg:grid-cols-4">
           {courses?.map((course) => (
-            <CoursePreview
+            <CourseCard
               course={course}
               key={course.id}
               selected={
