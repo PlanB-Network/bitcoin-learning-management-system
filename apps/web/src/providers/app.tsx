@@ -3,10 +3,11 @@ import { RouterProvider } from '@tanstack/react-router';
 import type { PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { useTrpc } from '../hooks';
 import { router } from '../routes';
-import { store } from '../store';
+import { persistor, store } from '../store';
 import { trpc } from '../utils/trpc';
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
@@ -21,12 +22,14 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <Provider store={store}>
-      <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
-        <QueryClientProvider client={trpcQueryClient}>
-          <RouterProvider router={router} />
-          {children}
-        </QueryClientProvider>
-      </trpc.Provider>
+      <PersistGate loading={null} persistor={persistor}>
+        <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
+          <QueryClientProvider client={trpcQueryClient}>
+            <RouterProvider router={router} />
+            {children}
+          </QueryClientProvider>
+        </trpc.Provider>
+      </PersistGate>
     </Provider>
   );
 };
