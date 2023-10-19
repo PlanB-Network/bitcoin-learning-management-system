@@ -18,8 +18,8 @@ export const ProfessorExplorer = () => {
       title={t('professors.pageTitle')}
       tagLine={t('professors.pageSubtitle')}
     >
-      <div className="bg-blue-1000 flex flex-col items-center justify-center">
-        <div className="flex max-w-[22rem] flex-wrap  justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
+      <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
+        <div className="flex max-w-[22rem] flex-wrap items-stretch justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
           {professors?.map((professor) => {
             return (
               <Link
@@ -28,10 +28,10 @@ export const ProfessorExplorer = () => {
                   professorId: professor.id.toString(),
                 }}
                 key={professor.id}
-                className="w-full sm:w-auto"
+                className="h-auto w-full sm:w-auto"
               >
-                <div className="hidden sm:block">
-                  <ProfessorCard professor={professor} />
+                <div className="hidden h-full sm:block">
+                  <ProfessorCard professor={professor} className="h-full" />
                 </div>
                 <div className="w-full sm:hidden">
                   <AuthorCard professor={professor} />
