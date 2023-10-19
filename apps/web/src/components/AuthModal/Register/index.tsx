@@ -4,7 +4,7 @@ import {
 } from '@react-hooks-library/core';
 import { Formik, FormikHelpers } from 'formik';
 import { t } from 'i18next';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import { BsCheck } from 'react-icons/bs';

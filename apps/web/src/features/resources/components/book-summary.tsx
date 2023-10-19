@@ -1,5 +1,4 @@
-import { Navigate } from '@tanstack/react-router';
-import _ from 'lodash';
+import { times } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -69,7 +68,7 @@ export const BookSummary = ({
       ) : (
         <div className="flex w-full -translate-y-7 flex-row items-center justify-between px-14">
           <div className="flex gap-1">
-            {_.times(3, (i) => (
+            {times(3, (i) => (
               <img
                 key={i}
                 className="w-4"

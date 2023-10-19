@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { capitalize } from 'lodash';
+import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';

@@ -121,7 +121,7 @@ dependencies:
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
-  lodash:
+  lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
   marked:
@@ -315,9 +315,9 @@ devDependencies:
   '@types/jsonwebtoken':
     specifier: ^9.0.3
     version: 9.0.3
-  '@types/lodash':
-    specifier: ^4.14.199
-    version: 4.14.199
+  '@types/lodash-es':
+    specifier: ^4.17.10
+    version: 4.17.10
   '@types/marked':
     specifier: 5.0.0
     version: 5.0.0
@@ -6495,6 +6495,12 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 18.14.2
+    dev: true
+
+  /@types/lodash-es@4.17.10:
+    resolution: {integrity: sha512-YJP+w/2khSBwbUSFdGsSqmDvmnN3cCKoPOL7Zjle6s30ZtemkkqhjVfFqGwPN7ASil5VyjE2GtyU/yqYY6mC0A==}
+    dependencies:
+      '@types/lodash': 4.14.199
     dev: true
 
   /@types/lodash@4.14.199:

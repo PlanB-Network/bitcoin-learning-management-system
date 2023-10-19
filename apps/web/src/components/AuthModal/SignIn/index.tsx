@@ -3,7 +3,7 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Formik, FormikHelpers } from 'formik';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
