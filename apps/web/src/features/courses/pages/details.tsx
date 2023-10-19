@@ -204,7 +204,7 @@ export const CourseDetails: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div flex-row>
+          <div>
             <div className="flex items-center justify-center">
               <div className="h-0 grow border-t-2 border-orange-600"></div>
               <div className=" p-2">

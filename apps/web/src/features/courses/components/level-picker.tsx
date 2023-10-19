@@ -44,7 +44,7 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
             {/* Mobile */}
             <div
               className="mt-1 flex flex-row place-items-center sm:my-3 sm:hidden"
-              key={index}
+              key={index + 1000}
             >
               <div
                 className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs  ${

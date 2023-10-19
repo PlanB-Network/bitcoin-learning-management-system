@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
-import NostrIcon from '../assets/icons/nostr.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
 import { useDisclosure } from '../hooks';
@@ -35,29 +34,34 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.links.twitter && (
-                <a
-                  href={professor.links.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
+                    window.open(
+                      professor.links.twitter,
+                      '_blank',
+                      'noopener noreferrer',
+                    );
                   }}
                 >
                   <TwitterIcon className="h-20" />
-                </a>
+                </div>
               )}
               {professor.links.website && (
-                <a
-                  className="z-[5000]"
-                  href={professor.links.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
+                    window.open(
+                      professor.links.website,
+                      '_blank',
+                      'noopener noreferrer',
+                    );
                   }}
                 >
                   <WebIcon className="h-20" />
-                </a>
+                </div>
               )}
             </div>
           </div>
