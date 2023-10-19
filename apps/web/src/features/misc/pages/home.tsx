@@ -100,13 +100,19 @@ export const Home = () => {
             </p>
             <p className="mt-6 text-xl">{t('home.header.content1')}</p>
             <p className="mt-6 text-xl">{t('home.header.content2')}</p>
-            <Button
-              variant="tertiary"
-              className="mt-6 hidden rounded-3xl md:flex"
-              iconRight={<AiOutlineRight />}
+            <a
+              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {t('home.header.link')}
-            </Button>
+              <Button
+                variant="tertiary"
+                className="mt-6 hidden rounded-3xl md:flex"
+                iconRight={<AiOutlineRight />}
+              >
+                {t('home.header.link')}
+              </Button>
+            </a>
           </div>
           <div className="col-span-1 flex items-center">
             <WorldMap className="mt-4 h-[100%] w-[100]" />
@@ -220,13 +226,19 @@ export const Home = () => {
             <p className="mt-6 text-xl">{t('home.section2.content1')}</p>
             <p className="mt-6 text-xl">{t('home.section2.content2')}</p>
             <p className="mt-6 text-xl">{t('home.section2.content3')}</p>
-            <Button
-              variant="tertiary"
-              className="mt-6 w-fit self-center rounded-3xl"
-              iconRight={<AiOutlineRight />}
+            <a
+              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {t('home.section2.link')}
-            </Button>
+              <Button
+                variant="tertiary"
+                className="mt-6 w-fit self-center rounded-3xl"
+                iconRight={<AiOutlineRight />}
+              >
+                {t('home.section2.link')}
+              </Button>
+            </a>
           </div>
           <div className="col-span-1 hidden flex-col items-center justify-center md:flex">
             <FlagsInCircle />
