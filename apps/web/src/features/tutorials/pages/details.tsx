@@ -12,7 +12,7 @@ import { TRPCRouterOutput } from '../../../utils/trpc';
 import { TutorialLayout } from '../layout';
 
 export const TutorialDetails = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { category, name } = useParams({
     from: '/tutorials/$category/$name',
   });
@@ -28,9 +28,6 @@ export const TutorialDetails = () => {
     name,
     language: i18n.language,
   });
-
-  console.log(tutorial);
-  const { t } = useTranslation();
 
   function headerAndFooterText(creditName: string, creditUrl: string) {
     return (

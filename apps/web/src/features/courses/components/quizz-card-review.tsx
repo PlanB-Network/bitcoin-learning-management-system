@@ -40,7 +40,6 @@ export default function QuizzCardReview({
   const { t } = useTranslation();
 
   function pieClick(i: number) {
-    console.log(i);
     questionChange(i);
   }
 

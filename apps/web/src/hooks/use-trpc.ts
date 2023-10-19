@@ -3,6 +3,7 @@ import { TRPCClientError } from '@trpc/client';
 import { useState } from 'react';
 // import { useSessionStore } from '../stores/session.ts';
 
+import { userSlice } from '../store/index.js';
 import { trpc } from '../utils/index.js';
 import { tRPCClientOptions } from '../utils/trpc.js';
 
@@ -26,11 +27,10 @@ export const useTrpc = () => {
         error.shape &&
         ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
       ) {
-        // useSessionStore.getState().logout();
+        userSlice.actions.logout();
       }
-      console.log(error.message);
     } else if (error instanceof Error) {
-      console.log(error.message);
+      console.error(error.message);
     } else {
       console.error(error);
     }

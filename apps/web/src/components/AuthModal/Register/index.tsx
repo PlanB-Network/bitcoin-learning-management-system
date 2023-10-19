@@ -126,7 +126,6 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 registerSchema.parse(values);
               } catch (error) {
                 if (error instanceof ZodError) {
-                  console.log(error.flatten().fieldErrors);
                   return error.flatten().fieldErrors;
                 }
               }

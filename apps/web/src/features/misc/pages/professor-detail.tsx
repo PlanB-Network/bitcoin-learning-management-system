@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,21 +11,19 @@ import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils/trpc';
 import { ResourceLayout } from '../../resources/layout';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
-
 export const ProfessorDetail = () => {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { professorId } = useParams({
     from: '/professor/$professorId',
   });
-  const isScreenMd = useGreater('sm');
+
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
     professorId: Number(professorId),
     language: i18n.language,
   });
+
   const navigateTo404Called = useRef(false);
-  console.log('Prof:', professor);
 
   useEffect(() => {
     if (!professor && isFetched && !navigateTo404Called.current) {

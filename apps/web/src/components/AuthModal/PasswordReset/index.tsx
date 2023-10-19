@@ -24,7 +24,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         email: string;
       }>,
     ) => {
-      console.log(values);
+      console.log('Not implemented');
     },
     [],
   );
