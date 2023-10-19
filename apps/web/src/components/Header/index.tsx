@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsFileText, BsMic, BsPlus } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
+import { GiMeshNetwork } from 'react-icons/gi';
 import {
   IoBusinessOutline,
   IoLibraryOutline,
@@ -177,6 +178,13 @@ export const Header = () => {
               description: t('menu.teachersDescription'),
               path: Routes.Professors,
               icon: FaChalkboardTeacher,
+            },
+            {
+              id: 'node-network',
+              title: t('words.nodeNetwork'),
+              description: t('menu.nodeNetworkDescription'),
+              path: Routes.NodeNetwork,
+              icon: GiMeshNetwork,
             },
             {
               id: 'manifesto',
