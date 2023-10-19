@@ -17,13 +17,35 @@ const buttonClasses =
 
 export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const { toggle, isOpen } = useDisclosure();
+  const currentSection = '/'.concat(
+    window.location.pathname.split('/').slice(0, 2).join(''),
+  );
+
   const sectionTitle = useMemo(() => {
+    let fontWeight =
+      currentSection &&
+      currentSection !== '/' &&
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      section.path.includes(currentSection)
+        ? 'font-semibold'
+        : 'font-light';
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (section.path === '/' && currentSection === '/') {
+      fontWeight = 'font-semibold';
+    }
+
     if ('path' in section)
       return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         <Link
-          className="text-2xl font-light uppercase text-white no-underline"
+          className={compose(
+            'text-2xl font-light uppercase text-white no-underline',
+            fontWeight,
+          )}
           to={section.path}
         >
           {section.title}

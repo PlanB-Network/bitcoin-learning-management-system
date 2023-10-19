@@ -48,7 +48,7 @@ export const CourseButton: React.FC<CourseButtonProps> = ({ courseId }) => {
             chapterIndex: '1',
           }}
         >
-          <button className="relative z-10 flex h-12 w-auto items-center justify-center rounded-full bg-orange-800 text-white">
+          <button className="relative z-10 flex h-12 w-auto items-center justify-center rounded-full bg-orange-500 text-white">
             <span className="m-2 px-2 text-sm font-normal md:px-3">
               {t('courses.preview.letsgo')}
             </span>

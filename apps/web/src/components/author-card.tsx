@@ -1,16 +1,15 @@
 import { useTranslation } from 'react-i18next';
 
-import { JoinedProfessor } from '@sovereign-university/types';
-
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import NostrIcon from '../assets/icons/nostr.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
+import { TRPCRouterOutput } from '../utils/trpc';
 
 import { TooltipWithContent } from './tooptip-with-content';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: JoinedProfessor;
+  professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
 }
 
 export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
@@ -27,27 +26,18 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
               className="mt-4 h-20 w-20 rounded-full sm:h-28 sm:w-28"
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
-              {professor.nostr && (
+              {professor.links.twitter && (
                 <a
-                  href={professor.nostr}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <NostrIcon className="h-20" />
-                </a>
-              )}
-              {professor.twitter_url && (
-                <a
-                  href={professor.twitter_url}
+                  href={professor.links.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <TwitterIcon className="h-20" />
                 </a>
               )}
-              {professor.website_url && (
+              {professor.links.website && (
                 <a
-                  href={professor.website_url}
+                  href={professor.links.website}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { JoinedProfessor } from '@sovereign-university/types';
-
 import NostrIcon from '../assets/icons/nostr_blue.svg?react';
 import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
 import WebIcon from '../assets/icons/web_blue.svg?react';
+import { TRPCRouterOutput } from '../utils/trpc';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: JoinedProfessor;
+  professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
 }
 
 const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
@@ -45,23 +44,18 @@ const TopicTags = ({ professor }: ProfessorCardProps) => {
 const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-2 flex justify-between self-stretch px-1">
-      {professor.nostr && (
-        <a href={professor.nostr} target="_blank" rel="noopener noreferrer">
-          <NostrIcon className="h-20" />
-        </a>
-      )}
-      {professor.twitter_url && (
+      {professor.links.twitter && (
         <a
-          href={professor.twitter_url}
+          href={professor.links.twitter}
           target="_blank"
           rel="noopener noreferrer"
         >
           <TwitterIcon className="h-20" />
         </a>
       )}
-      {professor.website_url && (
+      {professor.links.website && (
         <a
-          href={professor.website_url}
+          href={professor.links.website}
           target="_blank"
           rel="noopener noreferrer"
         >

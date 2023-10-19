@@ -66,9 +66,11 @@ export const Modal = ({
                       />
                     </button>
                   )}
-                  <header className="flex flex-col items-center justify-between text-center text-3xl font-semibold uppercase text-gray-400 md:my-6">
-                    {headerText && <h4>{headerText}</h4>}
-                  </header>
+                  {headerText && (
+                    <header className="flex flex-col items-center justify-between text-center text-3xl font-semibold uppercase text-gray-400 md:my-6">
+                      <h4>{headerText}</h4>
+                    </header>
+                  )}
                   {children}
                 </div>
                 {/* TODO: move this outside of the modal atom */}

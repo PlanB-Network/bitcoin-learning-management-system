@@ -63,7 +63,6 @@ export const MobileMenu = ({
             <MobileMenuSection section={section} key={section.id} />
           ))}
         </ul>
-
         <MetaElements
           onClickLogin={onClickLogin}
           onClickRegister={onClickRegister}
