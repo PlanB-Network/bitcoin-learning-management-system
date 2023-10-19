@@ -6,16 +6,20 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
-import { Button } from '../../../atoms/Button';
-import { Card } from '../../../atoms/Card';
-import { compose, computeAssetCdnUrl } from '../../../utils';
-import { joinWords } from '../../../utils/string';
-import { TRPCRouterOutput } from '../../../utils/trpc';
+import { JoinedCourse } from '@sovereign-university/types';
+
+import { Button } from '../atoms/Button';
+import { Card } from '../atoms/Card';
+import { compose, computeAssetCdnUrl } from '../utils';
+import { joinWords } from '../utils/string';
+import { TRPCRouterOutput } from '../utils/trpc';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface CoursePreviewProps {
-  course: NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
+  course:
+    | NonNullable<TRPCRouterOutput['content']['getCourses']>[number]
+    | JoinedCourse;
   selected: boolean;
 }
 

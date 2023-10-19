@@ -8,11 +8,11 @@ import { AiOutlineRight } from 'react-icons/ai';
 
 import { cn } from '@sovereign-university/ui';
 
-import BitcoinWithHat from '../../../assets/home/bitcoin_with_hat.svg?react';
 import CoursesInCircle from '../../../assets/home/courses_in_circle.svg?react';
 import CoursesInCircle2 from '../../../assets/home/courses_in_circle2.svg?react';
 import CoursesInCircle3 from '../../../assets/home/courses_in_circle3.svg?react';
 import FlagsInCircle from '../../../assets/home/flags_in_circle.svg?react';
+import PlanBTitle from '../../../assets/home/plan_b_title.svg?react';
 import Spiral from '../../../assets/home/spiral.svg?react';
 import SponsorBSun from '../../../assets/home/sponsor_b_sun.jpeg';
 import SponsorBase58 from '../../../assets/home/sponsor_base58.jpeg';
@@ -90,9 +90,7 @@ export const Home = () => {
         >
           <div className="col-span-1">
             <div className="flex flex-row text-[49px] font-semibold">
-              <span>Plan</span>
-              <BitcoinWithHat height={70} width={65} />
-              <span>Network</span>
+              <PlanBTitle height={'100%'} width={isScreenMd ? '100%' : 470} />
             </div>
             <p className="pt-6 text-3xl font-semibold text-orange-500">
               {t('home.header.globalNetwork')}
@@ -180,6 +178,7 @@ export const Home = () => {
                 {topics.map((topic) => {
                   return (
                     <Button
+                      key={topic}
                       variant="secondary"
                       className=" md:text-blue-1000 rounded-3xl md:border-[3px] md:border-orange-500 md:uppercase"
                     >
@@ -265,10 +264,13 @@ export const Home = () => {
                 </Link>
               ))}
             </div>
-            <Link to={'/tutorials'}>
+            <Link
+              to={'/tutorials'}
+              className="absolute bottom-[-20px] md:right-6"
+            >
               <Button
                 variant="text"
-                className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+                className="rounded-3xl bg-white text-center text-xs text-blue-800 md:text-base md:text-orange-500"
                 iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
               >
                 {isScreenMd
@@ -291,10 +293,13 @@ export const Home = () => {
                 </a>
               ))}
             </div>
-            <Link to={'/resources'}>
+            <Link
+              to={'/resources'}
+              className="absolute bottom-[-20px] md:right-6"
+            >
               <Button
                 variant="text"
-                className="absolute bottom-[-20px] rounded-3xl bg-white text-center text-blue-800 md:right-6 md:text-orange-500"
+                className=" rounded-3xl bg-white text-center text-xs text-blue-800 md:text-base  md:text-orange-500"
                 iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
               >
                 {isScreenMd
@@ -435,6 +440,7 @@ export const Home = () => {
                   )}
                   src={sponsorSrc}
                   alt="sponsor"
+                  key={sponsorSrc}
                 />
               );
             })}

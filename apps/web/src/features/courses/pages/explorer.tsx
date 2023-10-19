@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { CoursePreview } from '../../../components/coursePreview';
 import { MainLayout } from '../../../components/MainLayout';
 import {
   PageDescription,
@@ -9,7 +10,6 @@ import {
   PageTitle,
 } from '../../../components/PageHeader';
 import { trpc } from '../../../utils/trpc';
-import { CoursePreview } from '../components/coursePreview';
 import { LevelPicker } from '../components/level-picker';
 import { Course, SolarSystem } from '../components/solarSystem';
 import { TopicPicker } from '../components/topic-picker';

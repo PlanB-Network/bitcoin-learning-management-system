@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';
 import { AuthorCardFull } from '../../../components/author-card-full';
+import { CoursePreview } from '../../../components/coursePreview';
 import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils/trpc';
 import { ResourceLayout } from '../../resources/layout';
@@ -51,8 +52,19 @@ export const ProfessorDetail = () => {
             <img src={handWriting} alt="" className=" h-5 w-5" />
             <span>{t('words.courses')}</span>
           </div>
-          <p>-----</p>
-          <p>-----</p>
+          <div className="grid grid-cols-1 px-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-6xl xl:grid-cols-4">
+            {professor.courses.map((course) => {
+              return (
+                <div className="w-72">
+                  <CoursePreview
+                    course={course}
+                    selected={true}
+                    key={course.id}
+                  />
+                </div>
+              );
+            })}
+          </div>
           <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
             <img src={yellowBook} alt="" className=" h-5 w-5" />
             <span>{t('words.tutorials')}</span>
