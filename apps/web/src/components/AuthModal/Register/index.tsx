@@ -155,7 +155,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.username}
-                    className="w-4/5"
+                    className="w-full min-w-[16rem] md:w-4/5"
                     error={
                       touched.username && errors.username
                         ? errors.username[0]
@@ -170,7 +170,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.password}
-                    className="w-4/5"
+                    className="w-full md:w-4/5"
                     error={
                       touched.password && errors.password
                         ? errors.password[0]
@@ -185,7 +185,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.confirmation}
-                    className="w-4/5"
+                    className="w-full md:w-4/5"
                     error={
                       touched.confirmation && errors.confirmation
                         ? errors.confirmation[0]

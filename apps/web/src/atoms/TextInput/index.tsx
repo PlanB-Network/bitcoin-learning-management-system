@@ -31,7 +31,7 @@ export const TextInput = ({
   const [showValue, setShowValue] = useState(false);
   const classes = useMemo(
     () => [
-      'block w-full rounded-[15px] border-0 focus:ring-2 focus:ring-inset px-3 py-4 bg-orange-400',
+      'block w-full rounded-[15px] border-0 focus:ring-2 focus:ring-inset px-3 py-2 md:py-4 bg-orange-400',
       error
         ? 'text-red-300 ring-red-200 ring-1 placeholder:text-red-200 focus:ring-red-300'
         : 'text-gray-600 shadow-sm placeholder:text-gray-400 focus:ring-blue-600',
@@ -74,7 +74,7 @@ export const TextInput = ({
       <div className="flex flex-col justify-between px-1 text-center">
         <label
           htmlFor="email"
-          className="mb-1 block text-lg font-normal leading-6 text-gray-600"
+          className="mb-1 block text-base font-normal leading-6 text-gray-600 md:text-lg"
         >
           {labelText}
         </label>

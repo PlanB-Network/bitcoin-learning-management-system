@@ -74,7 +74,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     >
       <div className="flex flex-col items-center">
         <Button
-          className="my-5"
+          className="my-5 text-sm md:text-base"
           rounded
           onClick={() => goTo(AuthModalState.LnurlAuth)}
         >
@@ -113,7 +113,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="w-4/5"
+                  className="w-full min-w-[16rem] md:w-4/5"
                   error={touched.username ? errors.username : null}
                 />
 
@@ -124,7 +124,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="w-4/5"
+                  className="w-full md:w-4/5"
                   error={touched.password ? errors.password : null}
                 />
               </div>
@@ -135,7 +135,11 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                 </p>
               )}
 
-              <Button type="submit" className="mt-6" rounded>
+              <Button
+                type="submit"
+                className="mt-6 text-sm md:text-base"
+                rounded
+              >
                 {t('words.continue')}
               </Button>
             </form>

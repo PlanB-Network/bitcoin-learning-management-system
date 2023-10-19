@@ -65,7 +65,7 @@ export const Modal = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel>
-                <div className="max-w-md overflow-hidden rounded-[1.5em] border-4 border-orange-600 bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6">
+                <div className="overflow-hidden rounded-[1.5em] border-4 border-orange-600 bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6 md:pb-4 md:pt-5">
                   {closeButtonEnabled && (
                     <button>
                       <IoMdClose
@@ -74,14 +74,14 @@ export const Modal = ({
                       />
                     </button>
                   )}
-                  <header className="flex flex-col items-center justify-between text-center text-3xl font-semibold uppercase text-gray-400 md:my-6">
+                  <header className="flex flex-col items-center justify-between text-center text-xl font-semibold uppercase text-gray-400 md:my-6 md:text-3xl">
                     {headerText && <h4>{headerText}</h4>}
                   </header>
                   {children}
                 </div>
                 {/* TODO: move this outside of the modal atom */}
                 {showAccountHelper && (
-                  <div className="relative my-14 max-w-xs sm:max-w-lg">
+                  <div className="relative my-8 max-w-xs sm:max-w-lg md:my-14">
                     <img
                       src={rabbitHikingModal}
                       className="absolute -left-10 bottom-12 z-[+1] flex h-20 sm:-left-10 sm:bottom-14 sm:h-24"

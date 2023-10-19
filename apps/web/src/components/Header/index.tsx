@@ -84,7 +84,7 @@ export const Header = () => {
                       {
                         id: 'more',
                         title: t('words.more'),
-                        path: `/course/level/${level}`,
+                        path: `/courses`,
                         icon: BsPlus,
                       },
                     ]
