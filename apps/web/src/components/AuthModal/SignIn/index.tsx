@@ -72,9 +72,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       headerText={t('words.signIn')}
       showAccountHelper
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center space-y-8">
         <Button
-          className="my-5 text-sm md:text-base"
+          className="mt-2 text-sm md:text-base"
           rounded
           onClick={() => goTo(AuthModalState.LnurlAuth)}
         >
@@ -104,7 +104,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col items-center py-6"
+              className="flex w-full flex-col items-center"
             >
               <div className="flex w-full flex-col items-center">
                 <TextInput
@@ -113,7 +113,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="w-full min-w-[16rem] md:w-4/5"
+                  className="w-full min-w-[16rem]  md:w-4/5"
                   error={touched.username ? errors.username : null}
                 />
 
@@ -124,7 +124,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="w-full md:w-4/5"
+                  className="w-full text-blue-900 md:w-4/5"
                   error={touched.password ? errors.password : null}
                 />
               </div>

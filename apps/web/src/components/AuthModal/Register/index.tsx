@@ -11,6 +11,7 @@ import { BsCheck } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
 import { Button } from '../../../atoms/Button';
+import { Divider } from '../../../atoms/Divider';
 import { Modal } from '../../../atoms/Modal';
 import { TextInput } from '../../../atoms/TextInput';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
@@ -114,7 +115,15 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center space-y-8">
+          <Button
+            className="mt-2 text-sm md:text-base"
+            rounded
+            onClick={() => goTo(AuthModalState.LnurlAuth)}
+          >
+            {t('auth.connectWithLn')}
+          </Button>
+          <Divider>{t('words.or').toUpperCase()}</Divider>
           <Formik
             initialValues={{
               username: '',
@@ -145,7 +154,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="flex w-full flex-col items-center py-6"
+                className="flex w-full flex-col items-center"
               >
                 <div className="flex w-full flex-col items-center">
                   <TextInput

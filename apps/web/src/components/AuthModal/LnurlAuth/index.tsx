@@ -75,15 +75,18 @@ export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
       closeButtonEnabled={isMobile}
       isOpen={isOpen}
       onClose={onClose}
-      headerText={t('words.signIn')}
+      headerText={t('words.lnurlAuth')}
       showAccountHelper
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center justify-center py-4">
         {lnurl && (
-          <div>
+          <div className="py-6">
             <QRCodeSVG value={lnurl} size={300} />
           </div>
         )}
+        <p className="px-10 text-center text-blue-800">
+          {t('auth.lnurlAuthDescription')}
+        </p>
       </div>
     </Modal>
   );
