@@ -28,13 +28,6 @@ export const AuthorCardFull = ({
 
   return (
     <div {...props}>
-      {isTipModalOpen && (
-        <TipModal
-          isOpen={isTipModalOpen}
-          onClose={closeTipModal}
-          lightningAddress={professor.tips.lightningAddress as string}
-        />
-      )}
       <div className="border-blue-1000 bg-beige-300 flex flex-col items-start gap-2.5 rounded-2xl border p-2">
         <div className="flex max-w-[44rem] items-start">
           <div className="border-blue-1000 w-fit shrink-0 flex-col items-center justify-center self-stretch rounded-l-[0.9375rem] border bg-blue-800 p-2 sm:flex">
@@ -87,17 +80,12 @@ export const AuthorCardFull = ({
                   })}
                 </div>
               </div>
-              <div className="hidden h-12 sm:block"></div>
-              <div className="absolute bottom-3 right-6 hidden flex-row items-end sm:flex ">
-                <div className="text-justify text-[.8125rem] font-light italic text-red-600">
+              <div className="block h-12"></div>
+              <div className="absolute bottom-3 right-6 flex flex-row items-end ">
+                <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <div
-                  className="ml-4 h-8 w-8 self-start"
-                  onClick={() => {
-                    openTipModal();
-                  }}
-                >
+                <div className="ml-4 h-8 w-8 self-start" onClick={openTipModal}>
                   <TooltipWithContent
                     text={t('tutorials.details.tipTooltip')}
                     position="bottom"
@@ -110,6 +98,14 @@ export const AuthorCardFull = ({
           </div>
         </div>
       </div>
+      {isTipModalOpen && (
+        <TipModal
+          isOpen={isTipModalOpen}
+          onClose={closeTipModal}
+          lightningAddress={professor.tips.lightningAddress as string}
+          userName={professor.name}
+        />
+      )}
     </div>
   );
 };

@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import { AuthorCard } from '../../../components/author-card';
 import { MarkdownBody } from '../../../components/MarkdownBody';
+import { TipModal } from '../../../components/tip-modal';
 import { TooltipWithContent } from '../../../components/tooptip-with-content';
+import { useDisclosure } from '../../../hooks';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 import { TRPCRouterOutput } from '../../../utils/trpc';
 import { TutorialLayout } from '../layout';
@@ -14,6 +16,12 @@ export const TutorialDetails = () => {
   const { category, name } = useParams({
     from: '/tutorials/$category/$name',
   });
+
+  const {
+    open: openTipModal,
+    isOpen: isTipModalOpen,
+    close: closeTipModal,
+  } = useDisclosure();
 
   const { data: tutorial } = trpc.content.getTutorial.useQuery({
     category,
@@ -61,7 +69,7 @@ export const TutorialDetails = () => {
             tutorial.credits?.link as string,
           )}
           {(tutorial.credits?.name || tutorial.credits?.link) && (
-            <div>
+            <div onClick={openTipModal}>
               <TooltipWithContent
                 text={t('tutorials.details.tipTooltip')}
                 position="bottom"
@@ -134,6 +142,16 @@ export const TutorialDetails = () => {
               )}
             </div>
           </div>
+          {isTipModalOpen && (
+            <TipModal
+              isOpen={isTipModalOpen}
+              onClose={closeTipModal}
+              lightningAddress={
+                tutorial.credits?.professor?.tips.lightningAddress as string
+              }
+              userName={tutorial.credits?.professor?.name as string}
+            />
+          )}
         </>
       )}
     </TutorialLayout>

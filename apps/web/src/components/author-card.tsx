@@ -4,8 +4,10 @@ import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import NostrIcon from '../assets/icons/nostr.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
+import { useDisclosure } from '../hooks';
 import { TRPCRouterOutput } from '../utils/trpc';
 
+import { TipModal } from './tip-modal';
 import { TooltipWithContent } from './tooptip-with-content';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
@@ -14,6 +16,12 @@ interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
 
 export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
   const { t } = useTranslation();
+
+  const {
+    open: openTipModal,
+    isOpen: isTipModalOpen,
+    close: closeTipModal,
+  } = useDisclosure();
 
   return (
     <div {...props}>
@@ -47,12 +55,12 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             </div>
           </div>
           <div className="border-blue-1000 bg-beige-300 flex w-full flex-col self-stretch rounded-r-2xl border">
-            <div className="border-blue-1000 text-beige-300 flex w-full break-all rounded-tr-2xl border-b bg-orange-500 px-4 py-1 text-xl font-semibold sm:w-auto sm:py-2 sm:text-3xl">
+            <div className="border-blue-1000 text-beige-300 flex w-full break-all rounded-tr-2xl border-b bg-orange-500 px-4 py-2 text-3xl font-semibold sm:w-auto">
               {professor.name}
             </div>
             <div className="relative grow flex-col py-2">
               <div className="flex flex-col justify-between px-2 py-0 sm:px-5">
-                <div className="flex flex-wrap items-center justify-center gap-2 self-stretch text-xs text-blue-800 sm:gap-5 sm:text-2xl">
+                <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
                   <div className="flex items-center gap-2 ">
                     <div className="font-semibold">
                       {professor.courses_count}
@@ -78,12 +86,15 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   })}
                 </div>
               </div>
-              <div className="hidden h-12 sm:block"></div>
-              <div className="absolute bottom-3 right-6 hidden flex-row items-end sm:flex ">
-                <div className="text-justify text-[.8125rem] font-light italic text-red-600">
+              <div className="block h-12"></div>
+              <div className="absolute bottom-3 right-6 flex flex-row items-end ">
+                <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <div className="ml-4 h-8 w-8 self-start">
+                <div
+                  className="z-50 ml-4 h-8 w-8 self-start"
+                  onClick={openTipModal}
+                >
                   <TooltipWithContent
                     text={t('tutorials.details.tipTooltip')}
                     position="bottom"
@@ -96,6 +107,14 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
           </div>
         </div>
       </div>
+      {isTipModalOpen && (
+        <TipModal
+          isOpen={isTipModalOpen}
+          onClose={closeTipModal}
+          lightningAddress={professor.tips.lightningAddress as string}
+          userName={professor.name}
+        />
+      )}
     </div>
   );
 };

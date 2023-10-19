@@ -259,7 +259,11 @@
   },
   "professors": {
     "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors"
+    "pageTitle": "Professors",
+    "tips": {
+      "thanks": "Thanks for supporting {{name}}'s work !",
+      "thanksNoName": "Thanks for supporting my work !"
+    }
   },
   "resources": {
     "articles": {
