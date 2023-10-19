@@ -47,12 +47,12 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             </div>
           </div>
           <div className="border-blue-1000 bg-beige-300 flex w-full flex-col self-stretch rounded-r-2xl border">
-            <div className="border-blue-1000 text-beige-300 flex w-full min-w-[14rem] break-all rounded-tr-2xl border-b bg-orange-500 px-4 py-2 text-3xl font-semibold sm:w-auto">
+            <div className="border-blue-1000 text-beige-300 flex w-full break-all rounded-tr-2xl border-b bg-orange-500 px-4 py-1 text-xl font-semibold sm:w-auto sm:py-2 sm:text-3xl">
               {professor.name}
             </div>
             <div className="relative grow flex-col py-2">
-              <div className="flex flex-col justify-between px-5 py-0">
-                <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
+              <div className="flex flex-col justify-between px-2 py-0 sm:px-5">
+                <div className="flex flex-wrap items-center justify-center gap-2 self-stretch text-xs text-blue-800 sm:gap-5 sm:text-2xl">
                   <div className="flex items-center gap-2 ">
                     <div className="font-semibold">
                       {professor.courses_count}

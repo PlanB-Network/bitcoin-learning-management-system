@@ -28,11 +28,12 @@ export const ProfessorExplorer = () => {
                   professorId: professor.id.toString(),
                 }}
                 key={professor.id}
+                className="w-full sm:w-auto"
               >
                 <div className="hidden sm:block">
                   <ProfessorCard professor={professor} />
                 </div>
-                <div className="w-[28rem] sm:hidden">
+                <div className="w-full sm:hidden">
                   <AuthorCard professor={professor} />
                 </div>
               </Link>
