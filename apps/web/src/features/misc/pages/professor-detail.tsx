@@ -49,11 +49,13 @@ export const ProfessorDetail = () => {
           <div className="mt-4 flex w-full flex-col items-center">
             <AuthorCardFull professor={professor} />
           </div>
-          <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
-            <img src={handWriting} alt="" className=" h-5 w-5" />
-            <span>{t('words.courses')}</span>
-          </div>
-          <div className="flex flex-wrap justify-center px-5">
+          {professor.courses.length > 0 && (
+            <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
+              <img src={handWriting} alt="" className=" h-5 w-5" />
+              <span>{t('words.courses')}</span>
+            </div>
+          )}
+          <div className="flex flex-wrap justify-center">
             {professor.courses.map((course) => {
               return (
                 <div className="w-full md:w-72">
@@ -62,15 +64,17 @@ export const ProfessorDetail = () => {
               );
             })}
           </div>
-          <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
-            <img src={yellowBook} alt="" className=" h-5 w-5" />
-            <span>{t('words.tutorials')}</span>
-          </div>
+          {professor.tutorials.length > 0 && (
+            <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
+              <img src={yellowBook} alt="" className=" h-5 w-5" />
+              <span>{t('words.tutorials')}</span>
+            </div>
+          )}
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             {professor.tutorials.map((tutorial) => {
               return (
                 <TutorialCard
-                  className="w-[25rem]"
+                  className="w-full md:w-[25rem]"
                   tutorial={tutorial}
                   key={tutorial.id}
                 />
