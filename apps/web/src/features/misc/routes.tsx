@@ -1,10 +1,10 @@
 import { Route } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root';
+import { NodeNetwork } from '../resources/pages/node-network';
 
 import { Home } from './pages/home';
 import { Manifesto } from './pages/manifesto';
-import { nodeNetwork } from './pages/nodenetwork';
 import { NotFound } from './pages/not-found';
 import { ProfessorDetail } from './pages/professor-detail';
 import { ProfessorExplorer } from './pages/professor-explorer';
@@ -61,8 +61,8 @@ export const underConstructionRoute = new Route({
 
 export const nodeNetworkRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: '/nodenetwork',
-  component: nodeNetwork,
+  path: '/node-network',
+  component: NodeNetwork,
 });
 
 export const miscRoutes = [
