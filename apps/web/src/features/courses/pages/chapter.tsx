@@ -550,7 +550,7 @@ export const CourseChapter = () => {
             {/* Only on big screens */}
             <div className=" hidden md:flex ">
               <div className="grow break-words">
-                <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 px-5 md:mt-8 md:max-w-3xl md:px-0">
+                <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 overflow-hidden px-5 md:mt-8 md:max-w-3xl md:px-0">
                   <HeaderBig chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
                   {questionsArray && questionsArray.length > 0 ? (

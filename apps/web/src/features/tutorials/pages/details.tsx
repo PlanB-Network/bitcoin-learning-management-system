@@ -97,7 +97,7 @@ export const TutorialDetails = () => {
             </span>
           </div>
           <div className="flex w-full flex-col items-center justify-center px-2">
-            <div className="mt-4 w-full space-y-6 text-blue-900 md:max-w-3xl">
+            <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
               {header(tutorial)}
               <MarkdownBody
                 content={tutorial.raw_content}
