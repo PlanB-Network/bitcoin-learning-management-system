@@ -45,13 +45,13 @@ export const nodeNetwork = () => {
             <div className="mb-0 ">
               <div className="flex h-6 w-full flex-row sm:h-10 sm:w-2/4">
                 <h2 className="bg-orange-600 text-base font-bold text-gray-100 sm:text-3xl">
-                  NODE NETWORK
+                  NODE NETWORk
                 </h2>
                 <img className="mx-2 h-auto px-1" src={NodeImg} alt="" />
               </div>
 
               <p className="mt-1 text-xs uppercase text-gray-100 sm:text-base">
-                our strength is our community. let's gather into a global
+                Our strength is our community. let's gather into a global
                 bitcoin network.
               </p>
             </div>
@@ -91,7 +91,7 @@ export const nodeNetwork = () => {
                   counterparts is essential to thrive in the modern landscape.
                 </p>
                 <h1 className="mt-3  text-lg font-semibold">
-                  Let’s built Bitcoin Citadel around the world
+                  Let's built Bitcoin Citadel around the world
                 </h1>
               </div>
 
@@ -154,7 +154,7 @@ export const nodeNetwork = () => {
             </div>
           </div>
           <div className="mb-9 flex items-center justify-center sm:h-20 ">
-            {/* Links for the form */}
+            {/* Links have to be change for the real form */}
             <a
               href="https://docs.google.com/forms/u/0/"
               target="_blank"

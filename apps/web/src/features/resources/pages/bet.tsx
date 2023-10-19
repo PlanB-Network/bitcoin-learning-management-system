@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import btcHere from '../../../assets/resources/btcherep.png';
 import figmaImage from '../../../assets/resources/figmaimg.png';
-import { trpc } from '../../../utils';
 import { ResourceLayout } from '../layout';
 
 const FigmaBox = ({ title, description, figmaUrl, imgFig }) => {
@@ -27,7 +26,7 @@ const FigmaBox = ({ title, description, figmaUrl, imgFig }) => {
 const FigmaBoxContent = ({ title, description, figmaUrl, imgFig }) => {
   return (
     <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
-      <div className="w-11/12 rounded-lg bg-green-600 p-2 shadow-md hover:bg-blue-500 sm:w-full sm:p-4">
+      <div className="w-11/12 rounded-lg bg-green-700 p-2 shadow-md hover:bg-blue-500 sm:w-full sm:p-4">
         <img
           src={imgFig}
           alt={title}
