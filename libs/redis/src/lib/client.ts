@@ -85,6 +85,29 @@ export class RedisClient extends Redis {
   }
 
   override del<K extends RedisKey>(key: K) {
+    if (key.includes('*')) {
+      const stream = super.scanStream({
+        match: key,
+      });
+
+      return new Promise<number>((resolve, reject) => {
+        stream.on('data', (keys: string[]) => {
+          if (keys.length) {
+            const pipeline = super.pipeline();
+
+            keys.forEach((key) => {
+              pipeline.del(key);
+            });
+
+            pipeline.exec();
+          }
+        });
+
+        stream.on('end', resolve);
+        stream.on('error', reject);
+      });
+    }
+
     return super.del(key);
   }
 

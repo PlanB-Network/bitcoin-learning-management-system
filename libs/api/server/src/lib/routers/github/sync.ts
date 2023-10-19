@@ -14,11 +14,17 @@ export const syncProcedure = publicProcedure
   .input(z.void())
   .output(z.void())
   .mutation(async ({ ctx }) => {
+    const {
+      dependencies: { redis },
+    } = ctx;
+
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
     if (!process.env['DATA_REPOSITORY_URL']) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
     }
+
+    await redis.del('trpc:*');
 
     await getAllRepoFiles(
       process.env['DATA_REPOSITORY_URL'],
