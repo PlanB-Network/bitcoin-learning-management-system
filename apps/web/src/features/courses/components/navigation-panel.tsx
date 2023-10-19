@@ -1,3 +1,4 @@
+import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
@@ -59,62 +60,77 @@ export const NavigationPanel: React.FC<Props> = ({
       <hr className="mb-2 border-orange-400" />
       <div>
         <ul className="flex flex-col gap-2">
-          {chapters.map((chapter, index) => (
-            <div key={`${chapter.part}${chapter.chapter}`}>
-              {chapter.chapter === 1 && (
-                <li
-                  className={cn(
-                    'grid grid-cols-8 items-center gap-1 text-sm font-semibold mt-1 mb-1',
-                    isChapterPast(chapter, currentChapter)
-                      ? 'text-orange-500'
-                      : 'text-gray-500',
-                  )}
-                >
-                  <BsFillTriangleFill
-                    size={10}
-                    className="col-span-1 mr-2 rotate-90"
-                  />
-                  <span className="col-span-7">{chapter.part_title}</span>
-                </li>
-              )}
-              <li key={index + 1000}>
-                <Link
-                  to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                  params={{
-                    courseId: course.id,
-                    partIndex: chapter.part.toString(),
-                    chapterIndex: chapter.chapter.toString(),
-                  }}
-                >
-                  <div className="grid grid-cols-8 items-center gap-1">
-                    <div className="col-span-1">
-                      <BsFillCircleFill
+          {chapters
+            .filter((chapter) => chapter.chapter === 1)
+            .map((chapterOne, index) => (
+              <Disclosure
+                key={`${chapterOne.part}${chapterOne.chapter}`}
+                defaultOpen={chapterOne.part === currentChapter.part.part}
+              >
+                <div key={`${chapterOne.part}${chapterOne.chapter}`}>
+                  <Disclosure.Button className={'flex justify-start text-left'}>
+                    <li
+                      className={cn(
+                        'grid grid-cols-8 items-center gap-1 text-sm font-semibold mb-1',
+                        isChapterPast(chapterOne, currentChapter)
+                          ? 'text-orange-500'
+                          : 'text-gray-500',
+                      )}
+                    >
+                      <BsFillTriangleFill
                         size={10}
-                        className={cn(
-                          'text-xs',
-                          isChapterPast(chapter, currentChapter)
-                            ? 'text-orange-400'
-                            : 'text-gray-300',
-                        )}
+                        className="col-span-1 mr-2 rotate-90"
                       />
-                    </div>
-                    <div className="col-span-7">
-                      <span
-                        className={cn(
-                          'text-xs',
-                          isChapterPast(chapter, currentChapter)
-                            ? 'text-orange-500'
-                            : 'text-gray-500',
-                        )}
-                      >
-                        {chapter.title}
+                      <span className="col-span-7 ml-1 text-sm">
+                        {chapterOne.part_title}
                       </span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            </div>
-          ))}
+                    </li>
+                  </Disclosure.Button>
+                  <Disclosure.Panel>
+                    {chapters
+                      .filter((chapter) => chapter.part === chapterOne.part)
+                      .map((chapter, index) => (
+                        <li key={index + 1000}>
+                          <Link
+                            to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                            params={{
+                              courseId: course.id,
+                              partIndex: chapter.part.toString(),
+                              chapterIndex: chapter.chapter.toString(),
+                            }}
+                          >
+                            <div className="mt-1 grid grid-cols-8 items-center gap-1">
+                              <div className="col-span-1">
+                                <BsFillCircleFill
+                                  size={10}
+                                  className={cn(
+                                    'text-xs',
+                                    isChapterPast(chapter, currentChapter)
+                                      ? 'text-orange-400'
+                                      : 'text-gray-300',
+                                  )}
+                                />
+                              </div>
+                              <div className="col-span-7">
+                                <span
+                                  className={cn(
+                                    'text-xs',
+                                    isChapterPast(chapter, currentChapter)
+                                      ? 'text-orange-500'
+                                      : 'text-gray-500',
+                                  )}
+                                >
+                                  {chapter.title}
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                  </Disclosure.Panel>
+                </div>
+              </Disclosure>
+            ))}
         </ul>
       </div>
     </div>
