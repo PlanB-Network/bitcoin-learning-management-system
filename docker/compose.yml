@@ -49,12 +49,12 @@ services:
       - ./data/cdn:$CDN_PATH
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-api.rule=Host(`api.${DOMAIN}`)
-      - traefik.http.routers.university-api.entrypoints=https,http
-      - traefik.http.routers.university-api.tls=true
-      - traefik.http.routers.university-api.tls.certresolver=security
-      - traefik.http.services.university-api.loadbalancer.server.port=3000
-      - traefik.http.routers.university-api.service=university-api
+      - traefik.http.routers.university-api-${ENV}.rule=Host(`api.${DOMAIN}`)
+      - traefik.http.routers.university-api-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-api-${ENV}.tls=true
+      - traefik.http.routers.university-api-${ENV}.tls.certresolver=security
+      - traefik.http.services.university-api-${ENV}loadbalancer.server.port=3000
+      - traefik.http.routers.university-api-${ENV}.service=university-api-${ENV}
     depends_on:
       - postgres
 
@@ -66,21 +66,21 @@ services:
       - ./data/cdn:/var/www/cdn
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-cdn.rule=Host(`cdn.${DOMAIN}`)
-      - traefik.http.routers.university-cdn.entrypoints=https,http
-      - traefik.http.routers.university-cdn.tls=true
-      - traefik.http.routers.university-cdn.tls.certresolver=security
+      - traefik.http.routers.university-cdn-${ENV}.rule=Host(`cdn.${DOMAIN}`)
+      - traefik.http.routers.university-cdn-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-cdn-${ENV}.tls=true
+      - traefik.http.routers.university-cdn-${ENV}.tls.certresolver=security
 
   web:
     <<: *defaults
     image: ghcr.io/decouvrebitcoin/sovereign-university-web:${IMAGE_TAG}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-web.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.university-web.entrypoints=https,http
-      - traefik.http.routers.university-web.tls=true
-      - traefik.http.routers.university-web.tls.certresolver=security
-      - traefik.http.middlewares.university-web.compress=true
+      - traefik.http.routers.university-web-${ENV}.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.university-web-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-web-${ENV}.tls=true
+      - traefik.http.routers.university-web-${ENV}.tls.certresolver=security
+      - traefik.http.middlewares.university-web-${ENV}.compress=true
 
 networks:
   default:
