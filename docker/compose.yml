@@ -53,7 +53,7 @@ services:
       - traefik.http.routers.university-api-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-api-${ENV}.tls=true
       - traefik.http.routers.university-api-${ENV}.tls.certresolver=security
-      - traefik.http.services.university-api-${ENV}loadbalancer.server.port=3000
+      - traefik.http.services.university-api-${ENV}.loadbalancer.server.port=3000
       - traefik.http.routers.university-api-${ENV}.service=university-api-${ENV}
     depends_on:
       - postgres
@@ -70,6 +70,7 @@ services:
       - traefik.http.routers.university-cdn-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.tls.certresolver=security
+      - traefik.http.middlewares.university-cdn-${ENV}.compress=true
 
   web:
     <<: *defaults
