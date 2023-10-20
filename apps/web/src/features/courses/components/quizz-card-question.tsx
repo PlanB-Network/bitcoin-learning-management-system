@@ -43,32 +43,34 @@ export default function QuizzCardQuestion({
 
   return (
     <>
-      <div className="border-blue-1000 flex h-16 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2">
+      <div className="border-blue-1000 flex h-12 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2 md:h-16">
         <div className="flex items-center gap-3">
-          <div className="flex h-16 w-16 flex-col items-center justify-end pr-0">
-            <RabbitHoldingPen />
+          <div className="flex h-12 w-12 flex-col items-center justify-end pr-0 md:h-16 md:w-16">
+            <RabbitHoldingPen className="ml-[7px] md:ml-[-10px]" />
           </div>
-          <div className="text-beige-300 text-center text-[1.9375rem]  font-semibold uppercase leading-[120%]">
+          <div className="text-beige-300 text-center text-2xl font-semibold uppercase leading-[120%] md:text-3xl">
             {t('courses.quizz.quizz')}
           </div>
         </div>
         <div className="flex items-center justify-end gap-2.5">
-          <div className="text-beige-300 flex items-center text-center  text-3xl font-light">
-            {name} / {chapter}
+          <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
+            <span className="hidden md:block">{name}</span>
+            <span className="mx-1 hidden md:block">{`/`}</span>
+            <span>{chapter}</span>
           </div>
-          <div className="flex h-14 w-14 items-center justify-center">
+          <div className="hidden h-14 w-14 items-center justify-center md:flex">
             <PieChart width={60} height={60} colors={answersColors} />
           </div>
         </div>
       </div>
-      <div className="border-blue-1000 flex flex-col items-center self-stretch rounded-b-2xl border-2 bg-orange-500 px-8 pb-9 pt-6">
+      <div className="border-blue-1000 flex flex-col items-center self-stretch rounded-b-2xl border-2 bg-orange-500 px-2 py-4 md:px-8 md:pb-9 md:pt-6">
         <div className="mb-5 flex items-start gap-2.5 self-stretch">
           <ArrowFilledIcon />
           <div className=" text-blue-1000 text-xl font-medium italic">
             {question}
           </div>
         </div>
-        <div className="flex flex-col items-start gap-5 self-stretch pl-6">
+        <div className="flex flex-col items-start gap-3 self-stretch pl-0 md:gap-5 md:pl-6">
           {answers.map((question, index) => (
             <div
               className="flex w-full cursor-pointer items-start"

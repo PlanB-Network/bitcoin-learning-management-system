@@ -101,7 +101,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       headerText={
         register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
       }
-      showAccountHelper
+      showAccountHelper={isMobile ? false : true}
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
