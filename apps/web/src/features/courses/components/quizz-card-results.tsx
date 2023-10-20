@@ -12,6 +12,7 @@ import QuizzResultMessage from './quizz-result-message';
 interface QuizzCardResultsProps {
   name: string;
   chapter: string;
+  questionIndex: number;
   answers: boolean[];
   answersColors: string[];
   numberOfCorrectAnswers: number;
@@ -23,6 +24,7 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 export default function QuizzCardResults({
   name,
   chapter,
+  questionIndex,
   answers,
   answersColors,
   nextStep,

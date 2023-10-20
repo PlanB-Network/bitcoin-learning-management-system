@@ -94,6 +94,7 @@ export default function QuizzCard({
         <QuizzCardQuestion
           name={name}
           chapter={chapter}
+          questionIndex={currentQuestionIndex}
           question={questions[currentQuestionIndex].question}
           correctAnswer={questions[currentQuestionIndex].correctAnswer}
           answers={questions[currentQuestionIndex].answers}
@@ -105,6 +106,7 @@ export default function QuizzCard({
         <QuizzCardResults
           name={name}
           chapter={chapter}
+          questionIndex={currentQuestionIndex}
           answers={[true, true, false, false]}
           answersColors={answersColors}
           numberOfCorrectAnswers={numberOfCorrectAnswers}

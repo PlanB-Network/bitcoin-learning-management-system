@@ -11,6 +11,7 @@ import PieChart from './pie-chart';
 interface QuizzCardQuestionProps {
   name: string;
   chapter: string;
+  questionIndex: number;
   question: string;
   answers: string[];
   correctAnswer: number;
@@ -21,6 +22,7 @@ interface QuizzCardQuestionProps {
 export default function QuizzCardQuestion({
   name,
   chapter,
+  questionIndex,
   question,
   answers,
   correctAnswer,
@@ -52,14 +54,19 @@ export default function QuizzCardQuestion({
             {t('courses.quizz.quizz')}
           </div>
         </div>
-        <div className="flex items-center justify-end gap-2.5">
+        {/* Big screen */}
+        <div className="hidden items-center justify-end gap-2.5 md:flex">
           <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
-            <span className="hidden md:block">{name}</span>
-            <span className="mx-1 hidden md:block">{`/`}</span>
-            <span>{chapter}</span>
+            {name} / {chapter}
           </div>
-          <div className="hidden h-14 w-14 items-center justify-center md:flex">
+          <div className="flex h-14 w-14 items-center justify-center">
             <PieChart width={60} height={60} colors={answersColors} />
+          </div>
+        </div>
+        {/* Small device */}
+        <div className="flex items-center justify-end gap-2.5 md:hidden">
+          <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
+            n° {questionIndex + 1}/5
           </div>
         </div>
       </div>
