@@ -264,19 +264,26 @@ export const Home = () => {
           <p className="ml-6 mt-6 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
             {t('words.tutorials')}
           </p>
-          <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 px-8 py-4 md:py-6">
-            <div className="grid grid-cols-3 gap-x-20 lg:gap-x-32">
+          <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 px-8 py-6 md:py-6">
+            <div className="flex flex-wrap justify-evenly gap-x-6 gap-y-4 md:grid md:grid-cols-3 md:gap-x-20 md:gap-y-0 lg:gap-x-32">
               {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
                 <Link
                   key={tutorialCategory.name}
                   to={'/tutorials/$category'}
                   params={{ category: tutorialCategory.name }}
                 >
-                  <div className="flex items-center space-x-2 rounded-lg py-2 sm:space-x-4">
+                  {/* Big screen */}
+                  <div className="hidden items-center space-x-2 rounded-lg py-2 sm:space-x-4 md:flex">
                     <CategoryIcon src={tutorialCategory.image} />
                     <h3 className="text-base font-semibold text-white md:text-xl lg:text-2xl">
                       {t(`tutorials.${tutorialCategory.name}.title`)}
                     </h3>
+                  </div>
+                  {/* Small screen */}
+                  <div className="flex flex-wrap gap-x-6 gap-y-4 md:hidden">
+                    <Button variant="tertiary" className="rounded-3xl">
+                      {t(`tutorials.${tutorialCategory.name}.title`)}
+                    </Button>
                   </div>
                 </Link>
               ))}
@@ -301,7 +308,7 @@ export const Home = () => {
             {t('words.resources')}
           </p>
           <div className="relative flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
-            <div className="flex flex-wrap gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
+            <div className="flex flex-wrap justify-evenly gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
               {resources.map((resource) => (
                 <a key={resource} href={'/resources/' + resource.toLowerCase()}>
                   <Button variant="tertiary" className="rounded-3xl">
@@ -382,31 +389,31 @@ export const Home = () => {
 
           {/* Small screen*/}
           <div className="bg-beige-300 mx-8 my-6 flex flex-col rounded-2xl p-2 md:hidden">
-            <div className="border-blue-1000 flex flex-col gap-4 rounded-2xl border-2 p-5 text-blue-800">
+            <div className="border-blue-1000 flex flex-col gap-4 rounded-2xl border-2 p-5 text-right text-lg text-blue-800">
               <div className="flex w-full flex-row items-center justify-between">
                 <OpenSource />
-                <span className="text-2xl font-medium uppercase">
+                <span className="font-medium uppercase">
                   {t('home.section3.openSourceTitle')}
                 </span>
               </div>
 
               <div className="flex w-full flex-row items-center justify-between">
                 <Groups />
-                <span className="text-2xl font-medium uppercase">
+                <span className="font-medium uppercase">
                   {t('home.section3.communityTitleMobile')}
                 </span>
               </div>
 
               <div className="flex w-full flex-row items-center justify-between">
                 <BitcoinCircle />
-                <span className="text-2xl font-medium uppercase">
+                <span className="font-medium uppercase">
                   {t('home.section3.bitcoinFocusTitleMobile')}
                 </span>
               </div>
 
               <div className="flex w-full flex-row items-center justify-between">
                 <VisibilityOff />
-                <span className="text-2xl font-medium uppercase">
+                <span className="font-medium uppercase">
                   {t('home.section3.privacyTitleMobile')}
                 </span>
               </div>
