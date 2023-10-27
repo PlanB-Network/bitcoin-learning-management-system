@@ -220,6 +220,7 @@
     "curriculum": "Curriculum",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
     "favorite": "a heart inside a circle",
+    "flagsInCircle": "a circle of flags",
     "forwardArrow": "a forward arrow",
     "github": "the icon of github",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
@@ -234,7 +235,8 @@
     "sthRepresentingCompany": "something representing the company",
     "stylus": "a stylus",
     "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign"
+    "visibilityOff": "the eyes icon without off sign",
+    "worldMap": "world map with hubs linked"
   },
   "library": {
     "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
