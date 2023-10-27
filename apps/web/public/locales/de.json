@@ -220,6 +220,7 @@
     "curriculum": "Lehrplan",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
     "favorite": "ein Herz in einem Kreis",
+    "flagsInCircle": "a circle of flags",
     "forwardArrow": "ein Vorwärtspfeil",
     "github": "das Icon von github",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
@@ -234,7 +235,8 @@
     "sthRepresentingCompany": "etwas für das Unternehmen",
     "stylus": "a stylus",
     "underConstructionImage": "Abbildung mehrerer Kaninchen auf einer Baustelle",
-    "visibilityOff": "das Augensymbol ohne Zeichen"
+    "visibilityOff": "das Augensymbol ohne Zeichen",
+    "worldMap": "world map with hubs linked"
   },
   "library": {
     "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für einen Beitrag. Danke für die Bewertung und Freigabe !",
