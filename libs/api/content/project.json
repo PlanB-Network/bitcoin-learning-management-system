@@ -13,7 +13,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/api/content"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/content"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../../coverage/libs/api/content"
