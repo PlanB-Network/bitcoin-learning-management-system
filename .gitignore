@@ -40,3 +40,5 @@ Thumbs.db
 
 # Environment Variables
 **/.env
+
+.nx/cache
