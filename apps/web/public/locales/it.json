@@ -220,6 +220,7 @@
     "curriculum": "Curriculum",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
     "favorite": "un cuore all'interno di un cerchio",
+    "flagsInCircle": "a circle of flags",
     "forwardArrow": "una freccia in avanti",
     "github": "l'icona di github",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
@@ -234,7 +235,8 @@
     "sthRepresentingCompany": "qualcosa che rappresenta l'azienda",
     "stylus": "a stylus",
     "underConstructionImage": "Illustrazione di diversi conigli che lavorano su un cantiere",
-    "visibilityOff": "l'icona occhi senza segno spento"
+    "visibilityOff": "l'icona occhi senza segno spento",
+    "worldMap": "world map with hubs linked"
   },
   "library": {
     "pageSubtitle": "Questa libreria è open source e aperta al contributo. Grazie per aver valutato e condiviso !",
