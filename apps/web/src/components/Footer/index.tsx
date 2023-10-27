@@ -39,7 +39,7 @@ const Media = ({ className = '', size = 30 }) => (
     )}
   >
     <a
-      href="https://www.youtube.com/@DecouvreBitcoin"
+      href="https://www.youtube.com/@PlanBNetwork"
       target="_blank"
       rel="noopener noreferrer"
     >

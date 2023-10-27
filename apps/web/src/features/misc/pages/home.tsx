@@ -9,9 +9,7 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { cn } from '@sovereign-university/ui';
 
 import CoursesInCircle from '../../../assets/home/courses_in_circle.svg?react';
-import CoursesInCircle2 from '../../../assets/home/courses_in_circle2.svg?react';
-import CoursesInCircle3 from '../../../assets/home/courses_in_circle3.svg?react';
-import FlagsInCircle from '../../../assets/home/flags_in_circle.svg?react';
+import FlagsInCircle from '../../../assets/home/flags_in_circle.svg';
 import PlanBTitle from '../../../assets/home/plan_b_title.svg?react';
 import Spiral from '../../../assets/home/spiral.svg?react';
 import SponsorBSun from '../../../assets/home/sponsor_b_sun.jpeg';
@@ -27,7 +25,7 @@ import SponsorSynonym from '../../../assets/home/sponsor_synonym.jpeg';
 import SponsorTether from '../../../assets/home/sponsor_tether.png';
 import SponsorV from '../../../assets/home/sponsor_v.png';
 import SponsorWizardSardine from '../../../assets/home/sponsor_wizardsardine.jpeg';
-import WorldMap from '../../../assets/home/world_map.svg?react';
+import WorldMap from '../../../assets/home/world_map.svg';
 import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
 import Groups from '../../../assets/icons/groups.svg?react';
 import OpenSource from '../../../assets/icons/open_source.svg?react';
@@ -115,7 +113,12 @@ export const Home = () => {
             </a>
           </div>
           <div className="col-span-1 flex items-center">
-            <WorldMap className="mt-4 h-[100%] w-[100]" />
+            <img
+              className="mt-4 h-[100%] w-[100]"
+              src={WorldMap}
+              alt={t('imagesAlt.worldMap')}
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -161,7 +164,7 @@ export const Home = () => {
           >
             <div className="col-span-1 hidden items-center md:flex">
               <p className="w-fit">
-                <CoursesInCircle3
+                <CoursesInCircle
                   height={isScreenLg ? 600 : 450}
                   style={{
                     // position: 'absolute',
@@ -241,7 +244,11 @@ export const Home = () => {
             </a>
           </div>
           <div className="col-span-1 hidden flex-col items-center justify-center md:flex">
-            <FlagsInCircle />
+            <img
+              src={FlagsInCircle}
+              alt={t('imagesAlt.flagsInCircle')}
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
