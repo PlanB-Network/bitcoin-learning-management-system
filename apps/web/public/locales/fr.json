@@ -220,6 +220,7 @@
     "curriculum": "Programmation",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
     "favorite": "un cœur à l'intérieur d'un cercle",
+    "flagsInCircle": "a circle of flags",
     "forwardArrow": "une flèche vers l'avant",
     "github": "l'icône de github",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
@@ -234,7 +235,8 @@
     "sthRepresentingCompany": "quelque chose qui représente la société",
     "stylus": "a stylus",
     "underConstructionImage": "Illustration de plusieurs lapins travaillant sur un site de construction",
-    "visibilityOff": "l'icône des yeux sans signe éteint"
+    "visibilityOff": "l'icône des yeux sans signe éteint",
+    "worldMap": "world map with hubs linked"
   },
   "library": {
     "pageSubtitle": "Cette bibliothèque est open-source et ouverte à la contribution. Merci de la noter et de la partager !",
