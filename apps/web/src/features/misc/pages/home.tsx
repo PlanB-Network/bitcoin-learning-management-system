@@ -183,18 +183,9 @@ export const Home = () => {
               <p className="text-xl">{t('home.section1.content1')}</p>
               <p className="mt-9 text-xl">{t('home.section1.content2')}</p>
               <p className="mt-9 text-xl">{t('home.section1.content3')}</p>
-              <div className="mt-9 flex flex-wrap gap-2">
-                {topics.map((topic) => {
-                  return (
-                    <Button
-                      key={topic}
-                      variant="secondary"
-                      className=" md:text-blue-1000 rounded-3xl md:border-[3px] md:border-orange-500 md:uppercase"
-                    >
-                      {topic}
-                    </Button>
-                  );
-                })}
+              <p className="mt-9 text-xl">{t('home.section1.content4')}</p>
+              <div className="mt-2 flex flex-wrap gap-2 text-xl">
+                {topics.join(', ')}.
               </div>
               <Link
                 to={'/courses'}

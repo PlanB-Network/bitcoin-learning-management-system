@@ -67,68 +67,76 @@ export const NavigationPanel: React.FC<Props> = ({
                 key={`${chapterOne.part}${chapterOne.chapter}`}
                 defaultOpen={chapterOne.part === currentChapter.part.part}
               >
-                <div key={`${chapterOne.part}${chapterOne.chapter}`}>
-                  <Disclosure.Button className={'flex justify-start text-left'}>
-                    <li
-                      className={cn(
-                        'grid grid-cols-8 items-center gap-1 text-sm font-semibold mb-1',
-                        isChapterPast(chapterOne, currentChapter)
-                          ? 'text-orange-500'
-                          : 'text-gray-500',
-                      )}
+                {({ open }) => (
+                  <div key={`${chapterOne.part}${chapterOne.chapter}`}>
+                    <Disclosure.Button
+                      className={'flex justify-start text-left'}
                     >
-                      <BsFillTriangleFill
-                        size={10}
-                        className="col-span-1 mr-2 rotate-90"
-                      />
-                      <span className="col-span-7 ml-1 text-sm">
-                        {chapterOne.part_title}
-                      </span>
-                    </li>
-                  </Disclosure.Button>
-                  <Disclosure.Panel>
-                    {chapters
-                      .filter((chapter) => chapter.part === chapterOne.part)
-                      .map((chapter, index) => (
-                        <li key={index + 1000}>
-                          <Link
-                            to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                            params={{
-                              courseId: course.id,
-                              partIndex: chapter.part.toString(),
-                              chapterIndex: chapter.chapter.toString(),
-                            }}
-                          >
-                            <div className="mt-1 grid grid-cols-8 items-center gap-1">
-                              <div className="col-span-1">
-                                <BsFillCircleFill
-                                  size={10}
-                                  className={cn(
-                                    'text-xs',
-                                    isChapterPast(chapter, currentChapter)
-                                      ? 'text-orange-400'
-                                      : 'text-gray-300',
-                                  )}
-                                />
+                      <li
+                        className={cn(
+                          'grid grid-cols-8 items-center gap-1 text-sm font-semibold mb-1',
+                          isChapterPast(chapterOne, currentChapter)
+                            ? 'text-orange-500'
+                            : 'text-gray-500',
+                        )}
+                      >
+                        <BsFillTriangleFill
+                          size={10}
+                          className={
+                            open
+                              ? 'col-span-1 mr-2 rotate-180'
+                              : 'col-span-1 mr-2 rotate-90'
+                          }
+                        />
+                        <span className="col-span-7 ml-1 text-sm">
+                          {chapterOne.part_title}
+                        </span>
+                      </li>
+                    </Disclosure.Button>
+                    <Disclosure.Panel>
+                      {chapters
+                        .filter((chapter) => chapter.part === chapterOne.part)
+                        .map((chapter, index) => (
+                          <li key={index + 1000}>
+                            <Link
+                              to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                              params={{
+                                courseId: course.id,
+                                partIndex: chapter.part.toString(),
+                                chapterIndex: chapter.chapter.toString(),
+                              }}
+                            >
+                              <div className="mt-1 grid grid-cols-8 items-center gap-1">
+                                <div className="col-span-1">
+                                  <BsFillCircleFill
+                                    size={10}
+                                    className={cn(
+                                      'text-xs',
+                                      isChapterPast(chapter, currentChapter)
+                                        ? 'text-orange-400'
+                                        : 'text-gray-300',
+                                    )}
+                                  />
+                                </div>
+                                <div className="col-span-7">
+                                  <span
+                                    className={cn(
+                                      'text-xs',
+                                      isChapterPast(chapter, currentChapter)
+                                        ? 'text-orange-500'
+                                        : 'text-gray-500',
+                                    )}
+                                  >
+                                    {chapter.title}
+                                  </span>
+                                </div>
                               </div>
-                              <div className="col-span-7">
-                                <span
-                                  className={cn(
-                                    'text-xs',
-                                    isChapterPast(chapter, currentChapter)
-                                      ? 'text-orange-500'
-                                      : 'text-gray-500',
-                                  )}
-                                >
-                                  {chapter.title}
-                                </span>
-                              </div>
-                            </div>
-                          </Link>
-                        </li>
-                      ))}
-                  </Disclosure.Panel>
-                </div>
+                            </Link>
+                          </li>
+                        ))}
+                    </Disclosure.Panel>
+                  </div>
+                )}
               </Disclosure>
             ))}
         </ul>
