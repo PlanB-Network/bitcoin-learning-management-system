@@ -46,7 +46,7 @@ const Media = ({ className = '', size = 30 }) => (
       <BsYoutube size={size + 5} />
     </a>
     <a
-      href="https://twitter.com/DecouvreBitcoin"
+      href="https://twitter.com/planb_network"
       target="_blank"
       rel="noopener noreferrer"
     >

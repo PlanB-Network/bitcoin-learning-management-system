@@ -53,10 +53,10 @@ export const Home = () => {
     t('courses.categories.secu'),
   ];
   const resources = [
-    t('words.books'),
-    t('words.podcasts'),
-    t('words.builders'),
-    t('words.toolkits'),
+    { name: t('words.books'), link: 'books' },
+    { name: t('words.podcasts'), link: 'podcasts' },
+    { name: t('words.builders'), link: 'builders' },
+    { name: t('words.toolkits'), link: 'bet' },
   ];
   const sectionClass =
     'flex flex-col w-[100%] items-center py-12 overflow-hidden font-light md:font-normal';
@@ -308,9 +308,9 @@ export const Home = () => {
           <div className="relative mt-3 flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
             <div className="flex flex-wrap justify-evenly gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
               {resources.map((resource) => (
-                <a key={resource} href={'/resources/' + resource.toLowerCase()}>
+                <a key={resource.link} href={'/resources/' + resource.link}>
                   <Button variant="tertiary" className="rounded-3xl">
-                    {resource}
+                    {resource.name}
                   </Button>
                 </a>
               ))}
@@ -439,7 +439,7 @@ export const Home = () => {
     return (
       <div
         className={cn(
-          'bg-beige-300 text-blue-1000 md:text-left text-center md:py-16',
+          'bg-beige-300 text-blue-1000 md:text-left text-center !pb-0 md:py-16',
           sectionClass,
         )}
       >
@@ -449,10 +449,7 @@ export const Home = () => {
           </p>
           <p className="text-3xl font-medium">{t('home.section4.planB')}</p>
           <p className="mt-9 text-xl">{t('home.section4.content1')}</p>
-          <p className="flex flex-col items-center md:mb-6">
-            <SponsorLuganoPlanB width={isScreenMd ? 250 : 200} />
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+          <div className="mt-9 flex flex-wrap justify-center gap-6 md:mb-6 md:gap-8">
             {sponsorSrcs.map((sponsorSrc) => {
               return (
                 <img
@@ -467,6 +464,9 @@ export const Home = () => {
               );
             })}
           </div>
+          <p className="flex flex-col items-center">
+            <SponsorLuganoPlanB width={isScreenMd ? 200 : 150} />
+          </p>
         </div>
       </div>
     );
