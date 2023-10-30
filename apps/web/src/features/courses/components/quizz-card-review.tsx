@@ -85,9 +85,8 @@ export default function QuizzCardReview({
               <ArrowFilledIcon height={20} />
               <p className="mt-1 text-sm font-medium">{question}</p>
             </div>
-            <div className="flex flex-col gap-2 md:flex-row">
-              <p className="text-blue-1000">Explanation:</p>
-              <p className="text-blue-1000 max-w-[18rem] grow break-words">
+            <div className="flex flex-col gap-2">
+              <p className="text-blue-1000 ml-2 mt-2 grow break-words text-sm md:mt-2 md:text-base">
                 {explanation}
               </p>
             </div>
