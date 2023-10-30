@@ -247,7 +247,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
 
                 return (
                   <div
-                    className="relative flex grow overflow-visible border-l-[1.5px] border-blue-800 first:border-l-0"
+                    className="border-beige-300 relative flex grow overflow-visible border-l-[1.5px] first:border-l-0"
                     key={chapterIndex}
                   >
                     <div
