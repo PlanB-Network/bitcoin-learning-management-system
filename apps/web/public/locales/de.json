@@ -11,7 +11,7 @@
       "rabbitholeDigger": "Kaninchenbau Entdecker"
     },
     "headerLink": "Werde ein Community-Sponsor",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
+    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen an Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information. \n\nWir unterstützen lokale Gemeinschaften von Bitcoinern, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie wird durch das Cypherpunk Manifest inspiriert. Genau wie sie für den Schutz der Privatsphäre kämpfen, verteidigen wir die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only. \n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird. \n\nWir bitten um Verifizierung und nicht um blindes Vertrauen. \n\nWir glauben, dass wir durch das reparieren des Geldes die Welt reparieren können.\n\nWir sind dezentral und Open-Source und vermeiden somit jeden einzelnen Punkt des Scheiterns. \n\nWir ermutigen die freie Verbreitung unserer Inhalte. \n\nWir streben eine Welt an, die von unten nach oben operiert, in der der Mensch im Zentrum steht.\n\nSchließe dich an unsere Mission an, die Orange-Pille in die Welt zu verteilen.\n",
     "pageSubtitle": "Die Sovereign University bietet allen eine kostenlose Bitcoin-Ausbildung an.",
     "thanks1": "Ein besonderes Dankeschön an unsere frühen Unterstützer, die uns über die Jahre hinweg geholfen haben, weiterzumachen.",
     "thanks2": "Die Sovereign University ist eine Gemeinschaftsprojekt. Sie ist dank zahlreicher Mitwirkende wie Professoren, Entwicklern, Designern und Helfern vieler Arten möglich. Herzlichen Dank an alle von ihnen."
@@ -27,21 +27,21 @@
     "createOne": "Erstellen Sie eins !",
     "emailAddress": "Email Adresse",
     "errors": {
-      "usernameRegex": "Username can only contain letters, digits, _, . and -",
+      "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, _, und - enthalten",
       "usernameRequired": "Benutzername erforderlich",
       "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten"
     },
     "forgottenPassword": "Passwort vergessen ?",
     "getConnected": "Loggen Sie sich ein!",
     "headerAccountCreated": "Konto erstellt",
-    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
+    "lnurlAuthDescription": "Scanne diesen QR-Code mit deiner Lightning Wallet, um dich anzumelden!",
     "noAccountNeeded": "Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
     "noAccountYet": "Haben Sie noch kein Konto?",
     "passwordReinit": "Passwort Reinitialisierung",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordsDontMatch": "Passwörter stimmen nicht überein",
     "sendLink": "Link versenden",
-    "signIn": "Sign In"
+    "signIn": "Einloggen"
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
