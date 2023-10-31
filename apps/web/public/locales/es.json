@@ -41,46 +41,46 @@
     "passwordRequired": "Contraseña requerida",
     "passwordsDontMatch": "Las contraseñas no coinciden",
     "sendLink": "Enviar un enlace",
-    "signIn": "Sign In"
+    "signIn": "Iniciar sesión"
   },
   "bet": {
-    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
+    "contribute": "Este kit de herramientas está abierto a la contribución. Utiliza Figma, así que cualquiera puede añadir, modificar y traducir. Para colaborar, agregar una categoría o discutir, no dude en unirse a nuestro discord.",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
-      "title": "Educational Content"
+      "description": "Este contenido está destinado a estar listo para ser utilizado para eventos educativos y su uso.",
+      "title": "Contenido educativo"
     },
-    "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
-    "pageTitle": "Bitcoin Educational Toolkit",
+    "hereForYou": "¡La BET está aquí para ti!",
+    "pageDescription": "The Sovereign University apoya a educadores de bitcoin y comunidades locales de todo el mundo, para ayudar a difundir la adopción de bitcoin. Hacia ese objetivo, recopilamos y hacemos accesible una gran base de datos, de ambos contenidos educativos (creado por nosotros como por otros), asi como de datos visuales.",
+    "pageSubtitle": "El BET - Un kit de herramientas de código abierto de Bitcoin para todos los proyectos educativos",
+    "pageTitle": "Herramientas educativas de Bitcoin",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
-      "title": "Visual Content"
+      "description": "Este contenido es datos visuales sin formato, para ser usado para tus creaciones.",
+      "title": "Contenido visual"
     }
   },
   "book": {
-    "abstract": "Abstract",
+    "abstract": "Abstracto",
     "bookSummary": {
-      "modifyTooltip": "Write or modify",
-      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
-      "notice": "this summary is linked to github, for any modification or addition",
-      "title": "The book summary"
+      "modifyTooltip": "Escribir o modificar",
+      "noSummary": "Aún no se ha escrito ningún resumen. Si has leído el libro y quieres compartir un resumen, no dudes en escribir uno en GitHub. ¡Esto ayudaría mucho a la comunidad, mejoraría la universidad e incluso podrías conseguir algunos sats por él!",
+      "notice": "este resumen está vinculado a github, para cualquier modificación o adición",
+      "title": "El resumen del libro"
     },
-    "buttonBuy": "Buy",
+    "buttonBuy": "Comprar",
     "buttonPdf": "PDF / E-book",
-    "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "offeredBy": "Ofrecido por un colaborador generoso",
+    "pageSubtitle": "Esta biblioteca es de código abierto y está abierta a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "La Biblioteca",
+    "topicsAddressed": "Temas abordados: "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "El Portal del Constructor"
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "crypto": "Cryptography",
+      "crypto": "Criptografía",
       "econ": "Austrian Economics",
       "fin": "Finance",
       "ln": "Lightning Network",
