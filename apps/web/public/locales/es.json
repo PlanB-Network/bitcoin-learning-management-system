@@ -81,43 +81,43 @@
     "categories": {
       "btc": "Bitcoin",
       "crypto": "Criptografía",
-      "econ": "Austrian Economics",
-      "fin": "Finance",
+      "econ": "Economía Austriaca",
+      "fin": "Finanzas",
       "ln": "Lightning Network",
-      "min": "Mining",
-      "secu": "Security & Privacy"
+      "min": "Minería",
+      "secu": "Seguridad y privacidad"
     },
     "chapter": {
-      "finishCourse": "Finish the course",
-      "next": "Done, let's go to the next chapter!",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "finishCourse": "Terminar el curso",
+      "next": "¡Listo, vamos al siguiente capítulo!",
+      "thanksTip": "¿Quieres dar las gracias? Tip."
     },
     "details": {
-      "courseId": "Course ID: {{courseId}}",
-      "curriculum": "Curriculum",
-      "description": "Description",
-      "duration": "Duration: {{hours}} hours",
+      "courseId": "ID del curso: {{courseId}}",
+      "curriculum": "Currículo",
+      "description": "Descripción",
+      "duration": "Duración: {{hours}} horas",
       "goal": "GOAL: ",
-      "level": "Level: $t(words.level.{{level}})",
+      "level": "Nivel: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} capítulos",
-        "hours": "{{hours}} hours"
+        "hours": "{{hours}} hora(s)"
       },
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "objectives": "Objectives",
-      "objectivesTitle": "What you'll learn :",
-      "professor": "Professor",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
-      "teachers": "Teachers: {{teachers}}"
+      "numberOfChapters": "Número de capítulos: {{number}}",
+      "objectives": "Objetivos",
+      "objectivesTitle": "Lo que aprenderás:",
+      "professor": "Profesor",
+      "startCourse": "Iniciar el curso",
+      "taughtBy": "Este curso está siendo impartido por :",
+      "teachers": "Profesores: {{teachers}}"
     },
     "explorer": {
-      "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "moreToCome": ".... and more to come !",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
+      "footerTitle": "¡Nuestros profesores están aquí para ti!",
+      "footerp1": "En The Sovereign University, nuestros profesores tienen completa autonomía sobre su contenido y las herramientas que desean que explores, siempre y cuando sigan el código de ética. Son bitcoiners apasionados de diversos orígenes.",
+      "footerp2": "Si deseas mejorar un curso o proporcionar el tuyo propio, puedes hacerlo de manera sencilla a través de GitHub. Para apoyar a un profesor, puedes calificar el curso, dar propina al profesor directamente o convertirte en miembro de la universidad para respaldar la plataforma.",
+      "moreToCome": ".... y más por venir !",
+      "pageDescription": "Aquí podrás encontrar una gran cantidad de cursos relacionados con Bitcoin en su totalidad, con una amplia gama de temas. Este contenido educativo es orgánico, creciendo a medida que Bitcoin se desarrolla. Todo el contenido es gratuito, de código abierto y accesible para todos. El índice de cursos está organizado en círculos para adaptarse al camino de aprendizaje de cada persona.",
+      "pageSubtitle": "Bienvenido a la puerta de la plataforma e-learning.",
       "pageTitle": "Courses",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
@@ -188,65 +188,65 @@
       "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
       "communityTitle": "Community",
       "communityTitleMobile": "Community focused",
-      "content1": "Beside courses, our large amount of tutorials will help you master different technologies, such as wallets, merchant solutions, exchanges, nodes, mining, and privacy solutions... And because that’s still not enough, a large amount of resources such as books, podcasts or videos, are classified, ordered and made available on the platform.",
-      "content2": "Our goal is to provide you with the tools to succeed.",
-      "content3": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
-      "helpingCommunities": "Helping Bitcoin communities grow is our mission ",
-      "letsHelpYou": "Let us help you master the technology, read and hear about Bitcoin!",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
-      "openSourceTitle": "Open source",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress",
-      "privacyTitle": "Privacy",
-      "privacyTitleMobile": "Privacy focused",
-      "seeResources": "See all resources",
-      "seeResourcesMobile": "Get a look at all our resources",
-      "seeTutorials": "See all tutorials",
-      "seeTutorialsMobile": "Get a look at all our tutorials"
+      "content1": "Además de los cursos, nuestra gran cantidad de tutoriales te ayudará a dominar diferentes tecnologías, como billeteras, soluciones para comerciantes, intercambios, nodos, minería y soluciones de privacidad... Y porque eso aún no es suficiente, una gran cantidad de recursos, como libros, podcasts o videos, están clasificados, ordenados y disponibles en la plataforma.",
+      "content2": "Nuestro objetivo es proporcionarte las herramientas para que tengas éxito.",
+      "content3": "La red PlanB es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir la red PlanB y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
+      "helpingCommunities": "Ayudar a las comunidades de Bitcoin a crecer es nuestra misión ",
+      "letsHelpYou": "¡Déjanos ayudarte a dominar la tecnología, leer y escuchar sobre Bitcoin!",
+      "openSourceContent": "Nuestro objetivo es promover el libre flujo del conocimiento y ayudar a construir más soluciones de código abierto",
+      "openSourceTitle": "Código abierto",
+      "privacyContent": "Consideramos que la privacidad es uno de los derechos humanos más fundamentales y esencial para el progreso",
+      "privacyTitle": "Privacidad",
+      "privacyTitleMobile": "Centrado en la privacidad",
+      "seeResources": "Ver todos los recursos",
+      "seeResourcesMobile": "Echa un vistazo a todos nuestros recursos",
+      "seeTutorials": "Ver todos los tutoriales",
+      "seeTutorialsMobile": "Echa un vistazo a todos nuestros tutoriales"
     },
     "section4": {
-      "content1": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible ! ",
-      "planB": "The PlanB Network is 100% open-source thanks to our generous patreon",
-      "together": "Together let's make Bitcoin education better! "
+      "content1": "¡La red PlanB se enorgullece de colaborar con numerosas empresas de Bitcoin en todo el mundo para proporcionar los mejores recursos educativos posibles! ",
+      "planB": "La Red PlanB es 100% de código abierto gracias a nuestros generosos patrocinadores",
+      "together": "¡Juntos vamos a mejorar la educación en Bitcoin! "
     }
   },
   "imagesAlt": {
-    "bitcoinCurrency": "the sign of bitcoin currency",
-    "blueEllipse": "a blue ellipse",
-    "bookCover": "a book cover",
-    "community": "3 people",
-    "contributorHeart": "a heart for nice contributor",
-    "contributorPP": "contributor profile pic",
-    "courseThumbnail": "Course thumbnail",
-    "curriculum": "Curriculum",
+    "bitcoinCurrency": "el signo de moneda bitcoin",
+    "blueEllipse": "una elipse azul",
+    "bookCover": "una portada de libro",
+    "community": "3 personas",
+    "contributorHeart": "un corazón por buen colaborador",
+    "contributorPP": "foto de perfil del colaborador",
+    "courseThumbnail": "Miniatura del curso",
+    "curriculum": "Currículo",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
-    "favorite": "a heart inside a circle",
-    "flagsInCircle": "a circle of flags",
-    "forwardArrow": "a forward arrow",
-    "github": "the icon of github",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "rabbitClassroom": "rabbits inside a classroom",
-    "rabbitLibrary": "a rabbit reading a book",
-    "rabbitMeetup": "a rabbit meetup",
-    "rabbitPodcast": "a rabbit listenning to a podcast",
-    "rabbitStudying": "rabbit studying in a workshop",
-    "rabbitVideos": "a rabbit filming a video",
-    "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
-    "readingRabbit": "A rabbit reading a book",
-    "sthRepresentingCompany": "something representing the company",
-    "stylus": "a stylus",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign",
-    "worldMap": "world map with hubs linked"
+    "favorite": "un corazón dentro de un círculo",
+    "flagsInCircle": "un círculo de banderas",
+    "forwardArrow": "una flecha hacia adelante",
+    "github": "el ícono de github",
+    "rabbit404": "un conejo iluminando un letrero de error 404 con una linterna",
+    "rabbitClassroom": "conejos dentro de un aula",
+    "rabbitLibrary": "un conejo leyendo un libro",
+    "rabbitMeetup": "una reunión de conejos",
+    "rabbitPodcast": "un conejo escuchando un podcast",
+    "rabbitStudying": "conejo estudiando en un taller",
+    "rabbitVideos": "un conejo filmando un vídeo",
+    "rabbitWithBackpackAndBtcSign": "un conejo con una mochila y un signo de btc",
+    "readingRabbit": "Un conejo leyendo un libro",
+    "sthRepresentingCompany": "algo que representa a la empresa",
+    "stylus": "un lápiz digital",
+    "underConstructionImage": "Ilustración de varios conejos trabajando en un sitio de construcción",
+    "visibilityOff": "el ícono de los ojos sin el signo de apagado",
+    "worldMap": "mapa del mundo con centros enlazados"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{author}}"
+    "pageSubtitle": "Esta biblioteca es de código abierto y está abierta a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "La Biblioteca",
+    "publishedIn": "Publicado el {{date}}",
+    "writtenBy": "Escrito por {{author}}"
   },
   "menu": {
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
+    "betDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
+    "btc101Description": "Consigue una mejor comprensión de bitcoin con estas lecciones",
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
     "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
     "libraryDescription": "Discover plenty of books to improve your knowledge",
@@ -301,37 +301,37 @@
     "stage4": "Full Citadel"
   },
   "notFound": {
-    "here": "Here",
-    "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
-    "pageTitle": "Oops."
+    "here": "Aquí",
+    "pageSubtitle": "Parece que alguien cayó demasiado profundo en el agujero del conejo y se perdió. Para volver a la superficie, haga clic",
+    "pageTitle": "Ups."
   },
   "podcast": {
-    "abstract": "Abstract",
-    "discover": "Discover this podcast"
+    "abstract": "Abstracto",
+    "discover": "Descubre este podcast"
   },
   "podcasts": {
-    "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal"
+    "hostedBy": "Alojado por {{host}}",
+    "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "El Portal del Podcast"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors",
+    "pageSubtitle": "Todos nuestros profesores son voluntarios y bitcoiners apasionados. Puedes dar las gracias.",
+    "pageTitle": "Profesores",
     "tips": {
-      "noTipsYet": "This professor does not accept tips at the moment.",
-      "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "noTipsYet": "Este profesor no acepta propinas en este momento.",
+      "thanks": "¡Gracias por apoyar el trabajo de {{name}}!",
+      "thanksNoName": "¡Gracias por apoyar mi trabajo!"
     }
   },
   "resources": {
     "articles": {
-      "title": "Articles"
+      "title": "Artículos"
     },
     "bet": {
-      "title": "Educational Toolkit"
+      "title": "Herramientas educativas de Bitcoin"
     },
     "books": {
-      "title": "Books"
+      "title": "Libros"
     },
     "builders": {
       "title": "Builders"
