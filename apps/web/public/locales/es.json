@@ -141,53 +141,53 @@
     "quizz": {
       "clickOnPie": "Haz clic en el gráfico circular, para revisar tus errores y ver las explicaciones",
       "quizz": "Cuestionario",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "quizzResults": "Resultados del cuestionario",
+      "quizzReview": "Revisión del cuestionario",
+      "resultCongrats": "¡Felicidades, lo hiciste bien!",
+      "resultItsOk": "¡No te rindas, lo harás mejor la próxima vez!",
+      "resultNotBad": "¡No está mal!",
+      "resultPerfect": "¡Absolutamente perfecto! ¡Felicidades!"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "colcardAndSparrow": "Coldcard y Sparrow",
+      "financeIntroduction": "Introducción a las finanzas",
+      "financialCrisis": "Análisis de las principales crisis financieras",
+      "hyperinflation": "Estudio de las hiperinflaciones",
+      "theoreticalLightning": "Curso teórico avanzado sobre la Lightning Network"
     }
   },
   "home": {
     "header": {
-      "content1": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty.",
-      "content2": "From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "link": "Be part of the network"
+      "content1": "La plataforma PlanB tiene como objetivo proporcionar las mejores herramientas y contenido educativo en todo el mundo para ayudar a las personas a recuperar su soberanía.",
+      "content2": "Desde individuos hasta comunidades, estamos aquí para ayudarte en tu viaje con Bitcoin.",
+      "forEducators": "Para educadores y constructores",
+      "globalNetwork": "Red global de Bitcoin",
+      "link": "Se parte de la red"
     },
     "section1": {
-      "allLevels": "From beginner to advanced, learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding.",
-      "content2": " From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
-      "content3": "There's no reason to hesitate. Knowledge awaits you.",
-      "interested": "Interested in Bitcoin ?",
-      "link": "Check the academy"
+      "allLevels": "De principiante a avanzado, aprende Bitcoin en la academia",
+      "content1": "Bitcoin no es solo una tecnología y una forma de dinero, sino también una forma revolucionaria de abordar la vida. Para reflejar esto, nuestros cursos abarcan una amplia gama de campos, empoderando a cada individuo para sobresalir en sus áreas de interés y profundizar en su comprensión.",
+      "content2": " Desde tu primer curso de Bitcoin hasta una inmersión profunda en los detalles del protocolo, nuestros cursos te ayudarán a navegar de manera segura por el agujero del conejo.",
+      "content3": "No hay ninguna razón para dudar. El conocimiento te espera.",
+      "interested": "¿Interesado en Bitcoin?",
+      "link": "Revisa la academia"
     },
     "section2": {
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all.",
-      "content2": "The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "content3": "You too can start bootstrapping your own local network in your country!",
-      "everythingTranslated": "Everything is translated to local languages",
-      "link": "Help us translate the academy ",
-      "noBarrier": "No language barrier here."
+      "content1": "En PlanB, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos.",
+      "content2": "La plataforma soporta actualmente 7 idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los bitcoineros en todo el mundo.",
+      "content3": "¡También puedes empezar a arrancar tu propia red local en tu país!",
+      "everythingTranslated": "Todo está traducido a idiomas locales",
+      "link": "Ayúdanos a traducir la academia ",
+      "noBarrier": "Aquí no hay barrera lingüística."
     },
     "section3": {
-      "aboutUs": "A little bit about us",
-      "bitcoinFocusContent": "We focus on the Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
-      "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusTitleMobile": "Bitcoin focused",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
-      "communityTitle": "Community",
-      "communityTitleMobile": "Community focused",
+      "aboutUs": "Un poco sobre nosotros",
+      "bitcoinFocusContent": "Nos enfocamos en la revolución de Bitcoin en su totalidad, desde su capa base hasta varias comunicaciones de peer-to-peer a su alrededor",
+      "bitcoinFocusTitle": "Enfoque Bitcoin",
+      "bitcoinFocusTitleMobile": "Enfocado en Bitcoin",
+      "communityContent": "En primer lugar, somos una comunidad de entusiastas que se ayudan mutuamente en su viaje con Bitcoin",
+      "communityTitle": "Comunidad",
+      "communityTitleMobile": "Centrada en la comunidad",
       "content1": "Además de los cursos, nuestra gran cantidad de tutoriales te ayudará a dominar diferentes tecnologías, como billeteras, soluciones para comerciantes, intercambios, nodos, minería y soluciones de privacidad... Y porque eso aún no es suficiente, una gran cantidad de recursos, como libros, podcasts o videos, están clasificados, ordenados y disponibles en la plataforma.",
       "content2": "Nuestro objetivo es proporcionarte las herramientas para que tengas éxito.",
       "content3": "La red PlanB es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir la red PlanB y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
@@ -247,37 +247,37 @@
   "menu": {
     "betDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
     "btc101Description": "Consigue una mejor comprensión de bitcoin con estas lecciones",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
-    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "lightningDescription": "Manage your lightning node and use the lightning network",
-    "manifestoDescription": "Read Plan B's manifesto",
-    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
-    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
-    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
-    "ourStoryDescription": "Learn about the story of the university",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
-    "sponsorsDescription": "Discover our sponsors and main contributors",
-    "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
-    "walletsDescription": "Secure and use your bitcoins"
+    "buildersDescription": "Aprende acerca de las empresas y proyectos que trabajan para mejorar Bitcoin y aumentar su adopción",
+    "exchangesDescription": "Compra y vende bitcoins en los intercambios y aprende sobre P2P",
+    "libraryDescription": "Descubre una gran cantidad de libros para mejorar tu conocimiento",
+    "lightningDescription": "Gestiona tu nodo de Lightning y utiliza la red Lightning",
+    "manifestoDescription": "Lee el manifiesto de Plan B",
+    "merchantsDescription": "Aceptar pagos bitcoin y descubrir herramientas para comerciantes",
+    "miningDescription": "Mina tus propios bitcoins y aprende sobre la industria minera",
+    "nodeDescription": "Aprende cómo ser auto-soberano con tu propio nodo bitcoin",
+    "nodeNetworkDescription": "¡Únete a la red global de las comunidades de Bitcoin!",
+    "ourStoryDescription": "Aprende acerca de la historia de la universidad",
+    "podcastsDescription": "Explora el ecosistema bitcoin a través de podcasts",
+    "sponsorsDescription": "Descubre a nuestros patrocinadores y principales colaboradores",
+    "supportUsDescription": "Encuentra formas de apoyarnos, de cualquier manera",
+    "teachersDescription": "Conoce a nuestros profesores universitarios, entusiastas de Bitcoin",
+    "walletsDescription": "Asegura y utiliza tus bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "A node is simply a Bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption! There is no minimum size to start with.",
-    "answer2": "At Plan B, we aim to improve the educational Bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
-    "answer3": "To be part of the network you must align on some core values. These are: be bitcoin only, value privacy and care for the open source work.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different names will be attributed. A node with an hackerspace, a gym, some office place will be considered a ”Citadel” while your first bitcoin home town office will be known as “nodes”.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We belive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
-    "apply": "Apply",
-    "description1": "All around the world, Bitcoiners are coming together in communities.",
-    "description2": "<0>A new</0> <1>Bitcoin meetup</1> emerges every week.",
-    "description3": "Educational centers, <0>hackerspaces</0>, and Bitcoin office spaces are on the rise.",
-    "description4": "<0>Secure citadels</0> are under construction.",
-    "description5": "The dedication of the Bitcoin community to collaborate, support one another, and offer essential tools for their local counterparts is essential to thrive in the modern landscape. ",
-    "description6": "At PlanB, we recognize the challenges ahead for these communities builders. To support their efforts, we've introduced solutions to simplify their development process.",
-    "descriptionTitle": "Every country needs a Plan B!",
-    "join1": "By joining our network, we'll guide you in transitioning from a simple Bitcoin meetup to a fully secured Bitcoin citadel!",
+    "answer1": "Un nodo es simplemente una comunidad de Bitcoin que desea avanzar al siguiente nivel y acelerar su propia adopción local de Bitcoin. No hay un tamaño mínimo para comenzar.",
+    "answer2": "En Plan B, nuestro objetivo es mejorar el ecosistema educativo de Bitcoin proporcionando las herramientas adecuadas para construir y educar sobre Bitcoin. Al convertirte en un nodo, tu comunidad tendrá acceso a una amplia gama de recursos, servicios, capacitación educativa especial y más. Haz que tu comunidad sea un punto de referencia en el mundo de Bitcoin.",
+    "answer3": "Para ser parte de la red, debes alinearte con algunos valores fundamentales. Estos son: ser exclusivamente de Bitcoin, valorar la privacidad y preocuparte por el trabajo de código abierto.",
+    "answer4": "Un nodo de Bitcoin puede ser de cualquier tamaño. Según ciertos requisitos, se les asignarán diferentes nombres. Un nodo con un hackerspace, un gimnasio o algún espacio de oficina se considerará una \"Ciudadela\", mientras que tu primera oficina en tu ciudad natal de Bitcoin se conocerá como \"nodo\".",
+    "answer5": "Deseamos ofrecer un refugio seguro para los entusiastas de Bitcoin en todo el mundo. Creemos que al ayudar a que crezcan los centros locales, podremos crear una red de ciudadelas donde los bitcoiners serán bienvenidos para trabajar, crear, compartir y discutir de manera segura.",
+    "apply": "Aplicar",
+    "description1": "En todo el mundo, los bitcoiners se están uniendo en comunidades.",
+    "description2": "<0>Una nueva </0> <1>Reunión de bitcoin</1> surge cada semana.",
+    "description3": "Centros educativos, <0>espacios de hackers</0>, y espacios de oficina de Bitcoin están en ascenso.",
+    "description4": "<0>Citadelas seguras</0> están en construcción.",
+    "description5": "La dedicación de la comunidad de Bitcoin para colaborar, apoyarse mutuamente y ofrecer herramientas esenciales para sus contrapartes locales es fundamental para prosperar en el panorama actual. ",
+    "description6": "En PlanB, reconocemos los desafíos que enfrentan los constructores de comunidades. Para apoyar sus esfuerzos, hemos introducido soluciones para simplificar su proceso de desarrollo.",
+    "descriptionTitle": "¡Todos los países necesitan un Plan B!",
+    "join1": "Al unirte a nuestra red, te guiaremos en la transición desde un simple encuentro de Bitcoin hasta una verdadera Ciudadela de Bitcoin completamente segura!",
     "join2": "<0>Community building</0> support",
     "join3": "Educational resources for <0> local seminars</0>",
     "join4": "Access to worldwide experts",
@@ -397,78 +397,78 @@
       },
       "description": "Los nodos son como tus servidores personales. En Bitcoin, es el software que te permite ejecutar la red, recopilar transacciones, verificar las reglas y ser verdaderamente soberano. Dentro de nuestro ecosistema, existen varios tipos de nodos, desde Bitcoin Core hasta implementaciones de Lightning, RGB y otras soluciones de privacidad más avanzadas.",
       "lightning-network": {
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "description": "Un nodo de Lightning te permite participar en el protocolo de capa 2 de Bitcoin llamado Lightning. Podrás abrir canales, gestionar su liquidez, participar en el grafo y ser no custodio con respecto a tu billetera de Lightning.",
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB es un sistema escalable y confidencial de contratos inteligentes para Bitcoin y la red Lightning. Es una capa de programabilidad para Bitcoin, con conceptos de propiedad privada y mutua, abstracción y separación de preocupaciones, y representa una idea de \"post-blockchain\"."
       },
-      "shortDescription": "Solutions to operate a bitcoin node and join the network",
-      "title": "Node"
+      "shortDescription": "Soluciones para operar un nodo bitcoin y unirse a la red",
+      "title": "Nodo"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
+    "pageDescription": "Bitcoin es una industria amplia, cada día más amplia. Para ayudarte a explorarlo, hemos reunido un gran número de tutoriales que describen varias soluciones.",
+    "pageSubtitle": "¡Bienvenido al infinito agujero de conejo de Bitcoin!",
+    "pageTitle": "Tutoriales",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "Bitcoin no es privado por defecto, está diseñado intencionalmente para ser seudónimo, y cada transacción es pública y se almacena para siempre. Para recuperar cierta confidencialidad, debemos seguir las mejores prácticas de usuario y utilizar herramientas específicas integradas en nuestro software. Desde evitar la reutilización de direcciones hasta CoinJoin, pasando por mezclar tus monedas y conectarte a tu propio nodo, te ayudaremos en tu viaje hacia la privacidad."
       },
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
+      "description": "La privacidad es un derecho fundamental. Si bien aspiramos a un mundo donde la privacidad sea la configuración predeterminada, no es la realidad en la que vivimos. Intentaremos explicarte las mejores prácticas, ayudarte con tutoriales y encaminarte hacia un camino más soberano en lo que respecta a tus datos.",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "En la era de la vigilancia masiva, recuperar un cierto nivel de privacidad en tu vida cotidiana es esencial. Dado que cada usuario tendrá un cierto grado de paranoia y conocimiento tecnológico, es perfectamente normal utilizar ciertas herramientas y adaptarlas a tus necesidades. Aquí, exploraremos diferentes soluciones de protección, como VPN, Tor, Tails OS, PGP, mensajes cifrados y mucho más."
       },
-      "shortDescription": "Tools for backup and maintaining privacy",
-      "title": "Privacy"
+      "shortDescription": "Herramientas para respaldar y mantener la privacidad",
+      "title": "Privacidad"
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
+      "description": "Una billetera de Bitcoin es como tu llavero. Te permite gastar y recibir Bitcoin. Hay muchos tipos diferentes de billeteras, cada una con diferentes casos de uso, funciones, costos y experiencias de usuario. Cada bitcoiner utilizará un dispositivo diferente según sus necesidades, nivel de exigencia y experiencia.",
       "desktop": {
-        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+        "description": "Las billeteras de escritorio suelen ser para usuarios más avanzados, ya que combinan el uso de dispositivos de hardware y el software de billetera de escritorio. Es como tener una interfaz nueva, más personalizada y con funcionalidades intensivas para usar con tu dispositivo de hardware. Estas billeteras ofrecen opciones de múltiples firmas, características de privacidad, mecanismos de integración de herencia y más."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Las billeteras de hardware suelen utilizarse para almacenar tus ahorros a largo plazo de Bitcoin. Son dispositivos físicos que no están conectados a Internet (a menudo se les llama \"billeteras frías\") y suelen ser altamente seguros. Aunque estos dispositivos a menudo tienen software de código abierto, el hardware en sí suele tener un costo de alrededor de 50 a 300 euros. Puedes considerar estos dispositivos como una cuenta bancaria para cantidades más grandes de ahorros que usarías de vez en cuando."
       },
       "mobile": {
-        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+        "description": "Las billeteras móviles suelen utilizarse para gastos diarios. Integran la Lightning Network para transacciones instantáneas con comisiones bajas. Suelen estar conectadas a Internet (a menudo se les llama \"billeteras calientes\") y, por lo tanto, son menos seguras que las billeteras de hardware. Deberían utilizarse solo para almacenar pequeñas cantidades de Bitcoin y considerarse como tu billetera de uso diario en tu bolsillo."
       },
-      "shortDescription": "Security solutions and usage of your bitcoins",
-      "title": "Wallet"
+      "shortDescription": "Soluciones de seguridad y uso de sus bitcoins",
+      "title": "Billetera"
     }
   },
   "underConstruction": {
     "github": "GitHub",
-    "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
-    "p2": "and consider joining our community!",
-    "pageTitle": "Oops."
+    "p1": "Un conejo ha caído por un agujero. Debido a esta aventura inesperada, esta página está en proceso de construcción en este momento. Pedimos disculpas por cualquier inconveniente. Nuestro equipo está trabajando a toda velocidad para completar esta página. Si estás interesado en echar una mano, no dudes en consultar nuestra",
+    "p2": "y considere unirse a nuestra comunidad!",
+    "pageTitle": "Ups."
   },
   "words": {
-    "about": "About",
-    "about-us": "About Us",
-    "account": "Account",
-    "additionalCriteria": "Additional criteria",
-    "advanced": "Advanced",
-    "article": "Article",
-    "articles": "Articles",
-    "audioBook": "Audio Book",
-    "back": "Back",
-    "beginner": "Beginner",
-    "bitcoinWhitepaper": "Bitcoin Whitepaper",
-    "book": "Book",
-    "books": "Books",
-    "builders": "Builders",
-    "certificate": "Certificate",
-    "conference": "Conference",
-    "conferences": "Conferences",
-    "content": "Content",
-    "continue": "Continue",
-    "course": "Course",
-    "courses": "Courses",
-    "dashboard": "Dashboard",
-    "details": "Details",
-    "didYouKnow": "Did you know?",
-    "documentaries": "Documentaries",
-    "donations": "Donations",
-    "economy": "Economy",
+    "about": "Sobre",
+    "about-us": "Sobre nosotros",
+    "account": "Cuenta",
+    "additionalCriteria": "Criterios adicionales",
+    "advanced": "Avanzado",
+    "article": "Artículo",
+    "articles": "Artículos",
+    "audioBook": "Audiolibro",
+    "back": "Volver",
+    "beginner": "Principiante",
+    "bitcoinWhitepaper": "Libro Blanco de Bitcoin",
+    "book": "Libro",
+    "books": "Libros",
+    "builders": "Constructores",
+    "certificate": "Certificado",
+    "conference": "Conferencia",
+    "conferences": "Conferencias",
+    "content": "Contenido",
+    "continue": "Continuar",
+    "course": "Curso",
+    "courses": "Cursos",
+    "dashboard": "Panel de Control",
+    "details": "Detalles",
+    "didYouKnow": "¿Lo sabías?",
+    "documentaries": "Documentales",
+    "donations": "Donaciones",
+    "economy": "Economía",
     "email": "Correo electrónico",
     "exchanges": "Intercambios",
     "followUs": "Síguenos",
