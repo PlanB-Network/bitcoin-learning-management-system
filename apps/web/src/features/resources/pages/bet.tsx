@@ -12,7 +12,7 @@ import mpbitcoin from '../../../assets/resources/diplomampb.png';
 import gifcollection from '../../../assets/resources/gifcollection.png';
 import history from '../../../assets/resources/history.png';
 import hyperinflation from '../../../assets/resources/hyperinflation.png';
-import logosCompanies from '../../../assets/resources/Logos .png';
+import logosCompanies from '../../../assets/resources/Logos.png';
 import meme from '../../../assets/resources/Meme.png';
 import phen from '../../../assets/resources/phnee.png';
 import scams from '../../../assets/resources/Scams.png';
