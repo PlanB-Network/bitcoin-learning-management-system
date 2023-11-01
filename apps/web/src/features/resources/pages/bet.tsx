@@ -91,7 +91,7 @@ const SectionGrid = ({
 export const BET = () => {
   const { t } = useTranslation();
 
-  // Define the Figma box data. For now, the links and images have not been created.
+  // The Links and the images are updated.
   const EDUCATIONAL_CONTENT = [
     {
       title: 'Adil Infography',
