@@ -12,17 +12,17 @@
     },
     "headerLink": "Become a community sponsor",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
+    "pageSubtitle": "PlanB Network brings Bitcoin education to all.",
     "thanks1": "A special thanks to our early-supporters, who have helped us persevere throughout the years.",
-    "thanks2": "The Sovereign University is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
+    "thanks2": "PlanB Network is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
     "alreadyHaveAccount": "Already have an account?",
-    "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
-    "connect": "Se connecter",
+    "canSaveProgress": "You can now save your progression",
+    "connect": "Connect",
     "connectWithLn": "Connect with LN",
-    "contributorId": "Identifiant contributeur",
+    "contributorId": "Contributor ID",
     "createAccount": "Register",
     "createOne": "Register here!",
     "emailAddress": "Adresse email",
@@ -32,29 +32,29 @@
       "usernameTooShort": "Username must contain at least 5 characters"
     },
     "forgottenPassword": "Forgot your password?",
-    "getConnected": "Connectez vous !",
+    "getConnected": "Connect !",
     "headerAccountCreated": "Account created",
     "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
-    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountNeeded": "No need for an account in order to start learning at PlanB",
     "noAccountYet": "Don't have an account?",
-    "passwordReinit": "Réinitilisation de mot de passe",
+    "passwordReinit": "Reset Password",
     "passwordRequired": "Password is required",
     "passwordsDontMatch": "Passwords don't match",
-    "sendLink": "Envoyer un lien",
+    "sendLink": "Sent a link",
     "signIn": "Sign In"
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
+      "description": "This content is meant to be use for educational events.",
       "title": "Educational Content"
     },
     "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
+    "pageDescription": "PlanB supports bitcoin educators and local communities all over the world, to help spread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
     "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
+      "description": "This content is raw visual data to be used for your creations.",
       "title": "Visual Content"
     }
   },
@@ -63,7 +63,7 @@
     "bookSummary": {
       "modifyTooltip": "Write or modify",
       "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
-      "notice": "this summary is linked to github, for any modification or addition",
+      "notice": "This summary is linked to github, for any modification or addition",
       "title": "The book summary"
     },
     "buttonBuy": "Buy",
@@ -113,15 +113,15 @@
     },
     "explorer": {
       "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
+      "footerp1": "At PlanB, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
       "moreToCome": ".... and more to come !",
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
+      "pageSubtitle": "Welcome to the e-learning platform.",
       "pageTitle": "Courses",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
+      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at PlanB, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you !",
+      "s2p3": "Most of our courses are 100% free so nothing can stop you !",
       "s2t1": "Bitcoin education is a journey not a destination",
       "s3PickLevel": "Pick levels :",
       "s3PickTopic": "Pick topics :",
@@ -150,10 +150,10 @@
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "financeIntroduction": "Introduction to finance",
+      "financialCrisis": "Studies of major financial crises",
+      "hyperinflation": "Studies of Hyperinflations",
+      "theoreticalLightning": "Theory courses on the Lightning Network"
     }
   },
   "home": {
@@ -167,7 +167,7 @@
     "section1": {
       "allLevels": "From beginner to advanced, learn Bitcoin in the academy",
       "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding.",
-      "content2": " From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
+      "content2": "From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
       "content3": "There's no reason to hesitate. Knowledge awaits you.",
       "content4": "Here you can find courses on various topic such as:",
       "interested": "Interested in Bitcoin ?",
@@ -211,7 +211,7 @@
     }
   },
   "imagesAlt": {
-    "bitcoinCurrency": "the sign of bitcoin currency",
+    "bitcoinCurrency": "The sign of bitcoin currency",
     "blueEllipse": "a blue ellipse",
     "bookCover": "a book cover",
     "community": "3 people",
@@ -275,7 +275,7 @@
     "description2": "<0>A new</0> <1>Bitcoin meetup</1> emerges every week.",
     "description3": "Educational centers, <0>hackerspaces</0>, and Bitcoin office spaces are on the rise.",
     "description4": "<0>Secure citadels</0> are under construction.",
-    "description5": "The dedication of the Bitcoin community to collaborate, support one another, and offer essential tools for their local counterparts is essential to thrive in the modern landscape. ",
+    "description5": "The dedication of the Bitcoin community to collaborate, support one another, and offer essential tools for their local counterparts is essential to thrive in the modern landscape.",
     "description6": "At PlanB, we recognize the challenges ahead for these communities builders. To support their efforts, we've introduced solutions to simplify their development process.",
     "descriptionTitle": "Every country needs a Plan B!",
     "join1": "By joining our network, we'll guide you in transitioning from a simple Bitcoin meetup to a fully secured Bitcoin citadel!",
@@ -342,7 +342,7 @@
     },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachement to the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
     "newsletters": {
       "title": "Newsletters"
     },
@@ -381,7 +381,7 @@
       "didYouKnow": "Did you know?"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome! In this section, we offer an in-depth tutorial on most Bitcoin projects out there. This page is maintained by benevolent and passionate Bitcoin supporters who advocate for this open-source project. If you feel we made a mistake, please reach out. To view our financial attachment to the projects mentioned, refer to our transparency report. Thank you for your trust in this initiative, and enjoy the journey.",
     "merchant": {
       "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions for businesses to accept Bitcoin",
@@ -440,7 +440,7 @@
     "github": "GitHub",
     "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
     "p2": "and consider joining our community!",
-    "pageTitle": "Oops."
+    "pageTitle": "Oops"
   },
   "words": {
     "about": "About",
