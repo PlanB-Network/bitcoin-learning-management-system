@@ -66,76 +66,76 @@
       "notice": "este resumo está ligado ao github, para qualquer modificação ou adição",
       "title": "O resumo do livro"
     },
-    "buttonBuy": "Buy",
+    "buttonBuy": "Comprar",
     "buttonPdf": "PDF / E-book",
-    "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "offeredBy": "Oferecido por um(a) contribuidor(a) generoso(a)",
+    "pageSubtitle": "Esta biblioteca é open-source e aberta para contribuição. Gratidão por avaliar e compartilhar!",
+    "pageTitle": "A biblioteca",
+    "topicsAddressed": "Tópicos abordados: "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "Este portal é open-source e aberto para contribuição. Gratidão por avaliar e compartilhar!",
+    "pageTitle": "Portal do Construtor"
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "crypto": "Cryptography",
-      "econ": "Austrian Economics",
-      "fin": "Finance",
+      "crypto": "Criptografia",
+      "econ": "Economia Austríaca",
+      "fin": "Finança",
       "ln": "Lightning Network",
-      "min": "Mining",
-      "secu": "Security & Privacy"
+      "min": "Mineração (mining)",
+      "secu": "Segurança & Privacidade"
     },
     "chapter": {
-      "finishCourse": "Finish the course",
-      "next": "Done, let's go to the next chapter!",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "finishCourse": "Terminar o curso",
+      "next": "Feito, vamos para o próximo capítulo!",
+      "thanksTip": "Queres agradecer? Deixa uma gorjeta."
     },
     "details": {
-      "courseId": "Course ID: {{courseId}}",
-      "curriculum": "Curriculum",
+      "courseId": "ID do curso: {{courseId}}",
+      "curriculum": "Currículo",
       "description": "Description",
-      "duration": "Duration: {{hours}} hours",
+      "duration": "Duração: {{hours}} horas",
       "goal": "GOAL: ",
-      "level": "Level: $t(words.level.{{level}})",
+      "level": "Nível: $t(words.level.{{level}})",
       "mobile": {
-        "chapters": "{{chapters}} chapters",
-        "hours": "{{hours}} hours"
+        "chapters": "{{chapters}} capítulos",
+        "hours": "{{hours}} horas"
       },
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "objectives": "Objectives",
-      "objectivesTitle": "What you'll learn :",
-      "professor": "Professor",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
-      "teachers": "Teachers: {{teachers}}"
+      "numberOfChapters": "Número de capítulos {{number}}",
+      "objectives": "Objetivos",
+      "objectivesTitle": "O que vais aprender",
+      "professor": "Professor(a)",
+      "startCourse": "Começar o curso",
+      "taughtBy": "Este curso é ensinado por:",
+      "teachers": "Professores(as): {{teachers}}"
     },
     "explorer": {
-      "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "moreToCome": ".... and more to come !",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
-      "pageTitle": "Courses",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
-      "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you !",
-      "s2t1": "Bitcoin education is a journey not a destination",
-      "s3PickLevel": "Pick levels :",
-      "s3PickTopic": "Pick topics :",
-      "s3t1": "Build your own path down the rabbit hole"
+      "footerTitle": "Os nossos professores estão aqui para ti !",
+      "footerp1": "Na The Sovereign University, os(as) nossos(as) professores(as) têm total autonomia sobre o seu conteúdo e as ferramentas que querem que tu explores, desde que sigam o código de ética. Eles/elas são bitcoiners apaixonados(as) de origens variadas.",
+      "footerp2": "Se queres melhorar num curso ou fornecer o teu próprio curso, podes simplesmente fazê-lo através do GitHub. Para apoiares um(a) professor(a), podes avaliar o seu curso, oferecer-lhe diretamente uma gorjeta ou tornar-te membro da universidade para apoiar a plataforma.",
+      "moreToCome": ".... e mais por vir!",
+      "pageDescription": "Aqui poderás encontrar um grande número de cursos relacionados com o Bitcoin como um todo, com uma grande variedade de assuntos. Este conteúdo educacional é orgânico, crescendo à medida que o Bitcoin cresce. Todo o conteúdo é gratuito, de código aberto e acessível a todos. O índice de cursos, é organizado em círculos para se adaptar ao caminho de aprendizagem de cada um(a).",
+      "pageSubtitle": "Bem-vindo(a) ao portal da plataforma de e-learning.",
+      "pageTitle": "Cursos",
+      "s2p1": "Se começaste a explorar a toca do coelho do Bitcoin, já deves saber que é uma jornada infinita com múltiplos caminhos. Aqui na universidade, sabemos disso e concebemos o nosso conteúdo educacional para ser não-linear, autónomo e tão extenso quanto possível.",
+      "s2p2": "Serás capaz de escolher o teu próprio caminho e percorrê-lo, ganhando habilidades e conhecimento à medida da tua própria motivação.",
+      "s2p3": "Todos os nossos cursos são 100% gratuitos, então nada te pode parar!",
+      "s2t1": "A educação Bitcoin é uma jornada, não um destino",
+      "s3PickLevel": "Selecionar níveis :",
+      "s3PickTopic": "Selecionar tópicos :",
+      "s3t1": "Constrói o teu próprio caminho na toca do coelho"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "freeBanner": "Todos os nossos cursos são oferecidos gratuitamente. A universidade baseia-se num sistema de membros através da doação e da partilha.",
     "part": {
-      "count": "Part n°{{count}}/{{total}}"
+      "count": "Parte n°{{count}}/{{total}}"
     },
     "preview": {
-      "by": "by {{professor}}",
+      "by": "por {{professor}}",
       "letsgo": "Vamos a isso"
     },
     "quizz": {
@@ -200,65 +200,65 @@
       "privacyTitle": "Privacidade",
       "privacyTitleMobile": "Focado em privacidade",
       "seeResources": "Ver todos os recursos",
-      "seeResourcesMobile": "Get a look at all our resources",
-      "seeTutorials": "See all tutorials",
-      "seeTutorialsMobile": "Get a look at all our tutorials"
+      "seeResourcesMobile": "Dá uma olhada em todos os recursos",
+      "seeTutorials": "Ver todos os tutoriais",
+      "seeTutorialsMobile": "Dá uma olhada em todos os tutoriais"
     },
     "section4": {
-      "content1": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible ! ",
-      "planB": "The PlanB Network is 100% open-source thanks to our generous patreon",
-      "together": "Together let's make Bitcoin education better! "
+      "content1": "A PlanB Network está orgulhosa de se juntar a muitas empresas bitcoin em todo o mundo, de modo a fornecer os melhores recursos educativos possíveis!",
+      "planB": "A PlanB Network é 100% open-source graças ao nosso generoso patreon",
+      "together": "Juntos(as), vamos melhorar a educação Bitcoin! "
     }
   },
   "imagesAlt": {
-    "bitcoinCurrency": "the sign of bitcoin currency",
-    "blueEllipse": "a blue ellipse",
-    "bookCover": "a book cover",
-    "community": "3 people",
-    "contributorHeart": "a heart for nice contributor",
-    "contributorPP": "contributor profile pic",
-    "courseThumbnail": "Course thumbnail",
-    "curriculum": "Curriculum",
-    "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
-    "favorite": "a heart inside a circle",
-    "flagsInCircle": "a circle of flags",
-    "forwardArrow": "a forward arrow",
-    "github": "the icon of github",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "rabbitClassroom": "rabbits inside a classroom",
-    "rabbitLibrary": "a rabbit reading a book",
-    "rabbitMeetup": "a rabbit meetup",
-    "rabbitPodcast": "a rabbit listenning to a podcast",
-    "rabbitStudying": "rabbit studying in a workshop",
-    "rabbitVideos": "a rabbit filming a video",
-    "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
-    "readingRabbit": "A rabbit reading a book",
-    "sthRepresentingCompany": "something representing the company",
-    "stylus": "a stylus",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign",
-    "worldMap": "world map with hubs linked"
+    "bitcoinCurrency": "o sinal da moeda bitcoin",
+    "blueEllipse": "uma elipse azul",
+    "bookCover": "uma capa de livro",
+    "community": "3 pessoas",
+    "contributorHeart": "um coração para um bom colaborador",
+    "contributorPP": "Foto de perfil do colaborador",
+    "courseThumbnail": "Miniatura do curso",
+    "curriculum": "Currículo",
+    "decouvreBitcoinLogo": "DescobreBitcoin Logo",
+    "favorite": "um coração dentro de um círculo",
+    "flagsInCircle": "um círculo de bandeiras",
+    "forwardArrow": "uma seta para frente",
+    "github": "o ícone do github",
+    "rabbit404": "um coelho apontando uma lanterna num sinal 404",
+    "rabbitClassroom": "coelhos dentro de uma sala de aula",
+    "rabbitLibrary": "um coelho lendo um livro",
+    "rabbitMeetup": "um encontro de coelho",
+    "rabbitPodcast": "um coelho escutando um podcast",
+    "rabbitStudying": "Coelho estudando em workshop",
+    "rabbitVideos": "um coelho filmando um vídeo",
+    "rabbitWithBackpackAndBtcSign": "um coelho com uma mochila e uma placa de btc",
+    "readingRabbit": "Um coelho lendo um livro",
+    "sthRepresentingCompany": "algo que representa a empresa",
+    "stylus": "uma lapiseira",
+    "underConstructionImage": "Ilustração de vários coelhos trabalhando num local de construção",
+    "visibilityOff": "o ícone dos olhos sem sinal desligar",
+    "worldMap": "mapa do mundo com hubs ligados"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{author}}"
+    "pageSubtitle": "Esta biblioteca é open-source e aberta para contribuição. Gratidão por avaliar e compartilhar!",
+    "pageTitle": "A biblioteca",
+    "publishedIn": "Publicado em {{date}}",
+    "writtenBy": "Escrito por {{author}}"
   },
   "menu": {
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
-    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "lightningDescription": "Manage your lightning node and use the lightning network",
-    "manifestoDescription": "Read Plan B's manifesto",
-    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
-    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
-    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
-    "ourStoryDescription": "Learn about the story of the university",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
+    "betDescription": "Coleção de conteúdo que podes usar para os teus projetos educacionais",
+    "btc101Description": "Obtém uma melhor compreensão do bitcoin com estas lições",
+    "buildersDescription": "Aprende sobre as empresas e projetos que trabalham para tornar o bitcoin melhor e aumentar a sua adoção",
+    "exchangesDescription": "Compra e vende bitcoins em exchanges (plataformas de câmbio) e aprende sobre P2P",
+    "libraryDescription": "Descobre vários livros para melhorar o teu conhecimento",
+    "lightningDescription": "Dirige o teu Nó Lightning e usa a Lightning Network",
+    "manifestoDescription": "Lê o manifesto do Plan B",
+    "merchantsDescription": "Aceita pagamentos bitcoin e descobre ferramentas para comerciantes",
+    "miningDescription": "Minera os teus próprios bitcoins e aprende sobre a indústria de mineração",
+    "nodeDescription": "Aprende a ser auto-soberano(a) com o teu próprio nó bitcoin",
+    "nodeNetworkDescription": "Junta-te à rede global das comunidades Bitcoin!",
+    "ourStoryDescription": "Aprende sobre a história da universidade",
+    "podcastsDescription": "Explora o ecossistema bitcoin através de podcasts",
     "sponsorsDescription": "Descobre os nossos patrocinadores e os principais colaboradores",
     "supportUsDescription": "Encontra forma de nos apoiar, de alguma maneira",
     "teachersDescription": "Conhece os nossos professores universitários, bitcoiners dedicados",
@@ -402,21 +402,21 @@
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB é um sistema confidencial e com escalabilidade de contratos inteligentes Bitcoin e Lightning Network. É uma camada de programação para o Bitcoin, com conceitos de propriedade privada e mútua, abstração e separação de questões e representa o \"pós-blockchain\"."
       },
-      "shortDescription": "Solutions to operate a bitcoin node and join the network",
-      "title": "Node"
+      "shortDescription": "Soluções para operar um nó bitcoin e juntar-se à rede",
+      "title": "Nó"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
+    "pageDescription": "Bitcoin é uma indústria ampla, e que se torna cada vez mais ampla a cada dia que passa. Para ajudar-te a explorá-la, reunimos um grande número de tutoriais que descrevem várias soluções.",
+    "pageSubtitle": "Bem-vindo(a) à toca infinita do coelho do Bitcoin!",
+    "pageTitle": "Tutoriais",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "O Bitcoin não é privado por padrão, é intencionalmente projetado para ser pseudónimo, e cada transação é pública e armazenada para sempre. Para recuperar alguma confidencialidade, temos de usar as melhores práticas de utilizador e ferramentas específicas integradas no nosso software. Desde evitar a reutilização de endereços até CoinJoin, passando por misturar as tuas moedas e conectares-te ao teu próprio nó, ajudaremos-te na tua jornada em direção à privacidade."
       },
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
+      "description": "A privacidade é um direito fundamental. Embora aspiremos a um mundo onde a privacidade é o padrão, não é ainda a realidade em que vivemos. Tentaremos explicar-te as melhores práticas, ajudar-te com os tutoriais e colocar-te num caminho mais soberano em relação aos teus dados.",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "Na era da vigilância em massa, é essencial recuperar um certo nível de privacidade no  dia a dia. Dado que cada utilizador terá um certo grau de paranóia e conhecimento tecnológico, é perfeitamente normal usar certas ferramentas e adaptá-las às suas necessidades. Aqui, exploraremos diferentes soluções de proteção como VPNs, Tor, Tails OS, PGP, mensagens criptografadas e muito mais."
       },
       "shortDescription": "Ferramentas para backup e manutenção da privacidade",
       "title": "Privacidade"
