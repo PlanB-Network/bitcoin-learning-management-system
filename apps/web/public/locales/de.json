@@ -46,16 +46,16 @@
   "bet": {
     "contribute": "Dieses Toolkit ist offen für einen Beitrag. Es verwendet Figma, so dass jeder etwas hinzufügen, verändern und übersetzen kann. Um zusammenzuarbeiten, erstelle eine Kategorie oder starte eine Unterhaltung. Zögere nicht und komme in unseren Discord.",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
-      "title": "Educational Content"
+      "description": "Dieser Inhalt soll für pädagogische Zwecke zur Verfügung stehen.",
+      "title": "Lehrinhalte"
     },
-    "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
+    "hereForYou": "Das BET ist für dich da!",
+    "pageDescription": "Die Sovereign University unterstützt Bitcoin Pädagogen und lokale Communitys auf der ganzen Welt, um bei der Bitcoin Adoption zu helfen. Ziel ist es, eine große Datenbank zusammenzustellen und zugänglich machen. Sowohl mit Bildungsinhalten (von uns und von anderen erstellt) als auch mit visuellen Daten.",
+    "pageSubtitle": "Das BET - Ein Bitcoin-Open-Source-Toolkit für alle Bildungsprojekte",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
-      "title": "Visual Content"
+      "description": "Dieser Inhalt sind Rohdaten für deine Projekte.",
+      "title": "Visueller Inhalt"
     }
   },
   "book": {
