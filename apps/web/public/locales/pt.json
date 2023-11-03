@@ -384,21 +384,21 @@
     "headerText": "Bem-vindo(a) à toca infinita do Bitcoin! Nesta seção, vamos oferecer-te um tutorial aprofundado sobre a maioria dos projetos que existem sobre bitcoin. Estas páginas são mantidas por bitcoiners voluntários e dedicados que apoiam o projeto de código aberto. Se cometeres um erro, por favor, entra em contato conosco. Para veres o nosso anexo financeiro ou a menção do projeto, consulta o nosso relatório de transparência. Gratidão pela tua confiança nesta universidade, desejamos-te uma boa viagem!",
     "merchant": {
       "description": "Já alguma vez te perguntaste como aceitar bitcoin facilmente para negócios? Explora as nossas várias soluções para te tornares num especialista e criar facilmente uma solução comercial para as lojas à tua volta. A solução de Ponto de Venda varia de acordo com as necessidades do comerciante (físico ou on-line), o seu volume e a complexidade das suas operações. Um proxy geralmente bom é simplesmente começar com uma carteira LN básica, mudar para uma solução fácil e eficiente (como PoS móvel), e, finalmente, explorar o BTC Pay Server para soluções avançadas, complexas e profissionais.",
-      "shortDescription": "Solutions for businesses to accept Bitcoin",
-      "title": "Merchant"
+      "shortDescription": "Soluções para que as empresas aceitem Bitcoin",
+      "title": "Comerciante"
     },
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
-      "shortDescription": "Bitcoin mining solutions",
-      "title": "Mining"
+      "description": "A indústria de mineração de bitcoin (mining) é um tema complexo repleto de tocas de coelhos. Aqui, vamos tentar acompanhar-te na tua jornada usando hardware e software. Desde a transformação de um S9 para um aquecedor doméstico à tentativa de ganhar a loteria com um mineiro nerd.",
+      "shortDescription": "Soluções de mineração Bitcoin",
+      "title": "Mineração (mining)"
     },
     "node": {
       "bitcoin": {
-        "description": "A Bitcoin Core node is the ground zero of your Bitcoin sovereignty stack. It allows you to run the Bitcoin software and be part of the network. You will validate blocks and transactions, decide which rules you want to apply within the network, and stop using intermediaries to propagate your transactions. There are many ways to run a Bitcoin node, some more user-friendly than others."
+        "description": "Um nó Bitcoin Core é o ponto zero da tua pilha de soberania do Bitcoin. Ele permite que executes o software Bitcoin e faças parte da rede. Vais validar blocos e transações, decidir quais as regras que desejas aplicar na rede e parar de usar os intermediários para propagar as tuas transações. Há muitas maneiras de executar um nó Bitcoin, algumas mais fáceis de usar do que outras."
       },
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
+      "description": "O nós são como os teus servidores pessoais. No Bitcoin, é o software que permite que executes a rede, coletes transações, verifiques as regras e sejas verdadeiramente soberano. Dentro do nosso ecossistema, existem vários nós, do Bitcoin Core, às implementações do Lightning, RGB, ou outras soluções de privacidade mais avançadas.",
       "lightning-network": {
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "description": "Um Nó Lightning permite que participes do protocolo Bitcoin layer 2 chamado Lightning. Serás capaz de abrir canais, gerir a sua liquidez, participar no graph e ter acesso à tua carteira Lightning não-custodial.",
         "name": "Lightning Network"
       },
       "rgb": {
