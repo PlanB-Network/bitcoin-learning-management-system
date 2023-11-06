@@ -106,7 +106,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   {t('courses.chapter.thanksTip')}
                 </div>
                 <div
-                  className="z-50 ml-4 h-8 w-8 self-start"
+                  className="z-10 ml-4 h-8 w-8 self-start"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
