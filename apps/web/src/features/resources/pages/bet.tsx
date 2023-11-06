@@ -2,20 +2,20 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
-import poster from '../../../assets/resources/21poster.png';
-import anil from '../../../assets/resources/Anil.png';
-import artistes from '../../../assets/resources/Artiste.png';
-import bookscover from '../../../assets/resources/bookcover.png';
-import btcHere from '../../../assets/resources/BTCacceptedhere.png';
-import dbCourses from '../../../assets/resources/DBcourses.png';
-import mpbitcoin from '../../../assets/resources/diplomampb.png';
-import gifcollection from '../../../assets/resources/gifcollection.png';
-import history from '../../../assets/resources/history.png';
-import hyperinflation from '../../../assets/resources/hyperinflation.png';
-import logosCompanies from '../../../assets/resources/Logos.png';
-import meme from '../../../assets/resources/Meme.png';
-import phen from '../../../assets/resources/phnee.png';
-import scams from '../../../assets/resources/Scams.png';
+import poster from '../../../assets/resources/bet/21poster.png';
+import anil from '../../../assets/resources/bet/anil.png';
+import artistes from '../../../assets/resources/bet/artiste.png';
+import bookscover from '../../../assets/resources/bet/bookcover.png';
+import btcHere from '../../../assets/resources/bet/btcacceptedhere.png';
+import dbCourses from '../../../assets/resources/bet/dbcourses.png';
+import mpbitcoin from '../../../assets/resources/bet/diplomampb.jpg';
+import gifcollection from '../../../assets/resources/bet/gifcollection.png';
+import history from '../../../assets/resources/bet/history.png';
+import hyperinflation from '../../../assets/resources/bet/hyperinflation.png';
+import logosCompanies from '../../../assets/resources/bet/logos.png';
+import meme from '../../../assets/resources/bet/meme.png';
+import propaganda from '../../../assets/resources/bet/propaganda.png';
+import scams from '../../../assets/resources/bet/scams.png';
 import { ResourceLayout } from '../layout';
 
 const LinkBox = ({
@@ -188,7 +188,7 @@ export const BET = () => {
       description: 'Propaganda Bitcoin posters',
       figmaUrl:
         'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A106&mode=design&t=bfJTYHWaELgkhMZ6-1',
-      imgFig: phen,
+      imgFig: propaganda,
     },
     {
       title: 'Hyperinflations Bills',
