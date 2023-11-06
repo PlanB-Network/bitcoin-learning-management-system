@@ -21,7 +21,7 @@ export const TooltipWithContent = ({
   children,
 }: TipIconProps) => {
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={200}>
       <Tooltip>
         <TooltipTrigger>{children}</TooltipTrigger>
         <TooltipContent className="bg-gray-200" sideOffset={5} side={position}>
