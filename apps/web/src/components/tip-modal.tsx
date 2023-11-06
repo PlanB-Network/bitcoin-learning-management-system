@@ -32,9 +32,9 @@ export const TipModal = ({
 
   return (
     <Modal closeButtonEnabled={isMobile} isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-3 px-8 pb-1  sm:gap-6 sm:p-0">
         <RabbitWithPresent />
-        <p className="text-sm font-light italic text-blue-800 md:text-xl">
+        <p className="text-xs font-light italic text-blue-800 md:text-xl">
           {userName
             ? t('professors.tips.thanks', { name: userName })
             : t('professors.tips.thanksNoName')}

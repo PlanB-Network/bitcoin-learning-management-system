@@ -2,8 +2,20 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
-import btcHere from '../../../assets/resources/btcherep.png';
-import figmaImage from '../../../assets/resources/figmaimg.png';
+import poster from '../../../assets/resources/21poster.png';
+import anil from '../../../assets/resources/Anil.png';
+import artistes from '../../../assets/resources/Artiste.png';
+import bookscover from '../../../assets/resources/bookcover.png';
+import btcHere from '../../../assets/resources/BTCacceptedhere.png';
+import dbCourses from '../../../assets/resources/DBcourses.png';
+import mpbitcoin from '../../../assets/resources/diplomampb.png';
+import gifcollection from '../../../assets/resources/gifcollection.png';
+import history from '../../../assets/resources/history.png';
+import hyperinflation from '../../../assets/resources/hyperinflation.png';
+import logosCompanies from '../../../assets/resources/Logos.png';
+import meme from '../../../assets/resources/Meme.png';
+import phen from '../../../assets/resources/phnee.png';
+import scams from '../../../assets/resources/Scams.png';
 import { ResourceLayout } from '../layout';
 
 const LinkBox = ({
@@ -91,35 +103,33 @@ const SectionGrid = ({
 export const BET = () => {
   const { t } = useTranslation();
 
-  // Define the Figma box data. For now, the links and images have not been created.
+  // The Links and the images are updated.
   const EDUCATIONAL_CONTENT = [
     {
-      title: 'Adil Infography',
-      description: 'By Adil',
+      title: 'All of PlanB courses',
+      description: 'DecouvreBitcoin',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
+        'https://github.com/DecouvreBitcoin/sovereign-university-data/tree/dev/courses',
+      imgFig: dbCourses,
     },
     {
-      title: 'Proyecto 2',
+      title: 'Anil Illustrations',
       description: 'Example',
-      figmaUrl:
-        'https://www.figma.com/file/8N8qLeToPHxXmz0y3xLXAZ/University?type=design&node-id=60%3A12430&mode=design&t=AYsecW2YENpMp9I0-1',
-      imgFig: figmaImage,
+      figmaUrl: 'https://anilsaidso.gumroad.com/l/teach',
+      imgFig: anil,
     },
     {
-      title: 'Proyecto 3',
-      description: 'Descripción del proyecto 3',
+      title: ' 21 Posters',
+      description: 'Rogzy',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=0%3A1&mode=design&t=bfJTYHWaELgkhMZ6-1      ',
+      imgFig: poster,
     },
     {
-      title: 'Bitcoin accepted here',
-      description: 'Stickers designs',
-      figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
+      title: 'Bitcoin Diploma ',
+      description: 'Mi Primer Bitcoin',
+      figmaUrl: 'https://github.com/MyFirstBitcoin',
+      imgFig: mpbitcoin,
     },
     {
       title: 'Bitcoin meme',
@@ -160,67 +170,75 @@ export const BET = () => {
 
   const VISUAL_CONTENT = [
     {
-      title: 'Adil Infography',
-      description: 'By Adil',
-      figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
-    },
-    {
-      title: 'Proyecto 2',
-      description: 'Example',
-      figmaUrl:
-        'https://www.figma.com/file/8N8qLeToPHxXmz0y3xLXAZ/University?type=design&node-id=60%3A12430&mode=design&t=AYsecW2YENpMp9I0-1',
-      imgFig: figmaImage,
-    },
-    {
-      title: 'Proyecto 3',
-      description: 'Descripción del proyecto 3',
-      figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
-    },
-    {
       title: 'Bitcoin accepted here',
-      description: 'Stickers designs',
+      description: 'Team DB',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: figmaImage,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A338&mode=design&t=bfJTYHWaELgkhMZ6-1        ',
+      imgFig: btcHere,
     },
     {
       title: 'Bitcoin meme',
-      description: 'Memes of Bitcoin',
+      description: 'Anonymous',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A818&mode=design&t=bfJTYHWaELgkhMZ6-1        ',
+      imgFig: meme,
     },
     {
       title: 'Propaganda Posters',
       description: 'Propaganda Bitcoin posters',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A106&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: phen,
     },
     {
       title: 'Hyperinflations Bills',
-      description: 'Corporate Billing',
+      description: 'David Saint Ange',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A71&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: hyperinflation,
     },
     {
       title: 'Bitcoin book',
       description: 'Bitcoin Guides',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A230&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: bookscover,
     },
     {
       title: 'Company and project logos',
-      description: 'Bitcoin Companies',
+      description: 'Bitcoin Companies Logo',
       figmaUrl:
-        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=1%3A2&mode=design&t=nzRIbLR8YqtLeY8U-1',
-      imgFig: btcHere,
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A634&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: logosCompanies,
+    },
+    {
+      title: 'BTC Gift ',
+      description: 'Anonymous',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=3%3A454&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: gifcollection,
+    },
+
+    {
+      title: 'Scam',
+      description: 'Anonymous',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=3%3A287&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: scams,
+    },
+    {
+      title: 'BTC History',
+      description: 'Image Database',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=8%3A574&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: history,
+    },
+    {
+      title: 'BTC Artistes Gallery ',
+      description: '',
+      figmaUrl:
+        'https://www.figma.com/file/UA2PVH5Fyhubf8Sgi6Maax/Bitcoin-Educational-ToolKit?type=design&node-id=2%3A728&mode=design&t=bfJTYHWaELgkhMZ6-1',
+      imgFig: artistes,
     },
   ];
 
@@ -252,7 +270,7 @@ export const BET = () => {
             {t('bet.visualContent.description')}
           </SectionDescription>
           <SectionGrid
-            elements={VISUAL_CONTENT.slice(5, 8)}
+            elements={VISUAL_CONTENT.slice(0, 10)}
             cardColor="bg-green-600"
             hoverColor="hover:bg-blue-500"
           />

@@ -98,11 +98,7 @@ export const Home = () => {
             </p>
             <p className="mt-9 text-xl">{t('home.header.content1')}</p>
             <p className="mt-9 text-xl">{t('home.header.content2')}</p>
-            <a
-              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/node-network" rel="noopener noreferrer">
               <Button
                 variant="tertiary"
                 className="mt-9 hidden rounded-3xl md:flex"
