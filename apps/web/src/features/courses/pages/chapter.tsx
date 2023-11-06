@@ -578,7 +578,7 @@ export const CourseChapter = () => {
             </div>
             {/* Only on small screens */}
             <div className="flex w-full flex-col items-center justify-center md:hidden">
-              <div className="text-blue-1000 w-full px-5 ">
+              <div className="text-blue-1000 w-full space-y-4 px-5">
                 <HeaderSmall chapter={chapter} />
                 <MarkdownContent chapter={chapter} />
                 {questionsArray && questionsArray.length > 0 ? (
