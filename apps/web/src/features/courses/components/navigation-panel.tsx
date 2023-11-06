@@ -111,7 +111,7 @@ export const NavigationPanel: React.FC<Props> = ({
                                   <BsFillCircleFill
                                     size={10}
                                     className={cn(
-                                      'text-xs',
+                                      'text-xs ml-2',
                                       isChapterPast(chapter, currentChapter)
                                         ? 'text-orange-400'
                                         : 'text-gray-300',
