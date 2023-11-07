@@ -1,524 +1,524 @@
 {
   "about": {
     "categories": {
-      "bunnyForerunner": "Bunny Forerunner",
-      "designers": "Designers",
-      "developpers": "Developpers",
-      "earlySupporters": "Early Supporters",
-      "hareExplorer": "Hare Explorer",
-      "helpers": "Helpers",
-      "professors": "Professors",
-      "rabbitholeDigger": "Rabbit-Hole Digger"
+      "bunnyForerunner": "Conejo pionero",
+      "designers": "Diseñadores",
+      "developpers": "Desarrolladores",
+      "earlySupporters": "Pioneros",
+      "hareExplorer": "Explorador, liebre",
+      "helpers": "Ayudantes",
+      "professors": "Profesores",
+      "rabbitholeDigger": "Excavador de agujero de conejo"
     },
-    "headerLink": "Become a community sponsor",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
-    "thanks1": "A special thanks to our early-supporters, who have helped us persevere throughout the years.",
-    "thanks2": "The Sovereign University is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
+    "headerLink": "Conviértete en un patrocinador comunitario",
+    "manifesto": "Creemos en el futuro descentralizado que ofrece Bitcoin.\n\nNuestra misión es introducir Bitcoin a mil millones de personas en un plazo de una década. Nuestras herramientas son la educación y la información.\n\nApoyamos a las comunidades locales de Bitcoiners proporcionando contenido educativo de código abierto y ofreciendo una red de mentores de Bitcoin.\n\nNuestra filosofía está inspirada en el manifiesto cypherpunk. Así como ellos defendieron la privacidad, nosotros defendemos la educación. Creemos que el conocimiento es la base de la libertad y el cambio.\n\nSomos solo Bitcoin.\n\nAbogamos por la responsabilidad individual y la independencia que ofrece tener tus propias claves.\n\nInstamos a la verificación, no a la confianza ciega.\n\nCreemos que al arreglar el dinero, arreglamos el mundo.\n\nSomos descentralizados y de código abierto, evitando cualquier punto único de fallo.\n\nFomentamos la libre difusión de nuestro contenido.\n\nAspiramos a un mundo que funcione desde la base, donde el individuo esté en el centro.\n\nSimplificamos, educamos, compartimos.\n\nÚnete a nosotros en nuestra misión de hacer que el mundo tome la píldora naranja.\n",
+    "pageSubtitle": "The Sovereign University ofrece educación gratuita sobre Bitcoin para todos.",
+    "thanks1": "Un agradecimiento especial a nuestros primeros seguidores, quienes nos han ayudado a perseverar a lo largo de los años.",
+    "thanks2": "The Sovereign University es un esfuerzo comunitario. Se ha hecho posible gracias a numerosos colaboradores que han asumido varios roles,  como profesores, desarrolladores, diseñadores y ayudantes de muchos tipos. Muchas gracias a todos."
   },
   "auth": {
-    "accountCreated": "Your account has been created, {{userName}}!",
-    "alreadyHaveAccount": "Already have an account?",
-    "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
-    "connect": "Se connecter",
-    "connectWithLn": "Connect with LN",
-    "contributorId": "Identifiant contributeur",
-    "createAccount": "Register",
-    "createOne": "Register here!",
-    "emailAddress": "Adresse email",
+    "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "canSaveProgress": "Ahora puedes guardar tu progresión en la Academia de Bitcoin",
+    "connect": "Iniciar sesión",
+    "connectWithLn": "Conectarse con LN",
+    "contributorId": "Identificador del contribuyente",
+    "createAccount": "Registrar",
+    "createOne": "¡Regístrate aquí!",
+    "emailAddress": "Dirección de correo electrónico",
     "errors": {
-      "usernameRegex": "Username can only contain letters, digits, _, . and -",
-      "usernameRequired": "Username is required",
-      "usernameTooShort": "Username must contain at least 5 characters"
+      "usernameRegex": "El nombre de usuario solo puede contener letras, dígitos, _, y -",
+      "usernameRequired": "Nombre de usuario es requerido",
+      "usernameTooShort": "El nombre de usuario debe tener al menos 5 caracteres"
     },
-    "forgottenPassword": "Forgot your password?",
-    "getConnected": "Connectez vous !",
-    "headerAccountCreated": "Account created",
-    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
-    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
-    "noAccountYet": "Don't have an account?",
-    "passwordReinit": "Réinitilisation de mot de passe",
-    "passwordRequired": "Password is required",
-    "passwordsDontMatch": "Passwords don't match",
-    "sendLink": "Envoyer un lien",
-    "signIn": "Sign In"
+    "forgottenPassword": "¿Olvidó su contraseña?",
+    "getConnected": "¡Conéctate!",
+    "headerAccountCreated": "Cuenta creada",
+    "lnurlAuthDescription": "¡Escanea este código QR con tu billetera Lightning para iniciar sesión!",
+    "noAccountNeeded": "¡No hay necesidad de una cuenta para empezar a aprender en The Sovereign University!",
+    "noAccountYet": "¿No tienes una cuenta?",
+    "passwordReinit": "Restablecimiento de contraseña",
+    "passwordRequired": "Contraseña requerida",
+    "passwordsDontMatch": "Las contraseñas no coinciden",
+    "sendLink": "Enviar un enlace",
+    "signIn": "Iniciar sesión"
   },
   "bet": {
-    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
+    "contribute": "Este kit de herramientas está abierto a la contribución. Utiliza Figma, así que cualquiera puede añadir, modificar y traducir. Para colaborar, agregar una categoría o discutir, no dude en unirse a nuestro discord.",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
-      "title": "Educational Content"
+      "description": "Este contenido está destinado a estar listo para ser utilizado para eventos educativos y su uso.",
+      "title": "Contenido educativo"
     },
-    "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
-    "pageTitle": "Bitcoin Educational Toolkit",
+    "hereForYou": "¡La BET está aquí para ti!",
+    "pageDescription": "The Sovereign University apoya a educadores de bitcoin y comunidades locales de todo el mundo, para ayudar a difundir la adopción de bitcoin. Hacia ese objetivo, recopilamos y hacemos accesible una gran base de datos, de ambos contenidos educativos (creado por nosotros como por otros), asi como de datos visuales.",
+    "pageSubtitle": "El BET - Un kit de herramientas de código abierto de Bitcoin para todos los proyectos educativos",
+    "pageTitle": "Herramientas educativas de Bitcoin",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
-      "title": "Visual Content"
+      "description": "Este contenido es datos visuales sin formato, para ser usado para tus creaciones.",
+      "title": "Contenido visual"
     }
   },
   "book": {
-    "abstract": "Abstract",
+    "abstract": "Abstracto",
     "bookSummary": {
-      "modifyTooltip": "Write or modify",
-      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
-      "notice": "this summary is linked to github, for any modification or addition",
-      "title": "The book summary"
+      "modifyTooltip": "Escribir o modificar",
+      "noSummary": "Aún no se ha escrito ningún resumen. Si has leído el libro y quieres compartir un resumen, no dudes en escribir uno en GitHub. ¡Esto ayudaría mucho a la comunidad, mejoraría la universidad e incluso podrías conseguir algunos sats por él!",
+      "notice": "este resumen está vinculado a github, para cualquier modificación o adición",
+      "title": "El resumen del libro"
     },
-    "buttonBuy": "Buy",
+    "buttonBuy": "Comprar",
     "buttonPdf": "PDF / E-book",
-    "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "offeredBy": "Ofrecido por un colaborador generoso",
+    "pageSubtitle": "Esta biblioteca es de código abierto y está abierta a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "La Biblioteca",
+    "topicsAddressed": "Temas abordados: "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "El Portal del Constructor"
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "crypto": "Cryptography",
-      "econ": "Austrian Economics",
-      "fin": "Finance",
+      "crypto": "Criptografía",
+      "econ": "Economía Austriaca",
+      "fin": "Finanzas",
       "ln": "Lightning Network",
-      "min": "Mining",
-      "secu": "Security & Privacy"
+      "min": "Minería",
+      "secu": "Seguridad y privacidad"
     },
     "chapter": {
-      "finishCourse": "Finish the course",
-      "next": "Done, let's go to the next chapter!",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "finishCourse": "Terminar el curso",
+      "next": "¡Listo, vamos al siguiente capítulo!",
+      "thanksTip": "¿Quieres dar las gracias? Tip."
     },
     "details": {
-      "courseId": "Course ID: {{courseId}}",
-      "curriculum": "Curriculum",
-      "description": "Description",
-      "duration": "Duration: {{hours}} hours",
+      "courseId": "ID del curso: {{courseId}}",
+      "curriculum": "Currículo",
+      "description": "Descripción",
+      "duration": "Duración: {{hours}} horas",
       "goal": "GOAL: ",
-      "level": "Level: $t(words.level.{{level}})",
+      "level": "Nivel: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} capítulos",
-        "hours": "{{hours}} hours"
+        "hours": "{{hours}} hora(s)"
       },
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "objectives": "Objectives",
-      "objectivesTitle": "What you'll learn :",
-      "professor": "Professor",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
-      "teachers": "Teachers: {{teachers}}"
+      "numberOfChapters": "Número de capítulos: {{number}}",
+      "objectives": "Objetivos",
+      "objectivesTitle": "Lo que aprenderás:",
+      "professor": "Profesor",
+      "startCourse": "Iniciar el curso",
+      "taughtBy": "Este curso está siendo impartido por :",
+      "teachers": "Profesores: {{teachers}}"
     },
     "explorer": {
-      "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "moreToCome": ".... and more to come !",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
-      "pageTitle": "Courses",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
-      "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you !",
-      "s2t1": "Bitcoin education is a journey not a destination",
-      "s3PickLevel": "Pick levels :",
-      "s3PickTopic": "Pick topics :",
-      "s3t1": "Build your own path down the rabbit hole"
+      "footerTitle": "¡Nuestros profesores están aquí para ti!",
+      "footerp1": "En The Sovereign University, nuestros profesores tienen completa autonomía sobre su contenido y las herramientas que desean que explores, siempre y cuando sigan el código de ética. Son bitcoiners apasionados de diversos orígenes.",
+      "footerp2": "Si deseas mejorar un curso o proporcionar el tuyo propio, puedes hacerlo de manera sencilla a través de GitHub. Para apoyar a un profesor, puedes calificar el curso, dar propina al profesor directamente o convertirte en miembro de la universidad para respaldar la plataforma.",
+      "moreToCome": ".... y más por venir !",
+      "pageDescription": "Aquí podrás encontrar una gran cantidad de cursos relacionados con Bitcoin en su totalidad, con una amplia gama de temas. Este contenido educativo es orgánico, creciendo a medida que Bitcoin se desarrolla. Todo el contenido es gratuito, de código abierto y accesible para todos. El índice de cursos está organizado en círculos para adaptarse al camino de aprendizaje de cada persona.",
+      "pageSubtitle": "Bienvenido a la puerta de la plataforma e-learning.",
+      "pageTitle": "Cursos",
+      "s2p1": "Si has comenzado a explorar el agujero de conejo de Bitcoin, debes saber que es un viaje interminable con muchos caminos. Aquí en la Universidad, lo entendemos y hemos diseñado nuestro contenido educativo para que sea no lineal, autónomo y lo más extenso posible.",
+      "s2p2": "Podrás escoger tu propio camino y seguirlo, adquiriendo habilidades y conocimientos hasta donde tu motivación llega.",
+      "s2p3": "¡Todos nuestros cursos son 100% gratuitos, así que nada puede detenerte!",
+      "s2t1": "La educación en Bitcoin es un viaje no un destino",
+      "s3PickLevel": "Elegir niveles :",
+      "s3PickTopic": "Elegir temas :",
+      "s3t1": "Construye tu propio camino a través del agujero del conejo"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "freeBanner": "Todos nuestros cursos se ofrecen gratis. La universidad se basa en la membresía a través de la donación y el compartir.",
     "part": {
       "count": "Parte {{count}}/{{total}}"
     },
     "preview": {
-      "by": "by {{professor}}",
-      "letsgo": "Let's go"
+      "by": "por {{professor}}",
+      "letsgo": "Vamos"
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
-      "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "clickOnPie": "Haz clic en el gráfico circular, para revisar tus errores y ver las explicaciones",
+      "quizz": "Cuestionario",
+      "quizzResults": "Resultados del cuestionario",
+      "quizzReview": "Revisión del cuestionario",
+      "resultCongrats": "¡Felicidades, lo hiciste bien!",
+      "resultItsOk": "¡No te rindas, lo harás mejor la próxima vez!",
+      "resultNotBad": "¡No está mal!",
+      "resultPerfect": "¡Absolutamente perfecto! ¡Felicidades!"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "colcardAndSparrow": "Coldcard y Sparrow",
+      "financeIntroduction": "Introducción a las finanzas",
+      "financialCrisis": "Análisis de las principales crisis financieras",
+      "hyperinflation": "Estudio de las hiperinflaciones",
+      "theoreticalLightning": "Curso teórico avanzado sobre la Lightning Network"
     }
   },
   "home": {
     "header": {
-      "content1": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty.",
-      "content2": "From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "link": "Be part of the network"
+      "content1": "La plataforma PlanB tiene como objetivo proporcionar las mejores herramientas y contenido educativo en todo el mundo para ayudar a las personas a recuperar su soberanía.",
+      "content2": "Desde individuos hasta comunidades, estamos aquí para ayudarte en tu viaje con Bitcoin.",
+      "forEducators": "Para educadores y constructores",
+      "globalNetwork": "Red global de Bitcoin",
+      "link": "Se parte de la red"
     },
     "section1": {
-      "allLevels": "From beginner to advanced, learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding.",
-      "content2": " From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
-      "content3": "There's no reason to hesitate. Knowledge awaits you.",
-      "content4": "Here you can find courses on various topic such as:",
-      "interested": "Interested in Bitcoin ?",
-      "link": "Check the academy"
+      "allLevels": "De principiante a avanzado, aprende Bitcoin en la academia",
+      "content1": "Bitcoin no es solo una tecnología y una forma de dinero, sino también una forma revolucionaria de abordar la vida. Para reflejar esto, nuestros cursos abarcan una amplia gama de campos, empoderando a cada individuo para sobresalir en sus áreas de interés y profundizar en su comprensión.",
+      "content2": " Desde tu primer curso de Bitcoin hasta una inmersión profunda en los detalles del protocolo, nuestros cursos te ayudarán a navegar de manera segura por el agujero del conejo.",
+      "content3": "No hay ninguna razón para dudar. El conocimiento te espera.",
+      "content4": "Aquí puedes encontrar cursos sobre varios temas como:",
+      "interested": "¿Interesado en Bitcoin?",
+      "link": "Revisa la academia"
     },
     "section2": {
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all.",
-      "content2": "The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "content3": "You too can start bootstrapping your own local network in your country!",
-      "everythingTranslated": "Everything is translated to local languages",
-      "link": "Help us translate the academy ",
-      "noBarrier": "No language barrier here."
+      "content1": "En PlanB, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos.",
+      "content2": "La plataforma soporta actualmente 7 idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los bitcoineros en todo el mundo.",
+      "content3": "¡También puedes empezar a arrancar tu propia red local en tu país!",
+      "everythingTranslated": "Todo está traducido a idiomas locales",
+      "link": "Ayúdanos a traducir la academia ",
+      "noBarrier": "Aquí no hay barrera lingüística."
     },
     "section3": {
-      "aboutUs": "A little bit about us",
-      "bitcoinFocusContent": "We focus on the Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
-      "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusTitleMobile": "Bitcoin focused",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
-      "communityTitle": "Community",
-      "communityTitleMobile": "Community focused",
-      "content1": "Beside courses, our large amount of tutorials will help you master different technologies, such as wallets, merchant solutions, exchanges, nodes, mining, and privacy solutions... And because that’s still not enough, a large amount of resources such as books, podcasts or videos, are classified, ordered and made available on the platform.",
-      "content2": "Our goal is to provide you with the tools to succeed.",
-      "content3": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
-      "helpingCommunities": "Helping Bitcoin communities grow is our mission ",
-      "letsHelpYou": "Let us help you master the technology, read and hear about Bitcoin!",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
-      "openSourceTitle": "Open source",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress",
-      "privacyTitle": "Privacy",
-      "privacyTitleMobile": "Privacy focused",
-      "seeResources": "See all resources",
-      "seeResourcesMobile": "Get a look at all our resources",
-      "seeTutorials": "See all tutorials",
-      "seeTutorialsMobile": "Get a look at all our tutorials"
+      "aboutUs": "Un poco sobre nosotros",
+      "bitcoinFocusContent": "Nos enfocamos en la revolución de Bitcoin en su totalidad, desde su capa base hasta varias comunicaciones de peer-to-peer a su alrededor",
+      "bitcoinFocusTitle": "Enfoque Bitcoin",
+      "bitcoinFocusTitleMobile": "Enfocado en Bitcoin",
+      "communityContent": "En primer lugar, somos una comunidad de entusiastas que se ayudan mutuamente en su viaje con Bitcoin",
+      "communityTitle": "Comunidad",
+      "communityTitleMobile": "Centrada en la comunidad",
+      "content1": "Además de los cursos, nuestra gran cantidad de tutoriales te ayudará a dominar diferentes tecnologías, como billeteras, soluciones para comerciantes, intercambios, nodos, minería y soluciones de privacidad... Y porque eso aún no es suficiente, una gran cantidad de recursos, como libros, podcasts o videos, están clasificados, ordenados y disponibles en la plataforma.",
+      "content2": "Nuestro objetivo es proporcionarte las herramientas para que tengas éxito.",
+      "content3": "La red PlanB es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir la red PlanB y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
+      "helpingCommunities": "Ayudar a las comunidades de Bitcoin a crecer es nuestra misión ",
+      "letsHelpYou": "¡Déjanos ayudarte a dominar la tecnología, leer y escuchar sobre Bitcoin!",
+      "openSourceContent": "Nuestro objetivo es promover el libre flujo del conocimiento y ayudar a construir más soluciones de código abierto",
+      "openSourceTitle": "Código abierto",
+      "privacyContent": "Consideramos que la privacidad es uno de los derechos humanos más fundamentales y esencial para el progreso",
+      "privacyTitle": "Privacidad",
+      "privacyTitleMobile": "Centrado en la privacidad",
+      "seeResources": "Ver todos los recursos",
+      "seeResourcesMobile": "Echa un vistazo a todos nuestros recursos",
+      "seeTutorials": "Ver todos los tutoriales",
+      "seeTutorialsMobile": "Echa un vistazo a todos nuestros tutoriales"
     },
     "section4": {
-      "content1": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible ! ",
-      "planB": "The PlanB Network is 100% open-source thanks to our generous patreon",
-      "together": "Together let's make Bitcoin education better! "
+      "content1": "¡La red PlanB se enorgullece de colaborar con numerosas empresas de Bitcoin en todo el mundo para proporcionar los mejores recursos educativos posibles! ",
+      "planB": "La Red PlanB es 100% de código abierto gracias a nuestros generosos patrocinadores",
+      "together": "¡Juntos vamos a mejorar la educación en Bitcoin! "
     }
   },
   "imagesAlt": {
-    "bitcoinCurrency": "the sign of bitcoin currency",
-    "blueEllipse": "a blue ellipse",
-    "bookCover": "a book cover",
-    "community": "3 people",
-    "contributorHeart": "a heart for nice contributor",
-    "contributorPP": "contributor profile pic",
-    "courseThumbnail": "Course thumbnail",
-    "curriculum": "Curriculum",
+    "bitcoinCurrency": "el signo de moneda bitcoin",
+    "blueEllipse": "una elipse azul",
+    "bookCover": "una portada de libro",
+    "community": "3 personas",
+    "contributorHeart": "un corazón por buen colaborador",
+    "contributorPP": "foto de perfil del colaborador",
+    "courseThumbnail": "Miniatura del curso",
+    "curriculum": "Currículo",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
-    "favorite": "a heart inside a circle",
-    "flagsInCircle": "a circle of flags",
-    "forwardArrow": "a forward arrow",
-    "github": "the icon of github",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "rabbitClassroom": "rabbits inside a classroom",
-    "rabbitLibrary": "a rabbit reading a book",
-    "rabbitMeetup": "a rabbit meetup",
-    "rabbitPodcast": "a rabbit listenning to a podcast",
-    "rabbitStudying": "rabbit studying in a workshop",
-    "rabbitVideos": "a rabbit filming a video",
-    "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
-    "readingRabbit": "A rabbit reading a book",
-    "sthRepresentingCompany": "something representing the company",
-    "stylus": "a stylus",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign",
-    "worldMap": "world map with hubs linked"
+    "favorite": "un corazón dentro de un círculo",
+    "flagsInCircle": "un círculo de banderas",
+    "forwardArrow": "una flecha hacia adelante",
+    "github": "el ícono de github",
+    "rabbit404": "un conejo iluminando un letrero de error 404 con una linterna",
+    "rabbitClassroom": "conejos dentro de un aula",
+    "rabbitLibrary": "un conejo leyendo un libro",
+    "rabbitMeetup": "una reunión de conejos",
+    "rabbitPodcast": "un conejo escuchando un podcast",
+    "rabbitStudying": "conejo estudiando en un taller",
+    "rabbitVideos": "un conejo filmando un vídeo",
+    "rabbitWithBackpackAndBtcSign": "un conejo con una mochila y un signo de btc",
+    "readingRabbit": "Un conejo leyendo un libro",
+    "sthRepresentingCompany": "algo que representa a la empresa",
+    "stylus": "un lápiz digital",
+    "underConstructionImage": "Ilustración de varios conejos trabajando en un sitio de construcción",
+    "visibilityOff": "el ícono de los ojos sin el signo de apagado",
+    "worldMap": "mapa del mundo con centros enlazados"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{author}}"
+    "pageSubtitle": "Esta biblioteca es de código abierto y está abierta a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "La Biblioteca",
+    "publishedIn": "Publicado el {{date}}",
+    "writtenBy": "Escrito por {{author}}"
   },
   "menu": {
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
-    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "lightningDescription": "Manage your lightning node and use the lightning network",
-    "manifestoDescription": "Read Plan B's manifesto",
-    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
-    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
-    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
-    "ourStoryDescription": "Learn about the story of the university",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
-    "sponsorsDescription": "Discover our sponsors and main contributors",
-    "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
-    "walletsDescription": "Secure and use your bitcoins"
+    "betDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
+    "btc101Description": "Consigue una mejor comprensión de bitcoin con estas lecciones",
+    "buildersDescription": "Aprende acerca de las empresas y proyectos que trabajan para mejorar Bitcoin y aumentar su adopción",
+    "exchangesDescription": "Compra y vende bitcoins en los intercambios y aprende sobre P2P",
+    "libraryDescription": "Descubre una gran cantidad de libros para mejorar tu conocimiento",
+    "lightningDescription": "Gestiona tu nodo de Lightning y utiliza la red Lightning",
+    "manifestoDescription": "Lee el manifiesto de Plan B",
+    "merchantsDescription": "Aceptar pagos bitcoin y descubrir herramientas para comerciantes",
+    "miningDescription": "Mina tus propios bitcoins y aprende sobre la industria minera",
+    "nodeDescription": "Aprende cómo ser auto-soberano con tu propio nodo bitcoin",
+    "nodeNetworkDescription": "¡Únete a la red global de las comunidades de Bitcoin!",
+    "ourStoryDescription": "Aprende acerca de la historia de la universidad",
+    "podcastsDescription": "Explora el ecosistema bitcoin a través de podcasts",
+    "sponsorsDescription": "Descubre a nuestros patrocinadores y principales colaboradores",
+    "supportUsDescription": "Encuentra formas de apoyarnos, de cualquier manera",
+    "teachersDescription": "Conoce a nuestros profesores universitarios, entusiastas de Bitcoin",
+    "walletsDescription": "Asegura y utiliza tus bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "A node is simply a Bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption! There is no minimum size to start with.",
-    "answer2": "At Plan B, we aim to improve the educational Bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
-    "answer3": "To be part of the network you must align on some core values. These are: be bitcoin only, value privacy and care for the open source work.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different names will be attributed. A node with an hackerspace, a gym, some office place will be considered a ”Citadel” while your first bitcoin home town office will be known as “nodes”.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We belive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
-    "apply": "Apply",
-    "description1": "All around the world, Bitcoiners are coming together in communities.",
-    "description2": "<0>A new</0> <1>Bitcoin meetup</1> emerges every week.",
-    "description3": "Educational centers, <0>hackerspaces</0>, and Bitcoin office spaces are on the rise.",
-    "description4": "<0>Secure citadels</0> are under construction.",
-    "description5": "The dedication of the Bitcoin community to collaborate, support one another, and offer essential tools for their local counterparts is essential to thrive in the modern landscape. ",
-    "description6": "At PlanB, we recognize the challenges ahead for these communities builders. To support their efforts, we've introduced solutions to simplify their development process.",
-    "descriptionTitle": "Every country needs a Plan B!",
-    "join1": "By joining our network, we'll guide you in transitioning from a simple Bitcoin meetup to a fully secured Bitcoin citadel!",
-    "join2": "<0>Community building</0> support",
-    "join3": "Educational resources for <0> local seminars</0>",
-    "join4": "Access to worldwide experts",
-    "join5": "Connection to thousands of students",
-    "join6": "You are not alone in trying to change the world. Let's pool our resources to succeed.",
-    "join7": "Become part of the revolution!",
-    "letsBuild": "Let's build Bitcoin Citadel around the world",
-    "network1": "They are already part of the Network!",
-    "pageSubtitle": "Our strength is our community. let's gather into a global bitcoin network.",
-    "pageTitle": "Node Network",
-    "partnerBTCMap": "Proud partner with BTC Map to integrate more than 250 communities into the map in 2023",
-    "question1": "What is a Node?",
-    "question2": "What do I gain?",
-    "question3": "What are the requirements?",
-    "question4": "What size is a Node?",
-    "question5": "What's the secret plan?",
-    "stage": "Stage",
-    "stage1": "Communities",
+    "answer1": "Un nodo es simplemente una comunidad de Bitcoin que desea avanzar al siguiente nivel y acelerar su propia adopción local de Bitcoin. No hay un tamaño mínimo para comenzar.",
+    "answer2": "En Plan B, nuestro objetivo es mejorar el ecosistema educativo de Bitcoin proporcionando las herramientas adecuadas para construir y educar sobre Bitcoin. Al convertirte en un nodo, tu comunidad tendrá acceso a una amplia gama de recursos, servicios, capacitación educativa especial y más. Haz que tu comunidad sea un punto de referencia en el mundo de Bitcoin.",
+    "answer3": "Para ser parte de la red, debes alinearte con algunos valores fundamentales. Estos son: ser exclusivamente de Bitcoin, valorar la privacidad y preocuparte por el trabajo de código abierto.",
+    "answer4": "Un nodo de Bitcoin puede ser de cualquier tamaño. Según ciertos requisitos, se les asignarán diferentes nombres. Un nodo con un hackerspace, un gimnasio o algún espacio de oficina se considerará una \"Ciudadela\", mientras que tu primera oficina en tu ciudad natal de Bitcoin se conocerá como \"nodo\".",
+    "answer5": "Deseamos ofrecer un refugio seguro para los entusiastas de Bitcoin en todo el mundo. Creemos que al ayudar a que crezcan los centros locales, podremos crear una red de ciudadelas donde los bitcoiners serán bienvenidos para trabajar, crear, compartir y discutir de manera segura.",
+    "apply": "Aplicar",
+    "description1": "En todo el mundo, los bitcoiners se están uniendo en comunidades.",
+    "description2": "<0>Una nueva </0> <1>Reunión de bitcoin</1> surge cada semana.",
+    "description3": "Centros educativos, <0>espacios de hackers</0>, y espacios de oficina de Bitcoin están en ascenso.",
+    "description4": "<0>Citadelas seguras</0> están en construcción.",
+    "description5": "La dedicación de la comunidad de Bitcoin para colaborar, apoyarse mutuamente y ofrecer herramientas esenciales para sus contrapartes locales es fundamental para prosperar en el panorama actual. ",
+    "description6": "En PlanB, reconocemos los desafíos que enfrentan los constructores de comunidades. Para apoyar sus esfuerzos, hemos introducido soluciones para simplificar su proceso de desarrollo.",
+    "descriptionTitle": "¡Todos los países necesitan un Plan B!",
+    "join1": "Al unirte a nuestra red, te guiaremos en la transición desde un simple encuentro de Bitcoin hasta una verdadera Ciudadela de Bitcoin completamente segura!",
+    "join2": "Apoyo en la <0>construcción de comunidades</0>",
+    "join3": "Recursos educativos para <0> seminarios locales</0>",
+    "join4": "Acceso a expertos de todo el mundo",
+    "join5": "Conexión con miles de estudiantes",
+    "join6": "No estás solo en intentar cambiar el mundo. Combinemos nuestros recursos para tener éxito.",
+    "join7": "¡Forma parte de la revolución!",
+    "letsBuild": "Construyamos la Citadela de Bitcoin alrededor del mundo",
+    "network1": "¡Ya forman parte de la Red!",
+    "pageSubtitle": "Nuestra fortaleza es nuestra comunidad. Unámonos en una red global de Bitcoin.",
+    "pageTitle": "Red de nodo",
+    "partnerBTCMap": "Orgullosos socios de BTC Map para integrar más de 250 comunidades en el mapa en 2023",
+    "question1": "¿Qué es un Nodo?",
+    "question2": "¿Qué obtengo?",
+    "question3": "¿Cuáles son los requisitos?",
+    "question4": "¿De qué tamaño es un nodo?",
+    "question5": "¿Cuál es el plan secreto?",
+    "stage": "Etapa",
+    "stage1": "Comunidades",
     "stage2": "Hub",
-    "stage3": "Full Node",
-    "stage4": "Full Citadel"
+    "stage3": "Nodo completo",
+    "stage4": "Citadela completa"
   },
   "notFound": {
-    "here": "Here",
-    "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
-    "pageTitle": "Oops."
+    "here": "Aquí",
+    "pageSubtitle": "Parece que alguien cayó demasiado profundo en el agujero del conejo y se perdió. Para volver a la superficie, haga clic",
+    "pageTitle": "Ups."
   },
   "podcast": {
-    "abstract": "Abstract",
-    "discover": "Discover this podcast"
+    "abstract": "Abstracto",
+    "discover": "Descubre este podcast"
   },
   "podcasts": {
-    "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal"
+    "hostedBy": "Alojado por {{host}}",
+    "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución. ¡Gracias por calificar y compartir!",
+    "pageTitle": "El Portal del Podcast"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors",
+    "pageSubtitle": "Todos nuestros profesores son voluntarios y bitcoiners apasionados. Puedes dar las gracias.",
+    "pageTitle": "Profesores",
     "tips": {
-      "noTipsYet": "This professor does not accept tips at the moment.",
-      "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "noTipsYet": "Este profesor no acepta propinas en este momento.",
+      "thanks": "¡Gracias por apoyar el trabajo de {{name}}!",
+      "thanksNoName": "¡Gracias por apoyar mi trabajo!"
     }
   },
   "resources": {
     "articles": {
-      "title": "Articles"
+      "title": "Artículos"
     },
     "bet": {
-      "title": "Educational Toolkit"
+      "title": "Herramientas educativas de Bitcoin"
     },
     "books": {
-      "title": "Books"
+      "title": "Libros"
     },
     "builders": {
-      "title": "Builders"
+      "title": "Constructores"
     },
     "conferences": {
-      "title": "Conferences"
+      "title": "Conferencias"
     },
-    "filterBarLabel": "Find the perfect resources for your needs:",
+    "filterBarLabel": "Encuentra los recursos perfectos para tus necesidades:",
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "¡Bienvenido al infinito agujero del conejo de Bitcoin! En esta sección, te ofreceremos tutoriales en profundidad sobre la mayoría de los proyectos de Bitcoin disponibles. Esta página es mantenida por voluntarios y apasionados de Bitcoin que apoyan este proyecto de código abierto. Si sientes que hemos cometido un error, por favor contáctanos. Para ver nuestros documentos financieros relacionados con el proyecto, consulta nuestro informe de transparencia. Gracias por confiar en esta universidad y disfruta del viaje.",
     "newsletters": {
-      "title": "Newsletters"
+      "title": "Boletines informativos"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Resources",
+    "pageDescription": "Tratar de entender Bitcoin es como explorar un laberinto que no deja de crecer. Para ayudarte en tu camino, hemos recopilado una amplia colección de recursos que abordan una multitud de temas.",
+    "pageSubtitle": "¡Bienvenido al infinito agujero de conejo de Bitcoin!",
+    "pageTitle": "Recursos",
     "podcasts": {
       "title": "Podcasts"
     },
-    "publicGrade": "Public grade: {{grade}}/5"
+    "publicGrade": "Calificación pública: {{grade}}/5"
   },
   "settings": {
-    "changePassword": "Change password"
+    "changePassword": "Cambiar contraseña"
   },
   "tutorials": {
     "details": {
-      "checkAuthor": "Check out the author's other contributions and support his work.",
-      "enjoyed": "Enjoyed this tutorial?",
-      "madeBy": "This tutorial has been made by",
-      "source": "Original source : ",
-      "tipTooltip": "Like it? Tip."
+      "checkAuthor": "Echa un vistazo a las otras contribuciones del autor y apoya su trabajo.",
+      "enjoyed": "¿Disfrutaste de este tutorial?",
+      "madeBy": "Este tutorial ha sido hecho por",
+      "source": "Fuente original: ",
+      "tipTooltip": "¿Te gusta? Tip."
     },
     "exchange": {
       "centralized": {
-        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+        "description": "Los intercambios centralizados son generalmente entidades reguladas que actúan como intermediarios entre el sistema bancario y el ecosistema bitcoin. Te permiten comprar y vender grandes cantidades de bitcoin y retirarlo a tu billetera o cuenta bancaria. Por lo general, requieren KYC, y por lo tanto, monitorean tu actividad, reportándola a instituciones de vigilancia financiera para respetar las leyes locales."
       },
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
+      "description": "Los intercambios son una de las puertas de entrada y salida entre tu moneda tradicional (euros, dólares) y el mundo de bitcoin. Los intercambios pueden estar regulados y cumplir con el KYC (Conozca a su cliente), o peer-to-peer y anónimo. Cada intercambio ofrecerá diferentes características, estructuras de tasas, liquidez y soporte al cliente. Cada bitcoiner utilizará uno diferente según sus necesidades y convicciones.",
       "peer-to-peer": {
-        "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
+        "description": "Los intercambios peer-to-peer son mercados donde los individuos intercambian bitcoin por otras monedas entre sí. Estos intercambios podrían estar regulados o no y normalmente no solicitan mucha información (si existe) sobre ti. Simplemente facilitan la relación entre los usuarios. Sus tarifas podrían ser superiores a las de los intercambios tradicionales y su liquidez un poco menores. Es la opción preferida para los bitcoiners que intentan evitar KYC."
       },
-      "shortDescription": "Bitcoin buying-selling solutions, KYC and non-KYC",
-      "title": "Exchange"
+      "shortDescription": "Soluciones de compra y venta de Bitcoin, KYC y no KYC",
+      "title": "Intercambio"
     },
     "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?"
+      "description": "Todos estos tutoriales han sido escritos por apasionados y dedicados bitcoiner, que desean difundir la educación sobre Bitcoin en todo el mundo. ¡No olvides darles un \"me gusta\", hacer una reseña y dejarles propinas en sats!",
+      "didYouKnow": "¿Lo sabías?"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "¡Bienvenido al infinito agujero del conejo de Bitcoin! En esta sección, te ofreceremos tutoriales en profundidad sobre la mayoría de los proyectos de Bitcoin disponibles. Esta página es mantenida por voluntarios y apasionados de Bitcoin que apoyan este proyecto de código abierto. Si sientes que hemos cometido un error, por favor contáctanos. Para ver nuestros documentos financieros relacionados con el proyecto, consulta nuestro informe de transparencia. Gracias por confiar en esta universidad y disfruta del viaje.",
     "merchant": {
-      "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
-      "shortDescription": "Solutions for businesses to accept Bitcoin",
-      "title": "Merchant"
+      "description": "¿Alguna vez te has preguntado cómo aceptar Bitcoin de manera sencilla para un negocio? Explora nuestras diversas soluciones para convertirte en un experto y configurar fácilmente una solución para comerciantes en las tiendas que te rodean. La solución de Punto de Venta varía según las necesidades del comerciante (físicas u en línea), su volumen y la complejidad de sus operaciones. Un buen punto de partida es simplemente utilizar una billetera LN básica, luego pasar a una solución fácil y eficiente (como un punto de venta móvil) y finalmente explorar BTC Pay Server para soluciones avanzadas, complejas y profesionales.",
+      "shortDescription": "Soluciones para que las empresas acepten Bitcoin",
+      "title": "Comerciante"
     },
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
-      "shortDescription": "Bitcoin mining solutions",
-      "title": "Mining"
+      "description": "La industria minera es un tema complejo lleno de agujeros de conejo. Aquí, intentaremos acompañarte en tu viaje utilizando hardware y software. Desde modificar un S9 en un calentador para el hogar hasta intentar ganar la lotería con un minero nerd.",
+      "shortDescription": "Soluciones mineras de Bitcoin",
+      "title": "Minería"
     },
     "node": {
       "bitcoin": {
-        "description": "A Bitcoin Core node is the ground zero of your Bitcoin sovereignty stack. It allows you to run the Bitcoin software and be part of the network. You will validate blocks and transactions, decide which rules you want to apply within the network, and stop using intermediaries to propagate your transactions. There are many ways to run a Bitcoin node, some more user-friendly than others."
+        "description": "Un nodo de Bitcoin Core es el punto de partida de tu pila de soberanía de Bitcoin. Te permite ejecutar el software de Bitcoin y formar parte de la red. Validarás bloques y transacciones, decidirás qué reglas deseas aplicar dentro de la red y dejarás de depender de intermediarios para propagar tus transacciones. Hay muchas formas de ejecutar un nodo de Bitcoin, algunas más amigables para el usuario que otras."
       },
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
+      "description": "Los nodos son como tus servidores personales. En Bitcoin, es el software que te permite ejecutar la red, recopilar transacciones, verificar las reglas y ser verdaderamente soberano. Dentro de nuestro ecosistema, existen varios tipos de nodos, desde Bitcoin Core hasta implementaciones de Lightning, RGB y otras soluciones de privacidad más avanzadas.",
       "lightning-network": {
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "description": "Un nodo de Lightning te permite participar en el protocolo de capa 2 de Bitcoin llamado Lightning. Podrás abrir canales, gestionar su liquidez, participar en el grafo y ser no custodio con respecto a tu billetera de Lightning.",
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB es un sistema escalable y confidencial de contratos inteligentes para Bitcoin y la red Lightning. Es una capa de programabilidad para Bitcoin, con conceptos de propiedad privada y mutua, abstracción y separación de preocupaciones, y representa una idea de \"post-blockchain\"."
       },
-      "shortDescription": "Solutions to operate a bitcoin node and join the network",
-      "title": "Node"
+      "shortDescription": "Soluciones para operar un nodo bitcoin y unirse a la red",
+      "title": "Nodo"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
+    "pageDescription": "Bitcoin es una industria amplia, cada día más amplia. Para ayudarte a explorarlo, hemos reunido un gran número de tutoriales que describen varias soluciones.",
+    "pageSubtitle": "¡Bienvenido al infinito agujero de conejo de Bitcoin!",
+    "pageTitle": "Tutoriales",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "Bitcoin no es privado por defecto, está diseñado intencionalmente para ser seudónimo, y cada transacción es pública y se almacena para siempre. Para recuperar cierta confidencialidad, debemos seguir las mejores prácticas de usuario y utilizar herramientas específicas integradas en nuestro software. Desde evitar la reutilización de direcciones hasta CoinJoin, pasando por mezclar tus monedas y conectarte a tu propio nodo, te ayudaremos en tu viaje hacia la privacidad."
       },
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
+      "description": "La privacidad es un derecho fundamental. Si bien aspiramos a un mundo donde la privacidad sea la configuración predeterminada, no es la realidad en la que vivimos. Intentaremos explicarte las mejores prácticas, ayudarte con tutoriales y encaminarte hacia un camino más soberano en lo que respecta a tus datos.",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "En la era de la vigilancia masiva, recuperar un cierto nivel de privacidad en tu vida cotidiana es esencial. Dado que cada usuario tendrá un cierto grado de paranoia y conocimiento tecnológico, es perfectamente normal utilizar ciertas herramientas y adaptarlas a tus necesidades. Aquí, exploraremos diferentes soluciones de protección, como VPN, Tor, Tails OS, PGP, mensajes cifrados y mucho más."
       },
-      "shortDescription": "Tools for backup and maintaining privacy",
-      "title": "Privacy"
+      "shortDescription": "Herramientas para respaldar y mantener la privacidad",
+      "title": "Privacidad"
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
+      "description": "Una billetera de Bitcoin es como tu llavero. Te permite gastar y recibir Bitcoin. Hay muchos tipos diferentes de billeteras, cada una con diferentes casos de uso, funciones, costos y experiencias de usuario. Cada bitcoiner utilizará un dispositivo diferente según sus necesidades, nivel de exigencia y experiencia.",
       "desktop": {
-        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+        "description": "Las billeteras de escritorio suelen ser para usuarios más avanzados, ya que combinan el uso de dispositivos de hardware y el software de billetera de escritorio. Es como tener una interfaz nueva, más personalizada y con funcionalidades intensivas para usar con tu dispositivo de hardware. Estas billeteras ofrecen opciones de múltiples firmas, características de privacidad, mecanismos de integración de herencia y más."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Las billeteras de hardware suelen utilizarse para almacenar tus ahorros a largo plazo de Bitcoin. Son dispositivos físicos que no están conectados a Internet (a menudo se les llama \"billeteras frías\") y suelen ser altamente seguros. Aunque estos dispositivos a menudo tienen software de código abierto, el hardware en sí suele tener un costo de alrededor de 50 a 300 euros. Puedes considerar estos dispositivos como una cuenta bancaria para cantidades más grandes de ahorros que usarías de vez en cuando."
       },
       "mobile": {
-        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+        "description": "Las billeteras móviles suelen utilizarse para gastos diarios. Integran la Lightning Network para transacciones instantáneas con comisiones bajas. Suelen estar conectadas a Internet (a menudo se les llama \"billeteras calientes\") y, por lo tanto, son menos seguras que las billeteras de hardware. Deberían utilizarse solo para almacenar pequeñas cantidades de Bitcoin y considerarse como tu billetera de uso diario en tu bolsillo."
       },
-      "shortDescription": "Security solutions and usage of your bitcoins",
-      "title": "Wallet"
+      "shortDescription": "Soluciones de seguridad y uso de sus bitcoins",
+      "title": "Billetera"
     }
   },
   "underConstruction": {
     "github": "GitHub",
-    "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
-    "p2": "and consider joining our community!",
-    "pageTitle": "Oops."
+    "p1": "Un conejo ha caído por un agujero. Debido a esta aventura inesperada, esta página está en proceso de construcción en este momento. Pedimos disculpas por cualquier inconveniente. Nuestro equipo está trabajando a toda velocidad para completar esta página. Si estás interesado en echar una mano, no dudes en consultar nuestra",
+    "p2": "y considere unirse a nuestra comunidad!",
+    "pageTitle": "Ups."
   },
   "words": {
-    "about": "About",
-    "about-us": "About Us",
-    "account": "Account",
-    "additionalCriteria": "Additional criteria",
-    "advanced": "Advanced",
-    "article": "Article",
-    "articles": "Articles",
-    "audioBook": "Audio Book",
-    "back": "Back",
-    "beginner": "Beginner",
-    "bitcoinWhitepaper": "Bitcoin Whitepaper",
-    "book": "Book",
-    "books": "Books",
-    "builders": "Builders",
-    "certificate": "Certificate",
-    "conference": "Conference",
-    "conferences": "Conferences",
-    "content": "Content",
-    "continue": "Continue",
-    "course": "Course",
-    "courses": "Courses",
-    "dashboard": "Dashboard",
-    "details": "Details",
-    "didYouKnow": "Did you know?",
-    "documentaries": "Documentaries",
-    "donations": "Donations",
-    "economy": "Economy",
-    "email": "Email",
-    "exchanges": "Exchanges",
-    "followUs": "Follow us",
-    "helpUs": "Help us",
-    "home": "Home",
-    "intermediate": "Intermediate",
-    "interview": "Interview",
+    "about": "Sobre",
+    "about-us": "Sobre nosotros",
+    "account": "Cuenta",
+    "additionalCriteria": "Criterios adicionales",
+    "advanced": "Avanzado",
+    "article": "Artículo",
+    "articles": "Artículos",
+    "audioBook": "Audiolibro",
+    "back": "Volver",
+    "beginner": "Principiante",
+    "bitcoinWhitepaper": "Libro Blanco de Bitcoin",
+    "book": "Libro",
+    "books": "Libros",
+    "builders": "Constructores",
+    "certificate": "Certificado",
+    "conference": "Conferencia",
+    "conferences": "Conferencias",
+    "content": "Contenido",
+    "continue": "Continuar",
+    "course": "Curso",
+    "courses": "Cursos",
+    "dashboard": "Panel de Control",
+    "details": "Detalles",
+    "didYouKnow": "¿Lo sabías?",
+    "documentaries": "Documentales",
+    "donations": "Donaciones",
+    "economy": "Economía",
+    "email": "Correo electrónico",
+    "exchanges": "Intercambios",
+    "followUs": "Síguenos",
+    "helpUs": "Ayúdanos",
+    "home": "Inicio",
+    "intermediate": "Intermedio",
+    "interview": "Entrevista",
     "level": {
-      "advanced": "Advanced",
-      "beginner": "Beginner",
-      "expert": "Expert",
-      "intermediate": "Intermediate"
+      "advanced": "Avanzado",
+      "beginner": "Principiante",
+      "expert": "Experto",
+      "intermediate": "Intermedio"
     },
-    "library": "Library",
+    "library": "Biblioteca",
     "lightning": "Lightning",
     "lnurlAuth": "LNURL Auth",
-    "manifesto": "Manifesto",
-    "merchandising": "Merchandising",
-    "merchants": "Merchants",
-    "mining": "Mining",
-    "more": "More",
-    "movieDocumentary": "Movie Documentary",
-    "newsletter": "Newsletter",
-    "newsletters": "Newsletters",
-    "node": "Node",
-    "nodeNetwork": "Node Network",
-    "or": "or",
-    "ourStory": "Our story",
+    "manifesto": "Manifiesto",
+    "merchandising": "Comercialización",
+    "merchants": "Comerciantes",
+    "mining": "Minería",
+    "more": "Más",
+    "movieDocumentary": "Documental de película",
+    "newsletter": "Boletín informativo",
+    "newsletters": "Boletines informativos",
+    "node": "Nodo",
+    "nodeNetwork": "Red de nodo",
+    "or": "o",
+    "ourStory": "Nuestra historia",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
-    "professors": "Professors",
-    "register": "Register",
-    "relatedResources": "Related resources",
-    "resources": "Resources",
-    "resume": "Resume",
-    "review": "Review",
+    "professors": "Profesores",
+    "register": "Registrar",
+    "relatedResources": "Recursos relacionados",
+    "resources": "Recursos",
+    "resume": "Reanudar",
+    "review": "Revisión",
     "rogzy": "Rogzy",
-    "signIn": "Sign In",
-    "sponsorUs": "Sponsor Us",
-    "sponsoringAndContributors": "Sponsoring & contributors",
-    "supportUs": "Support us",
-    "teachers": "Teachers",
-    "termsAndConditions": "Terms and conditions",
-    "toolkits": "Toolkits",
+    "signIn": "Iniciar sesión",
+    "sponsorUs": "Patrocinarnos",
+    "sponsoringAndContributors": "Patrocinadores y colaboradores",
+    "supportUs": "Apóyanos",
+    "teachers": "Profesores",
+    "termsAndConditions": "Términos y condiciones",
+    "toolkits": "Kit de herramientas",
     "tutorial": "Tutorial",
-    "tutorials": "Tutorials",
-    "update": "Update",
-    "video": "Video",
-    "videos": "Videos",
-    "wallets": "Wallets"
+    "tutorials": "Tutoriales",
+    "update": "Actualizar",
+    "video": "Vídeo",
+    "videos": "Vídeos",
+    "wallets": "Billeteras"
   }
 }
