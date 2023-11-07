@@ -1,5 +1,5 @@
 commit_message: 'i18n: update translations (%language%)'
-append_commit_message: false
+append_commit_message: 
 files:
-  - source: /apps/front/public/locales/en.json
-    translation: /apps/front/public/locales/%two_letters_code%.json
+  - source: /apps/web/public/locales/en.json
+    translation: /apps/web/public/locales/%two_letters_code%.json
