@@ -548,34 +548,32 @@ export const CourseChapter = () => {
             )}
 
             <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
-              <div className="md:grow md:break-words">
-                <div className="text-blue-1000 w-full space-y-4 px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:space-y-6 md:overflow-hidden md:px-0">
-                  {isScreenMd ? (
-                    <HeaderBig chapter={chapter} />
-                  ) : (
-                    <HeaderSmall chapter={chapter} />
-                  )}
-                  <MarkdownContent chapter={chapter} />
-                  {questionsArray && questionsArray.length > 0 && (
-                    <QuizzCard
-                      name={chapter.course.id}
-                      chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                      questions={questionsArray}
-                    />
-                  )}
-                  <BottomButton chapter={chapter} />
-                </div>
-              </div>
-              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
-                {chapters && (
-                  <NavigationPanel
-                    course={chapter.course}
-                    chapters={chapters}
-                    currentChapter={chapter}
-                    style={{ position: 'sticky', top: '6rem' }}
+              <div className="text-blue-1000 w-full space-y-4 px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:break-words md:px-0">
+                {isScreenMd ? (
+                  <HeaderBig chapter={chapter} />
+                ) : (
+                  <HeaderSmall chapter={chapter} />
+                )}
+                <MarkdownContent chapter={chapter} />
+                {questionsArray && questionsArray.length > 0 && (
+                  <QuizzCard
+                    name={chapter.course.id}
+                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                    questions={questionsArray}
                   />
                 )}
+                <BottomButton chapter={chapter} />
               </div>
+            </div>
+            <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
+              {chapters && (
+                <NavigationPanel
+                  course={chapter.course}
+                  chapters={chapters}
+                  currentChapter={chapter}
+                  style={{ position: 'sticky', top: '6rem' }}
+                />
+              )}
             </div>
           </div>
         )}

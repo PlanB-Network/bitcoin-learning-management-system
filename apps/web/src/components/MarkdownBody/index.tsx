@@ -73,15 +73,19 @@ export const MarkdownBody = ({
           </li>
         ),
         table: ({ children }) => (
-          <table className="w-full border-collapse border border-blue-900">
+          <table className="w-full table-fixed border-collapse border border-blue-900">
             {children}
           </table>
         ),
         th: ({ children }) => (
-          <th className="border border-blue-900 px-2 py-1">{children}</th>
+          <th className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
+            {children}
+          </th>
         ),
         td: ({ children }) => (
-          <td className="border border-blue-900 px-2 py-1">{children}</td>
+          <td className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
+            {children}
+          </td>
         ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
