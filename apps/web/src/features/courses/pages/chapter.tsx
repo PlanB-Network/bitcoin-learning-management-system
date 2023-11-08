@@ -547,20 +547,21 @@ export const CourseChapter = () => {
               <TimelineSmall chapter={chapter} />
             )}
 
-            {/* Only on big screens */}
-            <div className=" hidden md:flex ">
-              <div className="grow break-words">
-                <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 overflow-hidden px-5 md:mt-8 md:max-w-3xl md:px-0">
-                  <HeaderBig chapter={chapter} />
+            <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
+              <div className="md:grow md:break-words">
+                <div className="text-blue-1000 w-full space-y-4 px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:space-y-6 md:overflow-hidden md:px-0">
+                  {isScreenMd ? (
+                    <HeaderBig chapter={chapter} />
+                  ) : (
+                    <HeaderSmall chapter={chapter} />
+                  )}
                   <MarkdownContent chapter={chapter} />
-                  {questionsArray && questionsArray.length > 0 ? (
+                  {questionsArray && questionsArray.length > 0 && (
                     <QuizzCard
                       name={chapter.course.id}
                       chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
                       questions={questionsArray}
                     />
-                  ) : (
-                    ''
                   )}
                   <BottomButton chapter={chapter} />
                 </div>
@@ -574,23 +575,6 @@ export const CourseChapter = () => {
                     style={{ position: 'sticky', top: '6rem' }}
                   />
                 )}
-              </div>
-            </div>
-            {/* Only on small screens */}
-            <div className="flex w-full flex-col items-center justify-center md:hidden">
-              <div className="text-blue-1000 w-full space-y-4 px-5">
-                <HeaderSmall chapter={chapter} />
-                <MarkdownContent chapter={chapter} />
-                {questionsArray && questionsArray.length > 0 ? (
-                  <QuizzCard
-                    name={chapter.course.id}
-                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                    questions={questionsArray}
-                  />
-                ) : (
-                  ''
-                )}
-                <BottomButton chapter={chapter} />
               </div>
             </div>
           </div>
