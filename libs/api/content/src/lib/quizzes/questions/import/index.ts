@@ -110,7 +110,14 @@ export const createProcessChangedQuizQuestion =
       }
 
       for (const file of files) {
-        await processLocalFile(quizQuestion, file);
+        try {
+          await processLocalFile(quizQuestion, file);
+        } catch (error) {
+          console.error(
+            `Error processing file ${file.path} for quiz question ${quizQuestion.id}:`,
+            error,
+          );
+        }
       }
     });
   };
