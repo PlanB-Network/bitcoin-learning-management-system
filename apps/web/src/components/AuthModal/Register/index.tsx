@@ -6,7 +6,7 @@ import { Formik, FormikHelpers } from 'formik';
 import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { BsCheck } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
@@ -92,6 +92,17 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     },
     [register],
   );
+
+  useEffect(() => {
+    async function initial() {
+      if (register.data) {
+        await new Promise((f) => setTimeout(f, 2000));
+        onClose();
+      }
+    }
+
+    initial();
+  }, [onClose, register.data]);
 
   return (
     <Modal
