@@ -81,58 +81,58 @@
     "categories": {
       "btc": "ビットコイン",
       "crypto": "暗号技術",
-      "econ": "Austrian Economics",
-      "fin": "Finance",
-      "ln": "Lightning Network",
-      "min": "Mining",
-      "secu": "Security & Privacy"
+      "econ": "オーストリア学派",
+      "fin": "金融",
+      "ln": "ライトニング・ネットワーク",
+      "min": "マイニング（採掘）",
+      "secu": "セキュリティとプライバシー"
     },
     "chapter": {
-      "finishCourse": "Finish the course",
-      "next": "Done, let's go to the next chapter!",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "finishCourse": "コースを終了する",
+      "next": "完了、次の章に行きましょう！",
+      "thanksTip": "楽しんでいただけましたか？チップはこちらから。"
     },
     "details": {
-      "courseId": "Course ID: {{courseId}}",
-      "curriculum": "Curriculum",
-      "description": "Description",
-      "duration": "Duration: {{hours}} hours",
-      "goal": "GOAL: ",
-      "level": "Level: $t(words.level.{{level}})",
+      "courseId": "コースID：{{courseId}}",
+      "curriculum": "カリキュラム",
+      "description": "説明",
+      "duration": "所要時間：{{hours}}時間",
+      "goal": "ゴール：",
+      "level": "レベル：$t(words.level.{{level}})",
       "mobile": {
-        "chapters": "{{chapters}} chapters",
-        "hours": "{{hours}} hours"
+        "chapters": "{{chapters}}章",
+        "hours": "{{hours}}時間"
       },
-      "numberOfChapters": "Number of chapters: {{number}}",
-      "objectives": "Objectives",
-      "objectivesTitle": "What you'll learn :",
-      "professor": "Professor",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
-      "teachers": "Teachers: {{teachers}}"
+      "numberOfChapters": "チャプター数：{{number}}",
+      "objectives": "目的",
+      "objectivesTitle": "学習内容：",
+      "professor": "教授",
+      "startCourse": "コースを開始する",
+      "taughtBy": "このコースは以下のメンバーによって提供されています：",
+      "teachers": "先生：{{teachers}}"
     },
     "explorer": {
-      "footerTitle": "Our professors are here for you !",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
-      "moreToCome": ".... and more to come !",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
-      "pageTitle": "Courses",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
-      "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you !",
-      "s2t1": "Bitcoin education is a journey not a destination",
-      "s3PickLevel": "Pick levels :",
-      "s3PickTopic": "Pick topics :",
-      "s3t1": "Build your own path down the rabbit hole"
+      "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
+      "footerp1": "Sovereign Universityでは、倫理規定に従う限り、教授陣がその内容や皆さんに探求してもらいたいツールについて、完全に自主性を持っています。彼らは様々なバックグラウンドを持つ情熱的なビットコイナーです。",
+      "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、自分のコースを採点するか、教授に直接チップを送るか、Sovereign Universityのメンバーになってプラットフォームをサポートすることができます。",
+      "moreToCome": ".... 今後のますますの発展にご期待ください！",
+      "pageDescription": "ここでは、ビットコイン全体に関連する多数のコースを、幅広いテーマで見つけることができます。この教育コンテンツは有機的なもので、ビットコインの成長とともに発展しています。すべてのコンテンツは無料かつオープンソースで、誰でもアクセスできます。コースはアーカイブ化されていて、あなた一人ひとりの学習状況に適応できるようにサークルで構成されています。",
+      "pageSubtitle": "eラーニング・プラットフォームへようこそ。",
+      "pageTitle": "コース",
+      "s2p1": "ビットコイン・ラビットホールの探求を始めたなら、それは多くの道を持つ無限の旅であることを知る必要があります。Sovereign Universityでは、これを十分に理解しているため、教育コンテンツは非直線的で、自律的で、可能な限り広範囲になるようにデザインされています。",
+      "s2p2": "自分のモチベーションに合わせてスキルや知識を身につけることができるようになります。",
+      "s2p3": "すべてのコースは完全無料です！",
+      "s2t1": "ビットコイン学習は、目的地ではなく旅そのものです",
+      "s3PickLevel": "レベル選択：",
+      "s3PickTopic": "トピック選択：",
+      "s3t1": "ラビットホールに自分だけの道を作ろう"
     },
     "footer": {
       "": ""
     },
-    "freeBanner": "All our courses are offered for free. the university is based upon membership through donation and sharing.",
+    "freeBanner": "私たちのコースはすべて無料で提供されています。Sovereign Universityは寄付と分かち合いによるメンバーシップを基本としています。",
     "part": {
-      "count": "Part n°{{count}}/{{total}}"
+      "count": "パートn°{{count}}/{{total}}"
     },
     "preview": {
       "by": "by {{professor}}",
