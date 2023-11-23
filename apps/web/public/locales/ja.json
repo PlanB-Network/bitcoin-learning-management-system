@@ -2,85 +2,85 @@
   "about": {
     "categories": {
       "bunnyForerunner": "先を行く白うさぎ",
-      "designers": "デザイナーたち",
-      "developpers": "開発者たち",
-      "earlySupporters": "早期サポーターたち",
+      "designers": "デザイナー",
+      "developpers": "開発者",
+      "earlySupporters": "早期サポーター",
       "hareExplorer": "白うさぎの探検家",
-      "helpers": "助っ人たち",
-      "professors": "教授たち",
+      "helpers": "サポートスタッフ",
+      "professors": "教授陣",
       "rabbitholeDigger": "ラビットホールの掘り職人"
     },
     "headerLink": "コミュニティ・スポンサーになる",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
-    "thanks1": "A special thanks to our early-supporters, who have helped us persevere throughout the years.",
-    "thanks2": "The Sovereign University is a community effort. It's been made possible thanks to  numerous contributors who have been taken various roles, such as professors, developers, designers and helpers of many kinds. Many thanks to all of them."
+    "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
+    "pageSubtitle": "Sovereign Universityは、すべての人々に無料のビットコイン教育を提供しています。",
+    "thanks1": "早期サポーターのみなさんに感謝の意を表明します。",
+    "thanks2": "Sovereign Universityはコミュニティみんなの努力の結晶です。教授陣、開発者、デザイナー、多くのサポートスタッフのみなさんなど、さまざまな役割を担ってくれた数多くの支援者さんのおかげで成り立っています。みなさん一人ひとりに心より感謝します。"
   },
   "auth": {
-    "accountCreated": "Your account has been created, {{userName}}!",
-    "alreadyHaveAccount": "Already have an account?",
-    "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
-    "connect": "Se connecter",
-    "connectWithLn": "Connect with LN",
-    "contributorId": "Identifiant contributeur",
-    "createAccount": "Register",
-    "createOne": "Register here!",
-    "emailAddress": "Adresse email",
+    "accountCreated": "{{userName}}さんのアカウントが作成されました！",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "canSaveProgress": "ビットコイン・アカデミーのあなたの進捗状況を保存できるようになりました",
+    "connect": "ログインする",
+    "connectWithLn": "ライトニングで接続する",
+    "contributorId": "コントリビュータID",
+    "createAccount": "登録する",
+    "createOne": "ここから登録！",
+    "emailAddress": "メールアドレス",
     "errors": {
-      "usernameRegex": "Username can only contain letters, digits, _, . and -",
-      "usernameRequired": "Username is required",
-      "usernameTooShort": "Username must contain at least 5 characters"
+      "usernameRegex": "ユーザー名には「アルファベット」「数字」「_」「.」「-」のみ使用できます",
+      "usernameRequired": "ユーザー名は必須項目です",
+      "usernameTooShort": "ユーザー名は5文字以上である必要があります"
     },
-    "forgottenPassword": "Forgot your password?",
-    "getConnected": "Connectez vous !",
-    "headerAccountCreated": "Account created",
-    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
-    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
-    "noAccountYet": "Don't have an account?",
-    "passwordReinit": "Réinitilisation de mot de passe",
-    "passwordRequired": "Password is required",
-    "passwordsDontMatch": "Passwords don't match",
-    "sendLink": "Envoyer un lien",
-    "signIn": "Sign In"
+    "forgottenPassword": "パスワードをお忘れですか？",
+    "getConnected": "ログインしました！",
+    "headerAccountCreated": "アカウントが作成されました",
+    "lnurlAuthDescription": "ライトニング・ウォレットでこのQRコードをスキャンしてログインしてください！",
+    "noAccountNeeded": "Sovereign Universityで学ぶためにアカウントは必要ありません！",
+    "noAccountYet": "アカウントをお持ちではありませんか？",
+    "passwordReinit": "パスワードをリセットする",
+    "passwordRequired": "パスワードは必須項目です",
+    "passwordsDontMatch": "パスワードが一致しません",
+    "sendLink": "リンクを送信する",
+    "signIn": "サインイン"
   },
   "bet": {
-    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
+    "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりするには、ご遠慮なく私たちのDiscordに参加してください。",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
-      "title": "Educational Content"
+      "description": "このコンテンツは、教育行事などですぐに使えることを目的としています。",
+      "title": "教育コンテンツ"
     },
-    "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
-    "pageTitle": "Bitcoin Educational Toolkit",
+    "hereForYou": "BETはあなたのためにある！",
+    "pageDescription": "Sovereign Universityは、ビットコインの普及を促進するために、世界中のビットコイン教育者と地域コミュニティを支援しています。このゴールに向けて、私たちは（私たちや支援者のみなさんによって作成された）教育コンテンツとビジュアル・データの両方の大規模なデータベースを収集し、アクセスできるようにしています。",
+    "pageSubtitle": "BET - すべての教育プロジェクトのためのビットコイン・オープンソース・ツールキット",
+    "pageTitle": "ビットコイン教育用ツールキット",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
-      "title": "Visual Content"
+      "description": "このコンテンツは、あなたの作品に使用される生のビジュアル・データです。",
+      "title": "ビジュアル・コンテンツ"
     }
   },
   "book": {
-    "abstract": "Abstract",
+    "abstract": "抜粋",
     "bookSummary": {
-      "modifyTooltip": "Write or modify",
-      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
-      "notice": "this summary is linked to github, for any modification or addition",
-      "title": "The book summary"
+      "modifyTooltip": "書き込む、または編集する",
+      "noSummary": "要約はまだありません。もしあなたがこの本を読み、要約を共有したいのであれば、遠慮なくGitHubから行うことができます。そうすれば、コミュニティの助けになり、Sovereign Universityをより良くすることができます！",
+      "notice": "この要約の変更または追加については、GitHubから行うことができます",
+      "title": "本の要約"
     },
-    "buttonBuy": "Buy",
+    "buttonBuy": "購入する",
     "buttonPdf": "PDF / E-book",
-    "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "offeredBy": "寛大な支援者によって提供されました",
+    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。採点と共有に感謝します！",
+    "pageTitle": "ライブラリ",
+    "topicsAddressed": "トピックのアドレス： "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "このポータルサイトはオープンソースであり、いつでも支援を受け付けています。採点と共有に感謝します！",
+    "pageTitle": "ビルダーポータル"
   },
   "courses": {
     "categories": {
-      "btc": "Bitcoin",
-      "crypto": "Cryptography",
+      "btc": "ビットコイン",
+      "crypto": "暗号技術",
       "econ": "Austrian Economics",
       "fin": "Finance",
       "ln": "Lightning Network",
