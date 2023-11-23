@@ -1,16 +1,16 @@
 {
   "about": {
     "categories": {
-      "bunnyForerunner": "Bunny Forerunner",
-      "designers": "Designers",
-      "developpers": "Developpers",
-      "earlySupporters": "Early Supporters",
-      "hareExplorer": "Hare Explorer",
-      "helpers": "Helpers",
-      "professors": "Professors",
-      "rabbitholeDigger": "Rabbit-Hole Digger"
+      "bunnyForerunner": "先を行く白うさぎ",
+      "designers": "デザイナーたち",
+      "developpers": "開発者たち",
+      "earlySupporters": "早期サポーターたち",
+      "hareExplorer": "白うさぎの探検家",
+      "helpers": "助っ人たち",
+      "professors": "教授たち",
+      "rabbitholeDigger": "ラビットホールの掘り職人"
     },
-    "headerLink": "Become a community sponsor",
+    "headerLink": "コミュニティ・スポンサーになる",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
     "pageSubtitle": "The Sovereign University offers free Bitcoin education to all.",
     "thanks1": "A special thanks to our early-supporters, who have helped us persevere throughout the years.",
