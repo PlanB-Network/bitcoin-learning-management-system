@@ -136,38 +136,38 @@
     },
     "preview": {
       "by": "by {{professor}}",
-      "letsgo": "Let's go"
+      "letsgo": "レッツゴー！"
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
-      "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
+      "quizz": "クイズ",
+      "quizzResults": "クイズの結果",
+      "quizzReview": "クイズのレビュー",
+      "resultCongrats": "おめでとうございます。よくできましたね！",
+      "resultItsOk": "あきらめないで、次回はもっと良い結果が得られるはずです！",
+      "resultNotBad": "おしい！",
+      "resultPerfect": "完璧!です！おめでとう！"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "colcardAndSparrow": "ColdcardとSparrow",
+      "financeIntroduction": "金融入門",
+      "financialCrisis": "主要な金融危機の分析",
+      "hyperinflation": "ハイパーインフレの研究",
+      "theoreticalLightning": "ライトニング・ネットワークの上級理論コース"
     }
   },
   "home": {
     "header": {
-      "content1": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty.",
-      "content2": "From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "link": "Be part of the network"
+      "content1": "PlanBプラットフォームは、みなさん一人ひとりが主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目的としています。",
+      "content2": "個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをするためにここにいます。",
+      "forEducators": "教育関係者と開発者者向け",
+      "globalNetwork": "グローバル・ビットコイン・ネットワーク",
+      "link": "ネットワークの一員になる"
     },
     "section1": {
-      "allLevels": "From beginner to advanced, learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding.",
-      "content2": " From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
+      "allLevels": "初心者から上級者まで、アカデミーでビットコインを学ぼう",
+      "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがっており、みなさん一人ひとりが興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようになっています。",
+      "content2": " ビットコインを初めて学ぶ初心者向けコースから、プロトコルの詳細を深く掘り下げる上級者向けコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートに役立ちます。",
       "content3": "There's no reason to hesitate. Knowledge awaits you.",
       "content4": "Here you can find courses on various topic such as:",
       "interested": "Interested in Bitcoin ?",
