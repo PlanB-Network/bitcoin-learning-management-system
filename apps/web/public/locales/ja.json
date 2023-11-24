@@ -1,11 +1,11 @@
 {
   "about": {
     "categories": {
-      "bunnyForerunner": "先を行く白うさぎ",
+      "bunnyForerunner": "先を行くうさぎ",
       "designers": "デザイナー",
       "developpers": "開発者",
       "earlySupporters": "早期サポーター",
-      "hareExplorer": "白うさぎの探検家",
+      "hareExplorer": "うさぎの探検家",
       "helpers": "サポートスタッフ",
       "professors": "教授陣",
       "rabbitholeDigger": "ラビットホールの掘り職人"
@@ -61,7 +61,7 @@
   "book": {
     "abstract": "抜粋",
     "bookSummary": {
-      "modifyTooltip": "書き込む、または編集する",
+      "modifyTooltip": "書き込むまたは編集する",
       "noSummary": "要約はまだありません。もしあなたがこの本を読み、要約を共有したいのであれば、遠慮なくGitHubから行うことができます。そうすれば、コミュニティの助けになり、Sovereign Universityをより良くすることができます！",
       "notice": "この要約の変更または追加については、GitHubから行うことができます",
       "title": "本の要約"
@@ -69,12 +69,12 @@
     "buttonBuy": "購入する",
     "buttonPdf": "PDF / E-book",
     "offeredBy": "寛大な支援者によって提供されました",
-    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。採点と共有に感謝します！",
+    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ライブラリ",
     "topicsAddressed": "トピックのアドレス： "
   },
   "builders": {
-    "pageSubtitle": "このポータルサイトはオープンソースであり、いつでも支援を受け付けています。採点と共有に感謝します！",
+    "pageSubtitle": "このポータルサイトはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ビルダーポータル"
   },
   "courses": {
@@ -220,30 +220,30 @@
     "courseThumbnail": "コースのサムネイル画像",
     "curriculum": "カリキュラム",
     "decouvreBitcoinLogo": "DecouvreBitcoinのロゴマーク",
-    "favorite": "a heart inside a circle",
-    "flagsInCircle": "a circle of flags",
-    "forwardArrow": "a forward arrow",
-    "github": "the icon of github",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "rabbitClassroom": "rabbits inside a classroom",
-    "rabbitLibrary": "a rabbit reading a book",
-    "rabbitMeetup": "a rabbit meetup",
-    "rabbitPodcast": "a rabbit listenning to a podcast",
-    "rabbitStudying": "rabbit studying in a workshop",
-    "rabbitVideos": "a rabbit filming a video",
-    "rabbitWithBackpackAndBtcSign": "a rabbit with a backpack and a btc sign",
-    "readingRabbit": "A rabbit reading a book",
-    "sthRepresentingCompany": "something representing the company",
-    "stylus": "a stylus",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site",
-    "visibilityOff": "the eyes icon without off sign",
-    "worldMap": "world map with hubs linked"
+    "favorite": "サークルの中のハート",
+    "flagsInCircle": "旗のサークル",
+    "forwardArrow": "前方の矢印",
+    "github": "GitHubのアイコン",
+    "rabbit404": "404の看板を懐中電灯で照らすうさぎ",
+    "rabbitClassroom": "教室の中のうさぎ",
+    "rabbitLibrary": "読書中のうさぎ",
+    "rabbitMeetup": "うさぎのミートアップ",
+    "rabbitPodcast": "ポッドキャストに耳を傾けるうさぎ",
+    "rabbitStudying": "ワークショップで勉強中のうさぎ",
+    "rabbitVideos": "ビデオ撮影中のうさぎ",
+    "rabbitWithBackpackAndBtcSign": "バックパックとBTCの看板を持ったうさぎ",
+    "readingRabbit": "読書中のうさぎ",
+    "sthRepresentingCompany": "仲間を代表する何か",
+    "stylus": "スタイラス",
+    "underConstructionImage": "工事現場で作業するうさぎたちのイラスト",
+    "visibilityOff": "ログアウト看板のない目のアイコン",
+    "worldMap": "ハブがリンクされている世界地図"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
-    "publishedIn": "Published in {{date}}",
-    "writtenBy": "Written by {{author}}"
+    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
+    "pageTitle": "ライブラリ",
+    "publishedIn": "公開日：{{date}}",
+    "writtenBy": "作成者：{{author}}"
   },
   "menu": {
     "betDescription": "Collection of content that you can use for your educational projects",
@@ -312,7 +312,7 @@
   },
   "podcasts": {
     "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
+    "pageSubtitle": "このポータルサイトはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "The Podcast Portal"
   },
   "professors": {
