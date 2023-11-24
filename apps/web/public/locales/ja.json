@@ -191,7 +191,7 @@
       "communityTitleMobile": "コミュニティに焦点を当てる",
       "content1": "コースの他にも、ウォレット、マーチャント・ソリューション、取引所、ノード、マイニング、プライバシー・ソリューションなど、さまざまなテクノロジーをマスターするのに役立つチュートリアルが多数用意されています。また、これだけではまだ不十分ですから、書籍、ポッドキャスト、ビデオなどの多くのリソースをわかりやすく分類し、順序立てて、プラットフォーム上で利用できるようになっています。",
       "content2": "私たちのゴールは、成功するためのツールを提供することです。",
-      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン関係者によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコインのエコシステムが成長するための適切なツールの提供を開始しました。",
+      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン企業によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコインのエコシステムが成長するための適切なツールの提供を開始しました。",
       "helpingCommunities": "ビットコイン・コミュニティの成長を支援することが私たちの使命です ",
       "letsHelpYou": "ビットコインについて読み、聞き、技術をマスターするお手伝いをさせてください！",
       "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築を支援することを目指しています",
@@ -205,7 +205,7 @@
       "seeTutorialsMobile": "すべてのチュートリアルを見る"
     },
     "section4": {
-      "content1": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン関係者と提携していることを誇りに思っています！ ",
+      "content1": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業との連携を心より誇りに思っています！ ",
       "planB": "PlanBネットワークは、寛大なパトロンのおかげで完全なオープンソースを実現しています",
       "together": "一緒にビットコイン教育をより良くしていきましょう！ "
     }
@@ -233,7 +233,7 @@
     "rabbitVideos": "ビデオ撮影中のうさぎ",
     "rabbitWithBackpackAndBtcSign": "バックパックとBTCの看板を持ったうさぎ",
     "readingRabbit": "読書中のうさぎ",
-    "sthRepresentingCompany": "仲間を代表する何か",
+    "sthRepresentingCompany": "会社を代表する何か",
     "stylus": "スタイラス",
     "underConstructionImage": "工事現場で作業するうさぎたちのイラスト",
     "visibilityOff": "ログアウト看板のない目のアイコン",
@@ -243,22 +243,22 @@
     "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ライブラリ",
     "publishedIn": "公開日：{{date}}",
-    "writtenBy": "作成者：{{author}}"
+    "writtenBy": "執筆者：{{author}}"
   },
   "menu": {
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
-    "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "lightningDescription": "Manage your lightning node and use the lightning network",
-    "manifestoDescription": "Read Plan B's manifesto",
-    "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
-    "miningDescription": "Mine your own bitcoins and learn about the mining industry",
-    "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
-    "ourStoryDescription": "Learn about the story of the university",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
+    "betDescription": "教育プロジェクトに使えるコンテンツ集",
+    "btc101Description": "このレッスンをとおしてビットコインについての理解を深めよう",
+    "buildersDescription": "ビットコインをより良いものにし、その普及を拡大するために活動している企業やプロジェクトについて学ぶ",
+    "exchangesDescription": "取引所でビットコインを売買し、P2P（ピアツーピア）について学ぶ",
+    "libraryDescription": "あなたの知識を向上させるためのたくさんの本を発見する",
+    "lightningDescription": "ライトニング・ノードを管理し、ライトニング・ネットワークを使用する",
+    "manifestoDescription": "プランBのマニフェストを読む",
+    "merchantsDescription": "ビットコイン決済を受け入れ、マーチャント向けのツールを発見する",
+    "miningDescription": "自分のビットコインをマイニング（採掘）し、マイニング業界について学ぶ",
+    "nodeDescription": "自分のビットコイン・ノードによる自己主権の方法について学ぶ",
+    "nodeNetworkDescription": "ビットコイン・コミュニティのグローバル・ネットワークに参加しよう！",
+    "ourStoryDescription": "Sovereign Universityのストーリーについて学ぶ",
+    "podcastsDescription": "ポッドキャストをとおしてビットコインのエコシステムについて探求する",
     "sponsorsDescription": "Discover our sponsors and main contributors",
     "supportUsDescription": "Find ways to support us, by any manner",
     "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
@@ -311,7 +311,7 @@
     "discover": "Discover this podcast"
   },
   "podcasts": {
-    "hostedBy": "Hosted by {{host}}",
+    "hostedBy": "主催者：{{host}}",
     "pageSubtitle": "このポータルサイトはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "The Podcast Portal"
   },
@@ -361,7 +361,7 @@
     "details": {
       "checkAuthor": "Check out the author's other contributions and support his work.",
       "enjoyed": "Enjoyed this tutorial?",
-      "madeBy": "This tutorial has been made by",
+      "madeBy": "このチュートリアルの作成者：",
       "source": "Original source : ",
       "tipTooltip": "Like it? Tip."
     },
