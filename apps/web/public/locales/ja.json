@@ -109,7 +109,7 @@
       "professor": "教授",
       "startCourse": "コースを開始する",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
-      "teachers": "先生：{{teachers}}"
+      "teachers": "講師陣：{{teachers}}"
     },
     "explorer": {
       "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
@@ -259,16 +259,16 @@
     "nodeNetworkDescription": "ビットコイン・コミュニティのグローバル・ネットワークに参加しよう！",
     "ourStoryDescription": "Sovereign Universityのストーリーについて学ぶ",
     "podcastsDescription": "ポッドキャストをとおしてビットコインのエコシステムについて探求する",
-    "sponsorsDescription": "Discover our sponsors and main contributors",
-    "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
-    "walletsDescription": "Secure and use your bitcoins"
+    "sponsorsDescription": "スポンサーと主な支援者のご紹介",
+    "supportUsDescription": "私たちをぜひサポートしてください（どのような方法でも構いません！）",
+    "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
+    "walletsDescription": "ビットコインを安全に使用する"
   },
   "nodeNetwork": {
-    "answer1": "A node is simply a Bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption! There is no minimum size to start with.",
-    "answer2": "At Plan B, we aim to improve the educational Bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
-    "answer3": "To be part of the network you must align on some core values. These are: be bitcoin only, value privacy and care for the open source work.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different names will be attributed. A node with an hackerspace, a gym, some office place will be considered a ”Citadel” while your first bitcoin home town office will be known as “nodes”.",
+    "answer1": "ノードとは、その地域のビットコイン普及を加速させたいと考えるビットコイン・コミュニティのことです！小規模から始めることができます。",
+    "answer2": "Plan Bでは、ビットコインを構築し教育するための適切なツールを提供することで、ビットコイン・エコシステムの教育面を改善することを目指しています。ノードになることで、あなたのコミュニティは幅広いリソース、サービス、特別な教育トレーニングなどにアクセスできるようになります。あなたのコミュニティを、ビットコイン・ワールド発展の1つにしていこう。",
+    "answer3": "ネットワークに参加するには、いくつかのコア・バリューに賛同する必要があります。それは、ビットコイン・オンリーであること、プライバシーを大切にすること、オープンソースであり続けることです。",
+    "answer4": "ビットコイン・ノードはどのようなサイズでも構いません。いくつかの要件に基づき、異なる名前が付けられます。ハッカースペース、ジム、オフィスがあるノードは”城塞（Citadel）”と呼ばれ、最初のビットコイン・ホームタウン・オフィスは”ノード”と呼ばれます。",
     "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We belive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
     "apply": "Apply",
     "description1": "All around the world, Bitcoiners are coming together in communities.",
@@ -511,7 +511,7 @@
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsoring & contributors",
     "supportUs": "Support us",
-    "teachers": "Teachers",
+    "teachers": "講師陣",
     "termsAndConditions": "Terms and conditions",
     "toolkits": "Toolkits",
     "tutorial": "Tutorial",
