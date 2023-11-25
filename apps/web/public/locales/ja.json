@@ -14,12 +14,12 @@
     "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
     "pageSubtitle": "Sovereign Universityは、すべての人々に無料のビットコイン教育を提供しています。",
     "thanks1": "早期サポーターのみなさんに感謝の意を表明します。",
-    "thanks2": "Sovereign Universityはコミュニティみんなの努力の結晶です。教授陣、開発者、デザイナー、多くのサポートスタッフのみなさんなど、さまざまな役割を担ってくれた数多くの支援者さんのおかげで成り立っています。みなさん一人ひとりに心より感謝します。"
+    "thanks2": "Sovereign Universityはコミュニティみんなの努力の結晶です。教授陣、開発者、デザイナー、サポートスタッフなど、さまざまな役割を担ってくれた数多くのコントリビュータのみなさんのおかげで成り立っています。みなさん一人ひとりに心より感謝します。"
   },
   "auth": {
     "accountCreated": "{{userName}}さんのアカウントが作成されました！",
     "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
-    "canSaveProgress": "ビットコイン・アカデミーのあなたの進捗状況を保存できるようになりました",
+    "canSaveProgress": "ビットコイン・アカデミーではあなたの進捗状況を保存できるようになりました",
     "connect": "ログインする",
     "connectWithLn": "ライトニングで接続する",
     "contributorId": "コントリビュータID",
@@ -44,7 +44,7 @@
     "signIn": "ログイン"
   },
   "bet": {
-    "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりするには、ご遠慮なく私たちのDiscordに参加してください。",
+    "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりしたい方は、遠慮なく私たちのDiscordにご参加ください。",
     "educationalContent": {
       "description": "このコンテンツは、教育行事などですぐに使えることを目的としています。",
       "title": "教育コンテンツ"
@@ -68,7 +68,7 @@
     },
     "buttonBuy": "購入する",
     "buttonPdf": "PDF / 電子書籍",
-    "offeredBy": "寛大な支援者によって提供されました",
+    "offeredBy": "寛大なコントリビュータによって提供されました",
     "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ライブラリ",
     "topicsAddressed": "トピックのアドレス： "
@@ -114,7 +114,7 @@
     "explorer": {
       "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
       "footerp1": "Sovereign Universityでは、倫理規定に従う限り、教授陣がその内容や皆さんに探求してもらいたいツールについて、完全に自主性を持っています。彼らは様々なバックグラウンドを持つ情熱的なビットコイナーです。",
-      "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、自分のコースを採点するか、教授に直接チップを送るか、Sovereign Universityのメンバーになってプラットフォームをサポートすることができます。",
+      "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、彼らのコースを評価するか、教授に直接チップを送ってあげてください。またはSovereign Universityのメンバーになって、プラットフォームをサポートしていただくことも大歓迎です。",
       "moreToCome": ".... 今後のますますの発展にご期待ください！",
       "pageDescription": "ここでは、ビットコイン全体に関連する多数のコースを、幅広いテーマで見つけることができます。この教育コンテンツは有機的なもので、ビットコインの成長とともに発展しています。すべてのコンテンツは無料かつオープンソースで、誰でもアクセスできます。コースはアーカイブ化されていて、あなた一人ひとりの学習状況に適応できるようにサークルで構成されています。",
       "pageSubtitle": "eラーニング・プラットフォームへようこそ。",
@@ -191,7 +191,7 @@
       "communityTitleMobile": "コミュニティに焦点を当てる",
       "content1": "コースの他にも、ウォレット、マーチャント・ソリューション、取引所、ノード、マイニング、プライバシー・ソリューションなど、さまざまなテクノロジーをマスターするのに役立つチュートリアルが多数用意されています。また、これだけではまだ不十分ですから、書籍、ポッドキャスト、ビデオなどの多くのリソースをわかりやすく分類し、順序立てて、プラットフォーム上で利用できるようになっています。",
       "content2": "私たちのゴールは、成功するためのツールを提供することです。",
-      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン企業によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコインのエコシステムが成長するための適切なツールの提供を開始しました。",
+      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン企業によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を開始しました。",
       "helpingCommunities": "ビットコイン・コミュニティの成長を支援することが私たちの使命です ",
       "letsHelpYou": "ビットコインについて読み、聞き、技術をマスターするお手伝いをさせてください！",
       "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築を支援することを目指しています",
@@ -215,8 +215,8 @@
     "blueEllipse": "青い楕円形",
     "bookCover": "表紙",
     "community": "3名",
-    "contributorHeart": "素敵な支援者へのハート",
-    "contributorPP": "貢献者のプロフィール写真",
+    "contributorHeart": "素敵なコントリビュータへのハート",
+    "contributorPP": "コントリビュータのプロフィール写真",
     "courseThumbnail": "コースのサムネイル画像",
     "curriculum": "カリキュラム",
     "decouvreBitcoinLogo": "DecouvreBitcoinのロゴマーク",
@@ -243,7 +243,7 @@
     "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ライブラリ",
     "publishedIn": "公開日：{{date}}",
-    "writtenBy": "執筆者：{{author}}"
+    "writtenBy": "作成者：{{author}}"
   },
   "menu": {
     "betDescription": "教育プロジェクトに使えるコンテンツ集",
@@ -259,7 +259,7 @@
     "nodeNetworkDescription": "ビットコイン・コミュニティのグローバル・ネットワークに参加しよう！",
     "ourStoryDescription": "Sovereign Universityのストーリーについて学ぶ",
     "podcastsDescription": "ポッドキャストをとおしてビットコインのエコシステムについて探求する",
-    "sponsorsDescription": "スポンサーと主な支援者のご紹介",
+    "sponsorsDescription": "スポンサーの方々と主なコントリビュータのみなさん",
     "supportUsDescription": "私たちをぜひサポートしてください（どのような方法でも構いません！）",
     "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
     "walletsDescription": "ビットコインを安全に使用する"
@@ -269,7 +269,7 @@
     "answer2": "Plan Bでは、ビットコインを構築し教育するための適切なツールを提供することで、ビットコイン・エコシステムの教育面を改善することを目指しています。ノードになることで、あなたのコミュニティは幅広いリソース、サービス、特別な教育トレーニングなどにアクセスできるようになります。あなたのコミュニティを、ビットコイン・ワールド発展の1つにしていこう。",
     "answer3": "ネットワークに参加するには、いくつかのコア・バリューに賛同する必要があります。それは、ビットコイン・オンリーであること、プライバシーを大切にすること、オープンソースであり続けることです。",
     "answer4": "ビットコイン・ノードはどのようなサイズでも構いません。いくつかの要件に基づき、異なる名前が付けられます。ハッカー・スペース、ジム、オフィスがあるノードは”要塞（Citadel）”と呼ばれ、最初のビットコイン・ホームタウン・オフィスは”ノード”と呼ばれます。",
-    "answer5": "私たちは、世界中のビットコイナーに安全な地を提供したいと願っています。地域のハブが成長するのを支援することで、ビットコイナーが安全に活動でき、創造し、共有し、議論することを歓迎するシタデル・ネットワークを構築していけると信じています。",
+    "answer5": "私たちは、世界中のビットコイナーに安全な地を提供したいと願っています。地域ハブの広がりを支援することで、ビットコイナーが安全に活動でき、創造し、共有し、議論することを歓迎する要塞（cotadels）ネットワークを構築していけると信じています。",
     "apply": "申請する",
     "description1": "世界中のビットコイナーがコミュニティに集まっています。",
     "description2": "<0>新しい<0> <1>ビットコイン・ミートアップ</1>が毎週登場します。",
@@ -342,12 +342,12 @@
     },
     "filterBarLabel": "あなたのニーズにぴったりのリソースを見つけよう：",
     "headerSignature": "ロジー（Rogzy）",
-    "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書を参照してください。この大学を信頼していただきありがとうございます。",
+    "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
     "newsletters": {
       "title": "ニュースレター"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
+    "pageDescription": "ビットコインを理解しようとすることは、広がり続ける迷路を探検するようなものです。あなたの旅を支援するために、私たちはさまざまなトピックを扱うリソースと広範にわたるコレクションをキュレーションしました。",
+    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
     "pageTitle": "リソース",
     "podcasts": {
       "title": "ポッドキャスト"
@@ -359,29 +359,29 @@
   },
   "tutorials": {
     "details": {
-      "checkAuthor": "Check out the author's other contributions and support his work.",
-      "enjoyed": "Enjoyed this tutorial?",
+      "checkAuthor": "作成者の他の貢献物もチェックし、同時にサポートしていただけませんか？",
+      "enjoyed": "このチュートリアルを楽しんでいただけましたか？",
       "madeBy": "このチュートリアルの作成者：",
       "source": "オリジナル・ソース：",
-      "tipTooltip": "Like it? Tip."
+      "tipTooltip": "楽しんでいただけましたか？チップはこちらから。"
     },
     "exchange": {
       "centralized": {
-        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+        "description": "中央集権的な取引所は通常、銀行システムとビットコイン・エコシステムの仲介役として機能する規制された組織や機関です。これらの取引所では、大量のビットコインを売買したり、ウォレットや銀行口座に引き出したりすることができます。彼らは通常KYCを必要とするため、あなたの活動を監視し、現地の法律を尊重するために金融監視機関に報告します。"
       },
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
+      "description": "取引所は、従来の通貨（ユーロ、ドル）とビットコインの世界の出入口の一つです。取引所は、規制され、KYC（Know Your Customer）に準拠している場合もあれば、ピアツーピアをとおして匿名の場合もあります。各取引所は、異なる機能、手数料体系、流動性、顧客サポートを提供します。各ビットコイナーは、それぞれのニーズと信念に基づいて自分に合ったもの使いましょう。",
       "peer-to-peer": {
-        "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
+        "description": "ピアツーピア取引所は、個人間でビットコインと他の通貨を交換するマーケット・プレイスです。このような取引所は規制されているかどうかにかかわらず、通常、あなたに関する多くの情報（もしあったとしても）を求めません。単にユーザー間の関係を促進するだけです。ただし、手数料は従来型の取引所よりも高く、流動性は少し低めです。KYCを避けたいビットコイナーにとっては、とても好ましい選択肢です。"
       },
-      "shortDescription": "Bitcoin buying-selling solutions, KYC and non-KYC",
-      "title": "Exchange"
+      "shortDescription": "ビットコイン購入販売ソリューション、KYCと非KYC",
+      "title": "取引所"
     },
     "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?"
+      "description": "これらのチュートリアルのすべては、世界中にビットコイン教育を広めたいと願う情熱的で熱心なビットコイナーによって書かれています。いいね、レビュー、チップをお忘れなく！",
+      "didYouKnow": "ご存知ですか？"
     },
     "headerSignature": "ロジー（Rogzy）",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
     "merchant": {
       "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions for businesses to accept Bitcoin",
@@ -408,7 +408,7 @@
       "title": "ノード"
     },
     "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
+    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
     "pageTitle": "チュートリアル",
     "privacy": {
       "bitcoin": {
@@ -509,7 +509,7 @@
     "rogzy": "ロジー（Rogzy）",
     "signIn": "ログイン",
     "sponsorUs": "スポンサーになる",
-    "sponsoringAndContributors": "スポンサーと支援者",
+    "sponsoringAndContributors": "スポンサーとコントリビュータ",
     "supportUs": "サポートする",
     "teachers": "講師陣",
     "termsAndConditions": "利用規約",
