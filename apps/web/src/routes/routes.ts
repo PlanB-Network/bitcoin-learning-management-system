@@ -20,6 +20,9 @@ export enum Routes {
   // Resources
   Resources = '/resources',
 
+  // Lexique
+  Lexique = '/lexique',
+
   // Resource per type
   Books = '/resources/books',
   Book = '/resources/books/:bookId/:language',
@@ -61,7 +64,6 @@ export enum Routes {
   BIP = '/bips/:bipId',
   Conferences = '/conferences',
   Conference = '/conferences/:conferenceId',
-  Lexique = '/lexique',
   Calendar = '/calendar',
   Contact = '/contact',
 }

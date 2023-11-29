@@ -134,6 +134,10 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                       <Link to={'/resources'}>{t('words.resources')}</Link>
                     </li>
                     <li>
+                      <Link to={'/lexique'}>{t('words.lexique')}</Link>
+                    </li>
+
+                    <li>
                       <Link to={'/tutorials'}>{t('words.tutorials')}</Link>
                     </li>
                   </ul>
