@@ -4,8 +4,9 @@ import { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
-import { addSpaceToCourseId, cn } from '@sovereign-university/ui';
+import { cn } from '@sovereign-university/ui';
 
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { TRPCRouterOutput } from '../../../utils/trpc';
 
 interface Part {

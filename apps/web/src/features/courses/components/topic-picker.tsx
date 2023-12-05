@@ -12,7 +12,7 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
   return (
     <div className="mt-1 flex flex-wrap items-center justify-start gap-2 sm:mt-0 sm:grid sm:grid-cols-2 sm:gap-0 md:grid-cols-3 xl:grid-cols-4">
       {categories.map(({ prefix, topic }, index) => (
-        <>
+        <div key={prefix}>
           {/* Desktop */}
           <div
             className="my-3 hidden flex-row place-items-center space-x-2 sm:flex"
@@ -48,7 +48,7 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
               {topic}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

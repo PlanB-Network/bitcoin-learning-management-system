@@ -1,11 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { addSpaceToCourseId } from '@sovereign-university/ui';
-
 import BitcoinEgg from '../../../assets/icons/bitcoin_egg.svg?react';
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { TRPCRouterOutput } from '../../../utils/trpc';
 
 export const CoursesProgressList = ({
