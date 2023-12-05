@@ -9,9 +9,9 @@ import {
   PageSubtitle,
   PageTitle,
 } from '../../../components/PageHeader';
-import { trpc } from '../../../utils/trpc';
+import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
+import { Course, CourseTree } from '../components/courseTree';
 import { LevelPicker } from '../components/level-picker';
-import { Course, SolarSystem } from '../components/solarSystem';
 import { TopicPicker } from '../components/topic-picker';
 
 export const CoursesExplorer = () => {
@@ -110,7 +110,64 @@ export const CoursesExplorer = () => {
     },
   ];
 
-  const coursesWithUnreleased = [...(courses || []), ...unreleasedCourses];
+  const coursesWithUnreleased = convertCoursesToTree(courses || []);
+  // [...(courses || []) /*, ...unreleasedCourses*/];
+
+  function convertCoursesToTree(
+    courses: NonNullable<TRPCRouterOutput['content']['getCourses']>[number][],
+  ) {
+    courses.sort((a, b) => a.id.localeCompare(b.id));
+
+    const treeCourses: Course[] = [];
+
+    let previousCategory = '';
+    let previousElement: Course;
+
+    courses.forEach((course) => {
+      const treeCourse: Course = {
+        id: course.id,
+        language: course.language,
+        level: course.level,
+        name: course.name,
+        unreleased: false,
+        children: [],
+      };
+
+      const courseCategory = course.id.replace(/[0-9]/g, '');
+      if (courseCategory === previousCategory) {
+        previousElement.children?.push(treeCourse);
+      } else {
+        treeCourse.groupName = convertCategoryToName(
+          course.id.replace(/[0-9]/g, ''),
+        );
+        treeCourses.push(treeCourse);
+      }
+
+      previousElement = treeCourse;
+      previousCategory = courseCategory;
+    });
+
+    return treeCourses;
+  }
+
+  function convertCategoryToName(category: string): string {
+    switch (category) {
+      case 'btc':
+        return 'BTC';
+      case 'crypto':
+        return 'Cryptography';
+      case 'econ':
+        return 'Economy';
+      case 'ln':
+        return 'LN';
+      case 'min':
+        return 'Mining';
+      case 'secu':
+        return 'Security';
+      default:
+        return category;
+    }
+  }
 
   function handleSetActiveCategories(category: string) {
     const newActiveCategories = [...activeCategories];
@@ -145,8 +202,8 @@ export const CoursesExplorer = () => {
           </PageDescription>
         </PageHeader>
 
-        <div className="my-5 w-full">
-          <SolarSystem courses={coursesWithUnreleased} />
+        <div className="my-6 max-w-6xl px-4 xl:my-12">
+          <CourseTree courses={coursesWithUnreleased} />
         </div>
         <div className="flex max-w-6xl flex-col items-center justify-center  text-white">
           <div className="mb-4 hidden w-full flex-col px-8 sm:flex">

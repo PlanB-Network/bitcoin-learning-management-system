@@ -20,7 +20,7 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
     <div className="flex space-x-2 text-base">
       <div className="my-1 flex flex-wrap gap-2 sm:my-3 sm:flex-row sm:gap-12">
         {levels.map((level, index) => (
-          <>
+          <div key={level.prefix}>
             {/* Desktop */}
             <div
               className="hidden flex-row place-items-center space-x-2 sm:flex"
@@ -57,7 +57,7 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
                 {level.translatedName}
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

@@ -9,12 +9,11 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
-import { addSpaceToCourseId } from '@sovereign-university/ui';
-
 import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
 import { Button } from '../../../atoms/Button';
 import { MarkdownBody } from '../../../components/MarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { joinWords } from '../../../utils/string';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 import { NavigationPanel } from '../components/navigation-panel';

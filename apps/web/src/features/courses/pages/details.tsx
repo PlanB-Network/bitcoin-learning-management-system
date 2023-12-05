@@ -11,8 +11,6 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
-import { addSpaceToCourseId } from '@sovereign-university/ui';
-
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
 import checkBoxSVG from '../../../assets/courses/checkboxFilled.svg';
@@ -28,6 +26,7 @@ import { Button } from '../../../atoms/Button';
 import { AuthorCard } from '../../../components/author-card';
 import { useNavigateMisc } from '../../../hooks';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { TRPCRouterOutput } from '../../../utils/trpc';
 import { CourseButton } from '../components/course-button';
 import { CourseLayout } from '../layout';
