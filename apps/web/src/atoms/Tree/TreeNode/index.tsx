@@ -44,8 +44,10 @@ const node = css`
   text-align: center;
   list-style-type: none;
   position: relative;
-  padding: var(--tree-line-height) var(--tree-node-padding) 0
-    var(--tree-node-padding);
+  padding-top: var(--tree-line-height);
+  padding-right: var(--tree-node-padding);
+  padding-left: 0;
+  padding-bottom: var(--tree-node-padding);
 `;
 
 const nodeLines = css`
@@ -99,8 +101,8 @@ function TreeNode({ children, label, className, groupName }: TreeNodeProps) {
       {groupName && (
         <span
           className={cx(
-            'absolute -top-4 xl:-top-6 left-1/2 -translate-x-1/2 text-white text-[9px] xl:text-base font-semibold ',
-            groupName === 'LN' && 'left-[60%]',
+            'absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 text-white text-[9px] md:text-sm xl:text-base font-semibold ',
+            // groupName === 'LN' && 'left-[60%]',
           )}
         >
           {groupName}

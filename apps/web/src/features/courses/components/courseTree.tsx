@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { useNavigate } from '@tanstack/react-router';
 
 import { cn } from '@sovereign-university/ui';
@@ -5,6 +9,8 @@ import { cn } from '@sovereign-university/ui';
 import Tree from '../../../atoms/Tree';
 import TreeNode from '../../../atoms/Tree/TreeNode';
 import { addSpaceToCourseId } from '../../../utils/courses';
+
+const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export interface Course {
   id: string;
@@ -56,7 +62,7 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
           <div className="text-[7px] font-normal leading-[12px] md:text-sm md:leading-normal xl:text-base xl:font-medium">
             {course.name}
           </div>
-          <div className="absolute -right-3 -top-4 hidden rounded-xl bg-gray-400 p-[6px] text-xs font-normal xl:block xl:text-sm">
+          <div className="absolute -right-3 -top-4 hidden rounded-xl bg-gray-400 p-[6px] text-sm font-normal xl:block ">
             {addSpaceToCourseId(course.id)}
           </div>
         </div>
@@ -74,6 +80,7 @@ export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
   //const firstCourse = courses.shift() as Course;
   const firstCourse = courses.slice(0, 1)[0];
   courses = courses.slice(1);
+  const isMobile = useSmaller('xl');
 
   return (
     <Tree
@@ -81,6 +88,7 @@ export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
       lineHeight={'40px'}
       lineColor={'white'}
       lineBorderRadius={'10px'}
+      nodePadding={isMobile ? '3px' : '15px'}
       label={<CourseTreeNode course={firstCourse as Course} />}
     >
       {courses.map((course) => {

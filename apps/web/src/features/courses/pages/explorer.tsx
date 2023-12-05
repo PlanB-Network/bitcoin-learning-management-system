@@ -164,6 +164,8 @@ export const CoursesExplorer = () => {
         return 'Mining';
       case 'secu':
         return 'Security';
+      case 'cuboplus':
+        return 'Cubo +';
       default:
         return category;
     }
@@ -202,7 +204,7 @@ export const CoursesExplorer = () => {
           </PageDescription>
         </PageHeader>
 
-        <div className="my-6 max-w-6xl px-4 xl:my-12">
+        <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
           <CourseTree courses={coursesWithUnreleased} />
         </div>
         <div className="flex max-w-6xl flex-col items-center justify-center  text-white">
