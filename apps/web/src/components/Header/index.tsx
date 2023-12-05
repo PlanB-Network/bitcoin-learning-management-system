@@ -50,7 +50,8 @@ export const Header = () => {
 
   const coursesByLevel = courses?.reduce(
     (acc, course) => {
-      acc[course.level].push(course);
+      const level = course.level.toLowerCase() as typeof course.level;
+      acc[level].push(course);
       return acc;
     },
     {
