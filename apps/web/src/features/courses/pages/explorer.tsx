@@ -107,8 +107,13 @@ export const CoursesExplorer = () => {
     },
     {
       prefix: '300',
-      name: 'expert',
-      translatedName: t('words.level.expert'),
+      name: 'advanced',
+      translatedName: t('words.level.advanced'),
+    },
+    {
+      prefix: '400',
+      name: 'developer',
+      translatedName: t('words.level.developer'),
     },
   ];
 
@@ -153,9 +158,7 @@ export const CoursesExplorer = () => {
     let previousCategory = '';
 
     let secondYearCourses = courses.filter(
-      (c) =>
-        Number(extractNumbers(c.id)) >= 200 ||
-        Number(extractNumbers(c.id)) === 0,
+      (c) => Number(extractNumbers(c.id)) >= 200 || c.id === 'cuboplus',
     );
 
     secondYearCourses = secondYearCourses.sort((a, b) =>

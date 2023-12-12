@@ -15,7 +15,7 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 export interface Course {
   id: string;
   name: string;
-  level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  level: 'beginner' | 'intermediate' | 'advanced' | 'developer';
   language: string;
   children?: Course[];
   unreleased?: boolean;

@@ -219,6 +219,11 @@ export const getAllRepoFiles = async (
   repositoryUrl: string,
   branch = 'main',
 ) => {
+  console.log(
+    '-- Sync procedure: Syncing the github repository on branch',
+    branch,
+  );
+
   const repoDir = computeTemporaryDirectory(repositoryUrl);
 
   try {

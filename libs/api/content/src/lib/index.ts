@@ -33,41 +33,31 @@ export const createProcessChangedFiles =
       createProcessChangedQuizQuestion(dependencies);
     const processChangedProfessor = createProcessChangedProfessor(dependencies);
 
-    /*
-     * Resources
-     */
+    console.log('-- Sync procedure: Syncing resources');
     const resources = groupByResource(filteredFiles);
     for (const resource of resources) {
       await processChangedResource(resource);
     }
 
-    /*
-     * Courses
-     */
+    console.log('-- Sync procedure: Syncing courses');
     const courses = groupByCourse(filteredFiles);
     for (const course of courses) {
       await processChangedCourse(course);
     }
 
-    /*
-     * Tutorials
-     */
+    console.log('-- Sync procedure: Syncing tutorials');
     const tutorials = groupByTutorial(filteredFiles);
     for (const tutorial of tutorials) {
       await processChangedTutorial(tutorial);
     }
 
-    /**
-     * Quizzes
-     */
+    console.log('-- Sync procedure: Syncing quizQuestions');
     const quizQuestions = groupByQuizQuestion(filteredFiles);
     for (const quizQuestion of quizQuestions) {
       await processChangedQuizQuestion(quizQuestion);
     }
 
-    /**
-     * Professors
-     */
+    console.log('-- Sync procedure: Syncing professors');
     const professors = groupByProfessor(filteredFiles);
     for (const professor of professors) {
       await processChangedProfessor(professor);

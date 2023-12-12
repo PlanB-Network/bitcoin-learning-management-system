@@ -18,6 +18,8 @@ export const syncProcedure = publicProcedure
       dependencies: { redis },
     } = ctx;
 
+    console.log('-- Sync procedure: START');
+
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
 
     if (!process.env['DATA_REPOSITORY_URL']) {
@@ -31,10 +33,14 @@ export const syncProcedure = publicProcedure
       process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
 
+    console.log('-- Sync procedure: Syncing CDN');
+
     syncCdnRepository(
       '/tmp/sovereign-university-data',
       process.env['CDN_PATH'] || '/tmp/cdn',
     ).catch((error) => {
       console.error(error);
     });
+
+    console.log('-- Sync procedure: END');
   });
