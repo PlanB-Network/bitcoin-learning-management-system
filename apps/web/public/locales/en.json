@@ -480,7 +480,7 @@
     "level": {
       "advanced": "Advanced",
       "beginner": "Beginner",
-      "expert": "Expert",
+      "developer": "developer",
       "intermediate": "Intermediate"
     },
     "library": "Library",
