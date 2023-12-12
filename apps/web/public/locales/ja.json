@@ -480,7 +480,7 @@
     "level": {
       "advanced": "上級者向け",
       "beginner": "初心者向け",
-      "expert": "専門家向け",
+      "developer": "developer",
       "intermediate": "中級者向け"
     },
     "library": "ライブラリ",
