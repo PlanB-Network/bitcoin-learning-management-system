@@ -3,3 +3,11 @@ export function addSpaceToCourseId(courseId: string) {
     courseId.match(/\d+/)?.[0] || ''
   }`;
 }
+
+export function fakeCourseId(courseId: string) {
+  if (courseId === 'cuboplus') {
+    return 'ln401';
+  } else {
+    return courseId;
+  }
+}

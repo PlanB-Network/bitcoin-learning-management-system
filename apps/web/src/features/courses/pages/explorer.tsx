@@ -9,6 +9,8 @@ import {
   PageSubtitle,
   PageTitle,
 } from '../../../components/PageHeader';
+import { fakeCourseId } from '../../../utils/courses';
+import { extractNumbers } from '../../../utils/string';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 import { Course, CourseTree } from '../components/courseTree';
 import { LevelPicker } from '../components/level-picker';
@@ -116,14 +118,20 @@ export const CoursesExplorer = () => {
   function convertCoursesToTree(
     courses: NonNullable<TRPCRouterOutput['content']['getCourses']>[number][],
   ) {
-    courses.sort((a, b) => a.id.localeCompare(b.id));
-
     const treeCourses: Course[] = [];
 
-    let previousCategory = '';
+    // First year
+    const firstYearCourses = courses
+      .filter(
+        (c) =>
+          Number(extractNumbers(c.id)) >= 100 &&
+          Number(extractNumbers(c.id)) < 200,
+      )
+      .sort((a, b) => extractNumbers(a.id).localeCompare(extractNumbers(b.id)));
+
     let previousElement: Course;
 
-    courses.forEach((course) => {
+    firstYearCourses.forEach((course) => {
       const treeCourse: Course = {
         id: course.id,
         language: course.language,
@@ -133,7 +141,38 @@ export const CoursesExplorer = () => {
         children: [],
       };
 
-      const courseCategory = course.id.replace(/[0-9]/g, '');
+      if (previousElement) {
+        previousElement.children?.push(treeCourse);
+      } else {
+        treeCourses.push(treeCourse);
+      }
+      previousElement = treeCourse;
+    });
+
+    // Second year
+    let previousCategory = '';
+
+    let secondYearCourses = courses.filter(
+      (c) =>
+        Number(extractNumbers(c.id)) >= 200 ||
+        Number(extractNumbers(c.id)) === 0,
+    );
+
+    secondYearCourses = secondYearCourses.sort((a, b) =>
+      fakeCourseId(a.id).localeCompare(fakeCourseId(b.id)),
+    );
+
+    secondYearCourses.forEach((course) => {
+      const treeCourse: Course = {
+        id: course.id,
+        language: course.language,
+        level: course.level,
+        name: course.name,
+        unreleased: false,
+        children: [],
+      };
+
+      const courseCategory = fakeCourseId(course.id).replace(/[0-9]/g, '');
       if (courseCategory === previousCategory) {
         previousElement.children?.push(treeCourse);
       } else {
@@ -152,22 +191,12 @@ export const CoursesExplorer = () => {
 
   function convertCategoryToName(category: string): string {
     switch (category) {
-      case 'btc':
-        return 'BTC';
-      case 'crypto':
-        return 'Cryptography';
       case 'econ':
-        return 'Economy';
+        return t('words.economy');
       case 'ln':
         return 'LN';
-      case 'min':
-        return 'Mining';
-      case 'secu':
-        return 'Security';
-      case 'cuboplus':
-        return 'Cubo +';
       default:
-        return category;
+        return t('courses.categories.' + category);
     }
   }
 

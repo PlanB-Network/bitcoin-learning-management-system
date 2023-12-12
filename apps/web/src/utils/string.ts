@@ -11,3 +11,7 @@ export const joinWords = (words: string[]) => {
 
   return `${words.join(', ')} & ${lastWord}`;
 };
+
+export function extractNumbers(s: string) {
+  return s.replace(/^\D+/g, '');
+}

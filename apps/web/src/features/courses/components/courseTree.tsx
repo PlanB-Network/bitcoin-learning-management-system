@@ -54,6 +54,12 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
     navigate({ to: '/courses/$courseId', params: { courseId: course.id } });
   }
 
+  function getLineMultiplier(course: Course) {
+    if (course.id === 'crypto301') return 8;
+    if (course.id === 'cuboplus') return 10;
+    return 1;
+  }
+
   return (
     <TreeNode
       key={course.id}
@@ -68,6 +74,7 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
         </div>
       }
       groupName={course.groupName}
+      lineMultiplier={getLineMultiplier(course)}
     >
       {course.children?.map((c) => {
         return <CourseTreeNode key={c.id} course={c} />;
@@ -77,7 +84,6 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
 };
 
 export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
-  //const firstCourse = courses.shift() as Course;
   const firstCourse = courses.slice(0, 1)[0];
   courses = courses.slice(1);
   const isMobile = useSmaller('xl');
