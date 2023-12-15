@@ -88,6 +88,7 @@
       "secu": "Security & Privacy"
     },
     "chapter": {
+      "count": "Chapter {{count}}",
       "finishCourse": "Finish the course",
       "next": "Done, let's go to the next chapter!",
       "thanksTip": "Wanna say thanks ? Tip."

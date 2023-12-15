@@ -133,7 +133,13 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
               count: chapter.part.part,
               total: chapter.course.parts?.length,
             })}
+            <span className={`ml-2`}>
+              {t('courses.chapter.count', {
+                count: chapter.chapter,
+              })}
+            </span>
           </span>
+
           <div className="h-0 grow border-t border-gray-300"></div>
         </div>
 
@@ -197,6 +203,11 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             count: chapter.part.part,
             total: chapter.course.parts.length,
           })}
+          <span className={`ml-4`}>
+            {t('courses.chapter.count', {
+              count: chapter.chapter,
+            })}
+          </span>
         </div>
         <div>{joinWords(chapter.course.professors.map((p) => p.name))}</div>
       </div>
@@ -282,13 +293,6 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
   return (
     <>
       <div>
-        <span
-          className={`mb-1  font-mono text-base font-normal text-blue-800 ${
-            isScreenMd ? '' : 'hidden'
-          }`}
-        >
-          chapter {chapter.chapter}{' '}
-        </span>
         <h2
           className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
             isScreenMd ? '' : 'mb-1 hidden'
@@ -347,13 +351,6 @@ const HeaderSmall = ({ chapter }: { chapter: Chapter }) => {
   return (
     <>
       <div>
-        <span
-          className={`mb-2  font-mono text-base font-normal text-blue-800 ${
-            isScreenMd ? '' : 'hidden'
-          }`}
-        >
-          chapter {chapter.chapter}{' '}
-        </span>
         <h2
           className={`m-1 flex h-32 flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
             isScreenMd ? '' : 'mb-1 hidden'
