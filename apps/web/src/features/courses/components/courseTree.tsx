@@ -27,13 +27,15 @@ interface CourseTreeProps {
 }
 
 const CourseTreeNode = ({ course }: { course: Course }) => {
+  const isMobile = useSmaller('xl');
+
   const navigate = useNavigate();
   if (!course) {
     return null;
   }
 
   const nodeCommonStyle =
-    'inline-block relative cursor-pointer border-[3px] rounded-2xl p-1 xl:p-4 text-white font-semibold max-w-[8rem] sm:max-w-[12rem] xl:max-w-[16rem]';
+    'z-10 inline-block relative cursor-pointer border-[3px] rounded-2xl p-1 xl:p-4 text-white font-semibold max-w-[8rem] sm:max-w-[12rem] xl:max-w-[16rem]';
 
   let nodeColorClasses;
   const courseIdNumbers = Number(course.id.replace(/[a-zA-Z]/g, ''));
@@ -55,8 +57,19 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
   }
 
   function getLineMultiplier(course: Course) {
-    if (course.id === 'crypto301') return 8;
-    if (course.id === 'cuboplus') return 10;
+    if (course.id === 'crypto301') {
+      if (isMobile) {
+        return 5;
+      } else {
+        return 8;
+      }
+    } else if (course.id === 'cuboplus') {
+      if (isMobile) {
+        return 5;
+      } else {
+        return 10;
+      }
+    }
     return 1;
   }
 
@@ -65,7 +78,7 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
       key={course.id}
       label={
         <div className={nodeColorClasses} onClick={onCourseClick}>
-          <div className="text-[7px] font-normal leading-[12px] md:text-sm md:leading-normal xl:text-base xl:font-medium">
+          <div className="text-[8px] font-normal leading-[12px] md:text-sm md:leading-normal xl:text-base xl:font-medium">
             {course.name}
           </div>
           <div className="absolute -right-3 -top-4 hidden rounded-xl bg-gray-400 p-[6px] text-sm font-normal xl:block ">
@@ -91,7 +104,7 @@ export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
   return (
     <Tree
       lineWidth={'4px'}
-      lineHeight={'40px'}
+      lineHeight={isMobile ? '25px' : '40px'}
       lineColor={'white'}
       lineBorderRadius={'10px'}
       nodePadding={isMobile ? '3px' : '15px'}

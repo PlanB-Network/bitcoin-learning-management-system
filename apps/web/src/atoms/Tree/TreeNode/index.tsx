@@ -46,6 +46,7 @@ function TreeNode({
       ${verticalLine};
       right: 50%;
       width: 50%;
+      top: 0;
       left: calc(-1 / 2 * var(--tree-line-width));
       border-top: var(--tree-line-width) var(--tree-node-line-style)
         var(--tree-line-color);
@@ -122,7 +123,7 @@ function TreeNode({
         <span
           className={cx(
             'absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 text-white text-[9px] md:text-sm xl:text-base font-semibold ',
-            groupName === t('words.economy') && 'left-[72%]',
+            groupName === t('words.economy') && 'left-[90%] md:left-[72%]',
           )}
         >
           {groupName}
