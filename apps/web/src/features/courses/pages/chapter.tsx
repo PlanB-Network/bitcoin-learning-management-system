@@ -294,7 +294,7 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
     <>
       <div>
         <h2
-          className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
+          className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold text-blue-900  md:text-3xl ${
             isScreenMd ? '' : 'mb-1 hidden'
           }`}
         >
