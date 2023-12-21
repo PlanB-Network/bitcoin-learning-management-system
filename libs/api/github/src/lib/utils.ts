@@ -263,6 +263,7 @@ export const syncCdnRepository = async (
   cdnDirectory: string,
 ) => {
   const git = simpleGit();
+  console.log('-- Sync procedure: Syncing CDN');
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);

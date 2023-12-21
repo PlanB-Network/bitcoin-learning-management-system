@@ -86,38 +86,49 @@ export const groupByQuizQuestion = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedQuizQuestion =
-  (dependencies: Dependencies) => async (quizQuestion: ChangedQuizQuestion) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (quizQuestion: ChangedQuizQuestion) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(quizQuestion, 'question.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      const processLocalFile = createProcessLocalFile(transaction);
+    return postgres
+      .begin(async (transaction) => {
+        const processMainFile = createProcessMainFile(transaction);
+        const processLocalFile = createProcessLocalFile(transaction);
 
-      await processMainFile(quizQuestion, main);
-
-      const id = await transaction<QuizQuestion[]>`
-          SELECT id FROM content.quiz_questions WHERE id = ${quizQuestion.id}
-        `
-        .then(firstRow)
-        .then((row) => row?.id);
-
-      if (!id) {
-        throw new Error(
-          `Quiz not found for id ${quizQuestion.id} and path ${quizQuestion.path}`,
-        );
-      }
-
-      for (const file of files) {
         try {
-          await processLocalFile(quizQuestion, file);
+          await processMainFile(quizQuestion, main);
         } catch (error) {
-          console.error(
-            `Error processing file ${file.path} for quiz question ${quizQuestion.id}:`,
-            error,
+          errors.push(
+            `Error processing file ${main?.path} for quiz question ${quizQuestion.id}: ${error}`,
+          );
+          return;
+        }
+
+        const id = await transaction<QuizQuestion[]>`
+            SELECT id FROM content.quiz_questions WHERE id = ${quizQuestion.id}
+          `
+          .then(firstRow)
+          .then((row) => row?.id);
+
+        if (!id) {
+          throw new Error(
+            `Quiz not found for id ${quizQuestion.id} and path ${quizQuestion.path}`,
           );
         }
-      }
-    });
+
+        for (const file of files) {
+          try {
+            await processLocalFile(quizQuestion, file);
+          } catch (error) {
+            errors.push(
+              `Error processing file ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
+            );
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
   };

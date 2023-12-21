@@ -35,30 +35,40 @@ interface BookLocal extends BaseResource {
   download_url?: string;
 }
 
-export const createProcessChangedBook = (dependencies: Dependencies) => {
+export const createProcessChangedBook = (
+  dependencies: Dependencies,
+  errors: string[],
+) => {
   const { postgres } = dependencies;
 
   return async (resource: ChangedResource) => {
-    return postgres.begin(async (transaction) => {
-      const { main, files } = separateContentFiles(resource, 'book.yml');
+    return postgres
+      .begin(async (transaction) => {
+        const { main, files } = separateContentFiles(resource, 'book.yml');
 
-      const processMainFile = createProcessMainFile(transaction);
-      await processMainFile(resource, main);
+        try {
+          const processMainFile = createProcessMainFile(transaction);
+          await processMainFile(resource, main);
+        } catch (error) {
+          errors.push(`Error processing file ${main?.path}: ${error}`);
+          return;
+        }
 
-      const id = await transaction<Resource[]>`
+        const id = await transaction<Resource[]>`
           SELECT id FROM content.resources WHERE path = ${resource.path}
         `
-        .then(firstRow)
-        .then((row) => row?.id);
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(`Resource not found for path ${resource.path}`);
-      }
+        if (!id) {
+          throw new Error(`Resource not found for path ${resource.path}`);
+        }
 
-      if (main && main.kind !== 'removed') {
-        const parsed = yamlToObject<BookMain>(main.data);
+        try {
+          if (main && main.kind !== 'removed') {
+            const parsed = yamlToObject<BookMain>(main.data);
 
-        await transaction`
+            await transaction`
           INSERT INTO content.books (resource_id, author, level, website_url)
           VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url})
           ON CONFLICT (resource_id) DO UPDATE SET
@@ -66,23 +76,28 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             level = EXCLUDED.level,
             website_url = EXCLUDED.website_url
         `;
-      }
+          }
+        } catch (error) {
+          errors.push(`Error processing file ${main?.path}: ${error}`);
+          return;
+        }
 
-      for (const file of files) {
-        if (file.kind === 'removed') {
-          // If file was deleted, delete the translation from the database
+        for (const file of files) {
+          try {
+            if (file.kind === 'removed') {
+              // If file was deleted, delete the translation from the database
 
-          await transaction`
+              await transaction`
             DELETE FROM content.books_localized
             WHERE book_id = ${id} AND language = ${file.language}
           `;
 
-          continue;
-        }
+              continue;
+            }
 
-        const parsed = yamlToObject<BookLocal>(file.data);
+            const parsed = yamlToObject<BookLocal>(file.data);
 
-        await transaction`
+            await transaction`
           INSERT INTO content.books_localized (
             book_id, language, original, title, translator, description, publisher, 
             publication_year, cover, summary_text, summary_contributor_id, shop_url, 
@@ -115,7 +130,13 @@ export const createProcessChangedBook = (dependencies: Dependencies) => {
             shop_url = EXCLUDED.shop_url,
             download_url = EXCLUDED.download_url
         `.then(firstRow);
-      }
-    });
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
   };
 };

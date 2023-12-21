@@ -26,12 +26,28 @@ export const createProcessChangedFiles =
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
 
-    const processChangedResource = createProcessChangedResource(dependencies);
-    const processChangedCourse = createProcessChangedCourse(dependencies);
-    const processChangedTutorial = createProcessChangedTutorial(dependencies);
-    const processChangedQuizQuestion =
-      createProcessChangedQuizQuestion(dependencies);
-    const processChangedProfessor = createProcessChangedProfessor(dependencies);
+    const errors: string[] = [];
+
+    const processChangedResource = createProcessChangedResource(
+      dependencies,
+      errors,
+    );
+    const processChangedCourse = createProcessChangedCourse(
+      dependencies,
+      errors,
+    );
+    const processChangedTutorial = createProcessChangedTutorial(
+      dependencies,
+      errors,
+    );
+    const processChangedQuizQuestion = createProcessChangedQuizQuestion(
+      dependencies,
+      errors,
+    );
+    const processChangedProfessor = createProcessChangedProfessor(
+      dependencies,
+      errors,
+    );
 
     console.log('-- Sync procedure: Syncing resources');
     const resources = groupByResource(filteredFiles);
@@ -61,5 +77,12 @@ export const createProcessChangedFiles =
     const professors = groupByProfessor(filteredFiles);
     for (const professor of professors) {
       await processChangedProfessor(professor);
+    }
+
+    if (errors.length > 0) {
+      console.error(
+        `=== ${errors.length} ERRORS occured during the sync process : `,
+      );
+      console.error(errors);
     }
   };

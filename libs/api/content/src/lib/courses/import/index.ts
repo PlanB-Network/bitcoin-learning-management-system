@@ -145,51 +145,54 @@ const extractParts = (markdown: string): Part[] => {
 };
 
 export const createProcessChangedCourse =
-  (dependencies: Dependencies) => async (course: ChangedCourse) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (course: ChangedCourse) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(course, 'course.yml');
 
-    return postgres.begin(async (transaction) => {
-      if (main) {
-        if (main.kind === 'removed') {
-          // If course file was removed, delete the main course and all its translations (with cascade)
+    return postgres
+      .begin(async (transaction) => {
+        try {
+          if (main) {
+            if (main.kind === 'removed') {
+              // If course file was removed, delete the main course and all its translations (with cascade)
 
-          await transaction`
+              await transaction`
             DELETE FROM content.courses WHERE id = ${course.id} 
           `;
 
-          return;
-        }
+              return;
+            }
 
-        if (main.kind === 'renamed') {
-          // If course file was moved, update the id
+            if (main.kind === 'renamed') {
+              // If course file was moved, update the id
 
-          await transaction`
+              await transaction`
             UPDATE content.courses
             SET id = ${course.id}
             WHERE id = ${main.previousPath.split('/')[1]}
           `;
-        }
+            }
 
-        if (
-          main.kind === 'added' ||
-          main.kind === 'modified' ||
-          main.kind === 'renamed'
-        ) {
-          // If new or updated resource file, insert or update resource
+            if (
+              main.kind === 'added' ||
+              main.kind === 'modified' ||
+              main.kind === 'renamed'
+            ) {
+              // If new or updated resource file, insert or update resource
 
-          // Only get the tags from the main resource file
-          const parsedCourse = yamlToObject<CourseMain>(main.data);
+              // Only get the tags from the main resource file
+              const parsedCourse = yamlToObject<CourseMain>(main.data);
 
-          const lastUpdated = course.files
-            .filter(
-              (file): file is ModifiedFile | RenamedFile =>
-                file.kind !== 'removed',
-            )
-            .sort((a, b) => b.time - a.time)[0];
+              const lastUpdated = course.files
+                .filter(
+                  (file): file is ModifiedFile | RenamedFile =>
+                    file.kind !== 'removed',
+                )
+                .sort((a, b) => b.time - a.time)[0];
 
-          const result = await transaction<Course[]>`
+              const result = await transaction<Course[]>`
             INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
             VALUES (
               ${course.id}, 
@@ -206,11 +209,11 @@ export const createProcessChangedCourse =
             RETURNING *
           `.then(firstRow);
 
-          if (!result) {
-            throw new Error('Could not insert course');
-          }
+              if (!result) {
+                throw new Error('Could not insert course');
+              }
 
-          await transaction`
+              await transaction`
             INSERT INTO content.contributors ${transaction(
               parsedCourse.professors.map((professor) => ({
                 id: professor,
@@ -219,7 +222,7 @@ export const createProcessChangedCourse =
             ON CONFLICT DO NOTHING
           `;
 
-          await transaction`
+              await transaction`
             INSERT INTO content.course_professors (course_id, contributor_id)
             SELECT
               ${result.id}, 
@@ -227,60 +230,68 @@ export const createProcessChangedCourse =
             ON CONFLICT DO NOTHING
           `;
 
-          // If the resource has tags, insert them into the tags table and link them to the resource
-          if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
-            await transaction`
+              // If the resource has tags, insert them into the tags table and link them to the resource
+              if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
+                await transaction`
               INSERT INTO content.tags ${transaction(
                 parsedCourse.tags.map((tag) => ({ name: tag })),
               )}
               ON CONFLICT (name) DO NOTHING
             `;
 
-            await transaction`
+                await transaction`
               INSERT INTO content.course_tags (course_id, tag_id)
               SELECT
                 ${result.id}, 
                 id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
               ON CONFLICT DO NOTHING
             `;
+              }
+            }
           }
+        } catch (error) {
+          errors.push(`Error processing file ${main?.path}: ${error}`);
+          return;
         }
-      }
 
-      for (const file of files) {
-        if (file.kind === 'removed') {
-          // If file was deleted, delete the translation from the database
+        for (const file of files) {
+          try {
+            if (file.kind === 'removed') {
+              // If file was deleted, delete the translation from the database
 
-          await transaction`
+              await transaction`
             DELETE FROM content.courses_localized
             WHERE course_id = ${course.id} AND language = ${file.language}
           `;
 
-          continue;
-        }
+              continue;
+            }
 
-        if (!file.language) {
-          console.warn(
-            `Course file ${file.path} does not have a language, skipping...`,
-          );
-          continue;
-        }
+            if (!file.language) {
+              console.warn(
+                `Course file ${file.path} does not have a language, skipping...`,
+              );
+              continue;
+            }
 
-        const header = matter(file.data, {
-          excerpt: true,
-          excerpt_separator: '+++',
-        });
+            const header = matter(file.data, {
+              excerpt: true,
+              excerpt_separator: '+++',
+            });
 
-        const data = header.data as CourseLocalized;
+            const data = header.data as CourseLocalized;
 
-        if (header.excerpt) {
-          header.content = header.content.replace(`${header.excerpt}+++\n`, '');
-          header.excerpt = header.excerpt.trim();
-        }
+            if (header.excerpt) {
+              header.content = header.content.replace(
+                `${header.excerpt}+++\n`,
+                '',
+              );
+              header.excerpt = header.excerpt.trim();
+            }
 
-        const parts = extractParts(header.content);
+            const parts = extractParts(header.content);
 
-        await transaction`
+            await transaction`
           INSERT INTO content.courses_localized (
             course_id, language, name, goal, objectives, raw_description
           )
@@ -297,10 +308,10 @@ export const createProcessChangedCourse =
             goal = EXCLUDED.goal,
             objectives = EXCLUDED.objectives,
             raw_description = EXCLUDED.raw_description
-        `;
+          `;
 
-        if (parts.length > 0) {
-          await transaction`
+            if (parts.length > 0) {
+              await transaction`
             INSERT INTO content.course_parts ${transaction(
               parts.map((_, index) => ({
                 course_id: course.id,
@@ -310,7 +321,7 @@ export const createProcessChangedCourse =
             ON CONFLICT DO NOTHING
           `;
 
-          await transaction`
+              await transaction`
             INSERT INTO content.course_parts_localized ${transaction(
               parts.map((part, index) => ({
                 course_id: course.id,
@@ -327,9 +338,9 @@ export const createProcessChangedCourse =
             DO UPDATE SET title = EXCLUDED.title
           `;
 
-          // if there is at least one chapter across all parts
-          if (parts.some((part) => part.chapters.length > 0)) {
-            await transaction`
+              // if there is at least one chapter across all parts
+              if (parts.some((part) => part.chapters.length > 0)) {
+                await transaction`
             INSERT INTO content.course_chapters ${transaction(
               parts.flatMap((part, partIndex) =>
                 part.chapters.map((_, chapterIndex) => ({
@@ -342,7 +353,7 @@ export const createProcessChangedCourse =
             ON CONFLICT DO NOTHING
           `;
 
-            await transaction`
+                await transaction`
             INSERT INTO content.course_chapters_localized ${transaction(
               parts.flatMap((part, partIndex) =>
                 part.chapters.map((chapter, chapterIndex) => ({
@@ -361,12 +372,18 @@ export const createProcessChangedCourse =
               sections = EXCLUDED.sections,
               raw_content = EXCLUDED.raw_content
           `;
-          } else {
-            console.warn(
-              `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,
-            );
+              } else {
+                console.warn(
+                  `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,
+                );
+              }
+            }
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
           }
         }
-      }
-    });
+      })
+      .catch(() => {
+        return;
+      });
   };

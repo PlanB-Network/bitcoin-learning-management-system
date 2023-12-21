@@ -73,29 +73,42 @@ export const groupByProfessor = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedProfessor =
-  (dependencies: Dependencies) => async (professor: ChangedProfessor) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (professor: ChangedProfessor) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(professor, 'professor.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      const processLocalFile = createProcessLocalFile(transaction);
+    return postgres
+      .begin(async (transaction) => {
+        const processMainFile = createProcessMainFile(transaction);
+        const processLocalFile = createProcessLocalFile(transaction);
 
-      await processMainFile(professor, main);
+        try {
+          await processMainFile(professor, main);
+        } catch (error) {
+          errors.push(`Error processing file ${main?.path}: ${error}`);
+        }
 
-      const id = await transaction<Professor[]>`
+        const id = await transaction<Professor[]>`
           SELECT id FROM content.professors WHERE path = ${professor.path}
         `
-        .then(firstRow)
-        .then((row) => row?.id);
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(`Professor not found for path ${professor.path}`);
-      }
+        if (!id) {
+          throw new Error(`Professor not found for path ${professor.path}`);
+        }
 
-      for (const file of files) {
-        await processLocalFile(id, file);
-      }
-    });
+        for (const file of files) {
+          try {
+            await processLocalFile(id, file);
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
   };

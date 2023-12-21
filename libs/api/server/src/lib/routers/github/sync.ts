@@ -33,8 +33,6 @@ export const syncProcedure = publicProcedure
       process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
 
-    console.log('-- Sync procedure: Syncing CDN');
-
     syncCdnRepository(
       '/tmp/sovereign-university-data',
       process.env['CDN_PATH'] || '/tmp/cdn',

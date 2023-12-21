@@ -86,7 +86,8 @@ export const groupByResource = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedResource =
-  (dependencies: Dependencies) => async (resource: ChangedResource) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (resource: ChangedResource) => {
     const mapHandlers = {
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
@@ -94,5 +95,5 @@ export const createProcessChangedResource =
     } as const;
 
     const handler = mapHandlers[resource.category];
-    return handler(dependencies)(resource);
+    return handler(dependencies, errors)(resource);
   };

@@ -89,40 +89,48 @@ export const groupByTutorial = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedTutorial =
-  (dependencies: Dependencies) => async (tutorial: ChangedTutorial) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (tutorial: ChangedTutorial) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      await processMainFile(tutorial, main);
+    return postgres
+      .begin(async (transaction) => {
+        try {
+          const processMainFile = createProcessMainFile(transaction);
+          await processMainFile(tutorial, main);
+        } catch (error) {
+          errors.push(`Error processing file ${main?.path}: ${error}`);
+          return;
+        }
 
-      const id = await transaction<Tutorial[]>`
+        const id = await transaction<Tutorial[]>`
           SELECT id FROM content.tutorials WHERE path = ${tutorial.path}
         `
-        .then(firstRow)
-        .then((row) => row?.id);
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(`Tutorial not found for path ${tutorial.path}`);
-      }
+        if (!id) {
+          throw new Error(`Tutorial not found for path ${tutorial.path}`);
+        }
 
-      for (const file of files) {
-        if (file.kind === 'removed') {
-          // If file was deleted, delete the translation from the database
+        for (const file of files) {
+          try {
+            if (file.kind === 'removed') {
+              // If file was deleted, delete the translation from the database
 
-          await transaction`
+              await transaction`
             DELETE FROM content.tutorials_localized
             WHERE tutorial_id = ${id} AND language = ${file.language}
           `;
 
-          continue;
-        }
+              continue;
+            }
 
-        const header = matter(file.data, { excerpt: false });
+            const header = matter(file.data, { excerpt: false });
 
-        await transaction`
+            await transaction`
           INSERT INTO content.tutorials_localized (
             tutorial_id, language, title, description, raw_content
           )
@@ -137,6 +145,12 @@ export const createProcessChangedTutorial =
             title = EXCLUDED.title,
             raw_content = EXCLUDED.raw_content
         `;
-      }
-    });
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
   };
