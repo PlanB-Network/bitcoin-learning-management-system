@@ -250,7 +250,7 @@ export const createProcessChangedCourse =
             }
           }
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(`Error processing file ${course?.path}: ${error}`);
           return;
         }
 

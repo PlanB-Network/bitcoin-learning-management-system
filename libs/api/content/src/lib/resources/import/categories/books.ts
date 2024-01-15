@@ -50,7 +50,7 @@ export const createProcessChangedBook = (
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(`Error processing file ${resource?.path}: ${error}`);
           return;
         }
 
@@ -64,9 +64,10 @@ export const createProcessChangedBook = (
           throw new Error(`Resource not found for path ${resource.path}`);
         }
 
+        let parsed: BookMain | null = null;
         try {
           if (main && main.kind !== 'removed') {
-            const parsed = yamlToObject<BookMain>(main.data);
+            parsed = yamlToObject<BookMain>(main.data);
 
             await transaction`
           INSERT INTO content.books (resource_id, author, level, website_url)
@@ -78,7 +79,9 @@ export const createProcessChangedBook = (
         `;
           }
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(
+            `Error processing main file ${main?.path} ${parsed?.author}: ${error}`,
+          );
           return;
         }
 
@@ -131,7 +134,7 @@ export const createProcessChangedBook = (
             download_url = EXCLUDED.download_url
         `.then(firstRow);
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(`Error processing one file ${file?.path}: ${error}`);
           }
         }
       })

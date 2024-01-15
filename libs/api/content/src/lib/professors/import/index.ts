@@ -87,7 +87,7 @@ export const createProcessChangedProfessor =
         try {
           await processMainFile(professor, main);
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(`Error processing file ${professor?.path}: ${error}`);
         }
 
         const id = await transaction<Professor[]>`

@@ -12,7 +12,12 @@ import { publicProcedure } from '../../procedures';
 export const syncProcedure = publicProcedure
   .meta({ openapi: { method: 'POST', path: '/github/sync' } })
   .input(z.void())
-  .output(z.void())
+  .output(
+    z.object({
+      success: z.boolean().optional(),
+      errors: z.string().array().optional(),
+    }),
+  )
   .mutation(async ({ ctx }) => {
     const {
       dependencies: { redis },
@@ -28,7 +33,7 @@ export const syncProcedure = publicProcedure
 
     await redis.del('trpc:*');
 
-    await getAllRepoFiles(
+    const processErrors = await getAllRepoFiles(
       process.env['DATA_REPOSITORY_URL'],
       process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
@@ -41,4 +46,10 @@ export const syncProcedure = publicProcedure
     });
 
     console.log('-- Sync procedure: END');
+
+    if (processErrors.length > 0) {
+      return { errors: processErrors.map((e) => e) };
+    } else {
+      return { success: true };
+    }
   });

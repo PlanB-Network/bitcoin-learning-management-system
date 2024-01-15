@@ -38,7 +38,7 @@ export const createProcessChangedBuilder = (
         try {
           await processMainFile(resource, main);
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(`Error processing file ${resource?.path}: ${error}`);
           return;
         }
 

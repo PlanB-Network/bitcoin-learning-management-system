@@ -101,7 +101,7 @@ export const createProcessChangedTutorial =
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(tutorial, main);
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(`Error processing file ${tutorial?.path}: ${error}`);
           return;
         }
 

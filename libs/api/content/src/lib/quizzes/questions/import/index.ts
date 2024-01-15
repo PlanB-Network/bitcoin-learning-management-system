@@ -101,7 +101,7 @@ export const createProcessChangedQuizQuestion =
           await processMainFile(quizQuestion, main);
         } catch (error) {
           errors.push(
-            `Error processing file ${main?.path} for quiz question ${quizQuestion.id}: ${error}`,
+            `Error processing file ${quizQuestion?.path} for quiz question ${quizQuestion.id}: ${error}`,
           );
           return;
         }

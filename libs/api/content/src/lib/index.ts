@@ -21,7 +21,8 @@ import {
 } from './tutorials/import';
 
 export const createProcessChangedFiles =
-  (dependencies: Dependencies) => async (files: ChangedFile[]) => {
+  (dependencies: Dependencies) =>
+  async (files: ChangedFile[]): Promise<string[]> => {
     const filteredFiles = files.filter((file) =>
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
@@ -83,6 +84,8 @@ export const createProcessChangedFiles =
       console.error(
         `=== ${errors.length} ERRORS occured during the sync process : `,
       );
-      console.error(errors);
+      console.error(errors.map((e) => e + '\n'));
     }
+
+    return errors;
   };
