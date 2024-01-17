@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import { AuthorCard } from '../../../components/author-card';
-import { MarkdownBody } from '../../../components/MarkdownBody';
 import { TipModal } from '../../../components/tip-modal';
 import { TooltipWithContent } from '../../../components/tooptip-with-content';
+import { TutorialsMarkdownBody } from '../../../components/TutorialsMarkdownBody';
 import { useDisclosure } from '../../../hooks';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 import { TRPCRouterOutput } from '../../../utils/trpc';
@@ -104,7 +104,7 @@ export const TutorialDetails = () => {
           <div className="flex w-full flex-col items-center justify-center px-2">
             <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
               {header(tutorial)}
-              <MarkdownBody
+              <TutorialsMarkdownBody
                 content={tutorial.raw_content}
                 assetPrefix={computeAssetCdnUrl(
                   tutorial.last_commit,

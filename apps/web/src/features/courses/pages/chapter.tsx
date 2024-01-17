@@ -11,7 +11,7 @@ import { BsCheckLg } from 'react-icons/bs';
 
 import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
 import { Button } from '../../../atoms/Button';
-import { MarkdownBody } from '../../../components/MarkdownBody';
+import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
 import { addSpaceToCourseId } from '../../../utils/courses';
 import { joinWords } from '../../../utils/string';
@@ -395,7 +395,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
 
 const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
   return (
-    <MarkdownBody
+    <CoursesMarkdownBody
       content={chapter.raw_content}
       assetPrefix={computeAssetCdnUrl(
         chapter.last_commit,

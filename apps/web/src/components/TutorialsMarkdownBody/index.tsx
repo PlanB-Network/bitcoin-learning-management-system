@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -14,17 +10,13 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
-
-export const MarkdownBody = ({
+export const TutorialsMarkdownBody = ({
   content,
   assetPrefix,
 }: {
   content: string;
   assetPrefix: string;
 }) => {
-  const isScreenSm = useGreater('sm');
-
   return (
     <ReactMarkdown
       children={content}
