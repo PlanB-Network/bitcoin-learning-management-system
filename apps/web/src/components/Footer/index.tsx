@@ -90,33 +90,24 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       {isScreenMd && (
         <div
           className={cn(
-            'relative flex w-full flex-col pt-10',
+            'flex w-full flex-col pt-10',
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
-          <div
-            className={cn(
-              'relative flex w-full flex-col pt-10',
-              color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
-            )}
-          >
+          <div className="relative z-30 -mb-20">
             <img
               src={City}
-              className="z-10 m-auto mb-6 h-fit w-1/2 self-end"
-              alt=""
-            />
-            <img
-              src={Hill}
-              className="absolute bottom-0  w-full text-clip"
+              className="m-auto mb-6 h-fit w-1/2 max-w-5xl self-end"
               alt=""
             />
             <Cloud
               className={cn(
-                'absolute m-auto left-20 top-20 w-32',
+                '-z-10 absolute m-auto left-20 top-12 w-32',
                 variant === 'light' ? 'text-gray-200' : 'text-gray-300',
               )}
             />
           </div>
+          <img src={Hill} className="w-full text-clip" alt="" />
           <div className="relative z-10 flex h-80 w-full flex-col justify-center overflow-x-clip bg-green-900">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
               <div className="flex flex-row space-x-10">
@@ -213,7 +204,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       {!isScreenMd && (
         <div
           className={cn(
-            'relative flex w-full flex-col pt-10',
+            'flex w-full flex-col pt-10',
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
