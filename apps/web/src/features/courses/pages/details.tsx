@@ -278,7 +278,7 @@ export const CourseDetails: React.FC = () => {
           <h4 className="mb-1 hidden text-sm font-light uppercase italic sm:block">
             {t('courses.details.objectives')}
           </h4>
-          <h3 className="mb-5 hidden text-2xl font-normal  text-blue-900 sm:block sm:text-2xl lg:text-xl xl:text-lg 2xl:text-lg">
+          <h3 className="mb-5 hidden text-2xl font-normal text-blue-900 sm:block">
             {t('courses.details.objectivesTitle')}
           </h3>
           <ul className="space-y-2 text-xs font-light capitalize text-blue-800 sm:text-base sm:uppercase">

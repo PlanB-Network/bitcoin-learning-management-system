@@ -284,7 +284,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
-const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
+const Header = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
   const isScreenMd = useGreater('sm');
 
@@ -302,26 +302,32 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
         </h2>
       </div>
 
-      <div className="mt-1 space-y-2 uppercase text-blue-800">
+      <div className="mt-1 space-y-2 text-blue-800">
         <div
-          className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+          className={`flex flex-col self-stretch rounded-3xl p-4 shadow-md ${
             isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
           } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
         >
           <h3
-            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-medium text-blue-700"
+            className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
             onClick={() => setIsContentExpanded(!isContentExpanded)}
           >
-            <span className="mr-1 text-2xl">{'> '}</span>
+            <span
+              className={`mr-3 text-2xl ${
+                isContentExpanded ? 'rotate-90' : ''
+              }`}
+            >
+              {'> '}
+            </span>
             <span>{t('courses.details.objectivesTitle')}</span>
           </h3>
           {isContentExpanded && (
-            <div className="mb-2 ml-2 px-5 lowercase ">
-              <ul className="list-inside pl-2 text-sm">
+            <div className="px-5 text-sm md:text-base">
+              <ul className="list-inside text-sm">
                 {chapter.course.objectives?.map(
                   (goal: string, index: number) => (
                     <li className="mt-1" key={index}>
-                      <span className="mr-2 text-blue-300 opacity-50">
+                      <span className="mr-3 text-blue-300 opacity-50">
                         {'▶'}
                       </span>
                       <span className="text-blue-800">
@@ -330,58 +336,6 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
                         </span>
                         {goal.slice(1)}
                       </span>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-const HeaderSmall = ({ chapter }: { chapter: Chapter }) => {
-  const { t } = useTranslation();
-  const isScreenMd = useGreater('sm');
-
-  const [isContentExpanded, setIsContentExpanded] = useState(false);
-
-  return (
-    <>
-      <div>
-        <h2
-          className={`m-1 flex h-32 flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
-            isScreenMd ? '' : 'mb-1 hidden'
-          }`}
-        >
-          {chapter?.title}
-        </h2>
-      </div>
-      {/* Mostrar la tabla de objetivos del curso Learn*/}
-      <div className="my-1 space-y-2 font-light uppercase text-blue-800">
-        <div
-          className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
-            isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
-          } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
-        >
-          <h3
-            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-semibold text-blue-900"
-            onClick={() => setIsContentExpanded(!isContentExpanded)}
-          >
-            <span className="mr-2">{isContentExpanded ? '>' : '>'}</span>
-            {t('courses.details.objectivesTitle').toLowerCase()}{' '}
-            {/* Convierte el texto a minúsculas */}
-          </h3>
-          {isContentExpanded && (
-            <div className="mb-2 ml-2 px-5 lowercase">
-              <ul className="mt-2 list-inside pl-5">
-                {chapter.course.objectives?.map(
-                  (goal: string, index: number) => (
-                    <li key={index}>
-                      <span className="mr-2 opacity-50">{'▶'}</span>
-                      <span className="capitalize">{goal.toLowerCase()}</span>
                     </li>
                   ),
                 )}
@@ -546,11 +500,7 @@ export const CourseChapter = () => {
             <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
-                  {isScreenMd ? (
-                    <HeaderBig chapter={chapter} />
-                  ) : (
-                    <HeaderSmall chapter={chapter} />
-                  )}
+                  <Header chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
                   {questionsArray && questionsArray.length > 0 && (
                     <QuizzCard
