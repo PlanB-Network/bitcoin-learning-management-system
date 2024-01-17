@@ -51,31 +51,31 @@ export const createProcessChangedFiles =
     );
 
     console.log('-- Sync procedure: Syncing resources');
-    const resources = groupByResource(filteredFiles);
+    const resources = groupByResource(filteredFiles, errors);
     for (const resource of resources) {
       await processChangedResource(resource);
     }
 
     console.log('-- Sync procedure: Syncing courses');
-    const courses = groupByCourse(filteredFiles);
+    const courses = groupByCourse(filteredFiles, errors);
     for (const course of courses) {
       await processChangedCourse(course);
     }
 
     console.log('-- Sync procedure: Syncing tutorials');
-    const tutorials = groupByTutorial(filteredFiles);
+    const tutorials = groupByTutorial(filteredFiles, errors);
     for (const tutorial of tutorials) {
       await processChangedTutorial(tutorial);
     }
 
     console.log('-- Sync procedure: Syncing quizQuestions');
-    const quizQuestions = groupByQuizQuestion(filteredFiles);
+    const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
     for (const quizQuestion of quizQuestions) {
       await processChangedQuizQuestion(quizQuestion);
     }
 
     console.log('-- Sync procedure: Syncing professors');
-    const professors = groupByProfessor(filteredFiles);
+    const professors = groupByProfessor(filteredFiles, errors);
     for (const professor of professors) {
       await processChangedProfessor(professor);
     }

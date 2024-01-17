@@ -48,7 +48,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   };
 };
 
-export const groupByCourse = (files: ChangedFile[]) => {
+export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
   const coursesFiles = files.filter(
     (item) => getContentType(item.path) === 'courses',
   );
@@ -78,7 +78,7 @@ export const groupByCourse = (files: ChangedFile[]) => {
 
       groupedCourses.set(coursePath, course);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 

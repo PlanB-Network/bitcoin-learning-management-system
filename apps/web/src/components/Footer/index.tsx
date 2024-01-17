@@ -15,8 +15,6 @@ import {
 
 import { cn } from '@sovereign-university/ui';
 
-import BackRabbit from '../../assets/footer/back_rabbit.svg';
-import BackRabbit2 from '../../assets/footer/back_rabbit_2.svg';
 import BigTree from '../../assets/footer/big_tree.svg';
 import City from '../../assets/footer/city.svg';
 import Cloud from '../../assets/footer/cloud.svg?react';
@@ -119,7 +117,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               )}
             />
           </div>
-          <div className="relative z-10 flex h-96 w-full flex-col justify-center overflow-x-clip bg-green-900">
+          <div className="relative z-10 flex h-80 w-full flex-col justify-center overflow-x-clip bg-green-900">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
               <div className="flex flex-row space-x-10">
                 <div className="flex flex-col">
@@ -209,19 +207,6 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               className="absolute -top-48 right-0 m-auto h-80 w-[25%]"
               alt=""
             />
-            <div className="flex w-full flex-row justify-center space-x-3 self-center overflow-hidden pb-3">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="flex flex-row space-x-3">
-                  <img src={BackRabbit} className="h-20 w-fit" alt="" />
-                  <img src={BackRabbit2} className="h-20 w-fit" alt="" />
-                  <img
-                    src={BackRabbit}
-                    className="h-20 w-fit scale-x-[-1]"
-                    alt=""
-                  />
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       )}

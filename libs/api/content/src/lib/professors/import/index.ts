@@ -38,7 +38,7 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
   };
 };
 
-export const groupByProfessor = (files: ChangedFile[]) => {
+export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
   const professorsFiles = files.filter(
     (item) => getContentType(item.path) === 'professors',
   );
@@ -65,7 +65,7 @@ export const groupByProfessor = (files: ChangedFile[]) => {
 
       groupedProfessors.set(professorPath, professor);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 

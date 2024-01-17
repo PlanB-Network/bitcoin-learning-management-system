@@ -46,7 +46,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   };
 };
 
-export const groupByQuizQuestion = (files: ChangedFile[]) => {
+export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   const quizQuestionsFiles = files.filter(
     (item) => getContentType(item.path) === 'quizzes/questions',
   );
@@ -78,7 +78,7 @@ export const groupByQuizQuestion = (files: ChangedFile[]) => {
 
       groupedQuizQuestions.set(quizQuestionPath, quizQuestion);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 

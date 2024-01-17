@@ -10,7 +10,6 @@ import { cn } from '@sovereign-university/ui';
 
 import CoursesInCircle from '../../../assets/home/courses_in_circle.svg?react';
 import FlagsInCircle from '../../../assets/home/flags_in_circle.svg';
-import PlanBTitle from '../../../assets/home/plan_b_title.svg?react';
 import Spiral from '../../../assets/home/spiral.svg?react';
 import SponsorBSun from '../../../assets/home/sponsor_b_sun.jpeg';
 import SponsorBase58 from '../../../assets/home/sponsor_base58.jpeg';
@@ -30,6 +29,7 @@ import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
 import Groups from '../../../assets/icons/groups.svg?react';
 import OpenSource from '../../../assets/icons/open_source.svg?react';
 import VisibilityOff from '../../../assets/icons/visibility_off.svg?react';
+import PlanBTitle from '../../../assets/planb_logo_horizontal_white.svg?react';
 import { Button } from '../../../atoms/Button';
 import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
@@ -88,7 +88,7 @@ export const Home = () => {
         >
           <div className="col-span-1">
             <div className="flex flex-row text-[49px] font-semibold">
-              <PlanBTitle height={'100%'} width={isScreenMd ? '100%' : 470} />
+              <PlanBTitle height={'100%'} width={isScreenMd ? '70%' : 340} />
             </div>
             <p className="mb-3 pt-6 text-3xl font-semibold text-orange-500">
               {t('home.header.globalNetwork')}

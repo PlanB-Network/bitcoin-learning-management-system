@@ -48,7 +48,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
   };
 };
 
-export const groupByResource = (files: ChangedFile[]) => {
+export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   const resourceFiles = files.filter(
     (item) => getContentType(item.path) === 'resources',
   );
@@ -78,7 +78,7 @@ export const groupByResource = (files: ChangedFile[]) => {
 
       groupedResources.set(resourcePath, resource);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
