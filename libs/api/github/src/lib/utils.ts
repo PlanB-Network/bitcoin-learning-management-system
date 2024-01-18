@@ -252,8 +252,6 @@ export const getAllRepoFiles = async (
       },
     );
 
-    console.log('Final files:', finalFiles);
-
     return finalFiles;
   } catch (error) {
     throw new Error(`Failed to clone and read all repo files: ${error}`);

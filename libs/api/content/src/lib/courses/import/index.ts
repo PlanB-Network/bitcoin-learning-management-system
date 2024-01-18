@@ -157,22 +157,17 @@ export const createProcessChangedCourse =
           if (main) {
             if (main.kind === 'removed') {
               // If course file was removed, delete the main course and all its translations (with cascade)
-
-              await transaction`
-            DELETE FROM content.courses WHERE id = ${course.id} 
-          `;
-
+              await transaction`DELETE FROM content.courses WHERE id = ${course.id}`;
               return;
             }
 
             if (main.kind === 'renamed') {
               // If course file was moved, update the id
-
               await transaction`
-            UPDATE content.courses
-            SET id = ${course.id}
-            WHERE id = ${main.previousPath.split('/')[1]}
-          `;
+                UPDATE content.courses
+                SET id = ${course.id}
+                WHERE id = ${main.previousPath.split('/')[1]}
+              `;
             }
 
             if (
@@ -193,59 +188,59 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-            INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
-            VALUES (
-              ${course.id}, 
-              ${parsedCourse.level},
-              ${parsedCourse.hours},
-              ${lastUpdated.time}, 
-              ${lastUpdated.commit}
-            )
-            ON CONFLICT (id) DO UPDATE SET
-              level = EXCLUDED.level,
-              hours = EXCLUDED.hours,
-              last_updated = EXCLUDED.last_updated,
-              last_commit = EXCLUDED.last_commit
-            RETURNING *
-          `.then(firstRow);
+                INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
+                VALUES (
+                  ${course.id}, 
+                  ${parsedCourse.level},
+                  ${parsedCourse.hours},
+                  ${lastUpdated.time}, 
+                  ${lastUpdated.commit}
+                )
+                ON CONFLICT (id) DO UPDATE SET
+                  level = EXCLUDED.level,
+                  hours = EXCLUDED.hours,
+                  last_updated = EXCLUDED.last_updated,
+                  last_commit = EXCLUDED.last_commit
+                RETURNING *
+              `.then(firstRow);
 
               if (!result) {
                 throw new Error('Could not insert course');
               }
 
               await transaction`
-            INSERT INTO content.contributors ${transaction(
-              parsedCourse.professors.map((professor) => ({
-                id: professor,
-              })),
-            )}
-            ON CONFLICT DO NOTHING
-          `;
+                INSERT INTO content.contributors ${transaction(
+                  parsedCourse.professors.map((professor) => ({
+                    id: professor,
+                  })),
+                )}
+                ON CONFLICT DO NOTHING
+              `;
 
               await transaction`
-            INSERT INTO content.course_professors (course_id, contributor_id)
-            SELECT
-              ${result.id}, 
-              id FROM content.contributors WHERE id = ANY(${parsedCourse.professors})
-            ON CONFLICT DO NOTHING
-          `;
+                INSERT INTO content.course_professors (course_id, contributor_id)
+                SELECT
+                  ${result.id}, 
+                  id FROM content.contributors WHERE id = ANY(${parsedCourse.professors})
+                ON CONFLICT DO NOTHING
+              `;
 
               // If the resource has tags, insert them into the tags table and link them to the resource
               if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
                 await transaction`
-              INSERT INTO content.tags ${transaction(
-                parsedCourse.tags.map((tag) => ({ name: tag })),
-              )}
-              ON CONFLICT (name) DO NOTHING
-            `;
+                  INSERT INTO content.tags ${transaction(
+                    parsedCourse.tags.map((tag) => ({ name: tag })),
+                  )}
+                  ON CONFLICT (name) DO NOTHING
+                `;
 
                 await transaction`
-              INSERT INTO content.course_tags (course_id, tag_id)
-              SELECT
-                ${result.id}, 
-                id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
-              ON CONFLICT DO NOTHING
-            `;
+                  INSERT INTO content.course_tags (course_id, tag_id)
+                  SELECT
+                    ${result.id}, 
+                    id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
+                  ON CONFLICT DO NOTHING
+                `;
               }
             }
           }
@@ -258,12 +253,10 @@ export const createProcessChangedCourse =
           try {
             if (file.kind === 'removed') {
               // If file was deleted, delete the translation from the database
-
               await transaction`
-            DELETE FROM content.courses_localized
-            WHERE course_id = ${course.id} AND language = ${file.language}
-          `;
-
+                DELETE FROM content.courses_localized
+                WHERE course_id = ${course.id} AND language = ${file.language}
+              `;
               continue;
             }
 
@@ -292,86 +285,86 @@ export const createProcessChangedCourse =
             const parts = extractParts(header.content);
 
             await transaction`
-          INSERT INTO content.courses_localized (
-            course_id, language, name, goal, objectives, raw_description
-          )
-          VALUES (
-            ${course.id},
-            ${file.language},
-            ${data.name},
-            ${data.goal?.trim()},
-            ${data.objectives || []},
-            ${header.excerpt}
-          )
-          ON CONFLICT (course_id, language) DO UPDATE SET
-            name = EXCLUDED.name,
-            goal = EXCLUDED.goal,
-            objectives = EXCLUDED.objectives,
-            raw_description = EXCLUDED.raw_description
-          `;
+              INSERT INTO content.courses_localized (
+                course_id, language, name, goal, objectives, raw_description
+              )
+              VALUES (
+                ${course.id},
+                ${file.language},
+                ${data.name},
+                ${data.goal?.trim()},
+                ${data.objectives || []},
+                ${header.excerpt}
+              )
+              ON CONFLICT (course_id, language) DO UPDATE SET
+                name = EXCLUDED.name,
+                goal = EXCLUDED.goal,
+                objectives = EXCLUDED.objectives,
+                raw_description = EXCLUDED.raw_description
+              `;
 
             if (parts.length > 0) {
               await transaction`
-            INSERT INTO content.course_parts ${transaction(
-              parts.map((_, index) => ({
-                course_id: course.id,
-                part: index + 1,
-              })),
-            )}
-            ON CONFLICT DO NOTHING
-          `;
+                INSERT INTO content.course_parts ${transaction(
+                  parts.map((_, index) => ({
+                    course_id: course.id,
+                    part: index + 1,
+                  })),
+                )}
+                ON CONFLICT DO NOTHING
+              `;
 
               await transaction`
-            INSERT INTO content.course_parts_localized ${transaction(
-              parts.map((part, index) => ({
-                course_id: course.id,
-                part: index + 1,
-                language: file.language,
-                title: part.title,
-              })),
-              'course_id',
-              'part',
-              'language',
-              'title',
-            )}
-            ON CONFLICT (course_id, language, part)
-            DO UPDATE SET title = EXCLUDED.title
-          `;
+                INSERT INTO content.course_parts_localized ${transaction(
+                  parts.map((part, index) => ({
+                    course_id: course.id,
+                    part: index + 1,
+                    language: file.language,
+                    title: part.title,
+                  })),
+                  'course_id',
+                  'part',
+                  'language',
+                  'title',
+                )}
+                ON CONFLICT (course_id, language, part)
+                DO UPDATE SET title = EXCLUDED.title
+              `;
 
               // if there is at least one chapter across all parts
               if (parts.some((part) => part.chapters.length > 0)) {
                 await transaction`
-            INSERT INTO content.course_chapters ${transaction(
-              parts.flatMap((part, partIndex) =>
-                part.chapters.map((_, chapterIndex) => ({
-                  course_id: course.id,
-                  part: partIndex + 1,
-                  chapter: chapterIndex + 1,
-                })),
-              ),
-            )}
-            ON CONFLICT DO NOTHING
-          `;
+                INSERT INTO content.course_chapters ${transaction(
+                  parts.flatMap((part, partIndex) =>
+                    part.chapters.map((_, chapterIndex) => ({
+                      course_id: course.id,
+                      part: partIndex + 1,
+                      chapter: chapterIndex + 1,
+                    })),
+                  ),
+                )}
+                ON CONFLICT DO NOTHING
+              `;
 
                 await transaction`
-            INSERT INTO content.course_chapters_localized ${transaction(
-              parts.flatMap((part, partIndex) =>
-                part.chapters.map((chapter, chapterIndex) => ({
-                  course_id: course.id,
-                  part: partIndex + 1,
-                  chapter: chapterIndex + 1,
-                  language: file.language,
-                  title: chapter.title,
-                  sections: chapter.sections,
-                  raw_content: chapter.raw_content.trim(),
-                })),
-              ),
-            )}
-            ON CONFLICT (course_id, part, chapter, language) DO UPDATE SET
-              title = EXCLUDED.title,
-              sections = EXCLUDED.sections,
-              raw_content = EXCLUDED.raw_content
-          `;
+                  INSERT INTO content.course_chapters_localized ${transaction(
+                    parts.flatMap((part, partIndex) =>
+                      part.chapters.map((chapter, chapterIndex) => ({
+                        course_id: course.id,
+                        part: partIndex + 1,
+                        chapter: chapterIndex + 1,
+                        language: file.language,
+                        title: chapter.title,
+                        sections: chapter.sections,
+                        raw_content: chapter.raw_content.trim(),
+                      })),
+                    ),
+                  )}
+                  ON CONFLICT (course_id, part, chapter, language) DO UPDATE SET
+                    title = EXCLUDED.title,
+                    sections = EXCLUDED.sections,
+                    raw_content = EXCLUDED.raw_content
+                `;
               } else {
                 console.warn(
                   `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,
