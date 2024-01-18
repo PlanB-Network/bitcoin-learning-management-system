@@ -33,10 +33,6 @@ x-defaults: &defaults
 x-base: &base
   build: .
 
-  volumes:
-    - .:/app
-    - /app/node_modules
-
 services:
   postgres:
     <<: *defaults
@@ -66,7 +62,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf
+      - nginx:/docker/cdn/nginx.conf:/etc/nginx/nginx.conf
       - cdn:/var/www/cdn
     healthcheck:
       <<: *healthcheck
@@ -81,9 +77,9 @@ services:
       <<: *environment
       HOST: 0.0.0.0
     volumes:
-      - .:/app
+      - app:/app
       - cdn:$CDN_PATH
-      - /app/node_modules
+      - node_modules:/app/node_modules
     depends_on:
       - postgres
     healthcheck:
@@ -113,3 +109,6 @@ volumes:
   postgres:
   cdn:
   redis:
+  nginx:
+  app:
+  node_modules:
