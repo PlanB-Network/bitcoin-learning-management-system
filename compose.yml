@@ -62,7 +62,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - nginx:/docker/cdn/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf
       - cdn:/var/www/cdn
     healthcheck:
       <<: *healthcheck
@@ -77,7 +77,7 @@ services:
       <<: *environment
       HOST: 0.0.0.0
     volumes:
-      - app:/app
+      - .:/app
       - cdn:$CDN_PATH
       - node_modules:/app/node_modules
     depends_on:
@@ -109,6 +109,4 @@ volumes:
   postgres:
   cdn:
   redis:
-  nginx:
-  app:
   node_modules:
