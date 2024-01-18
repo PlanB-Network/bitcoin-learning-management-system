@@ -77,7 +77,7 @@ export const createProcessMainFile =
         .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (path, name, category, subcategory, level, builder, last_updated, last_commit)
+        INSERT INTO content.tutorials (path, name, category, subcategory, level, builder, last_updated, last_commit, last_sync)
         VALUES (
           ${tutorial.path},
           ${tutorial.name},
@@ -86,7 +86,8 @@ export const createProcessMainFile =
           ${parsedTutorial.level},
           ${parsedTutorial.builder},
           ${lastUpdated.time}, 
-          ${lastUpdated.commit}
+          ${lastUpdated.commit},
+          NOW()
         )
         ON CONFLICT (path) DO UPDATE SET
           category = EXCLUDED.category,
@@ -94,7 +95,8 @@ export const createProcessMainFile =
           level = EXCLUDED.level,
           builder = EXCLUDED.builder,
           last_updated = EXCLUDED.last_updated,
-          last_commit = EXCLUDED.last_commit
+          last_commit = EXCLUDED.last_commit,
+          last_sync = NOW()
         RETURNING *
       `.then(firstRow);
 

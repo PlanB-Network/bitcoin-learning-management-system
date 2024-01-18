@@ -1,3 +1,4 @@
+import { sql } from '@sovereign-university/database';
 import type { ChangedFile } from '@sovereign-university/types';
 
 import type { Language } from '../../const';
@@ -96,4 +97,21 @@ export const createProcessChangedResource =
 
     const handler = mapHandlers[resource.category];
     return handler(dependencies, errors)(resource);
+  };
+
+export const createProcessDeleteResources =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.resources WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting resources`);
+    }
+
+    return;
   };

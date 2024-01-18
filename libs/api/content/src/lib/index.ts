@@ -1,22 +1,30 @@
 import type { ChangedFile } from '@sovereign-university/types';
 
 import { supportedContentTypes } from './const';
-import { createProcessChangedCourse, groupByCourse } from './courses/import';
+import {
+  createProcessChangedCourse,
+  createProcessDeleteCourses,
+  groupByCourse,
+} from './courses/import';
 import type { Dependencies } from './dependencies';
 import {
   createProcessChangedProfessor,
+  createProcessDeleteProfessors as createProcessDeleteProfessors,
   groupByProfessor,
 } from './professors/import';
 import {
   createProcessChangedQuizQuestion,
+  createProcessDeleteQuizQuestions,
   groupByQuizQuestion,
 } from './quizzes/questions/import';
 import {
   createProcessChangedResource,
+  createProcessDeleteResources,
   groupByResource,
 } from './resources/import';
 import {
   createProcessChangedTutorial,
+  createProcessDeleteTutorials,
   groupByTutorial,
 } from './tutorials/import';
 
@@ -88,4 +96,35 @@ export const createProcessChangedFiles =
     }
 
     return errors;
+  };
+
+export const createProcessDeleteOldEntities =
+  (dependencies: Dependencies) =>
+  async (sync_date: number, errors: string[]) => {
+    const processDeleteProfessors = createProcessDeleteProfessors(
+      dependencies,
+      errors,
+    );
+    const processDeleteCourses = createProcessDeleteCourses(
+      dependencies,
+      errors,
+    );
+    const processDeleteQuizQuestions = createProcessDeleteQuizQuestions(
+      dependencies,
+      errors,
+    );
+    const processDeleteTutorials = createProcessDeleteTutorials(
+      dependencies,
+      errors,
+    );
+    const processDeleteResources = createProcessDeleteResources(
+      dependencies,
+      errors,
+    );
+
+    await processDeleteProfessors(sync_date);
+    await processDeleteCourses(sync_date);
+    await processDeleteQuizQuestions(sync_date);
+    await processDeleteTutorials(sync_date);
+    await processDeleteResources(sync_date);
   };

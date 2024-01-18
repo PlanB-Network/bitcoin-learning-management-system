@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
-import { createProcessChangedFiles } from '@sovereign-university/api/content';
+import {
+  createGetNow,
+  createProcessChangedFiles,
+  createProcessDeleteOldEntities,
+} from '@sovereign-university/api/content';
 import {
   getAllRepoFiles,
   syncCdnRepository,
@@ -23,9 +27,18 @@ export const syncProcedure = publicProcedure
       dependencies: { redis },
     } = ctx;
 
+    const databaseTime = await createGetNow(ctx.dependencies)();
+
+    if (!databaseTime) {
+      return { success: false };
+    }
+
     console.log('-- Sync procedure: START');
 
     const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
+    const processDeleteOldEntities = createProcessDeleteOldEntities(
+      ctx.dependencies,
+    );
 
     if (!process.env['DATA_REPOSITORY_URL']) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
@@ -33,10 +46,14 @@ export const syncProcedure = publicProcedure
 
     await redis.del('trpc:*');
 
+    console.log('-- Sync procedure: Process new repo files');
+
     const processErrors = await getAllRepoFiles(
       process.env['DATA_REPOSITORY_URL'],
       process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
+
+    console.log('-- Sync procedure: sync cdn repository');
 
     syncCdnRepository(
       '/tmp/sovereign-university-data',
@@ -44,6 +61,12 @@ export const syncProcedure = publicProcedure
     ).catch((error) => {
       console.error(error);
     });
+
+    console.log('-- Sync procedure: Remove old entities');
+
+    if (processErrors.length === 0) {
+      await processDeleteOldEntities(databaseTime.now, processErrors);
+    }
 
     console.log('-- Sync procedure: END');
 

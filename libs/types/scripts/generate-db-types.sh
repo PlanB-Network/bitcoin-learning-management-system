@@ -11,14 +11,14 @@ psql -c 'DROP DATABASE IF EXISTS types'
 psql -c 'CREATE DATABASE types'
 
 # run current migrations
-cd ../.. && nx run database:migrations:run --database=types
+cd ../.. && pnpm nx run database:migrations:run --database=types
 cd libs/types
 
 # remove current types
 rm -rf ./src/sql
 
 # generate types from the types databases
-pnpm kanel --database "postgresql://postgres:postgres@localhost:5432/types" --config .kanelrc.cjs
+npx kanel --database "postgresql://postgres:postgres@localhost:5432/types" --config .kanelrc.cjs
 
 # Clean sql folder
 find ./src -depth -name "Migrations.*" -exec rm -rf '{}' +
@@ -26,4 +26,3 @@ find ./src -depth -name "_*" -exec rm -rf '{}' +
 
 # clean up types databases
 psql -c 'DROP DATABASE types'
-

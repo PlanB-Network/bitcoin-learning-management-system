@@ -1,4 +1,4 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import { ChangedFile, Professor } from '@sovereign-university/types';
 
 import { Language } from '../../const';
@@ -111,4 +111,21 @@ export const createProcessChangedProfessor =
       .catch(() => {
         return;
       });
+  };
+
+export const createProcessDeleteProfessors =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.professors WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting professors`);
+    }
+
+    return;
   };

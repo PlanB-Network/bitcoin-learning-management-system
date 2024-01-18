@@ -1,6 +1,6 @@
 import matter from 'gray-matter';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import type { ChangedFile, Tutorial } from '@sovereign-university/types';
 
 import type { Language } from '../../const';
@@ -153,4 +153,21 @@ export const createProcessChangedTutorial =
       .catch(() => {
         return;
       });
+  };
+
+export const createProcessDeleteTutorials =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting tutorials`);
+    }
+
+    return;
   };

@@ -70,12 +70,12 @@ export const createProcessChangedBook = (
             parsed = yamlToObject<BookMain>(main.data);
 
             await transaction`
-          INSERT INTO content.books (resource_id, author, level, website_url)
-          VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url})
-          ON CONFLICT (resource_id) DO UPDATE SET
-            author = EXCLUDED.author,
-            level = EXCLUDED.level,
-            website_url = EXCLUDED.website_url
+              INSERT INTO content.books (resource_id, author, level, website_url)
+              VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url})
+              ON CONFLICT (resource_id) DO UPDATE SET
+                author = EXCLUDED.author,
+                level = EXCLUDED.level,
+                website_url = EXCLUDED.website_url
         `;
           }
         } catch (error) {
@@ -91,9 +91,9 @@ export const createProcessChangedBook = (
               // If file was deleted, delete the translation from the database
 
               await transaction`
-            DELETE FROM content.books_localized
-            WHERE book_id = ${id} AND language = ${file.language}
-          `;
+                DELETE FROM content.books_localized
+                WHERE book_id = ${id} AND language = ${file.language}
+              `;
 
               continue;
             }
@@ -101,38 +101,38 @@ export const createProcessChangedBook = (
             const parsed = yamlToObject<BookLocal>(file.data);
 
             await transaction`
-          INSERT INTO content.books_localized (
-            book_id, language, original, title, translator, description, publisher, 
-            publication_year, cover, summary_text, summary_contributor_id, shop_url, 
-            download_url
-          )
-          VALUES (
-            ${id},
-            ${file.language},
-            ${parsed.original ?? false},
-            ${parsed.title},
-            ${parsed.translator},
-            ${parsed.description.trim()},
-            ${parsed.publisher},
-            ${parsed.publication_year},
-            ${parsed.cover},
-            ${parsed.summary?.text.trim()},
-            ${parsed.summary?.by},
-            ${parsed.shop_url},
-            ${parsed.download_url}
-          )
-          ON CONFLICT (book_id, language) DO UPDATE SET
-            title = EXCLUDED.title,
-            translator = EXCLUDED.translator,
-            description = EXCLUDED.description,
-            publisher = EXCLUDED.publisher,
-            publication_year = EXCLUDED.publication_year,
-            cover = EXCLUDED.cover,
-            summary_text = EXCLUDED.summary_text,
-            summary_contributor_id = EXCLUDED.summary_contributor_id,
-            shop_url = EXCLUDED.shop_url,
-            download_url = EXCLUDED.download_url
-        `.then(firstRow);
+              INSERT INTO content.books_localized (
+                book_id, language, original, title, translator, description, publisher, 
+                publication_year, cover, summary_text, summary_contributor_id, shop_url, 
+                download_url
+              )
+              VALUES (
+                ${id},
+                ${file.language},
+                ${parsed.original ?? false},
+                ${parsed.title},
+                ${parsed.translator},
+                ${parsed.description.trim()},
+                ${parsed.publisher},
+                ${parsed.publication_year},
+                ${parsed.cover},
+                ${parsed.summary?.text.trim()},
+                ${parsed.summary?.by},
+                ${parsed.shop_url},
+                ${parsed.download_url}
+              )
+              ON CONFLICT (book_id, language) DO UPDATE SET
+                title = EXCLUDED.title,
+                translator = EXCLUDED.translator,
+                description = EXCLUDED.description,
+                publisher = EXCLUDED.publisher,
+                publication_year = EXCLUDED.publication_year,
+                cover = EXCLUDED.cover,
+                summary_text = EXCLUDED.summary_text,
+                summary_contributor_id = EXCLUDED.summary_contributor_id,
+                shop_url = EXCLUDED.shop_url,
+                download_url = EXCLUDED.download_url
+            `.then(firstRow);
           } catch (error) {
             errors.push(`Error processing one file ${file?.path}: ${error}`);
           }

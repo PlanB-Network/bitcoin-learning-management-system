@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import type {
   ChangedFile,
   Course,
@@ -188,19 +188,21 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, last_updated, last_commit)
+                INSERT INTO content.courses (id, level, hours, last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
                   ${lastUpdated.time}, 
-                  ${lastUpdated.commit}
+                  ${lastUpdated.commit},
+                  NOW()
                 )
                 ON CONFLICT (id) DO UPDATE SET
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
                   last_updated = EXCLUDED.last_updated,
-                  last_commit = EXCLUDED.last_commit
+                  last_commit = EXCLUDED.last_commit,
+                  last_sync = NOW()
                 RETURNING *
               `.then(firstRow);
 
@@ -379,4 +381,21 @@ export const createProcessChangedCourse =
       .catch(() => {
         return;
       });
+  };
+
+export const createProcessDeleteCourses =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.courses WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting courses`);
+    }
+
+    return;
   };

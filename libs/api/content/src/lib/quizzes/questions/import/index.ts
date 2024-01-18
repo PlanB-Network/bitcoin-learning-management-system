@@ -1,4 +1,4 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import { ChangedFile, QuizQuestion } from '@sovereign-university/types';
 
 import { Language } from '../../../const';
@@ -131,4 +131,21 @@ export const createProcessChangedQuizQuestion =
       .catch(() => {
         return;
       });
+  };
+
+export const createProcessDeleteQuizQuestions =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.quiz_questions WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting quiz_questions`);
+    }
+
+    return;
   };

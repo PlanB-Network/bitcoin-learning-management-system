@@ -84,7 +84,7 @@ export const createProcessMainFile =
         INSERT INTO content.professors (
           path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url, 
           nostr, lightning_address, lnurl_pay, paynym, silent_payment, tips_url,
-          last_updated, last_commit
+          last_updated, last_commit, last_sync
         )
         VALUES (
           ${professor.path},
@@ -102,7 +102,8 @@ export const createProcessMainFile =
           ${parsedProfessor.tips?.silent_payment},
           ${parsedProfessor.tips?.url},
           ${lastUpdated.time},
-          ${lastUpdated.commit}
+          ${lastUpdated.commit},
+          NOW()
         )
         ON CONFLICT (path) DO UPDATE SET
           name = EXCLUDED.name,
@@ -119,7 +120,8 @@ export const createProcessMainFile =
           silent_payment = EXCLUDED.silent_payment,
           tips_url = EXCLUDED.tips_url,
           last_updated = EXCLUDED.last_updated,
-          last_commit = EXCLUDED.last_commit
+          last_commit = EXCLUDED.last_commit,
+          last_sync = NOW()
         RETURNING *
       `.then(firstRow);
 
