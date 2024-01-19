@@ -88,13 +88,6 @@ export const createProcessChangedFiles =
       await processChangedProfessor(professor);
     }
 
-    if (errors.length > 0) {
-      console.error(
-        `=== ${errors.length} ERRORS occured during the sync process : `,
-      );
-      console.error(errors.map((e) => e + '\n'));
-    }
-
     return errors;
   };
 

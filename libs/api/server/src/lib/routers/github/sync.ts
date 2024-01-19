@@ -19,7 +19,8 @@ export const syncProcedure = publicProcedure
   .output(
     z.object({
       success: z.boolean().optional(),
-      errors: z.string().array().optional(),
+      syncErrors: z.string().array().optional(),
+      cdnError: z.any().optional(),
     }),
   )
   .mutation(async ({ ctx }) => {
@@ -48,31 +49,40 @@ export const syncProcedure = publicProcedure
 
     console.log('-- Sync procedure: Process new repo files');
 
-    const processErrors = await getAllRepoFiles(
+    const syncErrors = await getAllRepoFiles(
       process.env['DATA_REPOSITORY_URL'],
       process.env['DATA_REPOSITORY_BRANCH'],
     ).then(processChangedFiles);
 
+    console.log('-- Sync procedure: Remove old entities');
+
+    if (syncErrors.length === 0) {
+      await processDeleteOldEntities(databaseTime.now, syncErrors);
+    }
+
     console.log('-- Sync procedure: sync cdn repository');
 
+    let cdnError;
     syncCdnRepository(
       '/tmp/sovereign-university-data',
       process.env['CDN_PATH'] || '/tmp/cdn',
     ).catch((error) => {
       console.error(error);
+      cdnError = error;
     });
-
-    console.log('-- Sync procedure: Remove old entities');
-
-    if (processErrors.length === 0) {
-      await processDeleteOldEntities(databaseTime.now, processErrors);
-    }
 
     console.log('-- Sync procedure: END');
 
-    if (processErrors.length > 0) {
-      return { errors: processErrors.map((e) => e) };
-    } else {
-      return { success: true };
+    if (syncErrors.length > 0) {
+      console.error(
+        `=== ${syncErrors.length} ERRORS occured during the sync process : `,
+      );
+      console.error(syncErrors.map((e) => e + '\n'));
     }
+
+    return {
+      success: syncErrors.length === 0,
+      ...(syncErrors.length > 0 && { syncErrors: syncErrors.map((e) => e) }),
+      ...(cdnError != null && { cdnError: cdnError }),
+    };
   });
