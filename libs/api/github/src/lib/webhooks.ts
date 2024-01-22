@@ -6,6 +6,7 @@ import { compareCommits } from './utils';
 /**
  * GitHub sends its JSON with no indentation and no line break at the end
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toNormalizedJsonString = (payload: any) => {
   const payloadString = JSON.stringify(payload);
   return payloadString.replace(/[^\\]\\u[\da-f]{4}/g, (s) => {
