@@ -24,45 +24,6 @@ export const CoursesExplorer = () => {
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [activeLevels, setActiveLevels] = useState<string[]>([]);
 
-  // Hardcoded unreleased courses
-  const unreleasedCourses: Course[] = [
-    {
-      id: 'fin101',
-      name: t('courses.unreleased.financeIntroduction'),
-      level: 'beginner',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'btc301',
-      name: t('courses.unreleased.colcardAndSparrow'),
-      level: 'advanced',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'ln301',
-      name: t('courses.unreleased.theoreticalLightning'),
-      level: 'advanced',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'fin205',
-      name: t('courses.unreleased.financialCrisis'),
-      level: 'intermediate',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'econ205',
-      name: t('courses.unreleased.hyperinflation'),
-      level: 'intermediate',
-      language: 'fr',
-      unreleased: true,
-    },
-  ];
-
   const categories = [
     {
       prefix: 'btc',
@@ -117,8 +78,7 @@ export const CoursesExplorer = () => {
     },
   ];
 
-  const coursesWithUnreleased = convertCoursesToTree(courses || []);
-  // [...(courses || []) /*, ...unreleasedCourses*/];
+  const treeCourses = convertCoursesToTree(courses || []);
 
   function convertCoursesToTree(
     courses: NonNullable<TRPCRouterOutput['content']['getCourses']>[number][],
@@ -237,7 +197,7 @@ export const CoursesExplorer = () => {
         </PageHeader>
 
         <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
-          <CourseTree courses={coursesWithUnreleased} />
+          <CourseTree courses={treeCourses} />
         </div>
         <div className="flex max-w-6xl flex-col items-center justify-center  text-white">
           <div className="mb-4 hidden w-full flex-col px-8 sm:flex">
