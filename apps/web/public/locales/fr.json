@@ -101,7 +101,7 @@
       "level": "Niveau : $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapitres",
-        "hours": "{{hours}} heures"
+        "hours": "{{hours}} heures"
       },
       "numberOfChapters": "Nombre de chapitres : {{number}}",
       "objectives": "Objectifs",

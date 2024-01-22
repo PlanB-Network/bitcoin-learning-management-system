@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
@@ -22,7 +21,6 @@ export const MobileMenu = ({
   onClickLogin,
   onClickRegister,
 }: MobileMenuProps) => {
-  const { t } = useTranslation();
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
 

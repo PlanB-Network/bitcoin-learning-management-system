@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 
 import PlanBLogo from '../../../assets/planb_logo_vertical_white.svg?react';
 import { MetaElements } from '../MetaElements';

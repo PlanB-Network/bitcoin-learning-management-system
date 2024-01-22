@@ -1,9 +1,11 @@
 {
   "plugins": ["tailwindcss"],
   "extends": [
+    "eslint:recommended",
     "plugin:@nx/react",
     "../../.eslintrc.json",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "prettier"
   ],
   "ignorePatterns": ["!**/*"],
   "overrides": [

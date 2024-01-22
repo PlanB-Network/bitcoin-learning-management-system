@@ -1,13 +1,6 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
-import { BsFillHeartFill } from 'react-icons/bs';
 
 import { MainLayout } from '../../components/MainLayout';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseLayout = ({
   children,
@@ -15,8 +8,6 @@ export const CourseLayout = ({
   children: JSX.Element | JSX.Element[];
 }) => {
   const { t } = useTranslation();
-
-  const isScreenMd = useGreater('sm');
 
   return (
     <MainLayout>

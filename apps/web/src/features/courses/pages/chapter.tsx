@@ -417,8 +417,9 @@ function getRandomQuestions(
   return shuffledArray.slice(0, count);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapQuizzToQuestions(quizzArray: any[]): Question[] {
-  const questions: any[] = quizzArray.map((quizz) => {
+  const questions = quizzArray.map((quizz) => {
     const answers = [quizz.answer, ...quizz.wrong_answers];
     const shuffledAnswers = shuffleArray(answers);
     const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
@@ -434,6 +435,7 @@ function mapQuizzToQuestions(quizzArray: any[]): Question[] {
   return questions;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function shuffleArray(array: any[]): any[] {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
