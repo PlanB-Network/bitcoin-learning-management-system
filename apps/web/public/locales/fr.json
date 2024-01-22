@@ -102,7 +102,7 @@
       "level": "Niveau : $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapitres",
-        "hours": "{{hours}} heures"
+        "hours": "{{hours}} heures"
       },
       "numberOfChapters": "Nombre de chapitres : {{number}}",
       "objectives": "Objectifs",
@@ -166,7 +166,7 @@
       "link": "Participez au réseau"
     },
     "section1": {
-      "allLevels": "De débutant à expert, apprenez tous sur Bitcoin ddepuis l'académie",
+      "allLevels": "De débutant à expert, apprenez tous sur Bitcoin depuis l'académie",
       "content1": "Le Bitcoin n'est pas seulement une technologie et une forme d'argent, mais aussi une façon révolutionnaire d'aborder la vie. Pour faire écho à cela, nos cours s'étendent sur une large gamme de domaines, permettant à chacun d'exceller dans ses centres d'intérêt et d'en approfondir sa compréhension.",
       "content2": " De votre premier cours de découverte du Bitcoin aux formations avancées sur les spécificités du protocole, nos cours vous aideront à naviguer dans le terrier du lapin en toute sécurité.",
       "content3": "N'hésitez plus. Le savoir vous attend.",
@@ -391,7 +391,7 @@
     "mining": {
       "description": "L'industrie minière est un sujet complexe composé de nombreux terriers du lapin. Ici, nous essaierons de vous accompagner dans votre voyage concernant l'utilisation de votre matériel et logiciels. De la modification d'un S9 en chauffage domestique à la tentative de gagner à la loterie avec un NerdMiner.",
       "shortDescription": "Solutions de minage de bitcoins",
-      "title": "Extraction"
+      "title": "Minage"
     },
     "node": {
       "bitcoin": {
@@ -490,7 +490,7 @@
     "manifesto": "Manifeste",
     "merchandising": "Marchandising",
     "merchants": "Marchands",
-    "mining": "Extraction",
+    "mining": "Minage",
     "more": "En savoir plus",
     "movieDocumentary": "Film documentaire",
     "newsletter": "Newsletter",
