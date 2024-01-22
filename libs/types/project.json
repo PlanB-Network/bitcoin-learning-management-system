@@ -6,10 +6,7 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/types/**/*.ts"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "generate": {
       "executor": "nx:run-commands",
