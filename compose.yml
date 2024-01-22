@@ -33,6 +33,10 @@ x-defaults: &defaults
 x-base: &base
   build: .
 
+  volumes:
+    - .:/app
+    - /app/node_modules
+
 services:
   postgres:
     <<: *defaults
