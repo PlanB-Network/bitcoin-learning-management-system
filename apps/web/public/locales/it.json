@@ -423,15 +423,15 @@
       "title": "Privacy"
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
+      "description": "Un portafoglio Bitcoin è come il tuo portachiavi. Ti permette di spendere e ricevere bitcoin. Ci sono un sacco di diversi tipi di portafogli, tutti con diversi casi di utilizzo, funzioni, costi ed esperienze utente. Ogni bitcoiner userà un dispositivo diverso in base alle proprie necessità, livello di esigenza, ed esperienza.",
       "desktop": {
-        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+        "description": "I portafogli desktop sono di solito per utenti più avanzati in quanto combinano l'utilizzo di dispositivi hardware con il software del portafoglio desktop. È come avere una nuova interfaccia più personalizzata e ricca in termini di funzionalità per il tuo dispositivo hardware da utilizzare. Tali portafogli offrono opzioni di firma multipla, funzionalità di privacy, meccanismi di integrazione di eredità e altro ancora."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Gli hardware wallet vengono solitamente utilizzati per conservare i tuoi risparmi in bitcoin a lungo termine. Sono dispositivi fisici che non sono connessi a internet (spesso chiamati \"cold wallet\") e sono solitamente molto sicuri. Anche se questi dispositivi sono spesso open source per quanto riguarda il loro software, l'hardware ha un costo che varia da 50 a 300 euro. Considera questi dispositivi come un conto bancario per importi di risparmio più elevati che useresti di tanto in tanto."
       },
       "mobile": {
-        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+        "description": "I portafogli mobili vengono solitamente utilizzati per le spese quotidiane. Integrano Lightning Network per transazioni istantanee ed a basso costo. Sono di solito connessi a internet (spesso chiamati \"Hot walet\") e quindi sono meno sicuri rispetto a i portafogli hardware. Dovrebbero essere utilizzati solo per conservare piccole quantità di bitcoin, considerali come il tuo portafoglio quotidiano che tieni in tasca."
       },
       "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Portafoglio"
@@ -441,7 +441,7 @@
     "github": "GitHub",
     "p1": "Un coniglio ha abbattuto un buco. A causa di questa avventura inaspettata, questa pagina è sotto un po 'di costruzione al momento. Ci scusiamo per qualsiasi inconveniente. Il nostro team è in pieno equipaggiamento per completare questa pagina. Se siete interessati a prestare una mano, non esitate a controllare il nostro",
     "p2": "e considerare di unirsi alla nostra comunità!",
-    "pageTitle": "Oops."
+    "pageTitle": "Ooops."
   },
   "words": {
     "about": "Informazioni",
@@ -454,34 +454,34 @@
     "audioBook": "Audiolibro",
     "back": "Indietro",
     "beginner": "Principiante",
-    "bitcoinWhitepaper": "Bitcoin Whitepaper",
+    "bitcoinWhitepaper": "Whitepaper Bitcoin",
     "book": "Libro",
     "books": "Libri",
     "builders": "Costruttori",
-    "certificate": "Certificate",
+    "certificate": "Certificato",
     "conference": "Conferenza",
     "conferences": "Conferenze",
     "content": "Contenuto",
-    "continue": "Continue",
+    "continue": "Continua",
     "course": "Corso",
     "courses": "Corsi",
-    "dashboard": "Dashboard",
-    "details": "Details",
-    "didYouKnow": "Did you know?",
+    "dashboard": "Cruscotto",
+    "details": "Dettagli",
+    "didYouKnow": "Lo sapevi?",
     "documentaries": "Documentari",
     "donations": "Donazioni",
-    "economy": "Economy",
+    "economy": "Economia",
     "email": "Email",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
     "helpUs": "Aiutaci",
-    "home": "Home",
+    "home": "Pagina Iniziale",
     "intermediate": "Intermedio",
     "interview": "Intervista",
     "level": {
       "advanced": "Avanzate",
       "beginner": "Principiante",
-      "developer": "developer",
+      "developer": "sviluppatore",
       "intermediate": "Intermedio"
     },
     "library": "Libreria",
@@ -494,18 +494,18 @@
     "more": "Altro",
     "movieDocumentary": "Documentario Del Film",
     "newsletter": "Newsletter",
-    "newsletters": "Newsletters",
+    "newsletters": "Le Newsletter",
     "node": "Nodo",
-    "nodeNetwork": "Node Network",
+    "nodeNetwork": "La rete del nodo",
     "or": "o",
     "ourStory": "La nostra storia",
     "podcast": "Podcast",
     "podcasts": "Podcast",
-    "professors": "Professors",
+    "professors": "Professori",
     "register": "Registrati",
     "relatedResources": "Risorse correlate",
     "resources": "Risorse",
-    "resume": "Resume",
+    "resume": "Riprendi",
     "review": "Riesame",
     "rogzy": "Rogzy",
     "signIn": "Sign In",
