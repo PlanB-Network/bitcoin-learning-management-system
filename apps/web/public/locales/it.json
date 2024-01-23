@@ -399,25 +399,25 @@
       },
       "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
       "lightning-network": {
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "description": "Un nodo Lightning ti permette di prendere parte al protocollo di secondo livello di Bitcoin chiamato Lightning. Sarai in grado di aprire canali, gestire la loro liquidità, partecipare al grafico, gestendo in maniera non custodial il portafoglio Lightning.",
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB è un sistema di smart contract scalabile e riservato per Bitcoin e Lightning. È un layer programmabile per Bitcoin, con concetti di proprietà privata e reciproca, astrazione e separazione delle preoccupazioni e rappresenta \"post-blockchain\"."
       },
       "shortDescription": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
       "title": "Nodo"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
+    "pageDescription": "Bitcoin è un settore vasto, che si espande ogni giorno. Per aiutarvi ad esplorarlo, abbiamo raccolto un gran numero di tutorial che descrivono varie soluzioni.",
+    "pageSubtitle": "Benvenuto nella tana infinita del bianconiglio [di Bitcoin]!",
     "pageTitle": "Tutorial",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "Bitcoin non è privato per impostazione predefinita, è stato progettato intenzionalmente per essere pseudonimo, e ogni transazione è pubblica e conservata per sempre. Per recuperare una certa riservatezza, dobbiamo seguire i migliori approcci, utilizzando gli strumenti specifici integrati nel nostro software. Dall' evitare il riutilizzo degli indirizzi al CoinJoin, passando per i mix fino al collegamento al tuo nodo, ti aiuteremo nel tuo percorso verso la privacy."
       },
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
+      "description": "La privacy è un diritto fondamentale. Aspiriamo ad un mondo in cui la privacy è lo standard, ma non è la realtà in cui viviamo. Cercheremo di spiegarti le migliori pratiche, di aiutarti con i tutorial e di indirizzarti verso un percorso più sovrano per quanto riguarda i tuoi dati.",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "Nell'era della sorveglianza di massa, riacquistare un certo livello di privacy nella vita quotidiana è essenziale. Dato che ogni utente avrà un certo grado di paranoia e conoscenza tecnologica, è perfettamente normale utilizzare determinati strumenti ed adattarli alle proprie esigenze. Qui, esploreremo diverse soluzioni di protezione come VPN, Tor, Tails OS, PGP, messaggi criptati e molto altro."
       },
       "shortDescription": "Strumenti per il backup e il mantenimento della privacy",
       "title": "Privacy"
