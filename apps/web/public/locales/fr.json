@@ -88,7 +88,7 @@
       "secu": "Sécurité et confidentialité"
     },
     "chapter": {
-      "count": "Chapter {{count}}",
+      "count": "Chapitre n°{{count}}",
       "finishCourse": "Terminer le cours",
       "next": "Terminé, passons au chapitre suivant !",
       "thanksTip": "Vous voulez dire merci ? Soutenez."
@@ -481,7 +481,7 @@
     "level": {
       "advanced": "Avancé",
       "beginner": "Débutant",
-      "developer": "developer",
+      "developer": "développeur",
       "intermediate": "Intermédiaire"
     },
     "library": "Bibliothèque",
