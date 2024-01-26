@@ -35,7 +35,7 @@ x-base: &base
 
   volumes:
     - .:/app
-    - /app/node_modules
+    - api_node_modules:/app/node_modules
 
 services:
   postgres:
@@ -83,7 +83,7 @@ services:
     volumes:
       - .:/app
       - cdn:$CDN_PATH
-      - /app/node_modules
+      - api_node_modules:/app/node_modules
     depends_on:
       - postgres
     healthcheck:
@@ -113,3 +113,4 @@ volumes:
   postgres:
   cdn:
   redis:
+  api_node_modules:
