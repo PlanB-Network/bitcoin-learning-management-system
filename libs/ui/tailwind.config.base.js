@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const baseConfig = {
   content: ['./src/**/*.{ts,tsx}'],
-
   theme: {
     container: {
       center: true,
@@ -14,26 +13,26 @@ const baseConfig = {
       transparent: 'transparent',
       white: '#FFFFFF',
       blue: {
-        100: '#EBF0F9',
-        200: '#C4D1EE',
-        300: '#9CB2E2',
-        400: '#7593D7',
-        500: '#4D74CB',
-        600: '#345AB2',
-        700: '#28468A',
-        800: '#20376C',
-        900: '#17284F',
-        1000: '#1B263E',
+        100: 'hsl(from var(--base-blue) h s 90%)',
+        200: 'hsl(from var(--base-blue) h s 80%)',
+        300: 'hsl(from var(--base-blue) h s 70%)',
+        400: 'hsl(from var(--base-blue) h s 60%)',
+        500: 'hsl(from var(--base-blue) h s 50%)',
+        600: 'hsl(from var(--base-blue) h s 40%)',
+        700: 'hsl(from var(--base-blue) h s 30%)',
+        800: 'hsl(from var(--base-blue) h s 20%)',
+        900: 'hsl(from var(--base-blue) h s 10%)',
+        1000: 'hsl(from var(--base-blue) h s l)',
       },
       orange: {
-        100: '#FFEAD9',
-        200: '#FDD5B2',
-        300: '#FFCF99',
-        400: '#FFAC4C',
-        500: '#F39324',
-        600: '#F2870D',
-        700: '#CB720B',
-        800: '#B46C18',
+        100: '#FFBD99',
+        200: '#FF9D66',
+        300: '#FF7C32',
+        400: '#FF6C19',
+        500: '#FF5C00',
+        600: '#E55200',
+        700: '#CC4900',
+        800: '#B24000',
       },
       gray: {
         100: '#F2F2F2',
