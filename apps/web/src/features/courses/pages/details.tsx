@@ -20,7 +20,6 @@ import rocketSVG from '../../../assets/courses/rocketcourse.svg';
 import staricon from '../../../assets/courses/star.png';
 import wizard from '../../../assets/courses/wizard.png';
 import yellowBook from '../../../assets/courses/yellowbook.png';
-import RabbitHikingModal from '../../../assets/rabbit-modal-auth.svg?react';
 import rabitPen from '../../../assets/rabbit_holding_pen.svg';
 import { Button } from '../../../atoms/Button';
 import { AuthorCard } from '../../../components/author-card';
@@ -198,7 +197,6 @@ export const CourseDetails: React.FC = () => {
                     </span>
                   </Button>
                 </Link>
-                <RabbitHikingModal className="absolute bottom-1 left-1 z-[+1] h-14 -translate-x-1/2" />
               </div>
             </div>
           </div>
