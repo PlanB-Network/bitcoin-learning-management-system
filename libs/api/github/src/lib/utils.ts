@@ -264,7 +264,6 @@ export const syncCdnRepository = async (
   cdnDirectory: string,
 ) => {
   const git = simpleGit();
-  console.log('-- Sync procedure: Syncing CDN');
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);
@@ -273,6 +272,7 @@ export const syncCdnRepository = async (
     );
 
     for (const asset of assets) {
+      console.log('sync cdn asset:', asset);
       const parentDirectoryLog = await git
         .cwd(repositoryDirectory)
         .log({ file: asset.replace(/\/assets\/.*/, '') });
