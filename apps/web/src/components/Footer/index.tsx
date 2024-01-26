@@ -94,19 +94,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
-          <div className="relative z-30 -mb-20">
-            <img
-              src={City}
-              className="m-auto mb-6 h-fit w-1/2 max-w-5xl self-end"
-              alt=""
-            />
-            <Cloud
-              className={cn(
-                '-z-10 absolute m-auto left-20 top-12 w-32',
-                variant === 'light' ? 'text-gray-200' : 'text-gray-300',
-              )}
-            />
-          </div>
+          <div className="relative z-30 -mb-20 h-52"></div>
           <img src={Hill} className="w-full text-clip" alt="" />
           <div className="relative z-10 flex h-80 w-full flex-col justify-center overflow-x-clip bg-green-900">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
@@ -189,11 +177,6 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               alt=""
             />
             <img
-              src={Tree}
-              className="absolute -top-16 right-0 z-10 m-auto h-80 w-[25%]"
-              alt=""
-            />
-            <img
               src={BigTree}
               className="absolute -top-48 right-0 m-auto h-80 w-[25%]"
               alt=""
@@ -204,23 +187,12 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       {!isScreenMd && (
         <div
           className={cn(
-            'flex w-full flex-col pt-10',
+            'flex w-full flex-col',
             color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
           )}
         >
-          <Cloud
-            className={cn(
-              'absolute left-16 top-10 w-20',
-              variant === 'light' ? 'text-gray-200' : 'text-gray-300',
-            )}
-          />
-          <img
-            src={City}
-            className="relative z-10 -mb-5 h-fit w-full "
-            alt=""
-          />
-          <div className="z-0 flex h-96 w-full flex-col items-center justify-start bg-green-900 px-10 pt-20 text-white">
-            <div className="space-y-2 text-left text-xl">
+          <div className="z-0 flex h-[28rem] w-full flex-col items-center justify-start bg-green-900 px-10 pt-20 text-white">
+            <div className="mt-6 space-y-2 text-left text-xl">
               <Media className="mb-7 px-1" />
               <h4>
                 <Link to={'/'}>{t('words.home')}</Link>
