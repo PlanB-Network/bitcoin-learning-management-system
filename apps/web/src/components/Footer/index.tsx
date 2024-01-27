@@ -16,8 +16,6 @@ import {
 import { cn } from '@sovereign-university/ui';
 
 import BigTree from '../../assets/footer/big_tree.svg';
-import City from '../../assets/footer/city.svg';
-import Cloud from '../../assets/footer/cloud.svg?react';
 import Hill from '../../assets/footer/hill.svg';
 import Rabbit from '../../assets/footer/rabbit.svg';
 import Tree from '../../assets/footer/tree.svg';
