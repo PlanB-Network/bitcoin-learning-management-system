@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import OrangePill from '../../../assets/icons/orange_pill.svg';
+import OrangePill from '../../../assets/icons/orange_pill_color_gradient.svg';
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
 import { addSpaceToCourseId } from '../../../utils/courses';

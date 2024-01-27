@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
-import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
+import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { Button } from '../../../atoms/Button';
 import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
@@ -272,7 +272,13 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
                         lastPart && lastChapter ? 'rounded-r-full' : '',
                       )}
                     />
-                    <ProgressRabbit className="absolute inset-0 bottom-4 m-auto h-12 w-full" />
+                    <img
+                      src={OrangePill}
+                      className={compose(
+                        'absolute inset-0 bottom-0 left-0 m-auto h-8 w-full',
+                      )}
+                      alt=""
+                    />
                   </div>
                 );
               })}

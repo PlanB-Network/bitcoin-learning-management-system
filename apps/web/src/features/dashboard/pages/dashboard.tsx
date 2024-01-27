@@ -4,13 +4,13 @@ import {
 } from '@react-hooks-library/core';
 import { useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
+import { BsPersonFill } from 'react-icons/bs';
 import {
   IoGridOutline,
   IoLogOutOutline,
   IoSettingsOutline,
 } from 'react-icons/io5';
 
-import RabbitFace from '../../../assets/placeholder-assets/rabbit-face.svg';
 import { MainLayout } from '../../../components/MainLayout';
 import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
@@ -104,12 +104,7 @@ export const Dashboard = () => {
               <div className="flex w-full items-center space-x-2 rounded-3xl bg-orange-400">
                 <div className="p-1">
                   <div className="h-10 w-10 overflow-hidden rounded-full bg-white">
-                    <img
-                      src={RabbitFace}
-                      className="scale-125"
-                      // TODO TRIGGER  viewBox="-53 150 300 300"
-                      alt=""
-                    />
+                    <BsPersonFill className="h-10 w-10" />
                   </div>
                 </div>
                 <div className="text-lg font-medium italic text-blue-900">
