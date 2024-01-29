@@ -43,7 +43,7 @@ export const TutorialCategory = () => {
 
   return (
     <TutorialLayout currentCategory={category}>
-      <div className="mb-6 mt-[-1rem] w-full max-w-5xl lg:hidden">
+      <div className="mb-6 mt-[-1rem] w-full max-w-5xl">
         <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
           <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
           <span className="capitalize">{tutorialCategory.name}</span>
