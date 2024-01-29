@@ -60,6 +60,8 @@ export const syncProcedure = publicProcedure
       await processDeleteOldEntities(databaseTime.now, syncErrors);
     }
 
+    await redis.del('trpc:*');
+
     console.log('-- Sync procedure: sync cdn repository');
 
     let cdnError;
