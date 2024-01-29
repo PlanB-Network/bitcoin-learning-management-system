@@ -50,7 +50,7 @@ export const TutorialCategory = () => {
         </span>
       </div>
 
-      <div className="col-span-3 space-y-4 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
+      <div className="col-span-3 md:space-y-4 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
         <div className="flex w-full flex-row items-center justify-start">
           <CategoryIcon
             src={tutorialCategory.image}
@@ -60,7 +60,7 @@ export const TutorialCategory = () => {
             {tutorialCategory.name}
           </h1>
         </div>
-        <p className="flex w-full text-justify leading-5 text-blue-800 md:text-left">
+        <p className="hidden w-full text-justify leading-5 text-blue-800 md:flex md:text-left">
           {t(`tutorials.${category}.description`)}
         </p>
         {tutorials && (
@@ -89,11 +89,11 @@ export const TutorialCategory = () => {
               <Tab.Panels className="rounded-b-xl bg-gray-200 pb-8">
                 {subCategories.map((subCategory) => (
                   <Tab.Panel key={subCategory}>
-                    <div className="flex flex-col space-y-8 px-10 pt-3">
+                    <div className="flex flex-col space-y-8 px-10 md:pt-3">
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
                       ) && (
-                        <div className="pt-3 text-sm font-light italic text-blue-900">
+                        <div className="hidden pt-3 text-sm font-light italic text-blue-900 md:flex">
                           {t(
                             `tutorials.${category}.${subCategory}.description`,
                           )}
