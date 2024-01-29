@@ -96,12 +96,12 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           <img src={Hill} className="w-full text-clip" alt="" />
           <div className="relative z-10 flex h-80 w-full flex-col justify-center overflow-x-clip bg-green-900">
             <div className="mx-auto mb-10 mt-5 flex w-fit flex-col justify-center space-y-7">
-              <div className="flex flex-row space-x-10">
+              <div className="grid grid-cols-3 gap-12">
                 <div className="flex flex-col">
-                  <h4 className="mb-2 text-base font-semibold text-white">
+                  <h4 className="mb-2 text-xl font-semibold text-white">
                     {t('words.content')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
+                  <ul className="flex flex-col space-y-1 text-lg font-light text-white">
                     <li>
                       <Link to={'/courses'}>{t('words.courses')}</Link>
                     </li>
@@ -114,30 +114,26 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   </ul>
                 </div>
                 <div className="flex flex-col">
-                  <h4 className="mb-2 text-base font-semibold text-white">
+                  <h4 className="mb-2 text-xl font-semibold text-white">
                     {t('words.about')}
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white">
+                  <ul className="flex flex-col space-y-1 text-lg font-light text-white">
                     <li>
-                      <Link to={''} className="text-white/50">
-                        {t('words.ourStory')}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to={''} className="text-white/50">
-                        {t('words.sponsoringAndContributors')}
-                      </Link>
+                      <Link to={'/manifesto'}>{t('words.ourStory')}</Link>
                     </li>
                     <li>
                       <Link to={'/professors'}>{t('words.professors')}</Link>
                     </li>
+                    <li>
+                      <Link to={'/node-network'}>{t('words.nodeNetwork')}</Link>
+                    </li>
                   </ul>
                 </div>
-                <div className="flex flex-col">
-                  <h4 className="mb-2 text-base font-semibold text-white">
+                <div className="flex flex-col pl-12 ">
+                  <h4 className="mb-2 text-xl font-semibold text-white">
                     <Link to={''}>{t('words.helpUs')}</Link>
                   </h4>
-                  <ul className="flex flex-col space-y-1 text-sm font-light text-white/50">
+                  <ul className="flex flex-col space-y-1 text-lg font-light text-white/50">
                     <li>
                       <Link to={''}>{t('words.donations')}</Link>
                     </li>
@@ -147,18 +143,15 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   </ul>
                 </div>
               </div>
-              <div className="flex flex-col">
-                <h4 className="mb-2 text-base font-semibold text-white">
-                  {t('words.followUs')}
-                </h4>
+              <div className="m-auto flex flex-col">
                 <Media />
               </div>
-              <div className="flex flex-row place-items-center space-x-6 text-sm text-white">
-                <h4 className="text-xs font-semibold text-white">
+              <div className="m-auto flex flex-row place-items-center space-x-6 text-sm text-white">
+                <h4 className="font-semibold text-white">
                   {t('words.termsAndConditions')}
                 </h4>
                 <a href="/bitcoin.pdf" target="_blank">
-                  <h4 className="text-xs font-semibold text-white">
+                  <h4 className="font-semibold text-white">
                     {t('words.bitcoinWhitepaper')}
                   </h4>
                 </a>
