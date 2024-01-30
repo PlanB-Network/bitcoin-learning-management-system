@@ -48,7 +48,7 @@ export const TutorialExplorer = () => {
             ))}
           </div>
         </div>
-        <div className="-mt-10 flex w-full flex-col items-center">
+        <div className="flex w-full flex-col items-center md:-mt-10">
           <FilterBar
             label={t('resources.filterBarLabel')}
             onChange={setSearchTerm}

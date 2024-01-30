@@ -2,8 +2,6 @@ import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import rabbitHikingModal from '../../../assets/rabbit-modal-auth.svg';
-
 interface CourseButtonProps {
   courseId: string; // Establece el tipo de firstChapterRoute como string
 }
@@ -54,11 +52,6 @@ export const CourseButton: React.FC<CourseButtonProps> = ({ courseId }) => {
             </span>
           </button>
         </Link>
-        <img
-          src={rabbitHikingModal}
-          alt=""
-          className="absolute bottom-2 left-1 z-20 h-16 -translate-x-1/2 rounded-full"
-        />
       </div>
     </div>
   );

@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -14,17 +10,13 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
-
-export const MarkdownBody = ({
+export const TutorialsMarkdownBody = ({
   content,
   assetPrefix,
 }: {
   content: string;
   assetPrefix: string;
 }) => {
-  const isScreenSm = useGreater('sm');
-
   return (
     <ReactMarkdown
       children={content}
@@ -73,15 +65,19 @@ export const MarkdownBody = ({
           </li>
         ),
         table: ({ children }) => (
-          <table className="w-full border-collapse border border-blue-900">
+          <table className="w-full table-fixed border-collapse border border-blue-900">
             {children}
           </table>
         ),
         th: ({ children }) => (
-          <th className="border border-blue-900 px-2 py-1">{children}</th>
+          <th className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
+            {children}
+          </th>
         ),
         td: ({ children }) => (
-          <td className="border border-blue-900 px-2 py-1">{children}</td>
+          <td className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
+            {children}
+          </td>
         ),
         img: ({ src, alt }) =>
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
@@ -92,9 +88,11 @@ export const MarkdownBody = ({
                   <p className="text-sm font-medium text-blue-900">Video</p>
                 </div>
               </div>
-              <div>
+              <div className="relative pt-[56.25%]">
                 <ReactPlayer
-                  width={'auto'}
+                  width={'100%'}
+                  height={'100%'}
+                  style={{ position: 'absolute', top: 0, left: 0 }}
                   className="mx-auto mb-2 rounded-lg"
                   controls={true}
                   url={src}

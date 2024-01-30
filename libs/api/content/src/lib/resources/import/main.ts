@@ -57,16 +57,18 @@ export const createProcessMainFile =
         .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Resource[]>`
-        INSERT INTO content.resources (category, path, last_updated, last_commit)
+        INSERT INTO content.resources (category, path, last_updated, last_commit, last_sync)
         VALUES (
           ${resource.category}, 
           ${resource.path},
           ${lastUpdated.time}, 
-          ${lastUpdated.commit}
+          ${lastUpdated.commit},
+          NOW()
         )
         ON CONFLICT (category, path) DO UPDATE SET
           last_updated = ${lastUpdated.time},
-          last_commit = ${lastUpdated.commit}
+          last_commit = ${lastUpdated.commit},
+          last_sync = NOW()
         RETURNING *
       `.then(firstRow);
 

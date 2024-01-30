@@ -84,7 +84,6 @@ export default function QuizzCard({
   }
 
   function handleQuestionChange(i: number) {
-    console.log('SELECTED answers:', selectedAnswers);
     setCurrentQuestionIndex(i);
   }
 

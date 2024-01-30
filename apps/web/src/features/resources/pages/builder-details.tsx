@@ -3,7 +3,6 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';

@@ -12,7 +12,7 @@ import { createTRPCRouter } from '../../trpc';
 import { contributorIdSchema } from '../../utils/validators';
 
 const registerCredentialsSchema = z.object({
-  username: z.string().min(6),
+  username: z.string().min(5),
   password: z.string().min(8),
   email: z.string().email().optional(),
   contributor_id: contributorIdSchema.optional(),

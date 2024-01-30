@@ -36,6 +36,7 @@ export const webhooksProcedure = publicProcedure
       try {
         const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
         await processChangedFiles(files);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         console.error(`Error processing webhook payload: ${error.message}`);
       }

@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
-
 interface PageTitleProps {
   children?: string;
   variant?: 'primary' | 'alternate';
 }
 
 export const PageTitle = ({ children, variant }: PageTitleProps) => {
-  const { t } = useTranslation();
   if (variant === 'alternate')
     return (
       <h1 className="my-8 ml-24 w-96 border-b-4 border-solid border-b-blue-800 text-5xl font-bold uppercase leading-tight text-blue-800">

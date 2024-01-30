@@ -9,9 +9,11 @@ import {
   PageSubtitle,
   PageTitle,
 } from '../../../components/PageHeader';
-import { trpc } from '../../../utils/trpc';
+import { fakeCourseId } from '../../../utils/courses';
+import { extractNumbers } from '../../../utils/string';
+import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
+import { Course, CourseTree } from '../components/courseTree';
 import { LevelPicker } from '../components/level-picker';
-import { Course, SolarSystem } from '../components/solarSystem';
 import { TopicPicker } from '../components/topic-picker';
 
 export const CoursesExplorer = () => {
@@ -21,45 +23,6 @@ export const CoursesExplorer = () => {
   });
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [activeLevels, setActiveLevels] = useState<string[]>([]);
-
-  // Hardcoded unreleased courses
-  const unreleasedCourses: Course[] = [
-    {
-      id: 'fin101',
-      name: t('courses.unreleased.financeIntroduction'),
-      level: 'beginner',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'btc301',
-      name: t('courses.unreleased.colcardAndSparrow'),
-      level: 'advanced',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'ln301',
-      name: t('courses.unreleased.theoreticalLightning'),
-      level: 'advanced',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'fin205',
-      name: t('courses.unreleased.financialCrisis'),
-      level: 'intermediate',
-      language: 'fr',
-      unreleased: true,
-    },
-    {
-      id: 'econ205',
-      name: t('courses.unreleased.hyperinflation'),
-      level: 'intermediate',
-      language: 'fr',
-      unreleased: true,
-    },
-  ];
 
   const categories = [
     {
@@ -105,12 +68,100 @@ export const CoursesExplorer = () => {
     },
     {
       prefix: '300',
-      name: 'expert',
-      translatedName: t('words.level.expert'),
+      name: 'advanced',
+      translatedName: t('words.level.advanced'),
+    },
+    {
+      prefix: '400',
+      name: 'developer',
+      translatedName: t('words.level.developer'),
     },
   ];
 
-  const coursesWithUnreleased = [...(courses || []), ...unreleasedCourses];
+  const treeCourses = convertCoursesToTree(courses || []);
+
+  function convertCoursesToTree(
+    courses: NonNullable<TRPCRouterOutput['content']['getCourses']>[number][],
+  ) {
+    const treeCourses: Course[] = [];
+
+    // First year
+    const firstYearCourses = courses
+      .filter(
+        (c) =>
+          Number(extractNumbers(c.id)) >= 100 &&
+          Number(extractNumbers(c.id)) < 200,
+      )
+      .sort((a, b) => extractNumbers(a.id).localeCompare(extractNumbers(b.id)));
+
+    let previousElement: Course;
+
+    firstYearCourses.forEach((course) => {
+      const treeCourse: Course = {
+        id: course.id,
+        language: course.language,
+        level: course.level,
+        name: course.name,
+        unreleased: false,
+        children: [],
+      };
+
+      if (previousElement) {
+        previousElement.children?.push(treeCourse);
+      } else {
+        treeCourses.push(treeCourse);
+      }
+      previousElement = treeCourse;
+    });
+
+    // Second year
+    let previousCategory = '';
+
+    let secondYearCourses = courses.filter(
+      (c) => Number(extractNumbers(c.id)) >= 200 || c.id === 'cuboplus',
+    );
+
+    secondYearCourses = secondYearCourses.sort((a, b) =>
+      fakeCourseId(a.id).localeCompare(fakeCourseId(b.id)),
+    );
+
+    secondYearCourses.forEach((course) => {
+      const treeCourse: Course = {
+        id: course.id,
+        language: course.language,
+        level: course.level,
+        name: course.name,
+        unreleased: false,
+        children: [],
+      };
+
+      const courseCategory = fakeCourseId(course.id).replace(/[0-9]/g, '');
+      if (courseCategory === previousCategory) {
+        previousElement.children?.push(treeCourse);
+      } else {
+        treeCourse.groupName = convertCategoryToName(
+          course.id.replace(/[0-9]/g, ''),
+        );
+        treeCourses.push(treeCourse);
+      }
+
+      previousElement = treeCourse;
+      previousCategory = courseCategory;
+    });
+
+    return treeCourses;
+  }
+
+  function convertCategoryToName(category: string): string {
+    switch (category) {
+      case 'econ':
+        return t('words.economy');
+      case 'ln':
+        return 'LN';
+      default:
+        return t('courses.categories.' + category);
+    }
+  }
 
   function handleSetActiveCategories(category: string) {
     const newActiveCategories = [...activeCategories];
@@ -145,8 +196,8 @@ export const CoursesExplorer = () => {
           </PageDescription>
         </PageHeader>
 
-        <div className="my-5 w-full">
-          <SolarSystem courses={coursesWithUnreleased} />
+        <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
+          <CourseTree courses={treeCourses} />
         </div>
         <div className="flex max-w-6xl flex-col items-center justify-center  text-white">
           <div className="mb-4 hidden w-full flex-col px-8 sm:flex">

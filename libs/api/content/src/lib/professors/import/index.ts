@@ -1,4 +1,4 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import { ChangedFile, Professor } from '@sovereign-university/types';
 
 import { Language } from '../../const';
@@ -38,7 +38,7 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
   };
 };
 
-export const groupByProfessor = (files: ChangedFile[]) => {
+export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
   const professorsFiles = files.filter(
     (item) => getContentType(item.path) === 'professors',
   );
@@ -65,7 +65,7 @@ export const groupByProfessor = (files: ChangedFile[]) => {
 
       groupedProfessors.set(professorPath, professor);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
@@ -73,29 +73,59 @@ export const groupByProfessor = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedProfessor =
-  (dependencies: Dependencies) => async (professor: ChangedProfessor) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (professor: ChangedProfessor) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(professor, 'professor.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      const processLocalFile = createProcessLocalFile(transaction);
+    return postgres
+      .begin(async (transaction) => {
+        const processMainFile = createProcessMainFile(transaction);
+        const processLocalFile = createProcessLocalFile(transaction);
 
-      await processMainFile(professor, main);
+        try {
+          await processMainFile(professor, main);
+        } catch (error) {
+          errors.push(`Error processing file ${professor?.path}: ${error}`);
+        }
 
-      const id = await transaction<Professor[]>`
+        const id = await transaction<Professor[]>`
           SELECT id FROM content.professors WHERE path = ${professor.path}
         `
-        .then(firstRow)
-        .then((row) => row?.id);
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(`Professor not found for path ${professor.path}`);
-      }
+        if (!id) {
+          throw new Error(`Professor not found for path ${professor.path}`);
+        }
 
-      for (const file of files) {
-        await processLocalFile(id, file);
-      }
-    });
+        for (const file of files) {
+          try {
+            await processLocalFile(id, file);
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
+  };
+
+export const createProcessDeleteProfessors =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.professors WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting professors`);
+    }
+
+    return;
   };

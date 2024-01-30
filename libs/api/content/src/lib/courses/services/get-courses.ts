@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import { Dependencies } from '../../dependencies';
 import { getProfessorsQuery } from '../../professors/queries';
 import { formatProfessor } from '../../professors/services/utils';

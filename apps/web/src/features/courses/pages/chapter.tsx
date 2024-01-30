@@ -9,12 +9,11 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
-import { addSpaceToCourseId } from '@sovereign-university/ui';
-
-import ProgressRabbit from '../../../assets/courses/progress_rabbit.svg?react';
+import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { Button } from '../../../atoms/Button';
-import { MarkdownBody } from '../../../components/MarkdownBody';
+import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
 import { compose, computeAssetCdnUrl } from '../../../utils';
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { joinWords } from '../../../utils/string';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
 import { NavigationPanel } from '../components/navigation-panel';
@@ -134,7 +133,13 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
               count: chapter.part.part,
               total: chapter.course.parts?.length,
             })}
+            <span className={`ml-2`}>
+              {t('courses.chapter.count', {
+                count: chapter.chapter,
+              })}
+            </span>
           </span>
+
           <div className="h-0 grow border-t border-gray-300"></div>
         </div>
 
@@ -198,6 +203,11 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             count: chapter.part.part,
             total: chapter.course.parts.length,
           })}
+          <span className={`ml-4`}>
+            {t('courses.chapter.count', {
+              count: chapter.chapter,
+            })}
+          </span>
         </div>
         <div>{joinWords(chapter.course.professors.map((p) => p.name))}</div>
       </div>
@@ -262,7 +272,13 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
                         lastPart && lastChapter ? 'rounded-r-full' : '',
                       )}
                     />
-                    <ProgressRabbit className="absolute inset-0 bottom-4 m-auto h-12 w-full" />
+                    <img
+                      src={OrangePill}
+                      className={compose(
+                        'absolute inset-0 bottom-0 left-0 m-auto h-8 w-full',
+                      )}
+                      alt=""
+                    />
                   </div>
                 );
               })}
@@ -274,7 +290,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
-const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
+const Header = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
   const isScreenMd = useGreater('sm');
 
@@ -283,15 +299,8 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
   return (
     <>
       <div>
-        <span
-          className={`mb-1  font-mono text-base font-normal text-blue-800 ${
-            isScreenMd ? '' : 'hidden'
-          }`}
-        >
-          chapter {chapter.chapter}{' '}
-        </span>
         <h2
-          className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
+          className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold text-blue-900  md:text-3xl ${
             isScreenMd ? '' : 'mb-1 hidden'
           }`}
         >
@@ -299,26 +308,32 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
         </h2>
       </div>
 
-      <div className="mt-1 space-y-2 uppercase text-blue-800">
+      <div className="mt-1 space-y-2 text-blue-800">
         <div
-          className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
+          className={`flex flex-col self-stretch rounded-3xl p-4 shadow-md ${
             isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
           } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
         >
           <h3
-            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-medium text-blue-700"
+            className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
             onClick={() => setIsContentExpanded(!isContentExpanded)}
           >
-            <span className="mr-1 text-2xl">{'> '}</span>
+            <span
+              className={`mr-3 text-2xl ${
+                isContentExpanded ? 'rotate-90' : ''
+              }`}
+            >
+              {'> '}
+            </span>
             <span>{t('courses.details.objectivesTitle')}</span>
           </h3>
           {isContentExpanded && (
-            <div className="mb-2 ml-2 px-5 lowercase ">
-              <ul className="list-inside pl-2 text-sm">
+            <div className="px-5 text-sm md:text-base">
+              <ul className="list-inside text-sm">
                 {chapter.course.objectives?.map(
                   (goal: string, index: number) => (
                     <li className="mt-1" key={index}>
-                      <span className="mr-2 text-blue-300 opacity-50">
+                      <span className="mr-3 text-blue-300 opacity-50">
                         {'▶'}
                       </span>
                       <span className="text-blue-800">
@@ -327,65 +342,6 @@ const HeaderBig = ({ chapter }: { chapter: Chapter }) => {
                         </span>
                         {goal.slice(1)}
                       </span>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-const HeaderSmall = ({ chapter }: { chapter: Chapter }) => {
-  const { t } = useTranslation();
-  const isScreenMd = useGreater('sm');
-
-  const [isContentExpanded, setIsContentExpanded] = useState(false);
-
-  return (
-    <>
-      <div>
-        <span
-          className={`mb-2  font-mono text-base font-normal text-blue-800 ${
-            isScreenMd ? '' : 'hidden'
-          }`}
-        >
-          chapter {chapter.chapter}{' '}
-        </span>
-        <h2
-          className={`m-1 flex h-32 flex-col justify-center self-stretch text-2xl font-semibold uppercase text-blue-900  md:text-3xl ${
-            isScreenMd ? '' : 'mb-1 hidden'
-          }`}
-        >
-          {chapter?.title}
-        </h2>
-      </div>
-      {/* Mostrar la tabla de objetivos del curso Learn*/}
-      <div className="my-1 space-y-2 font-light uppercase text-blue-800">
-        <div
-          className={` flex flex-col self-stretch rounded-lg p-0 shadow-md ${
-            isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
-          } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
-        >
-          <h3
-            className="mb-3 ml-2 mt-4 flex cursor-pointer items-center text-xl font-semibold text-blue-900"
-            onClick={() => setIsContentExpanded(!isContentExpanded)}
-          >
-            <span className="mr-2">{isContentExpanded ? '>' : '>'}</span>
-            {t('courses.details.objectivesTitle').toLowerCase()}{' '}
-            {/* Convierte el texto a minúsculas */}
-          </h3>
-          {isContentExpanded && (
-            <div className="mb-2 ml-2 px-5 lowercase">
-              <ul className="mt-2 list-inside pl-5">
-                {chapter.course.objectives?.map(
-                  (goal: string, index: number) => (
-                    <li key={index}>
-                      <span className="mr-2 opacity-50">{'▶'}</span>
-                      <span className="capitalize">{goal.toLowerCase()}</span>
                     </li>
                   ),
                 )}
@@ -445,7 +401,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
 
 const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
   return (
-    <MarkdownBody
+    <CoursesMarkdownBody
       content={chapter.raw_content}
       assetPrefix={computeAssetCdnUrl(
         chapter.last_commit,
@@ -467,8 +423,9 @@ function getRandomQuestions(
   return shuffledArray.slice(0, count);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapQuizzToQuestions(quizzArray: any[]): Question[] {
-  const questions: any[] = quizzArray.map((quizz) => {
+  const questions = quizzArray.map((quizz) => {
     const answers = [quizz.answer, ...quizz.wrong_answers];
     const shuffledAnswers = shuffleArray(answers);
     const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
@@ -484,6 +441,7 @@ function mapQuizzToQuestions(quizzArray: any[]): Question[] {
   return questions;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function shuffleArray(array: any[]): any[] {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -547,20 +505,17 @@ export const CourseChapter = () => {
               <TimelineSmall chapter={chapter} />
             )}
 
-            {/* Only on big screens */}
-            <div className=" hidden md:flex ">
-              <div className="grow break-words">
-                <div className="text-blue-1000 ml-2 mt-2 w-full space-y-6 overflow-hidden px-5 md:mt-8 md:max-w-3xl md:px-0">
-                  <HeaderBig chapter={chapter} />
+            <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
+              <div className="w-full">
+                <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
+                  <Header chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
-                  {questionsArray && questionsArray.length > 0 ? (
+                  {questionsArray && questionsArray.length > 0 && (
                     <QuizzCard
                       name={chapter.course.id}
                       chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
                       questions={questionsArray}
                     />
-                  ) : (
-                    ''
                   )}
                   <BottomButton chapter={chapter} />
                 </div>
@@ -574,23 +529,6 @@ export const CourseChapter = () => {
                     style={{ position: 'sticky', top: '6rem' }}
                   />
                 )}
-              </div>
-            </div>
-            {/* Only on small screens */}
-            <div className="flex w-full flex-col items-center justify-center md:hidden">
-              <div className="text-blue-1000 w-full space-y-4 px-5">
-                <HeaderSmall chapter={chapter} />
-                <MarkdownContent chapter={chapter} />
-                {questionsArray && questionsArray.length > 0 ? (
-                  <QuizzCard
-                    name={chapter.course.id}
-                    chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                    questions={questionsArray}
-                  />
-                ) : (
-                  ''
-                )}
-                <BottomButton chapter={chapter} />
               </div>
             </div>
           </div>

@@ -1,11 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { addSpaceToCourseId } from '@sovereign-university/ui';
-
-import BitcoinEgg from '../../../assets/icons/bitcoin_egg.svg?react';
+import OrangePill from '../../../assets/icons/orange_pill_color_gradient.svg';
 import { Button } from '../../../atoms/Button';
 import { compose } from '../../../utils';
+import { addSpaceToCourseId } from '../../../utils/courses';
 import { TRPCRouterOutput } from '../../../utils/trpc';
 
 export const CoursesProgressList = ({
@@ -35,9 +34,11 @@ export const CoursesProgressList = ({
                 style={{ width: `${course.progress_percentage}%` }}
                 className={`absolute h-2 bg-orange-500`}
               ></div>
-              <BitcoinEgg
+              <img
+                src={OrangePill}
                 style={{ marginLeft: `${course.progress_percentage - 2}%` }}
-                className="absolute top-[-12px]"
+                className={compose('absolute top-[-12px] w-[14px]')}
+                alt=""
               />
             </div>
           </div>

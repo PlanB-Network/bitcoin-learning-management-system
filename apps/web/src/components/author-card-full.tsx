@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
-import NostrIcon from '../assets/icons/nostr.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
 import { useDisclosure } from '../hooks';

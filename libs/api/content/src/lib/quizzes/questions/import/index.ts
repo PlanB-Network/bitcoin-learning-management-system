@@ -1,4 +1,4 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import { ChangedFile, QuizQuestion } from '@sovereign-university/types';
 
 import { Language } from '../../../const';
@@ -46,7 +46,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   };
 };
 
-export const groupByQuizQuestion = (files: ChangedFile[]) => {
+export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   const quizQuestionsFiles = files.filter(
     (item) => getContentType(item.path) === 'quizzes/questions',
   );
@@ -78,7 +78,7 @@ export const groupByQuizQuestion = (files: ChangedFile[]) => {
 
       groupedQuizQuestions.set(quizQuestionPath, quizQuestion);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
@@ -86,31 +86,66 @@ export const groupByQuizQuestion = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedQuizQuestion =
-  (dependencies: Dependencies) => async (quizQuestion: ChangedQuizQuestion) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (quizQuestion: ChangedQuizQuestion) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(quizQuestion, 'question.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      const processLocalFile = createProcessLocalFile(transaction);
+    return postgres
+      .begin(async (transaction) => {
+        const processMainFile = createProcessMainFile(transaction);
+        const processLocalFile = createProcessLocalFile(transaction);
 
-      await processMainFile(quizQuestion, main);
+        try {
+          await processMainFile(quizQuestion, main);
+        } catch (error) {
+          errors.push(
+            `Error processing file ${quizQuestion?.path} for quiz question ${quizQuestion.id}: ${error}`,
+          );
+          return;
+        }
 
-      const id = await transaction<QuizQuestion[]>`
-          SELECT id FROM content.quiz_questions WHERE id = ${quizQuestion.id}
-        `
-        .then(firstRow)
-        .then((row) => row?.id);
+        const id = await transaction<QuizQuestion[]>`
+            SELECT id FROM content.quiz_questions WHERE id = ${quizQuestion.id}
+          `
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(
-          `Quiz not found for id ${quizQuestion.id} and path ${quizQuestion.path}`,
-        );
-      }
+        if (!id) {
+          throw new Error(
+            `Quiz not found for id ${quizQuestion.id} and path ${quizQuestion.path}`,
+          );
+        }
 
-      for (const file of files) {
-        await processLocalFile(quizQuestion, file);
-      }
-    });
+        for (const file of files) {
+          try {
+            await processLocalFile(quizQuestion, file);
+          } catch (error) {
+            errors.push(
+              `Error processing file ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
+            );
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
+  };
+
+export const createProcessDeleteQuizQuestions =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.quiz_questions WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting quiz_questions`);
+    }
+
+    return;
   };

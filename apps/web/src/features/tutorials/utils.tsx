@@ -2,8 +2,6 @@ import { BsCart, BsCpu, BsCurrencyExchange, BsWallet2 } from 'react-icons/bs';
 import { LiaUserSecretSolid } from 'react-icons/lia';
 import { SiRaspberrypi } from 'react-icons/si';
 
-import { JoinedTutorial } from '@sovereign-university/types';
-
 import exchangeSvg from '../../assets/tutorials/exchange.svg';
 import merchantSvg from '../../assets/tutorials/merchant.svg';
 import miningSvg from '../../assets/tutorials/mining.svg';

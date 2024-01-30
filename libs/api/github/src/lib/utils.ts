@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -54,26 +55,33 @@ const syncRepository = async (
   try {
     // Check if the repository already exists locally
     if (
-      (await pathExists(directory)) &&
-      (await pathExists(path.join(directory, '.git')))
+      !(await pathExists(directory)) ||
+      !(await pathExists(path.join(directory, '.git')))
     ) {
-      // Reset local changes
-      await git.cwd(directory).reset(ResetMode.HARD);
-
-      // Fetch the remote changes
-      await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
-
-      // Get the branch name
-      await git.checkout(['-B', branch]);
-
-      // Reset the current branch to match the remote branch
-      await git.reset(ResetMode.HARD, [`origin/${branch}`]);
-
-      await git.pull('origin', branch);
-    } else {
       // Clone the repository
-      await git.clone(repository, directory);
+      try {
+        await git.clone(repository, directory);
+      } catch (error: any) {
+        console.warn(
+          '[WARN] Failed to clone the repo, will try fetch and pull',
+          error.message,
+        );
+      }
     }
+
+    // Reset local changes
+    await git.cwd(directory).reset(ResetMode.HARD);
+
+    // Fetch the remote changes
+    await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
+
+    // Get the branch name
+    await git.checkout(['-B', branch]);
+
+    // Reset the current branch to match the remote branch
+    await git.reset(ResetMode.HARD, [`origin/${branch}`]);
+
+    await git.pull('origin', branch);
 
     return git;
   } catch (error: any) {
@@ -212,6 +220,11 @@ export const getAllRepoFiles = async (
   repositoryUrl: string,
   branch = 'main',
 ) => {
+  console.log(
+    '-- Sync procedure: Syncing the github repository on branch',
+    branch,
+  );
+
   const repoDir = computeTemporaryDirectory(repositoryUrl);
 
   try {
@@ -259,6 +272,7 @@ export const syncCdnRepository = async (
     );
 
     for (const asset of assets) {
+      console.log('sync cdn asset:', asset);
       const parentDirectoryLog = await git
         .cwd(repositoryDirectory)
         .log({ file: asset.replace(/\/assets\/.*/, '') });

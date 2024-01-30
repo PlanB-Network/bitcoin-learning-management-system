@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 
-import PlanBLogo from '../../../assets/planb_logo.svg?react';
+import PlanBLogo from '../../../assets/planb_logo_vertical_white.svg?react';
 import { MetaElements } from '../MetaElements';
 import { NavigationSection } from '../props';
 
@@ -21,7 +20,7 @@ export const FlyingMenu = ({
   return (
     <nav className="flex w-full flex-row items-center justify-between">
       <Link to="/">
-        <PlanBLogo className="h-10 md:h-12 lg:h-16" />
+        <PlanBLogo className="h-auto md:w-20 lg:w-24 xl:w-32" />
       </Link>
       <ul className="flex flex-row items-center space-x-5 text-white lg:space-x-10">
         {sections.map((section, index) => (

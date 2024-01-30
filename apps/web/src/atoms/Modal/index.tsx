@@ -3,8 +3,6 @@ import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
 
-import rabbitHikingModal from '../../assets/rabbit-modal-auth.svg';
-
 interface ModalProps {
   isOpen: boolean;
   closeButtonEnabled?: boolean;
@@ -82,11 +80,6 @@ export const Modal = ({
                 {/* TODO: move this outside of the modal atom */}
                 {showAccountHelper && (
                   <div className="relative my-8 max-w-xs sm:max-w-lg md:my-14">
-                    <img
-                      src={rabbitHikingModal}
-                      className="absolute -left-10 bottom-12 z-[+1] flex h-20 sm:-left-10 sm:bottom-14 sm:h-24"
-                      alt=""
-                    />
                     <div className="relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
                       <span className="italic text-blue-800">
                         {t('words.didYouKnow')}

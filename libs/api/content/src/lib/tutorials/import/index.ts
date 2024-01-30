@@ -1,6 +1,6 @@
 import matter from 'gray-matter';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow, sql } from '@sovereign-university/database';
 import type { ChangedFile, Tutorial } from '@sovereign-university/types';
 
 import type { Language } from '../../const';
@@ -50,7 +50,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   };
 };
 
-export const groupByTutorial = (files: ChangedFile[]) => {
+export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
   const tutorialsFiles = files.filter(
     (item) => getContentType(item.path) === 'tutorials',
   );
@@ -81,7 +81,7 @@ export const groupByTutorial = (files: ChangedFile[]) => {
 
       groupedTutorials.set(tutorialPath, course);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
@@ -89,40 +89,48 @@ export const groupByTutorial = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedTutorial =
-  (dependencies: Dependencies) => async (tutorial: ChangedTutorial) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (tutorial: ChangedTutorial) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
-    return postgres.begin(async (transaction) => {
-      const processMainFile = createProcessMainFile(transaction);
-      await processMainFile(tutorial, main);
+    return postgres
+      .begin(async (transaction) => {
+        try {
+          const processMainFile = createProcessMainFile(transaction);
+          await processMainFile(tutorial, main);
+        } catch (error) {
+          errors.push(`Error processing file ${tutorial?.path}: ${error}`);
+          return;
+        }
 
-      const id = await transaction<Tutorial[]>`
+        const id = await transaction<Tutorial[]>`
           SELECT id FROM content.tutorials WHERE path = ${tutorial.path}
         `
-        .then(firstRow)
-        .then((row) => row?.id);
+          .then(firstRow)
+          .then((row) => row?.id);
 
-      if (!id) {
-        throw new Error(`Tutorial not found for path ${tutorial.path}`);
-      }
+        if (!id) {
+          throw new Error(`Tutorial not found for path ${tutorial.path}`);
+        }
 
-      for (const file of files) {
-        if (file.kind === 'removed') {
-          // If file was deleted, delete the translation from the database
+        for (const file of files) {
+          try {
+            if (file.kind === 'removed') {
+              // If file was deleted, delete the translation from the database
 
-          await transaction`
+              await transaction`
             DELETE FROM content.tutorials_localized
             WHERE tutorial_id = ${id} AND language = ${file.language}
           `;
 
-          continue;
-        }
+              continue;
+            }
 
-        const header = matter(file.data, { excerpt: false });
+            const header = matter(file.data, { excerpt: false });
 
-        await transaction`
+            await transaction`
           INSERT INTO content.tutorials_localized (
             tutorial_id, language, title, description, raw_content
           )
@@ -137,6 +145,29 @@ export const createProcessChangedTutorial =
             title = EXCLUDED.title,
             raw_content = EXCLUDED.raw_content
         `;
-      }
-    });
+          } catch (error) {
+            errors.push(`Error processing file ${file?.path}: ${error}`);
+          }
+        }
+      })
+      .catch(() => {
+        return;
+      });
+  };
+
+export const createProcessDeleteTutorials =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting tutorials`);
+    }
+
+    return;
   };

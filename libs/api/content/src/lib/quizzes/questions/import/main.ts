@@ -65,7 +65,7 @@ export const createProcessMainFile =
 
       const result = await transaction<QuizQuestion[]>`
         INSERT INTO content.quiz_questions
-        (id, course_id, part, chapter, difficulty, author, duration, last_updated, last_commit)
+        (id, course_id, part, chapter, difficulty, author, duration, last_updated, last_commit, last_sync)
         VALUES (
           ${quizQuestion.id},
           ${parsedQuizQuestion.course}, 
@@ -75,7 +75,8 @@ export const createProcessMainFile =
           ${parsedQuizQuestion.author},
           ${parsedQuizQuestion.duration},
           ${lastUpdated.time}, 
-          ${lastUpdated.commit}
+          ${lastUpdated.commit},
+          NOW()
         )
         ON CONFLICT (id) DO UPDATE SET
           course_id = EXCLUDED.course_id,
@@ -85,7 +86,8 @@ export const createProcessMainFile =
           author = EXCLUDED.author,
           duration = EXCLUDED.duration,
           last_updated = EXCLUDED.last_updated,
-          last_commit = EXCLUDED.last_commit
+          last_commit = EXCLUDED.last_commit,
+          last_sync = NOW()
         RETURNING *
       `.then(firstRow);
 

@@ -1,3 +1,4 @@
+import { sql } from '@sovereign-university/database';
 import type { ChangedFile } from '@sovereign-university/types';
 
 import type { Language } from '../../const';
@@ -48,7 +49,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
   };
 };
 
-export const groupByResource = (files: ChangedFile[]) => {
+export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   const resourceFiles = files.filter(
     (item) => getContentType(item.path) === 'resources',
   );
@@ -78,7 +79,7 @@ export const groupByResource = (files: ChangedFile[]) => {
 
       groupedResources.set(resourcePath, resource);
     } catch {
-      console.warn(`Unsupported path ${file.path}, skipping file...`);
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
@@ -86,7 +87,8 @@ export const groupByResource = (files: ChangedFile[]) => {
 };
 
 export const createProcessChangedResource =
-  (dependencies: Dependencies) => async (resource: ChangedResource) => {
+  (dependencies: Dependencies, errors: string[]) =>
+  async (resource: ChangedResource) => {
     const mapHandlers = {
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
@@ -94,5 +96,22 @@ export const createProcessChangedResource =
     } as const;
 
     const handler = mapHandlers[resource.category];
-    return handler(dependencies)(resource);
+    return handler(dependencies, errors)(resource);
+  };
+
+export const createProcessDeleteResources =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.resources WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch (error) {
+      errors.push(`Error deleting resources`);
+    }
+
+    return;
   };

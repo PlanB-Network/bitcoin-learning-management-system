@@ -1,7 +1,6 @@
 version: '3.7'
 
 x-defaults: &defaults
-  restart: always
   init: true
   env_file:
     - .env
@@ -36,7 +35,7 @@ x-base: &base
 
   volumes:
     - .:/app
-    - /app/node_modules
+    - api_node_modules:/app/node_modules
 
 services:
   postgres:
@@ -45,7 +44,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres:/var/lib/postgresql
+      - postgres:/var/lib/postgresql/data
     healthcheck:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '5432']
@@ -84,7 +83,7 @@ services:
     volumes:
       - .:/app
       - cdn:$CDN_PATH
-      - /app/node_modules
+      - api_node_modules:/app/node_modules
     depends_on:
       - postgres
     healthcheck:
@@ -114,3 +113,4 @@ volumes:
   postgres:
   cdn:
   redis:
+  api_node_modules:

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-import NostrIcon from '../assets/icons/nostr_blue.svg?react';
 import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
 import WebIcon from '../assets/icons/web_blue.svg?react';
 import { TRPCRouterOutput } from '../utils/trpc';

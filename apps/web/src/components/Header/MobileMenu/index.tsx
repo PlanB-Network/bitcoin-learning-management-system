@@ -1,9 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
-import PlanBLogo from '../../../assets/planb_logo.svg?react';
+import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
 import { useDisclosure } from '../../../hooks/use-disclosure';
 import { compose } from '../../../utils';
 import { MetaElements } from '../MetaElements';
@@ -22,7 +21,6 @@ export const MobileMenu = ({
   onClickLogin,
   onClickRegister,
 }: MobileMenuProps) => {
-  const { t } = useTranslation();
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
 
@@ -37,7 +35,7 @@ export const MobileMenu = ({
     <>
       <div className="flex w-full flex-row justify-center">
         <Link className="justify-center" to="/">
-          <PlanBLogo className="h-10 lg:h-16" />
+          <PlanBLogo className="h-10 w-[10rem] lg:h-16" />
         </Link>
       </div>
       <FaBars

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --base-blue: #080e1d;
+  }
+}
+
 @font-face {
   font-family: 'SpaceMono';
   src: url('../assets/fonts/space_mono/SpaceMono-Bold.ttf') format('truetype');
