@@ -88,6 +88,7 @@
       "secu": "Segurança & Privacidade"
     },
     "chapter": {
+      "count": "Chapter {{count}}",
       "finishCourse": "Terminar o curso",
       "next": "Feito, vamos para o próximo capítulo!",
       "thanksTip": "Queres agradecer? Deixa uma gorjeta."
@@ -480,7 +481,7 @@
     "level": {
       "advanced": "Avançado",
       "beginner": "Principiante",
-      "expert": "Especialista",
+      "developer": "developer",
       "intermediate": "Intermédio"
     },
     "library": "Biblioteca",

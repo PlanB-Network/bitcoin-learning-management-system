@@ -88,6 +88,7 @@
       "secu": "Sicherheit & Privatsphäre"
     },
     "chapter": {
+      "count": "Chapter {{count}}",
       "finishCourse": "Kurs beenden",
       "next": "Fertig, gehen wir zum nächsten Kapitel!",
       "thanksTip": "Danke sagen ? Tipp."
@@ -480,7 +481,7 @@
     "level": {
       "advanced": "Erweitert",
       "beginner": "Anfänger",
-      "expert": "Experte",
+      "developer": "developer",
       "intermediate": "Mittler"
     },
     "library": "Bibliothek",

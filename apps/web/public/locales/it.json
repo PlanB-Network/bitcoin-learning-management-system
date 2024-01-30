@@ -11,7 +11,7 @@
       "rabbitholeDigger": "Digger Coniglio-Foro"
     },
     "headerLink": "Diventa uno sponsor della comunità",
-    "manifesto": "",
+    "manifesto": "Crediamo nel futuro decentralizzato offerto da Bitcoin.\n\nLa nostra missione è introdurre Bitcoin a un miliardo di persone in un decennio. I nostri strumenti sono educazione e informazione.\n\nSosteniamo le comunità locali di Bitcoiners fornendo contenuti educativi open-source e offrendo una rete di mentori Bitcoin.\n\nLa nostra filosofia è ispirata dal manifesto cypherpunk. Così come hanno difeso la privacy, noi difendiamo l'educazione. Crediamo che la conoscenza sia la base della libertà e del cambiamento.\n\nSiamo solo Bitcoin.\n\nSosteniamo la responsabilità individuale e l'indipendenza offerta dal possesso delle proprie chiavi.\n\nUrgiamo la verifica, non la fiducia cieca.\n\nCrediamo che sistemando il denaro, sistemiamo il mondo.\n\nSiamo decentralizzati e open-source, evitando qualsiasi singolo punto di guasto.\n\nIncoraggiamo la libera diffusione dei nostri contenuti.\n\nAspiriamo a un mondo che opera dal basso verso l'alto, dove l'individuo è al centro.\n\nSemplifichiamo, educiamo, condividiamo.\n\nUnisciti a noi nella nostra missione di \"orange-pill\" il mondo.\n",
     "pageSubtitle": "La Sovrana Università offre gratuitamente l'istruzione Bitcoin a tutti.",
     "thanks1": "Un ringraziamento speciale ai nostri primi supporters, che ci hanno aiutato a perseverare nel corso degli anni.",
     "thanks2": "La Sovrana Università è uno sforzo comunitario. E 'stato reso possibile grazie a numerosi collaboratori che sono stati presi vari ruoli, come professori, sviluppatori, progettisti e aiutanti di molti tipi. Molte grazie a tutti loro."
@@ -20,9 +20,9 @@
     "accountCreated": "Il tuo account è stato creato, {{userName}}!",
     "alreadyHaveAccount": "Ha già un account?",
     "canSaveProgress": "Ora puoi salvare la tua progressione sulla Bitcoin Academy",
-    "connect": "Se connecter",
+    "connect": "Log in",
     "connectWithLn": "Connettiti con LN",
-    "contributorId": "Identifiant contributeur",
+    "contributorId": "ID collaboratore",
     "createAccount": "Registrati",
     "createOne": "Registrati qui!",
     "emailAddress": "Indirizzo e-mail",
@@ -32,7 +32,7 @@
       "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri"
     },
     "forgottenPassword": "Hai dimenticato la password?",
-    "getConnected": "Connectez vous !",
+    "getConnected": "Log in !",
     "headerAccountCreated": "Account creato",
     "lnurlAuthDescription": "Scansiona questo codice QR con il tuo portafoglio Lightning per accedere!",
     "noAccountNeeded": "Non c'è bisogno di un account per iniziare a imparare alla Sovereign University!",
@@ -40,7 +40,7 @@
     "passwordReinit": "Réinitilisation de mot de passe",
     "passwordRequired": "La password è obbligatoria",
     "passwordsDontMatch": "Le password non corrispondono",
-    "sendLink": "Envoyer un lien",
+    "sendLink": "Invia un link",
     "signIn": "Registrati"
   },
   "bet": {
@@ -49,7 +49,7 @@
       "description": "Questo contenuto è destinato ad essere pronto all'uso per eventi ed uso didattico.",
       "title": "Contenuto Educativo"
     },
-    "hereForYou": "The BET is here for you!",
+    "hereForYou": "Il BET è qui per te!",
     "pageDescription": "The Sovereign University  supporta gli educatori bitcoin e le comunità locali di tutto il mondo, per aiutare a diffondere l'adozione bitcoin. Verso questo obiettivo, raccogliamo e rendiamo accessibile un grande database, sia contenuti educativi (creati da noi e da altri), così come dati visivi.",
     "pageSubtitle": "BET - Un kit di strumenti open-source Bitcoin per tutti i progetti educativi",
     "pageTitle": "Leave as it is",
@@ -88,6 +88,7 @@
       "secu": "Sicurezza & Privacy"
     },
     "chapter": {
+      "count": "Capitolo {{count}}",
       "finishCourse": "Termina il corso",
       "next": "Fatto, andiamo al prossimo capitolo!",
       "thanksTip": "Vuoi dire grazie? Dona."
@@ -140,7 +141,7 @@
     },
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e verifica le spiegazioni",
-      "quizz": "Quizz",
+      "quizz": "Quiz",
       "quizzResults": "Risultati del Quizz",
       "quizzReview": "leave as is",
       "resultCongrats": "Congratulazioni, hai fatto bene!",
@@ -152,7 +153,7 @@
       "colcardAndSparrow": "Coldcard e Sparrow",
       "financeIntroduction": "Introduzione alla finanza",
       "financialCrisis": "Analisi delle crisi finanziarie",
-      "hyperinflation": "Etude des hyperinflations",
+      "hyperinflation": "Analisi sull'iperinflazione",
       "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
     }
   },
@@ -234,7 +235,7 @@
     "rabbitWithBackpackAndBtcSign": "un coniglio con uno zaino e un segno btc",
     "readingRabbit": "Un coniglio che legge un libro",
     "sthRepresentingCompany": "qualcosa che rappresenta l'azienda",
-    "stylus": "a stylus",
+    "stylus": "uno stilo",
     "underConstructionImage": "Illustrazione di diversi conigli che lavorano su un cantiere",
     "visibilityOff": "l'icona occhi senza segno spento",
     "worldMap": "mappa del mondo con hub collegati"
@@ -268,35 +269,35 @@
     "answer1": "Un nodo è semplicemente una comunità Bitcoin che vuole progredire al passo successivo e accelerare la propria adozione locale Bitcoin! Non c'è nessuna dimensione minima con cui iniziare.",
     "answer2": "Al Plan B, cerchiamo di migliorare l'ecosistema educativo Bitcoin, fornendo gli strumenti giusti per costruire ed educare su Bitcoin. Diventando un nodo, la vostra comunità avrà accesso a una vasta gamma di risorse, servizi, formazione educativa speciale e altro ancora. Rendi la tua comunità un riferimento nel mondo Bitcoin.",
     "answer3": "Per far parte della rete è necessario allinearsi ad alcuni valori fondamentali. Questi sono: essere solo bitcoin, dare valore alla privacy e alla cura per il lavoro open source.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different names will be attributed. A node with an hackerspace, a gym, some office place will be considered a ”Citadel” while your first bitcoin home town office will be known as “nodes”.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We belive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
-    "apply": "Apply",
-    "description1": "All around the world, Bitcoiners are coming together in communities.",
-    "description2": "<0>A new</0> <1>Bitcoin meetup</1> emerges every week.",
-    "description3": "Educational centers, <0>hackerspaces</0>, and Bitcoin office spaces are on the rise.",
-    "description4": "<0>Secure citadels</0> are under construction.",
-    "description5": "The dedication of the Bitcoin community to collaborate, support one another, and offer essential tools for their local counterparts is essential to thrive in the modern landscape. ",
-    "description6": "At PlanB, we recognize the challenges ahead for these communities builders. To support their efforts, we've introduced solutions to simplify their development process.",
-    "descriptionTitle": "Every country needs a Plan B!",
-    "join1": "By joining our network, we'll guide you in transitioning from a simple Bitcoin meetup to a fully secured Bitcoin citadel!",
+    "answer4": "Un nodo Bitcoin può essere di qualsiasi dimensione. In base ad alcuni requisiti, verranno attribuiti nomi diversi. Un nodo con un hackerspace, una palestra, qualche ufficio sarà considerato una ”Citadel” mentre la tua prima città bitcoin casa sarà conosciuta come “nodo”.",
+    "answer5": "Vogliamo offrire un paradiso sicuro per i bitcoiner in tutto il mondo. Crediamo che, aiutando gli hub locali a crescere, saremo in grado di creare una rete di cittadelle dove i bitcoiner saranno i benvenuti per lavorare, creare, condividere e discutere in modo sicuro.",
+    "apply": "Applica",
+    "description1": "In tutto il mondo, i Bitcoiner si stanno unendo in comunità.",
+    "description2": "<0>Un nuovo</0> <1>Bitcoin meetup</1> nasce ogni settimana.",
+    "description3": "Centri educativi, <0>hackerspaces</0>, e uffici Bitcoin sono in aumento.",
+    "description4": "<0>Cittadelle sicure</0> sono in costruzione.",
+    "description5": "La dedizione della comunità Bitcoin nel collaborare, supportarsi a vicenda, ed offrire strumenti essenziali per le loro controparti locali è essenziale per prosperare nel panorama moderno. ",
+    "description6": "Al PlanB riconosciamo le sfide che attendono i costruttori di comunità. Per sostenere i loro sforzi, abbiamo introdotto soluzioni per semplificare il loro processo di sviluppo.",
+    "descriptionTitle": "Ogni paese ha bisogno di un piano B!",
+    "join1": "Unendoti alla nostra rete, ti guideremo nel passaggio da un semplice meeting Bitcoin a una cittadella Bitcoin completamente sicura!",
     "join2": "<0>Community building</0> support",
-    "join3": "Educational resources for <0> local seminars</0>",
-    "join4": "Access to worldwide experts",
-    "join5": "Connection to thousands of students",
-    "join6": "You are not alone in trying to change the world. Let's pool our resources to succeed.",
-    "join7": "Become part of the revolution!",
-    "letsBuild": "Let's build Bitcoin Citadel around the world",
-    "network1": "They are already part of the Network!",
-    "pageSubtitle": "Our strength is our community. let's gather into a global bitcoin network.",
-    "pageTitle": "Node Network",
-    "partnerBTCMap": "Proud partner with BTC Map to integrate more than 250 communities into the map in 2023",
-    "question1": "What is a Node?",
-    "question2": "What do I gain?",
-    "question3": "What are the requirements?",
-    "question4": "What size is a Node?",
-    "question5": "What's the secret plan?",
-    "stage": "Stage",
-    "stage1": "Communities",
+    "join3": "Risorse educative per <0> seminari locali</0>",
+    "join4": "Accesso ad esperti mondiali",
+    "join5": "Connessione a migliaia di studenti",
+    "join6": "Non sei il solo a cercare di cambiare il mondo. Uniamo le nostre risorse per avere successo.",
+    "join7": "Diventa parte della rivoluzione!",
+    "letsBuild": "Costruiamo Cittadelle Bitcoin in tutto il mondo",
+    "network1": "Fanno già parte della rete!",
+    "pageSubtitle": "La nostra forza è la nostra comunità. Riuniamoci in una rete bitcoin globale.",
+    "pageTitle": "La rete del nodo",
+    "partnerBTCMap": "Partner fiero con BTC Map per integrare più di 250 comunità nella mappa nel 2023",
+    "question1": "Cos'è un Nodo?",
+    "question2": "Che cosa guadagno?",
+    "question3": "Quali sono i requisiti?",
+    "question4": "Che dimensione ha un Nodo?",
+    "question5": "Qual è il piano segreto?",
+    "stage": "Fase",
+    "stage1": "Comunità",
     "stage2": "Hub",
     "stage3": "Full Node",
     "stage4": "Full Citadel"
@@ -350,87 +351,87 @@
     "pageSubtitle": "Benvenuto nella tana infinita del bianconiglio!",
     "pageTitle": "Risorse",
     "podcasts": {
-      "title": "Podcasts"
+      "title": "Podcast"
     },
     "publicGrade": "Grado pubblico: {{grade}}/5"
   },
   "settings": {
-    "changePassword": "Change password"
+    "changePassword": "Cambia password"
   },
   "tutorials": {
     "details": {
-      "checkAuthor": "Check out the author's other contributions and support his work.",
-      "enjoyed": "Enjoyed this tutorial?",
-      "madeBy": "This tutorial has been made by",
-      "source": "Original source : ",
-      "tipTooltip": "Like it? Tip."
+      "checkAuthor": "Scopri gli altri contributi dell'autore e sostieni il suo lavoro.",
+      "enjoyed": "Ti è piaciuto questo tutorial?",
+      "madeBy": "Questo tutorial è stato realizzato da",
+      "source": "Fonte originale : ",
+      "tipTooltip": "Ti piace? Dona."
     },
     "exchange": {
       "centralized": {
-        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+        "description": "Gli exchange centralizzati sono solitamente entità regolamentate che agiscono come intermediari tra il sistema bancario e l'ecosistema di bitcoin. Ti permettono di acquistare e vendere grandi quantità di bitcoin e ritirarli nel tuo portafoglio o conto bancario. Di solito richiedono KYC e, pertanto, monitorano la tua attività, segnalandola alle istituzioni di sorveglianza finanziaria per rispettare le leggi locali."
       },
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
+      "description": "I mercati sono una delle porte di entrata ed uscita tra la tua valuta tradizionale (euro, dollari) e il mondo bitcoin. I mercati possono essere regolati e KYC (Conoscere il Tuo Cliente), o peer-to-peer e anonimi. Ciasucno offrirà diverse funzionalità, commissioni, liquidità e supporto clienti. Ogni bitcoiner ne utilizzerà uno diverso in base alle sue esigenze e convinzioni.",
       "peer-to-peer": {
-        "description": "Peer-to-peer exchanges are marketplaces where individuals exchange bitcoin for other currencies between themselves. These exchanges could be regulated or not and usually don't ask for much information (if any) about you. They simply facilitate the relationship between users. Their fees could be higher than traditional exchanges and their liquidity a bit lower. It is the preferred option for bitcoiners trying to avoid KYC."
+        "description": "I mercati peer-to-peer sono mercati dove gli individui scambiano tra di loro bitcoin per altre valute. Questi mercati potrebbero essere regolamentati o meno e di solito non chiedono molte informazioni (se ne chiedono) su di te. Semplicemente facilitano le interazioni tra gli utenti. Le loro commissioni potrebbero essere più alte rispetto agli scambi tradizionali e la loro liquidità leggermente inferiore. È l'opzione preferita per i bitcoiners che cercano di evitare il KYC."
       },
       "shortDescription": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
       "title": "Borsa"
     },
     "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?"
+      "description": "Tutti questi tutorial sono stati scritti da appassionati e dediti bitcoiner, che desiderano diffondere l'educazione su bitcoin in tutto il mondo. Non dimenticate di mettere un like, fare una recensione, e donare qualche sats!",
+      "didYouKnow": "Lo sapevi?"
     },
     "headerSignature": "Rogzy",
     "headerText": "Benvenuto nel foro coniglio infinito di Bitcoin! In questa sezione ti offriremo un tutoriel approfondito sulla maggior parte dei progetti bitcoin là fuori. Queste pagine in mantenere da benevolel e appassionato bitcoin che supportano il progetto open source. Se doveste pagare abbiamo commesso un errore, vi preghiamo di contattarlo.Per vedere il nostro allegato finanziario per la menzione del progetto si rimanda alla nostra relazione sulla trasparenza. Grazie per la vostra fiducia in questa università e godetevi il viaggio.",
     "merchant": {
-      "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
+      "description": "Ti sei mai chiesto come accettare facilmente bitcoin per un'attività? Esplora le nostre diverse soluzioni per diventare un esperto e configurare facilmente una soluzione commerciale per i negozi intorno a te. La soluzione del Punto Vendita (PoS) varia in base alle esigenze del commerciante (fisico o online), al loro volume e alla complessità delle loro operazioni. Una buona indicazione generale è semplicemente iniziare con un portafoglio LN di base, passare a una soluzione facile ed efficiente (come il PoS mobile) e infine esplorare BTC Pay Server per soluzioni avanzate, complesse e professionali.",
       "shortDescription": "Soluzioni per le aziende per accettare Bitcoin",
       "title": "Commerciante"
     },
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
+      "description": "L'industria dei miners è un argomento complesso pieno di insidie. Qui, cercheremo di accompagnarti nel tuo viaggio usando hardware e software. Dal modificare un S9 per trasformarlo in un riscaldatore domestico al tentativo di vincere alla lotteria con un nerd miner.",
       "shortDescription": "Soluzioni di mining Bitcoin",
       "title": "Estrazione"
     },
     "node": {
       "bitcoin": {
-        "description": "A Bitcoin Core node is the ground zero of your Bitcoin sovereignty stack. It allows you to run the Bitcoin software and be part of the network. You will validate blocks and transactions, decide which rules you want to apply within the network, and stop using intermediaries to propagate your transactions. There are many ways to run a Bitcoin node, some more user-friendly than others."
+        "description": "Un nodo Bitcoin Core è il punto di partenza per la sovranità in Bitcoin. Ti permette di eseguire il software Bitcoin Core e di far parte della rete. Validerai blocchi e transazioni, deciderai quali regole vuoi applicare all'interno della rete e smetterai di usare intermediari per propagare le tue transazioni. Ci sono molti modi per utilizzare un nodo Bitcoin, alcuni più user-friendly di altri."
       },
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
+      "description": "I nodi sono come i tuoi server personali. In Bitcoin, è il software che consente di partecipare alla rete, raccogliere transazioni, verificarne le regole, ed essere veramente sovrani. All'interno del nostro ecosistema, esistono vari nodi, da Bitcoin Core, alle implementazioni Lightning, RGB, o altre soluzioni più avanzate per la privacy.",
       "lightning-network": {
-        "description": "A Lightning node allows you to take part in the Bitcoin layer 2 protocol called Lightning. You will be able to open channels, manage their liquidity, participate in the graph, and become non-custodial regarding your Lightning wallet.",
+        "description": "Un nodo Lightning ti permette di prendere parte al protocollo di secondo livello di Bitcoin chiamato Lightning. Sarai in grado di aprire canali, gestire la loro liquidità, partecipare al grafico, gestendo in maniera non custodial il portafoglio Lightning.",
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It is a programmability layer for Bitcoin, with concepts of private & mutual ownership, abstraction and separation of concerns and represent \"post-blockchain\"."
+        "description": "RGB è un sistema di smart contract scalabile e riservato per Bitcoin e Lightning. È un layer programmabile per Bitcoin, con concetti di proprietà privata e reciproca, astrazione e separazione delle preoccupazioni e rappresenta \"post-blockchain\"."
       },
       "shortDescription": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
       "title": "Nodo"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
+    "pageDescription": "Bitcoin è un settore vasto, che si espande ogni giorno. Per aiutarvi ad esplorarlo, abbiamo raccolto un gran numero di tutorial che descrivono varie soluzioni.",
+    "pageSubtitle": "Benvenuto nella tana infinita del bianconiglio [di Bitcoin]!",
     "pageTitle": "Tutorial",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
+        "description": "Bitcoin non è privato per impostazione predefinita, è stato progettato intenzionalmente per essere pseudonimo, e ogni transazione è pubblica e conservata per sempre. Per recuperare una certa riservatezza, dobbiamo seguire i migliori approcci, utilizzando gli strumenti specifici integrati nel nostro software. Dall' evitare il riutilizzo degli indirizzi al CoinJoin, passando per i mix fino al collegamento al tuo nodo, ti aiuteremo nel tuo percorso verso la privacy."
       },
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
+      "description": "La privacy è un diritto fondamentale. Aspiriamo ad un mondo in cui la privacy è lo standard, ma non è la realtà in cui viviamo. Cercheremo di spiegarti le migliori pratiche, di aiutarti con i tutorial e di indirizzarti verso un percorso più sovrano per quanto riguarda i tuoi dati.",
       "general": {
-        "description": "In the era of mass surveillance, regaining a certain level of privacy in your everyday life is essential. Given that each user will have a certain degree of paranoia and technological knowledge, it is perfectly normal to use certain tools and adapt them to your needs. Here, we will explore different protection solutions such as VPNs, Tor, Tails OS, PGP, encrypted messages, and much more."
+        "description": "Nell'era della sorveglianza di massa, riacquistare un certo livello di privacy nella vita quotidiana è essenziale. Dato che ogni utente avrà un certo grado di paranoia e conoscenza tecnologica, è perfettamente normale utilizzare determinati strumenti ed adattarli alle proprie esigenze. Qui, esploreremo diverse soluzioni di protezione come VPN, Tor, Tails OS, PGP, messaggi criptati e molto altro."
       },
       "shortDescription": "Strumenti per il backup e il mantenimento della privacy",
       "title": "Privacy"
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
+      "description": "Un portafoglio Bitcoin è come il tuo portachiavi. Ti permette di spendere e ricevere bitcoin. Ci sono un sacco di diversi tipi di portafogli, tutti con diversi casi di utilizzo, funzioni, costi ed esperienze utente. Ogni bitcoiner userà un dispositivo diverso in base alle proprie necessità, livello di esigenza, ed esperienza.",
       "desktop": {
-        "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
+        "description": "I portafogli desktop sono di solito per utenti più avanzati in quanto combinano l'utilizzo di dispositivi hardware con il software del portafoglio desktop. È come avere una nuova interfaccia più personalizzata e ricca in termini di funzionalità per il tuo dispositivo hardware da utilizzare. Tali portafogli offrono opzioni di firma multipla, funzionalità di privacy, meccanismi di integrazione di eredità e altro ancora."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Gli hardware wallet vengono solitamente utilizzati per conservare i tuoi risparmi in bitcoin a lungo termine. Sono dispositivi fisici che non sono connessi a internet (spesso chiamati \"cold wallet\") e sono solitamente molto sicuri. Anche se questi dispositivi sono spesso open source per quanto riguarda il loro software, l'hardware ha un costo che varia da 50 a 300 euro. Considera questi dispositivi come un conto bancario per importi di risparmio più elevati che useresti di tanto in tanto."
       },
       "mobile": {
-        "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."
+        "description": "I portafogli mobili vengono solitamente utilizzati per le spese quotidiane. Integrano Lightning Network per transazioni istantanee ed a basso costo. Sono di solito connessi a internet (spesso chiamati \"Hot walet\") e quindi sono meno sicuri rispetto a i portafogli hardware. Dovrebbero essere utilizzati solo per conservare piccole quantità di bitcoin, considerali come il tuo portafoglio quotidiano che tieni in tasca."
       },
       "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Portafoglio"
@@ -440,7 +441,7 @@
     "github": "GitHub",
     "p1": "Un coniglio ha abbattuto un buco. A causa di questa avventura inaspettata, questa pagina è sotto un po 'di costruzione al momento. Ci scusiamo per qualsiasi inconveniente. Il nostro team è in pieno equipaggiamento per completare questa pagina. Se siete interessati a prestare una mano, non esitate a controllare il nostro",
     "p2": "e considerare di unirsi alla nostra comunità!",
-    "pageTitle": "Oops."
+    "pageTitle": "Ooops."
   },
   "words": {
     "about": "Informazioni",
@@ -453,34 +454,34 @@
     "audioBook": "Audiolibro",
     "back": "Indietro",
     "beginner": "Principiante",
-    "bitcoinWhitepaper": "Bitcoin Whitepaper",
+    "bitcoinWhitepaper": "Whitepaper Bitcoin",
     "book": "Libro",
     "books": "Libri",
     "builders": "Costruttori",
-    "certificate": "Certificate",
+    "certificate": "Certificato",
     "conference": "Conferenza",
     "conferences": "Conferenze",
     "content": "Contenuto",
-    "continue": "Continue",
+    "continue": "Continua",
     "course": "Corso",
     "courses": "Corsi",
-    "dashboard": "Dashboard",
-    "details": "Details",
-    "didYouKnow": "Did you know?",
+    "dashboard": "Cruscotto",
+    "details": "Dettagli",
+    "didYouKnow": "Lo sapevi?",
     "documentaries": "Documentari",
     "donations": "Donazioni",
-    "economy": "Economy",
+    "economy": "Economia",
     "email": "Email",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
     "helpUs": "Aiutaci",
-    "home": "Home",
+    "home": "Pagina Iniziale",
     "intermediate": "Intermedio",
     "interview": "Intervista",
     "level": {
       "advanced": "Avanzate",
       "beginner": "Principiante",
-      "expert": "Esperto",
+      "developer": "sviluppatore",
       "intermediate": "Intermedio"
     },
     "library": "Libreria",
@@ -493,30 +494,30 @@
     "more": "Altro",
     "movieDocumentary": "Documentario Del Film",
     "newsletter": "Newsletter",
-    "newsletters": "Newsletters",
+    "newsletters": "Le Newsletter",
     "node": "Nodo",
-    "nodeNetwork": "Node Network",
+    "nodeNetwork": "La rete del nodo",
     "or": "o",
     "ourStory": "La nostra storia",
     "podcast": "Podcast",
     "podcasts": "Podcast",
-    "professors": "Professors",
+    "professors": "Professori",
     "register": "Registrati",
     "relatedResources": "Risorse correlate",
     "resources": "Risorse",
-    "resume": "Resume",
+    "resume": "Riprendi",
     "review": "Riesame",
     "rogzy": "Rogzy",
-    "signIn": "Sign In",
-    "sponsorUs": "Sponsor Us",
+    "signIn": "Registrati",
+    "sponsorUs": "Sponsorizzaci",
     "sponsoringAndContributors": "Sponsorizzazione & contributori",
     "supportUs": "Sostienici",
     "teachers": "Insegnanti",
     "termsAndConditions": "Termini e condizioni",
-    "toolkits": "Toolkits",
-    "tutorial": "Tutorial",
+    "toolkits": "Attrezzi",
+    "tutorial": "Guida",
     "tutorials": "Tutorial",
-    "update": "Update",
+    "update": "Aggiorna",
     "video": "Video",
     "videos": "Video",
     "wallets": "Portafogli"

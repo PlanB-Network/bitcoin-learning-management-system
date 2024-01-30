@@ -11,7 +11,7 @@
       "rabbitholeDigger": "Creuseur de terrier"
     },
     "headerLink": "Devenir sponsor de la communauté",
-    "manifesto": "Nous croyons en l'avenir décentralisé que Bitcoin offre.\n\nNotre mission est d'introduire Bitcoin à un milliard de personnes en une décennie. Nos outils sont l'éducation et l'information.\n\nNous soutenons les communautés locales de Bitcoiners en fournissant du contenu éducatif open-source et en offrant un réseau de mentors Bitcoin.\n\nNotre philosophie est inspirée du manifeste cypherpunk. Tout comme ils ont défendu la vie privée, nous défendons l'éducation. Nous croyons que la connaissance est le fondement de la liberté et du changement.\n\nNous sommes uniquement Bitcoin.\n\nNous prônons la responsabilité individuelle et l'indépendance offerte par la possession de vos propres clés.\n\nNous insistons sur la vérification, pas sur la confiance aveugle.\n\nNous croyons qu'en réparant l'argent, nous réparons le monde.\n\nNous sommes décentralisés et open-source, évitant tout point unique de défaillance.\n\nNous encourageons la libre diffusion de notre contenu.\n\nNous aspirons à un monde qui fonctionne du bas vers le haut, où l'individu est au centre.\n\nNous sommes DB. Nous simplifions, nous éduquons, nous partageons.\n\nRejoignez-nous dans notre mission d'orange-pill le monde.\n",
+    "manifesto": "Nous croyons en l'avenir décentralisé que Bitcoin offre.\n\nNotre mission est d'introduire Bitcoin à un milliard de personnes en une décennie. Nos outils sont l'éducation et l'information.\n\nNous soutenons les communautés locales de Bitcoiners en fournissant du contenu éducatif open-source et en offrant un réseau de mentors Bitcoin.\n\nNotre philosophie est inspirée du manifeste cypherpunk. Tout comme ils ont défendu la vie privée, nous défendons l'éducation. Nous croyons que la connaissance est le fondement de la liberté et du changement.\n\nNous sommes uniquement Bitcoin.\n\nNous prônons la responsabilité individuelle et l'indépendance offerte par la possession de vos propres clés.\n\nNous insistons sur la vérification, pas sur la confiance aveugle.\n\nNous croyons qu'en réparant l'argent, nous réparons le monde.\n\nNous sommes décentralisés et open-source, évitant tout point unique de défaillance.\n\nNous encourageons la libre diffusion de notre contenu.\n\nNous aspirons à un monde qui fonctionne du bas vers le haut, où l'individu est au centre.\n\nNous simplifions, nous éduquons, nous partageons.\n\nRejoignez-nous dans notre mission d'orange-pill le monde.\n",
     "pageSubtitle": "L'Université Sovereign offre gratuitement une éducation Bitcoin à tous.",
     "thanks1": "Un merci tout particulier à nos premiers soutiens, qui nous ont aidés à persévérer au fil des années.",
     "thanks2": "L'Université Souveraine est un effort communautaire. Cela a été rendu possible grâce à de nombreux contributeurs qui ont pris différents rôles, tels que des professeurs, des développeurs, des designers, etc. Un grand merci à tous."
@@ -88,6 +88,7 @@
       "secu": "Sécurité et confidentialité"
     },
     "chapter": {
+      "count": "Chapitre n°{{count}}",
       "finishCourse": "Terminer le cours",
       "next": "Terminé, passons au chapitre suivant !",
       "thanksTip": "Vous voulez dire merci ? Soutenez."
@@ -165,7 +166,7 @@
       "link": "Participez au réseau"
     },
     "section1": {
-      "allLevels": "De débutant à expert, apprenez tous sur Bitcoin ddepuis l'académie",
+      "allLevels": "De débutant à expert, apprenez tous sur Bitcoin depuis l'académie",
       "content1": "Le Bitcoin n'est pas seulement une technologie et une forme d'argent, mais aussi une façon révolutionnaire d'aborder la vie. Pour faire écho à cela, nos cours s'étendent sur une large gamme de domaines, permettant à chacun d'exceller dans ses centres d'intérêt et d'en approfondir sa compréhension.",
       "content2": " De votre premier cours de découverte du Bitcoin aux formations avancées sur les spécificités du protocole, nos cours vous aideront à naviguer dans le terrier du lapin en toute sécurité.",
       "content3": "N'hésitez plus. Le savoir vous attend.",
@@ -390,7 +391,7 @@
     "mining": {
       "description": "L'industrie minière est un sujet complexe composé de nombreux terriers du lapin. Ici, nous essaierons de vous accompagner dans votre voyage concernant l'utilisation de votre matériel et logiciels. De la modification d'un S9 en chauffage domestique à la tentative de gagner à la loterie avec un NerdMiner.",
       "shortDescription": "Solutions de minage de bitcoins",
-      "title": "Extraction"
+      "title": "Minage"
     },
     "node": {
       "bitcoin": {
@@ -489,7 +490,7 @@
     "manifesto": "Manifeste",
     "merchandising": "Marchandising",
     "merchants": "Marchands",
-    "mining": "Extraction",
+    "mining": "Minage",
     "more": "En savoir plus",
     "movieDocumentary": "Film documentaire",
     "newsletter": "Newsletter",
