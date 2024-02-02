@@ -291,7 +291,13 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
-const Header = ({ chapter }: { chapter: Chapter }) => {
+const Header = ({
+  chapter,
+  sections,
+}: {
+  chapter: Chapter;
+  sections: string[];
+}) => {
   const { t } = useTranslation();
   const isScreenMd = useGreater('sm');
 
@@ -310,29 +316,29 @@ const Header = ({ chapter }: { chapter: Chapter }) => {
       </div>
 
       <div className="mt-1 space-y-2 text-blue-800">
-        <div
-          className={`flex flex-col self-stretch rounded-3xl p-4 shadow-md ${
-            isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
-          } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
-        >
-          <h3
-            className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
-            onClick={() => setIsContentExpanded(!isContentExpanded)}
+        {sections.length > 0 && (
+          <div
+            className={`flex flex-col self-stretch rounded-3xl p-4 shadow-md ${
+              isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
+            } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
           >
-            <span
-              className={`mr-3 text-2xl ${
-                isContentExpanded ? 'rotate-90' : ''
-              }`}
+            <h3
+              className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
+              onClick={() => setIsContentExpanded(!isContentExpanded)}
             >
-              {'> '}
-            </span>
-            <span>{t('courses.details.objectivesTitle')}</span>
-          </h3>
-          {isContentExpanded && (
-            <div className="px-5 text-sm md:text-base">
-              <ul className="list-inside text-sm">
-                {chapter.course.objectives?.map(
-                  (goal: string, index: number) => (
+              <span
+                className={`mr-3 text-2xl ${
+                  isContentExpanded ? 'rotate-90' : ''
+                }`}
+              >
+                {'> '}
+              </span>
+              <span>{t('courses.details.objectivesTitle')}</span>
+            </h3>
+            {isContentExpanded && (
+              <div className="px-5 text-sm md:text-base">
+                <ul className="list-inside text-sm">
+                  {sections.map((goal: string, index: number) => (
                     <li className="mt-1" key={index}>
                       <span className="mr-3 text-blue-300 opacity-50">
                         {'▶'}
@@ -344,12 +350,12 @@ const Header = ({ chapter }: { chapter: Chapter }) => {
                         {goal.slice(1)}
                       </span>
                     </li>
-                  ),
-                )}
-              </ul>
-            </div>
-          )}
-        </div>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
@@ -490,6 +496,23 @@ export const CourseChapter = () => {
     }
   }, [quizzArray]);
 
+  const sections: string[] = useMemo(() => {
+    if (chapter !== undefined) {
+      const regex = /^### (.+)$/gm;
+
+      const sections: string[] = [];
+
+      let match;
+      while ((match = regex.exec(chapter.raw_content)) !== null) {
+        sections.push(match[1]);
+      }
+
+      return sections;
+    } else {
+      return [];
+    }
+  }, [chapter]);
+
   if (!chapter && isFetched) {
     navigate({ to: '/404' });
   }
@@ -509,7 +532,7 @@ export const CourseChapter = () => {
             <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
-                  <Header chapter={chapter} />
+                  <Header chapter={chapter} sections={sections} />
                   <MarkdownContent chapter={chapter} />
                   {questionsArray && questionsArray.length > 0 && (
                     <>
