@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
+import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { Button } from '../../../atoms/Button';
 import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
@@ -375,7 +376,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
   return (
     <div>
       <Link
-        className="flex w-full justify-end pt-10"
+        className="flex w-full justify-end pt-5 md:pt-10"
         to={
           isLastChapter
             ? '/courses/$courseId'
@@ -511,11 +512,19 @@ export const CourseChapter = () => {
                   <Header chapter={chapter} />
                   <MarkdownContent chapter={chapter} />
                   {questionsArray && questionsArray.length > 0 && (
-                    <QuizzCard
-                      name={chapter.course.id}
-                      chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                      questions={questionsArray}
-                    />
+                    <>
+                      <div className="flex items-center">
+                        <img src={QuizIcon} className="ml-4 h-6 w-6" alt="" />
+                        <p className="ml-2 text-lg font-medium text-blue-900">
+                          {t('courses.quizz.quizz')}
+                        </p>
+                      </div>
+                      <QuizzCard
+                        name={chapter.course.id}
+                        chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                        questions={questionsArray}
+                      />
+                    </>
                   )}
                   <BottomButton chapter={chapter} />
                 </div>

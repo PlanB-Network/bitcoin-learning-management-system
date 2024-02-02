@@ -83,9 +83,9 @@ export const CoursesMarkdownBody = ({
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-14 h-10 w-10" />
+                <VideoSVG className="mb-2 ml-4 h-10 w-10" />
                 <div className="ml-2">
-                  <p className="text-sm font-medium text-blue-900">Video</p>
+                  <p className="text-lg font-medium text-blue-900">Video</p>
                 </div>
               </div>
               <div className="relative pt-[56.25%]">
