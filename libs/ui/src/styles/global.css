@@ -19,6 +19,25 @@
 }
 
 @font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  src: url('../assets/fonts/rubik/Rubik-VariableFont_wght.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: italic;
+  src: url('../assets/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+}
+
+/* @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
@@ -66,7 +85,7 @@
     local(''),
     url('../assets/fonts/poppins-v5-latin-700.woff2') format('woff2'),
     url('../assets/fonts/poppins-v5-latin-700.woff') format('woff');
-}
+} */
 
 @layer base {
   :root {
@@ -85,7 +104,7 @@
   }
 
   * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
   }
 
   body {

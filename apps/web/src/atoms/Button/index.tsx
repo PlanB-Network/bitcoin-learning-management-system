@@ -21,7 +21,7 @@ interface ButtonProps
 const classesBySize = {
   xs: 'px-2 py-1 text-xs/5',
   s: 'px-3 py-1.5 text-sm font-semibold',
-  m: 'px-5 py-2 text-base font-semibold',
+  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base !font-medium md:font-semibold',
   l: 'px-8 py-2.5 text-lg font-semibold',
   xl: 'px-12 py-3 text-xl font-semibold',
 };
@@ -30,8 +30,7 @@ const classesByVariant = {
   primary:
     'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
   tertiary: 'bg-orange-600 text-white font-normal',
-  secondary:
-    'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-100',
+  secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
   soft: 'bg-blue-50 text-blue-600 shadow-sm hover:bg-blue-100',
   text: '',
 };

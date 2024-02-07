@@ -169,7 +169,7 @@ export const Header = () => {
     },
     {
       id: 'about-us',
-      title: t('words.about-us'),
+      title: t('words.about'),
       path: Routes.Manifesto,
       items: [
         {
@@ -293,11 +293,11 @@ export const Header = () => {
     },
   ];
 
-  const isScreenMd = useGreater('md');
+  const isScreenLg = useGreater('lg');
 
   return (
-    <header className="bg-blue-1000 sticky left-0 top-0 z-20 flex w-full flex-row place-items-center justify-between p-3 px-4 md:min-h-[96px] lg:px-12">
-      {isScreenMd ? (
+    <header className="bg-gradient-blue sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12">
+      {isScreenLg ? (
         <FlyingMenu
           onClickLogin={() => {
             setAuthMode(AuthModalState.SignIn);

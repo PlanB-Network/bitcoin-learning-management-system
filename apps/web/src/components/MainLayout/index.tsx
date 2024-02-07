@@ -15,7 +15,7 @@ interface MainLayoutProps {
 
 export const MainLayout = ({
   children,
-  variant = 'light',
+  variant = 'dark',
   showFooter = true,
   footerVariant,
   footerColor,
@@ -30,7 +30,7 @@ export const MainLayout = ({
           ? 'bg-gray-100'
           : variant === 'blue'
           ? 'bg-blue-200'
-          : 'bg-primary-1000',
+          : 'bg-blue-1000',
       )}
       ref={box}
     >
