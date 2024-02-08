@@ -159,56 +159,60 @@
   },
   "home": {
     "header": {
-      "content1": "La piattaforma PlanB mira a fornire i migliori strumenti e contenuti educativi in tutto il mondo per aiutare le persone a recuperare la loro sovranità.",
-      "content2": "Dagli individui alle comunità, siamo qui per aiutarvi lungo il vostro viaggio.",
+      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "Per educatori e creatori",
       "globalNetwork": "Rete Globale Bitcoin",
-      "link": "Entrare a far parte della rete"
+      "welcome": "Welcome to PlanB Network",
+      "link": "Entrare a far parte della rete",
+      "startLink": "Start Learning"
     },
-    "section1": {
-      "allLevels": "Dal principiante all'avanzato, impara Bitcoin nell'accademia",
-      "content1": "Bitcoin non è solo una tecnologia e una forma di denaro, ma anche un modo rivoluzionario di approcciarsi alla vita. Per riecheggiare questo, i nostri corsi coprono una vasta gamma di settori, consentendo a ciascun individuo di eccellere nelle sue aree di interesse e di approfondire la loro comprensione.",
-      "content2": " Dal tuo primo corso Bitcoin al profondo delle specifiche del protocollo, i nostri corsi ti aiuteranno a navigare in modo sicuro la tana del bianconiglio.",
-      "content3": "Non c'è ragione di esitare. La conoscenza ti aspetta.",
-      "content4": "Qui potete trovare corsi su vari argomenti quali:",
-      "interested": "Interessato a Bitcoin ?",
-      "link": "Controlla l'accademia"
+    "numbersSection": {
+      "networkMember": "Betwork Member"
     },
-    "section2": {
-      "content1": "Al PlanB, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per valorizzare miliardi di persone, stiamo progettando questa piattaforma per essere multilingue e accessibile a tutti.",
-      "content2": "La piattaforma attualmente supporta 7 lingue, ogni mese ne vengono aggiunte altre. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner di tutto il mondo.",
-      "content3": "Anche tu puoi avviare una rete locale nel tuo paese!",
-      "everythingTranslated": "Tutto è tradotto in lingue locali",
-      "link": "Aiutaci a tradurre l'accademia ",
-      "noBarrier": "Nessuna barriera linguistica qui."
+    "sectionEducation": {
+      "title": "From beginner to advanced",
+      "subtitle": "Learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Check the academy"
     },
-    "section3": {
-      "aboutUs": "Un po' su di noi",
-      "bitcoinFocusContent": "Ci concentriamo sulla rivoluzione Bitcoin nel suo insieme, dal suo livello base a varie comunicazioni peer-to-peer intorno ad esso",
+    "sectionNetwork": {
+      "title": "From beginner to advanced",
+      "subtitle": "Learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Be part of the network"
+    },
+    "tutorialSection": {
+      "title": "Helping Bitcoin communities grow is our mission",
+      "subtitle1": "Let us help you master the technology,",
+      "subtitle2": "read and hear about Bitcoin!",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
+      "content2": "There's no reason to hesitate. Knowledge awaits you.",
+      "link": "See all tutorials"
+    },
+    "aboutUsSection": {
+      "title": "Who are we ?",
+      "subtitle": "A little bit about us",
+      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
       "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusTitleMobile": "Focalizzato su Bitcoin",
-      "communityContent": "Siamo prima di tutto una comunità di appassionati che si aiutano a vicenda nel loro viaggio in Bitcoin",
-      "communityTitle": "Comunità",
-      "communityTitleMobile": "Focalizzato sulla comunità",
-      "content1": "Oltre ai corsi, la nostra grande quantità di tutorial ti aiuterà a padroneggiare diverse tecnologie, come portafogli, soluzioni per commercianti, scambi & mercati, nodi, mining, e soluzioni per la privacy. E pichè questo non è ancora sufficiente, una grande quantità di risorse come i libri, podcast o video, sono classificati, ordinati e resi disponibili sulla piattaforma.",
-      "content2": "Il nostro obiettivo è quello di fornirti gli strumenti per avere successo.",
-      "content3": "PlanB è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e l'appartenenza alla comunità. Insieme, hanno deciso di costruire PlanB e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
-      "helpingCommunities": "La nostra missione è favorire la crescita delle comunità Bitcoin ",
-      "letsHelpYou": "Ti aiutiamo a padroneggiare la tecnologia, leggere e sentire di Bitcoin!",
-      "openSourceContent": "Il nostro obiettivo è promuovere il libero flusso di conoscenze e contribuire a costruire più soluzioni open source",
+      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
       "openSourceTitle": "Open source",
-      "privacyContent": "Riteniamo che la privacy sia uno dei diritti umani fondamentali ed essenziali per il progresso",
+      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "communityTitle": "Community",
+      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
       "privacyTitle": "Privacy",
-      "privacyTitleMobile": "Focalizzato sulla privacy",
-      "seeResources": "Vedi tutte le risorse",
-      "seeResourcesMobile": "Dai un'occhiata a tutte le nostre risorse",
-      "seeTutorials": "Vedi tutti i tutorial",
-      "seeTutorialsMobile": "Dai un’occhiata a tutti i nostri tutorial"
+      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
     },
-    "section4": {
-      "content1": "Il PlanB è orgoglioso di collaborare con molte aziende bitcoin in tutto il mondo al fine di fornire le migliori risorse educative possibili! ",
-      "planB": "PlanB è open source al 100% grazie al nostro generoso patreon",
-      "together": "Insieme rendiamo migliore l'istruzione di Bitcoin! "
+    "languageSection": {
+      "title": "No language barrier here.",
+      "subtitle": " Everything is translated to local languages",
+      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
+      "content2": "You too can start bootstrapping your own local network in your country!",
+      "link": "Help us translate the academy"
+    },
+    "patreonSection": {
+      "title": "Together let’s make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patreon",
+      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     }
   },
   "imagesAlt": {
@@ -225,6 +229,8 @@
     "flagsInCircle": "una cerchia di bandiere",
     "forwardArrow": "una freccia in avanti",
     "github": "l'icona di github",
+    "orangePill": "an orange pill",
+    "printedCircuits": "a printed circuits",
     "rabbit404": "un coniglio che illumina con una torcia un cartello 404",
     "rabbitClassroom": "conigli all'interno di un'aula",
     "rabbitLibrary": "un coniglio che legge un libro",
@@ -471,6 +477,7 @@
     "documentaries": "Documentari",
     "donations": "Donazioni",
     "economy": "Economia",
+    "education": "Education",
     "email": "Email",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
@@ -490,9 +497,12 @@
     "manifesto": "Manifesto",
     "merchandising": "Merchandising",
     "merchants": "Mercanti",
+    "members": " Members",
     "mining": "Estrazione",
     "more": "Altro",
     "movieDocumentary": "Documentario Del Film",
+    "network": "Network",
+    "networkMember": "Network Member",
     "newsletter": "Newsletter",
     "newsletters": "Le Newsletter",
     "node": "Nodo",
