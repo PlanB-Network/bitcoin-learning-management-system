@@ -10,7 +10,7 @@ import { BsTwitter } from 'react-icons/bs';
 import { cn } from '@sovereign-university/ui';
 
 import EducationMain from '../../../assets/home/education-main.png';
-import Flags from '../../../assets/home/flags.svg';
+import Flags from '../../../assets/home/flags.png';
 import FlagsSmall from '../../../assets/home/flags_small.png';
 import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.png';
@@ -77,7 +77,7 @@ export const Home = () => {
               loading="lazy"
             />
           </div>
-          <div className="2xl: col-span-11 w-full content-center self-center px-6 text-center lg:col-span-5">
+          <div className="col-span-11 w-full content-center self-center px-6 text-center lg:col-span-5">
             <p
               className={cn(
                 paragraphCss,
@@ -514,16 +514,16 @@ export const Home = () => {
                 </Button>
               </a>
             </div>
-            <div className="absolute -right-[410px] z-0 hidden md:-right-52 xl:static xl:col-span-1 xl:flex xl:justify-self-center">
+            <div className="z-0 col-span-1 hidden h-full w-[23rem] md:flex">
               <img
                 src={Flags}
-                className="h-full w-auto object-cover"
+                className="h-auto w-auto object-cover"
                 alt={t('')}
                 loading="lazy"
               />
             </div>
 
-            <div className="absolute -right-[210px] z-0 flex md:-right-52 xl:hidden">
+            <div className="absolute -right-[210px] z-0 flex md:-right-52 md:hidden">
               <img
                 src={FlagsSmall}
                 className="h-full w-auto object-cover"
