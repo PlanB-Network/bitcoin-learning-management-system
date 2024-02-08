@@ -159,56 +159,60 @@
   },
   "home": {
     "header": {
-      "content1": "PlanBプラットフォームは、みなさん一人ひとりが主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目的としています。",
-      "content2": "個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをするためにここにいます。",
+      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "すべての教育関係者と開発者のために",
       "globalNetwork": "グローバル・ビットコイン・ネットワーク",
-      "link": "ネットワークに参加する"
+      "welcome": "Welcome to PlanB Network",
+      "link": "ネットワークに参加する",
+      "startLink": "Start Learning"
     },
-    "section1": {
-      "allLevels": "初心者から上級者まで、アカデミーでビットコインを学ぼう",
-      "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがっており、みなさん一人ひとりが興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようになっています。",
-      "content2": " ビットコインを初めて学ぶ初心者向けコースから、プロトコルの詳細を深く掘り下げる上級者向けコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートに役立ちます。",
-      "content3": "迷いは不要です。知識の泉があなたを待っています。",
-      "content4": "ここでは、次のようなトピックに関するさまざまなコースを見つけることができます：",
-      "interested": "ビットコインに興味がありますか？",
-      "link": "アカデミーをチェックする"
+    "numbersSection": {
+      "networkMember": "Betwork Member"
     },
-    "section2": {
-      "content1": "PlanBでは、ビットコインはすべての人に関わるグローバルな革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人々がアクセスできるように設計しています。",
-      "content2": "このプラットフォームは現在7つの言語をサポートしており、さらに毎月追加されています。この多言語化を実現するために、私たちはAIと世界中のビットコイナーたちの情熱を掛け合わせています。",
-      "content3": "あなたも自分の国で独自のローカル・ネットワークを開始できます！",
-      "everythingTranslated": "すべてがローカル言語に翻訳されています",
-      "link": "アカデミーの翻訳にご協力ください ",
-      "noBarrier": "言語の壁なんてありません。"
+    "sectionEducation": {
+      "title": "From beginner to advanced",
+      "subtitle": "Learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Check the academy"
     },
-    "section3": {
-      "aboutUs": "私たちについて少しだけ",
-      "bitcoinFocusContent": "私たちは、ビットコイン革命のベースレイヤーから、それを取り巻く様々なピアツーピア・コミュニケーションに至るまで、全体としてビットコイン革命に焦点を当てています",
-      "bitcoinFocusTitle": "ビットコイン・ファースト",
-      "bitcoinFocusTitleMobile": "ビットコインに焦点を当てる",
-      "communityContent": "私たちは、何よりもまず第一に、ビットコインの旅で互いに助け合う愛好家コミュニティです",
-      "communityTitle": "コミュニティ",
-      "communityTitleMobile": "コミュニティに焦点を当てる",
-      "content1": "コースの他にも、ウォレット、マーチャント・ソリューション、取引所、ノード、マイニング、プライバシー・ソリューションなど、さまざまなテクノロジーをマスターするのに役立つチュートリアルが多数用意されています。また、これだけではまだ不十分ですから、書籍、ポッドキャスト、ビデオなどの多くのリソースをわかりやすく分類し、順序立てて、プラットフォーム上で利用できるようになっています。",
-      "content2": "私たちのゴールは、成功するためのツールを提供することです。",
-      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン企業によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を開始しました。",
-      "helpingCommunities": "ビットコイン・コミュニティの成長を支援することが私たちの使命です ",
-      "letsHelpYou": "ビットコインについて読み、聞き、技術をマスターするお手伝いをさせてください！",
-      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築を支援することを目指しています",
-      "openSourceTitle": "オープンソース",
-      "privacyContent": "私たちは、プライバシーは最も基本的な人権のひとつであり、進歩のために必要不可欠であると考えます",
-      "privacyTitle": "プライバシー",
-      "privacyTitleMobile": "プライバシーに焦点を当てる",
-      "seeResources": "すべてのリソースを見る",
-      "seeResourcesMobile": "すべてのリソースを見る",
-      "seeTutorials": "すべてのチュートリアルを見る",
-      "seeTutorialsMobile": "すべてのチュートリアルを見る"
+    "sectionNetwork": {
+      "title": "From beginner to advanced",
+      "subtitle": "Learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Be part of the network"
     },
-    "section4": {
-      "content1": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業との連携を心より誇りに思っています！ ",
-      "planB": "PlanBネットワークは、寛大なパトロンのおかげで完全なオープンソースを実現しています",
-      "together": "一緒にビットコイン教育をより良くしていきましょう！ "
+    "tutorialSection": {
+      "title": "Helping Bitcoin communities grow is our mission",
+      "subtitle1": "Let us help you master the technology,",
+      "subtitle2": "read and hear about Bitcoin!",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
+      "content2": "There's no reason to hesitate. Knowledge awaits you.",
+      "link": "See all tutorials"
+    },
+    "aboutUsSection": {
+      "title": "Who are we ?",
+      "subtitle": "A little bit about us",
+      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
+      "bitcoinFocusTitle": "Bitcoin focus",
+      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "openSourceTitle": "Open source",
+      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "communityTitle": "Community",
+      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
+      "privacyTitle": "Privacy",
+      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+    },
+    "languageSection": {
+      "title": "No language barrier here.",
+      "subtitle": " Everything is translated to local languages",
+      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
+      "content2": "You too can start bootstrapping your own local network in your country!",
+      "link": "Help us translate the academy"
+    },
+    "patreonSection": {
+      "title": "Together let’s make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patreon",
+      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     }
   },
   "imagesAlt": {
@@ -225,6 +229,8 @@
     "flagsInCircle": "旗のサークル",
     "forwardArrow": "前方の矢印",
     "github": "GitHubのアイコン",
+    "orangePill": "an orange pill",
+    "printedCircuits": "a printed circuits",
     "rabbit404": "404の看板を懐中電灯で照らすうさぎ",
     "rabbitClassroom": "教室の中のうさぎ",
     "rabbitLibrary": "読書中のうさぎ",
@@ -471,6 +477,7 @@
     "documentaries": "ドキュメンタリー",
     "donations": "寄付",
     "economy": "経済",
+    "education": "Education",
     "email": "Eメール",
     "exchanges": "取引所",
     "followUs": "フォローする",
@@ -490,9 +497,12 @@
     "manifesto": "マニフェスト",
     "merchandising": "マーチャンダイズ",
     "merchants": "マーチャント",
+    "members": " Members",
     "mining": "マイニング（採掘）",
     "more": "もっと見る",
     "movieDocumentary": "ドキュメンタリー映画",
+    "network": "Network",
+    "networkMember": "Network Member",
     "newsletter": "ニュースレター",
     "newsletters": "ニュースレター",
     "node": "ノード",
