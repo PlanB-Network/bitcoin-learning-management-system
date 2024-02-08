@@ -9,12 +9,14 @@ import { BsTwitter } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
+import EducationMain from '../../../assets/home/education-main.png';
 import Flags from '../../../assets/home/flags.svg';
+import FlagsSmall from '../../../assets/home/flags_small.png';
 import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.png';
 import HeaderRight from '../../../assets/home/header_right.svg';
 import NetworkMain from '../../../assets/home/network-main.svg';
-import ProfessorsTile from '../../../assets/home/professorsTile.png';
+import ProfessorsTile from '../../../assets/home/professors.svg';
 import Sponsors from '../../../assets/home/sponsors.png';
 import WolProfile1 from '../../../assets/home/wol-profil-1.png';
 import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
@@ -202,11 +204,9 @@ export const Home = () => {
               </Button>
             </Link>
 
-            {/* <div className="z-0 -mt-32 h-96 w-full bg-[url('/src/assets/home/education-main.svg')]"></div> */}
             <img
-              // EducationMain
-              src={NetworkMain}
-              className="-mt-32"
+              src={EducationMain}
+              className="mt-6"
               alt={t('imagesAlt.educationCircle')}
               loading="lazy"
             />
@@ -217,13 +217,13 @@ export const Home = () => {
               {t('words.network')}
             </p>
             <p className={cn(titleCss, 'mt-6')}>
-              {t('home.sectionEducation.title')}
+              {t('home.sectionNetwork.title')}
             </p>
             <p className={cn(titleCss, 'text-orange-500')}>
-              {t('home.sectionEducation.subtitle')}
+              {t('home.sectionNetwork.subtitle')}
             </p>
             <p className={cn(paragraphCss, 'mt-6 z-10')}>
-              {t('home.sectionEducation.content1')}
+              {t('home.sectionNetwork.content1')}
             </p>
             <Link
               to={'/node-network'}
@@ -262,16 +262,46 @@ export const Home = () => {
             </p>
             <div className="mt-4 flex flex-row justify-center gap-8 px-6 md:mt-12 xl:px-20">
               <div className="flex flex-col gap-8">
-                <TwitterCard />
-                <TwitterCard />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
               </div>
               <div className="hidden flex-col gap-8 lg:flex">
-                <TwitterCard />
-                <TwitterCard />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
               </div>
               <div className="hidden flex-col gap-8 lg:flex">
-                <TwitterCard />
-                <TwitterCard />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
+                <TwitterCard
+                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
+                  name="name"
+                  handle="handle"
+                  image={WolProfile1}
+                />
               </div>
             </div>
           </div>
@@ -280,18 +310,25 @@ export const Home = () => {
     );
   };
 
-  const TwitterCard = () => {
+  const TwitterCard = ({
+    text,
+    name,
+    handle,
+    image,
+  }: {
+    text: string;
+    name: string;
+    handle: string;
+    image: any;
+  }) => {
     return (
       <div className="rounded-[32px] bg-[#ffffff0d] p-8 text-start">
-        <p className="font-semibold text-gray-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam,
-          sit amet scelerisque lectus venenatis vel.
-        </p>
+        <p className="font-semibold text-gray-400">{text}</p>
         <div className="mt-4 flex flex-row items-center">
-          <img src={WolProfile1} alt={t('')} loading="lazy" />
+          <img src={image} alt={t('')} loading="lazy" />
           <div className="ml-4">
-            <p className="font-bold leading-4 text-orange-500">Name</p>
-            <p className="font-medium text-gray-400">@handle</p>
+            <p className="font-bold leading-4 text-orange-500">{name}</p>
+            <p className="font-medium text-gray-400">{handle}</p>
           </div>
           <div className="ml-auto mr-4 mt-2">
             <BsTwitter size={24} className="cursor-pointer text-gray-400" />
@@ -316,19 +353,21 @@ export const Home = () => {
           <p className={cn(titleCss, 'max-w-[45rem] md:text-orange-500')}>
             {t('home.tutorialSection.subtitle1')}
           </p>
-          <p className={cn(titleCss, 'max-w-[45rem] md:text-orange-500')}>
-            {t('home.tutorialSection.subtitle2')}
-          </p>
-          <p className={cn(paragraphCss, 'mt-4 max-w-[55rem]')}>
+          <p className={cn(paragraphCss, 'mt-4 max-w-[60rem]')}>
             {t('home.tutorialSection.content1')}
           </p>
-          <p className={cn(paragraphCss, 'mt-4 max-w-[55rem]')}>
-            {t('home.tutorialSection.content2')}
-          </p>
 
-          <p className={cn(titleCss, 'mt-12')}>{t('words.tutorials')}</p>
+          <Link to={'/tutorials'} className="mt-6">
+            <Button
+              variant="tertiary"
+              className="rounded-3xl !text-black md:mt-4"
+              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
+            >
+              {t('home.tutorialSection.link')}
+            </Button>
+          </Link>
 
-          <div className="mt-12 grid w-full grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
+          <div className="mt-6 grid w-full grid-cols-2 gap-x-6 gap-y-4 md:mt-12 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
                 key={tutorialCategory.name}
@@ -343,16 +382,6 @@ export const Home = () => {
               </Link>
             ))}
           </div>
-
-          <Link to={'/tutorials'} className="mt-6">
-            <Button
-              variant="tertiary"
-              className=" mt-4 rounded-3xl !text-black"
-              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
-            >
-              {t('home.tutorialSection.link')}
-            </Button>
-          </Link>
         </div>
       </div>
     );
@@ -379,7 +408,7 @@ export const Home = () => {
             loading="lazy"
           />
 
-          <div className="mt-6 flex flex-col items-center gap-6 text-center md:flex-row">
+          <div className="-mt-9 flex flex-col items-center gap-6 text-center md:flex-row">
             <div className="flex max-w-sm flex-col items-center">
               <BitcoinCircle />
               <div className="mt-2 text-sm font-semibold md:text-2xl">
@@ -438,7 +467,10 @@ export const Home = () => {
           )}
         >
           <div className="z-10 col-span-3 flex flex-col py-12 pr-6">
-            <p className={cn(titleCss, 'font-semibold')}>
+            <p className={cn(paragraphCss, 'mt-5 !text-black font-medium')}>
+              {t('home.languageSection.subtitle2')}
+            </p>
+            <p className={cn(titleCss, 'font-semibold mt-2')}>
               {t('home.languageSection.title')}
             </p>
             <p className={cn(titleCss, 'font-semibold text-black')}>
@@ -465,9 +497,18 @@ export const Home = () => {
               </Button>
             </a>
           </div>
-          <div className="absolute -right-20 z-0 md:-right-20 xl:static xl:col-span-1 xl:justify-self-center">
+          <div className="absolute -right-[410px] z-0 hidden md:-right-52 xl:static xl:col-span-1 xl:flex xl:justify-self-center">
             <img
               src={Flags}
+              className="h-full w-auto object-cover"
+              alt={t('')}
+              loading="lazy"
+            />
+          </div>
+
+          <div className="absolute -right-[210px] z-0 flex md:-right-52 xl:hidden">
+            <img
+              src={FlagsSmall}
               className="h-full w-auto object-cover"
               alt={t('')}
               loading="lazy"
