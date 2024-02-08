@@ -319,7 +319,7 @@ export const Home = () => {
     text: string;
     name: string;
     handle: string;
-    image: any;
+    image: string;
   }) => {
     return (
       <div className="rounded-[32px] bg-[#ffffff0d] p-8 text-start">
