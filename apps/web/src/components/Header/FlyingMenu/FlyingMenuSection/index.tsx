@@ -28,10 +28,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
 
       return (
         <Link
-          className={compose(
-            'text-base text-white uppercase xl:text-lg',
-            fontWeight,
-          )}
+          className={compose('text-base font-medium xl:text-lg', fontWeight)}
           to={section.path}
           /* TODO: fix */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,12 +50,6 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           {section.title}
         </button>
       );
-
-    return (
-      <Popover.Button className="inline-flex items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg">
-        {section.title}
-      </Popover.Button>
-    );
   }, [currentSection, section]);
 
   if (!('items' in section)) return sectionTitle;

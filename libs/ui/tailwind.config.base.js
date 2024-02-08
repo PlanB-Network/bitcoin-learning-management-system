@@ -12,6 +12,7 @@ const baseConfig = {
     colors: {
       transparent: 'transparent',
       white: '#FFFFFF',
+      black: '#000000',
       blue: {
         100: '#9CB2E2',
         200: '#7593D7',
@@ -22,7 +23,7 @@ const baseConfig = {
         700: '#17284F',
         800: '#1B263E',
         900: '#182237',
-        1000: '#080e1d',
+        1000: '#070a14',
       },
       // Does not work on firebox
       // blue: {
@@ -51,7 +52,7 @@ const baseConfig = {
         100: '#F2F2F2',
         200: '#D9D9D9',
         300: '#BFBFBF',
-        400: '#8C8C8C',
+        400: '#808080',
         500: '#737373',
         600: '#A6A6A6',
         700: '#595959',
@@ -134,7 +135,11 @@ const baseConfig = {
         md: `calc(var(--radius) - 2px)`,
         sm: 'calc(var(--radius) - 4px)',
       },
-      fontFamily: { primary: ['Poppins'], body: ['SpaceMono'] },
+      fontFamily: {
+        primary: ['Rubik'],
+        body: ['SpaceMono'],
+        mono: ['Manrope'],
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -152,7 +157,10 @@ const baseConfig = {
       backgroundImage: {
         'gradient-diagonal':
           'linear-gradient(175deg, #20376C 83%, rgba(255,255,255,1) 85%);',
+        'topics-circle': "url('/assets/home/education-main.svg')",
+        'gradient-blue': 'linear-gradient(0deg, #060a13, #070a13);',
       },
+      backgroundColor: 'bg-gradient-blue',
       boxShadow: {
         'md-dark':
           '0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);',

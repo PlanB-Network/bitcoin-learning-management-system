@@ -22,7 +22,7 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
               className={`flex h-8 w-20 place-items-center justify-center rounded-2xl border-2 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-20 lg:text-base  ${
                 activeCategories.includes(prefix)
                   ? 'bg-orange-500'
-                  : 'bg-blue-1000'
+                  : 'bg-gradient-blue'
               }`}
               onClick={() => setActiveCategories(prefix)}
             >

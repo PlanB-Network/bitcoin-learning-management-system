@@ -70,7 +70,7 @@ export const SponsorsAndContributors = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="bg-blue-1000 flex flex-col justify-center">
+      <div className="bg-gradient-blue flex flex-col justify-center">
         <div className="flex flex-wrap justify-evenly text-center text-xl  text-white sm:py-20">
           <div>
             <img className="mx-auto h-48" src={headerImage} alt="Rabbit" />

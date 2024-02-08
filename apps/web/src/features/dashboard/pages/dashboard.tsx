@@ -97,7 +97,7 @@ export const Dashboard = () => {
 
   return (
     <MainLayout variant="dark" footerVariant="dark">
-      <div className="bg-blue-1000 min-h-screen p-10">
+      <div className="bg-gradient-blue min-h-screen p-10">
         <div className="mx-auto grid min-h-[800px] max-w-4xl grid-cols-4 overflow-hidden rounded-3xl bg-gray-200 shadow xl:max-w-5xl">
           <div className="col-span-1 flex max-w-sm flex-col items-start justify-start space-y-8 bg-orange-500 p-4">
             <div className="w-full px-2">

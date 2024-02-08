@@ -17,14 +17,14 @@ export const Resources = () => {
   const { t } = useTranslation();
 
   return (
-    <MainLayout footerVariant="light">
-      <div className="flex flex-col justify-center bg-gray-100">
+    <MainLayout footerVariant="course">
+      <div className="flex flex-col justify-center">
         <PageHeader>
           <PageTitle>{t('resources.pageTitle')}</PageTitle>
           <PageSubtitle>{t('resources.pageSubtitle')}</PageSubtitle>
           <PageDescription>{t('resources.pageDescription')}</PageDescription>
 
-          <div className="bg-blue-1000 grid w-full grid-cols-2 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
+          <div className="bg-gradient-blue grid w-full grid-cols-2 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}

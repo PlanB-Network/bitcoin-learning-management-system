@@ -5,31 +5,22 @@ import {
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
+import { BsTwitter } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
-import CoursesInCircle from '../../../assets/home/courses_in_circle.svg?react';
-import FlagsInCircle from '../../../assets/home/flags_in_circle.svg';
-import Spiral from '../../../assets/home/spiral.svg?react';
-import SponsorBSun from '../../../assets/home/sponsor_b_sun.jpeg';
-import SponsorBase58 from '../../../assets/home/sponsor_base58.jpeg';
-import SponsorBlockstream from '../../../assets/home/sponsor_blockstream.jpeg';
-import SponsorBtcPay from '../../../assets/home/sponsor_btcpay.png';
-import SponsorCuboPlus from '../../../assets/home/sponsor_cuboplus.jpeg';
-import SponsorDB from '../../../assets/home/sponsor_db.png';
-import SponsorKeet from '../../../assets/home/sponsor_keet.png';
-import SponsorLnMarkets from '../../../assets/home/sponsor_lnmarkets.jpeg';
-import SponsorLuganoPlanB from '../../../assets/home/sponsor_lugano_planb.svg?react';
-import SponsorSynonym from '../../../assets/home/sponsor_synonym.jpeg';
-import SponsorTether from '../../../assets/home/sponsor_tether.png';
-import SponsorV from '../../../assets/home/sponsor_v.png';
-import SponsorWizardSardine from '../../../assets/home/sponsor_wizardsardine.jpeg';
-import WorldMap from '../../../assets/home/world_map.svg';
+import Flags from '../../../assets/home/flags.svg';
+import HeaderLeft from '../../../assets/home/header_left.svg';
+import HeaderPill from '../../../assets/home/header_pill.png';
+import HeaderRight from '../../../assets/home/header_right.svg';
+import NetworkMain from '../../../assets/home/network-main.svg';
+import ProfessorsTile from '../../../assets/home/professorsTile.png';
+import Sponsors from '../../../assets/home/sponsors.png';
+import WolProfile1 from '../../../assets/home/wol-profil-1.png';
 import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
 import Groups from '../../../assets/icons/groups.svg?react';
 import OpenSource from '../../../assets/icons/open_source.svg?react';
 import VisibilityOff from '../../../assets/icons/visibility_off.svg?react';
-import PlanBTitle from '../../../assets/planb_logo_horizontal_white.svg?react';
 import { Button } from '../../../atoms/Button';
 import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
@@ -37,41 +28,30 @@ import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
+const titleCss = 'md:text-3xl font-semibold';
+const paragraphCss = 'text-xs text-gray-400 sm:text-sm lg:text-base';
+
 export const Home = () => {
   const { t } = useTranslation();
-  const isScreenXl = useGreater('xl');
-  const isScreenLg = useGreater('lg');
   const isScreenMd = useGreater('md');
 
-  const topics = [
-    'Bitcoin',
-    t('words.economy'),
-    'Lightning network',
-    t('courses.categories.fin'),
-    t('courses.categories.min'),
-    t('courses.categories.crypto'),
-    t('courses.categories.secu'),
-  ];
-  const resources = [
-    { name: t('words.books'), link: 'books' },
-    { name: t('words.podcasts'), link: 'podcasts' },
-    { name: t('words.builders'), link: 'builders' },
-    { name: t('words.toolkits'), link: 'bet' },
-  ];
   const sectionClass =
-    'flex flex-col w-[100%] items-center py-12 overflow-hidden font-light md:font-normal';
+    'flex flex-col w-[100%] items-center py-8 md:py-16 overflow-hidden font-light md:font-normal';
   const subSectionClass =
-    'px-6 md:px-12 lg:px-32 w-auto md:w-[50rem] lg:w-[70rem] xl:w-[90rem]';
+    'px-2 md:px-8 lg:px-24 w-auto md:w-[45rem] lg:w-[69rem] xl:w-[85rem] 2xl:w-[100rem]';
 
   const Page = () => {
     return (
       <MainLayout footerVariant="dark">
-        <div className="flex flex-col">
+        <div className="bg-gradient-blue flex flex-col px-4 text-white md:px-8 lg:px-12">
           <HeaderSection />
-          <Section1 />
-          <Section2 />
-          <Section3 />
-          <Section4 />
+          <NumberSection />
+          <EducationSection />
+          <WallOfLoveSection />
+          <TutorialSection />
+          <AboutUsSection />
+          <LanguageSection />
+          <PatreonSection />
         </div>
       </MainLayout>
     );
@@ -79,40 +59,60 @@ export const Home = () => {
 
   const HeaderSection = () => {
     return (
-      <div className={cn('bg-blue-1000 text-white', sectionClass)}>
+      <div className={cn(sectionClass)}>
         <div
-          className={cn(
-            'grid w-[80rem] grid-cols-1 md:grid-cols-2',
-            subSectionClass,
-          )}
+          className={cn('grid grid-cols-11 gap-8 lg:!px-8', subSectionClass)}
         >
-          <div className="col-span-1">
-            <div className="flex flex-row text-[49px] font-semibold">
-              <PlanBTitle height={'100%'} width={isScreenMd ? '70%' : 340} />
-            </div>
-            <p className="mb-3 pt-6 text-3xl font-semibold text-orange-500">
+          <div className="col-span-3 hidden items-start lg:flex">
+            <img
+              className="mt-9 h-[100] w-auto"
+              src={HeaderLeft}
+              alt={t('imagesAlt.printedCircuits')}
+              loading="lazy"
+            />
+          </div>
+          <div className="2xl: col-span-11 w-full content-center self-center px-6 text-center lg:col-span-5">
+            <p
+              className={cn(
+                paragraphCss,
+                'mt-0 font-medium uppercase text-white',
+              )}
+            >
+              {t('home.header.welcome')}
+            </p>
+            <p className="mt-6 text-xl font-semibold text-orange-500 md:text-4xl 2xl:text-5xl">
               {t('home.header.globalNetwork')}
             </p>
-            <p className="text-3xl font-semibold">
+            <p className="text-xl font-semibold md:mt-2 md:text-4xl 2xl:text-5xl">
               {t('home.header.forEducators')}
             </p>
-            <p className="mt-9 text-xl">{t('home.header.content1')}</p>
-            <p className="mt-9 text-xl">{t('home.header.content2')}</p>
-            <a href="/node-network" rel="noopener noreferrer">
-              <Button
-                variant="tertiary"
-                className="mt-9 hidden rounded-3xl md:flex"
-                iconRight={<AiOutlineRight />}
-              >
-                {t('home.header.link')}
-              </Button>
-            </a>
+            <p className={cn(paragraphCss, 'mt-2 lg:mt-9')}>
+              {t('home.header.content')}
+            </p>
+            <div className="mt-6 flex flex-row justify-center gap-4 lg:mt-9">
+              <a href="/courses" rel="noopener noreferrer">
+                <Button variant="tertiary" className="rounded-3xl !text-black">
+                  {t('home.header.startLink')}
+                </Button>
+              </a>
+              <a href="/node-network" rel="noopener noreferrer">
+                <Button variant="secondary" className="rounded-3xl !text-black">
+                  {t('home.header.link')}
+                </Button>
+              </a>
+            </div>
           </div>
-          <div className="col-span-1 flex items-center">
+          <div className="relative col-span-3 hidden items-start lg:flex">
             <img
-              className="mt-4 h-[100%] w-[100]"
-              src={WorldMap}
-              alt={t('imagesAlt.worldMap')}
+              className="z-10 -ml-16 mt-8 h-[18rem] w-auto xl:h-[24rem]"
+              src={HeaderPill}
+              alt={t('imagesAlt.orangePill')}
+              loading="lazy"
+            />
+            <img
+              className="absolute left-0 mt-9 h-[100] w-auto"
+              src={HeaderRight}
+              alt={t('imagesAlt.printedCircuits')}
               loading="lazy"
             />
           </div>
@@ -121,119 +121,355 @@ export const Home = () => {
     );
   };
 
-  const Section1 = () => {
-    let coursesInCircleMarginLeft = '';
-    if (isScreenXl) {
-      coursesInCircleMarginLeft = 'calc(-240px)';
-    } else if (isScreenLg) {
-      coursesInCircleMarginLeft = 'calc(-50vw + 240px)';
-    } else if (isScreenMd) {
-      coursesInCircleMarginLeft = 'calc(-50vw + 160px)';
-    }
+  const NumberSection = () => {
+    const element1css =
+      'text-3xl font-semibold md:text-4xl lg:text-6xl font-mono';
+    const element2css =
+      'text-xs font-semibold md:text-base lg:text-xl font-mono';
 
     return (
-      <>
-        <div
-          className={cn(sectionClass, 'bg-blue-1000 text-white py-0 md:py-6')}
-        >
-          <div className={cn('flex w-[80rem] flex-col', subSectionClass)}>
-            <p className="mb-3 text-3xl font-semibold text-orange-500">
-              {t('home.section1.interested')}
-            </p>
-            <p className="text-3xl font-semibold">
-              {t('home.section1.allLevels')}
-            </p>
-          </div>
-        </div>
-
-        <div
-          className={cn(
-            'bg-blue-1000 text-white relative py-0 md:pb-12',
-            sectionClass,
-          )}
-        >
-          <div
-            className={cn(
-              'grid grid-cols-1 md:grid-cols-2 pb-6',
-              subSectionClass,
-            )}
-          >
-            <div className="col-span-1 hidden items-center md:flex">
-              <p className="w-fit">
-                <CoursesInCircle
-                  height={isScreenLg ? 600 : 450}
-                  style={{
-                    // position: 'absolute',
-                    // left: '0px',
-                    // top: '0px',
-                    marginLeft: coursesInCircleMarginLeft,
-                    // width: '100%',
-                    filter: 'grayscale(1) contrast(1) opacity(0.5) ',
-                    // background:
-                    //   'linear-gradient(51deg, #1B253E, rgba(27, 37, 62, 0.00) 95.34%)',
-                  }}
-                />
-              </p>
+      <div className={cn(sectionClass, 'relative')}>
+        <div className="flex flex-col gap-3 md:flex-row md:gap-12 ">
+          <div className="flex flex-row justify-center gap-3 md:gap-12">
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>13+</span>
+              <span className={cn(element2css)}>
+                {t('words.networkMember')}
+              </span>
             </div>
-            <div className="col-span-1 flex flex-col">
-              <p className="text-xl">{t('home.section1.content1')}</p>
-              <p className="mt-9 text-xl">{t('home.section1.content2')}</p>
-              <p className="mt-9 text-xl">{t('home.section1.content3')}</p>
-              <p className="mt-9 text-xl">{t('home.section1.content4')}</p>
-              <div className="mt-2 flex flex-wrap gap-2 text-xl">
-                {topics.join(', ')}.
-              </div>
-              <Link
-                to={'/courses'}
-                className="mt-9 self-center rounded-3xl md:self-start"
-              >
-                <Button
-                  variant="tertiary"
-                  className=" rounded-3xl"
-                  iconRight={<AiOutlineRight />}
-                >
-                  {t('home.section1.link')}
-                </Button>
-              </Link>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>18+</span>
+              <span className={cn(element2css)}>{t('words.professors')}</span>
+            </div>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>12+</span>
+              <span className={cn(element2css)}>{t('words.courses')}</span>
+            </div>
+          </div>
+          <div className="flex flex-row justify-center gap-3 md:gap-12">
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>60+</span>
+              <span className={cn(element2css)}>{t('words.tutorials')}</span>
+            </div>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>694+</span>
+              <span className={cn(element2css)}>{t('words.members')}</span>
             </div>
           </div>
         </div>
-      </>
+        <img
+          className="absolute -right-16 h-40 w-auto overflow-hidden lg:hidden"
+          src={HeaderPill}
+          alt={t('imagesAlt.orangePill')}
+          loading="lazy"
+        />
+      </div>
     );
   };
 
-  const Section2 = () => {
+  const EducationSection = () => {
     return (
-      <div className={cn('bg-beige-300 text-blue-1000 md:py-16', sectionClass)}>
-        <div className={cn('grid grid-cols-1 md:grid-cols-2', subSectionClass)}>
-          <div className="col-span-1 flex flex-col md:items-center md:text-center">
-            <p className="mb-3 text-3xl font-semibold text-orange-500">
-              {t('home.section2.noBarrier')}
+      <div className={cn(sectionClass)}>
+        <div
+          className={cn(
+            'md:text-center grid grid-cols-2 items-start gap-12 md:gap-2',
+            subSectionClass,
+          )}
+        >
+          <div className="col-span-2 flex flex-col items-start md:col-span-1 md:items-center md:px-4">
+            <p className="rounded-lg bg-[#ffffff1a] px-4 py-2 text-xl font-semibold uppercase text-orange-500">
+              {t('words.education')}
             </p>
-            <p className="text-3xl font-medium">
-              {t('home.section2.everythingTranslated')}
+            <p className={cn(titleCss, 'mt-6')}>
+              {t('home.sectionEducation.title')}
             </p>
-            <p className="mt-9 text-xl">{t('home.section2.content1')}</p>
-            <p className="mt-9 text-xl">{t('home.section2.content2')}</p>
-            <p className="mt-9 text-xl">{t('home.section2.content3')}</p>
+            <p className={cn(titleCss, 'text-orange-500')}>
+              {t('home.sectionEducation.subtitle')}
+            </p>
+            <p className={cn(paragraphCss, 'mt-6 z-10')}>
+              {t('home.sectionEducation.content1')}
+            </p>
+            <Link
+              to={'/courses'}
+              className="z-10 mt-6 self-start rounded-3xl md:self-center"
+            >
+              <Button
+                variant="secondary"
+                className=" rounded-3xl !text-black"
+                iconRight={<AiOutlineRight />}
+              >
+                {t('home.sectionEducation.link')}
+              </Button>
+            </Link>
+
+            {/* <div className="z-0 -mt-32 h-96 w-full bg-[url('/src/assets/home/education-main.svg')]"></div> */}
+            <img
+              // EducationMain
+              src={NetworkMain}
+              className="-mt-32"
+              alt={t('imagesAlt.educationCircle')}
+              loading="lazy"
+            />
+          </div>
+
+          <div className="col-span-2 flex flex-col items-start md:col-span-1 md:items-center md:px-4">
+            <p className="rounded-lg bg-[#ffffff1a] px-4 py-2 text-xl font-semibold uppercase text-orange-500">
+              {t('words.network')}
+            </p>
+            <p className={cn(titleCss, 'mt-6')}>
+              {t('home.sectionEducation.title')}
+            </p>
+            <p className={cn(titleCss, 'text-orange-500')}>
+              {t('home.sectionEducation.subtitle')}
+            </p>
+            <p className={cn(paragraphCss, 'mt-6 z-10')}>
+              {t('home.sectionEducation.content1')}
+            </p>
+            <Link
+              to={'/node-network'}
+              className="mt-6 self-start rounded-3xl md:self-center"
+            >
+              <Button
+                variant="secondary"
+                className=" rounded-3xl !text-black"
+                iconRight={<AiOutlineRight />}
+              >
+                {t('home.sectionNetwork.link')}
+              </Button>
+            </Link>
+            <img
+              src={NetworkMain}
+              className="mt-12"
+              alt={t('imagesAlt.networkMap')}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const WallOfLoveSection = () => {
+    return (
+      <div className={cn(sectionClass)}>
+        <div className={cn(subSectionClass)}>
+          <div className="flex flex-col gap-3  px-4 md:text-center">
+            <p className={cn(paragraphCss, 'font-medium !text-orange-500')}>
+              Wall of love
+            </p>
+            <p className="font-semibold md:text-4xl">
+              What Bitcoiners say about us
+            </p>
+            <div className="mt-4 flex flex-row justify-center gap-8 px-6 md:mt-12 xl:px-20">
+              <div className="flex flex-col gap-8">
+                <TwitterCard />
+                <TwitterCard />
+              </div>
+              <div className="hidden flex-col gap-8 lg:flex">
+                <TwitterCard />
+                <TwitterCard />
+              </div>
+              <div className="hidden flex-col gap-8 lg:flex">
+                <TwitterCard />
+                <TwitterCard />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const TwitterCard = () => {
+    return (
+      <div className="rounded-[32px] bg-[#ffffff0d] p-8 text-start">
+        <p className="font-semibold text-gray-400">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam,
+          sit amet scelerisque lectus venenatis vel.
+        </p>
+        <div className="mt-4 flex flex-row items-center">
+          <img src={WolProfile1} alt={t('')} loading="lazy" />
+          <div className="ml-4">
+            <p className="font-bold leading-4 text-orange-500">Name</p>
+            <p className="font-medium text-gray-400">@handle</p>
+          </div>
+          <div className="ml-auto mr-4 mt-2">
+            <BsTwitter size={24} className="cursor-pointer text-gray-400" />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const TutorialSection = () => {
+    return (
+      <div className={cn('', sectionClass)}>
+        <div
+          className={cn(
+            'flex flex-col md:text-center md:items-center',
+            subSectionClass,
+          )}
+        >
+          <p className="hidden text-4xl font-semibold md:flex">
+            {t('home.tutorialSection.title')}
+          </p>
+          <p className={cn(titleCss, 'max-w-[45rem] md:text-orange-500')}>
+            {t('home.tutorialSection.subtitle1')}
+          </p>
+          <p className={cn(titleCss, 'max-w-[45rem] md:text-orange-500')}>
+            {t('home.tutorialSection.subtitle2')}
+          </p>
+          <p className={cn(paragraphCss, 'mt-4 max-w-[55rem]')}>
+            {t('home.tutorialSection.content1')}
+          </p>
+          <p className={cn(paragraphCss, 'mt-4 max-w-[55rem]')}>
+            {t('home.tutorialSection.content2')}
+          </p>
+
+          <p className={cn(titleCss, 'mt-12')}>{t('words.tutorials')}</p>
+
+          <div className="mt-12 grid w-full grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
+            {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
+              <Link
+                key={tutorialCategory.name}
+                className="flex w-full flex-row items-center rounded-3xl bg-[#ffffff0d] py-3 pl-4 lg:py-5 lg:pl-12"
+                to={'/tutorials/$category'}
+                params={{ category: tutorialCategory.name }}
+              >
+                <CategoryIcon src={tutorialCategory.image} />
+                <p className="ml-4 text-lg font-medium md:ml-12">
+                  {t(`tutorials.${tutorialCategory.name}.title`)}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <Link to={'/tutorials'} className="mt-6">
+            <Button
+              variant="tertiary"
+              className=" mt-4 rounded-3xl !text-black"
+              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
+            >
+              {t('home.tutorialSection.link')}
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  };
+
+  const AboutUsSection = () => {
+    return (
+      <div className={cn('', sectionClass)}>
+        <div className={cn('md:text-center', subSectionClass)}>
+          <p className={cn(paragraphCss, 'font-medium !text-orange-500')}>
+            {t('home.aboutUsSection.title')}
+          </p>
+          <p className={cn(titleCss, 'mt-2 font-medium')}>
+            {t('home.aboutUsSection.subtitle')}
+          </p>
+          <p className={cn(paragraphCss, 'mt-3 2xl:px-60 xl:px-32')}>
+            {t('home.aboutUsSection.content')}
+          </p>
+
+          <img
+            src={ProfessorsTile}
+            className="mt-4 w-full 2xl:px-28"
+            alt={t('')}
+            loading="lazy"
+          />
+
+          <div className="mt-6 flex flex-col items-center gap-6 text-center md:flex-row">
+            <div className="flex max-w-sm flex-col items-center">
+              <BitcoinCircle />
+              <div className="mt-2 text-sm font-semibold md:text-2xl">
+                {t('home.aboutUsSection.bitcoinFocusTitle').toUpperCase()}
+              </div>
+              <div className={cn(paragraphCss, 'mt-2 font-light')}>
+                {t('home.aboutUsSection.bitcoinFocusContent')}
+              </div>
+            </div>
+            <div className="flex max-w-sm flex-col items-center">
+              <OpenSource />
+              <div className="mt-2 text-sm font-semibold md:text-2xl">
+                {t('home.aboutUsSection.openSourceTitle').toUpperCase()}
+              </div>
+              <div className={cn(paragraphCss, 'mt-2 font-light')}>
+                {t('home.aboutUsSection.openSourceContent')}
+              </div>
+            </div>
+            <div className="flex max-w-sm flex-col items-center">
+              <Groups />
+              <div className="mt-2 text-sm font-semibold md:text-2xl">
+                {t('home.aboutUsSection.communityTitle').toUpperCase()}
+              </div>
+              <div className={cn(paragraphCss, 'mt-2 font-light')}>
+                {t('home.aboutUsSection.communityContent')}
+              </div>
+            </div>
+            <div className="flex max-w-sm flex-col items-center">
+              <VisibilityOff />
+              <div className="mt-2 text-sm font-semibold md:text-2xl">
+                {t('home.aboutUsSection.privacyTitle').toUpperCase()}
+              </div>
+              <div className={cn(paragraphCss, 'mt-2 font-light')}>
+                {t('home.aboutUsSection.privacyContent')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const LanguageSection = () => {
+    return (
+      <div
+        className={cn(
+          '!py-0 my-8 md:my-16 bg-orange-500 rounded-2xl relative',
+          sectionClass,
+        )}
+      >
+        <div
+          className={cn(
+            'grid grid-cols-1 md:grid-cols-4',
+            'md:!w-[38rem] lg:!w-[62rem] xl:!w-[78rem] 2xl:!w-[93rem]',
+            subSectionClass,
+          )}
+        >
+          <div className="z-10 col-span-3 flex flex-col py-12 pr-6">
+            <p className={cn(titleCss, 'font-semibold')}>
+              {t('home.languageSection.title')}
+            </p>
+            <p className={cn(titleCss, 'font-semibold text-black')}>
+              {t('home.languageSection.subtitle')}
+            </p>
+            <p className={cn(paragraphCss, 'mt-5 !text-white')}>
+              {t('home.languageSection.content1')}
+            </p>
+            <p className={cn(paragraphCss, 'mt-5 !text-white')}>
+              {t('home.languageSection.content2')}
+            </p>
             <a
               href="https://github.com/DecouvreBitcoin/sovereign-university-data"
               target="_blank"
               rel="noopener noreferrer"
+              className="mt-6"
             >
               <Button
-                variant="tertiary"
-                className="mt-9 w-fit self-center rounded-3xl"
+                variant="secondary"
+                className="rounded-3xl !text-black"
                 iconRight={<AiOutlineRight />}
               >
-                {t('home.section2.link')}
+                {t('home.languageSection.link')}
               </Button>
             </a>
           </div>
-          <div className="col-span-1 hidden flex-col items-center justify-center md:flex">
+          <div className="absolute -right-20 z-0 md:-right-20 xl:static xl:col-span-1 xl:justify-self-center">
             <img
-              src={FlagsInCircle}
-              alt={t('imagesAlt.flagsInCircle')}
+              src={Flags}
+              className="h-full w-auto object-cover"
+              alt={t('')}
               loading="lazy"
             />
           </div>
@@ -242,227 +478,39 @@ export const Home = () => {
     );
   };
 
-  const Section3 = () => {
+  const PatreonSection = () => {
     return (
-      <div className={cn('bg-blue-1000 text-white md:py-16', sectionClass)}>
-        <div className={cn('flex flex-col', subSectionClass)}>
-          <p className="mb-3 text-3xl font-semibold text-orange-500">
-            {t('home.section3.helpingCommunities')}
-          </p>
-          <p className="text-3xl font-medium">
-            {t('home.section3.letsHelpYou')}
-          </p>
-          <p className="mt-9 text-xl">{t('home.section3.content1')}</p>
-          <p className="mt-9 text-xl">{t('home.section3.content2')}</p>
-
-          <p className="mt-9 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
-            {t('words.tutorials')}
-          </p>
-          <div className="relative mt-3 flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 px-8 py-6 md:py-6">
-            <div className="flex flex-wrap justify-evenly gap-x-6 gap-y-4 md:grid md:grid-cols-3 md:gap-x-20 md:gap-y-0 lg:gap-x-32">
-              {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
-                <Link
-                  key={tutorialCategory.name}
-                  to={'/tutorials/$category'}
-                  params={{ category: tutorialCategory.name }}
-                >
-                  {/* Big screen */}
-                  <div className="hidden items-center space-x-2 rounded-lg py-2 sm:space-x-4 md:flex">
-                    <CategoryIcon src={tutorialCategory.image} />
-                    <h3 className="text-base font-semibold text-white md:text-xl lg:text-2xl">
-                      {t(`tutorials.${tutorialCategory.name}.title`)}
-                    </h3>
-                  </div>
-                  {/* Small screen */}
-                  <div className="flex flex-wrap gap-x-6 gap-y-4 md:hidden">
-                    <Button variant="tertiary" className="rounded-3xl">
-                      {t(`tutorials.${tutorialCategory.name}.title`)}
-                    </Button>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <Link
-              to={'/tutorials'}
-              className="absolute bottom-[-20px] md:right-6"
+      <div className={cn('text-left !pb-0', sectionClass)}>
+        <div
+          className={cn(
+            'flex flex-col md:flex-row items-center',
+            subSectionClass,
+          )}
+        >
+          <div>
+            <p
+              className={cn(
+                paragraphCss,
+                'mb-3 font-semibold !text-orange-500',
+              )}
             >
-              <Button
-                variant="text"
-                className="rounded-3xl bg-white text-center text-xs text-blue-800 md:text-base md:text-orange-500"
-                iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
-              >
-                {isScreenMd
-                  ? t('home.section3.seeTutorials')
-                  : t('home.section3.seeTutorialsMobile')}
-              </Button>
-            </Link>
+              {t('home.patreonSection.title')}
+            </p>
+            <p className={cn(titleCss, 'font-medium')}>
+              {t('home.patreonSection.subtitle')}
+            </p>
+            <p className={cn(paragraphCss, 'mt-3 lg:mt-9')}>
+              {t('home.patreonSection.content')}
+            </p>
           </div>
-
-          <p className="mt-9 font-medium uppercase italic md:mb-2 md:ml-0 md:text-3xl md:not-italic">
-            {t('words.resources')}
-          </p>
-          <div className="relative mt-3 flex w-full justify-center rounded-3xl border-[3px] bg-blue-900 p-6 md:py-8">
-            <div className="flex flex-wrap justify-evenly gap-x-6 gap-y-4 md:gap-x-12 lg:gap-x-20">
-              {resources.map((resource) => (
-                <a key={resource.link} href={'/resources/' + resource.link}>
-                  <Button variant="tertiary" className="rounded-3xl">
-                    {resource.name}
-                  </Button>
-                </a>
-              ))}
-            </div>
-            <Link
-              to={'/resources'}
-              className="absolute bottom-[-20px] md:right-6"
-            >
-              <Button
-                variant="text"
-                className=" rounded-3xl bg-white text-center text-xs text-blue-800 md:text-base  md:text-orange-500"
-                iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
-              >
-                {isScreenMd
-                  ? t('home.section3.seeResources')
-                  : t('home.section3.seeResourcesMobile')}
-              </Button>
-            </Link>
+          <div className="mb-12 flex h-[26rem] w-full justify-center gap-6 md:mb-6 md:ml-9 md:h-[22rem] lg:ml-16 lg:h-[30rem] lg:justify-start">
+            <img
+              className="mt-9 h-full w-auto"
+              src={Sponsors}
+              alt={t('')}
+              loading="lazy"
+            />
           </div>
-
-          <p className="mt-12 text-center text-3xl font-medium md:text-left">
-            {t('home.section3.aboutUs')}
-          </p>
-          <p className="mt-9 text-center text-xl md:text-left">
-            {t('home.section3.content3')}
-          </p>
-
-          {/* Big screen */}
-          <div className="mt-6 hidden flex-row  items-center  justify-evenly md:flex xl:px-20">
-            <div className="relative flex h-[32rem] flex-col text-center md:h-[37rem] lg:h-[36rem] xl:h-[34rem]">
-              <div className="flex flex-col items-center">
-                <OpenSource />
-                <div className="mt-2 text-[25px] font-semibold">
-                  {t('home.section3.openSourceTitle').toUpperCase()}
-                </div>
-                <div className="mt-2 text-xl font-light">
-                  {t('home.section3.openSourceContent')}
-                </div>
-              </div>
-              <div className="absolute top-40 flex flex-col items-center">
-                <BitcoinCircle className="mt-32" />
-                <div className="mt-2 text-[25px] font-semibold">
-                  {t('home.section3.bitcoinFocusTitle').toUpperCase()}
-                </div>
-                <div className="mt-2 text-xl font-light">
-                  {t('home.section3.bitcoinFocusContent')}
-                </div>
-              </div>
-            </div>
-            <div>
-              <Spiral className="lg:mx-16" />
-            </div>
-            <div className="relative flex h-[32rem] flex-col text-center md:h-[37rem] lg:h-[36rem] xl:h-[34rem]">
-              <div className="flex h-[30rem] flex-col items-center">
-                <Groups />
-                <div className="mt-2 text-[25px] font-semibold">
-                  {t('home.section3.communityTitle').toUpperCase()}
-                </div>
-                <div className="mt-2 text-xl font-light">
-                  {t('home.section3.communityContent')}
-                </div>
-              </div>
-              <div className="absolute top-40 flex flex-col items-center">
-                <VisibilityOff className="mt-32" />
-                <div className="mt-2 text-[25px] font-semibold">
-                  {t('home.section3.privacyTitle').toUpperCase()}
-                </div>
-                <div className="mt-2 text-xl font-light">
-                  {t('home.section3.privacyContent')}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Small screen*/}
-          <div className="bg-beige-300 mx-8 my-6 flex flex-col rounded-2xl p-2 md:hidden">
-            <div className="border-blue-1000 flex flex-col gap-4 rounded-2xl border-2 p-5 text-right text-lg text-blue-800">
-              <div className="flex w-full flex-row items-center justify-between">
-                <OpenSource />
-                <span className="font-medium uppercase">
-                  {t('home.section3.openSourceTitle')}
-                </span>
-              </div>
-
-              <div className="flex w-full flex-row items-center justify-between">
-                <Groups />
-                <span className="font-medium uppercase">
-                  {t('home.section3.communityTitleMobile')}
-                </span>
-              </div>
-
-              <div className="flex w-full flex-row items-center justify-between">
-                <BitcoinCircle />
-                <span className="font-medium uppercase">
-                  {t('home.section3.bitcoinFocusTitleMobile')}
-                </span>
-              </div>
-
-              <div className="flex w-full flex-row items-center justify-between">
-                <VisibilityOff />
-                <span className="font-medium uppercase">
-                  {t('home.section3.privacyTitleMobile')}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  const Section4 = () => {
-    const sponsorSrcs = [
-      SponsorBtcPay,
-      SponsorBase58,
-      SponsorSynonym,
-      SponsorKeet,
-      SponsorTether,
-      SponsorV,
-      SponsorLnMarkets,
-      SponsorBSun,
-      SponsorWizardSardine,
-      SponsorBlockstream,
-      SponsorCuboPlus,
-      SponsorDB,
-    ];
-    return (
-      <div
-        className={cn(
-          'bg-beige-300 text-blue-1000 md:text-left text-center !pb-0 md:py-16',
-          sectionClass,
-        )}
-      >
-        <div className={cn('flex flex-col', subSectionClass)}>
-          <p className="mb-3 text-3xl font-semibold text-orange-500">
-            {t('home.section4.together')}
-          </p>
-          <p className="text-3xl font-medium">{t('home.section4.planB')}</p>
-          <p className="mt-9 text-xl">{t('home.section4.content1')}</p>
-          <div className="mt-9 flex flex-wrap justify-center gap-6 md:mb-6 md:gap-8">
-            {sponsorSrcs.map((sponsorSrc) => {
-              return (
-                <img
-                  className={cn(
-                    'rounded-full',
-                    isScreenMd ? 'h-20 w-20' : 'h-16 w-16',
-                  )}
-                  src={sponsorSrc}
-                  alt="sponsor"
-                  key={sponsorSrc}
-                />
-              );
-            })}
-          </div>
-          <p className="flex flex-col items-center">
-            <SponsorLuganoPlanB width={isScreenMd ? 200 : 150} />
-          </p>
         </div>
       </div>
     );
