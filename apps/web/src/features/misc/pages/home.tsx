@@ -554,7 +554,7 @@ export const Home = () => {
             <p className={cn(titleCss, 'font-medium')}>
               {t('home.patreonSection.subtitle')}
             </p>
-            <p className={cn(paragraphCss, 'mt-3 lg:mt-9')}>
+            <p className={cn(paragraphCss, 'mt-3 lg:mt-9 max-w-[30rem]')}>
               {t('home.patreonSection.content')}
             </p>
           </div>
