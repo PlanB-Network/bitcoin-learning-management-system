@@ -182,7 +182,7 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="flex w-full flex-col items-center justify-center">
+      <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
         <PageHeader
           title={t('courses.explorer.pageTitle')}
           subtitle={t('courses.explorer.pageSubtitle')}
