@@ -85,7 +85,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
     <div {...props}>
       <div className="border-blue-1000 bg-beige-300 flex h-full flex-col items-start gap-2.5 rounded-[1.25rem] border p-1">
         <div className="flex w-[240px] grow flex-col">
-          <div className="border-blue-1000 flex grow flex-col items-center justify-center self-stretch rounded-t-2xl border bg-orange-500 px-5 py-2">
+          <div className="border-blue-1000 flex flex-col rounded-t-2xl border bg-orange-500 px-5 py-2">
             <span className="text-beige-300 break-words text-xl font-semibold">
               {professor.name}
             </span>
