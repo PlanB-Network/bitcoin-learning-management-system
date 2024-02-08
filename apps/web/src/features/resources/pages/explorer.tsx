@@ -5,12 +5,7 @@ import { cn } from '@sovereign-university/ui';
 
 import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
-import {
-  PageDescription,
-  PageHeader,
-  PageSubtitle,
-  PageTitle,
-} from '../../../components/PageHeader';
+import { PageHeader } from '../../../components/PageHeader';
 import { RESOURCES_CATEGORIES } from '../utils';
 
 export const Resources = () => {
@@ -18,13 +13,15 @@ export const Resources = () => {
 
   return (
     <MainLayout footerVariant="course">
-      <div className="flex flex-col justify-center">
-        <PageHeader>
-          <PageTitle>{t('resources.pageTitle')}</PageTitle>
-          <PageSubtitle>{t('resources.pageSubtitle')}</PageSubtitle>
-          <PageDescription>{t('resources.pageDescription')}</PageDescription>
+      <div className="flex flex-col">
+        <PageHeader
+          title={t('resources.pageTitle')}
+          subtitle={t('resources.pageSubtitle')}
+          description={t('resources.pageDescription')}
+        />
 
-          <div className="bg-gradient-blue grid w-full grid-cols-2 pb-10 pt-6 sm:pb-32 sm:pt-10 md:grid-cols-3">
+        <div className="mt-6 self-center">
+          <div className="grid max-w-[64rem] grid-cols-2 px-4 md:grid-cols-3 md:px-0">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}
@@ -52,7 +49,7 @@ export const Resources = () => {
               </Link>
             ))}
           </div>
-        </PageHeader>
+        </div>
       </div>
     </MainLayout>
   );

@@ -3,12 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { CourseCard } from '../../../components/course-card';
 import { MainLayout } from '../../../components/MainLayout';
-import {
-  PageDescription,
-  PageHeader,
-  PageSubtitle,
-  PageTitle,
-} from '../../../components/PageHeader';
+import { PageHeader } from '../../../components/PageHeader';
 import { fakeCourseId } from '../../../utils/courses';
 import { extractNumbers } from '../../../utils/string';
 import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
@@ -187,14 +182,12 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="bg-gradient-blue flex w-full flex-col items-center justify-center">
-        <PageHeader>
-          <PageTitle>{t('courses.explorer.pageTitle')}</PageTitle>
-          <PageSubtitle>{t('courses.explorer.pageSubtitle')}</PageSubtitle>
-          <PageDescription>
-            {t('courses.explorer.pageDescription')}
-          </PageDescription>
-        </PageHeader>
+      <div className="flex w-full flex-col items-center justify-center">
+        <PageHeader
+          title={t('courses.explorer.pageTitle')}
+          subtitle={t('courses.explorer.pageSubtitle')}
+          description={t('courses.explorer.pageDescription')}
+        />
 
         <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
           <CourseTree courses={treeCourses} />

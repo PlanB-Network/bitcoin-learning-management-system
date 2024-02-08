@@ -97,8 +97,6 @@ export default function PieChart({
           );
         }
       });
-
-    // You can add more D3 code for your chart here
   }, [
     width,
     height,

@@ -6,7 +6,6 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
 import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
 import { useNavigateMisc } from '../../../hooks';
@@ -108,16 +107,6 @@ export const Podcast = () => {
             </div>
             {!isScreenMd && displayAbstract()}
           </Card>
-
-          <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
-            <img
-              className="-ml-20 mr-10 mt-10 hidden h-80 max-w-[40%] flex-col sm:flex"
-              src={readingRabbit}
-              alt={t('imagesAlt.readingRabbit')}
-            />
-
-            <div className="flex flex-col">{!podcast.description}</div>
-          </div>
         </div>
       )}
     </ResourceLayout>
