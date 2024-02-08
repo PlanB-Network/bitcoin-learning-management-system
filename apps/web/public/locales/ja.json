@@ -176,17 +176,15 @@
       "link": "Check the academy"
     },
     "sectionNetwork": {
-      "title": "From beginner to advanced",
-      "subtitle": "Learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "title": "Access a  network of",
+      "subtitle": "Worldwide Bitcoin Campuses",
+      "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
       "link": "Be part of the network"
     },
     "tutorialSection": {
-      "title": "Helping Bitcoin communities grow is our mission",
-      "subtitle1": "Let us help you master the technology,",
-      "subtitle2": "read and hear about Bitcoin!",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely.",
-      "content2": "There's no reason to hesitate. Knowledge awaits you.",
+      "title": "Making Bitcoin education simple is our objective.",
+      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
+      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
       "link": "See all tutorials"
     },
     "aboutUsSection": {
@@ -204,7 +202,8 @@
     },
     "languageSection": {
       "title": "No language barrier here.",
-      "subtitle": " Everything is translated to local languages",
+      "subtitle": "Everything is translated to local languages",
+      "subtitle2": "We need you!",
       "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
       "content2": "You too can start bootstrapping your own local network in your country!",
       "link": "Help us translate the academy"
