@@ -97,7 +97,11 @@ export const Home = () => {
             </p>
             <div className="mt-6 flex flex-row justify-center gap-4 lg:mt-9">
               <a href="/courses" rel="noopener noreferrer">
-                <Button variant="tertiary" className="rounded-3xl !text-black">
+                <Button
+                  variant="tertiary"
+                  className="rounded-3xl !text-black"
+                  glowing={true}
+                >
                   {t('home.header.startLink')}
                 </Button>
               </a>
@@ -261,7 +265,7 @@ export const Home = () => {
     return (
       <div className={cn(sectionClass)}>
         <div className={cn(subSectionClass)}>
-          <div className="flex flex-col gap-3  px-4 md:text-center">
+          <div className="flex flex-col gap-3 px-4 md:text-center">
             <p className={cn(paragraphCss, 'font-medium !text-orange-500')}>
               Wall of love
             </p>
@@ -377,6 +381,7 @@ export const Home = () => {
               variant="tertiary"
               className="rounded-3xl !text-black md:mt-4"
               iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
+              glowing={true}
             >
               {t('home.tutorialSection.link')}
             </Button>
@@ -474,13 +479,7 @@ export const Home = () => {
           sectionClass,
         )}
       >
-        <div
-          className={cn(
-            'grid grid-cols-1 md:grid-cols-4',
-            'md:!w-[38rem] lg:!w-[62rem] xl:!w-[78rem] 2xl:!w-[93rem]',
-            subSectionClass,
-          )}
-        >
+        <div className={cn('grid grid-cols-1 md:grid-cols-4', subSectionClass)}>
           <div className="z-10 col-span-3 flex flex-col py-12 pr-6">
             <p className={cn(paragraphCss, 'mt-5 !text-black font-medium')}>
               {t('home.languageSection.subtitle2')}
@@ -491,7 +490,7 @@ export const Home = () => {
             <p className={cn(titleCss, 'font-semibold text-black')}>
               {t('home.languageSection.subtitle')}
             </p>
-            <p className={cn(paragraphCss, 'mt-5 !text-white')}>
+            <p className={cn(paragraphCss, 'mt-5 !text-white max-w-[43rem]')}>
               {t('home.languageSection.content1')}
             </p>
             <p className={cn(paragraphCss, 'mt-5 !text-white')}>
@@ -559,9 +558,9 @@ export const Home = () => {
               {t('home.patreonSection.content')}
             </p>
           </div>
-          <div className="mb-12 flex h-[26rem] w-full justify-center gap-6 md:mb-6 md:ml-9 md:h-[22rem] lg:ml-16 lg:h-[30rem] lg:justify-start">
+          <div className="mb-12 flex h-[26rem] w-full justify-center gap-6 md:mb-6 md:ml-9 md:h-[22rem] lg:ml-16 lg:h-[34rem] lg:justify-start">
             <img
-              className="mt-9 h-full w-auto"
+              className="mt-9 h-full w-auto xl:ml-20 2xl:ml-40"
               src={Sponsors}
               alt={t('')}
               loading="lazy"

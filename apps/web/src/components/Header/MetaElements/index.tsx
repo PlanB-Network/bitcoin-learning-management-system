@@ -51,14 +51,14 @@ export const MetaElements = ({
           >
             {t('words.signIn')}
           </Button>
-          <Button
+          {/* <Button
             className="my-4"
             rounded
             onClick={onClickRegister}
             size={buttonSize}
           >
             {t('words.register')}
-          </Button>
+          </Button> */}
         </div>
       )}
 

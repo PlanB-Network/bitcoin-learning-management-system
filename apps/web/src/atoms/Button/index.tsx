@@ -13,6 +13,7 @@ interface ButtonProps
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'soft' | 'text';
   rounded?: boolean;
+  glowing?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   icon?: JSX.Element;
@@ -40,6 +41,7 @@ export const Button = ({
   size,
   variant,
   rounded,
+  glowing,
   iconLeft,
   iconRight,
   icon,
@@ -84,6 +86,7 @@ export const Button = ({
         ...classes,
         disabled ? 'active:none' : 'active:scale-95',
         'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',
+        glowing ? 'shadow-md-button' : '',
         className ?? '',
         disabledClass,
       )}
