@@ -18,7 +18,11 @@ import HeaderRight from '../../../assets/home/header_right.svg';
 import NetworkMain from '../../../assets/home/network-main.svg';
 import ProfessorsTile from '../../../assets/home/professors.svg';
 import Sponsors from '../../../assets/home/sponsors.png';
-import WolProfile1 from '../../../assets/home/wol-profil-1.png';
+import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
+import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
+import TwitterLoic from '../../../assets/home/twitter_loic.jpeg';
+import TwitterMirBtc from '../../../assets/home/twitter_mir_btc.jpeg';
+import TwitterScuba from '../../../assets/home/twitter_scuba.jpeg';
 import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
 import Groups from '../../../assets/icons/groups.svg?react';
 import OpenSource from '../../../assets/icons/open_source.svg?react';
@@ -204,12 +208,14 @@ export const Home = () => {
               </Button>
             </Link>
 
-            <img
-              src={EducationMain}
-              className="mt-6"
-              alt={t('imagesAlt.educationCircle')}
-              loading="lazy"
-            />
+            <Link to={'/courses'}>
+              <img
+                src={EducationMain}
+                className="mt-6"
+                alt={t('')}
+                loading="lazy"
+              />
+            </Link>
           </div>
 
           <div className="col-span-2 flex flex-col items-start md:col-span-1 md:items-center md:px-4">
@@ -237,12 +243,14 @@ export const Home = () => {
                 {t('home.sectionNetwork.link')}
               </Button>
             </Link>
-            <img
-              src={NetworkMain}
-              className="mt-12"
-              alt={t('imagesAlt.networkMap')}
-              loading="lazy"
-            />
+            <Link to={'/node-network'}>
+              <img
+                src={NetworkMain}
+                className="mt-12"
+                alt={t('')}
+                loading="lazy"
+              />
+            </Link>
           </div>
         </div>
       </div>
@@ -261,46 +269,40 @@ export const Home = () => {
               What Bitcoiners say about us
             </p>
             <div className="mt-4 flex flex-row justify-center gap-8 px-6 md:mt-12 xl:px-20">
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-8 lg:max-w-sm">
                 <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
+                  text="Bullish on Planbnetwork: they centralize #bitcoin education, so we can decentralize it"
+                  name="Mire"
+                  handle="@mir_btc"
+                  image={TwitterMirBtc}
                 />
                 <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
+                  text="Trainer Rogzy is a true Bitcoin enthusiast, and it shows in his courses: he has understood the global stakes of this technology and has managed to structure this beginner's course in such a way that everyone can get the basics. Thank you!"
+                  name="Le Comte"
+                  handle="@Mr_Monte_Crypto"
+                  image={TwitterLecompte}
+                />
+              </div>
+              <div className="hidden max-w-sm flex-col gap-8 lg:flex">
+                <TwitterCard
+                  text="This training is a combination of advanced technical aspects and pedagogy! A big BRAVO to Loïc for all his educational work on the pure technique of HD wallets. The course is very well presented, starting with the algorithms used, to then delve deeper into all aspects of HD wallets. It's a very technical training, so hang on, it's worth it 😉"
+                  name="Scuba"
+                  handle="@Scuba_Wizard"
+                  image={TwitterScuba}
                 />
               </div>
               <div className="hidden flex-col gap-8 lg:flex">
                 <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
+                  text="Thank you!! For this simplicity that finally allows us to understand such complicated paradigms!"
+                  name="Claire Desombre"
+                  handle="@CDesombre"
+                  image={TwitterClaire}
                 />
                 <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
-                />
-              </div>
-              <div className="hidden flex-col gap-8 lg:flex">
-                <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
-                />
-                <TwitterCard
-                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quam, sit amet scelerisque lectus venenatis vel."
-                  name="name"
-                  handle="handle"
-                  image={WolProfile1}
+                  text="Excellent training, Fanis. I learned a lot about the Lightning Network and I understand some concepts better now. Very good training."
+                  name="Loïc Morel"
+                  handle="@Loic_Pandul"
+                  image={TwitterLoic}
                 />
               </div>
             </div>
@@ -325,13 +327,26 @@ export const Home = () => {
       <div className="rounded-[32px] bg-[#ffffff0d] p-8 text-start">
         <p className="font-semibold text-gray-400">{text}</p>
         <div className="mt-4 flex flex-row items-center">
-          <img src={image} alt={t('')} loading="lazy" />
+          <img
+            src={image}
+            alt={t('')}
+            loading="lazy"
+            height={50}
+            width={50}
+            className="rounded-full"
+          />
           <div className="ml-4">
             <p className="font-bold leading-4 text-orange-500">{name}</p>
             <p className="font-medium text-gray-400">{handle}</p>
           </div>
           <div className="ml-auto mr-4 mt-2">
-            <BsTwitter size={24} className="cursor-pointer text-gray-400" />
+            <a
+              href={'https://x.com/' + handle}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BsTwitter size={24} className="cursor-pointer text-gray-400" />
+            </a>
           </div>
         </div>
       </div>
