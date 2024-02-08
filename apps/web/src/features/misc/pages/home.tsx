@@ -42,14 +42,14 @@ export const Home = () => {
   const isScreenMd = useGreater('md');
 
   const sectionClass =
-    'flex flex-col w-[100%] items-center py-8 md:py-16 overflow-hidden font-light md:font-normal';
+    'flex flex-col w-[100%] items-center py-8 md:py-16 overflow-hidden font-light md:font-normal px-4';
   const subSectionClass =
     'px-2 md:px-8 lg:px-24 w-auto md:w-[45rem] lg:w-[69rem] xl:w-[85rem] 2xl:w-[100rem]';
 
   const Page = () => {
     return (
       <MainLayout footerVariant="dark">
-        <div className="bg-gradient-blue flex flex-col px-4 text-white md:px-8 lg:px-12">
+        <div className="bg-gradient-blue flex flex-col text-white md:px-8 lg:px-12">
           <HeaderSection />
           <NumberSection />
           <EducationSection />
@@ -473,60 +473,64 @@ export const Home = () => {
 
   const LanguageSection = () => {
     return (
-      <div
-        className={cn(
-          '!py-0 my-8 md:my-16 bg-orange-500 rounded-2xl relative',
-          sectionClass,
-        )}
-      >
-        <div className={cn('grid grid-cols-1 md:grid-cols-4', subSectionClass)}>
-          <div className="z-10 col-span-3 flex flex-col py-12 pr-6">
-            <p className={cn(paragraphCss, 'mt-5 !text-black font-medium')}>
-              {t('home.languageSection.subtitle2')}
-            </p>
-            <p className={cn(titleCss, 'font-semibold mt-2')}>
-              {t('home.languageSection.title')}
-            </p>
-            <p className={cn(titleCss, 'font-semibold text-black')}>
-              {t('home.languageSection.subtitle')}
-            </p>
-            <p className={cn(paragraphCss, 'mt-5 !text-white max-w-[43rem]')}>
-              {t('home.languageSection.content1')}
-            </p>
-            <p className={cn(paragraphCss, 'mt-5 !text-white')}>
-              {t('home.languageSection.content2')}
-            </p>
-            <a
-              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6"
-            >
-              <Button
-                variant="secondary"
-                className="rounded-3xl !text-black"
-                iconRight={<AiOutlineRight />}
+      <div className="mx-4 md:mx-0">
+        <div
+          className={cn(
+            '!py-0 my-8 md:my-16 bg-orange-500 rounded-2xl relative',
+            sectionClass,
+          )}
+        >
+          <div
+            className={cn('grid grid-cols-1 md:grid-cols-4', subSectionClass)}
+          >
+            <div className="z-10 col-span-3 flex flex-col py-8 pr-6 md:py-12">
+              <p className={cn(paragraphCss, '!text-black font-medium')}>
+                {t('home.languageSection.subtitle2')}
+              </p>
+              <p className={cn(titleCss, 'font-semibold mt-2')}>
+                {t('home.languageSection.title')}
+              </p>
+              <p className={cn(titleCss, 'font-semibold text-black')}>
+                {t('home.languageSection.subtitle')}
+              </p>
+              <p className={cn(paragraphCss, 'mt-5 !text-white max-w-[43rem]')}>
+                {t('home.languageSection.content1')}
+              </p>
+              <p className={cn(paragraphCss, 'mt-5 !text-white')}>
+                {t('home.languageSection.content2')}
+              </p>
+              <a
+                href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6"
               >
-                {t('home.languageSection.link')}
-              </Button>
-            </a>
-          </div>
-          <div className="absolute -right-[410px] z-0 hidden md:-right-52 xl:static xl:col-span-1 xl:flex xl:justify-self-center">
-            <img
-              src={Flags}
-              className="h-full w-auto object-cover"
-              alt={t('')}
-              loading="lazy"
-            />
-          </div>
+                <Button
+                  variant="secondary"
+                  className="rounded-3xl !text-black"
+                  iconRight={<AiOutlineRight />}
+                >
+                  {t('home.languageSection.link')}
+                </Button>
+              </a>
+            </div>
+            <div className="absolute -right-[410px] z-0 hidden md:-right-52 xl:static xl:col-span-1 xl:flex xl:justify-self-center">
+              <img
+                src={Flags}
+                className="h-full w-auto object-cover"
+                alt={t('')}
+                loading="lazy"
+              />
+            </div>
 
-          <div className="absolute -right-[210px] z-0 flex md:-right-52 xl:hidden">
-            <img
-              src={FlagsSmall}
-              className="h-full w-auto object-cover"
-              alt={t('')}
-              loading="lazy"
-            />
+            <div className="absolute -right-[210px] z-0 flex md:-right-52 xl:hidden">
+              <img
+                src={FlagsSmall}
+                className="h-full w-auto object-cover"
+                alt={t('')}
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </div>
