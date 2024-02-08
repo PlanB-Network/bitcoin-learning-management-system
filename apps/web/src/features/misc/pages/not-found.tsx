@@ -9,7 +9,7 @@ export const NotFound = () => {
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="font-primary bg-gradient-blue flex h-full w-full flex-col items-center space-y-16 p-10 text-blue-700">
+      <div className="font-primary bg-blue-1000 flex h-full w-full flex-col items-center space-y-16 p-10 text-blue-700">
         <section className="max-w-4xl text-white">
           <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
             {t('notFound.pageTitle')}

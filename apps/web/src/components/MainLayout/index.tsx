@@ -10,7 +10,6 @@ interface MainLayoutProps {
   variant?: 'light' | 'dark' | 'blue';
   showFooter?: boolean;
   footerVariant?: 'light' | 'dark' | 'course';
-  footerColor?: string;
 }
 
 export const MainLayout = ({
@@ -18,14 +17,13 @@ export const MainLayout = ({
   variant = 'dark',
   showFooter = true,
   footerVariant,
-  footerColor,
 }: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
 
   return (
     <div
       className={compose(
-        'h-full w-full',
+        '',
         variant === 'light'
           ? 'bg-gray-100'
           : variant === 'blue'
@@ -41,7 +39,7 @@ export const MainLayout = ({
       {children}
 
       {/* Footer */}
-      {showFooter && <Footer variant={footerVariant} color={footerColor} />}
+      {showFooter && <Footer variant={footerVariant} />}
 
       <ScrollToTopButton />
     </div>

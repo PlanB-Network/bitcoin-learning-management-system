@@ -296,7 +296,7 @@ export const Header = () => {
   const isScreenLg = useGreater('lg');
 
   return (
-    <header className="bg-gradient-blue sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12">
+    <header className="bg-blue-1000 sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12">
       {isScreenLg ? (
         <FlyingMenu
           onClickLogin={() => {

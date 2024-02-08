@@ -59,7 +59,7 @@ export const MobileMenu = ({
       />
       <nav
         className={compose(
-          'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-gradient-blue duration-300',
+          'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-blue-1000 duration-300',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >

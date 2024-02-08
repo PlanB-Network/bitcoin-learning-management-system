@@ -6,7 +6,7 @@ import { MainLayout } from '../../../components/MainLayout';
 export const UnderConstruction = () => {
   const { t } = useTranslation();
   return (
-    <MainLayout footerColor="bg-gray-100">
+    <MainLayout>
       <div className="font-primary flex w-full flex-col items-center space-y-16 bg-gray-100 p-10 text-blue-700">
         <section className="max-w-4xl ">
           <h1 className="mb-10 text-4xl font-bold lg:text-5xl">

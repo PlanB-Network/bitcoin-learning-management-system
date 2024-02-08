@@ -19,7 +19,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       <div
         className={cn(
           'flex w-full flex-col pt-10',
-          color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-gradient-blue'),
+          color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
         )}
       >
         <div className="z-30 -mb-20 h-52"></div>
