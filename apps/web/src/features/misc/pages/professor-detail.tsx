@@ -40,7 +40,7 @@ export const ProfessorDetail = () => {
     >
       {professor && (
         <div className="flex flex-col text-white">
-          <div className="mt-4 flex w-full flex-col items-center">
+          <div className="mt-4 flex w-full flex-col items-start">
             <AuthorCardFull professor={professor} />
           </div>
           {professor.courses.length > 0 && (
@@ -49,7 +49,7 @@ export const ProfessorDetail = () => {
               <span>{t('words.courses')}</span>
             </div>
           )}
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-start">
             {professor.courses.map((course) => {
               return (
                 <div key={course.id} className="w-full md:w-72">
@@ -64,7 +64,7 @@ export const ProfessorDetail = () => {
               <span>{t('words.tutorials')}</span>
             </div>
           )}
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
+          <div className="mt-6 flex flex-wrap justify-start gap-4">
             {professor.tutorials.map((tutorial) => {
               return (
                 <TutorialCard
