@@ -23,6 +23,8 @@ export default interface Tutorials {
   last_updated: number;
 
   last_commit: string;
+
+  last_sync: number;
 }
 
 /** Represents the initializer for the table content.tutorials */
@@ -46,6 +48,9 @@ export interface TutorialsInitializer {
   last_updated?: number;
 
   last_commit: string;
+
+  /** Default value: now() */
+  last_sync?: number;
 }
 
 /** Represents the mutator for the table content.tutorials */
@@ -67,4 +72,6 @@ export interface TutorialsMutator {
   last_updated?: number;
 
   last_commit?: string;
+
+  last_sync?: number;
 }
