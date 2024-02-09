@@ -25,12 +25,8 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
         <div className="relative z-10 flex w-full flex-col bg-orange-500 py-16 pl-6 md:py-28 md:pl-0">
           <div className="flex flex-row">
             <div className="mx-auto flex flex-col gap-20 pl-4 pr-60 md:flex-row">
-              <div>
-                <img
-                  src={PlanBLogo}
-                  alt=""
-                  className="min-w-[150px] md:hidden lg:flex"
-                ></img>
+              <div className="md:hidden lg:block">
+                <img src={PlanBLogo} alt="" className="min-w-[150px]"></img>
               </div>
               <div className="flex flex-col md:ml-6">
                 <h4 className="mb-2 text-xl font-semibold text-white">
@@ -64,7 +60,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   </li>
                 </ul>
               </div>
-              <div className="mr-48 flex flex-col">
+              <div className="flex flex-col xl:mr-48">
                 <h4 className="mb-2 text-xl font-semibold text-white">
                   {t('words.helpUs')}
                 </h4>
@@ -81,7 +77,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           </div>
           <img
             src={OrangePill}
-            className="absolute -right-24 bottom-60 h-80 md:-top-32 md:right-0"
+            className="absolute -right-0 bottom-60 h-80 md:-top-32 md:right-0"
             alt=""
           />
         </div>
