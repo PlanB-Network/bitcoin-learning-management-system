@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Flag from '../../../atoms/Flag';
 import { compose } from '../../../utils';
 
-const languages = ['fr', 'en', 'es', 'de', 'it'];
+const languages = ['fr', 'en', 'es', 'de', 'it', 'pt'];
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';

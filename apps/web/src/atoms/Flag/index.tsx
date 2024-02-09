@@ -30,10 +30,10 @@ const Flag: React.FC<Props> = ({
   const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
-    import(`./flags/${size}/${code.toUpperCase()}.svg`).then((img) => {
+    import(`./flags/${code.toUpperCase()}.svg`).then((img) => {
       setImgSrc(img.default || img);
     });
-  }, [code, size]);
+  }, [code]);
 
   const nonTailwindClasses = `flag size-${size}`;
 
