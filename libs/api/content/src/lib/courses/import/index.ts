@@ -89,6 +89,7 @@ interface CourseMain {
   level: string;
   hours: number;
   professors: string[];
+  requires_payment: boolean;
   tags?: string[];
 }
 
@@ -179,6 +180,9 @@ export const createProcessChangedCourse =
 
               // Only get the tags from the main resource file
               const parsedCourse = yamlToObject<CourseMain>(main.data);
+              if (parsedCourse.requires_payment == null) {
+                parsedCourse.requires_payment = false;
+              }
 
               const lastUpdated = course.files
                 .filter(
@@ -188,11 +192,12 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, last_updated, last_commit, last_sync)
+                INSERT INTO content.courses (id, level, hours, requires_payment, last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
+                  ${parsedCourse.requires_payment},
                   ${lastUpdated.time}, 
                   ${lastUpdated.commit},
                   NOW()
@@ -200,6 +205,7 @@ export const createProcessChangedCourse =
                 ON CONFLICT (id) DO UPDATE SET
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
+                  requires_payment = EXCLUDED.requires_payment,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()
