@@ -15,10 +15,10 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
   const { t } = useTranslation();
 
   return (
-    <footer className="mt-32 w-full">
+    <footer className="mt-40 w-full">
       <div
         className={cn(
-          'flex w-full flex-col pt-10',
+          'flex w-full flex-col',
           color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
         )}
       >
