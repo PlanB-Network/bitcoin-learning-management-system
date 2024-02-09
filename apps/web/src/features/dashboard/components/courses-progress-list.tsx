@@ -36,7 +36,7 @@ export const CoursesProgressList = ({
               ></div>
               <img
                 src={OrangePill}
-                style={{ marginLeft: `${course.progress_percentage - 2}%` }}
+                style={{ marginLeft: `${course.progress_percentage}%` }}
                 className={compose('absolute top-[-12px] w-[14px]')}
                 alt=""
               />
@@ -96,8 +96,8 @@ export const CoursesProgressList = ({
       <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic text-blue-800 md:rounded-none md:bg-transparent">
         <Link to={'/courses'} className="text-orange-600">
           Start a course
-        </Link>{' '}
-        to see your progress here!
+        </Link>
+        <span> to see your progress here!</span>
       </div>
     )}
   </div>
