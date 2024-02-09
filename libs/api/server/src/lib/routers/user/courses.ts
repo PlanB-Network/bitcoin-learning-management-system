@@ -2,7 +2,9 @@ import { z } from 'zod';
 
 import {
   createCompleteChapter,
+  createGetPayment,
   createGetProgress,
+  createSavePayment,
   createSaveQuizAttempt,
 } from '@sovereign-university/api/user';
 
@@ -65,8 +67,45 @@ const saveQuizAttemptProcedure = protectedProcedure
     }),
   );
 
+const savePaymentProcedure = protectedProcedure
+  .meta({
+    openapi: { method: 'POST', path: '/users/courses/payment' },
+  })
+  .input(
+    z.object({
+      courseId: z.string(),
+      paymentStatus: z.string(),
+      amount: z.number(),
+      paymentId: z.string(),
+      invoiceUrl: z.string(),
+    }),
+  )
+  .output(z.any())
+  .mutation(({ ctx, input }) =>
+    createSavePayment(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+      paymentStatus: input.paymentStatus,
+      amount: input.amount,
+      paymentId: input.paymentId,
+      invoiceUrl: input.invoiceUrl,
+    }),
+  );
+
+const getPaymentProcedure = protectedProcedure
+  .meta({
+    openapi: { method: 'GET', path: '/users/courses/payment' },
+  })
+  .input(z.void())
+  .output(z.any())
+  .query(({ ctx }) =>
+    createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
+  );
+
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   getProgress: getProgressProcedure,
+  getPayment: getPaymentProcedure,
   saveQuizAttempt: saveQuizAttemptProcedure,
+  savePayment: savePaymentProcedure,
 });
