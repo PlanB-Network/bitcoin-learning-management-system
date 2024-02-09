@@ -27,6 +27,8 @@ export default interface QuizQuestions {
   last_updated: number;
 
   last_commit: string;
+
+  last_sync: number;
 }
 
 /** Represents the initializer for the table content.quiz_questions */
@@ -49,6 +51,9 @@ export interface QuizQuestionsInitializer {
   last_updated?: number;
 
   last_commit: string;
+
+  /** Default value: now() */
+  last_sync?: number;
 }
 
 /** Represents the mutator for the table content.quiz_questions */
@@ -70,4 +75,6 @@ export interface QuizQuestionsMutator {
   last_updated?: number;
 
   last_commit?: string;
+
+  last_sync?: number;
 }
