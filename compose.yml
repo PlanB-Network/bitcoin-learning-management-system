@@ -1,6 +1,7 @@
 version: '3.7'
 
 x-defaults: &defaults
+  restart: always
   init: true
   env_file:
     - .env
