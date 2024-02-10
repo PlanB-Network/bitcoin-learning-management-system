@@ -50,6 +50,24 @@ export const CourseDetails: React.FC = () => {
     language: i18n.language,
   });
 
+  const {
+    data: payments,
+    isFetched: isPaymentFetched,
+    refetch: refetchPayment,
+  } = trpc.user.courses.getPayment.useQuery();
+
+  console.log({ payments });
+
+  const isCoursePaid = useMemo(
+    () =>
+      payments?.some(
+        (coursePayment) =>
+          coursePayment.payment_status === 'paid' &&
+          coursePayment.course_id === courseId,
+      ),
+    [courseId, payments],
+  );
+
   const professorNames = course?.professors
     .map((professor) => professor.name)
     .join(', ');
@@ -58,7 +76,7 @@ export const CourseDetails: React.FC = () => {
 
   const buttonProps = useMemo(
     () =>
-      course?.requires_payment
+      course?.requires_payment && !isCoursePaid
         ? {
             iconLeft: <FaLock />,
             onClick: () => {
@@ -67,7 +85,7 @@ export const CourseDetails: React.FC = () => {
             variant: 'primary' as const,
           }
         : { variant: 'tertiary' as const },
-    [course?.requires_payment],
+    [course?.requires_payment, isCoursePaid],
   );
 
   const Header = ({ course }: { course: Course }) => {
@@ -481,7 +499,10 @@ export const CourseDetails: React.FC = () => {
             <CoursePaymentModal
               course={course}
               isOpen={isPaymentModalOpen}
-              onClose={() => {
+              onClose={(isPaid) => {
+                if (isPaid) {
+                  refetchPayment();
+                }
                 setIsPaymentModalOpen(false);
               }}
             />

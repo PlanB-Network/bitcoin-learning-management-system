@@ -22,10 +22,9 @@ export const insertPayment = ({
   ) VALUES (
     ${uid}, ${courseId}, ${paymentStatus}, ${amount}, ${paymentId}, ${invoiceUrl}
   )
-  ON CONFLICT (uid, course_id) DO UPDATE SET
+  ON CONFLICT (uid, course_id, payment_id) DO UPDATE SET
     payment_status = EXCLUDED.payment_status,
     amount = EXCLUDED.amount,
-    payment_id = EXCLUDED.payment_id,
     invoice_url = EXCLUDED.invoice_url
   RETURNING *;
   `;

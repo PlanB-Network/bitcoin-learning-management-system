@@ -13,6 +13,7 @@ export const createSavePayment =
       amount: 1,
       unit: 'sat',
       onChain: true,
+      webhook: `${process.env['PUBLIC_PROXY_URL']}/api/users/courses/payment/webhooks`,
     };
     const { data: checkoutData } = await axios.post<{
       id: string;

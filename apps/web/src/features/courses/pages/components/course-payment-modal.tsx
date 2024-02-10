@@ -1,5 +1,6 @@
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
+// import useWebSocket from 'react-use-websocket';
 
 import { Modal } from '../../../../atoms/Modal';
 import { trpc } from '../../../../utils';
@@ -8,7 +9,7 @@ import { Course } from '../../components/courseTree';
 interface CoursePaymentModalProps {
   course: Course;
   isOpen: boolean;
-  onClose: () => void;
+  onClose: (isPaid?: boolean) => void;
 }
 
 type PaymentData = {
@@ -19,6 +20,8 @@ type PaymentData = {
   checkoutUrl: string;
 };
 
+const getTrue = () => true;
+
 export const CoursePaymentModal = ({
   course,
   isOpen,
@@ -28,15 +31,27 @@ export const CoursePaymentModal = ({
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
 
+  // const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
+  //   settled: boolean;
+  // }>(
+  //   'wss://api.swiss-bitcoin-pay.ch/invoice/ln',
+  //   {
+  //     shouldReconnect: getTrue,
+  //   },
+  //   !!paymentData,
+  // );
+
+  // console.log({ lastJsonMessage });
+
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
     });
+    // sendJsonMessage({ hash: serverPaymentData.id });
     setPaymentData(serverPaymentData);
   }, [course.id, savePaymentRequest]);
 
   useEffect(() => {
-    console.log(isOpen);
     if (isOpen) {
       initCoursePayment();
     } else {
@@ -45,6 +60,12 @@ export const CoursePaymentModal = ({
       }, 500);
     }
   }, [isOpen]);
+
+  // useEffect(() => {
+  //   if (lastJsonMessage.settled) {
+  //     onClose(true);
+  //   }
+  // }, [lastJsonMessage]);
 
   return (
     <Modal
