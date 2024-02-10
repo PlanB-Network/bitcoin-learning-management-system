@@ -88,7 +88,7 @@
       "secu": "セキュリティとプライバシー"
     },
     "chapter": {
-      "count": "Chapter {{count}}",
+      "count": "{{count}}章",
       "finishCourse": "コースを終了する",
       "next": "完了、次の章に行きましょう！",
       "thanksTip": "楽しんでいただけましたか？チップはこちらから。"
@@ -159,19 +159,19 @@
   },
   "home": {
     "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "content": "PlanBプラットフォームは、人々が主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目指しています。個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
       "forEducators": "すべての教育関係者と開発者のために",
       "globalNetwork": "グローバル・ビットコイン・ネットワーク",
-      "welcome": "Welcome to PlanB Network",
+      "welcome": "PlanB Network へようこそ",
       "link": "ネットワークに参加する",
-      "startLink": "Start Learning"
+      "startLink": "学習を始める"
     },
     "numbersSection": {
-      "networkMember": "Betwork Member"
+      "networkMember": "参加メンバー"
     },
     "sectionEducation": {
-      "title": "From beginner to advanced",
-      "subtitle": "Learn Bitcoin in the academy",
+      "title": "初心者から上級者まで",
+      "subtitle": "アカデミーでビットコインを学ぶ",
       "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
       "link": "Check the academy"
     },
