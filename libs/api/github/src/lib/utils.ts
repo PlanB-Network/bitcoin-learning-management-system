@@ -49,18 +49,28 @@ const syncRepository = async (
   repository: string,
   branch: string,
   directory: string,
+  githubAccessToken?: string,
 ) => {
   const git = simpleGit();
-
   try {
-    // Check if the repository already exists locally
+    //Check if the repository already exists locally
     if (
       !(await pathExists(directory)) ||
       !(await pathExists(path.join(directory, '.git')))
     ) {
       // Clone the repository
+      let options = {};
+
+      if (githubAccessToken) {
+        options = {
+          '--config': `http.${repository}.extraheader=AUTHORIZATION: basic ${Buffer.from(
+            `${githubAccessToken}`,
+          ).toString('base64')}`,
+        };
+      }
+
       try {
-        await git.clone(repository, directory);
+        await git.clone(repository, directory, options);
       } catch (error: any) {
         console.warn(
           '[WARN] Failed to clone the repo, will try fetch and pull',
@@ -217,29 +227,39 @@ const pathExists = async (path: string) =>
     .catch(() => false);
 
 export const getAllRepoFiles = async (
-  repositoryUrl: string,
-  branch = 'main',
+  publicRepositoryUrl: string,
+  publicRepositoryBranch = 'main',
+  privateRepositoryUrl: string | undefined,
+  privateRepositoryBranch = 'main',
+  githubAccessToken?: string,
 ) => {
   console.log(
-    '-- Sync procedure: Syncing the github repository on branch',
-    branch,
+    '-- Sync procedure: Syncing the public github repository on branch',
+    publicRepositoryBranch,
   );
 
-  const repoDir = computeTemporaryDirectory(repositoryUrl);
-
   try {
-    const git = await syncRepository(repositoryUrl, branch, repoDir);
+    let finalFiles: ChangedFile[] = [];
+    const publicRepoDir = computeTemporaryDirectory(publicRepositoryUrl);
+
+    const publicGit = await syncRepository(
+      publicRepositoryUrl,
+      publicRepositoryBranch,
+      publicRepoDir,
+    );
 
     // Read all the files
-    const files = await walk(path.resolve(repoDir), ['.git']);
+    const publicFiles = await walk(path.resolve(publicRepoDir), ['.git']);
 
-    const finalFiles: ChangedFile[] = await async.mapLimit(
-      files.filter((file) => !file.includes('/assets/')),
+    finalFiles = await async.mapLimit(
+      publicFiles.filter((file) => !file.includes('/assets/')),
       10,
       async (file: string) => {
-        const relativePath = file.replace(`${repoDir}/`, '');
+        const relativePath = file.replace(`${publicRepoDir}/`, '');
 
-        const parentDirectoryLog = await git.log({ file: path.dirname(file) });
+        const parentDirectoryLog = await publicGit.log({
+          file: path.dirname(file),
+        });
 
         return {
           path: relativePath,
@@ -252,6 +272,49 @@ export const getAllRepoFiles = async (
         };
       },
     );
+
+    if (privateRepositoryUrl && githubAccessToken) {
+      console.log(
+        '-- Sync procedure: Syncing the private github repository on branch',
+        privateRepositoryBranch,
+      );
+
+      const privateRepoDir = computeTemporaryDirectory(privateRepositoryUrl);
+
+      const privateGit = await syncRepository(
+        privateRepositoryUrl,
+        privateRepositoryBranch,
+        privateRepoDir,
+        githubAccessToken,
+      );
+
+      // Read all the files
+      const privateFiles = await walk(path.resolve(privateRepoDir), ['.git']);
+
+      const privateFinalFiles: ChangedFile[] = await async.mapLimit(
+        privateFiles.filter((file) => !file.includes('/assets/')),
+        10,
+        async (file: string) => {
+          const relativePath = file.replace(`${privateRepoDir}/`, '');
+
+          const parentDirectoryLog = await privateGit.log({
+            file: path.dirname(file),
+          });
+
+          return {
+            path: relativePath,
+            commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+            time: new Date(
+              parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
+            ).getTime(),
+            kind: 'added' as const,
+            data: await fs.readFile(file, 'utf-8'),
+          };
+        },
+      );
+
+      finalFiles = finalFiles.concat(privateFinalFiles);
+    }
 
     return finalFiles;
   } catch (error) {
