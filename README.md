@@ -10,7 +10,13 @@ We are looking for contributors! If you want to help or learn more about the pro
 
 We use [Nx](https://nx.dev) to manage the monorepo and Docker to run the development environment.
 
-To start the development environment, run `docker compose -f dev/compose.yml up --build -V -d`. This will start all the necessary containers.
+To start the development environment, run :
+
+1. `pnpm i`
+2. `pnpm nx run-many --target=build`
+3. `docker compose up --build -V`
+
+This will start all the necessary containers.
 
 On the first run, you will need to run the migrations. To do so, run `pnpm nx run database:migrations:run`. If at any moment you need to rerun the migrations (for example, if you change the database schema), you can run the same command adding the `--drop` flag to drop the database before running the migrations.
 
