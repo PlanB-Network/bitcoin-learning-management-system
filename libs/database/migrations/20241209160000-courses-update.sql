@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS users.course_payment (
   invoice_url VARCHAR(255),
   last_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 
-  PRIMARY KEY (uid, course_id)
+  PRIMARY KEY (uid, course_id, payment_id)
 );

@@ -52,6 +52,9 @@ export const syncProcedure = publicProcedure
     const syncErrors = await getAllRepoFiles(
       process.env['DATA_REPOSITORY_URL'],
       process.env['DATA_REPOSITORY_BRANCH'],
+      process.env['PRIVATE_DATA_REPOSITORY_URL'],
+      process.env['PRIVATE_DATA_REPOSITORY_BRANCH'],
+      process.env['GITHUB_ACCESS_TOKEN'],
     ).then(processChangedFiles);
 
     console.log('-- Sync procedure: Remove old entities');
@@ -64,13 +67,22 @@ export const syncProcedure = publicProcedure
 
     console.log('-- Sync procedure: sync cdn repository');
 
-    let cdnError;
+    let publicCdnError;
     syncCdnRepository(
       '/tmp/sovereign-university-data',
       process.env['CDN_PATH'] || '/tmp/cdn',
     ).catch((error) => {
       console.error(error);
-      cdnError = error;
+      publicCdnError = error;
+    });
+
+    let privateCdnError;
+    syncCdnRepository(
+      '/tmp/sovereign-university-data-paid',
+      process.env['CDN_PATH'] || '/tmp/cdn',
+    ).catch((error) => {
+      console.error(error);
+      privateCdnError = error;
     });
 
     console.log('-- Sync procedure: END');
@@ -85,6 +97,7 @@ export const syncProcedure = publicProcedure
     return {
       success: syncErrors.length === 0,
       ...(syncErrors.length > 0 && { syncErrors: syncErrors.map((e) => e) }),
-      ...(cdnError != null && { cdnError: cdnError }),
+      ...(publicCdnError != null && { publicCdnError: publicCdnError }),
+      ...(privateCdnError != null && { privateCdnError: privateCdnError }),
     };
   });
