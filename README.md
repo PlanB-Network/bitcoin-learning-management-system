@@ -22,6 +22,6 @@ On the first run, you will need to run the migrations. To do so, run `pnpm nx ru
 
 NB: You may need to build all the packages the very first time you run the project. To do so, run `pnpm nx run-many --target=build`.
 
-Once the containers are up and running, you can access the front at `http://localhost:5555`. The app will automatically reload if you change any of the source files.
+Once the containers are up and running, you can access the front at `http://localhost:4200`. The app will automatically reload if you change any of the source files.
 
 In order to sync the database with the data from the data repository, you can make a request to the API with `curl -X POST http://localhost:3000/api/github/sync` (until we have a proper Nx command for that). This will import all the data from the data repository into the database. Note that for some unknown reason, it may fail with a git error. If that happens, just run the command again. Just haven't had the time to investigate why it happens.
