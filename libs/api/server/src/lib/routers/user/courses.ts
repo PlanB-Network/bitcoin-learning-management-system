@@ -74,21 +74,21 @@ const savePaymentProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
-      paymentStatus: z.string(),
-      amount: z.number(),
-      paymentId: z.string(),
-      invoiceUrl: z.string(),
     }),
   )
-  .output(z.any())
+  .output(
+    z.object({
+      id: z.string(),
+      pr: z.string(),
+      onChainAddr: z.string(),
+      amount: z.number(),
+      checkoutUrl: z.string(),
+    }),
+  )
   .mutation(({ ctx, input }) =>
     createSavePayment(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
-      paymentStatus: input.paymentStatus,
-      amount: input.amount,
-      paymentId: input.paymentId,
-      invoiceUrl: input.invoiceUrl,
     }),
   );
 
