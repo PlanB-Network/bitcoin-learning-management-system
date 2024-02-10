@@ -9,6 +9,7 @@ import { protectedProcedure } from '../../procedures';
 import { createTRPCRouter } from '../../trpc';
 
 import { userCoursesRouter } from './courses';
+import { paymentWebhooksProcedure } from './webhooks';
 
 export const userRouter = createTRPCRouter({
   getMe: protectedProcedure.query(({ ctx }) => {
@@ -41,4 +42,5 @@ export const userRouter = createTRPCRouter({
       }),
     ),
   courses: userCoursesRouter,
+  webhooks: paymentWebhooksProcedure,
 });
