@@ -21,7 +21,7 @@ export const userRouter = createTRPCRouter({
   getDetails: protectedProcedure
     .meta({ openapi: { method: 'GET', path: '/users/details' } })
     .input(z.void())
-    .output(z.any())
+
     .query(async ({ ctx }) =>
       createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid }),
     ),
@@ -33,7 +33,7 @@ export const userRouter = createTRPCRouter({
         newPassword: z.string(),
       }),
     )
-    .output(z.any())
+
     .mutation(async ({ ctx, input }) =>
       createChangePassword(ctx.dependencies)({
         uid: ctx.user.uid,

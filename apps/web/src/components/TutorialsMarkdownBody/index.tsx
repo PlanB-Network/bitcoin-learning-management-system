@@ -2,7 +2,7 @@ import ReactMarkdown, { uriTransformer } from 'react-markdown';
 import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import rehypeMathjax from 'rehype-mathjax';
+import rehypeMathjax from 'rehype-mathjax/svg';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';

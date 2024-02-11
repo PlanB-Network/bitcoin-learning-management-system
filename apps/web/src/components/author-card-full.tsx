@@ -13,6 +13,8 @@ interface AuthorCardFullProps extends React.HTMLProps<HTMLDivElement> {
   professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
 }
 
+type Test = TRPCRouterOutput['content']['getProfessor'];
+
 export const AuthorCardFull = ({
   professor,
   ...props

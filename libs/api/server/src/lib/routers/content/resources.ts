@@ -21,8 +21,7 @@ const createGetResourcesProcedure = (category: ResourceCategory) => {
         path: `/content/resources/${category}`,
       },
     })
-    .input(z.object({ language: z.string().optional() }).optional())
-    .output(z.any());
+    .input(z.object({ language: z.string().optional() }).optional());
 };
 
 const createGetResourceProcedure = (category: ResourceCategory) => {
@@ -33,8 +32,7 @@ const createGetResourceProcedure = (category: ResourceCategory) => {
         path: `/content/resources/${category}/{id}/{language}`,
       },
     })
-    .input(z.object({ id: z.number(), language: z.string() }))
-    .output(z.any());
+    .input(z.object({ id: z.number(), language: z.string() }));
 };
 
 export const resourcesRouter = createTRPCRouter({

@@ -25,12 +25,14 @@ const hashObject = (obj: any): string => {
 };
 
 export const cacheMiddleware = createMiddleware(
-  async ({ ctx, next, path, type, rawInput }) => {
+  async ({ ctx, next, path, type, getRawInput }) => {
     const {
       dependencies: { redis },
     } = ctx;
 
     if (type === 'query' && path.startsWith('content.')) {
+      const rawInput = await getRawInput();
+
       const inputHash = rawInput ? hashObject(rawInput) : 'no-input';
       const key = `trpc:${path}:${inputHash}` as const;
 

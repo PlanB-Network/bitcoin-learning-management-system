@@ -17,7 +17,7 @@ const getTutorialsProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(undefined, input?.language),
   );
@@ -30,7 +30,7 @@ const getTutorialsByCategoryProcedure = publicProcedure
       language: z.string().optional(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(input.category, input.language),
   );
@@ -49,7 +49,7 @@ const getTutorialProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetTutorial(ctx.dependencies)({
       category: input.category,

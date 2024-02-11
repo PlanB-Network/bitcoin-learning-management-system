@@ -22,7 +22,7 @@ const completeChapterProcedure = protectedProcedure
       chapter: z.number(),
     }),
   )
-  .output(z.any())
+
   .mutation(({ ctx, input }) =>
     createCompleteChapter(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -37,7 +37,7 @@ const getProgressProcedure = protectedProcedure
     openapi: { method: 'GET', path: '/users/courses/progress' },
   })
   .input(z.void())
-  .output(z.any())
+
   .query(({ ctx }) =>
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
   );
@@ -55,7 +55,7 @@ const saveQuizAttemptProcedure = protectedProcedure
       correctAnswersCount: z.number(),
     }),
   )
-  .output(z.any())
+
   .mutation(({ ctx, input }) =>
     createSaveQuizAttempt(ctx.dependencies)({
       uid: ctx.user.uid,

@@ -61,11 +61,11 @@ export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
 
       return () => {
         const generateQueryKey = getQueryKey(trpc.auth.lud4.generate);
-        queryClient.removeQueries(generateQueryKey);
+        queryClient.removeQueries({ queryKey: generateQueryKey });
 
         const pollQueryKey = getQueryKey(trpc.auth.lud4.poll);
-        queryClient.cancelQueries(pollQueryKey);
-        queryClient.removeQueries(pollQueryKey);
+        queryClient.cancelQueries({ queryKey: pollQueryKey });
+        queryClient.removeQueries({ queryKey: pollQueryKey });
       };
     }
   }, [isOpen, queryClient, dispatch, onClose]);

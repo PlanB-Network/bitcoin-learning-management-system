@@ -20,7 +20,7 @@ const getCoursesProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetCourses(ctx.dependencies)(input?.language),
   );
@@ -35,7 +35,7 @@ const getCourseProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetCourse(ctx.dependencies)(input.id, input.language),
   );
@@ -53,7 +53,7 @@ const getCourseChaptersProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetCourseChapters(ctx.dependencies)(input.id, input.language),
   );
@@ -73,7 +73,7 @@ const getCourseChapterProcedure = publicProcedure
       chapterIndex: z.string(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,
@@ -98,7 +98,7 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
       chapterIndex: z.string(),
     }),
   )
-  .output(z.any())
+
   .query(async ({ ctx, input }) =>
     createGetCourseChapterQuizQuestions(ctx.dependencies)({
       courseId: input.courseId,

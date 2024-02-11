@@ -17,7 +17,6 @@ const getProfessorsProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(z.any())
   .query(async ({ ctx, input }) =>
     createGetProfessors(ctx.dependencies)(input?.language),
   );
@@ -35,7 +34,6 @@ const getProfessorProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(z.any())
   .query(async ({ ctx, input }) =>
     createGetProfessor(ctx.dependencies)(input.professorId, input.language),
   );
