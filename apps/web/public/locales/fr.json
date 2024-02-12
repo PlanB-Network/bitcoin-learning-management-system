@@ -94,9 +94,14 @@
       "thanksTip": "Vous voulez dire merci ? Soutenez."
     },
     "details": {
+      "accessible": "Accessible: Lifetime",
+      "buyCourse": "Buy the course",
       "courseId": "ID du cours : {{courseId}}",
+      "coursePayment": "Course payment",
       "curriculum": "Syllabus",
+      "date": "Date: {{startDate}} to {{endDate}}",
       "description": "Description",
+      "downloadCurriculum": "Download curriculum",
       "duration": "Durée : {{hours}} heures",
       "goal": "OBJECTIF : ",
       "level": "Niveau : $t(words.level.{{level}})",
@@ -107,12 +112,16 @@
       "numberOfChapters": "Nombre de chapitres : {{number}}",
       "objectives": "Objectifs",
       "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
+      "price": "Price: {{price}} sats",
       "professor": "Professeur",
       "startCourse": "Débuter le cours",
-      "buyCourse": "Buy the course",
-      "coursePayment": "Course payment",
       "taughtBy": "Ce cours est enseigné par :",
-      "teachers": "Professeurs : {{teachers}}"
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "Professeurs : {{teachers}}",
+      "teacherWord": "A word from the teacher",
+      "terms1": "Check our",
+      "terms2": "terms and conditions",
+      "terms3": "for refund details"
     },
     "explorer": {
       "footerTitle": "Nos professeurs sont là pour vous !",
@@ -513,6 +522,7 @@
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "professors": "Professeurs",
+    "purchase": "Purchase",
     "register": "Inscription",
     "relatedResources": "Ressources connexes",
     "resources": "Ressources",
