@@ -2,7 +2,7 @@ const { join } = require('path');
 
 const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
 
-const { baseConfig } = require('../../libs/ui/tailwind.config.base.js');
+const { baseConfig } = require('../../packages/ui/tailwind.config.base.js');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

@@ -1,10 +1,44 @@
 {
   "name": "@sovereign-university/api",
   "version": "0.0.1",
-  "type": "commonjs",
-  "pnpm": {
-    "patchedDependencies": {
-      "postgres@3.3.5": "patches/postgres@3.3.5.patch"
-    }
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "main": "./src/trpc/index.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.app.json",
+    "dev": "tsx --conditions=development --watch src/index.ts",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build"
+  },
+  "dependencies": {
+    "@sovereign-university/content": "workspace:*",
+    "@sovereign-university/database": "workspace:*",
+    "@sovereign-university/github": "workspace:*",
+    "@sovereign-university/redis": "workspace:*",
+    "@sovereign-university/user": "workspace:*",
+    "@trpc/server": "11.0.0-next-beta.274",
+    "argon2": "^0.31.2",
+    "bech32": "^2.0.0",
+    "bip39": "^3.1.0",
+    "connect-redis": "^7.1.1",
+    "cors": "2.8.5",
+    "eventemitter3": "^5.0.1",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "secp256k1": "^5.0.0",
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@sovereign-university/types": "workspace:*",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "4.17.43",
+    "@types/express-session": "^1.17.10",
+    "@types/qs": "6.9.11",
+    "@types/secp256k1": "^4.0.6",
+    "dotenv": "^16.4.2"
   }
 }

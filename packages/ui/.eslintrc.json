@@ -1,0 +1,32 @@
+{
+  "plugins": ["tailwindcss"],
+  "extends": ["../../.eslintrc.json", "plugin:tailwindcss/recommended"],
+  "ignorePatterns": ["!**/*", "tailwind.config.js", "tailwind.config.base.js"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parserOptions": {
+        "project": [
+          "packages/ui/tsconfig.*?.json",
+          "packages/ui/tsconfig.storybook.json"
+        ]
+      },
+      "rules": {
+        "tailwindcss/no-custom-classname": [
+          1,
+          {
+            "config": "packages/ui/tailwind.config.js"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
+}

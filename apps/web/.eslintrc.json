@@ -2,7 +2,7 @@
   "plugins": ["tailwindcss"],
   "extends": [
     "eslint:recommended",
-    "plugin:@nx/react",
+    "plugin:react/recommended",
     "../../.eslintrc.json",
     "plugin:tailwindcss/recommended",
     "prettier"

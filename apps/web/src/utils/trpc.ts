@@ -3,15 +3,18 @@ import {
   createTRPCReact,
   httpBatchLink,
 } from '@trpc/react-query';
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import superjson from 'superjson';
 
-import type { AppRouter } from '@sovereign-university/api/server';
+import type {
+  AppRouter,
+  RouterInputs,
+  RouterOutputs,
+} from '../../../api/src/trpc/types';
 
 import { getDomain, isDevelopmentEnvironment } from './misc';
 
-export type TRPCRouterInput = inferRouterInputs<AppRouter>;
-export type TRPCRouterOutput = inferRouterOutputs<AppRouter>;
+export type TRPCRouterInput = RouterInputs;
+export type TRPCRouterOutput = RouterOutputs;
 
 export const tRPCClientOptions = {
   links: [

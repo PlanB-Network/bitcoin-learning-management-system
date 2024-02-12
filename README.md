@@ -8,12 +8,12 @@ We are looking for contributors! If you want to help or learn more about the pro
 
 ## Development
 
-We use [Nx](https://nx.dev) to manage the monorepo and Docker to run the development environment.
+We use [Turbo](https://turbo.build/) to manage the monorepo and Docker to run the development environment.
 
 To start the development environment, run :
 
-1. `pnpm i`
-2. `pnpm nx run-many --target=build`
+1. `pnpm install`
+2. `pnpm build`
 3. `docker compose up --build -V`
 
 This will start all the necessary containers.

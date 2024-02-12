@@ -1,0 +1,30 @@
+{
+  "name": "@sovereign-university/github",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.lib.json",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build"
+  },
+  "dependencies": {
+    "@octokit/app": "^14.0.2",
+    "@octokit/rest": "^20.0.2",
+    "@octokit/webhooks-methods": "^4.0.0",
+    "async": "^3.2.5",
+    "simple-git": "^3.22.0"
+  },
+  "devDependencies": {
+    "@octokit/openapi-types": "19.1.0",
+    "@octokit/webhooks-types": "7.3.2",
+    "@sovereign-university/types": "workspace:*",
+    "@types/async": "^3.2.24"
+  }
+}

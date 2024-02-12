@@ -1,12 +1,11 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router } from 'express';
-import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
-import { appRouter, createContext } from '@sovereign-university/api/server';
-
-import { Dependencies } from './dependencies';
-import { createCorsMiddleware } from './middlewares/cors';
-import { createCookieSessionMiddleware } from './middlewares/session/cookie';
+import { Dependencies } from './dependencies.js';
+import { createCorsMiddleware } from './middlewares/cors.js';
+import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
+import { appRouter } from './routers/router.js';
+import { createContext } from './trpc/index.js';
 
 /* const openApiDocument = generateOpenApiDocument(appRouter, {
   title: 'The Sovereign University API',
@@ -38,25 +37,6 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     createExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
-    }),
-  );
-
-  // Register REST (OpenAPI) routes
-  router.use(
-    '/',
-    createOpenApiExpressMiddleware({
-      router: appRouter,
-      createContext: (opts) => createContext(opts, dependencies),
-      onError:
-        process.env.NODE_ENV === 'development'
-          ? ({ req, error }) => {
-              console.error(
-                `❌ OpenAPI failed on ${req.url ?? '<no-path>'}: ${
-                  error.message
-                }`,
-              );
-            }
-          : undefined,
     }),
   );
 

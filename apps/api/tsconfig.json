@@ -1,13 +1,29 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [],
+  "extends": "../../tsconfig.json",
+  "include": ["./src/**/*.ts"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": "."
+  },
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "../../packages/content/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/database/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/github/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/redis/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/user/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/types/tsconfig.lib.json"
     }
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true
-  }
+  ]
 }

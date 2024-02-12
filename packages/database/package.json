@@ -1,0 +1,23 @@
+{
+  "name": "@sovereign-university/database",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.lib.json",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build"
+  },
+  "dependencies": {
+    "postgres": "^3.3.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.2"
+  }
+}

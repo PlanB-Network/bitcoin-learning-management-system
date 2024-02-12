@@ -1,25 +1,12 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nx", "react-refresh"],
+  "plugins": ["react-refresh"],
+  "extends": ["eslint:recommended"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "extends": ["plugin:import/recommended", "plugin:prettier/recommended"],
       "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ],
         "import/first": "error",
         "import/newline-after-import": "error",
         "import/no-duplicates": "error",
@@ -64,13 +51,19 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript", "plugin:import/typescript"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/typescript"
+      ],
       "settings": {
         "import/resolver": {
           "typescript": {
             "alwaysTryTypes": true,
             "project": [
-              "tsconfig.base.json",
+              "tsconfig.json",
               "*/*/*/tsconfig.*?.json",
               "*/*/*/tsconfig.json",
               "*/*/tsconfig.*?.json",
@@ -81,11 +74,16 @@
             "extensions": [".js", ".jsx", ".ts", ".tsx"]
           }
         }
+      },
+      "rules": {
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          { "checksVoidReturn": false }
+        ]
       }
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     },
     {

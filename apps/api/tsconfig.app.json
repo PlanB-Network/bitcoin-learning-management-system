@@ -1,9 +1,30 @@
 {
   "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["node"]
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": "."
   },
-  "include": ["src/**/*.ts"]
+  "references": [
+    {
+      "path": "../../packages/content/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/database/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/github/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/redis/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/user/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/types/tsconfig.lib.json"
+    }
+  ]
 }

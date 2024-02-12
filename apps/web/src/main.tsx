@@ -9,7 +9,7 @@ import './utils/i18n';
 // Styles
 // TODO TRIGGER
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import '../../../libs/ui/src/styles/global.css';
+import '../../../packages/ui/src/styles/global.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

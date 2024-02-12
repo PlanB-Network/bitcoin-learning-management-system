@@ -1,21 +1,19 @@
 {
+  "extends": "../../tsconfig.json",
+  "include": ["src"],
   "compilerOptions": {
+    "noEmit": true,
     "jsx": "react-jsx",
-    "allowJs": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "types": ["vite/client", "vitest"]
+    "lib": ["dom", "esnext"],
+    "types": ["vite/client"],
+    "allowImportingTsExtensions": true
   },
-  "files": [],
-  "include": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "../../packages/ui/tsconfig.lib.json"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "../../packages/types/tsconfig.lib.json"
     }
-  ],
-  "extends": "../../tsconfig.base.json"
+  ]
 }
