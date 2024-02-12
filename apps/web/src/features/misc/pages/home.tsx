@@ -16,7 +16,7 @@ import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.png';
 import HeaderRight from '../../../assets/home/header_right.svg';
 import NetworkMain from '../../../assets/home/network-main.svg';
-import ProfessorsTile from '../../../assets/home/professors.svg';
+import ProfessorsTile from '../../../assets/home/professors.png';
 import Sponsors from '../../../assets/home/sponsors.png';
 import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
