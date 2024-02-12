@@ -94,9 +94,14 @@
       "thanksTip": "楽しんでいただけましたか？チップはこちらから。"
     },
     "details": {
+      "accessible": "Accessible: Lifetime",
+      "buyCourse": "Buy the course",
       "courseId": "コースID：{{courseId}}",
+      "coursePayment": "Course payment",
       "curriculum": "カリキュラム",
+      "date": "Date: {{startDate}} to {{endDate}}",
       "description": "説明",
+      "downloadCurriculum": "Download curriculum",
       "duration": "所要時間：{{hours}}時間",
       "goal": "ゴール：",
       "level": "レベル：$t(words.level.{{level}})",
@@ -107,12 +112,16 @@
       "numberOfChapters": "チャプター数：{{number}}",
       "objectives": "目的",
       "objectivesTitle": "学習内容：",
+      "price": "Price: {{price}} sats",
       "professor": "教授",
       "startCourse": "コースを開始する",
-      "buyCourse": "Buy the course",
-      "coursePayment": "Course payment",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
-      "teachers": "講師陣：{{teachers}}"
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "講師陣：{{teachers}}",
+      "teacherWord": "A word from the teacher",
+      "terms1": "Check our",
+      "terms2": "terms and conditions",
+      "terms3": "for refund details"
     },
     "explorer": {
       "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
@@ -513,6 +522,7 @@
     "podcast": "ポッドキャスト",
     "podcasts": "ポッドキャスト",
     "professors": "講師陣",
+    "purchase": "Purchase",
     "register": "登録する",
     "relatedResources": "関連するリソース",
     "resources": "リソース",
