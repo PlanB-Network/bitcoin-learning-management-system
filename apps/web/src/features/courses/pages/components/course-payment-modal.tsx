@@ -20,7 +20,7 @@ type PaymentData = {
   checkoutUrl: string;
 };
 
-const getTrue = () => true;
+// const getTrue = () => true;
 
 export const CoursePaymentModal = ({
   course,

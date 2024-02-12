@@ -52,7 +52,7 @@ export const CourseDetails: React.FC = () => {
 
   const {
     data: payments,
-    isFetched: isPaymentFetched,
+    // isFetched: isPaymentFetched,
     refetch: refetchPayment,
   } = trpc.user.courses.getPayment.useQuery();
 
