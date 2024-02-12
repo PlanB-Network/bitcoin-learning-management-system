@@ -109,6 +109,8 @@
       "objectivesTitle": "Lo que aprenderás:",
       "professor": "Profesor",
       "startCourse": "Iniciar el curso",
+      "buyCourse": "Buy the course",
+      "coursePayment": "Course payment",
       "taughtBy": "Este curso está siendo impartido por :",
       "teachers": "Profesores: {{teachers}}"
     },
