@@ -109,6 +109,8 @@
       "objectivesTitle": "学習内容：",
       "professor": "教授",
       "startCourse": "コースを開始する",
+      "buyCourse": "Buy the course",
+      "coursePayment": "Course payment",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
       "teachers": "講師陣：{{teachers}}"
     },
