@@ -23,12 +23,6 @@ export const Secondary: Story = {
   },
 };
 
-export const Soft: Story = {
-  args: {
-    variant: 'soft',
-  },
-};
-
 export const Text: Story = {
   args: {
     variant: 'text',
