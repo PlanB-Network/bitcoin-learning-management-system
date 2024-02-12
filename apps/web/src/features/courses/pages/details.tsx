@@ -3,9 +3,10 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
-import { FaChalkboardTeacher } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaLock } from 'react-icons/fa';
 import { HiOutlineAcademicCap, HiOutlineBookOpen } from 'react-icons/hi';
 import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
@@ -30,6 +31,8 @@ import { TRPCRouterOutput } from '../../../utils/trpc';
 import { CourseButton } from '../components/course-button';
 import { CourseLayout } from '../layout';
 
+import { CoursePaymentModal } from './components/course-payment-modal';
+
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 
@@ -40,17 +43,50 @@ export const CourseDetails: React.FC = () => {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
     language: i18n.language,
   });
 
+  const {
+    data: payments,
+    isFetched: isPaymentFetched,
+    refetch: refetchPayment,
+  } = trpc.user.courses.getPayment.useQuery();
+
+  console.log({ payments });
+
+  const isCoursePaid = useMemo(
+    () =>
+      payments?.some(
+        (coursePayment) =>
+          coursePayment.payment_status === 'paid' &&
+          coursePayment.course_id === courseId,
+      ),
+    [courseId, payments],
+  );
+
   const professorNames = course?.professors
     .map((professor) => professor.name)
     .join(', ');
 
   if (!course && isFetched) navigateTo404();
+
+  const buttonProps = useMemo(
+    () =>
+      course?.requires_payment && !isCoursePaid
+        ? {
+            iconLeft: <FaLock />,
+            onClick: () => {
+              setIsPaymentModalOpen(true);
+            },
+            variant: 'primary' as const,
+          }
+        : { variant: 'tertiary' as const },
+    [course?.requires_payment, isCoursePaid],
+  );
 
   const Header = ({ course }: { course: Course }) => {
     return (
@@ -184,6 +220,7 @@ export const CourseDetails: React.FC = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
+                  disabled={course.requires_payment}
                   to={'/courses/$courseId/$partIndex/$chapterIndex'}
                   params={{
                     courseId,
@@ -191,9 +228,13 @@ export const CourseDetails: React.FC = () => {
                     chapterIndex: '1',
                   }}
                 >
-                  <Button variant="tertiary" rounded>
+                  <Button rounded {...buttonProps}>
                     <span className="sm:px-6">
-                      {t('courses.details.startCourse')}
+                      {t(
+                        course.requires_payment
+                          ? 'courses.details.buyCourse'
+                          : 'courses.details.startCourse',
+                      )}
                     </span>
                   </Button>
                 </Link>
@@ -208,6 +249,7 @@ export const CourseDetails: React.FC = () => {
                 <div className=" mx-1 flex items-center justify-center">
                   <Link
                     to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                    disabled={course.requires_payment}
                     params={{
                       courseId,
                       partIndex: '1',
@@ -215,8 +257,8 @@ export const CourseDetails: React.FC = () => {
                     }}
                   >
                     <div className="flex">
-                      <Button variant="tertiary" rounded>
-                        <span className="relative z-10 text-sm font-medium sm:px-6	">
+                      <Button rounded {...buttonProps}>
+                        <span className="relative z-10 text-sm font-medium sm:px-6">
                           {t('courses.details.startCourse')}
                         </span>
                         <img
@@ -408,6 +450,7 @@ export const CourseDetails: React.FC = () => {
           <Link
             className="bottom-2"
             to={'/courses/$courseId/$partIndex/$chapterIndex'}
+            disabled={course.requires_payment}
             params={{
               courseId,
               partIndex: '1',
@@ -416,11 +459,19 @@ export const CourseDetails: React.FC = () => {
           >
             <Button
               size={isScreenMd ? 'l' : 's'}
-              iconRight={<BsRocketTakeoff />}
-              variant="tertiary"
+              {...buttonProps}
+              {...(!course.requires_payment
+                ? {
+                    iconRight: <BsRocketTakeoff />,
+                  }
+                : {})}
               className="text-blue-1000 mb-auto"
             >
-              {t('courses.details.startCourse')}
+              {t(
+                course.requires_payment
+                  ? 'courses.details.buyCourse'
+                  : 'courses.details.startCourse',
+              )}
             </Button>
           </Link>
         </div>
@@ -445,6 +496,16 @@ export const CourseDetails: React.FC = () => {
             <Professors course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <Footer course={course} />
+            <CoursePaymentModal
+              course={course}
+              isOpen={isPaymentModalOpen}
+              onClose={(isPaid) => {
+                if (isPaid) {
+                  refetchPayment();
+                }
+                setIsPaymentModalOpen(false);
+              }}
+            />
           </div>
         )}
       </div>

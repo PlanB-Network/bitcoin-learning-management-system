@@ -15,6 +15,10 @@ export default interface Courses {
   last_updated: number;
 
   last_commit: string;
+
+  last_sync: number;
+
+  requires_payment: boolean;
 }
 
 /** Represents the initializer for the table content.courses */
@@ -29,6 +33,12 @@ export interface CoursesInitializer {
   last_updated?: number;
 
   last_commit: string;
+
+  /** Default value: now() */
+  last_sync?: number;
+
+  /** Default value: false */
+  requires_payment?: boolean;
 }
 
 /** Represents the mutator for the table content.courses */
@@ -42,4 +52,8 @@ export interface CoursesMutator {
   last_updated?: number;
 
   last_commit?: string;
+
+  last_sync?: number;
+
+  requires_payment?: boolean;
 }

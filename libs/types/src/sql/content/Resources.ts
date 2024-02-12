@@ -15,6 +15,8 @@ export default interface Resources {
   last_updated: number;
 
   last_commit: string;
+
+  last_sync: number;
 }
 
 /** Represents the initializer for the table content.resources */
@@ -30,6 +32,9 @@ export interface ResourcesInitializer {
   last_updated?: number;
 
   last_commit: string;
+
+  /** Default value: now() */
+  last_sync?: number;
 }
 
 /** Represents the mutator for the table content.resources */
@@ -43,4 +48,6 @@ export interface ResourcesMutator {
   last_updated?: number;
 
   last_commit?: string;
+
+  last_sync?: number;
 }
