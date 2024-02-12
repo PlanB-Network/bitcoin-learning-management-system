@@ -44,20 +44,20 @@ export const CourseDescriptionModal = ({
 
   const HeaderSmall = ({ course }: { course: Course }) => {
     return (
-      <div className="grid grid-cols-2">
-        <div className="flex flex-col space-y-2 p-3 sm:px-0 md:hidden">
+      <div className="grid grid-cols-3 text-blue-800 md:hidden">
+        <div className=" col-span-2 flex-col space-y-2 p-3 sm:px-0">
           <div className="flex flex-wrap gap-2 text-xs">
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
               <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
-              <span className="text-blue-800">{professorNames}</span>
+              <span>{professorNames}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
               <img src={graduateImg} alt="" className="mr-2 h-4 w-4" />
-              <span className="capitalize text-blue-800">{course.level}</span>
+              <span className="capitalize">{course.level}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
               <Book />
-              <span className="ml-2 text-blue-800">
+              <span className="ml-2">
                 {t('courses.details.mobile.chapters', {
                   chapters: course.chaptersCount,
                 })}
@@ -69,7 +69,7 @@ export const CourseDescriptionModal = ({
                 alt="Icono de estudio"
                 className="mr-2 h-4 w-4"
               />
-              <span className="text-blue-800">
+              <span>
                 {t('courses.details.mobile.hours', {
                   hours: course.hours,
                 })}
@@ -77,8 +77,8 @@ export const CourseDescriptionModal = ({
             </div>
           </div>
         </div>
-        <div>
-          <p>PRIIIICEEEE</p>
+        <div className="col-span-1 mx-auto justify-center self-center text-xl">
+          <p>{satsPrice + ' sats'}</p>
         </div>
       </div>
     );
