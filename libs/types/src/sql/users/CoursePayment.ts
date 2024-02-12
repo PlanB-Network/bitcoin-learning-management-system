@@ -4,17 +4,20 @@
 import type { AccountsUid } from './Accounts';
 import type { CoursesId } from '../content/Courses';
 
+/** Identifier type for users.course_payment */
+export type CoursePaymentPaymentId = string;
+
 /** Represents the table users.course_payment */
 export default interface CoursePayment {
   uid: AccountsUid;
 
   course_id: CoursesId;
 
+  payment_id: CoursePaymentPaymentId;
+
   payment_status: string;
 
   amount: number;
-
-  payment_id?: string;
 
   invoice_url?: string;
 
@@ -27,11 +30,11 @@ export interface CoursePaymentInitializer {
 
   course_id: CoursesId;
 
+  payment_id: CoursePaymentPaymentId;
+
   payment_status: string;
 
   amount: number;
-
-  payment_id?: string;
 
   invoice_url?: string;
 
@@ -45,11 +48,11 @@ export interface CoursePaymentMutator {
 
   course_id?: CoursesId;
 
+  payment_id?: CoursePaymentPaymentId;
+
   payment_status?: string;
 
   amount?: number;
-
-  payment_id?: string;
 
   invoice_url?: string;
 

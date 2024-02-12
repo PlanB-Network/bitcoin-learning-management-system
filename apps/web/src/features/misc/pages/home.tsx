@@ -35,7 +35,7 @@ import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const titleCss = 'md:text-3xl font-semibold';
-const paragraphCss = 'text-xs text-gray-400 sm:text-sm lg:text-base';
+const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
 
 export const Home = () => {
   const { t } = useTranslation();

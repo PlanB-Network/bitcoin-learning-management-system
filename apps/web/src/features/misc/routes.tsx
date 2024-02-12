@@ -9,6 +9,7 @@ import { NotFound } from './pages/not-found';
 import { ProfessorDetail } from './pages/professor-detail';
 import { ProfessorExplorer } from './pages/professor-explorer';
 import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
+import { TermsAndConditions } from './pages/terms-and-conditions';
 import { UnderConstruction } from './pages/under-construction';
 
 export const homeRoute = new Route({
@@ -65,6 +66,12 @@ export const nodeNetworkRoute = new Route({
   component: NodeNetwork,
 });
 
+export const termsAndConditionsROute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/terms-and-conditions',
+  component: TermsAndConditions,
+});
+
 export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
@@ -75,4 +82,5 @@ export const miscRoutes = [
   professorExplorer,
   professorDetail,
   underConstructionRoute,
+  termsAndConditionsROute,
 ];

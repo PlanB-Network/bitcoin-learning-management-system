@@ -76,3 +76,15 @@ export const getFileExtension = (path: string) => {
   const fileNameElements = fileName.split('.');
   return fileNameElements[fileNameElements.length - 1];
 };
+
+export function convertStringToTimestamp(inputString: string) {
+  const year = parseInt(inputString.substring(0, 4));
+  const month = parseInt(inputString.substring(4, 6));
+  const day = parseInt(inputString.substring(6, 8));
+
+  const dateObject = new Date(year, month - 1, day); // Note: month is zero-based in JavaScript Date objects
+
+  const timestamp = dateObject.getTime();
+
+  return timestamp;
+}

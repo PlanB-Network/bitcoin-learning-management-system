@@ -19,6 +19,16 @@ export default interface Courses {
   last_sync: number;
 
   requires_payment: boolean;
+
+  paid_price_euros?: number;
+
+  paid_description?: string;
+
+  paid_video_link?: string;
+
+  paid_start_date?: number;
+
+  paid_end_date?: number;
 }
 
 /** Represents the initializer for the table content.courses */
@@ -39,6 +49,16 @@ export interface CoursesInitializer {
 
   /** Default value: false */
   requires_payment?: boolean;
+
+  paid_price_euros?: number;
+
+  paid_description?: string;
+
+  paid_video_link?: string;
+
+  paid_start_date?: number;
+
+  paid_end_date?: number;
 }
 
 /** Represents the mutator for the table content.courses */
@@ -56,4 +76,14 @@ export interface CoursesMutator {
   last_sync?: number;
 
   requires_payment?: boolean;
+
+  paid_price_euros?: number;
+
+  paid_description?: string;
+
+  paid_video_link?: string;
+
+  paid_start_date?: number;
+
+  paid_end_date?: number;
 }

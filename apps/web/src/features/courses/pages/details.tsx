@@ -3,7 +3,8 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
-import { useMemo, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
 import { FaChalkboardTeacher, FaLock } from 'react-icons/fa';
@@ -31,6 +32,7 @@ import { TRPCRouterOutput } from '../../../utils/trpc';
 import { CourseButton } from '../components/course-button';
 import { CourseLayout } from '../layout';
 
+import { CourseDescriptionModal } from './components/course-description-modal';
 import { CoursePaymentModal } from './components/course-payment-modal';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -44,6 +46,7 @@ export const CourseDetails: React.FC = () => {
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
 
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
@@ -80,13 +83,37 @@ export const CourseDetails: React.FC = () => {
         ? {
             iconLeft: <FaLock />,
             onClick: () => {
-              setIsPaymentModalOpen(true);
+              setIsDescriptionModalOpen(true);
             },
             variant: 'primary' as const,
           }
         : { variant: 'tertiary' as const },
     [course?.requires_payment, isCoursePaid],
   );
+
+  const [conversionRate, setConversionRate] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get('https://mempool.space/api/v1/prices');
+
+      if (response.data) {
+        const newConversionRate = response.data['EUR'];
+        setConversionRate(newConversionRate);
+      } else {
+        console.error('Failed to retrieve conversion rate from Kraken API.');
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  let satsPrice = -1;
+  if (course && course.paid_price_euros && conversionRate) {
+    satsPrice = Math.round(
+      (course.paid_price_euros * 100000000) / conversionRate,
+    );
+  }
 
   const Header = ({ course }: { course: Course }) => {
     return (
@@ -181,9 +208,13 @@ export const CourseDetails: React.FC = () => {
           <div className="flex flex-row items-start space-x-5 ">
             <FaChalkboardTeacher size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
-              {t('courses.details.teachers', {
-                teachers: professorNames,
-              })}
+              {course.professors?.length > 1
+                ? t('courses.details.teachers', {
+                    teachers: professorNames,
+                  })
+                : t('courses.details.teacher', {
+                    teacher: professorNames,
+                  })}
             </span>
           </div>
           <div className="flex flex-row items-start space-x-5">
@@ -498,12 +529,25 @@ export const CourseDetails: React.FC = () => {
             <Footer course={course} />
             <CoursePaymentModal
               course={course}
+              satsPrice={satsPrice}
               isOpen={isPaymentModalOpen}
               onClose={(isPaid) => {
                 if (isPaid) {
                   refetchPayment();
                 }
                 setIsPaymentModalOpen(false);
+              }}
+            />
+            <CourseDescriptionModal
+              course={course}
+              satsPrice={satsPrice}
+              isOpen={isDescriptionModalOpen}
+              onClose={() => {
+                setIsDescriptionModalOpen(false);
+              }}
+              onPay={() => {
+                setIsDescriptionModalOpen(false);
+                setIsPaymentModalOpen(true);
               }}
             />
           </div>

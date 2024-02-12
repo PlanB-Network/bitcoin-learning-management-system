@@ -11,7 +11,16 @@ export type { default as CourseChapterLocalized } from '../sql/content/CourseCha
 
 export type JoinedCourse = Pick<
   Course,
-  'id' | 'hours' | 'requires_payment' | 'last_updated' | 'last_commit'
+  | 'id'
+  | 'hours'
+  | 'requires_payment'
+  | 'paid_price_euros'
+  | 'paid_description'
+  | 'paid_video_link'
+  | 'paid_start_date'
+  | 'paid_end_date'
+  | 'last_updated'
+  | 'last_commit'
 > &
   Pick<
     CourseLocalized,

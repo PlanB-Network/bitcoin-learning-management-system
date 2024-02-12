@@ -4,10 +4,11 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { Modal } from '../../../../atoms/Modal';
 import { trpc } from '../../../../utils';
-import { Course } from '../../components/courseTree';
+import { TRPCRouterOutput } from '../../../../utils/trpc';
 
 interface CoursePaymentModalProps {
-  course: Course;
+  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
 }
@@ -24,6 +25,7 @@ type PaymentData = {
 
 export const CoursePaymentModal = ({
   course,
+  satsPrice,
   isOpen,
   onClose,
 }: CoursePaymentModalProps) => {
@@ -46,6 +48,7 @@ export const CoursePaymentModal = ({
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
+      amount: satsPrice,
     });
     // sendJsonMessage({ hash: serverPaymentData.id });
     setPaymentData(serverPaymentData);
@@ -73,7 +76,7 @@ export const CoursePaymentModal = ({
       onClose={onClose}
       headerText={t('courses.details.coursePayment')}
     >
-      <div className="flex flex-col items-center">
+      <div className="flex min-w-[85vw] flex-col items-center lg:min-w-[20rem]">
         {!paymentData ? (
           'Loading...'
         ) : (

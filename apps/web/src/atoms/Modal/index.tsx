@@ -62,8 +62,8 @@ export const Modal = ({
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel>
-                <div className="overflow-hidden rounded-[1.5em] border-4 border-orange-600 bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:max-w-lg sm:p-6 md:pb-4 md:pt-5">
+              <Dialog.Panel className="">
+                <div className="max-h-screen overflow-auto rounded-[1.5em] border-4 border-orange-600 bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:sm:max-w-5xl">
                   {closeButtonEnabled && (
                     <button>
                       <IoMdClose
@@ -79,7 +79,7 @@ export const Modal = ({
                 </div>
                 {/* TODO: move this outside of the modal atom */}
                 {showAccountHelper && (
-                  <div className="relative my-8 max-w-xs sm:max-w-lg md:my-14">
+                  <div className="relative my-8 max-w-lg md:my-14">
                     <div className="relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
                       <span className="italic text-blue-800">
                         {t('words.didYouKnow')}

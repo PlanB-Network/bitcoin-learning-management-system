@@ -5,12 +5,20 @@ import { insertPayment } from '../queries/insert-payment';
 
 export const createSavePayment =
   (dependencies: Dependencies) =>
-  async ({ uid, courseId }: { uid: string; courseId: string }) => {
+  async ({
+    uid,
+    courseId,
+    amount,
+  }: {
+    uid: string;
+    courseId: string;
+    amount: number;
+  }) => {
     const { postgres } = dependencies;
 
     const paymentData = {
       title: courseId,
-      amount: 1,
+      amount: amount,
       unit: 'sat',
       onChain: true,
       webhook: `${process.env['PUBLIC_PROXY_URL']}/api/users/courses/payment/webhooks`,

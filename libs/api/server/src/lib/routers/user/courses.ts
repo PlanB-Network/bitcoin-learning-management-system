@@ -74,6 +74,7 @@ const savePaymentProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
+      amount: z.number(),
     }),
   )
   .output(
@@ -89,6 +90,7 @@ const savePaymentProcedure = protectedProcedure
     createSavePayment(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      amount: input.amount,
     }),
   );
 

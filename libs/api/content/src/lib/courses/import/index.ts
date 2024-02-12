@@ -13,6 +13,7 @@ import type { Language } from '../../const';
 import { Dependencies } from '../../dependencies';
 import { ChangedContent } from '../../types';
 import {
+  convertStringToTimestamp,
   getContentType,
   getRelativePath,
   separateContentFiles,
@@ -89,8 +90,13 @@ interface CourseMain {
   level: string;
   hours: number;
   professors: string[];
-  requires_payment: boolean;
   tags?: string[];
+  requires_payment: boolean;
+  paid_price_euros?: number;
+  paid_description?: string;
+  paid_video_link?: string;
+  paid_start_date?: string;
+  paid_end_date?: string;
 }
 
 interface CourseLocalized {
@@ -184,6 +190,20 @@ export const createProcessChangedCourse =
                 parsedCourse.requires_payment = false;
               }
 
+              const startDateTimestamp = convertStringToTimestamp(
+                parsedCourse.paid_start_date
+                  ? parsedCourse.paid_start_date.toString()
+                  : '20220101',
+              );
+              if (parsedCourse.requires_payment) {
+                console.log('startDateTimestamp', startDateTimestamp);
+              }
+              const endDateTimestamp = convertStringToTimestamp(
+                parsedCourse.paid_end_date
+                  ? parsedCourse.paid_end_date.toString()
+                  : '20220101',
+              );
+
               const lastUpdated = course.files
                 .filter(
                   (file): file is ModifiedFile | RenamedFile =>
@@ -192,12 +212,19 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, requires_payment, last_updated, last_commit, last_sync)
+                INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_euros,
+                  paid_description, paid_video_link, paid_start_date, paid_end_date,
+                  last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
                   ${parsedCourse.requires_payment},
+                  ${parsedCourse.paid_price_euros},
+                  ${parsedCourse.paid_description},
+                  ${parsedCourse.paid_video_link},
+                  ${startDateTimestamp},
+                  ${endDateTimestamp},
                   ${lastUpdated.time}, 
                   ${lastUpdated.commit},
                   NOW()
@@ -206,6 +233,11 @@ export const createProcessChangedCourse =
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
                   requires_payment = EXCLUDED.requires_payment,
+                  paid_price_euros = EXCLUDED.paid_price_euros,
+                  paid_description = EXCLUDED.paid_description,
+                  paid_video_link = EXCLUDED.paid_video_link,
+                  paid_start_date = EXCLUDED.paid_start_date,
+                  paid_end_date = EXCLUDED.paid_end_date,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()
