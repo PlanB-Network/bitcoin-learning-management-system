@@ -83,6 +83,7 @@ export const CoursePaymentModal = ({
           <iframe
             allow="clipboard-write"
             src={paymentData.checkoutUrl}
+            title="SBP"
             style={{
               width: 460,
               maxWidth: '100%',
