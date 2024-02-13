@@ -93,7 +93,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           <div className="flex flex-row">
             <div className="mx-auto flex flex-col gap-20 pl-4 pr-60 md:flex-row">
               <div className="flex flex-col items-center gap-6 md:hidden lg:flex">
-                <img src={PlanBLogo} alt="" className="min-w-[150px]"></img>
+                <img src={PlanBLogo} alt=""></img>
                 <div className="hidden lg:block">
                   <SocialNetworks />
                 </div>
