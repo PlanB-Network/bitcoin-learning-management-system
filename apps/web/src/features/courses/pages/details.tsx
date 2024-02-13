@@ -24,8 +24,10 @@ import wizard from '../../../assets/courses/wizard.png';
 import yellowBook from '../../../assets/courses/yellowbook.png';
 import rabitPen from '../../../assets/rabbit_holding_pen.svg';
 import { Button } from '../../../atoms/Button';
+import { AuthModal } from '../../../components/AuthModal';
+import { AuthModalState } from '../../../components/AuthModal/props';
 import { AuthorCard } from '../../../components/author-card';
-import { useNavigateMisc } from '../../../hooks';
+import { useAppSelector, useDisclosure, useNavigateMisc } from '../../../hooks';
 import { computeAssetCdnUrl, trpc } from '../../../utils';
 import { addSpaceToCourseId } from '../../../utils/courses';
 import { TRPCRouterOutput } from '../../../utils/trpc';
@@ -39,6 +41,19 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 
 export const CourseDetails: React.FC = () => {
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+
+  // TODO Refactor this auth stuff
+  const [authMode, setAuthMode] = useState<AuthModalState>(
+    AuthModalState.SignIn,
+  );
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
   const { courseId } = useParams({
     from: '/courses/$courseId',
   });
@@ -83,12 +98,17 @@ export const CourseDetails: React.FC = () => {
         ? {
             iconLeft: <FaLock />,
             onClick: () => {
-              setIsDescriptionModalOpen(true);
+              if (isLoggedIn) {
+                setIsDescriptionModalOpen(true);
+              } else {
+                setAuthMode(AuthModalState.SignIn);
+                openAuthModal();
+              }
             },
             variant: 'primary' as const,
           }
         : { variant: 'tertiary' as const },
-    [course?.requires_payment, isCoursePaid],
+    [course?.requires_payment, isCoursePaid, isLoggedIn, openAuthModal],
   );
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
@@ -553,6 +573,16 @@ export const CourseDetails: React.FC = () => {
           </div>
         )}
       </div>
+
+      {isAuthModalOpen ? (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={authMode}
+        />
+      ) : (
+        <div></div>
+      )}
     </CourseLayout>
   );
 };

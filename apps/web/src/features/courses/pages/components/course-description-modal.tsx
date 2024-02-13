@@ -182,8 +182,7 @@ export const CourseDescriptionModal = ({
             height={'100%'}
             style={{ top: 0, left: 0 }}
             controls={true}
-            url={'https://www.youtube.com/watch?v=_PXU0thDHCU'}
-            src={'https://www.youtube.com/watch?v=_PXU0thDHCU'}
+            url={course.paid_video_link}
           />
         </div>
       </div>
