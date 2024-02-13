@@ -62,13 +62,13 @@ export const Dashboard = () => {
 
   if (isMobile) {
     return (
-      <MainLayout variant="blue" showFooter={false}>
+      <MainLayout showFooter={false}>
         <div className="p-6">
           {currentTab === 'dashboard' && <DashboardTabMobile />}
-          {/* {currentTab === 'courses' && <CoursesTab />} */}
+          {currentTab === 'courses' && <DashboardTab />}
           {currentTab === 'settings' && <SettingsTab />}
         </div>
-        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around bg-orange-600 md:hidden">
+        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around md:hidden">
           <MenuItem
             text="Dashboard"
             icon={<IoGridOutline size={28} />}
@@ -98,7 +98,7 @@ export const Dashboard = () => {
     <MainLayout>
       <div className="flex flex-row text-white">
         {/* Left menu */}
-        <div className=" flex w-64 flex-col gap-8 rounded-3xl p-4">
+        <div className=" bg-dashboardsection flex w-64 flex-col gap-8 rounded-xl p-4">
           <div className="flex items-center gap-2 rounded-3xl pl-2">
             <BsPersonFill className="text-blue-1000 h-10 w-10 overflow-hidden rounded-full bg-white" />
             <p className="text-lg font-medium italic">{user?.username}</p>
@@ -136,9 +136,9 @@ export const Dashboard = () => {
           </div>
         </div>
 
-        <div className="ml-4 grow rounded-3xl bg-gray-200 p-10">
+        <div className="bg-dashboardsection ml-4 grow rounded-xl p-10 text-white">
           {currentTab === 'dashboard' && <DashboardTab />}
-          {/* {currentTab === 'courses' && <CoursesTab />} */}
+          {currentTab === 'courses' && <DashboardTab />}
           {currentTab === 'settings' && <SettingsTab />}
         </div>
       </div>

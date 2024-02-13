@@ -36,7 +36,6 @@ x-base: &base
 
   volumes:
     - .:/app
-    - api_node_modules:/app/node_modules
 
 services:
   postgres:

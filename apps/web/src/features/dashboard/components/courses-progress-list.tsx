@@ -29,10 +29,10 @@ export const CoursesProgressList = ({
               </div>
             </div>
             <div className="relative flex h-2 w-full rounded-r-full">
-              <div className="absolute h-2 w-full bg-orange-200"></div>
+              <div className="absolute h-2 w-full rounded-full bg-gray-700"></div>
               <div
                 style={{ width: `${course.progress_percentage}%` }}
-                className={`absolute h-2 bg-orange-500`}
+                className={`absolute h-2 rounded-l-full bg-orange-500`}
               ></div>
               <img
                 src={OrangePill}
@@ -53,8 +53,8 @@ export const CoursesProgressList = ({
               to={'/courses/$courseId/$partIndex/$chapterIndex'}
               params={{
                 courseId: course.course_id,
-                partIndex: String(course.lastCompletedChapter.part), // TODO .part et faire +1 sur un des 2
-                chapterIndex: String(course.lastCompletedChapter.chapter),
+                partIndex: String(course.nextChapter?.part),
+                chapterIndex: String(course.nextChapter?.chapter),
               }}
             >
               <Button variant="tertiary" size="xs" rounded className="px-3">
@@ -93,7 +93,7 @@ export const CoursesProgressList = ({
         </div>
       ))
     ) : (
-      <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic text-blue-800 md:rounded-none md:bg-transparent">
+      <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic md:rounded-none md:bg-transparent">
         <Link to={'/courses'} className="text-orange-600">
           Start a course
         </Link>
