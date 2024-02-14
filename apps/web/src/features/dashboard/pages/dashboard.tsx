@@ -17,7 +17,6 @@ import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { trpc } from '../../../utils';
 import { DashboardTab } from '../components/dashboard-tab';
-import { DashboardTabMobile } from '../components/dashboard-tab-mobile';
 import { SettingsTab } from '../components/settings-tab';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
@@ -42,13 +41,13 @@ const MenuItem = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex cursor-pointer flex-row items-center justify-center space-x-4 px-4 py-2 ${
-      active ? 'bg-orange-400' : 'text-white'
+    className={`flex w-full cursor-pointer flex-row items-center justify-center gap-3 px-3 py-2 md:justify-start ${
+      active && 'rounded-lg bg-orange-500'
     }`}
     onClick={onClick}
   >
-    {icon}
-    <div className="hidden font-bold sm:block">{text}</div>
+    <div className="min-w-[20px]">{icon}</div>
+    <div className="hidden sm:block">{text}</div>
   </div>
 );
 
@@ -63,12 +62,11 @@ export const Dashboard = () => {
   if (isMobile) {
     return (
       <MainLayout showFooter={false}>
-        <div className="p-6">
-          {currentTab === 'dashboard' && <DashboardTabMobile />}
-          {currentTab === 'courses' && <DashboardTab />}
+        <div className="p-6 text-white">
+          {currentTab === 'dashboard' && <DashboardTab />}
           {currentTab === 'settings' && <SettingsTab />}
         </div>
-        <div className="fixed bottom-0 z-[10] flex min-h-[68px] w-full items-center justify-around md:hidden">
+        <div className="fixed bottom-2 z-10 mx-auto flex w-full flex-row bg-orange-500 md:hidden md:bg-transparent">
           <MenuItem
             text="Dashboard"
             icon={<IoGridOutline size={28} />}
@@ -76,13 +74,13 @@ export const Dashboard = () => {
             onClick={() => setCurrentTab('dashboard')}
           />
           <MenuItem
-            text="Settings"
+            text="My profile"
             icon={<IoSettingsOutline size={28} />}
             active={currentTab === 'settings'}
             onClick={() => setCurrentTab('settings')}
           />
           <MenuItem
-            text="Sign Out"
+            text="Log out"
             icon={<IoLogOutOutline size={28} />}
             onClick={() => {
               dispatch(userSlice.actions.logout());
@@ -98,41 +96,41 @@ export const Dashboard = () => {
     <MainLayout>
       <div className="flex flex-row text-white">
         {/* Left menu */}
-        <div className=" bg-dashboardsection flex w-64 flex-col gap-8 rounded-xl p-4">
+        <div className=" bg-dashboardsection ml-4 flex w-64 flex-col gap-8 rounded-xl p-4">
           <div className="flex items-center gap-2 rounded-3xl pl-2">
             <BsPersonFill className="text-blue-1000 h-10 w-10 overflow-hidden rounded-full bg-white" />
             <p className="text-lg font-medium italic">{user?.username}</p>
           </div>
 
-          <div className="flex h-full flex-col items-start justify-between">
-            <div className="flex flex-col items-start justify-center">
+          <div className="flex flex-col">
+            <MenuItem
+              text="Dashboard"
+              icon={<IoGridOutline size={20} />}
+              active={currentTab === 'dashboard'}
+              onClick={() => setCurrentTab('dashboard')}
+            />
+            <MenuItem
+              text="My courses"
+              icon={<AiOutlineBook />}
+              active={currentTab === 'courses'}
+              onClick={() => setCurrentTab('courses')}
+            />
+            <MenuItem
+              text="My profile"
+              icon={<IoSettingsOutline size={20} />}
+              active={currentTab === 'settings'}
+              onClick={() => setCurrentTab('settings')}
+            />
+            <div className="mt-8">
               <MenuItem
-                text="Dashboard"
-                icon={<IoGridOutline size={20} />}
-                active={currentTab === 'dashboard'}
-                onClick={() => setCurrentTab('dashboard')}
-              />
-              <MenuItem
-                text="My Courses"
-                icon={<AiOutlineBook />}
-                active={currentTab === 'courses'}
-                onClick={() => setCurrentTab('courses')}
-              />
-              <MenuItem
-                text="Settings"
-                icon={<IoSettingsOutline size={20} />}
-                active={currentTab === 'settings'}
-                onClick={() => setCurrentTab('settings')}
+                text="Log out"
+                icon={<IoLogOutOutline size={20} />}
+                onClick={() => {
+                  dispatch(userSlice.actions.logout());
+                  navigate({ to: '/' });
+                }}
               />
             </div>
-            <MenuItem
-              text="Sign Out"
-              icon={<IoLogOutOutline size={20} />}
-              onClick={() => {
-                dispatch(userSlice.actions.logout());
-                navigate({ to: '/' });
-              }}
-            />
           </div>
         </div>
 

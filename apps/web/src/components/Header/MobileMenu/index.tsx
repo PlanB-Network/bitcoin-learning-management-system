@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
+import { useAppSelector } from '../../../hooks';
 import { useDisclosure } from '../../../hooks/use-disclosure';
 import { compose } from '../../../utils';
 import { MetaElements } from '../MetaElements';
@@ -25,6 +26,7 @@ export const MobileMenu = ({
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
   const { t } = useTranslation();
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
   useEffect(() => {
     if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
@@ -40,11 +42,19 @@ export const MobileMenu = ({
           <PlanBLogo className="h-[34px]" />
         </Link>
       </div>
-      <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
-        <p className="cursor-pointer text-white" onClick={onClickLogin}>
-          {t('auth.signIn')}
-        </p>
-      </div>
+      {isLoggedIn ? (
+        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+          <Link to={'/dashboard'}>
+            <p className="text-white">{t('words.dashboard')}</p>
+          </Link>
+        </div>
+      ) : (
+        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+          <p className="cursor-pointer text-white" onClick={onClickLogin}>
+            {t('auth.signIn')}
+          </p>
+        </div>
+      )}
       <FaBars
         className={compose(
           'absolute z-40 cursor-pointer left-[6vw] text-white mt-1',

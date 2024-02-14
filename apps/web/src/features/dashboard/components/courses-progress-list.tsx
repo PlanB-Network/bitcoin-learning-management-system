@@ -17,14 +17,14 @@ export const CoursesProgressList = ({
       courses.map((course) => (
         <div
           key={course.course_id}
-          className="flex flex-col items-start justify-start space-x-8 rounded-3xl bg-white px-6 py-4 md:flex-row md:rounded-none md:bg-transparent md:px-0 md:py-2"
+          className="flex flex-col items-start justify-start space-x-8 rounded-3xl px-6 py-4 md:rounded-none md:px-0 md:py-2"
         >
           <div className="flex w-full flex-col items-start justify-start space-y-2 py-2">
-            <div className="flex w-full items-center justify-between">
-              <span className="text-xl font-semibold uppercase text-orange-600 sm:text-base">
+            <div className="mb-2 flex w-full justify-between">
+              <span className="text-xl font-semibold uppercase sm:text-base">
                 {addSpaceToCourseId(course.course_id)}
               </span>
-              <div className="italic text-orange-600">
+              <div className="font-semibold text-orange-600">
                 {course.progress_percentage}%
               </div>
             </div>
@@ -45,7 +45,7 @@ export const CoursesProgressList = ({
           {/* Only for courses in progress */}
           <div
             className={compose(
-              'flex flex-row gap-2 self-end pt-2 pr-0 md:p-2 md:pr-0',
+              'flex flex-row gap-2 pt-4 !m-0',
               course.progress_percentage === 100 ? 'hidden' : '',
             )}
           >
@@ -58,23 +58,23 @@ export const CoursesProgressList = ({
               }}
             >
               <Button variant="tertiary" size="xs" rounded className="px-3">
-                {t('words.resume').toLowerCase()}
+                {t('dashboard.myCourses.resumeLesson')}
               </Button>
             </Link>
             <Link to={''}>
-              <Button variant="secondary" size="xs" rounded className="px-3">
-                {t('words.details').toLowerCase()}
+              <Button variant="primary" size="xs" rounded className="px-3">
+                {t('words.details')}
               </Button>
             </Link>
           </div>
           {/* Only for Completed course */}
           <div
             className={compose(
-              'flex flex-row gap-2 self-end pt-2 pr-0 md:p-2 md:pr-0',
+              'flex flex-row gap-2 pt-4 !m-0',
               course.progress_percentage !== 100 ? 'hidden' : '',
             )}
           >
-            <Link to={''}>
+            {/* <Link to={''}>
               <Button
                 variant="primary"
                 size="xs"
@@ -83,17 +83,17 @@ export const CoursesProgressList = ({
               >
                 {t('words.certificate').toLowerCase()}
               </Button>
-            </Link>
+            </Link> */}
             <Link to={''}>
-              <Button variant="secondary" size="xs" rounded className="px-3">
-                {t('words.details').toLowerCase()}
+              <Button variant="primary" size="xs" rounded className="px-3">
+                {t('words.details')}
               </Button>
             </Link>
           </div>
         </div>
       ))
     ) : (
-      <div className="w-full rounded-3xl bg-white p-6 py-8 text-center text-sm font-medium italic md:rounded-none md:bg-transparent">
+      <div className="w-full py-6">
         <Link to={'/courses'} className="text-orange-600">
           Start a course
         </Link>

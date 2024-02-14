@@ -20,9 +20,9 @@ export const DashboardTab = () => {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col gap-8">
       <div className="text-lg font-medium">Let's check where you're at !</div>
-      <Tabs defaultValue="inprogress" className="w-[400px]">
+      <Tabs defaultValue="inprogress" className="max-w-[800px]">
         <TabsList>
           <TabsTrigger value="inprogress">Courses in progress</TabsTrigger>
           <TabsTrigger value="completed">Completed courses</TabsTrigger>

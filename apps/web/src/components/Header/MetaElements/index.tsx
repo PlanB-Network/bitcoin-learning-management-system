@@ -49,7 +49,7 @@ export const MetaElements = ({
             onClick={onClickLogin}
             size={buttonSize}
           >
-            {t('words.signIn')}
+            {t('auth.signIn')}
           </Button>
           {/* <Button
             className="my-4"

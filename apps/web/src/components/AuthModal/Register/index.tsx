@@ -231,7 +231,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               className="cursor-pointer border-none bg-transparent text-xs underline"
               onClick={() => goTo(AuthModalState.SignIn)}
             >
-              {t('words.signIn')}
+              {t('auth.signIn')}
             </button>
           </p>
         </div>

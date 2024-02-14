@@ -69,7 +69,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       closeButtonEnabled={isMobile}
       isOpen={isOpen}
       onClose={onClose}
-      headerText={t('words.signIn')}
+      headerText={t('auth.signIn')}
       showAccountHelper={isMobile ? false : true}
     >
       <div className="flex flex-col items-center space-y-8">
