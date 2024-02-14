@@ -8,9 +8,7 @@ import { trpc } from '../../../utils';
 import { CoursesProgressList } from '../components/courses-progress-list';
 import { DashboardLayout } from '../layout';
 
-type Tabs = 'dashboard' | 'profile' | 'courses';
-
-export const Dashboard = () => {
+export const DashboardCourses = () => {
   const { data: courses } = trpc.user.courses.getProgress.useQuery();
 
   const completedCourses = courses?.filter(
