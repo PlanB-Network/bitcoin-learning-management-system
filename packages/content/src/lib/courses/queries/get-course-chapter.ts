@@ -1,5 +1,8 @@
 import { sql } from '@sovereign-university/database';
-import { Course, CourseChapterLocalized } from '@sovereign-university/types';
+import type {
+  Course,
+  CourseChapterLocalized,
+} from '@sovereign-university/types';
 
 export const getCourseChapterQuery = (
   courseId: string,
@@ -8,11 +11,13 @@ export const getCourseChapterQuery = (
   language?: string,
 ) => {
   return sql<
-    (Pick<
-      CourseChapterLocalized,
-      'part' | 'chapter' | 'language' | 'title' | 'raw_content'
-    > &
-      Pick<Course, 'last_commit' | 'last_updated'>)[]
+    Array<
+      Pick<
+        CourseChapterLocalized,
+        'part' | 'chapter' | 'language' | 'title' | 'raw_content'
+      > &
+        Pick<Course, 'last_commit' | 'last_updated'>
+    >
   >`
     SELECT part, chapter, language, title, raw_content, c.last_updated, c.last_commit
     FROM content.course_chapters_localized

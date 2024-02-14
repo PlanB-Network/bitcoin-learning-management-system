@@ -1,10 +1,10 @@
-import { createHmac } from 'crypto';
+import { createHmac } from 'node:crypto';
 
 import * as secp256k1 from 'secp256k1';
 
 import { createGetUser, createNewLnurlUser } from '@sovereign-university/user';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 
 export const createCallbackLnurlAuth =
   (dependencies: Dependencies) =>

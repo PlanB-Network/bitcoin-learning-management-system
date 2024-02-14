@@ -73,7 +73,9 @@ module.exports = {
     'unicorn/prefer-logical-operator-over-ternary': 'off',
     'unicorn/prefer-event-target': 'off',
     'unicorn/no-nested-ternary': 'off',
+    'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',
+    'unicorn/no-array-method-this-argument': 'off',
   },
   settings: {
     'import/resolver': {

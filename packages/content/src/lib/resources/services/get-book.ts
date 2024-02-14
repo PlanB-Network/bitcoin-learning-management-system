@@ -1,6 +1,6 @@
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBookQuery } from '../queries/index.js';
 
@@ -23,6 +23,4 @@ export const createGetBook =
           : undefined,
       };
     }
-
-    return;
   };

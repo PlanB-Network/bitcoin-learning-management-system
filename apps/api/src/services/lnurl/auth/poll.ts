@@ -1,6 +1,6 @@
-import { ApiEvents } from '@sovereign-university/types';
+import type { ApiEvents } from '@sovereign-university/types';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 
 export const createPollLnurlAuth =
   (dependencies: Dependencies) =>

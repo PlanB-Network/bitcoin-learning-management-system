@@ -4,8 +4,8 @@ import { firstRow, sql } from '@sovereign-university/database';
 import type { ChangedFile, Tutorial } from '@sovereign-university/types';
 
 import type { Language } from '../../const.js';
-import { Dependencies } from '../../dependencies.js';
-import { ChangedContent } from '../../types.js';
+import type { Dependencies } from '../../dependencies.js';
+import type { ChangedContent } from '../../types.js';
 import {
   getContentType,
   getRelativePath,
@@ -85,7 +85,7 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return Array.from(groupedTutorials.values());
+  return [...groupedTutorials.values()];
 };
 
 export const createProcessChangedTutorial =
@@ -165,9 +165,7 @@ export const createProcessDeleteTutorials =
         sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch (error) {
+    } catch {
       errors.push(`Error deleting tutorials`);
     }
-
-    return;
   };

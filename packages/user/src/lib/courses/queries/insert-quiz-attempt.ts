@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { QuizAttempt } from '@sovereign-university/types';
+import type { QuizAttempt } from '@sovereign-university/types';
 
 export const insertQuizAttempt = ({
   uid,

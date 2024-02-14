@@ -10,8 +10,8 @@ import type {
 } from '@sovereign-university/types';
 
 import type { Language } from '../../const.js';
-import { Dependencies } from '../../dependencies.js';
-import { ChangedContent } from '../../types.js';
+import type { Dependencies } from '../../dependencies.js';
+import type { ChangedContent } from '../../types.js';
 import {
   convertStringToTimestamp,
   getContentType,
@@ -83,7 +83,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return Array.from(groupedCourses.values());
+  return [...groupedCourses.values()];
 };
 
 interface CourseMain {
@@ -120,33 +120,32 @@ const extractParts = (markdown: string): Part[] => {
   const tokens = marked.lexer(markdown);
   const parts: Part[] = [];
 
-  tokens.forEach((token) => {
+  for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       parts.push({
-        title: token.text,
+        title: token.text as string,
         chapters: [],
       });
     } else if (parts.length > 0) {
-      const currentPart = parts[parts.length - 1];
+      const currentPart = parts.at(-1)!;
 
       if (token.type === 'heading' && token.depth === 2) {
         currentPart.chapters.push({
-          title: token.text,
+          title: token.text as string,
           sections: [],
           raw_content: '',
         });
       } else if (currentPart.chapters.length > 0) {
-        const currentChapter =
-          currentPart.chapters[currentPart.chapters.length - 1];
+        const currentChapter = currentPart.chapters.at(-1)!;
 
         currentChapter.raw_content += token.raw;
 
         if (token.type === 'heading' && token.depth === 3) {
-          currentChapter.sections.push(token.text);
+          currentChapter.sections.push(token.text as string);
         }
       }
     }
-  });
+  }
 
   return parts;
 };
@@ -212,7 +211,7 @@ export const createProcessChangedCourse =
 
               // Only get the tags from the main resource file
               const parsedCourse = yamlToObject<CourseMain>(main.data);
-              if (parsedCourse.requires_payment == null) {
+              if (parsedCourse.requires_payment === null) {
                 parsedCourse.requires_payment = false;
               }
 
@@ -457,9 +456,7 @@ export const createProcessDeleteCourses =
         sql`DELETE FROM content.courses WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch (error) {
+    } catch {
       errors.push(`Error deleting courses`);
     }
-
-    return;
   };

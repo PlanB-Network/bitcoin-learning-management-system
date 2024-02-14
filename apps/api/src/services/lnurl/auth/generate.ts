@@ -1,9 +1,8 @@
-import { randomBytes } from 'crypto';
-import { createHmac } from 'node:crypto';
+import { createHmac, randomBytes } from 'node:crypto';
 
 import { bech32 } from 'bech32';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 
 const encodeUrlToLnurl = (url: string) => {
   const prefix = 'lnurl';

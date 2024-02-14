@@ -1,10 +1,12 @@
 import { sql } from '@sovereign-university/database';
 import type { CourseCompletedChapter } from '@sovereign-university/types';
 
-type CompletedChapters = Pick<
-  CourseCompletedChapter,
-  'course_id' | 'part' | 'chapter' | 'completed_at'
->[];
+type CompletedChapters = Array<
+  Pick<
+    CourseCompletedChapter,
+    'course_id' | 'part' | 'chapter' | 'completed_at'
+  >
+>;
 
 export const getCompletedChaptersQuery = (uid: string, courseId?: string) => {
   return sql<CompletedChapters>`

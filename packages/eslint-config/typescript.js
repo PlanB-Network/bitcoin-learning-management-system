@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/restrict-template-expressions': 'off', // TODO: enable
   },
   settings: {
     'import/resolver': {

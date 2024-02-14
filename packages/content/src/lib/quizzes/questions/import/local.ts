@@ -1,9 +1,9 @@
-import { TransactionSql } from '@sovereign-university/database';
+import type { TransactionSql } from '@sovereign-university/database';
 
-import { ChangedFileWithLanguage } from '../../../types.js';
+import type { ChangedFileWithLanguage } from '../../../types.js';
 import { yamlToObject } from '../../../utils.js';
 
-import { ChangedQuizQuestion } from './index.js';
+import type { ChangedQuizQuestion } from './index.js';
 
 interface QuizQuestionLocal {
   question: string;

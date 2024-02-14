@@ -33,12 +33,12 @@
     "vite-tsconfig-paths": "^4.3.1",
     "vitest": "1.2.2"
   },
-  "pnpm": {
-    "patchedDependencies": {
-      "postgres@3.3.5": "patches/postgres@3.3.5.patch"
-    }
-  },
   "lint-staged": {
     "**/*": "prettier --loglevel warn --write --ignore-unknown"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "postgres@3.4.3": "patches/postgres@3.4.3.patch"
+    }
   }
 }

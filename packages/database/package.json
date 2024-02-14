@@ -15,7 +15,7 @@
     "type-check": "tsc --build"
   },
   "dependencies": {
-    "postgres": "^3.3.5"
+    "postgres": "3.4.3"
   },
   "devDependencies": {
     "dotenv": "^16.4.2"

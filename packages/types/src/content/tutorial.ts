@@ -2,8 +2,8 @@ import type { default as TutorialCredits } from '../sql/content/TutorialCredits.
 import type { default as Tutorial } from '../sql/content/Tutorials.js';
 import type { default as TutorialLocalized } from '../sql/content/TutorialsLocalized.js';
 
-import { JoinedBuilder } from './builder.js';
-import { JoinedProfessor } from './professor.js';
+import type { JoinedBuilder } from './builder.js';
+import type { JoinedProfessor } from './professor.js';
 
 export type { default as Tutorial } from '../sql/content/Tutorials.js';
 export type { default as TutorialLocalized } from '../sql/content/TutorialsLocalized.js';

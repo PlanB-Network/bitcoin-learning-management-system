@@ -1,10 +1,10 @@
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';
 import { formatProfessor } from '../../professors/services/utils.js';
-import { getCourseChaptersQuery, getCourseQuery } from '../queries/index.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
+import { getCourseChaptersQuery, getCourseQuery } from '../queries/index.js';
 
 export const createGetCourse =
   (dependencies: Dependencies) => async (id: string, language: string) => {
@@ -33,7 +33,7 @@ export const createGetCourse =
 
     return {
       ...course,
-      professors: professors.map(formatProfessor),
+      professors: professors.map((element) => formatProfessor(element)),
       parts: partsWithChapters,
       partsCount: parts.length,
       chaptersCount: chapters.length,

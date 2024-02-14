@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import {
   getCompletedChaptersQuery,
   getNextChaptersQuery,
@@ -49,7 +49,7 @@ export const createGetProgress =
         (chapter) => chapter.course_id === course.course_id,
       );
 
-      const lastCompletedChapter = chapters[chapters.length - 1];
+      const lastCompletedChapter = chapters.at(-1);
 
       return {
         ...course,

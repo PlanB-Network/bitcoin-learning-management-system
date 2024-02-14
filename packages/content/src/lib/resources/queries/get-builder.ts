@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedBuilder } from '@sovereign-university/types';
+import type { JoinedBuilder } from '@sovereign-university/types';
 
 export const getBuilderQuery = (id: number, language?: string) => {
   return sql<JoinedBuilder[]>`

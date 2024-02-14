@@ -24,7 +24,5 @@ export const createGithubOctokit = async ({
 
   await app.octokit.rest.apps.getAuthenticated();
 
-  const octokit = await app.getInstallationOctokit(Number(installationId));
-
-  return octokit;
+  return app.getInstallationOctokit(Number(installationId));
 };

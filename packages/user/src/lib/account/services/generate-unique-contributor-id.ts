@@ -1,4 +1,4 @@
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { contributorIdExistsQuery } from '../queries/index.js';
 import { generateRandomContributorId } from '../utils/contribution.js';
 

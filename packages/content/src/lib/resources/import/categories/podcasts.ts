@@ -1,9 +1,9 @@
 import { firstRow } from '@sovereign-university/database';
-import { Resource } from '@sovereign-university/types';
+import type { Resource } from '@sovereign-university/types';
 
-import { ChangedResource } from '../index.js';
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { separateContentFiles, yamlToObject } from '../../../utils.js';
+import type { ChangedResource } from '../index.js';
 import { createProcessMainFile } from '../main.js';
 
 /** Base podcast information, same for all translations */

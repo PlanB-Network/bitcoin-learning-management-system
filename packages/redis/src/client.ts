@@ -91,15 +91,15 @@ export class RedisClient extends Redis {
       });
 
       return new Promise<number>((resolve, reject) => {
-        stream.on('data', (keys: string[]) => {
-          if (keys.length) {
+        stream.on('data', async (keys: string[]) => {
+          if (keys.length > 0) {
             const pipeline = super.pipeline();
 
-            keys.forEach((key) => {
+            for (const key of keys) {
               pipeline.del(key);
-            });
+            }
 
-            pipeline.exec();
+            await pipeline.exec();
           }
         });
 

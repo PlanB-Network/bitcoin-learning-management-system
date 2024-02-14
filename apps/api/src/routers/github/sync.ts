@@ -65,17 +65,17 @@ export const syncProcedure = publicProcedure
 
     console.log('-- Sync procedure: sync cdn repository');
 
-    let publicCdnError;
+    let publicCdnError: Error | undefined;
     syncCdnRepository(
       '/tmp/sovereign-university-data',
       process.env['CDN_PATH'] || '/tmp/cdn',
     ).catch((error) => {
       console.error(error);
-      publicCdnError = error;
+      publicCdnError =
+        error instanceof Error ? error : new Error('Unknown error');
     });
 
-    let privateCdnError;
-
+    let privateCdnError: Error | undefined;
     if (
       process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
       process.env['GITHUB_ACCESS_TOKEN']
@@ -85,7 +85,8 @@ export const syncProcedure = publicProcedure
         process.env['CDN_PATH'] || '/tmp/cdn',
       ).catch((error) => {
         console.error(error);
-        privateCdnError = error;
+        privateCdnError =
+          error instanceof Error ? error : new Error('Unknown error');
       });
     }
 
@@ -101,7 +102,9 @@ export const syncProcedure = publicProcedure
     return {
       success: syncErrors.length === 0,
       ...(syncErrors.length > 0 && { syncErrors: syncErrors.map((e) => e) }),
-      ...(publicCdnError != null && { publicCdnError: publicCdnError }),
-      ...(privateCdnError != null && { privateCdnError: privateCdnError }),
+      ...(publicCdnError !== undefined && { publicCdnError: publicCdnError }),
+      ...(privateCdnError !== undefined && {
+        privateCdnError: privateCdnError,
+      }),
     };
   });

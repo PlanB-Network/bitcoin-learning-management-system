@@ -1,4 +1,4 @@
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../queries/index.js';
 
 import { formatProfessor } from './utils.js';
@@ -9,5 +9,5 @@ export const createGetProfessors =
 
     const professors = await postgres.exec(getProfessorsQuery({ language }));
 
-    return professors.map(formatProfessor);
+    return professors.map((element) => formatProfessor(element));
   };

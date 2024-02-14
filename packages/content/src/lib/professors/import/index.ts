@@ -1,9 +1,9 @@
 import { firstRow, sql } from '@sovereign-university/database';
-import { ChangedFile, Professor } from '@sovereign-university/types';
+import type { ChangedFile, Professor } from '@sovereign-university/types';
 
-import { Language } from '../../const.js';
-import { Dependencies } from '../../dependencies.js';
-import { ChangedContent } from '../../types.js';
+import type { Language } from '../../const.js';
+import type { Dependencies } from '../../dependencies.js';
+import type { ChangedContent } from '../../types.js';
 import {
   getContentType,
   getRelativePath,
@@ -69,7 +69,7 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return Array.from(groupedProfessors.values());
+  return [...groupedProfessors.values()];
 };
 
 export const createProcessChangedProfessor =
@@ -123,9 +123,7 @@ export const createProcessDeleteProfessors =
         sql`DELETE FROM content.professors WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch (error) {
+    } catch {
       errors.push(`Error deleting professors`);
     }
-
-    return;
   };

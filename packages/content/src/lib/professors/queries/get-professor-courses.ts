@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedCourse } from '@sovereign-university/types';
+import type { JoinedCourse } from '@sovereign-university/types';
 
 export const getProfessorCoursesQuery = ({
   id,
@@ -28,6 +28,7 @@ export const getProfessorCoursesQuery = ({
   if (language !== undefined) {
     whereClauses.push(sql`cl.language = ${language}`);
   }
+  // eslint-disable-next-line unicorn/no-array-reduce
   const whereStatement = sql`WHERE ${whereClauses.reduce(
     (acc, clause) => sql`${acc} AND ${clause}`,
   )}`;

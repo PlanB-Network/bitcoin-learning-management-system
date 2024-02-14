@@ -9,8 +9,8 @@ import { compareCommits } from './utils.js';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toNormalizedJsonString = (payload: any) => {
   const payloadString = JSON.stringify(payload);
-  return payloadString.replace(/[^\\]\\u[\da-f]{4}/g, (s) => {
-    return s.substr(0, 3) + s.substr(3).toUpperCase();
+  return payloadString.replaceAll(/[^\\]\\u[\da-f]{4}/g, (s) => {
+    return s.slice(0, 3) + s.slice(3).toUpperCase();
   });
 };
 

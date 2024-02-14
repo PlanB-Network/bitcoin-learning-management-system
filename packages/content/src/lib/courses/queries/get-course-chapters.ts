@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedCourseChapter } from '@sovereign-university/types';
+import type { JoinedCourseChapter } from '@sovereign-university/types';
 
 export const getCourseChaptersQuery = ({
   courseId,

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { JoinedProfessor } from '@sovereign-university/types';
+import type { JoinedProfessor } from '@sovereign-university/types';
 
 import { computeAssetCdnUrl } from '../../utils.js';
 

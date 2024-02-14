@@ -1,4 +1,4 @@
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { getTutorialsQuery } from '../queries/index.js';
 
 export const createGetTutorials =

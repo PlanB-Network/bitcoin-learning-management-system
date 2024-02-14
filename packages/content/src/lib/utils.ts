@@ -1,7 +1,7 @@
 import yaml from 'js-yaml';
 
 import { supportedContentTypes } from './const.js';
-import { ChangedContent } from './types.js';
+import type { ChangedContent } from './types.js';
 
 export const yamlToObject = <T = unknown>(data: string) => yaml.load(data) as T;
 
@@ -9,7 +9,7 @@ export const getContentType = (path: string) => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 1 element (content/)
-  if (pathElements.length < 1) throw new Error('Invalid content path');
+  if (pathElements.length === 0) throw new Error('Invalid content path');
 
   const contentType = supportedContentTypes.find((value) =>
     path.startsWith(value),
@@ -72,19 +72,18 @@ export const getRelativePath = (fullPath: string, directoryPath?: string) => {
  */
 export const getFileExtension = (path: string) => {
   const pathElements = path.split('/');
-  const fileName = pathElements[pathElements.length - 1];
+  const fileName = pathElements.at(-1);
+  if (!fileName) throw new Error('Invalid file path');
   const fileNameElements = fileName.split('.');
-  return fileNameElements[fileNameElements.length - 1];
+  return fileNameElements.at(-1);
 };
 
 export function convertStringToTimestamp(inputString: string) {
-  const year = parseInt(inputString.substring(0, 4));
-  const month = parseInt(inputString.substring(4, 6));
-  const day = parseInt(inputString.substring(6, 8));
+  const year = Number.parseInt(inputString.slice(0, 4));
+  const month = Number.parseInt(inputString.slice(4, 6));
+  const day = Number.parseInt(inputString.slice(6, 8));
 
   const dateObject = new Date(year, month - 1, day); // Note: month is zero-based in JavaScript Date objects
 
-  const timestamp = dateObject.getTime();
-
-  return timestamp;
+  return dateObject.getTime();
 }

@@ -1,4 +1,4 @@
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { insertQuizAttempt } from '../queries/insert-quiz-attempt.js';
 
 export const createSaveQuizAttempt =

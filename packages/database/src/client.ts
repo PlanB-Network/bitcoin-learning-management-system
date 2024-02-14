@@ -1,53 +1,13 @@
 import postgres from 'postgres';
-import type {
-  TransactionSql as OriginalTransactionSql,
-  PostgresType,
-  Sql,
-} from 'postgres';
+import type { TransactionSql as OriginalTransactionSql, Sql } from 'postgres';
 
-export type PostgresTypes = {
-  bigint: PostgresType<number>;
-  numeric: PostgresType<number>;
-  timestamptz: PostgresType<number>;
-  // Placeholder for TypeScript to accept undefined values
-  null: PostgresType<undefined>;
-};
-
-export type PostgresTypesMapper = {
+export interface PostgresTypesMapper {
   bigint: number;
   numeric: number;
   timestamptz: number;
   // Placeholder for TypeScript to accept undefined values
   null: undefined;
-};
-
-const types = {
-  bigint: {
-    to: 20,
-    from: [20],
-    parse: Number,
-    serialize: (x: number) => x.toString(),
-  },
-  numeric: {
-    to: 1700,
-    from: [1700],
-    parse: Number,
-    serialize: (x: number) => x.toString(),
-  },
-  timestamptz: {
-    to: 1184,
-    from: [1184],
-    parse: (value: string | Date) => new Date(value).getTime(),
-    serialize: (x: number | Date) => new Date(x).toISOString(),
-  },
-  // Placeholder for TypeScript to accept undefined values
-  null: {
-    to: 0,
-    from: [0],
-    parse: () => undefined,
-    serialize: () => null,
-  },
-} as PostgresTypes;
+}
 
 export type TransactionSql = OriginalTransactionSql<PostgresTypesMapper>;
 
@@ -67,11 +27,11 @@ export interface PostgresClient extends Sql<PostgresTypesMapper> {
 }
 
 export const createPostgresClient = ({
-  host,
-  port,
-  database,
-  username,
-  password,
+  host = process.env['POSTGRES_HOST'],
+  port = Number(process.env['POSTGRES_PORT']),
+  database = process.env['POSTGRES_NAME'],
+  username = process.env['POSTGRES_USER'],
+  password = process.env['POSTGRES_PASSWORD'],
 }: {
   host?: string;
   port?: number;
@@ -81,18 +41,49 @@ export const createPostgresClient = ({
 } = {}) => {
   let connected = false;
 
+  if (!host || !port || !database || !username || !password) {
+    throw new Error('Missing required configuration for postgres connection');
+  }
+
   const client = postgres({
-    host: host || process.env['POSTGRES_HOST'],
-    port: port || Number(process.env['POSTGRES_PORT']),
-    database: database || process.env['POSTGRES_NAME'],
-    username: username || process.env['POSTGRES_USER'],
-    password: password || process.env['POSTGRES_PASSWORD'],
+    host,
+    port,
+    database,
+    username,
+    password,
     // onnotice: () => undefined,
-    types,
+    types: {
+      bigint: {
+        to: 20,
+        from: [20],
+        parse: Number,
+        serialize: (x: number) => x.toString(),
+      },
+      numeric: {
+        to: 1700,
+        from: [1700],
+        parse: Number,
+        serialize: (x: number) => x.toString(),
+      },
+      timestamptz: {
+        to: 1184,
+        from: [1184],
+        parse: (value: string | Date) => new Date(value).getTime(),
+        serialize: (x: number | Date) => new Date(x).toISOString(),
+      },
+      // Placeholder for TypeScript to accept undefined values
+      null: {
+        to: 0,
+        from: [0],
+        parse: () => {},
+        serialize: () => null,
+      },
+    },
     transform: {
       // Convert undefined values to null postgres values
       undefined: null,
       // Convert null postgres values to undefined
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       value: (value) => value ?? undefined,
     },
   }) as PostgresClient;

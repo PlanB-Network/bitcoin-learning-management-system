@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { CoursePart } from '@sovereign-university/types';
+import type { CoursePart } from '@sovereign-university/types';
 
 export const getCoursePartsQuery = (id: string, language?: string) => {
   return sql<CoursePart[]>`

@@ -1,5 +1,6 @@
-import { TransactionSql, firstRow } from '@sovereign-university/database';
-import {
+import type { TransactionSql } from '@sovereign-university/database';
+import { firstRow } from '@sovereign-university/database';
+import type {
   ChangedFile,
   ModifiedFile,
   RenamedFile,
@@ -8,7 +9,7 @@ import {
 
 import { yamlToObject } from '../../utils.js';
 
-import { ChangedResource } from './index.js';
+import type { ChangedResource } from './index.js';
 
 export const createProcessMainFile =
   (transaction: TransactionSql) =>

@@ -1,6 +1,6 @@
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { getUserQuery } from '../queries/index.js';
 
 type GetUserOptions =

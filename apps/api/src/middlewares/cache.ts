@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 import { createMiddleware } from '../trpc/index.js';
 
@@ -7,14 +11,17 @@ import { createMiddleware } from '../trpc/index.js';
 const sortObject = (obj: any): any => {
   if (obj === null) return null;
   if (typeof obj !== 'object') return obj;
-  if (Array.isArray(obj)) return obj.map(sortObject);
+  if (Array.isArray(obj)) return obj.map((element) => sortObject(element));
 
-  return Object.keys(obj)
-    .sort()
-    .reduce((result: { [key: string]: any }, key) => {
-      result[key] = sortObject(obj[key]);
-      return result;
-    }, {});
+  return (
+    Object.keys(obj)
+      .sort()
+      // eslint-disable-next-line unicorn/no-array-reduce
+      .reduce((result: { [key: string]: any }, key) => {
+        result[key] = sortObject(obj[key]);
+        return result;
+      }, {})
+  );
 };
 
 const hashObject = (obj: any): string => {

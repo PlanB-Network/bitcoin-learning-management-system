@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedProfessor } from '@sovereign-university/types';
+import type { JoinedProfessor } from '@sovereign-university/types';
 
 export const getProfessorsQuery = ({
   contributorIds,

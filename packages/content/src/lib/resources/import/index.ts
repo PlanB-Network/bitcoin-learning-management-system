@@ -2,8 +2,8 @@ import { sql } from '@sovereign-university/database';
 import type { ChangedFile } from '@sovereign-university/types';
 
 import type { Language } from '../../const.js';
-import { Dependencies } from '../../dependencies.js';
-import { ChangedContent } from '../../types.js';
+import type { Dependencies } from '../../dependencies.js';
+import type { ChangedContent } from '../../types.js';
 import { getContentType, getRelativePath } from '../../utils.js';
 
 import { createProcessChangedBook } from './categories/books.js';
@@ -83,7 +83,7 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return Array.from(groupedResources.values());
+  return [...groupedResources.values()];
 };
 
 export const createProcessChangedResource =
@@ -109,9 +109,7 @@ export const createProcessDeleteResources =
         sql`DELETE FROM content.resources WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch (error) {
+    } catch {
       errors.push(`Error deleting resources`);
     }
-
-    return;
   };

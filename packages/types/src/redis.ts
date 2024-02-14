@@ -11,7 +11,7 @@ export interface RedisKeyValue {
     session: RedisSession;
     sessionId: string;
   };
-  [key: `trpc:${string}`]: any;
+  [key: `trpc:${string}`]: unknown;
 }
 
 export type RedisKey = keyof RedisKeyValue;

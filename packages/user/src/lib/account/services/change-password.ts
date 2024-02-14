@@ -4,7 +4,7 @@ import { hash, verify as verifyHash } from 'argon2';
 
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery, getUserQuery } from '../queries/index.js';
 
 export const createChangePassword =

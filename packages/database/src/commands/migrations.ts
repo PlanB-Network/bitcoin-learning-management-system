@@ -1,8 +1,11 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
 import * as dotenv from 'dotenv';
+
+import type { PostgresClient } from '../client.js';
+import { createPostgresClient } from '../client.js';
 import { runMigrations } from '../migrations.js';
-import { PostgresClient, createPostgresClient } from '../client.js';
 
 dotenv.config();
 
@@ -70,14 +73,14 @@ export const runMigrationsCommand = async ({
         database: 'tmp',
       });
       await tmpClient.connect();
-    } catch (error) {
+    } catch {
       const client = createPostgresClient({
         database: database,
       });
 
       await client.connect();
       await client`CREATE DATABASE tmp`;
-      client.disconnect();
+      await client.disconnect();
 
       tmpClient = createPostgresClient({
         database: 'tmp',
@@ -90,7 +93,7 @@ export const runMigrationsCommand = async ({
     await tmpClient`SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = ${databaseName} AND pid <> pg_backend_pid();`;
     await tmpClient`DROP DATABASE IF EXISTS ${databaseSql};`;
     await tmpClient`CREATE DATABASE ${databaseSql};`;
-    tmpClient.disconnect();
+    await tmpClient.disconnect();
   }
 
   const client = createPostgresClient({

@@ -1,7 +1,7 @@
 import { firstRow } from '@sovereign-university/database';
-import { UserDetails } from '@sovereign-university/types';
+import type { UserDetails } from '@sovereign-university/types';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { newLnurlUserQuery } from '../queries/index.js';
 
 import { createGenerateUniqueContributorId } from './generate-unique-contributor-id.js';

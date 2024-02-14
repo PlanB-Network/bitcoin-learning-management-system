@@ -15,9 +15,9 @@ export const createCorsMiddleware = () => {
         callback(null, true);
       } else if (origin) {
         console.error(
-          `Rejected origin ${origin} (not in allowed origins: ${Array.from(
-            allowedOrigins,
-          ).join(', ')})`,
+          `Rejected origin ${origin} (not in allowed origins: ${[
+            ...allowedOrigins,
+          ].join(', ')})`,
         );
 
         callback(new Error('Not allowed by CORS'));

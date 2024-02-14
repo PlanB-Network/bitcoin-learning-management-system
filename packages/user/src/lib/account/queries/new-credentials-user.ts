@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { UserDetails } from '@sovereign-university/types';
+import type { UserDetails } from '@sovereign-university/types';
 
 interface NewCredentialsUserOptions {
   username: string;

@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedTutorialCredits } from '@sovereign-university/types';
+import type { JoinedTutorialCredits } from '@sovereign-university/types';
 
 export const getCreditsQuery = (id: number, language?: string) => {
   return sql<JoinedTutorialCredits[]>`

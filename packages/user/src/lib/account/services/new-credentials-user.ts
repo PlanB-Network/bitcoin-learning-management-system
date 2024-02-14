@@ -1,9 +1,9 @@
 import { hash } from 'argon2';
 
 import { firstRow } from '@sovereign-university/database';
-import { UserDetails } from '@sovereign-university/types';
+import type { UserDetails } from '@sovereign-university/types';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { newCredentialsUserQuery } from '../queries/index.js';
 
 import { createCheckContributorIdExists } from './check-contributor-id-exists.js';

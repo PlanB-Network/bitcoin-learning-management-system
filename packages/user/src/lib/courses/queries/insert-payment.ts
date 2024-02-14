@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { CoursePayment } from '@sovereign-university/types';
+import type { CoursePayment } from '@sovereign-university/types';
 
 export const insertPayment = ({
   uid,

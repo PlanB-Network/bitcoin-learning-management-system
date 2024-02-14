@@ -1,9 +1,9 @@
 import { firstRow, sql } from '@sovereign-university/database';
-import { ChangedFile, QuizQuestion } from '@sovereign-university/types';
+import type { ChangedFile, QuizQuestion } from '@sovereign-university/types';
 
-import { Language } from '../../../const.js';
-import { Dependencies } from '../../../dependencies.js';
-import { ChangedContent } from '../../../types.js';
+import type { Language } from '../../../const.js';
+import type { Dependencies } from '../../../dependencies.js';
+import type { ChangedContent } from '../../../types.js';
 import {
   getContentType,
   getRelativePath,
@@ -37,7 +37,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
 
   const id = Number(pathElements[2]);
 
-  if (isNaN(id)) throw new Error('Invalid quiz question path');
+  if (Number.isNaN(id)) throw new Error('Invalid quiz question path');
 
   return {
     id,
@@ -82,7 +82,7 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return Array.from(groupedQuizQuestions.values());
+  return [...groupedQuizQuestions.values()];
 };
 
 export const createProcessChangedQuizQuestion =
@@ -143,9 +143,7 @@ export const createProcessDeleteQuizQuestions =
         sql`DELETE FROM content.quiz_questions WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch (error) {
+    } catch {
       errors.push(`Error deleting quiz_questions`);
     }
-
-    return;
   };

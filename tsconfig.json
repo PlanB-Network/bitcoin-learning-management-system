@@ -28,7 +28,6 @@
     "skipLibCheck": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false, // Temporarily disabled
-    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": false, // Temporarily disabled
     "noImplicitAny": true,

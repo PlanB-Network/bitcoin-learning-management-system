@@ -1,6 +1,6 @@
-import { ChangedFile } from '@sovereign-university/types';
+import type { ChangedFile } from '@sovereign-university/types';
 
-import { ContentType, Language } from './const.js';
+import type { ContentType, Language } from './const.js';
 
 export type ChangedFileWithLanguage = ChangedFile & { language?: Language };
 

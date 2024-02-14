@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import type { PostgresClient } from './client.js';
 
@@ -13,7 +13,7 @@ const createMigrationsTable = (client: PostgresClient) => {
 };
 
 const getExistingMigrations = async (client: PostgresClient) => {
-  const migrations = await client`
+  const migrations = await client<Array<{ name: string }>>`
     SELECT * FROM migrations
   `;
 
@@ -58,9 +58,7 @@ export const runMigrations = async (
     return;
   }
 
-  for (const index in migrationsToRun) {
-    const migration = migrationsToRun[index];
-
+  for (const [index, migration] of migrationsToRun.entries()) {
     console.log(
       `🔄 Running migration ${Number(index) + 1} out of ${
         migrationsToRun.length
@@ -72,6 +70,7 @@ export const runMigrations = async (
     } catch (error) {
       console.error(`   ❌ Failed, aborting`);
       console.error(error);
+      // eslint-disable-next-line unicorn/no-process-exit
       process.exit(1);
     }
 

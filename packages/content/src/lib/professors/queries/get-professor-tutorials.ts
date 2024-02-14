@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedTutorial } from '@sovereign-university/types';
+import type { JoinedTutorial } from '@sovereign-university/types';
 
 export const getProfessorTutorialsQuery = ({
   id,
@@ -29,11 +29,12 @@ export const getProfessorTutorialsQuery = ({
     whereClauses.push(sql`tl.language = ${language}`);
   }
 
+  // eslint-disable-next-line unicorn/no-array-reduce
   const whereStatement = sql`WHERE ${whereClauses.reduce(
     (acc, clause) => sql`${acc} AND ${clause}`,
   )}`;
 
-  return sql<Omit<JoinedTutorial, 'raw_content'>[]>`
+  return sql<Array<Omit<JoinedTutorial, 'raw_content'>>>`
     WITH tutorial AS (
       SELECT 
         t.id, 

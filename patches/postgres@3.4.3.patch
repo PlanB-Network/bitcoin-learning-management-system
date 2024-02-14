@@ -1,0 +1,123 @@
+diff --git a/cf/src/index.js b/cf/src/index.js
+index d24e9f9cdd00c1df7f56b722f690efc4f1a6828a..2827ad8425905e370eb69085b701ede4f605754f 100644
+--- a/cf/src/index.js
++++ b/cf/src/index.js
+@@ -99,7 +99,8 @@ function Postgres(a, b) {
+       notify,
+       array,
+       json,
+-      file
++      file,
++      exec
+     })
+ 
+     return sql
+@@ -117,6 +118,12 @@ function Postgres(a, b) {
+       return query
+     }
+ 
++    function exec(originalQuery) {
++      const query = new Query(originalQuery.strings, originalQuery.args, handler, cancel)
++      query.execute();
++      return query;
++    }
++
+     function unsafe(string, args = [], options = {}) {
+       arguments.length === 2 && !Array.isArray(args) && (options = args, args = [])
+       const query = new Query([string], args, handler, cancel, {
+diff --git a/cjs/src/index.js b/cjs/src/index.js
+index 40ac2c180fe2c12978715ad94d069335f801397a..267ab9ef44c2296c328728f0f7aeda209ba4285c 100644
+--- a/cjs/src/index.js
++++ b/cjs/src/index.js
+@@ -98,7 +98,8 @@ function Postgres(a, b) {
+       notify,
+       array,
+       json,
+-      file
++      file,
++      exec
+     })
+ 
+     return sql
+@@ -116,6 +117,12 @@ function Postgres(a, b) {
+       return query
+     }
+ 
++    function exec(originalQuery) {
++      const query = new Query(originalQuery.strings, originalQuery.args, handler, cancel)
++      query.execute();
++      return query;
++    }
++
+     function unsafe(string, args = [], options = {}) {
+       arguments.length === 2 && !Array.isArray(args) && (options = args, args = [])
+       const query = new Query([string], args, handler, cancel, {
+diff --git a/src/index.js b/src/index.js
+index 0573e2bc3fc1217b4572ebf30c83b81b0e909f07..ca4a14021e49f803bc8c29ced963cb715236caa4 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -98,7 +98,8 @@ function Postgres(a, b) {
+       notify,
+       array,
+       json,
+-      file
++      file,
++      exec
+     })
+ 
+     return sql
+@@ -116,6 +117,12 @@ function Postgres(a, b) {
+       return query
+     }
+ 
++    function exec(originalQuery) {
++      const query = new Query(originalQuery.strings, originalQuery.args, handler, cancel)
++      query.execute();
++      return query;
++    }
++
+     function unsafe(string, args = [], options = {}) {
+       arguments.length === 2 && !Array.isArray(args) && (options = args, args = [])
+       const query = new Query([string], args, handler, cancel, {
+diff --git a/types/index.d.ts b/types/index.d.ts
+index 78d559ef150f5abf32648f0fd5feb7123fa1a973..996dc2e3a5de7b33868bb143076ef72f62dde66d 100644
+--- a/types/index.d.ts
++++ b/types/index.d.ts
+@@ -656,7 +656,8 @@ declare namespace postgres {
+   | Fragment
+   | Fragment[]
+ 
+-  interface Sql<TTypes extends Record<string, unknown> = {}> {
++  // https://github.com/microsoft/TypeScript/issues/50087#issuecomment-1199411533
++  interface Sql<TTypes extends Record<string, any> = {}> {
+     /**
+      * Query helper
+      * @param first Define how the helper behave
+@@ -702,6 +703,8 @@ declare namespace postgres {
+     file<T extends readonly any[] = Row[]>(path: string | Buffer | URL | number, args: (ParameterOrJSON<TTypes[keyof TTypes]>)[], options?: { cache?: boolean | undefined } | undefined): PendingQuery<T>;
+     json(value: JSONValue): Parameter;
+ 
++    exec<T extends readonly (object | undefined)[] = Row[]>(query: PendingQuery<T>): Promise<RowList<T>>;
++
+     reserve(): Promise<ReservedSql<TTypes>>
+   }
+ 
+@@ -713,14 +716,16 @@ declare namespace postgres {
+     prepare?: boolean | undefined;
+   }
+ 
+-  interface TransactionSql<TTypes extends Record<string, unknown> = {}> extends Sql<TTypes> {
++  // https://github.com/microsoft/TypeScript/issues/50087#issuecomment-1199411533
++  interface TransactionSql<TTypes extends Record<string, any> = {}> extends Sql<TTypes> {
+     savepoint<T>(cb: (sql: TransactionSql<TTypes>) => T | Promise<T>): Promise<UnwrapPromiseArray<T>>;
+     savepoint<T>(name: string, cb: (sql: TransactionSql<TTypes>) => T | Promise<T>): Promise<UnwrapPromiseArray<T>>;
+ 
+     prepare<T>(name: string): Promise<UnwrapPromiseArray<T>>;
+   }
+ 
+-  interface ReservedSql<TTypes extends Record<string, unknown> = {}> extends Sql<TTypes> {
++  // https://github.com/microsoft/TypeScript/issues/50087#issuecomment-1199411533
++  interface ReservedSql<TTypes extends Record<string, any> = {}> extends Sql<TTypes> {
+     release(): void;
+   }
+ }

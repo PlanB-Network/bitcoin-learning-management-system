@@ -1,12 +1,14 @@
 import { sql } from '@sovereign-university/database';
-import { CourseProgress } from '@sovereign-university/types';
+import type { CourseProgress } from '@sovereign-university/types';
 
 export const getProgressQuery = (uid: string) => {
   return sql<
-    (CourseProgress & {
-      name: string;
-      total_chapters: number;
-    })[]
+    Array<
+      CourseProgress & {
+        name: string;
+        total_chapters: number;
+      }
+    >
   >`
     SELECT 
       cp.*,

@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { JoinedQuizQuestion } from '@sovereign-university/types';
+import type { JoinedQuizQuestion } from '@sovereign-university/types';
 
 export const getCourseChapterQuizQuestionsQuery = ({
   courseId,

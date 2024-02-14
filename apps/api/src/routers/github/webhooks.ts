@@ -16,6 +16,7 @@ export const webhooksProcedure = publicProcedure
     // Verify authenticity of the request
     const matchesSignature = await verifyWebhookPayload(
       process.env['GITHUB_WEBHOOK_SECRET'] || '',
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       ctx.req.body,
       ctx.req.headers['x-hub-signature-256'] as string,
     );
@@ -32,13 +33,18 @@ export const webhooksProcedure = publicProcedure
     }
 
     // Process the payload asynchronoulsy so we don't block the request
-    processWebhookPayload(ctx.req.body).then(async (files) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    void processWebhookPayload(ctx.req.body).then(async (files) => {
+      // eslint-disable-next-line promise/always-return
       try {
         const processChangedFiles = createProcessChangedFiles(ctx.dependencies);
         await processChangedFiles(files);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        console.error(`Error processing webhook payload: ${error.message}`);
+      } catch (error) {
+        console.error(
+          `Error processing webhook payload. ${
+            error instanceof Error ? error.message : ''
+          }`,
+        );
       }
     });
   });

@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { Account } from '@sovereign-university/types';
+import type { Account } from '@sovereign-university/types';
 
 type GetUserOptions =
   | {

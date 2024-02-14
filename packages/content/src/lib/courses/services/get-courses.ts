@@ -1,4 +1,4 @@
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { getCoursesQuery } from '../queries/index.js';
@@ -16,7 +16,9 @@ export const createGetCourses =
           language,
         }),
       )
-      .then((professors) => professors.map(formatProfessor));
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
 
     return courses.map((course) => ({
       ...course,

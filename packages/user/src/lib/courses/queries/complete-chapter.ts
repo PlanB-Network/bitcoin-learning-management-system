@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import { CourseProgress } from '@sovereign-university/types';
+import type { CourseProgress } from '@sovereign-university/types';
 
 export const completeChapterQuery = (
   uid: string,

@@ -1,6 +1,6 @@
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import {
   getProfessorCoursesQuery,
   getProfessorQuery,
@@ -34,7 +34,9 @@ export const createGetProfessor =
           language,
         }),
       )
-      .then((professors) => professors.map(formatProfessor));
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
 
     const tutorials = await postgres.exec(
       getProfessorTutorialsQuery({

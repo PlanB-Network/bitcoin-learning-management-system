@@ -1,4 +1,4 @@
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBooksQuery } from '../queries/index.js';
 

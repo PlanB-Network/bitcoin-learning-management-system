@@ -3,11 +3,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import { DiffResultTextFile, ResetMode, simpleGit } from 'simple-git';
+import type { DiffResultTextFile } from 'simple-git';
+import { ResetMode, simpleGit } from 'simple-git';
 
-import { ChangeKind, ChangedFile } from '@sovereign-university/types';
+import type { ChangeKind, ChangedFile } from '@sovereign-university/types';
 
-import { GithubOctokit } from './octokit.js';
+import type { GithubOctokit } from './octokit.js';
 
 const parseRepository = (repository: string) => {
   const [repoOwner, repoName] = repository.split('/');
@@ -32,7 +33,7 @@ export const createDownloadFile =
       });
 
       if (Array.isArray(response.data)) {
-        throw new Error(`Path ${path} is a directory`);
+        throw new TypeError(`Path ${path} is a directory`);
       }
 
       if (response.data.type !== 'file') {
@@ -41,7 +42,11 @@ export const createDownloadFile =
 
       return Buffer.from(response.data.content, 'base64').toString();
     } catch (error: any) {
-      throw new Error(`Failed to download file ${path}: ${error.message}`);
+      throw new Error(
+        `Failed to download file ${path}. ${
+          error instanceof Error ? error.message : ''
+        }`,
+      );
     }
   };
 
@@ -74,7 +79,7 @@ const syncRepository = async (
       } catch (error: any) {
         console.warn(
           '[WARN] Failed to clone the repo, will try fetch and pull',
-          error.message,
+          error instanceof Error ? error.message : '',
         );
       }
     }
@@ -96,7 +101,9 @@ const syncRepository = async (
     return git;
   } catch (error: any) {
     throw new Error(
-      `Failed to sync repository ${repository}: ${error.message}`,
+      `Failed to sync repository ${repository}. ${
+        error instanceof Error ? error.message : ''
+      }`,
     );
   }
 };
@@ -118,7 +125,7 @@ export const compareCommits = async (
       (file) => !file.binary,
     ) as DiffResultTextFile[];
 
-    const finalFiles = await async.mapLimit(
+    return await async.mapLimit(
       textFiles,
       10,
       async (file: (typeof textFiles)[number]) => {
@@ -128,7 +135,7 @@ export const compareCommits = async (
         // SimpleGit doesn't support renamed files, so we need to do it manually
         if (file.file.includes(' => ')) {
           // The file was renamed, check if path of type { .* => .* }
-          const elementChanged = file.file.match(/\{(.*) => (.*)\}/);
+          const elementChanged = file.file.match(/{(.*) => (.*)}/);
           if (elementChanged) {
             const [full, previousSub, newSub] = elementChanged;
             previousPath = file.file.replace(full, previousSub);
@@ -168,7 +175,7 @@ export const compareCommits = async (
           time: new Date(
             fileLog.latest?.date ?? Date.now(), // Cannot happen (I think)
           ).getTime(),
-          data: await fs.readFile(fullPath, 'utf-8'),
+          data: await fs.readFile(fullPath, 'utf8'),
           ...(kind === 'renamed'
             ? // If the file was renamed, we need to add the previous path so we can update it
               {
@@ -179,11 +186,11 @@ export const compareCommits = async (
         } as ChangedFile;
       },
     );
-
-    return finalFiles;
   } catch (error: any) {
     throw new Error(
-      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}: ${error.message}`,
+      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}. ${
+        error instanceof Error ? error.message : ''
+      }`,
     );
   }
 };
@@ -268,7 +275,7 @@ export const getAllRepoFiles = async (
             parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
           ).getTime(),
           kind: 'added' as const,
-          data: await fs.readFile(file, 'utf-8'),
+          data: await fs.readFile(file, 'utf8'),
         };
       },
     );
@@ -308,12 +315,12 @@ export const getAllRepoFiles = async (
               parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
             ).getTime(),
             kind: 'added' as const,
-            data: await fs.readFile(file, 'utf-8'),
+            data: await fs.readFile(file, 'utf8'),
           };
         },
       );
 
-      finalFiles = finalFiles.concat(privateFinalFiles);
+      finalFiles = [...finalFiles, ...privateFinalFiles];
     }
 
     return finalFiles;

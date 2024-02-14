@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { insertPayment } from '../queries/insert-payment.js';
 
 export const createSavePayment =

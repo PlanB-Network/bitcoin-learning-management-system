@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { firstRow } from '@sovereign-university/database';
 
-import { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { getCreditsQuery, getTutorialQuery } from '../queries/index.js';
 

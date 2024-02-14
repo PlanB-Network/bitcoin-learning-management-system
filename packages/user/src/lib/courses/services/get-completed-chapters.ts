@@ -1,4 +1,4 @@
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { completeChapterQuery } from '../queries/index.js';
 
 export const createCompleteChapter =

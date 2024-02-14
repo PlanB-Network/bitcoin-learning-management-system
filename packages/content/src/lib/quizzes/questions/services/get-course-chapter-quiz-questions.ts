@@ -1,4 +1,6 @@
-import { Dependencies } from '../../../dependencies.js';
+import type { JoinedQuizQuestion } from '@sovereign-university/types';
+
+import type { Dependencies } from '../../../dependencies.js';
 import { getCourseChapterQuizQuestionsQuery } from '../queries/index.js';
 
 export const createGetCourseChapterQuizQuestions =
@@ -16,14 +18,12 @@ export const createGetCourseChapterQuizQuestions =
   }) => {
     const { postgres } = dependencies;
 
-    const quizQuestions = await postgres.exec(
+    return postgres.exec(
       getCourseChapterQuizQuestionsQuery({
         courseId,
         partIndex,
         chapterIndex,
         language,
       }),
-    );
-
-    return quizQuestions;
+    ) as Promise<JoinedQuizQuestion[]>;
   };

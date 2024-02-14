@@ -1,4 +1,4 @@
-import { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 import { getPaymentQuery } from '../queries/get-payment.js';
 
 export const createGetPayment =

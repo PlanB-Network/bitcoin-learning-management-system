@@ -1,4 +1,6 @@
-import { Dependencies } from '../../dependencies.js';
+import type { JoinedCourseChapter } from '@sovereign-university/types';
+
+import type { Dependencies } from '../../dependencies.js';
 import { getCourseChaptersQuery } from '../queries/index.js';
 
 export const createGetCourseChapters =
@@ -6,9 +8,7 @@ export const createGetCourseChapters =
   async (courseId: string, language?: string) => {
     const { postgres } = dependencies;
 
-    const chapters = await postgres.exec(
+    return postgres.exec(
       getCourseChaptersQuery({ courseId, language }),
-    );
-
-    return chapters;
+    ) as Promise<JoinedCourseChapter[]>;
   };

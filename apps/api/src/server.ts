@@ -1,7 +1,7 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { Router } from 'express';
+import express, { Router, json } from 'express';
 
-import { Dependencies } from './dependencies.js';
+import type { Dependencies } from './dependencies.js';
 import { createCorsMiddleware } from './middlewares/cors.js';
 import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
 import { appRouter } from './routers/router.js';
@@ -18,7 +18,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const router = Router();
 
   // Parse JSON bodies
-  app.use(express.json());
+  app.use(json());
 
   // Enable cors
   app.use(createCorsMiddleware());
@@ -27,7 +27,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   // Basic request logger
   app.use((req, _res, next) => {
-    console.log('➡️ ', req.method, req.path);
+    console.log('➡️', req.method, req.path);
     next();
   });
 

@@ -1,5 +1,6 @@
-import { TransactionSql, firstRow } from '@sovereign-university/database';
-import {
+import type { TransactionSql } from '@sovereign-university/database';
+import { firstRow } from '@sovereign-university/database';
+import type {
   ChangedFile,
   ModifiedFile,
   Professor,
@@ -8,7 +9,8 @@ import {
 
 import { yamlToObject } from '../../utils.js';
 
-import { ChangedProfessor, parseDetailsFromPath } from './index.js';
+import type { ChangedProfessor } from './index.js';
+import { parseDetailsFromPath } from './index.js';
 
 interface ProfessorMain {
   name: string;
