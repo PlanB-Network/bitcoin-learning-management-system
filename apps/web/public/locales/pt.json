@@ -94,9 +94,14 @@
       "thanksTip": "Queres agradecer? Deixa uma gorjeta."
     },
     "details": {
+      "accessible": "Accessible: Lifetime",
+      "buyCourse": "Buy the course",
       "courseId": "ID do curso: {{courseId}}",
+      "coursePayment": "Course payment",
       "curriculum": "Currículo",
+      "date": "Date: {{startDate}} to {{endDate}}",
       "description": "Description",
+      "downloadCurriculum": "Download curriculum",
       "duration": "Duração: {{hours}} horas",
       "goal": "GOAL: ",
       "level": "Nível: $t(words.level.{{level}})",
@@ -107,10 +112,16 @@
       "numberOfChapters": "Número de capítulos {{number}}",
       "objectives": "Objetivos",
       "objectivesTitle": "O que vais aprender",
+      "price": "Price: {{price}} sats",
       "professor": "Professor(a)",
       "startCourse": "Começar o curso",
       "taughtBy": "Este curso é ensinado por:",
-      "teachers": "Professores(as): {{teachers}}"
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "Professores(as): {{teachers}}",
+      "teacherWord": "A word from the teacher",
+      "terms1": "Check our",
+      "terms2": "terms and conditions",
+      "terms3": "for refund details"
     },
     "explorer": {
       "footerTitle": "Os nossos professores estão aqui para ti !",
@@ -157,58 +168,66 @@
       "theoreticalLightning": "Curso teórico avançado sobre a Lightning Network"
     }
   },
+  "dashboard": {
+    "myCourses": {
+      "resumeLesson": "Resume the lesson"
+    }
+  },
   "home": {
     "header": {
-      "content1": "A plataforma PlanB visa fornecer as melhores ferramentas e conteúdos educativos do mundo inteiro para ajudar as pessoas a recuperarem a sua soberania.",
-      "content2": "Dos indivíduos para as comunidades, estamos aqui para ajudar-te ao longo da tua jornada Bitcoin.",
+      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "Para educadores e construtores",
       "globalNetwork": "Global Bitcoin Network",
-      "link": "Participa da network"
+      "welcome": "Welcome to PlanB Network",
+      "link": "Participa da network",
+      "startLink": "Start Learning"
     },
-    "section1": {
-      "allLevels": "De principiante a avançado, aprende Bitcoin na academia",
-      "content1": "O Bitcoin não é apenas uma tecnologia e uma forma de dinheiro mas também uma forma revolucionária de abordar a vida. Fazendo eco disso, os nossos cursos abrangem uma vasta gama de domínios, permitindo que cada indivíduo exceda as suas áreas de interesse e aprofunde a sua compreensão.",
-      "content2": " Desde o teu primeiro curso de Bitcoin até um mergulho profundo nas especificações do protocolo, os nossos cursos vão ajudar-te a navegar com segurança pela toca do coelho.",
-      "content3": "Não há motivos para hesitar. O conhecimento espera-te.",
-      "content4": "Aqui podes encontrar cursos sobre vários tópicos como:",
-      "interested": "Interessado(a) em Bitcoin?",
-      "link": "Consulta a academia"
+    "numbersSection": {
+      "networkMember": "Betwork Member"
     },
-    "section2": {
-      "content1": "No PlanB, nós acreditamos que o Bitcoin é uma revolução internacional que diz respeito a todos e todas. Para capacitar bilhões de pessoas, estamos projetando essa plataforma para ser multilingue e acessível a todos e todas.",
-      "content2": "A plataforma suporta atualmente 7 idiomas e estamos a adicionar mais cada mês. Para conseguir isso, usamos uma mistura de IA e a dedicação de Bitcoiners do mundo inteiro.",
-      "content3": "Tu também podes começar a iniciar a tua própria rede local no teu país!",
-      "everythingTranslated": "Tudo é traduzido para os idiomas locais",
-      "link": "Ajuda-nos a traduzir a academia ",
-      "noBarrier": "Nenhuma barreira de idioma aqui."
+    "sectionEducation": {
+      "title": "From beginner to advanced",
+      "subtitle": "Learn Bitcoin in the academy",
+      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "link": "Check the academy"
     },
-    "section3": {
-      "aboutUs": "Um pouco sobre nós",
-      "bitcoinFocusContent": "Focamos na revolução do Bitcoin como um todo, desde a sua camada base a várias comunicações peer-to-peer em torno dela",
-      "bitcoinFocusTitle": "Foco Bitcoin",
-      "bitcoinFocusTitleMobile": "Focado no Bitcoin",
-      "communityContent": "Nós somos, acima de tudo, uma comunidade de entusiastas que se ajudam mutuamente na sua jornada com o Bitcoin",
-      "communityTitle": "Comunidade",
-      "communityTitleMobile": "Centrado na comunidade",
-      "content1": "Além dos cursos, a nossa grande quantidade de tutoriais irá ajudar-te a dominar diferentes tecnologias, como carteiras, soluções mercantis, trocas, nós, mining e soluções de privacidade.. E porque isso ainda não é suficiente, uma grande quantidade de recursos, como livros, podcasts ou vídeos, são classificados, ordenados e disponibilizados na plataforma.",
-      "content2": "O nosso objetivo é fornecer-te as ferramentas para o sucesso.",
-      "content3": "A rede PlanB é uma iniciativa para apoiar a educação Bitcoin no mundo inteiro. É o cruzamento de várias empresas apaixonadas pelo Bitcoin focadas na educação, software de código aberto, redes peer-to-peer e sentido de comunidade. Juntos, decidiram construir a rede PlanB e oferecer ao ecossistema Bitcoin as ferramentas certas para evoluir.",
-      "helpingCommunities": "Ajudar o crescimento das comunidades Bitcoin é a nossa missão ",
-      "letsHelpYou": "Deixa-nos ajudar-te a dominar a tecnologia, ler e ouvir sobre Bitcoin!",
-      "openSourceContent": "O nosso objetivo é promover o livre fluxo de conhecimento e ajudar a construir mais soluções de código aberto",
-      "openSourceTitle": "Código aberto",
-      "privacyContent": "Consideramos a privacidade um dos direitos humanos mais fundamentais e essenciais para o progresso",
-      "privacyTitle": "Privacidade",
-      "privacyTitleMobile": "Focado em privacidade",
-      "seeResources": "Ver todos os recursos",
-      "seeResourcesMobile": "Dá uma olhada em todos os recursos",
-      "seeTutorials": "Ver todos os tutoriais",
-      "seeTutorialsMobile": "Dá uma olhada em todos os tutoriais"
+    "sectionNetwork": {
+      "title": "Access a  network of",
+      "subtitle": "Worldwide Bitcoin Campuses",
+      "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
+      "link": "Be part of the network"
     },
-    "section4": {
-      "content1": "A PlanB Network está orgulhosa de se juntar a muitas empresas bitcoin em todo o mundo, de modo a fornecer os melhores recursos educativos possíveis!",
-      "planB": "A PlanB Network é 100% open-source graças ao nosso generoso patreon",
-      "together": "Juntos(as), vamos melhorar a educação Bitcoin! "
+    "tutorialSection": {
+      "title": "Making Bitcoin education simple is our objective.",
+      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
+      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
+      "link": "See all tutorials"
+    },
+    "aboutUsSection": {
+      "title": "Who are we ?",
+      "subtitle": "A little bit about us",
+      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
+      "bitcoinFocusTitle": "Bitcoin focus",
+      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "openSourceTitle": "Open source",
+      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "communityTitle": "Community",
+      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
+      "privacyTitle": "Privacy",
+      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+    },
+    "languageSection": {
+      "title": "No language barrier here.",
+      "subtitle": "Everything is translated to local languages",
+      "subtitle2": "We need you!",
+      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
+      "content2": "You too can start bootstrapping your own local network in your country!",
+      "link": "Help us translate the academy"
+    },
+    "patreonSection": {
+      "title": "Together let’s make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patreon",
+      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     }
   },
   "imagesAlt": {
@@ -225,6 +244,8 @@
     "flagsInCircle": "um círculo de bandeiras",
     "forwardArrow": "uma seta para frente",
     "github": "o ícone do github",
+    "orangePill": "an orange pill",
+    "printedCircuits": "a printed circuits",
     "rabbit404": "um coelho apontando uma lanterna num sinal 404",
     "rabbitClassroom": "coelhos dentro de uma sala de aula",
     "rabbitLibrary": "um coelho lendo um livro",
@@ -266,41 +287,20 @@
     "walletsDescription": "Protege e usa os teus bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "Um nó (node) é simplesmente uma comunidade Bitcoin que quer dar o próximo passo e acelerar a sua própria adoção de Bitcoin local! Não há nenhum tamanho mínimo para começar.",
-    "answer2": "No Plan B, temos como objetivo melhorar o ecossistema educativo Bitcoin fornecendo as ferramentas certas para construir e educar sobre Bitcoin. Ao tornar-se um nó, a tua comunidade terá acesso a uma grande variedade de recursos, serviços, treinamento educacional especial e muito mais. Faz com que a tua comunidade seja também uma referência no universo Bitcoin.",
-    "answer3": "Para fazer parte da rede, deves alinhar-te com alguns valores centrais. Estes são: apenas bitcoin, valorar a privacidade e cuidar o trabalho de código aberto (open source).",
-    "answer4": "Um nó (node) Bitcoin pode ter qualquer tamanho. Com base em alguns requisitos, diferentes nomes serão atribuídos. Um nó com um hackerspace, um ginásio, ou um  escritório será considerado um \"Citadel\", enquanto que o teu primeiro \"home town office\" de bitcoin será conhecido como \"nós\" (nodes).",
-    "answer5": "Queremos oferecer um porto seguro para bitcoiners de todo o mundo. Acreditamos que ajudando os centros locais a crescer, poderemos criar uma rede de citadinos e citadinas onde bitcoiners serão bem-vindos(as) para trabalhar, criar, compartilhar e discutir com segurança.",
-    "apply": "Aplicar",
-    "description1": "Em todo o mundo, Bitcoiners estão a juntar-se em comunidades.",
-    "description2": "<0>Um novo </0> <1>encontro de Bitcoin</1> surge a cada semana.",
-    "description3": "Centros educacionais, <0>hackerspaces</0> e espaços de escritório Bitcoin estão em alta.",
-    "description4": "<0>Citadelas seguras</0> estão em construção.",
-    "description5": "A dedicação da comunidade Bitcoin para colaborar, se apoiar mutuamente e oferecer ferramentas essenciais para os seus homólogos locais é essencial para prosperar na paisagem moderna. ",
-    "description6": "No PlanB, reconhecemos os desafios que estas comunidades têm pela frente. Para apoiar os seus esforços, introduzimos soluções para simplificar o seus processos de desenvolvimento.",
-    "descriptionTitle": "Todos os países precisam de um plano B!",
-    "join1": "Quando te juntas à nossa rede, vamos guiar-te na transição de um simples encontro Bitcoin para uma cidadela Bitcoin totalmente segura!",
-    "join2": "<0>Desenvolvimento de comunidade</0> suporte",
-    "join3": "Recursos educacionais para <0> seminários locais</0>",
-    "join4": "Acesso a especialistas de todo mundo",
-    "join5": "Conexão a milhares de alunos",
-    "join6": "Não estás só na tentativa de mudar o mundo. Vamos juntar os nossos recursos para conseguirmos.",
-    "join7": "Faz parte da revolução!",
-    "letsBuild": "Vamos construir uma Citadela Bitcoin ao redor do mundo",
-    "network1": "Já fazem parte da rede!",
-    "pageSubtitle": "A nossa força é a nossa comunidade. Vamo-nos juntar numa rede global de bitcoin.",
+    "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
+    "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
+    "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
+    "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
+    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
+    "apply": "Apply to become a Node",
+    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
+    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
     "pageTitle": "Rede de Nós",
-    "partnerBTCMap": "Parceiro orgulhoso com o BTC Map para integrar mais de 250 comunidades no mapa em 2023",
-    "question1": "O que é um Nó (Node)?",
+    "question1": "What's a node?",
     "question2": "O que ganho eu?",
     "question3": "Quais são os requisitos?",
-    "question4": "Qual é o tamanho de um Nó?",
-    "question5": "Qual é o plano secreto?",
-    "stage": "Etapa",
-    "stage1": "Comunidades",
-    "stage2": "Hub",
-    "stage3": "Nó Completo ( Full Node)",
-    "stage4": "Citadela Completa (Full Citadel)"
+    "question4": "What size is a node?",
+    "question5": "Qual é o plano secreto?"
   },
   "notFound": {
     "here": "Aqui",
@@ -471,6 +471,7 @@
     "documentaries": "Documentários",
     "donations": "Doações",
     "economy": "Economia",
+    "education": "Education",
     "email": "Email",
     "exchanges": "Câmbios",
     "followUs": "Segue-nos",
@@ -490,9 +491,12 @@
     "manifesto": "Manifesto",
     "merchandising": "Comercialização",
     "merchants": "Comerciantes",
+    "members": " Members",
     "mining": "Mining",
     "more": "Mais",
     "movieDocumentary": "Documentário",
+    "network": "Network",
+    "networkMember": "Network Member",
     "newsletter": "Newsletter",
     "newsletters": "Newsletters",
     "node": "Nó",
@@ -502,13 +506,13 @@
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "professors": "Professores(as)",
+    "purchase": "Purchase",
     "register": "Inscreve-te",
     "relatedResources": "Recursos relacionados",
     "resources": "Recursos",
     "resume": "Resumo",
     "review": "Avaliação",
     "rogzy": "Rogzy",
-    "signIn": "Registrar-se",
     "sponsorUs": "Patrocina-nos",
     "sponsoringAndContributors": "Patrocínios & colaboradores",
     "supportUs": "Apoia-nos",

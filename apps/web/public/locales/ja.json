@@ -8,7 +8,7 @@
       "hareExplorer": "うさぎの探検家",
       "helpers": "サポートスタッフ",
       "professors": "教授陣",
-      "rabbitholeDigger": "ラビットホールの掘り職人"
+      "rabbitholeDigger": "ラビットホールの旅人"
     },
     "headerLink": "コミュニティ・スポンサーになる",
     "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
@@ -88,15 +88,20 @@
       "secu": "セキュリティとプライバシー"
     },
     "chapter": {
-      "count": "Chapter {{count}}",
+      "count": "{{count}}章",
       "finishCourse": "コースを終了する",
       "next": "完了、次の章に行きましょう！",
       "thanksTip": "楽しんでいただけましたか？チップはこちらから。"
     },
     "details": {
+      "accessible": "Accessible: Lifetime",
+      "buyCourse": "Buy the course",
       "courseId": "コースID：{{courseId}}",
+      "coursePayment": "Course payment",
       "curriculum": "カリキュラム",
+      "date": "Date: {{startDate}} to {{endDate}}",
       "description": "説明",
+      "downloadCurriculum": "Download curriculum",
       "duration": "所要時間：{{hours}}時間",
       "goal": "ゴール：",
       "level": "レベル：$t(words.level.{{level}})",
@@ -107,10 +112,16 @@
       "numberOfChapters": "チャプター数：{{number}}",
       "objectives": "目的",
       "objectivesTitle": "学習内容：",
+      "price": "Price: {{price}} sats",
       "professor": "教授",
       "startCourse": "コースを開始する",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
-      "teachers": "講師陣：{{teachers}}"
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "講師陣：{{teachers}}",
+      "teacherWord": "A word from the teacher",
+      "terms1": "Check our",
+      "terms2": "terms and conditions",
+      "terms3": "for refund details"
     },
     "explorer": {
       "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
@@ -157,58 +168,66 @@
       "theoreticalLightning": "ライトニング・ネットワークの上級理論コース"
     }
   },
+  "dashboard": {
+    "myCourses": {
+      "resumeLesson": "Resume the lesson"
+    }
+  },
   "home": {
     "header": {
-      "content1": "PlanBプラットフォームは、みなさん一人ひとりが主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目的としています。",
-      "content2": "個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをするためにここにいます。",
+      "content": "PlanBプラットフォームは、人々が主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目指しています。個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
       "forEducators": "すべての教育関係者と開発者のために",
       "globalNetwork": "グローバル・ビットコイン・ネットワーク",
-      "link": "ネットワークに参加する"
+      "welcome": "PlanBネットワークへようこそ",
+      "link": "ネットワークに参加する",
+      "startLink": "学習を始める"
     },
-    "section1": {
-      "allLevels": "初心者から上級者まで、アカデミーでビットコインを学ぼう",
-      "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがっており、みなさん一人ひとりが興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようになっています。",
-      "content2": " ビットコインを初めて学ぶ初心者向けコースから、プロトコルの詳細を深く掘り下げる上級者向けコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートに役立ちます。",
-      "content3": "迷いは不要です。知識の泉があなたを待っています。",
-      "content4": "ここでは、次のようなトピックに関するさまざまなコースを見つけることができます：",
-      "interested": "ビットコインに興味がありますか？",
+    "numbersSection": {
+      "networkMember": "参加メンバー"
+    },
+    "sectionEducation": {
+      "title": "初心者から上級者まで",
+      "subtitle": "アカデミーでビットコインを学ぶ",
+      "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがり、各個人が興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようにしています。初めてのビットコイン・コースから、プロトコルの詳細を深く掘り下げるコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートをします。躊躇する理由はありません。知識があなたを待っています。",
       "link": "アカデミーをチェックする"
     },
-    "section2": {
-      "content1": "PlanBでは、ビットコインはすべての人に関わるグローバルな革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人々がアクセスできるように設計しています。",
-      "content2": "このプラットフォームは現在7つの言語をサポートしており、さらに毎月追加されています。この多言語化を実現するために、私たちはAIと世界中のビットコイナーたちの情熱を掛け合わせています。",
-      "content3": "あなたも自分の国で独自のローカル・ネットワークを開始できます！",
-      "everythingTranslated": "すべてがローカル言語に翻訳されています",
-      "link": "アカデミーの翻訳にご協力ください ",
-      "noBarrier": "言語の壁なんてありません。"
+    "sectionNetwork": {
+      "title": "次のネットワークにアクセス：",
+      "subtitle": "世界中のビットコイン・キャンパス",
+      "content1": "共通の情熱を持つ世界中のビットコイン・ファンとつながりましょう。定期的に集まる小さなコミュニティからビットコイン教育センターまで、私たちのネットワークマップは、学び、構築するインスピレーションを見つけるのに役立ちます。インキュベーションセンター、オフライン・ワークショップ、セミナー、ビットコイン・リトリート（隠れ家）など、熱狂的なファンのために幅広いサービスが用意されています。ネットワークは誰でも参加自由ですので、お近くのビットコイン・コミュニティにお越しください！",
+      "link": "ネットワークに参加する"
     },
-    "section3": {
-      "aboutUs": "私たちについて少しだけ",
-      "bitcoinFocusContent": "私たちは、ビットコイン革命のベースレイヤーから、それを取り巻く様々なピアツーピア・コミュニケーションに至るまで、全体としてビットコイン革命に焦点を当てています",
+    "tutorialSection": {
+      "title": "ビットコイン教育をシンプルにすることが私たちの目標です。",
+      "subtitle1": "さまざまなチュートリアルでテクノロジー習得のお手伝いをします。",
+      "content1": "ビットコインは常に進化しており、新しい参加者、ソリューション、プロトコル、技術的ブレークスルーが現れては消えていく世界です。そのため、優れた最新のチュートリアルの正確なデータベースを維持する作業はとても困難です。しかし、PlanBではこれを実現しました。初心者から上級者まで、何百ものチュートリアルをナビゲートし、ニーズに合わせてこの世界を探求することができます。",
+      "link": "すべてのチュートリアルを見る"
+    },
+    "aboutUsSection": {
+      "title": "私たちについて",
+      "subtitle": "私たちについて少しだけ",
+      "content": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ運営に焦点を当てた様々な情熱的なビットコイン企業のクロスオーバー・チームです。彼らは共にPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を決定しました。",
       "bitcoinFocusTitle": "ビットコイン・ファースト",
-      "bitcoinFocusTitleMobile": "ビットコインに焦点を当てる",
-      "communityContent": "私たちは、何よりもまず第一に、ビットコインの旅で互いに助け合う愛好家コミュニティです",
-      "communityTitle": "コミュニティ",
-      "communityTitleMobile": "コミュニティに焦点を当てる",
-      "content1": "コースの他にも、ウォレット、マーチャント・ソリューション、取引所、ノード、マイニング、プライバシー・ソリューションなど、さまざまなテクノロジーをマスターするのに役立つチュートリアルが多数用意されています。また、これだけではまだ不十分ですから、書籍、ポッドキャスト、ビデオなどの多くのリソースをわかりやすく分類し、順序立てて、プラットフォーム上で利用できるようになっています。",
-      "content2": "私たちのゴールは、成功するためのツールを提供することです。",
-      "content3": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ活動に焦点を当てた、さまざまな情熱的なビットコイン企業によるクロスオーバー・チームです。私たちは共に協力し合いPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を開始しました。",
-      "helpingCommunities": "ビットコイン・コミュニティの成長を支援することが私たちの使命です ",
-      "letsHelpYou": "ビットコインについて読み、聞き、技術をマスターするお手伝いをさせてください！",
-      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築を支援することを目指しています",
+      "bitcoinFocusContent": "ビットコイン革命の全体像、ベースレイヤーからそれを取り巻く様々なピアツーピア通信まで",
       "openSourceTitle": "オープンソース",
-      "privacyContent": "私たちは、プライバシーは最も基本的な人権のひとつであり、進歩のために必要不可欠であると考えます",
+      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築サポートを目指します",
+      "communityTitle": "コミュニティ",
+      "communityContent": "私たちは、何よりもまず、ビットコインの旅をお互に助け合うファン・コミュニティです",
       "privacyTitle": "プライバシー",
-      "privacyTitleMobile": "プライバシーに焦点を当てる",
-      "seeResources": "すべてのリソースを見る",
-      "seeResourcesMobile": "すべてのリソースを見る",
-      "seeTutorials": "すべてのチュートリアルを見る",
-      "seeTutorialsMobile": "すべてのチュートリアルを見る"
+      "privacyContent": "プライバシーは最も基本的な人権のひとつであり、進歩のために不可欠なものです"
     },
-    "section4": {
-      "content1": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業との連携を心より誇りに思っています！ ",
-      "planB": "PlanBネットワークは、寛大なパトロンのおかげで完全なオープンソースを実現しています",
-      "together": "一緒にビットコイン教育をより良くしていきましょう！ "
+    "languageSection": {
+      "title": "言語の壁はありません。",
+      "subtitle": "すべてが日本語をはじめ各言語に翻訳されています",
+      "subtitle2": "あなたのチカラが必要です！",
+      "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。これを達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています。",
+      "content2": "あなたも自分の国で独自のローカル・ネットワークを始めよう！",
+      "link": "アカデミーの翻訳にご協力ください"
+    },
+    "patreonSection": {
+      "title": "ぜひ一緒にビットコイン教育をより良くしていきましょう！ ",
+      "subtitle": "PlanBネットワークは、素晴らしいパトロンのみなさんおかげで、100％オープンソースで運営されています",
+      "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
     }
   },
   "imagesAlt": {
@@ -225,6 +244,8 @@
     "flagsInCircle": "旗のサークル",
     "forwardArrow": "前方の矢印",
     "github": "GitHubのアイコン",
+    "orangePill": "オレンジ・ピル",
+    "printedCircuits": "プリント基板",
     "rabbit404": "404の看板を懐中電灯で照らすうさぎ",
     "rabbitClassroom": "教室の中のうさぎ",
     "rabbitLibrary": "読書中のうさぎ",
@@ -266,41 +287,20 @@
     "walletsDescription": "ビットコインを安全に使用する"
   },
   "nodeNetwork": {
-    "answer1": "ノードとは、その地域のビットコイン普及を加速させたいと考えるビットコイン・コミュニティのことです！小規模から始めることができます。",
-    "answer2": "Plan Bでは、ビットコインを構築し教育するための適切なツールを提供することで、ビットコイン・エコシステムの教育面を改善することを目指しています。ノードになることで、あなたのコミュニティは幅広いリソース、サービス、特別な教育トレーニングなどにアクセスできるようになります。あなたのコミュニティを、ビットコイン・ワールド発展の1つにしていこう。",
-    "answer3": "ネットワークに参加するには、いくつかのコア・バリューに賛同する必要があります。それは、ビットコイン・オンリーであること、プライバシーを大切にすること、オープンソースであり続けることです。",
-    "answer4": "ビットコイン・ノードはどのようなサイズでも構いません。いくつかの要件に基づき、異なる名前が付けられます。ハッカー・スペース、ジム、オフィスがあるノードは「要塞（Citadel）」と呼ばれ、最初のビットコイン・ホームタウン・オフィスは「ノード（Node）」と呼ばれます。",
-    "answer5": "私たちは、世界中のビットコイナーに安全な地を提供したいと願っています。地域ハブの広がりを支援することで、ビットコイナーが安全に活動でき、創造し、共有し、議論することを歓迎する要塞（cotadels）ネットワークを構築していけると信じています。",
-    "apply": "申請する",
-    "description1": "世界中のビットコイナーがコミュニティに集まっています。",
-    "description2": "<0>新しい<0> <1>ビットコイン・ミートアップ</1>が毎週登場します。",
-    "description3": "教育センター、<0>ハッカー・スペース</0>、ビットコインのオフィス・スペースが増加しています。",
-    "description4": "<0>安全な要塞（Citadels）</0>を建設中です。",
-    "description5": "ビットコインコミュニティが協力し合い、互いにサポートし合い、現地の人々に必要不可欠なツールを提供するという献身的な姿勢は、現代の状況下で成功するための必須条件です。 ",
-    "description6": "PlanBでは、コミュニティ開発者が直面する課題を認識しています。彼らの努力を支援するため、開発プロセスを簡素化するソリューションを導入しました。",
-    "descriptionTitle": "どの国にもプランBが必要です！",
-    "join1": "私たちのネットワークに参加することで、単純なビットコイン・ミートアップから、完全に安全なビットコイン要塞（citadel）へと移行できるようにサポートします！",
-    "join2": "<0>コミュニティ形成</0>のサポート",
-    "join3": "<0>地域セミナー</0>のための教育資料",
-    "join4": "世界中の専門家へのアクセス",
-    "join5": "何千人もの学生とのつながり",
-    "join6": "世界を変えようとしているのは、あなたひとりではありません。成功のために力を合わせよう。",
-    "join7": "この革命に参加しよう！",
-    "letsBuild": "世界中にビットコイン要塞（Citadel）を築こう",
-    "network1": "彼らはすでにネットワークの一員です！",
-    "pageSubtitle": "私たちの強みはコミュニティです。グローバルなビットコイン・ネットワークに参加しよう。",
+    "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
+    "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
+    "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
+    "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
+    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
+    "apply": "Apply to become a Node",
+    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
+    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
     "pageTitle": "ノード・ネットワーク",
-    "partnerBTCMap": "2023年にBTC Mapと提携し、250以上のコミュニティを掲載できたことを誇りに思っています。",
-    "question1": "ノードとは？",
+    "question1": "What's a node?",
     "question2": "何が得られるのか？",
     "question3": "必要条件は？",
-    "question4": "ノードのサイズは？",
-    "question5": "その秘策とは？",
-    "stage": "ステージ",
-    "stage1": "コミュニティ",
-    "stage2": "ハブ",
-    "stage3": "フルノード",
-    "stage4": "完全な要塞（Full Citadel）"
+    "question4": "What size is a node?",
+    "question5": "その秘策とは？"
   },
   "notFound": {
     "here": "こちら",
@@ -471,6 +471,7 @@
     "documentaries": "ドキュメンタリー",
     "donations": "寄付",
     "economy": "経済",
+    "education": "教育",
     "email": "Eメール",
     "exchanges": "取引所",
     "followUs": "フォローする",
@@ -481,7 +482,7 @@
     "level": {
       "advanced": "上級者向け",
       "beginner": "初心者向け",
-      "developer": "developer",
+      "developer": "開発者",
       "intermediate": "中級者向け"
     },
     "library": "ライブラリ",
@@ -490,9 +491,12 @@
     "manifesto": "マニフェスト",
     "merchandising": "マーチャンダイズ",
     "merchants": "マーチャント",
+    "members": " メンバー",
     "mining": "マイニング（採掘）",
     "more": "もっと見る",
     "movieDocumentary": "ドキュメンタリー映画",
+    "network": "ネットワーク",
+    "networkMember": "ネットワーク・メンバー",
     "newsletter": "ニュースレター",
     "newsletters": "ニュースレター",
     "node": "ノード",
@@ -502,13 +506,13 @@
     "podcast": "ポッドキャスト",
     "podcasts": "ポッドキャスト",
     "professors": "講師陣",
+    "purchase": "Purchase",
     "register": "登録する",
     "relatedResources": "関連するリソース",
     "resources": "リソース",
     "resume": "再開する",
     "review": "レビュー",
     "rogzy": "ロジー（Rogzy）",
-    "signIn": "ログイン",
     "sponsorUs": "スポンサーになる",
     "sponsoringAndContributors": "スポンサーとコントリビュータ",
     "supportUs": "サポートする",
