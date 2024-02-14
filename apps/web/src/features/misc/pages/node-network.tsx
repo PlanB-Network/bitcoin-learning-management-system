@@ -3,13 +3,12 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
-import { BsRocketTakeoff } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
 import { Button } from '../../../atoms/Button';
+import { MainLayout } from '../../../components/MainLayout';
 import { useDisclosure } from '../../../hooks';
-import { ResourceLayout } from '../../resources/layout';
 
 const QnAItem = ({
   question,
@@ -21,24 +20,25 @@ const QnAItem = ({
   const { isOpen, toggle } = useDisclosure();
 
   return (
-    <div className="space-y-2">
-      <h2
-        className="cursor-pointer text-base font-medium text-orange-500 sm:text-xl"
+    <div>
+      <div
+        className="flex cursor-pointer flex-row text-base font-medium sm:text-xl"
         onClick={toggle}
       >
+        <span className="uppercase text-orange-500">{question}</span>
         <div
           className={cn(
-            'text-3xl font-light mr-3 inline-block',
-            isOpen ? 'rotate-90' : 'rotate-0',
+            'ml-auto text-3xl font-light mr-3 inline-block',
+            isOpen ? 'rotate-45' : 'rotate-0',
           )}
         >
-          {'>'}
+          {'+'}
         </div>
-        <span className="uppercase">{question}</span>
-      </h2>
+      </div>
       {isOpen && (
-        <p className="whitespace-pre-line text-sm sm:text-base">{answer}</p>
+        <p className="max-w-2xl whitespace-pre-line text-sm">{answer}</p>
       )}
+      <hr className="mb-4 mt-6 border-gray-800" />
     </div>
   );
 };
@@ -81,59 +81,62 @@ const QnA = () => {
 export const NodeNetwork = () => {
   const { t } = useTranslation();
   const { useGreater } = BreakPointHooks(breakpointsTailwind);
+  const isScreenXl = useGreater('xl');
   const isScreenLg = useGreater('lg');
   const isScreenMd = useGreater('md');
   const isScreenSm = useGreater('sm');
 
   let mapWidth;
-  if (isScreenLg) {
+  if (isScreenXl) {
+    mapWidth = 1200;
+  } else if (isScreenLg) {
     mapWidth = 900;
   } else if (isScreenMd) {
     mapWidth = 700;
   } else if (isScreenSm) {
-    mapWidth = 500;
+    mapWidth = 550;
   } else {
     mapWidth = window.innerWidth - 100;
   }
 
   return (
-    <ResourceLayout
-      title={t('nodeNetwork.pageTitle')}
-      tagLine={t('nodeNetwork.pageSubtitle')}
-    >
-      <div className="mx-8 flex max-w-4xl  flex-col text-white">
-        <div className="flex w-full max-w-3xl flex-col">
-          <p className="text-xl font-semibold">
+    <MainLayout>
+      <div className="flex flex-col items-center">
+        <div className="mx-8 mt-24 flex max-w-4xl flex-col items-center text-white">
+          <h1 className="text-5xl font-semibold uppercase text-orange-500">
+            {t('nodeNetwork.pageTitle')}
+          </h1>
+          <p className="mt-2 text-sm font-medium uppercase md:text-base">
+            {t('nodeNetwork.pageSubtitle')}
+          </p>
+          <p className="mt-6 max-w-[40rem] text-center text-sm text-gray-400 md:text-base">
             {t('nodeNetwork.description1')}
           </p>
-          <p className="mt-2">{t('nodeNetwork.description2')}</p>
-          <p className="">{t('nodeNetwork.description3')}</p>
+          <a
+            className="mt-8 place-self-center"
+            href="https://github.com/DecouvreBitcoin/sovereign-university-data#join-the-network"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="secondary" glowing={true} className="!text-black">
+              {t('nodeNetwork.apply')}
+            </Button>
+          </a>
+          <div className="my-12 w-fit content-center self-center">
+            <iframe
+              id="btcmap"
+              className="rounded-3xl"
+              title="BTC Map"
+              width={mapWidth}
+              height="600"
+              allowFullScreen={true}
+              allow="geolocation"
+              src="https://btcmap.org/communities/map?organization=plan-b-network#12/46.02645/8.93764"
+            ></iframe>
+          </div>
+          <QnA />
         </div>
-
-        <div className="my-12 w-fit content-center self-center">
-          <iframe
-            id="btcmap"
-            className="rounded-3xl border-4 border-orange-500"
-            title="BTC Map"
-            width={mapWidth}
-            height="600"
-            allowFullScreen={true}
-            allow="geolocation"
-            src="https://btcmap.org/communities/map?organization=plan-b-network#12/46.02645/8.93764"
-          ></iframe>
-        </div>
-        <a
-          className="place-self-center"
-          href="https://github.com/DecouvreBitcoin/sovereign-university-data#join-the-network"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button variant="tertiary" iconRight={<BsRocketTakeoff />}>
-            {t('nodeNetwork.apply')}
-          </Button>
-        </a>
-        <QnA />
       </div>
-    </ResourceLayout>
+    </MainLayout>
   );
 };

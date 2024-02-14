@@ -86,7 +86,8 @@ export const Button = ({
         ...classes,
         disabled ? 'active:none' : 'active:scale-95',
         'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',
-        glowing ? 'shadow-md-button' : '',
+        glowing && variant !== 'secondary' ? 'shadow-md-button' : '',
+        glowing && variant === 'secondary' ? '!shadow-md-button-white' : '',
         className ?? '',
         disabledClass,
       )}
