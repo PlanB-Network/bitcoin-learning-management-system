@@ -168,6 +168,11 @@
       "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
     }
   },
+  "dashboard": {
+    "myCourses": {
+      "resumeLesson": "Resume the lesson"
+    }
+  },
   "home": {
     "header": {
       "content": "La piattaforma PlanB mira a fornire i migliori strumenti e contenuti educativi in tutto il mondo per aiutare le persone a recuperare la loro sovranità. Da individui a comunità, siamo qui per aiutarvi lungo il vostro viaggio Bitcoin.",
@@ -529,7 +534,6 @@
     "resume": "Riprendi",
     "review": "Riesame",
     "rogzy": "Rogzy",
-    "signIn": "Registrati",
     "sponsorUs": "Sponsorizzaci",
     "sponsoringAndContributors": "Sponsorizzazione & contributori",
     "supportUs": "Sostienici",
