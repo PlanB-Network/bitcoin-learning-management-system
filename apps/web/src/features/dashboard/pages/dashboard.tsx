@@ -17,7 +17,7 @@ import { useAppDispatch } from '../../../hooks';
 import { userSlice } from '../../../store';
 import { trpc } from '../../../utils';
 import { DashboardTab } from '../components/dashboard-tab';
-import { SettingsTab } from '../components/settings-tab';
+import { ProfileTab } from '../components/profile-tab';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -27,7 +27,7 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
     nested route during that refactor. It currently lives in another branch. Please forgive me.
   */
 
-type Tabs = 'dashboard' | 'settings' | 'courses';
+type Tabs = 'dashboard' | 'profile' | 'courses';
 
 const MenuItem = ({
   text,
@@ -64,7 +64,7 @@ export const Dashboard = () => {
       <MainLayout showFooter={false}>
         <div className="p-6 text-white">
           {currentTab === 'dashboard' && <DashboardTab />}
-          {currentTab === 'settings' && <SettingsTab />}
+          {currentTab === 'profile' && <ProfileTab />}
         </div>
         <div className="fixed bottom-2 z-10 mx-auto flex w-full flex-row bg-orange-500 md:hidden md:bg-transparent">
           <MenuItem
@@ -76,8 +76,8 @@ export const Dashboard = () => {
           <MenuItem
             text="My profile"
             icon={<IoSettingsOutline size={28} />}
-            active={currentTab === 'settings'}
-            onClick={() => setCurrentTab('settings')}
+            active={currentTab === 'profile'}
+            onClick={() => setCurrentTab('profile')}
           />
           <MenuItem
             text="Log out"
@@ -118,8 +118,8 @@ export const Dashboard = () => {
             <MenuItem
               text="My profile"
               icon={<IoSettingsOutline size={20} />}
-              active={currentTab === 'settings'}
-              onClick={() => setCurrentTab('settings')}
+              active={currentTab === 'profile'}
+              onClick={() => setCurrentTab('profile')}
             />
             <div className="mt-8">
               <MenuItem
@@ -137,7 +137,7 @@ export const Dashboard = () => {
         <div className="bg-dashboardsection ml-4 grow rounded-xl p-10 text-white">
           {currentTab === 'dashboard' && <DashboardTab />}
           {currentTab === 'courses' && <DashboardTab />}
-          {currentTab === 'settings' && <SettingsTab />}
+          {currentTab === 'profile' && <ProfileTab />}
         </div>
       </div>
     </MainLayout>

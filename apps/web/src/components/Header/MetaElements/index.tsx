@@ -37,9 +37,11 @@ export const MetaElements = ({
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
       {isLoggedIn ? (
-        <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
-          <Link to="/dashboard">{t('words.dashboard')}</Link>
-        </Button>
+        <Link to="/dashboard">
+          <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
+            {t('words.dashboard')}
+          </Button>
+        </Link>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
           <Button
