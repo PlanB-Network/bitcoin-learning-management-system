@@ -9,15 +9,15 @@ import { BsTwitter } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
-import EducationMain from '../../../assets/home/education-main.png';
-import Flags from '../../../assets/home/flags.png';
+import EducationMain from '../../../assets/home/education-main.webp';
+import Flags from '../../../assets/home/flags.webp';
 import FlagsSmall from '../../../assets/home/flags_small.png';
 import HeaderLeft from '../../../assets/home/header_left.svg';
-import HeaderPill from '../../../assets/home/header_pill.png';
+import HeaderPill from '../../../assets/home/header_pill.webp';
 import HeaderRight from '../../../assets/home/header_right.svg';
-import NetworkMain from '../../../assets/home/network-main.svg';
-import ProfessorsTile from '../../../assets/home/professors.png';
-import Sponsors from '../../../assets/home/sponsors.png';
+import NetworkMain from '../../../assets/home/network-main.png';
+import ProfessorsTile from '../../../assets/home/professors.webp';
+import Sponsors from '../../../assets/home/sponsors.webp';
 import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '../../../assets/home/twitter_loic.jpeg';

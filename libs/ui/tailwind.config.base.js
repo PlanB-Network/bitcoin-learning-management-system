@@ -155,12 +155,6 @@ const baseConfig = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      backgroundImage: {
-        'gradient-diagonal':
-          'linear-gradient(175deg, #20376C 83%, rgba(255,255,255,1) 85%);',
-        'topics-circle': "url('/assets/home/education-main.svg')",
-        'gradient-blue': 'linear-gradient(0deg, #060a13, #070a13);',
-      },
       boxShadow: {
         'md-dark':
           '0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);',
