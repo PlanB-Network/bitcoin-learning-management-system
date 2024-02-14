@@ -128,7 +128,7 @@ export const CourseDetails: React.FC = () => {
     fetchData();
   }, []);
 
-  let satsPrice = -1;
+  let satsPrice = 1;
   if (course && course.paid_price_euros && conversionRate) {
     satsPrice = Math.round(
       (course.paid_price_euros * 100000000) / conversionRate,
@@ -282,7 +282,7 @@ export const CourseDetails: React.FC = () => {
                   <Button rounded {...buttonProps}>
                     <span className="sm:px-6">
                       {t(
-                        course.requires_payment
+                        course.requires_payment && !isCoursePaid
                           ? 'courses.details.buyCourse'
                           : 'courses.details.startCourse',
                       )}
@@ -519,7 +519,7 @@ export const CourseDetails: React.FC = () => {
               className="text-blue-1000 mb-auto"
             >
               {t(
-                course.requires_payment
+                course.requires_payment && !isCoursePaid
                   ? 'courses.details.buyCourse'
                   : 'courses.details.startCourse',
               )}

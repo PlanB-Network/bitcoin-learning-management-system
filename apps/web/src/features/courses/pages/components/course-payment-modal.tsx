@@ -1,10 +1,21 @@
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
-// import useWebSocket from 'react-use-websocket';
+import useWebSocket from 'react-use-websocket';
 
 import { Modal } from '../../../../atoms/Modal';
 import { trpc } from '../../../../utils';
 import { TRPCRouterOutput } from '../../../../utils/trpc';
+
+const hexToBase64 = (hexstring: string) => {
+  return btoa(
+    hexstring
+      .match(/\w{2}/g)
+      ?.map(function (a) {
+        return String.fromCharCode(parseInt(a, 16));
+      })
+      .join(''),
+  );
+};
 
 interface CoursePaymentModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
@@ -21,7 +32,7 @@ type PaymentData = {
   checkoutUrl: string;
 };
 
-// const getTrue = () => true;
+const getTrue = () => true;
 
 export const CoursePaymentModal = ({
   course,
@@ -33,26 +44,25 @@ export const CoursePaymentModal = ({
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
 
-  // const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
-  //   settled: boolean;
-  // }>(
-  //   'wss://api.swiss-bitcoin-pay.ch/invoice/ln',
-  //   {
-  //     shouldReconnect: getTrue,
-  //   },
-  //   !!paymentData,
-  // );
-
-  // console.log({ lastJsonMessage });
+  const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
+    settled: boolean;
+  }>(
+    'wss://api.swiss-bitcoin-pay.ch/invoice/ln',
+    {
+      shouldReconnect: getTrue,
+    },
+    !!paymentData,
+  );
 
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
     });
-    // sendJsonMessage({ hash: serverPaymentData.id });
+    const hash = hexToBase64(serverPaymentData.id);
+    sendJsonMessage({ hash: hash });
     setPaymentData(serverPaymentData);
-  }, [course.id, savePaymentRequest]);
+  }, [course.id, satsPrice, savePaymentRequest, sendJsonMessage]);
 
   useEffect(() => {
     if (isOpen) {
@@ -64,11 +74,13 @@ export const CoursePaymentModal = ({
     }
   }, [isOpen]);
 
-  // useEffect(() => {
-  //   if (lastJsonMessage.settled) {
-  //     onClose(true);
-  //   }
-  // }, [lastJsonMessage]);
+  useEffect(() => {
+    if (lastJsonMessage?.settled) {
+      setTimeout(() => {
+        onClose(true);
+      }, 2000);
+    }
+  }, [lastJsonMessage]);
 
   return (
     <Modal
