@@ -101,7 +101,7 @@ const Mission = () => {
         </div>
       </div>
 
-      <div className="mt-12 w-full max-w-3xl self-center">
+      <div className="mt-12 w-full max-w-5xl self-center">
         <Button variant="tertiary" className="self-start" glowing={true}>
           Read our manifesto
         </Button>
@@ -114,7 +114,7 @@ const Corporate = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-12 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+    <div className="mt-20 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
       <div>
         <h2 className="text-3xl font-semibold uppercase text-orange-500">
           {t('about.corporateTitle')}
