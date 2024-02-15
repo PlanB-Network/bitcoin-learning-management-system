@@ -118,26 +118,28 @@ export const TutorialDetails = () => {
                 )}
               </div>
             </div>
-            <div className="mt-4 flex w-full flex-col items-center space-y-2 bg-gray-200 p-5 text-blue-900 sm:px-0">
-              <h2 className="text-2xl font-semibold">
-                {t('tutorials.details.enjoyed')}
-              </h2>
-              <p className="text-xl">{t('tutorials.details.checkAuthor')}</p>
-              {tutorial.credits?.professor && (
-                <Link
-                  to={'/professor/$professorId'}
-                  params={{
-                    professorId: tutorial.credits.professor.id.toString(),
-                  }}
-                  key={tutorial.credits.professor.id}
-                >
-                  <AuthorCard
-                    className="py-4"
-                    professor={tutorial.credits.professor}
-                  ></AuthorCard>
-                </Link>
-              )}
-            </div>
+            {tutorial.credits?.professor?.id && (
+              <div className="mt-4 flex w-full flex-col items-center space-y-2 p-5 text-blue-900 sm:px-0">
+                <h2 className="text-2xl font-semibold">
+                  {t('tutorials.details.enjoyed')}
+                </h2>
+                <p className="text-xl">{t('tutorials.details.checkAuthor')}</p>
+                {tutorial.credits?.professor && (
+                  <Link
+                    to={'/professor/$professorId'}
+                    params={{
+                      professorId: tutorial.credits.professor.id.toString(),
+                    }}
+                    key={tutorial.credits.professor.id}
+                  >
+                    <AuthorCard
+                      className="py-4"
+                      professor={tutorial.credits.professor}
+                    ></AuthorCard>
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
           {isTipModalOpen && (
             <TipModal
