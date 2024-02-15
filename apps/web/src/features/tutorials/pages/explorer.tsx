@@ -17,8 +17,8 @@ export const TutorialExplorer = () => {
   });
 
   return (
-    <MainLayout footerVariant="light">
-      <div className="flex flex-col justify-center">
+    <MainLayout variant="light">
+      <div className="bg-blue-1000 flex flex-col justify-center">
         <PageHeader
           title={t('tutorials.pageTitle')}
           subtitle={t('tutorials.pageSubtitle')}
@@ -43,7 +43,7 @@ export const TutorialExplorer = () => {
             ))}
           </div>
         </div>
-        <div className="flex w-full flex-col items-center md:-mt-10">
+        <div className="mb-6 flex w-full flex-col items-center md:-mt-10">
           <FilterBar
             label={t('resources.filterBarLabel')}
             onChange={setSearchTerm}

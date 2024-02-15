@@ -35,7 +35,7 @@ export const CoursesMarkdownBody = ({
           </h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-justify text-base tracking-wide">
+          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
           </p>
         ),
@@ -50,17 +50,17 @@ export const CoursesMarkdownBody = ({
           </a>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col px-10 text-justify text-base tracking-wide">
+          <ol className="flex list-decimal flex-col px-10 text-base tracking-wide md:text-justify">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col px-10 text-justify text-base tracking-wide">
+          <ul className="flex list-disc flex-col px-10 text-base tracking-wide md:text-justify">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 text-justify text-base tracking-wide last:mb-0">
+          <li className="my-1 text-base tracking-wide last:mb-0 md:text-justify">
             {children}
           </li>
         ),

@@ -63,7 +63,7 @@ export const Builder = () => {
                 className="w-full"
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
-              <div className="mx-2 my-6 flex w-full justify-around">
+              <div className="mx-2 my-6 flex w-full justify-evenly">
                 {builder?.github_url && (
                   <a
                     href={builder?.github_url}

@@ -34,10 +34,7 @@ export const BookSummary = ({
         {t('book.bookSummary.title')}
       </h4>
       <Card
-        className={compose(
-          'max-w-[740px] px-6 pb-2 relative',
-          isExtended ? '' : 'max-h-52',
-        )}
+        className={compose('px-6 pb-2 relative', isExtended ? '' : 'max-h-52')}
       >
         {/* remove max h if not needed here */}
         <div className={isExtended ? '' : 'max-h-36 overflow-hidden'}>

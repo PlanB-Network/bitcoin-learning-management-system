@@ -6,8 +6,6 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import readingRabbit from '../../../assets/resources/reading-rabbit.svg';
-import { Button } from '../../../atoms/Button';
 import { Card } from '../../../atoms/Card';
 import { useNavigateMisc } from '../../../hooks';
 import { trpc } from '../../../utils';
@@ -45,14 +43,6 @@ export const Book = () => {
     }
   }, [book, isFetched, navigateTo404]);
 
-  function DownloadEbook() {
-    alert(book?.download_url);
-  }
-
-  function BuyBook() {
-    alert(book?.shop_url);
-  }
-
   function displayAbstract() {
     return (
       book?.description && (
@@ -68,10 +58,10 @@ export const Book = () => {
     );
   }
 
-  let buttonSize: 'xs' | 's' = 'xs';
-  if (isScreenMd) {
-    buttonSize = 's';
-  }
+  // let buttonSize: 'xs' | 's' = 'xs';
+  // if (isScreenMd) {
+  //   buttonSize = 's';
+  // }
 
   return (
     <ResourceLayout
@@ -89,7 +79,7 @@ export const Book = () => {
                   alt={t('imagesAlt.bookCover')}
                   src={book?.cover}
                 />
-                <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
+                {/* <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                   <Button
                     size={buttonSize}
                     disabled={!book?.download_url}
@@ -108,7 +98,7 @@ export const Book = () => {
                   >
                     {t('book.buttonBuy')}
                   </Button>
-                </div>
+                </div> */}
               </div>
 
               <div className="col-span-2 my-4 flex flex-col md:mt-0">
@@ -141,17 +131,10 @@ export const Book = () => {
             {!isScreenMd && displayAbstract()}
           </Card>
 
-          <div className="mx-auto my-6 flex max-w-5xl flex-row justify-between p-2">
-            <img
-              className="-ml-20 mr-10 mt-10 hidden h-80 max-w-[40%] flex-col sm:flex"
-              src={readingRabbit}
-              alt={t('imagesAlt.readingRabbit')}
-            />
-
+          <div className="mx-auto my-6 flex flex-row justify-between p-2">
             <div className="flex flex-col">
               {!book?.summary_text && (
                 <BookSummary
-                  // contributor={contributor}
                   content={book?.summary_text}
                   title={book?.title ? book?.title : ''}
                 />

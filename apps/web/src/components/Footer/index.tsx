@@ -150,7 +150,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           </div>
           <img
             src={OrangePill}
-            className="absolute -right-0 bottom-60 h-80 md:-top-32 md:right-0"
+            className="absolute -right-0 bottom-60 hidden h-80 md:-top-32 md:right-0 md:block"
             alt=""
           />
         </div>

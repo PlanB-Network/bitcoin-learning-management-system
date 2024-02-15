@@ -90,7 +90,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               {professor.name}
             </span>
           </div>
-          <div className="border-blue-1000 flex flex-col items-center justify-center gap-2.5 self-stretch rounded-b-2xl border px-0">
+          <div className="border-blue-1000 flex h-full flex-col items-center justify-center gap-2.5 self-stretch rounded-b-2xl border px-0">
             <div className="bg-gradient-diagonal flex w-full flex-col items-center">
               <img
                 src={professor.picture}
@@ -98,7 +98,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
                 className="mt-8 h-28 w-28 rounded-full bg-white"
               />
             </div>
-            <div className="mt-2 flex flex-col items-center justify-center self-stretch px-5 py-0">
+            <div className="mt-2 flex h-full flex-col items-center justify-center self-stretch px-5 py-0">
               <CourseAndTutorials professor={professor} />
               <TopicTags professor={professor} />
             </div>
