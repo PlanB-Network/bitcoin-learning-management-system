@@ -27,7 +27,8 @@ export const useTrpc = () => {
         error.shape &&
         ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
       ) {
-        userSlice.actions.logout();
+        console.error('Try to access an unauthorized resource');
+        // userSlice.actions.logout();
       }
     } else if (error instanceof Error) {
       console.error(error.message);
