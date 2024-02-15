@@ -1,20 +1,15 @@
 {
   "about": {
-    "categories": {
-      "bunnyForerunner": "Coelho Percursor",
-      "designers": "Desenhadores",
-      "developpers": "Developpers",
-      "earlySupporters": "Primeiros Adeptos",
-      "hareExplorer": "Lebre Exploradora",
-      "helpers": "Helpers/Ajudantes",
-      "professors": "Professores",
-      "rabbitholeDigger": "Escavador de Toca de Coelho"
-    },
-    "headerLink": "Seja um patrocinador da comunidade",
-    "manifesto": "Acreditamos no futuro descentralizado que o Bitcoin oferece.\n\nA nossa missão é apresentar o Bitcoin a bilhões de pessoas na próxima década. Os nossos instrumentos são a educação e a informação. \n\nOferecemos suporte a comunidades locais de Bitcoiners, fornecendo conteúdo educacional de código aberto e oferecendo uma rede de mentores de Bitcoin.\n\nA nossa filosofia é inspirada no manifesto de cypherpunk. Assim como eles defendem a privacidade, nós defendemos a educação. Acreditamos que o conhecimento é a base da liberdade e da mudança.\n\nFuncionamos apenas com Bitcoin. \n\nDefendemos a responsabilidade individual e a independência oferecida pela posse das suas próprias chaves. \n\nExigimos verificação, e não confiança cega. \n\nAcreditamos que corrigindo o dinheiro, corrigimos o mundo.\n\nSomos descentralizados e de código aberto, evitando qualquer ponto de falha. \n\nEncorajamos a divulgação livre do nosso conteúdo. \n\nAspiramos a um mundo que opera de baixo para cima, onde o indivíduo fica no centro.\n\nSimplificamos, educamos, compartilhamos. \n\nJunta-te a nós nesta missão e ajuda-nos a trazer a pílula laranja ao mundo.\n",
-    "pageSubtitle": "The Sovereign University oferece educação Bitcoin gratuita para todas e todos.",
-    "thanks1": "Um agradecimento especial aos nossos primeiros apoiantes, que nos ajudaram a perseverar ao longo dos anos.",
-    "thanks2": "The Sovereign University é um esforço comunitário. Ela só foi possível graças a vários colaboradores que assumiram diferentes papéis, como professores, desenvolvedores, designers e diferentes auxiliares. Gratidão a todas essas pessoas."
+    "missionTitle": "Our mission",
+    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
+    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
+    "commitmentTitle": "Out commitments",
+    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "storyTitle": "Out story",
+    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
+    "title": "About the planB network",
+    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
+    "manifesto": "Acreditamos no futuro descentralizado que o Bitcoin oferece.\n\nA nossa missão é apresentar o Bitcoin a bilhões de pessoas na próxima década. Os nossos instrumentos são a educação e a informação. \n\nOferecemos suporte a comunidades locais de Bitcoiners, fornecendo conteúdo educacional de código aberto e oferecendo uma rede de mentores de Bitcoin.\n\nA nossa filosofia é inspirada no manifesto de cypherpunk. Assim como eles defendem a privacidade, nós defendemos a educação. Acreditamos que o conhecimento é a base da liberdade e da mudança.\n\nFuncionamos apenas com Bitcoin. \n\nDefendemos a responsabilidade individual e a independência oferecida pela posse das suas próprias chaves. \n\nExigimos verificação, e não confiança cega. \n\nAcreditamos que corrigindo o dinheiro, corrigimos o mundo.\n\nSomos descentralizados e de código aberto, evitando qualquer ponto de falha. \n\nEncorajamos a divulgação livre do nosso conteúdo. \n\nAspiramos a um mundo que opera de baixo para cima, onde o indivíduo fica no centro.\n\nSimplificamos, educamos, compartilhamos. \n\nJunta-te a nós nesta missão e ajuda-nos a trazer a pílula laranja ao mundo.\n"
   },
   "auth": {
     "accountCreated": "A tua conta foi criada, {{userName}}!",
