@@ -49,7 +49,7 @@ export const TutorialExplorer = () => {
             onChange={setSearchTerm}
           />
         </div>
-        <div className="flex flex-col items-center bg-gray-100 pt-10">
+        <div className="flex flex-col items-center bg-gray-100 pt-10 text-blue-800">
           <div className="-mt-6 hidden max-w-2xl pb-6 text-center sm:block">
             <span className="font-medium">
               {t('tutorials.explorer.didYouKnow')}
