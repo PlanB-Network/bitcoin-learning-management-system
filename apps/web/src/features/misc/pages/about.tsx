@@ -4,6 +4,27 @@ import Corporates from '../../../assets/about/corporates.webp';
 import PlanBCircles from '../../../assets/about/planb_circles.webp';
 import PpAjelex from '../../../assets/people/ajelex.webp';
 import PpAsi0 from '../../../assets/people/asi0.webp';
+import Ct01 from '../../../assets/people/contributors/01.png';
+import Ct02 from '../../../assets/people/contributors/02.png';
+import Ct03 from '../../../assets/people/contributors/03.png';
+import Ct04 from '../../../assets/people/contributors/04.png';
+import Ct05 from '../../../assets/people/contributors/05.png';
+import Ct06 from '../../../assets/people/contributors/06.png';
+import Ct07 from '../../../assets/people/contributors/07.png';
+import Ct08 from '../../../assets/people/contributors/08.png';
+import Ct09 from '../../../assets/people/contributors/09.png';
+import Ct10 from '../../../assets/people/contributors/10.png';
+import Ct11 from '../../../assets/people/contributors/11.png';
+import Ct12 from '../../../assets/people/contributors/12.png';
+import Ct13 from '../../../assets/people/contributors/13.png';
+import Ct14 from '../../../assets/people/contributors/14.png';
+import Ct15 from '../../../assets/people/contributors/15.png';
+import Ct16 from '../../../assets/people/contributors/16.png';
+import Ct17 from '../../../assets/people/contributors/17.png';
+import Ct18 from '../../../assets/people/contributors/18.png';
+import Ct19 from '../../../assets/people/contributors/19.png';
+import Ct20 from '../../../assets/people/contributors/20.png';
+import Ct21 from '../../../assets/people/contributors/21.png';
 import PpDavid from '../../../assets/people/david.webp';
 import PpFanis from '../../../assets/people/fanis.webp';
 import PpGiacomo from '../../../assets/people/giacomo.webp';
@@ -214,6 +235,42 @@ const Professors = () => {
   );
 };
 
+const ActiveContributors = () => {
+  const { t } = useTranslation();
+  const css = 'w-24 h-24 rounded-lg';
+
+  return (
+    <div className="mt-12 flex w-full max-w-5xl flex-col gap-4">
+      <h2 className="text-3xl font-semibold uppercase text-orange-500">
+        {t('about.activeContributors')}
+      </h2>
+      <div className="flex w-full max-w-4xl flex-wrap justify-center gap-4 place-self-center">
+        <img className={css} src={Ct01} alt="" loading="lazy" />
+        <img className={css} src={Ct02} alt="" loading="lazy" />
+        <img className={css} src={Ct03} alt="" loading="lazy" />
+        <img className={css} src={Ct04} alt="" loading="lazy" />
+        <img className={css} src={Ct05} alt="" loading="lazy" />
+        <img className={css} src={Ct06} alt="" loading="lazy" />
+        <img className={css} src={Ct07} alt="" loading="lazy" />
+        <img className={css} src={Ct08} alt="" loading="lazy" />
+        <img className={css} src={Ct09} alt="" loading="lazy" />
+        <img className={css} src={Ct10} alt="" loading="lazy" />
+        <img className={css} src={Ct11} alt="" loading="lazy" />
+        <img className={css} src={Ct12} alt="" loading="lazy" />
+        <img className={css} src={Ct13} alt="" loading="lazy" />
+        <img className={css} src={Ct14} alt="" loading="lazy" />
+        <img className={css} src={Ct15} alt="" loading="lazy" />
+        <img className={css} src={Ct16} alt="" loading="lazy" />
+        <img className={css} src={Ct17} alt="" loading="lazy" />
+        <img className={css} src={Ct18} alt="" loading="lazy" />
+        <img className={css} src={Ct19} alt="" loading="lazy" />
+        <img className={css} src={Ct20} alt="" loading="lazy" />
+        <img className={css} src={Ct21} alt="" loading="lazy" />
+      </div>
+    </div>
+  );
+};
+
 export const About = () => {
   return (
     <MainLayout footerVariant="dark">
@@ -226,6 +283,7 @@ export const About = () => {
         <Corporate />
         <CoreTeam />
         <Professors />
+        <ActiveContributors />
       </div>
     </MainLayout>
   );
