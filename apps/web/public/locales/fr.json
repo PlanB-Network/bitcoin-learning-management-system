@@ -5,6 +5,15 @@
     "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
     "commitmentTitle": "Out commitments",
     "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "coreTeamTitle": "The core team",
+    "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
+    "coreTeamGiacomoRole": "Director and Co-founder",
+    "coreTeamRogzyRole": "Product manager & Co-founder",
+    "coreTeamAsioRole": "Educational coordinator",
+    "coreTeamAjelexRole": "Node coordinator",
+    "corporateTitle": "Corporate behind",
+    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "coportateContact": "Contact information:",
     "storyTitle": "Out story",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "title": "About the planB network",
@@ -137,7 +146,6 @@
     "footer": {
       "": ""
     },
-    "freeBanner": "Tous nos cours sont offerts gratuitement. L'université est basée sur l'adhésion par don et le partage.",
     "part": {
       "count": "Partie n°{{count}}/{{total}}"
     },
