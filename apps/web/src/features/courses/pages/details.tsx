@@ -107,9 +107,13 @@ export const CourseDetails: React.FC = () => {
             },
             variant: 'primary' as const,
           }
-        : { variant: 'tertiary' as const },
+        : {
+            variant: 'tertiary' as const,
+          },
     [course?.requires_payment, isCoursePaid, isLoggedIn, openAuthModal],
   );
+
+  const displayBuyCourse = course?.requires_payment && !isCoursePaid;
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -128,7 +132,7 @@ export const CourseDetails: React.FC = () => {
     fetchData();
   }, []);
 
-  let satsPrice = 1;
+  let satsPrice = -1;
   if (course && course.paid_price_euros && conversionRate) {
     satsPrice = Math.round(
       (course.paid_price_euros * 100000000) / conversionRate,
@@ -271,7 +275,7 @@ export const CourseDetails: React.FC = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
-                  disabled={course.requires_payment}
+                  disabled={displayBuyCourse}
                   to={'/courses/$courseId/$partIndex/$chapterIndex'}
                   params={{
                     courseId,
@@ -282,7 +286,7 @@ export const CourseDetails: React.FC = () => {
                   <Button rounded {...buttonProps}>
                     <span className="sm:px-6">
                       {t(
-                        course.requires_payment && !isCoursePaid
+                        displayBuyCourse
                           ? 'courses.details.buyCourse'
                           : 'courses.details.startCourse',
                       )}
@@ -300,7 +304,7 @@ export const CourseDetails: React.FC = () => {
                 <div className=" mx-1 flex items-center justify-center">
                   <Link
                     to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                    disabled={course.requires_payment}
+                    disabled={displayBuyCourse}
                     params={{
                       courseId,
                       partIndex: '1',
@@ -310,7 +314,11 @@ export const CourseDetails: React.FC = () => {
                     <div className="flex">
                       <Button rounded {...buttonProps}>
                         <span className="relative z-10 text-sm font-medium sm:px-6">
-                          {t('courses.details.startCourse')}
+                          {t(
+                            displayBuyCourse
+                              ? 'courses.details.buyCourse'
+                              : 'courses.details.startCourse',
+                          )}
                         </span>
                         <img
                           src={rocketSVG}
@@ -501,7 +509,7 @@ export const CourseDetails: React.FC = () => {
           <Link
             className="bottom-2"
             to={'/courses/$courseId/$partIndex/$chapterIndex'}
-            disabled={course.requires_payment}
+            disabled={displayBuyCourse}
             params={{
               courseId,
               partIndex: '1',
@@ -511,7 +519,7 @@ export const CourseDetails: React.FC = () => {
             <Button
               size={isScreenMd ? 'l' : 's'}
               {...buttonProps}
-              {...(!course.requires_payment
+              {...(displayBuyCourse
                 ? {
                     iconRight: <BsRocketTakeoff />,
                   }
@@ -519,7 +527,7 @@ export const CourseDetails: React.FC = () => {
               className="text-blue-1000 mb-auto"
             >
               {t(
-                course.requires_payment && !isCoursePaid
+                displayBuyCourse
                   ? 'courses.details.buyCourse'
                   : 'courses.details.startCourse',
               )}
@@ -532,7 +540,7 @@ export const CourseDetails: React.FC = () => {
 
   return (
     <CourseLayout>
-      <div>
+      <div className="text-blue-800">
         {course && (
           <div className="flex h-full w-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             <CourseButton courseId={courseId} />

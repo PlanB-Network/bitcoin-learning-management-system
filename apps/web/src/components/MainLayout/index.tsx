@@ -23,7 +23,7 @@ export const MainLayout = ({
   return (
     <div
       className={compose(
-        '',
+        'text-white',
         variant === 'light'
           ? 'bg-gray-100'
           : variant === 'blue'

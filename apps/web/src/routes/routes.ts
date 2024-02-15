@@ -6,7 +6,7 @@ export enum Routes {
   UnderConstruction = '/under-construction',
 
   // About Us
-  AboutUs = '/about-us',
+  About = '/about',
   Manifesto = '/manifesto',
   NodeNetwork = '/node-network',
   Professors = '/professors',

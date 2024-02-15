@@ -519,7 +519,7 @@ export const CourseChapter = () => {
 
   return (
     <CourseLayout>
-      <div>
+      <div className="text-blue-800">
         {chapter && (
           <div className="flex h-full w-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
             <Title chapter={chapter} />

@@ -6,7 +6,7 @@ import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
-import { BsFileText, BsMic, BsPlus } from 'react-icons/bs';
+import { BsFileText, BsMic, BsPeople, BsPlus } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GiMeshNetwork } from 'react-icons/gi';
 import {
@@ -195,6 +195,13 @@ export const Header = () => {
               description: t('menu.manifestoDescription'),
               path: Routes.Manifesto,
               icon: BsFileText,
+            },
+            {
+              id: 'about',
+              title: t('words.about-us'),
+              description: t('words.about-us'),
+              path: Routes.About,
+              icon: BsPeople,
             },
           ],
         },
