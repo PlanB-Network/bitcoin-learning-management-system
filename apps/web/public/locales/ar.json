@@ -1,20 +1,15 @@
 {
   "about": {
-    "categories": {
-      "bunnyForerunner": "Vorläufer Hase",
-      "designers": "Designer",
-      "developpers": "Entwickler",
-      "earlySupporters": "Frühe Unterstützer",
-      "hareExplorer": "Hare Entdecker",
-      "helpers": "Helfer",
-      "professors": "Professoren",
-      "rabbitholeDigger": "Kaninchenbau Entdecker"
-    },
-    "headerLink": "Werde ein Community-Sponsor",
-    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen an Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information. \n\nWir unterstützen lokale Gemeinschaften von Bitcoinern, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie wird durch das Cypherpunk Manifest inspiriert. Genau wie sie für den Schutz der Privatsphäre kämpfen, verteidigen wir die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only. \n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird. \n\nWir bitten um Verifizierung und nicht um blindes Vertrauen. \n\nWir glauben, dass wir durch das reparieren des Geldes die Welt reparieren können.\n\nWir sind dezentral und Open-Source und vermeiden somit jeden einzelnen Punkt des Scheiterns. \n\nWir ermutigen die freie Verbreitung unserer Inhalte. \n\nWir streben eine Welt an, die von unten nach oben operiert, in der der Mensch im Zentrum steht.\n\nSchließe dich an unsere Mission an, die Orange-Pille in die Welt zu verteilen.\n",
-    "pageSubtitle": "Die Sovereign University bietet allen eine kostenlose Bitcoin-Ausbildung an.",
-    "thanks1": "Ein besonderes Dankeschön an unsere frühen Unterstützer, die uns über die Jahre hinweg geholfen haben, weiterzumachen.",
-    "thanks2": "Die Sovereign University ist eine Gemeinschaftsprojekt. Sie ist dank zahlreicher Mitwirkende wie Professoren, Entwicklern, Designern und Helfern vieler Arten möglich. Herzlichen Dank an alle von ihnen."
+    "missionTitle": "Our mission",
+    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
+    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
+    "commitmentTitle": "Out commitments",
+    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "storyTitle": "Out story",
+    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
+    "title": "About the planB network",
+    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
+    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen an Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information. \n\nWir unterstützen lokale Gemeinschaften von Bitcoinern, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie wird durch das Cypherpunk Manifest inspiriert. Genau wie sie für den Schutz der Privatsphäre kämpfen, verteidigen wir die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only. \n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird. \n\nWir bitten um Verifizierung und nicht um blindes Vertrauen. \n\nWir glauben, dass wir durch das reparieren des Geldes die Welt reparieren können.\n\nWir sind dezentral und Open-Source und vermeiden somit jeden einzelnen Punkt des Scheiterns. \n\nWir ermutigen die freie Verbreitung unserer Inhalte. \n\nWir streben eine Welt an, die von unten nach oben operiert, in der der Mensch im Zentrum steht.\n\nSchließe dich an unsere Mission an, die Orange-Pille in die Welt zu verteilen.\n"
   },
   "auth": {
     "accountCreated": "Ihr Konto wurde angelegt, {{userName}}!",
