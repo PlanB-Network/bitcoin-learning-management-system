@@ -1,9 +1,7 @@
 import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 import { TRPCClientError } from '@trpc/client';
 import { useState } from 'react';
-// import { useSessionStore } from '../stores/session.ts';
 
-import { userSlice } from '../store/index.js';
 import { trpc } from '../utils/index.js';
 import { tRPCClientOptions } from '../utils/trpc.js';
 
