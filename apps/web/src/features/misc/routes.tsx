@@ -2,13 +2,13 @@ import { Route } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root';
 
+import { About } from './pages/about';
 import { Home } from './pages/home';
 import { Manifesto } from './pages/manifesto';
 import { NodeNetwork } from './pages/node-network';
 import { NotFound } from './pages/not-found';
 import { ProfessorDetail } from './pages/professor-detail';
 import { ProfessorExplorer } from './pages/professor-explorer';
-import { SponsorsAndContributors } from './pages/sponsors-and-contributors';
 import { TermsAndConditions } from './pages/terms-and-conditions';
 import { UnderConstruction } from './pages/under-construction';
 
@@ -24,6 +24,12 @@ export const manifestoRoute = new Route({
   component: Manifesto,
 });
 
+export const aboutRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/about',
+  component: About,
+});
+
 export const notFoundRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/404',
@@ -34,12 +40,6 @@ export const globalNotFoundRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '*',
   component: NotFound,
-});
-
-export const sponsorsAndContributorsRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: '/sponsors-and-contributors',
-  component: SponsorsAndContributors,
 });
 
 export const professorExplorer = new Route({
@@ -75,10 +75,10 @@ export const termsAndConditionsROute = new Route({
 export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
+  aboutRoute,
   nodeNetworkRoute,
   manifestoRoute,
   notFoundRoute,
-  sponsorsAndContributorsRoute,
   professorExplorer,
   professorDetail,
   underConstructionRoute,

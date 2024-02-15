@@ -35,7 +35,7 @@ export const ResourceLayout = ({
       <div
         className={`flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
       >
-        <div className="max-w-6xl">
+        <div className="max-w-6xl text-black">
           <div>
             {link ? (
               <Link to={link}>
