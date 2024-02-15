@@ -7,14 +7,14 @@ import { trpc } from '../../../../utils';
 import { TRPCRouterOutput } from '../../../../utils/trpc';
 
 const hexToBase64 = (hexstring: string) => {
-  return btoa(
-    hexstring
-      .match(/\w{2}/g)
-      ?.map(function (a) {
-        return String.fromCharCode(parseInt(a, 16));
-      })
-      .join(''),
-  );
+  const str = hexstring
+    .match(/\w{2}/g)
+    ?.map(function (a) {
+      return String.fromCharCode(parseInt(a, 16));
+    })
+    .join('') as string;
+
+  return Buffer.from(str, 'base64');
 };
 
 interface CoursePaymentModalProps {
