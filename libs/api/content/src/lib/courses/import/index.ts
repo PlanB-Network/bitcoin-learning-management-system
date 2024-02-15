@@ -184,6 +184,27 @@ export const createProcessChangedCourse =
             ) {
               // If new or updated resource file, insert or update resource
 
+              //Remove all chapters and parts, reinsert them just after
+              await transaction`
+                DELETE FROM content.course_chapters
+                WHERE course_id = ${course.id}
+              `;
+
+              await transaction`
+                DELETE FROM content.course_parts
+                WHERE course_id = ${course.id}
+              `;
+
+              await transaction`
+                DELETE FROM content.course_chapters_localized
+                WHERE course_id = ${course.id}
+              `;
+
+              await transaction`
+                DELETE FROM content.course_parts_localized
+                WHERE course_id = ${course.id}
+              `;
+
               // Only get the tags from the main resource file
               const parsedCourse = yamlToObject<CourseMain>(main.data);
               if (parsedCourse.requires_payment == null) {
