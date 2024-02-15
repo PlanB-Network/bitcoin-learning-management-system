@@ -1,3 +1,5 @@
+import * as buffer from 'buffer';
+
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
@@ -14,7 +16,7 @@ const hexToBase64 = (hexstring: string) => {
     })
     .join('') as string;
 
-  return Buffer.from(str, 'base64');
+  return buffer.Buffer.from(str, 'base64');
 };
 
 interface CoursePaymentModalProps {

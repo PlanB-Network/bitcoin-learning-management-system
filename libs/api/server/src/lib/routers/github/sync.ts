@@ -77,13 +77,19 @@ export const syncProcedure = publicProcedure
     });
 
     let privateCdnError;
-    syncCdnRepository(
-      '/tmp/sovereign-university-data-paid',
-      process.env['CDN_PATH'] || '/tmp/cdn',
-    ).catch((error) => {
-      console.error(error);
-      privateCdnError = error;
-    });
+
+    if (
+      process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
+      process.env['GITHUB_ACCESS_TOKEN']
+    ) {
+      syncCdnRepository(
+        '/tmp/sovereign-university-data-paid',
+        process.env['CDN_PATH'] || '/tmp/cdn',
+      ).catch((error) => {
+        console.error(error);
+        privateCdnError = error;
+      });
+    }
 
     console.log('-- Sync procedure: END');
 
