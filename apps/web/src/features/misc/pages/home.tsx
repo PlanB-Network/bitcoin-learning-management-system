@@ -16,20 +16,16 @@ import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.webp';
 import HeaderRight from '../../../assets/home/header_right.svg';
 import NetworkMain from '../../../assets/home/network-main.png';
-import ProfessorsTile from '../../../assets/home/professors.webp';
 import Sponsors from '../../../assets/home/sponsors.webp';
 import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '../../../assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '../../../assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '../../../assets/home/twitter_scuba.jpeg';
-import BitcoinCircle from '../../../assets/icons/bitcoin_circle.svg?react';
-import Groups from '../../../assets/icons/groups.svg?react';
-import OpenSource from '../../../assets/icons/open_source.svg?react';
-import VisibilityOff from '../../../assets/icons/visibility_off.svg?react';
 import { Button } from '../../../atoms/Button';
 import { CategoryIcon } from '../../../components/CategoryIcon';
 import { MainLayout } from '../../../components/MainLayout';
+import { AboutUs } from '../../../molecules/AboutUs';
 import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -421,51 +417,7 @@ export const Home = () => {
             {t('home.aboutUsSection.content')}
           </p>
 
-          <img
-            src={ProfessorsTile}
-            className="mt-4 w-full 2xl:px-28"
-            alt={t('')}
-            loading="lazy"
-          />
-
-          <div className="-mt-9 flex flex-col items-center gap-6 text-center md:flex-row">
-            <div className="flex max-w-sm flex-col items-center">
-              <BitcoinCircle />
-              <div className="mt-2 text-sm font-semibold md:text-2xl">
-                {t('home.aboutUsSection.bitcoinFocusTitle').toUpperCase()}
-              </div>
-              <div className={cn(paragraphCss, 'mt-2 font-light')}>
-                {t('home.aboutUsSection.bitcoinFocusContent')}
-              </div>
-            </div>
-            <div className="flex max-w-sm flex-col items-center">
-              <OpenSource />
-              <div className="mt-2 text-sm font-semibold md:text-2xl">
-                {t('home.aboutUsSection.openSourceTitle').toUpperCase()}
-              </div>
-              <div className={cn(paragraphCss, 'mt-2 font-light')}>
-                {t('home.aboutUsSection.openSourceContent')}
-              </div>
-            </div>
-            <div className="flex max-w-sm flex-col items-center">
-              <Groups />
-              <div className="mt-2 text-sm font-semibold md:text-2xl">
-                {t('home.aboutUsSection.communityTitle').toUpperCase()}
-              </div>
-              <div className={cn(paragraphCss, 'mt-2 font-light')}>
-                {t('home.aboutUsSection.communityContent')}
-              </div>
-            </div>
-            <div className="flex max-w-sm flex-col items-center">
-              <VisibilityOff />
-              <div className="mt-2 text-sm font-semibold md:text-2xl">
-                {t('home.aboutUsSection.privacyTitle').toUpperCase()}
-              </div>
-              <div className={cn(paragraphCss, 'mt-2 font-light')}>
-                {t('home.aboutUsSection.privacyContent')}
-              </div>
-            </div>
-          </div>
+          <AboutUs />
         </div>
       </div>
     );
