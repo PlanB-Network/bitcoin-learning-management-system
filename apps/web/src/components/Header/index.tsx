@@ -170,7 +170,7 @@ export const Header = () => {
     {
       id: 'about-us',
       title: t('words.about'),
-      path: Routes.Manifesto,
+      path: Routes.About,
       items: [
         {
           id: 'about-us-nested',
@@ -274,7 +274,7 @@ export const Header = () => {
     {
       id: 'about-us',
       title: t('words.about-us'),
-      path: Routes.Manifesto,
+      path: Routes.About,
       items: [
         {
           id: 'about-us-nested',

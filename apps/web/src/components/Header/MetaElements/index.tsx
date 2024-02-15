@@ -26,7 +26,7 @@ export const MetaElements = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-  const isMobile = useSmaller('md');
+  const isMobile = useSmaller('lg');
   const isScreenLg = useGreater('md');
   const isScreenXl = useGreater('lg');
 
@@ -36,12 +36,16 @@ export const MetaElements = ({
     <div className="flex flex-row place-items-center space-x-6 md:space-x-2 lg:space-x-6">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
-      {isLoggedIn ? (
+      {isLoggedIn && !isMobile && (
         <Link to="/dashboard">
           <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
             {t('words.dashboard')}
           </Button>
         </Link>
+      )}
+
+      {isLoggedIn ? (
+        <div></div>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
           <Button
@@ -53,14 +57,6 @@ export const MetaElements = ({
           >
             {t('auth.signIn')}
           </Button>
-          {/* <Button
-            className="my-4"
-            rounded
-            onClick={onClickRegister}
-            size={buttonSize}
-          >
-            {t('words.register')}
-          </Button> */}
         </div>
       )}
 
