@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import ProfessorsTile from '../../../assets/home/professors.webp';
 import { Button } from '../../../atoms/Button';
 import { MainLayout } from '../../../components/MainLayout';
 
@@ -51,7 +52,20 @@ export const About = () => {
           <div className="col-span-1">LOGO</div>
         </div>
 
-        <Button>READ</Button>
+        <div className="mt-12 w-full max-w-3xl self-center">
+          <Button variant="tertiary" className="self-start" glowing={true}>
+            Read our manifesto
+          </Button>
+        </div>
+
+        <div className="mt-12 max-w-[80rem]">
+          <img
+            src={ProfessorsTile}
+            className="mt-4 w-full 2xl:px-28"
+            alt={t('')}
+            loading="lazy"
+          />
+        </div>
       </div>
     </MainLayout>
   );
