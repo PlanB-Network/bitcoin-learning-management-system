@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import Corporates from '../../../assets/about/corporates.webp';
@@ -102,9 +103,11 @@ const Mission = () => {
       </div>
 
       <div className="mt-12 w-full max-w-5xl self-center">
-        <Button variant="tertiary" className="self-start" glowing={true}>
-          Read our manifesto
-        </Button>
+        <Link to={'/manifesto'}>
+          <Button variant="tertiary" className="self-start" glowing={true}>
+            Read our manifesto
+          </Button>
+        </Link>
       </div>
     </>
   );
