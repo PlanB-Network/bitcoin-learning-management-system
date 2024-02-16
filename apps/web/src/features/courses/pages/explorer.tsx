@@ -84,10 +84,13 @@ export const CoursesExplorer = () => {
     const firstYearCourses = courses
       .filter(
         (c) =>
-          Number(extractNumbers(c.id)) >= 100 &&
-          Number(extractNumbers(c.id)) < 200,
+          (Number(extractNumbers(c.id)) >= 100 &&
+            Number(extractNumbers(c.id)) < 200) ||
+          c.id === 'giaco',
       )
-      .sort((a, b) => extractNumbers(a.id).localeCompare(extractNumbers(b.id)));
+      .sort((a, b) =>
+        extractNumbers(fakeCourseId(a.id)).localeCompare(extractNumbers(b.id)),
+      );
 
     let previousElement: Course;
 

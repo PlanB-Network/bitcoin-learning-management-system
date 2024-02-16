@@ -9,6 +9,8 @@ export function fakeCourseId(courseId: string) {
     return 'btc401';
   } else if (courseId === 'rgb') {
     return 'btc402';
+  } else if (courseId === 'giaco') {
+    return 'econ102';
   } else {
     return courseId;
   }
