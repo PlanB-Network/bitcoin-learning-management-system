@@ -184,7 +184,12 @@ export const createProcessChangedCourse =
             ) {
               // If new or updated resource file, insert or update resource
 
-              //Remove all chapters and parts, reinsert them just after
+              //Remove all translations, chapters and parts, reinsert them just after
+              await transaction`
+                DELETE FROM content.courses_localized
+                WHERE course_id = ${course.id}
+              `;
+
               await transaction`
                 DELETE FROM content.course_chapters
                 WHERE course_id = ${course.id}

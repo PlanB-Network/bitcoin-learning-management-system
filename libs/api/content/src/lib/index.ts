@@ -94,6 +94,7 @@ export const createProcessChangedFiles =
 export const createProcessDeleteOldEntities =
   (dependencies: Dependencies) =>
   async (sync_date: number, errors: string[]) => {
+    console.log('-- Sync procedure: Remove old entities');
     const processDeleteProfessors = createProcessDeleteProfessors(
       dependencies,
       errors,

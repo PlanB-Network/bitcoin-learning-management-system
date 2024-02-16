@@ -8,7 +8,7 @@ import { cn } from '@sovereign-university/ui';
 
 import Tree from '../../../atoms/Tree';
 import TreeNode from '../../../atoms/Tree/TreeNode';
-import { addSpaceToCourseId } from '../../../utils/courses';
+import { addSpaceToCourseId, fakeCourseId } from '../../../utils/courses';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -38,7 +38,9 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
     'z-10 inline-block relative cursor-pointer border-[3px] rounded-2xl p-1 xl:p-4 text-white font-semibold max-w-[8rem] sm:max-w-[12rem] xl:max-w-[16rem]';
 
   let nodeColorClasses;
-  const courseIdNumbers = Number(course.id.replace(/[a-zA-Z]/g, ''));
+  const courseIdNumbers = Number(
+    fakeCourseId(course.id).replace(/[a-zA-Z]/g, ''),
+  );
 
   if (courseIdNumbers >= 400) {
     nodeColorClasses = 'bg-gray-900 border-gray-300 hover:bg-gray-800';
@@ -65,7 +67,13 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
       }
     } else if (course.id === 'cuboplus') {
       if (isMobile) {
-        return 5;
+        return 6;
+      } else {
+        return 10;
+      }
+    } else if (course.id === 'ln402') {
+      if (isMobile) {
+        return 6;
       } else {
         return 10;
       }

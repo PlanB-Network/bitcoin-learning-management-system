@@ -113,7 +113,10 @@ export const CoursesExplorer = () => {
     let previousCategory = '';
 
     let secondYearCourses = courses.filter(
-      (c) => Number(extractNumbers(c.id)) >= 200 || c.id === 'cuboplus',
+      (c) =>
+        Number(extractNumbers(c.id)) >= 200 ||
+        c.id === 'cuboplus' ||
+        c.id === 'rgb',
     );
 
     secondYearCourses = secondYearCourses.sort((a, b) =>

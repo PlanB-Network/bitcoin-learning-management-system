@@ -6,7 +6,9 @@ export function addSpaceToCourseId(courseId: string) {
 
 export function fakeCourseId(courseId: string) {
   if (courseId === 'cuboplus') {
-    return 'ln401';
+    return 'btc401';
+  } else if (courseId === 'rgb') {
+    return 'btc402';
   } else {
     return courseId;
   }

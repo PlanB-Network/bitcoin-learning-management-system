@@ -57,11 +57,9 @@ export const syncProcedure = publicProcedure
       process.env['GITHUB_ACCESS_TOKEN'],
     ).then(processChangedFiles);
 
-    console.log('-- Sync procedure: Remove old entities');
-
-    if (syncErrors.length === 0) {
-      await processDeleteOldEntities(databaseTime.now, syncErrors);
-    }
+    // if (syncErrors.length === 0) {
+    await processDeleteOldEntities(databaseTime.now, syncErrors);
+    // }
 
     await redis.del('trpc:*');
 
