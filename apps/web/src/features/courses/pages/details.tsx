@@ -571,7 +571,7 @@ export const CourseDetails: React.FC = () => {
       <div className="text-blue-800">
         {course && (
           <div className="flex h-full w-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            <CourseButton courseId={courseId} />
+            {course?.id !== 'giaco' && <CourseButton courseId={courseId} />}
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <CourseInfo course={course} />
