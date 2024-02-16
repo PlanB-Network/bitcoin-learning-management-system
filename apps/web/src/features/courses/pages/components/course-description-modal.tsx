@@ -170,7 +170,7 @@ export const CourseDescriptionModal = ({
             <Button
               variant="download"
               size="s"
-              className="float-right mt-2 md:float-left"
+              className="float-right mt-6 md:float-left"
               type="button"
             >
               {t('courses.details.downloadCurriculum')}

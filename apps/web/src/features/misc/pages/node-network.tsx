@@ -106,7 +106,7 @@ export const NodeNetwork = () => {
           <h1 className="text-5xl font-semibold uppercase text-orange-500">
             {t('nodeNetwork.pageTitle')}
           </h1>
-          <p className="mt-2 text-sm font-medium uppercase md:text-base">
+          <p className="mt-2 text-center text-sm font-medium uppercase md:text-base">
             {t('nodeNetwork.pageSubtitle')}
           </p>
           <p className="mt-6 max-w-[40rem] text-center text-sm text-gray-400 md:text-base">
