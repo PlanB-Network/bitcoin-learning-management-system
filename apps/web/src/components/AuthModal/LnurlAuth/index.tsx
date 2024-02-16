@@ -8,11 +8,11 @@ import { QRCodeSVG } from 'qrcode.react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Modal } from '../../../atoms/Modal';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch';
-import { userSlice } from '../../../store/slices/user.slice';
-import { trpc, trpcClient } from '../../../utils/trpc';
-import { AuthModalState } from '../props';
+import { Modal } from '../../../atoms/Modal/index.tsx';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
+import { userSlice } from '../../../store/slices/user.slice.ts';
+import { trpc, trpcClient } from '../../../utils/trpc.ts';
+import type { AuthModalState } from '../props.tsx';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -22,7 +22,7 @@ interface LnurlAuthModalProps {
   goTo: (newState: AuthModalState) => void;
 }
 
-export const LnurlAuth = ({ isOpen, onClose, goTo }: LnurlAuthModalProps) => {
+export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();

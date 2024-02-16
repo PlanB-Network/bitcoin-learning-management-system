@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { MainLayout } from '../../../components/MainLayout';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
 
 export const Manifesto = () => {
   const { t } = useTranslation();

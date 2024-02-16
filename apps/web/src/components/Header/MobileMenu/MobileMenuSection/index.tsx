@@ -2,11 +2,11 @@ import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
-import { useDisclosure } from '../../../../hooks/use-disclosure';
-import { compose } from '../../../../utils';
-import { MenuElement } from '../../MenuElement';
-import { NavigationSection } from '../../props';
-import { MobileMenuSubSection } from '../MobileMenuSubSection';
+import { useDisclosure } from '../../../../hooks/use-disclosure.ts';
+import { compose } from '../../../../utils/index.ts';
+import { MenuElement } from '../../MenuElement/index.tsx';
+import type { NavigationSection } from '../../props.tsx';
+import { MobileMenuSubSection } from '../MobileMenuSubSection/index.tsx';
 
 export interface MobileMenuSectionProps {
   section: NavigationSection;

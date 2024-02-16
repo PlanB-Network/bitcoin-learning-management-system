@@ -6,11 +6,11 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
-import { Button } from '../atoms/Button';
-import { Card } from '../atoms/Card';
-import { compose, computeAssetCdnUrl } from '../utils';
-import { joinWords } from '../utils/string';
-import { TRPCRouterOutput } from '../utils/trpc';
+import { Button } from '../atoms/Button/index.tsx';
+import { Card } from '../atoms/Card/index.tsx';
+import { compose, computeAssetCdnUrl } from '../utils/index.ts';
+import { joinWords } from '../utils/string.ts';
+import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

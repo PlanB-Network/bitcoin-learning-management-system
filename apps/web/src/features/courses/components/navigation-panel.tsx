@@ -1,13 +1,13 @@
 import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
 import { cn } from '@sovereign-university/ui';
 
-import { addSpaceToCourseId } from '../../../utils/courses';
-import { TRPCRouterOutput } from '../../../utils/trpc';
+import { addSpaceToCourseId } from '../../../utils/courses.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
 
 interface Part {
   part: number;

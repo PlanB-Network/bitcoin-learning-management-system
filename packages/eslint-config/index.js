@@ -1,10 +1,18 @@
+/* eslint-disable unicorn/prefer-module */
 const jsonc = require('./jsonc.js');
 const react = require('./react.js');
 const typescript = require('./typescript.js');
 const vitest = require('./vitest.js');
 
 module.exports = {
-  overrides: [jsonc, typescript, react, vitest],
+  env: { es2022: true, node: true },
+  overrides: [
+    jsonc,
+    typescript,
+    react,
+    vitest,
+    { files: ['*.js'], env: { node: true } },
+  ],
   ignorePatterns: ['**/node_modules', '**/dist/**', '**/build/**'],
   plugins: [
     'eslint-plugin-ignore-generated',
@@ -88,6 +96,7 @@ module.exports = {
         packages: ['packages/*'],
       },
     },
+
     'import/internal-regex': '^@sovereign-university/',
   },
 };

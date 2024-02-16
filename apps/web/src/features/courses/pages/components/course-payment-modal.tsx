@@ -1,4 +1,4 @@
-import * as buffer from 'buffer';
+import * as buffer from 'node:buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
@@ -6,13 +6,13 @@ import useWebSocket from 'react-use-websocket';
 
 import { Modal } from '../../../../atoms/Modal';
 import { trpc } from '../../../../utils';
-import { TRPCRouterOutput } from '../../../../utils/trpc';
+import type { TRPCRouterOutput } from '../../../../utils/trpc';
 
 const hexToBase64 = (hexstring: string) => {
   const str = hexstring
     .match(/\w{2}/g)
     ?.map(function (a) {
-      return String.fromCharCode(parseInt(a, 16));
+      return String.fromCharCode(Number.parseInt(a, 16));
     })
     .join('') as string;
 
@@ -26,13 +26,13 @@ interface CoursePaymentModalProps {
   onClose: (isPaid?: boolean) => void;
 }
 
-type PaymentData = {
+interface PaymentData {
   id: string;
   pr: string;
   onChainAddr: string;
   amount: number;
   checkoutUrl: string;
-};
+}
 
 const getTrue = () => true;
 
@@ -91,9 +91,7 @@ export const CoursePaymentModal = ({
       headerText={t('courses.details.coursePayment')}
     >
       <div className="flex min-w-[85vw] flex-col items-center lg:min-w-[20rem]">
-        {!paymentData ? (
-          'Loading...'
-        ) : (
+        {paymentData ? (
           <iframe
             allow="clipboard-write"
             src={paymentData.checkoutUrl}
@@ -105,6 +103,8 @@ export const CoursePaymentModal = ({
               maxHeight: '100%',
             }}
           />
+        ) : (
+          'Loading...'
         )}
       </div>
     </Modal>

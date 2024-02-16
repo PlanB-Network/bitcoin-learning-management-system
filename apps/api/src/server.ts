@@ -1,5 +1,6 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router, json } from 'express';
+import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
 import type { Dependencies } from './dependencies.js';
 import { createCorsMiddleware } from './middlewares/cors.js';
@@ -37,6 +38,31 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     createExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
+    }),
+  );
+
+  // Register REST (OpenAPI) routes
+  router.use(
+    '/',
+    createOpenApiExpressMiddleware({
+      router: appRouter,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      createContext: (opts: any) => createContext(opts, dependencies),
+      onError:
+        process.env.NODE_ENV === 'development'
+          ? // @ts-expect-error - Until trpc-openapi is updated to support trpc v11
+            ({ req, error }) => {
+              console.error(
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                `❌ OpenAPI failed on ${req.url ?? '<no-path>'}: ${
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                  error.message
+                }`,
+              );
+            }
+          : undefined,
+      responseMeta: () => {},
+      maxBodySize: '1mb',
     }),
   );
 

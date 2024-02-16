@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
-import { Card } from '../../../atoms/Card';
-import { Tag } from '../../../atoms/Tag';
-import { useNavigateMisc } from '../../../hooks';
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { Tag } from '../../../atoms/Tag/index.tsx';
+import { useNavigateMisc } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

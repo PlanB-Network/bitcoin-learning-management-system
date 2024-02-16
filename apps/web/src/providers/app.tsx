@@ -1,18 +1,19 @@
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from '@tanstack/react-router';
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { useTrpc } from '../hooks';
-import { router } from '../routes';
-import { persistor, store } from '../store';
-import { trpc } from '../utils/trpc';
+import { useTrpc } from '../hooks/index.ts';
+import { router } from '../routes/index.tsx';
+import { persistor, store } from '../store/index.ts';
+import { trpc } from '../utils/trpc.ts';
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
   const { trpcQueryClient, trpcClient } = useTrpc();
+  const [queryClient] = useState(() => new QueryClient());
 
   // Temporary fix: the default language can be en-GB (or equivalent), until it is properly set with the selector
   // and these aren't supported. Fallback to 'en' in that case for now.
@@ -23,7 +24,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <trpc.Provider client={trpcClient} queryClient={trpcQueryClient}>
+        <trpc.Provider client={trpcClient} queryClient={queryClient}>
           <QueryClientProvider client={trpcQueryClient}>
             <RouterProvider router={router} />
             {children}

@@ -2,10 +2,10 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { JoinedBook } from '@sovereign-university/types';
+import type { JoinedBook } from '@sovereign-university/types';
 
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 export const Books = () => {
   const { t, i18n } = useTranslation();

@@ -1,11 +1,12 @@
-import { Formik, FormikHelpers } from 'formik';
+import type { FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '../../../atoms/Button';
-import { Modal } from '../../../atoms/Modal';
-import { TextInput } from '../../../atoms/TextInput';
-import { AuthModalState } from '../props';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { Modal } from '../../../atoms/Modal/index.tsx';
+import { TextInput } from '../../../atoms/TextInput/index.tsx';
+import { AuthModalState } from '../props.ts';
 
 interface LoginModalProps {
   isOpen: boolean;

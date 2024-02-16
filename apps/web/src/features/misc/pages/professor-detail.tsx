@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 
 import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';
-import { AuthorCardFull } from '../../../components/author-card-full';
-import { CourseCard } from '../../../components/course-card';
-import { TutorialCard } from '../../../components/tutorial-card';
-import { useNavigateMisc } from '../../../hooks';
-import { trpc } from '../../../utils/trpc';
-import { ResourceLayout } from '../../resources/layout';
+import { AuthorCardFull } from '../../../components/author-card-full.tsx';
+import { CourseCard } from '../../../components/course-card.tsx';
+import { TutorialCard } from '../../../components/tutorial-card.tsx';
+import { useNavigateMisc } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/trpc.ts';
+import { ResourceLayout } from '../../resources/layout.tsx';
 
 export const ProfessorDetail = () => {
   const { navigateTo404 } = useNavigateMisc();
@@ -45,7 +45,7 @@ export const ProfessorDetail = () => {
           </div>
           {professor.courses.length > 0 && (
             <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
-              <img src={handWriting} alt="" className=" h-5 w-5" />
+              <img src={handWriting} alt="" className=" size-5" />
               <span>{t('words.courses')}</span>
             </div>
           )}
@@ -60,7 +60,7 @@ export const ProfessorDetail = () => {
           </div>
           {professor.tutorials.length > 0 && (
             <div className="mt-6 flex flex-row items-center gap-4 text-2xl font-medium">
-              <img src={yellowBook} alt="" className=" h-5 w-5" />
+              <img src={yellowBook} alt="" className=" size-5" />
               <span>{t('words.tutorials')}</span>
             </div>
           )}

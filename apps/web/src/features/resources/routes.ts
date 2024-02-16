@@ -1,15 +1,15 @@
 import { Route } from '@tanstack/react-router';
 
-import { rootRoute } from '../../routes/root';
+import { rootRoute } from '../../routes/root.tsx';
 
-import { BET } from './pages/bet';
-import { Book } from './pages/book-details';
-import { Books } from './pages/books';
-import { Builder } from './pages/builder-details';
-import { Builders } from './pages/builders';
-import { Resources } from './pages/explorer';
-import { Podcast } from './pages/podcast-details';
-import { Podcasts } from './pages/podcasts';
+import { BET } from './pages/bet.tsx';
+import { Book } from './pages/book-details.tsx';
+import { Books } from './pages/books.tsx';
+import { Builder } from './pages/builder-details.tsx';
+import { Builders } from './pages/builders.tsx';
+import { Resources } from './pages/explorer.tsx';
+import { Podcast } from './pages/podcast-details.tsx';
+import { Podcasts } from './pages/podcasts.tsx';
 
 const resourcesRootRoute = new Route({
   getParentRoute: () => rootRoute,

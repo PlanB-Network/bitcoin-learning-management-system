@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Register } from '.';
+import { Register } from './index.tsx';
 
 const meta: Meta<typeof Register> = {
   title: 'Components/Register',

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
 import WebIcon from '../assets/icons/web_blue.svg?react';
-import { TRPCRouterOutput } from '../utils/trpc';
+import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
@@ -95,7 +95,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               <img
                 src={professor.picture}
                 alt="Professor"
-                className="mt-8 h-28 w-28 rounded-full bg-white"
+                className="mt-8 size-28 rounded-full bg-white"
               />
             </div>
             <div className="mt-2 flex h-full flex-col items-center justify-center self-stretch px-5 py-0">

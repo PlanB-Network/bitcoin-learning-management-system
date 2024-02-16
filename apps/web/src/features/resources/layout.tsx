@@ -1,11 +1,12 @@
-import { Link, RegisteredRouter, ToPathOption } from '@tanstack/react-router';
-import { ReactNode } from 'react';
+import type { RegisteredRouter, ToPathOption } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
+import type { ReactNode } from 'react';
 
-import { MainLayout } from '../../components/MainLayout';
+import { MainLayout } from '../../components/MainLayout/index.tsx';
 
-import { FilterBar } from './components/FilterBar';
-import { PageTitle } from './components/PageTitle';
-import { Pagination } from './components/Pagination';
+import { FilterBar } from './components/FilterBar/index.tsx';
+import { PageTitle } from './components/PageTitle/index.tsx';
+import { Pagination } from './components/Pagination/index.tsx';
 
 interface Props {
   title: string;

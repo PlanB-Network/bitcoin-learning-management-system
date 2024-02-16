@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MobileMenuSubSection } from '.';
+import { MobileMenuSubSection } from './index.tsx';
 
 const meta: Meta<typeof MobileMenuSubSection> = {
   title: 'Components/MobileMenuSubSection',

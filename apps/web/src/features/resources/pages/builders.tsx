@@ -2,9 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Card } from '../../../atoms/Card';
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 export const Builders = () => {
   const { t, i18n } = useTranslation();

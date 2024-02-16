@@ -1,16 +1,16 @@
 import { Route } from '@tanstack/react-router';
 
-import { rootRoute } from '../../routes/root';
+import { rootRoute } from '../../routes/root.tsx';
 
-import { About } from './pages/about';
-import { Home } from './pages/home';
-import { Manifesto } from './pages/manifesto';
-import { NodeNetwork } from './pages/node-network';
-import { NotFound } from './pages/not-found';
-import { ProfessorDetail } from './pages/professor-detail';
-import { ProfessorExplorer } from './pages/professor-explorer';
-import { TermsAndConditions } from './pages/terms-and-conditions';
-import { UnderConstruction } from './pages/under-construction';
+import { About } from './pages/about.tsx';
+import { Home } from './pages/home.tsx';
+import { Manifesto } from './pages/manifesto.tsx';
+import { NodeNetwork } from './pages/node-network.tsx';
+import { NotFound } from './pages/not-found.tsx';
+import { ProfessorDetail } from './pages/professor-detail.tsx';
+import { ProfessorExplorer } from './pages/professor-explorer.tsx';
+import { TermsAndConditions } from './pages/terms-and-conditions.tsx';
+import { UnderConstruction } from './pages/under-construction.tsx';
 
 export const homeRoute = new Route({
   getParentRoute: () => rootRoute,

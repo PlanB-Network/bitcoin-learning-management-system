@@ -1,2 +1,2 @@
-export * from './lib/button';
-export * from './lib/utils';
+export * from './lib/button/index.ts';
+export * from './lib/utils.ts';

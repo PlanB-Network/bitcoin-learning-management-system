@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SignIn } from '.';
+import { SignIn } from './index.tsx';
 
 const meta: Meta<typeof SignIn> = {
   title: 'Components/SignIn',

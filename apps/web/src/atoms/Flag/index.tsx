@@ -45,7 +45,7 @@ const Flag: React.FC<Props> = ({
     ${hasBorder ? 'border' : ''}
     ${hasDropShadow ? 'drop-shadow' : ''}
     ${hasBorderRadius ? 'rounded-sm' : ''}
-    ${className ? className.replace(/\s\s+/g, ' ').trim() : ''}`}
+    ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
     >
       {imgSrc && <img src={imgSrc} alt={code} />}
     </div>

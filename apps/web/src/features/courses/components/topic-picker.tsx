@@ -1,5 +1,5 @@
 interface TopicPickerProps {
-  categories: { prefix: string; topic: string }[];
+  categories: Array<{ prefix: string; topic: string }>;
   activeCategories: string[];
   setActiveCategories: (category: string) => void;
 }

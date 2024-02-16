@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { userSlice } from './slices/';
+import { userSlice } from './slices/user.slice.ts';
 
 const persistedReducer = persistReducer(
   {
@@ -41,4 +41,4 @@ export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
 
-export * from './slices';
+export * from './slices/index.ts';

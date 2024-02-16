@@ -3,10 +3,10 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../../../src/atoms/Tabs';
+} from '../../../../src/atoms/Tabs/index.tsx';
 import { trpc } from '../../../utils';
-import { CoursesProgressList } from '../components/courses-progress-list';
-import { DashboardLayout } from '../layout';
+import { CoursesProgressList } from '../components/courses-progress-list.tsx';
+import { DashboardLayout } from '../layout.tsx';
 
 type Tabs = 'dashboard' | 'profile' | 'courses';
 

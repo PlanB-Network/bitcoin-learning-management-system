@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 interface LevelPickerProps {
-  levels: { prefix: string; name: string; translatedName: string }[];
+  levels: Array<{ prefix: string; name: string; translatedName: string }>;
   activelevels: string[];
   setActivelevels: (category: string) => void;
 }

@@ -67,7 +67,7 @@ export const Modal = ({
                   {closeButtonEnabled && (
                     <button>
                       <IoMdClose
-                        className="flex h-6 w-6 items-center justify-between"
+                        className="flex size-6 items-center justify-between"
                         onClick={onClose}
                       />
                     </button>

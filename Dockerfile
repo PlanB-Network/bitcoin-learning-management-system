@@ -1,28 +1,42 @@
-FROM docker.io/node:18.16.1-slim
+FROM node:20.9.0-slim AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV DOCKER=true
 
-RUN apt-get update && \
-    apt-get install -y netcat-traditional rsync python3 build-essential cmake git
+RUN rm -f /etc/apt/apt.conf.d/docker-clean
+
+RUN echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,target=/var/lib/apt,sharing=locked \
+  apt update && apt install -y \
+  netcat-traditional \
+  build-essential \
+  python3 \
+  cmake \
+  rsync \
+  git \
+  curl
 
 # https://nodejs.org/api/corepack.html
-RUN corepack enable && \
-    mkdir -p $PNPM_HOME
+RUN corepack enable \
+  && mkdir -p $PNPM_HOME \
+  && chown -R node:node $PNPM_HOME \
+  && mkdir -p /deploy \
+  && chown -R node:node /deploy
 
-# Try to cache the node-gyp stuff
-RUN pnpm add argon2@0.31.0
-RUN rm -rf pnpm-lock.yaml package.json
+WORKDIR /home/node
 
-WORKDIR /app
+USER node
 
-COPY pnpm-lock.yaml ./
-COPY patches ./patches
+COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json turbo.json .npmrc ./
+COPY --chown=node:node patches ./patches
 
-RUN --mount=type=cache,uid=1000,gid=1000,id=l2clear,target=/pnpm/store pnpm fetch
+RUN --mount=type=cache,uid=1000,gid=1000,id=pnpm,target=/pnpm/store pnpm fetch 
 
-COPY package.json ./
+COPY --chown=node:node packages ./packages
+COPY --chown=node:node apps ./apps
 
 RUN pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
 
-COPY . .

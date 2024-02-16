@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import QuizzCardQuestion from './quizz-card-question';
-import QuizzCardResults from './quizz-card-results';
-import QuizzCardReview from './quizz-card-review';
+import QuizzCardQuestion from './quizz-card-question.tsx';
+import QuizzCardResults from './quizz-card-results.tsx';
+import QuizzCardReview from './quizz-card-review.tsx';
 
 export interface Question {
   question: string;
@@ -25,7 +25,7 @@ export default function QuizzCard({
 }: QuizzCardProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([
+  const [selectedAnswers, setSelectedAnswers] = useState<Array<number | null>>([
     null,
     null,
     null,
@@ -123,7 +123,7 @@ export default function QuizzCard({
             selectedAnswer={selectedAnswers[currentQuestionIndex] as number}
             correctAnswer={questions[currentQuestionIndex].correctAnswer}
             numberOfCorrectAnswers={numberOfCorrectAnswers}
-            explanation={questions[currentQuestionIndex].explanation as string}
+            explanation={questions[currentQuestionIndex].explanation}
             questionChange={handleQuestionChange}
             answersColors={answersColors}
             nextStep={handleEndOfQuiz}

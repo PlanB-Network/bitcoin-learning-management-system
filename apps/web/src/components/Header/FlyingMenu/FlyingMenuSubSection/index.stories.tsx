@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FlyingMenuSubSection } from '.';
+import { FlyingMenuSubSection } from './index.tsx';
 
 const meta: Meta<typeof FlyingMenuSubSection> = {
   title: 'Components/FlyingMenuSubSection',

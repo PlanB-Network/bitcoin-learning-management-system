@@ -44,7 +44,7 @@ const ScrollToTopButton = () => {
         visibility: isVisible ? 'visible' : 'hidden',
       }}
     >
-      <div className="relative h-12 w-12">
+      <div className="relative size-12">
         <div
           className="absolute inset-0 z-10 scale-[1.15] rounded-full"
           style={{
@@ -54,7 +54,7 @@ const ScrollToTopButton = () => {
 
         <button
           onClick={scrollToTop}
-          className="relative z-20 flex h-12 w-12 items-center justify-center rounded-full bg-blue-800 text-white"
+          className="relative z-20 flex size-12 items-center justify-center rounded-full bg-blue-800 text-white"
         >
           ↑
         </button>

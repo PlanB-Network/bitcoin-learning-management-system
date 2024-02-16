@@ -3,17 +3,15 @@ import { useTranslation } from 'react-i18next';
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
-import { useDisclosure } from '../hooks';
-import { TRPCRouterOutput } from '../utils/trpc';
+import { useDisclosure } from '../hooks/index.ts';
+import type { TRPCRouterOutput } from '../utils/trpc.ts';
 
-import { TipModal } from './tip-modal';
-import { TooltipWithContent } from './tooptip-with-content';
+import { TipModal } from './tip-modal.tsx';
+import { TooltipWithContent } from './tooptip-with-content.tsx';
 
 interface AuthorCardFullProps extends React.HTMLProps<HTMLDivElement> {
   professor: NonNullable<TRPCRouterOutput['content']['getProfessor']>;
 }
-
-type Test = TRPCRouterOutput['content']['getProfessor'];
 
 export const AuthorCardFull = ({
   professor,
@@ -35,7 +33,7 @@ export const AuthorCardFull = ({
             <img
               src={professor.picture}
               alt="Professor"
-              className="mt-4 h-20 w-20 rounded-full sm:h-28 sm:w-28"
+              className="mt-4 size-20 rounded-full sm:size-28"
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.links.twitter && (
@@ -86,7 +84,7 @@ export const AuthorCardFull = ({
                 <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <div className="ml-4 h-8 w-8 self-start" onClick={openTipModal}>
+                <div className="ml-4 size-8 self-start" onClick={openTipModal}>
                   <TooltipWithContent
                     text={t('tutorials.details.tipTooltip')}
                     position="bottom"

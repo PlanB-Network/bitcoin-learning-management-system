@@ -37,7 +37,7 @@ export const MenuDesktop = () => {
   return (
     <div className=" bg-dashboardsection ml-4 flex w-64 flex-col gap-8 rounded-xl p-4">
       <div className="flex items-center gap-2 rounded-3xl pl-2">
-        <BsPersonFill className="text-blue-1000 h-10 w-10 overflow-hidden rounded-full bg-white" />
+        <BsPersonFill className="text-blue-1000 size-10 overflow-hidden rounded-full bg-white" />
         <p className="text-lg font-medium italic">{user?.username}</p>
       </div>
       <div className="flex flex-col">

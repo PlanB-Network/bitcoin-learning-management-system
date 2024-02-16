@@ -6,12 +6,11 @@
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "types": ["vite/client"],
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
   },
   "references": [
-    {
-      "path": "../../packages/ui/tsconfig.lib.json"
-    },
     {
       "path": "../../packages/types/tsconfig.lib.json"
     }

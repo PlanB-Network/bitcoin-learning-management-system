@@ -9,9 +9,9 @@ import type {
   AppRouter,
   RouterInputs,
   RouterOutputs,
-} from '../../../api/src/trpc/types';
+} from '../../../api/src/trpc/types.ts';
 
-import { getDomain, isDevelopmentEnvironment } from './misc';
+import { getDomain, isDevelopmentEnvironment } from './misc.ts';
 
 export type TRPCRouterInput = RouterInputs;
 export type TRPCRouterOutput = RouterOutputs;

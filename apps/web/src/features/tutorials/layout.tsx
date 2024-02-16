@@ -3,10 +3,10 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import { MainLayout } from '../../components/MainLayout';
-import { compose, trpc } from '../../utils';
+import { MainLayout } from '../../components/MainLayout/index.tsx';
+import { compose, trpc } from '../../utils/index.ts';
 
-import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils';
+import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils.tsx';
 
 export const TutorialLayout = ({
   children,
@@ -35,9 +35,9 @@ export const TutorialLayout = ({
             </h3>
             {allTutorials &&
               TUTORIALS_CATEGORIES.map((tutorialCategory) =>
-                allTutorials.filter(
+                allTutorials.some(
                   (tutorial) => tutorial.category === tutorialCategory.name,
-                ).length > 0 ? (
+                ) ? (
                   <Disclosure
                     key={
                       /* Trick to rerender the disclosure on current category change, so it opens the correct panel */

@@ -1,44 +1,43 @@
 /// <reference types="vitest" />
 /// <reference types="vite-plugin-svgr/client" />
 
-import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 export default defineConfig({
-  root: __dirname,
-  build: {
-    outDir: '../../dist/apps/web',
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
-  },
-
-  assetsInclude: ['../../packages/ui/src/assets'],
-
-  server: {
-    port: 4200,
-    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
-    fs: {
-      allow: ['../../packages/ui/src/assets'],
-    },
-  },
-
-  preview: {
-    port: 4300,
-    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
-  },
-
   plugins: [react(), svgr(), tsconfigPaths()],
+
+  root: process.cwd(),
+  base: '/',
+  build: {
+    target: 'es2022',
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 600,
+    cssCodeSplit: true,
+    outDir: 'dist',
+  },
+
+  assetsInclude: [UI_PACKAGE_ASSETS],
+
+  server: process.env.DOCKER
+    ? {
+        host: '0.0.0.0',
+        port: 8181,
+        strictPort: true,
+        // TODO: check if hmr configuration is needed
+        // hmr: {},
+      }
+    : {
+        host: '0.0.0.0',
+        port: 8181,
+      },
 
   test: {
     reporters: ['default'],
-    coverage: {
-      reportsDirectory: '../../coverage/apps/web',
-      provider: 'v8',
-    },
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],

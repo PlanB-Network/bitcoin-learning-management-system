@@ -17,17 +17,14 @@ export const DashboardLayout = ({
 }) => {
   const isMobile = useSmaller('md');
 
-  if (isMobile) {
-    return (
+  return isMobile ? (
       <MainLayout showFooter={false}>
         <div>
           <div className="p-6 text-white">{children}</div>
           <MenuMobile />
         </div>
       </MainLayout>
-    );
-  } else {
-    return (
+    ) : (
       <MainLayout>
         <div className="flex flex-row text-white">
           <MenuDesktop />
@@ -37,5 +34,4 @@ export const DashboardLayout = ({
         </div>
       </MainLayout>
     );
-  }
 };

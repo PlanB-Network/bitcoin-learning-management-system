@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
-import { MetaElements } from '../MetaElements';
-import { NavigationSection } from '../props';
+import { MetaElements } from '../MetaElements/index.tsx';
+import type { NavigationSection } from '../props.tsx';
 
-import { FlyingMenuSection } from './FlyingMenuSection';
+import { FlyingMenuSection } from './FlyingMenuSection/index.tsx';
 
 export interface FlyingMenuProps {
   sections: NavigationSection[];

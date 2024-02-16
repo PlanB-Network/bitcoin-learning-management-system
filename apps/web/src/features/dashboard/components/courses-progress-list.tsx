@@ -2,10 +2,10 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
 import OrangePill from '../../../assets/icons/orange_pill_color_gradient.svg';
-import { Button } from '../../../atoms/Button';
-import { compose } from '../../../utils';
-import { addSpaceToCourseId } from '../../../utils/courses';
-import { TRPCRouterOutput } from '../../../utils/trpc';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { addSpaceToCourseId } from '../../../utils/courses.ts';
+import { compose } from '../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
 
 export const CoursesProgressList = ({
   courses,
@@ -71,7 +71,7 @@ export const CoursesProgressList = ({
           <div
             className={compose(
               'flex flex-row gap-2 pt-4 !m-0',
-              course.progress_percentage !== 100 ? 'hidden' : '',
+              course.progress_percentage === 100 ? '' : 'hidden',
             )}
           >
             {/* <Link to={''}>

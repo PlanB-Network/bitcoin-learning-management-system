@@ -6,9 +6,9 @@ import { useNavigate } from '@tanstack/react-router';
 
 import { cn } from '@sovereign-university/ui';
 
-import Tree from '../../../atoms/Tree';
-import TreeNode from '../../../atoms/Tree/TreeNode';
-import { addSpaceToCourseId, fakeCourseId } from '../../../utils/courses';
+import Tree from '../../../atoms/Tree/index.tsx';
+import TreeNode from '../../../atoms/Tree/TreeNode/index.tsx';
+import { addSpaceToCourseId, fakeCourseId } from '../../../utils/courses.ts';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -39,7 +39,7 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
 
   let nodeColorClasses;
   const courseIdNumbers = Number(
-    fakeCourseId(course.id).replace(/[a-zA-Z]/g, ''),
+    fakeCourseId(course.id).replaceAll(/[A-Za-z]/g, ''),
   );
 
   if (courseIdNumbers >= 400) {
@@ -59,24 +59,17 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
   }
 
   function getLineMultiplier(course: Course) {
-    if (course.id === 'crypto301') {
-      if (isMobile) {
-        return 5;
-      } else {
-        return 8;
+    switch (course.id) {
+      case 'crypto301': {
+        return isMobile ? 5 : 8;
       }
-    } else if (course.id === 'cuboplus') {
-      if (isMobile) {
-        return 6;
-      } else {
-        return 10;
+      case 'cuboplus': {
+        return isMobile ? 6 : 10;
       }
-    } else if (course.id === 'ln402') {
-      if (isMobile) {
-        return 6;
-      } else {
-        return 10;
+      case 'ln402': {
+        return isMobile ? 6 : 10;
       }
+      // No default
     }
     return 1;
   }
@@ -116,7 +109,7 @@ export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
       lineColor={'white'}
       lineBorderRadius={'10px'}
       nodePadding={isMobile ? '3px' : '15px'}
-      label={<CourseTreeNode course={firstCourse as Course} />}
+      label={<CourseTreeNode course={firstCourse} />}
     >
       {courses.map((course) => {
         return <CourseTreeNode key={course.id} course={course} />;

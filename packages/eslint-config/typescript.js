@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 module.exports = {
   files: ['*.ts', '*.tsx'],
   parser: '@typescript-eslint/parser',

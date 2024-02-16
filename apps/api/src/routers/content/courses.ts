@@ -20,7 +20,6 @@ const getCoursesProcedure = publicProcedure
       })
       .optional(),
   )
-
   .query(async ({ ctx, input }) =>
     createGetCourses(ctx.dependencies)(input?.language),
   );

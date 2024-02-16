@@ -2,14 +2,14 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import lostRabbit from '../../../assets/404.svg';
-import { MainLayout } from '../../../components/MainLayout';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
 
 export const NotFound = () => {
   const { t } = useTranslation();
 
   return (
     <MainLayout footerVariant="dark">
-      <div className="font-primary bg-blue-1000 flex h-full w-full flex-col items-center space-y-16 p-10 text-blue-700">
+      <div className="font-primary bg-blue-1000 flex size-full flex-col items-center space-y-16 p-10 text-blue-700">
         <section className="max-w-4xl text-white">
           <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
             {t('notFound.pageTitle')}

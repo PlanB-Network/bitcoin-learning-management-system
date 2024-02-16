@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { compose } from '../../utils';
+import { compose } from '../../utils/index.ts';
 
 interface AvatarProps {
   image: string;

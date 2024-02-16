@@ -1,9 +1,9 @@
 import { isString } from 'lodash-es';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { cn } from '@sovereign-university/ui';
 
-import { compose } from '../../utils';
+import { compose } from '../../utils/index.ts';
 
 interface CardProps {
   image?: string | { src: string; alt: string };

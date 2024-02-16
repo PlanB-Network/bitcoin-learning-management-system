@@ -2,14 +2,14 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
-import { AuthorCard } from '../../../components/author-card';
-import { TipModal } from '../../../components/tip-modal';
-import { TooltipWithContent } from '../../../components/tooptip-with-content';
-import { TutorialsMarkdownBody } from '../../../components/TutorialsMarkdownBody';
-import { useDisclosure } from '../../../hooks';
-import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { TRPCRouterOutput } from '../../../utils/trpc';
-import { TutorialLayout } from '../layout';
+import { AuthorCard } from '../../../components/author-card.tsx';
+import { TipModal } from '../../../components/tip-modal.tsx';
+import { TooltipWithContent } from '../../../components/tooptip-with-content.tsx';
+import { TutorialsMarkdownBody } from '../../../components/TutorialsMarkdownBody/index.tsx';
+import { useDisclosure } from '../../../hooks/index.ts';
+import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
+import { TutorialLayout } from '../layout.tsx';
 
 export const TutorialDetails = () => {
   const { t, i18n } = useTranslation();

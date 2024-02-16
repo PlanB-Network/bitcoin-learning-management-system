@@ -3,7 +3,6 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
-import axios from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
@@ -25,16 +24,20 @@ import staricon from '../../../assets/courses/star.png';
 import wizard from '../../../assets/courses/wizard.png';
 import yellowBook from '../../../assets/courses/yellowbook.png';
 import rabitPen from '../../../assets/rabbit_holding_pen.svg';
-import { Button } from '../../../atoms/Button';
-import { AuthModal } from '../../../components/AuthModal';
-import { AuthModalState } from '../../../components/AuthModal/props';
-import { AuthorCard } from '../../../components/author-card';
-import { useAppSelector, useDisclosure, useNavigateMisc } from '../../../hooks';
-import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { addSpaceToCourseId } from '../../../utils/courses';
-import { TRPCRouterOutput } from '../../../utils/trpc';
-import { CourseButton } from '../components/course-button';
-import { CourseLayout } from '../layout';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { AuthModal } from '../../../components/AuthModal/index.tsx';
+import { AuthModalState } from '../../../components/AuthModal/props.ts';
+import { AuthorCard } from '../../../components/author-card.tsx';
+import {
+  useAppSelector,
+  useDisclosure,
+  useNavigateMisc,
+} from '../../../hooks/index.ts';
+import { addSpaceToCourseId } from '../../../utils/courses.ts';
+import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
+import { CourseButton } from '../components/course-button.tsx';
+import { CourseLayout } from '../layout.tsx';
 
 import { CourseDescriptionModal } from './components/course-description-modal';
 import { CoursePaymentModal } from './components/course-payment-modal';
@@ -125,13 +128,18 @@ export const CourseDetails: React.FC = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get('https://mempool.space/api/v1/prices');
+      try {
+        const response = await fetch('https://mempool.space/api/v1/prices');
+        const data = await response.json();
 
-      if (response.data) {
-        const newConversionRate = response.data['EUR'];
-        setConversionRate(newConversionRate);
-      } else {
-        console.error('Failed to retrieve conversion rate from Kraken API.');
+        if (data) {
+          const newConversionRate = data['EUR'];
+          setConversionRate(newConversionRate);
+        } else {
+          console.error('Failed to retrieve conversion rate from Kraken API.');
+        }
+      } catch (error) {
+        console.error('Failed to fetch conversion rate:', error);
       }
     }
 
@@ -141,7 +149,7 @@ export const CourseDetails: React.FC = () => {
   let satsPrice = -1;
   if (course && course.paid_price_euros && conversionRate) {
     satsPrice = Math.round(
-      (course.paid_price_euros * 100000000) / conversionRate,
+      (course.paid_price_euros * 100_000_000) / conversionRate,
     );
   }
 
@@ -169,7 +177,7 @@ export const CourseDetails: React.FC = () => {
         ) : (
           <div className="mb-4 flex flex-col items-center ">
             <div className="mt-2 flex flex-col items-center">
-              <div className="h-fit w-fit rounded-2xl bg-orange-500 px-3 py-2 text-left text-3xl font-bold uppercase text-white">
+              <div className="size-fit rounded-2xl bg-orange-500 px-3 py-2 text-left text-3xl font-bold uppercase text-white">
                 {addSpaceToCourseId(course.id)}
               </div>
               <h1 className="mt-2 px-1 text-center text-xl font-semibold text-orange-500 lg:text-5xl">
@@ -183,13 +191,13 @@ export const CourseDetails: React.FC = () => {
             <div className="flex flex-col space-y-2 p-3 sm:px-0">
               <div className="flex flex-wrap gap-2">
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
+                  <img src={rabitPen} alt="" className="mr-2 size-4" />
                   <span className="text-sm text-blue-800">
                     {professorNames}
                   </span>
                 </div>
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <img src={graduateImg} alt="" className="mr-2 h-4 w-4" />
+                  <img src={graduateImg} alt="" className="mr-2 size-4" />
                   <span className="text-sm capitalize text-blue-800">
                     {course.level}
                   </span>
@@ -206,7 +214,7 @@ export const CourseDetails: React.FC = () => {
                   <img
                     src={watch}
                     alt="Icono de estudio"
-                    className="mr-2 h-4 w-4"
+                    className="mr-2 size-4"
                   />
                   <span className="text-sm text-blue-800">
                     {t('courses.details.mobile.hours', {
@@ -333,7 +341,7 @@ export const CourseDetails: React.FC = () => {
                         <img
                           src={rocketSVG}
                           alt=""
-                          className="m-0 ml-1 h-5 w-5"
+                          className="m-0 ml-1 size-5"
                         />
                       </Button>
                     </div>
@@ -353,7 +361,7 @@ export const CourseDetails: React.FC = () => {
       <div className="max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 sm:my-4 sm:grid sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-20">
         <div className="mb-5 flex w-full flex-col sm:mb-0">
           <div className="flex flex-row gap-1 sm:hidden">
-            <img src={crayonSVG} alt="" className="m-0 block h-5 w-5" />
+            <img src={crayonSVG} alt="" className="m-0 block size-5" />
             <h4 className="text-blue-1000 mb-1 font-bold uppercase italic sm:hidden">
               {t('courses.details.description')}
             </h4>
@@ -379,7 +387,7 @@ export const CourseDetails: React.FC = () => {
         </div>
         <div className="flex w-full flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={staricon} alt="" className=" block h-5 w-5" />
+            <img src={staricon} alt="" className=" block size-5" />
             <h4 className="text-blue-1000 mb-1 font-bold uppercase italic sm:hidden">
               {t('courses.details.objectives')}
             </h4>
@@ -397,12 +405,12 @@ export const CourseDetails: React.FC = () => {
                 key={index}
               >
                 <div>
-                  <BsCheckCircle className="mt-1 hidden h-4 w-4 sm:block" />
+                  <BsCheckCircle className="mt-1 hidden size-4 sm:block" />
                 </div>
                 <img
                   src={checkBoxSVG}
                   alt=""
-                  className="mt-1 block h-4 w-4 sm:hidden"
+                  className="mt-1 block size-4 sm:hidden"
                 />
                 <span className="ml-2 p-1 font-medium sm:ml-0 sm:font-normal">
                   {goal}
@@ -420,7 +428,7 @@ export const CourseDetails: React.FC = () => {
       <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={yellowBook} alt="" className="h-5 w-5" />
+            <img src={yellowBook} alt="" className="size-5" />
             <h4 className="text-blue-1000 mb-1  font-semibold uppercase italic sm:hidden">
               {t('courses.details.curriculum')}
             </h4>
@@ -499,7 +507,7 @@ export const CourseDetails: React.FC = () => {
       <div className="my-4 max-w-5xl px-2">
         <div className="flex h-fit flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={wizard} alt="" className="h-5 w-5" />
+            <img src={wizard} alt="" className="size-5" />
             <h4 className="text-blue-1000 mb-1  font-semibold uppercase italic sm:hidden">
               {t('courses.details.professor')}
             </h4>
@@ -547,11 +555,11 @@ export const CourseDetails: React.FC = () => {
               size={isScreenMd ? 'l' : 's'}
               disabled={isButtonDisabled}
               {...buttonProps}
-              {...(!course.requires_payment
-                ? {
+              {...(course.requires_payment
+                ? {}
+                : {
                     iconRight: <BsRocketTakeoff />,
-                  }
-                : {})}
+                  })}
               className="text-blue-1000 mb-auto"
             >
               {t(
@@ -570,7 +578,7 @@ export const CourseDetails: React.FC = () => {
     <CourseLayout>
       <div className="text-blue-800">
         {course && (
-          <div className="flex h-full w-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
+          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             {course?.id !== 'giaco' && <CourseButton courseId={courseId} />}
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />

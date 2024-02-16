@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 
-type PieChartProps = {
+interface PieChartProps {
   width?: number;
   height?: number;
   colors?: string[];
   globalCursorPointer?: boolean;
   handlePieClick?: (index: number) => void;
   selectedPieNumber?: number | null;
-};
+}
 
 export default function PieChart({
   width = 350,

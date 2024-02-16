@@ -1,5 +1,5 @@
-import { compose } from '../../utils';
-import { BaseAtomProps } from '../types';
+import { compose } from '../../utils/index.ts';
+import type { BaseAtomProps } from '../types.tsx';
 
 interface TagProps extends BaseAtomProps {
   children: string;

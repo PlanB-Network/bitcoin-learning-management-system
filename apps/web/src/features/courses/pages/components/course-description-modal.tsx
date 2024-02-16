@@ -18,7 +18,7 @@ import { Button } from '../../../../atoms/Button';
 import { Modal } from '../../../../atoms/Modal';
 import { computeAssetCdnUrl } from '../../../../utils';
 import { addSpaceToCourseId } from '../../../../utils/courses';
-import { TRPCRouterOutput } from '../../../../utils/trpc';
+import type { TRPCRouterOutput } from '../../../../utils/trpc';
 
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -50,11 +50,11 @@ export const CourseDescriptionModal = ({
         <div className=" col-span-2 flex-col space-y-2 p-3 sm:px-0">
           <div className="flex flex-wrap gap-2 text-xs">
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
+              <img src={rabitPen} alt="" className="mr-2 size-4" />
               <span>{professorNames}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img src={graduateImg} alt="" className="mr-2 h-4 w-4" />
+              <img src={graduateImg} alt="" className="mr-2 size-4" />
               <span className="capitalize">{course.level}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
@@ -69,7 +69,7 @@ export const CourseDescriptionModal = ({
               <img
                 src={watch}
                 alt="Icono de estudio"
-                className="mr-2 h-4 w-4"
+                className="mr-2 size-4"
               />
               <span>
                 {t('courses.details.mobile.hours', {

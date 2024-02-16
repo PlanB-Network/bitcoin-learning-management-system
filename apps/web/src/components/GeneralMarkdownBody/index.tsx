@@ -24,7 +24,7 @@ export const GeneralMarkdownBody = ({
         h1: ({ children }) => (
           <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
             <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
               {children}
             </div>
           </h2>
@@ -32,7 +32,7 @@ export const GeneralMarkdownBody = ({
         h2: ({ children }) => (
           <h2 className="mt-6 text-xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
             <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
               {children}
             </div>
           </h2>
@@ -91,7 +91,7 @@ export const GeneralMarkdownBody = ({
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-4 h-10 w-10" />
+                <VideoSVG className="mb-2 ml-4 size-10" />
                 <div className="ml-2">
                   <p className="text-lg font-medium text-blue-900">Video</p>
                 </div>
@@ -117,7 +117,11 @@ export const GeneralMarkdownBody = ({
           ),
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');
-          return !inline ? (
+          return inline ? (
+            <code {...props} className={className}>
+              {children}
+            </code>
+          ) : (
             <SyntaxHighlighter
               {...props}
               children={String(children).replace(/\n$/, '')}
@@ -125,10 +129,6 @@ export const GeneralMarkdownBody = ({
               language={match ? match[1] : undefined}
               PreTag="div"
             />
-          ) : (
-            <code {...props} className={className}>
-              {children}
-            </code>
           );
         },
       }}

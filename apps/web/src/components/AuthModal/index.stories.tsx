@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AuthModal } from '.';
+import { AuthModal } from './index.tsx';
 
 const meta: Meta<typeof AuthModal> = {
   title: 'Components/AuthModal',

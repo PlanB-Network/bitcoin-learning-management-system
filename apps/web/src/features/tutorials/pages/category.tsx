@@ -3,24 +3,24 @@ import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CategoryIcon } from '../../../components/CategoryIcon';
-import { TutorialCard } from '../../../components/tutorial-card';
-import { compose, trpc } from '../../../utils';
-import { TutorialLayout } from '../layout';
-import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils';
+import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
+import { TutorialCard } from '../../../components/tutorial-card.tsx';
+import { compose, trpc } from '../../../utils/index.ts';
+import { TutorialLayout } from '../layout.tsx';
+import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils.tsx';
 
 export const TutorialCategory = () => {
   const { t, i18n } = useTranslation();
   const { category } = useParams({
     from: '/tutorials/$category',
   });
+
   const navigate = useNavigate();
 
+  const [tutorialCategory] = useState(
+    TUTORIALS_CATEGORIES.find((c) => c.name === category),
+  );
   const [subCategories, setSubCategories] = useState<string[]>([]);
-
-  const tutorialCategory = TUTORIALS_CATEGORIES.find(
-    (c) => c.name === category,
-  ) as (typeof TUTORIALS_CATEGORIES)[0];
 
   const { data: tutorials } = trpc.content.getTutorialsByCategory.useQuery({
     category,
@@ -28,12 +28,12 @@ export const TutorialCategory = () => {
   });
 
   useEffect(() => {
-    if (!TUTORIALS_CATEGORIES.some((c) => c.name === category)) {
+    if (!tutorialCategory) {
       navigate({
         to: '/tutorials',
       });
     }
-  }, [category, navigate]);
+  }, [tutorialCategory, navigate]);
 
   useEffect(() => {
     if (tutorials) {
@@ -46,18 +46,18 @@ export const TutorialCategory = () => {
       <div className="mb-6 mt-[-1rem] w-full max-w-5xl lg:hidden">
         <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
           <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
-          <span className="capitalize">{tutorialCategory.name}</span>
+          <span className="capitalize">{tutorialCategory!.name}</span>
         </span>
       </div>
 
       <div className="col-span-3 md:space-y-4 lg:max-w-3xl xl:col-span-2 xl:max-w-none">
         <div className="flex w-full flex-row items-center justify-start">
           <CategoryIcon
-            src={tutorialCategory.image}
-            className="h-20 w-20 md:h-24 md:w-24"
+            src={tutorialCategory!.image}
+            className="size-20 md:size-24"
           />
           <h1 className="py-3 pl-4 text-5xl font-extrabold uppercase text-orange-500 md:pl-6 lg:text-6xl">
-            {tutorialCategory.name}
+            {tutorialCategory!.name}
           </h1>
         </div>
         <p className="hidden w-full text-justify leading-5 text-blue-800 md:flex md:text-left">

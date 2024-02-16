@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 
-import { NavigationElement } from '../props';
+import type { NavigationElement } from '../props.tsx';
 
 export interface MenuElementProps {
   element: NavigationElement;
@@ -15,9 +15,9 @@ export const MenuElement = ({ element }: MenuElementProps) => {
         className="group relative flex w-full max-w-sm cursor-pointer gap-x-6 rounded-lg p-4 duration-100 hover:bg-gray-100"
       >
         {element.icon && (
-          <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
+          <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
             <element.icon
-              className="h-6 w-6 text-blue-700 group-hover:text-blue-700"
+              className="size-6 text-blue-700 group-hover:text-blue-700"
               aria-hidden="true"
             />
           </div>

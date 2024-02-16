@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
-    "clsx": "^2.1.0",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "react": "18.2.0",
     "tailwind-merge": "^1.14.0"
   },
@@ -19,6 +19,9 @@
     "@storybook/core-server": "7.6.14",
     "@storybook/react": "7.6.14",
     "@storybook/react-vite": "7.6.14",
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.19",
+    "tailwindcss-animate": "^1.0.7",
     "vite": "5.0.12"
   }
 }

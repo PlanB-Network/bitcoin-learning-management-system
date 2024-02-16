@@ -1,10 +1,10 @@
 import { Route } from '@tanstack/react-router';
 
-import { rootRoute } from '../../routes/root';
+import { rootRoute } from '../../routes/root.tsx';
 
-import { DashboardCourse } from './pages/dashboard-course';
-import { DashboardCourses } from './pages/dashboard-courses';
-import { DashboardProfile } from './pages/dashboard-profile';
+import { DashboardCourse } from './pages/dashboard-course.tsx';
+import { DashboardCourses } from './pages/dashboard-courses.tsx';
+import { DashboardProfile } from './pages/dashboard-profile.tsx';
 
 const dashboardRootRoute = new Route({
   getParentRoute: () => rootRoute,

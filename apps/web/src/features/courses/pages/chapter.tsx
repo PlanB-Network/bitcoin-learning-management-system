@@ -11,15 +11,17 @@ import { BsCheckLg } from 'react-icons/bs';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
-import { Button } from '../../../atoms/Button';
-import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
-import { compose, computeAssetCdnUrl } from '../../../utils';
-import { addSpaceToCourseId } from '../../../utils/courses';
-import { joinWords } from '../../../utils/string';
-import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
-import { NavigationPanel } from '../components/navigation-panel';
-import QuizzCard, { Question } from '../components/quizz-card';
-import { CourseLayout } from '../layout';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody/index.tsx';
+import { addSpaceToCourseId } from '../../../utils/courses.ts';
+import { compose, computeAssetCdnUrl } from '../../../utils/index.ts';
+import { joinWords } from '../../../utils/string.ts';
+import { trpc } from '../../../utils/trpc.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
+import { NavigationPanel } from '../components/navigation-panel.tsx';
+import type { Question } from '../components/quizz-card.tsx';
+import QuizzCard from '../components/quizz-card.tsx';
+import { CourseLayout } from '../layout.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -154,8 +156,8 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             }
             params={goToChapterParameters(chapter, 'previous')}
           >
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-white">
-              <BiSkipPrevious className="h-6 w-6" />
+            <div className="flex size-6 items-center justify-center rounded-full bg-blue-500 text-white">
+              <BiSkipPrevious className="size-6" />
             </div>
           </Link>
 
@@ -172,8 +174,8 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             }
             params={goToChapterParameters(chapter, 'next')}
           >
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-white">
-              <BiSkipNext className="h-6 w-6" />
+            <div className="flex size-6 items-center justify-center rounded-full bg-blue-500 text-white">
+              <BiSkipNext className="size-6" />
             </div>
           </Link>
         </div>
@@ -393,12 +395,12 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
         {isLastChapter ? (
           <Button onClick={completeChapter}>
             <span>{t('courses.chapter.finishCourse')}</span>
-            <BsCheckLg className="ml-2 h-6 w-6" />
+            <BsCheckLg className="ml-2 size-6" />
           </Button>
         ) : (
           <Button onClick={completeChapter}>
             <span>{t('courses.chapter.next')}</span>
-            <BiSkipNext className="ml-2 h-8 w-8" />
+            <BiSkipNext className="ml-2 size-8" />
           </Button>
         )}
       </Link>
@@ -426,13 +428,13 @@ function getRandomQuestions(
     return questionArray;
   }
 
-  const shuffledArray = shuffleArray(questionArray.slice());
+  const shuffledArray = shuffleArray([...questionArray]);
   return shuffledArray.slice(0, count);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapQuizzToQuestions(quizzArray: any[]): Question[] {
-  const questions = quizzArray.map((quizz) => {
+  return quizzArray.map((quizz) => {
     const answers = [quizz.answer, ...quizz.wrong_answers];
     const shuffledAnswers = shuffleArray(answers);
     const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
@@ -444,8 +446,6 @@ function mapQuizzToQuestions(quizzArray: any[]): Question[] {
       correctAnswer,
     };
   });
-
-  return questions;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -488,16 +488,18 @@ export const CourseChapter = () => {
     });
 
   const questionsArray: Question[] = useMemo(() => {
-    if (quizzArray !== undefined) {
+    if (quizzArray === undefined) {
+      return [];
+    } else {
       const temp = mapQuizzToQuestions(quizzArray);
       return getRandomQuestions(temp, 5);
-    } else {
-      return [];
     }
   }, [quizzArray]);
 
   const sections: string[] = useMemo(() => {
-    if (chapter !== undefined) {
+    if (chapter === undefined) {
+      return [];
+    } else {
       const regex = /^### (.+)$/gm;
 
       const sections: string[] = [];
@@ -508,8 +510,6 @@ export const CourseChapter = () => {
       }
 
       return sections;
-    } else {
-      return [];
     }
   }, [chapter]);
 
@@ -521,7 +521,7 @@ export const CourseChapter = () => {
     <CourseLayout>
       <div className="text-blue-800">
         {chapter && (
-          <div className="flex h-full w-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
+          <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
             <Title chapter={chapter} />
             {isScreenMd ? (
               <TimelineBig chapter={chapter} />
@@ -537,7 +537,7 @@ export const CourseChapter = () => {
                   {questionsArray && questionsArray.length > 0 && (
                     <>
                       <div className="flex items-center">
-                        <img src={QuizIcon} className="ml-4 h-6 w-6" alt="" />
+                        <img src={QuizIcon} className="ml-4 size-6" alt="" />
                         <p className="ml-2 text-lg font-medium text-blue-900">
                           {t('courses.quizz.quizz')}
                         </p>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Divider } from '.';
+import { Divider } from './index.tsx';
 
 const meta: Meta<typeof Divider> = {
   title: 'Atoms/Divider',

@@ -6,11 +6,11 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Card } from '../../../atoms/Card';
-import { useNavigateMisc } from '../../../hooks';
-import { trpc } from '../../../utils';
-import { BookSummary } from '../components/book-summary';
-import { ResourceLayout } from '../layout';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { useNavigateMisc } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/index.ts';
+import { BookSummary } from '../components/book-summary.tsx';
+import { ResourceLayout } from '../layout.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 

@@ -2,10 +2,10 @@ import { Popover, Transition } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import { Fragment, useMemo, useState } from 'react';
 
-import { compose } from '../../../../utils';
-import { MenuElement } from '../../MenuElement';
-import { NavigationSection } from '../../props';
-import { FlyingMenuSubSection } from '../FlyingMenuSubSection';
+import { compose } from '../../../../utils/index.ts';
+import { MenuElement } from '../../MenuElement/index.tsx';
+import type { NavigationSection } from '../../props.tsx';
+import { FlyingMenuSubSection } from '../FlyingMenuSubSection/index.tsx';
 
 export interface FlyingMenuProps {
   section: NavigationSection;

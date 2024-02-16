@@ -1,9 +1,9 @@
 import { css } from '@emotion/css';
-import * as React from 'react';
 
-import TreeNode, { TreeNodeProps } from './TreeNode';
+import type { TreeNodeProps } from './TreeNode/index.tsx';
+import TreeNode from './TreeNode/index.tsx';
 
-type LineStyle = 'dashed' | 'dotted' | 'double' | 'solid' | string;
+type LineStyle = 'dashed' | 'dotted' | 'double' | 'solid';
 
 export interface TreeProps {
   label: TreeNodeProps['label'];

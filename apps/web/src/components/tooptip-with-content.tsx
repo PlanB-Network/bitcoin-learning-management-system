@@ -1,13 +1,13 @@
 /// <reference types="vite-plugin-svgr/client" />
 
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '../atoms/Tooltip';
+} from '../atoms/Tooltip/index.tsx';
 
 interface TipIconProps {
   text: string;
