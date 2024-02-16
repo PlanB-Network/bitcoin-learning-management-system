@@ -114,7 +114,7 @@ export const NodeNetwork = () => {
           </p>
           <a
             className="mt-8 place-self-center"
-            href="https://github.com/DecouvreBitcoin/sovereign-university-data#join-the-network"
+            href="https://framaforms.org/node-application-planb-network-1708081674"
             target="_blank"
             rel="noopener noreferrer"
           >
