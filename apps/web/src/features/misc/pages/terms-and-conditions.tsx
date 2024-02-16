@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody';
+import { GeneralMarkdownBody } from '../../../components/GeneralMarkdownBody';
 import { MainLayout } from '../../../components/MainLayout';
 
 export const TermsAndConditions = () => {
@@ -20,7 +20,7 @@ export const TermsAndConditions = () => {
   
   Définitions
   On désignera par la suite:
-  •	« Site » ou « Service » : le site www.planb.networkr et l'ensemble de ses pages.
+  •	« Site » ou « Service » : le site https://planb.network et l'ensemble de ses pages.
   •	« Editeur » : DecouvreBitcoin, personne morale ou physique responsable de l'édition et du contenu du Site.
   •	« Utilisateur » : l'internaute visitant et utilisant les Services du Site.
   Les présentes Conditions Générales d'Utilisation (ci-après les « CGU ») sont proposées par l'Editeur du Site. L'Utilisateur du Site est invité à lire attentivement ces CGU, à les imprimer et/ou à les sauvegarder sur un support durable. L'Utilisateur reconnaît avoir pris connaissance des CGU et les accepte intégralement et sans réserve.
@@ -345,7 +345,7 @@ export const TermsAndConditions = () => {
 
         <div className="mt-6 flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch">
           <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
-            <CoursesMarkdownBody content={termsString} assetPrefix="" />
+            <GeneralMarkdownBody content={termsString} assetPrefix="" />
           </div>
         </div>
       </div>
