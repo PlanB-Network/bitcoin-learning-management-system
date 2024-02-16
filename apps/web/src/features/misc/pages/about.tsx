@@ -153,7 +153,7 @@ const CoreTeam = () => {
           <p className="mt-2 text-gray-400">{t('about.coreTeamContent')}</p>
         </div>
       </div>
-      <div className="mt-6 grid w-full max-w-5xl grid-cols-2 gap-6">
+      <div className="mt-6 grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
         <div className="flex flex-col gap-6">
           <Person
             name="Giacomo"
@@ -187,12 +187,12 @@ const Professors = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-12 flex w-full max-w-5xl  gap-6">
+    <div className="mt-20 flex w-full max-w-5xl  gap-6">
       <div>
         <h2 className="text-3xl font-semibold uppercase text-orange-500">
           {t('words.professors')}
         </h2>
-        <div className="mt-4 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <img
             className="w-24 rounded-lg"
             src={PpFanis}
@@ -243,11 +243,11 @@ const ActiveContributors = () => {
   const css = 'w-24 h-24 rounded-lg';
 
   return (
-    <div className="mt-12 flex w-full max-w-5xl flex-col gap-4">
+    <div className="mt-20 flex w-full max-w-5xl flex-col gap-4">
       <h2 className="text-3xl font-semibold uppercase text-orange-500">
         {t('about.activeContributors')}
       </h2>
-      <div className="flex w-full max-w-4xl flex-wrap justify-center gap-4 place-self-center">
+      <div className="mt-8 flex w-full max-w-4xl flex-wrap justify-center gap-4 place-self-center">
         <img className={css} src={Ct01} alt="" loading="lazy" />
         <img className={css} src={Ct02} alt="" loading="lazy" />
         <img className={css} src={Ct03} alt="" loading="lazy" />
