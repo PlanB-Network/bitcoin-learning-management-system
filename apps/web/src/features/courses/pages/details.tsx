@@ -115,6 +115,12 @@ export const CourseDetails: React.FC = () => {
 
   const displayBuyCourse = course?.requires_payment && !isCoursePaid;
 
+  // TODO fix this february hack
+  const isLinkDisabled =
+    displayBuyCourse || (!displayBuyCourse && course?.id === 'giaco');
+
+  const isButtonDisabled = !displayBuyCourse && course?.id === 'giaco';
+
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
   useEffect(() => {
@@ -275,7 +281,7 @@ export const CourseDetails: React.FC = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
-                  disabled={displayBuyCourse}
+                  disabled={isLinkDisabled}
                   to={'/courses/$courseId/$partIndex/$chapterIndex'}
                   params={{
                     courseId,
@@ -283,7 +289,7 @@ export const CourseDetails: React.FC = () => {
                     chapterIndex: '1',
                   }}
                 >
-                  <Button rounded {...buttonProps}>
+                  <Button rounded {...buttonProps} disabled={isButtonDisabled}>
                     <span className="sm:px-6">
                       {t(
                         displayBuyCourse
@@ -304,7 +310,7 @@ export const CourseDetails: React.FC = () => {
                 <div className=" mx-1 flex items-center justify-center">
                   <Link
                     to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                    disabled={displayBuyCourse}
+                    disabled={isLinkDisabled}
                     params={{
                       courseId,
                       partIndex: '1',
@@ -312,7 +318,11 @@ export const CourseDetails: React.FC = () => {
                     }}
                   >
                     <div className="flex">
-                      <Button rounded {...buttonProps}>
+                      <Button
+                        rounded
+                        {...buttonProps}
+                        disabled={isButtonDisabled}
+                      >
                         <span className="relative z-10 text-sm font-medium sm:px-6">
                           {t(
                             displayBuyCourse
@@ -526,7 +536,7 @@ export const CourseDetails: React.FC = () => {
           <Link
             className="bottom-2"
             to={'/courses/$courseId/$partIndex/$chapterIndex'}
-            disabled={displayBuyCourse}
+            disabled={isLinkDisabled}
             params={{
               courseId,
               partIndex: '1',
@@ -535,6 +545,7 @@ export const CourseDetails: React.FC = () => {
           >
             <Button
               size={isScreenMd ? 'l' : 's'}
+              disabled={isButtonDisabled}
               {...buttonProps}
               {...(!course.requires_payment
                 ? {
