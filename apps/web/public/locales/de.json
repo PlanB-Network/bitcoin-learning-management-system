@@ -52,19 +52,19 @@
       "title": "Bildungs-Toolkit"
     },
     "hereForYou": "Der BET ist für Sie da!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
+    "pageDescription": "PlanB Network unterstützt Bildungsanbieter und lokale Communities auf der ganzen Welt, um die Verbreitung von Bitcoin zu fördern. Um dieses Ziel zu erreichen, sammeln wir eine große Datenbank mit Bildungsinhalten (von uns und anderen erstellt) und visuellen Daten und machen sie zugänglich.",
+    "pageSubtitle": "Das BET - ein Bitcoin-Open-Source-Toolkit für alle Bildungsprojekte",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
-      "title": "Visual Content"
+      "description": "Diese Inhalte sind visuelle Rohdaten, die Sie für Ihre Kreationen verwenden können.",
+      "title": "Visueller Inhalt"
     }
   },
   "book": {
     "abstract": "Abstrakt",
     "bookSummary": {
-      "modifyTooltip": "Write or modify",
-      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
+      "modifyTooltip": "Schreiben oder ändern",
+      "noSummary": "Es wurde noch keine Zusammenfassung geschrieben. Wenn Sie das Buch gelesen haben und eine Zusammenfassung teilen möchten, zögern Sie nicht, eine auf Github zu schreiben. Es würde der Community sehr helfen, die Universität verbessern und du könntest sogar ein paar Sats dafür bekommen!",
       "notice": "diese Inhaltsübersicht ist mit github verknüpft, für jede Änderung oder Ergänzung",
       "title": "Die Buchübersicht"
     },
@@ -82,29 +82,29 @@
   "courses": {
     "categories": {
       "btc": "Bitcoin",
-      "crypto": "Cryptography",
+      "crypto": "Kryptographie",
       "cuboplus": "Bitcoin",
       "econ": "Österreichische Ökonomie ",
       "fin": "Finanzen",
-      "ln": "Lightning Network",
+      "ln": "Lightning Netzwerk",
       "min": "Mining",
       "secu": "Sicherheit & Privatsphäre"
     },
     "chapter": {
-      "count": "Chapter {{count}}",
+      "count": "Kapitel {{count}}",
       "finishCourse": "Kurs beenden",
       "next": "Fertig, gehen wir zum nächsten Kapitel!",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "thanksTip": "Danke sagen? Einfach tippen."
     },
     "details": {
-      "accessible": "Accessible: Lifetime",
-      "buyCourse": "Buy the course",
+      "accessible": "Verfügbar: Lebensdauer",
+      "buyCourse": "Kurs kaufen",
       "courseId": "Kurs-ID: {{courseId}}",
-      "coursePayment": "Course payment",
+      "coursePayment": "Kurszahlung",
       "curriculum": "Lehrplan",
-      "date": "Date: {{startDate}} to {{endDate}}",
+      "date": "Datum: {{startDate}} bis {{endDate}}",
       "description": "Beschreibung",
-      "downloadCurriculum": "Download curriculum",
+      "downloadCurriculum": "Curriculum herunterladen",
       "duration": "Dauer: {{hours}} Stunden",
       "goal": "ZIEL: ",
       "level": "Stufe: $t(words.level.{{level}})",
@@ -115,31 +115,31 @@
       "numberOfChapters": "Anzahl der Kapitel: {{number}}",
       "objectives": "Ziele",
       "objectivesTitle": "Was werden Sie mit diesem Kurs lernen?",
-      "price": "Price: {{price}} sats",
+      "price": "Preis: {{price}} sats",
       "professor": "Professor",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
-      "teacher": "Teacher: {{teacher}}",
+      "startCourse": "Kurs beginnen",
+      "taughtBy": "Dieser Kurs wird unterrichtet von:",
+      "teacher": "Lehrer: {{teacher}}",
       "teachers": "Lehrer: {{teachers}}",
-      "teacherWord": "A word from the teacher",
-      "terms1": "Check our",
-      "terms2": "terms and conditions",
-      "terms3": "for refund details"
+      "teacherWord": "Ein Wort vom Lehrer",
+      "terms1": "Lesen Sie unsere",
+      "terms2": "Geschäftsbedingungen",
+      "terms3": "für Rückerstattungsdetails"
     },
     "explorer": {
       "footerTitle": "Unsere Professoren sind für Sie da!",
       "footerp1": "An der Sovereign University verfügen unsere Professoren über vollständige Autonomie hinsichtlich ihres Inhalts und der Werkzeuge, die Sie erforschen möchten, solange sie unseren Ethikkodex befolgen. Sie sind leidenschaftliche Bitcoiner aus verschiedenen Hintergründen.",
       "footerp2": "Wenn du einen Kurs verbessern oder einen eigenen Kurs anbieten möchtest, kannst du dies einfach über GitHub tun. Um einen Professor zu unterstützen, kannst du entweder seinen Kurs bewerten, den Professor direkt tippen oder ein Universitätsmitglied werden, um die Plattform zu unterstützen.",
       "moreToCome": ".... und mehr am kommen!",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
+      "pageDescription": "Hier finden Sie eine große Anzahl von Kursen, die sich auf Bitcoin als Ganzes beziehen, mit einer großen Bandbreite an Themen. Diese Bildungsinhalte sind organisch und wachsen mit dem Wachstum von Bitcoin. Alle Inhalte sind kostenlos, open-source und für jeden zugänglich. Der Index der Kurse ist in Kreisen organisiert, um sich an den Lernweg eines jeden anzupassen.",
+      "pageSubtitle": "Willkommen auf der E-Learning-Plattform.",
       "pageTitle": "Kurse",
       "s2p1": "Wenn du angefangen hast, den Bitcoin Kaninchenbau zu erkunden, musst du wissen, dass es eine endlose Reise mit vielen Gängen ist. Hier an der Universität verstehen wir dies und gestalten unsere Bildungsinhalte als nicht-linear, autonom und so umfangreich, wie es sein kann.",
       "s2p2": "Du wirst in der Lage sein, deinen eigenen Weg zu wählen und ihn zu beschreiten, indem du Fähigkeiten und Wissen gewonnst, soweit deine Motivation geht.",
       "s2p3": "Alle unsere Kurse sind 100% kostenlos, sodass du durch nichts gestoppt werden kannst.",
       "s2t1": "Bitcoin-Bildung ist eine Reise ohne Ziel",
-      "s3PickLevel": "Pick levels :",
-      "s3PickTopic": "Pick topics :",
+      "s3PickLevel": "Level auswählen:",
+      "s3PickTopic": "Themen auswählen:",
       "s3t1": "Alle Kurse sind nach deren Hauptthema benannt"
     },
     "footer": {
@@ -153,17 +153,17 @@
       "letsgo": "Los geht's"
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
+      "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
       "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "quizzResults": "Quizz-Ergebnisse",
+      "quizzReview": "Quizz Review",
+      "resultCongrats": "Glückwunsch, das haben Sie gut gemacht!",
+      "resultItsOk": "Geben Sie nicht auf, Sie werden es beim nächsten Mal besser machen!",
+      "resultNotBad": "Gar nicht so schlecht!",
+      "resultPerfect": "Absolut perfekt! Herzlichen Glückwunsch!"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
+      "colcardAndSparrow": "Coldcard und Sparrow",
       "financeIntroduction": "Einführung in Finanzen",
       "financialCrisis": "Analyse der Finanzkrisen",
       "hyperinflation": "Analyse der Hyperinflation",
@@ -172,62 +172,62 @@
   },
   "dashboard": {
     "myCourses": {
-      "resumeLesson": "Resume the lesson"
+      "resumeLesson": "Lektion fortsetzen"
     }
   },
   "home": {
     "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Welcome to PlanB Network",
-      "link": "Be part of the network",
-      "startLink": "Start Learning"
+      "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Communities, wir sind hier, um Ihnen auf Ihrer Bitcoin-Reise zu helfen.",
+      "forEducators": "Für Erzieher und Entwickler",
+      "globalNetwork": "Weltweites Bitcoin-Netzwerk",
+      "welcome": "Willkommen bei PlanB Network",
+      "link": "Werden Sie Teil des Netzwerks",
+      "startLink": "Lernen beginnen"
     },
     "numbersSection": {
-      "networkMember": "Betwork Member"
+      "networkMember": "Network-Mitglied"
     },
     "sectionEducation": {
-      "title": "From beginner to advanced",
-      "subtitle": "Learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
-      "link": "Check the academy"
+      "title": "Vom Anfänger bis zum Fortgeschrittenen",
+      "subtitle": "Lernen Sie Bitcoin in der Akademie",
+      "content1": "Bitcoin ist nicht nur eine Technologie und eine Form des Geldes, sondern auch eine revolutionäre Art, das Leben anzugehen. Um dies widerzuspiegeln, decken unsere Kurse ein breites Spektrum an Bereichen ab und befähigen jeden Einzelnen, sich in seinen Interessengebieten auszuzeichnen und sein Verständnis zu vertiefen. Von Ihrem ersten Bitcoin-Kurs bis hin zu einem tiefen Eintauchen in die Besonderheiten des Protokolls - unsere Kurse helfen Ihnen, sicher durch den Kaninchenbau zu navigieren. Es gibt keinen Grund zu zögern. Wissen wartet auf Sie.",
+      "link": "Schauen Sie sich die Akademie an"
     },
     "sectionNetwork": {
-      "title": "Access a  network of",
-      "subtitle": "Worldwide Bitcoin Campuses",
-      "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
-      "link": "Be part of the network"
+      "title": "Greifen Sie auf ein Netzwerk von",
+      "subtitle": "Bitcoin-Campus weltweit",
+      "content1": "Verbinden Sie sich mit Bitcoin-Enthusiasten weltweit, die eine gemeinsame Leidenschaft teilen. Von kleinen Communities, die sich regelmäßig treffen, bis hin zu BTC-Bildungszentren - unsere Netzwerkkarte wird Ihnen helfen, die Inspiration zum Lernen und Aufbauen zu finden. Für Enthusiasten steht eine breite Palette von Dienstleistungen zur Verfügung, wie z. B. ein Inkubationszentrum, physische Workshops, Seminare, BTC-Retreats und mehr. Das Netzwerk steht allen offen, also kommen Sie und begrüßen Sie Ihre lokale BTC-Community!",
+      "link": "Werden Sie Teil des Netzwerks"
     },
     "tutorialSection": {
-      "title": "Making Bitcoin education simple is our objective.",
-      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
-      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials"
+      "title": "Bitcoin-Bildung einfach zu machen, ist unser Ziel.",
+      "subtitle1": "Wir helfen Ihnen, die Technologie mit zahlreichen ausführlichen Tutorials zu beherrschen!",
+      "content1": "Bitcoin entwickelt sich ständig weiter, mit neuen Akteuren, Lösungen, Protokollen und technologischen Durchbrüchen, die kommen und gehen. Es ist oft schwierig, eine einzige, genaue Datenbank mit guten, aktualisierten Anleitungen zu führen. Hier bei PlanB haben wir genau das erreicht. Von Anfängern bis hin zu fortgeschrittenen Nutzern können Sie durch Hunderte von Tutorials navigieren, um unsere Branche nach Ihren Bedürfnissen zu erkunden.",
+      "link": "Alle Tutorials anzeigen"
     },
     "aboutUsSection": {
-      "title": "Who are we ?",
-      "subtitle": "A little bit about us",
-      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
-      "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
-      "openSourceTitle": "Open source",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "title": "Wer sind wir?",
+      "subtitle": "Ein wenig über uns",
+      "content": "Das PlanB-Netzwerk ist eine Initiative zur Unterstützung der Bitcoin-Ausbildung weltweit. Es ist die Kreuzung verschiedener leidenschaftlicher Bitcoin-Unternehmen, die sich auf Bildung, Open-Source-Software, Peer-to-Peer-Netzwerke und den Sinn von Communities konzentrieren. Gemeinsam haben sie beschlossen, das PlanB-Netzwerk aufzubauen und dem Bitcoin-Ökosystem die richtigen Werkzeuge zu bieten, um zu wachsen.",
+      "bitcoinFocusTitle": "Bitcoin Fokus",
+      "bitcoinFocusContent": "Wir konzentrieren uns auf die Bitcoin-Revolution als Ganzes, von dem Base-Layer bis hin zu verschiedenen Peer-to-Peer-Kommunikation um das Netzwerk herum",
+      "openSourceTitle": "Open-Source",
+      "openSourceContent": "Unser Ziel ist es, den freien Wissensfluss zu fördern und beim Aufbau von mehr Open-Source-Lösungen zu helfen",
       "communityTitle": "Community",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
-      "privacyTitle": "Privacy",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+      "communityContent": "Wir sind in erster Linie eine Community von Enthusiasten, die sich gegenseitig auf ihrer Bitcoin-Reise unterstützen",
+      "privacyTitle": "Datenschutz",
+      "privacyContent": "Wir betrachten den Schutz der Privatsphäre als eines der grundlegendsten Menschenrechte und als wesentlich für den Fortschritt"
     },
     "languageSection": {
-      "title": "No language barrier here.",
-      "subtitle": "Everything is translated to local languages",
-      "subtitle2": "We need you!",
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "content2": "You too can start bootstrapping your own local network in your country!",
-      "link": "Help us translate the academy"
+      "title": "Keine Sprachbarriere hier.",
+      "subtitle": "Alles ist in lokale Sprachen übersetzt",
+      "subtitle2": "Wir brauchen Sie!",
+      "content1": "Wir bei PlanB glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit 7 Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt.",
+      "content2": "Beginnen auch Sie mit dem Aufbau Ihres eigenen lokalen Netzes in Ihrem Land!",
+      "link": "Helfen Sie uns, die Akademie zu übersetzen"
     },
     "patreonSection": {
-      "title": "Together let’s make Bitcoin education better ! ",
+      "title": "Lassen Sie uns gemeinsam die Bitcoin-Bildung verbessern! ",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patreon",
       "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     }
