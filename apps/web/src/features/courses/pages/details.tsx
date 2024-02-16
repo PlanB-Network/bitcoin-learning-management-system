@@ -13,6 +13,8 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
+import { cn } from '@sovereign-university/ui';
+
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
 import checkBoxSVG from '../../../assets/courses/checkboxFilled.svg';
@@ -416,7 +418,12 @@ export const CourseDetails: React.FC = () => {
           <h4 className="mb-5 hidden text-2xl font-light uppercase italic text-gray-400 sm:block">
             {t('courses.details.curriculum')}
           </h4>
-          <ul className="space-y-5 text-xs capitalize sm:text-base sm:uppercase">
+          <ul
+            className={
+              (cn('space-y-5 text-xs capitalize sm:text-base sm:uppercase'),
+              displayBuyCourse ? 'pointer-events-none' : '')
+            }
+          >
             {course.parts?.map((part, partIndex) => (
               <li key={partIndex}>
                 <div className="mb-1 flex flex-row">
@@ -432,7 +439,11 @@ export const CourseDetails: React.FC = () => {
                       chapterIndex: '1',
                     }}
                   >
-                    <p className="ml-1 text-base font-normal capitalize text-orange-500 sm:text-lg sm:uppercase">
+                    <p
+                      className={cn(
+                        'ml-1 text-base font-normal capitalize  sm:text-lg sm:uppercase text-orange-500',
+                      )}
+                    >
                       {part.title}
                     </p>
                   </Link>
@@ -451,7 +462,12 @@ export const CourseDetails: React.FC = () => {
                         chapterIndex: chapter.chapter.toString(),
                       }}
                     >
-                      <p className="capitalize text-blue-700">
+                      <p
+                        className={cn(
+                          'capitalize',
+                          displayBuyCourse ? 'text-gray-400' : 'text-blue-700',
+                        )}
+                      >
                         {chapter.title}
                       </p>
                     </Link>
