@@ -73,7 +73,7 @@ export const CourseDetails: React.FC = () => {
   const {
     data: payments,
     // isFetched: isPaymentFetched,
-    refetch: refetchPayment,
+    // refetch: refetchPayment,
   } = trpc.user.courses.getPayment.useQuery();
 
   console.log({ payments });
@@ -421,7 +421,7 @@ export const CourseDetails: React.FC = () => {
           <ul
             className={
               (cn('space-y-5 text-xs capitalize sm:text-base sm:uppercase'),
-              displayBuyCourse ? 'pointer-events-none' : '')
+              course.id === 'giaco' ? 'pointer-events-none' : '')
             }
           >
             {course.parts?.map((part, partIndex) => (
@@ -469,6 +469,9 @@ export const CourseDetails: React.FC = () => {
                         )}
                       >
                         {chapter.title}
+                        {course.id === 'giaco' && (
+                          <span className="italic"> (Not yet available)</span>
+                        )}
                       </p>
                     </Link>
                   </div>
@@ -574,10 +577,11 @@ export const CourseDetails: React.FC = () => {
               satsPrice={satsPrice}
               isOpen={isPaymentModalOpen}
               onClose={(isPaid) => {
-                if (isPaid) {
-                  refetchPayment();
-                }
-                setIsPaymentModalOpen(false);
+                // if (isPaid) {
+                //   refetchPayment();
+                // }
+                // setIsPaymentModalOpen(false);
+                window.location.reload();
               }}
             />
             <CourseDescriptionModal

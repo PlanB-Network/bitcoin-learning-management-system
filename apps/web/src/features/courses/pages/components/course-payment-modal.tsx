@@ -82,7 +82,7 @@ export const CoursePaymentModal = ({
         onClose(true);
       }, 2000);
     }
-  }, [lastJsonMessage]);
+  }, [lastJsonMessage, onClose]);
 
   return (
     <Modal

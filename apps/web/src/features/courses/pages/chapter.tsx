@@ -529,7 +529,7 @@ export const CourseChapter = () => {
               <TimelineSmall chapter={chapter} />
             )}
 
-            <div className=" flex w-full flex-col items-center justify-center md:flex md:w-auto md:flex-row md:items-stretch md:justify-stretch">
+            <div className=" flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
                   <Header chapter={chapter} sections={sections} />
