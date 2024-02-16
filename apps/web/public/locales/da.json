@@ -86,6 +86,7 @@
     "categories": {
       "btc": "Bitcoin",
       "crypto": "Cryptography",
+      "cuboplus": "Bitcoin",
       "econ": "Austrian Economics",
       "fin": "Finance",
       "ln": "Lightning Network",
