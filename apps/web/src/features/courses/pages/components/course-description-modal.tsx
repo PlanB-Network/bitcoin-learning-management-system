@@ -3,9 +3,11 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 import { t } from 'i18next';
+import { BiCalendar } from 'react-icons/bi';
+import { BsClock, BsHourglass } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { HiOutlineBookOpen } from 'react-icons/hi';
-import { IoMdStopwatch } from 'react-icons/io';
+import { IoPricetagOutline } from 'react-icons/io5';
 import ReactPlayer from 'react-player';
 
 import graduateImg from '../../../../assets/birrete.png';
@@ -87,7 +89,7 @@ export const CourseDescriptionModal = ({
   const HeaderBig = ({ course }: { course: Course }) => {
     return (
       <div className="hidden grid-cols-2 gap-4 text-sm md:grid lg:text-base">
-        <div className="flex flex-col gap-5 p-3 sm:px-0">
+        <div className="flex flex-col gap-8 p-3 sm:px-0">
           <div className="flex flex-row gap-5">
             <FaChalkboardTeacher size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
@@ -101,7 +103,7 @@ export const CourseDescriptionModal = ({
             </span>
           </div>
           <div className="flex flex-row gap-5 ">
-            <IoMdStopwatch size="35" className="text-orange-600" />
+            <BiCalendar size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.date', {
                 startDate: course.paid_start_date
@@ -114,7 +116,7 @@ export const CourseDescriptionModal = ({
             </span>
           </div>
           <div className="flex flex-row gap-5 ">
-            <IoMdStopwatch size="35" className="text-orange-600" />
+            <IoPricetagOutline size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.price', {
                 price: satsPrice,
@@ -122,7 +124,7 @@ export const CourseDescriptionModal = ({
             </span>
           </div>
         </div>
-        <div className="flex-col space-y-5 p-3 sm:px-0">
+        <div className="flex-col space-y-8 p-3 sm:px-0">
           <div className="flex flex-row gap-5 ">
             <HiOutlineBookOpen size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
@@ -132,13 +134,13 @@ export const CourseDescriptionModal = ({
             </span>
           </div>
           <div className="flex flex-row gap-5 ">
-            <IoMdStopwatch size="35" className="text-orange-600" />
+            <BsClock size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.duration', { hours: course.hours })}
             </span>
           </div>
           <div className="flex flex-row gap-5 ">
-            <IoMdStopwatch size="35" className="text-orange-600" />
+            <BsHourglass size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.accessible')}
             </span>
@@ -150,7 +152,7 @@ export const CourseDescriptionModal = ({
 
   const Content = () => {
     return (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
         <div>
           <p className="mt-2 whitespace-pre-wrap text-xs text-gray-800">
             {course.paid_description}
@@ -168,7 +170,7 @@ export const CourseDescriptionModal = ({
             <Button
               variant="download"
               size="s"
-              className="float-right mt-2"
+              className="float-right mt-2 md:float-left"
               type="button"
             >
               {t('courses.details.downloadCurriculum')}
@@ -176,11 +178,10 @@ export const CourseDescriptionModal = ({
           </a>
         </div>
         <div>
-          <p className="mb-2 text-xs">{t('courses.details.teacherWord')}</p>
           <ReactPlayer
             width={'100%'}
-            height={'100%'}
             style={{ top: 0, left: 0 }}
+            className="mx-auto mb-2 max-h-[300px] rounded-lg"
             controls={true}
             url={course.paid_video_link}
           />
