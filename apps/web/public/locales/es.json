@@ -1,22 +1,22 @@
 {
   "about": {
-    "activeContributors": "Active contributors",
-    "missionTitle": "Our mission",
+    "activeContributors": "Colaboradores activos",
+    "missionTitle": "Nuestra misión",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
-    "commitmentTitle": "Out commitments",
-    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
-    "coreTeamTitle": "The core team",
-    "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
-    "coreTeamGiacomoRole": "Director and Co-founder",
-    "coreTeamRogzyRole": "Product manager & Co-founder",
-    "coreTeamAsioRole": "Educational coordinator",
-    "coreTeamAjelexRole": "Node coordinator",
+    "missionContent2": "Centralizamos el conocimiento para distribuirlo mejor a través de un repositorio simple y multilingüe de GitHub y una plataforma de e-learning. Ayudamos a los centros locales de Bitcoin en su desarrollo con las herramientas adecuadas para que su talento crezca.",
+    "commitmentTitle": "nuestros compromisos",
+    "commitmentContent": "Nuestros compromisos con la comunidad de bitcoin son los siguientes: \n • Mantener el código abierto \n • Proporcionar contenido educativo de alta calidad \n • Traducir nuestro contenido en tantos idiomas como sea posible \n • Apoyar a los constructores de Bitcoin en su viaje empresarial",
+    "coreTeamTitle": "El equipo central",
+    "coreTeamContent": "PlanB Network es un colectivo de cientos de colaboradores, maestros, líderes comunitarios, diseñadores, desarrolladores y organizadores. Muchas gracias a las numerosas personas que han hecho de PlanB una realidad y continúan haciéndolo todos los días. (Muro de colaboradores próximamente)",
+    "coreTeamGiacomoRole": "Director y cofundador",
+    "coreTeamRogzyRole": "Gestor de productos y cofundador",
+    "coreTeamAsioRole": "Coordinador educativo",
+    "coreTeamAjelexRole": "Coordinator del nodo",
     "corporateTitle": "Corporate behind",
-    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "corporateContent": "PlanB Network es el proyecto unido de tres entidades enfocadas en el desarrollo de Bitcoin. En un esfuerzo por escalar la capa educativa de bitcoin, decidieron colaborar para formar la Red PlanB. Para tener éxito en nuestra meta de llevar la educación de bitcoin al mundo, muchas otras entidades han decidido contribuir y unir fuerzas. Muchas gracias a ellos",
     "coportateContact": "Contact information:",
-    "storyTitle": "Out story",
-    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
+    "storyTitle": "Nuestra historia",
+    "storyContent": "La red PlanB es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir la red PlanB y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
     "title": "About the planB network",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
     "manifesto": "Creemos en el futuro descentralizado que ofrece Bitcoin.\n\nNuestra misión es introducir Bitcoin a mil millones de personas en un plazo de una década. Nuestras herramientas son la educación y la información.\n\nApoyamos a las comunidades locales de Bitcoiners proporcionando contenido educativo de código abierto y ofreciendo una red de mentores de Bitcoin.\n\nNuestra filosofía está inspirada en el manifiesto cypherpunk. Así como ellos defendieron la privacidad, nosotros defendemos la educación. Creemos que el conocimiento es la base de la libertad y el cambio.\n\nSomos solo Bitcoin.\n\nAbogamos por la responsabilidad individual y la independencia que ofrece tener tus propias claves.\n\nInstamos a la verificación, no a la confianza ciega.\n\nCreemos que al arreglar el dinero, arreglamos el mundo.\n\nSomos descentralizados y de código abierto, evitando cualquier punto único de fallo.\n\nFomentamos la libre difusión de nuestro contenido.\n\nAspiramos a un mundo que funcione desde la base, donde el individuo esté en el centro.\n\nSimplificamos, educamos, compartimos.\n\nÚnete a nosotros en nuestra misión de hacer que el mundo tome la píldora naranja.\n"
@@ -86,6 +86,7 @@
     "categories": {
       "btc": "Bitcoin",
       "crypto": "Criptografía",
+      "cuboplus": "Bitcoin",
       "econ": "Economía Austriaca",
       "fin": "Finanzas",
       "ln": "Lightning Network",
@@ -99,14 +100,14 @@
       "thanksTip": "¿Quieres dar las gracias? Tip."
     },
     "details": {
-      "accessible": "Accessible: Lifetime",
-      "buyCourse": "Buy the course",
+      "accessible": "Accesible: por vida",
+      "buyCourse": "Compra este curso",
       "courseId": "ID del curso: {{courseId}}",
-      "coursePayment": "Course payment",
+      "coursePayment": "Pago del curso",
       "curriculum": "Currículo",
-      "date": "Date: {{startDate}} to {{endDate}}",
+      "date": "Desde {{startDate}} hasta {{endDate}}",
       "description": "Descripción",
-      "downloadCurriculum": "Download curriculum",
+      "downloadCurriculum": "Descargar currículum",
       "duration": "Duración: {{hours}} horas",
       "goal": "GOAL: ",
       "level": "Nivel: $t(words.level.{{level}})",
@@ -117,16 +118,16 @@
       "numberOfChapters": "Número de capítulos: {{number}}",
       "objectives": "Objetivos",
       "objectivesTitle": "Lo que aprenderás:",
-      "price": "Price: {{price}} sats",
+      "price": "Precio: {{price}} sats",
       "professor": "Profesor",
       "startCourse": "Iniciar el curso",
       "taughtBy": "Este curso está siendo impartido por :",
-      "teacher": "Teacher: {{teacher}}",
+      "teacher": "Profesores: {{teacher}}",
       "teachers": "Profesores: {{teachers}}",
-      "teacherWord": "A word from the teacher",
-      "terms1": "Check our",
-      "terms2": "terms and conditions",
-      "terms3": "for refund details"
+      "teacherWord": "Una palabra del profesor",
+      "terms1": "Consulta nuestro",
+      "terms2": "términos y condiciones",
+      "terms3": "para detalles del reembolso"
     },
     "explorer": {
       "footerTitle": "¡Nuestros profesores están aquí para ti!",
@@ -174,41 +175,41 @@
   },
   "dashboard": {
     "myCourses": {
-      "resumeLesson": "Resume the lesson"
+      "resumeLesson": "Reanudar la sesión"
     }
   },
   "home": {
     "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "content": "La plataforma PlanB tiene como objetivo proporcionar las mejores herramientas y contenidos educativos de todo el mundo para ayudar a la gente a recuperar su soberanía. Desde individuos hasta comunidades, estamos aquí para ayudarte a lo largo de tu viaje en Bitcoin.",
       "forEducators": "Para educadores y constructores",
       "globalNetwork": "Red global de Bitcoin",
-      "welcome": "Welcome to PlanB Network",
+      "welcome": "Bienvenido a PlanB Network",
       "link": "Se parte de la red",
-      "startLink": "Start Learning"
+      "startLink": "Comienza tu aprendizaje"
     },
     "numbersSection": {
-      "networkMember": "Betwork Member"
+      "networkMember": "Miembro de la Red"
     },
     "sectionEducation": {
-      "title": "From beginner to advanced",
-      "subtitle": "Learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
-      "link": "Check the academy"
+      "title": "De principiante a avanzado",
+      "subtitle": "Aprende Bitcoin en la academia",
+      "content1": "Bitcoin no es sólo una tecnología y una forma de dinero, sino también una manera revolucionaria de acercarse a la vida. Para hacernos eco de esto, nuestros cursos abarcan una amplia gama de campos, capacitando a cada individuo para exceder en sus áreas de interés y profundizando en su comprensión. Desde tu primer curso de Bitcoin hasta una inmersión profunda en las especificaciones del protocolo, nuestros cursos te ayudarán a navegar el agujero de conejo de forma segura. No hay ninguna razón para luchar. El conocimiento te espera.",
+      "link": "Revisa la academia"
     },
     "sectionNetwork": {
-      "title": "Access a  network of",
-      "subtitle": "Worldwide Bitcoin Campuses",
+      "title": "Acceder a una red de",
+      "subtitle": "Campuses de bitcoin a nivel mundial",
       "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
-      "link": "Be part of the network"
+      "link": "Se parte de la red"
     },
     "tutorialSection": {
       "title": "Making Bitcoin education simple is our objective.",
       "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
       "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials"
+      "link": "Ver todos los tutoriales"
     },
     "aboutUsSection": {
-      "title": "Who are we ?",
+      "title": "¿Quiénes somos?",
       "subtitle": "A little bit about us",
       "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
       "bitcoinFocusTitle": "Bitcoin focus",
