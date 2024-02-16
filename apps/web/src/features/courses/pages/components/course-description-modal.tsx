@@ -159,7 +159,7 @@ export const CourseDescriptionModal = ({
           <a
             href={computeAssetCdnUrl(
               course.last_commit,
-              `/courses/${course.id}/assets/curriculum.pdf`,
+              `courses/${course.id}/assets/curriculum.pdf`,
             )}
             target="_blank"
             download
