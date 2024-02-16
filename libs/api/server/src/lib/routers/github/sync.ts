@@ -65,29 +65,29 @@ export const syncProcedure = publicProcedure
 
     console.log('-- Sync procedure: sync cdn repository');
 
-    let publicCdnError;
-    syncCdnRepository(
-      '/tmp/sovereign-university-data',
-      process.env['CDN_PATH'] || '/tmp/cdn',
-    ).catch((error) => {
-      console.error(error);
-      publicCdnError = error;
-    });
+    // let publicCdnError;
+    // syncCdnRepository(
+    //   '/tmp/sovereign-university-data',
+    //   process.env['CDN_PATH'] || '/tmp/cdn',
+    // ).catch((error) => {
+    //   console.error(error);
+    //   publicCdnError = error;
+    // });
 
-    let privateCdnError;
+    // let privateCdnError;
 
-    if (
-      process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
-      process.env['GITHUB_ACCESS_TOKEN']
-    ) {
-      syncCdnRepository(
-        '/tmp/sovereign-university-data-paid',
-        process.env['CDN_PATH'] || '/tmp/cdn',
-      ).catch((error) => {
-        console.error(error);
-        privateCdnError = error;
-      });
-    }
+    // if (
+    //   process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
+    //   process.env['GITHUB_ACCESS_TOKEN']
+    // ) {
+    //   syncCdnRepository(
+    //     '/tmp/sovereign-university-data-paid',
+    //     process.env['CDN_PATH'] || '/tmp/cdn',
+    //   ).catch((error) => {
+    //     console.error(error);
+    //     privateCdnError = error;
+    //   });
+    // }
 
     console.log('-- Sync procedure: END');
 
@@ -101,7 +101,7 @@ export const syncProcedure = publicProcedure
     return {
       success: syncErrors.length === 0,
       ...(syncErrors.length > 0 && { syncErrors: syncErrors.map((e) => e) }),
-      ...(publicCdnError != null && { publicCdnError: publicCdnError }),
-      ...(privateCdnError != null && { privateCdnError: privateCdnError }),
+      // ...(publicCdnError != null && { publicCdnError: publicCdnError }),
+      // ...(privateCdnError != null && { privateCdnError: privateCdnError }),
     };
   });
