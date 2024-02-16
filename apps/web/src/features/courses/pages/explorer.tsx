@@ -89,7 +89,9 @@ export const CoursesExplorer = () => {
           c.id === 'giaco',
       )
       .sort((a, b) =>
-        extractNumbers(fakeCourseId(a.id)).localeCompare(extractNumbers(b.id)),
+        extractNumbers(fakeCourseId(a.id)).localeCompare(
+          extractNumbers(fakeCourseId(b.id)),
+        ),
       );
 
     let previousElement: Course;
