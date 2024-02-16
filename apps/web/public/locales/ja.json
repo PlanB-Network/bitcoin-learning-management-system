@@ -25,9 +25,7 @@
     "accountCreated": "{{userName}}さんのアカウントが作成されました！",
     "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
     "canSaveProgress": "ビットコイン・アカデミーではあなたの進捗状況を保存できるようになりました",
-    "connect": "ログインする",
     "connectWithLn": "ライトニングで接続する",
-    "contributorId": "コントリビュータID",
     "createAccount": "登録する",
     "createOne": "ここから登録！",
     "emailAddress": "メールアドレス",
@@ -37,7 +35,6 @@
       "usernameTooShort": "ユーザー名は5文字以上である必要があります"
     },
     "forgottenPassword": "パスワードをお忘れですか？",
-    "getConnected": "ログインしました！",
     "headerAccountCreated": "アカウントが作成されました",
     "lnurlAuthDescription": "ライトニング・ウォレットでこのQRコードをスキャンしてログインしてください！",
     "noAccountNeeded": "Sovereign Universityで学ぶためにアカウントは必要ありません！",

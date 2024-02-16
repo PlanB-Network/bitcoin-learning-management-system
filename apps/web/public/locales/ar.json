@@ -25,9 +25,7 @@
     "accountCreated": "Ihr Konto wurde angelegt, {{userName}}!",
     "alreadyHaveAccount": "Haben Sie schon ein Konto ?",
     "canSaveProgress": "Du kannst jetzt deinen Fortschritt in der Bitcoin-Akademie speichern",
-    "connect": "Einloggen",
     "connectWithLn": "Mit LN verbinden",
-    "contributorId": "Mitverfasser Id",
     "createAccount": "Konto erstellen",
     "createOne": "Erstellen Sie eins !",
     "emailAddress": "Email Adresse",
@@ -37,7 +35,6 @@
       "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten"
     },
     "forgottenPassword": "Passwort vergessen ?",
-    "getConnected": "Loggen Sie sich ein!",
     "headerAccountCreated": "Konto erstellt",
     "lnurlAuthDescription": "Scanne diesen QR-Code mit deiner Lightning Wallet, um dich anzumelden!",
     "noAccountNeeded": "Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",

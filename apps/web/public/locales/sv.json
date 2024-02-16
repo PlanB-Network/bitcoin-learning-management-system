@@ -25,9 +25,7 @@
     "accountCreated": "Your account has been created, {{userName}}!",
     "alreadyHaveAccount": "Already have an account?",
     "canSaveProgress": "You can now save your progression on the Bitcoin Academy",
-    "connect": "Se connecter",
     "connectWithLn": "Connect with LN",
-    "contributorId": "Identifiant contributeur",
     "createAccount": "Register",
     "createOne": "Register here!",
     "emailAddress": "Adresse email",
@@ -37,7 +35,6 @@
       "usernameTooShort": "Username must contain at least 5 characters"
     },
     "forgottenPassword": "Forgot your password?",
-    "getConnected": "Connectez vous !",
     "headerAccountCreated": "Account created",
     "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
     "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
