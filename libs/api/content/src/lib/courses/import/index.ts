@@ -212,7 +212,6 @@ export const createProcessChangedCourse =
 
               // Only get the tags from the main resource file
               const parsedCourse = yamlToObject<CourseMain>(main.data);
-              console.log(parsedCourse);
               if (parsedCourse.requires_payment == null) {
                 parsedCourse.requires_payment = false;
               }

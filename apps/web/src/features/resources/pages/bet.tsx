@@ -2,20 +2,20 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
-import poster from '../../../assets/resources/bet/21poster.png';
-import anil from '../../../assets/resources/bet/anil.png';
-import artistes from '../../../assets/resources/bet/artiste.png';
-import bookscover from '../../../assets/resources/bet/bookcover.png';
-import btcHere from '../../../assets/resources/bet/btcacceptedhere.png';
-import dbCourses from '../../../assets/resources/bet/dbcourses.png';
-import mpbitcoin from '../../../assets/resources/bet/diplomampb.jpg';
-import gifcollection from '../../../assets/resources/bet/gifcollection.png';
-import history from '../../../assets/resources/bet/history.png';
-import hyperinflation from '../../../assets/resources/bet/hyperinflation.png';
-import logosCompanies from '../../../assets/resources/bet/logos.png';
-import meme from '../../../assets/resources/bet/meme.png';
-import propaganda from '../../../assets/resources/bet/propaganda.png';
-import scams from '../../../assets/resources/bet/scams.png';
+import poster from '../../../assets/resources/bet/21poster.webp';
+import anil from '../../../assets/resources/bet/anil.webp';
+import artistes from '../../../assets/resources/bet/artiste.webp';
+import bookscover from '../../../assets/resources/bet/bookcover.webp';
+import btcHere from '../../../assets/resources/bet/btcacceptedhere.webp';
+import dbCourses from '../../../assets/resources/bet/dbcourses.webp';
+import mpbitcoin from '../../../assets/resources/bet/diplomampb.webp';
+import gifcollection from '../../../assets/resources/bet/gifcollection.webp';
+import history from '../../../assets/resources/bet/history.webp';
+import hyperinflation from '../../../assets/resources/bet/hyperinflation.webp';
+import logosCompanies from '../../../assets/resources/bet/logos.webp';
+import meme from '../../../assets/resources/bet/meme.webp';
+import propaganda from '../../../assets/resources/bet/propaganda.webp';
+import scams from '../../../assets/resources/bet/scams.webp';
 import { ResourceLayout } from '../layout';
 
 const LinkBox = ({
