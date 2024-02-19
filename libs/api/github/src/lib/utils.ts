@@ -336,6 +336,8 @@ export const syncCdnRepository = async (
 
     for (const asset of assets) {
       console.log('sync cdn asset:', asset);
+
+      // This takes long time on btc101
       const parentDirectoryLog = await git
         .cwd(repositoryDirectory)
         .log({ file: asset.replace(/\/assets\/.*/, '') });
@@ -348,7 +350,6 @@ export const syncCdnRepository = async (
         asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
         relativePath,
       );
-
       if (!(await pathExists(cdnPath))) {
         await fs.mkdir(path.dirname(cdnPath), { recursive: true });
         await fs.copyFile(asset, cdnPath);

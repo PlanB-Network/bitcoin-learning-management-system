@@ -23,28 +23,36 @@ export const createSavePayment =
       onChain: true,
       webhook: `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
     };
-    const { data: checkoutData } = await axios.post<{
-      id: string;
-      pr: string;
-      onChainAddr: string;
-      amount: number;
-      checkoutUrl: string;
-    }>(`https://api.swiss-bitcoin-pay.ch/checkout`, paymentData, {
-      headers: {
-        'api-key': process.env['SBP_API_KEY'],
-      },
-    });
 
-    await postgres.exec(
-      insertPayment({
-        uid,
-        courseId,
-        paymentStatus: 'pending',
-        amount: checkoutData.amount,
-        paymentId: checkoutData.id,
-        invoiceUrl: checkoutData.checkoutUrl,
-      }),
-    );
+    try {
+      const { data: checkoutData } = await axios.post<{
+        id: string;
+        pr: string;
+        onChainAddr: string;
+        amount: number;
+        checkoutUrl: string;
+      }>(`https://api.swiss-bitcoin-pay.ch/checkout`, paymentData, {
+        headers: {
+          'api-key': process.env['SBP_API_KEY'],
+        },
+      });
 
-    return checkoutData;
+      await postgres.exec(
+        insertPayment({
+          uid,
+          courseId,
+          paymentStatus: 'pending',
+          amount: checkoutData.amount,
+          paymentId: checkoutData.id,
+          invoiceUrl: checkoutData.checkoutUrl,
+        }),
+      );
+
+      return checkoutData;
+    } catch (error) {
+      console.log('Checkout error : ');
+      console.log(error);
+    }
+
+    throw new Error('Checkout error');
   };
