@@ -23,20 +23,20 @@ export const createGetProgress =
 
     return progress.map((course) => {
       const chapters = completedChapters
-        .filter((chapter) => chapter.course_id === course.course_id)
-        .map(({ part, chapter, completed_at }) => ({
+        .filter((chapter) => chapter.courseId === course.courseId)
+        .map(({ part, chapter, completedAt }) => ({
           chapter,
           part,
           quiz: _.pick(
             quizAttempts.find(
               (attempt) =>
-                attempt.course_id === course.course_id &&
+                attempt.courseId === course.courseId &&
                 attempt.part === part &&
                 attempt.chapter === chapter,
             ),
             ['questions_count', 'correct_answers_count', 'done_at'],
           ),
-          completed_at,
+          completedAt,
         }))
         .sort((a, b) => {
           if (a.part !== b.part) {
@@ -46,7 +46,7 @@ export const createGetProgress =
         });
 
       const nextChapter = nextChapters.find(
-        (chapter) => chapter.course_id === course.course_id,
+        (chapter) => chapter.courseId === course.courseId,
       );
 
       const lastCompletedChapter = chapters.at(-1);

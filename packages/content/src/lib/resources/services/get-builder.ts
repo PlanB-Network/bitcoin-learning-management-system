@@ -17,7 +17,7 @@ export const createGetBuilder =
         ...builder,
         logo: computeAssetCdnUrl(
           process.env['CDN_URL'] || 'http://localhost:8080',
-          builder.last_commit,
+          builder.lastCommit,
           builder.path,
           'logo.jpeg',
         ),

@@ -16,7 +16,7 @@ export const createGetBook =
         cover: book.cover
           ? computeAssetCdnUrl(
               process.env['CDN_URL'] || 'http://localhost:8080',
-              book.last_commit,
+              book.lastCommit,
               book.path,
               book.cover,
             )

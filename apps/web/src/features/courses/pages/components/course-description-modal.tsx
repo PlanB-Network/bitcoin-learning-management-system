@@ -66,11 +66,7 @@ export const CourseDescriptionModal = ({
               </span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img
-                src={watch}
-                alt="Icono de estudio"
-                className="mr-2 size-4"
-              />
+              <img src={watch} alt="Icono de estudio" className="mr-2 size-4" />
               <span>
                 {t('courses.details.mobile.hours', {
                   hours: course.hours,
@@ -106,11 +102,11 @@ export const CourseDescriptionModal = ({
             <BiCalendar size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.date', {
-                startDate: course.paid_start_date
-                  ? new Date(course.paid_start_date).toLocaleDateString()
+                startDate: course.paidStartDate
+                  ? new Date(course.paidStartDate).toLocaleDateString()
                   : '',
-                endDate: course.paid_end_date
-                  ? new Date(course.paid_end_date).toLocaleDateString()
+                endDate: course.paidEndDate
+                  ? new Date(course.paidEndDate).toLocaleDateString()
                   : '',
               })}
             </span>
@@ -155,12 +151,12 @@ export const CourseDescriptionModal = ({
       <div className="grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
         <div>
           <p className="mt-2 whitespace-pre-wrap text-xs text-gray-800">
-            {course.paid_description}
+            {course.paidDescription}
           </p>
 
           <a
             href={computeAssetCdnUrl(
-              course.last_commit,
+              course.lastCommit,
               `courses/${course.id}/assets/curriculum.pdf`,
             )}
             target="_blank"
@@ -183,7 +179,7 @@ export const CourseDescriptionModal = ({
             style={{ top: 0, left: 0 }}
             className="mx-auto mb-2 max-h-[300px] rounded-lg"
             controls={true}
-            url={course.paid_video_link}
+            url={course.paidVideoLink as string}
           />
         </div>
       </div>

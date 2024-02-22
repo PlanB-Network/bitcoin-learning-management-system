@@ -14,11 +14,11 @@ export const Dashboard = () => {
   const { data: courses } = trpc.user.courses.getProgress.useQuery();
 
   const completedCourses = courses?.filter(
-    (course) => course.progress_percentage === 100,
+    (course) => course.progressPercentage === 100,
   );
 
   const inProgressCourses = courses?.filter(
-    (course) => course.progress_percentage !== 100,
+    (course) => course.progressPercentage !== 100,
   );
 
   return (

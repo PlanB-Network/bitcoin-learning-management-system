@@ -90,7 +90,7 @@ export const NavigationPanel: React.FC<Props> = ({
                           }
                         />
                         <span className="col-span-7 ml-1 text-sm">
-                          {chapterOne.part_title}
+                          {chapterOne.partTitle}
                         </span>
                       </li>
                     </Disclosure.Button>

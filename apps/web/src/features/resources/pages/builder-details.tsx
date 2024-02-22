@@ -64,18 +64,18 @@ export const Builder = () => {
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
               <div className="mx-2 my-6 flex w-full justify-evenly">
-                {builder?.github_url && (
+                {builder?.githubUrl && (
                   <a
-                    href={builder?.github_url}
+                    href={builder?.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <BsGithub size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
-                {builder?.twitter_url && (
+                {builder?.twitterUrl && (
                   <a
-                    href={builder?.twitter_url}
+                    href={builder?.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -91,9 +91,9 @@ export const Builder = () => {
                     <GiBirdMask size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
-                {builder?.website_url && (
+                {builder?.websiteUrl && (
                   <a
-                    href={builder?.website_url}
+                    href={builder?.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

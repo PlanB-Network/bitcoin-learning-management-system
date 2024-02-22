@@ -12,7 +12,7 @@ export const createGetBuilders =
       ...row,
       logo: computeAssetCdnUrl(
         process.env['CDN_URL'] || 'http://localhost:8080',
-        row.last_commit,
+        row.lastCommit,
         row.path,
         'logo.jpeg',
       ),

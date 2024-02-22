@@ -1,5 +1,5 @@
 import { sql } from '@sovereign-university/database';
-import type { QuizAttempt } from '@sovereign-university/types';
+import type { CourseQuizAttempts } from '@sovereign-university/types';
 
 export const insertQuizAttempt = ({
   uid,
@@ -16,7 +16,7 @@ export const insertQuizAttempt = ({
   questionsCount: number;
   correctAnswersCount: number;
 }) => {
-  return sql<QuizAttempt[]>`
+  return sql<CourseQuizAttempts[]>`
     INSERT INTO users.quiz_attempts (
       uid, course_id, part, chapter, questions_count, correct_answers_count
     ) VALUES (

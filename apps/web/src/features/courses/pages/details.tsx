@@ -85,8 +85,8 @@ export const CourseDetails: React.FC = () => {
     () =>
       payments?.some(
         (coursePayment) =>
-          coursePayment.payment_status === 'paid' &&
-          coursePayment.course_id === courseId,
+          coursePayment.paymentStatus === 'paid' &&
+          coursePayment.courseId === courseId,
       ),
     [courseId, payments],
   );
@@ -99,7 +99,7 @@ export const CourseDetails: React.FC = () => {
 
   const buttonProps = useMemo(
     () =>
-      course?.requires_payment && !isCoursePaid
+      course?.requiresPayment && !isCoursePaid
         ? {
             iconLeft: <FaLock />,
             onClick: () => {
@@ -113,10 +113,10 @@ export const CourseDetails: React.FC = () => {
             variant: 'primary' as const,
           }
         : { variant: 'tertiary' as const },
-    [course?.requires_payment, isCoursePaid, isLoggedIn, openAuthModal],
+    [course?.requiresPayment, isCoursePaid, isLoggedIn, openAuthModal],
   );
 
-  const displayBuyCourse = course?.requires_payment && !isCoursePaid;
+  const displayBuyCourse = course?.requiresPayment && !isCoursePaid;
 
   // TODO fix this february hack
   const isLinkDisabled =
@@ -147,9 +147,9 @@ export const CourseDetails: React.FC = () => {
   }, []);
 
   let satsPrice = -1;
-  if (course && course.paid_price_euros && conversionRate) {
+  if (course && course.paidPriceEuros && conversionRate) {
     satsPrice = Math.round(
-      (course.paid_price_euros * 100_000_000) / conversionRate,
+      (course.paidPriceEuros * 100_000_000) / conversionRate,
     );
   }
 
@@ -236,7 +236,7 @@ export const CourseDetails: React.FC = () => {
         <div className="w-full px-2 sm:pl-2 sm:pr-10">
           <img
             src={computeAssetCdnUrl(
-              course.last_commit,
+              course.lastCommit,
               `courses/${course.id}/assets/thumbnail.png`,
             )}
             alt=""
@@ -370,7 +370,7 @@ export const CourseDetails: React.FC = () => {
             {t('courses.details.description')}
           </h4>
           <ReactMarkdown
-            children={course.raw_description}
+            children={course.rawDescription}
             components={{
               h1: ({ children }) => (
                 <h3 className="mb-2 text-[14px] font-medium text-blue-800 sm:mb-5 sm:text-2xl sm:font-normal sm:text-blue-900">
@@ -399,7 +399,7 @@ export const CourseDetails: React.FC = () => {
             {t('courses.details.objectivesTitle')}
           </h3>
           <ul className="space-y-2 text-xs font-light capitalize text-blue-800 sm:text-base sm:uppercase">
-            {course.objectives?.map((goal, index) => (
+            {(course.objectives as unknown as string[])?.map((goal, index) => (
               <li
                 className="flex flex-row items-center sm:items-start sm:space-x-3"
                 key={index}
@@ -462,7 +462,7 @@ export const CourseDetails: React.FC = () => {
                         'ml-1 text-base font-normal capitalize  sm:text-lg sm:uppercase text-orange-500',
                       )}
                     >
-                      {part.title}
+                      {/* {part.title} // TODO FIX THIS */}
                     </p>
                   </Link>
                 </div>
@@ -520,7 +520,9 @@ export const CourseDetails: React.FC = () => {
               <Link
                 to={'/professor/$professorId'}
                 params={{
-                  professorId: professor.id.toString(),
+                  professorId: professor.id
+                    ? professor.id.toString()
+                    : undefined,
                 }}
                 key={professor.id}
               >
@@ -555,7 +557,7 @@ export const CourseDetails: React.FC = () => {
               size={isScreenMd ? 'l' : 's'}
               disabled={isButtonDisabled}
               {...buttonProps}
-              {...(course.requires_payment
+              {...(course.requiresPayment
                 ? {}
                 : {
                     iconRight: <BsRocketTakeoff />,

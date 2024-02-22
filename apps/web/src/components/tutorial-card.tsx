@@ -25,11 +25,11 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
             src={
               tutorial.builder
                 ? computeAssetCdnUrl(
-                    tutorial.builder.last_commit,
+                    tutorial.builder.lastCommit,
                     `${tutorial.builder.path}/assets/logo.jpeg`,
                   )
                 : computeAssetCdnUrl(
-                    tutorial.last_commit,
+                    tutorial.lastCommit,
                     `${tutorial.path}/assets/logo.jpeg`,
                   )
             }
@@ -64,11 +64,11 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
                 src={
                   tutorial.builder
                     ? computeAssetCdnUrl(
-                        tutorial.builder.last_commit,
+                        tutorial.builder.lastCommit,
                         `${tutorial.builder.path}/assets/logo.jpeg`,
                       )
                     : computeAssetCdnUrl(
-                        tutorial.last_commit,
+                        tutorial.lastCommit,
                         `${tutorial.path}/assets/logo.jpeg`,
                       )
                 }

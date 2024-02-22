@@ -2,7 +2,7 @@ import { sql } from '@sovereign-university/database';
 import type { CourseChapter } from '@sovereign-university/types';
 
 export const getNextChaptersQuery = (uid: string) => {
-  return sql<Array<Pick<CourseChapter, 'course_id' | 'part' | 'chapter'>>>`
+  return sql<Array<Pick<CourseChapter, 'courseId' | 'part' | 'chapter'>>>`
     WITH AllChapters AS (
       SELECT DISTINCT c.course_id, cp.part, cp.chapter
       FROM content.course_chapters cp

@@ -16,7 +16,7 @@ interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   lightningAddress: string;
-  userName: string;
+  userName: string | undefined;
 }
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);

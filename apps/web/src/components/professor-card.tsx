@@ -14,12 +14,12 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-base  text-blue-800">
       <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.courses_count}</div>
+        <div className="font-semibold">{professor.coursesCount}</div>
         <div className="">{t('words.courses')}</div>
       </div>
       <span className="text-3xl">•</span>
       <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.tutorials_count}</div>
+        <div className="font-semibold">{professor.tutorialsCount}</div>
         <div className="">{t('words.tutorials')}</div>
       </div>
     </div>
@@ -29,7 +29,7 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
 const TopicTags = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-4 flex flex-wrap  items-start gap-2.5 self-stretch text-xs text-blue-700">
-      {professor.tags.map((tag) => {
+      {professor.tags?.map((tag) => {
         return (
           <div
             key={tag}
@@ -52,7 +52,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             e.preventDefault();
             e.stopPropagation();
             window.open(
-              professor.links.twitter,
+              professor.links.twitter as string,
               '_blank',
               'noopener noreferrer',
             );
@@ -67,7 +67,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             e.preventDefault();
             e.stopPropagation();
             window.open(
-              professor.links.website,
+              professor.links.website as string,
               '_blank',
               'noopener noreferrer',
             );

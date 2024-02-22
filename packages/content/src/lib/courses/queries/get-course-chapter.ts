@@ -14,9 +14,9 @@ export const getCourseChapterQuery = (
     Array<
       Pick<
         CourseChapterLocalized,
-        'part' | 'chapter' | 'language' | 'title' | 'raw_content'
+        'part' | 'chapter' | 'language' | 'title' | 'rawContent'
       > &
-        Pick<Course, 'last_commit' | 'last_updated'>
+        Pick<Course, 'lastCommit' | 'lastUpdated'>
     >
   >`
     SELECT part, chapter, language, title, raw_content, c.last_updated, c.last_commit

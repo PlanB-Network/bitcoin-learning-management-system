@@ -1,8 +1,8 @@
 import { sql } from '@sovereign-university/database';
-import type { JoinedTutorialCredits } from '@sovereign-university/types';
+import type { JoinedTutorialCredit } from '@sovereign-university/types';
 
 export const getCreditsQuery = (id: number, language?: string) => {
-  return sql<JoinedTutorialCredits[]>`
+  return sql<JoinedTutorialCredit[]>`
     SELECT 
         tc.*,
         row_to_json(professor) AS professor

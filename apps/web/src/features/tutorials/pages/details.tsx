@@ -105,9 +105,9 @@ export const TutorialDetails = () => {
             <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
               {header(tutorial)}
               <TutorialsMarkdownBody
-                content={tutorial.raw_content}
+                content={tutorial.rawContent}
                 assetPrefix={computeAssetCdnUrl(
-                  tutorial.last_commit,
+                  tutorial.lastCommit,
                   tutorial.path,
                 )}
               />

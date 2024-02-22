@@ -15,7 +15,6 @@ export const paymentWebhooksProcedure = publicProcedure
       isExpired: z.boolean(),
     }),
   )
-  .output(z.any())
   .mutation(({ ctx, input }) =>
     createUpdatePayment(ctx.dependencies)({
       id: input.id,

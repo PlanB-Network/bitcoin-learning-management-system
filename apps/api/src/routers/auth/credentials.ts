@@ -101,14 +101,14 @@ export const credentialsAuthRouter = createTRPCRouter({
         });
       }
 
-      if (!user.password_hash) {
+      if (!user.passwordHash) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'This user has no password, try another login method',
         });
       }
 
-      if (!(await verifyHash(user.password_hash, input.password))) {
+      if (!(await verifyHash(user.passwordHash, input.password))) {
         throw new TRPCError({
           code: 'UNAUTHORIZED',
           message: 'Invalid credentials',

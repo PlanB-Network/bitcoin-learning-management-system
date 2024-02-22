@@ -39,7 +39,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                     e.preventDefault();
                     e.stopPropagation();
                     window.open(
-                      professor.links.twitter,
+                      professor.links.twitter as string,
                       '_blank',
                       'noopener noreferrer',
                     );
@@ -54,7 +54,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                     e.preventDefault();
                     e.stopPropagation();
                     window.open(
-                      professor.links.website,
+                      professor.links.website as string,
                       '_blank',
                       'noopener noreferrer',
                     );
@@ -74,14 +74,14 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
                   <div className="flex items-center gap-2 ">
                     <div className="font-semibold">
-                      {professor.courses_count}
+                      {professor.coursesCount}
                     </div>
                     <div className="">{t('words.courses')}</div>
                   </div>
                   <span className="text-lg sm:text-3xl">•</span>
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">
-                      {professor.tutorials_count}
+                      {professor.tutorialsCount}
                     </div>
                     <div className="">{t('words.tutorials')}</div>
                   </div>

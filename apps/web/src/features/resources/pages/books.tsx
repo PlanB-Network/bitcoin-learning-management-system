@@ -16,7 +16,7 @@ export const Books = () => {
   });
 
   const sortedBooks: JoinedBook[] = books
-    ? books.sort((a, b) => a.title.localeCompare(b.title))
+    ? (books.sort((a, b) => a.title.localeCompare(b.title)) as JoinedBook[]) // Todo remove this as
     : [];
 
   return (
@@ -44,7 +44,13 @@ export const Books = () => {
                 key={book.id}
               >
                 <div className="z-10 mb-2 h-fit px-2 pt-2 transition duration-500 ease-in-out group-hover:scale-125 group-hover:bg-orange-400">
-                  <img className="mx-auto" src={book.cover} alt={book.title} />
+                  {book.cover && (
+                    <img
+                      className="mx-auto"
+                      src={book.cover}
+                      alt={book.title}
+                    />
+                  )}
                   <div className="absolute inset-x-0 rounded-b-lg px-4 py-2 text-left text-xs font-light text-white transition-colors duration-500 ease-in-out group-hover:bg-orange-400">
                     <ul className="opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                       <li className={'pb-1 text-lg font-bold'}>{book.title}</li>
@@ -53,10 +59,10 @@ export const Books = () => {
                           {t('library.writtenBy', { author: book.author })}
                         </li>
                       )}
-                      {book.publication_year && (
+                      {book.publicationYear && (
                         <li className={'pb-1 text-xs italic'}>
                           {t('library.publishedIn', {
-                            date: book.publication_year,
+                            date: book.publicationYear,
                           })}
                         </li>
                       )}

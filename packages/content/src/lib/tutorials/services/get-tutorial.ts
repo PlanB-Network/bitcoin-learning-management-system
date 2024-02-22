@@ -51,11 +51,11 @@ export const createGetTutorial =
           ? formatProfessor(credits.professor)
           : undefined,
         tips: {
-          lightningAddress: credits.lightning_address,
-          lnurlPay: credits.lnurl_pay,
+          lightningAddress: credits.lightningAddress,
+          lnurlPay: credits.lnurlPay,
           paynym: credits.paynym,
-          silentPayment: credits.silent_payment,
-          url: credits.tips_url,
+          silentPayment: credits.silentPayment,
+          url: credits.tipsUrl,
         },
       },
     };

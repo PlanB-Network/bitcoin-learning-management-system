@@ -80,6 +80,7 @@ export const createPostgresClient = ({
       },
     },
     transform: {
+      ...postgres.camel,
       // Convert undefined values to null postgres values
       undefined: null,
       // Convert null postgres values to undefined

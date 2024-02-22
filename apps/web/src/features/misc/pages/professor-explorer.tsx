@@ -25,7 +25,9 @@ export const ProfessorExplorer = () => {
               <Link
                 to={'/professor/$professorId'}
                 params={{
-                  professorId: professor.id.toString(),
+                  professorId: professor.id
+                    ? professor.id.toString()
+                    : undefined,
                 }}
                 key={professor.id}
                 className="h-auto w-full sm:w-auto"

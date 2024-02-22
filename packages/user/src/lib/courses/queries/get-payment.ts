@@ -6,7 +6,7 @@ export const getPaymentQuery = (uid: string) => {
     Array<
       Pick<
         CoursePayment,
-        'course_id' | 'payment_status' | 'amount' | 'payment_id' | 'invoice_url'
+        'courseId' | 'paymentStatus' | 'amount' | 'paymentId' | 'invoiceUrl'
       >
     >
   >`

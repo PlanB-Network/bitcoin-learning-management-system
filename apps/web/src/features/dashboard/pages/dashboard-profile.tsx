@@ -39,7 +39,7 @@ export const DashboardProfile = () => {
                 <label>Email</label>
                 <input
                   type="text"
-                  value={user?.email}
+                  value={user?.email ? (user?.email as string) : ''}
                   disabled
                   className="rounded-lg bg-[#e9e9e91a] px-4 py-1 text-gray-400"
                 />

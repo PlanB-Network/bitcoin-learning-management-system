@@ -35,14 +35,14 @@ export const createChangePassword =
       });
     }
 
-    if (!user.password_hash) {
+    if (!user.passwordHash) {
       throw new TRPCError({
         code: 'BAD_REQUEST',
         message: 'This user has no password, try another login method',
       });
     }
 
-    if (!(await verifyHash(user.password_hash, oldPassword))) {
+    if (!(await verifyHash(user.passwordHash, oldPassword))) {
       throw new TRPCError({
         code: 'UNAUTHORIZED',
         message: 'Invalid credentials',

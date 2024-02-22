@@ -17,7 +17,7 @@ export const createGetPodcast =
         ...podcast,
         logo: computeAssetCdnUrl(
           process.env['CDN_URL'] || 'http://localhost:8080',
-          podcast.last_commit,
+          podcast.lastCommit,
           podcast.path,
           'logo.jpeg',
         ),

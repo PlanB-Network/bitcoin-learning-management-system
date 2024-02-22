@@ -109,7 +109,7 @@ export const Book = () => {
 
                   <div className="mt-2 text-sm">
                     <h5 className="font-light italic">
-                      {book?.author}, {book?.publication_year}.
+                      {book?.author}, {book?.publicationYear}.
                     </h5>
                   </div>
                 </div>
@@ -133,9 +133,9 @@ export const Book = () => {
 
           <div className="mx-auto my-6 flex flex-row justify-between p-2">
             <div className="flex flex-col">
-              {!book?.summary_text && (
+              {!book?.summaryText && (
                 <BookSummary
-                  content={book?.summary_text}
+                  content={book?.summaryText as string}
                   title={book?.title ? book?.title : ''}
                 />
               )}

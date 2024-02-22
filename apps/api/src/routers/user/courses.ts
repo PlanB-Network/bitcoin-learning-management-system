@@ -99,7 +99,6 @@ const getPaymentProcedure = protectedProcedure
     openapi: { method: 'GET', path: '/users/courses/payment' },
   })
   .input(z.void())
-  .output(z.any())
   .query(({ ctx }) =>
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
   );

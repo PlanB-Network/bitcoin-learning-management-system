@@ -8,6 +8,7 @@ import {
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
+  courseQuizAttemptsSchema,
 } from '@sovereign-university/schemas';
 
 export type CourseCompletedChapters = z.infer<
@@ -18,3 +19,4 @@ export type CourseProgressExtended = z.infer<
   typeof courseProgressExtendedSchema
 >;
 export type CourseProgress = z.infer<typeof courseProgressSchema>;
+export type CourseQuizAttempts = z.infer<typeof courseQuizAttemptsSchema>;

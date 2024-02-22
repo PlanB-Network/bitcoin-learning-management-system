@@ -22,8 +22,10 @@ export const createGetCourses =
 
     return courses.map((course) => ({
       ...course,
-      professors: professors.filter((professor) =>
-        course.professors.includes(professor.contributor_id),
+      professors: professors.filter(
+        (professor) =>
+          professor.contributorId !== undefined &&
+          course.professors.includes(professor.contributorId),
       ),
     }));
   };

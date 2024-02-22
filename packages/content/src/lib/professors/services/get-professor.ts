@@ -22,7 +22,7 @@ export const createGetProfessor =
 
     const courses = await postgres.exec(
       getProfessorCoursesQuery({
-        contributorId: professor.contributor_id,
+        contributorId: professor.contributorId,
         language,
       }),
     );
@@ -40,7 +40,7 @@ export const createGetProfessor =
 
     const tutorials = await postgres.exec(
       getProfessorTutorialsQuery({
-        contributorId: professor.contributor_id,
+        contributorId: professor.contributorId,
         language,
       }),
     );
@@ -49,8 +49,10 @@ export const createGetProfessor =
       ...formatProfessor(professor),
       courses: courses.map((course) => ({
         ...course,
-        professors: professors.filter((professor) =>
-          course.professors.includes(professor.contributor_id),
+        professors: professors.filter(
+          (professor) =>
+            professor.contributorId !== undefined &&
+            course.professors.includes(professor.contributorId),
         ),
       })),
       tutorials,

@@ -212,7 +212,13 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             })}
           </span>
         </div>
-        <div>{joinWords(chapter.course.professors.map((p) => p.name))}</div>
+        <div>
+          {joinWords(
+            chapter.course.professors
+              .map((p) => p.name)
+              .filter((name): name is string => name !== undefined),
+          )}
+        </div>
       </div>
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
@@ -411,9 +417,9 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
 const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
   return (
     <CoursesMarkdownBody
-      content={chapter.raw_content}
+      content={chapter.rawContent}
       assetPrefix={computeAssetCdnUrl(
-        chapter.last_commit,
+        chapter.lastCommit,
         `courses/${chapter.course.id}`,
       )}
     />
@@ -435,7 +441,7 @@ function getRandomQuestions(
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapQuizzToQuestions(quizzArray: any[]): Question[] {
   return quizzArray.map((quizz) => {
-    const answers = [quizz.answer, ...quizz.wrong_answers];
+    const answers = [quizz.answer, ...quizz.wrongAnswers];
     const shuffledAnswers = shuffleArray(answers);
     const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
 
@@ -505,7 +511,7 @@ export const CourseChapter = () => {
       const sections: string[] = [];
 
       let match;
-      while ((match = regex.exec(chapter.raw_content)) !== null) {
+      while ((match = regex.exec(chapter.rawContent)) !== null) {
         sections.push(match[1]);
       }
 

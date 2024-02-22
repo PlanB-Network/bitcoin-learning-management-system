@@ -50,7 +50,7 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
           </span>
           <img
             src={computeAssetCdnUrl(
-              course.last_commit,
+              course.lastCommit,
               `courses/${course.id}/assets/thumbnail.png`,
             )}
             alt="Course Thumbnail"
@@ -64,10 +64,15 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
             </span>
             <span className="inline text-base md:hidden">{course.name}</span>
           </h5>
+          onst sortedBooks: JoinedBook[] = book
           <hr className="border-blue-1000 mt-1 hidden w-24 md:inline" />
           <h6 className="mt-2 hidden text-xs font-light italic text-gray-700 md:block md:text-xs">
             {t('courses.preview.by', {
-              professor: joinWords(course.professors.map((p) => p.name)),
+              professor: joinWords(
+                course.professors
+                  .map((p) => p.name)
+                  .filter((name): name is string => name !== undefined),
+              ),
             })}
           </h6>
           <div className="text-blue-1000 mt-1 overflow-hidden text-ellipsis text-xs italic tracking-wide md:mt-3 md:line-clamp-4 md:text-sm">
