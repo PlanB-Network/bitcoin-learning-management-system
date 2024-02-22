@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "drizzle/schema.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["vitest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
   "compilerOptions": {
     "outDir": "dist",

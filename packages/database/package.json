@@ -2,22 +2,43 @@
   "name": "@sovereign-university/database",
   "version": "0.0.1",
   "type": "module",
-  "exports": {
-    "development": "./src/index.ts",
-    "import": "./dist/index.js",
-    "types": "./src/index.ts"
-  },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "imports": {
+    "#src/*": "./src/*",
+    "#drizzle/*": "./drizzle/*"
+  },
+  "exports": {
+    ".": {
+      "development": "./src/index.ts",
+      "import": "./dist/index.js",
+      "types": "./src/index.ts"
+    },
+    "./schemas": {
+      "development": "./drizzle/schema.ts",
+      "import": "./dist/drizzle/schema.js",
+      "types": "./drizzle/schema.ts"
+    }
+  },
   "scripts": {
     "build": "tsc --build tsconfig.lib.json",
     "lint": "eslint --color './**/*.ts'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "drizzle:check": "drizzle-kit check:pg --config=drizzle.config.ts",
+    "drizzle:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
+    "drizzle:introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
+    "drizzle:push": "drizzle-kit push:pg --config=drizzle.config.ts",
+    "drizzle:studio": "drizzle-kit studio",
+    "drizzle:up": "drizzle-kit up:pg --config=drizzle.config.ts",
+    "db:migrate": "tsx ./scripts/migrate.ts"
   },
   "dependencies": {
+    "drizzle-orm": "0.29.3",
     "postgres": "3.4.3"
   },
   "devDependencies": {
-    "dotenv": "^16.4.2"
+    "dotenv": "^16.4.2",
+    "drizzle-kit": "0.20.14",
+    "pg": "8.11.3"
   }
 }

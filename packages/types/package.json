@@ -12,10 +12,12 @@
   "scripts": {
     "build": "tsc --build tsconfig.lib.json",
     "lint": "eslint --color './**/*.ts'",
+    "types:generate": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
     "type-check": "tsc --build"
   },
   "devDependencies": {
+    "@sovereign-university/schemas": "workspace:*",
     "@types/express-session": "^1.17.10",
-    "kanel": "^3.5.3"
+    "zod": "3.22.4"
   }
 }
