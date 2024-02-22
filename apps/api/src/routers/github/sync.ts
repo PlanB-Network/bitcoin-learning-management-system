@@ -14,7 +14,6 @@ import { publicProcedure } from '../../procedures/index.js';
 
 // TODO: Protect this endpoint (admin only when we have roles)
 export const syncProcedure = publicProcedure
-  .meta({ openapi: { method: 'POST', path: '/github/sync' } })
   .input(z.void())
   .output(
     z.object({

@@ -7,12 +7,6 @@ import { credentialsAuthRouter } from './credentials.js';
 import { lud4AuthRouter } from './lud4.js';
 
 const logoutProcedure = protectedProcedure
-  .meta({
-    openapi: {
-      method: 'POST',
-      path: '/auth/logout',
-    },
-  })
   .input(z.void())
   .output(
     z.object({

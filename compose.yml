@@ -106,7 +106,7 @@ services:
       - cdn:$CDN_PATH
     healthcheck:
       <<: *healthcheck
-      test: ['CMD', 'nc', '-zv', 'localhost', '4200']
+      test: ['CMD', 'nc', '-zv', 'localhost', '8181']
 
 volumes:
   postgres:

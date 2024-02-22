@@ -12,9 +12,6 @@ import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const completeChapterProcedure = protectedProcedure
-  .meta({
-    openapi: { method: 'POST', path: '/users/courses/chapters/complete' },
-  })
   .input(
     z.object({
       courseId: z.string(),
@@ -33,9 +30,6 @@ const completeChapterProcedure = protectedProcedure
   );
 
 const getProgressProcedure = protectedProcedure
-  .meta({
-    openapi: { method: 'GET', path: '/users/courses/progress' },
-  })
   .input(z.void())
 
   .query(({ ctx }) =>
@@ -43,9 +37,6 @@ const getProgressProcedure = protectedProcedure
   );
 
 const saveQuizAttemptProcedure = protectedProcedure
-  .meta({
-    openapi: { method: 'POST', path: '/users/courses/quiz' },
-  })
   .input(
     z.object({
       courseId: z.string(),
@@ -68,9 +59,6 @@ const saveQuizAttemptProcedure = protectedProcedure
   );
 
 const savePaymentProcedure = protectedProcedure
-  .meta({
-    openapi: { method: 'POST', path: '/users/courses/payment' },
-  })
   .input(
     z.object({
       courseId: z.string(),
@@ -95,9 +83,6 @@ const savePaymentProcedure = protectedProcedure
   );
 
 const getPaymentProcedure = protectedProcedure
-  .meta({
-    openapi: { method: 'GET', path: '/users/courses/payment' },
-  })
   .input(z.void())
   .query(({ ctx }) =>
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),

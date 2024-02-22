@@ -22,7 +22,6 @@
     "simple-git": "^3.22.0"
   },
   "devDependencies": {
-    "@octokit/openapi-types": "19.1.0",
     "@octokit/webhooks-types": "7.3.2",
     "@sovereign-university/types": "workspace:*",
     "@types/async": "^3.2.24"

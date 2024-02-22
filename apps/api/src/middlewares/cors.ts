@@ -5,7 +5,7 @@ export const createCorsMiddleware = () => {
   const allowedOrigins =
     process.env.NODE_ENV === 'production'
       ? new Set([`https://${process.env.DOMAIN}`])
-      : new Set(['http://localhost:4200']);
+      : new Set(['http://localhost:8181']);
 
   const cors = createCors({
     credentials: true,

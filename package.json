@@ -40,8 +40,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "postgres@3.4.3": "patches/postgres@3.4.3.patch",
-      "trpc-openapi@1.2.0": "patches/trpc-openapi@1.2.0.patch"
+      "postgres@3.4.3": "patches/postgres@3.4.3.patch"
     }
   }
 }

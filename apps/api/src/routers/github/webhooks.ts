@@ -9,7 +9,6 @@ import {
 import { publicProcedure } from '../../procedures/index.js';
 
 export const webhooksProcedure = publicProcedure
-  .meta({ openapi: { method: 'POST', path: '/github/webhooks' } })
   .input(z.object({}))
   .output(z.void())
   .mutation(async ({ ctx }) => {

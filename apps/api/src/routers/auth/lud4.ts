@@ -18,12 +18,6 @@ const lud4GenerateProcedure = publicProcedure
   );
 
 const lud4CallbackProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/auth/lud4',
-    },
-  })
   .input(
     z.object({
       tag: z.string(),

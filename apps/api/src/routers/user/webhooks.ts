@@ -5,9 +5,6 @@ import { createUpdatePayment } from '@sovereign-university/user';
 import { publicProcedure } from '../../procedures/index.js';
 
 export const paymentWebhooksProcedure = publicProcedure
-  .meta({
-    openapi: { method: 'POST', path: '/users/courses/payment/webhooks' },
-  })
   .input(
     z.object({
       id: z.string(),

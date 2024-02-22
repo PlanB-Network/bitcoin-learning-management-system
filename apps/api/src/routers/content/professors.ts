@@ -9,7 +9,6 @@ import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const getProfessorsProcedure = publicProcedure
-  .meta({ openapi: { method: 'GET', path: '/content/professors' } })
   .input(
     z
       .object({
@@ -22,12 +21,6 @@ const getProfessorsProcedure = publicProcedure
   );
 
 const getProfessorProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/professors/{professorId}/{language}',
-    },
-  })
   .input(
     z.object({
       professorId: z.number(),

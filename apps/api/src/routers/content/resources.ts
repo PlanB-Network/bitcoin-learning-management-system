@@ -14,25 +14,15 @@ import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const createGetResourcesProcedure = (category: ResourceCategory) => {
-  return publicProcedure
-    .meta({
-      openapi: {
-        method: 'GET',
-        path: `/content/resources/${category}`,
-      },
-    })
-    .input(z.object({ language: z.string().optional() }).optional());
+  return publicProcedure.input(
+    z.object({ language: z.string().optional() }).optional(),
+  );
 };
 
 const createGetResourceProcedure = (category: ResourceCategory) => {
-  return publicProcedure
-    .meta({
-      openapi: {
-        method: 'GET',
-        path: `/content/resources/${category}/{id}/{language}`,
-      },
-    })
-    .input(z.object({ id: z.number(), language: z.string() }));
+  return publicProcedure.input(
+    z.object({ id: z.number(), language: z.string() }),
+  );
 };
 
 export const resourcesRouter = createTRPCRouter({

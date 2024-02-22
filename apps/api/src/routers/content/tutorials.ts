@@ -9,7 +9,6 @@ import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const getTutorialsProcedure = publicProcedure
-  .meta({ openapi: { method: 'GET', path: '/content/tutorials' } })
   .input(
     z
       .object({
@@ -23,7 +22,6 @@ const getTutorialsProcedure = publicProcedure
   );
 
 const getTutorialsByCategoryProcedure = publicProcedure
-  .meta({ openapi: { method: 'GET', path: '/content/tutorials/{category}' } })
   .input(
     z.object({
       category: z.string(),
@@ -36,12 +34,6 @@ const getTutorialsByCategoryProcedure = publicProcedure
   );
 
 const getTutorialProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/tutorials/{category}/{name}/{language}',
-    },
-  })
   .input(
     z.object({
       category: z.string(),

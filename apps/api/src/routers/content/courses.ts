@@ -12,7 +12,6 @@ import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const getCoursesProcedure = publicProcedure
-  .meta({ openapi: { method: 'GET', path: '/content/courses' } })
   .input(
     z
       .object({
@@ -25,9 +24,6 @@ const getCoursesProcedure = publicProcedure
   );
 
 const getCourseProcedure = publicProcedure
-  .meta({
-    openapi: { method: 'GET', path: '/content/courses/{id}/{language}' },
-  })
   .input(
     z.object({
       id: z.string(),
@@ -40,12 +36,6 @@ const getCourseProcedure = publicProcedure
   );
 
 const getCourseChaptersProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/courses/{id}/{language}/chapters',
-    },
-  })
   .input(
     z.object({
       id: z.string(),
@@ -58,12 +48,6 @@ const getCourseChaptersProcedure = publicProcedure
   );
 
 const getCourseChapterProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}',
-    },
-  })
   .input(
     z.object({
       courseId: z.string(),
@@ -83,12 +67,6 @@ const getCourseChapterProcedure = publicProcedure
   );
 
 const getCourseChapterQuizQuestionsProcedure = publicProcedure
-  .meta({
-    openapi: {
-      method: 'GET',
-      path: '/content/courses/{courseId}/{language}/{partIndex}/{chapterIndex}/questions',
-    },
-  })
   .input(
     z.object({
       courseId: z.string(),

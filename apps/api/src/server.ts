@@ -1,18 +1,11 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router, json } from 'express';
-import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 
 import type { Dependencies } from './dependencies.js';
 import { createCorsMiddleware } from './middlewares/cors.js';
 import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
 import { appRouter } from './routers/router.js';
 import { createContext } from './trpc/index.js';
-
-/* const openApiDocument = generateOpenApiDocument(appRouter, {
-  title: 'The Sovereign University API',
-  version: '0.0.1',
-  baseUrl: `http://${host}:${port}/api`,
-}); */
 
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const app = express();
@@ -38,31 +31,6 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     createExpressMiddleware({
       router: appRouter,
       createContext: (opts) => createContext(opts, dependencies),
-    }),
-  );
-
-  // Register REST (OpenAPI) routes
-  router.use(
-    '/',
-    createOpenApiExpressMiddleware({
-      router: appRouter,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      createContext: (opts: any) => createContext(opts, dependencies),
-      onError:
-        process.env.NODE_ENV === 'development'
-          ? // @ts-expect-error - Until trpc-openapi is updated to support trpc v11
-            ({ req, error }) => {
-              console.error(
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                `❌ OpenAPI failed on ${req.url ?? '<no-path>'}: ${
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  error.message
-                }`,
-              );
-            }
-          : undefined,
-      responseMeta: () => {},
-      maxBodySize: '1mb',
     }),
   );
 
