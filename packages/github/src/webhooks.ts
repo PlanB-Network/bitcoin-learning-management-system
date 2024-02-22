@@ -1,38 +1,40 @@
-import { verify } from '@octokit/webhooks-methods';
-import type { PushEvent } from '@octokit/webhooks-types';
+// TODO remove all things related to the github webhook
 
-import { compareCommits } from './utils.js';
+// import { verify } from '@octokit/webhooks-methods';
+// import type { PushEvent } from '@octokit/webhooks-types';
 
-/**
- * GitHub sends its JSON with no indentation and no line break at the end
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const toNormalizedJsonString = (payload: any) => {
-  const payloadString = JSON.stringify(payload);
-  return payloadString.replaceAll(/[^\\]\\u[\da-f]{4}/g, (s) => {
-    return s.slice(0, 3) + s.slice(3).toUpperCase();
-  });
-};
+// import { compareCommits } from './utils.js';
 
-export const verifyWebhookPayload = async (
-  secret: string,
-  payload: object | string,
-  signature: string,
-) => {
-  if (!secret) throw new Error('GitHub Webhooks secret is required');
+// /**
+//  * GitHub sends its JSON with no indentation and no line break at the end
+//  */
+// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// const toNormalizedJsonString = (payload: any) => {
+//   const payloadString = JSON.stringify(payload);
+//   return payloadString.replaceAll(/[^\\]\\u[\da-f]{4}/g, (s) => {
+//     return s.slice(0, 3) + s.slice(3).toUpperCase();
+//   });
+// };
 
-  return verify(
-    secret,
-    typeof payload === 'object' ? toNormalizedJsonString(payload) : payload,
-    signature,
-  );
-};
+// export const verifyWebhookPayload = async (
+//   secret: string,
+//   payload: object | string,
+//   signature: string,
+// ) => {
+//   if (!secret) throw new Error('GitHub Webhooks secret is required');
 
-export const processWebhookPayload = async (payload: PushEvent) => {
-  return compareCommits(
-    payload.repository.html_url,
-    payload.repository.default_branch,
-    payload.before,
-    payload.after,
-  );
-};
+//   return verify(
+//     secret,
+//     typeof payload === 'object' ? toNormalizedJsonString(payload) : payload,
+//     signature,
+//   );
+// };
+
+// // export const processWebhookPayload = async (payload: PushEvent) => {
+// //   return compareCommits(
+// //     payload.repository.html_url,
+// //     payload.repository.default_branch,
+// //     payload.before,
+// //     payload.after,
+// //   );
+// // };

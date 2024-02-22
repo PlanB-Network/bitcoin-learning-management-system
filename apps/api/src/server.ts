@@ -4,7 +4,8 @@ import express, { Router, json } from 'express';
 import type { Dependencies } from './dependencies.js';
 import { createCorsMiddleware } from './middlewares/cors.js';
 import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
-import { appRouter } from './routers/router.js';
+import { createRestRouter } from './routers/rest-router.js';
+import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
 
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
@@ -29,16 +30,16 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   router.use(
     '/trpc',
     createExpressMiddleware({
-      router: appRouter,
+      router: trpcRouter,
       createContext: (opts) => createContext(opts, dependencies),
     }),
   );
 
-  if (process.env.NODE_ENV === 'development') {
-    app.use('/api', router);
-  } else {
-    app.use('/', router);
-  }
+  const restRouter = createRestRouter(dependencies);
+
+  const baseRoute = process.env.NODE_ENV === 'development' ? '/api' : '/';
+  app.use(baseRoute, router);
+  app.use(baseRoute, restRouter);
 
   const server = app.listen(port, '0.0.0.0');
 
