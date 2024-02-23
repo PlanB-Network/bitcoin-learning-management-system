@@ -18,7 +18,7 @@ export const createGetProfessor =
       .exec(getProfessorQuery(id, language))
       .then(firstRow);
 
-    if (!professor) return;
+    if (!professor) throw new Error(`Professor not found`);
 
     const courses = await postgres.exec(
       getProfessorCoursesQuery({

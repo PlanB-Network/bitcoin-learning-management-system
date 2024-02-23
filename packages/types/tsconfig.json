@@ -5,5 +5,10 @@
     "outDir": "dist",
     "rootDir": ".",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../schemas/tsconfig.lib.json"
+    }
+  ]
 }

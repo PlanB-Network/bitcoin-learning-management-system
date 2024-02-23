@@ -80,12 +80,10 @@ export const createPostgresClient = ({
       },
     },
     transform: {
+      // eslint-disable-next-line import/no-named-as-default-member
       ...postgres.camel,
       // Convert undefined values to null postgres values
       undefined: null,
-      // Convert null postgres values to undefined
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      value: (value) => value ?? undefined,
     },
   }) as PostgresClient;
 

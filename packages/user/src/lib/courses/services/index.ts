@@ -1,4 +1,4 @@
-export * from './get-completed-chapters.js';
+export * from './complete-chapter.js';
 export * from './get-payment.js';
 export * from './get-progress.js';
 export * from './save-payment.js';

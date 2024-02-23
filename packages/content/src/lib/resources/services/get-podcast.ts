@@ -12,15 +12,15 @@ export const createGetPodcast =
       .exec(getPodcastQuery(id, language))
       .then(firstRow);
 
-    if (podcast) {
-      return {
-        ...podcast,
-        logo: computeAssetCdnUrl(
-          process.env['CDN_URL'] || 'http://localhost:8080',
-          podcast.lastCommit,
-          podcast.path,
-          'logo.jpeg',
-        ),
-      };
-    }
+    if (!podcast) throw new Error('Podcast not found');
+
+    return {
+      ...podcast,
+      logo: computeAssetCdnUrl(
+        process.env['CDN_URL'] || 'http://localhost:8080',
+        podcast.lastCommit,
+        podcast.path,
+        'logo.jpeg',
+      ),
+    };
   };

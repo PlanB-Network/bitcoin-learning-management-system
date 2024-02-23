@@ -10,17 +10,17 @@ export const createGetBook =
 
     const book = await postgres.exec(getBookQuery(id, language)).then(firstRow);
 
-    if (book) {
-      return {
-        ...book,
-        cover: book.cover
-          ? computeAssetCdnUrl(
-              process.env['CDN_URL'] || 'http://localhost:8080',
-              book.lastCommit,
-              book.path,
-              book.cover,
-            )
-          : undefined,
-      };
-    }
+    if (!book) throw new Error('Book not found');
+
+    return {
+      ...book,
+      cover: book.cover
+        ? computeAssetCdnUrl(
+            process.env['CDN_URL'] || 'http://localhost:8080',
+            book.lastCommit,
+            book.path,
+            book.cover,
+          )
+        : undefined,
+    };
   };

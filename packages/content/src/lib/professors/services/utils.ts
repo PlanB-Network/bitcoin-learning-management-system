@@ -1,21 +1,19 @@
-import _ from 'lodash';
-
 import type { JoinedProfessor } from '@sovereign-university/types';
 
-import { computeAssetCdnUrl } from '../../utils.js';
+import { computeAssetCdnUrl, omitWithTypes } from '#src/lib/utils.js';
 
 export const formatProfessor = (professor: JoinedProfessor) => {
   return {
-    ..._.omit(professor, [
-      'website_url',
-      'twitter_url',
-      'github_url',
+    ...omitWithTypes(professor, [
+      'websiteUrl',
+      'twitterUrl',
+      'githubUrl',
       'nostr',
-      'lightning_address',
-      'lnurl_pay',
+      'lightningAddress',
+      'lnurlPay',
       'paynym',
-      'silent_payment',
-      'tips_url',
+      'silentPayment',
+      'tipsUrl',
     ]),
     links: {
       website: professor.websiteUrl,

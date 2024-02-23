@@ -1,4 +1,8 @@
 #!/usr/bin/env tsx
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -7,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'jsonc-parser';
 
 const currentDirectoryPath = path.dirname(fileURLToPath(import.meta.url));
-const rootDirectoryPath = path.resolve(currentDirectoryPath, '../index.js');
+const rootDirectoryPath = path.resolve(currentDirectoryPath, '..');
 
 const packagesDirectoryPath = path.join(rootDirectoryPath, 'packages');
 const appsDirectoryPath = path.join(rootDirectoryPath, 'apps');
@@ -83,11 +87,15 @@ for (const currentDirectoryPath of allDirectoryPaths) {
 
     const newReferences: Array<{ path: string }> = [];
 
+    if (currentDirectoryPath.includes('web')) {
+      newReferences.push({ path: `../api/tsconfig.trpc.json` });
+    }
+
     if (combinedDependencies) {
       for (const dependency of Object.keys(combinedDependencies)) {
         if (dependency.startsWith('@sovereign-university/')) {
           const referenceName = dependency.split('/').pop();
-          if (!referenceName) continue;
+          if (!referenceName || referenceName === 'ui') continue;
 
           const targetDirectoryPath = path.join(
             packagesDirectoryPath,

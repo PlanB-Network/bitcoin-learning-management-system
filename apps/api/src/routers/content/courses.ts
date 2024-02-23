@@ -7,6 +7,14 @@ import {
   createGetCourseChapters,
   createGetCourses,
 } from '@sovereign-university/content';
+import {
+  coursePartSchema,
+  formattedProfessorSchema,
+  joinedCourseChapterSchema,
+  joinedCourseChapterWithContentSchema,
+  joinedCourseSchema,
+  joinedQuizQuestionSchema,
+} from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -19,6 +27,11 @@ const getCoursesProcedure = publicProcedure
       })
       .optional(),
   )
+  .output(
+    joinedCourseSchema
+      .merge(z.object({ professors: formattedProfessorSchema.array() }))
+      .array(),
+  )
   .query(async ({ ctx, input }) =>
     createGetCourses(ctx.dependencies)(input?.language),
   );
@@ -30,7 +43,22 @@ const getCourseProcedure = publicProcedure
       language: z.string(),
     }),
   )
-
+  .output(
+    joinedCourseSchema.merge(
+      z.object({
+        professors: formattedProfessorSchema.array(),
+        parts: coursePartSchema
+          .merge(
+            z.object({
+              chapters: joinedCourseChapterSchema.array(),
+            }),
+          )
+          .array(),
+        partsCount: z.number(),
+        chaptersCount: z.number(),
+      }),
+    ),
+  )
   .query(async ({ ctx, input }) =>
     createGetCourse(ctx.dependencies)(input.id, input.language),
   );
@@ -42,7 +70,7 @@ const getCourseChaptersProcedure = publicProcedure
       language: z.string(),
     }),
   )
-
+  .output(joinedCourseChapterSchema.array())
   .query(async ({ ctx, input }) =>
     createGetCourseChapters(ctx.dependencies)(input.id, input.language),
   );
@@ -56,7 +84,31 @@ const getCourseChapterProcedure = publicProcedure
       chapterIndex: z.string(),
     }),
   )
-
+  .output(
+    joinedCourseChapterWithContentSchema.merge(
+      z.object({
+        course: joinedCourseSchema.merge(
+          z.object({
+            professors: formattedProfessorSchema.array(),
+            parts: coursePartSchema
+              .merge(
+                z.object({
+                  chapters: joinedCourseChapterSchema.array(),
+                }),
+              )
+              .array(),
+            partsCount: z.number(),
+            chaptersCount: z.number(),
+          }),
+        ),
+        part: coursePartSchema.merge(
+          z.object({
+            chapters: joinedCourseChapterSchema.array(),
+          }),
+        ),
+      }),
+    ),
+  )
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,
@@ -75,7 +127,7 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
       chapterIndex: z.string(),
     }),
   )
-
+  .output(joinedQuizQuestionSchema.array())
   .query(async ({ ctx, input }) =>
     createGetCourseChapterQuizQuestions(ctx.dependencies)({
       courseId: input.courseId,

@@ -1,6 +1,6 @@
-import _ from 'lodash';
-
 import { firstRow } from '@sovereign-university/database';
+
+import { omitWithTypes } from '#src/lib/utils.js';
 
 import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
@@ -23,7 +23,7 @@ export const createGetTutorial =
       .exec(getTutorialQuery(category, name, language))
       .then(firstRow);
 
-    if (!tutorial) return;
+    if (!tutorial) throw new Error(`Tutorial not found`);
 
     const credits = await postgres
       .exec(getCreditsQuery(tutorial.id))
@@ -38,14 +38,14 @@ export const createGetTutorial =
     return {
       ...tutorial,
       credits: {
-        ..._.omit(credits, [
-          'tutorial_id',
-          'contributor_id',
-          'lightning_address',
-          'lnurl_pay',
+        ...omitWithTypes(credits, [
+          'tutorialId',
+          'contributorId',
+          'lightningAddress',
+          'lnurlPay',
           'paynym',
-          'silent_payment',
-          'tips_url',
+          'silentPayment',
+          'tipsUrl',
         ]),
         professor: credits.professor
           ? formatProfessor(credits.professor)

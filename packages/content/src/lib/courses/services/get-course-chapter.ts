@@ -20,13 +20,11 @@ export const createGetCourseChapter =
       .exec(getCourseChapterQuery(courseId, partIndex, chapterIndex, language))
       .then(firstRow);
 
-    if (!chapter) return;
-
     const course = await getCourse(courseId, language);
     const part = course.parts.find((part) => part.part === partIndex);
 
     // Should never happen if a chapter was found
-    if (!part) return;
+    if (!chapter || !part) throw new Error('Chapter not found');
 
     return {
       ...chapter,

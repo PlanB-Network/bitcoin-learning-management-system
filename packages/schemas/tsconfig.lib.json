@@ -11,5 +11,10 @@
     "declarationMap": true,
     "sourceMap": true,
     "incremental": true
-  }
+  },
+  "references": [
+    {
+      "path": "../database/tsconfig.lib.json"
+    }
+  ]
 }

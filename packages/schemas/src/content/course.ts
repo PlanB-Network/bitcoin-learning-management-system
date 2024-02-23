@@ -61,10 +61,24 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     language: true,
     title: true,
     sections: true,
-    rawContent: true,
   })
   .merge(
     z.object({
       partTitle: z.string(),
+    }),
+  );
+
+export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
+  .pick({
+    part: true,
+    chapter: true,
+    language: true,
+    title: true,
+    rawContent: true,
+  })
+  .merge(
+    courseSchema.pick({
+      lastUpdated: true,
+      lastCommit: true,
     }),
   );

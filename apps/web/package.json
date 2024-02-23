@@ -18,6 +18,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@react-hooks-library/core": "^0.6.0",
     "@reduxjs/toolkit": "^1.9.7",
+    "@sovereign-university/schemas": "workspace:*",
     "@sovereign-university/ui": "workspace:*",
     "@tanstack/react-query": "^5.20.5",
     "@tanstack/react-router": "0.0.1-beta.286",

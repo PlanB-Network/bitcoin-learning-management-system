@@ -1,6 +1,11 @@
 import { z } from 'zod';
 
 import {
+  coursePaymentSchema,
+  courseProgressExtendedSchema,
+  courseProgressSchema,
+} from '@sovereign-university/schemas';
+import {
   createCompleteChapter,
   createGetPayment,
   createGetProgress,
@@ -19,7 +24,7 @@ const completeChapterProcedure = protectedProcedure
       chapter: z.number(),
     }),
   )
-
+  .output(courseProgressSchema.array())
   .mutation(({ ctx, input }) =>
     createCompleteChapter(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -31,7 +36,15 @@ const completeChapterProcedure = protectedProcedure
 
 const getProgressProcedure = protectedProcedure
   .input(z.void())
-
+  .output(
+    courseProgressExtendedSchema
+      .merge(
+        z.object({
+          totalChapters: z.number(),
+        }),
+      )
+      .array(),
+  )
   .query(({ ctx }) =>
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
   );
@@ -46,7 +59,7 @@ const saveQuizAttemptProcedure = protectedProcedure
       correctAnswersCount: z.number(),
     }),
   )
-
+  .output(z.void())
   .mutation(({ ctx, input }) =>
     createSaveQuizAttempt(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -84,6 +97,17 @@ const savePaymentProcedure = protectedProcedure
 
 const getPaymentProcedure = protectedProcedure
   .input(z.void())
+  .output(
+    coursePaymentSchema
+      .pick({
+        courseId: true,
+        paymentStatus: true,
+        amount: true,
+        paymentId: true,
+        invoiceUrl: true,
+      })
+      .array(),
+  )
   .query(({ ctx }) =>
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
   );

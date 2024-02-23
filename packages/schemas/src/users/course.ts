@@ -19,7 +19,6 @@ export const courseQuizAttemptsSchema = createSelectSchema(usersQuizAttempts);
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
-    name: z.string(),
     totalChapters: z.number(),
     chapters: z.array(
       courseCompletedChaptersSchema.pick({
@@ -28,11 +27,15 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
         completedAt: true,
       }),
     ),
-    nextChapter: courseChapterSchema.pick({ part: true, chapter: true }),
-    lastCompletedChapter: courseCompletedChaptersSchema.pick({
-      part: true,
-      chapter: true,
-      completedAt: true,
-    }),
+    nextChapter: courseChapterSchema
+      .pick({ part: true, chapter: true })
+      .optional(),
+    lastCompletedChapter: courseCompletedChaptersSchema
+      .pick({
+        part: true,
+        chapter: true,
+        completedAt: true,
+      })
+      .optional(),
   }),
 );

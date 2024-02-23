@@ -5,8 +5,7 @@ export const getProgressQuery = (uid: string) => {
   return sql<
     Array<
       CourseProgress & {
-        name: string;
-        total_chapters: number;
+        totalChapters: number;
       }
     >
   >`

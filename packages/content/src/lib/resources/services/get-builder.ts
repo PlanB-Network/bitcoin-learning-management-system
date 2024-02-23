@@ -12,15 +12,15 @@ export const createGetBuilder =
       .exec(getBuilderQuery(id, language))
       .then(firstRow);
 
-    if (builder) {
-      return {
-        ...builder,
-        logo: computeAssetCdnUrl(
-          process.env['CDN_URL'] || 'http://localhost:8080',
-          builder.lastCommit,
-          builder.path,
-          'logo.jpeg',
-        ),
-      };
-    }
+    if (!builder) throw new Error('Builder not found');
+
+    return {
+      ...builder,
+      logo: computeAssetCdnUrl(
+        process.env['CDN_URL'] || 'http://localhost:8080',
+        builder.lastCommit,
+        builder.path,
+        'logo.jpeg',
+      ),
+    };
   };

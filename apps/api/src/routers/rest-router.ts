@@ -4,7 +4,7 @@ import { createUpdatePayment } from '@sovereign-university/user'; // Assuming th
 
 import type { Dependencies } from '#src/dependencies.js';
 
-import { syncGithubRepositories } from './github/sync.js'; // Adjust the import path as needed
+import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();

@@ -2,6 +2,9 @@
   "name": "@sovereign-university/content",
   "version": "0.0.1",
   "type": "module",
+  "imports": {
+    "#src/*": "./src/*"
+  },
   "exports": {
     "development": "./src/index.ts",
     "import": "./dist/index.js",

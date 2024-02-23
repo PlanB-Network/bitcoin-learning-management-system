@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "lib": ["dom", "esnext"],
+    "lib": ["DOM", "DOM.Iterable", "es2023"],
     "module": "esnext",
     "moduleResolution": "NodeNext"
   },

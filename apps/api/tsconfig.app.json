@@ -21,6 +21,9 @@
       "path": "../../packages/redis/tsconfig.lib.json"
     },
     {
+      "path": "../../packages/schemas/tsconfig.lib.json"
+    },
+    {
       "path": "../../packages/user/tsconfig.lib.json"
     },
     {
