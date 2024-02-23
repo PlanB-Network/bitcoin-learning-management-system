@@ -520,9 +520,7 @@ export const CourseDetails: React.FC = () => {
               <Link
                 to={'/professor/$professorId'}
                 params={{
-                  professorId: professor.id
-                    ? professor.id.toString()
-                    : undefined,
+                  professorId: professor.id.toString(),
                 }}
                 key={professor.id}
               >

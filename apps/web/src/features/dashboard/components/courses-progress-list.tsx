@@ -61,11 +61,9 @@ export const CoursesProgressList = ({
                 {t('dashboard.myCourses.resumeLesson')}
               </Button>
             </Link>
-            <Link to={''}>
-              <Button variant="primary" size="xs" rounded className="px-3">
-                {t('words.details')}
-              </Button>
-            </Link>
+            <Button variant="primary" size="xs" rounded className="px-3">
+              {t('words.details')}
+            </Button>
           </div>
           {/* Only for Completed course */}
           <div
@@ -84,11 +82,9 @@ export const CoursesProgressList = ({
                 {t('words.certificate').toLowerCase()}
               </Button>
             </Link> */}
-            <Link to={''}>
-              <Button variant="primary" size="xs" rounded className="px-3">
-                {t('words.details')}
-              </Button>
-            </Link>
+            <Button variant="primary" size="xs" rounded className="px-3">
+              {t('words.details')}
+            </Button>
           </div>
         </div>
       ))

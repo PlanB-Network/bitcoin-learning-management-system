@@ -39,7 +39,7 @@ export const ResourceLayout = ({
         <div className="max-w-6xl text-black">
           <div>
             {link ? (
-              <Link to={link}>
+              <Link to={link} params={{}}>
                 <PageTitle>{title}</PageTitle>
               </Link>
             ) : (
