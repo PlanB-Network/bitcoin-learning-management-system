@@ -1,9 +1,14 @@
-import { Button } from '../../../atoms/Button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../atoms/Tabs';
-import { useDisclosure } from '../../../hooks';
-import { trpc } from '../../../utils';
-import { ChangePasswordModal } from '../components/change-password-modal';
-import { DashboardLayout } from '../layout';
+import { Button } from '../../../atoms/Button/index.tsx';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '../../../atoms/Tabs/index.tsx';
+import { useDisclosure } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/index.ts';
+import { ChangePasswordModal } from '../components/change-password-modal.tsx';
+import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardProfile = () => {
   const {
@@ -39,7 +44,7 @@ export const DashboardProfile = () => {
                 <label>Email</label>
                 <input
                   type="text"
-                  value={user?.email ? (user?.email as string) : ''}
+                  value={user?.email ? user?.email : ''}
                   disabled
                   className="rounded-lg bg-[#e9e9e91a] px-4 py-1 text-gray-400"
                 />

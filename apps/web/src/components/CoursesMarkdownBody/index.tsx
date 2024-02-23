@@ -1,5 +1,4 @@
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
-import ReactPlayer from 'react-player/youtube';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax/svg';
@@ -9,6 +8,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
+import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 
 export const CoursesMarkdownBody = ({
   content,

@@ -39,8 +39,8 @@ import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
 import { CourseButton } from '../components/course-button.tsx';
 import { CourseLayout } from '../layout.tsx';
 
-import { CourseDescriptionModal } from './components/course-description-modal';
-import { CoursePaymentModal } from './components/course-payment-modal';
+import { CourseDescriptionModal } from './components/course-description-modal.tsx';
+import { CoursePaymentModal } from './components/course-payment-modal.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;

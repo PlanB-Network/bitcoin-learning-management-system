@@ -5,11 +5,11 @@ import { AiOutlineBook } from 'react-icons/ai';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5';
 
-import { useAppDispatch } from '../../../hooks';
-import { userSlice } from '../../../store';
-import { trpc } from '../../../utils';
+import { useAppDispatch } from '../../../hooks/index.ts';
+import { userSlice } from '../../../store/index.ts';
+import { trpc } from '../../../utils/index.ts';
 
-import { MenuItem } from './menu-item';
+import { MenuItem } from './menu-item.tsx';
 
 export const MenuDesktop = () => {
   const { data: user } = trpc.user.getDetails.useQuery();

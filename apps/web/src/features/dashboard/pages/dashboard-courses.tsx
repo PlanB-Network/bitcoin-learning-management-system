@@ -3,10 +3,10 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../../../src/atoms/Tabs';
-import { trpc } from '../../../utils';
-import { CoursesProgressList } from '../components/courses-progress-list';
-import { DashboardLayout } from '../layout';
+} from '../../../../src/atoms/Tabs/index.tsx';
+import { trpc } from '../../../utils/index.ts';
+import { CoursesProgressList } from '../components/courses-progress-list.tsx';
+import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardCourses = () => {
   const { data: courses } = trpc.user.courses.getProgress.useQuery();

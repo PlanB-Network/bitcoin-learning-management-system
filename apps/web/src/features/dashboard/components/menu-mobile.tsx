@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5';
 
-import { useAppDispatch } from '../../../hooks';
-import { userSlice } from '../../../store';
+import { useAppDispatch } from '../../../hooks/index.ts';
+import { userSlice } from '../../../store/index.ts';
 
-import { MenuItem } from './menu-item';
+import { MenuItem } from './menu-item.tsx';
 
 export const MenuMobile = () => {
   const [pathname, setPathname] = useState('');

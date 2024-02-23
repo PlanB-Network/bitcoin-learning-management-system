@@ -22,22 +22,20 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   );
 
   const sectionTitle = useMemo(() => {
-    let fontWeight =
-      currentSection &&
-      currentSection !== '/' &&
+    if ('path' in section) {
+      let fontWeight =
+        currentSection &&
+        currentSection !== '/' &&
+        section.path.includes(currentSection)
+          ? 'font-semibold'
+          : 'font-light';
+
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      section.path.includes(currentSection)
-        ? 'font-semibold'
-        : 'font-light';
+      if (section.path === '/' && currentSection === '/') {
+        fontWeight = 'font-semibold';
+      }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (section.path === '/' && currentSection === '/') {
-      fontWeight = 'font-semibold';
-    }
-
-    if ('path' in section)
       return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -51,6 +49,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
           {section.title}
         </Link>
       );
+    }
     if ('action' in section)
       return (
         <button

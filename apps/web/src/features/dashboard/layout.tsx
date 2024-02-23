@@ -3,10 +3,10 @@ import {
   breakpointsTailwind,
 } from '@react-hooks-library/core';
 
-import { MainLayout } from '../../components/MainLayout';
+import { MainLayout } from '../../components/MainLayout/index.tsx';
 
-import { MenuDesktop } from './components/menu-desktop';
-import { MenuMobile } from './components/menu-mobile';
+import { MenuDesktop } from './components/menu-desktop.tsx';
+import { MenuMobile } from './components/menu-mobile.tsx';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -18,20 +18,20 @@ export const DashboardLayout = ({
   const isMobile = useSmaller('md');
 
   return isMobile ? (
-      <MainLayout showFooter={false}>
-        <div>
-          <div className="p-6 text-white">{children}</div>
-          <MenuMobile />
+    <MainLayout showFooter={false}>
+      <div>
+        <div className="p-6 text-white">{children}</div>
+        <MenuMobile />
+      </div>
+    </MainLayout>
+  ) : (
+    <MainLayout>
+      <div className="flex flex-row text-white">
+        <MenuDesktop />
+        <div className="bg-dashboardsection ml-4 grow rounded-xl p-10 text-white">
+          {children}
         </div>
-      </MainLayout>
-    ) : (
-      <MainLayout>
-        <div className="flex flex-row text-white">
-          <MenuDesktop />
-          <div className="bg-dashboardsection ml-4 grow rounded-xl p-10 text-white">
-            {children}
-          </div>
-        </div>
-      </MainLayout>
-    );
+      </div>
+    </MainLayout>
+  );
 };

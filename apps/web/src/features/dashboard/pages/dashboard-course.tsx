@@ -1,4 +1,4 @@
-import { DashboardLayout } from '../layout';
+import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardCourse = () => {
   return (

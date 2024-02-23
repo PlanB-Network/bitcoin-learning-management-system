@@ -6,9 +6,7 @@
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "types": ["vite/client"],
-    "allowImportingTsExtensions": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler"
+    "allowImportingTsExtensions": true
   },
   "references": [
     {

@@ -4,15 +4,15 @@ import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 
-import { Modal } from '../../../../atoms/Modal';
-import { trpc } from '../../../../utils';
-import type { TRPCRouterOutput } from '../../../../utils/trpc';
+import { Modal } from '../../../../atoms/Modal/index.tsx';
+import { trpc } from '../../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../../utils/trpc.ts';
 
 const hexToBase64 = (hexstring: string) => {
   const str = hexstring
     .match(/\w{2}/g)
     ?.map(function (a) {
-      return String.fromCharCode(Number.parseInt(a, 16));
+      return String.fromCodePoint(Number.parseInt(a, 16));
     })
     .join('') as string;
 

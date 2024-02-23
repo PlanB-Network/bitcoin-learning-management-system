@@ -8,17 +8,17 @@ import { BsClock, BsHourglass } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { HiOutlineBookOpen } from 'react-icons/hi';
 import { IoPricetagOutline } from 'react-icons/io5';
-import ReactPlayer from 'react-player';
 
 import graduateImg from '../../../../assets/birrete.png';
 import watch from '../../../../assets/cloclk.png';
 import Book from '../../../../assets/courses/livre.svg?react';
 import rabitPen from '../../../../assets/rabbit_holding_pen.svg';
-import { Button } from '../../../../atoms/Button';
-import { Modal } from '../../../../atoms/Modal';
-import { computeAssetCdnUrl } from '../../../../utils';
-import { addSpaceToCourseId } from '../../../../utils/courses';
-import type { TRPCRouterOutput } from '../../../../utils/trpc';
+import { Button } from '../../../../atoms/Button/index.tsx';
+import { Modal } from '../../../../atoms/Modal/index.tsx';
+import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
+import { addSpaceToCourseId } from '../../../../utils/courses.ts';
+import { computeAssetCdnUrl } from '../../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../../utils/trpc.ts';
 
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 const { useGreater } = BreakPointHooks(breakpointsTailwind);

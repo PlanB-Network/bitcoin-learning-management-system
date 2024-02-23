@@ -31,8 +31,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           className={compose('text-base font-medium xl:text-lg', fontWeight)}
           to={section.path}
           /* TODO: fix */
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          params={{} as any}
+          params={{}}
         >
           {section.title}
         </Link>
