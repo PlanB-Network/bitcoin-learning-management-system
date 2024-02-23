@@ -2,7 +2,6 @@ import * as buffer from 'node:buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
-import useWebSocket from 'react-use-websocket';
 
 import { Modal } from '../../../../atoms/Modal/index.tsx';
 import { trpc } from '../../../../utils/index.ts';
@@ -34,7 +33,9 @@ interface PaymentData {
   checkoutUrl: string;
 }
 
-const getTrue = () => true;
+interface WebSocketMessage {
+  settled: boolean;
+}
 
 export const CoursePaymentModal = ({
   course,
@@ -46,25 +47,43 @@ export const CoursePaymentModal = ({
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
 
-  const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
-    settled: boolean;
-  }>(
-    'wss://api.swiss-bitcoin-pay.ch/invoice/ln',
-    {
-      shouldReconnect: getTrue,
-    },
-    !!paymentData,
-  );
+  useEffect(() => {
+    if (paymentData && isOpen) {
+      const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
+
+      ws.addEventListener('open', () => {
+        const hash = hexToBase64(paymentData.id);
+        ws.send(JSON.stringify({ hash: hash }));
+      });
+
+      const handleMessage = (event: MessageEvent) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        const message: WebSocketMessage = JSON.parse(
+          event.data,
+        ) as WebSocketMessage;
+        if (message.settled) {
+          setTimeout(() => {
+            onClose(true);
+          }, 2000);
+        }
+      };
+
+      ws.addEventListener('message', handleMessage);
+
+      return () => {
+        ws.removeEventListener('message', handleMessage);
+        ws.close();
+      };
+    }
+  }, [paymentData, isOpen, onClose]);
 
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
     });
-    const hash = hexToBase64(serverPaymentData.id);
-    sendJsonMessage({ hash: hash });
     setPaymentData(serverPaymentData);
-  }, [course.id, satsPrice, savePaymentRequest, sendJsonMessage]);
+  }, [course.id, satsPrice, savePaymentRequest]);
 
   useEffect(() => {
     if (isOpen) {
@@ -74,15 +93,7 @@ export const CoursePaymentModal = ({
         setPaymentData(undefined);
       }, 500);
     }
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (lastJsonMessage?.settled) {
-      setTimeout(() => {
-        onClose(true);
-      }, 2000);
-    }
-  }, [lastJsonMessage, onClose]);
+  }, [isOpen, initCoursePayment]);
 
   return (
     <Modal
