@@ -9,7 +9,7 @@ import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust t
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
 
-  router.get('/github/sync', async (req, res) => {
+  router.post('/github/sync', async (req, res) => {
     try {
       const result = await syncGithubRepositories(dependencies);
       res.json(result);

@@ -462,7 +462,7 @@ export const CourseDetails: React.FC = () => {
                         'ml-1 text-base font-normal capitalize  sm:text-lg sm:uppercase text-orange-500',
                       )}
                     >
-                      {/* {part.title} // TODO FIX THIS */}
+                      {part.title}
                     </p>
                   </Link>
                 </div>

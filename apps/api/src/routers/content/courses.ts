@@ -8,6 +8,7 @@ import {
   createGetCourses,
 } from '@sovereign-university/content';
 import {
+  coursePartLocalizedSchema,
   coursePartSchema,
   formattedProfessorSchema,
   joinedCourseChapterSchema,
@@ -47,7 +48,7 @@ const getCourseProcedure = publicProcedure
     joinedCourseSchema.merge(
       z.object({
         professors: formattedProfessorSchema.array(),
-        parts: coursePartSchema
+        parts: coursePartLocalizedSchema
           .merge(
             z.object({
               chapters: joinedCourseChapterSchema.array(),
@@ -90,7 +91,7 @@ const getCourseChapterProcedure = publicProcedure
         course: joinedCourseSchema.merge(
           z.object({
             professors: formattedProfessorSchema.array(),
-            parts: coursePartSchema
+            parts: coursePartLocalizedSchema
               .merge(
                 z.object({
                   chapters: joinedCourseChapterSchema.array(),

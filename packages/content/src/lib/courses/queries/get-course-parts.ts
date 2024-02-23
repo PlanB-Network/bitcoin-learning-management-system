@@ -1,8 +1,8 @@
 import { sql } from '@sovereign-university/database';
-import type { CoursePart } from '@sovereign-university/types';
+import type { CoursePartLocalized } from '@sovereign-university/types';
 
 export const getCoursePartsQuery = (id: string, language?: string) => {
-  return sql<CoursePart[]>`
+  return sql<CoursePartLocalized[]>`
     SELECT part, language, title
     FROM content.course_parts_localized
     WHERE course_id = ${id} 

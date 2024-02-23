@@ -21,7 +21,6 @@ const sql = postgres({
   password: process.env.POSTGRES_PASSWORD || 'postgres',
   database: databaseName ?? (process.env.POSTGRES_DB || 'postgres'),
   max: 1,
-  transform: postgres.camel,
   onnotice: (notice) => console.log(`Postgres NOTICE: ${notice.message}`),
 });
 
