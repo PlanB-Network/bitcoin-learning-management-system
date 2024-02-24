@@ -16,24 +16,24 @@ declare module '@tanstack/react-query' {
   interface MutationMeta extends Meta {}
 }
 
+const onError = (error: unknown) => {
+  if (error instanceof TRPCClientError) {
+    if (
+      error.shape &&
+      ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
+    ) {
+      console.error('Try to access an unauthorized resource');
+      // userSlice.actions.logout();
+    }
+  } else if (error instanceof Error) {
+    console.error(error.message);
+  } else {
+    console.error(error);
+  }
+};
+
 export const useTrpc = () => {
   // TODO: replace console logs by toast once we have our UI library
-
-  const onError = (error: unknown) => {
-    if (error instanceof TRPCClientError) {
-      if (
-        error.shape &&
-        ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
-      ) {
-        console.error('Try to access an unauthorized resource');
-        // userSlice.actions.logout();
-      }
-    } else if (error instanceof Error) {
-      console.error(error.message);
-    } else {
-      console.error(error);
-    }
-  };
 
   const [trpcQueryClient] = useState(
     () =>
