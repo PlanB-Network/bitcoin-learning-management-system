@@ -34,7 +34,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.links.twitter && (
-                <div
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -46,10 +46,10 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   }}
                 >
                   <TwitterIcon className="h-20" />
-                </div>
+                </button>
               )}
               {professor.links.website && (
-                <div
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -61,7 +61,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   }}
                 >
                   <WebIcon className="h-20" />
-                </div>
+                </button>
               )}
             </div>
           </div>
@@ -105,7 +105,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <div
+                <button
                   className="z-10 ml-4 size-8 self-start"
                   onClick={(e) => {
                     e.preventDefault();
@@ -119,7 +119,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   >
                     <DonateLightning />
                   </TooltipWithContent>
-                </div>
+                </button>
               </div>
             </div>
           </div>

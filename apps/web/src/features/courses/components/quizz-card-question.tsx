@@ -79,36 +79,37 @@ export default function QuizzCardQuestion({
         </div>
         <div className="flex flex-col items-start gap-3 self-stretch pl-0 md:gap-5 md:pl-6">
           {answers.map((question, index) => (
-            <div
-              className="flex w-full cursor-pointer items-start"
-              key={index}
+            <button
               onClick={() => {
                 answerClick(index);
               }}
+              key={index}
             >
-              <div
-                className={cn(
-                  'border-blue-1000 flex w-full items-center gap-4 self-stretch rounded-2xl border-2 px-4 py-0',
-                  index === clickedAnswer
-                    ? index === correctAnswer
-                      ? 'bg-green-500'
-                      : 'bg-red-500'
-                    : 'bg-beige-300',
-                )}
-              >
-                <div className="text-blue-1000  text-2xl font-semibold uppercase">
-                  {String.fromCharCode(97 + index)}
-                </div>
+              <div className="flex w-full cursor-pointer items-start">
                 <div
                   className={cn(
-                    ' text-blue-1000',
-                    index === clickedAnswer ? 'font-bold' : 'font-medium',
+                    'border-blue-1000 flex w-full items-center gap-4 self-stretch rounded-2xl border-2 px-4 py-0',
+                    index === clickedAnswer
+                      ? index === correctAnswer
+                        ? 'bg-green-500'
+                        : 'bg-red-500'
+                      : 'bg-beige-300',
                   )}
                 >
-                  {question}
+                  <div className="text-blue-1000  text-2xl font-semibold uppercase">
+                    {String.fromCodePoint(97 + index)}
+                  </div>
+                  <div
+                    className={cn(
+                      ' text-blue-1000',
+                      index === clickedAnswer ? 'font-bold' : 'font-medium',
+                    )}
+                  >
+                    {question}
+                  </div>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -19,7 +19,6 @@ export const GeneralMarkdownBody = ({
 }) => {
   return (
     <ReactMarkdown
-      children={content}
       components={{
         h1: ({ children }) => (
           <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
@@ -115,7 +114,7 @@ export const GeneralMarkdownBody = ({
               alt={alt}
             />
           ),
-        code({ node, inline, className, children, ...props }) {
+        code({ inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');
           return inline ? (
             <code {...props} className={className}>
@@ -124,11 +123,12 @@ export const GeneralMarkdownBody = ({
           ) : (
             <SyntaxHighlighter
               {...props}
-              children={String(children).replace(/\n$/, '')}
               style={atomDark}
               language={match ? match[1] : undefined}
               PreTag="div"
-            />
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
           );
         },
       }}
@@ -137,6 +137,8 @@ export const GeneralMarkdownBody = ({
       transformImageUri={(src) =>
         uriTransformer(src.startsWith('http') ? src : `${assetPrefix}/${src}`)
       }
-    />
+    >
+      {content}
+    </ReactMarkdown>
   );
 };

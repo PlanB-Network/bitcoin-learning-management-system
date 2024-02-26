@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -28,13 +35,6 @@ const ScrollToTopButton = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   return (
     <div

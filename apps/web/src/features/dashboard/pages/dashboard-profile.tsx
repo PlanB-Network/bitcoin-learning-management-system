@@ -32,8 +32,9 @@ export const DashboardProfile = () => {
           <TabsContent value="info">
             <div className="mt-6 flex w-full flex-col">
               <div className="mt-6 flex flex-col">
-                <label>Username</label>
+                <label htmlFor="usernameId">Username</label>
                 <input
+                  id="usernameId"
                   type="text"
                   value={user?.username}
                   disabled
@@ -41,8 +42,9 @@ export const DashboardProfile = () => {
                 />
               </div>
               <div className="mt-6 flex flex-col">
-                <label>Email</label>
+                <label htmlFor="emailId">Email</label>
                 <input
+                  id="emailId"
                   type="text"
                   value={user?.email ? user?.email : ''}
                   disabled

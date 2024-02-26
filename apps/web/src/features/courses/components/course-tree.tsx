@@ -78,14 +78,16 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
     <TreeNode
       key={course.id}
       label={
-        <div className={nodeColorClasses} onClick={onCourseClick}>
-          <div className="text-[8px] font-normal leading-[12px] md:text-sm md:leading-normal xl:text-base xl:font-medium">
-            {course.name}
+        <button onClick={onCourseClick}>
+          <div className={nodeColorClasses}>
+            <div className="text-[8px] font-normal leading-[12px] md:text-sm md:leading-normal xl:text-base xl:font-medium">
+              {course.name}
+            </div>
+            <div className="absolute -right-3 -top-4 hidden rounded-xl bg-gray-400 p-[6px] text-sm font-normal xl:block ">
+              {addSpaceToCourseId(course.id)}
+            </div>
           </div>
-          <div className="absolute -right-3 -top-4 hidden rounded-xl bg-gray-400 p-[6px] text-sm font-normal xl:block ">
-            {addSpaceToCourseId(course.id)}
-          </div>
-        </div>
+        </button>
       }
       groupName={course.groupName}
       lineMultiplier={getLineMultiplier(course)}
@@ -97,7 +99,9 @@ const CourseTreeNode = ({ course }: { course: Course }) => {
   );
 };
 
-export const CourseTree: React.FC<CourseTreeProps> = ({ courses }) => {
+export const CourseTree: React.FC<CourseTreeProps> = ({
+  courses,
+}: CourseTreeProps) => {
   const firstCourse = courses.slice(0, 1)[0];
   courses = courses.slice(1);
   const isMobile = useSmaller('xl');

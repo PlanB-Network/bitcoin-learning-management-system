@@ -21,20 +21,19 @@ const QnAItem = ({
 
   return (
     <div>
-      <div
-        className="flex cursor-pointer flex-row text-base font-medium sm:text-xl"
-        onClick={toggle}
-      >
-        <span className="uppercase text-orange-500">{question}</span>
-        <div
-          className={cn(
-            'ml-auto text-3xl font-light mr-3 inline-block',
-            isOpen ? 'rotate-45' : 'rotate-0',
-          )}
-        >
-          {'+'}
+      <button onClick={toggle}>
+        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl">
+          <span className="uppercase text-orange-500">{question}</span>
+          <div
+            className={cn(
+              'ml-auto text-3xl font-light mr-3 inline-block',
+              isOpen ? 'rotate-45' : 'rotate-0',
+            )}
+          >
+            {'+'}
+          </div>
         </div>
-      </div>
+      </button>
       {isOpen && (
         <p className="max-w-2xl whitespace-pre-line text-sm">{answer}</p>
       )}
@@ -72,7 +71,11 @@ const QnA = () => {
   return (
     <div className="flex w-full flex-col gap-4 px-4 pt-6">
       {questions.map((item) => (
-        <QnAItem question={item.question} answer={item.answer} />
+        <QnAItem
+          question={item.question}
+          answer={item.answer}
+          key={item.question}
+        />
       ))}
     </div>
   );

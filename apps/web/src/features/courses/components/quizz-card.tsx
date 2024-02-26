@@ -21,7 +21,6 @@ export default function QuizzCard({
   name,
   chapter,
   questions,
-  ...props
 }: QuizzCardProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -50,7 +49,7 @@ export default function QuizzCard({
 
     const answersColorsTemp: string[] = updatedSelectedAnswer.map(
       (selectedAnswer, index) => {
-        if (selectedAnswer == null) {
+        if (selectedAnswer === null) {
           return '#FAF7E7';
         } else {
           const correctAnswer = questions[index].correctAnswer;
@@ -79,10 +78,6 @@ export default function QuizzCard({
     setCurrentStep(currentStep + 1);
   }
 
-  function handleEndOfQuiz() {
-    console.log('End of quiz');
-  }
-
   function handleQuestionChange(i: number) {
     setCurrentQuestionIndex(i);
   }
@@ -106,8 +101,6 @@ export default function QuizzCard({
           <QuizzCardResults
             name={name}
             chapter={chapter}
-            questionIndex={currentQuestionIndex}
-            answers={[true, true, false, false]}
             answersColors={answersColors}
             numberOfCorrectAnswers={numberOfCorrectAnswers}
             nextStep={handleNextStep}
@@ -126,7 +119,7 @@ export default function QuizzCard({
             explanation={questions[currentQuestionIndex].explanation}
             questionChange={handleQuestionChange}
             answersColors={answersColors}
-            nextStep={handleEndOfQuiz}
+            nextStep={() => {}}
           />
         )}
       </div>

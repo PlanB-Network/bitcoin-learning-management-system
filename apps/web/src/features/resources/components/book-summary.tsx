@@ -76,17 +76,15 @@ export const BookSummary = ({
           </div>
           <div className="flex flex-row gap-2">
             {contributor ? (
-              <img
-                onClick={() => setIsExtended(true)}
-                alt={t('imagesAlt.forwardArrow')}
-                src={arrowForward}
-              />
+              <button onClick={() => setIsExtended(true)}>
+                <img alt={t('imagesAlt.forwardArrow')} src={arrowForward} />
+              </button>
             ) : (
               <TooltipWithContent
                 text={t('book.bookSummary.modifyTooltip')}
                 position="top"
               >
-                <img
+                <button
                   onClick={() => {
                     window.open(
                       'https://github.com/DecouvreBitcoin/sovereign-university-data',
@@ -94,9 +92,9 @@ export const BookSummary = ({
                       'noopener,noreferrer',
                     );
                   }}
-                  alt={t('imagesAlt.stylus')}
-                  src={stylusCircle}
-                />
+                >
+                  <img alt={t('imagesAlt.stylus')} src={stylusCircle} />
+                </button>
               </TooltipWithContent>
             )}
           </div>

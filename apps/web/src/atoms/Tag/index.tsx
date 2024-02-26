@@ -3,7 +3,7 @@ import type { BaseAtomProps } from '../types.tsx';
 
 interface TagProps extends BaseAtomProps {
   children: string;
-  color?: string | 'random';
+  color?: string;
   size?: 's' | 'm';
 }
 

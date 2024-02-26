@@ -60,7 +60,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     ) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
-      await credentialsLogin.mutate(values);
+      credentialsLogin.mutate(values);
     },
     [credentialsLogin],
   );

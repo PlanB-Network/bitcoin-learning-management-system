@@ -4,11 +4,11 @@ import {
   createGetTutorial,
   createGetTutorials,
 } from '@sovereign-university/content';
-import {
-  formattedProfessorSchema,
-  joinedTutorialCreditSchema,
-  joinedTutorialSchema,
-} from '@sovereign-university/schemas';
+// import {
+//   formattedProfessorSchema,
+//   joinedTutorialCreditSchema,
+//   joinedTutorialSchema,
+// } from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

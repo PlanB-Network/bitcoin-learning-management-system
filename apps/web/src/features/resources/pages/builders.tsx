@@ -18,16 +18,13 @@ export const Builders = () => {
     ? builders.sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
-  const categorizedBuilders = sortedBuilders.reduce(
-    (acc, builder) => {
-      if (!acc[builder.category]) {
-        acc[builder.category] = [];
-      }
-      acc[builder.category].push(builder);
-      return acc;
-    },
-    {} as Record<string, typeof sortedBuilders>,
-  );
+  const categorizedBuilders = {} as Record<string, typeof sortedBuilders>;
+  for (const builder of sortedBuilders) {
+    if (!categorizedBuilders[builder.category]) {
+      categorizedBuilders[builder.category] = [];
+    }
+    categorizedBuilders[builder.category].push(builder);
+  }
 
   const categories = [
     ...new Set(sortedBuilders.map((builder) => builder.category)),

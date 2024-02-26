@@ -57,9 +57,8 @@ export const CoursePaymentModal = ({
       });
 
       const handleMessage = (event: MessageEvent) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         const message: WebSocketMessage = JSON.parse(
-          event.data,
+          event.data as string,
         ) as WebSocketMessage;
         if (message.settled) {
           setTimeout(() => {

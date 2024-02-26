@@ -71,7 +71,7 @@ export default function QuizzCardReview({
           </div>
         </div>
         <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
-          <div onClick={nextStep}>
+          <button onClick={nextStep}>
             <PieChart
               width={160}
               height={160}
@@ -79,7 +79,7 @@ export default function QuizzCardReview({
               handlePieClick={pieClick}
               selectedPieNumber={questionIndex}
             />
-          </div>
+          </button>
           <div className="bg-beige-300 rounded-[0.9375rem] border-2 border-gray-300 p-3">
             <div className="mb-1 flex flex-row items-center gap-1">
               <ArrowFilledIcon height={20} />
@@ -100,8 +100,6 @@ export default function QuizzCardReview({
                         ? index === correctAnswer
                           ? 'bg-green-300 border-green-500'
                           : 'border-red-400 text-red-400'
-                        : index === correctAnswer
-                        ? 'bg-green-300'
                         : 'bg-beige-300',
                     )}
                   >
@@ -112,12 +110,10 @@ export default function QuizzCardReview({
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
                             : 'font-semibold text-red-500'
-                          : index === correctAnswer
-                          ? 'font-medium text-blue-1000'
                           : 'font-medium text-blue-1000',
                       )}
                     >
-                      {String.fromCharCode(97 + index)}
+                      {String.fromCodePoint(97 + index)}
                     </div>
                     <div
                       className={cn(
@@ -125,8 +121,6 @@ export default function QuizzCardReview({
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
                             : 'font-semibold text-red-500'
-                          : index === correctAnswer
-                          ? 'font-medium text-blue-1000'
                           : 'font-medium text-blue-1000',
                       )}
                     >

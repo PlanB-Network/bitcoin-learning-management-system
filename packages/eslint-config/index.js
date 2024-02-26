@@ -78,6 +78,7 @@ module.exports = {
     eqeqeq: 'error',
     'sonarjs/cognitive-complexity': 'off',
     'sonarjs/no-use-of-empty-return-value': 'off',
+    'sonarjs/no-duplicate-string': 'off', // Todo re-enable?
     'unicorn/prefer-logical-operator-over-ternary': 'off',
     'unicorn/prefer-event-target': 'off',
     'unicorn/no-nested-ternary': 'off',

@@ -6,7 +6,9 @@ interface CourseButtonProps {
   courseId: string; // Establece el tipo de firstChapterRoute como string
 }
 
-export const CourseButton: React.FC<CourseButtonProps> = ({ courseId }) => {
+export const CourseButton: React.FC<CourseButtonProps> = ({
+  courseId,
+}: CourseButtonProps) => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 

@@ -41,7 +41,7 @@ export const NavigationPanel: React.FC<Props> = ({
   chapters,
   currentChapter,
   style,
-}) => {
+}: Props) => {
   return (
     <div
       className="bg-beige-300 z-10 mt-2 h-auto w-60 rounded-b-3xl border-r p-4 shadow-xl "
@@ -63,7 +63,7 @@ export const NavigationPanel: React.FC<Props> = ({
         <ul className="flex flex-col gap-2">
           {chapters
             .filter((chapter) => chapter.chapter === 1)
-            .map((chapterOne, index) => (
+            .map((chapterOne) => (
               <Disclosure
                 key={`${chapterOne.part}${chapterOne.chapter}`}
                 defaultOpen={chapterOne.part === currentChapter.part.part}

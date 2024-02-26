@@ -47,7 +47,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-2 flex w-full justify-evenly self-stretch px-1">
       {professor.links.twitter && (
-        <div
+        <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -59,10 +59,10 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
           }}
         >
           <TwitterIcon className="h-20" />
-        </div>
+        </button>
       )}
       {professor.links.website && (
-        <div
+        <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -74,7 +74,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
           }}
         >
           <WebIcon className="h-20" />
-        </div>
+        </button>
       )}
     </div>
   );

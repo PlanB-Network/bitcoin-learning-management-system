@@ -10,9 +10,7 @@ interface Meta {
 }
 
 declare module '@tanstack/react-query' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface QueryMeta extends Meta {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface MutationMeta extends Meta {}
 }
 

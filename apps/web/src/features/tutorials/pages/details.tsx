@@ -66,14 +66,14 @@ export const TutorialDetails = () => {
             tutorial.credits?.link as string,
           )}
           {(tutorial.credits?.name || tutorial.credits?.link) && (
-            <div onClick={openTipModal}>
+            <button onClick={openTipModal}>
               <TooltipWithContent
                 text={t('tutorials.details.tipTooltip')}
                 position="bottom"
               >
                 <DonateLightning />
               </TooltipWithContent>
-            </div>
+            </button>
           )}
         </div>
       </div>

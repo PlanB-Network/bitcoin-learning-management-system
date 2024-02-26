@@ -82,7 +82,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">
             <div className="flex flex-row">
               {'items' in section &&
-                section.items.map((subSectionOrElement, index) => {
+                section.items.map((subSectionOrElement) => {
                   return 'items' in subSectionOrElement ? (
                     <FlyingMenuSubSection
                       key={subSectionOrElement.id}

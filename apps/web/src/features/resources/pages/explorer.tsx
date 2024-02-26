@@ -27,7 +27,7 @@ export const Resources = () => {
                 key={resourceCategory.name}
                 to={`/resources/${resourceCategory.name}`}
               >
-                <div
+                <button
                   onClick={(event) =>
                     resourceCategory.unreleased && event.preventDefault()
                   }
@@ -45,7 +45,7 @@ export const Resources = () => {
                       {t(`resources.${resourceCategory.name}.title`)}
                     </h3>
                   </div>
-                </div>
+                </button>
               </Link>
             ))}
           </div>

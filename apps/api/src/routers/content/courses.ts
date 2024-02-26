@@ -8,11 +8,8 @@ import {
   createGetCourses,
 } from '@sovereign-university/content';
 import {
-  coursePartLocalizedSchema,
-  coursePartSchema,
   formattedProfessorSchema,
   joinedCourseChapterSchema,
-  joinedCourseChapterWithContentSchema,
   joinedCourseSchema,
   joinedQuizQuestionSchema,
 } from '@sovereign-university/schemas';

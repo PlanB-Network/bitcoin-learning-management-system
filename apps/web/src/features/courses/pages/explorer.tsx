@@ -8,8 +8,8 @@ import { fakeCourseId } from '../../../utils/courses.ts';
 import { extractNumbers } from '../../../utils/string.ts';
 import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
 import { trpc } from '../../../utils/trpc.ts';
-import type { Course } from '../components/courseTree.tsx';
-import { CourseTree } from '../components/courseTree.tsx';
+import type { Course } from '../components/course-tree.tsx';
+import { CourseTree } from '../components/course-tree.tsx';
 import { LevelPicker } from '../components/level-picker.tsx';
 import { TopicPicker } from '../components/topic-picker.tsx';
 

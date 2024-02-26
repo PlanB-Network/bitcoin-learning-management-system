@@ -1,4 +1,3 @@
-import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,19 +15,16 @@ interface LoginModalProps {
 
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const { t } = useTranslation();
-  const handlePasswordReset = useCallback(
-    (
-      values: {
-        email: string;
-      },
-      actions: FormikHelpers<{
-        email: string;
-      }>,
-    ) => {
+  const handlePasswordReset = useCallback(() =>
+    // values: {
+    //   email: string;
+    // },
+    // actions: FormikHelpers<{
+    //   email: string;
+    // }>,
+    {
       console.log('Not implemented');
-    },
-    [],
-  );
+    }, []);
 
   return (
     <Modal

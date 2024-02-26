@@ -12,8 +12,6 @@ import QuizzResultMessage from './quizz-result-message.tsx';
 interface QuizzCardResultsProps {
   name: string;
   chapter: string;
-  questionIndex: number;
-  answers: boolean[];
   answersColors: string[];
   numberOfCorrectAnswers: number;
   nextStep: () => void;
@@ -24,8 +22,6 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 export default function QuizzCardResults({
   name,
   chapter,
-  questionIndex,
-  answers,
   answersColors,
   nextStep,
   numberOfCorrectAnswers,
@@ -61,7 +57,7 @@ export default function QuizzCardResults({
           </div>
         </div>
         <div>
-          <div onClick={nextStep}>
+          <button onClick={nextStep}>
             <div>
               <PieChart
                 colors={answersColors}
@@ -70,7 +66,7 @@ export default function QuizzCardResults({
                 height={isMobile ? 300 : 400}
               />
             </div>
-          </div>
+          </button>
         </div>
         <div>
           <p className="text-[13px]">{t('courses.quizz.clickOnPie')}</p>

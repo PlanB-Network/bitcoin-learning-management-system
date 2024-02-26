@@ -18,10 +18,7 @@ export interface MetaElementsProps {
 
 const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
-export const MetaElements = ({
-  onClickRegister,
-  onClickLogin,
-}: MetaElementsProps) => {
+export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -61,15 +58,16 @@ export const MetaElements = ({
       )}
 
       {isLoggedIn && isMobile && (
-        <div
-          className="text-white"
+        <button
           onClick={() => {
             dispatch(userSlice.actions.logout());
             navigate({ to: '/' });
           }}
         >
-          <IoLogOutOutline size={28} />
-        </div>
+          <div className="text-white">
+            <IoLogOutOutline size={28} />
+          </div>
+        </button>
       )}
     </div>
   );

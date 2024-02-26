@@ -49,9 +49,9 @@ export const MobileMenu = ({
         </div>
       ) : (
         <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
-          <p className="cursor-pointer text-white" onClick={onClickLogin}>
+          <button className="cursor-pointer text-white" onClick={onClickLogin}>
             {t('auth.signIn')}
-          </p>
+          </button>
         </div>
       )}
       <FaBars
