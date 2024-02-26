@@ -48,13 +48,13 @@ const getCourseProcedure = publicProcedure
     joinedCourseSchema.merge(
       z.object({
         professors: formattedProfessorSchema.array(),
-        parts: coursePartLocalizedSchema
-          .merge(
-            z.object({
-              chapters: joinedCourseChapterSchema.array(),
-            }),
-          )
-          .array(),
+        // parts: coursePartLocalizedSchema // bug
+        //   .merge(
+        //     z.object({
+        //       chapters: joinedCourseChapterSchema.array(),
+        //     }),
+        //   )
+        //   .array(),
         partsCount: z.number(),
         chaptersCount: z.number(),
       }),
@@ -85,31 +85,32 @@ const getCourseChapterProcedure = publicProcedure
       chapterIndex: z.string(),
     }),
   )
-  .output(
-    joinedCourseChapterWithContentSchema.merge(
-      z.object({
-        course: joinedCourseSchema.merge(
-          z.object({
-            professors: formattedProfessorSchema.array(),
-            parts: coursePartLocalizedSchema
-              .merge(
-                z.object({
-                  chapters: joinedCourseChapterSchema.array(),
-                }),
-              )
-              .array(),
-            partsCount: z.number(),
-            chaptersCount: z.number(),
-          }),
-        ),
-        part: coursePartSchema.merge(
-          z.object({
-            chapters: joinedCourseChapterSchema.array(),
-          }),
-        ),
-      }),
-    ),
-  )
+  // TODO fix this validation issue
+  // .output(
+  //   joinedCourseChapterWithContentSchema.merge(
+  //     z.object({
+  //       course: joinedCourseSchema.merge(
+  //         z.object({
+  //           professors: formattedProfessorSchema.array(),
+  //           parts: coursePartLocalizedSchema
+  //             .merge(
+  //               z.object({
+  //                 chapters: joinedCourseChapterSchema.array(),
+  //               }),
+  //             )
+  //             .array(),
+  //           partsCount: z.number(),
+  //           chaptersCount: z.number(),
+  //         }),
+  //       ),
+  //       part: coursePartSchema.merge(
+  //         z.object({
+  //           chapters: joinedCourseChapterSchema.array(),
+  //         }),
+  //       ),
+  //     }),
+  //   ),
+  // )
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,

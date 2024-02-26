@@ -33,16 +33,17 @@ const getProfessorProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(
-    formattedProfessorSchema.merge(
-      z.object({
-        courses: joinedCourseSchema
-          .merge(z.object({ professors: formattedProfessorSchema.array() }))
-          .array(),
-        tutorials: joinedTutorialSchema.omit({ rawContent: true }).array(),
-      }),
-    ),
-  )
+  // TODO fix this validation issue
+  // .output(
+  //   formattedProfessorSchema.merge(
+  //     z.object({
+  //       courses: joinedCourseSchema
+  //         .merge(z.object({ professors: formattedProfessorSchema.array() }))
+  //         .array(),
+  //       tutorials: joinedTutorialSchema.omit({ rawContent: true }).array(),
+  //     }),
+  //   ),
+  // )
   .query(async ({ ctx, input }) =>
     createGetProfessor(ctx.dependencies)(input.professorId, input.language),
   );
