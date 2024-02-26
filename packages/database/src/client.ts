@@ -65,12 +65,12 @@ export const createPostgresClient = ({
         parse: Number,
         serialize: (x: number) => x.toString(),
       },
-      timestamptz: {
-        to: 1184,
-        from: [1184],
-        parse: (value: string | Date) => new Date(value).getTime(),
-        serialize: (x: number | Date) => new Date(x).toISOString(),
-      },
+      // timestamptz: {
+      //   to: 1184,
+      //   from: [1184],
+      //   parse: (value: string | Date) => new Date(value).getTime(),
+      //   serialize: (x: number | Date) => new Date(x).toISOString(),
+      // },
       // Placeholder for TypeScript to accept undefined values
       null: {
         to: 0,

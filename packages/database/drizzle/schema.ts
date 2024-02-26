@@ -469,7 +469,7 @@ export const contentTutorials = content.table(
       .defaultNow()
       .notNull(),
     lastCommit: varchar('last_commit', { length: 40 }).notNull(),
-    lastSync: timestamp('last_sync', { withTimezone: true, mode: 'string' })
+    lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
       .notNull(),
   },
@@ -604,9 +604,7 @@ export const usersQuizAttempts = users.table(
     questionsCount: integer('questions_count').notNull(),
     correctAnswersCount: integer('correct_answers_count').notNull(),
 
-    doneAt: timestamp('done_at', { withTimezone: true, mode: 'string' })
-      .defaultNow()
-      .notNull(),
+    doneAt: timestamp('done_at', { withTimezone: true }).defaultNow().notNull(),
   },
   (table) => ({
     pk: primaryKey({
@@ -653,7 +651,7 @@ export const contentProfessors = content.table('professors', {
     .defaultNow()
     .notNull(),
   lastCommit: varchar('last_commit', { length: 40 }).notNull(),
-  lastSync: timestamp('last_sync', { withTimezone: true, mode: 'string' })
+  lastSync: timestamp('last_sync', { withTimezone: true })
     .defaultNow()
     .notNull(),
 });
