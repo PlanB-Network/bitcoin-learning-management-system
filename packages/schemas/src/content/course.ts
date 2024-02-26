@@ -51,6 +51,7 @@ export const joinedCourseSchema = courseSchema
     z.object({
       level: levelSchema,
       professors: z.array(z.string()),
+      chaptersCount: z.number().optional(),
     }),
   );
 

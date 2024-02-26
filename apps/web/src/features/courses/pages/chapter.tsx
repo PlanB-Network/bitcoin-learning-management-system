@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
+import type { JoinedQuizQuestion } from '@sovereign-university/types';
+
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { Button } from '../../../atoms/Button/index.tsx';
@@ -222,7 +224,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
       </div>
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
-        {chapter.course.parts.map((currentPart, partIndex) => {
+        {chapter.course.parts.map((currentPart) => {
           const firstPart = currentPart.part === 1;
           const lastPart = currentPart.part === chapter.course.parts.length;
 
@@ -330,7 +332,7 @@ const Header = ({
               isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
             } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
           >
-            <h3
+            <button
               className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
               onClick={() => setIsContentExpanded(!isContentExpanded)}
             >
@@ -342,7 +344,7 @@ const Header = ({
                 {'> '}
               </span>
               <span>{t('courses.details.objectivesTitle')}</span>
-            </h3>
+            </button>
             {isContentExpanded && (
               <div className="px-5 text-sm md:text-base">
                 <ul className="list-inside text-sm">
@@ -439,7 +441,7 @@ function getRandomQuestions(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mapQuizzToQuestions(quizzArray: any[]): Question[] {
+function mapQuizzToQuestions(quizzArray: JoinedQuizQuestion[]): Question[] {
   return quizzArray.map((quizz) => {
     const answers = [quizz.answer, ...quizz.wrongAnswers];
     const shuffledAnswers = shuffleArray(answers);
@@ -448,14 +450,13 @@ function mapQuizzToQuestions(quizzArray: any[]): Question[] {
     return {
       question: quizz.question,
       answers: shuffledAnswers,
-      explanation: quizz.explanation,
+      explanation: quizz.explanation as string,
       correctAnswer,
     };
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function shuffleArray(array: any[]): any[] {
+function shuffleArray<T>(array: T[]): T[] {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

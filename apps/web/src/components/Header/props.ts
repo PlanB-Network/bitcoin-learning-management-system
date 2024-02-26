@@ -16,8 +16,4 @@ export type NavigationElement = (NavigationBaseItem & {
 export type NavigationSubSection = NavigationBaseItem &
   ({ action: () => void } | { path: string } | { items: NavigationElement[] });
 export type NavigationSection = NavigationBaseItem &
-  (
-    | { action: () => void }
-    | { path: string }
-    | { items: Array<NavigationSubSection | NavigationElement> }
-  );
+  (ActionOrPath | { items: Array<NavigationSubSection | NavigationElement> });

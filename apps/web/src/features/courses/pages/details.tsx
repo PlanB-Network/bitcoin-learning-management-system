@@ -126,14 +126,19 @@ export const CourseDetails: React.FC = () => {
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
+  interface MempoolPrice {
+    USD: number;
+    EUR: number;
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch('https://mempool.space/api/v1/prices');
-        const data = await response.json();
+        const data = (await response.json()) as MempoolPrice;
 
         if (data) {
-          const newConversionRate = data['EUR'];
+          const newConversionRate = data.EUR;
           setConversionRate(newConversionRate);
         } else {
           console.error('Failed to retrieve conversion rate from Kraken API.');
@@ -245,7 +250,7 @@ export const CourseDetails: React.FC = () => {
         <div className="hidden w-full flex-col space-y-5 p-3 sm:block sm:px-0 lg:block xl:block 2xl:block ">
           <div className="flex flex-row items-start space-x-5 ">
             <FaChalkboardTeacher size="35" className="text-orange-600" />
-            <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
+            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {course.professors?.length > 1
                 ? t('courses.details.teachers', {
                     teachers: professorNames,
@@ -257,13 +262,13 @@ export const CourseDetails: React.FC = () => {
           </div>
           <div className="flex flex-row items-start space-x-5">
             <HiOutlineAcademicCap size="35" className="text-orange-600" />
-            <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
+            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t(`courses.details.level`, { level: course.level })}
             </span>
           </div>
           <div className="flex flex-row items-start space-x-5">
             <HiOutlineBookOpen size="35" className="text-orange-600" />
-            <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
+            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.numberOfChapters', {
                 number: course.chaptersCount,
               })}
@@ -271,7 +276,7 @@ export const CourseDetails: React.FC = () => {
           </div>
           <div className="flex flex-row items-start space-x-5">
             <IoMdStopwatch size="35" className="text-orange-600" />
-            <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
+            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.duration', { hours: course.hours })}
             </span>
           </div>
@@ -280,7 +285,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const StartTheCourseHR = ({ course }: { course: Course }) => {
+  const StartTheCourseHR = () => {
     return (
       <div className="relative my-4 w-full max-w-5xl flex-col space-y-2 px-2 sm:my-8 sm:flex-row sm:items-center sm:space-x-10">
         {isScreenMd ? (
@@ -370,7 +375,6 @@ export const CourseDetails: React.FC = () => {
             {t('courses.details.description')}
           </h4>
           <ReactMarkdown
-            children={course.rawDescription}
             components={{
               h1: ({ children }) => (
                 <h3 className="mb-2 text-[14px] font-medium text-blue-800 sm:mb-5 sm:text-2xl sm:font-normal sm:text-blue-900">
@@ -383,7 +387,9 @@ export const CourseDetails: React.FC = () => {
                 </p>
               ),
             }}
-          ></ReactMarkdown>
+          >
+            {course.rawDescription}
+          </ReactMarkdown>
         </div>
         <div className="flex w-full flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
@@ -508,7 +514,7 @@ export const CourseDetails: React.FC = () => {
         <div className="flex h-fit flex-col">
           <div className="mb-3 flex flex-row gap-1 sm:hidden">
             <img src={wizard} alt="" className="size-5" />
-            <h4 className="text-blue-1000 mb-1  font-semibold uppercase italic sm:hidden">
+            <h4 className="text-blue-1000 mb-1 font-semibold uppercase italic sm:hidden">
               {t('courses.details.professor')}
             </h4>
           </div>
@@ -583,7 +589,7 @@ export const CourseDetails: React.FC = () => {
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <CourseInfo course={course} />
-            <StartTheCourseHR course={course} />
+            <StartTheCourseHR />
             <DescriptionAndObjectives course={course} />
             <hr className="my-4 hidden w-full max-w-5xl border-2 border-gray-300 sm:my-8 sm:block " />
             <Curriculum course={course} />
@@ -596,6 +602,7 @@ export const CourseDetails: React.FC = () => {
               satsPrice={satsPrice}
               isOpen={isPaymentModalOpen}
               onClose={(isPaid) => {
+                console.log(isPaid);
                 // if (isPaid) {
                 //   refetchPayment();
                 // }

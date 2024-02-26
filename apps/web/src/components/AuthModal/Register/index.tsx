@@ -49,6 +49,7 @@ const registerSchema = z
       (pwd) => password.validate(pwd),
       (pwd) => {
         const result = password.validate(pwd, { details: true });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         return { message: Array.isArray(result) ? result[0].message : '' };
       },
     ),
@@ -97,7 +98,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   useEffect(() => {
     async function initial() {
       if (register.data) {
-        await new Promise((f) => setTimeout(f, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         onClose();
       }
     }

@@ -30,9 +30,12 @@ const Flag: React.FC<Props> = ({
   const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
-    import(`./flags/${code.toUpperCase()}.svg`).then((img) => {
-      setImgSrc(img.default || img);
-    });
+    import(`./flags/${code.toUpperCase()}.svg`)
+      .then((img) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+        return setImgSrc(img.default || img);
+      })
+      .catch(() => {});
   }, [code]);
 
   const nonTailwindClasses = `flag size-${size}`;

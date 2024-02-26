@@ -20,11 +20,12 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'tailwindcss/no-custom-classname': ['warn'],
+    'tailwindcss/no-custom-classname': 'off',
     // https://github.com/shadcn-ui/ui/issues/1013
     'react/prop-types': ['error', { ignore: ['className'] }],
     // Prettier is used to change order
     'tailwindcss/classnames-order': 'off',
+    'tailwindcss/enforces-negative-arbitrary-values': 'off',
   },
   settings: {
     react: {

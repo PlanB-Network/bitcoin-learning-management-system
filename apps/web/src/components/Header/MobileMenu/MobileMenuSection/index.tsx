@@ -30,15 +30,11 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
           ? 'font-semibold'
           : 'font-light';
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       if (section.path === '/' && currentSection === '/') {
         fontWeight = 'font-semibold';
       }
 
       return (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         <Link
           className={compose(
             'text-2xl font-light uppercase text-white no-underline',
@@ -87,8 +83,12 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
                 className="my-0 flex-1 list-none overflow-auto pl-0"
               >
                 {subSectionOrElements.map((element) => (
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
                   <li className="my-1 ml-0 list-none pl-0" key={element.id}>
-                    <MenuElement key={element.id} element={element} />
+                    {
+                      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                      <MenuElement key={element.id} element={element} />
+                    }
                   </li>
                 ))}
               </ul>
