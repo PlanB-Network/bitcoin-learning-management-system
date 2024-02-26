@@ -64,7 +64,6 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
             </span>
             <span className="inline text-base md:hidden">{course.name}</span>
           </h5>
-          onst sortedBooks: JoinedBook[] = book
           <hr className="border-blue-1000 mt-1 hidden w-24 md:inline" />
           <h6 className="mt-2 hidden text-xs font-light italic text-gray-700 md:block md:text-xs">
             {t('courses.preview.by', {
