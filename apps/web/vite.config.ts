@@ -14,7 +14,7 @@ export default defineConfig({
   root: process.cwd(),
   base: '/',
   build: {
-    target: 'es2022',
+    target: 'esnext',
     reportCompressedSize: true,
     chunkSizeWarningLimit: 600,
     cssCodeSplit: true,

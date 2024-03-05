@@ -24,7 +24,11 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <trpc.Provider
+          client={trpcClient}
+          // @ts-expect-error TODO: fix this, open issue, idk
+          queryClient={queryClient}
+        >
           <QueryClientProvider client={trpcQueryClient}>
             <RouterProvider router={router} />
             {children}
