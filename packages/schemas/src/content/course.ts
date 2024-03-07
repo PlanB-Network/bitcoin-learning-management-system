@@ -10,6 +10,8 @@ import {
   contentCoursesLocalized,
 } from '@sovereign-university/database/schemas';
 
+import { formattedProfessorSchema } from './professor.js';
+
 import { levelSchema } from './index.js';
 
 export const courseSchema = createSelectSchema(contentCourses);
@@ -25,7 +27,21 @@ export const courseChapterLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
 );
 
-export const joinedCourseSchema = courseSchema
+export const joinedCourseChapterSchema = courseChapterLocalizedSchema
+  .pick({
+    part: true,
+    chapter: true,
+    language: true,
+    title: true,
+    sections: true,
+  })
+  .merge(
+    z.object({
+      partTitle: z.string(),
+    }),
+  );
+
+export const minimalJoinedCourseSchema = courseSchema
   .pick({
     id: true,
     hours: true,
@@ -50,24 +66,34 @@ export const joinedCourseSchema = courseSchema
   .merge(
     z.object({
       level: levelSchema,
-      professors: z.array(z.string()),
       chaptersCount: z.number().optional(),
     }),
   );
 
-export const joinedCourseChapterSchema = courseChapterLocalizedSchema
-  .pick({
-    part: true,
-    chapter: true,
-    language: true,
-    title: true,
-    sections: true,
-  })
-  .merge(
-    z.object({
-      partTitle: z.string(),
-    }),
-  );
+export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
+  z.object({
+    professors: formattedProfessorSchema.array(),
+  }),
+);
+
+export const joinedCourseWithProfessorsSchema = minimalJoinedCourseSchema.merge(
+  z.object({ professors: formattedProfessorSchema.array() }),
+);
+
+export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
+  z.object({
+    professors: formattedProfessorSchema.array(),
+    parts: z
+      .object({
+        part: z.number().optional(),
+        language: z.string().optional(),
+        title: z.string().optional(),
+        chapters: joinedCourseChapterSchema.optional().array(),
+      })
+      .array(),
+    partsCount: z.number(),
+  }),
+);
 
 export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
   .pick({

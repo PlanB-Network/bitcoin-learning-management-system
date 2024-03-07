@@ -12,6 +12,7 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import graduateImg from '../../../assets/birrete.png';
@@ -35,7 +36,6 @@ import {
 } from '../../../hooks/index.ts';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
-import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
 import { CourseButton } from '../components/course-button.tsx';
 import { CourseLayout } from '../layout.tsx';
 
@@ -43,7 +43,6 @@ import { CourseDescriptionModal } from './components/course-description-modal.ts
 import { CoursePaymentModal } from './components/course-payment-modal.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
-type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 
 export const CourseDetails: React.FC = () => {
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
@@ -158,7 +157,7 @@ export const CourseDetails: React.FC = () => {
     );
   }
 
-  const Header = ({ course }: { course: Course }) => {
+  const Header = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="flex max-w-5xl flex-col space-y-2 px-2 sm:flex-row sm:items-center sm:space-x-10">
         {isScreenMd ? (
@@ -235,7 +234,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const CourseInfo = ({ course }: { course: Course }) => {
+  const CourseInfo = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="grid max-w-5xl grid-rows-1 place-items-stretch justify-items-stretch gap-y-8 sm:my-2 sm:grid-cols-2">
         <div className="w-full px-2 sm:pl-2 sm:pr-10">
@@ -361,7 +360,11 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const DescriptionAndObjectives = ({ course }: { course: Course }) => {
+  const DescriptionAndObjectives = ({
+    course,
+  }: {
+    course: JoinedCourseWithAll;
+  }) => {
     return (
       <div className="max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 sm:my-4 sm:grid sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-20">
         <div className="mb-5 flex w-full flex-col sm:mb-0">
@@ -429,7 +432,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Curriculum = ({ course }: { course: Course }) => {
+  const Curriculum = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
@@ -508,7 +511,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Professors = ({ course }: { course: Course }) => {
+  const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="my-4 max-w-5xl px-2">
         <div className="flex h-fit flex-col">
@@ -543,7 +546,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Footer = ({ course }: { course: Course }) => {
+  const Footer = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="my-4 max-w-5xl self-center px-2">
         <div className="flex h-fit flex-col">

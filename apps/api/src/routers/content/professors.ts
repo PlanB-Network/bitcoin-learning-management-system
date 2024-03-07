@@ -4,7 +4,11 @@ import {
   createGetProfessor,
   createGetProfessors,
 } from '@sovereign-university/content';
-import { formattedProfessorSchema } from '@sovereign-university/schemas';
+import {
+  formattedProfessorSchema,
+  joinedCourseSchema,
+  joinedTutorialSchema,
+} from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -29,17 +33,14 @@ const getProfessorProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  // TODO fix this validation issue
-  // .output(
-  //   formattedProfessorSchema.merge(
-  //     z.object({
-  //       courses: joinedCourseSchema
-  //         .merge(z.object({ professors: formattedProfessorSchema.array() }))
-  //         .array(),
-  //       tutorials: joinedTutorialSchema.omit({ rawContent: true }).array(),
-  //     }),
-  //   ),
-  // )
+  .output(
+    formattedProfessorSchema.merge(
+      z.object({
+        courses: joinedCourseSchema.array(),
+        tutorials: joinedTutorialSchema.omit({ rawContent: true }).array(),
+      }),
+    ),
+  )
   .query(async ({ ctx, input }) =>
     createGetProfessor(ctx.dependencies)(input.professorId, input.language),
   );

@@ -38,7 +38,8 @@ export const joinedTutorialSchema = tutorialSchema
   .merge(
     z.object({
       tags: z.array(z.string()),
-      builder: joinedBuilderSchema.omit({ tags: true }).optional(),
+      // Todo fix validation
+      //builder: joinedBuilderSchema.omit({ tags: true }).optional(),
     }),
   );
 

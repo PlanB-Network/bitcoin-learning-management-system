@@ -2,6 +2,7 @@ import type { TransactionSql } from '@sovereign-university/database';
 import { firstRow } from '@sovereign-university/database';
 import type {
   ChangedFile,
+  Level,
   ModifiedFile,
   QuizQuestion,
   RenamedFile,
@@ -16,7 +17,7 @@ interface QuizQuestionMain {
   course: string;
   part: string;
   chapter: string;
-  difficulty: 'easy' | 'intermediate' | 'hard' | 'expert';
+  difficulty: Level;
   author?: string;
   duration?: number;
   tags?: string[];

@@ -6,7 +6,8 @@ export const getProfessorQuery = (id: number, language?: string) => {
     SELECT 
       p.*, 
       pl.bio, 
-      pl.short_bio, 
+      pl.short_bio,
+      pl.language,
       COALESCE(ca.courses_count, 0) AS courses_count,
       COALESCE(tca.tutorials_count, 0) AS tutorials_count,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags

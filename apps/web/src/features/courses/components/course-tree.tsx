@@ -4,6 +4,7 @@ import {
 } from '@react-hooks-library/core';
 import { useNavigate } from '@tanstack/react-router';
 
+import type { Level } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import Tree from '../../../atoms/Tree/index.tsx';
@@ -15,7 +16,7 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 export interface Course {
   id: string;
   name: string;
-  level: 'beginner' | 'intermediate' | 'advanced' | 'developer';
+  level: Level;
   language: string;
   children?: Course[];
   unreleased?: boolean;

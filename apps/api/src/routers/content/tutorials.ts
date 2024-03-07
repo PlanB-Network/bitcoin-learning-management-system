@@ -4,11 +4,7 @@ import {
   createGetTutorial,
   createGetTutorials,
 } from '@sovereign-university/content';
-// import {
-//   formattedProfessorSchema,
-//   joinedTutorialCreditSchema,
-//   joinedTutorialSchema,
-// } from '@sovereign-university/schemas';
+import { joinedTutorialSchema } from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -21,8 +17,7 @@ const getTutorialsProcedure = publicProcedure
       })
       .optional(),
   )
-  // TODO fix this validation issue
-  //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
+  .output(joinedTutorialSchema.omit({ rawContent: true }).array())
   .query(async ({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(undefined, input?.language),
   );
@@ -34,8 +29,7 @@ const getTutorialsByCategoryProcedure = publicProcedure
       language: z.string().optional(),
     }),
   )
-  // TODO fix this validation issue
-  //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
+  .output(joinedTutorialSchema.omit({ rawContent: true }).array())
   .query(async ({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(input.category, input.language),
   );

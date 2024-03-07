@@ -8,9 +8,9 @@ import {
   createGetCourses,
 } from '@sovereign-university/content';
 import {
-  formattedProfessorSchema,
   joinedCourseChapterSchema,
-  joinedCourseSchema,
+  joinedCourseWithAllSchema,
+  joinedCourseWithProfessorsSchema,
   joinedQuizQuestionSchema,
 } from '@sovereign-university/schemas';
 
@@ -25,11 +25,7 @@ const getCoursesProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(
-    joinedCourseSchema
-      .merge(z.object({ professors: formattedProfessorSchema.array() }))
-      .array(),
-  )
+  .output(joinedCourseWithProfessorsSchema.array())
   .query(async ({ ctx, input }) =>
     createGetCourses(ctx.dependencies)(input?.language),
   );
@@ -41,22 +37,7 @@ const getCourseProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(
-    joinedCourseSchema.merge(
-      z.object({
-        professors: formattedProfessorSchema.array(),
-        // parts: coursePartLocalizedSchema // bug
-        //   .merge(
-        //     z.object({
-        //       chapters: joinedCourseChapterSchema.array(),
-        //     }),
-        //   )
-        //   .array(),
-        partsCount: z.number(),
-        chaptersCount: z.number(),
-      }),
-    ),
-  )
+  .output(joinedCourseWithAllSchema)
   .query(async ({ ctx, input }) =>
     createGetCourse(ctx.dependencies)(input.id, input.language),
   );

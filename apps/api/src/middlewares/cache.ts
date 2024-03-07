@@ -45,7 +45,7 @@ export const cacheMiddleware = createMiddleware(
 
       const cached = await redis.get(key);
 
-      if (cached) {
+      if (cached && process.env.NODE_ENV !== 'development') {
         console.log(`Cache hit for ${key}`);
         return {
           marker: 'middlewareMarker' as 'middlewareMarker' & {
