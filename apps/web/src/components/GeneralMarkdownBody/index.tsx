@@ -1,4 +1,4 @@
-import ReactMarkdown, { uriTransformer } from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax';
@@ -42,9 +42,9 @@ export const GeneralMarkdownBody = ({
           </h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <div className=" text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
-          </p>
+          </div>
         ),
         a: ({ children, href }) => (
           <a
@@ -114,15 +114,10 @@ export const GeneralMarkdownBody = ({
               alt={alt}
             />
           ),
-        code({ inline, className, children, ...props }) {
+        code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
-          return inline ? (
-            <code {...props} className={className}>
-              {children}
-            </code>
-          ) : (
+          return (
             <SyntaxHighlighter
-              {...props}
               style={atomDark}
               language={match ? match[1] : undefined}
               PreTag="div"
@@ -134,8 +129,8 @@ export const GeneralMarkdownBody = ({
       }}
       remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
       rehypePlugins={[rehypeMathjax]}
-      transformImageUri={(src) =>
-        uriTransformer(src.startsWith('http') ? src : `${assetPrefix}/${src}`)
+      urlTransform={(src) =>
+        src.startsWith('http') ? src : `${assetPrefix}/${src}`
       }
     >
       {content}

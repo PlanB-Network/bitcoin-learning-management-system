@@ -385,9 +385,9 @@ export const CourseDetails: React.FC = () => {
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="mb-3 text-justify text-xs text-blue-800 sm:text-sm ">
+                <div className="mb-3 text-justify text-xs text-blue-800 sm:text-sm ">
                   {children}
-                </p>
+                </div>
               ),
             }}
           >
@@ -475,34 +475,41 @@ export const CourseDetails: React.FC = () => {
                     </p>
                   </Link>
                 </div>
-                {part.chapters?.map((chapter, index) => (
-                  <div
-                    className="mb-0.5 ml-10 flex flex-row items-center"
-                    key={index}
-                  >
-                    <BsCircleFill className="mr-2 text-blue-500" size={7} />
-                    <Link
-                      to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                      params={{
-                        courseId,
-                        partIndex: (partIndex + 1).toString(),
-                        chapterIndex: chapter.chapter.toString(),
-                      }}
-                    >
-                      <p
-                        className={cn(
-                          'capitalize',
-                          displayBuyCourse ? 'text-gray-400' : 'text-blue-700',
-                        )}
+                {part.chapters?.map(
+                  (chapter, index) =>
+                    chapter !== undefined && (
+                      <div
+                        className="mb-0.5 ml-10 flex flex-row items-center"
+                        key={index}
                       >
-                        {chapter.title}
-                        {course.id === 'giaco' && (
-                          <span className="italic"> (Not yet available)</span>
-                        )}
-                      </p>
-                    </Link>
-                  </div>
-                ))}
+                        <BsCircleFill className="mr-2 text-blue-500" size={7} />
+                        <Link
+                          to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                          params={{
+                            courseId,
+                            partIndex: (partIndex + 1).toString(),
+                            chapterIndex: chapter.chapter.toString(),
+                          }}
+                        >
+                          <p
+                            className={cn(
+                              'capitalize',
+                              displayBuyCourse
+                                ? 'text-gray-400'
+                                : 'text-blue-700',
+                            )}
+                          >
+                            {chapter.title}
+                            {course.id === 'giaco' && (
+                              <span className="italic">
+                                (Not yet available)
+                              </span>
+                            )}
+                          </p>
+                        </Link>
+                      </div>
+                    ),
+                )}
               </li>
             ))}
           </ul>

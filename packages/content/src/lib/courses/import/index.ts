@@ -244,7 +244,7 @@ export const createProcessChangedCourse =
                   ${course.id}, 
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
-                  ${parsedCourse.requires_payment},
+                  ${parsedCourse.requires_payment === true ? true : false},
                   ${parsedCourse.paid_price_euros},
                   ${parsedCourse.paid_description},
                   ${parsedCourse.paid_video_link},

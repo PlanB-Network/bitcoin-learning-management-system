@@ -7,7 +7,6 @@ import {
   contentTutorialsLocalized,
 } from '@sovereign-university/database/schemas';
 
-import { joinedBuilderSchema } from './builder.js';
 import { joinedProfessorSchema } from './professor.js';
 
 export const tutorialSchema = createSelectSchema(contentTutorials);

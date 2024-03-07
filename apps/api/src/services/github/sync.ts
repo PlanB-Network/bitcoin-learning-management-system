@@ -57,7 +57,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   } catch (error) {
     console.error(error);
     publicCdnError =
-      error instanceof Error ? error : new Error('Unknown error');
+      error instanceof Error ? error.message : new Error('Unknown error');
   }
 
   let privateCdnError;
@@ -73,7 +73,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     } catch (error) {
       console.error(error);
       privateCdnError =
-        error instanceof Error ? error : new Error('Unknown error');
+        error instanceof Error ? error.message : new Error('Unknown error');
     }
   }
 
