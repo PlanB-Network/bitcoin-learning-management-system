@@ -17,7 +17,8 @@ export const joinedBuilderSchema = resourceSchema
   .pick({
     id: true,
     path: true,
-    lastUpdated: true,
+    // Todo fix validation
+    // lastUpdated: true,
     lastCommit: true,
   })
   .merge(
@@ -38,6 +39,6 @@ export const joinedBuilderSchema = resourceSchema
   )
   .merge(
     z.object({
-      tags: z.array(z.string()),
+      tags: z.array(z.string()).optional(),
     }),
   );

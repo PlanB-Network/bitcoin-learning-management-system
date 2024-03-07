@@ -7,6 +7,7 @@ import {
   contentTutorialsLocalized,
 } from '@sovereign-university/database/schemas';
 
+import { joinedBuilderSchema } from './builder.js';
 import { joinedProfessorSchema } from './professor.js';
 
 export const tutorialSchema = createSelectSchema(contentTutorials);
@@ -37,8 +38,7 @@ export const joinedTutorialSchema = tutorialSchema
   .merge(
     z.object({
       tags: z.array(z.string()),
-      // Todo fix validation
-      //builder: joinedBuilderSchema.omit({ tags: true }).optional(),
+      builder: joinedBuilderSchema.optional().nullable(),
     }),
   );
 

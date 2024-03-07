@@ -49,7 +49,7 @@ export const Builder = () => {
               {builder?.name}
             </h3>
             <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
-              {builder?.tags.map((tag) => (
+              {builder?.tags?.map((tag) => (
                 <Link to={'/resources/builders'} key={tag}>
                   <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>
                     {tag}
