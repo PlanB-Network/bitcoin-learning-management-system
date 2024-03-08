@@ -66,6 +66,10 @@ export const CourseDetails: React.FC = () => {
   const isScreenMd = useGreater('sm');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
+  const [paidSatsPrice, setPaidSatsPrice] = useState(0);
+  const [paidWithPhysical, setPaidWithPhysical] = useState(false);
+  const [paidPart, setPaidPart] = useState<number | undefined>();
+  const [paidChapter, setPaidChapter] = useState<number | undefined>();
 
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
@@ -612,7 +616,10 @@ export const CourseDetails: React.FC = () => {
             <Footer course={course} />
             <CoursePaymentModal
               course={course}
-              satsPrice={satsPrice}
+              satsPrice={paidSatsPrice}
+              withPhysical={paidWithPhysical}
+              chapter={paidChapter}
+              part={paidPart}
               isOpen={isPaymentModalOpen}
               onClose={(isPaid) => {
                 console.log(isPaid);
@@ -627,10 +634,21 @@ export const CourseDetails: React.FC = () => {
               course={course}
               satsPrice={satsPrice}
               isOpen={isDescriptionModalOpen}
+              conversionRate={conversionRate as number}
               onClose={() => {
                 setIsDescriptionModalOpen(false);
               }}
-              onPay={() => {
+              onPay={(
+                sats,
+                withPhysical: boolean,
+                part?: number,
+                chapter?: number,
+              ) => {
+                debugger;
+                setPaidSatsPrice(sats);
+                setPaidWithPhysical(withPhysical);
+                setPaidPart(part);
+                setPaidChapter(chapter);
                 setIsDescriptionModalOpen(false);
                 setIsPaymentModalOpen(true);
               }}

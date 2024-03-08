@@ -21,6 +21,9 @@ const hexToBase64 = (hexstring: string) => {
 interface CoursePaymentModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   satsPrice: number;
+  withPhysical: boolean;
+  part?: number;
+  chapter?: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
 }
@@ -40,6 +43,9 @@ interface WebSocketMessage {
 export const CoursePaymentModal = ({
   course,
   satsPrice,
+  withPhysical,
+  part,
+  chapter,
   isOpen,
   onClose,
 }: CoursePaymentModalProps) => {
@@ -77,12 +83,16 @@ export const CoursePaymentModal = ({
   }, [paymentData, isOpen, onClose]);
 
   const initCoursePayment = useCallback(async () => {
+    debugger;
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
+      withPhysical: withPhysical,
+      part: part,
+      chapter: chapter,
     });
     setPaymentData(serverPaymentData);
-  }, [course.id, satsPrice, savePaymentRequest]);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {

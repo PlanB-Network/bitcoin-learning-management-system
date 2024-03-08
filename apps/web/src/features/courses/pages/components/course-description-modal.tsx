@@ -26,14 +26,21 @@ interface CourseDescriptionModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   satsPrice: number;
   isOpen: boolean;
+  conversionRate: number;
   onClose: (isPaid?: boolean) => void;
-  onPay: () => void;
+  onPay: (
+    satsPrice: number,
+    withPhysical: boolean,
+    part?: number,
+    chapter?: number,
+  ) => void;
 }
 
 export const CourseDescriptionModal = ({
   course,
   satsPrice,
   isOpen,
+  conversionRate,
   onClose,
   onPay,
 }: CourseDescriptionModalProps) => {
@@ -204,11 +211,43 @@ export const CourseDescriptionModal = ({
           </div>
           <Button
             variant="tertiary"
-            onClick={onPay}
+            onClick={() => {
+              onPay(satsPrice, false);
+            }}
             className="ml-auto mt-2"
             size={isScreenMd ? 'm' : 's'}
           >
-            {t('words.purchase')}
+            {t('courses.purchase.online')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((2300 * 100_000_000) / conversionRate, true);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.physical')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((450 * 100_000_000) / conversionRate, false, 6, 0);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.saifedeanPḧysical')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((180 * 100_000_000) / conversionRate, true, 6, 0);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.saifedeanOnline')}
           </Button>
         </div>
       </div>
