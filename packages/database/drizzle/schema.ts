@@ -375,7 +375,9 @@ export const usersCoursePayment = users.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-
+    part: integer('part'),
+    chapter: integer('chapter'),
+    withPhysical: boolean('with_physical').default(false),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),

@@ -14,6 +14,8 @@ import {
   joinedCourseChapterWithContentSchema,
   joinedCourseSchema,
   joinedCourseWithAllSchema,
+  joinedCourseWithProfessorsSchema,
+  minimalJoinedCourseSchema,
 } from '@sovereign-university/schemas';
 
 export type CourseChapterLocalized = z.infer<
@@ -30,3 +32,7 @@ export type JoinedCourseChapterWithContent = z.infer<
 >;
 export type JoinedCourse = z.infer<typeof joinedCourseSchema>;
 export type JoinedCourseWithAll = z.infer<typeof joinedCourseWithAllSchema>;
+export type JoinedCourseWithProfessors = z.infer<
+  typeof joinedCourseWithProfessorsSchema
+>;
+export type MinimalJoinedCourse = z.infer<typeof minimalJoinedCourseSchema>;

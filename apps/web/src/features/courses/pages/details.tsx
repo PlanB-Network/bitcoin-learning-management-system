@@ -500,10 +500,13 @@ export const CourseDetails: React.FC = () => {
                             )}
                           >
                             {chapter.title}
-                            {course.id === 'giaco' && (
-                              <span className="italic">
+                            {course.id === 'giaco' &&
+                            chapter.sections.length === 0 ? (
+                              <span className="italic ml-1">
                                 (Not yet available)
                               </span>
+                            ) : (
+                              ''
                             )}
                           </p>
                         </Link>
