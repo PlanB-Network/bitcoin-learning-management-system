@@ -152,6 +152,12 @@
       "by": "par {{professor}}",
       "letsgo": "Allons-y"
     },
+    "purchase": {
+      "physical": "Purchase physical",
+      "online": "Purchase online",
+      "saifedeanPḧysical": "Purchase saifedean physical",
+      "saifedeanOnline": "Purchase saifedean online"
+    },
     "quizz": {
       "clickOnPie": "Cliquez sur le camenbert pour vérifiez vos erreurs et obtenir les explications",
       "quizz": "Quiz",
