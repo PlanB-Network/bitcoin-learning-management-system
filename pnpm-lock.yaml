@@ -273,6 +273,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@sovereign-university/api':
+        specifier: workspace:*
+        version: link:../api
       '@sovereign-university/types':
         specifier: workspace:*
         version: link:../../packages/types
