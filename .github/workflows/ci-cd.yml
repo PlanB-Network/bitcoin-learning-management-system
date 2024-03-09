@@ -7,6 +7,9 @@ on:
       - dev
   pull_request:
 
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
@@ -43,15 +46,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Build Project
+        run: pnpm build
+
       - name: Lint Code
         run: pnpm lint
 
       # TODO: Add back when we have tests
       # - name: Run Tests
       #   run: pnpm
-
-      - name: Build Project
-        run: pnpm build
 
   deploy:
     needs: build_and_test

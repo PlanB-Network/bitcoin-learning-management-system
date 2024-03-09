@@ -1,4 +1,6 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
+import type { IncomingMessage } from 'node:http';
+
 import { Router } from 'express';
 
 import { createUpdatePayment } from '@sovereign-university/user'; // Assuming this dependency is correct
@@ -6,18 +8,19 @@ import { createUpdatePayment } from '@sovereign-university/user'; // Assuming th
 import type { Dependencies } from '#src/dependencies.js';
 
 import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
-import { IncomingMessage } from 'http';
 
 const sigHashAlg = 'sha256';
 
 const validateHmacSignature = (req: IncomingMessage) => {
-  // @ts-ignore
+  // @ts-expect-error TODO: fix this?
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const rawBody = req.rawBody;
 
   const hmac = crypto.createHmac(
     'sha256',
     process.env['SBP_HMAC_SECRET'] as string,
   );
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const hex = sigHashAlg + '=' + hmac.update(rawBody).digest('hex');
 
   return hex === req.headers['sbp-sig'];

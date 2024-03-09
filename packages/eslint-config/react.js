@@ -26,6 +26,7 @@ module.exports = {
     // Prettier is used to change order
     'tailwindcss/classnames-order': 'off',
     'tailwindcss/enforces-negative-arbitrary-values': 'off',
+    'unicorn/prefer-node-protocol': 'off',
   },
   settings: {
     react: {
