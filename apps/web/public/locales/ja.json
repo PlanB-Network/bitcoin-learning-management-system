@@ -152,6 +152,12 @@
       "by": "by {{professor}}",
       "letsgo": "レッツゴー！"
     },
+    "purchase": {
+      "physical": "Purchase physical",
+      "online": "Purchase online",
+      "saifedeanPḧysical": "Purchase saifedean physical",
+      "saifedeanOnline": "Purchase saifedean online"
+    },
     "quizz": {
       "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
       "quizz": "クイズ",
