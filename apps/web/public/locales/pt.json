@@ -152,6 +152,12 @@
       "by": "por {{professor}}",
       "letsgo": "Vamos a isso"
     },
+    "purchase": {
+      "physical": "Purchase physical",
+      "online": "Purchase online",
+      "saifedeanPḧysical": "Purchase saifedean physical",
+      "saifedeanOnline": "Purchase saifedean online"
+    },
     "quizz": {
       "clickOnPie": "Clica no gráfico circular, verifica os teus erros e vê as explicações",
       "quizz": "Questionário",
