@@ -136,10 +136,10 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                 </h4>
                 <ul className="flex flex-col space-y-1 text-lg font-light text-white/50">
                   <li>
-                    <Link to={''}>{t('words.donations')}</Link>
+                    <Link to={'/'}>{t('words.donations')}</Link>
                   </li>
                   <li>
-                    <Link to={''}>{t('words.merchandising')}</Link>
+                    <Link to={'/'}>{t('words.merchandising')}</Link>
                   </li>
                 </ul>
               </div>

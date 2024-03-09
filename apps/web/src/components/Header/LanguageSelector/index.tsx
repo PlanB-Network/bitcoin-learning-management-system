@@ -2,8 +2,8 @@ import { Popover, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Flag from '../../../atoms/Flag';
-import { compose } from '../../../utils';
+import Flag from '../../../atoms/Flag/index.tsx';
+import { compose } from '../../../utils/index.ts';
 
 const languages = ['fr', 'en', 'es', 'de', 'it', 'pt'];
 

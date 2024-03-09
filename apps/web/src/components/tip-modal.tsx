@@ -10,13 +10,13 @@ import BitcoinCircleGray from '../assets/icons/bitcoin_circle_gray.svg?react';
 import LightningOrange from '../assets/icons/lightning_orange.svg?react';
 import PaynimRobotGray from '../assets/icons/paynym_robot_gray.svg?react';
 import RabbitWithPresent from '../assets/rabbit_with_present.svg?react';
-import { Modal } from '../atoms/Modal';
+import { Modal } from '../atoms/Modal/index.tsx';
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   lightningAddress: string;
-  userName: string;
+  userName: string | undefined;
 }
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);

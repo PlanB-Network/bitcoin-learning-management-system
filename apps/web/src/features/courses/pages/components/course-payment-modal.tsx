@@ -1,44 +1,44 @@
-import * as buffer from 'buffer';
+import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
-import useWebSocket from 'react-use-websocket';
 
-import { Modal } from '../../../../atoms/Modal';
-import { trpc } from '../../../../utils';
-import { TRPCRouterOutput } from '../../../../utils/trpc';
+import { Modal } from '../../../../atoms/Modal/index.tsx';
+import { trpc } from '../../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../../utils/trpc.ts';
 
 const hexToBase64 = (hexstring: string) => {
-  const str = hexstring
-    .match(/\w{2}/g)
-    ?.map(function (a) {
-      return String.fromCharCode(parseInt(a, 16));
-    })
-    .join('') as string;
-
-  return buffer.Buffer.from(str, 'base64');
+  return Buffer.from(hexstring, 'hex').toString('base64');
 };
 
 interface CoursePaymentModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   satsPrice: number;
+  withPhysical: boolean;
+  part?: number;
+  chapter?: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
 }
 
-type PaymentData = {
+interface PaymentData {
   id: string;
   pr: string;
   onChainAddr: string;
   amount: number;
   checkoutUrl: string;
-};
+}
 
-const getTrue = () => true;
+interface WebSocketMessage {
+  settled: boolean;
+}
 
 export const CoursePaymentModal = ({
   course,
   satsPrice,
+  withPhysical,
+  part,
+  chapter,
   isOpen,
   onClose,
 }: CoursePaymentModalProps) => {
@@ -46,25 +46,45 @@ export const CoursePaymentModal = ({
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
 
-  const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
-    settled: boolean;
-  }>(
-    'wss://api.swiss-bitcoin-pay.ch/invoice/ln',
-    {
-      shouldReconnect: getTrue,
-    },
-    !!paymentData,
-  );
+  useEffect(() => {
+    if (paymentData && isOpen) {
+      const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
+
+      ws.addEventListener('open', () => {
+        const hash = hexToBase64(paymentData.id);
+        ws.send(JSON.stringify({ hash: hash }));
+      });
+
+      const handleMessage = (event: MessageEvent) => {
+        const message: WebSocketMessage = JSON.parse(
+          event.data as string,
+        ) as WebSocketMessage;
+        if (message.settled) {
+          setTimeout(() => {
+            onClose(true);
+          }, 2000);
+        }
+      };
+
+      ws.addEventListener('message', handleMessage);
+
+      return () => {
+        ws.removeEventListener('message', handleMessage);
+        ws.close();
+      };
+    }
+  }, [paymentData, isOpen]);
 
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
+      withPhysical: withPhysical,
+      part: part,
+      chapter: chapter,
     });
-    const hash = hexToBase64(serverPaymentData.id);
-    sendJsonMessage({ hash: hash });
     setPaymentData(serverPaymentData);
-  }, [course.id, satsPrice, savePaymentRequest, sendJsonMessage]);
+  }, [savePaymentRequest, course.id, satsPrice, withPhysical, part, chapter]);
 
   useEffect(() => {
     if (isOpen) {
@@ -76,14 +96,6 @@ export const CoursePaymentModal = ({
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (lastJsonMessage?.settled) {
-      setTimeout(() => {
-        onClose(true);
-      }, 2000);
-    }
-  }, [lastJsonMessage, onClose]);
-
   return (
     <Modal
       isOpen={isOpen}
@@ -91,9 +103,7 @@ export const CoursePaymentModal = ({
       headerText={t('courses.details.coursePayment')}
     >
       <div className="flex min-w-[85vw] flex-col items-center lg:min-w-[20rem]">
-        {!paymentData ? (
-          'Loading...'
-        ) : (
+        {paymentData ? (
           <iframe
             allow="clipboard-write"
             src={paymentData.checkoutUrl}
@@ -105,6 +115,8 @@ export const CoursePaymentModal = ({
               maxHeight: '100%',
             }}
           />
+        ) : (
+          'Loading...'
         )}
       </div>
     </Modal>

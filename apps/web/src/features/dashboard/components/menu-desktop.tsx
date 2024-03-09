@@ -5,11 +5,11 @@ import { AiOutlineBook } from 'react-icons/ai';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5';
 
-import { useAppDispatch } from '../../../hooks';
-import { userSlice } from '../../../store';
-import { trpc } from '../../../utils';
+import { useAppDispatch } from '../../../hooks/index.ts';
+import { userSlice } from '../../../store/index.ts';
+import { trpc } from '../../../utils/index.ts';
 
-import { MenuItem } from './menu-item';
+import { MenuItem } from './menu-item.tsx';
 
 export const MenuDesktop = () => {
   const { data: user } = trpc.user.getDetails.useQuery();
@@ -37,7 +37,7 @@ export const MenuDesktop = () => {
   return (
     <div className=" bg-dashboardsection ml-4 flex w-64 flex-col gap-8 rounded-xl p-4">
       <div className="flex items-center gap-2 rounded-3xl pl-2">
-        <BsPersonFill className="text-blue-1000 h-10 w-10 overflow-hidden rounded-full bg-white" />
+        <BsPersonFill className="text-blue-1000 size-10 overflow-hidden rounded-full bg-white" />
         <p className="text-lg font-medium italic">{user?.username}</p>
       </div>
       <div className="flex flex-col">

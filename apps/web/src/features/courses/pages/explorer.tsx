@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CourseCard } from '../../../components/course-card';
-import { MainLayout } from '../../../components/MainLayout';
-import { PageHeader } from '../../../components/PageHeader';
-import { fakeCourseId } from '../../../utils/courses';
-import { extractNumbers } from '../../../utils/string';
-import { TRPCRouterOutput, trpc } from '../../../utils/trpc';
-import { Course, CourseTree } from '../components/courseTree';
-import { LevelPicker } from '../components/level-picker';
-import { TopicPicker } from '../components/topic-picker';
+import { CourseCard } from '../../../components/course-card.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { PageHeader } from '../../../components/PageHeader/index.tsx';
+import { fakeCourseId } from '../../../utils/courses.ts';
+import { extractNumbers } from '../../../utils/string.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
+import { trpc } from '../../../utils/trpc.ts';
+import type { Course } from '../components/course-tree.tsx';
+import { CourseTree } from '../components/course-tree.tsx';
+import { LevelPicker } from '../components/level-picker.tsx';
+import { TopicPicker } from '../components/topic-picker.tsx';
 
 export const CoursesExplorer = () => {
   const { i18n, t } = useTranslation();
@@ -76,7 +78,9 @@ export const CoursesExplorer = () => {
   const treeCourses = convertCoursesToTree(courses || []);
 
   function convertCoursesToTree(
-    courses: NonNullable<TRPCRouterOutput['content']['getCourses']>[number][],
+    courses: Array<
+      NonNullable<TRPCRouterOutput['content']['getCourses']>[number]
+    >,
   ) {
     const treeCourses: Course[] = [];
 
@@ -94,9 +98,9 @@ export const CoursesExplorer = () => {
         ),
       );
 
-    let previousElement: Course;
+    let previousElement: Course | undefined;
 
-    firstYearCourses.forEach((course) => {
+    for (const course of firstYearCourses) {
       const treeCourse: Course = {
         id: course.id,
         language: course.language,
@@ -111,8 +115,9 @@ export const CoursesExplorer = () => {
       } else {
         treeCourses.push(treeCourse);
       }
+
       previousElement = treeCourse;
-    });
+    }
 
     // Second year
     let previousCategory = '';
@@ -128,7 +133,7 @@ export const CoursesExplorer = () => {
       fakeCourseId(a.id).localeCompare(fakeCourseId(b.id)),
     );
 
-    secondYearCourses.forEach((course) => {
+    for (const course of secondYearCourses) {
       const treeCourse: Course = {
         id: course.id,
         language: course.language,
@@ -138,31 +143,35 @@ export const CoursesExplorer = () => {
         children: [],
       };
 
-      const courseCategory = fakeCourseId(course.id).replace(/[0-9]/g, '');
+      const courseCategory = fakeCourseId(course.id).replaceAll(/\d/g, '');
+
       if (courseCategory === previousCategory) {
-        previousElement.children?.push(treeCourse);
+        previousElement?.children?.push(treeCourse);
       } else {
         treeCourse.groupName = convertCategoryToName(
-          course.id.replace(/[0-9]/g, ''),
+          course.id.replaceAll(/\d/g, ''),
         );
         treeCourses.push(treeCourse);
       }
 
       previousElement = treeCourse;
       previousCategory = courseCategory;
-    });
+    }
 
     return treeCourses;
   }
 
   function convertCategoryToName(category: string): string {
     switch (category) {
-      case 'econ':
+      case 'econ': {
         return t('words.economy');
-      case 'ln':
+      }
+      case 'ln': {
         return 'LN';
-      default:
+      }
+      default: {
         return t('courses.categories.' + category);
+      }
     }
   }
 

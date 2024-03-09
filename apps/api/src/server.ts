@@ -1,25 +1,32 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { Router } from 'express';
-import { createOpenApiExpressMiddleware } from 'trpc-openapi';
+import express, { Router, json } from 'express';
 
-import { appRouter, createContext } from '@sovereign-university/api/server';
+import type { Dependencies } from './dependencies.js';
+import { createCorsMiddleware } from './middlewares/cors.js';
+import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
+import { createRestRouter } from './routers/rest-router.js';
+import { trpcRouter } from './routers/trpc-router.js';
+import { createContext } from './trpc/index.js';
 
-import { Dependencies } from './dependencies';
-import { createCorsMiddleware } from './middlewares/cors';
-import { createCookieSessionMiddleware } from './middlewares/session/cookie';
-
-/* const openApiDocument = generateOpenApiDocument(appRouter, {
-  title: 'The Sovereign University API',
-  version: '0.0.1',
-  baseUrl: `http://${host}:${port}/api`,
-}); */
+const routesWithRawBody = new Set(['/api/users/courses/payment/webhooks']);
 
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const app = express();
   const router = Router();
 
   // Parse JSON bodies
-  app.use(express.json());
+  app.use(
+    json({
+      verify: function (req, _res, buf) {
+        // @ts-expect-error TODO: fix this?
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        if (routesWithRawBody.has(req.path) && buf?.length) {
+          // @ts-expect-error TODO: fix this?
+          req.rawBody = buf;
+        }
+      },
+    }),
+  );
 
   // Enable cors
   app.use(createCorsMiddleware());
@@ -28,7 +35,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   // Basic request logger
   app.use((req, _res, next) => {
-    console.log('➡️ ', req.method, req.path);
+    console.log('➡️', req.method, req.path);
     next();
   });
 
@@ -36,35 +43,16 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   router.use(
     '/trpc',
     createExpressMiddleware({
-      router: appRouter,
+      router: trpcRouter,
       createContext: (opts) => createContext(opts, dependencies),
     }),
   );
 
-  // Register REST (OpenAPI) routes
-  router.use(
-    '/',
-    createOpenApiExpressMiddleware({
-      router: appRouter,
-      createContext: (opts) => createContext(opts, dependencies),
-      onError:
-        process.env.NODE_ENV === 'development'
-          ? ({ req, error }) => {
-              console.error(
-                `❌ OpenAPI failed on ${req.url ?? '<no-path>'}: ${
-                  error.message
-                }`,
-              );
-            }
-          : undefined,
-    }),
-  );
+  const restRouter = createRestRouter(dependencies);
 
-  if (process.env.NODE_ENV === 'development') {
-    app.use('/api', router);
-  } else {
-    app.use('/', router);
-  }
+  const baseRoute = process.env.NODE_ENV === 'development' ? '/api' : '/';
+  app.use(baseRoute, router);
+  app.use(baseRoute, restRouter);
 
   const server = app.listen(port, '0.0.0.0');
 

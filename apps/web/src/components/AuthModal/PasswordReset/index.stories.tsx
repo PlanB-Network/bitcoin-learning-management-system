@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PasswordReset } from '.';
+import { PasswordReset } from './index.tsx';
 
 const meta: Meta<typeof PasswordReset> = {
   title: 'Components/PasswordReset',

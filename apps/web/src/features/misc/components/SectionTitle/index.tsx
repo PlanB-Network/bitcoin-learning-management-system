@@ -1,4 +1,4 @@
-import { compose } from '../../../../utils';
+import { compose } from '../../../../utils/index.ts';
 
 interface Props {
   title: string;

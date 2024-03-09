@@ -2,20 +2,21 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Formik, FormikHelpers } from 'formik';
+import type { FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import { isEmpty } from 'lodash-es';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
 
-import { Button } from '../../../atoms/Button';
-import { Divider } from '../../../atoms/Divider';
-import { Modal } from '../../../atoms/Modal';
-import { TextInput } from '../../../atoms/TextInput';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch';
-import { userSlice } from '../../../store/slices/user.slice';
-import { trpc } from '../../../utils/trpc';
-import { AuthModalState } from '../props';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { Divider } from '../../../atoms/Divider/index.tsx';
+import { Modal } from '../../../atoms/Modal/index.tsx';
+import { TextInput } from '../../../atoms/TextInput/index.tsx';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
+import { userSlice } from '../../../store/slices/user.slice.ts';
+import { trpc } from '../../../utils/trpc.ts';
+import { AuthModalState } from '../props.ts';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -59,7 +60,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     ) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
-      await credentialsLogin.mutate(values);
+      credentialsLogin.mutate(values);
     },
     [credentialsLogin],
   );

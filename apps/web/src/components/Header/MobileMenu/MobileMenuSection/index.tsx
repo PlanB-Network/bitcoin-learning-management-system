@@ -2,11 +2,11 @@ import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
-import { useDisclosure } from '../../../../hooks/use-disclosure';
-import { compose } from '../../../../utils';
-import { MenuElement } from '../../MenuElement';
-import { NavigationSection } from '../../props';
-import { MobileMenuSubSection } from '../MobileMenuSubSection';
+import { useDisclosure } from '../../../../hooks/use-disclosure.ts';
+import { compose } from '../../../../utils/index.ts';
+import { MenuElement } from '../../MenuElement/index.tsx';
+import type { NavigationSection } from '../../props.tsx';
+import { MobileMenuSubSection } from '../MobileMenuSubSection/index.tsx';
 
 export interface MobileMenuSectionProps {
   section: NavigationSection;
@@ -22,25 +22,19 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   );
 
   const sectionTitle = useMemo(() => {
-    let fontWeight =
-      currentSection &&
-      currentSection !== '/' &&
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      section.path.includes(currentSection)
-        ? 'font-semibold'
-        : 'font-light';
+    if ('path' in section) {
+      let fontWeight =
+        currentSection &&
+        currentSection !== '/' &&
+        section.path.includes(currentSection)
+          ? 'font-semibold'
+          : 'font-light';
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (section.path === '/' && currentSection === '/') {
-      fontWeight = 'font-semibold';
-    }
+      if (section.path === '/' && currentSection === '/') {
+        fontWeight = 'font-semibold';
+      }
 
-    if ('path' in section)
       return (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         <Link
           className={compose(
             'text-2xl font-light uppercase text-white no-underline',
@@ -51,6 +45,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
           {section.title}
         </Link>
       );
+    }
     if ('action' in section)
       return (
         <button
@@ -88,8 +83,12 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
                 className="my-0 flex-1 list-none overflow-auto pl-0"
               >
                 {subSectionOrElements.map((element) => (
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
                   <li className="my-1 ml-0 list-none pl-0" key={element.id}>
-                    <MenuElement key={element.id} element={element} />
+                    {
+                      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                      <MenuElement key={element.id} element={element} />
+                    }
                   </li>
                 ))}
               </ul>

@@ -6,14 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 import RabbitHoldingPen from '../../../assets/rabbit_holding_pen.svg?react';
 
-import PieChart from './pie-chart';
-import QuizzResultMessage from './quizz-result-message';
+import PieChart from './pie-chart.tsx';
+import QuizzResultMessage from './quizz-result-message.tsx';
 
 interface QuizzCardResultsProps {
   name: string;
   chapter: string;
-  questionIndex: number;
-  answers: boolean[];
   answersColors: string[];
   numberOfCorrectAnswers: number;
   nextStep: () => void;
@@ -24,8 +22,6 @@ const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 export default function QuizzCardResults({
   name,
   chapter,
-  questionIndex,
-  answers,
   answersColors,
   nextStep,
   numberOfCorrectAnswers,
@@ -37,7 +33,7 @@ export default function QuizzCardResults({
     <>
       <div className="border-blue-1000 flex h-12 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2 md:h-16">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 flex-col items-center justify-end pr-0 md:h-16 md:w-16">
+          <div className="flex size-12 flex-col items-center justify-end pr-0 md:size-16">
             <RabbitHoldingPen className="ml-[7px] md:ml-[-10px]" />
           </div>
           <div className="text-beige-300 text-center text-2xl font-semibold uppercase leading-[120%] md:text-3xl">
@@ -61,7 +57,7 @@ export default function QuizzCardResults({
           </div>
         </div>
         <div>
-          <div onClick={nextStep}>
+          <button onClick={nextStep}>
             <div>
               <PieChart
                 colors={answersColors}
@@ -70,7 +66,7 @@ export default function QuizzCardResults({
                 height={isMobile ? 300 : 400}
               />
             </div>
-          </div>
+          </button>
         </div>
         <div>
           <p className="text-[13px]">{t('courses.quizz.clickOnPie')}</p>

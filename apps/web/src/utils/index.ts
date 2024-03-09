@@ -1,6 +1,6 @@
-import { getDomain, isDevelopmentEnvironment } from './misc';
+import { getDomain, isDevelopmentEnvironment } from './misc.ts';
 
-export { trpc } from './trpc';
+export { trpc } from './trpc.ts';
 
 export const computeAssetCdnUrl = (commitHash: string, path: string) => {
   const baseUrl = isDevelopmentEnvironment()

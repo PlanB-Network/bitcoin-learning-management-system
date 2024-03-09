@@ -1,13 +1,13 @@
 import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
 import { cn } from '@sovereign-university/ui';
 
-import { addSpaceToCourseId } from '../../../utils/courses';
-import { TRPCRouterOutput } from '../../../utils/trpc';
+import { addSpaceToCourseId } from '../../../utils/courses.ts';
+import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
 
 interface Part {
   part: number;
@@ -41,7 +41,7 @@ export const NavigationPanel: React.FC<Props> = ({
   chapters,
   currentChapter,
   style,
-}) => {
+}: Props) => {
   return (
     <div
       className="bg-beige-300 z-10 mt-2 h-auto w-60 rounded-b-3xl border-r p-4 shadow-xl "
@@ -63,7 +63,7 @@ export const NavigationPanel: React.FC<Props> = ({
         <ul className="flex flex-col gap-2">
           {chapters
             .filter((chapter) => chapter.chapter === 1)
-            .map((chapterOne, index) => (
+            .map((chapterOne) => (
               <Disclosure
                 key={`${chapterOne.part}${chapterOne.chapter}`}
                 defaultOpen={chapterOne.part === currentChapter.part.part}
@@ -90,7 +90,7 @@ export const NavigationPanel: React.FC<Props> = ({
                           }
                         />
                         <span className="col-span-7 ml-1 text-sm">
-                          {chapterOne.part_title}
+                          {chapterOne.partTitle}
                         </span>
                       </li>
                     </Disclosure.Button>

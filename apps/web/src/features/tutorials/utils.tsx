@@ -4,7 +4,7 @@ import miningSvg from '../../assets/tutorials/mining.svg';
 import nodeSvg from '../../assets/tutorials/node.svg';
 import privacySvg from '../../assets/tutorials/privacy.svg';
 import walletSvg from '../../assets/tutorials/wallet.svg';
-import { TRPCRouterOutput } from '../../utils/trpc';
+import type { TRPCRouterOutput } from '../../utils/trpc.tsx';
 
 export const TUTORIALS_CATEGORIES = [
   {
@@ -37,8 +37,6 @@ export const extractSubCategories = (
   tutorials: NonNullable<TRPCRouterOutput['content']['getTutorials']>,
 ) => {
   return [
-    ...new Set(
-      tutorials.filter((tutorial) => tutorial).map((t) => t.subcategory),
-    ),
+    ...new Set(tutorials.filter(Boolean).map((t) => t.subcategory)),
   ] as string[];
 };

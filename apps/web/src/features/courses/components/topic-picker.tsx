@@ -1,5 +1,5 @@
 interface TopicPickerProps {
-  categories: { prefix: string; topic: string }[];
+  categories: Array<{ prefix: string; topic: string }>;
   activeCategories: string[];
   setActiveCategories: (category: string) => void;
 }
@@ -18,16 +18,17 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
             className="my-3 hidden flex-row place-items-center space-x-2 sm:flex"
             key={index}
           >
-            <div
-              className={`flex h-8 w-20 place-items-center justify-center rounded-2xl border-2 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-20 lg:text-base  ${
-                activeCategories.includes(prefix)
-                  ? 'bg-orange-500'
-                  : 'bg-blue-1000'
-              }`}
-              onClick={() => setActiveCategories(prefix)}
-            >
-              {prefix}
-            </div>
+            <button onClick={() => setActiveCategories(prefix)}>
+              <div
+                className={`flex h-8 w-20 place-items-center justify-center rounded-2xl border-2 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-20 lg:text-base  ${
+                  activeCategories.includes(prefix)
+                    ? 'bg-orange-500'
+                    : 'bg-blue-1000'
+                }`}
+              >
+                {prefix}
+              </div>
+            </button>
             <span className="w-1/2 text-base font-light capitalize lg:text-base">
               {topic}
             </span>
@@ -37,16 +38,17 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
             className="mt-1 flex flex-row place-items-center sm:my-3 sm:hidden"
             key={index + 1000}
           >
-            <div
-              className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs ${
-                activeCategories.includes(prefix)
-                  ? 'bg-orange-500 font-medium'
-                  : 'bg-white'
-              }`}
-              onClick={() => setActiveCategories(prefix)}
-            >
-              {topic}
-            </div>
+            <button onClick={() => setActiveCategories(prefix)}>
+              <div
+                className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs ${
+                  activeCategories.includes(prefix)
+                    ? 'bg-orange-500 font-medium'
+                    : 'bg-white'
+                }`}
+              >
+                {topic}
+              </div>
+            </button>
           </div>
         </div>
       ))}

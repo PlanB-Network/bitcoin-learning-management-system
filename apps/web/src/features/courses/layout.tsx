@@ -1,4 +1,4 @@
-import { MainLayout } from '../../components/MainLayout';
+import { MainLayout } from '../../components/MainLayout/index.tsx';
 
 export const CourseLayout = ({
   children,

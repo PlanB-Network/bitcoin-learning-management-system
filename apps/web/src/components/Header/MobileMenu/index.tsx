@@ -4,13 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
-import { useAppSelector } from '../../../hooks';
-import { useDisclosure } from '../../../hooks/use-disclosure';
-import { compose } from '../../../utils';
-import { MetaElements } from '../MetaElements';
-import { NavigationSection } from '../props';
+import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
+import { compose } from '../../../utils/index.ts';
+import { MetaElements } from '../MetaElements/index.tsx';
+import type { NavigationSection } from '../props.tsx';
 
-import { MobileMenuSection } from './MobileMenuSection';
+import { MobileMenuSection } from './MobileMenuSection/index.tsx';
 
 export interface MobileMenuProps {
   sections: NavigationSection[];
@@ -50,9 +49,9 @@ export const MobileMenu = ({
         </div>
       ) : (
         <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
-          <p className="cursor-pointer text-white" onClick={onClickLogin}>
+          <button className="cursor-pointer text-white" onClick={onClickLogin}>
             {t('auth.signIn')}
-          </p>
+          </button>
         </div>
       )}
       <FaBars

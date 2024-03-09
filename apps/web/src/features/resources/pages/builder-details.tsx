@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
-import { Card } from '../../../atoms/Card';
-import { Tag } from '../../../atoms/Tag';
-import { useNavigateMisc } from '../../../hooks';
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { Tag } from '../../../atoms/Tag/index.tsx';
+import { useNavigateMisc } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -49,7 +49,7 @@ export const Builder = () => {
               {builder?.name}
             </h3>
             <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
-              {builder?.tags.map((tag) => (
+              {builder?.tags?.map((tag) => (
                 <Link to={'/resources/builders'} key={tag}>
                   <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>
                     {tag}
@@ -64,18 +64,18 @@ export const Builder = () => {
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
               <div className="mx-2 my-6 flex w-full justify-evenly">
-                {builder?.github_url && (
+                {builder?.githubUrl && (
                   <a
-                    href={builder?.github_url}
+                    href={builder?.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <BsGithub size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
-                {builder?.twitter_url && (
+                {builder?.twitterUrl && (
                   <a
-                    href={builder?.twitter_url}
+                    href={builder?.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -91,9 +91,9 @@ export const Builder = () => {
                     <GiBirdMask size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
-                {builder?.website_url && (
+                {builder?.websiteUrl && (
                   <a
-                    href={builder?.website_url}
+                    href={builder?.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

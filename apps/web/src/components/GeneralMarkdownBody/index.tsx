@@ -1,5 +1,4 @@
-import ReactMarkdown, { uriTransformer } from 'react-markdown';
-import ReactPlayer from 'react-player/youtube';
+import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax';
@@ -9,6 +8,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
+import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 
 export const GeneralMarkdownBody = ({
   content,
@@ -19,12 +19,11 @@ export const GeneralMarkdownBody = ({
 }) => {
   return (
     <ReactMarkdown
-      children={content}
       components={{
         h1: ({ children }) => (
           <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
             <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
               {children}
             </div>
           </h2>
@@ -32,7 +31,7 @@ export const GeneralMarkdownBody = ({
         h2: ({ children }) => (
           <h2 className="mt-6 text-xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
             <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 h-6 w-6 bg-contain sm:hidden " />
+              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
               {children}
             </div>
           </h2>
@@ -43,9 +42,9 @@ export const GeneralMarkdownBody = ({
           </h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <div className=" text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
-          </p>
+          </div>
         ),
         a: ({ children, href }) => (
           <a
@@ -91,7 +90,7 @@ export const GeneralMarkdownBody = ({
           src?.includes('youtube.com') || src?.includes('youtu.be') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-4 h-10 w-10" />
+                <VideoSVG className="mb-2 ml-4 size-10" />
                 <div className="ml-2">
                   <p className="text-lg font-medium text-blue-900">Video</p>
                 </div>
@@ -115,28 +114,26 @@ export const GeneralMarkdownBody = ({
               alt={alt}
             />
           ),
-        code({ node, inline, className, children, ...props }) {
+        code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
-          return !inline ? (
+          return (
             <SyntaxHighlighter
-              {...props}
-              children={String(children).replace(/\n$/, '')}
               style={atomDark}
               language={match ? match[1] : undefined}
               PreTag="div"
-            />
-          ) : (
-            <code {...props} className={className}>
-              {children}
-            </code>
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
           );
         },
       }}
       remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
       rehypePlugins={[rehypeMathjax]}
-      transformImageUri={(src) =>
-        uriTransformer(src.startsWith('http') ? src : `${assetPrefix}/${src}`)
+      urlTransform={(src) =>
+        src.startsWith('http') ? src : `${assetPrefix}/${src}`
       }
-    />
+    >
+      {content}
+    </ReactMarkdown>
   );
 };

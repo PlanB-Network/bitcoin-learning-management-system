@@ -6,11 +6,11 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '../../../atoms/Button';
-import { Card } from '../../../atoms/Card';
-import { useNavigateMisc } from '../../../hooks';
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { useNavigateMisc } from '../../../hooks/index.ts';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -64,8 +64,8 @@ export const Podcast = () => {
                   src={podcast.logo}
                 />
                 <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
-                  {podcast?.podcast_url && (
-                    <a href={podcast.podcast_url}>
+                  {podcast?.podcastUrl && (
+                    <a href={podcast.podcastUrl}>
                       <Button
                         size={isScreenMd ? 's' : 'xs'}
                         variant="tertiary"
@@ -86,7 +86,7 @@ export const Podcast = () => {
 
                   <div className="mt-2 text-sm">
                     <h5 className="font-light italic">
-                      {podcast.host}, {podcast.last_updated}.
+                      {podcast.host}, {podcast.lastUpdated.toString()}.
                     </h5>
                   </div>
                 </div>

@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    // Language and Environment
+    "target": "esnext",
+    "module": "NodeNext",
+    "lib": ["es2023"],
+    "types": ["node"],
+
+    // Module
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // Emit
+    "removeComments": true,
+
+    // Output format
+    "noErrorTruncation": false,
+
+    // Interop constraints
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Type Checking
+    "strict": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false, // Temporarily disabled
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false, // Temporarily disabled
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": true,
+    "strictPropertyInitialization": true,
+    "noUnusedLocals": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": false,
+
+    // Paths
+    "paths": {
+      "#src/*": ["./src/*"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/dist", "**/build"]
+}

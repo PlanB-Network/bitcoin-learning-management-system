@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { GeneralMarkdownBody } from '../../../components/GeneralMarkdownBody';
-import { MainLayout } from '../../../components/MainLayout';
+import { GeneralMarkdownBody } from '../../../components/GeneralMarkdownBody/index.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
 
 export const TermsAndConditions = () => {
   const { t } = useTranslation();

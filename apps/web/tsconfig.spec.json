@@ -1,15 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "types": [
-      "vitest/globals",
-      "vitest/importMeta",
-      "vite/client",
-      "node",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
-    ]
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node"]
   },
   "include": [
     "vite.config.ts",
@@ -23,8 +18,12 @@
     "src/**/*.spec.jsx",
     "src/**/*.d.ts"
   ],
-  "files": [
-    "../../node_modules/@nx/react/typings/cssmodule.d.ts",
-    "../../node_modules/@nx/react/typings/image.d.ts"
+  "references": [
+    {
+      "path": "../api/tsconfig.trpc.json"
+    },
+    {
+      "path": "../../packages/types/tsconfig.lib.json"
+    }
   ]
 }

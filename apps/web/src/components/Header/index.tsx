@@ -15,16 +15,17 @@ import {
   IoSchoolOutline,
 } from 'react-icons/io5';
 
-import { useDisclosure } from '../../hooks/use-disclosure';
-import { Routes } from '../../routes/routes';
-import { TRPCRouterOutput, trpc } from '../../utils/trpc';
-import { TUTORIALS_CATEGORIES } from '../../utils/tutorials';
-import { AuthModal } from '../AuthModal';
-import { AuthModalState } from '../AuthModal/props';
+import { useDisclosure } from '../../hooks/use-disclosure.ts';
+import { Routes } from '../../routes/routes.ts';
+import { trpc } from '../../utils/trpc.ts';
+import type { TRPCRouterOutput } from '../../utils/trpc.tsx';
+import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
+import { AuthModal } from '../AuthModal/index.tsx';
+import { AuthModalState } from '../AuthModal/props.ts';
 
-import { FlyingMenu } from './FlyingMenu';
-import { MobileMenu } from './MobileMenu';
-import { NavigationSection } from './props';
+import { FlyingMenu } from './FlyingMenu/index.tsx';
+import { MobileMenu } from './MobileMenu/index.tsx';
+import type { NavigationSection } from './props.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -50,10 +51,12 @@ export const Header = () => {
 
   const coursesByLevel = courses?.reduce(
     (acc, course) => {
-      const level = course.level.toLowerCase() as typeof course.level;
+      const level = course.level.toLocaleLowerCase() as keyof typeof acc;
+
       if (acc[level]) {
         acc[level].push(course);
       }
+
       return acc;
     },
     {
@@ -326,7 +329,7 @@ export const Header = () => {
             setAuthMode(AuthModalState.Register);
             openAuthModal();
           }}
-          sections={homeSection.concat(mobileSections)}
+          sections={[...homeSection, ...mobileSections]}
         />
       )}
 

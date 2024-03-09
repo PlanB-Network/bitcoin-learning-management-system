@@ -2,12 +2,12 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CategoryIcon } from '../../../components/CategoryIcon';
-import { MainLayout } from '../../../components/MainLayout';
-import { PageHeader } from '../../../components/PageHeader';
-import { computeAssetCdnUrl, trpc } from '../../../utils';
-import { FilterBar } from '../../resources/components/FilterBar';
-import { TUTORIALS_CATEGORIES } from '../utils';
+import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { PageHeader } from '../../../components/PageHeader/index.tsx';
+import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
+import { FilterBar } from '../../resources/components/FilterBar/index.tsx';
+import { TUTORIALS_CATEGORIES } from '../utils.tsx';
 
 export const TutorialExplorer = () => {
   const { t, i18n } = useTranslation();
@@ -71,15 +71,15 @@ export const TutorialExplorer = () => {
                   key={tutorial.id}
                 >
                   <img
-                    className="m-1 h-20 w-20 grid-cols-1 rounded-full"
+                    className="m-1 size-20 grid-cols-1 rounded-full"
                     src={
                       tutorial.builder
                         ? computeAssetCdnUrl(
-                            tutorial.builder.last_commit,
+                            tutorial.builder.lastCommit,
                             `${tutorial.builder.path}/assets/logo.jpeg`,
                           )
                         : computeAssetCdnUrl(
-                            tutorial.last_commit,
+                            tutorial.lastCommit,
                             `${tutorial.path}/assets/logo.jpeg`,
                           )
                     }

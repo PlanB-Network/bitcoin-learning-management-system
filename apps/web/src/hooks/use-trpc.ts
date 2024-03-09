@@ -10,30 +10,30 @@ interface Meta {
 }
 
 declare module '@tanstack/react-query' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface QueryMeta extends Meta {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface MutationMeta extends Meta {}
 }
 
+const onError = (error: unknown) => {
+  if (error instanceof TRPCClientError) {
+    if (
+      error.shape &&
+      // TODO re-enable the rule
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+      ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
+    ) {
+      console.error('Try to access an unauthorized resource');
+      // userSlice.actions.logout();
+    }
+  } else if (error instanceof Error) {
+    console.error(error.message);
+  } else {
+    console.error(error);
+  }
+};
+
 export const useTrpc = () => {
   // TODO: replace console logs by toast once we have our UI library
-
-  const onError = (error: unknown) => {
-    if (error instanceof TRPCClientError) {
-      if (
-        error.shape &&
-        ['UNAUTHORIZED', 'FORBIDDEN'].includes(error.shape.data.code)
-      ) {
-        console.error('Try to access an unauthorized resource');
-        // userSlice.actions.logout();
-      }
-    } else if (error instanceof Error) {
-      console.error(error.message);
-    } else {
-      console.error(error);
-    }
-  };
 
   const [trpcQueryClient] = useState(
     () =>

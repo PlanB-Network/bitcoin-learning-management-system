@@ -6,10 +6,10 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
 
-import { Button } from '../../../atoms/Button';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { userSlice } from '../../../store';
-import { LanguageSelector } from '../LanguageSelector';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { useAppDispatch, useAppSelector } from '../../../hooks/index.ts';
+import { userSlice } from '../../../store/index.ts';
+import { LanguageSelector } from '../LanguageSelector/index.tsx';
 
 export interface MetaElementsProps {
   onClickLogin: () => void;
@@ -18,10 +18,7 @@ export interface MetaElementsProps {
 
 const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
-export const MetaElements = ({
-  onClickRegister,
-  onClickLogin,
-}: MetaElementsProps) => {
+export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -61,15 +58,16 @@ export const MetaElements = ({
       )}
 
       {isLoggedIn && isMobile && (
-        <div
-          className="text-white"
+        <button
           onClick={() => {
             dispatch(userSlice.actions.logout());
             navigate({ to: '/' });
           }}
         >
-          <IoLogOutOutline size={28} />
-        </div>
+          <div className="text-white">
+            <IoLogOutOutline size={28} />
+          </div>
+        </button>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { IconType } from 'react-icons';
+import type { IconType } from 'react-icons';
 
 export interface NavigationBaseItem {
   id: string;
@@ -16,8 +16,4 @@ export type NavigationElement = (NavigationBaseItem & {
 export type NavigationSubSection = NavigationBaseItem &
   ({ action: () => void } | { path: string } | { items: NavigationElement[] });
 export type NavigationSection = NavigationBaseItem &
-  (
-    | { action: () => void }
-    | { path: string }
-    | { items: (NavigationSubSection | NavigationElement)[] }
-  );
+  (ActionOrPath | { items: Array<NavigationSubSection | NavigationElement> });

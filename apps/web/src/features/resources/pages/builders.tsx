@@ -2,9 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Card } from '../../../atoms/Card';
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { Card } from '../../../atoms/Card/index.tsx';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 export const Builders = () => {
   const { t, i18n } = useTranslation();
@@ -18,16 +18,13 @@ export const Builders = () => {
     ? builders.sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
-  const categorizedBuilders = sortedBuilders.reduce(
-    (acc, builder) => {
-      if (!acc[builder.category]) {
-        acc[builder.category] = [];
-      }
-      acc[builder.category].push(builder);
-      return acc;
-    },
-    {} as Record<string, typeof sortedBuilders>,
-  );
+  const categorizedBuilders = {} as Record<string, typeof sortedBuilders>;
+  for (const builder of sortedBuilders) {
+    if (!categorizedBuilders[builder.category]) {
+      categorizedBuilders[builder.category] = [];
+    }
+    categorizedBuilders[builder.category].push(builder);
+  }
 
   const categories = [
     ...new Set(sortedBuilders.map((builder) => builder.category)),

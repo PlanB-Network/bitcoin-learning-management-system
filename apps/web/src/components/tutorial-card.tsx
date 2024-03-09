@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
-import { computeAssetCdnUrl } from '../utils';
-import { TRPCRouterOutput } from '../utils/trpc';
+import { computeAssetCdnUrl } from '../utils/index.ts';
+import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 interface TutorialCardProps extends React.HTMLProps<HTMLDivElement> {
   tutorial: NonNullable<TRPCRouterOutput['content']['getTutorials']>[number];
@@ -21,15 +21,15 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
         {/* Big screen */}
         <div className="bg-beige-300 hidden flex-row justify-start space-x-4 rounded-2xl border border-blue-800 px-4 py-3 md:flex">
           <img
-            className="m-1 h-20 w-20 self-center rounded-full"
+            className="m-1 size-20 self-center rounded-full"
             src={
               tutorial.builder
                 ? computeAssetCdnUrl(
-                    tutorial.builder.last_commit,
+                    tutorial.builder.lastCommit,
                     `${tutorial.builder.path}/assets/logo.jpeg`,
                   )
                 : computeAssetCdnUrl(
-                    tutorial.last_commit,
+                    tutorial.lastCommit,
                     `${tutorial.path}/assets/logo.jpeg`,
                   )
             }
@@ -60,15 +60,15 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
           <div className="flex flex-col">
             <div className="flex flex-row self-start">
               <img
-                className="mr-4 h-12 w-12 self-center rounded-full"
+                className="mr-4 size-12 self-center rounded-full"
                 src={
                   tutorial.builder
                     ? computeAssetCdnUrl(
-                        tutorial.builder.last_commit,
+                        tutorial.builder.lastCommit,
                         `${tutorial.builder.path}/assets/logo.jpeg`,
                       )
                     : computeAssetCdnUrl(
-                        tutorial.last_commit,
+                        tutorial.lastCommit,
                         `${tutorial.path}/assets/logo.jpeg`,
                       )
                 }

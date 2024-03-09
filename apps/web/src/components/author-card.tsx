@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
-import { useDisclosure } from '../hooks';
-import { TRPCRouterOutput } from '../utils/trpc';
+import { useDisclosure } from '../hooks/index.ts';
+import type { TRPCRouterOutput } from '../utils/trpc.ts';
 
-import { TipModal } from './tip-modal';
-import { TooltipWithContent } from './tooptip-with-content';
+import { TipModal } from './tip-modal.tsx';
+import { TooltipWithContent } from './tooptip-with-content.tsx';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
@@ -30,38 +30,38 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             <img
               src={professor.picture}
               alt="Professor"
-              className="mt-4 h-20 w-20 rounded-full sm:h-28 sm:w-28"
+              className="mt-4 size-20 rounded-full sm:size-28"
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.links.twitter && (
-                <div
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     window.open(
-                      professor.links.twitter,
+                      professor.links.twitter as string,
                       '_blank',
                       'noopener noreferrer',
                     );
                   }}
                 >
                   <TwitterIcon className="h-20" />
-                </div>
+                </button>
               )}
               {professor.links.website && (
-                <div
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     window.open(
-                      professor.links.website,
+                      professor.links.website as string,
                       '_blank',
                       'noopener noreferrer',
                     );
                   }}
                 >
                   <WebIcon className="h-20" />
-                </div>
+                </button>
               )}
             </div>
           </div>
@@ -74,14 +74,14 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-blue-800 sm:gap-5 sm:text-2xl">
                   <div className="flex items-center gap-2 ">
                     <div className="font-semibold">
-                      {professor.courses_count}
+                      {professor.coursesCount}
                     </div>
                     <div className="">{t('words.courses')}</div>
                   </div>
                   <span className="text-lg sm:text-3xl">•</span>
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">
-                      {professor.tutorials_count}
+                      {professor.tutorialsCount}
                     </div>
                     <div className="">{t('words.tutorials')}</div>
                   </div>
@@ -105,8 +105,8 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <div
-                  className="z-10 ml-4 h-8 w-8 self-start"
+                <button
+                  className="z-10 ml-4 size-8 self-start"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -119,7 +119,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                   >
                     <DonateLightning />
                   </TooltipWithContent>
-                </div>
+                </button>
               </div>
             </div>
           </div>

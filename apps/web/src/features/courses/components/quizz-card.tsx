@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import QuizzCardQuestion from './quizz-card-question';
-import QuizzCardResults from './quizz-card-results';
-import QuizzCardReview from './quizz-card-review';
+import QuizzCardQuestion from './quizz-card-question.tsx';
+import QuizzCardResults from './quizz-card-results.tsx';
+import QuizzCardReview from './quizz-card-review.tsx';
 
 export interface Question {
   question: string;
@@ -21,11 +21,10 @@ export default function QuizzCard({
   name,
   chapter,
   questions,
-  ...props
 }: QuizzCardProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([
+  const [selectedAnswers, setSelectedAnswers] = useState<Array<number | null>>([
     null,
     null,
     null,
@@ -50,7 +49,7 @@ export default function QuizzCard({
 
     const answersColorsTemp: string[] = updatedSelectedAnswer.map(
       (selectedAnswer, index) => {
-        if (selectedAnswer == null) {
+        if (selectedAnswer === null) {
           return '#FAF7E7';
         } else {
           const correctAnswer = questions[index].correctAnswer;
@@ -79,10 +78,6 @@ export default function QuizzCard({
     setCurrentStep(currentStep + 1);
   }
 
-  function handleEndOfQuiz() {
-    console.log('End of quiz');
-  }
-
   function handleQuestionChange(i: number) {
     setCurrentQuestionIndex(i);
   }
@@ -106,8 +101,6 @@ export default function QuizzCard({
           <QuizzCardResults
             name={name}
             chapter={chapter}
-            questionIndex={currentQuestionIndex}
-            answers={[true, true, false, false]}
             answersColors={answersColors}
             numberOfCorrectAnswers={numberOfCorrectAnswers}
             nextStep={handleNextStep}
@@ -123,10 +116,10 @@ export default function QuizzCard({
             selectedAnswer={selectedAnswers[currentQuestionIndex] as number}
             correctAnswer={questions[currentQuestionIndex].correctAnswer}
             numberOfCorrectAnswers={numberOfCorrectAnswers}
-            explanation={questions[currentQuestionIndex].explanation as string}
+            explanation={questions[currentQuestionIndex].explanation}
             questionChange={handleQuestionChange}
             answersColors={answersColors}
-            nextStep={handleEndOfQuiz}
+            nextStep={() => {}}
           />
         )}
       </div>

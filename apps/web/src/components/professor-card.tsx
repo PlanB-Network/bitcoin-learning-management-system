@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
 import WebIcon from '../assets/icons/web_blue.svg?react';
-import { TRPCRouterOutput } from '../utils/trpc';
+import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
@@ -14,12 +14,12 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-base  text-blue-800">
       <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.courses_count}</div>
+        <div className="font-semibold">{professor.coursesCount}</div>
         <div className="">{t('words.courses')}</div>
       </div>
       <span className="text-3xl">•</span>
       <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.tutorials_count}</div>
+        <div className="font-semibold">{professor.tutorialsCount}</div>
         <div className="">{t('words.tutorials')}</div>
       </div>
     </div>
@@ -29,7 +29,7 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
 const TopicTags = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-4 flex flex-wrap  items-start gap-2.5 self-stretch text-xs text-blue-700">
-      {professor.tags.map((tag) => {
+      {professor.tags?.map((tag) => {
         return (
           <div
             key={tag}
@@ -47,34 +47,34 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-2 flex w-full justify-evenly self-stretch px-1">
       {professor.links.twitter && (
-        <div
+        <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             window.open(
-              professor.links.twitter,
+              professor.links.twitter as string,
               '_blank',
               'noopener noreferrer',
             );
           }}
         >
           <TwitterIcon className="h-20" />
-        </div>
+        </button>
       )}
       {professor.links.website && (
-        <div
+        <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             window.open(
-              professor.links.website,
+              professor.links.website as string,
               '_blank',
               'noopener noreferrer',
             );
           }}
         >
           <WebIcon className="h-20" />
-        </div>
+        </button>
       )}
     </div>
   );
@@ -95,7 +95,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               <img
                 src={professor.picture}
                 alt="Professor"
-                className="mt-8 h-28 w-28 rounded-full bg-white"
+                className="mt-8 size-28 rounded-full bg-white"
               />
             </div>
             <div className="mt-2 flex h-full flex-col items-center justify-center self-stretch px-5 py-0">

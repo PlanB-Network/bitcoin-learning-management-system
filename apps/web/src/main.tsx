@@ -1,18 +1,17 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import { App } from './app';
-import { AppProvider } from './providers/app';
+import { App } from './app.tsx';
+import { AppProvider } from './providers/app.tsx';
 // Internationalization
 import './utils/i18n';
 
 // Styles
 // TODO TRIGGER
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import '../../../libs/ui/src/styles/global.css';
+import '../../../packages/ui/src/styles/global.css';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+  document.querySelector('#root') as HTMLElement,
 );
 
 root.render(

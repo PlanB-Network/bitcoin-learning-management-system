@@ -41,4 +41,6 @@ Thumbs.db
 # Environment Variables
 **/.env
 
-.nx/cache
+.turbo
+out
+tsconfig.*.tsbuildinfo

@@ -1,6 +1,6 @@
-import { compose } from '../../../../utils';
-import { MenuElement } from '../../MenuElement';
-import { NavigationSubSection } from '../../props';
+import { compose } from '../../../../utils/index.ts';
+import { MenuElement } from '../../MenuElement/index.tsx';
+import type { NavigationSubSection } from '../../props.tsx';
 
 export interface FlyingMenuSubSectionProps {
   subSection: NavigationSubSection;

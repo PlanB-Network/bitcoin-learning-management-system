@@ -9,7 +9,7 @@ export const Person = ({ name, job, picture }: PersonProps) => {
     <div className="flex flex-row gap-6">
       <img
         src={picture}
-        className="h-20 w-20 rounded-md"
+        className="size-20 rounded-md"
         alt=""
         loading="lazy"
       />

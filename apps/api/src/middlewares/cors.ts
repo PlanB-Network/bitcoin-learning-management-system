@@ -5,7 +5,7 @@ export const createCorsMiddleware = () => {
   const allowedOrigins =
     process.env.NODE_ENV === 'production'
       ? new Set([`https://${process.env.DOMAIN}`])
-      : new Set(['http://localhost:4200']);
+      : new Set(['http://localhost:8181']);
 
   const cors = createCors({
     credentials: true,
@@ -15,9 +15,9 @@ export const createCorsMiddleware = () => {
         callback(null, true);
       } else if (origin) {
         console.error(
-          `Rejected origin ${origin} (not in allowed origins: ${Array.from(
-            allowedOrigins,
-          ).join(', ')})`,
+          `Rejected origin ${origin} (not in allowed origins: ${[
+            ...allowedOrigins,
+          ].join(', ')})`,
         );
 
         callback(new Error('Not allowed by CORS'));

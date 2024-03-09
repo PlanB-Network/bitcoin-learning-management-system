@@ -33,9 +33,7 @@ x-defaults: &defaults
 
 x-base: &base
   build: .
-
-  volumes:
-    - .:/app
+  user: node
 
 services:
   postgres:
@@ -74,43 +72,46 @@ services:
 
   api:
     <<: [*defaults, *base]
-    command: pnpm nx run api:serve
+    command: pnpm turbo run dev --filter='api'
     ports:
       - 3000:3000
     environment:
       <<: *environment
       HOST: 0.0.0.0
     volumes:
-      - .:/app
+      - ./apps/api:/home/node/apps/api
+      - /home/node/apps/api/node_modules/
+      - ./packages/content/src:/home/node/packages/content/src
+      - ./packages/database/src:/home/node/packages/database/src
+      - ./packages/schemas/src:/home/node/packages/schemas/src
+      - ./packages/redis/src:/home/node/packages/redis/src
+      - ./packages/types/src:/home/node/packages/types/src
+      - ./packages/user/src:/home/node/packages/user/src
       - cdn:$CDN_PATH
-      - api_node_modules:/app/node_modules
     depends_on:
       - postgres
     healthcheck:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '3000']
 
-  front:
+  web:
     <<: [*defaults, *base]
-    command: pnpm nx run web:serve
+    command: pnpm turbo run dev --filter='web'
     ports:
-      - 4200:4200
-      - 4300:4300
+      - 8181:8181
+    volumes:
+      - ./apps/web:/home/node/apps/web
+      - /home/node/apps/web/node_modules/
+      - ./packages/ui/src:/home/node/packages/ui/src
+      - ./packages/database/src:/home/node/packages/database/src
+      - ./packages/schemas/src:/home/node/packages/schemas/src
+      - ./packages/types/src:/home/node/packages/types/src
+      - cdn:$CDN_PATH
     healthcheck:
       <<: *healthcheck
-      test: ['CMD', 'nc', '-zv', 'localhost', '4200']
-
-  # storybook:
-  #   <<: [*defaults, *base]
-  #   command: pnpm nx run ui:storybook
-  #   ports:
-  #     - 4400:4400
-  #   healthcheck:
-  #     <<: *healthcheck
-  #     test: ['CMD', 'nc', '-zv', 'localhost', '4400']
+      test: ['CMD', 'nc', '-zv', 'localhost', '8181']
 
 volumes:
   postgres:
-  cdn:
   redis:
-  api_node_modules:
+  cdn:

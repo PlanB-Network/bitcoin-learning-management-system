@@ -5,8 +5,8 @@ import { cn } from '@sovereign-university/ui';
 import ArrowFilledIcon from '../../../assets/icons/arrow_filled.svg?react';
 import RabbitHoldingPen from '../../../assets/rabbit_holding_pen.svg?react';
 
-import PieChart from './pie-chart';
-import QuizzResultMessage from './quizz-result-message';
+import PieChart from './pie-chart.tsx';
+import QuizzResultMessage from './quizz-result-message.tsx';
 
 interface QuizzCardReviewProps {
   name: string;
@@ -47,7 +47,7 @@ export default function QuizzCardReview({
     <>
       <div className="border-blue-1000 flex h-12 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2 md:h-16">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 flex-col items-center justify-end pr-0 md:h-16 md:w-16">
+          <div className="flex size-12 flex-col items-center justify-end pr-0 md:size-16">
             <RabbitHoldingPen className="ml-[7px] md:ml-[-10px]" />
           </div>
           <div className="text-beige-300 text-center text-2xl font-semibold uppercase leading-[120%] md:text-3xl">
@@ -71,7 +71,7 @@ export default function QuizzCardReview({
           </div>
         </div>
         <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
-          <div onClick={nextStep}>
+          <button onClick={nextStep}>
             <PieChart
               width={160}
               height={160}
@@ -79,7 +79,7 @@ export default function QuizzCardReview({
               handlePieClick={pieClick}
               selectedPieNumber={questionIndex}
             />
-          </div>
+          </button>
           <div className="bg-beige-300 rounded-[0.9375rem] border-2 border-gray-300 p-3">
             <div className="mb-1 flex flex-row items-center gap-1">
               <ArrowFilledIcon height={20} />
@@ -100,8 +100,6 @@ export default function QuizzCardReview({
                         ? index === correctAnswer
                           ? 'bg-green-300 border-green-500'
                           : 'border-red-400 text-red-400'
-                        : index === correctAnswer
-                        ? 'bg-green-300'
                         : 'bg-beige-300',
                     )}
                   >
@@ -112,12 +110,10 @@ export default function QuizzCardReview({
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
                             : 'font-semibold text-red-500'
-                          : index === correctAnswer
-                          ? 'font-medium text-blue-1000'
                           : 'font-medium text-blue-1000',
                       )}
                     >
-                      {String.fromCharCode(97 + index)}
+                      {String.fromCodePoint(97 + index)}
                     </div>
                     <div
                       className={cn(
@@ -125,8 +121,6 @@ export default function QuizzCardReview({
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
                             : 'font-semibold text-red-500'
-                          : index === correctAnswer
-                          ? 'font-medium text-blue-1000'
                           : 'font-medium text-blue-1000',
                       )}
                     >

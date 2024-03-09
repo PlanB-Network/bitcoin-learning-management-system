@@ -5,13 +5,18 @@ export function addSpaceToCourseId(courseId: string) {
 }
 
 export function fakeCourseId(courseId: string) {
-  if (courseId === 'cuboplus') {
-    return 'btc401';
-  } else if (courseId === 'rgb') {
-    return 'btc402';
-  } else if (courseId === 'giaco') {
-    return 'econ102';
-  } else {
-    return courseId;
+  switch (courseId) {
+    case 'cuboplus': {
+      return 'btc401';
+    }
+    case 'rgb': {
+      return 'btc402';
+    }
+    case 'giaco': {
+      return 'econ102';
+    }
+    default: {
+      return courseId;
+    }
   }
 }

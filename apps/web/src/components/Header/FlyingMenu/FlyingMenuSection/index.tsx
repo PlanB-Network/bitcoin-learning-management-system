@@ -2,10 +2,10 @@ import { Popover, Transition } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import { Fragment, useMemo, useState } from 'react';
 
-import { compose } from '../../../../utils';
-import { MenuElement } from '../../MenuElement';
-import { NavigationSection } from '../../props';
-import { FlyingMenuSubSection } from '../FlyingMenuSubSection';
+import { compose } from '../../../../utils/index.ts';
+import { MenuElement } from '../../MenuElement/index.tsx';
+import type { NavigationSection } from '../../props.tsx';
+import { FlyingMenuSubSection } from '../FlyingMenuSubSection/index.tsx';
 
 export interface FlyingMenuProps {
   section: NavigationSection;
@@ -31,8 +31,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           className={compose('text-base font-medium xl:text-lg', fontWeight)}
           to={section.path}
           /* TODO: fix */
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          params={{} as any}
+          params={{}}
         >
           {section.title}
         </Link>
@@ -83,7 +82,7 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
           <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">
             <div className="flex flex-row">
               {'items' in section &&
-                section.items.map((subSectionOrElement, index) => {
+                section.items.map((subSectionOrElement) => {
                   return 'items' in subSectionOrElement ? (
                     <FlyingMenuSubSection
                       key={subSectionOrElement.id}

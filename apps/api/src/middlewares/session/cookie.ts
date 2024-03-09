@@ -3,7 +3,7 @@ import process from 'node:process';
 import SessionStore from 'connect-redis';
 import session from 'express-session';
 
-import type { Dependencies } from '../../dependencies';
+import type { Dependencies } from '../../dependencies.js';
 
 const ONE_DAY = 1000 * 60 * 60 * 24;
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Card } from '.';
+import { Card } from './index.tsx';
 
 const meta: Meta<typeof Card> = {
   title: 'Atoms/Card',

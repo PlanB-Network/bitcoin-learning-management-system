@@ -8,17 +8,17 @@ import { BsClock, BsHourglass } from 'react-icons/bs';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { HiOutlineBookOpen } from 'react-icons/hi';
 import { IoPricetagOutline } from 'react-icons/io5';
-import ReactPlayer from 'react-player';
 
 import graduateImg from '../../../../assets/birrete.png';
 import watch from '../../../../assets/cloclk.png';
 import Book from '../../../../assets/courses/livre.svg?react';
 import rabitPen from '../../../../assets/rabbit_holding_pen.svg';
-import { Button } from '../../../../atoms/Button';
-import { Modal } from '../../../../atoms/Modal';
-import { computeAssetCdnUrl } from '../../../../utils';
-import { addSpaceToCourseId } from '../../../../utils/courses';
-import { TRPCRouterOutput } from '../../../../utils/trpc';
+import { Button } from '../../../../atoms/Button/index.tsx';
+import { Modal } from '../../../../atoms/Modal/index.tsx';
+import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
+import { addSpaceToCourseId } from '../../../../utils/courses.ts';
+import { computeAssetCdnUrl } from '../../../../utils/index.ts';
+import type { TRPCRouterOutput } from '../../../../utils/trpc.ts';
 
 type Course = NonNullable<TRPCRouterOutput['content']['getCourse']>;
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -26,14 +26,21 @@ interface CourseDescriptionModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   satsPrice: number;
   isOpen: boolean;
+  conversionRate: number;
   onClose: (isPaid?: boolean) => void;
-  onPay: () => void;
+  onPay: (
+    satsPrice: number,
+    withPhysical: boolean,
+    part?: number,
+    chapter?: number,
+  ) => void;
 }
 
 export const CourseDescriptionModal = ({
   course,
   satsPrice,
   isOpen,
+  conversionRate,
   onClose,
   onPay,
 }: CourseDescriptionModalProps) => {
@@ -50,11 +57,11 @@ export const CourseDescriptionModal = ({
         <div className=" col-span-2 flex-col space-y-2 p-3 sm:px-0">
           <div className="flex flex-wrap gap-2 text-xs">
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img src={rabitPen} alt="" className="mr-2 h-4 w-4" />
+              <img src={rabitPen} alt="" className="mr-2 size-4" />
               <span>{professorNames}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img src={graduateImg} alt="" className="mr-2 h-4 w-4" />
+              <img src={graduateImg} alt="" className="mr-2 size-4" />
               <span className="capitalize">{course.level}</span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
@@ -66,11 +73,7 @@ export const CourseDescriptionModal = ({
               </span>
             </div>
             <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-              <img
-                src={watch}
-                alt="Icono de estudio"
-                className="mr-2 h-4 w-4"
-              />
+              <img src={watch} alt="Icono de estudio" className="mr-2 size-4" />
               <span>
                 {t('courses.details.mobile.hours', {
                   hours: course.hours,
@@ -106,11 +109,11 @@ export const CourseDescriptionModal = ({
             <BiCalendar size="35" className="text-orange-600" />
             <span className="font-body w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
               {t('courses.details.date', {
-                startDate: course.paid_start_date
-                  ? new Date(course.paid_start_date).toLocaleDateString()
+                startDate: course.paidStartDate
+                  ? new Date(course.paidStartDate).toLocaleDateString()
                   : '',
-                endDate: course.paid_end_date
-                  ? new Date(course.paid_end_date).toLocaleDateString()
+                endDate: course.paidEndDate
+                  ? new Date(course.paidEndDate).toLocaleDateString()
                   : '',
               })}
             </span>
@@ -155,12 +158,12 @@ export const CourseDescriptionModal = ({
       <div className="grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
         <div>
           <p className="mt-2 whitespace-pre-wrap text-xs text-gray-800">
-            {course.paid_description}
+            {course.paidDescription}
           </p>
 
           <a
             href={computeAssetCdnUrl(
-              course.last_commit,
+              course.lastCommit,
               `courses/${course.id}/assets/curriculum.pdf`,
             )}
             target="_blank"
@@ -183,7 +186,7 @@ export const CourseDescriptionModal = ({
             style={{ top: 0, left: 0 }}
             className="mx-auto mb-2 max-h-[300px] rounded-lg"
             controls={true}
-            url={course.paid_video_link}
+            url={course.paidVideoLink as string}
           />
         </div>
       </div>
@@ -208,11 +211,43 @@ export const CourseDescriptionModal = ({
           </div>
           <Button
             variant="tertiary"
-            onClick={onPay}
+            onClick={() => {
+              onPay(satsPrice, false);
+            }}
             className="ml-auto mt-2"
             size={isScreenMd ? 'm' : 's'}
           >
-            {t('words.purchase')}
+            {t('courses.purchase.online')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((2300 * 100_000_000) / conversionRate, true);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.physical')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((450 * 100_000_000) / conversionRate, false, 6, 0);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.saifedeanPḧysical')}
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              onPay((180 * 100_000_000) / conversionRate, true, 6, 0);
+            }}
+            className="ml-auto mt-2"
+            size={isScreenMd ? 'm' : 's'}
+          >
+            {t('courses.purchase.saifedeanOnline')}
           </Button>
         </div>
       </div>

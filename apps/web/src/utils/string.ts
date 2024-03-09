@@ -13,5 +13,5 @@ export const joinWords = (words: string[]) => {
 };
 
 export function extractNumbers(s: string) {
-  return s.replace(/^\D+/g, '');
+  return s.replaceAll(/^\D+/g, '');
 }

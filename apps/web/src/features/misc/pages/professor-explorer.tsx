@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { AuthorCard } from '../../..//components/author-card';
-import { ProfessorCard } from '../../../components/professor-card';
-import { trpc } from '../../../utils/trpc';
-import { ResourceLayout } from '../../resources/layout';
+import { AuthorCard } from '../../..//components/author-card.tsx';
+import { ProfessorCard } from '../../../components/professor-card.tsx';
+import { trpc } from '../../../utils/trpc.ts';
+import { ResourceLayout } from '../../resources/layout.tsx';
 
 export const ProfessorExplorer = () => {
   const { t, i18n } = useTranslation();

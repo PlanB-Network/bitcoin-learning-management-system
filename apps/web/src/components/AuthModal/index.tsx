@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { LnurlAuth } from './LnurlAuth';
-import { PasswordReset } from './PasswordReset';
-import { AuthModalState } from './props';
-import { Register } from './Register';
-import { SignIn } from './SignIn';
+import { LnurlAuth } from './LnurlAuth/index.tsx';
+import { PasswordReset } from './PasswordReset/index.tsx';
+import { AuthModalState } from './props.ts';
+import { Register } from './Register/index.tsx';
+import { SignIn } from './SignIn/index.tsx';
 
 interface LoginModalProps {
   isOpen: boolean;

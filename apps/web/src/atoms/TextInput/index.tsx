@@ -1,13 +1,9 @@
-import {
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  useMemo,
-  useState,
-} from 'react';
+import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { useMemo, useState } from 'react';
 import { BsExclamationTriangle, BsEye, BsEyeSlash } from 'react-icons/bs';
 
-import { compose } from '../../utils';
-import { BaseAtomProps } from '../types';
+import { compose } from '../../utils/index.ts';
+import type { BaseAtomProps } from '../types.tsx';
 
 type BaseProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
@@ -45,13 +41,13 @@ export const TextInput = ({
     if (isPassword) {
       return showValue ? (
         <BsEyeSlash
-          className="h-5 w-5 cursor-pointer"
+          className="size-5 cursor-pointer"
           onClick={() => setShowValue(false)}
           aria-hidden="true"
         />
       ) : (
         <BsEye
-          className="h-5 w-5 cursor-pointer"
+          className="size-5 cursor-pointer"
           onClick={() => setShowValue(true)}
           aria-hidden="true"
         />
@@ -61,7 +57,7 @@ export const TextInput = ({
     if (error)
       return (
         <BsExclamationTriangle
-          className="h-5 w-5 text-red-100"
+          className="size-5 text-red-100"
           aria-hidden="true"
         />
       );

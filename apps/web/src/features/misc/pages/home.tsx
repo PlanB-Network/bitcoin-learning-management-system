@@ -22,11 +22,11 @@ import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '../../../assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '../../../assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '../../../assets/home/twitter_scuba.jpeg';
-import { Button } from '../../../atoms/Button';
-import { CategoryIcon } from '../../../components/CategoryIcon';
-import { MainLayout } from '../../../components/MainLayout';
-import { AboutUs } from '../../../molecules/AboutUs';
-import { TUTORIALS_CATEGORIES } from '../../tutorials/utils';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { AboutUs } from '../../../molecules/AboutUs/index.tsx';
+import { TUTORIALS_CATEGORIES } from '../../tutorials/utils.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -469,7 +469,7 @@ export const Home = () => {
             <div className="z-0 col-span-1 hidden h-full w-[23rem] md:flex">
               <img
                 src={Flags}
-                className="h-auto w-auto object-cover"
+                className="size-auto object-cover"
                 alt={t('')}
                 loading="lazy"
               />

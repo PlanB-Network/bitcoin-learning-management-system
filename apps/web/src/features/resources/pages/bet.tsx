@@ -16,7 +16,7 @@ import logosCompanies from '../../../assets/resources/bet/logos.webp';
 import meme from '../../../assets/resources/bet/meme.webp';
 import propaganda from '../../../assets/resources/bet/propaganda.webp';
 import scams from '../../../assets/resources/bet/scams.webp';
-import { ResourceLayout } from '../layout';
+import { ResourceLayout } from '../layout.tsx';
 
 const LinkBox = ({
   title,
@@ -75,12 +75,12 @@ const SectionGrid = ({
   cardColor,
   hoverColor,
 }: {
-  elements: {
+  elements: Array<{
     title: string;
     description: string;
     figmaUrl: string;
     imgFig: string;
-  }[];
+  }>;
   cardColor: string;
   hoverColor: string;
 }) => {

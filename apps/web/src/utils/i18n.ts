@@ -4,7 +4,7 @@ import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
-i18n
+void i18n
   .use(Detector)
   .use(Backend)
   .use(initReactI18next)

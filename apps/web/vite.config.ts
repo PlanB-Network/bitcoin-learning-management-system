@@ -1,49 +1,44 @@
 /// <reference types="vitest" />
 /// <reference types="vite-plugin-svgr/client" />
 
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 export default defineConfig({
-  root: __dirname,
+  plugins: [react(), svgr(), tsconfigPaths()],
+
+  root: process.cwd(),
+  base: '/',
   build: {
-    outDir: '../../dist/apps/web',
+    target: 'esnext',
     reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
-  },
-  cacheDir: '../../node_modules/.vite/web',
-
-  assetsInclude: ['../../libs/ui/src/assets'],
-
-  server: {
-    port: 4200,
-    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
-    fs: {
-      allow: ['../../libs/ui/src/assets'],
-    },
+    chunkSizeWarningLimit: 600,
+    cssCodeSplit: true,
+    outDir: 'dist',
   },
 
-  preview: {
-    port: 4300,
-    host: process.env.DOCKER ? '0.0.0.0' : 'localhost',
-  },
+  assetsInclude: [UI_PACKAGE_ASSETS],
 
-  plugins: [react(), svgr(), nxViteTsPaths()],
+  server: process.env.DOCKER
+    ? {
+        host: '0.0.0.0',
+        port: 8181,
+        strictPort: true,
+        // TODO: check if hmr configuration is needed
+        // hmr: {},
+      }
+    : {
+        host: '0.0.0.0',
+        port: 8181,
+      },
 
   test: {
     reporters: ['default'],
-    coverage: {
-      reportsDirectory: '../../coverage/apps/web',
-      provider: 'v8',
-    },
     globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },

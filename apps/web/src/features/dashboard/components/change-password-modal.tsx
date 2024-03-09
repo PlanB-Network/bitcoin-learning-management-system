@@ -1,14 +1,15 @@
-import { Formik, FormikHelpers } from 'formik';
+import type { FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
-import { Button } from '../../../atoms/Button';
-import { Modal } from '../../../atoms/Modal';
-import { TextInput } from '../../../atoms/TextInput';
-import { trpc } from '../../../utils';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { Modal } from '../../../atoms/Modal/index.tsx';
+import { TextInput } from '../../../atoms/TextInput/index.tsx';
+import { trpc } from '../../../utils/index.ts';
 
 const password = new PasswordValidator().is().min(10);
 
@@ -19,6 +20,7 @@ const changePasswordSchema = z
       (pwd) => password.validate(pwd),
       (pwd) => {
         const result = password.validate(pwd, { details: true });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         return { message: Array.isArray(result) ? result[0].message : '' };
       },
     ),

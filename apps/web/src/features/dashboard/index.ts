@@ -1,1 +1,1 @@
-export { dashboardRoutes } from './routes';
+export { dashboardRoutes } from './routes.ts';

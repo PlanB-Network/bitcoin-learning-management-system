@@ -2,8 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { trpc } from '../../../utils';
-import { ResourceLayout } from '../layout';
+import { trpc } from '../../../utils/index.ts';
+import { ResourceLayout } from '../layout.tsx';
 
 export const Podcasts = () => {
   const { t, i18n } = useTranslation();

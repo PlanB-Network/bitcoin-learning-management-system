@@ -37,10 +37,10 @@ import PpRogzy from '../../../assets/people/rogzy.webp';
 import PpTheom from '../../../assets/people/theo_m.webp';
 import PpTheop from '../../../assets/people/theo_p.webp';
 import PpTodd from '../../../assets/people/todd.webp';
-import { Button } from '../../../atoms/Button';
-import { MainLayout } from '../../../components/MainLayout';
-import { AboutUs } from '../../../molecules/AboutUs';
-import { Person } from '../../../molecules/Person';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { AboutUs } from '../../../molecules/AboutUs/index.tsx';
+import { Person } from '../../../molecules/Person/index.tsx';
 
 const Title = () => {
   const { t } = useTranslation();

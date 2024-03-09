@@ -8,9 +8,13 @@ import Groups from '../../assets/icons/groups.svg?react';
 import OpenSource from '../../assets/icons/open_source.svg?react';
 import VisibilityOff from '../../assets/icons/visibility_off.svg?react';
 
+const paragraphClassName = cn(
+  'text-sm text-gray-400 sm:text-sm lg:text-base',
+  'mt-2 font-light',
+);
+
 export const AboutUs = () => {
   const { t } = useTranslation();
-  const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
 
   return (
     <>
@@ -26,7 +30,7 @@ export const AboutUs = () => {
           <div className="mt-2 text-sm font-semibold md:text-2xl">
             {t('home.aboutUsSection.bitcoinFocusTitle').toUpperCase()}
           </div>
-          <div className={cn(paragraphCss, 'mt-2 font-light')}>
+          <div className={paragraphClassName}>
             {t('home.aboutUsSection.bitcoinFocusContent')}
           </div>
         </div>
@@ -35,7 +39,7 @@ export const AboutUs = () => {
           <div className="mt-2 text-sm font-semibold md:text-2xl">
             {t('home.aboutUsSection.openSourceTitle').toUpperCase()}
           </div>
-          <div className={cn(paragraphCss, 'mt-2 font-light')}>
+          <div className={paragraphClassName}>
             {t('home.aboutUsSection.openSourceContent')}
           </div>
         </div>
@@ -44,7 +48,7 @@ export const AboutUs = () => {
           <div className="mt-2 text-sm font-semibold md:text-2xl">
             {t('home.aboutUsSection.communityTitle').toUpperCase()}
           </div>
-          <div className={cn(paragraphCss, 'mt-2 font-light')}>
+          <div className={paragraphClassName}>
             {t('home.aboutUsSection.communityContent')}
           </div>
         </div>
@@ -53,7 +57,7 @@ export const AboutUs = () => {
           <div className="mt-2 text-sm font-semibold md:text-2xl">
             {t('home.aboutUsSection.privacyTitle').toUpperCase()}
           </div>
-          <div className={cn(paragraphCss, 'mt-2 font-light')}>
+          <div className={paragraphClassName}>
             {t('home.aboutUsSection.privacyContent')}
           </div>
         </div>

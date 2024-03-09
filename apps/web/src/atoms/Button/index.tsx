@@ -1,7 +1,8 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, useMemo } from 'react';
+import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { useMemo } from 'react';
 
-import { compose } from '../../utils';
-import { BaseAtomProps } from '../types';
+import { compose } from '../../utils/index.ts';
+import type { BaseAtomProps } from '../types.tsx';
 
 interface ButtonProps
   extends BaseAtomProps,

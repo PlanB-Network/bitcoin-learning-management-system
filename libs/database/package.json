@@ -1,6 +1,0 @@
-{
-  "name": "database",
-  "version": "0.0.1",
-  "executors": "executors.json",
-  "type": "commonjs"
-}

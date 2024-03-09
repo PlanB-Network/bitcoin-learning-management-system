@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
-import { CategoryIcon } from '../../../components/CategoryIcon';
-import { MainLayout } from '../../../components/MainLayout';
-import { PageHeader } from '../../../components/PageHeader';
-import { RESOURCES_CATEGORIES } from '../utils';
+import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { PageHeader } from '../../../components/PageHeader/index.tsx';
+import { RESOURCES_CATEGORIES } from '../utils.tsx';
 
 export const Resources = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ export const Resources = () => {
                 key={resourceCategory.name}
                 to={`/resources/${resourceCategory.name}`}
               >
-                <div
+                <button
                   onClick={(event) =>
                     resourceCategory.unreleased && event.preventDefault()
                   }
@@ -45,7 +45,7 @@ export const Resources = () => {
                       {t(`resources.${resourceCategory.name}.title`)}
                     </h3>
                   </div>
-                </div>
+                </button>
               </Link>
             ))}
           </div>

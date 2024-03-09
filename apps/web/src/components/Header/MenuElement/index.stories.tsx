@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MenuElement } from '.';
+import { MenuElement } from './index.tsx';
 
 const meta: Meta<typeof MenuElement> = {
   title: 'Components/MenuElement',

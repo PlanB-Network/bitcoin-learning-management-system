@@ -2,7 +2,8 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Formik, FormikHelpers } from 'formik';
+import type { FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
@@ -10,14 +11,14 @@ import { useCallback, useEffect } from 'react';
 import { BsCheck } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
-import { Button } from '../../../atoms/Button';
-import { Divider } from '../../../atoms/Divider';
-import { Modal } from '../../../atoms/Modal';
-import { TextInput } from '../../../atoms/TextInput';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch';
-import { userSlice } from '../../../store';
-import { trpc } from '../../../utils/trpc';
-import { AuthModalState } from '../props';
+import { Button } from '../../../atoms/Button/index.tsx';
+import { Divider } from '../../../atoms/Divider/index.tsx';
+import { Modal } from '../../../atoms/Modal/index.tsx';
+import { TextInput } from '../../../atoms/TextInput/index.tsx';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
+import { userSlice } from '../../../store/index.ts';
+import { trpc } from '../../../utils/trpc.ts';
+import { AuthModalState } from '../props.ts';
 
 const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
@@ -41,13 +42,14 @@ const registerSchema = z
     username: z
       .string({ required_error: t('auth.errors.usernameRequired') })
       .min(5, { message: t('auth.errors.usernameTooShort') })
-      .regex(/^[a-zA-Z0-9_\\.-]+$/, {
+      .regex(/^[\w.\\-]+$/, {
         message: t('auth.errors.usernameRegex'),
       }),
     password: z.string().refine(
       (pwd) => password.validate(pwd),
       (pwd) => {
         const result = password.validate(pwd, { details: true });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         return { message: Array.isArray(result) ? result[0].message : '' };
       },
     ),
@@ -96,7 +98,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   useEffect(() => {
     async function initial() {
       if (register.data) {
-        await new Promise((f) => setTimeout(f, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         onClose();
       }
     }
@@ -116,7 +118,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
-          <BsCheck className="my-8 h-20 w-20 text-lg text-green-300" />
+          <BsCheck className="my-8 size-20 text-lg text-green-300" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,

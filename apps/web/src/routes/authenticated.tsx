@@ -1,14 +1,14 @@
 import { Route, redirect } from '@tanstack/react-router';
 
-import { rootRoute } from './root';
-
-import { router } from '.';
+import { router } from './index.tsx';
+import { rootRoute } from './root.tsx';
 
 export const authenticatedRoute = new Route({
   getParentRoute: () => rootRoute,
   id: 'authenticated',
-  beforeLoad: async () => {
+  beforeLoad: () => {
     // TODO: replace with real auth check
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const isAuthenticated = () => true;
 
     if (!isAuthenticated()) {

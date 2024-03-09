@@ -7,6 +7,9 @@ on:
       - dev
   pull_request:
 
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
@@ -15,11 +18,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'main' || 'dev' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -48,17 +46,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Check formatting
-        run: pnpx nx format:check
+      - name: Build Project
+        run: pnpm build
 
       - name: Lint Code
-        run: pnpx nx affected -t lint --parallel=3
+        run: pnpm lint
 
-      - name: Run Tests
-        run: pnpx nx affected -t test --parallel=3
-
-      - name: Build Project
-        run: pnpx nx affected -t build --parallel=3
+      # TODO: Add back when we have tests
+      # - name: Run Tests
+      #   run: pnpm
 
   deploy:
     needs: build_and_test
@@ -100,14 +96,45 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build and push Docker image
-        run: INPUT_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pnpm nx run-many --target container --configuration=production --parallel=3
+      - name: Set Docker image metadata for api
+        uses: docker/metadata-action@v5
+        id: meta-api
+        with:
+          images: ghcr.io/decouvrebitcoin/sovereign-university-api
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=tag
+            type=sha,prefix=sha-
 
-      - name: Push Docker images
-        run: |
-          # Temporary until I fix the automatic push in the Nx target
-          docker push ghcr.io/decouvrebitcoin/sovereign-university-api:${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
-          docker push ghcr.io/decouvrebitcoin/sovereign-university-web:${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+      - name: Set Docker image metadata for web
+        uses: docker/metadata-action@v5
+        id: meta-web
+        with:
+          images: ghcr.io/decouvrebitcoin/sovereign-university-web
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=tag
+            type=sha,prefix=sha-
+
+      - name: Build and push Docker image for api
+        uses: docker/bake-action@v4
+        with:
+          push: true
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.meta-api.outputs.bake-file }}
+          targets: api
+
+      - name: Build and push Docker image for web
+        uses: docker/bake-action@v4
+        with:
+          push: true
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.meta-web.outputs.bake-file }}
+          targets: web
 
       - name: Copy Docker files to server
         uses: appleboy/scp-action@v0.1.4

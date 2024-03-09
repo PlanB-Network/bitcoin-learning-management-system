@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708512221656,
+      "tag": "0000_legal_monster_badoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708512269113,
+      "tag": "0001_tranquil_obadiah_stane",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708512468530,
+      "tag": "0002_past_the_stranger",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1709905877680,
+      "tag": "0003_equal_triathlon",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import { Route, lazyRouteComponent } from '@tanstack/react-router';
 
-import { rootRoute } from '../../routes/root';
+import { rootRoute } from '../../routes/root.tsx';
 
-import { TutorialCategory } from './pages/category';
-import { TutorialExplorer } from './pages/explorer';
+import { TutorialCategory } from './pages/category.tsx';
+import { TutorialExplorer } from './pages/explorer.tsx';
 
 const tutorialsRootRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -26,7 +26,7 @@ export const tutorialDetailsRoute = new Route({
   getParentRoute: () => tutorialsRootRoute,
   path: '/$category/$name',
   component: lazyRouteComponent(
-    () => import('./pages/details'),
+    () => import('./pages/details.tsx'),
     'TutorialDetails',
   ),
 });

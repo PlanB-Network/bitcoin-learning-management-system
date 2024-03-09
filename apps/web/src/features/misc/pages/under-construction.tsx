@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import underConstructionImage from '../../../assets/under-construction.png';
-import { MainLayout } from '../../../components/MainLayout';
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
 
 export const UnderConstruction = () => {
   const { t } = useTranslation();

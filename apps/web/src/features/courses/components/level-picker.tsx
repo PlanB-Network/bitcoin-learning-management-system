@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 interface LevelPickerProps {
-  levels: { prefix: string; name: string; translatedName: string }[];
+  levels: Array<{ prefix: string; name: string; translatedName: string }>;
   activelevels: string[];
   setActivelevels: (category: string) => void;
 }
@@ -10,7 +10,7 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
   levels,
   activelevels,
   setActivelevels,
-}) => {
+}: LevelPickerProps) => {
   const handleLevelClick = (level: string) => {
     setActivelevels(t(level));
   };
@@ -26,17 +26,18 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
               className="hidden flex-row place-items-center space-x-2 sm:flex"
               key={index}
             >
-              <div
-                className={`flex h-8 w-14 place-items-center justify-center border-2 
-              border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
-                activelevels.includes(level.name)
-                  ? 'bg-orange-500'
-                  : 'bg-blue-1000'
-              }`}
-                onClick={() => handleLevelClick(t(level.name))}
-              >
-                {level.prefix}
-              </div>
+              <button onClick={() => handleLevelClick(t(level.name))}>
+                <div
+                  className={`flex h-8 w-14 place-items-center justify-center border-2 
+                border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
+                  activelevels.includes(level.name)
+                    ? 'bg-orange-500'
+                    : 'bg-blue-1000'
+                }`}
+                >
+                  {level.prefix}
+                </div>
+              </button>
               <span className="w-1/2 text-base font-light capitalize lg:text-base">
                 {level.translatedName}
               </span>
@@ -46,16 +47,17 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
               className="mt-1 flex flex-row place-items-center sm:my-3 sm:hidden"
               key={index + 1000}
             >
-              <div
-                className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs  ${
-                  activelevels.includes(level.name)
-                    ? 'bg-orange-500 font-medium'
-                    : 'bg-white'
-                }`}
-                onClick={() => handleLevelClick(t(level.name))}
-              >
-                {level.translatedName}
-              </div>
+              <button onClick={() => handleLevelClick(t(level.name))}>
+                <div
+                  className={`text-blue-1000 flex h-8 place-items-center justify-center rounded-lg px-4 text-xs  ${
+                    activelevels.includes(level.name)
+                      ? 'bg-orange-500 font-medium'
+                      : 'bg-white'
+                  }`}
+                >
+                  {level.translatedName}
+                </div>
+              </button>
             </div>
           </div>
         ))}
