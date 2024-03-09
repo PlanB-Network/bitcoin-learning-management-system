@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { Router } from 'express';
 
 import { createUpdatePayment } from '@sovereign-university/user'; // Assuming this dependency is correct
@@ -5,6 +6,22 @@ import { createUpdatePayment } from '@sovereign-university/user'; // Assuming th
 import type { Dependencies } from '#src/dependencies.js';
 
 import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
+import { IncomingMessage } from 'http';
+
+const sigHashAlg = 'sha256';
+
+const validateHmacSignature = (req: IncomingMessage) => {
+  // @ts-ignore
+  const rawBody = req.rawBody;
+
+  const hmac = crypto.createHmac(
+    'sha256',
+    process.env['SBP_HMAC_SECRET'] as string,
+  );
+  const hex = sigHashAlg + '=' + hmac.update(rawBody).digest('hex');
+
+  return hex === req.headers['sbp-sig'];
+};
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
@@ -24,6 +41,17 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
       id: string;
       isPaid: boolean;
       isExpired: boolean;
+    }
+
+    if (!validateHmacSignature(req)) {
+      console.error('Hmac validation error!');
+
+      res.statusCode = 403;
+      res.json({
+        message: 'hmac validation error',
+      });
+      res.end();
+      return;
     }
 
     const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;

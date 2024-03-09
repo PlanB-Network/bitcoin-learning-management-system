@@ -1,4 +1,4 @@
-import * as buffer from 'node:buffer';
+import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
@@ -8,14 +8,7 @@ import { trpc } from '../../../../utils/index.ts';
 import type { TRPCRouterOutput } from '../../../../utils/trpc.ts';
 
 const hexToBase64 = (hexstring: string) => {
-  const str = hexstring
-    .match(/\w{2}/g)
-    ?.map(function (a) {
-      return String.fromCodePoint(Number.parseInt(a, 16));
-    })
-    .join('') as string;
-
-  return buffer.Buffer.from(str, 'base64');
+  return Buffer.from(hexstring, 'hex').toString('base64');
 };
 
 interface CoursePaymentModalProps {
@@ -80,10 +73,9 @@ export const CoursePaymentModal = ({
         ws.close();
       };
     }
-  }, [paymentData, isOpen, onClose]);
+  }, [paymentData, isOpen]);
 
   const initCoursePayment = useCallback(async () => {
-    debugger;
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
@@ -92,7 +84,7 @@ export const CoursePaymentModal = ({
       chapter: chapter,
     });
     setPaymentData(serverPaymentData);
-  }, []);
+  }, [savePaymentRequest, course.id, satsPrice, withPhysical, part, chapter]);
 
   useEffect(() => {
     if (isOpen) {
@@ -102,7 +94,7 @@ export const CoursePaymentModal = ({
         setPaymentData(undefined);
       }, 500);
     }
-  }, [isOpen, initCoursePayment]);
+  }, [isOpen]);
 
   return (
     <Modal

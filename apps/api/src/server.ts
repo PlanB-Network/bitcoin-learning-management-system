@@ -8,12 +8,24 @@ import { createRestRouter } from './routers/rest-router.js';
 import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
 
+const routesWithRawBody = ['/api/users/courses/payment/webhooks'];
+
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const app = express();
   const router = Router();
 
   // Parse JSON bodies
-  app.use(json());
+  app.use(
+    json({
+      verify: function (req, _res, buf) {
+        // @ts-ignore
+        if (routesWithRawBody.includes(req.path) && buf?.length) {
+          // @ts-ignore
+          req.rawBody = buf;
+        }
+      },
+    }),
+  );
 
   // Enable cors
   app.use(createCorsMiddleware());

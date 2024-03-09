@@ -76,13 +76,8 @@ export const CourseDetails: React.FC = () => {
     language: i18n.language,
   });
 
-  const {
-    data: payments,
-    // isFetched: isPaymentFetched,
-    // refetch: refetchPayment,
-  } = trpc.user.courses.getPayment.useQuery();
-
-  console.log({ payments });
+  const { data: payments, refetch: refetchPayment } =
+    trpc.user.courses.getPayment.useQuery();
 
   const isCoursePaid = useMemo(
     () =>
@@ -622,12 +617,10 @@ export const CourseDetails: React.FC = () => {
               part={paidPart}
               isOpen={isPaymentModalOpen}
               onClose={(isPaid) => {
-                console.log(isPaid);
-                // if (isPaid) {
-                //   refetchPayment();
-                // }
-                // setIsPaymentModalOpen(false);
-                window.location.reload();
+                if (isPaid) {
+                  refetchPayment();
+                }
+                setIsPaymentModalOpen(false);
               }}
             />
             <CourseDescriptionModal
@@ -644,7 +637,6 @@ export const CourseDetails: React.FC = () => {
                 part?: number,
                 chapter?: number,
               ) => {
-                debugger;
                 setPaidSatsPrice(sats);
                 setPaidWithPhysical(withPhysical);
                 setPaidPart(part);

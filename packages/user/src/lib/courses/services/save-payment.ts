@@ -21,7 +21,7 @@ export const createSavePayment =
       amount: amount,
       unit: 'sat',
       onChain: true,
-      webhook: `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
+      webhook: `${process.env['PUBLIC_PROXY_URL']}/api/users/courses/payment/webhooks`,
     };
 
     try {
