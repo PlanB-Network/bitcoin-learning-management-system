@@ -1,6 +1,6 @@
 import type { JoinedProfessor } from '@sovereign-university/types';
 
-import { computeAssetCdnUrl, omitWithTypes } from '#src/lib/utils.js';
+import { computeAssetCdnUrl, omitWithTypes } from '../../utils.js';
 
 export const formatProfessor = (professor: JoinedProfessor) => {
   return {

@@ -537,8 +537,8 @@ importers:
         specifier: workspace:*
         version: link:../database
       '@trpc/server':
-        specifier: 11.0.0-next-beta.274
-        version: 11.0.0-next-beta.274
+        specifier: 11.0.0-next-beta.316
+        version: 11.0.0-next-beta.316
       argon2:
         specifier: ^0.31.2
         version: 0.31.2
@@ -3612,12 +3612,12 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@11.0.0-next-beta.274:
-    resolution: {integrity: sha512-yMNM1K8TRmi5Nk7vbOjCzS9tEAffWKhjSe5vFiodHKOXr6TEstKlbn5CIlHWdqH0GTkuUet3ieAN5L/XM0qMKg==}
-    dev: false
-
   /@trpc/server@11.0.0-next-beta.308:
     resolution: {integrity: sha512-GdYgcbecAafHQszqMVeHrX45c0hhAISvB+w9Ja40nZcb4kgaNvhflSVIn8XbHKUG8urmYI9kTL2k8hD/59/LMA==}
+    dev: false
+
+  /@trpc/server@11.0.0-next-beta.316:
+    resolution: {integrity: sha512-EQzZf+XniyChNH+f1pyC8Ju+D1NZ2US8tEWPPB7vIDVC4mVVN7kefp/oUc+79lMt74T2uQpTBgdW5sA0346/rA==}
     dev: false
 
   /@types/async@3.2.24:

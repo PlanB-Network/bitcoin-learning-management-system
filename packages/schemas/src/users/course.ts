@@ -8,7 +8,7 @@ import {
   usersQuizAttempts,
 } from '@sovereign-university/database/schemas';
 
-import { courseChapterSchema } from '#src/content/index.js';
+import { courseChapterSchema } from '../content/index.js';
 
 export const courseProgressSchema = createSelectSchema(usersCourseProgress);
 export const coursePaymentSchema = createSelectSchema(usersCoursePayment);

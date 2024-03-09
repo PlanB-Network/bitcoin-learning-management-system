@@ -4,14 +4,10 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "imports": {
-    "#src/*": "./src/*",
-    "#drizzle/*": "./drizzle/*"
-  },
   "exports": {
     ".": {
       "development": "./src/index.ts",
-      "import": "./dist/index.js",
+      "import": "./dist/src/index.js",
       "types": "./src/index.ts"
     },
     "./schemas": {

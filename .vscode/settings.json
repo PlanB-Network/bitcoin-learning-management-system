@@ -25,5 +25,11 @@
   },
   "i18n-ally.localesPaths": ["apps/web/public/locales"],
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.extract.autoDetect": true
+  "i18n-ally.extract.autoDetect": true,
+  "files.exclude": {
+    "**/tsconfig.*.tsbuildinfo": true
+  },
+  "search.exclude": {
+    "**/tsconfig.*.tsbuildinfo": true
+  }
 }

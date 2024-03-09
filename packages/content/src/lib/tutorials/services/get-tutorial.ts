@@ -1,9 +1,8 @@
 import { firstRow } from '@sovereign-university/database';
 
-import { omitWithTypes } from '#src/lib/utils.js';
-
 import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
+import { omitWithTypes } from '../../utils.js';
 import { getCreditsQuery, getTutorialQuery } from '../queries/index.js';
 
 export const createGetTutorial =
