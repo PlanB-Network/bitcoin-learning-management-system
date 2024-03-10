@@ -29,7 +29,7 @@ export interface PostgresClient extends Sql<PostgresTypesMapper> {
 export const createPostgresClient = ({
   host = process.env['POSTGRES_HOST'],
   port = Number(process.env['POSTGRES_PORT']),
-  database = process.env['POSTGRES_NAME'],
+  database = process.env['POSTGRES_DB'],
   username = process.env['POSTGRES_USER'],
   password = process.env['POSTGRES_PASSWORD'],
 }: {
