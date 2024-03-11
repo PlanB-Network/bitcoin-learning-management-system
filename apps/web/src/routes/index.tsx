@@ -1,4 +1,4 @@
-import { Router } from '@tanstack/react-router';
+import { createRouter } from '@tanstack/react-router';
 
 import { coursesRoutes } from '../features/courses/index.ts';
 import { dashboardRoutes } from '../features/dashboard/index.ts';
@@ -15,7 +15,7 @@ const routeTree = rootRoute.addChildren([
   tutorialsRoutes,
   ...miscRoutes,
 ]);
-export const router = new Router({ routeTree });
+export const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {
   interface Register {

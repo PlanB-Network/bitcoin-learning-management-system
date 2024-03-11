@@ -1,4 +1,4 @@
-import { Route } from '@tanstack/react-router';
+import { createRoute } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root.tsx';
 
@@ -12,61 +12,61 @@ import { ProfessorExplorer } from './pages/professor-explorer.tsx';
 import { TermsAndConditions } from './pages/terms-and-conditions.tsx';
 import { UnderConstruction } from './pages/under-construction.tsx';
 
-export const homeRoute = new Route({
+export const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
   component: Home,
 });
 
-export const manifestoRoute = new Route({
+export const manifestoRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/manifesto',
   component: Manifesto,
 });
 
-export const aboutRoute = new Route({
+export const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
   component: About,
 });
 
-export const notFoundRoute = new Route({
+export const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/404',
   component: NotFound,
 });
 
-export const globalNotFoundRoute = new Route({
+export const globalNotFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '*',
   component: NotFound,
 });
 
-export const professorExplorer = new Route({
+export const professorExplorer = createRoute({
   getParentRoute: () => rootRoute,
   path: '/professors',
   component: ProfessorExplorer,
 });
 
-export const professorDetail = new Route({
+export const professorDetail = createRoute({
   getParentRoute: () => rootRoute,
   path: '/professor/$professorId',
   component: ProfessorDetail,
 });
 
-export const underConstructionRoute = new Route({
+export const underConstructionRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/under-construction',
   component: UnderConstruction,
 });
 
-export const nodeNetworkRoute = new Route({
+export const nodeNetworkRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/node-network',
   component: NodeNetwork,
 });
 
-export const termsAndConditionsROute = new Route({
+export const termsAndConditionsROute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/terms-and-conditions',
   component: TermsAndConditions,

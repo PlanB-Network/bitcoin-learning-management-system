@@ -1,4 +1,4 @@
-import { Route } from '@tanstack/react-router';
+import { createRoute } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root.tsx';
 
@@ -11,70 +11,70 @@ import { Resources } from './pages/explorer.tsx';
 import { Podcast } from './pages/podcast-details.tsx';
 import { Podcasts } from './pages/podcasts.tsx';
 
-const resourcesRootRoute = new Route({
+const resourcesRootRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'resources',
 });
 
-export const resourcesIndexRoute = new Route({
+export const resourcesIndexRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/',
   component: Resources,
 });
 
-export const booksRoute = new Route({
+export const booksRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/books',
   component: Books,
 });
 
-export const bookDetailsRoute = new Route({
+export const bookDetailsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/book/$bookId',
   component: Book,
 });
 
-export const betRoute = new Route({
+export const betRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/bet',
   component: BET,
 });
 
-export const buildersRoute = new Route({
+export const buildersRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/builders',
   component: Builders,
 });
 
-export const builderDetailsRoute = new Route({
+export const builderDetailsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/builder/$builderId',
   component: Builder,
 });
 
-export const podcastsRoute = new Route({
+export const podcastsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/podcasts',
   component: Podcasts,
 });
 
-export const podcastDetailsRoute = new Route({
+export const podcastDetailsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/podcast/$podcastId',
   component: Podcast,
 });
 
-export const articlesRoute = new Route({
+export const articlesRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/articles',
 });
 
-export const newslettersRoute = new Route({
+export const newslettersRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/newsletters',
 });
 
-export const conferencesRoute = new Route({
+export const conferencesRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/conferences',
 });

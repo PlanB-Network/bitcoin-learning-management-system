@@ -1,4 +1,8 @@
-import { Outlet, RootRoute, ScrollRestoration } from '@tanstack/react-router';
+import {
+  Outlet,
+  ScrollRestoration,
+  createRootRoute,
+} from '@tanstack/react-router';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Root = () => {
@@ -11,6 +15,6 @@ const Root = () => {
 };
 
 // Create a root route
-export const rootRoute = new RootRoute({
+export const rootRoute = createRootRoute({
   component: Root,
 });

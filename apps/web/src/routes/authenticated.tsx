@@ -1,9 +1,9 @@
-import { Route, redirect } from '@tanstack/react-router';
+import { createRoute, redirect } from '@tanstack/react-router';
 
 import { router } from './index.tsx';
 import { rootRoute } from './root.tsx';
 
-export const authenticatedRoute = new Route({
+export const authenticatedRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: 'authenticated',
   beforeLoad: () => {

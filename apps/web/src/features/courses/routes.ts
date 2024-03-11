@@ -1,28 +1,28 @@
-import { Route, lazyRouteComponent } from '@tanstack/react-router';
+import { createRoute, lazyRouteComponent } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root.tsx';
 
 import { CourseDetails } from './pages/details.tsx';
 import { CoursesExplorer } from './pages/explorer.tsx';
 
-const coursesRootRoute = new Route({
+const coursesRootRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'courses',
 });
 
-export const coursesIndexRoute = new Route({
+export const coursesIndexRoute = createRoute({
   getParentRoute: () => coursesRootRoute,
   path: '/',
   component: CoursesExplorer,
 });
 
-export const coursesDetailsRoute = new Route({
+export const coursesDetailsRoute = createRoute({
   getParentRoute: () => coursesRootRoute,
   path: '/$courseId',
   component: CourseDetails,
 });
 
-export const coursesChapterRoute = new Route({
+export const coursesChapterRoute = createRoute({
   getParentRoute: () => coursesRootRoute,
   path: '/$courseId/$partIndex/$chapterIndex',
   component: lazyRouteComponent(
