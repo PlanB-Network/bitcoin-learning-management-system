@@ -1,6 +1,6 @@
 {
   "about": {
-    "activeContributors": "Active contributors",
+    "activeContributors": "Active contributors\n",
     "missionTitle": "Our mission",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
     "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
@@ -152,12 +152,7 @@
       "by": "by {{professor}}",
       "letsgo": "Let's go"
     },
-    "purchase": {
-      "physical": "Purchase physical",
-      "online": "Purchase online",
-      "saifedeanPḧysical": "Purchase saifedean physical",
-      "saifedeanOnline": "Purchase saifedean online"
-    },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
       "quizz": "Quizz",
@@ -481,6 +476,7 @@
     "economy": "Economy",
     "education": "Education",
     "email": "Email",
+    "events": "Events",
     "exchanges": "Exchanges",
     "followUs": "Follow us",
     "helpUs": "Help us",
