@@ -152,12 +152,7 @@
       "by": "da {{professor}}",
       "letsgo": "Andiamo"
     },
-    "purchase": {
-      "physical": "Purchase physical",
-      "online": "Purchase online",
-      "saifedeanPḧysical": "Purchase saifedean physical",
-      "saifedeanOnline": "Purchase saifedean online"
-    },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e verifica le spiegazioni",
       "quizz": "Quiz",
@@ -481,6 +476,7 @@
     "economy": "Economia",
     "education": "Educazione",
     "email": "Email",
+    "events": "Events",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
     "helpUs": "Aiutaci",
