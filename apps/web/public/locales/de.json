@@ -152,12 +152,7 @@
       "by": "von {{professor}}",
       "letsgo": "Los geht's"
     },
-    "purchase": {
-      "physical": "Purchase physical",
-      "online": "Purchase online",
-      "saifedeanPḧysical": "Purchase saifedean physical",
-      "saifedeanOnline": "Purchase saifedean online"
-    },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
       "quizz": "Quizz",
@@ -481,6 +476,7 @@
     "economy": "Wirtschaft",
     "education": "Bildung",
     "email": "E-Mail",
+    "events": "Events",
     "exchanges": "Austausche",
     "followUs": "Folgen Sie uns",
     "helpUs": "Hilf uns",
