@@ -154,6 +154,9 @@ export const CourseDetails: React.FC = () => {
     satsPrice = Math.round(
       (course.paidPriceEuros * 100_000_000) / conversionRate,
     );
+    if (process.env.NODE_ENV === 'development') {
+      satsPrice = 1;
+    }
   }
 
   const Header = ({ course }: { course: JoinedCourseWithAll }) => {

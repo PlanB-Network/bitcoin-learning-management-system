@@ -114,6 +114,11 @@ export const Header = () => {
       items: coursesItems,
     },
     {
+      id: 'events',
+      title: t('words.events'),
+      path: Routes.Events,
+    },
+    {
       id: 'resources',
       title: t('words.resources'),
       path: Routes.Resources,
@@ -218,6 +223,11 @@ export const Header = () => {
       title: t('words.courses'),
       path: Routes.Courses,
       items: coursesItems,
+    },
+    {
+      id: 'events',
+      title: t('words.events'),
+      path: Routes.Events,
     },
     {
       id: 'resources',

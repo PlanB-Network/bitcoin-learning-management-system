@@ -29,6 +29,13 @@
       "when": 1709905877680,
       "tag": "0003_equal_triathlon",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1710180700152,
+      "tag": "0004_magical_corsair",
+      "breakpoints": true
     }
   ]
 }

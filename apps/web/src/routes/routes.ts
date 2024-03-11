@@ -18,6 +18,9 @@ export enum Routes {
   Course = '/course/:courseId/:language?',
   CourseChapter = '/course/:courseId/:language?/chapter/:chapterIndex',
 
+  // Events
+  Events = '/events',
+
   // Resources
   Resources = '/resources',
 

@@ -212,42 +212,12 @@ export const CourseDescriptionModal = ({
           <Button
             variant="tertiary"
             onClick={() => {
-              onPay(satsPrice, false);
+              onPay(satsPrice, true);
             }}
             className="ml-auto mt-2"
             size={isScreenMd ? 'm' : 's'}
           >
-            {t('courses.purchase.online')}
-          </Button>
-          <Button
-            variant="tertiary"
-            onClick={() => {
-              onPay((2300 * 100_000_000) / conversionRate, true);
-            }}
-            className="ml-auto mt-2"
-            size={isScreenMd ? 'm' : 's'}
-          >
-            {t('courses.purchase.physical')}
-          </Button>
-          <Button
-            variant="tertiary"
-            onClick={() => {
-              onPay((450 * 100_000_000) / conversionRate, false, 6, 0);
-            }}
-            className="ml-auto mt-2"
-            size={isScreenMd ? 'm' : 's'}
-          >
-            {t('courses.purchase.saifedeanPḧysical')}
-          </Button>
-          <Button
-            variant="tertiary"
-            onClick={() => {
-              onPay((180 * 100_000_000) / conversionRate, true, 6, 0);
-            }}
-            className="ml-auto mt-2"
-            size={isScreenMd ? 'm' : 's'}
-          >
-            {t('courses.purchase.saifedeanOnline')}
+            {t('courses.purchase')}
           </Button>
         </div>
       </div>

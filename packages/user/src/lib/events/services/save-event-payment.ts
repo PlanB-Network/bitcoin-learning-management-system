@@ -1,27 +1,27 @@
 import axios from 'axios';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { insertPayment } from '../queries/insert-payment.js';
+import { insertEventPayment } from '../queries/insert-event-payment.js';
 
-export const createSavePayment =
+export const createSaveEventPayment =
   (dependencies: Dependencies) =>
   async ({
     uid,
-    courseId,
+    eventId,
     amount,
   }: {
     uid: string;
-    courseId: string;
+    eventId: string;
     amount: number;
   }) => {
     const { postgres } = dependencies;
 
     const paymentData = {
-      title: courseId,
+      title: eventId,
       amount: amount,
       unit: 'sat',
       onChain: true,
-      webhook: `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
+      webhook: `${process.env['PUBLIC_PROXY_URL']}/users/events/payment/webhooks`,
     };
 
     try {
@@ -38,9 +38,9 @@ export const createSavePayment =
       });
 
       await postgres.exec(
-        insertPayment({
+        insertEventPayment({
           uid,
-          courseId,
+          eventId,
           paymentStatus: 'pending',
           amount: checkoutData.amount,
           paymentId: checkoutData.id,

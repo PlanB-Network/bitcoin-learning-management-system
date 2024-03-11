@@ -7,9 +7,11 @@ import { resourcesRoutes } from '../features/resources/index.ts';
 import { tutorialsRoutes } from '../features/tutorials/index.ts';
 
 import { rootRoute } from './root.tsx';
+import { eventsRoutes } from '../features/events/routes.ts';
 
 const routeTree = rootRoute.addChildren([
   coursesRoutes,
+  eventsRoutes,
   dashboardRoutes,
   resourcesRoutes,
   tutorialsRoutes,

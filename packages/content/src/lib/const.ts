@@ -1,6 +1,7 @@
 /* Content Types */
 export const supportedContentTypes = [
   'courses',
+  'events',
   'resources',
   'tutorials',
   'quizzes/questions',

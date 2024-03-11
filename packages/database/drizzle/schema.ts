@@ -450,6 +450,57 @@ export const usersCourseProgress = users.table(
   }),
 );
 
+// EVENTS
+
+export const contentEvents = content.table('events', {
+  id: varchar('id', { length: 20 }).primaryKey().notNull(),
+
+  startDate: timestamp('start_date', { withTimezone: true }),
+  duration: doublePrecision('duration').notNull(),
+  priceDollars: integer('price_dollars'),
+  title: text('title'),
+  description: text('description'),
+  addressLine1: text('address_line_1'),
+  addressLine2: text('address_line_2'),
+  addressLine3: text('address_line_3'),
+  assetUrl: text('asset_url'),
+
+  lastUpdated: timestamp('last_updated', { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  lastCommit: varchar('last_commit', { length: 40 }).notNull(),
+  lastSync: timestamp('last_sync', { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const usersEventPayment = users.table(
+  'event_payment',
+  {
+    uid: uuid('uid')
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    eventId: varchar('event_id', { length: 20 })
+      .notNull()
+      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+    withPhysical: boolean('with_physical').default(false),
+    paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
+    amount: integer('amount').notNull(),
+    paymentId: varchar('payment_id', { length: 255 }).notNull(),
+    invoiceUrl: varchar('invoice_url', { length: 255 }),
+    lastUpdated: timestamp('last_updated', {
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.uid, table.eventId, table.paymentId],
+    }),
+  }),
+);
+
 // TUTORIALS
 
 export const contentTutorials = content.table(
