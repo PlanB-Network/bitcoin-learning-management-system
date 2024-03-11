@@ -1,11 +1,11 @@
 import { Popover, Transition } from '@headlessui/react';
+import { useMatch, useNavigate } from '@tanstack/react-router';
 import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Flag from '../../../atoms/Flag/index.tsx';
+import { LANGUAGES } from '../../../utils/i18n.ts';
 import { compose } from '../../../utils/index.ts';
-
-const languages = ['fr', 'en', 'es', 'de', 'it', 'pt'];
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';
@@ -15,24 +15,34 @@ export const LanguageSelector = ({
   direction = 'down',
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(
     i18n.resolvedLanguage ?? 'en',
   );
 
+  const currentRoute = useMatch({ strict: false });
+
   useEffect(() => {
-    setActiveLanguage(languages.includes(i18n.language) ? i18n.language : 'en');
+    setActiveLanguage(LANGUAGES.includes(i18n.language) ? i18n.language : 'en');
   }, [i18n.language]);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  const changeLanguage = async (lng: string) => {
+    await i18n.changeLanguage(lng);
+
     setOpen(false);
+
+    if (currentRoute) {
+      navigate({
+        to: `/${i18n.language}${currentRoute.pathname}`,
+      });
+    }
   };
 
-  const filteredLanguages = languages
-    .filter((lng) => lng !== activeLanguage)
-    .sort();
+  const filteredLanguages = LANGUAGES.filter(
+    (lng) => lng !== activeLanguage,
+  ).sort();
 
   const orderedLanguages =
     direction === 'down'

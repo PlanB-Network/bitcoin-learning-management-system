@@ -4,6 +4,8 @@ import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
+export const LANGUAGES = ['fr', 'en', 'es', 'de', 'it', 'pt'];
+
 void i18n
   .use(Detector)
   .use(Backend)

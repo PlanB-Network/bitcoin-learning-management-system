@@ -15,7 +15,14 @@ const routeTree = rootRoute.addChildren([
   tutorialsRoutes,
   ...miscRoutes,
 ]);
-export const router = createRouter({ routeTree });
+
+export const router = createRouter({
+  routeTree,
+  context: {
+    i18n: undefined,
+  },
+  unmaskOnReload: true,
+});
 
 declare module '@tanstack/react-router' {
   interface Register {
