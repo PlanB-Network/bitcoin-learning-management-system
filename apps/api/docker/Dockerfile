@@ -64,10 +64,7 @@ RUN apk add --no-cache -U \
 WORKDIR /app
 
 # Don't run production as root
-RUN addgroup --system --gid 1001 api
-RUN adduser --system --uid 1001 api
-
-USER api
+USER node
 COPY --from=installer /app .
 
 CMD node apps/api/dist/index.js
