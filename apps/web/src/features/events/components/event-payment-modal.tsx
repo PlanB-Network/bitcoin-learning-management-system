@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
-import { TRPCRouterOutput, trpc } from '../../../utils/trpc.ts';
+import { trpc } from '../../../utils/trpc.ts';
 
 const hexToBase64 = (hexstring: string) => {
   return Buffer.from(hexstring, 'hex').toString('base64');

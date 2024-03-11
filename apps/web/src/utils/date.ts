@@ -1,6 +1,6 @@
 export function formatDate(date: Date) {
   // First, we'll define a small function to determine the correct ordinal suffix
-  const getOrdinalSuffix = (day) => {
+  const getOrdinalSuffix = (day: number) => {
     const j = day % 10,
       k = day % 100;
     if (j === 1 && k !== 11) {

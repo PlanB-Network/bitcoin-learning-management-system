@@ -107,9 +107,10 @@ export const Events = () => {
                       ${event.priceDollars}{' '}
                       <span className="text-orange-500 text-opacity-75">
                         /{' '}
-                        {Math.round(
-                          (event.priceDollars * 100_000_000) / conversionRate,
-                        ).toLocaleString('fr-FR')}{' '}
+                        {conversionRate &&
+                          Math.round(
+                            (event.priceDollars * 100_000_000) / conversionRate,
+                          ).toLocaleString('fr-FR')}{' '}
                         sats
                       </span>
                     </p>
