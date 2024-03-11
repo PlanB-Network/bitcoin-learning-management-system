@@ -152,12 +152,7 @@
       "by": "by {{professor}}",
       "letsgo": "レッツゴー！"
     },
-    "purchase": {
-      "physical": "Purchase physical",
-      "online": "Purchase online",
-      "saifedeanPḧysical": "Purchase saifedean physical",
-      "saifedeanOnline": "Purchase saifedean online"
-    },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
       "quizz": "クイズ",
@@ -481,6 +476,7 @@
     "economy": "経済",
     "education": "教育",
     "email": "Eメール",
+    "events": "Events",
     "exchanges": "取引所",
     "followUs": "フォローする",
     "helpUs": "ご協力ください",
