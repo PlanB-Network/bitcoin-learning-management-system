@@ -152,12 +152,7 @@
       "by": "von {{professor}}",
       "letsgo": "Los geht's"
     },
-    "purchase": {
-      "physical": "Purchase physical",
-      "online": "Purchase online",
-      "saifedeanPḧysical": "Purchase saifedean physical",
-      "saifedeanOnline": "Purchase saifedean online"
-    },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Klicke auf das Tortendiagramm, überprüfe deine Fehler und sehe dir die Lösung an",
       "quizz": "Quizz",
@@ -481,6 +476,7 @@
     "economy": "Economy",
     "education": "Education",
     "email": "E-Mail",
+    "events": "Events",
     "exchanges": "Austausche",
     "followUs": "Folgen Sie uns",
     "helpUs": "Hilf uns",
