@@ -63,7 +63,7 @@ export const Events = () => {
           </p>
           <h2 className="text-xl font-medium mt-4">Bitcoin events to come</h2>
           {events?.map((event) => (
-            <>
+            <div key={event.id}>
               <EventPaymentModal
                 eventId={event.id}
                 satsPrice={1}
@@ -76,10 +76,7 @@ export const Events = () => {
                 }}
               />
 
-              <div
-                className="mt-2 border-2 border-orange-500 rounded-3xl shadow-md-button-white"
-                key={event.id}
-              >
+              <div className="mt-2 border-2 border-orange-500 rounded-3xl shadow-md-button-white">
                 <div className="flex flex-row gap-4 p-4">
                   <img
                     src={saif}
@@ -146,7 +143,7 @@ export const Events = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
