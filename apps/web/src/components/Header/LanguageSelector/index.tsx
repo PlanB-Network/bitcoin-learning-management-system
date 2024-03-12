@@ -1,5 +1,4 @@
 import { Popover, Transition } from '@headlessui/react';
-import { useMatch, useNavigate } from '@tanstack/react-router';
 import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -15,14 +14,11 @@ export const LanguageSelector = ({
   direction = 'down',
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
-  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(
     i18n.resolvedLanguage ?? 'en',
   );
-
-  const currentRoute = useMatch({ strict: false });
 
   useEffect(() => {
     setActiveLanguage(LANGUAGES.includes(i18n.language) ? i18n.language : 'en');
@@ -30,14 +26,7 @@ export const LanguageSelector = ({
 
   const changeLanguage = async (lng: string) => {
     await i18n.changeLanguage(lng);
-
     setOpen(false);
-
-    if (currentRoute) {
-      navigate({
-        to: `/${i18n.language}${currentRoute.pathname}`,
-      });
-    }
   };
 
   const filteredLanguages = LANGUAGES.filter(
