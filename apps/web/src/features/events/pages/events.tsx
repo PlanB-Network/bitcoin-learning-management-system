@@ -92,12 +92,17 @@ export const Events = () => {
                     <p className="text-3xl">{event.description}</p>
                     {event.startDate && (
                       <>
-                        <p className="">{formatDate(event.startDate)}</p>
+                        <p className="">
+                          {formatDate(new Date(event.startDate))}
+                        </p>
                         <p className="lowercase">
-                          {formatTime(event.startDate)}
+                          {formatTime(new Date(event.startDate))}
                           {' to '}
                           {formatTime(
-                            addMinutesToDate(event.startDate, event.duration),
+                            addMinutesToDate(
+                              new Date(event.startDate),
+                              event.duration,
+                            ),
                           )}
                         </p>
                       </>
