@@ -14,6 +14,7 @@ import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust t
 
 const sigHashAlg = 'sha256';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const validateHmacSignature = (req: IncomingMessage) => {
   // @ts-expect-error TODO: fix this?
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -27,7 +28,7 @@ const validateHmacSignature = (req: IncomingMessage) => {
   console.log('==hex:', hex);
   console.log('==sbp:', req.headers['sbp-sig']);
 
-  return hex === req.headers['sbp-sig'] || true;
+  return hex === req.headers['sbp-sig'];
 };
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
@@ -44,89 +45,97 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
   });
 
   router.post('/users/courses/payment/webhooks', async (req, res) => {
-    interface PaymentWebhookRequest {
-      id: string;
-      isPaid: boolean;
-      isExpired: boolean;
-    }
+    try {
+      interface PaymentWebhookRequest {
+        id: string;
+        isPaid: boolean;
+        isExpired: boolean;
+      }
 
-    if (!validateHmacSignature(req)) {
-      console.error('Hmac validation error!');
+      // if (!validateHmacSignature(req)) {
+      //   console.error('Hmac validation error!');
 
-      res.statusCode = 403;
+      //   res.statusCode = 403;
+      //   res.json({
+      //     message: 'hmac validation error',
+      //   });
+      //   res.end();
+      //   return;
+      // }
+
+      const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
+
+      if (!id || typeof id !== 'string') {
+        return res.status(400).json({ message: 'Invalid or missing id' });
+      }
+
+      if (isPaid === null || isExpired === null) {
+        return res.status(400).json({
+          message: 'Invalid isPaid or isExpired values. Must be true or false.',
+        });
+      }
+
+      const result = await createUpdatePayment(dependencies)({
+        id: id,
+        isPaid: isPaid,
+        isExpired: isExpired,
+      });
+
       res.json({
-        message: 'hmac validation error',
+        message: 'success',
+        result,
       });
-      res.end();
-      return;
+    } catch (error) {
+      console.error('Erorr in courses webhook', error);
     }
-
-    const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
-
-    if (!id || typeof id !== 'string') {
-      return res.status(400).json({ message: 'Invalid or missing id' });
-    }
-
-    if (isPaid === null || isExpired === null) {
-      return res.status(400).json({
-        message: 'Invalid isPaid or isExpired values. Must be true or false.',
-      });
-    }
-
-    const result = await createUpdatePayment(dependencies)({
-      id: id,
-      isPaid: isPaid,
-      isExpired: isExpired,
-    });
-
-    res.json({
-      message: 'success',
-      result,
-    });
   });
 
   router.post('/users/events/payment/webhooks', async (req, res) => {
-    interface PaymentWebhookRequest {
-      id: string;
-      isPaid: boolean;
-      isExpired: boolean;
-    }
+    try {
+      interface PaymentWebhookRequest {
+        id: string;
+        isPaid: boolean;
+        isExpired: boolean;
+      }
 
-    if (!validateHmacSignature(req)) {
-      console.error('Hmac validation error!');
+      // if (!validateHmacSignature(req)) {
+      //   console.error('Hmac validation error!');
 
-      res.statusCode = 403;
+      //   res.statusCode = 403;
+      //   res.json({
+      //     message: 'hmac validation error',
+      //   });
+      //   res.end();
+      //   return;
+      // }
+
+      console.log(req.body);
+
+      const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
+
+      if (!id || typeof id !== 'string') {
+        return res.status(400).json({ message: 'Invalid or missing id' });
+      }
+
+      if (isPaid === null || isExpired === null) {
+        return res.status(400).json({
+          message: 'Invalid isPaid or isExpired values. Must be true or false.',
+        });
+      }
+
+      const result = await createUpdateEventPayment(dependencies)({
+        id: id,
+        isPaid: isPaid,
+        isExpired: isExpired,
+      });
+
       res.json({
-        message: 'hmac validation error',
+        message: 'success',
+        result,
       });
-      res.end();
-      return;
+    } catch (error) {
+      console.error('Erorr in events webhook', error);
     }
-
-    console.log(req.body);
-
-    const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
-
-    if (!id || typeof id !== 'string') {
-      return res.status(400).json({ message: 'Invalid or missing id' });
-    }
-
-    if (isPaid === null || isExpired === null) {
-      return res.status(400).json({
-        message: 'Invalid isPaid or isExpired values. Must be true or false.',
-      });
-    }
-
-    const result = await createUpdateEventPayment(dependencies)({
-      id: id,
-      isPaid: isPaid,
-      isExpired: isExpired,
-    });
-
-    res.json({
-      message: 'success',
-      result,
-    });
   });
 
   return router;

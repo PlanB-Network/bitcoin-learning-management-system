@@ -9,8 +9,8 @@ import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
 
 const routesWithRawBody = new Set([
-  '/api/users/courses/payment/webhooks',
-  '/api/users/events/payment/webhooks',
+  '/users/courses/payment/webhooks',
+  '/users/events/payment/webhooks',
 ]);
 
 export const startServer = async (dependencies: Dependencies, port = 3000) => {
