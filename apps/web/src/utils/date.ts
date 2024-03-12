@@ -15,12 +15,21 @@ const getOrdinalSuffix = (day: number) => {
 
 export function formatDate(date: Date) {
   console.log('date:', date);
+
+  if (typeof date?.getDate !== 'function') {
+    return '';
+  }
+
   const formatter = new Intl.DateTimeFormat('en-GB', {
     month: 'long',
     year: 'numeric',
   });
 
   const day = date.getDate();
+  if (Number.isNaN(day)) {
+    // Additional check if getDate does not return a valid number
+    return '';
+  }
   const [month, year] = formatter.format(date).split(' ');
 
   return `${day}${getOrdinalSuffix(day)} ${month}, ${year}`;
