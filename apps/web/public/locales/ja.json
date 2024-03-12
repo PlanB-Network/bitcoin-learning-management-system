@@ -176,6 +176,11 @@
       "resumeLesson": "Resume the lesson"
     }
   },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
+    }
+  },
   "home": {
     "header": {
       "content": "PlanBプラットフォームは、人々が主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目指しています。個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
