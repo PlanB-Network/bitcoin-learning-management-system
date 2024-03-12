@@ -176,6 +176,11 @@
       "resumeLesson": "Lektion fortsetzen"
     }
   },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
+    }
+  },
   "home": {
     "header": {
       "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Communities, wir sind hier, um Ihnen auf Ihrer Bitcoin-Reise zu helfen.",
