@@ -103,19 +103,19 @@ export const Events = () => {
                 />
 
                 <div className="mt-2 border-2 border-orange-500 rounded-3xl shadow-md-button-white">
-                  <div className="flex flex-row gap-4 p-4">
+                  <div className="flex flex-wrap gap-4 p-4">
                     <img
                       src={saif}
-                      className="h-[230px] w-[208px]"
+                      className="lg:h-[230px] lg:w-[208px] h-[115px] w-[104px]"
                       alt="Saifedean"
                     />
                     <div className="flex flex-col gap-2 pt-2">
-                      <p className="text-orange-500 font-semibold">
+                      <p className="text-orange-500 font-semibold text-sm md:text-base">
                         {event.title}
                       </p>
-                      <p className="text-3xl">{event.description}</p>
+                      <p className="text-xl md:text-3xl">{event.description}</p>
                       {event.startDate && (
-                        <>
+                        <div className="mt-1 text-sm md:text-base">
                           <p className="">
                             {formatDate(new Date(event.startDate))}
                           </p>
@@ -129,10 +129,10 @@ export const Events = () => {
                               ),
                             )}
                           </p>
-                        </>
+                        </div>
                       )}
 
-                      <div className="text-sm">
+                      <div className="text-xs md:text-sm">
                         <p>{event.addressLine1}</p>
                         <p>{event.addressLine2}</p>
                         {/* new Date(course.paidStartDate).toLocaleDateString() */}
