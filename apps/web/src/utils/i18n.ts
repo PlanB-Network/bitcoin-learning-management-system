@@ -14,6 +14,9 @@ void i18n
     load: 'languageOnly',
     backend: {
       loadPath: '/locales/{{lng}}.json',
+      requestOptions: {
+        cache: 'no-store',
+      },
     },
     debug: false,
     fallbackLng: 'en',

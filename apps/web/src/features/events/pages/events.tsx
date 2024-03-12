@@ -61,7 +61,9 @@ export const Events = () => {
             allows you to register for events that interest you, or to watch the
             replays.
           </p>
-          <h2 className="text-xl font-medium mt-4">Bitcoin events to come</h2>
+          <h2 className="text-xl font-medium mt-4">
+            {t('events.main.upcomingEvents')}
+          </h2>
           {events?.map((event) => (
             <div key={event.id}>
               <EventPaymentModal
