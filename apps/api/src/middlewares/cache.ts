@@ -60,7 +60,7 @@ export const cacheMiddleware = createMiddleware(
       const result = await next();
 
       if (result.ok) {
-        await redis.set(key, result.data);
+        await redis.setWithExpiry(key, result.data, 86_400);
       }
 
       return result;
