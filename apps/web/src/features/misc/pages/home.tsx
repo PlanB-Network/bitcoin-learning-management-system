@@ -15,6 +15,7 @@ import FlagsSmall from '../../../assets/home/flags_small.png';
 import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.webp';
 import HeaderRight from '../../../assets/home/header_right.svg';
+import Lugano from '../../../assets/home/lugano.webp';
 import NetworkMain from '../../../assets/home/network-main.png';
 import Sponsors from '../../../assets/home/sponsors.webp';
 import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
@@ -523,6 +524,12 @@ export const Home = () => {
             />
           </div>
         </div>
+        <img
+          className="h-full w-auto"
+          src={Lugano}
+          alt={t('')}
+          loading="lazy"
+        />
       </div>
     );
   };
