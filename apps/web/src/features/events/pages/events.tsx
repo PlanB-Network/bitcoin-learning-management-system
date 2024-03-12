@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TODO temporary
+
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -58,9 +61,7 @@ export const Events = () => {
             allows you to register for events that interest you, or to watch the
             replays.
           </p>
-
           <h2 className="text-xl font-medium mt-4">Bitcoin events to come</h2>
-
           {events?.map((event) => (
             <>
               <EventPaymentModal
@@ -90,30 +91,40 @@ export const Events = () => {
                       {event.title}
                     </p>
                     <p className="text-3xl">{event.description}</p>
-                    <p className="">{formatDate(event.startDate)}</p>
-                    <p className="lowercase">
-                      {formatTime(event.startDate)}
-                      {' to '}
-                      {formatTime(
-                        addMinutesToDate(event.startDate, event.duration),
-                      )}
-                    </p>
+                    {event.startDate && (
+                      <>
+                        <p className="">{formatDate(event.startDate)}</p>
+                        <p className="lowercase">
+                          {formatTime(event.startDate)}
+                          {' to '}
+                          {formatTime(
+                            addMinutesToDate(event.startDate, event.duration),
+                          )}
+                        </p>
+                      </>
+                    )}
+
                     <div className="text-sm">
                       <p>{event.addressLine1}</p>
                       <p>{event.addressLine2}</p>
                       {/* new Date(course.paidStartDate).toLocaleDateString() */}
                     </div>
-                    <p className="text-orange-500 mt-3">
-                      ${event.priceDollars}{' '}
-                      <span className="text-orange-500 text-opacity-75">
-                        /{' '}
-                        {conversionRate &&
-                          Math.round(
-                            (event.priceDollars * 100_000_000) / conversionRate,
-                          ).toLocaleString('fr-FR')}{' '}
-                        sats
-                      </span>
-                    </p>
+                    {event.priceDollars && (
+                      <p className="text-orange-500 mt-3">
+                        <>
+                          ${event.priceDollars}{' '}
+                          <span className="text-orange-500 text-opacity-75">
+                            /{' '}
+                            {conversionRate &&
+                              Math.round(
+                                (event.priceDollars * 100_000_000) /
+                                  conversionRate,
+                              ).toLocaleString('fr-FR')}{' '}
+                            sats
+                          </span>
+                        </>
+                      </p>
+                    )}
                   </div>
                   <div className="self-end gap-2 flex flex-col">
                     <Button

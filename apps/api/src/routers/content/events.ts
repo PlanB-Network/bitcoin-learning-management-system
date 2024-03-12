@@ -1,10 +1,7 @@
 import { z } from 'zod';
 
 import { createGetEvents } from '@sovereign-university/content';
-import {
-  courseProgressSchema,
-  eventSchema,
-} from '@sovereign-university/schemas';
+import { eventSchema } from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -18,7 +15,7 @@ const getEventsProcedure = publicProcedure
       .optional(),
   )
   .output(eventSchema.array())
-  .output(courseProgressSchema.array())
+  // .output(z.object({ events: eventSchema.array() }))
   .query(async ({ ctx }) => createGetEvents(ctx.dependencies)());
 
 export const eventsRouter = createTRPCRouter({

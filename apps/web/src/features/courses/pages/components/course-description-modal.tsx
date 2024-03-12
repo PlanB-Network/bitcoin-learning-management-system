@@ -26,7 +26,6 @@ interface CourseDescriptionModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   satsPrice: number;
   isOpen: boolean;
-  conversionRate: number;
   onClose: (isPaid?: boolean) => void;
   onPay: (
     satsPrice: number,
@@ -40,7 +39,6 @@ export const CourseDescriptionModal = ({
   course,
   satsPrice,
   isOpen,
-  conversionRate,
   onClose,
   onPay,
 }: CourseDescriptionModalProps) => {

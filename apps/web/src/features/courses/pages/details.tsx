@@ -630,7 +630,6 @@ export const CourseDetails: React.FC = () => {
               course={course}
               satsPrice={satsPrice}
               isOpen={isDescriptionModalOpen}
-              conversionRate={conversionRate as number}
               onClose={() => {
                 setIsDescriptionModalOpen(false);
               }}
