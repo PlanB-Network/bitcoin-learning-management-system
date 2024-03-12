@@ -152,7 +152,7 @@
       "by": "da {{professor}}",
       "letsgo": "Andiamo"
     },
-    "purchase": "Purchase",
+    "purchase": "Acquista",
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e verifica le spiegazioni",
       "quizz": "Quiz",
@@ -178,7 +178,7 @@
   },
   "events": {
     "main": {
-      "upcomingEvents": "Upcoming Bitcoin events"
+      "upcomingEvents": "Prossimi eventi Bitcoin"
     }
   },
   "home": {
@@ -233,8 +233,8 @@
       "link": "Aiutaci a tradurre l'accademia"
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
-      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
+      "title": "Insieme rendiamo migliore l'istruzione di Bitcoin ! ",
+      "subtitle": "PlanB è open source al 100% grazie al nostro generoso patreon",
       "content": "PlanB è orgoglioso di collaborare con numerose aziende bitcoin in tutto il mondo per fornire le migliori risorse educative possibili!"
     }
   },
@@ -481,7 +481,7 @@
     "economy": "Economia",
     "education": "Educazione",
     "email": "Email",
-    "events": "Events",
+    "events": "Eventi",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
     "helpUs": "Aiutaci",
