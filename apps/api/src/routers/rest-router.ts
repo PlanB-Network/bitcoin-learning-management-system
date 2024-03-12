@@ -1,5 +1,5 @@
-import crypto from 'node:crypto';
-import type { IncomingMessage } from 'node:http';
+// import crypto from 'node:crypto';
+// import type { IncomingMessage } from 'node:http';
 
 import { Router } from 'express';
 
@@ -12,24 +12,24 @@ import type { Dependencies } from '#src/dependencies.js';
 
 import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
 
-const sigHashAlg = 'sha256';
+// const sigHashAlg = 'sha256';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const validateHmacSignature = (req: IncomingMessage) => {
-  // @ts-expect-error TODO: fix this?
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const rawBody = req.rawBody;
-  const hmac = crypto.createHmac(
-    'sha256',
-    process.env['SBP_HMAC_SECRET'] as string,
-  );
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const hex = sigHashAlg + '=' + hmac.update(rawBody).digest('hex');
-  console.log('==hex:', hex);
-  console.log('==sbp:', req.headers['sbp-sig']);
+// const validateHmacSignature = (req: IncomingMessage) => {
+//   // @ts-expect-error TODO: fix this?
+//   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+//   const rawBody = req.rawBody;
+//   const hmac = crypto.createHmac(
+//     'sha256',
+//     process.env['SBP_HMAC_SECRET'] as string,
+//   );
+//   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+//   const hex = sigHashAlg + '=' + hmac.update(rawBody).digest('hex');
+//   console.log('==hex:', hex);
+//   console.log('==sbp:', req.headers['sbp-sig']);
 
-  return hex === req.headers['sbp-sig'];
-};
+//   return hex === req.headers['sbp-sig'];
+// };
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
