@@ -6,7 +6,10 @@ import { useTranslation } from 'react-i18next';
 
 import saif from '../../../assets/events/saif.webp';
 import { Button } from '../../../atoms/Button/index.tsx';
+import { AuthModal } from '../../../components/AuthModal/index.tsx';
+import { AuthModalState } from '../../../components/AuthModal/props.ts';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
 import {
   addMinutesToDate,
   formatDate,
@@ -23,6 +26,19 @@ export const Events = () => {
   const { t } = useTranslation();
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
+
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+
+  // TODO Refactor this auth stuff
+  const [authMode, setAuthMode] = useState<AuthModalState>(
+    AuthModalState.SignIn,
+  );
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
 
   interface MempoolPrice {
     USD: number;
@@ -148,7 +164,14 @@ export const Events = () => {
                         type="button"
                         size="m"
                         variant={'tertiary'}
-                        onClick={() => setIsPaymentModalOpen(true)}
+                        onClick={() => {
+                          if (isLoggedIn) {
+                            setIsPaymentModalOpen(true);
+                          } else {
+                            setAuthMode(AuthModalState.SignIn);
+                            openAuthModal();
+                          }
+                        }}
                       >
                         Book your seat
                       </Button>
@@ -159,6 +182,15 @@ export const Events = () => {
             );
           })}
         </div>
+        {isAuthModalOpen ? (
+          <AuthModal
+            isOpen={isAuthModalOpen}
+            onClose={closeAuthModal}
+            initialState={authMode}
+          />
+        ) : (
+          <div></div>
+        )}
       </div>
     </MainLayout>
   );
