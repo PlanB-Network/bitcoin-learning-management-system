@@ -35,7 +35,12 @@ export function formatDate(date: Date) {
   return `${day}${getOrdinalSuffix(day)} ${month}, ${year}`;
 }
 
-export function formatTime(date: Date) {
+export function formatTime(date: Date): string {
+  // Check if 'date' is an instance of Date and represents a valid date
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
   const timeFormatter = new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
     minute: 'numeric',
@@ -44,7 +49,6 @@ export function formatTime(date: Date) {
 
   return timeFormatter.format(date);
 }
-
 export function addMinutesToDate(originalDate: Date, minutes: number) {
   const newDate = new Date(originalDate);
   newDate.setTime(newDate.getTime() + minutes * 60 * 1000);
