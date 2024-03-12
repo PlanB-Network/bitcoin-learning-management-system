@@ -152,6 +152,7 @@
       "by": "von {{professor}}",
       "letsgo": "Los geht's"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
       "quizz": "Quizz",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Lektion fortsetzen"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -227,8 +233,8 @@
       "link": "Helfen Sie uns, die Akademie zu übersetzen"
     },
     "patreonSection": {
-      "title": "Lassen Sie uns gemeinsam die Bitcoin-Bildung verbessern! ",
-      "subtitle": "Das PlanB-Netzwerk ist 100% Open-Source dank unseren großzügigen Patreon",
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "Das PlanB Network ist stolz darauf, mit vielen Bitcoin-Unternehmen auf der ganzen Welt zusammenzuarbeiten, um die bestmöglichen Bildungsressourcen bereitzustellen!"
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Bewerben Sie sich, um ein Knoten zu werden",
     "description1": "Unser Finanzsystem bricht zusammen, unsere Lebensmittel werden vergiftet, unsere Freiheit wird uns genommen. Wir können nicht auf ein Wunder warten, wir müssen einen sicheren Ort schaffen, an dem wir leben können. Wir müssen unseren eigenen Plan B erstellen!",
     "pageSubtitle": "Unsere Stärke ist unsere Community. Lassen Sie uns zu einem globalen Bitcoin-Netzwerk zusammenkommen.",
-    "pageTitle": "Knoten Netzwerk",
+    "pageTitle": "Node Map",
     "question1": "Was ist ein Knoten?",
     "question2": "Was habe ich davon?",
     "question3": "Was sind die Voraussetzungen?",
@@ -475,6 +481,7 @@
     "economy": "Wirtschaft",
     "education": "Bildung",
     "email": "E-Mail",
+    "events": "Events",
     "exchanges": "Austausche",
     "followUs": "Folgen Sie uns",
     "helpUs": "Hilf uns",

@@ -152,6 +152,7 @@
       "by": "by {{professor}}",
       "letsgo": "Let's go"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
       "quizz": "Quizz",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Resume the lesson"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -227,8 +233,8 @@
       "link": "Help us translate the academy"
     },
     "patreonSection": {
-      "title": "Together let’s make Bitcoin education better ! ",
-      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patreon",
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Apply to become a Node",
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "Node Network",
+    "pageTitle": "Node Map",
     "question1": "What's a node?",
     "question2": "What do I gain?",
     "question3": "What are the requirements?",
@@ -475,6 +481,7 @@
     "economy": "Economy",
     "education": "Education",
     "email": "Email",
+    "events": "Events",
     "exchanges": "Exchanges",
     "followUs": "Follow us",
     "helpUs": "Help us",

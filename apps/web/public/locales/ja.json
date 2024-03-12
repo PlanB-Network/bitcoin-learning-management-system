@@ -152,6 +152,7 @@
       "by": "by {{professor}}",
       "letsgo": "レッツゴー！"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
       "quizz": "クイズ",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Resume the lesson"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -227,8 +233,8 @@
       "link": "アカデミーの翻訳にご協力ください"
     },
     "patreonSection": {
-      "title": "ぜひ一緒にビットコイン教育をより良くしていきましょう！ ",
-      "subtitle": "PlanBネットワークは、素晴らしいパトロンのみなさんおかげで、100％オープンソースで運営されています",
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Apply to become a Node",
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "ノード・ネットワーク",
+    "pageTitle": "Node Map",
     "question1": "What's a node?",
     "question2": "何が得られるのか？",
     "question3": "必要条件は？",
@@ -475,6 +481,7 @@
     "economy": "経済",
     "education": "教育",
     "email": "Eメール",
+    "events": "Events",
     "exchanges": "取引所",
     "followUs": "フォローする",
     "helpUs": "ご協力ください",

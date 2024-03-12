@@ -152,6 +152,7 @@
       "by": "par {{professor}}",
       "letsgo": "Allons-y"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Cliquez sur le camenbert pour vérifiez vos erreurs et obtenir les explications",
       "quizz": "Quiz",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Reprendre la leçon"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -227,8 +233,8 @@
       "link": "Aidez-nous à traduire l'académie"
     },
     "patreonSection": {
-      "title": "Ensemble, rendons l'éducation sur Bitcoin meilleure ! ",
-      "subtitle": "PlanB Network est 100% open-source grâce à nos généreux patreons",
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "PlanB Network est fier de s'associer à de nombreuses entreprises bitcoin à travers le monde afin de fournir les meilleures ressources éducatives possibles !"
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Postuler pour devenir un Nœud",
     "description1": "Notre système financier s'effondre, nos aliments sont empoisonnés, notre liberté est enlevée. Nous sommes impatients de voir un miracle, nous devons créer un endroit sûr pour vivre. Nous devons créer notre propre PlanB !",
     "pageSubtitle": "Notre force, c'est notre communauté. Rassemblons-nous pour former un réseau mondial de bitcoiners.",
-    "pageTitle": "Réseau de Nodes",
+    "pageTitle": "Node Map",
     "question1": "Qu'est-ce qu'un Nœud ?",
     "question2": "Qu'ai-je à gagner ?",
     "question3": "Que sont les pré-requis ?",
@@ -475,6 +481,7 @@
     "economy": "Économie",
     "education": "Éducation",
     "email": "Courriel",
+    "events": "Events",
     "exchanges": "Échanges",
     "followUs": "Suivez-nous",
     "helpUs": "Aidez-nous",

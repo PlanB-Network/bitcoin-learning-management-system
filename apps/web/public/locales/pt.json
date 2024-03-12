@@ -152,6 +152,7 @@
       "by": "por {{professor}}",
       "letsgo": "Vamos a isso"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Clica no gráfico circular, verifica os teus erros e vê as explicações",
       "quizz": "Questionário",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Retomar a lição"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -227,8 +233,8 @@
       "link": "Ajuda-nos a traduzir a academia"
     },
     "patreonSection": {
-      "title": "Juntos(as), vamos melhorar a educação Bitcoin ! ",
-      "subtitle": "A PlanB Network é 100% open-source graças ao nosso generoso patreon",
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "A PlanB Network está orgulhosa de se juntar a muitas empresas bitcoin em todo o mundo, de modo a fornecer os melhores recursos educativos possíveis!"
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Candidate-se para fazer parte da rede",
     "description1": "O nosso sistema financeiro está a desmoronar-se, os nossos alimentos estão a ser envenenados, a nossa liberdade está a ser retirada. Mal podemos esperar por um milagre, temos que criar um lugar seguro para viver. Precisamos criar nosso próprio Plano!",
     "pageSubtitle": "A nossa força é a nossa comunidade. Vamo-nos juntar numa rede global de bitcoin.",
-    "pageTitle": "Rede de Nós",
+    "pageTitle": "Node Map",
     "question1": "O que é um nó?",
     "question2": "O que ganho eu?",
     "question3": "Quais são os requisitos?",
@@ -475,6 +481,7 @@
     "economy": "Economia",
     "education": "Educação",
     "email": "Email",
+    "events": "Events",
     "exchanges": "Câmbios",
     "followUs": "Segue-nos",
     "helpUs": "Ajuda-nos",

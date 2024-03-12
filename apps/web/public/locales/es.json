@@ -152,6 +152,7 @@
       "by": "por {{professor}}",
       "letsgo": "Vamos"
     },
+    "purchase": "Purchase",
     "quizz": {
       "clickOnPie": "Haz clic en el gráfico circular, para revisar tus errores y ver las explicaciones",
       "quizz": "Cuestionario",
@@ -173,6 +174,11 @@
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Reanudar la sesión"
+    }
+  },
+  "events": {
+    "main": {
+      "upcomingEvents": "Upcoming Bitcoin events"
     }
   },
   "home": {
@@ -228,7 +234,7 @@
     },
     "patreonSection": {
       "title": "¡Juntos vamos a mejorar la educación en Bitcoin! ",
-      "subtitle": "La Red PlanB es 100% de código abierto gracias a nuestros generosos patrocinadores",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "¡La red PlanB se enorgullece de colaborar con numerosas empresas de Bitcoin en todo el mundo para proporcionar los mejores recursos educativos posibles! "
     }
   },
@@ -297,7 +303,7 @@
     "apply": "Aplicar para ser un nodo",
     "description1": "Nuestro sistema financiero se está desmoronando, nuestros alimentos se están envenenando, nuestra libertad se está quitando. No podemos esperar un milagro, tenemos que crear un lugar seguro para vivir. ¡Debemos crear nuestro propio PlanB !",
     "pageSubtitle": "Nuestra fortaleza es nuestra comunidad. Unámonos en una red global de Bitcoin.",
-    "pageTitle": "Red de nodo",
+    "pageTitle": "Node Map",
     "question1": "¿Qué es un Nodo?",
     "question2": "¿Qué obtengo?",
     "question3": "¿Cuáles son los requisitos?",
@@ -475,6 +481,7 @@
     "economy": "Economía",
     "education": "Educación",
     "email": "Correo electrónico",
+    "events": "Events",
     "exchanges": "Intercambios",
     "followUs": "Síguenos",
     "helpUs": "Ayúdanos",
