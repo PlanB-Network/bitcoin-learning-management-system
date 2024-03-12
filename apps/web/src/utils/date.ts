@@ -14,6 +14,7 @@ const getOrdinalSuffix = (day: number) => {
 };
 
 export function formatDate(date: Date) {
+  console.log('date:', date);
   const formatter = new Intl.DateTimeFormat('en-GB', {
     month: 'long',
     year: 'numeric',
