@@ -155,7 +155,7 @@ export const CourseDetails: React.FC = () => {
       (course.paidPriceEuros * 100_000_000) / conversionRate,
     );
     if (process.env.NODE_ENV === 'development') {
-      satsPrice = 1;
+      satsPrice = 10;
     }
   }
 

@@ -64,94 +64,100 @@ export const Events = () => {
           <h2 className="text-xl font-medium mt-4">
             {t('events.main.upcomingEvents')}
           </h2>
-          {events?.map((event) => (
-            <div key={event.id}>
-              <EventPaymentModal
-                eventId={event.id}
-                satsPrice={1}
-                isOpen={isPaymentModalOpen}
-                onClose={(isPaid) => {
-                  if (isPaid) {
-                    // refetchPayment();
-                  }
-                  setIsPaymentModalOpen(false);
-                }}
-              />
+          {events?.map((event) => {
+            let satsPrice = conversionRate
+              ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
+              : null;
+            if (process.env.NODE_ENV === 'development') {
+              satsPrice = 10;
+            }
 
-              <div className="mt-2 border-2 border-orange-500 rounded-3xl shadow-md-button-white">
-                <div className="flex flex-row gap-4 p-4">
-                  <img
-                    src={saif}
-                    className="h-[230px] w-[208px]"
-                    alt="Saifedean"
-                  />
-                  <div className="flex flex-col gap-2 pt-2">
-                    <p className="text-orange-500 font-semibold">
-                      {event.title}
-                    </p>
-                    <p className="text-3xl">{event.description}</p>
-                    {event.startDate && (
-                      <>
-                        <p className="">
-                          {formatDate(new Date(event.startDate))}
-                        </p>
-                        <p className="lowercase">
-                          {formatTime(new Date(event.startDate))}
-                          {' to '}
-                          {formatTime(
-                            addMinutesToDate(
-                              new Date(event.startDate),
-                              event.duration,
-                            ),
-                          )}
-                        </p>
-                      </>
-                    )}
+            return (
+              <div key={event.id}>
+                <EventPaymentModal
+                  eventId={event.id}
+                  satsPrice={satsPrice}
+                  isOpen={isPaymentModalOpen}
+                  onClose={(isPaid) => {
+                    if (isPaid) {
+                      // refetchPayment();
+                    }
+                    setIsPaymentModalOpen(false);
+                  }}
+                />
 
-                    <div className="text-sm">
-                      <p>{event.addressLine1}</p>
-                      <p>{event.addressLine2}</p>
-                      {/* new Date(course.paidStartDate).toLocaleDateString() */}
-                    </div>
-                    {event.priceDollars && (
-                      <p className="text-orange-500 mt-3">
-                        <>
-                          ${event.priceDollars}{' '}
-                          <span className="text-orange-500 text-opacity-75">
-                            /{' '}
-                            {conversionRate &&
-                              Math.round(
-                                (event.priceDollars * 100_000_000) /
-                                  conversionRate,
-                              ).toLocaleString('fr-FR')}{' '}
-                            sats
-                          </span>
-                        </>
+                <div className="mt-2 border-2 border-orange-500 rounded-3xl shadow-md-button-white">
+                  <div className="flex flex-row gap-4 p-4">
+                    <img
+                      src={saif}
+                      className="h-[230px] w-[208px]"
+                      alt="Saifedean"
+                    />
+                    <div className="flex flex-col gap-2 pt-2">
+                      <p className="text-orange-500 font-semibold">
+                        {event.title}
                       </p>
-                    )}
-                  </div>
-                  <div className="self-end gap-2 flex flex-col">
-                    <Button
-                      type="button"
-                      size="m"
-                      disabled={true}
-                      variant={'text'}
-                    >
-                      Watch replay
-                    </Button>
-                    <Button
-                      type="button"
-                      size="m"
-                      variant={'tertiary'}
-                      onClick={() => setIsPaymentModalOpen(true)}
-                    >
-                      Book your seat
-                    </Button>
+                      <p className="text-3xl">{event.description}</p>
+                      {event.startDate && (
+                        <>
+                          <p className="">
+                            {formatDate(new Date(event.startDate))}
+                          </p>
+                          <p className="lowercase">
+                            {formatTime(new Date(event.startDate))}
+                            {' to '}
+                            {formatTime(
+                              addMinutesToDate(
+                                new Date(event.startDate),
+                                event.duration,
+                              ),
+                            )}
+                          </p>
+                        </>
+                      )}
+
+                      <div className="text-sm">
+                        <p>{event.addressLine1}</p>
+                        <p>{event.addressLine2}</p>
+                        {/* new Date(course.paidStartDate).toLocaleDateString() */}
+                      </div>
+                      {event.priceDollars && (
+                        <p className="text-orange-500 mt-3">
+                          <>
+                            ${event.priceDollars}{' '}
+                            <span className="text-orange-500 text-opacity-75">
+                              /{' '}
+                              {conversionRate &&
+                                satsPrice.toLocaleString('fr-FR')}{' '}
+                              sats
+                            </span>
+                          </>
+                        </p>
+                      )}
+                    </div>
+                    <div className="self-end gap-2 flex flex-col">
+                      <Button
+                        type="button"
+                        size="m"
+                        disabled={true}
+                        variant={'text'}
+                      >
+                        Watch replay
+                      </Button>
+                      <Button
+                        type="button"
+                        size="m"
+                        variant={'tertiary'}
+                        onClick={() => setIsPaymentModalOpen(true)}
+                      >
+                        Book your seat
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </MainLayout>
