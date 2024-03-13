@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
-import { createSaveEventPayment } from '@sovereign-university/user';
+import { eventPaymentSchema } from '@sovereign-university/schemas';
+import {
+  createGetEventPayments,
+  createSaveEventPayment,
+} from '@sovereign-university/user';
 
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -30,6 +34,20 @@ const saveEventPaymentProcedure = protectedProcedure
     }),
   );
 
+const getEventPaymentsProcedure = protectedProcedure
+  .input(
+    z
+      .object({
+        language: z.string().optional(),
+      })
+      .optional(),
+  )
+  .output(eventPaymentSchema.array())
+  .query(async ({ ctx }) =>
+    createGetEventPayments(ctx.dependencies)({ uid: ctx.user.uid }),
+  );
+
 export const userEventsRouter = createTRPCRouter({
+  getEventPayment: getEventPaymentsProcedure,
   saveEventPayment: saveEventPaymentProcedure,
 });

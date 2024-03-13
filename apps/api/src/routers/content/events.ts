@@ -15,7 +15,6 @@ const getEventsProcedure = publicProcedure
       .optional(),
   )
   .output(eventSchema.array())
-  // .output(z.object({ events: eventSchema.array() }))
   .query(async ({ ctx }) => createGetEvents(ctx.dependencies)());
 
 export const eventsRouter = createTRPCRouter({

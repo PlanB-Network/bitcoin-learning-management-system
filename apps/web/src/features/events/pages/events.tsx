@@ -22,6 +22,7 @@ export const Events = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const { data: events } = trpc.content.getEvents.useQuery();
+  const { data: eventPayments } = trpc.user.events.getEventPayment.useQuery();
 
   const { t } = useTranslation();
 
@@ -87,6 +88,12 @@ export const Events = () => {
             if (process.env.NODE_ENV === 'development') {
               satsPrice = 10;
             }
+
+            const filteredEventPayments = eventPayments?.filter(
+              (payment) =>
+                payment.paymentStatus === 'paid' &&
+                payment.eventId === event.id,
+            );
 
             return (
               <div key={event.id}>
@@ -160,21 +167,29 @@ export const Events = () => {
                       >
                         Watch replay
                       </Button>
-                      <Button
-                        type="button"
-                        size="m"
-                        variant={'tertiary'}
-                        onClick={() => {
-                          if (isLoggedIn) {
-                            setIsPaymentModalOpen(true);
-                          } else {
-                            setAuthMode(AuthModalState.SignIn);
-                            openAuthModal();
-                          }
-                        }}
-                      >
-                        Book your seat
-                      </Button>
+
+                      {filteredEventPayments &&
+                      filteredEventPayments.length > 0 ? (
+                        <div className="italic font-semibold max-w-32 text-center">
+                          Purchased.
+                        </div>
+                      ) : (
+                        <Button
+                          type="button"
+                          size="m"
+                          variant={'tertiary'}
+                          onClick={() => {
+                            if (isLoggedIn) {
+                              setIsPaymentModalOpen(true);
+                            } else {
+                              setAuthMode(AuthModalState.SignIn);
+                              openAuthModal();
+                            }
+                          }}
+                        >
+                          Book your seat
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
