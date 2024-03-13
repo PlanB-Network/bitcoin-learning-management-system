@@ -22,7 +22,8 @@ export const Events = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const { data: events } = trpc.content.getEvents.useQuery();
-  const { data: eventPayments } = trpc.user.events.getEventPayment.useQuery();
+  const { data: eventPayments, refetch: refetchEventPayments } =
+    trpc.user.events.getEventPayment.useQuery();
 
   const { t } = useTranslation();
 
@@ -103,7 +104,10 @@ export const Events = () => {
                   isOpen={isPaymentModalOpen}
                   onClose={(isPaid) => {
                     if (isPaid) {
-                      // refetchPayment();
+                      refetchEventPayments();
+                      setTimeout(() => {
+                        refetchEventPayments();
+                      }, 5000);
                     }
                     setIsPaymentModalOpen(false);
                   }}
@@ -142,7 +146,6 @@ export const Events = () => {
                       <div className="text-xs md:text-sm">
                         <p>{event.addressLine1}</p>
                         <p>{event.addressLine2}</p>
-                        {/* new Date(course.paidStartDate).toLocaleDateString() */}
                       </div>
                       {event.priceDollars && (
                         <p className="text-orange-500 mt-3">
