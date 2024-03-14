@@ -531,7 +531,7 @@ export const CourseDetails: React.FC = () => {
                         >
                           {chapter.releaseDate ? (
                             <span className="bg-gray-300 rounded-xl p-2 text-sm font-medium text-white">
-                              {chapter.releaseDate.toDateString()}
+                              {new Date(chapter.releaseDate).toDateString()}
                               {chapter.releasePlace && (
                                 <span> - {chapter.releasePlace}</span>
                               )}
