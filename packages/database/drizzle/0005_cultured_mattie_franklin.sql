@@ -1,0 +1,2 @@
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "release_date" timestamp with time zone;--> statement-breakpoint
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "release_place" varchar(50);

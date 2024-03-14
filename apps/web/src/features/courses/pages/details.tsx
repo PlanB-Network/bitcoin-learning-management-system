@@ -89,6 +89,10 @@ export const CourseDetails: React.FC = () => {
     [courseId, payments],
   );
 
+  const courseHasReleaseDate = course?.parts.some((part) =>
+    part.chapters.some((chapter) => chapter?.releaseDate !== null),
+  );
+
   const professorNames = course?.professors
     .map((professor) => professor.name)
     .join(', ');
@@ -117,10 +121,11 @@ export const CourseDetails: React.FC = () => {
   const displayBuyCourse = course?.requiresPayment && !isCoursePaid;
 
   // TODO fix this february hack
-  const isLinkDisabled =
+  const isStartOrBuyLinkDisabled =
     displayBuyCourse || (!displayBuyCourse && course?.id === 'giaco');
 
-  const isButtonDisabled = !displayBuyCourse && course?.id === 'giaco';
+  const isStartOrBuyButtonDisabled =
+    !displayBuyCourse && course?.id === 'giaco';
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -295,7 +300,7 @@ export const CourseDetails: React.FC = () => {
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
                 <Link
-                  disabled={isLinkDisabled}
+                  disabled={isStartOrBuyLinkDisabled}
                   to={'/courses/$courseId/$partIndex/$chapterIndex'}
                   params={{
                     courseId,
@@ -303,7 +308,11 @@ export const CourseDetails: React.FC = () => {
                     chapterIndex: '1',
                   }}
                 >
-                  <Button rounded {...buttonProps} disabled={isButtonDisabled}>
+                  <Button
+                    rounded
+                    {...buttonProps}
+                    disabled={isStartOrBuyButtonDisabled}
+                  >
                     <span className="sm:px-6">
                       {t(
                         displayBuyCourse
@@ -324,7 +333,7 @@ export const CourseDetails: React.FC = () => {
                 <div className=" mx-1 flex items-center justify-center">
                   <Link
                     to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                    disabled={isLinkDisabled}
+                    disabled={isStartOrBuyLinkDisabled}
                     params={{
                       courseId,
                       partIndex: '1',
@@ -335,7 +344,7 @@ export const CourseDetails: React.FC = () => {
                       <Button
                         rounded
                         {...buttonProps}
-                        disabled={isButtonDisabled}
+                        disabled={isStartOrBuyButtonDisabled}
                       >
                         <span className="relative z-10 text-sm font-medium sm:px-6">
                           {t(
@@ -455,7 +464,7 @@ export const CourseDetails: React.FC = () => {
           >
             {course.parts?.map((part, partIndex) => (
               <li key={partIndex}>
-                <div className="mb-1 flex flex-row">
+                <div className="mb-1 flex flex-row mt-3">
                   <RxTriangleDown
                     className="mr-2 mt-1 text-orange-500"
                     size={20}
@@ -477,44 +486,74 @@ export const CourseDetails: React.FC = () => {
                     </p>
                   </Link>
                 </div>
-                {part.chapters?.map(
-                  (chapter, index) =>
+                {part.chapters?.map((chapter, index) => {
+                  const isChapterAvailable =
+                    chapter &&
+                    chapter.rawContent &&
+                    chapter.rawContent.length > 0;
+
+                  return (
                     chapter !== undefined && (
                       <div
-                        className="mb-0.5 ml-10 flex flex-row items-center"
+                        className="mb-0.5 ml-10 flex flex-row justify-between gap-32 mt-3"
                         key={index}
                       >
-                        <BsCircleFill className="mr-2 text-blue-500" size={7} />
-                        <Link
-                          to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                          params={{
-                            courseId,
-                            partIndex: (partIndex + 1).toString(),
-                            chapterIndex: chapter.chapter.toString(),
-                          }}
-                        >
-                          <p
-                            className={cn(
-                              'capitalize',
-                              displayBuyCourse
-                                ? 'text-gray-400'
-                                : 'text-blue-700',
-                            )}
+                        <div className="flex flew-row items-center">
+                          <BsCircleFill
+                            className="mr-2 text-blue-500"
+                            size={7}
+                          />
+                          <Link
+                            to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                            params={{
+                              courseId,
+                              partIndex: (partIndex + 1).toString(),
+                              chapterIndex: chapter.chapter.toString(),
+                            }}
                           >
-                            {chapter.title}
-                            {course.id === 'giaco' &&
-                            chapter.sections.length === 0 ? (
-                              <span className="italic ml-1">
-                                (Not yet available)
-                              </span>
-                            ) : (
-                              ''
-                            )}
-                          </p>
-                        </Link>
+                            <p
+                              className={cn(
+                                'capitalize',
+                                isChapterAvailable
+                                  ? 'text-blue-700'
+                                  : 'text-gray-400',
+                              )}
+                            >
+                              {chapter.title}
+                            </p>
+                          </Link>
+                        </div>
+                        <p
+                          className={cn(
+                            'w-auto',
+                            !courseHasReleaseDate && 'hidden',
+                          )}
+                        >
+                          {chapter.releaseDate ? (
+                            <span className="bg-gray-300 rounded-xl p-2 text-sm font-medium text-white">
+                              {chapter.releaseDate.toDateString()}
+                              {chapter.releasePlace && (
+                                <span> - {chapter.releasePlace}</span>
+                              )}
+                            </span>
+                          ) : (
+                            <span>
+                              {isChapterAvailable ? (
+                                <span className="bg-green-600 rounded-xl p-2 text-sm font-medium text-white">
+                                  available
+                                </span>
+                              ) : (
+                                <span className="bg-gray-300 rounded-xl p-2 text-sm font-medium text-white">
+                                  unavailable
+                                </span>
+                              )}
+                            </span>
+                          )}
+                        </p>
                       </div>
-                    ),
-                )}
+                    )
+                  );
+                })}
               </li>
             ))}
           </ul>
@@ -565,7 +604,7 @@ export const CourseDetails: React.FC = () => {
           <Link
             className="bottom-2"
             to={'/courses/$courseId/$partIndex/$chapterIndex'}
-            disabled={isLinkDisabled}
+            disabled={isStartOrBuyLinkDisabled}
             params={{
               courseId,
               partIndex: '1',
@@ -574,7 +613,7 @@ export const CourseDetails: React.FC = () => {
           >
             <Button
               size={isScreenMd ? 'l' : 's'}
-              disabled={isButtonDisabled}
+              disabled={isStartOrBuyButtonDisabled}
               {...buttonProps}
               {...(course.requiresPayment
                 ? {}

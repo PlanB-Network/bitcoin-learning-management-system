@@ -308,6 +308,8 @@ export const contentCourseChaptersLocalized = content.table(
     part: integer('part').notNull(),
     chapter: integer('chapter').notNull(),
     language: varchar('language', { length: 10 }).notNull(),
+    releaseDate: timestamp('release_date', { withTimezone: true }),
+    releasePlace: varchar('release_place', { length: 50 }),
 
     // Per translation
     title: text('title').notNull(),

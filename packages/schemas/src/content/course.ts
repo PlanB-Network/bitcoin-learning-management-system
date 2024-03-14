@@ -34,6 +34,9 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     language: true,
     title: true,
     sections: true,
+    releaseDate: true,
+    releasePlace: true,
+    rawContent: true,
   })
   .merge(
     z.object({
