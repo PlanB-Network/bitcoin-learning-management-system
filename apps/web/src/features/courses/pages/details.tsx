@@ -495,7 +495,7 @@ export const CourseDetails: React.FC = () => {
                   return (
                     chapter !== undefined && (
                       <div
-                        className="mb-0.5 ml-10 flex flex-row justify-between gap-32 mt-3"
+                        className="mb-0.5 ml-10 flex flex-col md:flex-row justify-between gap-2 md:gap-32 mt-3"
                         key={index}
                       >
                         <div className="flex flew-row items-center">
@@ -530,7 +530,7 @@ export const CourseDetails: React.FC = () => {
                           )}
                         >
                           {chapter.releaseDate ? (
-                            <span className="bg-gray-300 rounded-xl p-2 text-sm font-medium text-white">
+                            <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
                               {new Date(chapter.releaseDate).toDateString()}
                               {chapter.releasePlace && (
                                 <span> - {chapter.releasePlace}</span>
