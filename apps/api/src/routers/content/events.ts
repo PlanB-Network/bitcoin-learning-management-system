@@ -24,7 +24,7 @@ const getEventProcedure = publicProcedure
     }),
   )
   .output(eventSchema)
-  .query(async ({ ctx, input }) => createGetEvent(ctx.dependencies)(input.id));
+  .query(({ ctx, input }) => createGetEvent(ctx.dependencies)(input.id));
 
 export const eventsRouter = createTRPCRouter({
   getEvents: getEventsProcedure,

@@ -7,5 +7,11 @@ export const createGetEvent =
   (dependencies: Dependencies) => async (id: string) => {
     const { postgres } = dependencies;
 
-    return postgres.exec(getEventQuery(id)).then(firstRow);
+    const event = await postgres.exec(getEventQuery(id)).then(firstRow);
+
+    if (!event) {
+      throw new Error(`Event ${id} not found`);
+    }
+
+    return event;
   };
