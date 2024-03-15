@@ -1,6 +1,7 @@
 // @ts-nocheck
 // TODO temporary
 
+import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -66,6 +67,9 @@ export const Events = () => {
 
     fetchData();
   }, []);
+
+  const currentTimePlusTen = new Date(Date.now() + 1000 * 60 * 10);
+
   return (
     <MainLayout>
       <div className="flex flex-col">
@@ -128,17 +132,27 @@ export const Events = () => {
                       {event.startDate && (
                         <div className="mt-1 text-sm md:text-base">
                           <p className="">
-                            {formatDate(new Date(event.startDate))}
-                          </p>
-                          <p className="lowercase">
-                            {formatTime(new Date(event.startDate))}
-                            {' to '}
-                            {formatTime(
-                              addMinutesToDate(
-                                new Date(event.startDate),
-                                event.duration,
-                              ),
+                            {formatDate(
+                              new Date(event.startDate),
+                              'Europe/Rome',
                             )}
+                          </p>
+                          <p>
+                            <span className="lowercase">
+                              {formatTime(
+                                new Date(event.startDate),
+                                'Europe/Rome',
+                              )}
+                              {' to '}
+                              {formatTime(
+                                addMinutesToDate(
+                                  new Date(event.startDate),
+                                  event.duration,
+                                ),
+                                'Europe/Rome',
+                              )}{' '}
+                            </span>
+                            <span>(Turin Time, CET)</span>
                           </p>
                         </div>
                       )}
@@ -161,37 +175,60 @@ export const Events = () => {
                         </p>
                       )}
                     </div>
-                    <div className="self-end gap-2 flex flex-col">
-                      <Button
-                        type="button"
-                        size="m"
-                        disabled={true}
-                        variant={'text'}
-                      >
-                        Watch replay
-                      </Button>
-
+                    <div className="self-end">
                       {filteredEventPayments &&
                       filteredEventPayments.length > 0 ? (
-                        <div className="italic font-semibold max-w-32 text-center">
-                          Purchased.
+                        <div>
+                          {new Date(event.startDate) > currentTimePlusTen ? (
+                            <div className="italic font-semibold max-w-32 text-center">
+                              Purchased
+                            </div>
+                          ) : (
+                            <Link
+                              to={'/events/$eventId'}
+                              params={{
+                                eventId: event.id,
+                              }}
+                            >
+                              <Button
+                                type="button"
+                                size="m"
+                                variant={'tertiary'}
+                                onClick={() => {
+                                  console.log('open live');
+                                }}
+                              >
+                                Watch live
+                              </Button>
+                            </Link>
+                          )}
                         </div>
                       ) : (
-                        <Button
-                          type="button"
-                          size="m"
-                          variant={'tertiary'}
-                          onClick={() => {
-                            if (isLoggedIn) {
-                              setIsPaymentModalOpen(true);
-                            } else {
-                              setAuthMode(AuthModalState.SignIn);
-                              openAuthModal();
-                            }
-                          }}
-                        >
-                          Book your seat
-                        </Button>
+                        <div className="gap-2 flex flex-col">
+                          <Button
+                            type="button"
+                            size="m"
+                            disabled={true}
+                            variant={'text'}
+                          >
+                            Watch replay
+                          </Button>
+                          <Button
+                            type="button"
+                            size="m"
+                            variant={'tertiary'}
+                            onClick={() => {
+                              if (isLoggedIn) {
+                                setIsPaymentModalOpen(true);
+                              } else {
+                                setAuthMode(AuthModalState.SignIn);
+                                openAuthModal();
+                              }
+                            }}
+                          >
+                            Book your seat
+                          </Button>
+                        </div>
                       )}
                     </div>
                   </div>

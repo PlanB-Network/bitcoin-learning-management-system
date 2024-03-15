@@ -13,7 +13,7 @@ const getOrdinalSuffix = (day: number) => {
   return 'th';
 };
 
-export function formatDate(date: Date) {
+export function formatDate(date: Date, timezone?: string) {
   console.log('date:', date);
 
   if (typeof date?.getDate !== 'function') {
@@ -23,19 +23,24 @@ export function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat('en-GB', {
     month: 'long',
     year: 'numeric',
+    timeZone: timezone,
   });
 
-  const day = date.getDate();
+  // Get the day of the month. It needs to consider the timezone if provided.
+  const day = timezone
+    ? new Date(date.toLocaleString('en-US', { timeZone: timezone })).getDate()
+    : date.getDate();
   if (Number.isNaN(day)) {
     // Additional check if getDate does not return a valid number
     return '';
   }
+
   const [month, year] = formatter.format(date).split(' ');
 
   return `${day}${getOrdinalSuffix(day)} ${month}, ${year}`;
 }
 
-export function formatTime(date: Date): string {
+export function formatTime(date: Date, timezone?: string): string {
   // Check if 'date' is an instance of Date and represents a valid date
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     return '';
@@ -45,6 +50,7 @@ export function formatTime(date: Date): string {
     hour: 'numeric',
     minute: 'numeric',
     hour12: true,
+    timeZone: timezone,
   });
 
   return timeFormatter.format(date);
