@@ -222,7 +222,6 @@ export const CourseDescriptionModal = ({
   isOpen,
   onClose,
 }: CourseDescriptionModalProps) => {
-  console.log(course);
   const [paymentOption, setPaymentOption] = useState(-1);
   const savePaymentRequest = trpc.user.courses.savePayment.useMutation();
 
