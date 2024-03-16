@@ -48,18 +48,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
 
   console.log('-- Sync procedure: sync cdn repository');
 
-  let publicCdnError;
-  try {
-    await syncCdnRepository(
-      '/tmp/sovereign-university-data',
-      process.env['CDN_PATH'] || '/tmp/cdn',
-    );
-  } catch (error) {
-    console.error(error);
-    publicCdnError =
-      error instanceof Error ? error.message : new Error('Unknown error');
-  }
-
   let privateCdnError;
   if (
     process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
@@ -75,6 +63,18 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
       privateCdnError =
         error instanceof Error ? error.message : new Error('Unknown error');
     }
+  }
+
+  let publicCdnError;
+  try {
+    await syncCdnRepository(
+      '/tmp/sovereign-university-data',
+      process.env['CDN_PATH'] || '/tmp/cdn',
+    );
+  } catch (error) {
+    console.error(error);
+    publicCdnError =
+      error instanceof Error ? error.message : new Error('Unknown error');
   }
 
   console.log('-- Sync procedure: END');

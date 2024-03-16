@@ -341,7 +341,7 @@ export const syncCdnRepository = async (
       (file) => file.includes('/assets/') || file.includes('/soon/'),
     );
 
-    for (const asset of assets) {
+    for (const asset of assets.reverse()) {
       console.log('sync cdn asset:', asset);
 
       // This takes long time on btc101
