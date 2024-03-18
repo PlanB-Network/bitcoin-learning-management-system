@@ -40,7 +40,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
       });
 
       router.navigate({
-        to: window.location.pathname.replace(`/${previousLanguage}`, ''),
+        // TODO fix this
+        to: window.location.pathname.replace(`/${previousLanguage}`, '') as '/',
       });
       router.load();
     }

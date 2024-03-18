@@ -40,7 +40,8 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
             'text-2xl font-light uppercase text-white no-underline',
             fontWeight,
           )}
-          to={section.path}
+          /* TODO: fix */
+          to={section.path as '/'}
         >
           {section.title}
         </Link>

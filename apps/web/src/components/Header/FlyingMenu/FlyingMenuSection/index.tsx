@@ -29,9 +29,8 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       return (
         <Link
           className={compose('text-base font-medium xl:text-lg', fontWeight)}
-          to={section.path}
           /* TODO: fix */
-          params={{}}
+          to={section.path as '/'}
         >
           {section.title}
         </Link>

@@ -39,7 +39,8 @@ export const ResourceLayout = ({
         <div className="max-w-6xl text-black">
           <div>
             {link ? (
-              <Link to={link} params={{}}>
+              // TODO fix
+              <Link to={link as '/'}>
                 <PageTitle>{title}</PageTitle>
               </Link>
             ) : (
