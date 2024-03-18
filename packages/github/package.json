@@ -17,12 +17,12 @@
   "dependencies": {
     "@octokit/app": "^14.0.2",
     "@octokit/rest": "^20.0.2",
-    "@octokit/webhooks-methods": "^4.0.0",
+    "@octokit/webhooks-methods": "^5.0.0",
     "async": "^3.2.5",
-    "simple-git": "^3.22.0"
+    "simple-git": "^3.23.0"
   },
   "devDependencies": {
-    "@octokit/webhooks-types": "7.3.2",
+    "@octokit/webhooks-types": "7.4.0",
     "@sovereign-university/types": "workspace:*",
     "@types/async": "^3.2.24"
   }

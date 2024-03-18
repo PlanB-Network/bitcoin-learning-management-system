@@ -29,11 +29,11 @@
     "db:migrate": "tsx ./scripts/migrate.ts"
   },
   "dependencies": {
-    "drizzle-orm": "0.29.3",
+    "drizzle-orm": "0.30.2",
     "postgres": "3.4.3"
   },
   "devDependencies": {
-    "dotenv": "^16.4.2",
+    "dotenv": "^16.4.5",
     "drizzle-kit": "0.20.14",
     "pg": "8.11.3"
   }

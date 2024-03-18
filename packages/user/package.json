@@ -17,13 +17,13 @@
   "dependencies": {
     "@sovereign-university/database": "workspace:*",
     "@trpc/server": "11.0.0-next-beta.316",
-    "argon2": "^0.31.2",
-    "axios": "^1.6.7",
+    "argon2": "^0.40.1",
+    "axios": "^1.6.8",
     "bip39": "^3.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@sovereign-university/types": "workspace:*",
-    "@types/lodash": "^4.14.202"
+    "@types/lodash": "^4.17.0"
   }
 }
