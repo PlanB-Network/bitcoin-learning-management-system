@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --cache-dir=.turbo",
     "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "format": "prettier --ignore-unknown --write --no-error-on-unmatched-pattern .",
