@@ -22,7 +22,7 @@ const QnAItem = ({
   return (
     <div>
       <button onClick={toggle}>
-        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl">
+        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl items-baseline">
           <span className="uppercase text-orange-500">{question}</span>
           <div
             className={cn(
