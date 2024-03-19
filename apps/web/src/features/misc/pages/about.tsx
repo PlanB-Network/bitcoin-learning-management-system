@@ -240,7 +240,7 @@ const Professors = () => {
 
 const ActiveContributors = () => {
   const { t } = useTranslation();
-  const css = 'w-24 h-24 rounded-lg';
+  const css = 'w-24 h-24 rounded-full';
 
   return (
     <div className="mt-20 flex w-full max-w-5xl flex-col gap-4">
