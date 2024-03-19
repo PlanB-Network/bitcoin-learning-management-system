@@ -111,7 +111,7 @@ export const Home = () => {
           </div>
           <div className="relative col-span-3 hidden items-start lg:flex">
             <img
-              className="z-10 -ml-16 mt-8 h-[18rem] w-auto xl:h-[24rem]"
+              className="z-10 -ml-16 mt-8 h-72 w-auto xl:h-96"
               src={HeaderPill}
               alt={t('imagesAlt.orangePill')}
               loading="lazy"
@@ -336,9 +336,11 @@ export const Home = () => {
             width={50}
             className="rounded-full"
           />
-          <div className="ml-4">
-            <p className="font-bold leading-4 text-orange-500">{name}</p>
-            <p className="font-medium text-gray-400">{handle}</p>
+          <div className="ml-4 flex-auto min-w-[90px]">
+            <p className="font-bold leading-4 text-orange-500 truncate">
+              {name}
+            </p>
+            <p className="font-medium text-gray-400 truncate">{handle}</p>
           </div>
           <div className="ml-auto mr-4 mt-2">
             <a
