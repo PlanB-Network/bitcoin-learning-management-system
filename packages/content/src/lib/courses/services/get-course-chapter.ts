@@ -1,6 +1,8 @@
 import { firstRow } from '@sovereign-university/database';
 
 import type { Dependencies } from '../../dependencies.js';
+import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
+import { formatProfessor } from '../../professors/services/utils.js';
 import { getCourseChapterQuery } from '../queries/index.js';
 
 import { createGetCourse } from './get-course.js';
@@ -23,11 +25,18 @@ export const createGetCourseChapter =
     const course = await getCourse(courseId, language);
     const part = course.parts.find((part) => part.part === partIndex);
 
+    const professors = await postgres.exec(
+      getProfessorsQuery({ contributorIds: chapter?.professors, language }),
+    );
+
     // Should never happen if a chapter was found
     if (!chapter || !part) throw new Error('Chapter not found');
 
     return {
       ...chapter,
+      ...(professors
+        ? { professors: professors.map((element) => formatProfessor(element)) }
+        : {}),
       course,
       part,
     };

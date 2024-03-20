@@ -764,6 +764,32 @@ export const contentCourseProfessors = content.table(
   }),
 );
 
+export const contentCourseChaptersLocalizedProfessors = content.table(
+  'course_chapters_localized_professors',
+  {
+    courseId: varchar('course_id', { length: 20 })
+      .notNull()
+      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+    part: integer('part').notNull(),
+    chapter: integer('chapter').notNull(),
+    language: varchar('language', { length: 10 }).notNull(),
+    contributorId: varchar('contributor_id', { length: 20 })
+      .notNull()
+      .references(() => contentContributors.id, { onDelete: 'cascade' }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [
+        table.contributorId,
+        table.courseId,
+        table.part,
+        table.chapter,
+        table.language,
+      ],
+    }),
+  }),
+);
+
 export const contentTutorialCredits = content.table('tutorial_credits', {
   tutorialId: integer('tutorial_id')
     .primaryKey()

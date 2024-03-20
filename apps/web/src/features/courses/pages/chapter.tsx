@@ -215,11 +215,19 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
           </span>
         </div>
         <div>
-          {joinWords(
-            chapter.course.professors
-              .map((p) => p.name)
-              .filter((name): name is string => name !== undefined),
-          )}
+          {(() => {
+            let professors;
+            professors = chapter.course.professors;
+            if (chapter.professors && chapter.professors.length > 0) {
+              professors = chapter.professors;
+            }
+
+            return joinWords(
+              professors
+                .map((p) => p.name)
+                .filter((name): name is string => name !== undefined),
+            );
+          })()}
         </div>
       </div>
 

@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@sovereign-university/eslint-config": "workspace:*",
-    "@types/node": "^20.11.29",
+    "@types/node": "^20.11.30",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/ui": "1.4.0",
     "autoprefixer": "10.4.18",
