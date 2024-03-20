@@ -1,4 +1,5 @@
 import matter from 'gray-matter';
+import type { Token } from 'marked';
 import { marked } from 'marked';
 
 import { firstRow, sql } from '@sovereign-university/database';
@@ -114,7 +115,28 @@ interface Chapter {
   title: string;
   sections: string[];
   raw_content: string;
+  professors: string[];
+  releaseDate: string | null;
+  releasePlace: string | null;
 }
+
+const extractData = (token: Token, type: string) => {
+  if (token.type === 'paragraph' && token.tokens) {
+    for (const [index, t] of token.tokens.entries()) {
+      if (
+        t.raw === `<${type}>` &&
+        token.tokens.at(index + 2)?.raw === `</${type}>`
+      ) {
+        const res = token.tokens.at(index + 1)?.raw;
+        if (res) {
+          return res;
+        }
+      }
+    }
+  }
+
+  return null;
+};
 
 const extractParts = (markdown: string): Part[] => {
   const tokens = marked.lexer(markdown);
@@ -134,15 +156,32 @@ const extractParts = (markdown: string): Part[] => {
           title: token.text as string,
           sections: [],
           raw_content: '',
+          professors: [],
+          releaseDate: '',
+          releasePlace: '',
         });
       } else if (currentPart.chapters.length > 0) {
         const currentChapter = currentPart.chapters.at(-1)!;
 
-        currentChapter.raw_content += token.raw;
-
         if (token.type === 'heading' && token.depth === 3) {
           currentChapter.sections.push(token.text as string);
         }
+
+        if (token.raw.startsWith('<')) {
+          currentChapter.releaseDate = extractData(token, 'releaseDate');
+          currentChapter.releasePlace = extractData(token, 'releasePlace');
+
+          const professor = extractData(token, 'professor');
+          if (professor) {
+            currentChapter.professors.push(professor);
+          }
+
+          const regex =
+            /<professor>.*<\/professor>|<releaseDate>.*<\/releaseDate>|<releasePlace>.*<\/releasePlace>/gm;
+          token.raw = token.raw.replaceAll(regex, '');
+        }
+
+        currentChapter.raw_content += token.raw;
       }
     }
   }
@@ -411,25 +450,60 @@ export const createProcessChangedCourse =
                 ON CONFLICT DO NOTHING
               `;
 
+                const formatedChapters = parts.flatMap((part, partIndex) =>
+                  part.chapters.map((chapter, chapterIndex) => {
+                    const c = {
+                      course_id: course.id,
+                      part: partIndex + 1,
+                      chapter: chapterIndex + 1,
+                      language: file.language,
+                      title: chapter.title,
+                      sections: chapter.sections,
+                      raw_content: chapter.raw_content.trim(),
+                      release_place: chapter.releasePlace,
+                      release_date: null as string | null,
+                    };
+
+                    if (chapter.releaseDate) {
+                      c.release_date = chapter.releaseDate;
+                    }
+
+                    return c;
+                  }),
+                );
+
                 await transaction`
-                  INSERT INTO content.course_chapters_localized ${transaction(
-                    parts.flatMap((part, partIndex) =>
-                      part.chapters.map((chapter, chapterIndex) => ({
-                        course_id: course.id,
-                        part: partIndex + 1,
-                        chapter: chapterIndex + 1,
-                        language: file.language,
-                        title: chapter.title,
-                        sections: chapter.sections,
-                        raw_content: chapter.raw_content.trim(),
-                      })),
-                    ),
-                  )}
+                  INSERT INTO content.course_chapters_localized ${transaction(formatedChapters)}
                   ON CONFLICT (course_id, part, chapter, language) DO UPDATE SET
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,
-                    raw_content = EXCLUDED.raw_content
+                    raw_content = EXCLUDED.raw_content,
+                    release_date = EXCLUDED.release_date,
+                    release_place = EXCLUDED.release_place
                 `;
+
+                const formatedChapters2 = parts.flatMap((part, partIndex) =>
+                  part.chapters.map((chapter, chapterIndex) => ({
+                    course_id: course.id,
+                    part: partIndex + 1,
+                    chapter: chapterIndex + 1,
+                    language: file.language,
+                    title: chapter.title,
+                    sections: chapter.sections,
+                    raw_content: chapter.raw_content.trim(),
+                    professors: chapter.professors,
+                  })),
+                );
+
+                for (const chapter of formatedChapters2) {
+                  for (const professor of chapter.professors) {
+                    await transaction`
+                        INSERT INTO content.course_chapters_localized_professors (course_id, part, chapter, language, contributor_id)
+                        VALUES (${course.id}, ${chapter.part}, ${chapter.chapter}, ${chapter.language}, ${professor})
+                        ON CONFLICT DO NOTHING
+                  `;
+                  }
+                }
               } else {
                 console.warn(
                   `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,

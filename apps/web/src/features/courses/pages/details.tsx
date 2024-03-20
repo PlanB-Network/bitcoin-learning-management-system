@@ -529,11 +529,18 @@ export const CourseDetails: React.FC = () => {
                             !courseHasReleaseDate && 'hidden',
                           )}
                         >
-                          {chapter.releaseDate ? (
+                          {chapter.releaseDate || chapter.releasePlace ? (
                             <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
-                              {new Date(chapter.releaseDate).toDateString()}
+                              {chapter.releaseDate && (
+                                <span>
+                                  {new Date(chapter.releaseDate).toDateString()}
+                                </span>
+                              )}
+                              {chapter.releaseDate && chapter.releasePlace && (
+                                <span> - </span>
+                              )}
                               {chapter.releasePlace && (
-                                <span> - {chapter.releasePlace}</span>
+                                <span>{chapter.releasePlace}</span>
                               )}
                             </span>
                           ) : (
