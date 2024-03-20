@@ -43,7 +43,7 @@ export const TutorialCategory = () => {
 
   return (
     <TutorialLayout currentCategory={category}>
-      <div className="mb-6 mt-[-1rem] w-full max-w-5xl lg:hidden">
+      <div className="mb-6 -mt-4 w-full max-w-5xl lg:hidden">
         <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
           <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
           <span className="capitalize">{tutorialCategory!.name}</span>
@@ -89,7 +89,7 @@ export const TutorialCategory = () => {
               <Tab.Panels className="rounded-b-xl bg-gray-200 pb-8">
                 {subCategories.map((subCategory) => (
                   <Tab.Panel key={subCategory}>
-                    <div className="flex flex-col space-y-8 px-10 md:pt-3">
+                    <div className="flex flex-col space-y-8 px-10 pt-3">
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
                       ) && (
