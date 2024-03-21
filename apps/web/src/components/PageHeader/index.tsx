@@ -8,7 +8,7 @@ export const PageHeader = ({
   description: string;
 }) => {
   return (
-    <div className="flex max-w-5xl flex-col gap-2 place-self-center px-8 py-4 text-white md:px-0">
+    <div className="flex max-w-5xl flex-col gap-2 place-self-center px-3 py-4 text-white md:px-0">
       <h1 className="text-4xl font-semibold leading-[56px] sm:px-4 sm:text-7xl sm:font-medium sm:leading-[114px]">
         {title}
       </h1>

@@ -25,8 +25,8 @@ export const TutorialExplorer = () => {
           description={t('tutorials.pageDescription')}
         />
 
-        <div className="flex w-full content-center justify-center px-8 pb-10 sm:pb-32 sm:pt-10 ">
-          <div className="grid w-[64rem] grid-cols-2 gap-x-12 md:grid-cols-3">
+        <div className="flex w-full content-center justify-center px-4 md:px-8 pb-10 sm:pb-32 sm:pt-10 ">
+          <div className="grid w-[64rem] grid-cols-2 gap-x-5 md:grid-cols-3">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
                 key={tutorialCategory.name}
