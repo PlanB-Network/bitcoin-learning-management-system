@@ -22,11 +22,11 @@ const QnAItem = ({
   return (
     <div>
       <button onClick={toggle}>
-        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl items-baseline">
+        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl items-center">
           <span className="uppercase text-orange-500">{question}</span>
           <div
             className={cn(
-              'ml-auto text-3xl font-light mr-3 inline-block',
+              'ml-2 text-2xl sm:text-3xl font-light mr-3 inline-block',
               isOpen ? 'rotate-45' : 'rotate-0',
             )}
           >
