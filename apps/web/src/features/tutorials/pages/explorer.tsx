@@ -25,13 +25,14 @@ export const TutorialExplorer = () => {
           description={t('tutorials.pageDescription')}
         />
 
-        <div className="flex w-full content-center justify-center px-4 md:px-8 pb-10 sm:pb-32 sm:pt-10 ">
-          <div className="grid w-[64rem] grid-cols-2 gap-x-5 md:grid-cols-3">
+        <div className="max-w-5xl flex place-content-center self-center px-3 py-4 sm:my-10">
+          <div className="flex flex-wrap place-content-center">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
                 key={tutorialCategory.name}
                 to={'/tutorials/$category'}
                 params={{ category: tutorialCategory.name }}
+                className="w-1/2 md:w-1/3"
               >
                 <div className="flex items-center space-x-2 rounded-lg py-2 sm:space-x-4 sm:p-2">
                   <CategoryIcon src={tutorialCategory.image} />
