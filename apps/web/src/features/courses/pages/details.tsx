@@ -39,7 +39,6 @@ import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
 import { CourseButton } from '../components/course-button.tsx';
 import { CourseLayout } from '../layout.tsx';
 
-import { CourseDescriptionModal } from './components/course-description-modal.tsx';
 import { CoursePaymentModal } from './components/course-payment-modal.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
@@ -663,7 +662,7 @@ export const CourseDetails: React.FC = () => {
                 setIsPaymentModalOpen(false);
               }}
             />
-            <CourseDescriptionModal
+            <CoursePaymentModal
               course={course}
               satsPrice={satsPrice}
               isOpen={isDescriptionModalOpen}
