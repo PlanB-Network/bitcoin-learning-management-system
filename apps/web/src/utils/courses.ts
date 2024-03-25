@@ -12,7 +12,7 @@ export function fakeCourseId(courseId: string) {
     case 'rgb': {
       return 'btc402';
     }
-    case 'giaco': {
+    case 'bizschool': {
       return 'econ102';
     }
     default: {

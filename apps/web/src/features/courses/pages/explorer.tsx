@@ -90,7 +90,7 @@ export const CoursesExplorer = () => {
         (c) =>
           (Number(extractNumbers(c.id)) >= 100 &&
             Number(extractNumbers(c.id)) < 200) ||
-          c.id === 'giaco',
+          c.id === 'bizschool',
       )
       .sort((a, b) =>
         extractNumbers(fakeCourseId(a.id)).localeCompare(

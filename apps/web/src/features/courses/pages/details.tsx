@@ -122,10 +122,10 @@ export const CourseDetails: React.FC = () => {
 
   // TODO fix this february hack
   const isStartOrBuyLinkDisabled =
-    displayBuyCourse || (!displayBuyCourse && course?.id === 'giaco');
+    displayBuyCourse || (!displayBuyCourse && course?.id === 'bizschool');
 
   const isStartOrBuyButtonDisabled =
-    !displayBuyCourse && course?.id === 'giaco';
+    !displayBuyCourse && course?.id === 'bizschool';
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -459,7 +459,7 @@ export const CourseDetails: React.FC = () => {
           <ul
             className={
               (cn('space-y-5 text-xs capitalize sm:text-base sm:uppercase'),
-              course.id === 'giaco' ? 'pointer-events-none' : '')
+              course.id === 'bizschool' ? 'pointer-events-none' : '')
             }
           >
             {course.parts?.map((part, partIndex) => (
@@ -646,7 +646,7 @@ export const CourseDetails: React.FC = () => {
       <div className="text-blue-800">
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            {course?.id !== 'giaco' && <CourseButton courseId={courseId} />}
+            {course?.id !== 'bizschool' && <CourseButton courseId={courseId} />}
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <CourseInfo course={course} />
