@@ -64,11 +64,6 @@ export const CourseDetails: React.FC = () => {
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
-  const [paidSatsPrice, setPaidSatsPrice] = useState(0);
-  const [paidWithPhysical, setPaidWithPhysical] = useState(false);
-  const [paidPart, setPaidPart] = useState<number | undefined>();
-  const [paidChapter, setPaidChapter] = useState<number | undefined>();
 
   const navigate = useNavigate();
 
@@ -107,7 +102,7 @@ export const CourseDetails: React.FC = () => {
             iconLeft: <FaLock />,
             onClick: () => {
               if (isLoggedIn) {
-                setIsDescriptionModalOpen(true);
+                setIsPaymentModalOpen(true);
               } else {
                 setAuthMode(AuthModalState.SignIn);
                 openAuthModal();
@@ -650,37 +645,11 @@ export const CourseDetails: React.FC = () => {
             <Footer course={course} />
             <CoursePaymentModal
               course={course}
-              satsPrice={paidSatsPrice}
-              withPhysical={paidWithPhysical}
-              chapter={paidChapter}
-              part={paidPart}
-              isOpen={isPaymentModalOpen}
-              onClose={(isPaid) => {
-                if (isPaid) {
-                  refetchPayment();
-                }
-                setIsPaymentModalOpen(false);
-              }}
-            />
-            <CoursePaymentModal
-              course={course}
               satsPrice={satsPrice}
-              isOpen={isDescriptionModalOpen}
+              isOpen={isPaymentModalOpen}
               onClose={() => {
-                setIsDescriptionModalOpen(false);
-              }}
-              onPay={(
-                sats,
-                withPhysical: boolean,
-                part?: number,
-                chapter?: number,
-              ) => {
-                setPaidSatsPrice(sats);
-                setPaidWithPhysical(withPhysical);
-                setPaidPart(part);
-                setPaidChapter(chapter);
-                setIsDescriptionModalOpen(false);
-                setIsPaymentModalOpen(true);
+                setIsPaymentModalOpen(false);
+                refetchPayment();
               }}
             />
           </div>

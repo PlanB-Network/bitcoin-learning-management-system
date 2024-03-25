@@ -2,13 +2,7 @@ import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { QRCodeSVG } from 'qrcode.react';
-import {
-  Children,
-  Fragment,
-  type PropsWithChildren,
-  useCallback,
-  useState,
-} from 'react';
+import { useCallback, useState } from 'react';
 import { AiOutlineCopy, AiOutlineWarning } from 'react-icons/ai';
 
 import { Button, cn } from '@sovereign-university/ui';
@@ -83,32 +77,6 @@ const RowText = ({
 }: RowTextProps & { className?: string }) => (
   <span className={`text-sm ${className}`}>{children}</span>
 );
-
-interface VStackProps {
-  children: React.ReactNode[];
-  className?: string;
-}
-
-export const VStack = ({
-  children,
-  className,
-}: PropsWithChildren<VStackProps>) => {
-  const filteredChildren = Children.toArray(children).filter(
-    (child) => !!child,
-  );
-  const childrenCount = filteredChildren.length;
-
-  return (
-    <div className={`flex flex-col ${className}`}>
-      {filteredChildren.map((child, index) => (
-        <Fragment key={index}>
-          {child}
-          {child && index < childrenCount - 1 && <div className="h-6" />}
-        </Fragment>
-      ))}
-    </div>
-  );
-};
 
 interface RowProps {
   label: string;
@@ -202,7 +170,7 @@ export const CoursePaymentModal = ({
             <div
               className={`${borderClassName} relative w-3/4 backdrop-blur-md bg-black/75 p-8`}
             >
-              <VStack>
+              <div className="flex flex-col gap-6">
                 <span className="text-base text-white font-medium">
                   {courseName}
                 </span>
@@ -216,7 +184,7 @@ export const CoursePaymentModal = ({
                     url={course.paidVideoLink as string}
                   />
                 </div>
-                <>
+                <div>
                   <Row
                     label={
                       course.professors?.length > 1
@@ -252,7 +220,7 @@ export const CoursePaymentModal = ({
                     label={t('courses.details.accessibility')}
                     value={t('courses.details.accessibility_forever')}
                   />
-                </>
+                </div>
                 <span className="text-sm text-white">
                   {course.paidDescription}
                 </span>
@@ -273,23 +241,23 @@ export const CoursePaymentModal = ({
                 >
                   {t('courses.details.downloadCurriculum')}
                 </a>
-              </VStack>
+              </div>
             </div>
           </div>
         </div>
         <div className="flex flex-1 flex-col items-center justify-center pl-12">
           {paymentData ? (
             isPaymentSuccess ? (
-              <VStack className="items-center justify-center w-96">
+              <div className="items-center justify-center w-96 flex flex-col gap-6">
                 <PlanBLogo className="h-auto" width={240} />
-                <VStack className="items-center justify-center">
+                <div className="items-center justify-center flex flex-col gap-6">
                   <span className="text-xl font-semibold text-orange">
                     {t('courses.details.payment_successful')}
                   </span>
                   <span className="text-base text-center">
                     {t('courses.details.access_invoice')}
                   </span>
-                </VStack>
+                </div>
                 <span className="text-lg font-medium">
                   {t('courses.details.payment_details')}
                 </span>
@@ -331,9 +299,9 @@ export const CoursePaymentModal = ({
                   </a>
                   <span>{t('courses.details.terms3')}</span>
                 </div>
-              </VStack>
+              </div>
             ) : (
-              <VStack className="items-center justify-center w-96">
+              <div className="items-center justify-center w-96 flex flex-col gap-6">
                 <PlanBLogo className="h-auto" width={240} />
                 <QRCodeSVG value={`lightning:${paymentData.pr}`} size={220} />
                 <div
@@ -352,10 +320,10 @@ export const CoursePaymentModal = ({
                 <div className="text-[10px] text-center uppercase md:text-xs">
                   <span>{t('courses.details.terms4')} </span>
                 </div>
-              </VStack>
+              </div>
             )
           ) : (
-            <VStack className="items-center justify-center w-96">
+            <div className="items-center justify-center w-96 flex flex-col gap-6">
               <PlanBLogo className="h-auto" width={240} />
               <Callout description="You are about to purchase this course." />
               <span className="text-sm">
@@ -403,7 +371,7 @@ export const CoursePaymentModal = ({
                   <span>{t('courses.details.terms3')}</span>
                 </>
               </div>
-            </VStack>
+            </div>
           )}
         </div>
       </div>
