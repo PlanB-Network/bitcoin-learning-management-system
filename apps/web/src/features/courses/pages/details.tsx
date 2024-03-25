@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useParams } from '@tanstack/react-router';
+import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
@@ -71,6 +71,8 @@ export const CourseDetails: React.FC = () => {
   const [paidPart, setPaidPart] = useState<number | undefined>();
   const [paidChapter, setPaidChapter] = useState<number | undefined>();
 
+  const navigate = useNavigate();
+
   const { data: course, isFetched } = trpc.content.getCourse.useQuery({
     id: courseId,
     language: i18n.language,
@@ -114,18 +116,41 @@ export const CourseDetails: React.FC = () => {
             },
             variant: 'primary' as const,
           }
-        : { variant: 'tertiary' as const },
-    [course?.requiresPayment, isCoursePaid, isLoggedIn, openAuthModal],
+        : {
+            onClick: () => {
+              navigate({
+                to: '/courses/$courseId/$partIndex/$chapterIndex',
+                params: {
+                  courseId,
+                  partIndex: '1',
+                  chapterIndex: '1',
+                },
+              });
+            },
+            variant: 'tertiary' as const,
+          },
+    [
+      course?.requiresPayment,
+      courseId,
+      isCoursePaid,
+      isLoggedIn,
+      navigate,
+      openAuthModal,
+    ],
   );
+
+  const firstChapter = course?.parts[0]?.chapters[0];
+  const isFirstChapterAvailable =
+    firstChapter &&
+    firstChapter.rawContent &&
+    firstChapter.rawContent.length > 0
+      ? true
+      : false;
 
   const displayBuyCourse = course?.requiresPayment && !isCoursePaid;
 
-  // TODO fix this february hack
-  const isStartOrBuyLinkDisabled =
-    displayBuyCourse || (!displayBuyCourse && course?.id === 'bizschool');
-
   const isStartOrBuyButtonDisabled =
-    !displayBuyCourse && course?.id === 'bizschool';
+    !displayBuyCourse && !isFirstChapterAvailable;
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -299,29 +324,19 @@ export const CourseDetails: React.FC = () => {
             <hr className="border-2 border-gray-300" />
             <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
               <div className="relative">
-                <Link
-                  disabled={isStartOrBuyLinkDisabled}
-                  to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                  params={{
-                    courseId,
-                    partIndex: '1',
-                    chapterIndex: '1',
-                  }}
+                <Button
+                  rounded
+                  {...buttonProps}
+                  disabled={isStartOrBuyButtonDisabled}
                 >
-                  <Button
-                    rounded
-                    {...buttonProps}
-                    disabled={isStartOrBuyButtonDisabled}
-                  >
-                    <span className="sm:px-6">
-                      {t(
-                        displayBuyCourse
-                          ? 'courses.details.buyCourse'
-                          : 'courses.details.startCourse',
-                      )}
-                    </span>
-                  </Button>
-                </Link>
+                  <span className="sm:px-6">
+                    {t(
+                      displayBuyCourse
+                        ? 'courses.details.buyCourse'
+                        : 'courses.details.startCourse',
+                    )}
+                  </span>
+                </Button>
               </div>
             </div>
           </div>
@@ -331,36 +346,22 @@ export const CourseDetails: React.FC = () => {
               <div className="h-0 grow border-t-2 border-orange-600"></div>
               <div className=" p-2">
                 <div className=" mx-1 flex items-center justify-center">
-                  <Link
-                    to={'/courses/$courseId/$partIndex/$chapterIndex'}
-                    disabled={isStartOrBuyLinkDisabled}
-                    params={{
-                      courseId,
-                      partIndex: '1',
-                      chapterIndex: '1',
-                    }}
-                  >
-                    <div className="flex">
-                      <Button
-                        rounded
-                        {...buttonProps}
-                        disabled={isStartOrBuyButtonDisabled}
-                      >
-                        <span className="relative z-10 text-sm font-medium sm:px-6">
-                          {t(
-                            displayBuyCourse
-                              ? 'courses.details.buyCourse'
-                              : 'courses.details.startCourse',
-                          )}
-                        </span>
-                        <img
-                          src={rocketSVG}
-                          alt=""
-                          className="m-0 ml-1 size-5"
-                        />
-                      </Button>
-                    </div>
-                  </Link>
+                  <div className="flex">
+                    <Button
+                      rounded
+                      {...buttonProps}
+                      disabled={isStartOrBuyButtonDisabled}
+                    >
+                      <span className="relative z-10 text-sm font-medium sm:px-6">
+                        {t(
+                          displayBuyCourse
+                            ? 'courses.details.buyCourse'
+                            : 'courses.details.startCourse',
+                        )}
+                      </span>
+                      <img src={rocketSVG} alt="" className="m-0 ml-1 size-5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
               <div className="h-0 grow border-t-2 border-orange-600"></div>
@@ -510,6 +511,7 @@ export const CourseDetails: React.FC = () => {
                               partIndex: (partIndex + 1).toString(),
                               chapterIndex: chapter.chapter.toString(),
                             }}
+                            disabled={!isChapterAvailable}
                           >
                             <p
                               className={cn(
@@ -608,34 +610,23 @@ export const CourseDetails: React.FC = () => {
     return (
       <div className="my-4 max-w-5xl self-center px-2">
         <div className="flex h-fit flex-col">
-          <Link
-            className="bottom-2"
-            to={'/courses/$courseId/$partIndex/$chapterIndex'}
-            disabled={isStartOrBuyLinkDisabled}
-            params={{
-              courseId,
-              partIndex: '1',
-              chapterIndex: '1',
-            }}
+          <Button
+            size={isScreenMd ? 'l' : 's'}
+            disabled={isStartOrBuyButtonDisabled}
+            {...buttonProps}
+            {...(course.requiresPayment
+              ? {}
+              : {
+                  iconRight: <BsRocketTakeoff />,
+                })}
+            className="text-blue-1000 mb-auto"
           >
-            <Button
-              size={isScreenMd ? 'l' : 's'}
-              disabled={isStartOrBuyButtonDisabled}
-              {...buttonProps}
-              {...(course.requiresPayment
-                ? {}
-                : {
-                    iconRight: <BsRocketTakeoff />,
-                  })}
-              className="text-blue-1000 mb-auto"
-            >
-              {t(
-                displayBuyCourse
-                  ? 'courses.details.buyCourse'
-                  : 'courses.details.startCourse',
-              )}
-            </Button>
-          </Link>
+            {t(
+              displayBuyCourse
+                ? 'courses.details.buyCourse'
+                : 'courses.details.startCourse',
+            )}
+          </Button>
         </div>
       </div>
     );
