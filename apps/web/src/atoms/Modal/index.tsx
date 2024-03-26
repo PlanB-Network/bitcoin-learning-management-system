@@ -54,7 +54,7 @@ export const Modal = ({
               transform: 'translate(-50%, -50%)',
               ...(isLargeModal
                 ? {
-                    width: '65vw',
+                    width: '80vw',
                     height: '85vh',
                   }
                 : {}),

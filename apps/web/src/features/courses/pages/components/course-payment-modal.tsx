@@ -62,8 +62,6 @@ interface CourseDescriptionModalProps {
   onClose: (isPaid?: boolean) => void;
 }
 
-const sideClassName = 'absolute top-0 left-0 h-full w-1/2';
-
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
 interface RowTextProps {
@@ -159,22 +157,24 @@ export const CoursePaymentModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
-      <div className="flex h-full">
-        <div className="flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+        <div className="h-full items-center place-items-center  ">
           <img
             src={leftBackgroundImg}
             alt="left-background"
-            className={`${sideClassName} object-cover`}
+            className={`hidden lg:block absolute top-0 left-0 h-full w-1/2 object-cover`}
           />
-          <div className={`${sideClassName} flex items-center justify-center`}>
+          <div
+            className={`flex items-center justify-center align-middle h-full`}
+          >
             <div
-              className={`${borderClassName} relative w-3/4 backdrop-blur-md bg-black/75 p-8`}
+              className={`${borderClassName} relative xl:w-3/4 backdrop-blur-md bg-black/75 p-8`}
             >
               <div className="flex flex-col gap-6">
                 <span className="text-base text-white font-medium">
                   {courseName}
                 </span>
-                <div className={`${borderClassName}`}>
+                <div className={`${borderClassName} max-w-[500px]`}>
                   <ReactPlayer
                     width="100%"
                     height="100%"
@@ -245,10 +245,10 @@ export const CoursePaymentModal = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-1 flex-col items-center justify-center pl-12">
+        <div className="flex flex-col items-center justify-center pl-6">
           {paymentData ? (
             isPaymentSuccess ? (
-              <div className="items-center justify-center w-96 flex flex-col gap-6">
+              <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
                 <PlanBLogo className="h-auto" width={240} />
                 <div className="items-center justify-center flex flex-col gap-6">
                   <span className="text-xl font-semibold text-orange">
@@ -284,7 +284,7 @@ export const CoursePaymentModal = ({
                   }}
                   className="text-white bg-orange-400 w-full"
                 >
-                  {t('courses.payment.startCourse')}
+                  {t('courses.details.startCourse')}
                 </Button>
                 <div className="text-[10px] text-center uppercase md:text-xs">
                   <span>{t('courses.payment.terms1')} </span>
@@ -301,7 +301,7 @@ export const CoursePaymentModal = ({
                 </div>
               </div>
             ) : (
-              <div className="items-center justify-center w-96 flex flex-col gap-6">
+              <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
                 <PlanBLogo className="h-auto" width={240} />
                 <QRCodeSVG value={`lightning:${paymentData.pr}`} size={220} />
                 <div
@@ -323,7 +323,7 @@ export const CoursePaymentModal = ({
               </div>
             )
           ) : (
-            <div className="items-center justify-center w-96 flex flex-col gap-6">
+            <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
               <PlanBLogo className="h-auto" width={240} />
               <Callout description="You are about to purchase this course." />
               <span className="text-sm">
