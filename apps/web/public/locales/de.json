@@ -103,8 +103,8 @@
       "coursePayment": "Kurszahlung",
       "curriculum": "Lehrplan",
       "date": "Datum: {{startDate}} bis {{endDate}}",
+      "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Beschreibung",
-      "downloadCurriculum": "Curriculum herunterladen",
       "duration": "Dauer: {{hours}} Stunden",
       "goal": "ZIEL: ",
       "level": "Stufe: $t(words.level.{{level}})",
@@ -122,9 +122,16 @@
       "teacher": "Lehrer: {{teacher}}",
       "teachers": "Lehrer: {{teachers}}",
       "teacherWord": "Ein Wort vom Lehrer",
-      "terms1": "Lesen Sie unsere",
-      "terms2": "Geschäftsbedingungen",
-      "terms3": "für Rückerstattungsdetails"
+      "total": "Total",
+      "payment_successful": "Payment successful!",
+      "access_invoice": "You can access your invoice via your dashboard",
+      "payment_details": "Payment details",
+      "amount": "Amount",
+      "invoiceId": "Invoice ID",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
     },
     "explorer": {
       "footerTitle": "Unsere Professoren sind für Sie da!",
@@ -148,11 +155,32 @@
     "part": {
       "count": "Teilenummer {{count}}/{{total}}"
     },
+    "payment": {
+      "access_invoice": "You can access your invoice via your dashboard",
+      "accessibility": "Accessibility",
+      "accessibility_forever": "Forever",
+      "amount": "Amount",
+      "date": "Date",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "downloadCurriculum": "Download curriculum",
+      "duration": "Duration",
+      "invoiceId": "Invoice ID",
+      "numberOfChapters": "Number of chapters",
+      "payment_details": "Payment details",
+      "payment_successful": "Payment successful!",
+      "teacher": "Teacher",
+      "teachers": "Teachers",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "total": "Total"
+    },
     "preview": {
       "by": "von {{professor}}",
       "letsgo": "Los geht's"
     },
-    "purchase": "Purchase",
+    "proceedToPayment": "Proceed to payment",
     "quizz": {
       "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
       "quizz": "Quizz",
