@@ -103,8 +103,8 @@
       "coursePayment": "Paiement du cours",
       "curriculum": "Syllabus",
       "date": "Date: {{startDate}} à {{endDate}}",
+      "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
-      "downloadCurriculum": "Télécharger le curriculum",
       "duration": "Durée : {{hours}} heures",
       "goal": "OBJECTIF : ",
       "level": "Niveau : $t(words.level.{{level}})",
@@ -122,9 +122,16 @@
       "teacher": "Professeurs : {{teacher}}",
       "teachers": "Professeurs : {{teachers}}",
       "teacherWord": "Un mot de l’enseignant",
-      "terms1": "Consultez notre",
-      "terms2": "conditions générales",
-      "terms3": "pour les détails de remboursement"
+      "total": "Total",
+      "payment_successful": "Payment successful!",
+      "access_invoice": "You can access your invoice via your dashboard",
+      "payment_details": "Payment details",
+      "amount": "Amount",
+      "invoiceId": "Invoice ID",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
     },
     "explorer": {
       "footerTitle": "Nos professeurs sont là pour vous !",
@@ -148,11 +155,32 @@
     "part": {
       "count": "Partie n°{{count}}/{{total}}"
     },
+    "payment": {
+      "access_invoice": "You can access your invoice via your dashboard",
+      "accessibility": "Accessibility",
+      "accessibility_forever": "Forever",
+      "amount": "Amount",
+      "date": "Date",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "downloadCurriculum": "Download curriculum",
+      "duration": "Duration",
+      "invoiceId": "Invoice ID",
+      "numberOfChapters": "Number of chapters",
+      "payment_details": "Payment details",
+      "payment_successful": "Payment successful!",
+      "teacher": "Teacher",
+      "teachers": "Teachers",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "total": "Total"
+    },
     "preview": {
       "by": "par {{professor}}",
       "letsgo": "Allons-y"
     },
-    "purchase": "Purchase",
+    "proceedToPayment": "Proceed to payment",
     "quizz": {
       "clickOnPie": "Cliquez sur le camenbert pour vérifiez vos erreurs et obtenir les explications",
       "quizz": "Quiz",
