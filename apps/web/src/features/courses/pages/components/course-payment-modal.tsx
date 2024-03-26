@@ -188,15 +188,15 @@ export const CoursePaymentModal = ({
                   <Row
                     label={
                       course.professors?.length > 1
-                        ? t('courses.details.teachers')
-                        : t('courses.details.teacher')
+                        ? t('courses.payment.teachers')
+                        : t('courses.payment.teacher')
                     }
                     value={professorNames}
                   />
                   <Separator />
                   <Row
-                    label={t('courses.details.date')}
-                    value={t('courses.details.dates_to', {
+                    label={t('courses.payment.date')}
+                    value={t('courses.payment.dates_to', {
                       startDate: course.paidStartDate
                         ? new Date(course.paidStartDate).toLocaleDateString()
                         : '',
@@ -207,18 +207,18 @@ export const CoursePaymentModal = ({
                   />
                   <Separator />
                   <Row
-                    label={t('courses.details.numberOfChapters')}
+                    label={t('courses.payment.numberOfChapters')}
                     value={course.chaptersCount?.toString() || '-'}
                   />
                   <Separator />
                   <Row
-                    label={t('courses.details.duration')}
+                    label={t('courses.payment.duration')}
                     value={course.hours.toString()}
                   />
                   <Separator />
                   <Row
-                    label={t('courses.details.accessibility')}
-                    value={t('courses.details.accessibility_forever')}
+                    label={t('courses.payment.accessibility')}
+                    value={t('courses.payment.accessibility_forever')}
                   />
                 </div>
                 <span className="text-sm text-white">
@@ -239,7 +239,7 @@ export const CoursePaymentModal = ({
                   download
                   rel="noreferrer"
                 >
-                  {t('courses.details.downloadCurriculum')}
+                  {t('courses.payment.downloadCurriculum')}
                 </a>
               </div>
             </div>
@@ -252,29 +252,29 @@ export const CoursePaymentModal = ({
                 <PlanBLogo className="h-auto" width={240} />
                 <div className="items-center justify-center flex flex-col gap-6">
                   <span className="text-xl font-semibold text-orange">
-                    {t('courses.details.payment_successful')}
+                    {t('courses.payment.payment_successful')}
                   </span>
                   <span className="text-base text-center">
-                    {t('courses.details.access_invoice')}
+                    {t('courses.payment.access_invoice')}
                   </span>
                 </div>
                 <span className="text-lg font-medium">
-                  {t('courses.details.payment_details')}
+                  {t('courses.payment.payment_details')}
                 </span>
                 <>
                   <Row
                     isBlack
-                    label={t('courses.details.amount')}
+                    label={t('courses.payment.amount')}
                     value={`${paymentData.amount} sats`}
                   />
                   <Row
                     isBlack
-                    label={t('courses.details.date')}
+                    label={t('courses.payment.date')}
                     value={formatDate(new Date())}
                   />
                   <Row
                     isBlack
-                    label={t('courses.details.invoiceId')}
+                    label={t('courses.payment.invoiceId')}
                     value={paymentData.id}
                   />
                 </>
@@ -284,20 +284,20 @@ export const CoursePaymentModal = ({
                   }}
                   className="text-white bg-orange-400 w-full"
                 >
-                  {t('courses.details.startCourse')}
+                  {t('courses.payment.startCourse')}
                 </Button>
                 <div className="text-[10px] text-center uppercase md:text-xs">
-                  <span>{t('courses.details.terms1')} </span>
+                  <span>{t('courses.payment.terms1')} </span>
                   <a
                     href={'/terms-and-conditions'}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span className="text-orange-500">
-                      {t('courses.details.terms2')}{' '}
+                      {t('courses.payment.terms2')}{' '}
                     </span>
                   </a>
-                  <span>{t('courses.details.terms3')}</span>
+                  <span>{t('courses.payment.terms3')}</span>
                 </div>
               </div>
             ) : (
@@ -318,7 +318,7 @@ export const CoursePaymentModal = ({
                   />
                 </div>
                 <div className="text-[10px] text-center uppercase md:text-xs">
-                  <span>{t('courses.details.terms4')} </span>
+                  <span>{t('courses.payment.terms4')} </span>
                 </div>
               </div>
             )
@@ -335,7 +335,7 @@ export const CoursePaymentModal = ({
               </span>
               <div className="flex flex-row justify-between w-full">
                 <span className="text-lg font-medium">
-                  {t('courses.details.total')}
+                  {t('courses.payment.total')}
                 </span>
                 <div className="flex flex-col items-end">
                   <span className="text-lg font-medium">
@@ -358,17 +358,17 @@ export const CoursePaymentModal = ({
               </Button>
               <div className="text-[10px] text-center uppercase md:text-xs">
                 <>
-                  <span>{t('courses.details.terms1')} </span>
+                  <span>{t('courses.payment.terms1')} </span>
                   <a
                     href={'/terms-and-conditions'}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span className="text-orange-500">
-                      {t('courses.details.terms2')}{' '}
+                      {t('courses.payment.terms2')}{' '}
                     </span>
                   </a>
-                  <span>{t('courses.details.terms3')}</span>
+                  <span>{t('courses.payment.terms3')}</span>
                 </>
               </div>
             </div>
