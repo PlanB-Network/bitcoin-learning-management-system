@@ -14,7 +14,6 @@ const saveEventPaymentProcedure = protectedProcedure
     z.object({
       eventId: z.string(),
       amount: z.number(),
-      withPhysical: z.boolean(),
     }),
   )
   .output(

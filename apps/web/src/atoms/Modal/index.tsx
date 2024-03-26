@@ -10,6 +10,7 @@ interface ModalProps {
   children: JSX.Element | JSX.Element[];
   headerText?: string;
   showAccountHelper?: boolean;
+  isLargeModal?: boolean;
 }
 
 export const Modal = ({
@@ -19,6 +20,7 @@ export const Modal = ({
   children,
   headerText,
   showAccountHelper = false,
+  isLargeModal,
 }: ModalProps) => {
   const { t } = useTranslation();
   const cancelButtonRef = useRef(null);
@@ -50,6 +52,12 @@ export const Modal = ({
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
+              ...(isLargeModal
+                ? {
+                    width: '80vw',
+                    height: '85vh',
+                  }
+                : {}),
             }}
             className="flex items-end justify-center p-4 text-center sm:items-center sm:p-0"
           >
@@ -62,8 +70,31 @@ export const Modal = ({
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="">
-                <div className="max-h-screen overflow-auto rounded-[1.5em] border-4 border-orange-600 bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:sm:max-w-5xl">
+              <Dialog.Panel
+                style={{
+                  ...(isLargeModal
+                    ? {
+                        width: '100%',
+                        height: '100%',
+                      }
+                    : {}),
+                }}
+                className=""
+              >
+                <div
+                  style={{
+                    ...(isLargeModal
+                      ? {
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '100%',
+                          margin: 0,
+                          position: 'relative',
+                        }
+                      : {}),
+                  }}
+                  className="max-h-screen overflow-auto rounded-[1.5em] bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:sm:max-w-5xl"
+                >
                   {closeButtonEnabled && (
                     <button>
                       <IoMdClose
@@ -72,15 +103,17 @@ export const Modal = ({
                       />
                     </button>
                   )}
-                  <header className="flex flex-col items-center justify-between text-center text-xl font-semibold uppercase text-gray-400 md:my-6 md:text-3xl">
-                    {headerText && <h4>{headerText}</h4>}
-                  </header>
+                  {headerText && (
+                    <header className="flex flex-col items-center justify-between text-center text-xl font-semibold uppercase text-gray-400 md:my-6 md:text-3xl">
+                      <h4>{headerText}</h4>
+                    </header>
+                  )}
                   {children}
                 </div>
                 {/* TODO: move this outside of the modal atom */}
                 {showAccountHelper && (
                   <div className="relative my-8 max-w-lg md:my-14">
-                    <div className="relative justify-center overflow-hidden rounded-[1em] border-4 border-orange-600 bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
+                    <div className="relative justify-center overflow-hidden rounded-[1em] bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
                       <span className="italic text-blue-800">
                         {t('words.didYouKnow')}
                         <div>{t('auth.noAccountNeeded')}</div>

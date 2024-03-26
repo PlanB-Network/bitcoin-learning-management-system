@@ -76,7 +76,6 @@ const savePaymentProcedure = protectedProcedure
     z.object({
       courseId: z.string(),
       amount: z.number(),
-      withPhysical: z.boolean(),
       part: z.number().optional(),
       chapter: z.number().optional(),
     }),

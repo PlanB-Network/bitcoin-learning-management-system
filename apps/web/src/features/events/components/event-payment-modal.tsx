@@ -73,7 +73,6 @@ export const EventPaymentModal = ({
     const serverPaymentData = await saveEventPaymentRequest.mutateAsync({
       eventId: eventId,
       amount: satsPrice,
-      withPhysical: true,
     });
     setPaymentData(serverPaymentData);
   }, [saveEventPaymentRequest, eventId, satsPrice]);
@@ -94,7 +93,7 @@ export const EventPaymentModal = ({
       onClose={onClose}
       headerText={t('courses.details.coursePayment')}
     >
-      <div className="flex min-w-[85vw] flex-col items-center lg:min-w-[20rem]">
+      <div className="flex min-w-[85vw] flex-col items-center lg:min-w-80">
         {paymentData ? (
           <iframe
             allow="clipboard-write"
