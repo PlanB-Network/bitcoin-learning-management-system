@@ -30,7 +30,7 @@ export const EventCard = () => {
   };
 
   return (
-    <article className="w-full max-w-[432px] max-[480px]:bg-[#1a1a1a] max-[480px]:p-2.5 max-[480px]:rounded-xl">
+    <article className="flex-1 min-w-[320px] max-w-[432px] max-[480px]:bg-[#1a1a1a] max-[480px]:p-2.5 max-[480px]:rounded-xl">
       {/* Image */}
       <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-4 max-[480px]:mb-2">
         <img
