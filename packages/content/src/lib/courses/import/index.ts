@@ -355,8 +355,8 @@ export const createProcessChangedCourse =
 
         for (const file of files) {
           try {
+            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
-              // If file was deleted, delete the translation from the database
               await transaction`
                 DELETE FROM content.courses_localized
                 WHERE course_id = ${course.id} AND language = ${file.language}

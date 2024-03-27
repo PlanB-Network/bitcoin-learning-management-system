@@ -28,6 +28,7 @@ export const createProcessMainFile =
   async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
     if (!file) return;
 
+    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
       // If quiz question file was removed, delete the main quiz question and all its translations (with cascade)
 
@@ -38,6 +39,7 @@ export const createProcessMainFile =
       return;
     }
 
+    // TODO IMPOSSIBLE
     if (file.kind === 'renamed') {
       // If quiz question file was moved, update the id
 

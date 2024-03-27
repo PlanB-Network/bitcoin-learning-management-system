@@ -1,6 +1,3 @@
-// @ts-nocheck
-// TODO temporary
-
 import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,11 +8,7 @@ import { AuthModal } from '../../../components/AuthModal/index.tsx';
 import { AuthModalState } from '../../../components/AuthModal/props.ts';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
-import {
-  addMinutesToDate,
-  formatDate,
-  formatTime,
-} from '../../../utils/date.ts';
+import { formatDate, formatTime } from '../../../utils/date.ts';
 import { trpc } from '../../../utils/trpc.ts';
 import { EventPaymentModal } from '../components/event-payment-modal.tsx';
 
@@ -87,9 +80,12 @@ export const Events = () => {
             {t('events.main.upcomingEvents')}
           </h2>
           {events?.map((event) => {
-            let satsPrice = conversionRate
-              ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
-              : null;
+            let satsPrice =
+              conversionRate && event.priceDollars !== null
+                ? Math.round(
+                    (event.priceDollars * 100_000_000) / conversionRate,
+                  )
+                : -1;
             if (process.env.NODE_ENV === 'development') {
               satsPrice = 10;
             }
@@ -126,7 +122,7 @@ export const Events = () => {
                     />
                     <div className="flex flex-col gap-2 pt-2">
                       <p className="text-orange-500 font-semibold text-sm md:text-base">
-                        {event.title}
+                        {event.name}
                       </p>
                       <p className="text-xl md:text-3xl">{event.description}</p>
                       {event.startDate && (
@@ -145,10 +141,7 @@ export const Events = () => {
                               )}
                               {' to '}
                               {formatTime(
-                                addMinutesToDate(
-                                  new Date(event.startDate),
-                                  event.duration,
-                                ),
+                                new Date(event.endDate),
                                 'Europe/Rome',
                               )}{' '}
                             </span>

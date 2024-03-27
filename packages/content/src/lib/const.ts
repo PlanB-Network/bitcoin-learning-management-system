@@ -2,10 +2,11 @@
 export const supportedContentTypes = [
   'courses',
   'events',
+  'professors',
+  'quizzes/questions',
+  'resources/conference', // Must be placed before 'resources'
   'resources',
   'tutorials',
-  'quizzes/questions',
-  'professors',
 ] as const;
 
 export type ContentType = (typeof supportedContentTypes)[number];

@@ -3,10 +3,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import type { DiffResultTextFile } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
-import type { ChangeKind, ChangedFile } from '@sovereign-university/types';
+import type { ChangedFile } from '@sovereign-university/types';
 
 import type { GithubOctokit } from './octokit.js';
 
@@ -102,93 +101,6 @@ const syncRepository = async (
   } catch (error: any) {
     throw new Error(
       `Failed to sync repository ${repository}. ${
-        error instanceof Error ? error.message : ''
-      }`,
-    );
-  }
-};
-
-export const compareCommits = async (
-  repositoryUrl: string,
-  branch: string,
-  beforeCommit: string,
-  afterCommit: string,
-): Promise<ChangedFile[]> => {
-  const repoDir = computeTemporaryDirectory(repositoryUrl);
-
-  try {
-    const git = await syncRepository(repositoryUrl, branch, repoDir);
-
-    const diffSummary = await git.diffSummary([beforeCommit, afterCommit]);
-
-    const textFiles = diffSummary.files.filter(
-      (file) => !file.binary,
-    ) as DiffResultTextFile[];
-
-    return await async.mapLimit(
-      textFiles,
-      10,
-      async (file: (typeof textFiles)[number]) => {
-        let relativePath = file.file;
-        let previousPath: string | undefined;
-
-        // SimpleGit doesn't support renamed files, so we need to do it manually
-        if (file.file.includes(' => ')) {
-          // The file was renamed, check if path of type { .* => .* }
-          const elementChanged = file.file.match(/{(.*) => (.*)}/);
-          if (elementChanged) {
-            const [full, previousSub, newSub] = elementChanged;
-            previousPath = file.file.replace(full, previousSub);
-            relativePath = file.file.replace(full, newSub);
-          } else {
-            [previousPath, relativePath] = file.file.split(' => ');
-          }
-        }
-
-        const fullPath = path.join(repoDir, relativePath);
-
-        let kind: ChangeKind = 'modified';
-        if (previousPath) {
-          kind = 'renamed';
-        } else if (file.changes === file.insertions && file.deletions === 0) {
-          kind = 'added';
-        } else if (
-          file.changes === file.deletions &&
-          file.insertions === 0 &&
-          !(await pathExists(fullPath))
-        ) {
-          kind = 'removed';
-        }
-
-        if (kind === 'removed') {
-          return {
-            path: relativePath,
-            kind,
-          };
-        }
-
-        const fileLog = await git.log({ file: relativePath });
-
-        return {
-          path: relativePath,
-          commit: fileLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-          time: new Date(
-            fileLog.latest?.date ?? Date.now(), // Cannot happen (I think)
-          ).getTime(),
-          data: await fs.readFile(fullPath, 'utf8'),
-          ...(kind === 'renamed'
-            ? // If the file was renamed, we need to add the previous path so we can update it
-              {
-                kind: 'renamed',
-                previousPath,
-              }
-            : { kind }),
-        } as ChangedFile;
-      },
-    );
-  } catch (error: any) {
-    throw new Error(
-      `Failed to get the diff between ${beforeCommit} and ${afterCommit} in ${repositoryUrl}. ${
         error instanceof Error ? error.message : ''
       }`,
     );

@@ -11,6 +11,7 @@ interface ProfessorLocal {
 export const createProcessLocalFile =
   (transaction: TransactionSql) =>
   async (id: number, file: ChangedFileWithLanguage) => {
+    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
       // If file was deleted, delete the translation from the database
 
