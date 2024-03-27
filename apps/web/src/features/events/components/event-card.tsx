@@ -4,7 +4,7 @@ import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 
-export const EventCard = () => {
+export const EventCard = ({ isLive }: { isLive?: boolean }) => {
   const { t } = useTranslation();
 
   // To remove once we get real event data, testing purpose only
@@ -13,7 +13,7 @@ export const EventCard = () => {
     showType: true,
     online: true,
     inPerson: true,
-    free: false,
+    free: true,
     redirectWebsite: false,
     externalWebsiteLink: 'thisisatest.com',
     imageSrc:
@@ -34,7 +34,9 @@ export const EventCard = () => {
   };
 
   return (
-    <article className="flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none">
+    <article
+      className={`flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
+    >
       {/* Image */}
       <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
         <img
