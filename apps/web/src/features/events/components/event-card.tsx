@@ -1,15 +1,19 @@
+import { useTranslation } from 'react-i18next';
+
 import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 
 export const EventCard = () => {
+  const { t } = useTranslation();
+
   // To remove once we get real event data, testing purpose only
   const event = {
     type: 'Exam',
     showType: true,
-    online: false,
+    online: true,
     inPerson: true,
-    free: true,
+    free: false,
     redirectWebsite: false,
     externalWebsiteLink: 'thisisatest.com',
     imageSrc:
@@ -26,7 +30,7 @@ export const EventCard = () => {
     languages: ['EN'],
     priceDollar: 500,
     priceSatoshis: 789_267,
-    maxAttendance: 40,
+    maxAttendance: 0,
   };
 
   return (
@@ -73,7 +77,7 @@ export const EventCard = () => {
           )}
           {event.online && !event.inPerson && (
             <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit sm:text-sm">
-              online
+              {t('events.card.online')}
             </span>
           )}
         </div>
@@ -90,12 +94,14 @@ export const EventCard = () => {
               </div>
             )}
             {event.free && (
-              <span className="font-semibold text-orange-600">FREE</span>
+              <span className="font-semibold uppercase text-orange-600">
+                {t('events.card.free')}
+              </span>
             )}
             <span className="font-light text-xs italic leading-none">
               {event.maxAttendance > 0
-                ? `limited to ${event.maxAttendance} people`
-                : 'unlimited'}
+                ? `${t('events.card.limited')} ${event.maxAttendance} ${t('events.card.people')}`
+                : t('events.card.unlimited')}
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -105,7 +111,9 @@ export const EventCard = () => {
                 size="s"
                 className="rounded-lg text-xs sm:text-base"
               >
-                {event.free ? 'Watch live' : 'Book live'}
+                {event.free
+                  ? t('events.card.watchLive')
+                  : t('events.card.bookLive')}
               </Button>
             )}
             {event.inPerson && (
@@ -114,7 +122,7 @@ export const EventCard = () => {
                 size="s"
                 className="rounded-lg text-xs sm:text-base"
               >
-                Book your seat
+                {t('events.card.bookSeat')}
               </Button>
             )}
           </div>
@@ -128,7 +136,7 @@ export const EventCard = () => {
           size="s"
           className="rounded-lg w-fit mx-auto mt-2 text-xs sm:text-base"
         >
-          Visit website
+          {t('events.card.visitWebsite')}
         </Anchor>
       )}
     </article>
