@@ -38,6 +38,7 @@ export const createProcessMainFile =
   async (professor: ChangedProfessor, file?: ChangedFile) => {
     if (!file) return;
 
+    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
       // If professor question file was removed, delete the main professor question and all its translations (with cascade)
 

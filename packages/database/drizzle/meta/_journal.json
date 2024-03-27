@@ -50,6 +50,13 @@
       "when": 1710921652882,
       "tag": "0006_cultured_sunspot",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1711550004143,
+      "tag": "0007_boring_genesis",
+      "breakpoints": true
     }
   ]
 }

@@ -4,6 +4,7 @@ import {
   foreignKey,
   index,
   integer,
+  pgEnum,
   pgSchema,
   primaryKey,
   serial,
@@ -453,19 +454,29 @@ export const usersCourseProgress = users.table(
 
 // EVENTS
 
-export const contentEvents = content.table('events', {
-  id: varchar('id', { length: 20 }).primaryKey().notNull(),
+export const eventTypeEnum = pgEnum('event_type', ['conference']);
 
-  startDate: timestamp('start_date', { withTimezone: true }),
-  duration: doublePrecision('duration').notNull(),
-  priceDollars: integer('price_dollars'),
-  title: text('title'),
+export const contentEvents = content.table('events', {
+  id: varchar('id', { length: 100 }).primaryKey().notNull(),
+  type: eventTypeEnum('type'),
+  name: text('name'),
   description: text('description'),
+  startDate: timestamp('start_date').notNull(),
+  endDate: timestamp('end_date').notNull(),
+  timezone: text('timezone'),
+  priceDollars: integer('price_dollars'),
+  availableSeats: integer('available_seats'),
+  isOnline: boolean('is_online').default(false),
+  isInPerson: boolean('is_in_person').default(false),
   addressLine1: text('address_line_1'),
   addressLine2: text('address_line_2'),
   addressLine3: text('address_line_3'),
+  builder: varchar('builder', { length: 255 }),
+  websiteUrl: text('website_url'),
+  replayUrl: text('replay_url'),
+  liveUrl: text('live_url'),
   assetUrl: text('asset_url'),
-
+  rawDescription: text('raw_description'),
   lastUpdated: timestamp('last_updated', { withTimezone: true })
     .defaultNow()
     .notNull(),
@@ -474,6 +485,38 @@ export const contentEvents = content.table('events', {
     .defaultNow()
     .notNull(),
 });
+
+export const contentEventTags = content.table(
+  'event_tags',
+  {
+    eventId: varchar('event_id', { length: 50 })
+      .notNull()
+      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+    tagId: integer('tag_id')
+      .notNull()
+      .references(() => contentTags.id, { onDelete: 'cascade' }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.eventId, table.tagId],
+    }),
+  }),
+);
+
+export const contentEventLanguages = content.table(
+  'event_languages',
+  {
+    eventId: varchar('event_id', { length: 50 })
+      .notNull()
+      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+    language: varchar('language', { length: 10 }).notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.eventId, table.language],
+    }),
+  }),
+);
 
 export const usersEventPayment = users.table(
   'event_payment',

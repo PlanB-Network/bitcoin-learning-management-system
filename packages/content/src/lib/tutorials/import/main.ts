@@ -40,9 +40,8 @@ export const createProcessMainFile =
   async (tutorial: ChangedTutorial, file?: ChangedFile) => {
     if (!file) return;
 
+    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
-      // If tutorial file was removed, delete the main tutorial and all its translations (with cascade)
-
       await transaction`
         DELETE FROM content.tutorials WHERE path = ${tutorial.path} 
       `;
@@ -50,6 +49,7 @@ export const createProcessMainFile =
       return;
     }
 
+    // TODO IMPOSSIBLE
     if (file.kind === 'renamed') {
       // If tutorial file was moved, update the path
 

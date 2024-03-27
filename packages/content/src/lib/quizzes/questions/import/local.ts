@@ -15,6 +15,7 @@ interface QuizQuestionLocal {
 export const createProcessLocalFile =
   (transaction: TransactionSql) =>
   async (quizQuestion: ChangedQuizQuestion, file: ChangedFileWithLanguage) => {
+    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
       // If file was deleted, delete the translation from the database
 

@@ -8,6 +8,10 @@ import {
 } from './courses/import/index.js';
 import type { Dependencies } from './dependencies.js';
 import {
+  createProcessChangedEvent,
+  groupByEvent,
+} from './events/import/index.js';
+import {
   createProcessChangedProfessor,
   createProcessDeleteProfessors as createProcessDeleteProfessors,
   groupByProfessor,
@@ -34,7 +38,6 @@ export const createProcessChangedFiles =
     const filteredFiles = files.filter((file) =>
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
-
     const errors: string[] = [];
 
     const processChangedResource = createProcessChangedResource(
@@ -57,35 +60,44 @@ export const createProcessChangedFiles =
       dependencies,
       errors,
     );
+    const processChangedEvent = createProcessChangedEvent(dependencies, errors);
 
-    console.log('-- Sync procedure: Syncing resources');
     const resources = groupByResource(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${resources.length} resources`);
     for (const resource of resources) {
       await processChangedResource(resource);
     }
 
-    console.log('-- Sync procedure: Syncing courses');
     const courses = groupByCourse(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${courses.length} courses`);
     for (const course of courses) {
       await processChangedCourse(course);
     }
 
-    console.log('-- Sync procedure: Syncing tutorials');
     const tutorials = groupByTutorial(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${tutorials.length} tutorials`);
     for (const tutorial of tutorials) {
       await processChangedTutorial(tutorial);
     }
 
-    console.log('-- Sync procedure: Syncing quizQuestions');
     const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
+    console.log(
+      `-- Sync procedure: Syncing ${quizQuestions.length} quizQuestions`,
+    );
     for (const quizQuestion of quizQuestions) {
       await processChangedQuizQuestion(quizQuestion);
     }
 
-    console.log('-- Sync procedure: Syncing professors');
     const professors = groupByProfessor(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${professors.length} professors`);
     for (const professor of professors) {
       await processChangedProfessor(professor);
+    }
+
+    const events = groupByEvent(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${events.length} events`);
+    for (const event of events) {
+      await processChangedEvent(event);
     }
 
     return errors;
