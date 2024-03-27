@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import saif from '../../../assets/events/saif.webp';
 import { Button } from '../../../atoms/Button/index.tsx';
@@ -10,7 +9,10 @@ import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
 import { formatDate, formatTime } from '../../../utils/date.ts';
 import { trpc } from '../../../utils/trpc.ts';
+import { CurrentEvents } from '../components/current-events.tsx';
 import { EventPaymentModal } from '../components/event-payment-modal.tsx';
+import { EventsGrid } from '../components/events-grid.tsx';
+import { EventsIntroduction } from '../components/events-introduction.tsx';
 
 export const Events = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
@@ -18,8 +20,6 @@ export const Events = () => {
   const { data: events } = trpc.content.getEvents.useQuery();
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
-
-  const { t } = useTranslation();
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -66,19 +66,7 @@ export const Events = () => {
   return (
     <MainLayout>
       <div className="flex flex-col">
-        <div className="self-center max-w-4xl mx-8 mt-24 flex flex-col items-start text-white gap-4">
-          <h1 className="text-5xl font-medium left self">
-            {t('words.events')}
-          </h1>
-          <p>
-            This page lists all Bitcoin events organized by Plan B Network,
-            communities, personalities, and partner companies. This portal
-            allows you to register for events that interest you, or to watch the
-            replays.
-          </p>
-          <h2 className="text-xl font-medium mt-4">
-            {t('events.main.upcomingEvents')}
-          </h2>
+        <div className="self-center max-w-4xl mx-8 flex flex-col items-start text-white gap-4">
           {events?.map((event) => {
             let satsPrice =
               conversionRate && event.priceDollars !== null
@@ -239,6 +227,13 @@ export const Events = () => {
         ) : (
           <div></div>
         )}
+      </div>
+      {/* New layout */}
+      <div className="max-w-7xl w-fit flex flex-col gap-6 px-4 py-2.5 mx-auto sm:gap-[60px] sm:px-10">
+        <EventsIntroduction />
+        <CurrentEvents />
+        <div className="h-px w-full bg-newBlack-5"></div>
+        <EventsGrid />
       </div>
     </MainLayout>
   );
