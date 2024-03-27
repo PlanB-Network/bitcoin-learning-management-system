@@ -229,7 +229,7 @@ export const Events = () => {
         )}
       </div>
       {/* New layout */}
-      <div className="max-w-[1440px] w-fit flex flex-col gap-6 px-4 py-2.5 mx-auto sm:gap-[60px] sm:px-10">
+      <div className="max-w-[1440px] w-fit flex flex-col gap-6 px-4 py-2.5 mx-auto md:gap-[60px] md:px-10">
         <EventsIntroduction />
         <CurrentEvents />
         <div className="h-px w-full bg-newBlack-5"></div>

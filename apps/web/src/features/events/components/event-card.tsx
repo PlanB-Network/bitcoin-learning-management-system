@@ -34,9 +34,9 @@ export const EventCard = () => {
   };
 
   return (
-    <article className="flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl sm:min-w-80 sm:bg-transparent sm:p-0 sm:rounded-none">
+    <article className="flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none">
       {/* Image */}
-      <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-2 sm:mb-4">
+      <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
         <img
           src={event.imageSrc}
           alt={event.title}
@@ -57,9 +57,9 @@ export const EventCard = () => {
       </div>
       {/* Infos */}
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold text-lg sm:text-2xl">{event.title}</h3>
-        <span className="font-medium text-sm sm:text-base">{event.author}</span>
-        <div className="flex flex-col gap-0.5 text-white/75 text-xs sm:text-sm">
+        <h3 className="font-bold text-lg lg:text-2xl">{event.title}</h3>
+        <span className="font-medium text-sm lg:text-base">{event.author}</span>
+        <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
           <div className="flex gap-1">
             <span>{event.date}</span>
             <span>·</span>
@@ -76,7 +76,7 @@ export const EventCard = () => {
             </>
           )}
           {event.online && !event.inPerson && (
-            <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit sm:text-sm">
+            <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
           )}
@@ -85,7 +85,7 @@ export const EventCard = () => {
       {/* Price and buttons */}
       {!event.redirectWebsite && (
         <div className="flex flex-wrap gap-2 justify-between items-end mt-1 py-1">
-          <div className="flex flex-col text-sm sm:text-base">
+          <div className="flex flex-col text-sm lg:text-base">
             {!event.free && (
               <div className="flex gap-1 text-orange-600">
                 <span className="font-semibold">${event.priceDollar}</span>
@@ -109,7 +109,7 @@ export const EventCard = () => {
               <Button
                 variant="tertiary"
                 size="s"
-                className="rounded-lg text-xs sm:text-base"
+                className="rounded-lg text-xs lg:text-base"
               >
                 {event.free
                   ? t('events.card.watchLive')
@@ -120,7 +120,7 @@ export const EventCard = () => {
               <Button
                 variant="tertiary"
                 size="s"
-                className="rounded-lg text-xs sm:text-base"
+                className="rounded-lg text-xs lg:text-base"
               >
                 {t('events.card.bookSeat')}
               </Button>
@@ -134,7 +134,7 @@ export const EventCard = () => {
           href={event.externalWebsiteLink}
           variant="tertiary"
           size="s"
-          className="rounded-lg w-fit mx-auto mt-2 text-xs sm:text-base"
+          className="rounded-lg w-fit mx-auto mt-2 text-xs lg:text-base"
         >
           {t('events.card.visitWebsite')}
         </Anchor>
