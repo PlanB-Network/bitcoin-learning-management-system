@@ -1,5 +1,5 @@
+import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
-import { Anchor } from '../../../atoms/Link/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 
 export const EventCard = () => {
@@ -25,14 +25,14 @@ export const EventCard = () => {
     country: 'Country test',
     languages: ['EN'],
     priceDollar: 500,
-    priceSatoshis: 789267,
+    priceSatoshis: 789_267,
     maxAttendance: 40,
   };
 
   return (
-    <article className="flex-1 min-w-[320px] max-w-[432px] max-[480px]:bg-[#1a1a1a] max-[480px]:p-2.5 max-[480px]:rounded-xl">
+    <article className="flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl sm:min-w-80 sm:bg-transparent sm:p-0 sm:rounded-none">
       {/* Image */}
-      <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-4 max-[480px]:mb-2">
+      <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-2 sm:mb-4">
         <img
           src={event.imageSrc}
           alt={event.title}
@@ -45,7 +45,7 @@ export const EventCard = () => {
             {event.type}
           </span>
         )}
-        <div className="absolute top-4 right-4 bg-white border border-[#b2b2b2] py-1 px-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+        <div className="absolute top-4 right-4 bg-white border border-[#b2b2b2] p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
           {event.languages.map((language: string) => (
             <Flag code={language} size="m" key={language} />
           ))}
@@ -53,11 +53,9 @@ export const EventCard = () => {
       </div>
       {/* Infos */}
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold text-2xl max-[480px]:text-lg">
-          {event.title}
-        </h3>
-        <span className="font-medium max-[480px]:text-sm">{event.author}</span>
-        <div className="text-sm flex flex-col gap-0.5 text-white/75 max-[480px]:text-xs">
+        <h3 className="font-bold text-lg sm:text-2xl">{event.title}</h3>
+        <span className="font-medium text-sm sm:text-base">{event.author}</span>
+        <div className="flex flex-col gap-0.5 text-white/75 text-xs sm:text-sm">
           <div className="flex gap-1">
             <span>{event.date}</span>
             <span>·</span>
@@ -74,7 +72,7 @@ export const EventCard = () => {
             </>
           )}
           {event.online && !event.inPerson && (
-            <span className="bg-[#cccccc] border border-[#999999] text-[#4d4d4d] text-sm font-medium leading-none py-1 px-2 rounded-sm w-fit max-[480px]:text-xs">
+            <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit sm:text-sm">
               online
             </span>
           )}
@@ -83,7 +81,7 @@ export const EventCard = () => {
       {/* Price and buttons */}
       {!event.redirectWebsite && (
         <div className="flex flex-wrap gap-2 justify-between items-end mt-1 py-1">
-          <div className="flex flex-col max-[480px]:text-sm">
+          <div className="flex flex-col text-sm sm:text-base">
             {!event.free && (
               <div className="flex gap-1 text-orange-600">
                 <span className="font-semibold">${event.priceDollar}</span>
@@ -105,7 +103,7 @@ export const EventCard = () => {
               <Button
                 variant="tertiary"
                 size="s"
-                className="rounded-lg max-[480px]:text-xs"
+                className="rounded-lg text-xs sm:text-base"
               >
                 {event.free ? 'Watch live' : 'Book live'}
               </Button>
@@ -114,7 +112,7 @@ export const EventCard = () => {
               <Button
                 variant="tertiary"
                 size="s"
-                className="rounded-lg max-[480px]:text-xs"
+                className="rounded-lg text-xs sm:text-base"
               >
                 Book your seat
               </Button>
@@ -128,7 +126,7 @@ export const EventCard = () => {
           href={event.externalWebsiteLink}
           variant="tertiary"
           size="s"
-          className="rounded-lg w-fit mx-auto mt-2 max-[480px]:text-xs"
+          className="rounded-lg w-fit mx-auto mt-2 text-xs sm:text-base"
         >
           Visit website
         </Anchor>
