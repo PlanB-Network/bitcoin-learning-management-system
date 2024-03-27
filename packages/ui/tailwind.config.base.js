@@ -185,6 +185,8 @@ const baseConfig = {
           '0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);',
         'md-button': '0px 0px 40px 0px #FF5C00;',
         'md-button-white': '0px 0px 40px 0px #FFFFFF88;',
+        'md-section': '0px 0px 30px 0px #FF5C00A3',
+        'l-section': '0px 0px 50px 0px #FF5C00A3',
       },
     },
   },
