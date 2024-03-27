@@ -11,9 +11,16 @@ const baseConfig = {
     },
     colors: {
       transparent: 'transparent',
+      dashboardsection: '#FFFFFF0D',
       white: '#FFFFFF',
       black: '#000000',
-      dashboardsection: '#FFFFFF0D',
+      newBlack: {
+        1: '#000000',
+        2: '#1A1A1A',
+        3: '#333333',
+        4: '#4D4D4D',
+        5: '#666666',
+      },
       blue: {
         100: '#9CB2E2',
         200: '#7593D7',
@@ -49,6 +56,13 @@ const baseConfig = {
         700: '#CC4900',
         800: '#B24000',
       },
+      newOrange: {
+        1: '#FF5C00',
+        2: '#FF6C1A',
+        3: '#FF7C33',
+        4: '#FF8D4D',
+        5: '#FF9D66',
+      },
       gray: {
         100: '#F2F2F2',
         200: '#D9D9D9',
@@ -59,6 +73,13 @@ const baseConfig = {
         700: '#595959',
         800: '#404040',
         900: '#262626',
+      },
+      newGray: {
+        1: '#808080',
+        2: '#999999',
+        3: '#B2B2B2',
+        4: '#CCCCCC',
+        5: '#E5E5E5',
       },
       beige: {
         300: '#FCFBF3',
