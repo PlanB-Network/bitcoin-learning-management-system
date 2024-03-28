@@ -83,7 +83,7 @@ export const createProcessMainFile =
             last_sync
           )
         VALUES (
-          ${`${event.id}-${parsedEvent.name}`},
+          ${`${event.id}-${parsedEvent.name.replaceAll(/\W/g, '')}`},
           ${event.path},
           ${parsedEvent.name},
           ${parsedEvent.description},
