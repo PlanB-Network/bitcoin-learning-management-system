@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@sovereign-university/types';
@@ -39,21 +40,24 @@ export const EventCard = ({
   const timezoneText = timezone ? ` (${timezone})` : '';
 
   let dateString =
-    event.startDate.getMonth() === event.endDate.getMonth() &&
-    event.startDate.getDay() !== event.endDate.getDay()
-      ? formatDate(event.startDate, timezone, false)
-      : formatDate(event.startDate, timezone);
+    new Date(event.startDate).getMonth() ===
+      new Date(event.endDate).getMonth() &&
+    new Date(event.startDate).getDay() !== new Date(event.endDate).getDay()
+      ? formatDate(new Date(event.startDate), timezone, false)
+      : formatDate(new Date(event.startDate), timezone);
 
-  if (event.startDate.getDate() !== event.endDate.getDate()) {
-    dateString += ` to ${formatDate(event.endDate, timezone)}`;
+  if (
+    new Date(event.startDate).getDate() !== new Date(event.endDate).getDate()
+  ) {
+    dateString += ` to ${formatDate(new Date(event.endDate), timezone)}`;
   }
 
   let timeString;
-  if (event.startDate.getUTCHours() !== 0) {
-    timeString = formatTime(event.startDate, timezone);
+  if (new Date(event.startDate).getUTCHours() !== 0) {
+    timeString = formatTime(new Date(event.startDate), timezone);
   }
-  if (event.endDate.getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(event.endDate, timezone)}${timezoneText}`;
+  if (new Date(event.endDate).getUTCHours() !== 0) {
+    timeString += ` to ${formatTime(new Date(event.endDate), timezone)}${timezoneText}`;
   }
 
   const isFree = !event.priceDollars;
@@ -91,8 +95,8 @@ export const EventCard = ({
         <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
           <div className="flex gap-1">
             <span>{dateString}</span>
-            {event.startDate.getUTCHours() !== 0 &&
-              event.endDate.getUTCHours() !== 0 && (
+            {new Date(event.startDate).getUTCHours() !== 0 &&
+              new Date(event.endDate).getUTCHours() !== 0 && (
                 <>
                   <span>·</span>
                   <span>{timeString}</span>
@@ -138,14 +142,20 @@ export const EventCard = ({
         </div>
         <div className="flex items-center gap-4">
           {event.isOnline && isFree && isLive && (
-            <Anchor
-              href={`/${event.id}`}
-              variant="tertiary"
-              size="s"
-              className="rounded-lg text-xs lg:text-base"
+            <Link
+              to={'/events/$eventId'}
+              params={{
+                eventId: event.id,
+              }}
             >
-              {t('events.card.watchLive')}
-            </Anchor>
+              <Button
+                size="s"
+                variant="tertiary"
+                className="rounded-lg text-xs lg:text-base"
+              >
+                {t('events.card.watchLive')}
+              </Button>
+            </Link>
           )}
           {event.isOnline && isFree && !isLive && (
             <Button
