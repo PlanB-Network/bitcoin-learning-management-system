@@ -1,9 +1,20 @@
 import { useTranslation } from 'react-i18next';
 
+import type { JoinedEvent } from '@sovereign-university/types';
+
 import { EventCard } from './event-card.tsx';
 
-export const EventsGrid = () => {
+interface EventsGridProps {
+  events: JoinedEvent[];
+  conversionRate: number | null;
+}
+
+export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
   const { t } = useTranslation();
+
+  const sortedEvents = [...events].sort(
+    (a, b) => a.startDate.getTime() - b.startDate.getTime(),
+  );
 
   return (
     <div className="flex flex-col">
@@ -11,12 +22,13 @@ export const EventsGrid = () => {
         {t('events.main.upcomingEvents')}
       </h2>
       <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
+        {sortedEvents?.map((event) => (
+          <EventCard
+            event={event}
+            conversionRate={conversionRate}
+            key={event.name}
+          />
+        ))}
       </div>
     </div>
   );

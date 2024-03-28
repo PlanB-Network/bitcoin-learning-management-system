@@ -1,54 +1,75 @@
 import { useTranslation } from 'react-i18next';
 
+import type { JoinedEvent } from '@sovereign-university/types';
+
 import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
+import { formatDate, formatTime } from '../../../utils/date.ts';
 
-export const EventCard = ({ isLive }: { isLive?: boolean }) => {
+interface EventCardProps {
+  event: JoinedEvent;
+  isLive?: boolean;
+  conversionRate: number | null;
+}
+
+export const EventCard = ({
+  event,
+  isLive,
+  conversionRate,
+}: EventCardProps) => {
   const { t } = useTranslation();
 
-  // To remove once we get real event data, testing purpose only
-  const event = {
-    type: 'Exam',
-    showType: true,
-    online: true,
-    inPerson: true,
-    free: true,
-    redirectWebsite: false,
-    externalWebsiteLink: 'thisisatest.com',
-    imageSrc:
-      'https://s3-alpha-sig.figma.com/img/4b2f/6be8/496579955e4215283894d7be30dc4e12?Expires=1712534400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=B~RKKza7NCTHuU64kzvm4moVeArb1-GrVtpzzHEEMRyYCmbgJVNqjm1x~PS56G7e4MGcyltnvZ7-wPnh9-uXji~8fBQeZkHTU3MD3odRXKofdh2bFpIMhK~2Tbf-EF5QEABl4dcnuifIFpjPzx5ofTCBzThOfcHlsO0lGZTFhqOwlv~AsEYB-b8ATs~~rkOtQlrVL1Jdbozj~zGgU2ITU~jInrLV2D3vSjrXgHLeNJe6DKEg-JZIcR87brM4t~~QdxMbEFpxj7sak-wGQ-5gcvrfUlPAcCAwQMZ2TFkYf3LYnD-ZfLObh0V5h6uWBNWnw6uioj7jMVQDg~Tl904bBw__',
-    title: 'Exam test',
-    author: 'Author/organisator test',
-    date: '16th March, 2024',
-    hour: '4 to 7 pm (CET)',
-    addressLine1: 'Address Line 1 Test',
-    addressLine2: 'Address Line 2 Test',
-    addressLine3: 'Address Line 3 Test',
-    city: 'City test',
-    country: 'Country test',
-    languages: ['EN'],
-    priceDollar: 500,
-    priceSatoshis: 789_267,
-    maxAttendance: 0,
-  };
+  let satsPrice =
+    conversionRate && event.priceDollars !== null
+      ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
+      : -1;
+  if (process.env.NODE_ENV === 'development') {
+    satsPrice = 10;
+  }
+
+  let capitalizedType = '';
+  if (event.type) {
+    capitalizedType =
+      event.type?.charAt(0).toUpperCase() + event.type?.slice(1);
+  }
+
+  let dateString =
+    event.startDate.getMonth() === event.endDate.getMonth() &&
+    event.startDate.getDay() !== event.endDate.getDay()
+      ? formatDate(event.startDate, 'Europe/Rome', false)
+      : formatDate(event.startDate, 'Europe/Rome');
+
+  if (event.startDate.getDate() !== event.endDate.getDate()) {
+    dateString += ` to ${formatDate(event.endDate, 'Europe/Rome')}`;
+  }
+
+  let timeString;
+  if (event.startDate.getUTCHours() !== 0) {
+    timeString = formatTime(event.startDate, 'Europe/Rome');
+  }
+  if (event.endDate.getUTCHours() !== 0) {
+    timeString += ` to ${formatTime(event.endDate, 'Europe/Rome')} (CET)`;
+  }
+
+  const isFree = !event.priceDollars;
 
   return (
     <article
-      className={`flex-1 min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
+      className={`flex-1 flex flex-col min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
     >
       {/* Image */}
-      <div className="w-full aspect-[432/308] overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
+      <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
         <img
-          src={event.imageSrc}
-          alt={event.title}
-          className="object-contain"
+          src={event.picture}
+          alt={event.name ? event.name : ''}
+          className="object-cover aspect-[432/308]"
           width={432}
           height={308}
         />
-        {event.showType && (
+        {event.type && (
           <span className="absolute top-4 left-4 bg-white border border-[#b2b2b2] text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
-            {event.type}
+            {capitalizedType}
           </span>
         )}
         <div className="absolute top-4 right-4 bg-white border border-[#b2b2b2] p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
@@ -59,25 +80,31 @@ export const EventCard = ({ isLive }: { isLive?: boolean }) => {
       </div>
       {/* Infos */}
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold text-lg lg:text-2xl">{event.title}</h3>
-        <span className="font-medium text-sm lg:text-base">{event.author}</span>
+        <h3 className="font-bold text-lg lg:text-2xl">{event.name}</h3>
+        <span className="font-medium text-sm lg:text-base">
+          {event.builder}
+        </span>
         <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
           <div className="flex gap-1">
-            <span>{event.date}</span>
-            <span>·</span>
-            <span>{event.hour}</span>
+            <span>{dateString}</span>
+            {event.startDate.getUTCHours() !== 0 &&
+              event.endDate.getUTCHours() !== 0 && (
+                <>
+                  <span>·</span>
+                  <span>{timeString}</span>
+                </>
+              )}
           </div>
-          {event.inPerson && (
+          {event.isInPerson && (
             <>
-              <span>{event.addressLine1}</span>
               <span>{event.addressLine2}</span>
               <span>{event.addressLine3}</span>
               <span className="font-medium ">
-                {event.city.toUpperCase()}, {event.country.toUpperCase()}
+                {event.addressLine1?.toUpperCase()}
               </span>
             </>
           )}
-          {event.online && !event.inPerson && (
+          {event.isOnline && !event.isInPerson && (
             <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
@@ -85,40 +112,58 @@ export const EventCard = ({ isLive }: { isLive?: boolean }) => {
         </div>
       </div>
       {/* Price and buttons */}
-      {!event.redirectWebsite && (
-        <div className="flex flex-wrap gap-2 justify-between items-end mt-1 py-1">
-          <div className="flex flex-col text-sm lg:text-base">
-            {!event.free && (
-              <div className="flex gap-1 text-orange-600">
-                <span className="font-semibold">${event.priceDollar}</span>
-                <span>·</span>
-                <span>{event.priceSatoshis.toLocaleString('en-US')} sats</span>
-              </div>
-            )}
-            {event.free && (
-              <span className="font-semibold uppercase text-orange-600">
-                {t('events.card.free')}
-              </span>
-            )}
-            <span className="font-light text-xs italic leading-none">
-              {event.maxAttendance > 0
-                ? `${t('events.card.limited')} ${event.maxAttendance} ${t('events.card.people')}`
-                : t('events.card.unlimited')}
+      <div className="flex flex-wrap justify-self-end gap-2 justify-between mt-auto py-1">
+        <div className="flex flex-col text-sm lg:text-base">
+          {!isFree && (
+            <div className="flex gap-1 text-orange-600">
+              <span className="font-semibold">${event.priceDollars}</span>
+              <span>·</span>
+              <span>{satsPrice} sats</span>
+            </div>
+          )}
+          {isFree && (
+            <span className="font-semibold uppercase text-orange-600">
+              {t('events.card.free')}
             </span>
-          </div>
-          <div className="flex items-center gap-4">
-            {event.online && (
-              <Button
-                variant="tertiary"
-                size="s"
-                className="rounded-lg text-xs lg:text-base"
-              >
-                {event.free
-                  ? t('events.card.watchLive')
-                  : t('events.card.bookLive')}
-              </Button>
-            )}
-            {event.inPerson && (
+          )}
+          <span className="font-light text-xs italic leading-none">
+            {event.availableSeats && event.availableSeats > 0
+              ? `${t('events.card.limited')} ${event.availableSeats} ${t('events.card.people')}`
+              : t('events.card.unlimited')}
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          {event.isOnline && isFree && isLive && (
+            <Anchor
+              href={`/${event.id}`}
+              variant="tertiary"
+              size="s"
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.watchLive')}
+            </Anchor>
+          )}
+          {event.isOnline && isFree && !isLive && (
+            <Button
+              size="s"
+              disabled={true}
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.watchLive')}
+            </Button>
+          )}
+          {event.isOnline && !isFree && (
+            <Button
+              variant="tertiary"
+              size="s"
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.bookLive')}
+            </Button>
+          )}
+          {event.isInPerson &&
+            event.availableSeats &&
+            event.availableSeats > 0 && (
               <Button
                 variant="tertiary"
                 size="s"
@@ -127,20 +172,18 @@ export const EventCard = ({ isLive }: { isLive?: boolean }) => {
                 {t('events.card.bookSeat')}
               </Button>
             )}
-          </div>
+          {event.websiteUrl && (
+            <Anchor
+              href={event.websiteUrl}
+              variant="tertiary"
+              size="s"
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.visitWebsite')}
+            </Anchor>
+          )}
         </div>
-      )}
-      {/* Redirect website anchor */}
-      {event.redirectWebsite && (
-        <Anchor
-          href={event.externalWebsiteLink}
-          variant="tertiary"
-          size="s"
-          className="rounded-lg w-fit mx-auto mt-2 text-xs lg:text-base"
-        >
-          {t('events.card.visitWebsite')}
-        </Anchor>
-      )}
+      </div>
     </article>
   );
 };
