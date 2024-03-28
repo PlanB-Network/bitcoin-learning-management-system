@@ -20,8 +20,8 @@ export const CurrentEvents = ({
   if (events) {
     liveEvents = events?.filter((event) => {
       const now = Date.now();
-      const startDate = event.startDate.getTime();
-      const endDate = event.endDate.getTime();
+      const startDate = new Date(event.startDate).getTime();
+      const endDate = new Date(event.endDate).getTime();
       const THIRTY_MINUTES = 30 * 60 * 1000;
 
       return startDate - now < THIRTY_MINUTES && now < endDate;

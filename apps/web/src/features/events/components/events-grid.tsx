@@ -17,14 +17,14 @@ export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
   if (events) {
     upcomingEvents = events?.filter((event) => {
       const now = Date.now();
-      const startDate = event.startDate.getTime();
+      const startDate = new Date(event.startDate).getTime();
 
       return now < startDate;
     });
   }
 
   const sortedEvents = [...upcomingEvents].sort(
-    (a, b) => a.startDate.getTime() - b.startDate.getTime(),
+    (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
   );
 
   return (
