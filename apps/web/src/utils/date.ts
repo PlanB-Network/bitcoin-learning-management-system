@@ -14,8 +14,6 @@ const getOrdinalSuffix = (day: number) => {
 };
 
 export function formatDate(date: Date, timezone?: string) {
-  console.log('date:', date);
-
   if (typeof date?.getDate !== 'function') {
     return '';
   }
