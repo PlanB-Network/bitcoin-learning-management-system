@@ -27,7 +27,7 @@ export const FilterBar = ({
             setValue(event.target.value);
             onChange(event.target.value);
           }}
-          className="inline-block h-fit w-full max-w-md rounded-full border-0 bg-gray-100 py-1 pl-4 text-sm placeholder:text-gray-500 placeholder:text-opacity-50 focus:border-gray-100 focus:outline-none focus:ring focus:ring-gray-300 sm:max-w-xl sm:text-base"
+          className="inline-block h-fit w-full max-w-md rounded-full border-0 bg-gray-100 py-1 pl-4 text-sm placeholder:text-gray-500 placeholder:text-opacity-50 focus:border-gray-100 focus:outline-none focus:ring focus:ring-gray-300 sm:max-w-xl sm:text-base caret-orange-500 text-blue-800"
         />
       </div>
       {/* <button className="text-right font-light italic underline">
