@@ -34,7 +34,9 @@ export const EventCard = ({
       event.type?.charAt(0).toUpperCase() + event.type?.slice(1);
   }
 
-  const timezone = event.timezone || 'Europe/Rome';
+  const timezone = event.timezone || undefined;
+
+  const timezoneText = timezone ? ` (${timezone})` : '';
 
   let dateString =
     event.startDate.getMonth() === event.endDate.getMonth() &&
@@ -51,7 +53,7 @@ export const EventCard = ({
     timeString = formatTime(event.startDate, timezone);
   }
   if (event.endDate.getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(event.endDate, timezone)} (${timezone})`;
+    timeString += ` to ${formatTime(event.endDate, timezone)}${timezoneText}`;
   }
 
   const isFree = !event.priceDollars;
