@@ -530,7 +530,7 @@ export const usersEventPayment = users.table(
     uid: uuid('uid')
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    eventId: varchar('event_id', { length: 20 })
+    eventId: varchar('event_id', { length: 100 })
       .notNull()
       .references(() => contentEvents.id),
     withPhysical: boolean('with_physical').default(false),

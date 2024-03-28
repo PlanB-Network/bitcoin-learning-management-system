@@ -78,6 +78,13 @@
       "when": 1711629514429,
       "tag": "0010_kind_nomad",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1711642241438,
+      "tag": "0011_soft_beyonder",
+      "breakpoints": true
     }
   ]
 }
