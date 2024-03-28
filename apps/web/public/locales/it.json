@@ -205,8 +205,27 @@
     }
   },
   "events": {
+    "introduction": {
+      "introductionh1": "Welcome to Plan B Network events",
+      "introductionp1": "Bottom up adoption enhanced by a strong network",
+      "introductionp2": "Looking for a Bitcoin event to go to ?",
+      "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
+    },
     "main": {
-      "upcomingEvents": "Prossimi eventi Bitcoin"
+      "upcomingEvents": "Upcoming events",
+      "currentEvents": "Events happening right now"
+    },
+    "card": {
+      "free": "free",
+      "online": "online",
+      "limited": "limited to",
+      "unlimited": "unlimited",
+      "people": "people",
+      "watchLive": "Watch live",
+      "watchReplay": "Watch replay",
+      "bookLive": "Book live",
+      "bookSeat": "Book your seat",
+      "visitWebsite": "Visit website"
     }
   },
   "home": {
