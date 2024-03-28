@@ -1,6 +1,6 @@
 {
-  "id": "d413eb3b-5f3d-4330-a99b-c9f9fce53fa5",
-  "prevId": "16e064c0-65c8-4114-a2e6-aa33e72f6d59",
+  "id": "b2ad01cd-e86e-4616-949e-9aff5c5ad512",
+  "prevId": "d413eb3b-5f3d-4330-a99b-c9f9fce53fa5",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -933,7 +933,7 @@
           "name": "path",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "type": {
           "name": "type",
@@ -1075,7 +1075,13 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "events_path_unique": {
+          "name": "events_path_unique",
+          "nullsNotDistinct": false,
+          "columns": ["path"]
+        }
+      }
     },
     "podcasts": {
       "name": "podcasts",
