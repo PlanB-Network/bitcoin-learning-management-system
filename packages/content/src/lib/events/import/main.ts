@@ -98,7 +98,7 @@ export const createProcessMainFile =
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
           ${parsedEvent.builder},
-          ${parsedEvent.type},
+          ${parsedEvent.type.toLowerCase()},
           ${parsedEvent.links.website},
           ${parsedEvent.links.replay_url},
           ${parsedEvent.links.live_url},
