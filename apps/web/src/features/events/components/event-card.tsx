@@ -20,8 +20,6 @@ export const EventCard = ({
 }: EventCardProps) => {
   const { t } = useTranslation();
 
-  console.log(event);
-
   let satsPrice =
     conversionRate && event.priceDollars !== null
       ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
