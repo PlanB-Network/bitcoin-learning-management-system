@@ -3,7 +3,12 @@
 
 import type { z } from 'zod';
 
-import { eventPaymentSchema, eventSchema } from '@sovereign-university/schemas';
+import {
+  eventPaymentSchema,
+  eventSchema,
+  joinedEventSchema,
+} from '@sovereign-university/schemas';
 
 export type EventPayment = z.infer<typeof eventPaymentSchema>;
 export type Event = z.infer<typeof eventSchema>;
+export type JoinedEvent = z.infer<typeof joinedEventSchema>;

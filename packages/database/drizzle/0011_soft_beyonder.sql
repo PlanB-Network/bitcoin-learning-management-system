@@ -1,0 +1,1 @@
+ALTER TABLE "users"."event_payment" ALTER COLUMN "event_id" SET DATA TYPE varchar(100);

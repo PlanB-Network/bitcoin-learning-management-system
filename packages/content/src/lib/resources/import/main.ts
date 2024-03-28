@@ -77,7 +77,7 @@ export const createProcessMainFile =
       if (result && parsedResource.tags && parsedResource.tags?.length > 0) {
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedResource.tags.map((tag) => ({ name: tag })),
+            parsedResource.tags.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;

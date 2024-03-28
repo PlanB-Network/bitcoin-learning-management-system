@@ -9,6 +9,7 @@ import {
 import type { Dependencies } from './dependencies.js';
 import {
   createProcessChangedEvent,
+  createProcessDeleteEvents,
   groupByEvent,
 } from './events/import/index.js';
 import {
@@ -128,9 +129,12 @@ export const createProcessDeleteOldEntities =
       errors,
     );
 
+    const processDeleteEvents = createProcessDeleteEvents(dependencies, errors);
+
     await processDeleteProfessors(sync_date);
     await processDeleteCourses(sync_date);
     await processDeleteQuizQuestions(sync_date);
     await processDeleteTutorials(sync_date);
     await processDeleteResources(sync_date);
+    await processDeleteEvents(sync_date);
   };
