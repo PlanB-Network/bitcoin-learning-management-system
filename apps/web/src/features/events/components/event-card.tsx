@@ -20,6 +20,8 @@ export const EventCard = ({
 }: EventCardProps) => {
   const { t } = useTranslation();
 
+  console.log(event);
+
   let satsPrice =
     conversionRate && event.priceDollars !== null
       ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
@@ -34,22 +36,24 @@ export const EventCard = ({
       event.type?.charAt(0).toUpperCase() + event.type?.slice(1);
   }
 
+  const timezone = event.timezone || 'Europe/Rome';
+
   let dateString =
     event.startDate.getMonth() === event.endDate.getMonth() &&
     event.startDate.getDay() !== event.endDate.getDay()
-      ? formatDate(event.startDate, 'Europe/Rome', false)
-      : formatDate(event.startDate, 'Europe/Rome');
+      ? formatDate(event.startDate, timezone, false)
+      : formatDate(event.startDate, timezone);
 
   if (event.startDate.getDate() !== event.endDate.getDate()) {
-    dateString += ` to ${formatDate(event.endDate, 'Europe/Rome')}`;
+    dateString += ` to ${formatDate(event.endDate, timezone)}`;
   }
 
   let timeString;
   if (event.startDate.getUTCHours() !== 0) {
-    timeString = formatTime(event.startDate, 'Europe/Rome');
+    timeString = formatTime(event.startDate, timezone);
   }
   if (event.endDate.getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(event.endDate, 'Europe/Rome')} (CET)`;
+    timeString += ` to ${formatTime(event.endDate, timezone)} (${timezone})`;
   }
 
   const isFree = !event.priceDollars;
