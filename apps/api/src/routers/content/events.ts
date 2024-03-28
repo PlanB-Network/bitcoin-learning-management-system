@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { createGetEvent, createGetEvents } from '@sovereign-university/content';
-import { eventSchema, joinedEventSchema } from '@sovereign-university/schemas';
+import { joinedEventSchema } from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
