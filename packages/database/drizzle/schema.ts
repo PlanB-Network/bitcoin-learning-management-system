@@ -458,6 +458,7 @@ export const eventTypeEnum = pgEnum('event_type', [
   'conference',
   'workshop',
   'course',
+  'lecture',
 ]);
 
 export const contentEvents = content.table('events', {
