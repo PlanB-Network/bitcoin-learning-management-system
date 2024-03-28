@@ -159,7 +159,7 @@ export const createProcessMainFile =
       if (parsedTutorial.tags && parsedTutorial.tags?.length > 0) {
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedTutorial.tags.map((tag) => ({ name: tag })),
+            parsedTutorial.tags.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;

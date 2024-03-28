@@ -25,11 +25,14 @@ interface EventMain {
   address_line_2: string;
   address_line_3: string;
   builder: string;
+  type: string;
   links: {
     website: string;
     replay_url: string;
     live_url: string;
   };
+  language?: string[];
+  tag?: string[];
 }
 
 export const createProcessMainFile =
@@ -57,7 +60,7 @@ export const createProcessMainFile =
         const result = await transaction<Event[]>`
         INSERT INTO content.events 
           ( id,
-            type,
+            path,
             name,
             description,
             start_date,
@@ -71,6 +74,7 @@ export const createProcessMainFile =
             address_line_2,
             address_line_3,
             builder,
+            type,
             website_url,
             replay_url,
             live_url,
@@ -80,7 +84,7 @@ export const createProcessMainFile =
           )
         VALUES (
           ${`${event.id}-${parsedEvent.name}`},
-          'conference',
+          ${event.path},
           ${parsedEvent.name},
           ${parsedEvent.description},
           ${parsedEvent.start_date},
@@ -94,6 +98,7 @@ export const createProcessMainFile =
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
           ${parsedEvent.builder},
+          ${parsedEvent.type},
           ${parsedEvent.links.website},
           ${parsedEvent.links.replay_url},
           ${parsedEvent.links.live_url},
@@ -126,6 +131,40 @@ export const createProcessMainFile =
 
         if (!result) {
           throw new Error('Could not insert events');
+        }
+
+        if (result && parsedEvent.tag && parsedEvent.tag?.length > 0) {
+          await transaction`
+          INSERT INTO content.tags ${transaction(
+            parsedEvent.tag.map((tag) => ({ name: tag.toLowerCase() })),
+          )}
+          ON CONFLICT (name) DO NOTHING
+        `;
+
+          await transaction`
+          INSERT INTO content.event_tags (event_id, tag_id)
+          SELECT
+            ${result.id}, 
+            id FROM content.tags WHERE name = ANY(${parsedEvent.tag})
+          ON CONFLICT DO NOTHING
+        `;
+        }
+
+        if (
+          result &&
+          parsedEvent.language &&
+          parsedEvent.language?.length > 0
+        ) {
+          for (const language of parsedEvent.language) {
+            await transaction`
+            INSERT INTO content.event_languages (event_id, language)
+            VALUES(
+              ${result.id}, 
+              ${language}
+            )
+            ON CONFLICT DO NOTHING
+          `;
+          }
         }
       }
     }

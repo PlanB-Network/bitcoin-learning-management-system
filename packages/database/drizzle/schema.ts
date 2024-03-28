@@ -454,10 +454,15 @@ export const usersCourseProgress = users.table(
 
 // EVENTS
 
-export const eventTypeEnum = pgEnum('event_type', ['conference']);
+export const eventTypeEnum = pgEnum('event_type', [
+  'conference',
+  'workshop',
+  'course',
+]);
 
 export const contentEvents = content.table('events', {
   id: varchar('id', { length: 100 }).primaryKey().notNull(),
+  path: varchar('path', { length: 255 }).unique().notNull(),
   type: eventTypeEnum('type'),
   name: text('name'),
   description: text('description'),
@@ -489,7 +494,7 @@ export const contentEvents = content.table('events', {
 export const contentEventTags = content.table(
   'event_tags',
   {
-    eventId: varchar('event_id', { length: 50 })
+    eventId: varchar('event_id', { length: 100 })
       .notNull()
       .references(() => contentEvents.id, { onDelete: 'cascade' }),
     tagId: integer('tag_id')
@@ -506,7 +511,7 @@ export const contentEventTags = content.table(
 export const contentEventLanguages = content.table(
   'event_languages',
   {
-    eventId: varchar('event_id', { length: 50 })
+    eventId: varchar('event_id', { length: 100 })
       .notNull()
       .references(() => contentEvents.id, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
@@ -526,7 +531,7 @@ export const usersEventPayment = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     eventId: varchar('event_id', { length: 20 })
       .notNull()
-      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+      .references(() => contentEvents.id),
     withPhysical: boolean('with_physical').default(false),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),

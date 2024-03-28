@@ -104,7 +104,7 @@ export const createProcessMainFile =
       ) {
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedQuizQuestion.tags.map((tag) => ({ name: tag })),
+            parsedQuizQuestion.tags.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;

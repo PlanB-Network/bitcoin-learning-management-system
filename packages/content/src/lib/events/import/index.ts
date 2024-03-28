@@ -1,3 +1,4 @@
+import { sql } from '@sovereign-university/database';
 import type { ChangedFile } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -85,4 +86,19 @@ export const createProcessChangedEvent =
       .catch(() => {
         return;
       });
+  };
+
+export const createProcessDeleteEvents =
+  (dependencies: Dependencies, errors: string[]) =>
+  async (sync_date: number) => {
+    const { postgres } = dependencies;
+
+    try {
+      await postgres.exec(
+        sql`DELETE FROM content.events WHERE last_sync < ${sync_date} 
+      `,
+      );
+    } catch {
+      errors.push(`Error deleting events`);
+    }
   };

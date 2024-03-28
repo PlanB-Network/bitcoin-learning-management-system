@@ -333,7 +333,9 @@ export const createProcessChangedCourse =
               if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
                 await transaction`
                   INSERT INTO content.tags ${transaction(
-                    parsedCourse.tags.map((tag) => ({ name: tag })),
+                    parsedCourse.tags.map((tag) => ({
+                      name: tag.toLowerCase(),
+                    })),
                   )}
                   ON CONFLICT (name) DO NOTHING
                 `;
