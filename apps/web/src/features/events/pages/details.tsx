@@ -1,9 +1,15 @@
+import { useParams } from '@tanstack/react-router';
+
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 
 export const EventDetails = () => {
+  const { eventId } = useParams({
+    from: '/events/$eventId',
+  });
+
   const { data: event } = trpc.content.getEvent.useQuery({
-    id: 'adopting_bitcoin_2023-null',
+    id: eventId,
   });
 
   return (

@@ -23,7 +23,7 @@ const getEventProcedure = publicProcedure
       id: z.string(),
     }),
   )
-  .output(eventSchema)
+  .output(joinedEventSchema)
   .query(({ ctx, input }) => createGetEvent(ctx.dependencies)(input.id));
 
 export const eventsRouter = createTRPCRouter({
