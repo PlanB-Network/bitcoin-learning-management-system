@@ -12,7 +12,18 @@ interface EventsGridProps {
 export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
   const { t } = useTranslation();
 
-  const sortedEvents = [...events].sort(
+  let upcomingEvents: JoinedEvent[] = [];
+
+  if (events) {
+    upcomingEvents = events?.filter((event) => {
+      const now = Date.now();
+      const startDate = event.startDate.getTime();
+
+      return now < startDate;
+    });
+  }
+
+  const sortedEvents = [...upcomingEvents].sort(
     (a, b) => a.startDate.getTime() - b.startDate.getTime(),
   );
 
