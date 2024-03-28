@@ -60,8 +60,8 @@ export const TipModal = ({
               <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                 <AiOutlineCopy
                   className="text-blue-1000 h-7 w-auto cursor-pointer"
-                  onClick={() => {
-                    navigator.clipboard.writeText(lightningAddress);
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(lightningAddress);
                   }}
                 />
               </div>
