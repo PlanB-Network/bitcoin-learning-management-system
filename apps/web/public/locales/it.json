@@ -103,8 +103,8 @@
       "coursePayment": "Pagamento del corso",
       "curriculum": "Curriculum",
       "date": "Da {{startDate}}\na {{endDate}}",
+      "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Descrizione",
-      "downloadCurriculum": "Scarica curriculum",
       "duration": "Durata: {{hours}} ore",
       "goal": "OBIETTIVO:",
       "level": "Livello: $t(words.level.{{level}})",
@@ -122,9 +122,16 @@
       "teacher": "Insegnante: {{teacher}}",
       "teachers": "Insegnanti: {{teachers}}",
       "teacherWord": "Una parola dall'insegnante",
-      "terms1": "Controlla il nostro",
-      "terms2": "termini e condizioni",
-      "terms3": "per dettagli sul rimborso"
+      "total": "Total",
+      "payment_successful": "Payment successful!",
+      "access_invoice": "You can access your invoice via your dashboard",
+      "payment_details": "Payment details",
+      "amount": "Amount",
+      "invoiceId": "Invoice ID",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
     },
     "explorer": {
       "footerTitle": "I nostri professori sono qui per te!",
@@ -148,11 +155,32 @@
     "part": {
       "count": "Parte n°{{count}}/{{total}}"
     },
+    "payment": {
+      "access_invoice": "You can access your invoice via your dashboard",
+      "accessibility": "Accessibility",
+      "accessibility_forever": "Forever",
+      "amount": "Amount",
+      "date": "Date",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "downloadCurriculum": "Download curriculum",
+      "duration": "Duration",
+      "invoiceId": "Invoice ID",
+      "numberOfChapters": "Number of chapters",
+      "payment_details": "Payment details",
+      "payment_successful": "Payment successful!",
+      "teacher": "Teacher",
+      "teachers": "Teachers",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "total": "Total"
+    },
     "preview": {
       "by": "da {{professor}}",
       "letsgo": "Andiamo"
     },
-    "purchase": "Purchase",
+    "proceedToPayment": "Proceed to payment",
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e verifica le spiegazioni",
       "quizz": "Quiz",
@@ -178,7 +206,7 @@
   },
   "events": {
     "main": {
-      "upcomingEvents": "Upcoming Bitcoin events"
+      "upcomingEvents": "Prossimi eventi Bitcoin"
     }
   },
   "home": {
@@ -233,8 +261,8 @@
       "link": "Aiutaci a tradurre l'accademia"
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
-      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
+      "title": "Insieme rendiamo migliore l'istruzione di Bitcoin ! ",
+      "subtitle": "PlanB è open source al 100% grazie al nostro generoso patreon",
       "content": "PlanB è orgoglioso di collaborare con numerose aziende bitcoin in tutto il mondo per fornire le migliori risorse educative possibili!"
     }
   },
@@ -255,14 +283,6 @@
     "orangePill": "una pillola arancione",
     "printedCircuits": "circuiti stampati",
     "rabbit404": "un coniglio che illumina con una torcia un cartello 404",
-    "rabbitClassroom": "conigli all'interno di un'aula",
-    "rabbitLibrary": "un coniglio che legge un libro",
-    "rabbitMeetup": "una riunione di coniglio",
-    "rabbitPodcast": "un coniglio che ascolta un podcast",
-    "rabbitStudying": "coniglio che studia in un laboratorio",
-    "rabbitVideos": "un coniglio che riprende un video",
-    "rabbitWithBackpackAndBtcSign": "un coniglio con uno zaino e un segno btc",
-    "readingRabbit": "Un coniglio che legge un libro",
     "sthRepresentingCompany": "qualcosa che rappresenta l'azienda",
     "stylus": "uno stilo",
     "underConstructionImage": "Illustrazione di diversi conigli che lavorano su un cantiere",
@@ -481,7 +501,7 @@
     "economy": "Economia",
     "education": "Educazione",
     "email": "Email",
-    "events": "Events",
+    "events": "Eventi",
     "exchanges": "Scambi",
     "followUs": "Seguici su",
     "helpUs": "Aiutaci",
