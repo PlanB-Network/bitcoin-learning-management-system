@@ -64,7 +64,7 @@ export const EventCard = ({
 
   return (
     <article
-      className={`flex-1 flex flex-col min-w-[280px] max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
+      className={`flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
     >
       {/* Image */}
       <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
