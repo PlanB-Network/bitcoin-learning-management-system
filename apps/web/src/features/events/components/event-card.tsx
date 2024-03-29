@@ -46,7 +46,7 @@ export const EventCard = ({
 
   return (
     <article
-      className={`flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-[#1a1a1a] p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
+      className={`flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
     >
       {/* Image */}
       <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
@@ -58,11 +58,11 @@ export const EventCard = ({
           height={308}
         />
         {event.type && (
-          <span className="absolute top-4 left-4 bg-white border border-[#b2b2b2] text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
+          <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
             {capitalizedType}
           </span>
         )}
-        <div className="absolute top-4 right-4 bg-white border border-[#b2b2b2] p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+        <div className="absolute top-4 right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
           {event.languages.map((language: string) => (
             <Flag code={language} size="m" key={language} />
           ))}
@@ -94,7 +94,7 @@ export const EventCard = ({
             </>
           )}
           {event.isOnline && !event.isInPerson && (
-            <span className="bg-[#cccccc] border border-[#999999] text-xs text-[#4d4d4d] font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
+            <span className="bg-newGray-4 border border-newGray-2 text-xs text-newBlack-4 font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
           )}
