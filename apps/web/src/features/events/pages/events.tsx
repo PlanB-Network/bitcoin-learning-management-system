@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
+import { EventsCarousel } from '../components/events-carousel.tsx';
 import { EventsGrid } from '../components/events-grid.tsx';
 import { EventsIntroduction } from '../components/events-introduction.tsx';
 
@@ -38,7 +39,7 @@ export const Events = () => {
 
   return (
     <MainLayout>
-      <div className="max-w-[1440px] w-fit flex flex-col gap-6 px-4 py-2.5 mx-auto md:gap-[60px] md:px-10">
+      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10">
         <EventsIntroduction />
         {events && (
           <CurrentEvents events={events} conversionRate={conversionRate} />
@@ -46,6 +47,12 @@ export const Events = () => {
         <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {events && (
           <EventsGrid events={events} conversionRate={conversionRate} />
+        )}
+        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
+      </div>
+      <div className="w-full flex flex-col mt-6 gap-6 md:mt-10 md:gap-[60px] mt">
+        {events && (
+          <EventsCarousel events={events} conversionRate={conversionRate} />
         )}
       </div>
     </MainLayout>
