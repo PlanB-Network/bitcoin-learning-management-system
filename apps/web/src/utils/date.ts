@@ -16,8 +16,8 @@ const getOrdinalSuffix = (day: number) => {
 export function formatDate(
   date: Date,
   timezone?: string,
-  getMonth: boolean = true,
-  getYear: boolean = true,
+  addMonth: boolean = true,
+  addYear: boolean = true,
 ) {
   if (typeof date?.getDate !== 'function') {
     return '';
@@ -40,8 +40,8 @@ export function formatDate(
 
   const [month, year] = formatter.format(date).split(' ');
 
-  return getMonth
-    ? getYear
+  return addMonth
+    ? addYear
       ? `${day}${getOrdinalSuffix(day)} ${month}, ${year}`
       : `${day}${getOrdinalSuffix(day)} ${month}`
     : `${day}${getOrdinalSuffix(day)}`;

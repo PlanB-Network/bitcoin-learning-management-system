@@ -36,29 +36,11 @@ export const EventCard = ({
   }
 
   const timezone = event.timezone || undefined;
+  const startDate = new Date(event.startDate);
+  const endDate = new Date(event.endDate);
 
-  const timezoneText = timezone ? ` (${timezone})` : '';
-
-  let dateString =
-    new Date(event.startDate).getMonth() ===
-      new Date(event.endDate).getMonth() &&
-    new Date(event.startDate).getDay() !== new Date(event.endDate).getDay()
-      ? formatDate(new Date(event.startDate), timezone, false)
-      : formatDate(new Date(event.startDate), timezone);
-
-  if (
-    new Date(event.startDate).getDate() !== new Date(event.endDate).getDate()
-  ) {
-    dateString += ` to ${formatDate(new Date(event.endDate), timezone)}`;
-  }
-
-  let timeString;
-  if (new Date(event.startDate).getUTCHours() !== 0) {
-    timeString = formatTime(new Date(event.startDate), timezone);
-  }
-  if (new Date(event.endDate).getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(new Date(event.endDate), timezone)}${timezoneText}`;
-  }
+  const dateString = getDateString(startDate, endDate, timezone);
+  const timeString = getTimeString(startDate, endDate, timezone);
 
   const isFree = !event.priceDollars;
 
@@ -95,13 +77,12 @@ export const EventCard = ({
         <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
           <div className="flex gap-1">
             <span>{dateString}</span>
-            {new Date(event.startDate).getUTCHours() !== 0 &&
-              new Date(event.endDate).getUTCHours() !== 0 && (
-                <>
-                  <span>·</span>
-                  <span>{timeString}</span>
-                </>
-              )}
+            {startDate.getUTCHours() !== 0 && endDate.getUTCHours() !== 0 && (
+              <>
+                <span>·</span>
+                <span>{timeString}</span>
+              </>
+            )}
           </div>
           {event.isInPerson && (
             <>
@@ -200,4 +181,56 @@ export const EventCard = ({
       </div>
     </article>
   );
+};
+
+const getDateString = (
+  startDate: Date,
+  endDate: Date,
+  timezone: string | undefined,
+) => {
+  let dateString: string;
+
+  switch (true) {
+    case startDate.getDate() === endDate.getDate(): {
+      dateString = formatDate(startDate, timezone, true, true);
+      break;
+    }
+    case startDate.getFullYear() === endDate.getFullYear() &&
+      startDate.getMonth() === endDate.getMonth() &&
+      startDate.getDay() !== endDate.getDay(): {
+      dateString = formatDate(startDate, timezone, false, false);
+      break;
+    }
+    case startDate.getFullYear() === endDate.getFullYear() &&
+      startDate.getMonth() !== endDate.getMonth(): {
+      dateString = formatDate(startDate, timezone, true, false);
+      break;
+    }
+    default: {
+      dateString = formatDate(startDate, timezone, true, true);
+    }
+  }
+
+  if (startDate.getDate() !== endDate.getDate()) {
+    dateString += ` to ${formatDate(endDate, timezone)}`;
+  }
+
+  return dateString;
+};
+
+const getTimeString = (
+  startDate: Date,
+  endDate: Date,
+  timezone: string | undefined,
+) => {
+  const timezoneText = timezone ? ` (${timezone})` : '';
+
+  let timeString: string;
+
+  timeString = formatTime(startDate, timezone);
+  if (endDate.getUTCHours() !== 0) {
+    timeString += ` to ${formatTime(endDate, timezone)}${timezoneText}`;
+  }
+
+  return timeString;
 };
