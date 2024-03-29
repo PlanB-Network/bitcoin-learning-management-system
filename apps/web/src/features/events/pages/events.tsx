@@ -43,7 +43,7 @@ export const Events = () => {
         {events && (
           <CurrentEvents events={events} conversionRate={conversionRate} />
         )}
-        <div className="h-px w-full bg-newBlack-5"></div>
+        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {events && (
           <EventsGrid events={events} conversionRate={conversionRate} />
         )}
