@@ -101,84 +101,89 @@ export const EventCard = ({
         </div>
       </div>
       {/* Price and buttons */}
-      <div className="flex flex-wrap justify-self-end gap-2 justify-between mt-auto py-1">
-        <div className="flex flex-col text-sm lg:text-base">
-          {!isFree && (
-            <div className="flex gap-1 text-orange-600">
-              <span className="font-semibold">${event.priceDollars}</span>
-              <span>·</span>
-              <span>{satsPrice} sats</span>
-            </div>
-          )}
-          {isFree && (
-            <span className="font-semibold uppercase text-orange-600">
-              {t('events.card.free')}
+      {!event.websiteUrl && (
+        <div className="flex flex-wrap gap-2 justify-between mt-auto py-1">
+          <div className="flex flex-col text-sm lg:text-base">
+            {!isFree && (
+              <div className="flex gap-1 text-orange-600">
+                <span className="font-semibold">${event.priceDollars}</span>
+                <span>·</span>
+                <span>{satsPrice} sats</span>
+              </div>
+            )}
+            {isFree && (
+              <span className="font-semibold uppercase text-orange-600">
+                {t('events.card.free')}
+              </span>
+            )}
+            <span className="font-light text-xs italic leading-none">
+              {event.availableSeats && event.availableSeats > 0
+                ? `${t('events.card.limited')} ${event.availableSeats} ${t('events.card.people')}`
+                : t('events.card.unlimited')}
             </span>
-          )}
-          <span className="font-light text-xs italic leading-none">
-            {event.availableSeats && event.availableSeats > 0
-              ? `${t('events.card.limited')} ${event.availableSeats} ${t('events.card.people')}`
-              : t('events.card.unlimited')}
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          {event.isOnline && isFree && isLive && (
-            <Link
-              to={'/events/$eventId'}
-              params={{
-                eventId: event.id,
-              }}
-            >
+          </div>
+          <div className="flex items-center gap-4">
+            {event.isOnline && isFree && isLive && (
+              <Link
+                to={'/events/$eventId'}
+                params={{
+                  eventId: event.id,
+                }}
+              >
+                <Button
+                  size="s"
+                  variant="tertiary"
+                  className="rounded-lg text-xs lg:text-base"
+                >
+                  {t('events.card.watchLive')}
+                </Button>
+              </Link>
+            )}
+            {event.isOnline && isFree && !isLive && (
               <Button
                 size="s"
-                variant="tertiary"
+                disabled={true}
                 className="rounded-lg text-xs lg:text-base"
               >
                 {t('events.card.watchLive')}
               </Button>
-            </Link>
-          )}
-          {event.isOnline && isFree && !isLive && (
-            <Button
-              size="s"
-              disabled={true}
-              className="rounded-lg text-xs lg:text-base"
-            >
-              {t('events.card.watchLive')}
-            </Button>
-          )}
-          {event.isOnline && !isFree && (
-            <Button
-              variant="tertiary"
-              size="s"
-              className="rounded-lg text-xs lg:text-base"
-            >
-              {t('events.card.bookLive')}
-            </Button>
-          )}
-          {event.isInPerson &&
-            event.availableSeats &&
-            event.availableSeats > 0 && (
+            )}
+            {event.isOnline && !isFree && (
               <Button
                 variant="tertiary"
                 size="s"
                 className="rounded-lg text-xs lg:text-base"
               >
-                {t('events.card.bookSeat')}
+                {t('events.card.bookLive')}
               </Button>
             )}
-          {event.websiteUrl && (
-            <Anchor
-              href={event.websiteUrl}
-              variant="tertiary"
-              size="s"
-              className="rounded-lg text-xs lg:text-base"
-            >
-              {t('events.card.visitWebsite')}
-            </Anchor>
-          )}
+            {event.isInPerson &&
+              event.availableSeats &&
+              event.availableSeats > 0 && (
+                <Button
+                  variant="tertiary"
+                  size="s"
+                  className="rounded-lg text-xs lg:text-base"
+                >
+                  {t('events.card.bookSeat')}
+                </Button>
+              )}
+          </div>
         </div>
-      </div>
+      )}
+      {/* Website URL */}
+      {event.websiteUrl && (
+        <div className="w-fit mx-auto mt-auto pt-3 pb-1">
+          <Anchor
+            href={event.websiteUrl}
+            variant="tertiary"
+            size="s"
+            className="rounded-lg text-xs lg:text-base"
+          >
+            {t('events.card.visitWebsite')}
+          </Anchor>
+        </div>
+      )}
     </article>
   );
 };
