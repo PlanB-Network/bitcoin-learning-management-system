@@ -15,6 +15,22 @@ export const EventsCarousel = ({
 }: EventsCarouselProps) => {
   const [emblaRef] = useEmblaCarousel();
 
+  let passedEvents: JoinedEvent[] = [];
+
+  if (events) {
+    passedEvents = events?.filter((event) => {
+      const now = Date.now();
+      const endDate = new Date(event.endDate).getTime();
+      const THIRTY_MINUTES = 30 * 60 * 1000;
+
+      return now > endDate && now - endDate > THIRTY_MINUTES;
+    });
+  }
+
+  if (passedEvents.length === 0) {
+    return null;
+  }
+
   return (
     <div className="w-full bg-newBlack-2">
       <div
@@ -22,7 +38,7 @@ export const EventsCarousel = ({
         ref={emblaRef}
       >
         <div className="flex">
-          {events.map((event) => (
+          {passedEvents.map((event) => (
             <div
               key={event.name}
               className="flex-[0_0_auto] max-w-[85%] min-w-0 mx-2 sm:mx-3"
