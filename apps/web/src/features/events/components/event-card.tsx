@@ -7,16 +7,19 @@ import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 import { formatDate, formatTime } from '../../../utils/date.ts';
+import { compose } from '../../../utils/index.ts';
 
 interface EventCardProps {
   event: JoinedEvent;
   isLive?: boolean;
+  isPassed?: boolean;
   conversionRate: number | null;
 }
 
 export const EventCard = ({
   event,
   isLive,
+  isPassed,
   conversionRate,
 }: EventCardProps) => {
   const { t } = useTranslation();
@@ -46,7 +49,11 @@ export const EventCard = ({
 
   return (
     <article
-      className={`flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none ${isLive ? 'shadow-md-section sm:shadow-none' : ''}`}
+      className={compose(
+        'flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
+        isLive ? 'shadow-md-section sm:shadow-none' : '',
+        isPassed ? 'h-full' : '',
+      )}
     >
       {/* Image */}
       <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
