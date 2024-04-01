@@ -15,7 +15,10 @@ export const EventsCarousel = ({
   events,
   conversionRate,
 }: EventsCarouselProps) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    loop: true,
+  });
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
