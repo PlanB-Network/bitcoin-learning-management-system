@@ -26,7 +26,7 @@ export const EventsPassed = ({ events, conversionRate }: EventsPassedProps) => {
           endDate += TWENTY_FOUR_HOURS;
         }
 
-        return now > endDate && now - endDate > ONE_HOUR;
+        return now > endDate && now - endDate > ONE_HOUR && event.replayUrl;
       })
       .sort(
         (a, b) =>

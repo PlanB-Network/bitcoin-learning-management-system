@@ -197,7 +197,7 @@ export const EventCard = ({
       )}
       {/* Replay Button */}
       {event.replayUrl && event.priceDollars === 0 && (
-        <div className="w-fit ml-auto mt-auto pt-3 pb-1">
+        <div className="w-fit mx-auto mt-auto pt-3 pb-1 sm:ml-auto sm:mr-0">
           <Link to={event.replayUrl}>
             <Button
               iconRight={<HiVideoCamera size={18} />}
