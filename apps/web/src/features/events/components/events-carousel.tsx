@@ -18,13 +18,23 @@ export const EventsCarousel = ({
   let passedEvents: JoinedEvent[] = [];
 
   if (events) {
-    passedEvents = events?.filter((event) => {
-      const now = Date.now();
-      const endDate = new Date(event.endDate).getTime();
-      const THIRTY_MINUTES = 30 * 60 * 1000;
+    passedEvents = events
+      ?.filter((event) => {
+        const now = Date.now();
+        let endDate = new Date(event.endDate).getTime();
+        const ONE_HOUR = 60 * 60 * 1000;
 
-      return now > endDate && now - endDate > THIRTY_MINUTES;
-    });
+        if (new Date(event.endDate).getUTCHours() === 0) {
+          const TWENTY_FOUR_HOURS = 24 * ONE_HOUR;
+          endDate += TWENTY_FOUR_HOURS;
+        }
+
+        return now > endDate && now - endDate > ONE_HOUR;
+      })
+      .sort(
+        (a, b) =>
+          new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
+      );
   }
 
   if (passedEvents.length === 0) {
