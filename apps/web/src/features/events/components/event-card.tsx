@@ -141,7 +141,7 @@ export const EventCard = ({
               >
                 <Button
                   size="s"
-                  variant="tertiary"
+                  variant="newPrimary"
                   className="rounded-lg text-xs lg:text-base"
                 >
                   {t('events.card.watchLive')}
@@ -160,7 +160,7 @@ export const EventCard = ({
             )}
             {event.isOnline && !isFree && (
               <Button
-                variant="tertiary"
+                variant="newPrimary"
                 size="s"
                 className="rounded-lg text-xs lg:text-base"
               >
@@ -171,7 +171,7 @@ export const EventCard = ({
               event.availableSeats &&
               event.availableSeats > 0 && (
                 <Button
-                  variant="tertiary"
+                  variant="newPrimary"
                   size="s"
                   className="rounded-lg text-xs lg:text-base"
                 >
@@ -186,7 +186,7 @@ export const EventCard = ({
         <div className="w-fit mx-auto mt-auto pt-3 pb-1">
           <Link to={event.websiteUrl}>
             <Button
-              variant="tertiary"
+              variant="newPrimary"
               size="s"
               className="rounded-lg text-xs lg:text-base"
             >

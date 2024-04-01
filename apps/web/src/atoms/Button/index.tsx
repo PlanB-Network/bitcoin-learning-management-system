@@ -14,6 +14,7 @@ interface ButtonProps
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?:
     | 'primary'
+    | 'newPrimary'
     | 'secondary'
     | 'newSecondary'
     | 'tertiary'
@@ -28,10 +29,10 @@ interface ButtonProps
 
 const classesBySize = {
   xs: 'px-2 py-1 text-xs/5',
-  s: 'px-3 py-1.5 text-sm font-semibold',
-  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base !font-medium md:font-semibold',
-  l: 'px-8 py-2.5 text-lg font-semibold',
-  xl: 'px-12 py-3 text-xl font-semibold',
+  s: 'px-3 py-1.5 text-sm !font-medium',
+  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base !font-medium',
+  l: 'px-8 py-2.5 text-lg !font-medium',
+  xl: 'px-12 py-3 text-xl !font-medium',
 };
 
 const classesByVariant = {
