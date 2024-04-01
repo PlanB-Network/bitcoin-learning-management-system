@@ -12,7 +12,13 @@ interface ButtonProps
     > {
   children?: string | JSX.Element | JSX.Element[];
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'download' | 'text';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'newSecondary'
+    | 'tertiary'
+    | 'download'
+    | 'text';
   rounded?: boolean;
   glowing?: boolean;
   iconLeft?: JSX.Element;
@@ -31,8 +37,10 @@ const classesBySize = {
 const classesByVariant = {
   primary:
     'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
+  newPrimary: 'bg-newOrange-1 text-white font-normal',
   tertiary: 'bg-orange-600 text-white font-normal',
   secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
+  newSecondary: 'bg-white text-newBlack-2',
   download: 'bg-green-600 text-white font-normal',
   text: '',
 };
@@ -60,7 +68,7 @@ export const Button = ({
   );
 
   const disabledClass = disabled
-    ? '  active:none bg-gray-300 text-white font-normal cursor-default'
+    ? ' active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default'
     : '';
 
   if (icon)

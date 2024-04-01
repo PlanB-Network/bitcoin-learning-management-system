@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { HiVideoCamera } from 'react-icons/hi2';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 
-import { Anchor } from '../../../atoms/Anchor/index.tsx';
 import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 import { formatDate, formatTime } from '../../../utils/date.ts';
@@ -84,14 +84,16 @@ export const EventCard = ({
         <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
           <div className="flex gap-1">
             <span>{dateString}</span>
-            {startDate.getUTCHours() !== 0 && endDate.getUTCHours() !== 0 && (
-              <>
-                <span>·</span>
-                <span>{timeString}</span>
-              </>
-            )}
+            {startDate.getUTCHours() !== 0 &&
+              endDate.getUTCHours() !== 0 &&
+              !isPassed && (
+                <>
+                  <span>·</span>
+                  <span>{timeString}</span>
+                </>
+              )}
           </div>
-          {event.isInPerson && (
+          {event.isInPerson && !isPassed && (
             <>
               <span>{event.addressLine2}</span>
               <span>{event.addressLine3}</span>
@@ -100,7 +102,7 @@ export const EventCard = ({
               </span>
             </>
           )}
-          {event.isOnline && !event.isInPerson && (
+          {event.isOnline && !isPassed && !event.isInPerson && (
             <span className="bg-newGray-4 border border-newGray-2 text-xs text-newBlack-4 font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
@@ -108,7 +110,7 @@ export const EventCard = ({
         </div>
       </div>
       {/* Price and buttons */}
-      {!event.websiteUrl && (
+      {!event.websiteUrl && !isPassed && (
         <div className="flex flex-wrap gap-2 justify-between mt-auto py-1">
           <div className="flex flex-col text-sm lg:text-base">
             {!isFree && (
@@ -149,6 +151,7 @@ export const EventCard = ({
             {event.isOnline && isFree && !isLive && (
               <Button
                 size="s"
+                variant="newSecondary"
                 disabled={true}
                 className="rounded-lg text-xs lg:text-base"
               >
@@ -181,14 +184,30 @@ export const EventCard = ({
       {/* Website URL */}
       {event.websiteUrl && (
         <div className="w-fit mx-auto mt-auto pt-3 pb-1">
-          <Anchor
-            href={event.websiteUrl}
-            variant="tertiary"
-            size="s"
-            className="rounded-lg text-xs lg:text-base"
-          >
-            {t('events.card.visitWebsite')}
-          </Anchor>
+          <Link to={event.websiteUrl}>
+            <Button
+              variant="tertiary"
+              size="s"
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.visitWebsite')}
+            </Button>
+          </Link>
+        </div>
+      )}
+      {/* Replay Button */}
+      {event.replayUrl && event.priceDollars === 0 && (
+        <div className="w-fit ml-auto mt-auto pt-3 pb-1">
+          <Link to={event.replayUrl}>
+            <Button
+              iconRight={<HiVideoCamera size={18} />}
+              variant="newSecondary"
+              size="s"
+              className="rounded-lg text-xs lg:text-base"
+            >
+              {t('events.card.watchReplay')}
+            </Button>
+          </Link>
         </div>
       )}
     </article>

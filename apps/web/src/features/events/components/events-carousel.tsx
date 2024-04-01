@@ -18,7 +18,7 @@ export const EventsCarousel = ({
   return (
     <div className="w-full bg-newBlack-2">
       <div
-        className="overflow-hidden py-3 sm:px-10 sm:py-[30px]"
+        className="overflow-hidden max-w-[1800px] mx-auto py-3 sm:px-10 sm:py-[30px]"
         ref={emblaRef}
       >
         <div className="flex">
