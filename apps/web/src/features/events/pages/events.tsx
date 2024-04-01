@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
-import { EventsCarousel } from '../components/events-carousel.tsx';
 import { EventsGrid } from '../components/events-grid.tsx';
 import { EventsIntroduction } from '../components/events-introduction.tsx';
+import { EventsPassed } from '../components/events-passed.tsx';
 
 export const Events = () => {
   const { data: events } = trpc.content.getEvents.useQuery();
@@ -48,11 +48,10 @@ export const Events = () => {
         {events && (
           <EventsGrid events={events} conversionRate={conversionRate} />
         )}
-        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
       </div>
-      <div className="w-full flex flex-col mt-6 gap-6 md:mt-10 md:gap-[60px] mt">
+      <div>
         {events && (
-          <EventsCarousel events={events} conversionRate={conversionRate} />
+          <EventsPassed events={events} conversionRate={conversionRate} />
         )}
       </div>
     </MainLayout>

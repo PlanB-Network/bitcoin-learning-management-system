@@ -215,6 +215,11 @@
       "upcomingEvents": "Upcoming events",
       "currentEvents": "Events happening right now"
     },
+    "missed": {
+      "missedh1": "Past events to replay",
+      "missedp1": "Did you miss an event ?",
+      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+    },
     "card": {
       "free": "free",
       "online": "online",
