@@ -71,13 +71,13 @@
     "buttonBuy": "Buy",
     "buttonPdf": "PDF / E-book",
     "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "topicsAddressed": "Topics addressed: "
   },
   "builders": {
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Builders"
   },
   "courses": {
     "categories": {
@@ -365,8 +365,8 @@
   },
   "podcasts": {
     "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
     "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
