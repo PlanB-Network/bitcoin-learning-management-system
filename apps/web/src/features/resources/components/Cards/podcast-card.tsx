@@ -1,9 +1,26 @@
 import { Link } from '@tanstack/react-router';
 
-import type { JoinedPodcast } from '@sovereign-university/types';
+// TODO : Add logo to JoinedPodcast type and switch it with PodcastType
+
+interface PodcastType {
+  id: number;
+  path: string;
+  name: string;
+  description: string | null;
+  websiteUrl: string | null;
+  lastUpdated: Date;
+  lastCommit: string;
+  tags: string[];
+  host: string;
+  language: string;
+  twitterUrl: string | null;
+  nostr: string | null;
+  podcastUrl: string | null;
+  logo: string | null;
+}
 
 interface PodCastCardProps {
-  podcast: JoinedPodcast;
+  podcast: PodcastType;
 }
 
 export const PodcastCard = ({ podcast }: PodCastCardProps) => {
@@ -17,7 +34,7 @@ export const PodcastCard = ({ podcast }: PodCastCardProps) => {
       <div className="group flex flex-col gap-4 p-3 hover:bg-newOrange-1 rounded-2xl hover:z-10 hover:scale-110 transition-all duration-300">
         <img
           className="aspect-square object-contain group-hover:rounded-2xl transition-all duration-300"
-          src={podcast.logo}
+          src={podcast.logo ? podcast.logo : ''}
           alt={podcast.name}
         />
         <span className="text-white text-xl leading-5 font-medium">
