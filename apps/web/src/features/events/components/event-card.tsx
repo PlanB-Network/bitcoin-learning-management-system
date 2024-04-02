@@ -50,7 +50,7 @@ export const EventCard = ({
   return (
     <article
       className={compose(
-        'flex-1 flex flex-col min-w-[280px] max-[611px]:max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 md:max-w-[432px] lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
+        'flex-1 flex flex-col min-w-[280px] max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
         isLive ? 'shadow-md-section sm:shadow-none' : '',
         isPassed ? 'h-full' : '',
       )}
