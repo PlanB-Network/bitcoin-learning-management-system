@@ -54,7 +54,7 @@ export const ResourceLayout = ({
           </div>
 
           {filterBar && (
-            <div className="my-3 sm:my-6 md:my-8">
+            <div className="flex justify-center my-3 sm:my-6 md:my-8">
               <FilterBar {...filterBar} />
             </div>
           )}
