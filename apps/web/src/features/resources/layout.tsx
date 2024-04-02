@@ -37,7 +37,7 @@ export const ResourceLayout = ({
         className={`flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
       >
         <div className="max-w-6xl text-black">
-          <div>
+          <div className="flex flex-col gap-1 text-center max-w-[880px] mx-auto">
             {link ? (
               // TODO fix
               <Link to={link as '/'}>
@@ -47,7 +47,7 @@ export const ResourceLayout = ({
               <PageTitle>{title}</PageTitle>
             )}
             {tagLine && (
-              <p className="mx-4 pb-3 pt-4 text-justify text-sm font-light uppercase text-white sm:mx-8 sm:pt-2 sm:text-base">
+              <p className="text-xs text-newGray-1 tracking-[0.15px] md:leading-[1.75] md:text-base">
                 {tagLine}
               </p>
             )}
