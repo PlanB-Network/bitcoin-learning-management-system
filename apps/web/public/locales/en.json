@@ -314,8 +314,8 @@
     "worldMap": "world map with hubs linked"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
+    "pageSubtitle": "This library is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "publishedIn": "Published in {{date}}",
     "writtenBy": "Written by {{author}}"
   },
