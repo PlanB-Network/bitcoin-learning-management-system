@@ -17,7 +17,7 @@ import {
 import { cn } from '@sovereign-university/ui';
 
 import OrangePill from '../../assets/footer_pill.svg';
-import PlanBLogo from '../../assets/planb_logo_horizontal_white_blackpill.svg';
+import PlanBLogo from '../../assets/planb_logo_horizontal_white_whitepill.svg';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -82,17 +82,17 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
   const { t } = useTranslation();
 
   return (
-    <footer className="mt-40 w-full">
+    <footer className="mt-16 md:mt-40 w-full">
       <div
         className={cn(
           'flex w-full flex-col',
           color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
         )}
       >
-        <div className="relative z-10 flex w-full flex-col bg-orange-500 py-16 pl-6 md:py-28 md:pl-0">
+        <div className="relative z-10 flex w-full flex-col bg-orange-500 py-16 md:py-28 md:pl-0">
           <div className="flex flex-row">
-            <div className="mx-auto flex flex-col gap-20 pl-4 pr-60 md:flex-row">
-              <div className="flex flex-col items-center gap-6 md:hidden lg:flex">
+            <div className="mr-auto md:mx-auto flex flex-col gap-6 md:gap-20 px-7 md:pl-4 md:flex-row">
+              <div className="flex flex-col items-center gap-6 mb-2 md:mb-0 md:hidden lg:flex">
                 <img src={PlanBLogo} alt=""></img>
                 <div className="hidden lg:block">
                   <SocialNetworks />

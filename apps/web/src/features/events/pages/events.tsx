@@ -5,6 +5,7 @@ import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
 import { EventsGrid } from '../components/events-grid.tsx';
 import { EventsIntroduction } from '../components/events-introduction.tsx';
+import { EventsPassed } from '../components/events-passed.tsx';
 
 export const Events = () => {
   const { data: events } = trpc.content.getEvents.useQuery();
@@ -38,14 +39,19 @@ export const Events = () => {
 
   return (
     <MainLayout>
-      <div className="max-w-[1440px] w-fit flex flex-col gap-6 px-4 py-2.5 mx-auto md:gap-[60px] md:px-10">
+      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10">
         <EventsIntroduction />
         {events && (
           <CurrentEvents events={events} conversionRate={conversionRate} />
         )}
-        <div className="h-px w-full bg-newBlack-5"></div>
+        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {events && (
           <EventsGrid events={events} conversionRate={conversionRate} />
+        )}
+      </div>
+      <div>
+        {events && (
+          <EventsPassed events={events} conversionRate={conversionRate} />
         )}
       </div>
     </MainLayout>

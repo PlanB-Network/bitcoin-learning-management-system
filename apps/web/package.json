@@ -27,6 +27,7 @@
     "buffer": "^6.0.3",
     "crypto": "^1.0.1",
     "d3": "^7.9.0",
+    "embla-carousel-react": "^8.0.0",
     "formik": "^2.4.5",
     "i18next": "23.10.1",
     "i18next-browser-languagedetector": "7.2.0",

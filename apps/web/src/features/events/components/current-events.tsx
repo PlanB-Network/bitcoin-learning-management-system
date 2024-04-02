@@ -21,10 +21,16 @@ export const CurrentEvents = ({
     liveEvents = events?.filter((event) => {
       const now = Date.now();
       const startDate = new Date(event.startDate).getTime();
-      const endDate = new Date(event.endDate).getTime();
+      let endDate = new Date(event.endDate).getTime();
+      const ONE_HOUR = 60 * 60 * 1000;
       const THIRTY_MINUTES = 30 * 60 * 1000;
 
-      return startDate - now < THIRTY_MINUTES && now < endDate;
+      if (new Date(event.endDate).getUTCHours() === 0) {
+        const TWENTY_FOUR_HOURS = 24 * ONE_HOUR;
+        endDate += TWENTY_FOUR_HOURS;
+      }
+
+      return startDate - now < THIRTY_MINUTES && now < endDate + ONE_HOUR;
     });
   }
 
