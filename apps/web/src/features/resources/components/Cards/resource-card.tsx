@@ -7,7 +7,7 @@ interface ResourceCardProps {
 
 export const ResourceCard = (props: ResourceCardProps) => {
   return (
-    <div className="group flex md:flex-col gap-4 p-3 bg-newBlack-2 md:bg-transparent md:hover:bg-newOrange-1 rounded-2xl md:hover:z-10 md:hover:scale-110 md:transition-all md:duration-300">
+    <div className="group flex md:flex-col gap-4 p-3 bg-newBlack-2 md:bg-transparent max-md:hover:shadow-[0px_1px_1px_0px_rgba(255,92,0,0.67)] md:hover:bg-newOrange-1 rounded-2xl md:hover:z-10 md:hover:scale-110 md:transition-all md:duration-300">
       <img
         className="aspect-square object-contain w-[84px] md:w-full group-hover:rounded-2xl transition-all duration-300"
         src={props.imageSrc ? props.imageSrc : ''}
