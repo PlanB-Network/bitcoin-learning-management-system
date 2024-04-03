@@ -1,10 +1,11 @@
+import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedBook } from '@sovereign-university/types';
 
 import { trpc } from '../../../utils/index.ts';
-import { BookCard } from '../components/Cards/book-card.tsx';
+import { ResourceCard } from '../components/Cards/resource-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const Books = () => {
@@ -34,7 +35,20 @@ export const Books = () => {
             book.title.toLowerCase().includes(searchTerm.toLowerCase()),
           )
           .map((book) => (
-            <BookCard book={book} key={book.id} />
+            <Link
+              to={'/resources/book/$bookId'}
+              params={{
+                bookId: book.id.toString(),
+              }}
+              key={book.id}
+            >
+              <ResourceCard
+                name={book.title}
+                author={book.author}
+                imageSrc={book.cover}
+                year={book.publicationYear}
+              />
+            </Link>
           ))}
       </div>
     </ResourceLayout>

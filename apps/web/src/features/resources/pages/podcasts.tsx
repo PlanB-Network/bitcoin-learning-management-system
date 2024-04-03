@@ -1,8 +1,9 @@
+import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { trpc } from '../../../utils/index.ts';
-import { PodcastCard } from '../components/Cards/podcast-card.tsx';
+import { ResourceCard } from '../components/Cards/resource-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const Podcasts = () => {
@@ -32,7 +33,20 @@ export const Podcasts = () => {
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
           )
           .map((podcast) => (
-            <PodcastCard podcast={podcast} key={podcast.id} />
+            <Link
+              to={'/resources/podcast/$podcastId'}
+              params={{
+                podcastId: podcast.id.toString(),
+              }}
+              className="w-[288px]  md:max-w-64"
+              key={podcast.id}
+            >
+              <ResourceCard
+                name={podcast.name}
+                author={podcast.host}
+                imageSrc={podcast.logo}
+              />
+            </Link>
           ))}
       </div>
     </ResourceLayout>
