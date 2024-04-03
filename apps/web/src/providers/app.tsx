@@ -1,6 +1,11 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from '@tanstack/react-router';
-import { type PropsWithChildren, useEffect, useState } from 'react';
+import {
+  type PropsWithChildren,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -8,6 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { useTrpc } from '../hooks/index.ts';
 import { router } from '../routes/index.tsx';
 import { persistor, store } from '../store/index.ts';
+import { LANGUAGES } from '../utils/i18n.ts';
 import { trpc } from '../utils/trpc.ts';
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
@@ -20,15 +26,18 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
   // Temporary fix: the default language can be en-GB (or equivalent), until it is properly set with the selector
   // and these aren't supported. Fallback to 'en' in that case for now.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (i18n.language.includes('-')) {
       i18n.changeLanguage('en');
+      setCurrentLanguage('en');
     }
   }, [i18n]);
 
   useEffect(() => {
-    if (i18n.language !== currentLanguage) {
-      console.log('updating');
+    if (
+      i18n.language !== currentLanguage &&
+      LANGUAGES.includes(i18n.language)
+    ) {
       const previousLanguage = currentLanguage;
       const newLanguage = i18n.language;
 
@@ -40,9 +49,10 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
       });
 
       router.navigate({
-        // TODO fix this
+        // TODO: fix this
         to: window.location.pathname.replace(`/${previousLanguage}`, '') as '/',
       });
+
       router.load();
     }
   }, [currentLanguage, i18n.language, setCurrentLanguage]);
