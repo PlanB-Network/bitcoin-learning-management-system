@@ -15,3 +15,6 @@ export const joinWords = (words: string[]) => {
 export function extractNumbers(s: string) {
   return s.replaceAll(/^\D+/g, '');
 }
+
+export const capitalizeFirstWord = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
