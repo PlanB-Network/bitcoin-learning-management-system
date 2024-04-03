@@ -33,10 +33,8 @@ export const ResourceLayout = ({
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
-      <div
-        className={`flex h-fit min-h-screen justify-center p-2 md:p-10 ${className}`}
-      >
-        <div className="max-w-6xl text-black">
+      <div className={`flex h-fit justify-center p-2 md:p-10 ${className}`}>
+        <div className="w-full max-w-6xl text-black">
           <div className="flex flex-col gap-1 text-center max-w-[880px] mx-auto">
             {link ? (
               // TODO fix
