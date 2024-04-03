@@ -1,43 +1,40 @@
-import articleSvg from '../../assets/resources/article.svg';
-import bookSvg from '../../assets/resources/book.svg';
-import couchSvg from '../../assets/resources/couch.svg';
-import microSvg from '../../assets/resources/micro.svg';
-import newsletterSvg from '../../assets/resources/newsletter.svg';
+import builderSvg from '../../assets/resources/builder.svg';
+import conferenceSvg from '../../assets/resources/conference.svg';
+// import glossarySvg from '../../assets/resources/glossary.svg';
+import librarySvg from '../../assets/resources/library.svg';
+import podcastSvg from '../../assets/resources/podcast.svg';
+import toolkitSvg from '../../assets/resources/toolkit.svg';
 
 export const RESOURCES_CATEGORIES = [
   {
     name: 'books',
-    image: bookSvg,
-    unreleased: false,
-  },
-  {
-    name: 'builders',
-    image: couchSvg,
+    image: librarySvg,
     unreleased: false,
   },
   {
     name: 'podcasts',
-    image: microSvg,
+    image: podcastSvg,
+    unreleased: false,
+  },
+  {
+    name: 'conferences',
+    image: conferenceSvg,
+    unreleased: true,
+  },
+  {
+    name: 'builders',
+    image: builderSvg,
     unreleased: false,
   },
   {
     name: 'bet',
-    image: articleSvg,
+    image: toolkitSvg,
     unreleased: false,
   },
-  /* {
-    name: 'articles',
-    image: articleSvg,
-    unreleased: true,
-  }, */
-  {
-    name: 'newsletters',
-    image: newsletterSvg,
-    unreleased: true,
-  },
-  {
-    name: 'conferences',
-    image: couchSvg,
-    unreleased: true,
-  },
+  // TODO add when we have a glossary route
+  // {
+  //   name: 'glossary',
+  //   image: glossarySvg,
+  //   unreleased: true,
+  // },
 ] as const;
