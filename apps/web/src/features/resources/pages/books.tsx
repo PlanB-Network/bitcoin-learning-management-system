@@ -29,7 +29,7 @@ export const Books = () => {
         label: t('resources.filterBarLabel'),
       }}
     >
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+      <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
         {sortedBooks
           .filter((book) =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -40,6 +40,7 @@ export const Books = () => {
               params={{
                 bookId: book.id.toString(),
               }}
+              className="w-[288px] md:max-w-64"
               key={book.id}
             >
               <ResourceCard
