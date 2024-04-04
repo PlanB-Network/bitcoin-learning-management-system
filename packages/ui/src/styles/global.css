@@ -64,3 +64,15 @@
       'calt' 1;
   }
 }
+
+@layer utilities {
+  .filter-white {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)
+      hue-rotate(185deg) brightness(105%) contrast(101%);
+  }
+
+  .filter-newOrange1 {
+    filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
+      hue-rotate(3deg) brightness(105%) contrast(102%);
+  }
+}
