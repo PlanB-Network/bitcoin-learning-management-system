@@ -19,7 +19,11 @@ export const CategoryIcon = ({
           className,
         )}
       >
-        <img className="absolute inset-0 m-auto h-full" src={src} alt="" />
+        <img
+          className="absolute inset-0 m-auto h-full max-md:filter-white max-md:group-hover:filter-newOrange1"
+          src={src}
+          alt=""
+        />
       </div>
     );
   }
