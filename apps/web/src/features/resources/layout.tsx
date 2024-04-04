@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 
 import { MainLayout } from '../../components/MainLayout/index.tsx';
 
+import { CategoryTabs } from './components/CategoryTabs/index.tsx';
 import { FilterBar } from './components/FilterBar/index.tsx';
 import { PageTitle } from './components/PageTitle/index.tsx';
 import { Pagination } from './components/Pagination/index.tsx';
@@ -20,6 +21,7 @@ interface Props {
   pagination?: boolean;
   className?: string;
   link?: ToPathOption<RegisteredRouter['routeTree']>;
+  categoryActive?: string;
 }
 
 export const ResourceLayout = ({
@@ -30,11 +32,13 @@ export const ResourceLayout = ({
   pagination,
   className,
   link,
+  categoryActive,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
       <div className={`flex h-fit justify-center p-2 md:p-10 ${className}`}>
         <div className="w-full max-w-6xl text-black">
+          <CategoryTabs resourceCategoryActive={categoryActive} />
           <div className="flex flex-col gap-1 text-center max-w-[880px] mx-auto">
             {link ? (
               // TODO fix
@@ -49,6 +53,7 @@ export const ResourceLayout = ({
                 {tagLine}
               </p>
             )}
+            C
           </div>
 
           {filterBar && (

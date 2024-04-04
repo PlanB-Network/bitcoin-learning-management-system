@@ -26,6 +26,7 @@ export const Podcasts = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
+      categoryActive="podcasts"
     >
       <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
         {sortedPodcasts

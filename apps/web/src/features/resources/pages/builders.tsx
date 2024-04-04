@@ -42,6 +42,7 @@ export const Builders = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
+      categoryActive="builders"
     >
       <div className="flex flex-col gap-5 p-4 md:p-10">
         {categories.map((category) => {

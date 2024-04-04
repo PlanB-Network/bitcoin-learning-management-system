@@ -28,6 +28,7 @@ export const Books = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
+      categoryActive="books"
     >
       <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-6 md:mt-12 mx-auto">
         {sortedBooks
