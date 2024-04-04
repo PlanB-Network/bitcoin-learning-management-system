@@ -14,7 +14,7 @@ export const FilterBar = ({
   const [value, setValue] = useState(initialValue);
 
   return (
-    <div className="w-full max-w-md items-center justify-between rounded-3xl bg-orange-500 px-4 py-2 text-xs sm:rounded-2xl sm:px-6 sm:text-xs">
+    <div className="w-full max-w-md items-center justify-between rounded-3xl  px-4 py-2 text-xs sm:rounded-2xl sm:px-6 sm:text-xs">
       <div className="mb-2 mr-3 grow">
         {label && (
           <label className="mb-2 block text-white sm:mb-2">{label}</label>
