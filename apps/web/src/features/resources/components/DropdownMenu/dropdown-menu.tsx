@@ -46,9 +46,7 @@ export const ResourcesDropdown = ({
 
   return (
     <div
-      className={
-        'relative w-full max-w-[280px] max-h-fit mx-auto mb-6 md:hidden transition-all'
-      }
+      className={'relative w-full max-w-[280px] mx-auto mb-6 md:hidden'}
       ref={ref}
     >
       <div>
