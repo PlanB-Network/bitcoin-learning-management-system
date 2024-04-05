@@ -43,6 +43,7 @@ export const Resources = () => {
                   <CategoryIcon
                     src={resourceCategory.image}
                     variant="resources"
+                    imgClassName="max-md:filter-white max-md:group-hover:filter-newOrange1"
                   />
                   <h3
                     className={cn(

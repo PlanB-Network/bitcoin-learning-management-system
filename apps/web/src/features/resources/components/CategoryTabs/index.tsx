@@ -12,7 +12,7 @@ export const CategoryTabs = ({ resourceCategoryActive }: CategoryTabsProps) => {
   const { t } = useTranslation();
 
   return (
-    <nav className="flex flex-wrap w-full justify-center items-center md:gap-10 md:px-5 md:mb-10">
+    <nav className="md:flex flex-wrap w-full justify-center items-center md:gap-10 md:px-5 md:mb-10 hidden">
       {RESOURCES_CATEGORIES.map((resourceCategory) => (
         <Link
           key={resourceCategory.name}
