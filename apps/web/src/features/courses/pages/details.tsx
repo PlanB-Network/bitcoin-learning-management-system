@@ -160,7 +160,7 @@ export const CourseDetails: React.FC = () => {
         const data = (await response.json()) as MempoolPrice;
 
         if (data) {
-          const newConversionRate = data.EUR;
+          const newConversionRate = data.USD;
           setConversionRate(newConversionRate);
         } else {
           console.error('Failed to retrieve conversion rate from Kraken API.');
@@ -174,9 +174,9 @@ export const CourseDetails: React.FC = () => {
   }, []);
 
   let satsPrice = -1;
-  if (course && course.paidPriceEuros && conversionRate) {
+  if (course && course.paidPriceDollars && conversionRate) {
     satsPrice = Math.round(
-      (course.paidPriceEuros * 100_000_000) / conversionRate,
+      (course.paidPriceDollars * 100_000_000) / conversionRate,
     );
     if (process.env.NODE_ENV === 'development') {
       satsPrice = 10;

@@ -202,7 +202,7 @@ export const contentCourses = content.table('courses', {
   hours: doublePrecision('hours').notNull(),
 
   requiresPayment: boolean('requires_payment').default(false).notNull(),
-  paidPriceEuros: integer('paid_price_euros'),
+  paidPriceDollars: integer('paid_price_dollars'),
   paidDescription: text('paid_description'),
   paidVideoLink: text('paid_video_link'),
   paidStartDate: timestamp('paid_start_date', { withTimezone: true }),

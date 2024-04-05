@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" RENAME COLUMN "paid_price_euros" TO "paid_price_dollars";

@@ -93,7 +93,7 @@ interface CourseMain {
   professors: string[];
   tags?: string[];
   requires_payment: boolean;
-  paid_price_euros?: number;
+  paid_price_dollars?: number;
   paid_description?: string;
   paid_video_link?: string;
   paid_start_date?: string;
@@ -276,7 +276,7 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_euros,
+                INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date,
                   last_updated, last_commit, last_sync)
                 VALUES (
@@ -284,7 +284,7 @@ export const createProcessChangedCourse =
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
                   ${parsedCourse.requires_payment === true ? true : false},
-                  ${parsedCourse.paid_price_euros},
+                  ${parsedCourse.paid_price_dollars},
                   ${parsedCourse.paid_description},
                   ${parsedCourse.paid_video_link},
                   ${startDateTimestamp},
@@ -297,7 +297,7 @@ export const createProcessChangedCourse =
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
                   requires_payment = EXCLUDED.requires_payment,
-                  paid_price_euros = EXCLUDED.paid_price_euros,
+                  paid_price_dollars = EXCLUDED.paid_price_dollars,
                   paid_description = EXCLUDED.paid_description,
                   paid_video_link = EXCLUDED.paid_video_link,
                   paid_start_date = EXCLUDED.paid_start_date,

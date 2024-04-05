@@ -49,7 +49,7 @@ export const minimalJoinedCourseSchema = courseSchema
     id: true,
     hours: true,
     requiresPayment: true,
-    paidPriceEuros: true,
+    paidPriceDollars: true,
     paidDescription: true,
     paidVideoLink: true,
     paidStartDate: true,
