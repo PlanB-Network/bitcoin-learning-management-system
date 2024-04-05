@@ -3,12 +3,14 @@ import { cn } from '@sovereign-university/ui';
 interface CategoryIconProps {
   src: string;
   className?: string;
+  imgClassName?: string;
   variant?: 'resources';
 }
 
 export const CategoryIcon = ({
   src,
   className,
+  imgClassName,
   variant,
 }: CategoryIconProps) => {
   if (variant === 'resources') {
@@ -20,7 +22,7 @@ export const CategoryIcon = ({
         )}
       >
         <img
-          className="absolute inset-0 m-auto h-full max-md:filter-white max-md:group-hover:filter-newOrange1"
+          className={cn('absolute inset-0 m-auto h-full', imgClassName)}
           src={src}
           alt=""
         />
