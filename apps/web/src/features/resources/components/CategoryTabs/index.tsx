@@ -22,7 +22,7 @@ export const CategoryTabs = ({ resourceCategoryActive }: CategoryTabsProps) => {
           }
           className={
             resourceCategory.unreleased
-              ? 'cursor-not-allowed grayscale'
+              ? 'cursor-not-allowed opacity-50'
               : resourceCategory.name === resourceCategoryActive
                 ? 'scale-125 filter-newOrange1'
                 : ''
