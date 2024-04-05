@@ -41,7 +41,7 @@ const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   }).format(amount)}`;
 };
 
-const DEFAULT_CURRENCY = 'EUR';
+const DEFAULT_CURRENCY = 'USD';
 
 interface PaymentData {
   id: string;
@@ -340,7 +340,7 @@ export const CoursePaymentModal = ({
                 <div className="flex flex-col items-end">
                   <span className="text-lg font-medium">
                     {getFormattedUnit(
-                      course.paidPriceEuros || 0,
+                      course.paidPriceDollars || 0,
                       DEFAULT_CURRENCY,
                       0,
                     )}
