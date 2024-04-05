@@ -28,29 +28,30 @@ export const Resources = () => {
                 onClick={(event) =>
                   resourceCategory.unreleased && event.preventDefault()
                 }
-                className={
-                  resourceCategory.unreleased ? 'cursor-not-allowed' : ''
-                }
+                className={cn(
+                  'group',
+                  resourceCategory.unreleased ? 'cursor-not-allowed' : '',
+                )}
               >
                 <div
                   className={cn(
-                    'group w-40 md:w-[272px] flex items-center rounded-2xl py-[5px] px-2.5 md:py-2.5 md:px-5 gap-5 md:gap-6 transition-all',
+                    'w-40 md:w-[272px] flex items-center rounded-2xl py-[5px] px-2.5 md:py-2.5 md:px-5 gap-5 md:gap-6 transition-all',
                     resourceCategory.unreleased
                       ? 'opacity-50'
-                      : 'opacity-100 hover:bg-newBlack-3',
+                      : 'opacity-100 group-hover:bg-newBlack-3 group-focus:bg-newBlack-3',
                   )}
                 >
                   <CategoryIcon
                     src={resourceCategory.image}
                     variant="resources"
-                    imgClassName="max-md:filter-white max-md:group-hover:filter-newOrange1"
+                    imgClassName="max-md:filter-white max-md:group-hover:filter-newOrange1 max-md:group-focus:filter-newOrange1"
                   />
                   <h3
                     className={cn(
                       'text-sm md:text-2xl text-white max-md:leading-[1.43] max-md:tracking-[0.17px]',
                       resourceCategory.unreleased
                         ? ''
-                        : 'group-hover:font-semibold',
+                        : 'group-hover:font-semibold group-focus:font-semibold',
                     )}
                   >
                     {t(`resources.${resourceCategory.name}.title`)}

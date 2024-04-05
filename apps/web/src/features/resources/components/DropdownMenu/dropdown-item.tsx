@@ -24,9 +24,9 @@ export const ResourcesDropdownItem = ({
       <CategoryIcon
         src={imageSrc}
         variant="resources"
-        imgClassName="group-hover:filter-newOrange1 filter-white size-6"
+        imgClassName="group-hover:filter-newOrange1 group-focus:filter-newOrange1 filter-white size-6"
       />
-      <span className="text-white group-hover:text-newOrange-1 leading-[140%] tracking-[0.15px]">
+      <span className="text-white group-hover:text-newOrange-1 group-focus:text-newOrange-1 leading-[140%] tracking-[0.15px]">
         {capitalizeFirstWord(t(`resources.${name}.title`))}
       </span>
     </Link>

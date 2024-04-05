@@ -74,6 +74,7 @@ export const Builders = () => {
                       builderId: builder.id.toString(),
                     }}
                     key={builder.id}
+                    className="group/builder"
                   >
                     <BuilderCard name={builder.name} logo={builder.logo} />
                   </Link>

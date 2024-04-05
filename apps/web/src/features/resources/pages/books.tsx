@@ -41,7 +41,7 @@ export const Books = () => {
               params={{
                 bookId: book.id.toString(),
               }}
-              className="w-[288px] md:max-w-64"
+              className="group w-[288px] md:max-w-64"
               key={book.id}
             >
               <ResourceCard

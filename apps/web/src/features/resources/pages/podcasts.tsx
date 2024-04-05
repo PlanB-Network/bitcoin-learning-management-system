@@ -39,7 +39,7 @@ export const Podcasts = () => {
               params={{
                 podcastId: podcast.id.toString(),
               }}
-              className="w-[288px] md:max-w-64"
+              className="group w-[288px] md:max-w-64"
               key={podcast.id}
             >
               <ResourceCard

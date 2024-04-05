@@ -1,6 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from '@sovereign-university/ui';
+
 import { capitalizeFirstWord } from '../../../../utils/string.ts';
 import { RESOURCES_CATEGORIES } from '../../utils.tsx';
 
@@ -20,21 +22,22 @@ export const CategoryTabs = ({ resourceCategoryActive }: CategoryTabsProps) => {
           onClick={(event) =>
             resourceCategory.unreleased && event.preventDefault()
           }
-          className={
+          className={cn(
+            'group',
             resourceCategory.unreleased
               ? 'cursor-not-allowed opacity-50'
               : resourceCategory.name === resourceCategoryActive
                 ? 'scale-125 filter-newOrange1'
-                : ''
-          }
+                : '',
+          )}
         >
-          <div className="group flex justify-center items-center p-4 border border-white rounded-xl max-md:hover:scale-125">
+          <div className="flex justify-center items-center p-4 border border-white rounded-xl">
             <img
               src={resourceCategory.image}
               alt={resourceCategory.name}
-              className="filter-white max-w-9 max-md:group-hover:filter-newOrange1"
+              className="filter-white max-w-9"
             />
-            <span className="text-white opacity-0 font-medium leading-[1.43] tracking-[0.17px] max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden group-hover:max-w-96 group-hover:opacity-100 group-hover:ml-4 ease-in-out duration-500">
+            <span className="text-white opacity-0 font-medium leading-[1.43] tracking-[0.17px] max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden group-hover:max-w-96 group-hover:opacity-100 group-hover:ml-4 group-focus:max-w-96 group-focus:opacity-100 group-focus:ml-4 ease-in-out duration-700">
               {capitalizeFirstWord(
                 t(`resources.${resourceCategory.name}.title`),
               )}
