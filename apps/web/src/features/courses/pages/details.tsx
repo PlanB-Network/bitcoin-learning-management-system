@@ -15,6 +15,8 @@ import ReactMarkdown from 'react-markdown';
 import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
+import PageMeta from '#src/components/Head/PageMeta/index.js';
+
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
 import checkBoxSVG from '../../../assets/courses/checkboxFilled.svg';
@@ -315,7 +317,7 @@ export const CourseDetails: React.FC = () => {
         {isScreenMd ? (
           <div>
             <hr className="border-2 border-gray-300" />
-            <div className="absolute right-[15%] top-[50%] -translate-y-1/2">
+            <div className="absolute right-[15%] top-1/2 -translate-y-1/2">
               <div className="relative">
                 <Button
                   rounded
@@ -626,6 +628,18 @@ export const CourseDetails: React.FC = () => {
 
   return (
     <CourseLayout>
+      <PageMeta
+        title={`Plan B Network - ${course?.name}`}
+        description={course?.goal}
+        imageSrc={
+          course
+            ? computeAssetCdnUrl(
+                course.lastCommit,
+                `courses/${course.id}/assets/thumbnail.png`,
+              )
+            : ''
+        }
+      />
       <div className="text-blue-800">
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">

@@ -1,5 +1,8 @@
 import { Link, useParams } from '@tanstack/react-router';
+import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
+
+import PageMeta from '#src/components/Head/PageMeta/index.js';
 
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import { AuthorCard } from '../../../components/author-card.tsx';
@@ -88,7 +91,13 @@ export const TutorialDetails = () => {
     >
       {tutorial && (
         <>
-          <div className="mt-[-1rem] w-full max-w-5xl lg:hidden">
+          <PageMeta
+            title={`Plan B Network - ${tutorial?.title}`}
+            description={capitalize(
+              tutorial?.description || tutorial?.rawContent,
+            )}
+          />
+          <div className="-mt-4 w-full max-w-5xl lg:hidden">
             <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
               <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
               <Link

@@ -6,9 +6,12 @@ import {
   useLayoutEffect,
   useState,
 } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+
+import PageMeta from '#src/components/Head/PageMeta/index.js';
 
 import { useTrpc } from '../hooks/index.ts';
 import { router } from '../routes/index.tsx';
@@ -58,23 +61,31 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   }, [currentLanguage, i18n.language, setCurrentLanguage]);
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <trpc.Provider
-          client={trpcClient}
-          // @ts-expect-error TODO: fix this, open issue, idk
-          queryClient={queryClient}
-        >
-          <QueryClientProvider client={trpcQueryClient}>
-            <RouterProvider
-              router={router}
-              context={{ i18n }}
-              basepath={currentLanguage}
-            />
-            {children}
-          </QueryClientProvider>
-        </trpc.Provider>
-      </PersistGate>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <trpc.Provider
+            client={trpcClient}
+            // @ts-expect-error TODO: fix this, open issue, idk
+            queryClient={queryClient}
+          >
+            <QueryClientProvider client={trpcQueryClient}>
+              <RouterProvider
+                router={router}
+                context={{ i18n }}
+                basepath={currentLanguage}
+              />
+              <PageMeta
+                title="Plan B Network"
+                description="Let's build together the Bitcoin educational layer"
+                type="website"
+                imageSrc="/share-default.jpg"
+              />
+              {children}
+            </QueryClientProvider>
+          </trpc.Provider>
+        </PersistGate>
+      </Provider>
+    </HelmetProvider>
   );
 };

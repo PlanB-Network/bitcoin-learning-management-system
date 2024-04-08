@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import PageMeta from '#src/components/Head/PageMeta/index.js';
+
 import { CourseCard } from '../../../components/course-card.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { PageHeader } from '../../../components/PageHeader/index.tsx';
@@ -199,6 +201,11 @@ export const CoursesExplorer = () => {
 
   return (
     <MainLayout footerVariant="dark">
+      <PageMeta
+        title={`Plan B Network - ${t('courses.explorer.pageTitle')}`}
+        description={t('courses.explorer.pageDescription')}
+      />
+
       <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
         <PageHeader
           title={t('courses.explorer.pageTitle')}
