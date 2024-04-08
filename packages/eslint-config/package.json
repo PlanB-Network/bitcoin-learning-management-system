@@ -2,9 +2,16 @@
   "name": "@sovereign-university/eslint-config",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
+    "acorn": "^8.11.3",
+    "eslint": "^8.57.0",
+    "globals": "^15.0.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-n": "^16.6.2",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -21,6 +28,8 @@
     "eslint-plugin-tailwindcss": "3.15.1",
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-vitest": "^0.4.0",
-    "jsonc-eslint-parser": "^2.4.0"
+    "jsonc-eslint-parser": "^2.4.0",
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.5.0"
   }
 }
