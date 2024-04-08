@@ -34,58 +34,9 @@
 
 @font-face {
   font-family: 'Manrope';
-  src: url('../assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  src: url('../assets/fonts/manrope/Manrope-VariableFont_wght.ttf')
+    format('truetype');
 }
-
-/* @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 300;
-  src:
-    local(''),
-    url('../assets/fonts/poppins-v5-latin-300.woff2') format('woff2'),
-    url('../assets/fonts/poppins-v5-latin-300.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local(''),
-    url('../assets/fonts/poppins-v5-latin-regular.woff2') format('woff2'),
-    url('../assets/fonts/poppins-v5-latin-regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  src:
-    local(''),
-    url('../assets/fonts/poppins-v5-latin-500.woff2') format('woff2'),
-    url('../assets/fonts/poppins-v5-latin-500.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  src:
-    local(''),
-    url('../assets/fonts/poppins-v5-latin-600.woff2') format('woff2'),
-    url('../assets/fonts/poppins-v5-latin-600.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  src:
-    local(''),
-    url('../assets/fonts/poppins-v5-latin-700.woff2') format('woff2'),
-    url('../assets/fonts/poppins-v5-latin-700.woff') format('woff');
-} */
 
 @layer base {
   :root {
