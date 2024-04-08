@@ -28,7 +28,7 @@ export const Books = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
-      categoryActive="books"
+      activeCategory="books"
     >
       <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-6 md:mt-12 mx-auto">
         {sortedBooks
@@ -41,7 +41,6 @@ export const Books = () => {
               params={{
                 bookId: book.id.toString(),
               }}
-              className="group w-[288px] md:max-w-64"
               key={book.id}
             >
               <ResourceCard

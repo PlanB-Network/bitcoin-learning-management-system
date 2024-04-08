@@ -11,19 +11,17 @@ import { RESOURCES_CATEGORIES } from '../../utils.tsx';
 
 import { ResourcesDropdownItem } from './dropdown-item.tsx';
 
-interface ResourcesDropdownProps {
-  resourceCategoryActive?: string;
+interface DropdownMenuProps {
+  resourceActiveCategory?: string;
 }
 
-export const ResourcesDropdown = ({
-  resourceCategoryActive,
-}: ResourcesDropdownProps) => {
+export const DropdownMenu = ({ resourceActiveCategory }: DropdownMenuProps) => {
   const { t } = useTranslation();
   const filteredResourcesCategories = RESOURCES_CATEGORIES.filter(
-    (category) => category.name !== resourceCategoryActive,
+    (category) => category.name !== resourceActiveCategory,
   );
   const activeCategoryImageSrc = RESOURCES_CATEGORIES.find(
-    (category) => category.name === resourceCategoryActive,
+    (category) => category.name === resourceActiveCategory,
   )?.image;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -70,7 +68,7 @@ export const ResourcesDropdown = ({
           />
           <span className="text-darkOrange-5 font-medium leading-[140%] tracking-[0.15px]">
             {capitalizeFirstWord(
-              t(`resources.${resourceCategoryActive}.title`),
+              t(`resources.${resourceActiveCategory}.title`),
             )}
           </span>
           <MdKeyboardArrowDown

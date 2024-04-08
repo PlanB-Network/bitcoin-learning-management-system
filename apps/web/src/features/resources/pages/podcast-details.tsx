@@ -53,7 +53,7 @@ export const Podcast = () => {
       title={t('podcasts.pageTitle')}
       tagLine={t('podcasts.pageSubtitle')}
       link={'/resources/podcasts'}
-      categoryActive="podcasts"
+      activeCategory="podcasts"
     >
       {podcast && (
         <div className="w-full">

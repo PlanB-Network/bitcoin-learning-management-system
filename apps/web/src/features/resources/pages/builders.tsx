@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router';
+import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { trpc } from '../../../utils/index.ts';
-import { capitalizeFirstWord } from '../../../utils/string.ts';
 import { BuilderCard } from '../components/Cards/builder-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
@@ -42,7 +42,7 @@ export const Builders = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
-      categoryActive="builders"
+      activeCategory="builders"
     >
       <div className="flex flex-col gap-5 p-4 md:p-10">
         {categories.map((category) => {
@@ -59,7 +59,7 @@ export const Builders = () => {
             <details key={category} className="group">
               <summary className="border-b border-newGray-1 [&::-webkit-details-marker]:hidden list-none">
                 <h3 className="text-white group-open:font-semibold md:text-2xl flex items-center gap-5">
-                  {capitalizeFirstWord(category)}
+                  {capitalize(category)}
                   <MdKeyboardArrowDown
                     size={24}
                     className="group-open:-rotate-180 transition-transform ease-in-out"
@@ -74,7 +74,6 @@ export const Builders = () => {
                       builderId: builder.id.toString(),
                     }}
                     key={builder.id}
-                    className="group/builder"
                   >
                     <BuilderCard name={builder.name} logo={builder.logo} />
                   </Link>

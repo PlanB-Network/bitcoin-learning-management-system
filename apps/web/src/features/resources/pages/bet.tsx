@@ -212,7 +212,7 @@ export const BET = () => {
     <ResourceLayout
       title={t('bet.pageTitle')}
       tagLine={t('bet.pageSubtitle')}
-      categoryActive="bet"
+      activeCategory="bet"
     >
       <div className="space-y-8 px-4 text-gray-100 sm:px-8">
         <div className="max-w-3xl space-y-4">

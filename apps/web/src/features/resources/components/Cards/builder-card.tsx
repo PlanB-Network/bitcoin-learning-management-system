@@ -5,7 +5,7 @@ interface BuilderCardProps {
 
 export const BuilderCard = (props: BuilderCardProps) => {
   return (
-    <div className="relative flex flex-col items-center justify-center">
+    <div className="group/builder relative flex flex-col items-center justify-center">
       <img
         className="w-[50px] md:w-20 rounded-full group-hover/builder:blur-sm group-hover/builder:brightness-[0.30] group-focus/builder:blur-sm group-focus/builder:brightness-[0.30] transition-all"
         src={props.logo}

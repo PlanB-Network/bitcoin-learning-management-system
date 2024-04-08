@@ -26,7 +26,7 @@ export const Podcasts = () => {
         onChange: setSearchTerm,
         label: t('resources.filterBarLabel'),
       }}
-      categoryActive="podcasts"
+      activeCategory="podcasts"
     >
       <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
         {sortedPodcasts
@@ -39,7 +39,6 @@ export const Podcasts = () => {
               params={{
                 podcastId: podcast.id.toString(),
               }}
-              className="group w-[288px] md:max-w-64"
               key={podcast.id}
             >
               <ResourceCard

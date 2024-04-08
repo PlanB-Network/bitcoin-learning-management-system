@@ -7,10 +7,10 @@ import { capitalizeFirstWord } from '../../../../utils/string.ts';
 import { RESOURCES_CATEGORIES } from '../../utils.tsx';
 
 interface CategoryTabsProps {
-  resourceCategoryActive?: string;
+  resourceActiveCategory?: string;
 }
 
-export const CategoryTabs = ({ resourceCategoryActive }: CategoryTabsProps) => {
+export const CategoryTabs = ({ resourceActiveCategory }: CategoryTabsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +26,7 @@ export const CategoryTabs = ({ resourceCategoryActive }: CategoryTabsProps) => {
             'group',
             resourceCategory.unreleased
               ? 'cursor-not-allowed opacity-50'
-              : resourceCategory.name === resourceCategoryActive
+              : resourceCategory.name === resourceActiveCategory
                 ? 'scale-125 filter-newOrange1'
                 : '',
           )}
