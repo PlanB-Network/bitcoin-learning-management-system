@@ -42,7 +42,7 @@ export const TutorialsMarkdownBody = ({
           <a
             href={href}
             target="_blank"
-            className=" text-blue-500 "
+            className=" text-newOrange-1 font-bold underline"
             rel="noreferrer"
           >
             {children}
