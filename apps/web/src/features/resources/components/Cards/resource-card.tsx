@@ -13,7 +13,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
         src={props.imageSrc ? props.imageSrc : ''}
         alt={props.name}
       />
-      <div className="flex flex-col gap-[10px] md:gap-3 text-center">
+      <div className="flex flex-col gap-[10px] md:gap-3 md:text-center">
         <span className="text-white text-sm md:text-xl md:leading-6 font-medium">
           {props.name}
         </span>
