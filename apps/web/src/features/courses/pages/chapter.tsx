@@ -13,6 +13,7 @@ import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
@@ -537,7 +538,7 @@ export const CourseChapter = () => {
   return (
     <CourseLayout>
       <PageMeta
-        title={`Plan B Network - ${chapter?.course.name} - ${chapter?.title}`}
+        title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
         description={chapter?.course.objectives}
         imageSrc={
           chapter

@@ -16,6 +16,7 @@ import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
 
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
@@ -629,7 +630,7 @@ export const CourseDetails: React.FC = () => {
   return (
     <CourseLayout>
       <PageMeta
-        title={`Plan B Network - ${course?.name}`}
+        title={`${SITE_NAME} - ${course?.name}`}
         description={course?.goal}
         imageSrc={
           course

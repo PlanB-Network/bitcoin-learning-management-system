@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
 
 import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
 import { TutorialCard } from '../../../components/tutorial-card.tsx';
@@ -47,7 +48,7 @@ export const TutorialCategory = () => {
   return (
     <TutorialLayout currentCategory={category}>
       <PageMeta
-        title={`Plan B Network - ${capitalize(tutorialCategory!.name)}`}
+        title={`${SITE_NAME} - ${capitalize(tutorialCategory!.name)}`}
         description={t(`tutorials.${category}.description`)}
       />
       <div className="mb-6 -mt-4 w-full max-w-5xl lg:hidden">

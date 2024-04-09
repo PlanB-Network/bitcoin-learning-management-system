@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
+import { SITE_NAME } from '#src/utils/meta.js';
+
 interface PageMetaProps {
   title?: string;
   description?: string;
@@ -7,7 +9,12 @@ interface PageMetaProps {
   imageSrc?: string;
 }
 
-const PageMeta = ({ title, description, type, imageSrc }: PageMetaProps) => {
+const PageMeta = ({
+  title = SITE_NAME,
+  description,
+  type,
+  imageSrc,
+}: PageMetaProps) => {
   const newDescription =
     description && description.length > 200
       ? description
@@ -23,7 +30,7 @@ const PageMeta = ({ title, description, type, imageSrc }: PageMetaProps) => {
       {title && <title>{title}</title>}
       {description && <meta name="description" content={newDescription} />}
       {/* Facebook tags */}
-      <meta property="og:site_name" content="Plan B Network" />
+      <meta property="og:site_name" content={SITE_NAME} />
       {type && <meta property="og:type" content={type} />}
       {title && <meta property="og:title" content={title} />}
       {description && (

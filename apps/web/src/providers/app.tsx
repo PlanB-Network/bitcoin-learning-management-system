@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
 
 import { useTrpc } from '../hooks/index.ts';
 import { router } from '../routes/index.tsx';
@@ -76,7 +77,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
                 basepath={currentLanguage}
               />
               <PageMeta
-                title="Plan B Network"
+                title={SITE_NAME}
                 description="Let's build together the Bitcoin educational layer"
                 type="website"
                 imageSrc="/share-default.jpg"

@@ -3,6 +3,7 @@ import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
 
 import DonateLightning from '../../../assets/icons/donate_lightning.svg?react';
 import { AuthorCard } from '../../../components/author-card.tsx';
@@ -92,7 +93,7 @@ export const TutorialDetails = () => {
       {tutorial && (
         <>
           <PageMeta
-            title={`Plan B Network - ${tutorial?.title}`}
+            title={`${SITE_NAME} - ${tutorial?.title}`}
             description={capitalize(
               tutorial?.description || tutorial?.rawContent,
             )}
