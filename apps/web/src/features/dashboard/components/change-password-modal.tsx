@@ -6,7 +6,8 @@ import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
-import { Button } from '../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { trpc } from '../../../utils/index.ts';

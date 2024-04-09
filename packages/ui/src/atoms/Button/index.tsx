@@ -1,8 +1,8 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useMemo } from 'react';
 
-import { compose } from '../../utils/index.ts';
-import type { BaseAtomProps } from '../types.tsx';
+import { cn } from '../../lib/utils.ts';
+import type { BaseAtomProps } from '../types.ts';
 
 interface ButtonProps
   extends BaseAtomProps,
@@ -76,7 +76,7 @@ export const Button = ({
     return (
       <button
         disabled={disabled}
-        className={compose(
+        className={cn(
           ...classes,
           disabled ? 'active:none' : 'active:scale-95',
           'flex flex-row items-center font-normal leading-normal transition-colors duration-150',
@@ -92,7 +92,7 @@ export const Button = ({
   return (
     <button
       disabled={disabled}
-      className={compose(
+      className={cn(
         ...classes,
         disabled ? 'active:none' : 'active:scale-95',
         'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',

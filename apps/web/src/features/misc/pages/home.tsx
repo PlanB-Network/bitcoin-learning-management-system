@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
 import EducationMain from '../../../assets/home/education-main.webp';
 import Flags from '../../../assets/home/flags.webp';
@@ -23,7 +23,6 @@ import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '../../../assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '../../../assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '../../../assets/home/twitter_scuba.jpeg';
-import { Button } from '../../../atoms/Button/index.tsx';
 import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { AboutUs } from '../../../molecules/AboutUs/index.tsx';

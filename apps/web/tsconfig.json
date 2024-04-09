@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src"],
+  "include": ["src", "../../packages/ui/src/atoms/Button"],
   "compilerOptions": {
     "noEmit": true,
     "jsx": "react-jsx",

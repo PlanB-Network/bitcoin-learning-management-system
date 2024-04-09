@@ -11,7 +11,8 @@ import { useCallback, useEffect } from 'react';
 import { BsCheck } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
-import { Button } from '../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
@@ -176,7 +177,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.username}
-                    className="w-full min-w-[16rem] md:w-4/5"
+                    className="w-full min-w-64 md:w-4/5"
                     error={
                       touched.username && errors.username
                         ? errors.username[0]

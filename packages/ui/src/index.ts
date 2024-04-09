@@ -1,2 +1,2 @@
-export * from './lib/button/index.ts';
+export * from './atoms/Button/index.tsx';
 export * from './lib/utils.ts';

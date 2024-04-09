@@ -1,6 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@sovereign-university/ui';
+
 import Corporates from '../../../assets/about/corporates.webp';
 import PlanBCircles from '../../../assets/about/planb_circles.webp';
 import PpAjelex from '../../../assets/people/ajelex.webp';
@@ -37,7 +39,6 @@ import PpRogzy from '../../../assets/people/rogzy.webp';
 import PpTheom from '../../../assets/people/theo_m.webp';
 import PpTheop from '../../../assets/people/theo_p.webp';
 import PpTodd from '../../../assets/people/todd.webp';
-import { Button } from '../../../atoms/Button/index.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { AboutUs } from '../../../molecules/AboutUs/index.tsx';
 import { Person } from '../../../molecules/Person/index.tsx';

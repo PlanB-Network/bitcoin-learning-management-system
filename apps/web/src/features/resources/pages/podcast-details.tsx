@@ -6,7 +6,8 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { Card } from '../../../atoms/Card/index.tsx';
 import { useNavigateMisc } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';

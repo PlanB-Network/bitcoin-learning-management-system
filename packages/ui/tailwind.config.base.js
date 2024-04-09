@@ -33,7 +33,7 @@ const baseConfig = {
         900: '#182237',
         1000: '#070a14',
       },
-      // Does not work on firebox
+      // Does not work on firefox
       // blue: {
       //   100: 'hsl(from var(--base-blue) h s 90%)',
       //   200: 'hsl(from var(--base-blue) h s 80%)',
@@ -193,4 +193,4 @@ const baseConfig = {
   plugins: [require('tailwindcss-animate')],
 };
 
-module.exports = { baseConfig };
+export default { baseConfig };

@@ -1,6 +1,7 @@
 import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
 
-import { Button } from '../../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { compose } from '../../../../utils/index.ts';
 
 const commonClasses = 'bg-orange-400';
