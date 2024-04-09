@@ -1,6 +1,6 @@
 const { join } = require('node:path');
 
-const { baseConfig } = require('../../packages/ui/tailwind.config.base.js');
+const { baseConfig } = require('../../packages/ui/tailwind.config-base.js');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
