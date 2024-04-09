@@ -37,7 +37,13 @@ export const CategoryTabs = ({ resourceActiveCategory }: CategoryTabsProps) => {
               alt={resourceCategory.name}
               className="filter-white max-w-9"
             />
-            <span className="text-white opacity-0 font-medium leading-[1.43] tracking-[0.17px] max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden group-hover:max-w-96 group-hover:opacity-100 group-hover:ml-4 group-focus:max-w-96 group-focus:opacity-100 group-focus:ml-4 ease-in-out duration-700">
+            <span
+              className={cn(
+                'text-white opacity-0 font-medium leading-[1.43] tracking-[0.17px] max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-700',
+                resourceCategory.name !== resourceActiveCategory &&
+                  'group-hover:max-w-96 group-hover:opacity-100 group-hover:ml-4 group-focus:max-w-96 group-focus:opacity-100 group-focus:ml-4',
+              )}
+            >
               {capitalizeFirstWord(
                 t(`resources.${resourceCategory.name}.title`),
               )}
