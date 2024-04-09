@@ -108,7 +108,7 @@ export const CoursesMarkdownBody = ({
           ),
         code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
-          return (
+          return match ? (
             <SyntaxHighlighter
               style={atomDark}
               language={match ? match[1] : undefined}
@@ -116,6 +116,10 @@ export const CoursesMarkdownBody = ({
             >
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
+          ) : (
+            <code className="bg-newGray-4 px-1.5 rounded-lg font-serif inline-block text-sm">
+              {children}
+            </code>
           );
         },
       }}
