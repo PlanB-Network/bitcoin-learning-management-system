@@ -202,6 +202,7 @@ const baseConfig = {
         'md-section': '0px 0px 30px 0px #FF5C00A3',
         'l-section': '0px 0px 50px 0px #FF5C00A3',
         'sm-card': '0px 0px 10px 0px #FF5C00',
+        'sm-card-white': '0px 0px 10px 0px #FFFFFF',
       },
     },
   },

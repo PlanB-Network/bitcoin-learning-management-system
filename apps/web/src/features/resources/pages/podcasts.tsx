@@ -28,7 +28,7 @@ export const Podcasts = () => {
       }}
       activeCategory="podcasts"
     >
-      <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
         {sortedPodcasts
           .filter((podcast) =>
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
