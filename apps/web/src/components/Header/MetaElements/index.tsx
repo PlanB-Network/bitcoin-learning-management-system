@@ -6,7 +6,8 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
 
-import { Button } from '../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { useAppDispatch, useAppSelector } from '../../../hooks/index.ts';
 import { userSlice } from '../../../store/index.ts';
 import { LanguageSelector } from '../LanguageSelector/index.tsx';

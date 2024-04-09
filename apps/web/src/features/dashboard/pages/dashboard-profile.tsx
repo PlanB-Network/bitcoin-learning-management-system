@@ -1,4 +1,5 @@
-import { Button } from '../../../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import {
   Tabs,
   TabsContent,

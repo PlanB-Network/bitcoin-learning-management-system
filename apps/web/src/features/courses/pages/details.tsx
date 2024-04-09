@@ -13,7 +13,7 @@ import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
 import type { JoinedCourseWithAll } from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
@@ -25,7 +25,6 @@ import staricon from '../../../assets/courses/star.png';
 import wizard from '../../../assets/courses/wizard.png';
 import yellowBook from '../../../assets/courses/yellowbook.png';
 import rabitPen from '../../../assets/rabbit_holding_pen.svg';
-import { Button } from '../../../atoms/Button/index.tsx';
 import { AuthModal } from '../../../components/AuthModal/index.tsx';
 import { AuthModalState } from '../../../components/AuthModal/props.ts';
 import { AuthorCard } from '../../../components/author-card.tsx';
@@ -613,7 +612,6 @@ export const CourseDetails: React.FC = () => {
               : {
                   iconRight: <BsRocketTakeoff />,
                 })}
-            className="text-blue-1000 mb-auto"
           >
             {t(
               displayBuyCourse

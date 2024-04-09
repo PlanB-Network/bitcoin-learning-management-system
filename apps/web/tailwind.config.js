@@ -6,9 +6,9 @@ const { baseConfig } = require('../../packages/ui/tailwind.config.base.js');
 module.exports = {
   content: [
     join(
-      __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}',
+      '{src,pages,components,app,atoms}/**/*!(*.stories|*.spec).{ts,tsx,html}',
     ),
+    '../../packages/ui/**/*.{js,jsx,ts,tsx}',
   ],
   presets: [baseConfig],
 };

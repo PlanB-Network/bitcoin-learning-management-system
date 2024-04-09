@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { HiVideoCamera } from 'react-icons/hi2';
 
 import type { JoinedEvent } from '@sovereign-university/types';
+import { Button } from '@sovereign-university/ui';
 
-import { Button } from '../../../atoms/Button/index.tsx';
 import Flag from '../../../atoms/Flag/index.tsx';
 import { formatDate, formatTime } from '../../../utils/date.ts';
 import { compose } from '../../../utils/index.ts';

@@ -4,9 +4,8 @@ import {
 } from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
-import { Button } from '../../../atoms/Button/index.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
 

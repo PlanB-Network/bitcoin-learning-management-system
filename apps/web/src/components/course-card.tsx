@@ -6,7 +6,8 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
-import { Button } from '../atoms/Button/index.tsx';
+import { Button } from '@sovereign-university/ui';
+
 import { Card } from '../atoms/Card/index.tsx';
 import { compose, computeAssetCdnUrl } from '../utils/index.ts';
 import { joinWords } from '../utils/string.ts';
@@ -84,12 +85,7 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
               to={'/courses/$courseId'}
               params={{ courseId: course.id }}
             >
-              <Button
-                size="s"
-                iconRight={<BsArrowRight />}
-                variant="tertiary"
-                className="text-blue-1000 relative mb-auto"
-              >
+              <Button size="s" iconRight={<BsArrowRight />} variant="tertiary">
                 {t('courses.preview.letsgo')}
               </Button>
             </Link>

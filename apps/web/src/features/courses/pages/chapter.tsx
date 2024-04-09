@@ -10,10 +10,10 @@ import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsCheckLg } from 'react-icons/bs';
 
 import type { JoinedQuizQuestion } from '@sovereign-university/types';
+import { Button } from '@sovereign-university/ui';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
-import { Button } from '../../../atoms/Button/index.tsx';
 import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody/index.tsx';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import { compose, computeAssetCdnUrl } from '../../../utils/index.ts';

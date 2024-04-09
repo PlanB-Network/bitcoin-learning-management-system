@@ -1,8 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
+import { Button } from '@sovereign-university/ui';
+
 import OrangePill from '../../../assets/icons/orange_pill_color_gradient.svg';
-import { Button } from '../../../atoms/Button/index.tsx';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import { compose } from '../../../utils/index.ts';
 import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';

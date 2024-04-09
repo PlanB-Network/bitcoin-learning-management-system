@@ -5,9 +5,8 @@ import { QRCodeSVG } from 'qrcode.react';
 import { useCallback, useState } from 'react';
 import { AiOutlineCopy, AiOutlineWarning } from 'react-icons/ai';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button } from '@sovereign-university/ui';
 
-import { buttonVariants } from '../../../../../../../packages/ui/src/lib/button/variants.ts';
 import leftBackgroundImg from '../../../../assets/courses/left-background.png';
 import PlanBLogo from '../../../../assets/planb_logo_horizontal_black.svg?react';
 import { Modal } from '../../../../atoms/Modal/index.tsx';
@@ -225,12 +224,7 @@ export const CoursePaymentModal = ({
                   {course.paidDescription}
                 </span>
                 <a
-                  className={cn(
-                    buttonVariants({
-                      variant: 'translucent',
-                      className: 'text-white',
-                    }),
-                  )}
+                  className="h-9 px-4 py-2 text-white inline-flex justify-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1"
                   href={computeAssetCdnUrl(
                     course.lastCommit,
                     `courses/${course.id}/assets/curriculum.pdf`,
@@ -279,10 +273,11 @@ export const CoursePaymentModal = ({
                   />
                 </>
                 <Button
+                  variant="newPrimary"
+                  className="w-full"
                   onClick={() => {
                     onClose(true);
                   }}
-                  className="text-white bg-orange-400 w-full"
                 >
                   {t('courses.details.startCourse')}
                 </Button>
@@ -351,7 +346,8 @@ export const CoursePaymentModal = ({
                 </div>
               </div>
               <Button
-                className="text-white bg-orange-400 w-full"
+                variant="tertiary"
+                className="w-full"
                 onClick={initCoursePayment}
               >
                 {t('courses.proceedToPayment')}

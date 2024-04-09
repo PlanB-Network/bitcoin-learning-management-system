@@ -10,8 +10,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "react": "~18.2.0",
-    "tailwind-merge": "^2.2.2",
-    "tailwindcss": "^3.4.3"
+    "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.0.6",
@@ -22,6 +21,9 @@
     "@storybook/react-vite": "^8.0.6",
     "@types/react": "~18.2.74",
     "@types/react-dom": "~18.2.24",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7",
     "vite": "5.2.8"
   }
