@@ -1,10 +1,11 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { PageLayout } from '#src/components/PageLayout/index.tsx';
+
 import { AuthorCard } from '../../..//components/author-card.tsx';
 import { ProfessorCard } from '../../../components/professor-card.tsx';
 import { trpc } from '../../../utils/trpc.ts';
-import { ResourceLayout } from '../../resources/layout.tsx';
 
 export const ProfessorExplorer = () => {
   const { t, i18n } = useTranslation();
@@ -14,9 +15,9 @@ export const ProfessorExplorer = () => {
   });
 
   return (
-    <ResourceLayout
+    <PageLayout
       title={t('professors.pageTitle')}
-      tagLine={t('professors.pageSubtitle')}
+      description={t('professors.pageSubtitle')}
     >
       <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
         <div className="flex max-w-[22rem] flex-wrap items-stretch justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
@@ -41,6 +42,6 @@ export const ProfessorExplorer = () => {
           })}
         </div>
       </div>
-    </ResourceLayout>
+    </PageLayout>
   );
 };

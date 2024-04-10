@@ -2,6 +2,8 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { PageLayout } from '#src/components/PageLayout/index.js';
+
 import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';
 import { AuthorCardFull } from '../../../components/author-card-full.tsx';
@@ -9,7 +11,6 @@ import { CourseCard } from '../../../components/course-card.tsx';
 import { TutorialCard } from '../../../components/tutorial-card.tsx';
 import { useNavigateMisc } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/trpc.ts';
-import { ResourceLayout } from '../../resources/layout.tsx';
 
 export const ProfessorDetail = () => {
   const { navigateTo404 } = useNavigateMisc();
@@ -33,9 +34,9 @@ export const ProfessorDetail = () => {
   }, [professor, isFetched, navigateTo404]);
 
   return (
-    <ResourceLayout
+    <PageLayout
       title={t('professors.pageTitle')}
-      tagLine={t('professors.pageSubtitle')}
+      description={t('professors.pageSubtitle')}
       link={'/professors'}
     >
       {professor && (
@@ -77,6 +78,6 @@ export const ProfessorDetail = () => {
           </div>
         </div>
       )}
-    </ResourceLayout>
+    </PageLayout>
   );
 };
