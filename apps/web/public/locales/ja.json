@@ -17,8 +17,9 @@
     "coportateContact": "Contact information:",
     "storyTitle": "Out story",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
-    "title": "About the planB network",
-    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
+    "description": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "subtitle": "Want to orange pill the world ? Join the PlanB Network.",
+    "title": "About the Plan B Network",
     "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。"
   },
   "auth": {
@@ -71,13 +72,13 @@
     "buttonBuy": "購入する",
     "buttonPdf": "PDF / 電子書籍",
     "offeredBy": "寛大なコントリビュータによって提供されました",
-    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-    "pageTitle": "ライブラリ",
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "topicsAddressed": "トピックのアドレス： "
   },
   "builders": {
-    "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-    "pageTitle": "開発者ポータル"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Builders"
   },
   "courses": {
     "categories": {
@@ -138,9 +139,9 @@
       "footerp1": "Sovereign Universityでは、倫理規定に従う限り、教授陣がその内容や皆さんに探求してもらいたいツールについて、完全に自主性を持っています。彼らは様々なバックグラウンドを持つ情熱的なビットコイナーです。",
       "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、彼らのコースを評価するか、教授に直接チップを送ってあげてください。またはSovereign Universityのメンバーになって、プラットフォームをサポートしていただくことも大歓迎です。",
       "moreToCome": ".... 今後のますますの発展にご期待ください！",
-      "pageDescription": "ここでは、ビットコイン全体に関連する多数のコースを、幅広いテーマで見つけることができます。この教育コンテンツは有機的なもので、ビットコインの成長とともに発展しています。すべてのコンテンツは無料かつオープンソースで、誰でもアクセスできます。コースはアーカイブ化されていて、あなた一人ひとりの学習状況に適応できるようにサークルで構成されています。",
-      "pageSubtitle": "eラーニング・プラットフォームへようこそ。",
-      "pageTitle": "コース",
+      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worlwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
+      "pageSubtitle": "Mass adoption through centralised open-source education",
+      "pageTitle": "Welcome to the Plan B Academy",
       "s2p1": "ビットコイン・ラビットホールの探求を始めたなら、それは多くの道を持つ無限の旅であることを知る必要があります。Sovereign Universityでは、これを十分に理解しているため、教育コンテンツは非直線的で、自律的で、可能な限り広範囲になるようにデザインされています。",
       "s2p2": "自分のモチベーションに合わせてスキルや知識を身につけることができるようになります。",
       "s2p3": "すべてのコースは完全無料です！",
@@ -205,12 +206,9 @@
     }
   },
   "events": {
-    "introduction": {
-      "introductionh1": "Welcome to Plan B Network events",
-      "introductionp1": "Bottom up adoption enhanced by a strong network",
-      "introductionp2": "Looking for a Bitcoin event to go to ?",
-      "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
-    },
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network.",
+    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
+    "pageTitle": "Looking for a Bitcoin event to go to ?",
     "main": {
       "upcomingEvents": "Upcoming events",
       "currentEvents": "Events happening right now"
@@ -314,8 +312,8 @@
     "worldMap": "ハブがリンクされている世界地図"
   },
   "library": {
-    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-    "pageTitle": "ライブラリ",
+    "pageSubtitle": "This library is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "publishedIn": "公開日：{{date}}",
     "writtenBy": "作成者：{{author}}"
   },
@@ -365,8 +363,8 @@
   },
   "podcasts": {
     "hostedBy": "主催者：{{host}}",
-    "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-    "pageTitle": "ポッドキャスト・ポータル"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
     "pageSubtitle": "私たちの教授陣はすべてボランティアであり、情熱的なビットコイナーです。",
@@ -385,13 +383,13 @@
       "title": "教育用ツールキット"
     },
     "books": {
-      "title": "書籍"
+      "title": "Library"
     },
     "builders": {
       "title": "開発者"
     },
     "conferences": {
-      "title": "カンファレンス"
+      "title": "Conference replays"
     },
     "filterBarLabel": "あなたのニーズにぴったりのリソースを見つけよう：",
     "headerSignature": "ロジー（Rogzy）",
@@ -399,9 +397,10 @@
     "newsletters": {
       "title": "ニュースレター"
     },
-    "pageDescription": "ビットコインを理解しようとすることは、広がり続ける迷路を探検するようなものです。あなたの旅を支援するために、私たちはさまざまなトピックを扱うリソースと広範にわたるコレクションをキュレーションしました。",
-    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
-    "pageTitle": "リソース",
+    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
+    "pageSubtitle": "Centralise knowledge to better distribute it",
+    "pageTitle": "Welcome to the Resource Portal",
+    "github": "All this data is managed via one open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
     "podcasts": {
       "title": "ポッドキャスト"
     },
@@ -460,9 +459,9 @@
       "shortDescription": "ビットコイン・ノードを運営し、ネットワークに参加するためのソリューション",
       "title": "ノード"
     },
-    "pageDescription": "ビットコインは幅広い業界であり、日々ますます広がりを見せています。それを探求するのを助けるために、私たちは様々なソリューションを説明する多くのチュートリアルを集めました。",
-    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
-    "pageTitle": "チュートリアル",
+    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
+    "pageSubtitle": "Let's demystify Bitcoin by showing the vastness and richness of its ecosystem",
+    "pageTitle": "Discover our tutorials",
     "privacy": {
       "bitcoin": {
         "description": "ビットコインはデフォルトでは非公開ではなく、意図的に偽名になるように設計されており、すべてのトランザクションは公開され、永遠に保存されます。ある程度の機密性を取り戻すためには、ベスト・ユーザープラクティスとソフトウェアに統合された特定のツールを使用する必要があります。アドレスの再利用の回避からCoinJoin、コインの混合や独自ノードへの接続まで、私たちはあなたのプライバシーへの旅をサポートします。"
