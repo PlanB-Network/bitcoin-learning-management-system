@@ -2,7 +2,7 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { PageLayout } from '#src/components/PageLayout/index.js';
+import { PageLayout } from '#src/components/PageLayout/index.tsx';
 
 import yellowBook from '../../../assets/icons/book_yellow.png';
 import handWriting from '../../../assets/icons/hand_writing.png';

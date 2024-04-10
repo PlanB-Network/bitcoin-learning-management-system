@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 
 import { cn } from '@sovereign-university/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
-import { PageHeader } from '#src/components/PageHeader/index.js';
+import { MainLayout } from '#src/components/MainLayout/index.tsx';
+import { PageHeader } from '#src/components/PageHeader/index.tsx';
 
 interface Props {
   title: string;
