@@ -41,6 +41,7 @@ export const Builder = () => {
       title={t('builders.pageTitle')}
       tagLine={t('builders.pageSubtitle')}
       link={'/resources/builders'}
+      activeCategory="builders"
     >
       {builder && (
         <Card className="mx-2 md:mx-auto">

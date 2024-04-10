@@ -1,11 +1,15 @@
 import type { RegisteredRouter, ToPathOption } from '@tanstack/react-router';
-import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+
+import { cn } from '@sovereign-university/ui';
+
+import { PageHeader } from '#src/components/PageHeader/index.tsx';
 
 import { MainLayout } from '../../components/MainLayout/index.tsx';
 
+import { CategoryTabs } from './components/CategoryTabs/index.tsx';
+import { DropdownMenu } from './components/DropdownMenu/dropdown-menu.tsx';
 import { FilterBar } from './components/FilterBar/index.tsx';
-import { PageTitle } from './components/PageTitle/index.tsx';
 import { Pagination } from './components/Pagination/index.tsx';
 
 interface Props {
@@ -20,6 +24,7 @@ interface Props {
   pagination?: boolean;
   className?: string;
   link?: ToPathOption<RegisteredRouter['routeTree']>;
+  activeCategory?: string;
 }
 
 export const ResourceLayout = ({
@@ -30,31 +35,24 @@ export const ResourceLayout = ({
   pagination,
   className,
   link,
+  activeCategory,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
-      <div
-        className={`flex h-fit min-h-screen justify-center p-2 sm:p-10 ${className}`}
-      >
-        <div className="max-w-6xl text-black">
-          <div>
-            {link ? (
-              // TODO fix
-              <Link to={link as '/'}>
-                <PageTitle>{title}</PageTitle>
-              </Link>
-            ) : (
-              <PageTitle>{title}</PageTitle>
-            )}
-            {tagLine && (
-              <p className="mx-4 pb-3 pt-4 text-justify text-sm font-light uppercase text-white sm:mx-8 sm:pt-2 sm:text-base">
-                {tagLine}
-              </p>
-            )}
-          </div>
+      <div className={cn('flex h-fit justify-center p-2 md:p-10', className)}>
+        <div className="w-full max-w-6xl text-black">
+          <CategoryTabs resourceActiveCategory={activeCategory} />
+          <DropdownMenu resourceActiveCategory={activeCategory} />
+
+          <PageHeader
+            title={title}
+            description={tagLine || ''}
+            link={link ? link : ''}
+            hasGithubDescription={true}
+          />
 
           {filterBar && (
-            <div className="my-3 sm:my-6 md:my-8">
+            <div className="flex justify-center my-3 sm:my-6 md:my-8">
               <FilterBar {...filterBar} />
             </div>
           )}

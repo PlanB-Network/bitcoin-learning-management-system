@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -19,37 +19,58 @@ export const Resources = () => {
           subtitle={t('resources.pageSubtitle')}
           description={t('resources.pageDescription')}
         />
-
-        <div className="mt-6 self-center">
-          <div className="grid max-w-[64rem] grid-cols-2 px-4 md:grid-cols-3 md:px-0">
+        <div className="mt-10 md:mt-20 px-4 md:px-8">
+          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl p-4 md:p-[30px] mx-auto gap-2 md:gap-12 bg-[#1A1A1A40] shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] rounded-3xl border border-white">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}
                 to={`/resources/${resourceCategory.name}`}
+                onClick={(event) =>
+                  resourceCategory.unreleased && event.preventDefault()
+                }
+                className={cn(
+                  'group',
+                  resourceCategory.unreleased ? 'cursor-not-allowed' : '',
+                )}
               >
-                <button
-                  onClick={(event) =>
-                    resourceCategory.unreleased && event.preventDefault()
-                  }
+                <div
+                  className={cn(
+                    'w-40 md:w-[272px] flex items-center rounded-2xl py-[5px] px-2.5 md:py-2.5 md:px-5 gap-5 md:gap-6 transition-all',
+                    resourceCategory.unreleased
+                      ? 'opacity-50'
+                      : 'opacity-100 group-hover:bg-newBlack-3 group-focus:bg-newBlack-3',
+                  )}
                 >
-                  <div
+                  <CategoryIcon
+                    src={resourceCategory.image}
+                    variant="resources"
+                    imgClassName="max-md:filter-white max-md:group-hover:filter-newOrange1 max-md:group-focus:filter-newOrange1"
+                  />
+                  <h3
                     className={cn(
-                      'group flex items-center space-x-2 rounded-lg py-2 hover:bg-blue-600 sm:space-x-4 sm:p-2 duration-300',
+                      'text-sm md:text-2xl text-white max-md:leading-[1.43] max-md:tracking-[0.17px]',
                       resourceCategory.unreleased
-                        ? 'opacity-50'
-                        : 'opacity-100',
+                        ? ''
+                        : 'group-hover:font-semibold group-focus:font-semibold',
                     )}
                   >
-                    <CategoryIcon src={resourceCategory.image} />
-                    <h3 className="text-base font-semibold text-white group-hover:text-orange-500 sm:text-xl lg:text-2xl">
-                      {t(`resources.${resourceCategory.name}.title`)}
-                    </h3>
-                  </div>
-                </button>
+                    {t(`resources.${resourceCategory.name}.title`)}
+                  </h3>
+                </div>
               </Link>
             ))}
           </div>
         </div>
+        <p className="max-w-2xl mx-auto leading-snug md:leading-relaxed tracking-[0.15px] md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
+          <Trans i18nKey="resources.github" className="">
+            <a
+              className="underline underline-offset-2 hover:text-darkOrange-5"
+              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+            >
+              Github Repository
+            </a>
+          </Trans>
+        </p>
       </div>
     </MainLayout>
   );

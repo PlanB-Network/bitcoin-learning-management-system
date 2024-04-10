@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@sovereign-university/ui';
 
+import { PageLayout } from '#src/components/PageLayout/index.tsx';
+
 import Corporates from '../../../assets/about/corporates.webp';
 import PlanBCircles from '../../../assets/about/planb_circles.webp';
 import PpAjelex from '../../../assets/people/ajelex.webp';
@@ -39,22 +41,8 @@ import PpRogzy from '../../../assets/people/rogzy.webp';
 import PpTheom from '../../../assets/people/theo_m.webp';
 import PpTheop from '../../../assets/people/theo_p.webp';
 import PpTodd from '../../../assets/people/todd.webp';
-import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { AboutUs } from '../../../molecules/AboutUs/index.tsx';
 import { Person } from '../../../molecules/Person/index.tsx';
-
-const Title = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="mx-8 mt-24 flex max-w-4xl flex-col items-center">
-      <h1 className="text-4xl font-semibold uppercase text-orange-500">
-        {t('about.title')}
-      </h1>
-      <p className="uppercase">{t('about.subtitle')}</p>
-    </div>
-  );
-};
 
 const Mission = () => {
   const { t } = useTranslation();
@@ -276,10 +264,15 @@ const ActiveContributors = () => {
 };
 
 export const About = () => {
+  const { t } = useTranslation();
+
   return (
-    <MainLayout footerVariant="dark">
+    <PageLayout
+      title={t('about.title')}
+      subtitle={t('about.subtitle')}
+      description={t('about.description')}
+    >
       <div className="flex flex-col items-center px-4">
-        <Title />
         <Mission />
         <div className="mt-12 max-w-[70rem]">
           <AboutUs />
@@ -289,6 +282,6 @@ export const About = () => {
         <Professors />
         <ActiveContributors />
       </div>
-    </MainLayout>
+    </PageLayout>
   );
 };
