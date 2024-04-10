@@ -1,9 +1,10 @@
-const { join } = require('node:path');
+import { join } from 'node:path';
 
-const { baseConfig } = require('../../packages/ui/tailwind.config-base.js');
+import type { Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import baseConfig from '../../packages/ui/tailwind.config-base.js';
+
+export default {
   content: [
     join(
       '{src,pages,components,app,atoms}/**/*!(*.stories|*.spec).{ts,tsx,html}',
@@ -11,4 +12,4 @@ module.exports = {
     '../../packages/ui/**/*.{js,jsx,ts,tsx}',
   ],
   presets: [baseConfig],
-};
+} satisfies Config;
