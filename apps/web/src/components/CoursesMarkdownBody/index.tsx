@@ -39,12 +39,7 @@ export const CoursesMarkdownBody = ({
           </div>
         ),
         a: ({ children, href }) => (
-          <a
-            href={href}
-            target="_blank"
-            className=" text-blue-500 "
-            rel="noreferrer"
-          >
+          <a href={href} target="_blank" className="underline" rel="noreferrer">
             {children}
           </a>
         ),
