@@ -17,8 +17,9 @@
     "coportateContact": "Informações de contacto:",
     "storyTitle": "Nossa história",
     "storyContent": "A rede PlanB é uma iniciativa para apoiar a educação Bitcoin no mundo inteiro. É o cruzamento de várias empresas apaixonadas pelo Bitcoin focadas na educação, software de código aberto, redes peer-to-peer e sentido de comunidade. Juntos, decidiram construir a rede PlanB e oferecer ao ecossistema Bitcoin as ferramentas certas para evoluir.",
-    "title": "Sobre a PlanB Network",
-    "subtitle": "A nossa força é a nossa comunidade. Vamo-nos juntar numa rede global de bitcoin.",
+    "description": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "subtitle": "Want to orange pill the world ? Join the PlanB Network.",
+    "title": "About the Plan B Network",
     "manifesto": "Acreditamos no futuro descentralizado que o Bitcoin oferece.\n\nA nossa missão é apresentar o Bitcoin a bilhões de pessoas na próxima década. Os nossos instrumentos são a educação e a informação. \n\nOferecemos suporte a comunidades locais de Bitcoiners, fornecendo conteúdo educacional de código aberto e oferecendo uma rede de mentores de Bitcoin.\n\nA nossa filosofia é inspirada no manifesto de cypherpunk. Assim como eles defendem a privacidade, nós defendemos a educação. Acreditamos que o conhecimento é a base da liberdade e da mudança.\n\nFuncionamos apenas com Bitcoin. \n\nDefendemos a responsabilidade individual e a independência oferecida pela posse das suas próprias chaves. \n\nExigimos verificação, e não confiança cega. \n\nAcreditamos que corrigindo o dinheiro, corrigimos o mundo.\n\nSomos descentralizados e de código aberto, evitando qualquer ponto de falha. \n\nEncorajamos a divulgação livre do nosso conteúdo. \n\nAspiramos a um mundo que opera de baixo para cima, onde o indivíduo fica no centro.\n\nSimplificamos, educamos, compartilhamos. \n\nJunta-te a nós nesta missão e ajuda-nos a trazer a pílula laranja ao mundo.\n"
   },
   "auth": {
@@ -71,13 +72,13 @@
     "buttonBuy": "Comprar",
     "buttonPdf": "PDF / E-book",
     "offeredBy": "Oferecido por um(a) contribuidor(a) generoso(a)",
-    "pageSubtitle": "Esta biblioteca é open-source e aberta para contribuição. Gratidão por avaliar e compartilhar!",
-    "pageTitle": "A biblioteca",
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "topicsAddressed": "Tópicos abordados: "
   },
   "builders": {
-    "pageSubtitle": "Este portal é open-source e aberto para contribuição. Gratidão por avaliar e compartilhar!",
-    "pageTitle": "Portal do Construtor"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Builders"
   },
   "courses": {
     "categories": {
@@ -138,9 +139,9 @@
       "footerp1": "Na The Sovereign University, os(as) nossos(as) professores(as) têm total autonomia sobre o seu conteúdo e as ferramentas que querem que tu explores, desde que sigam o código de ética. Eles/elas são bitcoiners apaixonados(as) de origens variadas.",
       "footerp2": "Se queres melhorar num curso ou fornecer o teu próprio curso, podes simplesmente fazê-lo através do GitHub. Para apoiares um(a) professor(a), podes avaliar o seu curso, oferecer-lhe diretamente uma gorjeta ou tornar-te membro da universidade para apoiar a plataforma.",
       "moreToCome": ".... e mais por vir!",
-      "pageDescription": "Aqui poderás encontrar um grande número de cursos relacionados com o Bitcoin como um todo, com uma grande variedade de assuntos. Este conteúdo educacional é orgânico, crescendo à medida que o Bitcoin cresce. Todo o conteúdo é gratuito, de código aberto e acessível a todos. O índice de cursos, é organizado em círculos para se adaptar ao caminho de aprendizagem de cada um(a).",
-      "pageSubtitle": "Bem-vindo(a) ao portal da plataforma de e-learning.",
-      "pageTitle": "Cursos",
+      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worlwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
+      "pageSubtitle": "Mass adoption through centralised open-source education",
+      "pageTitle": "Welcome to the Plan B Academy",
       "s2p1": "Se começaste a explorar a toca do coelho do Bitcoin, já deves saber que é uma jornada infinita com múltiplos caminhos. Aqui na universidade, sabemos disso e concebemos o nosso conteúdo educacional para ser não-linear, autónomo e tão extenso quanto possível.",
       "s2p2": "Serás capaz de escolher o teu próprio caminho e percorrê-lo, ganhando habilidades e conhecimento à medida da tua própria motivação.",
       "s2p3": "Todos os nossos cursos são 100% gratuitos, então nada te pode parar!",
@@ -205,12 +206,9 @@
     }
   },
   "events": {
-    "introduction": {
-      "introductionh1": "Welcome to Plan B Network events",
-      "introductionp1": "Bottom up adoption enhanced by a strong network",
-      "introductionp2": "Looking for a Bitcoin event to go to ?",
-      "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
-    },
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network.",
+    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
+    "pageTitle": "Looking for a Bitcoin event to go to ?",
     "main": {
       "upcomingEvents": "Upcoming events",
       "currentEvents": "Events happening right now"
@@ -314,8 +312,8 @@
     "worldMap": "mapa do mundo com hubs ligados"
   },
   "library": {
-    "pageSubtitle": "Esta biblioteca é open-source e aberta para contribuição. Gratidão por avaliar e compartilhar!",
-    "pageTitle": "A biblioteca",
+    "pageSubtitle": "This library is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "publishedIn": "Publicado em {{date}}",
     "writtenBy": "Escrito por {{author}}"
   },
@@ -365,8 +363,8 @@
   },
   "podcasts": {
     "hostedBy": "Organizado por {{host}}",
-    "pageSubtitle": "Este portal é open-source e aberto para contribuição. Gratidão por avaliar e compartilhar!",
-    "pageTitle": "O Portal do Podcast"
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
     "pageSubtitle": "Todos os nossos professores são voluntários e dedicados bitcoiners. Podes deixar uma gorjeta para agradecer.",
@@ -385,13 +383,13 @@
       "title": "Kit de Ferramentas Educacional"
     },
     "books": {
-      "title": "Livros"
+      "title": "Library"
     },
     "builders": {
       "title": "Construtores (Builders)"
     },
     "conferences": {
-      "title": "Conferências"
+      "title": "Conference replays"
     },
     "filterBarLabel": "Encontra os recursos perfeitos para as tuas necessidades:",
     "headerSignature": "Rogzy",
@@ -399,9 +397,10 @@
     "newsletters": {
       "title": "Newsletters"
     },
-    "pageDescription": "Tentar entender Bitcoin é como explorar um labirinto que não pára de crescer. Para te ajudar na tua jornada, juntámos uma extensa coleção de recursos que tratam de uma miríade de tópicos.",
-    "pageSubtitle": "Bem-vindo(a) à toca infinita do coelho do Bitcoin!",
-    "pageTitle": "Recursos",
+    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
+    "pageSubtitle": "Centralise knowledge to better distribute it",
+    "pageTitle": "Welcome to the Resource Portal",
+    "github": "All this data is managed via one open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
     "podcasts": {
       "title": "Podcasts"
     },
@@ -460,9 +459,9 @@
       "shortDescription": "Soluções para operar um nó bitcoin e juntar-se à rede",
       "title": "Nó"
     },
-    "pageDescription": "Bitcoin é uma indústria ampla, e que se torna cada vez mais ampla a cada dia que passa. Para ajudar-te a explorá-la, reunimos um grande número de tutoriais que descrevem várias soluções.",
-    "pageSubtitle": "Bem-vindo(a) à toca infinita do coelho do Bitcoin!",
-    "pageTitle": "Tutoriais",
+    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
+    "pageSubtitle": "Let's demystify Bitcoin by showing the vastness and richness of its ecosystem",
+    "pageTitle": "Discover our tutorials",
     "privacy": {
       "bitcoin": {
         "description": "O Bitcoin não é privado por padrão, é intencionalmente projetado para ser pseudónimo, e cada transação é pública e armazenada para sempre. Para recuperar alguma confidencialidade, temos de usar as melhores práticas de utilizador e ferramentas específicas integradas no nosso software. Desde evitar a reutilização de endereços até CoinJoin, passando por misturar as tuas moedas e conectares-te ao teu próprio nó, ajudaremos-te na tua jornada em direção à privacidade."
