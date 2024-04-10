@@ -2,6 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
+
 import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { PageHeader } from '../../../components/PageHeader/index.tsx';
@@ -18,6 +21,10 @@ export const TutorialExplorer = () => {
 
   return (
     <MainLayout variant="light">
+      <PageMeta
+        title={`${SITE_NAME} - ${t('tutorials.pageTitle')}`}
+        description={t('tutorials.pageDescription')}
+      />
       <div className="bg-blue-1000 flex flex-col justify-center">
         <PageHeader
           title={t('tutorials.pageTitle')}

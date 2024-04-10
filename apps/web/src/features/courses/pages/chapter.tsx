@@ -12,6 +12,9 @@ import { BsCheckLg } from 'react-icons/bs';
 import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { SITE_NAME } from '#src/utils/meta.js';
+
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody/index.tsx';
@@ -534,6 +537,18 @@ export const CourseChapter = () => {
 
   return (
     <CourseLayout>
+      <PageMeta
+        title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
+        description={chapter?.course.objectives}
+        imageSrc={
+          chapter
+            ? computeAssetCdnUrl(
+                chapter.course.lastCommit,
+                `courses/${chapter.course.id}/assets/thumbnail.png`,
+              )
+            : ''
+        }
+      />
       <div className="text-blue-800">
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">

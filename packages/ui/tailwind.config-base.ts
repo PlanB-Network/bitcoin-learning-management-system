@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss';
+
 const baseConfig = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
@@ -209,4 +210,4 @@ const baseConfig = {
   plugins: [require('tailwindcss-animate')],
 };
 
-export default { baseConfig };
+export default baseConfig satisfies Config;

@@ -1,10 +1,11 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useMemo } from 'react';
+import '../../styles/global.css';
 
 import { cn } from '../../lib/utils.ts';
 import type { BaseAtomProps } from '../types.ts';
 
-interface ButtonProps
+export interface ButtonProps
   extends BaseAtomProps,
     DetailedHTMLProps<
       ButtonHTMLAttributes<HTMLButtonElement>,
