@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -19,8 +19,8 @@ export const Resources = () => {
           subtitle={t('resources.pageSubtitle')}
           description={t('resources.pageDescription')}
         />
-        <div className="mt-10 md:mt-20 md:px-8">
-          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl md:p-[30px] mx-auto gap-2 md:gap-12 md:bg-[#1A1A1A40] md:shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] md:rounded-[30px] md:border md:border-white">
+        <div className="mt-10 md:mt-20 px-4 md:px-8">
+          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl p-4 md:p-[30px] mx-auto gap-2 md:gap-12 bg-[#1A1A1A40] shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] rounded-3xl border border-white">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}
