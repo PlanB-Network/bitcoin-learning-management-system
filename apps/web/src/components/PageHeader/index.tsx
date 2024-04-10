@@ -21,7 +21,7 @@ export const PageHeader = ({
   return (
     <div className="flex flex-col max-lg:px-4 mt-5 md:mt-10">
       {subtitle && (
-        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-[0.15px] max-md:mb-2">
+        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-[0.15px] max-md:mb-2 mb-1">
           {subtitle}
         </h1>
       )}
@@ -36,7 +36,7 @@ export const PageHeader = ({
       )}
 
       {hasGithubDescription ? (
-        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px]">
+        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] mt-1 md:mt-6 md:tracking-[0.15px]">
           <Trans i18nKey="resources.github">
             <a
               className="underline underline-offset-2 hover:text-darkOrange-5"
@@ -47,7 +47,7 @@ export const PageHeader = ({
           </Trans>
         </p>
       ) : (
-        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px] max-md:hidden">
+        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px] mt-1 md:mt-6 max-md:hidden">
           {description}
         </p>
       )}
