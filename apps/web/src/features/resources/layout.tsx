@@ -11,6 +11,9 @@ import { DropdownMenu } from './components/DropdownMenu/dropdown-menu.tsx';
 import { FilterBar } from './components/FilterBar/index.tsx';
 import { PageTitle } from './components/PageTitle/index.tsx';
 import { Pagination } from './components/Pagination/index.tsx';
+import { RESOURCES_CATEGORIES } from './utils.tsx';
+
+type CategoryName = (typeof RESOURCES_CATEGORIES)[number]['name'];
 
 interface Props {
   title: string;
@@ -24,7 +27,7 @@ interface Props {
   pagination?: boolean;
   className?: string;
   link?: ToPathOption<RegisteredRouter['routeTree']>;
-  activeCategory?: string;
+  activeCategory?: CategoryName;
 }
 
 export const ResourceLayout = ({
@@ -41,8 +44,15 @@ export const ResourceLayout = ({
     <MainLayout footerVariant="dark">
       <div className={cn('flex h-fit justify-center p-2 md:p-10', className)}>
         <div className="w-full max-w-6xl text-black">
-          <CategoryTabs resourceActiveCategory={activeCategory} />
-          <DropdownMenu resourceActiveCategory={activeCategory} />
+          {activeCategory &&
+            RESOURCES_CATEGORIES.map((category) => category.name).includes(
+              activeCategory,
+            ) && (
+              <>
+                <CategoryTabs resourceActiveCategory={activeCategory} />
+                <DropdownMenu resourceActiveCategory={activeCategory} />
+              </>
+            )}
           <div className="flex flex-col gap-1 text-center max-w-[880px] mx-auto">
             {link ? (
               // TODO fix
