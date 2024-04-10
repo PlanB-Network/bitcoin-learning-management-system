@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { PageLayout } from '#src/components/PageLayout/index.js';
+
 import { CourseCard } from '../../../components/course-card.tsx';
-import { MainLayout } from '../../../components/MainLayout/index.tsx';
-import { PageHeader } from '../../../components/PageHeader/index.tsx';
 import { fakeCourseId } from '../../../utils/courses.ts';
 import { extractNumbers } from '../../../utils/string.ts';
 import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
@@ -198,14 +198,13 @@ export const CoursesExplorer = () => {
   }
 
   return (
-    <MainLayout footerVariant="dark">
+    <PageLayout
+      title={t('courses.explorer.pageTitle')}
+      subtitle={t('courses.explorer.pageSubtitle')}
+      description={t('courses.explorer.pageDescription')}
+      paddingXClasses="px-0"
+    >
       <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
-        <PageHeader
-          title={t('courses.explorer.pageTitle')}
-          subtitle={t('courses.explorer.pageSubtitle')}
-          description={t('courses.explorer.pageDescription')}
-        />
-
         <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
           <CourseTree courses={treeCourses} />
         </div>
@@ -273,6 +272,6 @@ export const CoursesExplorer = () => {
           ))}
         </div>
       </div>
-    </MainLayout>
+    </PageLayout>
   );
 };

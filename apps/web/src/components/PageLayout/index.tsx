@@ -6,12 +6,16 @@ import { MainLayout } from '#src/components/MainLayout/index.tsx';
 import { PageHeader } from '#src/components/PageHeader/index.tsx';
 
 interface Props {
-  title: string;
+  title?: string;
   subtitle?: string;
   description?: string;
   link?: string;
+  variant?: 'light' | 'dark' | 'blue';
+  footerVariant?: 'dark' | 'light' | 'course';
   children: ReactNode;
   className?: string;
+  maxWidth?: string;
+  paddingXClasses?: string;
 }
 
 export const PageLayout = ({
@@ -19,15 +23,21 @@ export const PageLayout = ({
   subtitle,
   description,
   link,
+  variant = 'dark',
+  footerVariant = 'dark',
   children,
   className,
+  maxWidth = 'max-w-6xl',
+  paddingXClasses = 'px-2 md:px-10',
 }: Props) => {
   return (
-    <MainLayout footerVariant="dark">
-      <div className={cn('flex h-fit justify-center p-2 md:p-10', className)}>
-        <div className="w-full max-w-6xl text-black">
+    <MainLayout variant={variant} footerVariant={footerVariant}>
+      <div
+        className={cn('flex h-fit justify-center', className, paddingXClasses)}
+      >
+        <div className={cn('w-full', maxWidth)}>
           <PageHeader
-            title={title}
+            title={title || ''}
             subtitle={subtitle || ''}
             description={description || ''}
             link={link}

@@ -1,20 +1,27 @@
 import { Link } from '@tanstack/react-router';
+import { Trans } from 'react-i18next';
+
+import { cn } from '@sovereign-university/ui';
 
 export const PageHeader = ({
   title,
   subtitle,
   description,
   link,
+  hasGithubDescription = false,
 }: {
   title: string;
   subtitle?: string;
   description: string;
   link?: string;
+  hasGithubDescription?: boolean;
 }) => {
+  const isSubsectionTitle = subtitle ? false : true;
+
   return (
-    <div className="max-w-[880px] max-lg:px-4 flex flex-col mx-auto">
+    <div className="flex flex-col max-lg:px-4 mt-5 md:mt-10">
       {subtitle && (
-        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold md:leading-[1.6] md:tracking-[0.15px] mb-2.5 md:mb-4">
+        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-[0.15px] max-md:mb-2">
           {subtitle}
         </h1>
       )}
@@ -22,22 +29,48 @@ export const PageHeader = ({
       {link ? (
         // TODO fix
         <Link to={link as '/'}>
-          <PageTitle title={title} />
+          <PageTitle title={title} isSubsectionTitle={isSubsectionTitle} />
         </Link>
       ) : (
-        <PageTitle title={title} />
+        <PageTitle title={title} isSubsectionTitle={isSubsectionTitle} />
       )}
 
-      <p className="text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px]">
-        {description}
-      </p>
+      {hasGithubDescription ? (
+        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px]">
+          <Trans i18nKey="resources.github">
+            <a
+              className="underline underline-offset-2 hover:text-darkOrange-5"
+              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+            >
+              Github Repository
+            </a>
+          </Trans>
+        </p>
+      ) : (
+        <p className="max-w-[880px] mx-auto text-center text-xs md:text-base text-newGray-1 leading-[1.66] md:leading-[1.75] tracking-[0.4px] md:tracking-[0.15px] max-md:hidden">
+          {description}
+        </p>
+      )}
     </div>
   );
 };
 
-const PageTitle = ({ title }: { title: string }) => {
+const PageTitle = ({
+  title,
+  isSubsectionTitle,
+}: {
+  title: string;
+  isSubsectionTitle: boolean;
+}) => {
   return (
-    <h2 className="text-center text-2xl md:text-6xl text-white md:font-light leading-none md:leading-[1.2] tracking-[-0.5px] mb-5 md:mb-6">
+    <h2
+      className={cn(
+        isSubsectionTitle
+          ? 'text-lg md:text-[40px] text-darkOrange-5 tracking-[0.25px]'
+          : 'text-[32px] md:text-6xl text-white md:font-light md:tracking-[-0.5px]',
+        'text-center leading-[120%]',
+      )}
+    >
       {title}
     </h2>
   );
