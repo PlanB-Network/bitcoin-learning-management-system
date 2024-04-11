@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
+import PlanBLogo from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import { MetaElements } from '../MetaElements/index.tsx';
 import type { NavigationSection } from '../props.tsx';
 
