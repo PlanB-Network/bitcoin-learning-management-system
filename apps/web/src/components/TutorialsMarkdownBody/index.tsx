@@ -9,6 +9,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
+import { CopyButton } from '../CopyButton/index.tsx';
 
 export const TutorialsMarkdownBody = ({
   content,
@@ -107,6 +108,8 @@ export const TutorialsMarkdownBody = ({
             />
           ),
         code({ className, children }) {
+          const childrenText = String(children).replace(/\n$/, '');
+
           // Default to treating as inline code
           let isCodeBlock = false;
 
@@ -118,13 +121,16 @@ export const TutorialsMarkdownBody = ({
           }
 
           return isCodeBlock ? (
-            <SyntaxHighlighter
-              style={atomDark}
-              language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
-              PreTag="div"
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+            <div className="relative">
+              <SyntaxHighlighter
+                style={atomDark}
+                language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
+                PreTag="div"
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+              <CopyButton text={childrenText} />
+            </div>
           ) : (
             <code className="bg-newGray-4 px-1.5 rounded-lg font-serif inline-block text-sm">
               {children}
