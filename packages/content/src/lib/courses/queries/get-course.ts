@@ -1,8 +1,8 @@
 import { sql } from '@sovereign-university/database';
-import type { JoinedCourse } from '@sovereign-university/types';
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 
 export const getCourseQuery = (id: string, language?: string) => {
-  return sql<JoinedCourse[]>`
+  return sql<JoinedCourseWithAll[]>`
     SELECT 
       c.id, 
       cl.language, 

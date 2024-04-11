@@ -46,6 +46,13 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
 
   await redis.del('trpc:*');
 
+  if (syncErrors.length > 0) {
+    console.error(
+      `=== ${syncErrors.length} ERRORS occurred during the sync process: `,
+    );
+    console.error(syncErrors.join('\n'));
+  }
+
   console.log('-- Sync procedure: sync cdn repository');
 
   let privateCdnError;
@@ -78,13 +85,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   }
 
   console.log('-- Sync procedure: END');
-
-  if (syncErrors.length > 0) {
-    console.error(
-      `=== ${syncErrors.length} ERRORS occurred during the sync process: `,
-    );
-    console.error(syncErrors.join('\n'));
-  }
 
   return {
     success: syncErrors.length === 0,

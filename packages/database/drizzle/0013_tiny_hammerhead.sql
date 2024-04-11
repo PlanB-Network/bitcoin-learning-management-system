@@ -1,5 +1,5 @@
-ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_online" boolean DEFAULT false;--> statement-breakpoint
-ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_in_person" boolean DEFAULT false;--> statement-breakpoint
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_online" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_in_person" boolean DEFAULT false NOT NULL;--> statement-breakpoint
 ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "start_date" timestamp;--> statement-breakpoint
 ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "end_date" timestamp;--> statement-breakpoint
 ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "timezone" text;--> statement-breakpoint

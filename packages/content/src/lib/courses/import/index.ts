@@ -118,6 +118,16 @@ interface Chapter {
   professors: string[];
   releaseDate: string | null;
   releasePlace: string | null;
+  isOnline: boolean;
+  isInPerson: boolean;
+  startDate: string | null;
+  endDate: string | null;
+  timeZone: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
+  liveUrl: string | null;
+  availableSeats: number | null;
 }
 
 const extractData = (token: Token, type: string) => {
@@ -157,8 +167,18 @@ const extractParts = (markdown: string): Part[] => {
           sections: [],
           raw_content: '',
           professors: [],
-          releaseDate: '',
+          releaseDate: null,
           releasePlace: '',
+          isOnline: false,
+          isInPerson: false,
+          startDate: null,
+          endDate: null,
+          addressLine1: '',
+          addressLine2: '',
+          addressLine3: '',
+          timeZone: '',
+          liveUrl: '',
+          availableSeats: -1,
         });
       } else if (currentPart.chapters.length > 0) {
         const currentChapter = currentPart.chapters.at(-1)!;
@@ -170,14 +190,44 @@ const extractParts = (markdown: string): Part[] => {
         if (token.raw.startsWith('<')) {
           currentChapter.releaseDate = extractData(token, 'releaseDate');
           currentChapter.releasePlace = extractData(token, 'releasePlace');
+          currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
+          currentChapter.isInPerson =
+            extractData(token, 'isInPerson') === 'true';
+          currentChapter.startDate = extractData(token, 'startDate');
+          currentChapter.endDate = extractData(token, 'endDate');
+          currentChapter.timeZone = extractData(token, 'timeZone');
+          currentChapter.addressLine1 = extractData(token, 'addressLine1');
+          currentChapter.addressLine2 = extractData(token, 'addressLine2');
+          currentChapter.addressLine3 = extractData(token, 'addressLine3');
+          currentChapter.liveUrl = extractData(token, 'liveUrl');
+          currentChapter.availableSeats = 0; //extractData(token, 'availableSeats');
 
           const professor = extractData(token, 'professor');
           if (professor) {
             currentChapter.professors.push(professor);
           }
 
-          const regex =
-            /<professor>.*<\/professor>|<releaseDate>.*<\/releaseDate>|<releasePlace>.*<\/releasePlace>/gm;
+          const tagsToRemove = [
+            'professor',
+            'releaseDate',
+            'releasePlace',
+            'isOnline',
+            'isInPerson',
+            'startDate',
+            'endDate',
+            'timeZone',
+            'addressLine1',
+            'addressLine2',
+            'addressLine3',
+            'liveUrl',
+            'availableSeats',
+          ];
+
+          const regex = new RegExp(
+            tagsToRemove.map((tag) => `<${tag}>.*</${tag}>`).join('|'),
+            'gm',
+          );
+
           token.raw = token.raw.replaceAll(regex, '');
         }
 
@@ -454,7 +504,7 @@ export const createProcessChangedCourse =
 
                 const formatedChapters = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => {
-                    const c = {
+                    return {
                       course_id: course.id,
                       part: partIndex + 1,
                       chapter: chapterIndex + 1,
@@ -463,14 +513,18 @@ export const createProcessChangedCourse =
                       sections: chapter.sections,
                       raw_content: chapter.raw_content.trim(),
                       release_place: chapter.releasePlace,
-                      release_date: null as string | null,
+                      release_date: chapter.releaseDate,
+                      is_online: chapter.isOnline,
+                      is_in_person: chapter.isInPerson,
+                      start_date: chapter.startDate,
+                      end_date: chapter.endDate,
+                      timezone: chapter.timeZone,
+                      address_line_1: chapter.addressLine1,
+                      address_line_2: chapter.addressLine2,
+                      address_line_3: chapter.addressLine3,
+                      live_url: chapter.liveUrl,
+                      available_seats: chapter.availableSeats,
                     };
-
-                    if (chapter.releaseDate) {
-                      c.release_date = chapter.releaseDate;
-                    }
-
-                    return c;
                   }),
                 );
 
@@ -481,7 +535,17 @@ export const createProcessChangedCourse =
                     sections = EXCLUDED.sections,
                     raw_content = EXCLUDED.raw_content,
                     release_date = EXCLUDED.release_date,
-                    release_place = EXCLUDED.release_place
+                    release_place = EXCLUDED.release_place,
+                    is_online = EXCLUDED.is_online,
+                    is_in_person = EXCLUDED.is_in_person,
+                    start_date = EXCLUDED.start_date,
+                    end_date = EXCLUDED.end_date,
+                    timezone = EXCLUDED.timezone,
+                    address_line_1 = EXCLUDED.address_line_1,
+                    address_line_2 = EXCLUDED.address_line_2,
+                    address_line_3 = EXCLUDED.address_line_3,
+                    live_url = EXCLUDED.live_url,
+                    available_seats = EXCLUDED.available_seats
                 `;
 
                 const formatedChapters2 = parts.flatMap((part, partIndex) =>
@@ -513,7 +577,9 @@ export const createProcessChangedCourse =
               }
             }
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing file ${course.path} ${file?.path}: ${error}`,
+            );
           }
         }
       })

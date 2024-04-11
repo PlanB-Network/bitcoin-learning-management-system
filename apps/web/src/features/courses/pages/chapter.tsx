@@ -13,6 +13,7 @@ import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { addMinutesToDate } from '#src/utils/date.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
@@ -531,6 +532,36 @@ export const CourseChapter = () => {
     }
   }, [chapter]);
 
+  let displayClassDetails = false;
+  let displayLive = false;
+  let displayCurriculum = true;
+
+  if (chapter && chapter.startDate && chapter.endDate) {
+    const isChapterAvailable =
+      chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
+    const now = new Date(Date.now());
+
+    const chapterStartDate = new Date(new Date(chapter.startDate).getTime());
+    const chapterEndDate = new Date(new Date(chapter.endDate).getTime());
+
+    displayClassDetails =
+      (chapter.isInPerson || chapter.isOnline) && chapterEndDate > now;
+    displayLive =
+      chapter.isOnline &&
+      new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
+
+    // One day after the event
+    if (
+      addMinutesToDate(chapterStartDate, 60 * 24) < now &&
+      isChapterAvailable
+    ) {
+      displayCurriculum = true;
+      displayLive = false;
+    } else {
+      displayCurriculum = false;
+    }
+  }
+
   if (!chapter && isFetched) {
     navigate({ to: '/404' });
   }
@@ -552,6 +583,9 @@ export const CourseChapter = () => {
       <div className="text-blue-800">
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
+            {<p>isInPerson : {chapter.isInPerson + ''}</p>}
+            {<p>isOnline : {chapter.isOnline + ''}</p>}
+            {<p>startDate : {chapter.startDate}</p>}
             <Title chapter={chapter} />
             {isScreenMd ? (
               <TimelineBig chapter={chapter} />
@@ -563,23 +597,42 @@ export const CourseChapter = () => {
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
                   <Header chapter={chapter} sections={sections} />
-                  <MarkdownContent chapter={chapter} />
-                  {questionsArray && questionsArray.length > 0 && (
+                  {displayClassDetails && (
+                    <div>
+                      <h1 className="text-3xl">Class details</h1>
+                      {chapter.isInPerson && <div>Book ticket</div>}
+                    </div>
+                  )}
+                  {displayLive && (
+                    <div>
+                      <h1 className="text-3xl">LIVE EVENT (or replay)!</h1>
+                    </div>
+                  )}
+                  {displayCurriculum && (
                     <>
-                      <div className="flex items-center">
-                        <img src={QuizIcon} className="ml-4 size-6" alt="" />
-                        <p className="ml-2 text-lg font-medium text-blue-900">
-                          {t('courses.quizz.quizz')}
-                        </p>
-                      </div>
-                      <QuizzCard
-                        name={chapter.course.id}
-                        chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                        questions={questionsArray}
-                      />
+                      <MarkdownContent chapter={chapter} />
+                      {questionsArray && questionsArray.length > 0 && (
+                        <>
+                          <div className="flex items-center">
+                            <img
+                              src={QuizIcon}
+                              className="ml-4 size-6"
+                              alt=""
+                            />
+                            <p className="ml-2 text-lg font-medium text-blue-900">
+                              {t('courses.quizz.quizz')}
+                            </p>
+                          </div>
+                          <QuizzCard
+                            name={chapter.course.id}
+                            chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                            questions={questionsArray}
+                          />
+                          <BottomButton chapter={chapter} />
+                        </>
+                      )}
                     </>
                   )}
-                  <BottomButton chapter={chapter} />
                 </div>
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">

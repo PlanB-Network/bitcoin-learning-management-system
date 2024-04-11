@@ -312,8 +312,8 @@ export const contentCourseChaptersLocalized = content.table(
     releaseDate: timestamp('release_date', { withTimezone: true }),
     releasePlace: varchar('release_place', { length: 50 }),
 
-    isOnline: boolean('is_online').default(false),
-    isInPerson: boolean('is_in_person').default(false),
+    isOnline: boolean('is_online').default(false).notNull(),
+    isInPerson: boolean('is_in_person').default(false).notNull(),
     startDate: timestamp('start_date'),
     endDate: timestamp('end_date'),
     timezone: text('timezone'),

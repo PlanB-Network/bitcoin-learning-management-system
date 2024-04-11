@@ -12,6 +12,13 @@ export const EventDetails = () => {
     id: eventId,
   });
 
+  let videoUrl: string = '';
+  if (event?.replayUrl) {
+    videoUrl = event?.replayUrl;
+  } else if (event?.liveUrl) {
+    videoUrl = event?.liveUrl + '?autoplay=1&muted=1&peertubeLink=0';
+  }
+
   return (
     <MainLayout>
       <div className="flex flex-col px-5">
@@ -22,13 +29,15 @@ export const EventDetails = () => {
           <p className="text-sm md:text-lg font-medium">{event?.description}</p>
 
           <div className="w-full flex flex-col md:flex-row gap-2 md:gap-6">
-            <iframe
-              title={`Live ${event?.name}`}
-              className="w-full aspect-video"
-              src={`${event?.liveUrl}?autoplay=1&muted=1&peertubeLink=0`}
-              allowFullScreen={true}
-              sandbox="allow-same-origin allow-scripts allow-popups"
-            ></iframe>
+            {videoUrl && (
+              <iframe
+                title={`Live ${event?.name}`}
+                className="w-full aspect-video"
+                src={videoUrl}
+                allowFullScreen={true}
+                sandbox="allow-same-origin allow-scripts allow-popups"
+              ></iframe>
+            )}
           </div>
         </div>
       </div>
