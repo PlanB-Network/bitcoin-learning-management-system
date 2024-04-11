@@ -8,6 +8,7 @@ import { IoLogOutOutline } from 'react-icons/io5';
 
 import { Button } from '@sovereign-university/ui';
 
+import SignInIcon from '../../../assets/icons/profile_log_in.png';
 import { useAppDispatch, useAppSelector } from '../../../hooks/index.ts';
 import { userSlice } from '../../../store/index.ts';
 import { LanguageSelector } from '../LanguageSelector/index.tsx';
@@ -46,15 +47,13 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
         <div></div>
       ) : (
         <div className="flex flex-row space-x-2 lg:space-x-4">
-          <Button
-            className="my-4"
-            variant="tertiary"
-            rounded
-            onClick={onClickLogin}
-            size={buttonSize}
-          >
-            {t('auth.signIn')}
-          </Button>
+          <button className="cursor-pointer text-white" onClick={onClickLogin}>
+            <img
+              src={SignInIcon}
+              alt={t('auth.signIn')}
+              className="size-12 hover:brightness-125"
+            />
+          </button>
         </div>
       )}
 
