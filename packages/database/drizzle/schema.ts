@@ -312,6 +312,17 @@ export const contentCourseChaptersLocalized = content.table(
     releaseDate: timestamp('release_date', { withTimezone: true }),
     releasePlace: varchar('release_place', { length: 50 }),
 
+    isOnline: boolean('is_online').default(false),
+    isInPerson: boolean('is_in_person').default(false),
+    startDate: timestamp('start_date'),
+    endDate: timestamp('end_date'),
+    timezone: text('timezone'),
+    addressLine1: text('address_line_1'),
+    addressLine2: text('address_line_2'),
+    addressLine3: text('address_line_3'),
+    liveUrl: text('live_url'),
+    availableSeats: integer('available_seats'),
+
     // Per translation
     title: text('title').notNull(),
     sections: text('sections').array().notNull(),
