@@ -34,6 +34,9 @@ const baseConfig = {
         900: '#182237',
         1000: '#070a14',
       },
+      newBlue: {
+        1: '#0A69DA',
+      },
       // Does not work on firefox
       // blue: {
       //   100: 'hsl(from var(--base-blue) h s 90%)',

@@ -39,7 +39,12 @@ export const CoursesMarkdownBody = ({
           </div>
         ),
         a: ({ children, href }) => (
-          <a href={href} target="_blank" className="underline" rel="noreferrer">
+          <a
+            href={href}
+            target="_blank"
+            className="underline text-newBlue-1"
+            rel="noreferrer"
+          >
             {children}
           </a>
         ),
@@ -102,11 +107,20 @@ export const CoursesMarkdownBody = ({
             />
           ),
         code({ className, children }) {
-          const match = /language-(\w+)/.exec(className || '');
-          return match ? (
+          // Default to treating as inline code
+          let isCodeBlock = false;
+
+          if ((className || '').startsWith('language-')) {
+            isCodeBlock = true;
+          } else if (!className && children) {
+            // If it contains line breaks, treat as a code block
+            isCodeBlock = String(children).includes('\n');
+          }
+
+          return isCodeBlock ? (
             <SyntaxHighlighter
               style={atomDark}
-              language={match ? match[1] : undefined}
+              language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
               PreTag="div"
             >
               {String(children).replace(/\n$/, '')}
