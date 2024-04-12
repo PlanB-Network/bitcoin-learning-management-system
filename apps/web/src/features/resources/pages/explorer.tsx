@@ -51,7 +51,7 @@ export const Resources = () => {
                       'text-sm md:text-2xl text-white max-md:leading-[1.43] max-md:tracking-[0.17px]',
                       resourceCategory.unreleased
                         ? ''
-                        : 'group-hover:font-semibold group-focus:font-semibold',
+                        : 'group-hover:font-medium group-focus:font-medium',
                     )}
                   >
                     {t(`resources.${resourceCategory.name}.title`)}
@@ -61,7 +61,7 @@ export const Resources = () => {
             ))}
           </div>
         </div>
-        <p className="max-w-2xl mx-auto leading-snug md:leading-relaxed tracking-[0.15px] md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
+        <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-[0.15px] md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
           <Trans i18nKey="resources.github" className="">
             <a
               className="underline underline-offset-2 hover:text-darkOrange-5"

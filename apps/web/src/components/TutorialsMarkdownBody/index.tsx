@@ -9,6 +9,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
+import { CopyButton } from '../CopyButton/index.tsx';
 
 export const TutorialsMarkdownBody = ({
   content,
@@ -42,7 +43,7 @@ export const TutorialsMarkdownBody = ({
           <a
             href={href}
             target="_blank"
-            className=" text-blue-500 "
+            className="underline text-newBlue-1"
             rel="noreferrer"
           >
             {children}
@@ -107,15 +108,33 @@ export const TutorialsMarkdownBody = ({
             />
           ),
         code({ className, children }) {
-          const match = /language-(\w+)/.exec(className || '');
-          return (
-            <SyntaxHighlighter
-              style={atomDark}
-              language={match ? match[1] : undefined}
-              PreTag="div"
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+          const childrenText = String(children).replace(/\n$/, '');
+
+          // Default to treating as inline code
+          let isCodeBlock = false;
+
+          if ((className || '').startsWith('language-')) {
+            isCodeBlock = true;
+          } else if (!className && children) {
+            // If it contains line breaks, treat as a code block
+            isCodeBlock = String(children).includes('\n');
+          }
+
+          return isCodeBlock ? (
+            <div className="relative">
+              <SyntaxHighlighter
+                style={atomDark}
+                language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
+                PreTag="div"
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+              <CopyButton text={childrenText} />
+            </div>
+          ) : (
+            <code className="bg-newGray-4 px-1.5 rounded-lg font-serif inline-block text-sm">
+              {children}
+            </code>
           );
         },
       }}

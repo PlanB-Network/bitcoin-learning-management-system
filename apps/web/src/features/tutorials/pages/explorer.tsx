@@ -76,9 +76,10 @@ export const TutorialExplorer = () => {
                     name: tutorial.name,
                   }}
                   key={tutorial.id}
+                  className="group/builder relative flex flex-col items-center justify-center"
                 >
                   <img
-                    className="m-1 size-20 grid-cols-1 rounded-full"
+                    className="size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
                     src={
                       tutorial.builder
                         ? computeAssetCdnUrl(
@@ -90,8 +91,11 @@ export const TutorialExplorer = () => {
                             `${tutorial.path}/assets/logo.jpeg`,
                           )
                     }
-                    alt=""
+                    alt={tutorial.title}
                   />
+                  <p className="absolute flex justify-center items-center size-full p-1 rounded-full text-center text-xs font-bold text-white group-hover/builder:bg-black/60 opacity-0 group-hover/builder:opacity-100 group-focus/builder:opacity-100 transition-all">
+                    {tutorial.title.slice(0, 18)}
+                  </p>
                 </Link>
               ))}
           </div>

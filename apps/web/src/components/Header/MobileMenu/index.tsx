@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
-import PlanBLogo from '../../../assets/planb_logo_horizontal_white.svg?react';
+import SignInIcon from '../../../assets/icons/profile_log_in.png';
+import PlanBLogo from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
 import { compose } from '../../../utils/index.ts';
 import { MetaElements } from '../MetaElements/index.tsx';
@@ -36,9 +37,9 @@ export const MobileMenu = ({
 
   return (
     <>
-      <div className="flex w-full flex-row justify-center">
+      <div className="flex max-w-fit mx-auto flex-row justify-center">
         <Link to="/">
-          <PlanBLogo className="h-[34px]" />
+          <PlanBLogo className="h-[34px] w-fit" />
         </Link>
       </div>
       {isLoggedIn ? (
@@ -50,7 +51,11 @@ export const MobileMenu = ({
       ) : (
         <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
           <button className="cursor-pointer text-white" onClick={onClickLogin}>
-            {t('auth.signIn')}
+            <img
+              src={SignInIcon}
+              alt={t('auth.signIn')}
+              className="size-10 hover:brightness-125"
+            />
           </button>
         </div>
       )}
