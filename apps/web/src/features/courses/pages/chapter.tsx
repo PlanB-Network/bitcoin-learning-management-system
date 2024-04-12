@@ -29,6 +29,9 @@ import type { Question } from '../components/quizz-card.tsx';
 import QuizzCard from '../components/quizz-card.tsx';
 import { CourseLayout } from '../layout.tsx';
 
+import { ClassDetails } from './components/class-details.tsx';
+import { LiveVideo } from './components/live-video.tsx';
+
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
@@ -190,7 +193,13 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
-const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
+const TimelineBig = ({
+  chapter,
+  professor,
+}: {
+  chapter: Chapter;
+  professor: string;
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -218,21 +227,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             })}
           </span>
         </div>
-        <div>
-          {(() => {
-            let professors;
-            professors = chapter.course.professors;
-            if (chapter.professors && chapter.professors.length > 0) {
-              professors = chapter.professors;
-            }
-
-            return joinWords(
-              professors
-                .map((p) => p.name)
-                .filter((name): name is string => name !== undefined),
-            );
-          })()}
-        </div>
+        <div>{professor}</div>
       </div>
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
@@ -533,7 +528,8 @@ export const CourseChapter = () => {
   }, [chapter]);
 
   let displayClassDetails = false;
-  let displayLive = false;
+  let displayLiveSection = false;
+  let displayLiveVideo = false;
   let displayCurriculum = true;
 
   if (chapter && chapter.startDate && chapter.endDate) {
@@ -546,9 +542,10 @@ export const CourseChapter = () => {
 
     displayClassDetails =
       (chapter.isInPerson || chapter.isOnline) && chapterEndDate > now;
-    displayLive =
+    displayLiveVideo =
       chapter.isOnline &&
       new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
+    displayLiveSection = chapter.isOnline && !isChapterAvailable;
 
     // One day after the event
     if (
@@ -556,9 +553,33 @@ export const CourseChapter = () => {
       isChapterAvailable
     ) {
       displayCurriculum = true;
-      displayLive = false;
+      displayLiveVideo = false;
     } else {
       displayCurriculum = false;
+    }
+  }
+
+  let computerProfessor = '';
+  if (chapter) {
+    console.log('isInPerson :', chapter.isInPerson);
+    console.log('isOnline :', chapter.isOnline);
+    console.log('startDate :', chapter.startDate);
+    console.log('timezone :', chapter.timezone);
+
+    {
+      (() => {
+        let professors;
+        professors = chapter.course.professors;
+        if (chapter.professors && chapter.professors.length > 0) {
+          professors = chapter.professors;
+        }
+
+        computerProfessor = joinWords(
+          professors
+            .map((p) => p.name)
+            .filter((name): name is string => name !== undefined),
+        );
+      })();
     }
   }
 
@@ -583,31 +604,31 @@ export const CourseChapter = () => {
       <div className="text-blue-800">
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
-            {<p>isInPerson : {chapter.isInPerson + ''}</p>}
-            {<p>isOnline : {chapter.isOnline + ''}</p>}
-            {<p>startDate : {chapter.startDate}</p>}
             <Title chapter={chapter} />
             {isScreenMd ? (
-              <TimelineBig chapter={chapter} />
+              <TimelineBig chapter={chapter} professor={computerProfessor} />
             ) : (
               <TimelineSmall chapter={chapter} />
             )}
+
+            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
+              {displayClassDetails && (
+                <ClassDetails chapter={chapter} professor={computerProfessor} />
+              )}
+            </div>
 
             <div className=" flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
                   <Header chapter={chapter} sections={sections} />
-                  {displayClassDetails && (
-                    <div>
-                      <h1 className="text-3xl">Class details</h1>
-                      {chapter.isInPerson && <div>Book ticket</div>}
-                    </div>
-                  )}
-                  {displayLive && (
-                    <div>
-                      <h1 className="text-3xl">LIVE EVENT (or replay)!</h1>
-                    </div>
-                  )}
+                  {displayLiveSection &&
+                    chapter.liveUrl &&
+                    chapter.startDate && (
+                      <LiveVideo
+                        url={chapter.liveUrl}
+                        displayVideo={displayLiveVideo}
+                      />
+                    )}
                   {displayCurriculum && (
                     <>
                       <MarkdownContent chapter={chapter} />
