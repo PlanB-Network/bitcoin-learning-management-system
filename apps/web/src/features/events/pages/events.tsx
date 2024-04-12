@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { AuthModal } from '#src/components/AuthModal/index.js';
+import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { useAppSelector } from '#src/hooks/use-app-selector.js';
+import { useDisclosure } from '#src/hooks/use-disclosure.js';
 
 import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
@@ -12,8 +16,23 @@ export const Events = () => {
   const { t } = useTranslation();
 
   const { data: events } = trpc.content.getEvents.useQuery();
+  const { data: eventPayments, refetch: refetchEventPayments } =
+    trpc.user.events.getEventPayment.useQuery();
+
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
+
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+
+  // TODO Refactor this auth stuff
+  const authMode = AuthModalState.SignIn;
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
 
   interface MempoolPrice {
     USD: number;
@@ -50,18 +69,52 @@ export const Events = () => {
     >
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
         {events && (
-          <CurrentEvents events={events} conversionRate={conversionRate} />
+          <CurrentEvents
+            events={events}
+            eventPayments={eventPayments}
+            refetchEventPayments={refetchEventPayments}
+            conversionRate={conversionRate}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            isPaymentModalOpen={isPaymentModalOpen}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
+          />
         )}
         <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {events && (
-          <EventsGrid events={events} conversionRate={conversionRate} />
+          <EventsGrid
+            events={events}
+            eventPayments={eventPayments}
+            refetchEventPayments={refetchEventPayments}
+            conversionRate={conversionRate}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            isPaymentModalOpen={isPaymentModalOpen}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
+          />
         )}
       </div>
       <div>
         {events && (
-          <EventsPassed events={events} conversionRate={conversionRate} />
+          <EventsPassed
+            events={events}
+            eventPayments={eventPayments}
+            refetchEventPayments={refetchEventPayments}
+            conversionRate={conversionRate}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            isPaymentModalOpen={isPaymentModalOpen}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
+          />
         )}
       </div>
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={authMode}
+        />
+      )}
     </PageLayout>
   );
 };

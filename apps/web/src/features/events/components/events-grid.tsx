@@ -1,15 +1,37 @@
+import type {
+  QueryObserverResult,
+  RefetchOptions,
+} from '@tanstack/react-query';
+import type { TRPCClientErrorLike } from '@trpc/client';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface EventsGridProps {
   events: JoinedEvent[];
+  eventPayments: EventPayment[] | undefined;
+  refetchEventPayments: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<QueryObserverResult<EventPayment[], TRPCClientErrorLike<any>>>;
+  openAuthModal: () => void;
+  isLoggedIn: boolean;
+  isPaymentModalOpen: boolean;
+  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   conversionRate: number | null;
 }
 
-export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
+export const EventsGrid = ({
+  events,
+  eventPayments,
+  refetchEventPayments,
+  openAuthModal,
+  isLoggedIn,
+  isPaymentModalOpen,
+  setIsPaymentModalOpen,
+  conversionRate,
+}: EventsGridProps) => {
   const { t } = useTranslation();
 
   let upcomingEvents: JoinedEvent[] = [];
@@ -36,6 +58,12 @@ export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
         {sortedEvents?.map((event) => (
           <EventCard
             event={event}
+            eventPayments={eventPayments}
+            refetchEventPayments={refetchEventPayments}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            isPaymentModalOpen={isPaymentModalOpen}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
             conversionRate={conversionRate}
             key={event.name}
           />
