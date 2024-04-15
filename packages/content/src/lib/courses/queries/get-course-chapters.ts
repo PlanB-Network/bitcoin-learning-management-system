@@ -12,7 +12,7 @@ export const getCourseChaptersQuery = ({
 }) => {
   return sql<JoinedCourseChapter[]>`
     SELECT c.part, c.chapter, c.language, c.title, c.sections, c.release_place, c.raw_content, c.is_online, c.is_in_person, 
-    c.start_date, c.end_date, c.timezone, c.address_line_1, c.address_line_2, c.address_line_3, c.live_url, c.available_seats,
+    c.start_date, c.end_date, c.timezone, c.address_line_1, c.address_line_2, c.address_line_3, c.live_url, c.available_seats, c.live_language,
     cl.title as part_title
     FROM content.course_chapters_localized c
     LEFT JOIN content.course_parts_localized cl 

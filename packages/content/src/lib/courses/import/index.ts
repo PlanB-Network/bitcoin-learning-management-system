@@ -127,6 +127,7 @@ interface Chapter {
   addressLine3: string | null;
   liveUrl: string | null;
   availableSeats: number | null;
+  liveLanguage: string | null;
 }
 
 const extractData = (token: Token, type: string) => {
@@ -177,6 +178,7 @@ const extractParts = (markdown: string): Part[] => {
           timeZone: '',
           liveUrl: '',
           availableSeats: -1,
+          liveLanguage: '',
         });
       } else if (currentPart.chapters.length > 0) {
         const currentChapter = currentPart.chapters.at(-1)!;
@@ -197,7 +199,8 @@ const extractParts = (markdown: string): Part[] => {
           currentChapter.addressLine2 = extractData(token, 'addressLine2');
           currentChapter.addressLine3 = extractData(token, 'addressLine3');
           currentChapter.liveUrl = extractData(token, 'liveUrl');
-          currentChapter.availableSeats = 0; //extractData(token, 'availableSeats');
+          currentChapter.availableSeats = 0; // TODO extractData(token, 'availableSeats');
+          currentChapter.liveLanguage = extractData(token, 'liveLanguage');
 
           const professor = extractData(token, 'professor');
           if (professor) {
@@ -217,6 +220,7 @@ const extractParts = (markdown: string): Part[] => {
             'addressLine3',
             'liveUrl',
             'availableSeats',
+            'liveLanguage',
           ];
 
           const regex = new RegExp(
@@ -519,6 +523,7 @@ export const createProcessChangedCourse =
                       address_line_3: chapter.addressLine3,
                       live_url: chapter.liveUrl,
                       available_seats: chapter.availableSeats,
+                      live_language: chapter.liveLanguage,
                     };
                   }),
                 );
@@ -539,7 +544,8 @@ export const createProcessChangedCourse =
                     address_line_2 = EXCLUDED.address_line_2,
                     address_line_3 = EXCLUDED.address_line_3,
                     live_url = EXCLUDED.live_url,
-                    available_seats = EXCLUDED.available_seats
+                    available_seats = EXCLUDED.available_seats,
+                    live_language = EXCLUDED.live_language
                 `;
 
                 const formatedChapters2 = parts.flatMap((part, partIndex) =>

@@ -3,10 +3,16 @@ import { Buffer } from 'buffer';
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
-import type { PaymentData } from '#src/components/payment-qr.js';
+import type { JoinedEvent } from '@sovereign-university/types';
+
+import { PaymentDescription } from '#src/components/payment-description.js';
+import { type PaymentData, PaymentQr } from '#src/components/payment-qr.js';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
+
+import { ModalPaymentSuccess } from './modal-payment-success.tsx';
+import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
 const hexToBase64 = (hexstring: string) => {
   return Buffer.from(hexstring, 'hex').toString('base64');
@@ -14,6 +20,7 @@ const hexToBase64 = (hexstring: string) => {
 
 interface EventPaymentModalProps {
   eventId: string;
+  event: JoinedEvent;
   satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
@@ -25,6 +32,7 @@ interface WebSocketMessage {
 
 export const EventPaymentModal = ({
   eventId,
+  event,
   satsPrice,
   isOpen,
   onClose,
@@ -33,6 +41,7 @@ export const EventPaymentModal = ({
     trpc.user.events.saveEventPayment.useMutation();
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
   useEffect(() => {
     if (paymentData && isOpen) {
@@ -49,7 +58,8 @@ export const EventPaymentModal = ({
         ) as WebSocketMessage;
         if (message.settled) {
           setTimeout(() => {
-            onClose(true);
+            setIsPaymentSuccess(true);
+            //onClose(true);
           }, 2000);
         }
       };
@@ -71,38 +81,30 @@ export const EventPaymentModal = ({
     setPaymentData(serverPaymentData);
   }, [saveEventPaymentRequest, eventId, satsPrice]);
 
-  useEffect(() => {
-    if (isOpen) {
-      initEventPayment();
-    } else {
-      setTimeout(() => {
-        setPaymentData(undefined);
-      }, 500);
-    }
-  }, [isOpen]);
-
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('courses.details.coursePayment')}
-    >
-      <div className="flex min-w-[85vw] flex-col items-center lg:min-w-80">
-        {paymentData ? (
-          <iframe
-            allow="clipboard-write"
-            src={paymentData.checkoutUrl}
-            title="SBP"
-            style={{
-              width: 460,
-              maxWidth: '100%',
-              height: 740,
-              maxHeight: '100%',
-            }}
-          />
-        ) : (
-          'Loading...'
-        )}
+    <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+        <ModalPaymentSummary event={event} />
+        <div className="flex flex-col items-center justify-center pl-6">
+          {paymentData ? (
+            isPaymentSuccess ? (
+              <ModalPaymentSuccess
+                paymentData={paymentData}
+                onClose={onClose}
+              />
+            ) : (
+              <PaymentQr paymentRequest={paymentData.pr} />
+            )
+          ) : (
+            <PaymentDescription
+              paidPriceDollars={event.priceDollars}
+              satsPrice={satsPrice}
+              initPayment={initEventPayment}
+              description={t('courses.payment.description')}
+              callout={'Blablabla'}
+            />
+          )}
+        </div>
       </div>
     </Modal>
   );

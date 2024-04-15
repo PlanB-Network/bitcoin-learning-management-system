@@ -42,7 +42,7 @@ export const EventCard = ({
     conversionRate && event.priceDollars !== null
       ? Math.round((event.priceDollars * 100_000_000) / conversionRate)
       : -1;
-  if (process.env.NODE_ENV === 'development') {
+  if (satsPrice > 10 && process.env.NODE_ENV === 'development') {
     satsPrice = 10;
   }
 
@@ -85,7 +85,7 @@ export const EventCard = ({
                 </>
               )}
           </div>
-          {event.isInPerson && !isPassed && (
+          {event.bookInPerson && !isPassed && (
             <>
               <span>{event.addressLine2}</span>
               <span>{event.addressLine3}</span>
@@ -94,7 +94,7 @@ export const EventCard = ({
               </span>
             </>
           )}
-          {event.isOnline && !isPassed && !event.isInPerson && (
+          {event.bookOnline && !isPassed && !event.bookInPerson && (
             <span className="bg-newGray-4 border border-newGray-2 text-xs text-newBlack-4 font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
@@ -130,17 +130,17 @@ export const EventCard = ({
   };
 
   const EventButtons = () => {
-    const isOnlineEvent = event.isOnline;
+    const isBookableOnlineEvent = event.bookOnline;
 
-    const isFreeOnlineLiveEvent = isOnlineEvent && isFree && isLive;
-    const isPaidOnlineLiveEvent = isOnlineEvent && !isFree && isLive;
+    const isFreeOnlineLiveEvent = isBookableOnlineEvent && isFree && isLive;
+    const isPaidOnlineLiveEvent = isBookableOnlineEvent && !isFree && isLive;
 
     const isFreeOnlineUpcomingEvent =
-      isOnlineEvent && isFree && !isLive && !isPassed;
+      isBookableOnlineEvent && isFree && !isLive && !isPassed;
     const isPaidOnlineUpcomingEvent =
-      isOnlineEvent && !isFree && !isLive && !isPassed;
+      isBookableOnlineEvent && !isFree && !isLive && !isPassed;
 
-    const isInPersonEvent = event.isInPerson && !isPassed;
+    const isBookableInPersonEvent = event.bookInPerson && !isPassed;
 
     return (
       <div className="flex items-center gap-4">
@@ -243,32 +243,26 @@ export const EventCard = ({
           ))}
 
         {/* TODO Book seat actions (before and after booking seat, free and paid) + case where both physical and online (differentiate payment ?) */}
-        {isInPersonEvent &&
-          (isFree ? (
-            <Button
-              variant="newPrimary"
-              size="s"
-              className="rounded-lg text-xs md:text-base"
-              onClick={() => {
-                // TODO book seat
-                console.log('Book seat free');
-              }}
-            >
-              {t('events.card.bookSeat')}
-            </Button>
-          ) : (
-            <Button
-              variant="newPrimary"
-              size="s"
-              className="rounded-lg text-xs md:text-base"
-              onClick={() => {
-                // TODO book seat
-                console.log('Book seat paid');
-              }}
-            >
-              {t('events.card.bookSeat')}
-            </Button>
-          ))}
+        {isBookableInPersonEvent && (
+          <Button
+            variant="newPrimary"
+            size="s"
+            className="rounded-lg text-xs md:text-base"
+            onClick={() => {
+              if (isLoggedIn) {
+                setPaymentModalData({
+                  eventId: event.id,
+                  satsPrice: satsPrice,
+                });
+                setIsPaymentModalOpen(true);
+              } else {
+                openAuthModal();
+              }
+            }}
+          >
+            {t('events.card.bookSeat')}
+          </Button>
+        )}
 
         {isPassed && <ReplayButtons />}
       </div>
@@ -296,7 +290,10 @@ export const EventCard = ({
         className="rounded-lg text-xs md:text-base"
         onClick={() => {
           if (isLoggedIn) {
-            setPaymentModalData({ eventId: event.id, satsPrice: satsPrice });
+            setPaymentModalData({
+              eventId: event.id,
+              satsPrice: satsPrice,
+            });
             setIsPaymentModalOpen(true);
           } else {
             openAuthModal();

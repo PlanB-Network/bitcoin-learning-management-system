@@ -174,7 +174,7 @@ export const CourseDetails: React.FC = () => {
     satsPrice = Math.round(
       (course.paidPriceDollars * 100_000_000) / conversionRate,
     );
-    if (process.env.NODE_ENV === 'development') {
+    if (satsPrice > 10 && process.env.NODE_ENV === 'development') {
       satsPrice = 10;
     }
   }

@@ -321,6 +321,7 @@ export const contentCourseChaptersLocalized = content.table(
     addressLine3: text('address_line_3'),
     liveUrl: text('live_url'),
     availableSeats: integer('available_seats'),
+    liveLanguage: text('live_language'),
 
     // Per translation
     title: text('title').notNull(),
@@ -482,8 +483,8 @@ export const contentEvents = content.table('events', {
   timezone: text('timezone'),
   priceDollars: integer('price_dollars'),
   availableSeats: integer('available_seats'),
-  isOnline: boolean('is_online').default(false),
-  isInPerson: boolean('is_in_person').default(false),
+  bookOnline: boolean('book_online').default(false),
+  bookInPerson: boolean('book_in_person').default(false),
   addressLine1: text('address_line_1'),
   addressLine2: text('address_line_2'),
   addressLine3: text('address_line_3'),

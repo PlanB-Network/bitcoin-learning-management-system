@@ -615,7 +615,11 @@ export const CourseChapter = () => {
 
             <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               {displayClassDetails && (
-                <ClassDetails chapter={chapter} professor={computerProfessor} />
+                <ClassDetails
+                  course={chapter.course}
+                  chapter={chapter}
+                  professor={computerProfessor}
+                />
               )}
             </div>
 

@@ -1,23 +1,18 @@
-import { Buffer } from 'buffer';
-
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
+import { hexToBase64 } from '#src/utils/misc.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import { Modal } from '../../../../atoms/Modal/index.tsx';
 import { PaymentDescription } from '../../../../components/payment-description.tsx';
 import { trpc } from '../../../../utils/index.ts';
 
-import { ModalSuccess } from './modal-success.tsx';
-import { ModalSummary } from './modal-summary.tsx';
-
-const hexToBase64 = (hexstring: string) => {
-  return Buffer.from(hexstring, 'hex').toString('base64');
-};
+import { ModalPaymentSuccess } from './modal-payment-success.tsx';
+import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
 interface WebSocketMessage {
   settled: boolean;
@@ -77,7 +72,7 @@ export const CoursePaymentModal = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
-        <ModalSummary
+        <ModalPaymentSummary
           course={course}
           courseName={courseName}
           professorNames={professorNames}
@@ -85,7 +80,10 @@ export const CoursePaymentModal = ({
         <div className="flex flex-col items-center justify-center pl-6">
           {paymentData ? (
             isPaymentSuccess ? (
-              <ModalSuccess paymentData={paymentData} onClose={onClose} />
+              <ModalPaymentSuccess
+                paymentData={paymentData}
+                onClose={onClose}
+              />
             ) : (
               <PaymentQr paymentRequest={paymentData.pr} />
             )

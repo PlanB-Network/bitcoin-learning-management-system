@@ -45,6 +45,7 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
+    liveLanguage: true,
     rawContent: true,
   })
   .merge(
@@ -126,6 +127,7 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
+    liveLanguage: true,
     rawContent: true,
   })
   .merge(

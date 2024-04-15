@@ -8,12 +8,15 @@ import { formatDate } from '#src/utils/date.js';
 
 import PlanBLogo from '../../../../assets/planb_logo_horizontal_black.svg?react';
 
-interface ModalSuccessProps {
+interface ModalPaymentSuccessProps {
   paymentData: PaymentData;
   onClose: (isPaid?: boolean) => void;
 }
 
-export const ModalSuccess = ({ paymentData, onClose }: ModalSuccessProps) => {
+export const ModalPaymentSuccess = ({
+  paymentData,
+  onClose,
+}: ModalPaymentSuccessProps) => {
   return (
     <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
       <PlanBLogo className="h-auto" width={240} />

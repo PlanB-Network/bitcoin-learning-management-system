@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@sovereign-university/ui';
@@ -6,7 +7,10 @@ import { Card } from '#src/atoms/Card/index.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
+import { CourseBookModal } from './course-book-modal.tsx';
+
 interface ClassDetailsProps {
+  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   chapter: NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
   professor: string;
 }
@@ -20,7 +24,13 @@ const TextLine = ({ label, text }: { label?: string; text?: string }) => {
   );
 };
 
-export const ClassDetails = ({ chapter, professor }: ClassDetailsProps) => {
+export const ClassDetails = ({
+  course,
+  chapter,
+  professor,
+}: ClassDetailsProps) => {
+  const [isBookModalOpen, setIsBookModalOpen] = useState(false);
+
   const { t } = useTranslation();
   const timezone = chapter.timezone ? chapter.timezone : undefined;
 
@@ -72,13 +82,30 @@ export const ClassDetails = ({ chapter, professor }: ClassDetailsProps) => {
           </div>
           {chapter.isInPerson && (
             <div>
-              <Button variant="newPrimary">
+              <Button
+                variant="newPrimary"
+                onClick={() => {
+                  setIsBookModalOpen(true);
+                }}
+              >
                 {t('courses.chapter.detail.bookSeat')}
               </Button>
             </div>
           )}
         </div>
       </div>
+
+      <CourseBookModal
+        course={course}
+        chapter={chapter}
+        satsPrice={1_111_111}
+        isOpen={isBookModalOpen}
+        professorNames={'TEST'}
+        onClose={() => {
+          setIsBookModalOpen(false);
+          // refetchPayment();
+        }}
+      />
 
       <hr className="mt-6 text-newGray-2 border-t-2" />
     </div>

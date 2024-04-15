@@ -9,17 +9,17 @@ import { computeAssetCdnUrl } from '../../../../utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
-interface ModalSummaryProps {
+interface ModalPaymentSummaryProps {
   courseName: string;
   professorNames: string;
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
 }
 
-export const ModalSummary = ({
+export const ModalPaymentSummary = ({
   courseName,
   professorNames,
   course,
-}: ModalSummaryProps) => {
+}: ModalPaymentSummaryProps) => {
   const { t } = useTranslation();
 
   const Separator = () => <div className="w-100 h-px bg-white/10" />;
