@@ -116,7 +116,6 @@ interface Chapter {
   sections: string[];
   raw_content: string;
   professors: string[];
-  releaseDate: string | null;
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
@@ -167,7 +166,6 @@ const extractParts = (markdown: string): Part[] => {
           sections: [],
           raw_content: '',
           professors: [],
-          releaseDate: null,
           releasePlace: '',
           isOnline: false,
           isInPerson: false,
@@ -188,7 +186,6 @@ const extractParts = (markdown: string): Part[] => {
         }
 
         if (token.raw.startsWith('<')) {
-          currentChapter.releaseDate = extractData(token, 'releaseDate');
           currentChapter.releasePlace = extractData(token, 'releasePlace');
           currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
           currentChapter.isInPerson =
@@ -209,7 +206,6 @@ const extractParts = (markdown: string): Part[] => {
 
           const tagsToRemove = [
             'professor',
-            'releaseDate',
             'releasePlace',
             'isOnline',
             'isInPerson',
@@ -513,7 +509,6 @@ export const createProcessChangedCourse =
                       sections: chapter.sections,
                       raw_content: chapter.raw_content.trim(),
                       release_place: chapter.releasePlace,
-                      release_date: chapter.releaseDate,
                       is_online: chapter.isOnline,
                       is_in_person: chapter.isInPerson,
                       start_date: chapter.startDate,
@@ -534,7 +529,6 @@ export const createProcessChangedCourse =
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,
                     raw_content = EXCLUDED.raw_content,
-                    release_date = EXCLUDED.release_date,
                     release_place = EXCLUDED.release_place,
                     is_online = EXCLUDED.is_online,
                     is_in_person = EXCLUDED.is_in_person,

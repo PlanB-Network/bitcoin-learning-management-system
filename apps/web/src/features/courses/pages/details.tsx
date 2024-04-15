@@ -87,8 +87,8 @@ export const CourseDetails: React.FC = () => {
     [courseId, payments],
   );
 
-  const courseHasReleaseDate = course?.parts.some((part) =>
-    part.chapters.some((chapter) => chapter?.releaseDate !== null),
+  const courseHasStartDate = course?.parts.some((part) =>
+    part.chapters.some((chapter) => chapter?.startDate !== null),
   );
 
   let professorNames = course?.professors
@@ -512,17 +512,17 @@ export const CourseDetails: React.FC = () => {
                         <p
                           className={cn(
                             'w-auto',
-                            !courseHasReleaseDate && 'hidden',
+                            !courseHasStartDate && 'hidden',
                           )}
                         >
-                          {(chapter.releaseDate || chapter.releasePlace) && (
+                          {(chapter.startDate || chapter.releasePlace) && (
                             <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
-                              {chapter.releaseDate && (
+                              {chapter.startDate && (
                                 <span>
-                                  {new Date(chapter.releaseDate).toDateString()}
+                                  {new Date(chapter.startDate).toDateString()}
                                 </span>
                               )}
-                              {chapter.releaseDate && chapter.releasePlace && (
+                              {chapter.startDate && chapter.releasePlace && (
                                 <span> - </span>
                               )}
                               {chapter.releasePlace && (
