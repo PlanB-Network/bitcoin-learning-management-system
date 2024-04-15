@@ -1,8 +1,3 @@
-import type {
-  QueryObserverResult,
-  RefetchOptions,
-} from '@tanstack/react-query';
-import type { TRPCClientErrorLike } from '@trpc/client';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
@@ -14,24 +9,25 @@ import { EventCard } from './event-card.tsx';
 interface EventsCarouselProps {
   events: JoinedEvent[];
   eventPayments: EventPayment[] | undefined;
-  refetchEventPayments: (
-    options?: RefetchOptions | undefined,
-  ) => Promise<QueryObserverResult<EventPayment[], TRPCClientErrorLike<any>>>;
   openAuthModal: () => void;
   isLoggedIn: boolean;
-  isPaymentModalOpen: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
 export const EventsCarousel = ({
   events,
   eventPayments,
-  refetchEventPayments,
   openAuthModal,
   isLoggedIn,
-  isPaymentModalOpen,
   setIsPaymentModalOpen,
+  setPaymentModalData,
   conversionRate,
 }: EventsCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -62,12 +58,11 @@ export const EventsCarousel = ({
               <EventCard
                 event={event}
                 eventPayments={eventPayments}
-                refetchEventPayments={refetchEventPayments}
                 isPassed={true}
                 openAuthModal={openAuthModal}
                 isLoggedIn={isLoggedIn}
-                isPaymentModalOpen={isPaymentModalOpen}
                 setIsPaymentModalOpen={setIsPaymentModalOpen}
+                setPaymentModalData={setPaymentModalData}
                 conversionRate={conversionRate}
               />
             </div>

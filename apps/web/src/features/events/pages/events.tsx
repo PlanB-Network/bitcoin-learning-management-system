@@ -9,6 +9,7 @@ import { useDisclosure } from '#src/hooks/use-disclosure.js';
 
 import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
+import { EventPaymentModal } from '../components/event-payment-modal.tsx';
 import { EventsGrid } from '../components/events-grid.tsx';
 import { EventsPassed } from '../components/events-passed.tsx';
 
@@ -19,11 +20,21 @@ export const Events = () => {
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
 
+  const [paymentModalData, setPaymentModalData] = useState<{
+    eventId: string | null;
+    satsPrice: number | null;
+  }>({ eventId: null, satsPrice: null });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+
+  useEffect(() => {
+    refetchEventPayments();
+  }, [isLoggedIn, refetchEventPayments]);
+
+  console.log(eventPayments);
 
   // TODO Refactor this auth stuff
   const authMode = AuthModalState.SignIn;
@@ -59,6 +70,7 @@ export const Events = () => {
     fetchData();
   }, []);
 
+  // TODO refactor prop drilling
   return (
     <PageLayout
       title={t('events.pageTitle')}
@@ -67,17 +79,32 @@ export const Events = () => {
       maxWidth="max-w-full"
       paddingXClasses="px-0"
     >
+      {paymentModalData.eventId && paymentModalData.satsPrice && (
+        <EventPaymentModal
+          eventId={paymentModalData.eventId}
+          satsPrice={paymentModalData.satsPrice}
+          isOpen={isPaymentModalOpen}
+          onClose={(isPaid) => {
+            if (isPaid) {
+              refetchEventPayments();
+              setTimeout(() => {
+                refetchEventPayments();
+              }, 5000);
+            }
+            setIsPaymentModalOpen(false);
+          }}
+        />
+      )}
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
         {events && (
           <CurrentEvents
             events={events}
             eventPayments={eventPayments}
-            refetchEventPayments={refetchEventPayments}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
-            isPaymentModalOpen={isPaymentModalOpen}
             setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
           />
         )}
         <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
@@ -85,12 +112,11 @@ export const Events = () => {
           <EventsGrid
             events={events}
             eventPayments={eventPayments}
-            refetchEventPayments={refetchEventPayments}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
-            isPaymentModalOpen={isPaymentModalOpen}
             setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
           />
         )}
       </div>
@@ -99,12 +125,11 @@ export const Events = () => {
           <EventsPassed
             events={events}
             eventPayments={eventPayments}
-            refetchEventPayments={refetchEventPayments}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
-            isPaymentModalOpen={isPaymentModalOpen}
             setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
           />
         )}
       </div>

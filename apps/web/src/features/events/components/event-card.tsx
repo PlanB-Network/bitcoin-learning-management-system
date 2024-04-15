@@ -1,9 +1,4 @@
-import type {
-  QueryObserverResult,
-  RefetchOptions,
-} from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import type { TRPCClientErrorLike } from '@trpc/client';
 import { useTranslation } from 'react-i18next';
 import { HiVideoCamera } from 'react-icons/hi2';
 
@@ -13,33 +8,32 @@ import { Button, cn } from '@sovereign-university/ui';
 import Flag from '../../../atoms/Flag/index.tsx';
 import { formatDate, formatTime } from '../../../utils/date.ts';
 
-import { EventPaymentModal } from './event-payment-modal.tsx';
-
 interface EventCardProps {
   event: JoinedEvent;
   eventPayments: EventPayment[] | undefined;
-  refetchEventPayments: (
-    options?: RefetchOptions | undefined,
-  ) => Promise<QueryObserverResult<EventPayment[], TRPCClientErrorLike<any>>>;
   isLive?: boolean;
   isPassed?: boolean;
   openAuthModal: () => void;
   isLoggedIn: boolean;
-  isPaymentModalOpen: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
 export const EventCard = ({
   event,
   eventPayments,
-  refetchEventPayments,
   isLive,
   isPassed,
   openAuthModal,
   isLoggedIn,
-  isPaymentModalOpen,
   setIsPaymentModalOpen,
+  setPaymentModalData,
   conversionRate,
 }: EventCardProps) => {
   const { t } = useTranslation();
@@ -137,12 +131,16 @@ export const EventCard = ({
 
   const EventButtons = () => {
     const isOnlineEvent = event.isOnline;
+
     const isFreeOnlineLiveEvent = isOnlineEvent && isFree && isLive;
+    const isPaidOnlineLiveEvent = isOnlineEvent && !isFree && isLive;
+
     const isFreeOnlineUpcomingEvent =
       isOnlineEvent && isFree && !isLive && !isPassed;
-    const isPaidOnlineUpcomingEvent = isOnlineEvent && !isFree && !isPassed;
-    const isAvailableInPersonEvent =
-      event.isInPerson && event.availableSeats && event.availableSeats > 0;
+    const isPaidOnlineUpcomingEvent =
+      isOnlineEvent && !isFree && !isLive && !isPassed;
+
+    const isInPersonEvent = event.isInPerson && !isPassed;
 
     return (
       <div className="flex items-center gap-4">
@@ -162,6 +160,44 @@ export const EventCard = ({
             </Button>
           </Link>
         )}
+
+        {isPaidOnlineLiveEvent &&
+          (filteredEventPayments && filteredEventPayments.length > 0 ? (
+            <Link
+              to={'/events/$eventId'}
+              params={{
+                eventId: event.id,
+              }}
+            >
+              <Button
+                size="s"
+                variant="newPrimary"
+                className="rounded-lg text-xs md:text-base"
+              >
+                {t('events.card.watchLive')}
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="rounded-lg text-xs md:text-base"
+              onClick={() => {
+                if (isLoggedIn) {
+                  setPaymentModalData({
+                    eventId: event.id,
+                    satsPrice: satsPrice,
+                  });
+                  setIsPaymentModalOpen(true);
+                } else {
+                  openAuthModal();
+                }
+              }}
+            >
+              {t('events.card.bookLive')}
+            </Button>
+          ))}
+
         {isFreeOnlineUpcomingEvent && (
           <Button
             size="s"
@@ -172,40 +208,68 @@ export const EventCard = ({
             {t('events.card.watchLive')}
           </Button>
         )}
-        {/* TODO Add paid when user already paid */}
-        {isPaidOnlineUpcomingEvent && (
-          <Button
-            variant="newPrimary"
-            size="s"
-            className="rounded-lg text-xs md:text-base"
-            onClick={() => {
-              if (isLoggedIn) {
-                setIsPaymentModalOpen(true);
-              } else {
-                openAuthModal();
-              }
-            }}
-          >
-            {t('events.card.bookLive')}
-          </Button>
-        )}
-        {/* TODO Add paid when user already paid + free in person event */}
-        {isAvailableInPersonEvent && (
-          <Button
-            variant="newPrimary"
-            size="s"
-            className="rounded-lg text-xs md:text-base"
-            onClick={() => {
-              if (isLoggedIn) {
-                setIsPaymentModalOpen(true);
-              } else {
-                openAuthModal();
-              }
-            }}
-          >
-            {t('events.card.bookSeat')}
-          </Button>
-        )}
+
+        {isPaidOnlineUpcomingEvent &&
+          (filteredEventPayments && filteredEventPayments.length > 0 ? (
+            <Link to={'/events/' + event.id} target="_blank" className="w-fit">
+              <Button
+                size="s"
+                variant="newSecondary"
+                disabled={true}
+                className="rounded-lg text-xs md:text-base"
+              >
+                {t('events.card.watchLive')}
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="rounded-lg text-xs md:text-base"
+              onClick={() => {
+                if (isLoggedIn) {
+                  setPaymentModalData({
+                    eventId: event.id,
+                    satsPrice: satsPrice,
+                  });
+                  setIsPaymentModalOpen(true);
+                } else {
+                  openAuthModal();
+                }
+              }}
+            >
+              {t('events.card.bookLive')}
+            </Button>
+          ))}
+
+        {/* TODO Book seat actions (before and after booking seat, free and paid) + case where both physical and online (differentiate payment ?) */}
+        {isInPersonEvent &&
+          (isFree ? (
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="rounded-lg text-xs md:text-base"
+              onClick={() => {
+                // TODO book seat
+                console.log('Book seat free');
+              }}
+            >
+              {t('events.card.bookSeat')}
+            </Button>
+          ) : (
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="rounded-lg text-xs md:text-base"
+              onClick={() => {
+                // TODO book seat
+                console.log('Book seat paid');
+              }}
+            >
+              {t('events.card.bookSeat')}
+            </Button>
+          ))}
+
         {isPassed && <ReplayButtons />}
       </div>
     );
@@ -214,17 +278,7 @@ export const EventCard = ({
   const ReplayButtons = () => {
     return (filteredEventPayments && filteredEventPayments.length > 0) ||
       isFree ? (
-      <Link
-        to={
-          event.replayUrl
-            ? event.replayUrl
-            : event.liveUrl
-              ? event.liveUrl
-              : '/events'
-        }
-        target="_blank"
-        className="w-fit"
-      >
+      <Link to={'/events/' + event.id} target="_blank" className="w-fit">
         <Button
           iconRight={<HiVideoCamera size={18} />}
           variant="newSecondary"
@@ -242,19 +296,19 @@ export const EventCard = ({
         className="rounded-lg text-xs md:text-base"
         onClick={() => {
           if (isLoggedIn) {
+            setPaymentModalData({ eventId: event.id, satsPrice: satsPrice });
             setIsPaymentModalOpen(true);
           } else {
             openAuthModal();
           }
         }}
       >
-        {t('events.card.watchReplay')}
+        {t('events.card.buyReplay')}
       </Button>
     );
   };
 
   const VisitWebsiteButton = () => {
-    0;
     return event.websiteUrl ? (
       <div className="w-fit mx-auto mt-auto pt-3 pb-1">
         <Link to={event.websiteUrl} target="_blank">
@@ -272,21 +326,6 @@ export const EventCard = ({
 
   return (
     <>
-      <EventPaymentModal
-        eventId={event.id}
-        satsPrice={satsPrice}
-        isOpen={isPaymentModalOpen}
-        onClose={(isPaid) => {
-          if (isPaid) {
-            refetchEventPayments();
-            setTimeout(() => {
-              refetchEventPayments();
-            }, 5000);
-          }
-          setIsPaymentModalOpen(false);
-        }}
-      />
-
       <article
         className={cn(
           'flex-1 flex flex-col min-w-[280px] max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',

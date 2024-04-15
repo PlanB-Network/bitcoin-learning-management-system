@@ -1,8 +1,3 @@
-import type {
-  QueryObserverResult,
-  RefetchOptions,
-} from '@tanstack/react-query';
-import type { TRPCClientErrorLike } from '@trpc/client';
 import { useTranslation } from 'react-i18next';
 
 import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
@@ -12,24 +7,25 @@ import { EventCard } from './event-card.tsx';
 interface CurrentEventsProps {
   events: JoinedEvent[];
   eventPayments: EventPayment[] | undefined;
-  refetchEventPayments: (
-    options?: RefetchOptions | undefined,
-  ) => Promise<QueryObserverResult<EventPayment[], TRPCClientErrorLike<any>>>;
   openAuthModal: () => void;
   isLoggedIn: boolean;
-  isPaymentModalOpen: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
 export const CurrentEvents = ({
   events,
   eventPayments,
-  refetchEventPayments,
   openAuthModal,
   isLoggedIn,
-  isPaymentModalOpen,
   setIsPaymentModalOpen,
+  setPaymentModalData,
   conversionRate,
 }: CurrentEventsProps) => {
   const { t } = useTranslation();
@@ -67,12 +63,11 @@ export const CurrentEvents = ({
           <EventCard
             event={event}
             eventPayments={eventPayments}
-            refetchEventPayments={refetchEventPayments}
             isLive={true}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
-            isPaymentModalOpen={isPaymentModalOpen}
             setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
             conversionRate={conversionRate}
             key={event.name}
           />
