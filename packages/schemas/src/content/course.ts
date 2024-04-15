@@ -105,6 +105,7 @@ export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
       })
       .array(),
     partsCount: z.number(),
+    chaptersCount: z.number(),
   }),
 );
 

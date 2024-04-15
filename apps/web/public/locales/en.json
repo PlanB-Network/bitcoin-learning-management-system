@@ -140,11 +140,7 @@
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Invoice ID",
-      "terms1": "See our",
-      "terms2": "general terms",
-      "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "invoiceId": "Invoice ID"
     },
     "explorer": {
       "footerTitle": "Our professors are here for you !",
@@ -173,27 +169,23 @@
       "accessibility": "Accessibility",
       "accessibility_forever": "Forever",
       "amount": "Amount",
+      "callout": "You are about to purchase this course.",
       "date": "Date",
       "dates_to": "{{startDate}} to {{endDate}}",
       "downloadCurriculum": "Download curriculum",
+      "description": "This purchase will grant you access to online courses on the platform as well as in-person classes, provided you reserve your seat in your student dashboard. Each class session takes place in person on the specified dates and locations before being recorded and streamed online on the platform.",
       "duration": "Duration",
       "invoiceId": "Invoice ID",
       "numberOfChapters": "Number of chapters",
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
       "teacher": "Teacher",
-      "teachers": "Teachers",
-      "terms1": "See our",
-      "terms2": "general terms",
-      "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
-      "total": "Total"
+      "teachers": "Teachers"
     },
     "preview": {
       "by": "by {{professor}}",
       "letsgo": "Let's go"
     },
-    "proceedToPayment": "Proceed to payment",
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
       "quizz": "Quizz",
@@ -218,7 +210,7 @@
     }
   },
   "events": {
-    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network.",
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
     "pageSubtitle": "Bottom up adoption enhanced by a strong network",
     "pageTitle": "Looking for a Bitcoin event to go to ?",
     "main": {
@@ -368,6 +360,12 @@
     "here": "Here",
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
+  },
+  "payment": {
+    "proceedToPayment": "Proceed to payment",
+    "terms": "See our <0>general terms</0> and conditions for refund details",
+    "feeDistribution": "Fee distribution: Author 99 % - Plateform 1 %",
+    "total": "Total"
   },
   "podcast": {
     "abstract": "Abstract",

@@ -91,9 +91,12 @@ export const CourseDetails: React.FC = () => {
     part.chapters.some((chapter) => chapter?.releaseDate !== null),
   );
 
-  const professorNames = course?.professors
+  let professorNames = course?.professors
     .map((professor) => professor.name)
     .join(', ');
+  if (!professorNames) {
+    professorNames = '';
+  }
 
   if (!course && isFetched) navigateTo404();
 
@@ -633,6 +636,7 @@ export const CourseDetails: React.FC = () => {
               course={course}
               satsPrice={satsPrice}
               isOpen={isPaymentModalOpen}
+              professorNames={professorNames}
               onClose={() => {
                 setIsPaymentModalOpen(false);
                 refetchPayment();

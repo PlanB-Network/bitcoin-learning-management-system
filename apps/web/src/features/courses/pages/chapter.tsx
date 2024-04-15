@@ -541,11 +541,13 @@ export const CourseChapter = () => {
     const chapterEndDate = new Date(new Date(chapter.endDate).getTime());
 
     displayClassDetails =
-      (chapter.isInPerson || chapter.isOnline) && chapterEndDate > now;
+      (chapter.isInPerson || false || chapter.isOnline || false) &&
+      chapterEndDate > now;
+
     displayLiveVideo =
-      chapter.isOnline &&
+      (chapter.isOnline || false) &&
       new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
-    displayLiveSection = chapter.isOnline && !isChapterAvailable;
+    displayLiveSection = (chapter.isOnline || false) && !isChapterAvailable;
 
     // One day after the event
     if (

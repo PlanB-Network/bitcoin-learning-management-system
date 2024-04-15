@@ -3,6 +3,8 @@ import { Buffer } from 'buffer';
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
+import type { PaymentData } from '#src/components/payment-qr.js';
+
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 
@@ -15,14 +17,6 @@ interface EventPaymentModalProps {
   satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
-}
-
-interface PaymentData {
-  id: string;
-  pr: string;
-  onChainAddr: string;
-  amount: number;
-  checkoutUrl: string;
 }
 
 interface WebSocketMessage {
