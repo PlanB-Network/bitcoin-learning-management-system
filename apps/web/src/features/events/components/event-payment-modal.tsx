@@ -2,6 +2,7 @@ import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 
@@ -21,6 +22,7 @@ const hexToBase64 = (hexstring: string) => {
 interface EventPaymentModalProps {
   eventId: string;
   event: JoinedEvent;
+  accessType: 'physical' | 'online' | 'replay';
   satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
@@ -33,6 +35,7 @@ interface WebSocketMessage {
 export const EventPaymentModal = ({
   eventId,
   event,
+  accessType,
   satsPrice,
   isOpen,
   onClose,
@@ -83,13 +86,26 @@ export const EventPaymentModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+      <button
+        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
+        aria-roledescription="Close Payment Modal"
+        onClick={() => onClose()}
+      >
+        <AiOutlineClose />
+      </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
-        <ModalPaymentSummary event={event} />
-        <div className="flex flex-col items-center justify-center pl-6">
+        <ModalPaymentSummary
+          event={event}
+          accessType={accessType}
+          satsPrice={satsPrice}
+          mobileDisplay={false}
+        />
+        <div className="flex flex-col items-center justify-center lg:pl-6">
           {paymentData ? (
             isPaymentSuccess ? (
               <ModalPaymentSuccess
                 paymentData={paymentData}
+                accessType={accessType}
                 onClose={onClose}
               />
             ) : (
@@ -98,10 +114,16 @@ export const EventPaymentModal = ({
           ) : (
             <PaymentDescription
               paidPriceDollars={event.priceDollars}
+              event={event}
+              accessType={accessType}
               satsPrice={satsPrice}
               initPayment={initEventPayment}
-              description={t('courses.payment.description')}
-              callout={'Blablabla'}
+              description={
+                accessType === 'replay'
+                  ? ''
+                  : t(`events.payment.description_${accessType}`)
+              }
+              callout={t(`events.payment.callout_${accessType}`)}
             />
           )}
         </div>

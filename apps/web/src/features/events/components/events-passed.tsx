@@ -14,6 +14,7 @@ interface EventsPassedProps {
     React.SetStateAction<{
       eventId: string | null;
       satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
     }>
   >;
   conversionRate: number | null;

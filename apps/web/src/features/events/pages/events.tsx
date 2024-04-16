@@ -26,7 +26,8 @@ export const Events = () => {
   const [paymentModalData, setPaymentModalData] = useState<{
     eventId: string | null;
     satsPrice: number | null;
-  }>({ eventId: null, satsPrice: null });
+    accessType: 'physical' | 'online' | 'replay' | null;
+  }>({ eventId: null, satsPrice: null, accessType: null });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
@@ -88,11 +89,13 @@ export const Events = () => {
     >
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
+        paymentModalData.accessType &&
         paymentModalData.satsPrice > 0 &&
         payingEvent && (
           <EventPaymentModal
             eventId={paymentModalData.eventId}
             event={payingEvent}
+            accessType={paymentModalData.accessType}
             satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
             onClose={(isPaid) => {
@@ -108,9 +111,11 @@ export const Events = () => {
         )}
       {paymentModalData.eventId &&
         paymentModalData.satsPrice === 0 &&
+        paymentModalData.accessType &&
         payingEvent && (
           <EventBookModal
             event={payingEvent}
+            accessType={paymentModalData.accessType}
             satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
             onClose={(isPaid) => {

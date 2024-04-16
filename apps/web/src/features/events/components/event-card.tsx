@@ -6,7 +6,7 @@ import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '../../../atoms/Flag/index.tsx';
-import { formatDate, formatTime } from '../../../utils/date.ts';
+import { getDateString, getTimeString } from '../../../utils/date.ts';
 
 interface EventCardProps {
   event: JoinedEvent;
@@ -20,6 +20,7 @@ interface EventCardProps {
     React.SetStateAction<{
       eventId: string | null;
       satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
     }>
   >;
   conversionRate: number | null;
@@ -187,6 +188,7 @@ export const EventCard = ({
                   setPaymentModalData({
                     eventId: event.id,
                     satsPrice: satsPrice,
+                    accessType: 'online',
                   });
                   setIsPaymentModalOpen(true);
                 } else {
@@ -231,6 +233,7 @@ export const EventCard = ({
                   setPaymentModalData({
                     eventId: event.id,
                     satsPrice: satsPrice,
+                    accessType: 'online',
                   });
                   setIsPaymentModalOpen(true);
                 } else {
@@ -253,6 +256,7 @@ export const EventCard = ({
                 setPaymentModalData({
                   eventId: event.id,
                   satsPrice: satsPrice,
+                  accessType: 'physical',
                 });
                 setIsPaymentModalOpen(true);
               } else {
@@ -293,6 +297,7 @@ export const EventCard = ({
             setPaymentModalData({
               eventId: event.id,
               satsPrice: satsPrice,
+              accessType: 'replay',
             });
             setIsPaymentModalOpen(true);
           } else {
@@ -325,7 +330,7 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col min-w-[280px] max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
+          'flex-1 flex flex-col min-w-[280px] w-full max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
         )}
       >
@@ -335,8 +340,6 @@ export const EventCard = ({
             src={event.picture}
             alt={event.name ? event.name : ''}
             className="object-cover aspect-[432/308]"
-            width={432}
-            height={308}
           />
           {event.type && (
             <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
@@ -360,56 +363,4 @@ export const EventCard = ({
       </article>
     </>
   );
-};
-
-const getDateString = (
-  startDate: Date,
-  endDate: Date,
-  timezone: string | undefined,
-) => {
-  let dateString: string;
-
-  switch (true) {
-    case startDate.getDate() === endDate.getDate(): {
-      dateString = formatDate(startDate, timezone, true, true);
-      break;
-    }
-    case startDate.getFullYear() === endDate.getFullYear() &&
-      startDate.getMonth() === endDate.getMonth() &&
-      startDate.getDay() !== endDate.getDay(): {
-      dateString = formatDate(startDate, timezone, false, false);
-      break;
-    }
-    case startDate.getFullYear() === endDate.getFullYear() &&
-      startDate.getMonth() !== endDate.getMonth(): {
-      dateString = formatDate(startDate, timezone, true, false);
-      break;
-    }
-    default: {
-      dateString = formatDate(startDate, timezone, true, true);
-    }
-  }
-
-  if (startDate.getDate() !== endDate.getDate()) {
-    dateString += ` to ${formatDate(endDate, timezone)}`;
-  }
-
-  return dateString;
-};
-
-const getTimeString = (
-  startDate: Date,
-  endDate: Date,
-  timezone: string | undefined,
-) => {
-  const timezoneText = timezone ? ` (${timezone})` : '';
-
-  let timeString: string;
-
-  timeString = formatTime(startDate, timezone);
-  if (endDate.getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(endDate, timezone)}${timezoneText}`;
-  }
-
-  return timeString;
 };

@@ -1,6 +1,8 @@
 import { QRCodeSVG } from 'qrcode.react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
+
+import { cn } from '@sovereign-university/ui';
 
 import PlanBLogo from '../assets/planb_logo_horizontal_black.svg?react';
 
@@ -22,11 +24,14 @@ export const PaymentQr = ({ paymentRequest }: PaymentQrProps) => {
     'border border-gray-400/25 rounded-xl overflow-hidden';
 
   return (
-    <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
+    <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8">
       <PlanBLogo className="h-auto" width={240} />
       <QRCodeSVG value={`lightning:${paymentRequest}`} size={220} />
       <div
-        className={`${borderClassName} flex flex-row px-4 py-3 relative w-full`}
+        className={cn(
+          `flex flex-row items-center justify-center px-4 py-3 relative w-full`,
+          borderClassName,
+        )}
       >
         <span className="text-base flex-1 truncate">{paymentRequest}</span>
         <AiOutlineCopy
@@ -36,8 +41,23 @@ export const PaymentQr = ({ paymentRequest }: PaymentQrProps) => {
           }}
         />
       </div>
-      <div className="text-[10px] text-center uppercase md:text-xs">
-        <span>{t('payment.feeDistribution')} </span>
+      <div className="text-center uppercase md:text-xs">
+        <p className="mb-2 text-[8px] md:text-[10px]">
+          {t('payment.feeDistribution')}{' '}
+        </p>
+
+        <div className="text-[10px] md:text-xs">
+          <Trans i18nKey="payment.terms">
+            <a
+              className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
+              href="/terms-and-conditions"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Payment terms
+            </a>
+          </Trans>
+        </div>
       </div>
     </div>
   );

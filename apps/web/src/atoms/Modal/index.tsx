@@ -3,6 +3,8 @@ import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
 
+import { cn } from '@sovereign-university/ui';
+
 interface ModalProps {
   isOpen: boolean;
   closeButtonEnabled?: boolean;
@@ -47,19 +49,16 @@ export const Modal = ({
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div
+            className={cn(
+              'flex items-end justify-center p-4 text-center sm:items-center sm:p-0',
+              isLargeModal ? 'size-full sm:w-[80vw] sm:h-[85vh]' : '',
+            )}
             style={{
               position: 'fixed',
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
-              ...(isLargeModal
-                ? {
-                    width: '80vw',
-                    height: '85vh',
-                  }
-                : {}),
             }}
-            className="flex items-end justify-center p-4 text-center sm:items-center sm:p-0"
           >
             <Transition.Child
               as={Fragment}

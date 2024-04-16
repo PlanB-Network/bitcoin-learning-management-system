@@ -11,6 +11,7 @@ import { ModalBookSummary } from './modal-book-summary.tsx';
 
 interface EventBookModalProps {
   event: JoinedEvent;
+  accessType: 'physical' | 'online' | 'replay';
   satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
@@ -18,6 +19,7 @@ interface EventBookModalProps {
 
 export const EventBookModal = ({
   event,
+  // accessType,
   satsPrice,
   isOpen,
   onClose,

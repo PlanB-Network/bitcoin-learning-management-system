@@ -140,7 +140,7 @@
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Invoice ID"
+      "invoiceId": "Trx ID"
     },
     "explorer": {
       "footerTitle": "Our professors are here for you !",
@@ -210,18 +210,6 @@
     }
   },
   "events": {
-    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
-    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
-    "pageTitle": "Looking for a Bitcoin event to go to ?",
-    "main": {
-      "upcomingEvents": "Upcoming events",
-      "currentEvents": "Events happening right now"
-    },
-    "missed": {
-      "missedh1": "Past events to replay",
-      "missedp1": "Did you miss an event ?",
-      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
-    },
     "card": {
       "free": "free",
       "online": "online",
@@ -234,6 +222,40 @@
       "bookLive": "Book live",
       "bookSeat": "Book your seat",
       "visitWebsite": "Visit website"
+    },
+    "main": {
+      "upcomingEvents": "Upcoming events",
+      "currentEvents": "Events happening right now"
+    },
+    "missed": {
+      "missedh1": "Past events to replay",
+      "missedp1": "Did you miss an event ?",
+      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+    },
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
+    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
+    "pageTitle": "Looking for a Bitcoin event to go to ?",
+    "payment": {
+      "access_invoice": "You can access your invoice via your dashboard.",
+      "access_successful": "When the event starts, log onto the platform and you’ll be granted access to the live stream via the event page.",
+      "access_type": "Type of access",
+      "address": "Address",
+      "amount": "Amount",
+      "back_events": "Back to events",
+      "callout_online": "You are about to book an online access to this event.",
+      "callout_physical": "You are about to book a physical access to this event.",
+      "callout_replay": "You are about to book an access to this event replay video.",
+      "date": "Date",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "description_online": "Please review the date and time of the event provided. When the time comes, log in to the platform and access the live stream via the event page.",
+      "description_physical": "Please review the venue details provided. Once the booking is processed, we'll provide you with a ticket to present at the event. This ticket will also give you access to the live stream and replay video, if any.",
+      "download_ticket": "Download your ticket",
+      "language": "Language spoken",
+      "limitation": "Limitation",
+      "max_capacity": "Max capacity of",
+      "payment_details": "Payment details",
+      "payment_successful": "Booking successful!",
+      "time": "Time"
     }
   },
   "home": {

@@ -67,3 +67,55 @@ export function addMinutesToDate(originalDate: Date, minutes: number) {
   newDate.setTime(newDate.getTime() + minutes * 60 * 1000);
   return newDate;
 }
+
+export const getDateString = (
+  startDate: Date,
+  endDate: Date,
+  timezone: string | undefined,
+) => {
+  let dateString: string;
+
+  switch (true) {
+    case startDate.getDate() === endDate.getDate(): {
+      dateString = formatDate(startDate, timezone, true, true);
+      break;
+    }
+    case startDate.getFullYear() === endDate.getFullYear() &&
+      startDate.getMonth() === endDate.getMonth() &&
+      startDate.getDay() !== endDate.getDay(): {
+      dateString = formatDate(startDate, timezone, false, false);
+      break;
+    }
+    case startDate.getFullYear() === endDate.getFullYear() &&
+      startDate.getMonth() !== endDate.getMonth(): {
+      dateString = formatDate(startDate, timezone, true, false);
+      break;
+    }
+    default: {
+      dateString = formatDate(startDate, timezone, true, true);
+    }
+  }
+
+  if (startDate.getDate() !== endDate.getDate()) {
+    dateString += ` to ${formatDate(endDate, timezone)}`;
+  }
+
+  return dateString;
+};
+
+export const getTimeString = (
+  startDate: Date,
+  endDate: Date,
+  timezone: string | undefined,
+) => {
+  const timezoneText = timezone ? ` (${timezone})` : '';
+
+  let timeString: string;
+
+  timeString = formatTime(startDate, timezone);
+  if (endDate.getUTCHours() !== 0) {
+    timeString += ` to ${formatTime(endDate, timezone)}${timezoneText}`;
+  }
+
+  return timeString;
+};
