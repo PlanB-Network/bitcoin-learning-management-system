@@ -4,16 +4,14 @@
 import type { z } from 'zod';
 
 import {
-  courseCompletedChaptersSchema,
+  courseUserChapterSchema,
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
   courseQuizAttemptsSchema,
 } from '@sovereign-university/schemas';
 
-export type CourseCompletedChapters = z.infer<
-  typeof courseCompletedChaptersSchema
->;
+export type CourseUserChapter = z.infer<typeof courseUserChapterSchema>;
 export type CoursePayment = z.infer<typeof coursePaymentSchema>;
 export type CourseProgressExtended = z.infer<
   typeof courseProgressExtendedSchema

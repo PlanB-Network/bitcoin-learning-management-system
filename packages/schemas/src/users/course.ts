@@ -2,9 +2,9 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 import {
-  usersCourseCompletedChapters,
   usersCoursePayment,
   usersCourseProgress,
+  usersCourseUserChapter,
   usersQuizAttempts,
 } from '@sovereign-university/database/schemas';
 
@@ -12,8 +12,8 @@ import { courseChapterSchema } from '../content/index.js';
 
 export const courseProgressSchema = createSelectSchema(usersCourseProgress);
 export const coursePaymentSchema = createSelectSchema(usersCoursePayment);
-export const courseCompletedChaptersSchema = createSelectSchema(
-  usersCourseCompletedChapters,
+export const courseUserChapterSchema = createSelectSchema(
+  usersCourseUserChapter,
 );
 export const courseQuizAttemptsSchema = createSelectSchema(usersQuizAttempts);
 
@@ -21,7 +21,7 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
     totalChapters: z.number(),
     chapters: z.array(
-      courseCompletedChaptersSchema.pick({
+      courseUserChapterSchema.pick({
         part: true,
         chapter: true,
         completedAt: true,
@@ -30,7 +30,7 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
     nextChapter: courseChapterSchema
       .pick({ part: true, chapter: true })
       .optional(),
-    lastCompletedChapter: courseCompletedChaptersSchema
+    lastCompletedChapter: courseUserChapterSchema
       .pick({
         part: true,
         chapter: true,

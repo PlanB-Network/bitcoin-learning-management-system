@@ -9,20 +9,24 @@ export const completeChapterQuery = (
 ) => {
   return sql<CourseProgress[]>`
     WITH 
-    -- Insert into course_completed_chapters and return the affected rows
+    -- Insert into course_user_chapter and return the affected rows
     inserted AS (
-        INSERT INTO users.course_completed_chapters (uid, course_id, part, chapter)
-        VALUES (${uid}, ${courseId}, ${part}, ${chapter})
+        INSERT INTO users.course_user_chapter (uid, course_id, part, chapter, completed_at)
+        VALUES (${uid}, ${courseId}, ${part}, ${chapter}, 'NOW()')
+        ON CONFLICT (uid, course_id, part, chapter) DO UPDATE
+        SET
+          completed_at = NOW()
         RETURNING *
     ),
 
     -- Calculate the count of completed chapters for the user and course (plus one as the newly completed chapter is not yet in the table)
     chapter_count AS (
         SELECT COUNT(*) + 1 as completed_count 
-        FROM users.course_completed_chapters
+        FROM users.course_user_chapter
         WHERE
           uid = ${uid}
           AND course_id = ${courseId}
+          AND completed_at is not null
     ),
 
     -- Calculate the total number of chapters for the course

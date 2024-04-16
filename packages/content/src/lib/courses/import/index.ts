@@ -199,7 +199,10 @@ const extractParts = (markdown: string): Part[] => {
           currentChapter.addressLine2 = extractData(token, 'addressLine2');
           currentChapter.addressLine3 = extractData(token, 'addressLine3');
           currentChapter.liveUrl = extractData(token, 'liveUrl');
-          currentChapter.availableSeats = 0; // TODO extractData(token, 'availableSeats');
+          const availableSeats = extractData(token, 'availableSeats');
+          if (availableSeats) {
+            currentChapter.availableSeats = +availableSeats;
+          }
           currentChapter.liveLanguage = extractData(token, 'liveLanguage');
 
           const professor = extractData(token, 'professor');

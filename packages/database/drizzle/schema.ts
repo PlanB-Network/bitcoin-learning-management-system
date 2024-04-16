@@ -410,8 +410,8 @@ export const usersCoursePayment = users.table(
 
 // COURSES PROGRESS
 
-export const usersCourseCompletedChapters = users.table(
-  'course_completed_chapters',
+export const usersCourseUserChapter = users.table(
+  'course_user_chapter',
   {
     uid: uuid('uid')
       .notNull()
@@ -426,6 +426,7 @@ export const usersCourseCompletedChapters = users.table(
     })
       .defaultNow()
       .notNull(),
+    booked: boolean('booked').default(false),
   },
   (table) => ({
     pk: primaryKey({

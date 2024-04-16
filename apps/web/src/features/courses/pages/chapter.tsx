@@ -530,7 +530,7 @@ export const CourseChapter = () => {
   let displayClassDetails = false;
   let displayLiveSection = false;
   let displayLiveVideo = false;
-  let displayCurriculum = true;
+  let displayMarkdown = true;
 
   if (chapter && chapter.startDate && chapter.endDate) {
     const isChapterAvailable =
@@ -554,10 +554,10 @@ export const CourseChapter = () => {
       addMinutesToDate(chapterStartDate, 60 * 24) < now &&
       isChapterAvailable
     ) {
-      displayCurriculum = true;
+      displayMarkdown = true;
       displayLiveVideo = false;
     } else {
-      displayCurriculum = false;
+      displayMarkdown = false;
     }
   }
 
@@ -635,7 +635,7 @@ export const CourseChapter = () => {
                         displayVideo={displayLiveVideo}
                       />
                     )}
-                  {displayCurriculum && (
+                  {displayMarkdown && (
                     <>
                       <MarkdownContent chapter={chapter} />
                       {questionsArray && questionsArray.length > 0 && (
@@ -655,9 +655,9 @@ export const CourseChapter = () => {
                             chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
                             questions={questionsArray}
                           />
-                          <BottomButton chapter={chapter} />
                         </>
                       )}
+                      <BottomButton chapter={chapter} />
                     </>
                   )}
                 </div>
