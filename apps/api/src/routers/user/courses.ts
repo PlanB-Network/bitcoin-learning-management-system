@@ -1,16 +1,20 @@
 import { z } from 'zod';
 
+import { createCalculateCourseChapterSeats } from '@sovereign-university/content';
 import {
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
+  courseUserChapterSchema,
 } from '@sovereign-university/schemas';
 import {
   createCompleteChapter,
   createGetPayment,
   createGetProgress,
+  createGetUserChapter,
   createSavePayment,
   createSaveQuizAttempt,
+  createSaveUserChapter,
 } from '@sovereign-university/user';
 
 import { protectedProcedure } from '../../procedures/index.js';
@@ -114,10 +118,58 @@ const getPaymentProcedure = protectedProcedure
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
+const getUserChapterProcedure = protectedProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output(
+    courseUserChapterSchema
+      .pick({
+        courseId: true,
+        booked: true,
+        chapter: true,
+        completedAt: true,
+        part: true,
+      })
+      .array(),
+  )
+  .query(({ ctx, input }) =>
+    createGetUserChapter(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    }),
+  );
+
+const saveUserChapterProcedure = protectedProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      part: z.number(),
+      chapter: z.number(),
+      booked: z.boolean(),
+    }),
+  )
+  .output(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createSaveUserChapter(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+      part: input.part,
+      chapter: input.chapter,
+      booked: input.booked,
+    });
+
+    await createCalculateCourseChapterSeats(ctx.dependencies)();
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   getProgress: getProgressProcedure,
+  getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,
   saveQuizAttempt: saveQuizAttemptProcedure,
+  saveUserChapter: saveUserChapterProcedure,
   savePayment: savePaymentProcedure,
 });

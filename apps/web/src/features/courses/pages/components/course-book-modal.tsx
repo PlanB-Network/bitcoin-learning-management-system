@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
+import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
@@ -28,38 +28,24 @@ export const CourseBookModal = ({
 }: CourseBookModalProps) => {
   const { t } = useTranslation();
 
-  //const savePaymentRequest = trpc.user.courses.savePayment.useMutation();
+  const saveUserChapterRequest =
+    trpc.user.courses.saveUserChapter.useMutation();
 
-  // const [paymentData, setPaymentData] = useState<PaymentData>();
   const [isCourseBooked, setIsCourseBooked] = useState(false);
 
   const displaySuccess = useCallback(() => {
+    saveUserChapterRequest.mutateAsync({
+      courseId: course.id,
+      part: chapter.part.part,
+      chapter: chapter.chapter,
+      booked: true,
+    });
     setIsCourseBooked(true);
-    // const serverPaymentData = await savePaymentRequest.mutateAsync({
-    //   courseId: course.id,
-    //   amount: satsPrice,
-    // });
-    // setPaymentData(serverPaymentData);
-    // const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
-    // ws.addEventListener('open', () => {
-    //   const hash = hexToBase64(serverPaymentData.id);
-    //   ws.send(JSON.stringify({ hash: hash }));
-    // });
-    // const handleMessage = (event: MessageEvent) => {
-    //   const message: WebSocketMessage = JSON.parse(
-    //     event.data as string,
-    //   ) as WebSocketMessage;
-    //   if (message.settled) {
-    //     setIsPaymentSuccess(true);
-    //   }
-    // };
-    // ws.addEventListener('message', handleMessage);
-  }, []);
+  }, [chapter.chapter, chapter.part.part, course.id, saveUserChapterRequest]);
 
   const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
 
   return (
-    // eslint-disable-next-line react/jsx-no-undef
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
         <ModalBookSummary

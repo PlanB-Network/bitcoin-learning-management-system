@@ -1,4 +1,5 @@
 import {
+  createCalculateCourseChapterSeats,
   createGetNow,
   createProcessChangedFiles,
   createProcessDeleteOldEntities,
@@ -39,6 +40,9 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     process.env['PRIVATE_DATA_REPOSITORY_BRANCH'],
     process.env['GITHUB_ACCESS_TOKEN'],
   ).then(processChangedFiles);
+
+  console.log('-- Sync procedure: calculate remaining seats');
+  await createCalculateCourseChapterSeats(dependencies)();
 
   if (syncErrors.length === 0) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);

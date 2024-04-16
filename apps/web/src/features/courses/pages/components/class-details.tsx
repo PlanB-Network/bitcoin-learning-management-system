@@ -5,7 +5,7 @@ import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
+import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { CourseBookModal } from './course-book-modal.tsx';
 
@@ -33,6 +33,17 @@ export const ClassDetails = ({
 
   const { t } = useTranslation();
   const timezone = chapter.timezone ? chapter.timezone : undefined;
+
+  const { data: userChapters, refetch: refetchUserChapter } =
+    trpc.user.courses.getUserChapter.useQuery({
+      courseId: course.id,
+    });
+  const userChapter = userChapters?.find(
+    (uc) =>
+      uc.chapter === chapter.chapter &&
+      uc.part === chapter.part.part &&
+      uc.booked === true,
+  );
 
   return (
     <div className="flex flex-col mt-6  px-4 md:px-0">
@@ -82,19 +93,35 @@ export const ClassDetails = ({
           </div>
           {chapter.isInPerson && (
             <div>
-              <Button
-                variant="newPrimary"
-                onClick={() => {
-                  setIsBookModalOpen(true);
-                }}
-              >
-                {t('courses.chapter.detail.bookSeat')}
-              </Button>
+              {chapter.remainingSeats &&
+                chapter.remainingSeats > 0 &&
+                !userChapter && (
+                  <Button
+                    variant="newPrimary"
+                    onClick={() => {
+                      setIsBookModalOpen(true);
+                    }}
+                  >
+                    {t('courses.chapter.detail.bookSeat')}
+                  </Button>
+                )}
+              {chapter.remainingSeats &&
+                chapter.remainingSeats > 0 &&
+                userChapter && (
+                  <p className="italic text-newOrange-1 text-lg">
+                    Seat booked!
+                  </p>
+                )}
             </div>
           )}
         </div>
       </div>
-
+      {chapter.remainingSeats && (
+        <span>
+          (available : {chapter.availableSeats}, remaining:{' '}
+          {chapter.remainingSeats})
+        </span>
+      )}
       <CourseBookModal
         course={course}
         chapter={chapter}
@@ -103,7 +130,7 @@ export const ClassDetails = ({
         professorNames={'TEST'}
         onClose={() => {
           setIsBookModalOpen(false);
-          // refetchPayment();
+          refetchUserChapter();
         }}
       />
 

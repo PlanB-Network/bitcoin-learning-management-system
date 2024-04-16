@@ -127,6 +127,7 @@ interface Chapter {
   addressLine3: string | null;
   liveUrl: string | null;
   availableSeats: number | null;
+  remainingSeats: number | null;
   liveLanguage: string | null;
 }
 
@@ -178,6 +179,7 @@ const extractParts = (markdown: string): Part[] => {
           timeZone: '',
           liveUrl: '',
           availableSeats: -1,
+          remainingSeats: -1,
           liveLanguage: '',
         });
       } else if (currentPart.chapters.length > 0) {
@@ -202,6 +204,7 @@ const extractParts = (markdown: string): Part[] => {
           const availableSeats = extractData(token, 'availableSeats');
           if (availableSeats) {
             currentChapter.availableSeats = +availableSeats;
+            currentChapter.remainingSeats = +availableSeats;
           }
           currentChapter.liveLanguage = extractData(token, 'liveLanguage');
 
@@ -526,6 +529,7 @@ export const createProcessChangedCourse =
                       address_line_3: chapter.addressLine3,
                       live_url: chapter.liveUrl,
                       available_seats: chapter.availableSeats,
+                      remaining_seats: chapter.availableSeats,
                       live_language: chapter.liveLanguage,
                     };
                   }),

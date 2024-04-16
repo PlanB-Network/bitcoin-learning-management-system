@@ -45,6 +45,7 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
+    remainingSeats: true,
     liveLanguage: true,
     rawContent: true,
   })
@@ -127,6 +128,7 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
+    remainingSeats: true,
     liveLanguage: true,
     rawContent: true,
   })
