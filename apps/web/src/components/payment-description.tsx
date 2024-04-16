@@ -32,8 +32,8 @@ const DEFAULT_CURRENCY = 'USD';
 
 interface PaymentDescriptionProps {
   paidPriceDollars: number | null;
-  event: JoinedEvent;
-  accessType: 'physical' | 'online' | 'replay';
+  event?: JoinedEvent;
+  accessType?: 'physical' | 'online' | 'replay';
   satsPrice: number;
   callout: string;
   description: string;
@@ -63,12 +63,14 @@ export const PaymentDescription = ({
           <span className="text-sm text-gray-400/50">{satsPrice} sats</span>
         </div>
       </div>
-      <ModalPaymentSummary
-        event={event}
-        accessType={accessType}
-        satsPrice={satsPrice}
-        mobileDisplay={true}
-      />
+      {event && accessType && (
+        <ModalPaymentSummary
+          event={event}
+          accessType={accessType}
+          satsPrice={satsPrice}
+          mobileDisplay={true}
+        />
+      )}
       <Button variant="tertiary" className="w-full" onClick={initPayment}>
         {t('payment.proceedToPayment')}
       </Button>
