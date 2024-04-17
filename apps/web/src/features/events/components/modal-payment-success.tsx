@@ -21,62 +21,75 @@ export const ModalPaymentSuccess = ({
   onClose,
 }: ModalPaymentSuccessProps) => {
   return (
-    <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8">
-      <PlanBLogo className="h-auto" width={240} />
-      <div className="items-center justify-center flex flex-col gap-6">
-        <span className="text-xl font-semibold text-orange">
-          {t('courses.payment.payment_successful')}
-        </span>
-        <div className="flex flex-col">
-          <span className="text-base text-center">
-            {t('events.payment.access_successful')}
-          </span>
-          <span className="text-base text-center">
-            {t('events.payment.access_invoice')}
-          </span>
+    <>
+      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
+        <PlanBLogo className="h-auto" width={240} />
+        <div className="items-center justify-center flex flex-col gap-6">
+          <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-[0.15px]">
+            <span className="text-base text-center">
+              {t('events.payment.payment_successful')}
+            </span>
+            <span className="text-base text-center">
+              {t('events.payment.enjoy')}
+            </span>
+          </div>
+          {(accessType === 'physical' || accessType === 'online') && (
+            <div className="flex flex-col">
+              <span className="text-center text-xs lg:text-base">
+                {t(`events.payment.access_${accessType}_successful`)}
+              </span>
+              <span className="text-center text-xs lg:text-base">
+                {t('events.payment.access_invoice')}
+              </span>
+            </div>
+          )}
         </div>
-      </div>
-      <span className="text-lg font-medium">
-        {t('courses.payment.payment_details')}
-      </span>
-      <>
-        <PaymentRow
-          isBlack
-          label={t('courses.payment.amount')}
-          value={`${paymentData.amount} sats`}
-        />
-        <PaymentRow
-          isBlack
-          label={t('courses.payment.date')}
-          value={formatDate(new Date())}
-        />
-        <PaymentRow
-          isBlack
-          label={t('courses.payment.invoiceId')}
-          value={paymentData.id}
-        />
-      </>
-      <div className="flex gap-5">
-        <Button
-          variant="newPrimary"
-          onClick={() => {
-            onClose(true);
-          }}
-        >
-          {t('events.payment.back_events')}
-        </Button>
-        {accessType === 'physical' && (
+        <span className="text-lg font-medium">
+          {t('courses.payment.payment_details')}
+        </span>
+        <div className="w-full flex flex-col gap-4">
+          <PaymentRow
+            isBlack
+            isLabelBold
+            label={t('courses.payment.amount')}
+            value={`${paymentData.amount} sats`}
+          />
+          <PaymentRow
+            isBlack
+            isLabelBold
+            label={t('courses.payment.date')}
+            value={formatDate(new Date())}
+          />
+          <PaymentRow
+            isBlack
+            isLabelBold
+            label={t('courses.payment.invoiceId')}
+            value={paymentData.id}
+          />
+        </div>
+        <div className="flex gap-5">
           <Button
-            variant="newPrimary"
+            variant="newPrimaryGhost"
             onClick={() => {
               onClose(true);
             }}
           >
-            {t('events.payment.download_ticket')}
+            {t('events.payment.back_events')}
           </Button>
-        )}
+          {accessType === 'physical' && (
+            <Button
+              variant="newPrimary"
+              onClick={() => {
+                // TODO trigger download your ticket
+                onClose(true);
+              }}
+            >
+              {t('events.payment.download_ticket')}
+            </Button>
+          )}
+        </div>
       </div>
-      <div className="text-center uppercase md:text-xs">
+      <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
             <a
@@ -90,6 +103,6 @@ export const ModalPaymentSuccess = ({
           </Trans>
         </div>
       </div>
-    </div>
+    </>
   );
 };

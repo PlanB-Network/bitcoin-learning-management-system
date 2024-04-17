@@ -42,8 +42,6 @@ export const Events = () => {
     refetchEventPayments();
   }, [isLoggedIn, refetchEventPayments]);
 
-  console.log(eventPayments);
-
   // TODO Refactor this auth stuff
   const authMode = AuthModalState.SignIn;
 
@@ -99,12 +97,19 @@ export const Events = () => {
             satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
             onClose={(isPaid) => {
+              // TODO trigger add paid booked seat logic
+
               if (isPaid) {
                 refetchEventPayments();
                 setTimeout(() => {
                   refetchEventPayments();
                 }, 5000);
               }
+              setPaymentModalData({
+                eventId: null,
+                satsPrice: null,
+                accessType: null,
+              });
               setIsPaymentModalOpen(false);
             }}
           />
@@ -119,12 +124,19 @@ export const Events = () => {
             satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
             onClose={(isPaid) => {
+              // TODO trigger add free booked seat logic
+
               if (isPaid) {
                 refetchEventPayments();
                 setTimeout(() => {
                   refetchEventPayments();
                 }, 5000);
               }
+              setPaymentModalData({
+                eventId: null,
+                satsPrice: null,
+                accessType: null,
+              });
               setIsPaymentModalOpen(false);
             }}
           />

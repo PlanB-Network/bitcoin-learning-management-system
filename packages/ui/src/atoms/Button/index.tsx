@@ -16,6 +16,7 @@ export interface ButtonProps
   variant?:
     | 'primary'
     | 'newPrimary'
+    | 'newPrimaryGhost'
     | 'secondary'
     | 'newSecondary'
     | 'tertiary'
@@ -40,6 +41,8 @@ const classesByVariant = {
   primary:
     'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
   newPrimary: 'bg-newOrange-1 text-white font-normal',
+  newPrimaryGhost:
+    'bg-transparent text-darkOrange-5 border border-darkOrange-4',
   tertiary: 'bg-orange-600 text-white font-normal',
   secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
   newSecondary: 'bg-white text-newBlack-2',

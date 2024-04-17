@@ -1,48 +1,59 @@
 import { t } from 'i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_black.svg?react';
 
 interface ModalBookSuccessProps {
-  event: JoinedEvent;
-  onClose: (isPaid?: boolean) => void;
+  accessType: 'physical' | 'online' | 'replay';
+  onClose: () => void;
 }
 
-export const ModalBookSuccess = ({ event, onClose }: ModalBookSuccessProps) => {
+export const ModalBookSuccess = ({
+  accessType,
+  onClose,
+}: ModalBookSuccessProps) => {
   return (
     <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
       <PlanBLogo className="h-auto" width={240} />
       <div className="items-center justify-center flex flex-col gap-6">
-        <span className="text-xl font-semibold text-orange">
-          {t('courses.payment.payment_successful')}
-        </span>
-        <span className="text-base text-center">
-          {t('courses.payment.access_invoice')}
-        </span>
+        <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-[0.15px]">
+          <span className="text-base text-center">
+            {t('events.payment.payment_successful')}
+          </span>
+          <span className="text-base text-center">
+            {t('events.payment.enjoy')}
+          </span>
+        </div>
+        {(accessType === 'physical' || accessType === 'online') && (
+          <div className="flex flex-col">
+            <span className="text-center text-xs lg:text-base">
+              {t(`events.payment.access_${accessType}_successful`)}
+            </span>
+          </div>
+        )}
       </div>
 
-      <Button
-        variant="newPrimary"
-        className="w-full"
-        onClick={() => {
-          onClose(true);
-        }}
-      >
-        Download ticket
-      </Button>
-
-      {event.name && <div>event.name</div>}
-
-      <div className="text-[10px] text-center uppercase md:text-xs">
-        <span>{t('courses.payment.terms1')} </span>
-        <a href={'/terms-and-conditions'} target="_blank" rel="noreferrer">
-          <span className="text-orange-500">
-            {t('courses.payment.terms2')}{' '}
-          </span>
-        </a>
-        <span>{t('courses.payment.terms3')}</span>
+      <div className="flex gap-5">
+        <Button
+          variant="newPrimaryGhost"
+          onClick={() => {
+            onClose();
+          }}
+        >
+          {t('events.payment.back_events')}
+        </Button>
+        {accessType === 'physical' && (
+          <Button
+            variant="newPrimary"
+            onClick={() => {
+              // TODO trigger download your ticket
+              onClose();
+            }}
+          >
+            {t('events.payment.download_ticket')}
+          </Button>
+        )}
       </div>
     </div>
   );

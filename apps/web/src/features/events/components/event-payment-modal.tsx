@@ -109,7 +109,10 @@ export const EventPaymentModal = ({
                 onClose={onClose}
               />
             ) : (
-              <PaymentQr paymentRequest={paymentData.pr} />
+              <PaymentQr
+                paymentRequest={paymentData.pr}
+                onBack={() => setPaymentData(undefined)}
+              />
             )
           ) : (
             <PaymentDescription

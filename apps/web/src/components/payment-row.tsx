@@ -16,9 +16,15 @@ interface PaymentRowProps {
   label: string;
   value: string;
   isBlack?: boolean;
+  isLabelBold?: boolean;
 }
 
-export const PaymentRow = ({ label, value, isBlack }: PaymentRowProps) => {
+export const PaymentRow = ({
+  label,
+  value,
+  isBlack,
+  isLabelBold,
+}: PaymentRowProps) => {
   const splitValue = value.includes('\n') && value.split('\n');
 
   return (
@@ -27,6 +33,7 @@ export const PaymentRow = ({ label, value, isBlack }: PaymentRowProps) => {
         className={cn(
           'text-sm lg:text-base tracking-[0.08px] self-start',
           isBlack ? 'text-slate-950' : 'text-newGray-1 lg:text-white/[.64]',
+          isLabelBold ? 'font-semibold' : '',
         )}
       >
         {label}
