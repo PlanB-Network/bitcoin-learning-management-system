@@ -15,6 +15,7 @@ import {
   createSavePayment,
   createSaveQuizAttempt,
   createSaveUserChapter,
+  generateChapterTicket,
 } from '@sovereign-university/user';
 
 import { protectedProcedure } from '../../procedures/index.js';
@@ -164,8 +165,27 @@ const saveUserChapterProcedure = protectedProcedure
     await createCalculateCourseChapterSeats(ctx.dependencies)();
   });
 
+const downloadChapterTicketProcedure = protectedProcedure
+  .input(
+    z.object({
+      title: z.string().optional(),
+      addressLine1: z.string().nullable(),
+      addressLine2: z.string().nullable(),
+      addressLine3: z.string().nullable(),
+      formattedStartDate: z.string().optional(),
+      formattedTime: z.string().optional(),
+      liveLanguage: z.string().nullable(),
+      formattedCapacity: z.string().optional(),
+    }),
+  )
+  .output(z.string())
+  .mutation(async ({ input }) => {
+    return generateChapterTicket(input);
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
+  downloadChapterTicket: downloadChapterTicketProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,

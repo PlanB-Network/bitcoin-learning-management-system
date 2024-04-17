@@ -72,9 +72,19 @@ export const Button = ({
     [rounded, size, variant],
   );
 
-  const disabledClass = disabled
-    ? ' active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default'
-    : '';
+  let disabledClass = '';
+  if (disabled) {
+    if (variant === 'newPrimary') {
+      disabledClass =
+        'active:none bg-newGray-5 !text-newOrange-3 font-normal cursor-default';
+    } else if (variant === 'newSecondary') {
+      disabledClass =
+        'active:none bg-newGray-5 !text-newGray-3 font-normal cursor-default';
+    } else {
+      disabledClass =
+        'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default ';
+    }
+  }
 
   if (icon)
     return (

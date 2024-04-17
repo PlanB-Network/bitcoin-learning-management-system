@@ -1,4 +1,5 @@
 export * from './complete-chapter.js';
+export * from './generate-chapter-ticket.js';
 export * from './get-payment.js';
 export * from './get-progress.js';
 export * from './get-user-chapter.js';
