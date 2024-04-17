@@ -50,6 +50,8 @@ export const ClassDetails = ({
       uc.booked === true,
   );
 
+  const { data: user } = trpc.user.getDetails.useQuery();
+
   const timezone = chapter.timezone ? chapter.timezone : undefined;
   const formattedStartDate = chapter.startDate
     ? formatDate(chapter.startDate)
@@ -131,7 +133,9 @@ export const ClassDetails = ({
                 )}
               {chapter.remainingSeats !== null &&
                 chapter.remainingSeats > 0 &&
-                userChapter && (
+                userChapter &&
+                user &&
+                user.displayName !== null && (
                   <Button
                     variant="newPrimary"
                     onClick={async () => {
@@ -141,10 +145,11 @@ export const ClassDetails = ({
                         formattedStartDate,
                         formattedTime,
                         formattedCapacity,
+                        userDisplayName: user.displayName as string,
                       });
                       const link = document.createElement('a');
                       link.href = `data:application/pdf;base64,${base64}`;
-                      link.download = 'todonameticket.pdf';
+                      link.download = 'ticket.pdf';
                       document.body.append(link);
                       link.click();
                       link.remove();

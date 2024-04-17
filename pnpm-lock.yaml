@@ -599,6 +599,9 @@ importers:
       '@trpc/server':
         specifier: 11.0.0-next-beta.316
         version: 11.0.0-next-beta.316
+      '@types/qr-image':
+        specifier: ^3.2.9
+        version: 3.2.9
       argon2:
         specifier: ^0.40.1
         version: 0.40.1
@@ -614,6 +617,9 @@ importers:
       pdfkit:
         specifier: ^0.15.0
         version: 0.15.0
+      qr-image:
+        specifier: ^3.2.0
+        version: 3.2.0
     devDependencies:
       '@sovereign-university/types':
         specifier: workspace:*
@@ -5307,6 +5313,12 @@ packages:
 
   /@types/prop-types@15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
+
+  /@types/qr-image@3.2.9:
+    resolution: {integrity: sha512-vmqTI+ehoC07jtzjT9Dc+3eMpXTgdluD9orVHtp9bN1gE81SnOuMe9+EwmRuWfTH04YNyk1mihI/Vr7BIhUCZg==}
+    dependencies:
+      '@types/node': 20.12.7
+    dev: false
 
   /@types/qs@6.9.14:
     resolution: {integrity: sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==}
@@ -12501,6 +12513,10 @@ packages:
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  /qr-image@3.2.0:
+    resolution: {integrity: sha512-rXKDS5Sx3YipVsqmlMJsJsk6jXylEpiHRC2+nJy66fxA5ExYyGa4PqwteW69SaVmAb2OQ18HbYriT7cGQMbduw==}
+    dev: false
 
   /qrcode.react@3.1.0(react@18.2.0):
     resolution: {integrity: sha512-oyF+Urr3oAMUG/OiOuONL3HXM+53wvuH3mtIWQrYmsXoAq0DkvZp2RYUWFSMFtbdOpuS++9v+WAkzNVkMlNW6Q==}

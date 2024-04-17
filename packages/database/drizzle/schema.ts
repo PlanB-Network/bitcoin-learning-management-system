@@ -207,6 +207,7 @@ export const contentCourses = content.table('courses', {
   paidVideoLink: text('paid_video_link'),
   paidStartDate: timestamp('paid_start_date', { withTimezone: true }),
   paidEndDate: timestamp('paid_end_date', { withTimezone: true }),
+  contact: varchar('contact', { length: 255 }),
 
   lastUpdated: timestamp('last_updated', { withTimezone: true })
     .defaultNow()

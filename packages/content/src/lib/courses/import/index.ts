@@ -98,6 +98,7 @@ interface CourseMain {
   paid_video_link?: string;
   paid_start_date?: string;
   paid_end_date?: string;
+  contact?: string;
 }
 
 interface CourseLocalized {
@@ -333,7 +334,7 @@ export const createProcessChangedCourse =
 
               const result = await transaction<Course[]>`
                 INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_dollars,
-                  paid_description, paid_video_link, paid_start_date, paid_end_date,
+                  paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
@@ -345,6 +346,7 @@ export const createProcessChangedCourse =
                   ${parsedCourse.paid_video_link},
                   ${startDateTimestamp},
                   ${endDateTimestamp},
+                  ${parsedCourse.contact},
                   ${lastUpdated.time}, 
                   ${lastUpdated.commit},
                   NOW()
@@ -358,6 +360,7 @@ export const createProcessChangedCourse =
                   paid_video_link = EXCLUDED.paid_video_link,
                   paid_start_date = EXCLUDED.paid_start_date,
                   paid_end_date = EXCLUDED.paid_end_date,
+                  contact = EXCLUDED.contact,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()

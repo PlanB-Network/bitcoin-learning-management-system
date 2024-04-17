@@ -176,6 +176,8 @@ const downloadChapterTicketProcedure = protectedProcedure
       formattedTime: z.string().optional(),
       liveLanguage: z.string().nullable(),
       formattedCapacity: z.string().optional(),
+      contact: z.string().nullable(),
+      userDisplayName: z.string(),
     }),
   )
   .output(z.string())
