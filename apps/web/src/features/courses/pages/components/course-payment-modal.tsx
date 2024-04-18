@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
@@ -40,6 +41,8 @@ export const CoursePaymentModal = ({
   const [paymentData, setPaymentData] = useState<PaymentData>();
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
+  // TODO fix issue with payment processing but not showing success confirmation
+
   const initCoursePayment = useCallback(async () => {
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
@@ -71,13 +74,21 @@ export const CoursePaymentModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+      <button
+        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
+        aria-roledescription="Close Payment Modal"
+        onClick={() => onClose()}
+      >
+        <AiOutlineClose />
+      </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
         <ModalPaymentSummary
           course={course}
           courseName={courseName}
           professorNames={professorNames}
+          mobileDisplay={false}
         />
-        <div className="flex flex-col items-center justify-center pl-6">
+        <div className="flex flex-col items-center justify-center lg:pl-6">
           {paymentData ? (
             isPaymentSuccess ? (
               <ModalPaymentSuccess
@@ -85,7 +96,10 @@ export const CoursePaymentModal = ({
                 onClose={onClose}
               />
             ) : (
-              <PaymentQr paymentRequest={paymentData.pr} />
+              <PaymentQr
+                paymentRequest={paymentData.pr}
+                onBack={() => setPaymentData(undefined)}
+              />
             )
           ) : (
             <PaymentDescription
@@ -95,7 +109,14 @@ export const CoursePaymentModal = ({
               description={t('courses.payment.description')}
               callout={t('courses.payment.callout')}
               itemId={course.id}
-            />
+            >
+              <ModalPaymentSummary
+                course={course}
+                courseName={courseName}
+                professorNames={professorNames}
+                mobileDisplay={true}
+              />
+            </PaymentDescription>
           )}
         </div>
       </div>

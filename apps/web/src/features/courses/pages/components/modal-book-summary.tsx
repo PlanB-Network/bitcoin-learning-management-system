@@ -24,7 +24,9 @@ export const ModalBookSummary = ({
 }: ModalBookSummaryProps) => {
   const { t } = useTranslation();
 
-  const Separator = () => <div className="w-100 h-px bg-white/10" />;
+  const Separator = () => (
+    <div className="w-full h-px bg-newGray-4 lg:bg-white/10" />
+  );
 
   return (
     <div className="h-full items-center place-items-center  ">

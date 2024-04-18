@@ -17,7 +17,7 @@ export const PaymentCallout = ({ description }: PaymentCalloutProps) => {
       )}
     >
       <AiOutlineWarning className="size-6" />
-      <span className="text-sm flex-1 lg:text-center ml-0.5">
+      <span className="text-sm lg:text-base flex-1 lg:text-center ml-0.5">
         {description}
       </span>
     </div>

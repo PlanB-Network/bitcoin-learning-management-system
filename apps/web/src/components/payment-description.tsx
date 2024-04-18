@@ -122,7 +122,11 @@ export const PaymentDescription = ({
         </div>
         {/* Todo : a generic component should not reference a specific one */}
         {children}
-        <Button variant="tertiary" className="lg:w-full" onClick={initPayment}>
+        <Button
+          variant="newPrimary"
+          className="lg:w-full text-xs lg:text-sm"
+          onClick={initPayment}
+        >
           {t('payment.proceedToPayment')}
         </Button>
       </div>

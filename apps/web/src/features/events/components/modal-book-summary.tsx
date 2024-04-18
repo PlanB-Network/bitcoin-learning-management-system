@@ -25,7 +25,9 @@ export const ModalBookSummary = ({
 }: ModalBookSummaryProps) => {
   const { t } = useTranslation();
 
-  const Separator = () => <div className="w-full h-px bg-white/10" />;
+  const Separator = () => (
+    <div className="w-full h-px bg-newGray-4 lg:bg-white/10" />
+  );
 
   const timezone = event.timezone || undefined;
   const startDate = new Date(event.startDate);
@@ -97,7 +99,7 @@ export const ModalBookSummary = ({
                 : capitalize(t('events.card.unlimited'))
             }
           />
-          <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-xl mt-4">
+          <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
             <span className="font-semibold uppercase">
               {t('events.card.free')}
             </span>
