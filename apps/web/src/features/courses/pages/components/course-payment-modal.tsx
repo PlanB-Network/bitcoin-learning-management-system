@@ -57,7 +57,7 @@ export const CoursePaymentModal = ({
   );
   const [satsPriceReduced, setSatsPriceReduced] = useState(satsPrice);
 
-  const initCoursePayment = useCallback(() => {
+  const initCoursePayment = useCallback(async () => {
     async function saveFreePayment() {
       const serverPaymentData = await saveFreePaymentRequest.mutateAsync({
         courseId: course.id,
@@ -76,11 +76,7 @@ export const CoursePaymentModal = ({
       setPaymentData(serverPaymentData);
     }
 
-    if (satsPriceReduced === 0) {
-      saveFreePayment();
-    } else {
-      savePayment();
-    }
+    await (satsPriceReduced === 0 ? saveFreePayment() : savePayment());
   }, [
     course.id,
     satsPriceReduced,
