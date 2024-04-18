@@ -98,6 +98,7 @@ const baseConfig = {
         3: '#B2B2B2',
         4: '#CCCCCC',
         5: '#E5E5E5',
+        6: '#F6F6F6',
       },
       beige: {
         300: '#FCFBF3',

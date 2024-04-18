@@ -94,6 +94,7 @@ export const CoursePaymentModal = ({
               initPayment={initCoursePayment}
               description={t('courses.payment.description')}
               callout={t('courses.payment.callout')}
+              itemId={course.id}
             />
           )}
         </div>

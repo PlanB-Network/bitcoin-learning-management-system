@@ -121,6 +121,7 @@ export const EventPaymentModal = ({
               accessType={accessType}
               satsPrice={satsPrice}
               initPayment={initEventPayment}
+              itemId={event.id}
               description={
                 accessType === 'replay'
                   ? ''

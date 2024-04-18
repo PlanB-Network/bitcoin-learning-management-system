@@ -1,9 +1,13 @@
 import { t } from 'i18next';
+import { useState } from 'react';
 import { Trans } from 'react-i18next';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import checkGreen from '#src/assets/icons/check_green.svg';
+import crossRed from '#src/assets/icons/cross_red.svg';
+import spinner from '#src/assets/icons/spinner.svg';
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { ModalPaymentSummary } from '#src/features/events/components/modal-payment-summary.js';
@@ -37,6 +41,7 @@ interface PaymentDescriptionProps {
   satsPrice: number;
   callout: string;
   description: string;
+  itemId: string;
   initPayment: () => Promise<void>;
 }
 
@@ -48,9 +53,18 @@ export const PaymentDescription = ({
   callout,
   description,
   initPayment,
+  itemId,
 }: PaymentDescriptionProps) => {
-  const splitDescription =
-    description.includes('\n') && description.split('\n');
+  const splitDescription = description.split('\n');
+  const [couponCode, setCouponCode] = useState('');
+  const [couponValid, setCouponValid] = useState<boolean | null>(null);
+  const [isLoadingCoupon, setIsLoadingCoupon] = useState<boolean>(false);
+
+  function applyCoupon() {
+    setCouponValid(true);
+    setIsLoadingCoupon(false);
+    console.log(itemId);
+  }
 
   return (
     <>
@@ -58,15 +72,45 @@ export const PaymentDescription = ({
         <PlanBLogo className="h-auto max-lg:hidden" width={240} />
         <PaymentCallout description={callout} />
         <div className="w-full flex flex-col">
-          {splitDescription ? (
+          {splitDescription &&
             splitDescription.map((desc) => (
               <p className="text-sm max-lg:text-center" key={desc}>
                 {desc}
               </p>
-            ))
-          ) : (
-            <p className="text-sm max-lg:text-center">{description}</p>
-          )}
+            ))}
+        </div>
+        <div className="place-self-start flex flex-row place-items-center">
+          <span>Have a reduction code ?</span>
+          <input
+            id="emailId"
+            type="text"
+            value={couponCode}
+            onChange={(event) => {
+              setCouponCode(event.target.value);
+              setIsLoadingCoupon(true);
+              setCouponValid(null);
+            }}
+            className="border-2 w-24 ml-4 p-1 rounded-lg border-newGray-5 bg-newGray-6 text-newBlack-5"
+          />
+          <div className="ml-2">
+            {isLoadingCoupon === true && (
+              <img src={spinner} alt="spinner" className="size-6" />
+            )}
+            {couponValid === true && (
+              <img src={checkGreen} alt="green check" className="size-6" />
+            )}
+            {couponValid === false && (
+              <img src={crossRed} alt="red cross" className="size-6" />
+            )}
+          </div>
+          <Button
+            variant="newSecondary"
+            size="s"
+            className="-ml-1"
+            onClick={applyCoupon}
+          >
+            Apply
+          </Button>
         </div>
         <div className="flex flex-row justify-between w-full max-lg:hidden">
           <span className="text-lg font-medium">{t('payment.total')}</span>
@@ -77,6 +121,7 @@ export const PaymentDescription = ({
             <span className="text-sm text-gray-400/50">{satsPrice} sats</span>
           </div>
         </div>
+        {/* Todo : a generic component should not reference a specific one */}
         {event && accessType && (
           <ModalPaymentSummary
             event={event}
