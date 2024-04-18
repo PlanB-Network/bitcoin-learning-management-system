@@ -63,6 +63,7 @@ const processIndexFile = (sourcePath: string, relativePath: string) => {
     return lines.every(
       (line) =>
         line.match(/^export/) ||
+        line.match(/^\/\//) ||
         line.trim() === '' ||
         line.trim() === "import 'zod';",
     );
@@ -71,7 +72,13 @@ const processIndexFile = (sourcePath: string, relativePath: string) => {
   if (isValidIndexFile(fileContent)) {
     // Use type exports instead of regular exports so our package keeps being type-only
     const modifiedContent =
-      generatedHeader + fileContent.replace(/export \*/g, 'export type *');
+      generatedHeader +
+      fileContent
+        .replace(/export \*/g, 'export type *')
+        .replace(
+          /export type \* from 'drizzle-orm\/pg-core';/g,
+          "//export type * from 'drizzle-orm/pg-core';",
+        );
     const destinationPath = path.join(outputDirectory, relativePath);
     fs.mkdirSync(path.dirname(destinationPath), { recursive: true });
     fs.writeFileSync(destinationPath, modifiedContent);

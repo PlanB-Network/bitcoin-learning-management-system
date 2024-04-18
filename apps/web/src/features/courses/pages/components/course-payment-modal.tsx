@@ -44,6 +44,7 @@ export const CoursePaymentModal = ({
   // TODO fix issue with payment processing but not showing success confirmation
 
   const initCoursePayment = useCallback(async () => {
+    // Handle coupon logic here + price
     const serverPaymentData = await savePaymentRequest.mutateAsync({
       courseId: course.id,
       amount: satsPrice,
@@ -59,6 +60,7 @@ export const CoursePaymentModal = ({
     });
 
     const handleMessage = (event: MessageEvent) => {
+      console.log('Message received');
       const message: WebSocketMessage = JSON.parse(
         event.data as string,
       ) as WebSocketMessage;

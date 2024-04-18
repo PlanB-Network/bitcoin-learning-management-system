@@ -872,3 +872,17 @@ export const contentTutorialCredits = content.table('tutorial_credits', {
   silentPayment: text('silent_payment'),
   tipsUrl: text('tips_url'),
 });
+
+export const couponCode = content.table('coupon_code', {
+  code: varchar('code', { length: 20 }).primaryKey().notNull(),
+  itemId: varchar('item_id', { length: 100 }).notNull(),
+  reductionPercentage: integer('reduction_percentage'),
+  isUnique: boolean('is_unique').notNull().default(true),
+  isUsed: boolean('is_used').notNull().default(false),
+  uid: uuid('uid').references(() => usersAccounts.uid, {
+    onDelete: 'cascade',
+  }),
+  timeUsed: timestamp('time_used', {
+    withTimezone: true,
+  }),
+});

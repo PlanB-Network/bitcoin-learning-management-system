@@ -1,8 +1,8 @@
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trans } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { CouponCode, JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import checkGreen from '#src/assets/icons/check_green.svg';
@@ -10,6 +10,7 @@ import crossRed from '#src/assets/icons/cross_red.svg';
 import spinner from '#src/assets/icons/spinner.svg';
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
+import { trpc } from '#src/utils/trpc.js';
 
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   let prefix = '';
@@ -41,7 +42,7 @@ interface PaymentDescriptionProps {
   callout: string;
   description: string;
   itemId: string;
-  initPayment: () => Promise<void>;
+  initPayment: (coupon?: string) => Promise<void>;
   children?: JSX.Element | JSX.Element[];
 }
 
@@ -55,14 +56,49 @@ export const PaymentDescription = ({
   children,
 }: PaymentDescriptionProps) => {
   const splitDescription = description.split('\n');
-  const [couponCode, setCouponCode] = useState('');
-  const [couponValid, setCouponValid] = useState<boolean | null>(null);
-  const [isLoadingCoupon, setIsLoadingCoupon] = useState<boolean>(false);
+  const [inputCoupon, setInputCoupon] = useState('');
+  const [queryEnabled, setQueryEnabled] = useState(false);
+  const [isCouponValid, setIsCouponValid] = useState<boolean | null>(null);
+
+  const {
+    data: coupon,
+    isLoading,
+    isFetched,
+    error,
+  } = trpc.content.getCouponCode.useQuery(
+    {
+      code: inputCoupon,
+      itemId: itemId,
+    },
+    {
+      enabled: queryEnabled,
+    },
+  );
+
+  useEffect(() => {
+    if (isFetched) {
+      if (coupon) {
+        setIsCouponValid(true);
+        // Change sats and dollar price !
+      } else {
+        setIsCouponValid(false);
+      }
+      setQueryEnabled(false);
+    }
+  }, [coupon, isFetched]);
+
+  useEffect(() => {
+    if (error) {
+      setQueryEnabled(false);
+      setIsCouponValid(false);
+    }
+  }, [error]);
 
   function applyCoupon() {
-    setCouponValid(true);
-    setIsLoadingCoupon(false);
-    console.log(itemId);
+    if (inputCoupon.trim() === '') {
+      return;
+    }
+    setQueryEnabled(true);
   }
 
   return (
@@ -80,25 +116,25 @@ export const PaymentDescription = ({
         </div>
         <div className="place-self-start flex flex-row place-items-center">
           <span>Have a reduction code ?</span>
+
           <input
             id="emailId"
             type="text"
-            value={couponCode}
+            value={inputCoupon}
             onChange={(event) => {
-              setCouponCode(event.target.value);
-              setIsLoadingCoupon(true);
-              setCouponValid(null);
+              setInputCoupon(event.target.value);
+              setIsCouponValid(null);
             }}
             className="border-2 w-24 ml-4 p-1 rounded-lg border-newGray-5 bg-newGray-6 text-newBlack-5"
           />
           <div className="ml-2">
-            {isLoadingCoupon === true && (
+            {isLoading === true && (
               <img src={spinner} alt="spinner" className="size-6" />
             )}
-            {couponValid === true && (
+            {isCouponValid === true && (
               <img src={checkGreen} alt="green check" className="size-6" />
             )}
-            {couponValid === false && (
+            {isCouponValid === false && (
               <img src={crossRed} alt="red cross" className="size-6" />
             )}
           </div>
@@ -125,7 +161,9 @@ export const PaymentDescription = ({
         <Button
           variant="newPrimary"
           className="lg:w-full text-xs lg:text-sm"
-          onClick={initPayment}
+          onClick={() => {
+            initPayment(coupon?.code);
+          }}
         >
           {t('payment.proceedToPayment')}
         </Button>
