@@ -1,1 +1,1 @@
-export * from './get-coupon-code.js';
+export { createGetCouponCode } from './get-coupon-code.js';
