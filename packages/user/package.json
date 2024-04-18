@@ -23,11 +23,13 @@
     "bip39": "^3.1.0",
     "lodash": "^4.17.21",
     "pdfkit": "^0.15.0",
-    "qr-image": "^3.2.0"
+    "qr-image": "^3.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@sovereign-university/types": "workspace:*",
     "@types/lodash": "^4.17.0",
-    "@types/pdfkit": "^0.13.4"
+    "@types/pdfkit": "^0.13.4",
+    "@types/uuid": "^9.0.8"
   }
 }

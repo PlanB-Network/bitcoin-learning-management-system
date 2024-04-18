@@ -1,11 +1,14 @@
-import { useCallback, useState } from 'react';
+import { Buffer } from 'buffer';
+
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineClose } from 'react-icons/ai';
+
+import type { CouponCode } from '@sovereign-university/types';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
-import { hexToBase64 } from '#src/utils/misc.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import { Modal } from '../../../../atoms/Modal/index.tsx';
@@ -14,6 +17,10 @@ import { trpc } from '../../../../utils/index.ts';
 
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
+
+const hexToBase64 = (hexstring: string) => {
+  return Buffer.from(hexstring, 'hex').toString('base64');
+};
 
 interface WebSocketMessage {
   settled: boolean;
@@ -37,40 +44,93 @@ export const CoursePaymentModal = ({
   const { t } = useTranslation();
 
   const savePaymentRequest = trpc.user.courses.savePayment.useMutation();
+  const saveFreePaymentRequest =
+    trpc.user.courses.saveFreePayment.useMutation();
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  const [validatedCoupon, setValidatedCoupon] = useState<CouponCode | null>(
+    null,
+  );
+  const [coursePriceDollarsReduced, setCoursePriceDollarsReduced] = useState(
+    course.paidPriceDollars,
+  );
+  const [satsPriceReduced, setSatsPriceReduced] = useState(satsPrice);
 
-  // TODO fix issue with payment processing but not showing success confirmation
+  const initCoursePayment = useCallback(() => {
+    async function saveFreePayment() {
+      const serverPaymentData = await saveFreePaymentRequest.mutateAsync({
+        courseId: course.id,
+        couponCode: validatedCoupon?.code,
+      });
+      setPaymentData(serverPaymentData);
+      setIsPaymentSuccess(true);
+    }
 
-  const initCoursePayment = useCallback(async () => {
-    // Handle coupon logic here + price
-    const serverPaymentData = await savePaymentRequest.mutateAsync({
-      courseId: course.id,
-      amount: satsPrice,
-    });
+    async function savePayment() {
+      const serverPaymentData = await savePaymentRequest.mutateAsync({
+        courseId: course.id,
+        amount: satsPriceReduced,
+        couponCode: validatedCoupon?.code,
+      });
+      setPaymentData(serverPaymentData);
+    }
 
-    setPaymentData(serverPaymentData);
+    if (satsPriceReduced === 0) {
+      saveFreePayment();
+    } else {
+      savePayment();
+    }
+  }, [
+    course.id,
+    satsPriceReduced,
+    saveFreePaymentRequest,
+    savePaymentRequest,
+    validatedCoupon?.code,
+  ]);
 
-    const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
+  useEffect(() => {
+    if (paymentData && isOpen) {
+      const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
 
-    ws.addEventListener('open', () => {
-      const hash = hexToBase64(serverPaymentData.id);
-      ws.send(JSON.stringify({ hash: hash }));
-    });
+      ws.addEventListener('open', () => {
+        const hash = hexToBase64(paymentData.id);
+        ws.send(JSON.stringify({ hash: hash }));
+      });
 
-    const handleMessage = (event: MessageEvent) => {
-      console.log('Message received');
-      const message: WebSocketMessage = JSON.parse(
-        event.data as string,
-      ) as WebSocketMessage;
-      if (message.settled) {
-        setIsPaymentSuccess(true);
+      const handleMessage = (event: MessageEvent) => {
+        console.log('Message received');
+        const message: WebSocketMessage = JSON.parse(
+          event.data as string,
+        ) as WebSocketMessage;
+        if (message.settled) {
+          setIsPaymentSuccess(true);
+        }
+      };
+
+      ws.addEventListener('message', handleMessage);
+    }
+  }, [paymentData, isOpen]);
+
+  function updateCoupon(coupon: CouponCode | null) {
+    setValidatedCoupon(coupon);
+    if (coupon && coupon.reductionPercentage) {
+      setSatsPriceReduced(
+        (satsPrice * (100 - coupon.reductionPercentage)) / 100,
+      );
+      if (course.paidPriceDollars) {
+        setCoursePriceDollarsReduced(
+          (course.paidPriceDollars * (100 - coupon.reductionPercentage)) / 100,
+        );
       }
-    };
+    }
 
-    ws.addEventListener('message', handleMessage);
-  }, [course.id, satsPrice, savePaymentRequest]);
+    if (!coupon) {
+      setSatsPriceReduced(satsPrice);
+      setCoursePriceDollarsReduced(course.paidPriceDollars);
+      setValidatedCoupon(null);
+    }
+  }
 
   const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
 
@@ -105,12 +165,13 @@ export const CoursePaymentModal = ({
             )
           ) : (
             <PaymentDescription
-              paidPriceDollars={course.paidPriceDollars}
-              satsPrice={satsPrice}
+              paidPriceDollars={coursePriceDollarsReduced}
+              satsPrice={satsPriceReduced}
               initPayment={initCoursePayment}
               description={t('courses.payment.description')}
               callout={t('courses.payment.callout')}
               itemId={course.id}
+              updateCoupon={updateCoupon}
             >
               <ModalPaymentSummary
                 course={course}

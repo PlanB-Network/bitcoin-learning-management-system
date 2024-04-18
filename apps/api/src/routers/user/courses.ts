@@ -12,6 +12,7 @@ import {
   createGetPayment,
   createGetProgress,
   createGetUserChapter,
+  createSaveFreePayment,
   createSavePayment,
   createSaveQuizAttempt,
   createSaveUserChapter,
@@ -83,6 +84,7 @@ const savePaymentProcedure = protectedProcedure
       amount: z.number(),
       part: z.number().optional(),
       chapter: z.number().optional(),
+      couponCode: z.string().optional(),
     }),
   )
   .output(
@@ -99,6 +101,33 @@ const savePaymentProcedure = protectedProcedure
       uid: ctx.user.uid,
       courseId: input.courseId,
       amount: input.amount,
+      couponCode: input.couponCode,
+    }),
+  );
+
+const saveFreePaymentProcedure = protectedProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      part: z.number().optional(),
+      chapter: z.number().optional(),
+      couponCode: z.string().optional(),
+    }),
+  )
+  .output(
+    z.object({
+      id: z.string(),
+      pr: z.string(),
+      onChainAddr: z.string(),
+      amount: z.number(),
+      checkoutUrl: z.string(),
+    }),
+  )
+  .mutation(({ ctx, input }) =>
+    createSaveFreePayment(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+      couponCode: input.couponCode,
     }),
   );
 
@@ -194,4 +223,5 @@ export const userCoursesRouter = createTRPCRouter({
   saveQuizAttempt: saveQuizAttemptProcedure,
   saveUserChapter: saveUserChapterProcedure,
   savePayment: savePaymentProcedure,
+  saveFreePayment: saveFreePaymentProcedure,
 });

@@ -10,7 +10,6 @@ export const updatePayment = ({
   isPaid: boolean;
   isExpired: boolean;
 }) => {
-  console.log({ id, isPaid, isExpired });
   if (isExpired) {
     return sql<CoursePayment[]>`
       UPDATE users.course_payment 
@@ -21,9 +20,9 @@ export const updatePayment = ({
   } else if (isPaid) {
     return sql<CoursePayment[]>`
       UPDATE users.course_payment 
-      SET payment_status = 'paid'
-      WHERE payment_id = ${id} 
-    ;
+        SET payment_status = 'paid'
+        WHERE payment_id = ${id}
+      ;
     `;
   } else {
     throw new Error('Should have isPaid or isExpired = true');

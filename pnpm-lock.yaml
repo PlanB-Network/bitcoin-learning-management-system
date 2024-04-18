@@ -620,6 +620,9 @@ importers:
       qr-image:
         specifier: ^3.2.0
         version: 3.2.0
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
     devDependencies:
       '@sovereign-university/types':
         specifier: workspace:*
@@ -630,6 +633,9 @@ importers:
       '@types/pdfkit':
         specifier: ^0.13.4
         version: 0.13.4
+      '@types/uuid':
+        specifier: ^9.0.8
+        version: 9.0.8
 
 packages:
 
@@ -14549,7 +14555,6 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
-    dev: true
 
   /validate-glob-opts@1.0.2:
     resolution: {integrity: sha512-3PKjRQq/R514lUcG9OEiW0u9f7D4fP09A07kmk1JbNn2tfeQdAHhlT+A4dqERXKu2br2rrxSM3FzagaEeq9w+A==}

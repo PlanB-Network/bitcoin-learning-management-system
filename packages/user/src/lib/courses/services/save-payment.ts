@@ -9,10 +9,12 @@ export const createSavePayment =
     uid,
     courseId,
     amount,
+    couponCode,
   }: {
     uid: string;
     courseId: string;
     amount: number;
+    couponCode?: string;
   }) => {
     const { postgres } = dependencies;
 
@@ -45,6 +47,7 @@ export const createSavePayment =
           amount: checkoutData.amount,
           paymentId: checkoutData.id,
           invoiceUrl: checkoutData.checkoutUrl,
+          couponCode: couponCode,
         }),
       );
 

@@ -1,4 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
+import { updateCoupon } from '../queries/update-coupon.js';
 import { updatePayment } from '../queries/update-payment.js';
 
 export const createUpdatePayment =
@@ -19,6 +20,12 @@ export const createUpdatePayment =
         id,
         isPaid,
         isExpired,
+      }),
+    );
+
+    await postgres.exec(
+      updateCoupon({
+        paymentId: id,
       }),
     );
   };

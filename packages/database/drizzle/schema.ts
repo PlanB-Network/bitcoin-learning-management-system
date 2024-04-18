@@ -397,6 +397,9 @@ export const usersCoursePayment = users.table(
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
     invoiceUrl: varchar('invoice_url', { length: 255 }),
+    couponCode: varchar('coupon_code', { length: 20 }).references(
+      () => couponCode.code,
+    ),
     lastUpdated: timestamp('last_updated', {
       withTimezone: true,
     })

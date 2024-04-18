@@ -2,7 +2,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { Trans } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { CouponCode, JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import checkGreen from '#src/assets/icons/check_green.svg';
@@ -42,7 +42,8 @@ interface PaymentDescriptionProps {
   callout: string;
   description: string;
   itemId: string;
-  initPayment: (coupon?: string) => Promise<void>;
+  initPayment: () => Promise<void>;
+  updateCoupon?: (coupon: CouponCode | null) => void;
   children?: JSX.Element | JSX.Element[];
 }
 
@@ -52,6 +53,7 @@ export const PaymentDescription = ({
   callout,
   description,
   initPayment,
+  updateCoupon,
   itemId,
   children,
 }: PaymentDescriptionProps) => {
@@ -79,20 +81,29 @@ export const PaymentDescription = ({
     if (isFetched) {
       if (coupon) {
         setIsCouponValid(true);
+        if (updateCoupon) {
+          updateCoupon(coupon);
+        }
         // Change sats and dollar price !
       } else {
         setIsCouponValid(false);
+        if (updateCoupon) {
+          updateCoupon(null);
+        }
       }
       setQueryEnabled(false);
     }
-  }, [coupon, isFetched]);
+  }, [coupon, isFetched, updateCoupon]);
 
   useEffect(() => {
     if (error) {
       setQueryEnabled(false);
       setIsCouponValid(false);
+      if (updateCoupon) {
+        updateCoupon(null);
+      }
     }
-  }, [error]);
+  }, [error, updateCoupon]);
 
   function applyCoupon() {
     if (inputCoupon.trim() === '') {
@@ -162,7 +173,7 @@ export const PaymentDescription = ({
           variant="newPrimary"
           className="lg:w-full text-xs lg:text-sm"
           onClick={() => {
-            initPayment(coupon?.code);
+            initPayment();
           }}
         >
           {t('payment.proceedToPayment')}

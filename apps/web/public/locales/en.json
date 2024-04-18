@@ -140,7 +140,7 @@
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Trx ID"
+      "invoiceId": "Tx ID"
     },
     "explorer": {
       "footerTitle": "Our professors are here for you !",
@@ -175,7 +175,7 @@
       "downloadCurriculum": "Download curriculum",
       "description": "This purchase will grant you access to online courses on the platform as well as in-person classes, provided you reserve your seat in your student dashboard. Each class session takes place in person on the specified dates and locations before being recorded and streamed online on the platform.",
       "duration": "Duration",
-      "invoiceId": "Trx ID",
+      "invoiceId": "Tx ID",
       "numberOfChapters": "Number of chapters",
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
