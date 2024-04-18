@@ -339,7 +339,7 @@ export const EventCard = ({
           <img
             src={event.picture}
             alt={event.name ? event.name : ''}
-            className="object-cover aspect-[432/308]"
+            className="object-cover aspect-[432/308] w-full"
           />
           {event.type && (
             <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">

@@ -46,7 +46,7 @@ export const ModalPaymentSummary = ({
       <img
         src={leftBackgroundImg}
         alt="left-background"
-        className="hidden lg:block absolute top-0 left-0 h-screen max-h-[844px] w-1/2 object-cover"
+        className="hidden lg:block absolute top-0 left-0 h-full w-1/2 object-cover overflow-y-visible"
       />
       <div
         className={cn(

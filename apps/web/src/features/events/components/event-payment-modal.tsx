@@ -128,7 +128,14 @@ export const EventPaymentModal = ({
                   : t(`events.payment.description_${accessType}`)
               }
               callout={t(`events.payment.callout_${accessType}`)}
-            />
+            >
+              <ModalPaymentSummary
+                event={event}
+                accessType={accessType}
+                satsPrice={satsPrice}
+                mobileDisplay={true}
+              />
+            </PaymentDescription>
           )}
         </div>
       </div>

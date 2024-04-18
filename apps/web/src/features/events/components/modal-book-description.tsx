@@ -6,22 +6,21 @@ import { Button } from '@sovereign-university/ui';
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 
-import { ModalBookSummary } from './modal-book-summary.tsx';
-
 interface ModalBookDescriptionProps {
   event: JoinedEvent;
   accessType: 'physical' | 'online' | 'replay';
   callout: string;
   description: string;
   onBooked: () => void;
+  children?: JSX.Element | JSX.Element[];
 }
 
 export const ModalBookDescription = ({
-  event,
   accessType,
   callout,
   description,
   onBooked,
+  children,
 }: ModalBookDescriptionProps) => {
   const splitDescription =
     description.includes('\n') && description.split('\n');
@@ -47,11 +46,7 @@ export const ModalBookDescription = ({
           {t('events.payment.additional_free_description')}
         </p>
       )}
-      <ModalBookSummary
-        event={event}
-        accessType={accessType}
-        mobileDisplay={true}
-      />
+      {children}
       <Button variant="newPrimary" className="lg:w-full" onClick={onBooked}>
         {t('events.payment.book_seat')}
       </Button>

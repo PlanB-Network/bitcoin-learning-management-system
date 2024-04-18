@@ -10,7 +10,6 @@ import crossRed from '#src/assets/icons/cross_red.svg';
 import spinner from '#src/assets/icons/spinner.svg';
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
-import { ModalPaymentSummary } from '#src/features/events/components/modal-payment-summary.js';
 
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   let prefix = '';
@@ -43,17 +42,17 @@ interface PaymentDescriptionProps {
   description: string;
   itemId: string;
   initPayment: () => Promise<void>;
+  children?: JSX.Element | JSX.Element[];
 }
 
 export const PaymentDescription = ({
   paidPriceDollars,
-  event,
-  accessType,
   satsPrice,
   callout,
   description,
   initPayment,
   itemId,
+  children,
 }: PaymentDescriptionProps) => {
   const splitDescription = description.split('\n');
   const [couponCode, setCouponCode] = useState('');
@@ -122,14 +121,7 @@ export const PaymentDescription = ({
           </div>
         </div>
         {/* Todo : a generic component should not reference a specific one */}
-        {event && accessType && (
-          <ModalPaymentSummary
-            event={event}
-            accessType={accessType}
-            satsPrice={satsPrice}
-            mobileDisplay={true}
-          />
-        )}
+        {children}
         <Button variant="tertiary" className="lg:w-full" onClick={initPayment}>
           {t('payment.proceedToPayment')}
         </Button>

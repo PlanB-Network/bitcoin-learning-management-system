@@ -64,7 +64,13 @@ export const EventBookModal = ({
                   : ''
               }
               callout={t(`events.payment.callout_${accessType}`)}
-            />
+            >
+              <ModalBookSummary
+                event={event}
+                accessType={accessType}
+                mobileDisplay={true}
+              />
+            </ModalBookDescription>
           )}
         </div>
       </div>
