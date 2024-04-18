@@ -51,7 +51,9 @@ export const Modal = ({
           <div
             className={cn(
               'flex items-end justify-center p-4 text-center sm:items-center sm:p-0',
-              isLargeModal ? 'w-full h-[90vh] sm:w-[80vw] sm:h-[85vh]' : '',
+              isLargeModal
+                ? 'w-full max-w-[1440px] h-[90vh] sm:w-[80vw] sm:h-[85vh]'
+                : '',
             )}
             style={{
               position: 'fixed',

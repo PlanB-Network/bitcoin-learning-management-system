@@ -173,7 +173,6 @@ export const ClassDetails = ({
       <CourseBookModal
         course={course}
         chapter={chapter}
-        satsPrice={1_111_111}
         isOpen={isBookModalOpen}
         professorNames={'TEST'}
         onClose={() => {

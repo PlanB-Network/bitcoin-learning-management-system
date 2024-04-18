@@ -1,13 +1,11 @@
 import { t } from 'i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 
 interface ModalBookDescriptionProps {
-  event: JoinedEvent;
   accessType: 'physical' | 'online' | 'replay';
   callout: string;
   description: string;

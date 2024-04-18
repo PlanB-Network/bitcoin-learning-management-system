@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
@@ -13,7 +14,6 @@ interface CourseBookModalProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   chapter: NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
   professorNames: string;
-  satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
 }
@@ -22,7 +22,6 @@ export const CourseBookModal = ({
   course,
   chapter,
   professorNames,
-  satsPrice,
   isOpen,
   onClose,
 }: CourseBookModalProps) => {
@@ -47,26 +46,44 @@ export const CourseBookModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+      <button
+        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
+        aria-roledescription="Close Payment Modal"
+        onClick={() => onClose()}
+      >
+        <AiOutlineClose />
+      </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
         <ModalBookSummary
           course={course}
           chapter={chapter}
           courseName={courseName}
           professorNames={professorNames}
+          mobileDisplay={false}
         />
-        <div className="flex flex-col items-center justify-center pl-6">
+        <div className="flex flex-col items-center justify-center lg:pl-6">
           {isCourseBooked ? (
-            <ModalBookSuccess course={course} onClose={onClose} />
+            <ModalBookSuccess
+              course={course}
+              chapter={chapter}
+              onClose={onClose}
+            />
           ) : (
             <ModalBookDescription
-              paidPriceDollars={course.paidPriceDollars}
-              satsPrice={satsPrice}
               onBooked={() => {
                 displaySuccess();
               }}
-              description={t('courses.payment.description')}
-              callout={t('courses.payment.callout')}
-            />
+              description={t('courses.payment.book_description')}
+              callout={t('events.payment.callout_physical')}
+            >
+              <ModalBookSummary
+                course={course}
+                chapter={chapter}
+                courseName={courseName}
+                professorNames={professorNames}
+                mobileDisplay={true}
+              />
+            </ModalBookDescription>
           )}
         </div>
       </div>

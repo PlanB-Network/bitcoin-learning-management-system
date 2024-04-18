@@ -52,7 +52,6 @@ export const EventBookModal = ({
             <ModalBookSuccess accessType={accessType} onClose={onClose} />
           ) : (
             <ModalBookDescription
-              event={event}
               accessType={accessType}
               onBooked={() => {
                 // TODO trigger add booking behavior (free event)
