@@ -8,7 +8,6 @@ import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 
 import leftBackgroundImg from '../../../assets/courses/left-background.png';
-import mockImg from '../../../assets/events/saif.webp';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -55,9 +54,9 @@ export const ModalBookSummary = ({
         )}
       >
         <img
-          src={mockImg}
+          src={event.picture}
           alt={event.name ? event.name : ''}
-          className="rounded-2xl mb-4 object-cover aspect-[432/308] mx-auto"
+          className="rounded-2xl mb-4 object-cover aspect-[432/308] w-full"
         />
         <span className="text-lg lg:text-2xl text-black lg:text-white font-bold leading-snug">
           {event.name}
