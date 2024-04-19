@@ -3,6 +3,7 @@
 
 export type * from './book.js';
 export type * from './builder.js';
+export type * from './coupon.js';
 export type * from './course.js';
 export type * from './event.js';
 export type * from './podcast.js';

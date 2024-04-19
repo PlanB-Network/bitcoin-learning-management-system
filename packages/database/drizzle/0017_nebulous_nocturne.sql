@@ -1,0 +1,1 @@
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "remaining_seats" integer;

@@ -34,8 +34,19 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     language: true,
     title: true,
     sections: true,
-    releaseDate: true,
     releasePlace: true,
+    isOnline: true,
+    isInPerson: true,
+    startDate: true,
+    endDate: true,
+    timezone: true,
+    liveUrl: true,
+    addressLine1: true,
+    addressLine2: true,
+    addressLine3: true,
+    availableSeats: true,
+    remainingSeats: true,
+    liveLanguage: true,
     rawContent: true,
   })
   .merge(
@@ -54,6 +65,7 @@ export const minimalJoinedCourseSchema = courseSchema
     paidVideoLink: true,
     paidStartDate: true,
     paidEndDate: true,
+    contact: true,
     lastUpdated: true,
     lastCommit: true,
   })
@@ -95,6 +107,7 @@ export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
       })
       .array(),
     partsCount: z.number(),
+    chaptersCount: z.number(),
   }),
 );
 
@@ -104,6 +117,20 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
     chapter: true,
     language: true,
     title: true,
+    sections: true,
+    releasePlace: true,
+    isOnline: true,
+    isInPerson: true,
+    startDate: true,
+    endDate: true,
+    timezone: true,
+    liveUrl: true,
+    addressLine1: true,
+    addressLine2: true,
+    addressLine3: true,
+    availableSeats: true,
+    remainingSeats: true,
+    liveLanguage: true,
     rawContent: true,
   })
   .merge(

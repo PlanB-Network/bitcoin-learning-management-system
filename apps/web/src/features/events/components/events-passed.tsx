@@ -1,15 +1,34 @@
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 
 import { EventsCarousel } from './events-carousel.tsx';
 
 interface EventsPassedProps {
   events: JoinedEvent[];
+  eventPayments: EventPayment[] | undefined;
+  openAuthModal: () => void;
+  isLoggedIn: boolean;
+  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
-export const EventsPassed = ({ events, conversionRate }: EventsPassedProps) => {
+export const EventsPassed = ({
+  events,
+  eventPayments,
+  openAuthModal,
+  isLoggedIn,
+  setIsPaymentModalOpen,
+  setPaymentModalData,
+  conversionRate,
+}: EventsPassedProps) => {
   const { t } = useTranslation();
 
   let passedEvents: JoinedEvent[] = [];
@@ -26,7 +45,11 @@ export const EventsPassed = ({ events, conversionRate }: EventsPassedProps) => {
           endDate += TWENTY_FOUR_HOURS;
         }
 
-        return now > endDate && now - endDate > ONE_HOUR && event.replayUrl;
+        return (
+          now > endDate &&
+          now - endDate > ONE_HOUR &&
+          (event.replayUrl || event.liveUrl)
+        );
       })
       .sort(
         (a, b) =>
@@ -54,7 +77,15 @@ export const EventsPassed = ({ events, conversionRate }: EventsPassedProps) => {
           {t('events.missed.missedh1')}
         </h2>
       </section>
-      <EventsCarousel events={passedEvents} conversionRate={conversionRate} />
+      <EventsCarousel
+        events={passedEvents}
+        eventPayments={eventPayments}
+        openAuthModal={openAuthModal}
+        isLoggedIn={isLoggedIn}
+        setIsPaymentModalOpen={setIsPaymentModalOpen}
+        setPaymentModalData={setPaymentModalData}
+        conversionRate={conversionRate}
+      />
     </>
   );
 };

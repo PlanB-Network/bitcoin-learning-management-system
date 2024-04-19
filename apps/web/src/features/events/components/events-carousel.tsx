@@ -2,17 +2,33 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface EventsCarouselProps {
   events: JoinedEvent[];
+  eventPayments: EventPayment[] | undefined;
+  openAuthModal: () => void;
+  isLoggedIn: boolean;
+  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
 export const EventsCarousel = ({
   events,
+  eventPayments,
+  openAuthModal,
+  isLoggedIn,
+  setIsPaymentModalOpen,
+  setPaymentModalData,
   conversionRate,
 }: EventsCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -42,8 +58,13 @@ export const EventsCarousel = ({
             >
               <EventCard
                 event={event}
-                conversionRate={conversionRate}
+                eventPayments={eventPayments}
                 isPassed={true}
+                openAuthModal={openAuthModal}
+                isLoggedIn={isLoggedIn}
+                setIsPaymentModalOpen={setIsPaymentModalOpen}
+                setPaymentModalData={setPaymentModalData}
+                conversionRate={conversionRate}
               />
             </div>
           ))}

@@ -1,4 +1,5 @@
 import {
+  createCalculateCourseChapterSeats,
   createGetNow,
   createProcessChangedFiles,
   createProcessDeleteOldEntities,
@@ -40,11 +41,21 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     process.env['GITHUB_ACCESS_TOKEN'],
   ).then(processChangedFiles);
 
+  console.log('-- Sync procedure: calculate remaining seats');
+  await createCalculateCourseChapterSeats(dependencies)();
+
   if (syncErrors.length === 0) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);
   }
 
   await redis.del('trpc:*');
+
+  if (syncErrors.length > 0) {
+    console.error(
+      `=== ${syncErrors.length} ERRORS occurred during the sync process: `,
+    );
+    console.error(syncErrors.join('\n'));
+  }
 
   console.log('-- Sync procedure: sync cdn repository');
 
@@ -78,13 +89,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   }
 
   console.log('-- Sync procedure: END');
-
-  if (syncErrors.length > 0) {
-    console.error(
-      `=== ${syncErrors.length} ERRORS occurred during the sync process: `,
-    );
-    console.error(syncErrors.join('\n'));
-  }
 
   return {
     success: syncErrors.length === 0,

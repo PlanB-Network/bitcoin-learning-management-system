@@ -98,6 +98,7 @@ interface CourseMain {
   paid_video_link?: string;
   paid_start_date?: string;
   paid_end_date?: string;
+  contact?: string;
 }
 
 interface CourseLocalized {
@@ -116,8 +117,19 @@ interface Chapter {
   sections: string[];
   raw_content: string;
   professors: string[];
-  releaseDate: string | null;
   releasePlace: string | null;
+  isOnline: boolean;
+  isInPerson: boolean;
+  startDate: string | null;
+  endDate: string | null;
+  timeZone: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
+  liveUrl: string | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
+  liveLanguage: string | null;
 }
 
 const extractData = (token: Token, type: string) => {
@@ -157,8 +169,19 @@ const extractParts = (markdown: string): Part[] => {
           sections: [],
           raw_content: '',
           professors: [],
-          releaseDate: '',
           releasePlace: '',
+          isOnline: false,
+          isInPerson: false,
+          startDate: null,
+          endDate: null,
+          addressLine1: '',
+          addressLine2: '',
+          addressLine3: '',
+          timeZone: '',
+          liveUrl: '',
+          availableSeats: -1,
+          remainingSeats: -1,
+          liveLanguage: '',
         });
       } else if (currentPart.chapters.length > 0) {
         const currentChapter = currentPart.chapters.at(-1)!;
@@ -168,16 +191,50 @@ const extractParts = (markdown: string): Part[] => {
         }
 
         if (token.raw.startsWith('<')) {
-          currentChapter.releaseDate = extractData(token, 'releaseDate');
           currentChapter.releasePlace = extractData(token, 'releasePlace');
+          currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
+          currentChapter.isInPerson =
+            extractData(token, 'isInPerson') === 'true';
+          currentChapter.startDate = extractData(token, 'startDate');
+          currentChapter.endDate = extractData(token, 'endDate');
+          currentChapter.timeZone = extractData(token, 'timeZone');
+          currentChapter.addressLine1 = extractData(token, 'addressLine1');
+          currentChapter.addressLine2 = extractData(token, 'addressLine2');
+          currentChapter.addressLine3 = extractData(token, 'addressLine3');
+          currentChapter.liveUrl = extractData(token, 'liveUrl');
+          const availableSeats = extractData(token, 'availableSeats');
+          if (availableSeats) {
+            currentChapter.availableSeats = +availableSeats;
+            currentChapter.remainingSeats = +availableSeats;
+          }
+          currentChapter.liveLanguage = extractData(token, 'liveLanguage');
 
           const professor = extractData(token, 'professor');
           if (professor) {
             currentChapter.professors.push(professor);
           }
 
-          const regex =
-            /<professor>.*<\/professor>|<releaseDate>.*<\/releaseDate>|<releasePlace>.*<\/releasePlace>/gm;
+          const tagsToRemove = [
+            'professor',
+            'releasePlace',
+            'isOnline',
+            'isInPerson',
+            'startDate',
+            'endDate',
+            'timeZone',
+            'addressLine1',
+            'addressLine2',
+            'addressLine3',
+            'liveUrl',
+            'availableSeats',
+            'liveLanguage',
+          ];
+
+          const regex = new RegExp(
+            tagsToRemove.map((tag) => `<${tag}>.*</${tag}>`).join('|'),
+            'gm',
+          );
+
           token.raw = token.raw.replaceAll(regex, '');
         }
 
@@ -277,7 +334,7 @@ export const createProcessChangedCourse =
 
               const result = await transaction<Course[]>`
                 INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_dollars,
-                  paid_description, paid_video_link, paid_start_date, paid_end_date,
+                  paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
@@ -289,6 +346,7 @@ export const createProcessChangedCourse =
                   ${parsedCourse.paid_video_link},
                   ${startDateTimestamp},
                   ${endDateTimestamp},
+                  ${parsedCourse.contact},
                   ${lastUpdated.time}, 
                   ${lastUpdated.commit},
                   NOW()
@@ -302,6 +360,7 @@ export const createProcessChangedCourse =
                   paid_video_link = EXCLUDED.paid_video_link,
                   paid_start_date = EXCLUDED.paid_start_date,
                   paid_end_date = EXCLUDED.paid_end_date,
+                  contact = EXCLUDED.contact,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()
@@ -454,7 +513,7 @@ export const createProcessChangedCourse =
 
                 const formatedChapters = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => {
-                    const c = {
+                    return {
                       course_id: course.id,
                       part: partIndex + 1,
                       chapter: chapterIndex + 1,
@@ -463,14 +522,19 @@ export const createProcessChangedCourse =
                       sections: chapter.sections,
                       raw_content: chapter.raw_content.trim(),
                       release_place: chapter.releasePlace,
-                      release_date: null as string | null,
+                      is_online: chapter.isOnline,
+                      is_in_person: chapter.isInPerson,
+                      start_date: chapter.startDate,
+                      end_date: chapter.endDate,
+                      timezone: chapter.timeZone,
+                      address_line_1: chapter.addressLine1,
+                      address_line_2: chapter.addressLine2,
+                      address_line_3: chapter.addressLine3,
+                      live_url: chapter.liveUrl,
+                      available_seats: chapter.availableSeats,
+                      remaining_seats: chapter.availableSeats,
+                      live_language: chapter.liveLanguage,
                     };
-
-                    if (chapter.releaseDate) {
-                      c.release_date = chapter.releaseDate;
-                    }
-
-                    return c;
                   }),
                 );
 
@@ -480,8 +544,18 @@ export const createProcessChangedCourse =
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,
                     raw_content = EXCLUDED.raw_content,
-                    release_date = EXCLUDED.release_date,
-                    release_place = EXCLUDED.release_place
+                    release_place = EXCLUDED.release_place,
+                    is_online = EXCLUDED.is_online,
+                    is_in_person = EXCLUDED.is_in_person,
+                    start_date = EXCLUDED.start_date,
+                    end_date = EXCLUDED.end_date,
+                    timezone = EXCLUDED.timezone,
+                    address_line_1 = EXCLUDED.address_line_1,
+                    address_line_2 = EXCLUDED.address_line_2,
+                    address_line_3 = EXCLUDED.address_line_3,
+                    live_url = EXCLUDED.live_url,
+                    available_seats = EXCLUDED.available_seats,
+                    live_language = EXCLUDED.live_language
                 `;
 
                 const formatedChapters2 = parts.flatMap((part, partIndex) =>
@@ -513,7 +587,9 @@ export const createProcessChangedCourse =
               }
             }
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing file ${course.path} ${file?.path}: ${error}`,
+            );
           }
         }
       })

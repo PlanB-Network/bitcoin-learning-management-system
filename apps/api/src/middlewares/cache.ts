@@ -37,7 +37,11 @@ export const cacheMiddleware = createMiddleware(
       dependencies: { redis },
     } = ctx;
 
-    if (type === 'query' && path.startsWith('content.')) {
+    if (
+      type === 'query' &&
+      path.startsWith('content.') &&
+      !/coupon/i.test(path)
+    ) {
       const rawInput = await getRawInput();
 
       const inputHash = rawInput ? hashObject(rawInput) : 'no-input';

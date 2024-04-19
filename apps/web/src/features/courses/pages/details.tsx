@@ -87,13 +87,16 @@ export const CourseDetails: React.FC = () => {
     [courseId, payments],
   );
 
-  const courseHasReleaseDate = course?.parts.some((part) =>
-    part.chapters.some((chapter) => chapter?.releaseDate !== null),
+  const courseHasStartDate = course?.parts.some((part) =>
+    part.chapters.some((chapter) => chapter?.startDate !== null),
   );
 
-  const professorNames = course?.professors
+  let professorNames = course?.professors
     .map((professor) => professor.name)
     .join(', ');
+  if (!professorNames) {
+    professorNames = '';
+  }
 
   if (!course && isFetched) navigateTo404();
 
@@ -135,18 +138,9 @@ export const CourseDetails: React.FC = () => {
     ],
   );
 
-  const firstChapter = course?.parts[0]?.chapters[0];
-  const isFirstChapterAvailable =
-    firstChapter &&
-    firstChapter.rawContent &&
-    firstChapter.rawContent.length > 0
-      ? true
-      : false;
+  const courseHasToBePurchased = course?.requiresPayment && !isCoursePaid;
 
-  const displayBuyCourse = course?.requiresPayment && !isCoursePaid;
-
-  const isStartOrBuyButtonDisabled =
-    !displayBuyCourse && !isFirstChapterAvailable;
+  const isStartOrBuyButtonDisabled = false;
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
@@ -180,7 +174,7 @@ export const CourseDetails: React.FC = () => {
     satsPrice = Math.round(
       (course.paidPriceDollars * 100_000_000) / conversionRate,
     );
-    if (process.env.NODE_ENV === 'development') {
+    if (satsPrice > 10 && process.env.NODE_ENV === 'development') {
       satsPrice = 10;
     }
   }
@@ -327,7 +321,7 @@ export const CourseDetails: React.FC = () => {
                 >
                   <span className="sm:px-6">
                     {t(
-                      displayBuyCourse
+                      courseHasToBePurchased
                         ? 'courses.details.buyCourse'
                         : 'courses.details.startCourse',
                     )}
@@ -350,7 +344,7 @@ export const CourseDetails: React.FC = () => {
                     >
                       <span className="relative z-10 text-sm font-medium sm:px-6">
                         {t(
-                          displayBuyCourse
+                          courseHasToBePurchased
                             ? 'courses.details.buyCourse'
                             : 'courses.details.startCourse',
                         )}
@@ -456,7 +450,7 @@ export const CourseDetails: React.FC = () => {
           <ul
             className={
               (cn('space-y-5 text-xs capitalize sm:text-base sm:uppercase'),
-              course.id === 'bizschool' ? 'pointer-events-none' : '')
+              courseHasToBePurchased ? 'pointer-events-none' : '')
             }
           >
             {course.parts?.map((part, partIndex) => (
@@ -484,11 +478,6 @@ export const CourseDetails: React.FC = () => {
                   </Link>
                 </div>
                 {part.chapters?.map((chapter, index) => {
-                  const isChapterAvailable =
-                    chapter &&
-                    chapter.rawContent &&
-                    chapter.rawContent.length > 0;
-
                   return (
                     chapter !== undefined && (
                       <div
@@ -507,14 +496,13 @@ export const CourseDetails: React.FC = () => {
                               partIndex: (partIndex + 1).toString(),
                               chapterIndex: chapter.chapter.toString(),
                             }}
-                            disabled={!isChapterAvailable}
                           >
                             <p
                               className={cn(
                                 'capitalize',
-                                isChapterAvailable
-                                  ? 'text-blue-700'
-                                  : 'text-gray-400',
+                                courseHasToBePurchased
+                                  ? 'text-gray-400'
+                                  : 'text-blue-700',
                               )}
                             >
                               {chapter.title}
@@ -524,33 +512,21 @@ export const CourseDetails: React.FC = () => {
                         <p
                           className={cn(
                             'w-auto',
-                            !courseHasReleaseDate && 'hidden',
+                            !courseHasStartDate && 'hidden',
                           )}
                         >
-                          {chapter.releaseDate || chapter.releasePlace ? (
+                          {(chapter.startDate || chapter.releasePlace) && (
                             <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
-                              {chapter.releaseDate && (
+                              {chapter.startDate && (
                                 <span>
-                                  {new Date(chapter.releaseDate).toDateString()}
+                                  {new Date(chapter.startDate).toDateString()}
                                 </span>
                               )}
-                              {chapter.releaseDate && chapter.releasePlace && (
+                              {chapter.startDate && chapter.releasePlace && (
                                 <span> - </span>
                               )}
                               {chapter.releasePlace && (
                                 <span>{chapter.releasePlace}</span>
-                              )}
-                            </span>
-                          ) : (
-                            <span>
-                              {isChapterAvailable ? (
-                                <span className="bg-green-600 rounded-xl p-2 text-sm font-medium text-white">
-                                  available
-                                </span>
-                              ) : (
-                                <span className="bg-gray-300 rounded-xl p-2 text-sm font-medium text-white">
-                                  unavailable
-                                </span>
                               )}
                             </span>
                           )}
@@ -617,7 +593,7 @@ export const CourseDetails: React.FC = () => {
                 })}
           >
             {t(
-              displayBuyCourse
+              courseHasToBePurchased
                 ? 'courses.details.buyCourse'
                 : 'courses.details.startCourse',
             )}
@@ -644,7 +620,7 @@ export const CourseDetails: React.FC = () => {
       <div className="text-blue-800">
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            {course?.id !== 'bizschool' && <CourseButton courseId={courseId} />}
+            {!courseHasToBePurchased && <CourseButton courseId={courseId} />}
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <CourseInfo course={course} />
@@ -660,6 +636,7 @@ export const CourseDetails: React.FC = () => {
               course={course}
               satsPrice={satsPrice}
               isOpen={isPaymentModalOpen}
+              professorNames={professorNames}
               onClose={() => {
                 setIsPaymentModalOpen(false);
                 refetchPayment();

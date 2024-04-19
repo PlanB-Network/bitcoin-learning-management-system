@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  createCalculateCourseChapterSeats,
   createGetCourse,
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
@@ -117,10 +118,22 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
     }),
   );
 
+const calculateCourseChapterSeatsProcedure = publicProcedure
+  .input(
+    z.object({
+      oldPassword: z.string(),
+      newPassword: z.string(),
+    }),
+  )
+  .mutation(async ({ ctx }) =>
+    createCalculateCourseChapterSeats(ctx.dependencies)(),
+  );
+
 export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,
   getCourse: getCourseProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
+  calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
 });

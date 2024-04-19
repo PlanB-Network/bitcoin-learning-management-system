@@ -17,13 +17,19 @@
   "dependencies": {
     "@sovereign-university/database": "workspace:*",
     "@trpc/server": "11.0.0-next-beta.316",
+    "@types/qr-image": "^3.2.9",
     "argon2": "^0.40.1",
     "axios": "^1.6.8",
     "bip39": "^3.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "pdfkit": "^0.15.0",
+    "qr-image": "^3.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@sovereign-university/types": "workspace:*",
-    "@types/lodash": "^4.17.0"
+    "@types/lodash": "^4.17.0",
+    "@types/pdfkit": "^0.13.4",
+    "@types/uuid": "^9.0.8"
   }
 }

@@ -1,5 +1,6 @@
 export * from './book.js';
 export * from './builder.js';
+export * from './coupon.js';
 export * from './course.js';
 export * from './event.js';
 export * from './podcast.js';

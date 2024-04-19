@@ -1,16 +1,32 @@
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface CurrentEventsProps {
   events: JoinedEvent[];
+  eventPayments: EventPayment[] | undefined;
+  openAuthModal: () => void;
+  isLoggedIn: boolean;
+  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
 export const CurrentEvents = ({
   events,
+  eventPayments,
+  openAuthModal,
+  isLoggedIn,
+  setIsPaymentModalOpen,
+  setPaymentModalData,
   conversionRate,
 }: CurrentEventsProps) => {
   const { t } = useTranslation();
@@ -47,7 +63,12 @@ export const CurrentEvents = ({
         {liveEvents?.map((event) => (
           <EventCard
             event={event}
+            eventPayments={eventPayments}
             isLive={true}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
             conversionRate={conversionRate}
             key={event.name}
           />

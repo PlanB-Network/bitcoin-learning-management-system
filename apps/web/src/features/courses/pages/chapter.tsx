@@ -13,6 +13,7 @@ import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { addMinutesToDate } from '#src/utils/date.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
@@ -27,6 +28,9 @@ import { NavigationPanel } from '../components/navigation-panel.tsx';
 import type { Question } from '../components/quizz-card.tsx';
 import QuizzCard from '../components/quizz-card.tsx';
 import { CourseLayout } from '../layout.tsx';
+
+import { ClassDetails } from './components/class-details.tsx';
+import { LiveVideo } from './components/live-video.tsx';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -189,7 +193,13 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   );
 };
 
-const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
+const TimelineBig = ({
+  chapter,
+  professor,
+}: {
+  chapter: Chapter;
+  professor: string;
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -217,21 +227,7 @@ const TimelineBig = ({ chapter }: { chapter: Chapter }) => {
             })}
           </span>
         </div>
-        <div>
-          {(() => {
-            let professors;
-            professors = chapter.course.professors;
-            if (chapter.professors && chapter.professors.length > 0) {
-              professors = chapter.professors;
-            }
-
-            return joinWords(
-              professors
-                .map((p) => p.name)
-                .filter((name): name is string => name !== undefined),
-            );
-          })()}
-        </div>
+        <div>{professor}</div>
       </div>
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
@@ -531,6 +527,64 @@ export const CourseChapter = () => {
     }
   }, [chapter]);
 
+  let displayClassDetails = false;
+  let displayLiveSection = false;
+  let displayLiveVideo = false;
+  let displayMarkdown = true;
+
+  if (chapter && chapter.startDate && chapter.endDate) {
+    const isChapterAvailable =
+      chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
+    const now = new Date(Date.now());
+
+    const chapterStartDate = new Date(new Date(chapter.startDate).getTime());
+    const chapterEndDate = new Date(new Date(chapter.endDate).getTime());
+
+    displayClassDetails =
+      (chapter.isInPerson || false || chapter.isOnline || false) &&
+      chapterEndDate > now;
+
+    displayLiveVideo =
+      (chapter.isOnline || false) &&
+      new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
+    displayLiveSection = (chapter.isOnline || false) && !isChapterAvailable;
+
+    // One day after the event
+    if (
+      addMinutesToDate(chapterStartDate, 60 * 24) < now &&
+      isChapterAvailable
+    ) {
+      displayMarkdown = true;
+      displayLiveVideo = false;
+    } else {
+      displayMarkdown = false;
+    }
+  }
+
+  let computerProfessor = '';
+  if (chapter) {
+    console.log('isInPerson :', chapter.isInPerson);
+    console.log('isOnline :', chapter.isOnline);
+    console.log('startDate :', chapter.startDate);
+    console.log('timezone :', chapter.timezone);
+
+    {
+      (() => {
+        let professors;
+        professors = chapter.course.professors;
+        if (chapter.professors && chapter.professors.length > 0) {
+          professors = chapter.professors;
+        }
+
+        computerProfessor = joinWords(
+          professors
+            .map((p) => p.name)
+            .filter((name): name is string => name !== undefined),
+        );
+      })();
+    }
+  }
+
   if (!chapter && isFetched) {
     navigate({ to: '/404' });
   }
@@ -554,32 +608,58 @@ export const CourseChapter = () => {
           <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
             <Title chapter={chapter} />
             {isScreenMd ? (
-              <TimelineBig chapter={chapter} />
+              <TimelineBig chapter={chapter} professor={computerProfessor} />
             ) : (
               <TimelineSmall chapter={chapter} />
             )}
+
+            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
+              {displayClassDetails && (
+                <ClassDetails
+                  course={chapter.course}
+                  chapter={chapter}
+                  professor={computerProfessor}
+                />
+              )}
+            </div>
 
             <div className=" flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
                   <Header chapter={chapter} sections={sections} />
-                  <MarkdownContent chapter={chapter} />
-                  {questionsArray && questionsArray.length > 0 && (
-                    <>
-                      <div className="flex items-center">
-                        <img src={QuizIcon} className="ml-4 size-6" alt="" />
-                        <p className="ml-2 text-lg font-medium text-blue-900">
-                          {t('courses.quizz.quizz')}
-                        </p>
-                      </div>
-                      <QuizzCard
-                        name={chapter.course.id}
-                        chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                        questions={questionsArray}
+                  {displayLiveSection &&
+                    chapter.liveUrl &&
+                    chapter.startDate && (
+                      <LiveVideo
+                        url={chapter.liveUrl}
+                        displayVideo={displayLiveVideo}
                       />
+                    )}
+                  {displayMarkdown && (
+                    <>
+                      <MarkdownContent chapter={chapter} />
+                      {questionsArray && questionsArray.length > 0 && (
+                        <>
+                          <div className="flex items-center">
+                            <img
+                              src={QuizIcon}
+                              className="ml-4 size-6"
+                              alt=""
+                            />
+                            <p className="ml-2 text-lg font-medium text-blue-900">
+                              {t('courses.quizz.quizz')}
+                            </p>
+                          </div>
+                          <QuizzCard
+                            name={chapter.course.id}
+                            chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                            questions={questionsArray}
+                          />
+                        </>
+                      )}
+                      <BottomButton chapter={chapter} />
                     </>
                   )}
-                  <BottomButton chapter={chapter} />
                 </div>
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">

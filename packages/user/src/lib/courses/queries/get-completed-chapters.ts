@@ -1,17 +1,18 @@
 import { sql } from '@sovereign-university/database';
-import type { CourseCompletedChapters } from '@sovereign-university/types';
+import type { CourseUserChapter } from '@sovereign-university/types';
 
 type CompletedChapters = Array<
-  Pick<CourseCompletedChapters, 'courseId' | 'part' | 'chapter' | 'completedAt'>
+  Pick<CourseUserChapter, 'courseId' | 'part' | 'chapter' | 'completedAt'>
 >;
 
 export const getCompletedChaptersQuery = (uid: string, courseId?: string) => {
   return sql<CompletedChapters>`
     SELECT
       course_id, part, chapter, completed_at
-    FROM users.course_completed_chapters
+    FROM users.course_user_chapter
     WHERE
-      uid = ${uid}
+      completed_at is not null AND
+      uid = ${uid} 
       ${courseId ? sql`AND course_id = ${courseId}` : sql``};
   `;
 };

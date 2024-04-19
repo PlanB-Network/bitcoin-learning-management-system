@@ -2,9 +2,18 @@ import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+
+import type { JoinedEvent } from '@sovereign-university/types';
+
+import { PaymentDescription } from '#src/components/payment-description.js';
+import { type PaymentData, PaymentQr } from '#src/components/payment-qr.js';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
+
+import { ModalPaymentSuccess } from './modal-payment-success.tsx';
+import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
 const hexToBase64 = (hexstring: string) => {
   return Buffer.from(hexstring, 'hex').toString('base64');
@@ -12,17 +21,11 @@ const hexToBase64 = (hexstring: string) => {
 
 interface EventPaymentModalProps {
   eventId: string;
+  event: JoinedEvent;
+  accessType: 'physical' | 'online' | 'replay';
   satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
-}
-
-interface PaymentData {
-  id: string;
-  pr: string;
-  onChainAddr: string;
-  amount: number;
-  checkoutUrl: string;
 }
 
 interface WebSocketMessage {
@@ -31,6 +34,8 @@ interface WebSocketMessage {
 
 export const EventPaymentModal = ({
   eventId,
+  event,
+  accessType,
   satsPrice,
   isOpen,
   onClose,
@@ -39,6 +44,7 @@ export const EventPaymentModal = ({
     trpc.user.events.saveEventPayment.useMutation();
 
   const [paymentData, setPaymentData] = useState<PaymentData>();
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
   useEffect(() => {
     if (paymentData && isOpen) {
@@ -55,7 +61,8 @@ export const EventPaymentModal = ({
         ) as WebSocketMessage;
         if (message.settled) {
           setTimeout(() => {
-            onClose(true);
+            setIsPaymentSuccess(true);
+            //onClose(true);
           }, 2000);
         }
       };
@@ -77,38 +84,60 @@ export const EventPaymentModal = ({
     setPaymentData(serverPaymentData);
   }, [saveEventPaymentRequest, eventId, satsPrice]);
 
-  useEffect(() => {
-    if (isOpen) {
-      initEventPayment();
-    } else {
-      setTimeout(() => {
-        setPaymentData(undefined);
-      }, 500);
-    }
-  }, [isOpen]);
-
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('courses.details.coursePayment')}
-    >
-      <div className="flex min-w-[85vw] flex-col items-center lg:min-w-80">
-        {paymentData ? (
-          <iframe
-            allow="clipboard-write"
-            src={paymentData.checkoutUrl}
-            title="SBP"
-            style={{
-              width: 460,
-              maxWidth: '100%',
-              height: 740,
-              maxHeight: '100%',
-            }}
-          />
-        ) : (
-          'Loading...'
-        )}
+    <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+      <button
+        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
+        aria-roledescription="Close Payment Modal"
+        onClick={() => onClose()}
+      >
+        <AiOutlineClose />
+      </button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+        <ModalPaymentSummary
+          event={event}
+          accessType={accessType}
+          satsPrice={satsPrice}
+          mobileDisplay={false}
+        />
+        <div className="flex flex-col items-center justify-center lg:pl-6">
+          {paymentData ? (
+            isPaymentSuccess ? (
+              <ModalPaymentSuccess
+                paymentData={paymentData}
+                accessType={accessType}
+                onClose={onClose}
+              />
+            ) : (
+              <PaymentQr
+                paymentRequest={paymentData.pr}
+                onBack={() => setPaymentData(undefined)}
+              />
+            )
+          ) : (
+            <PaymentDescription
+              paidPriceDollars={event.priceDollars}
+              event={event}
+              accessType={accessType}
+              satsPrice={satsPrice}
+              initPayment={initEventPayment}
+              itemId={event.id}
+              description={
+                accessType === 'replay'
+                  ? ''
+                  : t(`events.payment.description_${accessType}`)
+              }
+              callout={t(`events.payment.callout_${accessType}`)}
+            >
+              <ModalPaymentSummary
+                event={event}
+                accessType={accessType}
+                satsPrice={satsPrice}
+                mobileDisplay={true}
+              />
+            </PaymentDescription>
+          )}
+        </div>
       </div>
     </Modal>
   );

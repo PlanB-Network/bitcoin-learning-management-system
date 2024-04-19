@@ -207,6 +207,7 @@ export const contentCourses = content.table('courses', {
   paidVideoLink: text('paid_video_link'),
   paidStartDate: timestamp('paid_start_date', { withTimezone: true }),
   paidEndDate: timestamp('paid_end_date', { withTimezone: true }),
+  contact: varchar('contact', { length: 255 }),
 
   lastUpdated: timestamp('last_updated', { withTimezone: true })
     .defaultNow()
@@ -309,8 +310,20 @@ export const contentCourseChaptersLocalized = content.table(
     part: integer('part').notNull(),
     chapter: integer('chapter').notNull(),
     language: varchar('language', { length: 10 }).notNull(),
-    releaseDate: timestamp('release_date', { withTimezone: true }),
     releasePlace: varchar('release_place', { length: 50 }),
+
+    isOnline: boolean('is_online').default(false).notNull(),
+    isInPerson: boolean('is_in_person').default(false).notNull(),
+    startDate: timestamp('start_date'),
+    endDate: timestamp('end_date'),
+    timezone: text('timezone'),
+    addressLine1: text('address_line_1'),
+    addressLine2: text('address_line_2'),
+    addressLine3: text('address_line_3'),
+    liveUrl: text('live_url'),
+    availableSeats: integer('available_seats'),
+    remainingSeats: integer('remaining_seats'),
+    liveLanguage: text('live_language'),
 
     // Per translation
     title: text('title').notNull(),
@@ -384,6 +397,9 @@ export const usersCoursePayment = users.table(
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
     invoiceUrl: varchar('invoice_url', { length: 255 }),
+    couponCode: varchar('coupon_code', { length: 20 }).references(
+      () => couponCode.code,
+    ),
     lastUpdated: timestamp('last_updated', {
       withTimezone: true,
     })
@@ -399,8 +415,8 @@ export const usersCoursePayment = users.table(
 
 // COURSES PROGRESS
 
-export const usersCourseCompletedChapters = users.table(
-  'course_completed_chapters',
+export const usersCourseUserChapter = users.table(
+  'course_user_chapter',
   {
     uid: uuid('uid')
       .notNull()
@@ -415,6 +431,7 @@ export const usersCourseCompletedChapters = users.table(
     })
       .defaultNow()
       .notNull(),
+    booked: boolean('booked').default(false),
   },
   (table) => ({
     pk: primaryKey({
@@ -472,8 +489,8 @@ export const contentEvents = content.table('events', {
   timezone: text('timezone'),
   priceDollars: integer('price_dollars'),
   availableSeats: integer('available_seats'),
-  isOnline: boolean('is_online').default(false),
-  isInPerson: boolean('is_in_person').default(false),
+  bookOnline: boolean('book_online').default(false),
+  bookInPerson: boolean('book_in_person').default(false),
   addressLine1: text('address_line_1'),
   addressLine2: text('address_line_2'),
   addressLine3: text('address_line_3'),
@@ -857,4 +874,18 @@ export const contentTutorialCredits = content.table('tutorial_credits', {
   paynym: text('paynym'),
   silentPayment: text('silent_payment'),
   tipsUrl: text('tips_url'),
+});
+
+export const couponCode = content.table('coupon_code', {
+  code: varchar('code', { length: 20 }).primaryKey().notNull(),
+  itemId: varchar('item_id', { length: 100 }).notNull(),
+  reductionPercentage: integer('reduction_percentage'),
+  isUnique: boolean('is_unique').notNull().default(true),
+  isUsed: boolean('is_used').notNull().default(false),
+  uid: uuid('uid').references(() => usersAccounts.uid, {
+    onDelete: 'cascade',
+  }),
+  timeUsed: timestamp('time_used', {
+    withTimezone: true,
+  }),
 });

@@ -1,15 +1,34 @@
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface EventsGridProps {
   events: JoinedEvent[];
+  eventPayments: EventPayment[] | undefined;
+  openAuthModal: () => void;
+  isLoggedIn: boolean;
+  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPaymentModalData: React.Dispatch<
+    React.SetStateAction<{
+      eventId: string | null;
+      satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
+    }>
+  >;
   conversionRate: number | null;
 }
 
-export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
+export const EventsGrid = ({
+  events,
+  eventPayments,
+  openAuthModal,
+  isLoggedIn,
+  setIsPaymentModalOpen,
+  setPaymentModalData,
+  conversionRate,
+}: EventsGridProps) => {
   const { t } = useTranslation();
 
   let upcomingEvents: JoinedEvent[] = [];
@@ -36,6 +55,11 @@ export const EventsGrid = ({ events, conversionRate }: EventsGridProps) => {
         {sortedEvents?.map((event) => (
           <EventCard
             event={event}
+            eventPayments={eventPayments}
+            openAuthModal={openAuthModal}
+            isLoggedIn={isLoggedIn}
+            setIsPaymentModalOpen={setIsPaymentModalOpen}
+            setPaymentModalData={setPaymentModalData}
             conversionRate={conversionRate}
             key={event.name}
           />

@@ -6,6 +6,7 @@ export const getUserDetailsQuery = (uid: string) => {
     SELECT 
       uid,
       username,
+      display_name,
       email,
       contributor_id,
       created_at

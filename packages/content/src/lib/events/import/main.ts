@@ -19,8 +19,8 @@ interface EventMain {
   timezone: string;
   price_dollars: number;
   available_seats: number;
-  is_online: boolean;
-  is_in_person: boolean;
+  book_online: boolean;
+  book_in_person: boolean;
   address_line_1: string;
   address_line_2: string;
   address_line_3: string;
@@ -68,8 +68,8 @@ export const createProcessMainFile =
             timezone,
             price_dollars,
             available_seats,
-            is_online,
-            is_in_person,
+            book_online,
+            book_in_person,
             address_line_1,
             address_line_2,
             address_line_3,
@@ -92,8 +92,8 @@ export const createProcessMainFile =
           ${parsedEvent.timezone},
           ${parsedEvent.price_dollars},
           ${parsedEvent.available_seats},
-          ${parsedEvent.is_online},
-          ${parsedEvent.is_in_person},
+          ${parsedEvent.book_online},
+          ${parsedEvent.book_in_person},
           ${parsedEvent.address_line_1},
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
@@ -117,8 +117,8 @@ export const createProcessMainFile =
           address_line_2 = EXCLUDED.address_line_2,
           address_line_3 = EXCLUDED.address_line_3,
           type = EXCLUDED.type,
-          is_online = EXCLUDED.is_online,
-          is_in_person = EXCLUDED.is_in_person,
+          book_online = EXCLUDED.book_online,
+          book_in_person = EXCLUDED.book_in_person,
           website_url = EXCLUDED.website_url,
           replay_url = EXCLUDED.replay_url,
           live_url = EXCLUDED.live_url,
