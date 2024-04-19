@@ -1,6 +1,6 @@
 {
   "about": {
-    "activeContributors": "Active contributors\n",
+    "activeContributors": "Active contributors",
     "missionTitle": "Our mission",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
     "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
@@ -18,8 +18,8 @@
     "storyTitle": "Our story",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "description": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
-    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-    "title": "About the planB network",
+    "subtitle": "Want to orange pill the world ? Join the PlanB Network.",
+    "title": "About the Plan B Network",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n"
   },
   "auth": {
@@ -115,41 +115,41 @@
       "courseId": "Course ID: {{courseId}}",
       "coursePayment": "Course payment",
       "curriculum": "Curriculum",
-      "date": "Date",
+      "date": "Date: {{startDate}} to {{endDate}}",
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
-      "duration": "Duration",
+      "duration": "Duration: {{hours}} hours",
       "goal": "GOAL: ",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapters",
         "hours": "{{hours}} hours"
       },
-      "numberOfChapters": "Number of chapters",
+      "numberOfChapters": "Number of chapters: {{number}}",
       "objectives": "Objectives",
       "objectivesTitle": "What you'll learn :",
       "price": "Price: {{price}} sats",
       "professor": "Professor",
       "startCourse": "Start the course",
       "taughtBy": "This course is being taught by :",
-      "teacher": "Teacher",
-      "teachers": "Teachers",
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "Teachers: {{teachers}}",
       "teacherWord": "A word from the teacher",
       "total": "Total",
       "payment_successful": "Payment successful!",
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Trx ID"
+      "invoiceId": "Tx ID"
     },
     "explorer": {
       "footerTitle": "Our professors are here for you !",
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
       "moreToCome": ".... and more to come !",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "pageSubtitle": "Welcome to the gate to the e-learning platform.",
-      "pageTitle": "Courses",
+      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worlwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
+      "pageSubtitle": "Mass adoption through centralised open-source education",
+      "pageTitle": "Welcome to the Plan B Academy",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
       "s2p3": "All our courses are 100% free so nothing can stop you !",
@@ -177,7 +177,7 @@
       "description": "This purchase will grant you access to online courses on the platform as well as in-person classes, provided you reserve your seat in your student dashboard. Each class session takes place in person on the specified dates and locations before being recorded and streamed online on the platform.",
       "book_description": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
       "duration": "Duration",
-      "invoiceId": "Trx ID",
+      "invoiceId": "Tx ID",
       "numberOfChapters": "Number of chapters",
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
@@ -236,7 +236,7 @@
       "missedp1": "Did you miss an event ?",
       "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
     },
-    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network.",
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
     "pageSubtitle": "Bottom up adoption enhanced by a strong network",
     "pageTitle": "Looking for a Bitcoin event to go to ?",
     "payment": {
@@ -254,16 +254,16 @@
       "callout_replay": "You are about to book an access to this event replay video.",
       "date": "Date",
       "dates_to": "{{startDate}}{{endDate}}",
-      "description_online": "Please review the date and time of the event provided. When the time comes, log in to the platform and access the live stream via the event page.",
-      "description_physical": "Please review the venue details provided. Once the booking is processed, we'll provide you with a ticket to present at the event. This ticket will also give you access to the live stream and replay video, if any.",
-      "description_free_physical": "Please review the venue details provided below.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
+      "description_online": "Please review the date and time of the event provided.\nWhen the time comes, log in to the platform and access the live stream via the event page.",
+      "description_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a ticket to present at the event. This ticket will also give you access to the live stream and replay video, if any.",
+      "description_free_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
       "download_ticket": "Download your ticket",
       "enjoy": "We hope you'll enjoy it :)",
       "language": "Language spoken",
       "limitation": "Limitation",
       "max_capacity": "Max capacity of",
       "payment_details": "Payment details",
-      "payment_successful": "Booking successful!",
+      "payment_successful": "Booking successful !",
       "time": "Time"
     }
   },
@@ -348,8 +348,8 @@
     "worldMap": "world map with hubs linked"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
-    "pageTitle": "The library",
+    "pageSubtitle": "This library is open-source & open to contribution.",
+    "pageTitle": "Bitcoin Library",
     "publishedIn": "Published in {{date}}",
     "writtenBy": "Written by {{author}}"
   },
@@ -425,13 +425,13 @@
       "title": "Educational Toolkit"
     },
     "books": {
-      "title": "Books"
+      "title": "Library"
     },
     "builders": {
       "title": "Builders"
     },
     "conferences": {
-      "title": "Conferences"
+      "title": "Conference replays"
     },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
@@ -439,9 +439,9 @@
     "newsletters": {
       "title": "Newsletters"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal aims at gathering all the information in one place to help you grasp a better understanding of the Bitcoin ecosystem.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Bitcoin Resource Portal",
+    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
+    "pageSubtitle": "Centralise knowledge to better distribute it",
+    "pageTitle": "Welcome to the Resource Portal",
     "github": "All this data is managed via one open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
     "podcasts": {
       "title": "Podcasts"
@@ -501,9 +501,9 @@
       "shortDescription": "Solutions to operate a bitcoin node and join the network",
       "title": "Node"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
+    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
+    "pageSubtitle": "Let's demystify Bitcoin by showing the vastness and richness of its ecosystem",
+    "pageTitle": "Discover our tutorials",
     "privacy": {
       "bitcoin": {
         "description": "Bitcoin is not private by default, it is intentionally designed to be pseudonymous, and every transaction is public and stored forever. In order to regain some confidentiality, we must use best user practices and specific tools integrated into our software. From avoiding address reuse to CoinJoin, through mixing your coins and connecting to your own node, we will help you on your journey towards privacy."
