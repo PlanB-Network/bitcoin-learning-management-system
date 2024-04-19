@@ -9,6 +9,7 @@ interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
   variant?: 'light' | 'dark' | 'blue';
   showFooter?: boolean;
+  headerVariant?: 'light' | 'dark';
   footerVariant?: 'light' | 'dark' | 'course';
 }
 
@@ -17,6 +18,7 @@ export const MainLayout = ({
   variant = 'dark',
   showFooter = true,
   footerVariant,
+  headerVariant,
 }: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
 
@@ -27,13 +29,13 @@ export const MainLayout = ({
         variant === 'light'
           ? 'bg-gray-100'
           : variant === 'blue'
-          ? 'bg-blue-200'
-          : 'bg-blue-1000',
+            ? 'bg-blue-200'
+            : 'bg-blue-1000',
       )}
       ref={box}
     >
       {/* Header */}
-      <Header />
+      <Header variant={headerVariant} />
 
       {/* Content */}
       {children}

@@ -25,7 +25,7 @@ export const CoursesProgressList = ({
               <span className="text-xl font-semibold uppercase sm:text-base">
                 {addSpaceToCourseId(course.courseId)}
               </span>
-              <div className="font-semibold text-orange-600">
+              <div className="font-semibold text-darkOrange-5">
                 {course.progressPercentage}%
               </div>
             </div>
@@ -33,7 +33,7 @@ export const CoursesProgressList = ({
               <div className="absolute h-2 w-full rounded-full bg-gray-700"></div>
               <div
                 style={{ width: `${course.progressPercentage}%` }}
-                className={`absolute h-2 rounded-l-full bg-orange-500`}
+                className={`absolute h-2 rounded-l-full bg-darkOrange-5`}
               ></div>
               <img
                 src={OrangePill}
@@ -58,11 +58,11 @@ export const CoursesProgressList = ({
                 chapterIndex: String(course.nextChapter?.chapter),
               }}
             >
-              <Button variant="tertiary" size="xs" rounded className="px-3">
+              <Button variant="newPrimary" size="xs">
                 {t('dashboard.myCourses.resumeLesson')}
               </Button>
             </Link>
-            <Button variant="primary" size="xs" rounded className="px-3">
+            <Button variant="newPrimaryGhost" size="xs">
               {t('words.details')}
             </Button>
           </div>

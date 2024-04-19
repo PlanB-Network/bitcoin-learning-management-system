@@ -37,7 +37,12 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
 
       {isLoggedIn && !isMobile && (
         <Link to="/dashboard">
-          <Button className="my-4" variant="tertiary" rounded size={buttonSize}>
+          <Button
+            className="my-4"
+            variant="newPrimary"
+            rounded
+            size={buttonSize}
+          >
             {t('words.dashboard')}
           </Button>
         </Link>
