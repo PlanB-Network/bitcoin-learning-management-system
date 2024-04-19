@@ -95,7 +95,19 @@
       "count": "Chapitre n°{{count}}",
       "finishCourse": "Terminer le cours",
       "next": "Terminé, passons au chapitre suivant !",
-      "thanksTip": "Vous voulez dire merci ? Soutenez."
+      "thanksTip": "Vous voulez dire merci ? Soutenez.",
+      "detail": {
+        "title": "Class details",
+        "p1heading": "Do you intend to attend this lesson in person ?",
+        "p1content": "Make sure to book your seat",
+        "p2heading": "You can't make it in person?",
+        "p2content": "No problem ! The lesson will be live streamed on this page and available on replay later on.",
+        "bookSeat": "Book your seat"
+      },
+      "live": {
+        "title": "Live video",
+        "stayTuned": "The live will be on half an hour before the beginning of the class. Stay tuned."
+      }
     },
     "details": {
       "accessible": "Accessible : à vie",
@@ -128,11 +140,7 @@
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Invoice ID",
-      "terms1": "See our",
-      "terms2": "general terms",
-      "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "invoiceId": "Tx ID"
     },
     "explorer": {
       "footerTitle": "Nos professeurs sont là pour vous !",
@@ -161,27 +169,27 @@
       "accessibility": "Accessibility",
       "accessibility_forever": "Forever",
       "amount": "Amount",
+      "back_course": "Back to course",
+      "callout": "You are about to purchase this course.",
       "date": "Date",
       "dates_to": "{{startDate}} to {{endDate}}",
       "downloadCurriculum": "Download curriculum",
+      "description": "This purchase will grant you access to online courses on the platform as well as in-person classes, provided you reserve your seat in your student dashboard. Each class session takes place in person on the specified dates and locations before being recorded and streamed online on the platform.",
+      "book_description": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
       "duration": "Duration",
-      "invoiceId": "Invoice ID",
+      "invoiceId": "Tx ID",
       "numberOfChapters": "Number of chapters",
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
+      "qr_unified": "This QR code is unified, so it accepts lightning and on-chain payments.",
       "teacher": "Teacher",
       "teachers": "Teachers",
-      "terms1": "See our",
-      "terms2": "general terms",
-      "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
-      "total": "Total"
+      "time": "Time"
     },
     "preview": {
       "by": "par {{professor}}",
       "letsgo": "Allons-y"
     },
-    "proceedToPayment": "Proceed to payment",
     "quizz": {
       "clickOnPie": "Cliquez sur le camenbert pour vérifiez vos erreurs et obtenir les explications",
       "quizz": "Quiz",
@@ -206,9 +214,19 @@
     }
   },
   "events": {
-    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network.",
-    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
-    "pageTitle": "Looking for a Bitcoin event to go to ?",
+    "card": {
+      "free": "free",
+      "online": "online",
+      "limited": "limited to",
+      "unlimited": "unlimited",
+      "people": "people",
+      "watchLive": "Watch live",
+      "watchReplay": "Watch replay",
+      "buyReplay": "Buy replay",
+      "bookLive": "Book live",
+      "bookSeat": "Book your seat",
+      "visitWebsite": "Visit website"
+    },
     "main": {
       "upcomingEvents": "Upcoming events",
       "currentEvents": "Events happening right now"
@@ -218,17 +236,35 @@
       "missedp1": "Did you miss an event ?",
       "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
     },
-    "card": {
-      "free": "free",
-      "online": "online",
-      "limited": "limited to",
-      "unlimited": "unlimited",
-      "people": "people",
-      "watchLive": "Watch live",
-      "watchReplay": "Watch replay",
-      "bookLive": "Book live",
-      "bookSeat": "Book your seat",
-      "visitWebsite": "Visit website"
+    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
+    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
+    "pageTitle": "Looking for a Bitcoin event to go to ?",
+    "payment": {
+      "access_invoice": "You can access your invoice via your dashboard.",
+      "access_online_successful": "When the event starts, log onto the platform and you’ll be granted access to the live stream via the event page.",
+      "access_physical_successful": "You can download your ticket here, or download it later in your dashboard.",
+      "access_type": "Type of access",
+      "address": "Address",
+      "additional_free_description": "This event is free so you will not be charged to book this seat. Anyhow, please make sure to attend since the number of seats is limited.",
+      "amount": "Amount",
+      "back_events": "Back to events",
+      "book_seat": "Book seat",
+      "callout_online": "You are about to book an online access to this event.",
+      "callout_physical": "You are about to book a physical access to this event.",
+      "callout_replay": "You are about to book an access to this event replay video.",
+      "date": "Date",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "description_online": "Please review the date and time of the event provided.\nWhen the time comes, log in to the platform and access the live stream via the event page.",
+      "description_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a ticket to present at the event. This ticket will also give you access to the live stream and replay video, if any.",
+      "description_free_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
+      "download_ticket": "Download your ticket",
+      "enjoy": "We hope you'll enjoy it :)",
+      "language": "Language spoken",
+      "limitation": "Limitation",
+      "max_capacity": "Max capacity of",
+      "payment_details": "Payment details",
+      "payment_successful": "Booking successful !",
+      "time": "Time"
     }
   },
   "home": {
@@ -356,6 +392,12 @@
     "here": "Ici",
     "pageSubtitle": "On dirait que quelqu'un est tombé trop profondément dans le trou du lapin et s'est perdu. Pour revenir à la surface, cliquez sur",
     "pageTitle": "Oups."
+  },
+  "payment": {
+    "proceedToPayment": "Proceed to payment",
+    "terms": "See our <0>general terms</0> and conditions for refund details",
+    "feeDistribution": "Fee distribution: Author 99 % - Plateform 1 %",
+    "total": "Total"
   },
   "podcast": {
     "abstract": "Résumé",
@@ -516,6 +558,7 @@
     "continue": "Continuer",
     "course": "Cours",
     "courses": "Cours",
+    "date": "Date",
     "dashboard": "Tableau de bord",
     "details": "Détails",
     "didYouKnow": "Le saviez-vous?",
@@ -570,6 +613,8 @@
     "supportUs": "Soutenez-nous",
     "teachers": "Professeurs",
     "termsAndConditions": "Termes et conditions",
+    "time": "Time",
+    "to": "to",
     "toolkits": "Boîtes à outils",
     "tutorial": "Tutoriel",
     "tutorials": "Tutoriels",
