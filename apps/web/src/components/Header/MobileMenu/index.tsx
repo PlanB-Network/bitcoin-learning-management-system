@@ -50,19 +50,21 @@ export const MobileMenu = ({
         </Link>
       </div>
       {isLoggedIn ? (
-        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
           <Link to={'/dashboard'}>
-            <p className="text-white">{t('words.dashboard')}</p>
+            <button className="cursor-pointer text-white">
+              <img
+                src={SignInIcon}
+                alt={t('auth.signIn')}
+                className="size-10"
+              />
+            </button>
           </Link>
         </div>
       ) : (
-        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
           <button className="cursor-pointer text-white" onClick={onClickLogin}>
-            <img
-              src={SignInIcon}
-              alt={t('auth.signIn')}
-              className="size-10 hover:brightness-125"
-            />
+            <img src={SignInIcon} alt={t('auth.signIn')} className="size-10" />
           </button>
         </div>
       )}
