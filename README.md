@@ -25,8 +25,7 @@ Duplicate the [.env.example](.env.example) file and rename the duplicate `.env`.
 To start the development environment, run :
 
 1. `pnpm install`
-2. `pnpm build`
-3. `docker compose up --build -V`
+2. `docker compose up --build -V`
 
 This will start all the necessary containers.
 
