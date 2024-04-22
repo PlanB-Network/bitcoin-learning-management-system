@@ -44,7 +44,7 @@ export const Builders = () => {
       }}
       activeCategory="builders"
     >
-      <div className="flex flex-col gap-5 p-4 md:p-10">
+      <div className="flex flex-col gap-5 p-4 pt-0 md:p-10 md:pt-0">
         {categories.map((category) => {
           const filteredBuilders = categorizedBuilders[category].filter(
             (builder) =>

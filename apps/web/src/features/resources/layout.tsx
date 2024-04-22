@@ -28,6 +28,7 @@ interface Props {
   link?: ToPathOption<any>;
   // link?: ToPathOption<RegisteredRouter['routeTree']>;
   activeCategory?: string;
+  maxWidth?: '1152' | '1360';
 }
 
 export const ResourceLayout = ({
@@ -39,11 +40,17 @@ export const ResourceLayout = ({
   className,
   link,
   activeCategory,
+  maxWidth,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
       <div className={cn('flex h-fit justify-center p-2 md:p-10', className)}>
-        <div className="w-full max-w-6xl text-black">
+        <div
+          className={cn(
+            'w-full text-black',
+            maxWidth === '1360' ? 'max-w-[1360px]' : 'max-w-6xl',
+          )}
+        >
           <CategoryTabs resourceActiveCategory={activeCategory} />
           <DropdownMenu resourceActiveCategory={activeCategory} />
 
@@ -61,7 +68,7 @@ export const ResourceLayout = ({
             </div>
           )}
 
-          <div className="my-4 sm:my-6">{children}</div>
+          <div className="mt-4 md:mt-[60px]">{children}</div>
 
           {pagination && (
             <div className="mx-auto w-max">

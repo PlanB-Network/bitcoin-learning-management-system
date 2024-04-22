@@ -80,6 +80,14 @@
     "pageSubtitle": "This portal is open-source & open to contribution.",
     "pageTitle": "Bitcoin Builders"
   },
+  "conferences": {
+    "conferencesSinceGenesis": "Bitcoin Conferences Archives since Genesis Block",
+    "description": "Conferences are a key element in the Bitcoin industry. They are part of any Bitcoiner’s educational journey.  We built this tool to help you navigate through hundreds of conferences.",
+    "latestConferences": "Latest conferences",
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Conference replays",
+    "planBConferences": "Plan B conferences"
+  },
   "courses": {
     "categories": {
       "btc": "Bitcoin",

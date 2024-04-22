@@ -7,6 +7,7 @@ import { Book } from './pages/book-details.tsx';
 import { Books } from './pages/books.tsx';
 import { Builder } from './pages/builder-details.tsx';
 import { Builders } from './pages/builders.tsx';
+import { Conferences } from './pages/conferences.tsx';
 import { Resources } from './pages/explorer.tsx';
 import { Podcast } from './pages/podcast-details.tsx';
 import { Podcasts } from './pages/podcasts.tsx';
@@ -77,6 +78,7 @@ export const newslettersRoute = createRoute({
 export const conferencesRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/conferences',
+  component: Conferences,
 });
 
 export const resourcesRoutes = resourcesRootRoute.addChildren([
