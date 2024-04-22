@@ -7,7 +7,7 @@ import { cn } from '@sovereign-university/ui';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 
-import leftBackgroundImg from '../../../assets/courses/left-background.png';
+import leftBackgroundImg from '../../../assets/courses/left-background.webp';
 
 const borderClassName = 'border border-white/25 rounded-xl overflow-hidden';
 
