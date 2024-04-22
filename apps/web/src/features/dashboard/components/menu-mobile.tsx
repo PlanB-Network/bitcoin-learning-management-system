@@ -1,8 +1,9 @@
 import { useLocation } from '@react-hooks-library/core';
 import { Link, useNavigate } from '@tanstack/react-router';
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
-import { IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5';
+import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
 
 import { useAppDispatch } from '../../../hooks/index.ts';
 import { userSlice } from '../../../store/index.ts';
@@ -32,10 +33,10 @@ export const MenuMobile = () => {
   }, [location]);
 
   return (
-    <div className="fixed bottom-2 z-10 mx-auto flex w-full flex-row bg-orange-500 md:hidden md:bg-transparent">
+    <div className="fixed bottom-0 py-2 z-10 mx-auto flex w-full flex-row bg-darkOrange-5 text-white md:hidden md:bg-transparent">
       <Link to={dashboardPath} className="w-full">
         <MenuItem
-          text="My courses"
+          text={t('dashboard.courses')}
           icon={<AiOutlineBook size={28} />}
           active={
             pathname === dashboardPath || pathname.startsWith(courseDetailPath)
@@ -44,13 +45,13 @@ export const MenuMobile = () => {
       </Link>
       <Link to={profilePath} className="w-full">
         <MenuItem
-          text="My profile"
-          icon={<IoSettingsOutline size={28} />}
+          text={t('dashboard.account')}
+          icon={<IoPersonOutline size={28} />}
           active={pathname === profilePath}
         />
       </Link>
       <MenuItem
-        text="Log out"
+        text={t('dashboard.logout')}
         icon={<IoLogOutOutline size={28} />}
         onClick={() => {
           dispatch(userSlice.actions.logout());

@@ -26,12 +26,27 @@ export const DashboardProfile = () => {
         <div className="text-lg font-medium">Profile information</div>
         <Tabs defaultValue="info" className="max-w-[600px]">
           <TabsList>
-            <TabsTrigger value="info">My personal information</TabsTrigger>
-            <TabsTrigger value="document">My documents</TabsTrigger>
-            <TabsTrigger value="security">Security</TabsTrigger>
+            <TabsTrigger
+              value="info"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
+              My personal information
+            </TabsTrigger>
+            <TabsTrigger
+              value="security"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
+              Security
+            </TabsTrigger>
+            <TabsTrigger
+              value="document"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
+              My documents
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="info">
-            <div className="mt-6 flex w-full flex-col">
+            <div className="flex w-full flex-col">
               <div className="mt-6 flex flex-col">
                 <label htmlFor="usernameId">Username</label>
                 <input
@@ -39,7 +54,17 @@ export const DashboardProfile = () => {
                   type="text"
                   value={user?.username}
                   disabled
-                  className="rounded-lg bg-[#e9e9e91a] px-4 py-1 text-gray-400"
+                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
+                />
+              </div>
+              <div className="mt-6 flex flex-col">
+                <label htmlFor="displayName">Display Name</label>
+                <input
+                  id="displayName"
+                  type="text"
+                  value={user?.displayName || ''}
+                  disabled
+                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
                 />
               </div>
               <div className="mt-6 flex flex-col">
@@ -49,26 +74,26 @@ export const DashboardProfile = () => {
                   type="text"
                   value={user?.email ? user?.email : ''}
                   disabled
-                  className="rounded-lg bg-[#e9e9e91a] px-4 py-1 text-gray-400"
+                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
                 />
               </div>
             </div>
           </TabsContent>
-          <TabsContent value="document"></TabsContent>
 
           <TabsContent value="security">
             <div className="mt-6 flex justify-between">
               <div>Password</div>
               <Button
-                variant="tertiary"
+                variant="newPrimary"
                 size="s"
-                rounded
                 onClick={openChangePasswordModal}
               >
                 Change
               </Button>
             </div>
           </TabsContent>
+
+          <TabsContent value="document"></TabsContent>
         </Tabs>
 
         <ChangePasswordModal

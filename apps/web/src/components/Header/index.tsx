@@ -15,6 +15,8 @@ import {
   IoSchoolOutline,
 } from 'react-icons/io5';
 
+import { cn } from '@sovereign-university/ui';
+
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { Routes } from '../../routes/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
@@ -31,7 +33,11 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 type Course = NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
 
-export const Header = () => {
+interface HeaderProps {
+  variant?: 'light' | 'dark';
+}
+
+export const Header = ({ variant = 'dark' }: HeaderProps) => {
   const { t, i18n } = useTranslation();
 
   const {
@@ -316,7 +322,12 @@ export const Header = () => {
   const isScreenLg = useGreater('lg');
 
   return (
-    <header className="bg-blue-1000 sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12">
+    <header
+      className={cn(
+        'sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12',
+        variant === 'light' ? 'bg-darkOrange-5' : 'bg-blue-1000',
+      )}
+    >
       {isScreenLg ? (
         <FlyingMenu
           onClickLogin={() => {
@@ -328,6 +339,7 @@ export const Header = () => {
             openAuthModal();
           }}
           sections={desktopSections}
+          variant={variant}
         />
       ) : (
         <MobileMenu
@@ -340,6 +352,7 @@ export const Header = () => {
             openAuthModal();
           }}
           sections={[...homeSection, ...mobileSections]}
+          variant={variant}
         />
       )}
 

@@ -18,17 +18,22 @@ export const DashboardLayout = ({
   const isMobile = useSmaller('md');
 
   return isMobile ? (
-    <MainLayout showFooter={false}>
+    <MainLayout
+      variant="light"
+      showFooter={false}
+      fillScreen={true}
+      headerVariant="light"
+    >
       <div>
-        <div className="p-6 text-white">{children}</div>
+        <div className="p-6 bg-white text-black">{children}</div>
         <MenuMobile />
       </div>
     </MainLayout>
   ) : (
-    <MainLayout>
-      <div className="flex flex-row text-white">
+    <MainLayout variant="light" headerVariant="light">
+      <div className="flex flex-row text-white min-h-[1012px] mt-3 mx-4 min-[1750px]:max-w-[1700px] min-[1750px]:mx-auto">
         <MenuDesktop />
-        <div className="bg-dashboardsection ml-4 grow rounded-xl p-10 text-white">
+        <div className="bg-white grow rounded-xl ml-3 p-10 text-black">
           {children}
         </div>
       </div>

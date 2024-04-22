@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
 import SignInIcon from '../../../assets/icons/profile_log_in.png';
-import PlanBLogo from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
 import { compose } from '../../../utils/index.ts';
 import { MetaElements } from '../MetaElements/index.tsx';
@@ -16,12 +17,14 @@ export interface MobileMenuProps {
   sections: NavigationSection[];
   onClickLogin: () => void;
   onClickRegister: () => void;
+  variant?: 'light' | 'dark';
 }
 
 export const MobileMenu = ({
   sections,
   onClickLogin,
   onClickRegister,
+  variant = 'dark',
 }: MobileMenuProps) => {
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
@@ -39,23 +42,29 @@ export const MobileMenu = ({
     <>
       <div className="flex max-w-fit mx-auto flex-row justify-center">
         <Link to="/">
-          <PlanBLogo className="h-[34px] w-fit" />
+          {variant === 'light' ? (
+            <PlanBLogoWhite className="h-[34px] w-fit" />
+          ) : (
+            <PlanBLogoOrange className="h-[34px] w-fit" />
+          )}
         </Link>
       </div>
       {isLoggedIn ? (
-        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
           <Link to={'/dashboard'}>
-            <p className="text-white">{t('words.dashboard')}</p>
+            <button className="cursor-pointer text-white">
+              <img
+                src={SignInIcon}
+                alt={t('auth.signIn')}
+                className="size-10"
+              />
+            </button>
           </Link>
         </div>
       ) : (
-        <div className="absolute right-6 flex flex-row justify-end place-self-center text-sm font-semibold">
+        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
           <button className="cursor-pointer text-white" onClick={onClickLogin}>
-            <img
-              src={SignInIcon}
-              alt={t('auth.signIn')}
-              className="size-10 hover:brightness-125"
-            />
+            <img src={SignInIcon} alt={t('auth.signIn')} className="size-10" />
           </button>
         </div>
       )}
