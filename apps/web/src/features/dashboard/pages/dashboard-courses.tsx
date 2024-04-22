@@ -29,10 +29,16 @@ export const DashboardCourses = () => {
         <div className="text-2xl">{t('dashboard.courses')}</div>
         <Tabs defaultValue="inprogress" className="max-w-[800px]">
           <TabsList>
-            <TabsTrigger value="inprogress" variant="light">
+            <TabsTrigger
+              value="inprogress"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
               {t('dashboard.myCourses.inprogress')}
             </TabsTrigger>
-            <TabsTrigger value="completed" variant="light">
+            <TabsTrigger
+              value="completed"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
               {t('dashboard.myCourses.completed')}
             </TabsTrigger>
           </TabsList>

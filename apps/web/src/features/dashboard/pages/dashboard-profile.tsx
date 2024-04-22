@@ -26,13 +26,22 @@ export const DashboardProfile = () => {
         <div className="text-lg font-medium">Profile information</div>
         <Tabs defaultValue="info" className="max-w-[600px]">
           <TabsList>
-            <TabsTrigger value="info" variant="light">
+            <TabsTrigger
+              value="info"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
               My personal information
             </TabsTrigger>
-            <TabsTrigger value="security" variant="light">
+            <TabsTrigger
+              value="security"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
               Security
             </TabsTrigger>
-            <TabsTrigger value="document" variant="light">
+            <TabsTrigger
+              value="document"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+            >
               My documents
             </TabsTrigger>
           </TabsList>
