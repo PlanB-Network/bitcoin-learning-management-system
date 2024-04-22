@@ -209,7 +209,13 @@
     }
   },
   "dashboard": {
+    "account": "Account",
+    "courses": "My courses",
+    "logout": "Log out",
     "myCourses": {
+      "completed": "Completed courses",
+      "details": "Details",
+      "inprogress": "Courses in progress",
       "resumeLesson": "Reprendre la leçon"
     }
   },
