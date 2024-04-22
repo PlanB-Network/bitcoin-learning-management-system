@@ -33,7 +33,7 @@ export const MenuMobile = () => {
   }, [location]);
 
   return (
-    <div className="fixed bottom-0 z-10 mx-auto flex w-full flex-row bg-darkOrange-5 text-white md:hidden md:bg-transparent">
+    <div className="fixed bottom-0 py-2 z-10 mx-auto flex w-full flex-row bg-darkOrange-5 text-white md:hidden md:bg-transparent">
       <Link to={dashboardPath} className="w-full">
         <MenuItem
           text={t('dashboard.courses')}

@@ -18,7 +18,12 @@ export const DashboardLayout = ({
   const isMobile = useSmaller('md');
 
   return isMobile ? (
-    <MainLayout showFooter={false} headerVariant="light">
+    <MainLayout
+      variant="light"
+      showFooter={false}
+      fillScreen={true}
+      headerVariant="light"
+    >
       <div>
         <div className="p-6 bg-white text-black">{children}</div>
         <MenuMobile />

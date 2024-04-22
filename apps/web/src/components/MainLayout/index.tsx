@@ -9,6 +9,7 @@ interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
   variant?: 'light' | 'dark' | 'blue';
   showFooter?: boolean;
+  fillScreen?: boolean;
   headerVariant?: 'light' | 'dark';
   footerVariant?: 'light' | 'dark' | 'course';
 }
@@ -17,6 +18,7 @@ export const MainLayout = ({
   children,
   variant = 'dark',
   showFooter = true,
+  fillScreen,
   footerVariant,
   headerVariant,
 }: MainLayoutProps) => {
@@ -31,6 +33,7 @@ export const MainLayout = ({
           : variant === 'blue'
             ? 'bg-blue-200'
             : 'bg-blue-1000',
+        fillScreen ? 'min-h-dvh' : '',
       )}
       ref={box}
     >
