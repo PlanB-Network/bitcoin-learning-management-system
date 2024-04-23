@@ -20,8 +20,11 @@ export const ConferencesTimeLine = ({
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    startIndex: years.indexOf('2018'),
+    startIndex: years.indexOf('2024') - 1,
     containScroll: false,
+    breakpoints: {
+      '(min-width: 768px)': { containScroll: 'trimSnaps' },
+    },
   });
 
   const scrollPrev = useCallback(() => {
