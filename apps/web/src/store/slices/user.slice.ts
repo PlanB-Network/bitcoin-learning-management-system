@@ -17,14 +17,25 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<{ uid: string }>) => {
-      state.isLoggedIn = true;
-      state.uid = action.payload.uid;
+      if (action.payload.uid) {
+        state.isLoggedIn = true;
+        state.uid = action.payload.uid;
+      }
     },
     logout: (state) => {
       state.isLoggedIn = false;
       state.uid = undefined;
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      trpcClient.auth.logout.mutate();
+
+      trpcClient.auth.logout
+        .mutate()
+        .then((response) => {
+          console.log('Logged out successfully:', response.message);
+          return response;
+        })
+        .catch((error) => {
+          console.error('Failed to log out:', error);
+          throw error;
+        });
     },
   },
 });

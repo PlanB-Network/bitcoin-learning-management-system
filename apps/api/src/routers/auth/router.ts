@@ -18,7 +18,7 @@ const logoutProcedure = protectedProcedure
     const { req } = ctx;
 
     return new Promise((resolve) => {
-      req.session.regenerate((error) => {
+      req.session.destroy((error) => {
         if (error) {
           console.error(error);
         }
