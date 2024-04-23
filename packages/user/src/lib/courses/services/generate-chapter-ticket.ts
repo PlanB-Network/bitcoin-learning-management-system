@@ -149,7 +149,7 @@ export const generateChapterTicket = async ({
       continued: false,
     });
 
-    y += 20;
+    y += 30;
     // eslint-disable-next-line import/no-named-as-default-member
     const qrBuffer = qr.imageSync(`displayName:${userDisplayName}`);
     doc.image(qrBuffer, x, y, { width: 170 });

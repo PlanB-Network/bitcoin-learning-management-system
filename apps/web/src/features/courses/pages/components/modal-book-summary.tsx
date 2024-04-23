@@ -58,20 +58,6 @@ export const ModalBookSummary = ({
         <span className="text-lg lg:text-base text-black lg:text-white font-bold lg:font-medium leading-snug lg:leading-tight capitalize mb-5 lg:mb-6">
           {courseName}
         </span>
-        <div
-          className={cn(
-            'rounded-2xl w-full aspect-video mb-5 lg:mb-8',
-            borderClassName,
-          )}
-        >
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            className="m-0"
-            controls={true}
-            url={course.paidVideoLink as string}
-          />
-        </div>
         <div className="flex flex-col gap-1 lg:gap-2">
           <PaymentRow
             label={
