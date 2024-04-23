@@ -8,7 +8,6 @@ import { getDateString, getTimeString } from '#src/utils/date.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import leftBackgroundImg from '../../../../assets/courses/left-background.webp';
-import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
