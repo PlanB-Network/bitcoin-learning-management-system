@@ -100,11 +100,17 @@ export const ModalBookSummary = ({
             }
           />
           <Separator />
-          <PaymentRow
-            label={t('events.payment.address')}
-            value={`${chapter.addressLine2}\n${chapter.addressLine3 ? chapter.addressLine3 + '\n' : ''}${chapter.addressLine1?.toUpperCase()}`}
-          />
-          <Separator />
+          {(chapter.addressLine1 ||
+            chapter.addressLine2 ||
+            chapter.addressLine3) && (
+            <>
+              <PaymentRow
+                label={t('events.payment.address')}
+                value={`${chapter.addressLine2 ? chapter.addressLine2 + '\n' : ''}${chapter.addressLine3 ? chapter.addressLine3 + '\n' : ''}${chapter.addressLine1 ? chapter.addressLine1.toUpperCase() : ''}`}
+              />
+              <Separator />
+            </>
+          )}
           <PaymentRow
             label={t('events.payment.limitation')}
             value={
