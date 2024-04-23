@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 import PDFDocument from 'pdfkit';
 import qr from 'qr-image';
@@ -173,15 +174,20 @@ export const generateChapterTicket = async ({
     }
   }
 
-  function addImage(path: string, x: number, y: number, w: number) {
+  function addImage(imagePath: string, x: number, y: number, w: number) {
+    const resolvedPath = path.resolve(imagePath);
     try {
-      if (fs.existsSync(path)) {
-        doc.image(path, x, y, { width: w });
+      if (fs.existsSync(resolvedPath)) {
+        doc.image(resolvedPath, x, y, { width: w });
       } else {
-        console.warn('Logo file not found, skipping logo insertion.');
+        console.warn(
+          'Logo file not found at ' +
+            resolvedPath +
+            ', skipping logo insertion.',
+        );
       }
     } catch (error) {
-      console.error('Failed to add image:', error);
+      console.error('Failed to add image at ' + resolvedPath + ':', error);
     }
   }
 };
