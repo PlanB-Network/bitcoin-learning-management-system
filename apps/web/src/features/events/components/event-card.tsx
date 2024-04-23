@@ -276,7 +276,7 @@ export const EventCard = ({
   const ReplayButtons = () => {
     return (filteredEventPayments && filteredEventPayments.length > 0) ||
       isFree ? (
-      <Link to={'/events/' + event.id} target="_blank" className="w-fit">
+      <Link to={'/events/' + event.id} className="w-fit">
         <Button
           iconRight={<HiVideoCamera size={18} />}
           variant="newSecondary"
