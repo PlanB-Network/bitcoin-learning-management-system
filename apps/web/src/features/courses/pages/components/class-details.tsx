@@ -32,6 +32,7 @@ export const ClassDetails = ({
   professor,
 }: ClassDetailsProps) => {
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
+  const [downloadedPdf, setDownloadedPdf] = useState('');
 
   const { t } = useTranslation();
 
@@ -139,16 +140,20 @@ export const ClassDetails = ({
                   <Button
                     variant="newPrimary"
                     onClick={async () => {
-                      const base64 = await mutateAsync({
-                        ...chapter,
-                        ...course,
-                        formattedStartDate,
-                        formattedTime,
-                        formattedCapacity,
-                        userDisplayName: user.displayName as string,
-                      });
+                      let pdf = downloadedPdf;
+                      if (!pdf) {
+                        pdf = await mutateAsync({
+                          ...chapter,
+                          ...course,
+                          formattedStartDate,
+                          formattedTime,
+                          formattedCapacity,
+                          userDisplayName: user.displayName as string,
+                        });
+                        setDownloadedPdf(pdf);
+                      }
                       const link = document.createElement('a');
-                      link.href = `data:application/pdf;base64,${base64}`;
+                      link.href = `data:application/pdf;base64,${pdf}`;
                       link.download = 'ticket.pdf';
                       document.body.append(link);
                       link.click();

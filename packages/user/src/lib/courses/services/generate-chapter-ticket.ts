@@ -3,10 +3,6 @@ import fs from 'node:fs';
 import PDFDocument from 'pdfkit';
 import qr from 'qr-image';
 
-const doc = new PDFDocument();
-let x = 0;
-let y = 0;
-
 export const generateChapterTicket = async ({
   title,
   addressLine1,
@@ -31,6 +27,9 @@ export const generateChapterTicket = async ({
   userDisplayName: string;
 }) => {
   const chunks: Buffer[] = [];
+  const doc = new PDFDocument();
+  let x = 0;
+  let y = 0;
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   doc.on('data', (chunk) => chunks.push(chunk));
