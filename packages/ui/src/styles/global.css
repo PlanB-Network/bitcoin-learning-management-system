@@ -65,6 +65,36 @@
   }
 }
 
+@layer components {
+  .desktop-body1 {
+    @apply text-base font-normal leading-normal tracking-[0.15px];
+  }
+
+  .desktop-h5 {
+    @apply text-2xl font-normal leading-snug;
+  }
+
+  .desktop-h6 {
+    @apply text-2xl font-semibold leading-snug;
+  }
+
+  .desktop-h7 {
+    @apply text-xl font-semibold leading-relaxed tracking-[0.15px];
+  }
+
+  .desktop-h8 {
+    @apply text-xl font-normal leading-relaxed tracking-[0.15px];
+  }
+
+  .mobile-caption1 {
+    @apply text-xs leading-normal;
+  }
+
+  .mobile-subtitle2 {
+    @apply text-sm font-medium leading-tight;
+  }
+}
+
 @layer utilities {
   .filter-white {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)

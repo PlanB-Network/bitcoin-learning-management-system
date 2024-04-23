@@ -43,8 +43,9 @@ const classesByVariant = {
   primary:
     'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
   newPrimary: 'bg-newOrange-1 text-white',
+  newPrimary: 'bg-newOrange-1 text-white',
   newPrimaryGhost:
-    'bg-transparent text-darkOrange-5 border border-darkOrange-4 !font-normal ',
+    'bg-transparent text-darkOrange-5 border border-darkOrange-4',
   secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
   newSecondary: 'bg-white text-newBlack-1',
   tertiary: 'bg-orange-600 text-white',
