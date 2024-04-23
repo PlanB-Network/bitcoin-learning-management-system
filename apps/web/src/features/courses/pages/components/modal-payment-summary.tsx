@@ -8,7 +8,7 @@ import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import leftBackgroundImg from '../../../../assets/courses/left-background.webp';
 import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
-import { computeAssetCdnUrl } from '../../../../utils/index.ts';
+// import { computeAssetCdnUrl } from '../../../../utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -120,7 +120,8 @@ export const ModalPaymentSummary = ({
           />
         </div>
         <DescriptionWithBreaks />
-        <a
+
+        {/* <a
           className="flex items-center justify-center w-full px-4 py-2 text-white text-xs lg:text-sm leading-none lg:leading-relaxed bg-newGray-3 lg:bg-white/25 lg:backdrop-blur-md rounded-lg"
           href={computeAssetCdnUrl(
             course.lastCommit,
@@ -131,7 +132,7 @@ export const ModalPaymentSummary = ({
           rel="noreferrer"
         >
           {t('courses.payment.downloadCurriculum')}
-        </a>
+        </a> */}
       </div>
     </div>
   );

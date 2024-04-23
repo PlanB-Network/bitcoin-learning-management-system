@@ -69,15 +69,18 @@ export const ModalBookSummary = ({
           <Separator />
           <PaymentRow label={t('events.payment.time')} value={timeString} />
           <Separator />
-          {accessType === 'physical' && (
-            <>
-              <PaymentRow
-                label={t('events.payment.address')}
-                value={`${event.addressLine2}\n${event.addressLine3 ? event.addressLine3 + '\n' : ''}${event.addressLine1?.toUpperCase()}`}
-              />
-              <Separator />
-            </>
-          )}
+          {accessType === 'physical' &&
+            (event.addressLine1 ||
+              event.addressLine2 ||
+              event.addressLine3) && (
+              <>
+                <PaymentRow
+                  label={t('events.payment.address')}
+                  value={`${event.addressLine2 ? event.addressLine2 + '\n' : ''}${event.addressLine3 ? event.addressLine3 + '\n' : ''}${event.addressLine1 ? event.addressLine1.toUpperCase() : ''}`}
+                />
+                <Separator />
+              </>
+            )}
           <PaymentRow
             label={t('events.payment.language')}
             value={event.languages
