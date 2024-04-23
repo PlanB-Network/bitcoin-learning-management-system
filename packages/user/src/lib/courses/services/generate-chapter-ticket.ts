@@ -53,6 +53,9 @@ export const generateChapterTicket = async ({
 
   function printStaticElements() {
     addImage('./src/assets/pdf-header.png', 0, 0, 615);
+    addImage('/src/assets/pdf-header.png', 0, 0, 615);
+    addImage('pdf-header.png', 0, 0, 615);
+
     addImage('./src/assets/card.png', 380, 175, 200);
 
     doc.fontSize(24).fillColor('darkorange').font('Helvetica-Bold');
