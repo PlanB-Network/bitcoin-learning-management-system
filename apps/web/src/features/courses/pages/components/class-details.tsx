@@ -54,11 +54,11 @@ export const ClassDetails = ({
 
   const timezone = chapter.timezone ? chapter.timezone : undefined;
   const formattedStartDate = chapter.startDate
-    ? formatDate(chapter.startDate)
+    ? formatDate(new Date(chapter.startDate))
     : '';
   const formattedTime =
     chapter.startDate && chapter.endDate
-      ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
+      ? `${formatTime(new Date(chapter.startDate), timezone)} ${t('words.to')} ${formatTime(new Date(chapter.endDate), timezone)}`
       : '';
   const formattedCapacity = chapter.availableSeats
     ? `limited to ${chapter.availableSeats} people`
