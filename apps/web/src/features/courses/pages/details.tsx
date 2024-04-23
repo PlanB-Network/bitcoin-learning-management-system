@@ -263,7 +263,7 @@ export const CourseDetails: React.FC = () => {
           <img
             src={computeAssetCdnUrl(
               course.lastCommit,
-              `courses/${course.id}/assets/thumbnail.png`,
+              `courses/${course.id}/assets/thumbnail.webp`,
             )}
             alt=""
           />
@@ -612,7 +612,7 @@ export const CourseDetails: React.FC = () => {
           course
             ? computeAssetCdnUrl(
                 course.lastCommit,
-                `courses/${course.id}/assets/thumbnail.png`,
+                `courses/${course.id}/assets/thumbnail.webp`,
               )
             : ''
         }

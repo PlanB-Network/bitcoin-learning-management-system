@@ -28,7 +28,7 @@ export const Book = () => {
     username: 'HARDCODED',
     title: 'Bitcoiner',
     image:
-      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.jpeg?raw=true',
+      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.webp?raw=true',
   };*/
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({

@@ -52,7 +52,7 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
           <img
             src={computeAssetCdnUrl(
               course.lastCommit,
-              `courses/${course.id}/assets/thumbnail.png`,
+              `courses/${course.id}/assets/thumbnail.webp`,
             )}
             alt="Course Thumbnail"
             className="ml-2 h-20 max-w-[100px] rounded-lg md:ms-0 md:h-auto md:w-full md:max-w-none md:rounded-none"

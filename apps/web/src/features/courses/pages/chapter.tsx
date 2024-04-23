@@ -598,7 +598,7 @@ export const CourseChapter = () => {
           chapter
             ? computeAssetCdnUrl(
                 chapter.course.lastCommit,
-                `courses/${chapter.course.id}/assets/thumbnail.png`,
+                `courses/${chapter.course.id}/assets/thumbnail.webp`,
               )
             : ''
         }

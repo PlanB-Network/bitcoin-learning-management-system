@@ -20,7 +20,7 @@ export const createGetPodcast =
         process.env['CDN_URL'] || 'http://localhost:8080',
         podcast.lastCommit,
         podcast.path,
-        'logo.jpeg',
+        'logo.webp',
       ),
     };
   };

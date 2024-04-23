@@ -20,7 +20,7 @@ export const createGetBuilder =
         process.env['CDN_URL'] || 'http://localhost:8080',
         builder.lastCommit,
         builder.path,
-        'logo.jpeg',
+        'logo.webp',
       ),
     };
   };

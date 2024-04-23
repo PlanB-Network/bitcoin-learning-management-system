@@ -31,7 +31,7 @@ export const formatProfessor = (professor: JoinedProfessor) => {
       process.env['CDN_URL'] || 'http://localhost:8080',
       professor.lastCommit,
       professor.path,
-      'profile.jpg',
+      'profile.webp',
     ),
   };
 };
