@@ -55,6 +55,8 @@ export const generateChapterTicket = async ({
     addImage('./src/assets/pdf-header.png', 0, 0, 615);
     addImage('/src/assets/pdf-header.png', 0, 0, 615);
     addImage('pdf-header.png', 0, 0, 615);
+    addImage('./pdf-header.png', 0, 0, 615);
+    addImage('./assets/pdf-header.png', 0, 0, 615);
 
     addImage('./src/assets/card.png', 380, 175, 200);
 
