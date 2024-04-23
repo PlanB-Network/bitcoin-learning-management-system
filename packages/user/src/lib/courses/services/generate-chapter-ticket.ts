@@ -53,21 +53,9 @@ export const generateChapterTicket = async ({
   });
 
   function printStaticElements() {
-    addImage('./src/assets/pdf-header.png', 0, 0, 615);
-    addImage('/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('pdf-header.png', 0, 0, 615);
-    addImage('./pdf-header.png', 0, 0, 615);
-    addImage('./assets/pdf-header.png', 0, 0, 615);
-    addImage('/app/apps/api/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('../apps/api/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('../../apps/api/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('../../../apps/api/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('../../../../apps/api/src/assets/pdf-header.png', 0, 0, 615);
-    addImage('../../../../../apps/api/src/assets/pdf-header.png', 0, 0, 615);
+    addImage('src/assets/pdf-header.png', 0, 0, 615);
 
-    addImage('./src/assets/card.png', 380, 175, 200);
-
-    doc.fontSize(24).fillColor('darkorange').font('Helvetica-Bold');
+    doc.fontSize(24).fillColor('#FF5C00').font('Helvetica-Bold');
     x = 130;
     y = doc.page.height - 110;
     doc.text('We wish you a great time !', x, y, { continued: false });
@@ -181,6 +169,10 @@ export const generateChapterTicket = async ({
   }
 
   function addImage(imagePath: string, x: number, y: number, w: number) {
+    // TODO improve this
+    if (process.env.NODE_ENV !== 'development') {
+      imagePath = '/app/apps/api/' + imagePath;
+    }
     const resolvedPath = path.resolve(imagePath);
     try {
       if (fs.existsSync(resolvedPath)) {
