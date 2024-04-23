@@ -19,6 +19,8 @@ export interface ButtonProps
     | 'secondary'
     | 'newSecondary'
     | 'tertiary'
+    | 'newTertiary'
+    | 'ghost'
     | 'download'
     | 'text';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -43,9 +45,13 @@ const classesByVariant = {
   newPrimary: 'bg-newOrange-1 text-white',
   newPrimaryGhost:
     'bg-transparent text-darkOrange-5 border border-darkOrange-4 !font-normal ',
-  tertiary: 'bg-orange-600 text-white',
   secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
-  newSecondary: 'bg-white text-newBlack-2',
+  newSecondary: 'bg-white text-newBlack-1',
+  tertiary: 'bg-orange-600 text-white',
+  newTertiary:
+    'bg-newBlack-3 text-newGray-4 border border-newGray-1 hover:border-newGray-4 transition-colors',
+  ghost:
+    'bg-newBlack-1 text-white border border-newGray-2 hover:border-white transition-colors',
   download: 'bg-green-600 text-white',
   text: '',
 };
