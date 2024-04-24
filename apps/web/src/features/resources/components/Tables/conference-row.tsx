@@ -24,7 +24,7 @@ export const ConferenceRow = ({
     <tr>
       <td className="desktop-h5 py-5">{name}</td>
       <td className="desktop-h8 py-5 text-newGray-1">{location}</td>
-      <td className="py-5 flex gap-4">
+      <td className="py-5 flex gap-4 flex-wrap">
         {tags.map((tag) => (
           <span
             key={tag}
@@ -35,8 +35,8 @@ export const ConferenceRow = ({
         ))}
       </td>
       <td className="py-5">
-        <div className="flex gap-10 justify-center">
-          <div className="flex gap-2.5 ml-auto">
+        <div className="flex justify-center">
+          <div className="flex gap-2.5 mx-auto flex-wrap">
             {languages.map((language) => (
               <span
                 key={language}
@@ -47,13 +47,13 @@ export const ConferenceRow = ({
             ))}
           </div>
           {link ? (
-            <Link to={link} className="ml-auto">
+            <Link to={link} className="w-fit">
               <Button variant="newPrimary">
                 {t('events.card.watchReplay')}
               </Button>
             </Link>
           ) : (
-            <Button variant="newPrimary" disabled className="ml-auto">
+            <Button variant="newPrimary" disabled className="w-fit">
               {t('events.card.watchReplay')}
             </Button>
           )}
