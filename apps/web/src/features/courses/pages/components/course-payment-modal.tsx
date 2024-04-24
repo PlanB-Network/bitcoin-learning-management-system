@@ -86,7 +86,11 @@ export const CoursePaymentModal = ({
   ]);
 
   useEffect(() => {
-    if (paymentData && isOpen) {
+    setSatsPriceReduced(satsPrice);
+  }, [satsPrice]);
+
+  useEffect(() => {
+    if (paymentData && isOpen && satsPrice >= 0) {
       const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
 
       ws.addEventListener('open', () => {
@@ -106,7 +110,7 @@ export const CoursePaymentModal = ({
 
       ws.addEventListener('message', handleMessage);
     }
-  }, [paymentData, isOpen]);
+  }, [paymentData, isOpen, satsPrice]);
 
   function updateCoupon(coupon: CouponCode | null) {
     setValidatedCoupon(coupon);
