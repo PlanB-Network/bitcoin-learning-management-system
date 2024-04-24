@@ -7,6 +7,7 @@ import { Book } from './pages/book-details.tsx';
 import { Books } from './pages/books.tsx';
 import { Builder } from './pages/builder-details.tsx';
 import { Builders } from './pages/builders.tsx';
+import { Conference } from './pages/conference-details.tsx';
 import { Conferences } from './pages/conferences.tsx';
 import { Resources } from './pages/explorer.tsx';
 import { Podcast } from './pages/podcast-details.tsx';
@@ -81,6 +82,12 @@ export const conferencesRoute = createRoute({
   component: Conferences,
 });
 
+export const conferenceDetailsRoute = createRoute({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/conferences/$conferenceId',
+  component: Conference,
+});
+
 export const resourcesRoutes = resourcesRootRoute.addChildren([
   resourcesIndexRoute,
   booksRoute,
@@ -90,8 +97,9 @@ export const resourcesRoutes = resourcesRootRoute.addChildren([
   podcastsRoute,
   betRoute,
   podcastDetailsRoute,
+  conferencesRoute,
+  conferenceDetailsRoute,
   // Later
   articlesRoute,
   newslettersRoute,
-  conferencesRoute,
 ]);
