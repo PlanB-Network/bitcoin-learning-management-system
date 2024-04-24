@@ -26,6 +26,6 @@ export const getUserQuery = (options: GetUserOptions) => {
 
   return sql<UserAccount[]>`
     SELECT * FROM users.accounts
-    WHERE ${sql(key)} = ${value};
+    WHERE ${sql(key)} ILIKE ${value};
   `;
 };
