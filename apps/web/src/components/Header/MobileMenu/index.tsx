@@ -59,9 +59,9 @@ export const MobileMenu = ({
 
         <Link to="/" className="mx-auto">
           {variant === 'light' ? (
-            <PlanBLogoWhite className="h-[34px] w-fit" />
+            <PlanBLogoWhite className="h-[34px] w-auto" />
           ) : (
-            <PlanBLogoOrange className="h-[34px] w-fit" />
+            <PlanBLogoOrange className="h-[34px] w-auto" />
           )}
         </Link>
 
