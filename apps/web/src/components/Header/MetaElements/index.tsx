@@ -53,8 +53,8 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
         <button
           onClick={async () => {
             await logout();
-            navigate({ to: '/' });
             window.location.reload();
+            navigate({ to: '/' });
           }}
         >
           <div className="text-white">
