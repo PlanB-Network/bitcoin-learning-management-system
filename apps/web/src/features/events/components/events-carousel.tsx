@@ -32,8 +32,9 @@ export const EventsCarousel = ({
   conversionRate,
 }: EventsCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: true,
+    align: 'center',
+    containScroll: false,
+    breakpoints: { '(min-width: 1024px)': { containScroll: 'trimSnaps' } },
   });
 
   const scrollPrev = useCallback(() => {
