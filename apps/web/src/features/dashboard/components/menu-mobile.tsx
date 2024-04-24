@@ -5,15 +5,13 @@ import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
 
-import { useAppDispatch } from '../../../hooks/index.ts';
-import { userSlice } from '../../../store/index.ts';
+import { logout } from '#src/utils/session-utils.js';
 
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuMobile = () => {
   const [pathname, setPathname] = useState('');
 
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -24,7 +22,6 @@ export const MenuMobile = () => {
 
   useEffect(() => {
     if (location) {
-      console.log(location);
       const { pathname } = location;
       if (pathname) {
         setPathname(pathname);
@@ -54,8 +51,9 @@ export const MenuMobile = () => {
         text={t('dashboard.logout')}
         icon={<IoLogOutOutline size={28} />}
         onClick={() => {
-          dispatch(userSlice.actions.logout());
+          logout();
           navigate({ to: '/' });
+          window.location.reload();
         }}
       />
     </div>
