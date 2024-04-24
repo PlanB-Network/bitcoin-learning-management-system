@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import { Button } from '@sovereign-university/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
+import { NewTag } from '#src/atoms/Tag/index.js';
 
 interface ConferenceRowProps {
   name: string;
@@ -22,38 +23,35 @@ export const ConferenceRow = ({
 }: ConferenceRowProps) => {
   return (
     <tr>
-      <td className="desktop-h5 py-5">{name}</td>
-      <td className="desktop-h8 py-5 text-newGray-1">{location}</td>
-      <td className="py-5 flex gap-4 flex-wrap">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-newGray-4 font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md"
-          >
-            {tag}
-          </span>
-        ))}
+      <td className="desktop-h5 py-5 pr-4">{name}</td>
+      <td className="desktop-h8 py-5 pr-4 text-newGray-1">{location}</td>
+      <td className="py-5 pr-4">
+        <div className="flex gap-4 flex-wrap items-center">
+          {tags.map((tag) => (
+            <NewTag key={tag}>{tag}</NewTag>
+          ))}
+        </div>
       </td>
       <td className="py-5">
-        <div className="flex justify-center">
-          <div className="flex gap-2.5 mx-auto flex-wrap">
-            {languages.map((language) => (
+        <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-2.5 mx-auto flex-wrap">
+            {languages.slice(0, 2).map((language) => (
               <span
                 key={language}
-                className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md"
+                className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md h-fit"
               >
                 <Flag code={language} size="l" />
               </span>
             ))}
           </div>
           {link ? (
-            <Link to={link} className="w-fit">
+            <Link to={link} className="min-w-fit">
               <Button variant="newPrimary">
                 {t('events.card.watchReplay')}
               </Button>
             </Link>
           ) : (
-            <Button variant="newPrimary" disabled className="w-fit">
+            <Button variant="newPrimary" disabled className="min-w-fit">
               {t('events.card.watchReplay')}
             </Button>
           )}

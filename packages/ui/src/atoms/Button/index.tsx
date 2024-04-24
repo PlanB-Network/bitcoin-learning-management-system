@@ -82,15 +82,35 @@ export const Button = ({
 
   let disabledClass = '';
   if (disabled) {
-    if (variant === 'newPrimary') {
-      disabledClass =
-        'active:none bg-newGray-5 !text-newOrange-3 font-normal cursor-default';
-    } else if (variant === 'newSecondary') {
-      disabledClass =
-        'active:none bg-newGray-5 !text-newGray-3 font-normal cursor-default';
-    } else {
-      disabledClass =
-        'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default ';
+    switch (variant) {
+      case 'newPrimary': {
+        disabledClass =
+          'active:none bg-darkOrange-8 !text-newGray-1 font-normal cursor-default';
+
+        break;
+      }
+      case 'newSecondary': {
+        disabledClass =
+          'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default';
+
+        break;
+      }
+      case 'newTertiary': {
+        disabledClass =
+          'active:none bg-newBlack-2 !text-newBlack-4 border-newBlack-4 font-normal cursor-default';
+
+        break;
+      }
+      case 'ghost': {
+        disabledClass =
+          'active:none bg-newBlack-1 !text-newBlack-5 border-newBlack-5 font-normal cursor-default ';
+
+        break;
+      }
+      default: {
+        disabledClass =
+          'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default ';
+      }
     }
   }
 

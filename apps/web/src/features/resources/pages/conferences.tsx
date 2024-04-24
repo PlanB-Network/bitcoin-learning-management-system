@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { HorizontalCard } from '#src/atoms/HorizontalCard/index.js';
 import { VerticalCard } from '#src/atoms/VerticalCard/index.js';
 
 import mockImg from '../../../assets/events/saif.webp';
@@ -67,6 +68,40 @@ export const Conferences = () => {
         setActiveYear={setActiveYear}
       />
       <ConferencesTable />
+      <div className="lg:hidden flex justify-center items-stretch flex-wrap gap-4 mx-4 mt-8">
+        <HorizontalCard
+          title="Lightning Summit Bitcoin 2024"
+          subtitle="Viareggio, Italy"
+          buttonText={t('events.card.watchReplay')}
+          buttonVariant="newPrimary"
+          link="/"
+          languages={['EN', 'FR']}
+        />
+        <HorizontalCard
+          title="Test conf"
+          subtitle="Test Place"
+          buttonText={t('events.card.watchReplay')}
+          buttonVariant="newPrimary"
+          link="/"
+          languages={['EN', 'FR']}
+        />
+        <HorizontalCard
+          title="Test conf"
+          subtitle="Test Place"
+          buttonText={t('events.card.watchReplay')}
+          buttonVariant="newPrimary"
+          link="/"
+          languages={['EN', 'FR']}
+        />
+        <HorizontalCard
+          title="Test conf"
+          subtitle="Test Place"
+          buttonText={t('events.card.watchReplay')}
+          buttonVariant="newPrimary"
+          link="/"
+          languages={['EN']}
+        />
+      </div>
     </ResourceLayout>
   );
 };

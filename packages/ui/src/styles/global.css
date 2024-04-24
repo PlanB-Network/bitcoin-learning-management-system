@@ -90,6 +90,10 @@
     @apply text-xs leading-normal;
   }
 
+  .mobile-subtitle1 {
+    @apply text-base font-medium leading-normal tracking-[0.15px];
+  }
+
   .mobile-subtitle2 {
     @apply text-sm font-medium leading-tight;
   }

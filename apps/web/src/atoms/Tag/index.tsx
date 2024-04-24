@@ -7,6 +7,10 @@ interface TagProps extends BaseAtomProps {
   size?: 's' | 'm';
 }
 
+interface NewTagProps {
+  children: string;
+}
+
 const classesBySize = {
   s: 'px-2 py-1 mr-2 mb-1 text-xs',
   m: 'px-3 py-1 mr-2 mb-2 text-sm',
@@ -21,6 +25,14 @@ export const Tag = ({ children, size, className }: TagProps) => {
         className ?? '',
       )}
     >
+      {children}
+    </span>
+  );
+};
+
+export const NewTag = ({ children }: NewTagProps) => {
+  return (
+    <span className="text-newGray-4 text-xs md:text-base font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md">
       {children}
     </span>
   );

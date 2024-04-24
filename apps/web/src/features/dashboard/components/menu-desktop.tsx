@@ -38,7 +38,7 @@ export const MenuDesktop = () => {
   );
 
   return (
-    <div className="relative bg-[#1c0a00] flex w-60 min-[1750px]:w-80 flex-col rounded-2xl overflow-hidden">
+    <div className="relative bg-[#1c0a00] flex w-64 min-[1750px]:w-80 flex-col rounded-2xl overflow-hidden">
       <img
         src={pill}
         alt="Orange pill"
@@ -48,7 +48,7 @@ export const MenuDesktop = () => {
       />
       <div className="bg-gradient-to-b from-darkOrange-5 to-[#99370000] flex items-center gap-3 py-8 px-5">
         <BsPersonFill className="text-darkOrange-5 size-[60px] overflow-hidden rounded-xl bg-white shrink-0" />
-        <p className="font-medium leading-relaxed z-10 max-w-[84px]">
+        <p className="font-medium leading-relaxed z-10 max-w-[92px] min-[1750px]:max-w-[148px] break-words">
           {user?.username}
         </p>
       </div>
