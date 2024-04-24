@@ -1,3 +1,5 @@
+import { useNavigate } from '@tanstack/react-router';
+
 import { Button } from '@sovereign-university/ui';
 
 import {
@@ -12,6 +14,13 @@ import { ChangePasswordModal } from '../components/change-password-modal.tsx';
 import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardProfile = () => {
+  const navigate = useNavigate();
+  const { data: session } = trpc.user.getSession.useQuery();
+
+  if (!session) {
+    navigate({ to: '/' });
+  }
+
   const {
     open: openChangePasswordModal,
     isOpen: isChangePasswordModalOpen,

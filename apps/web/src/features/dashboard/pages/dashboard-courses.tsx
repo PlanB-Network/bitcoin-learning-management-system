@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -13,6 +14,12 @@ import { DashboardLayout } from '../layout.tsx';
 export const DashboardCourses = () => {
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  const { data: session } = trpc.user.getSession.useQuery();
+  if (!session) {
+    navigate({ to: '/' });
+  }
   const { data: courses } = trpc.user.courses.getProgress.useQuery();
 
   const completedCourses = courses?.filter(

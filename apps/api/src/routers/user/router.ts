@@ -13,7 +13,7 @@ import { userEventsRouter } from './events.js';
 import { paymentWebhooksProcedure } from './webhooks.js';
 
 export const userRouter = createTRPCRouter({
-  getMe: protectedProcedure.query(({ ctx }) => {
+  getSession: protectedProcedure.query(({ ctx }) => {
     return {
       user: ctx.user,
       isLoggedIn: true,

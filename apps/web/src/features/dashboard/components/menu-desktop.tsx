@@ -6,9 +6,9 @@ import { AiOutlineBook } from 'react-icons/ai';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
 
+import { logout } from '#src/utils/session-utils.js';
+
 import pill from '../../../assets/icons/orange_pill_color_gradient.svg';
-import { useAppDispatch } from '../../../hooks/index.ts';
-import { userSlice } from '../../../store/index.ts';
 import { trpc } from '../../../utils/index.ts';
 
 import { MenuItem } from './menu-item.tsx';
@@ -17,7 +17,6 @@ export const MenuDesktop = () => {
   const { data: user } = trpc.user.getDetails.useQuery();
   const [pathname, setPathname] = useState('');
 
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -37,8 +36,6 @@ export const MenuDesktop = () => {
   const Separator = () => (
     <div className="w-full h-px bg-darkOrange-8 my-4 rounded-[1px]" />
   );
-
-  console.log(pathname);
 
   return (
     <div className="relative bg-[#1c0a00] flex w-60 min-[1750px]:w-80 flex-col rounded-2xl overflow-hidden">
@@ -85,8 +82,9 @@ export const MenuDesktop = () => {
           text={t('dashboard.logout')}
           icon={<IoLogOutOutline size={24} />}
           onClick={() => {
-            dispatch(userSlice.actions.logout());
+            logout();
             navigate({ to: '/' });
+            window.location.reload();
           }}
         />
       </div>

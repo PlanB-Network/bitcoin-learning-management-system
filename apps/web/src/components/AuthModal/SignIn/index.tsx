@@ -14,8 +14,6 @@ import { Button } from '@sovereign-university/ui';
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
-import { userSlice } from '../../../store/slices/user.slice.ts';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
 
@@ -29,7 +27,6 @@ interface SignInModalProps {
 
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const isMobile = useSmaller('md');
 
   const signInSchema = z.object({
@@ -38,12 +35,8 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   });
 
   const credentialsLogin = trpc.auth.credentials.login.useMutation({
-    onSuccess: (data) => {
-      dispatch(
-        userSlice.actions.login({
-          uid: data.user.uid,
-        }),
-      );
+    onSuccess: () => {
+      // TODO log in the user
       onClose();
     },
   });
@@ -62,6 +55,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
       credentialsLogin.mutate(values);
+      window.location.reload();
     },
     [credentialsLogin],
   );
@@ -76,9 +70,11 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     >
       <div className="flex flex-col items-center space-y-8">
         <Button
+          variant="newSecondary"
           className="mt-2 text-sm md:text-base"
           rounded
           onClick={() => goTo(AuthModalState.LnurlAuth)}
+          disabled
         >
           {t('auth.connectWithLn')}
         </Button>

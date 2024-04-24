@@ -6,8 +6,8 @@ import { FaBars } from 'react-icons/fa';
 import SignInIcon from '../../../assets/icons/profile_log_in.png';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
-import { useAppSelector, useDisclosure } from '../../../hooks/index.ts';
-import { compose } from '../../../utils/index.ts';
+import { useDisclosure } from '../../../hooks/index.ts';
+import { compose, trpc } from '../../../utils/index.ts';
 import { MetaElements } from '../MetaElements/index.tsx';
 import type { NavigationSection } from '../props.tsx';
 
@@ -29,7 +29,8 @@ export const MobileMenu = ({
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
   const { t } = useTranslation();
-  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const { data: session } = trpc.user.getSession.useQuery();
+  const isLoggedIn = session !== undefined;
 
   useEffect(() => {
     if (isMobileMenuOpen) document.body.style.overflow = 'hidden';

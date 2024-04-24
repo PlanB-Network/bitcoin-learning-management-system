@@ -9,8 +9,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
-import { userSlice } from '../../../store/slices/user.slice.ts';
 import { trpc, trpcClient } from '../../../utils/trpc.ts';
 import type { AuthModalState } from '../props.tsx';
 
@@ -25,13 +23,13 @@ interface LnurlAuthModalProps {
 export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const isMobile = useSmaller('md');
 
   const [lnurl, setLnurl] = useState('');
 
   useEffect(() => {
     const poll = async () => {
+      // TODO fix lnurl
       const me = await trpcClient.auth.lud4.poll.query(undefined, {
         context: {
           // Skip batching for this request so it doesn't block the LNURL fetch
@@ -39,11 +37,12 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
         },
       });
 
-      dispatch(
-        userSlice.actions.login({
-          uid: me.uid,
-        }),
-      );
+      console.log(me);
+      // dispatch(
+      //   userSlice.actions.login({
+      //     uid: me.uid,
+      //   }),
+      // );
 
       onClose();
     };
@@ -68,7 +67,7 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
         queryClient.removeQueries({ queryKey: pollQueryKey });
       };
     }
-  }, [isOpen, queryClient, dispatch, onClose]);
+  }, [isOpen, queryClient, onClose]);
 
   return (
     <Modal

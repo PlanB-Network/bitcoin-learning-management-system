@@ -31,11 +31,7 @@ import rabitPen from '../../../assets/rabbit_holding_pen.svg';
 import { AuthModal } from '../../../components/AuthModal/index.tsx';
 import { AuthModalState } from '../../../components/AuthModal/props.ts';
 import { AuthorCard } from '../../../components/author-card.tsx';
-import {
-  useAppSelector,
-  useDisclosure,
-  useNavigateMisc,
-} from '../../../hooks/index.ts';
+import { useDisclosure, useNavigateMisc } from '../../../hooks/index.ts';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
 import { CourseButton } from '../components/course-button.tsx';
@@ -46,7 +42,8 @@ import { CoursePaymentModal } from './components/course-payment-modal.tsx';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails: React.FC = () => {
-  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const { data: session } = trpc.user.getSession.useQuery();
+  const isLoggedIn = session !== undefined;
 
   // TODO Refactor this auth stuff
   const [authMode, setAuthMode] = useState<AuthModalState>(

@@ -16,8 +16,6 @@ import { Button } from '@sovereign-university/ui';
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
-import { useAppDispatch } from '../../../hooks/use-app-dispatch.ts';
-import { userSlice } from '../../../store/index.ts';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
 
@@ -70,16 +68,11 @@ interface LoginModalProps {
 type AccountData = z.infer<typeof registerSchema>;
 
 export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
-  const dispatch = useAppDispatch();
   const isMobile = useSmaller('md');
 
   const register = trpc.auth.credentials.register.useMutation({
-    onSuccess: (data) => {
-      dispatch(
-        userSlice.actions.login({
-          uid: data.user.uid,
-        }),
-      );
+    onSuccess: () => {
+      // TODO log in the user
     },
   });
 
@@ -131,9 +124,10 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       ) : (
         <div className="flex flex-col items-center space-y-8">
           <Button
-            className="mt-2 text-sm md:text-base"
+            variant="newSecondary"
             rounded
             onClick={() => goTo(AuthModalState.LnurlAuth)}
+            disabled
           >
             {t('auth.connectWithLn')}
           </Button>

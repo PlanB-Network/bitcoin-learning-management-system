@@ -5,7 +5,9 @@ import session from 'express-session';
 
 import type { Dependencies } from '../../dependencies.js';
 
-const ONE_DAY = 1000 * 60 * 60 * 24;
+const ONE_HOUR = 1000 * 60 * 60;
+const ONE_DAY = ONE_HOUR * 24;
+const ONE_WEEK = ONE_DAY * 7;
 
 export const getSessionConfig = () => {
   return {
@@ -17,7 +19,7 @@ export const getSessionConfig = () => {
     cookie: {
       domain:
         process.env.NODE_ENV === 'production' ? process.env.DOMAIN : undefined,
-      maxAge: 7 * ONE_DAY,
+      maxAge: ONE_WEEK,
       httpOnly: true,
       path: '/',
       secure: process.env.NODE_ENV === 'production',
@@ -38,7 +40,7 @@ export const createCookieSessionMiddleware = (
     store: new SessionStore({
       client: redis.duplicate(),
       prefix: 'session:',
-      ttl: 7 * ONE_DAY,
+      ttl: ONE_WEEK,
     }),
   });
 };
