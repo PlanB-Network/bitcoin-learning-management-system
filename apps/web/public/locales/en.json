@@ -181,7 +181,7 @@
       "numberOfChapters": "Number of chapters",
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
-      "qr_unified": "This QR code is unified, so it accepts lightning and on-chain payments.",
+      "qr_unified": "Lightning invoice :",
       "teacher": "Teacher",
       "teachers": "Teachers",
       "time": "Time"
