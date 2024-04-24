@@ -10,6 +10,28 @@ import leftBackgroundImg from '../../../../assets/courses/left-background.webp';
 import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
 // import { computeAssetCdnUrl } from '../../../../utils/index.ts';
 
+const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
+  let prefix = '';
+  if (amount > 0 && amount < 0.01) {
+    amount = 0.01;
+    prefix = `< `;
+  }
+
+  if (unit === 'sats') {
+    return `${prefix}${amount} sats`;
+  }
+
+  return `${prefix}${Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: unit,
+    currencyDisplay: 'narrowSymbol',
+    minimumFractionDigits: floating,
+    maximumFractionDigits: floating,
+  }).format(amount)}`;
+};
+
+const DEFAULT_CURRENCY = 'USD';
+
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
 interface ModalPaymentSummaryProps {
@@ -17,6 +39,8 @@ interface ModalPaymentSummaryProps {
   professorNames: string;
   course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
   mobileDisplay: boolean;
+  paidPriceDollars?: number | null;
+  satsPrice?: number;
 }
 
 export const ModalPaymentSummary = ({
@@ -24,6 +48,8 @@ export const ModalPaymentSummary = ({
   professorNames,
   course,
   mobileDisplay,
+  paidPriceDollars,
+  satsPrice,
 }: ModalPaymentSummaryProps) => {
   const { t } = useTranslation();
 
@@ -120,6 +146,18 @@ export const ModalPaymentSummary = ({
           />
         </div>
         <DescriptionWithBreaks />
+
+        {paidPriceDollars && satsPrice && (
+          <div className="flex justify-center items-center w-full gap-1">
+            <span className="font-semibold leading-normal text-darkOrange-5">
+              {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
+            </span>
+            <span className="leading-normal text-darkOrange-5">·</span>
+            <span className="leading-normal text-darkOrange-5">
+              {satsPrice} sats
+            </span>
+          </div>
+        )}
 
         {/* <a
           className="flex items-center justify-center w-full px-4 py-2 text-white text-xs lg:text-sm leading-none lg:leading-relaxed bg-newGray-3 lg:bg-white/25 lg:backdrop-blur-md rounded-lg"
