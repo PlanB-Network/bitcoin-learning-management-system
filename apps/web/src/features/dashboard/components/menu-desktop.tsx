@@ -81,8 +81,8 @@ export const MenuDesktop = () => {
         <MenuItem
           text={t('dashboard.logout')}
           icon={<IoLogOutOutline size={24} />}
-          onClick={() => {
-            logout();
+          onClick={async () => {
+            await logout();
             navigate({ to: '/' });
             window.location.reload();
           }}

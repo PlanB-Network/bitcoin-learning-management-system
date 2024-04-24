@@ -37,6 +37,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const credentialsLogin = trpc.auth.credentials.login.useMutation({
     onSuccess: () => {
       // TODO log in the user
+      window.location.reload();
       onClose();
     },
   });
@@ -55,7 +56,6 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       const errors = await actions.validateForm();
       if (!isEmpty(errors)) return;
       credentialsLogin.mutate(values);
-      window.location.reload();
     },
     [credentialsLogin],
   );

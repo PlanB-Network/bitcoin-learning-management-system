@@ -1,7 +1,7 @@
 import { trpcClient } from './trpc.ts';
 
 export function logout() {
-  trpcClient.auth.logout
+  return trpcClient.auth.logout
     .mutate()
     .then((response) => {
       console.log('Logged out successfully:', response.message);

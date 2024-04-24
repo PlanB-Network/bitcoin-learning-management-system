@@ -50,8 +50,8 @@ export const MenuMobile = () => {
       <MenuItem
         text={t('dashboard.logout')}
         icon={<IoLogOutOutline size={28} />}
-        onClick={() => {
-          logout();
+        onClick={async () => {
+          await logout();
           navigate({ to: '/' });
           window.location.reload();
         }}

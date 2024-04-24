@@ -51,8 +51,8 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
 
       {isLoggedIn && isMobile && (
         <button
-          onClick={() => {
-            logout();
+          onClick={async () => {
+            await logout();
             navigate({ to: '/' });
             window.location.reload();
           }}
