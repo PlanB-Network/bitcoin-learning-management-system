@@ -116,7 +116,7 @@ export const CoursePaymentModal = ({
     setValidatedCoupon(coupon);
     if (coupon && coupon.reductionPercentage) {
       setSatsPriceReduced(
-        (satsPrice * (100 - coupon.reductionPercentage)) / 100,
+        Math.ceil((satsPrice * (100 - coupon.reductionPercentage)) / 100),
       );
       if (course.paidPriceDollars) {
         setCoursePriceDollarsReduced(
@@ -159,7 +159,7 @@ export const CoursePaymentModal = ({
               />
             ) : (
               <PaymentQr
-                paymentRequest={paymentData.pr}
+                paymentData={paymentData}
                 onBack={() => setPaymentData(undefined)}
               />
             )

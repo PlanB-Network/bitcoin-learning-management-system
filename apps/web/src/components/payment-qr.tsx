@@ -15,14 +15,15 @@ export interface PaymentData {
 }
 
 interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
-  paymentRequest: string;
+  paymentData: PaymentData;
   onBack?: () => void;
 }
 
-export const PaymentQr = ({ paymentRequest, onBack }: PaymentQrProps) => {
+export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
   const { t } = useTranslation();
   const borderClassName =
     'border border-gray-400/25 rounded-xl overflow-hidden';
+  const invoice = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork&lightning=${paymentData.pr}`;
 
   return (
     <>
@@ -31,18 +32,18 @@ export const PaymentQr = ({ paymentRequest, onBack }: PaymentQrProps) => {
         <span className="text-center text-xs lg:text-base">
           {t('courses.payment.qr_unified')}
         </span>
-        <QRCodeSVG value={`lightning:${paymentRequest}`} size={220} />
+        <QRCodeSVG value={invoice} size={220} />
         <div
           className={cn(
             `flex flex-row items-center justify-center px-4 py-3 relative w-full`,
             borderClassName,
           )}
         >
-          <span className="text-base flex-1 truncate">{paymentRequest}</span>
+          <span className="text-base flex-1 truncate">{invoice}</span>
           <AiOutlineCopy
             className="text-blue-1000 h-7 w-auto cursor-pointer"
             onClick={() => {
-              navigator.clipboard.writeText(paymentRequest);
+              navigator.clipboard.writeText(invoice);
             }}
           />
         </div>

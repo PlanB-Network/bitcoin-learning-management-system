@@ -110,7 +110,7 @@ export const EventPaymentModal = ({
               />
             ) : (
               <PaymentQr
-                paymentRequest={paymentData.pr}
+                paymentData={paymentData}
                 onBack={() => setPaymentData(undefined)}
               />
             )
