@@ -41,46 +41,58 @@ export const MobileMenu = ({
 
   return (
     <>
-      <div className="flex max-w-fit mx-auto flex-row justify-center">
-        <Link to="/">
+      <div className="flex w-full justify-center items-center sm:px-3">
+        <div className="z-40 min-w-10 mr-auto">
+          <FaBars
+            className={compose(
+              'cursor-pointer text-white',
+              isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+            )}
+            style={{
+              transition: 'transform 0.4s, color 0.2s',
+            }}
+            size={28}
+            color="#fff"
+            onClick={toggleMobileMenu}
+          />
+        </div>
+
+        <Link to="/" className="mx-auto">
           {variant === 'light' ? (
             <PlanBLogoWhite className="h-[34px] w-fit" />
           ) : (
             <PlanBLogoOrange className="h-[34px] w-fit" />
           )}
         </Link>
-      </div>
-      {isLoggedIn ? (
-        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
-          <Link to={'/dashboard'}>
-            <button className="cursor-pointer text-white">
+
+        {isLoggedIn ? (
+          <div className="text-sm font-semibold ml-auto min-w-10">
+            <Link to={'/dashboard'}>
+              <button className="cursor-pointer text-white">
+                <img
+                  src={SignInIcon}
+                  alt={t('auth.signIn')}
+                  className="size-10"
+                />
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="text-sm font-semibold ml-auto min-w-10">
+            <button
+              className="cursor-pointer text-white"
+              onClick={onClickLogin}
+            >
               <img
                 src={SignInIcon}
                 alt={t('auth.signIn')}
                 className="size-10"
               />
             </button>
-          </Link>
-        </div>
-      ) : (
-        <div className="absolute right-[6vw] top-2.5 flex flex-row justify-end place-self-center text-sm font-semibold">
-          <button className="cursor-pointer text-white" onClick={onClickLogin}>
-            <img src={SignInIcon} alt={t('auth.signIn')} className="size-10" />
-          </button>
-        </div>
-      )}
-      <FaBars
-        className={compose(
-          'absolute z-40 cursor-pointer left-[6vw] text-white mt-1',
-          isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+          </div>
         )}
-        style={{
-          transition: 'transform 0.4s, color 0.2s',
-        }}
-        size={28}
-        color="#fff"
-        onClick={toggleMobileMenu}
-      />
+      </div>
+
       <nav
         className={compose(
           'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-blue-1000 duration-300',

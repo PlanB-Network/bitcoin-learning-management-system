@@ -2,7 +2,8 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
+// import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
 
@@ -28,7 +29,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const isScreenLg = useGreater('md');
 
   return (
-    <div className="flex flex-row place-items-center space-x-6 md:space-x-2 lg:space-x-6">
+    <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
       {isLoggedIn && !isMobile && (
@@ -42,14 +43,14 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
       {isLoggedIn ? (
         <div></div>
       ) : (
-        <div className="flex flex-row space-x-2 lg:space-x-4">
+        <div className="flex flex-row gap-2 lg:gap-4">
           <button className="cursor-pointer text-white" onClick={onClickLogin}>
             <img src={SignInIcon} alt={t('auth.signIn')} className="size-12" />
           </button>
         </div>
       )}
 
-      {isLoggedIn && isMobile && (
+      {/* {isLoggedIn && !isMobile && (
         <button
           onClick={async () => {
             await logout();
@@ -61,7 +62,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
             <IoLogOutOutline size={28} />
           </div>
         </button>
-      )}
+      )} */}
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const FlyingMenu = ({
 }: FlyingMenuProps) => {
   return (
     <nav className="flex w-full flex-row items-center justify-between">
-      <Link to="/">
+      <Link to="/" className="mr-auto">
         {variant === 'light' ? (
           <PlanBLogoWhite className="h-auto lg:w-32 xl:w-40" />
         ) : (
@@ -33,7 +33,7 @@ export const FlyingMenu = ({
       </Link>
       <ul
         className={cn(
-          'absolute left-1/2 top-1/2 ml-auto flex -translate-x-1/2 -translate-y-1/2 flex-row items-center space-x-5 rounded-2xl px-8 py-2 lg:space-x-10',
+          'mx-auto flex flex-row items-center space-x-5 rounded-2xl px-8 py-2 lg:space-x-10',
           variant === 'light'
             ? 'bg-white/15 text-white'
             : 'bg-white text-black',
