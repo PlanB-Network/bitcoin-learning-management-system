@@ -178,6 +178,8 @@ export const CoursePaymentModal = ({
                 courseName={courseName}
                 professorNames={professorNames}
                 mobileDisplay={true}
+                paidPriceDollars={coursePriceDollarsReduced}
+                satsPrice={satsPriceReduced}
               />
             </PaymentDescription>
           )}
