@@ -204,7 +204,7 @@ export const CoursesExplorer = () => {
       description={t('courses.explorer.pageDescription')}
       paddingXClasses="px-0"
     >
-      <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
+      <div className="bg-black flex w-full flex-col items-center justify-center">
         <div className="my-6 w-full max-w-6xl px-1 sm:px-4 xl:my-12">
           <CourseTree courses={treeCourses} />
         </div>

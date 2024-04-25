@@ -24,7 +24,7 @@ export const ProfessorExplorer = () => {
       title={t('professors.pageTitle')}
       description={t('professors.pageSubtitle')}
     >
-      <div className="bg-blue-1000 flex w-full flex-col items-center justify-center">
+      <div className="bg-black flex w-full flex-col items-center justify-center">
         <div className="flex max-w-[22rem] flex-wrap items-stretch justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
           {sortedProfessors?.map((professor) => {
             return (

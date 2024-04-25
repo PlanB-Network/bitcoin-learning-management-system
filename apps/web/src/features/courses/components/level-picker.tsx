@@ -32,7 +32,7 @@ export const LevelPicker: React.FC<LevelPickerProps> = ({
                 border-orange-500 text-base font-semibold uppercase lg:h-10 lg:w-16 lg:text-base  ${
                   activelevels.includes(level.name)
                     ? 'bg-orange-500'
-                    : 'bg-blue-1000'
+                    : 'bg-black'
                 }`}
                 >
                   {level.prefix}

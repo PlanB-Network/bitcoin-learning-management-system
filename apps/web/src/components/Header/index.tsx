@@ -325,7 +325,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     <header
       className={cn(
         'sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12',
-        variant === 'light' ? 'bg-darkOrange-5' : 'bg-blue-1000',
+        variant === 'light' ? 'bg-darkOrange-5' : 'bg-[#010205]',
       )}
     >
       {isScreenLg ? (

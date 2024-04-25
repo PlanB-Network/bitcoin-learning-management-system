@@ -38,7 +38,7 @@ export const CourseCard = ({ course, selected }: CourseCardProps) => {
         'overflow-hidden border-2 border-orange-500 relative md:border-4 !p-0',
         selected
           ? ''
-          : 'after:top-0 after:left-0 after:w-full after:h-full after:absolute after:bg-blue-1000 after:bg-opacity-50 after:content-[""]',
+          : 'after:top-0 after:left-0 after:w-full after:h-full after:absolute after:bg-black after:bg-opacity-50 after:content-[""]',
       )}
     >
       <button

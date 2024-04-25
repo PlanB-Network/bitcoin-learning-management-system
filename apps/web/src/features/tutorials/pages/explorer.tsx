@@ -25,7 +25,7 @@ export const TutorialExplorer = () => {
         title={`${SITE_NAME} - ${t('tutorials.pageTitle')}`}
         description={t('tutorials.pageDescription')}
       />
-      <div className="bg-blue-1000 flex flex-col justify-center">
+      <div className="bg-black flex flex-col justify-center">
         <PageHeader
           title={t('tutorials.pageTitle')}
           subtitle={t('tutorials.pageSubtitle')}

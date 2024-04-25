@@ -86,7 +86,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       <div
         className={cn(
           'flex w-full flex-col',
-          color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-blue-1000'),
+          color ?? (variant === 'light' ? 'bg-gray-100' : 'bg-black'),
         )}
       >
         <div className="relative z-10 flex w-full flex-col bg-orange-500 py-16 md:py-28 md:pl-0">
