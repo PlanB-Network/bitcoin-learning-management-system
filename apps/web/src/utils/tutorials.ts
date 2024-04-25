@@ -55,6 +55,13 @@ export const TUTORIALS_CATEGORIES = [
     route: Routes.TutorialsPrivacy,
     images: 4,
   },
+  {
+    name: 'others',
+    image: privacySvg,
+    icon: LiaUserSecretSolid,
+    route: Routes.TutorialsOther,
+    images: 4,
+  },
 ];
 
 export const extractSubCategories = (tutorials: JoinedTutorial[]) => {

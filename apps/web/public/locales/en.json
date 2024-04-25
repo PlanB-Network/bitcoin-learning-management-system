@@ -507,6 +507,10 @@
       "shortDescription": "Solutions to operate a bitcoin node and join the network",
       "title": "Node"
     },
+    "others": {
+      "title": "Others",
+      "shortDescription": "Others"
+    },
     "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
     "pageSubtitle": "Let's demystify Bitcoin by showing the vastness and richness of its ecosystem",
     "pageTitle": "Discover our tutorials",

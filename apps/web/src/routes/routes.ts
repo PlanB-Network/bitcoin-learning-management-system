@@ -44,6 +44,7 @@ export enum Routes {
   TutorialsMining = '/tutorials/mining',
   TutorialsPrivacy = '/tutorials/privacy',
   TutorialsNode = '/tutorials/node',
+  TutorialsOther = '/tutorials/others',
 
   // User
   Dashboard = '/dashboard',

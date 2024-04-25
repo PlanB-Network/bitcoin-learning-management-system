@@ -31,6 +31,10 @@ export const TUTORIALS_CATEGORIES = [
     name: 'privacy',
     image: privacySvg,
   },
+  {
+    name: 'others',
+    image: privacySvg,
+  },
 ] as const;
 
 export const extractSubCategories = (
