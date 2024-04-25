@@ -72,8 +72,10 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: () => {
-      window.location.reload();
-      // TODO log in the user
+      setTimeout(() => {
+        window.location.reload();
+        // TODO log in the user
+      }, 2000);
     },
   });
 
