@@ -50,6 +50,7 @@ export const ResourceLayout = ({
           <PageHeader
             title={title}
             description={tagLine || ''}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             link={link ? link : ''}
             hasGithubDescription={true}
           />
