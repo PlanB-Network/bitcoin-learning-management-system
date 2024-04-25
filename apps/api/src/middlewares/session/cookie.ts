@@ -1,6 +1,6 @@
 import process from 'node:process';
 
-import SessionStore from 'connect-redis';
+import RedisStore from 'connect-redis';
 import session from 'express-session';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -35,12 +35,14 @@ export const createCookieSessionMiddleware = (
 
   const { redis } = dependencies;
 
+  const redisStore = new RedisStore({
+    client: redis.duplicate(),
+    prefix: 'session:',
+    ttl: ONE_WEEK,
+  });
+
   return session({
     ...sessionConfig,
-    store: new SessionStore({
-      client: redis.duplicate(),
-      prefix: 'session:',
-      ttl: ONE_WEEK,
-    }),
+    store: redisStore,
   });
 };

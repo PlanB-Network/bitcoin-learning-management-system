@@ -13,6 +13,7 @@ import { userEventsRouter } from './events.js';
 import { paymentWebhooksProcedure } from './webhooks.js';
 
 export const userRouter = createTRPCRouter({
+  // TODO should be public procedure, not to have 401 when user is not logged in
   getSession: protectedProcedure.query(({ ctx }) => {
     return {
       user: ctx.user,
