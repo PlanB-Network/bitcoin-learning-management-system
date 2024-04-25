@@ -26,17 +26,19 @@ export interface ButtonProps
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   rounded?: boolean;
   glowing?: boolean;
+  fakeDisabled?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   icon?: JSX.Element;
+  onHoverArrow?: 'left' | 'right';
 }
 
 const classesBySize = {
-  xs: 'px-2 py-1 text-xs/5 !font-normal',
-  s: 'px-3 py-1.5 text-sm',
-  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base',
-  l: 'px-8 py-2.5 text-lg',
-  xl: 'px-12 py-3 text-xl',
+  xs: 'px-2 py-1.5 text-xs leading-[14px] !font-medium rounded-md',
+  s: 'px-2.5 py-1.5 text-base leading-[19px] !font-medium rounded-md',
+  m: 'px-3.5 py-3 text-lg leading-[21px] !font-medium rounded-lg',
+  l: 'px-[18px] py-[14px] text-xl leading-[24px] !font-medium rounded-2xl',
+  xl: 'px-12 py-3 text-xl !font-medium rounded-2xl',
 };
 
 const classesByVariant = {
@@ -68,48 +70,48 @@ export const Button = ({
   icon,
   className,
   disabled,
+  fakeDisabled,
   ...buttonProps
 }: ButtonProps) => {
   const classes = useMemo(
     () => [
       classesBySize[size ?? 'm'],
       classesByVariant[variant ?? 'primary'],
-      rounded ? 'rounded-full' : 'rounded-lg',
-      '!font-medium',
+      rounded ? '!rounded-full' : '',
     ],
     [rounded, size, variant],
   );
 
-  let disabledClass = '';
-  if (disabled) {
+  let disabledClass = disabled ? 'cursor-default ' : '';
+  if (disabled || fakeDisabled) {
     switch (variant) {
       case 'newPrimary': {
-        disabledClass =
-          'active:none bg-darkOrange-8 !text-newGray-1 font-normal cursor-default';
+        disabledClass +=
+          'active:none bg-darkOrange-8 !text-newGray-1 font-normal';
 
         break;
       }
       case 'newSecondary': {
-        disabledClass =
-          'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default';
+        disabledClass +=
+          'active:none bg-newBlack-3 !text-newGray-1 font-normal';
 
         break;
       }
       case 'newTertiary': {
-        disabledClass =
-          'active:none bg-newBlack-2 !text-newBlack-4 border-newBlack-4 font-normal cursor-default';
+        disabledClass +=
+          'active:none bg-newBlack-2 !text-newBlack-4 border-newBlack-4 font-normal';
 
         break;
       }
       case 'ghost': {
-        disabledClass =
-          'active:none bg-newBlack-1 !text-newBlack-5 border-newBlack-5 font-normal cursor-default ';
+        disabledClass +=
+          'active:none bg-newBlack-1 !text-newBlack-5 border-newBlack-5 font-normal ';
 
         break;
       }
       default: {
-        disabledClass =
-          'active:none bg-newBlack-3 !text-newGray-1 font-normal cursor-default ';
+        disabledClass +=
+          'active:none bg-newBlack-3 !text-newGray-1 font-normal ';
       }
     }
   }
@@ -121,7 +123,7 @@ export const Button = ({
         className={cn(
           ...classes,
           disabled ? 'active:none' : 'active:scale-95',
-          'flex flex-row items-center font-normal leading-normal transition-colors duration-150',
+          'flex flex-row items-center font-normal transition-colors duration-150',
           className ?? '',
           disabledClass,
         )}
@@ -137,7 +139,7 @@ export const Button = ({
       className={cn(
         ...classes,
         disabled ? 'active:none' : 'active:scale-95',
-        'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',
+        'flex flex-row items-center justify-center font-normal transition-colors duration-150',
         glowing && variant !== 'secondary' ? 'shadow-md-button' : '',
         glowing && variant === 'secondary' ? '!shadow-md-button-white' : '',
         className ?? '',
@@ -145,6 +147,7 @@ export const Button = ({
       )}
       {...buttonProps}
     >
+      {/* TODO add on hover arrow */}
       {iconLeft && <span className="mr-3">{iconLeft}</span>}
       {children}
       {iconRight && <span className="ml-3">{iconRight}</span>}

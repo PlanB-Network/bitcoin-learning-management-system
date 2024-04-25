@@ -32,7 +32,7 @@ export const Tag = ({ children, size, className }: TagProps) => {
 
 export const NewTag = ({ children }: NewTagProps) => {
   return (
-    <span className="text-newGray-4 text-xs md:text-base font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md">
+    <span className="text-newGray-4 text-xs sm:text-base font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md">
       {children}
     </span>
   );

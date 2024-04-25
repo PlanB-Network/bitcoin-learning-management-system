@@ -36,7 +36,7 @@ export const HorizontalCard = ({
   return (
     <div
       className={cn(
-        'flex justify-between w-72 h-full bg-newBlack-2 p-2 rounded-lg gap-2 border border-newBlack-4',
+        'flex justify-between w-72 bg-newBlack-2 p-2 rounded-lg gap-2 border border-newBlack-4',
         className,
       )}
     >

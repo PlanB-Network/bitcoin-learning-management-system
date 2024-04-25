@@ -34,7 +34,7 @@ export const ConferencesTable = () => {
           <ConferenceRow
             name="Madeira Bitcoin 2019"
             location="City very long, Country"
-            tags={['Tag 5', 'Lightning', 'Lightning', 'Lightning']}
+            tags={['Tag 1', 'Lightning', 'Network', 'Humanitarian']}
             languages={['EN']}
           />
         </tbody>

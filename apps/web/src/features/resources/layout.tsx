@@ -8,7 +8,7 @@ import { PageHeader } from '#src/components/PageHeader/index.tsx';
 import { MainLayout } from '../../components/MainLayout/index.tsx';
 
 import { CategoryTabs } from './components/CategoryTabs/index.tsx';
-import { DropdownMenu } from './components/DropdownMenu/dropdown-menu.tsx';
+import { ResourcesDropdownMenu } from './components/DropdownMenu/resources-category-dropdown-menu.tsx';
 import { FilterBar } from './components/FilterBar/index.tsx';
 import { Pagination } from './components/Pagination/index.tsx';
 
@@ -52,7 +52,7 @@ export const ResourceLayout = ({
           )}
         >
           <CategoryTabs resourceActiveCategory={activeCategory} />
-          <DropdownMenu resourceActiveCategory={activeCategory} />
+          <ResourcesDropdownMenu resourceActiveCategory={activeCategory} />
 
           <PageHeader
             title={title}

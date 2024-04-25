@@ -1,29 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { cn } from '@sovereign-university/ui';
 
-import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
-import { capitalizeFirstWord } from '#src/utils/string.js';
+import { DropdownItem } from './dropdown-item.tsx';
 
-import { RESOURCES_CATEGORIES } from '../../utils.tsx';
-
-import { ResourcesDropdownItem } from './dropdown-item.tsx';
-
+interface ItemProps {
+  name: string;
+  link?: string;
+  onClick?: () => void;
+}
 interface DropdownMenuProps {
-  resourceActiveCategory?: string;
+  activeItem: string;
+  itemsList: ItemProps[];
 }
 
-export const DropdownMenu = ({ resourceActiveCategory }: DropdownMenuProps) => {
-  const { t } = useTranslation();
-  const filteredResourcesCategories = RESOURCES_CATEGORIES.filter(
-    (category) => category.name !== resourceActiveCategory,
-  );
-  const activeCategoryImageSrc = RESOURCES_CATEGORIES.find(
-    (category) => category.name === resourceActiveCategory,
-  )?.image;
-
+export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
   const ref = useRef<HTMLDivElement>(null);
@@ -43,15 +35,12 @@ export const DropdownMenu = ({ resourceActiveCategory }: DropdownMenuProps) => {
   }, [ref]);
 
   return (
-    <div
-      className={'relative w-full max-w-[280px] mx-auto mb-6 md:hidden'}
-      ref={ref}
-    >
+    <div className={'relative w-full max-w-[400px] md:hidden'} ref={ref}>
       <div>
         <button
           type="button"
           className={cn(
-            'flex items-center gap-4 p-2 w-full bg-darkOrange-11',
+            'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-darkOrange-11',
             isOpen
               ? 'rounded-t-xl border-x border-t border-darkOrange-9'
               : 'rounded-xl border border-darkOrange-9',
@@ -61,15 +50,8 @@ export const DropdownMenu = ({ resourceActiveCategory }: DropdownMenuProps) => {
           aria-haspopup="true"
           onClick={toggleDropdown}
         >
-          <CategoryIcon
-            src={activeCategoryImageSrc || ''}
-            variant="resources"
-            imgClassName="filter-newOrange1 size-6"
-          />
           <span className="text-darkOrange-5 font-medium leading-[140%] tracking-[0.15px]">
-            {capitalizeFirstWord(
-              t(`resources.${resourceActiveCategory}.title`),
-            )}
+            {activeItem}
           </span>
           <MdKeyboardArrowDown
             className={cn(
@@ -82,21 +64,21 @@ export const DropdownMenu = ({ resourceActiveCategory }: DropdownMenuProps) => {
 
       {isOpen && (
         <div
-          className="absolute left-1/2 -translate-x-1/2 w-full max-w-[280px] rounded-b-xl bg-darkOrange-11 border-x border-b border-darkOrange-9 z-10 overflow-hidden"
+          className="absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl bg-darkOrange-11 border-x border-b border-darkOrange-9 z-10 overflow-auto no-scrollbar"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          {filteredResourcesCategories.map(
-            (category) =>
-              !category.unreleased && (
-                <ResourcesDropdownItem
-                  name={category.name}
-                  imageSrc={category.image}
-                  key={category.name}
-                />
-              ),
-          )}
+          {itemsList
+            .filter((item) => item.name !== activeItem)
+            .map((item) => (
+              <DropdownItem
+                name={item.name}
+                link={item.link}
+                onClick={item.onClick}
+                key={item.name}
+              />
+            ))}
         </div>
       )}
     </div>
