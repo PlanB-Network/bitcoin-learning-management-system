@@ -5,9 +5,7 @@ import {
 import { Link } from '@tanstack/react-router';
 // import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { IoLogOutOutline } from 'react-icons/io5';
 
-import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import SignInIcon from '../../../assets/icons/profile_log_in.png';
@@ -22,7 +20,6 @@ const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { data: session } = trpc.user.getSession.useQuery();
   const isLoggedIn = session !== undefined;
   const isMobile = useSmaller('lg');
