@@ -37,8 +37,8 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const credentialsLogin = trpc.auth.credentials.login.useMutation({
     onSuccess: () => {
       // TODO log in the user
-      window.location.reload();
       onClose();
+      window.location.reload();
     },
   });
 
