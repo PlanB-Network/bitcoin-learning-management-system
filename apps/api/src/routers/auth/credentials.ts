@@ -88,6 +88,19 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       const getUser = createGetUser(dependencies);
 
+      // Check if a session exists and if it is valid
+      if (req.session.uid) {
+        console.log('----- User is already logged in');
+        console.log('----- Clear user session');
+        req.session.destroy((err) => {
+          if (err)
+            throw new TRPCError({
+              code: 'INTERNAL_SERVER_ERROR',
+              message: 'Failed to clear session',
+            });
+        });
+      }
+
       const user = await getUser({
         username: input.username,
       });
