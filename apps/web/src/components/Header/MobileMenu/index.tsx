@@ -29,7 +29,7 @@ export const MobileMenu = ({
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
   const { t } = useTranslation();
-  const { data: session } = trpc.user.getSession.useQuery();
+  const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export const MobileMenu = ({
           )}
         </Link>
 
-        {isLoggedIn ? (
+        {isFetched && isLoggedIn ? (
           <div className="text-sm font-semibold ml-auto min-w-10">
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">

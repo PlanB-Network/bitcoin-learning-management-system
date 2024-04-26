@@ -20,7 +20,7 @@ const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { t } = useTranslation();
-  const { data: session } = trpc.user.getSession.useQuery();
+  const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
   const isMobile = useSmaller('lg');
   const isScreenLg = useGreater('md');
@@ -29,7 +29,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
-      {isLoggedIn && !isMobile && (
+      {isFetched && isLoggedIn && !isMobile && (
         <Link to="/dashboard">
           <button className="cursor-pointer text-white">
             <img src={SignInIcon} alt={t('auth.signIn')} className="size-12" />
@@ -37,7 +37,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
         </Link>
       )}
 
-      {isLoggedIn ? (
+      {isFetched && isLoggedIn ? (
         <div></div>
       ) : (
         <div className="flex flex-row gap-2 lg:gap-4">
