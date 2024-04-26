@@ -132,7 +132,7 @@ export const CoursesMarkdownBody = ({
               <CopyButton text={childrenText} />
             </div>
           ) : (
-            <code className="bg-newGray-4 px-1.5 rounded-lg font-serif inline-block text-sm">
+            <code className="bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm">
               {children}
             </code>
           );
