@@ -29,22 +29,35 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
 
-      {isFetched && isLoggedIn && !isMobile && (
-        <Link to="/dashboard">
-          <button className="cursor-pointer text-white">
-            <img src={SignInIcon} alt={t('auth.signIn')} className="size-12" />
-          </button>
-        </Link>
-      )}
+      {isFetched && (
+        <>
+          {isLoggedIn && !isMobile && (
+            <Link to="/dashboard">
+              <button className="cursor-pointer text-white">
+                <img
+                  src={SignInIcon}
+                  alt={t('auth.signIn')}
+                  className="size-12"
+                />
+              </button>
+            </Link>
+          )}
 
-      {isFetched && isLoggedIn ? (
-        <div></div>
-      ) : (
-        <div className="flex flex-row gap-2 lg:gap-4">
-          <button className="cursor-pointer text-white" onClick={onClickLogin}>
-            <img src={SignInIcon} alt={t('auth.signIn')} className="size-12" />
-          </button>
-        </div>
+          {!isLoggedIn && (
+            <div className="flex flex-row gap-2 lg:gap-4">
+              <button
+                className="cursor-pointer text-white"
+                onClick={onClickLogin}
+              >
+                <img
+                  src={SignInIcon}
+                  alt={t('auth.signIn')}
+                  className="size-12"
+                />
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
