@@ -5,7 +5,7 @@ import {
   createGetUserDetails,
 } from '@sovereign-university/user';
 
-import { protectedProcedure } from '../../procedures/index.js';
+import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 import { userCoursesRouter } from './courses.js';
@@ -14,10 +14,10 @@ import { paymentWebhooksProcedure } from './webhooks.js';
 
 export const userRouter = createTRPCRouter({
   // TODO should be public procedure, not to have 401 when user is not logged in
-  getSession: protectedProcedure.query(({ ctx }) => {
+  getSession: publicProcedure.query(({ ctx }) => {
+    const { req } = ctx;
     return {
-      user: ctx.user,
-      isLoggedIn: true,
+      user: { uid: req.session.uid },
     };
   }),
   getDetails: protectedProcedure

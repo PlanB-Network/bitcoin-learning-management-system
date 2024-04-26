@@ -43,7 +43,7 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails: React.FC = () => {
   const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session !== undefined;
+  const isLoggedIn = session?.user?.uid !== undefined;
 
   // TODO Refactor this auth stuff
   const [authMode, setAuthMode] = useState<AuthModalState>(

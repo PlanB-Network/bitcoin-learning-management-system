@@ -30,7 +30,7 @@ export const MobileMenu = ({
     useDisclosure();
   const { t } = useTranslation();
   const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session !== undefined;
+  const isLoggedIn = session?.user?.uid !== undefined;
 
   useEffect(() => {
     if (isMobileMenuOpen) document.body.style.overflow = 'hidden';

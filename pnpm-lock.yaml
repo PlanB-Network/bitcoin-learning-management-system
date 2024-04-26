@@ -167,9 +167,6 @@ importers:
       '@react-hooks-library/core':
         specifier: ^0.6.2
         version: 0.6.2(react@18.2.0)
-      '@reduxjs/toolkit':
-        specifier: ^2.2.3
-        version: 2.2.3(react-redux@9.1.1(@types/react@18.2.74)(react@18.2.0)(redux@5.0.1))(react@18.2.0)
       '@sovereign-university/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
@@ -248,18 +245,12 @@ importers:
       react-player:
         specifier: 2.16.0
         version: 2.16.0(react@18.2.0)
-      react-redux:
-        specifier: ^9.1.1
-        version: 9.1.1(@types/react@18.2.74)(react@18.2.0)(redux@5.0.1)
       react-syntax-highlighter:
         specifier: 15.5.0
         version: 15.5.0(react@18.2.0)
       react-use-websocket:
         specifier: ^4.8.1
         version: 4.8.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      redux-persist:
-        specifier: ^6.0.0
-        version: 6.0.0(react@18.2.0)(redux@5.0.1)
       rehype-mathjax:
         specifier: 6.0.0
         version: 6.0.0
@@ -2281,17 +2272,6 @@ packages:
   '@react-hooks-library/shared@0.6.2':
     resolution: {integrity: sha512-tasvVgcoRhnHYZSVfQjDK7VDviVrO9BqqS/yEvjJ4/QRTVFQTNmt5Jfj3ym0Uju2B63Dc9892DuLhb9V9oysWA==}
 
-  '@reduxjs/toolkit@2.2.3':
-    resolution: {integrity: sha512-76dll9EnJXg4EVcI5YNxZA/9hSAmZsFqzMmNRHvIlzw2WS/twfcVX3ysYrWGJMClwEmChQFC4yRq74tn6fdzRA==}
-    peerDependencies:
-      react: ^16.9.0 || ^17.0.0 || ^18
-      react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-redux:
-        optional: true
-
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
@@ -3025,9 +3005,6 @@ packages:
 
   '@types/unist@3.0.2':
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
-
-  '@types/use-sync-external-store@0.0.3':
-    resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
 
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
@@ -5243,9 +5220,6 @@ packages:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
 
-  immer@10.0.4:
-    resolution: {integrity: sha512-cuBuGK40P/sk5IzWa9QPUaAdvPHjkk1c+xYsd9oZw+YQQEV+10G0P5uMpGctZZKnyQ+ibRO08bD25nWLmYi2pw==}
-
   immutable@4.3.5:
     resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
 
@@ -6862,21 +6836,6 @@ packages:
     peerDependencies:
       react: '>=16.6.0'
 
-  react-redux@9.1.1:
-    resolution: {integrity: sha512-5ynfGDzxxsoV73+4czQM56qF43vsmgJsO22rmAvU5tZT2z5Xow/A2uhhxwXuGTxgdReF3zcp7A80gma2onRs1A==}
-    peerDependencies:
-      '@types/react': ^18.2.25
-      react: ^18.0
-      react-native: '>=0.69'
-      redux: ^5.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      react-native:
-        optional: true
-      redux:
-        optional: true
-
   react-refresh@0.14.1:
     resolution: {integrity: sha512-iZiRCtNGY3QYP3pYOSSBOvQmBpQTcJccr/VcK2blpJrpPTUDjeN51mxm5nsrkCzBwsbGUj+TN9q2oPz5E13FLg==}
     engines: {node: '>=0.10.0'}
@@ -6937,23 +6896,6 @@ packages:
   redis-parser@3.0.0:
     resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
     engines: {node: '>=4'}
-
-  redux-persist@6.0.0:
-    resolution: {integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==}
-    peerDependencies:
-      react: '>=16'
-      redux: '>4.0.0'
-    peerDependenciesMeta:
-      react:
-        optional: true
-
-  redux-thunk@3.1.0:
-    resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
-    peerDependencies:
-      redux: ^5.0.0
-
-  redux@5.0.1:
-    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
 
   reflect.getprototypeof@1.0.6:
     resolution: {integrity: sha512-fmfw4XgoDke3kdI6h4xcUz1dG8uaiv5q9gcEwLS4Pnth2kxT+GZ7YehS1JTMGBQmtV7Y4GFGbs2re2NqhdozUg==}
@@ -7032,9 +6974,6 @@ packages:
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
-
-  reselect@5.1.0:
-    resolution: {integrity: sha512-aw7jcGLDpSgNDyWBQLv2cedml85qd95/iszJjN988zX1t7AVRJi19d9kto5+W7oCfQ94gyo40dVbT6g2k4/kXg==}
 
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
@@ -9738,16 +9677,6 @@ snapshots:
 
   '@react-hooks-library/shared@0.6.2': {}
 
-  '@reduxjs/toolkit@2.2.3(react-redux@9.1.1(@types/react@18.2.74)(react@18.2.0)(redux@5.0.1))(react@18.2.0)':
-    dependencies:
-      immer: 10.0.4
-      redux: 5.0.1
-      redux-thunk: 3.1.0(redux@5.0.1)
-      reselect: 5.1.0
-    optionalDependencies:
-      react: 18.2.0
-      react-redux: 9.1.1(@types/react@18.2.74)(react@18.2.0)(redux@5.0.1)
-
   '@rollup/pluginutils@5.1.0(rollup@4.16.4)':
     dependencies:
       '@types/estree': 1.0.5
@@ -10890,8 +10819,6 @@ snapshots:
   '@types/unist@2.0.10': {}
 
   '@types/unist@3.0.2': {}
-
-  '@types/use-sync-external-store@0.0.3': {}
 
   '@types/uuid@9.0.8': {}
 
@@ -13578,8 +13505,6 @@ snapshots:
 
   ignore@5.3.1: {}
 
-  immer@10.0.4: {}
-
   immutable@4.3.5: {}
 
   import-fresh@3.3.0:
@@ -15417,15 +15342,6 @@ snapshots:
       react: 18.2.0
       react-fast-compare: 3.2.2
 
-  react-redux@9.1.1(@types/react@18.2.74)(react@18.2.0)(redux@5.0.1):
-    dependencies:
-      '@types/use-sync-external-store': 0.0.3
-      react: 18.2.0
-      use-sync-external-store: 1.2.1(react@18.2.0)
-    optionalDependencies:
-      '@types/react': 18.2.74
-      redux: 5.0.1
-
   react-refresh@0.14.1: {}
 
   react-syntax-highlighter@15.5.0(react@18.2.0):
@@ -15505,18 +15421,6 @@ snapshots:
   redis-parser@3.0.0:
     dependencies:
       redis-errors: 1.2.0
-
-  redux-persist@6.0.0(react@18.2.0)(redux@5.0.1):
-    dependencies:
-      redux: 5.0.1
-    optionalDependencies:
-      react: 18.2.0
-
-  redux-thunk@3.1.0(redux@5.0.1):
-    dependencies:
-      redux: 5.0.1
-
-  redux@5.0.1: {}
 
   reflect.getprototypeof@1.0.6:
     dependencies:
@@ -15659,8 +15563,6 @@ snapshots:
   requireindex@1.2.0: {}
 
   requires-port@1.0.0: {}
-
-  reselect@5.1.0: {}
 
   resolve-from@4.0.0: {}
 

@@ -21,7 +21,7 @@ const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { t } = useTranslation();
   const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session !== undefined;
+  const isLoggedIn = session?.user?.uid !== undefined;
   const isMobile = useSmaller('lg');
   const isScreenLg = useGreater('md');
 
@@ -46,20 +46,6 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
           </button>
         </div>
       )}
-
-      {/* {isLoggedIn && !isMobile && (
-        <button
-          onClick={async () => {
-            await logout();
-            await navigate({ to: '/' });
-            window.location.reload();
-          }}
-        >
-          <div className="text-white">
-            <IoLogOutOutline size={28} />
-          </div>
-        </button>
-      )} */}
     </div>
   );
 };

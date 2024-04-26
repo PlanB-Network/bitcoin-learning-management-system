@@ -32,7 +32,7 @@ export const Events = () => {
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
   const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session !== undefined;
+  const isLoggedIn = session?.user?.uid !== undefined;
 
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,
