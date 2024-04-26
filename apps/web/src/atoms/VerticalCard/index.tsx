@@ -1,3 +1,7 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 
 import { Button, cn } from '@sovereign-university/ui';
@@ -25,6 +29,8 @@ interface VerticalCardProps {
   className?: string;
 }
 
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
+
 export const VerticalCard = ({
   imageSrc,
   title,
@@ -35,6 +41,8 @@ export const VerticalCard = ({
   languages,
   className,
 }: VerticalCardProps) => {
+  const isScreenMd = useGreater('md');
+
   return (
     <div
       className={cn(
@@ -67,12 +75,20 @@ export const VerticalCard = ({
       {buttonText &&
         (link ? (
           <Link to={link}>
-            <Button variant={buttonVariant} className="w-full">
+            <Button
+              variant={buttonVariant}
+              size={isScreenMd ? 'm' : 'xs'}
+              className="w-full"
+            >
               {buttonText}
             </Button>
           </Link>
         ) : (
-          <Button variant={buttonVariant} className="w-full">
+          <Button
+            variant={buttonVariant}
+            size={isScreenMd ? 'm' : 'xs'}
+            className="w-full"
+          >
             {buttonText}
           </Button>
         ))}

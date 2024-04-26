@@ -65,6 +65,7 @@ export const createProcessChangedPodcast = (
                 ${parsed.links?.nostr}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
+                language = EXCLUDED.language,
                 name = EXCLUDED.name,
                 host = EXCLUDED.host,
                 description = EXCLUDED.description,

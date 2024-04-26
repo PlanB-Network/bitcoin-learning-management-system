@@ -8,6 +8,7 @@ import { getContentType, getRelativePath } from '../../utils.js';
 
 import { createProcessChangedBook } from './categories/books.js';
 import { createProcessChangedBuilder } from './categories/builders.js';
+import { createProcessChangedConference } from './categories/conferences.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { assertSupportedCategoryPath } from './const.js';
 import type { ResourceCategory } from './const.js';
@@ -92,6 +93,7 @@ export const createProcessChangedResource =
     const mapHandlers = {
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
+      conferences: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
     } as const;
 

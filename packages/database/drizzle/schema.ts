@@ -173,6 +173,48 @@ export const contentBuildersLocalized = content.table(
   }),
 );
 
+// CONFERENCES
+
+export const contentConferences = content.table('conferences', {
+  resourceId: integer('resource_id')
+    .primaryKey()
+    .notNull()
+    .references(() => contentResources.id, { onDelete: 'cascade' }),
+  name: text('name').notNull(),
+  description: text('description'),
+  year: text('year').notNull(),
+  builder: varchar('builder', { length: 255 }),
+  languages: varchar('language', { length: 255 }).array(),
+  location: text('location').notNull(),
+
+  // Links
+  websiteUrl: text('website_url'),
+  twitterUrl: text('twitter_url'),
+});
+
+export const contentConferencesStages = content.table('conferences_stages', {
+  stageId: integer('stage_id').primaryKey().notNull(),
+  conferenceId: integer('conference_id')
+    .notNull()
+    .references(() => contentConferences.resourceId, { onDelete: 'cascade' }),
+  name: text('name').notNull(),
+});
+
+export const contentConferenceStageVideos = content.table(
+  'conferences_stages_videos',
+  {
+    videoId: integer('video_id').primaryKey().notNull(),
+    stageId: integer('stage_id')
+      .notNull()
+      .references(() => contentConferencesStages.stageId, {
+        onDelete: 'cascade',
+      }),
+    name: text('name').notNull(),
+    link: text('link').notNull(),
+    description: text('description'),
+  },
+);
+
 // PODCASTS
 
 export const contentPodcasts = content.table('podcasts', {
