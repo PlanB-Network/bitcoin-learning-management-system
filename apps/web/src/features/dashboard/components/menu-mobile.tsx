@@ -52,8 +52,8 @@ export const MenuMobile = () => {
         icon={<IoLogOutOutline size={28} />}
         onClick={async () => {
           await logout();
+          await navigate({ to: '/' });
           window.location.reload();
-          navigate({ to: '/' });
         }}
       />
     </div>

@@ -83,8 +83,8 @@ export const MenuDesktop = () => {
           icon={<IoLogOutOutline size={24} />}
           onClick={async () => {
             await logout();
+            await navigate({ to: '/' });
             window.location.reload();
-            navigate({ to: '/' });
           }}
         />
       </div>
