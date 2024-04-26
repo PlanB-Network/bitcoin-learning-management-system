@@ -8,7 +8,6 @@ export const enforceAuthenticatedUserMiddleware = createMiddleware(
 
     console.log('req session', req.session);
     if (!req.session.uid) {
-      req.session.uid = undefined;
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
 
