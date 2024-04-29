@@ -530,35 +530,21 @@ export const CourseChapter = () => {
   let displayClassDetails = false;
   let displayLiveSection = false;
   let displayLiveVideo = false;
-  let displayMarkdown = true;
+  let displayQuizAndNext = true;
 
   if (chapter && chapter.startDate && chapter.endDate) {
-    const isChapterAvailable =
-      chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
+    // const isMarkdownAvailable = chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
     const now = new Date(Date.now());
-
-    const chapterStartDate = new Date(new Date(chapter.startDate).getTime());
     const chapterEndDate = new Date(new Date(chapter.endDate).getTime());
 
     displayClassDetails =
       (chapter.isInPerson || false || chapter.isOnline || false) &&
       chapterEndDate > now;
-
+    displayLiveSection = chapter.isOnline || false;
     displayLiveVideo =
-      (chapter.isOnline || false) &&
+      displayLiveSection &&
       new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
-    displayLiveSection = (chapter.isOnline || false) && !isChapterAvailable;
-
-    // One day after the event
-    if (
-      addMinutesToDate(chapterStartDate, 60 * 24) < now &&
-      isChapterAvailable
-    ) {
-      displayMarkdown = true;
-      displayLiveVideo = false;
-    } else {
-      displayMarkdown = false;
-    }
+    displayQuizAndNext = false;
   }
 
   let computerProfessor = '';
@@ -635,9 +621,9 @@ export const CourseChapter = () => {
                         displayVideo={displayLiveVideo}
                       />
                     )}
-                  {displayMarkdown && (
+                  <MarkdownContent chapter={chapter} />
+                  {displayQuizAndNext && (
                     <>
-                      <MarkdownContent chapter={chapter} />
                       {questionsArray && questionsArray.length > 0 && (
                         <>
                           <div className="flex items-center">
