@@ -13,7 +13,6 @@ import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
-import { addMinutesToDate } from '#src/utils/date.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
