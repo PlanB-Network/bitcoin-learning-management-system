@@ -193,7 +193,7 @@ export const contentConferences = content.table('conferences', {
 });
 
 export const contentConferencesStages = content.table('conferences_stages', {
-  stageId: integer('stage_id').primaryKey().notNull(),
+  stageId: varchar('stage_id').primaryKey().notNull(),
   conferenceId: integer('conference_id')
     .notNull()
     .references(() => contentConferences.resourceId, { onDelete: 'cascade' }),
@@ -203,7 +203,7 @@ export const contentConferencesStages = content.table('conferences_stages', {
 export const contentConferenceStageVideos = content.table(
   'conferences_stages_videos',
   {
-    videoId: integer('video_id').primaryKey().notNull(),
+    videoId: varchar('video_id').primaryKey().notNull(),
     stageId: integer('stage_id')
       .notNull()
       .references(() => contentConferencesStages.stageId, {

@@ -1,5 +1,7 @@
+import { randomUUID } from 'node:crypto';
+
+import matter from 'gray-matter';
 import { marked } from 'marked';
-import type { Token } from 'marked';
 
 import { firstRow } from '@sovereign-university/database';
 import type { Resource } from '@sovereign-university/types';
@@ -9,88 +11,73 @@ import { separateContentFiles, yamlToObject } from '../../../utils.js';
 import type { ChangedResource } from '../index.js';
 import { createProcessMainFile } from '../main.js';
 
-/** Base conference information, same for all translations */
 interface ConferenceMain {
-  name: string;
   year: string;
   builder?: string;
   language: string[];
-  description?: string;
   links?: {
     website?: string;
     twitter?: string;
   };
 }
 
-interface ConferenceStage {
+interface ConferenceLocalized {
   name: string;
-  videos: ConferenceStageVideo[];
+  description: string;
 }
 
-interface ConferenceStageVideo {
+interface Stage {
+  id: string;
+  name: string;
+  videos: Video[];
+}
+
+interface Video {
+  id: string;
   name: string;
   link: string;
   description: string;
 }
 
-// TODO -> Complete this data extractor
+const extractStages = (markdown: string): Stage[] => {
+  const tokens = marked.lexer(markdown);
+  const stages: Stage[] = [];
 
-// const extractData = (markdown: string): ConferenceStage[] => {
-//   const tokens = marked.lexer(markdown);
-//   const conferenceStages: ConferenceStage[] = [];
-//   let currentStage: ConferenceStage | null = null;
+  let collectingDescription = false;
 
-//   for (const token of tokens) {
-//     switch (token.type) {
-//       case 'heading': {
-//         if (token.depth === 1) {
-//           currentStage = { name: token.text, videos: [] };
-//           conferenceStages.push(currentStage);
-//         }
+  for (const token of tokens) {
+    if (token.type === 'heading' && token.depth === 1) {
+      stages.push({ id: randomUUID(), name: token.text as string, videos: [] });
+    } else if (stages.length > 0) {
+      const currentStage = stages.at(-1)!;
 
-//         if (token.depth === 2 && currentStage) {
-//           currentStage.videos.push({
-//             title: token.text,
-//             videoUrl: '',
-//             speakers: [],
-//           });
-//         }
-//         break;
-//       }
+      if (token.type === 'heading' && token.depth === 2) {
+        currentStage.videos.push({
+          id: randomUUID(),
+          name: token.text as string,
+          link: '',
+          description: '',
+        });
+      } else if (currentStage.videos.length > 0) {
+        const currentVideo = currentStage.videos.at(-1)!;
 
-//       case 'paragraph': {
-//         if (currentStage && currentStage.videos.length > 0) {
-//           const currentVideo = currentStage.videos.at(-1);
-//           const videoMatch = token.text.match(
-//             /!\[video]\((https?:\/\/[^)]+)\)/,
-//           );
-//           if (videoMatch) {
-//             currentVideo.videoUrl = videoMatch[1];
-//           }
-//         }
-//         break;
-//       }
+        if (token.type === 'link') {
+          currentVideo.link = token.href as string;
+        } else if (token.type === 'text' || token.type === 'paragraph') {
+          if (collectingDescription || token.type === 'paragraph') {
+            currentVideo.description +=
+              (currentVideo.description ? ' ' : '') + token.text;
+            collectingDescription = true;
+          }
+        } else {
+          collectingDescription = false;
+        }
+      }
+    }
+  }
 
-//       case 'text': {
-//         if (currentStage && currentStage.videos.length > 0) {
-//           const currentVideo = currentStage.videos.at(-1);
-//           const videoDescription = token.text.startsWith('Speaker:');
-//           if (videoDescription) {
-//             currentVideo.speakers = token.text
-//               .replace('Speaker:', '')
-//               .split(',')
-//               .map((s) => s.trim());
-//           }
-//         }
-//         break;
-//       }
-//     }
-//   }
-
-//   return conferenceStages;
-// };
-
-// TODO -> get name and description from markdown as well
+  return stages;
+};
 
 export const createProcessChangedConference = (
   dependencies: Dependencies,
@@ -101,7 +88,11 @@ export const createProcessChangedConference = (
   return async (resource: ChangedResource) => {
     return postgres
       .begin(async (transaction) => {
-        const { main } = separateContentFiles(resource, 'conference.yml');
+        const { main, files } = separateContentFiles(
+          resource,
+          'conference.yml',
+        );
+
         try {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
@@ -120,17 +111,19 @@ export const createProcessChangedConference = (
           throw new Error(`Resource not found for path ${resource.path}`);
         }
 
+        let parsed: ConferenceMain | null = null;
+
         try {
           if (main && main.kind !== 'removed') {
-            const parsed = yamlToObject<ConferenceMain>(main.data);
+            parsed = yamlToObject<ConferenceMain>(main.data);
 
             await transaction`
               INSERT INTO content.conferences (
                 resource_id, language, name, year, description, builder, website_url, twitter_url
               )
               VALUES (
-                ${id}, ${parsed.language}, ${parsed.name}, ${parsed.year}, 
-                ${parsed.description?.trim()}, ${parsed.builder}, ${parsed.links?.website}, 
+                ${id}, ${parsed.language}, "", ${parsed.year}, 
+                "", ${parsed.builder}, ${parsed.links?.website}, 
                 ${parsed.links?.twitter},
               )
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -140,11 +133,72 @@ export const createProcessChangedConference = (
                 description = EXCLUDED.description,
                 builder = EXCLUDED.builder,
                 website_url = EXCLUDED.website_url,
-                twitter_url = EXCLUDED.twitter_url,
+                twitter_url = EXCLUDED.twitter_url
             `;
           }
         } catch (error) {
           errors.push(`Error processing file ${main?.path}: ${error}`);
+        }
+
+        for (const file of files.filter((file) =>
+          file.path.includes('en.md'),
+        )) {
+          try {
+            // TODO IMPOSSIBLE
+            if (file.kind === 'removed') {
+              continue;
+            }
+
+            const header = matter(file.data, {
+              excerpt: false,
+            });
+
+            const data = header.data as ConferenceLocalized;
+
+            const stages = extractStages(header.content);
+
+            await transaction`
+              INSERT INTO content.conferences (
+                resource_id, name, description
+              )
+              VALUES (
+                ${id}, ${data.name}, ${data.description.trim()}
+              )
+              ON CONFLICT (resource_id) DO UPDATE SET
+                name = EXCLUDED.name,
+                description = EXCLUDED.description
+            `;
+
+            for (const stage of stages) {
+              await transaction`
+              INSERT INTO content.conferences_stages (
+                stage_id, conference_id, name
+              )
+              VALUES (
+                ${stage.id}, ${id}, ${stage.name}
+              )
+              ON CONFLICT (stage_id) DO UPDATE SET
+                name = EXCLUDED.name,
+              `;
+
+              for (const video of stage.videos) {
+                await transaction`
+                INSERT INTO content.conferences_stages_videos (
+                  video_id, stage_id, name, link, description
+                )
+                VALUES (
+                  ${video.id}, ${stage.id}, ${video.name}, ${video.link}, ${video.description.trim()}
+                )
+                ON CONFLICT (video_id) DO UPDATE SET
+                  name = EXCLUDED.name,
+                  link = EXCLUDED.link,
+                  description = EXCLUDED.description
+                `;
+              }
+            }
+          } catch (error) {
+            errors.push(`Error processing one file ${file?.path}: ${error}`);
+          }
         }
       })
       .catch(() => {
