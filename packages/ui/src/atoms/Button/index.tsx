@@ -12,7 +12,6 @@ export interface ButtonProps
       HTMLButtonElement
     > {
   children?: string | JSX.Element | JSX.Element[];
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   variant?:
     | 'primary'
     | 'newPrimary'
@@ -22,6 +21,7 @@ export interface ButtonProps
     | 'tertiary'
     | 'download'
     | 'text';
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   rounded?: boolean;
   glowing?: boolean;
   iconLeft?: JSX.Element;
@@ -30,30 +30,30 @@ export interface ButtonProps
 }
 
 const classesBySize = {
-  xs: 'px-2 py-1 text-xs/5',
-  s: 'px-3 py-1.5 text-sm !font-medium',
-  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base !font-medium',
-  l: 'px-8 py-2.5 text-lg !font-medium',
-  xl: 'px-12 py-3 text-xl !font-medium',
+  xs: 'px-2 py-1 text-xs/5 !font-normal',
+  s: 'px-3 py-1.5 text-sm',
+  m: 'px-4 py-1 text-xs md:px-5 md:py-2 md:text-base',
+  l: 'px-8 py-2.5 text-lg',
+  xl: 'px-12 py-3 text-xl',
 };
 
 const classesByVariant = {
   primary:
     'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-  newPrimary: 'bg-newOrange-1 text-white font-normal',
+  newPrimary: 'bg-newOrange-1 text-white',
   newPrimaryGhost:
-    'bg-transparent text-darkOrange-5 border border-darkOrange-4',
-  tertiary: 'bg-orange-600 text-white font-normal',
+    'bg-transparent text-darkOrange-5 border border-darkOrange-4 !font-normal ',
+  tertiary: 'bg-orange-600 text-white',
   secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
   newSecondary: 'bg-white text-newBlack-2',
-  download: 'bg-green-600 text-white font-normal',
+  download: 'bg-green-600 text-white',
   text: '',
 };
 
 export const Button = ({
   children,
-  size,
   variant,
+  size,
   rounded,
   glowing,
   iconLeft,
@@ -68,6 +68,7 @@ export const Button = ({
       classesBySize[size ?? 'm'],
       classesByVariant[variant ?? 'primary'],
       rounded ? 'rounded-full' : 'rounded-lg',
+      '!font-medium',
     ],
     [rounded, size, variant],
   );

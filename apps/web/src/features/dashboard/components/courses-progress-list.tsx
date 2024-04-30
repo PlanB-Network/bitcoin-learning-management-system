@@ -73,17 +73,12 @@ export const CoursesProgressList = ({
               course.progressPercentage === 100 ? '' : 'hidden',
             )}
           >
-            {/* <Link to={''}>
-              <Button
-                variant="primary"
-                size="xs"
-                rounded
-                className="bg-green-600 px-3"
-              >
-                {t('words.certificate').toLowerCase()}
-              </Button>
-            </Link> */}
-            <Button variant="primary" size="xs" rounded className="px-3">
+            <Button
+              variant="newPrimaryGhost"
+              size="xs"
+              rounded
+              className="px-3"
+            >
               {t('words.details')}
             </Button>
           </div>

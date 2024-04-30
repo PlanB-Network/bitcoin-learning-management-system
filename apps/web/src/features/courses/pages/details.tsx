@@ -123,7 +123,7 @@ export const CourseDetails: React.FC = () => {
                 },
               });
             },
-            variant: 'tertiary' as const,
+            variant: 'newPrimary' as const,
           },
     [
       course?.requiresPayment,
