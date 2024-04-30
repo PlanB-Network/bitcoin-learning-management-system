@@ -204,14 +204,13 @@ export const contentConferenceStageVideos = content.table(
   'conferences_stages_videos',
   {
     videoId: varchar('video_id').primaryKey().notNull(),
-    stageId: integer('stage_id')
+    stageId: varchar('stage_id')
       .notNull()
       .references(() => contentConferencesStages.stageId, {
         onDelete: 'cascade',
       }),
     name: text('name').notNull(),
-    link: text('link').notNull(),
-    description: text('description'),
+    raw_content: text('raw_content').notNull(),
   },
 );
 

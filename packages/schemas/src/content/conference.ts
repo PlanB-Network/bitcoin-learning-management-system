@@ -22,8 +22,7 @@ export const joinedConferenceStageSchema = conferenceStageSchema.merge(
     videos: z.array(
       conferenceStageVideoSchema.pick({
         name: true,
-        link: true,
-        description: true,
+        raw_content: true,
       }),
     ),
   }),

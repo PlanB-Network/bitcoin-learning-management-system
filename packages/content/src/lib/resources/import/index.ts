@@ -52,7 +52,10 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 
 export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   const resourceFiles = files.filter(
-    (item) => getContentType(item.path) === 'resources',
+    (item) =>
+      getContentType(item.path) === 'resources' ||
+      (getContentType(item.path) === 'resources/conference' &&
+        !item.path.includes('events')),
   );
 
   const groupedResources = new Map<string, ChangedResource>();
@@ -93,7 +96,7 @@ export const createProcessChangedResource =
     const mapHandlers = {
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
-      conferences: createProcessChangedConference,
+      conference: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
     } as const;
 

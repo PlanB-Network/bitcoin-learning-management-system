@@ -1,5 +1,3 @@
-import { randomUUID } from 'node:crypto';
-
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
@@ -13,6 +11,7 @@ import { createProcessMainFile } from '../main.js';
 
 interface ConferenceMain {
   year: string;
+  location: string;
   builder?: string;
   language: string[];
   links?: {
@@ -35,42 +34,42 @@ interface Stage {
 interface Video {
   id: string;
   name: string;
-  link: string;
-  description: string;
+  raw_content: string;
 }
 
-const extractStages = (markdown: string): Stage[] => {
+const extractStages = (markdown: string, id: number): Stage[] => {
   const tokens = marked.lexer(markdown);
   const stages: Stage[] = [];
 
-  let collectingDescription = false;
+  let stageId = 1;
+  let videoId = 1;
 
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
-      stages.push({ id: randomUUID(), name: token.text as string, videos: [] });
+      videoId = 1;
+      stages.push({
+        id: `${id}_${stageId}`,
+        name: token.text as string,
+        videos: [],
+      });
+      stageId++;
     } else if (stages.length > 0) {
       const currentStage = stages.at(-1)!;
 
       if (token.type === 'heading' && token.depth === 2) {
         currentStage.videos.push({
-          id: randomUUID(),
+          id: `${id}_${stageId}_${videoId}`,
           name: token.text as string,
-          link: '',
-          description: '',
+          raw_content: '',
         });
+        videoId++;
       } else if (currentStage.videos.length > 0) {
         const currentVideo = currentStage.videos.at(-1)!;
 
-        if (token.type === 'link') {
-          currentVideo.link = token.href as string;
-        } else if (token.type === 'text' || token.type === 'paragraph') {
-          if (collectingDescription || token.type === 'paragraph') {
-            currentVideo.description +=
-              (currentVideo.description ? ' ' : '') + token.text;
-            collectingDescription = true;
-          }
-        } else {
-          collectingDescription = false;
+        if (token.type === 'text' || token.type === 'paragraph') {
+          currentVideo.raw_content += currentVideo.raw_content
+            ? '\n' + token.text
+            : (token.text as string);
         }
       }
     }
@@ -119,12 +118,12 @@ export const createProcessChangedConference = (
 
             await transaction`
               INSERT INTO content.conferences (
-                resource_id, language, name, year, description, builder, website_url, twitter_url
+                resource_id, language, name, year, location, description, builder, website_url, twitter_url
               )
               VALUES (
-                ${id}, ${parsed.language}, "", ${parsed.year}, 
-                "", ${parsed.builder}, ${parsed.links?.website}, 
-                ${parsed.links?.twitter},
+                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location}, 
+                '', ${parsed.builder}, ${parsed.links?.website}, 
+                ${parsed.links?.twitter}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
                 language = EXCLUDED.language,
@@ -137,7 +136,9 @@ export const createProcessChangedConference = (
             `;
           }
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(
+            `Error processing file ${resource.path} - ${main?.path}: ${error}`,
+          );
         }
 
         for (const file of files.filter((file) =>
@@ -155,14 +156,14 @@ export const createProcessChangedConference = (
 
             const data = header.data as ConferenceLocalized;
 
-            const stages = extractStages(header.content);
+            const stages = extractStages(header.content, id);
 
             await transaction`
               INSERT INTO content.conferences (
-                resource_id, name, description
+                resource_id, name, year, location, description
               )
               VALUES (
-                ${id}, ${data.name}, ${data.description.trim()}
+                ${id}, ${data.name.trim()}, '', '', ${data.description.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
                 name = EXCLUDED.name,
@@ -175,29 +176,32 @@ export const createProcessChangedConference = (
                 stage_id, conference_id, name
               )
               VALUES (
-                ${stage.id}, ${id}, ${stage.name}
+                ${stage.id}, ${id}, ${stage.name.trim()}
               )
               ON CONFLICT (stage_id) DO UPDATE SET
-                name = EXCLUDED.name,
+                name = EXCLUDED.name
               `;
 
               for (const video of stage.videos) {
+                console.log(video);
+
                 await transaction`
                 INSERT INTO content.conferences_stages_videos (
-                  video_id, stage_id, name, link, description
+                  video_id, stage_id, name, raw_content
                 )
                 VALUES (
-                  ${video.id}, ${stage.id}, ${video.name}, ${video.link}, ${video.description.trim()}
+                  ${video.id}, ${stage.id}, ${video.name.trim()}, ${video.raw_content}
                 )
                 ON CONFLICT (video_id) DO UPDATE SET
                   name = EXCLUDED.name,
-                  link = EXCLUDED.link,
-                  description = EXCLUDED.description
+                  raw_content = EXCLUDED.raw_content
                 `;
               }
             }
           } catch (error) {
-            errors.push(`Error processing one file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing one file ${resource.path} - ${file?.path}: ${error}`,
+            );
           }
         }
       })

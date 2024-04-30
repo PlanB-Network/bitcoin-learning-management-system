@@ -2,17 +2,20 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { useParams } from '@tanstack/react-router';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@sovereign-university/ui';
 
 import { NewTag } from '#src/atoms/Tag/index.js';
 import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 
 import mockImg from '../../../assets/events/saif.webp';
+import { trpc } from '../../../utils/index.ts';
 import { DropdownMenu } from '../components/DropdownMenu/dropdown-menu.tsx';
 import { ResourceLayout } from '../layout.tsx';
+import { useTranslation } from 'react-i18next';
 
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
@@ -161,6 +164,25 @@ export const Conference = () => {
   useEffect(() => {
     setVideoInfos(videos[activeStage][activeVideo]);
   }, [activeStage, activeVideo, videos]);
+
+  const { navigateTo404 } = useNavigateMisc();
+  const { t, i18n } = useTranslation();
+  const { conferenceId } = useParams({
+    from: '/resources/conference/$conferenceId',
+  });
+  const navigateTo404Called = useRef(false);
+
+  const { data: conference, isFetched } = trpc.content.getConference.useQuery({
+    id: Number(conferenceId),
+    language: i18n.language ?? 'en',
+  });
+
+  useEffect(() => {
+    if (!conference && isFetched && !navigateTo404Called.current) {
+      navigateTo404();
+      navigateTo404Called.current = true;
+    }
+  }, [conference, isFetched, navigateTo404]);
 
   const isScreenSm = useGreater('sm');
 

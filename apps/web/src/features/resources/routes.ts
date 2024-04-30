@@ -84,7 +84,7 @@ export const conferencesRoute = createRoute({
 
 export const conferenceDetailsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
-  path: '/conferences/$conferenceId',
+  path: '/conference/$conferenceId',
   component: Conference,
 });
 
