@@ -41,18 +41,19 @@ const extractStages = (markdown: string, id: number): Stage[] => {
   const tokens = marked.lexer(markdown);
   const stages: Stage[] = [];
 
-  let stageId = 1;
+  let stageId = 0;
   let videoId = 1;
 
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       videoId = 1;
+      stageId++;
+
       stages.push({
         id: `${id}_${stageId}`,
         name: token.text as string,
         videos: [],
       });
-      stageId++;
     } else if (stages.length > 0) {
       const currentStage = stages.at(-1)!;
 
@@ -118,15 +119,15 @@ export const createProcessChangedConference = (
 
             await transaction`
               INSERT INTO content.conferences (
-                resource_id, language, name, year, location, description, builder, website_url, twitter_url
+                resource_id, languages, name, year, location, description, builder, website_url, twitter_url
               )
               VALUES (
-                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location}, 
-                '', ${parsed.builder}, ${parsed.links?.website}, 
-                ${parsed.links?.twitter}
+                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location.trim()}, 
+                '', ${parsed.builder?.trim()}, ${parsed.links?.website?.trim()}, 
+                ${parsed.links?.twitter?.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
-                language = EXCLUDED.language,
+                languages = EXCLUDED.languages,
                 name = EXCLUDED.name,
                 year = EXCLUDED.year,
                 description = EXCLUDED.description,
@@ -183,14 +184,12 @@ export const createProcessChangedConference = (
               `;
 
               for (const video of stage.videos) {
-                console.log(video);
-
                 await transaction`
                 INSERT INTO content.conferences_stages_videos (
                   video_id, stage_id, name, raw_content
                 )
                 VALUES (
-                  ${video.id}, ${stage.id}, ${video.name.trim()}, ${video.raw_content}
+                  ${video.id}, ${stage.id}, ${video.name.trim()}, ${video.raw_content.trim()}
                 )
                 ON CONFLICT (video_id) DO UPDATE SET
                   name = EXCLUDED.name,

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "content"."conferences" (
 	"description" text,
 	"year" text NOT NULL,
 	"builder" varchar(255),
-	"language" varchar(255)[],
+	"languages" varchar(255)[],
 	"location" text NOT NULL,
 	"website_url" text,
 	"twitter_url" text

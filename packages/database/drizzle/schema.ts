@@ -184,7 +184,7 @@ export const contentConferences = content.table('conferences', {
   description: text('description'),
   year: text('year').notNull(),
   builder: varchar('builder', { length: 255 }),
-  languages: varchar('language', { length: 255 }).array(),
+  languages: varchar('languages', { length: 255 }).array(),
   location: text('location').notNull(),
 
   // Links
@@ -210,7 +210,7 @@ export const contentConferenceStageVideos = content.table(
         onDelete: 'cascade',
       }),
     name: text('name').notNull(),
-    raw_content: text('raw_content').notNull(),
+    rawContent: text('raw_content').notNull(),
   },
 );
 

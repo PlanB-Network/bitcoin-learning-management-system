@@ -4,7 +4,7 @@ import type { JoinedConference } from '@sovereign-university/types';
 export const getConferenceQuery = (resourceId: number) => {
   return sql<JoinedConference[]>`
     SELECT 
-      r.id, r.path, c.resource_id, c.name, c.description, c.year, c.builder, c.languages, c.location, 
+      r.id, r.path, c.name, c.description, c.year, c.builder, c.languages, c.location, 
       c.website_url, c.twitter_url, r.last_updated, r.last_commit,
       json_agg(json_build_object(
         'stageId', cs.stage_id, 
