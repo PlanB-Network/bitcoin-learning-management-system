@@ -44,8 +44,15 @@ export const CourseBookModal = ({
 
   const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
 
+  function closeModal() {
+    onClose();
+    setTimeout(() => {
+      setIsCourseBooked(false);
+    }, 300);
+  }
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
+    <Modal isOpen={isOpen} onClose={closeModal} isLargeModal>
       <button
         className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
         aria-roledescription="Close Payment Modal"
@@ -66,7 +73,7 @@ export const CourseBookModal = ({
             <ModalBookSuccess
               course={course}
               chapter={chapter}
-              onClose={onClose}
+              onClose={closeModal}
             />
           ) : (
             <ModalBookDescription
