@@ -192,6 +192,8 @@ const saveUserChapterProcedure = protectedProcedure
     });
 
     await createCalculateCourseChapterSeats(ctx.dependencies)();
+    const { redis } = ctx.dependencies;
+    await redis.del('trpc:content.getCourseChapter*');
   });
 
 const downloadChapterTicketProcedure = protectedProcedure
