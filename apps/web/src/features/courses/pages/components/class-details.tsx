@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
@@ -52,6 +52,25 @@ export const ClassDetails = ({
   );
 
   const { data: user } = trpc.user.getDetails.useQuery();
+
+  const saveUserChapterRequest =
+    trpc.user.courses.saveUserChapter.useMutation();
+
+  const cancelBooking = useCallback(async () => {
+    await saveUserChapterRequest.mutateAsync({
+      courseId: course.id,
+      part: chapter.part.part,
+      chapter: chapter.chapter,
+      booked: false,
+    });
+    refetchUserChapter();
+  }, [
+    chapter.chapter,
+    chapter.part.part,
+    course.id,
+    refetchUserChapter,
+    saveUserChapterRequest,
+  ]);
 
   const timezone = chapter.timezone ? chapter.timezone : undefined;
   const formattedStartDate = chapter.startDate
@@ -109,15 +128,6 @@ export const ClassDetails = ({
               {t('courses.chapter.detail.p1content')}
             </p>
           </div>
-          <div className="text-xl leading-8">
-            <p className="font-medium">
-              {' '}
-              {t('courses.chapter.detail.p2heading')}
-            </p>
-            <p className="text-newBlack-5">
-              {t('courses.chapter.detail.p2content')}
-            </p>
-          </div>
           {chapter.isInPerson && (
             <div>
               {chapter.remainingSeats !== null &&
@@ -137,41 +147,59 @@ export const ClassDetails = ({
                 userChapter &&
                 user &&
                 user.displayName !== null && (
-                  <Button
-                    variant="newPrimary"
-                    onClick={async () => {
-                      let pdf = downloadedPdf;
-                      if (!pdf) {
-                        pdf = await mutateAsync({
-                          ...chapter,
-                          ...course,
-                          formattedStartDate,
-                          formattedTime,
-                          formattedCapacity,
-                          userDisplayName: user.displayName as string,
-                        });
-                        setDownloadedPdf(pdf);
-                      }
-                      const link = document.createElement('a');
-                      link.href = `data:application/pdf;base64,${pdf}`;
-                      link.download = 'ticket.pdf';
-                      document.body.append(link);
-                      link.click();
-                      link.remove();
-                    }}
-                    iconRight={isPending ? <FiLoader /> : undefined}
-                  >
-                    Download your ticket
-                  </Button>
+                  <div className="flex flex-row gap-2">
+                    <Button
+                      variant="newPrimary"
+                      onClick={async () => {
+                        let pdf = downloadedPdf;
+                        if (!pdf) {
+                          pdf = await mutateAsync({
+                            ...chapter,
+                            ...course,
+                            formattedStartDate,
+                            formattedTime,
+                            formattedCapacity,
+                            userDisplayName: user.displayName as string,
+                          });
+                          setDownloadedPdf(pdf);
+                        }
+                        const link = document.createElement('a');
+                        link.href = `data:application/pdf;base64,${pdf}`;
+                        link.download = 'ticket.pdf';
+                        document.body.append(link);
+                        link.click();
+                        link.remove();
+                      }}
+                      iconRight={isPending ? <FiLoader /> : undefined}
+                    >
+                      {t('courses.chapter.detail.ticketDownload')}
+                    </Button>
+                    <Button
+                      variant="newPrimaryGhost"
+                      onClick={() => {
+                        cancelBooking();
+                      }}
+                    >
+                      {t('courses.chapter.detail.cancelBooking')}
+                    </Button>
+                  </div>
                 )}
               {chapter.remainingSeats !== null &&
                 chapter.remainingSeats <= 0 && (
                   <Button variant="newPrimary" disabled={true}>
-                    Class is already full
+                    {t('courses.chapter.detail.classIsFull')}
                   </Button>
                 )}
             </div>
           )}
+          <div className="text-xl leading-8">
+            <p className="font-medium">
+              {t('courses.chapter.detail.p2heading')}
+            </p>
+            <p className="text-newBlack-5">
+              {t('courses.chapter.detail.p2content')}
+            </p>
+          </div>
         </div>
       </div>
 

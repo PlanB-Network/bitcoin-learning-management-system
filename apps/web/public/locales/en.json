@@ -102,7 +102,10 @@
         "p1content": "Make sure to book your seat",
         "p2heading": "You can't make it in person?",
         "p2content": "No problem ! The lesson will be live streamed on this page and available on replay later on.",
-        "bookSeat": "Book your seat"
+        "bookSeat": "Book your seat",
+        "classIsFull": "Class is already full",
+        "cancelBooking": "Cancel your booking",
+        "ticketDownload": "Download your ticket"
       },
       "live": {
         "title": "Live video",
