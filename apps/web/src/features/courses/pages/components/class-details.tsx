@@ -64,13 +64,7 @@ export const ClassDetails = ({
       booked: false,
     });
     refetchUserChapter();
-  }, [
-    chapter.chapter,
-    chapter.part.part,
-    course.id,
-    refetchUserChapter,
-    saveUserChapterRequest,
-  ]);
+  }, [chapter, course.id, refetchUserChapter, saveUserChapterRequest]);
 
   const timezone = chapter.timezone ? chapter.timezone : undefined;
   const formattedStartDate = chapter.startDate
@@ -143,53 +137,50 @@ export const ClassDetails = ({
                   </Button>
                 )}
               {chapter.remainingSeats !== null &&
-                chapter.remainingSeats > 0 &&
-                userChapter &&
-                user &&
-                user.displayName !== null && (
-                  <div className="flex flex-row gap-2">
-                    <Button
-                      variant="newPrimary"
-                      onClick={async () => {
-                        let pdf = downloadedPdf;
-                        if (!pdf) {
-                          pdf = await mutateAsync({
-                            ...chapter,
-                            ...course,
-                            formattedStartDate,
-                            formattedTime,
-                            formattedCapacity,
-                            userDisplayName: user.displayName as string,
-                          });
-                          setDownloadedPdf(pdf);
-                        }
-                        const link = document.createElement('a');
-                        link.href = `data:application/pdf;base64,${pdf}`;
-                        link.download = 'ticket.pdf';
-                        document.body.append(link);
-                        link.click();
-                        link.remove();
-                      }}
-                      iconRight={isPending ? <FiLoader /> : undefined}
-                    >
-                      {t('courses.chapter.detail.ticketDownload')}
-                    </Button>
-                    <Button
-                      variant="newPrimaryGhost"
-                      onClick={() => {
-                        cancelBooking();
-                      }}
-                    >
-                      {t('courses.chapter.detail.cancelBooking')}
-                    </Button>
-                  </div>
-                )}
-              {chapter.remainingSeats !== null &&
-                chapter.remainingSeats <= 0 && (
+                chapter.remainingSeats <= 0 &&
+                !userChapter && (
                   <Button variant="newPrimary" disabled={true}>
                     {t('courses.chapter.detail.classIsFull')}
                   </Button>
                 )}
+              {userChapter && user && user.displayName !== null && (
+                <div className="flex flex-row gap-2">
+                  <Button
+                    variant="newPrimary"
+                    onClick={async () => {
+                      let pdf = downloadedPdf;
+                      if (!pdf) {
+                        pdf = await mutateAsync({
+                          ...chapter,
+                          ...course,
+                          formattedStartDate,
+                          formattedTime,
+                          formattedCapacity,
+                          userDisplayName: user.displayName as string,
+                        });
+                        setDownloadedPdf(pdf);
+                      }
+                      const link = document.createElement('a');
+                      link.href = `data:application/pdf;base64,${pdf}`;
+                      link.download = 'ticket.pdf';
+                      document.body.append(link);
+                      link.click();
+                      link.remove();
+                    }}
+                    iconRight={isPending ? <FiLoader /> : undefined}
+                  >
+                    {t('courses.chapter.detail.ticketDownload')}
+                  </Button>
+                  <Button
+                    variant="newPrimaryGhost"
+                    onClick={() => {
+                      cancelBooking();
+                    }}
+                  >
+                    {t('courses.chapter.detail.cancelBooking')}
+                  </Button>
+                </div>
+              )}
             </div>
           )}
           <div className="text-xl leading-8">
