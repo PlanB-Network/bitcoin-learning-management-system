@@ -578,9 +578,6 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.3)
-      vite:
-        specifier: 5.2.8
-        version: 5.2.8(@types/node@20.12.7)(sass@1.75.0)
 
   packages/user:
     dependencies:
