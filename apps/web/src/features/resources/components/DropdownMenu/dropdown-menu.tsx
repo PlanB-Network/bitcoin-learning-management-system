@@ -34,8 +34,22 @@ export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
     };
   }, [ref]);
 
+  const handleItemClick = (itemOnClick?: () => void) => {
+    if (itemOnClick) {
+      itemOnClick();
+    }
+
+    setIsOpen(false);
+  };
+
   return (
-    <div className={'relative w-full max-w-[400px] md:hidden'} ref={ref}>
+    <div
+      className={cn(
+        'relative w-full max-w-[400px] md:hidden',
+        isOpen && 'z-20',
+      )}
+      ref={ref}
+    >
       <div>
         <button
           type="button"
@@ -71,12 +85,12 @@ export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
         >
           {itemsList
             .filter((item) => item.name !== activeItem)
-            .map((item) => (
+            .map((item, index) => (
               <DropdownItem
                 name={item.name}
                 link={item.link}
-                onClick={item.onClick}
-                key={item.name}
+                onClick={() => handleItemClick(item.onClick)}
+                key={`${item.name}_${index}`}
               />
             ))}
         </div>

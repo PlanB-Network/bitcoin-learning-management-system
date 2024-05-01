@@ -19,12 +19,7 @@ export const conferenceStageVideoSchema = createSelectSchema(
 
 export const joinedConferenceStageSchema = conferenceStageSchema.merge(
   z.object({
-    videos: z.array(
-      conferenceStageVideoSchema.pick({
-        name: true,
-        rawContent: true,
-      }),
-    ),
+    videos: conferenceStageVideoSchema.array(),
   }),
 );
 
@@ -49,7 +44,8 @@ export const joinedConferenceSchema = resourceSchema
   )
   .merge(
     z.object({
-      stages: z.array(joinedConferenceStageSchema),
+      stages: joinedConferenceStageSchema.array(),
       tags: z.array(z.string()),
+      thumbnail: z.string(),
     }),
   );

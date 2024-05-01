@@ -12,7 +12,7 @@ export const createGetConference =
       .exec(getConferenceQuery(id))
       .then(firstRow);
 
-    if (!conference) throw new Error('Conference not found');
+    if (!conference) throw new Error(`Conference ${id} not found`);
 
     return {
       ...conference,
