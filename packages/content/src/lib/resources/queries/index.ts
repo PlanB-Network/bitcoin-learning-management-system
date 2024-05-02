@@ -3,5 +3,6 @@ export { getBooksQuery } from './get-books.js';
 export { getBuilderQuery } from './get-builder.js';
 export { getBuildersQuery } from './get-builders.js';
 export { getConferenceQuery } from './get-conference.js';
+export { getConferencesQuery } from './get-conferences.js';
 export { getPodcastQuery } from './get-podcast.js';
 export { getPodcastsQuery } from './get-podcasts.js';

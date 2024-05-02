@@ -74,7 +74,7 @@ export const VerticalCard = ({
       </div>
       {buttonText &&
         (link ? (
-          <Link to={link}>
+          <Link to={link} className="mt-auto">
             <Button
               variant={buttonVariant}
               size={isScreenMd ? 'm' : 'xs'}
@@ -87,7 +87,7 @@ export const VerticalCard = ({
           <Button
             variant={buttonVariant}
             size={isScreenMd ? 'm' : 'xs'}
-            className="w-full"
+            className="w-full mt-auto"
           >
             {buttonText}
           </Button>

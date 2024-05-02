@@ -1,7 +1,7 @@
 import { sql } from '@sovereign-university/database';
 import type { JoinedConference } from '@sovereign-university/types';
 
-export const getConferenceQuery = (resourceId: number) => {
+export const getConferencesQuery = () => {
   return sql<JoinedConference[]>`
     SELECT 
       r.id, 
@@ -38,7 +38,6 @@ export const getConferenceQuery = (resourceId: number) => {
     FROM content.conferences c
     JOIN content.resources r ON r.id = c.resource_id
     JOIN content.conferences_stages cs ON cs.conference_id = c.resource_id
-    WHERE r.id = ${resourceId}
     GROUP BY r.id, c.name, c.description, c.year, c.builder, c.languages, c.location, c.website_url, c.twitter_url
   `;
 };

@@ -1,8 +1,14 @@
 import { t } from 'i18next';
 
+import type { JoinedConference } from '@sovereign-university/types';
+
 import { ConferenceRow } from './conference-row.tsx';
 
-export const ConferencesTable = () => {
+interface ConferencesTableProps {
+  conferences: JoinedConference[];
+}
+
+export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
   return (
     <div className="overflow-x-auto text-white max-lg:hidden mt-16">
       <table className="min-w-full text-left">
@@ -24,19 +30,22 @@ export const ConferencesTable = () => {
         </thead>
 
         <tbody className="align-top">
-          <ConferenceRow
-            name="Adopting Bitcoin 2018"
-            location="City very long, Country"
-            tags={['Tag 1', 'Lightning']}
-            languages={['EN', 'FR', 'ES']}
-            link="/"
-          />
-          <ConferenceRow
-            name="Madeira Bitcoin 2019"
-            location="City very long, Country"
-            tags={['Tag 1', 'Lightning', 'Network', 'Humanitarian']}
-            languages={['EN']}
-          />
+          {conferences.map((conference) => {
+            return (
+              <ConferenceRow
+                key={conference.id}
+                name={conference.name}
+                location={conference.location}
+                tags={conference.tags}
+                languages={conference.languages}
+                link={
+                  conference.stages.length > 0
+                    ? `/resources/conference/${conference.id}`
+                    : ''
+                }
+              />
+            );
+          })}
         </tbody>
       </table>
     </div>

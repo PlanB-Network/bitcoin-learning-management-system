@@ -6,6 +6,7 @@ import {
   createGetBuilder,
   createGetBuilders,
   createGetConference,
+  createGetConferences,
   createGetPodcast,
   createGetPodcasts,
 } from '@sovereign-university/content';
@@ -59,6 +60,11 @@ export const resourcesRouter = createTRPCRouter({
       createGetBuilder(ctx.dependencies)(input.id, input.language),
     ),
   // Conferences
+  getConferences: createGetResourcesProcedure()
+    .output(
+      joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })).array(),
+    )
+    .query(async ({ ctx }) => createGetConferences(ctx.dependencies)()),
   getConference: createGetResourceProcedure()
     .output(joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })))
     .query(async ({ ctx, input }) =>

@@ -6,6 +6,7 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { ConferenceStageVideo } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { NewTag } from '#src/atoms/Tag/index.js';
@@ -19,15 +20,31 @@ import { ResourceLayout } from '../layout.tsx';
 const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
-  return rawContent.includes('\n')
-    ? rawContent
-        .replaceAll('[live replay]', '![video]')
-        .split('\n')
-        .map((content, index) => (
-          <ConferencesMarkdownBody key={index} content={content} />
-        ))
-    : rawContent;
+  return rawContent.includes('\n') ? (
+    rawContent
+      .replaceAll('[live replay]', '![video]')
+      .split('\n')
+      .map((content, index) => (
+        <ConferencesMarkdownBody key={index} content={content} />
+      ))
+  ) : (
+    <ConferencesMarkdownBody content={rawContent} />
+  );
 };
+
+const sortVideos = (videos: ConferenceStageVideo[]) => {
+  return videos.sort((a, b) => {
+    return getVideoIdNumber(a) - getVideoIdNumber(b);
+  });
+};
+
+function getVideoIdNumber(video: ConferenceStageVideo) {
+  const parts = video.videoId.split('_');
+  const idPart = parts.at(-1);
+  const idNumber = Number(idPart);
+
+  return Number.isNaN(idNumber) ? 0 : idNumber;
+}
 
 export const Conference = () => {
   // TODO useState + useEffect to get videos and stages
@@ -135,32 +152,34 @@ export const Conference = () => {
                 {t('conferences.details.selectVideo')}
               </span>
               <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto no-scrollbar">
-                {conference.stages[activeStage].videos.map((video, index) => {
-                  const videoName =
-                    video.name.length > 50
-                      ? video.name.slice(0, 47).trim() + '...'
-                      : video.name;
+                {sortVideos(conference.stages[activeStage].videos).map(
+                  (video, index) => {
+                    const videoName =
+                      video.name.length > 50
+                        ? video.name.slice(0, 47).trim() + '...'
+                        : video.name;
 
-                  return index === activeVideo ? (
-                    <Button
-                      key={`${video.name}_${index}`}
-                      variant="newPrimary"
-                      size="l"
-                    >
-                      {video.name}
-                    </Button>
-                  ) : (
-                    <Button
-                      key={`${video.name}_${index}`}
-                      variant="newPrimary"
-                      fakeDisabled
-                      size="l"
-                      onClick={() => setActiveVideo(index)}
-                    >
-                      {videoName}
-                    </Button>
-                  );
-                })}
+                    return index === activeVideo ? (
+                      <Button
+                        key={`${video.name}_${index}`}
+                        variant="newPrimary"
+                        size="l"
+                      >
+                        {video.name}
+                      </Button>
+                    ) : (
+                      <Button
+                        key={`${video.name}_${index}`}
+                        variant="newPrimary"
+                        fakeDisabled
+                        size="l"
+                        onClick={() => setActiveVideo(index)}
+                      >
+                        {videoName}
+                      </Button>
+                    );
+                  },
+                )}
               </div>
             </div>
           </div>
@@ -184,7 +203,7 @@ export const Conference = () => {
               activeItem={
                 conference.stages[activeStage].videos[activeVideo].name
               }
-              itemsList={conference.stages[activeStage].videos.map(
+              itemsList={sortVideos(conference.stages[activeStage].videos).map(
                 (video, index) => {
                   return {
                     name: video.name,

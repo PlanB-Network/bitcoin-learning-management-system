@@ -20,7 +20,7 @@ interface HorizontalCardProps {
     | 'download'
     | 'text';
   link?: string;
-  languages?: string[];
+  languages: string[] | null;
   className?: string;
 }
 

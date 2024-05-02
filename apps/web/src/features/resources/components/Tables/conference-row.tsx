@@ -10,7 +10,7 @@ interface ConferenceRowProps {
   name: string;
   location: string;
   tags: string[];
-  languages: string[];
+  languages: string[] | null;
   link?: string;
 }
 
