@@ -9,10 +9,12 @@ export const createSaveEventPayment =
     uid,
     eventId,
     amount,
+    withPhysical,
   }: {
     uid: string;
     eventId: string;
     amount: number;
+    withPhysical: boolean;
   }) => {
     const { postgres } = dependencies;
 
@@ -45,6 +47,7 @@ export const createSaveEventPayment =
           amount: checkoutData.amount,
           paymentId: checkoutData.id,
           invoiceUrl: checkoutData.checkoutUrl,
+          withPhysical: withPhysical,
         }),
       );
 

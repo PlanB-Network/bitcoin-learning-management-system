@@ -80,9 +80,10 @@ export const EventPaymentModal = ({
     const serverPaymentData = await saveEventPaymentRequest.mutateAsync({
       eventId: eventId,
       amount: satsPrice,
+      withPhysical: accessType === 'physical',
     });
     setPaymentData(serverPaymentData);
-  }, [saveEventPaymentRequest, eventId, satsPrice]);
+  }, [saveEventPaymentRequest, eventId, satsPrice, accessType]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>

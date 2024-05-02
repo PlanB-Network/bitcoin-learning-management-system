@@ -8,6 +8,7 @@ export const insertEventPayment = ({
   amount,
   paymentId,
   invoiceUrl,
+  withPhysical,
 }: {
   uid: string;
   eventId: string;
@@ -15,12 +16,13 @@ export const insertEventPayment = ({
   amount: number;
   paymentId: string;
   invoiceUrl: string;
+  withPhysical: boolean;
 }) => {
   return sql<EventPayment[]>`
   INSERT INTO users.event_payment (
-    uid, event_id, payment_status, amount, payment_id, invoice_url
+    uid, event_id, payment_status, amount, payment_id, invoice_url, with_physical
   ) VALUES (
-    ${uid}, ${eventId}, ${paymentStatus}, ${amount}, ${paymentId}, ${invoiceUrl}
+    ${uid}, ${eventId}, ${paymentStatus}, ${amount}, ${paymentId}, ${invoiceUrl}, ${withPhysical}
   )
   ON CONFLICT (uid, event_id, payment_id) DO UPDATE SET
     payment_status = EXCLUDED.payment_status,

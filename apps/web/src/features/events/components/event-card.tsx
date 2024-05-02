@@ -246,27 +246,36 @@ export const EventCard = ({
           ))}
 
         {/* TODO Book seat actions (before and after booking seat, free and paid) + case where both physical and online (differentiate payment ?) */}
-        {isBookableInPersonEvent && (
-          <Button
-            variant="newPrimary"
-            size="s"
-            className="rounded-lg text-xs md:text-base"
-            onClick={() => {
-              if (isLoggedIn) {
-                setPaymentModalData({
-                  eventId: event.id,
-                  satsPrice: satsPrice,
-                  accessType: 'physical',
-                });
-                setIsPaymentModalOpen(true);
-              } else {
-                openAuthModal();
-              }
-            }}
-          >
-            {t('events.card.bookSeat')}
-          </Button>
-        )}
+        {isBookableInPersonEvent &&
+          filteredEventPayments &&
+          filteredEventPayments.length === 0 && (
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="rounded-lg text-xs md:text-base"
+              onClick={() => {
+                if (isLoggedIn) {
+                  setPaymentModalData({
+                    eventId: event.id,
+                    satsPrice: satsPrice,
+                    accessType: 'physical',
+                  });
+                  setIsPaymentModalOpen(true);
+                } else {
+                  openAuthModal();
+                }
+              }}
+            >
+              {t('events.card.bookSeat')}
+            </Button>
+          )}
+
+        {isBookableInPersonEvent &&
+          filteredEventPayments &&
+          filteredEventPayments.length > 0 &&
+          filteredEventPayments[0].withPhysical === true && (
+            <span className="italic">Seat booked</span>
+          )}
 
         {isPassed && <ReplayButtons />}
       </div>

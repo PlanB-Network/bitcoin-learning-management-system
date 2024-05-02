@@ -14,6 +14,7 @@ const saveEventPaymentProcedure = protectedProcedure
     z.object({
       eventId: z.string(),
       amount: z.number(),
+      withPhysical: z.boolean(),
     }),
   )
   .output(
@@ -30,6 +31,7 @@ const saveEventPaymentProcedure = protectedProcedure
       uid: ctx.user.uid,
       eventId: input.eventId,
       amount: input.amount,
+      withPhysical: input.withPhysical,
     }),
   );
 
