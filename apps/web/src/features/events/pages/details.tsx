@@ -30,13 +30,22 @@ export const EventDetails = () => {
 
           <div className="w-full flex flex-col md:flex-row gap-2 md:gap-6">
             {videoUrl && (
-              <iframe
-                title={`Live ${event?.name}`}
-                className="w-full aspect-video"
-                src={videoUrl}
-                allowFullScreen={true}
-                sandbox="allow-same-origin allow-scripts allow-popups"
-              ></iframe>
+              <div className="flex flex-col gap-6 w-full items-center">
+                <iframe
+                  title={`Live ${event?.name}`}
+                  className="w-full aspect-video"
+                  src={videoUrl}
+                  allowFullScreen={true}
+                  sandbox="allow-same-origin allow-scripts allow-popups"
+                ></iframe>
+                <iframe
+                  src="https://peertube.planb.network/plugins/livechat/router/webchat/room/76c0fa8b-ee1e-4ab3-a1b3-f40318cf44eb"
+                  title="Chat"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  className="w-full"
+                  height="315"
+                ></iframe>
+              </div>
             )}
           </div>
         </div>

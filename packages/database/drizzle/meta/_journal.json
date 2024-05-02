@@ -148,6 +148,13 @@
       "when": 1713450194120,
       "tag": "0020_bouncy_brood",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1714646930649,
+      "tag": "0021_mature_zombie",
+      "breakpoints": true
     }
   ]
 }

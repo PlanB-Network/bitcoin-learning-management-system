@@ -617,6 +617,7 @@ export const CourseChapter = () => {
                     chapter.startDate && (
                       <LiveVideo
                         url={chapter.liveUrl}
+                        chatUrl={chapter.chatUrl}
                         displayVideo={displayLiveVideo}
                       />
                     )}
