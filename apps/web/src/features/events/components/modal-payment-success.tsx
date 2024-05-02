@@ -76,7 +76,7 @@ export const ModalPaymentSuccess = ({
           >
             {t('events.payment.back_events')}
           </Button>
-          {accessType === 'physical' && (
+          {/* {accessType === 'physical' && (
             <Button
               variant="newPrimary"
               onClick={() => {
@@ -86,7 +86,7 @@ export const ModalPaymentSuccess = ({
             >
               {t('events.payment.download_ticket')}
             </Button>
-          )}
+          )} */}
         </div>
       </div>
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
