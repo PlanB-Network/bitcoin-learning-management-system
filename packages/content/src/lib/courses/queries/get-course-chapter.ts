@@ -9,7 +9,7 @@ export const getCourseChapterQuery = (
 ) => {
   return sql<JoinedCourseChapterWithContent[]>`
     SELECT part, chapter, language, title, sections, release_place, raw_content, is_online, is_in_person, 
-    start_date, end_date, timezone, address_line_1, address_line_2, address_line_3, live_url, available_seats, remaining_seats, live_language,
+    start_date, end_date, timezone, address_line_1, address_line_2, address_line_3, live_url, chat_url, available_seats, remaining_seats, live_language,
     c.last_updated, c.last_commit, COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) AS professors
     FROM content.course_chapters_localized
     JOIN content.courses c ON c.id = course_id

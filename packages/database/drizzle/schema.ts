@@ -321,6 +321,7 @@ export const contentCourseChaptersLocalized = content.table(
     addressLine2: text('address_line_2'),
     addressLine3: text('address_line_3'),
     liveUrl: text('live_url'),
+    chatUrl: text('chat_url'),
     availableSeats: integer('available_seats'),
     remainingSeats: integer('remaining_seats'),
     liveLanguage: text('live_language'),

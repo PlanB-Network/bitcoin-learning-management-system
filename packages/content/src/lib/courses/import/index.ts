@@ -127,6 +127,7 @@ interface Chapter {
   addressLine2: string | null;
   addressLine3: string | null;
   liveUrl: string | null;
+  chatUrl: string | null;
   availableSeats: number | null;
   remainingSeats: number | null;
   liveLanguage: string | null;
@@ -179,6 +180,7 @@ const extractParts = (markdown: string): Part[] => {
           addressLine3: '',
           timeZone: '',
           liveUrl: '',
+          chatUrl: '',
           availableSeats: -1,
           remainingSeats: -1,
           liveLanguage: '',
@@ -202,6 +204,7 @@ const extractParts = (markdown: string): Part[] => {
           currentChapter.addressLine2 = extractData(token, 'addressLine2');
           currentChapter.addressLine3 = extractData(token, 'addressLine3');
           currentChapter.liveUrl = extractData(token, 'liveUrl');
+          currentChapter.chatUrl = extractData(token, 'chatUrl');
           const availableSeats = extractData(token, 'availableSeats');
           if (availableSeats) {
             currentChapter.availableSeats = +availableSeats;
@@ -226,6 +229,7 @@ const extractParts = (markdown: string): Part[] => {
             'addressLine2',
             'addressLine3',
             'liveUrl',
+            'chatUrl',
             'availableSeats',
             'liveLanguage',
           ];
@@ -531,6 +535,7 @@ export const createProcessChangedCourse =
                       address_line_2: chapter.addressLine2,
                       address_line_3: chapter.addressLine3,
                       live_url: chapter.liveUrl,
+                      chat_url: chapter.chatUrl,
                       available_seats: chapter.availableSeats,
                       remaining_seats: chapter.availableSeats,
                       live_language: chapter.liveLanguage,
@@ -554,6 +559,7 @@ export const createProcessChangedCourse =
                     address_line_2 = EXCLUDED.address_line_2,
                     address_line_3 = EXCLUDED.address_line_3,
                     live_url = EXCLUDED.live_url,
+                    chat_url = EXCLUDED.chat_url,
                     available_seats = EXCLUDED.available_seats,
                     live_language = EXCLUDED.live_language
                 `;
