@@ -47,7 +47,6 @@ function getVideoIdNumber(video: ConferenceStageVideo) {
 }
 
 export const Conference = () => {
-  // TODO useState + useEffect to get videos and stages
   const [activeStage, setActiveStage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
 
@@ -104,7 +103,9 @@ export const Conference = () => {
               </span>
               <div className="flex flex-wrap gap-4 mt-4 lg:mt-8">
                 {conference.tags.map((tag) => (
-                  <NewTag key={tag}>{tag}</NewTag>
+                  <NewTag key={tag} className="capitalize">
+                    {tag}
+                  </NewTag>
                 ))}
               </div>
               <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">

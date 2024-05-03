@@ -70,7 +70,7 @@ export const Conferences = () => {
           <h3 className="text-sm md:text-xl md:font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px]">
             {t('conferences.latestConferences')}
           </h3>
-          <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8">
+          <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
             {latestConferences && latestConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -108,7 +108,7 @@ export const Conferences = () => {
           <h3 className="text-sm md:text-xl md:font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px]">
             {t('conferences.planBConferences')}
           </h3>
-          <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8">
+          <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
                 <VerticalCard
