@@ -74,7 +74,7 @@ export const Conferences = () => {
             {latestConferences && latestConferences.length > 0 && (
               <>
                 <VerticalCard
-                  imageSrc={latestConferences[0].thumbnail as string}
+                  imageSrc={latestConferences[0].thumbnail}
                   title={latestConferences[0].name}
                   subtitle={latestConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
@@ -87,7 +87,7 @@ export const Conferences = () => {
                   languages={latestConferences[0].languages}
                 />
                 <VerticalCard
-                  imageSrc={latestConferences[1].thumbnail as string}
+                  imageSrc={latestConferences[1].thumbnail}
                   title={latestConferences[1].name}
                   subtitle={latestConferences[1].location}
                   buttonText={t('events.card.watchReplay')}
@@ -112,7 +112,7 @@ export const Conferences = () => {
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
                 <VerticalCard
-                  imageSrc={latestPlanBConferences[0].thumbnail as string}
+                  imageSrc={latestPlanBConferences[0].thumbnail}
                   title={latestPlanBConferences[0].name}
                   subtitle={latestPlanBConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
@@ -125,7 +125,7 @@ export const Conferences = () => {
                   languages={latestPlanBConferences[0].languages}
                 />
                 <VerticalCard
-                  imageSrc={latestPlanBConferences[1].thumbnail as string}
+                  imageSrc={latestPlanBConferences[1].thumbnail}
                   title={latestPlanBConferences[1].name}
                   subtitle={latestPlanBConferences[1].location}
                   buttonText={t('events.card.watchReplay')}

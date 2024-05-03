@@ -225,8 +225,7 @@ export const Conference = () => {
             <div className="flex flex-col gap-3">
               <MarkdownContent
                 rawContent={
-                  conference.stages[activeStage].videos[activeVideo]
-                    .rawContent as string
+                  conference.stages[activeStage].videos[activeVideo].rawContent
                 }
               />
             </div>

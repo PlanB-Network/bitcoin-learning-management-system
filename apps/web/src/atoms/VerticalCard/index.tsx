@@ -25,7 +25,7 @@ interface VerticalCardProps {
     | 'download'
     | 'text';
   link?: string;
-  languages?: string[];
+  languages: string[] | null;
   className?: string;
 }
 

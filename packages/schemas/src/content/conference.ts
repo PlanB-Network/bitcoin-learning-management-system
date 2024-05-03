@@ -9,7 +9,9 @@ import {
 
 import { resourceSchema } from './resource.js';
 
-export const conferenceSchema = createSelectSchema(contentConferences);
+export const conferenceSchema = createSelectSchema(contentConferences, {
+  languages: z.array(z.string()),
+});
 export const conferenceStageSchema = createSelectSchema(
   contentConferencesStages,
 );
