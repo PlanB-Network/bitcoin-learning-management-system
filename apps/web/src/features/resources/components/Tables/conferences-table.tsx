@@ -11,19 +11,19 @@ interface ConferencesTableProps {
 export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
   return (
     <div className="overflow-x-auto text-white max-lg:hidden mt-16">
-      <table className="min-w-full text-left">
+      <table className="min-w-full text-left table-fixed">
         <thead>
           <tr>
-            <th scope="col" className="desktop-h7 pb-5 pr-4">
+            <th scope="col" className="desktop-h7 pb-5 pr-4 w-80">
               {t('conferences.conferenceName')}
             </th>
-            <th scope="col" className="desktop-h7 pb-5 pr-4">
+            <th scope="col" className="desktop-h7 pb-5 pr-4 w-52">
               {t('conferences.location')}
             </th>
             <th scope="col" className="desktop-h7 pb-5 pr-4">
               {t('conferences.topics')}
             </th>
-            <th scope="col" className="desktop-h7 pb-5">
+            <th scope="col" className="desktop-h7 pb-5 w-80">
               {t('conferences.language')}
             </th>
           </tr>

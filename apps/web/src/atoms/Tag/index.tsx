@@ -1,3 +1,5 @@
+import { cn } from '@sovereign-university/ui';
+
 import { compose } from '../../utils/index.ts';
 import type { BaseAtomProps } from '../types.tsx';
 
@@ -9,6 +11,7 @@ interface TagProps extends BaseAtomProps {
 
 interface NewTagProps {
   children: string;
+  className?: string;
 }
 
 const classesBySize = {
@@ -30,9 +33,14 @@ export const Tag = ({ children, size, className }: TagProps) => {
   );
 };
 
-export const NewTag = ({ children }: NewTagProps) => {
+export const NewTag = ({ children, className }: NewTagProps) => {
   return (
-    <span className="text-newGray-4 text-xs sm:text-base font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md">
+    <span
+      className={cn(
+        'text-newGray-4 text-xs sm:text-base font-medium leading-normal px-2.5 py-1.5 border border-newGray-1 bg-newBlack-3 rounded-md w-fit',
+        className,
+      )}
+    >
       {children}
     </span>
   );

@@ -129,13 +129,14 @@ export const Conference = () => {
                       key={`${stage.name}_${index}`}
                       variant="newPrimary"
                       size="l"
+                      className="capitalize"
                     >
                       {stage.name}
                     </Button>
                   ) : (
                     <button
                       key={`${stage.name}_${index}`}
-                      className="p-4 text-newGray-1 text-lg leading-normal font-medium"
+                      className="p-4 text-newGray-1 text-lg leading-normal font-medium capitalize"
                       onClick={() => {
                         setActiveVideo(0);
                         setActiveStage(index);
@@ -164,6 +165,7 @@ export const Conference = () => {
                         key={`${video.name}_${index}`}
                         variant="newPrimary"
                         size="l"
+                        className="capitalize"
                       >
                         {video.name}
                       </Button>
@@ -174,6 +176,7 @@ export const Conference = () => {
                         fakeDisabled
                         size="l"
                         onClick={() => setActiveVideo(index)}
+                        className="capitalize"
                       >
                         {videoName}
                       </Button>
@@ -237,7 +240,6 @@ export const Conference = () => {
                 variant="newSecondary"
                 size={isScreenSm ? 'l' : 's'}
                 className="mr-auto"
-                onHoverArrow="left"
                 onClick={() => setActiveVideo((v) => v - 1)}
               >
                 {t('conferences.details.previousVideo')}

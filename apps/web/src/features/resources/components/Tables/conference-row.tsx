@@ -23,19 +23,21 @@ export const ConferenceRow = ({
 }: ConferenceRowProps) => {
   return (
     <tr>
-      <td className="desktop-h5 py-5 pr-4">{name}</td>
+      <td className="desktop-h5 py-5 pr-4 capitalize">{name}</td>
       <td className="desktop-h8 py-5 pr-4 text-newGray-1">{location}</td>
       <td className="py-5 pr-4">
         <div className="flex gap-4 flex-wrap items-center">
           {tags.map((tag) => (
-            <NewTag key={tag}>{tag}</NewTag>
+            <NewTag key={tag} className="capitalize">
+              {tag}
+            </NewTag>
           ))}
         </div>
       </td>
       <td className="py-5">
         <div className="flex justify-center gap-4">
           <div className="flex justify-center gap-2.5 mx-auto flex-wrap">
-            {languages.slice(0, 2).map((language) => (
+            {languages?.slice(0, 2).map((language) => (
               <span
                 key={language}
                 className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md h-fit"
@@ -46,7 +48,7 @@ export const ConferenceRow = ({
           </div>
           {link ? (
             <Link to={link} className="min-w-fit">
-              <Button variant="newPrimary">
+              <Button variant="newPrimary" onHoverArrow>
                 {t('events.card.watchReplay')}
               </Button>
             </Link>

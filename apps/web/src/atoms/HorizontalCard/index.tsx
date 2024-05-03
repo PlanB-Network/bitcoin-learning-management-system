@@ -41,7 +41,7 @@ export const HorizontalCard = ({
       )}
     >
       <div className="flex flex-col justify-between gap-1 px-1">
-        <h4 className="mobile-subtitle1 text-white">{title}</h4>
+        <h4 className="mobile-subtitle1 text-white capitalize">{title}</h4>
         {subtitle && (
           <span className="mobile-caption1 text-newGray-4">{subtitle}</span>
         )}
@@ -59,12 +59,17 @@ export const HorizontalCard = ({
         {buttonText &&
           (link ? (
             <Link to={link}>
-              <Button variant={buttonVariant} className="w-fit" size="s">
+              <Button
+                variant={buttonVariant}
+                onHoverArrow
+                className="w-fit"
+                size="s"
+              >
                 {buttonText}
               </Button>
             </Link>
           ) : (
-            <Button variant={buttonVariant} className="w-fit" size="s">
+            <Button variant={buttonVariant} disabled className="w-fit" size="s">
               {buttonText}
             </Button>
           ))}

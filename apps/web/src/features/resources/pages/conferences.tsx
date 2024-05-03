@@ -93,7 +93,7 @@ export const Conferences = () => {
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
                   link={
-                    latestConferences[1].stages.length > 1
+                    latestConferences[1].stages.length > 0
                       ? `/resources/conference/${latestConferences[1].id}`
                       : ''
                   }
@@ -131,7 +131,7 @@ export const Conferences = () => {
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
                   link={
-                    latestPlanBConferences[1].stages.length > 1
+                    latestPlanBConferences[1].stages.length > 0
                       ? `/resources/conference/${latestPlanBConferences[1].id}`
                       : ''
                   }

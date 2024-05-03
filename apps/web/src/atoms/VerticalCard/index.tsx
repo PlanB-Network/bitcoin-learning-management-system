@@ -65,7 +65,9 @@ export const VerticalCard = ({
         )}
       </div>
       <div className="flex flex-col gap-1 px-1">
-        <h4 className="mobile-subtitle2 md:desktop-h6 text-white">{title}</h4>
+        <h4 className="mobile-subtitle2 md:desktop-h6 text-white capitalize">
+          {title}
+        </h4>
         {subtitle && (
           <span className="mobile-caption1 md:desktop-body1 text-newGray-4">
             {subtitle}
@@ -78,6 +80,7 @@ export const VerticalCard = ({
             <Button
               variant={buttonVariant}
               size={isScreenMd ? 'm' : 'xs'}
+              onHoverArrow
               className="w-full"
             >
               {buttonText}
@@ -87,6 +90,7 @@ export const VerticalCard = ({
           <Button
             variant={buttonVariant}
             size={isScreenMd ? 'm' : 'xs'}
+            disabled
             className="w-full mt-auto"
           >
             {buttonText}
