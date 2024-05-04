@@ -39,7 +39,7 @@ export const EventDetails = () => {
                   sandbox="allow-same-origin allow-scripts allow-popups"
                 ></iframe>
                 <iframe
-                  src="https://peertube.planb.network/plugins/livechat/router/webchat/room/76c0fa8b-ee1e-4ab3-a1b3-f40318cf44eb"
+                  src="https://peertube.planb.network/plugins/livechat/router/webchat/room/4f4a811a-2d98-40dc-80ea-736088b408e7"
                   title="Chat"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   className="w-full"
