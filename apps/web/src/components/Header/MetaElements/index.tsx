@@ -23,7 +23,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
   const isMobile = useSmaller('lg');
-  const isScreenLg = useGreater('md');
+  const isScreenLg = useGreater('lg');
 
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
