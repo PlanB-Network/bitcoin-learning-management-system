@@ -245,6 +245,12 @@
       "missedp1": "Did you miss an event ?",
       "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
     },
+    "newEvent": {
+      "button": "Add my event",
+      "description": "Of course ! All Bitcoin events can enhance their visibility here, and every initiative for creating a new event is welcome :)",
+      "subtitle": "Orange pilling a billion people is not easy",
+      "title": "Want to add your event ?"
+    },
     "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
     "pageSubtitle": "Bottom up adoption enhanced by a strong network",
     "pageTitle": "Looking for a Bitcoin event to go to ?",
