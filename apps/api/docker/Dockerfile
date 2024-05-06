@@ -14,7 +14,7 @@ WORKDIR /app
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN npm install --location=global pnpm@8
+RUN npm install --location=global pnpm@9
 RUN pnpm add --global turbo
 
 COPY . .
@@ -34,7 +34,7 @@ RUN apk add --no-cache -U \
 
 RUN apk update
 
-RUN npm install --location=global pnpm@8
+RUN npm install --location=global pnpm@9
 
 WORKDIR /app
 
