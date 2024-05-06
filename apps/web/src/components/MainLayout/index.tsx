@@ -32,7 +32,7 @@ export const MainLayout = ({
           ? 'bg-gray-100'
           : variant === 'blue'
             ? 'bg-blue-200'
-            : 'bg-blue-1000',
+            : 'bg-black',
         fillScreen ? 'min-h-dvh' : '',
       )}
       ref={box}

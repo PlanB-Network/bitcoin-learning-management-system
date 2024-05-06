@@ -19,7 +19,7 @@ export const RESOURCES_CATEGORIES = [
   {
     name: 'conferences',
     image: conferenceSvg,
-    unreleased: true,
+    unreleased: false,
   },
   {
     name: 'builders',

@@ -65,6 +65,52 @@
   }
 }
 
+@layer components {
+  .desktop-body1 {
+    @apply text-base font-normal leading-normal tracking-[0.15px];
+  }
+
+  .desktop-h5 {
+    @apply text-2xl font-normal leading-snug;
+  }
+
+  .desktop-h6 {
+    @apply text-2xl font-semibold leading-snug;
+  }
+
+  .desktop-h7 {
+    @apply text-xl font-semibold leading-[160%] tracking-[0.15px];
+  }
+
+  .desktop-h8 {
+    @apply text-xl font-normal leading-relaxed tracking-[0.15px];
+  }
+
+  .desktop-subtitle1 {
+    @apply text-base font-normal leading-[175%] tracking-[0.15px];
+  }
+
+  .mobile-body2 {
+    @apply text-sm font-normal leading-[143%] tracking-[0.17px];
+  }
+
+  .mobile-caption1 {
+    @apply text-xs font-normal leading-normal;
+  }
+
+  .mobile-h2 {
+    @apply text-2xl font-medium leading-tight;
+  }
+
+  .mobile-subtitle1 {
+    @apply text-base font-medium leading-normal tracking-[0.15px];
+  }
+
+  .mobile-subtitle2 {
+    @apply text-sm font-medium leading-[120%];
+  }
+}
+
 @layer utilities {
   .filter-white {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)
@@ -74,5 +120,13 @@
   .filter-newOrange1 {
     filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
       hue-rotate(3deg) brightness(105%) contrast(102%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

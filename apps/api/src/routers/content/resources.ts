@@ -5,12 +5,15 @@ import {
   createGetBooks,
   createGetBuilder,
   createGetBuilders,
+  createGetConference,
+  createGetConferences,
   createGetPodcast,
   createGetPodcasts,
 } from '@sovereign-university/content';
 import {
   joinedBookSchema,
   joinedBuilderSchema,
+  joinedConferenceSchema,
   joinedPodcastSchema,
 } from '@sovereign-university/schemas';
 
@@ -55,6 +58,17 @@ export const resourcesRouter = createTRPCRouter({
     .output(joinedBuilderSchema.merge(z.object({ logo: z.string() })))
     .query(async ({ ctx, input }) =>
       createGetBuilder(ctx.dependencies)(input.id, input.language),
+    ),
+  // Conferences
+  getConferences: createGetResourcesProcedure()
+    .output(
+      joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })).array(),
+    )
+    .query(async ({ ctx }) => createGetConferences(ctx.dependencies)()),
+  getConference: createGetResourceProcedure()
+    .output(joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })))
+    .query(async ({ ctx, input }) =>
+      createGetConference(ctx.dependencies)(input.id),
     ),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()

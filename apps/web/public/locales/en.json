@@ -80,6 +80,29 @@
     "pageSubtitle": "This portal is open-source & open to contribution.",
     "pageTitle": "Bitcoin Builders"
   },
+  "conferences": {
+    "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
+    "conferenceName": "Conference name",
+    "conferencesSinceGenesis": "Bitcoin Conferences Archives since Genesis Block",
+    "description": "Conferences are a key element in the Bitcoin industry. They are part of any Bitcoiner’s educational journey.  We built this tool to help you navigate through hundreds of conferences.",
+    "details": {
+      "findReplay": "Find a replay",
+      "nextVideo": "Next video",
+      "previousVideo": "Previous video",
+      "selectStage": "Select a stage",
+      "selectVideo": "Select a video",
+      "speaker": "Speaker",
+      "watchReplay": "Watch the replay"
+    },
+    "language": "Language",
+    "latestConferences": "Latest conferences",
+    "location": "Location",
+    "noConferences": "No conferences added for {{year}} yet.",
+    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageTitle": "Conference replays",
+    "planBConferences": "Plan B conferences",
+    "topics": "Topics"
+  },
   "courses": {
     "categories": {
       "btc": "Bitcoin",

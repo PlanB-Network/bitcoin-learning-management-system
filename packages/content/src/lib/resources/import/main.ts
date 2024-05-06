@@ -75,9 +75,13 @@ export const createProcessMainFile =
 
       // If the resource has tags, insert them into the tags table and link them to the resource
       if (result && parsedResource.tags && parsedResource.tags?.length > 0) {
+        const lowercaseTags = parsedResource.tags.map((tag) =>
+          tag.toLowerCase(),
+        );
+
         await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedResource.tags.map((tag) => ({ name: tag.toLowerCase() })),
+            lowercaseTags.map((tag) => ({ name: tag })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;
@@ -86,7 +90,7 @@ export const createProcessMainFile =
           INSERT INTO content.resource_tags (resource_id, tag_id)
           SELECT
             ${result.id}, 
-            id FROM content.tags WHERE name = ANY(${parsedResource.tags})
+            id FROM content.tags WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;
       }

@@ -155,6 +155,13 @@
       "when": 1714646930649,
       "tag": "0021_mature_zombie",
       "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "5",
+      "when": 1714998805711,
+      "tag": "0022_wonderful_arachne",
+      "breakpoints": true
     }
   ]
 }

@@ -8,6 +8,7 @@ import { getContentType, getRelativePath } from '../../utils.js';
 
 import { createProcessChangedBook } from './categories/books.js';
 import { createProcessChangedBuilder } from './categories/builders.js';
+import { createProcessChangedConference } from './categories/conferences.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { assertSupportedCategoryPath } from './const.js';
 import type { ResourceCategory } from './const.js';
@@ -51,7 +52,10 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 
 export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   const resourceFiles = files.filter(
-    (item) => getContentType(item.path) === 'resources',
+    (item) =>
+      getContentType(item.path) === 'resources' ||
+      (getContentType(item.path) === 'resources/conference' &&
+        !item.path.includes('events')),
   );
 
   const groupedResources = new Map<string, ChangedResource>();
@@ -92,6 +96,7 @@ export const createProcessChangedResource =
     const mapHandlers = {
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
+      conference: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
     } as const;
 

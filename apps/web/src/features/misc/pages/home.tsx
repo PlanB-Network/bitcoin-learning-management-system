@@ -45,7 +45,7 @@ export const Home = () => {
   const Page = () => {
     return (
       <MainLayout footerVariant="dark">
-        <div className="bg-blue-1000 flex flex-col text-white md:px-8 lg:px-12">
+        <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
           <HeaderSection />
           <NumberSection />
           <EducationSection />
