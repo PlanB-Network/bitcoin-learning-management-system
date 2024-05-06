@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedConference } from '@sovereign-university/types';
 
@@ -184,9 +184,20 @@ export const Conferences = () => {
 
       {filteredConferences && filteredConferences.length === 0 && (
         <p className="text-newGray-2 text-center mx-auto w-full mt-5 md:mt-10">
-          No conferences added for {activeYear} yet.
+          {t('conferences.noConferences', { year: activeYear })}
         </p>
       )}
+
+      <p className="text-newGray-2 text-center mx-auto w-full mt-5 md:mt-10">
+        <Trans i18nKey="conferences.addConferences">
+          <a
+            className="underline underline-offset-2 hover:text-darkOrange-5"
+            href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+          >
+            Github Repository
+          </a>
+        </Trans>
+      </p>
     </ResourceLayout>
   );
 };

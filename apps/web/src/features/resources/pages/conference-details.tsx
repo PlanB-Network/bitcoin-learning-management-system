@@ -80,6 +80,7 @@ export const Conference = () => {
       title={t('conferences.pageTitle')}
       tagLine={t('conferences.pageSubtitle')}
       activeCategory="conferences"
+      showPageHeader={false}
       maxWidth="1360"
       className="max-md:mx-4"
     >

@@ -27,6 +27,7 @@ interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   link?: ToPathOption<any>;
   // link?: ToPathOption<RegisteredRouter['routeTree']>;
+  showPageHeader?: boolean;
   activeCategory?: string;
   maxWidth?: '1152' | '1360';
 }
@@ -39,6 +40,7 @@ export const ResourceLayout = ({
   pagination,
   className,
   link,
+  showPageHeader = true,
   activeCategory,
   maxWidth,
 }: Props) => {
@@ -54,13 +56,15 @@ export const ResourceLayout = ({
           <CategoryTabs resourceActiveCategory={activeCategory} />
           <ResourcesDropdownMenu resourceActiveCategory={activeCategory} />
 
-          <PageHeader
-            title={title}
-            description={tagLine || ''}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            link={link ? link : ''}
-            hasGithubDescription={true}
-          />
+          {showPageHeader && (
+            <PageHeader
+              title={title}
+              description={tagLine || ''}
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              link={link ? link : ''}
+              hasGithubDescription={true}
+            />
+          )}
 
           {filterBar && (
             <div className="flex justify-center my-3 sm:my-6 md:my-8">
