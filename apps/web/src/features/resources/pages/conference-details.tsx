@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,8 +12,6 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '../../../utils/index.ts';
 import { DropdownMenu } from '../components/DropdownMenu/dropdown-menu.tsx';
 import { ResourceLayout } from '../layout.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
   return rawContent.includes('\n') ? (
@@ -61,8 +55,6 @@ export const Conference = () => {
     id: Number(conferenceId),
     language: i18n.language ?? 'en',
   });
-
-  const isScreenSm = useGreater('sm');
 
   useEffect(() => {
     if (!conference && isFetched && !navigateTo404Called.current) {
@@ -260,13 +252,14 @@ export const Conference = () => {
             </div>
 
             <div className="flex w-full mt-4 md:mt-11">
+              {/* Desktop */}
               {activeVideo > 0 && (
                 <Button
                   variant="newSecondary"
-                  size={isScreenSm ? 'l' : 's'}
+                  size="l"
                   onHoverArrow
                   onHoverArrowDirection="left"
-                  className="mr-auto"
+                  className="mr-auto max-sm:hidden"
                   onClick={() => setActiveVideo((v) => v - 1)}
                 >
                   {t('conferences.details.previousVideo')}
@@ -277,9 +270,36 @@ export const Conference = () => {
                 conference.stages[activeStage].videos.length - 1 && (
                 <Button
                   variant="newSecondary"
-                  size={isScreenSm ? 'l' : 's'}
+                  size="l"
                   onHoverArrow
-                  className="ml-auto"
+                  className="ml-auto max-sm:hidden"
+                  onClick={() => setActiveVideo((v) => v + 1)}
+                >
+                  {t('conferences.details.nextVideo')}
+                </Button>
+              )}
+
+              {/* Mobile */}
+              {activeVideo > 0 && (
+                <Button
+                  variant="newSecondary"
+                  size="s"
+                  onHoverArrow
+                  onHoverArrowDirection="left"
+                  className="mr-auto sm:hidden"
+                  onClick={() => setActiveVideo((v) => v - 1)}
+                >
+                  {t('conferences.details.previousVideo')}
+                </Button>
+              )}
+
+              {activeVideo <
+                conference.stages[activeStage].videos.length - 1 && (
+                <Button
+                  variant="newSecondary"
+                  size="s"
+                  onHoverArrow
+                  className="ml-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v + 1)}
                 >
                   {t('conferences.details.nextVideo')}
