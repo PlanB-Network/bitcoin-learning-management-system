@@ -17,6 +17,9 @@ const fixEmbedUrl = (src: string) => {
     case src.includes('youtu.be'): {
       return src.replace('youtu.be/', 'youtube.com/embed/');
     }
+    case src.includes('youtube.com') && src.includes('live'): {
+      return src.replace('youtube.com/live/', 'youtube.com/embed/');
+    }
     case src.includes('youtube.com'): {
       return src.replace('youtube.com/', 'youtube.com/embed/');
     }
