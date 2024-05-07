@@ -2,7 +2,7 @@ import {
   BreakPointHooks,
   breakpointsTailwind,
 } from '@react-hooks-library/core';
-import { useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -70,6 +70,22 @@ export const Conference = () => {
       navigateTo404Called.current = true;
     }
   }, [conference, isFetched, navigateTo404]);
+
+  const handleKeyDownVideo = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+  ): void => {
+    if (conference && activeVideo > 0 && event.key === 'ArrowLeft') {
+      setActiveVideo((v) => v - 1);
+    }
+
+    if (
+      conference &&
+      activeVideo < conference.stages[activeStage].videos.length - 1 &&
+      event.key === 'ArrowRight'
+    ) {
+      setActiveVideo((v) => v + 1);
+    }
+  };
 
   if (!conference) {
     return;
@@ -154,7 +170,7 @@ export const Conference = () => {
               <span className="desktop-h7 text-white">
                 {t('conferences.details.selectVideo')}
               </span>
-              <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto no-scrollbar">
+              <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto scrollbar-thin scroll-smooth">
                 {sortVideos(conference.stages[activeStage].videos).map(
                   (video, index) => {
                     const videoName =
@@ -220,44 +236,69 @@ export const Conference = () => {
           </div>
 
           {/* Video */}
-          <div className="flex flex-col mt-6 w-full">
-            <h3 className="text-[40px] text-white leading-tight tracking-[0.25px] mb-6 max-md:hidden">
-              {conference.stages[activeStage].videos[activeVideo].name}
-            </h3>
-            <h3 className="mobile-subtitle1 text-white mb-2.5 md:hidden">
-              {t('conferences.details.watchReplay')}
-            </h3>
-            <div className="flex flex-col gap-3">
-              <MarkdownContent
-                rawContent={
-                  conference.stages[activeStage].videos[activeVideo].rawContent
-                }
-              />
+          <div
+            onKeyDown={(event) => handleKeyDownVideo(event)}
+            tabIndex={-1}
+            role="presentation"
+            className="outline-none"
+          >
+            <div className="flex flex-col mt-6 w-full">
+              <h3 className="text-[40px] text-white leading-tight tracking-[0.25px] mb-6 max-md:hidden">
+                {conference.stages[activeStage].videos[activeVideo].name}
+              </h3>
+              <h3 className="mobile-subtitle1 text-white mb-2.5 md:hidden">
+                {t('conferences.details.watchReplay')}
+              </h3>
+              <div className="flex flex-col gap-3">
+                <MarkdownContent
+                  rawContent={
+                    conference.stages[activeStage].videos[activeVideo]
+                      .rawContent
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="flex w-full mt-4 md:mt-11">
+              {activeVideo > 0 && (
+                <Button
+                  variant="newSecondary"
+                  size={isScreenSm ? 'l' : 's'}
+                  onHoverArrow
+                  onHoverArrowDirection="left"
+                  className="mr-auto"
+                  onClick={() => setActiveVideo((v) => v - 1)}
+                >
+                  {t('conferences.details.previousVideo')}
+                </Button>
+              )}
+
+              {activeVideo <
+                conference.stages[activeStage].videos.length - 1 && (
+                <Button
+                  variant="newSecondary"
+                  size={isScreenSm ? 'l' : 's'}
+                  onHoverArrow
+                  className="ml-auto"
+                  onClick={() => setActiveVideo((v) => v + 1)}
+                >
+                  {t('conferences.details.nextVideo')}
+                </Button>
+              )}
             </div>
           </div>
 
-          <div className="flex w-full mt-4 md:mt-11">
-            {activeVideo > 0 && (
+          <div className="flex justify-center md:justify-start">
+            <Link to="/resources/conferences">
               <Button
-                variant="newSecondary"
-                size={isScreenSm ? 'l' : 's'}
-                className="mr-auto"
-                onClick={() => setActiveVideo((v) => v - 1)}
+                variant="newPrimary"
+                onHoverArrow
+                onHoverArrowDirection="left"
+                className="mt-10"
               >
-                {t('conferences.details.previousVideo')}
+                {t('conferences.backConferences')}
               </Button>
-            )}
-
-            {activeVideo < conference.stages[activeStage].videos.length - 1 && (
-              <Button
-                variant="newSecondary"
-                size={isScreenSm ? 'l' : 's'}
-                className="ml-auto"
-                onClick={() => setActiveVideo((v) => v + 1)}
-              >
-                {t('conferences.details.nextVideo')}
-              </Button>
-            )}
+            </Link>
           </div>
         </>
       )}

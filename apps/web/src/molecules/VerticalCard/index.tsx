@@ -4,26 +4,17 @@ import {
 } from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 
+import type { ButtonProps } from '@sovereign-university/ui';
 import { Button, cn } from '@sovereign-university/ui';
 
-import Flag from '../Flag/index.tsx';
+import Flag from '../../atoms/Flag/index.tsx';
 
 interface VerticalCardProps {
   imageSrc: string;
   title: string;
   subtitle?: string;
   buttonText?: string;
-  buttonVariant?:
-    | 'primary'
-    | 'newPrimary'
-    | 'newPrimaryGhost'
-    | 'secondary'
-    | 'newSecondary'
-    | 'tertiary'
-    | 'newTertiary'
-    | 'ghost'
-    | 'download'
-    | 'text';
+  buttonVariant?: ButtonProps['variant'];
   link?: string;
   languages: string[] | null;
   className?: string;

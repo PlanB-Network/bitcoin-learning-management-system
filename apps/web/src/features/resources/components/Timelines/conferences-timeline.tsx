@@ -28,11 +28,11 @@ export const ConferencesTimeLine = ({
   });
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
+    if (emblaApi) emblaApi.scrollPrev(false);
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
+    if (emblaApi) emblaApi.scrollNext(false);
   }, [emblaApi]);
 
   const scrollTo = useCallback(
@@ -47,6 +47,7 @@ export const ConferencesTimeLine = ({
       <button
         className="max-md:hidden p-[11px] rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
         onClick={scrollPrev}
+        onMouseMoveCapture={scrollPrev}
       >
         <RxCaretLeft size={24} />
       </button>
@@ -86,6 +87,7 @@ export const ConferencesTimeLine = ({
       <button
         className="max-md:hidden p-[11px] rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
         onClick={scrollNext}
+        onMouseMoveCapture={scrollNext}
       >
         <RxCaretRight size={24} />
       </button>

@@ -35,17 +35,19 @@ export const ConferenceRow = ({
         </div>
       </td>
       <td className="py-5">
-        <div className="flex justify-center gap-4">
-          <div className="flex justify-center gap-2.5 mx-auto flex-wrap">
-            {languages?.slice(0, 2).map((language) => (
-              <span
-                key={language}
-                className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md h-fit"
-              >
-                <Flag code={language} size="l" />
-              </span>
-            ))}
-          </div>
+        <div className="flex justify-center items-center mx-auto flex-wrap gap-2.5">
+          {languages?.slice(0, 2).map((language) => (
+            <span
+              key={language}
+              className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md h-fit"
+            >
+              <Flag code={language} size="l" />
+            </span>
+          ))}
+        </div>
+      </td>
+      <td className="py-5">
+        <div className="flex justify-center items-center">
           {link ? (
             <Link to={link} className="min-w-fit">
               <Button variant="newPrimary" onHoverArrow>

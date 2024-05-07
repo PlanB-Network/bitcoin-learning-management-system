@@ -48,3 +48,21 @@ export const Rounded: Story = {
     variant: 'newPrimary',
   },
 };
+
+export const FakeDisabled: Story = {
+  args: {
+    children: 'FakeDisabled',
+    fakeDisabled: true,
+    size: 'l',
+    variant: 'newPrimary',
+  },
+};
+
+export const OnHoverArrow: Story = {
+  args: {
+    children: 'OnHoverArrow',
+    onHoverArrow: true,
+    size: 'l',
+    variant: 'newPrimary',
+  },
+};

@@ -3,12 +3,12 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedConference } from '@sovereign-university/types';
 
-import { HorizontalCard } from '#src/atoms/HorizontalCard/index.js';
-import { VerticalCard } from '#src/atoms/VerticalCard/index.js';
+import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';
+import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ConferencesTable } from '../components/Tables/conferences-table.tsx';
-import { ConferencesTimeLine } from '../components/Timelines/conferences.tsx';
+import { ConferencesTimeLine } from '../components/Timelines/conferences-timeline.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const Conferences = () => {

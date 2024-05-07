@@ -23,9 +23,10 @@ export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
             <th scope="col" className="desktop-h7 pb-5 pr-4">
               {t('conferences.topics')}
             </th>
-            <th scope="col" className="desktop-h7 pb-5 pl-8 w-80">
+            <th scope="col" className="desktop-h7 pb-5 w-28">
               {t('conferences.language')}
             </th>
+            <th scope="col" className="desktop-h7 pb-5 w-52"></th>
           </tr>
         </thead>
 

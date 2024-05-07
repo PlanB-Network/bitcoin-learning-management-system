@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useMemo } from 'react';
 import '../../styles/global.css';
-import { FaArrowRightLong } from 'react-icons/fa6';
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 
 import { cn } from '../../lib/utils.ts';
 import type { BaseAtomProps } from '../types.ts';
@@ -32,6 +32,7 @@ export interface ButtonProps
   iconRight?: JSX.Element;
   icon?: JSX.Element;
   onHoverArrow?: boolean;
+  onHoverArrowDirection?: 'left' | 'right';
 }
 
 const classesBySize = {
@@ -68,6 +69,7 @@ export const Button = ({
   iconLeft,
   iconRight,
   onHoverArrow,
+  onHoverArrowDirection = 'right',
   icon,
   className,
   disabled,
@@ -84,7 +86,7 @@ export const Button = ({
   );
 
   const hoverArrowClasses =
-    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-20 group-hover:opacity-100 group-hover:ml-3';
+    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100';
 
   let disabledClass = disabled ? 'cursor-default ' : '';
   if (disabled || fakeDisabled) {
@@ -152,10 +154,19 @@ export const Button = ({
       )}
       {...buttonProps}
     >
+      {onHoverArrow && onHoverArrowDirection === 'left' && (
+        <FaArrowLeftLong
+          className={cn(hoverArrowClasses, 'group-hover:mr-3')}
+        />
+      )}
       {iconLeft && <span className="mr-3">{iconLeft}</span>}
       {children}
       {iconRight && <span className="ml-3">{iconRight}</span>}
-      {onHoverArrow && <FaArrowRightLong className={hoverArrowClasses} />}
+      {onHoverArrow && onHoverArrowDirection === 'right' && (
+        <FaArrowRightLong
+          className={cn(hoverArrowClasses, 'group-hover:ml-3')}
+        />
+      )}
     </button>
   );
 };
