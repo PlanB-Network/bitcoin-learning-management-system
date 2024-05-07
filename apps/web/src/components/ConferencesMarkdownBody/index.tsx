@@ -6,8 +6,34 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 import { CopyButton } from '../CopyButton/index.tsx';
+
+const fixEmbedUrl = (src: string) => {
+  if (src.includes('embed')) {
+    return src;
+  }
+
+  switch (true) {
+    case src.includes('youtu.be'): {
+      return src.replace('youtu.be/', 'youtube.com/embed/');
+    }
+    case src.includes('youtube.com'): {
+      return src.replace('youtube.com/', 'youtube.com/embed/');
+    }
+    case src.includes('peertube.planb.network'): {
+      return src.replace(
+        'peertube.planb.network/videos/',
+        'peertube.planb.network/videos/embed/',
+      );
+    }
+    case src.includes('makertube.net'): {
+      return src.replace('makertube.net/w/', 'makertube.net/videos/embed/');
+    }
+    default: {
+      return src;
+    }
+  }
+};
 
 export const ConferencesMarkdownBody = ({
   content,
@@ -73,16 +99,19 @@ export const ConferencesMarkdownBody = ({
         img: ({ src, alt }) =>
           src?.includes('youtube.com') ||
           src?.includes('youtu.be') ||
-          src?.includes('peerturbe') ? (
+          src?.includes('peertube') ||
+          src?.includes('makertube') ? (
             <div className="mx-auto max-w-full mb-2.5 md:mb-5 w-full aspect-video">
-              <ReactPlayer
+              <iframe
                 width={'100%'}
                 height={'100%'}
                 className="mx-auto mb-2 rounded-lg"
-                controls={true}
-                url={src}
-                src={alt}
-              />
+                src={fixEmbedUrl(src)}
+                title="Conference Replay"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
             </div>
           ) : (
             <img

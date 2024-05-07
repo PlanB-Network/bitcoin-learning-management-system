@@ -82,6 +82,7 @@
   },
   "conferences": {
     "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
+    "backConferences": "Back to conferences",
     "conferenceName": "Conference name",
     "conferencesSinceGenesis": "Bitcoin Conferences Archives since Genesis Block",
     "description": "Conferences are a key element in the Bitcoin industry. They are part of any Bitcoiner’s educational journey.  We built this tool to help you navigate through hundreds of conferences.",
@@ -391,6 +392,7 @@
     "betDescription": "Collection of content that you can use for your educational projects",
     "btc101Description": "Get a better understanding of bitcoin with this lessons",
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
+    "conferencesDescription": "Collection of Bitcoin conference replays since the Genesis Block",
     "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
     "libraryDescription": "Discover plenty of books to improve your knowledge",
     "lightningDescription": "Manage your lightning node and use the lightning network",
