@@ -2,13 +2,18 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
-import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
+import type {
+  EventPayment,
+  JoinedEvent,
+  UserEvent,
+} from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface EventsCarouselProps {
   events: JoinedEvent[];
   eventPayments: EventPayment[] | undefined;
+  userEvents: UserEvent[] | undefined;
   openAuthModal: () => void;
   isLoggedIn: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,6 +30,7 @@ interface EventsCarouselProps {
 export const EventsCarousel = ({
   events,
   eventPayments,
+  userEvents,
   openAuthModal,
   isLoggedIn,
   setIsPaymentModalOpen,
@@ -60,6 +66,7 @@ export const EventsCarousel = ({
               <EventCard
                 event={event}
                 eventPayments={eventPayments}
+                userEvents={userEvents}
                 isPassed={true}
                 openAuthModal={openAuthModal}
                 isLoggedIn={isLoggedIn}

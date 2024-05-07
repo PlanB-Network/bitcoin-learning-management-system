@@ -21,6 +21,8 @@ export const Events = () => {
   const { data: events } = trpc.content.getEvents.useQuery();
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
+  const { data: userEvents, refetch: refetchUserEvents } =
+    trpc.user.events.getUserEvents.useQuery();
 
   const [paymentModalData, setPaymentModalData] = useState<{
     eventId: string | null;
@@ -40,7 +42,8 @@ export const Events = () => {
 
   useEffect(() => {
     refetchEventPayments();
-  }, [isLoggedIn, refetchEventPayments]);
+    refetchUserEvents();
+  }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
 
   // TODO Refactor this auth stuff
   const authMode = AuthModalState.SignIn;
@@ -121,23 +124,11 @@ export const Events = () => {
           <EventBookModal
             event={payingEvent}
             accessType={paymentModalData.accessType}
-            satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
-            onClose={(isPaid) => {
-              // TODO trigger add free booked seat logic
-
-              if (isPaid) {
-                refetchEventPayments();
-                setTimeout(() => {
-                  refetchEventPayments();
-                }, 5000);
-              }
-              setPaymentModalData({
-                eventId: null,
-                satsPrice: null,
-                accessType: null,
-              });
+            onClose={() => {
               setIsPaymentModalOpen(false);
+              refetchEventPayments();
+              refetchUserEvents();
             }}
           />
         )}
@@ -146,6 +137,7 @@ export const Events = () => {
           <CurrentEvents
             events={events}
             eventPayments={eventPayments}
+            userEvents={userEvents}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
@@ -158,6 +150,7 @@ export const Events = () => {
           <EventsGrid
             events={events}
             eventPayments={eventPayments}
+            userEvents={userEvents}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
@@ -171,6 +164,7 @@ export const Events = () => {
           <EventsPassed
             events={events}
             eventPayments={eventPayments}
+            userEvents={userEvents}
             conversionRate={conversionRate}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}

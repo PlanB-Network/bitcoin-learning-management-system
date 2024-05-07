@@ -32,7 +32,7 @@ export const CourseBookModal = ({
 
   const [isCourseBooked, setIsCourseBooked] = useState(false);
 
-  const displaySuccess = useCallback(() => {
+  const saveAndDisplaySuccess = useCallback(() => {
     saveUserChapterRequest.mutateAsync({
       courseId: course.id,
       part: chapter.part.part,
@@ -78,7 +78,7 @@ export const CourseBookModal = ({
           ) : (
             <ModalBookDescription
               onBooked={() => {
-                displaySuccess();
+                saveAndDisplaySuccess();
               }}
               description={t('courses.payment.book_description')}
               callout={t('events.payment.callout_physical')}

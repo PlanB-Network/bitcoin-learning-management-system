@@ -1,12 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
-import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
+import type {
+  EventPayment,
+  JoinedEvent,
+  UserEvent,
+} from '@sovereign-university/types';
 
 import { EventsCarousel } from './events-carousel.tsx';
 
 interface EventsPassedProps {
   events: JoinedEvent[];
   eventPayments: EventPayment[] | undefined;
+  userEvents: UserEvent[] | undefined;
   openAuthModal: () => void;
   isLoggedIn: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,6 +28,7 @@ interface EventsPassedProps {
 export const EventsPassed = ({
   events,
   eventPayments,
+  userEvents,
   openAuthModal,
   isLoggedIn,
   setIsPaymentModalOpen,
@@ -80,6 +86,7 @@ export const EventsPassed = ({
       <EventsCarousel
         events={passedEvents}
         eventPayments={eventPayments}
+        userEvents={userEvents}
         openAuthModal={openAuthModal}
         isLoggedIn={isLoggedIn}
         setIsPaymentModalOpen={setIsPaymentModalOpen}

@@ -1,5 +1,6 @@
 import {
   createCalculateCourseChapterSeats,
+  createCalculateEventSeats,
   createGetNow,
   createProcessChangedFiles,
   createProcessDeleteOldEntities,
@@ -43,6 +44,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
 
   console.log('-- Sync procedure: calculate remaining seats');
   await createCalculateCourseChapterSeats(dependencies)();
+  await createCalculateEventSeats(dependencies)();
 
   if (syncErrors.length === 0) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);

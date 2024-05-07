@@ -531,6 +531,7 @@ export const contentEvents = content.table('events', {
   timezone: text('timezone'),
   priceDollars: integer('price_dollars'),
   availableSeats: integer('available_seats'),
+  remainingSeats: integer('remaining_seats'),
   bookOnline: boolean('book_online').default(false),
   bookInPerson: boolean('book_in_person').default(false),
   addressLine1: text('address_line_1'),
@@ -581,6 +582,27 @@ export const contentEventLanguages = content.table(
     pk: primaryKey({
       columns: [table.eventId, table.language],
     }),
+  }),
+);
+
+export const usersUserEvent = users.table(
+  'user_event',
+  {
+    uid: uuid('uid')
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    eventId: varchar('event_id', { length: 100 })
+      .notNull()
+      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+    booked: boolean('booked').default(false),
+    withPhysical: boolean('with_physical').default(false),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.uid, table.eventId],
+    }),
+    uidIdx: index().on(table.uid),
+    eventIdIdx: index().on(table.eventId),
   }),
 );
 

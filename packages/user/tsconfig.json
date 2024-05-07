@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "src/lib/events/services/get-user-events.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",

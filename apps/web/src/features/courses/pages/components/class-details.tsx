@@ -197,8 +197,8 @@ export const ClassDetails = ({
       <CourseBookModal
         course={course}
         chapter={chapter}
-        isOpen={isBookModalOpen}
         professorNames={professor}
+        isOpen={isBookModalOpen}
         onClose={() => {
           setIsBookModalOpen(false);
           refetchUserChapter();

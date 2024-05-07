@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import type { JoinedEvent } from '@sovereign-university/types';
 
 import { Modal } from '#src/atoms/Modal/index.js';
+import { trpc } from '#src/utils/trpc.js';
 
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
@@ -13,7 +14,6 @@ import { ModalBookSummary } from './modal-book-summary.tsx';
 interface EventBookModalProps {
   event: JoinedEvent;
   accessType: 'physical' | 'online' | 'replay';
-  satsPrice: number;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
 }
@@ -26,11 +26,18 @@ export const EventBookModal = ({
 }: EventBookModalProps) => {
   const { t } = useTranslation();
 
+  const saveUserEventRequest = trpc.user.events.saveUserEvent.useMutation();
+
   const [isEventBooked, setIsEventBooked] = useState(false);
 
-  const displaySuccess = useCallback(() => {
+  const saveAndDisplaySuccess = useCallback(() => {
+    saveUserEventRequest.mutateAsync({
+      eventId: event.id,
+      booked: true,
+      withPhysical: true,
+    });
     setIsEventBooked(true);
-  }, []);
+  }, [event.id, saveUserEventRequest]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
@@ -49,13 +56,19 @@ export const EventBookModal = ({
         />
         <div className="flex flex-col items-center justify-center lg:pl-6">
           {isEventBooked ? (
-            <ModalBookSuccess accessType={accessType} onClose={onClose} />
+            <ModalBookSuccess
+              accessType={accessType}
+              event={event}
+              onClose={() => {
+                onClose();
+                setIsEventBooked(false);
+              }}
+            />
           ) : (
             <ModalBookDescription
               accessType={accessType}
               onBooked={() => {
-                // TODO trigger add booking behavior (free event)
-                displaySuccess();
+                saveAndDisplaySuccess();
               }}
               description={
                 accessType === 'physical'
