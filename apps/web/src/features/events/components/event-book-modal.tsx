@@ -58,6 +58,7 @@ export const EventBookModal = ({
           {isEventBooked ? (
             <ModalBookSuccess
               accessType={accessType}
+              event={event}
               onClose={() => {
                 onClose();
                 setIsEventBooked(false);

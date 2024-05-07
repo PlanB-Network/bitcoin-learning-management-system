@@ -10,10 +10,31 @@ import {
   createGetUserEvents,
   createSaveEventPayment,
   createSaveUserEvent,
+  generateEventTicket,
 } from '@sovereign-university/user';
 
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
+
+const downloadEventTicketProcedure = protectedProcedure
+  .input(
+    z.object({
+      title: z.string().optional(),
+      addressLine1: z.string().nullable(),
+      addressLine2: z.string().nullable(),
+      addressLine3: z.string().nullable(),
+      formattedStartDate: z.string().optional(),
+      formattedTime: z.string().optional(),
+      liveLanguage: z.string().nullable(),
+      formattedCapacity: z.string().optional(),
+      contact: z.string().nullable(),
+      userDisplayName: z.string(),
+    }),
+  )
+  .output(z.string())
+  .mutation(async ({ input }) => {
+    return generateEventTicket(input);
+  });
 
 const getEventPaymentsProcedure = protectedProcedure
   .input(
@@ -90,6 +111,7 @@ const saveUserEventProcedure = protectedProcedure
   });
 
 export const userEventsRouter = createTRPCRouter({
+  downloadEventTicket: downloadEventTicketProcedure,
   getEventPayment: getEventPaymentsProcedure,
   getUserEvents: getUserEventsProcedure,
   saveEventPayment: saveEventPaymentProcedure,
