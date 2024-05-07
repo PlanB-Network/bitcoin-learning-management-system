@@ -17,7 +17,7 @@ const fixEmbedUrl = (src: string) => {
     case src.includes('youtu.be'): {
       return src.replace('youtu.be/', 'youtube.com/embed/');
     }
-    case src.includes('youtube.com') && src.includes('live'): {
+    case src.includes('youtube.com/live/'): {
       return src.replace('youtube.com/live/', 'youtube.com/embed/');
     }
     case src.includes('youtube.com'): {
@@ -49,8 +49,8 @@ export const ConferencesMarkdownBody = ({
     <ReactMarkdown
       components={{
         h2: ({ children }) => (
-          <h2 className="mt-6 text-xl font-semibold text-white sm:mt-10 sm:text-2xl ">
-            <div className="flex  w-auto items-center">{children}</div>
+          <h2 className="mt-6 text-xl font-semibold text-white sm:mt-10 sm:text-2xl">
+            <div className="flex w-auto items-center">{children}</div>
           </h2>
         ),
         h3: ({ children }) => (
@@ -114,7 +114,7 @@ export const ConferencesMarkdownBody = ({
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
-              ></iframe>
+              />
             </div>
           ) : (
             <img
