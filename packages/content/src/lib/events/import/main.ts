@@ -19,6 +19,7 @@ interface EventMain {
   timezone: string;
   price_dollars: number;
   available_seats: number;
+  remaining_seats: number;
   book_online: boolean;
   book_in_person: boolean;
   address_line_1: string;
@@ -69,6 +70,7 @@ export const createProcessMainFile =
             timezone,
             price_dollars,
             available_seats,
+            remaining_seats,
             book_online,
             book_in_person,
             address_line_1,
@@ -94,6 +96,7 @@ export const createProcessMainFile =
           ${parsedEvent.timezone},
           ${parsedEvent.price_dollars},
           ${parsedEvent.available_seats},
+          ${parsedEvent.available_seats},
           ${parsedEvent.book_online},
           ${parsedEvent.book_in_person},
           ${parsedEvent.address_line_1},
@@ -112,16 +115,18 @@ export const createProcessMainFile =
         ON CONFLICT (id) DO UPDATE SET
           name = EXCLUDED.name,
           description = EXCLUDED.description,
-          builder = EXCLUDED.builder,
           start_date = EXCLUDED.start_date,
           end_date = EXCLUDED.end_date,
           timezone = EXCLUDED.timezone,
+          price_dollars = EXCLUDED.price_dollars,
+          available_seats = EXCLUDED.available_seats,
+          book_online = EXCLUDED.book_online,
+          book_in_person = EXCLUDED.book_in_person,
           address_line_1 = EXCLUDED.address_line_1,
           address_line_2 = EXCLUDED.address_line_2,
           address_line_3 = EXCLUDED.address_line_3,
+          builder = EXCLUDED.builder,
           type = EXCLUDED.type,
-          book_online = EXCLUDED.book_online,
-          book_in_person = EXCLUDED.book_in_person,
           website_url = EXCLUDED.website_url,
           replay_url = EXCLUDED.replay_url,
           live_url = EXCLUDED.live_url,

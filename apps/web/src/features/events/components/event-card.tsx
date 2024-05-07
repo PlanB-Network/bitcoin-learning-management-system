@@ -2,7 +2,11 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { HiVideoCamera } from 'react-icons/hi2';
 
-import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
+import type {
+  EventPayment,
+  JoinedEvent,
+  UserEvent,
+} from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '../../../atoms/Flag/index.tsx';
@@ -11,6 +15,7 @@ import { getDateString, getTimeString } from '../../../utils/date.ts';
 interface EventCardProps {
   event: JoinedEvent;
   eventPayments: EventPayment[] | undefined;
+  userEvents: UserEvent[] | undefined;
   isLive?: boolean;
   isPassed?: boolean;
   openAuthModal: () => void;
@@ -29,6 +34,7 @@ interface EventCardProps {
 export const EventCard = ({
   event,
   eventPayments,
+  userEvents,
   isLive,
   isPassed,
   openAuthModal,
@@ -56,6 +62,10 @@ export const EventCard = ({
   const filteredEventPayments = eventPayments?.filter(
     (payment) =>
       payment.paymentStatus === 'paid' && payment.eventId === event.id,
+  );
+
+  const userEvent = userEvents?.find(
+    (ue) => ue.booked === true && ue.eventId === event.id,
   );
 
   const timezone = event.timezone || undefined;
@@ -143,6 +153,15 @@ export const EventCard = ({
 
     const isBookableInPersonEvent = event.bookInPerson && !isPassed;
 
+    const userBookedTheEvent =
+      (filteredEventPayments && filteredEventPayments.length > 0) ||
+      userEvent !== undefined;
+    const userBookedPhysicalEvent =
+      (filteredEventPayments &&
+        filteredEventPayments.length > 0 &&
+        filteredEventPayments[0].withPhysical === true) ||
+      (userEvent !== undefined && userEvent.withPhysical === true);
+
     return (
       <div className="flex items-center gap-4">
         {isFreeOnlineLiveEvent && (
@@ -163,7 +182,7 @@ export const EventCard = ({
         )}
 
         {isPaidOnlineLiveEvent &&
-          (filteredEventPayments && filteredEventPayments.length > 0 ? (
+          (userBookedTheEvent ? (
             <Link
               to={'/events/$eventId'}
               params={{
@@ -212,7 +231,7 @@ export const EventCard = ({
         )}
 
         {isPaidOnlineUpcomingEvent &&
-          (filteredEventPayments && filteredEventPayments.length > 0 ? (
+          (userBookedTheEvent ? (
             <Link to={'/events/' + event.id} target="_blank" className="w-fit">
               <Button
                 size="s"
@@ -246,35 +265,43 @@ export const EventCard = ({
           ))}
 
         {/* TODO Book seat actions (before and after booking seat, free and paid) + case where both physical and online (differentiate payment ?) */}
-        {isBookableInPersonEvent &&
-          filteredEventPayments &&
-          filteredEventPayments.length === 0 && (
-            <Button
-              variant="newPrimary"
-              size="s"
-              className="rounded-lg text-xs md:text-base"
-              onClick={() => {
-                if (isLoggedIn) {
-                  setPaymentModalData({
-                    eventId: event.id,
-                    satsPrice: satsPrice,
-                    accessType: 'physical',
-                  });
-                  setIsPaymentModalOpen(true);
-                } else {
-                  openAuthModal();
-                }
-              }}
-            >
-              {t('events.card.bookSeat')}
-            </Button>
-          )}
+        {isBookableInPersonEvent && !userBookedTheEvent && (
+          <>
+            {event &&
+            event.remainingSeats &&
+            event.remainingSeats > 0 &&
+            userEvent === undefined ? (
+              <Button
+                variant="newPrimary"
+                size="s"
+                className="rounded-lg text-xs md:text-base"
+                onClick={() => {
+                  if (isLoggedIn) {
+                    setPaymentModalData({
+                      eventId: event.id,
+                      satsPrice: satsPrice,
+                      accessType: 'physical',
+                    });
+                    setIsPaymentModalOpen(true);
+                  } else {
+                    openAuthModal();
+                  }
+                }}
+              >
+                {t('events.card.bookSeat')}
+              </Button>
+            ) : (
+              <>
+                <span className="italic">{t('events.card.eventFull')}</span>
+              </>
+            )}
+          </>
+        )}
 
         {isBookableInPersonEvent &&
-          filteredEventPayments &&
-          filteredEventPayments.length > 0 &&
-          filteredEventPayments[0].withPhysical === true && (
-            <span className="italic">Seat booked</span>
+          userBookedTheEvent &&
+          userBookedPhysicalEvent && (
+            <span className="italic">{t('events.card.seatBooked')}</span>
           )}
 
         {isPassed && <ReplayButtons />}

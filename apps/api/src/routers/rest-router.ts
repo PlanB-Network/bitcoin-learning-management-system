@@ -3,6 +3,7 @@
 
 import { Router } from 'express';
 
+import { createCalculateEventSeats } from '@sovereign-university/content';
 import {
   createUpdateEventPayment,
   createUpdatePayment,
@@ -128,6 +129,12 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
         isPaid: isPaid,
         isExpired: isExpired,
       });
+
+      if (isPaid === true) {
+        await createCalculateEventSeats(dependencies)();
+        const { redis } = dependencies;
+        await redis.del('trpc:content.getEvent*');
+      }
 
       res.json({
         message: 'success',

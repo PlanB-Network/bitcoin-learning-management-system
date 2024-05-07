@@ -1,12 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
-import type { EventPayment, JoinedEvent } from '@sovereign-university/types';
+import type {
+  EventPayment,
+  JoinedEvent,
+  UserEvent,
+} from '@sovereign-university/types';
 
 import { EventCard } from './event-card.tsx';
 
 interface CurrentEventsProps {
   events: JoinedEvent[];
   eventPayments: EventPayment[] | undefined;
+  userEvents: UserEvent[] | undefined;
   openAuthModal: () => void;
   isLoggedIn: boolean;
   setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,6 +28,7 @@ interface CurrentEventsProps {
 export const CurrentEvents = ({
   events,
   eventPayments,
+  userEvents,
   openAuthModal,
   isLoggedIn,
   setIsPaymentModalOpen,
@@ -64,6 +70,7 @@ export const CurrentEvents = ({
           <EventCard
             event={event}
             eventPayments={eventPayments}
+            userEvents={userEvents}
             isLive={true}
             openAuthModal={openAuthModal}
             isLoggedIn={isLoggedIn}
