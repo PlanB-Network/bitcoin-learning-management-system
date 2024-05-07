@@ -30,6 +30,7 @@ interface EventMain {
     website: string;
     replay_url: string;
     live_url: string;
+    chat_url: string;
   };
   language?: string[];
   tag?: string[];
@@ -78,6 +79,7 @@ export const createProcessMainFile =
             website_url,
             replay_url,
             live_url,
+            chat_url,
             last_updated,
             last_commit,
             last_sync
@@ -102,6 +104,7 @@ export const createProcessMainFile =
           ${parsedEvent.links.website},
           ${parsedEvent.links.replay_url},
           ${parsedEvent.links.live_url},
+          ${parsedEvent.links.chat_url},
           ${lastUpdated.time}, 
           ${lastUpdated.commit},
           NOW()
@@ -122,6 +125,7 @@ export const createProcessMainFile =
           website_url = EXCLUDED.website_url,
           replay_url = EXCLUDED.replay_url,
           live_url = EXCLUDED.live_url,
+          chat_url = EXCLUDED.chat_url,
           raw_description = EXCLUDED.raw_description,
           last_updated = EXCLUDED.last_updated,
           last_commit = EXCLUDED.last_commit,

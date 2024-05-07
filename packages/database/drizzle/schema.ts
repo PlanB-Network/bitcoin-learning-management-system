@@ -540,6 +540,7 @@ export const contentEvents = content.table('events', {
   websiteUrl: text('website_url'),
   replayUrl: text('replay_url'),
   liveUrl: text('live_url'),
+  chatUrl: text('chat_url'),
   assetUrl: text('asset_url'),
   rawDescription: text('raw_description'),
   lastUpdated: timestamp('last_updated', { withTimezone: true })
