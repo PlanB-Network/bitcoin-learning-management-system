@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useMemo, useState } from 'react';
@@ -30,8 +26,6 @@ import { CourseLayout } from '../layout.tsx';
 
 import { ClassDetails } from './components/class-details.tsx';
 import { LiveVideo } from './components/live-video.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
 
@@ -85,10 +79,8 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
 };
 
 const Title = ({ chapter }: { chapter: Chapter }) => {
-  const isScreenMd = useGreater('sm');
-
   return (
-    <div className={`mb-6 w-full max-w-5xl ${isScreenMd ? '' : 'hidden'}`}>
+    <div className={`mb-6 w-full max-w-5xl max-sm:hidden`}>
       <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
         <Link to="/courses">{t('words.courses') + ` > `}</Link>
         <Link
@@ -116,7 +108,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="mb-0 w-full max-w-5xl px-5 md:px-0">
+    <div className="mb-0 w-full max-w-5xl px-5 md:px-0 sm:hidden">
       <h1
         className={`mb-5 w-full text-left text-4xl font-bold text-white md:text-5xl`}
       >
@@ -202,7 +194,7 @@ const TimelineBig = ({
   const { t } = useTranslation();
 
   return (
-    <div className="mb-0 w-full max-w-5xl px-5 md:px-0">
+    <div className="mb-0 w-full max-w-5xl px-5 md:px-0 max-sm:hidden">
       <h1 className="mb-5 mt-2 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
         <Link
           to={'/courses/$courseId'}
@@ -315,18 +307,13 @@ const Header = ({
   sections: string[];
 }) => {
   const { t } = useTranslation();
-  const isScreenMd = useGreater('sm');
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
   return (
     <>
       <div>
-        <h2
-          className={`mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold text-blue-900  md:text-3xl ${
-            isScreenMd ? '' : 'mb-1 hidden'
-          }`}
-        >
+        <h2 className="mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold text-blue-900  md:text-3xl max-sm:mb-1 max-sm:hidden">
           {chapter?.title}
         </h2>
       </div>
@@ -478,8 +465,6 @@ export const CourseChapter = () => {
     from: '/courses/$courseId/$partIndex/$chapterIndex',
   });
 
-  const isScreenMd = useGreater('sm');
-
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
     id: courseId,
     language: i18n.language,
@@ -592,11 +577,10 @@ export const CourseChapter = () => {
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
             <Title chapter={chapter} />
-            {isScreenMd ? (
-              <TimelineBig chapter={chapter} professor={computerProfessor} />
-            ) : (
-              <TimelineSmall chapter={chapter} />
-            )}
+            {/* Desktop */}
+            <TimelineBig chapter={chapter} professor={computerProfessor} />
+            {/* Mobile */}
+            <TimelineSmall chapter={chapter} />
 
             <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               {displayClassDetails && (

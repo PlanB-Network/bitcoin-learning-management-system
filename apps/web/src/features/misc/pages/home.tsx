@@ -16,7 +16,7 @@ import HeaderLeft from '../../../assets/home/header_left.svg';
 import HeaderPill from '../../../assets/home/header_pill.webp';
 import HeaderRight from '../../../assets/home/header_right.svg';
 import Lugano from '../../../assets/home/lugano.webp';
-import NetworkMain from '../../../assets/home/network-main.png';
+import NetworkMain from '../../../assets/home/network_main.webp';
 import Sponsors from '../../../assets/home/sponsors.webp';
 import TwitterClaire from '../../../assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '../../../assets/home/twitter_lecompte.jpeg';

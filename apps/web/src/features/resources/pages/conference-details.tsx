@@ -1,6 +1,7 @@
 import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BsLink, BsTwitterX } from 'react-icons/bs';
 
 import type { ConferenceStageVideo } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
@@ -95,6 +96,18 @@ export const Conference = () => {
       {conference && (
         <>
           {/* Top part */}
+          <div className="flex justify-start mb-4">
+            <Link to="/resources/conferences">
+              <Button
+                variant="newPrimary"
+                onHoverArrow
+                onHoverArrowDirection="left"
+              >
+                {t('conferences.backConferences')}
+              </Button>
+            </Link>
+          </div>
+
           <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-4 lg:gap-8">
             <div className="lg:order-2 w-full max-w-full">
               <img
@@ -110,7 +123,7 @@ export const Conference = () => {
               <span className="text-newGray-4 mobile-body2 sm:desktop-h8">
                 {conference.location}, {conference.year}
               </span>
-              <div className="flex flex-wrap gap-4 mt-4 lg:mt-8">
+              <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
                 {conference.tags.map((tag) => (
                   <NewTag key={tag} className="capitalize">
                     {tag}
@@ -120,6 +133,28 @@ export const Conference = () => {
               <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
                 {conference.description}
               </p>
+              {(conference.twitterUrl || conference.websiteUrl) && (
+                <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
+                  {conference.twitterUrl && (
+                    <a
+                      href={conference.twitterUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <BsTwitterX size={24} />
+                    </a>
+                  )}
+                  {conference.websiteUrl && (
+                    <a
+                      href={conference.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <BsLink size={24} />
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -208,7 +243,9 @@ export const Conference = () => {
               itemsList={conference.stages.map((stage, index) => {
                 return {
                   name: stage.name,
-                  onClick: () => setActiveStage(index),
+                  onClick: () => {
+                    setActiveVideo(0), setActiveStage(index);
+                  },
                 };
               })}
             />
