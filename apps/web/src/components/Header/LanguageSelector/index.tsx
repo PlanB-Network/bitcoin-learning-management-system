@@ -99,10 +99,10 @@ export const LanguageSelector = ({
             className="max-md:hidden mt-6 w-full"
           >
             <Button
-              variant="secondary"
+              variant="newSecondary"
               size="l"
               onHoverArrow
-              className="font-bold text-black w-full"
+              className="w-full"
             >
               {t('home.languageSection.link')}
             </Button>
