@@ -1,9 +1,10 @@
 import { Popover, Transition } from '@headlessui/react';
+import { t } from 'i18next';
 import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '../../../atoms/Flag/index.tsx';
 import { LANGUAGES } from '../../../utils/i18n.ts';
@@ -42,12 +43,11 @@ export const LanguageSelector = ({
       : [...filteredLanguages, activeLanguage];
 
   return (
-    <Popover
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      className="relative"
-    >
-      <Popover.Button className="group z-0 flex place-items-center text-sm font-semibold text-white gap-1">
+    <Popover className="relative">
+      <Popover.Button
+        onClick={() => setOpen((v) => !v)}
+        className="group z-0 flex place-items-center text-sm font-semibold text-white gap-1 outline-none p-4 bg-headerGray rounded-md"
+      >
         <Flag code={activeLanguage} />
         <MdKeyboardArrowDown
           size={24}
@@ -63,27 +63,28 @@ export const LanguageSelector = ({
         enter="transition ease-out duration-500"
         enterFrom="opacity-0 translate-y-1"
         enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-550"
+        leave="transition ease-in duration-500"
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
         <Popover.Panel
+          onMouseLeave={() => setOpen(false)}
           static
           className={compose(
-            'flex flex-col items-center justify-center absolute z-20 bg-[#25262d] rounded-2xl w-44 md:w-80 px-8 py-6',
+            'flex flex-col items-center justify-center absolute z-20 bg-[#25262d] rounded-2xl w-44 md:w-[440px] px-8 py-6 max-h-96 overflow-y-scroll no-scrollbar',
             direction === 'down'
-              ? 'top-10 right-0'
-              : 'bottom-8 left-1/2 -translate-x-1/2',
+              ? 'top-20 right-0'
+              : 'bottom-16 left-1/2 -translate-x-1/2',
           )}
         >
           <span className="w-full text-center text-sm text-[#909093] tracking-[1.12px] uppercase mb-6 max-md:hidden">
             Available languages
           </span>
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
+          <div className="flex flex-wrap w-fit gap-4">
             {orderedLanguages.map((language) => (
               <button
                 key={language}
-                className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-white/10"
+                className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-white/10 w-28"
                 onClick={() => changeLanguage(language)}
               >
                 <Flag code={language} />
@@ -91,6 +92,21 @@ export const LanguageSelector = ({
               </button>
             ))}
           </div>
+          <a
+            href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="max-md:hidden mt-6 w-full"
+          >
+            <Button
+              variant="secondary"
+              size="l"
+              onHoverArrow
+              className="font-bold text-black w-full"
+            >
+              {t('home.languageSection.link')}
+            </Button>
+          </a>
         </Popover.Panel>
       </Transition>
     </Popover>
