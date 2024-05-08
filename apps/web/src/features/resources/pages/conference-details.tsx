@@ -133,26 +133,28 @@ export const Conference = () => {
               <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
                 {conference.description}
               </p>
-              <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
-                {conference.twitterUrl && (
-                  <a
-                    href={conference.twitterUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <BsTwitterX size={24} />
-                  </a>
-                )}
-                {conference.websiteUrl && (
-                  <a
-                    href={conference.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <BsLink size={24} />
-                  </a>
-                )}
-              </div>
+              {(conference.twitterUrl || conference.websiteUrl) && (
+                <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
+                  {conference.twitterUrl && (
+                    <a
+                      href={conference.twitterUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <BsTwitterX size={24} />
+                    </a>
+                  )}
+                  {conference.websiteUrl && (
+                    <a
+                      href={conference.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <BsLink size={24} />
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
