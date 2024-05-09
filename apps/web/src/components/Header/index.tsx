@@ -14,6 +14,7 @@ import {
   IoLibraryOutline,
   IoSchoolOutline,
 } from 'react-icons/io5';
+import { LuArmchair } from 'react-icons/lu';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -145,6 +146,13 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.podcastsDescription'),
               path: Routes.Podcasts,
               icon: BsMic,
+            },
+            {
+              id: 'conferences',
+              title: t('conferences.pageTitle'),
+              description: t('menu.conferencesDescription'),
+              path: Routes.Conferences,
+              icon: LuArmchair,
             },
             {
               id: 'builders',
@@ -325,7 +333,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     <header
       className={cn(
         'sticky left-0 top-0 z-20 flex w-full flex-row justify-between p-3 px-4 lg:min-h-[96px] lg:px-12',
-        variant === 'light' ? 'bg-darkOrange-5' : 'bg-[#010205]',
+        variant === 'light' ? 'bg-darkOrange-5' : 'bg-headerDark',
       )}
     >
       {isScreenLg ? (
