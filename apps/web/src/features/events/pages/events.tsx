@@ -158,7 +158,29 @@ export const Events = () => {
             setPaymentModalData={setPaymentModalData}
           />
         )}
+        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
+        {/* Add my event */}
+        <div className="flex flex-col justify-center items-center max-sm:p-4 p-0 max-sm:border max-sm:border-darkOrange-5 max-sm:rounded-2xl max-w-2xl mx-auto">
+          <p className="text-darkOrange-5 text-center text-xl font-semibold leading-tight max-sm:hidden mb-2">
+            {t('events.newEvent.subtitle')}
+          </p>
+          <h2 className="text-darkOrange-5 sm:text-white text-2xl sm:text-[40px] text-center font-medium sm:font-normal leading-tight sm:tracking-[0.25px] mb-6 sm:mb-2">
+            {t('events.newEvent.title')}
+          </h2>
+          <p className="text-white text-center sm:text-xl sm:leading-snug max-sm:tracking-[0.15px] mb-6 sm:mb-10">
+            {t('events.newEvent.description')}
+          </p>
+          <a
+            className="px-[10px] sm:px-[18px] py-[14px] bg-darkOrange-5 text-white rounded-md sm:rounded-2xl flex justify-center items-center sm:text-xl sm:leading-normal font-medium active:scale-95"
+            href="https://workspace.planb.network/apps/forms/s/AdXeMipQ7xrrXNyrtyZ2sCLs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('events.newEvent.button')}
+          </a>
+        </div>
       </div>
+
       <div>
         {events && (
           <EventsPassed

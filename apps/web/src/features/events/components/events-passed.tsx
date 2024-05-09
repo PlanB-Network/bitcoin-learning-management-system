@@ -69,7 +69,7 @@ export const EventsPassed = ({
 
   return (
     <>
-      <section className="max-w-[1440px] w-full flex flex-col px-4 pt-2.5 mt-6 mx-auto md:mt-[60px] md:px-10">
+      <section className="max-w-[1440px] w-full flex flex-col px-4 mt-6 mx-auto md:mt-[60px] md:px-10">
         <div className="h-px w-2/5 bg-newBlack-5 mb-6 md:mb-[60px] mx-auto sm:w-full" />
         <div className="max-w-[704px] mx-auto">
           <p className="text-2xl text-center mb-6 md:text-[40px] md:tracking-[0.25px]">
