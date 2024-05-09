@@ -96,16 +96,14 @@ export const Conference = () => {
       {conference && (
         <>
           {/* Top part */}
-          <div className="flex justify-start mb-4">
+          <div className="flex justify-start mb-4 text-darkOrange-5 gap-1">
             <Link to="/resources/conferences">
-              <Button
-                variant="newPrimary"
-                onHoverArrow
-                onHoverArrowDirection="left"
-              >
-                {t('conferences.backConferences')}
-              </Button>
+              <span className="">{t('conferences.pageTitle')}</span>
             </Link>
+            <span>&gt;</span>
+            <span className="underline underline-offset-2">
+              {conference.name}
+            </span>
           </div>
 
           <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-4 lg:gap-8">
@@ -123,18 +121,8 @@ export const Conference = () => {
               <span className="text-newGray-4 mobile-body2 sm:desktop-h8">
                 {conference.location}, {conference.year}
               </span>
-              <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
-                {conference.tags.map((tag) => (
-                  <NewTag key={tag} className="capitalize">
-                    {tag}
-                  </NewTag>
-                ))}
-              </div>
-              <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
-                {conference.description}
-              </p>
               {(conference.twitterUrl || conference.websiteUrl) && (
-                <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
+                <div className="flex flex-wrap items-center gap-4 mt-2">
                   {conference.twitterUrl && (
                     <a
                       href={conference.twitterUrl}
@@ -155,6 +143,16 @@ export const Conference = () => {
                   )}
                 </div>
               )}
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                {conference.tags.map((tag) => (
+                  <NewTag key={tag} className="capitalize">
+                    {tag}
+                  </NewTag>
+                ))}
+              </div>
+              <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
+                {conference.description}
+              </p>
             </div>
           </div>
 
@@ -345,10 +343,10 @@ export const Conference = () => {
             </div>
           </div>
 
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-center">
             <Link to="/resources/conferences">
               <Button
-                variant="newPrimary"
+                variant="ghost"
                 onHoverArrow
                 onHoverArrowDirection="left"
                 className="mt-10"
