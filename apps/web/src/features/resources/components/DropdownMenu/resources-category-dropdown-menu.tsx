@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -13,10 +14,12 @@ import { ResourcesDropdownItem } from './resources-category-dropdown-item.tsx';
 
 interface ResourcesDropdownMenuProps {
   resourceActiveCategory?: string;
+  backToCategoryButton?: boolean;
 }
 
 export const ResourcesDropdownMenu = ({
   resourceActiveCategory,
+  backToCategoryButton,
 }: ResourcesDropdownMenuProps) => {
   const { t } = useTranslation();
   const filteredResourcesCategories = RESOURCES_CATEGORIES.filter(
@@ -43,6 +46,32 @@ export const ResourcesDropdownMenu = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref]);
+
+  if (backToCategoryButton) {
+    return (
+      <div className={'w-fit max-w-[280px] mx-auto mb-6 md:hidden'}>
+        <Link to={`/resources/${resourceActiveCategory}`}>
+          <button
+            type="button"
+            className={cn(
+              'flex items-center gap-2 p-2 pr-3 w-full bg-darkOrange-11 rounded-xl border border-darkOrange-9',
+            )}
+          >
+            <CategoryIcon
+              src={activeCategoryImageSrc || ''}
+              variant="resources"
+              imgClassName="filter-darkOrange size-6"
+            />
+            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-[0.15px]">
+              {capitalizeFirstWord(
+                t(`resources.${resourceActiveCategory}.title`),
+              )}
+            </span>
+          </button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div

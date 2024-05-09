@@ -2,6 +2,7 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
+import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
@@ -90,13 +91,14 @@ export const Conference = () => {
       tagLine={t('conferences.pageSubtitle')}
       activeCategory="conferences"
       showPageHeader={false}
+      backToCategoryButton={true}
       maxWidth="1360"
       className="max-md:mx-4"
     >
       {conference && (
         <>
           {/* Top part */}
-          <div className="flex justify-start mb-4 text-darkOrange-5 gap-1">
+          <div className="flex justify-start mb-4 text-darkOrange-5 gap-1 max-md:hidden">
             <Link to="/resources/conferences">
               <span className="">{t('conferences.pageTitle')}</span>
             </Link>
@@ -122,26 +124,50 @@ export const Conference = () => {
                 {conference.location}, {conference.year}
               </span>
               {(conference.twitterUrl || conference.websiteUrl) && (
-                <div className="flex flex-wrap items-center gap-4 mt-2">
-                  {conference.twitterUrl && (
-                    <a
-                      href={conference.twitterUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <BsTwitterX size={24} />
-                    </a>
-                  )}
-                  {conference.websiteUrl && (
-                    <a
-                      href={conference.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <BsLink size={24} />
-                    </a>
-                  )}
-                </div>
+                <>
+                  {/* Desktop */}
+                  <div className="flex flex-wrap items-center gap-4 mt-2 max-md:hidden">
+                    {conference.twitterUrl && (
+                      <a
+                        href={conference.twitterUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsTwitterX size={24} />
+                      </a>
+                    )}
+                    {conference.websiteUrl && (
+                      <a
+                        href={conference.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsLink size={24} />
+                      </a>
+                    )}
+                  </div>
+                  {/* Mobile */}
+                  <div className="flex flex-wrap items-center gap-4 mt-2 md:hidden">
+                    {conference.twitterUrl && (
+                      <a
+                        href={conference.twitterUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsTwitterX size={16} />
+                      </a>
+                    )}
+                    {conference.websiteUrl && (
+                      <a
+                        href={conference.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsLink size={16} />
+                      </a>
+                    )}
+                  </div>
+                </>
               )}
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 {conference.tags.map((tag) => (
@@ -319,12 +345,12 @@ export const Conference = () => {
                 <Button
                   variant="newSecondary"
                   size="s"
-                  onHoverArrow
-                  onHoverArrowDirection="left"
                   className="mr-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v - 1)}
                 >
-                  {t('conferences.details.previousVideo')}
+                  <span className="flex gap-2 justify-center items-center">
+                    <GrLinkPrevious size={16} /> Previous
+                  </span>
                 </Button>
               )}
 
@@ -333,11 +359,12 @@ export const Conference = () => {
                 <Button
                   variant="newSecondary"
                   size="s"
-                  onHoverArrow
                   className="ml-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v + 1)}
                 >
-                  {t('conferences.details.nextVideo')}
+                  <span className="flex gap-2 justify-center items-center">
+                    Next <GrLinkNext size={16} />
+                  </span>
                 </Button>
               )}
             </div>
@@ -345,12 +372,7 @@ export const Conference = () => {
 
           <div className="flex justify-center">
             <Link to="/resources/conferences">
-              <Button
-                variant="ghost"
-                onHoverArrow
-                onHoverArrowDirection="left"
-                className="mt-10"
-              >
+              <Button variant="ghost" className="mt-10">
                 {t('conferences.backConferences')}
               </Button>
             </Link>

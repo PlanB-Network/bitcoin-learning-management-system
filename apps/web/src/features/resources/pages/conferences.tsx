@@ -67,7 +67,7 @@ export const Conferences = () => {
       {/* Latest and Plan B Conferences */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-white gap-3 md:gap-7 mx-4">
         <div className="flex flex-col gap-1 md:gap-4 md:col-span-1 xl:col-span-2">
-          <h3 className="text-sm md:text-xl md:font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px]">
+          <h3 className="md:text-xl font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px] max-md:text-center">
             {t('conferences.latestConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
@@ -105,7 +105,7 @@ export const Conferences = () => {
           </div>
         </div>
         <div className="flex flex-col gap-1 md:gap-4 md:col-span-1 lg:col-span-2">
-          <h3 className="text-sm md:text-xl md:font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px]">
+          <h3 className="md:text-xl font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-[0.15px] max-md:text-center">
             {t('conferences.planBConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">

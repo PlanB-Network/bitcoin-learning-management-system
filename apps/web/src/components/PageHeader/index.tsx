@@ -66,7 +66,7 @@ const PageTitle = ({
     <h2
       className={cn(
         isSubsectionTitle
-          ? 'text-lg md:text-[40px] text-darkOrange-5 tracking-[0.25px]'
+          ? 'text-lg md:text-[40px] text-darkOrange-5 tracking-[0.25px] font-medium'
           : 'text-[32px] md:text-6xl text-white md:font-light md:tracking-[-0.5px]',
         'text-center leading-[120%]',
       )}

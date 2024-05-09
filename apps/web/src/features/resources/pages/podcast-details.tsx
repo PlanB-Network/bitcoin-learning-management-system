@@ -54,6 +54,7 @@ export const Podcast = () => {
       tagLine={t('podcasts.pageSubtitle')}
       link={'/resources/podcasts'}
       activeCategory="podcasts"
+      backToCategoryButton
     >
       {podcast && (
         <div className="w-full">

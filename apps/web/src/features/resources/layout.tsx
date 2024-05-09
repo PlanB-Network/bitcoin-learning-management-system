@@ -28,6 +28,7 @@ interface Props {
   link?: ToPathOption<any>;
   // link?: ToPathOption<RegisteredRouter['routeTree']>;
   showPageHeader?: boolean;
+  backToCategoryButton?: boolean;
   activeCategory?: string;
   maxWidth?: '1152' | '1360';
 }
@@ -42,6 +43,7 @@ export const ResourceLayout = ({
   link,
   showPageHeader = true,
   activeCategory,
+  backToCategoryButton,
   maxWidth,
 }: Props) => {
   return (
@@ -54,7 +56,10 @@ export const ResourceLayout = ({
           )}
         >
           <CategoryTabs resourceActiveCategory={activeCategory} />
-          <ResourcesDropdownMenu resourceActiveCategory={activeCategory} />
+          <ResourcesDropdownMenu
+            resourceActiveCategory={activeCategory}
+            backToCategoryButton={backToCategoryButton}
+          />
 
           {showPageHeader && (
             <PageHeader
