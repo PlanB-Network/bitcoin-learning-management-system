@@ -2,7 +2,6 @@ import { useRef } from 'react';
 
 import { compose } from '../../utils/index.ts';
 import { Footer } from '../Footer/index.tsx';
-import { Header } from '../Header/index.tsx';
 import ScrollToTopButton from '../ScrollToTopButton/index.tsx';
 
 interface MainLayoutProps {
@@ -23,6 +22,7 @@ export const MainLayout = ({
   headerVariant,
 }: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
+  console.log(headerVariant);
 
   return (
     <div
@@ -38,7 +38,7 @@ export const MainLayout = ({
       ref={box}
     >
       {/* Header */}
-      <Header variant={headerVariant} />
+      {/* <Header variant={headerVariant} /> */}
 
       {/* Content */}
       {children}

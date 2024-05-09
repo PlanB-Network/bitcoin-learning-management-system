@@ -7,7 +7,7 @@ import { Link } from '@tanstack/react-router';
 import type { ButtonProps } from '@sovereign-university/ui';
 import { Button, cn } from '@sovereign-university/ui';
 
-import Flag from '../../atoms/Flag/index.tsx';
+import Flag from '#src/atoms/Flag/index.js';
 
 interface VerticalCardProps {
   imageSrc: string;
