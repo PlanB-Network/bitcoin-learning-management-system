@@ -75,7 +75,7 @@ export const EventsPassed = ({
           <p className="text-2xl text-center mb-6 md:text-[40px] md:tracking-[0.25px]">
             {t('events.missed.missedp1')}
           </p>
-          <p className="text-sm text-center text-newGray-1 mb-6 tracking-[0.15px] md:text-base md:mb-[60px]">
+          <p className="text-sm text-center text-newGray-1 mb-6 tracking-015px md:text-base md:mb-[60px]">
             {t('events.missed.missedp2')}
           </p>
         </div>

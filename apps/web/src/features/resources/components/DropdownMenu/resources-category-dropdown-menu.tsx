@@ -62,7 +62,7 @@ export const ResourcesDropdownMenu = ({
               variant="resources"
               imgClassName="filter-darkOrange size-6"
             />
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-[0.15px]">
+            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
               {capitalizeFirstWord(
                 t(`resources.${resourceActiveCategory}.title`),
               )}
@@ -97,7 +97,7 @@ export const ResourcesDropdownMenu = ({
             variant="resources"
             imgClassName="filter-newOrange1 size-6"
           />
-          <span className="text-darkOrange-5 font-medium leading-[140%] tracking-[0.15px]">
+          <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
             {capitalizeFirstWord(
               t(`resources.${resourceActiveCategory}.title`),
             )}

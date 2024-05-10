@@ -211,6 +211,9 @@ const baseConfig = {
         'sm-card-white': '0px 0px 10px 0px #FFFFFF',
         'button-white': '0px 0px 10px 0px rgba(255, 255, 255, 0.57)',
       },
+      letterSpacing: {
+        '015px': '0.15px',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

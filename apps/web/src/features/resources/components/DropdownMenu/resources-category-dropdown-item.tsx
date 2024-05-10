@@ -26,7 +26,7 @@ export const ResourcesDropdownItem = ({
         variant="resources"
         imgClassName="filter-white size-6"
       />
-      <span className="text-white leading-[140%] tracking-[0.15px]">
+      <span className="text-white leading-[140%] tracking-015px">
         {capitalizeFirstWord(t(`resources.${name}.title`))}
       </span>
     </Link>

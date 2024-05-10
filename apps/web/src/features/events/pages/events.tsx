@@ -167,7 +167,7 @@ export const Events = () => {
           <h2 className="text-darkOrange-5 sm:text-white text-2xl sm:text-[40px] text-center font-medium sm:font-normal leading-tight sm:tracking-[0.25px] mb-6 sm:mb-2">
             {t('events.newEvent.title')}
           </h2>
-          <p className="text-white text-center sm:text-xl sm:leading-snug max-sm:tracking-[0.15px] mb-6 sm:mb-10">
+          <p className="text-white text-center sm:text-xl sm:leading-snug max-sm:tracking-015px mb-6 sm:mb-10">
             {t('events.newEvent.description')}
           </p>
           <a
