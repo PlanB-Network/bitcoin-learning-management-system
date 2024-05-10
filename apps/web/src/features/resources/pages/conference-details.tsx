@@ -125,15 +125,14 @@ export const Conference = () => {
               </span>
               {(conference.twitterUrl || conference.websiteUrl) && (
                 <>
-                  {/* Desktop */}
-                  <div className="flex flex-wrap items-center gap-4 mt-2 max-md:hidden">
+                  <div className="flex flex-wrap items-center gap-4 mt-2">
                     {conference.twitterUrl && (
                       <a
                         href={conference.twitterUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <BsTwitterX size={24} />
+                        <BsTwitterX className="size-4 md:size-6" />
                       </a>
                     )}
                     {conference.websiteUrl && (
@@ -142,28 +141,7 @@ export const Conference = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <BsLink size={24} />
-                      </a>
-                    )}
-                  </div>
-                  {/* Mobile */}
-                  <div className="flex flex-wrap items-center gap-4 mt-2 md:hidden">
-                    {conference.twitterUrl && (
-                      <a
-                        href={conference.twitterUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsTwitterX size={16} />
-                      </a>
-                    )}
-                    {conference.websiteUrl && (
-                      <a
-                        href={conference.websiteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsLink size={16} />
+                        <BsLink className="size-4 md:size-6" />
                       </a>
                     )}
                   </div>
