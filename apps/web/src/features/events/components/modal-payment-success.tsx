@@ -25,7 +25,7 @@ export const ModalPaymentSuccess = ({
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
         <PlanBLogo className="h-auto" width={240} />
         <div className="items-center justify-center flex flex-col gap-6">
-          <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-[0.15px]">
+          <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
             <span className="text-base text-center">
               {t('events.payment.payment_successful')}
             </span>

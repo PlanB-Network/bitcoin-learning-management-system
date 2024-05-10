@@ -61,7 +61,7 @@ export const Resources = () => {
             ))}
           </div>
         </div>
-        <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-[0.15px] md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
+        <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-015px md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
           <Trans i18nKey="resources.github" className="">
             <a
               className="underline underline-offset-2 hover:text-darkOrange-5"

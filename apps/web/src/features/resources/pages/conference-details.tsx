@@ -2,6 +2,7 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
+import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
@@ -90,22 +91,21 @@ export const Conference = () => {
       tagLine={t('conferences.pageSubtitle')}
       activeCategory="conferences"
       showPageHeader={false}
+      backToCategoryButton={true}
       maxWidth="1360"
       className="max-md:mx-4"
     >
       {conference && (
         <>
           {/* Top part */}
-          <div className="flex justify-start mb-4">
+          <div className="flex justify-start mb-4 text-darkOrange-5 gap-1 max-md:hidden">
             <Link to="/resources/conferences">
-              <Button
-                variant="newPrimary"
-                onHoverArrow
-                onHoverArrowDirection="left"
-              >
-                {t('conferences.backConferences')}
-              </Button>
+              <span className="">{t('conferences.pageTitle')}</span>
             </Link>
+            <span>&gt;</span>
+            <span className="underline underline-offset-2">
+              {conference.name}
+            </span>
           </div>
 
           <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-4 lg:gap-8">
@@ -123,7 +123,31 @@ export const Conference = () => {
               <span className="text-newGray-4 mobile-body2 sm:desktop-h8">
                 {conference.location}, {conference.year}
               </span>
-              <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
+              {(conference.twitterUrl || conference.websiteUrl) && (
+                <>
+                  <div className="flex flex-wrap items-center gap-4 mt-2">
+                    {conference.twitterUrl && (
+                      <a
+                        href={conference.twitterUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsTwitterX className="size-4 md:size-6" />
+                      </a>
+                    )}
+                    {conference.websiteUrl && (
+                      <a
+                        href={conference.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BsLink className="size-4 md:size-6" />
+                      </a>
+                    )}
+                  </div>
+                </>
+              )}
+              <div className="flex flex-wrap items-center gap-4 mt-4">
                 {conference.tags.map((tag) => (
                   <NewTag key={tag} className="capitalize">
                     {tag}
@@ -133,28 +157,6 @@ export const Conference = () => {
               <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
                 {conference.description}
               </p>
-              {(conference.twitterUrl || conference.websiteUrl) && (
-                <div className="flex flex-wrap items-center gap-4 mt-4 lg:mt-8">
-                  {conference.twitterUrl && (
-                    <a
-                      href={conference.twitterUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <BsTwitterX size={24} />
-                    </a>
-                  )}
-                  {conference.websiteUrl && (
-                    <a
-                      href={conference.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <BsLink size={24} />
-                    </a>
-                  )}
-                </div>
-              )}
             </div>
           </div>
 
@@ -321,12 +323,12 @@ export const Conference = () => {
                 <Button
                   variant="newSecondary"
                   size="s"
-                  onHoverArrow
-                  onHoverArrowDirection="left"
                   className="mr-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v - 1)}
                 >
-                  {t('conferences.details.previousVideo')}
+                  <span className="flex gap-2 justify-center items-center">
+                    <GrLinkPrevious size={16} /> Previous
+                  </span>
                 </Button>
               )}
 
@@ -335,24 +337,20 @@ export const Conference = () => {
                 <Button
                   variant="newSecondary"
                   size="s"
-                  onHoverArrow
                   className="ml-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v + 1)}
                 >
-                  {t('conferences.details.nextVideo')}
+                  <span className="flex gap-2 justify-center items-center">
+                    Next <GrLinkNext size={16} />
+                  </span>
                 </Button>
               )}
             </div>
           </div>
 
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-center">
             <Link to="/resources/conferences">
-              <Button
-                variant="newPrimary"
-                onHoverArrow
-                onHoverArrowDirection="left"
-                className="mt-10"
-              >
+              <Button variant="ghost" className="mt-10">
                 {t('conferences.backConferences')}
               </Button>
             </Link>

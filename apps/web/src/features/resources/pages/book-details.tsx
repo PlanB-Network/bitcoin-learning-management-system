@@ -69,6 +69,7 @@ export const Book = () => {
       tagLine={t('book.pageSubtitle')}
       link={'/resources/books'}
       activeCategory="books"
+      backToCategoryButton
     >
       {book && (
         <div className="w-full">
