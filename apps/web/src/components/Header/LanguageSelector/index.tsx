@@ -7,7 +7,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '../../../atoms/Flag/index.tsx';
-import { LANGUAGES } from '../../../utils/i18n.ts';
+import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
 import { compose } from '../../../utils/index.ts';
 
 interface LanguageSelectorProps {
@@ -78,17 +78,19 @@ export const LanguageSelector = ({
           )}
         >
           <span className="w-full text-center text-sm text-[#909093] tracking-[1.12px] uppercase mb-6 max-md:hidden">
-            Available languages
+            {t('home.languageSection.availableLanguages')}
           </span>
           <div className="flex flex-wrap w-fit gap-4">
             {orderedLanguages.map((language) => (
               <button
                 key={language}
-                className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-white/10 w-28"
+                className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-white/10 w-44"
                 onClick={() => changeLanguage(language)}
               >
                 <Flag code={language} />
-                <span className="uppercase leading-normal">{language}</span>
+                <span className="capitalize leading-normal">
+                  {LANGUAGES_MAP[language] || language}
+                </span>
               </button>
             ))}
           </div>

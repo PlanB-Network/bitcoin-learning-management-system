@@ -6,6 +6,15 @@ import { initReactI18next } from 'react-i18next';
 
 export const LANGUAGES = ['fr', 'en', 'es', 'de', 'it', 'pt'];
 
+export const LANGUAGES_MAP: { [key: string]: string } = {
+  fr: 'Français',
+  en: 'English',
+  es: 'Español',
+  de: 'Deutsch',
+  it: 'Italiano',
+  pt: 'Português',
+};
+
 void i18n
   .use(Detector)
   .use(Backend)

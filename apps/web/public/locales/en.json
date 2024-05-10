@@ -346,6 +346,7 @@
       "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
     },
     "languageSection": {
+      "availableLanguages": "Available languages",
       "title": "No language barrier here.",
       "subtitle": "Everything is translated to local languages",
       "subtitle2": "We need you!",
