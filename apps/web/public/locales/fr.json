@@ -95,7 +95,12 @@
             "count": "Chapitre n°{{count}}",
             "finishCourse": "Terminer le cours",
             "next": "Terminé, passons au chapitre suivant !",
-            "thanksTip": "Vous voulez dire merci ? Soutenez."
+            "thanksTip": "Vous voulez dire merci ? Soutenez.",
+            "detail": {
+                "title": "Détails de la classe",
+                "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
+                "p1content": "Assurez-vous de réserver votre place"
+            }
         },
         "details": {
             "accessible": "Accessible : à vie",
@@ -598,6 +603,10 @@
         "language": "Langue",
         "latestConferences": "Dernières conférences",
         "location": "Lieu",
-        "noConferences": "Aucune conférence n'a été ajoutée pour {{year}} pour l'instant."
+        "noConferences": "Aucune conférence n'a été ajoutée pour {{year}} pour l'instant.",
+        "topics": "Sujets",
+        "pageSubtitle": "Ce portail est open-source et ouvert aux contributions.",
+        "pageTitle": "Redifusion de conférences",
+        "planBConferences": "Conférences Plan B"
     }
 }
