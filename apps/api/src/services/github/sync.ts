@@ -6,6 +6,7 @@ import {
   createProcessDeleteOldEntities,
 } from '@sovereign-university/content';
 import {
+  computeTemporaryDirectory,
   getAllRepoFiles,
   syncCdnRepository,
 } from '@sovereign-university/github';
@@ -68,7 +69,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   ) {
     try {
       await syncCdnRepository(
-        '/tmp/sovereign-university-data-paid',
+        computeTemporaryDirectory(process.env['PRIVATE_DATA_REPOSITORY_URL']),
         process.env['CDN_PATH'] || '/tmp/cdn',
       );
     } catch (error) {
@@ -81,7 +82,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   let publicCdnError;
   try {
     await syncCdnRepository(
-      '/tmp/sovereign-university-data',
+      computeTemporaryDirectory(process.env['DATA_REPOSITORY_URL']),
       process.env['CDN_PATH'] || '/tmp/cdn',
     );
   } catch (error) {

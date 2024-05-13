@@ -88,6 +88,7 @@ services:
       - ./packages/types/src:/home/node/packages/types/src
       - ./packages/user/src:/home/node/packages/user/src
       - cdn:$CDN_PATH
+      - sync:${SYNC_PATH:-/tmp/sync}
     depends_on:
       - postgres
     healthcheck:
@@ -115,3 +116,4 @@ volumes:
   postgres:
   redis:
   cdn:
+  sync:
