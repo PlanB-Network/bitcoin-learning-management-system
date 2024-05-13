@@ -189,7 +189,7 @@
       "": ""
     },
     "part": {
-      "count": "Part n°{{count}}/{{total}}"
+      "count": "Part {{count}}"
     },
     "payment": {
       "access_invoice": "You can access your invoice via your dashboard",

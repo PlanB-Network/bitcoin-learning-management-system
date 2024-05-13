@@ -47,6 +47,7 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
       courseId: chapter.course.id,
       partIndex: previousPart.part.toString(),
       chapterIndex: previousPart.chapters.length.toString(),
+      chapterName: previousPart.chapters.at(-1)?.title,
     };
   }
 
@@ -65,6 +66,7 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
       courseId: chapter.course.id,
       partIndex: nextPart.part.toString(),
       chapterIndex: '1',
+      chapterName: nextPart.chapters.at(0)?.title,
     };
   }
 
@@ -75,40 +77,18 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
       ? chapter.chapter - 1
       : chapter.chapter + 1
     ).toString(),
+    chapterName:
+      type === 'previous'
+        ? currentPart.chapters[chapter.chapter - 2].title
+        : currentPart.chapters[chapter.chapter].title,
   };
-};
-
-const Title = ({ chapter }: { chapter: Chapter }) => {
-  return (
-    <div className={`mb-6 w-full max-w-5xl max-sm:hidden`}>
-      <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
-        <Link to="/courses">{t('words.courses') + ` > `}</Link>
-        <Link
-          to={'/courses/$courseId'}
-          params={{ courseId: chapter.course.id }}
-        >
-          {`${chapter.course.id.toUpperCase()} > `}
-        </Link>
-        <Link
-          to={'/courses/$courseId/$partIndex/$chapterIndex'}
-          params={{
-            courseId: chapter.course.id,
-            partIndex: chapter.part.part.toString(),
-            chapterIndex: chapter.chapter.toString(),
-          }}
-        >
-          {`${chapter.title}`}
-        </Link>
-      </span>
-    </div>
-  );
 };
 
 const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="mb-0 w-full max-w-5xl px-5 md:px-0 sm:hidden">
+    <div className="mb-0 w-full max-w-5xl px-5 md:px-0 sm:hidden mt-5">
       <h1
         className={`mb-5 w-full text-left text-4xl font-bold text-white md:text-5xl`}
       >
@@ -129,14 +109,14 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
         </div>
       </h1>
       <div className="flex flex-col  ">
-        <div className="flex items-center justify-center p-1 font-thin text-gray-500">
+        <div className="flex items-center justify-center p-1 font-normal text-black tracking-015px">
           <div className="h-0 grow border-t border-gray-300"></div>
           <span className="px-3">
             {t('courses.part.count', {
               count: chapter.part.part,
               total: chapter.course.parts?.length,
             })}
-            <span className={`ml-2`}>
+            <span className={`ml-1.5 lowercase`}>
               {t('courses.chapter.count', {
                 count: chapter.chapter,
               })}
@@ -193,26 +173,37 @@ const TimelineBig = ({
 }) => {
   const { t } = useTranslation();
 
+  const isFirstChapter = chapter.chapter === 1 && chapter.part.part === 1;
+
+  const isLastChapter =
+    chapter.chapter === chapter.part.chapters.length &&
+    chapter.part.part === chapter.course.parts.length;
+
   return (
-    <div className="mb-0 w-full max-w-5xl px-5 md:px-0 max-sm:hidden">
-      <h1 className="mb-5 mt-2 w-full text-left text-3xl font-semibold text-orange-800 md:text-5xl">
+    <div className="mb-0 w-full max-w-[66rem] max-sm:hidden mt-7 px-5 md:px-2">
+      <h1 className="flex items-center mb-5 mt-2 text-2xl md:text-4xl text-orange-800 lg:text-5xl gap-7">
         <Link
           to={'/courses/$courseId'}
           params={{ courseId: chapter.course.id }}
-          className="text-orange-500"
+          className="px-4 py-2 bg-newGray-5 text-newGray-2 rounded-2xl leading-tight hover:text-darkOrange-5 hover:bg-darkOrange-0"
         >
-          {`${addSpaceToCourseId(chapter.course.id.toUpperCase())} 
-        - 
-        ${chapter.course.name}`}
+          {addSpaceToCourseId(chapter.course.id.toUpperCase())}
+        </Link>
+        <Link
+          to={'/courses/$courseId'}
+          params={{ courseId: chapter.course.id }}
+          className="text-black font-semibold leading-tight hover:text-darkOrange-5"
+        >
+          {chapter.course.name}
         </Link>
       </h1>
-      <div className="font-body flex flex-row justify-between text-lg font-light tracking-wide">
+      <div className="font-body flex flex-row justify-between text-xl text-black leading-relaxed tracking-015px mt-7">
         <div>
           {t('courses.part.count', {
             count: chapter.part.part,
             total: chapter.course.parts.length,
           })}
-          <span className={`ml-4`}>
+          <span className={`ml-2.5 lowercase`}>
             {t('courses.chapter.count', {
               count: chapter.chapter,
             })}
@@ -254,8 +245,8 @@ const TimelineBig = ({
                           currentPart.part < chapter.part.part ||
                             (currentPart.part === chapter.part.part &&
                               currentChapter.chapter < chapter.chapter)
-                            ? 'bg-orange-600'
-                            : 'bg-gray-300',
+                            ? 'bg-darkOrange-5'
+                            : 'bg-newGray-3',
                           firstPart && firstChapter ? 'rounded-l-full' : '',
                           lastPart && lastChapter ? 'rounded-r-full' : '',
                         )}
@@ -271,13 +262,13 @@ const TimelineBig = ({
                   >
                     <div
                       className={compose(
-                        'h-4 w-2/3 bg-orange-600',
+                        'h-4 w-2/3 bg-darkOrange-5',
                         firstPart && firstChapter ? 'rounded-l-full' : '',
                       )}
                     />
                     <div
                       className={compose(
-                        'h-4 w-1/3 bg-gray-300',
+                        'h-4 w-1/3 bg-newGray-3',
                         lastPart && lastChapter ? 'rounded-r-full' : '',
                       )}
                     />
@@ -295,6 +286,43 @@ const TimelineBig = ({
           );
         })}
       </div>
+      <div className="flex items-center justify-center gap-10 mt-10 text-center leading-normal tracking-015px">
+        {!isFirstChapter && (
+          <Link
+            to={
+              isFirstChapter
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$partIndex/$chapterIndex'
+            }
+            params={goToChapterParameters(chapter, 'previous')}
+            className="basis-1/4 truncate text-newGray-1"
+          >
+            {goToChapterParameters(chapter, 'previous').chapterName}
+          </Link>
+        )}
+
+        <div className="flex gap-10 items-center text-darkOrange-5 font-semibold">
+          {!isFirstChapter && <span>&lt;</span>}
+          <span>{chapter.title}</span>
+          {!isLastChapter && <span>&gt;</span>}
+        </div>
+
+        {!isLastChapter && (
+          <Link
+            to={
+              isLastChapter
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$partIndex/$chapterIndex'
+            }
+            params={goToChapterParameters(chapter, 'next')}
+            className="basis-1/4 truncate text-newGray-1"
+          >
+            {goToChapterParameters(chapter, 'next').chapterName}
+          </Link>
+        )}
+      </div>
+
+      <div className="mt-2 bg-newGray-1 h-px" />
     </div>
   );
 };
@@ -575,8 +603,7 @@ export const CourseChapter = () => {
       />
       <div className="text-blue-800">
         {chapter && (
-          <div className="flex size-full flex-col items-center justify-center py-1 md:px-2 md:py-3">
-            <Title chapter={chapter} />
+          <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}
             <TimelineBig chapter={chapter} professor={computerProfessor} />
             {/* Mobile */}
@@ -592,7 +619,7 @@ export const CourseChapter = () => {
               )}
             </div>
 
-            <div className=" flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
+            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               <div className="w-full">
                 <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
                   <Header chapter={chapter} sections={sections} />

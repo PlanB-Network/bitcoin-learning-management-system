@@ -79,41 +79,42 @@ export const ClassDetails = ({
     : '';
 
   return (
-    <div className="flex flex-col mt-6  px-4 md:px-0">
-      <p className="font-medium text-sm ml-2">
-        {t('courses.chapter.detail.title')}
-      </p>
-
+    <div className="flex flex-col mt-6 px-4 md:px-0">
       <div className="flex flex-col md:flex-row gap-8">
-        <Card className="md:w-1/2 h-fit">
-          {chapter.startDate && (
+        <div className="md:w-1/2">
+          <p className="font-medium text-sm ml-2">
+            {t('courses.chapter.detail.title')}
+          </p>
+          <Card className="h-fit !bg-newGray-5 !shadow-course-card border-none">
+            {chapter.startDate && (
+              <TextLine
+                label={`${t('words.date')} :`}
+                text={formattedStartDate}
+              />
+            )}
+            {chapter.startDate && chapter.endDate && (
+              <TextLine label={`${t('words.time')} :`} text={formattedTime} />
+            )}
+            {chapter.addressLine1 && (
+              <TextLine label="Location :" text={chapter.addressLine1} />
+            )}
+            {chapter.addressLine2 && <TextLine text={chapter.addressLine2} />}
+            {chapter.addressLine3 && <TextLine text={chapter.addressLine3} />}
+            <TextLine label="Teacher :" text={professor} />
             <TextLine
-              label={`${t('words.date')} :`}
-              text={formattedStartDate}
+              label="Capacity :"
+              text={`${chapter.availableSeats} students`}
             />
-          )}
-          {chapter.startDate && chapter.endDate && (
-            <TextLine label={`${t('words.time')} :`} text={formattedTime} />
-          )}
-          {chapter.addressLine1 && (
-            <TextLine label="Location :" text={chapter.addressLine1} />
-          )}
-          {chapter.addressLine2 && <TextLine text={chapter.addressLine2} />}
-          {chapter.addressLine3 && <TextLine text={chapter.addressLine3} />}
-          <TextLine label="Teacher :" text={professor} />
-          <TextLine
-            label="Capacity :"
-            text={`${chapter.availableSeats} students`}
-          />
-          {isDevelopmentEnvironment() && (
-            <TextLine
-              label="(Remaining) :"
-              text={`${chapter.remainingSeats}`}
-            />
-          )}
-        </Card>
+            {isDevelopmentEnvironment() && (
+              <TextLine
+                label="(Remaining) :"
+                text={`${chapter.remainingSeats}`}
+              />
+            )}
+          </Card>
+        </div>
 
-        <div className="flex flex-col gap-4 pt-2">
+        <div className="flex flex-col gap-4">
           <div className="text-xl leading-8">
             <p className="font-medium">
               {t('courses.chapter.detail.p1heading')}
@@ -205,7 +206,7 @@ export const ClassDetails = ({
         }}
       />
 
-      <hr className="mt-6 text-newGray-2 border-t-2" />
+      <div className="mt-6 bg-newGray-1 h-px mx-2" />
     </div>
   );
 };
