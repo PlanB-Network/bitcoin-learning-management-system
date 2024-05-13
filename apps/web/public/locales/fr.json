@@ -99,7 +99,17 @@
             "detail": {
                 "title": "Détails de la classe",
                 "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
-                "p1content": "Assurez-vous de réserver votre place"
+                "p1content": "Assurez-vous de réserver votre place",
+                "bookSeat": "",
+                "classIsFull": "",
+                "cancelBooking": "",
+                "ticketDownload": "",
+                "p2heading": "",
+                "p2content": ""
+            },
+            "live": {
+                "title": "",
+                "stayTuned": ""
             }
         },
         "details": {
@@ -180,7 +190,13 @@
             "terms2": "general terms",
             "terms3": "and conditions for refund details",
             "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
-            "total": "Total"
+            "total": "Total",
+            "back_course": "",
+            "callout": "",
+            "description": "",
+            "book_description": "",
+            "qr_unified": "",
+            "time": ""
         },
         "preview": {
             "by": "par {{professor}}",
@@ -207,8 +223,14 @@
     },
     "dashboard": {
         "myCourses": {
-            "resumeLesson": "Reprendre la leçon"
-        }
+            "resumeLesson": "Reprendre la leçon",
+            "completed": "",
+            "details": "",
+            "inprogress": ""
+        },
+        "account": "",
+        "courses": "",
+        "logout": ""
     },
     "events": {
         "introduction": {
@@ -236,7 +258,46 @@
             "watchReplay": "Watch replay",
             "bookLive": "Book live",
             "bookSeat": "Book your seat",
-            "visitWebsite": "Visit website"
+            "visitWebsite": "Visit website",
+            "buyReplay": "",
+            "eventFull": "",
+            "seatBooked": ""
+        },
+        "newEvent": {
+            "button": "",
+            "description": "",
+            "subtitle": "",
+            "title": ""
+        },
+        "pageDescription": "",
+        "pageSubtitle": "",
+        "pageTitle": "",
+        "payment": {
+            "access_invoice": "",
+            "access_online_successful": "",
+            "access_physical_successful": "",
+            "access_type": "",
+            "address": "",
+            "additional_free_description": "",
+            "amount": "",
+            "back_events": "",
+            "book_seat": "",
+            "callout_online": "",
+            "callout_physical": "",
+            "callout_replay": "",
+            "date": "",
+            "dates_to": "",
+            "description_online": "",
+            "description_physical": "",
+            "description_free_physical": "",
+            "download_ticket": "",
+            "enjoy": "",
+            "language": "",
+            "limitation": "",
+            "max_capacity": "",
+            "payment_details": "",
+            "payment_successful": "",
+            "time": ""
         }
     },
     "home": {
@@ -342,7 +403,8 @@
         "sponsorsDescription": "Découvrez nos sponsors et principaux contributeurs",
         "supportUsDescription": "Trouver des moyens de nous soutenir, de quelque manière que ce soit",
         "teachersDescription": "Apprenez à connaître nos professeurs universitaires, nos bitcoiners passionnés",
-        "walletsDescription": "Sécurisez et utilisez vos bitcoins"
+        "walletsDescription": "Sécurisez et utilisez vos bitcoins",
+        "conferencesDescription": ""
     },
     "nodeNetwork": {
         "answer1": "Un Nœud est simplement une communauté Bitcoin qui souhaite passer à l'étape suivante et accélérer l'adoption de Bitcoin au niveau local ! Il n'y a pas de taille minimale pour commencer.",
@@ -411,7 +473,8 @@
         "podcasts": {
             "title": "Podcasts"
         },
-        "publicGrade": "Note publique : {{grade}}/5"
+        "publicGrade": "Note publique : {{grade}}/5",
+        "github": ""
     },
     "settings": {
         "changePassword": "Changer le mot de passe"
@@ -493,6 +556,11 @@
             },
             "shortDescription": "Solutions de sécurisation et d'utilisation de vos bitcoins",
             "title": "Portefeuille"
+        },
+        "others": {
+            "title": "",
+            "shortDescription": "",
+            "description": ""
         }
     },
     "underConstruction": {
@@ -583,7 +651,10 @@
         "update": "Actualiser",
         "video": "Vidéo",
         "videos": "Vidéos",
-        "wallets": "Portefeuilles"
+        "wallets": "Portefeuilles",
+        "date": "",
+        "time": "",
+        "to": ""
     },
     "conferences": {
         "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
@@ -608,5 +679,11 @@
         "pageSubtitle": "Ce portail est open-source et ouvert aux contributions.",
         "pageTitle": "Redifusion de conférences",
         "planBConferences": "Conférences Plan B"
+    },
+    "payment": {
+        "proceedToPayment": "",
+        "terms": "",
+        "feeDistribution": "",
+        "total": ""
     }
 }

@@ -1,6 +1,6 @@
 {
     "about": {
-        "manifesto": "Chúng tôi tin vào tương lai phi tập trung mà Bitcoin mang lại. \n\nSứ mệnh của chúng tôi là giới thiệu Bitcoin tới hàng tỷ người trong vòng một thập kỷ. Công cụ của chúng tôi là giáo dục và thông tin. \n\nChúng tôi hỗ trợ các cộng đồng Bitcoin bằng cách mang đến nội dung giáo dục mã nguồn mở và một mạng lưới những nhà cố vấn về Bitcoin. \n\nTriết lý của chúng tôi được truyền cảm hứng vởi bản tuyên ngôn cypherpunk. Họ hiển dương quyền riêng tư, chúng tôi hiển dương giáo dục. Chúng tôi tin rằng tri thức là nền tảng vững chắc cho tự do và sự thay đổi. \n\nChúng tôi chỉ tập trung duy nhất vào Bitcoin (Bitcoin - only).\n\nChúng tôi cổ vũ cho tránh nhiệm cá nhân và sự độc lập có được nhờ sở hữu chìa khoá của chính mình.\n\nChúng tôi chủ trương xác minh, kiểm chứng tất cả, không tin tưởng mù quáng vào bất kỳ điều gì cả.\n\nChúng tôi tin rằng thông qua việc \"sửa chữa\" lại tiền tệ, chúng ta sẽ \"sửa chữa\" được thế giới.\n\nChúng tôi là phi tập trung và mã nguồn mở, không có tồn tại điểm thất bại tập trung nào cả.\n\nChúng tôi cổ vũ việc phân phối, chia sẻ miễn phí các nội dung của mình.\n\nChúng tôi khao khát về một thế giới được vận hành từ dưới lên, nơi cá nhân mỗi người chính là trung tâm.\n\nChúng tôi đơn giản hoá, chúng tôi giao dục, chúng tôi chia sẻ.\n\nTham gia cùng chúng tôi trong sứ mệnh \"orange pill\" - chuốc viên thuốc màu cam, viên thuốc Bitcoin, cho toàn thế giới.\n",
+        "manifesto": "Chúng tôi tin vào tương lai phi tập trung mà Bitcoin mang lại. \n\nSứ mệnh của chúng tôi là giới thiệu Bitcoin tới hàng tỷ người trong vòng một thập kỷ. Công cụ của chúng tôi là giáo dục và thông tin. \n\nChúng tôi hỗ trợ các cộng đồng Bitcoin bằng cách mang đến nội dung giáo dục mã nguồn mở và một mạng lưới những nhà cố vấn về Bitcoin. \n\nTriết lý của chúng tôi được truyền cảm hứng vởi bản tuyên ngôn cypherpunk. Phong trào cypherpunk hiển dương quyền riêng tư, chúng tôi hiển dương giáo dục. Chúng tôi tin rằng tri thức là nền tảng vững chắc cho tự do và sự thay đổi. \n\nChúng tôi chỉ tập trung duy nhất vào Bitcoin (Bitcoin - only).\n\nChúng tôi cổ vũ cho tránh nhiệm cá nhân và sự độc lập có được nhờ sở hữu chìa khoá của chính mình.\n\nChúng tôi chủ trương xác minh, kiểm chứng tất cả, không tin tưởng mù quáng vào bất kỳ điều gì cả.\n\nChúng tôi tin rằng thông qua việc \"sửa chữa\" lại tiền tệ, chúng ta sẽ \"sửa chữa\" được thế giới.\n\nChúng tôi là phi tập trung và mã nguồn mở, không có tồn tại điểm thất bại tập trung nào cả.\n\nChúng tôi cổ vũ việc phân phối, chia sẻ miễn phí các nội dung của mình.\n\nChúng tôi khao khát về một thế giới được vận hành từ dưới lên, nơi cá nhân mỗi người chính là trung tâm.\n\nChúng tôi đơn giản hoá, chúng tôi giáo dục, chúng tôi chia sẻ.\n\nTham gia cùng chúng tôi trong sứ mệnh \"orange pill\" - chuốc viên thuốc màu cam, viên thuốc Bitcoin, cho toàn thế giới.\n",
         "activeContributors": "Những người đóng góp tích cực",
         "missionTitle": "Sứ mệnh của chúng tôi",
         "commitmentTitle": "Cam kết của chúng tôi",
@@ -19,7 +19,7 @@
         "missionContent2": "Chúng tôi tập trung trị thức lại để phân phối tốt hơn thông qua một kho chứa đơn giản, đa ngôn ngữ trên GitHub và một nền tảng học tập trực tuyến. Chúng tôi hỗ trợ các công đồng Bitcoin trong việc phát triển những công cụ cần thiết để tài năng của họ được phát triển.",
         "coreTeamContent": "PlanB Network là một tập hợp của hàng trăm người đóng góp, giáo viên, lãnh đạo cộng đồng, nhà thiết kế, lập trình viên và nhà tổ chức. Chân thành cảm ơn sâu sắc những người đã giúp biến PlanB trở thành hiện thực và tiếp tục đóng góp mỗi ngày. (Bảng vàng cống hiến sẽ sớm được giới thiệu)",
         "coreTeamAsioRole": "Điều phối chương trình giáo dục",
-        "corporateContent": "PlanB Network là một dự án có sự hợp tác và tham gia cuả ba thực thể tập trung vào việc phát triển Bitcoin. Trong nỗ lực mở rộng quy mô của nền tảng cơ sở tập trung vào mảng giáo dục về bitcoin, các thực thể này đã quyết định hợp tác để xây dựng PlanB Network. Để đạt được thành công với mục tiêu đưa giáo dục về bitcoin tới với thế giới, nhiều thực thể khác đã quyết định tham gia và đóng góp. Chân thành cảm ơn.",
+        "corporateContent": "PlanB Network là một dự án có sự hợp tác và tham gia cuả ba thực thể tập trung vào việc phát triển Bitcoin. Trong nỗ lực mở rộng quy mô của nền tảng cơ sở tập trung vào mảng giáo dục về bitcoin, các thực thể này đã quyết định hợp tác để xây dựng PlanB Network. Để đạt được thành công với mục tiêu đưa giáo dục về bitcoin tới với thế giới, nhiều thực thể khác đã quyết định tham gia và đóng góp. Chân thành cảm ơn",
         "storyContent": "PlanB Network là một sáng kiến ra đời để hỗ trợ việc mở rộng giáo dục về Bitcoin trên phạm vi toàn cầu. Nó là giao điểm của nhiều công ty có đam mê tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và ý thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network để mang đến một công cụ hữu ích cho sự phát triển của hệ sinh thái Bitcoin. Bài trình chiếu về năm 2023 của chúng tôi có tại đây."
     },
     "conferences": {
@@ -90,7 +90,7 @@
             "financeIntroduction": "Giới thiệu về tài chính",
             "financialCrisis": "Phân tích các cuộc khủng hoảng tài chính lớn",
             "hyperinflation": "Nghiên cứu về siêu lạm phát",
-            "colcardAndSparrow": "Coldcard and Sparrow"
+            "colcardAndSparrow": "Coldcard và Sparrow"
         },
         "categories": {
             "btc": "Bitcoin",
@@ -172,6 +172,9 @@
         },
         "part": {
             "count": "Phần số {{count}}/{{total}}"
+        },
+        "footer": {
+            "": ""
         }
     },
     "events": {
@@ -265,7 +268,7 @@
             "description": "Nội dung này được đảm bảo sằn sàng để sử dụng cho các sự kiện và mục đích giáo dục.",
             "title": "Nội dung dùng cho giáo dục"
         },
-        "hereForYou": "BET ở đây là dành cho bạn!",
+        "hereForYou": "BET ở đây để dành cho bạn!",
         "pageSubtitle": "BET - Một bộ công cụ Bitcoin mã nguồn mở cho tất cả các dự án giáo dục",
         "pageTitle": "Bộ công cụ giáo dục về Bitcoin - BET",
         "visualContent": {
@@ -540,7 +543,9 @@
             "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác."
         },
         "others": {
-            "title": "Khác"
+            "title": "Khác",
+            "shortDescription": "",
+            "description": ""
         },
         "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
         "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
@@ -556,9 +561,113 @@
             }
         },
         "wallet": {
-            "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ."
+            "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ.",
+            "desktop": {
+                "description": "Ví trên máy tính là ví thường dùng cho những người dùng nâng cao bởi vì chúng là sự kết hợp giữa thiết bị phần cứng và phần mềm ví trên máy tính. Nó giống như có một giao diện người dùng mới, được tuỳ biến và có nhiều chức năng cho thiết bị phần cứng của bạn. Những ví kiểu như vậy cung cấp tuỳ chọn đa chữ ký, các tính năng riêng tư, cơ chế thừa kế và nhiều hơn nữa."
+            },
+            "mobile": {
+                "description": "Ví trên thiết bị di động thường được dùng để phục vụ cho chi tiêu hàng ngày. Chúng được tích hợp với Lightning Network để thực hiện các giao dịch phí thấp và ngay lập tức. Chúng thường được kết nối với internet (thường gọi là \"ví nóng\") và mức độ bảo mật thấp hơn so với các ví phần cứng. Chúng chỉ nên được sử để lưu trữ một lượng nhỏ bitcoin, được dùng cho các giao dịch hàng ngày giống tiền mặt trong ví của bạn vậy."
+            },
+            "shortDescription": "Các giải pháp bảo mật và sử dụng bitcoin của bạn",
+            "title": "Ví",
+            "hardware": {
+                "description": "Các ví phần cứng thường được dùng để lưu trữ bitcoin dài hạn. Chúng là những thiết bị vật lý không được kết nối với internet (được gọi là ví lạnh) và thường rất an toàn. Mặc dù phần mềm được dùng trên các thiết bị này là mã nguồn mở, giá để mua phần cứng khoảng từ 50 đến 300 euro. Hãy xem những thiết bị này giống như một tài khoản ngân hàng dành cho việc lưu trữ khoản tiền tiết kiệm lớn mà thi thoảng bạn mới sử dụng."
+            }
         },
         "headerText": "Chào mừng bạn đến với chiếc hang thỏ không đáy mang tên Bitcoin! Trong phần này, chúng tôi sẽ cung cấp cho bạn những hướng dẫn chuyên sâu về hầu hết các dự án Bitcoin hiện có. Trang này được duy trì bởi những người đam mê Bitcoin, những người hỗ trợ cho dự án mã nguồn mở này. Nếu bạn cảm thấy chúng tôi gặp một lỗi gì đó, vui lòng liên hệ với chúng tôi. Để xem các tài liệu về tài chính của dự án, hãy tham khảo báo cáo minh bạch của chúng tôi. Bạn ơn sự tín nhiệm của bạn dành cho trường đại học này và hãy tận hưởng chuyến đi.",
         "pageDescription": "Bitcoin là một ngành rộng, và đang trở nên rộng hơn mỗi ngày. Nhằm giúp bạn khám phá nó, chúng tôi đã tập hợp và lựa chọn một lượng lớn các hướng dẫn mô tả về các giải pháp khác nhau trên tất cả các mảng liên quan tới Bitcoin."
+    },
+    "underConstruction": {
+        "github": "GitHub",
+        "p2": "và cân nhắc tham gia cộng đồng của chúng tôi!",
+        "pageTitle": "Ôi.",
+        "p1": "Một chú thỏ vừa chui vào hang. Bởi vì cuộc phiêu lưu bất ngờ này, trang này đang trong quá trình phát triển ở thời điểm hiện tại. Chúng tôi xin lỗi về sự bất tiện này. Đội ngũ của chúng tôi đang nỗ lực để hoàn thiện trang này. Nếu bạn muốn giúp một tay, đừng ngại xem qua"
+    },
+    "words": {
+        "about": "Về",
+        "about-us": "Về chúng tôi",
+        "account": "Tài khoản",
+        "additionalCriteria": "Tiêu chí cộng thêm",
+        "advanced": "Nâng cao",
+        "article": "Bài viết",
+        "articles": "Các bài viết",
+        "audioBook": "Sách nói",
+        "back": "Quay lại",
+        "beginner": "Người mới bắt đầu",
+        "bitcoinWhitepaper": "Bản cáo bạch Bitcoin",
+        "book": "Sách",
+        "books": "Sách",
+        "builders": "Nhà phát triển",
+        "certificate": "Chứng chỉ",
+        "conference": "Hội nghị",
+        "conferences": "Các hội nghị",
+        "content": "Nội dung",
+        "course": "Khoá học",
+        "courses": "Các khoá học",
+        "date": "Ngày",
+        "details": "Chi tiết",
+        "didYouKnow": "Bạn đã biết?",
+        "documentaries": "Phim tài liệu",
+        "donations": "Ủng hộ",
+        "economy": "Kinh tế",
+        "education": "Giáo dục",
+        "email": "Email",
+        "events": "Các sự kiện",
+        "followUs": "Theo dõi chúng tôi",
+        "helpUs": "Giúp đỡ chúng tôi",
+        "home": "Trang chủ",
+        "intermediate": "Trung cấp",
+        "interview": "Phỏng vấn",
+        "level": {
+            "advanced": "Nâng cao",
+            "beginner": "Người mới bắt đầu",
+            "intermediate": "Trung cấp",
+            "developer": "lập trình viên"
+        },
+        "library": "Thư viện",
+        "lightning": "Lightning",
+        "lnurlAuth": "Xác thực LNURL",
+        "manifesto": "Bản tuyên ngôn",
+        "merchandising": "Buôn bán",
+        "merchants": "Các thương nhân",
+        "members": " Các thành viên",
+        "mining": "Đào",
+        "movieDocumentary": "Phim tài liệu",
+        "network": "Mạng lưới",
+        "networkMember": "Thành viên mạng lưới",
+        "newsletter": "Bản tin",
+        "node": "Nút",
+        "nodeNetwork": "Nút mạng",
+        "or": "hoặc",
+        "ourStory": "Câu chuyện của chúng tôi",
+        "podcast": "Podcast",
+        "podcasts": "Các podcast",
+        "professors": "Các giáo sư",
+        "purchase": "Mua",
+        "register": "Đăng ký",
+        "resources": "Các nguồn tài nguyên",
+        "resume": "Tiếp tục",
+        "review": "Xem lại",
+        "rogzy": "Rogzy",
+        "sponsorUs": "Tài trợ chúng tôi",
+        "sponsoringAndContributors": "Hoạt động tài trợ và những người đóng góp",
+        "supportUs": "Hỗ trợ chúng tôi",
+        "termsAndConditions": "Các điều khoản và điều kiện",
+        "time": "Thời gian",
+        "to": "tới",
+        "toolkits": "Các bộ công cụ",
+        "tutorial": "Hướng dẫn",
+        "tutorials": "Các hướng dẫn",
+        "update": "Cập nhật",
+        "video": "Video",
+        "videos": "Các video",
+        "wallets": "Các ví",
+        "continue": "Tiếp tục",
+        "dashboard": "Bảng điều khiển",
+        "exchanges": "Các sàn giao dịch",
+        "more": "Nhiều hơn",
+        "newsletters": "Các bản tin",
+        "relatedResources": "Các nguồn tài nguyên liên quan",
+        "teachers": "Các giáo viên"
     }
 }
