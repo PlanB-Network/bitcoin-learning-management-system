@@ -427,7 +427,7 @@ export const Home = () => {
 
   const LanguageSection = () => {
     return (
-      <div className="mx-4 md:mx-0">
+      <div className="mx-4 md:mx-auto md:w-fit md:max-w-full">
         <div
           className={cn(
             '!py-0 my-8 md:my-16 bg-orange-500 rounded-2xl relative',
