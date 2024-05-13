@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import { ResetMode, simpleGit } from 'simple-git';
+import { DefaultLogFields, LogResult, ResetMode, simpleGit } from 'simple-git';
 
 import type { ChangedFile } from '@sovereign-university/types';
 
@@ -253,16 +253,27 @@ export const syncCdnRepository = async (
       (file) => file.includes('/assets/') || file.includes('/soon/'),
     );
 
+    // Cache the log of the parent directory of each asset
+    const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
+
     for (const asset of assets.reverse()) {
       console.log('sync cdn asset:', asset);
 
-      // This takes long time on btc101
-      const parentDirectoryLog = await git
-        .cwd(repositoryDirectory)
-        .log({ file: asset.replace(/\/assets\/.*/, '') });
-      const relativePath = asset.replace(`${repositoryDirectory}/`, '');
+      // Get the log of the parent directory
+      const parentDirectory = asset.replace(/\/assets\/.*/, '');
+      const cachedParentDirectoryLog = directoryLogCache.get(parentDirectory);
+      const parentDirectoryLog = cachedParentDirectoryLog
+        ? cachedParentDirectoryLog
+        : await git.cwd(repositoryDirectory).log({ file: parentDirectory });
+
+      // Cache the log of the parent directory if not already cached
+      if (!cachedParentDirectoryLog) {
+        directoryLogCache.set(parentDirectory, parentDirectoryLog);
+      }
 
       if (!parentDirectoryLog.latest) continue;
+
+      const relativePath = asset.replace(`${repositoryDirectory}/`, '');
 
       const cdnPath = path.join(
         cdnDirectory,
