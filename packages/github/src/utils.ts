@@ -3,7 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import { DefaultLogFields, LogResult, ResetMode, simpleGit } from 'simple-git';
+import type { DefaultLogFields, LogResult } from 'simple-git';
+import { ResetMode, simpleGit } from 'simple-git';
 
 import type { ChangedFile } from '@sovereign-university/types';
 
