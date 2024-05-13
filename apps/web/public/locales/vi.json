@@ -172,6 +172,9 @@
         },
         "part": {
             "count": "Phần số {{count}}/{{total}}"
+        },
+        "footer": {
+            "": ""
         }
     },
     "events": {
@@ -540,7 +543,9 @@
             "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác."
         },
         "others": {
-            "title": "Khác"
+            "title": "Khác",
+            "shortDescription": "",
+            "description": ""
         },
         "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
         "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
