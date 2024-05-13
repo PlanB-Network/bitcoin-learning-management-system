@@ -104,8 +104,8 @@
                 "classIsFull": "",
                 "cancelBooking": "",
                 "ticketDownload": "",
-                "p2heading": "",
-                "p2content": ""
+                "p2heading": "Vous n'êtes plus disponible ?",
+                "p2content": "Pas de problème ! Le cours sera diffusée en direct sur cette page et disponible en redifusion plus tard."
             },
             "live": {
                 "title": "",
