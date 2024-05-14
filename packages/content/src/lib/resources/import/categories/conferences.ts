@@ -130,6 +130,7 @@ export const createProcessChangedConference = (
                 languages = EXCLUDED.languages,
                 name = EXCLUDED.name,
                 year = EXCLUDED.year,
+                location = EXCLUDED.location,
                 description = EXCLUDED.description,
                 builder = EXCLUDED.builder,
                 website_url = EXCLUDED.website_url,
