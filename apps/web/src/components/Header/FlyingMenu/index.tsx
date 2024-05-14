@@ -48,6 +48,7 @@ export const FlyingMenu = ({
       <MetaElements
         onClickLogin={onClickLogin}
         onClickRegister={onClickRegister}
+        variant={variant}
       />
     </nav>
   );

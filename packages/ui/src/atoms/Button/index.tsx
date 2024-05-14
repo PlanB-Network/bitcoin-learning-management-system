@@ -55,7 +55,7 @@ const classesByVariant = {
   newTertiary:
     'bg-newBlack-3 text-newGray-4 border border-newGray-1 hover:border-newGray-4 transition-colors',
   ghost:
-    'bg-newBlack-1 text-white border border-newGray-2 hover:border-white transition-colors',
+    'text-white border border-newGray-2 hover:border-white transition-colors',
   download: 'bg-green-600 text-white',
   text: '',
 };

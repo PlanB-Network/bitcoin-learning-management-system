@@ -73,6 +73,14 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
+      // Remove tags related to the resource before inserting the new one
+      if (result) {
+        await transaction`
+        DELETE FROM content.resource_tags
+        WHERE resource_id = ${result.id}
+      `;
+      }
+
       // If the resource has tags, insert them into the tags table and link them to the resource
       if (result && parsedResource.tags && parsedResource.tags?.length > 0) {
         const lowercaseTags = parsedResource.tags.map((tag) =>

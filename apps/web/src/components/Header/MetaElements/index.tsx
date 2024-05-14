@@ -14,11 +14,15 @@ import { LanguageSelector } from '../LanguageSelector/index.tsx';
 export interface MetaElementsProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
+  variant?: 'light' | 'dark';
 }
 
 const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
-export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
+export const MetaElements = ({
+  onClickLogin,
+  variant = 'dark',
+}: MetaElementsProps) => {
   const { t } = useTranslation();
   const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
@@ -27,7 +31,10 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
 
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
-      <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
+      <LanguageSelector
+        direction={isScreenLg ? 'down' : 'up'}
+        variant={variant}
+      />
 
       {isFetched && (
         <>
