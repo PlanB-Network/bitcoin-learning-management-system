@@ -30,6 +30,7 @@ void i18n
     debug: false,
     fallbackLng: 'en',
     returnNull: false,
+    returnEmptyString: false,
     interpolation: {
       escapeValue: false,
     },
