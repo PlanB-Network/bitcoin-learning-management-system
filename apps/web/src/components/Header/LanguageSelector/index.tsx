@@ -8,14 +8,15 @@ import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '../../../atoms/Flag/index.tsx';
 import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
-import { compose } from '../../../utils/index.ts';
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';
+  variant: 'light' | 'dark';
 }
 
 export const LanguageSelector = ({
   direction = 'down',
+  variant,
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
 
@@ -46,7 +47,12 @@ export const LanguageSelector = ({
     <Popover className="relative">
       <Popover.Button
         onClick={() => setOpen((v) => !v)}
-        className="group z-0 flex place-items-center text-sm font-semibold text-white gap-1 outline-none p-4 bg-headerGray rounded-md"
+        className={cn(
+          'group z-0 flex place-items-center text-sm font-semibold gap-2.5 outline-none p-4 pr-2.5 rounded-xl',
+          variant === 'light'
+            ? 'text-white bg-white/15'
+            : 'text-white bg-headerGray',
+        )}
       >
         <Flag code={activeLanguage} />
         <MdKeyboardArrowDown
@@ -70,7 +76,7 @@ export const LanguageSelector = ({
         <Popover.Panel
           onMouseLeave={() => setOpen(false)}
           static
-          className={compose(
+          className={cn(
             'flex flex-col items-center justify-center absolute z-20 bg-[#25262d] rounded-2xl w-44 md:w-[440px] px-8 py-6 max-h-96 overflow-y-scroll no-scrollbar',
             direction === 'down'
               ? 'top-20 right-0'
@@ -100,12 +106,7 @@ export const LanguageSelector = ({
             rel="noopener noreferrer"
             className="max-md:hidden mt-6 w-full"
           >
-            <Button
-              variant="newSecondary"
-              size="l"
-              onHoverArrow
-              className="w-full"
-            >
+            <Button variant="ghost" size="m" onHoverArrow className="w-full">
               {t('home.languageSection.link')}
             </Button>
           </a>
