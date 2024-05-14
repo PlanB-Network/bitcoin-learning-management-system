@@ -18,8 +18,11 @@ const parseRepository = (repository: string) => {
 const extractRepositoryFromUrl = (url: string) =>
   url.split('/').splice(-1)[0].replace('.git', '');
 
-const computeTemporaryDirectory = (url: string) =>
-  path.join('/tmp', extractRepositoryFromUrl(url));
+export const computeTemporaryDirectory = (url: string) =>
+  path.join(
+    process.env['SYNC_PATH'] || '/tmp/sync',
+    extractRepositoryFromUrl(url),
+  );
 
 export const createDownloadFile =
   (octokit: GithubOctokit) => async (repository: string, path: string) => {
@@ -50,52 +53,75 @@ export const createDownloadFile =
     }
   };
 
+/**
+ * @param repository - Directory path to the repository (sync)
+ * @param branch     - Branch to sync
+ * @param directory  - Directory to sync the repository to (cdn)
+ * @param githubAccessToken - Token to access the repository (if private)
+ * @returns a simple-git instance
+ */
 const syncRepository = async (
   repository: string,
   branch: string,
   directory: string,
   githubAccessToken?: string,
 ) => {
-  const git = simpleGit();
-  try {
-    //Check if the repository already exists locally
-    if (
-      !(await pathExists(directory)) ||
-      !(await pathExists(path.join(directory, '.git')))
-    ) {
-      // Clone the repository
-      let options = {};
+  const directoryBranch = await simpleGit()
+    .cwd(directory)
+    .branchLocal()
+    .then((branches) => branches.current)
+    .catch(() => null);
 
-      if (githubAccessToken) {
-        options = {
-          '--config': `http.${repository}.extraheader=AUTHORIZATION: basic ${Buffer.from(
-            `${githubAccessToken}`,
-          ).toString('base64')}`,
-        };
-      }
+  // Clone the repository if it does not exist locally or if the branch is different
+  if (directoryBranch !== branch) {
+    const options: Record<string, string> = {
+      '--depth': '1',
+      '--branch': branch,
+    };
 
-      try {
-        await git.clone(repository, directory, options);
-      } catch (error: any) {
-        console.warn(
-          '[WARN] Failed to clone the repo, will try fetch and pull',
-          error instanceof Error ? error.message : '',
-        );
-      }
+    // Add authentication header if provided
+    if (githubAccessToken) {
+      const header = `AUTHORIZATION: basic ${Buffer.from(githubAccessToken).toString('base64')}`;
+      options['--config'] = `http.${repository}.extraheader=${header}`;
     }
 
-    // Reset local changes
-    await git.cwd(directory).reset(ResetMode.HARD);
+    console.log(`-- Sync procedure: Cloning repository on branch ${branch}`);
 
-    // Fetch the remote changes
-    await git.fetch('origin', '+refs/heads/*:refs/remotes/origin/*');
+    // If the directory already exists, remove it (should not happen in production)
+    if (directoryBranch || (await pathExists(directory))) {
+      console.warn(
+        `[WARN] Directory already synced on branch ${directoryBranch}, removing it`,
+      );
+      await fs.rm(directory, { recursive: true });
+    }
 
-    // Get the branch name
-    await git.checkout(['-B', branch]);
+    try {
+      const git = simpleGit();
+      await git.clone(repository, directory, options);
+      await git.cwd(directory);
 
-    // Reset the current branch to match the remote branch
-    await git.reset(ResetMode.HARD, [`origin/${branch}`]);
+      console.log(`-- Sync procedure: Cloned repository on branch ${branch}`);
 
+      return git;
+    } catch (error: any) {
+      console.warn(
+        '[WARN] Failed to clone the repo, will try fetch and pull',
+        error instanceof Error ? error.message : '',
+      );
+
+      throw new Error(
+        `Failed to sync repository ${repository}. ${
+          error instanceof Error ? error.message : ''
+        }`,
+      );
+    }
+  }
+
+  console.log(`-- Sync procedure: Pulling changes on branch ${branch}`);
+
+  try {
+    const git = simpleGit(directory);
+    await git.reset(ResetMode.HARD); // Reset local changes
     await git.pull('origin', branch);
 
     return git;
@@ -246,7 +272,7 @@ export const syncCdnRepository = async (
   repositoryDirectory: string,
   cdnDirectory: string,
 ) => {
-  const git = simpleGit();
+  const git = simpleGit(repositoryDirectory);
 
   try {
     const files = await walk(path.resolve(repositoryDirectory), ['.git']);
@@ -257,15 +283,17 @@ export const syncCdnRepository = async (
     // Cache the log of the parent directory of each asset
     const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
 
-    for (const asset of assets.reverse()) {
-      console.log('sync cdn asset:', asset);
+    console.log(
+      `-- Sync procedure: Syncing ${assets.length} assets to the CDN on ${repositoryDirectory}`,
+    );
 
+    for (const asset of assets.reverse()) {
       // Get the log of the parent directory
       const parentDirectory = asset.replace(/\/assets\/.*/, '');
       const cachedParentDirectoryLog = directoryLogCache.get(parentDirectory);
       const parentDirectoryLog = cachedParentDirectoryLog
         ? cachedParentDirectoryLog
-        : await git.cwd(repositoryDirectory).log({ file: parentDirectory });
+        : await git.log({ file: parentDirectory });
 
       // Cache the log of the parent directory if not already cached
       if (!cachedParentDirectoryLog) {

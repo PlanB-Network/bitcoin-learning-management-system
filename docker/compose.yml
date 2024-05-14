@@ -47,6 +47,7 @@ services:
       - 3000
     volumes:
       - ./data/cdn:$CDN_PATH
+      - ./data/sync:$SYNC_PATH
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-api-${ENV}.rule=Host(`api.${DOMAIN}`)

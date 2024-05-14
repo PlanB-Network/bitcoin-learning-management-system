@@ -6,6 +6,7 @@ import {
   createProcessDeleteOldEntities,
 } from '@sovereign-university/content';
 import {
+  computeTemporaryDirectory,
   getAllRepoFiles,
   syncCdnRepository,
 } from '@sovereign-university/github';
@@ -21,7 +22,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     return { success: false };
   }
 
-  console.log('-- Sync procedure: START');
+  console.log('-- Sync procedure: START ====================================');
 
   const processChangedFiles = createProcessChangedFiles(dependencies);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
@@ -32,8 +33,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
 
   await redis.del('trpc:*');
 
-  console.log('-- Sync procedure: Process new repo files');
-
   const syncErrors = await getAllRepoFiles(
     process.env['DATA_REPOSITORY_URL'],
     process.env['DATA_REPOSITORY_BRANCH'],
@@ -42,7 +41,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     process.env['GITHUB_ACCESS_TOKEN'],
   ).then(processChangedFiles);
 
-  console.log('-- Sync procedure: calculate remaining seats');
+  console.log('-- Sync procedure: Calculate remaining seats');
   await createCalculateCourseChapterSeats(dependencies)();
   await createCalculateEventSeats(dependencies)();
 
@@ -59,8 +58,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     console.error(syncErrors.join('\n'));
   }
 
-  console.log('-- Sync procedure: sync cdn repository');
-
   let privateCdnError;
   if (
     process.env['PRIVATE_DATA_REPOSITORY_URL'] &&
@@ -68,7 +65,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   ) {
     try {
       await syncCdnRepository(
-        '/tmp/sovereign-university-data-paid',
+        computeTemporaryDirectory(process.env['PRIVATE_DATA_REPOSITORY_URL']),
         process.env['CDN_PATH'] || '/tmp/cdn',
       );
     } catch (error) {
@@ -81,7 +78,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   let publicCdnError;
   try {
     await syncCdnRepository(
-      '/tmp/sovereign-university-data',
+      computeTemporaryDirectory(process.env['DATA_REPOSITORY_URL']),
       process.env['CDN_PATH'] || '/tmp/cdn',
     );
   } catch (error) {
@@ -90,7 +87,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
       error instanceof Error ? error.message : new Error('Unknown error');
   }
 
-  console.log('-- Sync procedure: END');
+  console.log('-- Sync procedure: END ====================================');
 
   return {
     success: syncErrors.length === 0,

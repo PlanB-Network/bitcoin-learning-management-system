@@ -46,10 +46,8 @@ In order to sync the database with the data from the data repository, you can ma
 
 ### Sync issue
 
-When running the sync locally, there is currently and access right issue with the cdn volume. To fix it, find where the volume named sovereign-university_cdn is located (using `docker volume inspect sovereign-university_cdn`).
-
-Then update the access rights on this folder :
-`sudo chmod 777 /var/lib/docker/volumes/sovereign-university_cdn/_data`
+When running the sync locally, there is currently and access right issue with the cdn and sync volumes. To fix it, update the access rights with the following command :
+`docker exec --user=root sovereign-university-api-1 chmod 777 /tmp/{sync,cdn}`
 
 ## Development - Manage the database
 

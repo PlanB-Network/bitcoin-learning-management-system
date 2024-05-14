@@ -321,7 +321,10 @@ export const createProcessChangedCourse =
                   : '20220101',
               );
               if (parsedCourse.requires_payment) {
-                console.log('startDateTimestamp', startDateTimestamp);
+                console.log(
+                  '-- Sync procedure: StartDateTimestamp',
+                  startDateTimestamp,
+                );
               }
               const endDateTimestamp = convertStringToTimestamp(
                 parsedCourse.paid_end_date
