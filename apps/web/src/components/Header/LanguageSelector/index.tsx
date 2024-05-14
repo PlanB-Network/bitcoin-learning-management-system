@@ -11,12 +11,12 @@ import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';
-  variant: 'light' | 'dark';
+  variant?: 'light' | 'dark';
 }
 
 export const LanguageSelector = ({
   direction = 'down',
-  variant,
+  variant = 'dark',
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
 

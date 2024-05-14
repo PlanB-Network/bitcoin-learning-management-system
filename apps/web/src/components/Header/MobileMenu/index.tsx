@@ -107,6 +107,7 @@ export const MobileMenu = ({
         <MetaElements
           onClickLogin={onClickLogin}
           onClickRegister={onClickRegister}
+          variant={variant}
         />
       </nav>
     </>

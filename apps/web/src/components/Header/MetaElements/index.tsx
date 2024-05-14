@@ -14,7 +14,7 @@ import { LanguageSelector } from '../LanguageSelector/index.tsx';
 export interface MetaElementsProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
-  variant: 'light' | 'dark';
+  variant?: 'light' | 'dark';
 }
 
 const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
