@@ -60,7 +60,7 @@ export const NavigationPanel: React.FC<Props> = ({
 }: Props) => {
   return (
     <div
-      className="bg-white z-10 h-auto w-60 rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation"
+      className="bg-white z-10 h-auto w-full max-w-[270px] rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation"
       style={style}
     >
       <Link
@@ -103,7 +103,9 @@ export const NavigationPanel: React.FC<Props> = ({
                               : 'rotate-90 shrink-0 transition-transform ease-in-out'
                           }
                         />
-                        <span>{chapterOne.partTitle}</span>
+                        <span className="capitalize font-poppins">
+                          {chapterOne.partTitle.toLowerCase()}
+                        </span>
                       </li>
                     </Disclosure.Button>
                     <Disclosure.Panel>
@@ -139,7 +141,7 @@ export const NavigationPanel: React.FC<Props> = ({
                                 <div className="col-span-7">
                                   <span
                                     className={cn(
-                                      'text-xs',
+                                      'text-xs font-poppins hover:text-darkOrange-5',
                                       isPastChapter(chapter, currentChapter)
                                         ? 'text-black'
                                         : isCurrentChapter(

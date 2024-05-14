@@ -16,7 +16,7 @@ import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { CoursesMarkdownBody } from '../../../components/CoursesMarkdownBody/index.tsx';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import { compose, computeAssetCdnUrl } from '../../../utils/index.ts';
-import { joinWords } from '../../../utils/string.ts';
+import { capitalizeFirstWord, joinWords } from '../../../utils/string.ts';
 import { trpc } from '../../../utils/trpc.ts';
 import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
 import { NavigationPanel } from '../components/navigation-panel.tsx';
@@ -83,6 +83,11 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
         : currentPart.chapters[chapter.chapter].title,
   };
 };
+
+// TODO
+// const nextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
+//   const nextLesson = chapter.course.parts;
+// };
 
 const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
@@ -341,25 +346,35 @@ const Header = ({
   return (
     <>
       <div>
-        <h2 className="mt-4 flex flex-col justify-center self-stretch text-2xl font-semibold text-blue-900  md:text-3xl max-sm:mb-1 max-sm:hidden">
+        <h2 className="text-black desktop-h5 max-sm:hidden capitalize">
+          {t('courses.part.count', {
+            count: chapter.part.part,
+            total: chapter.course.parts.length,
+          })}{' '}
+          : {chapter?.part.title.toLowerCase()}
+        </h2>
+        <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
           {chapter?.title}
         </h2>
+        <div className="h-px bg-newGray-4 mt-2.5" />
       </div>
 
-      <div className="mt-1 space-y-2 text-blue-800">
+      <div>
         {sections.length > 0 && (
           <div
-            className={`flex flex-col self-stretch rounded-3xl p-4 shadow-md ${
-              isContentExpanded ? 'bg-beige-300' : 'bg-beige-300 h-auto'
+            className={`flex flex-col self-stretch rounded-3xl px-6 py-2.5 shadow-course-navigation ${
+              isContentExpanded ? 'bg-white' : 'bg-white h-auto'
             } ${isContentExpanded ? 'h-auto ' : 'mt-1 h-auto '}`}
           >
             <button
-              className="mb-3 flex cursor-pointer items-center text-lg font-medium text-blue-700 md:text-xl"
+              className="flex cursor-pointer items-center text-lg font-medium text-black md:text-2xl uppercase"
               onClick={() => setIsContentExpanded(!isContentExpanded)}
             >
               <span
                 className={`mr-3 text-2xl ${
-                  isContentExpanded ? 'rotate-90' : ''
+                  isContentExpanded
+                    ? 'rotate-90 transition-transform'
+                    : 'transition-transform'
                 }`}
               >
                 {'> '}
@@ -367,18 +382,15 @@ const Header = ({
               <span>{t('courses.details.objectivesTitle')}</span>
             </button>
             {isContentExpanded && (
-              <div className="px-5 text-sm md:text-base">
-                <ul className="list-inside text-sm">
+              <div className="mt-3 px-5 text-sm md:text-base">
+                <ul className="flex flex-col gap-1.5">
                   {sections.map((goal: string, index: number) => (
-                    <li className="mt-1" key={index}>
-                      <span className="mr-3 text-blue-300 opacity-50">
+                    <li className="flex items-center" key={index}>
+                      <span className="mr-3 text-newGray-3 text-sm">
                         {'▶'}
                       </span>
-                      <span className="text-blue-800">
-                        <span style={{ textTransform: 'uppercase' }}>
-                          {goal.charAt(0)}
-                        </span>
-                        {goal.slice(1)}
+                      <span className="text-black">
+                        {capitalizeFirstWord(goal)}
                       </span>
                     </li>
                   ))}
@@ -561,10 +573,10 @@ export const CourseChapter = () => {
 
   let computerProfessor = '';
   if (chapter) {
-    console.log('isInPerson :', chapter.isInPerson);
-    console.log('isOnline :', chapter.isOnline);
-    console.log('startDate :', chapter.startDate);
-    console.log('timezone :', chapter.timezone);
+    // console.log('isInPerson :', chapter.isInPerson);
+    // console.log('isOnline :', chapter.isOnline);
+    // console.log('startDate :', chapter.startDate);
+    // console.log('timezone :', chapter.timezone);
 
     {
       (() => {

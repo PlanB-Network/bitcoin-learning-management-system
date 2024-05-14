@@ -182,6 +182,7 @@ const baseConfig = {
         primary: ['Rubik'],
         body: ['SpaceMono'],
         mono: ['Manrope'],
+        poppins: ['Poppins'],
       },
       keyframes: {
         'accordion-down': {
