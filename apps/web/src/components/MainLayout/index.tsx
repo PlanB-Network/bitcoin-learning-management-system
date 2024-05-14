@@ -23,8 +23,6 @@ export const MainLayout = ({
   headerVariant,
 }: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
-  console.log(headerVariant);
-
   return (
     <div
       className={compose(
