@@ -295,7 +295,7 @@ const TimelineBig = ({
                 : '/courses/$courseId/$partIndex/$chapterIndex'
             }
             params={goToChapterParameters(chapter, 'previous')}
-            className="basis-1/4 truncate text-newGray-1"
+            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
           >
             {goToChapterParameters(chapter, 'previous').chapterName}
           </Link>
@@ -315,7 +315,7 @@ const TimelineBig = ({
                 : '/courses/$courseId/$partIndex/$chapterIndex'
             }
             params={goToChapterParameters(chapter, 'next')}
-            className="basis-1/4 truncate text-newGray-1"
+            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
           >
             {goToChapterParameters(chapter, 'next').chapterName}
           </Link>

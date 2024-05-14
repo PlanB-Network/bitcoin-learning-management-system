@@ -70,6 +70,10 @@
     @apply text-base font-normal leading-normal tracking-015px;
   }
 
+  .desktop-h4 {
+    @apply text-[34px] font-normal leading-tight tracking-[0.25px];
+  }
+
   .desktop-h5 {
     @apply text-2xl font-normal leading-snug;
   }

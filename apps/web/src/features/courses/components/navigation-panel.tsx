@@ -2,7 +2,6 @@ import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
-import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -25,16 +24,33 @@ interface Props {
   style?: CSSProperties;
 }
 
-function isChapterPast(
+const isCurrentChapter = (
   chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
   currentChapter: Chapter,
-) {
+) => {
+  return (
+    chapter.part === currentChapter.part.part &&
+    chapter.chapter === currentChapter.chapter
+  );
+};
+
+const isPastPart = (
+  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
+  currentChapter: Chapter,
+) => {
+  return chapter.part <= currentChapter.part.part;
+};
+
+const isPastChapter = (
+  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
+  currentChapter: Chapter,
+) => {
   return (
     chapter.part < currentChapter.part.part ||
     (chapter.part === currentChapter.part.part &&
-      chapter.chapter <= currentChapter.chapter)
+      chapter.chapter < currentChapter.chapter)
   );
-}
+};
 
 export const NavigationPanel: React.FC<Props> = ({
   course,
@@ -44,22 +60,20 @@ export const NavigationPanel: React.FC<Props> = ({
 }: Props) => {
   return (
     <div
-      className="bg-beige-300 z-10 mt-2 h-auto w-60 rounded-b-3xl border-r p-4 shadow-xl "
+      className="bg-white z-10 h-auto w-60 rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation"
       style={style}
     >
-      <Link to={'/courses/$courseId'} params={{ courseId: course.id }}>
-        <div className="-ml-2 grid grid-cols-8">
-          <IoIosArrowDropdownCircle
-            size={40}
-            className="col-span-2 text-orange-500"
-          />
-          <h2 className=" col-span-6 py-1 text-3xl font-semibold uppercase text-orange-500">
-            {addSpaceToCourseId(course.id)}
-          </h2>
-        </div>
+      <Link
+        to={'/courses/$courseId'}
+        params={{ courseId: course.id }}
+        className="w-fit cursor-default"
+      >
+        <h2 className="desktop-h4 uppercase text-darkOrange-5 text-center hover:font-medium w-fit mx-auto hover:cursor-pointer">
+          {addSpaceToCourseId(course.id)}
+        </h2>
       </Link>
-      <hr className="mb-2 border-orange-400" />
-      <div>
+      <hr className="mb-4 mt-1 border-darkOrange-5" />
+      <div className="ml-2">
         <ul className="flex flex-col gap-2">
           {chapters
             .filter((chapter) => chapter.chapter === 1)
@@ -75,23 +89,21 @@ export const NavigationPanel: React.FC<Props> = ({
                     >
                       <li
                         className={cn(
-                          'grid grid-cols-8 items-center gap-1 text-sm font-semibold mb-1',
-                          isChapterPast(chapterOne, currentChapter)
-                            ? 'text-orange-500'
-                            : 'text-gray-500',
+                          'flex items-baseline gap-2.5 text-sm font-semibold mb-1  hover:text-darkOrange-5',
+                          isPastPart(chapterOne, currentChapter)
+                            ? 'text-black'
+                            : 'text-newGray-1',
                         )}
                       >
                         <BsFillTriangleFill
                           size={10}
                           className={
                             open
-                              ? 'col-span-1 mr-2 rotate-180'
-                              : 'col-span-1 mr-2 rotate-90'
+                              ? 'rotate-180 shrink-0 transition-transform ease-in-out'
+                              : 'rotate-90 shrink-0 transition-transform ease-in-out'
                           }
                         />
-                        <span className="col-span-7 ml-1 text-sm">
-                          {chapterOne.partTitle}
-                        </span>
+                        <span>{chapterOne.partTitle}</span>
                       </li>
                     </Disclosure.Button>
                     <Disclosure.Panel>
@@ -113,9 +125,14 @@ export const NavigationPanel: React.FC<Props> = ({
                                     size={10}
                                     className={cn(
                                       'text-xs ml-2',
-                                      isChapterPast(chapter, currentChapter)
-                                        ? 'text-orange-400'
-                                        : 'text-gray-300',
+                                      isPastChapter(chapter, currentChapter)
+                                        ? 'text-black'
+                                        : isCurrentChapter(
+                                              chapter,
+                                              currentChapter,
+                                            )
+                                          ? 'text-darkOrange-5'
+                                          : 'text-newGray-3',
                                     )}
                                   />
                                 </div>
@@ -123,9 +140,14 @@ export const NavigationPanel: React.FC<Props> = ({
                                   <span
                                     className={cn(
                                       'text-xs',
-                                      isChapterPast(chapter, currentChapter)
-                                        ? 'text-orange-500'
-                                        : 'text-gray-500',
+                                      isPastChapter(chapter, currentChapter)
+                                        ? 'text-black'
+                                        : isCurrentChapter(
+                                              chapter,
+                                              currentChapter,
+                                            )
+                                          ? 'text-darkOrange-5'
+                                          : 'text-newGray-3',
                                     )}
                                   >
                                     {chapter.title}
