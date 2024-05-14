@@ -284,7 +284,7 @@ export const syncCdnRepository = async (
     const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
 
     console.log(
-      `-- Sync procedure: Syncing ${assets.length} assets to the CDN`,
+      `-- Sync procedure: Syncing ${assets.length} assets to the CDN on ${repositoryDirectory}`,
     );
 
     for (const asset of assets.reverse()) {

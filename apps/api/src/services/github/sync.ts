@@ -22,7 +22,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     return { success: false };
   }
 
-  console.log('-- Sync procedure: START');
+  console.log('-- Sync procedure: START ====================================');
 
   const processChangedFiles = createProcessChangedFiles(dependencies);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
@@ -33,8 +33,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
 
   await redis.del('trpc:*');
 
-  console.log('-- Sync procedure: Process new repo files');
-
   const syncErrors = await getAllRepoFiles(
     process.env['DATA_REPOSITORY_URL'],
     process.env['DATA_REPOSITORY_BRANCH'],
@@ -43,7 +41,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     process.env['GITHUB_ACCESS_TOKEN'],
   ).then(processChangedFiles);
 
-  console.log('-- Sync procedure: calculate remaining seats');
+  console.log('-- Sync procedure: Calculate remaining seats');
   await createCalculateCourseChapterSeats(dependencies)();
   await createCalculateEventSeats(dependencies)();
 
@@ -59,8 +57,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     );
     console.error(syncErrors.join('\n'));
   }
-
-  console.log('-- Sync procedure: sync cdn repository');
 
   let privateCdnError;
   if (
@@ -91,7 +87,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
       error instanceof Error ? error.message : new Error('Unknown error');
   }
 
-  console.log('-- Sync procedure: END');
+  console.log('-- Sync procedure: END ====================================');
 
   return {
     success: syncErrors.length === 0,
