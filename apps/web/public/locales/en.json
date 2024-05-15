@@ -131,6 +131,7 @@
         "cancelBooking": "Cancel your booking",
         "ticketDownload": "Download your ticket"
       },
+      "nextLesson": "Next lesson will be",
       "live": {
         "title": "Live video",
         "stayTuned": "The live will be on half an hour before the beginning of the class. Stay tuned."
@@ -189,7 +190,7 @@
       "": ""
     },
     "part": {
-      "count": "Part n°{{count}}/{{total}}"
+      "count": "Part {{count}}"
     },
     "payment": {
       "access_invoice": "You can access your invoice via your dashboard",
@@ -644,6 +645,7 @@
     "newsletters": "Newsletters",
     "node": "Node",
     "nodeNetwork": "Node Network",
+    "on": "on",
     "or": "or",
     "ourStory": "Our story",
     "podcast": "Podcast",

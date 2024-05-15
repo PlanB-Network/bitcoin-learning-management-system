@@ -38,6 +38,20 @@
     format('truetype');
 }
 
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  src: url('../assets/fonts/poppins/Poppins-VariableFont_wght.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  src: url('../assets/fonts/poppins/Poppins-Italic-VariableFont_wght.ttf')
+    format('truetype');
+}
+
 @layer base {
   :root {
     --ring: 215 20.2% 65.1%;
@@ -68,6 +82,10 @@
 @layer components {
   .desktop-body1 {
     @apply text-base font-normal leading-normal tracking-015px;
+  }
+
+  .desktop-h4 {
+    @apply text-[34px] font-normal leading-tight tracking-[0.25px];
   }
 
   .desktop-h5 {
