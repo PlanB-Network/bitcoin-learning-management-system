@@ -23,16 +23,14 @@ export const CoursesMarkdownBody = ({
       components={{
         h2: ({ children }) => (
           <h2 className="mt-6 text-xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
-            <div className="flex  w-auto items-center">
+            <div className="flex w-auto items-center">
               <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
               {children}
             </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="ml-2 text-xl font-semibold text-orange-500">
-            {children}
-          </h3>
+          <h3 className="text-3xl font-normal text-orange-500">{children}</h3>
         ),
         p: ({ children }) => (
           <div className=" text-blue-1000 text-base tracking-wide md:text-justify">

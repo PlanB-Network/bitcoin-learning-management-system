@@ -1,5 +1,5 @@
 import { BsCart, BsCpu, BsCurrencyExchange, BsWallet2 } from 'react-icons/bs';
-import { LiaUserSecretSolid } from 'react-icons/lia';
+import { LiaToolsSolid, LiaUserSecretSolid } from 'react-icons/lia';
 import { SiRaspberrypi } from 'react-icons/si';
 
 import type { JoinedTutorial } from '@sovereign-university/types';
@@ -8,6 +8,7 @@ import exchangeSvg from '../assets/tutorials/exchange.svg';
 import merchantSvg from '../assets/tutorials/merchant.svg';
 import miningSvg from '../assets/tutorials/mining.svg';
 import nodeSvg from '../assets/tutorials/node.svg';
+import otherSvg from '../assets/tutorials/other.svg';
 import privacySvg from '../assets/tutorials/privacy.svg';
 import walletSvg from '../assets/tutorials/wallet.svg';
 import { Routes } from '../routes/routes.ts';
@@ -57,8 +58,8 @@ export const TUTORIALS_CATEGORIES = [
   },
   {
     name: 'others',
-    image: privacySvg,
-    icon: LiaUserSecretSolid,
+    image: otherSvg,
+    icon: LiaToolsSolid,
     route: Routes.TutorialsOther,
     images: 4,
   },
