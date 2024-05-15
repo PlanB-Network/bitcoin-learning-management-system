@@ -558,9 +558,21 @@
             "title": "Portefeuille"
         },
         "others": {
-            "title": "",
-            "shortDescription": "",
-            "description": ""
+            "title": "Autres",
+            "shortDescription": "Tous nos tutoriels divers",
+            "description": "Explorez cette section pour découvrir une série de tutoriels dédiés à Bitcoin et aux outils divers.",
+            "DIY": {
+                "description": "Découvrez nos tutoriels DIY pour apprendre à créer par vous-même des choses liées à Bitcoin, à l'informatique, et à la souveraineté individuelle !"
+            },
+            "OpenSource": {
+                "description": "Explorez nos tutoriels consacrés à l'utilisation des outils open-source !"
+            },
+            "Contribution": {
+                "description": "Apprenez comment contribuer à PlanB Network et maîtrisez les outils open-source que nous utilisons en interne à travers nos tutoriels détaillés !"
+            },
+            "General": {
+                "description": "Parcourez nos tutoriels généralistes pour enrichir vos connaissances en informatique et sur d'autres sujets en lien avec la souveraineté individuelle !"
+            }
         }
     },
     "underConstruction": {
