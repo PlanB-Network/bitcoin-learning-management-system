@@ -84,10 +84,58 @@ const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
   };
 };
 
-// TODO
-// const nextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
-//   const nextLesson = chapter.course.parts;
-// };
+const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
+  const courseParts = chapter.course.parts;
+  const currentDate = new Date();
+
+  let closestChapter = null;
+
+  for (const part of courseParts) {
+    for (const chapter of part.chapters) {
+      if (
+        chapter.startDate &&
+        chapter.startDate > currentDate &&
+        (!closestChapter ||
+          (chapter.startDate !== null &&
+            closestChapter.startDate !== null &&
+            chapter.startDate < closestChapter.startDate))
+      ) {
+        closestChapter = chapter;
+      }
+    }
+  }
+
+  if (closestChapter === null || closestChapter.startDate === null) {
+    return null;
+  }
+
+  return (
+    <div className="py-3 bg-newGray-6 shadow-course-navigation">
+      <p className="max-w-6xl text-darkOrange-5 text-[22px] leading-normal tracking-[1px] text-center mx-auto">
+        {t('courses.chapter.nextLesson')}{' '}
+        <Link
+          to={'/courses/$courseId/$partIndex/$chapterIndex'}
+          params={{
+            courseId: chapter.course.id,
+            partIndex: closestChapter.part.toString(),
+            chapterIndex: closestChapter.chapter.toString(),
+          }}
+          className="uppercase font-medium underline"
+        >
+          {closestChapter.title}
+        </Link>{' '}
+        {t('words.on')}{' '}
+        <span className="uppercase font-medium underline">
+          {closestChapter.startDate.toLocaleDateString(undefined, {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </span>
+      </p>
+    </div>
+  );
+};
 
 const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
   const { t } = useTranslation();
@@ -190,7 +238,7 @@ const TimelineBig = ({
         <Link
           to={'/courses/$courseId'}
           params={{ courseId: chapter.course.id }}
-          className="px-4 py-2 bg-newGray-5 text-newGray-2 rounded-2xl leading-tight hover:text-darkOrange-5 hover:bg-darkOrange-0"
+          className="px-4 py-2 bg-newGray-5 text-newGray-2 rounded-2xl leading-tight hover:text-darkOrange-5 hover:bg-darkOrange-0 shrink-0"
         >
           {addSpaceToCourseId(chapter.course.id.toUpperCase())}
         </Link>
@@ -613,7 +661,8 @@ export const CourseChapter = () => {
             : ''
         }
       />
-      <div className="text-blue-800">
+      {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
+      <div className="text-black">
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}
