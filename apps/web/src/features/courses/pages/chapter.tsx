@@ -3,7 +3,6 @@ import { t } from 'i18next';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
-import { BsCheckLg } from 'react-icons/bs';
 
 import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
@@ -111,7 +110,7 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
 
   return (
     <div className="py-3 bg-newGray-6 shadow-course-navigation">
-      <p className="max-w-6xl text-darkOrange-5 text-[22px] leading-normal tracking-[1px] text-center mx-auto">
+      <p className="max-w-6xl text-darkOrange-5 md:text-[22px] text-sm leading-normal tracking-[1px] text-center mx-auto">
         {t('courses.chapter.nextLesson')}{' '}
         <Link
           to={'/courses/$courseId/$partIndex/$chapterIndex'}
@@ -145,20 +144,22 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
       <h1
         className={`mb-5 w-full text-left text-4xl font-bold text-white md:text-5xl`}
       >
-        <div className="flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <Link
+            to={'/courses/$courseId'}
+            params={{ courseId: chapter.course.id }}
+            className="px-2 py-1 text-xl bg-newGray-5 text-newGray-2 font-normal rounded-lg leading-tight hover:text-darkOrange-5 hover:bg-darkOrange-0 shrink-0 uppercase"
+          >
+            {addSpaceToCourseId(chapter.course.id)}
+          </Link>
           <Link
             to={'/courses/$courseId'}
             params={{ courseId: chapter.course.id }}
           >
-            <div className="mr-2 rounded-full bg-orange-500 p-2 text-center text-sm">
-              <span className="uppercase text-white">
-                {addSpaceToCourseId(chapter.course.id)}
-              </span>
-            </div>
+            <h1 className="mb-1 mr-2 text-xl font-semibold text-black">
+              {chapter.course.name}
+            </h1>
           </Link>
-          <h1 className="mb-1 mr-2 text-base  font-semibold text-orange-500">
-            {chapter.course.name}
-          </h1>
         </div>
       </h1>
       <div className="flex flex-col  ">
@@ -189,7 +190,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             }
             params={goToChapterParameters(chapter, 'previous')}
           >
-            <div className="flex size-6 items-center justify-center rounded-full bg-blue-500 text-white">
+            <div className="flex size-6 items-center justify-center rounded-full bg-newGray-3 text-white hover:bg-darkOrange-5">
               <BiSkipPrevious className="size-6" />
             </div>
           </Link>
@@ -207,7 +208,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             }
             params={goToChapterParameters(chapter, 'next')}
           >
-            <div className="flex size-6 items-center justify-center rounded-full bg-blue-500 text-white">
+            <div className="flex size-6 items-center justify-center rounded-full bg-newGray-3 text-white hover:bg-darkOrange-5">
               <BiSkipNext className="size-6" />
             </div>
           </Link>
@@ -245,7 +246,7 @@ const TimelineBig = ({
         <Link
           to={'/courses/$courseId'}
           params={{ courseId: chapter.course.id }}
-          className="text-black font-semibold leading-tight hover:text-darkOrange-5"
+          className="text-black font-medium leading-tight hover:text-darkOrange-5"
         >
           {chapter.course.name}
         </Link>
@@ -354,10 +355,32 @@ const TimelineBig = ({
           </Link>
         )}
 
-        <div className="flex gap-10 items-center text-darkOrange-5 font-semibold">
-          {!isFirstChapter && <span>&lt;</span>}
+        <div className="flex gap-10 items-center text-darkOrange-5 font-medium">
+          {!isFirstChapter && (
+            <Link
+              to={
+                isFirstChapter
+                  ? '/courses/$courseId'
+                  : '/courses/$courseId/$partIndex/$chapterIndex'
+              }
+              params={goToChapterParameters(chapter, 'previous')}
+            >
+              <span>&lt;</span>
+            </Link>
+          )}
           <span>{chapter.title}</span>
-          {!isLastChapter && <span>&gt;</span>}
+          {!isLastChapter && (
+            <Link
+              to={
+                isLastChapter
+                  ? '/courses/$courseId'
+                  : '/courses/$courseId/$partIndex/$chapterIndex'
+              }
+              params={goToChapterParameters(chapter, 'next')}
+            >
+              <span>&gt;</span>
+            </Link>
+          )}
         </div>
 
         {!isLastChapter && (
@@ -402,7 +425,7 @@ const Header = ({
           : {chapter?.part.title.toLowerCase()}
         </h2>
         <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
-          {chapter?.title}
+          {chapter.part.part}.{chapter.chapter}. {chapter.title}
         </h2>
         <div className="h-px bg-newGray-4 mt-2.5" />
       </div>
@@ -473,7 +496,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
   return (
     <div>
       <Link
-        className="flex w-full justify-end pt-5 md:pt-10"
+        className="flex w-full justify-center md:justify-end pt-5 md:pt-10"
         to={
           isLastChapter
             ? '/courses/$courseId'
@@ -482,14 +505,22 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
         params={goToChapterParameters(chapter, 'next')}
       >
         {isLastChapter ? (
-          <Button onClick={completeChapter}>
+          <Button
+            variant="newPrimary"
+            size="l"
+            onHoverArrow
+            onClick={completeChapter}
+          >
             <span>{t('courses.chapter.finishCourse')}</span>
-            <BsCheckLg className="ml-2 size-6" />
           </Button>
         ) : (
-          <Button onClick={completeChapter}>
+          <Button
+            variant="newPrimary"
+            size="l"
+            onHoverArrow
+            onClick={completeChapter}
+          >
             <span>{t('courses.chapter.next')}</span>
-            <BiSkipNext className="ml-2 size-8" />
           </Button>
         )}
       </Link>
@@ -681,44 +712,36 @@ export const CourseChapter = () => {
             </div>
 
             <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
-              <div className="w-full">
-                <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
-                  <Header chapter={chapter} sections={sections} />
-                  {displayLiveSection &&
-                    chapter.liveUrl &&
-                    chapter.startDate && (
-                      <LiveVideo
-                        url={chapter.liveUrl}
-                        chatUrl={chapter.chatUrl}
-                        displayVideo={displayLiveVideo}
-                      />
+              <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:px-2 md:mt-8 md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden">
+                <Header chapter={chapter} sections={sections} />
+                {displayLiveSection && chapter.liveUrl && chapter.startDate && (
+                  <LiveVideo
+                    url={chapter.liveUrl}
+                    chatUrl={chapter.chatUrl}
+                    displayVideo={displayLiveVideo}
+                  />
+                )}
+                <MarkdownContent chapter={chapter} />
+                {displayQuizAndNext && (
+                  <>
+                    {questionsArray && questionsArray.length > 0 && (
+                      <>
+                        <div className="flex items-center">
+                          <img src={QuizIcon} className="ml-4 size-6" alt="" />
+                          <p className="ml-2 text-lg font-medium text-blue-900">
+                            {t('courses.quizz.quizz')}
+                          </p>
+                        </div>
+                        <QuizzCard
+                          name={chapter.course.id}
+                          chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                          questions={questionsArray}
+                        />
+                      </>
                     )}
-                  <MarkdownContent chapter={chapter} />
-                  {displayQuizAndNext && (
-                    <>
-                      {questionsArray && questionsArray.length > 0 && (
-                        <>
-                          <div className="flex items-center">
-                            <img
-                              src={QuizIcon}
-                              className="ml-4 size-6"
-                              alt=""
-                            />
-                            <p className="ml-2 text-lg font-medium text-blue-900">
-                              {t('courses.quizz.quizz')}
-                            </p>
-                          </div>
-                          <QuizzCard
-                            name={chapter.course.id}
-                            chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
-                            questions={questionsArray}
-                          />
-                        </>
-                      )}
-                      <BottomButton chapter={chapter} />
-                    </>
-                  )}
-                </div>
+                    <BottomButton chapter={chapter} />
+                  </>
+                )}
               </div>
               <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
                 {chapters && (
