@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsPersonFill } from 'react-icons/bs';
+import { FaRegCalendarCheck } from 'react-icons/fa';
 import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
 
 import { logout } from '#src/utils/session-utils.js';
@@ -22,6 +23,7 @@ export const MenuDesktop = () => {
   const location = useLocation();
 
   const dashboardPath = '/dashboard';
+  const bookingsPath = '/dashboard/bookings';
   const profilePath = '/dashboard/profile';
 
   useEffect(() => {
@@ -53,21 +55,18 @@ export const MenuDesktop = () => {
         </p>
       </div>
       <div className="flex flex-col px-4 text-darkOrange-5 gap-1">
-        {/* <Link to={dashboardPath}>
-          <MenuItem
-            text="Dashboard"
-            icon={<IoGridOutline size={20} />}
-            active={pathname === dashboardPath}
-          />
-        </Link> */}
         <Link to={dashboardPath}>
           <MenuItem
             text={t('dashboard.courses')}
             icon={<AiOutlineBook size={24} />}
-            active={
-              pathname.includes(dashboardPath) &&
-              !pathname.includes(profilePath)
-            }
+            active={pathname.endsWith(dashboardPath)}
+          />
+        </Link>
+        <Link to={bookingsPath}>
+          <MenuItem
+            text={t('dashboard.bookings')}
+            icon={<FaRegCalendarCheck size={24} />}
+            active={pathname.includes(bookingsPath)}
           />
         </Link>
         <Link to={profilePath}>

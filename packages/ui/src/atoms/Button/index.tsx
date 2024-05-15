@@ -25,6 +25,7 @@ export interface ButtonProps
     | 'download'
     | 'text';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
+  mode?: 'light' | 'dark';
   rounded?: boolean;
   glowing?: boolean;
   fakeDisabled?: boolean;
@@ -64,6 +65,7 @@ export const Button = ({
   children,
   variant,
   size,
+  mode = 'dark',
   rounded,
   glowing,
   iconLeft,
@@ -92,9 +94,12 @@ export const Button = ({
   if (disabled || fakeDisabled) {
     switch (variant) {
       case 'newPrimary': {
-        disabledClass +=
-          'active:none bg-darkOrange-8 !text-newGray-1 font-normal';
-
+        if (mode === 'light') {
+          disabledClass +=
+            'active:none bg-darkOrange-1 !text-darkOrange-3 font-normal';
+        } else if (mode === 'dark') {
+          ('active:none bg-darkOrange-8 !text-newGray-1 font-normal');
+        }
         break;
       }
       case 'newSecondary': {

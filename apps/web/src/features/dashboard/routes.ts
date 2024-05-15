@@ -2,6 +2,7 @@ import { createRoute } from '@tanstack/react-router';
 
 import { rootRoute } from '../../routes/root.tsx';
 
+import { DashboardBookings } from './pages/dashboard-bookings.tsx';
 import { DashboardCourse } from './pages/dashboard-course.tsx';
 import { DashboardCourses } from './pages/dashboard-courses.tsx';
 import { DashboardProfile } from './pages/dashboard-profile.tsx';
@@ -23,6 +24,12 @@ export const dashboardProfileRoute = createRoute({
   component: DashboardProfile,
 });
 
+export const dashboardBookingsRoute = createRoute({
+  getParentRoute: () => dashboardRootRoute,
+  path: '/bookings',
+  component: DashboardBookings,
+});
+
 export const dashboardCoursesRoute = createRoute({
   getParentRoute: () => dashboardRootRoute,
   path: '/courses',
@@ -37,7 +44,8 @@ export const dashboardCourseDetailsRoute = createRoute({
 
 export const dashboardRoutes = dashboardRootRoute.addChildren([
   dashboardIndexRoute,
+  dashboardBookingsRoute,
   dashboardCoursesRoute,
-  dashboardProfileRoute,
   dashboardCourseDetailsRoute,
+  dashboardProfileRoute,
 ]);
