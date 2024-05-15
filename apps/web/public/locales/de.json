@@ -558,10 +558,22 @@
             "title": "Wallet"
         },
         "others": {
-            "title": "",
-            "shortDescription": "",
-            "description": ""
-        }
+            "title": "Andere",
+            "shortDescription": "Alle unsere verschiedenen Tutorials",
+            "description": "Erkunden Sie diesen Abschnitt, um eine Reihe von Tutorials zu Bitcoin und verschiedenen Werkzeugen zu entdecken.",
+            "DIY": {
+                "description": "Entdecken Sie unsere DIY-Tutorials, um zu lernen, wie man Dinge im Zusammenhang mit Bitcoin, Informatik und individueller Souveränität selbst erstellt!"
+            },
+            "OpenSource": {
+                "description": "Erkunden Sie unsere Tutorials zur Nutzung von Open-Source-Tools!"
+            },
+            "Contribution": {
+                "description": "Erfahren Sie, wie Sie zum PlanB Network beitragen und die Open-Source-Tools, die wir intern verwenden, durch unsere detaillierten Tutorials beherrschen!"
+            },
+            "General": {
+                "description": "Durchsuchen Sie unsere allgemeinen Tutorials, um Ihr Wissen in Informatik und anderen Themen im Zusammenhang mit individueller Souveränität zu bereichern!"
+            }
+        }    
     },
     "underConstruction": {
         "github": "GitHub",

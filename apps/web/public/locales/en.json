@@ -545,9 +545,21 @@
       "title": "Node"
     },
     "others": {
-      "title": "Others",
-      "shortDescription": "",
-      "description": ""
+        "title": "Others",
+        "shortDescription": "All our miscellaneous tutorials",
+        "description": "Explore this section to discover a series of tutorials dedicated to Bitcoin and various tools.",
+        "DIY": {
+            "description": "Discover our DIY tutorials to learn how to create things related to Bitcoin, computing, and individual sovereignty by yourself!"
+        },
+        "OpenSource": {
+            "description": "Explore our tutorials dedicated to the use of open-source tools!"
+        },
+        "Contribution": {
+            "description": "Learn how to contribute to PlanB Network and master the open-source tools we use internally through our detailed tutorials!"
+        },
+        "General": {
+            "description": "Browse our general tutorials to enrich your knowledge in computing and other subjects related to individual sovereignty!"
+        }
     },
     "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
     "pageSubtitle": "Let's demystify Bitcoin by showing the vastness and richness of its ecosystem",

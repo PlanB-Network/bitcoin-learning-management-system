@@ -558,10 +558,22 @@
             "title": "Billetera"
         },
         "others": {
-            "title": "",
-            "shortDescription": "",
-            "description": ""
-        }
+            "title": "Otros",
+            "shortDescription": "Todos nuestros tutoriales diversos",
+            "description": "Explore esta sección para descubrir una serie de tutoriales dedicados a Bitcoin y diversas herramientas.",
+            "DIY": {
+                "description": "¡Descubre nuestros tutoriales DIY para aprender a crear cosas relacionadas con Bitcoin, la informática y la soberanía individual por ti mismo!"
+            },
+            "OpenSource": {
+                "description": "¡Explora nuestros tutoriales dedicados al uso de herramientas de código abierto!"
+            },
+            "Contribution": {
+                "description": "¡Aprende cómo contribuir a PlanB Network y domina las herramientas de código abierto que usamos internamente a través de nuestros tutoriales detallados!"
+            },
+            "General": {
+                "description": "¡Explora nuestros tutoriales generales para enriquecer tus conocimientos en informática y otros temas relacionados con la soberanía individual!"
+            }
+        }    
     },
     "underConstruction": {
         "github": "GitHub",

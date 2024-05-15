@@ -558,10 +558,23 @@
             "title": "Portafoglio"
         },
         "others": {
-            "shortDescription": "",
-            "title": "",
-            "description": ""
+            "title": "Altri",
+            "shortDescription": "Tutti i nostri tutorial vari",
+            "description": "Esplora questa sezione per scoprire una serie di tutorial dedicati a Bitcoin e vari strumenti.",
+            "DIY": {
+                "description": "Scopri i nostri tutorial fai-da-te per imparare a creare cose legate a Bitcoin, informatica e sovranità individuale da solo!"
+            },
+            "OpenSource": {
+                "description": "Esplora i nostri tutorial dedicati all'uso di strumenti open-source!"
+            },
+            "Contribution": {
+                "description": "Impara come contribuire a PlanB Network e padroneggia gli strumenti open-source che usiamo internamente attraverso i nostri tutorial dettagliati!"
+            },
+            "General": {
+                "description": "Esplora i nostri tutorial generali per arricchire le tue conoscenze in informatica e altri argomenti legati alla sovranità individuale!"
+            }
         }
+    
     },
     "underConstruction": {
         "github": "GitHub",

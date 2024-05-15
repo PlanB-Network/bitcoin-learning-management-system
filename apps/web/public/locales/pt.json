@@ -558,10 +558,22 @@
             "title": "Carteira (Wallet)"
         },
         "others": {
-            "title": "",
-            "shortDescription": "",
-            "description": ""
-        }
+            "title": "Outros",
+            "shortDescription": "Todos os nossos tutoriais diversos",
+            "description": "Explore esta seção para descobrir uma série de tutoriais dedicados ao Bitcoin e a várias ferramentas.",
+            "DIY": {
+                "description": "Descubra nossos tutoriais DIY para aprender a criar coisas relacionadas ao Bitcoin, informática e soberania individual por conta própria!"
+            },
+            "OpenSource": {
+                "description": "Explore nossos tutoriais dedicados ao uso de ferramentas de código aberto!"
+            },
+            "Contribution": {
+                "description": "Aprenda a contribuir para a PlanB Network e domine as ferramentas de código aberto que usamos internamente através de nossos tutoriais detalhados!"
+            },
+            "General": {
+                "description": "Explore nossos tutoriais gerais para enriquecer seu conhecimento em informática e outros temas relacionados à soberania individual!"
+            }
+        }    
     },
     "underConstruction": {
         "github": "GitHub",
