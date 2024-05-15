@@ -90,16 +90,22 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
   let closestChapter = null;
 
   for (const part of courseParts) {
-    for (const chapter of part.chapters) {
+    for (const currentChapter of part.chapters) {
+      let currentChapterStartDate = null;
+
+      if (currentChapter.startDate !== null) {
+        currentChapterStartDate = new Date(currentChapter.startDate);
+      }
+
       if (
-        chapter.startDate &&
-        chapter.startDate > currentDate &&
+        currentChapterStartDate &&
+        currentChapterStartDate > currentDate &&
         (!closestChapter ||
-          (chapter.startDate !== null &&
-            closestChapter.startDate !== null &&
-            chapter.startDate < closestChapter.startDate))
+          (closestChapter.startDate !== null &&
+            new Date(closestChapter.startDate) &&
+            currentChapterStartDate < new Date(closestChapter.startDate)))
       ) {
-        closestChapter = chapter;
+        closestChapter = currentChapter;
       }
     }
   }
