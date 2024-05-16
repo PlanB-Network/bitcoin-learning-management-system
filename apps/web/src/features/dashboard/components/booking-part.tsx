@@ -1,10 +1,12 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { FiLoader } from 'react-icons/fi';
 
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { formatDate } from '#src/utils/date.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
+import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 export const BookingPart = ({
   tickets,
@@ -12,6 +14,11 @@ export const BookingPart = ({
   tickets: NonNullable<TRPCRouterOutput['user']['billing']['getTickets']>;
 }) => {
   const { t } = useTranslation();
+
+  const { data: user } = trpc.user.getDetails.useQuery();
+
+  const { mutateAsync: downloadTicketAsync, isPending } =
+    trpc.user.events.downloadEventTicket.useMutation();
 
   return (
     <>
@@ -55,10 +62,47 @@ export const BookingPart = ({
                       {ticket.title}
                     </span>
                   </div>
-                  <span className="w-[100px] flex-none ml-auto">
-                    <Button variant="newPrimary" size="s" mode="light" disabled>
-                      {t('words.download')}
-                    </Button>
+                  <span className="w-[110px] flex-none ml-auto">
+                    {ticket.isInPerson ? (
+                      <Button
+                        variant="newPrimary"
+                        size="s"
+                        mode="light"
+                        iconRight={isPending ? <FiLoader /> : undefined}
+                        onClick={async () => {
+                          const base64 = await downloadTicketAsync({
+                            eventId: ticket.eventId,
+                            userDisplayName: user?.displayName as string,
+                          });
+                          const link = document.createElement('a');
+                          link.href = `data:application/pdf;base64,${base64}`;
+                          link.download = 'ticket.pdf';
+                          document.body.append(link);
+                          link.click();
+                          link.remove();
+                        }}
+                      >
+                        {t('words.download')}
+                      </Button>
+                    ) : (
+                      <Link
+                        to={'/events/$eventId'}
+                        params={{
+                          eventId: ticket.eventId,
+                        }}
+                      >
+                        <Button
+                          variant="newPrimary"
+                          size="s"
+                          mode="light"
+                          disabled={
+                            new Date(ticket.date).getTime() > Date.now()
+                          }
+                        >
+                          {t('dashboard.booking.accessLive')}
+                        </Button>
+                      </Link>
+                    )}
                   </span>
                 </div>
 
@@ -71,9 +115,46 @@ export const BookingPart = ({
                       {formatDate(new Date(ticket.date))} - {location}
                     </span>
                     <span className="">
-                      <Button variant="newPrimary" size="xs" disabled>
-                        {t('dashboard.booking.downloadTicket')}
-                      </Button>
+                      {ticket.isInPerson ? (
+                        <Button
+                          variant="newPrimary"
+                          size="xs"
+                          mode="light"
+                          iconRight={isPending ? <FiLoader /> : undefined}
+                          onClick={async () => {
+                            const base64 = await downloadTicketAsync({
+                              eventId: ticket.eventId,
+                              userDisplayName: user?.displayName as string,
+                            });
+                            const link = document.createElement('a');
+                            link.href = `data:application/pdf;base64,${base64}`;
+                            link.download = 'ticket.pdf';
+                            document.body.append(link);
+                            link.click();
+                            link.remove();
+                          }}
+                        >
+                          {t('words.download')}
+                        </Button>
+                      ) : (
+                        <Link
+                          to={'/events/$eventId'}
+                          params={{
+                            eventId: ticket.eventId,
+                          }}
+                        >
+                          <Button
+                            variant="newPrimary"
+                            size="xs"
+                            mode="light"
+                            disabled={
+                              new Date(ticket.date).getTime() > Date.now()
+                            }
+                          >
+                            {t('dashboard.booking.accessLive')}
+                          </Button>
+                        </Link>
+                      )}
                     </span>
                   </div>
                 </Card>
@@ -82,7 +163,7 @@ export const BookingPart = ({
           })}
         </>
       ) : (
-        <p>{t('dashboard.booking.noInvoice')}</p>
+        <p className="mt-4">{t('dashboard.booking.noTicket')}</p>
       )}
     </>
   );

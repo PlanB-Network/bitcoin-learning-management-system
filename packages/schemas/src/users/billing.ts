@@ -7,6 +7,7 @@ export const invoiceSchema = z.object({
 });
 
 export const ticketSchema = z.object({
+  eventId: z.string(),
   title: z.string(),
   location: z.string(),
   type: z.string(),

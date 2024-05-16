@@ -239,6 +239,7 @@
   "dashboard": {
     "account": "Account",
     "booking": {
+      "accessLive": "Access live",
       "billingTitle": "Billing history",
       "billingSubtitle": "Download invoices from your bookings here.",
       "downloadInvoice": "Download invoice",
@@ -251,6 +252,7 @@
       "ticketTitle": "Title",
       "ticketType": "Type",
       "noInvoice": "You have no invoices yet.",
+      "noTicket": "You have no tickets yet.",
       "pastTicketTitle": "Past bookings",
       "upcomingTicketTitle": "Upcoming bookings",
       "upcomingTicketSubtitle": "Download your ticket here to attend your next event. Make sure to bring your ticket with you to have access to the event."

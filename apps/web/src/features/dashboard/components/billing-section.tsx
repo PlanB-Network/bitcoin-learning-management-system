@@ -86,7 +86,7 @@ export const BillingSection = ({
                 ))}
               </>
             ) : (
-              <p>{t('dashboard.booking.noInvoice')}</p>
+              <p className="mt-4">{t('dashboard.booking.noInvoice')}</p>
             )}
           </div>
         </div>

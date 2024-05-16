@@ -4,6 +4,7 @@ import type { Ticket } from '@sovereign-university/types';
 export const getTicketsQuery = (uid: string) => {
   return sql<Ticket[]>`
     SELECT
+      ev.id as event_id,
       ev.start_date as date,
       COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1) as location, 
       ev.name as title,
@@ -16,6 +17,7 @@ export const getTicketsQuery = (uid: string) => {
     UNION ALL
 
     SELECT 
+      ev.id as event_id,
       ev.start_date as date,
       COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1) as location, 
       ev.name as title,

@@ -139,7 +139,7 @@ export const generateEventTicket = async ({
 
   function printRightCard() {
     x = 400;
-    y = 190;
+    y = 200;
     doc.fontSize(12).fillColor('black').font('Helvetica-Bold');
     doc.text('Name : ', x, y, {
       continued: true,

@@ -1,10 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@sovereign-university/ui';
-
-import { formatDate } from '#src/utils/date.js';
-
 import {
   Tabs,
   TabsContent,
@@ -82,7 +78,7 @@ export const DashboardBookings = () => {
             )}
           </TabsContent>
           <TabsContent value="billings">
-            <BillingSection invoices={invoices} />
+            {invoices && <BillingSection invoices={invoices} />}
           </TabsContent>
         </Tabs>
       </div>
