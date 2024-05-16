@@ -84,6 +84,10 @@
     @apply text-base font-normal leading-normal tracking-015px;
   }
 
+  .desktop-h3 {
+    @apply text-[48px] font-normal leading-[116.7%] tracking-normal;
+  }
+
   .desktop-h4 {
     @apply text-[34px] font-normal leading-tight tracking-[0.25px];
   }
@@ -108,6 +112,10 @@
     @apply text-base font-normal leading-[175%] tracking-015px;
   }
 
+  .desktop-typo1 {
+    @apply text-sm font-normal leading-[143%] tracking-[0.17px];
+  }
+
   .mobile-body2 {
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }
@@ -118,6 +126,10 @@
 
   .mobile-h2 {
     @apply text-2xl font-medium leading-tight;
+  }
+
+  .mobile-h3 {
+    @apply text-lg font-medium leading-[133.4%];
   }
 
   .mobile-subtitle1 {

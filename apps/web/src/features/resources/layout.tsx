@@ -28,9 +28,11 @@ interface Props {
   link?: ToPathOption<any>;
   // link?: ToPathOption<RegisteredRouter['routeTree']>;
   showPageHeader?: boolean;
+  hidePageHeaderMobile?: boolean;
   backToCategoryButton?: boolean;
   activeCategory?: string;
   maxWidth?: '1152' | '1360';
+  marginTopChildren?: boolean;
 }
 
 export const ResourceLayout = ({
@@ -42,9 +44,11 @@ export const ResourceLayout = ({
   className,
   link,
   showPageHeader = true,
+  hidePageHeaderMobile,
   activeCategory,
   backToCategoryButton,
   maxWidth,
+  marginTopChildren = true,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
@@ -68,6 +72,7 @@ export const ResourceLayout = ({
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               link={link ? link : ''}
               hasGithubDescription={true}
+              hideOnMobile={hidePageHeaderMobile}
             />
           )}
 
@@ -77,7 +82,9 @@ export const ResourceLayout = ({
             </div>
           )}
 
-          <div className="mt-4 md:mt-[60px]">{children}</div>
+          <div className={cn(marginTopChildren && 'mt-4 md:mt-[60px]')}>
+            {children}
+          </div>
 
           {pagination && (
             <div className="mx-auto w-max">
