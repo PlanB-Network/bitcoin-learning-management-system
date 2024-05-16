@@ -23,9 +23,11 @@ export const createUpdatePayment =
       }),
     );
 
-    await postgres.exec(
-      updateCoupon({
-        paymentId: id,
-      }),
-    );
+    if (isPaid) {
+      await postgres.exec(
+        updateCoupon({
+          paymentId: id,
+        }),
+      );
+    }
   };
