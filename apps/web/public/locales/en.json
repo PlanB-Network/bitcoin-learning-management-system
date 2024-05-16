@@ -48,12 +48,15 @@
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
+    "contributeButton": "Help & contribute",
+    "contributeDescription": "If you either want to add, edit or translate some content, your help will be welcome !",
+    "contributeTitle": "Want to contribute ?",
     "educationalContent": {
       "description": "This content is meant to be ready to use for educational events and use.",
       "title": "Educational Content"
     },
     "hereForYou": "The BET is here for you!",
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
+    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards  that goal, we’ve developed an extendible database of educational content. Here, Bitcoin educators can freely drop and access content as needed. Let’s not reinvent the wheel every time, and work together to centralise the useful resources is one toolkit !",
     "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
@@ -720,6 +723,7 @@
     "update": "Update",
     "video": "Video",
     "videos": "Videos",
+    "view": "View",
     "wallets": "Wallets"
   }
 }
