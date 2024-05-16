@@ -16,10 +16,9 @@ import {
   generateEventTicket,
 } from '@sovereign-university/user';
 
-import { formatDate, formatTime } from '#src/utils/date.js';
-
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
+import { formatDate, formatTime } from '../../utils/date.js';
 
 const downloadEventTicketProcedure = protectedProcedure
   .input(
