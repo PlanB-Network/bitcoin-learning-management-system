@@ -112,7 +112,7 @@ export const createProcessMainFile =
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (id) DO UPDATE SET
+        ON CONFLICT (path) DO UPDATE SET
           name = EXCLUDED.name,
           description = EXCLUDED.description,
           start_date = EXCLUDED.start_date,
