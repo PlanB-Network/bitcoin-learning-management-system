@@ -131,7 +131,7 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
         </Link>{' '}
         {t('words.on')}{' '}
         <span className="uppercase font-medium underline">
-          {closestChapter.startDate.toLocaleDateString(undefined, {
+          {new Date(closestChapter.startDate).toLocaleDateString(undefined, {
             weekday: 'long',
             month: 'long',
             day: 'numeric',
