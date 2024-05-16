@@ -1,25 +1,35 @@
 import { t } from 'i18next';
 import { Trans } from 'react-i18next';
+import { FiLoader } from 'react-icons/fi';
 
+import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDate } from '#src/utils/date.js';
+import { trpc } from '#src/utils/trpc.js';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_black.svg?react';
 
 interface ModalPaymentSuccessProps {
+  event: JoinedEvent;
   paymentData: PaymentData;
   accessType: 'physical' | 'online' | 'replay';
   onClose: (isPaid?: boolean) => void;
 }
 
 export const ModalPaymentSuccess = ({
+  event,
   paymentData,
   accessType,
   onClose,
 }: ModalPaymentSuccessProps) => {
+  const { data: user } = trpc.user.getDetails.useQuery();
+
+  const { mutateAsync: downloadTicketAsync, isPending } =
+    trpc.user.events.downloadEventTicket.useMutation();
+
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
@@ -73,20 +83,29 @@ export const ModalPaymentSuccess = ({
             onClick={() => {
               onClose(true);
             }}
+            iconRight={isPending ? <FiLoader /> : undefined}
           >
             {t('events.payment.back_events')}
           </Button>
-          {/* {accessType === 'physical' && (
+          {accessType === 'physical' && (
             <Button
               variant="newPrimary"
-              onClick={() => {
-                // TODO trigger download your ticket
-                onClose(true);
+              onClick={async () => {
+                const base64 = await downloadTicketAsync({
+                  eventId: event.id,
+                  userDisplayName: user?.displayName as string,
+                });
+                const link = document.createElement('a');
+                link.href = `data:application/pdf;base64,${base64}`;
+                link.download = 'ticket.pdf';
+                document.body.append(link);
+                link.click();
+                link.remove();
               }}
             >
               {t('events.payment.download_ticket')}
             </Button>
-          )} */}
+          )}
         </div>
       </div>
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">

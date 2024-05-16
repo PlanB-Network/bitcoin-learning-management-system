@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
-import { createCalculateEventSeats } from '@sovereign-university/content';
+import {
+  createCalculateEventSeats,
+  createGetEvent,
+} from '@sovereign-university/content';
 import {
   eventPaymentSchema,
   userEventSchema,
@@ -13,27 +16,47 @@ import {
   generateEventTicket,
 } from '@sovereign-university/user';
 
+import { formatDate, formatTime } from '#src/utils/date.js';
+
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const downloadEventTicketProcedure = protectedProcedure
   .input(
     z.object({
-      title: z.string().optional(),
-      addressLine1: z.string().nullable(),
-      addressLine2: z.string().nullable(),
-      addressLine3: z.string().nullable(),
-      formattedStartDate: z.string().optional(),
-      formattedTime: z.string().optional(),
-      liveLanguage: z.string().nullable(),
-      formattedCapacity: z.string().optional(),
-      contact: z.string().nullable(),
+      eventId: z.string(),
       userDisplayName: z.string(),
     }),
   )
   .output(z.string())
-  .mutation(async ({ input }) => {
-    return generateEventTicket(input);
+  .mutation(async ({ ctx, input }) => {
+    const event = await createGetEvent(ctx.dependencies)(input.eventId);
+
+    const timezone = event.timezone ? event.timezone : undefined;
+
+    const formattedStartDate = event.startDate
+      ? formatDate(event.startDate)
+      : '';
+    const formattedTime =
+      event.startDate && event.endDate
+        ? `${formatTime(event.startDate, timezone)} to ${formatTime(event.endDate, timezone)}`
+        : '';
+    const formattedCapacity = event.availableSeats
+      ? `limited to ${event.availableSeats} people`
+      : '';
+
+    return generateEventTicket({
+      title: event.name ? event.name : '',
+      addressLine1: event.addressLine1,
+      addressLine2: event.addressLine2,
+      addressLine3: event.addressLine3,
+      formattedStartDate: formattedStartDate,
+      formattedTime: formattedTime,
+      liveLanguage: '',
+      formattedCapacity: formattedCapacity,
+      contact: '',
+      userDisplayName: input.userDisplayName,
+    });
   });
 
 const getEventPaymentsProcedure = protectedProcedure

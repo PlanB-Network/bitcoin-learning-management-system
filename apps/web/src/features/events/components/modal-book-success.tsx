@@ -4,7 +4,6 @@ import { FiLoader } from 'react-icons/fi';
 import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
-import { formatDate, formatTime } from '#src/utils/date.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_black.svg?react';
@@ -24,17 +23,6 @@ export const ModalBookSuccess = ({
 
   const { mutateAsync: downloadTicketAsync, isPending } =
     trpc.user.events.downloadEventTicket.useMutation();
-
-  const timezone = event.timezone ? event.timezone : undefined;
-
-  const formattedStartDate = event.startDate ? formatDate(event.startDate) : '';
-  const formattedTime =
-    event.startDate && event.endDate
-      ? `${formatTime(event.startDate, timezone)} ${t('words.to')} ${formatTime(event.endDate, timezone)}`
-      : '';
-  const formattedCapacity = event.availableSeats
-    ? `limited to ${event.availableSeats} people`
-    : '';
 
   return (
     <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
@@ -72,15 +60,7 @@ export const ModalBookSuccess = ({
             variant="newPrimary"
             onClick={async () => {
               const base64 = await downloadTicketAsync({
-                title: event.name ? event.name : '',
-                addressLine1: event.addressLine1,
-                addressLine2: event.addressLine2,
-                addressLine3: event.addressLine3,
-                formattedStartDate: formattedStartDate,
-                formattedTime: formattedTime,
-                liveLanguage: '',
-                formattedCapacity: formattedCapacity,
-                contact: '',
+                eventId: event.id,
                 userDisplayName: user?.displayName as string,
               });
               const link = document.createElement('a');

@@ -105,6 +105,7 @@ export const EventPaymentModal = ({
           {paymentData ? (
             isPaymentSuccess ? (
               <ModalPaymentSuccess
+                event={event}
                 paymentData={paymentData}
                 accessType={accessType}
                 onClose={onClose}
