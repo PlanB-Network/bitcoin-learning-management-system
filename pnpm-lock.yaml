@@ -300,6 +300,9 @@ importers:
       sass:
         specifier: ^1.77.0
         version: 1.77.0
+      tailwindcss:
+        specifier: ^3.4.3
+        version: 3.4.3
       vite-plugin-svgr:
         specifier: ^4.2.0
         version: 4.2.0(rollup@4.17.2)(typescript@5.4.5)(vite@5.2.11(@types/node@20.12.11)(sass@1.77.0))
@@ -9922,14 +9925,14 @@ snapshots:
 
   '@radix-ui/react-compose-refs@1.0.1(@types/react@18.2.74)(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
       react: 18.2.0
     optionalDependencies:
       '@types/react': 18.2.74
 
   '@radix-ui/react-compose-refs@1.0.1(@types/react@18.3.1)(react@18.3.1)':
     dependencies:
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.1
@@ -11171,7 +11174,7 @@ snapshots:
   '@testing-library/dom@9.3.4':
     dependencies:
       '@babel/code-frame': 7.24.2
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
       '@types/aria-query': 5.0.4
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -11182,7 +11185,7 @@ snapshots:
   '@testing-library/jest-dom@6.4.2(vitest@1.6.0(@types/node@20.12.11)(@vitest/ui@1.5.0(vitest@1.5.0))(jsdom@24.0.0)(sass@1.77.0))':
     dependencies:
       '@adobe/css-tools': 4.3.3
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
       aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
@@ -15901,7 +15904,7 @@ snapshots:
 
   polished@4.3.1:
     dependencies:
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
 
   possible-typed-array-names@1.0.0: {}
 
@@ -16301,7 +16304,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.5
 
   regexp-tree@0.1.27: {}
 
