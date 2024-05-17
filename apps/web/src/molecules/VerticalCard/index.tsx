@@ -15,10 +15,12 @@ export interface VerticalCardProps {
   buttonText?: string;
   buttonIcon?: JSX.Element;
   buttonVariant?: ButtonProps['variant'];
+  buttonMode?: ButtonProps['mode'];
   link?: string;
   secondaryButtonText?: string;
   secondaryButtonIcon?: JSX.Element;
   secondaryButtonVariant?: ButtonProps['variant'];
+  secondaryButtonMode?: ButtonProps['mode'];
   secondaryLink?: string;
   externalLink?: boolean;
   onHoverArrow?: boolean;
@@ -35,10 +37,12 @@ export const VerticalCard = ({
   buttonText,
   buttonIcon,
   buttonVariant = 'newPrimary',
+  buttonMode,
   link,
   secondaryButtonText,
   secondaryButtonIcon,
   secondaryButtonVariant,
+  secondaryButtonMode,
   secondaryLink,
   externalLink,
   onHoverArrow = true,
@@ -115,6 +119,7 @@ export const VerticalCard = ({
               >
                 <Button
                   variant={buttonVariant}
+                  mode={buttonMode}
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
@@ -130,6 +135,7 @@ export const VerticalCard = ({
               >
                 <Button
                   variant={buttonVariant}
+                  mode={buttonMode}
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
@@ -142,6 +148,7 @@ export const VerticalCard = ({
           ) : (
             <Button
               variant={buttonVariant}
+              mode={buttonMode}
               size={isScreenMd ? 'm' : 'xs'}
               disabled
               className={cn(secondaryButtonText ? 'max-md:w-full' : 'w-full')}
@@ -161,6 +168,7 @@ export const VerticalCard = ({
               >
                 <Button
                   variant={secondaryButtonVariant}
+                  mode={secondaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
@@ -173,6 +181,7 @@ export const VerticalCard = ({
               <Link to={secondaryLink} className="max-md:w-full">
                 <Button
                   variant={secondaryButtonVariant}
+                  mode={secondaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
@@ -185,6 +194,7 @@ export const VerticalCard = ({
           ) : (
             <Button
               variant={secondaryButtonVariant}
+              mode={secondaryButtonMode}
               size={isScreenMd ? 'm' : 'xs'}
               disabled
               className="max-md:w-full"

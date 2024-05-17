@@ -25,7 +25,7 @@ export interface ButtonProps
     | 'download'
     | 'text';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  mode?: 'light' | 'dark';
+  mode?: 'light' | 'dark' | 'colored';
   rounded?: boolean;
   glowing?: boolean;
   fakeDisabled?: boolean;
@@ -45,26 +45,120 @@ const classesBySize = {
 };
 
 const classesByVariant = {
-  primary:
-    'text-white bg-blue-700 hover:bg-blue-600 font-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-  newPrimary: 'bg-newOrange-1 text-white',
-  newPrimaryGhost:
-    'bg-transparent text-darkOrange-5 border border-darkOrange-4',
-  secondary: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
-  newSecondary: 'bg-white text-newBlack-1',
-  tertiary: 'bg-orange-600 text-white',
-  newTertiary:
-    'bg-newBlack-3 text-newGray-4 border border-newGray-1 hover:border-newGray-4 transition-colors',
-  ghost:
-    'text-white border border-newGray-2 hover:border-white transition-colors',
-  download: 'bg-green-600 text-white',
-  text: '',
+  primary: {
+    dark: 'text-white bg-blue-700 hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
+    light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
+    colored: 'bg-white text-darkOrange-5 shadow-primary-button-light',
+  },
+  newPrimary: {
+    dark: 'bg-darkOrange-5 text-white',
+    light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
+    colored: 'bg-white text-darkOrange-5 shadow-primary-button-light',
+  },
+  newPrimaryGhost: {
+    dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
+    light: '',
+    colored: '',
+  },
+  secondary: {
+    dark: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
+    light: 'bg-newGray-4 text-newBlack-1 shadow-primary-button-light',
+    colored: 'bg-white/30 text-white',
+  },
+  newSecondary: {
+    dark: 'bg-white text-newBlack-1',
+    light: 'bg-newGray-4 text-newBlack-1 shadow-primary-button-light',
+    colored: 'bg-white/30 text-white',
+  },
+  tertiary: {
+    dark: 'bg-orange-600 text-white',
+    light:
+      'bg-newGray-5 text-newGray-1 hover:text-newBlack-4 border border-newGray-3 hover:border-newGray-2 transition-colors',
+    colored: '',
+  },
+  newTertiary: {
+    dark: 'bg-newBlack-3 text-newGray-4 hover:text-white border border-newGray-1 hover:border-newGray-4 transition-colors',
+    light:
+      'bg-newGray-5 text-newGray-1 hover:text-newBlack-4 border border-newGray-3 hover:border-newGray-2 transition-colors',
+    colored: '',
+  },
+  ghost: {
+    dark: 'text-white border border-newGray-2 hover:border-white transition-colors',
+    light: 'text-darkOrange-5 border border-darkOrange-4',
+    colored: 'text-white border border-white',
+  },
+  download: {
+    dark: 'bg-green-600 text-white',
+    light: '',
+    colored: '',
+  },
+  text: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
 };
+
+const disabledClassesByVariant = {
+  primary: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+  newPrimary: {
+    dark: '!bg-darkOrange-8 !text-newGray-1',
+    light: '!bg-darkOrange-1 !text-darkOrange-3',
+    colored: '!bg-darkOrange-1 !text-darkOrange-3',
+  },
+  newPrimaryGhost: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+  secondary: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+  newSecondary: {
+    dark: '!bg-newBlack-3 !text-newGray-1',
+    light: '!bg-newGray-4 !text-newGray-2',
+    colored: '!bg-white/10 !text-white/40',
+  },
+  tertiary: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+  newTertiary: {
+    dark: '!bg-newBlack-2 !text-newBlack-4 !border-newBlack-4',
+    light: '!bg-newGray-5 !text-newGray-4 !border-newGray-4',
+    colored: '',
+  },
+  ghost: {
+    dark: '!text-newBlack-5 !border-newBlack-5',
+    light: '!text-newGray-3 !border-newGray-3',
+    colored: '!text-white/60 !border-white/50',
+  },
+  download: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+  text: {
+    dark: '',
+    light: '',
+    colored: '',
+  },
+};
+
+const hoverArrowClasses =
+  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100';
 
 export const Button = ({
   children,
-  variant,
-  size,
+  variant = 'primary',
+  size = 'm',
   mode = 'dark',
   rounded,
   glowing,
@@ -80,52 +174,16 @@ export const Button = ({
 }: ButtonProps) => {
   const classes = useMemo(
     () => [
-      classesBySize[size ?? 'm'],
-      classesByVariant[variant ?? 'primary'],
+      classesBySize[size],
+      classesByVariant[variant]?.[mode],
       rounded ? '!rounded-full' : '',
+      disabled ? 'cursor-default active:none' : 'active:scale-95',
+      (disabled || fakeDisabled) &&
+        (disabledClassesByVariant[variant]?.[mode] ||
+          'active:none bg-newBlack-3 !text-newGray-1'),
     ],
-    [rounded, size, variant],
+    [rounded, size, variant, mode, disabled, fakeDisabled],
   );
-
-  const hoverArrowClasses =
-    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100';
-
-  let disabledClass = disabled ? 'cursor-default ' : '';
-  if (disabled || fakeDisabled) {
-    switch (variant) {
-      case 'newPrimary': {
-        if (mode === 'light') {
-          disabledClass +=
-            'active:none bg-darkOrange-1 !text-darkOrange-3 font-normal';
-        } else if (mode === 'dark') {
-          ('active:none bg-darkOrange-8 !text-newGray-1 font-normal');
-        }
-        break;
-      }
-      case 'newSecondary': {
-        disabledClass +=
-          'active:none bg-newBlack-3 !text-newGray-1 font-normal';
-
-        break;
-      }
-      case 'newTertiary': {
-        disabledClass +=
-          'active:none bg-newBlack-2 !text-newBlack-4 border-newBlack-4 font-normal';
-
-        break;
-      }
-      case 'ghost': {
-        disabledClass +=
-          'active:none bg-newBlack-1 !text-newBlack-5 border-newBlack-5 font-normal ';
-
-        break;
-      }
-      default: {
-        disabledClass +=
-          'active:none bg-newBlack-3 !text-newGray-1 font-normal ';
-      }
-    }
-  }
 
   if (icon)
     return (
@@ -133,10 +191,8 @@ export const Button = ({
         disabled={disabled}
         className={cn(
           ...classes,
-          disabled ? 'active:none' : 'active:scale-95',
-          'flex flex-row items-center font-normal transition-colors duration-150',
-          className ?? '',
-          disabledClass,
+          'flex flex-row items-center transition-colors duration-150',
+          className,
         )}
         {...buttonProps}
       >
@@ -149,13 +205,11 @@ export const Button = ({
       disabled={disabled}
       className={cn(
         ...classes,
-        disabled ? 'active:none' : 'active:scale-95',
-        'flex flex-row items-center justify-center font-normal transition-colors duration-150',
+        'flex flex-row items-center justify-center transition-colors duration-150',
         glowing && variant !== 'secondary' ? 'shadow-md-button' : '',
         glowing && variant === 'secondary' ? '!shadow-md-button-white' : '',
         'group',
-        className ?? '',
-        disabledClass,
+        className,
       )}
       {...buttonProps}
     >

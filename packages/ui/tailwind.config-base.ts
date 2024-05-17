@@ -214,6 +214,7 @@ const baseConfig = {
         'sm-card': '0px 0px 10px 0px #FF5C00',
         'sm-card-white': '0px 0px 10px 0px #FFFFFF',
         'button-white': '0px 0px 10px 0px rgba(255, 255, 255, 0.57)',
+        'primary-button-light': '0px 2px 3px 0px rgba(0, 0, 0, 0.25)',
       },
       letterSpacing: {
         '015px': '0.15px',

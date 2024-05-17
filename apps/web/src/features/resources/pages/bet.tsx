@@ -51,8 +51,8 @@ const SectionGrid = ({
   elements: Array<{
     title: string;
     description: string;
-    figmaUrl: string;
-    imgFig: string;
+    viewUrl: string;
+    image: string;
   }>;
   cardColor: VerticalCardProps['cardColor'];
 }) => {
@@ -63,16 +63,18 @@ const SectionGrid = ({
           key={index}
           title={item.title}
           subtitle={item.description}
-          imageSrc={item.imgFig}
+          imageSrc={item.image}
           languages={[]}
-          link={item.figmaUrl}
+          link={item.viewUrl}
           buttonText={t('words.view')}
-          buttonIcon={<IoIosSearch />}
-          buttonVariant="newPrimary"
-          secondaryLink={item.figmaUrl}
+          buttonIcon={<IoIosSearch size={24} />}
+          buttonVariant="newSecondary"
+          buttonMode="colored"
+          secondaryLink={item.viewUrl}
           secondaryButtonText={t('words.download')}
-          secondaryButtonIcon={<FiDownload />}
-          secondaryButtonVariant="newSecondary"
+          secondaryButtonIcon={<FiDownload size={24} />}
+          secondaryButtonVariant="ghost"
+          secondaryButtonMode="colored"
           externalLink
           onHoverArrow={false}
           cardColor={cardColor}
@@ -91,29 +93,29 @@ export const BET = () => {
     {
       title: 'All of PlanB courses',
       description: 'DecouvreBitcoin',
-      figmaUrl:
+      viewUrl:
         'https://github.com/DecouvreBitcoin/sovereign-university-data/tree/dev/courses',
-      imgFig: dbCourses,
+      image: dbCourses,
     },
     {
       title: 'Anil Illustrations',
       description: 'Example',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A1055&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: anil,
+      image: anil,
     },
     {
       title: ' 21 Posters',
       description: 'Rogzy',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=0%3A1&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: poster,
+      image: poster,
     },
     {
       title: 'Bitcoin Diploma ',
       description: 'Mi Primer Bitcoin',
-      figmaUrl: 'https://github.com/MyFirstBitcoin',
-      imgFig: mpbitcoin,
+      viewUrl: 'https://github.com/MyFirstBitcoin',
+      image: mpbitcoin,
     },
   ];
 
@@ -121,73 +123,73 @@ export const BET = () => {
     {
       title: 'Bitcoin accepted here',
       description: 'Team DB',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A338&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: btcHere,
+      image: btcHere,
     },
     {
       title: 'Bitcoin meme',
       description: 'Anonymous',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A818&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: meme,
+      image: meme,
     },
     {
       title: 'Propaganda Posters',
       description: 'Propaganda Bitcoin posters',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A106&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: propaganda,
+      image: propaganda,
     },
     {
       title: 'Hyperinflations Bills',
       description: 'David Saint Onge',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A71&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: hyperinflation,
+      image: hyperinflation,
     },
     {
       title: 'Bitcoin book',
       description: 'Bitcoin Guides',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A230&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: bookscover,
+      image: bookscover,
     },
     {
       title: 'Company and project logos',
       description: 'Bitcoin Companies Logo',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2-621&mode=design',
-      imgFig: logosCompanies,
+      image: logosCompanies,
     },
     {
       title: 'BTC Gift ',
       description: 'Anonymous',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=3%3A454&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: gifcollection,
+      image: gifcollection,
     },
 
     {
       title: 'Scam',
       description: 'Anonymous',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=3%3A287&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: scams,
+      image: scams,
     },
     {
       title: 'BTC History',
       description: 'Image Database',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=8-574&mode=design',
-      imgFig: history,
+      image: history,
     },
     {
       title: 'BTC Artistes Gallery ',
       description: '',
-      figmaUrl:
+      viewUrl:
         'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A728&mode=design&t=ssejloYtH3ZHS8OV-1',
-      imgFig: artistes,
+      image: artistes,
     },
   ];
 
