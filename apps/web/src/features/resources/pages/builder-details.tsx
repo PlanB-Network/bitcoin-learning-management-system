@@ -50,7 +50,7 @@ export const Builder = () => {
             <h3 className="col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase text-blue-900 sm:text-4xl md:mb-8">
               {builder?.name}
             </h3>
-            <div className="col-span-2 row-span-1 mb-5 mt-1 font-light md:mb-0 md:ml-12">
+            <div className="col-span-2 row-span-1 mb-3 mt-1 font-light md:mb-0 md:ml-12">
               {builder?.tags?.map((tag) => (
                 <Link to={'/resources/builders'} key={tag}>
                   <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>
@@ -62,10 +62,10 @@ export const Builder = () => {
             <div className="row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
               <img
                 src={builder?.logo}
-                className="w-full"
+                className="md:w-full max-md:h-[30dvh] mx-auto"
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
-              <div className="mx-2 my-6 flex w-full justify-evenly">
+              <div className="mx-2 my-3 md:my-6 flex w-full justify-evenly">
                 {builder?.githubUrl && (
                   <a
                     href={builder?.githubUrl}
