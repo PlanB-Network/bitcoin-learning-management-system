@@ -207,7 +207,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             </div>
           </Link>
 
-          <div className="p-1 font-semibold text-blue-900">
+          <div className="p-1 font-semibold text-blue-900 text-center">
             {chapter?.title}
           </div>
           <Link
