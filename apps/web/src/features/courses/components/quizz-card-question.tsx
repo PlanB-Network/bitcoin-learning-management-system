@@ -84,6 +84,7 @@ export default function QuizzCardQuestion({
                 answerClick(index);
               }}
               key={index}
+              className="w-full"
             >
               <div className="flex w-full cursor-pointer items-start">
                 <div

@@ -20,8 +20,10 @@ interface ClassDetailsProps {
 const TextLine = ({ label, text }: { label?: string; text?: string }) => {
   return (
     <div className="flex h-7 items-center">
-      <span className="w-32 text-newBlack-5 whitespace-nowrap">{label}</span>
-      <span className="whitespace-nowrap">{text}</span>
+      <span className="text-sm w-24 md:w-32 text-newBlack-5 whitespace-nowrap">
+        {label}
+      </span>
+      <span className="text-sm whitespace-nowrap">{text}</span>
     </div>
   );
 };
@@ -116,10 +118,10 @@ export const ClassDetails = ({
 
         <div className="flex flex-col gap-4">
           <div className="text-xl leading-8">
-            <p className="font-medium">
+            <p className="font-medium max-md:text-base">
               {t('courses.chapter.detail.p1heading')}
             </p>
-            <p className="text-newBlack-5">
+            <p className="text-newBlack-5 max-md:text-sm">
               {t('courses.chapter.detail.p1content')}
             </p>
           </div>
@@ -185,10 +187,10 @@ export const ClassDetails = ({
             </div>
           )}
           <div className="text-xl leading-8">
-            <p className="font-medium">
+            <p className="font-medium max-md:text-base">
               {t('courses.chapter.detail.p2heading')}
             </p>
-            <p className="text-newBlack-5">
+            <p className="text-newBlack-5 max-md:text-sm">
               {t('courses.chapter.detail.p2content')}
             </p>
           </div>

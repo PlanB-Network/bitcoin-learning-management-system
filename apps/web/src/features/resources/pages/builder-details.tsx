@@ -59,10 +59,10 @@ export const Builder = () => {
                 </Link>
               ))}
             </div>
-            <div className="row-span-5 mb-4 flex flex-row flex-wrap items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
+            <div className="row-span-5 mb-4 flex max-md:flex-wrap flex-row items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
               <img
                 src={builder?.logo}
-                className="md:w-full max-md:h-[30dvh] mx-auto"
+                className="md:w-full max-sm:h-40 max-md:h-60 mx-auto rounded-md"
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
               <div className="mx-2 my-3 md:my-6 flex w-full justify-evenly">
