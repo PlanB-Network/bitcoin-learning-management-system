@@ -42,6 +42,8 @@ Thumbs.db
 **/.env
 
 .turbo
+.vite
 out
 tsconfig.*.tsbuildinfo
 *storybook.log
+*.cpuprofile
