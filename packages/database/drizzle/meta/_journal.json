@@ -176,6 +176,13 @@
       "when": 1715071385923,
       "tag": "0024_noisy_sasquatch",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1716224812306,
+      "tag": "0025_sticky_mentallo",
+      "breakpoints": true
     }
   ]
 }
