@@ -1,14 +1,21 @@
-import { Link } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { Link, useNavigate } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
+import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
+import { LuLogOut } from 'react-icons/lu';
+import { MdKeyboardArrowUp } from 'react-icons/md';
+
+import { cn } from '@sovereign-university/ui';
+
+import { logout } from '#src/utils/session-utils.js';
 
 import SignInIcon from '../../../assets/icons/profile_log_in.png';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
-import { compose, trpc } from '../../../utils/index.ts';
-import { MetaElements } from '../MetaElements/index.tsx';
+import { trpc } from '../../../utils/index.ts';
+import { LanguageSelector } from '../LanguageSelector/index.tsx';
 import type { NavigationSection } from '../props.tsx';
 
 import { MobileMenuSection } from './MobileMenuSection/index.tsx';
@@ -16,14 +23,109 @@ import { MobileMenuSection } from './MobileMenuSection/index.tsx';
 export interface MobileMenuProps {
   sections: NavigationSection[];
   onClickLogin: () => void;
-  onClickRegister: () => void;
   variant?: 'light' | 'dark';
 }
+
+interface LoggedMenuProps {
+  onClickLogin: () => void;
+}
+
+const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
+  const { t } = useTranslation();
+  const { data: user } = trpc.user.getDetails.useQuery();
+  const isLoggedIn = user?.uid !== undefined;
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const toggleSubMenu = () => {
+    setIsSubMenuOpen((prev) => !prev);
+  };
+
+  const menuItems = [
+    {
+      buttonText: t('dashboard.bookings'),
+      link: '/dashboard/bookings',
+      icon: <IoTicketOutline size={24} />,
+    },
+    {
+      buttonText: t('words.courses'),
+      link: '/dashboard',
+      icon: <FaRegCalendarCheck size={24} />,
+    },
+    {
+      buttonText: t('words.account'),
+      link: '/dashboard/profile',
+      icon: <IoPersonOutline size={24} />,
+    },
+  ];
+
+  return (
+    <div className="w-full px-4 mt-7">
+      {isLoggedIn && (
+        <>
+          <button
+            onClick={toggleSubMenu}
+            className="w-full flex items-center gap-3.5 bg-darkOrange-10 px-1.5 py-1 rounded-lg"
+          >
+            <img
+              src={SignInIcon}
+              alt={t('auth.signIn')}
+              className="size-10 shrink-0"
+            />
+            <span className="font-medium">{user?.username}</span>
+            <MdKeyboardArrowUp
+              size={24}
+              className={cn(
+                'ml-auto transition-transform ease-in-out',
+                isSubMenuOpen && 'max-lg:rotate-180',
+              )}
+            />
+          </button>
+          {isSubMenuOpen && (
+            <div className="flex flex-col gap-2.5 pl-[60px] mt-2.5">
+              {menuItems.map((item) => (
+                <Link
+                  to={item.link}
+                  key={item.buttonText}
+                  className="flex items-center gap-4 desktop-body1 py-1.5"
+                >
+                  {item.icon}
+                  {item.buttonText}
+                </Link>
+              ))}
+              <button
+                onClick={async () => {
+                  await logout();
+                  await navigate({ to: '/' });
+                  window.location.reload();
+                }}
+                className="flex items-center gap-4 desktop-body1 py-1.5"
+              >
+                <LuLogOut size={24} />
+                {t('dashboard.logout')}
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
+      {!isLoggedIn && (
+        <button
+          className="cursor-pointer text-white flex items-center gap-2.5 w-full px-1 py-0.5"
+          onClick={onClickLogin}
+        >
+          <img src={SignInIcon} alt={t('auth.signIn')} className="size-10" />
+          <span className="italic">{t('menu.loginRegister')}</span>
+        </button>
+      )}
+    </div>
+  );
+};
 
 export const MobileMenu = ({
   sections,
   onClickLogin,
-  onClickRegister,
   variant = 'dark',
 }: MobileMenuProps) => {
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
@@ -42,9 +144,14 @@ export const MobileMenu = ({
   return (
     <>
       <div className="flex w-full justify-center items-center sm:px-3">
-        <div className="z-40 min-w-10 mr-auto">
+        <div
+          className={cn(
+            'z-40 min-w-10 mr-auto',
+            isMobileMenuOpen && 'opacity-0',
+          )}
+        >
           <FaBars
-            className={compose(
+            className={cn(
               'cursor-pointer text-white',
               isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
             )}
@@ -94,21 +201,38 @@ export const MobileMenu = ({
       </div>
 
       <nav
-        className={compose(
-          'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-black duration-300',
+        className={cn(
+          'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-screen pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
-        <ul className="my-0 flex-1 list-none space-y-6 overflow-auto pl-10">
+        <div className="flex items-center w-full px-4 py-5 bg-gradient-to-b from-[rgba(255,_92,_0,_0.70)] to-[rgba(153,_55,_0,_0.00)">
+          <FaBars
+            className={cn(
+              'cursor-pointer text-white',
+              isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+            )}
+            style={{
+              transition: 'transform 0.4s, color 0.2s',
+            }}
+            size={28}
+            color="#fff"
+            onClick={toggleMobileMenu}
+          />
+          <Link
+            to="/"
+            className="ml-4 text-lg font-medium leading-normal text-white"
+          >
+            {t('words.home')}
+          </Link>
+          <LanguageSelector className="ml-auto" variant="darkOrange" />
+        </div>
+        <ul className="list-none w-full px-4 flex flex-col gap-5">
           {sections.map((section) => (
             <MobileMenuSection section={section} key={section.id} />
           ))}
         </ul>
-        <MetaElements
-          onClickLogin={onClickLogin}
-          onClickRegister={onClickRegister}
-          variant={variant}
-        />
+        <LoggedMenu onClickLogin={onClickLogin} />
       </nav>
     </>
   );
