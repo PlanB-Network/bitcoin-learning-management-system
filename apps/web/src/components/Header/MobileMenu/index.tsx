@@ -3,7 +3,17 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
+<<<<<<< HEAD
 import SignInIcon from '../../../assets/icons/profile_log_in.png';
+=======
+import { cn } from '@sovereign-university/ui';
+
+import { logout } from '#src/utils/session-utils.js';
+
+import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
+import SignInIconDarkOrange from '../../../assets/icons/profile_log_in_darkOrange.svg';
+import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
+>>>>>>> feat: improvements on menu (icons, active, responsiveness)
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
@@ -19,6 +29,107 @@ export interface MobileMenuProps {
   onClickRegister: () => void;
   variant?: 'light' | 'dark';
 }
+
+interface LoggedMenuProps {
+  onClickLogin: () => void;
+}
+
+const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
+  const { t } = useTranslation();
+  const { data: user } = trpc.user.getDetails.useQuery();
+  const isLoggedIn = user?.uid !== undefined;
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const toggleSubMenu = () => {
+    setIsSubMenuOpen((prev) => !prev);
+  };
+
+  const menuItems = [
+    {
+      buttonText: t('dashboard.bookings'),
+      link: '/dashboard/bookings',
+      icon: <IoTicketOutline size={24} />,
+    },
+    {
+      buttonText: t('words.courses'),
+      link: '/dashboard',
+      icon: <FaRegCalendarCheck size={24} />,
+    },
+    {
+      buttonText: t('words.account'),
+      link: '/dashboard/profile',
+      icon: <IoPersonOutline size={24} />,
+    },
+  ];
+
+  return (
+    <div className="w-full px-4 mt-7">
+      {isLoggedIn && (
+        <>
+          <button
+            onClick={toggleSubMenu}
+            className="w-full flex items-center gap-3.5 bg-darkOrange-10 px-1.5 py-1 rounded-lg"
+          >
+            <img
+              src={SignInIconDarkOrange}
+              alt={t('auth.signIn')}
+              className="size-10 shrink-0"
+            />
+            <span className="font-medium">{user?.username}</span>
+            <MdKeyboardArrowUp
+              size={24}
+              className={cn(
+                'ml-auto transition-transform ease-in-out',
+                isSubMenuOpen && 'max-lg:rotate-180',
+              )}
+            />
+          </button>
+          {isSubMenuOpen && (
+            <div className="flex flex-col gap-2.5 pl-[60px] mt-2.5">
+              {menuItems.map((item) => (
+                <Link
+                  to={item.link}
+                  key={item.buttonText}
+                  className="flex items-center gap-4 desktop-body1 py-1.5"
+                >
+                  {item.icon}
+                  {item.buttonText}
+                </Link>
+              ))}
+              <button
+                onClick={async () => {
+                  await logout();
+                  await navigate({ to: '/' });
+                  window.location.reload();
+                }}
+                className="flex items-center gap-4 desktop-body1 py-1.5"
+              >
+                <LuLogOut size={24} />
+                {t('dashboard.logout')}
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
+      {!isLoggedIn && (
+        <button
+          className="cursor-pointer text-white flex items-center gap-2.5 w-full px-1 py-0.5"
+          onClick={onClickLogin}
+        >
+          <img
+            src={SignInIconDarkOrange}
+            alt={t('auth.signIn')}
+            className="size-10"
+          />
+          <span className="italic">{t('menu.loginRegister')}</span>
+        </button>
+      )}
+    </div>
+  );
+};
 
 export const MobileMenu = ({
   sections,
@@ -70,7 +181,7 @@ export const MobileMenu = ({
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">
                 <img
-                  src={SignInIcon}
+                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
                   alt={t('auth.signIn')}
                   className="size-10"
                 />
@@ -84,7 +195,7 @@ export const MobileMenu = ({
               onClick={onClickLogin}
             >
               <img
-                src={SignInIcon}
+                src={variant === 'light' ? SignInIconLight : SignInIconDark}
                 alt={t('auth.signIn')}
                 className="size-10"
               />

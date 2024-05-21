@@ -15,13 +15,13 @@ export const MenuItem = ({
     <button
       onClick={onClick}
       className={cn(
-        'w-full rounded-md hover:bg-darkOrange-9 hover:text-white hover:font-medium',
-        active && 'bg-darkOrange-9 text-white font-medium',
+        'md:w-full rounded-lg md:rounded-md hover:bg-white/20 md:hover:bg-darkOrange-9 hover:text-white hover:font-medium',
+        active && 'bg-white/20 md:bg-darkOrange-9 text-white font-medium',
       )}
     >
       <div className="flex w-full cursor-pointer flex-row items-center justify-center gap-3 p-2 md:justify-start">
-        <div className="min-w-[20px]">{icon}</div>
-        <div className="max-sm:hidden leading-relaxed">{text}</div>
+        <div className="min-w-5">{icon}</div>
+        <div className="max-md:hidden leading-relaxed">{text}</div>
       </div>
     </button>
   );
