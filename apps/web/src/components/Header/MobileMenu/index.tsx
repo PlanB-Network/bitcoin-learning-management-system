@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
-<<<<<<< HEAD
-import SignInIcon from '../../../assets/icons/profile_log_in.png';
-=======
 import { cn } from '@sovereign-university/ui';
 
 import { logout } from '#src/utils/session-utils.js';
@@ -13,7 +10,6 @@ import { logout } from '#src/utils/session-utils.js';
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
 import SignInIconDarkOrange from '../../../assets/icons/profile_log_in_darkOrange.svg';
 import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
->>>>>>> feat: improvements on menu (icons, active, responsiveness)
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
@@ -153,7 +149,13 @@ export const MobileMenu = ({
   return (
     <>
       <div className="flex w-full justify-center items-center sm:px-3">
+<<<<<<< HEAD
         <div className="z-40 min-w-10 mr-auto">
+=======
+        <div
+          className={cn('min-w-10 mr-auto', isMobileMenuOpen && 'opacity-0')}
+        >
+>>>>>>> fix: fix issue with button behavior on mobile
           <FaBars
             className={compose(
               'cursor-pointer text-white',
