@@ -1,5 +1,5 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
@@ -10,7 +10,7 @@ import { cn } from '@sovereign-university/ui';
 
 import { logout } from '#src/utils/session-utils.js';
 
-import SignInIcon from '../../../assets/icons/profile_log_in.png';
+import SignInIcon from '../../../assets/icons/profile_log_in_darkOrange.svg';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
@@ -134,12 +134,30 @@ export const MobileMenu = ({
   const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        toggleMobileMenu();
+      }
     };
-  });
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen, toggleMobileMenu]);
 
   return (
     <>
@@ -205,6 +223,7 @@ export const MobileMenu = ({
           'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-screen pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
+        ref={mobileMenuRef}
       >
         <div className="flex items-center w-full px-4 py-5 bg-gradient-to-b from-[rgba(255,_92,_0,_0.70)] to-[rgba(153,_55,_0,_0.00)">
           <FaBars
