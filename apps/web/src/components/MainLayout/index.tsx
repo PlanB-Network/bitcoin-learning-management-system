@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
-import { compose } from '../../utils/index.ts';
+import { cn } from '@sovereign-university/ui';
+
 import { Footer } from '../Footer/index.tsx';
 import { Header } from '../Header/index.tsx';
 import ScrollToTopButton from '../ScrollToTopButton/index.tsx';
@@ -11,7 +12,7 @@ interface MainLayoutProps {
   showFooter?: boolean;
   fillScreen?: boolean;
   headerVariant?: 'light' | 'dark';
-  footerVariant?: 'light' | 'dark' | 'course';
+  footerVariant?: 'light' | 'dark';
 }
 
 export const MainLayout = ({
@@ -25,10 +26,10 @@ export const MainLayout = ({
   const box = useRef<HTMLDivElement | null>(null);
   return (
     <div
-      className={compose(
-        'text-white',
+      className={cn(
+        'text-white flex flex-col',
         variant === 'light'
-          ? 'bg-gray-100'
+          ? 'bg-white'
           : variant === 'blue'
             ? 'bg-blue-200'
             : 'bg-black',
@@ -40,7 +41,7 @@ export const MainLayout = ({
       <Header variant={headerVariant} />
 
       {/* Content */}
-      {children}
+      <main className="grow">{children}</main>
 
       {/* Footer */}
       {showFooter && <Footer variant={footerVariant} />}
