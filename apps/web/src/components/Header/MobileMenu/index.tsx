@@ -169,10 +169,7 @@ export const MobileMenu = ({
     <>
       <div className="flex w-full justify-center items-center sm:px-3">
         <div
-          className={cn(
-            'z-40 min-w-10 mr-auto',
-            isMobileMenuOpen && 'opacity-0',
-          )}
+          className={cn('min-w-10 mr-auto', isMobileMenuOpen && 'opacity-0')}
         >
           <FaBars
             className={cn(
