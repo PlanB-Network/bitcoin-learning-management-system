@@ -40,7 +40,7 @@ export const MenuDesktop = () => {
   );
 
   return (
-    <div className="relative bg-[#1c0a00] flex w-64 min-[1750px]:w-80 flex-col rounded-2xl overflow-hidden">
+    <div className="relative bg-[#1c0a00] flex w-64 min-[1750px]:w-80 flex-col rounded-2xl overflow-hidden shrink-0">
       <img
         src={pill}
         alt="Orange pill"

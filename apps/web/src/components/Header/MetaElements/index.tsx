@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 
 import { trpc } from '#src/utils/trpc.js';
 
-import SignInIcon from '../../../assets/icons/profile_log_in.png';
+import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
+import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import { LanguageSelector } from '../LanguageSelector/index.tsx';
 
 export interface MetaElementsProps {
@@ -42,7 +43,7 @@ export const MetaElements = ({
             <Link to="/dashboard">
               <button className="cursor-pointer text-white">
                 <img
-                  src={SignInIcon}
+                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
                   alt={t('auth.signIn')}
                   className="size-12"
                 />
@@ -57,7 +58,7 @@ export const MetaElements = ({
                 onClick={onClickLogin}
               >
                 <img
-                  src={SignInIcon}
+                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
                   alt={t('auth.signIn')}
                   className="size-12"
                 />

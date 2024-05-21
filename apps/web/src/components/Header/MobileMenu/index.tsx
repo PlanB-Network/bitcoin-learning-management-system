@@ -10,7 +10,9 @@ import { cn } from '@sovereign-university/ui';
 
 import { logout } from '#src/utils/session-utils.js';
 
-import SignInIcon from '../../../assets/icons/profile_log_in_darkOrange.svg';
+import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
+import SignInIconDarkOrange from '../../../assets/icons/profile_log_in_darkOrange.svg';
+import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
@@ -69,7 +71,7 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
             className="w-full flex items-center gap-3.5 bg-darkOrange-10 px-1.5 py-1 rounded-lg"
           >
             <img
-              src={SignInIcon}
+              src={SignInIconDarkOrange}
               alt={t('auth.signIn')}
               className="size-10 shrink-0"
             />
@@ -115,7 +117,11 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
           className="cursor-pointer text-white flex items-center gap-2.5 w-full px-1 py-0.5"
           onClick={onClickLogin}
         >
-          <img src={SignInIcon} alt={t('auth.signIn')} className="size-10" />
+          <img
+            src={SignInIconDarkOrange}
+            alt={t('auth.signIn')}
+            className="size-10"
+          />
           <span className="italic">{t('menu.loginRegister')}</span>
         </button>
       )}
@@ -195,7 +201,7 @@ export const MobileMenu = ({
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">
                 <img
-                  src={SignInIcon}
+                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
                   alt={t('auth.signIn')}
                   className="size-10"
                 />
@@ -209,7 +215,7 @@ export const MobileMenu = ({
               onClick={onClickLogin}
             >
               <img
-                src={SignInIcon}
+                src={variant === 'light' ? SignInIconLight : SignInIconDark}
                 alt={t('auth.signIn')}
                 className="size-10"
               />
