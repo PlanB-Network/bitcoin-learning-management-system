@@ -1,19 +1,15 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
 import { Button } from '@sovereign-university/ui';
 
+import { useGreater } from '#src/hooks/use-greater.js';
+
 import { Card } from '../atoms/Card/index.tsx';
 import { compose, computeAssetCdnUrl } from '../utils/index.ts';
 import { joinWords } from '../utils/string.ts';
 import type { TRPCRouterOutput } from '../utils/trpc.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface CourseCardProps {
   course: NonNullable<TRPCRouterOutput['content']['getCourses']>[number];

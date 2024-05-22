@@ -1,11 +1,8 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
-// import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { useGreater } from '#src/hooks/use-greater.js';
+import { useSmaller } from '#src/hooks/use-smaller.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
@@ -17,8 +14,6 @@ export interface MetaElementsProps {
   onClickRegister: () => void;
   variant?: 'light' | 'dark';
 }
-
-const { useGreater, useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export const MetaElements = ({
   onClickLogin,

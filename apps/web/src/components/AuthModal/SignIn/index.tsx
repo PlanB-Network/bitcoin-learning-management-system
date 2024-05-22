@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
 import { isEmpty } from 'lodash-es';
@@ -11,13 +7,13 @@ import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
 
+import { useSmaller } from '#src/hooks/use-smaller.js';
+
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -62,7 +58,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
 
   return (
     <Modal
-      closeButtonEnabled={isMobile}
+      closeButtonEnabled={isMobile ? isMobile : false}
       isOpen={isOpen}
       onClose={onClose}
       headerText={t('auth.signIn')}

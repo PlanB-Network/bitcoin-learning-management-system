@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +12,7 @@ import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { useGreater } from '#src/hooks/use-greater.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import graduateImg from '../../../assets/birrete.png';
@@ -38,8 +35,6 @@ import { CourseButton } from '../components/course-button.tsx';
 import { CourseLayout } from '../layout.tsx';
 
 import { CoursePaymentModal } from './components/course-payment-modal.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const CourseDetails: React.FC = () => {
   const { data: session } = trpc.user.getSession.useQuery();
