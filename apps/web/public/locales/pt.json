@@ -110,7 +110,8 @@
             "live": {
                 "title": "",
                 "stayTuned": ""
-            }
+            },
+            "nextLesson": ""
         },
         "details": {
             "accessible": "Acessível: Vitalício",
@@ -230,7 +231,27 @@
         },
         "account": "",
         "courses": "",
-        "logout": ""
+        "logout": "",
+        "booking": {
+            "accessLive": "",
+            "billingTitle": "",
+            "billingSubtitle": "",
+            "downloadInvoice": "",
+            "downloadTicket": "",
+            "invoiceDate": "",
+            "invoiceTitle": "",
+            "invoiceType": "",
+            "ticketDate": "",
+            "ticketLocation": "",
+            "ticketTitle": "",
+            "ticketType": "",
+            "noInvoice": "",
+            "noTicket": "",
+            "pastTicketTitle": "",
+            "upcomingTicketTitle": "",
+            "upcomingTicketSubtitle": ""
+        },
+        "bookings": ""
     },
     "events": {
         "introduction": {
@@ -349,7 +370,8 @@
             "subtitle2": "Precisamos de você!",
             "content1": "No PlanB, nós acreditamos que o Bitcoin é uma revolução internacional que diz respeito a todos. Para capacitar bilhões de pessoas, estamos projetando essa plataforma para ser multilingue e acessível a todos. A plataforma atualmente suporta 7 idiomas e mais estão sendo adicionados a cada mês. Para conseguir isso, usamos uma mistura de IA e a paixão de Bitcoiners ao redor do mundo.",
             "content2": "Tu também podes começar a iniciar a tua própria rede local no teu país!",
-            "link": "Ajuda-nos a traduzir a academia"
+            "link": "Ajuda-nos a traduzir a academia",
+            "availableLanguages": ""
         },
         "patreonSection": {
             "title": "Together let's make Bitcoin education better ! ",
@@ -560,7 +582,19 @@
         "others": {
             "title": "",
             "shortDescription": "",
-            "description": ""
+            "description": "",
+            "DIY": {
+                "description": ""
+            },
+            "OpenSource": {
+                "description": ""
+            },
+            "contribution": {
+                "description": ""
+            },
+            "general": {
+                "description": ""
+            }
         }
     },
     "underConstruction": {
@@ -654,7 +688,14 @@
         "wallets": "Carteiras (Wallets)",
         "date": "",
         "time": "",
-        "to": ""
+        "to": "",
+        "on": "",
+        "billing": "",
+        "download": "",
+        "invoice": "",
+        "online": "",
+        "ticket": "",
+        "tickets": ""
     },
     "conferences": {
         "addConferences": "",
