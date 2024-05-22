@@ -10,7 +10,7 @@ export const getInvoicesQuery = (uid: string) => {
     
     UNION ALL
 
-    SELECT cp.last_updated as date, 'todo' as title, 'course' as type
+    SELECT cp.last_updated as date, '-' as title, 'course' as type
     FROM users.course_payment cp
     JOIN content.courses c ON cp.course_id = c.id
     WHERE cp.uid = ${uid};
