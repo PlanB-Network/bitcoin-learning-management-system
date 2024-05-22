@@ -3,6 +3,7 @@ import type { IconType } from 'react-icons';
 export interface NavigationBaseItem {
   id: string;
   title?: string;
+  mobileIcon?: string;
 }
 
 type ActionOrPath = { action: () => void } | { path: string };

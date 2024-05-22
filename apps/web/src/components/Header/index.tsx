@@ -18,6 +18,11 @@ import { LuArmchair } from 'react-icons/lu';
 
 import { cn } from '@sovereign-university/ui';
 
+import resourcesSvg from '../../assets/resources/builder.svg';
+import eventsSvg from '../../assets/resources/conference.svg';
+import coursesSvg from '../../assets/resources/library.svg';
+import tutorialsSvg from '../../assets/resources/toolkit.svg';
+import aboutSvg from '../../assets/resources/world.svg';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { Routes } from '../../routes/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
@@ -236,94 +241,31 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
       id: 'courses',
       title: t('words.courses'),
       path: Routes.Courses,
-      items: coursesItems,
+      mobileIcon: coursesSvg,
     },
     {
       id: 'events',
       title: t('words.events'),
       path: Routes.Events,
+      mobileIcon: eventsSvg,
     },
     {
       id: 'resources',
       title: t('words.resources'),
       path: Routes.Resources,
-      items: [
-        {
-          id: 'resources-nested',
-          items: [
-            {
-              id: 'library',
-              title: t('words.library'),
-              icon: IoLibraryOutline,
-              description: t('menu.libraryDescription'),
-              path: Routes.Books,
-            },
-            {
-              id: 'podcasts',
-              title: t('words.podcasts'),
-              description: t('menu.podcastsDescription'),
-              path: Routes.Podcasts,
-              icon: BsMic,
-            },
-            {
-              id: 'builders',
-              title: t('words.builders'),
-              description: t('menu.buildersDescription'),
-              path: Routes.Builders,
-              icon: IoBusinessOutline,
-            },
-          ],
-        },
-      ],
+      mobileIcon: resourcesSvg,
     },
     {
       id: 'tutorials',
       title: t('words.tutorials'),
       path: Routes.Tutorials,
-      items: [
-        {
-          id: 'tutorial-nested',
-          items: TUTORIALS_CATEGORIES.map((category) => ({
-            id: category.name,
-            title: t(`tutorials.${category.name}.title`),
-            path: category.route,
-            icon: category.icon,
-            description: t(`tutorials.${category.name}.shortDescription`),
-          })),
-        },
-      ],
-    },
-    {
-      id: 'professors',
-      title: t('words.professors'),
-      path: Routes.Professors,
+      mobileIcon: tutorialsSvg,
     },
     {
       id: 'about-us',
-      title: t('words.about-us'),
+      title: t('words.about'),
       path: Routes.About,
-      items: [
-        {
-          id: 'about-us-nested',
-          items: [
-            {
-              id: 'manifesto',
-              title: t('words.manifesto'),
-              description: t('menu.manifestoDescription'),
-              path: Routes.Manifesto,
-              icon: BsFileText,
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
-  const homeSection: NavigationSection[] = [
-    {
-      id: 'home',
-      title: t('words.home'),
-      path: Routes.Home,
+      mobileIcon: aboutSvg,
     },
   ];
 
@@ -355,11 +297,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             setAuthMode(AuthModalState.SignIn);
             openAuthModal();
           }}
-          onClickRegister={() => {
-            setAuthMode(AuthModalState.Register);
-            openAuthModal();
-          }}
-          sections={[...homeSection, ...mobileSections]}
+          sections={[...mobileSections]}
           variant={variant}
         />
       )}

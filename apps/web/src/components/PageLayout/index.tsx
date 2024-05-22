@@ -11,7 +11,7 @@ interface Props {
   description?: string;
   link?: string;
   variant?: 'light' | 'dark' | 'blue';
-  footerVariant?: 'dark' | 'light' | 'course';
+  footerVariant?: 'dark' | 'light';
   children: ReactNode;
   className?: string;
   maxWidth?: string;
