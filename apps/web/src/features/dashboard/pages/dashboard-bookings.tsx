@@ -42,13 +42,13 @@ export const DashboardBookings = () => {
           <TabsList>
             <TabsTrigger
               value="tickets"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
             >
               {t('words.tickets')}
             </TabsTrigger>
             <TabsTrigger
               value="billings"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
             >
               {t('words.billing')}
             </TabsTrigger>

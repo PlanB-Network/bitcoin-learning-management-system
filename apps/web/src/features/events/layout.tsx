@@ -7,7 +7,7 @@ export const EventLayout = ({
 }) => {
   return (
     <MainLayout variant="light">
-      <div className="w-full bg-gray-100 pb-6">{children}</div>
+      <div className="w-full bg-white pb-6">{children}</div>
     </MainLayout>
   );
 };

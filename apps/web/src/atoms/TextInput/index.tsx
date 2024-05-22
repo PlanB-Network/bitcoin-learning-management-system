@@ -29,8 +29,8 @@ export const TextInput = ({
     () => [
       'block w-full rounded-[15px] border-0 focus:ring-2 focus:ring-inset px-3 py-2 md:py-4 bg-orange-400',
       error
-        ? 'text-red-300 ring-red-200 ring-1 placeholder:text-red-200 focus:ring-red-300'
-        : 'text-blue-800 shadow-sm placeholder:text-gray-400 focus:ring-blue-600',
+        ? 'text-red-100 ring-red-200 ring-1 placeholder:text-red-200 focus:ring-red-300'
+        : 'text-black shadow-sm placeholder:text-gray-400 focus:ring-blue-600',
     ],
     [error],
   );

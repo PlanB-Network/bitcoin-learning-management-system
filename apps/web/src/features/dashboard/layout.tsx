@@ -26,7 +26,7 @@ export const DashboardLayout = ({
     </MainLayout>
   ) : (
     <MainLayout variant="light" headerVariant="light">
-      <div className="flex flex-row text-white min-h-[1012px] mt-3 mx-4 min-[1750px]:max-w-[1700px] min-[1750px]:mx-auto">
+      <div className="flex flex-row text-white min-h-[1012px] mt-3 mx-4">
         <MenuDesktop />
         <div className="bg-white grow rounded-xl ml-3 p-10 text-black">
           {children}
