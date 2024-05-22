@@ -74,13 +74,13 @@ export const TutorialCategory = () => {
         {tutorials && (
           <div className="w-full px-2 py-4 sm:px-0">
             <Tab.Group>
-              <Tab.List className="flex rounded-t-xl bg-gray-200">
+              <Tab.List className="flex max-sm:flex-wrap rounded-t-xl bg-gray-200 overflow-hidden">
                 {subCategories.map((subCategory) => (
                   <Tab
                     key={subCategory}
                     className={({ selected }) =>
                       compose(
-                        'w-full first:rounded-tl-xl last:rounded-tr-xl py-4 font-medium text-blue-800 capitalize',
+                        'w-full overflow-hidden py-2 sm:py-4 px-2 font-medium text-blue-800 capitalize',
                         selected
                           ? 'bg-blue-800 text-white shadow'
                           : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-600',
@@ -97,7 +97,7 @@ export const TutorialCategory = () => {
               <Tab.Panels className="rounded-b-xl bg-gray-200 pb-8">
                 {subCategories.map((subCategory) => (
                   <Tab.Panel key={subCategory}>
-                    <div className="flex flex-col space-y-8 px-10 md:pt-3">
+                    <div className="flex flex-col px-3 sm:px-10 pt-3 gap-8">
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
                       ) && (

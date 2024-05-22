@@ -325,7 +325,7 @@ export const Home = () => {
   }) => {
     return (
       <div className="rounded-[32px] bg-[#ffffff0d] p-8 text-start">
-        <p className="font-semibold text-gray-400">{text}</p>
+        <p className="text-gray-400">{text}</p>
         <div className="mt-4 flex flex-row items-center">
           <img
             src={image}

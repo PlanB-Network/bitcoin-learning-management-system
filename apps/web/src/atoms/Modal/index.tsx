@@ -114,7 +114,7 @@ export const Modal = ({
                 {/* TODO: move this outside of the modal atom */}
                 {showAccountHelper && (
                   <div className="relative my-8 max-w-lg md:my-14">
-                    <div className="relative justify-center overflow-hidden rounded-[1em] bg-orange-400 py-4 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
+                    <div className="relative justify-center overflow-hidden rounded-[1em] bg-orange-400 py-4 px-2 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
                       <span className="italic text-blue-800">
                         {t('words.didYouKnow')}
                         <div>{t('auth.noAccountNeeded')}</div>

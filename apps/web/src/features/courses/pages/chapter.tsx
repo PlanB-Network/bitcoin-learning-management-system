@@ -1,6 +1,10 @@
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+} from '@react-hooks-library/core';
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 
@@ -27,6 +31,8 @@ import { ClassDetails } from './components/class-details.tsx';
 import { LiveVideo } from './components/live-video.tsx';
 
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
+
+const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
   const currentPart = chapter.part;
@@ -201,7 +207,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             </div>
           </Link>
 
-          <div className="p-1 font-semibold text-blue-900">
+          <div className="p-1 font-semibold text-blue-900 text-center">
             {chapter?.title}
           </div>
           <Link
@@ -418,7 +424,13 @@ const Header = ({
 }) => {
   const { t } = useTranslation();
 
+  const isScreenSm = useGreater('sm');
+
   const [isContentExpanded, setIsContentExpanded] = useState(true);
+
+  useEffect(() => {
+    setIsContentExpanded(isScreenSm);
+  }, [isScreenSm]);
 
   return (
     <>
