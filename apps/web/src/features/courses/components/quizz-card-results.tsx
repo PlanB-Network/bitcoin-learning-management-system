@@ -1,8 +1,6 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
+
+import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import RabbitHoldingPen from '../../../assets/rabbit_holding_pen.svg?react';
 
@@ -16,8 +14,6 @@ interface QuizzCardResultsProps {
   numberOfCorrectAnswers: number;
   nextStep: () => void;
 }
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export default function QuizzCardResults({
   name,

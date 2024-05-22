@@ -1,18 +1,14 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useQueryClient } from '@tanstack/react-query';
 import { getQueryKey } from '@trpc/react-query';
 import { QRCodeSVG } from 'qrcode.react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useSmaller } from '#src/hooks/use-smaller.js';
+
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc, trpcClient } from '../../../utils/trpc.ts';
 import type { AuthModalState } from '../props.tsx';
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 interface LnurlAuthModalProps {
   isOpen: boolean;
@@ -71,7 +67,7 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
 
   return (
     <Modal
-      closeButtonEnabled={isMobile}
+      closeButtonEnabled={isMobile ? isMobile : false}
       isOpen={isOpen}
       onClose={onClose}
       headerText={t('words.lnurlAuth')}

@@ -1,17 +1,13 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useNavigate } from '@tanstack/react-router';
 
 import type { Level } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
+import { useSmaller } from '#src/hooks/use-smaller.js';
+
 import Tree from '../../../atoms/Tree/index.tsx';
 import TreeNode from '../../../atoms/Tree/TreeNode/index.tsx';
 import { addSpaceToCourseId, fakeCourseId } from '../../../utils/courses.ts';
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export interface Course {
   id: string;

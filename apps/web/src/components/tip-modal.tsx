@@ -1,10 +1,8 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { QRCodeSVG } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
+
+import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import BitcoinCircleGray from '../assets/icons/bitcoin_circle_gray.svg?react';
 import LightningOrange from '../assets/icons/lightning_orange.svg?react';
@@ -19,8 +17,6 @@ interface LoginModalProps {
   userName: string | undefined;
 }
 
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
-
 export const TipModal = ({
   isOpen,
   onClose,
@@ -31,7 +27,11 @@ export const TipModal = ({
   const isMobile = useSmaller('md');
 
   return (
-    <Modal closeButtonEnabled={isMobile} isOpen={isOpen} onClose={onClose}>
+    <Modal
+      closeButtonEnabled={isMobile ? isMobile : false}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <div className="flex flex-col items-center gap-3 px-8 pb-1  sm:gap-6 sm:p-0">
         <RabbitWithPresent />
         <p className="text-xs font-light italic text-blue-800 md:text-xl">

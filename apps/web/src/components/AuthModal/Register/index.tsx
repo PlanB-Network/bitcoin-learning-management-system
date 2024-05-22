@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
 import { t } from 'i18next';
@@ -13,13 +9,13 @@ import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
 
+import { useSmaller } from '#src/hooks/use-smaller.js';
+
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 const password = new PasswordValidator().is().min(10);
 // I am not a big fan of conditions in password validation, that lowers the entropy

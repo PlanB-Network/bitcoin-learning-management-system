@@ -1,13 +1,11 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 
 import { Button, cn } from '@sovereign-university/ui';
+
+import { useGreater } from '#src/hooks/use-greater.js';
 
 import EducationMain from '../../../assets/home/education-main.webp';
 import Flags from '../../../assets/home/flags.webp';
@@ -27,8 +25,6 @@ import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { AboutUs } from '../../../molecules/AboutUs/index.tsx';
 import { TUTORIALS_CATEGORIES } from '../../tutorials/utils.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const titleCss = 'md:text-3xl font-semibold';
 const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
