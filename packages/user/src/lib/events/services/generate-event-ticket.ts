@@ -138,8 +138,8 @@ export const generateEventTicket = async ({
   }
 
   function printRightCard() {
-    x = 400;
-    y = 200;
+    x = 420;
+    y = 210;
     doc.fontSize(12).fillColor('black').font('Helvetica-Bold');
     doc.text('Name : ', x, y, {
       continued: true,
@@ -149,7 +149,8 @@ export const generateEventTicket = async ({
       continued: false,
     });
 
-    y += 30;
+    x -= 20;
+    y += 10;
     // eslint-disable-next-line import/no-named-as-default-member
     const qrBuffer = qr.imageSync(`displayName:${userDisplayName}`);
     doc.image(qrBuffer, x, y, { width: 170 });
