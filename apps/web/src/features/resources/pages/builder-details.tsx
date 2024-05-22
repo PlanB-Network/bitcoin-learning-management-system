@@ -1,20 +1,16 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
 import { GiBirdMask } from 'react-icons/gi';
 
+import { useGreater } from '#src/hooks/use-greater.js';
+
 import { Card } from '../../../atoms/Card/index.tsx';
 import { Tag } from '../../../atoms/Tag/index.tsx';
 import { useNavigateMisc } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
 import { ResourceLayout } from '../layout.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const Builder = () => {
   const { navigateTo404 } = useNavigateMisc();

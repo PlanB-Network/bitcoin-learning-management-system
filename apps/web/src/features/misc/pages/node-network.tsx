@@ -1,10 +1,8 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { useTranslation } from 'react-i18next';
 
 import { Button, cn } from '@sovereign-university/ui';
+
+import { useGreater } from '#src/hooks/use-greater.js';
 
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
@@ -82,7 +80,6 @@ const QnA = () => {
 
 export const NodeNetwork = () => {
   const { t } = useTranslation();
-  const { useGreater } = BreakPointHooks(breakpointsTailwind);
   const isScreenXl = useGreater('xl');
   const isScreenLg = useGreater('lg');
   const isScreenMd = useGreater('md');

@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useMemo, useState } from 'react';
@@ -12,6 +8,7 @@ import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { useGreater } from '#src/hooks/use-greater.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import QuizIcon from '../../../assets/courses/quiz-icon.svg';
@@ -31,8 +28,6 @@ import { ClassDetails } from './components/class-details.tsx';
 import { LiveVideo } from './components/live-video.tsx';
 
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
   const currentPart = chapter.part;
@@ -429,7 +424,7 @@ const Header = ({
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
   useEffect(() => {
-    setIsContentExpanded(isScreenSm);
+    setIsContentExpanded(isScreenSm ? isScreenSm : false);
   }, [isScreenSm]);
 
   return (

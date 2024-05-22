@@ -1,14 +1,9 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
+import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import { MainLayout } from '../../components/MainLayout/index.tsx';
 
 import { MenuDesktop } from './components/menu-desktop.tsx';
 import { MenuMobile } from './components/menu-mobile.tsx';
-
-const { useSmaller } = BreakPointHooks(breakpointsTailwind);
 
 export const DashboardLayout = ({
   children,

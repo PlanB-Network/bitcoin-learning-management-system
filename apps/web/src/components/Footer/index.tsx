@@ -1,7 +1,3 @@
-// import {
-//   BreakPointHooks,
-//   breakpointsTailwind,
-// } from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 // import { AiOutlineMail } from 'react-icons/ai';
@@ -19,8 +15,6 @@ import { cn } from '@sovereign-university/ui';
 import OrangePill from '../../assets/footer_pill.svg';
 import PlanBLogoBlack from '../../assets/planb_logo_horizontal_black_orangepill_gradient.svg';
 import PlanBLogoWhite from '../../assets/planb_logo_horizontal_white_orangepill_gradient.svg';
-
-// const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 interface FooterProps {
   variant?: 'light' | 'dark';

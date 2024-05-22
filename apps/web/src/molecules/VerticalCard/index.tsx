@@ -1,13 +1,10 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { Link } from '@tanstack/react-router';
 
 import type { ButtonProps } from '@sovereign-university/ui';
 import { Button, cn } from '@sovereign-university/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
+import { useGreater } from '#src/hooks/use-greater.js';
 
 interface VerticalCardProps {
   imageSrc: string;
@@ -19,8 +16,6 @@ interface VerticalCardProps {
   languages: string[] | null;
   className?: string;
 }
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 export const VerticalCard = ({
   imageSrc,

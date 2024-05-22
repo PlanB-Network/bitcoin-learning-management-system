@@ -1,7 +1,3 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-} from '@react-hooks-library/core';
 import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +13,8 @@ import {
 import { LuArmchair } from 'react-icons/lu';
 
 import { cn } from '@sovereign-university/ui';
+
+import { useGreater } from '#src/hooks/use-greater.js';
 
 import resourcesSvg from '../../assets/resources/builder.svg';
 import eventsSvg from '../../assets/resources/conference.svg';
@@ -34,8 +32,6 @@ import { AuthModalState } from '../AuthModal/props.ts';
 import { FlyingMenu } from './FlyingMenu/index.tsx';
 import { MobileMenu } from './MobileMenu/index.tsx';
 import type { NavigationSection } from './props.tsx';
-
-const { useGreater } = BreakPointHooks(breakpointsTailwind);
 
 type Course = NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
 
