@@ -94,7 +94,7 @@ export const Modal = ({
                         }
                       : {}),
                   }}
-                  className="max-h-screen overflow-auto rounded-[1.5em] bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:sm:max-w-5xl"
+                  className="max-h-screen overflow-auto rounded-[1.5em] bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:max-w-5xl lg:p-0"
                 >
                   {closeButtonEnabled && (
                     <button>

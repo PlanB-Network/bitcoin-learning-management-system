@@ -149,13 +149,9 @@ export const MobileMenu = ({
   return (
     <>
       <div className="flex w-full justify-center items-center sm:px-3">
-<<<<<<< HEAD
-        <div className="z-40 min-w-10 mr-auto">
-=======
         <div
           className={cn('min-w-10 mr-auto', isMobileMenuOpen && 'opacity-0')}
         >
->>>>>>> fix: fix issue with button behavior on mobile
           <FaBars
             className={compose(
               'cursor-pointer text-white',
@@ -207,8 +203,13 @@ export const MobileMenu = ({
       </div>
 
       <nav
+<<<<<<< HEAD
         className={compose(
           'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-black duration-300',
+=======
+        className={cn(
+          'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-svh pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
+>>>>>>> fix: fix various ui/ux issues
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
