@@ -5,6 +5,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev": "dotenv -- turbo dev --cache-dir=.turbo",
+    "dev:web": "dotenv -- turbo dev --cache-dir=.turbo --filter=web",
+    "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=api",
     "build": "turbo run build --cache-dir=.turbo",
     "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "build:packages": "turbo run build --filter='./packages/*'",
