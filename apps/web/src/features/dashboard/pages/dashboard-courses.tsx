@@ -38,13 +38,13 @@ export const DashboardCourses = () => {
           <TabsList>
             <TabsTrigger
               value="inprogress"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
             >
               {t('dashboard.myCourses.inprogress')}
             </TabsTrigger>
             <TabsTrigger
               value="completed"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black"
+              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
             >
               {t('dashboard.myCourses.completed')}
             </TabsTrigger>

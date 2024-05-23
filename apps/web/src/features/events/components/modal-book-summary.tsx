@@ -38,15 +38,11 @@ export const ModalBookSummary = ({
   return (
     <div
       className={cn(
-        'flex justify-center items-center lg:pr-6',
+        'flex justify-center items-center lg:pr-6 py-6 bg-cover bg-center',
         mobileDisplay ? 'lg:hidden' : 'max-lg:hidden',
       )}
+      style={{ backgroundImage: `url(${leftBackgroundImg})` }}
     >
-      <img
-        src={leftBackgroundImg}
-        alt="left-background"
-        className="hidden lg:block absolute top-0 left-0 h-full w-1/2 object-cover overflow-y-visible"
-      />
       <div
         className={cn(
           'flex flex-col w-full max-w-[492px] p-2.5 lg:p-[30px] backdrop-blur-md bg-newGray-5 lg:bg-black/75',
