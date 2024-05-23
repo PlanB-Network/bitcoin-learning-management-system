@@ -1,6 +1,7 @@
 import matter from 'gray-matter';
 import type { Token } from 'marked';
 import { marked } from 'marked';
+import { validate as uuidValidate } from 'uuid';
 
 import { firstRow, sql } from '@sovereign-university/database';
 import type {
@@ -108,11 +109,14 @@ interface CourseLocalized {
 }
 
 interface Part {
+  partId: string;
   title: string;
   chapters: Chapter[];
 }
 
 interface Chapter {
+  partId: string;
+  chapterId: string;
   title: string;
   sections: string[];
   raw_content: string;
@@ -158,14 +162,22 @@ const extractParts = (markdown: string): Part[] => {
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       parts.push({
+        partId: '',
         title: token.text as string,
         chapters: [],
       });
     } else if (parts.length > 0) {
       const currentPart = parts.at(-1)!;
 
+      const partId = extractData(token, 'partId');
+      if (partId !== null) {
+        currentPart.partId = partId;
+      }
+
       if (token.type === 'heading' && token.depth === 2) {
         currentPart.chapters.push({
+          chapterId: '',
+          partId: currentPart.partId,
           title: token.text as string,
           sections: [],
           raw_content: '',
@@ -193,6 +205,11 @@ const extractParts = (markdown: string): Part[] => {
         }
 
         if (token.raw.startsWith('<')) {
+          const chapterId = extractData(token, 'chapterId');
+          if (chapterId !== null) {
+            currentChapter.chapterId = chapterId;
+          }
+          currentChapter.partId = currentPart.partId;
           currentChapter.releasePlace = extractData(token, 'releasePlace');
           currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
           currentChapter.isInPerson =
@@ -218,6 +235,7 @@ const extractParts = (markdown: string): Part[] => {
           }
 
           const tagsToRemove = [
+            'chapterId',
             'professor',
             'releasePlace',
             'isOnline',
@@ -283,29 +301,14 @@ export const createProcessChangedCourse =
             ) {
               // If new or updated resource file, insert or update resource
 
-              //Remove all translations, chapters and parts, reinsert them just after
+              // Remove all professors, reinsert them just after
               await transaction`
-                DELETE FROM content.courses_localized
+                DELETE FROM content.course_professors
                 WHERE course_id = ${course.id}
               `;
 
               await transaction`
-                DELETE FROM content.course_chapters
-                WHERE course_id = ${course.id}
-              `;
-
-              await transaction`
-                DELETE FROM content.course_parts
-                WHERE course_id = ${course.id}
-              `;
-
-              await transaction`
-                DELETE FROM content.course_chapters_localized
-                WHERE course_id = ${course.id}
-              `;
-
-              await transaction`
-                DELETE FROM content.course_parts_localized
+                DELETE FROM content.course_chapters_localized_professors
                 WHERE course_id = ${course.id}
               `;
 
@@ -478,13 +481,24 @@ export const createProcessChangedCourse =
             if (parts.length > 0) {
               await transaction`
                 INSERT INTO content.course_parts ${transaction(
-                  parts.map((_, index) => ({
-                    course_id: course.id,
-                    part: index + 1,
-                  })),
+                  parts.map((p, index) => {
+                    if (!uuidValidate(p.partId)) {
+                      throw new Error(
+                        `Part id (uuid) missing or invalid: ${p.partId} on part ${p.title}`,
+                      );
+                    }
+                    return {
+                      course_id: course.id,
+                      part: index + 1,
+                      part_id: p.partId,
+                    };
+                  }),
                 )}
-                ON CONFLICT DO NOTHING
+                ON CONFLICT (course_id, part) DO UPDATE SET
+                  last_sync = NOW()
+                RETURNING *
               `;
+              /// TODO change to part_id (here and everywhere on ON CONFLICTS)
 
               await transaction`
                 INSERT INTO content.course_parts_localized ${transaction(
@@ -500,7 +514,9 @@ export const createProcessChangedCourse =
                   'title',
                 )}
                 ON CONFLICT (course_id, language, part)
-                DO UPDATE SET title = EXCLUDED.title
+                DO UPDATE SET 
+                  title = EXCLUDED.title,
+                  last_sync = NOW()
               `;
 
               // if there is at least one chapter across all parts
@@ -508,15 +524,27 @@ export const createProcessChangedCourse =
                 await transaction`
                 INSERT INTO content.course_chapters ${transaction(
                   parts.flatMap((part, partIndex) =>
-                    part.chapters.map((_, chapterIndex) => ({
-                      course_id: course.id,
-                      part: partIndex + 1,
-                      chapter: chapterIndex + 1,
-                    })),
+                    part.chapters.map((c, chapterIndex) => {
+                      if (!uuidValidate(c.chapterId)) {
+                        throw new Error(
+                          `Chapter id (uuid) missing or invalid: ${c.chapterId} on chapter ${c.title}`,
+                        );
+                      }
+                      return {
+                        course_id: course.id,
+                        part: partIndex + 1,
+                        chapter: chapterIndex + 1,
+                        chapter_id: c.chapterId,
+                      };
+                    }),
                   ),
                 )}
-                ON CONFLICT DO NOTHING
+                ON CONFLICT (course_id, part, chapter)
+                DO UPDATE SET 
+                  last_sync = NOW()
+                RETURNING *
               `;
+                // TODO ON CONFLICT CHANGE TO CHAPTER_ID
 
                 const formatedChapters = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => {
@@ -564,7 +592,8 @@ export const createProcessChangedCourse =
                     live_url = EXCLUDED.live_url,
                     chat_url = EXCLUDED.chat_url,
                     available_seats = EXCLUDED.available_seats,
-                    live_language = EXCLUDED.live_language
+                    live_language = EXCLUDED.live_language,
+                    last_sync = NOW()
                 `;
 
                 const formatedChapters2 = parts.flatMap((part, partIndex) =>
@@ -595,10 +624,8 @@ export const createProcessChangedCourse =
                 );
               }
             }
-          } catch (error) {
-            errors.push(
-              `Error processing file ${course.path} ${file?.path}: ${error}`,
-            );
+          } catch {
+            errors.push(`Error processing file ${course.path} ${file?.path}: `);
           }
         }
       })
@@ -614,10 +641,30 @@ export const createProcessDeleteCourses =
 
     try {
       await postgres.exec(
+        sql`DELETE FROM content.course_chapters_localized WHERE last_sync < ${sync_date} 
+      `,
+      );
+
+      await postgres.exec(
+        sql`DELETE FROM content.course_chapters WHERE last_sync < ${sync_date} 
+      `,
+      );
+
+      await postgres.exec(
+        sql`DELETE FROM content.course_parts_localized WHERE last_sync < ${sync_date} 
+      `,
+      );
+
+      await postgres.exec(
+        sql`DELETE FROM content.course_parts WHERE last_sync < ${sync_date} 
+      `,
+      );
+
+      await postgres.exec(
         sql`DELETE FROM content.courses WHERE last_sync < ${sync_date} 
       `,
       );
-    } catch {
-      errors.push(`Error deleting courses`);
+    } catch (error) {
+      errors.push(`Error deleting courses : ${error}`);
     }
   };

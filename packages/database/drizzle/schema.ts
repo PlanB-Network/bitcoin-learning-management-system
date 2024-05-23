@@ -287,10 +287,14 @@ export const contentCourseParts = content.table(
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
     part: integer('part').notNull(),
+    partId: uuid('part_id').unique() /*.notNull()*/,
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.part],
+      columns: [table.courseId, table.part], //partId
     }),
   }),
 );
@@ -300,10 +304,17 @@ export const contentCoursePartsLocalized = content.table(
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
 
     // Per translation
     title: text('title').notNull(),
+
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (table) => ({
     pk: primaryKey({
@@ -331,6 +342,13 @@ export const contentCourseChapters = content.table(
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(),
     chapter: integer('chapter').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
+    chapterId: uuid('chapter_id').unique() /*.notNull()*/,
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (table) => ({
     pk: primaryKey({
@@ -348,8 +366,13 @@ export const contentCourseChaptersLocalized = content.table(
   'course_chapters_localized',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(),
+    part: integer('part').notNull(), ///////
     chapter: integer('chapter').notNull(),
+    // chapterId: uuid('chapterId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseChapters.chapterId, {
+    //     onDelete: 'cascade',
+    //   }),
     language: varchar('language', { length: 10 }).notNull(),
     releasePlace: varchar('release_place', { length: 50 }),
 
@@ -371,6 +394,9 @@ export const contentCourseChaptersLocalized = content.table(
     title: text('title').notNull(),
     sections: text('sections').array().notNull(),
     rawContent: text('raw_content').notNull(),
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (table) => ({
     pk: primaryKey({
@@ -380,7 +406,7 @@ export const contentCourseChaptersLocalized = content.table(
       columns: [table.courseId, table.part, table.chapter],
       foreignColumns: [
         contentCourseChapters.courseId,
-        contentCourseChapters.part,
+        contentCourseChapters.part, // coursePart.partId ?
         contentCourseChapters.chapter,
       ],
       name: 'course_chapters_localized_to_course_chapters_fk',
@@ -434,7 +460,11 @@ export const usersCoursePayment = users.table(
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
     part: integer('part'),
+    // partId: uuid('partId').references(() => contentCourseParts.partId),
     chapter: integer('chapter'),
+    // chapterId: uuid('chapterId').references(
+    //   () => contentCourseChapters.chapterId,
+    // ),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
@@ -467,7 +497,15 @@ export const usersCourseUserChapter = users.table(
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
     part: integer('part').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(),
+    // chapterId: uuid('chapterId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseChapters.chapterId, {
+    //     onDelete: 'cascade',
+    //   }),
     completedAt: timestamp('completed_at', {
       withTimezone: true,
     })
@@ -710,7 +748,16 @@ export const contentQuizQuestions = content.table(
 
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(),
+    // chapterId: uuid('chapterId')
+    //   .unique()
+    //   /*.notNull()*/
+    //   .references(() => contentCourseChapters.chapterId, {
+    //     onDelete: 'cascade',
+    //   }),
 
     difficulty: varchar('difficulty', { length: 255 }).notNull(),
     author: varchar('author', { length: 255 }),
@@ -731,7 +778,7 @@ export const contentQuizQuestions = content.table(
       columns: [table.courseId, table.part, table.chapter],
       foreignColumns: [
         contentCourseChapters.courseId,
-        contentCourseChapters.part,
+        contentCourseParts.part, // coursePart.partId ?
         contentCourseChapters.chapter,
       ],
       name: 'quizzes_to_course_chapters_fk',
@@ -785,7 +832,15 @@ export const usersQuizAttempts = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(),
+    // chapterId: uuid('chapterId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseChapters.chapterId, {
+    //     onDelete: 'cascade',
+    //   }),
 
     questionsCount: integer('questions_count').notNull(),
     correctAnswersCount: integer('correct_answers_count').notNull(),
@@ -902,7 +957,15 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
     part: integer('part').notNull(),
+    // partId: uuid('partId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(),
+    // chapterId: uuid('chapterId')
+    //   /*.notNull()*/
+    //   .references(() => contentCourseChapters.chapterId, {
+    //     onDelete: 'cascade',
+    //   }),
     language: varchar('language', { length: 10 }).notNull(),
     contributorId: varchar('contributor_id', { length: 20 })
       .notNull()
