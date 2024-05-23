@@ -73,6 +73,8 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
+      console.log(result?.category);
+
       // Remove tags related to the resource before inserting the new one
       if (result) {
         await transaction`

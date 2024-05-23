@@ -96,6 +96,58 @@ export const contentResourceTags = content.table(
   }),
 );
 
+// BET
+
+export const betTypeEnum = pgEnum('bet_type', [
+  'visual content',
+  'educational content',
+]);
+
+export const contentBet = content.table('bet', {
+  resourceId: integer('resource_id')
+    .primaryKey()
+    .notNull()
+    .references(() => contentResources.id, { onDelete: 'cascade' }),
+  type: betTypeEnum('type').notNull(),
+  builder: text('builder'),
+  downloadUrl: text('download_url').notNull(),
+});
+
+export const contentBetViewUrl = content.table(
+  'bet_view_url',
+  {
+    betId: integer('bet_id')
+      .notNull()
+      .references(() => contentBet.resourceId, { onDelete: 'cascade' }),
+    language: text('language').notNull(),
+    viewUrl: text('view_url').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.betId, table.language],
+    }),
+  }),
+);
+
+export const contentBetLocalized = content.table(
+  'bet_localized',
+  {
+    betId: integer('bet_id')
+      .notNull()
+      .references(() => contentBet.resourceId, { onDelete: 'cascade' }),
+    language: varchar('language', { length: 10 }).notNull(),
+
+    // Per translation
+    name: text('name').notNull(),
+    description: text('description').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.betId, table.language],
+    }),
+  }),
+);
+
 // BOOKS
 
 export const contentBooks = content.table('books', {

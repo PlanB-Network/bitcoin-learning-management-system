@@ -1,3 +1,4 @@
+export * from './bet.js';
 export * from './book.js';
 export * from './builder.js';
 export * from './conference.js';
