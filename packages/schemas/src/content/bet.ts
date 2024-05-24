@@ -24,7 +24,6 @@ export const joinedBetSchema = resourceSchema
     betSchema.pick({
       type: true,
       downloadUrl: true,
-      viewUrl: true,
       builder: true,
     }),
   )
@@ -33,12 +32,11 @@ export const joinedBetSchema = resourceSchema
       language: true,
       name: true,
       description: true,
-      viewUrl: true,
     }),
   )
   .merge(
     z.object({
-      viewUrls: betViewUrlSchema.array(),
+      viewurls: betViewUrlSchema.array(),
       tags: z.array(z.string()),
     }),
   );

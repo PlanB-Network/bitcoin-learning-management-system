@@ -1,3 +1,4 @@
+export { getBetsQuery } from './get-bets.js';
 export { getBookQuery } from './get-book.js';
 export { getBooksQuery } from './get-books.js';
 export { getBuilderQuery } from './get-builder.js';
