@@ -70,7 +70,7 @@ export const createProcessChangedBet = (
                   await transaction`
                   INSERT INTO content.bet_view_url (bet_id, language, view_url)
                   VALUES (${id}, ${key}, ${currentViewUrl[key]})
-                  ON CONFLICT (resource_id) DO UPDATE SET
+                  ON CONFLICT (bet_id, language) DO UPDATE SET
                     language = EXCLUDED.language,
                     view_url = EXCLUDED.view_url
                   `;
@@ -103,15 +103,10 @@ export const createProcessChangedBet = (
               INSERT INTO content.bet_localized (
                 bet_id, language, name, description
               )
-              VALUES (
-                ${id},
-                ${file.language},
-                ${parsed.name.trim()},
-                ${parsed.description.trim()},
-              )
+              VALUES (${id}, ${file.language}, ${parsed.name.trim()}, ${parsed.description.trim()})
               ON CONFLICT (bet_id, language) DO UPDATE SET
                 name = EXCLUDED.name,
-                description = EXCLUDED.description,
+                description = EXCLUDED.description
             `.then(firstRow);
           } catch (error) {
             errors.push(`Error processing one file ${file?.path}: ${error}`);
