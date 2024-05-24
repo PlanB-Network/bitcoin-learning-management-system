@@ -40,7 +40,7 @@ export const ModalPaymentSummary = ({
   return (
     <div
       className={cn(
-        'flex justify-center items-center lg:pr-6 py-6 bg-cover bg-center',
+        'flex justify-center items-center lg:p-6 bg-cover bg-center max-lg:!bg-none',
         mobileDisplay ? 'lg:hidden' : 'max-lg:hidden',
       )}
       style={{ backgroundImage: `url(${leftBackgroundImg})` }}

@@ -101,7 +101,7 @@ export const EventPaymentModal = ({
           satsPrice={satsPrice}
           mobileDisplay={false}
         />
-        <div className="flex flex-col items-center justify-center lg:pl-6">
+        <div className="flex flex-col items-center justify-center lg:m-6">
           {paymentData ? (
             isPaymentSuccess ? (
               <ModalPaymentSuccess
