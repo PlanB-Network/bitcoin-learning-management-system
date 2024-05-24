@@ -1,27 +1,14 @@
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { FiDownload } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
+import type { BetViewUrl } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
+import { trpc } from '#src/utils/trpc.js';
 
-import poster from '../../../assets/resources/bet/21poster.webp';
-import anil from '../../../assets/resources/bet/anil.webp';
-import artistes from '../../../assets/resources/bet/artiste.webp';
-import bookscover from '../../../assets/resources/bet/bookcover.webp';
-import btcHere from '../../../assets/resources/bet/btcacceptedhere.webp';
-import dbCourses from '../../../assets/resources/bet/dbcourses.webp';
-import mpbitcoin from '../../../assets/resources/bet/diplomampb.webp';
-import gifcollection from '../../../assets/resources/bet/gifcollection.webp';
-import history from '../../../assets/resources/bet/history.webp';
-import hyperinflation from '../../../assets/resources/bet/hyperinflation.webp';
-import logosCompanies from '../../../assets/resources/bet/logos.webp';
-import meme from '../../../assets/resources/bet/meme.webp';
-import propaganda from '../../../assets/resources/bet/propaganda.webp';
-import scams from '../../../assets/resources/bet/scams.webp';
 import { ResourceLayout } from '../layout.tsx';
 
 const Section = ({ children }: { children: React.ReactNode }) => {
@@ -49,28 +36,31 @@ const SectionGrid = ({
   cardColor,
 }: {
   elements: Array<{
-    title: string;
-    description: string;
-    viewUrl: string;
-    image: string;
+    name: string;
+    builder: string;
+    downloadUrl: string;
+    viewurls: BetViewUrl[];
+    logo: string;
   }>;
   cardColor: VerticalCardProps['cardColor'];
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {elements.map((item, index) => (
         <VerticalCard
           key={index}
-          title={item.title}
-          subtitle={item.description}
-          imageSrc={item.image}
+          title={item.name}
+          subtitle={item.builder}
+          imageSrc={item.logo}
           languages={[]}
-          link={item.viewUrl}
+          link={item.viewurls[0].viewUrl}
           buttonText={t('words.view')}
           buttonIcon={<IoIosSearch size={24} />}
           buttonVariant="newSecondary"
           buttonMode="colored"
-          secondaryLink={item.viewUrl}
+          secondaryLink={item.downloadUrl}
           secondaryButtonText={t('words.download')}
           secondaryButtonIcon={<FiDownload size={24} />}
           secondaryButtonVariant="ghost"
@@ -86,112 +76,11 @@ const SectionGrid = ({
 };
 
 export const BET = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  // The Links and the images are updated.
-  const EDUCATIONAL_CONTENT = [
-    {
-      title: 'All of PlanB courses',
-      description: 'DecouvreBitcoin',
-      viewUrl:
-        'https://github.com/DecouvreBitcoin/sovereign-university-data/tree/dev/courses',
-      image: dbCourses,
-    },
-    {
-      title: 'Anil Illustrations',
-      description: 'Example',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A1055&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: anil,
-    },
-    {
-      title: ' 21 Posters',
-      description: 'Rogzy',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=0%3A1&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: poster,
-    },
-    {
-      title: 'Bitcoin Diploma ',
-      description: 'Mi Primer Bitcoin',
-      viewUrl: 'https://github.com/MyFirstBitcoin',
-      image: mpbitcoin,
-    },
-  ];
-
-  const VISUAL_CONTENT = [
-    {
-      title: 'Bitcoin accepted here',
-      description: 'Team DB',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A338&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: btcHere,
-    },
-    {
-      title: 'Bitcoin meme',
-      description: 'Anonymous',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A818&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: meme,
-    },
-    {
-      title: 'Propaganda Posters',
-      description: 'Propaganda Bitcoin posters',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A106&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: propaganda,
-    },
-    {
-      title: 'Hyperinflations Bills',
-      description: 'David Saint Onge',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A71&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: hyperinflation,
-    },
-    {
-      title: 'Bitcoin book',
-      description: 'Bitcoin Guides',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A230&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: bookscover,
-    },
-    {
-      title: 'Company and project logos',
-      description: 'Bitcoin Companies Logo',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2-621&mode=design',
-      image: logosCompanies,
-    },
-    {
-      title: 'BTC Gift ',
-      description: 'Anonymous',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=3%3A454&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: gifcollection,
-    },
-
-    {
-      title: 'Scam',
-      description: 'Anonymous',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=3%3A287&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: scams,
-    },
-    {
-      title: 'BTC History',
-      description: 'Image Database',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=8-574&mode=design',
-      image: history,
-    },
-    {
-      title: 'BTC Artistes Gallery ',
-      description: '',
-      viewUrl:
-        'https://www.figma.com/file/pzyUU3bcrdokNnLdI3o0aX/Bitcoin-Educational-ToolKit-2?type=design&node-id=2%3A728&mode=design&t=ssejloYtH3ZHS8OV-1',
-      image: artistes,
-    },
-  ];
+  const { data: bets } = trpc.content.getBets.useQuery({
+    language: i18n.language ?? 'en',
+  });
 
   return (
     <ResourceLayout
@@ -216,7 +105,22 @@ export const BET = () => {
             <SectionDescription>
               {t('bet.educationalContent.description')}
             </SectionDescription>
-            <SectionGrid elements={EDUCATIONAL_CONTENT} cardColor="orange" />
+            <SectionGrid
+              elements={
+                bets
+                  ?.filter((bet) => bet.type === 'educational content')
+                  .map((bet) => {
+                    return {
+                      name: bet.name,
+                      builder: bet.builder || '',
+                      downloadUrl: bet.downloadUrl,
+                      viewurls: bet.viewurls as BetViewUrl[],
+                      logo: bet.logo,
+                    };
+                  }) || []
+              }
+              cardColor="orange"
+            />
           </Section>
 
           <div className="h-px max-w-6xl w-full bg-newGray-1 max-md:hidden my-16 mx-auto" />
@@ -227,7 +131,22 @@ export const BET = () => {
             <SectionDescription>
               {t('bet.visualContent.description')}
             </SectionDescription>
-            <SectionGrid elements={VISUAL_CONTENT} cardColor="maroon" />
+            <SectionGrid
+              elements={
+                bets
+                  ?.filter((bet) => bet.type === 'visual content')
+                  .map((bet) => {
+                    return {
+                      name: bet.name,
+                      builder: bet.builder || '',
+                      downloadUrl: bet.downloadUrl,
+                      viewurls: bet.viewurls as BetViewUrl[],
+                      logo: bet.logo,
+                    };
+                  }) || []
+              }
+              cardColor="maroon"
+            />
           </Section>
         </div>
 
