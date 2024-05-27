@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { FiDownload } from 'react-icons/fi';
+import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
 import type { BetViewUrl } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import { useGreater } from '#src/hooks/use-greater.js';
 import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -44,33 +45,48 @@ const SectionGrid = ({
   }>;
   cardColor: VerticalCardProps['cardColor'];
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const language = i18n.language;
+
+  const isScreenMd = useGreater('md');
 
   return (
     <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {elements.map((item, index) => (
-        <VerticalCard
-          key={index}
-          title={item.name}
-          subtitle={item.builder}
-          imageSrc={item.logo}
-          languages={[]}
-          link={item.viewurls[0].viewUrl}
-          buttonText={t('words.view')}
-          buttonIcon={<IoIosSearch size={24} />}
-          buttonVariant="newSecondary"
-          buttonMode="colored"
-          secondaryLink={item.downloadUrl}
-          secondaryButtonText={t('words.download')}
-          secondaryButtonIcon={<FiDownload size={24} />}
-          secondaryButtonVariant="ghost"
-          secondaryButtonMode="colored"
-          externalLink
-          onHoverArrow={false}
-          cardColor={cardColor}
-          onHoverCardColorChange
-        />
-      ))}
+      {elements.map((item, index) => {
+        const currentLanguageViewUrl =
+          item.viewurls.find((el) => el.language === language)?.viewUrl ||
+          item.viewurls[0].viewUrl;
+
+        return (
+          <VerticalCard
+            key={index}
+            title={item.name}
+            subtitle={item.builder}
+            imageSrc={item.logo}
+            languages={[]}
+            buttonLink={currentLanguageViewUrl}
+            buttonText={t('words.view')}
+            buttonIcon={<IoIosSearch size={isScreenMd ? 24 : 16} />}
+            buttonVariant="newSecondary"
+            buttonMode="colored"
+            secondaryLink={item.viewurls[0].viewUrl}
+            secondaryButtonText={t('words.edit')}
+            secondaryButtonIcon={<FiEdit size={isScreenMd ? 24 : 16} />}
+            secondaryButtonVariant="ghost"
+            secondaryButtonMode="colored"
+            tertiaryLink={item.downloadUrl}
+            tertiaryButtonText={t('words.download')}
+            tertiaryButtonIcon={<FiDownload size={isScreenMd ? 24 : 16} />}
+            tertiaryButtonVariant="ghost"
+            tertiaryButtonMode="colored"
+            externalLink
+            onHoverArrow={false}
+            cardColor={cardColor}
+            onHoverCardColorChange
+          />
+        );
+      })}
     </div>
   );
 };

@@ -10,7 +10,7 @@ interface HorizontalCardProps {
   subtitle?: string;
   buttonText?: string;
   buttonVariant?: ButtonProps['variant'];
-  link?: string;
+  buttonLink?: string;
   languages: string[] | null;
   className?: string;
 }
@@ -20,7 +20,7 @@ export const HorizontalCard = ({
   subtitle,
   buttonText,
   buttonVariant = 'newPrimary',
-  link,
+  buttonLink,
   languages,
   className,
 }: HorizontalCardProps) => {
@@ -48,8 +48,8 @@ export const HorizontalCard = ({
               ))}
         </div>
         {buttonText &&
-          (link ? (
-            <Link to={link}>
+          (buttonLink ? (
+            <Link to={buttonLink}>
               <Button
                 variant={buttonVariant}
                 onHoverArrow

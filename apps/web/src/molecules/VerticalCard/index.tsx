@@ -16,12 +16,17 @@ export interface VerticalCardProps {
   buttonIcon?: JSX.Element;
   buttonVariant?: ButtonProps['variant'];
   buttonMode?: ButtonProps['mode'];
-  link?: string;
+  buttonLink?: string;
   secondaryButtonText?: string;
   secondaryButtonIcon?: JSX.Element;
   secondaryButtonVariant?: ButtonProps['variant'];
   secondaryButtonMode?: ButtonProps['mode'];
   secondaryLink?: string;
+  tertiaryButtonText?: string;
+  tertiaryButtonIcon?: JSX.Element;
+  tertiaryButtonVariant?: ButtonProps['variant'];
+  tertiaryButtonMode?: ButtonProps['mode'];
+  tertiaryLink?: string;
   externalLink?: boolean;
   onHoverArrow?: boolean;
   languages: string[] | null;
@@ -38,12 +43,17 @@ export const VerticalCard = ({
   buttonIcon,
   buttonVariant = 'newPrimary',
   buttonMode,
-  link,
+  buttonLink,
   secondaryButtonText,
   secondaryButtonIcon,
   secondaryButtonVariant,
   secondaryButtonMode,
   secondaryLink,
+  tertiaryButtonText,
+  tertiaryButtonIcon,
+  tertiaryButtonVariant,
+  tertiaryButtonMode,
+  tertiaryLink,
   externalLink,
   onHoverArrow = true,
   languages,
@@ -109,10 +119,10 @@ export const VerticalCard = ({
       </div>
       <div className="flex flex-wrap max-md:flex-col justify-center items-center w-full mt-auto gap-1.5 md:gap-5">
         {buttonText &&
-          (link ? (
+          (buttonLink ? (
             externalLink ? (
               <a
-                href={link}
+                href={buttonLink}
                 target="_blank"
                 className={cn(secondaryButtonText ? 'max-md:w-full' : 'w-full')}
                 rel="noreferrer"
@@ -130,7 +140,7 @@ export const VerticalCard = ({
               </a>
             ) : (
               <Link
-                to={link}
+                to={buttonLink}
                 className={cn(secondaryButtonText ? 'max-md:w-full' : 'w-full')}
               >
                 <Button
@@ -158,6 +168,7 @@ export const VerticalCard = ({
             </Button>
           ))}
         {secondaryButtonText &&
+          secondaryLink !== buttonLink &&
           (secondaryLink ? (
             externalLink ? (
               <a
@@ -201,6 +212,52 @@ export const VerticalCard = ({
               iconRight={secondaryButtonIcon}
             >
               {secondaryButtonText}
+            </Button>
+          ))}
+        {tertiaryButtonText &&
+          (tertiaryLink ? (
+            externalLink ? (
+              <a
+                href={tertiaryLink}
+                target="_blank"
+                className="max-md:w-full"
+                rel="noreferrer"
+              >
+                <Button
+                  variant={tertiaryButtonVariant}
+                  mode={tertiaryButtonMode}
+                  size={isScreenMd ? 'm' : 'xs'}
+                  onHoverArrow={onHoverArrow}
+                  className="w-full"
+                  iconRight={tertiaryButtonIcon}
+                >
+                  {tertiaryButtonText}
+                </Button>
+              </a>
+            ) : (
+              <Link to={tertiaryLink} className="max-md:w-full">
+                <Button
+                  variant={tertiaryButtonVariant}
+                  mode={tertiaryButtonMode}
+                  size={isScreenMd ? 'm' : 'xs'}
+                  onHoverArrow={onHoverArrow}
+                  className="w-full"
+                  iconRight={tertiaryButtonIcon}
+                >
+                  {tertiaryButtonText}
+                </Button>
+              </Link>
+            )
+          ) : (
+            <Button
+              variant={tertiaryButtonVariant}
+              mode={tertiaryButtonMode}
+              size={isScreenMd ? 'm' : 'xs'}
+              disabled
+              className="max-md:w-full"
+              iconRight={tertiaryButtonIcon}
+            >
+              {tertiaryButtonText}
             </Button>
           ))}
       </div>
