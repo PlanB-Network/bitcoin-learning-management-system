@@ -343,7 +343,7 @@ export const contentCourseChapters = content.table(
     part: integer('part').notNull(), // To remove
     chapter: integer('chapter').notNull(), // To rename chapter_index
     partId: uuid('part_id')
-      /*.notNull()*/
+      .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapterId: uuid('chapter_id').unique().notNull(),
     lastSync: timestamp('last_sync', { withTimezone: true })
