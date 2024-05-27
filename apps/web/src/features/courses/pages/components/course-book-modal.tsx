@@ -35,7 +35,7 @@ export const CourseBookModal = ({
   const saveAndDisplaySuccess = useCallback(() => {
     saveUserChapterRequest.mutateAsync({
       courseId: course.id,
-      chapterId: chapter.chapterId as string,
+      chapterId: chapter.chapterId,
       part: chapter.part.part,
       chapter: chapter.chapter,
       booked: true,
