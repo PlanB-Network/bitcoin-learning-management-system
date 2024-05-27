@@ -6,6 +6,10 @@
     "typescript",
     "typescriptreact"
   ],
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.useSyntaxServer": "never",
+  "typescript.tsserver.web.projectWideIntellisense.enabled": true,
+  "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -30,6 +34,9 @@
     "**/tsconfig.*.tsbuildinfo": true
   },
   "files.watcherExclude": {
+    "**/.DS_Store": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
     "**/node_modules": true,
     "**/dist": true,
     "**/.turbo": true
@@ -39,5 +46,6 @@
     "**/node_modules": true,
     "**/dist": true,
     "**/.turbo": true
-  }
+  },
+  "eslint.workingDirectories": ["./apps/web", "./apps/api", "./packages/*"]
 }
