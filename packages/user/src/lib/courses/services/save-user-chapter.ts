@@ -6,12 +6,14 @@ export const createSaveUserChapter =
   async ({
     uid,
     courseId,
+    chapterId,
     part,
     chapter,
     booked,
   }: {
     uid: string;
     courseId: string;
+    chapterId: string;
     part: number;
     chapter: number;
     booked: boolean;
@@ -19,6 +21,6 @@ export const createSaveUserChapter =
     const { postgres } = dependencies;
 
     return postgres.exec(
-      insertUserChapter({ uid, courseId, part, chapter, booked }),
+      insertUserChapter({ uid, courseId, chapterId, part, chapter, booked }),
     );
   };
