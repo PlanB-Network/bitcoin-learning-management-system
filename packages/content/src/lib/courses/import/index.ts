@@ -495,6 +495,7 @@ export const createProcessChangedCourse =
                   }),
                 )}
                 ON CONFLICT (course_id, part) DO UPDATE SET
+                  part_id = EXCLUDED.part_id,
                   last_sync = NOW()
                 RETURNING *
               `;
@@ -541,6 +542,7 @@ export const createProcessChangedCourse =
                 )}
                 ON CONFLICT (course_id, part, chapter)
                 DO UPDATE SET 
+                  chapter_id = EXCLUDED.chapter_id,
                   last_sync = NOW()
                 RETURNING *
               `;
