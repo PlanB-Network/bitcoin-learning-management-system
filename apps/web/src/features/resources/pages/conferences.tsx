@@ -79,7 +79,7 @@ export const Conferences = () => {
                   subtitle={latestConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
-                  link={
+                  buttonLink={
                     latestConferences[0].stages.length > 0
                       ? `/resources/conference/${latestConferences[0].id}`
                       : ''
@@ -92,7 +92,7 @@ export const Conferences = () => {
                   subtitle={latestConferences[1].location}
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
-                  link={
+                  buttonLink={
                     latestConferences[1].stages.length > 0
                       ? `/resources/conference/${latestConferences[1].id}`
                       : ''
@@ -117,7 +117,7 @@ export const Conferences = () => {
                   subtitle={latestPlanBConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
-                  link={
+                  buttonLink={
                     latestPlanBConferences[0].stages.length > 0
                       ? `/resources/conference/${latestPlanBConferences[0].id}`
                       : ''
@@ -130,7 +130,7 @@ export const Conferences = () => {
                   subtitle={latestPlanBConferences[1].location}
                   buttonText={t('events.card.watchReplay')}
                   buttonVariant="newPrimary"
-                  link={
+                  buttonLink={
                     latestPlanBConferences[1].stages.length > 0
                       ? `/resources/conference/${latestPlanBConferences[1].id}`
                       : ''
@@ -170,7 +170,7 @@ export const Conferences = () => {
                 subtitle={conference.location}
                 buttonText={t('events.card.watchReplay')}
                 buttonVariant="newPrimary"
-                link={
+                buttonLink={
                   conference.stages.length > 0
                     ? `/resources/conference/${conference.id}`
                     : ''
