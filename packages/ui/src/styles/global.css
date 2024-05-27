@@ -116,6 +116,10 @@
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }
 
+  .desktop-25px-medium {
+    @apply text-2xl font-medium leading-normal tracking-normal;
+  }
+
   .mobile-body2 {
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }
