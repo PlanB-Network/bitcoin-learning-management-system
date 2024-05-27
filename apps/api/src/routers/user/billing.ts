@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 import { invoiceSchema, ticketSchema } from '@sovereign-university/schemas';
 import {
   createGetInvoices,
@@ -8,10 +10,16 @@ import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const getInvoicesProcedure = protectedProcedure
+  .input(
+    z.object({
+      language: z.string(),
+    }),
+  )
   .output(invoiceSchema.array())
-  .query(({ ctx }) =>
+  .query(({ ctx, input }) =>
     createGetInvoices(ctx.dependencies)({
       uid: ctx.user.uid,
+      language: input.language,
     }),
   );
 

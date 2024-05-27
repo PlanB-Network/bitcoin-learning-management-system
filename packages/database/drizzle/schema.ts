@@ -286,7 +286,7 @@ export const contentCourseParts = content.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(),
+    part: integer('part').notNull(), // To remove
     partId: uuid('part_id').unique() /*.notNull()*/,
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
@@ -303,10 +303,10 @@ export const contentCoursePartsLocalized = content.table(
   'course_parts_localized',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(),
-    // partId: uuid('partId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
+    part: integer('part').notNull(), // To remove
+    partId: uuid('part_id')
+      /*.notNull()*/
+      .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
 
     // Per translation
@@ -340,8 +340,8 @@ export const contentCourseChapters = content.table(
   'course_chapters',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(),
-    chapter: integer('chapter').notNull(),
+    part: integer('part').notNull(), // To remove
+    chapter: integer('chapter').notNull(), // To remove
     // partId: uuid('partId')
     //   /*.notNull()*/
     //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
@@ -366,13 +366,13 @@ export const contentCourseChaptersLocalized = content.table(
   'course_chapters_localized',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), ///////
-    chapter: integer('chapter').notNull(),
-    // chapterId: uuid('chapterId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseChapters.chapterId, {
-    //     onDelete: 'cascade',
-    //   }),
+    part: integer('part').notNull(), // To remove
+    chapter: integer('chapter').notNull(), // To remove
+    chapterId: uuid('chapter_id')
+      /*.notNull()*/
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
     language: varchar('language', { length: 10 }).notNull(),
     releasePlace: varchar('release_place', { length: 50 }),
 
@@ -459,12 +459,6 @@ export const usersCoursePayment = users.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part'),
-    // partId: uuid('partId').references(() => contentCourseParts.partId),
-    chapter: integer('chapter'),
-    // chapterId: uuid('chapterId').references(
-    //   () => contentCourseChapters.chapterId,
-    // ),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
@@ -496,11 +490,8 @@ export const usersCourseUserChapter = users.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(),
-    // partId: uuid('partId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(),
+    part: integer('part').notNull(), // To remove
+    chapter: integer('chapter').notNull(), // To remove
     // chapterId: uuid('chapterId')
     //   /*.notNull()*/
     //   .references(() => contentCourseChapters.chapterId, {
@@ -747,11 +738,11 @@ export const contentQuizQuestions = content.table(
     id: integer('id').primaryKey().notNull(),
 
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(),
+    part: integer('part').notNull(), // To remove
     // partId: uuid('partId')
     //   /*.notNull()*/
     //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(),
+    chapter: integer('chapter').notNull(), // To remove
     // chapterId: uuid('chapterId')
     //   .unique()
     //   /*.notNull()*/
@@ -831,11 +822,11 @@ export const usersQuizAttempts = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(),
+    part: integer('part').notNull(), // To remove
     // partId: uuid('partId')
     //   /*.notNull()*/
     //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(),
+    chapter: integer('chapter').notNull(), // To remove
     // chapterId: uuid('chapterId')
     //   /*.notNull()*/
     //   .references(() => contentCourseChapters.chapterId, {
@@ -956,16 +947,13 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(),
-    // partId: uuid('partId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(),
-    // chapterId: uuid('chapterId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseChapters.chapterId, {
-    //     onDelete: 'cascade',
-    //   }),
+    part: integer('part').notNull(), // To remove
+    chapter: integer('chapter').notNull(), // To remove
+    chapterId: uuid('chapter_id')
+      /*.notNull()*/
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
     language: varchar('language', { length: 10 }).notNull(),
     contributorId: varchar('contributor_id', { length: 20 })
       .notNull()

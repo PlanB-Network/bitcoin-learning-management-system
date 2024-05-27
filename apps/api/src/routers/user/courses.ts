@@ -176,6 +176,7 @@ const saveUserChapterProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
+      chapterId: z.string(),
       part: z.number(),
       chapter: z.number(),
       booked: z.boolean(),
@@ -186,6 +187,7 @@ const saveUserChapterProcedure = protectedProcedure
     await createSaveUserChapter(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      chapterId: input.chapterId,
       part: input.part,
       chapter: input.chapter,
       booked: input.booked,
