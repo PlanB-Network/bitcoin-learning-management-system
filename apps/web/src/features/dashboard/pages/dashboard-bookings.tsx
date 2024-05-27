@@ -13,7 +13,7 @@ import { BookingPart } from '../components/booking-part.tsx';
 import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardBookings = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -22,7 +22,9 @@ export const DashboardBookings = () => {
     navigate({ to: '/' });
   }
 
-  const { data: invoices } = trpc.user.billing.getInvoices.useQuery();
+  const { data: invoices } = trpc.user.billing.getInvoices.useQuery({
+    language: i18n.language ?? 'en',
+  });
   const { data: tickets } = trpc.user.billing.getTickets.useQuery();
 
   if (!tickets) return null;
