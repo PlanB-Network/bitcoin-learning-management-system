@@ -12,5 +12,6 @@
     "./**/*.js",
     "./**/*.mjs",
     "./**/*.cjs"
-  ]
+  ],
+  "exclude": ["**/node_modules", "**/dist", "**/build"]
 }

@@ -1,0 +1,14 @@
+{
+  "folders": [
+    { "path": "apps/api" },
+    { "path": "apps/web" },
+    { "path": "packages/content" },
+    { "path": "packages/database" },
+    { "path": "packages/github" },
+    { "path": "packages/redis" },
+    { "path": "packages/schemas" },
+    { "path": "packages/types" },
+    { "path": "packages/ui" },
+    { "path": "packages/user" },
+  ],
+}

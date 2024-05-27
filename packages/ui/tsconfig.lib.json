@@ -14,7 +14,10 @@
     "**/*.stories.ts",
     "**/*.stories.js",
     "**/*.stories.jsx",
-    "**/*.stories.tsx"
+    "**/*.stories.tsx",
+    "**/node_modules",
+    "**/dist",
+    "**/build"
   ],
   "compilerOptions": {
     "outDir": "dist",

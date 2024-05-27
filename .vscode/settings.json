@@ -29,7 +29,15 @@
   "files.exclude": {
     "**/tsconfig.*.tsbuildinfo": true
   },
+  "files.watcherExclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.turbo": true
+  },
   "search.exclude": {
-    "**/tsconfig.*.tsbuildinfo": true
+    "**/tsconfig.*.tsbuildinfo": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.turbo": true
   }
 }
