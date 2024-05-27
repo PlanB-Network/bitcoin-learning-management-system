@@ -500,7 +500,6 @@ export const createProcessChangedCourse =
                 RETURNING *
               `;
               /// TODO change to part_id (here and everywhere on ON CONFLICTS)
-
               await transaction`
                 INSERT INTO content.course_parts_localized ${transaction(
                   parts.map((part, index) => ({
@@ -518,7 +517,7 @@ export const createProcessChangedCourse =
                 )}
                 ON CONFLICT (course_id, language, part)
                 DO UPDATE SET 
-                part_id = EXCLUDED.part_id,
+                  part_id = EXCLUDED.part_id,
                   title = EXCLUDED.title,
                   last_sync = NOW()
               `;
@@ -536,6 +535,7 @@ export const createProcessChangedCourse =
                       }
                       return {
                         course_id: course.id,
+                        part_id: part.partId,
                         part: partIndex + 1,
                         chapter: chapterIndex + 1,
                         chapter_id: c.chapterId,
@@ -546,6 +546,7 @@ export const createProcessChangedCourse =
                 ON CONFLICT (course_id, part, chapter)
                 DO UPDATE SET 
                   chapter_id = EXCLUDED.chapter_id,
+                  part_id = EXCLUDED.part_id,
                   last_sync = NOW()
                 RETURNING *
               `;

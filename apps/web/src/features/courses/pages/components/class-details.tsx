@@ -61,7 +61,7 @@ export const ClassDetails = ({
   const cancelBooking = useCallback(async () => {
     await saveUserChapterRequest.mutateAsync({
       courseId: course.id,
-      chapterId: chapter.chapterId as string,
+      chapterId: chapter.chapterId,
       part: chapter.part.part,
       chapter: chapter.chapter,
       booked: false,

@@ -286,8 +286,8 @@ export const contentCourseParts = content.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(), // To remove
-    partId: uuid('part_id').unique() /*.notNull()*/,
+    part: integer('part').notNull(), // To rename part_index
+    partId: uuid('part_id').unique().notNull(),
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -305,7 +305,7 @@ export const contentCoursePartsLocalized = content.table(
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(), // To remove
     partId: uuid('part_id')
-      /*.notNull()*/
+      .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
 
@@ -341,11 +341,11 @@ export const contentCourseChapters = content.table(
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(), // To remove
-    chapter: integer('chapter').notNull(), // To remove
-    // partId: uuid('partId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapterId: uuid('chapter_id').unique() /*.notNull()*/,
+    chapter: integer('chapter').notNull(), // To rename chapter_index
+    partId: uuid('part_id')
+      /*.notNull()*/
+      .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
+    chapterId: uuid('chapter_id').unique().notNull(),
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -369,7 +369,7 @@ export const contentCourseChaptersLocalized = content.table(
     part: integer('part').notNull(), // To remove
     chapter: integer('chapter').notNull(), // To remove
     chapterId: uuid('chapter_id')
-      /*.notNull()*/
+      .notNull()
       .references(() => contentCourseChapters.chapterId, {
         onDelete: 'cascade',
       }),
@@ -950,7 +950,7 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
     part: integer('part').notNull(), // To remove
     chapter: integer('chapter').notNull(), // To remove
     chapterId: uuid('chapter_id')
-      /*.notNull()*/
+      .notNull()
       .references(() => contentCourseChapters.chapterId, {
         onDelete: 'cascade',
       }),
