@@ -455,20 +455,20 @@
     "walletsDescription": "Secure and use your bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
-    "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
-    "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
+    "answer1": "A node is simply a Bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption! There is no minimum size to start with.",
+    "answer2": "At Plan B, we aim to improve the educational Bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training, and more. Make your community count as a reference in the Bitcoin world.",
+    "answer3": "To be part of the network you must align on some core values. These are: \n - be Bitcoin only \n - value privacy \n - care for open source work.",
+    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different grades will be attributed. A node with a hackerspace, a gym, and some office space will be considered more citadel-like.",
+    "answer5": "We wish to offer a safe haven for Bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where Bitcoiners will be welcome to work, create, share, and discuss safely.",
     "apply": "Apply to become a Node",
-    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "Node Map",
-    "question1": "What's a node?",
-    "question2": "What do I gain?",
-    "question3": "What are the requirements?",
-    "question4": "What size is a node?",
-    "question5": "What's the secret plan?"
+    "description1": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "pageSubtitle": "Want to orange pill the world ? Join the PlanB Network.",
+    "pageTitle": "Community Network",
+    "question1": "What's a node ?",
+    "question2": "What do I gain ?",
+    "question3": "What are the requirements ?",
+    "question4": "What size is a node ?",
+    "question5": "What's the secret plan ?"
   },
   "notFound": {
     "here": "Here",
