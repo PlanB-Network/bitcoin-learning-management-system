@@ -35,12 +35,19 @@ export const CourseBookModal = ({
   const saveAndDisplaySuccess = useCallback(() => {
     saveUserChapterRequest.mutateAsync({
       courseId: course.id,
+      chapterId: chapter.chapterId as string,
       part: chapter.part.part,
       chapter: chapter.chapter,
       booked: true,
     });
     setIsCourseBooked(true);
-  }, [chapter.chapter, chapter.part.part, course.id, saveUserChapterRequest]);
+  }, [
+    chapter.chapter,
+    chapter.chapterId,
+    chapter.part.part,
+    course.id,
+    saveUserChapterRequest,
+  ]);
 
   const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
 
