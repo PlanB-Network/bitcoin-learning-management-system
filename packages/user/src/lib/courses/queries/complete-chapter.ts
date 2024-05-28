@@ -4,6 +4,7 @@ import type { CourseProgress } from '@sovereign-university/types';
 export const completeChapterQuery = (
   uid: string,
   courseId: string,
+  chapterId: string,
   part: number,
   chapter: number,
 ) => {
@@ -11,8 +12,8 @@ export const completeChapterQuery = (
     WITH 
     -- Insert into course_user_chapter and return the affected rows
     inserted AS (
-        INSERT INTO users.course_user_chapter (uid, course_id, part, chapter, completed_at)
-        VALUES (${uid}, ${courseId}, ${part}, ${chapter}, 'NOW()')
+        INSERT INTO users.course_user_chapter (uid, course_id, chapter_id, part, chapter, completed_at)
+        VALUES (${uid}, ${courseId}, ${chapterId}, ${part}, ${chapter}, 'NOW()')
         ON CONFLICT (uid, course_id, part, chapter) DO UPDATE
         SET
           completed_at = NOW()

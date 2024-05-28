@@ -492,11 +492,11 @@ export const usersCourseUserChapter = users.table(
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
     part: integer('part').notNull(), // To remove
     chapter: integer('chapter').notNull(), // To remove
-    // chapterId: uuid('chapterId')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseChapters.chapterId, {
-    //     onDelete: 'cascade',
-    //   }),
+    chapterId: uuid('chapter_id')
+      /*.notNull()*/
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
     completedAt: timestamp('completed_at', {
       withTimezone: true,
     })
