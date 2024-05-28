@@ -26,6 +26,7 @@ const completeChapterProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
+      chapterId: z.string(),
       part: z.number(),
       chapter: z.number(),
     }),
@@ -35,6 +36,7 @@ const completeChapterProcedure = protectedProcedure
     createCompleteChapter(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      chapterId: input.chapterId,
       part: input.part,
       chapter: input.chapter,
     }),
