@@ -498,8 +498,6 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
     completeChapterMutation.mutate({
       courseId: chapter.course.id,
       chapterId: chapter.chapterId,
-      part: Number(chapter.part.part),
-      chapter: Number(chapter.chapter),
     });
   };
 

@@ -28,7 +28,7 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
       }),
     ),
     nextChapter: courseChapterSchema
-      .pick({ part: true, chapter: true })
+      .pick({ part: true, chapter: true, chapterId: true, courseId: true })
       .optional(),
     lastCompletedChapter: courseUserChapterSchema
       .pick({

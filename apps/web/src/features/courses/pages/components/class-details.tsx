@@ -47,10 +47,7 @@ export const ClassDetails = ({
     });
 
   const userChapter = userChapters?.find(
-    (uc) =>
-      uc.chapter === chapter.chapter &&
-      uc.part === chapter.part.part &&
-      uc.booked === true,
+    (uc) => uc.chapterId === chapter.chapterId && uc.booked === true,
   );
 
   const { data: user } = trpc.user.getDetails.useQuery();
@@ -62,8 +59,6 @@ export const ClassDetails = ({
     await saveUserChapterRequest.mutateAsync({
       courseId: course.id,
       chapterId: chapter.chapterId,
-      part: chapter.part.part,
-      chapter: chapter.chapter,
       booked: false,
     });
     refetchUserChapter();
