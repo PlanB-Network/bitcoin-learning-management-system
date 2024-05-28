@@ -8,8 +8,7 @@ export const calculateCourseChapterSeats = () => {
     FROM users.course_user_chapter 
     WHERE course_id = c.course_id 
       AND booked=true 
-      AND part = c.part 
-      AND chapter = c.chapter
+      AND chapter_id = c.chapter_id 
     );
   `;
 };
