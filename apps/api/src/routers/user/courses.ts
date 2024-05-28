@@ -27,8 +27,6 @@ const completeChapterProcedure = protectedProcedure
     z.object({
       courseId: z.string(),
       chapterId: z.string(),
-      part: z.number(),
-      chapter: z.number(),
     }),
   )
   .output(courseProgressSchema.array())
@@ -37,8 +35,6 @@ const completeChapterProcedure = protectedProcedure
       uid: ctx.user.uid,
       courseId: input.courseId,
       chapterId: input.chapterId,
-      part: input.part,
-      chapter: input.chapter,
     }),
   );
 
@@ -161,6 +157,7 @@ const getUserChapterProcedure = protectedProcedure
       .pick({
         courseId: true,
         booked: true,
+        chapterId: true,
         chapter: true,
         completedAt: true,
         part: true,
@@ -179,8 +176,6 @@ const saveUserChapterProcedure = protectedProcedure
     z.object({
       courseId: z.string(),
       chapterId: z.string(),
-      part: z.number(),
-      chapter: z.number(),
       booked: z.boolean(),
     }),
   )
@@ -190,8 +185,6 @@ const saveUserChapterProcedure = protectedProcedure
       uid: ctx.user.uid,
       courseId: input.courseId,
       chapterId: input.chapterId,
-      part: input.part,
-      chapter: input.chapter,
       booked: input.booked,
     });
 

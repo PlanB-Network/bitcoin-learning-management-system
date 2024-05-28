@@ -490,10 +490,8 @@ export const usersCourseUserChapter = users.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(), // To remove
-    chapter: integer('chapter').notNull(), // To remove
     chapterId: uuid('chapter_id')
-      /*.notNull()*/
+      .notNull()
       .references(() => contentCourseChapters.chapterId, {
         onDelete: 'cascade',
       }),
@@ -506,7 +504,7 @@ export const usersCourseUserChapter = users.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.uid, table.courseId, table.part, table.chapter],
+      columns: [table.uid, table.courseId, table.chapterId],
     }),
     uidIdx: index().on(table.uid),
     courseIdIdx: index().on(table.courseId),
@@ -739,11 +737,11 @@ export const contentQuizQuestions = content.table(
 
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(), // To remove
-    // partId: uuid('partId')
+    // partId: uuid('part_id')
     //   /*.notNull()*/
     //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(), // To remove
-    // chapterId: uuid('chapterId')
+    // chapterId: uuid('chapter_id')
     //   .unique()
     //   /*.notNull()*/
     //   .references(() => contentCourseChapters.chapterId, {
@@ -823,11 +821,11 @@ export const usersQuizAttempts = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 }).notNull(),
     part: integer('part').notNull(), // To remove
-    // partId: uuid('partId')
+    // partId: uuid('part_id')
     //   /*.notNull()*/
     //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     chapter: integer('chapter').notNull(), // To remove
-    // chapterId: uuid('chapterId')
+    // chapterId: uuid('chapter_id')
     //   /*.notNull()*/
     //   .references(() => contentCourseChapters.chapterId, {
     //     onDelete: 'cascade',

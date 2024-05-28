@@ -5,16 +5,14 @@ export const completeChapterQuery = (
   uid: string,
   courseId: string,
   chapterId: string,
-  part: number,
-  chapter: number,
 ) => {
   return sql<CourseProgress[]>`
     WITH 
     -- Insert into course_user_chapter and return the affected rows
     inserted AS (
-        INSERT INTO users.course_user_chapter (uid, course_id, chapter_id, part, chapter, completed_at)
-        VALUES (${uid}, ${courseId}, ${chapterId}, ${part}, ${chapter}, 'NOW()')
-        ON CONFLICT (uid, course_id, part, chapter) DO UPDATE
+        INSERT INTO users.course_user_chapter (uid, course_id, chapter_id, completed_at)
+        VALUES (${uid}, ${courseId}, ${chapterId}, 'NOW()')
+        ON CONFLICT (uid, course_id, chapter_id) DO UPDATE
         SET
           completed_at = NOW()
         RETURNING *

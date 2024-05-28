@@ -1,11 +1,8 @@
-import _ from 'lodash';
-
 import type { Dependencies } from '../../../dependencies.js';
 import {
   getCompletedChaptersQuery,
   getNextChaptersQuery,
   getProgressQuery,
-  getQuizAttemptsQuery,
 } from '../queries/index.js';
 
 export const createGetProgress =
@@ -19,31 +16,26 @@ export const createGetProgress =
     );
     const nextChapters = await postgres.exec(getNextChaptersQuery(uid));
 
-    const quizAttempts = await postgres.exec(getQuizAttemptsQuery(uid));
+    // const quizAttempts = await postgres.exec(getQuizAttemptsQuery(uid));
 
     return progress.map((course) => {
       const chapters = completedChapters
         .filter((chapter) => chapter.courseId === course.courseId)
-        .map(({ part, chapter, completedAt }) => ({
-          chapter,
-          part,
-          quiz: _.pick(
-            quizAttempts.find(
-              (attempt) =>
-                attempt.courseId === course.courseId &&
-                attempt.part === part &&
-                attempt.chapter === chapter,
-            ),
-            ['questions_count', 'correct_answers_count', 'done_at'],
-          ),
+        .map(({ chapterId, completedAt }) => ({
+          chapterId,
+          // quiz: _.pick(
+          //   quizAttempts.find(
+          //     (attempt) =>
+          //       attempt.courseId === course.courseId &&
+          //       attempt.chapterId === chapterId,
+          //   ),
+          //   ['questions_count', 'correct_answers_count', 'done_at'],
+          // ),
           completedAt,
-        }))
-        .sort((a, b) => {
-          if (a.part !== b.part) {
-            return a.part - b.part;
-          }
-          return a.chapter - b.chapter;
-        });
+        }));
+      // .sort((a, b) => {
+      //   return a.chapterId - b.chapterId; // todo chapterIndex
+      // })
 
       const nextChapter = nextChapters.find(
         (chapter) => chapter.courseId === course.courseId,
