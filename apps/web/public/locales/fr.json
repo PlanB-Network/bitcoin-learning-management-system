@@ -94,23 +94,24 @@
         "chapter": {
             "count": "Chapitre n°{{count}}",
             "finishCourse": "Terminer le cours",
-            "next": "Terminé, passons au chapitre suivant !",
+            "next": "Terminé, passez au chapitre suivant",
             "thanksTip": "Vous voulez dire merci ? Soutenez.",
             "detail": {
                 "title": "Détails de la classe",
                 "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
                 "p1content": "Assurez-vous de réserver votre place",
-                "bookSeat": "",
-                "classIsFull": "",
-                "cancelBooking": "",
-                "ticketDownload": "",
+                "bookSeat": "Réserver votre place",
+                "classIsFull": "La classe est déjà complète",
+                "cancelBooking": "Annulez votre réservation",
+                "ticketDownload": "Téléchargez votre billet",
                 "p2heading": "Vous n'êtes plus disponible ?",
                 "p2content": "Pas de problème ! Le cours sera diffusée en direct sur cette page et disponible en redifusion plus tard."
             },
             "live": {
-                "title": "",
+                "title": "Vidéo en direct",
                 "stayTuned": ""
-            }
+            },
+            "nextLesson": "La prochaine leçon sera"
         },
         "details": {
             "accessible": "Accessible : à vie",
@@ -130,7 +131,7 @@
             },
             "numberOfChapters": "Nombre de chapitres : {{number}}",
             "objectives": "Objectifs",
-            "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
+            "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
             "price": "Prix : {{price}} sats",
             "professor": "Professeur",
             "startCourse": "Débuter le cours",
@@ -191,7 +192,7 @@
             "terms3": "and conditions for refund details",
             "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
             "total": "Total",
-            "back_course": "",
+            "back_course": "Retour au cours",
             "callout": "",
             "description": "",
             "book_description": "",
