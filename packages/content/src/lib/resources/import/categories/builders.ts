@@ -16,6 +16,10 @@ interface BuilderMain {
     github?: string;
     nostr?: string;
   };
+  address_line_1: string;
+  address_line_2: string;
+  address_line_3: string;
+  language?: string[];
   category: string;
 }
 
@@ -57,19 +61,23 @@ export const createProcessChangedBuilder = (
             const parsed = yamlToObject<BuilderMain>(main.data);
 
             await transaction`
-          INSERT INTO content.builders (resource_id, name, category, website_url, twitter_url, github_url, nostr)
+          INSERT INTO content.builders (resource_id, name, category, languages, website_url, twitter_url, github_url, nostr, address_line_1, address_line_2, address_line_3)
           VALUES (
-            ${id}, ${parsed.name}, ${parsed.category.toLowerCase()}, 
+            ${id}, ${parsed.name}, ${parsed.category.toLowerCase()}, ${parsed.language}, 
             ${parsed.links.website}, ${parsed.links.twitter},
-            ${parsed.links.github}, ${parsed.links.nostr}
+            ${parsed.links.github}, ${parsed.links.nostr}, ${parsed.address_line_1}, ${parsed.address_line_2}, ${parsed.address_line_3}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             name = EXCLUDED.name,
             category = EXCLUDED.category,
+            languages = EXCLUDED.languages,
             website_url = EXCLUDED.website_url,
             twitter_url = EXCLUDED.twitter_url,
             github_url = EXCLUDED.github_url,
-            nostr = EXCLUDED.nostr
+            nostr = EXCLUDED.nostr,
+            address_line_1 = EXCLUDED.address_line_1,
+            address_line_2 = EXCLUDED.address_line_2,
+            address_line_3 = EXCLUDED.address_line_3
         `;
           }
         } catch (error) {

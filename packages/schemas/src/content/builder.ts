@@ -25,10 +25,14 @@ export const joinedBuilderSchema = resourceSchema
     builderSchema.pick({
       name: true,
       category: true,
+      languages: true,
       websiteUrl: true,
       twitterUrl: true,
       githubUrl: true,
       nostr: true,
+      addressLine1: true,
+      addressLine2: true,
+      addressLine3: true,
     }),
   )
   .merge(
