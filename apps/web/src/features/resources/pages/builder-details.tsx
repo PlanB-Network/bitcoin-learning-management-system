@@ -1,15 +1,18 @@
 import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
-import { GiBirdMask } from 'react-icons/gi';
+import { BsGithub, BsTwitterX } from 'react-icons/bs';
+import { SlGlobe } from 'react-icons/sl';
+
+import { Button, cn } from '@sovereign-university/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 
-import { Card } from '../../../atoms/Card/index.tsx';
-import { Tag } from '../../../atoms/Tag/index.tsx';
+import Nostr from '../../../assets/icons/nostr.svg?react';
 import { useNavigateMisc } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
+import { BuilderEvents } from '../components/builder-events.tsx';
+import { BuilderCard } from '../components/Cards/builder-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const Builder = () => {
@@ -23,6 +26,27 @@ export const Builder = () => {
     id: Number(builderId),
     language: i18n.language ?? 'en',
   });
+
+  const { data: communities } = trpc.content.getBuilders.useQuery({
+    language: i18n.language ?? 'en',
+  });
+
+  const { data: events } = trpc.content.getEvents.useQuery();
+
+  const filteredCommunities = communities
+    ? communities
+        .filter(
+          (el) =>
+            el.category.toLowerCase() === 'communities' &&
+            el.name !== builder?.name,
+        )
+        .sort((a, b) => a.name.localeCompare(b.name))
+    : [];
+
+  const filteredEvents = events
+    ? events.filter((event) => event.builder === builder?.name)
+    : [];
+
   const navigateTo404Called = useRef(false);
 
   useEffect(() => {
@@ -41,97 +65,110 @@ export const Builder = () => {
       backToCategoryButton
     >
       {builder && (
-        <Card className="mx-2 md:mx-auto">
-          <div className="my-4 w-full grid-cols-1 grid-rows-6 px-4 sm:grid-cols-3 sm:px-8 md:grid">
-            <h3 className="col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase text-blue-900 sm:text-4xl md:mb-8">
-              {builder?.name}
-            </h3>
-            <div className="col-span-2 row-span-1 mb-3 mt-1 font-light md:mb-0 md:ml-12">
-              {builder?.tags?.map((tag) => (
-                <Link to={'/resources/builders'} key={tag}>
-                  <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>
-                    {tag}
-                  </Tag>
-                </Link>
-              ))}
-            </div>
-            <div className="row-span-5 mb-4 flex max-md:flex-wrap flex-row items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
-              <img
-                src={builder?.logo}
-                className="md:w-full max-sm:h-40 max-md:h-60 mx-auto rounded-md"
-                alt={t('imagesAlt.sthRepresentingCompany')}
-              />
-              <div className="mx-2 my-3 md:my-6 flex w-full justify-evenly">
-                {builder?.githubUrl && (
+        <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-24">
+          <section className="flex p-[30px]">
+            <img
+              src={builder?.logo}
+              className="rounded-3xl size-[276px] shadow-card-items-dark"
+              alt={t('imagesAlt.sthRepresentingCompany')}
+            />
+            <div className="flex flex-col gap-6 ml-10">
+              <h2 className="text-5xl font-medium leading-[116%] text-white">
+                {builder.name}
+              </h2>
+
+              {/* Links */}
+              <div className="flex gap-5 text-white">
+                {builder.twitterUrl && (
                   <a
-                    href={builder?.githubUrl}
+                    href={builder.twitterUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsTwitterX size={isScreenMd ? 32 : 24} />
+                  </a>
+                )}
+                {builder.nostr && (
+                  <a
+                    href={builder.nostr}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Nostr className={cn(isScreenMd ? 'size-8' : 'size-6')} />
+                  </a>
+                )}
+                {builder.githubUrl && (
+                  <a
+                    href={builder.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <BsGithub size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
-                {builder?.twitterUrl && (
+                {builder.websiteUrl && (
                   <a
-                    href={builder?.twitterUrl}
+                    href={builder.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsTwitter size={isScreenMd ? 32 : 24} />
-                  </a>
-                )}
-                {builder?.nostr && (
-                  <a
-                    href={builder?.nostr}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GiBirdMask size={isScreenMd ? 32 : 24} />
-                  </a>
-                )}
-                {builder?.websiteUrl && (
-                  <a
-                    href={builder?.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <BsLink size={isScreenMd ? 32 : 24} />
+                    <SlGlobe size={isScreenMd ? 32 : 24} />
                   </a>
                 )}
               </div>
+              <div className="flex flex-col desktop-h6 text-white">
+                <span>{builder.addressLine1}</span>
+                <span>{builder.addressLine2}</span>
+              </div>
+              <div className="flex gap-4 items-center flex-wrap">
+                {builder.tags?.map((tag) => (
+                  <Button
+                    variant="newSecondary"
+                    mode="colored"
+                    key={tag}
+                    className="cursor-default capitalize shadow-card-items-dark"
+                  >
+                    {tag}
+                  </Button>
+                ))}
+              </div>
             </div>
-
-            <div className="col-span-2 row-span-5 ml-0 flex flex-col space-y-4 text-sm md:ml-12">
-              <p
-                className="text-justify text-sm md:text-base"
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {builder?.description}
-              </p>
-
-              {/* <RelatedResources
-                tutoriel={[{ label: 'Seed signer Device' }]}
-                interview={[
-                  {
-                    label: 'CEO Interview',
-                    path: replaceDynamicParam(Routes.Interview, {
-                      interviewId: 'ja78172',
-                    }),
-                  },
-                ]}
-                course={[
-                  {
-                    label: 'BTC 204',
-                    path: replaceDynamicParam(Routes.Course, {
-                      courseId: 'btc-204',
-                    }),
-                  },
-                ]}
-              /> */}
-            </div>
-          </div>
-        </Card>
+          </section>
+          <p className="desktop-h8 whitespace-pre-line text-white p-5">
+            {builder.description}
+          </p>
+        </article>
       )}
+      {filteredEvents.length > 0 && <BuilderEvents events={filteredEvents} />}
+      <div className="flex flex-col items-center gap-14">
+        <div className="h-px bg-newGray-1 w-full" />
+        <div className="text-center">
+          <span className="text-darkOrange-5 desktop-h7">
+            {t('builders.networkStrength')}
+          </span>
+          <h3 className="text-white desktop-h3">
+            {t('builders.otherCommunities')}
+          </h3>
+        </div>
+        <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+          {filteredCommunities.map((community) => (
+            <Link
+              to={'/resources/builder/$builderId'}
+              params={{
+                builderId: community.id.toString(),
+              }}
+              key={community.id}
+            >
+              <BuilderCard
+                name={community.name}
+                logo={community.logo}
+                cardWidth="w-[50px] md:w-[90px]"
+              />
+            </Link>
+          ))}
+        </div>
+        <div className="h-px bg-newGray-1 w-full" />
+      </div>
     </ResourceLayout>
   );
 };

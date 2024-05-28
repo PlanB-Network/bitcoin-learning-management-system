@@ -80,8 +80,11 @@
     "topicsAddressed": "Topics addressed: "
   },
   "builders": {
+    "networkStrength": "The strength of a network lies in its members",
+    "otherCommunities": "Explore other Plan B Communities",
     "pageSubtitle": "This portal is open-source & open to contribution.",
-    "pageTitle": "Bitcoin Builders"
+    "pageTitle": "Bitcoin Builders",
+    "relatedWork": "Related work"
   },
   "conferences": {
     "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",

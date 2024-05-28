@@ -8,7 +8,7 @@ import { PageLayout } from '#src/components/PageLayout/index.js';
 import { BuilderCard } from '#src/features/resources/components/Cards/builder-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
-// import SonarCircle from '../../../assets/about/circle_sonar.svg';
+import SonarCircle from '../../../assets/about/circle_sonar.svg?react';
 import nodeMap from '../../../assets/about/node_map.webp';
 
 const QnAItem = ({
@@ -114,8 +114,8 @@ export const NodeNetwork = () => {
         </div>
         <img src={nodeMap} alt="Node map" className="my-20" />
         <QnA />
-        <div className="relative flex flex-col justify-center">
-          {/* <SonarCircle /> NEED TO FIX */}
+        <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
+          <SonarCircle className="absolute size-72 sm:size-fit" />
           <a
             href="https://framaforms.org/node-application-planb-network-1708081674"
             target="_blank"

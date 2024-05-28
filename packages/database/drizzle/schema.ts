@@ -201,6 +201,10 @@ export const contentBuilders = content.table('builders', {
     .references(() => contentResources.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   category: varchar('category', { length: 255 }).notNull(),
+  languages: varchar('languages', { length: 255 }).array(),
+  addressLine1: text('address_line_1'),
+  addressLine2: text('address_line_2'),
+  addressLine3: text('address_line_3'),
 
   // Links
   websiteUrl: text('website_url'),
