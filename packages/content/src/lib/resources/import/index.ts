@@ -6,6 +6,7 @@ import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
 import { getContentType, getRelativePath } from '../../utils.js';
 
+import { createProcessChangedBet } from './categories/bet.js';
 import { createProcessChangedBook } from './categories/books.js';
 import { createProcessChangedBuilder } from './categories/builders.js';
 import { createProcessChangedConference } from './categories/conferences.js';
@@ -94,6 +95,7 @@ export const createProcessChangedResource =
   (dependencies: Dependencies, errors: string[]) =>
   async (resource: ChangedResource) => {
     const mapHandlers = {
+      bet: createProcessChangedBet,
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
       conference: createProcessChangedConference,

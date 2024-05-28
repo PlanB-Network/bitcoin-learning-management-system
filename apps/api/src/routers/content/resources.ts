@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  createGetBets,
   createGetBook,
   createGetBooks,
   createGetBuilder,
@@ -11,6 +12,7 @@ import {
   createGetPodcasts,
 } from '@sovereign-university/content';
 import {
+  joinedBetSchema,
   joinedBookSchema,
   joinedBuilderSchema,
   joinedConferenceSchema,
@@ -33,6 +35,12 @@ const createGetResourceProcedure = () => {
 };
 
 export const resourcesRouter = createTRPCRouter({
+  // Bets
+  getBets: createGetResourcesProcedure()
+    .output(joinedBetSchema.merge(z.object({ logo: z.string() })).array())
+    .query(async ({ ctx, input }) =>
+      createGetBets(ctx.dependencies)(input?.language),
+    ),
   // Books
   getBooks: createGetResourcesProcedure()
     .output(

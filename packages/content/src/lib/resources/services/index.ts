@@ -1,3 +1,4 @@
+export { createGetBets } from './get-bets.js';
 export { createGetBook } from './get-book.js';
 export { createGetBooks } from './get-books.js';
 export { createGetBuilder } from './get-builder.js';

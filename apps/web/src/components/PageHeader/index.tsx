@@ -9,17 +9,24 @@ export const PageHeader = ({
   description,
   link,
   hasGithubDescription = false,
+  hideOnMobile,
 }: {
   title: string;
   subtitle?: string;
   description: string;
   link?: string;
   hasGithubDescription?: boolean;
+  hideOnMobile?: boolean;
 }) => {
   const isSubsectionTitle = subtitle ? false : true;
 
   return (
-    <div className="flex flex-col max-lg:px-4 mt-5 md:mt-10">
+    <div
+      className={cn(
+        'flex flex-col max-lg:px-4 mt-5 md:mt-10',
+        hideOnMobile && 'max-md:hidden',
+      )}
+    >
       {subtitle && (
         <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
           {subtitle}
