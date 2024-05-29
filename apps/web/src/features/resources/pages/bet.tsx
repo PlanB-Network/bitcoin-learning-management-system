@@ -52,7 +52,7 @@ const SectionGrid = ({
   const isScreenMd = useGreater('md');
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {elements.map((item, index) => {
         const currentLanguageViewUrl =
           item.viewurls.find((el) => el.language === language)?.viewUrl ||
@@ -73,10 +73,9 @@ const SectionGrid = ({
             secondaryLink={item.viewurls[0].viewUrl}
             secondaryButtonText={t('words.edit')}
             secondaryButtonIcon={<FiEdit size={isScreenMd ? 24 : 16} />}
-            secondaryButtonVariant="ghost"
+            secondaryButtonVariant="newSecondary"
             secondaryButtonMode="colored"
             tertiaryLink={item.downloadUrl}
-            tertiaryButtonText={t('words.download')}
             tertiaryButtonIcon={<FiDownload size={isScreenMd ? 24 : 16} />}
             tertiaryButtonVariant="ghost"
             tertiaryButtonMode="colored"
@@ -108,7 +107,7 @@ export const BET = () => {
       hidePageHeaderMobile
     >
       <div className="flex flex-col text-newGray-5 mt-8 max-md:mx-2">
-        <p className="max-w-4xl mx-auto text-center mobile-subtitle2 md:desktop-h7 font-medium max-md:mb-6">
+        <p className="max-w-4xl mx-auto text-center mobile-subtitle2 md:desktop-h7 max-md:mb-6">
           {t('bet.pageDescription')}
         </p>
 

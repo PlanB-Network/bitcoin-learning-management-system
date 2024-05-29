@@ -66,27 +66,41 @@ export const Builder = () => {
       backToCategoryButton
     >
       {builder && (
-        <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-24">
-          <section className="flex p-[30px]">
-            <img
-              src={builder?.logo}
-              className="rounded-3xl size-[276px] shadow-card-items-dark"
-              alt={t('imagesAlt.sthRepresentingCompany')}
-            />
-            <div className="flex flex-col gap-6 ml-10">
-              <h2 className="text-5xl font-medium leading-[116%] text-white">
+        <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
+          <section className="flex p-2 md:p-[30px]">
+            <div className="flex flex-col gap-3">
+              <img
+                src={builder?.logo}
+                className="rounded-2xl md:rounded-3xl size-[84px] md:size-[276px] shadow-card-items-dark"
+                alt={t('imagesAlt.sthRepresentingCompany')}
+              />
+              <div className="flex justify-center gap-2.5 md:hidden">
+                {builder.languages &&
+                  (builder.languages as string[])
+                    .slice(0, 2)
+                    .map((language) => (
+                      <Flag
+                        code={language}
+                        key={language}
+                        className="!w-[26px] !h-[18px] shadow-card-items-dark"
+                      />
+                    ))}
+              </div>
+            </div>
+            <div className="flex flex-col md:gap-6 ml-4 md:ml-10">
+              <h2 className="text-2xl md:text-5xl md:font-medium leading-none md:leading-[116%] text-white">
                 {builder.name}
               </h2>
 
               {/* Links */}
-              <div className="flex gap-5 text-white">
+              <div className="flex gap-4 md:gap-5 text-white max-md:mt-2">
                 {builder.twitterUrl && (
                   <a
                     href={builder.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsTwitterX size={isScreenMd ? 32 : 24} />
+                    <BsTwitterX size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
                 {builder.nostr && (
@@ -95,7 +109,7 @@ export const Builder = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Nostr className={cn(isScreenMd ? 'size-8' : 'size-6')} />
+                    <Nostr className={cn(isScreenMd ? 'size-8' : 'size-4')} />
                   </a>
                 )}
                 {builder.githubUrl && (
@@ -104,7 +118,7 @@ export const Builder = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsGithub size={isScreenMd ? 32 : 24} />
+                    <BsGithub size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
                 {builder.websiteUrl && (
@@ -113,28 +127,33 @@ export const Builder = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <SlGlobe size={isScreenMd ? 32 : 24} />
+                    <SlGlobe size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
               </div>
-              <div className="flex flex-col desktop-h6 text-white">
-                <span>{builder.addressLine1}</span>
-                <span>{builder.addressLine2}</span>
-              </div>
-              <div className="flex gap-4 items-center flex-wrap">
+              {(builder.addressLine1 ||
+                builder.addressLine2 ||
+                builder.addressLine3) && (
+                <div className="flex flex-col mobile-caption1 max-md:leading-tight md:desktop-h6 text-white max-md:mt-2">
+                  <span>{builder.addressLine1}</span>
+                  <span>{builder.addressLine2}</span>
+                </div>
+              )}
+              <div className="flex gap-2.5 md:gap-4 items-center flex-wrap max-md:mt-1.5">
                 {builder.tags?.map((tag) => (
                   <Button
                     variant="newSecondary"
                     mode="colored"
                     key={tag}
                     className="cursor-default capitalize shadow-card-items-dark"
+                    size={isScreenMd ? 'm' : 'xs'}
                   >
                     {tag}
                   </Button>
                 ))}
               </div>
             </div>
-            <div className="ml-auto flex flex-col gap-6">
+            <div className="ml-auto flex flex-col gap-6 max-md:hidden">
               {builder.languages &&
                 (builder.languages as string[])
                   .slice(0, 3)
@@ -142,47 +161,48 @@ export const Builder = () => {
                     <Flag
                       code={language}
                       key={language}
-                      hasDropShadow
-                      className="!w-20 !h-[56px]"
+                      className="!w-20 !h-[56px] shadow-card-items-dark"
                     />
                   ))}
             </div>
           </section>
-          <p className="desktop-h8 whitespace-pre-line text-white p-5">
+          <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5">
             {builder.description}
           </p>
         </article>
       )}
       {filteredEvents.length > 0 && <BuilderEvents events={filteredEvents} />}
-      <div className="flex flex-col items-center gap-14">
-        <div className="h-px bg-newGray-1 w-full" />
-        <div className="text-center">
-          <span className="text-darkOrange-5 desktop-h7">
-            {t('builders.networkStrength')}
-          </span>
-          <h3 className="text-white desktop-h3">
-            {t('builders.otherCommunities')}
-          </h3>
+      {builder?.category === 'communities' && (
+        <div className="flex flex-col items-center gap-4 md:gap-14">
+          <div className="max-md:hidden h-px bg-newGray-1 w-full" />
+          <div className="text-center">
+            <span className="text-darkOrange-5 max-md:text-xs max-md:font-medium max-md:leading-normal md:desktop-h7">
+              {t('builders.networkStrength')}
+            </span>
+            <h3 className="text-white mobile-h3 md:desktop-h3">
+              {t('builders.otherCommunities')}
+            </h3>
+          </div>
+          <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+            {filteredCommunities.map((community) => (
+              <Link
+                to={'/resources/builder/$builderId'}
+                params={{
+                  builderId: community.id.toString(),
+                }}
+                key={community.id}
+              >
+                <BuilderCard
+                  name={community.name}
+                  logo={community.logo}
+                  cardWidth="w-[50px] md:w-[90px]"
+                />
+              </Link>
+            ))}
+          </div>
+          <div className="max-md:hidden h-px bg-newGray-1 w-full" />
         </div>
-        <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
-          {filteredCommunities.map((community) => (
-            <Link
-              to={'/resources/builder/$builderId'}
-              params={{
-                builderId: community.id.toString(),
-              }}
-              key={community.id}
-            >
-              <BuilderCard
-                name={community.name}
-                logo={community.logo}
-                cardWidth="w-[50px] md:w-[90px]"
-              />
-            </Link>
-          ))}
-        </div>
-        <div className="h-px bg-newGray-1 w-full" />
-      </div>
+      )}
     </ResourceLayout>
   );
 };

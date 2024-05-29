@@ -24,7 +24,7 @@ const QnAItem = ({
         <span className="desktop-25px-medium uppercase text-darkOrange-5">
           {question}
         </span>
-        <span className="group-open:rotate-45 transition-transform">
+        <span className="group-open:rotate-45 transition-transform opacity-70">
           <LuPlus size={24} />
         </span>
       </summary>
@@ -62,7 +62,7 @@ const QnA = () => {
   ];
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col z-10">
       {questions.map((item) => (
         <QnAItem
           question={item.question}
@@ -95,7 +95,7 @@ export const NodeNetwork = () => {
       footerVariant="dark"
     >
       <div className="flex flex-col items-center text-white">
-        <div className="max-w-[1017px] mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+        <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
           {filteredCommunities.map((community) => (
             <Link
               to={'/resources/builder/$builderId'}
@@ -107,22 +107,22 @@ export const NodeNetwork = () => {
               <BuilderCard
                 name={community.name}
                 logo={community.logo}
-                cardWidth="w-[50px] md:w-[90px]"
+                cardWidth="w-[90px]"
               />
             </Link>
           ))}
         </div>
-        <img src={nodeMap} alt="Node map" className="my-20" />
+        <img src={nodeMap} alt="Node map" className="max-md:hidden my-20" />
         <QnA />
         <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
-          <SonarCircle className="absolute size-72 sm:size-fit" />
+          <SonarCircle className="max-md:hidden absolute size-72 sm:size-fit z-0" />
           <a
             href="https://framaforms.org/node-application-planb-network-1708081674"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10"
+            className="mt-10 z-10"
           >
-            <Button variant="newSecondary" size="l">
+            <Button variant="newSecondary" onHoverArrow size="l">
               {t('nodeNetwork.apply')}
             </Button>
           </a>

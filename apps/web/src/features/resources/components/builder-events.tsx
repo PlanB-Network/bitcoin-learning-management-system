@@ -91,7 +91,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
 
   // TODO refactor prop drilling
   return (
-    <div className="text-white mb-32">
+    <div className="text-white mb-7 md:mb-32">
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.accessType &&
@@ -138,7 +138,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
         )}
       {sortedEvents && (
         <div className="flex flex-col">
-          <h3 className="desktop-h4 text-center mb-9">
+          <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
             {t('builders.relatedWork')}
           </h3>
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
