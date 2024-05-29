@@ -232,6 +232,13 @@
       "when": 1716887173846,
       "tag": "0032_lush_boomer",
       "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "5",
+      "when": 1717000355654,
+      "tag": "0033_tired_daimon_hellstrom",
+      "breakpoints": true
     }
   ]
 }
