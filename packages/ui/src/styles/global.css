@@ -101,7 +101,7 @@
   }
 
   .desktop-h7 {
-    @apply text-xl font-semibold leading-[160%] tracking-015px;
+    @apply text-xl font-medium leading-[160%] tracking-015px;
   }
 
   .desktop-h8 {
