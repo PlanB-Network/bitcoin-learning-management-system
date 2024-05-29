@@ -22,7 +22,7 @@ const Flag: React.FC<Props> = ({
   code = 'US',
   size = 'l',
   gradient = '',
-  hasBorder = true,
+  hasBorder = false,
   hasDropShadow = false,
   hasBorderRadius = true,
   className,

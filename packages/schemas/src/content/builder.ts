@@ -8,7 +8,9 @@ import {
 
 import { resourceSchema } from './resource.js';
 
-export const builderSchema = createSelectSchema(contentBuilders);
+export const builderSchema = createSelectSchema(contentBuilders, {
+  languages: z.array(z.string()),
+});
 export const builderLocalizedSchema = createSelectSchema(
   contentBuildersLocalized,
 );
