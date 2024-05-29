@@ -14,7 +14,7 @@ export const createGetBets =
         process.env['CDN_URL'] || 'http://localhost:8080',
         bet.lastCommit,
         bet.path,
-        'logo.png',
+        'logo.webp',
       ),
     }));
   };
