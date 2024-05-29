@@ -18,7 +18,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<UserDetails | null>(null);
 
   useEffect(() => {
-    console.log('UserProvider fetching user details...');
     trpcClient.user.getDetails
       .query()
       .then((data) => data ?? null)

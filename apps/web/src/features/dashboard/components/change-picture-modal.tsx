@@ -31,8 +31,6 @@ export const ChangePictureModal = (props: Props) => {
     }
   };
 
-  console.log('props', props);
-
   useMemo(() => {
     if (props.file) {
       const reader = new FileReader();
