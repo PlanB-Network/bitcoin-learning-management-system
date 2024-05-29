@@ -8,3 +8,4 @@ export type * from './account.js';
 export type * from './billing.js';
 export type * from './course.js';
 export type * from './event.js';
+export type * from './file.js';

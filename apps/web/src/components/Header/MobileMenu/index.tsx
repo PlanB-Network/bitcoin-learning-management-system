@@ -1,10 +1,12 @@
-import { Link } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { Link, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars } from 'react-icons/fa';
 
 import { cn } from '@sovereign-university/ui';
 
+import { UserContext } from '#src/providers/user.js';
+import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
@@ -32,7 +34,7 @@ interface LoggedMenuProps {
 
 const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const { t } = useTranslation();
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(UserContext);
   const isLoggedIn = user?.uid !== undefined;
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
@@ -139,6 +141,11 @@ export const MobileMenu = ({
   const { data: session, isFetched } = trpc.user.getSession.useQuery();
   const isLoggedIn = session?.user?.uid !== undefined;
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const { user } = useContext(UserContext);
+  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+
   useEffect(() => {
     if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
     return () => {
@@ -179,9 +186,15 @@ export const MobileMenu = ({
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">
                 <img
-                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
+                  src={
+                    pictureUrl
+                      ? pictureUrl
+                      : variant === 'light'
+                        ? SignInIconLight
+                        : SignInIconDark
+                  }
                   alt={t('auth.signIn')}
-                  className="size-10"
+                  className="size-10 rounded-full"
                 />
               </button>
             </Link>
@@ -203,13 +216,8 @@ export const MobileMenu = ({
       </div>
 
       <nav
-<<<<<<< HEAD
-        className={compose(
-          'flex fixed top-0 left-0 flex-col items-center px-2 pt-28 pb-5 w-screen h-full bg-black duration-300',
-=======
         className={cn(
           'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-svh pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
->>>>>>> fix: fix various ui/ux issues
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >

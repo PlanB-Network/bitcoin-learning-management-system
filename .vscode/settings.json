@@ -31,5 +31,6 @@
   },
   "search.exclude": {
     "**/tsconfig.*.tsbuildinfo": true
-  }
+  },
+  "cSpell.words": ["bytea", "zoomable"]
 }

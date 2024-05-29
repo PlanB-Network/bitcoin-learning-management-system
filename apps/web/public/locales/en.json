@@ -13,11 +13,11 @@
     "coreTeamAsioRole": "Educational coordinator",
     "coreTeamAjelexRole": "Node coordinator",
     "corporateTitle": "Corporate behind",
-    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "corporateContent": "PlanB Network is the joined project of three entities focus on Bitcoin development. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entities have decided to contribute and join forces. Many thanks to them",
     "coportateContact": "Contact information:",
     "storyTitle": "Our story",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
-    "description": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "description": "Plan B Network helps communities worldwide to get organized in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
     "subtitle": "Want to orange pill the world ? Join the PlanB Network.",
     "title": "About the Plan B Network",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n"
@@ -178,8 +178,8 @@
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
       "moreToCome": ".... and more to come !",
-      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worlwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
-      "pageSubtitle": "Mass adoption through centralised open-source education",
+      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worldwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
+      "pageSubtitle": "Mass adoption through centralized open-source education",
       "pageTitle": "Welcome to the Plan B Academy",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
@@ -271,6 +271,10 @@
     },
     "profile": {
       "change": "Change",
+      "cancel": "Cancel",
+      "save": "Save",
+      "crop": "Crop",
+      "preview": "Preview",
       "displayName": "Display Name",
       "documents": "My documents",
       "email": "Email",
@@ -455,7 +459,7 @@
     "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
     "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
     "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
+    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
     "apply": "Apply to become a Node",
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
@@ -474,7 +478,7 @@
   "payment": {
     "proceedToPayment": "Proceed to payment",
     "terms": "See our <0>general terms</0> and conditions for refund details",
-    "feeDistribution": "Fee distribution: Author 99 % - Plateform 1 %",
+    "feeDistribution": "Fee distribution: Author 99 % - Platform 1 %",
     "total": "Total"
   },
   "podcast": {
@@ -513,12 +517,12 @@
     },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome into the infinite rabbit hole of Bitcoin ! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
     "newsletters": {
       "title": "Newsletters"
     },
     "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
-    "pageSubtitle": "Centralise knowledge to better distribute it",
+    "pageSubtitle": "Centralize knowledge to better distribute it",
     "pageTitle": "Welcome to the Resource Portal",
     "github": "All this data is managed via one open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
     "podcasts": {
@@ -527,7 +531,8 @@
     "publicGrade": "Public grade: {{grade}}/5"
   },
   "settings": {
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "changeProfilePicture": "Change profile picture"
   },
   "tutorials": {
     "details": {
@@ -553,7 +558,7 @@
       "didYouKnow": "Did you know?"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome into the infinite rabbit hole of Bitcoin ! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
     "merchant": {
       "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions for businesses to accept Bitcoin",
@@ -582,7 +587,7 @@
     "others": {
       "title": "Others",
       "shortDescription": "Explore diverse tutorials on closely related topics of bitcoin",
-      "description": "Dive into a large collection of tutorials that are closely related to Bitcoin ethos. From DIY to opensource tutorial, discover new areas of knowledge to become even more sovereign.",
+      "description": "Dive into a large collection of tutorials that are closely related to Bitcoin ethos. From DIY to open-source tutorial, discover new areas of knowledge to become even more sovereign.",
       "DIY": {
         "description": "Discover our DIY tutorials to learn how to create things related to Bitcoin, computing, and individual sovereignty by yourself!"
       },

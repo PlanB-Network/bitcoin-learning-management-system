@@ -1,22 +1,24 @@
 import { useLocation } from '@react-hooks-library/core';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
-import { BsPersonFill } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
 
+import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
+import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { UserContext } from '#src/providers/user.js';
+import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
-
-import pill from '../../../assets/icons/orange_pill_color_gradient.svg';
-import { trpc } from '../../../utils/index.ts';
 
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDesktop = () => {
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(UserContext);
   const [pathname, setPathname] = useState('');
+
+  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
 
   const navigate = useNavigate();
 
@@ -49,7 +51,11 @@ export const MenuDesktop = () => {
         width={48}
       />
       <div className="bg-gradient-to-b from-darkOrange-5 to-[#99370000] flex items-center gap-3 py-8 px-5">
-        <BsPersonFill className="text-darkOrange-5 size-[60px] overflow-hidden rounded-xl bg-white shrink-0" />
+        <img
+          src={pictureUrl ?? SignInIconLight}
+          alt="avatar"
+          className="rounded-full size-[60px]"
+        />
         <p className="font-medium leading-relaxed z-10 max-w-[92px] min-[1750px]:max-w-[148px] break-words">
           {user?.username}
         </p>
