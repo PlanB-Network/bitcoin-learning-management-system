@@ -10,6 +10,7 @@ export const userDetailsSchema = userAccountSchema.pick({
   uid: true,
   username: true,
   displayName: true,
+  picture: true,
   email: true,
   contributorId: true,
 });

@@ -1,8 +1,11 @@
 import { Link } from '@tanstack/react-router';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
+import { UserContext } from '#src/providers/user.js';
+import { getPictureUrl } from '#src/services/user.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
@@ -25,6 +28,9 @@ export const MetaElements = ({
   const isMobile = useSmaller('lg');
   const isScreenLg = useGreater('lg');
 
+  const { user } = useContext(UserContext);
+  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
       <LanguageSelector
@@ -35,12 +41,18 @@ export const MetaElements = ({
       {isFetched && (
         <>
           {isLoggedIn && !isMobile && (
-            <Link to="/dashboard">
+            <Link className="flex" to="/dashboard">
               <button className="cursor-pointer text-white">
                 <img
-                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
+                  src={
+                    pictureUrl
+                      ? pictureUrl
+                      : variant === 'light'
+                        ? SignInIconLight
+                        : SignInIconDark
+                  }
                   alt={t('auth.signIn')}
-                  className="size-12"
+                  className="size-12 rounded-full"
                 />
               </button>
             </Link>

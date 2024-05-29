@@ -1,5 +1,6 @@
 import {
   boolean,
+  customType,
   doublePrecision,
   foreignKey,
   index,
@@ -24,6 +25,7 @@ export const usersAccounts = users.table('accounts', {
   uid: uuid('uid').defaultRandom().primaryKey().notNull(),
   username: varchar('username', { length: 255 }).unique().notNull(),
   displayName: varchar('display_name', { length: 255 }).unique(),
+  picture: uuid('picture'),
   email: varchar('email', { length: 255 }).unique(),
   passwordHash: varchar('password_hash', { length: 255 }),
   contributorId: varchar('contributor_id', { length: 20 }).unique().notNull(),
@@ -1055,4 +1057,40 @@ export const couponCode = content.table('coupon_code', {
   timeUsed: timestamp('time_used', {
     withTimezone: true,
   }),
+});
+
+/**
+ * Custom drizzle type for bytea columns.
+ */
+const bytea = customType<{ data: Buffer; notNull: false; default: false }>({
+  dataType() {
+    return 'bytea';
+  },
+});
+
+export const usersFiles = users.table('files', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  // File owner
+  uid: uuid('uid')
+    .notNull()
+    .references(() => usersAccounts.uid, {
+      onDelete: 'cascade',
+    }),
+  // File raw data
+  data: bytea('data'),
+  // S3
+  s3: boolean('s3').default(false).notNull(),
+  s3Key: varchar('s3_key', { length: 255 }),
+  // File metadata
+  checksum: varchar('checksum', { length: 64 }).notNull(),
+  filename: varchar('filename', { length: 255 }).notNull(),
+  mimetype: varchar('mimetype', { length: 255 }).notNull(),
+  filesize: integer('filesize').notNull(),
+  // Timestamps
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .defaultNow()
+    .notNull(),
 });
