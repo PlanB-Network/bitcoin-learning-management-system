@@ -135,8 +135,8 @@ export const Builder = () => {
                 builder.addressLine2 ||
                 builder.addressLine3) && (
                 <div className="flex flex-col mobile-caption1 max-md:leading-tight md:desktop-h6 text-white max-md:mt-2">
-                  <span>{builder.addressLine1}</span>
                   <span>{builder.addressLine2}</span>
+                  <span>{builder.addressLine1}</span>
                 </div>
               )}
               <div className="flex gap-2.5 md:gap-4 items-center flex-wrap max-md:mt-1.5">
@@ -161,7 +161,7 @@ export const Builder = () => {
                     <Flag
                       code={language}
                       key={language}
-                      className="!w-20 !h-[56px] shadow-card-items-dark"
+                      className="!w-[70px] !h-[49px] shadow-card-items-dark"
                     />
                   ))}
             </div>

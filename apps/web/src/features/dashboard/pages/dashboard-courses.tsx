@@ -34,7 +34,7 @@ export const DashboardCourses = () => {
     <DashboardLayout>
       <div className="flex flex-col gap-8">
         <div className="text-2xl">{t('dashboard.courses')}</div>
-        <Tabs defaultValue="inprogress" className="max-w-[800px]">
+        <Tabs defaultValue="inprogress" className="max-w-6xl">
           <TabsList>
             <TabsTrigger
               value="inprogress"
@@ -53,7 +53,7 @@ export const DashboardCourses = () => {
             <CoursesProgressList courses={inProgressCourses} />
           </TabsContent>
           <TabsContent value="completed">
-            <CoursesProgressList courses={completedCourses} />
+            <CoursesProgressList courses={completedCourses} completed />
           </TabsContent>
         </Tabs>
       </div>
