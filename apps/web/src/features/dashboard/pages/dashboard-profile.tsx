@@ -1,7 +1,13 @@
 import { useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
+import type { ChangeEvent } from 'react';
+import { useContext, useMemo, useState } from 'react';
 
 import { Button } from '@sovereign-university/ui';
+
+import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { UserContext } from '#src/providers/user.js';
+import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
 import {
   Tabs,
@@ -12,6 +18,7 @@ import {
 import { useDisclosure } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
 import { ChangePasswordModal } from '../components/change-password-modal.tsx';
+import { ChangePictureModal } from '../components/change-picture-modal.tsx';
 import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardProfile = () => {
@@ -22,13 +29,32 @@ export const DashboardProfile = () => {
     navigate({ to: '/' });
   }
 
+  const { user, setUser } = useContext(UserContext);
+  const [file, setFile] = useState<File | null>(null);
+  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+  const profilePictureDisclosure = useDisclosure();
+
+  // Called when the user selects a profile picture to upload
+  const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    setFile(target.files![0]);
+    profilePictureDisclosure.open();
+    target.value = '';
+  };
+
+  // Called when the user has cropped his profile picture
+  const onPictureChange = (file: File) => {
+    setProfilePicture(file)
+      .then(setUser)
+      .finally(profilePictureDisclosure.close)
+      .catch((error) => console.error('Error:', error));
+  };
+
   const {
     open: openChangePasswordModal,
     isOpen: isChangePasswordModalOpen,
     close: onClose,
   } = useDisclosure();
-
-  const { data: user } = trpc.user.getDetails.useQuery();
 
   return (
     <DashboardLayout>
@@ -59,6 +85,32 @@ export const DashboardProfile = () => {
           </TabsList>
           <TabsContent value="info">
             <div className="flex w-full flex-col">
+              <div className="mt-6 flex gap-8 items-end">
+                <img
+                  src={pictureUrl ?? SignInIconLight}
+                  alt="Profile"
+                  className="rounded-full size-32"
+                />
+
+                <div>
+                  <Button variant="newPrimary" size="m" className="p-0">
+                    <label
+                      htmlFor="profilePictureFile"
+                      className="px-2.5 py-1.5 cursor-pointer"
+                    >
+                      {t('settings.changeProfilePicture')}
+                    </label>
+                  </Button>
+                  <input
+                    className="hidden"
+                    type="file"
+                    name="file"
+                    id="profilePictureFile"
+                    accept="image/*"
+                    onChange={onFileChange}
+                  />
+                </div>
+              </div>
               <div className="mt-6 flex flex-col">
                 <label htmlFor="usernameId">
                   {t('dashboard.profile.username')}
@@ -71,7 +123,6 @@ export const DashboardProfile = () => {
                   className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
                 />
               </div>
-
               <div className="mt-6 flex flex-col">
                 <label htmlFor="displayName">
                   {t('dashboard.profile.displayName')}
@@ -116,6 +167,13 @@ export const DashboardProfile = () => {
         <ChangePasswordModal
           isOpen={isChangePasswordModalOpen}
           onClose={onClose}
+        />
+
+        <ChangePictureModal
+          file={file}
+          onChange={onPictureChange}
+          onClose={profilePictureDisclosure.close}
+          isOpen={profilePictureDisclosure.isOpen}
         />
       </div>
     </DashboardLayout>

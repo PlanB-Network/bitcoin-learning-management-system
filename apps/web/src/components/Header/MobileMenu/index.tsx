@@ -1,5 +1,5 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
@@ -8,6 +8,8 @@ import { MdKeyboardArrowUp } from 'react-icons/md';
 
 import { cn } from '@sovereign-university/ui';
 
+import { UserContext } from '#src/providers/user.js';
+import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
@@ -34,7 +36,7 @@ interface LoggedMenuProps {
 
 const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const { t } = useTranslation();
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(UserContext);
   const isLoggedIn = user?.uid !== undefined;
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
@@ -142,6 +144,9 @@ export const MobileMenu = ({
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
+  const { user } = useContext(UserContext);
+  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
 
@@ -198,9 +203,15 @@ export const MobileMenu = ({
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">
                 <img
-                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
+                  src={
+                    pictureUrl
+                      ? pictureUrl
+                      : variant === 'light'
+                        ? SignInIconLight
+                        : SignInIconDark
+                  }
                   alt={t('auth.signIn')}
-                  className="size-10"
+                  className="size-10 rounded-full"
                 />
               </button>
             </Link>

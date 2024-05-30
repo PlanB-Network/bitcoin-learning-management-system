@@ -228,9 +228,16 @@
       "details": "",
       "inprogress": ""
     },
-    "account": "",
-    "courses": "",
-    "logout": ""
+    "account": "Compte",
+    "courses": "Cours",
+    "logout": "Déconnexion",
+    "profile": {
+      "change": "Changer",
+      "cancel": "Annuler",
+      "save": "Sauvegarder",
+      "crop": "Rogner",
+      "preview": "Aperçu"
+    }
   },
   "events": {
     "introduction": {
@@ -477,7 +484,8 @@
     "github": ""
   },
   "settings": {
-    "changePassword": "Changer le mot de passe"
+    "changePassword": "Changer le mot de passe",
+    "changeProfilePicture": "Changer la photo"
   },
   "tutorials": {
     "details": {

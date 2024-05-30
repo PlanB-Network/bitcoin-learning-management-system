@@ -115,6 +115,9 @@ importers:
       express-session:
         specifier: ^1.18.0
         version: 1.18.0
+      formidable:
+        specifier: ^3.5.1
+        version: 3.5.1
       secp256k1:
         specifier: ^5.0.0
         version: 5.0.0
@@ -140,6 +143,9 @@ importers:
       '@types/express-session':
         specifier: ^1.18.0
         version: 1.18.0
+      '@types/formidable':
+        specifier: ^3.4.5
+        version: 3.4.5
       '@types/qs':
         specifier: 6.9.14
         version: 6.9.14
@@ -188,9 +194,9 @@ importers:
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
-      crypto:
-        specifier: ^1.0.1
-        version: 1.0.1
+      cropperjs:
+        specifier: ^1.6.2
+        version: 1.6.2
       d3:
         specifier: ^7.9.0
         version: 7.9.0
@@ -227,6 +233,9 @@ importers:
       react:
         specifier: 18.3.1
         version: 18.3.1
+      react-cropper:
+        specifier: ^2.3.3
+        version: 2.3.3(react@18.3.1)
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
@@ -3122,6 +3131,9 @@ packages:
   '@types/find-cache-dir@3.2.1':
     resolution: {integrity: sha512-frsJrz2t/CeGifcu/6uRo4b+SzAwT4NYCVPu1GN8IB9XTzrpPkGuV0tmh9mN+/L0PklAlsC3u5Fxt0ju00LXIw==}
 
+  '@types/formidable@3.4.5':
+    resolution: {integrity: sha512-s7YPsNVfnsng5L8sKnG/Gbb2tiwwJTY1conOkJzTMRvJAlLFW1nEua+ADsJQu8N1c0oTHx9+d5nqg10WuT9gHQ==}
+
   '@types/geojson@7946.0.14':
     resolution: {integrity: sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==}
 
@@ -3137,8 +3149,8 @@ packages:
   '@types/hoist-non-react-statics@3.3.5':
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
 
-  '@types/http-errors@2.0.4':
-    resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
+  '@types/http-errors@1.8.2':
+    resolution: {integrity: sha512-EqX+YQxINb+MeXaIqYDASb6U6FCHbWjkj4a1CKDBks3d/QiB2+PqBLyO72vLDgAO1wUI4O+9gweRcQK11bTL/w==}
 
   '@types/js-yaml@4.0.9':
     resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
@@ -3653,6 +3665,9 @@ packages:
     resolution: {integrity: sha512-bMxMKAjg13EBSVscxTaYA4mRc5t1UAXa2kXiGTNfZ079HIWXEkKmkgFrh/nJqamaLSrXO5H4WFFkPEaLJWbs3A==}
     engines: {node: '>= 0.4'}
 
+  asap@2.0.6:
+    resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
+
   assert-valid-glob-opts@1.0.0:
     resolution: {integrity: sha512-/mttty5Xh7wE4o7ttKaUpBJl0l04xWe3y6muy1j27gyzSsnceK0AYU9owPtUoL9z8+9hnPxztmuhdFZ7jRoyWw==}
 
@@ -4138,6 +4153,9 @@ packages:
       typescript:
         optional: true
 
+  cropperjs@1.6.2:
+    resolution: {integrity: sha512-nhymn9GdnV3CqiEHJVai54TULFAE3VshJTXSqSJKa8yXAKyBKDWdhHarnlIPrshJ0WMFTGuFvG02YjLXfPiuOA==}
+
   cross-fetch@4.0.0:
     resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
 
@@ -4151,10 +4169,6 @@ packages:
   crypto-random-string@2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
     engines: {node: '>=8'}
-
-  crypto@1.0.1:
-    resolution: {integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==}
-    deprecated: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
 
   css-tree@2.3.1:
     resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
@@ -4441,6 +4455,9 @@ packages:
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
+
+  dezalgo@1.0.4:
+    resolution: {integrity: sha512-rXSP0bf+5n0Qonsb+SVVfNfIsimO4HEtmnIpPHY8Q1UCzKlQrDMfdobr8nJOOsRgWCyMRqeSBQzmWUMq7zvVig==}
 
   dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
@@ -5158,6 +5175,9 @@ packages:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
     engines: {node: '>=0.4.x'}
 
+  formidable@3.5.1:
+    resolution: {integrity: sha512-WJWKelbRHN41m5dumb0/k8TeAx7Id/y3a+Z7QfhxP/htI9Js5zYaEDtG8uMgG0vM0lOlqnmjE99/kfpOYi/0Og==}
+
   formik@2.4.6:
     resolution: {integrity: sha512-A+2EI7U7aG296q2TLGvNapDNTZp1khVt5Vk0Q/fyfSROss0V/V6+txt2aJnwEos44IxTCW/LYAi/zgWzlevj+g==}
     peerDependencies:
@@ -5407,6 +5427,10 @@ packages:
 
   heap@0.2.7:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
+
+  hexoid@1.0.0:
+    resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
+    engines: {node: '>=8'}
 
   highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
@@ -7038,6 +7062,11 @@ packages:
     engines: {node: '>=10.18'}
     peerDependencies:
       react: ^16.3.0 || ^17.0.1 || ^18.0.0
+
+  react-cropper@2.3.3:
+    resolution: {integrity: sha512-zghiEYkUb41kqtu+2jpX2Ntigf+Jj1dF9ew4lAobPzI2adaPE31z0p+5TcWngK6TvmWQUwK3lj4G+NDh1PDQ1w==}
+    peerDependencies:
+      react: '>=17.0.2'
 
   react-docgen-typescript@2.2.2:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -11428,6 +11457,10 @@ snapshots:
 
   '@types/find-cache-dir@3.2.1': {}
 
+  '@types/formidable@3.4.5':
+    dependencies:
+      '@types/node': 20.12.11
+
   '@types/geojson@7946.0.14': {}
 
   '@types/glob@7.2.0':
@@ -11448,7 +11481,7 @@ snapshots:
       '@types/react': 18.3.1
       hoist-non-react-statics: 3.3.2
 
-  '@types/http-errors@2.0.4': {}
+  '@types/http-errors@1.8.2': {}
 
   '@types/js-yaml@4.0.9': {}
 
@@ -11559,7 +11592,7 @@ snapshots:
 
   '@types/serve-static@1.15.7':
     dependencies:
-      '@types/http-errors': 2.0.4
+      '@types/http-errors': 1.8.2
       '@types/node': 20.12.7
       '@types/send': 0.17.4
 
@@ -12133,6 +12166,8 @@ snapshots:
       is-array-buffer: 3.0.4
       is-shared-array-buffer: 1.0.3
 
+  asap@2.0.6: {}
+
   assert-valid-glob-opts@1.0.0:
     dependencies:
       glob-option-error: 1.0.0
@@ -12604,6 +12639,8 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
 
+  cropperjs@1.6.2: {}
+
   cross-fetch@4.0.0:
     dependencies:
       node-fetch: 2.7.0
@@ -12619,8 +12656,6 @@ snapshots:
   crypto-js@4.2.0: {}
 
   crypto-random-string@2.0.0: {}
-
-  crypto@1.0.1: {}
 
   css-tree@2.3.1:
     dependencies:
@@ -12936,6 +12971,11 @@ snapshots:
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
+
+  dezalgo@1.0.4:
+    dependencies:
+      asap: 2.0.6
+      wrappy: 1.0.2
 
   dfa@1.2.0: {}
 
@@ -13919,6 +13959,12 @@ snapshots:
 
   format@0.2.2: {}
 
+  formidable@3.5.1:
+    dependencies:
+      dezalgo: 1.0.4
+      hexoid: 1.0.0
+      once: 1.4.0
+
   formik@2.4.6(react@18.3.1):
     dependencies:
       '@types/hoist-non-react-statics': 3.3.5
@@ -14222,6 +14268,8 @@ snapshots:
       space-separated-tokens: 2.0.2
 
   heap@0.2.7: {}
+
+  hexoid@1.0.0: {}
 
   highlight.js@10.7.3: {}
 
@@ -16088,6 +16136,11 @@ snapshots:
     dependencies:
       react: 18.2.0
       tween-functions: 1.2.0
+
+  react-cropper@2.3.3(react@18.3.1):
+    dependencies:
+      cropperjs: 1.6.2
+      react: 18.3.1
 
   react-docgen-typescript@2.2.2(typescript@5.4.5):
     dependencies:

@@ -1,17 +1,18 @@
 import { sql } from '@sovereign-university/database';
 import type { UserDetails } from '@sovereign-university/types';
 
-export const getUserDetailsQuery = (uid: string) => {
+export const setProfilePictureQuery = (uid: string, fileId: string) => {
   return sql<UserDetails[]>`
-    SELECT 
+    UPDATE users.accounts
+    SET picture = ${fileId}
+    WHERE uid = ${uid}
+    RETURNING 
       uid,
       username,
       display_name,
       email,
       picture,
       contributor_id,
-      created_at
-    FROM users.accounts
-    WHERE uid = ${uid};
+      created_at;
   `;
 };

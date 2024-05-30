@@ -11,7 +11,7 @@ import type {
   RouterOutputs,
 } from '../../../api/src/trpc/types.ts';
 
-import { getDomain, isDevelopmentEnvironment } from './misc.ts';
+import { baseUrl } from './misc.ts';
 
 export type TRPCRouterInput = RouterInputs;
 export type TRPCRouterOutput = RouterOutputs;
@@ -20,9 +20,7 @@ export const tRPCClientOptions = {
   links: [
     httpBatchLink({
       transformer: superjson,
-      url: isDevelopmentEnvironment()
-        ? 'http://localhost:3000/api/trpc'
-        : `https://api.${getDomain()}/trpc`,
+      url: baseUrl + '/trpc',
       fetch: (url, options) => {
         return fetch(url, {
           ...options,

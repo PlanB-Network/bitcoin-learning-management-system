@@ -26,7 +26,8 @@
     "drizzle:push": "drizzle-kit push:pg --config=drizzle.config.ts",
     "drizzle:studio": "drizzle-kit studio",
     "drizzle:up": "drizzle-kit up:pg --config=drizzle.config.ts",
-    "db:migrate": "tsx ./scripts/migrate.ts"
+    "db:migrate": "tsx ./scripts/migrate.ts",
+    "db:migrate:local": "dotenv -e ../../.env -- tsx ./scripts/migrate.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.30.7",
