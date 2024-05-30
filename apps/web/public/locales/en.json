@@ -267,10 +267,16 @@
     "courses": "Courses",
     "logout": "Log out",
     "myCourses": {
-      "completed": "Completed courses",
+      "completed": "Completed",
+      "completedCoursesTitle": "Completed courses",
+      "completedCoursesDescription": "Here you can check your completed courses.",
       "details": "Details",
-      "inprogress": "Courses in progress",
-      "resumeLesson": "Resume the lesson"
+      "inprogress": "In progress",
+      "inprogressCoursesTitle": "Courses in progress",
+      "inprogressCoursesDescription": "Here you can check your progress in the courses you’ve started.",
+      "resumeLesson": "Resume",
+      "seeProgress": "to see your progress here.",
+      "startCourse": "Start or complete a course"
     },
     "profile": {
       "change": "Change",
@@ -466,7 +472,7 @@
     "apply": "Apply to become a Node",
     "description1": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
     "pageSubtitle": "Want to orange pill the world ? Join the PlanB Network.",
-    "pageTitle": "Discover Plan B Community Network",
+    "pageTitle": "Explore Plan B Node Network",
     "question1": "What's a node ?",
     "question2": "What do I gain ?",
     "question3": "What are the requirements ?",
