@@ -5,7 +5,7 @@ import { hash, verify as verifyHash } from 'argon2';
 import { firstRow } from '@sovereign-university/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { changePasswordQuery, getUserQuery } from '../queries/index.js';
+import { changePasswordQuery, getUserByIdQuery } from '../queries/index.js';
 
 export const createChangePassword =
   (dependencies: Dependencies) =>
@@ -20,13 +20,7 @@ export const createChangePassword =
   }) => {
     const { postgres } = dependencies;
 
-    const user = await postgres
-      .exec(
-        getUserQuery({
-          uid,
-        }),
-      )
-      .then(firstRow);
+    const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
       throw new TRPCError({

@@ -5,3 +5,5 @@ export * from './new-credentials-user.js';
 export * from './new-lnurl-user.js';
 export * from './generate-unique-contributor-id.js';
 export * from './set-profile-picture.js';
+export * from './change-email.js';
+export * from './recover-password.js';

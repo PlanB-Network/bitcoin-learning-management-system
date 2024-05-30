@@ -20,6 +20,8 @@ import { trpc } from '../../../utils/index.ts';
 import { ChangePasswordModal } from '../components/change-password-modal.tsx';
 import { ChangePictureModal } from '../components/change-picture-modal.tsx';
 import { DashboardLayout } from '../layout.tsx';
+import { ChangeEmailModal } from '../components/change-email-modal.tsx';
+import { useState } from 'react';
 
 export const DashboardProfile = () => {
   const navigate = useNavigate();
@@ -55,6 +57,12 @@ export const DashboardProfile = () => {
     isOpen: isChangePasswordModalOpen,
     close: onClose,
   } = useDisclosure();
+
+  const changeEmailModal = useDisclosure();
+
+  const { data: user } = trpc.user.getDetails.useQuery();
+
+  const [emailSent, setEmailSent] = useState(false);
 
   return (
     <DashboardLayout>
@@ -131,14 +139,30 @@ export const DashboardProfile = () => {
               </div>
               <div className="mt-6 flex flex-col">
                 <label htmlFor="emailId">{t('dashboard.profile.email')}</label>
-                <input
-                  id="emailId"
-                  type="text"
-                  value={user?.email ? user?.email : ''}
-                  disabled
-                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
-                />
+
+                <div className="flex items-center gap-4">
+                  <input
+                    id="emailId"
+                    type="text"
+                    value={user?.email ?? ''}
+                    disabled
+                    className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 flex-grow"
+                  />
+
+                  <button
+                    className="bg-orange-500 text-white border border-orange-500 rounded-md px-4 py-1"
+                    onClick={changeEmailModal.open}
+                  >
+                    Change
+                  </button>
+                </div>
               </div>
+
+              {emailSent && (
+                <div className="mt-6 text-green-500">
+                  Email change confirmation email has been sent
+                </div>
+              )}
             </div>
           </TabsContent>
 
@@ -168,6 +192,13 @@ export const DashboardProfile = () => {
           onChange={onPictureChange}
           onClose={profilePictureDisclosure.close}
           isOpen={profilePictureDisclosure.isOpen}
+        />
+
+        <ChangeEmailModal
+          isOpen={changeEmailModal.isOpen}
+          onClose={changeEmailModal.close}
+          onEmailSent={() => setEmailSent(true)}
+          email={user?.email || ''}
         />
       </div>
     </DashboardLayout>

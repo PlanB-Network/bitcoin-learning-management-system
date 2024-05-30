@@ -1036,3 +1036,24 @@ export const usersFiles = users.table('files', {
     .defaultNow()
     .notNull(),
 });
+
+export const tokenTypeEnum = pgEnum('token_type', [
+  'validate_email',
+  'reset_password',
+  'login',
+]);
+
+export const token = users.table('tokens', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  uid: uuid('uid')
+    .notNull()
+    .references(() => usersAccounts.uid, {
+      onDelete: 'cascade',
+    }),
+  type: tokenTypeEnum('type').notNull(),
+  // Arbitrary data to store with the token
+  data: varchar('data', { length: 255 }),
+  expiresAt: timestamp('expires_at').notNull(),
+  // When the token was consumed (used)
+  consumedAt: timestamp('consumed_at'),
+});

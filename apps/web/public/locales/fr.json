@@ -276,6 +276,10 @@
       "subtitle": "",
       "title": ""
     },
+    "settings": {
+        "changePassword": "Changer le mot de passe",
+        "changeEmail": "Changer l'email"
+    },
     "pageDescription": "",
     "pageSubtitle": "",
     "pageTitle": "",

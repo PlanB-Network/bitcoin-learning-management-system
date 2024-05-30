@@ -62,7 +62,7 @@ Once updated, to reflect it in your database, run the following commands :
 1. `cd packages/database`
 2. `pnpm run drizzle:generate`
 
-This will add a new migration script, then you hav to run it :
+This will add a new migration script, then you have to run it :
 
 `pnpm run db:migrate`
 

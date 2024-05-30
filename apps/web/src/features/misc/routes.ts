@@ -11,6 +11,7 @@ import { ProfessorDetail } from './pages/professor-detail.tsx';
 import { ProfessorExplorer } from './pages/professor-explorer.tsx';
 import { TermsAndConditions } from './pages/terms-and-conditions.tsx';
 import { UnderConstruction } from './pages/under-construction.tsx';
+import { ValidateEmailChangePage } from './pages/validate-email-change.tsx';
 
 export const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -72,6 +73,12 @@ export const termsAndConditionsROute = createRoute({
   component: TermsAndConditions,
 });
 
+export const validateEmailChangeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/validate-email/$token',
+  component: ValidateEmailChangePage,
+});
+
 export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
@@ -83,4 +90,5 @@ export const miscRoutes = [
   professorDetail,
   underConstructionRoute,
   termsAndConditionsROute,
+  validateEmailChangeRoute,
 ];

@@ -477,7 +477,8 @@
         "github": ""
     },
     "settings": {
-        "changePassword": "パスワードを変更する"
+        "changePassword": "パスワードを変更する",
+        "changeEmail": "Change email"
     },
     "tutorials": {
         "details": {
