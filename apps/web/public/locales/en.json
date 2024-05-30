@@ -540,7 +540,8 @@
   },
   "settings": {
     "changePassword": "Change password",
-    "changeProfilePicture": "Change profile picture"
+    "changeProfilePicture": "Change profile picture",
+    "changeEmail": "Change email"
   },
   "tutorials": {
     "details": {

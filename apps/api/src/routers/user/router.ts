@@ -3,6 +3,9 @@ import { z } from 'zod';
 import {
   createChangePassword,
   createGetUserDetails,
+  createChangeEmailConfirmation,
+  createEmailValidationToken,
+  createPasswordRecoveryToken,
 } from '@sovereign-university/user';
 
 import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
@@ -46,4 +49,19 @@ export const userRouter = createTRPCRouter({
   courses: userCoursesRouter,
   events: userEventsRouter,
   webhooks: paymentWebhooksProcedure,
+  changeEmail: protectedProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(({ ctx, input }) =>
+      createEmailValidationToken(ctx.dependencies)(ctx.user.uid, input.email),
+    ),
+  validateEmailChange: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .mutation(async ({ ctx, input }) =>
+      createChangeEmailConfirmation(ctx.dependencies)(input.token),
+    ),
+  requestPasswordRecovery: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ ctx, input }) =>
+      createPasswordRecoveryToken(ctx.dependencies)(input.email),
+    ),
 });

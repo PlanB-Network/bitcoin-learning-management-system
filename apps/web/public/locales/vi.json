@@ -513,7 +513,8 @@
         "github": "Tất cả dữ liệu này được quản lý thông qua một kho mã nguồn mở trên <0>Github</0>. Bạn có thể thoải mái đóng góp và bổ sung bất kỳ nội dung còn thiếu nào."
     },
     "settings": {
-        "changePassword": "Thay đổi mật khẩu"
+        "changePassword": "Thay đổi mật khẩu",
+        "changeEmail": "Thay đổi email"
     },
     "tutorials": {
         "details": {

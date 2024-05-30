@@ -499,7 +499,8 @@
         "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä."
     },
     "settings": {
-        "changePassword": "Vaihda salasana"
+        "changePassword": "Vaihda salasana",
+        "changeEmail": "Change email"
     },
     "tutorials": {
         "details": {

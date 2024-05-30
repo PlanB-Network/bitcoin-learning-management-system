@@ -499,7 +499,8 @@
         "github": ""
     },
     "settings": {
-        "changePassword": "Cambiar contraseña"
+        "changePassword": "Cambiar contraseña",
+        "changeEmail": "Change email"
     },
     "tutorials": {
         "details": {

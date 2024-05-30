@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
-const baseConfig = {
+const baseConfig: Config = {
+  jit: true,
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     container: {
@@ -225,4 +226,4 @@ const baseConfig = {
   plugins: [require('tailwindcss-animate')],
 };
 
-export default baseConfig satisfies Config;
+export default baseConfig;

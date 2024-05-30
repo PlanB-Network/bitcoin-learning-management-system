@@ -3,12 +3,14 @@ import { EventEmitter } from 'eventemitter3';
 import { createPostgresClient } from '@sovereign-university/database';
 import type { PostgresClient } from '@sovereign-university/database';
 import { RedisClient } from '@sovereign-university/redis';
-import type { ApiEvents } from '@sovereign-university/types';
+import type { ApiEvents, EnvConfig } from '@sovereign-university/types';
+import * as config from './config.js';
 
 export interface Dependencies {
   redis: RedisClient;
   postgres: PostgresClient;
   events: EventEmitter<ApiEvents>;
+  config: EnvConfig;
 }
 
 export const startDependencies = async () => {
@@ -30,11 +32,12 @@ export const startDependencies = async () => {
 
   await postgres.connect();
 
-  const dependencies = {
+  const dependencies: Dependencies = {
     redis,
     postgres,
     events,
-  } as Dependencies;
+    config,
+  };
 
   const stopDependencies = async () => {
     await postgres.disconnect();
