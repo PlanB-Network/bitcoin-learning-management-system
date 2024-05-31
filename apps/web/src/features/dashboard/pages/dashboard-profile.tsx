@@ -76,12 +76,6 @@ export const DashboardProfile = () => {
             >
               {t('dashboard.profile.security')}
             </TabsTrigger>
-            <TabsTrigger
-              value="document"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-            >
-              {t('dashboard.profile.documents')}
-            </TabsTrigger>
           </TabsList>
           <TabsContent value="info">
             <div className="flex w-full flex-col">
