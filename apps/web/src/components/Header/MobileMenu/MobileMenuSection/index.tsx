@@ -70,7 +70,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
         />
       </button>
     );
-  }, [isOpen, section, toggle]);
+  }, [isOpen, section, currentSection, toggle]);
 
   return (
     <li key={section.id} className="h-max overflow-hidden">
