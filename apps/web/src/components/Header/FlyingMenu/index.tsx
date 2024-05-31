@@ -33,15 +33,15 @@ export const FlyingMenu = ({
       </Link>
       <ul
         className={cn(
-          'mx-auto flex flex-row items-center space-x-5 rounded-2xl px-8 py-2 lg:space-x-10',
+          'mx-auto flex flex-row items-center gap-2 xl:gap-5 rounded-xl px-3 py-2.5',
           variant === 'light'
-            ? 'bg-white/15 text-white'
-            : 'bg-white text-black',
+            ? 'bg-darkOrange-4 text-darkOrange-10'
+            : 'bg-newBlack-3 text-white',
         )}
       >
         {sections.map((section) => (
           <li key={section.id}>
-            <FlyingMenuSection section={section} />
+            <FlyingMenuSection section={section} variant={variant} />
           </li>
         ))}
       </ul>
