@@ -1,8 +1,8 @@
 import { sql } from '@sovereign-university/database';
-import type { JoinedTutorial } from '@sovereign-university/types';
+import type { JoinedTutorialLight } from '@sovereign-university/types';
 
 export const getTutorialsQuery = (category?: string, language?: string) => {
-  return sql<Array<Omit<JoinedTutorial, 'raw_content'>>>`
+  return sql<JoinedTutorialLight[]>`
     WITH tutorial AS (
       SELECT 
           t.id, 

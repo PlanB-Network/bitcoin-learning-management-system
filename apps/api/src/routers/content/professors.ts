@@ -7,7 +7,7 @@ import {
 import {
   formattedProfessorSchema,
   joinedCourseSchema,
-  joinedTutorialSchema,
+  joinedTutorialLightSchema,
 } from '@sovereign-university/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
@@ -37,7 +37,7 @@ const getProfessorProcedure = publicProcedure
     formattedProfessorSchema.merge(
       z.object({
         courses: joinedCourseSchema.array(),
-        tutorials: joinedTutorialSchema.omit({ rawContent: true }).array(),
+        tutorials: joinedTutorialLightSchema.array(),
       }),
     ),
   )
