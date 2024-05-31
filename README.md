@@ -74,3 +74,46 @@ Once the database is updated, update or create the associated types running :
 ### Run SQL queries
 
 To open psql, run `docker exec -it sovereign-university-postgres-1 psql -U postgres -d postgres`
+
+## Development - Run Locally
+
+You may want to run the project locally to test your changes. Here is how to do it.
+
+### Pre-requisites:
+  - Node.js
+  - PostgreSQL
+  - Redis
+
+### Install global dependencies
+
+```bash
+npm i -g pnpm dotenv-cli
+```
+
+### Setup your local database
+
+Login to your local PostgreSQL instance (`psql -U postgres`) and run the following commands:
+
+```sql
+CREATE USER plan_b WITH PASSWORD 'plan_b'; 
+CREATE DATABASE plan_b WITH OWNER plan_b;
+```
+
+Update your `.env` file accordingly.
+
+### Sync the database
+
+```bash
+cd packages/database
+pnpm run db:migrate:local
+```
+
+### Start a local CDN
+  
+```bash
+docker run -d --restart=always -p 8080:80 \
+  -v /tmp/cdn:/var/www/cdn:ro \
+  -v ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf:ro \
+  --name cdn-server \
+  nginx:alpine
+```
