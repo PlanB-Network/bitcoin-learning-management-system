@@ -45,8 +45,14 @@ export const Builder = () => {
     : [];
 
   const filteredEvents = events
-    ? events.filter((event) => event.builder === builder?.name)
+    ? events.filter(
+        (event) =>
+          event.builder === builder?.name &&
+          new Date(event.startDate) > new Date(),
+      )
     : [];
+
+  console.log(filteredEvents);
 
   const navigateTo404Called = useRef(false);
 

@@ -24,7 +24,7 @@ const ProgressBar = ({
 
   return (
     <>
-      <div className="flex gap-0.5 max-lg:hidden w-full max-w-[590px]">
+      <div className="flex gap-0.5 max-md:hidden w-full max-w-[590px]">
         {Array.from({ length: courseTotalChapters }).map((_, index) => {
           const isFilled = index < filledRectangles;
           const isFirstRectangle = index === 0;
@@ -34,7 +34,7 @@ const ProgressBar = ({
             <div
               key={index}
               className={cn(
-                'relative h-2',
+                'relative h-2 flex justify-end items-center',
                 isFilled ? 'bg-darkOrange-5' : 'bg-darkOrange-1',
                 isFirstRectangle && 'rounded-l',
                 isLastRectangle && 'rounded-r',
@@ -44,7 +44,7 @@ const ProgressBar = ({
               {index === filledRectangles - 1 && (
                 <img
                   src={OrangePill}
-                  className={cn('absolute -top-3 -right-2  w-[13px] z-10')}
+                  className={cn('absolute w-3 -right-1 z-10')}
                   alt="Orange Pill"
                 />
               )}
@@ -52,8 +52,21 @@ const ProgressBar = ({
           );
         })}
       </div>
-      <div className="w-full lg:hidden relative h-2 bg-darkOrange-1">
-        <div className="" />
+      <div className="w-full md:hidden relative h-2 bg-darkOrange-1 rounded flex items-center mb-7">
+        <div
+          className="bg-darkOrange-5 h-full rounded"
+          style={{
+            width: `${(courseCompletedChapters / courseTotalChapters) * 100}%`,
+          }}
+        />
+        <img
+          src={OrangePill}
+          className={cn('absolute z-10 aspect-auto w-3')}
+          style={{
+            left: `${(courseCompletedChapters / courseTotalChapters) * 100 - 2}%`,
+          }}
+          alt="Orange Pill"
+        />
       </div>
     </>
   );
@@ -64,7 +77,7 @@ export const CoursesProgressList = ({
   completed,
 }: CoursesProgressListProps) => (
   <section>
-    <div className="flex flex-col gap-4 my-10">
+    <div className="flex flex-col gap-2.5 md:gap-4 mt-5 mb-2.5 md:my-10">
       <h2 className="desktop-h6">
         {completed
           ? t('dashboard.myCourses.completedCoursesTitle')
@@ -81,18 +94,23 @@ export const CoursesProgressList = ({
         courses.map((course) => (
           <div
             key={course.courseId}
-            className="border border-newGray-4 rounded-[1.25rem] p-1.5 xl:p-2.5 shadow-course-navigation"
+            className="border border-newGray-4 rounded-[1.25rem] md:p-1.5 xl:p-2.5 shadow-course-navigation"
           >
-            <div className="flex items-center gap-4 p-3 xl:p-5">
-              <span className="w-[105px] text-xl leading-snug uppercase shrink-0">
-                {addSpaceToCourseId(course.courseId)}
-              </span>
+            <div className="flex max-md:flex-col md:items-center md:gap-4 p-2 md:p-3 xl:p-5">
+              <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
+                <span className="max-md:mobile-subtitle1 md:text-xl uppercase">
+                  {addSpaceToCourseId(course.courseId)}
+                </span>
+                <span className="mobile-subtitle1 text-darkOrange-5 md:hidden">
+                  {course.progressPercentage}%
+                </span>
+              </div>
 
               <ProgressBar
                 courseCompletedChapters={course.completedChaptersCount}
                 courseTotalChapters={course.totalChapters}
               />
-              <span className="text-xl font-medium text-darkOrange-5 leading-normal ml-auto">
+              <span className="text-xl font-medium text-darkOrange-5 leading-normal ml-auto w-[52px] shrink-0 text-end max-md:hidden">
                 {course.progressPercentage}%
               </div>
             </div>
