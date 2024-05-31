@@ -52,8 +52,6 @@ export const Builder = () => {
       )
     : [];
 
-  console.log(filteredEvents);
-
   const navigateTo404Called = useRef(false);
 
   useEffect(() => {
@@ -82,7 +80,7 @@ export const Builder = () => {
               />
               <div className="flex justify-center gap-2.5 md:hidden">
                 {builder.languages &&
-                  (builder.languages as string[])
+                  builder.languages
                     .slice(0, 2)
                     .map((language) => (
                       <Flag
@@ -161,7 +159,7 @@ export const Builder = () => {
             </div>
             <div className="ml-auto flex flex-col gap-6 max-md:hidden">
               {builder.languages &&
-                (builder.languages as string[])
+                builder.languages
                   .slice(0, 3)
                   .map((language) => (
                     <Flag
