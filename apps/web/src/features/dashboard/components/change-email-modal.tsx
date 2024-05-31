@@ -80,31 +80,43 @@ export const ChangeEmailModal = ({
                 event.preventDefault();
                 handleSubmit();
               }}
-              className="flex w-full flex-col items-center pb-6"
+              className="flex w-full flex-col"
             >
-              <div className="flex w-full flex-col">
-                <TextInput
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  labelText="Email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  className="w-80"
-                  error={touched.email ? errors.email : null}
-                />
+              <div className="pb-8">
+                <div className="flex w-full flex-col">
+                  <TextInput
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    labelText="Email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    className="w-80"
+                    error={touched.email ? errors.email : null}
+                  />
+                </div>
+
+                {changeEmail.error && (
+                  <p className="mt-2 text-base font-semibold text-red-300">
+                    {changeEmail.error.message}
+                  </p>
+                )}
               </div>
 
-              {changeEmail.error && (
-                <p className="mt-2 text-base font-semibold text-red-300">
-                  {changeEmail.error.message}
-                </p>
-              )}
-
-              <Button className="mt-6" rounded type="submit">
-                {t('words.update')}
-              </Button>
+              <div className="p-4 flex gap-4 justify-between">
+                <Button variant="newPrimary" size="m" type="submit">
+                  {t('dashboard.profile.save')}
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="m"
+                  type="reset"
+                  onClick={onClose}
+                >
+                  {t('dashboard.profile.cancel')}
+                </Button>
+              </div>
             </form>
           )}
         </Formik>

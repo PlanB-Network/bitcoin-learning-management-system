@@ -8,7 +8,7 @@ import { getUserByEmailQuery } from '../queries/get-user.js';
 
 export const createPasswordRecoveryToken = (deps: Dependencies) => {
   const template = deps.config.sendgrid.templates.recoverPassword;
-  const domain = deps.config.domain;
+  const domain = deps.config.domainUrl;
 
   if (!template) {
     throw new Error('Missing recover password template');
@@ -22,7 +22,7 @@ export const createPasswordRecoveryToken = (deps: Dependencies) => {
       .then(firstRow)
       .then(rejectOnEmpty)
       .then(({ uid, email }) =>
-        deps.postgres.exec(createTokenQuery(uid, 'validate_email', email)),
+        deps.postgres.exec(createTokenQuery(uid, 'reset_password', email)),
       )
       .then(firstRow)
       .then(rejectOnEmpty)
