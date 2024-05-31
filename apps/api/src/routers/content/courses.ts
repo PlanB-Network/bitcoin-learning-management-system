@@ -58,7 +58,6 @@ const getCourseChaptersProcedure = publicProcedure
 const getCourseChapterProcedure = publicProcedure
   .input(
     z.object({
-      courseId: z.string(),
       language: z.string(),
       chapterId: z.string(),
     }),
@@ -90,11 +89,7 @@ const getCourseChapterProcedure = publicProcedure
   //   ),
   // )
   .query(async ({ ctx, input }) =>
-    createGetCourseChapter(ctx.dependencies)(
-      input.courseId,
-      input.chapterId,
-      input.language,
-    ),
+    createGetCourseChapter(ctx.dependencies)(input.chapterId, input.language),
   );
 
 const getCourseChapterQuizQuestionsProcedure = publicProcedure
