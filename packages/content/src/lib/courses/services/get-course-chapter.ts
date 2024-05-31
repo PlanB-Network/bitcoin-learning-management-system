@@ -9,15 +9,17 @@ import { createGetCourse } from './get-course.js';
 
 export const createGetCourseChapter =
   (dependencies: Dependencies) =>
-  async (courseId: string, chapterId: string, language: string) => {
+  async (chapterId: string, language: string) => {
     const { postgres } = dependencies;
     const getCourse = createGetCourse(dependencies);
 
     const chapter = await postgres
-      .exec(getCourseChapterQuery(courseId, chapterId, language))
+      .exec(getCourseChapterQuery(chapterId, language))
       .then(firstRow);
 
-    const course = await getCourse(courseId, language);
+    if (!chapter) throw new Error('Chapter not found');
+
+    const course = await getCourse(chapter.courseId, language);
     const part = course.parts.find((part) => part.partId === chapter?.partId);
 
     const professors = await postgres.exec(
@@ -25,7 +27,7 @@ export const createGetCourseChapter =
     );
 
     // Should never happen if a chapter was found
-    if (!chapter || !part) throw new Error('Chapter not found');
+    if (!part) throw new Error('Chapter not found');
 
     return {
       ...chapter,

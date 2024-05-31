@@ -137,6 +137,7 @@ export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
 
 export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
   .pick({
+    courseId: true,
     chapterId: true,
     language: true,
     title: true,

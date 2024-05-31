@@ -24,7 +24,7 @@ export const generateChapterTicket = async ({
   formattedTime?: string;
   liveLanguage: string | null;
   formattedCapacity?: string;
-  contact: string | null;
+  contact: string | null | undefined;
   userDisplayName: string;
 }) => {
   const chunks: Buffer[] = [];
