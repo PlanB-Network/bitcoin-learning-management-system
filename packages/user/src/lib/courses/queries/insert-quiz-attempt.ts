@@ -3,24 +3,20 @@ import type { CourseQuizAttempts } from '@sovereign-university/types';
 
 export const insertQuizAttempt = ({
   uid,
-  courseId,
-  partIndex,
-  chapterIndex,
+  chapterId,
   questionsCount,
   correctAnswersCount,
 }: {
   uid: string;
-  courseId: string;
-  partIndex: number;
-  chapterIndex: number;
+  chapterId: string;
   questionsCount: number;
   correctAnswersCount: number;
 }) => {
   return sql<CourseQuizAttempts[]>`
     INSERT INTO users.quiz_attempts (
-      uid, course_id, part, chapter, questions_count, correct_answers_count
+      uid, chapter_id, questions_count, correct_answers_count
     ) VALUES (
-      ${uid}, ${courseId}, ${partIndex}, ${chapterIndex}, ${questionsCount}, ${correctAnswersCount}
+      ${uid}, ${chapterId}, ${questionsCount}, ${correctAnswersCount}
     )
     RETURNING *;
   `;

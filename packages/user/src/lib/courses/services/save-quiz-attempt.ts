@@ -5,16 +5,12 @@ export const createSaveQuizAttempt =
   (dependencies: Dependencies) =>
   async ({
     uid,
-    courseId,
-    partIndex,
-    chapterIndex,
+    chapterId,
     questionsCount,
     correctAnswersCount,
   }: {
     uid: string;
-    courseId: string;
-    partIndex: number;
-    chapterIndex: number;
+    chapterId: string;
     questionsCount: number;
     correctAnswersCount: number;
   }) => {
@@ -23,9 +19,7 @@ export const createSaveQuizAttempt =
     await postgres.exec(
       insertQuizAttempt({
         uid,
-        courseId,
-        partIndex,
-        chapterIndex,
+        chapterId,
         questionsCount,
         correctAnswersCount,
       }),

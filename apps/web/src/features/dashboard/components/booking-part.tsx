@@ -17,9 +17,6 @@ export const BookingPart = ({
 
   const { data: user } = trpc.user.getDetails.useQuery();
 
-  const { mutateAsync: downloadTicketAsync, isPending } =
-    trpc.user.events.downloadEventTicket.useMutation();
-
   return (
     <>
       {tickets.length > 0 ? (
@@ -37,7 +34,7 @@ export const BookingPart = ({
             <span className="min-w-[100px] grow">
               {t('dashboard.booking.ticketTitle')}
             </span>
-            <span className="w-[100px] flex-none ml-auto">
+            <span className="w-[150px] flex-none ml-auto">
               {t('words.ticket')}
             </span>
           </div>
@@ -62,48 +59,11 @@ export const BookingPart = ({
                       {ticket.title}
                     </span>
                   </div>
-                  <span className="w-[110px] flex-none ml-auto">
-                    {ticket.isInPerson ? (
-                      <Button
-                        variant="newPrimary"
-                        size="s"
-                        mode="light"
-                        iconRight={isPending ? <FiLoader /> : undefined}
-                        onClick={async () => {
-                          const base64 = await downloadTicketAsync({
-                            eventId: ticket.eventId,
-                            userDisplayName: user?.displayName as string,
-                          });
-                          const link = document.createElement('a');
-                          link.href = `data:application/pdf;base64,${base64}`;
-                          link.download = 'ticket.pdf';
-                          document.body.append(link);
-                          link.click();
-                          link.remove();
-                        }}
-                      >
-                        {t('words.download')}
-                      </Button>
-                    ) : (
-                      <Link
-                        to={'/events/$eventId'}
-                        params={{
-                          eventId: ticket.eventId,
-                        }}
-                      >
-                        <Button
-                          variant="newPrimary"
-                          size="s"
-                          mode="light"
-                          disabled={
-                            new Date(ticket.date).getTime() > Date.now()
-                          }
-                        >
-                          {t('dashboard.booking.accessLive')}
-                        </Button>
-                      </Link>
-                    )}
-                  </span>
+                  <Buttons
+                    ticket={ticket}
+                    userDisplayName={user?.displayName as string}
+                    buttonSize="m"
+                  />
                 </div>
 
                 <Card withPadding={false} className="flex md:hidden p-3">
@@ -114,48 +74,11 @@ export const BookingPart = ({
                     <span className="flex-none  text-sm">
                       {formatDate(new Date(ticket.date))} - {location}
                     </span>
-                    <span className="">
-                      {ticket.isInPerson ? (
-                        <Button
-                          variant="newPrimary"
-                          size="xs"
-                          mode="light"
-                          iconRight={isPending ? <FiLoader /> : undefined}
-                          onClick={async () => {
-                            const base64 = await downloadTicketAsync({
-                              eventId: ticket.eventId,
-                              userDisplayName: user?.displayName as string,
-                            });
-                            const link = document.createElement('a');
-                            link.href = `data:application/pdf;base64,${base64}`;
-                            link.download = 'ticket.pdf';
-                            document.body.append(link);
-                            link.click();
-                            link.remove();
-                          }}
-                        >
-                          {t('words.download')}
-                        </Button>
-                      ) : (
-                        <Link
-                          to={'/events/$eventId'}
-                          params={{
-                            eventId: ticket.eventId,
-                          }}
-                        >
-                          <Button
-                            variant="newPrimary"
-                            size="xs"
-                            mode="light"
-                            disabled={
-                              new Date(ticket.date).getTime() > Date.now()
-                            }
-                          >
-                            {t('dashboard.booking.accessLive')}
-                          </Button>
-                        </Link>
-                      )}
-                    </span>
+                    <Buttons
+                      ticket={ticket}
+                      userDisplayName={user?.displayName as string}
+                      buttonSize="s"
+                    />
                   </div>
                 </Card>
               </div>
@@ -166,5 +89,69 @@ export const BookingPart = ({
         <p className="mt-4">{t('dashboard.booking.noTicket')}</p>
       )}
     </>
+  );
+};
+
+const Buttons = ({
+  ticket,
+  userDisplayName,
+  buttonSize,
+}: {
+  ticket: NonNullable<
+    TRPCRouterOutput['user']['billing']['getTickets'][number]
+  >;
+  userDisplayName: string;
+  buttonSize: 's' | 'm';
+}) => {
+  const { t } = useTranslation();
+
+  const { mutateAsync: downloadTicketAsync, isPending } =
+    trpc.user.events.downloadEventTicket.useMutation();
+
+  return (
+    <div className="md:w-[260px] md:flex-none md:ml-auto">
+      <div className="flex flex-row gap-3">
+        {ticket.isInPerson && (
+          <Button
+            variant="newPrimary"
+            size={buttonSize}
+            mode="light"
+            iconRight={isPending ? <FiLoader /> : undefined}
+            onClick={async () => {
+              const base64 = await downloadTicketAsync({
+                eventId: ticket.eventId,
+                userDisplayName: userDisplayName,
+              });
+              const link = document.createElement('a');
+              link.href = `data:application/pdf;base64,${base64}`;
+              link.download = 'ticket.pdf';
+              document.body.append(link);
+              link.click();
+              link.remove();
+            }}
+          >
+            {t('words.download')}
+          </Button>
+        )}
+
+        {ticket.isOnline && (
+          <Link
+            to={'/events/$eventId'}
+            params={{
+              eventId: ticket.eventId,
+            }}
+          >
+            <Button
+              variant="newPrimary"
+              size={buttonSize}
+              mode="light"
+              disabled={new Date(ticket.date).getTime() > Date.now()}
+            >
+              {t('dashboard.booking.accessLive')}
+            </Button>
+          </Link>
+        )}
+      </div>
+    </div>
   );
 };

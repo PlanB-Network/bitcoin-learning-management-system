@@ -14,13 +14,13 @@ import { createProcessLocalFile } from './local.js';
 import { createProcessMainFile } from './main.js';
 
 interface QuizQuestionDetails {
-  id: number;
+  id: string;
   path: string;
   language?: Language;
 }
 
 export interface ChangedQuizQuestion extends ChangedContent {
-  id: number;
+  id: string;
 }
 
 /**
@@ -32,23 +32,21 @@ export interface ChangedQuizQuestion extends ChangedContent {
 export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   const pathElements = path.split('/');
 
-  // Validate that the path has at least 4 elements (quizzes/questions/id)
-  if (pathElements.length < 3) throw new Error('Invalid quiz question path');
+  if (pathElements.length < 4) throw new Error('Invalid quiz question path');
 
-  const id = Number(pathElements[2]);
-
-  if (Number.isNaN(id)) throw new Error('Invalid quiz question path');
+  const id = `${pathElements[1]}-${pathElements[3]}`;
 
   return {
     id,
-    path: pathElements.slice(0, 3).join('/'),
-    language: pathElements[3].replace(/\..*/, '') as Language,
+    path: pathElements.slice(0, 4).join('/'),
+    language: pathElements[4].replace(/\..*/, '') as Language,
   };
 };
 
 export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   const quizQuestionsFiles = files.filter(
-    (item) => getContentType(item.path) === 'quizzes/questions',
+    (item) =>
+      getContentType(item.path) === 'courses' && item.path.includes('quizz'),
   );
 
   const groupedQuizQuestions = new Map<string, ChangedQuizQuestion>();

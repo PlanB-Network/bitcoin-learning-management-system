@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface CourseButtonProps {
-  courseId: string; // Establece el tipo de firstChapterRoute como string
+  courseId: string;
+  firstChapterId: string;
 }
 
 export const CourseButton: React.FC<CourseButtonProps> = ({
   courseId,
+  firstChapterId,
 }: CourseButtonProps) => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
@@ -41,11 +43,10 @@ export const CourseButton: React.FC<CourseButtonProps> = ({
     >
       <div className="relative flex h-12 w-auto">
         <Link
-          to={'/courses/$courseId/$partIndex/$chapterIndex'}
+          to={'/courses/$courseId/$chapterId'}
           params={{
             courseId,
-            partIndex: '1',
-            chapterIndex: '1',
+            chapterId: firstChapterId,
           }}
         >
           <button className="relative z-10 flex h-12 w-auto items-center justify-center rounded-full bg-orange-500 text-white">

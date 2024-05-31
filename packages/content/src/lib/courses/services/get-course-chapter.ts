@@ -9,21 +9,16 @@ import { createGetCourse } from './get-course.js';
 
 export const createGetCourseChapter =
   (dependencies: Dependencies) =>
-  async (
-    courseId: string,
-    partIndex: number,
-    chapterIndex: number,
-    language: string,
-  ) => {
+  async (courseId: string, chapterId: string, language: string) => {
     const { postgres } = dependencies;
     const getCourse = createGetCourse(dependencies);
 
     const chapter = await postgres
-      .exec(getCourseChapterQuery(courseId, partIndex, chapterIndex, language))
+      .exec(getCourseChapterQuery(courseId, chapterId, language))
       .then(firstRow);
 
     const course = await getCourse(courseId, language);
-    const part = course.parts.find((part) => part.part === partIndex);
+    const part = course.parts.find((part) => part.partId === chapter?.partId);
 
     const professors = await postgres.exec(
       getProfessorsQuery({ contributorIds: chapter?.professors, language }),

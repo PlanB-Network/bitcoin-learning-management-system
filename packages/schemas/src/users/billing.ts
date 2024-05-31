@@ -13,4 +13,5 @@ export const ticketSchema = z.object({
   type: z.string(),
   date: z.date(),
   isInPerson: z.boolean(),
+  isOnline: z.boolean(),
 });

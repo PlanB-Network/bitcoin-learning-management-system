@@ -14,9 +14,7 @@ import type { ChangedQuizQuestion } from './index.js';
 import { parseDetailsFromPath } from './index.js';
 
 interface QuizQuestionMain {
-  course: string;
-  part: string;
-  chapter: string;
+  chapterId: string;
   difficulty: Level;
   author?: string;
   duration?: number;
@@ -70,12 +68,10 @@ export const createProcessMainFile =
 
       const result = await transaction<QuizQuestion[]>`
         INSERT INTO content.quiz_questions
-        (id, course_id, part, chapter, difficulty, author, duration, last_updated, last_commit, last_sync)
+        (id, chapter_id, difficulty, author, duration, last_updated, last_commit, last_sync)
         VALUES (
           ${quizQuestion.id},
-          ${parsedQuizQuestion.course}, 
-          ${parsedQuizQuestion.part},
-          ${parsedQuizQuestion.chapter},
+          ${parsedQuizQuestion.chapterId}, 
           ${parsedQuizQuestion.difficulty},
           ${parsedQuizQuestion.author},
           ${parsedQuizQuestion.duration},
@@ -84,9 +80,7 @@ export const createProcessMainFile =
           NOW()
         )
         ON CONFLICT (id) DO UPDATE SET
-          course_id = EXCLUDED.course_id,
-          part = EXCLUDED.part,
-          chapter = EXCLUDED.chapter,
+          chapter_id = EXCLUDED.chapter_id,
           difficulty = EXCLUDED.difficulty,
           author = EXCLUDED.author,
           duration = EXCLUDED.duration,

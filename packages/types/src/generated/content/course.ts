@@ -12,6 +12,7 @@ import {
   courseSchema,
   joinedCourseChapterSchema,
   joinedCourseChapterWithContentSchema,
+  joinedCoursePartLocalizedSchema,
   joinedCourseSchema,
   joinedCourseWithAllSchema,
   joinedCourseWithProfessorsSchema,
@@ -29,6 +30,9 @@ export type Course = z.infer<typeof courseSchema>;
 export type JoinedCourseChapter = z.infer<typeof joinedCourseChapterSchema>;
 export type JoinedCourseChapterWithContent = z.infer<
   typeof joinedCourseChapterWithContentSchema
+>;
+export type JoinedCoursePartLocalized = z.infer<
+  typeof joinedCoursePartLocalizedSchema
 >;
 export type JoinedCourse = z.infer<typeof joinedCourseSchema>;
 export type JoinedCourseWithAll = z.infer<typeof joinedCourseWithAllSchema>;
