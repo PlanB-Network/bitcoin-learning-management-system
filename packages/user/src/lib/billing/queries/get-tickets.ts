@@ -5,8 +5,8 @@ export const getTicketsQuery = (uid: string /*, language: string*/) => {
   return sql<Ticket[]>`
     SELECT
       ev.id as event_id,
-      ev.start_date as date,
-      COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1) as location, 
+      COALESCE(ev.start_date, current_date + interval '30 days') as date,
+      COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1, '') as location, 
       ev.name as title,
       ev.type::text as type,
       ep.with_physical as is_in_person,
@@ -33,8 +33,8 @@ export const getTicketsQuery = (uid: string /*, language: string*/) => {
 
     SELECT
       uc.chapter_id::text as event_id,
-      cc.start_date as date,
-      cc.address_line_1 as location,
+      COALESCE(cc.start_date, current_date + interval '30 days') as date,
+      COALESCE(cc.address_line_1, '') as location, 
       cc.title as title,
       'course'::text as type,
       true as is_in_person,
