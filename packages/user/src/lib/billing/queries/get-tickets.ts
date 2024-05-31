@@ -19,8 +19,8 @@ export const getTicketsQuery = (uid: string /*, language: string*/) => {
 
     SELECT 
       ev.id as event_id,
-      ev.start_date as date,
-      COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1) as location, 
+      COALESCE(ev.start_date, current_date + interval '30 days') as date,
+      COALESCE(ev.address_line_3, ev.address_line_2, ev.address_line_1, '') as location, 
       ev.name as title,
       ev.type::text as type,
       ue.with_physical as is_in_person,
