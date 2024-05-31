@@ -10,18 +10,15 @@ export const getNextChaptersQuery = (uid: string) => {
     >
   >`
     WITH AllChapters AS (
-      SELECT DISTINCT c.course_id, cp.chapter_id, cp.part_id, cp.chapter_index, cpa.part_index
+      SELECT DISTINCT cp.course_id, cp.chapter_id, cp.part_id, cp.chapter_index, cpa.part_index
       FROM content.course_chapters cp
-      LEFT JOIN users.course_user_chapter c 
-        ON cp.course_id = c.course_id
       LEFT JOIN content.course_parts cpa
-        ON cp.part_id = cp.part_id
-      WHERE c.uid = ${uid}
+        ON cp.part_id = cpa.part_id
     ),
     CompletedChapters AS (
       SELECT course_id, chapter_id 
       FROM users.course_user_chapter
-      WHERE uid = ${uid} AND completed_at is not null
+      WHERE uid = ${uid} AND completed_at is not null AND booked = false
     ),
     NextChapters AS (
       SELECT

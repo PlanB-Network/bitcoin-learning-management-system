@@ -577,7 +577,6 @@ export const CourseChapter = () => {
   });
 
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
-    courseId,
     language: i18n.language,
     chapterId: chapterId,
   });

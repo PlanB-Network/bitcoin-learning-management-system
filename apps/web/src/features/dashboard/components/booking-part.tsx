@@ -5,7 +5,7 @@ import { FiLoader } from 'react-icons/fi';
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
-import { formatDate } from '#src/utils/date.js';
+import { formatDate, formatTime } from '#src/utils/date.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 export const BookingPart = ({
@@ -105,8 +105,52 @@ const Buttons = ({
 }) => {
   const { t } = useTranslation();
 
-  const { mutateAsync: downloadTicketAsync, isPending } =
+  const { i18n } = useTranslation();
+
+  const { mutateAsync: downloadTicketAsync, isPending: isPendingTicket } =
     trpc.user.events.downloadEventTicket.useMutation();
+
+  const { mutateAsync: downloadChapterTicket, isPending: isPendingChapter } =
+    trpc.user.courses.downloadChapterTicket.useMutation();
+
+  // TODO should only fetch on click
+  const { data: chapter, isFetched: isChapterFetched } =
+    trpc.content.getCourseChapter.useQuery(
+      {
+        language: i18n.language,
+        chapterId: ticket.eventId,
+      },
+      {
+        enabled: ticket.type === 'course',
+      },
+    );
+
+  const { data: course } = trpc.content.getCourse.useQuery(
+    {
+      language: i18n.language,
+      id: chapter ? chapter.courseId : '',
+    },
+    {
+      enabled: isChapterFetched,
+    },
+  );
+
+  let timezone: string,
+    formattedStartDate: string,
+    formattedTime: string,
+    formattedCapacity: string;
+
+  if (chapter) {
+    timezone = chapter.timezone ? chapter.timezone : '';
+    formattedStartDate = chapter.startDate ? formatDate(chapter.startDate) : '';
+    formattedTime =
+      chapter.startDate && chapter.endDate
+        ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
+        : '';
+    formattedCapacity = chapter.availableSeats
+      ? `limited to ${chapter.availableSeats} people`
+      : '';
+  }
 
   return (
     <div className="md:w-[260px] md:flex-none md:ml-auto">
@@ -116,12 +160,32 @@ const Buttons = ({
             variant="newPrimary"
             size={buttonSize}
             mode="light"
-            iconRight={isPending ? <FiLoader /> : undefined}
+            iconRight={
+              isPendingTicket || isPendingChapter ? <FiLoader /> : undefined
+            }
             onClick={async () => {
-              const base64 = await downloadTicketAsync({
-                eventId: ticket.eventId,
-                userDisplayName: userDisplayName,
-              });
+              let base64 = '';
+
+              if (ticket.type === 'course') {
+                if (course && chapter) {
+                  base64 = await downloadChapterTicket({
+                    ...chapter,
+                    ...course,
+                    formattedStartDate,
+                    formattedTime,
+                    formattedCapacity,
+                    userDisplayName,
+                  });
+                } else {
+                  return;
+                }
+              } else {
+                base64 = await downloadTicketAsync({
+                  eventId: ticket.eventId,
+                  userDisplayName: userDisplayName,
+                });
+              }
+
               const link = document.createElement('a');
               link.href = `data:application/pdf;base64,${base64}`;
               link.download = 'ticket.pdf';
@@ -136,10 +200,18 @@ const Buttons = ({
 
         {ticket.isOnline && (
           <Link
-            to={'/events/$eventId'}
-            params={{
-              eventId: ticket.eventId,
-            }}
+            to={
+              ticket.type === 'course'
+                ? '/courses/$courseId/$chapterId'
+                : '/events/$eventId'
+            }
+            params={
+              ticket.type === 'course'
+                ? { courseId: 'bizschool', chapterId: ticket.eventId }
+                : {
+                    eventId: ticket.eventId,
+                  }
+            }
           >
             <Button
               variant="newPrimary"

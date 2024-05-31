@@ -154,9 +154,7 @@ const getUserChapterProcedure = protectedProcedure
         courseId: true,
         booked: true,
         chapterId: true,
-        chapter: true,
         completedAt: true,
-        part: true,
       })
       .array(),
   )
