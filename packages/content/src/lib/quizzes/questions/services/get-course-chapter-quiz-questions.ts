@@ -5,24 +5,12 @@ import { getCourseChapterQuizQuestionsQuery } from '../queries/index.js';
 
 export const createGetCourseChapterQuizQuestions =
   (dependencies: Dependencies) =>
-  async ({
-    courseId,
-    partIndex,
-    chapterIndex,
-    language,
-  }: {
-    courseId: string;
-    partIndex: number;
-    chapterIndex: number;
-    language?: string;
-  }) => {
+  async ({ chapterId, language }: { chapterId: string; language?: string }) => {
     const { postgres } = dependencies;
 
     return postgres.exec(
       getCourseChapterQuizQuestionsQuery({
-        courseId,
-        partIndex,
-        chapterIndex,
+        chapterId,
         language,
       }),
     ) as Promise<JoinedQuizQuestion[]>;

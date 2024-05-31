@@ -56,9 +56,7 @@ const getProgressProcedure = protectedProcedure
 const saveQuizAttemptProcedure = protectedProcedure
   .input(
     z.object({
-      courseId: z.string(),
-      partIndex: z.number(),
-      chapterIndex: z.number(),
+      chapterId: z.string(),
       questionsCount: z.number(),
       correctAnswersCount: z.number(),
     }),
@@ -67,9 +65,7 @@ const saveQuizAttemptProcedure = protectedProcedure
   .mutation(({ ctx, input }) =>
     createSaveQuizAttempt(ctx.dependencies)({
       uid: ctx.user.uid,
-      courseId: input.courseId,
-      partIndex: input.partIndex,
-      chapterIndex: input.chapterIndex,
+      chapterId: input.chapterId,
       questionsCount: input.questionsCount,
       correctAnswersCount: input.correctAnswersCount,
     }),

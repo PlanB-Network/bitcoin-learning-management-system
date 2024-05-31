@@ -239,6 +239,34 @@
       "when": 1717000355654,
       "tag": "0033_tired_daimon_hellstrom",
       "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "5",
+      "when": 1717146615313,
+      "tag": "0034_fresh_cyclops",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1717146857375,
+      "tag": "0035_broad_fantastic_four",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "5",
+      "when": 1717146926440,
+      "tag": "0036_loose_annihilus",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "5",
+      "when": 1717147226898,
+      "tag": "0037_light_the_watchers",
+      "breakpoints": true
     }
   ]
 }

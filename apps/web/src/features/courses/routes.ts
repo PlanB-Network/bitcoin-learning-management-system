@@ -24,7 +24,7 @@ export const coursesDetailsRoute = createRoute({
 
 export const coursesChapterRoute = createRoute({
   getParentRoute: () => coursesRootRoute,
-  path: '/$courseId/$partIndex/$chapterIndex',
+  path: '/$courseId/$chapterId',
   component: lazyRouteComponent(
     () => import('./pages/chapter.tsx'),
     'CourseChapter',

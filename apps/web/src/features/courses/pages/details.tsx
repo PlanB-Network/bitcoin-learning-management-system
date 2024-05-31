@@ -8,12 +8,12 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
-import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
@@ -110,17 +110,20 @@ export const CourseDetails: React.FC = () => {
         : {
             onClick: () => {
               navigate({
-                to: '/courses/$courseId/$partIndex/$chapterIndex',
+                to: '/courses/$courseId/$chapterId',
                 params: {
                   courseId,
-                  partIndex: '1',
-                  chapterIndex: '1',
+                  chapterId:
+                    course?.parts[0] && course?.parts[0].chapters[0]
+                      ? course?.parts[0].chapters[0].chapterId
+                      : '',
                 },
               });
             },
             variant: 'newPrimary' as const,
           },
     [
+      course?.parts,
       course?.requiresPayment,
       courseId,
       isCoursePaid,
@@ -171,7 +174,11 @@ export const CourseDetails: React.FC = () => {
     }
   }
 
-  const Header = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Header = ({
+    course,
+  }: {
+    course: TRPCRouterOutput['content']['getCourse'];
+  }) => {
     return (
       <div className="flex max-w-5xl flex-col space-y-2 px-2 sm:flex-row sm:items-center sm:space-x-10">
         {isScreenMd ? (
@@ -248,7 +255,11 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const CourseInfo = ({ course }: { course: JoinedCourseWithAll }) => {
+  const CourseInfo = ({
+    course,
+  }: {
+    course: TRPCRouterOutput['content']['getCourse'];
+  }) => {
     return (
       <div className="grid max-w-5xl grid-rows-1 place-items-stretch justify-items-stretch gap-y-8 sm:my-2 sm:grid-cols-2">
         <div className="w-full px-2 sm:pl-2 sm:pr-10">
@@ -357,7 +368,7 @@ export const CourseDetails: React.FC = () => {
   const DescriptionAndObjectives = ({
     course,
   }: {
-    course: JoinedCourseWithAll;
+    course: TRPCRouterOutput['content']['getCourse'];
   }) => {
     return (
       <div className="max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 sm:my-4 sm:grid sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-20">
@@ -426,7 +437,11 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Curriculum = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Curriculum = ({
+    course,
+  }: {
+    course: TRPCRouterOutput['content']['getCourse'];
+  }) => {
     return (
       <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
@@ -453,11 +468,12 @@ export const CourseDetails: React.FC = () => {
                     size={20}
                   />
                   <Link
-                    to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                    to={'/courses/$courseId/$chapterId'}
                     params={{
                       courseId,
-                      partIndex: (partIndex + 1).toString(),
-                      chapterIndex: '1',
+                      chapterId: part.chapters[0]
+                        ? part.chapters[0].chapterId
+                        : '',
                     }}
                   >
                     <p
@@ -482,11 +498,10 @@ export const CourseDetails: React.FC = () => {
                             size={7}
                           />
                           <Link
-                            to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                            to={'/courses/$courseId/$chapterId'}
                             params={{
                               courseId,
-                              partIndex: (partIndex + 1).toString(),
-                              chapterIndex: chapter.chapter.toString(),
+                              chapterId: chapter.chapterId,
                             }}
                           >
                             <p
@@ -535,7 +550,11 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Professors = ({
+    course,
+  }: {
+    course: TRPCRouterOutput['content']['getCourse'];
+  }) => {
     return (
       <div className="my-4 max-w-5xl px-2">
         <div className="flex h-fit flex-col">
@@ -570,7 +589,11 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Footer = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Footer = ({
+    course,
+  }: {
+    course: TRPCRouterOutput['content']['getCourse'];
+  }) => {
     return (
       <div className="my-4 max-w-5xl self-center px-2">
         <div className="flex h-fit flex-col">
@@ -612,7 +635,16 @@ export const CourseDetails: React.FC = () => {
       <div className="text-blue-800">
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            {!courseHasToBePurchased && <CourseButton courseId={courseId} />}
+            {!courseHasToBePurchased && (
+              <CourseButton
+                courseId={courseId}
+                firstChapterId={
+                  course?.parts[0] && course?.parts[0].chapters[0]
+                    ? course.parts[0].chapters[0].chapterId
+                    : ''
+                }
+              />
+            )}
             <Header course={course} />
             <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
             <CourseInfo course={course} />

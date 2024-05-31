@@ -53,9 +53,9 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
 
 export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
   const coursesFiles = files.filter(
-    (item) => getContentType(item.path) === 'courses',
+    (item) =>
+      getContentType(item.path) === 'courses' && !item.path.includes('quizz'),
   );
-
   const groupedCourses = new Map<string, ChangedCourse>();
 
   for (const file of coursesFiles) {
@@ -489,35 +489,32 @@ export const createProcessChangedCourse =
                     }
                     return {
                       course_id: course.id,
-                      part: index + 1,
+                      part_index: index + 1,
                       part_id: p.partId,
                     };
                   }),
                 )}
-                ON CONFLICT (course_id, part) DO UPDATE SET
-                  part_id = EXCLUDED.part_id,
+                ON CONFLICT (course_id, part_id) DO UPDATE SET
+                part_index = EXCLUDED.part_index,
                   last_sync = NOW()
                 RETURNING *
               `;
               /// TODO change to part_id (here and everywhere on ON CONFLICTS)
               await transaction`
                 INSERT INTO content.course_parts_localized ${transaction(
-                  parts.map((part, index) => ({
+                  parts.map((part) => ({
                     course_id: course.id,
                     part_id: part.partId,
-                    part: index + 1,
                     language: file.language,
                     title: part.title,
                   })),
                   'course_id',
                   'part_id',
-                  'part',
                   'language',
                   'title',
                 )}
-                ON CONFLICT (course_id, language, part)
+                ON CONFLICT (course_id, language, part_id)
                 DO UPDATE SET 
-                  part_id = EXCLUDED.part_id,
                   title = EXCLUDED.title,
                   last_sync = NOW()
               `;
@@ -526,7 +523,7 @@ export const createProcessChangedCourse =
               if (parts.some((part) => part.chapters.length > 0)) {
                 await transaction`
                 INSERT INTO content.course_chapters ${transaction(
-                  parts.flatMap((part, partIndex) =>
+                  parts.flatMap((part) =>
                     part.chapters.map((c, chapterIndex) => {
                       if (!uuidValidate(c.chapterId)) {
                         throw new Error(
@@ -536,28 +533,25 @@ export const createProcessChangedCourse =
                       return {
                         course_id: course.id,
                         part_id: part.partId,
-                        part: partIndex + 1,
-                        chapter: chapterIndex + 1,
+                        chapter_index: chapterIndex + 1,
                         chapter_id: c.chapterId,
                       };
                     }),
                   ),
                 )}
-                ON CONFLICT (course_id, part, chapter)
+                ON CONFLICT (chapter_id)
                 DO UPDATE SET 
-                  chapter_id = EXCLUDED.chapter_id,
+                  chapter_index = EXCLUDED.chapter_index,
                   part_id = EXCLUDED.part_id,
                   last_sync = NOW()
                 RETURNING *
               `;
 
-                const formatedChapters = parts.flatMap((part, partIndex) =>
-                  part.chapters.map((chapter, chapterIndex) => {
+                const formatedChapters = parts.flatMap((part) =>
+                  part.chapters.map((chapter) => {
                     return {
                       course_id: course.id,
                       chapter_id: chapter.chapterId,
-                      part: partIndex + 1,
-                      chapter: chapterIndex + 1,
                       language: file.language,
                       title: chapter.title,
                       sections: chapter.sections,
@@ -582,8 +576,7 @@ export const createProcessChangedCourse =
 
                 await transaction`
                   INSERT INTO content.course_chapters_localized ${transaction(formatedChapters)}
-                  ON CONFLICT (course_id, part, chapter, language) DO UPDATE SET
-                    chapter_id = EXCLUDED.chapter_id,
+                  ON CONFLICT (course_id, chapter_id, language) DO UPDATE SET
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,
                     raw_content = EXCLUDED.raw_content,
@@ -620,8 +613,8 @@ export const createProcessChangedCourse =
                 for (const chapter of formatedChapters2) {
                   for (const professor of chapter.professors) {
                     await transaction`
-                        INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, part, chapter, language, contributor_id)
-                        VALUES (${course.id}, ${chapter.chapter_id}, ${chapter.part}, ${chapter.chapter}, ${chapter.language}, ${professor})
+                        INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, language, contributor_id)
+                        VALUES (${course.id}, ${chapter.chapter_id}, ${chapter.language}, ${professor})
                         ON CONFLICT DO NOTHING
                   `;
                   }
