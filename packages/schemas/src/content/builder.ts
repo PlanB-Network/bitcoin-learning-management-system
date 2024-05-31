@@ -8,7 +8,9 @@ import {
 
 import { resourceSchema } from './resource.js';
 
-export const builderSchema = createSelectSchema(contentBuilders);
+export const builderSchema = createSelectSchema(contentBuilders, {
+  languages: z.array(z.string()),
+});
 export const builderLocalizedSchema = createSelectSchema(
   contentBuildersLocalized,
 );
@@ -25,10 +27,14 @@ export const joinedBuilderSchema = resourceSchema
     builderSchema.pick({
       name: true,
       category: true,
+      languages: true,
       websiteUrl: true,
       twitterUrl: true,
       githubUrl: true,
       nostr: true,
+      addressLine1: true,
+      addressLine2: true,
+      addressLine3: true,
     }),
   )
   .merge(

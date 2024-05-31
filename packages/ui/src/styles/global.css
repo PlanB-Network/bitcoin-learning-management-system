@@ -101,7 +101,7 @@
   }
 
   .desktop-h7 {
-    @apply text-xl font-semibold leading-[160%] tracking-015px;
+    @apply text-xl font-medium leading-[160%] tracking-015px;
   }
 
   .desktop-h8 {
@@ -114,6 +114,10 @@
 
   .desktop-typo1 {
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
+  }
+
+  .desktop-25px-medium {
+    @apply text-2xl font-medium leading-normal tracking-normal;
   }
 
   .mobile-body2 {

@@ -32,7 +32,7 @@ export const MenuMobile = () => {
   }, [location]);
 
   return (
-    <div className="fixed bottom-0 py-2 z-10 mx-auto flex justify-around w-full bg-gradient-to-r from-[#913501] to-[#FD5C01] text-white md:hidden">
+    <div className="fixed bottom-0 py-2 z-10 mx-auto flex justify-around w-full bg-gradient-to-r from-[#913501] to-[#FD5C01] text-white lg:hidden">
       <Link to={bookingsPath}>
         <MenuItem
           text={t('dashboard.bookings')}

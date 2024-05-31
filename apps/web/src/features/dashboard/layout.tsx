@@ -10,7 +10,7 @@ export const DashboardLayout = ({
 }: {
   children: JSX.Element | JSX.Element[];
 }) => {
-  const isMobile = useSmaller('md');
+  const isMobile = useSmaller('lg');
 
   return isMobile ? (
     <MainLayout
@@ -28,7 +28,7 @@ export const DashboardLayout = ({
     <MainLayout variant="light" headerVariant="light">
       <div className="flex flex-row text-white min-h-[1012px] mt-3 mx-4">
         <MenuDesktop />
-        <div className="bg-white grow rounded-xl ml-3 p-10 text-black">
+        <div className="bg-white grow rounded-xl ml-3 p-8 text-black">
           {children}
         </div>
       </div>

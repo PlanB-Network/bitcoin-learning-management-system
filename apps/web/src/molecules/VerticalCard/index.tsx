@@ -82,7 +82,7 @@ export const VerticalCard = ({
   return (
     <div
       className={cn(
-        'flex flex-col h-full p-2.5 rounded-xl md:rounded-3xl gap-2.5 md:gap-4',
+        'flex flex-col p-2.5 rounded-xl md:rounded-3xl gap-2.5 md:gap-4',
         className,
         cardColorClasses[cardColor],
         onHoverCardColorChange && hoverCardColorClasses[cardColor],
@@ -103,7 +103,7 @@ export const VerticalCard = ({
         )}
       </div>
       <div className="flex flex-col gap-1 px-1">
-        <h4 className="mobile-subtitle2 md:desktop-h6 text-white capitalize">
+        <h4 className="mobile-subtitle2 md:desktop-h6 md:!font-medium text-white capitalize">
           {title}
         </h4>
         {subtitle && (
@@ -117,7 +117,7 @@ export const VerticalCard = ({
           </span>
         )}
       </div>
-      <div className="flex flex-wrap max-md:flex-col justify-center items-center w-full mt-auto gap-1.5 md:gap-5">
+      <div className="flex flex-wrap max-md:flex-col max-md:justify-center items-center w-full mt-auto gap-1.5 md:gap-5">
         {buttonText &&
           (buttonLink ? (
             externalLink ? (
@@ -214,13 +214,13 @@ export const VerticalCard = ({
               {secondaryButtonText}
             </Button>
           ))}
-        {tertiaryButtonText &&
+        {(tertiaryButtonText || tertiaryButtonIcon) &&
           (tertiaryLink ? (
             externalLink ? (
               <a
                 href={tertiaryLink}
                 target="_blank"
-                className="max-md:w-full"
+                className="max-md:w-full ml-auto"
                 rel="noreferrer"
               >
                 <Button
@@ -229,22 +229,26 @@ export const VerticalCard = ({
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={tertiaryButtonIcon}
+                  iconRight={
+                    tertiaryButtonText ? tertiaryButtonIcon : undefined
+                  }
                 >
-                  {tertiaryButtonText}
+                  {tertiaryButtonText || tertiaryButtonIcon}
                 </Button>
               </a>
             ) : (
-              <Link to={tertiaryLink} className="max-md:w-full">
+              <Link to={tertiaryLink} className="max-md:w-full ml-auto">
                 <Button
                   variant={tertiaryButtonVariant}
                   mode={tertiaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
                   onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={tertiaryButtonIcon}
+                  iconRight={
+                    tertiaryButtonText ? tertiaryButtonIcon : undefined
+                  }
                 >
-                  {tertiaryButtonText}
+                  {tertiaryButtonText || tertiaryButtonIcon}
                 </Button>
               </Link>
             )
@@ -254,10 +258,10 @@ export const VerticalCard = ({
               mode={tertiaryButtonMode}
               size={isScreenMd ? 'm' : 'xs'}
               disabled
-              className="max-md:w-full"
-              iconRight={tertiaryButtonIcon}
+              className="max-md:w-full ml-auto"
+              iconRight={tertiaryButtonText ? tertiaryButtonIcon : undefined}
             >
-              {tertiaryButtonText}
+              {tertiaryButtonText || tertiaryButtonIcon}
             </Button>
           ))}
       </div>

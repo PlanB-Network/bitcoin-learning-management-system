@@ -4,8 +4,22 @@ import type { JoinedBuilder } from '@sovereign-university/types';
 export const getBuilderQuery = (id: number, language?: string) => {
   return sql<JoinedBuilder[]>`
     SELECT 
-      r.id, r.path, bl.language, b.name, b.category, b.website_url, b.twitter_url, 
-      b.github_url, b.nostr, bl.description, r.last_updated, r.last_commit,
+      r.id, 
+      r.path, 
+      bl.language, 
+      b.name, 
+      b.category, 
+      b.languages,
+      b.website_url, 
+      b.twitter_url, 
+      b.github_url, 
+      b.nostr, 
+      b.address_line_1, 
+      b.address_line_2, 
+      b.address_line_3, 
+      bl.description, 
+      r.last_updated, 
+      r.last_commit,
       ARRAY_AGG(t.name) AS tags
     FROM content.builders b
     JOIN content.resources r ON r.id = b.resource_id
@@ -14,7 +28,19 @@ export const getBuilderQuery = (id: number, language?: string) => {
     LEFT JOIN content.tags t ON t.id = rt.tag_id
     WHERE r.id = ${id}
     ${language ? sql`AND bl.language = ${language}` : sql``}
-    GROUP BY r.id, bl.language, b.name, b.category, b.website_url, b.twitter_url,
-    b.github_url, b.nostr, bl.description
+    GROUP BY 
+      r.id, 
+      bl.language, 
+      b.name, 
+      b.category, 
+      b.languages,
+      b.website_url, 
+      b.twitter_url,
+      b.github_url, 
+      b.nostr, 
+      b.address_line_1, 
+      b.address_line_2, 
+      b.address_line_3, 
+      bl.description
   `;
 };

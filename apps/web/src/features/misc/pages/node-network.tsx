@@ -1,11 +1,15 @@
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { LuPlus } from 'react-icons/lu';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button } from '@sovereign-university/ui';
 
-import { useGreater } from '#src/hooks/use-greater.js';
+import { PageLayout } from '#src/components/PageLayout/index.js';
+import { BuilderCard } from '#src/features/resources/components/Cards/builder-card.js';
+import { trpc } from '#src/utils/trpc.js';
 
-import { MainLayout } from '../../../components/MainLayout/index.tsx';
-import { useDisclosure } from '../../../hooks/index.ts';
+import SonarCircle from '../../../assets/about/circle_sonar.svg?react';
+import nodeMap from '../../../assets/about/node_map.webp';
 
 const QnAItem = ({
   question,
@@ -14,28 +18,20 @@ const QnAItem = ({
   question: string;
   answer: string;
 }) => {
-  const { isOpen, toggle } = useDisclosure();
-
   return (
-    <div>
-      <button onClick={toggle}>
-        <div className="flex cursor-pointer flex-row text-base font-medium sm:text-xl items-center">
-          <span className="uppercase text-orange-500">{question}</span>
-          <div
-            className={cn(
-              'ml-2 text-2xl sm:text-3xl font-light mr-3 inline-block',
-              isOpen ? 'rotate-45' : 'rotate-0',
-            )}
-          >
-            {'+'}
-          </div>
-        </div>
-      </button>
-      {isOpen && (
-        <p className="max-w-2xl whitespace-pre-line text-sm">{answer}</p>
-      )}
-      <hr className="mb-4 mt-6 border-gray-800" />
-    </div>
+    <details className="w-full group [&:not(:last-child)]:border-b border-white/25 py-10">
+      <summary className="w-full flex cursor-pointer items-center justify-between">
+        <span className="desktop-25px-medium uppercase text-darkOrange-5">
+          {question}
+        </span>
+        <span className="group-open:rotate-45 transition-transform opacity-70">
+          <LuPlus size={24} />
+        </span>
+      </summary>
+      <p className="w-full whitespace-pre-line leading-normal text-justify max-w-[708px]">
+        {answer}
+      </p>
+    </details>
   );
 };
 
@@ -66,7 +62,7 @@ const QnA = () => {
   ];
 
   return (
-    <div className="flex w-full flex-col gap-4 px-4 pt-6">
+    <div className="flex w-full flex-col z-10">
       {questions.map((item) => (
         <QnAItem
           question={item.question}
@@ -79,63 +75,59 @@ const QnA = () => {
 };
 
 export const NodeNetwork = () => {
-  const { t } = useTranslation();
-  const isScreenXl = useGreater('xl');
-  const isScreenLg = useGreater('lg');
-  const isScreenMd = useGreater('md');
-  const isScreenSm = useGreater('sm');
+  const { t, i18n } = useTranslation();
 
-  let mapWidth;
-  if (isScreenXl) {
-    mapWidth = 1200;
-  } else if (isScreenLg) {
-    mapWidth = 900;
-  } else if (isScreenMd) {
-    mapWidth = 700;
-  } else if (isScreenSm) {
-    mapWidth = 550;
-  } else {
-    mapWidth = window.innerWidth - 100;
-  }
+  const { data: communities } = trpc.content.getBuilders.useQuery({
+    language: i18n.language ?? 'en',
+  });
+
+  const filteredCommunities = communities
+    ? communities
+        .filter((el) => el.category.toLowerCase() === 'communities')
+        .sort((a, b) => a.name.localeCompare(b.name))
+    : [];
 
   return (
-    <MainLayout>
-      <div className="flex flex-col items-center">
-        <div className="mx-8 mt-24 flex max-w-4xl flex-col items-center text-white">
-          <h1 className="text-5xl font-semibold uppercase text-orange-500">
-            {t('nodeNetwork.pageTitle')}
-          </h1>
-          <p className="mt-2 text-center text-sm font-medium uppercase md:text-base">
-            {t('nodeNetwork.pageSubtitle')}
-          </p>
-          <p className="mt-6 max-w-[40rem] text-center text-sm text-gray-400 md:text-base">
-            {t('nodeNetwork.description1')}
-          </p>
+    <PageLayout
+      title={t('nodeNetwork.pageTitle')}
+      subtitle={t('nodeNetwork.pageSubtitle')}
+      description={t('nodeNetwork.description1')}
+      footerVariant="dark"
+    >
+      <div className="flex flex-col items-center text-white">
+        <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+          {filteredCommunities.map((community) => (
+            <Link
+              to={'/resources/builder/$builderId'}
+              params={{
+                builderId: community.id.toString(),
+              }}
+              key={community.id}
+            >
+              <BuilderCard
+                name={community.name}
+                logo={community.logo}
+                cardWidth="w-[90px]"
+              />
+            </Link>
+          ))}
+        </div>
+        <img src={nodeMap} alt="Node map" className="max-md:hidden my-20" />
+        <QnA />
+        <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
+          <SonarCircle className="max-md:hidden absolute size-72 sm:size-fit z-0" />
           <a
-            className="mt-8 place-self-center"
             href="https://framaforms.org/node-application-planb-network-1708081674"
             target="_blank"
             rel="noopener noreferrer"
+            className="mt-10 z-10"
           >
-            <Button variant="secondary" glowing={true} className="!text-black">
+            <Button variant="newSecondary" onHoverArrow size="l">
               {t('nodeNetwork.apply')}
             </Button>
           </a>
-          <div className="my-12 w-fit content-center self-center">
-            <iframe
-              id="btcmap"
-              className="rounded-3xl"
-              title="BTC Map"
-              width={mapWidth}
-              height="600"
-              allowFullScreen={true}
-              allow="geolocation"
-              src="https://btcmap.org/communities/map?organization=plan-b-network#12/46.02645/8.93764"
-            ></iframe>
-          </div>
-          <QnA />
         </div>
       </div>
-    </MainLayout>
+    </PageLayout>
   );
 };

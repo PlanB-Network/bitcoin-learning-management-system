@@ -1,15 +1,19 @@
 import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BsGithub, BsLink, BsTwitter } from 'react-icons/bs';
-import { GiBirdMask } from 'react-icons/gi';
+import { BsGithub, BsTwitterX } from 'react-icons/bs';
+import { SlGlobe } from 'react-icons/sl';
 
+import { Button, cn } from '@sovereign-university/ui';
+
+import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 
-import { Card } from '../../../atoms/Card/index.tsx';
-import { Tag } from '../../../atoms/Tag/index.tsx';
+import Nostr from '../../../assets/icons/nostr.svg?react';
 import { useNavigateMisc } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
+import { BuilderEvents } from '../components/builder-events.tsx';
+import { BuilderCard } from '../components/Cards/builder-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const Builder = () => {
@@ -23,6 +27,31 @@ export const Builder = () => {
     id: Number(builderId),
     language: i18n.language ?? 'en',
   });
+
+  const { data: communities } = trpc.content.getBuilders.useQuery({
+    language: i18n.language ?? 'en',
+  });
+
+  const { data: events } = trpc.content.getEvents.useQuery();
+
+  const filteredCommunities = communities
+    ? communities
+        .filter(
+          (el) =>
+            el.category.toLowerCase() === 'communities' &&
+            el.name !== builder?.name,
+        )
+        .sort((a, b) => a.name.localeCompare(b.name))
+    : [];
+
+  const filteredEvents = events
+    ? events.filter(
+        (event) =>
+          event.builder === builder?.name &&
+          new Date(event.startDate) > new Date(),
+      )
+    : [];
+
   const navigateTo404Called = useRef(false);
 
   useEffect(() => {
@@ -41,96 +70,142 @@ export const Builder = () => {
       backToCategoryButton
     >
       {builder && (
-        <Card className="mx-2 md:mx-auto">
-          <div className="my-4 w-full grid-cols-1 grid-rows-6 px-4 sm:grid-cols-3 sm:px-8 md:grid">
-            <h3 className="col-span-1 row-span-1 mb-4 text-3xl font-semibold uppercase text-blue-900 sm:text-4xl md:mb-8">
-              {builder?.name}
-            </h3>
-            <div className="col-span-2 row-span-1 mb-3 mt-1 font-light md:mb-0 md:ml-12">
-              {builder?.tags?.map((tag) => (
-                <Link to={'/resources/builders'} key={tag}>
-                  <Tag className="ml-1" size={isScreenMd ? 'm' : 's'}>
-                    {tag}
-                  </Tag>
-                </Link>
-              ))}
-            </div>
-            <div className="row-span-5 mb-4 flex max-md:flex-wrap flex-row items-center border-b-4 border-solid border-blue-900 md:mb-0 md:flex-col md:border-b-0 md:border-r-4 md:pb-10 md:pr-16">
+        <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
+          <section className="flex p-2 md:p-[30px]">
+            <div className="flex flex-col gap-3">
               <img
                 src={builder?.logo}
-                className="md:w-full max-sm:h-40 max-md:h-60 mx-auto rounded-md"
+                className="rounded-2xl md:rounded-3xl size-[84px] md:size-[276px] shadow-card-items-dark"
                 alt={t('imagesAlt.sthRepresentingCompany')}
               />
-              <div className="mx-2 my-3 md:my-6 flex w-full justify-evenly">
-                {builder?.githubUrl && (
+              <div className="flex justify-center gap-2.5 md:hidden">
+                {builder.languages &&
+                  builder.languages
+                    .slice(0, 2)
+                    .map((language) => (
+                      <Flag
+                        code={language}
+                        key={language}
+                        className="!w-[26px] !h-[18px] shadow-card-items-dark"
+                      />
+                    ))}
+              </div>
+            </div>
+            <div className="flex flex-col md:gap-6 ml-4 md:ml-10">
+              <h2 className="text-2xl md:text-5xl md:font-medium leading-none md:leading-[116%] text-white">
+                {builder.name}
+              </h2>
+
+              {/* Links */}
+              <div className="flex gap-4 md:gap-5 text-white max-md:mt-2">
+                {builder.twitterUrl && (
                   <a
-                    href={builder?.githubUrl}
+                    href={builder.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsGithub size={isScreenMd ? 32 : 24} />
+                    <BsTwitterX size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
-                {builder?.twitterUrl && (
+                {builder.nostr && (
                   <a
-                    href={builder?.twitterUrl}
+                    href={builder.nostr}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsTwitter size={isScreenMd ? 32 : 24} />
+                    <Nostr className={cn(isScreenMd ? 'size-8' : 'size-4')} />
                   </a>
                 )}
-                {builder?.nostr && (
+                {builder.githubUrl && (
                   <a
-                    href={builder?.nostr}
+                    href={builder.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <GiBirdMask size={isScreenMd ? 32 : 24} />
+                    <BsGithub size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
-                {builder?.websiteUrl && (
+                {builder.websiteUrl && (
                   <a
-                    href={builder?.websiteUrl}
+                    href={builder.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <BsLink size={isScreenMd ? 32 : 24} />
+                    <SlGlobe size={isScreenMd ? 32 : 16} />
                   </a>
                 )}
               </div>
+              {(builder.addressLine1 ||
+                builder.addressLine2 ||
+                builder.addressLine3) && (
+                <div className="flex flex-col mobile-caption1 max-md:leading-tight md:desktop-h6 text-white max-md:mt-2">
+                  <span>{builder.addressLine2}</span>
+                  <span>{builder.addressLine1}</span>
+                </div>
+              )}
+              <div className="flex gap-2.5 md:gap-4 items-center flex-wrap max-md:mt-1.5">
+                {builder.tags?.map((tag) => (
+                  <Button
+                    variant="newSecondary"
+                    mode="colored"
+                    key={tag}
+                    className="cursor-default capitalize shadow-card-items-dark"
+                    size={isScreenMd ? 'm' : 'xs'}
+                  >
+                    {tag}
+                  </Button>
+                ))}
+              </div>
             </div>
-
-            <div className="col-span-2 row-span-5 ml-0 flex flex-col space-y-4 text-sm md:ml-12">
-              <p
-                className="text-justify text-sm md:text-base"
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {builder?.description}
-              </p>
-
-              {/* <RelatedResources
-                tutoriel={[{ label: 'Seed signer Device' }]}
-                interview={[
-                  {
-                    label: 'CEO Interview',
-                    path: replaceDynamicParam(Routes.Interview, {
-                      interviewId: 'ja78172',
-                    }),
-                  },
-                ]}
-                course={[
-                  {
-                    label: 'BTC 204',
-                    path: replaceDynamicParam(Routes.Course, {
-                      courseId: 'btc-204',
-                    }),
-                  },
-                ]}
-              /> */}
+            <div className="ml-auto flex flex-col gap-6 max-md:hidden">
+              {builder.languages &&
+                builder.languages
+                  .slice(0, 3)
+                  .map((language) => (
+                    <Flag
+                      code={language}
+                      key={language}
+                      className="!w-[70px] !h-[49px] shadow-card-items-dark"
+                    />
+                  ))}
             </div>
+          </section>
+          <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5">
+            {builder.description}
+          </p>
+        </article>
+      )}
+      {filteredEvents.length > 0 && <BuilderEvents events={filteredEvents} />}
+      {builder?.category === 'communities' && (
+        <div className="flex flex-col items-center gap-4 md:gap-14">
+          <div className="max-md:hidden h-px bg-newGray-1 w-full" />
+          <div className="text-center">
+            <span className="text-darkOrange-5 max-md:text-xs max-md:font-medium max-md:leading-normal md:desktop-h7">
+              {t('builders.networkStrength')}
+            </span>
+            <h3 className="text-white mobile-h3 md:desktop-h3">
+              {t('builders.otherCommunities')}
+            </h3>
           </div>
-        </Card>
+          <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+            {filteredCommunities.map((community) => (
+              <Link
+                to={'/resources/builder/$builderId'}
+                params={{
+                  builderId: community.id.toString(),
+                }}
+                key={community.id}
+              >
+                <BuilderCard
+                  name={community.name}
+                  logo={community.logo}
+                  cardWidth="w-[50px] md:w-[90px]"
+                />
+              </Link>
+            ))}
+          </div>
+          <div className="max-md:hidden h-px bg-newGray-1 w-full" />
+        </div>
       )}
     </ResourceLayout>
   );
