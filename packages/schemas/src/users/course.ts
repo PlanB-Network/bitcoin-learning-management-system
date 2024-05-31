@@ -22,18 +22,21 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
     totalChapters: z.number(),
     chapters: z.array(
       courseUserChapterSchema.pick({
-        part: true,
-        chapter: true,
+        chapterId: true,
         completedAt: true,
       }),
     ),
     nextChapter: courseChapterSchema
-      .pick({ part: true, chapter: true, chapterId: true, courseId: true })
+      .pick({
+        chapterIndex: true,
+        partIndex: true,
+        chapterId: true,
+        courseId: true,
+      })
       .optional(),
     lastCompletedChapter: courseUserChapterSchema
       .pick({
-        part: true,
-        chapter: true,
+        chapterId: true,
         completedAt: true,
       })
       .optional(),
