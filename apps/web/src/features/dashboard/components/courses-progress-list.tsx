@@ -78,12 +78,12 @@ export const CoursesProgressList = ({
 }: CoursesProgressListProps) => (
   <section>
     <div className="flex flex-col gap-2.5 md:gap-4 mt-5 mb-2.5 md:my-10">
-      <h2 className="desktop-h6">
+      <h2 className="mobile-h3 md:desktop-h6">
         {completed
           ? t('dashboard.myCourses.completedCoursesTitle')
           : t('dashboard.myCourses.inprogressCoursesTitle')}
       </h2>
-      <h2 className="font-medium leading-relaxed font-poppins text-[rgba(5,10,20,0.75)]">
+      <h2 className="desktop-typo1 md:font-medium md:leading-relaxed md:font-poppins text-[rgba(5,10,20,0.75)]">
         {completed
           ? t('dashboard.myCourses.completedCoursesDescription')
           : t('dashboard.myCourses.inprogressCoursesDescription')}
@@ -112,69 +112,35 @@ export const CoursesProgressList = ({
               />
               <span className="text-xl font-medium text-darkOrange-5 leading-normal ml-auto w-[52px] shrink-0 text-end max-md:hidden">
                 {course.progressPercentage}%
+              </span>
+              <div
+                className={cn(
+                  course.progressPercentage === 100 ? 'hidden' : '',
+                )}
+              >
+                <Link
+                  to={'/courses/$courseId/$chapterId'}
+                  params={{
+                    courseId: course.courseId,
+                    chapterId: course.nextChapter?.chapterId as string,
+                  }}
+                >
+                  <Button variant="ghost" mode="light" onHoverArrow size="s">
+                    {t('dashboard.myCourses.resumeLesson')}
+                  </Button>
+                </Link>
               </div>
             </div>
-            <div className="relative flex h-2 w-full rounded-r-full">
-              <div className="absolute h-2 w-full rounded-full bg-gray-700"></div>
-              <div
-                style={{ width: `${course.progressPercentage}%` }}
-                className={`absolute h-2 rounded-l-full bg-darkOrange-5`}
-              ></div>
-              <img
-                src={OrangePill}
-                style={{ marginLeft: `${course.progressPercentage}%` }}
-                className={compose('absolute top-[-12px] w-[14px]')}
-                alt=""
-              />
-            </div>
           </div>
-          {/* Only for courses in progress */}
-          <div
-            className={compose(
-              'flex flex-row gap-2 pt-4 !m-0',
-              course.progressPercentage === 100 ? 'hidden' : '',
-            )}
-          >
-            <Link
-              to={'/courses/$courseId/$chapterId'}
-              params={{
-                courseId: course.courseId,
-                chapterId: course.nextChapter?.chapterId as string,
-              }}
-            >
-              <Button variant="newPrimary" size="xs">
-                {t('dashboard.myCourses.resumeLesson')}
-              </Button>
-            </Link>
-            <Button variant="newPrimaryGhost" size="xs">
-              {t('words.details')}
-            </Button>
-          </div>
-          {/* Only for Completed course */}
-          <div
-            className={compose(
-              'flex flex-row gap-2 pt-4 !m-0',
-              course.progressPercentage === 100 ? '' : 'hidden',
-            )}
-          >
-            <Button
-              variant="newPrimaryGhost"
-              size="xs"
-              rounded
-              className="px-3"
-            >
-              {t('words.details')}
-            </Button>
-          </div>
+        ))
+      ) : (
+        <div className="w-full">
+          <Link to={'/courses'} className="text-darkOrange-5">
+            {t('dashboard.myCourses.startCourse')}
+          </Link>
+          <span> {t('dashboard.myCourses.seeProgress')}</span>
         </div>
-      ))
-    ) : (
-      <div className="w-full py-6">
-        <Link to={'/courses'} className="text-orange-600">
-          Start a course
-        </Link>
-        <span> to see your progress here!</span>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
+  </section>
 );

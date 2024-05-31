@@ -267,6 +267,13 @@
       "when": 1717147226898,
       "tag": "0037_light_the_watchers",
       "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "5",
+      "when": 1717154628397,
+      "tag": "0038_complex_steel_serpent",
+      "breakpoints": true
     }
   ]
 }
