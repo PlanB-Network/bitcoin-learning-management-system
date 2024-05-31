@@ -28,7 +28,7 @@ export const createGetCourse =
 
     const partsWithChapters = parts.map((part) => ({
       ...part,
-      chapters: chapters.filter((chapter) => chapter.part === part.part),
+      chapters: chapters.filter((chapter) => chapter.partId === part.partId),
     }));
 
     return {

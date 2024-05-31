@@ -51,11 +51,10 @@ export const CoursesProgressList = ({
             )}
           >
             <Link
-              to={'/courses/$courseId/$partIndex/$chapterIndex'}
+              to={'/courses/$courseId/$chapterId'}
               params={{
                 courseId: course.courseId,
-                partIndex: String(course.nextChapter?.part),
-                chapterIndex: String(course.nextChapter?.chapter),
+                chapterId: course.nextChapter?.chapterId as string,
               }}
             >
               <Button variant="newPrimary" size="xs">

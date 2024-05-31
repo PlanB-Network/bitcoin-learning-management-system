@@ -60,8 +60,7 @@ const getCourseChapterProcedure = publicProcedure
     z.object({
       courseId: z.string(),
       language: z.string(),
-      partIndex: z.string(),
-      chapterIndex: z.string(),
+      chapterId: z.string(),
     }),
   )
   // TODO fix this validation issue
@@ -93,8 +92,7 @@ const getCourseChapterProcedure = publicProcedure
   .query(async ({ ctx, input }) =>
     createGetCourseChapter(ctx.dependencies)(
       input.courseId,
-      Number(input.partIndex),
-      Number(input.chapterIndex),
+      input.chapterId,
       input.language,
     ),
   );
@@ -102,18 +100,14 @@ const getCourseChapterProcedure = publicProcedure
 const getCourseChapterQuizQuestionsProcedure = publicProcedure
   .input(
     z.object({
-      courseId: z.string(),
+      chapterId: z.string(),
       language: z.string(),
-      partIndex: z.string(),
-      chapterIndex: z.string(),
     }),
   )
   .output(joinedQuizQuestionSchema.array())
   .query(async ({ ctx, input }) =>
     createGetCourseChapterQuizQuestions(ctx.dependencies)({
-      courseId: input.courseId,
-      partIndex: Number(input.partIndex),
-      chapterIndex: Number(input.chapterIndex),
+      chapterId: input.chapterId,
       language: input.language,
     }),
   );

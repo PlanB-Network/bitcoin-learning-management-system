@@ -30,58 +30,34 @@ import { LiveVideo } from './components/live-video.tsx';
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
 
 const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
-  const currentPart = chapter.part;
+  const allChapters = chapter.course.parts.flatMap((part) => part.chapters);
 
-  if (type === 'previous' && chapter.chapter === 1) {
-    const previousPart = chapter.course.parts.find(
-      (part) => part.part === currentPart.part - 1,
-    );
+  const currentChapterPosition = allChapters.findIndex(
+    (chap) => chap.chapterId === chapter.chapterId,
+  );
 
-    // If there is no previous part, go to the course page
-    if (!previousPart) {
+  if (type === 'previous') {
+    if (currentChapterPosition < 1) {
+      return { courseId: chapter.course.id };
+    } else {
+      const gotoChapter = allChapters[currentChapterPosition - 1];
+      return {
+        courseId: chapter.course.id,
+        chapterId: gotoChapter.chapterId,
+        chapterName: gotoChapter.title,
+      };
+    }
+  } else {
+    if (currentChapterPosition === allChapters.length - 1) {
       return { courseId: chapter.course.id };
     }
-
-    // Else go to the last chapter of the previous part
+    const gotoChapter = allChapters[currentChapterPosition + 1];
     return {
       courseId: chapter.course.id,
-      partIndex: previousPart.part.toString(),
-      chapterIndex: previousPart.chapters.length.toString(),
-      chapterName: previousPart.chapters.at(-1)?.title,
+      chapterId: gotoChapter.chapterId,
+      chapterName: gotoChapter.title,
     };
   }
-
-  if (type === 'next' && chapter.chapter === currentPart.chapters.length) {
-    const nextPart = chapter.course.parts.find(
-      (part) => part.part === currentPart.part + 1,
-    );
-
-    // If there is no next part, go to the course page
-    if (!nextPart) {
-      return { courseId: chapter.course.id };
-    }
-
-    // Else go to the first chapter of the next part
-    return {
-      courseId: chapter.course.id,
-      partIndex: nextPart.part.toString(),
-      chapterIndex: '1',
-      chapterName: nextPart.chapters.at(0)?.title,
-    };
-  }
-
-  return {
-    courseId: chapter.course.id,
-    partIndex: chapter.part.part.toString(),
-    chapterIndex: (type === 'previous'
-      ? chapter.chapter - 1
-      : chapter.chapter + 1
-    ).toString(),
-    chapterName:
-      type === 'previous'
-        ? currentPart.chapters[chapter.chapter - 2].title
-        : currentPart.chapters[chapter.chapter].title,
-  };
 };
 
 const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
@@ -120,11 +96,10 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
       <p className="max-w-6xl text-darkOrange-5 md:text-[22px] text-sm leading-normal tracking-[1px] text-center mx-auto">
         {t('courses.chapter.nextLesson')}{' '}
         <Link
-          to={'/courses/$courseId/$partIndex/$chapterIndex'}
+          to={'/courses/$courseId/$chapterId'}
           params={{
             courseId: chapter.course.id,
-            partIndex: closestChapter.part.toString(),
-            chapterIndex: closestChapter.chapter.toString(),
+            chapterId: closestChapter.chapterId,
           }}
           className="uppercase font-medium underline"
         >
@@ -174,12 +149,12 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
           <div className="h-0 grow border-t border-gray-300"></div>
           <span className="px-3">
             {t('courses.part.count', {
-              count: chapter.part.part,
+              count: chapter.part.partIndex,
               total: chapter.course.parts?.length,
             })}
             <span className={`ml-1.5 lowercase`}>
               {t('courses.chapter.count', {
-                count: chapter.chapter,
+                count: chapter.chapterIndex,
               })}
             </span>
           </span>
@@ -191,9 +166,9 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
           <Link
             className="h-6"
             to={
-              chapter.part.part === 1 && chapter.chapter === 1
+              chapter.part.partIndex === 1 && chapter.chapterIndex === 1
                 ? '/courses/$courseId'
-                : '/courses/$courseId/$partIndex/$chapterIndex'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
           >
@@ -208,10 +183,10 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
           <Link
             className="h-6"
             to={
-              chapter.part.part === chapter.course.parts.length &&
-              chapter.chapter === chapter.part.chapters.length
+              chapter.part.partIndex === chapter.course.parts.length &&
+              chapter.chapterIndex === chapter.part.chapters.length
                 ? '/courses/$courseId'
-                : '/courses/$courseId/$partIndex/$chapterIndex'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
           >
@@ -234,11 +209,12 @@ const TimelineBig = ({
 }) => {
   const { t } = useTranslation();
 
-  const isFirstChapter = chapter.chapter === 1 && chapter.part.part === 1;
+  const isFirstChapter =
+    chapter.chapterIndex === 1 && chapter.part.partIndex === 1;
 
   const isLastChapter =
-    chapter.chapter === chapter.part.chapters.length &&
-    chapter.part.part === chapter.course.parts.length;
+    chapter.chapterIndex === chapter.part.chapters.length &&
+    chapter.part.partIndex === chapter.course.parts.length;
 
   return (
     <div className="mb-0 w-full max-w-[66rem] max-sm:hidden mt-7 px-5 md:px-2">
@@ -261,12 +237,12 @@ const TimelineBig = ({
       <div className="font-body flex flex-row justify-between text-xl text-black leading-relaxed tracking-015px mt-7">
         <div>
           {t('courses.part.count', {
-            count: chapter.part.part,
+            count: chapter.part.partIndex,
             total: chapter.course.parts.length,
           })}
           <span className={`ml-2.5 lowercase`}>
             {t('courses.chapter.count', {
-              count: chapter.chapter,
+              count: chapter.chapterIndex,
             })}
           </span>
         </div>
@@ -275,37 +251,38 @@ const TimelineBig = ({
 
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
         {chapter.course.parts.map((currentPart) => {
-          const firstPart = currentPart.part === 1;
-          const lastPart = currentPart.part === chapter.course.parts.length;
+          const firstPart = currentPart.partIndex === 1;
+          const lastPart =
+            currentPart.partIndex === chapter.course.parts.length;
 
           return (
-            <div className="flex h-4 grow flex-row" key={currentPart.part}>
+            <div className="flex h-4 grow flex-row" key={currentPart.partIndex}>
               {currentPart.chapters.map((currentChapter, chapterIndex) => {
-                const firstChapter = currentChapter.chapter === 1;
+                const firstChapter = currentChapter.chapterIndex === 1;
                 const lastChapter =
-                  currentChapter.chapter === currentPart.chapters.length;
+                  currentChapter.chapterIndex === currentPart.chapters.length;
 
                 if (
-                  currentPart.part !== chapter.part.part ||
-                  currentChapter.chapter !== chapter.chapter
+                  currentPart.partIndex !== chapter.part.partIndex ||
+                  currentChapter.chapterIndex !== chapter.chapterIndex
                 ) {
                   return (
                     <Link
                       className="border-beige-300 h-4 grow border-l-[1.5px] first:border-l-0"
-                      to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                      to={'/courses/$courseId/$chapterId'}
                       params={{
                         courseId: chapter.course.id,
-                        partIndex: currentPart.part.toString(),
-                        chapterIndex: currentChapter.chapter.toString(),
+                        chapterId: currentChapter.chapterId,
                       }}
                       key={chapterIndex}
                     >
                       <div
                         className={compose(
                           'h-4 grow',
-                          currentPart.part < chapter.part.part ||
-                            (currentPart.part === chapter.part.part &&
-                              currentChapter.chapter < chapter.chapter)
+                          currentPart.partIndex < chapter.part.partIndex ||
+                            (currentPart.partIndex === chapter.part.partIndex &&
+                              currentChapter.chapterIndex <
+                                chapter.chapterIndex)
                             ? 'bg-darkOrange-5'
                             : 'bg-newGray-3',
                           firstPart && firstChapter ? 'rounded-l-full' : '',
@@ -353,7 +330,7 @@ const TimelineBig = ({
             to={
               isFirstChapter
                 ? '/courses/$courseId'
-                : '/courses/$courseId/$partIndex/$chapterIndex'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
             className="basis-1/4 truncate text-newGray-1 hover:font-medium"
@@ -368,7 +345,7 @@ const TimelineBig = ({
               to={
                 isFirstChapter
                   ? '/courses/$courseId'
-                  : '/courses/$courseId/$partIndex/$chapterIndex'
+                  : '/courses/$courseId/$chapterId'
               }
               params={goToChapterParameters(chapter, 'previous')}
             >
@@ -381,7 +358,7 @@ const TimelineBig = ({
               to={
                 isLastChapter
                   ? '/courses/$courseId'
-                  : '/courses/$courseId/$partIndex/$chapterIndex'
+                  : '/courses/$courseId/$chapterId'
               }
               params={goToChapterParameters(chapter, 'next')}
             >
@@ -395,7 +372,7 @@ const TimelineBig = ({
             to={
               isLastChapter
                 ? '/courses/$courseId'
-                : '/courses/$courseId/$partIndex/$chapterIndex'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
             className="basis-1/4 truncate text-newGray-1 hover:font-medium"
@@ -432,13 +409,13 @@ const Header = ({
       <div>
         <h2 className="text-black desktop-h5 max-sm:hidden capitalize">
           {t('courses.part.count', {
-            count: chapter.part.part,
+            count: chapter.part.partIndex,
             total: chapter.course.parts.length,
           })}{' '}
           : {chapter?.part.title.toLowerCase()}
         </h2>
         <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
-          {chapter.part.part}.{chapter.chapter}. {chapter.title}
+          {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
         </h2>
         <div className="h-px bg-newGray-4 mt-2.5" />
       </div>
@@ -502,17 +479,15 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
   };
 
   const isLastChapter =
-    chapter.chapter === chapter.part.chapters.length &&
-    chapter.part.part === chapter.course.parts.length;
+    chapter.chapterIndex === chapter.part.chapters.length &&
+    chapter.part.partIndex === chapter.course.parts.length;
 
   return (
     <div>
       <Link
         className="flex w-full justify-center md:justify-end pt-5 md:pt-10"
         to={
-          isLastChapter
-            ? '/courses/$courseId'
-            : '/courses/$courseId/$partIndex/$chapterIndex'
+          isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
         }
         params={goToChapterParameters(chapter, 'next')}
       >
@@ -592,8 +567,8 @@ function shuffleArray<T>(array: T[]): T[] {
 export const CourseChapter = () => {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const { courseId, partIndex, chapterIndex } = useParams({
-    from: '/courses/$courseId/$partIndex/$chapterIndex',
+  const { courseId, chapterId } = useParams({
+    from: '/courses/$courseId/$chapterId',
   });
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
@@ -604,16 +579,13 @@ export const CourseChapter = () => {
   const { data: chapter, isFetched } = trpc.content.getCourseChapter.useQuery({
     courseId,
     language: i18n.language,
-    partIndex,
-    chapterIndex,
+    chapterId: chapterId,
   });
 
   const { data: quizzArray } =
     trpc.content.getCourseChapterQuizQuestions.useQuery({
-      courseId,
       language: i18n.language,
-      partIndex,
-      chapterIndex,
+      chapterId: chapterId,
     });
 
   const questionsArray: Question[] = useMemo(() => {
@@ -664,11 +636,6 @@ export const CourseChapter = () => {
 
   let computerProfessor = '';
   if (chapter) {
-    // console.log('isInPerson :', chapter.isInPerson);
-    // console.log('isOnline :', chapter.isOnline);
-    // console.log('startDate :', chapter.startDate);
-    // console.log('timezone :', chapter.timezone);
-
     {
       (() => {
         let professors;
@@ -746,7 +713,7 @@ export const CourseChapter = () => {
                         </div>
                         <QuizzCard
                           name={chapter.course.id}
-                          chapter={`${chapter.part.part.toString()}.${chapter.chapter.toString()}`}
+                          chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
                           questions={questionsArray}
                         />
                       </>

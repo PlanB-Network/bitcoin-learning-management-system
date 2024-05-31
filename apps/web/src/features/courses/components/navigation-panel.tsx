@@ -8,13 +8,11 @@ import { cn } from '@sovereign-university/ui';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
 
-interface Part {
-  part: number;
-}
 interface Chapter {
   title: string;
-  chapter: number;
-  part: Part;
+  partIndex: number;
+  chapterIndex: number;
+  chapterId: string;
 }
 
 interface Props {
@@ -28,17 +26,14 @@ const isCurrentChapter = (
   chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
   currentChapter: Chapter,
 ) => {
-  return (
-    chapter.part === currentChapter.part.part &&
-    chapter.chapter === currentChapter.chapter
-  );
+  return chapter.chapterId === currentChapter.chapterId;
 };
 
 const isPastPart = (
   chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
   currentChapter: Chapter,
 ) => {
-  return chapter.part <= currentChapter.part.part;
+  return chapter.partIndex <= currentChapter.partIndex;
 };
 
 const isPastChapter = (
@@ -46,9 +41,9 @@ const isPastChapter = (
   currentChapter: Chapter,
 ) => {
   return (
-    chapter.part < currentChapter.part.part ||
-    (chapter.part === currentChapter.part.part &&
-      chapter.chapter < currentChapter.chapter)
+    chapter.partIndex < currentChapter.partIndex ||
+    (chapter.partIndex === currentChapter.partIndex &&
+      chapter.chapterIndex < currentChapter.chapterIndex)
   );
 };
 
@@ -76,14 +71,16 @@ export const NavigationPanel: React.FC<Props> = ({
       <div className="ml-2">
         <ul className="flex flex-col gap-2">
           {chapters
-            .filter((chapter) => chapter.chapter === 1)
+            .filter((chapter) => chapter.chapterIndex === 1)
             .map((chapterOne) => (
               <Disclosure
-                key={`${chapterOne.part}${chapterOne.chapter}`}
-                defaultOpen={chapterOne.part === currentChapter.part.part}
+                key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
+                defaultOpen={chapterOne.partIndex === currentChapter.partIndex}
               >
                 {({ open }) => (
-                  <div key={`${chapterOne.part}${chapterOne.chapter}`}>
+                  <div
+                    key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
+                  >
                     <Disclosure.Button
                       className={'flex justify-start text-left'}
                     >
@@ -110,15 +107,17 @@ export const NavigationPanel: React.FC<Props> = ({
                     </Disclosure.Button>
                     <Disclosure.Panel>
                       {chapters
-                        .filter((chapter) => chapter.part === chapterOne.part)
+                        .filter(
+                          (chapter) =>
+                            chapter.partIndex === chapterOne.partIndex,
+                        )
                         .map((chapter, index) => (
                           <li key={index + 1000}>
                             <Link
-                              to={'/courses/$courseId/$partIndex/$chapterIndex'}
+                              to={'/courses/$courseId/$chapterId'}
                               params={{
                                 courseId: course.id,
-                                partIndex: chapter.part.toString(),
-                                chapterIndex: chapter.chapter.toString(),
+                                chapterId: chapter.chapterId,
                               }}
                             >
                               <div className="mt-1 grid grid-cols-8 items-center gap-1">

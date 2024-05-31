@@ -22,6 +22,19 @@ export const coursePartSchema = createSelectSchema(contentCourseParts);
 export const coursePartLocalizedSchema = createSelectSchema(
   contentCoursePartsLocalized,
 );
+export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
+  .pick({
+    courseId: true,
+    language: true,
+    partId: true,
+    title: true,
+  })
+  .merge(
+    coursePartSchema.pick({
+      partIndex: true,
+    }),
+  );
+
 export const courseChapterSchema = createSelectSchema(contentCourseChapters);
 export const courseChapterLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
@@ -29,8 +42,7 @@ export const courseChapterLocalizedSchema = createSelectSchema(
 
 export const joinedCourseChapterSchema = courseChapterLocalizedSchema
   .pick({
-    part: true,
-    chapter: true,
+    chapterId: true,
     language: true,
     title: true,
     sections: true,
@@ -50,6 +62,17 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     liveLanguage: true,
     rawContent: true,
   })
+  .merge(
+    courseChapterSchema.pick({
+      partId: true,
+      chapterIndex: true,
+    }),
+  )
+  .merge(
+    coursePartSchema.pick({
+      partIndex: true,
+    }),
+  )
   .merge(
     z.object({
       partTitle: z.string(),
@@ -115,8 +138,6 @@ export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
 export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
   .pick({
     chapterId: true,
-    part: true,
-    chapter: true,
     language: true,
     title: true,
     sections: true,
@@ -136,6 +157,17 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
     liveLanguage: true,
     rawContent: true,
   })
+  .merge(
+    courseChapterSchema.pick({
+      partId: true,
+      chapterIndex: true,
+    }),
+  )
+  .merge(
+    coursePartSchema.pick({
+      partIndex: true,
+    }),
+  )
   .merge(
     courseSchema
       .pick({

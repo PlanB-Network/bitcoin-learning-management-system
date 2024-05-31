@@ -340,7 +340,7 @@ export const contentCourseParts = content.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(), // To rename part_index
+    partIndex: integer('part_index').notNull(),
     partId: uuid('part_id').unique().notNull(),
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
@@ -348,7 +348,7 @@ export const contentCourseParts = content.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.part], //partId
+      columns: [table.courseId, table.partId],
     }),
   }),
 );
@@ -357,26 +357,22 @@ export const contentCoursePartsLocalized = content.table(
   'course_parts_localized',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), // To remove
     partId: uuid('part_id')
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
-
-    // Per translation
     title: text('title').notNull(),
-
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
       .notNull(),
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.part, table.language],
+      columns: [table.courseId, table.partId, table.language],
     }),
     fkCoursePartsLocalizedToCourseParts: foreignKey({
-      columns: [table.courseId, table.part],
-      foreignColumns: [contentCourseParts.courseId, contentCourseParts.part],
+      columns: [table.courseId, table.partId],
+      foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
       name: 'course_parts_localized_to_course_parts_fk',
     }).onDelete('cascade'),
     fkCoursePartsLocalizedToCourseLocalized: foreignKey({
@@ -394,8 +390,7 @@ export const contentCourseChapters = content.table(
   'course_chapters',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), // To remove
-    chapter: integer('chapter').notNull(), // To rename chapter_index
+    chapterIndex: integer('chapter_index').notNull(),
     partId: uuid('part_id')
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
@@ -406,11 +401,11 @@ export const contentCourseChapters = content.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.part, table.chapter],
+      columns: [table.chapterId],
     }),
     fkCourseChaptersToCourseParts: foreignKey({
-      columns: [table.courseId, table.part],
-      foreignColumns: [contentCourseParts.courseId, contentCourseParts.part],
+      columns: [table.courseId, table.partId],
+      foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
       name: 'course_chapters_to_course_parts_fk',
     }).onDelete('cascade'),
   }),
@@ -420,8 +415,6 @@ export const contentCourseChaptersLocalized = content.table(
   'course_chapters_localized',
   {
     courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), // To remove
-    chapter: integer('chapter').notNull(), // To remove
     chapterId: uuid('chapter_id')
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
@@ -429,7 +422,6 @@ export const contentCourseChaptersLocalized = content.table(
       }),
     language: varchar('language', { length: 10 }).notNull(),
     releasePlace: varchar('release_place', { length: 50 }),
-
     isOnline: boolean('is_online').default(false).notNull(),
     isInPerson: boolean('is_in_person').default(false).notNull(),
     startDate: timestamp('start_date'),
@@ -443,8 +435,6 @@ export const contentCourseChaptersLocalized = content.table(
     availableSeats: integer('available_seats'),
     remainingSeats: integer('remaining_seats'),
     liveLanguage: text('live_language'),
-
-    // Per translation
     title: text('title').notNull(),
     sections: text('sections').array().notNull(),
     rawContent: text('raw_content').notNull(),
@@ -454,17 +444,8 @@ export const contentCourseChaptersLocalized = content.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.part, table.chapter, table.language],
+      columns: [table.courseId, table.chapterId, table.language],
     }),
-    fkCourseChaptersLocalizedToCourseChapters: foreignKey({
-      columns: [table.courseId, table.part, table.chapter],
-      foreignColumns: [
-        contentCourseChapters.courseId,
-        contentCourseChapters.part, // coursePart.partId ?
-        contentCourseChapters.chapter,
-      ],
-      name: 'course_chapters_localized_to_course_chapters_fk',
-    }).onDelete('cascade'),
     fkCourseChaptersLocalizedToCourseLocalized: foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
@@ -472,15 +453,6 @@ export const contentCourseChaptersLocalized = content.table(
         contentCoursesLocalized.language,
       ],
       name: 'course_chapters_localized_to_course_localized_fk',
-    }).onDelete('cascade'),
-    fkCourseChaptersLocalizedToCoursePartsLocalized: foreignKey({
-      columns: [table.courseId, table.part, table.language],
-      foreignColumns: [
-        contentCoursePartsLocalized.courseId,
-        contentCoursePartsLocalized.part,
-        contentCoursePartsLocalized.language,
-      ],
-      name: 'course_chapters_localized_to_course_parts_localized_fk',
     }).onDelete('cascade'),
   }),
 );
@@ -752,8 +724,6 @@ export const contentTutorialsLocalized = content.table(
       .notNull()
       .references(() => contentTutorials.id, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
-
-    // Per translation
     title: text('title').notNull(),
     description: text('description'),
     rawContent: text('raw_content').notNull(),
@@ -784,60 +754,37 @@ export const contentTutorialTags = content.table(
 
 // QUIZZES
 
-export const contentQuizQuestions = content.table(
-  'quiz_questions',
-  {
-    id: integer('id').primaryKey().notNull(),
+export const contentQuizQuestions = content.table('quiz_questions', {
+  id: varchar('id', { length: 20 }).primaryKey().notNull(),
 
-    courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), // To remove
-    // partId: uuid('part_id')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(), // To remove
-    // chapterId: uuid('chapter_id')
-    //   .unique()
-    //   /*.notNull()*/
-    //   .references(() => contentCourseChapters.chapterId, {
-    //     onDelete: 'cascade',
-    //   }),
+  chapterId: uuid('chapter_id')
+    .notNull()
+    .references(() => contentCourseChapters.chapterId, {
+      onDelete: 'cascade',
+    }),
 
-    difficulty: varchar('difficulty', { length: 255 }).notNull(),
-    author: varchar('author', { length: 255 }),
-    duration: integer('duration'),
+  difficulty: varchar('difficulty', { length: 255 }).notNull(),
+  author: varchar('author', { length: 255 }),
+  duration: integer('duration'),
 
-    lastUpdated: timestamp('last_updated', {
-      withTimezone: true,
-    })
-      .defaultNow()
-      .notNull(),
-    lastCommit: varchar('last_commit', { length: 40 }).notNull(),
-    lastSync: timestamp('last_sync', { withTimezone: true })
-      .defaultNow()
-      .notNull(),
-  },
-  (table) => ({
-    fkQuizzesToCourseChapters: foreignKey({
-      columns: [table.courseId, table.part, table.chapter],
-      foreignColumns: [
-        contentCourseChapters.courseId,
-        contentCourseParts.part, // coursePart.partId ?
-        contentCourseChapters.chapter,
-      ],
-      name: 'quizzes_to_course_chapters_fk',
-    }).onDelete('cascade'),
-  }),
-);
+  lastUpdated: timestamp('last_updated', {
+    withTimezone: true,
+  })
+    .defaultNow()
+    .notNull(),
+  lastCommit: varchar('last_commit', { length: 40 }).notNull(),
+  lastSync: timestamp('last_sync', { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
 
 export const contentQuizQuestionsLocalized = content.table(
   'quiz_questions_localized',
   {
-    quizQuestionId: integer('quiz_question_id')
+    quizQuestionId: varchar('quiz_question_id', { length: 20 })
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
-
-    // Per translation
     question: text('question').notNull(),
     answer: text('answer').notNull(),
     wrongAnswers: text('wrong_answers').array().notNull(),
@@ -853,7 +800,7 @@ export const contentQuizQuestionsLocalized = content.table(
 export const contentQuizQuestionTags = content.table(
   'quiz_question_tags',
   {
-    quizQuestionId: integer('quiz_question_id')
+    quizQuestionId: varchar('quiz_question_id', { length: 20 })
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
     tagId: integer('tag_id')
@@ -873,17 +820,11 @@ export const usersQuizAttempts = users.table(
     uid: uuid('uid')
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    courseId: varchar('course_id', { length: 20 }).notNull(),
-    part: integer('part').notNull(), // To remove
-    // partId: uuid('part_id')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapter: integer('chapter').notNull(), // To remove
-    // chapterId: uuid('chapter_id')
-    //   /*.notNull()*/
-    //   .references(() => contentCourseChapters.chapterId, {
-    //     onDelete: 'cascade',
-    //   }),
+    chapterId: uuid('chapter_id')
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
 
     questionsCount: integer('questions_count').notNull(),
     correctAnswersCount: integer('correct_answers_count').notNull(),
@@ -892,7 +833,7 @@ export const usersQuizAttempts = users.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.uid, table.courseId, table.part, table.chapter],
+      columns: [table.uid, table.chapterId],
     }),
   }),
 );
@@ -999,8 +940,6 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
     courseId: varchar('course_id', { length: 20 })
       .notNull()
       .references(() => contentCourses.id, { onDelete: 'cascade' }),
-    part: integer('part').notNull(), // To remove
-    chapter: integer('chapter').notNull(), // To remove
     chapterId: uuid('chapter_id')
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
@@ -1016,8 +955,7 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
       columns: [
         table.contributorId,
         table.courseId,
-        table.part,
-        table.chapter,
+        table.chapterId,
         table.language,
       ],
     }),
