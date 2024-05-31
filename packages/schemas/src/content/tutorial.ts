@@ -16,7 +16,7 @@ export const tutorialLocalizedSchema = createSelectSchema(
 );
 export const tutorialCreditSchema = createSelectSchema(contentTutorialCredits);
 
-export const joinedTutorialSchema = tutorialSchema
+export const joinedTutorialLightSchema = tutorialSchema
   .pick({
     id: true,
     path: true,
@@ -32,7 +32,6 @@ export const joinedTutorialSchema = tutorialSchema
       language: true,
       title: true,
       description: true,
-      rawContent: true,
     }),
   )
   .merge(
@@ -41,6 +40,12 @@ export const joinedTutorialSchema = tutorialSchema
       builder: joinedBuilderSchema.optional().nullable(),
     }),
   );
+
+export const joinedTutorialSchema = joinedTutorialLightSchema.merge(
+  tutorialLocalizedSchema.pick({
+    rawContent: true,
+  }),
+);
 
 export const joinedTutorialCreditSchema = tutorialCreditSchema.merge(
   z.object({

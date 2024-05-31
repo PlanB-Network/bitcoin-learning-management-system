@@ -5,6 +5,7 @@ import type { z } from 'zod';
 
 import {
   joinedTutorialCreditSchema,
+  joinedTutorialLightSchema,
   joinedTutorialSchema,
   tutorialCreditSchema,
   tutorialLocalizedSchema,
@@ -13,6 +14,7 @@ import {
 
 export type JoinedTutorialCredit = z.infer<typeof joinedTutorialCreditSchema>;
 export type JoinedTutorial = z.infer<typeof joinedTutorialSchema>;
+export type JoinedTutorialLight = z.infer<typeof joinedTutorialLightSchema>;
 export type TutorialCredit = z.infer<typeof tutorialCreditSchema>;
 export type TutorialLocalized = z.infer<typeof tutorialLocalizedSchema>;
 export type Tutorial = z.infer<typeof tutorialSchema>;
