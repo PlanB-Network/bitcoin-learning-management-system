@@ -28,13 +28,13 @@ const getenv = <T extends string | number | boolean | null = string>(
     }
   }
 
-  return value as T;
+  return (value || fallback) as T;
 };
 
 /**
  * Real application domain (without trailing slash)
  */
-export const domain = getenv<string>('DOMAIN', 'http://localhost:8181');
+export const domainUrl = getenv<string>('DOMAIN_URL', 'http://localhost:8181');
 
 export const sendgrid: EnvConfig['sendgrid'] = {
   key: getenv<string | null>('SENDGRID_KEY', null),

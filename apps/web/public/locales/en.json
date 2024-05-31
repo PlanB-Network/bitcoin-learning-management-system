@@ -280,6 +280,7 @@
     },
     "profile": {
       "change": "Change",
+      "edit": "Edit",
       "cancel": "Cancel",
       "save": "Save",
       "crop": "Crop",
@@ -289,6 +290,7 @@
       "password": "Password",
       "personalInformation": "My personal information",
       "profileInformation": "Profile information",
+      "profilePicture": "Profile picture",
       "security": "Security",
       "username": "Username"
     }

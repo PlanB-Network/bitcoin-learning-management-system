@@ -48,7 +48,7 @@ export const createChangeEmailConfirmation = ({ postgres }: Dependencies) => {
  */
 export const createEmailValidationToken = (deps: Dependencies) => {
   const template = deps.config.sendgrid.templates.emailChange;
-  const domain = deps.config.domain;
+  const domain = deps.config.domainUrl;
 
   if (!template) {
     throw new Error('Missing SendGrid email change template');
@@ -64,10 +64,10 @@ export const createEmailValidationToken = (deps: Dependencies) => {
       .then((token) =>
         sendEmail({
           email,
-          subject: 'Recover your password',
+          subject: 'Validate your email',
           template,
           data: {
-            token_url: `${domain}/recover-password/${token.id}`,
+            token_url: `${domain}/validate-email/${token.id}`,
           },
         }),
       )

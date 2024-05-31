@@ -1,7 +1,8 @@
 import { Link, useParams } from '@tanstack/react-router';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { trpc } from '../../../utils/index.ts';
+import { UserContext } from '#src/providers/user.js';
 
 enum ValidationStatus {
   VALIDATING,
@@ -11,6 +12,7 @@ enum ValidationStatus {
 
 export const ValidateEmailChangePage = () => {
   const { token } = useParams({ from: '/validate-email/$token' });
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState<string | null>(null);
 
   const [validationStatus, setValidationStatus] = useState<ValidationStatus>(
@@ -22,11 +24,12 @@ export const ValidateEmailChangePage = () => {
   // Call the API to validate the email change
   const validateEmailChange = trpc.user.validateEmailChange.useMutation({
     onSuccess: ({ email }) => {
-      console.log('Email changed', email);
-
       if (email) {
         setEmail(email);
         setValidationStatus(ValidationStatus.SUCCESS);
+        if (user) {
+          setUser({ ...user, email });
+        }
       } else {
         setValidationStatus(ValidationStatus.ERROR);
       }
@@ -64,9 +67,9 @@ export const ValidateEmailChangePage = () => {
         <p>
           <Link
             className="cursor-pointer hover:text-orange-500"
-            to="/dashboard/profile"
+            to={user ? '/dashboard' : '/'}
           >
-            Go to dashboard
+            {user ? 'Go to dashboard' : 'Go to home'}
           </Link>
         </p>
       </div>
@@ -76,16 +79,16 @@ export const ValidateEmailChangePage = () => {
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
           Error validating email change
         </h1>
-        <p className="my-8">
+        <p className="my-8 max-w-2xl">
           An error occurred while validating your email change, it seems like
-          the link is invalid or expired.
+          the link or expired or has already been used. Please try again.
         </p>
         <p>
           <Link
             className="cursor-pointer hover:text-orange-500"
-            to="/dashboard/profile"
+            to={user ? '/dashboard' : '/'}
           >
-            Go to dashboard
+            {user ? 'Go to dashboard' : 'Go to home'}
           </Link>
         </p>
       </div>

@@ -1,5 +1,5 @@
 export interface EnvConfig {
-  domain: string;
+  domainUrl: string;
   sendgrid: {
     key: string | null;
     email: string | null;
