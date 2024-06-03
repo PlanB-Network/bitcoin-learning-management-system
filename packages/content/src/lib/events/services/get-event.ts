@@ -17,12 +17,7 @@ export const createGetEvent =
     return {
       ...event,
       picture: event.id
-        ? computeAssetCdnUrl(
-            process.env['CDN_URL'] || 'http://localhost:8080',
-            event.lastCommit,
-            event.path,
-            'thumbnail.webp',
-          )
+        ? computeAssetCdnUrl(event.lastCommit, event.path, 'thumbnail.webp')
         : undefined,
     };
   };

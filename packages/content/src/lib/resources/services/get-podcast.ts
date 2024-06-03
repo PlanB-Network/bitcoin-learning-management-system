@@ -16,11 +16,6 @@ export const createGetPodcast =
 
     return {
       ...podcast,
-      logo: computeAssetCdnUrl(
-        process.env['CDN_URL'] || 'http://localhost:8080',
-        podcast.lastCommit,
-        podcast.path,
-        'logo.webp',
-      ),
+      logo: computeAssetCdnUrl(podcast.lastCommit, podcast.path, 'logo.webp'),
     };
   };

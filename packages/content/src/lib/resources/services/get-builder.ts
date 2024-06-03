@@ -16,11 +16,6 @@ export const createGetBuilder =
 
     return {
       ...builder,
-      logo: computeAssetCdnUrl(
-        process.env['CDN_URL'] || 'http://localhost:8080',
-        builder.lastCommit,
-        builder.path,
-        'logo.webp',
-      ),
+      logo: computeAssetCdnUrl(builder.lastCommit, builder.path, 'logo.webp'),
     };
   };

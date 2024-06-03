@@ -10,12 +10,7 @@ export const createGetEvents = (dependencies: Dependencies) => async () => {
   return events.map((event) => ({
     ...event,
     picture: event.id
-      ? computeAssetCdnUrl(
-          process.env['CDN_URL'] || 'http://localhost:8080',
-          event.lastCommit,
-          event.path,
-          'thumbnail.webp',
-        )
+      ? computeAssetCdnUrl(event.lastCommit, event.path, 'thumbnail.webp')
       : undefined,
   }));
 };
