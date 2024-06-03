@@ -14,6 +14,7 @@ import { createProcessMainFile } from './main.js';
 interface EventDetails {
   id: string;
   path: string;
+  fullPath: string;
 }
 
 export interface ChangedEvent extends ChangedContent {
@@ -35,6 +36,7 @@ export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
         type: 'events',
         id: id,
         path: eventPath,
+        fullPath: eventPath,
         files: [],
       };
 
@@ -61,6 +63,7 @@ const parseDetailsFromPath = (path: string): EventDetails => {
   return {
     id: pathElements[2],
     path: pathElements.slice(0, 3).join('/'),
+    fullPath: pathElements.join('/'),
   };
 };
 
@@ -79,7 +82,9 @@ export const createProcessChangedEvent =
             await processMainFile(event, main);
           }
         } catch (error) {
-          errors.push(`Error processing file(events) ${event?.path}: ${error}`);
+          errors.push(
+            `Error processing file(events) ${event?.fullPath}: ${error}`,
+          );
           return;
         }
       })

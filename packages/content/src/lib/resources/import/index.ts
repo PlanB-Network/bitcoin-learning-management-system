@@ -17,6 +17,7 @@ import type { ResourceCategory } from './const.js';
 interface ResourceDetails {
   category: ResourceCategory;
   path: string;
+  fullPath: string;
   language?: Language;
 }
 
@@ -47,6 +48,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
   return {
     category: categorySubpath,
     path: pathElements.slice(0, 3).join('/'),
+    fullPath: pathElements.join('/'),
     language: pathElements[3].replace(/\..*/, '') as Language,
   };
 };
@@ -66,6 +68,7 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
       const {
         category,
         path: resourcePath,
+        fullPath,
         language,
       } = parseDetailsFromPath(file.path);
 
@@ -73,6 +76,7 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
         type: 'resources',
         category,
         path: resourcePath,
+        fullPath,
         files: [],
       };
 

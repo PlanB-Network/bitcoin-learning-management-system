@@ -4,7 +4,7 @@ import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
-export const LANGUAGES = ['fr', 'en', 'es', 'de', 'it', 'pt'];
+export const LANGUAGES = ['fr', 'en', 'es', 'de', 'it', 'pt', 'ja', 'vi'];
 
 export const LANGUAGES_MAP: { [key: string]: string } = {
   fr: 'Français',
@@ -13,6 +13,8 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   de: 'Deutsch',
   it: 'Italiano',
   pt: 'Português',
+  ja: '日本語',
+  vi: 'Tiếng Việt',
 };
 
 void i18n

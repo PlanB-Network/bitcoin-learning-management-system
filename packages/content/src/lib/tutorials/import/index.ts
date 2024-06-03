@@ -17,6 +17,7 @@ import { createProcessMainFile } from './main.js';
 interface TutorialDetails {
   category: string;
   path: string;
+  fullPath: string;
   language?: Language;
 }
 
@@ -46,6 +47,7 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   return {
     category: pathElements[1],
     path: tutorialElements.join('/'),
+    fullPath: pathElements.join('/'),
     language: pathElements.at(-1)?.replace(/\..*/, '') as Language,
   };
 };
@@ -62,6 +64,7 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
       const {
         category,
         path: tutorialPath,
+        fullPath,
         language,
       } = parseDetailsFromPath(file.path);
 
@@ -70,6 +73,7 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
         name: tutorialPath.split('/').at(-1) as string,
         category,
         path: tutorialPath,
+        fullPath,
         files: [],
       };
 

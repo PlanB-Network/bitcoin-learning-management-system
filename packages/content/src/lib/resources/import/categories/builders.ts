@@ -43,7 +43,7 @@ export const createProcessChangedBuilder = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(builders) ${resource?.path}: ${error}`,
+            `Error processing file(builders) ${resource?.fullPath}: ${error}`,
           );
           return;
         }
@@ -84,7 +84,7 @@ export const createProcessChangedBuilder = (
           }
         } catch (error) {
           errors.push(
-            `Error processing file(builders) ${main?.path}: ${error}`,
+            `Error processing file ${main?.path} ((${resource.fullPath})): ${error}`,
           );
           return;
         }
@@ -111,7 +111,7 @@ export const createProcessChangedBuilder = (
         `.then(firstRow);
           } catch (error) {
             errors.push(
-              `Error processing file(builders) ${file?.path}: ${error}`,
+              `Error processing file ${file?.path} (${resource.fullPath}): ${error}`,
             );
             console.log('file', file);
             console.log('main', main);

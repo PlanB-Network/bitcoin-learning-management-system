@@ -25,6 +25,7 @@ import {
 interface CourseDetails {
   id: string;
   path: string;
+  fullPath: string;
   language?: Language;
 }
 
@@ -47,6 +48,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   return {
     id: pathElements[1],
     path: pathElements.slice(0, 2).join('/'),
+    fullPath: pathElements.join('/'),
     language: pathElements[2].replace(/\..*/, '') as Language,
   };
 };
@@ -63,6 +65,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
       const {
         id,
         path: coursePath,
+        fullPath,
         language,
       } = parseDetailsFromPath(file.path);
 
@@ -70,6 +73,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
         type: 'courses',
         id,
         path: coursePath,
+        fullPath,
         files: [],
       };
 
@@ -421,7 +425,7 @@ export const createProcessChangedCourse =
           }
         } catch (error) {
           errors.push(
-            `Error processing file(courses) ${course?.path}: ${error}`,
+            `Error processing file(courses) ${course?.fullPath}: ${error}`,
           );
           return;
         }
@@ -629,7 +633,7 @@ export const createProcessChangedCourse =
             }
           } catch {
             errors.push(
-              `Error processing file(courses) ${course.path} ${file?.path}: `,
+              `Error processing file(courses) ${course.fullPath} ${file?.path}: `,
             );
           }
         }
