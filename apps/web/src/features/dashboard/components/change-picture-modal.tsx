@@ -5,6 +5,7 @@ import { Cropper } from 'react-cropper';
 
 import { Button, cn } from '@sovereign-university/ui';
 
+import spinner from '#src/assets/icons/spinner.svg';
 import { Modal } from '#src/atoms/Modal/index.tsx';
 
 interface Props {
@@ -24,6 +25,7 @@ export const ChangePictureModal = (props: Props) => {
   const [cropData, setCropData] = useState('');
   const [cropper, setCropper] = useState<Cropper | null>(null);
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.CROP);
+  const [loading, setLoading] = useState(false);
 
   const getCropData = () => {
     if (cropper && image) {
@@ -32,6 +34,9 @@ export const ChangePictureModal = (props: Props) => {
   };
 
   useMemo(() => {
+    setLoading(false);
+    setActiveTab(Tabs.CROP);
+
     if (props.file) {
       const reader = new FileReader();
       reader.addEventListener('load', () => setImage(reader.result as string));
@@ -41,6 +46,8 @@ export const ChangePictureModal = (props: Props) => {
 
   const sendBlobAsFile = (blob: Blob | null) => {
     if (blob && props.onChange) {
+      setLoading(true);
+
       const file = new File([blob], 'profile-picture.png', {
         type: 'image/png',
       });
@@ -122,15 +129,29 @@ export const ChangePictureModal = (props: Props) => {
           </div>
         </div>
 
-        <div className="p-4 flex gap-4 justify-between">
+        <div className="p-4 flex gap-4 justify-between items-center">
           {image && (
             <>
-              <Button variant="newPrimary" size="m" onClick={validateChange}>
-                {t('dashboard.profile.save')}
-              </Button>
-              <Button variant="secondary" size="m" onClick={props.onClose}>
-                {t('dashboard.profile.cancel')}
-              </Button>
+              {loading ? (
+                <div className="flex gap-2 px-2">
+                  <span>{t('dashboard.profile.saving')}</span>
+                  <img src={spinner} alt="spinner" className="size-6" />
+                </div>
+              ) : (
+                <>
+                  <Button
+                    variant="newPrimary"
+                    size="m"
+                    onClick={validateChange}
+                  >
+                    <span>{t('dashboard.profile.save')}</span>
+                  </Button>
+
+                  <Button variant="secondary" size="m" onClick={props.onClose}>
+                    {t('dashboard.profile.cancel')}
+                  </Button>
+                </>
+              )}
             </>
           )}
         </div>

@@ -1,7 +1,7 @@
 import { useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Button } from '@sovereign-university/ui';
 
@@ -32,7 +32,7 @@ export const DashboardProfile = () => {
 
   const { user, setUser } = useContext(UserContext);
   const [file, setFile] = useState<File | null>(null);
-  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+  const pictureUrl = getPictureUrl(user);
   const profilePictureDisclosure = useDisclosure();
 
   // Called when the user selects a profile picture to upload

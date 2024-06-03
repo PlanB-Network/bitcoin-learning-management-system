@@ -6,11 +6,14 @@
 // import crypto from 'node:crypto';
 // import type { IncomingMessage } from 'node:http';
 
+import { createHash } from 'node:crypto';
 import { Writable } from 'node:stream';
 
 import { Router } from 'express';
 import type { Request } from 'express';
 import formidable from 'formidable';
+import type { ResizeOptions } from 'sharp';
+import sharp from 'sharp';
 
 import { createCalculateEventSeats } from '@sovereign-university/content';
 import type { UserFile } from '@sovereign-university/types';
@@ -47,6 +50,12 @@ import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust t
 //   return hex === req.headers['sbp-sig'];
 // };
 
+const defaultResizeOptions: ResizeOptions = {
+  width: 200,
+  height: 200,
+  withoutEnlargement: true,
+};
+
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
 
@@ -61,12 +70,11 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
   });
 
   const insertFile = createInsertFile(dependencies);
-  const receiveFile = (req: Request) => {
+  const receiveImage = (req: Request, resizeOptions = defaultResizeOptions) => {
     return new Promise<Omit<UserFile, 'data'>>((resolve, reject) => {
       const chunks: Buffer[] = [];
 
       const form = formidable({
-        hashAlgorithm: 'sha256',
         multiples: false,
         fileWriteStreamHandler() {
           return new Writable({
@@ -79,7 +87,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
       });
 
       try {
-        form.parse<never, 'file'>(req, (err, fields, files) => {
+        form.parse<never, 'file'>(req, async (err, fields, files) => {
           if (err) {
             throw new InternalServerError('Failed to parse form data');
           }
@@ -95,10 +103,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
             throw new InternalServerError('Missing session uid');
           }
 
-          if (!file.hash) {
-            throw new InternalServerError('Missing file hash');
-          }
-
           if (!file.mimetype) {
             throw new InternalServerError('Missing file mimetype');
           }
@@ -107,18 +111,20 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
             throw new InternalServerError('Missing file name');
           }
 
-          const data = Buffer.concat(chunks);
-          if (data.length !== file.size) {
-            throw new InternalServerError("Couldn't read the file properly");
-          }
+          const data = await sharp(Buffer.concat(chunks))
+            .resize(resizeOptions)
+            .webp() // Convert to WebP
+            .toBuffer();
+
+          const checksum = createHash('sha256').update(data).digest('hex');
 
           resolve(
             insertFile(req.session.uid, {
               data,
               filename: file.originalFilename,
-              mimetype: file.mimetype,
-              filesize: file.size,
-              checksum: file.hash,
+              mimetype: 'image/webp',
+              filesize: data.byteLength,
+              checksum,
             }),
           );
         });
@@ -141,7 +147,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
         throw new InternalServerError('Missing session uid');
       }
 
-      receiveFile(req)
+      receiveImage(req)
         .then((file) => setProfilePicture(uid, file.id))
         .then((result) => res.json(result))
         // eslint-disable-next-line promise/no-callback-in-promise
@@ -157,10 +163,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
 
       res.setHeader('Content-Type', file.mimetype);
       res.setHeader('Content-Length', file.filesize.toString());
-      res.setHeader(
-        'Content-Disposition',
-        `attachment; filename="${file.filename}"`,
-      );
 
       res.end(file.data);
     } catch (error) {
