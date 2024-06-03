@@ -20,6 +20,9 @@ export const BuilderCard = (props: BuilderCardProps) => {
       <p className="absolute text-center text-xs md:text-sm font-bold text-white opacity-0 group-hover/builder:opacity-100 group-focus/builder:opacity-100 transition-all">
         {props.name}
       </p>
+      <span className=" text-xs font-bold text-white mt-2 md:block hidden text-center">
+        {props.name}
+      </span>
     </div>
   );
 };

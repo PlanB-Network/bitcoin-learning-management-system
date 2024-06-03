@@ -62,7 +62,7 @@ const QnA = () => {
   ];
 
   return (
-    <div className="flex w-full flex-col z-10">
+    <div className="flex w-full px-10 sm:px-0 flex-col z-10">
       {questions.map((item) => (
         <QnAItem
           question={item.question}
@@ -103,6 +103,7 @@ export const NodeNetwork = () => {
                 builderId: community.id.toString(),
               }}
               key={community.id}
+              className="flex flex-col items-center"
             >
               <BuilderCard
                 name={community.name}
