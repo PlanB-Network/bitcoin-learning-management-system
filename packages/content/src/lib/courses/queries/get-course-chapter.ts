@@ -16,14 +16,8 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
       SELECT ARRAY_AGG(cp.contributor_id) AS professors
       FROM content.course_chapters_localized_professors cp
       WHERE 
-<<<<<<< Updated upstream
-        cl.chapter_id = ${chapterId}
-        AND cl.language = ${language ? language : 'language'} -- Fallback to the chapter's language if none provided
-=======
-        cp.course_id = ${courseId} 
-        AND cp.chapter_id = ${chapterId}
+        cp.chapter_id = ${chapterId}
         AND cp.language = ${language ? language : 'language'} -- Fallback to the chapter's language if none provided
->>>>>>> Stashed changes
     ) AS cp_agg ON TRUE
     WHERE
       cl.chapter_id = ${chapterId}
