@@ -1,15 +1,21 @@
-import type { IconType } from 'react-icons';
-
 export interface NavigationBaseItem {
   id: string;
   title?: string;
-  mobileIcon?: string;
+  mobileIcon?: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined;
+    }
+  >;
 }
 
 type ActionOrPath = { action: () => void } | { path: string };
 
 export type NavigationElement = (NavigationBaseItem & {
-  icon?: IconType;
+  icon?: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined;
+    }
+  >;
   description?: string;
 }) &
   ActionOrPath;

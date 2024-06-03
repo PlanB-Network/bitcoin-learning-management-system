@@ -458,12 +458,12 @@
     "merchantsDescription": "Accept bitcoin payments and discover tools for merchants",
     "miningDescription": "Mine your own bitcoins and learn about the mining industry",
     "nodeDescription": "Learn how to be self-sovereign with your own bitcoin node",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
+    "nodeNetworkDescription": "Join the Plan B global community network",
     "ourStoryDescription": "Learn about the story of the university",
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "sponsorsDescription": "Discover our sponsors and main contributors",
     "supportUsDescription": "Find ways to support us, by any manner",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
+    "teachersDescription": "Get to know our academy teachers",
     "walletsDescription": "Secure and use your bitcoins"
   },
   "nodeNetwork": {

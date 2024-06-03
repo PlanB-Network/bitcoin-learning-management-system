@@ -1,50 +1,79 @@
 import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 
+import { cn } from '@sovereign-university/ui';
+
 import type { NavigationElement } from '../props.tsx';
 
 export interface MenuElementProps {
   element: NavigationElement;
+  variant?: 'dark' | 'light';
+  isMultipleSubSectionChildren?: boolean;
 }
 
-export const MenuElement = ({ element }: MenuElementProps) => {
+export const MenuElement = ({
+  element,
+  variant,
+  isMultipleSubSectionChildren,
+}: MenuElementProps) => {
   const item = useMemo(
     () => (
       <div
         key={element.id}
-        className="group relative flex w-full max-w-sm cursor-pointer gap-x-6 rounded-lg p-4 duration-100 hover:bg-gray-100"
+        className={cn(
+          'group flex w-full cursor-pointer gap-5 rounded-md p-2',
+          variant === 'light' ? 'hover:bg-white/20' : 'hover:bg-white/10',
+        )}
       >
         {element.icon && (
-          <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-100 duration-200 group-hover:bg-white">
+          <div className="flex flex-none items-center justify-center">
             <element.icon
-              className="size-6 text-blue-700 group-hover:text-blue-700"
+              className={cn(
+                'size-[30px]',
+                variant === 'light'
+                  ? 'text-darkOrange-10 brightness-0'
+                  : 'text-white filter-white',
+              )}
               aria-hidden="true"
             />
           </div>
         )}
         <div className="flex flex-col items-start justify-center">
-          <h5 className="text-left text-sm font-semibold text-blue-700">
+          <h5
+            className={cn(
+              'text-lg leading-normal tracking-015px',
+              variant === 'light' ? 'text-darkOrange-10' : 'text-white',
+            )}
+          >
             {element.title}
           </h5>
           {element.description && (
-            <p className="mt-1 text-left text-xs text-blue-700">
+            <p
+              className={cn(
+                'truncate desktop-typo1 ',
+                variant === 'light' ? 'text-darkOrange-8' : 'text-newGray-2',
+                isMultipleSubSectionChildren
+                  ? 'max-w-40 xl:max-w-[346px]'
+                  : 'max-w-72 xl:max-w-[346px]',
+              )}
+            >
               {element.description}
             </p>
           )}
         </div>
       </div>
     ),
-    [element],
+    [element, variant, isMultipleSubSectionChildren],
   );
 
   return 'path' in element ? (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <Link className="block w-full text-blue-800" to={element.path}>
+    <Link className="block w-full text-black" to={element.path}>
       {item}
     </Link>
   ) : (
-    <button className="block w-full text-blue-800" onClick={element.action}>
+    <button className="block w-full text-black" onClick={element.action}>
       {item}
     </button>
   );
