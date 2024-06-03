@@ -2,7 +2,6 @@ import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router, json } from 'express';
 
 import type { Dependencies } from './dependencies.js';
-import { createCorsMiddleware } from './middlewares/cors.js';
 import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
 import { createRestRouter } from './routers/rest-router.js';
 import { trpcRouter } from './routers/trpc-router.js';
@@ -30,9 +29,6 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
       },
     }),
   );
-
-  // Enable cors
-  app.use(createCorsMiddleware());
 
   app.use(createCookieSessionMiddleware(dependencies));
 
