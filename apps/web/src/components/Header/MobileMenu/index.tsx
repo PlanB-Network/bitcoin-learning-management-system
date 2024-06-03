@@ -1,5 +1,5 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
@@ -37,6 +37,7 @@ interface LoggedMenuProps {
 const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const { t } = useTranslation();
   const { user } = useContext(UserContext);
+  const pictureUrl = getPictureUrl(user);
   const isLoggedIn = user?.uid !== undefined;
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
@@ -73,9 +74,9 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
             className="w-full flex items-center gap-3.5 bg-darkOrange-10 px-1.5 py-1 rounded-lg"
           >
             <img
-              src={SignInIconDarkOrange}
+              src={pictureUrl ?? SignInIconDarkOrange}
               alt={t('auth.signIn')}
-              className="size-10 shrink-0"
+              className="size-10 shrink-0 rounded-full"
             />
             <span className="font-medium">{user?.username}</span>
             <MdKeyboardArrowUp
@@ -145,7 +146,7 @@ export const MobileMenu = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const { user } = useContext(UserContext);
-  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+  const pictureUrl = getPictureUrl(user);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';

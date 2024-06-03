@@ -1,7 +1,7 @@
 import { useLocation } from '@react-hooks-library/core';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { IoLogOutOutline, IoPersonOutline } from 'react-icons/io5';
@@ -18,7 +18,7 @@ export const MenuDesktop = () => {
   const { user } = useContext(UserContext);
   const [pathname, setPathname] = useState('');
 
-  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+  const pictureUrl = getPictureUrl(user);
 
   const navigate = useNavigate();
 

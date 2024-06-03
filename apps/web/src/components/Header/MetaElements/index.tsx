@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -29,7 +29,7 @@ export const MetaElements = ({
   const isScreenLg = useGreater('lg');
 
   const { user } = useContext(UserContext);
-  const pictureUrl = useMemo(() => getPictureUrl(user), [user]);
+  const pictureUrl = getPictureUrl(user);
 
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
