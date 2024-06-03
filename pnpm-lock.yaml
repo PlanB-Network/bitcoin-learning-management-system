@@ -103,9 +103,6 @@ importers:
       connect-redis:
         specifier: ^7.1.1
         version: 7.1.1(express-session@1.18.0)
-      cors:
-        specifier: 2.8.5
-        version: 2.8.5
       eventemitter3:
         specifier: ^5.0.1
         version: 5.0.1
@@ -134,9 +131,6 @@ importers:
       '@sovereign-university/types':
         specifier: workspace:*
         version: link:../../packages/types
-      '@types/cors':
-        specifier: ^2.8.17
-        version: 2.8.17
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -3109,9 +3103,6 @@ packages:
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
 
-  '@types/cors@2.8.17':
-    resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
-
   '@types/cross-spawn@6.0.6':
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
 
@@ -4261,10 +4252,6 @@ packages:
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
-
-  cors@2.8.5:
-    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
-    engines: {node: '>= 0.10'}
 
   cosmiconfig@7.1.0:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
@@ -11508,10 +11495,6 @@ snapshots:
     dependencies:
       '@types/node': 20.12.7
 
-  '@types/cors@2.8.17':
-    dependencies:
-      '@types/node': 20.12.7
-
   '@types/cross-spawn@6.0.6':
     dependencies:
       '@types/node': 20.12.7
@@ -12846,11 +12829,6 @@ snapshots:
       browserslist: 4.23.0
 
   core-util-is@1.0.3: {}
-
-  cors@2.8.5:
-    dependencies:
-      object-assign: 4.1.1
-      vary: 1.1.2
 
   cosmiconfig@7.1.0:
     dependencies:
