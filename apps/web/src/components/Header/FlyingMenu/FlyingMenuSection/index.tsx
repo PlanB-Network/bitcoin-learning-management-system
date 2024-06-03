@@ -114,11 +114,16 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
         <Popover.Panel
           static
           className={cn(
-            'flex fixed z-10 px-4 mt-5 w-screen max-w-max',
-            hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : '',
+            'flex absolute z-10 mt-8 -left-1',
+            hasMultipleSubSection ? '-left-40' : '',
           )}
         >
-          <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">
+          <div
+            className={cn(
+              'flex-auto overflow-hidden rounded-[20px]',
+              variant === 'light' ? 'bg-darkOrange-4' : 'bg-newBlack-3',
+            )}
+          >
             <div className="flex flex-row">
               {'items' in section &&
                 section.items.map((subSectionOrElement) => {
@@ -126,10 +131,15 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                     <FlyingMenuSubSection
                       key={subSectionOrElement.id}
                       subSection={subSectionOrElement}
+                      variant={variant}
+                      hasMultipleSubSection={hasMultipleSubSection}
                     />
                   ) : (
                     <div className="mx-2 my-4" key={subSectionOrElement.id}>
-                      <MenuElement element={subSectionOrElement} />
+                      <MenuElement
+                        element={subSectionOrElement}
+                        variant={variant}
+                      />
                     </div>
                   );
                 })}

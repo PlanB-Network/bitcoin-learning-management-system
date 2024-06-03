@@ -1,26 +1,18 @@
 import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineBook } from 'react-icons/ai';
-import { BsFileText, BsMic, BsPeople, BsPlus } from 'react-icons/bs';
-import { FaChalkboardTeacher } from 'react-icons/fa';
-import { GiMeshNetwork } from 'react-icons/gi';
-import {
-  IoBusinessOutline,
-  IoLibraryOutline,
-  IoSchoolOutline,
-} from 'react-icons/io5';
-import { LuArmchair } from 'react-icons/lu';
+import { BsPlus } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 
-import resourcesSvg from '../../assets/resources/builder.svg';
-import eventsSvg from '../../assets/resources/conference.svg';
-import coursesSvg from '../../assets/resources/library.svg';
-import tutorialsSvg from '../../assets/resources/toolkit.svg';
-import aboutSvg from '../../assets/resources/world.svg';
+import resourcesSvg from '../../assets/resources/builder.svg?react';
+import eventsSvg from '../../assets/resources/conference.svg?react';
+import coursesSvg from '../../assets/resources/library.svg?react';
+import podcastSvg from '../../assets/resources/podcast.svg?react';
+import tutorialsSvg from '../../assets/resources/toolkit.svg?react';
+import aboutSvg from '../../assets/resources/world.svg?react';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { Routes } from '../../routes/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
@@ -86,7 +78,6 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
         id: course.id,
         title: course.id.toUpperCase(),
         path: `/courses/${course.id}`,
-        icon: AiOutlineBook,
         description: course.name,
       }));
 
@@ -137,7 +128,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             {
               id: 'library',
               title: t('words.library'),
-              icon: IoLibraryOutline,
+              icon: coursesSvg,
               description: t('menu.libraryDescription'),
               path: Routes.Books,
             },
@@ -146,28 +137,28 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               title: t('words.podcasts'),
               description: t('menu.podcastsDescription'),
               path: Routes.Podcasts,
-              icon: BsMic,
+              icon: podcastSvg,
             },
             {
               id: 'conferences',
               title: t('conferences.pageTitle'),
               description: t('menu.conferencesDescription'),
               path: Routes.Conferences,
-              icon: LuArmchair,
+              icon: eventsSvg,
             },
             {
               id: 'builders',
               title: t('words.builders'),
               description: t('menu.buildersDescription'),
               path: Routes.Builders,
-              icon: IoBusinessOutline,
+              icon: resourcesSvg,
             },
             {
               id: 'bet',
               title: t('bet.pageTitle'),
               description: t('menu.betDescription'),
               path: Routes.BET,
-              icon: IoSchoolOutline,
+              icon: tutorialsSvg,
             },
           ],
         },
@@ -184,7 +175,6 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             id: category.name,
             title: t(`tutorials.${category.name}.title`),
             path: category.route,
-            icon: category.icon,
             description: t(`tutorials.${category.name}.shortDescription`),
           })),
         },
@@ -203,28 +193,12 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               title: t('words.professors'),
               description: t('menu.teachersDescription'),
               path: Routes.Professors,
-              icon: FaChalkboardTeacher,
             },
             {
               id: 'node-network',
               title: t('words.nodeNetwork'),
               description: t('menu.nodeNetworkDescription'),
               path: Routes.NodeNetwork,
-              icon: GiMeshNetwork,
-            },
-            {
-              id: 'manifesto',
-              title: t('words.manifesto'),
-              description: t('menu.manifestoDescription'),
-              path: Routes.Manifesto,
-              icon: BsFileText,
-            },
-            {
-              id: 'about',
-              title: t('words.about-us'),
-              description: t('words.about-us'),
-              path: Routes.About,
-              icon: BsPeople,
             },
           ],
         },
