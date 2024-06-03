@@ -4,6 +4,7 @@ import { createPostgresClient } from '@sovereign-university/database';
 import type { PostgresClient } from '@sovereign-university/database';
 import { RedisClient } from '@sovereign-university/redis';
 import type { ApiEvents, EnvConfig } from '@sovereign-university/types';
+
 import * as config from './config.js';
 
 export interface Dependencies {

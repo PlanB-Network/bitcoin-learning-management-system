@@ -40,7 +40,7 @@ export const getUserByIdQuery = (uid: string) => {
 export const getUserByEmailQuery = (email: string) => {
   // UserAccount & { email: string } is used to specify that the email field will be not null
   // at this point, the email field is not null because it is being used in the WHERE clause
-  return sql<(UserAccount & { email: string })[]>`
+  return sql<Array<UserAccount & { email: string }>>`
     SELECT * FROM users.accounts
     WHERE email = ${email};
   `;

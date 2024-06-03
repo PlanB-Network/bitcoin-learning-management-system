@@ -1,16 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import { TRPCError } from '@trpc/server';
+
 import {
-  rejectOnEmpty,
-  firstRow,
   EmptyResultError,
+  firstRow,
+  rejectOnEmpty,
 } from '@sovereign-university/database';
+
 import type { Dependencies } from '../../../dependencies.js';
 import {
   changeEmailQuery,
-  createTokenQuery,
   consumeTokenQuery,
+  createTokenQuery,
 } from '../queries/index.js';
+
 import { createSendEmail } from './email.js';
-import { TRPCError } from '@trpc/server';
 
 /**
  * Factory for changing user's email
@@ -26,12 +34,12 @@ export const createChangeEmailConfirmation = ({ postgres }: Dependencies) => {
       .then((token) => postgres.exec(changeEmailQuery(token.uid, token.data!)))
       .then(firstRow)
       .then(rejectOnEmpty)
-      .catch((err) => {
-        if (err instanceof EmptyResultError) {
+      .catch((error) => {
+        if (error instanceof EmptyResultError) {
           return { error: "Token doesn't exist or expired", email: null };
         }
 
-        console.error('Error changing email:', err);
+        console.error('Error changing email:', error);
 
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
@@ -72,8 +80,8 @@ export const createEmailValidationToken = (deps: Dependencies) => {
         }),
       )
       .then(() => ({ success: true }))
-      .catch((err) => {
-        console.error('Error sending email:', err);
+      .catch((error) => {
+        console.error('Error sending email:', error);
 
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',

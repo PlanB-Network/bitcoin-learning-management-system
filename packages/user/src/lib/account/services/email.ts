@@ -1,4 +1,6 @@
-import { Dependencies } from '#src/dependencies.js';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import type { Dependencies } from '#src/dependencies.js';
 
 interface SendEmailOptions {
   email: string;

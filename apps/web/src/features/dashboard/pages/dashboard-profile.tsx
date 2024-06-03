@@ -17,10 +17,10 @@ import {
 } from '../../../atoms/Tabs/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
+import { ChangeEmailModal } from '../components/change-email-modal.tsx';
 import { ChangePasswordModal } from '../components/change-password-modal.tsx';
 import { ChangePictureModal } from '../components/change-picture-modal.tsx';
 import { DashboardLayout } from '../layout.tsx';
-import { ChangeEmailModal } from '../components/change-email-modal.tsx';
 
 export const DashboardProfile = () => {
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ export const DashboardProfile = () => {
                       type="text"
                       value={user?.email ?? ''}
                       disabled
-                      className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 flex-grow"
+                      className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
                     />
 
                     <Button

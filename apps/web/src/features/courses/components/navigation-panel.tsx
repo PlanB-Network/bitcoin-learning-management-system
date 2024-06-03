@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';

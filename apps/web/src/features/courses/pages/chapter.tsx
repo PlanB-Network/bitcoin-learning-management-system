@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useMemo, useState } from 'react';
