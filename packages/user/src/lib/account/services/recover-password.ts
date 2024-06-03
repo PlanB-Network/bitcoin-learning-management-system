@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { TRPCError } from '@trpc/server';
+
 import { firstRow, rejectOnEmpty } from '@sovereign-university/database';
+
 import type { Dependencies } from '../../../dependencies.js';
+import { getUserByEmailQuery } from '../queries/get-user.js';
 import { createTokenQuery } from '../queries/token.js';
 
 import { createSendEmail } from './email.js';
-import { TRPCError } from '@trpc/server';
-import { getUserByEmailQuery } from '../queries/get-user.js';
 
 export const createPasswordRecoveryToken = (deps: Dependencies) => {
   const template = deps.config.sendgrid.templates.recoverPassword;
@@ -37,8 +41,8 @@ export const createPasswordRecoveryToken = (deps: Dependencies) => {
         }),
       )
       .then(() => ({ success: true }))
-      .catch((err) => {
-        console.error('Error sending email:', err);
+      .catch((error) => {
+        console.error('Error sending email:', error);
 
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',

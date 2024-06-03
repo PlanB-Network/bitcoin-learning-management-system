@@ -14,17 +14,19 @@ const getenv = <T extends string | number | boolean | null = string>(
   // If the value is empty and a fallback is provided, log a warning
   if (!value && fallback !== null) {
     console.warn(
-      `No value found for "${name}"${fallback !== null ? `, defaulting to '${JSON.stringify(fallback)}'` : '!'}`,
+      `No value found for ${name}, defaulting to ${JSON.stringify(fallback)}`,
     );
   }
 
   // If the value is not empty, parse it to the correct type (inferred from fallback type)
   if (fallback !== null) {
     switch (typeof fallback) {
-      case 'boolean':
+      case 'boolean': {
         return (value ? value === 'true' : fallback) as T;
-      case 'number':
-        return (parseInt(value) || fallback) as T;
+      }
+      case 'number': {
+        return (Number.parseInt(value) || fallback) as T;
+      }
     }
   }
 

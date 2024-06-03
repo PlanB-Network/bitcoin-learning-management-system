@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Link, useParams } from '@tanstack/react-router';
-import { MainLayout } from '../../../components/MainLayout/index.tsx';
-import { useEffect, useState, useRef, useContext } from 'react';
-import { trpc } from '../../../utils/index.ts';
+import { useContext, useEffect, useRef, useState } from 'react';
+
 import { UserContext } from '#src/providers/user.js';
+
+import { MainLayout } from '../../../components/MainLayout/index.tsx';
+import { trpc } from '../../../utils/index.ts';
 
 enum ValidationStatus {
   VALIDATING,
@@ -53,7 +57,7 @@ export const ValidateEmailChangePage = () => {
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
           Validating email change
         </h1>
-        <p className="my-8">This won't take long</p>
+        <p className="my-8">This won’t take long</p>
       </div>
     ),
     [ValidationStatus.SUCCESS]: (

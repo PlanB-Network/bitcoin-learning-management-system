@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   createCalculateCourseChapterSeats,
   createCalculateEventSeats,
@@ -31,6 +33,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     throw new Error('DATA_REPOSITORY_URL is not defined');
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   await redis.del('trpc:*');
 
   const syncErrors = await getAllRepoFiles(
@@ -49,6 +52,7 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   await redis.del('trpc:*');
 
   if (syncErrors.length > 0) {
