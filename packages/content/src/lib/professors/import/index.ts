@@ -15,6 +15,7 @@ import { createProcessMainFile } from './main.js';
 
 interface ProfessorDetails {
   path: string;
+  fullPath: string;
   language?: Language;
 }
 
@@ -34,6 +35,7 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
 
   return {
     path: pathElements.slice(0, 2).join('/'),
+    fullPath: pathElements.join('/'),
     language: pathElements[2].replace(/\..*/, '') as Language,
   };
 };
@@ -47,13 +49,18 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
 
   for (const file of professorsFiles) {
     try {
-      const { path: professorPath, language } = parseDetailsFromPath(file.path);
+      const {
+        path: professorPath,
+        language,
+        fullPath,
+      } = parseDetailsFromPath(file.path);
 
       const professor: ChangedProfessor = groupedProfessors.get(
         professorPath,
       ) || {
         type: 'professors',
         path: professorPath,
+        fullPath: fullPath,
         files: [],
       };
 
@@ -88,7 +95,7 @@ export const createProcessChangedProfessor =
           await processMainFile(professor, main);
         } catch (error) {
           errors.push(
-            `Error processing file(professors) ${professor?.path}: ${error}`,
+            `Error processing file(professors) ${professor?.fullPath} : ${error}`,
           );
         }
 

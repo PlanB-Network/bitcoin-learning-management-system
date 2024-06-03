@@ -51,7 +51,7 @@ export const createProcessChangedBook = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(books) ${resource?.path}: ${error}`,
+            `Error processing file(books) ${resource?.fullPath}: ${error}`,
           );
           return;
         }
@@ -82,7 +82,7 @@ export const createProcessChangedBook = (
           }
         } catch (error) {
           errors.push(
-            `Error processing main file ${main?.path} ${parsed?.author}: ${error}`,
+            `Error processing main file ${main?.path} (${resource.fullPath}): ${error}`,
           );
           return;
         }
@@ -137,7 +137,9 @@ export const createProcessChangedBook = (
                 download_url = EXCLUDED.download_url
             `.then(firstRow);
           } catch (error) {
-            errors.push(`Error processing one file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing one file ${id} ${file?.path} (${resource.fullPath}): ${error}`,
+            );
           }
         }
       })
