@@ -33,7 +33,7 @@ export default defineConfig({
         proxy: {
           '/api': 'http://api:3000',
           '/cdn': {
-            target: 'http://cdn:8080',
+            target: 'http://cdn:80',
             rewrite: (path) => path.replace(/^\/cdn/, ''),
           },
         },
