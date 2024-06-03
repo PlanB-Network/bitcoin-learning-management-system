@@ -10,11 +10,6 @@ export const createGetBets =
 
     return result.map((bet) => ({
       ...bet,
-      logo: computeAssetCdnUrl(
-        process.env['CDN_URL'] || 'http://localhost:8080',
-        bet.lastCommit,
-        bet.path,
-        'logo.webp',
-      ),
+      logo: computeAssetCdnUrl(bet.lastCommit, bet.path, 'logo.webp'),
     }));
   };

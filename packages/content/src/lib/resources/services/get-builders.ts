@@ -10,11 +10,6 @@ export const createGetBuilders =
 
     return result.map((row) => ({
       ...row,
-      logo: computeAssetCdnUrl(
-        process.env['CDN_URL'] || 'http://localhost:8080',
-        row.lastCommit,
-        row.path,
-        'logo.webp',
-      ),
+      logo: computeAssetCdnUrl(row.lastCommit, row.path, 'logo.webp'),
     }));
   };

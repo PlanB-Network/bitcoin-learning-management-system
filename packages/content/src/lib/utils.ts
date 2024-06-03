@@ -22,11 +22,10 @@ export const getContentType = (path: string) => {
 };
 
 export const computeAssetCdnUrl = (
-  cdnUrl: string,
   commit: string,
   contentPath: string,
   assetPath: string,
-) => `${cdnUrl}/${commit}/${contentPath}/assets/${assetPath}`;
+) => `/cdn/${commit}/${contentPath}/assets/${assetPath}`;
 
 export const separateContentFiles = (
   resource: ChangedContent,

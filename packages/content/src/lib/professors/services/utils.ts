@@ -28,7 +28,6 @@ export const formatProfessor = (professor: JoinedProfessor) => {
       url: professor.tipsUrl,
     },
     picture: computeAssetCdnUrl(
-      process.env['CDN_URL'] || 'http://localhost:8080',
       professor.lastCommit,
       professor.path,
       'profile.webp',

@@ -11,7 +11,6 @@ export const createGetConferences =
     return conferences.map((conference) => ({
       ...conference,
       thumbnail: computeAssetCdnUrl(
-        process.env['CDN_URL'] || 'http://localhost:8080',
         conference.lastCommit,
         conference.path,
         'thumbnail.webp',

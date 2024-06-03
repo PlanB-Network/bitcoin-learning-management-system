@@ -11,8 +11,6 @@ import type {
   RouterOutputs,
 } from '../../../api/src/trpc/types.ts';
 
-import { baseUrl } from './misc.ts';
-
 export type TRPCRouterInput = RouterInputs;
 export type TRPCRouterOutput = RouterOutputs;
 
@@ -20,7 +18,7 @@ export const tRPCClientOptions = {
   links: [
     httpBatchLink({
       transformer: superjson,
-      url: baseUrl + '/trpc',
+      url: '/api/trpc',
       fetch: (url, options) => {
         return fetch(url, {
           ...options,
