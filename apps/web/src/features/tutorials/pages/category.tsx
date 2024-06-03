@@ -21,9 +21,10 @@ export const TutorialCategory = () => {
 
   const navigate = useNavigate();
 
-  const [tutorialCategory] = useState(
-    TUTORIALS_CATEGORIES.find((c) => c.name === category),
+  const tutorialCategory = TUTORIALS_CATEGORIES.find(
+    (c) => c.name === category,
   );
+
   const [subCategories, setSubCategories] = useState<string[]>([]);
 
   const { data: tutorials } = trpc.content.getTutorialsByCategory.useQuery({
