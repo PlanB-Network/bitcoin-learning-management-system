@@ -30,6 +30,7 @@
     "express-session": "^1.18.0",
     "formidable": "^3.5.1",
     "secp256k1": "^5.0.0",
+    "sharp": "^0.33.4",
     "superjson": "^2.2.1",
     "zod": "^3.22.4"
   },
