@@ -15,10 +15,16 @@ interface LanguageSelectorProps {
   className?: string;
 }
 
-const variantMap = {
-  light: 'text-white bg-white/15',
-  dark: 'text-white bg-headerGray',
+const variantHeaderBackgroundMap = {
+  light: 'text-white bg-darkOrange-4',
+  dark: 'text-white bg-newBlack-3',
   darkOrange: 'text-white bg-darkOrange-11',
+};
+
+const variantSelectorMap = {
+  light: 'text-darkOrange-10 lg:bg-darkOrange-4',
+  dark: 'text-white lg:bg-newBlack-3',
+  darkOrange: 'text-[#909093] lg:bg-[#25262d]',
 };
 
 export const LanguageSelector = ({
@@ -52,7 +58,7 @@ export const LanguageSelector = ({
         onClick={() => setOpen((v) => !v)}
         className={cn(
           'group z-0 flex place-items-center text-sm font-semibold gap-2 lg:gap-2.5 outline-none px-2.5 py-2 lg:pl-4 lg:pr-2.5 rounded-2xl max-lg:w-24 transition-all',
-          variantMap[variant],
+          variantHeaderBackgroundMap[variant],
           open && 'max-lg:rounded-none max-lg:rounded-t-2xl',
         )}
       >
@@ -79,13 +85,14 @@ export const LanguageSelector = ({
           onMouseLeave={() => setOpen(false)}
           static
           className={cn(
-            'flex flex-col items-center justify-center absolute z-20 bg-darkOrange-11 lg:bg-[#25262d] rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-96 overflow-y-scroll no-scrollbar',
+            'flex flex-col items-center justify-center absolute z-20 bg-darkOrange-11  rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-96 overflow-y-scroll no-scrollbar',
             direction === 'down'
               ? 'top-9 lg:top-20 right-0'
               : 'bottom-16 left-1/2 -translate-x-1/2',
+            variantSelectorMap[variant],
           )}
         >
-          <span className="w-full text-center text-sm text-[#909093] tracking-[1.12px] uppercase mb-6 max-lg:hidden">
+          <span className="w-full text-center text-sm tracking-[1.12px] uppercase mb-6 max-lg:hidden">
             {t('home.languageSection.availableLanguages')}
           </span>
           <div className="flex flex-wrap justify-center w-fit gap-2.5 lg:gap-4">
@@ -108,7 +115,13 @@ export const LanguageSelector = ({
             rel="noopener noreferrer"
             className="max-lg:hidden mt-6 w-full"
           >
-            <Button variant="ghost" size="m" onHoverArrow className="w-full">
+            <Button
+              variant={variant === 'light' ? 'newPrimary' : 'ghost'}
+              mode={variant === 'light' ? 'colored' : 'dark'}
+              size="m"
+              onHoverArrow
+              className="w-full"
+            >
               {t('home.languageSection.link')}
             </Button>
           </a>

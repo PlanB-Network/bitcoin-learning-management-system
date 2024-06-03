@@ -1,56 +1,88 @@
 import { Popover, Transition } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useState } from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { compose } from '../../../../utils/index.ts';
+import { cn } from '@sovereign-university/ui';
+
 import { MenuElement } from '../../MenuElement/index.tsx';
 import type { NavigationSection } from '../../props.tsx';
 import { FlyingMenuSubSection } from '../FlyingMenuSubSection/index.tsx';
 
 export interface FlyingMenuProps {
   section: NavigationSection;
+  variant?: 'dark' | 'light';
+}
+interface SectionTitleProps {
+  section: NavigationSection;
+  variant?: 'dark' | 'light';
+  addArrow?: boolean;
+  isOpen?: boolean;
 }
 
-export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
+const SectionTitle = ({
+  section,
+  variant = 'dark',
+  addArrow,
+  isOpen,
+}: SectionTitleProps) => {
+  const variantMap = {
+    light: 'text-darkOrange-10',
+    dark: 'text-white',
+  };
+
+  if ('path' in section) {
+    return (
+      <Link
+        className={cn(
+          'text-base font-medium leading-[144%] flex items-center gap-1.5',
+          variantMap[variant],
+        )}
+        /* TODO: fix */
+        to={section.path as '/'}
+      >
+        {section.title}
+        {addArrow && (
+          <MdKeyboardArrowDown
+            size={24}
+            className={cn(
+              'transition-transform ease-in-out',
+              isOpen && '-rotate-180',
+            )}
+          />
+        )}
+      </Link>
+    );
+  }
+
+  if ('action' in section)
+    return (
+      <button
+        className="inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg"
+        onClick={() => {
+          section.action();
+        }}
+      >
+        {section.title}
+      </button>
+    );
+};
+
+export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
-  const currentSection = '/'.concat(
-    window.location.pathname.split('/').slice(0, 2).join(''),
-  );
 
-  const sectionTitle = useMemo(() => {
-    if ('path' in section) {
-      const fontWeight =
-        currentSection &&
-        currentSection !== '/' &&
-        section.path.includes(currentSection)
-          ? 'font-semibold'
-          : 'font-light';
-
-      return (
-        <Link
-          className={compose('text-base font-medium xl:text-lg', fontWeight)}
-          /* TODO: fix */
-          to={section.path as '/'}
-        >
-          {section.title}
-        </Link>
-      );
-    }
-
-    if ('action' in section)
-      return (
-        <button
-          className="inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg"
-          onClick={() => {
-            section.action();
-          }}
-        >
-          {section.title}
-        </button>
-      );
-  }, [currentSection, section]);
-
-  if (!('items' in section)) return sectionTitle;
+  if (!('items' in section)) {
+    return (
+      <div
+        className={cn(
+          'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
+          open && 'bg-white/20',
+        )}
+      >
+        <SectionTitle section={section} variant={variant} />
+      </div>
+    );
+  }
 
   const hasMultipleSubSection = section.items.length > 1;
 
@@ -58,9 +90,17 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
     <Popover
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className="relative"
+      className={cn(
+        'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
+        open && 'bg-white/20',
+      )}
     >
-      {sectionTitle}
+      <SectionTitle
+        section={section}
+        variant={variant}
+        addArrow
+        isOpen={open}
+      />
       <Transition
         show={open}
         as={Fragment}
@@ -73,12 +113,17 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
       >
         <Popover.Panel
           static
-          className={compose(
-            'flex fixed z-10 px-4 mt-5 w-screen max-w-max',
-            hasMultipleSubSection ? 'left-1/2 -translate-x-1/2' : '',
+          className={cn(
+            'flex absolute z-10 mt-8 -left-1',
+            hasMultipleSubSection ? '-left-40' : '',
           )}
         >
-          <div className="w-screen max-w-max flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-600/5">
+          <div
+            className={cn(
+              'flex-auto overflow-hidden rounded-[20px]',
+              variant === 'light' ? 'bg-darkOrange-4' : 'bg-newBlack-3',
+            )}
+          >
             <div className="flex flex-row">
               {'items' in section &&
                 section.items.map((subSectionOrElement) => {
@@ -86,10 +131,15 @@ export const FlyingMenuSection = ({ section }: FlyingMenuProps) => {
                     <FlyingMenuSubSection
                       key={subSectionOrElement.id}
                       subSection={subSectionOrElement}
+                      variant={variant}
+                      hasMultipleSubSection={hasMultipleSubSection}
                     />
                   ) : (
                     <div className="mx-2 my-4" key={subSectionOrElement.id}>
-                      <MenuElement element={subSectionOrElement} />
+                      <MenuElement
+                        element={subSectionOrElement}
+                        variant={variant}
+                      />
                     </div>
                   );
                 })}
