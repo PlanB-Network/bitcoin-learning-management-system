@@ -46,6 +46,13 @@
     "sendLink": "Envoyer un lien",
     "signIn": "Sign In"
   },
+  "bCertificate": {
+    "organizeDescription": "No problem ! If your community is part of the Network, organising an exam session at your hub is possible. Please read the chart to make sure that you can comply with the mandatory conditions to host an exam. If you can fulfil these conditions, you can schedule your session and add it onto the platform.",
+    "organizeSubtitle": "Orange pilling a billion people is not easy",
+    "organizeTitle": "Want to organise a B-certificate exam at your hub?",
+    "pageSubtitle": "Mass adoption through centralized open-source education",
+    "pageTitle": "Pass the B-Certificate"
+  },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
     "contributeButton": "Help & contribute",
