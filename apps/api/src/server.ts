@@ -49,7 +49,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   const restRouter = createRestRouter(dependencies);
 
-  const baseRoute = process.env.NODE_ENV === 'development' ? '/api' : '/';
+  const baseRoute = '/api';
   app.use(baseRoute, router);
   app.use(baseRoute, restRouter);
 
