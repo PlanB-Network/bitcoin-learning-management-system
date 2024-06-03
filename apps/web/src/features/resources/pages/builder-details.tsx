@@ -161,6 +161,28 @@ export const Builder = () => {
               </div>
             </div>
             <div className="ml-auto flex flex-col gap-3 max-md:hidden">
+              {builder.category === 'communities' && (
+                <>
+                  <span className="text-xs font-medium text-white text-center mb-1">
+                    {t('builders.languages')}
+                  </span>
+                  <div className="flex justify-center flex-col gap-2.5 ">
+                    {builder.languages &&
+                      builder.languages
+                        .slice(0, 3)
+                        .map((language) => (
+                          <Flag
+                            code={language}
+                            key={language}
+                            className="!w-[70px] !h-[49px] shadow-card-items-dark"
+                          />
+                        ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* <div className="ml-auto flex flex-col gap-3 max-md:hidden">
               <span className="text-xs font-medium text-white text-center">
                 {t('builders.languages')}
               </span>
@@ -174,7 +196,7 @@ export const Builder = () => {
                       className="!w-[70px] !h-[49px] shadow-card-items-dark"
                     />
                   ))}
-            </div>
+            </div> */}
           </section>
           <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5">
             {builder.description}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Flag.scss';
+import { useTranslation } from 'react-i18next'; // Importa el hook de traducción
 
 /*
  * Credits to https://github.com/Yummygum/react-flagpack for the original component and styles,
@@ -28,6 +29,7 @@ const Flag: React.FC<Props> = ({
   className,
 }: Props) => {
   const [imgSrc, setImgSrc] = useState(null);
+  const { t } = useTranslation(); // Usa el hook de traducción
 
   useEffect(() => {
     import(`./flags/${code.toUpperCase()}.svg`)
@@ -43,15 +45,16 @@ const Flag: React.FC<Props> = ({
   return (
     <div
       className={`
-    ${nonTailwindClasses}
-    ${gradient}
-    ${hasBorder ? 'border' : ''}
-    ${hasDropShadow ? 'drop-shadow' : ''}
-    ${hasBorderRadius ? 'rounded-sm' : ''}
-    ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
+          ${nonTailwindClasses}
+          ${gradient}
+          ${hasBorder ? 'border' : ''}
+          ${hasDropShadow ? 'drop-shadow' : ''}
+          ${hasBorderRadius ? 'rounded-sm' : ''}
+          ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
     >
       {imgSrc && <img src={imgSrc} alt={code} />}
     </div>
   );
 };
+
 export default Flag;
