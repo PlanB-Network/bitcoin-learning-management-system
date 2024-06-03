@@ -235,6 +235,7 @@
       "change": "Changer",
       "cancel": "Annuler",
       "save": "Sauvegarder",
+      "saving": "Sauvegarde en cours...",
       "crop": "Rogner",
       "preview": "Aperçu"
     }
