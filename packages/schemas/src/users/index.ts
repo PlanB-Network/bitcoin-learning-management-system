@@ -6,3 +6,4 @@ export * from './billing.js';
 export * from './course.js';
 export * from './event.js';
 export * from './file.js';
+export * from './token.js';

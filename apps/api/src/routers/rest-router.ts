@@ -144,6 +144,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
       receiveFile(req)
         .then((file) => setProfilePicture(uid, file.id))
         .then((result) => res.json(result))
+        // eslint-disable-next-line promise/no-callback-in-promise
         .catch(next);
     },
   );

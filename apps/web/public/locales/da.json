@@ -477,7 +477,8 @@
         "github": ""
     },
     "settings": {
-        "changePassword": "Change password"
+        "changePassword": "Change password",
+        "changeEmail": "Change email"
     },
     "tutorials": {
         "details": {

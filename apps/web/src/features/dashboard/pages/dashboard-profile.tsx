@@ -17,6 +17,7 @@ import {
 } from '../../../atoms/Tabs/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
 import { trpc } from '../../../utils/index.ts';
+import { ChangeEmailModal } from '../components/change-email-modal.tsx';
 import { ChangePasswordModal } from '../components/change-password-modal.tsx';
 import { ChangePictureModal } from '../components/change-picture-modal.tsx';
 import { DashboardLayout } from '../layout.tsx';
@@ -56,6 +57,9 @@ export const DashboardProfile = () => {
     close: onClose,
   } = useDisclosure();
 
+  const changeEmailModal = useDisclosure();
+  const [emailSent, setEmailSent] = useState(false);
+
   return (
     <DashboardLayout>
       <div className="flex flex-col gap-8">
@@ -79,32 +83,6 @@ export const DashboardProfile = () => {
           </TabsList>
           <TabsContent value="info">
             <div className="flex w-full flex-col">
-              <div className="mt-6 flex gap-8 items-end">
-                <img
-                  src={pictureUrl ?? SignInIconLight}
-                  alt="Profile"
-                  className="rounded-full size-32"
-                />
-
-                <div>
-                  <Button variant="newPrimary" size="m" className="p-0">
-                    <label
-                      htmlFor="profilePictureFile"
-                      className="px-2.5 py-1.5 cursor-pointer"
-                    >
-                      {t('settings.changeProfilePicture')}
-                    </label>
-                  </Button>
-                  <input
-                    className="hidden"
-                    type="file"
-                    name="file"
-                    id="profilePictureFile"
-                    accept="image/*"
-                    onChange={onFileChange}
-                  />
-                </div>
-              </div>
               <div className="mt-6 flex flex-col">
                 <label htmlFor="usernameId">
                   {t('dashboard.profile.username')}
@@ -129,15 +107,75 @@ export const DashboardProfile = () => {
                   className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
                 />
               </div>
+              <div className="mt-6">
+                <div className="flex flex-col">
+                  <label htmlFor="emailId">
+                    {t('dashboard.profile.email')}
+                  </label>
+
+                  <div className="flex items-center gap-4">
+                    <input
+                      id="emailId"
+                      type="text"
+                      value={user?.email ?? ''}
+                      disabled
+                      className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
+                    />
+
+                    <Button
+                      variant="newPrimaryGhost"
+                      size="s"
+                      onClick={changeEmailModal.open}
+                      className="h-[34px] px-3"
+                    >
+                      {t('dashboard.profile.edit')}
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Confirmation message */}
+                <div>
+                  {emailSent && (
+                    <div className="mt-6 text-green-500">
+                      Email change confirmation email has been sent, check your
+                      inbox to confirm the change.
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Profile Picture Zone */}
               <div className="mt-6 flex flex-col">
-                <label htmlFor="emailId">{t('dashboard.profile.email')}</label>
-                <input
-                  id="emailId"
-                  type="text"
-                  value={user?.email ? user?.email : ''}
-                  disabled
-                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
-                />
+                <label htmlFor="profilePictureFile">
+                  {t('dashboard.profile.profilePicture')}
+                </label>
+
+                <div className="mt-2 flex gap-8 items-end">
+                  <img
+                    src={pictureUrl ?? SignInIconLight}
+                    alt="Profile"
+                    className="rounded-full size-32"
+                  />
+
+                  <div>
+                    <Button variant="newPrimaryGhost" size="m" className="p-0">
+                      <label
+                        htmlFor="profilePictureFile"
+                        className="px-2.5 py-1.5 cursor-pointer"
+                      >
+                        {t('dashboard.profile.edit')}
+                      </label>
+                    </Button>
+                    <input
+                      className="hidden"
+                      type="file"
+                      name="file"
+                      id="profilePictureFile"
+                      accept="image/*"
+                      onChange={onFileChange}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </TabsContent>
@@ -168,6 +206,13 @@ export const DashboardProfile = () => {
           onChange={onPictureChange}
           onClose={profilePictureDisclosure.close}
           isOpen={profilePictureDisclosure.isOpen}
+        />
+
+        <ChangeEmailModal
+          isOpen={changeEmailModal.isOpen}
+          onClose={changeEmailModal.close}
+          onEmailSent={() => setEmailSent(true)}
+          email={user?.email || ''}
         />
       </div>
     </DashboardLayout>
