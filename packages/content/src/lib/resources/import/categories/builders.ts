@@ -42,7 +42,9 @@ export const createProcessChangedBuilder = (
         try {
           await processMainFile(resource, main);
         } catch (error) {
-          errors.push(`Error processing file ${resource?.path}: ${error}`);
+          errors.push(
+            `Error processing file(builders) ${resource?.path}: ${error}`,
+          );
           return;
         }
 
@@ -81,7 +83,9 @@ export const createProcessChangedBuilder = (
         `;
           }
         } catch (error) {
-          errors.push(`Error processing file ${main?.path}: ${error}`);
+          errors.push(
+            `Error processing file(builders) ${main?.path}: ${error}`,
+          );
           return;
         }
 
@@ -106,7 +110,11 @@ export const createProcessChangedBuilder = (
             description = EXCLUDED.description
         `.then(firstRow);
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing file(builders) ${file?.path}: ${error}`,
+            );
+            console.log('file', file);
+            console.log('main', main);
           }
         }
       })
