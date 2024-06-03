@@ -5,8 +5,8 @@ import { Cropper } from 'react-cropper';
 
 import { Button, cn } from '@sovereign-university/ui';
 
-import { Modal } from '#src/atoms/Modal/index.tsx';
 import spinner from '#src/assets/icons/spinner.svg';
+import { Modal } from '#src/atoms/Modal/index.tsx';
 
 interface Props {
   file: File | null;
