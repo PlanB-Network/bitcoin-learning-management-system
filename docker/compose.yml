@@ -72,8 +72,9 @@ services:
       - traefik.http.routers.university-cdn-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.tls.certresolver=security
-      - traefik.http.middlewares.university-cdn-${ENV}.compress=true
-      - traefik.http.middlewares.university-cdn-${ENV}.stripprefix.prefixes=/cdn
+      - traefik.http.routers.university-cdn-${ENV}.middlewares=university-cdn-${ENV}-stripprefix,university-cdn-${ENV}-compress
+      - traefik.http.middlewares.university-cdn-${ENV}-compress.compress=true
+      - traefik.http.middlewares.university-cdn-${ENV}-stripprefix.stripprefix.prefixes=/cdn
 
   web:
     <<: *defaults
@@ -84,7 +85,8 @@ services:
       - traefik.http.routers.university-web-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-web-${ENV}.tls=true
       - traefik.http.routers.university-web-${ENV}.tls.certresolver=security
-      - traefik.http.middlewares.university-web-${ENV}.compress=true
+      - traefik.http.routers.university-web-${ENV}.middlewares=university-web-${ENV}-compress
+      - traefik.http.middlewares.university-web-${ENV}-compress.compress=true
 
 networks:
   default:
