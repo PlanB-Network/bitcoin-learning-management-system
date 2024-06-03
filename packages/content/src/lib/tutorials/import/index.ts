@@ -101,7 +101,9 @@ export const createProcessChangedTutorial =
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(tutorial, main);
         } catch (error) {
-          errors.push(`Error processing file ${tutorial?.path}: ${error}`);
+          errors.push(
+            `Error processing file(tutorials) ${tutorial?.path}: ${error}`,
+          );
           return;
         }
 
@@ -145,7 +147,9 @@ export const createProcessChangedTutorial =
             raw_content = EXCLUDED.raw_content
         `;
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing file(tutorials) ${file?.path}: ${error}`,
+            );
           }
         }
       })

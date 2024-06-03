@@ -79,7 +79,7 @@ export const createProcessChangedEvent =
             await processMainFile(event, main);
           }
         } catch (error) {
-          errors.push(`Error processing file ${event?.path}: ${error}`);
+          errors.push(`Error processing file(events) ${event?.path}: ${error}`);
           return;
         }
       })

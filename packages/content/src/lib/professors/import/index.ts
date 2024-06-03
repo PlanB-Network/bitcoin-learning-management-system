@@ -87,7 +87,9 @@ export const createProcessChangedProfessor =
         try {
           await processMainFile(professor, main);
         } catch (error) {
-          errors.push(`Error processing file ${professor?.path}: ${error}`);
+          errors.push(
+            `Error processing file(professors) ${professor?.path}: ${error}`,
+          );
         }
 
         const id = await transaction<Professor[]>`
@@ -104,7 +106,9 @@ export const createProcessChangedProfessor =
           try {
             await processLocalFile(id, file);
           } catch (error) {
-            errors.push(`Error processing file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing file(professors) ${file?.path}: ${error}`,
+            );
           }
         }
       })

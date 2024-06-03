@@ -420,7 +420,9 @@ export const createProcessChangedCourse =
             }
           }
         } catch (error) {
-          errors.push(`Error processing file ${course?.path}: ${error}`);
+          errors.push(
+            `Error processing file(courses) ${course?.path}: ${error}`,
+          );
           return;
         }
 
@@ -626,7 +628,9 @@ export const createProcessChangedCourse =
               }
             }
           } catch {
-            errors.push(`Error processing file ${course.path} ${file?.path}: `);
+            errors.push(
+              `Error processing file(courses) ${course.path} ${file?.path}: `,
+            );
           }
         }
       })

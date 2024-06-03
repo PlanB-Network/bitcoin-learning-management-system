@@ -97,7 +97,9 @@ export const createProcessChangedConference = (
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
         } catch (error) {
-          errors.push(`Error processing file ${resource?.path}: ${error}`);
+          errors.push(
+            `Error processing file(conferences) ${resource?.path}: ${error}`,
+          );
           return;
         }
 
@@ -139,7 +141,7 @@ export const createProcessChangedConference = (
           }
         } catch (error) {
           errors.push(
-            `Error processing file ${resource.path} - ${main?.path}: ${error}`,
+            `Error processing file(conferences), ${resource.path} - ${main?.path}: ${error}`,
           );
         }
 
