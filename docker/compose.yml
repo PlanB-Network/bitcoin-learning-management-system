@@ -50,7 +50,7 @@ services:
       - ./data/sync:$SYNC_PATH
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-api-${ENV}.rule=Host(`api.${DOMAIN}`)
+      - traefik.http.routers.university-api-${ENV}.rule=Host(`${DOMAIN}` && PathPrefix(`/api`)
       - traefik.http.routers.university-api-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-api-${ENV}.tls=true
       - traefik.http.routers.university-api-${ENV}.tls.certresolver=security
@@ -58,6 +58,7 @@ services:
       - traefik.http.routers.university-api-${ENV}.service=university-api-${ENV}
     depends_on:
       - postgres
+      - redis
 
   cdn:
     <<: *defaults
@@ -67,11 +68,12 @@ services:
       - ./data/cdn:/var/www/cdn
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-cdn-${ENV}.rule=Host(`cdn.${DOMAIN}`)
+      - traefik.http.routers.university-cdn-${ENV}.rule=Host(`${DOMAIN}`) && PathPrefix(`/cdn`)
       - traefik.http.routers.university-cdn-${ENV}.entrypoints=https,http
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.tls.certresolver=security
       - traefik.http.middlewares.university-cdn-${ENV}.compress=true
+      - traefik.http.middlewares.university-cdn-${ENV}.stripprefix.prefixes=/cdn
 
   web:
     <<: *defaults
