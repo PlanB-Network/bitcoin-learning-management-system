@@ -30,10 +30,24 @@ export default defineConfig({
         strictPort: true,
         // TODO: check if hmr configuration is needed
         // hmr: {},
+        proxy: {
+          '/api': 'http://api:3000',
+          '/cdn': {
+            target: 'http://cdn:80',
+            rewrite: (path) => path.replace(/^\/cdn/, ''),
+          },
+        },
       }
     : {
         host: '0.0.0.0',
         port: 8181,
+        proxy: {
+          '/api': 'http://localhost:3000',
+          '/cdn': {
+            target: 'http://localhost:8080',
+            rewrite: (path) => path.replace(/^\/cdn/, ''),
+          },
+        },
       },
 
   test: {

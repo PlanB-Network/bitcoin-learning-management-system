@@ -11,12 +11,7 @@ export const createGetBooks =
     return books.map((book) => ({
       ...book,
       cover: book.cover
-        ? computeAssetCdnUrl(
-            process.env['CDN_URL'] || 'http://localhost:8080',
-            book.lastCommit,
-            book.path,
-            book.cover,
-          )
+        ? computeAssetCdnUrl(book.lastCommit, book.path, book.cover)
         : undefined,
     }));
   };

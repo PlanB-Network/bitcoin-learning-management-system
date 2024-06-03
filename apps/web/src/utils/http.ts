@@ -1,9 +1,7 @@
-import { baseUrl } from '#src/utils/misc.js';
-
 export const httpClient = {
   fetch: (url: string, options?: RequestInit) => {
     const isApiUrl = !url.startsWith('http');
-    const fetchUrl = isApiUrl ? `${baseUrl}${url}` : url;
+    const fetchUrl = isApiUrl ? `/api${url}` : url;
 
     const fetchOptions: RequestInit = {
       // Include credentials for API requests
