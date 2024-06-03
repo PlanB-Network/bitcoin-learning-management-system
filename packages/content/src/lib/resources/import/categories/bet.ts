@@ -35,7 +35,9 @@ export const createProcessChangedBet = (
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
         } catch (error) {
-          errors.push(`Error processing file(bet) ${resource?.path}: ${error}`);
+          errors.push(
+            `Error processing file(bet) ${resource?.fullPath}: ${error}`,
+          );
           return;
         }
 
@@ -79,7 +81,9 @@ export const createProcessChangedBet = (
             }
           }
         } catch (error) {
-          errors.push(`Error processing main file ${main?.path} : ${error}`);
+          errors.push(
+            `Error processing main file ${main?.path} ((${resource.fullPath})) : ${error}`,
+          );
           return;
         }
 
@@ -109,7 +113,9 @@ export const createProcessChangedBet = (
                 description = EXCLUDED.description
             `.then(firstRow);
           } catch (error) {
-            errors.push(`Error processing one file ${file?.path}: ${error}`);
+            errors.push(
+              `Error processing one file (bet) ${file?.path} (${resource.fullPath}): ${error}`,
+            );
           }
         }
       })

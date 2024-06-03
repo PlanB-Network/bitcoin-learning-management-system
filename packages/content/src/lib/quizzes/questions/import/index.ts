@@ -16,6 +16,7 @@ import { createProcessMainFile } from './main.js';
 interface QuizQuestionDetails {
   id: string;
   path: string;
+  fullPath: string;
   language?: Language;
 }
 
@@ -39,6 +40,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   return {
     id,
     path: pathElements.slice(0, 4).join('/'),
+    fullPath: pathElements.join('/'),
     language: pathElements[4].replace(/\..*/, '') as Language,
   };
 };
@@ -56,6 +58,7 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
       const {
         id,
         path: quizQuestionPath,
+        fullPath,
         language,
       } = parseDetailsFromPath(file.path);
 
@@ -65,6 +68,7 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
         type: 'quizzes/questions',
         id,
         path: quizQuestionPath,
+        fullPath,
         files: [],
       };
 
@@ -99,7 +103,7 @@ export const createProcessChangedQuizQuestion =
           await processMainFile(quizQuestion, main);
         } catch (error) {
           errors.push(
-            `Error processing file(quiz) ${quizQuestion?.path} for quiz question ${quizQuestion.id}: ${error}`,
+            `Error processing file(quiz) ${quizQuestion?.fullPath} for quiz question ${quizQuestion.id}: ${error}`,
           );
           return;
         }
