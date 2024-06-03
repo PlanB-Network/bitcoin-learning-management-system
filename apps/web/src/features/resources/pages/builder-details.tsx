@@ -160,7 +160,10 @@ export const Builder = () => {
                 ))}
               </div>
             </div>
-            <div className="ml-auto flex flex-col gap-6 max-md:hidden">
+            <div className="ml-auto flex flex-col gap-3 max-md:hidden">
+              <span className="text-xs font-medium text-white text-center">
+                {t('builders.languages')}
+              </span>
               {builder.languages &&
                 builder.languages
                   .slice(0, 3)
