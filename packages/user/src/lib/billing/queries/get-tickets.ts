@@ -14,6 +14,7 @@ export const getTicketsQuery = (uid: string /*, language: string*/) => {
     FROM users.event_payment ep
     JOIN content.events ev ON ep.event_id = ev.id 
     WHERE ep.uid = ${uid}
+    AND ep.payment_status = 'paid'
     
     UNION ALL
 
