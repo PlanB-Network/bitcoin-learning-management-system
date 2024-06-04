@@ -32,5 +32,5 @@
   "search.exclude": {
     "**/tsconfig.*.tsbuildinfo": true
   },
-  "cSpell.words": ["bytea", "sendgrid", "zoomable"]
+  "cSpell.words": ["bytea", "sats", "sendgrid", "zoomable"]
 }
