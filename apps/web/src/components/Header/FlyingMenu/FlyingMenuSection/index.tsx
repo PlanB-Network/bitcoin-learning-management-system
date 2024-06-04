@@ -115,7 +115,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
           static
           className={cn(
             'flex absolute z-10 mt-8 -left-1',
-            hasMultipleSubSection ? '-left-40' : '',
+            hasMultipleSubSection ? '-left-40 xl:-left-64' : '',
           )}
         >
           <div

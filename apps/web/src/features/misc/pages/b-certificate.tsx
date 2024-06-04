@@ -76,7 +76,7 @@ export const BCertificate = () => {
       title={t('bCertificate.pageTitle')}
       subtitle={t('bCertificate.pageSubtitle')}
       footerVariant="dark"
-      maxWidth="max-w-[1309px]"
+      maxWidth="max-w-[1380px]"
     >
       <div className="flex max-lg:flex-col justify-center items-center gap-9 mb-6 lg:mb-32">
         <img
@@ -110,7 +110,7 @@ export const BCertificate = () => {
             height={'100%'}
           />
         </div>
-        <span className="mt-5 mobile-h5 md:desktop-h5 text-newGray-2">
+        <span className="mt-5 mobile-h5 md:desktop-h5 text-newGray-2 text-center">
           {t('bCertificate.joeNakamotoVideo')}
         </span>
       </div>

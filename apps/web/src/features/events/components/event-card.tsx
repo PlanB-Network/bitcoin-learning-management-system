@@ -85,16 +85,11 @@ export const EventCard = ({
           {event.builder}
         </span>
         <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
-          <div className="flex gap-1">
+          <div className="flex flex-col gap-1">
             <span>{dateString}</span>
             {startDate.getUTCHours() !== 0 &&
               endDate.getUTCHours() !== 0 &&
-              !isPassed && (
-                <>
-                  <span>·</span>
-                  <span>{timeString}</span>
-                </>
-              )}
+              !isPassed && <span>{timeString}</span>}
           </div>
           {event.bookInPerson && !isPassed && (
             <>
@@ -366,7 +361,7 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col min-w-[280px] w-full max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
+          'flex-1 flex flex-col max-sm:min-w-[280px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-2.5 rounded-xl sm:p-2 sm:rounded-2xl',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
         )}
       >
@@ -390,7 +385,7 @@ export const EventCard = ({
         </div>
         <GeneralInfos />
         {!event.websiteUrl && (
-          <div className="flex flex-wrap gap-2 justify-between mt-auto py-1">
+          <div className="flex flex-col gap-2.5 justify-between mt-auto py-1">
             <PriceInfos />
             <EventButtons />
           </div>
