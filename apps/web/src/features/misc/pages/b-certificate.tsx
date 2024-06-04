@@ -1,23 +1,74 @@
-import { Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import { Button } from '@sovereign-university/ui';
 
 import { PageLayout } from '#src/components/PageLayout/index.js';
-import { BuilderCard } from '#src/features/resources/components/Cards/builder-card.js';
+import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
+import { useGreater } from '#src/hooks/use-greater.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import bCertificatesImage from '../../../assets/about/b-certificates.webp';
+import Question from '../../../assets/icons/question.svg?react';
+import { BCertificateEvents } from '../components/b-certificate-events.tsx';
+
+const BCertificateOrganize = () => {
+  const isScreenMd = useGreater('md');
+
+  return (
+    <div className="flex flex-col items-center max-md:border border-darkOrange-5 rounded-2xl max-md:p-4">
+      <div className="max-md:hidden h-px bg-newGray-1 w-full mb-4 md:mb-10" />
+      <div className="text-center">
+        <span className="text-darkOrange-5 max-md:text-xs max-md:font-medium max-md:leading-normal md:desktop-h7 max-md:hidden">
+          {t('bCertificate.organizeSubtitle')}
+        </span>
+        <h3 className="text-darkOrange-5 md:text-white mobile-h2 md:desktop-h4 mb-5 md:mb-2">
+          {t('bCertificate.organizeTitle')}
+        </h3>
+        <p className="leading-snug tracking-015px md:desktop-h8 max-w-2xl mx-auto">
+          {t('bCertificate.organizeDescription')}
+        </p>
+      </div>
+      <div className="relative flex max-md:flex-col justify-center items-center gap-2.5 md:gap-7 mt-6 md:mt-10">
+        <a
+          href="https://kutt.planb.network/BCERT-chart"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            variant="newPrimary"
+            onHoverArrow
+            size={isScreenMd ? 'l' : 's'}
+          >
+            {t('bCertificate.readChart')}
+          </Button>
+        </a>
+        <a
+          href="https://workspace.planb.network/apps/forms/s/AdXeMipQ7xrrXNyrtyZ2sCLs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            variant="newPrimary"
+            onHoverArrow
+            size={isScreenMd ? 'l' : 's'}
+          >
+            {t('bCertificate.organizeExam')}
+          </Button>
+        </a>
+      </div>
+      <div className="max-md:hidden h-px bg-newGray-1 w-full mt-4 md:mt-10" />
+    </div>
+  );
+};
+
 export const BCertificate = () => {
-  const { t, i18n } = useTranslation();
+  const { data: events } = trpc.content.getEvents.useQuery();
 
-  const { data: communities } = trpc.content.getBuilders.useQuery({
-    language: i18n.language ?? 'en',
-  });
-
-  const filteredCommunities = communities
-    ? communities
-        .filter((el) => el.category.toLowerCase() === 'communities')
-        .sort((a, b) => a.name.localeCompare(b.name))
+  const filteredEvents = events
+    ? events.filter(
+        (event) =>
+          event.type === 'exam' && new Date(event.startDate) > new Date(),
+      )
     : [];
 
   return (
@@ -25,53 +76,45 @@ export const BCertificate = () => {
       title={t('bCertificate.pageTitle')}
       subtitle={t('bCertificate.pageSubtitle')}
       footerVariant="dark"
+      maxWidth="max-w-[1309px]"
     >
-      <div className="flex flex-col items-center text-white">
-        <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
-          {filteredCommunities.map((community) => (
-            <Link
-              to={'/resources/builder/$builderId'}
-              params={{
-                builderId: community.id.toString(),
-              }}
-              key={community.id}
-            >
-              <BuilderCard
-                name={community.name}
-                logo={community.logo}
-                cardWidth="w-[90px]"
-              />
-            </Link>
-          ))}
-        </div>
-        <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
-          <a
-            href="https://framaforms.org/node-application-planb-network-1708081674"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 z-10"
-          >
-            <Button variant="newSecondary" onHoverArrow size="l">
-              {t('nodeNetwork.apply')}
-            </Button>
-          </a>
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-4 md:gap-14">
-        <div className="max-md:hidden h-px bg-newGray-1 w-full" />
-        <div className="text-center">
-          <span className="text-darkOrange-5 max-md:text-xs max-md:font-medium max-md:leading-normal md:desktop-h7">
-            {t('bCertificate.organizeSubtitle')}
-          </span>
-          <h3 className="text-white mobile-h3 md:desktop-h3 md:mb-2">
-            {t('bCertificate.organizeTitle')}
+      <div className="flex max-lg:flex-col justify-center items-center gap-9 mb-6 lg:mb-32">
+        <img
+          src={bCertificatesImage}
+          alt="B-Certificates"
+          className="w-full max-lg:max-w-[70%] max-md:mr-[45%]"
+        />
+        <div className="flex flex-col lg:self-end lg:mb-3.5 w-full lg:max-w-[43%]">
+          <h3 className="mobile-h2 md:desktop-h4 lg:mb-2.5">
+            {t('bCertificate.knowledgeableBitcoin')}
           </h3>
-          <p className="desktop-h8 max-w-2xl mx-auto">
-            {t('bCertificate.organizeDescription')}
+          <span className="mobile-h3 md:text-2xl md:font-medium md:leading-tight md:tracking-[0.25px] text-darkOrange-5 mb-2.5 lg:mb-10">
+            {t('bCertificate.challengeYourself')}
+          </span>
+          <p className="mobile-body2 md:desktop-h8">
+            {t('bCertificate.bCertificateDescription')}
           </p>
         </div>
-        <div className="max-md:hidden h-px bg-newGray-1 w-full" />
       </div>
+      <BCertificateEvents events={filteredEvents} />
+      <div className="flex flex-col items-center mb-6 md:mb-20">
+        <Question className="mb-2.5 md:mb-5" />
+        <h3 className="mobile-h3 md:text-[32px] md:font-semibold md:leading-tight md:tracking-[0.25px] text-center">
+          {t('bCertificate.curious')}
+        </h3>
+        <div className="max-w-4xl w-full overflow-hidden rounded-3xl mt-4 md:mt-12 aspect-video">
+          <ReactPlayer
+            url={'https://www.youtube.com/watch?v=9FDkHhUX3eU'}
+            controls
+            width={'100%'}
+            height={'100%'}
+          />
+        </div>
+        <span className="mt-5 mobile-h5 md:desktop-h5 text-newGray-2">
+          {t('bCertificate.joeNakamotoVideo')}
+        </span>
+      </div>
+      <BCertificateOrganize />
     </PageLayout>
   );
 };
