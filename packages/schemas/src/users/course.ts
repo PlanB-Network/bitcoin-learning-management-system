@@ -29,7 +29,6 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
     nextChapter: courseChapterSchema
       .pick({
         chapterIndex: true,
-        partIndex: true,
         chapterId: true,
         courseId: true,
       })
