@@ -7,8 +7,8 @@ import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { trpc } from '#src/utils/trpc.ts';
 
-import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
 import { EventBookModal } from '../components/event-book-modal.tsx';
 import { EventPaymentModal } from '../components/event-payment-modal.tsx';
