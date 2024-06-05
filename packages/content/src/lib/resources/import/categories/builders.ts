@@ -113,8 +113,6 @@ export const createProcessChangedBuilder = (
             errors.push(
               `Error processing file ${file?.path} (${resource.fullPath}): ${error}`,
             );
-            console.log('file', file);
-            console.log('main', main);
           }
         }
       })
