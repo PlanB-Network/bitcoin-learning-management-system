@@ -468,6 +468,7 @@
     "writtenBy": "Written by {{author}}"
   },
   "menu": {
+    "bCertificateDescription": "Pass the B-Certificate exam to assert your Bitcoin level",
     "betDescription": "Collection of content that you can use for your educational projects",
     "btc101Description": "Get a better understanding of bitcoin with this lessons",
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
@@ -680,6 +681,7 @@
     "articles": "Articles",
     "audioBook": "Audio Book",
     "back": "Back",
+    "bCertificate": "B-Certificate",
     "beginner": "Beginner",
     "billing": "Billing",
     "bitcoinWhitepaper": "Bitcoin Whitepaper",

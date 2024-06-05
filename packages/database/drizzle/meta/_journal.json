@@ -288,6 +288,13 @@
       "when": 1717490738410,
       "tag": "0040_worried_snowbird",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "5",
+      "when": 1717601000119,
+      "tag": "0041_broken_shadowcat",
+      "breakpoints": true
     }
   ]
 }

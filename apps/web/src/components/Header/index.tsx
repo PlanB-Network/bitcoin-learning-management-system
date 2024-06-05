@@ -188,6 +188,12 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.nodeNetworkDescription'),
               path: Routes.NodeNetwork,
             },
+            {
+              id: 'b-certificate',
+              title: t('words.bCertificate'),
+              description: t('menu.bCertificateDescription'),
+              path: Routes.BCertificate,
+            },
           ],
         },
       ],

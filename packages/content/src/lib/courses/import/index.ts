@@ -95,6 +95,8 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
 interface CourseMain {
   level: string;
   hours: number;
+  topic: string;
+  subtopic: string;
   professors: string[];
   tags?: string[];
   requires_payment: boolean;
@@ -347,13 +349,15 @@ export const createProcessChangedCourse =
                 .sort((a, b) => b.time - a.time)[0];
 
               const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, requires_payment, paid_price_dollars,
+                INSERT INTO content.courses (id, level, hours, topic, subtopic, requires_payment, paid_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
+                  ${parsedCourse.topic},
+                  ${parsedCourse.subtopic},
                   ${parsedCourse.requires_payment === true ? true : false},
                   ${parsedCourse.paid_price_dollars},
                   ${parsedCourse.paid_description},
@@ -368,6 +372,8 @@ export const createProcessChangedCourse =
                 ON CONFLICT (id) DO UPDATE SET
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
+                  topic = EXCLUDED.topic,
+                  subtopic = EXCLUDED.subtopic,
                   requires_payment = EXCLUDED.requires_payment,
                   paid_price_dollars = EXCLUDED.paid_price_dollars,
                   paid_description = EXCLUDED.paid_description,
