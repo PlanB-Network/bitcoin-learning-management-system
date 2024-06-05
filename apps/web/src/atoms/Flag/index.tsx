@@ -43,15 +43,16 @@ const Flag: React.FC<Props> = ({
   return (
     <div
       className={`
-    ${nonTailwindClasses}
-    ${gradient}
-    ${hasBorder ? 'border' : ''}
-    ${hasDropShadow ? 'drop-shadow' : ''}
-    ${hasBorderRadius ? 'rounded-sm' : ''}
-    ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
+          ${nonTailwindClasses}
+          ${gradient}
+          ${hasBorder ? 'border' : ''}
+          ${hasDropShadow ? 'drop-shadow' : ''}
+          ${hasBorderRadius ? 'rounded-sm' : ''}
+          ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
     >
       {imgSrc && <img src={imgSrc} alt={code} />}
     </div>
   );
 };
+
 export default Flag;
