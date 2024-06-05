@@ -93,14 +93,13 @@ export const EventCard = ({
             <span>{dateString}</span>
             {startDate.getUTCHours() !== 0 &&
               endDate.getUTCHours() !== 0 &&
-              !isPassed && <span>{timeString}</span>}
+              !isPassed && <span className="max-sm:hidden">{timeString}</span>}
           </div>
           {event.bookInPerson && !isPassed && (
             <>
-              <div className="h-px w-full bg-newBlack-5" />
-              <span>{event.addressLine2}</span>
-              <span>{event.addressLine3}</span>
-              <span className="font-medium ">
+              <span className="max-sm:hidden">{event.addressLine2}</span>
+              <span className="max-sm:hidden">{event.addressLine3}</span>
+              <span className="font-medium">
                 {event.addressLine1?.toUpperCase()}
               </span>
             </>
@@ -119,23 +118,26 @@ export const EventCard = ({
     return (
       <div className="flex flex-col justify-center text-sm md:text-base">
         {!isFree && (
-          <div className="flex gap-1 text-orange-600">
+          <div className="flex gap-1 text-orange-600 max-sm:text-sm max-sm:leading-normal">
             <span className="font-semibold">${event.priceDollars}</span>
-            <span>·</span>
-            <span>{satsPrice} sats</span>
+            <span className="max-sm:hidden">·</span>
+            <span className="max-sm:hidden">{satsPrice} sats</span>
           </div>
         )}
         {isPassed ? null : isFree ? (
-          <span className="font-semibold uppercase text-orange-600">
+          <span className="max-sm:text-sm font-semibold uppercase text-orange-600 max-sm:leading-normal">
             {t('events.card.free')}
           </span>
         ) : (
-          <span className="font-light text-xs italic leading-none">
+          <span className="font-light text-xs italic leading-none max-sm:hidden">
             {event.availableSeats && event.availableSeats > 0
               ? `${t('events.card.limited')} ${event.availableSeats} ${t('events.card.people')}`
               : t('events.card.unlimited')}
           </span>
         )}
+        <span className="sm:hidden capitalize text-[10px] font-medium max-sm:leading-normal">
+          {event.type}
+        </span>
       </div>
     );
   };
@@ -372,31 +374,33 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col max-sm:min-w-[182px] max-sm:max-w-[182px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-1.5 rounded-xl sm:p-2 sm:rounded-2xl',
+          'flex-1 flex flex-col min-w-[290px] max-w-[360px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-1.5 rounded-xl sm:p-2 sm:rounded-2xl',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
         )}
       >
-        {/* Image */}
-        <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
-          <img
-            src={event.picture}
-            alt={event.name ? event.name : ''}
-            className="object-cover aspect-[432/308] w-full"
-          />
-          {event.type && (
-            <span className="absolute left-2.5 top-2.5 sm:top-4 sm:left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
-              {capitalizedType}
-            </span>
-          )}
-          <div className="absolute right-2.5 top-2.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
-            {event.languages.map((language: string) => (
-              <Flag code={language} size="m" key={language} />
-            ))}
+        <div className="max-sm:flex max-sm:gap-2">
+          {/* Image */}
+          <div className="w-[124px] sm:w-full sm:overflow-hidden rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
+            <img
+              src={event.picture}
+              alt={event.name ? event.name : ''}
+              className="object-cover aspect-[432/308] w-full rounded-2xl"
+            />
+            {event.type && (
+              <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm max-sm:hidden">
+                {capitalizedType}
+              </span>
+            )}
+            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+              {event.languages.map((language: string) => (
+                <Flag code={language} size="m" key={language} />
+              ))}
+            </div>
           </div>
+          <GeneralInfos />
         </div>
-        <GeneralInfos />
         {!event.websiteUrl && (
-          <div className="flex flex-col gap-2.5 justify-between mt-auto py-1">
+          <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
             <PriceInfos />
             <EventButtons />
           </div>
