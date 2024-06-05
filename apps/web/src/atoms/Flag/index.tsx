@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './Flag.scss';
-import { useTranslation } from 'react-i18next'; // Importa el hook de traducción
 
 /*
  * Credits to https://github.com/Yummygum/react-flagpack for the original component and styles,
@@ -29,7 +28,6 @@ const Flag: React.FC<Props> = ({
   className,
 }: Props) => {
   const [imgSrc, setImgSrc] = useState(null);
-  const { t } = useTranslation(); // Usa el hook de traducción
 
   useEffect(() => {
     import(`./flags/${code.toUpperCase()}.svg`)

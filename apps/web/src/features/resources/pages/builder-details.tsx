@@ -181,22 +181,6 @@ export const Builder = () => {
                 </>
               )}
             </div>
-
-            {/* <div className="ml-auto flex flex-col gap-3 max-md:hidden">
-              <span className="text-xs font-medium text-white text-center">
-                {t('builders.languages')}
-              </span>
-              {builder.languages &&
-                builder.languages
-                  .slice(0, 3)
-                  .map((language) => (
-                    <Flag
-                      code={language}
-                      key={language}
-                      className="!w-[70px] !h-[49px] shadow-card-items-dark"
-                    />
-                  ))}
-            </div> */}
           </section>
           <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5">
             {builder.description}
