@@ -9,6 +9,8 @@ import type {
 } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
+import { useGreater } from '#src/hooks/use-greater.js';
+
 import Flag from '../../../atoms/Flag/index.tsx';
 import { getDateString, getTimeString } from '../../../utils/date.ts';
 
@@ -80,11 +82,13 @@ export const EventCard = ({
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold text-lg lg:text-2xl">{event.name}</h3>
-        <span className="font-medium text-sm md:text-base">
+        <h3 className="font-bold max-lg:leading-snug sm:text-lg lg:text-2xl">
+          {event.name}
+        </h3>
+        <span className="font-medium text-xs sm:text-sm md:text-base">
           {event.builder}
         </span>
-        <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
+        <div className="flex flex-col gap-0.5 text-white/75 text-[10px] sm:text-xs lg:text-sm">
           <div className="flex flex-col gap-1">
             <span>{dateString}</span>
             {startDate.getUTCHours() !== 0 &&
@@ -93,6 +97,7 @@ export const EventCard = ({
           </div>
           {event.bookInPerson && !isPassed && (
             <>
+              <div className="h-px w-full bg-newBlack-5" />
               <span>{event.addressLine2}</span>
               <span>{event.addressLine3}</span>
               <span className="font-medium ">
@@ -136,6 +141,8 @@ export const EventCard = ({
   };
 
   const EventButtons = () => {
+    const isScreenSm = useGreater('sm');
+
     const isBookableOnlineEvent = event.bookOnline;
 
     const isFreeOnlineLiveEvent = isBookableOnlineEvent && isFree && isLive;
@@ -158,7 +165,7 @@ export const EventCard = ({
       (userEvent !== undefined && userEvent.withPhysical === true);
 
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2.5 sm:gap-4">
         {isFreeOnlineLiveEvent && (
           <Link
             to={'/events/$eventId'}
@@ -167,7 +174,7 @@ export const EventCard = ({
             }}
           >
             <Button
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               variant="newPrimary"
               className="rounded-lg text-xs md:text-base"
             >
@@ -185,7 +192,7 @@ export const EventCard = ({
               }}
             >
               <Button
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 variant="newPrimary"
                 className="rounded-lg text-xs md:text-base"
               >
@@ -195,7 +202,7 @@ export const EventCard = ({
           ) : (
             <Button
               variant="newPrimary"
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
                 if (isLoggedIn) {
@@ -216,7 +223,7 @@ export const EventCard = ({
 
         {isFreeOnlineUpcomingEvent && (
           <Button
-            size="s"
+            size={isScreenSm ? 's' : 'xs'}
             variant="newSecondary"
             disabled={true}
             className="rounded-lg text-xs md:text-base"
@@ -229,7 +236,7 @@ export const EventCard = ({
           (userBookedTheEvent ? (
             <Link to={'/events/' + event.id} target="_blank" className="w-fit">
               <Button
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 variant="newSecondary"
                 disabled={true}
                 className="rounded-lg text-xs md:text-base"
@@ -240,7 +247,7 @@ export const EventCard = ({
           ) : (
             <Button
               variant="newPrimary"
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
                 if (isLoggedIn) {
@@ -268,7 +275,7 @@ export const EventCard = ({
             userEvent === undefined ? (
               <Button
                 variant="newPrimary"
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 className="rounded-lg text-xs md:text-base"
                 onClick={() => {
                   if (isLoggedIn) {
@@ -305,13 +312,15 @@ export const EventCard = ({
   };
 
   const ReplayButtons = () => {
+    const isScreenSm = useGreater('sm');
+
     return (filteredEventPayments && filteredEventPayments.length > 0) ||
       isFree ? (
       <Link to={'/events/' + event.id} className="w-fit">
         <Button
           iconRight={<HiVideoCamera size={18} />}
           variant="newSecondary"
-          size="s"
+          size={isScreenSm ? 's' : 'xs'}
           className="rounded-lg text-xs md:text-base"
         >
           {t('events.card.watchReplay')}
@@ -321,7 +330,7 @@ export const EventCard = ({
       <Button
         iconRight={<HiVideoCamera size={18} />}
         variant="newSecondary"
-        size="s"
+        size={isScreenSm ? 's' : 'xs'}
         className="rounded-lg text-xs md:text-base"
         onClick={() => {
           if (isLoggedIn) {
@@ -342,12 +351,14 @@ export const EventCard = ({
   };
 
   const VisitWebsiteButton = () => {
+    const isScreenSm = useGreater('sm');
+
     return event.websiteUrl ? (
       <div className="w-fit mx-auto mt-auto pt-3 pb-1">
         <Link to={event.websiteUrl} target="_blank">
           <Button
             variant="newPrimary"
-            size="s"
+            size={isScreenSm ? 's' : 'xs'}
             className="rounded-lg text-xs md:text-base"
           >
             {t('events.card.visitWebsite')}
@@ -361,7 +372,7 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col max-sm:min-w-[280px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-2.5 rounded-xl sm:p-2 sm:rounded-2xl',
+          'flex-1 flex flex-col max-sm:min-w-[182px] max-sm:max-w-[182px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-1.5 rounded-xl sm:p-2 sm:rounded-2xl',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
         )}
       >
@@ -373,11 +384,11 @@ export const EventCard = ({
             className="object-cover aspect-[432/308] w-full"
           />
           {event.type && (
-            <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
+            <span className="absolute left-2.5 top-2.5 sm:top-4 sm:left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
               {capitalizedType}
             </span>
           )}
-          <div className="absolute top-4 right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+          <div className="absolute right-2.5 top-2.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
             {event.languages.map((language: string) => (
               <Flag code={language} size="m" key={language} />
             ))}
