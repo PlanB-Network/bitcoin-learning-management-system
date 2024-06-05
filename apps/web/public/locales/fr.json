@@ -109,7 +109,7 @@
             },
             "live": {
                 "title": "Vidéo en direct",
-                "stayTuned": ""
+                "stayTuned": "Le direct commencera une demi-heure avant le début du cours. Restez à l'écoute."
             },
             "nextLesson": "La prochaine leçon sera"
         },
@@ -193,7 +193,7 @@
             "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
             "total": "Total",
             "back_course": "Retour au cours",
-            "callout": "",
+            "callout": "Vous êtes sur le point d'acheter ce cours.",
             "description": "",
             "book_description": "",
             "qr_unified": "",
