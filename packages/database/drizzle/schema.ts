@@ -299,6 +299,8 @@ export const contentCourses = content.table('courses', {
 
   level: varchar('level', { length: 255 }).notNull(),
   hours: doublePrecision('hours').notNull(),
+  topic: text('topic').notNull(),
+  subtopic: text('subtopic').notNull(),
 
   requiresPayment: boolean('requires_payment').default(false).notNull(),
   paidPriceDollars: integer('paid_price_dollars'),

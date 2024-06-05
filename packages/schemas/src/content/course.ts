@@ -83,6 +83,8 @@ export const minimalJoinedCourseSchema = courseSchema
   .pick({
     id: true,
     hours: true,
+    topic: true,
+    subtopic: true,
     requiresPayment: true,
     paidPriceDollars: true,
     paidDescription: true,
