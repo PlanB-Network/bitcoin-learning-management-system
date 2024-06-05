@@ -12,11 +12,11 @@ import { useDisclosure } from '#src/hooks/use-disclosure.js';
 
 import { trpc } from '../../../utils/index.ts';
 
-interface BuilderEventsProps {
+interface BCertificateEventsProps {
   events: JoinedEvent[];
 }
 
-export const BuilderEvents = ({ events }: BuilderEventsProps) => {
+export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
   const { data: userEvents, refetch: refetchUserEvents } =
@@ -91,7 +91,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
 
   // TODO refactor prop drilling
   return (
-    <div className="text-white mb-7 md:mb-32">
+    <div className="text-white mb-6 md:mb-24">
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.accessType &&
@@ -138,8 +138,8 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
         )}
 
       <div className="flex flex-col">
-        <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
-          {t('builders.relatedWork')}
+        <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-9">
+          {t('bCertificate.bookExam')}
         </h3>
         {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
@@ -160,7 +160,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
         )}
         {sortedEvents.length === 0 && (
           <p className="mobile-h4 md:desktop-h5 text-center">
-            {t('builders.noRelatedWork')}
+            {t('bCertificate.noBookExam')}
           </p>
         )}
       </div>

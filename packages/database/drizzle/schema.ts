@@ -575,6 +575,7 @@ export const eventTypeEnum = pgEnum('event_type', [
   'workshop',
   'course',
   'lecture',
+  'exam',
   'meetup',
 ]);
 

@@ -178,7 +178,7 @@ export const Builder = () => {
           </p>
         </article>
       )}
-      {filteredEvents.length > 0 && <BuilderEvents events={filteredEvents} />}
+      <BuilderEvents events={filteredEvents} />
       {builder?.category === 'communities' && (
         <div className="flex flex-col items-center gap-4 md:gap-14">
           <div className="max-md:hidden h-px bg-newGray-1 w-full" />
