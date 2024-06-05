@@ -8,6 +8,7 @@ export enum Routes {
   // About Us
   About = '/about',
   AboutUs = '/about-us',
+  BCertificate = '/b-certificate',
   Manifesto = '/manifesto',
   NodeNetwork = '/node-network',
   Professors = '/professors',

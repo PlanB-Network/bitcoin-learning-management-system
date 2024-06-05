@@ -136,11 +136,12 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
             }}
           />
         )}
-      {sortedEvents && (
-        <div className="flex flex-col">
-          <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
-            {t('builders.relatedWork')}
-          </h3>
+
+      <div className="flex flex-col">
+        <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
+          {t('builders.relatedWork')}
+        </h3>
+        {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
             {sortedEvents?.map((event) => (
               <EventCard
@@ -156,8 +157,14 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
               />
             ))}
           </div>
-        </div>
-      )}
+        )}
+        {sortedEvents.length === 0 && (
+          <p className="mobile-h4 md:desktop-h5 text-center">
+            {t('builders.noRelatedWork')}
+          </p>
+        )}
+      </div>
+
       {isAuthModalOpen && (
         <AuthModal
           isOpen={isAuthModalOpen}

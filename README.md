@@ -8,19 +8,21 @@ We are looking for contributors! If you want to help or learn more about the pro
 
 ## Development - Run the project locally
 
+### Option 1: with docker (prefered)
+
 We use [Turbo](https://turbo.build/) to manage the monorepo and Docker to run the development environment.
 
 Follow the next steps to run the project locally, on a linux machine.
 
-### Clone the repo
+#### Clone the repo
 
 Do it.
 
-### Setup your environment variables
+#### Setup your environment variables
 
 Duplicate the [.env.example](.env.example) file and rename the duplicate `.env`.
 
-### Run the containers
+#### Run the containers
 
 To start the development environment, run :
 
@@ -29,7 +31,7 @@ To start the development environment, run :
 
 This will start all the necessary containers.
 
-### Set up your database schema
+#### Set up your database schema
 
 On the first run, you will need to run the DB migrations.
 
@@ -40,14 +42,58 @@ To do so, run go to the database folder with then run the migration script :
 
 Once the containers are up and running, you can access the front at `http://localhost:8181`. The app will automatically reload if you change any of the source files.
 
-### Import data from the data repository
+#### Import data from the data repository
 
 In order to sync the database with the data from the data repository, you can make a request to the API with `curl -X POST http://localhost:3000/api/github/sync`. This will import all the data from the data repository into the database.
 
-### Sync issue
+#### Sync issue
 
 When running the sync locally, there is currently and access right issue with the cdn and sync volumes. To fix it, update the access rights with the following command :
 `docker exec --user=root sovereign-university-api-1 chmod 777 /tmp/{sync,cdn}`
+
+### Option 2 - Without docker
+
+You may want to run the project locally to test your changes. Here is how to do it.
+
+#### Pre-requisites:
+
+- Node.js
+- PostgreSQL
+- Redis
+
+#### Install global dependencies
+
+```bash
+npm i -g pnpm dotenv-cli
+```
+
+#### Setup your local database
+
+Login to your local PostgreSQL instance (`psql -U postgres`) and run the following commands:
+
+```sql
+CREATE USER plan_b WITH PASSWORD 'plan_b';
+CREATE DATABASE plan_b WITH OWNER plan_b;
+```
+
+Update your `.env` file accordingly.
+
+#### Sync the database
+
+```bash
+cd packages/database
+pnpm run db:migrate:local
+```
+
+#### Start a local CDN
+
+```bash
+docker run -d --restart=always -p 8080:80 \
+  -v /tmp/cdn:/var/www/cdn:ro \
+  -v ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf:ro \
+  --name cdn-server \
+  nginx:alpine
+```
 
 ## Development - Manage the database
 
@@ -74,46 +120,3 @@ Once the database is updated, update or create the associated types running :
 ### Run SQL queries
 
 To open psql, run `docker exec -it sovereign-university-postgres-1 psql -U postgres -d postgres`
-
-## Development - Run Locally
-
-You may want to run the project locally to test your changes. Here is how to do it.
-
-### Pre-requisites:
-  - Node.js
-  - PostgreSQL
-  - Redis
-
-### Install global dependencies
-
-```bash
-npm i -g pnpm dotenv-cli
-```
-
-### Setup your local database
-
-Login to your local PostgreSQL instance (`psql -U postgres`) and run the following commands:
-
-```sql
-CREATE USER plan_b WITH PASSWORD 'plan_b'; 
-CREATE DATABASE plan_b WITH OWNER plan_b;
-```
-
-Update your `.env` file accordingly.
-
-### Sync the database
-
-```bash
-cd packages/database
-pnpm run db:migrate:local
-```
-
-### Start a local CDN
-  
-```bash
-docker run -d --restart=always -p 8080:80 \
-  -v /tmp/cdn:/var/www/cdn:ro \
-  -v ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf:ro \
-  --name cdn-server \
-  nginx:alpine
-```

@@ -425,7 +425,7 @@ export const createProcessChangedCourse =
           }
         } catch (error) {
           errors.push(
-            `Error processing file(courses) ${course?.fullPath}: ${error}`,
+            `Error processing file(courses1) ${course?.fullPath}: ${error}`,
           );
           return;
         }
@@ -633,7 +633,7 @@ export const createProcessChangedCourse =
             }
           } catch {
             errors.push(
-              `Error processing file(courses) ${course.fullPath} ${file?.path}: `,
+              `Error processing file(courses2) ${course.fullPath} ${file?.path}: `,
             );
           }
         }

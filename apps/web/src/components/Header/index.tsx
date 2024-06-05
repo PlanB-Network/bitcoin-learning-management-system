@@ -1,7 +1,6 @@
 import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BsPlus } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -87,18 +86,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             {
               id: level,
               title: capitalize(level),
-              items:
-                formatted.length > 4
-                  ? [
-                      ...formatted.slice(0, 4),
-                      {
-                        id: 'more',
-                        title: t('words.more'),
-                        path: `/courses`,
-                        icon: BsPlus,
-                      },
-                    ]
-                  : formatted,
+              items: formatted,
             },
           ];
     },

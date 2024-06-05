@@ -1,24 +1,22 @@
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { EventBookModal } from '#src/features/events/components/event-book-modal.js';
+import { EventCard } from '#src/features/events/components/event-card.js';
+import { EventPaymentModal } from '#src/features/events/components/event-payment-modal.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { trpc } from '#src/utils/trpc.ts';
 
-import { CurrentEvents } from '../components/current-events.tsx';
-import { EventBookModal } from '../components/event-book-modal.tsx';
-import { EventPaymentModal } from '../components/event-payment-modal.tsx';
-import { EventsGrid } from '../components/events-grid.tsx';
-import { EventsPassed } from '../components/events-passed.tsx';
+import { trpc } from '../../../utils/index.ts';
 
-export const Events = () => {
-  const { t } = useTranslation();
+interface BCertificateEventsProps {
+  events: JoinedEvent[];
+}
 
-  const { data: events } = trpc.content.getEvents.useQuery();
+export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
   const { data: userEvents, refetch: refetchUserEvents } =
@@ -39,6 +37,18 @@ export const Events = () => {
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,
   );
+
+  const sortedEvents = [...events]
+    .filter((event) => {
+      const now = Date.now();
+      const startDate = new Date(event.startDate).getTime();
+
+      return now < startDate;
+    })
+    .sort(
+      (a, b) =>
+        new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
+    );
 
   useEffect(() => {
     refetchEventPayments();
@@ -81,13 +91,7 @@ export const Events = () => {
 
   // TODO refactor prop drilling
   return (
-    <PageLayout
-      title={t('events.pageTitle')}
-      subtitle={t('events.pageSubtitle')}
-      description={t('events.pageDescription')}
-      maxWidth="max-w-full"
-      paddingXClasses="px-0"
-    >
+    <div className="text-white mb-6 md:mb-24">
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.accessType &&
@@ -132,69 +136,35 @@ export const Events = () => {
             }}
           />
         )}
-      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
-        {events && (
-          <CurrentEvents
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-          />
+
+      <div className="flex flex-col">
+        <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-9">
+          {t('bCertificate.bookExam')}
+        </h3>
+        {sortedEvents.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
+            {sortedEvents?.map((event) => (
+              <EventCard
+                event={event}
+                eventPayments={eventPayments}
+                userEvents={userEvents}
+                openAuthModal={openAuthModal}
+                isLoggedIn={isLoggedIn}
+                setIsPaymentModalOpen={setIsPaymentModalOpen}
+                setPaymentModalData={setPaymentModalData}
+                conversionRate={conversionRate}
+                key={event.name}
+              />
+            ))}
+          </div>
         )}
-        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
-        {events && (
-          <EventsGrid
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-          />
+        {sortedEvents.length === 0 && (
+          <p className="mobile-h4 md:desktop-h5 text-center">
+            {t('bCertificate.noBookExam')}
+          </p>
         )}
-        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
-        {/* Add my event */}
-        <div className="flex flex-col justify-center items-center max-sm:p-4 p-0 max-sm:border max-sm:border-darkOrange-5 max-sm:rounded-2xl max-w-2xl mx-auto">
-          <p className="text-darkOrange-5 text-center text-xl font-semibold leading-tight max-sm:hidden mb-2">
-            {t('events.newEvent.subtitle')}
-          </p>
-          <h2 className="text-darkOrange-5 sm:text-white text-2xl sm:text-[40px] text-center font-medium sm:font-normal leading-tight sm:tracking-[0.25px] mb-6 sm:mb-2">
-            {t('events.newEvent.title')}
-          </h2>
-          <p className="text-white text-center sm:text-xl sm:leading-snug max-sm:tracking-015px mb-6 sm:mb-10">
-            {t('events.newEvent.description')}
-          </p>
-          <a
-            className="px-[10px] sm:px-[18px] py-[14px] bg-darkOrange-5 text-white rounded-md sm:rounded-2xl flex justify-center items-center sm:text-xl sm:leading-normal font-medium active:scale-95"
-            href="https://workspace.planb.network/apps/forms/s/AdXeMipQ7xrrXNyrtyZ2sCLs"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('events.newEvent.button')}
-          </a>
-        </div>
       </div>
 
-      <div>
-        {events && (
-          <EventsPassed
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-          />
-        )}
-      </div>
       {isAuthModalOpen && (
         <AuthModal
           isOpen={isAuthModalOpen}
@@ -202,6 +172,6 @@ export const Events = () => {
           initialState={authMode}
         />
       )}
-    </PageLayout>
+    </div>
   );
 };

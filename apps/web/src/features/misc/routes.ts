@@ -3,6 +3,7 @@ import { createRoute } from '@tanstack/react-router';
 import { rootRoute } from '../../routes/root.tsx';
 
 import { About } from './pages/about.tsx';
+import { BCertificate } from './pages/b-certificate.tsx';
 import { Home } from './pages/home.tsx';
 import { Manifesto } from './pages/manifesto.tsx';
 import { NodeNetwork } from './pages/node-network.tsx';
@@ -61,6 +62,12 @@ export const underConstructionRoute = createRoute({
   component: UnderConstruction,
 });
 
+export const bCertificateRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/b-certificate',
+  component: BCertificate,
+});
+
 export const nodeNetworkRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/node-network',
@@ -83,6 +90,7 @@ export const miscRoutes = [
   globalNotFoundRoute,
   homeRoute,
   aboutRoute,
+  bCertificateRoute,
   nodeNetworkRoute,
   manifestoRoute,
   notFoundRoute,

@@ -9,6 +9,8 @@ import type {
 } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
+import { useGreater } from '#src/hooks/use-greater.js';
+
 import Flag from '../../../atoms/Flag/index.tsx';
 import { getDateString, getTimeString } from '../../../utils/date.ts';
 
@@ -80,27 +82,24 @@ export const EventCard = ({
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold text-lg lg:text-2xl">{event.name}</h3>
-        <span className="font-medium text-sm md:text-base">
+        <h3 className="font-bold max-lg:leading-snug sm:text-lg lg:text-2xl">
+          {event.name}
+        </h3>
+        <span className="font-medium text-xs sm:text-sm md:text-base">
           {event.builder}
         </span>
-        <div className="flex flex-col gap-0.5 text-white/75 text-xs lg:text-sm">
-          <div className="flex gap-1">
+        <div className="flex flex-col gap-0.5 text-white/75 text-[10px] sm:text-xs lg:text-sm">
+          <div className="flex flex-col gap-1">
             <span>{dateString}</span>
             {startDate.getUTCHours() !== 0 &&
               endDate.getUTCHours() !== 0 &&
-              !isPassed && (
-                <>
-                  <span>·</span>
-                  <span>{timeString}</span>
-                </>
-              )}
+              !isPassed && <span className="max-sm:hidden">{timeString}</span>}
           </div>
           {event.bookInPerson && !isPassed && (
             <>
-              <span>{event.addressLine2}</span>
-              <span>{event.addressLine3}</span>
-              <span className="font-medium ">
+              <span className="max-sm:hidden">{event.addressLine2}</span>
+              <span className="max-sm:hidden">{event.addressLine3}</span>
+              <span className="font-medium">
                 {event.addressLine1?.toUpperCase()}
               </span>
             </>
@@ -119,28 +118,33 @@ export const EventCard = ({
     return (
       <div className="flex flex-col justify-center text-sm md:text-base">
         {!isFree && (
-          <div className="flex gap-1 text-orange-600">
+          <div className="flex gap-1 text-orange-600 max-sm:text-sm max-sm:leading-normal">
             <span className="font-semibold">${event.priceDollars}</span>
-            <span>·</span>
-            <span>{satsPrice} sats</span>
+            <span className="max-sm:hidden">·</span>
+            <span className="max-sm:hidden">{satsPrice} sats</span>
           </div>
         )}
         {isPassed ? null : isFree ? (
-          <span className="font-semibold uppercase text-orange-600">
+          <span className="max-sm:text-sm font-semibold uppercase text-orange-600 max-sm:leading-normal">
             {t('events.card.free')}
           </span>
         ) : (
-          <span className="font-light text-xs italic leading-none">
+          <span className="font-light text-xs italic leading-none max-sm:hidden">
             {event.availableSeats && event.availableSeats > 0
               ? `${t('events.card.limited')} ${event.availableSeats} ${t('events.card.people')}`
               : t('events.card.unlimited')}
           </span>
         )}
+        <span className="sm:hidden capitalize text-[10px] font-medium max-sm:leading-normal">
+          {event.type}
+        </span>
       </div>
     );
   };
 
   const EventButtons = () => {
+    const isScreenSm = useGreater('sm');
+
     const isBookableOnlineEvent = event.bookOnline;
 
     const isFreeOnlineLiveEvent = isBookableOnlineEvent && isFree && isLive;
@@ -163,7 +167,7 @@ export const EventCard = ({
       (userEvent !== undefined && userEvent.withPhysical === true);
 
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2.5 sm:gap-4">
         {isFreeOnlineLiveEvent && (
           <Link
             to={'/events/$eventId'}
@@ -172,7 +176,7 @@ export const EventCard = ({
             }}
           >
             <Button
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               variant="newPrimary"
               className="rounded-lg text-xs md:text-base"
             >
@@ -190,7 +194,7 @@ export const EventCard = ({
               }}
             >
               <Button
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 variant="newPrimary"
                 className="rounded-lg text-xs md:text-base"
               >
@@ -200,7 +204,7 @@ export const EventCard = ({
           ) : (
             <Button
               variant="newPrimary"
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
                 if (isLoggedIn) {
@@ -221,7 +225,7 @@ export const EventCard = ({
 
         {isFreeOnlineUpcomingEvent && (
           <Button
-            size="s"
+            size={isScreenSm ? 's' : 'xs'}
             variant="newSecondary"
             disabled={true}
             className="rounded-lg text-xs md:text-base"
@@ -234,7 +238,7 @@ export const EventCard = ({
           (userBookedTheEvent ? (
             <Link to={'/events/' + event.id} target="_blank" className="w-fit">
               <Button
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 variant="newSecondary"
                 disabled={true}
                 className="rounded-lg text-xs md:text-base"
@@ -245,7 +249,7 @@ export const EventCard = ({
           ) : (
             <Button
               variant="newPrimary"
-              size="s"
+              size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
                 if (isLoggedIn) {
@@ -273,7 +277,7 @@ export const EventCard = ({
             userEvent === undefined ? (
               <Button
                 variant="newPrimary"
-                size="s"
+                size={isScreenSm ? 's' : 'xs'}
                 className="rounded-lg text-xs md:text-base"
                 onClick={() => {
                   if (isLoggedIn) {
@@ -310,13 +314,15 @@ export const EventCard = ({
   };
 
   const ReplayButtons = () => {
+    const isScreenSm = useGreater('sm');
+
     return (filteredEventPayments && filteredEventPayments.length > 0) ||
       isFree ? (
       <Link to={'/events/' + event.id} className="w-fit">
         <Button
           iconRight={<HiVideoCamera size={18} />}
           variant="newSecondary"
-          size="s"
+          size={isScreenSm ? 's' : 'xs'}
           className="rounded-lg text-xs md:text-base"
         >
           {t('events.card.watchReplay')}
@@ -326,7 +332,7 @@ export const EventCard = ({
       <Button
         iconRight={<HiVideoCamera size={18} />}
         variant="newSecondary"
-        size="s"
+        size={isScreenSm ? 's' : 'xs'}
         className="rounded-lg text-xs md:text-base"
         onClick={() => {
           if (isLoggedIn) {
@@ -347,12 +353,14 @@ export const EventCard = ({
   };
 
   const VisitWebsiteButton = () => {
+    const isScreenSm = useGreater('sm');
+
     return event.websiteUrl ? (
       <div className="w-fit mx-auto mt-auto pt-3 pb-1">
         <Link to={event.websiteUrl} target="_blank">
           <Button
             variant="newPrimary"
-            size="s"
+            size={isScreenSm ? 's' : 'xs'}
             className="rounded-lg text-xs md:text-base"
           >
             {t('events.card.visitWebsite')}
@@ -366,31 +374,33 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col min-w-[280px] w-full max-w-[432px] bg-newBlack-2 p-2.5 rounded-xl md:min-w-80 lg:min-w-96 sm:bg-transparent sm:p-0 sm:rounded-none',
+          'flex-1 flex flex-col min-w-[290px] max-w-[360px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-1.5 rounded-xl sm:p-2 sm:rounded-2xl',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
         )}
       >
-        {/* Image */}
-        <div className="w-full overflow-hidden rounded-2xl relative mb-2 lg:mb-4">
-          <img
-            src={event.picture}
-            alt={event.name ? event.name : ''}
-            className="object-cover aspect-[432/308] w-full"
-          />
-          {event.type && (
-            <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm">
-              {capitalizedType}
-            </span>
-          )}
-          <div className="absolute top-4 right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
-            {event.languages.map((language: string) => (
-              <Flag code={language} size="m" key={language} />
-            ))}
+        <div className="max-sm:flex max-sm:gap-2">
+          {/* Image */}
+          <div className="w-[124px] sm:w-full sm:overflow-hidden rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
+            <img
+              src={event.picture}
+              alt={event.name ? event.name : ''}
+              className="object-cover aspect-[432/308] w-full rounded-2xl"
+            />
+            {event.type && (
+              <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm max-sm:hidden">
+                {capitalizedType}
+              </span>
+            )}
+            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+              {event.languages.map((language: string) => (
+                <Flag code={language} size="m" key={language} />
+              ))}
+            </div>
           </div>
+          <GeneralInfos />
         </div>
-        <GeneralInfos />
         {!event.websiteUrl && (
-          <div className="flex flex-wrap gap-2 justify-between mt-auto py-1">
+          <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
             <PriceInfos />
             <EventButtons />
           </div>
