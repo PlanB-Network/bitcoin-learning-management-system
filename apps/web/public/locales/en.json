@@ -195,6 +195,7 @@
       "invoiceId": "Tx ID"
     },
     "explorer": {
+      "findCourses": "Find the perfect course for your needs thanks to the course selector",
       "footerTitle": "Our professors are here for you !",
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
@@ -208,7 +209,8 @@
       "s2t1": "Bitcoin education is a journey not a destination",
       "s3PickLevel": "Pick levels :",
       "s3PickTopic": "Pick topics :",
-      "s3t1": "Build your own path down the rabbit hole"
+      "s3t1": "Build your own path down the rabbit hole",
+      "seeCourse": "See the course"
     },
     "footer": {
       "": ""
@@ -694,14 +696,17 @@
     "content": "Content",
     "continue": "Continue",
     "course": "Course",
+    "courseId": "Course ID",
     "courses": "Courses",
     "date": "Date",
     "dashboard": "Dashboard",
+    "description": "Description",
     "details": "Details",
     "didYouKnow": "Did you know?",
     "documentaries": "Documentaries",
     "donations": "Donations",
     "download": "Download",
+    "duration": "Duration",
     "economy": "Economy",
     "edit": "Edit",
     "education": "Education",
@@ -709,6 +714,7 @@
     "events": "Events",
     "exchanges": "Exchanges",
     "followUs": "Follow us",
+    "free": "Free",
     "helpUs": "Help us",
     "home": "Home",
     "intermediate": "Intermediate",
@@ -717,8 +723,9 @@
     "level": {
       "advanced": "Advanced",
       "beginner": "Beginner",
-      "developer": "developer",
-      "intermediate": "Intermediate"
+      "developer": "Developer",
+      "intermediate": "Intermediate",
+      "level": "Level"
     },
     "library": "Library",
     "lightning": "Lightning",
@@ -740,8 +747,11 @@
     "online": "Online",
     "or": "or",
     "ourStory": "Our story",
+    "paid": "Paid",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
+    "price": "Price",
+    "professor": "Professor",
     "professors": "Professors",
     "purchase": "Purchase",
     "register": "Register",
@@ -752,6 +762,7 @@
     "rogzy": "Rogzy",
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsoring & contributors",
+    "start": "Start",
     "supportUs": "Support us",
     "teachers": "Teachers",
     "termsAndConditions": "Terms and conditions",
@@ -760,6 +771,7 @@
     "time": "Time",
     "to": "to",
     "toolkits": "Toolkits",
+    "topics": "Topics",
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "update": "Update",
