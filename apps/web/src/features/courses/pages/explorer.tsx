@@ -1,26 +1,53 @@
+import { Link } from '@tanstack/react-router';
+import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedCourse } from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
 import { PageLayout } from '#src/components/PageLayout/index.js';
-
 // import { CourseCard } from '../../../components/course-card.tsx';
 // import { fakeCourseId } from '../../../utils/courses.ts';
 // import { extractNumbers } from '../../../utils/string.ts';
 // import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
+import { DropdownMenu } from '#src/features/resources/components/DropdownMenu/dropdown-menu.js';
+import { computeAssetCdnUrl } from '#src/utils/index.js';
+
 import { trpc } from '../../../utils/trpc.ts';
 // import type { Course } from '../components/course-tree.tsx';
 // import { CourseTree } from '../components/course-tree.tsx';
 // import { LevelPicker } from '../components/level-picker.tsx';
 // import { TopicPicker } from '../components/topic-picker.tsx';
 
-export const CoursesExplorer = () => {
-  const { i18n, t } = useTranslation();
-  const { data: courses } = trpc.content.getCourses.useQuery({
-    language: i18n.language,
+interface CourseInfoItemProps {
+  leftText: string;
+  rightText: string;
+}
+
+const levels = ['beginner', 'intermediate', 'advanced', 'developer'];
+
+const sortCoursesByLevel = (courses: JoinedCourse[]) => {
+  return courses.sort((a, b) => {
+    return levels.indexOf(a.level) - levels.indexOf(b.level);
   });
+};
+
+const CourseInfoItem = ({ leftText, rightText }: CourseInfoItemProps) => {
+  return (
+    <div className="flex items-center justify-between border-b border-white/10 py-2">
+      <span className="text-white/70 leading-relaxed tracking-[0.08px]">
+        {leftText}
+      </span>
+      <span className="font-medium leading-relaxed tracking-[0.08px]">
+        {rightText}
+      </span>
+    </div>
+  );
+};
+
+const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
+  const { t } = useTranslation();
 
   const [topics, setTopics] = useState<string[]>([]);
   const [activeTopic, setActiveTopic] = useState('bitcoin');
@@ -28,7 +55,8 @@ export const CoursesExplorer = () => {
   const [filteredCourses, setFilteredCourses] = useState<JoinedCourse[] | []>(
     [],
   );
-  const [activeCourseIndex, setActiveCourseIndex] = useState(0);
+
+  const [activeCourse, setActiveCourse] = useState<JoinedCourse | null>(null);
 
   useEffect(() => {
     if (courses) {
@@ -39,16 +67,17 @@ export const CoursesExplorer = () => {
     }
   }, [courses, activeTopic]);
 
+  useEffect(() => {
+    setActiveCourse(sortCoursesByLevel(filteredCourses)[0]);
+  }, [activeTopic, filteredCourses]);
+
   return (
-    <PageLayout
-      title={t('courses.explorer.pageTitle')}
-      subtitle={t('courses.explorer.pageSubtitle')}
-      description={t('courses.explorer.pageDescription')}
-      paddingXClasses="px-0"
-    >
-      <section className="flex bg-darkOrange-10 border border-darkOrange-5 rounded-2xl px-6 py-8 gap-10 max-md:hidden">
-        <div className="flex flex-col gap-6 w-full max-w-60">
-          <h3 className="text-darkOrange-5 leading-normal">Topics</h3>
+    <>
+      <section className="flex bg-darkOrange-10 border border-darkOrange-5 rounded-2xl px-6 py-8 gap-10 max-md:hidden w-full max-w-[1060px] mx-auto">
+        <div className="flex flex-col gap-6 basis-56">
+          <h3 className="text-darkOrange-5 leading-normal">
+            {t('words.topics')}
+          </h3>
           <nav className="flex flex-col gap-2.5">
             {topics &&
               topics.map((topic) => (
@@ -62,7 +91,7 @@ export const CoursesExplorer = () => {
                   )}
                   onClick={() => {
                     setActiveTopic(topic);
-                    activeTopic !== topic && setActiveCourseIndex(0);
+                    activeTopic !== topic && setActiveCourse(null);
                   }}
                 >
                   {topic}
@@ -70,32 +99,190 @@ export const CoursesExplorer = () => {
               ))}
           </nav>
         </div>
-        <div className="flex flex-col gap-6 w-full max-w-60">
-          <h3 className="text-darkOrange-5 leading-normal">Courses</h3>
-          <nav className="flex flex-col gap-2.5">
-            {filteredCourses &&
-              filteredCourses.map((course, index) => (
-                <button
-                  key={course.id}
-                  className={cn(
-                    'truncate leading-none w-full py-2 px-4 text-start rounded-md',
-                    activeCourseIndex === index
-                      ? 'bg-darkOrange-7'
-                      : 'hover:bg-darkOrange-9',
-                  )}
-                  onClick={() => setActiveCourseIndex(index)}
-                >
-                  {course.name}
-                </button>
-              ))}
+        <div className="flex flex-col gap-2.5 flex-basis-64 shrink-[2]">
+          <h3 className="text-darkOrange-5 leading-normal">
+            {t('words.courses')}
+          </h3>
+          <nav className="flex flex-col gap-5">
+            {levels.map((level) => (
+              <div key={level} className="flex flex-col gap-5">
+                <h4 className="uppercase text-xl leading-[120%] text-darkOrange-5 w-60 border-b border-darkOrange-7 px-4 py-2.5">
+                  {t(`words.level.${level}`)}
+                </h4>
+                <div className="flex flex-col gap-2.5">
+                  {filteredCourses &&
+                    filteredCourses
+                      .filter((course) => course.level === level)
+                      .map((course) => (
+                        <button
+                          key={course.id}
+                          className={cn(
+                            'text-lg leading-snug font-medium w-full py-2 px-4 text-start rounded-md',
+                            activeCourse?.id === course.id
+                              ? 'bg-darkOrange-7'
+                              : 'hover:bg-darkOrange-9',
+                          )}
+                          onClick={() => setActiveCourse(course)}
+                        >
+                          {course.name}
+                        </button>
+                      ))}
+                </div>
+              </div>
+            ))}
           </nav>
         </div>
-        <div>
-          {filteredCourses[activeCourseIndex] && (
-            <span>{filteredCourses[activeCourseIndex].rawDescription}</span>
+        <div className="flex flex-col gap-4 basis-[448px]">
+          <h3 className="text-darkOrange-5 leading-normal">
+            {t('words.description')}
+          </h3>
+          {activeCourse && (
+            <article className="flex flex-col">
+              <div className="flex items-center gap-2.5 mb-2">
+                <span className="desktop-h8 text-newGray-5 capitalize">
+                  {activeCourse.topic}
+                </span>
+                <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                  {activeCourse.id === 'btc101'
+                    ? t('words.start')
+                    : t(`words.level.${activeCourse.level}`)}
+                </span>
+                <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                  {activeCourse.requiresPayment
+                    ? t('words.paid')
+                    : t('words.free')}
+                </span>
+              </div>
+
+              <h4 className="desktop-h4 mb-6">{activeCourse.name}</h4>
+
+              <img
+                src={computeAssetCdnUrl(
+                  activeCourse.lastCommit,
+                  `courses/${activeCourse.id}/assets/thumbnail.webp`,
+                )}
+                alt={activeCourse.name}
+                className="rounded-md mb-6"
+              />
+
+              <span className="text-justify leading-normal tracking-015px text-newGray-6 whitespace-break-spaces mb-5">
+                {activeCourse.goal}
+              </span>
+
+              <div className="flex flex-col border-t border-white/10 mb-8">
+                {/* fix professor output issue */}
+                {/* <CourseInfoItem
+                  leftText={t('words.professor')}
+                  rightText={activeCourse.professors
+                    .map((professor) => professor.name)
+                    .join(', ')}
+                /> */}
+                <CourseInfoItem
+                  leftText={t('words.level.level')}
+                  rightText={t(`words.level.${activeCourse.level}`)}
+                />
+                <CourseInfoItem
+                  leftText={t('words.duration')}
+                  rightText={activeCourse.hours + ' hours'}
+                />
+                <CourseInfoItem
+                  leftText={t('words.price')}
+                  rightText={
+                    activeCourse.paidPriceDollars
+                      ? `${activeCourse.paidPriceDollars}$`
+                      : t('words.free')
+                  }
+                />
+                <CourseInfoItem
+                  leftText={t('words.courseId')}
+                  rightText={activeCourse.id.toUpperCase()}
+                />
+              </div>
+
+              <Link
+                to="/courses/$courseId"
+                params={{ courseId: activeCourse.id }}
+              >
+                <Button
+                  variant="newPrimary"
+                  size="l"
+                  onHoverArrow
+                  className="w-full"
+                >
+                  {t('courses.explorer.seeCourse')}
+                </Button>
+              </Link>
+            </article>
           )}
         </div>
       </section>
+      {/* Mobile */}
+      <section className="md:hidden flex flex-col gap-4 border border-darkOrange-5 shadow-sm-section rounded-lg max-w-lg mx-auto p-2.5">
+        <span className="">Select a topic</span>
+        <div className="max-w-60 w-full">
+          <DropdownMenu
+            activeItem={capitalize(activeTopic)}
+            itemsList={topics
+              .map((topic) => ({
+                name: capitalize(topic),
+                onClick: () => setActiveTopic(topic),
+              }))
+              .filter((topic) => topic.name.toLowerCase() !== activeTopic)}
+          />
+        </div>
+        <div className="flex flex-col gap-4">
+          {levels.map((level) => (
+            <div key={level} className="flex flex-col gap-5">
+              <h4 className="text-xl leading-normal font-medium text-darkOrange-5 ">
+                {t(`words.level.${level}`) + ` ${t('words.courses')}`}
+              </h4>
+              <div className="flex flex-col gap-2.5">
+                {filteredCourses &&
+                  filteredCourses
+                    .filter((course) => course.level === level)
+                    .map((course) => (
+                      <button
+                        key={course.id}
+                        className={cn(
+                          'text-lg leading-snug font-medium w-full py-2 px-4 text-start rounded-md',
+                          activeCourse?.id === course.id
+                            ? 'bg-darkOrange-7'
+                            : 'hover:bg-darkOrange-9',
+                        )}
+                        onClick={() => setActiveCourse(course)}
+                      >
+                        {course.name}
+                      </button>
+                    ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export const CoursesExplorer = () => {
+  const { i18n, t } = useTranslation();
+  const { data: courses } = trpc.content.getCourses.useQuery({
+    language: i18n.language,
+  });
+
+  return (
+    <PageLayout
+      title={t('courses.explorer.pageTitle')}
+      subtitle={t('courses.explorer.pageSubtitle')}
+      description={t('courses.explorer.pageDescription')}
+    >
+      {courses && (
+        <>
+          <p className="mobile-h3 md:desktop-h6 max-w-[451px] text-center mx-auto mt-6 mb-5 md:mt-16 md:mb-10">
+            {t('courses.explorer.findCourses')}
+          </p>
+          <CourseSelector courses={courses} />
+        </>
+      )}
     </PageLayout>
   );
 };
