@@ -50,6 +50,7 @@
     "bCertificateDescription": "The B-certificate is an internationally recognised exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge among the Bitcoin industry, giving you access to companies and positions in that industry.",
     "bookExam": "Book an exam session",
     "challengeYourself": "Let's challenge yourself & assert your level !",
+    "checkout": "Check out the B-Certificate",
     "curious": "Curious to know what the exam is like ?",
     "joeNakamotoVideo": "What the heck is a Bitcoin exam ? By Joe Nakamoto",
     "knowledgeableBitcoin": "Knowledgeable in Bitcoin ?",
@@ -195,10 +196,13 @@
       "invoiceId": "Tx ID"
     },
     "explorer": {
+      "buildPath": "Build your own path down the rabbit hole",
+      "exploreCourses": "Explore all Plan B Courses",
       "findCourses": "Find the perfect course for your needs thanks to the course selector",
       "footerTitle": "Our professors are here for you !",
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
       "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
+      "journey": "Bitcoin is a journey, not a destination",
       "moreToCome": ".... and more to come !",
       "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worldwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
       "pageSubtitle": "Mass adoption through centralized open-source education",
@@ -679,6 +683,7 @@
     "account": "Account",
     "additionalCriteria": "Additional criteria",
     "advanced": "Advanced",
+    "all": "All",
     "article": "Article",
     "articles": "Articles",
     "audioBook": "Audio Book",
@@ -725,7 +730,8 @@
       "beginner": "Beginner",
       "developer": "Developer",
       "intermediate": "Intermediate",
-      "level": "Level"
+      "level": "Level",
+      "levels": "Levels"
     },
     "library": "Library",
     "lightning": "Lightning",
