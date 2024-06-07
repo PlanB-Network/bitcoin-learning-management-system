@@ -9,7 +9,13 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 export default defineConfig({
-  plugins: [react(), svgr(), tsconfigPaths()],
+  plugins: [
+    react(),
+    svgr(),
+    tsconfigPaths({
+      root: './',
+    }),
+  ],
 
   root: process.cwd(),
   base: '/',
