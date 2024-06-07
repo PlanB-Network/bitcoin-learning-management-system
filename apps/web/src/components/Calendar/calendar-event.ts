@@ -7,4 +7,5 @@ export interface CalendarEvent {
   organiser: string | null;
   start: Date;
   end: Date;
+  isOnline: boolean;
 }

@@ -63,7 +63,7 @@ export const DashboardProfile = () => {
   return (
     <DashboardLayout>
       <div className="flex flex-col gap-8">
-        <div className="text-lg font-medium">
+        <div className="text-2xl">
           {t('dashboard.profile.profileInformation')}
         </div>
         <Tabs defaultValue="info" className="max-w-[600px]">
