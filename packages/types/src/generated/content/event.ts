@@ -4,11 +4,13 @@
 import type { z } from 'zod';
 
 import {
+  eventLocationSchema,
   eventPaymentSchema,
   eventSchema,
   joinedEventSchema,
 } from '@sovereign-university/schemas';
 
+export type EventLocation = z.infer<typeof eventLocationSchema>;
 export type EventPayment = z.infer<typeof eventPaymentSchema>;
 export type Event = z.infer<typeof eventSchema>;
 export type JoinedEvent = z.infer<typeof joinedEventSchema>;
