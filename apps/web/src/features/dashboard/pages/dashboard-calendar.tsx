@@ -11,6 +11,7 @@ import { customEventGetter } from '#src/components/Calendar/custom-event-getter.
 import { CustomEvent } from '#src/components/Calendar/custom-event.js';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
+import { useGreater } from '#src/hooks/use-greater.js';
 
 import { trpc } from '../../../utils/index.ts';
 import { DashboardLayout } from '../layout.tsx';
@@ -27,7 +28,11 @@ export const DashboardCalendar = () => {
     navigate({ to: '/' });
   }
 
-  const [currentView, setCurrentView] = useState<View>(Views.WEEK);
+  const isScreenMd = useGreater('md');
+
+  const [currentView, setCurrentView] = useState<View>(
+    isScreenMd ? Views.WEEK : Views.AGENDA,
+  );
 
   const handleViewChange = (view: View) => {
     setCurrentView(view);
@@ -93,7 +98,7 @@ export const DashboardCalendar = () => {
         <Calendar
           localizer={localizer}
           events={events}
-          views={['week', 'month']}
+          views={['week', 'month', 'agenda']}
           onView={handleViewChange}
           defaultView={currentView}
           onSelectEvent={(e) => {
@@ -115,9 +120,14 @@ export const DashboardCalendar = () => {
               }
             }
           }}
-          style={{ height: '829px', width: '100%' }}
+          style={{
+            height: '829px',
+            width: '100%',
+          }}
           eventPropGetter={customEventGetter}
-          components={currentView === 'week' ? weekComponents : monthComponents}
+          components={
+            currentView === 'month' ? monthComponents : weekComponents
+          }
           scrollToTime={scrollToTime}
           showAllEvents={true}
         />
