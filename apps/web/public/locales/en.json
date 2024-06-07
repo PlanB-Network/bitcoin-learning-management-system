@@ -282,6 +282,10 @@
       "upcomingTicketSubtitle": "Download your ticket here to attend your next event. Make sure to bring your ticket with you to have access to the event."
     },
     "bookings": "Bookings",
+    "calendar": {
+      "calendar": "Calendar",
+      "personalCalendar": "Personal calendar"
+    },
     "courses": "Courses",
     "logout": "Log out",
     "myCourses": {

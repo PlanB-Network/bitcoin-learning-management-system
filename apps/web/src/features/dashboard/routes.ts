@@ -3,6 +3,7 @@ import { createRoute } from '@tanstack/react-router';
 import { rootRoute } from '../../routes/root.tsx';
 
 import { DashboardBookings } from './pages/dashboard-bookings.tsx';
+import { DashboardCalendar } from './pages/dashboard-calendar.tsx';
 import { DashboardCourses } from './pages/dashboard-courses.tsx';
 import { DashboardProfile } from './pages/dashboard-profile.tsx';
 
@@ -14,6 +15,24 @@ const dashboardRootRoute = createRoute({
 export const dashboardIndexRoute = createRoute({
   getParentRoute: () => dashboardRootRoute,
   path: '/',
+  component: DashboardCalendar,
+});
+
+export const dashboardBookingsRoute = createRoute({
+  getParentRoute: () => dashboardRootRoute,
+  path: '/bookings',
+  component: DashboardBookings,
+});
+
+export const dashboardCalendarRoute = createRoute({
+  getParentRoute: () => dashboardRootRoute,
+  path: '/calendar',
+  component: DashboardCalendar,
+});
+
+export const dashboardCoursesRoute = createRoute({
+  getParentRoute: () => dashboardRootRoute,
+  path: '/courses',
   component: DashboardCourses,
 });
 
@@ -23,21 +42,10 @@ export const dashboardProfileRoute = createRoute({
   component: DashboardProfile,
 });
 
-export const dashboardBookingsRoute = createRoute({
-  getParentRoute: () => dashboardRootRoute,
-  path: '/bookings',
-  component: DashboardBookings,
-});
-
-export const dashboardCoursesRoute = createRoute({
-  getParentRoute: () => dashboardRootRoute,
-  path: '/courses',
-  component: DashboardCourses,
-});
-
 export const dashboardRoutes = dashboardRootRoute.addChildren([
   dashboardIndexRoute,
   dashboardBookingsRoute,
+  dashboardCalendarRoute,
   dashboardCoursesRoute,
   dashboardProfileRoute,
 ]);
