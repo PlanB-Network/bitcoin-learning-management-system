@@ -1,6 +1,6 @@
 {
-  "id": "bd32dfbc-f368-4438-b645-337705e47346",
-  "prevId": "e4b8dddf-d23c-4727-9680-41153c2a6217",
+  "id": "a08f5a28-4232-48b8-930a-12cf65071a6b",
+  "prevId": "bd32dfbc-f368-4438-b645-337705e47346",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -1162,15 +1162,13 @@
           "name": "topic",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "default": "''"
+          "notNull": true
         },
         "subtopic": {
           "name": "subtopic",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "default": "''"
+          "notNull": true
         },
         "requires_payment": {
           "name": "requires_payment",

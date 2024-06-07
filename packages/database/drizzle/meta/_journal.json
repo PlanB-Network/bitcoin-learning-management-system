@@ -292,8 +292,15 @@
     {
       "idx": 41,
       "version": "5",
-      "when": 1717601000119,
-      "tag": "0041_broken_shadowcat",
+      "when": 1717776497267,
+      "tag": "0041_bright_malice",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "5",
+      "when": 1717776767779,
+      "tag": "0042_wakeful_lord_hawal",
       "breakpoints": true
     }
   ]
