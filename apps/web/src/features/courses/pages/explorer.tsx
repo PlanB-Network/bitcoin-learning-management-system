@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import type { JoinedCourse } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
@@ -23,6 +25,8 @@ import { trpc } from '../../../utils/trpc.ts';
 interface CourseInfoItemProps {
   leftText: string;
   rightText: string;
+  isMobileOnly?: boolean;
+  isDesktopOnly?: boolean;
 }
 
 const levels = ['beginner', 'intermediate', 'advanced', 'developer'];
@@ -33,9 +37,63 @@ const sortCoursesByLevel = (courses: JoinedCourse[]) => {
   });
 };
 
-const CourseInfoItem = ({ leftText, rightText }: CourseInfoItemProps) => {
+const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
+  console.log(course);
+
   return (
-    <div className="flex items-center justify-between border-b border-white/10 py-2">
+    <section className="flex flex-col md:border-t border-white/10 md:mb-8">
+      {/* fix professor output issue */}
+      {/* <CourseInfoItem
+                  leftText={t('words.professor')}
+                  rightText={course.professors
+                    .map((professor) => professor.name)
+                    .join(', ')}
+                /> */}
+      <CourseInfoItem
+        leftText={t('words.level.level')}
+        rightText={t(`words.level.${course.level}`)}
+      />
+      {/* no chaptersCount on course, to fix */}
+      {/* <CourseInfoItem
+        leftText={t('words.chapters')}
+        rightText={course.chaptersCount ? `${course.chaptersCount}` : '/'}
+        isMobileOnly
+      /> */}
+      <CourseInfoItem
+        leftText={t('words.duration')}
+        rightText={course.hours + ' hours'}
+      />
+      <CourseInfoItem
+        leftText={t('words.price')}
+        rightText={
+          course.paidPriceDollars
+            ? `${course.paidPriceDollars}$`
+            : t('words.free')
+        }
+      />
+      <CourseInfoItem
+        leftText={t('words.courseId')}
+        rightText={course.id.toUpperCase()}
+        isDesktopOnly
+      />
+    </section>
+  );
+};
+
+const CourseInfoItem = ({
+  leftText,
+  rightText,
+  isMobileOnly,
+  isDesktopOnly,
+}: CourseInfoItemProps) => {
+  return (
+    <div
+      className={cn(
+        'flex items-center justify-between border-b border-white/10 py-2',
+        isMobileOnly && 'md:hidden',
+        isDesktopOnly && 'max-md:hidden',
+      )}
+    >
       <span className="text-white/70 leading-relaxed tracking-[0.08px]">
         {leftText}
       </span>
@@ -47,8 +105,6 @@ const CourseInfoItem = ({ leftText, rightText }: CourseInfoItemProps) => {
 };
 
 const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
-  const { t } = useTranslation();
-
   const [topics, setTopics] = useState<string[]>([]);
   const [activeTopic, setActiveTopic] = useState('bitcoin');
 
@@ -73,6 +129,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
 
   return (
     <>
+      {/* Desktop */}
       <section className="flex bg-darkOrange-10 border border-darkOrange-5 rounded-2xl px-6 py-8 gap-10 max-md:hidden w-full max-w-[1060px] mx-auto">
         <div className="flex flex-col gap-6 basis-56">
           <h3 className="text-darkOrange-5 leading-normal">
@@ -142,16 +199,18 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 <span className="desktop-h8 text-newGray-5 capitalize">
                   {activeCourse.topic}
                 </span>
-                <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
-                  {activeCourse.id === 'btc101'
-                    ? t('words.start')
-                    : t(`words.level.${activeCourse.level}`)}
-                </span>
-                <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
-                  {activeCourse.requiresPayment
-                    ? t('words.paid')
-                    : t('words.free')}
-                </span>
+                <div className="flex items-center flex-wrap gap-2.5">
+                  <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                    {activeCourse.id === 'btc101'
+                      ? t('words.start')
+                      : t(`words.level.${activeCourse.level}`)}
+                  </span>
+                  <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                    {activeCourse.requiresPayment
+                      ? t('words.paid')
+                      : t('words.free')}
+                  </span>
+                </div>
               </div>
 
               <h4 className="desktop-h4 mb-6">{activeCourse.name}</h4>
@@ -169,35 +228,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 {activeCourse.goal}
               </span>
 
-              <div className="flex flex-col border-t border-white/10 mb-8">
-                {/* fix professor output issue */}
-                {/* <CourseInfoItem
-                  leftText={t('words.professor')}
-                  rightText={activeCourse.professors
-                    .map((professor) => professor.name)
-                    .join(', ')}
-                /> */}
-                <CourseInfoItem
-                  leftText={t('words.level.level')}
-                  rightText={t(`words.level.${activeCourse.level}`)}
-                />
-                <CourseInfoItem
-                  leftText={t('words.duration')}
-                  rightText={activeCourse.hours + ' hours'}
-                />
-                <CourseInfoItem
-                  leftText={t('words.price')}
-                  rightText={
-                    activeCourse.paidPriceDollars
-                      ? `${activeCourse.paidPriceDollars}$`
-                      : t('words.free')
-                  }
-                />
-                <CourseInfoItem
-                  leftText={t('words.courseId')}
-                  rightText={activeCourse.id.toUpperCase()}
-                />
-              </div>
+              <CourseInfoSection course={activeCourse} />
 
               <Link
                 to="/courses/$courseId"
@@ -218,7 +249,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
       </section>
       {/* Mobile */}
       <section className="md:hidden flex flex-col gap-4 border border-darkOrange-5 shadow-sm-section rounded-lg max-w-lg mx-auto p-2.5">
-        <span className="">Select a topic</span>
+        <span className="leading-normal text-darkOrange-5">Select a topic</span>
         <div className="max-w-60 w-full">
           <DropdownMenu
             activeItem={capitalize(activeTopic)}
@@ -233,7 +264,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
         <div className="flex flex-col gap-4">
           {levels.map((level) => (
             <div key={level} className="flex flex-col gap-5">
-              <h4 className="text-xl leading-normal font-medium text-darkOrange-5 ">
+              <h4 className="leading-normal font-medium text-darkOrange-5 ">
                 {t(`words.level.${level}`) + ` ${t('words.courses')}`}
               </h4>
               <div className="flex flex-col gap-2.5">
@@ -241,18 +272,45 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                   filteredCourses
                     .filter((course) => course.level === level)
                     .map((course) => (
-                      <button
+                      <details
                         key={course.id}
-                        className={cn(
-                          'text-lg leading-snug font-medium w-full py-2 px-4 text-start rounded-md',
-                          activeCourse?.id === course.id
-                            ? 'bg-darkOrange-7'
-                            : 'hover:bg-darkOrange-9',
-                        )}
-                        onClick={() => setActiveCourse(course)}
+                        className="group w-full p-2.5 text-start rounded-lg bg-darkOrange-10"
                       >
-                        {course.name}
-                      </button>
+                        <summary className={cn('py-1 flex justify-between')}>
+                          <span className="truncate leading-snug">
+                            {course.name}
+                          </span>
+                          <MdKeyboardArrowDown
+                            className={cn(
+                              'size-6 transition-transform ease-in-out rotate-0 group-open:-rotate-180',
+                            )}
+                          />
+                        </summary>
+                        <article className="flex flex-col gap-4">
+                          <img
+                            src={computeAssetCdnUrl(
+                              course.lastCommit,
+                              `courses/${course.id}/assets/thumbnail.webp`,
+                            )}
+                            alt={course.name}
+                            className="rounded-md"
+                          />
+                          <CourseInfoSection course={course} />
+                          <Link
+                            to="/courses/$courseId"
+                            params={{ courseId: course.id }}
+                          >
+                            <Button
+                              variant="newPrimary"
+                              size="m"
+                              onHoverArrow
+                              className="w-full"
+                            >
+                              {t('courses.explorer.seeCourse')}
+                            </Button>
+                          </Link>
+                        </article>
+                      </details>
                     ))}
               </div>
             </div>
@@ -264,7 +322,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
 };
 
 export const CoursesExplorer = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const { data: courses } = trpc.content.getCourses.useQuery({
     language: i18n.language,
   });
@@ -274,6 +332,7 @@ export const CoursesExplorer = () => {
       title={t('courses.explorer.pageTitle')}
       subtitle={t('courses.explorer.pageSubtitle')}
       description={t('courses.explorer.pageDescription')}
+      paddingXClasses="px-2.5 md:px-4"
     >
       {courses && (
         <>
