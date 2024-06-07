@@ -5,6 +5,7 @@ import { BsTwitter } from 'react-icons/bs';
 
 import { Button, cn } from '@sovereign-university/ui';
 
+import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import EducationMain from '../../../assets/home/education-main.webp';
@@ -45,10 +46,11 @@ export const Home = () => {
           <HeaderSection />
           <NumberSection />
           <EducationSection />
-          <WallOfLoveSection />
           <TutorialSection />
+          <BCertificatePresentation marginClasses="mt-0" />
           <AboutUsSection />
           <LanguageSection />
+          <WallOfLoveSection />
           <PatreonSection />
         </div>
       </MainLayout>
