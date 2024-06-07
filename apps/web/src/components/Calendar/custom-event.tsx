@@ -66,7 +66,9 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
     >
       <div className="flex flew-row text-sm pl-1">
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
-        <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
+        {event.isOnline && (
+          <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
+        )}
       </div>
       <div className="font-bold text-sm">{event.title}</div>
       <div className="text-sm">{event.organiser}</div>
