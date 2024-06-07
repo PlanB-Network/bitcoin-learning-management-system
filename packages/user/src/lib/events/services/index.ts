@@ -1,3 +1,4 @@
+export * from './get-calendar-events.js';
 export * from './get-event-payments.js';
 export * from './get-user-events.js';
 export * from './save-event-payment.js';

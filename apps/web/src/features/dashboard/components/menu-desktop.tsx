@@ -26,6 +26,8 @@ export const MenuDesktop = () => {
 
   const dashboardPath = '/dashboard';
   const bookingsPath = '/dashboard/bookings';
+  const calendarPath = '/dashboard/calendar';
+  const coursesPath = '/dashboard/courses';
   const profilePath = '/dashboard/profile';
 
   useEffect(() => {
@@ -61,11 +63,21 @@ export const MenuDesktop = () => {
         </p>
       </div>
       <div className="flex flex-col px-4 text-darkOrange-5 gap-1">
-        <Link to={dashboardPath}>
+        <Link to={calendarPath}>
+          <MenuItem
+            text={t('dashboard.calendar.calendar')}
+            icon={<FaRegCalendarCheck size={24} />}
+            active={
+              pathname.includes(calendarPath) ||
+              pathname.endsWith(dashboardPath)
+            }
+          />
+        </Link>
+        <Link to={coursesPath}>
           <MenuItem
             text={t('dashboard.courses')}
             icon={<AiOutlineBook size={24} />}
-            active={pathname.endsWith(dashboardPath)}
+            active={pathname.includes(coursesPath)}
           />
         </Link>
         <Link to={bookingsPath}>
