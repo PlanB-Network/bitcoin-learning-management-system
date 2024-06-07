@@ -18,6 +18,7 @@ function ViewNamesGroup({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   return views.map((name: View) => (
     <button
+      className={name === 'week' ? '!hidden md:!inline' : ''}
       type="button"
       key={name}
       // className={clsx({ 'rbc-active': view === name })}
