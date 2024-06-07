@@ -15,7 +15,7 @@ const dashboardRootRoute = createRoute({
 export const dashboardIndexRoute = createRoute({
   getParentRoute: () => dashboardRootRoute,
   path: '/',
-  component: DashboardCalendar,
+  component: DashboardCourses,
 });
 
 export const dashboardBookingsRoute = createRoute({

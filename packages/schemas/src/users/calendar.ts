@@ -10,7 +10,7 @@ export const calendarEventSchema = z.object({
   endDate: z.date().nullable(),
   timezone: z.string().nullable(),
   builder: z.string(),
-  bookOnline: z.boolean(),
+  isOnline: z.boolean(),
   addressLine1: z.string().nullable(),
   addressLine2: z.string().nullable(),
   addressLine3: z.string().nullable(),

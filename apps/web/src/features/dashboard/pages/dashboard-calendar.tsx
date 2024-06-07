@@ -49,6 +49,7 @@ export const DashboardCalendar = () => {
         organiser: e.organiser,
         start: e.startDate!,
         end: e.endDate!,
+        isOnline: e.isOnline,
       }));
 
       if (ev) {
@@ -75,6 +76,10 @@ export const DashboardCalendar = () => {
     week: {
       header: CustomWeekHeader,
     },
+  };
+
+  const monthComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
   };
 
   const scrollToTime = new Date(1970, 1, 1, 9);
@@ -110,9 +115,9 @@ export const DashboardCalendar = () => {
               }
             }
           }}
-          style={{ height: '829px' }}
+          style={{ height: '829px', width: '100%' }}
           eventPropGetter={customEventGetter}
-          components={currentView === 'week' ? weekComponents : undefined}
+          components={currentView === 'week' ? weekComponents : monthComponents}
           scrollToTime={scrollToTime}
           showAllEvents={true}
         />

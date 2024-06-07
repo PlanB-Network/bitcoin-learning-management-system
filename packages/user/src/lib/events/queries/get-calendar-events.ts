@@ -14,7 +14,7 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
     e.end_date,
     e.timezone,
     e.builder,
-    e.book_online,
+    e.book_online as is_online,
     e.address_line_1,
     e.address_line_2,
     e.address_line_3
@@ -34,7 +34,7 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
     e.end_date,
     e.timezone,
     e.builder,
-    e.book_online,
+    e.book_online as is_online,
     e.address_line_1,
     e.address_line_2,
     e.address_line_3
@@ -48,13 +48,13 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
       cl.course_id as id,
       cl.chapter_id::text as sub_id,
       'course' as type,
-      cl.title as name,
+      CONCAT(UPPER(cl.course_id),' ',cl.title) as name,
       COALESCE(array_to_string(cp_agg.professors, ', '), '') as organiser,
       cl.start_date,
       cl.end_date,
       cl.timezone,
       'TODO' as builder,
-      cl.is_online as book_online,
+      cl.is_online,
       cl.address_line_1,
       cl.address_line_2,
       cl.address_line_3
