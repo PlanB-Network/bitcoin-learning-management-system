@@ -4,6 +4,7 @@ import { z } from 'zod';
 import {
   contentEvents,
   usersEventPayment,
+  contentEventLocation,
 } from '@sovereign-university/database/schemas';
 
 export const eventSchema = createSelectSchema(contentEvents);
@@ -16,3 +17,5 @@ export const joinedEventSchema = eventSchema.merge(
 );
 
 export const eventPaymentSchema = createSelectSchema(usersEventPayment);
+
+export const eventLocationSchema = createSelectSchema(contentEventLocation);

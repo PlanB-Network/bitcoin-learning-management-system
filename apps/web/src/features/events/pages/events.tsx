@@ -7,22 +7,33 @@ import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { trpc } from '#src/utils/trpc.ts';
 
+import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
 import { EventBookModal } from '../components/event-book-modal.tsx';
 import { EventPaymentModal } from '../components/event-payment-modal.tsx';
 import { EventsGrid } from '../components/events-grid.tsx';
+import { EventsMap } from '../components/events-map.tsx';
 import { EventsPassed } from '../components/events-passed.tsx';
 
 export const Events = () => {
   const { t } = useTranslation();
 
-  const { data: events } = trpc.content.getEvents.useQuery();
+  const queryOpts = {
+    staleTime: 600_000, // 10 minutes
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  };
+
+  const { data: events } = trpc.content.getEvents.useQuery(
+    undefined,
+    queryOpts,
+  );
   const { data: eventPayments, refetch: refetchEventPayments } =
-    trpc.user.events.getEventPayment.useQuery();
+    trpc.user.events.getEventPayment.useQuery(undefined, queryOpts);
   const { data: userEvents, refetch: refetchUserEvents } =
-    trpc.user.events.getUserEvents.useQuery();
+    trpc.user.events.getUserEvents.useQuery(undefined, queryOpts);
 
   const [paymentModalData, setPaymentModalData] = useState<{
     eventId: string | null;
@@ -147,16 +158,29 @@ export const Events = () => {
         )}
         <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {events && (
-          <EventsGrid
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-          />
+          <>
+            <EventsMap
+              events={events}
+              eventPayments={eventPayments}
+              userEvents={userEvents}
+              conversionRate={conversionRate}
+              openAuthModal={openAuthModal}
+              isLoggedIn={isLoggedIn}
+              setIsPaymentModalOpen={setIsPaymentModalOpen}
+              setPaymentModalData={setPaymentModalData}
+            />
+
+            <EventsGrid
+              events={events}
+              eventPayments={eventPayments}
+              userEvents={userEvents}
+              conversionRate={conversionRate}
+              openAuthModal={openAuthModal}
+              isLoggedIn={isLoggedIn}
+              setIsPaymentModalOpen={setIsPaymentModalOpen}
+              setPaymentModalData={setPaymentModalData}
+            />
+          </>
         )}
         <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
         {/* Add my event */}

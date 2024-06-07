@@ -6,6 +6,7 @@ import {
   createGetNow,
   createProcessChangedFiles,
   createProcessDeleteOldEntities,
+  createSyncEventsLocations,
 } from '@sovereign-university/content';
 import {
   computeTemporaryDirectory,
@@ -47,6 +48,9 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   console.log('-- Sync procedure: Calculate remaining seats');
   await createCalculateCourseChapterSeats(dependencies)();
   await createCalculateEventSeats(dependencies)();
+  await createSyncEventsLocations(dependencies)().catch((error) =>
+    console.error('-- Sync procedure: Error fetching event locations:', error),
+  );
 
   if (syncErrors.length === 0) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);
