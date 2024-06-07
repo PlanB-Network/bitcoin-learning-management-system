@@ -12,6 +12,7 @@ import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 import { userBillingRouter } from './billing.js';
+import { userCalendarRouter } from './calendar.js';
 import { userCoursesRouter } from './courses.js';
 import { userEventsRouter } from './events.js';
 import { paymentWebhooksProcedure } from './webhooks.js';
@@ -46,6 +47,7 @@ export const userRouter = createTRPCRouter({
       }),
     ),
   billing: userBillingRouter,
+  calendar: userCalendarRouter,
   courses: userCoursesRouter,
   events: userEventsRouter,
   webhooks: paymentWebhooksProcedure,
