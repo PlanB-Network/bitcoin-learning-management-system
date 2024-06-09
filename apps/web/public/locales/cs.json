@@ -19,7 +19,8 @@
         "commitmentContent": "Naše závazky vůči bitcoinové komunitě: \n‐ zůstaneme open-source\n- poskytování vysoce kvalitního vzdělávacího obsahu\n- obsah přeložený do co nejvíce jazyků\n- podpora Bitcoin stavitelů na jejich podnikatelské cestě",
         "corporateContent": "PlanB Network je sdružený projekt tří subjektů, zaměřených na vývoj Bitcoinu. Ve snaze rozšířit vzdělávání o bitcoinu se rozhodli spolupracovat a vytvořit PlanB Network. K dosažení našeho cíle dostat vzdělávání o bitcoinu do světa se přidalo mnoho dalších, za což jim patří velké díky.",
         "storyContent": "PlanB Network je iniciativa zaměřená na podporu celosvětového vzdělávání o Bitcoinu. Jedná se o spojení rozlišných Bitcoin firem zaměřených na vzdělávání, open-source software, peer-to-peer sítě a smyslem pro komunitu. Společně se rozhodli vybudovat síť PlanB a nabídnout bitcoinovému ekosystému ty správné nástroje k růstu. Naše prezentace k vydání v roce 2023 je dostupná zde.",
-        "manifesto": "Věříme v decentralizovanou budoucnost, kterou Bitcoin nabízí.\n\nNaším posláním je představit Bitcoin miliardě lidí do deseti let. Našimi nástroji jsou vzdělávání a informace. \n\nPodporujeme místní komunity bitcoinových uživatelů tím, že poskytujeme open-source vzdělávací obsah a nabízíme síť bitcoinových mentorů.\n\nNaše filozofie je inspirována cypherpunkovým manifestem. Stejně jako se zasadili o ochranu soukromí, my se zasazujeme o vzdělávání. Věříme, že znalosti jsou základem svobody a změny.\n\nJsme výhradně bitcoinoví. \n\nProsazujeme individuální odpovědnost a nezávislost, kterou nabízí vlastnictví vlastních klíčů. \n\nVyzýváme k ověřování, ne ke slepé důvěře. \n\nVěříme, že opravou systému peněz opravíme svět.\n\nJsme decentralizovaní a open-source, čímž se vyhýbáme jakémukoli jedinému bodu selhání. \n\nPodporujeme volné šíření našeho obsahu. \n\nUsilujeme o svět, který funguje zespodu nahoru a jehož středobod tvoří jednotlivec.\n\nZjednodušujeme, vzděláváme, sdílíme. \n\nPřipojte se k nám v naší misi k šíření „oranžové pilulky“ ve světě.\n"
+        "manifesto": "Věříme v decentralizovanou budoucnost, kterou Bitcoin nabízí.\n\nNaším posláním je představit Bitcoin miliardě lidí do deseti let. Našimi nástroji jsou vzdělávání a informace. \n\nPodporujeme místní komunity bitcoinových uživatelů tím, že poskytujeme open-source vzdělávací obsah a nabízíme síť bitcoinových mentorů.\n\nNaše filozofie je inspirována cypherpunkovým manifestem. Stejně jako se zasadili o ochranu soukromí, my se zasazujeme o vzdělávání. Věříme, že znalosti jsou základem svobody a změny.\n\nJsme výhradně bitcoinoví. \n\nProsazujeme individuální odpovědnost a nezávislost, kterou nabízí vlastnictví vlastních klíčů. \n\nVyzýváme k ověřování, ne ke slepé důvěře. \n\nVěříme, že opravou systému peněz opravíme svět.\n\nJsme decentralizovaní a open-source, čímž se vyhýbáme jakémukoli jedinému bodu selhání. \n\nPodporujeme volné šíření našeho obsahu. \n\nUsilujeme o svět, který funguje zespodu nahoru a jehož středobod tvoří jednotlivec.\n\nZjednodušujeme, vzděláváme, sdílíme. \n\nPřipojte se k nám v naší misi k šíření „oranžové pilulky“ ve světě.\n",
+        "corporateTitle": "Firemní pozadí"
     },
     "auth": {
         "accountCreated": "Váš účet byl vytvořen, {{userName}}!",
@@ -276,7 +277,8 @@
             "eventFull": "Událost je plně obsazena",
             "visitWebsite": "Navštívit webové stránky",
             "limited": "omezeno na",
-            "seatBooked": "Místo rezervováno"
+            "seatBooked": "Místo rezervováno",
+            "bookLive": "Rezervujte si přímý přenos"
         },
         "main": {
             "upcomingEvents": "Nadcházející události",
@@ -345,7 +347,8 @@
         "sectionNetwork": {
             "subtitle": "Světové bitcoinové kampusy",
             "link": "Staňte se součástí sítě",
-            "content1": "Propojte se s nadšenci pro Bitcoin z celého světa, kteří sdílejí společnou vášeň. Od malých komunit, které se pravidelně scházejí, až po BTC vzdělávací centra - naše mapa sítě vám pomůže najít inspiraci k učení a budování. Nadšencům je k dispozici široká škála služeb, například inkubační centra, fyzické workshopy, semináře, BTC soustředění a další. Síť je otevřená všem, tak přijďte pozdravit místní komunitu BTC!"
+            "content1": "Propojte se s nadšenci pro Bitcoin z celého světa, kteří sdílejí společnou vášeň. Od malých komunit, které se pravidelně scházejí, až po BTC vzdělávací centra - naše mapa sítě vám pomůže najít inspiraci k učení a budování. Nadšencům je k dispozici široká škála služeb, například inkubační centra, fyzické workshopy, semináře, BTC soustředění a další. Síť je otevřená všem, tak přijďte pozdravit místní komunitu BTC!",
+            "title": "Přístup do sítě"
         },
         "tutorialSection": {
             "title": "Naším cílem je zjednodušit výuku o bitcoinu.",
@@ -426,7 +429,7 @@
         "walletsDescription": "Zabezpečte a používejte své bitcoiny",
         "betDescription": "Sbírka materiálů, které můžete použít pro své vzdělávací projekty",
         "btc101Description": "Získejte lepší představu o bitcoinu díky této lekci",
-        "buildersDescription": "Seznamte se se společnostmi a projekty, které pracují na zlepšování bitcoinu a zvyšování jeho přijetí",
+        "buildersDescription": "Seznamte se společnostmi a projekty, které pracují na zlepšování bitcoinu a zvyšování jeho přijetí",
         "nodeDescription": "Naučte se, jak být samostatný s vlastním uzlem Bitcoin",
         "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery"
     },
@@ -546,8 +549,163 @@
             "bitcoin": {
                 "description": "Uzel Bitcoin Core je základním kamenem vaší bitcoinové nezávislosti. Umožňuje vám spouštět bitcoin software a být součástí sítě. Budete ověřovat bloky a transakce, rozhodovat o tom, jaká pravidla chcete v síti uplatňovat, a nebudete používat zprostředkovatele pro své transakce. Existuje mnoho způsobů, jak spustit bitcoinový uzel, některé jsou uživatelsky přívětivější než jiné."
             },
-            "description": "Uzly jsou jako vaše osobní servery. V Bitcoinu je to software, který vám umožňuje provozovat síť, shromažďovat transakce, ověřovat pravidla a být skutečně nezávislý. V rámci našeho ekosystému existují různé uzly, od jádra Bitcoinu po implementace Lightning, RGB nebo jiná pokročilejší řešení ochrany soukromí."
+            "description": "Uzly jsou jako vaše osobní servery. V Bitcoinu je to software, který vám umožňuje provozovat síť, shromažďovat transakce, ověřovat pravidla a být skutečně nezávislý. V rámci našeho ekosystému existují různé uzly, od jádra Bitcoinu po implementace Lightning, RGB nebo jiná pokročilejší řešení ochrany soukromí.",
+            "lightning-network": {
+                "description": "Lightning uzel vám umožňuje zapojit se do sítě druhé vrstvy bitcoinu, s názvem Lightning. Budete moci otevírat kanály, spravovat jejich likviditu a stát se nezávislým na své peněžence Lightning.",
+                "name": "Lightning síť"
+            },
+            "rgb": {
+                "description": "RGB je škálovatelný a diskrétní systém chytrých smluv pro Bitcoin & lightning network. Je to programovatelná vrstva pro Bitcoin s konceptem soukromého a vzájemného vlastnictví, abstrakce a oddělení zájmů a reprezentující „post-blockchain“."
+            },
+            "shortDescription": "Řešení pro provozování bitcoinového uzlu a připojení k síti",
+            "title": "Uzel"
         },
-        "headerText": "Vítejte v nekonečné králičí noře Bitcoinu! V této sekci vám nabízíme podrobné průvodce většinou nejběžnějších bitcoinových projektů. Tuto stránku spravuje uživatel „benevolel“, vášnivý bitcoiner, který podporuje tento open source projekt. Pokud najdete nějaké chyby, neváhejte nás kontaktovat. Chcete-li se podívat na finanční zprávu dříve zmíněného projektu, podívejte se na naši zprávu o transparentnosti (Transparancie repport). Děkujeme vám za důvěru a podporu naší univerzity."
+        "headerText": "Vítejte v nekonečné králičí noře Bitcoinu! V této sekci vám nabízíme podrobné průvodce většinou nejběžnějších bitcoinových projektů. Tuto stránku spravuje uživatel „benevolel“, vášnivý bitcoiner, který podporuje tento open source projekt. Pokud najdete nějaké chyby, neváhejte nás kontaktovat. Chcete-li se podívat na finanční zprávu dříve zmíněného projektu, podívejte se na naši zprávu o transparentnosti (Transparancie repport). Děkujeme vám za důvěru a podporu naší univerzity.",
+        "others": {
+            "title": "Ostatní",
+            "shortDescription": "Prozkoumejte různé výukové programy související s bitcoinem",
+            "description": "Ponořte se do rozsáhlé sbírky výukových programů, které úzce souvisejí s étosem Bitcoinu. Od DIY po open-source návody, objevujte nové oblasti znalostí, abyste se stali ještě nezávislejšími.",
+            "DIY": {
+                "description": "Objevte naše DIY návody a naučte se, jak si sami vytvořit projekty založené na Bitcoinu, výpočetní technice a individuální nezávislostí!"
+            },
+            "OpenSource": {
+                "description": "Prozkoumejte naše výukové programy věnované používání nástrojů s otevřeným zdrojovým kódem!"
+            },
+            "contribution": {
+                "description": "Zjistěte, jak přispívat do sítě PlanB Network, a osvojte si open-source nástroje, které sami používáme, prostřednictvím našich podrobných návodů!"
+            },
+            "general": {
+                "description": "Prohlédněte si naše obecné výukové programy a prohlubte své znalosti v oblasti výpočetní techniky a dalších témat souvisejících s individuální nezávislostí!"
+            }
+        },
+        "pageDescription": "Bitcoin je širokým odvětvím, které se každým dnem rozrůstá. Abychom vám ho pomohli prozkoumat, shromáždili jsme a sestavili velké množství výukových materiálů, které popisují různá řešení ve všech oblastech souvisejících s Bitcoinem.",
+        "pageSubtitle": "Pojďme demystifikovat Bitcoin tím, že budeme ukazovat rozmanitost a bohatství jeho ekosystému",
+        "pageTitle": "Objevte naše výukové programy",
+        "headerSignature": "Rogzy",
+        "privacy": {
+            "description": "Soukromí je základní právo. Ačkoli usilujeme o svět, kde je soukromí standardem, není to realita, ve které žijeme. Vysvětlíme vám ověřené postupy, poskytneme vám návody a nasměrujeme vás na nezávislejší cestu, pokud jde o vaše údaje.",
+            "shortDescription": "Nástroje pro zálohování a zachování soukromí",
+            "title": "Soukromí",
+            "bitcoin": {
+                "description": "Bitcoin není primárně soukromý, je záměrně navržen jako pseudonymní a každá transakce je veřejná a navždy uložená. Abychom znovu získali určitou diskrétnost, musíme používat osvědčené uživatelské postupy a specifické nástroje integrované do našeho softwaru. Na cestě k soukromí vám pomůžeme od zamezení opakovaného používání adres přes CoinJoin, mísení „mincí“, až po připojení k vlastnímu uzlu."
+            },
+            "general": {
+                "description": "V době plošného dohledu je nezbytné získat zpět určitou úroveň soukromí v každodenním životě. Vzhledem k tomu, že každý uživatel bude mít určitou míru paranoie a technologických znalostí, je zcela normální používat určité nástroje a přizpůsobit je svým potřebám. Zde se budeme zabývat různými řešeními ochrany, jako jsou sítě VPN, Tor, operační systém Tails, PGP, šifrované zprávy a mnoho dalších."
+            }
+        },
+        "wallet": {
+            "description": "Bitcoinová peněženka je jako vaše klíčenka. Umožňuje vám utrácet a přijímat bitcoiny. Existuje mnoho různých typů peněženek, všechny s různými způsoby užití, funkcemi, cenou a uživatelskými zkušenostmi. Každý bitcoiner bude používat jiné zařízení na základě svých potřeb, úrovně náročnosti a zkušeností.",
+            "hardware": {
+                "description": "Hardwarové peněženky se obvykle používají k ukládání dlouhodobých úspor bitcoinu. Jedná se o fyzická zařízení, která nejsou připojena k internetu (často se jim říká „cold wallet\") a jsou obvykle vysoce bezpečné. I když jsou tato zařízení často open-source, pokud jde o jejich software, hardware stojí kolem 50 až 300 eur. Považujte tato zařízení za bankovní účet pro větší částky úspor, které byste použili jednou za čas."
+            },
+            "shortDescription": "Bezpečnostní řešení a používání vašich bitcoinů",
+            "title": "Peněženka",
+            "desktop": {
+                "description": "Desktopové peněženky jsou obvykle určeny pro pokročilejší uživatele, protože kombinují použití hardwarových zařízení a softwaru desktopové peněženky. Je to jako mít k dispozici nové, vlastní a funkčně náročnější rozhraní pro používání hardwarového zařízení. Takové peněženky nabízejí možnosti více podpisů, funkce ochrany soukromí, mechanismy integrace dědictví a další."
+            },
+            "mobile": {
+                "description": "Mobilní peněženky se obvykle používají ke každodenním výdajům. Integrují síť Lightning Network pro okamžité transakce s nízkými poplatky. Obvykle jsou připojeny k internetu (často se jim říká „hot wallets“), a proto jsou méně bezpečné než hardwarové peněženky. Měly by se používat pouze k ukládání malých částek bitcoinů, považujte je za každodenní peněženku v kapse."
+            }
+        }
+    },
+    "underConstruction": {
+        "github": "GitHub",
+        "p1": "Králík spadl do díry. Kvůli tomuto nečekanému dobrodružství je tato stránka v současné době ve výstavbě. Omlouváme se za případné nepříjemnosti. Náš tým je v plném nasazení, aby tuto stránku dokončil. Pokud máte zájem přiložit ruku k dílu, neváhejte se podívat na naše",
+        "p2": "a zvažte členství v naší komunitě!",
+        "pageTitle": "Ups."
+    },
+    "words": {
+        "about-us": "O nás",
+        "account": "Účet",
+        "additionalCriteria": "Další kritéria",
+        "advanced": "Pokročilé",
+        "article": "Článek",
+        "articles": "Články",
+        "audioBook": "Audio kniha",
+        "back": "Zpět",
+        "beginner": "Začátečník",
+        "billing": "Vyúčtování",
+        "bitcoinWhitepaper": "Bitcoinový Whitepaper",
+        "book": "Kniha",
+        "books": "Knihy",
+        "builders": "Stavitelé",
+        "certificate": "Certifikát",
+        "conference": "Konference",
+        "conferences": "Konference",
+        "content": "Obsah",
+        "about": "O",
+        "courses": "Kurzy",
+        "date": "Datum",
+        "dashboard": "Panel pro správu",
+        "details": "Detaily",
+        "didYouKnow": "Věděli jste?",
+        "documentaries": "Dokumenty",
+        "donations": "Dary",
+        "download": "Stáhnout",
+        "economy": "Ekonomie",
+        "education": "Vzdělání",
+        "email": "Email",
+        "events": "Události",
+        "followUs": "Sledujte nás",
+        "helpUs": "Pomozte nám",
+        "home": "Hlavní stránka",
+        "interview": "Rozhovor",
+        "invoice": "Faktura",
+        "intermediate": "Mírně pokročilý",
+        "level": {
+            "advanced": "Pokročilý",
+            "beginner": "Začátečník",
+            "intermediate": "Mírně pokročilý",
+            "developer": "vývojář"
+        },
+        "library": "Knihovna",
+        "lightning": "Lightning",
+        "lnurlAuth": "LNURL Autorizace",
+        "manifesto": "Manifest",
+        "merchandising": "Merchandising",
+        "merchants": "Obchodníci",
+        "members": " Členové",
+        "mining": "Těžení",
+        "more": "Více",
+        "network": "Síť",
+        "networkMember": "Člen sítě",
+        "newsletter": "Newsletter",
+        "newsletters": "Newslettery",
+        "node": "Uzel",
+        "nodeNetwork": "Síť uzlů",
+        "online": "Online",
+        "or": "nebo",
+        "ourStory": "Náš příběh",
+        "podcast": "Podcast",
+        "podcasts": "Podcasty",
+        "professors": "Profesoři",
+        "purchase": "Nákup",
+        "relatedResources": "Související zdroje",
+        "resources": "Zdroje",
+        "resume": "Životopis",
+        "review": "Hodnocení",
+        "rogzy": "Rogzy",
+        "sponsorUs": "Podpořte nás",
+        "on": "na",
+        "sponsoringAndContributors": "Sponzoring a přispěvatelé",
+        "teachers": "Učitelé",
+        "termsAndConditions": "Podmínky a ustanovení",
+        "ticket": "Vstupenka",
+        "tickets": "Vstupenky",
+        "time": "Čas",
+        "to": "do",
+        "toolkits": "Sady nástrojů",
+        "tutorial": "Návod",
+        "tutorials": "Návody",
+        "update": "Aktualizace",
+        "video": "Video",
+        "videos": "Videa",
+        "wallets": "Peněženky",
+        "supportUs": "Sponzorujte nás",
+        "continue": "Pokračovat",
+        "course": "Kurz",
+        "exchanges": "Směnárny",
+        "movieDocumentary": "Dokumentární film",
+        "register": "Registrovat"
     }
 }
