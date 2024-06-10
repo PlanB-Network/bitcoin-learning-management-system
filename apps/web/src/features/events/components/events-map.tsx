@@ -1,27 +1,31 @@
-import TileLayer from 'ol/layer/Tile.js';
-import OpenLayerMap from 'ol/Map.js';
-import OSM from 'ol/source/OSM.js';
-import Point from 'ol/geom/Point.js';
-import { Vector as VectorSource } from 'ol/source.js';
-import { Style, Icon } from 'ol/style.js';
-import VectorLayer from 'ol/layer/Vector.js';
+/* eslint-disable unicorn/no-array-reduce */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+
+import type { Coordinate } from 'ol/coordinate.js';
 import Feature from 'ol/Feature.js';
+import Point from 'ol/geom/Point.js';
+import TileLayer from 'ol/layer/Tile.js';
+import VectorLayer from 'ol/layer/Vector.js';
+import OpenLayerMap from 'ol/Map.js';
+import type MapBrowserEvent from 'ol/MapBrowserEvent.js';
 import { transform } from 'ol/proj.js';
-import { Coordinate } from 'ol/coordinate.js';
+import OSM from 'ol/source/OSM.js';
+import { Vector as VectorSource } from 'ol/source.js';
+import { Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
 import { useEffect, useState } from 'react';
 
 import type {
-  JoinedEvent,
   EventLocation,
   EventPayment,
+  JoinedEvent,
   UserEvent,
 } from '@sovereign-university/types';
-import MapBrowserEvent from 'ol/MapBrowserEvent.js';
+import { cn } from '@sovereign-university/ui';
 
 import { trpc } from '#src/utils/trpc.ts';
-import { cn } from '@sovereign-university/ui';
+
 import { EventCard } from './event-card.tsx';
 
 type CourseType =
@@ -82,7 +86,7 @@ function groupCountries(
     }
 
     // Skip events that are excluded by filter
-    if (filter?.length && (!event.type || !filter?.includes(event.type!))) {
+    if (filter?.length && (!event.type || !filter?.includes(event.type))) {
       continue;
     }
 
@@ -96,19 +100,19 @@ function groupCountries(
     }
 
     const group = groupedByLocationEvents.get(location.placeId);
-    if (!group) {
+    if (group) {
+      group.events.push(event);
+    } else {
       groupedByLocationEvents.set(location.placeId, {
         placeId: location.placeId,
         coordinate: [location.lng, location.lat],
         events: [event],
         location,
       });
-    } else {
-      group.events.push(event);
     }
   }
 
-  return Array.from(groupedByLocationEvents.values());
+  return [...groupedByLocationEvents.values()];
 }
 
 const osmLayer = new TileLayer({
@@ -239,13 +243,13 @@ export const EventsMap = ({
     null,
   );
   useEffect(() => {
-    if (!events || !filter.length) {
+    if (!events || filter.length === 0) {
       setFilteredEvents(null);
       return;
     }
 
     setFilteredEvents(
-      events.filter((e) => (filter.length ? filter.includes(e.type!) : true)),
+      events.filter((e) => (filter.length > 0 ? filter.includes(e.type!) : true)),
     );
   }, [events, filter.length]);
 
@@ -266,7 +270,7 @@ export const EventsMap = ({
                 a.events.length > b.events.length ? a : b,
               ).coordinate,
             )
-          : groups.length
+          : groups.length > 0
             ? latLonToCoordinate(groups[0].coordinate)
             : [0, 0];
 
@@ -368,7 +372,7 @@ export const EventsMap = ({
         id="ol-map"
         className={cn(
           'w-full h-96 xl:h-[32rem] overflow-hidden',
-          !(selectedEventGroup || filter.length) && 'rounded-b-xl',
+          !(selectedEventGroup || filter.length > 0) && 'rounded-b-xl',
         )}
       ></div>
 
@@ -390,7 +394,7 @@ export const EventsMap = ({
                 {filter
                   .map((f) => f + 's')
                   .join(', ')
-                  .replace(/(.*),/gm, '$1 and')}
+                  .replaceAll(/(.*),/gm, '$1 and')}
               </div>
             )}
             {selectedEventGroup && filteredEvents && (
