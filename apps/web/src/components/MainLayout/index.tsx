@@ -8,7 +8,7 @@ import ScrollToTopButton from '../ScrollToTopButton/index.tsx';
 
 interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
-  variant?: 'light' | 'dark' | 'blue';
+  variant?: 'light' | 'dark' | 'blue' | 'gray';
   showFooter?: boolean;
   fillScreen?: boolean;
   headerVariant?: 'light' | 'dark';
@@ -24,15 +24,18 @@ export const MainLayout = ({
   headerVariant,
 }: MainLayoutProps) => {
   const box = useRef<HTMLDivElement | null>(null);
+
+  const bgColorClasses = {
+    light: 'bg-white',
+    dark: 'bg-black',
+    blue: 'bg-blue-200',
+    gray: 'bg-newGray-6',
+  };
   return (
     <div
       className={cn(
         'text-white flex flex-col',
-        variant === 'light'
-          ? 'bg-white'
-          : variant === 'blue'
-            ? 'bg-blue-200'
-            : 'bg-black',
+        bgColorClasses[variant],
         fillScreen ? 'min-h-dvh' : '',
       )}
       ref={box}

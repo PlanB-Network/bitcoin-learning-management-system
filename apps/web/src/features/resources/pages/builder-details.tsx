@@ -141,7 +141,7 @@ export const Builder = () => {
               {(builder.addressLine1 ||
                 builder.addressLine2 ||
                 builder.addressLine3) && (
-                <div className="flex flex-col mobile-caption1 max-md:leading-tight md:desktop-h6 text-white max-md:mt-2">
+                <div className="flex flex-col mobile-caption1 max-md:leading-tight md:desktop-h6 text-white max-md:mt-2 !font-normal">
                   <span>{builder.addressLine1}</span>
                 </div>
               )}

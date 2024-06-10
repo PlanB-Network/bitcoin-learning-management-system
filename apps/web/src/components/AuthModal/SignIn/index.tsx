@@ -64,7 +64,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       headerText={t('auth.signIn')}
       showAccountHelper={isMobile ? false : true}
     >
-      <div className="flex flex-col items-center space-y-8">
+      <div className="flex flex-col items-center space-y-8 pb-5">
         <Button
           variant="newSecondary"
           className="mt-2 text-sm md:text-base"

@@ -82,7 +82,7 @@ export const EventCard = ({
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold max-lg:leading-snug sm:text-lg lg:text-2xl">
+        <h3 className="font-semibold max-lg:leading-snug sm:text-lg lg:text-2xl">
           {event.name}
         </h3>
         <span className="font-medium text-xs sm:text-sm md:text-base">

@@ -121,7 +121,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center space-y-8">
+        <div className="flex flex-col items-center space-y-8 pb-5">
           <Button
             variant="newSecondary"
             rounded
