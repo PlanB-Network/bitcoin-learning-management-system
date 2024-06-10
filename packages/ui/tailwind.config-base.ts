@@ -130,6 +130,9 @@ const baseConfig: Config = {
         800: '#26593F',
         900: '#172A1E',
       },
+      brightGreen: {
+        1: '#19C315',
+      },
       turquoise: {
         100: '#D7EBE9',
         200: '#C3E1DE',
