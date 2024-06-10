@@ -28,7 +28,13 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { EventCard } from './event-card.tsx';
 
-type CourseType = 'course' | 'lecture' | 'conference' | 'exam' | 'meetup';
+type CourseType =
+  | 'course'
+  | 'lecture'
+  | 'conference'
+  | 'exam'
+  | 'meetup'
+  | 'workshop';
 
 interface EventsMapProps {
   events: JoinedEvent[];
