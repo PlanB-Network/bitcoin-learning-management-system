@@ -52,7 +52,7 @@ const SectionGrid = ({
   const isScreenMd = useGreater('md');
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 sm:w-auto sm:grid-cols-2 min-[1096px]:grid-cols-3 2xl:grid-cols-4">
       {elements.map((item, index) => {
         const currentLanguageViewUrl =
           item.viewurls.find((el) => el.language === language)?.viewUrl ||
@@ -83,6 +83,7 @@ const SectionGrid = ({
             onHoverArrow={false}
             cardColor={cardColor}
             onHoverCardColorChange
+            className="max-w-80 mx-auto"
           />
         );
       })}

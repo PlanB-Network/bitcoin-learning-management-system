@@ -139,7 +139,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
 
       <div className="flex flex-col">
         <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
-          {t('builders.relatedWork')}
+          {t('builders.relatedEvents')}
         </h3>
         {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
@@ -160,7 +160,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
         )}
         {sortedEvents.length === 0 && (
           <p className="mobile-h4 md:desktop-h5 text-center">
-            {t('builders.noRelatedWork')}
+            {t('builders.noRelatedEvents')}
           </p>
         )}
       </div>

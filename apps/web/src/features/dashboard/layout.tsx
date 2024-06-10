@@ -20,7 +20,7 @@ export const DashboardLayout = ({
       headerVariant="light"
     >
       <div>
-        <div className="p-6 bg-white text-black">{children}</div>
+        <div className="p-6 pb-20 bg-white text-black">{children}</div>
         <MenuMobile />
       </div>
     </MainLayout>

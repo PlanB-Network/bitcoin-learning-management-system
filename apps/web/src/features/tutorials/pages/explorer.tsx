@@ -20,7 +20,7 @@ export const TutorialExplorer = () => {
   });
 
   return (
-    <MainLayout variant="light">
+    <MainLayout variant="gray">
       <PageMeta
         title={`${SITE_NAME} - ${t('tutorials.pageTitle')}`}
         description={t('tutorials.pageDescription')}
@@ -56,7 +56,7 @@ export const TutorialExplorer = () => {
             onChange={setSearchTerm}
           />
         </div>
-        <div className="flex flex-col items-center bg-white pt-10 text-blue-800">
+        <div className="flex flex-col items-center bg-newGray-6 pt-10 text-blue-800">
           <div className="-mt-6 hidden max-w-2xl pb-6 text-center sm:block">
             <span className="font-medium">
               {t('tutorials.explorer.didYouKnow')}

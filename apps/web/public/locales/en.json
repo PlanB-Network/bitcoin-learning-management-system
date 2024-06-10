@@ -98,12 +98,12 @@
   },
   "builders": {
     "networkStrength": "The strength of a network lies in its members",
-    "noRelatedWork": "There is no related work for this builder yet.",
+    "noRelatedEvents": "There is no related upcoming events for this builder yet.",
     "otherCommunities": "Explore Plan B Communities",
     "pageSubtitle": "This portal is open-source & open to contribution.",
     "pageTitle": "Bitcoin Builders",
     "languages": "Languages",
-    "relatedWork": "Related work"
+    "relatedEvents": "Related upcoming events"
   },
   "conferences": {
     "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
