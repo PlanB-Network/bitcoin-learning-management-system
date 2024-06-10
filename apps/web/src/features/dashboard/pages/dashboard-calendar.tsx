@@ -6,6 +6,8 @@ import type { Components, View } from 'react-big-calendar';
 import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from '@sovereign-university/ui';
+
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEvent } from '#src/components/Calendar/custom-event.js';
@@ -18,6 +20,14 @@ import { DashboardLayout } from '../layout.tsx';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+type CourseType =
+  | 'course'
+  | 'lecture'
+  | 'conference'
+  | 'exam'
+  | 'meetup'
+  | 'workshop';
 
 export const DashboardCalendar = () => {
   const navigate = useNavigate();
@@ -37,6 +47,16 @@ export const DashboardCalendar = () => {
   const handleViewChange = (view: View) => {
     setCurrentView(view);
   };
+
+  const courseTypes: CourseType[] = [
+    'course',
+    'lecture',
+    'conference',
+    'exam',
+    'meetup',
+  ];
+
+  const courseColor = ['#FF5C00', '#FF9401', '#AD3F00', '#E00000', '#19C315'];
 
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
     language: i18n.language ?? 'en',
@@ -62,6 +82,29 @@ export const DashboardCalendar = () => {
       }
     }
   }, [allEvents]);
+
+  const [filter, setFilter] = useState<CourseType[]>([
+    'course',
+    'lecture',
+    'conference',
+    'exam',
+    'meetup',
+  ]);
+
+  const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>();
+  useEffect(() => {
+    if (!events || filter.length === 0) {
+      setFilteredEvents([]);
+      return;
+    }
+
+    setFilteredEvents(
+      events &&
+        events.filter((e) =>
+          filter.length > 0 ? filter.includes(e.type! as CourseType) : true,
+        ),
+    );
+  }, [events, filter, filter.length]);
 
   const locales = {
     'en-US': enUS,
@@ -95,9 +138,52 @@ export const DashboardCalendar = () => {
         <div className="text-2xl">
           {t('dashboard.calendar.personalCalendar')}
         </div>
+
+        <div className="hidden lg:flex">
+          {courseTypes.map((f, index) => (
+            <button
+              key={f}
+              style={
+                filter.includes(f)
+                  ? {
+                      backgroundColor: `${courseColor[index]}`,
+                      color: `white`,
+                      fontWeight: 600,
+                      paddingTop: '8px',
+                      paddingBottom: '8px',
+                    }
+                  : {
+                      color: `${courseColor[index]}`,
+                      borderColor: `${courseColor[index]}`,
+                      borderWidth: `2px`,
+                      paddingTop: '6px',
+                      paddingBottom: '6px',
+                    }
+              }
+              className={cn('leading-snug mx-1 px-4 capitalize rounded-xl')}
+              onClick={() =>
+                setFilter((prev) =>
+                  prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
+                )
+              }
+            >
+              {f}s
+              <span
+                className="ml-2 bg-white rounded-md py-1 px-[6px] text-xs border-gray font-medium"
+                style={{
+                  color: `${courseColor[index]}`,
+                  borderWidth: filter.includes(f) ? '' : '1px',
+                }}
+              >
+                {events?.filter((p) => p.type === f).length}
+              </span>
+            </button>
+          ))}
+        </div>
+
         <Calendar
           localizer={localizer}
-          events={events}
+          events={filteredEvents}
           views={['week', 'month', 'agenda']}
           onView={handleViewChange}
           defaultView={currentView}

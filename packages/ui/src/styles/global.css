@@ -190,6 +190,23 @@
 }
 
 /* react-big-calendar */
+
+.rbc-calendar {
+  max-width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+  .rbc-calendar {
+    max-width: calc(100vw - 370px) !important;
+  }
+}
+
+@media (min-width: 1750px) {
+  .rbc-calendar {
+    max-width: calc(100vw - 430px) !important;
+  }
+}
+
 .rbc-day-slot .rbc-time-slot {
   border-top: 0px !important;
 }
