@@ -4,7 +4,17 @@
     "outDir": "dist",
     "rootDir": ".",
     "baseUrl": ".",
-    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node"]
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "#src/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
     "vite.config.ts",

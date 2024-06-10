@@ -10,7 +10,12 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "#src/*": [
+        "./src/*"
+      ]
+    }
   },
   "references": [
     {

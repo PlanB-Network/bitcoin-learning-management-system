@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import type { Dependencies } from '../../dependencies.js';
 import { getTutorialsQuery } from '../queries/index.js';
 

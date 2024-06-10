@@ -7,6 +7,7 @@ import { userRouter } from './user/router.js';
 
 export const trpcRouter = createTRPCRouter({
   auth: authRouter,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   content: contentRouter,
   user: userRouter,
   // github: githubRouter,

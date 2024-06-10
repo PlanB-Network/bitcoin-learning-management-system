@@ -1060,3 +1060,13 @@ export const token = users.table('tokens', {
   // When the token was consumed (used)
   consumedAt: timestamp('consumed_at'),
 });
+
+/**
+ * Table to store coordinates for events (bound by address_line_1).
+ */
+export const contentEventLocation = content.table('event_locations', {
+  placeId: integer('place_id').notNull(), // OSM place_id
+  name: text('name').primaryKey(), // address_line_1 in the events table
+  lat: doublePrecision('lat').notNull(),
+  lng: doublePrecision('lng').notNull(),
+});
