@@ -16,7 +16,7 @@ export const BillingSection = ({
   return (
     <>
       {invoices && (
-        <div className="pt-8">
+        <div className="pt-2 md:pt-8">
           <p className="desktop-h6 text-darkOrange-5">
             {t('dashboard.booking.billingTitle')}
           </p>

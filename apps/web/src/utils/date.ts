@@ -108,7 +108,9 @@ export const getTimeString = (
   endDate: Date,
   timezone: string | undefined,
 ) => {
-  const timezoneText = timezone ? ` (${timezone})` : '';
+  const timezoneText = timezone
+    ? ` (${startDate.toLocaleTimeString('en-us', { timeZone: timezone, timeZoneName: 'short' }).split(' ')[2]})`
+    : '';
 
   let timeString: string;
 

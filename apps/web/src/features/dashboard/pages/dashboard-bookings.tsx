@@ -57,8 +57,8 @@ export const DashboardBookings = () => {
           </TabsList>
           <TabsContent value="tickets">
             {tickets && (
-              <div className="pt-8">
-                <p className="desktop-h6 text-darkOrange-5">
+              <div className="pt-2 md:pt-8">
+                <p className="desktop-h6 !font-medium text-darkOrange-5">
                   {t('dashboard.booking.upcomingTicketTitle')}
                 </p>
                 <p className="desktop-subtitle1 text-newBlack-4 my-4">
@@ -70,7 +70,7 @@ export const DashboardBookings = () => {
 
                 <hr className="my-10 border-newGray-4" />
 
-                <p className="desktop-h6 text-darkOrange-5">
+                <p className="desktop-h6 !font-medium text-darkOrange-5">
                   {t('dashboard.booking.pastTicketTitle')}
                 </p>
                 <div className="w-full flex flex-col gap-4 text-newBlack-4">

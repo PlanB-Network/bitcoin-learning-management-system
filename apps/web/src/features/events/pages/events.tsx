@@ -156,7 +156,7 @@ export const Events = () => {
             setPaymentModalData={setPaymentModalData}
           />
         )}
-        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full"></div>
+
         {events && (
           <>
             <EventsMap

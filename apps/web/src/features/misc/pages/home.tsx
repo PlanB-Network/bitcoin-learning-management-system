@@ -47,7 +47,9 @@ export const Home = () => {
           <NumberSection />
           <EducationSection />
           <TutorialSection />
-          <BCertificatePresentation marginClasses="mt-0" />
+          <div className="max-md:mx-5">
+            <BCertificatePresentation marginClasses="mt-0" />
+          </div>
           <AboutUsSection />
           <LanguageSection />
           <WallOfLoveSection />
