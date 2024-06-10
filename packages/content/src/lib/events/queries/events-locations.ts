@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { sql } from '@sovereign-university/database';
-import { EventLocation } from '@sovereign-university/types';
+import type { EventLocation } from '@sovereign-university/types';
 
 /**
  * Get all "address_line_1" values from the events table that do not
@@ -30,7 +31,7 @@ export const setEventLocationQuery = (input: EventLocation) => {
  * Get all event locations.
  */
 export const getEventsLocationsQuery = () => {
-  return sql<Array<EventLocation>>`
+  return sql<EventLocation[]>`
     SELECT *
       FROM content.event_locations
   `;

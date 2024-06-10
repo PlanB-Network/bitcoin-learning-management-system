@@ -1,9 +1,10 @@
+import { z } from 'zod';
+
 import type { Dependencies } from '../../dependencies.js';
 import {
   getEventsWithoutLocationQuery,
   setEventLocationQuery,
 } from '../queries/events-locations.js';
-import { z } from 'zod';
 
 const expectedResponseSchema = z.array(
   z
@@ -17,8 +18,8 @@ const expectedResponseSchema = z.array(
     })
     .transform((data) => ({
       placeId: data.place_id,
-      lat: parseFloat(data.lat),
-      lng: parseFloat(data.lon),
+      lat: Number.parseFloat(data.lat),
+      lng: Number.parseFloat(data.lon),
     })),
 );
 
@@ -29,6 +30,7 @@ const fetchEventLocation = async (query: string) => {
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${q}`,
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = await res.json();
 
   console.log('Result for', query, ':', data);

@@ -2,9 +2,9 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 import {
+  contentEventLocation,
   contentEvents,
   usersEventPayment,
-  contentEventLocation,
 } from '@sovereign-university/database/schemas';
 
 export const eventSchema = createSelectSchema(contentEvents);
