@@ -28,13 +28,7 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { EventCard } from './event-card.tsx';
 
-type CourseType =
-  | 'course'
-  | 'lecture'
-  | 'conference'
-  | 'exam'
-  | 'meetup'
-  | 'workshop';
+type CourseType = 'course' | 'lecture' | 'conference' | 'exam' | 'meetup';
 
 interface EventsMapProps {
   events: JoinedEvent[];
@@ -227,7 +221,6 @@ export const EventsMap = ({
     'conference',
     'exam',
     'meetup',
-    'workshop',
   ];
 
   const updateMapState = (map: OpenLayerMap) => {
