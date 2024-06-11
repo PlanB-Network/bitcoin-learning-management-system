@@ -121,7 +121,8 @@
                 "title": "Video trực tiếp",
                 "stayTuned": "Buổi phát trực tiếp sẽ bắt đầu nửa tiếng trước khi buổi học bắt đầu. Hãy giữ nguyên."
             },
-            "thanksTip": "Bạn muốn cảm ơn? Thưởng."
+            "thanksTip": "Bạn muốn cảm ơn? Thưởng.",
+            "nextLesson": ""
         },
         "details": {
             "accessible": "Quyền truy cập: Suốt đời",
@@ -306,7 +307,27 @@
             "details": "Chi tiết",
             "inprogress": "Các khoá đang học",
             "resumeLesson": "Tiếp tục bài học"
-        }
+        },
+        "booking": {
+            "invoiceTitle": "",
+            "accessLive": "",
+            "billingTitle": "",
+            "billingSubtitle": "",
+            "downloadInvoice": "",
+            "downloadTicket": "",
+            "invoiceDate": "",
+            "invoiceType": "",
+            "ticketDate": "",
+            "ticketLocation": "",
+            "ticketTitle": "",
+            "ticketType": "",
+            "noInvoice": "",
+            "noTicket": "",
+            "pastTicketTitle": "",
+            "upcomingTicketTitle": "",
+            "upcomingTicketSubtitle": ""
+        },
+        "bookings": ""
     },
     "home": {
         "header": {
@@ -357,7 +378,8 @@
             "subtitle2": "Chúng tôi cần bạn!",
             "content2": "Bạn cũng có thể bắt đầu xây dựng và phát triển mạng lưới ở địa phương của bạn!",
             "link": "Giúp chúng tôi dịch các nội dung trên học viện",
-            "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ 7 ngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới."
+            "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ 7 ngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới.",
+            "availableLanguages": ""
         },
         "patreonSection": {
             "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn! ",
@@ -545,7 +567,19 @@
         "others": {
             "title": "Khác",
             "shortDescription": "",
-            "description": ""
+            "description": "",
+            "DIY": {
+                "description": ""
+            },
+            "OpenSource": {
+                "description": ""
+            },
+            "contribution": {
+                "description": ""
+            },
+            "general": {
+                "description": ""
+            }
         },
         "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
         "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
@@ -668,6 +702,13 @@
         "more": "Nhiều hơn",
         "newsletters": "Các bản tin",
         "relatedResources": "Các nguồn tài nguyên liên quan",
-        "teachers": "Các giáo viên"
+        "teachers": "Các giáo viên",
+        "billing": "",
+        "download": "",
+        "invoice": "",
+        "on": "",
+        "online": "",
+        "ticket": "",
+        "tickets": ""
     }
 }
