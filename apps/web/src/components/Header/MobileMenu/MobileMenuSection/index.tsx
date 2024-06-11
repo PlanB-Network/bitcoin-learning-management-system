@@ -18,27 +18,23 @@ const buttonClasses =
 export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
   const { toggle, isOpen } = useDisclosure();
   const currentSection = '/'.concat(
-    window.location.pathname.split('/').slice(0, 2).join(''),
+    window.location.pathname.split('/').slice(2, 3).join(''),
   );
 
   const sectionTitle = useMemo(() => {
     if ('path' in section) {
-      let fontWeight =
+      const currentSectionClasses =
         currentSection &&
         currentSection !== '/' &&
         section.path.includes(currentSection)
-          ? 'font-semibold'
-          : 'font-light';
-
-      if (section.path === '/' && currentSection === '/') {
-        fontWeight = 'font-semibold';
-      }
+          ? 'bg-darkOrange-9 text-white is-current'
+          : '';
 
       return (
         <Link
           className={compose(
-            'text-2xl font-light uppercase text-white no-underline',
-            fontWeight,
+            'group flex items-center text-darkOrange-5 text-lg font-medium leading-none rounded-sm p-2 gap-4 hover:bg-darkOrange-9 hover:text-white',
+            currentSectionClasses,
           )}
           /* TODO: fix */
           to={section.path as '/'}

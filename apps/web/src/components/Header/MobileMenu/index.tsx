@@ -6,6 +6,7 @@ import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 import { LuLogOut } from 'react-icons/lu';
 import { MdKeyboardArrowUp } from 'react-icons/md';
+
 import { cn } from '@sovereign-university/ui';
 
 import { UserContext } from '#src/providers/user.js';
@@ -18,8 +19,8 @@ import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
-import { compose, trpc } from '../../../utils/index.ts';
-import { MetaElements } from '../MetaElements/index.tsx';
+import { trpc } from '../../../utils/index.ts';
+import { LanguageSelector } from '../LanguageSelector/index.tsx';
 import type { NavigationSection } from '../props.tsx';
 
 import { MobileMenuSection } from './MobileMenuSection/index.tsx';
@@ -27,7 +28,6 @@ import { MobileMenuSection } from './MobileMenuSection/index.tsx';
 export interface MobileMenuProps {
   sections: NavigationSection[];
   onClickLogin: () => void;
-  onClickRegister: () => void;
   variant?: 'light' | 'dark';
 }
 
@@ -141,7 +141,6 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
 export const MobileMenu = ({
   sections,
   onClickLogin,
-  onClickRegister,
   variant = 'dark',
 }: MobileMenuProps) => {
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
@@ -156,11 +155,27 @@ export const MobileMenu = ({
   const pictureUrl = getPictureUrl(user);
 
   useEffect(() => {
-    if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        toggleMobileMenu();
+      }
     };
-  });
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen, toggleMobileMenu]);
 
   return (
     <>
@@ -169,7 +184,7 @@ export const MobileMenu = ({
           className={cn('min-w-10 mr-auto', isMobileMenuOpen && 'opacity-0')}
         >
           <FaBars
-            className={compose(
+            className={cn(
               'cursor-pointer text-white',
               isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
             )}
@@ -229,17 +244,35 @@ export const MobileMenu = ({
           'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-svh pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
+        ref={mobileMenuRef}
       >
-        <ul className="my-0 flex-1 list-none space-y-6 overflow-auto pl-10">
+        <div className="flex items-center w-full px-4 py-5 bg-gradient-to-b from-[rgba(255,_92,_0,_0.70)] to-[rgba(153,_55,_0,_0.00)">
+          <FaBars
+            className={cn(
+              'cursor-pointer text-white',
+              isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+            )}
+            style={{
+              transition: 'transform 0.4s, color 0.2s',
+            }}
+            size={28}
+            color="#fff"
+            onClick={toggleMobileMenu}
+          />
+          <Link
+            to="/"
+            className="ml-4 text-lg font-medium leading-normal text-white"
+          >
+            {t('words.home')}
+          </Link>
+          <LanguageSelector className="ml-auto" variant="darkOrange" />
+        </div>
+        <ul className="list-none w-full px-4 flex flex-col gap-5">
           {sections.map((section) => (
             <MobileMenuSection section={section} key={section.id} />
           ))}
         </ul>
-        <MetaElements
-          onClickLogin={onClickLogin}
-          onClickRegister={onClickRegister}
-          variant={variant}
-        />
+        <LoggedMenu onClickLogin={onClickLogin} />
       </nav>
     </>
   );

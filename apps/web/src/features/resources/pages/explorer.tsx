@@ -12,7 +12,7 @@ export const Resources = () => {
   const { t } = useTranslation();
 
   return (
-    <MainLayout footerVariant="course">
+    <MainLayout footerVariant="dark" fillScreen>
       <div className="flex flex-col">
         <PageHeader
           title={t('resources.pageTitle')}

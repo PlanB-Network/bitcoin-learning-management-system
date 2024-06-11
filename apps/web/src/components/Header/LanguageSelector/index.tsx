@@ -11,7 +11,8 @@ import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';
-  variant?: 'light' | 'dark';
+  variant?: 'light' | 'dark' | 'darkOrange';
+  className?: string;
 }
 
 const variantHeaderBackgroundMap = {
@@ -29,6 +30,7 @@ const variantSelectorMap = {
 export const LanguageSelector = ({
   direction = 'down',
   variant = 'dark',
+  className,
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
 
@@ -50,13 +52,8 @@ export const LanguageSelector = ({
     (lng) => lng !== activeLanguage,
   ).sort();
 
-  const orderedLanguages =
-    direction === 'down'
-      ? [activeLanguage, ...filteredLanguages]
-      : [...filteredLanguages, activeLanguage];
-
   return (
-    <Popover className="relative">
+    <Popover className={cn('relative', className)}>
       <Popover.Button
         onClick={() => setOpen((v) => !v)}
         className={cn(
@@ -67,7 +64,7 @@ export const LanguageSelector = ({
       >
         <Flag code={activeLanguage} />
         <MdKeyboardArrowDown
-          size={24}
+          size={32}
           className={cn(
             'transition-transform ease-in-out',
             open && 'max-lg:-rotate-180',
@@ -77,10 +74,10 @@ export const LanguageSelector = ({
       <Transition
         show={open}
         as={Fragment}
-        enter="transition ease-out duration-500"
+        enter="transition ease-out duration-300"
         enterFrom="opacity-0 translate-y-1"
         enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-500"
+        leave="transition ease-in duration-300"
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
@@ -90,7 +87,7 @@ export const LanguageSelector = ({
           className={cn(
             'flex flex-col items-center justify-center absolute z-20 bg-darkOrange-11  rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-96 overflow-y-scroll no-scrollbar',
             direction === 'down'
-              ? 'top-20 right-0'
+              ? 'top-9 lg:top-20 right-0'
               : 'bottom-16 left-1/2 -translate-x-1/2',
             variantSelectorMap[variant],
           )}
@@ -98,15 +95,15 @@ export const LanguageSelector = ({
           <span className="w-full text-center text-sm tracking-[1.12px] uppercase mb-6 max-lg:hidden">
             {t('home.languageSection.availableLanguages')}
           </span>
-          <div className="flex flex-wrap w-fit gap-4">
-            {orderedLanguages.map((language) => (
+          <div className="flex flex-wrap justify-center w-fit gap-2.5 lg:gap-4">
+            {filteredLanguages.map((language) => (
               <button
                 key={language}
-                className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-white/10 w-44"
+                className="flex items-center gap-4 lg:px-4 lg:py-2 rounded-md lg:hover:bg-white/10 w-fit lg:w-44"
                 onClick={() => changeLanguage(language)}
               >
-                <Flag code={language} />
-                <span className="capitalize leading-normal">
+                <Flag code={language} size="l" />
+                <span className="capitalize leading-normal max-lg:hidden">
                   {LANGUAGES_MAP[language] || language}
                 </span>
               </button>
@@ -116,7 +113,7 @@ export const LanguageSelector = ({
             href="https://github.com/DecouvreBitcoin/sovereign-university-data"
             target="_blank"
             rel="noopener noreferrer"
-            className="max-md:hidden mt-6 w-full"
+            className="max-lg:hidden mt-6 w-full"
           >
             <Button
               variant={variant === 'light' ? 'newPrimary' : 'ghost'}
