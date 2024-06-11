@@ -110,7 +110,8 @@
             "live": {
                 "title": "",
                 "stayTuned": ""
-            }
+            },
+            "nextLesson": ""
         },
         "details": {
             "accessible": "Verfügbar: Lebensdauer",
@@ -230,7 +231,27 @@
         },
         "account": "",
         "courses": "",
-        "logout": ""
+        "logout": "",
+        "booking": {
+            "accessLive": "",
+            "billingTitle": "",
+            "billingSubtitle": "",
+            "downloadInvoice": "",
+            "downloadTicket": "",
+            "invoiceDate": "",
+            "invoiceTitle": "",
+            "invoiceType": "",
+            "ticketDate": "",
+            "ticketLocation": "",
+            "ticketTitle": "",
+            "ticketType": "",
+            "noInvoice": "",
+            "noTicket": "",
+            "pastTicketTitle": "",
+            "upcomingTicketTitle": "",
+            "upcomingTicketSubtitle": ""
+        },
+        "bookings": ""
     },
     "events": {
         "introduction": {
@@ -349,7 +370,8 @@
             "subtitle2": "Wir brauchen Sie!",
             "content1": "Wir bei PlanB glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit 7 Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt.",
             "content2": "Beginnen auch Sie mit dem Aufbau Ihres eigenen lokalen Netzes in Ihrem Land!",
-            "link": "Helfen Sie uns, die Akademie zu übersetzen"
+            "link": "Helfen Sie uns, die Akademie zu übersetzen",
+            "availableLanguages": ""
         },
         "patreonSection": {
             "title": "Together let's make Bitcoin education better ! ",
@@ -560,7 +582,19 @@
         "others": {
             "title": "",
             "shortDescription": "",
-            "description": ""
+            "description": "",
+            "DIY": {
+                "description": ""
+            },
+            "OpenSource": {
+                "description": ""
+            },
+            "contribution": {
+                "description": ""
+            },
+            "general": {
+                "description": ""
+            }
         }
     },
     "underConstruction": {
@@ -654,7 +688,14 @@
         "wallets": "Wallets",
         "date": "",
         "time": "",
-        "to": ""
+        "to": "",
+        "billing": "",
+        "download": "",
+        "invoice": "",
+        "on": "",
+        "online": "",
+        "ticket": "",
+        "tickets": ""
     },
     "conferences": {
         "description": "",
