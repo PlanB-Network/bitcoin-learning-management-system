@@ -468,10 +468,360 @@
       "title": "Livres"
     },
     "builders": {
-      "title": "Bâtisseurs"
+        "pageSubtitle": "Ce portail est open-source et ouvert à la contribution. Merci pour toute contribution et partage !",
+        "pageTitle": "Portail créateur"
     },
-    "conferences": {
-      "title": "Conférences"
+    "courses": {
+        "categories": {
+            "btc": "Bitcoin",
+            "crypto": "Cryptographie",
+            "cuboplus": "Bitcoin",
+            "econ": "Économie autrichienne",
+            "fin": "Finance",
+            "ln": "Réseau Lightning",
+            "min": "Minage",
+            "secu": "Sécurité et confidentialité"
+        },
+        "chapter": {
+            "count": "Chapitre n°{{count}}",
+            "finishCourse": "Terminer le cours",
+            "next": "Terminé, passons au chapitre suivant !",
+            "thanksTip": "Vous voulez dire merci ? Soutenez.",
+            "detail": {
+                "title": "Détails de la classe",
+                "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
+                "p1content": "Assurez-vous de réserver votre place",
+                "bookSeat": "",
+                "classIsFull": "",
+                "cancelBooking": "",
+                "ticketDownload": "",
+                "p2heading": "Vous n'êtes plus disponible ?",
+                "p2content": "Pas de problème ! Le cours sera diffusée en direct sur cette page et disponible en redifusion plus tard."
+            },
+            "live": {
+                "title": "",
+                "stayTuned": ""
+            }
+        },
+        "details": {
+            "accessible": "Accessible : à vie",
+            "buyCourse": "Achetez le cours",
+            "courseId": "ID du cours : {{courseId}}",
+            "coursePayment": "Paiement du cours",
+            "curriculum": "Syllabus",
+            "date": "Date: {{startDate}} à {{endDate}}",
+            "dates_to": "{{startDate}} to {{endDate}}",
+            "description": "Description",
+            "duration": "Durée : {{hours}} heures",
+            "goal": "OBJECTIF : ",
+            "level": "Niveau : $t(words.level.{{level}})",
+            "mobile": {
+                "chapters": "{{chapters}} chapitres",
+                "hours": "{{hours}} heures"
+            },
+            "numberOfChapters": "Nombre de chapitres : {{number}}",
+            "objectives": "Objectifs",
+            "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
+            "price": "Prix : {{price}} sats",
+            "professor": "Professeur",
+            "startCourse": "Débuter le cours",
+            "taughtBy": "Ce cours est enseigné par :",
+            "teacher": "Professeurs : {{teacher}}",
+            "teachers": "Professeurs : {{teachers}}",
+            "teacherWord": "Un mot de l’enseignant",
+            "total": "Total",
+            "payment_successful": "Payment successful!",
+            "access_invoice": "You can access your invoice via your dashboard",
+            "payment_details": "Payment details",
+            "amount": "Amount",
+            "invoiceId": "Invoice ID",
+            "terms1": "See our",
+            "terms2": "general terms",
+            "terms3": "and conditions for refund details",
+            "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+        },
+        "explorer": {
+            "footerTitle": "Nos professeurs sont là pour vous !",
+            "footerp1": "À Sovereign University, nos professeurs ont une autonomie totale vis à vis de leur contenu et aux outils qu'ils veulent explorer, aussi longtemps qu'ils suivent le code d'éthique. Ce sont des bitcoineurs passionnés venus de différents horizons.",
+            "footerp2": "Si vous voulez améliorer un cours ou fournir le vôtre, vous pouvez simplement le faire via le GitHub. Pour soutenir un professeur, vous pouvez soit noter son cours, le faire directement ou devenir membre de l'université pour soutenir la plateforme.",
+            "moreToCome": ".... et plus à venir !",
+            "pageDescription": "Ici, vous pourrez trouver un grand nombre de formations liées au Bitcoin, couvrant une large gamme de sujets. Ce contenu éducatif est organique, il évolue au fur et à mesure que bitcoin se développe. Tout le contenu est gratuit, open-source et accessible à tous. Veuillez consulter l'index des cours, organisé en cercles pour s'adapter au parcours d'apprentissage de chacun.",
+            "pageSubtitle": "Bienvenue dans notre plateforme de e-learning.",
+            "pageTitle": "Formations",
+            "s2p1": "Si vous avez commencé à explorer le terrier du Bitcoin, vous devez savoir qu'il s'agit d'un voyage sans fin avec de nombreux chemins. Ici, à l'université, nous comprenons cela et avons conçu notre contenu éducatif pour être non linéaire, autonome et aussi vaste que possible.",
+            "s2p2": "Vous serez en mesure de choisir votre propre voie et de la suivre, en acquérant des compétences et des connaissances aussi loin que votre motivation vous emmènera.",
+            "s2p3": "Toutes nos formations sont 100% gratuits et rien ne peut vous arrêter.",
+            "s2t1": "L'éducation Bitcoin n'est pas une destination",
+            "s3PickLevel": "Choisir les niveaux :",
+            "s3PickTopic": "Choisir les sujets :",
+            "s3t1": "Toutes les cours portent le nom de leur sujet principal"
+        },
+        "footer": {
+            "": ""
+        },
+        "part": {
+            "count": "Partie n°{{count}}/{{total}}"
+        },
+        "payment": {
+            "access_invoice": "You can access your invoice via your dashboard",
+            "accessibility": "Accessibility",
+            "accessibility_forever": "Forever",
+            "amount": "Amount",
+            "date": "Date",
+            "dates_to": "{{startDate}} to {{endDate}}",
+            "downloadCurriculum": "Download curriculum",
+            "duration": "Duration",
+            "invoiceId": "Invoice ID",
+            "numberOfChapters": "Number of chapters",
+            "payment_details": "Payment details",
+            "payment_successful": "Payment successful!",
+            "teacher": "Teacher",
+            "teachers": "Teachers",
+            "terms1": "See our",
+            "terms2": "general terms",
+            "terms3": "and conditions for refund details",
+            "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+            "total": "Total",
+            "back_course": "",
+            "callout": "",
+            "description": "",
+            "book_description": "",
+            "qr_unified": "",
+            "time": ""
+        },
+        "preview": {
+            "by": "par {{professor}}",
+            "letsgo": "Allons-y"
+        },
+        "proceedToPayment": "Proceed to payment",
+        "quizz": {
+            "clickOnPie": "Cliquez sur le camenbert pour vérifiez vos erreurs et obtenir les explications",
+            "quizz": "Quiz",
+            "quizzResults": "Résultats des quiz",
+            "quizzReview": "Revue du quiz",
+            "resultCongrats": "Félicitations, vous avez bien réussi !",
+            "resultItsOk": "Ne renoncez pas, vous ferez mieux la prochaine fois !",
+            "resultNotBad": "Pas trop mal !",
+            "resultPerfect": "Tout est parfait ! Félicitations !"
+        },
+        "unreleased": {
+            "colcardAndSparrow": "ColdCard et Sparrow",
+            "financeIntroduction": "Introduction à la finance",
+            "financialCrisis": "Analyse des crises majeures",
+            "hyperinflation": "Etude des hyperinflations",
+            "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+        }
+    },
+    "dashboard": {
+        "myCourses": {
+            "resumeLesson": "Reprendre la leçon",
+            "completed": "",
+            "details": "",
+            "inprogress": ""
+        },
+        "account": "",
+        "courses": "",
+        "logout": ""
+    },
+    "events": {
+        "introduction": {
+            "introductionh1": "Welcome to Plan B Network events",
+            "introductionp1": "Bottom up adoption enhanced by a strong network",
+            "introductionp2": "Looking for a Bitcoin event to go to ?",
+            "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
+        },
+        "main": {
+            "upcomingEvents": "Upcoming events",
+            "currentEvents": "Events happening right now"
+        },
+        "missed": {
+            "missedh1": "Past events to replay",
+            "missedp1": "Did you miss an event ?",
+            "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+        },
+        "card": {
+            "free": "free",
+            "online": "online",
+            "limited": "limited to",
+            "unlimited": "unlimited",
+            "people": "people",
+            "watchLive": "Watch live",
+            "watchReplay": "Watch replay",
+            "bookLive": "Book live",
+            "bookSeat": "Book your seat",
+            "visitWebsite": "Visit website",
+            "buyReplay": "",
+            "eventFull": "",
+            "seatBooked": ""
+        },
+        "newEvent": {
+            "button": "",
+            "description": "",
+            "subtitle": "",
+            "title": ""
+        },
+        "pageDescription": "",
+        "pageSubtitle": "",
+        "pageTitle": "",
+        "payment": {
+            "access_invoice": "",
+            "access_online_successful": "",
+            "access_physical_successful": "",
+            "access_type": "",
+            "address": "",
+            "additional_free_description": "",
+            "amount": "",
+            "back_events": "",
+            "book_seat": "",
+            "callout_online": "",
+            "callout_physical": "",
+            "callout_replay": "",
+            "date": "",
+            "dates_to": "",
+            "description_online": "",
+            "description_physical": "",
+            "description_free_physical": "",
+            "download_ticket": "",
+            "enjoy": "",
+            "language": "",
+            "limitation": "",
+            "max_capacity": "",
+            "payment_details": "",
+            "payment_successful": "",
+            "time": ""
+        }
+    },
+    "home": {
+        "header": {
+            "content": "La plateforme PlanB vise à fournir les meilleurs outils et le meilleur contenu éducatif dans le monde pour aider les gens à retrouver leur souveraineté. De personnes à communautés, nous sommes là pour vous aider tout au long de votre voyage Bitcoin.",
+            "forEducators": "Pour les éducateurs et les créateurs",
+            "globalNetwork": "Réseau mondial Bitcoin",
+            "welcome": "Bienvenue sur PlanB Network",
+            "link": "Participez au réseau",
+            "startLink": "Commencez votre apprentissage"
+        },
+        "numbersSection": {
+            "networkMember": "Membre de Network"
+        },
+        "sectionEducation": {
+            "title": "De débutant à avancé",
+            "subtitle": "Apprenez Bitcoin dans l'Académie",
+            "content1": "Le Bitcoin n'est pas seulement une technologie et une forme d'argent mais aussi une façon révolutionnaire d'aborder la vie. Pour faire écho à cela, nos cours s'étendent sur une large gamme de domaines, permettant à chaque individu d'exceller dans ses domaines d'intérêt et de faire progresser sa compréhension. De votre premier cours Bitcoin à une plongée profonde dans les spécificités du protocole, nos cours vous aideront à naviguer dans le trou de lapin en toute sécurité. Il n'y a pas de raison d'hésiter. La connaissance vous attend.",
+            "link": "Consultez l'Académie"
+        },
+        "sectionNetwork": {
+            "title": "Accéder à un réseau de",
+            "subtitle": "Campus Bitcoin dans le monde",
+            "content1": "Connectez-vous avec des passionnés de Bitcoin dans le monde entier qui partagent une passion commune. De la rencontre régulière des petites communautés aux centres éducatifs de BTC, notre carte du réseau vous aidera à trouver l'inspiration pour apprendre et construire. Un large éventail de services sont à la disposition des passionnés, tels qu'un centre d'incubation, des ateliers physiques, des séminaires, des retraites BTC et bien plus encore. Le réseau est ouvert à tout le monde, alors venez dire bonjour à votre communauté BTC locale !",
+            "link": "Faites partie du réseau"
+        },
+        "tutorialSection": {
+            "title": "Notre objectif, simplifier l'éducation sur Bitcoin.",
+            "subtitle1": "Nous vous aidons à maîtriser la technologie grâce à de nombreux tutoriels détaillés !",
+            "content1": "Le Bitcoin évolue constamment, avec de nouveaux acteurs, des solutions, des protocoles et des avancées technologiques à venir. Il est souvent difficile de maintenir une base de données unique et précise de bons tutoriels mis à jour. Ici, chez PlanB, c'est ce que nous avons réalisé. Des débutants aux utilisateurs avancés, vous pouvez naviguer dans des centaines de tutoriels pour explorer notre industrie en fonction de vos besoins.",
+            "link": "Voir tous les tutoriels"
+        },
+        "aboutUsSection": {
+            "title": "Qui sommes-nous ?",
+            "subtitle": "Un peu sur nous",
+            "content": "PlanB Network est une initiative pour soutenir l'éducation Bitcoin dans le monde entier. C'est le croisement de diverses entreprises passionnées de Bitcoin axées sur l'éducation, les logiciels libres, les réseaux peer-to-peer et le sens des communautés. Ensemble, ils ont décidé de construire le réseau PlanB et d'offrir à l'écosystème Bitcoin les bons outils pour grandir. Notre présentation de version 2023 est disponible ici.",
+            "bitcoinFocusTitle": "Focus sur Bitcoin",
+            "bitcoinFocusContent": "La révolution du Bitcoin dans son ensemble, de sa couche de base à divers systèmes pair-à-pair de communication autour",
+            "openSourceTitle": "Open source",
+            "openSourceContent": "Notre objectif est de promouvoir la libre circulation des connaissances et de contribuer à l'élaboration davantage de solutions ouvertes",
+            "communityTitle": "Communauté",
+            "communityContent": "Nous sommes avant tout une communauté de passionnés qui s'entraident dans leur voyage dans l'univers du Bitcoin",
+            "privacyTitle": "Vie privée",
+            "privacyContent": "Nous considérons que la vie privée est l'un des droits de l'homme les plus fondamentaux et qu'elle est essentielle au progrès"
+        },
+        "languageSection": {
+            "title": "Aucune barrière de langue ici.",
+            "subtitle": "Tout est traduit en langues locales",
+            "subtitle2": "Nous avons besoin de toi !",
+            "content1": "Chez PlanB, nous pensons que Bitcoin est une révolution internationale qui concerne tout le monde. Afin d'autonomiser des milliards de personnes, nous concevons cette plateforme pour qu'elle soit multilingue et accessible à tous. La plateforme supporte actuellement 7 langues, et d'autres sont ajoutées chaque mois. Pour cela, nous utilisons un mélange d'AI et la passion des Bitcoiners dans le monde entier.",
+            "content2": "Vous aussi, vous pouvez lancer votre propre réseau local dans votre pays !",
+            "link": "Aidez-nous à traduire l'académie"
+        },
+        "patreonSection": {
+            "title": "Together let's make Bitcoin education better ! ",
+            "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
+            "content": "PlanB Network est fier de s'associer à de nombreuses entreprises bitcoin à travers le monde afin de fournir les meilleures ressources éducatives possibles !"
+        }
+    },
+    "imagesAlt": {
+        "bitcoinCurrency": "le signe de la devise bitcoin",
+        "blueEllipse": "une ellipse bleue",
+        "bookCover": "une couverture de livre",
+        "community": "3 personnes",
+        "contributorHeart": "un cœur pour un bon contributeur",
+        "contributorPP": "photo de profil du contributeur",
+        "courseThumbnail": "Miniature du cours",
+        "curriculum": "Programmation",
+        "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
+        "favorite": "un cœur à l'intérieur d'un cercle",
+        "flagsInCircle": "un cercle de drapeaux",
+        "forwardArrow": "une flèche vers l'avant",
+        "github": "l'icône de github",
+        "orangePill": "une pilule orange",
+        "printedCircuits": "un circuit imprimé",
+        "rabbit404": "un lapin éclairant d'une lampe de poche un panneau 404",
+        "sthRepresentingCompany": "quelque chose qui représente la société",
+        "stylus": "un stylet",
+        "underConstructionImage": "Illustration de plusieurs lapins travaillant sur un site de construction",
+        "visibilityOff": "l'icône des yeux sans signe éteint",
+        "worldMap": "carte du monde avec les pôles liés"
+    },
+    "library": {
+        "pageSubtitle": "Cette bibliothèque est open-source et ouverte à la contribution. Merci de la noter et de la partager !",
+        "pageTitle": "La bibliothèque",
+        "publishedIn": "Publié dans {{date}}",
+        "writtenBy": "Écrit par {{author}}"
+    },
+    "menu": {
+        "betDescription": "Catalogue de contenus que vous pouvez utiliser pour vos projets éducatifs",
+        "btc101Description": "Obtenez une meilleure compréhension de bitcoin avec ces leçons",
+        "buildersDescription": "Apprenez-en davantage sur les entreprises et les projets qui travaillent à l'amélioration de bitcoin et à son adoption",
+        "exchangesDescription": "Achetez et vendez des bitcoins sur des échanges et apprenez-en plus sur P2P",
+        "libraryDescription": "Découvrez beaucoup de livres pour améliorer vos connaissances",
+        "lightningDescription": "Gérez votre nœud de foudre et utilisez le réseau de foudre",
+        "manifestoDescription": "Lire le manifeste de Plan B",
+        "merchantsDescription": "Acceptez les paiements bitcoin et découvrez des outils pour les marchands",
+        "miningDescription": "Minez vos propres bitcoins et apprenez-en plus sur l'industrie minière",
+        "nodeDescription": "Apprenez à être autosouverain avec votre propre nœud bitcoin",
+        "nodeNetworkDescription": "Rejoignez le réseau mondial de communautés de Bitcoin!",
+        "ourStoryDescription": "En savoir plus sur l'histoire de l'université",
+        "podcastsDescription": "Explorez l'écosystème bitcoin à travers des podcasts",
+        "sponsorsDescription": "Découvrez nos sponsors et principaux contributeurs",
+        "supportUsDescription": "Trouver des moyens de nous soutenir, de quelque manière que ce soit",
+        "teachersDescription": "Apprenez à connaître nos professeurs universitaires, nos bitcoiners passionnés",
+        "walletsDescription": "Sécurisez et utilisez vos bitcoins",
+        "conferencesDescription": ""
+    },
+    "nodeNetwork": {
+        "answer1": "Un Nœud est simplement une communauté Bitcoin qui souhaite passer à l'étape suivante et accélérer l'adoption de Bitcoin au niveau local ! Il n'y a pas de taille minimale pour commencer.",
+        "answer2": "Chez Plan B, notre objectif est d'améliorer l'écosystème éducatif du Bitcoin en fournissant les bons outils pour construire et éduquer autour du Bitcoin. En devenant un Nœud, votre communauté aura accès à un large éventail de ressources, de services, de formations spéciales et plus encore. Faites de votre communauté une référence dans le monde du Bitcoin.",
+        "answer3": "Pour faire partie du réseau, vous devez aligner certaines valeurs de base. Celles-ci sont: \n - être bitcoin-only \n - valorisé la vie privée\n - être sensible au travail open-source.",
+        "answer4": "Un Nœud Bitcoin peut être de n'importe quelle taille. En fonction de certaines exigences, différents noms seront attribués. Un Nœud doté d'un hackerspace, d'une salle de sport ou de bureaux sera considéré comme une « Citadelle », tandis que votre premier bureau Bitcoin dans une ville sera connu sous le nom de « Nœud ».",
+        "answer5": "Nous souhaitons offrir un paradis sécurisant aux bitcoiners du monde entier. Nous pensons qu'en aidant les hubs locaux à se développer, nous serons en mesure de créer un réseau de citadelles où les bitcoiners seront les bienvenus pour travailler, créer, partager et discuter en toute sécurité.",
+        "apply": "Postuler pour devenir un Nœud",
+        "description1": "Notre système financier s'effondre, nos aliments sont empoisonnés, notre liberté est enlevée. Nous sommes impatients de voir un miracle, nous devons créer un endroit sûr pour vivre. Nous devons créer notre propre PlanB !",
+        "pageSubtitle": "Notre force, c'est notre communauté. Rassemblons-nous pour former un réseau mondial de bitcoiners.",
+        "pageTitle": "Node Map",
+        "question1": "Qu'est-ce qu'un Nœud ?",
+        "question2": "Qu'ai-je à gagner ?",
+        "question3": "Que sont les pré-requis ?",
+        "question4": "Quel est la taille d'un Nœud ?",
+        "question5": "Quel est le plan secret ?"
+    },
+    "notFound": {
+        "here": "Ici",
+        "pageSubtitle": "On dirait que quelqu'un est tombé trop profondément dans le trou du lapin et s'est perdu. Pour revenir à la surface, cliquez sur",
+        "pageTitle": "Oups."
+    },
+    "podcast": {
+        "abstract": "Résumé",
+        "discover": "Découvrez ce podcast"
+>>>>>>> 09bf3830b52fd20df9b05e0ec40fa3aa7c3f0d1a
     },
     "filterBarLabel": "Trouvez les ressources parfaites pour vos besoins :",
     "headerSignature": "Rogzy",
