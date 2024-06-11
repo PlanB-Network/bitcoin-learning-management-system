@@ -231,7 +231,27 @@
         },
         "account": "",
         "courses": "",
-        "logout": ""
+        "logout": "",
+        "booking": {
+            "accessLive": "",
+            "billingTitle": "",
+            "billingSubtitle": "",
+            "downloadInvoice": "",
+            "downloadTicket": "",
+            "invoiceDate": "",
+            "invoiceTitle": "",
+            "invoiceType": "",
+            "ticketDate": "",
+            "ticketLocation": "",
+            "ticketTitle": "",
+            "ticketType": "",
+            "noInvoice": "",
+            "noTicket": "",
+            "pastTicketTitle": "",
+            "upcomingTicketTitle": "",
+            "upcomingTicketSubtitle": ""
+        },
+        "bookings": ""
     },
     "events": {
         "introduction": {
@@ -350,7 +370,8 @@
             "subtitle2": "Nous avons besoin de toi !",
             "content1": "Chez PlanB, nous pensons que Bitcoin est une révolution internationale qui concerne tout le monde. Afin d'autonomiser des milliards de personnes, nous concevons cette plateforme pour qu'elle soit multilingue et accessible à tous. La plateforme supporte actuellement 7 langues, et d'autres sont ajoutées chaque mois. Pour cela, nous utilisons un mélange d'AI et la passion des Bitcoiners dans le monde entier.",
             "content2": "Vous aussi, vous pouvez lancer votre propre réseau local dans votre pays !",
-            "link": "Aidez-nous à traduire l'académie"
+            "link": "Aidez-nous à traduire l'académie",
+            "availableLanguages": ""
         },
         "patreonSection": {
             "title": "Together let's make Bitcoin education better ! ",
@@ -561,7 +582,19 @@
         "others": {
             "title": "",
             "shortDescription": "",
-            "description": ""
+            "description": "",
+            "DIY": {
+                "description": ""
+            },
+            "OpenSource": {
+                "description": ""
+            },
+            "contribution": {
+                "description": ""
+            },
+            "general": {
+                "description": ""
+            }
         }
     },
     "underConstruction": {
@@ -655,7 +688,14 @@
         "wallets": "Portefeuilles",
         "date": "",
         "time": "",
-        "to": ""
+        "to": "",
+        "billing": "",
+        "download": "",
+        "invoice": "",
+        "on": "",
+        "online": "",
+        "ticket": "",
+        "tickets": ""
     },
     "conferences": {
         "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
