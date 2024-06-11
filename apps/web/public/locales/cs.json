@@ -231,6 +231,9 @@
             "hyperinflation": "Studie hyperinflací",
             "theoreticalLightning": "Pokročilý teoretický kurz o síti Lightning Network",
             "financeIntroduction": "Úvod do oblasti financí"
+        },
+        "footer": {
+            "": ""
         }
     },
     "dashboard": {
