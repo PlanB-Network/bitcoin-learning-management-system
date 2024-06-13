@@ -783,5 +783,58 @@
     "videos": "Videos",
     "view": "View",
     "wallets": "Wallets"
+  },
+
+  "publicCommunication": {
+    "title": "Public communication",
+    "description": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey",
+    "blogpost": "Blogs & News",
+    "legal": "Legal information",
+    "blogcategories": {
+      "all": "All",
+      "course": "Course release",
+      "features": "Features",
+      "patch": "Patch notes",
+      "grants": "Grants",
+      "network": "Network"
+    },
+    "legalsections": {
+      "contact": "Contact",
+      "general": "General",
+      "cookies": "Cookies",
+      "privacy": "Privacy"
+    },
+    "contactdata": {
+      "contactTitle": "Contact",
+      "organizationNameSubtitle": "Organization name:",
+      "organizationName": "PlanB Network SARL is a swiss incorpated company",
+      "taxNumberSubtitle": "Taxnumber:",
+      "taxNumber": "12312451512",
+      "emailSubtitle": "Email:",
+      "emailValue": "Contact@planb.network",
+      "addressSubtitle": "Address:",
+      "addressValue": "Random address generated"
+    },
+    "generalinfo": {
+      "generaltitle": "General",
+      "generalsubtitle": "General terms and conditions PlanB Lugano",
+      "firstparagraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "provisionsubtitle": "Opening provisions",
+      "provisionparagraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    "cookiesinfo": {
+      "cookiestitle": "Cookies",
+      "cookiessubtitle": "What are cookies?",
+      "cookiesfirstparagraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "cookiessubtitle2": "Necessary technical cookies",
+      "cookiesparagraph2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    "privacyinfo": {
+      "privacytitle": "Privacy",
+      "privacysubtitle": "Information on your rights",
+      "privacyfirstparagraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "privacysubtitle2": "Right of access to personal data",
+      "privacyparagraph2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
   }
 }

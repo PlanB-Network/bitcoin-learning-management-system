@@ -10,7 +10,7 @@ export interface VerticalCardProps {
   imageSrc: string;
   title: string;
   subtitle?: string;
-  cardColor?: 'grey' | 'maroon' | 'orange';
+  cardColor?: 'grey' | 'maroon' | 'orange' | 'lightgrey';
   onHoverCardColorChange?: boolean;
   buttonText?: string;
   buttonIcon?: JSX.Element;
@@ -65,18 +65,28 @@ export const VerticalCard = ({
     orange: 'bg-darkOrange-5',
     maroon: 'bg-darkOrange-7',
     grey: 'bg-newBlack-2',
+    lightgrey: 'bg-newGray-6',
   };
 
   const hoverCardColorClasses = {
     orange: 'hover:bg-darkOrange-6',
     maroon: 'hover:bg-darkOrange-8',
     grey: 'hover:bg-newBlack-3',
+    lightgrey: 'bg-newGray-5',
   };
 
   const subtitleColorClasses = {
     orange: 'text-newGray-6',
     maroon: 'text-newGray-6',
     grey: 'text-newGray-4',
+    lightgrey: 'text-darkOrange-5',
+  };
+
+  const titleColorClasses = {
+    orange: 'text-white',
+    maroon: 'text-white',
+    grey: 'text-white',
+    lightgrey: 'text-black',
   };
 
   return (
@@ -103,7 +113,12 @@ export const VerticalCard = ({
         )}
       </div>
       <div className="flex flex-col gap-1 px-1">
-        <h4 className="mobile-subtitle2 md:desktop-h6 md:!font-medium text-white capitalize">
+        <h4
+          className={cn(
+            'mobile-subtitle2 md:desktop-h6 md:!font-medium capitalize',
+            titleColorClasses[cardColor],
+          )}
+        >
           {title}
         </h4>
         {subtitle && (
