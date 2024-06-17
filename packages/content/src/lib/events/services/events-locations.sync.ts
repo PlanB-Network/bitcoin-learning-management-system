@@ -42,11 +42,7 @@ export const createSyncEventsLocations = ({ postgres }: Dependencies) => {
   return async () => {
     const locations = await postgres.exec(getEventsWithoutLocationQuery());
 
-    console.log('Missing locations:', locations);
-
     for (const { name } of locations) {
-      console.log('Setting Location:', name);
-
       const result = await fetchEventLocation(name).catch(() => null);
       if (!result) {
         console.log('Could not find location:', name);

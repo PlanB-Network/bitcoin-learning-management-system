@@ -106,7 +106,7 @@ export const createProcessChangedTutorial =
           await processMainFile(tutorial, main);
         } catch (error) {
           errors.push(
-            `Error processing file(tutorials) ${tutorial?.path}: ${error}`,
+            `Error processing file(tutorials 1) ${tutorial?.path}: ${error}`,
           );
           return;
         }
@@ -152,7 +152,7 @@ export const createProcessChangedTutorial =
         `;
           } catch (error) {
             errors.push(
-              `Error processing file(tutorials) ${file?.path}: ${error}`,
+              `Error processing file(tutorials 2) ${file?.path} in tutorial ${tutorial.fullPath} : ${error}`,
             );
           }
         }
