@@ -110,7 +110,8 @@
             "live": {
                 "title": "",
                 "stayTuned": ""
-            }
+            },
+            "nextLesson": ""
         },
         "details": {
             "accessible": "Accessible: Lifetime",
@@ -230,7 +231,27 @@
         },
         "account": "",
         "courses": "",
-        "logout": ""
+        "logout": "",
+        "booking": {
+            "accessLive": "",
+            "billingTitle": "",
+            "billingSubtitle": "",
+            "downloadInvoice": "",
+            "downloadTicket": "",
+            "invoiceDate": "",
+            "invoiceTitle": "",
+            "invoiceType": "",
+            "ticketDate": "",
+            "ticketLocation": "",
+            "ticketTitle": "",
+            "ticketType": "",
+            "noInvoice": "",
+            "noTicket": "",
+            "pastTicketTitle": "",
+            "upcomingTicketTitle": "",
+            "upcomingTicketSubtitle": ""
+        },
+        "bookings": ""
     },
     "events": {
         "introduction": {
@@ -349,7 +370,8 @@
             "subtitle2": "あなたのチカラが必要です！",
             "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。これを達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています。",
             "content2": "あなたも自分の国で独自のローカル・ネットワークを始めよう！",
-            "link": "アカデミーの翻訳にご協力ください"
+            "link": "アカデミーの翻訳にご協力ください",
+            "availableLanguages": ""
         },
         "patreonSection": {
             "title": "Together let's make Bitcoin education better ! ",
@@ -561,7 +583,19 @@
         "others": {
             "title": "",
             "shortDescription": "",
-            "description": ""
+            "description": "",
+            "DIY": {
+                "description": ""
+            },
+            "OpenSource": {
+                "description": ""
+            },
+            "contribution": {
+                "description": ""
+            },
+            "general": {
+                "description": ""
+            }
         }
     },
     "underConstruction": {
@@ -655,7 +689,14 @@
         "wallets": "ウォレット",
         "date": "",
         "time": "",
-        "to": ""
+        "to": "",
+        "billing": "",
+        "download": "",
+        "invoice": "",
+        "on": "",
+        "online": "",
+        "ticket": "",
+        "tickets": ""
     },
     "conferences": {
         "details": {
