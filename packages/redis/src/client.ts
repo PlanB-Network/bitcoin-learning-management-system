@@ -1,11 +1,18 @@
-import process from 'node:process';
-
 import { Redis } from 'ioredis';
 import type { RedisOptions } from 'ioredis';
 
 import type { RedisKey, RedisKeyValue } from '@sovereign-university/types';
 
 Redis.Command.setReplyTransformer('exists', (result: number) => result === 1);
+
+export interface RedisClientConfig
+  extends Pick<RedisOptions, 'host' | 'port' | 'username' | 'password'> {
+  host: string;
+  port: number;
+  database: number;
+  username: string | undefined;
+  password: string | undefined;
+}
 
 /**
  * Redis database connector
@@ -24,31 +31,10 @@ export class RedisClient extends Redis {
    * @param username - Redis username
    * @param password - Redis password
    */
-  constructor(
-    options: {
-      host?: string;
-      port?: number | string;
-      database?: number | string;
-      username?: string;
-      password?: string;
-    } = {},
-  ) {
-    const {
-      host = process.env['REDIS_HOST'] || '127.0.0.1',
-      port = process.env['REDIS_PORT'] || 6379,
-      username = process.env['REDIS_USERNAME'],
-      password = process.env['REDIS_PASSWORD'],
-    } = options;
-
-    super({
-      lazyConnect: true,
-      host,
-      port,
-      username,
-      password,
-    } as RedisOptions);
+  constructor({ host, port, database: db, ...options }: RedisClientConfig) {
+    super(port, host, { ...options, db, lazyConnect: true });
     this.host = host;
-    this.port = Number(port);
+    this.port = port;
   }
 
   override async connect() {

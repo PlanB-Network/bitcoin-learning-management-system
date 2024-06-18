@@ -1,6 +1,14 @@
 import postgres from 'postgres';
 import type { TransactionSql as OriginalTransactionSql, Sql } from 'postgres';
 
+export interface PostgresClientConfig {
+  host: string;
+  port: number;
+  database: string;
+  username: string;
+  password: string;
+}
+
 export interface PostgresTypesMapper {
   bigint: number;
   numeric: number;
@@ -26,31 +34,11 @@ export interface PostgresClient extends Sql<PostgresTypesMapper> {
   disconnect: () => Promise<void>;
 }
 
-export const createPostgresClient = ({
-  host = process.env['POSTGRES_HOST'],
-  port = Number(process.env['POSTGRES_PORT']),
-  database = process.env['POSTGRES_DB'],
-  username = process.env['POSTGRES_USER'],
-  password = process.env['POSTGRES_PASSWORD'],
-}: {
-  host?: string;
-  port?: number;
-  database?: string;
-  username?: string;
-  password?: string;
-} = {}) => {
+export const createPostgresClient = (config: PostgresClientConfig) => {
   let connected = false;
 
-  if (!host || !port || !database || !username || !password) {
-    throw new Error('Missing required configuration for postgres connection');
-  }
-
   const client = postgres({
-    host,
-    port,
-    database,
-    username,
-    password,
+    ...config,
     // onnotice: () => undefined,
     types: {
       bigint: {
@@ -93,7 +81,9 @@ export const createPostgresClient = ({
     }
 
     await client`SELECT 1;`;
-    console.debug(`Connected ${host}:${port} on database ${database}`);
+    console.debug(
+      `Connected ${config.host}:${config.port} on database ${config.database}`,
+    );
     connected = true;
   };
 
