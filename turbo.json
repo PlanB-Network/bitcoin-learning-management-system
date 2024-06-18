@@ -1,7 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["tsconfig.json"],
-  "pipeline": {
+  "globalDependencies": [".env", "tsconfig.json"],
+  "globalEnv": [".env"],
+  "tasks": {
     "copy-assets": {
       "outputs": ["."]
     },
