@@ -15,7 +15,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN npm install --location=global pnpm@9
-RUN pnpm add --global turbo@1.13.3
+RUN pnpm add --global turbo@2
 
 COPY . .
 RUN turbo prune "@sovereign-university/web" --docker
