@@ -118,7 +118,7 @@ export const NodeNetwork = () => {
         <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
           <SonarCircle className="max-md:hidden absolute size-72 sm:size-fit z-0" />
           <a
-            href="https://framaforms.org/node-application-planb-network-1708081674"
+            href="https://web.telegram.org/k/#@ajelex"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10 z-10"

@@ -496,13 +496,13 @@
     "walletsDescription": "Secure and use your bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "A node is simply a Bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption! There is no minimum size to start with.",
-    "answer2": "At Plan B, we aim to improve the educational Bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training, and more. Make your community count as a reference in the Bitcoin world.",
-    "answer3": "To be part of the network you must align on some core values. These are: \n - be Bitcoin only \n - value privacy \n - care for open source work.",
+    "answer1": "A node is an educational initiative tied to a community somewhere in the world. It can consist of a building where Bitcoin education takes place, but it is not limited to that. Plan B Network operates hubs, but establishing them in every city worldwide is unrealistic. That’s why we rely on a community of bitcoiners to help us make this global network a reality.",
+    "answer2": "By joining our network, you gain access to exclusive content that Plan B distributes through its platform, which you can share with the residents of your node. The most important benefit is opening channels of discussion for future projects and connecting with other communities worldwide to share experiences.",
+    "answer3": "Initially, Plan B Network focuses on places with a physical space to operate from. In the future, we plan to integrate any initiative that could benefit from the network’s support to grow.",
     "answer4": "A Bitcoin node can be of any size. Based on some requirements, different grades will be attributed. A node with a hackerspace, a gym, and some office space will be considered more citadel-like.",
     "answer5": "We wish to offer a safe haven for Bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where Bitcoiners will be welcome to work, create, share, and discuss safely.",
     "apply": "Apply to become a Node",
-    "description1": "Plan B Network helps communities worldwide to get organised in order to provide better education. The platform develops the tools necessary towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "description1": "Plan B Network supports educational initiatives worldwide. We collaborate to create the best tools for these projects, both through our platform and in the meat space. We are always looking for new nodes to join us. If you want to work together to create a decentralized global educational network for Bitcoin, get in touch!",
     "pageSubtitle": "Want to orange pill the world ? Join the PlanB Network.",
     "pageTitle": "Explore Plan B Node Network",
     "question1": "What's a node ?",
