@@ -1,731 +1,730 @@
 {
-    "about": {
-        "activeContributors": "Active contributors",
-        "missionTitle": "Our mission",
-        "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-        "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
-        "commitmentTitle": "Out commitments",
-        "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
-        "coreTeamTitle": "The core team",
-        "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
-        "coreTeamGiacomoRole": "Director and Co-founder",
-        "coreTeamRogzyRole": "Product manager & Co-founder",
-        "coreTeamAsioRole": "Educational coordinator",
-        "coreTeamAjelexRole": "Node coordinator",
-        "corporateTitle": "Corporate behind",
-        "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
-        "coportateContact": "Contact information:",
-        "storyTitle": "Out story",
-        "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
-        "title": "About the planB network",
-        "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-        "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
-        "description": ""
+  "about": {
+    "activeContributors": "Active contributors",
+    "missionTitle": "Our mission",
+    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
+    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
+    "commitmentTitle": "Out commitments",
+    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "coreTeamTitle": "The core team",
+    "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
+    "coreTeamGiacomoRole": "Director and Co-founder",
+    "coreTeamRogzyRole": "Product manager & Co-founder",
+    "coreTeamAsioRole": "Educational coordinator",
+    "coreTeamAjelexRole": "Node coordinator",
+    "corporateTitle": "Corporate behind",
+    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "coportateContact": "Contact information:",
+    "storyTitle": "Out story",
+    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
+    "title": "About the planB network",
+    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
+    "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
+    "description": ""
+  },
+  "auth": {
+    "accountCreated": "{{userName}}さんのアカウントが作成されました！",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "canSaveProgress": "ビットコイン・アカデミーではあなたの進捗状況を保存できるようになりました",
+    "connectWithLn": "ライトニングで接続する",
+    "createAccount": "登録する",
+    "createOne": "ここから登録！",
+    "emailAddress": "メールアドレス",
+    "errors": {
+      "usernameRegex": "ユーザー名には「アルファベット」「数字」「_」「.」「-」のみ使用できます",
+      "usernameRequired": "ユーザー名は必須項目です",
+      "usernameTooShort": "ユーザー名は5文字以上である必要があります"
     },
-    "auth": {
-        "accountCreated": "{{userName}}さんのアカウントが作成されました！",
-        "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
-        "canSaveProgress": "ビットコイン・アカデミーではあなたの進捗状況を保存できるようになりました",
-        "connectWithLn": "ライトニングで接続する",
-        "createAccount": "登録する",
-        "createOne": "ここから登録！",
-        "emailAddress": "メールアドレス",
-        "errors": {
-            "usernameRegex": "ユーザー名には「アルファベット」「数字」「_」「.」「-」のみ使用できます",
-            "usernameRequired": "ユーザー名は必須項目です",
-            "usernameTooShort": "ユーザー名は5文字以上である必要があります"
-        },
-        "forgottenPassword": "パスワードをお忘れですか？",
-        "headerAccountCreated": "アカウントが作成されました",
-        "lnurlAuthDescription": "ライトニング・ウォレットでこのQRコードをスキャンしてログインしてください！",
-        "noAccountNeeded": "Sovereign Universityで学ぶためにアカウントは必要ありません！",
-        "noAccountYet": "アカウントをお持ちではありませんか？",
-        "passwordReinit": "パスワードをリセットする",
-        "passwordRequired": "パスワードは必須項目です",
-        "passwordsDontMatch": "パスワードが一致しません",
-        "sendLink": "リンクを送信する",
-        "signIn": "ログイン"
+    "forgottenPassword": "パスワードをお忘れですか？",
+    "headerAccountCreated": "アカウントが作成されました",
+    "lnurlAuthDescription": "ライトニング・ウォレットでこのQRコードをスキャンしてログインしてください！",
+    "noAccountNeeded": "Sovereign Universityで学ぶためにアカウントは必要ありません！",
+    "noAccountYet": "アカウントをお持ちではありませんか？",
+    "passwordReinit": "パスワードをリセットする",
+    "passwordRequired": "パスワードは必須項目です",
+    "passwordsDontMatch": "パスワードが一致しません",
+    "sendLink": "リンクを送信する",
+    "signIn": "ログイン"
+  },
+  "bet": {
+    "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりしたい方は、遠慮なく私たちのDiscordにご参加ください。",
+    "educationalContent": {
+      "description": "このコンテンツは、教育行事などですぐに使えることを目的としています。",
+      "title": "教育コンテンツ"
     },
-    "bet": {
-        "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりしたい方は、遠慮なく私たちのDiscordにご参加ください。",
-        "educationalContent": {
-            "description": "このコンテンツは、教育行事などですぐに使えることを目的としています。",
-            "title": "教育コンテンツ"
-        },
-        "hereForYou": "BETはあなたのためにある！",
-        "pageDescription": "Sovereign Universityは、ビットコインの普及を促進するために、世界中のビットコイン教育者と地域コミュニティを支援しています。このゴールに向けて、私たちは（私たちや支援者のみなさんによって作成された）教育コンテンツとビジュアル・データの両方の大規模なデータベースを収集し、アクセスできるようにしています。",
-        "pageSubtitle": "BET - すべての教育プロジェクトのためのビットコイン・オープンソース・ツールキット",
-        "pageTitle": "ビットコイン教育用ツールキット",
-        "visualContent": {
-            "description": "このコンテンツは、あなたの作品に使用される生のビジュアル・データです。",
-            "title": "ビジュアル・コンテンツ"
-        }
+    "hereForYou": "BETはあなたのためにある！",
+    "pageDescription": "Sovereign Universityは、ビットコインの普及を促進するために、世界中のビットコイン教育者と地域コミュニティを支援しています。このゴールに向けて、私たちは（私たちや支援者のみなさんによって作成された）教育コンテンツとビジュアル・データの両方の大規模なデータベースを収集し、アクセスできるようにしています。",
+    "pageSubtitle": "BET - すべての教育プロジェクトのためのビットコイン・オープンソース・ツールキット",
+    "pageTitle": "ビットコイン教育用ツールキット",
+    "visualContent": {
+      "description": "このコンテンツは、あなたの作品に使用される生のビジュアル・データです。",
+      "title": "ビジュアル・コンテンツ"
+    }
+  },
+  "book": {
+    "abstract": "抜粋",
+    "bookSummary": {
+      "modifyTooltip": "書き込むまたは編集する",
+      "noSummary": "要約はまだありません。もしあなたがこの本を読み、要約を共有したいのであれば、遠慮なくGitHubから行うことができます。そうすれば、コミュニティの助けになり、Sovereign Universityをより良くすることができます！",
+      "notice": "この要約の変更または追加については、GitHubから行うことができます",
+      "title": "本の要約"
     },
-    "book": {
-        "abstract": "抜粋",
-        "bookSummary": {
-            "modifyTooltip": "書き込むまたは編集する",
-            "noSummary": "要約はまだありません。もしあなたがこの本を読み、要約を共有したいのであれば、遠慮なくGitHubから行うことができます。そうすれば、コミュニティの助けになり、Sovereign Universityをより良くすることができます！",
-            "notice": "この要約の変更または追加については、GitHubから行うことができます",
-            "title": "本の要約"
-        },
-        "buttonBuy": "購入する",
-        "buttonPdf": "PDF / 電子書籍",
-        "offeredBy": "寛大なコントリビュータによって提供されました",
-        "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-        "pageTitle": "ライブラリ",
-        "topicsAddressed": "トピックのアドレス： "
+    "buttonBuy": "購入する",
+    "buttonPdf": "PDF / 電子書籍",
+    "offeredBy": "寛大なコントリビュータによって提供されました",
+    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
+    "pageTitle": "ライブラリ",
+    "topicsAddressed": "トピックのアドレス： "
+  },
+  "builders": {
+    "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
+    "pageTitle": "開発者ポータル"
+  },
+  "courses": {
+    "categories": {
+      "btc": "ビットコイン",
+      "crypto": "暗号技術",
+      "cuboplus": "Bitcoin",
+      "econ": "オーストリア学派",
+      "fin": "金融",
+      "ln": "ライトニング・ネットワーク",
+      "min": "マイニング（採掘）",
+      "secu": "セキュリティとプライバシー"
     },
-    "builders": {
-        "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-        "pageTitle": "開発者ポータル"
+    "chapter": {
+      "count": "{{count}}章",
+      "finishCourse": "コースを終了する",
+      "next": "完了、次の章に行きましょう！",
+      "thanksTip": "楽しんでいただけましたか？チップはこちらから。",
+      "detail": {
+        "title": "",
+        "p1heading": "",
+        "p1content": "",
+        "p2heading": "",
+        "p2content": "",
+        "bookSeat": "",
+        "classIsFull": "",
+        "cancelBooking": "",
+        "ticketDownload": ""
+      },
+      "live": {
+        "title": "",
+        "stayTuned": ""
+      },
+      "nextLesson": ""
     },
-    "courses": {
-        "categories": {
-            "btc": "ビットコイン",
-            "crypto": "暗号技術",
-            "cuboplus": "Bitcoin",
-            "econ": "オーストリア学派",
-            "fin": "金融",
-            "ln": "ライトニング・ネットワーク",
-            "min": "マイニング（採掘）",
-            "secu": "セキュリティとプライバシー"
-        },
-        "chapter": {
-            "count": "{{count}}章",
-            "finishCourse": "コースを終了する",
-            "next": "完了、次の章に行きましょう！",
-            "thanksTip": "楽しんでいただけましたか？チップはこちらから。",
-            "detail": {
-                "title": "",
-                "p1heading": "",
-                "p1content": "",
-                "p2heading": "",
-                "p2content": "",
-                "bookSeat": "",
-                "classIsFull": "",
-                "cancelBooking": "",
-                "ticketDownload": ""
-            },
-            "live": {
-                "title": "",
-                "stayTuned": ""
-            },
-            "nextLesson": ""
-        },
-        "details": {
-            "accessible": "Accessible: Lifetime",
-            "buyCourse": "Buy the course",
-            "courseId": "コースID：{{courseId}}",
-            "coursePayment": "Course payment",
-            "curriculum": "カリキュラム",
-            "date": "Date: {{startDate}} to {{endDate}}",
-            "dates_to": "{{startDate}} to {{endDate}}",
-            "description": "説明",
-            "duration": "所要時間：{{hours}}時間",
-            "goal": "ゴール：",
-            "level": "レベル：$t(words.level.{{level}})",
-            "mobile": {
-                "chapters": "{{chapters}}章",
-                "hours": "{{hours}}時間"
-            },
-            "numberOfChapters": "チャプター数：{{number}}",
-            "objectives": "目的",
-            "objectivesTitle": "学習内容：",
-            "price": "Price: {{price}} sats",
-            "professor": "教授",
-            "startCourse": "コースを開始する",
-            "taughtBy": "このコースは以下のメンバーによって提供されています：",
-            "teacher": "Teacher: {{teacher}}",
-            "teachers": "講師陣：{{teachers}}",
-            "teacherWord": "A word from the teacher",
-            "total": "Total",
-            "payment_successful": "Payment successful!",
-            "access_invoice": "You can access your invoice via your dashboard",
-            "payment_details": "Payment details",
-            "amount": "Amount",
-            "invoiceId": "Invoice ID",
-            "terms1": "See our",
-            "terms2": "general terms",
-            "terms3": "and conditions for refund details",
-            "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
-        },
-        "explorer": {
-            "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
-            "footerp1": "Sovereign Universityでは、倫理規定に従う限り、教授陣がその内容や皆さんに探求してもらいたいツールについて、完全に自主性を持っています。彼らは様々なバックグラウンドを持つ情熱的なビットコイナーです。",
-            "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、彼らのコースを評価するか、教授に直接チップを送ってあげてください。またはSovereign Universityのメンバーになって、プラットフォームをサポートしていただくことも大歓迎です。",
-            "moreToCome": ".... 今後のますますの発展にご期待ください！",
-            "pageDescription": "ここでは、ビットコイン全体に関連する多数のコースを、幅広いテーマで見つけることができます。この教育コンテンツは有機的なもので、ビットコインの成長とともに発展しています。すべてのコンテンツは無料かつオープンソースで、誰でもアクセスできます。コースはアーカイブ化されていて、あなた一人ひとりの学習状況に適応できるようにサークルで構成されています。",
-            "pageSubtitle": "eラーニング・プラットフォームへようこそ。",
-            "pageTitle": "コース",
-            "s2p1": "ビットコイン・ラビットホールの探求を始めたなら、それは多くの道を持つ無限の旅であることを知る必要があります。Sovereign Universityでは、これを十分に理解しているため、教育コンテンツは非直線的で、自律的で、可能な限り広範囲になるようにデザインされています。",
-            "s2p2": "自分のモチベーションに合わせてスキルや知識を身につけることができるようになります。",
-            "s2p3": "すべてのコースは完全無料です！",
-            "s2t1": "ビットコイン学習は、目的地ではなく旅そのものです",
-            "s3PickLevel": "レベル選択：",
-            "s3PickTopic": "トピック選択：",
-            "s3t1": "ラビットホールに自分だけの道を作ろう"
-        },
-        "footer": {
-            "": ""
-        },
-        "part": {
-            "count": "パートn°{{count}}/{{total}}"
-        },
-        "payment": {
-            "access_invoice": "You can access your invoice via your dashboard",
-            "accessibility": "Accessibility",
-            "accessibility_forever": "Forever",
-            "amount": "Amount",
-            "date": "Date",
-            "dates_to": "{{startDate}} to {{endDate}}",
-            "downloadCurriculum": "Download curriculum",
-            "duration": "Duration",
-            "invoiceId": "Invoice ID",
-            "numberOfChapters": "Number of chapters",
-            "payment_details": "Payment details",
-            "payment_successful": "Payment successful!",
-            "teacher": "Teacher",
-            "teachers": "Teachers",
-            "terms1": "See our",
-            "terms2": "general terms",
-            "terms3": "and conditions for refund details",
-            "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
-            "total": "Total",
-            "back_course": "",
-            "callout": "",
-            "description": "",
-            "book_description": "",
-            "qr_unified": "",
-            "time": ""
-        },
-        "preview": {
-            "by": "by {{professor}}",
-            "letsgo": "レッツゴー！"
-        },
-        "proceedToPayment": "Proceed to payment",
-        "quizz": {
-            "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
-            "quizz": "クイズ",
-            "quizzResults": "クイズの結果",
-            "quizzReview": "クイズのレビュー",
-            "resultCongrats": "おめでとうございます。よくできましたね！",
-            "resultItsOk": "あきらめないで、次回はもっと良い結果が得られるはずです！",
-            "resultNotBad": "おしい！",
-            "resultPerfect": "完璧!です！おめでとう！"
-        },
-        "unreleased": {
-            "colcardAndSparrow": "ColdcardとSparrow",
-            "financeIntroduction": "金融入門",
-            "financialCrisis": "主要な金融危機の分析",
-            "hyperinflation": "ハイパーインフレの研究",
-            "theoreticalLightning": "ライトニング・ネットワークの上級理論コース"
-        }
+    "details": {
+      "accessible": "Accessible: Lifetime",
+      "buyCourse": "Buy the course",
+      "courseId": "コースID：{{courseId}}",
+      "coursePayment": "Course payment",
+      "curriculum": "カリキュラム",
+      "date": "Date: {{startDate}} to {{endDate}}",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "description": "説明",
+      "duration": "所要時間：{{hours}}時間",
+      "goal": "ゴール：",
+      "level": "レベル：$t(words.level.{{level}})",
+      "mobile": {
+        "chapters": "{{chapters}}章",
+        "hours": "{{hours}}時間"
+      },
+      "numberOfChapters": "チャプター数：{{number}}",
+      "objectives": "目的",
+      "objectivesTitle": "学習内容：",
+      "price": "Price: {{price}} sats",
+      "professor": "教授",
+      "startCourse": "コースを開始する",
+      "taughtBy": "このコースは以下のメンバーによって提供されています：",
+      "teacher": "Teacher: {{teacher}}",
+      "teachers": "講師陣：{{teachers}}",
+      "teacherWord": "A word from the teacher",
+      "total": "Total",
+      "payment_successful": "Payment successful!",
+      "access_invoice": "You can access your invoice via your dashboard",
+      "payment_details": "Payment details",
+      "amount": "Amount",
+      "invoiceId": "Invoice ID",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
     },
-    "dashboard": {
-        "myCourses": {
-            "resumeLesson": "Resume the lesson",
-            "completed": "",
-            "details": "",
-            "inprogress": ""
-        },
-        "account": "",
-        "courses": "",
-        "logout": "",
-        "booking": {
-            "accessLive": "",
-            "billingTitle": "",
-            "billingSubtitle": "",
-            "downloadInvoice": "",
-            "downloadTicket": "",
-            "invoiceDate": "",
-            "invoiceTitle": "",
-            "invoiceType": "",
-            "ticketDate": "",
-            "ticketLocation": "",
-            "ticketTitle": "",
-            "ticketType": "",
-            "noInvoice": "",
-            "noTicket": "",
-            "pastTicketTitle": "",
-            "upcomingTicketTitle": "",
-            "upcomingTicketSubtitle": ""
-        },
-        "bookings": ""
+    "explorer": {
+      "footerTitle": "私たちの教授陣はあなたのためにここにいます！",
+      "footerp1": "Sovereign Universityでは、倫理規定に従う限り、教授陣がその内容や皆さんに探求してもらいたいツールについて、完全に自主性を持っています。彼らは様々なバックグラウンドを持つ情熱的なビットコイナーです。",
+      "footerp2": "コースの改善案や自分のコースを提供したい場合は、GitHubから簡単に行うことができます。教授をサポートするには、彼らのコースを評価するか、教授に直接チップを送ってあげてください。またはSovereign Universityのメンバーになって、プラットフォームをサポートしていただくことも大歓迎です。",
+      "moreToCome": ".... 今後のますますの発展にご期待ください！",
+      "pageDescription": "ここでは、ビットコイン全体に関連する多数のコースを、幅広いテーマで見つけることができます。この教育コンテンツは有機的なもので、ビットコインの成長とともに発展しています。すべてのコンテンツは無料かつオープンソースで、誰でもアクセスできます。コースはアーカイブ化されていて、あなた一人ひとりの学習状況に適応できるようにサークルで構成されています。",
+      "pageSubtitle": "eラーニング・プラットフォームへようこそ。",
+      "pageTitle": "コース",
+      "s2p1": "ビットコイン・ラビットホールの探求を始めたなら、それは多くの道を持つ無限の旅であることを知る必要があります。Sovereign Universityでは、これを十分に理解しているため、教育コンテンツは非直線的で、自律的で、可能な限り広範囲になるようにデザインされています。",
+      "s2p2": "自分のモチベーションに合わせてスキルや知識を身につけることができるようになります。",
+      "s2p3": "すべてのコースは完全無料です！",
+      "s2t1": "ビットコイン学習は、目的地ではなく旅そのものです",
+      "s3PickLevel": "レベル選択：",
+      "s3PickTopic": "トピック選択：",
+      "s3t1": "ラビットホールに自分だけの道を作ろう"
     },
-    "events": {
-        "introduction": {
-            "introductionh1": "Welcome to Plan B Network events",
-            "introductionp1": "Bottom up adoption enhanced by a strong network",
-            "introductionp2": "Looking for a Bitcoin event to go to ?",
-            "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
-        },
-        "main": {
-            "upcomingEvents": "Upcoming events",
-            "currentEvents": "Events happening right now"
-        },
-        "missed": {
-            "missedh1": "Past events to replay",
-            "missedp1": "Did you miss an event ?",
-            "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
-        },
-        "card": {
-            "free": "free",
-            "online": "online",
-            "limited": "limited to",
-            "unlimited": "unlimited",
-            "people": "people",
-            "watchLive": "Watch live",
-            "watchReplay": "Watch replay",
-            "bookLive": "Book live",
-            "bookSeat": "Book your seat",
-            "visitWebsite": "Visit website",
-            "buyReplay": "",
-            "eventFull": "",
-            "seatBooked": ""
-        },
-        "newEvent": {
-            "button": "",
-            "description": "",
-            "subtitle": "",
-            "title": ""
-        },
-        "pageDescription": "",
-        "pageSubtitle": "",
-        "pageTitle": "",
-        "payment": {
-            "access_invoice": "",
-            "access_online_successful": "",
-            "access_physical_successful": "",
-            "access_type": "",
-            "address": "",
-            "additional_free_description": "",
-            "amount": "",
-            "back_events": "",
-            "book_seat": "",
-            "callout_online": "",
-            "callout_physical": "",
-            "callout_replay": "",
-            "date": "",
-            "dates_to": "",
-            "description_online": "",
-            "description_physical": "",
-            "description_free_physical": "",
-            "download_ticket": "",
-            "enjoy": "",
-            "language": "",
-            "limitation": "",
-            "max_capacity": "",
-            "payment_details": "",
-            "payment_successful": "",
-            "time": ""
-        }
+    "footer": {
+      "": ""
     },
-    "home": {
-        "header": {
-            "content": "PlanBプラットフォームは、人々が主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目指しています。個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
-            "forEducators": "すべての教育関係者と開発者のために",
-            "globalNetwork": "グローバル・ビットコイン・ネットワーク",
-            "welcome": "PlanBネットワークへようこそ",
-            "link": "ネットワークに参加する",
-            "startLink": "学習を始める"
-        },
-        "numbersSection": {
-            "networkMember": "参加メンバー"
-        },
-        "sectionEducation": {
-            "title": "初心者から上級者まで",
-            "subtitle": "アカデミーでビットコインを学ぶ",
-            "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがり、各個人が興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようにしています。初めてのビットコイン・コースから、プロトコルの詳細を深く掘り下げるコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートをします。躊躇する理由はありません。知識があなたを待っています。",
-            "link": "アカデミーをチェックする"
-        },
-        "sectionNetwork": {
-            "title": "次のネットワークにアクセス：",
-            "subtitle": "世界中のビットコイン・キャンパス",
-            "content1": "共通の情熱を持つ世界中のビットコイン・ファンとつながりましょう。定期的に集まる小さなコミュニティからビットコイン教育センターまで、私たちのネットワークマップは、学び、構築するインスピレーションを見つけるのに役立ちます。インキュベーションセンター、オフライン・ワークショップ、セミナー、ビットコイン・リトリート（隠れ家）など、熱狂的なファンのために幅広いサービスが用意されています。ネットワークは誰でも参加自由ですので、お近くのビットコイン・コミュニティにお越しください！",
-            "link": "ネットワークに参加する"
-        },
-        "tutorialSection": {
-            "title": "ビットコイン教育をシンプルにすることが私たちの目標です。",
-            "subtitle1": "さまざまなチュートリアルでテクノロジー習得のお手伝いをします。",
-            "content1": "ビットコインは常に進化しており、新しい参加者、ソリューション、プロトコル、技術的ブレークスルーが現れては消えていく世界です。そのため、優れた最新のチュートリアルの正確なデータベースを維持する作業はとても困難です。しかし、PlanBではこれを実現しました。初心者から上級者まで、何百ものチュートリアルをナビゲートし、ニーズに合わせてこの世界を探求することができます。",
-            "link": "すべてのチュートリアルを見る"
-        },
-        "aboutUsSection": {
-            "title": "私たちについて",
-            "subtitle": "私たちについて少しだけ",
-            "content": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ運営に焦点を当てた様々な情熱的なビットコイン企業のクロスオーバー・チームです。彼らは共にPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を決定しました。",
-            "bitcoinFocusTitle": "ビットコイン・ファースト",
-            "bitcoinFocusContent": "ビットコイン革命の全体像、ベースレイヤーからそれを取り巻く様々なピアツーピア通信まで",
-            "openSourceTitle": "オープンソース",
-            "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築サポートを目指します",
-            "communityTitle": "コミュニティ",
-            "communityContent": "私たちは、何よりもまず、ビットコインの旅をお互に助け合うファン・コミュニティです",
-            "privacyTitle": "プライバシー",
-            "privacyContent": "プライバシーは最も基本的な人権のひとつであり、進歩のために不可欠なものです"
-        },
-        "languageSection": {
-            "title": "言語の壁はありません。",
-            "subtitle": "すべてが日本語をはじめ各言語に翻訳されています",
-            "subtitle2": "あなたのチカラが必要です！",
-            "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。これを達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています。",
-            "content2": "あなたも自分の国で独自のローカル・ネットワークを始めよう！",
-            "link": "アカデミーの翻訳にご協力ください",
-            "availableLanguages": ""
-        },
-        "patreonSection": {
-            "title": "Together let's make Bitcoin education better ! ",
-            "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
-            "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
-        }
-    },
-    "imagesAlt": {
-        "bitcoinCurrency": "ビットコイン通貨のサイン",
-        "blueEllipse": "青い楕円形",
-        "bookCover": "表紙",
-        "community": "3名",
-        "contributorHeart": "素敵なコントリビュータへのハート",
-        "contributorPP": "コントリビュータのプロフィール写真",
-        "courseThumbnail": "コースのサムネイル画像",
-        "curriculum": "カリキュラム",
-        "decouvreBitcoinLogo": "DecouvreBitcoinのロゴマーク",
-        "favorite": "サークルの中のハート",
-        "flagsInCircle": "旗のサークル",
-        "forwardArrow": "前方の矢印",
-        "github": "GitHubのアイコン",
-        "orangePill": "オレンジ・ピル",
-        "printedCircuits": "プリント基板",
-        "rabbit404": "404の看板を懐中電灯で照らすうさぎ",
-        "sthRepresentingCompany": "会社を代表する何か",
-        "stylus": "スタイラス",
-        "underConstructionImage": "工事現場で作業するうさぎたちのイラスト",
-        "visibilityOff": "ログアウト看板のない目のアイコン",
-        "worldMap": "ハブがリンクされている世界地図"
-    },
-    "library": {
-        "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-        "pageTitle": "ライブラリ",
-        "publishedIn": "公開日：{{date}}",
-        "writtenBy": "作成者：{{author}}"
-    },
-    "menu": {
-        "betDescription": "教育プロジェクトに使えるコンテンツ集",
-        "btc101Description": "このレッスンをとおしてビットコインについての理解を深めよう",
-        "buildersDescription": "ビットコインをより良いものにし、その普及を拡大するために活動している企業やプロジェクトについて学ぶ",
-        "exchangesDescription": "取引所でビットコインを売買し、P2P（ピアツーピア）について学ぶ",
-        "libraryDescription": "あなたの知識を向上させるためのたくさんの本を見つける",
-        "lightningDescription": "ライトニング・ノードを管理し、ライトニング・ネットワークを使用する",
-        "manifestoDescription": "プランBのマニフェストを読む",
-        "merchantsDescription": "ビットコイン決済を受け入れ、マーチャント向けのツールを見つける",
-        "miningDescription": "自分のビットコインをマイニング（採掘）し、マイニング業界について学ぶ",
-        "nodeDescription": "自分のビットコイン・ノードによる自己主権の方法について学ぶ",
-        "nodeNetworkDescription": "ビットコイン・コミュニティのグローバル・ネットワークに参加しよう！",
-        "ourStoryDescription": "Sovereign Universityのストーリーについて学ぶ",
-        "podcastsDescription": "ポッドキャストをとおしてビットコイン・エコシステムについて探求する",
-        "sponsorsDescription": "スポンサーの方々と主なコントリビュータのみなさん",
-        "supportUsDescription": "私たちをぜひサポートしてください（どのような方法でも構いません！）",
-        "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
-        "walletsDescription": "ビットコインを安全に使用する",
-        "conferencesDescription": ""
-    },
-    "nodeNetwork": {
-        "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
-        "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
-        "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
-        "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
-        "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
-        "apply": "Apply to become a Node",
-        "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-        "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-        "pageTitle": "Node Map",
-        "question1": "What's a node?",
-        "question2": "何が得られるのか？",
-        "question3": "必要条件は？",
-        "question4": "What size is a node?",
-        "question5": "その秘策とは？"
-    },
-    "notFound": {
-        "here": "こちら",
-        "pageSubtitle": "ラビットホールに深く入りしすぎて迷子になったようです。こちらクリックして地上に戻る：",
-        "pageTitle": "おっと！"
-    },
-    "podcast": {
-        "abstract": "抜粋",
-        "discover": "このポッドキャストを見つける"
-    },
-    "podcasts": {
-        "hostedBy": "主催者：{{host}}",
-        "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-        "pageTitle": "ポッドキャスト・ポータル"
-    },
-    "professors": {
-        "pageSubtitle": "私たちの教授陣はすべてボランティアであり、情熱的なビットコイナーです。",
-        "pageTitle": "講師陣",
-        "tips": {
-            "noTipsYet": "この教授は、現在チップを受け付けていません。",
-            "thanks": "{{name}}をサポートしてくれてありがとう！",
-            "thanksNoName": "私をサポートしてくれてありがとう！"
-        }
-    },
-    "resources": {
-        "articles": {
-            "title": "記事一覧"
-        },
-        "bet": {
-            "title": "教育用ツールキット"
-        },
-        "books": {
-            "title": "書籍"
-        },
-        "builders": {
-            "title": "開発者"
-        },
-        "conferences": {
-            "title": "カンファレンス"
-        },
-        "filterBarLabel": "あなたのニーズにぴったりのリソースを見つけよう：",
-        "headerSignature": "ロジー（Rogzy）",
-        "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
-        "newsletters": {
-            "title": "ニュースレター"
-        },
-        "pageDescription": "ビットコインを理解しようとすることは、広がり続ける迷路を探検するようなものです。あなたの旅を支援するために、私たちはさまざまなトピックを扱うリソースと広範にわたるコレクションをキュレーションしました。",
-        "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
-        "pageTitle": "リソース",
-        "podcasts": {
-            "title": "ポッドキャスト"
-        },
-        "publicGrade": "公開成績：{{grade}}/5",
-        "github": ""
-    },
-    "settings": {
-        "changePassword": "パスワードを変更する",
-        "changeEmail": "Change email"
-    },
-    "tutorials": {
-        "details": {
-            "checkAuthor": "作成者の他の貢献物もチェックし、同時にサポートしていただけませんか？",
-            "enjoyed": "このチュートリアルを楽しんでいただけましたか？",
-            "madeBy": "このチュートリアルの作成者：",
-            "source": "オリジナル・ソース：",
-            "tipTooltip": "楽しんでいただけましたか？チップはこちらから。"
-        },
-        "exchange": {
-            "centralized": {
-                "description": "中央集権的な取引所は通常、銀行システムとビットコイン・エコシステムの仲介役として機能する規制された組織や機関です。これらの取引所では、大量のビットコインを売買したり、ウォレットや銀行口座に引き出したりすることができます。彼らは通常KYCを必要とするため、あなたの活動を監視し、現地の法律を尊重するために金融監視機関に報告します。"
-            },
-            "description": "取引所は、従来の通貨（ユーロ、ドル）とビットコインの世界の出入口の一つです。取引所は、規制され、KYC（Know Your Customer）に準拠している場合もあれば、ピアツーピアをとおして匿名の場合もあります。各取引所は、異なる機能、手数料体系、流動性、顧客サポートを提供します。各ビットコイナーは、それぞれのニーズと信念に基づいて自分に合ったもの使いましょう。",
-            "peer-to-peer": {
-                "description": "ピアツーピア取引所は、個人間でビットコインと他の通貨を交換するマーケット・プレイスです。このような取引所は規制されているかどうかにかかわらず、通常、あなたに関する多くの情報（もしあったとしても）を求めません。単にユーザー間の関係を促進するだけです。ただし、手数料は従来型の取引所よりも高く、流動性は少し低めです。KYCを避けたいビットコイナーにとっては、とても好ましい選択肢です。"
-            },
-            "shortDescription": "ビットコイン購入販売ソリューション、KYCと非KYC",
-            "title": "取引所"
-        },
-        "explorer": {
-            "description": "これらのチュートリアルのすべては、世界中にビットコイン教育を広めたいと願う情熱的で熱心なビットコイナーによって書かれています。いいね、レビュー、チップをお忘れなく！",
-            "didYouKnow": "ご存知でしたか？"
-        },
-        "headerSignature": "ロジー（Rogzy）",
-        "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
-        "merchant": {
-            "description": "ご自分のビジネスでビットコインを簡単に受け入れる方法を知りたいと思ったことはありませんか？私たちの様々なソリューションを探求し、専門家になって、あなたの周りのお店のためのマーチャント・ソリューションを簡単にセットアップしてください。POS ソリューションは、販売者のニーズ (オフラインまたはオンライン)、販売量、業務の複雑さに応じて異なります。一般的に優れたプロキシは、単純に基本的な LNウォレットから開始し、簡単で効率的なソリューション (モバイルPoS など) に移行し、最後に高度で複雑な専門的なソリューションを求めてBTC Pay Serverを検討することです。",
-            "shortDescription": "企業がビットコインを受け入れるためのソリューション",
-            "title": "マーチャント"
-        },
-        "mining": {
-            "description": "マイニング業界は、ラビットホールの中でも複雑なトピックの1つです。ここでは、ハードウェアとソフトウェアを駆使して、あなたの旅に私たちも同行します。それは、S9を家庭用ヒーターに改造することから、ナード・マイナー（nerd miner）で宝くじに挑戦することまでを含みます。",
-            "shortDescription": "ビットコイン・マイニング・ソリューション",
-            "title": "マイニング（採掘）"
-        },
-        "node": {
-            "bitcoin": {
-                "description": "ビットコインコア・ノード（Bitcoin Core node）は、ビットコインをとおして自己主権を手に入れるための最初の一歩です。ビットコイン・ソフトウェアを実行し、ネットワークに参加することができます。ブロックとトランザクションを検証し、ネットワーク内で適用したいルールを決定することで、取引に関わる一切の第三者機関を排除することができます。ビットコイン・ノードを実行するには多くの方法があり、中にはよりユーザー・フレンドリーな方法もあります。"
-            },
-            "description": "ノードは個人サーバーのようなものです。 ビットコイン内において、それはネットワークを実行し、トランザクションを収集し、ルールを検証し、真の主権者になることを可能にするソフトウェアです。私たちのエコシステムには、ビットコインコアからライトニングの実装、RGB、またはその他の高度なプライバシー・ソリューションまで、さまざまなノードが存在します。",
-            "lightning-network": {
-                "description": "ライトニング・ノードでは、ライトニングと呼ばれるビットコインのレイヤー2プロトコルに参加することができます。チャンネルを開設し、流動性を管理し、グラフに参加し、ノンカストディ・ライトニング・ウォレットを保有することができます。",
-                "name": "ライトニング・ネットワーク"
-            },
-            "rgb": {
-                "description": "RGBはビットコインとライトニング・ネットワークのためのスケーラブルで機密性の高いスマートコントラクト・システムです。これはビットコインのためのプログラマビリティ層であり、私的所有権と相互所有権、抽象化と関心事の分離の概念を持ち、「ポスト・ブロックチェーン」を表しています。"
-            },
-            "shortDescription": "ビットコイン・ノードを運営し、ネットワークに参加するためのソリューション",
-            "title": "ノード"
-        },
-        "pageDescription": "ビットコインは幅広い業界であり、日々ますます広がりを見せています。それを探求するのを助けるために、私たちは様々なソリューションを説明する多くのチュートリアルを集めました。",
-        "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
-        "pageTitle": "チュートリアル",
-        "privacy": {
-            "bitcoin": {
-                "description": "ビットコインはデフォルトでは非公開ではなく、意図的に偽名になるように設計されており、すべてのトランザクションは公開され、永遠に保存されます。ある程度の機密性を取り戻すためには、ベスト・ユーザープラクティスとソフトウェアに統合された特定のツールを使用する必要があります。アドレスの再利用の回避からCoinJoin、コインの混合や独自ノードへの接続まで、私たちはあなたのプライバシーへの旅をサポートします。"
-            },
-            "description": "プライバシーは基本的権利です。私たちはプライバシーがデフォルトである世界を望んでいますが、残念ながらそれにはまだほど遠いのが現実です。私たちはベスト・プラクティスを説明し、チュートリアルによってアシストし、あなたのデータに関してより自己主権的な道を歩めるようにサポートします。",
-            "general": {
-                "description": "このような大量監視時代には、日常生活で一定レベルのプライバシーを取り戻すことが不可欠です。各ユーザーがある程度のパラノイアと技術的知識を持っていることを考えると、特定のツールを使い、自分のニーズに合わせることは全く普通のことです。ここでは、VPN、Tor、Tails OS、PGP、暗号化メッセージなど、さまざまな保護ソリューションについて探求します。"
-            },
-            "shortDescription": "バックアップとプライバシー維持のためのツール",
-            "title": "プライバシー"
-        },
-        "wallet": {
-            "description": "ビットコイン・ウォレットはキーチェーンのようなものです。ビットコインを使ったり受け取ったりすることができます。ウォレットには様々な種類があり、使用例、機能、コスト、ユーザーエクスペリエンスがそれぞれ異なっています。各ビットコイナーは、ニーズ、要求レベル、経験に基づいて異なるデバイスを使用しています。",
-            "desktop": {
-                "description": "デスクトップ・ウォレットは、通常、ハードウェア・デバイスとデスクトップ・ウォレット・ソフトウェアを組み合わせて使用するため、より上級者ユーザー向けです。ハードウェア・デバイスを使用するための、よりカスタム性と機能性の高い新しいインターフェイスを持ちます。このようなウォレットは、マルチシグ（マルチ・シグネチャ）オプション、プライバシー機能、継承統合メカニズムなどを提供します。"
-            },
-            "hardware": {
-                "description": "ハードウェア・ウォレットは、通常、長期的なビットコインの貯蓄を保管するために使用されます。インターネットに接続されていない物理的なデバイスで（しばしば「コールド・ウォレット」と呼ばれる）、一般的に非常に安全です。これらのデバイスは、ソフトウェア自体はオープンソースであることが多いにもかかわらず、ハードウェアには50～300ユーロ程度のコストがかかります。これらのデバイスは、時々使用する多額の貯蓄のための銀行口座のようなものだと考えてください。"
-            },
-            "mobile": {
-                "description": "モバイル・ウォレットは、通常、日常的な支出に使用されます。モバイル・ウォレットはライトニング・ネットワークを統合しており、低手数料で即時トランザクションが可能です。モバイル・ウォレットは、通常、インターネットに接続されているため（しばしば「ホット・ウォレット」と呼ばれる）、ハードウェア・ウォレットよりも安全性は高くありません。少量のビットコインを保管するためにのみ使用されるべきで、ポケットの中の日常的な財布として考えてください。"
-            },
-            "shortDescription": "セキュリティ・ソリューションとビットコインの使用",
-            "title": "ウォレット"
-        },
-        "others": {
-            "title": "",
-            "shortDescription": "",
-            "description": "",
-            "DIY": {
-                "description": ""
-            },
-            "OpenSource": {
-                "description": ""
-            },
-            "contribution": {
-                "description": ""
-            },
-            "general": {
-                "description": ""
-            }
-        }
-    },
-    "underConstruction": {
-        "github": "GitHub",
-        "p1": "うさぎが穴に落ちました。この予期せぬ冒険のために、現在このページは少し工事中です。ご迷惑をおかけして申し訳ありません。私たちのチームはこのページを完成させるためにフル作業しています。もし手を貸していただけるようでしたら、遠慮なく私たちにご連絡ください：",
-        "p2": "そして、ぜひ私たちのコミュニティへ参加してください！",
-        "pageTitle": "おっと！"
-    },
-    "words": {
-        "about": "概要：",
-        "about-us": "私たちについて",
-        "account": "アカウント",
-        "additionalCriteria": "追加条件",
-        "advanced": "上級者向け",
-        "article": "記事",
-        "articles": "記事一覧",
-        "audioBook": "オーディオ・ブック",
-        "back": "戻る",
-        "beginner": "初心者向け",
-        "bitcoinWhitepaper": "ビットコイン・ホワイトペーパー",
-        "book": "書籍",
-        "books": "書籍",
-        "builders": "開発者",
-        "certificate": "修了証書",
-        "conference": "カンファレンス",
-        "conferences": "カンファレンス",
-        "content": "コンテンツ",
-        "continue": "続ける",
-        "course": "コース",
-        "courses": "コース",
-        "dashboard": "ダッシュボード",
-        "details": "詳細",
-        "didYouKnow": "ご存知でしたか？",
-        "documentaries": "ドキュメンタリー",
-        "donations": "寄付",
-        "economy": "経済",
-        "education": "教育",
-        "email": "Eメール",
-        "events": "Events",
-        "exchanges": "取引所",
-        "followUs": "フォローする",
-        "helpUs": "ご協力ください",
-        "home": "ホーム",
-        "intermediate": "中級者向け",
-        "interview": "インタビュー",
-        "level": {
-            "advanced": "上級者向け",
-            "beginner": "初心者向け",
-            "developer": "開発者",
-            "intermediate": "中級者向け"
-        },
-        "library": "ライブラリ",
-        "lightning": "ライトニング",
-        "lnurlAuth": "LNURL認証",
-        "manifesto": "マニフェスト",
-        "merchandising": "マーチャンダイズ",
-        "merchants": "マーチャント",
-        "members": " メンバー",
-        "mining": "マイニング（採掘）",
-        "more": "もっと見る",
-        "movieDocumentary": "ドキュメンタリー映画",
-        "network": "ネットワーク",
-        "networkMember": "ネットワーク・メンバー",
-        "newsletter": "ニュースレター",
-        "newsletters": "ニュースレター",
-        "node": "ノード",
-        "nodeNetwork": "ノード・ネットワーク",
-        "or": "または",
-        "ourStory": "私たちのストーリー",
-        "podcast": "ポッドキャスト",
-        "podcasts": "ポッドキャスト",
-        "professors": "講師陣",
-        "purchase": "Purchase",
-        "register": "登録する",
-        "relatedResources": "関連するリソース",
-        "resources": "リソース",
-        "resume": "再開する",
-        "review": "レビュー",
-        "rogzy": "ロジー（Rogzy）",
-        "sponsorUs": "スポンサーになる",
-        "sponsoringAndContributors": "スポンサーとコントリビュータ",
-        "supportUs": "サポートする",
-        "teachers": "講師陣",
-        "termsAndConditions": "利用規約",
-        "toolkits": "ツールキット",
-        "tutorial": "チュートリアル",
-        "tutorials": "チュートリアル",
-        "update": "更新する",
-        "video": "動画",
-        "videos": "動画",
-        "wallets": "ウォレット",
-        "date": "",
-        "time": "",
-        "to": "",
-        "billing": "",
-        "download": "",
-        "invoice": "",
-        "on": "",
-        "online": "",
-        "ticket": "",
-        "tickets": ""
-    },
-    "conferences": {
-        "details": {
-            "speaker": "",
-            "findReplay": "",
-            "nextVideo": "",
-            "previousVideo": "",
-            "selectStage": "",
-            "selectVideo": "",
-            "watchReplay": ""
-        },
-        "addConferences": "",
-        "backConferences": "",
-        "conferenceName": "",
-        "conferencesSinceGenesis": "",
-        "description": "",
-        "language": "",
-        "latestConferences": "",
-        "location": "",
-        "noConferences": "",
-        "pageSubtitle": "",
-        "pageTitle": "",
-        "planBConferences": "",
-        "topics": ""
+    "part": {
+      "count": "パートn°{{count}}/{{total}}"
     },
     "payment": {
-        "proceedToPayment": "",
-        "terms": "",
-        "feeDistribution": "",
-        "total": ""
+      "access_invoice": "You can access your invoice via your dashboard",
+      "accessibility": "Accessibility",
+      "accessibility_forever": "Forever",
+      "amount": "Amount",
+      "date": "Date",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "downloadCurriculum": "Download curriculum",
+      "duration": "Duration",
+      "invoiceId": "Invoice ID",
+      "numberOfChapters": "Number of chapters",
+      "payment_details": "Payment details",
+      "payment_successful": "Payment successful!",
+      "teacher": "Teacher",
+      "teachers": "Teachers",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "total": "Total",
+      "back_course": "",
+      "callout": "",
+      "description": "",
+      "book_description": "",
+      "qr_unified": "",
+      "time": ""
+    },
+    "preview": {
+      "by": "by {{professor}}",
+      "letsgo": "レッツゴー！"
+    },
+    "proceedToPayment": "Proceed to payment",
+    "quizz": {
+      "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
+      "quizz": "クイズ",
+      "quizzResults": "クイズの結果",
+      "quizzReview": "クイズのレビュー",
+      "resultCongrats": "おめでとうございます。よくできましたね！",
+      "resultItsOk": "あきらめないで、次回はもっと良い結果が得られるはずです！",
+      "resultNotBad": "おしい！",
+      "resultPerfect": "完璧!です！おめでとう！"
+    },
+    "unreleased": {
+      "colcardAndSparrow": "ColdcardとSparrow",
+      "financeIntroduction": "金融入門",
+      "financialCrisis": "主要な金融危機の分析",
+      "hyperinflation": "ハイパーインフレの研究",
+      "theoreticalLightning": "ライトニング・ネットワークの上級理論コース"
     }
+  },
+  "dashboard": {
+    "myCourses": {
+      "resumeLesson": "Resume the lesson",
+      "completed": "",
+      "details": "",
+      "inprogress": ""
+    },
+    "account": "",
+    "courses": "",
+    "logout": "",
+    "booking": {
+      "accessLive": "",
+      "billingTitle": "",
+      "billingSubtitle": "",
+      "downloadInvoice": "",
+      "downloadTicket": "",
+      "invoiceDate": "",
+      "invoiceTitle": "",
+      "invoiceType": "",
+      "ticketDate": "",
+      "ticketLocation": "",
+      "ticketTitle": "",
+      "ticketType": "",
+      "noInvoice": "",
+      "noTicket": "",
+      "pastTicketTitle": "",
+      "upcomingTicketTitle": "",
+      "upcomingTicketSubtitle": ""
+    },
+    "bookings": ""
+  },
+  "events": {
+    "introduction": {
+      "introductionh1": "Welcome to Plan B Network events",
+      "introductionp1": "Bottom up adoption enhanced by a strong network",
+      "introductionp2": "Looking for a Bitcoin event to go to ?",
+      "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
+    },
+    "main": {
+      "upcomingEvents": "Upcoming events",
+      "currentEvents": "Events happening right now"
+    },
+    "missed": {
+      "missedh1": "Past events to replay",
+      "missedp1": "Did you miss an event ?",
+      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+    },
+    "card": {
+      "free": "free",
+      "online": "online",
+      "limited": "limited to",
+      "unlimited": "unlimited",
+      "people": "people",
+      "watchLive": "Watch live",
+      "watchReplay": "Watch replay",
+      "bookLive": "Book live",
+      "bookSeat": "Book your seat",
+      "visitWebsite": "Visit website",
+      "buyReplay": "",
+      "eventFull": "",
+      "seatBooked": ""
+    },
+    "newEvent": {
+      "button": "",
+      "description": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "pageDescription": "",
+    "pageSubtitle": "",
+    "pageTitle": "",
+    "payment": {
+      "access_invoice": "",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "access_type": "",
+      "address": "",
+      "additional_free_description": "",
+      "amount": "",
+      "back_events": "",
+      "book_seat": "",
+      "callout_online": "",
+      "callout_physical": "",
+      "callout_replay": "",
+      "date": "",
+      "dates_to": "",
+      "description_online": "",
+      "description_physical": "",
+      "description_free_physical": "",
+      "download_ticket": "",
+      "enjoy": "",
+      "language": "",
+      "limitation": "",
+      "max_capacity": "",
+      "payment_details": "",
+      "payment_successful": "",
+      "time": ""
+    }
+  },
+  "home": {
+    "header": {
+      "content": "PlanBプラットフォームは、人々が主権を取り戻すための最高のツールと教育コンテンツを世界中に提供することを目指しています。個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
+      "forEducators": "すべての教育関係者と開発者のために",
+      "globalNetwork": "グローバル・ビットコイン・ネットワーク",
+      "welcome": "PlanBネットワークへようこそ",
+      "link": "ネットワークに参加する",
+      "startLink": "学習を始める"
+    },
+    "numbersSection": {
+      "networkMember": "参加メンバー"
+    },
+    "sectionEducation": {
+      "title": "初心者から上級者まで",
+      "subtitle": "アカデミーでビットコインを学ぶ",
+      "content1": "ビットコインはテクノロジーや貨幣の一形態であるだけでなく、人生に対する革命的なアプローチ方法でもあります。これを反映するために、私たちのコースは幅広い分野にまたがり、各個人が興味のある分野で優れた能力を発揮し、さらに理解を深めることができるようにしています。初めてのビットコイン・コースから、プロトコルの詳細を深く掘り下げるコースまで、私たちのコースは、あなたがラビットホールを安全に旅するためのナビゲートをします。躊躇する理由はありません。知識があなたを待っています。",
+      "link": "アカデミーをチェックする"
+    },
+    "sectionNetwork": {
+      "title": "次のネットワークにアクセス：",
+      "subtitle": "世界中のビットコイン・キャンパス",
+      "content1": "共通の情熱を持つ世界中のビットコイン・ファンとつながりましょう。定期的に集まる小さなコミュニティからビットコイン教育センターまで、私たちのネットワークマップは、学び、構築するインスピレーションを見つけるのに役立ちます。インキュベーションセンター、オフライン・ワークショップ、セミナー、ビットコイン・リトリート（隠れ家）など、熱狂的なファンのために幅広いサービスが用意されています。ネットワークは誰でも参加自由ですので、お近くのビットコイン・コミュニティにお越しください！",
+      "link": "ネットワークに参加する"
+    },
+    "tutorialSection": {
+      "title": "ビットコイン教育をシンプルにすることが私たちの目標です。",
+      "subtitle1": "さまざまなチュートリアルでテクノロジー習得のお手伝いをします。",
+      "content1": "ビットコインは常に進化しており、新しい参加者、ソリューション、プロトコル、技術的ブレークスルーが現れては消えていく世界です。そのため、優れた最新のチュートリアルの正確なデータベースを維持する作業はとても困難です。しかし、PlanBではこれを実現しました。初心者から上級者まで、何百ものチュートリアルをナビゲートし、ニーズに合わせてこの世界を探求することができます。",
+      "link": "すべてのチュートリアルを見る"
+    },
+    "aboutUsSection": {
+      "title": "私たちについて",
+      "subtitle": "私たちについて少しだけ",
+      "content": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ運営に焦点を当てた様々な情熱的なビットコイン企業のクロスオーバー・チームです。彼らは共にPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を決定しました。",
+      "bitcoinFocusTitle": "ビットコイン・ファースト",
+      "bitcoinFocusContent": "ビットコイン革命の全体像、ベースレイヤーからそれを取り巻く様々なピアツーピア通信まで",
+      "openSourceTitle": "オープンソース",
+      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築サポートを目指します",
+      "communityTitle": "コミュニティ",
+      "communityContent": "私たちは、何よりもまず、ビットコインの旅をお互に助け合うファン・コミュニティです",
+      "privacyTitle": "プライバシー",
+      "privacyContent": "プライバシーは最も基本的な人権のひとつであり、進歩のために不可欠なものです"
+    },
+    "languageSection": {
+      "title": "言語の壁はありません。",
+      "subtitle": "すべてが日本語をはじめ各言語に翻訳されています",
+      "subtitle2": "あなたのチカラが必要です！",
+      "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。これを達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています。",
+      "content2": "あなたも自分の国で独自のローカル・ネットワークを始めよう！",
+      "link": "アカデミーの翻訳にご協力ください",
+      "availableLanguages": ""
+    },
+    "patreonSection": {
+      "title": "Together let's make Bitcoin education better ! ",
+      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
+      "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
+    }
+  },
+  "imagesAlt": {
+    "bitcoinCurrency": "ビットコイン通貨のサイン",
+    "blueEllipse": "青い楕円形",
+    "bookCover": "表紙",
+    "community": "3名",
+    "contributorHeart": "素敵なコントリビュータへのハート",
+    "contributorPP": "コントリビュータのプロフィール写真",
+    "courseThumbnail": "コースのサムネイル画像",
+    "curriculum": "カリキュラム",
+    "decouvreBitcoinLogo": "DecouvreBitcoinのロゴマーク",
+    "favorite": "サークルの中のハート",
+    "flagsInCircle": "旗のサークル",
+    "forwardArrow": "前方の矢印",
+    "github": "GitHubのアイコン",
+    "orangePill": "オレンジ・ピル",
+    "printedCircuits": "プリント基板",
+    "rabbit404": "404の看板を懐中電灯で照らすうさぎ",
+    "sthRepresentingCompany": "会社を代表する何か",
+    "stylus": "スタイラス",
+    "underConstructionImage": "工事現場で作業するうさぎたちのイラスト",
+    "visibilityOff": "ログアウト看板のない目のアイコン",
+    "worldMap": "ハブがリンクされている世界地図"
+  },
+  "library": {
+    "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
+    "pageTitle": "ライブラリ",
+    "publishedIn": "公開日：{{date}}",
+    "writtenBy": "作成者：{{author}}"
+  },
+  "menu": {
+    "betDescription": "教育プロジェクトに使えるコンテンツ集",
+    "btc101Description": "このレッスンをとおしてビットコインについての理解を深めよう",
+    "buildersDescription": "ビットコインをより良いものにし、その普及を拡大するために活動している企業やプロジェクトについて学ぶ",
+    "exchangesDescription": "取引所でビットコインを売買し、P2P（ピアツーピア）について学ぶ",
+    "libraryDescription": "あなたの知識を向上させるためのたくさんの本を見つける",
+    "lightningDescription": "ライトニング・ノードを管理し、ライトニング・ネットワークを使用する",
+    "manifestoDescription": "プランBのマニフェストを読む",
+    "merchantsDescription": "ビットコイン決済を受け入れ、マーチャント向けのツールを見つける",
+    "miningDescription": "自分のビットコインをマイニング（採掘）し、マイニング業界について学ぶ",
+    "nodeDescription": "自分のビットコイン・ノードによる自己主権の方法について学ぶ",
+    "nodeNetworkDescription": "ビットコイン・コミュニティのグローバル・ネットワークに参加しよう！",
+    "ourStoryDescription": "Sovereign Universityのストーリーについて学ぶ",
+    "podcastsDescription": "ポッドキャストをとおしてビットコイン・エコシステムについて探求する",
+    "sponsorsDescription": "スポンサーの方々と主なコントリビュータのみなさん",
+    "supportUsDescription": "私たちをぜひサポートしてください（どのような方法でも構いません！）",
+    "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
+    "walletsDescription": "ビットコインを安全に使用する",
+    "conferencesDescription": ""
+  },
+  "nodeNetwork": {
+    "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
+    "answer2": "At Plan B we aim to improve the educational bitcoin ecosystem by providing the right tools to build and educate on Bitcoin. By becoming a node, your community will get access to a large range of resources, services, special educational training and more. Make your community count as a reference in the Bitcoin world.",
+    "answer3": "To be part of the network you must align on some core values. These are: \n - be bitcoin only \n - value privacy \n - care for the open source work.",
+    "answer4": "A Bitcoin node can be of any size. Based on some requirement different grade will be attribute. A node with an hackerspace, a gym, some office place will be considered more citaldel like.",
+    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
+    "apply": "Apply to become a Node",
+    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
+    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
+    "pageTitle": "Node Map",
+    "question1": "What's a node?",
+    "question2": "何が得られるのか？",
+    "question3": "必要条件は？",
+    "question4": "What size is a node?",
+    "question5": "その秘策とは？"
+  },
+  "notFound": {
+    "here": "こちら",
+    "pageSubtitle": "ラビットホールに深く入りしすぎて迷子になったようです。こちらクリックして地上に戻る：",
+    "pageTitle": "おっと！"
+  },
+  "podcast": {
+    "abstract": "抜粋",
+    "discover": "このポッドキャストを見つける"
+  },
+  "podcasts": {
+    "hostedBy": "主催者：{{host}}",
+    "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
+    "pageTitle": "ポッドキャスト・ポータル"
+  },
+  "professors": {
+    "pageSubtitle": "私たちの教授陣はすべてボランティアであり、情熱的なビットコイナーです。",
+    "pageTitle": "講師陣",
+    "tips": {
+      "noTipsYet": "この教授は、現在チップを受け付けていません。",
+      "thanks": "{{name}}をサポートしてくれてありがとう！",
+      "thanksNoName": "私をサポートしてくれてありがとう！"
+    }
+  },
+  "resources": {
+    "articles": {
+      "title": "記事一覧"
+    },
+    "bet": {
+      "title": "教育用ツールキット"
+    },
+    "books": {
+      "title": "書籍"
+    },
+    "builders": {
+      "title": "開発者"
+    },
+    "conferences": {
+      "title": "カンファレンス"
+    },
+    "filterBarLabel": "あなたのニーズにぴったりのリソースを見つけよう：",
+    "headerSignature": "ロジー（Rogzy）",
+    "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
+    "newsletters": {
+      "title": "ニュースレター"
+    },
+    "pageDescription": "ビットコインを理解しようとすることは、広がり続ける迷路を探検するようなものです。あなたの旅を支援するために、私たちはさまざまなトピックを扱うリソースと広範にわたるコレクションをキュレーションしました。",
+    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
+    "pageTitle": "リソース",
+    "podcasts": {
+      "title": "ポッドキャスト"
+    },
+    "publicGrade": "公開成績：{{grade}}/5",
+    "github": ""
+  },
+  "settings": {
+    "changePassword": "パスワードを変更する"
+  },
+  "tutorials": {
+    "details": {
+      "checkAuthor": "作成者の他の貢献物もチェックし、同時にサポートしていただけませんか？",
+      "enjoyed": "このチュートリアルを楽しんでいただけましたか？",
+      "madeBy": "このチュートリアルの作成者：",
+      "source": "オリジナル・ソース：",
+      "tipTooltip": "楽しんでいただけましたか？チップはこちらから。"
+    },
+    "exchange": {
+      "centralized": {
+        "description": "中央集権的な取引所は通常、銀行システムとビットコイン・エコシステムの仲介役として機能する規制された組織や機関です。これらの取引所では、大量のビットコインを売買したり、ウォレットや銀行口座に引き出したりすることができます。彼らは通常KYCを必要とするため、あなたの活動を監視し、現地の法律を尊重するために金融監視機関に報告します。"
+      },
+      "description": "取引所は、従来の通貨（ユーロ、ドル）とビットコインの世界の出入口の一つです。取引所は、規制され、KYC（Know Your Customer）に準拠している場合もあれば、ピアツーピアをとおして匿名の場合もあります。各取引所は、異なる機能、手数料体系、流動性、顧客サポートを提供します。各ビットコイナーは、それぞれのニーズと信念に基づいて自分に合ったもの使いましょう。",
+      "peer-to-peer": {
+        "description": "ピアツーピア取引所は、個人間でビットコインと他の通貨を交換するマーケット・プレイスです。このような取引所は規制されているかどうかにかかわらず、通常、あなたに関する多くの情報（もしあったとしても）を求めません。単にユーザー間の関係を促進するだけです。ただし、手数料は従来型の取引所よりも高く、流動性は少し低めです。KYCを避けたいビットコイナーにとっては、とても好ましい選択肢です。"
+      },
+      "shortDescription": "ビットコイン購入販売ソリューション、KYCと非KYC",
+      "title": "取引所"
+    },
+    "explorer": {
+      "description": "これらのチュートリアルのすべては、世界中にビットコイン教育を広めたいと願う情熱的で熱心なビットコイナーによって書かれています。いいね、レビュー、チップをお忘れなく！",
+      "didYouKnow": "ご存知でしたか？"
+    },
+    "headerSignature": "ロジー（Rogzy）",
+    "headerText": "どこまでも続くビットコイン・ラビットホールへようこそ！このセクションでは、ほとんどのビットコイン・プロジェクトに関する深いチュートリアルを提供します。このページは、オープンソース・プロジェクトをサポートする情熱的なビットコイナーによって管理されています。もし間違いがありましたら、お問い合わせください。このプロジェクトの財務状況については、私たちの透明性報告書（Transparency Report）を参照してください。Sovereign Universityをご信頼いただきありがとうございます。楽しんで。",
+    "merchant": {
+      "description": "ご自分のビジネスでビットコインを簡単に受け入れる方法を知りたいと思ったことはありませんか？私たちの様々なソリューションを探求し、専門家になって、あなたの周りのお店のためのマーチャント・ソリューションを簡単にセットアップしてください。POS ソリューションは、販売者のニーズ (オフラインまたはオンライン)、販売量、業務の複雑さに応じて異なります。一般的に優れたプロキシは、単純に基本的な LNウォレットから開始し、簡単で効率的なソリューション (モバイルPoS など) に移行し、最後に高度で複雑な専門的なソリューションを求めてBTC Pay Serverを検討することです。",
+      "shortDescription": "企業がビットコインを受け入れるためのソリューション",
+      "title": "マーチャント"
+    },
+    "mining": {
+      "description": "マイニング業界は、ラビットホールの中でも複雑なトピックの1つです。ここでは、ハードウェアとソフトウェアを駆使して、あなたの旅に私たちも同行します。それは、S9を家庭用ヒーターに改造することから、ナード・マイナー（nerd miner）で宝くじに挑戦することまでを含みます。",
+      "shortDescription": "ビットコイン・マイニング・ソリューション",
+      "title": "マイニング（採掘）"
+    },
+    "node": {
+      "bitcoin": {
+        "description": "ビットコインコア・ノード（Bitcoin Core node）は、ビットコインをとおして自己主権を手に入れるための最初の一歩です。ビットコイン・ソフトウェアを実行し、ネットワークに参加することができます。ブロックとトランザクションを検証し、ネットワーク内で適用したいルールを決定することで、取引に関わる一切の第三者機関を排除することができます。ビットコイン・ノードを実行するには多くの方法があり、中にはよりユーザー・フレンドリーな方法もあります。"
+      },
+      "description": "ノードは個人サーバーのようなものです。 ビットコイン内において、それはネットワークを実行し、トランザクションを収集し、ルールを検証し、真の主権者になることを可能にするソフトウェアです。私たちのエコシステムには、ビットコインコアからライトニングの実装、RGB、またはその他の高度なプライバシー・ソリューションまで、さまざまなノードが存在します。",
+      "lightning-network": {
+        "description": "ライトニング・ノードでは、ライトニングと呼ばれるビットコインのレイヤー2プロトコルに参加することができます。チャンネルを開設し、流動性を管理し、グラフに参加し、ノンカストディ・ライトニング・ウォレットを保有することができます。",
+        "name": "ライトニング・ネットワーク"
+      },
+      "rgb": {
+        "description": "RGBはビットコインとライトニング・ネットワークのためのスケーラブルで機密性の高いスマートコントラクト・システムです。これはビットコインのためのプログラマビリティ層であり、私的所有権と相互所有権、抽象化と関心事の分離の概念を持ち、「ポスト・ブロックチェーン」を表しています。"
+      },
+      "shortDescription": "ビットコイン・ノードを運営し、ネットワークに参加するためのソリューション",
+      "title": "ノード"
+    },
+    "pageDescription": "ビットコインは幅広い業界であり、日々ますます広がりを見せています。それを探求するのを助けるために、私たちは様々なソリューションを説明する多くのチュートリアルを集めました。",
+    "pageSubtitle": "どこまでも続くビットコイン・ラビットホールへようこそ！",
+    "pageTitle": "チュートリアル",
+    "privacy": {
+      "bitcoin": {
+        "description": "ビットコインはデフォルトでは非公開ではなく、意図的に偽名になるように設計されており、すべてのトランザクションは公開され、永遠に保存されます。ある程度の機密性を取り戻すためには、ベスト・ユーザープラクティスとソフトウェアに統合された特定のツールを使用する必要があります。アドレスの再利用の回避からCoinJoin、コインの混合や独自ノードへの接続まで、私たちはあなたのプライバシーへの旅をサポートします。"
+      },
+      "description": "プライバシーは基本的権利です。私たちはプライバシーがデフォルトである世界を望んでいますが、残念ながらそれにはまだほど遠いのが現実です。私たちはベスト・プラクティスを説明し、チュートリアルによってアシストし、あなたのデータに関してより自己主権的な道を歩めるようにサポートします。",
+      "general": {
+        "description": "このような大量監視時代には、日常生活で一定レベルのプライバシーを取り戻すことが不可欠です。各ユーザーがある程度のパラノイアと技術的知識を持っていることを考えると、特定のツールを使い、自分のニーズに合わせることは全く普通のことです。ここでは、VPN、Tor、Tails OS、PGP、暗号化メッセージなど、さまざまな保護ソリューションについて探求します。"
+      },
+      "shortDescription": "バックアップとプライバシー維持のためのツール",
+      "title": "プライバシー"
+    },
+    "wallet": {
+      "description": "ビットコイン・ウォレットはキーチェーンのようなものです。ビットコインを使ったり受け取ったりすることができます。ウォレットには様々な種類があり、使用例、機能、コスト、ユーザーエクスペリエンスがそれぞれ異なっています。各ビットコイナーは、ニーズ、要求レベル、経験に基づいて異なるデバイスを使用しています。",
+      "desktop": {
+        "description": "デスクトップ・ウォレットは、通常、ハードウェア・デバイスとデスクトップ・ウォレット・ソフトウェアを組み合わせて使用するため、より上級者ユーザー向けです。ハードウェア・デバイスを使用するための、よりカスタム性と機能性の高い新しいインターフェイスを持ちます。このようなウォレットは、マルチシグ（マルチ・シグネチャ）オプション、プライバシー機能、継承統合メカニズムなどを提供します。"
+      },
+      "hardware": {
+        "description": "ハードウェア・ウォレットは、通常、長期的なビットコインの貯蓄を保管するために使用されます。インターネットに接続されていない物理的なデバイスで（しばしば「コールド・ウォレット」と呼ばれる）、一般的に非常に安全です。これらのデバイスは、ソフトウェア自体はオープンソースであることが多いにもかかわらず、ハードウェアには50～300ユーロ程度のコストがかかります。これらのデバイスは、時々使用する多額の貯蓄のための銀行口座のようなものだと考えてください。"
+      },
+      "mobile": {
+        "description": "モバイル・ウォレットは、通常、日常的な支出に使用されます。モバイル・ウォレットはライトニング・ネットワークを統合しており、低手数料で即時トランザクションが可能です。モバイル・ウォレットは、通常、インターネットに接続されているため（しばしば「ホット・ウォレット」と呼ばれる）、ハードウェア・ウォレットよりも安全性は高くありません。少量のビットコインを保管するためにのみ使用されるべきで、ポケットの中の日常的な財布として考えてください。"
+      },
+      "shortDescription": "セキュリティ・ソリューションとビットコインの使用",
+      "title": "ウォレット"
+    },
+    "others": {
+      "title": "",
+      "shortDescription": "",
+      "description": "",
+      "DIY": {
+        "description": ""
+      },
+      "OpenSource": {
+        "description": ""
+      },
+      "contribution": {
+        "description": ""
+      },
+      "general": {
+        "description": ""
+      }
+    }
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "p1": "うさぎが穴に落ちました。この予期せぬ冒険のために、現在このページは少し工事中です。ご迷惑をおかけして申し訳ありません。私たちのチームはこのページを完成させるためにフル作業しています。もし手を貸していただけるようでしたら、遠慮なく私たちにご連絡ください：",
+    "p2": "そして、ぜひ私たちのコミュニティへ参加してください！",
+    "pageTitle": "おっと！"
+  },
+  "words": {
+    "about": "概要：",
+    "about-us": "私たちについて",
+    "account": "アカウント",
+    "additionalCriteria": "追加条件",
+    "advanced": "上級者向け",
+    "article": "記事",
+    "articles": "記事一覧",
+    "audioBook": "オーディオ・ブック",
+    "back": "戻る",
+    "beginner": "初心者向け",
+    "bitcoinWhitepaper": "ビットコイン・ホワイトペーパー",
+    "book": "書籍",
+    "books": "書籍",
+    "builders": "開発者",
+    "certificate": "修了証書",
+    "conference": "カンファレンス",
+    "conferences": "カンファレンス",
+    "content": "コンテンツ",
+    "continue": "続ける",
+    "course": "コース",
+    "courses": "コース",
+    "dashboard": "ダッシュボード",
+    "details": "詳細",
+    "didYouKnow": "ご存知でしたか？",
+    "documentaries": "ドキュメンタリー",
+    "donations": "寄付",
+    "economy": "経済",
+    "education": "教育",
+    "email": "Eメール",
+    "events": "Events",
+    "exchanges": "取引所",
+    "followUs": "フォローする",
+    "helpUs": "ご協力ください",
+    "home": "ホーム",
+    "intermediate": "中級者向け",
+    "interview": "インタビュー",
+    "level": {
+      "advanced": "上級者向け",
+      "beginner": "初心者向け",
+      "developer": "開発者",
+      "intermediate": "中級者向け"
+    },
+    "library": "ライブラリ",
+    "lightning": "ライトニング",
+    "lnurlAuth": "LNURL認証",
+    "manifesto": "マニフェスト",
+    "merchandising": "マーチャンダイズ",
+    "merchants": "マーチャント",
+    "members": " メンバー",
+    "mining": "マイニング（採掘）",
+    "more": "もっと見る",
+    "movieDocumentary": "ドキュメンタリー映画",
+    "network": "ネットワーク",
+    "networkMember": "ネットワーク・メンバー",
+    "newsletter": "ニュースレター",
+    "newsletters": "ニュースレター",
+    "node": "ノード",
+    "nodeNetwork": "ノード・ネットワーク",
+    "or": "または",
+    "ourStory": "私たちのストーリー",
+    "podcast": "ポッドキャスト",
+    "podcasts": "ポッドキャスト",
+    "professors": "講師陣",
+    "purchase": "Purchase",
+    "register": "登録する",
+    "relatedResources": "関連するリソース",
+    "resources": "リソース",
+    "resume": "再開する",
+    "review": "レビュー",
+    "rogzy": "ロジー（Rogzy）",
+    "sponsorUs": "スポンサーになる",
+    "sponsoringAndContributors": "スポンサーとコントリビュータ",
+    "supportUs": "サポートする",
+    "teachers": "講師陣",
+    "termsAndConditions": "利用規約",
+    "toolkits": "ツールキット",
+    "tutorial": "チュートリアル",
+    "tutorials": "チュートリアル",
+    "update": "更新する",
+    "video": "動画",
+    "videos": "動画",
+    "wallets": "ウォレット",
+    "date": "",
+    "time": "",
+    "to": "",
+    "billing": "",
+    "download": "",
+    "invoice": "",
+    "on": "",
+    "online": "",
+    "ticket": "",
+    "tickets": ""
+  },
+  "conferences": {
+    "details": {
+      "speaker": "",
+      "findReplay": "",
+      "nextVideo": "",
+      "previousVideo": "",
+      "selectStage": "",
+      "selectVideo": "",
+      "watchReplay": ""
+    },
+    "addConferences": "",
+    "backConferences": "",
+    "conferenceName": "",
+    "conferencesSinceGenesis": "",
+    "description": "",
+    "language": "",
+    "latestConferences": "",
+    "location": "",
+    "noConferences": "",
+    "pageSubtitle": "",
+    "pageTitle": "",
+    "planBConferences": "",
+    "topics": ""
+  },
+  "payment": {
+    "proceedToPayment": "",
+    "terms": "",
+    "feeDistribution": "",
+    "total": ""
+  }
 }

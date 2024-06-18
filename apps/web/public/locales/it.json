@@ -55,7 +55,7 @@
     "hereForYou": "Il BET è qui per te!",
     "pageDescription": "The Sovereign University  supporta gli educatori bitcoin e le comunità locali di tutto il mondo, per aiutare a diffondere l'adozione bitcoin. Verso questo obiettivo, raccogliamo e rendiamo accessibile un grande database, sia contenuti educativi (creati da noi e da altri), così come dati visivi.",
     "pageSubtitle": "BET - Un kit di strumenti open-source Bitcoin per tutti i progetti educativi",
-    "pageTitle": "Bitcoin Educational Toolkit",
+    "pageTitle": "Leave as it is",
     "visualContent": {
       "description": "Questo contenuto è dati visivi grezzi, da utilizzare per le tue creazioni.",
       "title": "Contenuto Visivo"
@@ -110,7 +110,8 @@
       "live": {
         "title": "",
         "stayTuned": ""
-      }
+      },
+      "nextLesson": ""
     },
     "details": {
       "accessible": "Accessibile: Durata",
@@ -207,7 +208,7 @@
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e verifica le spiegazioni",
       "quizz": "Quiz",
       "quizzResults": "Risultati del Quizz",
-      "quizzReview": "Quizz review",
+      "quizzReview": "leave as is",
       "resultCongrats": "Congratulazioni, hai fatto bene!",
       "resultItsOk": "Non arrenderti, farai meglio la prossima volta!",
       "resultNotBad": "Non male!",
@@ -230,7 +231,27 @@
     },
     "account": "",
     "courses": "",
-    "logout": ""
+    "logout": "",
+    "booking": {
+      "accessLive": "",
+      "billingTitle": "",
+      "billingSubtitle": "",
+      "downloadInvoice": "",
+      "downloadTicket": "",
+      "invoiceDate": "",
+      "invoiceTitle": "",
+      "invoiceType": "",
+      "ticketDate": "",
+      "ticketLocation": "",
+      "ticketTitle": "",
+      "ticketType": "",
+      "noInvoice": "",
+      "noTicket": "",
+      "pastTicketTitle": "",
+      "upcomingTicketTitle": "",
+      "upcomingTicketSubtitle": ""
+    },
+    "bookings": ""
   },
   "events": {
     "introduction": {
@@ -349,7 +370,8 @@
       "subtitle2": "Abbiamo bisogno di te!",
       "content1": "A PlanB, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per dare forza a miliardi di persone, stiamo progettando questa piattaforma per essere multilingua ed accessibile a tutti. La piattaforma attualmente supporta 7 lingue ed altre vengono aggiunte ogni mese. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner in tutto il mondo.",
       "content2": "Anche tu puoi avviare una rete locale nel tuo paese!",
-      "link": "Aiutaci a tradurre l'accademia"
+      "link": "Aiutaci a tradurre l'accademia",
+      "availableLanguages": ""
     },
     "patreonSection": {
       "title": "Insieme rendiamo migliore l'istruzione di Bitcoin ! ",
@@ -560,7 +582,19 @@
     "others": {
       "shortDescription": "",
       "title": "",
-      "description": ""
+      "description": "",
+      "DIY": {
+        "description": ""
+      },
+      "OpenSource": {
+        "description": ""
+      },
+      "contribution": {
+        "description": ""
+      },
+      "general": {
+        "description": ""
+      }
     }
   },
   "underConstruction": {
@@ -654,7 +688,14 @@
     "wallets": "Portafogli",
     "date": "",
     "time": "",
-    "to": ""
+    "to": "",
+    "billing": "",
+    "download": "",
+    "invoice": "",
+    "on": "",
+    "online": "",
+    "ticket": "",
+    "tickets": ""
   },
   "conferences": {
     "addConferences": "",

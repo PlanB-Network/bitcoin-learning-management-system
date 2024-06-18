@@ -1,731 +1,730 @@
 {
-    "about": {
-        "activeContributors": "Aktiiviset kehittäjät",
-        "missionTitle": "Tavoitteemme",
-        "missionContent1": "Tavoitteemme on tukea ja kehittää Bitcoin-yhteisöjä, avoimen lähdekoodin kouluttamista ja verkostoitumista. Me keräämme yhteisöjä yhteen, organisoidumme ja yhdessä toteutamme erilaisia resursseja (koulutuksia, kirjoja, julisteita. mainosmateriaaleja, video-materiaaleja ja paljon muuta!) kehittääksemme Bitcoin-teollisuuden kasvua.",
-        "missionContent2": "Me hajautamme tietotaitomme yksinkertaisen ja helppokäyttöisen, monikielisen E-koulutusalustamme, sekä Github-palvelun kautta, pitääksemme kehitystyön yksinkertaisena ja helposti lähestyttävänä. Avustamme paikallistoimintanne kehitystyötä tarjoamalla oikeat työkalut tarvittavien taitojen karttumiseksi.",
-        "commitmentTitle": "Vaatimuksemme",
-        "commitmentContent": "Vaadimme Bitcoin-yhteisöltä sitoutumista seuraaviin seikkoihin: \n • Avoin lähdekoodi (Open Source)\n • Tarjoat korkealaatuista koulutusmateriaalia \n • Käännä materiaaliamme mahdollisimman monelle kielelle- \n • Tue Bitcoin-toimijoita ja alan kehittäjiä heidän Bitcoin-matkallaan",
-        "coreTeamTitle": "Ydintiimi",
-        "coreTeamContent": "PlanB Network-yhteisö koostuu sadoista alustan kehittäjistä, julkaisijoista, opettajista, yhteisöjen edustajista, design-suunnittelijoista ja organisaattoreista. Suuret ja monet kiitokset lukemattomille henkilöille jotka ovat mahdollistaneet PlanB Networkin kehittymisen ja jatkavat työtä sen eteen joka päivä! (\"Kehittäjät\"-Wall of Fame-seinä tulossa pian!)",
-        "coreTeamGiacomoRole": "Johtaja and perustajat",
-        "coreTeamRogzyRole": "Tuotepäällikkö ja perustaja",
-        "coreTeamAsioRole": "Koulutuskoordinaattori",
-        "coreTeamAjelexRole": "Node Koordinaattori/yhteistyöhenkilö",
-        "corporateTitle": "Yhteistyöyritykset ja -tahot",
-        "corporateContent": "PlanB-verkosto on kolmen tahon yhteishanke, joka keskittyy Bitcoinin kehittämiseen. Pyrkiessään laajentamaan Bitcoinin koulutuskerrosta he päättivät tehdä yhteistyötä PlanB-verkoston muodostamiseksi. Onnistuaksemme tavoitteessamme tuoda bitcoin-koulutusta maailmalle, monet muut tahot ovat päättäneet osallistua ja yhdistää voimansa. Suuret kiitokset heille",
-        "coportateContact": "Yhteystiedot:",
-        "storyTitle": "Tarinamme",
-        "storyContent": "PlanB-verkoston tavoite on tukea Bitcoinin koulutusta maailmanlaajuisesti. Se on eri Bitcoin-yritysten yhteistyön tulos, jotka keskittyvät koulutukseen, avoimen lähdekoodin ohjelmistoihin, vertaisverkkoihin ja yhteisöllisyyden tunteeseen. Yhdessä he ovat päättäneet rakentaa PlanB-verkoston ja tarjota Bitcoin-ekosysteemille oikeat työkalut kasvuun. Vuoden 2023 julkaisut on saatavilla täältä.",
-        "title": "Tietoa Plan B Networkistä",
-        "subtitle": "Bitcoinin voima piilee yhteisössä. Yhdistetään voimamme tullaksemme yhdeksi isoksi bitcoin-verkostoksi.",
-        "manifesto": "Uskomme hajautettuun tulevaisuuteen, jonka Bitcoin tarjoaa.\n\nMissiomme on esitellä Bitcoin miljardille ihmiselle vuosikymmenen aikana. Työkalumme ovat koulutus ja informaatio.\n\nTuemme paikallisia Bitcoin-yhteisöjä tarjoamalla avoimen lähdekoodin koulutussisältöä ja tarjoamalla verkoston Bitcoin-mentoreita.\n\nFilosofiamme on innoitettu cyberpunk-manifestista. Aivan kuten he puolustivat yksityisyyttä, me puolustamme koulutusta. Uskomme, että tieto on vapauden ja muutoksen perusta.\n\nOlemme Bitcoin-only.\n\nKannatamme yksilöllistä vastuuta ja omien avainten omistamisen tarjoamaa itsenäisyyttä.\n\nKehotamme tarkistamaan, emme sokeasti luottamaan.\n\nUskomme, että korjaamalla rahan korjaamme maailman.\n\nOlemme desentralisoituneita ja avoimen lähdekoodin kannattajia, välttelemme epäonnistumisia parhaamme mukaan.\n\nKannustamme sisältömme vapaaseen levittämiseen.\n\nTavoittelemme maailmaa, joka toimii alhaalta ylöspäin, jossa yksilö on keskiössä.\n\nYksinkertaistamme, koulutamme, jaamme.\n\nLiity joukkoomme tavoitteessamme muuttaa oranssin pillerin tavoin, Bitcoinilla maailmaa.\n",
-        "description": "Plan B Network auttaa yhteisöjä organisoitumaan ja verkostoitumaan maailmanlaajuisesti, tarkoituksenaan tarjota parempaa koulutusta. Plan B Network kehittää tarvittavia työkaluja koulutuksen edistämiseksi, tarjoten \"Online academy\"-koulutusta, tutorial-portaalia, \"The Bitcoin educational\"-työkalupakkia ja resurssi-portaalia."
+  "about": {
+    "activeContributors": "Aktiiviset kehittäjät",
+    "missionTitle": "Tavoitteemme",
+    "missionContent1": "Tavoitteemme on tukea ja kehittää Bitcoin-yhteisöjä, avoimen lähdekoodin kouluttamista ja verkostoitumista. Me keräämme yhteisöjä yhteen, organisoidumme ja yhdessä toteutamme erilaisia resursseja (koulutuksia, kirjoja, julisteita. mainosmateriaaleja, video-materiaaleja ja paljon muuta!) kehittääksemme Bitcoin-teollisuuden kasvua.",
+    "missionContent2": "Me hajautamme tietotaitomme yksinkertaisen ja helppokäyttöisen, monikielisen E-koulutusalustamme, sekä Github-palvelun kautta, pitääksemme kehitystyön yksinkertaisena ja helposti lähestyttävänä. Avustamme paikallistoimintanne kehitystyötä tarjoamalla oikeat työkalut tarvittavien taitojen karttumiseksi.",
+    "commitmentTitle": "Vaatimuksemme",
+    "commitmentContent": "Vaadimme Bitcoin-yhteisöltä sitoutumista seuraaviin seikkoihin: \n • Avoin lähdekoodi (Open Source)\n • Tarjoat korkealaatuista koulutusmateriaalia \n • Käännä materiaaliamme mahdollisimman monelle kielelle- \n • Tue Bitcoin-toimijoita ja alan kehittäjiä heidän Bitcoin-matkallaan",
+    "coreTeamTitle": "Ydintiimi",
+    "coreTeamContent": "PlanB Network-yhteisö koostuu sadoista alustan kehittäjistä, julkaisijoista, opettajista, yhteisöjen edustajista, design-suunnittelijoista ja organisaattoreista. Suuret ja monet kiitokset lukemattomille henkilöille jotka ovat mahdollistaneet PlanB Networkin kehittymisen ja jatkavat työtä sen eteen joka päivä! (\"Kehittäjät\"-Wall of Fame-seinä tulossa pian!)",
+    "coreTeamGiacomoRole": "Johtaja and perustajat",
+    "coreTeamRogzyRole": "Tuotepäällikkö ja perustaja",
+    "coreTeamAsioRole": "Koulutuskoordinaattori",
+    "coreTeamAjelexRole": "Node Koordinaattori/yhteistyöhenkilö",
+    "corporateTitle": "Yhteistyöyritykset ja -tahot",
+    "corporateContent": "PlanB-verkosto on kolmen tahon yhteishanke, joka keskittyy Bitcoinin kehittämiseen. Pyrkiessään laajentamaan Bitcoinin koulutuskerrosta he päättivät tehdä yhteistyötä PlanB-verkoston muodostamiseksi. Onnistuaksemme tavoitteessamme tuoda bitcoin-koulutusta maailmalle, monet muut tahot ovat päättäneet osallistua ja yhdistää voimansa. Suuret kiitokset heille",
+    "coportateContact": "Yhteystiedot:",
+    "storyTitle": "Tarinamme",
+    "storyContent": "PlanB-verkoston tavoite on tukea Bitcoinin koulutusta maailmanlaajuisesti. Se on eri Bitcoin-yritysten yhteistyön tulos, jotka keskittyvät koulutukseen, avoimen lähdekoodin ohjelmistoihin, vertaisverkkoihin ja yhteisöllisyyden tunteeseen. Yhdessä he ovat päättäneet rakentaa PlanB-verkoston ja tarjota Bitcoin-ekosysteemille oikeat työkalut kasvuun. Vuoden 2023 julkaisut on saatavilla täältä.",
+    "title": "Tietoa Plan B Networkistä",
+    "subtitle": "Bitcoinin voima piilee yhteisössä. Yhdistetään voimamme tullaksemme yhdeksi isoksi bitcoin-verkostoksi.",
+    "manifesto": "Uskomme hajautettuun tulevaisuuteen, jonka Bitcoin tarjoaa.\n\nMissiomme on esitellä Bitcoin miljardille ihmiselle vuosikymmenen aikana. Työkalumme ovat koulutus ja informaatio.\n\nTuemme paikallisia Bitcoin-yhteisöjä tarjoamalla avoimen lähdekoodin koulutussisältöä ja tarjoamalla verkoston Bitcoin-mentoreita.\n\nFilosofiamme on innoitettu cyberpunk-manifestista. Aivan kuten he puolustivat yksityisyyttä, me puolustamme koulutusta. Uskomme, että tieto on vapauden ja muutoksen perusta.\n\nOlemme Bitcoin-only.\n\nKannatamme yksilöllistä vastuuta ja omien avainten omistamisen tarjoamaa itsenäisyyttä.\n\nKehotamme tarkistamaan, emme sokeasti luottamaan.\n\nUskomme, että korjaamalla rahan korjaamme maailman.\n\nOlemme desentralisoituneita ja avoimen lähdekoodin kannattajia, välttelemme epäonnistumisia parhaamme mukaan.\n\nKannustamme sisältömme vapaaseen levittämiseen.\n\nTavoittelemme maailmaa, joka toimii alhaalta ylöspäin, jossa yksilö on keskiössä.\n\nYksinkertaistamme, koulutamme, jaamme.\n\nLiity joukkoomme tavoitteessamme muuttaa oranssin pillerin tavoin, Bitcoinilla maailmaa.\n",
+    "description": "Plan B Network auttaa yhteisöjä organisoitumaan ja verkostoitumaan maailmanlaajuisesti, tarkoituksenaan tarjota parempaa koulutusta. Plan B Network kehittää tarvittavia työkaluja koulutuksen edistämiseksi, tarjoten \"Online academy\"-koulutusta, tutorial-portaalia, \"The Bitcoin educational\"-työkalupakkia ja resurssi-portaalia."
+  },
+  "auth": {
+    "accountCreated": "Tilisi on luotu, {{userName}}!",
+    "alreadyHaveAccount": "Oletko jo rekisteröitynyt?",
+    "canSaveProgress": "Nyt voit tallentaa ja seurata edistymistäsi Bitcoin-opistossamme",
+    "connectWithLn": "Yhdistä LN-verkkoon",
+    "createAccount": "Rekisteröi",
+    "createOne": "Rekisteröidy tästä!",
+    "emailAddress": "Sähköpostiosoite",
+    "errors": {
+      "usernameRegex": "Käyttäjänimi voi sisältää vain kirjaimia, numeroita, alaviivoja \"_\", ja viivoja \"-\"",
+      "usernameRequired": "Käyttäjänimi vaaditaan",
+      "usernameTooShort": "Käyttäjänimen pitää sisältää vähintään 5 merkkiä"
     },
-    "auth": {
-        "accountCreated": "Tilisi on luotu, {{userName}}!",
-        "alreadyHaveAccount": "Oletko jo rekisteröitynyt?",
-        "canSaveProgress": "Nyt voit tallentaa ja seurata edistymistäsi Bitcoin-opistossamme",
-        "connectWithLn": "Yhdistä LN-verkkoon",
-        "createAccount": "Rekisteröi",
-        "createOne": "Rekisteröidy tästä!",
-        "emailAddress": "Sähköpostiosoite",
-        "errors": {
-            "usernameRegex": "Käyttäjänimi voi sisältää vain kirjaimia, numeroita, alaviivoja \"_\", ja viivoja \"-\"",
-            "usernameRequired": "Käyttäjänimi vaaditaan",
-            "usernameTooShort": "Käyttäjänimen pitää sisältää vähintään 5 merkkiä"
-        },
-        "forgottenPassword": "Unohditko salasanasi?",
-        "headerAccountCreated": "Tili luotu",
-        "lnurlAuthDescription": "Skannaa QR-koodi Lightning-lompakollasi kirjautuaksesi sisään!",
-        "noAccountNeeded": "Et tarvitse tiliä aloittaaksesi oppimisen opistossamme!",
-        "noAccountYet": "Eikö sinulla ole tiliä?",
-        "passwordReinit": "Salasanan palautus",
-        "passwordRequired": "Salasana vaaditaan",
-        "passwordsDontMatch": "Salasanat ei täsmää",
-        "sendLink": "lähetä linkki",
-        "signIn": "Kirjaudu sisään"
+    "forgottenPassword": "Unohditko salasanasi?",
+    "headerAccountCreated": "Tili luotu",
+    "lnurlAuthDescription": "Skannaa QR-koodi Lightning-lompakollasi kirjautuaksesi sisään!",
+    "noAccountNeeded": "Et tarvitse tiliä aloittaaksesi oppimisen opistossamme!",
+    "noAccountYet": "Eikö sinulla ole tiliä?",
+    "passwordReinit": "Salasanan palautus",
+    "passwordRequired": "Salasana vaaditaan",
+    "passwordsDontMatch": "Salasanat ei täsmää",
+    "sendLink": "lähetä linkki",
+    "signIn": "Kirjaudu sisään"
+  },
+  "bet": {
+    "contribute": "Tämä työkalupakki on avoinna muokkauksille ja lisäyksille. Se käyttää Figmaa, joten kuka tahansa voi lisätä, muokata ja kääntää sitä. Jos haluat osallistua, lisätä kategorian tai keskustella, älä epäröi liittyä Discord-kanavallemme.",
+    "educationalContent": {
+      "description": "Tämä sisältö on tarkoitettu käytettäväksi opetuskäyttöön ja -tapahtumiin.",
+      "title": "Koulutuksellinen sisältö"
     },
-    "bet": {
-        "contribute": "Tämä työkalupakki on avoinna muokkauksille ja lisäyksille. Se käyttää Figmaa, joten kuka tahansa voi lisätä, muokata ja kääntää sitä. Jos haluat osallistua, lisätä kategorian tai keskustella, älä epäröi liittyä Discord-kanavallemme.",
-        "educationalContent": {
-            "description": "Tämä sisältö on tarkoitettu käytettäväksi opetuskäyttöön ja -tapahtumiin.",
-            "title": "Koulutuksellinen sisältö"
-        },
-        "hereForYou": "BET on täällä apunasi!",
-        "pageDescription": "Opistomme tukee Bitcoin-kouluttajia ja paikallisia yhteisöjä ympäri maailmaa edistääkseen Bitcoinin omaksumista. Tätä tavoitetta kohti keräämme ja teemme saataville laajan tietokannan sekä koulutussisällöstä (sekä meidän että muiden luomasta) että visuaalisesta datasta.",
-        "pageSubtitle": "The BET - Bitcoinin avoimen lähdekoodin työkalupakki kaikkiin koulutusprojekteihin",
-        "pageTitle": "Bitcoin Educational Työkalut",
-        "visualContent": {
-            "description": "Tämä sisältö on raakaa visuaalista dataa, jota voit käyttää omiin luomuksiisi.",
-            "title": "Visuaalinen sisältö"
-        }
+    "hereForYou": "BET on täällä apunasi!",
+    "pageDescription": "Opistomme tukee Bitcoin-kouluttajia ja paikallisia yhteisöjä ympäri maailmaa edistääkseen Bitcoinin omaksumista. Tätä tavoitetta kohti keräämme ja teemme saataville laajan tietokannan sekä koulutussisällöstä (sekä meidän että muiden luomasta) että visuaalisesta datasta.",
+    "pageSubtitle": "The BET - Bitcoinin avoimen lähdekoodin työkalupakki kaikkiin koulutusprojekteihin",
+    "pageTitle": "Bitcoin Educational Työkalut",
+    "visualContent": {
+      "description": "Tämä sisältö on raakaa visuaalista dataa, jota voit käyttää omiin luomuksiisi.",
+      "title": "Visuaalinen sisältö"
+    }
+  },
+  "book": {
+    "abstract": "Abstrakti",
+    "bookSummary": {
+      "modifyTooltip": "Kirjoita tai muokkaa",
+      "noSummary": "Yhtään tiivistelmää ei ole vielä kirjoitettu. Jos olet lukenut kirjan ja haluat jakaa tiivistelmän, älä epäröi kirjoittaa sitä Githubiin. Se auttaisi paljon yhteisöä, parantaisi opistoa ja voisit jopa saada joitain satosheja siitä!",
+      "notice": "Tämä yhteenveto on linkitetty GitHubiin, jotta voit tehdä siihen muutoksia tai lisäyksiä",
+      "title": "Kirjan yhteenveto"
     },
-    "book": {
-        "abstract": "Abstrakti",
-        "bookSummary": {
-            "modifyTooltip": "Kirjoita tai muokkaa",
-            "noSummary": "Yhtään tiivistelmää ei ole vielä kirjoitettu. Jos olet lukenut kirjan ja haluat jakaa tiivistelmän, älä epäröi kirjoittaa sitä Githubiin. Se auttaisi paljon yhteisöä, parantaisi opistoa ja voisit jopa saada joitain satosheja siitä!",
-            "notice": "Tämä yhteenveto on linkitetty GitHubiin, jotta voit tehdä siihen muutoksia tai lisäyksiä",
-            "title": "Kirjan yhteenveto"
-        },
-        "buttonBuy": "Osta tästä",
-        "buttonPdf": "PDF / E-book",
-        "offeredBy": "Tämän teille tarjoaa arvokas kehittäjämme",
-        "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille. Kiitos kehittämisestä, arvioinnista ja jakamisesta.",
-        "pageTitle": "Bitcoin-kirjasto",
-        "topicsAddressed": "Aihe-alueittain: "
+    "buttonBuy": "Osta tästä",
+    "buttonPdf": "PDF / E-book",
+    "offeredBy": "Tämän teille tarjoaa arvokas kehittäjämme",
+    "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille. Kiitos kehittämisestä, arvioinnista ja jakamisesta.",
+    "pageTitle": "Bitcoin-kirjasto",
+    "topicsAddressed": "Aihe-alueittain: "
+  },
+  "builders": {
+    "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille.",
+    "pageTitle": "Kehittäjä-portaali"
+  },
+  "courses": {
+    "categories": {
+      "btc": "Bitcoin",
+      "crypto": "Kryptografia",
+      "cuboplus": "Bitcoin",
+      "econ": "Itävaltalainen taloustiede",
+      "fin": "Finance",
+      "ln": "Lightning-Verkosto",
+      "min": "Louhinta",
+      "secu": "Yksityisuus ja turvallisuus"
     },
-    "builders": {
-        "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille.",
-        "pageTitle": "Kehittäjä-portaali"
+    "chapter": {
+      "count": "Osa {{count}}",
+      "finishCourse": "Viimeistele luento",
+      "next": "Suoritettu, siirrytään seuraavaan osioon",
+      "thanksTip": "Tahdotko kiittää? Tippaa tai lahjoita.",
+      "live": {
+        "stayTuned": "Live-lähetys alkaa puoli tuntia (30min) ennen luennon alkua. Pysy kuulolla.",
+        "title": "Live-video"
+      },
+      "detail": {
+        "title": "Kategorian tiedot",
+        "p1heading": "Aiotko osallistua live-luennolle?",
+        "p1content": "Muista varata istumapaikkasi",
+        "p2heading": "Etkö pääse paikalle?",
+        "p2content": "Ei hätää! Tämä luento live-streamataan tälle sivulle ja tallenne löytyy sivustoltamme myöhemmin.",
+        "bookSeat": "Varaa istumapaikkasi",
+        "classIsFull": "Luento on täynnä",
+        "cancelBooking": "Peru varauksesi",
+        "ticketDownload": "Lataa lippusi tästä"
+      },
+      "nextLesson": "Seuraava luento alkaa"
     },
-    "courses": {
-        "categories": {
-            "btc": "Bitcoin",
-            "crypto": "Kryptografia",
-            "cuboplus": "Bitcoin",
-            "econ": "Itävaltalainen taloustiede",
-            "fin": "Finance",
-            "ln": "Lightning-Verkosto",
-            "min": "Louhinta",
-            "secu": "Yksityisuus ja turvallisuus"
-        },
-        "chapter": {
-            "count": "Osa {{count}}",
-            "finishCourse": "Viimeistele luento",
-            "next": "Suoritettu, siirrytään seuraavaan osioon",
-            "thanksTip": "Tahdotko kiittää? Tippaa tai lahjoita.",
-            "live": {
-                "stayTuned": "Live-lähetys alkaa puoli tuntia (30min) ennen luennon alkua. Pysy kuulolla.",
-                "title": "Live-video"
-            },
-            "detail": {
-                "title": "Kategorian tiedot",
-                "p1heading": "Aiotko osallistua live-luennolle?",
-                "p1content": "Muista varata istumapaikkasi",
-                "p2heading": "Etkö pääse paikalle?",
-                "p2content": "Ei hätää! Tämä luento live-streamataan tälle sivulle ja tallenne löytyy sivustoltamme myöhemmin.",
-                "bookSeat": "Varaa istumapaikkasi",
-                "classIsFull": "Luento on täynnä",
-                "cancelBooking": "Peru varauksesi",
-                "ticketDownload": "Lataa lippusi tästä"
-            },
-            "nextLesson": "Seuraava luento alkaa"
-        },
-        "details": {
-            "accessible": "Pääsy: Elinikäinen",
-            "buyCourse": "Osta kurssitus",
-            "courseId": "Kurssin ID: {{courseId}}",
-            "coursePayment": "Kurssimaksu",
-            "curriculum": "Opinto-ohjelma",
-            "date": "Date: {{startDate}} to {{endDate}}",
-            "dates_to": "{{startDate}} to {{endDate}}",
-            "description": "Description",
-            "duration": "Kesto: {{hours}} tuntia",
-            "goal": "GOAL: ",
-            "level": "Level: $t(words.level.{{level}})",
-            "mobile": {
-                "chapters": "{{chapters}} osainen",
-                "hours": "{{hours}} tuntia"
-            },
-            "numberOfChapters": "Osien lkm: {{number}}",
-            "objectives": "Tavoitteet",
-            "objectivesTitle": "Tulet oppimaan:",
-            "price": "Hinta: {{price}} sats",
-            "professor": "Professori",
-            "startCourse": "Aloita kurssi",
-            "taughtBy": "Tämän kurssin opettajana toimii:",
-            "teacher": "Opettaja: {{teacher}}",
-            "teachers": "Opettajat: {{teachers}}",
-            "teacherWord": "Opettajan sana",
-            "total": "Total",
-            "payment_successful": "Maksu onnistui!",
-            "access_invoice": "Laskut löydät hallintopaneelisi (Dashboard) kautta",
-            "payment_details": "Maksun tiedot",
-            "amount": "Määrä",
-            "invoiceId": "Invoice ID",
-            "terms1": "See our",
-            "terms2": "general terms",
-            "terms3": "and conditions for refund details",
-            "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
-        },
-        "explorer": {
-            "footerTitle": "Professorimme ovat täällä Sinua varten!",
-            "footerp1": "Täällä meidän opistossamme professoreillamme on täysi autonomia sisältöönsä ja niihin työkaluihin, joita he haluavat sinun tutkivan, kunhan he noudattavat eettistä säännöstöä. He ovat intohimoisia Bitcoinin kannattajia erilaisista taustoista.",
-            "footerp2": "Jos haluat parantaa jotain kurssiamme tai tarjota oman kurssin, voit tehdä sen helposti GitHubin kautta. Voit tukea professoria joko arvioimalla kurssia, tai suoraan tippaamalla professoria. Liity opistomme jäseneksi ja ryhdy tukemaan PlanB Networkin toimintaa.",
-            "moreToCome": ".... ja paljon lisää luvassa!",
-            "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-            "pageSubtitle": "Massa-adaptointi ja -käyttöönotto keskitetyn, avoimen lähdekoodin avulla",
-            "pageTitle": "Courses",
-            "s2p1": "Jos olet aloittanut Bitcoinin \"kaninkoloon\" tutustumisen, tiedät varmasti, että se on loputon matka monine polkuineen. Täällä opistossamme ymmärrämme tämän ja olemme suunnitelleet koulutussisältömme olemaan ei-lineaarisia, autonomisia ja niin laajoja kuin mahdollista.",
-            "s2p2": "Voit valita oman polkusi ja kulkea sitä pitkin, sen varrella kerryttäen tietotaitoasi omassa tahdissasi.",
-            "s2p3": "Kaikki kurssituksemme ovat 100% ilmaisia, joten mikään ei voi estää Sinua!",
-            "s2t1": "Bitcoin-kouluttautuminen on matka, ei määränpää",
-            "s3PickLevel": "Valitse tasot :",
-            "s3PickTopic": "Valitse aiheet :",
-            "s3t1": "Rakenna oma polkusi kaninkolon syövereihin"
-        },
-        "footer": {
-            "": ""
-        },
-        "part": {
-            "count": "Jakso {{count}}"
-        },
-        "payment": {
-            "access_invoice": "Löydät laskusi hallintapaneelistasi (Dashboard)",
-            "accessibility": "Helppokäyttöisyys",
-            "accessibility_forever": "Ikuisesti",
-            "amount": "Määrä",
-            "date": "Date",
-            "dates_to": "{{startDate}} to {{endDate}}",
-            "downloadCurriculum": "Lataa koulutus-ohjelma",
-            "duration": "Pituus",
-            "invoiceId": "Invoice ID",
-            "numberOfChapters": "Osien määrä",
-            "payment_details": "Maksun tiedot",
-            "payment_successful": "Maksu onnistui!",
-            "teacher": "Opettaja",
-            "teachers": "Opettajat",
-            "terms1": "See our",
-            "terms2": "general terms",
-            "terms3": "and conditions for refund details",
-            "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
-            "total": "Total",
-            "back_course": "Takaisin kurssille",
-            "callout": "Olet ostamassa tätä koulutus-pakettia.",
-            "description": "Tämä ostos antaa sinulle pääsyn online koulutus-materiaaleihin alustallamme, sekä luennoillemme, joihin voit varata istumapaikan portaalimme kautta. Jokainen koulutuksen luento järjestetään ennalta määrätyissä ajankohdissa ja paikoissa ennen niiden julkaisua online-alustallamme.",
-            "book_description": "Tarkista seuraavat tilauksenne tiedot.\nKun tilauksenne on käsitelty, lähetämme teille vahvistusviestissä pääsylipun ja QR-koodin. Tarvitsette niitä ilmoittautuessanne tapahtuman sisääntulo-portilla.",
-            "qr_unified": "Tämä QR-koodi on yhdistetty, joten se hyväksyy sekä Lightning- että on-chain-maksut.",
-            "time": "Aika"
-        },
-        "preview": {
-            "by": "Julkaisijana {{professor}}",
-            "letsgo": "Aloitetaan"
-        },
-        "proceedToPayment": "Proceed to payment",
-        "quizz": {
-            "clickOnPie": "Klikkaa piirakka-kaaviota, josta näet virheesi selityksineen",
-            "quizz": "Koe",
-            "quizzResults": "Kokeen tulokset",
-            "quizzReview": "Kokeen esikatselu",
-            "resultCongrats": "Onnittelut, pärjäsit hienosti!",
-            "resultItsOk": "Älä anna periksi, ensi kerralla paremmin!",
-            "resultNotBad": "Ei huono!",
-            "resultPerfect": "Aivan täydellisesti! Onnittelut!"
-        },
-        "unreleased": {
-            "colcardAndSparrow": "Coldcard & Sparrow",
-            "financeIntroduction": "Introduction à la finance",
-            "financialCrisis": "Merkittävien talouskriisien analyysi",
-            "hyperinflation": "Hyperinflaatioiden tutkimus",
-            "theoreticalLightning": "Edistynyt teoreettinen kurssi Lightning-verkostosta"
-        }
+    "details": {
+      "accessible": "Pääsy: Elinikäinen",
+      "buyCourse": "Osta kurssitus",
+      "courseId": "Kurssin ID: {{courseId}}",
+      "coursePayment": "Kurssimaksu",
+      "curriculum": "Opinto-ohjelma",
+      "date": "Date: {{startDate}} to {{endDate}}",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "description": "Description",
+      "duration": "Kesto: {{hours}} tuntia",
+      "goal": "GOAL: ",
+      "level": "Level: $t(words.level.{{level}})",
+      "mobile": {
+        "chapters": "{{chapters}} osainen",
+        "hours": "{{hours}} tuntia"
+      },
+      "numberOfChapters": "Osien lkm: {{number}}",
+      "objectives": "Tavoitteet",
+      "objectivesTitle": "Tulet oppimaan:",
+      "price": "Hinta: {{price}} sats",
+      "professor": "Professori",
+      "startCourse": "Aloita kurssi",
+      "taughtBy": "Tämän kurssin opettajana toimii:",
+      "teacher": "Opettaja: {{teacher}}",
+      "teachers": "Opettajat: {{teachers}}",
+      "teacherWord": "Opettajan sana",
+      "total": "Total",
+      "payment_successful": "Maksu onnistui!",
+      "access_invoice": "Laskut löydät hallintopaneelisi (Dashboard) kautta",
+      "payment_details": "Maksun tiedot",
+      "amount": "Määrä",
+      "invoiceId": "Invoice ID",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
     },
-    "dashboard": {
-        "myCourses": {
-            "resumeLesson": "Jatka luentoa",
-            "completed": "Suoritetut luennot",
-            "details": "Tiedot",
-            "inprogress": "Keskeneräiset luennot"
-        },
-        "account": "Tili",
-        "courses": "Luennot",
-        "logout": "Kirjaudu ulos",
-        "booking": {
-            "ticketTitle": "Aihe",
-            "upcomingTicketSubtitle": "Lataa pääsylippusi tästä ja osallistu seuraavaan tapahtumaasi. Muista ottaa mukaan tapahtumaan pääsylippusi, päästäksesi tapahtuma-alueelle.",
-            "accessLive": "Siirry liveen",
-            "billingTitle": "Laskutushistoria",
-            "billingSubtitle": "Lataa tilaustesi maksutapahtumat täältä.",
-            "downloadInvoice": "Lataa Lasku",
-            "downloadTicket": "Lataa pääsylippu",
-            "invoiceDate": "Päivämäärä",
-            "invoiceTitle": "Aihe",
-            "invoiceType": "Tyyppi",
-            "ticketDate": "Päivämäärä",
-            "ticketLocation": "Sijainti",
-            "ticketType": "Tyyppi",
-            "noInvoice": "Ei maksutapahtumia.",
-            "noTicket": "Ei pääsylippuja.",
-            "upcomingTicketTitle": "Tulevat",
-            "pastTicketTitle": "Aiemmat"
-        },
-        "bookings": "Tilaukset"
+    "explorer": {
+      "footerTitle": "Professorimme ovat täällä Sinua varten!",
+      "footerp1": "Täällä meidän opistossamme professoreillamme on täysi autonomia sisältöönsä ja niihin työkaluihin, joita he haluavat sinun tutkivan, kunhan he noudattavat eettistä säännöstöä. He ovat intohimoisia Bitcoinin kannattajia erilaisista taustoista.",
+      "footerp2": "Jos haluat parantaa jotain kurssiamme tai tarjota oman kurssin, voit tehdä sen helposti GitHubin kautta. Voit tukea professoria joko arvioimalla kurssia, tai suoraan tippaamalla professoria. Liity opistomme jäseneksi ja ryhdy tukemaan PlanB Networkin toimintaa.",
+      "moreToCome": ".... ja paljon lisää luvassa!",
+      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
+      "pageSubtitle": "Massa-adaptointi ja -käyttöönotto keskitetyn, avoimen lähdekoodin avulla",
+      "pageTitle": "Courses",
+      "s2p1": "Jos olet aloittanut Bitcoinin \"kaninkoloon\" tutustumisen, tiedät varmasti, että se on loputon matka monine polkuineen. Täällä opistossamme ymmärrämme tämän ja olemme suunnitelleet koulutussisältömme olemaan ei-lineaarisia, autonomisia ja niin laajoja kuin mahdollista.",
+      "s2p2": "Voit valita oman polkusi ja kulkea sitä pitkin, sen varrella kerryttäen tietotaitoasi omassa tahdissasi.",
+      "s2p3": "Kaikki kurssituksemme ovat 100% ilmaisia, joten mikään ei voi estää Sinua!",
+      "s2t1": "Bitcoin-kouluttautuminen on matka, ei määränpää",
+      "s3PickLevel": "Valitse tasot :",
+      "s3PickTopic": "Valitse aiheet :",
+      "s3t1": "Rakenna oma polkusi kaninkolon syövereihin"
     },
-    "events": {
-        "introduction": {
-            "introductionh1": "Welcome to Plan B Network events",
-            "introductionp1": "Bottom up adoption enhanced by a strong network",
-            "introductionp2": "Looking for a Bitcoin event to go to ?",
-            "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
-        },
-        "main": {
-            "upcomingEvents": "Tulevat tapahtumat",
-            "currentEvents": "Käynnissä olevat tapahtumat"
-        },
-        "missed": {
-            "missedh1": "Tallenteet tapahtumista",
-            "missedp1": "Jäikö tapahtuma väliin?",
-            "missedp2": "Täältä löydät Network-alustamme tallenteet menneistä tapahtumista."
-        },
-        "card": {
-            "free": "Ilmainen",
-            "online": "online",
-            "limited": "Rajoitettu",
-            "unlimited": "rajaton",
-            "people": "Osallistujat",
-            "watchLive": "Katso live",
-            "watchReplay": "Katso uudelleen",
-            "bookLive": "Varaa live",
-            "bookSeat": "Varaa istumapaikkasi",
-            "visitWebsite": "Vieraile sivustolla",
-            "buyReplay": "Osta tallenne",
-            "eventFull": "Tapahtuma loppuunmyyty",
-            "seatBooked": "Istumapaikka varattu"
-        },
-        "newEvent": {
-            "button": "Lisää tapahtuma",
-            "description": "Tottakai! Kaikki Bitcoin-tapahtumat ovat tervetulleita nostamaan näkyvyyttään täällä ja uusien tapahtumien järjestäminen suorastaan toivottua :)",
-            "subtitle": "Miljardin ihmisen saaminen mukaan Bitcoinin käyttäjiksi ei ole helppoa",
-            "title": "Haluatko lisätä tapahtuman?"
-        },
-        "pageDescription": "Haluatko keskustella Bitcoinista reaaliajassa? Täältä löydät kaikki Plan B Network -yhteisöjen tukemat tapahtumat. Olitpa sitten kiinnostunut luennon kuuntelemisesta, Bitcoinin keskustelusta juoman äärellä tai kokeen suorittamisesta tietosi arvioimiseksi, löydät sopivan tapahtuman täältä Plan B Networkin kautta.",
-        "pageSubtitle": "Alhaalta ylöspäin tapahtuva omaksuminen tehostettuna vahvalla verkostolla",
-        "pageTitle": "Etsitkö Bitcoin-tapahtumaa mihin osallistua?",
-        "payment": {
-            "access_invoice": "Maksutapahtumat löydät hallintapaneelisi (dashboard) kautta.",
-            "access_online_successful": "Kun tapahtuma alkaa, kirjaudu alustalle, ja saat pääsyn live-lähetykseen tapahtumasivun kautta.",
-            "access_physical_successful": "Voit ladata lippusi tästä tai ladata sen myöhemmin hallintapaneelissasi.",
-            "access_type": "Lipun tyyppi",
-            "address": "Osoite",
-            "additional_free_description": "Tapahtuma on ilmainen, eikä paikanvarauksesta koidu kustannuksia. Kuitenkin, varmistuthan osallistumisestasi tapahtumaan! Luennoilla on rajattu määrä istumapaikkoja.",
-            "amount": "Määrä",
-            "back_events": "Takaisin tapahtumat-sivulle",
-            "book_seat": "Varaa istumapaikka",
-            "callout_online": "Olet varaamassa online-pääsyä tapahtumaan.",
-            "callout_physical": "Olet varaamassa fyysistä istumapaikkaa tapahtuman luennolle.",
-            "callout_replay": "Olet varaamassa pääsyä tapahtuman tallenteeseen.",
-            "date": "Päivämäärä",
-            "dates_to": "{{startDate}}{{endDate}}",
-            "description_online": "Tarkista tapahtuman annettu päivämäärä ja aika. \nKun aika koittaa, kirjaudu alustalle ja pääset live-lähetykseen tapahtumasivun kautta.",
-            "description_physical": "Tarkista annetut tapahtumapaikan tiedot. \nKun varaus on käsitelty, toimitamme sinulle lipun, joka tulee esittää tapahtumassa. Tämä lippu antaa sinulle myös pääsyn live-lähetykseen ja tallenteeseen, jos sellainen on saatavilla.",
-            "description_free_physical": "Tarkista varauksen tiedot. \nKun varaus on käsitelty, toimitamme sinulle vahvistusviestissä pääsylipun ja QR-koodin, jotka tulee esittää tapahtumassa.",
-            "download_ticket": "Lataa pääsylippusi",
-            "enjoy": "Toivomme että tulet nauttimaan siitä :)",
-            "language": "Puhuttu kieli",
-            "limitation": "Rajoitukset",
-            "max_capacity": "Maksimi määrä",
-            "payment_details": "Maksun tiedot",
-            "payment_successful": "Varaus onnistui!",
-            "time": "Aika"
-        }
+    "footer": {
+      "": ""
     },
-    "home": {
-        "header": {
-            "content": "PlanB-alustan tavoitteena on tarjota parhaat työkalut ja koulutussisällöt ympäri maailmaa auttaakseen ihmisiä palauttamaan itsemääräämisoikeutensa. Yksilöistä yhteisöihin, olemme täällä auttamassa sinua Bitcoin-matkallasi.",
-            "forEducators": "Kouluttajille ja kehittäjille",
-            "globalNetwork": "Global Bitcoin Network",
-            "welcome": "Tervetuloa PlanB Network:iin",
-            "link": "Ole osa verkostoa",
-            "startLink": "Aloita oppiminen"
-        },
-        "numbersSection": {
-            "networkMember": "Betwork Jäsen"
-        },
-        "sectionEducation": {
-            "title": "Aloittelijasta asiantuntijaan",
-            "subtitle": "Opiskele Bitcoinista akademiassa",
-            "content1": "Bitcoin ei ole vain teknologia ja rahamuoto, vaan myös vallankumouksellinen tapa lähestyä elämää. Tätä heijastaen kurssimme kattavat laajan kirjon aloja, voimaannuttaen jokaisen yksilön loistamaan omilla kiinnostuksen alueillaan ja syventämään ymmärrystään. Ensimmäisestä Bitcoin-kurssistasi syvälliseen protokollan erityispiirteisiin sukeltamiseen, kurssimme auttavat sinua navigoimaan turvallisesti syvemmälle aiheeseen. Ei ole syytä epäröidä. Tieto odottaa sinua.",
-            "link": "Tutustu kouluumme"
-        },
-        "sectionNetwork": {
-            "title": "Pääsy verkostoon",
-            "subtitle": "Maailmanlaajuiset Bitcoin-opistot",
-            "content1": "Verkostoidu Bitcoin-harrastajien kanssa ympäri maailmaa, jotka jakavat yhteisen intohimon. Pienistä säännöllisesti kokoontuvista yhteisöistä BTC-koulutuskeskuksiin, verkostokarttamme auttaa sinua löytämään inspiraatiota oppimiseen ja rakentamiseen. Laaja valikoima palveluja on tarjolla harrastajille, kuten inkubaatiokeskus, fyysiset työpajat, seminaarit, BTC-retriitit ja paljon muuta. Verkosto on avoin kaikille, joten tule tervehtimään paikallista BTC-yhteisöäsi!",
-            "link": "Ole osa verkostoa"
-        },
-        "tutorialSection": {
-            "title": "Bitcoin-kouluttautumisen teko helpoksi on tavoitteemme.",
-            "subtitle1": "Autamme sinua hallitsemaan teknologian lukuisilla syventävillä tutorial-materiaaleilla!",
-            "content1": "Bitcoin kehittyy jatkuvasti, ja uusia toimijoita, ratkaisuja, protokollia ja teknologisia läpimurtoja tulee ja menee. On usein vaikeaa ylläpitää yhtenäistä, tarkkaa tietokantaa hyvistä ja ajantasaisista oppaista. Täällä PlanB:llä olemme saavuttaneet juuri tämän. Aloittelijoista edistyneisiin käyttäjiin, voit selata satoja oppaita ja tutustua alaan tarpeidesi mukaan.",
-            "link": "Katso kaikki oppaat"
-        },
-        "aboutUsSection": {
-            "title": "Keitä me olemme?",
-            "subtitle": "Hieman meistä",
-            "content": "PlanB-verkosto on yhteisö, joka tukee Bitcoin-koulutusta maailmanlaajuisesti. Se on erilaisten intohimoisten Bitcoin-yritysten yhteistyö, jotka keskittyvät koulutukseen, avoimeen lähdekoodiin, vertaisverkkoihin ja yhteisöllisyyteen. Yhdessä he ovat päättäneet rakentaa PlanB-verkoston ja tarjota Bitcoin-ekosysteemille oikeat työkalut kasvua varten.",
-            "bitcoinFocusTitle": "Bitcoin-aate",
-            "bitcoinFocusContent": "Bitcoin-vallankumous kokonaisuudessaan, sen peruskerroksesta erilaisiin p2p-ratkaisuihin sen ympärillä",
-            "openSourceTitle": "Avoin lähdekoodi",
-            "openSourceContent": "Tavoitteenamme on edistää tiedon vapaata kulkua ja auttaa rakentamaan enemmän avoimen lähdekoodin ratkaisuja",
-            "communityTitle": "Yhteisö",
-            "communityContent": "Olemme ensisijaisesti yhteisö, joka koostuu harrastajista, jotka auttavat toisiaan heidän Bitcoin-matkallaan",
-            "privacyTitle": "Yksityisyys",
-            "privacyContent": "Pidämme yksityisyyttä yhtenä perustavanlaatuisimmista ihmisoikeuksista ja välttämättömänä edistykselle"
-        },
-        "languageSection": {
-            "title": "Täällä ei kielimuuria ole.",
-            "subtitle": "Kaikki on käännetty paikallisille kielille",
-            "subtitle2": "Tarvitsemme Sinua!",
-            "content1": "Me PlanB:llä uskomme, että Bitcoin on kansainvälinen vallankumous, joka koskee kaikkia. Voimaannuttaaksemme mahdollisesti miljardeja ihmisiä suunnittelimme tämän alustan monikieliseksi ja kaikille saavutettavaksi. Alusta tukee tällä hetkellä seitsemää kieltä, ja lisää lisätään joka kuukausi. Tämän saavuttamiseksi käytämme yhdistelmää tekoälyä ja Bitcoin-harrastajien intohimoa ympäri maailmaa.",
-            "content2": "Sinäkin voit aloittaa oman paikallisen verkostosi käynnistämisen omassa maassasi!",
-            "link": "Auta meitä kääntämään materiaaleja",
-            "availableLanguages": "Saatavilla olevat kielet"
-        },
-        "patreonSection": {
-            "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi! ",
-            "subtitle": "Plan-B on 100% avointa lähdekoodia, kiitos arvokkaiden ja anteliaiden tukijoidemme",
-            "content": "PlanB-verkosto on ylpeä yhteistyöstään monien Bitcoin-yritysten kanssa ympäri maailmaa, tarjotessaan yhdessä parhaat mahdolliset koulutusresurssit!"
-        }
-    },
-    "imagesAlt": {
-        "bitcoinCurrency": "bitcoin-valuutan merkki",
-        "blueEllipse": "sininen ellipsi",
-        "bookCover": "kirjan kansi",
-        "community": "3 people",
-        "contributorHeart": "Rakkaudella kivalle kehittäjälle",
-        "contributorPP": "contributor profile pic",
-        "courseThumbnail": "Course thumbnail",
-        "curriculum": "Opinto-ohjelma",
-        "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
-        "favorite": "a heart inside a circle",
-        "flagsInCircle": "a circle of flags",
-        "forwardArrow": "a forward arrow",
-        "github": "the icon of github",
-        "orangePill": "an orange pill",
-        "printedCircuits": "a printed circuits",
-        "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-        "sthRepresentingCompany": "Esittele yritystäsi",
-        "stylus": "a stylus",
-        "underConstructionImage": "Illustration of several rabbits working on a construction site",
-        "visibilityOff": "the eyes icon without off sign",
-        "worldMap": "world map with hubs linked"
-    },
-    "library": {
-        "pageSubtitle": "Tämä kirjasto on avointa lähdekoodia ja avoin muokkauksille.",
-        "pageTitle": "The library",
-        "publishedIn": "Julkaistu {{date}}",
-        "writtenBy": "Kirjoittanut {{author}}"
-    },
-    "menu": {
-        "betDescription": "Sisältökokoelma, jota voit käyttää koulutushankkeissasi",
-        "btc101Description": "Hanki parempi ymmärrys Bitcoinista ja sen teknologiasta luentojemme avulla",
-        "buildersDescription": "Opi lisää yrityksistä ja erilaisista projekteista jotka kehittävät Bitcoinin-ekosysteemiä paremmaksi ja laajentaa sen käyttöönottoa",
-        "exchangesDescription": "Osta ja myy bitcoineja pörsseissä ja opi vertaisverkkokaupasta (P2P)",
-        "libraryDescription": "Löydä paljon kirjoja laajentamaan ja kehittämään tietotaitoasi",
-        "lightningDescription": "Hallitse lightning-solmuasi ja käytä lightning-verkkoa",
-        "manifestoDescription": "Lue Plan B:n manifesti",
-        "merchantsDescription": "Hyväksy bitcoin-maksuja ja tutustu kauppiaiden työkaluihin",
-        "miningDescription": "Louhi itse bitcoineja ja opi lisää niiden louhinnasta ja louhintateollisuudesta",
-        "nodeDescription": "Palauta rahallinen itsemääräämisoikeutesi ylläpitämällä omaa bitcoin-nodeasi",
-        "nodeNetworkDescription": "Liity globaaliin verkostoomme Bitcoin-yhteisöjä!",
-        "ourStoryDescription": "Opi lisää opistomme tarinasta",
-        "podcastsDescription": "Selaa ja tutki bitcoinin ekosysteemiä podcastien avulla",
-        "sponsorsDescription": "Tutustu sponsoreihimme ja pääasiallisiin yhteistyökumppaneihimme",
-        "supportUsDescription": "Löydä tapoja tukea meitä, millä tahansa tavalla",
-        "teachersDescription": "Tutustu opistomme yliopisto-kouluttajiin, intohimoisiin bitcoinereihin",
-        "walletsDescription": "Turvaa ja käytä bitcoinejasi",
-        "conferencesDescription": "Kokoelma Bitcoin-konferenssitallenteista ennen The Genesis Blockkia"
-    },
-    "nodeNetwork": {
-        "answer1": "PlanB node on yksinkertaisesti paikallinen bitcoin-yhteisö joka tahtoo ottaa seuraavan askeleen ja kiihdyttää bitcoinin käyttöönottoa omalla alueellaan! Yhteisöllä ei ole minimikokoa mistä aloittaa.",
-        "answer2": "Me Plan B:llä pyrimme parantamaan Bitcoinin koulutusekosysteemiä tarjoamalla oikeat työkalut Bitcoinin kehittämiseen, rakentamiseen ja kouluttamiseen. Ryhtymällä PlanB Nodeksi, yhteisösi saa pääsyn laajaan valikoimaan resursseja, palveluja, erityiskoulutusta ja paljon muuta. Tee yhteisöstäsi merkittävä toimija Bitcoin-maailmassa.",
-        "answer3": "Ollaksesi osa verkostoa, sinun tulee jakaa muutamat keskeiset arvot. Nämä ovat: \n - Keskittyminen vain Bitcoiniin \n - Yksityisyyden arvostaminen \n - Avoimen lähdekoodin työn vaaliminen.",
-        "answer4": "PlanB Bitcoin-node voi olla minkä kokoinen tahansa. Eri vaatimusten perusteella solmuille annetaan eri arvosanoja. PlanB Node, johon kuuluu hackerspace, kuntosali ja toimistotiloja, katsotaan enemmän Citadel-tyyliseksi \"Linnoitukseksi\".",
-        "answer5": "Haluamme tarjota turvallisen kasvuympäristön mahdollisimman monille bitcoinereille ympäri maailmaa. Uskomme, että auttamalla paikallisia alan keskuksia (\"Citadeleja\", \"linnoituksia\") kasvamaan, voimme luoda verkoston alan keskittymiä, joissa bitcoinin parissa työskentelevät voivat turvallisesti työskennellä alalla, jakaa informaatiota ja edistää osaamista paikallisesti, sekä käydä kiihkeitä keskusteluja kehittyvän alan muutoksista luottamuksellisesti. Mahdollisesti näin luoden uusia alan ratkaisuja, alan yrityksiä ja uusia työpaikkoja alueelle.",
-        "apply": "Hae PlanB Nodeksi",
-        "description1": "Rahoitusjärjestelmämme on romahtamassa, ruokamme myrkytetään ja vapautemme viedään. Emme voi odottaa ihmettä, vaan meidän täytyy luoda turvallinen paikka elää. Meidän täytyy luoda oma PlanB!",
-        "pageSubtitle": "Yhteisömme on vahvuutemme. Meidän tulee yhdistyä globaaliksi bitcoin-yhteisöverkostoksi.",
-        "pageTitle": "Node Kartta",
-        "question1": "Mikä on node?",
-        "question2": "Mitä hyödyn?",
-        "question3": "Mitkä ovat vaatimukset?",
-        "question4": "Minkä kokoinen on node?",
-        "question5": "Mikä on \"salainen suunnitelma\"?"
-    },
-    "notFound": {
-        "here": "Tässä",
-        "pageSubtitle": "Kuulostaa siltä että joku on sukeltanut liian syvälle kaninkoloon ja eksynyt hiukan. Palataksesi maan pinnalle, paina tästä",
-        "pageTitle": "Oho."
-    },
-    "podcast": {
-        "abstract": "Abstrakti",
-        "discover": "Kuuntele tämä podcast"
-    },
-    "podcasts": {
-        "hostedBy": "Juontaja {{host}}",
-        "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin kehitykseen osallistumiselle.",
-        "pageTitle": "Bitcoin Podcastit"
-    },
-    "professors": {
-        "pageSubtitle": "Kaikki professorimme ovat vapaaehtoisia ja intohimoisia bitcoin-harrastajia. Voit antaa tipin kiitokseksi.",
-        "pageTitle": "Professorit",
-        "tips": {
-            "noTipsYet": "Tämä professori ei vastaanota lahjoituksia tällä hetkellä.",
-            "thanks": "Kiitos että tuet {{name}} :n työtä !",
-            "thanksNoName": "Kiitos että tuet työtäni! !"
-        }
-    },
-    "resources": {
-        "articles": {
-            "title": "Artikkelit"
-        },
-        "bet": {
-            "title": "Koulutus-työkalut"
-        },
-        "books": {
-            "title": "Kirjasto"
-        },
-        "builders": {
-            "title": "Kehittäjät"
-        },
-        "conferences": {
-            "title": "Konferenssitallenteet"
-        },
-        "filterBarLabel": "Löydä parhaat oppimateriaalit ja resurssit tarpeisiisi:",
-        "headerSignature": "Rogzy",
-        "headerText": "Tervetuloa Bitcoinin loputtomaan kaninkoloon! Tässä osiossa tarjoamme sinulle syventäviä oppaita suurimmasta osasta yleisimpiä bitcoin-projekteja. Tätä sivua ylläpitää nimimerkki \"benevolel\", sekä eräs intohimoinen bitcoineri, joka tukee tätä avoimen lähdekoodin projektia. Jos havaitsette virheitä, älkää epäröikö ottaa meihin yhteyttä. Nähdäksenne talousraportin aiemmin mainitusta projektista, tutustu meidän läpinäkyvyys-raporttiimme (Transparancie repport). Kiitos luottamuksestanne ja tuestanne opistoamme kohtaan. Tervetuloa mukaan ja nauttikaa kyydistä.",
-        "newsletters": {
-            "title": "Uutiskirje"
-        },
-        "pageDescription": "Bitcoinin ymmärtäminen on kuin tutkisi labyrinttia, joka jatkuvasti kasvaa. Auttaaksemme sinua matkallasi, olemme koonneet laajan valikoiman resursseja, jotka käsittelevät Bitcoinin ekosysteemin lukuisia aiheita.",
-        "pageSubtitle": "Hajautettu tieto tehokkaampaan levitykseen",
-        "pageTitle": "Tervetuloa Resurssi-portaaliin",
-        "podcasts": {
-            "title": "Podcastit"
-        },
-        "publicGrade": "Julkinen arvosana: {{grade}}/5",
-        "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä."
-    },
-    "settings": {
-        "changePassword": "Vaihda salasana",
-        "changeEmail": "Change email"
-    },
-    "tutorials": {
-        "details": {
-            "checkAuthor": "Katso kirjoittajan muita julkaisuja ja tue hänen työtänsä.",
-            "enjoyed": "Piditkö oppaasta?",
-            "madeBy": "Tämän oppaan on tehnyt",
-            "source": "Alkuperäinen lähde : ",
-            "tipTooltip": "Piditkö siitä? Lahjoita."
-        },
-        "exchange": {
-            "centralized": {
-                "description": "Keskitetyt pörssit ovat yleensä säänneltyjä toimijoita, jotka toimivat välittäjinä pankkijärjestelmän ja Bitcoin-ekosysteemin välillä. Ne mahdollistavat suurten määrien bitcoinien ostamisen ja myymisen ja niiden nostamisen lompakkoosi tai pankkitilillesi. Ne yleensä vaativat KYC-tunnistautumisen (Know Your Customer) ja valvovat siksi toimintaasi, raportoiden rahoitustarkkailulaitoksille paikallisten lakien noudattamiseksi."
-            },
-            "description": "Pörssit ovat yksi sisään- ja uloskäyntiporteista perinteisen valuutan (euro, dollari) ja bitcoin-maailman välillä. Pörssit voivat olla säänneltyjä ja noudattaa KYC (\"Know Your Customer\", Tunne Asiakkaasi) -periaatetta tai vertaisverkkoon perustuvia ja anonyymejä. Jokainen pörssi tarjoaa erilaisia ominaisuuksia, maksurakenteita, likviditeettiä ja asiakastukea. Jokainen bitcoin-harrastaja käyttää erilaista pörssiä tarpeidensa ja vakaumustensa mukaan.",
-            "peer-to-peer": {
-                "description": "Vertaisverkkoon perustuvat pörssit ovat markkinapaikkoja, joissa yksilöt vaihtavat bitcoineja muiden valuuttojen kanssa keskenään. Nämä pörssit voivat olla säänneltyjä tai ei, ja ne eivät yleensä pyydä paljon tietoja sinusta (jos lainkaan). Ne yksinkertaisesti helpottavat suhteiden muodostamista käyttäjien välillä. Niiden palkkiot voivat olla korkeammat kuin perinteisillä pörsseillä, ja niiden likviditeetti voi olla hieman alhaisempi. Se on suosittu vaihtoehto bitcoin-harrastajille jotka tahtovat vaihtaa tai hankkia bitcoinia tai käydä sillä kauppaa eri valuuttojen kesken varjellen yksityisyyttään."
-            },
-            "shortDescription": "Bitcoin osto/myynti-ratkaisut, KYC and non-KYC",
-            "title": "Pörssi"
-        },
-        "explorer": {
-            "description": "Kaikki nämä oppaat on kirjoittanut joukko intohimoisia ja omistautuneita bitcoin-harrastajia, jotka haluaa levittää bitcoin-koulutusta ympäri maailmaa. Älä unohda tykätä, arvioida ja antaa heille tippiä satosheina!",
-            "didYouKnow": "Tiesitkö?"
-        },
-        "headerSignature": "Rogzy",
-        "headerText": "Tervetuloa Bitcoinin loputtomaan kaninkoloon! Tässä osiossa tarjoamme sinulle syventäviä oppaita suurimmasta osasta yleisimpiä bitcoin-projekteja. Tätä sivua ylläpitää nimimerkki \"benevolel\", sekä eräs intohimoinen bitcoineri, joka tukee tätä avoimen lähdekoodin projektia. Jos havaitsette virheitä, älkää epäröikö ottaa meihin yhteyttä. Nähdäksenne talousraportin aiemmin mainitusta projektista, tutustu meidän läpinäkyvyys-raporttiimme (Transparancie repport). Kiitos luottamuksestanne ja tuestanne opistoamme kohtaan ja nauttikaa kyydistä.",
-        "merchant": {
-            "description": "Oletko koskaan miettinyt kuinka helppoa on hyväksyä bitcoin-maksutapaa yrityskäytössä? Tutustu moniin ratkaisuihimme ja kehity pian asiantuntijaksi. Opeta paikalliset yritykset käyttämään bitcoinia liiketoimintansa tehostamiseen. Kassapääteratkaisut (Point of Sale (POS) solutions) vaihtelevat kauppiaan tarpeiden mukaisesti (esimerkiksi onko kaupankäynti verkkokauppatoimintaa, vai fyysistä kaupankäyntiä), mukautuen kaupankäynnin määrään tai monimutkaisiin tilaus-/maksu-järjestelmiin. Eräs helppo tapa aloittaa, on ottaa käyttöön LN-lompakko (Lightning Network wallet) ja siirtyä helppoon, tehokkaaseen maksutapa-ratkaisuun (Esimerkiksi \"mobile PoS\"). Ja kun olet valmis, voit alkaa tutkimaan esimerkiksi BTC Pay Server-palvelua soveltaaksesi kehittyneempiä, monipuolisempia ja ammattikäyttöön soveltuvampia ratkaisuja yrityksessäsi ja ympäristössäsi.",
-            "shortDescription": "Yritysratkaisut Bitcoinin käyttöönottoon",
-            "title": "Yritystoiminta"
-        },
-        "mining": {
-            "description": "Louhintateollisuus on yksi monimutkaisimmista kaninkolojen aiheista. Sen vuoksi, olemme koonneet monipuolisen valikoiman oppaita ja oppimateriaaleja siivittämään polkuasi louhintalaitteistojen ja -ohjelmistojen polulla. Aina modifioiduista S9-louhintalaitteista kotia lämmittäviin, vaikeita laskutoimituksia laskeviin bitcoin-louhintalämmittimiin.",
-            "shortDescription": "Bitcoin-louhintaratkaisut",
-            "title": "Louhiminen"
-        },
-        "node": {
-            "bitcoin": {
-                "description": "Bitcoin Core solmu (Bitcoin Core node) on kaiken Bitcoin-yksityisyytesi pohja. Se mahdollistaa sinun itse ylläpitää Bitcoinin ohjelmistoa ja lohkoketjua, ollen siten osa Bitcoin-vertaisverkostoa. Osallistuessasi verkon ylläpitoon (Louhintaan), voit itse osallistua tilikirjan lohkojen ja transaktioiden validointiin, näin varmistaen osaltasi bitcoin-tilikirjan turvallisuuden ja verifioinnin. Näin voit vähentää keskitettyjen tahojen valtaa omaisuudestasi. On monia tapoja ylläpitää Bitcoin nodea, toiset ovat käyttäjäystävällisempiä ja turvallisempia kuin toiset, joten ota selvää eri vaihtoehdoista. Lisätietoa löydät louhinta-oppaistamme."
-            },
-            "description": "Nodet ovat kuin bitcoin-tilikirjan hajautettuja servereitä joita sinäkin voit ylläpitää. Bitcoin Core node on ohjelmisto, joka mahdollistaa sinun ylläpitää bitcoin-verkkoa, vahvistaa transaktioita, varmistaa yhteisiä pelisääntöjä, ja saavuttaa taloudellinen itsemääräämisoikeus. Ekosysteemimme sisältää valikoiman erilaisia node-palveluita, Bitcoin Core:sta erilaisiin Lightning-ratkaisuihin ja -palveluihin, RGP-älysopimukset (Smart contracts), tai vaikka paranneltuja yksityisyys-ominaisuuksia.",
-            "lightning-network": {
-                "description": "Lightning node mahdollistaa sinun ottaa osaa Bitcoinin Layer 2-protokollatasoon nimeltä \"Lightning\". Voit avata Lightning-maksukanavia (Channels), hallita niiden likvidointia, osallistua ylläpitoon ja säilyttää itse bitcoinejasi omassa lompakossasi (non-custodial).",
-                "name": "Lightning-verkko"
-            },
-            "rgb": {
-                "description": "RGB on skaalautuva ja luotettava älysopimus-järjestelmä Bitcoinille & Lightning networkille. Se on ohjelmointikerros bitcoin-lohkoketjulle, konsepteina yksityisyys ja omaisuuserien omistusoikeus, abstraktiivinen ominaisuus omaisuuserien tokenisoinnin tarpeelle."
-            },
-            "shortDescription": "Eri tapoja ylläpitää Bitcoin nodea ja liittyä verkostoon",
-            "title": "Solmu (node)"
-        },
-        "pageDescription": "Bitcoin on laaja teollisuus, joka laajenee laajenemistaan päivittäin. Helpottaaksemme Sinua sen tutkimisessa, olemme koonneet laajan kokoelman oppaita jotka selittävät moninaista palvelujen ja ominaisuuksien kirjoa, sekä erilaisten ratkaisujen tarjontaa, liittyen Bitcoiniin.",
-        "pageSubtitle": "Paljastetaan Bitcoinin ekosysteemin laajuutta ja rikkautta",
-        "pageTitle": "Tutustu oppaisiimme",
-        "privacy": {
-            "bitcoin": {
-                "description": "Bitcoin ei ole oletuksena yksityinen, vaan se on tarkoituksella suunniteltu pseudonyymiseksi, ja jokainen tapahtuma on julkinen ja tallennetaan pysyvästi. Jotta saisimme takaisin hieman luottamuksellisuutta, meidän on noudatettava parhaita käytäntöjä ja käytettävä tiettyjä työkaluja, jotka on integroitu ohjelmistoomme. Näihin kuuluu osoitteen uudelleenkäytön välttäminen, CoinJoinin käyttö, kolikoiden sekoittaminen ja yhteyden muodostaminen omaan solmuun. Matkallasi kohti yksityisyyttä autamme sinua mielellämme."
-            },
-            "description": "Yksityisyys on ihmisen perusoikeus. Samaan aikaan kun kehitämme maailmaa, missä yksityisyyden tulisi olla lähtökohta, todellisuus, missä elämme ei ole niin. Pyrimme selittämään tätä asiaa parhaamme mukaan parhailla oppaillamme asian tiimoilta, ja siten saada sinut palauttamaan datasi omiin käsiisi ja palauttamaan sinulle takaisin digitaalisen ja taloudellisen itsemääräämisoikeutesi.",
-            "general": {
-                "description": "Massavalvonnan aikakaudella, yksityisyyden jokapäiväinen vaatiminen ja turvaaminen on välttämätöntä. Valvonnan ja esimerkiksi vakoilun yleistyessä, on suotavaa käyttää erilaisia työkaluja ja soveltaa niitä päivittäisiin tietoturva-tarpeisiin. Täältä voit selata erilaisia tietoturva-ratkaisuja kuten VPN-palveluita, Tor-verkon työkaluja, löydät Tails OS-käyttöjärjestelmän, Salatut messenger-palvelut ja paljon muuta."
-            },
-            "shortDescription": "Työkalut varmuuskopiointiin ja yksityisyyden turvaamiseen",
-            "title": "Yksityisyys"
-        },
-        "wallet": {
-            "description": "Elektroninen hardware-lompakko eli kylmälompakko (Hardware-wallet, cold wallet) on kuin digitaalinen avaimenperä-lompakko. Se mahdollistaa sinun vastaanottaa, säilyttää ja lähettää bitcoinejasi. On monenlaisia lompakoita ja lompakkopalveluita tarjoavia laitevalmistajia, joista löytyy erilaisia toimintoja eri käyttötapauksiin. Jokaisen bitcoinerin tulisi tutkia eri vaihtoehtoja tarkkaan ja valita niistä sopivin omiin tarkoituksiinsa ja tarpeisiinsa (esimerkiksi onko laite pitkäaikais-säilytystä vai päivittäisostoja varten).",
-            "desktop": {
-                "description": "Desktop-lompakot ovat yleensä tarkoitettu edistyneemmille käyttäjille, koska ne yhdistävät laitteistolaitteiden ja työpöytälompakko-ohjelmiston käytön. Voit ajatella niitä uudenlaisena, räätälöitynä ja toiminnallisesti monipuolisena lompakko- tai verkkopankki-käyttöliittymänä laitteistollesi ja työpöydällesi. Tällaiset lompakot tarjoavat \"multi-signature\"-vaihtoehtoja ja -ominaisuuksia, yksityisyysominaisuuksia, integraatiomekanismeja ja paljon muuta."
-            },
-            "hardware": {
-                "description": "Elektroniset lompakot (Hardware-wallets) ovat usein tarkoitettuja pitkäaikaisien bitcoin-varojen turvaamiseen ja salasanojen säilytykseen. Ne ovat fyysisiä laitteita, jotka eivät ole yhteydessä internettiin, siksi niitä kutsutaan kylmälompakoiksi (\"Cold wallet\") ja ovat erittäin tietoturvallisia. Vaikkakin laitteiden ohjelmistot ovat usein avointa lähdekoodia ja kaikkien saatavilla, riippuen laitevalmistajasta, laitteita myydään hintaluokassa 50€-300€. Sinun on helppo ajatella näitä laitteita kuin sinulla olisi oma, digitaalinen palkkiholvi laitteessasi, josta voit tarvittaessa käyttää varojasi."
-            },
-            "mobile": {
-                "description": "Mobiililaitteiden Lompakkosovellukset ovat usein tarkoitettu päivittäiseen kaupankäyntiin tai arvon siirtoon. Ne integroituvat Lightning Networkin kanssa mahdollistaen halvat ja välittömät transaktiot. Ne ovat normaalisti yhdistettynä internettiin, siksi niitä kutsutaankin usein \"Hot-walleteiksi\", kuumiksi lompakoiksi. Siten niiden tietoturva on hieman kylmälompakkoa heikompi. Näitä lompakoita tulisi käyttää pienten bitcoin-määrien säilytykseen ja käyttöön, pidä niitä kuin taskulompakkoina päivittäisostoksia ja -maksuja varten."
-            },
-            "shortDescription": "Turvallisuusratkaisut ja bitcoiniesi käyttäminen",
-            "title": "Lompakko"
-        },
-        "others": {
-            "title": "Muut tavat",
-            "shortDescription": "Selaa monipuolisia, Bitcoin-aiheisia oppaitamme",
-            "description": "Sukella Bitcoin-aiheisten oppaidemme tulvaan. Tee-Se-Itse (DYI) oppaista avoimen lähdekoodin koulutuksiin, löydä uusia kiinnostuksen alueita tullaksesi entistä paremmaksi ja monipuolisemmaksi, alan taitajaksi.",
-            "contribution": {
-                "description": "Tutki ja opi kuinka voit alkaa PlanB Network-kehittäjäksi ja opi käyttämään avoimen lähdekoodin (open source) kehitystyökalujamme, yksityiskohtaisten ohje-oppaidemme avulla!"
-            },
-            "DIY": {
-                "description": "Tutki ja löydä Tee-Se-Itse-oppaitamme ja opi miten voit itse kasata laitteistoja, ja muuta Bitcoiniin liittyvää, ja varmistaa omaa taloudellista itsenäisyyttäsi!"
-            },
-            "OpenSource": {
-                "description": "Tutki Open source-oppaitamme, jotta voit oppia kuinka otat avoimen lähdekoodin työkalut käyttöösi!"
-            },
-            "general": {
-                "description": "Selaa yleis-aiheisia oppaitamme kerryttääksesi osaamistasi tietokoneiden käytöstä ja muista aiheista. Esimerkiksi oppaita liittyen yksilönvapauteen!"
-            }
-        }
-    },
-    "underConstruction": {
-        "github": "GitHub",
-        "p1": "Kani on sukeltanut koloihinsa eksyen. Tästä ennenkuulumattomasta ja odottamattomasta seikkailusta johtuen, tämä kaninkolojen onkalon sivu on vasta kehitteillä, \"Under Construction\". Pahoittelemme tilannetta, kehitystiimimme tekee parhaansa kehittäessään sivustoa. Älä epäröi tarjota apua ja osallistua yhteisölliseen kehitystyöhön, lisätietoa löydät osoitteestamme",
-        "p2": "ja liity yhteisöömme!",
-        "pageTitle": "Oho."
-    },
-    "words": {
-        "about": "Tietoja",
-        "about-us": "Tietoja meistä",
-        "account": "Tili",
-        "additionalCriteria": "Lisäkriteerit",
-        "advanced": "Edistyneet ominaisuudet",
-        "article": "Artikkeli",
-        "articles": "Artikkelit",
-        "audioBook": "Äänikirja",
-        "back": "Takaisin",
-        "beginner": "Aloittelija",
-        "bitcoinWhitepaper": "Bitcoin Whitepaper",
-        "book": "Kirja",
-        "books": "Kirjoja",
-        "builders": "Kehittäjät",
-        "certificate": "Sertifikaatti",
-        "conference": "Konferenssi",
-        "conferences": "Konferenssit",
-        "content": "Sisältö",
-        "continue": "Jatka",
-        "course": "Kurssitus",
-        "courses": "Kurssitukset",
-        "dashboard": "Hallintapaneeli",
-        "details": "Tiedot",
-        "didYouKnow": "Tiesitkö?",
-        "documentaries": "Dokumenttielokuvat",
-        "donations": "Lahjoitukset",
-        "economy": "Talousjärjestelmä",
-        "education": "Koulutus",
-        "email": "Email",
-        "events": "Tapahtumat",
-        "exchanges": "Pörssit",
-        "followUs": "Seuraa meitä",
-        "helpUs": "Tue ja auta meitä",
-        "home": "Aloitus",
-        "intermediate": "Keskitaso",
-        "interview": "Haastattelu",
-        "level": {
-            "advanced": "Edistynyt",
-            "beginner": "Aloittelija",
-            "developer": "kehittäjä",
-            "intermediate": "Keskitaso"
-        },
-        "library": "Kirjasto",
-        "lightning": "Lightning",
-        "lnurlAuth": "LNURL Auth",
-        "manifesto": "Manifesti",
-        "merchandising": "Markkinointi ja tuotteistus",
-        "merchants": "Markkinoijat",
-        "members": " Jäsenet",
-        "mining": "Louhinta",
-        "more": "Lisää",
-        "movieDocumentary": "Dokumenttielokuva",
-        "network": "Verkko",
-        "networkMember": "Verkon jäsen",
-        "newsletter": "Uutiskirjeesi",
-        "newsletters": "Uutiskirjeet",
-        "node": "Solmu",
-        "nodeNetwork": "Node Network",
-        "or": "tai",
-        "ourStory": "Tarinamme",
-        "podcast": "Podcast",
-        "podcasts": "Podcastit",
-        "professors": "Professorit",
-        "purchase": "Hanki",
-        "register": "Rekisteröidy",
-        "relatedResources": "Liite-resurssit",
-        "resources": "Resurssit",
-        "resume": "Jatka eteenpäin",
-        "review": "Tarkista",
-        "rogzy": "Rogzy",
-        "sponsorUs": "Sponsoroi Meitä",
-        "sponsoringAndContributors": "Sponsorointi & Kehittäjät",
-        "supportUs": "Tue meitä",
-        "teachers": "Opettajat",
-        "termsAndConditions": "Käyttöehdot ja -säännöt",
-        "toolkits": "Työkalut",
-        "tutorial": "Opas",
-        "tutorials": "Oppaat",
-        "update": "Päivitys",
-        "video": "Video",
-        "videos": "Videot",
-        "wallets": "Lompakot",
-        "date": "Päivämäärä",
-        "time": "Aika",
-        "to": "mihin",
-        "billing": "Laskutus",
-        "download": "Lataa",
-        "invoice": "Lasku",
-        "on": "päällä",
-        "online": "Online",
-        "ticket": "Pääsylippu",
-        "tickets": "Pääsyliput"
+    "part": {
+      "count": "Jakso {{count}}"
     },
     "payment": {
-        "total": "Yhteensä",
-        "terms": "Katso <0>general terms</0> toimitus- ja palautusehdot",
-        "feeDistribution": "Palkkioiden jakautuminen: Kirjoittaja 99 % - Alusta 1 %",
-        "proceedToPayment": "Siirry maksamaan"
+      "access_invoice": "Löydät laskusi hallintapaneelistasi (Dashboard)",
+      "accessibility": "Helppokäyttöisyys",
+      "accessibility_forever": "Ikuisesti",
+      "amount": "Määrä",
+      "date": "Date",
+      "dates_to": "{{startDate}} to {{endDate}}",
+      "downloadCurriculum": "Lataa koulutus-ohjelma",
+      "duration": "Pituus",
+      "invoiceId": "Invoice ID",
+      "numberOfChapters": "Osien määrä",
+      "payment_details": "Maksun tiedot",
+      "payment_successful": "Maksu onnistui!",
+      "teacher": "Opettaja",
+      "teachers": "Opettajat",
+      "terms1": "See our",
+      "terms2": "general terms",
+      "terms3": "and conditions for refund details",
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "total": "Total",
+      "back_course": "Takaisin kurssille",
+      "callout": "Olet ostamassa tätä koulutus-pakettia.",
+      "description": "Tämä ostos antaa sinulle pääsyn online koulutus-materiaaleihin alustallamme, sekä luennoillemme, joihin voit varata istumapaikan portaalimme kautta. Jokainen koulutuksen luento järjestetään ennalta määrätyissä ajankohdissa ja paikoissa ennen niiden julkaisua online-alustallamme.",
+      "book_description": "Tarkista seuraavat tilauksenne tiedot.\nKun tilauksenne on käsitelty, lähetämme teille vahvistusviestissä pääsylipun ja QR-koodin. Tarvitsette niitä ilmoittautuessanne tapahtuman sisääntulo-portilla.",
+      "qr_unified": "Tämä QR-koodi on yhdistetty, joten se hyväksyy sekä Lightning- että on-chain-maksut.",
+      "time": "Aika"
+    },
+    "preview": {
+      "by": "Julkaisijana {{professor}}",
+      "letsgo": "Aloitetaan"
+    },
+    "proceedToPayment": "Proceed to payment",
+    "quizz": {
+      "clickOnPie": "Klikkaa piirakka-kaaviota, josta näet virheesi selityksineen",
+      "quizz": "Koe",
+      "quizzResults": "Kokeen tulokset",
+      "quizzReview": "Kokeen esikatselu",
+      "resultCongrats": "Onnittelut, pärjäsit hienosti!",
+      "resultItsOk": "Älä anna periksi, ensi kerralla paremmin!",
+      "resultNotBad": "Ei huono!",
+      "resultPerfect": "Aivan täydellisesti! Onnittelut!"
+    },
+    "unreleased": {
+      "colcardAndSparrow": "Coldcard & Sparrow",
+      "financeIntroduction": "Introduction à la finance",
+      "financialCrisis": "Merkittävien talouskriisien analyysi",
+      "hyperinflation": "Hyperinflaatioiden tutkimus",
+      "theoreticalLightning": "Edistynyt teoreettinen kurssi Lightning-verkostosta"
+    }
+  },
+  "dashboard": {
+    "myCourses": {
+      "resumeLesson": "Jatka luentoa",
+      "completed": "Suoritetut luennot",
+      "details": "Tiedot",
+      "inprogress": "Keskeneräiset luennot"
+    },
+    "account": "Tili",
+    "courses": "Luennot",
+    "logout": "Kirjaudu ulos",
+    "booking": {
+      "ticketTitle": "Aihe",
+      "upcomingTicketSubtitle": "Lataa pääsylippusi tästä ja osallistu seuraavaan tapahtumaasi. Muista ottaa mukaan tapahtumaan pääsylippusi, päästäksesi tapahtuma-alueelle.",
+      "accessLive": "Siirry liveen",
+      "billingTitle": "Laskutushistoria",
+      "billingSubtitle": "Lataa tilaustesi maksutapahtumat täältä.",
+      "downloadInvoice": "Lataa Lasku",
+      "downloadTicket": "Lataa pääsylippu",
+      "invoiceDate": "Päivämäärä",
+      "invoiceTitle": "Aihe",
+      "invoiceType": "Tyyppi",
+      "ticketDate": "Päivämäärä",
+      "ticketLocation": "Sijainti",
+      "ticketType": "Tyyppi",
+      "noInvoice": "Ei maksutapahtumia.",
+      "noTicket": "Ei pääsylippuja.",
+      "upcomingTicketTitle": "Tulevat",
+      "pastTicketTitle": "Aiemmat"
+    },
+    "bookings": "Tilaukset"
+  },
+  "events": {
+    "introduction": {
+      "introductionh1": "Welcome to Plan B Network events",
+      "introductionp1": "Bottom up adoption enhanced by a strong network",
+      "introductionp2": "Looking for a Bitcoin event to go to ?",
+      "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
+    },
+    "main": {
+      "upcomingEvents": "Tulevat tapahtumat",
+      "currentEvents": "Käynnissä olevat tapahtumat"
+    },
+    "missed": {
+      "missedh1": "Tallenteet tapahtumista",
+      "missedp1": "Jäikö tapahtuma väliin?",
+      "missedp2": "Täältä löydät Network-alustamme tallenteet menneistä tapahtumista."
+    },
+    "card": {
+      "free": "Ilmainen",
+      "online": "online",
+      "limited": "Rajoitettu",
+      "unlimited": "rajaton",
+      "people": "Osallistujat",
+      "watchLive": "Katso live",
+      "watchReplay": "Katso uudelleen",
+      "bookLive": "Varaa live",
+      "bookSeat": "Varaa istumapaikkasi",
+      "visitWebsite": "Vieraile sivustolla",
+      "buyReplay": "Osta tallenne",
+      "eventFull": "Tapahtuma loppuunmyyty",
+      "seatBooked": "Istumapaikka varattu"
+    },
+    "newEvent": {
+      "button": "Lisää tapahtuma",
+      "description": "Tottakai! Kaikki Bitcoin-tapahtumat ovat tervetulleita nostamaan näkyvyyttään täällä ja uusien tapahtumien järjestäminen suorastaan toivottua :)",
+      "subtitle": "Miljardin ihmisen saaminen mukaan Bitcoinin käyttäjiksi ei ole helppoa",
+      "title": "Haluatko lisätä tapahtuman?"
+    },
+    "pageDescription": "Haluatko keskustella Bitcoinista reaaliajassa? Täältä löydät kaikki Plan B Network -yhteisöjen tukemat tapahtumat. Olitpa sitten kiinnostunut luennon kuuntelemisesta, Bitcoinin keskustelusta juoman äärellä tai kokeen suorittamisesta tietosi arvioimiseksi, löydät sopivan tapahtuman täältä Plan B Networkin kautta.",
+    "pageSubtitle": "Alhaalta ylöspäin tapahtuva omaksuminen tehostettuna vahvalla verkostolla",
+    "pageTitle": "Etsitkö Bitcoin-tapahtumaa mihin osallistua?",
+    "payment": {
+      "access_invoice": "Maksutapahtumat löydät hallintapaneelisi (dashboard) kautta.",
+      "access_online_successful": "Kun tapahtuma alkaa, kirjaudu alustalle, ja saat pääsyn live-lähetykseen tapahtumasivun kautta.",
+      "access_physical_successful": "Voit ladata lippusi tästä tai ladata sen myöhemmin hallintapaneelissasi.",
+      "access_type": "Lipun tyyppi",
+      "address": "Osoite",
+      "additional_free_description": "Tapahtuma on ilmainen, eikä paikanvarauksesta koidu kustannuksia. Kuitenkin, varmistuthan osallistumisestasi tapahtumaan! Luennoilla on rajattu määrä istumapaikkoja.",
+      "amount": "Määrä",
+      "back_events": "Takaisin tapahtumat-sivulle",
+      "book_seat": "Varaa istumapaikka",
+      "callout_online": "Olet varaamassa online-pääsyä tapahtumaan.",
+      "callout_physical": "Olet varaamassa fyysistä istumapaikkaa tapahtuman luennolle.",
+      "callout_replay": "Olet varaamassa pääsyä tapahtuman tallenteeseen.",
+      "date": "Päivämäärä",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "description_online": "Tarkista tapahtuman annettu päivämäärä ja aika. \nKun aika koittaa, kirjaudu alustalle ja pääset live-lähetykseen tapahtumasivun kautta.",
+      "description_physical": "Tarkista annetut tapahtumapaikan tiedot. \nKun varaus on käsitelty, toimitamme sinulle lipun, joka tulee esittää tapahtumassa. Tämä lippu antaa sinulle myös pääsyn live-lähetykseen ja tallenteeseen, jos sellainen on saatavilla.",
+      "description_free_physical": "Tarkista varauksen tiedot. \nKun varaus on käsitelty, toimitamme sinulle vahvistusviestissä pääsylipun ja QR-koodin, jotka tulee esittää tapahtumassa.",
+      "download_ticket": "Lataa pääsylippusi",
+      "enjoy": "Toivomme että tulet nauttimaan siitä :)",
+      "language": "Puhuttu kieli",
+      "limitation": "Rajoitukset",
+      "max_capacity": "Maksimi määrä",
+      "payment_details": "Maksun tiedot",
+      "payment_successful": "Varaus onnistui!",
+      "time": "Aika"
+    }
+  },
+  "home": {
+    "header": {
+      "content": "PlanB-alustan tavoitteena on tarjota parhaat työkalut ja koulutussisällöt ympäri maailmaa auttaakseen ihmisiä palauttamaan itsemääräämisoikeutensa. Yksilöistä yhteisöihin, olemme täällä auttamassa sinua Bitcoin-matkallasi.",
+      "forEducators": "Kouluttajille ja kehittäjille",
+      "globalNetwork": "Global Bitcoin Network",
+      "welcome": "Tervetuloa PlanB Network:iin",
+      "link": "Ole osa verkostoa",
+      "startLink": "Aloita oppiminen"
+    },
+    "numbersSection": {
+      "networkMember": "Betwork Jäsen"
+    },
+    "sectionEducation": {
+      "title": "Aloittelijasta asiantuntijaan",
+      "subtitle": "Opiskele Bitcoinista akademiassa",
+      "content1": "Bitcoin ei ole vain teknologia ja rahamuoto, vaan myös vallankumouksellinen tapa lähestyä elämää. Tätä heijastaen kurssimme kattavat laajan kirjon aloja, voimaannuttaen jokaisen yksilön loistamaan omilla kiinnostuksen alueillaan ja syventämään ymmärrystään. Ensimmäisestä Bitcoin-kurssistasi syvälliseen protokollan erityispiirteisiin sukeltamiseen, kurssimme auttavat sinua navigoimaan turvallisesti syvemmälle aiheeseen. Ei ole syytä epäröidä. Tieto odottaa sinua.",
+      "link": "Tutustu kouluumme"
+    },
+    "sectionNetwork": {
+      "title": "Pääsy verkostoon",
+      "subtitle": "Maailmanlaajuiset Bitcoin-opistot",
+      "content1": "Verkostoidu Bitcoin-harrastajien kanssa ympäri maailmaa, jotka jakavat yhteisen intohimon. Pienistä säännöllisesti kokoontuvista yhteisöistä BTC-koulutuskeskuksiin, verkostokarttamme auttaa sinua löytämään inspiraatiota oppimiseen ja rakentamiseen. Laaja valikoima palveluja on tarjolla harrastajille, kuten inkubaatiokeskus, fyysiset työpajat, seminaarit, BTC-retriitit ja paljon muuta. Verkosto on avoin kaikille, joten tule tervehtimään paikallista BTC-yhteisöäsi!",
+      "link": "Ole osa verkostoa"
+    },
+    "tutorialSection": {
+      "title": "Bitcoin-kouluttautumisen teko helpoksi on tavoitteemme.",
+      "subtitle1": "Autamme sinua hallitsemaan teknologian lukuisilla syventävillä tutorial-materiaaleilla!",
+      "content1": "Bitcoin kehittyy jatkuvasti, ja uusia toimijoita, ratkaisuja, protokollia ja teknologisia läpimurtoja tulee ja menee. On usein vaikeaa ylläpitää yhtenäistä, tarkkaa tietokantaa hyvistä ja ajantasaisista oppaista. Täällä PlanB:llä olemme saavuttaneet juuri tämän. Aloittelijoista edistyneisiin käyttäjiin, voit selata satoja oppaita ja tutustua alaan tarpeidesi mukaan.",
+      "link": "Katso kaikki oppaat"
+    },
+    "aboutUsSection": {
+      "title": "Keitä me olemme?",
+      "subtitle": "Hieman meistä",
+      "content": "PlanB-verkosto on yhteisö, joka tukee Bitcoin-koulutusta maailmanlaajuisesti. Se on erilaisten intohimoisten Bitcoin-yritysten yhteistyö, jotka keskittyvät koulutukseen, avoimeen lähdekoodiin, vertaisverkkoihin ja yhteisöllisyyteen. Yhdessä he ovat päättäneet rakentaa PlanB-verkoston ja tarjota Bitcoin-ekosysteemille oikeat työkalut kasvua varten.",
+      "bitcoinFocusTitle": "Bitcoin-aate",
+      "bitcoinFocusContent": "Bitcoin-vallankumous kokonaisuudessaan, sen peruskerroksesta erilaisiin p2p-ratkaisuihin sen ympärillä",
+      "openSourceTitle": "Avoin lähdekoodi",
+      "openSourceContent": "Tavoitteenamme on edistää tiedon vapaata kulkua ja auttaa rakentamaan enemmän avoimen lähdekoodin ratkaisuja",
+      "communityTitle": "Yhteisö",
+      "communityContent": "Olemme ensisijaisesti yhteisö, joka koostuu harrastajista, jotka auttavat toisiaan heidän Bitcoin-matkallaan",
+      "privacyTitle": "Yksityisyys",
+      "privacyContent": "Pidämme yksityisyyttä yhtenä perustavanlaatuisimmista ihmisoikeuksista ja välttämättömänä edistykselle"
+    },
+    "languageSection": {
+      "title": "Täällä ei kielimuuria ole.",
+      "subtitle": "Kaikki on käännetty paikallisille kielille",
+      "subtitle2": "Tarvitsemme Sinua!",
+      "content1": "Me PlanB:llä uskomme, että Bitcoin on kansainvälinen vallankumous, joka koskee kaikkia. Voimaannuttaaksemme mahdollisesti miljardeja ihmisiä suunnittelimme tämän alustan monikieliseksi ja kaikille saavutettavaksi. Alusta tukee tällä hetkellä seitsemää kieltä, ja lisää lisätään joka kuukausi. Tämän saavuttamiseksi käytämme yhdistelmää tekoälyä ja Bitcoin-harrastajien intohimoa ympäri maailmaa.",
+      "content2": "Sinäkin voit aloittaa oman paikallisen verkostosi käynnistämisen omassa maassasi!",
+      "link": "Auta meitä kääntämään materiaaleja",
+      "availableLanguages": "Saatavilla olevat kielet"
+    },
+    "patreonSection": {
+      "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi! ",
+      "subtitle": "Plan-B on 100% avointa lähdekoodia, kiitos arvokkaiden ja anteliaiden tukijoidemme",
+      "content": "PlanB-verkosto on ylpeä yhteistyöstään monien Bitcoin-yritysten kanssa ympäri maailmaa, tarjotessaan yhdessä parhaat mahdolliset koulutusresurssit!"
+    }
+  },
+  "imagesAlt": {
+    "bitcoinCurrency": "bitcoin-valuutan merkki",
+    "blueEllipse": "sininen ellipsi",
+    "bookCover": "kirjan kansi",
+    "community": "3 people",
+    "contributorHeart": "Rakkaudella kivalle kehittäjälle",
+    "contributorPP": "contributor profile pic",
+    "courseThumbnail": "Course thumbnail",
+    "curriculum": "Opinto-ohjelma",
+    "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
+    "favorite": "a heart inside a circle",
+    "flagsInCircle": "a circle of flags",
+    "forwardArrow": "a forward arrow",
+    "github": "the icon of github",
+    "orangePill": "an orange pill",
+    "printedCircuits": "a printed circuits",
+    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
+    "sthRepresentingCompany": "Esittele yritystäsi",
+    "stylus": "a stylus",
+    "underConstructionImage": "Illustration of several rabbits working on a construction site",
+    "visibilityOff": "the eyes icon without off sign",
+    "worldMap": "world map with hubs linked"
+  },
+  "library": {
+    "pageSubtitle": "Tämä kirjasto on avointa lähdekoodia ja avoin muokkauksille.",
+    "pageTitle": "The library",
+    "publishedIn": "Julkaistu {{date}}",
+    "writtenBy": "Kirjoittanut {{author}}"
+  },
+  "menu": {
+    "betDescription": "Sisältökokoelma, jota voit käyttää koulutushankkeissasi",
+    "btc101Description": "Hanki parempi ymmärrys Bitcoinista ja sen teknologiasta luentojemme avulla",
+    "buildersDescription": "Opi lisää yrityksistä ja erilaisista projekteista jotka kehittävät Bitcoinin-ekosysteemiä paremmaksi ja laajentaa sen käyttöönottoa",
+    "exchangesDescription": "Osta ja myy bitcoineja pörsseissä ja opi vertaisverkkokaupasta (P2P)",
+    "libraryDescription": "Löydä paljon kirjoja laajentamaan ja kehittämään tietotaitoasi",
+    "lightningDescription": "Hallitse lightning-solmuasi ja käytä lightning-verkkoa",
+    "manifestoDescription": "Lue Plan B:n manifesti",
+    "merchantsDescription": "Hyväksy bitcoin-maksuja ja tutustu kauppiaiden työkaluihin",
+    "miningDescription": "Louhi itse bitcoineja ja opi lisää niiden louhinnasta ja louhintateollisuudesta",
+    "nodeDescription": "Palauta rahallinen itsemääräämisoikeutesi ylläpitämällä omaa bitcoin-nodeasi",
+    "nodeNetworkDescription": "Liity globaaliin verkostoomme Bitcoin-yhteisöjä!",
+    "ourStoryDescription": "Opi lisää opistomme tarinasta",
+    "podcastsDescription": "Selaa ja tutki bitcoinin ekosysteemiä podcastien avulla",
+    "sponsorsDescription": "Tutustu sponsoreihimme ja pääasiallisiin yhteistyökumppaneihimme",
+    "supportUsDescription": "Löydä tapoja tukea meitä, millä tahansa tavalla",
+    "teachersDescription": "Tutustu opistomme yliopisto-kouluttajiin, intohimoisiin bitcoinereihin",
+    "walletsDescription": "Turvaa ja käytä bitcoinejasi",
+    "conferencesDescription": "Kokoelma Bitcoin-konferenssitallenteista ennen The Genesis Blockkia"
+  },
+  "nodeNetwork": {
+    "answer1": "PlanB node on yksinkertaisesti paikallinen bitcoin-yhteisö joka tahtoo ottaa seuraavan askeleen ja kiihdyttää bitcoinin käyttöönottoa omalla alueellaan! Yhteisöllä ei ole minimikokoa mistä aloittaa.",
+    "answer2": "Me Plan B:llä pyrimme parantamaan Bitcoinin koulutusekosysteemiä tarjoamalla oikeat työkalut Bitcoinin kehittämiseen, rakentamiseen ja kouluttamiseen. Ryhtymällä PlanB Nodeksi, yhteisösi saa pääsyn laajaan valikoimaan resursseja, palveluja, erityiskoulutusta ja paljon muuta. Tee yhteisöstäsi merkittävä toimija Bitcoin-maailmassa.",
+    "answer3": "Ollaksesi osa verkostoa, sinun tulee jakaa muutamat keskeiset arvot. Nämä ovat: \n - Keskittyminen vain Bitcoiniin \n - Yksityisyyden arvostaminen \n - Avoimen lähdekoodin työn vaaliminen.",
+    "answer4": "PlanB Bitcoin-node voi olla minkä kokoinen tahansa. Eri vaatimusten perusteella solmuille annetaan eri arvosanoja. PlanB Node, johon kuuluu hackerspace, kuntosali ja toimistotiloja, katsotaan enemmän Citadel-tyyliseksi \"Linnoitukseksi\".",
+    "answer5": "Haluamme tarjota turvallisen kasvuympäristön mahdollisimman monille bitcoinereille ympäri maailmaa. Uskomme, että auttamalla paikallisia alan keskuksia (\"Citadeleja\", \"linnoituksia\") kasvamaan, voimme luoda verkoston alan keskittymiä, joissa bitcoinin parissa työskentelevät voivat turvallisesti työskennellä alalla, jakaa informaatiota ja edistää osaamista paikallisesti, sekä käydä kiihkeitä keskusteluja kehittyvän alan muutoksista luottamuksellisesti. Mahdollisesti näin luoden uusia alan ratkaisuja, alan yrityksiä ja uusia työpaikkoja alueelle.",
+    "apply": "Hae PlanB Nodeksi",
+    "description1": "Rahoitusjärjestelmämme on romahtamassa, ruokamme myrkytetään ja vapautemme viedään. Emme voi odottaa ihmettä, vaan meidän täytyy luoda turvallinen paikka elää. Meidän täytyy luoda oma PlanB!",
+    "pageSubtitle": "Yhteisömme on vahvuutemme. Meidän tulee yhdistyä globaaliksi bitcoin-yhteisöverkostoksi.",
+    "pageTitle": "Node Kartta",
+    "question1": "Mikä on node?",
+    "question2": "Mitä hyödyn?",
+    "question3": "Mitkä ovat vaatimukset?",
+    "question4": "Minkä kokoinen on node?",
+    "question5": "Mikä on \"salainen suunnitelma\"?"
+  },
+  "notFound": {
+    "here": "Tässä",
+    "pageSubtitle": "Kuulostaa siltä että joku on sukeltanut liian syvälle kaninkoloon ja eksynyt hiukan. Palataksesi maan pinnalle, paina tästä",
+    "pageTitle": "Oho."
+  },
+  "podcast": {
+    "abstract": "Abstrakti",
+    "discover": "Kuuntele tämä podcast"
+  },
+  "podcasts": {
+    "hostedBy": "Juontaja {{host}}",
+    "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin kehitykseen osallistumiselle.",
+    "pageTitle": "Bitcoin Podcastit"
+  },
+  "professors": {
+    "pageSubtitle": "Kaikki professorimme ovat vapaaehtoisia ja intohimoisia bitcoin-harrastajia. Voit antaa tipin kiitokseksi.",
+    "pageTitle": "Professorit",
+    "tips": {
+      "noTipsYet": "Tämä professori ei vastaanota lahjoituksia tällä hetkellä.",
+      "thanks": "Kiitos että tuet {{name}} :n työtä !",
+      "thanksNoName": "Kiitos että tuet työtäni! !"
+    }
+  },
+  "resources": {
+    "articles": {
+      "title": "Artikkelit"
+    },
+    "bet": {
+      "title": "Koulutus-työkalut"
+    },
+    "books": {
+      "title": "Kirjasto"
+    },
+    "builders": {
+      "title": "Kehittäjät"
     },
     "conferences": {
-        "addConferences": "Voit vapaasti lisätä puuttuvia konferensseja tämän <0>Github</0> -repositoryn kautta.",
-        "backConferences": "Takaisin konferenssit-sivulle",
-        "conferenceName": "Konferenssin nimi",
-        "conferencesSinceGenesis": "Bitcoin-konferenssien arkisto alkaen Genesis Blockista",
-        "description": "Konferenssit ovat Bitcoin-alan avaintekijöitä. Ne ovat osa kaikkien Bitcoinereiden kouluttautumisen polkua. Me kehitimme tämän työkalun auttaaksemme sinua navigoimaan läpi satoja konferensseja.",
-        "details": {
-            "findReplay": "Etsi tallenne",
-            "nextVideo": "Seuraava video",
-            "previousVideo": "Edellinen video",
-            "selectStage": "Valitse tapahtuma-lava",
-            "selectVideo": "Valitse video",
-            "speaker": "Puhuja",
-            "watchReplay": "Katso tallenne"
-        },
-        "language": "Kieli",
-        "latestConferences": "Viimeisimmät konferenssit",
-        "location": "Sijainti",
-        "noConferences": "Ei vielä lisättyjä konferensseja vuodelle {{year}} .",
-        "pageSubtitle": "Tämä portaali on avointa lähdekoodia (open-source) ja yhteisöllisesti kehittyvä.",
-        "pageTitle": "Konferenssien tallenteet",
-        "planBConferences": "Plan B konferenssit",
-        "topics": "Aiheet"
+      "title": "Konferenssitallenteet"
+    },
+    "filterBarLabel": "Löydä parhaat oppimateriaalit ja resurssit tarpeisiisi:",
+    "headerSignature": "Rogzy",
+    "headerText": "Tervetuloa Bitcoinin loputtomaan kaninkoloon! Tässä osiossa tarjoamme sinulle syventäviä oppaita suurimmasta osasta yleisimpiä bitcoin-projekteja. Tätä sivua ylläpitää nimimerkki \"benevolel\", sekä eräs intohimoinen bitcoineri, joka tukee tätä avoimen lähdekoodin projektia. Jos havaitsette virheitä, älkää epäröikö ottaa meihin yhteyttä. Nähdäksenne talousraportin aiemmin mainitusta projektista, tutustu meidän läpinäkyvyys-raporttiimme (Transparancie repport). Kiitos luottamuksestanne ja tuestanne opistoamme kohtaan. Tervetuloa mukaan ja nauttikaa kyydistä.",
+    "newsletters": {
+      "title": "Uutiskirje"
+    },
+    "pageDescription": "Bitcoinin ymmärtäminen on kuin tutkisi labyrinttia, joka jatkuvasti kasvaa. Auttaaksemme sinua matkallasi, olemme koonneet laajan valikoiman resursseja, jotka käsittelevät Bitcoinin ekosysteemin lukuisia aiheita.",
+    "pageSubtitle": "Hajautettu tieto tehokkaampaan levitykseen",
+    "pageTitle": "Tervetuloa Resurssi-portaaliin",
+    "podcasts": {
+      "title": "Podcastit"
+    },
+    "publicGrade": "Julkinen arvosana: {{grade}}/5",
+    "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä."
+  },
+  "settings": {
+    "changePassword": "Vaihda salasana"
+  },
+  "tutorials": {
+    "details": {
+      "checkAuthor": "Katso kirjoittajan muita julkaisuja ja tue hänen työtänsä.",
+      "enjoyed": "Piditkö oppaasta?",
+      "madeBy": "Tämän oppaan on tehnyt",
+      "source": "Alkuperäinen lähde : ",
+      "tipTooltip": "Piditkö siitä? Lahjoita."
+    },
+    "exchange": {
+      "centralized": {
+        "description": "Keskitetyt pörssit ovat yleensä säänneltyjä toimijoita, jotka toimivat välittäjinä pankkijärjestelmän ja Bitcoin-ekosysteemin välillä. Ne mahdollistavat suurten määrien bitcoinien ostamisen ja myymisen ja niiden nostamisen lompakkoosi tai pankkitilillesi. Ne yleensä vaativat KYC-tunnistautumisen (Know Your Customer) ja valvovat siksi toimintaasi, raportoiden rahoitustarkkailulaitoksille paikallisten lakien noudattamiseksi."
+      },
+      "description": "Pörssit ovat yksi sisään- ja uloskäyntiporteista perinteisen valuutan (euro, dollari) ja bitcoin-maailman välillä. Pörssit voivat olla säänneltyjä ja noudattaa KYC (\"Know Your Customer\", Tunne Asiakkaasi) -periaatetta tai vertaisverkkoon perustuvia ja anonyymejä. Jokainen pörssi tarjoaa erilaisia ominaisuuksia, maksurakenteita, likviditeettiä ja asiakastukea. Jokainen bitcoin-harrastaja käyttää erilaista pörssiä tarpeidensa ja vakaumustensa mukaan.",
+      "peer-to-peer": {
+        "description": "Vertaisverkkoon perustuvat pörssit ovat markkinapaikkoja, joissa yksilöt vaihtavat bitcoineja muiden valuuttojen kanssa keskenään. Nämä pörssit voivat olla säänneltyjä tai ei, ja ne eivät yleensä pyydä paljon tietoja sinusta (jos lainkaan). Ne yksinkertaisesti helpottavat suhteiden muodostamista käyttäjien välillä. Niiden palkkiot voivat olla korkeammat kuin perinteisillä pörsseillä, ja niiden likviditeetti voi olla hieman alhaisempi. Se on suosittu vaihtoehto bitcoin-harrastajille jotka tahtovat vaihtaa tai hankkia bitcoinia tai käydä sillä kauppaa eri valuuttojen kesken varjellen yksityisyyttään."
+      },
+      "shortDescription": "Bitcoin osto/myynti-ratkaisut, KYC and non-KYC",
+      "title": "Pörssi"
+    },
+    "explorer": {
+      "description": "Kaikki nämä oppaat on kirjoittanut joukko intohimoisia ja omistautuneita bitcoin-harrastajia, jotka haluaa levittää bitcoin-koulutusta ympäri maailmaa. Älä unohda tykätä, arvioida ja antaa heille tippiä satosheina!",
+      "didYouKnow": "Tiesitkö?"
+    },
+    "headerSignature": "Rogzy",
+    "headerText": "Tervetuloa Bitcoinin loputtomaan kaninkoloon! Tässä osiossa tarjoamme sinulle syventäviä oppaita suurimmasta osasta yleisimpiä bitcoin-projekteja. Tätä sivua ylläpitää nimimerkki \"benevolel\", sekä eräs intohimoinen bitcoineri, joka tukee tätä avoimen lähdekoodin projektia. Jos havaitsette virheitä, älkää epäröikö ottaa meihin yhteyttä. Nähdäksenne talousraportin aiemmin mainitusta projektista, tutustu meidän läpinäkyvyys-raporttiimme (Transparancie repport). Kiitos luottamuksestanne ja tuestanne opistoamme kohtaan ja nauttikaa kyydistä.",
+    "merchant": {
+      "description": "Oletko koskaan miettinyt kuinka helppoa on hyväksyä bitcoin-maksutapaa yrityskäytössä? Tutustu moniin ratkaisuihimme ja kehity pian asiantuntijaksi. Opeta paikalliset yritykset käyttämään bitcoinia liiketoimintansa tehostamiseen. Kassapääteratkaisut (Point of Sale (POS) solutions) vaihtelevat kauppiaan tarpeiden mukaisesti (esimerkiksi onko kaupankäynti verkkokauppatoimintaa, vai fyysistä kaupankäyntiä), mukautuen kaupankäynnin määrään tai monimutkaisiin tilaus-/maksu-järjestelmiin. Eräs helppo tapa aloittaa, on ottaa käyttöön LN-lompakko (Lightning Network wallet) ja siirtyä helppoon, tehokkaaseen maksutapa-ratkaisuun (Esimerkiksi \"mobile PoS\"). Ja kun olet valmis, voit alkaa tutkimaan esimerkiksi BTC Pay Server-palvelua soveltaaksesi kehittyneempiä, monipuolisempia ja ammattikäyttöön soveltuvampia ratkaisuja yrityksessäsi ja ympäristössäsi.",
+      "shortDescription": "Yritysratkaisut Bitcoinin käyttöönottoon",
+      "title": "Yritystoiminta"
+    },
+    "mining": {
+      "description": "Louhintateollisuus on yksi monimutkaisimmista kaninkolojen aiheista. Sen vuoksi, olemme koonneet monipuolisen valikoiman oppaita ja oppimateriaaleja siivittämään polkuasi louhintalaitteistojen ja -ohjelmistojen polulla. Aina modifioiduista S9-louhintalaitteista kotia lämmittäviin, vaikeita laskutoimituksia laskeviin bitcoin-louhintalämmittimiin.",
+      "shortDescription": "Bitcoin-louhintaratkaisut",
+      "title": "Louhiminen"
+    },
+    "node": {
+      "bitcoin": {
+        "description": "Bitcoin Core solmu (Bitcoin Core node) on kaiken Bitcoin-yksityisyytesi pohja. Se mahdollistaa sinun itse ylläpitää Bitcoinin ohjelmistoa ja lohkoketjua, ollen siten osa Bitcoin-vertaisverkostoa. Osallistuessasi verkon ylläpitoon (Louhintaan), voit itse osallistua tilikirjan lohkojen ja transaktioiden validointiin, näin varmistaen osaltasi bitcoin-tilikirjan turvallisuuden ja verifioinnin. Näin voit vähentää keskitettyjen tahojen valtaa omaisuudestasi. On monia tapoja ylläpitää Bitcoin nodea, toiset ovat käyttäjäystävällisempiä ja turvallisempia kuin toiset, joten ota selvää eri vaihtoehdoista. Lisätietoa löydät louhinta-oppaistamme."
+      },
+      "description": "Nodet ovat kuin bitcoin-tilikirjan hajautettuja servereitä joita sinäkin voit ylläpitää. Bitcoin Core node on ohjelmisto, joka mahdollistaa sinun ylläpitää bitcoin-verkkoa, vahvistaa transaktioita, varmistaa yhteisiä pelisääntöjä, ja saavuttaa taloudellinen itsemääräämisoikeus. Ekosysteemimme sisältää valikoiman erilaisia node-palveluita, Bitcoin Core:sta erilaisiin Lightning-ratkaisuihin ja -palveluihin, RGP-älysopimukset (Smart contracts), tai vaikka paranneltuja yksityisyys-ominaisuuksia.",
+      "lightning-network": {
+        "description": "Lightning node mahdollistaa sinun ottaa osaa Bitcoinin Layer 2-protokollatasoon nimeltä \"Lightning\". Voit avata Lightning-maksukanavia (Channels), hallita niiden likvidointia, osallistua ylläpitoon ja säilyttää itse bitcoinejasi omassa lompakossasi (non-custodial).",
+        "name": "Lightning-verkko"
+      },
+      "rgb": {
+        "description": "RGB on skaalautuva ja luotettava älysopimus-järjestelmä Bitcoinille & Lightning networkille. Se on ohjelmointikerros bitcoin-lohkoketjulle, konsepteina yksityisyys ja omaisuuserien omistusoikeus, abstraktiivinen ominaisuus omaisuuserien tokenisoinnin tarpeelle."
+      },
+      "shortDescription": "Eri tapoja ylläpitää Bitcoin nodea ja liittyä verkostoon",
+      "title": "Solmu (node)"
+    },
+    "pageDescription": "Bitcoin on laaja teollisuus, joka laajenee laajenemistaan päivittäin. Helpottaaksemme Sinua sen tutkimisessa, olemme koonneet laajan kokoelman oppaita jotka selittävät moninaista palvelujen ja ominaisuuksien kirjoa, sekä erilaisten ratkaisujen tarjontaa, liittyen Bitcoiniin.",
+    "pageSubtitle": "Paljastetaan Bitcoinin ekosysteemin laajuutta ja rikkautta",
+    "pageTitle": "Tutustu oppaisiimme",
+    "privacy": {
+      "bitcoin": {
+        "description": "Bitcoin ei ole oletuksena yksityinen, vaan se on tarkoituksella suunniteltu pseudonyymiseksi, ja jokainen tapahtuma on julkinen ja tallennetaan pysyvästi. Jotta saisimme takaisin hieman luottamuksellisuutta, meidän on noudatettava parhaita käytäntöjä ja käytettävä tiettyjä työkaluja, jotka on integroitu ohjelmistoomme. Näihin kuuluu osoitteen uudelleenkäytön välttäminen, CoinJoinin käyttö, kolikoiden sekoittaminen ja yhteyden muodostaminen omaan solmuun. Matkallasi kohti yksityisyyttä autamme sinua mielellämme."
+      },
+      "description": "Yksityisyys on ihmisen perusoikeus. Samaan aikaan kun kehitämme maailmaa, missä yksityisyyden tulisi olla lähtökohta, todellisuus, missä elämme ei ole niin. Pyrimme selittämään tätä asiaa parhaamme mukaan parhailla oppaillamme asian tiimoilta, ja siten saada sinut palauttamaan datasi omiin käsiisi ja palauttamaan sinulle takaisin digitaalisen ja taloudellisen itsemääräämisoikeutesi.",
+      "general": {
+        "description": "Massavalvonnan aikakaudella, yksityisyyden jokapäiväinen vaatiminen ja turvaaminen on välttämätöntä. Valvonnan ja esimerkiksi vakoilun yleistyessä, on suotavaa käyttää erilaisia työkaluja ja soveltaa niitä päivittäisiin tietoturva-tarpeisiin. Täältä voit selata erilaisia tietoturva-ratkaisuja kuten VPN-palveluita, Tor-verkon työkaluja, löydät Tails OS-käyttöjärjestelmän, Salatut messenger-palvelut ja paljon muuta."
+      },
+      "shortDescription": "Työkalut varmuuskopiointiin ja yksityisyyden turvaamiseen",
+      "title": "Yksityisyys"
+    },
+    "wallet": {
+      "description": "Elektroninen hardware-lompakko eli kylmälompakko (Hardware-wallet, cold wallet) on kuin digitaalinen avaimenperä-lompakko. Se mahdollistaa sinun vastaanottaa, säilyttää ja lähettää bitcoinejasi. On monenlaisia lompakoita ja lompakkopalveluita tarjoavia laitevalmistajia, joista löytyy erilaisia toimintoja eri käyttötapauksiin. Jokaisen bitcoinerin tulisi tutkia eri vaihtoehtoja tarkkaan ja valita niistä sopivin omiin tarkoituksiinsa ja tarpeisiinsa (esimerkiksi onko laite pitkäaikais-säilytystä vai päivittäisostoja varten).",
+      "desktop": {
+        "description": "Desktop-lompakot ovat yleensä tarkoitettu edistyneemmille käyttäjille, koska ne yhdistävät laitteistolaitteiden ja työpöytälompakko-ohjelmiston käytön. Voit ajatella niitä uudenlaisena, räätälöitynä ja toiminnallisesti monipuolisena lompakko- tai verkkopankki-käyttöliittymänä laitteistollesi ja työpöydällesi. Tällaiset lompakot tarjoavat \"multi-signature\"-vaihtoehtoja ja -ominaisuuksia, yksityisyysominaisuuksia, integraatiomekanismeja ja paljon muuta."
+      },
+      "hardware": {
+        "description": "Elektroniset lompakot (Hardware-wallets) ovat usein tarkoitettuja pitkäaikaisien bitcoin-varojen turvaamiseen ja salasanojen säilytykseen. Ne ovat fyysisiä laitteita, jotka eivät ole yhteydessä internettiin, siksi niitä kutsutaan kylmälompakoiksi (\"Cold wallet\") ja ovat erittäin tietoturvallisia. Vaikkakin laitteiden ohjelmistot ovat usein avointa lähdekoodia ja kaikkien saatavilla, riippuen laitevalmistajasta, laitteita myydään hintaluokassa 50€-300€. Sinun on helppo ajatella näitä laitteita kuin sinulla olisi oma, digitaalinen palkkiholvi laitteessasi, josta voit tarvittaessa käyttää varojasi."
+      },
+      "mobile": {
+        "description": "Mobiililaitteiden Lompakkosovellukset ovat usein tarkoitettu päivittäiseen kaupankäyntiin tai arvon siirtoon. Ne integroituvat Lightning Networkin kanssa mahdollistaen halvat ja välittömät transaktiot. Ne ovat normaalisti yhdistettynä internettiin, siksi niitä kutsutaankin usein \"Hot-walleteiksi\", kuumiksi lompakoiksi. Siten niiden tietoturva on hieman kylmälompakkoa heikompi. Näitä lompakoita tulisi käyttää pienten bitcoin-määrien säilytykseen ja käyttöön, pidä niitä kuin taskulompakkoina päivittäisostoksia ja -maksuja varten."
+      },
+      "shortDescription": "Turvallisuusratkaisut ja bitcoiniesi käyttäminen",
+      "title": "Lompakko"
+    },
+    "others": {
+      "title": "Muut tavat",
+      "shortDescription": "Selaa monipuolisia, Bitcoin-aiheisia oppaitamme",
+      "description": "Sukella Bitcoin-aiheisten oppaidemme tulvaan. Tee-Se-Itse (DYI) oppaista avoimen lähdekoodin koulutuksiin, löydä uusia kiinnostuksen alueita tullaksesi entistä paremmaksi ja monipuolisemmaksi, alan taitajaksi.",
+      "contribution": {
+        "description": "Tutki ja opi kuinka voit alkaa PlanB Network-kehittäjäksi ja opi käyttämään avoimen lähdekoodin (open source) kehitystyökalujamme, yksityiskohtaisten ohje-oppaidemme avulla!"
+      },
+      "DIY": {
+        "description": "Tutki ja löydä Tee-Se-Itse-oppaitamme ja opi miten voit itse kasata laitteistoja, ja muuta Bitcoiniin liittyvää, ja varmistaa omaa taloudellista itsenäisyyttäsi!"
+      },
+      "OpenSource": {
+        "description": "Tutki Open source-oppaitamme, jotta voit oppia kuinka otat avoimen lähdekoodin työkalut käyttöösi!"
+      },
+      "general": {
+        "description": "Selaa yleis-aiheisia oppaitamme kerryttääksesi osaamistasi tietokoneiden käytöstä ja muista aiheista. Esimerkiksi oppaita liittyen yksilönvapauteen!"
+      }
     }
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "p1": "Kani on sukeltanut koloihinsa eksyen. Tästä ennenkuulumattomasta ja odottamattomasta seikkailusta johtuen, tämä kaninkolojen onkalon sivu on vasta kehitteillä, \"Under Construction\". Pahoittelemme tilannetta, kehitystiimimme tekee parhaansa kehittäessään sivustoa. Älä epäröi tarjota apua ja osallistua yhteisölliseen kehitystyöhön, lisätietoa löydät osoitteestamme",
+    "p2": "ja liity yhteisöömme!",
+    "pageTitle": "Oho."
+  },
+  "words": {
+    "about": "Tietoja",
+    "about-us": "Tietoja meistä",
+    "account": "Tili",
+    "additionalCriteria": "Lisäkriteerit",
+    "advanced": "Edistyneet ominaisuudet",
+    "article": "Artikkeli",
+    "articles": "Artikkelit",
+    "audioBook": "Äänikirja",
+    "back": "Takaisin",
+    "beginner": "Aloittelija",
+    "bitcoinWhitepaper": "Bitcoin Whitepaper",
+    "book": "Kirja",
+    "books": "Kirjoja",
+    "builders": "Kehittäjät",
+    "certificate": "Sertifikaatti",
+    "conference": "Konferenssi",
+    "conferences": "Konferenssit",
+    "content": "Sisältö",
+    "continue": "Jatka",
+    "course": "Kurssitus",
+    "courses": "Kurssitukset",
+    "dashboard": "Hallintapaneeli",
+    "details": "Tiedot",
+    "didYouKnow": "Tiesitkö?",
+    "documentaries": "Dokumenttielokuvat",
+    "donations": "Lahjoitukset",
+    "economy": "Talousjärjestelmä",
+    "education": "Koulutus",
+    "email": "Email",
+    "events": "Tapahtumat",
+    "exchanges": "Pörssit",
+    "followUs": "Seuraa meitä",
+    "helpUs": "Tue ja auta meitä",
+    "home": "Aloitus",
+    "intermediate": "Keskitaso",
+    "interview": "Haastattelu",
+    "level": {
+      "advanced": "Edistynyt",
+      "beginner": "Aloittelija",
+      "developer": "kehittäjä",
+      "intermediate": "Keskitaso"
+    },
+    "library": "Kirjasto",
+    "lightning": "Lightning",
+    "lnurlAuth": "LNURL Auth",
+    "manifesto": "Manifesti",
+    "merchandising": "Markkinointi ja tuotteistus",
+    "merchants": "Markkinoijat",
+    "members": " Jäsenet",
+    "mining": "Louhinta",
+    "more": "Lisää",
+    "movieDocumentary": "Dokumenttielokuva",
+    "network": "Verkko",
+    "networkMember": "Verkon jäsen",
+    "newsletter": "Uutiskirjeesi",
+    "newsletters": "Uutiskirjeet",
+    "node": "Solmu",
+    "nodeNetwork": "Node Network",
+    "or": "tai",
+    "ourStory": "Tarinamme",
+    "podcast": "Podcast",
+    "podcasts": "Podcastit",
+    "professors": "Professorit",
+    "purchase": "Hanki",
+    "register": "Rekisteröidy",
+    "relatedResources": "Liite-resurssit",
+    "resources": "Resurssit",
+    "resume": "Jatka eteenpäin",
+    "review": "Tarkista",
+    "rogzy": "Rogzy",
+    "sponsorUs": "Sponsoroi Meitä",
+    "sponsoringAndContributors": "Sponsorointi & Kehittäjät",
+    "supportUs": "Tue meitä",
+    "teachers": "Opettajat",
+    "termsAndConditions": "Käyttöehdot ja -säännöt",
+    "toolkits": "Työkalut",
+    "tutorial": "Opas",
+    "tutorials": "Oppaat",
+    "update": "Päivitys",
+    "video": "Video",
+    "videos": "Videot",
+    "wallets": "Lompakot",
+    "date": "Päivämäärä",
+    "time": "Aika",
+    "to": "mihin",
+    "billing": "Laskutus",
+    "download": "Lataa",
+    "invoice": "Lasku",
+    "on": "päällä",
+    "online": "Online",
+    "ticket": "Pääsylippu",
+    "tickets": "Pääsyliput"
+  },
+  "payment": {
+    "total": "Yhteensä",
+    "terms": "Katso <0>general terms</0> toimitus- ja palautusehdot",
+    "feeDistribution": "Palkkioiden jakautuminen: Kirjoittaja 99 % - Alusta 1 %",
+    "proceedToPayment": "Siirry maksamaan"
+  },
+  "conferences": {
+    "addConferences": "Voit vapaasti lisätä puuttuvia konferensseja tämän <0>Github</0> -repositoryn kautta.",
+    "backConferences": "Takaisin konferenssit-sivulle",
+    "conferenceName": "Konferenssin nimi",
+    "conferencesSinceGenesis": "Bitcoin-konferenssien arkisto alkaen Genesis Blockista",
+    "description": "Konferenssit ovat Bitcoin-alan avaintekijöitä. Ne ovat osa kaikkien Bitcoinereiden kouluttautumisen polkua. Me kehitimme tämän työkalun auttaaksemme sinua navigoimaan läpi satoja konferensseja.",
+    "details": {
+      "findReplay": "Etsi tallenne",
+      "nextVideo": "Seuraava video",
+      "previousVideo": "Edellinen video",
+      "selectStage": "Valitse tapahtuma-lava",
+      "selectVideo": "Valitse video",
+      "speaker": "Puhuja",
+      "watchReplay": "Katso tallenne"
+    },
+    "language": "Kieli",
+    "latestConferences": "Viimeisimmät konferenssit",
+    "location": "Sijainti",
+    "noConferences": "Ei vielä lisättyjä konferensseja vuodelle {{year}} .",
+    "pageSubtitle": "Tämä portaali on avointa lähdekoodia (open-source) ja yhteisöllisesti kehittyvä.",
+    "pageTitle": "Konferenssien tallenteet",
+    "planBConferences": "Plan B konferenssit",
+    "topics": "Aiheet"
+  }
 }

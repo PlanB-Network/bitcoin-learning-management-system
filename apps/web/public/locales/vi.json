@@ -1,715 +1,715 @@
 {
-    "about": {
-        "manifesto": "Chúng tôi tin vào tương lai phi tập trung mà Bitcoin mang lại. \n\nSứ mệnh của chúng tôi là giới thiệu Bitcoin tới hàng tỷ người trong vòng một thập kỷ. Công cụ của chúng tôi là giáo dục và thông tin. \n\nChúng tôi hỗ trợ các cộng đồng Bitcoin bằng cách mang đến nội dung giáo dục mã nguồn mở và một mạng lưới những nhà cố vấn về Bitcoin. \n\nTriết lý của chúng tôi được truyền cảm hứng vởi bản tuyên ngôn cypherpunk. Phong trào cypherpunk hiển dương quyền riêng tư, chúng tôi hiển dương giáo dục. Chúng tôi tin rằng tri thức là nền tảng vững chắc cho tự do và sự thay đổi. \n\nChúng tôi chỉ tập trung duy nhất vào Bitcoin (Bitcoin - only).\n\nChúng tôi cổ vũ cho tránh nhiệm cá nhân và sự độc lập có được nhờ sở hữu chìa khoá của chính mình.\n\nChúng tôi chủ trương xác minh, kiểm chứng tất cả, không tin tưởng mù quáng vào bất kỳ điều gì cả.\n\nChúng tôi tin rằng thông qua việc \"sửa chữa\" lại tiền tệ, chúng ta sẽ \"sửa chữa\" được thế giới.\n\nChúng tôi là phi tập trung và mã nguồn mở, không có tồn tại điểm thất bại tập trung nào cả.\n\nChúng tôi cổ vũ việc phân phối, chia sẻ miễn phí các nội dung của mình.\n\nChúng tôi khao khát về một thế giới được vận hành từ dưới lên, nơi cá nhân mỗi người chính là trung tâm.\n\nChúng tôi đơn giản hoá, chúng tôi giáo dục, chúng tôi chia sẻ.\n\nTham gia cùng chúng tôi trong sứ mệnh \"orange pill\" - chuốc viên thuốc màu cam, viên thuốc Bitcoin, cho toàn thế giới.\n",
-        "activeContributors": "Những người đóng góp tích cực",
-        "missionTitle": "Sứ mệnh của chúng tôi",
-        "commitmentTitle": "Cam kết của chúng tôi",
-        "commitmentContent": "Những cam kết của chúng tôi với cộng đồng bitcoin: \n • Duy trì mã nguồn mở \n • Cung cấp những nội dung giáo dục chất lượng cao \n • Dịch các nội dung của chúng tôi ra càng nhiều ngôn ngữ càng tốt \n • Hỗ trợ những nhà phát triển Bitcoin trên hành trình khởi nghiệp của họ",
-        "coreTeamTitle": "Đội ngũ cốt lõi",
-        "coreTeamRogzyRole": "Quản lý sản phẩm và Đồng sáng lập",
-        "coreTeamGiacomoRole": "Giám đốc và Đồng sáng lập",
-        "coreTeamAjelexRole": "Điều phối node",
-        "corporateTitle": "Doanh nghiệp hỗ trợ",
-        "coportateContact": "Thông tin liên hệ:",
-        "storyTitle": "Câu chuyện về chúng tôi",
-        "description": "PlanB Network giúp các cộng đồng Bitcoin trên toàn thế giới được tổ chức tốt nhằm cung cấp nền tảng giáo dục tốt hơn. Nền tảng xây dựng các công cụ cần thiết để hướng tới mục tiêu đó, thông qua học viên online, cổng hướng dẫn, bộ công cụ giáo dục về Bitcoin và cổng tài nguyên.",
-        "subtitle": "Bạn muốn \"orange pill\" cả thế giới? Hãy tham gia vào PlanB Network.",
-        "title": "Về PlanB Network",
-        "missionContent1": "Sứ mệnh của chúng tôi là hỗ trợ các cộng đồng Bitcoin địa phương thông qua chương trình giáo dục và kết nối mã nguồn mở. Chúng tôi tập hợp, tổ chức và kiến tạo các nguồn lực cần thiết (khoá học, sách, poster, tờ bướm quảng cảo, video) để thúc đẩy sự phát triển của ngành công nghiệp Bitcoin.",
-        "missionContent2": "Chúng tôi tập trung trị thức lại để phân phối tốt hơn thông qua một kho chứa đơn giản, đa ngôn ngữ trên GitHub và một nền tảng học tập trực tuyến. Chúng tôi hỗ trợ các công đồng Bitcoin trong việc phát triển những công cụ cần thiết để tài năng của họ được phát triển.",
-        "coreTeamContent": "PlanB Network là một tập hợp của hàng trăm người đóng góp, giáo viên, lãnh đạo cộng đồng, nhà thiết kế, lập trình viên và nhà tổ chức. Chân thành cảm ơn sâu sắc những người đã giúp biến PlanB trở thành hiện thực và tiếp tục đóng góp mỗi ngày. (Bảng vàng cống hiến sẽ sớm được giới thiệu)",
-        "coreTeamAsioRole": "Điều phối chương trình giáo dục",
-        "corporateContent": "PlanB Network là một dự án có sự hợp tác và tham gia cuả ba thực thể tập trung vào việc phát triển Bitcoin. Trong nỗ lực mở rộng quy mô của nền tảng cơ sở tập trung vào mảng giáo dục về bitcoin, các thực thể này đã quyết định hợp tác để xây dựng PlanB Network. Để đạt được thành công với mục tiêu đưa giáo dục về bitcoin tới với thế giới, nhiều thực thể khác đã quyết định tham gia và đóng góp. Chân thành cảm ơn",
-        "storyContent": "PlanB Network là một sáng kiến ra đời để hỗ trợ việc mở rộng giáo dục về Bitcoin trên phạm vi toàn cầu. Nó là giao điểm của nhiều công ty có đam mê tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và ý thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network để mang đến một công cụ hữu ích cho sự phát triển của hệ sinh thái Bitcoin. Bài trình chiếu về năm 2023 của chúng tôi có tại đây."
+  "about": {
+    "manifesto": "Chúng tôi tin vào tương lai phi tập trung mà Bitcoin mang lại. \n\nSứ mệnh của chúng tôi là giới thiệu Bitcoin tới hàng tỷ người trong vòng một thập kỷ. Công cụ của chúng tôi là giáo dục và thông tin. \n\nChúng tôi hỗ trợ các cộng đồng Bitcoin bằng cách mang đến nội dung giáo dục mã nguồn mở và một mạng lưới những nhà cố vấn về Bitcoin. \n\nTriết lý của chúng tôi được truyền cảm hứng vởi bản tuyên ngôn cypherpunk. Phong trào cypherpunk hiển dương quyền riêng tư, chúng tôi hiển dương giáo dục. Chúng tôi tin rằng tri thức là nền tảng vững chắc cho tự do và sự thay đổi. \n\nChúng tôi chỉ tập trung duy nhất vào Bitcoin (Bitcoin - only).\n\nChúng tôi cổ vũ cho tránh nhiệm cá nhân và sự độc lập có được nhờ sở hữu chìa khoá của chính mình.\n\nChúng tôi chủ trương xác minh, kiểm chứng tất cả, không tin tưởng mù quáng vào bất kỳ điều gì cả.\n\nChúng tôi tin rằng thông qua việc \"sửa chữa\" lại tiền tệ, chúng ta sẽ \"sửa chữa\" được thế giới.\n\nChúng tôi là phi tập trung và mã nguồn mở, không có tồn tại điểm thất bại tập trung nào cả.\n\nChúng tôi cổ vũ việc phân phối, chia sẻ miễn phí các nội dung của mình.\n\nChúng tôi khao khát về một thế giới được vận hành từ dưới lên, nơi cá nhân mỗi người chính là trung tâm.\n\nChúng tôi đơn giản hoá, chúng tôi giáo dục, chúng tôi chia sẻ.\n\nTham gia cùng chúng tôi trong sứ mệnh \"orange pill\" - chuốc viên thuốc màu cam, viên thuốc Bitcoin, cho toàn thế giới.\n",
+    "activeContributors": "Những người đóng góp tích cực",
+    "missionTitle": "Sứ mệnh của chúng tôi",
+    "commitmentTitle": "Cam kết của chúng tôi",
+    "commitmentContent": "Những cam kết của chúng tôi với cộng đồng bitcoin: \n • Duy trì mã nguồn mở \n • Cung cấp những nội dung giáo dục chất lượng cao \n • Dịch các nội dung của chúng tôi ra càng nhiều ngôn ngữ càng tốt \n • Hỗ trợ những nhà phát triển Bitcoin trên hành trình khởi nghiệp của họ",
+    "coreTeamTitle": "Đội ngũ cốt lõi",
+    "coreTeamRogzyRole": "Quản lý sản phẩm và Đồng sáng lập",
+    "coreTeamGiacomoRole": "Giám đốc và Đồng sáng lập",
+    "coreTeamAjelexRole": "Điều phối node",
+    "corporateTitle": "Doanh nghiệp hỗ trợ",
+    "coportateContact": "Thông tin liên hệ:",
+    "storyTitle": "Câu chuyện về chúng tôi",
+    "description": "PlanB Network giúp các cộng đồng Bitcoin trên toàn thế giới được tổ chức tốt nhằm cung cấp nền tảng giáo dục tốt hơn. Nền tảng xây dựng các công cụ cần thiết để hướng tới mục tiêu đó, thông qua học viên online, cổng hướng dẫn, bộ công cụ giáo dục về Bitcoin và cổng tài nguyên.",
+    "subtitle": "Bạn muốn \"orange pill\" cả thế giới? Hãy tham gia vào PlanB Network.",
+    "title": "Về PlanB Network",
+    "missionContent1": "Sứ mệnh của chúng tôi là hỗ trợ các cộng đồng Bitcoin địa phương thông qua chương trình giáo dục và kết nối mã nguồn mở. Chúng tôi tập hợp, tổ chức và kiến tạo các nguồn lực cần thiết (khoá học, sách, poster, tờ bướm quảng cảo, video) để thúc đẩy sự phát triển của ngành công nghiệp Bitcoin.",
+    "missionContent2": "Chúng tôi tập trung trị thức lại để phân phối tốt hơn thông qua một kho chứa đơn giản, đa ngôn ngữ trên GitHub và một nền tảng học tập trực tuyến. Chúng tôi hỗ trợ các công đồng Bitcoin trong việc phát triển những công cụ cần thiết để tài năng của họ được phát triển.",
+    "coreTeamContent": "PlanB Network là một tập hợp của hàng trăm người đóng góp, giáo viên, lãnh đạo cộng đồng, nhà thiết kế, lập trình viên và nhà tổ chức. Chân thành cảm ơn sâu sắc những người đã giúp biến PlanB trở thành hiện thực và tiếp tục đóng góp mỗi ngày. (Bảng vàng cống hiến sẽ sớm được giới thiệu)",
+    "coreTeamAsioRole": "Điều phối chương trình giáo dục",
+    "corporateContent": "PlanB Network là một dự án có sự hợp tác và tham gia cuả ba thực thể tập trung vào việc phát triển Bitcoin. Trong nỗ lực mở rộng quy mô của nền tảng cơ sở tập trung vào mảng giáo dục về bitcoin, các thực thể này đã quyết định hợp tác để xây dựng PlanB Network. Để đạt được thành công với mục tiêu đưa giáo dục về bitcoin tới với thế giới, nhiều thực thể khác đã quyết định tham gia và đóng góp. Chân thành cảm ơn",
+    "storyContent": "PlanB Network là một sáng kiến ra đời để hỗ trợ việc mở rộng giáo dục về Bitcoin trên phạm vi toàn cầu. Nó là giao điểm của nhiều công ty có đam mê tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và ý thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network để mang đến một công cụ hữu ích cho sự phát triển của hệ sinh thái Bitcoin. Bài trình chiếu về năm 2023 của chúng tôi có tại đây."
+  },
+  "conferences": {
+    "conferencesSinceGenesis": "Nguồn lưu trữ các hội nghị Bitcoin kể từ Genesis Block",
+    "addConferences": "Vui lòng thêm bất kỳ hội nghị nào còn thiếu thông qua kho lưu trữ <0>Github</0> này.",
+    "backConferences": "Quay lại các hội nghị",
+    "details": {
+      "findReplay": "Tìm kiếm việc chiếu lại",
+      "nextVideo": "Video tiếp theo",
+      "previousVideo": "Video phía trước",
+      "selectStage": "Chọn một sân khấu",
+      "selectVideo": "Chọn một video",
+      "speaker": "Diễn giả",
+      "watchReplay": "Xem chiếu lại"
     },
-    "conferences": {
-        "conferencesSinceGenesis": "Nguồn lưu trữ các hội nghị Bitcoin kể từ Genesis Block",
-        "addConferences": "Vui lòng thêm bất kỳ hội nghị nào còn thiếu thông qua kho lưu trữ <0>Github</0> này.",
-        "backConferences": "Quay lại các hội nghị",
-        "details": {
-            "findReplay": "Tìm kiếm việc chiếu lại",
-            "nextVideo": "Video tiếp theo",
-            "previousVideo": "Video phía trước",
-            "selectStage": "Chọn một sân khấu",
-            "selectVideo": "Chọn một video",
-            "speaker": "Diễn giả",
-            "watchReplay": "Xem chiếu lại"
-        },
-        "language": "Ngôn ngữ",
-        "latestConferences": "Hội nghị mới nhất",
-        "location": "Địa điểm",
-        "noConferences": "Chưa có hội nghị nào được thêm cho {{year}} cả.",
-        "pageSubtitle": "Cổng này là mã nguồn mở và được mở cho mọi người đóng góp.",
-        "pageTitle": "Những bản xem lại của các hội nghị",
-        "planBConferences": "Hội nghị Plan B",
-        "topics": "Các chủ đề",
-        "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào.   Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
-        "conferenceName": "Tên của hội nghị"
-    },
-    "courses": {
-        "explorer": {
-            "footerp1": "Tại Sovereign University, các giáo sư của chúng tôi toàn quyền tự chủ về mặt nội dung và các công cụ mà họ muốn bạn khám phá, miễn là họ tuân theo các quy tắc đạo đức. Họ là những người đam mê Bitcoin từ nhiều cấp độ kinh nghiệm khác nhau.",
-            "moreToCome": "... và nhiều điều nữa sẽ được mang tới!",
-            "pageSubtitle": "Ứng dụng rộng rãi thông qua giáo dục mã nguồn mở được tập trung hoá",
-            "pageTitle": "Chào mừng bạn đến với Học viện Plan B",
-            "s2p1": "Nếu bạn đã bắt đầu khám phá cái hang thỏ mang tên Bitcoin, bạn phải biết rằng đây là một hành trình không có điểm cuối với rất nhiều con đường. Tại đại học này, chúng tôi hiểu được điều này và đã thiết kế nội dung đào tạo của chúng tôi theo hướng phi tuyến tính, tự chủ và mở rộng nhất có thể.",
-            "s2p2": "Bạn sẽ có khả năng để lựa chọn con đường của riêng mình và bám theo nó, phát triển các kỹ năng và tri thức theo động lực của bạn.",
-            "s2p3": "Tất cả các khoá học của chúng tôi đều miễn phí 100% nên không gì có thể ngăn cản bạn!",
-            "s2t1": "Giáo dục về Bitcoin là một hành trình, không phải là một đích đến",
-            "s3PickLevel": "Lựa chọn các cấp độ:",
-            "s3PickTopic": "Lựa chọn các chủ đề:",
-            "s3t1": "Xây dựng con đường của chính bạn xuyên qua chiếc hang thỏ mang tên Bitcoin",
-            "footerp2": "Nếu bạn muốn cải thiện khoá học hoặc cung cấp khoá học của chính mình, bạn có thể làm việc đó một cách dễ dàng thông qua GitHub. Để hỗ trợ giáo sư, bạn có thể chấm điểm khoá học của họ, trực tiếp típ cho giao sư hoặc trở thành một thành viên của trường đại học để hỗ trợ nền tảng.",
-            "footerTitle": "Các giáo sư của chúng tôi ở đây cho bạn!",
-            "pageDescription": "Học viên Plan B ra đời nhằm mục đích đơn giản hoá việc giáo dục về Bitcoin trên toàn thế giới. Được tuyển chọn bởi các chuyên gia thuộc nhiều lĩnh vực chuyên môn, học viên cung cấp vô số các khoá học được thiết kế để làm sáng tỏ mọi khía cạnh của Bitcoin. Từ người mới bắt đầu cho đến chuyên giá, dù là học theo tốc độ riêng của bản thân hay được theo dõi hàng tuần bởi một giáo sư, chúng tôi hi vọng rằng học viện có thể giúp bạn hiểu rõ hơn về một chủ đề rất rộng lớn là Bitcoin. Phần lớn các khoá học của chúng tôi là hoàn toàn miễn phí với tất cả mọi người, ở bất kỳ đâu, đều có thể tiếp cận với giáo dục."
-        },
-        "payment": {
-            "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển",
-            "accessibility": "Quyền truy cập",
-            "accessibility_forever": "Mãi mãi",
-            "amount": "Số lượng",
-            "back_course": "Quay trở lại khoá học",
-            "callout": "Bạn sắp mua khoá học này.",
-            "date": "Ngày",
-            "dates_to": "{{startDate}} đến {{endDate}}",
-            "book_description": "Vui long xem lại chi tiết địa điểm đã được cung cấp.\nMột khi quá trình đặt chỗ được xử lý, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
-            "duration": "Thời lượng",
-            "invoiceId": "Tx ID",
-            "numberOfChapters": "Số lượng chương",
-            "payment_details": "Chi tiết thanh toán",
-            "payment_successful": "Thanh toán thành công!",
-            "qr_unified": "Mã QR này được hợp nhất, nên nó chấp nhận thanh toán Lightning và thanh toán on-chain.",
-            "teacher": "Giáo viên",
-            "teachers": "Các giáo viên",
-            "time": "Thời gian",
-            "downloadCurriculum": "Tải về chương trình giảng dạy",
-            "description": "Giao dịch mua này sẽ cấp cho bạn quyền truy cập vào các khoá học trực tuyến trên nền tảng cũng như các lớp học trực tiếp, miễn là bạn đặt chỗ trước. Mỗi buổi học trực tiếp sẽ diễn ra vào ngày giờ và địa điểm củ thể được chỉ định trước khi được ghi lại và phát trực tuyến trên nền tảng."
-        },
-        "unreleased": {
-            "theoreticalLightning": "Khoá học lý thuyết nâng cao về Lightning Network",
-            "financeIntroduction": "Giới thiệu về tài chính",
-            "financialCrisis": "Phân tích các cuộc khủng hoảng tài chính lớn",
-            "hyperinflation": "Nghiên cứu về siêu lạm phát",
-            "colcardAndSparrow": "Coldcard và Sparrow"
-        },
-        "categories": {
-            "btc": "Bitcoin",
-            "crypto": "Mật mã",
-            "cuboplus": "Bitcoin",
-            "econ": "Kinh tế học trường phái Áo",
-            "fin": "Tài chính",
-            "secu": "Bảo mật và Riêng tư",
-            "ln": "Lightning Network",
-            "min": "Đào"
-        },
-        "chapter": {
-            "count": "Chương {{count}}",
-            "finishCourse": "Hoàn thành khoá học",
-            "next": "Xong, hãy đi tới chương tiếp theo!",
-            "detail": {
-                "title": "Chi tiết lớp học",
-                "p1content": "Đảm bảo rằng bạn đã đặt chỗ cho bản thân",
-                "p1heading": "Bạn có dự định tham gia trực tiếp buổi học này?",
-                "p2content": "Không sao ! Buổi học sẽ được phát trực tiếp trên trang và có sẵn để xem lại sau.",
-                "bookSeat": "Đặt chỗ cho bạn",
-                "classIsFull": "Lớp học đã đầy chỗ",
-                "ticketDownload": "Tải về vé của bạn",
-                "p2heading": "Bạn không thể đích thân đến?",
-                "cancelBooking": "Huỷ đặt chỗ của bạn"
-            },
-            "live": {
-                "title": "Video trực tiếp",
-                "stayTuned": "Buổi phát trực tiếp sẽ bắt đầu nửa tiếng trước khi buổi học bắt đầu. Hãy giữ nguyên."
-            },
-            "thanksTip": "Bạn muốn cảm ơn? Thưởng.",
-            "nextLesson": ""
-        },
-        "details": {
-            "accessible": "Quyền truy cập: Suốt đời",
-            "buyCourse": "Mua khoá học",
-            "courseId": "ID của khoá học: {{courseId}}",
-            "coursePayment": "Thanh toán khoá học",
-            "curriculum": "Chương trình giảng dạy",
-            "date": "Ngày: {{startDate}} tới {{endDate}}",
-            "description": "Mô tả",
-            "duration": "Thời lượng: {{hours}} giờ",
-            "goal": "MỤC TIÊU: ",
-            "mobile": {
-                "chapters": "{{chapters}} chương",
-                "hours": "{{hours}} giờ"
-            },
-            "numberOfChapters": "Số chương: {{number}}",
-            "objectives": "Các mục tiêu",
-            "objectivesTitle": "Bạn sẽ học được nhừng gì:",
-            "professor": "Giáo sư",
-            "startCourse": "Bắt đầu khoá học",
-            "taughtBy": "Khoá học này đang được giảng dạy bởi:",
-            "teacher": "Giáo viên: {{teacher}}",
-            "teachers": "Các giáo viên: {{teachers}}",
-            "total": "Tổng cộng",
-            "payment_successful": "Thanh toán thành công!",
-            "access_invoice": "Bạn có thể truy cập hoá đơn của bạn thông qua bảng điều khiển của mình",
-            "payment_details": "Chi tiết thanh toán",
-            "amount": "Số lượng",
-            "invoiceId": "Tx ID",
-            "dates_to": "{{startDate}} tới {{endDate}}",
-            "level": "Cấp độ: $t(words.level.{{level}})",
-            "price": "Giá: {{price}} sats",
-            "teacherWord": "Một lời từ giáo viên"
-        },
-        "preview": {
-            "by": "bởi {{professor}}",
-            "letsgo": "Đi nào"
-        },
-        "quizz": {
-            "quizz": "Câu hỏi kiểm tra",
-            "quizzResults": "Kết quả kiểm tra",
-            "quizzReview": "Xem lại câu hỏi kiểm tra",
-            "resultCongrats": "Chúc mừng, bạn đã hoàn thành tốt!",
-            "resultItsOk": "Đừng bỏ cuộc, bạn sẽ làm bài thi tốt hơn lần sau!",
-            "resultNotBad": "Không quá tệ !",
-            "resultPerfect": "Rất hoàn hảo! Chúc mừng !",
-            "clickOnPie": "Nhấp vào biểu đồ hình tròn để kiểm tra lỗi của bạn và xem phần giải thích"
-        },
-        "part": {
-            "count": "Phần số {{count}}/{{total}}"
-        },
-        "footer": {
-            "": ""
-        }
-    },
-    "events": {
-        "card": {
-            "unlimited": "không giới hạn",
-            "free": "miễn phí",
-            "online": "trực tuyến",
-            "people": "mọi người",
-            "watchLive": "Xem trực tiếp",
-            "watchReplay": "Xem bản phát lại",
-            "buyReplay": "Mua bản phát lại",
-            "bookLive": "Đặt chỗ trực tiếp",
-            "seatBooked": "Chỗ đã được đặt",
-            "eventFull": "Sự kiện đã đầy chỗ",
-            "visitWebsite": "Thăm website",
-            "bookSeat": "Đặt chỗ",
-            "limited": "giới hạn ở"
-        },
-        "main": {
-            "upcomingEvents": "Những sự kiện sắp tới",
-            "currentEvents": "Những sự kiện đang diễn ra hiện tại"
-        },
-        "missed": {
-            "missedh1": "Những sự kiện đã diễn ra để xem lại",
-            "missedp1": "Bạn đã bỏ lỡ một sự kiện?",
-            "missedp2": "Ở đây chúng tôi lưu trữ tất cả các bản xem lại của các sự kiện trong quá khứ được tổ chức trong mạng lưới, do đó mọi người có thể theo dõi miễn phí những sự kiện mà họ đã bỏ lỡ."
-        },
-        "newEvent": {
-            "button": "Thêm vào sự kiện của tôi",
-            "description": "Tất nhiên! Tất cả các sự kiện Bitcoin có thể gia tăng sự hiện diện của họ ở đây, mọi sáng kiến tạo sự kiện mới đều được hoan nghênh :)",
-            "subtitle": "\"Orange pill\" một tỷ người không phải là việc dễ dàng",
-            "title": "Muốn thêm sự kiện của bạn?"
-        },
-        "pageSubtitle": "Việc mở rộng áp dụng từ dưới lên được tăng cường bởi một mạng lưới mạnh mẽ",
-        "payment": {
-            "access_online_successful": "Khi sự kiện bắt đầu, đăng nhập vào nền tảng và bạn sẽ được cấp quyền truy cập vào buổi phát trực tiếp thông qua trang sự kiện.",
-            "access_type": "Dạng truy cập",
-            "address": "Địa chỉ",
-            "amount": "Số lượng",
-            "back_events": "Quan lại các sự kiện",
-            "book_seat": "Đặt chỗ",
-            "callout_online": "Bạn sắp đặt một vé tham dự trực tuyến sự kiện này.",
-            "callout_physical": "Bạn sắp đặt một vé tham dự trực tiếp sự kiện này.",
-            "callout_replay": "Bạn sắp đặt một vé tham dự sự kiện này thông qua video phát lại.",
-            "date": "Ngày",
-            "dates_to": "{{startDate}}{{endDate}}",
-            "description_physical": "Vui lòng xem lại chi tiết địa điểm đã được cung cấp.\nMột khi việc đặt chỗ hoàn thành, chúng tôi sẽ cung cấp cho bạn vé để xuất trình tại sự kiện. Vế này sẽ cho bạn quyền truy cập vào buổi phát trực tiếp và video phát lại, nếu có.",
-            "language": "Ngôn ngữ được nói",
-            "limitation": "Giới hạn",
-            "max_capacity": "Sức chứa tối đa của",
-            "payment_details": "Chi tiết thanh toán",
-            "payment_successful": "Đặt chỗ thành công !",
-            "time": "Thời gian",
-            "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển.",
-            "access_physical_successful": "Bạn có thể tải vé về tại đây, hoặc tải về sau từ bảng điều khiển.",
-            "additional_free_description": "Sự kiện này miễn phí, nên bạn sẽ không bị tính phí khi đặt chỗ. Dù sao đi nữa, hãy nhớ tham dự vì số lượng chỗ ngồi có hạn.",
-            "description_online": "Vui lòng xem lại thời gian của sự kiện.\nKhi thời gian tới, đăng nhập vào nền tảng và truy cập vào buổi phát trực tiếp thông qua trang sự kiện.",
-            "description_free_physical": "Vui lòng xem lại chi tiết địa chỉ đã được cung cấp.\nMột khi việc đặt chỗ hoàn tất, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
-            "download_ticket": "Tải về vé của bạn",
-            "enjoy": "Chúng tôi hy vọng rằng bạn sẽ thích nó :)"
-        },
-        "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
-        "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?"
-    },
-    "auth": {
-        "accountCreated": "Tài khoản của bạn đã được tạo, {{userName}}!",
-        "alreadyHaveAccount": "Bạn đã có tài khoản?",
-        "connectWithLn": "Kết nối với LN",
-        "createAccount": "Đăng ký",
-        "createOne": "Đăng ký tại đây!",
-        "emailAddress": "Địa chỉ email",
-        "errors": {
-            "usernameRequired": "Tên người dùng là bắt buộc",
-            "usernameTooShort": "Tên người dùng phải có ít nhất 5 ký tự",
-            "usernameRegex": "Tên người dùng chỉ được bao gồm chữ cái, chữ số, _, . và -"
-        },
-        "forgottenPassword": "Bạn quên mật khẩu của mình?",
-        "headerAccountCreated": "Tài khoản đã được tạo",
-        "noAccountNeeded": "Không cần phải có tài khoản để bắt đầu học trên Sovereign University!",
-        "noAccountYet": "Bạn chưa có tài khoản?",
-        "passwordReinit": "Đặt lại mật khẩu",
-        "passwordRequired": "Mật khẩu là bắt buộc",
-        "passwordsDontMatch": "Mật khẩu không khớp",
-        "sendLink": "Gửi một đường link",
-        "signIn": "Đăng nhập",
-        "canSaveProgress": "Bây giờ, bạn có thể lưu lại tiến độ của mình trên Học viện Bitcoin",
-        "lnurlAuthDescription": "Quét mã QR với ví Lightning của bạn để đăng nhập!"
-    },
-    "bet": {
-        "educationalContent": {
-            "description": "Nội dung này được đảm bảo sằn sàng để sử dụng cho các sự kiện và mục đích giáo dục.",
-            "title": "Nội dung dùng cho giáo dục"
-        },
-        "hereForYou": "BET ở đây để dành cho bạn!",
-        "pageSubtitle": "BET - Một bộ công cụ Bitcoin mã nguồn mở cho tất cả các dự án giáo dục",
-        "pageTitle": "Bộ công cụ giáo dục về Bitcoin - BET",
-        "visualContent": {
-            "description": "Nội dung này là dữ liệu trực quan, được phép sử dụng cho sáng tạo của bạn.",
-            "title": "Nội dung trực quan"
-        },
-        "pageDescription": "Sovereign University hỗ trợ các nhà giáo dục bitcoin và các cộng đồng bitcoin trên toàn thế giới, nhằm thúc đẩy quá trình mở rộng sự áp dụng bitcoin. Nhằm hướng tới mục tiêu đó, chúng tôi tập hợp và tạo ra một nguồn dữ liệu lớn bao gồm các nội dung giáo dục (được tạo ra bởi chúng tôi hoặc những người khác) và các dữ liệu trực quan, để mọi người có thể tiếp cận.",
-        "contribute": "Bộ công cụ này là mở để mọi người đóng góp. Nó sử dụng Figma, nên ai cũng có thể thêm, chỉnh sửa hoặc dịch. Để phối hợp, thêm một chuyên mục hay thảo luận, hãy tham gia discord của chúng tôi, đừng ngại."
-    },
-    "book": {
-        "abstract": "Tóm tắt",
-        "bookSummary": {
-            "modifyTooltip": "Viết hoặc sửa đổi",
-            "notice": "tóm tắt này được liên kết tới github, để chỉnh sửa hoặc bổ sung",
-            "title": "Tóm tắt cuốn sách",
-            "noSummary": "Chưa có bài tóm tắt nào được viết. Nếu bạn đã đọc cuốn sách rồi và muốn chia sẻ tóm tắt của mình, đừng ngần ngại viết một bài trên Github. Việc đó sẽ giúp rất nhiều cho cộng đồng, cải thiện trường đại học và bạn có thể nhận được một số Satoshis từ việc đó!"
-        },
-        "buttonBuy": "Mua",
-        "buttonPdf": "PDF / E-book",
-        "offeredBy": "Được cung cấp bởi người đóng góp hào phóng",
-        "pageSubtitle": "Cổng này là mã nguồn mở và được mở để mọi người đóng góp.",
-        "pageTitle": "Thư viện Bitcoin",
-        "topicsAddressed": "Chủ đề được đề cập: "
-    },
-    "builders": {
-        "pageTitle": "Những nhà phát triển Bitcoin",
-        "pageSubtitle": "Cổng này là mã nguồn mở và được mở để mọi người đóng góp."
-    },
-    "dashboard": {
-        "account": "Tài khoản",
-        "courses": "Các khoá học của tôi",
-        "logout": "Đăng xuất",
-        "myCourses": {
-            "completed": "Các khoá học đã hoàn thành",
-            "details": "Chi tiết",
-            "inprogress": "Các khoá đang học",
-            "resumeLesson": "Tiếp tục bài học"
-        },
-        "booking": {
-            "invoiceTitle": "",
-            "accessLive": "",
-            "billingTitle": "",
-            "billingSubtitle": "",
-            "downloadInvoice": "",
-            "downloadTicket": "",
-            "invoiceDate": "",
-            "invoiceType": "",
-            "ticketDate": "",
-            "ticketLocation": "",
-            "ticketTitle": "",
-            "ticketType": "",
-            "noInvoice": "",
-            "noTicket": "",
-            "pastTicketTitle": "",
-            "upcomingTicketTitle": "",
-            "upcomingTicketSubtitle": ""
-        },
-        "bookings": ""
-    },
-    "home": {
-        "header": {
-            "forEducators": "Dành cho các nhà giáo dục và các nhà phát triển",
-            "globalNetwork": "Mạng lưới Bitcoin toàn cầu",
-            "welcome": "Chào mừng bạn đến với PlanB Network",
-            "link": "Hãy trở thành một phần của mạng lưới",
-            "startLink": "Bắt đầu học tập",
-            "content": "Nền tảng Plan B mong muốn cung cấp các công cụ và nội dung giáo dục tốt nhất trên thế giới để giúp mọi người lấy lại chủ quyền của mình. Từ các cá nhân cho tới các cộng đồng, chúng tôi ở đây để hỗ trợ bạn trên hành trình Bitcoin của mình."
-        },
-        "numbersSection": {
-            "networkMember": "Thành viên mạng lưới"
-        },
-        "sectionEducation": {
-            "title": "Từ người mới bắt đầu cho tới người dùng nâng cao",
-            "subtitle": "Học về Bitcoin trong học viện",
-            "link": "Kiểm tra học viện",
-            "content1": "Bitcoin không chỉ là một công nghệ và một dạng tiền, mà nó còn là một phương pháp cách mạng để tiếp cận cuộc sống. Đề lặp lại thông điệp này, các khoá học của chúng tôi sẽ trải rộng trên nhiều lĩnh vực, trao quyền cho mỗi cá nhân để trở nên vượt trội trong mảng mà họ hứng thú và nâng cao hiểu biết của họ. Từ khoá học đầu tiên về Bitcoin cho tới việc đào sâu vào các chi tiết của giao thức, các khoá học của chúng tôi sẽ giúp bạn khám phá chiếc hang thỏ một cách an toàn. Không có lý do gì để do dự cả. Tri thức đang đợi bạn."
-        },
-        "sectionNetwork": {
-            "title": "Truy cập vào mạng lưới để",
-            "subtitle": "Các cơ sở đại học về Bitcoin trên toàn thế giới",
-            "link": "Hãy trở thành một phần của mạng lưới",
-            "content1": "Kết nối với những người ủng hộ Bitcoin trên toàn thế giới, những người cùng chia sẻ một niềm đam mê chung. Từ những cộng đồng nhỏ gặp nhau thường xuyên tại cái trung tập giáo dục về Bitcoin, bản đồ mạng lưới của chúng tôi sẽ giúp bạn tìm thấy cảm hứng để học tập và xây dựng. Một loạt các dịch vụ có sẵn cho những người đam mê, chẳng hạn như trung tâm ươm tạo, các hội thảo vật lý, các buổi thảo luận về Bitcoin. Mạng lưới luôn mở với tất cả mọi người, nên hãy đến và nói lời chào tới cộng đồng Bitcoin ở địa phương bạn!"
-        },
-        "tutorialSection": {
-            "title": "Đơn giản hoá việc giáo dục Bitcoin là mục tiêu của chúng tôi.",
-            "subtitle1": "Chúng tôi giúp bạn làm chủ công nghệ với rất nhiều hướng dẫn chi tiết!",
-            "link": "Xem tất cả các hướng dẫn",
-            "content1": "Bitcoin không ngừng phát triển, với các tác nhân, giải pháp, giao thức và các đột phát công nghệ mới sẽ đến và đi. Rất khó đề duy trì một cơ sở dữ liệu các hướng dẫn chất lượng, được cập nhất chính xác và duy nhất. Tại PlanB, đây là những gì chúng tôi đã đạt được. Từ người mới bắt đầu cho tới người dùng nâng cao, bạn có thể tham khảo hàng trăm hướng dẫn để khám phá ngành công nghiệp này dựa trên nhu cầu của bản thân."
-        },
-        "aboutUsSection": {
-            "title": "Chúng tôi là ai?",
-            "subtitle": "Một chút thông tin về chúng tôi",
-            "bitcoinFocusTitle": "Bitcoin tập trung vào",
-            "bitcoinFocusContent": "Cuộc cách mạng Bitcoin nói chung, từ lớp cơ sở đến các hoạt động giao tiếp ngang hàng khác nhau xung quanh nó",
-            "openSourceTitle": "Mã nguồn mở",
-            "openSourceContent": "Chúng tôi mong muốn thúc đẩy dòng chảy tri thức miễn phí và giúp xây dưng thêm nhiều giải pháp mã nguồn mở",
-            "privacyTitle": "Riêng tư",
-            "privacyContent": "Chúng tôi xem quyền riêng tư là một trong những quyền con người cơ bản và thiết yếu nhất cho sự tiến bộ",
-            "content": "PlanB Network làm một sáng kiến nhằm hỗ trợ việc giáo dục về Bitcoin trên phạm vi toàn thế giới. Nó là sự giao thoa của các công ty đam mê về Bitcoin tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và nâng cao nhận thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network và mang lại công cụ phù hợp để giúp hệ sinh thái Bitcoin phát triển.",
-            "communityTitle": "Cộng đồng",
-            "communityContent": "Trước hết, chúng tôi là một cộng đồng gồm những người đam mê Bitcoin đang giúp đỡ lẫn nhau trên hành trình Bitcoin của mỗi người"
-        },
-        "languageSection": {
-            "title": "Không có rào cản ngôn ngữ ở đây.",
-            "subtitle": "Tất cả mọi thứ đều được dịch sang ngôn ngữ địa phương",
-            "subtitle2": "Chúng tôi cần bạn!",
-            "content2": "Bạn cũng có thể bắt đầu xây dựng và phát triển mạng lưới ở địa phương của bạn!",
-            "link": "Giúp chúng tôi dịch các nội dung trên học viện",
-            "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ 7 ngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới.",
-            "availableLanguages": ""
-        },
-        "patreonSection": {
-            "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn! ",
-            "subtitle": "PlanB Network hoàn toàn là mã nguồn mở nhờ vào những người bảo trợ đầy hào phóng của chúng tôi",
-            "content": "PlanB Network rất tự hào khi hợp tác với nhiều công ty Bitcoin trên toàn thế giới để cung cấp các tài nguyên giáo dục tốt nhất!"
-        }
-    },
-    "imagesAlt": {
-        "bitcoinCurrency": "ký hiệu của đồng tiền bitcoin",
-        "blueEllipse": "một hình elip màu xanh nước biển",
-        "bookCover": "một bìa cuốn sách",
-        "community": "3 người",
-        "contributorHeart": "một trái tim dành cho người đóng góp",
-        "contributorPP": "hình đại diện của người đóng góp",
-        "courseThumbnail": "Thumbnail của khoá học",
-        "curriculum": "Chương trình giảng dạy",
-        "favorite": "một trái tim bên trong một vòng tròn",
-        "flagsInCircle": "một vòng tròn của những lá cờ",
-        "forwardArrow": "một mũi tên hướng về phía trước",
-        "orangePill": "một viên thuốc màu cam",
-        "printedCircuits": "một mạch in",
-        "sthRepresentingCompany": "một cái gì đó đại diện cho công ty",
-        "stylus": "một phong cách",
-        "underConstructionImage": "Hình minh hoạ một số chú thỏ đang làm việc trên công trường",
-        "visibilityOff": "biểu tượng đôi mắt không có dấu hiệu tắt",
-        "decouvreBitcoinLogo": "Logo của DecourveBitcoin",
-        "github": "biểu tượng của github",
-        "rabbit404": "một con thỏ chiếu đèn pin vào biển báo 404",
-        "worldMap": "bản đồ thế giới với các trung tâm được liên kết"
-    },
-    "library": {
-        "pageSubtitle": "Thư viện này là mã nguồn mở và được mở cho mọi người đóng góp.",
-        "pageTitle": "Thư viện Bitcoin",
-        "publishedIn": "Xuất bản vào {{date}}",
-        "writtenBy": "Được viết bở {{author}}"
-    },
-    "menu": {
-        "btc101Description": "Hiểu hơn về bitcoin với bài học này",
-        "libraryDescription": "Khám phá một loạt các cuốn sách để gia tăng hiểu biết của bạn",
-        "lightningDescription": "Quản lý nút lightning của bạn và sử dụng Lightning Network",
-        "manifestoDescription": "Đọc tuyên ngôn của PlanB",
-        "miningDescription": "Đào bitcoin cho chính bạn và tìm hiểu về ngành công nghiệp đào bitcoin",
-        "nodeDescription": "Học cách tự bảo vệ chủ quyền của bản thân với nút Bitcoin",
-        "nodeNetworkDescription": "Tham gia mạng lưới toàn cầu của các cộng đồng Bitcoin!",
-        "podcastsDescription": "Khám phá hệ sinh thái Bitcoin thông qua các podcast",
-        "sponsorsDescription": "Khám phá các nhà tài trợ của chúng tôi và những người đóng góp chính",
-        "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê",
-        "walletsDescription": "Bảo vệ và sử dụng bitcoin của bạn",
-        "ourStoryDescription": "Tìm hiểu về câu của trường đại học",
-        "supportUsDescription": "Tìm cách để hỗ trợ chúng tôi, bằng mọi cách",
-        "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
-        "buildersDescription": "Tìm hiểu về những công ty và dự án đang nỗ lực xây dựng Bitcoin trở nên tốt hơn và gia tăng sự mở rộng áp dụng của nó",
-        "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
-        "exchangesDescription": "Mua và bán bitcoin trên các sàn giao dịch và tìm hiểu về P2P",
-        "merchantsDescription": "Chấp nhận thanh toán bằng bitcoin và khám phá các công cụ cho thương nhân"
-    },
-    "nodeNetwork": {
-        "answer3": "Để trở thành một phần của mạng lưới, bạn cần phù hợp với một số giá trị cốt lõi, bao gồm:\n - chỉ tập trung vào Bitcoin \n - đề cao giá trị quyền riêng tư \n - quan tâm tới các công việc mã nguồn mở.",
-        "apply": "Ứng tuyển để trở thành một nút",
-        "description1": "Hệ thống tài chính của chúng ta đang sụp đổ, thức ăn của chúng ta đang bị nhiễm độc, sự tự do của chúng ta đang bị cướp đi. Chúng ta không thể ngồi chờ một phép màu sẽ xảy ra, chúng ta sẽ phải tạo ra một nơi an toàn để sinh sống. Chúng ta cần tạo ra một kế hoạch B (PlanB) cho chính mình!",
-        "pageSubtitle": "Sức mạnh của chúng ta là cộng đồng của mình. Hãy tập hợp với nhau thành một mạng lưới Bitcoin toàn cầu.",
-        "pageTitle": "Bản đồ nút",
-        "question1": "Nút là gì?",
-        "question3": "Điều kiện là gì?",
-        "question4": "Quy mô của nút?",
-        "question5": "Kế hoạch bí mật là gì?",
-        "answer1": "Một nút đơn giản là một cộng đồng Bitcoin muốn dịch chuyển đến bước tiếp theo để gia tăng sự mở rộng áp dụng Bitcoin ở địa phương của bạn! Không có quy định nào về quy mô nhỏ nhất để bắt đầu cả.",
-        "answer2": "Tại PlanB, chúng tôi mong muốn cải thiện mảng giáo dục trong hệ sinh thái bitcoin bằng cách cung cấp những công cụ phù hợp để xây dựng và giáo dục về Bitcoin. Bằng việc trở thành một nút, cộng đồng của bạn sẽ được tiếp cận với một loạt các nguồn tài nguyên, dịch vụ và các khoá đào tạo về Bitcoin. Hãy biến cộng đồng của bạn trở thành một điểm tham khảo trong thế giới Bitcoin.",
-        "answer4": "Một nút Bitcoin có thể có quy mô bất kỳ. Dựa trên một số yêu cầu, các cấp độ khác nhau sẽ là thuộc tính. Một nút với không gian dành cho tổ chức sự kiện, phòng gym, một vài vị trí văn phòng sẽ được xem là một nơi lý tưởng hơn.",
-        "answer5": "Chúng tôi mong muốn cung cấp một thiên đường an toàn cho các bitcoiner xung quanh thế giới. Chúng tôi tin rằng bằng cách hỗ trợ cho trung tâm Bitcoin địa phương phát triển, chúng ta có thể tạo ra một mạng lưới của các điểm đến, nơi mà các bitcoiner được chào mừng tới để làm việc, sáng tạo và thảo luận một cách an toàn.",
-        "question2": "Tôi sẽ thu được gì?"
-    },
-    "notFound": {
-        "here": "Tại đây",
-        "pageTitle": "Ối.",
-        "pageSubtitle": "Có vẻ như ai đó đã rớt quá sâu vào hang thỏ và bị lạc. Để quay lại mặt đất, nhấp vào"
+    "language": "Ngôn ngữ",
+    "latestConferences": "Hội nghị mới nhất",
+    "location": "Địa điểm",
+    "noConferences": "Chưa có hội nghị nào được thêm cho {{year}} cả.",
+    "pageSubtitle": "Cổng này là mã nguồn mở và được mở cho mọi người đóng góp.",
+    "pageTitle": "Những bản xem lại của các hội nghị",
+    "planBConferences": "Hội nghị Plan B",
+    "topics": "Các chủ đề",
+    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào.   Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
+    "conferenceName": "Tên của hội nghị"
+  },
+  "courses": {
+    "explorer": {
+      "footerp1": "Tại Sovereign University, các giáo sư của chúng tôi toàn quyền tự chủ về mặt nội dung và các công cụ mà họ muốn bạn khám phá, miễn là họ tuân theo các quy tắc đạo đức. Họ là những người đam mê Bitcoin từ nhiều cấp độ kinh nghiệm khác nhau.",
+      "moreToCome": "... và nhiều điều nữa sẽ được mang tới!",
+      "pageSubtitle": "Ứng dụng rộng rãi thông qua giáo dục mã nguồn mở được tập trung hoá",
+      "pageTitle": "Chào mừng bạn đến với Học viện Plan B",
+      "s2p1": "Nếu bạn đã bắt đầu khám phá cái hang thỏ mang tên Bitcoin, bạn phải biết rằng đây là một hành trình không có điểm cuối với rất nhiều con đường. Tại đại học này, chúng tôi hiểu được điều này và đã thiết kế nội dung đào tạo của chúng tôi theo hướng phi tuyến tính, tự chủ và mở rộng nhất có thể.",
+      "s2p2": "Bạn sẽ có khả năng để lựa chọn con đường của riêng mình và bám theo nó, phát triển các kỹ năng và tri thức theo động lực của bạn.",
+      "s2p3": "Tất cả các khoá học của chúng tôi đều miễn phí 100% nên không gì có thể ngăn cản bạn!",
+      "s2t1": "Giáo dục về Bitcoin là một hành trình, không phải là một đích đến",
+      "s3PickLevel": "Lựa chọn các cấp độ:",
+      "s3PickTopic": "Lựa chọn các chủ đề:",
+      "s3t1": "Xây dựng con đường của chính bạn xuyên qua chiếc hang thỏ mang tên Bitcoin",
+      "footerp2": "Nếu bạn muốn cải thiện khoá học hoặc cung cấp khoá học của chính mình, bạn có thể làm việc đó một cách dễ dàng thông qua GitHub. Để hỗ trợ giáo sư, bạn có thể chấm điểm khoá học của họ, trực tiếp típ cho giao sư hoặc trở thành một thành viên của trường đại học để hỗ trợ nền tảng.",
+      "footerTitle": "Các giáo sư của chúng tôi ở đây cho bạn!",
+      "pageDescription": "Học viên Plan B ra đời nhằm mục đích đơn giản hoá việc giáo dục về Bitcoin trên toàn thế giới. Được tuyển chọn bởi các chuyên gia thuộc nhiều lĩnh vực chuyên môn, học viên cung cấp vô số các khoá học được thiết kế để làm sáng tỏ mọi khía cạnh của Bitcoin. Từ người mới bắt đầu cho đến chuyên giá, dù là học theo tốc độ riêng của bản thân hay được theo dõi hàng tuần bởi một giáo sư, chúng tôi hi vọng rằng học viện có thể giúp bạn hiểu rõ hơn về một chủ đề rất rộng lớn là Bitcoin. Phần lớn các khoá học của chúng tôi là hoàn toàn miễn phí với tất cả mọi người, ở bất kỳ đâu, đều có thể tiếp cận với giáo dục."
     },
     "payment": {
-        "proceedToPayment": "Xử lý thanh toán",
-        "terms": "Xem <0>điều khoản chung</0> của chúng tôi và chi tiết về điều kiện hoàn trả",
-        "feeDistribution": "Phân bổ phí: Tác giả 99% - Nền tảng 1%",
-        "total": "Tổng cộng"
+      "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển",
+      "accessibility": "Quyền truy cập",
+      "accessibility_forever": "Mãi mãi",
+      "amount": "Số lượng",
+      "back_course": "Quay trở lại khoá học",
+      "callout": "Bạn sắp mua khoá học này.",
+      "date": "Ngày",
+      "dates_to": "{{startDate}} đến {{endDate}}",
+      "book_description": "Vui long xem lại chi tiết địa điểm đã được cung cấp.\nMột khi quá trình đặt chỗ được xử lý, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
+      "duration": "Thời lượng",
+      "invoiceId": "Tx ID",
+      "numberOfChapters": "Số lượng chương",
+      "payment_details": "Chi tiết thanh toán",
+      "payment_successful": "Thanh toán thành công!",
+      "qr_unified": "Mã QR này được hợp nhất, nên nó chấp nhận thanh toán Lightning và thanh toán on-chain.",
+      "teacher": "Giáo viên",
+      "teachers": "Các giáo viên",
+      "time": "Thời gian",
+      "downloadCurriculum": "Tải về chương trình giảng dạy",
+      "description": "Giao dịch mua này sẽ cấp cho bạn quyền truy cập vào các khoá học trực tuyến trên nền tảng cũng như các lớp học trực tiếp, miễn là bạn đặt chỗ trước. Mỗi buổi học trực tiếp sẽ diễn ra vào ngày giờ và địa điểm củ thể được chỉ định trước khi được ghi lại và phát trực tuyến trên nền tảng."
     },
-    "podcast": {
-        "abstract": "Tóm tắt",
-        "discover": "Khám phá podcast này"
+    "unreleased": {
+      "theoreticalLightning": "Khoá học lý thuyết nâng cao về Lightning Network",
+      "financeIntroduction": "Giới thiệu về tài chính",
+      "financialCrisis": "Phân tích các cuộc khủng hoảng tài chính lớn",
+      "hyperinflation": "Nghiên cứu về siêu lạm phát",
+      "colcardAndSparrow": "Coldcard và Sparrow"
     },
-    "podcasts": {
-        "hostedBy": "Được tổ chức bởi {{host}}",
-        "pageTitle": "Các podcast về Bitcoin",
-        "pageSubtitle": "Cổng này là mã nguồn mở và mở cho mọi người đóng góp."
+    "categories": {
+      "btc": "Bitcoin",
+      "crypto": "Mật mã",
+      "cuboplus": "Bitcoin",
+      "econ": "Kinh tế học trường phái Áo",
+      "fin": "Tài chính",
+      "secu": "Bảo mật và Riêng tư",
+      "ln": "Lightning Network",
+      "min": "Đào"
     },
-    "professors": {
-        "pageTitle": "Các giáo sư",
-        "tips": {
-            "noTipsYet": "Giáo sư này không chấp nhận tiền típ ở thời điểm này.",
-            "thanks": "Cảm ơn vì đã hỗ trợ cho công việc của {{name}}!",
-            "thanksNoName": "Cảm ơn vì đã hỗ trợ công việc của tôi!"
-        },
-        "pageSubtitle": "Tất cả các giáo sư của chúng tôi là tình nguyên viên và là những Bitcoiner đầy đam mê. Bạn có thể típ để nói lời cảm ơn."
+    "chapter": {
+      "count": "Chương {{count}}",
+      "finishCourse": "Hoàn thành khoá học",
+      "next": "Xong, hãy đi tới chương tiếp theo!",
+      "detail": {
+        "title": "Chi tiết lớp học",
+        "p1content": "Đảm bảo rằng bạn đã đặt chỗ cho bản thân",
+        "p1heading": "Bạn có dự định tham gia trực tiếp buổi học này?",
+        "p2content": "Không sao ! Buổi học sẽ được phát trực tiếp trên trang và có sẵn để xem lại sau.",
+        "bookSeat": "Đặt chỗ cho bạn",
+        "classIsFull": "Lớp học đã đầy chỗ",
+        "ticketDownload": "Tải về vé của bạn",
+        "p2heading": "Bạn không thể đích thân đến?",
+        "cancelBooking": "Huỷ đặt chỗ của bạn"
+      },
+      "live": {
+        "title": "Video trực tiếp",
+        "stayTuned": "Buổi phát trực tiếp sẽ bắt đầu nửa tiếng trước khi buổi học bắt đầu. Hãy giữ nguyên."
+      },
+      "thanksTip": "Bạn muốn cảm ơn? Thưởng.",
+      "nextLesson": ""
     },
-    "resources": {
-        "articles": {
-            "title": "Các bài báo"
-        },
-        "bet": {
-            "title": "Công cụ giáo dục"
-        },
-        "builders": {
-            "title": "Các nhà phát triển"
-        },
-        "conferences": {
-            "title": "Bản phát lại của các hội nghị"
-        },
-        "headerSignature": "Rogzy",
-        "newsletters": {
-            "title": "Bản tin"
-        },
-        "pageDescription": "Tìm hiểu về Bitcoin giống như bạn đang khám phá một mê cung đang phát triển không ngừng. Để giúp bạn trong hành trình này, chúng tôi đã biên soạn rất nhiều nguồn tài nguyên gồm sách, podcast, video và bản phát lại của các hội nghị. Cổng thông tin này tập hợp tất cả thông tin vào một kho lưu trữ trên Github để giúp bạn hiểu hõ hơn về hệ sinh thái Bitcoin.",
-        "pageSubtitle": "Tập trung tri thức lại để có thể phân phối tối hơn",
-        "podcasts": {
-            "title": "Các podcast"
-        },
-        "publicGrade": "Điểm công khai: {{grade}}/5",
-        "books": {
-            "title": "Thư viện"
-        },
-        "filterBarLabel": "Tìm nguồn tài nguyên phù hợp với nhu cầu của bạn:",
-        "headerText": "Chào mừng bạn đến với chiếc hang thỏ không đáy mang tên Bitcoin! Trong phần này, chúng tôi sẽ cung cấp cho bạn những hướng dẫn chuyên sâu về hầu hết các dự án Bitcoin hiện có. Trang này được duy trì bởi những người đam mê Bitcoin, những người hỗ trợ cho dự án mã nguồn mở này. Nếu bạn cảm thấy chúng tôi gặp một lỗi gì đó, vui lòng liên hệ với chúng tôi. Để xem các tài liệu về tài chính của dự án, hãy tham khảo báo cáo minh bạch của chúng tôi. Bạn ơn sự tín nhiệm của bạn dành cho trường đại học này và hãy tận hưởng chuyến đi.",
-        "pageTitle": "Chào mừng bạn đến với Cổng tài nguyên",
-        "github": "Tất cả dữ liệu này được quản lý thông qua một kho mã nguồn mở trên <0>Github</0>. Bạn có thể thoải mái đóng góp và bổ sung bất kỳ nội dung còn thiếu nào."
+    "details": {
+      "accessible": "Quyền truy cập: Suốt đời",
+      "buyCourse": "Mua khoá học",
+      "courseId": "ID của khoá học: {{courseId}}",
+      "coursePayment": "Thanh toán khoá học",
+      "curriculum": "Chương trình giảng dạy",
+      "date": "Ngày: {{startDate}} tới {{endDate}}",
+      "description": "Mô tả",
+      "duration": "Thời lượng: {{hours}} giờ",
+      "goal": "MỤC TIÊU: ",
+      "mobile": {
+        "chapters": "{{chapters}} chương",
+        "hours": "{{hours}} giờ"
+      },
+      "numberOfChapters": "Số chương: {{number}}",
+      "objectives": "Các mục tiêu",
+      "objectivesTitle": "Bạn sẽ học được nhừng gì:",
+      "professor": "Giáo sư",
+      "startCourse": "Bắt đầu khoá học",
+      "taughtBy": "Khoá học này đang được giảng dạy bởi:",
+      "teacher": "Giáo viên: {{teacher}}",
+      "teachers": "Các giáo viên: {{teachers}}",
+      "total": "Tổng cộng",
+      "payment_successful": "Thanh toán thành công!",
+      "access_invoice": "Bạn có thể truy cập hoá đơn của bạn thông qua bảng điều khiển của mình",
+      "payment_details": "Chi tiết thanh toán",
+      "amount": "Số lượng",
+      "invoiceId": "Tx ID",
+      "dates_to": "{{startDate}} tới {{endDate}}",
+      "level": "Cấp độ: $t(words.level.{{level}})",
+      "price": "Giá: {{price}} sats",
+      "teacherWord": "Một lời từ giáo viên"
     },
-    "settings": {
-        "changePassword": "Thay đổi mật khẩu",
-        "changeEmail": "Thay đổi email"
+    "preview": {
+      "by": "bởi {{professor}}",
+      "letsgo": "Đi nào"
     },
-    "tutorials": {
-        "details": {
-            "checkAuthor": "Xem những đóng góp khác của tác giả và ủng hộ cho công việc của anh ấy.",
-            "enjoyed": "Bạn thích hướng dẫn này?",
-            "madeBy": "Hướng dẫn này được tạo bởi",
-            "source": "Nguồn chính thức: ",
-            "tipTooltip": "Bạn thích nó? Típ."
-        },
-        "exchange": {
-            "peer-to-peer": {
-                "description": "Sàn giao dịch ngang hàng là những chợ mà các cá nhân trao đổi bitcoin để lấy các đồng tiền khác với nhau. Những sàn này có thể được quản lý hoặc không, và thường không dòi hỏi nhiều thông tin (nếu có) về bạn. Họ chỉ đơn giản kết nối các người dùng với nhau. Phí của những sản này có thể cao hơn các sàn giao dịch truyền thống và thanh khoản của họ thấp hơn. Đây là lựa chọn yêu thích của những người dùng muốn tránh việc phải xác minh danh tính (KYC)."
-            },
-            "shortDescription": "Các giải pháp mua - bán bitcoin, KYC và không KYC",
-            "title": "Sàn giao dịch",
-            "centralized": {
-                "description": "Các sàn giao dịch tập trung thường là các thực thế được quản lý, họ hoạt động như là bên trung gian giữa hệ thống ngân hàng và hệ sinh thái Bitcoin. Họ có phép bạn mua và bán lượng lớn bitcoin và rút chúng về ví hoặc tài khoản ngân hàng của mình. Họ thường yêu cầu người dùng xác minh danh tính (KYC), do đó có thể theo dõi các hoạt động của bạn, báo cáo với các tổ chức giám sát tài chính theo luật địa phương."
-            },
-            "description": "Các sàn giao dịch là những cánh cửa vào và ra giữa tiền tệ truyền thống (euro, đô-la) và thế giới bitcoin. Các sàn giao dịch có thể được quản lý và tuân thủ việc xác minh danh tính người dùng (KYC), hoặc giao dịch ngang hàng ẩn danh. Mỗi sàn giao dịch sẽ cung cấp những tính năng, cơ cấu phí, mức độ thanh khoản và dịch vụ hỗ trợ người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng các sàn giao dịch khác nhau dựa trên nhu cầu và nhận định của họ."
-        },
-        "explorer": {
-            "didYouKnow": "Bạn đã biết?",
-            "description": "Tất cả các hướng dẫn được viết bởi nhưng bitcoiner đầy đam mê và tận tâm, những người mong muốn mở rộng việc giáo dục về bitcoin ra toàn thế giới. Hãy nhớ thích, xem lại và típ satoshi cho họ!"
-        },
-        "headerSignature": "Rogzy",
-        "merchant": {
-            "shortDescription": "Các giải pháp để các doanh nghiệp chấp nhận Bitcoin",
-            "title": "Người bán",
-            "description": "Đã bao giờ bạn tự hỏi làm thế nào để dễ dàng chấp nhận bitcoin cho một doanh nghiệp? Khám phá các giải pháp khác nhau của chúng tôi để trở thành một chuyên gia và dễ dàng thiết lập một giải pháp thương mại cho các cửa hàng xung quanh bạn. Giải pháp các điểm bán (POS) thay đổi dựa trên nhu cầu của người bán (vật lý hoặc trực tuyến), khối lượng giao dịch của họ, và độ phức tạp trong vận hành của họ. Một giải pháp tốt đơn giản là bắt đầu với ví LN cơ bản, chuyển sang giải pháp dễ dàng, hiểu quả (như PoS trên di động), và cuối cùng khám phá BTC Pay cho các giải pháp nâng cao, phức tạp và chuyên nghiệp."
-        },
-        "mining": {
-            "description": "Ngành công nghiệp đào bitcoin là một chủ đề phức tạp với rất nhiều hang thỏ trong đó. Ở đây, chúng tôi sẽ cố gắng để đồng hành cùng bạn trên hành trình sử dụng phần cứng và phần mềm. Từ việc điều chỉnh một máy đào S9 trở thành một máy sưởi tại gia cho đến việc cố gắng thắng xổ số với một thợ đào mọt sách.",
-            "shortDescription": "Các giải pháp đào bitcoin",
-            "title": "Đào"
-        },
-        "node": {
-            "lightning-network": {
-                "name": "Lightning Network",
-                "description": "Một nút Lightning cho phép bạn thạm gia vào giao thức lớp thứ hai của Bitcoin, được gọi là Lightning Network. Bạn sẽ có thể mở các kệnh, quản lý thanh khoản của chúng, và trở nên không cần nhờ lưu ký hộ với ví Lightning của bạn."
-            },
-            "rgb": {
-                "description": "RGB là một hệ thống cho phép vận hành hợp đồng thông minh và mở rộng quy mô trên Bitcoin và Lightning Network. Nó là một lớp có thể được lập trình, với các khái niệm về quyền sở hữu chung và riêng, sự trừu tượng hoá và phân tách các mối quan tâm và đại diện cho \"hậu blockchain\"."
-            },
-            "shortDescription": "Các giải pháp để vận hành một nút Bitcoin và tham gia vào mạng lưới",
-            "title": "Nút",
-            "bitcoin": {
-                "description": "Một nut Bitcoin Core là nền tảng cho các ngăn xếp chủ quyền Bitcoin của bạn. Nó cho phép bạn vận hành phần mềm Bitcoin và trở thành một phần của mạng lưới. Bạn sẽ xác thực các khối và các giao dịch, quyết định xem những quy tắc nào mà bạn muốn áp dụng cho mạng lưới, và dừng việc sử dụng một bên trung gian để lan truyền giao dịch của bạn. Có rất nhiều cách để vận hành một nút Bitcoin Core, một số thân thiện hơn một số cách khác."
-            },
-            "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác."
-        },
-        "others": {
-            "title": "Khác",
-            "shortDescription": "",
-            "description": "",
-            "DIY": {
-                "description": ""
-            },
-            "OpenSource": {
-                "description": ""
-            },
-            "contribution": {
-                "description": ""
-            },
-            "general": {
-                "description": ""
-            }
-        },
-        "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
-        "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
-        "privacy": {
-            "shortDescription": "Các công cụ để sao lưu và bảo đảm riêng tư",
-            "title": "Riêng tư",
-            "bitcoin": {
-                "description": "Bitcoin không mặc định đảm bảo sự riêng tư, nó được thiết kế để hoạt động bán ẩn danh, mỗi giao dịch đều là công khai và được lưu trữ mãi mãi. Để duy trì sự riêng tư, chúng ta cần phải có những hành vi đúng cùng với những công cụ đặc biệt được tích hợp vào phần mềm của mình. Từ việc tránh dùng lại địa chỉ, tới sử dụng CoinJoin, thông qua việc trộn coin và kết nối với nút của chính mình, chúng tôi sẽ giúp bạn trên hành trình bảo vệ sự riêng tư."
-            },
-            "description": "Quyền riêng tư là một quyền cơ bản. Trong khi chúng tôi mong muốn xây dựng một thế giới mà quyền riêng tư được mặc định bảo đảm, điều đó không phải là thực tế mà chúng ta đang có. Chúng tôi sẽ cố gắng để giải thích cho bạn những thực hành đúng, hỗ trợ bạn với các hướng dẫn và giúp bạn trở nên có chủ quyền vững chãi hơn liên quan tới thông tin cá nhân.",
-            "general": {
-                "description": "Trong thời đại của giám sát hàng loạt, trên diện rộng, lấy lại quyền riêng tư của mình trong cuộc sống thường ngày là một điều cần thiết. Vì mỗi người dùng sẽ có mức độ thành thạo và kiến thức công nghệ khác nhau, việc sử dụng một số công cụ nhất định và điều chỉnh chúng cho phù hợp với nhu cầu của bạn là một điều hoàn toàn bình thường. Ở đây, chúng ta sẽ khám phá các giải pháp bảo vệ khác nhau như VPN, Tor, Tails OS, GPG, tin nhắn mã hoá và nhiều hơn."
-            }
-        },
-        "wallet": {
-            "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ.",
-            "desktop": {
-                "description": "Ví trên máy tính là ví thường dùng cho những người dùng nâng cao bởi vì chúng là sự kết hợp giữa thiết bị phần cứng và phần mềm ví trên máy tính. Nó giống như có một giao diện người dùng mới, được tuỳ biến và có nhiều chức năng cho thiết bị phần cứng của bạn. Những ví kiểu như vậy cung cấp tuỳ chọn đa chữ ký, các tính năng riêng tư, cơ chế thừa kế và nhiều hơn nữa."
-            },
-            "mobile": {
-                "description": "Ví trên thiết bị di động thường được dùng để phục vụ cho chi tiêu hàng ngày. Chúng được tích hợp với Lightning Network để thực hiện các giao dịch phí thấp và ngay lập tức. Chúng thường được kết nối với internet (thường gọi là \"ví nóng\") và mức độ bảo mật thấp hơn so với các ví phần cứng. Chúng chỉ nên được sử để lưu trữ một lượng nhỏ bitcoin, được dùng cho các giao dịch hàng ngày giống tiền mặt trong ví của bạn vậy."
-            },
-            "shortDescription": "Các giải pháp bảo mật và sử dụng bitcoin của bạn",
-            "title": "Ví",
-            "hardware": {
-                "description": "Các ví phần cứng thường được dùng để lưu trữ bitcoin dài hạn. Chúng là những thiết bị vật lý không được kết nối với internet (được gọi là ví lạnh) và thường rất an toàn. Mặc dù phần mềm được dùng trên các thiết bị này là mã nguồn mở, giá để mua phần cứng khoảng từ 50 đến 300 euro. Hãy xem những thiết bị này giống như một tài khoản ngân hàng dành cho việc lưu trữ khoản tiền tiết kiệm lớn mà thi thoảng bạn mới sử dụng."
-            }
-        },
-        "headerText": "Chào mừng bạn đến với chiếc hang thỏ không đáy mang tên Bitcoin! Trong phần này, chúng tôi sẽ cung cấp cho bạn những hướng dẫn chuyên sâu về hầu hết các dự án Bitcoin hiện có. Trang này được duy trì bởi những người đam mê Bitcoin, những người hỗ trợ cho dự án mã nguồn mở này. Nếu bạn cảm thấy chúng tôi gặp một lỗi gì đó, vui lòng liên hệ với chúng tôi. Để xem các tài liệu về tài chính của dự án, hãy tham khảo báo cáo minh bạch của chúng tôi. Bạn ơn sự tín nhiệm của bạn dành cho trường đại học này và hãy tận hưởng chuyến đi.",
-        "pageDescription": "Bitcoin là một ngành rộng, và đang trở nên rộng hơn mỗi ngày. Nhằm giúp bạn khám phá nó, chúng tôi đã tập hợp và lựa chọn một lượng lớn các hướng dẫn mô tả về các giải pháp khác nhau trên tất cả các mảng liên quan tới Bitcoin."
+    "quizz": {
+      "quizz": "Câu hỏi kiểm tra",
+      "quizzResults": "Kết quả kiểm tra",
+      "quizzReview": "Xem lại câu hỏi kiểm tra",
+      "resultCongrats": "Chúc mừng, bạn đã hoàn thành tốt!",
+      "resultItsOk": "Đừng bỏ cuộc, bạn sẽ làm bài thi tốt hơn lần sau!",
+      "resultNotBad": "Không quá tệ !",
+      "resultPerfect": "Rất hoàn hảo! Chúc mừng !",
+      "clickOnPie": "Nhấp vào biểu đồ hình tròn để kiểm tra lỗi của bạn và xem phần giải thích"
     },
-    "underConstruction": {
-        "github": "GitHub",
-        "p2": "và cân nhắc tham gia cộng đồng của chúng tôi!",
-        "pageTitle": "Ôi.",
-        "p1": "Một chú thỏ vừa chui vào hang. Bởi vì cuộc phiêu lưu bất ngờ này, trang này đang trong quá trình phát triển ở thời điểm hiện tại. Chúng tôi xin lỗi về sự bất tiện này. Đội ngũ của chúng tôi đang nỗ lực để hoàn thiện trang này. Nếu bạn muốn giúp một tay, đừng ngại xem qua"
+    "part": {
+      "count": "Phần số {{count}}/{{total}}"
     },
-    "words": {
-        "about": "Về",
-        "about-us": "Về chúng tôi",
-        "account": "Tài khoản",
-        "additionalCriteria": "Tiêu chí cộng thêm",
-        "advanced": "Nâng cao",
-        "article": "Bài viết",
-        "articles": "Các bài viết",
-        "audioBook": "Sách nói",
-        "back": "Quay lại",
-        "beginner": "Người mới bắt đầu",
-        "bitcoinWhitepaper": "Bản cáo bạch Bitcoin",
-        "book": "Sách",
-        "books": "Sách",
-        "builders": "Nhà phát triển",
-        "certificate": "Chứng chỉ",
-        "conference": "Hội nghị",
-        "conferences": "Các hội nghị",
-        "content": "Nội dung",
-        "course": "Khoá học",
-        "courses": "Các khoá học",
-        "date": "Ngày",
-        "details": "Chi tiết",
-        "didYouKnow": "Bạn đã biết?",
-        "documentaries": "Phim tài liệu",
-        "donations": "Ủng hộ",
-        "economy": "Kinh tế",
-        "education": "Giáo dục",
-        "email": "Email",
-        "events": "Các sự kiện",
-        "followUs": "Theo dõi chúng tôi",
-        "helpUs": "Giúp đỡ chúng tôi",
-        "home": "Trang chủ",
-        "intermediate": "Trung cấp",
-        "interview": "Phỏng vấn",
-        "level": {
-            "advanced": "Nâng cao",
-            "beginner": "Người mới bắt đầu",
-            "intermediate": "Trung cấp",
-            "developer": "lập trình viên"
-        },
-        "library": "Thư viện",
-        "lightning": "Lightning",
-        "lnurlAuth": "Xác thực LNURL",
-        "manifesto": "Bản tuyên ngôn",
-        "merchandising": "Buôn bán",
-        "merchants": "Các thương nhân",
-        "members": " Các thành viên",
-        "mining": "Đào",
-        "movieDocumentary": "Phim tài liệu",
-        "network": "Mạng lưới",
-        "networkMember": "Thành viên mạng lưới",
-        "newsletter": "Bản tin",
-        "node": "Nút",
-        "nodeNetwork": "Nút mạng",
-        "or": "hoặc",
-        "ourStory": "Câu chuyện của chúng tôi",
-        "podcast": "Podcast",
-        "podcasts": "Các podcast",
-        "professors": "Các giáo sư",
-        "purchase": "Mua",
-        "register": "Đăng ký",
-        "resources": "Các nguồn tài nguyên",
-        "resume": "Tiếp tục",
-        "review": "Xem lại",
-        "rogzy": "Rogzy",
-        "sponsorUs": "Tài trợ chúng tôi",
-        "sponsoringAndContributors": "Hoạt động tài trợ và những người đóng góp",
-        "supportUs": "Hỗ trợ chúng tôi",
-        "termsAndConditions": "Các điều khoản và điều kiện",
-        "time": "Thời gian",
-        "to": "tới",
-        "toolkits": "Các bộ công cụ",
-        "tutorial": "Hướng dẫn",
-        "tutorials": "Các hướng dẫn",
-        "update": "Cập nhật",
-        "video": "Video",
-        "videos": "Các video",
-        "wallets": "Các ví",
-        "continue": "Tiếp tục",
-        "dashboard": "Bảng điều khiển",
-        "exchanges": "Các sàn giao dịch",
-        "more": "Nhiều hơn",
-        "newsletters": "Các bản tin",
-        "relatedResources": "Các nguồn tài nguyên liên quan",
-        "teachers": "Các giáo viên",
-        "billing": "",
-        "download": "",
-        "invoice": "",
-        "on": "",
-        "online": "",
-        "ticket": "",
-        "tickets": ""
+    "footer": {
+      "": ""
     }
+  },
+  "events": {
+    "card": {
+      "unlimited": "không giới hạn",
+      "free": "miễn phí",
+      "online": "trực tuyến",
+      "people": "mọi người",
+      "watchLive": "Xem trực tiếp",
+      "watchReplay": "Xem bản phát lại",
+      "buyReplay": "Mua bản phát lại",
+      "bookLive": "Đặt chỗ trực tiếp",
+      "seatBooked": "Chỗ đã được đặt",
+      "eventFull": "Sự kiện đã đầy chỗ",
+      "visitWebsite": "Thăm website",
+      "bookSeat": "Đặt chỗ",
+      "limited": "giới hạn ở"
+    },
+    "main": {
+      "upcomingEvents": "Những sự kiện sắp tới",
+      "currentEvents": "Những sự kiện đang diễn ra hiện tại"
+    },
+    "missed": {
+      "missedh1": "Những sự kiện đã diễn ra để xem lại",
+      "missedp1": "Bạn đã bỏ lỡ một sự kiện?",
+      "missedp2": "Ở đây chúng tôi lưu trữ tất cả các bản xem lại của các sự kiện trong quá khứ được tổ chức trong mạng lưới, do đó mọi người có thể theo dõi miễn phí những sự kiện mà họ đã bỏ lỡ."
+    },
+    "newEvent": {
+      "button": "Thêm vào sự kiện của tôi",
+      "description": "Tất nhiên! Tất cả các sự kiện Bitcoin có thể gia tăng sự hiện diện của họ ở đây, mọi sáng kiến tạo sự kiện mới đều được hoan nghênh :)",
+      "subtitle": "\"Orange pill\" một tỷ người không phải là việc dễ dàng",
+      "title": "Muốn thêm sự kiện của bạn?"
+    },
+    "pageSubtitle": "Việc mở rộng áp dụng từ dưới lên được tăng cường bởi một mạng lưới mạnh mẽ",
+    "payment": {
+      "access_online_successful": "Khi sự kiện bắt đầu, đăng nhập vào nền tảng và bạn sẽ được cấp quyền truy cập vào buổi phát trực tiếp thông qua trang sự kiện.",
+      "access_type": "Dạng truy cập",
+      "address": "Địa chỉ",
+      "amount": "Số lượng",
+      "back_events": "Quan lại các sự kiện",
+      "book_seat": "Đặt chỗ",
+      "callout_online": "Bạn sắp đặt một vé tham dự trực tuyến sự kiện này.",
+      "callout_physical": "Bạn sắp đặt một vé tham dự trực tiếp sự kiện này.",
+      "callout_replay": "Bạn sắp đặt một vé tham dự sự kiện này thông qua video phát lại.",
+      "date": "Ngày",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "description_physical": "Vui lòng xem lại chi tiết địa điểm đã được cung cấp.\nMột khi việc đặt chỗ hoàn thành, chúng tôi sẽ cung cấp cho bạn vé để xuất trình tại sự kiện. Vế này sẽ cho bạn quyền truy cập vào buổi phát trực tiếp và video phát lại, nếu có.",
+      "language": "Ngôn ngữ được nói",
+      "limitation": "Giới hạn",
+      "max_capacity": "Sức chứa tối đa của",
+      "payment_details": "Chi tiết thanh toán",
+      "payment_successful": "Đặt chỗ thành công !",
+      "time": "Thời gian",
+      "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển.",
+      "access_physical_successful": "Bạn có thể tải vé về tại đây, hoặc tải về sau từ bảng điều khiển.",
+      "additional_free_description": "Sự kiện này miễn phí, nên bạn sẽ không bị tính phí khi đặt chỗ. Dù sao đi nữa, hãy nhớ tham dự vì số lượng chỗ ngồi có hạn.",
+      "description_online": "Vui lòng xem lại thời gian của sự kiện.\nKhi thời gian tới, đăng nhập vào nền tảng và truy cập vào buổi phát trực tiếp thông qua trang sự kiện.",
+      "description_free_physical": "Vui lòng xem lại chi tiết địa chỉ đã được cung cấp.\nMột khi việc đặt chỗ hoàn tất, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
+      "download_ticket": "Tải về vé của bạn",
+      "enjoy": "Chúng tôi hy vọng rằng bạn sẽ thích nó :)"
+    },
+    "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
+    "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?"
+  },
+  "auth": {
+    "accountCreated": "Tài khoản của bạn đã được tạo, {{userName}}!",
+    "alreadyHaveAccount": "Bạn đã có tài khoản?",
+    "connectWithLn": "Kết nối với LN",
+    "createAccount": "Đăng ký",
+    "createOne": "Đăng ký tại đây!",
+    "emailAddress": "Địa chỉ email",
+    "errors": {
+      "usernameRequired": "Tên người dùng là bắt buộc",
+      "usernameTooShort": "Tên người dùng phải có ít nhất 5 ký tự",
+      "usernameRegex": "Tên người dùng chỉ được bao gồm chữ cái, chữ số, _, . và -"
+    },
+    "forgottenPassword": "Bạn quên mật khẩu của mình?",
+    "headerAccountCreated": "Tài khoản đã được tạo",
+    "noAccountNeeded": "Không cần phải có tài khoản để bắt đầu học trên Sovereign University!",
+    "noAccountYet": "Bạn chưa có tài khoản?",
+    "passwordReinit": "Đặt lại mật khẩu",
+    "passwordRequired": "Mật khẩu là bắt buộc",
+    "passwordsDontMatch": "Mật khẩu không khớp",
+    "sendLink": "Gửi một đường link",
+    "signIn": "Đăng nhập",
+    "canSaveProgress": "Bây giờ, bạn có thể lưu lại tiến độ của mình trên Học viện Bitcoin",
+    "lnurlAuthDescription": "Quét mã QR với ví Lightning của bạn để đăng nhập!"
+  },
+  "bet": {
+    "educationalContent": {
+      "description": "Nội dung này được đảm bảo sằn sàng để sử dụng cho các sự kiện và mục đích giáo dục.",
+      "title": "Nội dung dùng cho giáo dục"
+    },
+    "hereForYou": "BET ở đây để dành cho bạn!",
+    "pageSubtitle": "BET - Một bộ công cụ Bitcoin mã nguồn mở cho tất cả các dự án giáo dục",
+    "pageTitle": "Bộ công cụ giáo dục về Bitcoin - BET",
+    "visualContent": {
+      "description": "Nội dung này là dữ liệu trực quan, được phép sử dụng cho sáng tạo của bạn.",
+      "title": "Nội dung trực quan"
+    },
+    "pageDescription": "Sovereign University hỗ trợ các nhà giáo dục bitcoin và các cộng đồng bitcoin trên toàn thế giới, nhằm thúc đẩy quá trình mở rộng sự áp dụng bitcoin. Nhằm hướng tới mục tiêu đó, chúng tôi tập hợp và tạo ra một nguồn dữ liệu lớn bao gồm các nội dung giáo dục (được tạo ra bởi chúng tôi hoặc những người khác) và các dữ liệu trực quan, để mọi người có thể tiếp cận.",
+    "contribute": "Bộ công cụ này là mở để mọi người đóng góp. Nó sử dụng Figma, nên ai cũng có thể thêm, chỉnh sửa hoặc dịch. Để phối hợp, thêm một chuyên mục hay thảo luận, hãy tham gia discord của chúng tôi, đừng ngại."
+  },
+  "book": {
+    "abstract": "Tóm tắt",
+    "bookSummary": {
+      "modifyTooltip": "Viết hoặc sửa đổi",
+      "notice": "tóm tắt này được liên kết tới github, để chỉnh sửa hoặc bổ sung",
+      "title": "Tóm tắt cuốn sách",
+      "noSummary": "Chưa có bài tóm tắt nào được viết. Nếu bạn đã đọc cuốn sách rồi và muốn chia sẻ tóm tắt của mình, đừng ngần ngại viết một bài trên Github. Việc đó sẽ giúp rất nhiều cho cộng đồng, cải thiện trường đại học và bạn có thể nhận được một số Satoshis từ việc đó!"
+    },
+    "buttonBuy": "Mua",
+    "buttonPdf": "PDF / E-book",
+    "offeredBy": "Được cung cấp bởi người đóng góp hào phóng",
+    "pageSubtitle": "Cổng này là mã nguồn mở và được mở để mọi người đóng góp.",
+    "pageTitle": "Thư viện Bitcoin",
+    "topicsAddressed": "Chủ đề được đề cập: "
+  },
+  "builders": {
+    "pageTitle": "Những nhà phát triển Bitcoin",
+    "pageSubtitle": "Cổng này là mã nguồn mở và được mở để mọi người đóng góp."
+  },
+  "dashboard": {
+    "account": "Tài khoản",
+    "courses": "Các khoá học của tôi",
+    "logout": "Đăng xuất",
+    "myCourses": {
+      "completed": "Các khoá học đã hoàn thành",
+      "details": "Chi tiết",
+      "inprogress": "Các khoá đang học",
+      "resumeLesson": "Tiếp tục bài học"
+    },
+    "booking": {
+      "invoiceTitle": "",
+      "accessLive": "",
+      "billingTitle": "",
+      "billingSubtitle": "",
+      "downloadInvoice": "",
+      "downloadTicket": "",
+      "invoiceDate": "",
+      "invoiceType": "",
+      "ticketDate": "",
+      "ticketLocation": "",
+      "ticketTitle": "",
+      "ticketType": "",
+      "noInvoice": "",
+      "noTicket": "",
+      "pastTicketTitle": "",
+      "upcomingTicketTitle": "",
+      "upcomingTicketSubtitle": ""
+    },
+    "bookings": ""
+  },
+  "home": {
+    "header": {
+      "forEducators": "Dành cho các nhà giáo dục và các nhà phát triển",
+      "globalNetwork": "Mạng lưới Bitcoin toàn cầu",
+      "welcome": "Chào mừng bạn đến với PlanB Network",
+      "link": "Hãy trở thành một phần của mạng lưới",
+      "startLink": "Bắt đầu học tập",
+      "content": "Nền tảng Plan B mong muốn cung cấp các công cụ và nội dung giáo dục tốt nhất trên thế giới để giúp mọi người lấy lại chủ quyền của mình. Từ các cá nhân cho tới các cộng đồng, chúng tôi ở đây để hỗ trợ bạn trên hành trình Bitcoin của mình."
+    },
+    "numbersSection": {
+      "networkMember": "Thành viên mạng lưới"
+    },
+    "sectionEducation": {
+      "title": "Từ người mới bắt đầu cho tới người dùng nâng cao",
+      "subtitle": "Học về Bitcoin trong học viện",
+      "link": "Kiểm tra học viện",
+      "content1": "Bitcoin không chỉ là một công nghệ và một dạng tiền, mà nó còn là một phương pháp cách mạng để tiếp cận cuộc sống. Đề lặp lại thông điệp này, các khoá học của chúng tôi sẽ trải rộng trên nhiều lĩnh vực, trao quyền cho mỗi cá nhân để trở nên vượt trội trong mảng mà họ hứng thú và nâng cao hiểu biết của họ. Từ khoá học đầu tiên về Bitcoin cho tới việc đào sâu vào các chi tiết của giao thức, các khoá học của chúng tôi sẽ giúp bạn khám phá chiếc hang thỏ một cách an toàn. Không có lý do gì để do dự cả. Tri thức đang đợi bạn."
+    },
+    "sectionNetwork": {
+      "title": "Truy cập vào mạng lưới để",
+      "subtitle": "Các cơ sở đại học về Bitcoin trên toàn thế giới",
+      "link": "Hãy trở thành một phần của mạng lưới",
+      "content1": "Kết nối với những người ủng hộ Bitcoin trên toàn thế giới, những người cùng chia sẻ một niềm đam mê chung. Từ những cộng đồng nhỏ gặp nhau thường xuyên tại cái trung tập giáo dục về Bitcoin, bản đồ mạng lưới của chúng tôi sẽ giúp bạn tìm thấy cảm hứng để học tập và xây dựng. Một loạt các dịch vụ có sẵn cho những người đam mê, chẳng hạn như trung tâm ươm tạo, các hội thảo vật lý, các buổi thảo luận về Bitcoin. Mạng lưới luôn mở với tất cả mọi người, nên hãy đến và nói lời chào tới cộng đồng Bitcoin ở địa phương bạn!"
+    },
+    "tutorialSection": {
+      "title": "Đơn giản hoá việc giáo dục Bitcoin là mục tiêu của chúng tôi.",
+      "subtitle1": "Chúng tôi giúp bạn làm chủ công nghệ với rất nhiều hướng dẫn chi tiết!",
+      "link": "Xem tất cả các hướng dẫn",
+      "content1": "Bitcoin không ngừng phát triển, với các tác nhân, giải pháp, giao thức và các đột phát công nghệ mới sẽ đến và đi. Rất khó đề duy trì một cơ sở dữ liệu các hướng dẫn chất lượng, được cập nhất chính xác và duy nhất. Tại PlanB, đây là những gì chúng tôi đã đạt được. Từ người mới bắt đầu cho tới người dùng nâng cao, bạn có thể tham khảo hàng trăm hướng dẫn để khám phá ngành công nghiệp này dựa trên nhu cầu của bản thân."
+    },
+    "aboutUsSection": {
+      "title": "Chúng tôi là ai?",
+      "subtitle": "Một chút thông tin về chúng tôi",
+      "bitcoinFocusTitle": "Bitcoin tập trung vào",
+      "bitcoinFocusContent": "Cuộc cách mạng Bitcoin nói chung, từ lớp cơ sở đến các hoạt động giao tiếp ngang hàng khác nhau xung quanh nó",
+      "openSourceTitle": "Mã nguồn mở",
+      "openSourceContent": "Chúng tôi mong muốn thúc đẩy dòng chảy tri thức miễn phí và giúp xây dưng thêm nhiều giải pháp mã nguồn mở",
+      "privacyTitle": "Riêng tư",
+      "privacyContent": "Chúng tôi xem quyền riêng tư là một trong những quyền con người cơ bản và thiết yếu nhất cho sự tiến bộ",
+      "content": "PlanB Network làm một sáng kiến nhằm hỗ trợ việc giáo dục về Bitcoin trên phạm vi toàn thế giới. Nó là sự giao thoa của các công ty đam mê về Bitcoin tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và nâng cao nhận thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network và mang lại công cụ phù hợp để giúp hệ sinh thái Bitcoin phát triển.",
+      "communityTitle": "Cộng đồng",
+      "communityContent": "Trước hết, chúng tôi là một cộng đồng gồm những người đam mê Bitcoin đang giúp đỡ lẫn nhau trên hành trình Bitcoin của mỗi người"
+    },
+    "languageSection": {
+      "title": "Không có rào cản ngôn ngữ ở đây.",
+      "subtitle": "Tất cả mọi thứ đều được dịch sang ngôn ngữ địa phương",
+      "subtitle2": "Chúng tôi cần bạn!",
+      "content2": "Bạn cũng có thể bắt đầu xây dựng và phát triển mạng lưới ở địa phương của bạn!",
+      "link": "Giúp chúng tôi dịch các nội dung trên học viện",
+      "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ 7 ngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới.",
+      "availableLanguages": ""
+    },
+    "patreonSection": {
+      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn! ",
+      "subtitle": "PlanB Network hoàn toàn là mã nguồn mở nhờ vào những người bảo trợ đầy hào phóng của chúng tôi",
+      "content": "PlanB Network rất tự hào khi hợp tác với nhiều công ty Bitcoin trên toàn thế giới để cung cấp các tài nguyên giáo dục tốt nhất!"
+    }
+  },
+  "imagesAlt": {
+    "bitcoinCurrency": "ký hiệu của đồng tiền bitcoin",
+    "blueEllipse": "một hình elip màu xanh nước biển",
+    "bookCover": "một bìa cuốn sách",
+    "community": "3 người",
+    "contributorHeart": "một trái tim dành cho người đóng góp",
+    "contributorPP": "hình đại diện của người đóng góp",
+    "courseThumbnail": "Thumbnail của khoá học",
+    "curriculum": "Chương trình giảng dạy",
+    "favorite": "một trái tim bên trong một vòng tròn",
+    "flagsInCircle": "một vòng tròn của những lá cờ",
+    "forwardArrow": "một mũi tên hướng về phía trước",
+    "orangePill": "một viên thuốc màu cam",
+    "printedCircuits": "một mạch in",
+    "sthRepresentingCompany": "một cái gì đó đại diện cho công ty",
+    "stylus": "một phong cách",
+    "underConstructionImage": "Hình minh hoạ một số chú thỏ đang làm việc trên công trường",
+    "visibilityOff": "biểu tượng đôi mắt không có dấu hiệu tắt",
+    "decouvreBitcoinLogo": "Logo của DecourveBitcoin",
+    "github": "biểu tượng của github",
+    "rabbit404": "một con thỏ chiếu đèn pin vào biển báo 404",
+    "worldMap": "bản đồ thế giới với các trung tâm được liên kết"
+  },
+  "library": {
+    "pageSubtitle": "Thư viện này là mã nguồn mở và được mở cho mọi người đóng góp.",
+    "pageTitle": "Thư viện Bitcoin",
+    "publishedIn": "Xuất bản vào {{date}}",
+    "writtenBy": "Được viết bở {{author}}"
+  },
+  "menu": {
+    "btc101Description": "Hiểu hơn về bitcoin với bài học này",
+    "libraryDescription": "Khám phá một loạt các cuốn sách để gia tăng hiểu biết của bạn",
+    "lightningDescription": "Quản lý nút lightning của bạn và sử dụng Lightning Network",
+    "manifestoDescription": "Đọc tuyên ngôn của PlanB",
+    "miningDescription": "Đào bitcoin cho chính bạn và tìm hiểu về ngành công nghiệp đào bitcoin",
+    "nodeDescription": "Học cách tự bảo vệ chủ quyền của bản thân với nút Bitcoin",
+    "nodeNetworkDescription": "Tham gia mạng lưới toàn cầu của các cộng đồng Bitcoin!",
+    "podcastsDescription": "Khám phá hệ sinh thái Bitcoin thông qua các podcast",
+    "sponsorsDescription": "Khám phá các nhà tài trợ của chúng tôi và những người đóng góp chính",
+    "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê",
+    "walletsDescription": "Bảo vệ và sử dụng bitcoin của bạn",
+    "ourStoryDescription": "Tìm hiểu về câu của trường đại học",
+    "supportUsDescription": "Tìm cách để hỗ trợ chúng tôi, bằng mọi cách",
+    "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
+    "buildersDescription": "Tìm hiểu về những công ty và dự án đang nỗ lực xây dựng Bitcoin trở nên tốt hơn và gia tăng sự mở rộng áp dụng của nó",
+    "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
+    "exchangesDescription": "Mua và bán bitcoin trên các sàn giao dịch và tìm hiểu về P2P",
+    "merchantsDescription": "Chấp nhận thanh toán bằng bitcoin và khám phá các công cụ cho thương nhân"
+  },
+  "nodeNetwork": {
+    "answer3": "Để trở thành một phần của mạng lưới, bạn cần phù hợp với một số giá trị cốt lõi, bao gồm:\n - chỉ tập trung vào Bitcoin \n - đề cao giá trị quyền riêng tư \n - quan tâm tới các công việc mã nguồn mở.",
+    "apply": "Ứng tuyển để trở thành một nút",
+    "description1": "Hệ thống tài chính của chúng ta đang sụp đổ, thức ăn của chúng ta đang bị nhiễm độc, sự tự do của chúng ta đang bị cướp đi. Chúng ta không thể ngồi chờ một phép màu sẽ xảy ra, chúng ta sẽ phải tạo ra một nơi an toàn để sinh sống. Chúng ta cần tạo ra một kế hoạch B (PlanB) cho chính mình!",
+    "pageSubtitle": "Sức mạnh của chúng ta là cộng đồng của mình. Hãy tập hợp với nhau thành một mạng lưới Bitcoin toàn cầu.",
+    "pageTitle": "Bản đồ nút",
+    "question1": "Nút là gì?",
+    "question3": "Điều kiện là gì?",
+    "question4": "Quy mô của nút?",
+    "question5": "Kế hoạch bí mật là gì?",
+    "answer1": "Một nút đơn giản là một cộng đồng Bitcoin muốn dịch chuyển đến bước tiếp theo để gia tăng sự mở rộng áp dụng Bitcoin ở địa phương của bạn! Không có quy định nào về quy mô nhỏ nhất để bắt đầu cả.",
+    "answer2": "Tại PlanB, chúng tôi mong muốn cải thiện mảng giáo dục trong hệ sinh thái bitcoin bằng cách cung cấp những công cụ phù hợp để xây dựng và giáo dục về Bitcoin. Bằng việc trở thành một nút, cộng đồng của bạn sẽ được tiếp cận với một loạt các nguồn tài nguyên, dịch vụ và các khoá đào tạo về Bitcoin. Hãy biến cộng đồng của bạn trở thành một điểm tham khảo trong thế giới Bitcoin.",
+    "answer4": "Một nút Bitcoin có thể có quy mô bất kỳ. Dựa trên một số yêu cầu, các cấp độ khác nhau sẽ là thuộc tính. Một nút với không gian dành cho tổ chức sự kiện, phòng gym, một vài vị trí văn phòng sẽ được xem là một nơi lý tưởng hơn.",
+    "answer5": "Chúng tôi mong muốn cung cấp một thiên đường an toàn cho các bitcoiner xung quanh thế giới. Chúng tôi tin rằng bằng cách hỗ trợ cho trung tâm Bitcoin địa phương phát triển, chúng ta có thể tạo ra một mạng lưới của các điểm đến, nơi mà các bitcoiner được chào mừng tới để làm việc, sáng tạo và thảo luận một cách an toàn.",
+    "question2": "Tôi sẽ thu được gì?"
+  },
+  "notFound": {
+    "here": "Tại đây",
+    "pageTitle": "Ối.",
+    "pageSubtitle": "Có vẻ như ai đó đã rớt quá sâu vào hang thỏ và bị lạc. Để quay lại mặt đất, nhấp vào"
+  },
+  "payment": {
+    "proceedToPayment": "Xử lý thanh toán",
+    "terms": "Xem <0>điều khoản chung</0> của chúng tôi và chi tiết về điều kiện hoàn trả",
+    "feeDistribution": "Phân bổ phí: Tác giả 99% - Nền tảng 1%",
+    "total": "Tổng cộng"
+  },
+  "podcast": {
+    "abstract": "Tóm tắt",
+    "discover": "Khám phá podcast này"
+  },
+  "podcasts": {
+    "hostedBy": "Được tổ chức bởi {{host}}",
+    "pageTitle": "Các podcast về Bitcoin",
+    "pageSubtitle": "Cổng này là mã nguồn mở và mở cho mọi người đóng góp."
+  },
+  "professors": {
+    "pageTitle": "Các giáo sư",
+    "tips": {
+      "noTipsYet": "Giáo sư này không chấp nhận tiền típ ở thời điểm này.",
+      "thanks": "Cảm ơn vì đã hỗ trợ cho công việc của {{name}}!",
+      "thanksNoName": "Cảm ơn vì đã hỗ trợ công việc của tôi!"
+    },
+    "pageSubtitle": "Tất cả các giáo sư của chúng tôi là tình nguyên viên và là những Bitcoiner đầy đam mê. Bạn có thể típ để nói lời cảm ơn."
+  },
+  "resources": {
+    "articles": {
+      "title": "Các bài báo"
+    },
+    "bet": {
+      "title": "Công cụ giáo dục"
+    },
+    "builders": {
+      "title": "Các nhà phát triển"
+    },
+    "conferences": {
+      "title": "Bản phát lại của các hội nghị"
+    },
+    "headerSignature": "Rogzy",
+    "newsletters": {
+      "title": "Bản tin"
+    },
+    "pageDescription": "Tìm hiểu về Bitcoin giống như bạn đang khám phá một mê cung đang phát triển không ngừng. Để giúp bạn trong hành trình này, chúng tôi đã biên soạn rất nhiều nguồn tài nguyên gồm sách, podcast, video và bản phát lại của các hội nghị. Cổng thông tin này tập hợp tất cả thông tin vào một kho lưu trữ trên Github để giúp bạn hiểu hõ hơn về hệ sinh thái Bitcoin.",
+    "pageSubtitle": "Tập trung tri thức lại để có thể phân phối tối hơn",
+    "podcasts": {
+      "title": "Các podcast"
+    },
+    "publicGrade": "Điểm công khai: {{grade}}/5",
+    "books": {
+      "title": "Thư viện"
+    },
+    "filterBarLabel": "Tìm nguồn tài nguyên phù hợp với nhu cầu của bạn:",
+    "headerText": "Chào mừng bạn đến với chiếc hang thỏ không đáy mang tên Bitcoin! Trong phần này, chúng tôi sẽ cung cấp cho bạn những hướng dẫn chuyên sâu về hầu hết các dự án Bitcoin hiện có. Trang này được duy trì bởi những người đam mê Bitcoin, những người hỗ trợ cho dự án mã nguồn mở này. Nếu bạn cảm thấy chúng tôi gặp một lỗi gì đó, vui lòng liên hệ với chúng tôi. Để xem các tài liệu về tài chính của dự án, hãy tham khảo báo cáo minh bạch của chúng tôi. Bạn ơn sự tín nhiệm của bạn dành cho trường đại học này và hãy tận hưởng chuyến đi.",
+    "pageTitle": "Chào mừng bạn đến với Cổng tài nguyên",
+    "github": "Tất cả dữ liệu này được quản lý thông qua một kho mã nguồn mở trên <0>Github</0>. Bạn có thể thoải mái đóng góp và bổ sung bất kỳ nội dung còn thiếu nào."
+  },
+  "settings": {
+    "changePassword": "Thay đổi mật khẩu",
+    "changeEmail": "Thay đổi email"
+  },
+  "tutorials": {
+    "details": {
+      "checkAuthor": "Xem những đóng góp khác của tác giả và ủng hộ cho công việc của anh ấy.",
+      "enjoyed": "Bạn thích hướng dẫn này?",
+      "madeBy": "Hướng dẫn này được tạo bởi",
+      "source": "Nguồn chính thức: ",
+      "tipTooltip": "Bạn thích nó? Típ."
+    },
+    "exchange": {
+      "peer-to-peer": {
+        "description": "Sàn giao dịch ngang hàng là những chợ mà các cá nhân trao đổi bitcoin để lấy các đồng tiền khác với nhau. Những sàn này có thể được quản lý hoặc không, và thường không dòi hỏi nhiều thông tin (nếu có) về bạn. Họ chỉ đơn giản kết nối các người dùng với nhau. Phí của những sản này có thể cao hơn các sàn giao dịch truyền thống và thanh khoản của họ thấp hơn. Đây là lựa chọn yêu thích của những người dùng muốn tránh việc phải xác minh danh tính (KYC)."
+      },
+      "shortDescription": "Các giải pháp mua - bán bitcoin, KYC và không KYC",
+      "title": "Sàn giao dịch",
+      "centralized": {
+        "description": "Các sàn giao dịch tập trung thường là các thực thế được quản lý, họ hoạt động như là bên trung gian giữa hệ thống ngân hàng và hệ sinh thái Bitcoin. Họ có phép bạn mua và bán lượng lớn bitcoin và rút chúng về ví hoặc tài khoản ngân hàng của mình. Họ thường yêu cầu người dùng xác minh danh tính (KYC), do đó có thể theo dõi các hoạt động của bạn, báo cáo với các tổ chức giám sát tài chính theo luật địa phương."
+      },
+      "description": "Các sàn giao dịch là những cánh cửa vào và ra giữa tiền tệ truyền thống (euro, đô-la) và thế giới bitcoin. Các sàn giao dịch có thể được quản lý và tuân thủ việc xác minh danh tính người dùng (KYC), hoặc giao dịch ngang hàng ẩn danh. Mỗi sàn giao dịch sẽ cung cấp những tính năng, cơ cấu phí, mức độ thanh khoản và dịch vụ hỗ trợ người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng các sàn giao dịch khác nhau dựa trên nhu cầu và nhận định của họ."
+    },
+    "explorer": {
+      "didYouKnow": "Bạn đã biết?",
+      "description": "Tất cả các hướng dẫn được viết bởi nhưng bitcoiner đầy đam mê và tận tâm, những người mong muốn mở rộng việc giáo dục về bitcoin ra toàn thế giới. Hãy nhớ thích, xem lại và típ satoshi cho họ!"
+    },
+    "headerSignature": "Rogzy",
+    "merchant": {
+      "shortDescription": "Các giải pháp để các doanh nghiệp chấp nhận Bitcoin",
+      "title": "Người bán",
+      "description": "Đã bao giờ bạn tự hỏi làm thế nào để dễ dàng chấp nhận bitcoin cho một doanh nghiệp? Khám phá các giải pháp khác nhau của chúng tôi để trở thành một chuyên gia và dễ dàng thiết lập một giải pháp thương mại cho các cửa hàng xung quanh bạn. Giải pháp các điểm bán (POS) thay đổi dựa trên nhu cầu của người bán (vật lý hoặc trực tuyến), khối lượng giao dịch của họ, và độ phức tạp trong vận hành của họ. Một giải pháp tốt đơn giản là bắt đầu với ví LN cơ bản, chuyển sang giải pháp dễ dàng, hiểu quả (như PoS trên di động), và cuối cùng khám phá BTC Pay cho các giải pháp nâng cao, phức tạp và chuyên nghiệp."
+    },
+    "mining": {
+      "description": "Ngành công nghiệp đào bitcoin là một chủ đề phức tạp với rất nhiều hang thỏ trong đó. Ở đây, chúng tôi sẽ cố gắng để đồng hành cùng bạn trên hành trình sử dụng phần cứng và phần mềm. Từ việc điều chỉnh một máy đào S9 trở thành một máy sưởi tại gia cho đến việc cố gắng thắng xổ số với một thợ đào mọt sách.",
+      "shortDescription": "Các giải pháp đào bitcoin",
+      "title": "Đào"
+    },
+    "node": {
+      "lightning-network": {
+        "name": "Lightning Network",
+        "description": "Một nút Lightning cho phép bạn thạm gia vào giao thức lớp thứ hai của Bitcoin, được gọi là Lightning Network. Bạn sẽ có thể mở các kệnh, quản lý thanh khoản của chúng, và trở nên không cần nhờ lưu ký hộ với ví Lightning của bạn."
+      },
+      "rgb": {
+        "description": "RGB là một hệ thống cho phép vận hành hợp đồng thông minh và mở rộng quy mô trên Bitcoin và Lightning Network. Nó là một lớp có thể được lập trình, với các khái niệm về quyền sở hữu chung và riêng, sự trừu tượng hoá và phân tách các mối quan tâm và đại diện cho \"hậu blockchain\"."
+      },
+      "shortDescription": "Các giải pháp để vận hành một nút Bitcoin và tham gia vào mạng lưới",
+      "title": "Nút",
+      "bitcoin": {
+        "description": "Một nut Bitcoin Core là nền tảng cho các ngăn xếp chủ quyền Bitcoin của bạn. Nó cho phép bạn vận hành phần mềm Bitcoin và trở thành một phần của mạng lưới. Bạn sẽ xác thực các khối và các giao dịch, quyết định xem những quy tắc nào mà bạn muốn áp dụng cho mạng lưới, và dừng việc sử dụng một bên trung gian để lan truyền giao dịch của bạn. Có rất nhiều cách để vận hành một nút Bitcoin Core, một số thân thiện hơn một số cách khác."
+      },
+      "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác."
+    },
+    "others": {
+      "title": "Khác",
+      "shortDescription": "",
+      "description": "",
+      "DIY": {
+        "description": ""
+      },
+      "OpenSource": {
+        "description": ""
+      },
+      "contribution": {
+        "description": ""
+      },
+      "general": {
+        "description": ""
+      }
+    },
+    "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
+    "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
+    "privacy": {
+      "shortDescription": "Các công cụ để sao lưu và bảo đảm riêng tư",
+      "title": "Riêng tư",
+      "bitcoin": {
+        "description": "Bitcoin không mặc định đảm bảo sự riêng tư, nó được thiết kế để hoạt động bán ẩn danh, mỗi giao dịch đều là công khai và được lưu trữ mãi mãi. Để duy trì sự riêng tư, chúng ta cần phải có những hành vi đúng cùng với những công cụ đặc biệt được tích hợp vào phần mềm của mình. Từ việc tránh dùng lại địa chỉ, tới sử dụng CoinJoin, thông qua việc trộn coin và kết nối với nút của chính mình, chúng tôi sẽ giúp bạn trên hành trình bảo vệ sự riêng tư."
+      },
+      "description": "Quyền riêng tư là một quyền cơ bản. Trong khi chúng tôi mong muốn xây dựng một thế giới mà quyền riêng tư được mặc định bảo đảm, điều đó không phải là thực tế mà chúng ta đang có. Chúng tôi sẽ cố gắng để giải thích cho bạn những thực hành đúng, hỗ trợ bạn với các hướng dẫn và giúp bạn trở nên có chủ quyền vững chãi hơn liên quan tới thông tin cá nhân.",
+      "general": {
+        "description": "Trong thời đại của giám sát hàng loạt, trên diện rộng, lấy lại quyền riêng tư của mình trong cuộc sống thường ngày là một điều cần thiết. Vì mỗi người dùng sẽ có mức độ thành thạo và kiến thức công nghệ khác nhau, việc sử dụng một số công cụ nhất định và điều chỉnh chúng cho phù hợp với nhu cầu của bạn là một điều hoàn toàn bình thường. Ở đây, chúng ta sẽ khám phá các giải pháp bảo vệ khác nhau như VPN, Tor, Tails OS, GPG, tin nhắn mã hoá và nhiều hơn."
+      }
+    },
+    "wallet": {
+      "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ.",
+      "desktop": {
+        "description": "Ví trên máy tính là ví thường dùng cho những người dùng nâng cao bởi vì chúng là sự kết hợp giữa thiết bị phần cứng và phần mềm ví trên máy tính. Nó giống như có một giao diện người dùng mới, được tuỳ biến và có nhiều chức năng cho thiết bị phần cứng của bạn. Những ví kiểu như vậy cung cấp tuỳ chọn đa chữ ký, các tính năng riêng tư, cơ chế thừa kế và nhiều hơn nữa."
+      },
+      "mobile": {
+        "description": "Ví trên thiết bị di động thường được dùng để phục vụ cho chi tiêu hàng ngày. Chúng được tích hợp với Lightning Network để thực hiện các giao dịch phí thấp và ngay lập tức. Chúng thường được kết nối với internet (thường gọi là \"ví nóng\") và mức độ bảo mật thấp hơn so với các ví phần cứng. Chúng chỉ nên được sử để lưu trữ một lượng nhỏ bitcoin, được dùng cho các giao dịch hàng ngày giống tiền mặt trong ví của bạn vậy."
+      },
+      "shortDescription": "Các giải pháp bảo mật và sử dụng bitcoin của bạn",
+      "title": "Ví",
+      "hardware": {
+        "description": "Các ví phần cứng thường được dùng để lưu trữ bitcoin dài hạn. Chúng là những thiết bị vật lý không được kết nối với internet (được gọi là ví lạnh) và thường rất an toàn. Mặc dù phần mềm được dùng trên các thiết bị này là mã nguồn mở, giá để mua phần cứng khoảng từ 50 đến 300 euro. Hãy xem những thiết bị này giống như một tài khoản ngân hàng dành cho việc lưu trữ khoản tiền tiết kiệm lớn mà thi thoảng bạn mới sử dụng."
+      }
+    },
+    "headerText": "Chào mừng bạn đến với chiếc hang thỏ không đáy mang tên Bitcoin! Trong phần này, chúng tôi sẽ cung cấp cho bạn những hướng dẫn chuyên sâu về hầu hết các dự án Bitcoin hiện có. Trang này được duy trì bởi những người đam mê Bitcoin, những người hỗ trợ cho dự án mã nguồn mở này. Nếu bạn cảm thấy chúng tôi gặp một lỗi gì đó, vui lòng liên hệ với chúng tôi. Để xem các tài liệu về tài chính của dự án, hãy tham khảo báo cáo minh bạch của chúng tôi. Bạn ơn sự tín nhiệm của bạn dành cho trường đại học này và hãy tận hưởng chuyến đi.",
+    "pageDescription": "Bitcoin là một ngành rộng, và đang trở nên rộng hơn mỗi ngày. Nhằm giúp bạn khám phá nó, chúng tôi đã tập hợp và lựa chọn một lượng lớn các hướng dẫn mô tả về các giải pháp khác nhau trên tất cả các mảng liên quan tới Bitcoin."
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "p2": "và cân nhắc tham gia cộng đồng của chúng tôi!",
+    "pageTitle": "Ôi.",
+    "p1": "Một chú thỏ vừa chui vào hang. Bởi vì cuộc phiêu lưu bất ngờ này, trang này đang trong quá trình phát triển ở thời điểm hiện tại. Chúng tôi xin lỗi về sự bất tiện này. Đội ngũ của chúng tôi đang nỗ lực để hoàn thiện trang này. Nếu bạn muốn giúp một tay, đừng ngại xem qua"
+  },
+  "words": {
+    "about": "Về",
+    "about-us": "Về chúng tôi",
+    "account": "Tài khoản",
+    "additionalCriteria": "Tiêu chí cộng thêm",
+    "advanced": "Nâng cao",
+    "article": "Bài viết",
+    "articles": "Các bài viết",
+    "audioBook": "Sách nói",
+    "back": "Quay lại",
+    "beginner": "Người mới bắt đầu",
+    "bitcoinWhitepaper": "Bản cáo bạch Bitcoin",
+    "book": "Sách",
+    "books": "Sách",
+    "builders": "Nhà phát triển",
+    "certificate": "Chứng chỉ",
+    "conference": "Hội nghị",
+    "conferences": "Các hội nghị",
+    "content": "Nội dung",
+    "course": "Khoá học",
+    "courses": "Các khoá học",
+    "date": "Ngày",
+    "details": "Chi tiết",
+    "didYouKnow": "Bạn đã biết?",
+    "documentaries": "Phim tài liệu",
+    "donations": "Ủng hộ",
+    "economy": "Kinh tế",
+    "education": "Giáo dục",
+    "email": "Email",
+    "events": "Các sự kiện",
+    "followUs": "Theo dõi chúng tôi",
+    "helpUs": "Giúp đỡ chúng tôi",
+    "home": "Trang chủ",
+    "intermediate": "Trung cấp",
+    "interview": "Phỏng vấn",
+    "level": {
+      "advanced": "Nâng cao",
+      "beginner": "Người mới bắt đầu",
+      "intermediate": "Trung cấp",
+      "developer": "lập trình viên"
+    },
+    "library": "Thư viện",
+    "lightning": "Lightning",
+    "lnurlAuth": "Xác thực LNURL",
+    "manifesto": "Bản tuyên ngôn",
+    "merchandising": "Buôn bán",
+    "merchants": "Các thương nhân",
+    "members": " Các thành viên",
+    "mining": "Đào",
+    "movieDocumentary": "Phim tài liệu",
+    "network": "Mạng lưới",
+    "networkMember": "Thành viên mạng lưới",
+    "newsletter": "Bản tin",
+    "node": "Nút",
+    "nodeNetwork": "Nút mạng",
+    "or": "hoặc",
+    "ourStory": "Câu chuyện của chúng tôi",
+    "podcast": "Podcast",
+    "podcasts": "Các podcast",
+    "professors": "Các giáo sư",
+    "purchase": "Mua",
+    "register": "Đăng ký",
+    "resources": "Các nguồn tài nguyên",
+    "resume": "Tiếp tục",
+    "review": "Xem lại",
+    "rogzy": "Rogzy",
+    "sponsorUs": "Tài trợ chúng tôi",
+    "sponsoringAndContributors": "Hoạt động tài trợ và những người đóng góp",
+    "supportUs": "Hỗ trợ chúng tôi",
+    "termsAndConditions": "Các điều khoản và điều kiện",
+    "time": "Thời gian",
+    "to": "tới",
+    "toolkits": "Các bộ công cụ",
+    "tutorial": "Hướng dẫn",
+    "tutorials": "Các hướng dẫn",
+    "update": "Cập nhật",
+    "video": "Video",
+    "videos": "Các video",
+    "wallets": "Các ví",
+    "continue": "Tiếp tục",
+    "dashboard": "Bảng điều khiển",
+    "exchanges": "Các sàn giao dịch",
+    "more": "Nhiều hơn",
+    "newsletters": "Các bản tin",
+    "relatedResources": "Các nguồn tài nguyên liên quan",
+    "teachers": "Các giáo viên",
+    "billing": "",
+    "download": "",
+    "invoice": "",
+    "on": "",
+    "online": "",
+    "ticket": "",
+    "tickets": ""
+  }
 }
