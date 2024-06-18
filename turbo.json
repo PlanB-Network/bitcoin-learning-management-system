@@ -1,7 +1,29 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [".env", "tsconfig.json"],
-  "globalEnv": [".env"],
+  "globalEnv": [
+    "POSTGRES_DB",
+    "POSTGRES_HOST",
+    "POSTGRES_PORT",
+    "POSTGRES_USER",
+    "POSTGRES_PASSWORD",
+    "NODE_ENV",
+    "SESSION_SECRET",
+    "REDIS_HOST",
+    "REDIS_PORT",
+    "SYNC_PATH",
+    "DATA_REPOSITORY_URL",
+    "DATA_REPOSITORY_BRANCH",
+    "PRIVATE_DATA_REPOSITORY_URL",
+    "PRIVATE_DATA_REPOSITORY_BRANCH",
+    "GITHUB_ACCESS_TOKEN",
+    "DOMAIN_URL",
+    "SENDGRID_ENABLE",
+    "SENDGRID_KEY",
+    "SENDGRID_EMAIL",
+    "SENDGRID_EMAIL_CHANGE_TEMPLATE_ID",
+    "SENDGRID_RECOVER_PASSWORD_TEMPLATE_ID"
+  ],
   "tasks": {
     "copy-assets": {
       "outputs": ["."]

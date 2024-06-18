@@ -1,3 +1,5 @@
+import type { PostgresClientConfig } from '@sovereign-university/database';
+import type { RedisClientConfig } from '@sovereign-university/redis';
 import type { EnvConfig } from '@sovereign-university/types';
 
 const getenv = <T extends string | number | boolean | null = string>(
@@ -52,4 +54,20 @@ export const sendgrid: EnvConfig['sendgrid'] = {
       null,
     ),
   },
+};
+
+export const postgres: PostgresClientConfig = {
+  host: getenv<string>('POSTGRES_HOST', 'localhost'),
+  port: getenv<number>('POSTGRES_PORT', 5432),
+  database: getenv<string>('POSTGRES_DB'),
+  username: getenv<string>('POSTGRES_USER'),
+  password: getenv<string>('POSTGRES_PASSWORD'),
+};
+
+export const redis: RedisClientConfig = {
+  host: getenv<string>('REDIS_HOST', 'localhost'),
+  port: getenv<number>('REDIS_PORT', 6379),
+  database: getenv<number>('REDIS_DB', 0),
+  password: process.env['REDIS_PASSWORD'],
+  username: process.env['REDIS_USERNAME'],
 };
