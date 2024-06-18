@@ -95,7 +95,7 @@ export const EventCard = ({
               endDate.getUTCHours() !== 0 &&
               !isPassed && <span className="max-sm:hidden">{timeString}</span>}
           </div>
-          {event.bookInPerson && !isPassed && (
+          {(event.bookInPerson || event.addressLine1) && !isPassed && (
             <>
               <span className="max-sm:hidden">{event.addressLine2}</span>
               <span className="max-sm:hidden">{event.addressLine3}</span>
