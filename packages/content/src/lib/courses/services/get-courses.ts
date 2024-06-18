@@ -25,9 +25,7 @@ export const createGetCourses =
       professors: professors.filter(
         (professor) =>
           professor.contributorId !== undefined &&
-          course.professors.some(
-            (p) => p.id === Number(professor.contributorId),
-          ),
+          course.professors.some((p) => String(p) === professor.contributorId),
       ),
     }));
   };

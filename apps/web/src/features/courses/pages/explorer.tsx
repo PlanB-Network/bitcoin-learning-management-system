@@ -42,13 +42,12 @@ const sortCoursesByLevel = (courses: JoinedCourse[]) => {
 const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
   return (
     <section className="flex flex-col md:border-t border-white/10 md:mb-8">
-      {/* fix professor output issue */}
-      {/* <CourseInfoItem
-                  leftText={t('words.professor')}
-                  rightText={course.professors
-                    .map((professor) => professor.name)
-                    .join(', ')}
-                /> */}
+      <CourseInfoItem
+        leftText={t('words.professor')}
+        rightText={course.professors
+          .map((professor) => professor.name)
+          .join(', ')}
+      />
       <CourseInfoItem
         leftText={t('words.level.level')}
         rightText={t(`words.level.${course.level}`)}
@@ -90,7 +89,7 @@ const CourseInfoItem = ({
   return (
     <div
       className={cn(
-        'flex items-center justify-between border-b border-white/10 py-2',
+        'flex items-center justify-between border-b border-white/10 py-2 gap-2',
         isMobileOnly && 'md:hidden',
         isDesktopOnly && 'max-md:hidden',
         className,
@@ -99,7 +98,7 @@ const CourseInfoItem = ({
       <span className="text-white/70 leading-relaxed tracking-[0.08px]">
         {leftText}
       </span>
-      <span className="font-medium leading-relaxed tracking-[0.08px]">
+      <span className="font-medium leading-relaxed tracking-[0.08px] text-right">
         {rightText}
       </span>
     </div>
@@ -134,13 +133,18 @@ const CourseCard = ({ course }: { course: JoinedCourse }) => {
           </div>
         </div>
       </div>
-      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 max-h-48 md:group-hover:max-h-0 md:group-hover:opacity-0 transition-all ease-linear md:group-hover:absolute bottom-16">
+      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 md:group-hover:hidden">
         {course.goal}
       </p>
-      <div className="hidden md:group-hover:flex flex-col max-h-0 md:group-hover:max-h-48 transition-[max-height]">
+      <div className="hidden md:group-hover:flex flex-col">
+        <span className="font-medium leading-normal tracking-015px mb-2">
+          {t('words.professor')} :{' '}
+          {course.professors.map((professor) => professor.name).join(', ')}
+        </span>
         <CourseInfoItem
           leftText={t('words.duration')}
           rightText={course.hours + ' hours'}
+          className="border-t"
         />
         <CourseInfoItem
           leftText={t('words.price')}
@@ -152,20 +156,14 @@ const CourseCard = ({ course }: { course: JoinedCourse }) => {
           className="border-none"
         />
       </div>
-      <Link
-        to="/courses/$courseId"
-        params={{ courseId: course.id }}
-        className="mt-auto hidden md:group-hover:flex"
+      <Button
+        variant="newPrimary"
+        size="m"
+        onHoverArrow
+        className="mt-auto hidden md:group-hover:flex w-full"
       >
-        <Button
-          variant="newPrimary"
-          size="m"
-          onHoverArrow
-          className="w-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000"
-        >
-          {t('courses.explorer.seeCourse')}
-        </Button>
-      </Link>
+        {t('courses.explorer.seeCourse')}
+      </Button>
     </article>
   );
 };
