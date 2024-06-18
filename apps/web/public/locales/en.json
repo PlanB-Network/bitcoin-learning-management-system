@@ -216,9 +216,6 @@
       "s3t1": "Build your own path down the rabbit hole",
       "seeCourse": "See the course"
     },
-    "footer": {
-      "": ""
-    },
     "part": {
       "count": "Part {{count}}"
     },
