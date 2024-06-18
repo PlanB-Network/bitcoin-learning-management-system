@@ -28,6 +28,7 @@ interface CourseInfoItemProps {
   rightText: string;
   isMobileOnly?: boolean;
   isDesktopOnly?: boolean;
+  className?: string;
 }
 
 const levels = ['beginner', 'intermediate', 'advanced', 'developer'];
@@ -41,13 +42,12 @@ const sortCoursesByLevel = (courses: JoinedCourse[]) => {
 const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
   return (
     <section className="flex flex-col md:border-t border-white/10 md:mb-8">
-      {/* fix professor output issue */}
-      {/* <CourseInfoItem
-                  leftText={t('words.professor')}
-                  rightText={course.professors
-                    .map((professor) => professor.name)
-                    .join(', ')}
-                /> */}
+      <CourseInfoItem
+        leftText={t('words.professor')}
+        rightText={course.professors
+          .map((professor) => professor.name)
+          .join(', ')}
+      />
       <CourseInfoItem
         leftText={t('words.level.level')}
         rightText={t(`words.level.${course.level}`)}
@@ -84,19 +84,21 @@ const CourseInfoItem = ({
   rightText,
   isMobileOnly,
   isDesktopOnly,
+  className,
 }: CourseInfoItemProps) => {
   return (
     <div
       className={cn(
-        'flex items-center justify-between border-b border-white/10 py-2',
+        'flex items-center justify-between border-b border-white/10 py-2 gap-2',
         isMobileOnly && 'md:hidden',
         isDesktopOnly && 'max-md:hidden',
+        className,
       )}
     >
       <span className="text-white/70 leading-relaxed tracking-[0.08px]">
         {leftText}
       </span>
-      <span className="font-medium leading-relaxed tracking-[0.08px]">
+      <span className="font-medium leading-relaxed tracking-[0.08px] text-right">
         {rightText}
       </span>
     </div>
@@ -105,7 +107,7 @@ const CourseInfoItem = ({
 
 const CourseCard = ({ course }: { course: JoinedCourse }) => {
   return (
-    <article className="flex flex-col w-full bg-darkOrange-11 p-2.5 rounded-[20px]">
+    <article className="relative group flex flex-col w-full bg-darkOrange-11 p-2.5 rounded-[20px]">
       <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
         <img
           src={computeAssetCdnUrl(
@@ -113,16 +115,12 @@ const CourseCard = ({ course }: { course: JoinedCourse }) => {
             `courses/${course.id}/assets/thumbnail.webp`,
           )}
           alt={course.name}
-          className="rounded-md md:mb-2.5 max-md:w-[124px]"
+          className="rounded-md md:mb-2.5 max-md:w-[124px] object-cover [overflow-clip-margin:_unset] object-center max-h-full md:group-hover:max-h-48 transition-[max-height]"
         />
         <div className="flex flex-col">
-          <Link
-            to="/courses/$courseId"
-            params={{ courseId: course.id }}
-            className="max-md:flex flex-col justify-center mb-1.5 md:mb-2 line-clamp-3 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full"
-          >
+          <span className="max-md:flex flex-col justify-center mb-1.5 md:mb-2 line-clamp-3 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full">
             {course.name}
-          </Link>
+          </span>
           <div className="flex items-center flex-wrap gap-1.5 md:gap-2 mt-auto">
             <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
               {course.id === 'btc101'
@@ -135,18 +133,37 @@ const CourseCard = ({ course }: { course: JoinedCourse }) => {
           </div>
         </div>
       </div>
-      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 md:mb-2.5">
+      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 md:group-hover:hidden">
         {course.goal}
       </p>
-      <Link
-        to="/courses/$courseId"
-        params={{ courseId: course.id }}
-        className="mt-auto max-md:hidden"
+      <div className="hidden md:group-hover:flex flex-col">
+        <span className="font-medium leading-normal tracking-015px mb-2">
+          {t('words.professor')} :{' '}
+          {course.professors.map((professor) => professor.name).join(', ')}
+        </span>
+        <CourseInfoItem
+          leftText={t('words.duration')}
+          rightText={course.hours + ' hours'}
+          className="border-t"
+        />
+        <CourseInfoItem
+          leftText={t('words.price')}
+          rightText={
+            course.paidPriceDollars
+              ? `${course.paidPriceDollars}$`
+              : t('words.free')
+          }
+          className="border-none"
+        />
+      </div>
+      <Button
+        variant="newPrimary"
+        size="m"
+        onHoverArrow
+        className="mt-auto hidden md:group-hover:flex w-full"
       >
-        <Button variant="newPrimary" size="m" onHoverArrow className="w-full">
-          {t('courses.explorer.seeCourse')}
-        </Button>
-      </Link>
+        {t('courses.explorer.seeCourse')}
+      </Button>
     </article>
   );
 };
