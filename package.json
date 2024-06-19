@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@sovereign-university/eslint-config": "workspace:*",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.5",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/ui": "1.6.0",
     "autoprefixer": "10.4.19",
@@ -35,7 +35,7 @@
     "lint-staged": "^15.2.7",
     "postcss": "8.4.38",
     "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "0.5.13",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "tsx": "^4.15.6",
     "turbo": "^2.0.4",
     "typescript": "5.4.5",
@@ -51,5 +51,5 @@
       "postgres@3.4.3": "patches/postgres@3.4.3.patch"
     }
   },
-  "packageManager": "pnpm@9.3.0"
+  "packageManager": "pnpm@9.4.0"
 }
