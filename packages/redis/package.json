@@ -15,7 +15,7 @@
     "type-check": "tsc --build"
   },
   "dependencies": {
-    "ioredis": "^5.3.2"
+    "ioredis": "^5.4.1"
   },
   "devDependencies": {
     "@sovereign-university/types": "workspace:*"

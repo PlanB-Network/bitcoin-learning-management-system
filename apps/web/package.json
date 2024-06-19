@@ -20,7 +20,7 @@
     "@sovereign-university/schemas": "workspace:*",
     "@sovereign-university/ui": "workspace:*",
     "@tanstack/react-query": "^5.45.1",
-    "@tanstack/react-router": "^1.38.1",
+    "@tanstack/react-router": "^1.39.4",
     "@trpc/client": "11.0.0-next-beta.316",
     "@trpc/react-query": "11.0.0-next-beta.316",
     "buffer": "^6.0.3",
@@ -58,7 +58,7 @@
   "devDependencies": {
     "@sovereign-university/api": "workspace:*",
     "@sovereign-university/types": "workspace:*",
-    "@storybook/react": "^8.1.9",
+    "@storybook/react": "^8.1.10",
     "@types/d3": "^7.4.3",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "18.3.3",
@@ -67,7 +67,7 @@
     "@types/react-syntax-highlighter": "15.5.13",
     "@vitejs/plugin-react": "4.3.1",
     "ol": "^9.2.4",
-    "sass": "^1.77.5",
+    "sass": "^1.77.6",
     "tailwindcss": "^3.4.4",
     "vite-plugin-svgr": "^4.2.0"
   }
