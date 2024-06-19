@@ -53,7 +53,7 @@ export const createGetProfessor =
           (professor) =>
             professor.contributorId !== undefined &&
             course.professors.some(
-              (p) => p.id === Number(professor.contributorId),
+              (p) => String(p) === professor.contributorId,
             ),
         ),
       })),

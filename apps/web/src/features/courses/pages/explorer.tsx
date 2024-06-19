@@ -105,7 +105,7 @@ const CourseInfoItem = ({
   );
 };
 
-const CourseCard = ({ course }: { course: JoinedCourse }) => {
+export const CourseCard = ({ course }: { course: JoinedCourse }) => {
   return (
     <article className="relative group flex flex-col w-full bg-darkOrange-11 p-2.5 rounded-[20px]">
       <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">

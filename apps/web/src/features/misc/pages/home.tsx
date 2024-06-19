@@ -394,7 +394,7 @@ export const Home = () => {
                 params={{ category: tutorialCategory.name }}
               >
                 <CategoryIcon src={tutorialCategory.image} />
-                <p className="ml-4 text-lg font-medium md:ml-12">
+                <p className="ml-4 text-lg font-medium xl:ml-12">
                   {t(`tutorials.${tutorialCategory.name}.title`)}
                 </p>
               </Link>

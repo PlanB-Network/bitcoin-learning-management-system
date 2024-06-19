@@ -85,7 +85,7 @@ export const LanguageSelector = ({
           onMouseLeave={() => setOpen(false)}
           static
           className={cn(
-            'flex flex-col items-center justify-center absolute z-20 bg-darkOrange-11  rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-96 overflow-y-scroll no-scrollbar',
+            'flex flex-col items-center justify-center absolute z-20 bg-darkOrange-11  rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-fit overflow-y-scroll no-scrollbar',
             direction === 'down'
               ? 'top-9 lg:top-20 right-0'
               : 'bottom-16 left-1/2 -translate-x-1/2',
