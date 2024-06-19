@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 import { format, getDay, parse, startOfWeek } from 'date-fns';
@@ -290,14 +289,10 @@ export const EventsMap = ({
     if (!state) {
       // Find most populated event group
       const center =
-        groups.length > 1
-          ? latLonToCoordinate(
-              groups.reduce((a, b) =>
-                a.events.length > b.events.length ? a : b,
-              ).coordinate,
-            )
-          : groups.length > 0
-            ? latLonToCoordinate(groups[0].coordinate)
+        groups.length === 1
+          ? latLonToCoordinate(groups[0].coordinate)
+          : groups.length > 1
+            ? latLonToCoordinate(groups.sort((a, b) => b.events.length - a.events.length)[0].coordinate)
             : [0, 0];
 
       state = { center, zoom: 4 };
@@ -350,12 +345,6 @@ export const EventsMap = ({
       return setCards([calendarCard]);
     }
 
-    console.log('selectedEventGroup', {
-      selectedEventGroup,
-      filteredEvents,
-      calendarCard,
-    });
-
     if (selectedEventGroup && filteredEvents) {
       setCards(intersection(selectedEventGroup.events, filteredEvents));
     } else if (selectedEventGroup) {
@@ -370,6 +359,13 @@ export const EventsMap = ({
   /*
    * Calendar
    */
+  const [weekShift, setWeekShift] = useState(0);
+
+  const getDate = () => {
+    const date = new Date();
+    date.setDate(date.getDate() + weekShift * 7);
+    return date;
+  }
 
   const locales = {
     'en-US': enUS,
@@ -440,11 +436,23 @@ export const EventsMap = ({
           )}
         >
           <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
-            <div>Calendar</div>
+            <div>
+              Calendar - {
+                weekShift === 0 ?
+                  'This week' :
+                  weekShift === -1
+                    ? 'Last week'
+                    : weekShift === 1
+                      ? 'Next week'
+                      : weekShift > 0
+                        ? `In ${weekShift} weeks`
+                        : `${-weekShift} weeks ago`
+              }
+            </div>
 
             {/* Date controls */}
             <div className="flex items-center gap-1 font-normal">
-              <button className="border bg-white rounded-lg p-1">
+              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift - 1)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -460,10 +468,10 @@ export const EventsMap = ({
                   />
                 </svg>
               </button>
-              <button className="border bg-white rounded-lg py-1 px-3">
+              <button className="border bg-white rounded-lg py-1 px-3" onClick={() => setWeekShift(0)}>
                 Today
               </button>
-              <button className="border bg-white rounded-lg p-1">
+              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift + 1)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -515,6 +523,8 @@ export const EventsMap = ({
                     height: 'inherit',
                     width: '100%',
                   }}
+                  date={getDate()}
+                  onNavigate={() => { }}
                   eventPropGetter={customEventGetter}
                   components={weekComponents}
                   showAllEvents={true}
