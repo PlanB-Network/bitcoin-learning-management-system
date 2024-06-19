@@ -589,7 +589,7 @@ export const EventsMap = ({
           ></div>
 
           {/* Switch mode */}
-          <div className="absolute bottom-2 left-2">
+          <div className="absolute bottom-2 left-2 hidden xl:block">
             <Button
               variant="newPrimary"
               size="s"
