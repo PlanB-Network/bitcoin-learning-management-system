@@ -43,10 +43,10 @@ export const EventsPassed = ({
     passedEvents = events
       ?.filter((event) => {
         const now = Date.now();
-        let endDate = new Date(event.endDate).getTime();
+        let endDate = event.endDate.getTime();
         const ONE_HOUR = 60 * 60 * 1000;
 
-        if (new Date(event.endDate).getUTCHours() === 0) {
+        if (event.endDate.getUTCHours() === 0) {
           const TWENTY_FOUR_HOURS = 24 * ONE_HOUR;
           endDate += TWENTY_FOUR_HOURS;
         }
@@ -57,10 +57,7 @@ export const EventsPassed = ({
           (event.replayUrl || event.liveUrl)
         );
       })
-      .sort(
-        (a, b) =>
-          new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-      );
+      .sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
   }
 
   if (passedEvents.length === 0) {

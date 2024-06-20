@@ -42,12 +42,12 @@ export const CurrentEvents = ({
   if (events) {
     liveEvents = events?.filter((event) => {
       const now = Date.now();
-      const startDate = new Date(event.startDate).getTime();
-      let endDate = new Date(event.endDate).getTime();
+      const startDate = event.startDate.getTime();
+      let endDate = event.endDate.getTime();
       const ONE_HOUR = 60 * 60 * 1000;
       const THIRTY_MINUTES = 30 * 60 * 1000;
 
-      if (new Date(event.endDate).getUTCHours() === 0) {
+      if (event.endDate.getUTCHours() === 0) {
         const TWENTY_FOUR_HOURS = 24 * ONE_HOUR;
         endDate += TWENTY_FOUR_HOURS;
       }

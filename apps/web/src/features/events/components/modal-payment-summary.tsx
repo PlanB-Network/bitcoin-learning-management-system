@@ -31,8 +31,8 @@ export const ModalPaymentSummary = ({
   );
 
   const timezone = event.timezone || undefined;
-  const startDate = new Date(event.startDate);
-  const endDate = new Date(event.endDate);
+  const startDate = event.startDate;
+  const endDate = event.endDate;
 
   const dateString = getDateString(startDate, endDate, timezone);
   const timeString = getTimeString(startDate, endDate, timezone);
