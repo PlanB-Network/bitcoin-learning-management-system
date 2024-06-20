@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Button, cn } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { SITE_NAME } from '#src/utils/meta.js';
@@ -632,6 +633,7 @@ export const CourseDetails: React.FC = () => {
         }
       />
       <div className="text-blue-800">
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             {!courseHasToBePurchased && (

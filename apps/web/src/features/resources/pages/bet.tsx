@@ -5,6 +5,7 @@ import { IoIosSearch } from 'react-icons/io';
 import type { BetViewUrl } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
 import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
@@ -94,7 +95,7 @@ const SectionGrid = ({
 export const BET = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: bets } = trpc.content.getBets.useQuery({
+  const { data: bets, isFetched } = trpc.content.getBets.useQuery({
     language: i18n.language ?? 'en',
   });
 
@@ -121,6 +122,7 @@ export const BET = () => {
             <SectionDescription>
               {t('bet.educationalContent.description')}
             </SectionDescription>
+            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
             <SectionGrid
               elements={
                 bets
@@ -147,6 +149,7 @@ export const BET = () => {
             <SectionDescription>
               {t('bet.visualContent.description')}
             </SectionDescription>
+            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
             <SectionGrid
               elements={
                 bets

@@ -8,6 +8,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import type { JoinedCourse } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 // import { CourseCard } from '../../../components/course-card.tsx';
@@ -489,9 +490,11 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
 export const CoursesExplorer = () => {
   const { i18n } = useTranslation();
-  const { data: courses } = trpc.content.getCourses.useQuery({
+  const { data: courses, isFetched } = trpc.content.getCourses.useQuery({
     language: i18n.language,
   });
+
+  console.log(isFetched);
 
   return (
     <PageLayout
@@ -501,6 +504,8 @@ export const CoursesExplorer = () => {
       paddingXClasses="px-2.5 md:px-4"
       maxWidth="max-w-[1227px]"
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+
       {courses && (
         <>
           <p className="mobile-h3 md:desktop-h6 max-w-[451px] text-center mx-auto mt-6 mb-5 md:mt-16 md:mb-10">

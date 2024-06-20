@@ -10,6 +10,7 @@ import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import type { JoinedQuizQuestion } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { SITE_NAME } from '#src/utils/meta.js';
@@ -675,6 +676,7 @@ export const CourseChapter = () => {
       />
       {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
       <div className="text-black">
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}

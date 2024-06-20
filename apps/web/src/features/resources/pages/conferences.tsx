@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedConference } from '@sovereign-university/types';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
 import { trpc } from '#src/utils/trpc.js';
@@ -20,7 +21,8 @@ export const Conferences = () => {
   const [latestPlanBConferences, setLatestPlanBConferences] =
     useState<JoinedConference[]>();
 
-  const { data: conferences } = trpc.content.getConferences.useQuery();
+  const { data: conferences, isFetched } =
+    trpc.content.getConferences.useQuery();
 
   useEffect(() => {
     const sortedConferences = conferences
@@ -71,6 +73,7 @@ export const Conferences = () => {
             {t('conferences.latestConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
+            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
             {latestConferences && latestConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -109,6 +112,7 @@ export const Conferences = () => {
             {t('conferences.planBConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">
+            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -159,6 +163,7 @@ export const Conferences = () => {
         activeYear={activeYear}
         setActiveYear={setActiveYear}
       />
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {filteredConferences && filteredConferences.length > 0 && (
         <>
           <ConferencesTable conferences={filteredConferences} />

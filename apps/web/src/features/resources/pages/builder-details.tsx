@@ -9,6 +9,7 @@ import { SlGlobe } from 'react-icons/sl';
 
 import { Button, cn } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 
@@ -71,6 +72,7 @@ export const Builder = () => {
       activeCategory="builders"
       backToCategoryButton
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {builder && (
         <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
           <section className="flex p-2 md:p-[30px]">

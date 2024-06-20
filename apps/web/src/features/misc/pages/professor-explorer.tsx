@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 
 import { AuthorCard } from '../../..//components/author-card.tsx';
@@ -10,7 +11,7 @@ import { trpc } from '../../../utils/trpc.ts';
 export const ProfessorExplorer = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: professors } = trpc.content.getProfessors.useQuery({
+  const { data: professors, isFetched } = trpc.content.getProfessors.useQuery({
     language: i18n.language,
   });
 
@@ -26,6 +27,7 @@ export const ProfessorExplorer = () => {
     >
       <div className="bg-black flex w-full flex-col items-center justify-center">
         <div className="flex max-w-[22rem] flex-wrap items-stretch justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
+          {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
           {sortedProfessors?.map((professor) => {
             return (
               <Link

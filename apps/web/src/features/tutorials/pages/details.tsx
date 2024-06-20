@@ -2,6 +2,7 @@ import { Link, useParams } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
@@ -27,7 +28,7 @@ export const TutorialDetails = () => {
     close: closeTipModal,
   } = useDisclosure();
 
-  const { data: tutorial } = trpc.content.getTutorial.useQuery({
+  const { data: tutorial, isFetched } = trpc.content.getTutorial.useQuery({
     category,
     name,
     language: i18n.language,
@@ -90,79 +91,85 @@ export const TutorialDetails = () => {
       currentSubcategory={tutorial?.subcategory}
       currentTutorialId={tutorial?.id}
     >
-      {tutorial && (
-        <>
-          <PageMeta
-            title={`${SITE_NAME} - ${tutorial?.title}`}
-            description={capitalize(
-              tutorial?.description || tutorial?.rawContent,
-            )}
-          />
-          <div className="-mt-4 w-full max-w-5xl lg:hidden">
-            <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
-              <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
-              <Link
-                to={'/tutorials/$category'}
-                params={{ category: tutorial.category }}
-                className="capitalize"
-              >
-                {tutorial.category + ` > `}
-              </Link>
-              <span className="capitalize">{tutorial.title}</span>
-            </span>
-          </div>
-          <div className="flex w-full flex-col items-center justify-center px-2">
-            <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
-              {header(tutorial)}
-              <TutorialsMarkdownBody
-                content={tutorial.rawContent}
-                assetPrefix={computeAssetCdnUrl(
-                  tutorial.lastCommit,
-                  tutorial.path,
-                )}
-              />
-              <div>
-                {headerAndFooterText(
-                  tutorial.credits?.name as string,
-                  tutorial.credits?.link as string,
-                )}
-              </div>
-            </div>
-            {tutorial.credits?.professor?.id && (
-              <div className="mt-4 flex w-full flex-col items-center space-y-2 p-5 text-blue-900 sm:px-0">
-                <h2 className="text-2xl font-semibold">
-                  {t('tutorials.details.enjoyed')}
-                </h2>
-                <p className="text-xl">{t('tutorials.details.checkAuthor')}</p>
-                {tutorial.credits?.professor && (
-                  <Link
-                    to={'/professor/$professorId'}
-                    params={{
-                      professorId: tutorial.credits.professor.id.toString(),
-                    }}
-                    key={tutorial.credits.professor.id}
-                  >
-                    <AuthorCard
-                      className="py-4"
-                      professor={tutorial.credits.professor}
-                    ></AuthorCard>
-                  </Link>
-                )}
-              </div>
-            )}
-          </div>
-          {isTipModalOpen && (
-            <TipModal
-              isOpen={isTipModalOpen}
-              onClose={closeTipModal}
-              lightningAddress={
-                tutorial.credits?.professor?.tips.lightningAddress as string
-              }
-              userName={tutorial.credits?.professor?.name as string}
+      <>
+        {tutorial && (
+          <>
+            <PageMeta
+              title={`${SITE_NAME} - ${tutorial?.title}`}
+              description={capitalize(
+                tutorial?.description || tutorial?.rawContent,
+              )}
             />
-          )}
-        </>
-      )}
+            <div className="-mt-4 w-full max-w-5xl lg:hidden">
+              <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
+                <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
+                <Link
+                  to={'/tutorials/$category'}
+                  params={{ category: tutorial.category }}
+                  className="capitalize"
+                >
+                  {tutorial.category + ` > `}
+                </Link>
+                <span className="capitalize">{tutorial.title}</span>
+              </span>
+            </div>
+            <div className="flex w-full flex-col items-center justify-center px-2">
+              <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
+                {header(tutorial)}
+                <TutorialsMarkdownBody
+                  content={tutorial.rawContent}
+                  assetPrefix={computeAssetCdnUrl(
+                    tutorial.lastCommit,
+                    tutorial.path,
+                  )}
+                />
+                <div>
+                  {headerAndFooterText(
+                    tutorial.credits?.name as string,
+                    tutorial.credits?.link as string,
+                  )}
+                </div>
+              </div>
+              {tutorial.credits?.professor?.id && (
+                <div className="mt-4 flex w-full flex-col items-center space-y-2 p-5 text-blue-900 sm:px-0">
+                  <h2 className="text-2xl font-semibold">
+                    {t('tutorials.details.enjoyed')}
+                  </h2>
+                  <p className="text-xl">
+                    {t('tutorials.details.checkAuthor')}
+                  </p>
+                  {tutorial.credits?.professor && (
+                    <Link
+                      to={'/professor/$professorId'}
+                      params={{
+                        professorId: tutorial.credits.professor.id.toString(),
+                      }}
+                      key={tutorial.credits.professor.id}
+                    >
+                      <AuthorCard
+                        className="py-4"
+                        professor={tutorial.credits.professor}
+                      ></AuthorCard>
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+            {isTipModalOpen && (
+              <TipModal
+                isOpen={isTipModalOpen}
+                onClose={closeTipModal}
+                lightningAddress={
+                  tutorial.credits?.professor?.tips.lightningAddress as string
+                }
+                userName={tutorial.credits?.professor?.name as string}
+              />
+            )}
+          </>
+        )}
+
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      </>
     </TutorialLayout>
   );
 };

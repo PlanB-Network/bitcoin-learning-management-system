@@ -7,6 +7,7 @@ import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import type { ConferenceStageVideo } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { NewTag } from '#src/atoms/Tag/index.js';
 import { ConferencesMarkdownBody } from '#src/components/ConferencesMarkdownBody/index.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
@@ -95,6 +96,7 @@ export const Conference = () => {
       maxWidth="1360"
       className="max-md:mx-4"
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {conference && (
         <>
           {/* Top part */}

@@ -2,6 +2,7 @@ import { useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import { Card } from '../../../atoms/Card/index.tsx';
@@ -67,6 +68,7 @@ export const Book = () => {
       activeCategory="books"
       backToCategoryButton
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {book && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

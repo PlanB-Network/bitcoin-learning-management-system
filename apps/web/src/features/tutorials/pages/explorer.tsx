@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
@@ -15,7 +16,7 @@ import { TUTORIALS_CATEGORIES } from '../utils.tsx';
 export const TutorialExplorer = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: tutorials } = trpc.content.getTutorials.useQuery({
+  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery({
     language: i18n.language,
   });
 
@@ -64,6 +65,7 @@ export const TutorialExplorer = () => {
             <span>{t('tutorials.explorer.description')}</span>
           </div>
           <div className="flex max-w-3xl flex-wrap justify-center gap-6">
+            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
             {tutorials
               ?.filter((tutorial) =>
                 tutorial.name.toLowerCase().includes(searchTerm.toLowerCase()),

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
+
 import { trpc } from '../../../utils/index.ts';
 import { BuilderCard } from '../components/Cards/builder-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
@@ -12,7 +14,7 @@ export const Builders = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: builders } = trpc.content.getBuilders.useQuery({
+  const { data: builders, isFetched } = trpc.content.getBuilders.useQuery({
     language: i18n.language ?? 'en',
   });
 
@@ -44,6 +46,7 @@ export const Builders = () => {
       }}
       activeCategory="builders"
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       <div className="flex flex-col gap-5 p-4 pt-0 md:p-10 md:pt-0">
         {categories.map((category) => {
           const filteredBuilders = categorizedBuilders[category].filter(
