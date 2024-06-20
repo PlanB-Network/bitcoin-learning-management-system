@@ -108,7 +108,7 @@ const CourseInfoItem = ({
 export const CourseCard = ({ course }: { course: JoinedCourse }) => {
   return (
     <article className="relative group flex flex-col w-full bg-darkOrange-11 p-2.5 rounded-[20px]">
-      <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
+      <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2 max-h-full md:group-hover:max-h-96 transition-[max-height] overflow-hidden">
         <img
           src={computeAssetCdnUrl(
             course.lastCommit,
@@ -133,10 +133,10 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           </div>
         </div>
       </div>
-      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 md:group-hover:hidden">
+      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-all opacity-100 md:group-hover:opacity-0 max-h-96 md:group-hover:max-h-0 delay-150 md:group-hover:delay-0">
         {course.goal}
       </p>
-      <div className="hidden md:group-hover:flex flex-col">
+      <div className="max-md:hidden flex flex-col max-h-0 md:group-hover:max-h-64 transition-all opacity-0 md:group-hover:opacity-100 overflow-hidden delay-0 md:group-hover:delay-150">
         <span className="font-medium leading-normal tracking-015px mb-2">
           {t('words.professor')} :{' '}
           {course.professors.map((professor) => professor.name).join(', ')}
@@ -155,15 +155,15 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           }
           className="border-none"
         />
+        <Button
+          variant="newPrimary"
+          size="m"
+          onHoverArrow
+          className="mt-auto hidden md:group-hover:flex w-full"
+        >
+          {t('courses.explorer.seeCourse')}
+        </Button>
       </div>
-      <Button
-        variant="newPrimary"
-        size="m"
-        onHoverArrow
-        className="mt-auto hidden md:group-hover:flex w-full"
-      >
-        {t('courses.explorer.seeCourse')}
-      </Button>
     </article>
   );
 };
