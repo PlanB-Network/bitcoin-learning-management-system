@@ -37,7 +37,13 @@ export const joinedTutorialLightSchema = tutorialSchema
   .merge(
     z.object({
       tags: z.array(z.string()),
-      builder: joinedBuilderSchema.optional().nullable(),
+      builder: joinedBuilderSchema
+        .pick({
+          lastCommit: true,
+          path: true,
+        })
+        .optional()
+        .nullable(),
     }),
   );
 
