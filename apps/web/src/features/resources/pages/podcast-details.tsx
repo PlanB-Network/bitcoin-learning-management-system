@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import { Card } from '../../../atoms/Card/index.tsx';
@@ -52,6 +53,7 @@ export const Podcast = () => {
       activeCategory="podcasts"
       backToCategoryButton
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {podcast && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
@@ -26,7 +27,7 @@ export const Events = () => {
     refetchOnReconnect: false,
   };
 
-  const { data: events } = trpc.content.getEvents.useQuery(
+  const { data: events, isFetched } = trpc.content.getEvents.useQuery(
     undefined,
     queryOpts,
   );
@@ -144,6 +145,7 @@ export const Events = () => {
           />
         )}
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {events && (
           <CurrentEvents
             events={events}

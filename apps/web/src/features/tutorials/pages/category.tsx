@@ -4,6 +4,7 @@ import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
@@ -27,10 +28,11 @@ export const TutorialCategory = () => {
 
   const [subCategories, setSubCategories] = useState<string[]>([]);
 
-  const { data: tutorials } = trpc.content.getTutorialsByCategory.useQuery({
-    category,
-    language: i18n.language,
-  });
+  const { data: tutorials, isFetched } =
+    trpc.content.getTutorialsByCategory.useQuery({
+      category,
+      language: i18n.language,
+    });
 
   useEffect(() => {
     if (!tutorialCategory) {
@@ -72,6 +74,7 @@ export const TutorialCategory = () => {
         <p className="hidden w-full text-justify leading-5 text-blue-800 md:flex md:text-left">
           {t(`tutorials.${category}.description`)}
         </p>
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {tutorials && (
           <div className="w-full px-2 py-4 sm:px-0">
             <Tab.Group>

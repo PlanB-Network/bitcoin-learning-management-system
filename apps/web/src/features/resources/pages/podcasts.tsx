@@ -2,6 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
+
 import { trpc } from '../../../utils/index.ts';
 import { ResourceCard } from '../components/Cards/resource-card.tsx';
 import { ResourceLayout } from '../layout.tsx';
@@ -10,7 +12,7 @@ export const Podcasts = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: podcasts } = trpc.content.getPodcasts.useQuery({
+  const { data: podcasts, isFetched } = trpc.content.getPodcasts.useQuery({
     language: i18n.language ?? 'en',
   });
 
@@ -29,6 +31,7 @@ export const Podcasts = () => {
       activeCategory="podcasts"
     >
       <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {sortedPodcasts
           .filter((podcast) =>
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),

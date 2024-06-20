@@ -2,6 +2,7 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 
 import yellowBook from '../../../assets/icons/book_yellow.png';
@@ -39,6 +40,7 @@ export const ProfessorDetail = () => {
       description={t('professors.pageSubtitle')}
       link={'/professors'}
     >
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       {professor && (
         <div className="flex flex-col text-white">
           <div className="mt-4 flex w-full flex-col items-start">

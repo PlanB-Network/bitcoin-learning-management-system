@@ -2,6 +2,7 @@ import { t } from 'i18next';
 
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -62,7 +63,7 @@ const BCertificateOrganize = () => {
 };
 
 export const BCertificate = () => {
-  const { data: events } = trpc.content.getEvents.useQuery();
+  const { data: events, isFetched } = trpc.content.getEvents.useQuery();
 
   const filteredEvents = events
     ? events.filter(
@@ -95,6 +96,7 @@ export const BCertificate = () => {
           </p>
         </div>
       </div>
+      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
       <BCertificateEvents events={filteredEvents} />
       <div className="flex flex-col items-center mb-6 md:mb-20">
         <Question className="mb-2.5 md:mb-5" />

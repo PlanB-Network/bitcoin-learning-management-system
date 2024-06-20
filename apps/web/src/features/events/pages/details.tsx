@@ -1,5 +1,7 @@
 import { useParams } from '@tanstack/react-router';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
+
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 
@@ -8,7 +10,7 @@ export const EventDetails = () => {
     from: '/events/$eventId',
   });
 
-  const { data: event } = trpc.content.getEvent.useQuery({
+  const { data: event, isFetched } = trpc.content.getEvent.useQuery({
     id: eventId,
   });
 
@@ -22,6 +24,7 @@ export const EventDetails = () => {
   return (
     <MainLayout>
       <div className="flex flex-col px-5">
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         <div className="w-full max-w-3xl self-center mx-8 mt-24 flex flex-col items-start gap-2">
           <h1 className="text-lg md:text-2xl text-orange-500 font-medium">
             {event?.name}

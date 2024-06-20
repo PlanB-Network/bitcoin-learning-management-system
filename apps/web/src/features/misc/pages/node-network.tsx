@@ -4,6 +4,7 @@ import { LuPlus } from 'react-icons/lu';
 
 import { Button } from '@sovereign-university/ui';
 
+import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 import { BuilderCard } from '#src/features/resources/components/Cards/builder-card.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -77,7 +78,7 @@ const QnA = () => {
 export const NodeNetwork = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: communities } = trpc.content.getBuilders.useQuery({
+  const { data: communities, isFetched } = trpc.content.getBuilders.useQuery({
     language: i18n.language ?? 'en',
   });
 
@@ -96,6 +97,7 @@ export const NodeNetwork = () => {
     >
       <div className="flex flex-col items-center text-white">
         <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+          {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
           {filteredCommunities.map((community) => (
             <Link
               to={'/resources/builder/$builderId'}
