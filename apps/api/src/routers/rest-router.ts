@@ -26,11 +26,11 @@ import {
   createUpdatePayment,
 } from '@sovereign-university/user'; // Assuming this dependency is correct
 
-import { createSyncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
-
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+
+import { createSyncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
 
 // const sigHashAlg = 'sha256';
 

@@ -3,9 +3,9 @@ export interface GitHubSyncConfig {
   syncPath: string;
   publicRepositoryUrl: string;
   publicRepositoryBranch: string;
-  privateRepositoryUrl?: string | null;
+  privateRepositoryUrl: string | null;
   privateRepositoryBranch: string;
-  githubAccessToken?: string | null;
+  githubAccessToken: string | null;
 }
 
 export interface SendGridConfig {
