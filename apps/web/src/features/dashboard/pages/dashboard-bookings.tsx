@@ -31,10 +31,8 @@ export const DashboardBookings = () => {
 
   const now = new Date();
 
-  const pastTickets = tickets.filter((ticket) => new Date(ticket.date) < now);
-  const upcomingTickets = tickets.filter(
-    (ticket) => new Date(ticket.date) >= now,
-  );
+  const pastTickets = tickets.filter((ticket) => ticket.date < now);
+  const upcomingTickets = tickets.filter((ticket) => ticket.date >= now);
 
   return (
     <DashboardLayout>

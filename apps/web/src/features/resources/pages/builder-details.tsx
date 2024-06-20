@@ -50,8 +50,7 @@ export const Builder = () => {
   const filteredEvents = events
     ? events.filter(
         (event) =>
-          event.builder === builder?.name &&
-          new Date(event.startDate) > new Date(),
+          event.builder === builder?.name && event.startDate > new Date(),
       )
     : [];
 

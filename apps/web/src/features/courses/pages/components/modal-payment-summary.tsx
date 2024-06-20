@@ -119,10 +119,10 @@ export const ModalPaymentSummary = ({
             label={t('courses.payment.date')}
             value={t('courses.payment.dates_to', {
               startDate: course.paidStartDate
-                ? new Date(course.paidStartDate).toLocaleDateString()
+                ? course.paidStartDate.toLocaleDateString()
                 : '',
               endDate: course.paidEndDate
-                ? new Date(course.paidEndDate).toLocaleDateString()
+                ? course.paidEndDate.toLocaleDateString()
                 : '',
             })}
           />

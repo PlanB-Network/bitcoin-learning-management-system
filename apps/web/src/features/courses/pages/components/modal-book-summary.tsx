@@ -33,8 +33,8 @@ export const ModalBookSummary = ({
   );
 
   const timezone = chapter.timezone || undefined;
-  const startDate = chapter.startDate && new Date(chapter.startDate);
-  const endDate = chapter.endDate && new Date(chapter.endDate);
+  const startDate = chapter.startDate;
+  const endDate = chapter.endDate;
 
   return (
     <div

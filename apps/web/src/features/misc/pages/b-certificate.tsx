@@ -66,8 +66,7 @@ export const BCertificate = () => {
 
   const filteredEvents = events
     ? events.filter(
-        (event) =>
-          event.type === 'exam' && new Date(event.startDate) > new Date(),
+        (event) => event.type === 'exam' && event.startDate > new Date(),
       )
     : [];
 

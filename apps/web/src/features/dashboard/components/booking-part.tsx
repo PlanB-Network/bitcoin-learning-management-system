@@ -46,7 +46,7 @@ export const BookingPart = ({
               <div key={index}>
                 <div className="hidden md:flex flex-row gap-4">
                   <span className="w-[150px] flex-none">
-                    {formatDate(new Date(ticket.date))}
+                    {formatDate(ticket.date)}
                   </span>
                   <span className="w-[150px] flex-none capitalize">
                     {location}
@@ -72,7 +72,7 @@ export const BookingPart = ({
                       {ticket.title}
                     </span>
                     <span className="flex-none  text-sm">
-                      {formatDate(new Date(ticket.date))} - {location}
+                      {formatDate(ticket.date)} - {location}
                     </span>
                     <Buttons
                       ticket={ticket}
@@ -217,7 +217,7 @@ const Buttons = ({
               variant="newPrimary"
               size={buttonSize}
               mode="light"
-              disabled={new Date(ticket.date).getTime() > Date.now()}
+              disabled={ticket.date.getTime() > Date.now()}
             >
               {t('dashboard.booking.accessLive')}
             </Button>

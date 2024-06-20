@@ -74,7 +74,7 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
       let currentChapterStartDate = null;
 
       if (currentChapter.startDate !== null) {
-        currentChapterStartDate = new Date(currentChapter.startDate);
+        currentChapterStartDate = currentChapter.startDate;
       }
 
       if (
@@ -82,8 +82,8 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
         currentChapterStartDate > currentDate &&
         (!closestChapter ||
           (closestChapter.startDate !== null &&
-            new Date(closestChapter.startDate) &&
-            currentChapterStartDate < new Date(closestChapter.startDate)))
+            closestChapter.startDate &&
+            currentChapterStartDate < closestChapter.startDate))
       ) {
         closestChapter = currentChapter;
       }
@@ -110,7 +110,7 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
         </Link>{' '}
         {t('words.on')}{' '}
         <span className="uppercase font-medium underline">
-          {new Date(closestChapter.startDate).toLocaleDateString(undefined, {
+          {closestChapter.startDate.toLocaleDateString(undefined, {
             weekday: 'long',
             month: 'long',
             day: 'numeric',
@@ -624,7 +624,7 @@ export const CourseChapter = () => {
   if (chapter && chapter.startDate && chapter.endDate) {
     // const isMarkdownAvailable = chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
     const now = new Date(Date.now());
-    const chapterEndDate = new Date(new Date(chapter.endDate).getTime());
+    const chapterEndDate = new Date(chapter.endDate.getTime());
 
     displayClassDetails =
       (chapter.isInPerson || false || chapter.isOnline || false) &&
@@ -632,7 +632,7 @@ export const CourseChapter = () => {
     displayLiveSection = chapter.isOnline || false;
     displayLiveVideo =
       displayLiveSection &&
-      new Date(chapter.startDate).setHours(0, 0, 0, 0) <= Date.now();
+      chapter.startDate.setHours(0, 0, 0, 0) <= Date.now();
     displayQuizAndNext = false;
   }
 
