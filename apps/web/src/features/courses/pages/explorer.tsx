@@ -136,7 +136,7 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
       <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-all opacity-100 md:group-hover:opacity-0 max-h-96 md:group-hover:max-h-0 delay-150 md:group-hover:delay-0">
         {course.goal}
       </p>
-      <div className="max-md:hidden flex flex-col max-h-0 md:group-hover:max-h-48 transition-all opacity-0 md:group-hover:opacity-100 overflow-hidden delay-0 md:group-hover:delay-150">
+      <div className="max-md:hidden flex flex-col max-h-0 md:group-hover:max-h-64 transition-all opacity-0 md:group-hover:opacity-100 overflow-hidden delay-0 md:group-hover:delay-150">
         <span className="font-medium leading-normal tracking-015px mb-2">
           {t('words.professor')} :{' '}
           {course.professors.map((professor) => professor.name).join(', ')}

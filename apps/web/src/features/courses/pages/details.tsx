@@ -216,9 +216,9 @@ export const CourseDetails: React.FC = () => {
             </h2>
             <div className="flex flex-col space-y-2 p-3 sm:px-0">
               <div className="flex flex-wrap gap-2">
-                <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
+                <div className="m-1 max-w-fit flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
                   <img src={rabitPen} alt="" className="mr-2 size-4" />
-                  <span className="text-sm text-blue-800">
+                  <span className="max-w-full flex flex-wrap text-sm text-blue-800">
                     {professorNames}
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export const CourseDetails: React.FC = () => {
                   </span>
                 </div>
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <Book />
+                  <Book className="mr-2 size-4" />
                   <span className="text-sm text-blue-800">
                     {t('courses.details.mobile.chapters', {
                       chapters: course.chaptersCount,
