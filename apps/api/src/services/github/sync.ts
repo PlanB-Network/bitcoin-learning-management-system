@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   createCalculateCourseChapterSeats,
   createCalculateEventSeats,
@@ -17,7 +15,6 @@ import type { Dependencies } from '#src/dependencies.js';
 
 export function createSyncGithubRepositories(dependencies: Dependencies) {
   const {
-    redis,
     config: { sync: config },
   } = dependencies;
 
@@ -45,18 +42,12 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    await redis.del('trpc:*');
-
     const syncErrors = await getAllRepoFiles().then(processChangedFiles);
 
     console.log('-- Sync procedure: Calculate remaining seats');
     await calculateCourseChapterSeats();
     await calculateEventSeats();
     await syncEventsLocations().catch((error: Error) => console.error(error));
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    await redis.del('trpc:*');
 
     if (syncErrors.length > 0) {
       console.error(
@@ -86,9 +77,6 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     }
 
     console.log('-- Sync procedure: CLEAR ==================================');
-
-    // TODO: Remove others redis.del calls
-    await redis.del('trpc:*');
 
     if (syncErrors.length === 0) {
       await processDeleteOldEntities(databaseTime.now, syncErrors);
