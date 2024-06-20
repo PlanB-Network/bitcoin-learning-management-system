@@ -80,7 +80,7 @@ function groupCountries(
   const now = Date.now();
   for (const event of events) {
     // Skip past events
-    const startDate = new Date(event.startDate).getTime();
+    const startDate = event.startDate.getTime();
     if (now > startDate) {
       continue;
     }

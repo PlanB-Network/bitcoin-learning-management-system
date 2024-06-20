@@ -42,14 +42,14 @@ export const EventsGrid = ({
   if (events) {
     upcomingEvents = events?.filter((event) => {
       const now = Date.now();
-      const startDate = new Date(event.startDate).getTime();
+      const startDate = event.startDate.getTime();
 
       return now < startDate;
     });
   }
 
   const sortedEvents = [...upcomingEvents].sort(
-    (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
+    (a, b) => a.startDate.getTime() - b.startDate.getTime(),
   );
 
   return (
