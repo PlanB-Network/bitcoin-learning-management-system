@@ -32,10 +32,8 @@
   "search.exclude": {
     "**/tsconfig.*.tsbuildinfo": true
   },
-  "cSpell.words": [
-    "bytea",
-    "sats",
-    "sendgrid",
-    "zoomable"
-  ]
+  "files.insertFinalNewline": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cSpell.words": ["bytea", "sats", "sendgrid", "zoomable"]
 }

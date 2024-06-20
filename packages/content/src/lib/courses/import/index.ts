@@ -274,9 +274,8 @@ const extractParts = (markdown: string): Part[] => {
   return parts;
 };
 
-export const createProcessChangedCourse =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (course: ChangedCourse) => {
+export const createUpdateCourses = (dependencies: Dependencies) => {
+  return async (course: ChangedCourse, errors: string[]) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(course, 'course.yml');
@@ -648,10 +647,10 @@ export const createProcessChangedCourse =
         return;
       });
   };
+};
 
-export const createProcessDeleteCourses =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
+export const createDeleteCourses = (dependencies: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     const { postgres } = dependencies;
 
     try {
@@ -683,3 +682,4 @@ export const createProcessDeleteCourses =
       errors.push(`Error deleting courses : ${error}`);
     }
   };
+};

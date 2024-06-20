@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
@@ -29,7 +30,7 @@ import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
-import { syncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
+import { createSyncGithubRepositories } from '../services/github/sync.js'; // Adjust the import path as needed
 
 // const sigHashAlg = 'sha256';
 
@@ -58,10 +59,11 @@ const defaultResizeOptions: ResizeOptions = {
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
+  const syncGithubRepositories = createSyncGithubRepositories(dependencies);
 
   router.post('/github/sync', async (req, res) => {
     try {
-      const result = await syncGithubRepositories(dependencies);
+      const result = await syncGithubRepositories();
       res.json(result);
     } catch (error) {
       console.error('Failed to sync GitHub repositories:', error);
@@ -212,7 +214,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
         result,
       });
     } catch (error) {
-      console.error('Erorr in courses webhook', error);
+      console.error('Error in courses webhook', error);
     }
   });
 

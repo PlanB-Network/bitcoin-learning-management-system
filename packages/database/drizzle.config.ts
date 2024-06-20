@@ -1,9 +1,9 @@
-import type { Config } from 'drizzle-kit';
+import { defineConfig } from 'drizzle-kit';
 
-export default {
+export default defineConfig({
   schema: './drizzle/schema.ts',
   out: './drizzle',
-  driver: 'pg',
+  dialect: 'postgresql',
   introspect: {
     casing: 'camel',
   },
@@ -15,4 +15,4 @@ export default {
     password: process.env.POSTGRES_PASSWORD || 'postgres',
     database: process.env.POSTGRES_DB || 'postgres',
   },
-} satisfies Config;
+});

@@ -95,9 +95,8 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   return [...groupedResources.values()];
 };
 
-export const createProcessChangedResource =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (resource: ChangedResource) => {
+export const createUpdateResources = (dependencies: Dependencies) => {
+  return async (resource: ChangedResource, errors: string[]) => {
     const mapHandlers = {
       bet: createProcessChangedBet,
       books: createProcessChangedBook,
@@ -109,10 +108,10 @@ export const createProcessChangedResource =
     const handler = mapHandlers[resource.category];
     return handler(dependencies, errors)(resource);
   };
+};
 
-export const createProcessDeleteResources =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
+export const createDeleteResources = (dependencies: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     const { postgres } = dependencies;
 
     try {
@@ -124,3 +123,4 @@ export const createProcessDeleteResources =
       errors.push(`Error deleting resources`);
     }
   };
+};
