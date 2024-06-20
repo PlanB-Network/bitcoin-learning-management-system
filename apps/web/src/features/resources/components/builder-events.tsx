@@ -41,14 +41,11 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
   const sortedEvents = [...events]
     .filter((event) => {
       const now = Date.now();
-      const startDate = new Date(event.startDate).getTime();
+      const startDate = event.startDate.getTime();
 
       return now < startDate;
     })
-    .sort(
-      (a, b) =>
-        new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
-    );
+    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
   useEffect(() => {
     refetchEventPayments();
