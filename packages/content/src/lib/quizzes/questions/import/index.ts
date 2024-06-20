@@ -87,9 +87,8 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   return [...groupedQuizQuestions.values()];
 };
 
-export const createProcessChangedQuizQuestion =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (quizQuestion: ChangedQuizQuestion) => {
+export const createUpdateQuizQuestions = (dependencies: Dependencies) => {
+  return async (quizQuestion: ChangedQuizQuestion, errors: string[]) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(quizQuestion, 'question.yml');
@@ -134,10 +133,11 @@ export const createProcessChangedQuizQuestion =
         return;
       });
   };
+};
 
-export const createProcessDeleteQuizQuestions =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
+export const createDeleteQuizQuestions =
+  (dependencies: Dependencies) =>
+  async (sync_date: number, errors: string[]) => {
     const { postgres } = dependencies;
 
     try {

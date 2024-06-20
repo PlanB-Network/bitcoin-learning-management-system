@@ -79,9 +79,8 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
   return [...groupedProfessors.values()];
 };
 
-export const createProcessChangedProfessor =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (professor: ChangedProfessor) => {
+export const createUpdateProfessors = (dependencies: Dependencies) => {
+  return async (professor: ChangedProfessor, errors: string[]) => {
     const { postgres } = dependencies;
 
     const { main, files } = separateContentFiles(professor, 'professor.yml');
@@ -123,10 +122,10 @@ export const createProcessChangedProfessor =
         return;
       });
   };
+};
 
-export const createProcessDeleteProfessors =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
+export const createDeleteProfessors = (dependencies: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     const { postgres } = dependencies;
 
     try {
@@ -138,3 +137,4 @@ export const createProcessDeleteProfessors =
       errors.push(`Error deleting professors`);
     }
   };
+};

@@ -6,7 +6,10 @@ import * as async from 'async';
 import type { DefaultLogFields, LogResult } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
-import type { ChangedFile } from '@sovereign-university/types';
+import type {
+  ChangedFile,
+  GitHubSyncConfig,
+} from '@sovereign-university/types';
 
 import type { GithubOctokit } from './octokit.js';
 
@@ -15,17 +18,16 @@ const parseRepository = (repository: string) => {
   return { repoOwner, repoName };
 };
 
-const extractRepositoryFromUrl = (url: string) =>
-  url.split('/').splice(-1)[0].replace('.git', '');
+const extractRepositoryFromUrl = (url: string) => {
+  return url.split('/').splice(-1)[0].replace('.git', '');
+};
 
-export const computeTemporaryDirectory = (url: string) =>
-  path.join(
-    process.env['SYNC_PATH'] || '/tmp/sync',
-    extractRepositoryFromUrl(url),
-  );
+const computeTemporaryDirectory = (syncPath: string, url: string) => {
+  return path.join(syncPath, extractRepositoryFromUrl(url));
+};
 
-export const createDownloadFile =
-  (octokit: GithubOctokit) => async (repository: string, path: string) => {
+export const createDownloadFile = (octokit: GithubOctokit) => {
+  return async (repository: string, path: string) => {
     try {
       const { repoOwner, repoName } = parseRepository(repository);
 
@@ -52,6 +54,7 @@ export const createDownloadFile =
       );
     }
   };
+};
 
 /**
  * @param repository - Directory path to the repository (sync)
@@ -172,78 +175,41 @@ const pathExists = async (path: string) =>
     .then(() => true)
     .catch(() => false);
 
-export const getAllRepoFiles = async (
-  publicRepositoryUrl: string,
-  publicRepositoryBranch = 'main',
-  privateRepositoryUrl: string | undefined,
-  privateRepositoryBranch = 'main',
-  githubAccessToken?: string,
-) => {
-  console.log(
-    '-- Sync procedure: Syncing the public github repository on branch',
-    publicRepositoryBranch,
-  );
-
-  try {
-    let finalFiles: ChangedFile[] = [];
-    const publicRepoDir = computeTemporaryDirectory(publicRepositoryUrl);
-
-    const publicGit = await syncRepository(
-      publicRepositoryUrl,
-      publicRepositoryBranch,
-      publicRepoDir,
+/**
+ * Get all files from a repository
+ *
+ * @param options - Configuration options
+ */
+export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
+  return async () => {
+    console.log(
+      '-- Sync procedure: Syncing the public github repository on branch',
+      options.publicRepositoryBranch,
     );
 
-    // Read all the files
-    const publicFiles = await walk(path.resolve(publicRepoDir), ['.git']);
-
-    finalFiles = await async.mapLimit(
-      publicFiles.filter((file) => !file.includes('/assets/')),
-      10,
-      async (file: string) => {
-        const relativePath = file.replace(`${publicRepoDir}/`, '');
-
-        const parentDirectoryLog = await publicGit.log({
-          file: path.dirname(file),
-        });
-
-        return {
-          path: relativePath,
-          commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-          time: new Date(
-            parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
-          ).getTime(),
-          kind: 'added' as const,
-          data: await fs.readFile(file, 'utf8'),
-        };
-      },
-    );
-
-    if (privateRepositoryUrl && githubAccessToken) {
-      console.log(
-        '-- Sync procedure: Syncing the private github repository on branch',
-        privateRepositoryBranch,
+    try {
+      let finalFiles: ChangedFile[] = [];
+      const publicRepoDir = computeTemporaryDirectory(
+        options.syncPath,
+        options.publicRepositoryUrl,
       );
 
-      const privateRepoDir = computeTemporaryDirectory(privateRepositoryUrl);
-
-      const privateGit = await syncRepository(
-        privateRepositoryUrl,
-        privateRepositoryBranch,
-        privateRepoDir,
-        githubAccessToken,
+      const publicGit = await syncRepository(
+        options.publicRepositoryUrl,
+        options.publicRepositoryBranch,
+        publicRepoDir,
       );
 
       // Read all the files
-      const privateFiles = await walk(path.resolve(privateRepoDir), ['.git']);
+      const publicFiles = await walk(path.resolve(publicRepoDir), ['.git']);
 
-      const privateFinalFiles: ChangedFile[] = await async.mapLimit(
-        privateFiles.filter((file) => !file.includes('/assets/')),
+      finalFiles = await async.mapLimit(
+        publicFiles.filter((file) => !file.includes('/assets/')),
         10,
         async (file: string) => {
-          const relativePath = file.replace(`${privateRepoDir}/`, '');
+          const relativePath = file.replace(`${publicRepoDir}/`, '');
 
-          const parentDirectoryLog = await privateGit.log({
+          const parentDirectoryLog = await publicGit.log({
             file: path.dirname(file),
           });
 
@@ -259,62 +225,120 @@ export const getAllRepoFiles = async (
         },
       );
 
-      finalFiles = [...finalFiles, ...privateFinalFiles];
-    }
+      if (options.privateRepositoryUrl && options.githubAccessToken) {
+        console.log(
+          '-- Sync procedure: Syncing the private github repository on branch',
+          options.privateRepositoryBranch,
+        );
 
-    return finalFiles;
-  } catch (error) {
-    throw new Error(`Failed to clone and read all repo files: ${error}`);
-  }
+        const privateRepoDir = computeTemporaryDirectory(
+          options.syncPath,
+          options.privateRepositoryUrl,
+        );
+
+        const privateGit = await syncRepository(
+          options.privateRepositoryUrl,
+          options.privateRepositoryBranch,
+          privateRepoDir,
+          options.githubAccessToken,
+        );
+
+        // Read all the files
+        const privateFiles = await walk(path.resolve(privateRepoDir), ['.git']);
+
+        const privateFinalFiles: ChangedFile[] = await async.mapLimit(
+          privateFiles.filter((file) => !file.includes('/assets/')),
+          10,
+          async (file: string) => {
+            const relativePath = file.replace(`${privateRepoDir}/`, '');
+
+            const parentDirectoryLog = await privateGit.log({
+              file: path.dirname(file),
+            });
+
+            return {
+              path: relativePath,
+              commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
+              time: new Date(
+                parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
+              ).getTime(),
+              kind: 'added' as const,
+              data: await fs.readFile(file, 'utf8'),
+            };
+          },
+        );
+
+        finalFiles = [...finalFiles, ...privateFinalFiles];
+      }
+
+      return finalFiles;
+    } catch (error) {
+      throw new Error(`Failed to clone and read all repo files: ${error}`);
+    }
+  };
 };
 
-export const syncCdnRepository = async (
-  repositoryDirectory: string,
-  cdnDirectory: string,
-) => {
-  const git = simpleGit(repositoryDirectory);
-
-  try {
-    const files = await walk(path.resolve(repositoryDirectory), ['.git']);
-    const assets = files.filter(
-      (file) => file.includes('/assets/') || file.includes('/soon/'),
+/**
+ * Sync a repository to a CDN
+ *
+ * @param options - Configuration options
+ * @param options.syncPath - Path to sync the repository
+ * @param options.cdnPath - Path to sync the repository to
+ */
+export const createSyncCdnRepository = ({
+  syncPath,
+  cdnPath,
+}: Pick<GitHubSyncConfig, 'syncPath' | 'cdnPath'>) => {
+  return async (repositoryUrl: string) => {
+    const repositoryDirectory = computeTemporaryDirectory(
+      syncPath,
+      repositoryUrl,
     );
 
-    // Cache the log of the parent directory of each asset
-    const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
+    const git = simpleGit(repositoryDirectory);
 
-    console.log(
-      `-- Sync procedure: Syncing ${assets.length} assets to the CDN on ${repositoryDirectory}`,
-    );
-
-    for (const asset of assets.reverse()) {
-      // Get the log of the parent directory
-      const parentDirectory = asset.replace(/\/assets\/.*/, '');
-      const cachedParentDirectoryLog = directoryLogCache.get(parentDirectory);
-      const parentDirectoryLog = cachedParentDirectoryLog
-        ? cachedParentDirectoryLog
-        : await git.log({ file: parentDirectory });
-
-      // Cache the log of the parent directory if not already cached
-      if (!cachedParentDirectoryLog) {
-        directoryLogCache.set(parentDirectory, parentDirectoryLog);
-      }
-
-      if (!parentDirectoryLog.latest) continue;
-
-      const relativePath = asset.replace(`${repositoryDirectory}/`, '');
-
-      const cdnPath = path.join(
-        cdnDirectory,
-        asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
-        relativePath,
+    try {
+      const files = await walk(path.resolve(repositoryDirectory), ['.git']);
+      const assets = files.filter(
+        (file) => file.includes('/assets/') || file.includes('/soon/'),
       );
-      if (!(await pathExists(cdnPath))) {
-        await fs.mkdir(path.dirname(cdnPath), { recursive: true });
-        await fs.copyFile(asset, cdnPath);
+
+      // Cache the log of the parent directory of each asset
+      const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
+
+      console.log(
+        `-- Sync procedure: Syncing ${assets.length} assets to the CDN on ${repositoryDirectory}`,
+      );
+
+      for (const asset of assets.reverse()) {
+        // Get the log of the parent directory
+        const parentDirectory = asset.replace(/\/assets\/.*/, '');
+        const cachedParentDirectoryLog = directoryLogCache.get(parentDirectory);
+        const parentDirectoryLog = cachedParentDirectoryLog
+          ? cachedParentDirectoryLog
+          : await git.log({ file: parentDirectory });
+
+        // Cache the log of the parent directory if not already cached
+        if (!cachedParentDirectoryLog) {
+          directoryLogCache.set(parentDirectory, parentDirectoryLog);
+        }
+
+        if (!parentDirectoryLog.latest) continue;
+
+        const relativePath = asset.replace(`${repositoryDirectory}/`, '');
+
+        const computedCdnPath = path.join(
+          cdnPath,
+          asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
+          relativePath,
+        );
+        if (!(await pathExists(computedCdnPath))) {
+          await fs.mkdir(path.dirname(computedCdnPath), { recursive: true });
+          await fs.copyFile(asset, computedCdnPath);
+        }
       }
+    } catch (error) {
+      throw new Error(`Failed to sync CDN repository: ${error}`);
     }
-  } catch (error) {
-    throw new Error(`Failed to sync CDN repository: ${error}`);
-  }
+  };
 };

@@ -92,11 +92,10 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
   return [...groupedTutorials.values()];
 };
 
-export const createProcessChangedTutorial =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (tutorial: ChangedTutorial) => {
-    const { postgres } = dependencies;
+export const createUpdateTutorials = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
 
+  return async (tutorial: ChangedTutorial, errors: string[]) => {
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
     return postgres
@@ -161,10 +160,10 @@ export const createProcessChangedTutorial =
         return;
       });
   };
+};
 
-export const createProcessDeleteTutorials =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
+export const createDeleteTutorials = (dependencies: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     const { postgres } = dependencies;
 
     try {
@@ -176,3 +175,4 @@ export const createProcessDeleteTutorials =
       errors.push(`Error deleting tutorials`);
     }
   };
+};

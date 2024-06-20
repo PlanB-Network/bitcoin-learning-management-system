@@ -1,6 +1,6 @@
 import type { PostgresClientConfig } from '@sovereign-university/database';
 import type { RedisClientConfig } from '@sovereign-university/redis';
-import type { EnvConfig } from '@sovereign-university/types';
+import type { EnvConfig, GitHubSyncConfig } from '@sovereign-university/types';
 
 const getenv = <T extends string | number | boolean | null = string>(
   name: string,
@@ -68,6 +68,16 @@ export const redis: RedisClientConfig = {
   host: getenv<string>('REDIS_HOST', 'localhost'),
   port: getenv<number>('REDIS_PORT', 6379),
   database: getenv<number>('REDIS_DB', 0),
-  password: process.env['REDIS_PASSWORD'],
-  username: process.env['REDIS_USERNAME'],
+  password: process.env['REDIS_PASSWORD'], // We do not use getenv here because
+  username: process.env['REDIS_USERNAME'], // these values can be undefined
+};
+
+export const sync: GitHubSyncConfig = {
+  cdnPath: getenv<string>('CDN_PATH', '/tmp/cdn'),
+  syncPath: getenv<string>('SYNC_PATH', '/tmp/sync'),
+  publicRepositoryUrl: getenv<string>('PUBLIC_REPOSITORY_URL'),
+  publicRepositoryBranch: getenv<string>('PUBLIC_REPOSITORY_BRANCH', 'main'),
+  privateRepositoryUrl: getenv<string | null>('PRIVATE_REPOSITORY_URL', null),
+  privateRepositoryBranch: getenv<string>('PRIVATE_REPOSITORY_BRANCH', 'main'),
+  githubAccessToken: getenv<string | null>('GITHUB_ACCESS_TOKEN', null),
 };
