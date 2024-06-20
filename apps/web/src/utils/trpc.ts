@@ -14,11 +14,35 @@ import type {
 export type TRPCRouterInput = RouterInputs;
 export type TRPCRouterOutput = RouterOutputs;
 
+const isIsoDateString = (value: any): boolean => {
+  const isoDateFormat = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
+  return value && typeof value === 'string' && isoDateFormat.test(value);
+};
+
+const parseDates = (obj: any): any => {
+  if (obj === null || obj === undefined) {
+    return obj;
+  } else if (typeof obj === 'string' && isIsoDateString(obj)) {
+    return new Date(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map((element) => parseDates(element));
+  }
+  return obj;
+};
+
 export const tRPCClientOptions = {
   links: [
     httpBatchLink({
-      transformer: superjson,
       url: '/api/trpc',
+      // transformer: superjson,
+      transformer: {
+        serialize: (data: any) => {
+          return parseDates(superjson.serialize(data));
+        },
+        deserialize: (data: any) => {
+          return parseDates(superjson.deserialize(data));
+        },
+      },
       fetch: (url, options) => {
         return fetch(url, {
           ...options,
