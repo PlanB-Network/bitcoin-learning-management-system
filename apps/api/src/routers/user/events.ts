@@ -128,8 +128,6 @@ const saveUserEventProcedure = protectedProcedure
     });
 
     await createCalculateEventSeats(ctx.dependencies)();
-    const { redis } = ctx.dependencies;
-    await redis.del('trpc:content.getEvent*');
   });
 
 export const userEventsRouter = createTRPCRouter({

@@ -257,8 +257,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
 
       if (isPaid === true) {
         await createCalculateEventSeats(dependencies)();
-        const { redis } = dependencies;
-        await redis.del('trpc:content.getEvent*');
       }
 
       res.json({

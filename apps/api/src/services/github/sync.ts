@@ -17,8 +17,6 @@ import {
 import type { Dependencies } from '#src/dependencies.js';
 
 export async function syncGithubRepositories(dependencies: Dependencies) {
-  const { redis } = dependencies;
-
   const databaseTime = await createGetNow(dependencies)();
 
   if (!databaseTime) {
@@ -33,9 +31,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   if (!process.env['DATA_REPOSITORY_URL']) {
     throw new Error('DATA_REPOSITORY_URL is not defined');
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  await redis.del('trpc:*');
 
   const syncErrors = await getAllRepoFiles(
     process.env['DATA_REPOSITORY_URL'],
@@ -55,9 +50,6 @@ export async function syncGithubRepositories(dependencies: Dependencies) {
   if (syncErrors.length === 0) {
     await processDeleteOldEntities(databaseTime.now, syncErrors);
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  await redis.del('trpc:*');
 
   if (syncErrors.length > 0) {
     console.error(
