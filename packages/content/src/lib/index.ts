@@ -2,83 +2,67 @@ import type { ChangedFile } from '@sovereign-university/types';
 
 import { supportedContentTypes } from './const.js';
 import {
-  createProcessChangedCourse,
-  createProcessDeleteCourses,
+  createDeleteCourses,
+  createUpdateCourses,
   groupByCourse,
 } from './courses/import/index.js';
 import type { Dependencies } from './dependencies.js';
 import {
-  createProcessChangedEvent,
-  createProcessDeleteEvents,
+  createDeleteEvents,
+  createUpdateEvents,
   groupByEvent,
 } from './events/import/index.js';
 import {
-  createProcessChangedProfessor,
-  createProcessDeleteProfessors as createProcessDeleteProfessors,
+  createDeleteProfessors,
+  createUpdateProfessors,
   groupByProfessor,
 } from './professors/import/index.js';
 import {
-  createProcessChangedQuizQuestion,
-  createProcessDeleteQuizQuestions,
+  createDeleteQuizQuestions,
+  createUpdateQuizQuestions,
   groupByQuizQuestion,
 } from './quizzes/questions/import/index.js';
 import {
-  createProcessChangedResource,
-  createProcessDeleteResources,
+  createDeleteResources,
+  createUpdateResources,
   groupByResource,
 } from './resources/import/index.js';
 import {
-  createProcessChangedTutorial,
-  createProcessDeleteTutorials,
+  createDeleteTutorials,
+  createUpdateTutorials,
   groupByTutorial,
 } from './tutorials/import/index.js';
 
-export const createProcessChangedFiles =
-  (dependencies: Dependencies) =>
-  async (files: ChangedFile[]): Promise<string[]> => {
+export const createProcessChangedFiles = (dependencies: Dependencies) => {
+  const updateResources = createUpdateResources(dependencies);
+  const updateCourses = createUpdateCourses(dependencies);
+  const updateTutorials = createUpdateTutorials(dependencies);
+  const updateQuizQuestions = createUpdateQuizQuestions(dependencies);
+  const updateProfessors = createUpdateProfessors(dependencies);
+  const updateEvents = createUpdateEvents(dependencies);
+
+  return async (files: ChangedFile[]): Promise<string[]> => {
     const filteredFiles = files.filter((file) =>
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
     const errors: string[] = [];
 
-    const processChangedResource = createProcessChangedResource(
-      dependencies,
-      errors,
-    );
-    const processChangedCourse = createProcessChangedCourse(
-      dependencies,
-      errors,
-    );
-    const processChangedTutorial = createProcessChangedTutorial(
-      dependencies,
-      errors,
-    );
-    const processChangedQuizQuestion = createProcessChangedQuizQuestion(
-      dependencies,
-      errors,
-    );
-    const processChangedProfessor = createProcessChangedProfessor(
-      dependencies,
-      errors,
-    );
-    const processChangedEvent = createProcessChangedEvent(dependencies, errors);
-
     const resources = groupByResource(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${resources.length} resources`);
     for (const resource of resources) {
-      await processChangedResource(resource);
+      await updateResources(resource, errors);
     }
 
     const courses = groupByCourse(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${courses.length} courses`);
     for (const course of courses) {
-      await processChangedCourse(course);
+      await updateCourses(course, errors);
     }
 
     const tutorials = groupByTutorial(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${tutorials.length} tutorials`);
     for (const tutorial of tutorials) {
-      await processChangedTutorial(tutorial);
+      await updateTutorials(tutorial, errors);
     }
 
     const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
@@ -86,55 +70,43 @@ export const createProcessChangedFiles =
       `-- Sync procedure: Syncing ${quizQuestions.length} quizQuestions`,
     );
     for (const quizQuestion of quizQuestions) {
-      await processChangedQuizQuestion(quizQuestion);
+      await updateQuizQuestions(quizQuestion, errors);
     }
 
     const professors = groupByProfessor(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${professors.length} professors`);
     for (const professor of professors) {
-      await processChangedProfessor(professor);
+      await updateProfessors(professor, errors);
     }
 
     const events = groupByEvent(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${events.length} events`);
     for (const event of events) {
-      await processChangedEvent(event);
+      await updateEvents(event, errors);
     }
 
     return errors;
   };
+};
 
-export const createProcessDeleteOldEntities =
-  (dependencies: Dependencies) =>
-  async (sync_date: number, errors: string[]) => {
-    console.log('-- Sync procedure: Remove old entities');
-    const processDeleteProfessors = createProcessDeleteProfessors(
-      dependencies,
-      errors,
-    );
-    const processDeleteCourses = createProcessDeleteCourses(
-      dependencies,
-      errors,
-    );
-    const processDeleteQuizQuestions = createProcessDeleteQuizQuestions(
-      dependencies,
-      errors,
-    );
-    const processDeleteTutorials = createProcessDeleteTutorials(
-      dependencies,
-      errors,
-    );
-    const processDeleteResources = createProcessDeleteResources(
-      dependencies,
-      errors,
-    );
+export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
+  const deleteProfessors = createDeleteProfessors(dependencies);
+  const deleteCourses = createDeleteCourses(dependencies);
+  const deleteQuizQuestions = createDeleteQuizQuestions(dependencies);
+  const deleteTutorials = createDeleteTutorials(dependencies);
+  const deleteResources = createDeleteResources(dependencies);
+  const deleteEvents = createDeleteEvents(dependencies);
 
-    const processDeleteEvents = createProcessDeleteEvents(dependencies, errors);
+  return async (sync_date: number, errors: string[]) => {
+    console.log('-- Sync procedure: Removing old entities');
 
-    await processDeleteProfessors(sync_date);
-    await processDeleteCourses(sync_date);
-    await processDeleteQuizQuestions(sync_date);
-    await processDeleteTutorials(sync_date);
-    await processDeleteResources(sync_date);
-    await processDeleteEvents(sync_date);
+    await deleteProfessors(sync_date, errors);
+    await deleteCourses(sync_date, errors);
+    await deleteQuizQuestions(sync_date, errors);
+    await deleteTutorials(sync_date, errors);
+    await deleteResources(sync_date, errors);
+    await deleteEvents(sync_date, errors);
+
+    console.log('-- Sync procedure: Removed old entities');
   };
+};

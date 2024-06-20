@@ -41,11 +41,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build Project
-        run: pnpm run build
+      - name: Display linter version
+        run: npx eslint -v
 
       - name: Lint Code
         run: pnpm run lint
+
+      - name: Build Project
+        run: pnpm run build
 
       # TODO: Add back when we have tests
       # - name: Run Tests

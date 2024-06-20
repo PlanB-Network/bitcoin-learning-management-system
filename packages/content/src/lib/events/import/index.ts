@@ -67,11 +67,8 @@ const parseDetailsFromPath = (path: string): EventDetails => {
   };
 };
 
-export const createProcessChangedEvent =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (event: ChangedEvent) => {
-    const { postgres } = dependencies;
-
+export const createUpdateEvents = ({ postgres }: Dependencies) => {
+  return async (event: ChangedEvent, errors: string[]) => {
     const { main } = separateContentFiles(event, 'events.yml');
 
     return postgres
@@ -92,12 +89,10 @@ export const createProcessChangedEvent =
         return;
       });
   };
+};
 
-export const createProcessDeleteEvents =
-  (dependencies: Dependencies, errors: string[]) =>
-  async (sync_date: number) => {
-    const { postgres } = dependencies;
-
+export const createDeleteEvents = ({ postgres }: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
         sql`DELETE FROM content.events WHERE last_sync < ${sync_date} 
@@ -107,3 +102,4 @@ export const createProcessDeleteEvents =
       errors.push(`Error deleting events`);
     }
   };
+};
