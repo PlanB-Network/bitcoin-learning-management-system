@@ -44,7 +44,7 @@ export const BillingSection = ({
                   <div key={index}>
                     <div className="hidden md:flex flex-row gap-4">
                       <span className="w-[150px] flex-none">
-                        {formatDate(new Date(invoice.date))}
+                        {formatDate(invoice.date)}
                       </span>
                       <span className="w-[100px] flex-none capitalize">
                         {invoice.type}
@@ -72,7 +72,7 @@ export const BillingSection = ({
                           {invoice.title}
                         </span>
                         <span className="flex-none  text-sm">
-                          {formatDate(new Date(invoice.date))} -
+                          {formatDate(invoice.date)} -
                           <span className="capitalize"> {invoice.type}</span>
                         </span>
                         <span className="">
