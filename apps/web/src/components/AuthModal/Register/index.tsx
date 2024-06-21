@@ -9,8 +9,6 @@ import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
 
-import { useSmaller } from '#src/hooks/use-smaller.js';
-
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
@@ -64,8 +62,6 @@ interface LoginModalProps {
 type AccountData = z.infer<typeof registerSchema>;
 
 export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
-  const isMobile = useSmaller('md');
-
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: () => {
       setTimeout(() => {
@@ -101,13 +97,13 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
   return (
     <Modal
-      closeButtonEnabled={isMobile || (register.data && !register.error)}
+      closeButtonEnabled={true}
       isOpen={isOpen}
       onClose={onClose}
       headerText={
         register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
       }
-      showAccountHelper={isMobile ? false : true}
+      showAccountHelper={true}
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
@@ -121,7 +117,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center space-y-8 pb-5">
+        <div className="flex flex-col items-center space-y-8">
           <Button
             variant="newSecondary"
             rounded
@@ -215,19 +211,24 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   </p>
                 )}
 
-                <Button type="submit" className="mt-6" rounded>
+                <Button
+                  variant="newPrimary"
+                  size="m"
+                  type="submit"
+                  className="mt-7"
+                >
                   {t('auth.createAccount')}
                 </Button>
               </form>
             )}
           </Formik>
-          <p className="mb-0 text-xs">
+          <p className="desktop-body1">
             {t('auth.alreadyHaveAccount')}{' '}
             <button
-              className="cursor-pointer border-none bg-transparent text-xs underline"
+              className="cursor-pointer underline italic"
               onClick={() => goTo(AuthModalState.SignIn)}
             >
-              {t('auth.signIn')}
+              {t('menu.login')}
             </button>
           </p>
         </div>

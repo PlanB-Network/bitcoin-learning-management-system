@@ -3,11 +3,10 @@ import { Formik } from 'formik';
 import { isEmpty } from 'lodash-es';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
-
-import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
@@ -23,7 +22,6 @@ interface SignInModalProps {
 
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const { t } = useTranslation();
-  const isMobile = useSmaller('md');
 
   const signInSchema = z.object({
     username: z.string().min(1, t('auth.errors.usernameRequired')),
@@ -58,18 +56,18 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
 
   return (
     <Modal
-      closeButtonEnabled={isMobile ? isMobile : false}
+      closeButtonEnabled={true}
       isOpen={isOpen}
       onClose={onClose}
-      headerText={t('auth.signIn')}
-      showAccountHelper={isMobile ? false : true}
+      headerText={t('menu.login')}
     >
-      <div className="flex flex-col items-center space-y-8 pb-5">
+      <div className="flex flex-col items-center space-y-8">
         <Button
-          variant="newSecondary"
-          className="mt-2 text-sm md:text-base"
-          rounded
+          variant="ghost"
+          mode="light"
+          size="m"
           onClick={() => goTo(AuthModalState.LnurlAuth)}
+          iconRight={<BsLightningChargeFill className="w-6" />}
           disabled
         >
           {t('auth.connectWithLn')}
@@ -128,13 +126,13 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   {credentialsLogin.error.message}
                 </p>
               )}
-
               <Button
+                variant="newPrimary"
+                size="m"
                 type="submit"
-                className="mt-6 text-sm md:text-base"
-                rounded
+                className="mt-7"
               >
-                {t('words.continue')}
+                {t('menu.login')}
               </Button>
             </form>
           )}
