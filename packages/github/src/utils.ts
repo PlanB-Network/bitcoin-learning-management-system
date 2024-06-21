@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import type { LogResult, SimpleGit } from 'simple-git';
+import type { SimpleGit } from 'simple-git';
 import { simpleGit } from 'simple-git';
 
 import type {
@@ -56,15 +56,18 @@ const createCache = <T>(map = new Map<string, T>()) => {
 };
 
 const cacheSymbol = Symbol('logCache');
-type GitLogReturn = Promise<LogResult<{ hash: string; date: string } | null>>;
+type GitLogReturn = Promise<{ hash: string; date: string } | null>;
 type SimpleGitExt = SimpleGit & { [cacheSymbol]?: Map<string, GitLogReturn> };
 const createGetGitLog = (git: SimpleGitExt) => {
   const fn = (file: string) =>
-    git.log({
-      file,
-      maxCount: 1,
-      format: { hash: '%H', date: '%aI' },
-    });
+    git
+      .log({
+        file,
+        maxCount: 1,
+        format: { hash: '%H', date: '%aI' },
+      })
+      // Get the latest commit log
+      .then((log) => log.latest);
 
   if (!git[cacheSymbol]) {
     git[cacheSymbol] = new Map();
@@ -232,61 +235,51 @@ async function loadRepoContentFiles(
   const timeReadFilesTotal = timeLog(`Reading files in ${repoDir}`);
 
   const timeListFiles = timeLog(`Listing files in ${repoDir}`);
-  const publicFiles = await listFiles(git, [':!.*', ':!:*assets*']);
+  const fileList = await listFiles(git, [':!.*', ':!:*assets*']);
   timeListFiles();
 
   const getGitLog = createGetGitLog(git);
 
   const timeMapDirs = timeLog(
-    `Mapping directories for ${publicFiles.length} files`,
+    `Mapping directories for ${fileList.length} files`,
   );
 
   // Get the parent directories of the files
-  const parentDirectories = publicFiles
+  const parentDirs = fileList
     // Get the parent directory
-    .map((file) => maxPathDepth(path.dirname(file)))
-    // Remove duplicates
-    .filter((dir, index, self) => self.indexOf(dir) === index);
+    .reduce(
+      (set, file) => set.add(maxPathDepth(path.dirname(file))),
+      new Set<string>(),
+    );
 
   timeMapDirs();
 
   // Preload the parent directories logs
   {
-    const timeGetParentDirectoryGitLogs = timeLog(
-      `Loading logs for ${parentDirectories.length} keys`,
+    const timePreload = timeLog(`Loading logs for ${parentDirs.size} keys`);
+
+    await async.mapLimit(parentDirs.values(), 20, (key, cb) =>
+      getGitLog(key).then((res) => cb(null, res), cb),
     );
 
-    for (const parentDirectory of parentDirectories) {
-      const parentDirectoryLog = await getGitLog(parentDirectory);
-      if (!parentDirectoryLog.latest) {
-        console.log('getGitLog', parentDirectory, 'not found');
-      }
-
-      // console.log(
-      //   'getGitLog',
-      //   parentDirectory,
-      //   parentDirectoryLog.latest?.hash,
-      //   parentDirectoryLog.latest?.date,
-      // );
-    }
-
-    timeGetParentDirectoryGitLogs();
+    timePreload();
   }
 
-  const timeRead = timeLog(`Reading ${publicFiles.length} files`);
+  const timeRead = timeLog(`Reading ${fileList.length} files`);
 
-  const files = await async.mapLimit(publicFiles, 10, async (file: string) => {
+  const files = await async.mapLimit(fileList, 10, async (file: string) => {
     const filePath = path.join(repoDir, file);
 
     const parentDirectory = maxPathDepth(path.dirname(file));
     const parentDirectoryLog = await getGitLog(parentDirectory);
+    if (!parentDirectoryLog) {
+      console.warn('getGitLog', parentDirectory, 'not found');
+    }
 
     return {
       path: file,
-      commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-      time: new Date(
-        parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
-      ).getTime(),
+      commit: parentDirectoryLog?.hash ?? 'unknown', // Cannot happen (I think)
+      time: new Date(parentDirectoryLog?.date ?? Date.now()).getTime(), // Cannot happen (I think)
       kind: 'added' as const,
       data: await fs.readFile(filePath, 'utf8'),
     };
@@ -388,48 +381,42 @@ export const createSyncCdnRepository = (cdnPath: string) => {
       const getGitLog = createGetGitLog(git);
       const existDir = createCache<boolean>()((dir: string) => existsSync(dir));
 
-      const parentDirectories = assets
-        // Get the parent directory
-        .map((asset) => asset.replace(/\/assets\/.*/, ''))
-        // Remove duplicates
-        .filter((dir, index, self) => self.indexOf(dir) === index);
-
-      const timeLoadLogs = timeLog(
-        `Loading logs for ${parentDirectories.length} keys`,
+      const timeMapDirs = timeLog(
+        `Mapping directories for ${assets.length} files`,
       );
-      // Preload the parent directories logs
-      for (const parentDirectory of parentDirectories) {
-        // Get the log of the parent directory
-        const parentDirectoryLog = await getGitLog(parentDirectory);
-        if (!parentDirectoryLog.latest) {
-          continue; // We could not find the parent directory log
-        }
 
-        // console.log(
-        //   'getGitLog2',
-        //   parentDirectory,
-        //   parentDirectoryLog.latest.hash,
-        // );
+      // Get the parent directories of the files
+      const parentDirs = assets.reduce(
+        (set, asset) => set.add(asset.replace(/\/assets\/.*/, '')),
+        new Set<string>(),
+      );
+
+      timeMapDirs();
+
+      // Preload the parent directories logs
+      {
+        const timeGetLogs = timeLog(`Loading logs for ${parentDirs.size} keys`);
+
+        await async.mapLimit(parentDirs.values(), 20, (key, cb) =>
+          getGitLog(key).then((res) => cb(null, res), cb),
+        );
+
+        timeGetLogs();
       }
-      timeLoadLogs();
 
       const timeAssetSync = timeLog(`Syncing assets to the CDN`);
       for (const asset of assets) {
         // Get the log of the parent directory
         const parentDirectory = asset.replace(/\/assets\/.*/, '');
-        const parentDirectoryLog = await getGitLog(parentDirectory);
-        if (!parentDirectoryLog.latest) {
+        const gitLog = await getGitLog(parentDirectory);
+        if (!gitLog) {
           console.warn('getGitLog2', parentDirectory, 'not found');
           continue; // We could not find the parent directory log
         }
 
         const relativePath = asset.replace(`${repositoryDirectory}/`, '');
 
-        const computedCdnPath = path.join(
-          cdnPath,
-          asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
-          relativePath,
-        );
+        const computedCdnPath = path.join(cdnPath, gitLog.hash, relativePath);
 
         const cdnDir = path.dirname(computedCdnPath);
 
@@ -440,9 +427,7 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
         if (!existsSync(computedCdnPath)) {
           const absolutePath = path.join(repositoryDirectory, asset);
-
           // console.log(`Copying ${asset} to ${computedCdnPath}`);
-
           await fs.copyFile(absolutePath, computedCdnPath);
         }
       }
