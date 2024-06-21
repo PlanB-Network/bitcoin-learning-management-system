@@ -15,7 +15,6 @@ function ViewNamesGroup({
   messages,
   onView,
 }: ViewNamesGroupProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   return views.map((name: View) => (
     <button
       className={name === 'week' ? '!hidden md:!inline' : ''}

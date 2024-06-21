@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 

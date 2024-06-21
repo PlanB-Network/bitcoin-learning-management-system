@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { TRPCError } from '@trpc/server';
 
 import { firstRow, rejectOnEmpty } from '@sovereign-university/database';

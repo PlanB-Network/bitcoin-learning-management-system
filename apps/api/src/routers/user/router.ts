@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { z } from 'zod';
 
 import {
@@ -56,19 +54,16 @@ export const userRouter = createTRPCRouter({
   changeEmail: protectedProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       createEmailValidationToken(ctx.dependencies)(ctx.user.uid, input.email),
     ),
   validateEmailChange: publicProcedure
     .input(z.object({ token: z.string() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       createChangeEmailConfirmation(ctx.dependencies)(input.token),
     ),
   requestPasswordRecovery: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       createPasswordRecoveryToken(ctx.dependencies)(input.email),
     ),
 });

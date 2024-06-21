@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { sql } from '@sovereign-university/database';
 import type { EventLocation } from '@sovereign-university/types';
 

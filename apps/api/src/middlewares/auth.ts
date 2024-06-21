@@ -31,7 +31,6 @@ export const expressAuthMiddleware = (
   next: NextFunction,
 ) => {
   if (!req.session.uid) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     throw new Unauthorized();
   }
 

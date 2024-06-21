@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Link, useParams } from '@tanstack/react-router';
 import { useContext, useEffect, useRef, useState } from 'react';
 

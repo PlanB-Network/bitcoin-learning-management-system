@@ -9,6 +9,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto" // Detects the root directory of the workspace and uses it as the working directory
+    }
+  ],
   "settings": {
     "i18n-ally.keystyle": "nested",
     "i18n-ally.localesPaths": ["apps/web/public/locales"],

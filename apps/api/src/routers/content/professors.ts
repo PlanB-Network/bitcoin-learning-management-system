@@ -37,7 +37,6 @@ const getProfessorProcedure = publicProcedure
     formattedProfessorSchema.merge(
       z.object({
         courses: joinedCourseSchema.array(),
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
         tutorials: joinedTutorialLightSchema.array(),
       }),
     ),

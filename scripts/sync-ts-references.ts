@@ -1,8 +1,4 @@
 #!/usr/bin/env tsx
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,7 +17,6 @@ const readJSON = (filePath: string): any => {
     const content = fs.readFileSync(filePath, 'utf8');
     return parse(content);
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     console.log(`Error reading file ${filePath} from disk: ${error}`);
     process.exit(1);
   }
