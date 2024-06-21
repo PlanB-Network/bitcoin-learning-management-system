@@ -5,7 +5,7 @@ import path from 'node:path';
 
 import * as async from 'async';
 import type { SimpleGit } from 'simple-git';
-import { simpleGit } from 'simple-git';
+import { ResetMode, simpleGit } from 'simple-git';
 
 import type {
   ChangedFile,
@@ -132,8 +132,8 @@ const syncRepository = async (
   // Clone the repository if it does not exist locally or if the branch is different
   if (directoryBranch !== branch) {
     const options: Record<string, string> = {
-      '--branch': branch,
       '--depth': '1',
+      '--branch': branch,
     };
 
     // Add authentication header if provided
@@ -177,8 +177,11 @@ const syncRepository = async (
 
   const timePull = timeLog(`Pulling changes on branch ${branch}`);
 
+  // Pull changes if the branch already exists
   try {
     const git = simpleGit(directory);
+    await git.reset(ResetMode.HARD); // Reset local changes
+    await git.fetch('origin', branch);
 
     // Get the current branch (commit is a shortened hash)
     const currentBranch = await git
@@ -191,8 +194,7 @@ const syncRepository = async (
     if (remoteHash.startsWith(currentBranch.commit)) {
       console.log(`-- Sync procedure: Branch ${branch} is up to date`);
     } else {
-      await git.fetch();
-      await git.reset(['--hard', `origin/${branch}`]);
+      await git.pull('origin', branch);
     }
 
     timePull();
