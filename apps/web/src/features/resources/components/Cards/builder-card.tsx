@@ -13,7 +13,7 @@ export const BuilderCard = (props: BuilderCardProps) => {
         <img
           className={cn(
             'size-[50px] md:size-20 rounded-full group-hover/builder:blur-sm group-hover/builder:brightness-[0.30] group-focus/builder:blur-sm group-focus/builder:brightness-[0.30] transition-all',
-            props.cardWidth ? props.cardWidth : 'w-[50px] md:w-20',
+            props.cardWidth ? props.cardWidth : '',
           )}
           src={props.logo}
           alt={props.name}

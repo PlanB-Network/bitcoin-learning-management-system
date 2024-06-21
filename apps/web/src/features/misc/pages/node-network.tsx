@@ -110,7 +110,7 @@ export const NodeNetwork = () => {
               <BuilderCard
                 name={community.name}
                 logo={community.logo}
-                cardWidth="w-[90px]"
+                cardWidth="size-[90px]"
               />
             </Link>
           ))}
