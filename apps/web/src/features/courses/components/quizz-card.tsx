@@ -74,7 +74,6 @@ export default function QuizzCard({
   }
 
   function handleNextStep() {
-    handleQuestionChange(0);
     setCurrentStep(currentStep + 1);
   }
 
@@ -104,6 +103,7 @@ export default function QuizzCard({
             answersColors={answersColors}
             numberOfCorrectAnswers={numberOfCorrectAnswers}
             nextStep={handleNextStep}
+            questionChange={handleQuestionChange}
           />
         )}
         {currentStep === 3 && (

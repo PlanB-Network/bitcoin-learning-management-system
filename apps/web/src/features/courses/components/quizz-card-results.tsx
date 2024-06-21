@@ -13,6 +13,7 @@ interface QuizzCardResultsProps {
   answersColors: string[];
   numberOfCorrectAnswers: number;
   nextStep: () => void;
+  questionChange: (i: number) => void;
 }
 
 export default function QuizzCardResults({
@@ -21,9 +22,14 @@ export default function QuizzCardResults({
   answersColors,
   nextStep,
   numberOfCorrectAnswers,
+  questionChange,
 }: QuizzCardResultsProps) {
   const { t } = useTranslation();
   const isMobile = useSmaller('md');
+
+  function pieClick(i: number) {
+    questionChange(i);
+  }
 
   return (
     <>
@@ -60,6 +66,8 @@ export default function QuizzCardResults({
                 globalCursorPointer={true}
                 width={isMobile ? 300 : 350}
                 height={isMobile ? 300 : 400}
+                handlePieClick={pieClick}
+                onClickNextStep={nextStep}
               />
             </div>
           </button>
