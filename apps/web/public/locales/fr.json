@@ -726,5 +726,19 @@
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "bCertificate": {
+    "bCertificateDescription": "Le certificat B est un examen reconnu internationalement pour évaluer votre niveau sur Bitcoin et ses sujets connexes. Ce certificat vous permettra de prouver vos compétences et vos connaissances au sein de l'industrie Bitcoin, vous donnant accès à des entreprises et à des postes dans cette industrie.",
+    "noBookExam": "Il n'y a pas encore de session d'examen prévue.",
+    "organizeDescription": "Pas de problème ! Si votre communauté fait partie du PlanB Network, il est possible d'organiser une session d'examen dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
+    "bookExam": "Réservez une session d'examen",
+    "challengeYourself": "Mettez-vous au défi et évaluez votre niveau !",
+    "checkout": "Consultez le B-Certificat",
+    "curious": "Curieux de savoir à quoi ressemble l'examen ?",
+    "joeNakamotoVideo": "Qu'est-ce que c'est qu'un examen Bitcoin ? Par Joe Nakamoto",
+    "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
+    "organizeExam": "Organiser un examen",
+    "organizeSubtitle": "Orangepill un milliard de personnes n'est pas facile",
+    "organizeTitle": "Voulez-vous organiser un examen du B-Certificate dans votre Hub ?"
   }
 }
