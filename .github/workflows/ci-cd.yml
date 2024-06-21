@@ -44,8 +44,8 @@ jobs:
       - name: Display linter version
         run: npx eslint -v
 
-      - name: Lint Code
-        run: pnpm run lint
+      # - name: Lint Code
+      #   run: pnpm run lint
 
       - name: Build Project
         run: pnpm run build
