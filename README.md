@@ -8,7 +8,7 @@ We are looking for contributors! If you want to help or learn more about the pro
 
 ## Development - Run the project locally
 
-### Option 1: with docker (prefered)
+### Option 1: with docker (preferred)
 
 We use [Turbo](https://turbo.build/) to manage the monorepo and Docker to run the development environment.
 

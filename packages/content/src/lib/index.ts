@@ -98,7 +98,9 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteEvents = createDeleteEvents(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
-    console.log('-- Sync procedure: Removing old entities');
+    const timeKey = '-- Sync procedure: Removing old entities';
+    console.log(timeKey + '...');
+    console.time(timeKey);
 
     await deleteProfessors(sync_date, errors);
     await deleteCourses(sync_date, errors);
@@ -107,6 +109,6 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteResources(sync_date, errors);
     await deleteEvents(sync_date, errors);
 
-    console.log('-- Sync procedure: Removed old entities');
+    console.timeEnd(timeKey);
   };
 };

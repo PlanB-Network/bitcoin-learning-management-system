@@ -34,15 +34,18 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       return { success: false };
     }
 
-    console.log(
-      '-- Sync procedure: START ====================================',
-    );
+    console.time('-- Sync procedure');
+    console.log('-- Sync procedure: START ===================================');
 
     if (!config.publicRepositoryUrl) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
     }
 
+    const timeKeyGetAllRepoFiles = '-- Sync procedure: Get all repo files';
+    console.log(timeKeyGetAllRepoFiles + '...');
+    console.time(timeKeyGetAllRepoFiles);
     const syncErrors = await getAllRepoFiles().then(processChangedFiles);
+    console.timeEnd(timeKeyGetAllRepoFiles);
 
     console.log('-- Sync procedure: Calculate remaining seats');
     await calculateCourseChapterSeats();
@@ -58,6 +61,9 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     let privateCdnError;
     if (config.privateRepositoryUrl && config.githubAccessToken) {
+      const timeKeySync = '-- Sync procedure: Syncing private CDN repository';
+      console.log(timeKeySync + '...');
+      console.time(timeKeySync);
       try {
         await syncCdnRepository(config.privateRepositoryUrl);
       } catch (error) {
@@ -65,15 +71,22 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
         privateCdnError =
           error instanceof Error ? error.message : new Error('Unknown error');
       }
+      console.timeEnd(timeKeySync);
     }
 
     let publicCdnError;
-    try {
-      await syncCdnRepository(config.publicRepositoryUrl);
-    } catch (error) {
-      console.error(error);
-      publicCdnError =
-        error instanceof Error ? error.message : new Error('Unknown error');
+    {
+      const timeKeySyncCdn = '-- Sync procedure: Syncing public CDN repository';
+      console.log(timeKeySyncCdn + '...');
+      console.time(timeKeySyncCdn);
+      try {
+        await syncCdnRepository(config.publicRepositoryUrl);
+      } catch (error) {
+        console.error(error);
+        publicCdnError =
+          error instanceof Error ? error.message : new Error('Unknown error');
+      }
+      console.timeEnd(timeKeySyncCdn);
     }
 
     console.log('-- Sync procedure: CLEAR ==================================');
@@ -82,6 +95,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       await processDeleteOldEntities(databaseTime.now, syncErrors);
     }
 
+    console.timeEnd('-- Sync procedure');
     console.log('-- Sync procedure: END ====================================');
 
     return {
