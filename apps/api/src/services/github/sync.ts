@@ -7,6 +7,7 @@ import {
   createSyncEventsLocations,
 } from '@sovereign-university/content';
 import {
+  timeLog,
   createGetAllRepoFiles,
   createSyncCdnRepository,
 } from '@sovereign-university/github';
@@ -41,11 +42,9 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
     }
 
-    const timeKeyGetAllRepoFiles = '-- Sync procedure: Get all repo files';
-    console.log(timeKeyGetAllRepoFiles + '...');
-    console.time(timeKeyGetAllRepoFiles);
+    const timeGetAllRepoFiles = timeLog('Get all repo files');
     const syncErrors = await getAllRepoFiles().then(processChangedFiles);
-    console.timeEnd(timeKeyGetAllRepoFiles);
+    timeGetAllRepoFiles();
 
     console.log('-- Sync procedure: Calculate remaining seats');
     await calculateCourseChapterSeats();
@@ -61,9 +60,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     let privateCdnError;
     if (config.privateRepositoryUrl && config.githubAccessToken) {
-      const timeKeySync = '-- Sync procedure: Syncing private CDN repository';
-      console.log(timeKeySync + '...');
-      console.time(timeKeySync);
+      const timeSync = timeLog('Syncing private CDN repository');
       try {
         await syncCdnRepository(config.privateRepositoryUrl);
       } catch (error) {
@@ -71,14 +68,12 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
         privateCdnError =
           error instanceof Error ? error.message : new Error('Unknown error');
       }
-      console.timeEnd(timeKeySync);
+      timeSync();
     }
 
     let publicCdnError;
     {
-      const timeKeySyncCdn = '-- Sync procedure: Syncing public CDN repository';
-      console.log(timeKeySyncCdn + '...');
-      console.time(timeKeySyncCdn);
+      const timeSync = timeLog('Syncing public CDN repository');
       try {
         await syncCdnRepository(config.publicRepositoryUrl);
       } catch (error) {
@@ -86,7 +81,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
         publicCdnError =
           error instanceof Error ? error.message : new Error('Unknown error');
       }
-      console.timeEnd(timeKeySyncCdn);
+      timeSync();
     }
 
     console.log('-- Sync procedure: CLEAR ==================================');

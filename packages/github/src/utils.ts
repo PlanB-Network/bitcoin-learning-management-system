@@ -14,6 +14,16 @@ import type {
 
 import type { GithubOctokit } from './octokit.js';
 
+export const timeLog = (str: string) => {
+  const key = `-- Sync procedure: ${str}`;
+  console.log(key + '...');
+  console.time(key);
+
+  return () => {
+    console.timeEnd(key);
+  };
+};
+
 const parseRepository = (repository: string) => {
   const [repoOwner, repoName] = repository.split('/');
   return { repoOwner, repoName };
@@ -117,9 +127,7 @@ const syncRepository = async (
       options['--config'] = `http.${repository}.extraheader=${header}`;
     }
 
-    const timeKey = `-- Sync procedure: Cloning repository on branch ${branch}`;
-    console.log(timeKey + '...');
-    console.time(timeKey);
+    const timeClone = timeLog(`Cloning repository on branch ${branch}`);
 
     // If the directory already exists, remove it (should not happen in production)
     if (directoryBranch || existsSync(directory)) {
@@ -135,7 +143,7 @@ const syncRepository = async (
       await git.cwd(directory);
 
       console.log(`-- Sync procedure: Cloned repository on branch ${branch}`);
-      console.timeEnd(timeKey);
+      timeClone();
 
       return git;
     } catch (error: any) {
@@ -152,9 +160,7 @@ const syncRepository = async (
     }
   }
 
-  const timeKey = `-- Sync procedure: Pulling changes on branch ${branch}`;
-  console.log(timeKey + '...');
-  console.time(timeKey);
+  const timePull = timeLog(`Pulling changes on branch ${branch}`);
 
   try {
     const git = simpleGit(directory);
@@ -174,7 +180,7 @@ const syncRepository = async (
       await git.reset(['--hard', `origin/${branch}`]);
     }
 
-    console.timeEnd(timeKey);
+    timePull();
 
     return git;
   } catch (error: any) {
@@ -207,21 +213,17 @@ async function listRepoFiles(
   repoDir: string,
   git: SimpleGit,
 ): Promise<ChangedFile[]> {
-  const timeKeyReadFilesTotal = `-- Sync procedure: Reading files in ${repoDir}`;
-  console.log(timeKeyReadFilesTotal);
-  console.time(timeKeyReadFilesTotal);
+  const timeReadFilesTotal = timeLog(`Reading files in ${repoDir}`);
 
-  const timeKeyListFiles = `-- Sync procedure: Listing files in ${repoDir}`;
-  console.log(timeKeyListFiles + '...');
-  console.time(timeKeyListFiles);
+  const timeListFiles = timeLog(`Listing files in ${repoDir}`);
   const publicFiles = await listFiles(git, [':!.*', ':!:*assets*']);
-  console.timeEnd(timeKeyListFiles);
+  timeListFiles();
 
   const getGitLog = createGetGitLog(git);
 
-  const timeKeyMapDirs = `-- Sync procedure: Mapping directories for ${publicFiles.length} files`;
-  console.log(timeKeyMapDirs + '...');
-  console.time(timeKeyMapDirs);
+  const timeMapDirs = timeLog(
+    `Mapping directories for ${publicFiles.length} files`,
+  );
 
   // Get the parent directories of the files
   const parentDirectories = publicFiles
@@ -230,13 +232,13 @@ async function listRepoFiles(
     // Remove duplicates
     .filter((dir, index, self) => self.indexOf(dir) === index);
 
-  console.timeEnd(timeKeyMapDirs);
+  timeMapDirs();
 
   // Preload the parent directories logs
   {
-    const timeKeyGetParentDirectoryGitLogs = `-- Sync procedure: Loading logs for ${parentDirectories.length} keys`;
-    console.log(timeKeyGetParentDirectoryGitLogs);
-    console.time(timeKeyGetParentDirectoryGitLogs);
+    const timeGetParentDirectoryGitLogs = timeLog(
+      `Loading logs for ${parentDirectories.length} keys`,
+    );
 
     for (const parentDirectory of parentDirectories) {
       const parentDirectoryLog = await getGitLog(parentDirectory);
@@ -252,12 +254,10 @@ async function listRepoFiles(
       // );
     }
 
-    console.timeEnd(timeKeyGetParentDirectoryGitLogs);
+    timeGetParentDirectoryGitLogs();
   }
 
-  const timeKeyReadFiles = `-- Sync procedure: Reading ${publicFiles.length} files`;
-  console.log(timeKeyReadFiles + '...');
-  console.time(timeKeyReadFiles);
+  const timeRead = timeLog(`Reading ${publicFiles.length} files`);
 
   const files = await async.mapLimit(publicFiles, 10, async (file: string) => {
     const filePath = path.join(repoDir, file);
@@ -276,8 +276,8 @@ async function listRepoFiles(
     };
   });
 
-  console.timeEnd(timeKeyReadFiles);
-  console.timeEnd(timeKeyReadFilesTotal);
+  timeRead();
+  timeReadFilesTotal();
 
   return files;
 }
@@ -360,11 +360,10 @@ export const createSyncCdnRepository = ({
     const git = simpleGit(repositoryDirectory);
 
     try {
-      const timeKeyListFiles = `-- Sync procedure: Listing files in ${repositoryDirectory}`;
-      console.log(timeKeyListFiles + '...');
-      console.time(timeKeyListFiles);
+      const timeListFiles = timeLog(`Listing files in ${repositoryDirectory}`);
+
       const assets = await listFiles(git, [':!.*', ':*assets*', ':*soon*']);
-      console.timeEnd(timeKeyListFiles);
+      timeListFiles();
 
       const getGitLog = createGetGitLog(git);
       const existDir = cache((dir: string) => existsSync(dir));
@@ -375,9 +374,9 @@ export const createSyncCdnRepository = ({
         // Remove duplicates
         .filter((dir, index, self) => self.indexOf(dir) === index);
 
-      const timeKeyLoadLogs = `-- Sync procedure: Loading logs for ${parentDirectories.length} keys`;
-      console.log(timeKeyLoadLogs + '...');
-      console.time(timeKeyLoadLogs);
+      const timeLoadLogs = timeLog(
+        `Loading logs for ${parentDirectories.length} keys`,
+      );
       // Preload the parent directories logs
       for (const parentDirectory of parentDirectories) {
         // Get the log of the parent directory
@@ -392,11 +391,9 @@ export const createSyncCdnRepository = ({
         //   parentDirectoryLog.latest.hash,
         // );
       }
-      console.timeEnd(timeKeyLoadLogs);
+      timeLoadLogs();
 
-      const timeKeyAssetSync = '-- Sync procedure: Syncing assets to the CDN';
-      console.log(timeKeyAssetSync + '...');
-      console.time(timeKeyAssetSync);
+      const timeAssetSync = timeLog(`Syncing assets to the CDN`);
       for (const asset of assets) {
         // Get the log of the parent directory
         const parentDirectory = asset.replace(/\/assets\/.*/, '');
@@ -430,7 +427,7 @@ export const createSyncCdnRepository = ({
         }
       }
 
-      console.timeEnd(timeKeyAssetSync);
+      timeAssetSync();
     } catch (error) {
       throw new Error(`Failed to sync CDN repository: ${error}`);
     }
