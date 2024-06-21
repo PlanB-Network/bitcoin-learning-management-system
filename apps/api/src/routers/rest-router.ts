@@ -76,7 +76,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
       console.error('Failed to sync GitHub repositories:', error);
       res.status(500).json({ error: 'Internal server error' });
     } finally {
-      redis.set('github-sync-locked', false);
+      void redis.set('github-sync-locked', false);
     }
   });
 
