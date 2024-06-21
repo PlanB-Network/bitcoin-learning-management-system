@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { existsSync, mkdirSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
-import type { DefaultLogFields, LogResult } from 'simple-git';
+import type { SimpleGit } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
 import type {
@@ -12,6 +13,16 @@ import type {
 } from '@sovereign-university/types';
 
 import type { GithubOctokit } from './octokit.js';
+
+export const timeLog = (str: string) => {
+  const key = `-- Sync procedure: ${str}`;
+  console.log(key + '...');
+  console.time(key);
+
+  return () => {
+    console.timeEnd(key);
+  };
+};
 
 const parseRepository = (repository: string) => {
   const [repoOwner, repoName] = repository.split('/');
@@ -22,8 +33,51 @@ const extractRepositoryFromUrl = (url: string) => {
   return url.split('/').splice(-1)[0].replace('.git', '');
 };
 
-const computeTemporaryDirectory = (syncPath: string, url: string) => {
+const computeSyncDirectory = (syncPath: string, url: string) => {
   return path.join(syncPath, extractRepositoryFromUrl(url));
+};
+
+/**
+ * Wrapper around a function to cache its results
+ */
+const createCache = <T>(map = new Map<string, T>()) => {
+  return (fn: (key: string) => T) => {
+    return (key: string) => {
+      const cached = map.get(key);
+      if (cached) {
+        return cached;
+      }
+
+      const value = fn(key);
+      map.set(key, value);
+      return value;
+    };
+  };
+};
+
+const cacheSymbol = Symbol('logCache');
+type GitLogReturn = Promise<{ hash: string; date: string } | null>;
+type SimpleGitExt = SimpleGit & { [cacheSymbol]?: Map<string, GitLogReturn> };
+const createGetGitLog = (git: SimpleGitExt) => {
+  const fn = (file: string) =>
+    git
+      .log({
+        file,
+        maxCount: 1,
+        format: { hash: '%H', date: '%aI' },
+      })
+      // Get the latest commit log
+      .then((log) => log.latest);
+
+  if (git[cacheSymbol]) {
+    console.log(
+      `-- Sync procedure: Reusing cache of ${git[cacheSymbol].size} entries`,
+    );
+  } else {
+    git[cacheSymbol] = new Map();
+  }
+
+  return createCache(git[cacheSymbol])(fn);
 };
 
 export const createDownloadFile = (octokit: GithubOctokit) => {
@@ -88,10 +142,10 @@ const syncRepository = async (
       options['--config'] = `http.${repository}.extraheader=${header}`;
     }
 
-    console.log(`-- Sync procedure: Cloning repository on branch ${branch}`);
+    const timeClone = timeLog(`Cloning repository on branch ${branch}`);
 
     // If the directory already exists, remove it (should not happen in production)
-    if (directoryBranch || (await pathExists(directory))) {
+    if (directoryBranch || existsSync(directory)) {
       console.warn(
         `[WARN] Directory already synced on branch ${directoryBranch}, removing it`,
       );
@@ -104,6 +158,7 @@ const syncRepository = async (
       await git.cwd(directory);
 
       console.log(`-- Sync procedure: Cloned repository on branch ${branch}`);
+      timeClone();
 
       return git;
     } catch (error: any) {
@@ -120,12 +175,29 @@ const syncRepository = async (
     }
   }
 
-  console.log(`-- Sync procedure: Pulling changes on branch ${branch}`);
+  const timePull = timeLog(`Pulling changes on branch ${branch}`);
 
+  // Pull changes if the branch already exists
   try {
     const git = simpleGit(directory);
     await git.reset(ResetMode.HARD); // Reset local changes
-    await git.pull('origin', branch);
+    await git.fetch('origin', branch);
+
+    // Get the current branch (commit is a shortened hash)
+    const currentBranch = await git
+      .branchLocal()
+      .then(({ current, branches }) => branches[current]);
+
+    // Full commit hash of the remote branch
+    const remoteHash = await git.revparse([`origin/${branch}`]);
+
+    if (remoteHash.startsWith(currentBranch.commit)) {
+      console.log(`-- Sync procedure: Branch ${branch} is up to date`);
+    } else {
+      await git.pull('origin', branch);
+    }
+
+    timePull();
 
     return git;
   } catch (error: any) {
@@ -138,49 +210,93 @@ const syncRepository = async (
 };
 
 /**
- * Walk a directory recursively to get files inside it
+ * List all files in a repository
  *
- * @param directory - Directory path
- * @param ignore - Ignore some patterns
- * @param only - Get only those files
- * @returns List of files in the directory
+ * @param git - SimpleGit instance
+ * @param pattern - Patterns to exclude, defaults to hidden files
+ * @returns a list of files in the repository
  */
-export const walk = async (
-  directory: string,
-  ignore: string[] = [],
-): Promise<string[]> => {
-  const files = await fs.readdir(directory);
+async function listFiles(git: SimpleGit, pattern = [':!.*']) {
+  const files = await git.raw(['ls-files', '-z', ...pattern]);
 
-  const parsedFiles = await async.map(files, async (file: string) => {
-    const filePath = path.join(directory, file);
-    const stats = await fs.stat(filePath);
+  // Filter out empty strings and hidden files
+  return files.split('\0').filter((file) => file && !file.startsWith('.'));
+}
 
-    if (stats.isDirectory() && !ignore.includes(file)) {
-      return walk(filePath, ignore);
-    }
-
-    if (stats.isFile() && !ignore.some((x) => file.includes(x))) {
-      return [filePath];
-    }
-
-    return [];
-  });
-
-  return parsedFiles.flat();
-};
-
-const pathExists = async (path: string) =>
-  fs
-    .stat(path)
-    .then(() => true)
-    .catch(() => false);
+function maxPathDepth(path: string, depth = 3) {
+  return path.split('/').slice(0, depth).join('/');
+}
 
 /**
- * Get all files from a repository
+ * List and load (read) all content (non-assets) files in a repository
+ */
+async function loadRepoContentFiles(
+  repoDir: string,
+  git: SimpleGit,
+): Promise<ChangedFile[]> {
+  const timeReadFilesTotal = timeLog(`Reading files in ${repoDir}`);
+
+  const timeListFiles = timeLog(`Listing files in ${repoDir}`);
+  const fileList = await listFiles(git, [':!.*', ':!:*assets*']);
+  timeListFiles();
+
+  const getGitLog = createGetGitLog(git);
+
+  const timeMapDirs = timeLog(
+    `Mapping directories for ${fileList.length} files`,
+  );
+
+  // Get the parent directories of the files
+  const parentDirs = new Set<string>(
+    fileList.map((file) => maxPathDepth(path.dirname(file))),
+  );
+
+  timeMapDirs();
+
+  // Preload the parent directories logs
+  {
+    const timePreload = timeLog(`Loading logs for ${parentDirs.size} keys`);
+
+    await async.mapLimit(parentDirs.values(), 20, async (key: string) => {
+      await getGitLog(key);
+    });
+
+    timePreload();
+  }
+
+  const timeRead = timeLog(`Reading ${fileList.length} files`);
+
+  const files = await async.mapLimit(fileList, 10, async (file: string) => {
+    const filePath = path.join(repoDir, file);
+
+    const parentDirectory = maxPathDepth(path.dirname(file));
+    const parentDirectoryLog = await getGitLog(parentDirectory);
+    if (!parentDirectoryLog) {
+      console.warn('getGitLog', parentDirectory, 'not found');
+    }
+
+    return {
+      path: file,
+      commit: parentDirectoryLog?.hash ?? 'unknown', // Cannot happen (I think)
+      time: new Date(parentDirectoryLog?.date ?? Date.now()).getTime(), // Cannot happen (I think)
+      kind: 'added' as const,
+      data: await fs.readFile(filePath, 'utf8'),
+    };
+  });
+
+  timeRead();
+  timeReadFilesTotal();
+
+  return files;
+}
+
+/**
+ * Factory to sync the repositories (clone or pull) and reads all content (non-assets) files
  *
  * @param options - Configuration options
+ * @returns a function that syncs the repository and reads all content files
  */
-export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
+export const createSyncRepositories = (options: GitHubSyncConfig) => {
   return async () => {
     console.log(
       '-- Sync procedure: Syncing the public github repository on branch',
@@ -188,8 +304,7 @@ export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
     );
 
     try {
-      let finalFiles: ChangedFile[] = [];
-      const publicRepoDir = computeTemporaryDirectory(
+      const publicRepoDir = computeSyncDirectory(
         options.syncPath,
         options.publicRepositoryUrl,
       );
@@ -201,29 +316,7 @@ export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
       );
 
       // Read all the files
-      const publicFiles = await walk(path.resolve(publicRepoDir), ['.git']);
-
-      finalFiles = await async.mapLimit(
-        publicFiles.filter((file) => !file.includes('/assets/')),
-        10,
-        async (file: string) => {
-          const relativePath = file.replace(`${publicRepoDir}/`, '');
-
-          const parentDirectoryLog = await publicGit.log({
-            file: path.dirname(file),
-          });
-
-          return {
-            path: relativePath,
-            commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-            time: new Date(
-              parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
-            ).getTime(),
-            kind: 'added' as const,
-            data: await fs.readFile(file, 'utf8'),
-          };
-        },
-      );
+      const publicFiles = await loadRepoContentFiles(publicRepoDir, publicGit);
 
       if (options.privateRepositoryUrl && options.githubAccessToken) {
         console.log(
@@ -231,7 +324,7 @@ export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
           options.privateRepositoryBranch,
         );
 
-        const privateRepoDir = computeTemporaryDirectory(
+        const privateRepoDir = computeSyncDirectory(
           options.syncPath,
           options.privateRepositoryUrl,
         );
@@ -244,34 +337,25 @@ export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
         );
 
         // Read all the files
-        const privateFiles = await walk(path.resolve(privateRepoDir), ['.git']);
-
-        const privateFinalFiles: ChangedFile[] = await async.mapLimit(
-          privateFiles.filter((file) => !file.includes('/assets/')),
-          10,
-          async (file: string) => {
-            const relativePath = file.replace(`${privateRepoDir}/`, '');
-
-            const parentDirectoryLog = await privateGit.log({
-              file: path.dirname(file),
-            });
-
-            return {
-              path: relativePath,
-              commit: parentDirectoryLog.latest?.hash ?? 'unknown', // Cannot happen (I think)
-              time: new Date(
-                parentDirectoryLog.latest?.date ?? Date.now(), // Cannot happen (I think)
-              ).getTime(),
-              kind: 'added' as const,
-              data: await fs.readFile(file, 'utf8'),
-            };
-          },
+        const privateFiles = await loadRepoContentFiles(
+          privateRepoDir,
+          privateGit,
         );
 
-        finalFiles = [...finalFiles, ...privateFinalFiles];
+        return {
+          files: [...publicFiles, ...privateFiles],
+          publicGit,
+          publicRepoDir,
+          privateGit,
+          privateRepoDir,
+        };
       }
 
-      return finalFiles;
+      return {
+        files: publicFiles,
+        publicGit,
+        publicRepoDir,
+      };
     } catch (error) {
       throw new Error(`Failed to clone and read all repo files: ${error}`);
     }
@@ -279,64 +363,74 @@ export const createGetAllRepoFiles = (options: GitHubSyncConfig) => {
 };
 
 /**
- * Sync a repository to a CDN
+ * Sync repository assets
  *
  * @param options - Configuration options
  * @param options.syncPath - Path to sync the repository
  * @param options.cdnPath - Path to sync the repository to
  */
-export const createSyncCdnRepository = ({
-  syncPath,
-  cdnPath,
-}: Pick<GitHubSyncConfig, 'syncPath' | 'cdnPath'>) => {
-  return async (repositoryUrl: string) => {
-    const repositoryDirectory = computeTemporaryDirectory(
-      syncPath,
-      repositoryUrl,
-    );
-
-    const git = simpleGit(repositoryDirectory);
-
+export const createSyncCdnRepository = (cdnPath: string) => {
+  return async (repositoryDirectory: string, git: SimpleGit) => {
     try {
-      const files = await walk(path.resolve(repositoryDirectory), ['.git']);
-      const assets = files.filter(
-        (file) => file.includes('/assets/') || file.includes('/soon/'),
+      const timeListFiles = timeLog(`Listing files in ${repositoryDirectory}`);
+
+      const assets = await listFiles(git, [':!.*', ':*assets*', ':*soon*']);
+      timeListFiles();
+
+      const getGitLog = createGetGitLog(git);
+      const existDir = createCache<boolean>()((dir: string) => existsSync(dir));
+
+      const timeMapDirs = timeLog(
+        `Mapping directories for ${assets.length} files`,
       );
 
-      // Cache the log of the parent directory of each asset
-      const directoryLogCache = new Map<string, LogResult<DefaultLogFields>>();
-
-      console.log(
-        `-- Sync procedure: Syncing ${assets.length} assets to the CDN on ${repositoryDirectory}`,
+      // Get the parent directories of the files
+      const parentDirs = new Set<string>(
+        assets.map((asset) => asset.replace(/\/assets\/.*/, '')),
       );
 
-      for (const asset of assets.reverse()) {
+      timeMapDirs();
+
+      // Preload the parent directories logs
+      {
+        const timeGetLogs = timeLog(`Loading logs for ${parentDirs.size} keys`);
+
+        await async.mapLimit(parentDirs.values(), 20, async (key: string) => {
+          await getGitLog(key);
+        });
+
+        timeGetLogs();
+      }
+
+      const timeAssetSync = timeLog(`Syncing assets to the CDN`);
+      for (const asset of assets) {
         // Get the log of the parent directory
         const parentDirectory = asset.replace(/\/assets\/.*/, '');
-        const cachedParentDirectoryLog = directoryLogCache.get(parentDirectory);
-        const parentDirectoryLog = cachedParentDirectoryLog
-          ? cachedParentDirectoryLog
-          : await git.log({ file: parentDirectory });
-
-        // Cache the log of the parent directory if not already cached
-        if (!cachedParentDirectoryLog) {
-          directoryLogCache.set(parentDirectory, parentDirectoryLog);
+        const gitLog = await getGitLog(parentDirectory);
+        if (!gitLog) {
+          console.warn('getGitLog2', parentDirectory, 'not found');
+          continue; // We could not find the parent directory log
         }
-
-        if (!parentDirectoryLog.latest) continue;
 
         const relativePath = asset.replace(`${repositoryDirectory}/`, '');
 
-        const computedCdnPath = path.join(
-          cdnPath,
-          asset.includes('/soon/') ? 'main' : parentDirectoryLog.latest.hash,
-          relativePath,
-        );
-        if (!(await pathExists(computedCdnPath))) {
-          await fs.mkdir(path.dirname(computedCdnPath), { recursive: true });
-          await fs.copyFile(asset, computedCdnPath);
+        const computedCdnPath = path.join(cdnPath, gitLog.hash, relativePath);
+
+        const cdnDir = path.dirname(computedCdnPath);
+
+        if (!existDir(cdnDir)) {
+          // console.log(`Creating directory ${cdnDir}`);
+          mkdirSync(cdnDir, { recursive: true });
+        }
+
+        if (!existsSync(computedCdnPath)) {
+          const absolutePath = path.join(repositoryDirectory, asset);
+          // console.log(`Copying ${asset} to ${computedCdnPath}`);
+          await fs.copyFile(absolutePath, computedCdnPath);
         }
       }
+
+      timeAssetSync();
     } catch (error) {
       throw new Error(`Failed to sync CDN repository: ${error}`);
     }

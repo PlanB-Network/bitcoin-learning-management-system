@@ -33,8 +33,6 @@ const fetchEventLocation = async (query: string) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = await res.json();
 
-  console.log('Result for', query, ':', data);
-
   return expectedResponseSchema.parse(data)?.[0];
 };
 
@@ -45,7 +43,7 @@ export const createSyncEventsLocations = ({ postgres }: Dependencies) => {
     for (const { name } of locations) {
       const result = await fetchEventLocation(name).catch(() => null);
       if (!result) {
-        console.log('Could not find location:', name);
+        console.log('-- Sync procedure: Could not find location', name);
         continue;
       }
 
