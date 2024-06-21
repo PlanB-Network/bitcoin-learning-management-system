@@ -69,12 +69,12 @@ const createGetGitLog = (git: SimpleGitExt) => {
       // Get the latest commit log
       .then((log) => log.latest);
 
-  if (!git[cacheSymbol]) {
-    git[cacheSymbol] = new Map();
-  } else {
+  if (git[cacheSymbol]) {
     console.log(
       `-- Sync procedure: Reusing cache of ${git[cacheSymbol].size} entries`,
     );
+  } else {
+    git[cacheSymbol] = new Map();
   }
 
   return createCache(git[cacheSymbol])(fn);
@@ -247,12 +247,9 @@ async function loadRepoContentFiles(
   );
 
   // Get the parent directories of the files
-  const parentDirs = fileList
-    // Get the parent directory
-    .reduce(
-      (set, file) => set.add(maxPathDepth(path.dirname(file))),
-      new Set<string>(),
-    );
+  const parentDirs = new Set<string>(
+    fileList.map((file) => maxPathDepth(path.dirname(file))),
+  );
 
   timeMapDirs();
 
@@ -260,9 +257,9 @@ async function loadRepoContentFiles(
   {
     const timePreload = timeLog(`Loading logs for ${parentDirs.size} keys`);
 
-    await async.mapLimit(parentDirs.values(), 20, (key, cb) =>
-      getGitLog(key).then((res) => cb(null, res), cb),
-    );
+    await async.mapLimit(parentDirs.values(), 20, async (key: string) => {
+      await getGitLog(key);
+    });
 
     timePreload();
   }
@@ -388,9 +385,8 @@ export const createSyncCdnRepository = (cdnPath: string) => {
       );
 
       // Get the parent directories of the files
-      const parentDirs = assets.reduce(
-        (set, asset) => set.add(asset.replace(/\/assets\/.*/, '')),
-        new Set<string>(),
+      const parentDirs = new Set<string>(
+        assets.map((asset) => asset.replace(/\/assets\/.*/, '')),
       );
 
       timeMapDirs();
@@ -399,9 +395,9 @@ export const createSyncCdnRepository = (cdnPath: string) => {
       {
         const timeGetLogs = timeLog(`Loading logs for ${parentDirs.size} keys`);
 
-        await async.mapLimit(parentDirs.values(), 20, (key, cb) =>
-          getGitLog(key).then((res) => cb(null, res), cb),
-        );
+        await async.mapLimit(parentDirs.values(), 20, async (key: string) => {
+          await getGitLog(key);
+        });
 
         timeGetLogs();
       }
@@ -424,7 +420,7 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
         if (!existDir(cdnDir)) {
           // console.log(`Creating directory ${cdnDir}`);
-          await mkdirSync(cdnDir, { recursive: true });
+          mkdirSync(cdnDir, { recursive: true });
         }
 
         if (!existsSync(computedCdnPath)) {

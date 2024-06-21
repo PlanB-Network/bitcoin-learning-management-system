@@ -7,9 +7,9 @@ import {
   createSyncEventsLocations,
 } from '@sovereign-university/content';
 import {
-  timeLog,
-  createSyncRepositories,
   createSyncCdnRepository,
+  createSyncRepositories,
+  timeLog,
 } from '@sovereign-university/github';
 
 import type { Dependencies } from '#src/dependencies.js';
