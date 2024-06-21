@@ -208,6 +208,7 @@ export const Events = () => {
       </div>
 
       <div>
+        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {events && (
           <EventsPassed
             events={events}
