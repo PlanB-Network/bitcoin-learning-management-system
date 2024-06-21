@@ -46,6 +46,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     const context = await syncRepositories();
     timeGetAllRepoFiles();
 
+    console.log('-- Sync procedure: UPDATE DATABASE =========================');
+
     const timeProcessContentFiles = timeLog('Processing content files');
     const syncErrors = await processContentFiles(context.files);
     timeProcessContentFiles();
@@ -61,6 +63,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       );
       console.error(syncErrors.join('\n'));
     }
+
+    console.log('-- Sync procedure: UPDATE ASSETS ===========================');
 
     let privateCdnError;
     if (context.privateGit) {
