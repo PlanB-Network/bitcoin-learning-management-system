@@ -33,7 +33,10 @@ import {
   groupByTutorial,
 } from './tutorials/import/index.js';
 
-export const createProcessChangedFiles = (dependencies: Dependencies) => {
+/**
+ * Updates the database from the content files
+ */
+export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateResources = createUpdateResources(dependencies);
   const updateCourses = createUpdateCourses(dependencies);
   const updateTutorials = createUpdateTutorials(dependencies);

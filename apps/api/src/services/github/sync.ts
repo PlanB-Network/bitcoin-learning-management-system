@@ -2,13 +2,13 @@ import {
   createCalculateCourseChapterSeats,
   createCalculateEventSeats,
   createGetNow,
-  createProcessChangedFiles,
+  createProcessContentFiles,
   createProcessDeleteOldEntities,
   createSyncEventsLocations,
 } from '@sovereign-university/content';
 import {
   timeLog,
-  createGetAllRepoFiles,
+  createSyncRepositories,
   createSyncCdnRepository,
 } from '@sovereign-university/github';
 
@@ -20,13 +20,13 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
   } = dependencies;
 
   const getNow = createGetNow(dependencies);
-  const getAllRepoFiles = createGetAllRepoFiles(config);
-  const syncCdnRepository = createSyncCdnRepository(config);
+  const syncRepositories = createSyncRepositories(config);
+  const syncCdnRepository = createSyncCdnRepository(config.cdnPath);
   const calculateCourseChapterSeats =
     createCalculateCourseChapterSeats(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
   const syncEventsLocations = createSyncEventsLocations(dependencies);
-  const processChangedFiles = createProcessChangedFiles(dependencies);
+  const processContentFiles = createProcessContentFiles(dependencies);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
 
   return async () => {
@@ -42,9 +42,13 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
     }
 
-    const timeGetAllRepoFiles = timeLog('Get all repo files');
-    const syncErrors = await getAllRepoFiles().then(processChangedFiles);
+    const timeGetAllRepoFiles = timeLog('Loading content files');
+    const context = await syncRepositories();
     timeGetAllRepoFiles();
+
+    const timeProcessContentFiles = timeLog('Processing content files');
+    const syncErrors = await processContentFiles(context.files);
+    timeProcessContentFiles();
 
     console.log('-- Sync procedure: Calculate remaining seats');
     await calculateCourseChapterSeats();
@@ -59,10 +63,10 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     }
 
     let privateCdnError;
-    if (config.privateRepositoryUrl && config.githubAccessToken) {
+    if (context.privateGit) {
       const timeSync = timeLog('Syncing private CDN repository');
       try {
-        await syncCdnRepository(config.privateRepositoryUrl);
+        await syncCdnRepository(context.privateRepoDir, context.privateGit);
       } catch (error) {
         console.error(error);
         privateCdnError =
@@ -75,7 +79,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     {
       const timeSync = timeLog('Syncing public CDN repository');
       try {
-        await syncCdnRepository(config.publicRepositoryUrl);
+        await syncCdnRepository(context.publicRepoDir, context.publicGit);
       } catch (error) {
         console.error(error);
         publicCdnError =
