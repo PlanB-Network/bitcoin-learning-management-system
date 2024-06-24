@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
 import { useCallback, useEffect } from 'react';
-import { BsCheck } from 'react-icons/bs';
+import { BsCheck, BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
@@ -107,7 +107,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     >
       {register.data && !register.error ? (
         <div className="mb-8 flex flex-col items-center">
-          <BsCheck className="my-8 size-20 text-lg text-green-300" />
+          <BsCheck className="my-8 size-20 text-black" />
           <p className="text-center">
             {t('auth.accountCreated', {
               userName: register.data.user.username,
@@ -117,16 +117,19 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center space-y-8">
+        <div className="flex flex-col items-center w-full">
           <Button
-            variant="newSecondary"
-            rounded
+            variant="ghost"
+            mode="light"
+            size="m"
             onClick={() => goTo(AuthModalState.LnurlAuth)}
+            iconRight={<BsLightningChargeFill className="w-6" />}
             disabled
+            className="mb-2.5"
           >
             {t('auth.connectWithLn')}
           </Button>
-          <Divider>{t('words.or').toUpperCase()}</Divider>
+          <Divider>{t('words.or').toLowerCase()}</Divider>
           <Formik
             initialValues={{
               username: '',
@@ -157,21 +160,23 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="flex w-full flex-col items-center"
+                className="flex w-full flex-col items-center mt-3"
               >
                 <div className="flex w-full flex-col items-center">
                   <TextInput
                     name="username"
-                    labelText="Username"
+                    labelText={t('dashboard.profile.username')}
+                    placeholder={t('dashboard.profile.username').toLowerCase()}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.username}
-                    className="w-full min-w-64 md:w-4/5"
+                    className="w-full"
                     error={
                       touched.username && errors.username
                         ? errors.username[0]
                         : null
                     }
+                    mandatory
                   />
 
                   <TextInput
@@ -181,12 +186,13 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.password}
-                    className="w-full md:w-4/5"
+                    className="w-full"
                     error={
                       touched.password && errors.password
                         ? errors.password[0]
                         : null
                     }
+                    mandatory
                   />
 
                   <TextInput
@@ -196,12 +202,13 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.confirmation}
-                    className="w-full md:w-4/5"
+                    className="w-full"
                     error={
                       touched.confirmation && errors.confirmation
                         ? errors.confirmation[0]
                         : null
                     }
+                    mandatory
                   />
                 </div>
 
@@ -215,14 +222,14 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                   variant="newPrimary"
                   size="m"
                   type="submit"
-                  className="mt-7"
+                  className="my-8"
                 >
                   {t('auth.createAccount')}
                 </Button>
               </form>
             )}
           </Formik>
-          <p className="desktop-body1">
+          <p className="desktop-body1 text-center">
             {t('auth.alreadyHaveAccount')}{' '}
             <button
               className="cursor-pointer underline italic"

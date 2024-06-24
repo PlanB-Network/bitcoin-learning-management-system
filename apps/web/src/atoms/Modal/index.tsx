@@ -53,7 +53,7 @@ export const Modal = ({
               'flex items-end justify-center p-4 text-center sm:items-center sm:p-0',
               isLargeModal
                 ? 'w-full max-w-[1440px] h-[90vh] sm:w-[80vw] sm:h-[85vh]'
-                : '',
+                : 'w-full my-2',
             )}
             style={{
               position: 'fixed',

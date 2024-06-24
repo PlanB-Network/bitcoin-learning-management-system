@@ -61,7 +61,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
       onClose={onClose}
       headerText={t('menu.login')}
     >
-      <div className="flex flex-col items-center space-y-8">
+      <div className="flex flex-col items-center w-full">
         <Button
           variant="ghost"
           mode="light"
@@ -69,10 +69,11 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           onClick={() => goTo(AuthModalState.LnurlAuth)}
           iconRight={<BsLightningChargeFill className="w-6" />}
           disabled
+          className="mb-2.5"
         >
           {t('auth.connectWithLn')}
         </Button>
-        <Divider>{t('words.or').toUpperCase()}</Divider>
+        <Divider>{t('words.or').toLowerCase()}</Divider>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -96,28 +97,32 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col items-center"
+              className="flex w-full flex-col items-center mt-3"
             >
               <div className="flex w-full flex-col items-center">
                 <TextInput
                   name="username"
-                  labelText="Username"
+                  labelText={t('dashboard.profile.username')}
+                  placeholder={t('dashboard.profile.username').toLowerCase()}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="w-full min-w-64  md:w-4/5"
+                  className="w-full"
                   error={touched.username ? errors.username : null}
+                  mandatory
                 />
 
                 <TextInput
                   name="password"
                   type="password"
-                  labelText="Password"
+                  labelText={t('dashboard.profile.password')}
+                  placeholder={t('dashboard.profile.password').toLowerCase()}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="w-full text-blue-900 md:w-4/5"
+                  className="w-full"
                   error={touched.password ? errors.password : null}
+                  mandatory
                 />
               </div>
 
@@ -130,17 +135,17 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                 variant="newPrimary"
                 size="m"
                 type="submit"
-                className="mt-7"
+                className="my-8"
               >
                 {t('menu.login')}
               </Button>
             </form>
           )}
         </Formik>
-        <p className="mb-0 text-xs">
+        <p className="desktop-body1 text-center">
           {t('auth.noAccountYet')}
           <button
-            className="ml-1 cursor-pointer border-none bg-transparent text-xs underline"
+            className="ml-1 cursor-pointer underline italic"
             onClick={() => goTo(AuthModalState.Register)}
           >
             {t('auth.createOne')}
