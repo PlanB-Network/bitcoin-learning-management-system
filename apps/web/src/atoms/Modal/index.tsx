@@ -44,7 +44,7 @@ export const Modal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500/95 transition-opacity" />
+          <div className="fixed inset-0 backdrop-blur-[6px] transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -53,7 +53,7 @@ export const Modal = ({
               'flex items-end justify-center p-4 text-center sm:items-center sm:p-0',
               isLargeModal
                 ? 'w-full max-w-[1440px] h-[90vh] sm:w-[80vw] sm:h-[85vh]'
-                : '',
+                : 'w-full my-2',
             )}
             style={{
               position: 'fixed',
@@ -94,34 +94,37 @@ export const Modal = ({
                         }
                       : {}),
                   }}
-                  className="max-h-screen overflow-auto rounded-[1.5em] bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6 md:pb-4 md:pt-5 lg:max-w-5xl lg:p-0"
+                  className={cn(
+                    'max-h-screen overflow-auto rounded-[1.5em] bg-white px-4 py-2 text-left shadow-xl transition-all sm:mx-0 sm:my-8 sm:p-6',
+                    isLargeModal ? 'md:pb-4 md:pt-5 lg:max-w-5xl lg:p-0' : '',
+                  )}
                 >
                   {closeButtonEnabled && (
-                    <button>
-                      <IoMdClose
-                        className="flex size-6 items-center justify-between"
-                        onClick={onClose}
-                      />
+                    <button className="mb-5 w-full flex justify-end">
+                      <IoMdClose className="size-6" onClick={onClose} />
                     </button>
                   )}
-                  {headerText && (
-                    <header className="flex flex-col items-center justify-between text-center text-xl font-semibold uppercase text-gray-400 md:my-6 md:text-3xl">
-                      <h4>{headerText}</h4>
-                    </header>
-                  )}
-                  {children}
-                </div>
-                {/* TODO: move this outside of the modal atom */}
-                {showAccountHelper && (
-                  <div className="relative my-8 max-w-lg md:my-14">
-                    <div className="relative justify-center overflow-hidden rounded-[1em] bg-orange-400 py-4 px-2 text-sm text-white shadow-xl transition-all sm:max-w-lg sm:rounded-[1.5em] sm:text-base">
-                      <span className="italic text-blue-800">
-                        {t('words.didYouKnow')}
-                        <div>{t('auth.noAccountNeeded')}</div>
-                      </span>
-                    </div>
+                  <div className="flex flex-col items-center px-0.5 sm:px-5 gap-7">
+                    {headerText && (
+                      <h4 className="text-center mobile-h2 md:desktop-h4 text-darkOrange-5">
+                        {headerText}
+                      </h4>
+                    )}
+                    {children}
+                    {/* TODO: move this outside of the modal atom */}
+                    {showAccountHelper && (
+                      <div className="max-md:max-w-[198px] flex flex-col items-center text-center">
+                        <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
+                        <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
+                          {t('words.didYouKnow')}
+                        </span>
+                        <span className="text-darkOrange-5">
+                          {t('auth.noAccountNeeded')}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

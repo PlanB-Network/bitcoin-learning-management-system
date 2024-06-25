@@ -63,6 +63,11 @@
 }
 
 @layer base {
+  html {
+    padding-right: 0 !important;
+    overflow: auto !important;
+  }
+
   html,
   body,
   #root {
