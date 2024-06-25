@@ -142,7 +142,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
             </form>
           )}
         </Formik>
-        <p className="desktop-body1 text-center">
+        <p className="mobile-body2 md:desktop-body1 text-center">
           {t('auth.noAccountYet')}
           <button
             className="ml-1 cursor-pointer underline italic"

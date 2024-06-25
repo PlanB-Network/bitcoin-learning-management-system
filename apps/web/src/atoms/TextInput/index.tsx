@@ -32,7 +32,7 @@ export const TextInput = ({
   const [showValue, setShowValue] = useState(false);
   const classes = useMemo(
     () => [
-      'block w-full rounded-md border border-[rgba(115,115,115,0.10)] focus:ring-2 focus:ring-inset px-4 py-2.5 bg-[#E9E9E9] desktop-subtitle1 ',
+      'block w-full rounded-md border border-[rgba(115,115,115,0.10)] focus:ring-2 focus:ring-inset px-4 py-2.5 bg-[#E9E9E9] max-md:text-sm max-md:leading-[120%] md:desktop-subtitle1',
       error
         ? 'text-red-300 placeholder:text-red-300 focus:ring-red-300'
         : 'text-black placeholder:text-newGray-1',
@@ -73,11 +73,17 @@ export const TextInput = ({
   return (
     <div className={cn('my-2', className ?? '')}>
       <div className="flex flex-col justify-between text-center mb-2">
-        <label htmlFor="email" className="desktop-h7 text-[#050A14]">
+        <label
+          htmlFor="email"
+          className="max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-[#050A14]"
+        >
           {labelText} {mandatory && <span className="text-[#E72940]">*</span>}
         </label>
         {cornerHint && (
-          <span className="leading-6 text-newGray-1" id="email-optional">
+          <span
+            className="max-md:leading-[120%] leading-6 text-newGray-1"
+            id="email-optional"
+          >
             {cornerHint}
           </span>
         )}

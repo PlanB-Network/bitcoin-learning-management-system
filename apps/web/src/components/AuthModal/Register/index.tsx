@@ -229,7 +229,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               </form>
             )}
           </Formik>
-          <p className="desktop-body1 text-center">
+          <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
             {t('auth.alreadyHaveAccount')}{' '}
             <button
               className="cursor-pointer underline italic"
