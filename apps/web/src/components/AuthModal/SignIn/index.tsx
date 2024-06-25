@@ -3,11 +3,10 @@ import { Formik } from 'formik';
 import { isEmpty } from 'lodash-es';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
-
-import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
@@ -23,7 +22,6 @@ interface SignInModalProps {
 
 export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
   const { t } = useTranslation();
-  const isMobile = useSmaller('md');
 
   const signInSchema = z.object({
     username: z.string().min(1, t('auth.errors.usernameRequired')),
@@ -58,23 +56,24 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
 
   return (
     <Modal
-      closeButtonEnabled={isMobile ? isMobile : false}
+      closeButtonEnabled={true}
       isOpen={isOpen}
       onClose={onClose}
-      headerText={t('auth.signIn')}
-      showAccountHelper={isMobile ? false : true}
+      headerText={t('menu.login')}
     >
-      <div className="flex flex-col items-center space-y-8 pb-5">
+      <div className="flex flex-col items-center w-full">
         <Button
-          variant="newSecondary"
-          className="mt-2 text-sm md:text-base"
-          rounded
+          variant="ghost"
+          mode="light"
+          size="m"
           onClick={() => goTo(AuthModalState.LnurlAuth)}
+          iconRight={<BsLightningChargeFill className="w-6" />}
           disabled
+          className="mb-2.5"
         >
           {t('auth.connectWithLn')}
         </Button>
-        <Divider>{t('words.or').toUpperCase()}</Divider>
+        <Divider>{t('words.or').toLowerCase()}</Divider>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={handleLogin}
@@ -98,28 +97,32 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           }) => (
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col items-center"
+              className="flex w-full flex-col items-center mt-3"
             >
               <div className="flex w-full flex-col items-center">
                 <TextInput
                   name="username"
-                  labelText="Username"
+                  labelText={t('dashboard.profile.username')}
+                  placeholder={t('dashboard.profile.username').toLowerCase()}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
-                  className="w-full min-w-64  md:w-4/5"
+                  className="w-full"
                   error={touched.username ? errors.username : null}
+                  mandatory
                 />
 
                 <TextInput
                   name="password"
                   type="password"
-                  labelText="Password"
+                  labelText={t('dashboard.profile.password')}
+                  placeholder={t('dashboard.profile.password').toLowerCase()}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="w-full text-blue-900 md:w-4/5"
+                  className="w-full"
                   error={touched.password ? errors.password : null}
+                  mandatory
                 />
               </div>
 
@@ -128,21 +131,21 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   {credentialsLogin.error.message}
                 </p>
               )}
-
               <Button
+                variant="newPrimary"
+                size="m"
                 type="submit"
-                className="mt-6 text-sm md:text-base"
-                rounded
+                className="my-8"
               >
-                {t('words.continue')}
+                {t('menu.login')}
               </Button>
             </form>
           )}
         </Formik>
-        <p className="mb-0 text-xs">
+        <p className="mobile-body2 md:desktop-body1 text-center">
           {t('auth.noAccountYet')}
           <button
-            className="ml-1 cursor-pointer border-none bg-transparent text-xs underline"
+            className="ml-1 cursor-pointer underline italic"
             onClick={() => goTo(AuthModalState.Register)}
           >
             {t('auth.createOne')}

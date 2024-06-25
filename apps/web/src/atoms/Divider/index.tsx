@@ -13,7 +13,7 @@ export const Divider = ({ children }: DividerProps) => {
       </div>
       {children && (
         <div className="relative flex justify-center">
-          <span className="bg-white px-2 text-sm text-gray-500">
+          <span className="px-2 desktop-body1 text-newGray-1 bg-white">
             {children}
           </span>
         </div>
