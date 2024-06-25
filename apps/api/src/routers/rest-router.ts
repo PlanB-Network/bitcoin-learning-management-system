@@ -59,15 +59,24 @@ const defaultResizeOptions: ResizeOptions = {
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
+  const redis = dependencies.redis;
   const syncGithubRepositories = createSyncGithubRepositories(dependencies);
 
   router.post('/github/sync', async (req, res) => {
+    if (await redis.get('github-sync-locked')) {
+      return res.status(409).json({ error: 'Already syncing' });
+    } else {
+      await redis.set('github-sync-locked', true);
+    }
+
     try {
       const result = await syncGithubRepositories();
       res.json(result);
     } catch (error) {
       console.error('Failed to sync GitHub repositories:', error);
       res.status(500).json({ error: 'Internal server error' });
+    } finally {
+      void redis.set('github-sync-locked', false);
     }
   });
 

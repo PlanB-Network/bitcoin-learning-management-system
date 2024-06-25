@@ -12,6 +12,7 @@ export interface RedisKeyValue {
     sessionId: string;
   };
   [key: `trpc:${string}`]: unknown;
+  'github-sync-locked': boolean;
 }
 
 export type RedisKey = keyof RedisKeyValue;

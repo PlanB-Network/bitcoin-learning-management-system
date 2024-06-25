@@ -187,7 +187,7 @@ export const Conferences = () => {
         </>
       )}
 
-      {filteredConferences && filteredConferences.length === 0 && (
+      {filteredConferences && filteredConferences.length === 0 && isFetched && (
         <p className="text-newGray-2 text-center mx-auto w-full mt-5 md:mt-10">
           {t('conferences.noConferences', { year: activeYear })}
         </p>

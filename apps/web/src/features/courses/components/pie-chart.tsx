@@ -8,6 +8,7 @@ interface PieChartProps {
   globalCursorPointer?: boolean;
   handlePieClick?: (index: number) => void;
   selectedPieNumber?: number | null;
+  onClickNextStep?: () => void;
 }
 
 export default function PieChart({
@@ -17,6 +18,7 @@ export default function PieChart({
   globalCursorPointer,
   handlePieClick,
   selectedPieNumber,
+  onClickNextStep,
 }: PieChartProps) {
   const ref = useRef<SVGSVGElement | null>(null);
 
@@ -67,6 +69,9 @@ export default function PieChart({
       .on('click', (_, i) => {
         if (handlePieClick) {
           handlePieClick(i.index);
+          if (onClickNextStep) {
+            onClickNextStep();
+          }
         }
       });
 
@@ -104,6 +109,7 @@ export default function PieChart({
     handlePieClick,
     selectedPieNumber,
     globalCursorPointer,
+    onClickNextStep,
   ]);
 
   return <svg ref={ref}></svg>;

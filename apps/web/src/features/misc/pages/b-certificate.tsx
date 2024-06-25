@@ -97,7 +97,7 @@ export const BCertificate = () => {
         </div>
       </div>
       {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
-      <BCertificateEvents events={filteredEvents} />
+      {isFetched && <BCertificateEvents events={filteredEvents} />}
       <div className="flex flex-col items-center mb-6 md:mb-20">
         <Question className="mb-2.5 md:mb-5" />
         <h3 className="mobile-h3 md:text-[32px] md:font-semibold md:leading-tight md:tracking-[0.25px] text-center">
