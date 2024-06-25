@@ -108,15 +108,23 @@ const CourseInfoItem = ({
 
 export const CourseCard = ({ course }: { course: JoinedCourse }) => {
   return (
-    <article className="relative group flex flex-col w-full bg-darkOrange-11 p-2.5 rounded-[20px]">
-      <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2 max-h-full md:group-hover:max-h-96 transition-[max-height] overflow-hidden">
+    <article className="group flex flex-col w-full md:h-[472px] bg-darkOrange-11 p-2.5 rounded-[20px] overflow-hidden">
+      <img
+        src={computeAssetCdnUrl(
+          course.lastCommit,
+          `courses/${course.id}/assets/thumbnail.webp`,
+        )}
+        alt={course.name}
+        className="max-md:hidden rounded-md mb-2.5 object-cover [overflow-clip-margin:_unset] object-center max-h-72 group-hover:max-h-44 transition-[max-height] duration-300 ease-linear"
+      />
+      <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
         <img
           src={computeAssetCdnUrl(
             course.lastCommit,
             `courses/${course.id}/assets/thumbnail.webp`,
           )}
           alt={course.name}
-          className="rounded-md md:mb-2.5 max-md:w-[124px] object-cover [overflow-clip-margin:_unset] object-center max-h-full md:group-hover:max-h-48 transition-[max-height]"
+          className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
         />
         <div className="flex flex-col">
           <span className="max-md:flex flex-col justify-center mb-1.5 md:mb-2 line-clamp-3 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full">
@@ -134,33 +142,39 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           </div>
         </div>
       </div>
-      <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-all opacity-100 md:group-hover:opacity-0 max-h-96 md:group-hover:max-h-0 delay-150 md:group-hover:delay-0 md:mb-2 md:group-hover:mb-0">
-        {course.goal}
-      </p>
-      <div className="max-md:hidden flex flex-col max-h-0 md:group-hover:max-h-64 transition-all opacity-0 md:group-hover:opacity-100 overflow-hidden delay-0 md:group-hover:delay-150">
-        <span className="font-medium leading-normal tracking-015px mb-2 line-clamp-1">
-          {t('words.professor')} :{' '}
-          {course.professors.map((professor) => professor.name).join(', ')}
-        </span>
-        <CourseInfoItem
-          leftText={t('words.duration')}
-          rightText={course.hours + ' hours'}
-          className="border-t"
-        />
-        <CourseInfoItem
-          leftText={t('words.price')}
-          rightText={
-            course.paidPriceDollars
-              ? `${course.paidPriceDollars}$`
-              : t('words.free')
-          }
-          className="border-none"
-        />
+      <div className="relative">
+        <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
+          {course.goal}
+        </p>
+      </div>
+      <div className="max-md:hidden relative">
+        <div className="flex flex-col transition-opacity opacity-0 md:group-hover:opacity-100 absolute md:group-hover:static duration-0 md:group-hover:duration-150">
+          <span className="font-medium leading-normal tracking-015px mb-2 line-clamp-1">
+            {t('words.professor')} :{' '}
+            {course.professors.map((professor) => professor.name).join(', ')}
+          </span>
+          <CourseInfoItem
+            leftText={t('words.duration')}
+            rightText={course.hours + ' hours'}
+            className="border-t"
+          />
+          <CourseInfoItem
+            leftText={t('words.price')}
+            rightText={
+              course.paidPriceDollars
+                ? `${course.paidPriceDollars}$`
+                : t('words.free')
+            }
+            className="border-none"
+          />
+        </div>
+      </div>
+      <div className="max-md:hidden relative mt-auto">
         <Button
           variant="newPrimary"
           size="m"
           onHoverArrow
-          className="mt-auto hidden md:group-hover:flex w-full"
+          className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
         >
           {t('courses.explorer.seeCourse')}
         </Button>
@@ -493,8 +507,6 @@ export const CoursesExplorer = () => {
   const { data: courses, isFetched } = trpc.content.getCourses.useQuery({
     language: i18n.language,
   });
-
-  console.log(isFetched);
 
   return (
     <PageLayout
