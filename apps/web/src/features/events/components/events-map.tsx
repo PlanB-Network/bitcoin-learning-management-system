@@ -16,11 +16,13 @@ import { Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
 import { useEffect, useState } from 'react';
+import type { Components } from 'react-big-calendar';
 import {
   Calendar,
-  type Components,
-  dateFnsLocalizer,
+  dateFnsLocalizer
 } from 'react-big-calendar';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+
 
 import type {
   EventLocation,
@@ -453,39 +455,13 @@ export const EventsMap = ({
             {/* Date controls */}
             <div className="flex items-center gap-1 font-normal">
               <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift - 1)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5 8.25 12l7.5-7.5"
-                  />
-                </svg>
+                <BsChevronLeft className='size-6 p-1' />
               </button>
               <button className="border bg-white rounded-lg py-1 px-3" onClick={() => setWeekShift(0)}>
                 Today
               </button>
               <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift + 1)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                  />
-                </svg>
+                <BsChevronRight className='size-6 p-1' />
               </button>
             </div>
           </div>
@@ -496,7 +472,7 @@ export const EventsMap = ({
                 <Calendar
                   localizer={localizer}
                   events={calendarEvents}
-                  onView={() => {}}
+                  onView={() => { }}
                   view="week"
                   toolbar={false}
                   onSelectEvent={({ id }) => {
@@ -582,9 +558,9 @@ export const EventsMap = ({
             className={cn(
               'w-full h-96 xl:h-[32rem] overflow-hidden',
               !(selectedEventGroup || filter.length > 0) &&
-                (mode === DisplayMode.Calendar
-                  ? 'rounded-br-xl'
-                  : 'rounded-b-xl'),
+              (mode === DisplayMode.Calendar
+                ? 'rounded-br-xl'
+                : 'rounded-b-xl'),
             )}
           ></div>
 
@@ -604,39 +580,13 @@ export const EventsMap = ({
             >
               {mode === DisplayMode.Calendar ? (
                 <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 19.5 8.25 12l7.5-7.5"
-                    />
-                  </svg>
+                  <BsChevronLeft className='size-4' />
 
                   <span>Full map</span>
                 </>
               ) : (
                 <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
+                    <BsChevronRight className='size-4' />
 
                   <span>Display Calendar</span>
                 </>
