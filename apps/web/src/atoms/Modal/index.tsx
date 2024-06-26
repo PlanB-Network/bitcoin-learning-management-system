@@ -104,26 +104,24 @@ export const Modal = ({
                       <IoMdClose className="size-6" onClick={onClose} />
                     </button>
                   )}
-                  <div className="flex flex-col items-center px-0.5 sm:px-5 gap-7">
-                    {headerText && (
-                      <h4 className="text-center mobile-h2 md:desktop-h4 text-darkOrange-5">
-                        {headerText}
-                      </h4>
-                    )}
-                    {children}
-                    {/* TODO: move this outside of the modal atom */}
-                    {showAccountHelper && (
-                      <div className="max-md:max-w-[198px] flex flex-col items-center text-center">
-                        <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
-                        <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
-                          {t('words.didYouKnow')}
-                        </span>
-                        <span className="text-darkOrange-5">
-                          {t('auth.noAccountNeeded')}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                  {headerText && (
+                    <h4 className="text-center mobile-h2 md:desktop-h4 text-darkOrange-5 px-0.5 sm:px-5 mb-7">
+                      {headerText}
+                    </h4>
+                  )}
+                  {children}
+                  {/* TODO: move this outside of the modal atom */}
+                  {showAccountHelper && (
+                    <div className="max-md:max-w-[198px] flex flex-col items-center text-center mt-7 px-0.5 sm:px-5 mx-auto">
+                      <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
+                      <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
+                        {t('words.didYouKnow')}
+                      </span>
+                      <span className="text-darkOrange-5">
+                        {t('auth.noAccountNeeded')}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
