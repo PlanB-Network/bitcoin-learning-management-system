@@ -1,5 +1,4 @@
 import { t } from 'i18next';
-import { useContext } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
 import { Button } from '@sovereign-university/ui';
