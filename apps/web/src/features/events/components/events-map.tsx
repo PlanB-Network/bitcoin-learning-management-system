@@ -1,6 +1,7 @@
-/* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
+import { format, getDay, parse, startOfWeek } from 'date-fns';
+import { enUS } from 'date-fns/locale/en-US';
 import type { Coordinate } from 'ol/coordinate.js';
 import Feature from 'ol/Feature.js';
 import Point from 'ol/geom/Point.js';
@@ -15,6 +16,13 @@ import { Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
 import { useEffect, useState } from 'react';
+import type { Components } from 'react-big-calendar';
+import {
+  Calendar,
+  dateFnsLocalizer
+} from 'react-big-calendar';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+
 
 import type {
   EventLocation,
@@ -22,11 +30,20 @@ import type {
   JoinedEvent,
   UserEvent,
 } from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import { Button, cn } from '@sovereign-university/ui';
 
+import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
+import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
+import { CustomEvent } from '#src/components/Calendar/custom-event.js';
+import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { EventCard } from './event-card.tsx';
+
+enum DisplayMode {
+  Calendar = 'calendar',
+  Map = 'map',
+}
 
 type CourseType =
   | 'course'
@@ -66,9 +83,9 @@ interface EventGroup {
 }
 
 function groupCountries(
-  events: JoinedEvent[],
-  locations?: EventLocation[],
-  filter?: string[],
+  events: readonly JoinedEvent[],
+  locations?: readonly EventLocation[],
+  filter?: readonly string[],
 ): EventGroup[] | null {
   if (!locations?.length || !events?.length) {
     return null;
@@ -205,12 +222,18 @@ export const EventsMap = ({
   setPaymentModalData,
   conversionRate,
 }: EventsMapProps) => {
+  const [mode, setMode] = useState<DisplayMode>(DisplayMode.Map);
+
   const queryOpts = {
     staleTime: 600_000, // 10 minutes
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   };
+
+  /*
+   * Map
+   */
 
   const { data: eventsLocations } = trpc.content.getEventsLocations.useQuery(
     undefined,
@@ -220,8 +243,8 @@ export const EventsMap = ({
   const [selectedEventGroup, setSelectedEventGroup] =
     useState<EventGroup | null>(null);
   const [mapState, setMapState] = useState<MapState>();
-  const [filter, setFilter] = useState<CourseType[]>([]);
-  const courseTypes: CourseType[] = [
+  const [filter, setFilter] = useState<readonly CourseType[]>([]);
+  const courseTypes: readonly CourseType[] = [
     'course',
     'lecture',
     'conference',
@@ -229,6 +252,7 @@ export const EventsMap = ({
     'meetup',
   ];
 
+  // [MAP] Update map state
   const updateMapState = (map: OpenLayerMap) => {
     const view = map.getView();
     setMapState({
@@ -237,7 +261,7 @@ export const EventsMap = ({
     });
   };
 
-  // Filter effect
+  // [MAP] Filter effect
   const [filteredEvents, setFilteredEvents] = useState<JoinedEvent[] | null>(
     null,
   );
@@ -254,7 +278,9 @@ export const EventsMap = ({
     );
   }, [events, filter.length]);
 
-  // Geo effect
+  const [groups, setGroups] = useState<Map<string, EventGroup>>();
+
+  // [MAP] Geo effect
   useEffect(() => {
     const groups = groupCountries(events ?? [], eventsLocations ?? [], filter);
     if (!groups) {
@@ -265,19 +291,16 @@ export const EventsMap = ({
     if (!state) {
       // Find most populated event group
       const center =
-        groups.length > 1
-          ? latLonToCoordinate(
-              groups.reduce((a, b) =>
-                a.events.length > b.events.length ? a : b,
-              ).coordinate,
-            )
-          : groups.length > 0
-            ? latLonToCoordinate(groups[0].coordinate)
+        groups.length === 1
+          ? latLonToCoordinate(groups[0].coordinate)
+          : groups.length > 1
+            ? latLonToCoordinate(groups.sort((a, b) => b.events.length - a.events.length)[0].coordinate)
             : [0, 0];
 
       state = { center, zoom: 4 };
 
       setMapState(state);
+      setGroups(new Map(groups.map((g) => [g.location.name, g])));
     }
 
     const map = new OpenLayerMap({
@@ -301,6 +324,7 @@ export const EventsMap = ({
       const feature = map.forEachFeatureAtPixel(pixel, (feature) => feature);
 
       if (feature) {
+        setCalendarCard(null);
         setSelectedEventGroup(feature.get('value'));
       }
     });
@@ -311,10 +335,18 @@ export const EventsMap = ({
     return () => {
       map.setTarget();
     };
-  }, [eventsLocations, events, filter.length]);
+  }, [eventsLocations, events, filter.length, mapState]);
 
+  // Calendar selected cards
+  const [calendarCard, setCalendarCard] = useState<JoinedEvent | null>(null);
+
+  // [MAP] Event filter
   const [cards, setCards] = useState<JoinedEvent[] | null>(null);
   useEffect(() => {
+    if (calendarCard) {
+      return setCards([calendarCard]);
+    }
+
     if (selectedEventGroup && filteredEvents) {
       setCards(intersection(selectedEventGroup.events, filteredEvents));
     } else if (selectedEventGroup) {
@@ -324,69 +356,259 @@ export const EventsMap = ({
     } else {
       setCards(null);
     }
-  }, [selectedEventGroup, filteredEvents]);
+  }, [selectedEventGroup, filteredEvents, calendarCard]);
+
+  /*
+   * Calendar
+   */
+  const [weekShift, setWeekShift] = useState(0);
+
+  const getDate = () => {
+    const date = new Date();
+    date.setDate(date.getDate() + weekShift * 7);
+    return date;
+  }
+
+  const locales = {
+    'en-US': enUS,
+  };
+
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+  });
+
+  const weekComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
+    event: CustomEvent,
+    week: {
+      header: ({ label, date }) => (
+        <div className="flex flex-col w-full items-start justify">
+          <div className="text-xs uppercase text-gray-500 font-semibold">
+            {label.slice(3)}
+          </div>
+          <div className="text-xl font-normal">{format(date, 'dd')} </div>
+        </div>
+      ),
+    },
+  };
+
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>();
+
+  // Map events to calendar events
+  useEffect(() => {
+    if (events) {
+      setCalendarEvents(
+        events?.map<CalendarEvent>((data: JoinedEvent) => ({
+          title: data.name,
+          type: data.type,
+          id: data.id,
+          subId: null,
+          addressLine1: data.addressLine1,
+          organiser: null,
+          start: data.startDate,
+          end: data.endDate,
+          isOnline: false,
+          data,
+        })),
+      );
+    }
+  }, [events]);
+
+  const onFilterClick = (course: CourseType) => {
+    setFilter((prev) =>
+      prev.includes(course)
+        ? prev.filter((p) => p !== course)
+        : [...prev, course],
+    );
+    setCalendarCard(null);
+  };
 
   return (
     <div className="bg-gray-100 rounded-xl">
-      <div className="flex sm:justify-between max-sm:justify-center items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
-        <div className="hidden sm:flex gap-4 items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
-            />
-          </svg>
-          Filters
+      <div className="flex ">
+        {/* CALENDAR */}
+        <div
+          className={cn(
+            'flex-1',
+            mode === DisplayMode.Calendar ? '' : 'hidden',
+          )}
+        >
+          <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
+            <div>
+              Calendar - {
+                weekShift === 0 ?
+                  'This week' :
+                  weekShift === -1
+                    ? 'Last week'
+                    : weekShift === 1
+                      ? 'Next week'
+                      : weekShift > 0
+                        ? `In ${weekShift} weeks`
+                        : `${-weekShift} weeks ago`
+              }
+            </div>
+
+            {/* Date controls */}
+            <div className="flex items-center gap-1 font-normal">
+              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift - 1)}>
+                <BsChevronLeft className='size-6 p-1' />
+              </button>
+              <button className="border bg-white rounded-lg py-1 px-3" onClick={() => setWeekShift(0)}>
+                Today
+              </button>
+              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift + 1)}>
+                <BsChevronRight className='size-6 p-1' />
+              </button>
+            </div>
+          </div>
+
+          <div className="border-b-rounded-xl overflow-hidden">
+            <div className="text-gray-500 text-center w-full">
+              <div className="h-96 xl:h-[32rem]">
+                <Calendar
+                  localizer={localizer}
+                  events={calendarEvents}
+                  onView={() => { }}
+                  view="week"
+                  toolbar={false}
+                  onSelectEvent={({ id }) => {
+                    const event = events.find((e) => e.id === id);
+                    if (event) {
+                      setSelectedEventGroup(null);
+                      setCalendarCard(event);
+
+                      setFilter([]);
+
+                      const group =
+                        event.addressLine1 && groups?.get(event.addressLine1);
+
+                      if (group) {
+                        console.log('Group', group);
+                        setMapState({
+                          center: latLonToCoordinate(group.coordinate),
+                          zoom: 4,
+                        });
+                      }
+                    }
+                  }}
+                  style={{
+                    height: 'inherit',
+                    width: '100%',
+                  }}
+                  date={getDate()}
+                  onNavigate={() => { }}
+                  eventPropGetter={customEventGetter}
+                  components={weekComponents}
+                  showAllEvents={true}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="max-sm:w-full max-sm:justify-between max-sm:text-xs flex sm:gap-4 font-normal sm:font-light">
-          {courseTypes.map((f) => (
-            <button
-              key={f}
+        {/* MAP */}
+        <div className="relative flex-1">
+          <div className="flex sm:justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
+            <div>
+              <div className="hidden sm:flex gap-4 items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+                  />
+                </svg>
+                Filters
+              </div>
+            </div>
+
+            <div className="flex gap-4 font-light">
+              {courseTypes.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => onFilterClick(f)}
+                  className={cn(
+                    'text-md border-b border-transparent capitalize',
+                    filter.includes(f)
+                      ? 'border-newOrange-1 font-semibold'
+                      : '',
+                  )}
+                >
+                  {f}s
+                </button>
+              ))}
+            </div>
+
+            <div>{/* Keep for spacing  */}</div>
+          </div>
+
+          <div
+            id="ol-map"
+            className={cn(
+              'w-full h-96 xl:h-[32rem] overflow-hidden',
+              !(selectedEventGroup || filter.length > 0) &&
+              (mode === DisplayMode.Calendar
+                ? 'rounded-br-xl'
+                : 'rounded-b-xl'),
+            )}
+          ></div>
+
+          {/* Switch mode */}
+          <div className="absolute bottom-2 left-2 hidden xl:block">
+            <Button
+              variant="newPrimary"
+              size="s"
+              className="h-8 border border-darkOrange-5 flex gap-2"
               onClick={() =>
-                setFilter((prev) =>
-                  prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
+                setMode(
+                  mode === DisplayMode.Calendar
+                    ? DisplayMode.Map
+                    : DisplayMode.Calendar,
                 )
               }
-              className={cn(
-                'text-md border-b border-transparent capitalize',
-                filter.includes(f) ? 'border-newOrange-1 font-semibold' : '',
-              )}
             >
-              {f}s
-            </button>
-          ))}
-        </div>
+              {mode === DisplayMode.Calendar ? (
+                <>
+                  <BsChevronLeft className='size-4' />
 
-        <div>{/* Keep for spacing  */}</div>
+                  <span>Full map</span>
+                </>
+              ) : (
+                <>
+                    <BsChevronRight className='size-4' />
+
+                  <span>Display Calendar</span>
+                </>
+              )}
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <div
-        id="ol-map"
-        className={cn(
-          'w-full h-96 xl:h-[32rem] overflow-hidden',
-          !(selectedEventGroup || filter.length > 0) && 'rounded-b-xl',
-        )}
-      ></div>
-
+      {/* Event cards */}
       <div
         className={cn(
           'p-4 border-t',
-          selectedEventGroup ?? filteredEvents ? 'rounded-b-xl' : 'hidden',
+          calendarCard || selectedEventGroup || filteredEvents
+            ? 'rounded-b-xl'
+            : 'hidden',
         )}
       >
         <div
           className={cn(
             'flex justify-between font-semibold text-gray-800',
-            (selectedEventGroup || filteredEvents) && 'pb-4',
+            (calendarCard || selectedEventGroup || filteredEvents) && 'pb-4',
           )}
         >
           <div className="flex">
@@ -426,7 +648,7 @@ export const EventsMap = ({
 
         <div className="flex flex-wrap gap-5 justify-center">
           {cards?.length ? (
-            cards.map((event) => (
+            cards?.map((event) => (
               <EventCard
                 event={event}
                 eventPayments={eventPayments}
