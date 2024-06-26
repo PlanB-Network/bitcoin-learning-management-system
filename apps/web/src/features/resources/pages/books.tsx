@@ -14,9 +14,14 @@ export const Books = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: books, isFetched } = trpc.content.getBooks.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: books, isFetched } = trpc.content.getBooks.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const sortedBooks: JoinedBook[] = books
     ? (books.sort((a, b) => a.title.localeCompare(b.title)) as JoinedBook[]) // Todo remove this as

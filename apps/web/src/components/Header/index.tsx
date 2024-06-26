@@ -44,9 +44,14 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     AuthModalState.SignIn,
   );
 
-  const { data: courses } = trpc.content.getCourses.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: courses } = trpc.content.getCourses.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const coursesByLevel = courses?.reduce(
     (acc, course) => {

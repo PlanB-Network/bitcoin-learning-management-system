@@ -9,7 +9,7 @@ import { MdKeyboardArrowUp } from 'react-icons/md';
 
 import { cn } from '@sovereign-university/ui';
 
-import { UserContext } from '#src/providers/user.js';
+import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
 
@@ -19,7 +19,6 @@ import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
-import { trpc } from '../../../utils/index.ts';
 import { LanguageSelector } from '../LanguageSelector/index.tsx';
 import type { NavigationSection } from '../props.tsx';
 
@@ -37,7 +36,7 @@ interface LoggedMenuProps {
 
 const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const { t } = useTranslation();
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const pictureUrl = getPictureUrl(user);
   const isLoggedIn = user?.uid !== undefined;
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -146,12 +145,11 @@ export const MobileMenu = ({
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
   const { t } = useTranslation();
-  const { data: session, isFetched } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session?.user?.uid !== undefined;
+  const { session, user } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  const { user } = useContext(UserContext);
   const pictureUrl = getPictureUrl(user);
 
   useEffect(() => {
@@ -205,7 +203,7 @@ export const MobileMenu = ({
           )}
         </Link>
 
-        {isFetched && isLoggedIn ? (
+        {isLoggedIn ? (
           <div className="text-sm font-semibold ml-auto min-w-10">
             <Link to={'/dashboard'}>
               <button className="cursor-pointer text-white">

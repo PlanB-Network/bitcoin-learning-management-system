@@ -27,14 +27,24 @@ export const Builder = () => {
     from: '/resources/builder/$builderId',
   });
   const isScreenMd = useGreater('sm');
-  const { data: builder, isFetched } = trpc.content.getBuilder.useQuery({
-    id: Number(builderId),
-    language: i18n.language ?? 'en',
-  });
+  const { data: builder, isFetched } = trpc.content.getBuilder.useQuery(
+    {
+      id: Number(builderId),
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
-  const { data: communities } = trpc.content.getBuilders.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: communities } = trpc.content.getBuilders.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const { data: events } = trpc.content.getEvents.useQuery();
 

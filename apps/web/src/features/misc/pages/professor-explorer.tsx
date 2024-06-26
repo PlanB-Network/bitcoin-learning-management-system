@@ -11,9 +11,14 @@ import { trpc } from '../../../utils/trpc.ts';
 export const ProfessorExplorer = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: professors, isFetched } = trpc.content.getProfessors.useQuery({
-    language: i18n.language,
-  });
+  const { data: professors, isFetched } = trpc.content.getProfessors.useQuery(
+    {
+      language: i18n.language,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const sortedProfessors =
     professors?.sort((a, b) =>
