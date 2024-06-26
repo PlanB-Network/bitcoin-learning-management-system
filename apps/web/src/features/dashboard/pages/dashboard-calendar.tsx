@@ -1,7 +1,7 @@
 import { useNavigate } from '@tanstack/react-router';
 import { format, getDay, parse, startOfWeek } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import type { Components, View } from 'react-big-calendar';
 import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ import { CustomEvent } from '#src/components/Calendar/custom-event.js';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { AppContext } from '#src/providers/context.js';
 
 import { trpc } from '../../../utils/index.ts';
 import { DashboardLayout } from '../layout.tsx';
@@ -33,7 +34,7 @@ export const DashboardCalendar = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const { data: session } = trpc.user.getSession.useQuery();
+  const { session } = useContext(AppContext);
   if (!session) {
     navigate({ to: '/' });
   }

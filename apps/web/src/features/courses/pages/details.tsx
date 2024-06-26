@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
 import { FaChalkboardTeacher, FaLock } from 'react-icons/fa';
@@ -14,6 +14,7 @@ import { Button, cn } from '@sovereign-university/ui';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { AppContext } from '#src/providers/context.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
@@ -39,8 +40,8 @@ import { CourseLayout } from '../layout.tsx';
 import { CoursePaymentModal } from './components/course-payment-modal.tsx';
 
 export const CourseDetails: React.FC = () => {
-  const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session?.user?.uid !== undefined;
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   // TODO Refactor this auth stuff
   const [authMode, setAuthMode] = useState<AuthModalState>(
@@ -63,10 +64,15 @@ export const CourseDetails: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const { data: course, isFetched } = trpc.content.getCourse.useQuery({
-    id: courseId,
-    language: i18n.language,
-  });
+  const { data: course, isFetched } = trpc.content.getCourse.useQuery(
+    {
+      id: courseId,
+      language: i18n.language,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const { data: payments, refetch: refetchPayment } =
     trpc.user.courses.getPayment.useQuery();

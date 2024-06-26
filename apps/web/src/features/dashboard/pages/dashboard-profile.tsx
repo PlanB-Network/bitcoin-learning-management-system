@@ -6,7 +6,7 @@ import { useContext, useState } from 'react';
 import { Button } from '@sovereign-university/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-import { UserContext } from '#src/providers/user.js';
+import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
 import {
@@ -16,7 +16,6 @@ import {
   TabsTrigger,
 } from '../../../atoms/Tabs/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
-import { trpc } from '../../../utils/index.ts';
 import { ChangeEmailModal } from '../components/change-email-modal.tsx';
 import { ChangePasswordModal } from '../components/change-password-modal.tsx';
 import { ChangePictureModal } from '../components/change-picture-modal.tsx';
@@ -24,13 +23,11 @@ import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardProfile = () => {
   const navigate = useNavigate();
-  const { data: session } = trpc.user.getSession.useQuery();
-
+  const { user, setUser, session } = useContext(AppContext);
   if (!session) {
     navigate({ to: '/' });
   }
 
-  const { user, setUser } = useContext(UserContext);
   const [file, setFile] = useState<File | null>(null);
   const pictureUrl = getPictureUrl(user);
   const profilePictureDisclosure = useDisclosure();

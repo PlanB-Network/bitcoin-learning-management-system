@@ -78,9 +78,14 @@ const QnA = () => {
 export const NodeNetwork = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: communities, isFetched } = trpc.content.getBuilders.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: communities, isFetched } = trpc.content.getBuilders.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const filteredCommunities = communities
     ? communities

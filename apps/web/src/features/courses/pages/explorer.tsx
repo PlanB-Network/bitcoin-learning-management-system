@@ -504,9 +504,14 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
 export const CoursesExplorer = () => {
   const { i18n } = useTranslation();
-  const { data: courses, isFetched } = trpc.content.getCourses.useQuery({
-    language: i18n.language,
-  });
+  const { data: courses, isFetched } = trpc.content.getCourses.useQuery(
+    {
+      language: i18n.language,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   return (
     <PageLayout

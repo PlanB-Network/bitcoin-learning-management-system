@@ -12,9 +12,14 @@ export const Podcasts = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: podcasts, isFetched } = trpc.content.getPodcasts.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: podcasts, isFetched } = trpc.content.getPodcasts.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const sortedPodcasts = podcasts
     ? podcasts.sort((a, b) => a.name.localeCompare(b.name))

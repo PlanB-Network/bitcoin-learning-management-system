@@ -14,9 +14,14 @@ export const Builders = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: builders, isFetched } = trpc.content.getBuilders.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: builders, isFetched } = trpc.content.getBuilders.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   const sortedBuilders = builders
     ? builders.sort((a, b) => a.name.localeCompare(b.name))

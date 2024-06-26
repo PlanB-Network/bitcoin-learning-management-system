@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 
@@ -9,6 +9,7 @@ import { EventBookModal } from '#src/features/events/components/event-book-modal
 import { EventCard } from '#src/features/events/components/event-card.js';
 import { EventPaymentModal } from '#src/features/events/components/event-payment-modal.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { AppContext } from '#src/providers/context.js';
 
 import { trpc } from '../../../utils/index.ts';
 
@@ -17,6 +18,9 @@ interface BCertificateEventsProps {
 }
 
 export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
+
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery();
   const { data: userEvents, refetch: refetchUserEvents } =
@@ -30,9 +34,6 @@ export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
-
-  const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session?.user?.uid !== undefined;
 
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,

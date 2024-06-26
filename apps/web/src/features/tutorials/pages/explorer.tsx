@@ -16,9 +16,14 @@ import { TUTORIALS_CATEGORIES } from '../utils.tsx';
 export const TutorialExplorer = () => {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery({
-    language: i18n.language,
-  });
+  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery(
+    {
+      language: i18n.language,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   return (
     <MainLayout variant="gray">

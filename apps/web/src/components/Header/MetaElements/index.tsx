@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
-import { UserContext } from '#src/providers/user.js';
+import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
-import { trpc } from '#src/utils/trpc.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
 import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
@@ -23,12 +22,11 @@ export const MetaElements = ({
   variant = 'dark',
 }: MetaElementsProps) => {
   const { t } = useTranslation();
-  const { data: session, isFetched } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session?.user?.uid !== undefined;
+  const { user, session } = useContext(AppContext);
+  const isLoggedIn = !!session;
   const isMobile = useSmaller('lg');
   const isScreenLg = useGreater('lg');
 
-  const { user } = useContext(UserContext);
   const pictureUrl = getPictureUrl(user);
 
   return (
@@ -38,7 +36,7 @@ export const MetaElements = ({
         variant={variant}
       />
 
-      {isFetched && (
+      {
         <>
           {isLoggedIn && !isMobile && (
             <Link className="flex" to="/dashboard">
@@ -73,7 +71,7 @@ export const MetaElements = ({
             </div>
           )}
         </>
-      )}
+      }
     </div>
   );
 };

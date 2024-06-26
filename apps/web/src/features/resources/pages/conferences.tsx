@@ -21,8 +21,12 @@ export const Conferences = () => {
   const [latestPlanBConferences, setLatestPlanBConferences] =
     useState<JoinedConference[]>();
 
-  const { data: conferences, isFetched } =
-    trpc.content.getConferences.useQuery();
+  const { data: conferences, isFetched } = trpc.content.getConferences.useQuery(
+    {},
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   useEffect(() => {
     const sortedConferences = conferences

@@ -21,9 +21,14 @@ export const TutorialLayout = ({
 }) => {
   const { t, i18n } = useTranslation();
 
-  const { data: allTutorials } = trpc.content.getTutorials.useQuery({
-    language: i18n.language,
-  });
+  const { data: allTutorials } = trpc.content.getTutorials.useQuery(
+    {
+      language: i18n.language,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   return (
     <MainLayout variant="light">

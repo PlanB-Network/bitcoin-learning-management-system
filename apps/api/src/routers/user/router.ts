@@ -23,14 +23,16 @@ export const userRouter = createTRPCRouter({
   // TODO should be public procedure, not to have 401 when user is not logged in
   getSession: publicProcedure.query(({ ctx }) => {
     const { req } = ctx;
-    return {
-      user: { uid: req.session.uid },
-    };
+    return req.session.uid
+      ? {
+          user: { uid: req.session.uid },
+        }
+      : null;
   }),
   getDetails: protectedProcedure
     .input(z.void())
 
-    .query(async ({ ctx }) =>
+    .query(({ ctx }) =>
       createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid }),
     ),
   changePassword: protectedProcedure
@@ -41,7 +43,7 @@ export const userRouter = createTRPCRouter({
       }),
     )
 
-    .mutation(async ({ ctx, input }) =>
+    .mutation(({ ctx, input }) =>
       createChangePassword(ctx.dependencies)({
         uid: ctx.user.uid,
         oldPassword: input.oldPassword,

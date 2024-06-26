@@ -1,9 +1,11 @@
 import { t } from 'i18next';
+import { useContext } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
 import type { JoinedEvent } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
+import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import PlanBLogo from '../../../assets/planb_logo_horizontal_black.svg?react';
@@ -19,7 +21,7 @@ export const ModalBookSuccess = ({
   accessType,
   onClose,
 }: ModalBookSuccessProps) => {
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(AppContext);
 
   const { mutateAsync: downloadTicketAsync, isPending } =
     trpc.user.events.downloadEventTicket.useMutation();
