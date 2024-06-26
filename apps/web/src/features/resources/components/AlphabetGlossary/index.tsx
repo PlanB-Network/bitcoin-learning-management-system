@@ -1,18 +1,29 @@
-import type React from 'react';
-import { useState } from 'react';
+import { cn } from '@sovereign-university/ui';
 
-const LetterButton: React.FC<{
+interface LetterButtonProps {
   letter: string;
   selectedLetter: string | null;
   onClick: (letter: string) => void;
-}> = ({ letter, selectedLetter, onClick }) => {
+}
+
+interface AlphabetGlossaryProps {
+  onLetterSelect: (letter: string) => void;
+  selectedLetter: string | null;
+}
+
+const LetterButton = ({
+  letter,
+  selectedLetter,
+  onClick,
+}: LetterButtonProps) => {
   return (
     <button
-      className={`m-1 p-2 rounded-full size-8 flex items-center justify-center font-bold text-sm ${
+      className={cn(
+        'm-1 p-2 rounded-full size-8 flex items-center justify-center font-bold text-sm sm:size-10 sm:text-base md:size-12 md:text-lg',
         selectedLetter === letter
           ? 'bg-orange-500 text-white'
-          : 'bg-[#1F242D] text-gray-300'
-      } sm:size-10 sm:text-base md:size-12 md:text-lg`}
+          : 'bg-[#1F242D] text-gray-300',
+      )}
       onClick={() => onClick(letter)}
     >
       {letter}
@@ -20,26 +31,19 @@ const LetterButton: React.FC<{
   );
 };
 
-export const AlphabetGlossary: React.FC<{
-  onLetterSelect: (letter: string) => void;
-}> = ({ onLetterSelect }) => {
-  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
-
-  const handleLetterClick = (letter: string) => {
-    setSelectedLetter(letter);
-    onLetterSelect(letter);
-  };
-
+export const AlphabetGlossary = ({
+  onLetterSelect,
+  selectedLetter,
+}: AlphabetGlossaryProps) => {
   return (
     <div>
-      {/* Grid for bigger screens  (md en adelante) */}
-      <div className="hidden  md:grid md:mx-auto md:grid-cols-9  md:justify-center">
+      <div className="hidden md:grid md:mx-auto md:grid-cols-9  md:justify-center">
         {[...'ABCDEFGHI'].map((letter) => (
           <LetterButton
             key={letter}
             letter={letter}
             selectedLetter={selectedLetter}
-            onClick={handleLetterClick}
+            onClick={() => onLetterSelect(letter)}
           />
         ))}
         {[...'JKLMNOPQR'].map((letter) => (
@@ -47,7 +51,7 @@ export const AlphabetGlossary: React.FC<{
             key={letter}
             letter={letter}
             selectedLetter={selectedLetter}
-            onClick={handleLetterClick}
+            onClick={() => onLetterSelect(letter)}
           />
         ))}
         {[...'RSTUVWXYZ'].map((letter) => (
@@ -55,7 +59,7 @@ export const AlphabetGlossary: React.FC<{
             key={letter}
             letter={letter}
             selectedLetter={selectedLetter}
-            onClick={handleLetterClick}
+            onClick={() => onLetterSelect(letter)}
           />
         ))}
       </div>

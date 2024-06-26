@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlphabetGlossary } from '../components/AlphabetGlossary/index.tsx';
-import { FilterBar } from '../components/NewFilterBar/index.tsx';
+import { GlossaryFilterBar } from '../components/GlossaryFilterBar/index.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 export const GlossaryWord = () => {
   const { t } = useTranslation();
+
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter);
   };
@@ -31,8 +35,11 @@ export const GlossaryWord = () => {
               </div>
             </div>
           </div>
-          <FilterBar onChange={() => {}} />
-          <AlphabetGlossary onLetterSelect={handleLetterSelection} />
+          <GlossaryFilterBar onChange={() => {}} />
+          <AlphabetGlossary
+            onLetterSelect={handleLetterSelection}
+            selectedLetter={selectedLetter}
+          />
         </div>
       </div>
     </ResourceLayout>

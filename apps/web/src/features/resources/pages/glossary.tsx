@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlphabetGlossary } from '../components/AlphabetGlossary/index.tsx';
+import { GlossaryFilterBar } from '../components/GlossaryFilterBar/index.tsx';
 import { GlossaryList } from '../components/GlossaryList/index.tsx';
-import { FilterBar } from '../components/NewFilterBar/index.tsx';
 import { ResourceLayout } from '../layout.tsx';
 
 interface GlossaryTerm {
@@ -25,10 +25,14 @@ export const Glossary = () => {
     <ResourceLayout
       title={t('glossary.pageTitle')}
       tagLine={t('glossary.pageSubtitle')}
+      activeCategory="glossary"
     >
-      <div className="flex items-center flex-col gap-4 sm:gap-8">
-        <FilterBar onChange={() => {}} />
-        <AlphabetGlossary onLetterSelect={handleLetterSelection} />
+      <div className="flex items-center flex-col">
+        <GlossaryFilterBar onChange={() => {}} />
+        <AlphabetGlossary
+          onLetterSelect={handleLetterSelection}
+          selectedLetter={selectedLetter}
+        />
         <GlossaryList
           glossaryTerms={glossaryTerms}
           selectedLetter={selectedLetter}
