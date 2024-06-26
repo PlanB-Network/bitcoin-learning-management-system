@@ -383,6 +383,12 @@
       "time": "Time"
     }
   },
+  "glossary": {
+    "pageSubtitle": "Need help defining a technical word?",
+    "pageTitle": "Bitcoin Glossary",
+    "filterBar": "Find the word you’re looking for:",
+    "placeHolder": "What is this?"
+  },
   "home": {
     "header": {
       "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
@@ -719,6 +725,7 @@
     "exchanges": "Exchanges",
     "followUs": "Follow us",
     "free": "Free",
+    "glossary": "Glossary",
     "helpUs": "Help us",
     "home": "Home",
     "intermediate": "Intermediate",
