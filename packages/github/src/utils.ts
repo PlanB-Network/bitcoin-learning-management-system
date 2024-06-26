@@ -64,7 +64,7 @@ const createGetGitLog = (git: SimpleGitExt) => {
       .log({
         file,
         maxCount: 1,
-        format: { hash: '%H', date: '%aI' },
+        format: { hash: '%h', date: '%aI' },
       })
       // Get the latest commit log
       .then((log) => log.latest);
@@ -402,7 +402,13 @@ export const createSyncCdnRepository = (cdnPath: string) => {
         timeGetLogs();
       }
 
-      const timeAssetSync = timeLog(`Syncing assets to the CDN`);
+      let copyCount = 0;
+      let skipCount = 0;
+      const notSynced = new Set<string>();
+      const displayedWarn = new Set<string>();
+      const timeAssetSync = timeLog(
+        `Syncing ${assets.length} assets to the CDN`,
+      );
       for (const asset of assets) {
         // Get the log of the parent directory
         const parentDirectory = asset.replace(/\/assets\/.*/, '');
@@ -412,25 +418,41 @@ export const createSyncCdnRepository = (cdnPath: string) => {
           continue; // We could not find the parent directory log
         }
 
+        const hash = gitLog.hash;
         const relativePath = asset.replace(`${repositoryDirectory}/`, '');
 
-        const computedCdnPath = path.join(cdnPath, gitLog.hash, relativePath);
+        const computedCdnBasePath = path.join(cdnPath, hash);
+        if (!notSynced.has(hash) && !existDir(computedCdnBasePath)) {
+          // Add the directory to the list of directories to sync
+          notSynced.add(hash);
+        }
 
+        if (!notSynced.has(hash)) {
+          if (!displayedWarn.has(hash)) {
+            console.warn(`Skipping asset because ${hash} is already synced`);
+            displayedWarn.add(hash);
+          }
+
+          skipCount += 1;
+          continue;
+        }
+
+        const computedCdnPath = path.join(computedCdnBasePath, relativePath);
         const cdnDir = path.dirname(computedCdnPath);
-
         if (!existDir(cdnDir)) {
-          // console.log(`Creating directory ${cdnDir}`);
           mkdirSync(cdnDir, { recursive: true });
         }
 
-        if (!existsSync(computedCdnPath)) {
-          const absolutePath = path.join(repositoryDirectory, asset);
-          // console.log(`Copying ${asset} to ${computedCdnPath}`);
-          await fs.copyFile(absolutePath, computedCdnPath);
-        }
+        const absolutePath = path.join(repositoryDirectory, asset);
+        await fs.copyFile(absolutePath, computedCdnPath);
+        copyCount += 1;
       }
 
       timeAssetSync();
+
+      console.log(
+        `-- Sync procedure: Copied ${copyCount} assets to the CDN (${skipCount} skipped)`,
+      );
     } catch (error) {
       throw new Error(`Failed to sync CDN repository: ${error}`);
     }

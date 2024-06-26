@@ -4,7 +4,7 @@ interface DividerProps {
 
 export const Divider = ({ children }: DividerProps) => {
   return (
-    <div className="relative mx-4 w-full">
+    <div className="relative mx-4 w-4/5">
       <div
         className="absolute inset-0 flex w-full items-center"
         aria-hidden="true"

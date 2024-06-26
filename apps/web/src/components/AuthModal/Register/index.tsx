@@ -117,7 +117,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
           <Button
             variant="ghost"
             mode="light"
