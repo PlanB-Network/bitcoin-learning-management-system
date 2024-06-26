@@ -64,7 +64,7 @@ const createGetGitLog = (git: SimpleGitExt) => {
       .log({
         file,
         maxCount: 1,
-        format: { hash: '%H', date: '%aI' },
+        format: { hash: '%h', date: '%aI' },
       })
       // Get the latest commit log
       .then((log) => log.latest);
