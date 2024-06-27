@@ -1,7 +1,8 @@
-import process from 'node:process';
-
 import RedisStore from 'connect-redis';
+import type { RequestHandler } from 'express';
 import session from 'express-session';
+
+import type { SessionConfig } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
 
@@ -9,31 +10,29 @@ const ONE_HOUR = 1000 * 60 * 60;
 const ONE_DAY = ONE_HOUR * 24;
 const ONE_WEEK = ONE_DAY * 7;
 
-export const getSessionConfig = () => {
+const getSessionConfig = (config: SessionConfig) => {
   return {
-    name: process.env.SESSION_COOKIE_NAME || 'session',
-    secret: process.env.SESSION_SECRET || 'super secret',
+    name: config.cookieName,
+    secret: config.secret,
     resave: false,
     saveUninitialized: true,
     proxy: true,
     cookie: {
-      domain:
-        process.env.NODE_ENV === 'production' ? process.env.DOMAIN : undefined,
-      maxAge: ONE_WEEK,
+      domain: config.domain,
+      maxAge: config.maxAge,
       httpOnly: true,
       path: '/',
-      secure: process.env.NODE_ENV === 'production',
+      secure: config.secure,
       sameSite: 'strict' as const,
     },
   };
 };
 
-export const createCookieSessionMiddleware = (
-  dependencies: Dependencies,
-): ReturnType<typeof session> => {
-  const sessionConfig = getSessionConfig();
-
-  const { redis } = dependencies;
+export const createCookieSessionMiddleware = ({
+  redis,
+  config,
+}: Dependencies): RequestHandler => {
+  const sessionConfig = getSessionConfig(config.session);
 
   const redisStore = new RedisStore({
     client: redis.duplicate(),
