@@ -1,6 +1,12 @@
+import process from 'node:process';
+
 import type { PostgresClientConfig } from '@sovereign-university/database';
 import type { RedisClientConfig } from '@sovereign-university/redis';
-import type { EnvConfig, GitHubSyncConfig } from '@sovereign-university/types';
+import type {
+  EnvConfig,
+  GitHubSyncConfig,
+  SessionConfig,
+} from '@sovereign-university/types';
 
 function getenv<
   T,
@@ -34,6 +40,13 @@ function getenv<
 
   return (value || fallback) as R;
 }
+
+export const production = getenv('NODE_ENV') === 'production';
+
+/**
+ * Application domain (without protocol)
+ */
+export const domain = getenv('DOMAIN', 'localhost:8181');
 
 /**
  * Real application domain (without trailing slash)
@@ -74,4 +87,12 @@ export const sync: GitHubSyncConfig = {
   privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
   privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
   githubAccessToken: getenv('GITHUB_ACCESS_TOKEN', null),
+};
+
+export const session: SessionConfig = {
+  cookieName: getenv('SESSION_COOKIE_NAME', 'session'),
+  secret: getenv('SESSION_SECRET', 'super secret'),
+  maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
+  secure: production,
+  domain: production ? domain : undefined,
 };

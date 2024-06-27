@@ -95,9 +95,14 @@ const SectionGrid = ({
 export const BET = () => {
   const { t, i18n } = useTranslation();
 
-  const { data: bets, isFetched } = trpc.content.getBets.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: bets, isFetched } = trpc.content.getBets.useQuery(
+    {
+      language: i18n.language ?? 'en',
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
+  );
 
   return (
     <ResourceLayout

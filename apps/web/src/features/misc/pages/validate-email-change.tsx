@@ -3,7 +3,7 @@
 import { Link, useParams } from '@tanstack/react-router';
 import { useContext, useEffect, useRef, useState } from 'react';
 
-import { UserContext } from '#src/providers/user.js';
+import { AppContext } from '#src/providers/context.js';
 
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/index.ts';
@@ -16,7 +16,7 @@ enum ValidationStatus {
 
 export const ValidateEmailChangePage = () => {
   const { token } = useParams({ from: '/validate-email/$token' });
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(AppContext);
   const [email, setEmail] = useState<string | null>(null);
 
   const [validationStatus, setValidationStatus] = useState<ValidationStatus>(

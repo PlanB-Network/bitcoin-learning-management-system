@@ -18,8 +18,20 @@ export interface SendGridConfig {
   };
 }
 
+export interface SessionConfig {
+  cookieName: string;
+  secret: string;
+  maxAge: number;
+  secure: boolean;
+  // For development under localhost, domain must not be set
+  domain: string | undefined;
+}
+
 export interface EnvConfig {
+  production: boolean;
+  domain: string;
   domainUrl: string;
   sendgrid: SendGridConfig;
   sync: GitHubSyncConfig;
+  session: SessionConfig;
 }

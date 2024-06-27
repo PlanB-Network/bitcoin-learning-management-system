@@ -1,5 +1,8 @@
 import { useNavigate } from '@tanstack/react-router';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { AppContext } from '#src/providers/context.js';
 
 import {
   Tabs,
@@ -17,7 +20,7 @@ export const DashboardBookings = () => {
 
   const navigate = useNavigate();
 
-  const { data: session } = trpc.user.getSession.useQuery();
+  const { session } = useContext(AppContext);
   if (!session) {
     navigate({ to: '/' });
   }

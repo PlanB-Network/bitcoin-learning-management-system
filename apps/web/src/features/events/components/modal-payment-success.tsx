@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { useContext } from 'react';
 import { Trans } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
@@ -7,6 +8,7 @@ import { Button } from '@sovereign-university/ui';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentRow } from '#src/components/payment-row.js';
+import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -25,7 +27,7 @@ export const ModalPaymentSuccess = ({
   accessType,
   onClose,
 }: ModalPaymentSuccessProps) => {
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(AppContext);
 
   const { mutateAsync: downloadTicketAsync, isPending } =
     trpc.user.events.downloadEventTicket.useMutation();

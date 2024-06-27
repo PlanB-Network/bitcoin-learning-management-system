@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@sovereign-university/types';
@@ -8,6 +8,7 @@ import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { AppContext } from '#src/providers/context.js';
 
 import { trpc } from '../../../utils/trpc.ts';
 import { CurrentEvents } from '../components/current-events.tsx';
@@ -45,8 +46,8 @@ export const Events = () => {
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
-  const { data: session } = trpc.user.getSession.useQuery();
-  const isLoggedIn = session?.user?.uid !== undefined;
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,

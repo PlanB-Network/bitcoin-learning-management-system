@@ -1,10 +1,12 @@
 import { Link } from '@tanstack/react-router';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
+import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
@@ -15,7 +17,7 @@ export const BookingPart = ({
 }) => {
   const { t } = useTranslation();
 
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { user } = useContext(AppContext);
 
   return (
     <>
@@ -132,6 +134,7 @@ const Buttons = ({
     },
     {
       enabled: isChapterFetched,
+      staleTime: 300_000, // 5 minutes
     },
   );
 

@@ -12,14 +12,14 @@ import {
 
 import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-import { UserContext } from '#src/providers/user.js';
+import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
 
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDesktop = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const [pathname, setPathname] = useState('');
 
   const pictureUrl = getPictureUrl(user);

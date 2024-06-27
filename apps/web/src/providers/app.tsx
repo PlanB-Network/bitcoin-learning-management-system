@@ -17,7 +17,7 @@ import { router } from '../routes/index.tsx';
 import { LANGUAGES } from '../utils/i18n.ts';
 import { trpc } from '../utils/trpc.ts';
 
-import { UserProvider } from './user.tsx';
+import { AppContextProvider } from './context.tsx';
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
@@ -68,7 +68,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
         queryClient={queryClient}
       >
         <QueryClientProvider client={trpcQueryClient}>
-          <UserProvider>
+          <AppContextProvider>
             <RouterProvider
               router={router}
               context={{ i18n }}
@@ -81,7 +81,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
               imageSrc="/share-default.jpg"
             />
             {children}
-          </UserProvider>
+          </AppContextProvider>
         </QueryClientProvider>
       </trpc.Provider>
     </HelmetProvider>
