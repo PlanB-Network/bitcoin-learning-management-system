@@ -9,16 +9,23 @@ import { ResourceLayout } from '../layout.tsx';
 interface GlossaryTerm {
   term: string;
   definition: string;
+  id: string;
 }
 
 export const Glossary = () => {
   const { t } = useTranslation();
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
-  const [glossaryTerms] = useState<GlossaryTerm[]>([]);
+  const [glossaryTerms] = useState<GlossaryTerm[]>([
+    {
+      term: 'testnet',
+      definition:
+        'Temporary very long definition to test if everything works correctly. Temporary very long definition to test if everything works correctly. Temporary very long definition to test if everything works correctly. Temporary very long definition to test if everything works correctly. Temporary very long definition to test if everything works correctly. Temporary very long definition to test if everything works correctly.',
+      id: 'testnet',
+    },
+  ]);
 
   const handleLetterSelection = (letter: string) => {
-    console.log('Selected letter:', letter);
-    setSelectedLetter(letter);
+    setSelectedLetter(letter === selectedLetter ? null : letter);
   };
 
   return (
@@ -26,8 +33,9 @@ export const Glossary = () => {
       title={t('glossary.pageTitle')}
       tagLine={t('glossary.pageSubtitle')}
       activeCategory="glossary"
+      maxWidth="1360"
     >
-      <div className="flex items-center flex-col">
+      <div className="flex items-center flex-col px-4">
         <GlossaryFilterBar onChange={() => {}} />
         <AlphabetGlossary
           onLetterSelect={handleLetterSelection}

@@ -384,10 +384,15 @@
     }
   },
   "glossary": {
-    "pageSubtitle": "Need help defining a technical word?",
+    "anotherWord": "Search for another word",
+    "filterBar": "Find the word you’re looking for",
+    "needHelp": "Need help defining a technical word ?",
+    "keepLooking": "Wanna keep looking ?",
+    "loadMoreWords": "Load more words",
+    "pageSubtitle": "Need help defining a technical word ?",
     "pageTitle": "Bitcoin Glossary",
-    "filterBar": "Find the word you’re looking for:",
-    "placeHolder": "What is this?"
+    "placeHolder": "What is this ?",
+    "randomSearch": "Random search"
   },
   "home": {
     "header": {

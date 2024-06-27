@@ -11,36 +11,33 @@ export const GlossaryWord = () => {
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
 
   const handleLetterSelection = (letter: string) => {
-    setSelectedLetter(letter);
+    setSelectedLetter(letter === selectedLetter ? null : letter);
   };
 
   return (
     <ResourceLayout
       title={t('glossary.pageTitle')}
       tagLine={t('glossary.pageSubtitle')}
+      activeCategory="glossary"
     >
-      <div className="flex flex-col items-center justify-center w-full h-screen">
-        <div className="flex  items-center justify-center w-1/2 flex-col gap-4 sm:gap-8">
-          <div className="grid max-w-5xl    gap-6 ">
-            <div className="self-center">
-              <div>
-                <h2 className="mt-0 text-3xl font-semibold uppercase text-orange-500">
-                  {t('Testnet')}
-                </h2>
-                <p className="mt-2 text-gray-200">
-                  {t(
-                    "Version alternative de Bitcoin utilisée exclusivement à des fins de test et de développement. Il s'agit d'un réseau séparé du réseau principal (mainnet), avec ses propres blocs et transactions, permettant aux développeurs de tester de nouvelles fonctionnalités, applications et mises à jour sans risque pour le réseau principal. Le testnet permet également d'éviter de payer des frais de transaction lors de tests. Les bitcoins utilisés sur le testnet n'ont aucune valeur réelle.",
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
-          <GlossaryFilterBar onChange={() => {}} />
-          <AlphabetGlossary
-            onLetterSelect={handleLetterSelection}
-            selectedLetter={selectedLetter}
-          />
-        </div>
+      <div className="flex flex-col items-center justify-center w-full max-w-[620px] mx-auto px-4">
+        <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-5">
+          TestNet Tempo
+        </h2>
+        <p className="w-full mobile-body2 md:desktop-body1 text-white">
+          Temporary very long definition to test if everything works correctly.
+          Temporary very long definition to test if everything works correctly.
+          Temporary very long definition to test if everything works correctly.
+          Temporary very long definition to test if everything works correctly.
+          Temporary very long definition to test if everything works correctly.
+          Temporary very long definition to test if everything works correctly.
+        </p>
+        <div className="w-full h-px bg-newBlack-5 my-6 md:mt-20" />
+        <GlossaryFilterBar onChange={() => {}} isOnWordPage />
+        <AlphabetGlossary
+          onLetterSelect={handleLetterSelection}
+          selectedLetter={selectedLetter}
+        />
       </div>
     </ResourceLayout>
   );

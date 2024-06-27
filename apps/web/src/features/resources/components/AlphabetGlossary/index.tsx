@@ -37,31 +37,37 @@ export const AlphabetGlossary = ({
 }: AlphabetGlossaryProps) => {
   return (
     <div>
-      <div className="hidden md:grid md:mx-auto md:grid-cols-9  md:justify-center">
-        {[...'ABCDEFGHI'].map((letter) => (
-          <LetterButton
-            key={letter}
-            letter={letter}
-            selectedLetter={selectedLetter}
-            onClick={() => onLetterSelect(letter)}
-          />
-        ))}
-        {[...'JKLMNOPQR'].map((letter) => (
-          <LetterButton
-            key={letter}
-            letter={letter}
-            selectedLetter={selectedLetter}
-            onClick={() => onLetterSelect(letter)}
-          />
-        ))}
-        {[...'RSTUVWXYZ'].map((letter) => (
-          <LetterButton
-            key={letter}
-            letter={letter}
-            selectedLetter={selectedLetter}
-            onClick={() => onLetterSelect(letter)}
-          />
-        ))}
+      <div className="hidden md:flex flex-col md:mx-auto ">
+        <div className="flex justify-center items-center">
+          {[...'ABCDEFGHI'].map((letter) => (
+            <LetterButton
+              key={letter}
+              letter={letter}
+              selectedLetter={selectedLetter}
+              onClick={() => onLetterSelect(letter)}
+            />
+          ))}
+        </div>
+        <div className="flex justify-center items-center">
+          {[...'JKLMNOPQR'].map((letter) => (
+            <LetterButton
+              key={letter}
+              letter={letter}
+              selectedLetter={selectedLetter}
+              onClick={() => onLetterSelect(letter)}
+            />
+          ))}
+        </div>
+        <div className="flex justify-center items-center">
+          {[...'STUVWXYZ'].map((letter) => (
+            <LetterButton
+              key={letter}
+              letter={letter}
+              selectedLetter={selectedLetter}
+              onClick={() => onLetterSelect(letter)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

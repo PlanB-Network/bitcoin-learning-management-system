@@ -93,6 +93,10 @@
     @apply text-base font-normal leading-normal tracking-015px;
   }
 
+  .desktop-caption1 {
+    @apply text-xs font-normal leading-[166%] tracking-[0.4px];
+  }
+
   .desktop-h3 {
     @apply text-[48px] font-normal leading-[116.7%] tracking-normal;
   }
