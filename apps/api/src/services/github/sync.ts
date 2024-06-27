@@ -7,7 +7,6 @@ import {
   createSyncEventsLocations,
 } from '@sovereign-university/content';
 import {
-  createS3Playground,
   createSyncCdnRepository,
   createSyncRepositories,
   timeLog,
@@ -21,7 +20,6 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
   const getNow = createGetNow(dependencies);
   const syncRepositories = createSyncRepositories(syncConfig);
-  const s3Playground = createS3Playground(dependencies.config.s3);
   const syncCdnRepository = createSyncCdnRepository(s3Config);
   const calculateCourseChapterSeats =
     createCalculateCourseChapterSeats(dependencies);
@@ -38,10 +36,6 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     console.time('-- Sync procedure');
     console.log('-- Sync procedure: START ===================================');
-
-    await s3Playground().catch((error: Error) =>
-      console.error('S3 playground error:', error),
-    );
 
     // Should not happen as config is validated on startup. Remove ?
     if (!syncConfig.publicRepositoryUrl) {

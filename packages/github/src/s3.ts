@@ -2,7 +2,7 @@ import { createReadStream } from 'node:fs';
 
 import type { S3ClientConfig } from '@aws-sdk/client-s3';
 import {
-  ListObjectsCommand,
+  ListObjectsV2Command,
   PutObjectCommand,
   S3Client,
 } from '@aws-sdk/client-s3';
@@ -32,7 +32,7 @@ export const createS3Client = (config: S3Config) => {
         }),
       );
 
-      console.log(`[S3] Sent file: ${options.key}`, res);
+      console.log(`-- [S3] Sent file: ${options.key}`);
 
       return res;
     },
@@ -50,21 +50,49 @@ export const createS3Client = (config: S3Config) => {
         }),
       );
 
-      console.log(`[S3] Write data: ${options.key}`, res);
+      console.log(`-- [S3] Write data: ${options.key}`, res);
 
       return res;
     },
     // TODO: ListObjectsCommand only returns 1000 items at a time
     listObjects: async () => {
-      const res = await client.send(
-        new ListObjectsCommand({
-          Bucket: config.bucket,
-        }),
+      const allKeys = new Set<string>();
+      let isTruncated = true;
+      let marker: string | undefined;
+      let calls = 0;
+
+      while (isTruncated) {
+        calls += 1;
+
+        const list = await client.send(
+          new ListObjectsV2Command({
+            Bucket: config.bucket,
+            ContinuationToken: marker,
+          }),
+        );
+
+        const keys =
+          list.Contents?.map((item) => item.Key) //
+            .filter((key): key is string => !!key) ?? [];
+
+        for (const key of keys) {
+          allKeys.add(key);
+        }
+
+        // // Update the marker to the last key received
+        marker = list.NextContinuationToken;
+
+        console.log(`-- [S3] List objects: ${keys.length} keys`);
+
+        // Update isTruncated based on the response
+        isTruncated = list.IsTruncated ?? false;
+      }
+
+      console.log(
+        `-- [S3] List objects: ${allKeys.size} keys in ${calls} calls`,
       );
 
-      return new Set(
-        res.Contents?.map((item) => item.Key).filter(Boolean) ?? [],
-      );
+      return allKeys;
     },
   };
 };

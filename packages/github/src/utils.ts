@@ -293,14 +293,6 @@ async function loadRepoContentFiles(
   return files;
 }
 
-export function createS3Playground(options: S3Config) {
-  const client = createS3Client(options);
-
-  return async () => {
-    await client.listObjects();
-  };
-}
-
 /**
  * Factory to sync the repositories (clone or pull) and reads all content (non-assets) files
  *
@@ -381,6 +373,7 @@ export const createSyncRepositories = (options: GitHubSyncConfig) => {
  */
 export const createSyncCdnRepository = (config: S3Config) => {
   const s3Client = createS3Client(config);
+  let remoteFiles: Set<string> | null = null;
 
   return async (repositoryDirectory: string, git: SimpleGit) => {
     try {
@@ -393,12 +386,11 @@ export const createSyncCdnRepository = (config: S3Config) => {
       const timeRemoteList = timeLog(
         `Listing files in (remote) ${config.bucket} bucket`,
       );
-      const remoteFiles = await s3Client.listObjects();
+      remoteFiles = remoteFiles ?? (await s3Client.listObjects());
       timeRemoteList();
 
       console.log(
         `-- Sync procedure: Found ${remoteFiles.size} files in the bucket`,
-        remoteFiles,
       );
 
       const getGitLog = createGetGitLog(git);
@@ -430,22 +422,23 @@ export const createSyncCdnRepository = (config: S3Config) => {
       const timeAssetSync = timeLog(
         `Syncing ${assets.length} assets to the CDN`,
       );
-      for (const asset of assets) {
+
+      await async.mapLimit(assets, 10, async (asset: string) => {
         // Get the log of the parent directory
         const parentDirectory = asset.replace(/\/assets\/.*/, '');
         const gitLog = await getGitLog(parentDirectory);
         if (!gitLog) {
           console.warn('getGitLog2', parentDirectory, 'not found');
-          continue; // We could not find the parent directory log
+          return; // We could not find the parent directory log
         }
 
         const hash = gitLog.hash;
         const relativePath = asset.replace(`${repositoryDirectory}/`, '');
         const cdnKey = path.join(hash, relativePath);
 
-        if (remoteFiles.has(cdnKey)) {
+        if (remoteFiles!.has(cdnKey)) {
           skipCount += 1;
-          continue;
+          return;
         }
 
         const absolutePath = path.join(repositoryDirectory, asset);
@@ -456,7 +449,7 @@ export const createSyncCdnRepository = (config: S3Config) => {
         });
 
         copyCount += 1;
-      }
+      });
 
       timeAssetSync();
 
