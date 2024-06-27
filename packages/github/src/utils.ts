@@ -1,18 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { existsSync, mkdirSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import * as async from 'async';
+import { lookup } from 'mime-types';
 import type { SimpleGit } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
 import type {
   ChangedFile,
   GitHubSyncConfig,
+  S3Config,
 } from '@sovereign-university/types';
 
 import type { GithubOctokit } from './octokit.js';
+import { createS3Client } from './s3.js';
 
 export const timeLog = (str: string) => {
   const key = `-- Sync procedure: ${str}`;
@@ -290,6 +293,14 @@ async function loadRepoContentFiles(
   return files;
 }
 
+export function createS3Playground(options: S3Config) {
+  const client = createS3Client(options);
+
+  return async () => {
+    await client.listObjects();
+  };
+}
+
 /**
  * Factory to sync the repositories (clone or pull) and reads all content (non-assets) files
  *
@@ -366,19 +377,31 @@ export const createSyncRepositories = (options: GitHubSyncConfig) => {
  * Sync repository assets
  *
  * @param options - Configuration options
- * @param options.syncPath - Path to sync the repository
- * @param options.cdnPath - Path to sync the repository to
+ * @param options.config - S3 configuration
  */
-export const createSyncCdnRepository = (cdnPath: string) => {
+export const createSyncCdnRepository = (config: S3Config) => {
+  const s3Client = createS3Client(config);
+
   return async (repositoryDirectory: string, git: SimpleGit) => {
     try {
-      const timeListFiles = timeLog(`Listing files in ${repositoryDirectory}`);
-
+      const timeListFiles = timeLog(
+        `Listing files in (local) ${repositoryDirectory} directory`,
+      );
       const assets = await listFiles(git, [':!.*', ':*assets*', ':*soon*']);
       timeListFiles();
 
+      const timeRemoteList = timeLog(
+        `Listing files in (remote) ${config.bucket} bucket`,
+      );
+      const remoteFiles = await s3Client.listObjects();
+      timeRemoteList();
+
+      console.log(
+        `-- Sync procedure: Found ${remoteFiles.size} files in the bucket`,
+        remoteFiles,
+      );
+
       const getGitLog = createGetGitLog(git);
-      const existDir = createCache<boolean>()((dir: string) => existsSync(dir));
 
       const timeMapDirs = timeLog(
         `Mapping directories for ${assets.length} files`,
@@ -404,8 +427,6 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
       let copyCount = 0;
       let skipCount = 0;
-      const notSynced = new Set<string>();
-      const displayedWarn = new Set<string>();
       const timeAssetSync = timeLog(
         `Syncing ${assets.length} assets to the CDN`,
       );
@@ -420,31 +441,20 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
         const hash = gitLog.hash;
         const relativePath = asset.replace(`${repositoryDirectory}/`, '');
+        const cdnKey = path.join(hash, relativePath);
 
-        const computedCdnBasePath = path.join(cdnPath, hash);
-        if (!notSynced.has(hash) && !existDir(computedCdnBasePath)) {
-          // Add the directory to the list of directories to sync
-          notSynced.add(hash);
-        }
-
-        if (!notSynced.has(hash)) {
-          if (!displayedWarn.has(hash)) {
-            console.warn(`Skipping asset because ${hash} is already synced`);
-            displayedWarn.add(hash);
-          }
-
+        if (remoteFiles.has(cdnKey)) {
           skipCount += 1;
           continue;
         }
 
-        const computedCdnPath = path.join(computedCdnBasePath, relativePath);
-        const cdnDir = path.dirname(computedCdnPath);
-        if (!existDir(cdnDir)) {
-          mkdirSync(cdnDir, { recursive: true });
-        }
-
         const absolutePath = path.join(repositoryDirectory, asset);
-        await fs.copyFile(absolutePath, computedCdnPath);
+        await s3Client.copyFile(absolutePath, {
+          key: cdnKey,
+          publicRead: true,
+          contentType: lookup(absolutePath) || 'application/octet-stream',
+        });
+
         copyCount += 1;
       }
 

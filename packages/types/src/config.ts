@@ -33,5 +33,18 @@ export interface EnvConfig {
   domainUrl: string;
   sendgrid: SendGridConfig;
   sync: GitHubSyncConfig;
+  s3: S3Config;
   session: SessionConfig;
+}
+
+export interface S3Config {
+  service: string;
+  endpoint: string;
+  bucket: string;
+  region: string;
+  forcePathStyle: boolean;
+  credentials: {
+    accessKeyId: string;
+    secretAccessKey: string;
+  };
 }

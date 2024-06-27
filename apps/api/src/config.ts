@@ -5,6 +5,7 @@ import type { RedisClientConfig } from '@sovereign-university/redis';
 import type {
   EnvConfig,
   GitHubSyncConfig,
+  S3Config,
   SessionConfig,
 } from '@sovereign-university/types';
 
@@ -95,4 +96,16 @@ export const session: SessionConfig = {
   maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
   secure: production,
   domain: production ? domain : undefined,
+};
+
+export const s3: S3Config = {
+  service: getenv('S3_SERVICE', 's3'),
+  endpoint: getenv('S3_ENDPOINT', null),
+  bucket: getenv('S3_BUCKET', null),
+  region: getenv('S3_REGION', null),
+  credentials: {
+    accessKeyId: getenv('S3_ACCESS_KEY', null),
+    secretAccessKey: getenv('S3_SECRET_KEY', null),
+  },
+  forcePathStyle: getenv('S3_FORCE_PATH_STYLE', false),
 };
