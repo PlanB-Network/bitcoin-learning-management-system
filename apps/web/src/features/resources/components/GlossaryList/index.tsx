@@ -24,29 +24,33 @@ export const GlossaryList = ({
   const [filteredTerms, setFilteredTerms] =
     useState<GlossaryTerm[]>(glossaryTerms);
 
-  useEffect(
-    () =>
-      setFilteredTerms(
-        selectedLetter
-          ? glossaryTerms.filter((term) =>
-              normalizeString(term.term).startsWith(
-                selectedLetter.toLowerCase(),
-              ),
-            )
-          : glossaryTerms,
-      ),
-    [selectedLetter, glossaryTerms],
-  );
+  const [maxWords, setMaxWords] = useState(10);
+
+  useEffect(() => {
+    setFilteredTerms(
+      selectedLetter
+        ? glossaryTerms.filter((term) =>
+            normalizeString(term.term).startsWith(selectedLetter.toLowerCase()),
+          )
+        : glossaryTerms,
+    );
+    setMaxWords(10);
+  }, [selectedLetter, glossaryTerms]);
 
   return (
     <div className="flex flex-col mx-auto md:mt-20 w-full">
+      {/* Desktop */}
       <section className="flex flex-col w-full gap-6 max-md:hidden">
         <div className="flex max-w-[820px] w-full gap-5 mx-auto px-4">
-          <span className="w-1/3 text-white desktop-caption1">TERM</span>
-          <span className="w-2/3 text-white desktop-caption1">DEFINITION</span>
+          <span className="w-1/3 text-white desktop-caption1 uppercase">
+            {t('glossary.term')}
+          </span>
+          <span className="w-2/3 text-white desktop-caption1 uppercase">
+            {t('glossary.definition')}
+          </span>
         </div>
         <div className="w-full h-px bg-newBlack-3" />
-        {filteredTerms.map((term) => (
+        {filteredTerms.slice(0, maxWords).map((term) => (
           <>
             <div className="flex items-center max-w-[820px] w-full gap-5 mx-auto px-4">
               <Link
@@ -65,8 +69,9 @@ export const GlossaryList = ({
         ))}
       </section>
 
+      {/* Mobile */}
       <section className="flex flex-col gap-5 w-full md:hidden">
-        {filteredTerms.map((term) => (
+        {filteredTerms.slice(0, maxWords).map((term) => (
           <>
             <div className="flex flex-col w-full gap-2">
               <Link
@@ -85,8 +90,13 @@ export const GlossaryList = ({
         ))}
       </section>
 
-      {glossaryTerms.length > 10 && (
-        <Button variant="ghost" size="m" className="mx-auto mt-5">
+      {filteredTerms.length > maxWords && (
+        <Button
+          variant="newSecondary"
+          size="m"
+          className="mx-auto mt-5"
+          onClick={() => setMaxWords((v) => v + 10)}
+        >
           {t('glossary.loadMoreWords')}
         </Button>
       )}

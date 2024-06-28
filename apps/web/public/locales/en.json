@@ -385,6 +385,7 @@
   },
   "glossary": {
     "anotherWord": "Search for another word",
+    "definition": "Definition",
     "filterBar": "Find the word you’re looking for",
     "needHelp": "Need help defining a technical word ?",
     "keepLooking": "Wanna keep looking ?",
@@ -392,7 +393,8 @@
     "pageSubtitle": "Need help defining a technical word ?",
     "pageTitle": "Bitcoin Glossary",
     "placeHolder": "What is this ?",
-    "randomSearch": "Random search"
+    "randomSearch": "Random search",
+    "term": "Term"
   },
   "home": {
     "header": {

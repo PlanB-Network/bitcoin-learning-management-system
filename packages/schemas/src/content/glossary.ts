@@ -1,0 +1,43 @@
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
+
+import {
+  contentGlossaryWords,
+  contentGlossaryWordsLocalized,
+} from '@sovereign-university/database/schemas';
+
+import { resourceSchema } from './resource.js';
+
+export const glossaryWordSchema = createSelectSchema(contentGlossaryWords, {
+  relatedWords: z.array(z.string()),
+});
+export const glossaryWordLocalizedSchema = createSelectSchema(
+  contentGlossaryWordsLocalized,
+);
+
+export const joinedGlossaryWordSchema = resourceSchema
+  .pick({
+    id: true,
+    path: true,
+    lastUpdated: true,
+    lastCommit: true,
+  })
+  .merge(
+    glossaryWordSchema.pick({
+      originalWord: true,
+      relatedWords: true,
+      resourceId: true,
+    }),
+  )
+  .merge(
+    glossaryWordLocalizedSchema.pick({
+      language: true,
+      term: true,
+      definition: true,
+    }),
+  )
+  .merge(
+    z.object({
+      tags: z.array(z.string()).optional(),
+    }),
+  );
