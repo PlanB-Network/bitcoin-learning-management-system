@@ -1,20 +1,15 @@
 import { useLocation } from '@react-hooks-library/core';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
-import { LuLogOut } from 'react-icons/lu';
-
-import { logout } from '#src/utils/session-utils.js';
 
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuMobile = () => {
   const [pathname, setPathname] = useState('');
-
-  const navigate = useNavigate();
 
   const location = useLocation();
 
@@ -65,7 +60,7 @@ export const MenuMobile = () => {
           active={pathname === profilePath}
         />
       </Link>
-      <MenuItem
+      {/* <MenuItem
         text={t('dashboard.logout')}
         icon={<LuLogOut size={28} />}
         onClick={async () => {
@@ -73,7 +68,7 @@ export const MenuMobile = () => {
           await navigate({ to: '/' });
           window.location.reload();
         }}
-      />
+      /> */}
     </div>
   );
 };
