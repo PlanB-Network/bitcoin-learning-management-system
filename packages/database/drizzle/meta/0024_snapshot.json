@@ -1,10 +1,8 @@
 {
-  "id": "373c546c-014e-46ac-8779-6a068c561745",
-  "prevId": "52959554-71e7-48d4-a20e-12f441634735",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "books": {
+    "content.books": {
       "name": "books",
       "schema": "content",
       "columns": {
@@ -38,18 +36,18 @@
         "books_resource_id_resources_id_fk": {
           "name": "books_resource_id_resources_id_fk",
           "tableFrom": "books",
+          "columnsFrom": ["resource_id"],
           "tableTo": "resources",
           "schemaTo": "content",
-          "columnsFrom": ["resource_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "books_localized": {
+    "content.books_localized": {
       "name": "books_localized",
       "schema": "content",
       "columns": {
@@ -137,12 +135,12 @@
         "books_localized_book_id_books_resource_id_fk": {
           "name": "books_localized_book_id_books_resource_id_fk",
           "tableFrom": "books_localized",
+          "columnsFrom": ["book_id"],
           "tableTo": "books",
           "schemaTo": "content",
-          "columnsFrom": ["book_id"],
           "columnsTo": ["resource_id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -153,7 +151,7 @@
       },
       "uniqueConstraints": {}
     },
-    "builders": {
+    "content.builders": {
       "name": "builders",
       "schema": "content",
       "columns": {
@@ -205,18 +203,18 @@
         "builders_resource_id_resources_id_fk": {
           "name": "builders_resource_id_resources_id_fk",
           "tableFrom": "builders",
+          "columnsFrom": ["resource_id"],
           "tableTo": "resources",
           "schemaTo": "content",
-          "columnsFrom": ["resource_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "builders_localized": {
+    "content.builders_localized": {
       "name": "builders_localized",
       "schema": "content",
       "columns": {
@@ -244,12 +242,12 @@
         "builders_localized_builder_id_builders_resource_id_fk": {
           "name": "builders_localized_builder_id_builders_resource_id_fk",
           "tableFrom": "builders_localized",
+          "columnsFrom": ["builder_id"],
           "tableTo": "builders",
           "schemaTo": "content",
-          "columnsFrom": ["builder_id"],
           "columnsTo": ["resource_id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -260,7 +258,7 @@
       },
       "uniqueConstraints": {}
     },
-    "conferences_stages_videos": {
+    "content.conferences_stages_videos": {
       "name": "conferences_stages_videos",
       "schema": "content",
       "columns": {
@@ -294,18 +292,18 @@
         "conferences_stages_videos_stage_id_conferences_stages_stage_id_fk": {
           "name": "conferences_stages_videos_stage_id_conferences_stages_stage_id_fk",
           "tableFrom": "conferences_stages_videos",
+          "columnsFrom": ["stage_id"],
           "tableTo": "conferences_stages",
           "schemaTo": "content",
-          "columnsFrom": ["stage_id"],
           "columnsTo": ["stage_id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "conferences": {
+    "content.conferences": {
       "name": "conferences",
       "schema": "content",
       "columns": {
@@ -369,18 +367,18 @@
         "conferences_resource_id_resources_id_fk": {
           "name": "conferences_resource_id_resources_id_fk",
           "tableFrom": "conferences",
+          "columnsFrom": ["resource_id"],
           "tableTo": "resources",
           "schemaTo": "content",
-          "columnsFrom": ["resource_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "conferences_stages": {
+    "content.conferences_stages": {
       "name": "conferences_stages",
       "schema": "content",
       "columns": {
@@ -408,18 +406,18 @@
         "conferences_stages_conference_id_conferences_resource_id_fk": {
           "name": "conferences_stages_conference_id_conferences_resource_id_fk",
           "tableFrom": "conferences_stages",
+          "columnsFrom": ["conference_id"],
           "tableTo": "conferences",
           "schemaTo": "content",
-          "columnsFrom": ["conference_id"],
           "columnsTo": ["resource_id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "contributors": {
+    "content.contributors": {
       "name": "contributors",
       "schema": "content",
       "columns": {
@@ -435,7 +433,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "course_chapters": {
+    "content.course_chapters": {
       "name": "course_chapters",
       "schema": "content",
       "columns": {
@@ -463,12 +461,12 @@
         "course_chapters_to_course_parts_fk": {
           "name": "course_chapters_to_course_parts_fk",
           "tableFrom": "course_chapters",
+          "columnsFrom": ["course_id", "part"],
           "tableTo": "course_parts",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "part"],
           "columnsTo": ["course_id", "part"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -479,7 +477,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_chapters_localized": {
+    "content.course_chapters_localized": {
       "name": "course_chapters_localized",
       "schema": "content",
       "columns": {
@@ -617,32 +615,32 @@
         "course_chapters_localized_to_course_chapters_fk": {
           "name": "course_chapters_localized_to_course_chapters_fk",
           "tableFrom": "course_chapters_localized",
+          "columnsFrom": ["course_id", "part", "chapter"],
           "tableTo": "course_chapters",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "part", "chapter"],
           "columnsTo": ["course_id", "part", "chapter"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_chapters_localized_to_course_localized_fk": {
           "name": "course_chapters_localized_to_course_localized_fk",
           "tableFrom": "course_chapters_localized",
+          "columnsFrom": ["course_id", "language"],
           "tableTo": "courses_localized",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "language"],
           "columnsTo": ["course_id", "language"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_chapters_localized_to_course_parts_localized_fk": {
           "name": "course_chapters_localized_to_course_parts_localized_fk",
           "tableFrom": "course_chapters_localized",
+          "columnsFrom": ["course_id", "part", "language"],
           "tableTo": "course_parts_localized",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "part", "language"],
           "columnsTo": ["course_id", "part", "language"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -653,7 +651,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_chapters_localized_professors": {
+    "content.course_chapters_localized_professors": {
       "name": "course_chapters_localized_professors",
       "schema": "content",
       "columns": {
@@ -693,22 +691,22 @@
         "course_chapters_localized_professors_course_id_courses_id_fk": {
           "name": "course_chapters_localized_professors_course_id_courses_id_fk",
           "tableFrom": "course_chapters_localized_professors",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_chapters_localized_professors_contributor_id_contributors_id_fk": {
           "name": "course_chapters_localized_professors_contributor_id_contributors_id_fk",
           "tableFrom": "course_chapters_localized_professors",
+          "columnsFrom": ["contributor_id"],
           "tableTo": "contributors",
           "schemaTo": "content",
-          "columnsFrom": ["contributor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -725,7 +723,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_parts": {
+    "content.course_parts": {
       "name": "course_parts",
       "schema": "content",
       "columns": {
@@ -747,12 +745,12 @@
         "course_parts_course_id_courses_id_fk": {
           "name": "course_parts_course_id_courses_id_fk",
           "tableFrom": "course_parts",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -763,7 +761,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_parts_localized": {
+    "content.course_parts_localized": {
       "name": "course_parts_localized",
       "schema": "content",
       "columns": {
@@ -797,22 +795,22 @@
         "course_parts_localized_to_course_parts_fk": {
           "name": "course_parts_localized_to_course_parts_fk",
           "tableFrom": "course_parts_localized",
+          "columnsFrom": ["course_id", "part"],
           "tableTo": "course_parts",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "part"],
           "columnsTo": ["course_id", "part"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_parts_localized_to_course_localized_fk": {
           "name": "course_parts_localized_to_course_localized_fk",
           "tableFrom": "course_parts_localized",
+          "columnsFrom": ["course_id", "language"],
           "tableTo": "courses_localized",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "language"],
           "columnsTo": ["course_id", "language"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -823,7 +821,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_professors": {
+    "content.course_professors": {
       "name": "course_professors",
       "schema": "content",
       "columns": {
@@ -845,22 +843,22 @@
         "course_professors_course_id_courses_id_fk": {
           "name": "course_professors_course_id_courses_id_fk",
           "tableFrom": "course_professors",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_professors_contributor_id_contributors_id_fk": {
           "name": "course_professors_contributor_id_contributors_id_fk",
           "tableFrom": "course_professors",
+          "columnsFrom": ["contributor_id"],
           "tableTo": "contributors",
           "schemaTo": "content",
-          "columnsFrom": ["contributor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -871,7 +869,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_tags": {
+    "content.course_tags": {
       "name": "course_tags",
       "schema": "content",
       "columns": {
@@ -893,22 +891,22 @@
         "course_tags_course_id_courses_id_fk": {
           "name": "course_tags_course_id_courses_id_fk",
           "tableFrom": "course_tags",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_tags_tag_id_tags_id_fk": {
           "name": "course_tags_tag_id_tags_id_fk",
           "tableFrom": "course_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -919,7 +917,7 @@
       },
       "uniqueConstraints": {}
     },
-    "courses": {
+    "content.courses": {
       "name": "courses",
       "schema": "content",
       "columns": {
@@ -1010,7 +1008,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "courses_localized": {
+    "content.courses_localized": {
       "name": "courses_localized",
       "schema": "content",
       "columns": {
@@ -1056,12 +1054,12 @@
         "courses_localized_course_id_courses_id_fk": {
           "name": "courses_localized_course_id_courses_id_fk",
           "tableFrom": "courses_localized",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1072,7 +1070,7 @@
       },
       "uniqueConstraints": {}
     },
-    "event_languages": {
+    "content.event_languages": {
       "name": "event_languages",
       "schema": "content",
       "columns": {
@@ -1094,12 +1092,12 @@
         "event_languages_event_id_events_id_fk": {
           "name": "event_languages_event_id_events_id_fk",
           "tableFrom": "event_languages",
+          "columnsFrom": ["event_id"],
           "tableTo": "events",
           "schemaTo": "content",
-          "columnsFrom": ["event_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1110,7 +1108,7 @@
       },
       "uniqueConstraints": {}
     },
-    "event_tags": {
+    "content.event_tags": {
       "name": "event_tags",
       "schema": "content",
       "columns": {
@@ -1132,22 +1130,22 @@
         "event_tags_event_id_events_id_fk": {
           "name": "event_tags_event_id_events_id_fk",
           "tableFrom": "event_tags",
+          "columnsFrom": ["event_id"],
           "tableTo": "events",
           "schemaTo": "content",
-          "columnsFrom": ["event_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "event_tags_tag_id_tags_id_fk": {
           "name": "event_tags_tag_id_tags_id_fk",
           "tableFrom": "event_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1158,7 +1156,7 @@
       },
       "uniqueConstraints": {}
     },
-    "events": {
+    "content.events": {
       "name": "events",
       "schema": "content",
       "columns": {
@@ -1329,12 +1327,12 @@
       "uniqueConstraints": {
         "events_path_unique": {
           "name": "events_path_unique",
-          "nullsNotDistinct": false,
-          "columns": ["path"]
+          "columns": ["path"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "podcasts": {
+    "content.podcasts": {
       "name": "podcasts",
       "schema": "content",
       "columns": {
@@ -1398,18 +1396,18 @@
         "podcasts_resource_id_resources_id_fk": {
           "name": "podcasts_resource_id_resources_id_fk",
           "tableFrom": "podcasts",
+          "columnsFrom": ["resource_id"],
           "tableTo": "resources",
           "schemaTo": "content",
-          "columnsFrom": ["resource_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "professor_tags": {
+    "content.professor_tags": {
       "name": "professor_tags",
       "schema": "content",
       "columns": {
@@ -1431,22 +1429,22 @@
         "professor_tags_professor_id_professors_id_fk": {
           "name": "professor_tags_professor_id_professors_id_fk",
           "tableFrom": "professor_tags",
+          "columnsFrom": ["professor_id"],
           "tableTo": "professors",
           "schemaTo": "content",
-          "columnsFrom": ["professor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "professor_tags_tag_id_tags_id_fk": {
           "name": "professor_tags_tag_id_tags_id_fk",
           "tableFrom": "professor_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1457,7 +1455,7 @@
       },
       "uniqueConstraints": {}
     },
-    "professors": {
+    "content.professors": {
       "name": "professors",
       "schema": "content",
       "columns": {
@@ -1577,34 +1575,34 @@
         "professors_contributor_id_contributors_id_fk": {
           "name": "professors_contributor_id_contributors_id_fk",
           "tableFrom": "professors",
+          "columnsFrom": ["contributor_id"],
           "tableTo": "contributors",
           "schemaTo": "content",
-          "columnsFrom": ["contributor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "professors_path_unique": {
           "name": "professors_path_unique",
-          "nullsNotDistinct": false,
-          "columns": ["path"]
+          "columns": ["path"],
+          "nullsNotDistinct": false
         },
         "professors_name_unique": {
           "name": "professors_name_unique",
-          "nullsNotDistinct": false,
-          "columns": ["name"]
+          "columns": ["name"],
+          "nullsNotDistinct": false
         },
         "professors_contributor_id_unique": {
           "name": "professors_contributor_id_unique",
-          "nullsNotDistinct": false,
-          "columns": ["contributor_id"]
+          "columns": ["contributor_id"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "professors_localized": {
+    "content.professors_localized": {
       "name": "professors_localized",
       "schema": "content",
       "columns": {
@@ -1638,12 +1636,12 @@
         "professors_localized_professor_id_professors_id_fk": {
           "name": "professors_localized_professor_id_professors_id_fk",
           "tableFrom": "professors_localized",
+          "columnsFrom": ["professor_id"],
           "tableTo": "professors",
           "schemaTo": "content",
-          "columnsFrom": ["professor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1654,7 +1652,7 @@
       },
       "uniqueConstraints": {}
     },
-    "quiz_question_tags": {
+    "content.quiz_question_tags": {
       "name": "quiz_question_tags",
       "schema": "content",
       "columns": {
@@ -1676,22 +1674,22 @@
         "quiz_question_tags_quiz_question_id_quiz_questions_id_fk": {
           "name": "quiz_question_tags_quiz_question_id_quiz_questions_id_fk",
           "tableFrom": "quiz_question_tags",
+          "columnsFrom": ["quiz_question_id"],
           "tableTo": "quiz_questions",
           "schemaTo": "content",
-          "columnsFrom": ["quiz_question_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "quiz_question_tags_tag_id_tags_id_fk": {
           "name": "quiz_question_tags_tag_id_tags_id_fk",
           "tableFrom": "quiz_question_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1702,7 +1700,7 @@
       },
       "uniqueConstraints": {}
     },
-    "quiz_questions": {
+    "content.quiz_questions": {
       "name": "quiz_questions",
       "schema": "content",
       "columns": {
@@ -1774,18 +1772,18 @@
         "quizzes_to_course_chapters_fk": {
           "name": "quizzes_to_course_chapters_fk",
           "tableFrom": "quiz_questions",
+          "columnsFrom": ["course_id", "part", "chapter"],
           "tableTo": "course_chapters",
           "schemaTo": "content",
-          "columnsFrom": ["course_id", "part", "chapter"],
           "columnsTo": ["course_id", "part", "chapter"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "quiz_questions_localized": {
+    "content.quiz_questions_localized": {
       "name": "quiz_questions_localized",
       "schema": "content",
       "columns": {
@@ -1831,12 +1829,12 @@
         "quiz_questions_localized_quiz_question_id_quiz_questions_id_fk": {
           "name": "quiz_questions_localized_quiz_question_id_quiz_questions_id_fk",
           "tableFrom": "quiz_questions_localized",
+          "columnsFrom": ["quiz_question_id"],
           "tableTo": "quiz_questions",
           "schemaTo": "content",
-          "columnsFrom": ["quiz_question_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1847,7 +1845,7 @@
       },
       "uniqueConstraints": {}
     },
-    "resource_tags": {
+    "content.resource_tags": {
       "name": "resource_tags",
       "schema": "content",
       "columns": {
@@ -1869,22 +1867,22 @@
         "resource_tags_resource_id_resources_id_fk": {
           "name": "resource_tags_resource_id_resources_id_fk",
           "tableFrom": "resource_tags",
+          "columnsFrom": ["resource_id"],
           "tableTo": "resources",
           "schemaTo": "content",
-          "columnsFrom": ["resource_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "resource_tags_tag_id_tags_id_fk": {
           "name": "resource_tags_tag_id_tags_id_fk",
           "tableFrom": "resource_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1895,7 +1893,7 @@
       },
       "uniqueConstraints": {}
     },
-    "resources": {
+    "content.resources": {
       "name": "resources",
       "schema": "content",
       "columns": {
@@ -1944,12 +1942,12 @@
       "uniqueConstraints": {
         "resources_category_path_unique": {
           "name": "resources_category_path_unique",
-          "nullsNotDistinct": false,
-          "columns": ["category", "path"]
+          "columns": ["category", "path"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "tags": {
+    "content.tags": {
       "name": "tags",
       "schema": "content",
       "columns": {
@@ -1972,12 +1970,12 @@
       "uniqueConstraints": {
         "tags_name_unique": {
           "name": "tags_name_unique",
-          "nullsNotDistinct": false,
-          "columns": ["name"]
+          "columns": ["name"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "tutorial_credits": {
+    "content.tutorial_credits": {
       "name": "tutorial_credits",
       "schema": "content",
       "columns": {
@@ -2041,28 +2039,28 @@
         "tutorial_credits_tutorial_id_tutorials_id_fk": {
           "name": "tutorial_credits_tutorial_id_tutorials_id_fk",
           "tableFrom": "tutorial_credits",
+          "columnsFrom": ["tutorial_id"],
           "tableTo": "tutorials",
           "schemaTo": "content",
-          "columnsFrom": ["tutorial_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "tutorial_credits_contributor_id_contributors_id_fk": {
           "name": "tutorial_credits_contributor_id_contributors_id_fk",
           "tableFrom": "tutorial_credits",
+          "columnsFrom": ["contributor_id"],
           "tableTo": "contributors",
           "schemaTo": "content",
-          "columnsFrom": ["contributor_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "tutorial_tags": {
+    "content.tutorial_tags": {
       "name": "tutorial_tags",
       "schema": "content",
       "columns": {
@@ -2084,22 +2082,22 @@
         "tutorial_tags_tutorial_id_tutorials_id_fk": {
           "name": "tutorial_tags_tutorial_id_tutorials_id_fk",
           "tableFrom": "tutorial_tags",
+          "columnsFrom": ["tutorial_id"],
           "tableTo": "tutorials",
           "schemaTo": "content",
-          "columnsFrom": ["tutorial_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "tutorial_tags_tag_id_tags_id_fk": {
           "name": "tutorial_tags_tag_id_tags_id_fk",
           "tableFrom": "tutorial_tags",
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
           "schemaTo": "content",
-          "columnsFrom": ["tag_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2110,7 +2108,7 @@
       },
       "uniqueConstraints": {}
     },
-    "tutorials": {
+    "content.tutorials": {
       "name": "tutorials",
       "schema": "content",
       "columns": {
@@ -2183,17 +2181,17 @@
       "uniqueConstraints": {
         "tutorials_path_unique": {
           "name": "tutorials_path_unique",
-          "nullsNotDistinct": false,
-          "columns": ["path"]
+          "columns": ["path"],
+          "nullsNotDistinct": false
         },
         "tutorials_name_category_unique": {
           "name": "tutorials_name_category_unique",
-          "nullsNotDistinct": false,
-          "columns": ["name", "category"]
+          "columns": ["name", "category"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "tutorials_localized": {
+    "content.tutorials_localized": {
       "name": "tutorials_localized",
       "schema": "content",
       "columns": {
@@ -2233,12 +2231,12 @@
         "tutorials_localized_tutorial_id_tutorials_id_fk": {
           "name": "tutorials_localized_tutorial_id_tutorials_id_fk",
           "tableFrom": "tutorials_localized",
+          "columnsFrom": ["tutorial_id"],
           "tableTo": "tutorials",
           "schemaTo": "content",
-          "columnsFrom": ["tutorial_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2249,7 +2247,7 @@
       },
       "uniqueConstraints": {}
     },
-    "coupon_code": {
+    "content.coupon_code": {
       "name": "coupon_code",
       "schema": "content",
       "columns": {
@@ -2303,18 +2301,18 @@
         "coupon_code_uid_accounts_uid_fk": {
           "name": "coupon_code_uid_accounts_uid_fk",
           "tableFrom": "coupon_code",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "accounts": {
+    "users.accounts": {
       "name": "accounts",
       "schema": "users",
       "columns": {
@@ -2376,27 +2374,27 @@
       "uniqueConstraints": {
         "accounts_username_unique": {
           "name": "accounts_username_unique",
-          "nullsNotDistinct": false,
-          "columns": ["username"]
+          "columns": ["username"],
+          "nullsNotDistinct": false
         },
         "accounts_display_name_unique": {
           "name": "accounts_display_name_unique",
-          "nullsNotDistinct": false,
-          "columns": ["display_name"]
+          "columns": ["display_name"],
+          "nullsNotDistinct": false
         },
         "accounts_email_unique": {
           "name": "accounts_email_unique",
-          "nullsNotDistinct": false,
-          "columns": ["email"]
+          "columns": ["email"],
+          "nullsNotDistinct": false
         },
         "accounts_contributor_id_unique": {
           "name": "accounts_contributor_id_unique",
-          "nullsNotDistinct": false,
-          "columns": ["contributor_id"]
+          "columns": ["contributor_id"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "course_payment": {
+    "users.course_payment": {
       "name": "course_payment",
       "schema": "users",
       "columns": {
@@ -2467,32 +2465,32 @@
         "course_payment_uid_accounts_uid_fk": {
           "name": "course_payment_uid_accounts_uid_fk",
           "tableFrom": "course_payment",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_payment_course_id_courses_id_fk": {
           "name": "course_payment_course_id_courses_id_fk",
           "tableFrom": "course_payment",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_payment_coupon_code_coupon_code_code_fk": {
           "name": "course_payment_coupon_code_coupon_code_code_fk",
           "tableFrom": "course_payment",
+          "columnsFrom": ["coupon_code"],
           "tableTo": "coupon_code",
           "schemaTo": "content",
-          "columnsFrom": ["coupon_code"],
           "columnsTo": ["code"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -2503,7 +2501,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_progress": {
+    "users.course_progress": {
       "name": "course_progress",
       "schema": "users",
       "columns": {
@@ -2546,22 +2544,22 @@
         "course_progress_uid_accounts_uid_fk": {
           "name": "course_progress_uid_accounts_uid_fk",
           "tableFrom": "course_progress",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_progress_course_id_courses_id_fk": {
           "name": "course_progress_course_id_courses_id_fk",
           "tableFrom": "course_progress",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2572,7 +2570,7 @@
       },
       "uniqueConstraints": {}
     },
-    "course_user_chapter": {
+    "users.course_user_chapter": {
       "name": "course_user_chapter",
       "schema": "users",
       "columns": {
@@ -2617,36 +2615,56 @@
       },
       "indexes": {
         "course_user_chapter_uid_index": {
+          "columns": [
+            {
+              "expression": "uid",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "with": {},
           "name": "course_user_chapter_uid_index",
-          "columns": ["uid"],
-          "isUnique": false
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         },
         "course_user_chapter_course_id_index": {
+          "columns": [
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "with": {},
           "name": "course_user_chapter_course_id_index",
-          "columns": ["course_id"],
-          "isUnique": false
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "course_user_chapter_uid_accounts_uid_fk": {
           "name": "course_user_chapter_uid_accounts_uid_fk",
           "tableFrom": "course_user_chapter",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "course_user_chapter_course_id_courses_id_fk": {
           "name": "course_user_chapter_course_id_courses_id_fk",
           "tableFrom": "course_user_chapter",
+          "columnsFrom": ["course_id"],
           "tableTo": "courses",
           "schemaTo": "content",
-          "columnsFrom": ["course_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2657,7 +2675,7 @@
       },
       "uniqueConstraints": {}
     },
-    "event_payment": {
+    "users.event_payment": {
       "name": "event_payment",
       "schema": "users",
       "columns": {
@@ -2717,22 +2735,22 @@
         "event_payment_uid_accounts_uid_fk": {
           "name": "event_payment_uid_accounts_uid_fk",
           "tableFrom": "event_payment",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "event_payment_event_id_events_id_fk": {
           "name": "event_payment_event_id_events_id_fk",
           "tableFrom": "event_payment",
+          "columnsFrom": ["event_id"],
           "tableTo": "events",
           "schemaTo": "content",
-          "columnsFrom": ["event_id"],
           "columnsTo": ["id"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -2743,7 +2761,7 @@
       },
       "uniqueConstraints": {}
     },
-    "lud4_public_keys": {
+    "users.lud4_public_keys": {
       "name": "lud4_public_keys",
       "schema": "users",
       "columns": {
@@ -2786,24 +2804,24 @@
         "lud4_public_keys_uid_accounts_uid_fk": {
           "name": "lud4_public_keys_uid_accounts_uid_fk",
           "tableFrom": "lud4_public_keys",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "lud4_public_keys_public_key_unique": {
           "name": "lud4_public_keys_public_key_unique",
-          "nullsNotDistinct": false,
-          "columns": ["public_key"]
+          "columns": ["public_key"],
+          "nullsNotDistinct": false
         }
       }
     },
-    "quiz_attempts": {
+    "users.quiz_attempts": {
       "name": "quiz_attempts",
       "schema": "users",
       "columns": {
@@ -2856,12 +2874,12 @@
         "quiz_attempts_uid_accounts_uid_fk": {
           "name": "quiz_attempts_uid_accounts_uid_fk",
           "tableFrom": "quiz_attempts",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2872,7 +2890,7 @@
       },
       "uniqueConstraints": {}
     },
-    "user_event": {
+    "users.user_event": {
       "name": "user_event",
       "schema": "users",
       "columns": {
@@ -2905,36 +2923,56 @@
       },
       "indexes": {
         "user_event_uid_index": {
+          "columns": [
+            {
+              "expression": "uid",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "with": {},
           "name": "user_event_uid_index",
-          "columns": ["uid"],
-          "isUnique": false
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         },
         "user_event_event_id_index": {
+          "columns": [
+            {
+              "expression": "event_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "with": {},
           "name": "user_event_event_id_index",
-          "columns": ["event_id"],
-          "isUnique": false
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "user_event_uid_accounts_uid_fk": {
           "name": "user_event_uid_accounts_uid_fk",
           "tableFrom": "user_event",
+          "columnsFrom": ["uid"],
           "tableTo": "accounts",
           "schemaTo": "users",
-          "columnsFrom": ["uid"],
           "columnsTo": ["uid"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "user_event_event_id_events_id_fk": {
           "name": "user_event_event_id_events_id_fk",
           "tableFrom": "user_event",
+          "columnsFrom": ["event_id"],
           "tableTo": "events",
           "schemaTo": "content",
-          "columnsFrom": ["event_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -2947,14 +2985,10 @@
     }
   },
   "enums": {
-    "event_type": {
+    "public.event_type": {
       "name": "event_type",
-      "values": {
-        "conference": "conference",
-        "workshop": "workshop",
-        "course": "course",
-        "lecture": "lecture"
-      }
+      "schema": "public",
+      "values": ["conference", "workshop", "course", "lecture"]
     }
   },
   "schemas": {
@@ -2962,8 +2996,10 @@
     "users": "users"
   },
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "373c546c-014e-46ac-8779-6a068c561745",
+  "prevId": "52959554-71e7-48d4-a20e-12f441634735"
 }
