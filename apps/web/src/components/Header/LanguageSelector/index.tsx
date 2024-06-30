@@ -1,10 +1,12 @@
 import { Popover, Transition } from '@headlessui/react';
 import { t } from 'i18next';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { Button, cn } from '@sovereign-university/ui';
+
+import { LangContext } from '#src/providers/app.js';
 
 import Flag from '../../../atoms/Flag/index.tsx';
 import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
@@ -33,18 +35,14 @@ export const LanguageSelector = ({
   className,
 }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
+  const { setCurrentLanguage } = useContext(LangContext);
 
   const [open, setOpen] = useState(false);
-  const [activeLanguage, setActiveLanguage] = useState(
-    i18n.resolvedLanguage ?? 'en',
-  );
 
-  useEffect(() => {
-    setActiveLanguage(LANGUAGES.includes(i18n.language) ? i18n.language : 'en');
-  }, [i18n.language]);
+  const activeLanguage = i18n.resolvedLanguage ?? 'en';
 
-  const changeLanguage = async (lng: string) => {
-    await i18n.changeLanguage(lng);
+  const changeLanguage = (lang: string) => {
+    setCurrentLanguage(lang);
     setOpen(false);
   };
 
