@@ -2,18 +2,13 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
+import type { JoinedGlossaryWord } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { normalizeString } from '#src/utils/string.js';
 
-interface GlossaryTerm {
-  term: string;
-  definition: string;
-  id: string;
-}
-
 interface GlossaryListProps {
-  glossaryTerms: GlossaryTerm[];
+  glossaryTerms: JoinedGlossaryWord[];
   selectedLetter: string | null;
 }
 
@@ -22,7 +17,7 @@ export const GlossaryList = ({
   selectedLetter,
 }: GlossaryListProps) => {
   const [filteredTerms, setFilteredTerms] =
-    useState<GlossaryTerm[]>(glossaryTerms);
+    useState<JoinedGlossaryWord[]>(glossaryTerms);
 
   const [maxWords, setMaxWords] = useState(10);
 
@@ -55,7 +50,7 @@ export const GlossaryList = ({
             <div className="flex items-center max-w-[820px] w-full gap-5 mx-auto px-4">
               <Link
                 to="/resources/glossary/$wordId"
-                params={{ wordId: term.id }}
+                params={{ wordId: term.path }}
                 className="w-1/3 text-darkOrange-5 desktop-h7 underline underline-offset-4 capitalize"
               >
                 {term.term}
@@ -76,7 +71,7 @@ export const GlossaryList = ({
             <div className="flex flex-col w-full gap-2">
               <Link
                 to="/resources/glossary/$wordId"
-                params={{ wordId: term.id }}
+                params={{ wordId: term.path }}
                 className="text-darkOrange-5 text-lg font-medium leading-relaxed tracking-015px underline underline-offset-4 capitalize"
               >
                 {term.term}

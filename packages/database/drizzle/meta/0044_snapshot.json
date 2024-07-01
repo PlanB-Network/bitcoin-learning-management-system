@@ -1,5 +1,5 @@
 {
-  "id": "b5447e9d-7f2f-46dd-af5d-7317212ad382",
+  "id": "06424ca7-1c70-4b7c-857c-0be8e9fc4040",
   "prevId": "9524d0d1-746f-458a-8aba-25c6b18a9bdf",
   "version": "7",
   "dialect": "postgresql",
@@ -1615,6 +1615,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "file_name": {
+          "name": "file_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "related_words": {
           "name": "related_words",
           "type": "varchar(255)[]",
@@ -1658,21 +1664,21 @@
           "name": "term",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "definition": {
           "name": "definition",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "glossary_words_localized_glossary_word_id_builders_resource_id_fk": {
-          "name": "glossary_words_localized_glossary_word_id_builders_resource_id_fk",
+        "glossary_words_localized_glossary_word_id_glossary_words_resource_id_fk": {
+          "name": "glossary_words_localized_glossary_word_id_glossary_words_resource_id_fk",
           "tableFrom": "glossary_words_localized",
-          "tableTo": "builders",
+          "tableTo": "glossary_words",
           "schemaTo": "content",
           "columnsFrom": ["glossary_word_id"],
           "columnsTo": ["resource_id"],

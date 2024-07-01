@@ -5,18 +5,13 @@ import type { Resource } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { separateContentFiles, yamlToObject } from '../../../utils.js';
-import type { BaseResource, ChangedResource } from '../index.js';
+import type { ChangedResource } from '../index.js';
 import { createProcessMainFile } from '../main.js';
 
 /** Base glossary word information, same for all translations */
 interface GlossaryWordMain {
   en_word: string;
   related_words: string[];
-}
-
-interface GlossaryWordLocal extends BaseResource {
-  term: string;
-  definition: string;
 }
 
 export const createProcessChangedGlossaryWord = (
@@ -54,13 +49,16 @@ export const createProcessChangedGlossaryWord = (
           if (main && main.kind !== 'removed') {
             const parsed = yamlToObject<GlossaryWordMain>(main.data);
 
+            const fileName = resource.path.split('/').slice(-1);
+
             await transaction`
-          INSERT INTO content.glossary_words (resource_id, original_word, related_words)
+          INSERT INTO content.glossary_words (resource_id, original_word, file_name, related_words)
           VALUES (
-            ${id}, ${parsed.en_word}, ${parsed.related_words}
+            ${id}, ${parsed.en_word}, ${fileName}, ${parsed.related_words}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             original_word = EXCLUDED.original_word,
+            file_name = EXCLUDED.file_name,
             related_words = EXCLUDED.related_words
         `;
           }
@@ -73,7 +71,6 @@ export const createProcessChangedGlossaryWord = (
 
         for (const file of files) {
           try {
-            // To complete
             if (file.kind === 'removed') {
               continue;
             }
@@ -82,29 +79,18 @@ export const createProcessChangedGlossaryWord = (
               excerpt: false,
             });
 
-            const data = header.data;
-
-            console.log(file.data);
+            await transaction`
+              INSERT INTO content.glossary_words_localized (glossary_word_id, language, term, definition)
+              VALUES (${id}, ${file.language}, ${header.data['term']}, ${header.content.trim()})
+              ON CONFLICT (glossary_word_id, language) DO UPDATE SET
+                term = EXCLUDED.term,
+                definition = EXCLUDED.definition
+            `.then(firstRow);
           } catch (error) {
             errors.push(
-              `Error processing one file (words) ${resource.path} - ${file?.path} (${resource.fullPath}): ${error}`,
+              `Error processing one file (word) ${resource.path} - ${file?.path} (${resource.fullPath}): ${error}`,
             );
           }
-
-          //   try {
-          //     const parsed = yamlToObject<GlossaryWordLocal>(file.data);
-
-          //     await transaction`
-          //   INSERT INTO content.builders_localized (builder_id, language, description)
-          //   VALUES (${id}, ${file.language}, ${parsed.description.trim()})
-          //   ON CONFLICT (builder_id, language) DO UPDATE SET
-          //     description = EXCLUDED.description
-          // `.then(firstRow);
-          //   } catch (error) {
-          //     errors.push(
-          //       `Error processing file ${file?.path} (${resource.fullPath}): ${error}`,
-          //     );
-          //   }
         }
       })
       .catch(() => {

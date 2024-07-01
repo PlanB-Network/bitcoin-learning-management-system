@@ -5,5 +5,6 @@ export { createGetBuilder } from './get-builder.js';
 export { createGetBuilders } from './get-builders.js';
 export { createGetConference } from './get-conference.js';
 export { createGetConferences } from './get-conferences.js';
+export { createGetGlossaryWords } from './get-glossary-words.js';
 export { createGetPodcast } from './get-podcast.js';
 export { createGetPodcasts } from './get-podcasts.js';

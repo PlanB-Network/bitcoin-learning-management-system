@@ -95,7 +95,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               <img
                 src={professor.picture}
                 alt="Professor"
-                className="mt-8 size-28 rounded-full bg-white"
+                className="object-cover mt-8 size-28 rounded-full bg-white"
               />
             </div>
             <div className="mt-2 flex h-full flex-col items-center justify-center self-stretch px-5 py-0">

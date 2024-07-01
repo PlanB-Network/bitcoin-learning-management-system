@@ -5,6 +5,7 @@ export * from './conference.js';
 export * from './coupon.js';
 export * from './course.js';
 export * from './event.js';
+export * from './glossary.js';
 export * from './podcast.js';
 export * from './professor.js';
 export * from './quiz.js';

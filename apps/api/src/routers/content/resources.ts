@@ -8,6 +8,7 @@ import {
   createGetBuilders,
   createGetConference,
   createGetConferences,
+  createGetGlossaryWords,
   createGetPodcast,
   createGetPodcasts,
 } from '@sovereign-university/content';
@@ -16,6 +17,7 @@ import {
   joinedBookSchema,
   joinedBuilderSchema,
   joinedConferenceSchema,
+  joinedGlossaryWordSchema,
   joinedPodcastSchema,
 } from '@sovereign-university/schemas';
 
@@ -77,6 +79,12 @@ export const resourcesRouter = createTRPCRouter({
     .output(joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })))
     .query(async ({ ctx, input }) =>
       createGetConference(ctx.dependencies)(input.id),
+    ),
+  // Glossary Words
+  getGlossaryWords: createGetResourcesProcedure()
+    .output(joinedGlossaryWordSchema.array())
+    .query(async ({ ctx, input }) =>
+      createGetGlossaryWords(ctx.dependencies)(input?.language),
     ),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()

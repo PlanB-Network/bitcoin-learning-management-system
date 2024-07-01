@@ -9,7 +9,7 @@ import {
 import { resourceSchema } from './resource.js';
 
 export const glossaryWordSchema = createSelectSchema(contentGlossaryWords, {
-  relatedWords: z.array(z.string()),
+  relatedWords: z.array(z.string()).optional(),
 });
 export const glossaryWordLocalizedSchema = createSelectSchema(
   contentGlossaryWordsLocalized,
