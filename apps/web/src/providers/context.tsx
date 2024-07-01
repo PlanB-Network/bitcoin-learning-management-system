@@ -33,8 +33,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    console.log('Querying user');
-
     trpcClient.user.getDetails
       .query()
       .then((data) => data ?? null)
