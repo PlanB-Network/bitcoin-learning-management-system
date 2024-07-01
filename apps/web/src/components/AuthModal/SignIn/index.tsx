@@ -151,8 +151,6 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
             {t('auth.createOne')}
           </button>
         </p>
-        {/* 
-        // Add back when we support emails
 
         <p className="mb-0 mt-2 text-xs">
           <button
@@ -161,9 +159,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
           >
             {t('auth.forgottenPassword')}
           </button>
-        </p> 
-        
-        */}
+        </p>
       </div>
     </Modal>
   );
