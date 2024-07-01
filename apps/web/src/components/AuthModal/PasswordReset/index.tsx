@@ -19,7 +19,7 @@ interface LoginModalProps {
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const { t } = useTranslation();
 
-  const recoverPassword = trpc.user.requestPasswordReset.useMutation({
+  const resetPassword = trpc.user.requestPasswordReset.useMutation({
     onSuccess: () => {
       console.log('Password reset email sent');
     },
@@ -29,9 +29,9 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     ({ email }: { email: string }) => {
       console.log('Reset password for email:', email);
 
-      recoverPassword.mutate({ email });
+      resetPassword.mutate({ email });
     },
-    [recoverPassword],
+    [resetPassword],
   );
 
   return (
