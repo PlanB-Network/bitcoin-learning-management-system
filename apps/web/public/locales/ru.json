@@ -362,48 +362,75 @@
       "noTicket": "У Вас еще нет билетов.",
       "pastTicketTitle": "Прошлые бронирования",
       "upcomingTicketTitle": "Предстоящие бронирования",
-      "upcomingTicketSubtitle": ""
+      "upcomingTicketSubtitle": "Скачайте ваш билет здесь, чтобы посетить следующее мероприятие. Обязательно возьмите с собой билет, чтобы получить доступ на мероприятие."
     },
-    "bookings": "",
-    "courses": "",
-    "logout": "",
+    "bookings": "Бронирования",
+    "courses": "Курсы",
+    "logout": "Выйти",
     "myCourses": {
-      "completed": "",
-      "details": "",
-      "inprogress": "",
-      "resumeLesson": ""
+      "completed": "Завершено",
+      "details": "Детали",
+      "inprogress": "В процессе",
+      "resumeLesson": "Резюме",
+      "completedCoursesTitle": "Завершенные курсы",
+      "completedCoursesDescription": "Здесь Вы можете проверить свои завершенные курсы.",
+      "inprogressCoursesTitle": "Текущие курсы",
+      "inprogressCoursesDescription": "Здесь Вы можете проверить свой прогресс в курсах, которые Вы начали.",
+      "seeProgress": "чтобы увидеть ваш прогресс здесь.",
+      "startCourse": "Начать или завершить курс"
+    },
+    "calendar": {
+      "calendar": "Календарь",
+      "personalCalendar": "Личный календарь"
+    },
+    "profile": {
+      "change": "Изменить",
+      "edit": "Редактировать",
+      "cancel": "Отмена",
+      "save": "Сохранить",
+      "saving": "Сохраняем...",
+      "crop": "Обрезать",
+      "preview": "Предварительный просмотр",
+      "displayName": "Отображаемое имя",
+      "email": "Электронная почта",
+      "password": "Пароль",
+      "personalInformation": "Моя личная информация",
+      "profileInformation": "Информация о профиле",
+      "profilePicture": "Фотография профиля",
+      "security": "Безопасность",
+      "username": "Имя пользователя"
     }
   },
   "events": {
     "card": {
-      "free": "",
-      "online": "",
-      "limited": "",
-      "unlimited": "",
-      "people": "",
-      "watchLive": "",
-      "watchReplay": "",
-      "buyReplay": "",
-      "bookLive": "",
-      "bookSeat": "",
-      "eventFull": "",
-      "seatBooked": "",
-      "visitWebsite": ""
+      "free": "бесплатно",
+      "online": "онлайн",
+      "limited": "ограниченный до",
+      "unlimited": "неограниченный",
+      "people": "люди",
+      "watchLive": "Смотреть в прямом эфире",
+      "watchReplay": "Смотреть повтор",
+      "buyReplay": "Купить повтор",
+      "bookLive": "Забронировать в прямом эфире",
+      "bookSeat": "Забронировать место",
+      "eventFull": "Нет свободных мест",
+      "seatBooked": "Место забронировано",
+      "visitWebsite": "Посетить веб-сайт"
     },
     "main": {
-      "upcomingEvents": "",
-      "currentEvents": ""
+      "upcomingEvents": "Предстоящие события",
+      "currentEvents": "События, происходящие прямо сейчас"
     },
     "missed": {
-      "missedh1": "",
-      "missedp1": "",
-      "missedp2": ""
+      "missedh1": "Прошедшие события для повторного просмотра",
+      "missedp1": "Вы пропустили мероприятие?",
+      "missedp2": "Здесь мы храним все записи прошедших событий, которые прошли в Сети, чтобы каждый мог свободно ознакомиться с тем, что он пропустил."
     },
     "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
+      "button": "Добавь мое событие",
+      "description": "Конечно! Все события, связанные с Биткоином, могут повысить свою узнаваемость здесь, и любая инициатива по созданию нового события приветствуется :)",
+      "subtitle": "Оказать оранжевое влияние на миллиард людей не так уж и просто",
+      "title": "Хотите добавить свое мероприятие?"
     },
     "pageDescription": "",
     "pageSubtitle": "",
