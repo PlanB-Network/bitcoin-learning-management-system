@@ -8,7 +8,6 @@ import { professorsRouter } from './professors.js';
 import { resourcesRouter } from './resources.js';
 import { tutorialsRouter } from './tutorials.js';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const contentRouter = mergeTRPCRouters(
   couponRouter,
   coursesRouter,

@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@sovereign-university/database": "workspace:*",
-    "@trpc/server": "11.0.0-next-beta.316",
+    "@trpc/server": "11.0.0-rc.433",
     "@types/qr-image": "^3.2.9",
     "argon2": "^0.40.3",
     "axios": "^1.7.2",

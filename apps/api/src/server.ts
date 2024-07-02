@@ -1,3 +1,5 @@
+import type { Server } from 'node:http';
+
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router, json } from 'express';
 
@@ -57,7 +59,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   server.on('error', console.error);
 
-  return new Promise<typeof server>((resolve, reject) => {
+  return new Promise<Server>((resolve, reject) => {
     server.on('listening', () => {
       console.log(`[ ready ] listening on port ${port}`);
       resolve(server);
