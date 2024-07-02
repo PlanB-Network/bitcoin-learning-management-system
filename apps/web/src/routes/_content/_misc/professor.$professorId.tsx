@@ -20,9 +20,12 @@ export const Route = createFileRoute('/_content/_misc/professor/$professorId')({
 function ProfessorDetail() {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
-  const { professorId } = useParams({
-    from: '/professor/$professorId',
+  const params = useParams({
+    from: '/professor/$professorName-$professorId',
   });
+
+  const professorNameId = params['professorName-$professorId'];
+  const professorId = professorNameId.split('-').pop();
 
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
     professorId: Number(professorId),
