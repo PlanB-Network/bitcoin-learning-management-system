@@ -38,7 +38,7 @@ const fixEmbedUrl = (src: string) => {
   }
 };
 
-export const ConferencesMarkdownBody = ({
+export const GlossaryMarkdownBody = ({
   content,
   assetPrefix,
 }: {
@@ -57,30 +57,32 @@ export const ConferencesMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <div className="desktop-subtitle1 text-newGray-1">{children}</div>
+          <div className="mobile-body2 md:desktop-body1 text-white my-1 last:mb-0">
+            {children}
+          </div>
         ),
         a: ({ children, href }) => (
           <a
             href={href}
             target="_blank"
-            className="underline text-newBlue-1"
+            className="underline text-darkOrange-5"
             rel="noreferrer"
           >
             {children}
           </a>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
+          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify">
+          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 text-base tracking-wide last:mb-0 md:text-justify">
+          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-white">
             {children}
           </li>
         ),
@@ -157,7 +159,7 @@ export const ConferencesMarkdownBody = ({
       remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
-        src.startsWith('http') ? src : `${assetPrefix}/${src}`
+        src.startsWith('http') ? src : `${assetPrefix}/${src.replace('./', '')}`
       }
     >
       {content}

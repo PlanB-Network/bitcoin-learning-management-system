@@ -10,11 +10,13 @@ import { normalizeString } from '#src/utils/string.js';
 interface GlossaryListProps {
   glossaryTerms: JoinedGlossaryWord[];
   selectedLetter: string | null;
+  searchTerm: string;
 }
 
 export const GlossaryList = ({
   glossaryTerms,
   selectedLetter,
+  searchTerm,
 }: GlossaryListProps) => {
   const [filteredTerms, setFilteredTerms] =
     useState<JoinedGlossaryWord[]>(glossaryTerms);
@@ -24,13 +26,21 @@ export const GlossaryList = ({
   useEffect(() => {
     setFilteredTerms(
       selectedLetter
-        ? glossaryTerms.filter((term) =>
-            normalizeString(term.term).startsWith(selectedLetter.toLowerCase()),
-          )
-        : glossaryTerms,
+        ? glossaryTerms
+            .filter((term) =>
+              normalizeString(term.term).startsWith(
+                selectedLetter.toLowerCase(),
+              ),
+            )
+            .filter((term) =>
+              term.term.toLowerCase().includes(searchTerm.toLowerCase()),
+            )
+        : glossaryTerms.filter((term) =>
+            term.term.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
     );
     setMaxWords(10);
-  }, [selectedLetter, glossaryTerms]);
+  }, [selectedLetter, searchTerm, glossaryTerms]);
 
   return (
     <div className="flex flex-col mx-auto md:mt-20 w-full">
@@ -46,11 +56,11 @@ export const GlossaryList = ({
         </div>
         <div className="w-full h-px bg-newBlack-3" />
         {filteredTerms.slice(0, maxWords).map((term) => (
-          <>
+          <div key={term.originalWord} className="flex flex-col gap-6">
             <div className="flex items-center max-w-[820px] w-full gap-5 mx-auto px-4">
               <Link
                 to="/resources/glossary/$wordId"
-                params={{ wordId: term.path }}
+                params={{ wordId: term.fileName }}
                 className="w-1/3 text-darkOrange-5 desktop-h7 underline underline-offset-4 capitalize"
               >
                 {term.term}
@@ -60,28 +70,28 @@ export const GlossaryList = ({
               </p>
             </div>
             <div className="w-full h-px bg-newBlack-3" />
-          </>
+          </div>
         ))}
       </section>
 
       {/* Mobile */}
       <section className="flex flex-col gap-5 w-full md:hidden">
         {filteredTerms.slice(0, maxWords).map((term) => (
-          <>
-            <div className="flex flex-col w-full gap-2">
+          <div key={term.originalWord} className="flex flex-col gap-5 w-full">
+            <div className="flex flex-col w-full gap-2 mb-5">
               <Link
                 to="/resources/glossary/$wordId"
-                params={{ wordId: term.path }}
+                params={{ wordId: term.fileName }}
                 className="text-darkOrange-5 text-lg font-medium leading-relaxed tracking-015px underline underline-offset-4 capitalize"
               >
                 {term.term}
               </Link>
-              <p className="text-white text-sm leading-snug tracking-015px text-justify line-clamp-4">
+              <p className="text-white text-sm leading-snug tracking-015px line-clamp-4">
                 {term.definition}
               </p>
             </div>
             <div className="w-11/12 h-px bg-newBlack-3 mx-auto" />
-          </>
+          </div>
         ))}
       </section>
 

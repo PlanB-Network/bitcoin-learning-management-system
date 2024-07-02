@@ -21,8 +21,8 @@ const LetterButton = ({
       className={cn(
         'm-1 p-2 rounded-full size-8 flex items-center justify-center font-bold text-sm sm:size-10 sm:text-base md:size-12 md:text-lg',
         selectedLetter === letter
-          ? 'bg-orange-500 text-white'
-          : 'bg-[#1F242D] text-gray-300',
+          ? 'bg-darkOrange-5 text-white'
+          : 'bg-[#1F242D] text-newGray-3',
       )}
       onClick={() => onClick(letter)}
     >

@@ -7,8 +7,6 @@ export const createGetGlossaryWords =
 
     const result = await postgres.exec(getGlossaryWordsQuery(language));
 
-    console.log(result);
-
     return result.map((word) => ({
       ...word,
     }));

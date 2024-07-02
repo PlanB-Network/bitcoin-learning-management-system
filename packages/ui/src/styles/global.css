@@ -133,6 +133,13 @@
     @apply text-2xl font-medium leading-normal tracking-normal;
   }
 
+  mjx-container {
+    @apply bg-white/20 p-1 rounded-lg leading-loose;
+  }
+  mjx-container svg {
+    @apply max-w-full inline-block;
+  }
+
   .mobile-body2 {
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }

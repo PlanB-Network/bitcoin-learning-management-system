@@ -8,6 +8,7 @@ import {
   createGetBuilders,
   createGetConference,
   createGetConferences,
+  createGetGlossaryWord,
   createGetGlossaryWords,
   createGetPodcast,
   createGetPodcasts,
@@ -33,6 +34,12 @@ const createGetResourcesProcedure = () => {
 const createGetResourceProcedure = () => {
   return publicProcedure.input(
     z.object({ id: z.number(), language: z.string() }),
+  );
+};
+
+const createGetResourceProcedureWithStrId = () => {
+  return publicProcedure.input(
+    z.object({ strId: z.string(), language: z.string() }),
   );
 };
 
@@ -85,6 +92,11 @@ export const resourcesRouter = createTRPCRouter({
     .output(joinedGlossaryWordSchema.array())
     .query(async ({ ctx, input }) =>
       createGetGlossaryWords(ctx.dependencies)(input?.language),
+    ),
+  getGlossaryWord: createGetResourceProcedureWithStrId()
+    .output(joinedGlossaryWordSchema)
+    .query(async ({ ctx, input }) =>
+      createGetGlossaryWord(ctx.dependencies)(input.strId, input.language),
     ),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()

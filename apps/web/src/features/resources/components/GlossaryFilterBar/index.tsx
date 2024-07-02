@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { RxReload } from 'react-icons/rx';
 
@@ -8,15 +8,16 @@ interface GlossaryFilterBarProps {
   value?: string;
   isOnWordPage?: boolean;
   onChange: (v: string) => void;
+  randomWord?: string;
 }
 
 export const GlossaryFilterBar = ({
-  value: initialValue = '',
+  value,
   isOnWordPage,
   onChange,
+  randomWord,
 }: GlossaryFilterBarProps) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState(initialValue);
 
   return (
     <div
@@ -49,16 +50,15 @@ export const GlossaryFilterBar = ({
           </>
         )}
       </div>
-      <div className="flex justify-center items-center w-full max-md:flex-wrap gap-2 md:gap-7">
+      <div className="flex justify-center items-center w-full max-md:flex-wrap gap-2 md:gap-7 mx-auto">
         <input
           type="text"
           value={value}
           onChange={(event) => {
-            setValue(event.target.value);
             onChange(event.target.value);
           }}
           className={cn(
-            'w-full mx-auto max-w-96 md:max-w-[498px] border border-darkOrange-5 focus:ring-1 focus:ring-darkOrange-5 rounded-lg bg-[#1C1F28] py-2 pl-4 text-sm md:text-lg text-white placeholder:text-sm md:placeholder:text-lg placeholder:text-white placeholder:opacity-25 ',
+            'w-full max-w-96 md:max-w-[498px] border border-darkOrange-5 focus:ring-1 focus:ring-darkOrange-5 rounded-lg bg-[#1C1F28] py-2 pl-4 text-sm md:text-lg text-white placeholder:text-sm md:placeholder:text-lg placeholder:text-white placeholder:opacity-25 ',
             isOnWordPage
               ? ''
               : 'shadow-search-word-sm md:shadow-search-word-md',
@@ -69,14 +69,19 @@ export const GlossaryFilterBar = ({
           id="glossaryInput"
         />
         {isOnWordPage && (
-          <Button
-            variant="newTertiary"
-            size="m"
-            iconLeft={<RxReload />}
-            className="shrink-0"
+          <Link
+            to={'/resources/glossary/$wordId'}
+            params={{ wordId: randomWord || '' }}
           >
-            {t('glossary.randomSearch')}
-          </Button>
+            <Button
+              variant="newTertiary"
+              size="m"
+              iconLeft={<RxReload />}
+              className="shrink-0"
+            >
+              {t('glossary.randomSearch')}
+            </Button>
+          </Link>
         )}
       </div>
     </div>

@@ -25,8 +25,8 @@ export const joinedGlossaryWordSchema = resourceSchema
   .merge(
     glossaryWordSchema.pick({
       originalWord: true,
+      fileName: true,
       relatedWords: true,
-      resourceId: true,
     }),
   )
   .merge(
