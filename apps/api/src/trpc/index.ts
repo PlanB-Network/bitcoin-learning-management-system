@@ -21,24 +21,35 @@ interface CreateInnerContextOptions {
   dependencies: Dependencies;
 }
 
+export interface InnerContext {
+  dependencies: Dependencies;
+}
+
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
  * it, you can export it from here
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createContextInner = (opts: CreateInnerContextOptions) => {
+const createContextInner = (opts: CreateInnerContextOptions): InnerContext => {
   return {
     dependencies: opts.dependencies,
   };
 };
-
-export type ContextInner = Awaited<ReturnType<typeof createContextInner>>;
 
 interface UserContext {
   user?: {
     uid: string;
   };
 }
+
+interface SessionContext {
+  sessionId?: string;
+}
+
+export type Context = InnerContext &
+  SessionContext &
+  CreateExpressContextOptions &
+  UserContext;
 
 /**
  * This is the actual context you'll use in your router. It will be used to
@@ -48,23 +59,15 @@ interface UserContext {
 export const createContext = (
   opts: CreateExpressContextOptions,
   dependencies: Dependencies,
-) => {
-  const { req, res } = opts;
-
+): Context => {
   const contextInner = createContextInner({ dependencies });
 
   return {
+    ...opts,
     ...contextInner,
-    req,
-    res,
-    sessionId: req.session?.id,
-  } as ContextInner &
-    CreateExpressContextOptions & {
-      sessionId: string | undefined;
-    };
+    sessionId: opts.req.session?.id,
+  };
 };
-
-export type Context = Awaited<ReturnType<typeof createContext>> & UserContext;
 
 /**
  * 2. INITIALIZATION

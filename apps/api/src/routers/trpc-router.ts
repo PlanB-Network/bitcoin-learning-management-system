@@ -7,11 +7,12 @@ import { userRouter } from './user/router.js';
 
 export const trpcRouter = createTRPCRouter({
   auth: authRouter,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   content: contentRouter,
   user: userRouter,
   // github: githubRouter,
 });
 
 // Export type definition of the API
+// https://trpc.io/docs/server/routers#defining-a-router
+// https://github.com/trpc/trpc/discussions/2448
 export type TrpcRouter = typeof trpcRouter;
