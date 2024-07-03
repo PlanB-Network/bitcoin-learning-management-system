@@ -13,7 +13,5 @@ export const createGetGlossaryWord =
 
     if (!word) throw new Error('Word not found');
 
-    return {
-      ...word,
-    };
+    return word;
   };

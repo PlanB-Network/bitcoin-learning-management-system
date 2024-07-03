@@ -59,7 +59,7 @@ export const DashboardProfile = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 lg:gap-8">
         <div className="text-2xl">
           {t('dashboard.profile.profileInformation')}
         </div>
