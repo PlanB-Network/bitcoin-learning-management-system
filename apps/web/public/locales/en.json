@@ -490,6 +490,7 @@
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
     "conferencesDescription": "Collection of Bitcoin conference replays since the Genesis Block",
     "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
+    "glossaryDescription": "Understand the language of Bitcoin",
     "libraryDescription": "Discover plenty of books to improve your knowledge",
     "lightningDescription": "Manage your lightning node and use the lightning network",
     "login": "Log in",
