@@ -1,6 +1,8 @@
-import { useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import type { JoinedGlossaryWord } from '@sovereign-university/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { GlossaryMarkdownBody } from '#src/components/GlossaryMarkdownBody/index.js';
@@ -18,6 +20,8 @@ export const GlossaryWord = () => {
   const { wordId } = useParams({
     from: '/resources/glossary/$wordId',
   });
+
+  const [relatedWords, setRelatedWords] = useState<JoinedGlossaryWord[]>([]);
 
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,9 +53,19 @@ export const GlossaryWord = () => {
 
   useEffect(() => {
     if (glossaryWord && isFetched) {
+      if (glossaryWords) {
+        setRelatedWords(
+          glossaryWords.filter(
+            (word) =>
+              glossaryWord.relatedWords &&
+              glossaryWord.relatedWords.includes(word.originalWord),
+          ),
+        );
+      }
+
       document.body.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [glossaryWord, isFetched]);
+  }, [glossaryWord, glossaryWords, isFetched]);
 
   return (
     <ResourceLayout
@@ -73,6 +87,27 @@ export const GlossaryWord = () => {
                 glossaryWord?.path || '',
               )}
             />
+
+            {relatedWords.length > 0 && (
+              <>
+                <p className="text-white md:text-lg font-medium self-start mt-5">
+                  {t('glossary.relatedWords')}
+                </p>
+                <ul className="list-disc list-inside text-white self-start">
+                  {relatedWords.map((word) => (
+                    <li className="ml-2 md:ml-6 py-2" key={word.fileName}>
+                      <Link
+                        to="/resources/glossary/$wordId"
+                        params={{ wordId: word.fileName }}
+                        className="text-darkOrange-5 underline underline-offset-4 capitalize"
+                      >
+                        {word.term}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
             <div className="w-full h-px bg-newBlack-5 my-6 md:mt-20" />
             <GlossaryFilterBar
               onChange={setSearchTerm}

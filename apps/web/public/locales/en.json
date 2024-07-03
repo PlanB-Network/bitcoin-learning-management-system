@@ -310,6 +310,7 @@
       "save": "Save",
       "saving": "Saving...",
       "crop": "Crop",
+      "emailChangeConfirmation": "Email change confirmation email has been sent, check your inbox to confirm the change.",
       "preview": "Preview",
       "displayName": "Display Name",
       "email": "Email",
@@ -394,6 +395,7 @@
     "pageTitle": "Bitcoin Glossary",
     "placeHolder": "What is this ?",
     "randomSearch": "Random search",
+    "relatedWords": "Related words :",
     "term": "Term"
   },
   "home": {

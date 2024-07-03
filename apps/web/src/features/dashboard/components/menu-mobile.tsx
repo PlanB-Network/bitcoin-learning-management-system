@@ -33,7 +33,7 @@ export const MenuMobile = () => {
       <Link to={dashboardPath}>
         <MenuItem
           text={t('dashboard.courses')}
-          icon={<AiOutlineBook size={28} />}
+          icon={<AiOutlineBook size={18} />}
           active={
             pathname === dashboardPath || pathname.startsWith(courseDetailPath)
           }
@@ -42,21 +42,21 @@ export const MenuMobile = () => {
       <Link to={calendarPath}>
         <MenuItem
           text={t('dashboard.calendar.calendar')}
-          icon={<IoTicketOutline size={28} />}
+          icon={<IoTicketOutline size={18} />}
           active={pathname === calendarPath}
         />
       </Link>
       <Link to={bookingsPath}>
         <MenuItem
           text={t('dashboard.bookings')}
-          icon={<FaRegCalendarCheck size={28} />}
+          icon={<FaRegCalendarCheck size={18} />}
           active={pathname === bookingsPath}
         />
       </Link>
       <Link to={profilePath}>
         <MenuItem
           text={t('dashboard.account')}
-          icon={<IoPersonOutline size={28} />}
+          icon={<IoPersonOutline size={18} />}
           active={pathname === profilePath}
         />
       </Link>

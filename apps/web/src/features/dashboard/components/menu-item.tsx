@@ -19,9 +19,11 @@ export const MenuItem = ({
         active && 'bg-white/20 lg:bg-darkOrange-9 text-white font-medium',
       )}
     >
-      <div className="flex w-full cursor-pointer flex-row items-center justify-center gap-3 p-2 lg:justify-start">
+      <div className="flex w-full cursor-pointer flex-col lg:flex-row items-center justify-center gap-1 lg:gap-3 py-1 px-1.5 lg:p-2 lg:justify-start">
         <div className="min-w-5">{icon}</div>
-        <div className="max-lg:hidden leading-relaxed">{text}</div>
+        <div className="max-lg:text-[10px] max-lg:text-white max-lg:leading-normal lg:leading-relaxed">
+          {text}
+        </div>
       </div>
     </button>
   );
