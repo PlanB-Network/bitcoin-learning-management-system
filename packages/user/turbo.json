@@ -13,7 +13,7 @@
         "@sovereign-university/types#build-types",
         "@sovereign-university/database#build-types"
       ],
-      "outputs": ["dist/**/*.d.ts"]
+      "outputs": ["dist/**"]
     },
     "build": {
       "dependsOn": [

@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { firstRow } from '@sovereign-university/database';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -10,8 +6,8 @@ import { formatProfessor } from '../../professors/services/utils.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
 import { getCourseChaptersQuery, getCourseQuery } from '../queries/index.js';
 
-export const createGetCourse =
-  (dependencies: Dependencies) => async (id: string, language: string) => {
+export const createGetCourse = (dependencies: Dependencies) => {
+  return async (id: string, language: string) => {
     const { postgres } = dependencies;
 
     const course = await postgres
@@ -43,3 +39,4 @@ export const createGetCourse =
       chaptersCount: chapters.length,
     };
   };
+};

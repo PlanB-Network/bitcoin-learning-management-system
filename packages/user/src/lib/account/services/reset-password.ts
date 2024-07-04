@@ -29,6 +29,11 @@ export const createPasswordResetToken = (deps: Dependencies) => {
       .exec(getUserByEmailQuery(email))
       .then(firstRow)
       .then(rejectOnEmpty)
+      // .then(({ uid, email }) =>
+      //   deps.postgres.exec(
+      //     createTokenQuery(uid, 'reset_password' satisfies TokenType, email),
+      //   ),
+      // )
       .then(({ uid, email }) =>
         deps.postgres.exec(createTokenQuery(uid, 'reset_password', email)),
       )

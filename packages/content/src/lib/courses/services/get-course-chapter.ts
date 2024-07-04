@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { firstRow } from '@sovereign-university/database';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -10,9 +7,9 @@ import { getCourseChapterQuery } from '../queries/index.js';
 
 import { createGetCourse } from './get-course.js';
 
-export const createGetCourseChapter =
-  (dependencies: Dependencies) =>
-  async (chapterId: string, language: string) => {
+export const createGetCourseChapter = (dependencies: Dependencies) => {
+  // TODO: Add return type
+  return async (chapterId: string, language: string) => {
     const { postgres } = dependencies;
     const getCourse = createGetCourse(dependencies);
 
@@ -41,3 +38,4 @@ export const createGetCourseChapter =
       part,
     };
   };
+};

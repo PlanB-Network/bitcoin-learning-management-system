@@ -14,8 +14,10 @@
     "lint": "eslint --color './**/*.ts'",
     "types:generate": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
     "type-check": "tsc --build",
-    "check-types": "tsc --build",
+    "check-types": "tsc --noEmit -p tsconfig.lib.json",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.lib.json",
+    "generate-types": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
+    "generate-types:types-only": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.lib.json > performance.log",
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
@@ -23,5 +25,8 @@
     "@sovereign-university/schemas": "workspace:*",
     "@types/express-session": "^1.18.0",
     "zod": "3.23.8"
+  },
+  "dependencies": {
+    "zod-to-ts": "^1.2.0"
   }
 }

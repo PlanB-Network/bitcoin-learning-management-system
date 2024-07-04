@@ -27,9 +27,9 @@ const getCoursesProcedure = publicProcedure
       .optional(),
   )
   .output(joinedCourseWithProfessorsSchema.array())
-  .query(async ({ ctx, input }) =>
-    createGetCourses(ctx.dependencies)(input?.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetCourses(ctx.dependencies)(input?.language);
+  });
 
 const getCourseProcedure = publicProcedure
   .input(
@@ -39,9 +39,9 @@ const getCourseProcedure = publicProcedure
     }),
   )
   .output(joinedCourseWithAllSchema)
-  .query(async ({ ctx, input }) =>
-    createGetCourse(ctx.dependencies)(input.id, input.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetCourse(ctx.dependencies)(input.id, input.language);
+  });
 
 const getCourseChaptersProcedure = publicProcedure
   .input(
@@ -51,9 +51,9 @@ const getCourseChaptersProcedure = publicProcedure
     }),
   )
   .output(joinedCourseChapterSchema.array())
-  .query(async ({ ctx, input }) =>
-    createGetCourseChapters(ctx.dependencies)(input.id, input.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetCourseChapters(ctx.dependencies)(input.id, input.language);
+  });
 
 const getCourseChapterProcedure = publicProcedure
   .input(
@@ -88,9 +88,12 @@ const getCourseChapterProcedure = publicProcedure
   //     }),
   //   ),
   // )
-  .query(async ({ ctx, input }) =>
-    createGetCourseChapter(ctx.dependencies)(input.chapterId, input.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetCourseChapter(ctx.dependencies)(
+      input.chapterId,
+      input.language,
+    );
+  });
 
 const getCourseChapterQuizQuestionsProcedure = publicProcedure
   .input(
@@ -100,12 +103,12 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
     }),
   )
   .output(joinedQuizQuestionSchema.array())
-  .query(async ({ ctx, input }) =>
-    createGetCourseChapterQuizQuestions(ctx.dependencies)({
+  .query(({ ctx, input }) => {
+    return createGetCourseChapterQuizQuestions(ctx.dependencies)({
       chapterId: input.chapterId,
       language: input.language,
-    }),
-  );
+    });
+  });
 
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
@@ -114,9 +117,9 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
       newPassword: z.string(),
     }),
   )
-  .mutation(async ({ ctx }) =>
-    createCalculateCourseChapterSeats(ctx.dependencies)(),
-  );
+  .mutation(({ ctx }) => {
+    return createCalculateCourseChapterSeats(ctx.dependencies)();
+  });
 
 export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,

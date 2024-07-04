@@ -2,6 +2,7 @@ import type { JoinedProfessor } from '@sovereign-university/types';
 
 import { computeAssetCdnUrl, omitWithTypes } from '../../utils.js';
 
+// TODO: Add return type
 export const formatProfessor = (professor: JoinedProfessor) => {
   return {
     ...omitWithTypes(professor, [

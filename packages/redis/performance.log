@@ -9,16 +9,16 @@ Identifiers:                101182
 Symbols:                     58531
 Types:                          89
 Instantiations:                  0
-Memory used:               113442K
+Memory used:               113665K
 Assignability cache size:        0
 Identity cache size:             0
 Subtype cache size:              0
 Strict subtype cache size:       0
 I/O Read time:               0.18s
-Parse time:                  1.69s
-ResolveModule time:          0.31s
-ResolveTypeReference time:   0.02s
-ResolveLibrary time:         0.06s
-Program time:                2.90s
-Bind time:                   0.56s
-Total time:                  3.46s
+Parse time:                  1.52s
+ResolveModule time:          0.39s
+ResolveTypeReference time:   0.01s
+ResolveLibrary time:         0.03s
+Program time:                2.59s
+Bind time:                   0.58s
+Total time:                  3.18s

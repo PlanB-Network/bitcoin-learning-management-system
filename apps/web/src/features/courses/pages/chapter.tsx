@@ -664,7 +664,7 @@ export const CourseChapter = () => {
     <CourseLayout>
       <PageMeta
         title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
-        description={chapter?.course.objectives}
+        description={chapter?.course.objectives?.join(',')}
         imageSrc={
           chapter
             ? computeAssetCdnUrl(

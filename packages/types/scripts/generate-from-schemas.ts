@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { zodToTs, printNode } from 'zod-to-ts';
+
+import * as schemas from '@sovereign-university/schemas';
+
 const schemasDirectory = '../schemas/src';
 const outputDirectory = './src/generated';
 const ignorePaths = new Set<string>([]);
@@ -109,28 +113,16 @@ const extractSchemas = (fileContent: string): string[] => {
 };
 
 const generateFileContent = (schemaNames: string[]): string => {
-  const zodImportStatement = `import type { z } from 'zod';\n\n`;
+  let fileContent = ``;
 
-  const schemaImportStatement =
-    schemaNames.length > 0
-      ? `import { ${schemaNames
-          .sort()
-          .join(', ')} } from '@sovereign-university/schemas';\n\n`
-      : '';
+  for (const name of schemaNames) {
+    const schema = schemas[name];
+    const typeScript = printNode(zodToTs(schema).node);
 
-  const typeDefinitions = schemaNames
-    .map(
-      (name) =>
-        `export type ${typeNameFromSchema(name)} = z.infer<typeof ${name}>;`,
-    )
-    .join('\n');
+    fileContent += `export type ${typeNameFromSchema(name)} = ${typeScript};\n\n`;
+  }
 
-  return (
-    generatedHeader +
-    zodImportStatement +
-    schemaImportStatement +
-    typeDefinitions
-  );
+  return generatedHeader + fileContent;
 };
 
 // Convert a schema name to a type name (capitalized and without the 'Schema' suffix)

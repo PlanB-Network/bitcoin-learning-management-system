@@ -10,8 +10,8 @@ import {
 
 import { formatProfessor } from './utils.js';
 
-export const createGetProfessor =
-  (dependencies: Dependencies) => async (id: number, language?: string) => {
+export const createGetProfessor = (dependencies: Dependencies) => {
+  return async (id: number, language?: string) => {
     const { postgres } = dependencies;
 
     const professor = await postgres
@@ -60,3 +60,4 @@ export const createGetProfessor =
       tutorials,
     };
   };
+};

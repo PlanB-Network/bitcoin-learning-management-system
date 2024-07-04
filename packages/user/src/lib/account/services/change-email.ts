@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { TRPCError } from '@trpc/server';
 
 import {
@@ -10,8 +5,10 @@ import {
   firstRow,
   rejectOnEmpty,
 } from '@sovereign-university/database';
+import type { TokenType } from '@sovereign-university/types';
 
-import type { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '#src/dependencies.js';
+
 import {
   changeEmailQuery,
   consumeTokenQuery,
@@ -28,10 +25,12 @@ import { createSendEmail } from './email.js';
 export const createChangeEmailConfirmation = ({ postgres }: Dependencies) => {
   return (tokenId: string) => {
     return postgres
-      .exec(consumeTokenQuery(tokenId, 'validate_email'))
+      .exec(consumeTokenQuery(tokenId, 'validate_email' satisfies TokenType))
       .then(firstRow)
       .then(rejectOnEmpty)
-      .then((token) => postgres.exec(changeEmailQuery(token.uid, token.data!)))
+      .then((token) =>
+        postgres.exec(changeEmailQuery(token.uid, token.data as string)),
+      )
       .then(firstRow)
       .then(rejectOnEmpty)
       .catch((error) => {

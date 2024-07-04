@@ -6,7 +6,7 @@
       "outputs": ["dist/**"]
     },
     "build-types": {
-      "outputs": ["dist/**/*.d.ts"]
+      "outputs": ["dist/**"]
     }
   }
 }

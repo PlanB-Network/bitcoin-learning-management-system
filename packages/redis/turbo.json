@@ -7,7 +7,7 @@
     },
     "build-types": {
       "dependsOn": ["@sovereign-university/types#build-types"],
-      "outputs": ["dist/**/*.d.ts"]
+      "outputs": ["dist/**"]
     },
     "build": {
       "dependsOn": ["@sovereign-university/types#build"],
