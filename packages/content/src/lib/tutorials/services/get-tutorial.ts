@@ -5,19 +5,14 @@ import { formatProfessor } from '../../professors/services/utils.js';
 import { omitWithTypes } from '../../utils.js';
 import { getCreditsQuery, getTutorialQuery } from '../queries/index.js';
 
-export const createGetTutorial =
-  (dependencies: Dependencies) =>
-  async ({
-    category,
-    name,
-    language,
-  }: {
-    category: string;
-    name: string;
-    language: string;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  category: string;
+  name: string;
+  language: string;
+}
 
+export const createGetTutorial = ({ postgres }: Dependencies) => {
+  return async ({ category, name, language }: Options) => {
     const tutorial = await postgres
       .exec(getTutorialQuery(category, name, language))
       .then(firstRow);
@@ -59,3 +54,4 @@ export const createGetTutorial =
       },
     };
   };
+};

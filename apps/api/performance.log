@@ -1,24 +1,12 @@
+src/routers/content/professors.ts(3,15): error TS2305: Module '"@sovereign-university/content"' has no exported member 'GetProfessorOutput'.
 Files:                         695
 Lines of Library:            11416
-Lines of Definitions:       224806
-Lines of TypeScript:          2455
+Lines of Definitions:       224789
+Lines of TypeScript:          2444
 Lines of JavaScript:             0
 Lines of JSON:                   0
 Lines of Other:                  0
-Identifiers:                192751
+Identifiers:                192770
 Symbols:                    146071
 Types:                          89
 Instantiations:                  0
-Memory used:               211003K
-Assignability cache size:        0
-Identity cache size:             0
-Subtype cache size:              0
-Strict subtype cache size:       0
-I/O Read time:               0.30s
-Parse time:                  2.09s
-ResolveModule time:          0.50s
-ResolveTypeReference time:   0.05s
-ResolveLibrary time:         0.10s
-Program time:                3.92s
-Bind time:                   0.48s
-Total time:                  4.40s

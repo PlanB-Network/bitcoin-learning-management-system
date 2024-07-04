@@ -1,11 +1,12 @@
 import { firstRow } from '@sovereign-university/database';
+import type { JoinedEvent } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getEventQuery } from '../queries/get-event.js';
 
-export const createGetEvent =
-  (dependencies: Dependencies) => async (id: string) => {
+export const createGetEvent = (dependencies: Dependencies) => {
+  return async (id: string): Promise<JoinedEvent> => {
     const { postgres } = dependencies;
 
     const event = await postgres.exec(getEventQuery(id)).then(firstRow);
@@ -21,3 +22,4 @@ export const createGetEvent =
         : undefined,
     };
   };
+};

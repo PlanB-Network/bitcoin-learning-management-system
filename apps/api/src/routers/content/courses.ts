@@ -14,6 +14,9 @@ import {
   joinedCourseWithProfessorsSchema,
   joinedQuizQuestionSchema,
 } from '@sovereign-university/schemas';
+import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
+
+import type { Parser } from '#src/trpc/types.js';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -26,7 +29,9 @@ const getCoursesProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(joinedCourseWithProfessorsSchema.array())
+  .output<Parser<JoinedCourseWithProfessors[]>>(
+    joinedCourseWithProfessorsSchema.array(),
+  )
   .query(({ ctx, input }) => {
     return createGetCourses(ctx.dependencies)(input?.language);
   });

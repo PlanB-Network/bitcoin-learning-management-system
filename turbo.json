@@ -37,6 +37,7 @@
     },
     "check-types": {},
     "build-types": {},
+    "generate-types": {},
     "trace-performance": {
       "cache": false
     },

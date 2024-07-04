@@ -114,11 +114,6 @@ const extractSchemas = (fileContent: string): string[] => {
   return [...schemaNames];
 };
 
-// Inject module path into the zod schema
-interface GetPath {
-  _def: { getPath: () => string };
-}
-
 let currentlyProcessedFile = '';
 let currentImportSet: Set<string>;
 const generateFileContent = (
@@ -130,25 +125,16 @@ const generateFileContent = (
   currentImportSet = new Set();
 
   for (const name of schemaNames) {
-    const schema = schemas[name] as ZodAny & GetType & GetPath;
+    const schema = (schemas as any)[name] as ZodAny & GetType;
 
     const typeName = typeNameFromSchema(name);
     const { node } = zodToTs(schema);
 
-    console.log(
-      `Setting _def.getType ${typeof schema._def.getType} for ${typeName}`,
-    );
+    // Append a custom getType function to the schema once it have been processed
     schema._def.getType = (ts) => {
-      console.log(
-        `Getting type for ${typeName}`,
-        currentlyProcessedFile,
-        'IMPORT FORM',
-        filePath,
-      );
-
       if (filePath !== currentlyProcessedFile) {
-        console.warn(
-          `Type ${typeName} not found in ${currentlyProcessedFile}, must import from ${filePath}`,
+        console.debug(
+          `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
         );
 
         // TODO: This is a bit hacky, but it works for now
@@ -161,13 +147,7 @@ const generateFileContent = (
       return ts.factory.createIdentifier(typeName);
     };
 
-    schema._def.getPath = () => filePath;
-
     const output = printNode(node);
-
-    if (['JoinedProfessor', 'JoinedTutorialCredit'].includes(typeName)) {
-      console.log(`Generated type ${node.kind} for ${name}`, output);
-    }
 
     switch (node.kind) {
       case ts.SyntaxKind.TypeLiteral:

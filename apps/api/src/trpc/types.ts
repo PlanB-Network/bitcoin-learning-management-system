@@ -22,3 +22,7 @@ export type RouterInputs = inferRouterInputs<TrpcRouter>;
  * @example type HelloOutput = RouterOutputs['example']['hello']
  **/
 export type RouterOutputs = inferRouterOutputs<TrpcRouter>;
+
+export interface Parser<T> {
+  parse: (input: unknown) => T;
+}

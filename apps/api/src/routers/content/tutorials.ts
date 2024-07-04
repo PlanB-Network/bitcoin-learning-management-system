@@ -18,7 +18,7 @@ const getTutorialsProcedure = publicProcedure
   )
   // Todo add output?
   //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
-  .query(async ({ ctx, input }) =>
+  .query(({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(undefined, input?.language),
   );
 
@@ -31,7 +31,7 @@ const getTutorialsByCategoryProcedure = publicProcedure
   )
   // Todo add output?
   //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
-  .query(async ({ ctx, input }) =>
+  .query(({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(input.category, input.language),
   );
 
@@ -74,7 +74,7 @@ const getTutorialProcedure = publicProcedure
   //     }),
   //   ),
   // )
-  .query(async ({ ctx, input }) =>
+  .query(({ ctx, input }) =>
     createGetTutorial(ctx.dependencies)({
       category: input.category,
       name: input.name,

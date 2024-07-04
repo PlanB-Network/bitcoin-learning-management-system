@@ -23,6 +23,7 @@
     "type-check": "turbo run type-check",
     "build-types": "turbo run build-types",
     "check-types": "turbo run check-types",
+    "generate-types": "turbo run generate-types",
     "trace-performance": "turbo run trace-performance",
     "clear": "turbo run clear"
   },

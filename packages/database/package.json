@@ -15,7 +15,7 @@
     "type-check": "tsc --build",
     "check-types": "tsc --noEmit",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.lib.json",
-    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.lib.json > performance.log",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.lib.json | head -n 12 > performance.log",
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
     "drizzle:check": "drizzle-kit check --config=drizzle.config.ts",
     "drizzle:generate": "drizzle-kit generate --config=drizzle.config.ts",

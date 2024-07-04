@@ -7,6 +7,10 @@ import {
   courseProgressSchema,
   courseUserChapterSchema,
 } from '@sovereign-university/schemas';
+import type {
+  CourseProgress,
+  CourseProgressExtended,
+} from '@sovereign-university/types';
 import {
   createCompleteChapter,
   createGetPayment,
@@ -19,6 +23,8 @@ import {
   generateChapterTicket,
 } from '@sovereign-university/user';
 
+import type { Parser } from '#src/trpc/types.js';
+
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
@@ -29,7 +35,7 @@ const completeChapterProcedure = protectedProcedure
       chapterId: z.string(),
     }),
   )
-  .output(courseProgressSchema.array())
+  .output<Parser<CourseProgress[]>>(courseProgressSchema.array())
   .mutation(({ ctx, input }) =>
     createCompleteChapter(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -40,14 +46,8 @@ const completeChapterProcedure = protectedProcedure
 
 const getProgressProcedure = protectedProcedure
   .input(z.void())
-  .output(
-    courseProgressExtendedSchema
-      .merge(
-        z.object({
-          totalChapters: z.number(),
-        }),
-      )
-      .array(),
+  .output<Parser<CourseProgressExtended[]>>(
+    courseProgressExtendedSchema.array(),
   )
   .query(({ ctx }) =>
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
