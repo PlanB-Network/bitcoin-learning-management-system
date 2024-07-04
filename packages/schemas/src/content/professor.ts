@@ -5,7 +5,7 @@ import { z } from 'zod';
 import {
   contentProfessors,
   contentProfessorsLocalized,
-} from '@sovereign-university/database/schemas';
+} from '@sovereign-university/database';
 
 export const professorSchema = createSelectSchema(contentProfessors);
 export const professorLocalizedSchema = createSelectSchema(

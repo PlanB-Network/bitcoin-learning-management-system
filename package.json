@@ -20,7 +20,11 @@
     "prepare": "husky",
     "lint": "turbo run lint",
     "sync-ts-references": "./scripts/sync-ts-references.ts && prettier --ignore-unknown --write --no-error-on-unmatched-pattern ./**/*/tsconfig.json ./**/*/tsconfig.*.json",
-    "type-check": "turbo run type-check"
+    "type-check": "turbo run type-check",
+    "build-types": "turbo run build-types",
+    "check-types": "turbo run check-types",
+    "trace-performance": "turbo run trace-performance",
+    "clear": "turbo run clear"
   },
   "devDependencies": {
     "@sovereign-university/eslint-config": "workspace:*",

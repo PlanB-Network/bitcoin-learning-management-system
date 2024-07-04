@@ -4,7 +4,7 @@
   "exclude": ["vitest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "baseUrl": ".",
     "composite": true,
     "declaration": true,
@@ -12,9 +12,7 @@
     "sourceMap": true,
     "incremental": true,
     "paths": {
-      "#src/*": [
-        "./src/*"
-      ]
+      "#src/*": ["./src/*"]
     }
   },
   "references": [

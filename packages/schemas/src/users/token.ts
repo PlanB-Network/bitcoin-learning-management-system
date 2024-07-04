@@ -1,7 +1,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { token, tokenTypeEnum } from '@sovereign-university/database/schemas';
+import { token, tokenTypeEnum } from '@sovereign-university/database';
 
 export const tokenSchema = createSelectSchema(token);
 

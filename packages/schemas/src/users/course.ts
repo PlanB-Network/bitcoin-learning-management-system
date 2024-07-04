@@ -6,7 +6,7 @@ import {
   usersCourseProgress,
   usersCourseUserChapter,
   usersQuizAttempts,
-} from '@sovereign-university/database/schemas';
+} from '@sovereign-university/database';
 
 import { courseChapterSchema } from '../content/index.js';
 

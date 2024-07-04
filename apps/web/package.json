@@ -6,10 +6,13 @@
     "#src/*": "./src/*"
   },
   "scripts": {
-    "build": "tsc --build && vite build --mode production",
+    "build": "tsc --build tsconfig.app.json && vite build --mode production",
     "dev": "vite serve --mode development",
     "lint": "eslint --color './**/*.{ts,tsx}'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit --project tsconfig.app.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit --project tsconfig.app.json > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",

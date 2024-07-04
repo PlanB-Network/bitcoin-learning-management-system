@@ -3,14 +3,18 @@
   "version": "0.0.1",
   "type": "module",
   "imports": {
-    "#src/*": "./dist/*"
+    "#src/*": "./dist/src/*"
   },
   "main": "./src/trpc/index.ts",
   "scripts": {
     "build": "tsc --build tsconfig.app.json",
     "dev": "tsx --conditions=development --watch src/index.ts",
     "lint": "eslint --color './**/*.ts'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit --project tsconfig.trpc.json",
+    "build-types": "tsc --emitDeclarationOnly --project tsconfig.trpc.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.trpc.json > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
     "@sovereign-university/content": "workspace:*",

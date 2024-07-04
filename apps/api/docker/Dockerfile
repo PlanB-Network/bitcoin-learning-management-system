@@ -67,4 +67,4 @@ WORKDIR /app
 USER node
 COPY --from=installer /app .
 
-CMD node apps/api/dist/index.js
+CMD node apps/api/dist/src/index.js
