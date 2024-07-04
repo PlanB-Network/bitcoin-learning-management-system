@@ -89,7 +89,7 @@ function BCertificate() {
       <div className="flex max-lg:flex-col justify-center items-center gap-9 mb-6 lg:mb-32">
         <img
           src={bCertificatesImage}
-          alt="B-Certificates"
+          alt="₿ Certificates"
           className="w-full max-lg:max-w-[70%] max-md:mr-[45%]"
         />
         <div className="flex flex-col lg:self-end lg:mb-3.5 w-full lg:max-w-[43%]">
