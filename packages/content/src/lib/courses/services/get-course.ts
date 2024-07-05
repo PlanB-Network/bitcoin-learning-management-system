@@ -1,4 +1,5 @@
 import { firstRow } from '@sovereign-university/database';
+// import type { JoinedCourseWithAll } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';
@@ -6,7 +7,12 @@ import { formatProfessor } from '../../professors/services/utils.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
 import { getCourseChaptersQuery, getCourseQuery } from '../queries/index.js';
 
+// interface Output extends JoinedCourseWithAll {
+//   professors: any[];
+// }
+
 export const createGetCourse = (dependencies: Dependencies) => {
+  // TODO: Add return type
   return async (id: string, language: string) => {
     const { postgres } = dependencies;
 

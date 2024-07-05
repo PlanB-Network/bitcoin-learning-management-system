@@ -10,7 +10,9 @@ import {
 import type {
   CourseProgress,
   CourseProgressExtended,
+  CourseUserChapter,
 } from '@sovereign-university/types';
+import type { GetPaymentOutput } from '@sovereign-university/user';
 import {
   createCompleteChapter,
   createGetPayment,
@@ -127,7 +129,7 @@ const saveFreePaymentProcedure = protectedProcedure
 
 const getPaymentProcedure = protectedProcedure
   .input(z.void())
-  .output(
+  .output<Parser<GetPaymentOutput>>(
     coursePaymentSchema
       .pick({
         courseId: true,
@@ -142,13 +144,17 @@ const getPaymentProcedure = protectedProcedure
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
+type GetUserChapterOutput = Array<
+  Pick<CourseUserChapter, 'courseId' | 'booked' | 'chapterId' | 'completedAt'>
+>;
+
 const getUserChapterProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
     }),
   )
-  .output(
+  .output<Parser<GetUserChapterOutput>>(
     courseUserChapterSchema
       .pick({
         courseId: true,
@@ -201,9 +207,7 @@ const downloadChapterTicketProcedure = protectedProcedure
     }),
   )
   .output(z.string())
-  .mutation(async ({ input }) => {
-    return generateChapterTicket(input);
-  });
+  .mutation(({ input }) => generateChapterTicket(input));
 
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,

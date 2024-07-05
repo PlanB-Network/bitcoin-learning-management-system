@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
+import type { FormattedProfessor } from '@sovereign-university/types';
+
 import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
 import WebIcon from '../assets/icons/web_blue.svg?react';
-import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
+  professor: FormattedProfessor;
 }
 
 const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {

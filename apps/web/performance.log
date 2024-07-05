@@ -1,12 +1,12 @@
-Files:                        1991
+Files:                        2042
 Lines of Library:            40172
-Lines of Definitions:       249858
-Lines of TypeScript:         21612
+Lines of Definitions:       250151
+Lines of TypeScript:         21592
 Lines of JavaScript:             0
 Lines of JSON:                   0
 Lines of Other:                  0
-Identifiers:                341567
-Symbols:                    505034
-Types:                       90964
-Instantiations:             770785
-Memory used:               555493K
+Identifiers:                342047
+Symbols:                    505052
+Types:                       90742
+Instantiations:             769933
+Memory used:               523761K

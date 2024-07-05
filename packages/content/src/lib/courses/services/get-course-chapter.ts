@@ -1,4 +1,8 @@
 import { firstRow } from '@sovereign-university/database';
+// import type {
+//   JoinedCourseChapterWithContent,
+//   JoinedProfessor,
+// } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
@@ -7,11 +11,18 @@ import { getCourseChapterQuery } from '../queries/index.js';
 
 import { createGetCourse } from './get-course.js';
 
+// interface Output extends JoinedCourseChapterWithContent {
+//   professors?: JoinedProfessor[];
+//   course: any;
+//   part: any;
+// }
+
 export const createGetCourseChapter = (dependencies: Dependencies) => {
+  const getCourse = createGetCourse(dependencies);
+
   // TODO: Add return type
   return async (chapterId: string, language: string) => {
     const { postgres } = dependencies;
-    const getCourse = createGetCourse(dependencies);
 
     const chapter = await postgres
       .exec(getCourseChapterQuery(chapterId, language))
@@ -32,7 +43,9 @@ export const createGetCourseChapter = (dependencies: Dependencies) => {
     return {
       ...chapter,
       ...(professors
-        ? { professors: professors.map((element) => formatProfessor(element)) }
+        ? {
+            professors: professors.map((element) => formatProfessor(element)),
+          }
         : {}),
       course,
       part,

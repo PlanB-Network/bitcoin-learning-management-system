@@ -1,7 +1,7 @@
 Files:                         507
 Lines of Library:            11416
 Lines of Definitions:        83795
-Lines of TypeScript:          5236
+Lines of TypeScript:          5256
 Lines of JavaScript:             0
 Lines of JSON:                   0
 Lines of Other:                  0
@@ -9,4 +9,4 @@ Identifiers:                110974
 Symbols:                     67791
 Types:                          89
 Instantiations:                  0
-Memory used:               122766K
+Memory used:               119697K

@@ -4,12 +4,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import type { CouponCode } from '@sovereign-university/types';
+import type {
+  CouponCode,
+  JoinedCourseWithAll,
+} from '@sovereign-university/types';
 
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import { Modal } from '../../../../atoms/Modal/index.tsx';
 import { PaymentDescription } from '../../../../components/payment-description.tsx';
@@ -18,8 +20,8 @@ import { trpc } from '../../../../utils/index.ts';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
-const hexToBase64 = (hexstring: string) => {
-  return Buffer.from(hexstring, 'hex').toString('base64');
+const hexToBase64 = (hexString: string) => {
+  return Buffer.from(hexString, 'hex').toString('base64');
 };
 
 interface WebSocketMessage {
@@ -27,7 +29,7 @@ interface WebSocketMessage {
 }
 
 interface CoursePaymentModalProps {
-  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  course: JoinedCourseWithAll;
   professorNames: string;
   satsPrice: number;
   isOpen: boolean;

@@ -14,7 +14,11 @@ import {
   joinedCourseWithProfessorsSchema,
   joinedQuizQuestionSchema,
 } from '@sovereign-university/schemas';
-import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
+import type {
+  JoinedCourseChapter,
+  JoinedCourseWithAll,
+  JoinedCourseWithProfessors,
+} from '@sovereign-university/types';
 
 import type { Parser } from '#src/trpc/types.js';
 
@@ -43,7 +47,7 @@ const getCourseProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(joinedCourseWithAllSchema)
+  .output<Parser<JoinedCourseWithAll>>(joinedCourseWithAllSchema)
   .query(({ ctx, input }) => {
     return createGetCourse(ctx.dependencies)(input.id, input.language);
   });
@@ -55,7 +59,7 @@ const getCourseChaptersProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(joinedCourseChapterSchema.array())
+  .output<Parser<JoinedCourseChapter[]>>(joinedCourseChapterSchema.array())
   .query(({ ctx, input }) => {
     return createGetCourseChapters(ctx.dependencies)(input.id, input.language);
   });

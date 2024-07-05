@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
 import { calendarEventSchema } from '@sovereign-university/schemas';
+import type { CalendarEvent } from '@sovereign-university/types';
 import { createGetCalendarEvents } from '@sovereign-university/user';
 
 import { protectedProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
-import { Parser } from '#src/trpc/types.js';
-import { CalendarEvent } from '@sovereign-university/types';
+import type { Parser } from '#src/trpc/types.js';
 
 const getCalendarEventsProcedure = protectedProcedure
   .input(

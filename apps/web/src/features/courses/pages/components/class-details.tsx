@@ -2,6 +2,7 @@ import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
@@ -13,7 +14,7 @@ import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 import { CourseBookModal } from './course-book-modal.tsx';
 
 interface ClassDetailsProps {
-  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  course: JoinedCourseWithAll;
   chapter: NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
   professor: string;
 }

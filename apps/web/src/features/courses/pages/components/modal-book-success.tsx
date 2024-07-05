@@ -1,6 +1,7 @@
 import { t } from 'i18next';
 import { FiLoader } from 'react-icons/fi';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { formatDate, formatTime } from '#src/utils/date.js';
@@ -9,7 +10,7 @@ import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 import PlanBLogo from '../../../../assets/planb_logo_horizontal_black.svg?react';
 
 interface ModalBookSuccessProps {
-  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  course: JoinedCourseWithAll;
   chapter: NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
   onClose: (isPaid?: boolean) => void;
 }

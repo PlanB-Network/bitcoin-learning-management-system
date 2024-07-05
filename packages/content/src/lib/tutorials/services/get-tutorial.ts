@@ -12,6 +12,7 @@ interface Options {
 }
 
 export const createGetTutorial = ({ postgres }: Dependencies) => {
+  // TODO: Add output type
   return async ({ category, name, language }: Options) => {
     const tutorial = await postgres
       .exec(getTutorialQuery(category, name, language))

@@ -17,8 +17,8 @@ const getEventsProcedure = publicProcedure
       })
       .optional(),
   )
-  .output(joinedEventSchema.array())
-  .query(async ({ ctx }) => createGetEvents(ctx.dependencies)());
+  .output<Parser<JoinedEvent[]>>(joinedEventSchema.array())
+  .query(({ ctx }) => createGetEvents(ctx.dependencies)());
 
 const getEventProcedure = publicProcedure
   .input(z.object({ id: z.string() }))
