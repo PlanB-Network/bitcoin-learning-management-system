@@ -11,6 +11,10 @@ import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 import { CopyButton } from '../CopyButton/index.tsx';
 
+const remarkMathOptions = {
+  singleDollarTextMath: false,
+};
+
 export const TutorialsMarkdownBody = ({
   content,
   assetPrefix,
@@ -138,7 +142,11 @@ export const TutorialsMarkdownBody = ({
           );
         },
       }}
-      remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
+      remarkPlugins={[
+        remarkGfm,
+        remarkUnwrapImages,
+        [remarkMath, remarkMathOptions],
+      ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`

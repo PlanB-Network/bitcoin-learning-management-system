@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { useEffect } from 'react';
 
 import { Button } from '@sovereign-university/ui';
 
@@ -70,6 +71,8 @@ export const BCertificate = () => {
         (event) => event.type === 'exam' && event.startDate > new Date(),
       )
     : [];
+
+  useEffect(() => document.body.scrollTo({ top: 0 }), []);
 
   return (
     <PageLayout

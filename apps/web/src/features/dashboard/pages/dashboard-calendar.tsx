@@ -135,7 +135,7 @@ export const DashboardCalendar = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col gap-8 h-full">
+      <div className="flex flex-col gap-4 lg:gap-8 h-full">
         <div className="text-2xl">
           {t('dashboard.calendar.personalCalendar')}
         </div>

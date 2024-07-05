@@ -13,6 +13,7 @@ export const createSendEmail = ({ config }: Dependencies) => {
   return async ({ email, subject, ...options }: SendEmailOptions) => {
     if (!config.sendgrid.enable) {
       console.log('Email sending disabled');
+      console.debug('Email:', { email, subject, options });
       return;
     }
 

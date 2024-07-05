@@ -1,6 +1,6 @@
 import builderSvg from '../../assets/resources/builder.svg';
 import conferenceSvg from '../../assets/resources/conference.svg';
-// import glossarySvg from '../../assets/resources/glossary.svg';
+import glossarySvg from '../../assets/resources/glossary.svg';
 import librarySvg from '../../assets/resources/library.svg';
 import podcastSvg from '../../assets/resources/podcast.svg';
 import toolkitSvg from '../../assets/resources/toolkit.svg';
@@ -31,10 +31,9 @@ export const RESOURCES_CATEGORIES = [
     image: toolkitSvg,
     unreleased: false,
   },
-  // TODO add when we have a glossary route
-  // {
-  //   name: 'glossary',
-  //   image: glossarySvg,
-  //   unreleased: true,
-  // },
+  {
+    name: 'glossary',
+    image: glossarySvg,
+    unreleased: true,
+  },
 ] as const;

@@ -59,7 +59,7 @@ export const sendgrid: EnvConfig['sendgrid'] = {
   email: getenv('SENDGRID_EMAIL', null),
   templates: {
     emailChange: getenv('SENDGRID_EMAIL_CHANGE_TEMPLATE_ID', null),
-    recoverPassword: getenv('SENDGRID_RECOVER_PASSWORD_TEMPLATE_ID', null),
+    resetPassword: getenv('SENDGRID_RESET_PASSWORD_TEMPLATE_ID', null),
   },
 };
 

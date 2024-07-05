@@ -70,12 +70,12 @@ export const ConferencesMarkdownBody = ({
           </a>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col px-10 text-base tracking-wide md:text-justify">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col px-10 text-base tracking-wide md:text-justify">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ul>
         ),

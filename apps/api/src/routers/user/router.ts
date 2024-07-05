@@ -6,8 +6,10 @@ import {
   createChangeEmailConfirmation,
   createChangePassword,
   createEmailValidationToken,
+  createGetTokenInfo,
   createGetUserDetails,
-  createPasswordRecoveryToken,
+  createPasswordReset,
+  createPasswordResetToken,
 } from '@sovereign-university/user';
 
 import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
@@ -55,22 +57,34 @@ export const userRouter = createTRPCRouter({
   courses: userCoursesRouter,
   events: userEventsRouter,
   webhooks: paymentWebhooksProcedure,
+  tokenInfo: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(({ ctx, input }) =>
+      createGetTokenInfo(ctx.dependencies)(input.token),
+    ),
   changeEmail: protectedProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       createEmailValidationToken(ctx.dependencies)(ctx.user.uid, input.email),
     ),
   validateEmailChange: publicProcedure
     .input(z.object({ token: z.string() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       createChangeEmailConfirmation(ctx.dependencies)(input.token),
     ),
-  requestPasswordRecovery: publicProcedure
+  requestPasswordReset: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(({ ctx, input }) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
-      createPasswordRecoveryToken(ctx.dependencies)(input.email),
+      createPasswordResetToken(ctx.dependencies)(input.email),
     ),
+  resetPassword: publicProcedure
+    .input(z.object({ resetToken: z.string(), newPassword: z.string() }))
+    .mutation(({ ctx, input }) => {
+      console.log('Reset Password', input);
+
+      return createPasswordReset(ctx.dependencies)(
+        input.resetToken,
+        input.newPassword,
+      );
+    }),
 });

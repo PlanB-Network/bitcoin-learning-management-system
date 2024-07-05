@@ -14,7 +14,7 @@ export interface SendGridConfig {
   enable: boolean;
   templates: {
     emailChange: string | null;
-    recoverPassword: string | null;
+    resetPassword: string | null;
   };
 }
 

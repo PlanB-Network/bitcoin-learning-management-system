@@ -292,6 +292,39 @@ export const contentPodcasts = content.table('podcasts', {
   nostr: text('nostr'),
 });
 
+// GLOSSARY WORDS
+
+export const contentGlossaryWords = content.table('glossary_words', {
+  resourceId: integer('resource_id')
+    .primaryKey()
+    .notNull()
+    .references(() => contentResources.id, { onDelete: 'cascade' }),
+  originalWord: text('original_word').notNull(),
+  fileName: text('file_name').notNull(),
+  relatedWords: varchar('related_words', { length: 255 }).array(),
+});
+
+export const contentGlossaryWordsLocalized = content.table(
+  'glossary_words_localized',
+  {
+    glossaryWordId: integer('glossary_word_id')
+      .notNull()
+      .references(() => contentGlossaryWords.resourceId, {
+        onDelete: 'cascade',
+      }),
+    language: varchar('language', { length: 10 }).notNull(),
+
+    // Per translation
+    term: text('term').notNull(),
+    definition: text('definition').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.glossaryWordId, table.language],
+    }),
+  }),
+);
+
 // COURSES
 
 export const contentCourses = content.table('courses', {

@@ -40,9 +40,27 @@
     "lnurlAuthDescription": "Scannez ce code QR avec votre portefeuille Lightning pour vous connecter !",
     "noAccountNeeded": "Pas besoin de compte pour commencer à apprendre sur The Sovereign University !",
     "noAccountYet": "Vous n'avez pas encore de compte ?",
-    "passwordReinit": "Réinitialisation du mot de passe",
+    "resetPassword": "Réinitialisation du mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "passwordMinLength": "Le mot de passe doit contenir au moins {{len}} caractères",
     "passwordRequired": "Le mot de passe est requis",
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+    "passwordChanged": "Mot de passe changé",
+    "passwordSuccessfullyChanged": "Votre mot de passe a été changé avec succès, vous pouvez maintenant vous connecter avec.",
+    "backToLogin": "Se connecter",
+    "backToHome": "Retour à l'accueil",
+    "invalidToken": "Token invalide",
+    "checkingToken": "Vérification du token",
+    "checkingTokenExplain": "Nous vérifions la validité du token de réinitialisation de mot de passe...",
+    "invalidTokenExplain": {
+      "expired": "Le token a expiré",
+      "consumed": "Le token a déjà été utilisé",
+      "invalid": "Le token est invalide",
+      "notFound": "Token non trouvé"
+    },
+    "passwordResetError": "Une erreur s'est produite lors de la réinitialisation de votre mot de passe.",
+    "passwordResetSent": "Un email de réinitialisation de mot de passe a été envoyé (si l'adresse figure dans notre base de données).",
+    "tryAgain": "Réessayer",
     "sendLink": "Envoyer un lien",
     "signIn": "Se connecter"
   },
@@ -98,14 +116,14 @@
       "thanksTip": "Vous voulez dire merci ? Soutenez.",
       "detail": {
         "title": "Détails de la classe",
-        "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
+        "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
         "p1content": "Assurez-vous de réserver votre place",
         "bookSeat": "Réserver votre place",
         "classIsFull": "La classe est déjà complète",
         "cancelBooking": "Annulez votre réservation",
         "ticketDownload": "Téléchargez votre billet",
-        "p2heading": "Vous n'êtes plus disponible ?",
-        "p2content": "Pas de problème ! Le cours sera diffusée en direct sur cette page et disponible en redifusion plus tard."
+        "p2heading": "Vous n'êtes plus disponible ?",
+        "p2content": "Pas de problème ! Le cours sera diffusée en direct sur cette page et disponible en redifusion plus tard."
       },
       "live": {
         "title": "Vidéo en direct",
@@ -131,7 +149,7 @@
       },
       "numberOfChapters": "Nombre de chapitres : {{number}}",
       "objectives": "Objectifs",
-      "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
+      "objectivesTitle": "Qu'allez-vous apprendre dans ce cours ?",
       "price": "Prix : {{price}} sats",
       "professor": "Professeur",
       "startCourse": "Débuter le cours",
@@ -730,15 +748,15 @@
   "bCertificate": {
     "bCertificateDescription": "Le certificat B est un examen reconnu internationalement pour évaluer votre niveau sur Bitcoin et ses sujets connexes. Ce certificat vous permettra de prouver vos compétences et vos connaissances au sein de l'industrie Bitcoin, vous donnant accès à des entreprises et à des postes dans cette industrie.",
     "noBookExam": "Il n'y a pas encore de session d'examen prévue.",
-    "organizeDescription": "Pas de problème ! Si votre communauté fait partie du PlanB Network, il est possible d'organiser une session d'examen dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
+    "organizeDescription": "Pas de problème ! Si votre communauté fait partie du PlanB Network, il est possible d'organiser une session d'examen dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
     "bookExam": "Réservez une session d'examen",
-    "challengeYourself": "Mettez-vous au défi et évaluez votre niveau !",
+    "challengeYourself": "Mettez-vous au défi et évaluez votre niveau !",
     "checkout": "Consultez le B-Certificat",
-    "curious": "Curieux de savoir à quoi ressemble l'examen ?",
-    "joeNakamotoVideo": "Qu'est-ce que c'est qu'un examen Bitcoin ? Par Joe Nakamoto",
-    "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
+    "curious": "Curieux de savoir à quoi ressemble l'examen ?",
+    "joeNakamotoVideo": "Qu'est-ce que c'est qu'un examen Bitcoin ? Par Joe Nakamoto",
+    "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
     "organizeExam": "Organiser un examen",
     "organizeSubtitle": "Orangepill un milliard de personnes n'est pas facile",
-    "organizeTitle": "Voulez-vous organiser un examen du B-Certificate dans votre Hub ?"
+    "organizeTitle": "Voulez-vous organiser un examen du B-Certificate dans votre Hub ?"
   }
 }

@@ -158,7 +158,7 @@
     "lnurlAuthDescription": "Отсканируйте этот QR-код с помощью вашего Lightning кошелька для входа в систему!",
     "noAccountNeeded": "Начните обучения в сети Plan B без регистрации аккаунта!",
     "noAccountYet": "Нет аккаунта?",
-    "passwordReinit": "Сброс пароля",
+    "resetPassword": "Сброс пароля",
     "passwordRequired": "Требуется пароль",
     "passwordsDontMatch": "Пароли не совпадают",
     "sendLink": "Отправить ссылку",

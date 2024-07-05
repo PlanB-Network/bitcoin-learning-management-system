@@ -36,7 +36,7 @@ export interface ButtonProps
   onHoverArrowDirection?: 'left' | 'right';
 }
 
-const classesBySize = {
+const sizeClasses = {
   xs: 'px-2 py-1.5 text-xs leading-[14px] !font-medium rounded-md',
   s: 'px-2.5 py-1.5 text-base leading-[19px] !font-medium rounded-md',
   m: 'px-3.5 py-3 text-lg leading-[21px] !font-medium rounded-lg',
@@ -44,7 +44,7 @@ const classesBySize = {
   xl: 'px-12 py-3 text-xl !font-medium rounded-2xl',
 };
 
-const classesByVariant = {
+const variantClasses = {
   primary: {
     dark: 'text-white bg-blue-700 hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
     light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
@@ -99,7 +99,7 @@ const classesByVariant = {
   },
 };
 
-const disabledClassesByVariant = {
+const variantDisabledClasses = {
   primary: {
     dark: '',
     light: '',
@@ -174,12 +174,12 @@ export const Button = ({
 }: ButtonProps) => {
   const classes = useMemo(
     () => [
-      classesBySize[size],
-      classesByVariant[variant]?.[mode],
+      sizeClasses[size],
+      variantClasses[variant]?.[mode],
       rounded ? '!rounded-full' : '',
       disabled ? 'cursor-default active:none' : 'active:scale-95',
       (disabled || fakeDisabled) &&
-        (disabledClassesByVariant[variant]?.[mode] ||
+        (variantDisabledClasses[variant]?.[mode] ||
           'active:none bg-newBlack-3 !text-newGray-1'),
     ],
     [rounded, size, variant, mode, disabled, fakeDisabled],

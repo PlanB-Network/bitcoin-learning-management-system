@@ -4,13 +4,15 @@ import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from '@sovereign-university/ui';
+
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import { CategoryIcon } from '../../../components/CategoryIcon/index.tsx';
 import { TutorialCard } from '../../../components/tutorial-card.tsx';
-import { compose, trpc } from '../../../utils/index.ts';
+import { trpc } from '../../../utils/index.ts';
 import { TutorialLayout } from '../layout.tsx';
 import { TUTORIALS_CATEGORIES, extractSubCategories } from '../utils.tsx';
 
@@ -76,32 +78,44 @@ export const TutorialCategory = () => {
         </p>
         {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
         {tutorials && (
-          <div className="w-full px-2 py-4 sm:px-0">
+          <div className="w-full px-2 py-4 md:px-0">
             <Tab.Group>
-              <Tab.List className="flex max-sm:flex-wrap rounded-t-xl bg-gray-200 overflow-hidden">
-                {subCategories.map((subCategory) => (
-                  <Tab
+              <Tab.List className="flex max-md:flex-wrap rounded-t-xl bg-gray-200 overflow-hidden">
+                {subCategories.map((subCategory, subCategoryIndex) => (
+                  <div
                     key={subCategory}
-                    className={({ selected }) =>
-                      compose(
-                        'w-full overflow-hidden py-2 sm:py-4 px-2 font-medium text-blue-800 capitalize',
-                        selected
-                          ? 'bg-blue-800 text-white shadow'
-                          : 'text-blue-100 hover:bg-gray-100/[0.3] hover:text-orange-600',
-                      )
-                    }
+                    className="max-md:flex flex-col items-center w-full overflow-hidden"
                   >
-                    {t([
-                      `tutorials.${category}.${subCategory}.name`,
-                      subCategory,
-                    ])}
-                  </Tab>
+                    <Tab
+                      className={({ selected }) =>
+                        cn(
+                          'w-fit md:w-full overflow-hidden px-3 py-2 max-md:my-3 md:px-2 md:py-4 font-medium capitalize max-md:rounded-lg focus:ring-0',
+                          selected
+                            ? 'bg-blue-800 text-white'
+                            : 'text-blue-700 hover:bg-gray-100/[0.3] hover:text-orange-600',
+                        )
+                      }
+                    >
+                      {t([
+                        `tutorials.${category}.${subCategory}.name`,
+                        subCategory,
+                      ])}
+                    </Tab>
+                    <div
+                      className={cn(
+                        'h-px w-20 bg-blue-800 rounded-full mx-auto',
+                        subCategoryIndex < subCategories.length - 1
+                          ? 'md:hidden'
+                          : 'hidden',
+                      )}
+                    />
+                  </div>
                 ))}
               </Tab.List>
               <Tab.Panels className="rounded-b-xl bg-gray-200 pb-8">
                 {subCategories.map((subCategory) => (
                   <Tab.Panel key={subCategory}>
-                    <div className="flex flex-col px-3 sm:px-10 pt-3 gap-8">
+                    <div className="flex flex-col px-3 md:px-10 pt-3 gap-8">
                       {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
                       ) && (

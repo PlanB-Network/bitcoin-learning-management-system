@@ -8,6 +8,8 @@ import {
   createGetBuilders,
   createGetConference,
   createGetConferences,
+  createGetGlossaryWord,
+  createGetGlossaryWords,
   createGetPodcast,
   createGetPodcasts,
 } from '@sovereign-university/content';
@@ -16,6 +18,7 @@ import {
   joinedBookSchema,
   joinedBuilderSchema,
   joinedConferenceSchema,
+  joinedGlossaryWordSchema,
   joinedPodcastSchema,
 } from '@sovereign-university/schemas';
 
@@ -31,6 +34,12 @@ const createGetResourcesProcedure = () => {
 const createGetResourceProcedure = () => {
   return publicProcedure.input(
     z.object({ id: z.number(), language: z.string() }),
+  );
+};
+
+const createGetResourceProcedureWithStrId = () => {
+  return publicProcedure.input(
+    z.object({ strId: z.string(), language: z.string() }),
   );
 };
 
@@ -77,6 +86,17 @@ export const resourcesRouter = createTRPCRouter({
     .output(joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })))
     .query(async ({ ctx, input }) =>
       createGetConference(ctx.dependencies)(input.id),
+    ),
+  // Glossary Words
+  getGlossaryWords: createGetResourcesProcedure()
+    .output(joinedGlossaryWordSchema.array())
+    .query(async ({ ctx, input }) =>
+      createGetGlossaryWords(ctx.dependencies)(input?.language),
+    ),
+  getGlossaryWord: createGetResourceProcedureWithStrId()
+    .output(joinedGlossaryWordSchema)
+    .query(async ({ ctx, input }) =>
+      createGetGlossaryWord(ctx.dependencies)(input.strId, input.language),
     ),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()

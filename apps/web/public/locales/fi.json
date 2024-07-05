@@ -40,7 +40,7 @@
     "lnurlAuthDescription": "Skannaa QR-koodi Lightning-lompakollasi kirjautuaksesi sisään!",
     "noAccountNeeded": "Et tarvitse tiliä aloittaaksesi oppimisen opistossamme!",
     "noAccountYet": "Eikö sinulla ole tiliä?",
-    "passwordReinit": "Salasanan palautus",
+    "resetPassword": "Salasanan palautus",
     "passwordRequired": "Salasana vaaditaan",
     "passwordsDontMatch": "Salasanat ei täsmää",
     "sendLink": "lähetä linkki",

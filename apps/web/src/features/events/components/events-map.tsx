@@ -17,12 +17,8 @@ import View from 'ol/View.js';
 import 'ol/ol.css';
 import { useEffect, useState } from 'react';
 import type { Components } from 'react-big-calendar';
-import {
-  Calendar,
-  dateFnsLocalizer
-} from 'react-big-calendar';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-
 
 import type {
   EventLocation,
@@ -294,7 +290,10 @@ export const EventsMap = ({
         groups.length === 1
           ? latLonToCoordinate(groups[0].coordinate)
           : groups.length > 1
-            ? latLonToCoordinate(groups.sort((a, b) => b.events.length - a.events.length)[0].coordinate)
+            ? latLonToCoordinate(
+                groups.sort((a, b) => b.events.length - a.events.length)[0]
+                  .coordinate,
+              )
             : [0, 0];
 
       state = { center, zoom: 4 };
@@ -367,7 +366,7 @@ export const EventsMap = ({
     const date = new Date();
     date.setDate(date.getDate() + weekShift * 7);
     return date;
-  }
+  };
 
   const locales = {
     'en-US': enUS,
@@ -439,29 +438,37 @@ export const EventsMap = ({
         >
           <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
             <div>
-              Calendar - {
-                weekShift === 0 ?
-                  'This week' :
-                  weekShift === -1
-                    ? 'Last week'
-                    : weekShift === 1
-                      ? 'Next week'
-                      : weekShift > 0
-                        ? `In ${weekShift} weeks`
-                        : `${-weekShift} weeks ago`
-              }
+              Calendar -{' '}
+              {weekShift === 0
+                ? 'This week'
+                : weekShift === -1
+                  ? 'Last week'
+                  : weekShift === 1
+                    ? 'Next week'
+                    : weekShift > 0
+                      ? `In ${weekShift} weeks`
+                      : `${-weekShift} weeks ago`}
             </div>
 
             {/* Date controls */}
             <div className="flex items-center gap-1 font-normal">
-              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift - 1)}>
-                <BsChevronLeft className='size-6 p-1' />
+              <button
+                className="border bg-white rounded-lg p-1"
+                onClick={() => setWeekShift(weekShift - 1)}
+              >
+                <BsChevronLeft className="size-6 p-1" />
               </button>
-              <button className="border bg-white rounded-lg py-1 px-3" onClick={() => setWeekShift(0)}>
+              <button
+                className="border bg-white rounded-lg py-1 px-3"
+                onClick={() => setWeekShift(0)}
+              >
                 Today
               </button>
-              <button className="border bg-white rounded-lg p-1" onClick={() => setWeekShift(weekShift + 1)}>
-                <BsChevronRight className='size-6 p-1' />
+              <button
+                className="border bg-white rounded-lg p-1"
+                onClick={() => setWeekShift(weekShift + 1)}
+              >
+                <BsChevronRight className="size-6 p-1" />
               </button>
             </div>
           </div>
@@ -472,7 +479,7 @@ export const EventsMap = ({
                 <Calendar
                   localizer={localizer}
                   events={calendarEvents}
-                  onView={() => { }}
+                  onView={() => {}}
                   view="week"
                   toolbar={false}
                   onSelectEvent={({ id }) => {
@@ -500,7 +507,7 @@ export const EventsMap = ({
                     width: '100%',
                   }}
                   date={getDate()}
-                  onNavigate={() => { }}
+                  onNavigate={() => {}}
                   eventPropGetter={customEventGetter}
                   components={weekComponents}
                   showAllEvents={true}
@@ -512,7 +519,7 @@ export const EventsMap = ({
 
         {/* MAP */}
         <div className="relative flex-1">
-          <div className="flex sm:justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
+          <div className="flex sm:justify-between items-center h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
             <div>
               <div className="hidden sm:flex gap-4 items-center">
                 <svg
@@ -533,15 +540,15 @@ export const EventsMap = ({
               </div>
             </div>
 
-            <div className="flex gap-4 font-light">
+            <div className="flex gap-3 md:gap-4 font-light mx-auto">
               {courseTypes.map((f) => (
                 <button
                   key={f}
                   onClick={() => onFilterClick(f)}
                   className={cn(
-                    'text-md border-b border-transparent capitalize',
+                    'text-[10px] md:text-base border-b border-transparent capitalize',
                     filter.includes(f)
-                      ? 'border-newOrange-1 font-semibold'
+                      ? 'border-newOrange-1 font-medium md:font-semibold'
                       : '',
                   )}
                 >
@@ -558,9 +565,9 @@ export const EventsMap = ({
             className={cn(
               'w-full h-96 xl:h-[32rem] overflow-hidden',
               !(selectedEventGroup || filter.length > 0) &&
-              (mode === DisplayMode.Calendar
-                ? 'rounded-br-xl'
-                : 'rounded-b-xl'),
+                (mode === DisplayMode.Calendar
+                  ? 'rounded-br-xl'
+                  : 'rounded-b-xl'),
             )}
           ></div>
 
@@ -580,13 +587,13 @@ export const EventsMap = ({
             >
               {mode === DisplayMode.Calendar ? (
                 <>
-                  <BsChevronLeft className='size-4' />
+                  <BsChevronLeft className="size-4" />
 
                   <span>Full map</span>
                 </>
               ) : (
                 <>
-                    <BsChevronRight className='size-4' />
+                  <BsChevronRight className="size-4" />
 
                   <span>Display Calendar</span>
                 </>

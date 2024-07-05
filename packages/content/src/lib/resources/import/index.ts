@@ -10,6 +10,7 @@ import { createProcessChangedBet } from './categories/bet.js';
 import { createProcessChangedBook } from './categories/books.js';
 import { createProcessChangedBuilder } from './categories/builders.js';
 import { createProcessChangedConference } from './categories/conferences.js';
+import { createProcessChangedGlossaryWord } from './categories/glossary.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { assertSupportedCategoryPath } from './const.js';
 import type { ResourceCategory } from './const.js';
@@ -103,6 +104,7 @@ export const createUpdateResources = (dependencies: Dependencies) => {
       builders: createProcessChangedBuilder,
       conference: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
+      glossary: createProcessChangedGlossaryWord,
     } as const;
 
     const handler = mapHandlers[resource.category];

@@ -40,7 +40,7 @@
     "lnurlAuthDescription": "¡Escanea este código QR con tu billetera Lightning para iniciar sesión!",
     "noAccountNeeded": "¡No hay necesidad de una cuenta para empezar a aprender en The Sovereign University!",
     "noAccountYet": "¿No tienes una cuenta?",
-    "passwordReinit": "Restablecimiento de contraseña",
+    "resetPassword": "Restablecimiento de contraseña",
     "passwordRequired": "Contraseña requerida",
     "passwordsDontMatch": "Las contraseñas no coinciden",
     "sendLink": "Enviar un enlace",
