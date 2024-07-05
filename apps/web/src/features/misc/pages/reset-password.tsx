@@ -9,6 +9,8 @@ import { TextInput } from '#src/atoms/TextInput/index.js';
 import { MainLayout } from '../../../components/MainLayout/index.tsx';
 import { trpc } from '../../../utils/index.ts';
 
+const minLength = 10;
+
 enum PageState {
   CHECKING, // Checking if the token is valid
   INVALID, // Token is invalid
@@ -23,6 +25,7 @@ export const ResetPasswordPage = () => {
   const { token } = useParams({ from: '/reset-password/$token' });
 
   const [pageState, setPageState] = useState<PageState>(PageState.CHECKING);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const { data: tokenInfo, isFetched } = trpc.user.tokenInfo.useQuery({
     token,
@@ -78,27 +81,39 @@ export const ResetPasswordPage = () => {
     [PageState.FORM]: (
       <div>
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
-          Reset your password
+          {t('auth.resetPassword')}
         </h1>
         <p className="my-8">
           <form
             onSubmit={handleSubmit}
             className="flex w-full flex-col items-center mt-3"
           >
-            <TextInput
-              name="password"
-              type="password"
-              placeholder="New password"
-              className="w-full"
-            />
+            <div className="text-start w-full max-w-xl mb-8">
+              <TextInput
+                name="password"
+                type="password"
+                placeholder={t('auth.newPassword')}
+                className="w-full"
+                onChange={(e) => {
+                  setIsPasswordValid(e.target.value.length >= minLength);
+                }}
+              />
+
+              {!isPasswordValid && (
+                <p className="text-sm text-gray-400">
+                  {t('auth.passwordMinLength', { len: minLength })}
+                </p>
+              )}
+            </div>
 
             <Button
               variant="newPrimary"
               size="m"
               type="submit"
               className="my-8"
+              disabled={!isPasswordValid}
             >
-              {t('auth.passwordReinit')}
+              {t('auth.resetPassword')}
             </Button>
           </form>
         </p>
@@ -115,12 +130,9 @@ export const ResetPasswordPage = () => {
     [PageState.SUCCESS]: (
       <div>
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
-          Password changed
+          {t('auth.passwordChanged')}
         </h1>
-        <p className="my-8">
-          Your password has been successfully changed. You can now log in with
-          your new password.
-        </p>
+        <p className="my-8">{t('auth.passwordSuccessfullyChanged')}</p>
       </div>
     ),
     [PageState.ERROR]: (
@@ -141,29 +153,31 @@ export const ResetPasswordPage = () => {
     ),
     [PageState.INVALID]: (
       <div>
-        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">Invalid token</h1>
+        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+          {t('auth.invalidToken')}
+        </h1>
         <p className="my-8 max-w-2xl">
           {tokenInfo
             ? tokenInfo.expired
-              ? 'The token has expired'
+              ? t('auth.invalidTokenExplain.expired')
               : tokenInfo.consumed
-                ? 'The token has already been used'
-                : 'The token is invalid'
-            : 'Token not found'}
+                ? t('auth.invalidTokenExplain.consumed')
+                : t('auth.invalidTokenExplain.invalid')
+            : t('auth.invalidTokenExplain.notFound')}
         </p>
         <p>
           <Link className="cursor-pointer hover:text-orange-500" to="/">
-            Go to home
+            {t('auth.backToHome')}
           </Link>
         </p>
       </div>
     ),
     [PageState.CHECKING]: (
       <div>
-        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">Checking token</h1>
-        <p className="my-8 max-w-2xl">
-          We are checking if the token is valid...
-        </p>
+        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+          {t('auth.checkingToken')}
+        </h1>
+        <p className="my-8 max-w-2xl">{t('auth.checkingTokenExplain')}</p>
       </div>
     ),
   };

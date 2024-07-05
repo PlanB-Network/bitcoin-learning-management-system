@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@sovereign-university/ui';
@@ -16,12 +16,26 @@ interface LoginModalProps {
   goTo: (newState: AuthModalState) => void;
 }
 
+enum ResetPasswordState {
+  Initial,
+  Sent,
+  Error,
+}
+
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const { t } = useTranslation();
+
+  const [resetPasswordState, setResetPasswordState] =
+    useState<ResetPasswordState>(ResetPasswordState.Initial);
 
   const resetPassword = trpc.user.requestPasswordReset.useMutation({
     onSuccess: () => {
       console.log('Password reset email sent');
+      setResetPasswordState(ResetPasswordState.Sent);
+    },
+    onError: (error) => {
+      console.error('Error sending password reset email:', error);
+      setResetPasswordState(ResetPasswordState.Error);
     },
   });
 
@@ -34,13 +48,9 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     [resetPassword],
   );
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('auth.passwordReinit')}
-    >
-      <div className="flex flex-col items-center">
+  const modalContent = {
+    [ResetPasswordState.Initial]: (
+      <>
         <Formik initialValues={{ email: '' }} onSubmit={handlePasswordReset}>
           {({
             handleSubmit,
@@ -83,6 +93,36 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
             {t('words.back')}
           </button>
         </p>
+      </>
+    ),
+    [ResetPasswordState.Sent]: (
+      <div>
+        <p className="mb-8">{t('auth.passwordResetSent')}</p>
+        <Button onClick={() => goTo(AuthModalState.SignIn)}>
+          {t('auth.backToLogin')}
+        </Button>
+      </div>
+    ),
+    [ResetPasswordState.Error]: (
+      <div>
+        <p className="mb-8">{t('auth.passwordResetError')}</p>
+        <Button
+          onClick={() => setResetPasswordState(ResetPasswordState.Initial)}
+        >
+          {t('auth.tryAgain')}
+        </Button>
+      </div>
+    ),
+  };
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      headerText={t('auth.resetPassword')}
+    >
+      <div className="flex flex-col items-center">
+        {modalContent[resetPasswordState]}
       </div>
     </Modal>
   );

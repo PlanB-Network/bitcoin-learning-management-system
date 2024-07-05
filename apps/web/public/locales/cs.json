@@ -38,7 +38,7 @@
     "forgottenPassword": "Zapomněli jste heslo?",
     "lnurlAuthDescription": "Naskenujte QR kód pomocí peněženky Lightning a přihlaste se!",
     "noAccountYet": "Nemáte účet?",
-    "passwordReinit": "Obnovení hesla",
+    "resetPassword": "Obnovení hesla",
     "passwordRequired": "Heslo je povinné",
     "passwordsDontMatch": "Hesla se neshodují",
     "sendLink": "Odeslat odkaz",
