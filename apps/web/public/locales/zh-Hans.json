@@ -1,1 +1,16 @@
-{}
+{
+  "about": {
+    "coportateContact": "联系信息：",
+    "missionContent1": "我们的使命是借助开源教育和建立联络网支持本地比特币社区。我们收集、组织并创建必要资源（课程、书籍、海报、传单、视频）以推动比特币行业的发展。",
+    "commitmentTitle": "我们的承诺",
+    "commitmentContent": "我们对比特币社区的承诺如下：\n • 保持开源\n • 提供高质量的教育内容\n • 用尽可能多的语言翻译我们的内容\n • 支持比特币建设者的创业之旅",
+    "coreTeamTitle": "核心团队",
+    "coreTeamContent": "PlanB网络是由数百名贡献者、教师、社区领导者、设计师、开发者和组织者组成的集体。感谢众多使PlanB成真并每天持续付出使之成真的人们。 （贡献者墙即将上线）",
+    "coreTeamAsioRole": "教育协调员",
+    "missionTitle": "我们的任务",
+    "coreTeamGiacomoRole": "经理和联合创始人",
+    "coreTeamRogzyRole": "产品经理 & 联合创始人",
+    "coreTeamAjelexRole": "节点协调员",
+    "activeContributors": "活跃的贡献者"
+  }
+}
