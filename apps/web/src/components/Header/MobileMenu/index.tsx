@@ -2,6 +2,7 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineBook } from 'react-icons/ai';
+import { BsMortarboard } from 'react-icons/bs';
 import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 import { LuLogOut } from 'react-icons/lu';
@@ -56,12 +57,17 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
     {
       buttonText: t('dashboard.calendar.calendar'),
       link: '/dashboard/calendar',
-      icon: <IoTicketOutline size={24} />,
+      icon: <FaRegCalendarCheck size={24} />,
     },
     {
       buttonText: t('dashboard.bookings'),
       link: '/dashboard/bookings',
-      icon: <FaRegCalendarCheck size={24} />,
+      icon: <IoTicketOutline size={24} />,
+    },
+    {
+      buttonText: t('words.bCertificate'),
+      link: '/dashboard/bcertificate',
+      icon: <BsMortarboard size={24} />,
     },
     {
       buttonText: t('words.account'),

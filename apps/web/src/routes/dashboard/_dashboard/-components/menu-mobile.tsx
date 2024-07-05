@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
+import { BsMortarboard } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 
@@ -13,6 +14,7 @@ export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
   const [pathname, setPathname] = useState('');
 
   const dashboardPath = '/dashboard/courses';
+  const bCertificatePath = '/dashboard/bcertificate';
   const bookingsPath = '/dashboard/bookings';
   const calendarPath = '/dashboard/calendar';
   const courseDetailPath = '/dashboard/course';
@@ -41,15 +43,22 @@ export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
       <Link to={calendarPath}>
         <MenuItem
           text={t('dashboard.calendar.calendar')}
-          icon={<IoTicketOutline size={18} />}
+          icon={<FaRegCalendarCheck size={18} />}
           active={pathname === calendarPath}
         />
       </Link>
       <Link to={bookingsPath}>
         <MenuItem
           text={t('dashboard.bookings')}
-          icon={<FaRegCalendarCheck size={18} />}
+          icon={<IoTicketOutline size={18} />}
           active={pathname === bookingsPath}
+        />
+      </Link>
+      <Link to={bCertificatePath}>
+        <MenuItem
+          text={t('words.bCertificate')}
+          icon={<BsMortarboard size={18} />}
+          active={pathname === bCertificatePath}
         />
       </Link>
       <Link to={profilePath}>

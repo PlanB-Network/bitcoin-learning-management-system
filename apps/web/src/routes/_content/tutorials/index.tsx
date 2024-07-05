@@ -70,7 +70,7 @@ function TutorialExplorer() {
             </span>
             <span>{t('tutorials.explorer.description')}</span>
           </div>
-          <div className="flex max-w-3xl flex-wrap justify-center gap-6">
+          <div className="flex max-w-3xl flex-wrap justify-center gap-6 px-2">
             {!isFetchedTutorials && (
               <Spinner className="size-48 md:size-64 mx-auto" />
             )}
@@ -89,6 +89,7 @@ function TutorialExplorer() {
                   className="group/builder relative flex flex-col items-center justify-center"
                 >
                   <img
+                    className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
                     className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
                     src={
                       tutorial.builder

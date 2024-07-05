@@ -3,6 +3,7 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
+import { BsMortarboard } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import {
   IoLogOutOutline,
@@ -32,6 +33,7 @@ export const MenuDesktop = ({
   const navigate = useNavigate();
 
   const dashboardPath = '/dashboard/courses';
+  const bCertificatePath = '/dashboard/bcertificate';
   const bookingsPath = '/dashboard/bookings';
   const calendarPath = '/dashboard/calendar';
   const coursesPath = '/dashboard/courses';
@@ -82,15 +84,22 @@ export const MenuDesktop = ({
         <Link to={calendarPath}>
           <MenuItem
             text={t('dashboard.calendar.calendar')}
-            icon={<IoTicketOutline size={24} />}
+            icon={<FaRegCalendarCheck size={24} />}
             active={pathname.includes(calendarPath)}
           />
         </Link>
         <Link to={bookingsPath}>
           <MenuItem
             text={t('dashboard.bookings')}
-            icon={<FaRegCalendarCheck size={24} />}
+            icon={<IoTicketOutline size={24} />}
             active={pathname.includes(bookingsPath)}
+          />
+        </Link>
+        <Link to={bCertificatePath}>
+          <MenuItem
+            text={t('words.bCertificate')}
+            icon={<BsMortarboard size={24} />}
+            active={pathname === bCertificatePath}
           />
         </Link>
         <Link to={profilePath}>
