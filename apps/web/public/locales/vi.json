@@ -256,7 +256,7 @@
     "headerAccountCreated": "Tài khoản đã được tạo",
     "noAccountNeeded": "Không cần phải có tài khoản để bắt đầu học trên Sovereign University!",
     "noAccountYet": "Bạn chưa có tài khoản?",
-    "passwordReinit": "Đặt lại mật khẩu",
+    "resetPassword": "Đặt lại mật khẩu",
     "passwordRequired": "Mật khẩu là bắt buộc",
     "passwordsDontMatch": "Mật khẩu không khớp",
     "sendLink": "Gửi một đường link",

@@ -42,6 +42,7 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
     "basepath",
+    "bitcoiners",
     "bytea",
     "psql",
     "resave",

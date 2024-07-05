@@ -40,7 +40,7 @@
     "lnurlAuthDescription": "ライトニング・ウォレットでこのQRコードをスキャンしてログインしてください！",
     "noAccountNeeded": "Sovereign Universityで学ぶためにアカウントは必要ありません！",
     "noAccountYet": "アカウントをお持ちではありませんか？",
-    "passwordReinit": "パスワードをリセットする",
+    "resetPassword": "パスワードをリセットする",
     "passwordRequired": "パスワードは必須項目です",
     "passwordsDontMatch": "パスワードが一致しません",
     "sendLink": "リンクを送信する",

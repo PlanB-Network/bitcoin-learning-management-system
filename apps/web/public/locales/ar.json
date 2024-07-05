@@ -40,7 +40,7 @@
     "lnurlAuthDescription": "Scanne diesen QR-Code mit deiner Lightning Wallet, um dich anzumelden!",
     "noAccountNeeded": "Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
     "noAccountYet": "Haben Sie noch kein Konto?",
-    "passwordReinit": "Passwort Reinitialisierung",
+    "resetPassword": "Passwort Reinitialisierung",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordsDontMatch": "Passwörter stimmen nicht überein",
     "sendLink": "Link versenden",
