@@ -17,7 +17,6 @@
     "check-types": "tsc --noEmit -p tsconfig.lib.json",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.lib.json",
     "generate-types": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
-    "generate-types:types-only": "tsx ./scripts/generate-from-schemas.ts && pnpm prettier --write ./src/generated",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.lib.json | head -n 12 > performance.log",
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },

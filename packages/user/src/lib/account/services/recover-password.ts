@@ -11,7 +11,7 @@ import { createTokenQuery } from '../queries/token.js';
 import { createSendEmail } from './email.js';
 
 export const createPasswordRecoveryToken = (deps: Dependencies) => {
-  const template = deps.config.sendgrid.templates.recoverPassword;
+  const template = deps.config.sendgrid.templates.resetPassword;
   const domain = deps.config.domainUrl;
 
   if (!template) {

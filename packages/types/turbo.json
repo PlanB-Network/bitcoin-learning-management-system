@@ -5,14 +5,11 @@
     "check-types": {
       "dependsOn": ["@sovereign-university/schemas#build-types"]
     },
-    "generate-types:types-only": {
-      "dependsOn": ["@sovereign-university/schemas#build-types"]
-    },
     "generate-types": {
       "dependsOn": ["@sovereign-university/schemas#build"]
     },
     "build-types": {
-      "dependsOn": ["generate-types:types-only"],
+      "dependsOn": ["generate-types"],
       "outputs": ["dist/**"]
     },
     "build": {
