@@ -64,8 +64,8 @@ export default function QuizzCardResults({
               <PieChart
                 colors={answersColors}
                 globalCursorPointer={true}
-                width={isMobile ? 300 : 350}
-                height={isMobile ? 300 : 400}
+                width={isMobile ? 270 : 350}
+                height={isMobile ? 270 : 400}
                 handlePieClick={pieClick}
                 onClickNextStep={nextStep}
               />

@@ -102,7 +102,7 @@ export default function QuizzCardQuestion({
                   </div>
                   <div
                     className={cn(
-                      ' text-blue-1000',
+                      ' text-blue-1000 text-start',
                       index === clickedAnswer ? 'font-bold' : 'font-medium',
                     )}
                   >

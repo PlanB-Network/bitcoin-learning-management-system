@@ -81,9 +81,9 @@ export default function QuizzCardReview({
             />
           </button>
           <div className="bg-beige-300 rounded-[0.9375rem] border-2 border-gray-300 p-3">
-            <div className="mb-1 flex flex-row items-center gap-1">
+            <div className="mb-1 flex flex-row gap-1">
               <ArrowFilledIcon height={20} />
-              <p className="mt-1 text-sm font-medium">{question}</p>
+              <p className="text-sm font-medium">{question}</p>
             </div>
             <div className="flex flex-col gap-2">
               <p className="text-blue-1000 ml-2 mt-2 grow break-words text-sm md:mt-2 md:text-base">
@@ -99,8 +99,10 @@ export default function QuizzCardReview({
                       index === selectedAnswer
                         ? index === correctAnswer
                           ? 'bg-green-300 border-green-500'
-                          : 'border-red-400 text-red-400'
-                        : 'bg-beige-300',
+                          : 'border-red-1 bg-red-6'
+                        : index === correctAnswer
+                          ? 'bg-green-300 border-green-500'
+                          : 'bg-beige-300',
                     )}
                   >
                     <div
@@ -109,8 +111,10 @@ export default function QuizzCardReview({
                         index === selectedAnswer
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
-                            : 'font-semibold text-red-500'
-                          : 'font-medium text-blue-1000',
+                            : 'font-semibold text-black'
+                          : index === correctAnswer
+                            ? 'font-semibold text-blue-1000'
+                            : 'font-medium text-blue-1000',
                       )}
                     >
                       {String.fromCodePoint(97 + index)}
@@ -120,8 +124,10 @@ export default function QuizzCardReview({
                         index === selectedAnswer
                           ? index === correctAnswer
                             ? 'font-semibold text-blue-1000'
-                            : 'font-semibold text-red-500'
-                          : 'font-medium text-blue-1000',
+                            : 'font-semibold text-black'
+                          : index === correctAnswer
+                            ? 'font-semibold text-blue-1000'
+                            : 'font-medium text-blue-1000',
                       )}
                     >
                       {question}

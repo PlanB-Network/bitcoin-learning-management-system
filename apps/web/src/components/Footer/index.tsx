@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@sovereign-university/ui';
 
-import OrangePill from '../../assets/footer_pill.svg';
+import OrangePill from '../../assets/footer_pill.webp';
 import PlanBLogoBlack from '../../assets/planb_logo_horizontal_black_orangepill_gradient.svg';
 import PlanBLogoWhite from '../../assets/planb_logo_horizontal_white_orangepill_gradient.svg';
 
@@ -143,7 +143,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
           </div>
           <img
             src={OrangePill}
-            className="absolute -right-0 h-[102px] md:h-56 lg:h-80 -top-12 md:-top-24 lg:-top-32 lg:right-0"
+            className="absolute -right-0 h-[102px] md:h-56 lg:h-72 -top-12 md:-top-24 lg:-top-32 lg:right-12"
             alt="Orange Pill"
           />
         </div>
