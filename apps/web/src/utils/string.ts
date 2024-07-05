@@ -18,3 +18,10 @@ export function extractNumbers(s: string) {
 
 export const capitalizeFirstWord = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
+
+export const normalizeString = (str: string) => {
+  return str
+    .normalize('NFD')
+    .replaceAll(/[\u0300-\u036F]/g, '')
+    .toLowerCase();
+};

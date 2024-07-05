@@ -67,7 +67,7 @@ export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
             aria-haspopup="true"
             onClick={toggleDropdown}
           >
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
+            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px text-start">
               {activeItem}
             </span>
 
@@ -90,7 +90,7 @@ export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
             id="options-menu"
             disabled
           >
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
+            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px text-start">
               {activeItem}
             </span>
           </button>

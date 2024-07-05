@@ -93,6 +93,10 @@
     @apply text-base font-normal leading-normal tracking-015px;
   }
 
+  .desktop-caption1 {
+    @apply text-xs font-normal leading-[166%] tracking-[0.4px];
+  }
+
   .desktop-h3 {
     @apply text-[48px] font-normal leading-[116.7%] tracking-normal;
   }
@@ -127,6 +131,13 @@
 
   .desktop-25px-medium {
     @apply text-2xl font-medium leading-normal tracking-normal;
+  }
+
+  mjx-container {
+    @apply bg-white/20 p-1 rounded-lg leading-loose;
+  }
+  mjx-container svg {
+    @apply max-w-full inline-block;
   }
 
   .mobile-body2 {

@@ -8,6 +8,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 
 import resourcesSvg from '../../assets/resources/builder.svg?react';
 import eventsSvg from '../../assets/resources/conference.svg?react';
+// import glossarySvg from '../../assets/resources/glossary.svg?react';
 import coursesSvg from '../../assets/resources/library.svg?react';
 import podcastSvg from '../../assets/resources/podcast.svg?react';
 import tutorialsSvg from '../../assets/resources/toolkit.svg?react';
@@ -146,6 +147,13 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               path: Routes.Builders,
               icon: resourcesSvg,
             },
+            // {
+            //   id: 'glossary',
+            //   title: t('words.glossary'),
+            //   description: t('menu.glossaryDescription'),
+            //   path: Routes.Glossary,
+            //   icon: glossarySvg,
+            // },
             {
               id: 'bet',
               title: t('bet.pageTitle'),

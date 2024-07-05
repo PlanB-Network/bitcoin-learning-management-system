@@ -10,6 +10,8 @@ import { Builders } from './pages/builders.tsx';
 import { Conference } from './pages/conference-details.tsx';
 import { Conferences } from './pages/conferences.tsx';
 import { Resources } from './pages/explorer.tsx';
+import { GlossaryWord } from './pages/glossary-word.tsx';
+import { Glossary } from './pages/glossary.tsx';
 import { Podcast } from './pages/podcast-details.tsx';
 import { Podcasts } from './pages/podcasts.tsx';
 
@@ -54,6 +56,18 @@ export const builderDetailsRoute = createRoute({
   component: Builder,
 });
 
+export const glossaryRoute = createRoute({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/glossary',
+  component: Glossary,
+});
+
+export const glossaryWordRoute = createRoute({
+  getParentRoute: () => resourcesRootRoute,
+  path: '/glossary/$wordId',
+  component: GlossaryWord,
+});
+
 export const podcastsRoute = createRoute({
   getParentRoute: () => resourcesRootRoute,
   path: '/podcasts',
@@ -94,6 +108,8 @@ export const resourcesRoutes = resourcesRootRoute.addChildren([
   bookDetailsRoute,
   buildersRoute,
   builderDetailsRoute,
+  glossaryRoute,
+  glossaryWordRoute,
   podcastsRoute,
   betRoute,
   podcastDetailsRoute,

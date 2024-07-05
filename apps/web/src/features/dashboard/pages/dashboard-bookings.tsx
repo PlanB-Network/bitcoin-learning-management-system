@@ -39,7 +39,7 @@ export const DashboardBookings = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 lg:gap-8">
         <div className="text-2xl">{t('dashboard.bookings')}</div>
         <Tabs defaultValue="tickets" className="max-w-[1100px]">
           <TabsList>

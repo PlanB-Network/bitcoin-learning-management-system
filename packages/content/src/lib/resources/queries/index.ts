@@ -5,5 +5,7 @@ export { getBuilderQuery } from './get-builder.js';
 export { getBuildersQuery } from './get-builders.js';
 export { getConferenceQuery } from './get-conference.js';
 export { getConferencesQuery } from './get-conferences.js';
+export { getGlossaryWordQuery } from './get-glossary-word.js';
+export { getGlossaryWordsQuery } from './get-glossary-words.js';
 export { getPodcastQuery } from './get-podcast.js';
 export { getPodcastsQuery } from './get-podcasts.js';

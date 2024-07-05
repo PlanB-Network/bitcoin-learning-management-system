@@ -59,7 +59,7 @@ export const DashboardProfile = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 lg:gap-8">
         <div className="text-2xl">
           {t('dashboard.profile.profileInformation')}
         </div>
@@ -110,7 +110,7 @@ export const DashboardProfile = () => {
                     {t('dashboard.profile.email')}
                   </label>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex max-lg:flex-col lg:items-center gap-4">
                     <input
                       id="emailId"
                       type="text"
@@ -123,7 +123,7 @@ export const DashboardProfile = () => {
                       variant="newPrimaryGhost"
                       size="s"
                       onClick={changeEmailModal.open}
-                      className="h-[34px] px-3"
+                      className="h-[34px] px-3 w-fit"
                     >
                       {t('dashboard.profile.edit')}
                     </Button>
@@ -134,8 +134,7 @@ export const DashboardProfile = () => {
                 <div>
                   {emailSent && (
                     <div className="mt-6 text-green-500">
-                      Email change confirmation email has been sent, check your
-                      inbox to confirm the change.
+                      {t('dashboard.profile.emailChangeConfirmation')}
                     </div>
                   )}
                 </div>
@@ -147,7 +146,7 @@ export const DashboardProfile = () => {
                   {t('dashboard.profile.profilePicture')}
                 </label>
 
-                <div className="mt-2 flex gap-8 items-end">
+                <div className="mt-2 max-md:flex-col flex gap-8 lg:items-end">
                   <img
                     src={pictureUrl ?? SignInIconLight}
                     alt="Profile"

@@ -26,8 +26,12 @@ export enum Routes {
   Resources = '/resources',
 
   // Resource per type
+  Conferences = '/resources/conferences',
+  Conference = '/resources/conferences/:conferenceId',
   Books = '/resources/books',
   Book = '/resources/books/:bookId/:language',
+  Glossary = '/resources/glossary',
+  WordGlossary = '/resources/glossary/:wordId',
   Podcasts = '/resources/podcasts',
   BET = '/resources/bet',
   Podcast = '/resources/podcast/:podcastId',
@@ -65,8 +69,6 @@ export enum Routes {
   Tool = '/tools/:toolId',
   BIPs = '/bips',
   BIP = '/bips/:bipId',
-  Conferences = '/resources/conferences',
-  Conference = '/resources/conferences/:conferenceId',
   Lexique = '/lexique',
   Calendar = '/calendar',
   Contact = '/contact',
