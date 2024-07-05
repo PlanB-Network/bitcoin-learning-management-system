@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@sovereign-university/ui';
 
+import { trpc } from '#src/utils/index.js';
+
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { AuthModalState } from '../props.ts';
@@ -16,16 +18,21 @@ interface LoginModalProps {
 
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const { t } = useTranslation();
-  const handlePasswordReset = useCallback(() =>
-    // values: {
-    //   email: string;
-    // },
-    // actions: FormikHelpers<{
-    //   email: string;
-    // }>,
-    {
-      console.log('Not implemented');
-    }, []);
+
+  const resetPassword = trpc.user.requestPasswordReset.useMutation({
+    onSuccess: () => {
+      console.log('Password reset email sent');
+    },
+  });
+
+  const handlePasswordReset = useCallback(
+    ({ email }: { email: string }) => {
+      console.log('Reset password for email:', email);
+
+      resetPassword.mutate({ email });
+    },
+    [resetPassword],
+  );
 
   return (
     <Modal
@@ -53,11 +60,16 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                autoComplete="email"
                 className="w-4/5"
                 error={touched.email ? errors.email : null}
               />
 
-              <Button type="submit" className="mb-5 mt-10">
+              <Button
+                type="submit"
+                className="mb-5 mt-10"
+                disabled={values.email === ''}
+              >
                 {t('auth.sendLink')}
               </Button>
             </form>

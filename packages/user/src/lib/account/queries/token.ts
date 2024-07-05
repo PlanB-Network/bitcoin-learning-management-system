@@ -21,3 +21,13 @@ export const consumeTokenQuery = (id: string, type: TokenType) => {
     RETURNING *;
   `;
 };
+
+export const getTokenInfoQuery = (id: string) => {
+  return sql<
+    Array<Pick<Token, 'id' | 'type'> & { expired: boolean; consumed: boolean }>
+  >`
+    SELECT id, type, expires_at < NOW() as expired, consumed_at IS NOT NULL as consumed
+    FROM users.tokens
+    WHERE id = ${id};
+  `;
+};
