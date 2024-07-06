@@ -18,6 +18,58 @@
     "description": "Plan B Network帮助全球社区组织起来以提供更好的教育。该平台通过在线学院、教程门户、比特币教育工具包和资源门户，开发实现该目标所需的工具。",
     "storyContent": "PlanB网络是一个旨在全球范围内支持比特币教育的倡议。它是各种热衷于比特币的公司的相遇之处。这些公司专注于教育、开源软件、点对点网络和社区意识。他们共同决定建立PlanB网络，并为比特币生态系统提供适合的工具以助其成长。在这里你可以找到我们2023年的演示报告。",
     "subtitle": "想要让全世界接受橙色药丸吗？加入PlanB网络。",
-    "title": "关于Plan B网络"
+    "title": "关于Plan B网络",
+    "corporateContent": "PlanB Network是专注于比特币发展的三个实体联合开发的项目。致力于扩展比特币教育，他们决定合作建立PlanB Network。为了实现我们的目标，将比特币教育推广到全世界，许多其他实体也决定联合起来并贡献他们的力量。非常感谢他们。",
+    "manifesto": "我们相信比特币提供的去中心化的未来。\n\n我们的使命是在十年内向十亿人介绍比特币。我们的工具是教育和信息。\n\n我们以提供开源教育内容和比特币导师网络，来支持本地的比特币社区。\n\n我们的哲学受《密码朋克宣言》启发。正如他们提倡隐私，我们倡导教育。我们相信知识是自由和变革的基础。\n\n我们只支持比特币。\n\n我们倡导个人责任和拥有自己的密钥所提供的独立性。\n\n我们鼓励验证，而非盲目的信任。\n\n我们相信，通过搞定货币，我们可以修复世界。\n\n我们是去中心化和开源的，避免任何单点故障。\n\n我们鼓励自由传播我们的内容。\n\n我们渴望一个从底层向上运作的世界，那里个人处于中心位置。\n\n我们简化，我们教育，我们分享。\n\n加入我们的任务，让世界接受比特币。\n"
+  },
+  "auth": {
+    "resetPassword": "重置您的密码",
+    "passwordMinLength": "密码必须至少为{{len}}个字符",
+    "checkingTokenExplain": "我们正在检查代币是否有效.……",
+    "accountCreated": "您的账户已创建，{{userName}}！",
+    "alreadyHaveAccount": "已经有账户了吗？",
+    "canSaveProgress": "您现在可以在比特币学院保存您的进度了",
+    "connectWithLn": "连接LN",
+    "createAccount": "注册",
+    "createOne": "在这里注册！",
+    "emailAddress": "电子邮件地址",
+    "errors": {
+      "usernameRegex": "用户名只能包含字母、数字_、. 和 -",
+      "usernameRequired": "需要您提供用户名",
+      "usernameTooShort": "用户名必须至少包含5个字符"
+    },
+    "forgottenPassword": "忘记了您的密码？",
+    "headerAccountCreated": "创建的账户",
+    "lnurlAuthDescription": "用您的Lightning钱包扫描这个二维码以登录！",
+    "noAccountNeeded": "在Plan B Network开始学习无需账户！",
+    "noAccountYet": "没有账户？",
+    "passwordRequired": "需要密码",
+    "passwordsDontMatch": "密码不匹配",
+    "sendLink": "请给我发送一个链接",
+    "signIn": "登录",
+    "newPassword": "新密码",
+    "passwordChanged": "密码已更改",
+    "passwordSuccessfullyChanged": "您的密码已成功更改。您现在可以使用新密码登录。",
+    "backToHome": "回到主页",
+    "backToLogin": "返回登录",
+    "invalidToken": "无效的代币",
+    "checkingToken": "检查代币",
+    "invalidTokenExplain": {
+      "expired": "代币已过期",
+      "consumed": "该代币已被使用",
+      "invalid": "代币无效",
+      "notFound": "未找到代币"
+    },
+    "passwordResetError": "重置密码错误",
+    "passwordResetSent": "已向您的邮箱发送密码重置邮件（如果该电子邮件地址存在于我们的数据库中）。",
+    "tryAgain": "再试一次"
+  },
+  "bCertificate": {
+    "joeNakamotoVideo": "到底什么是比特币考试？ 由Joe Nakamoto撰写",
+    "bCertificateDescription": "B-证书是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。这个证书将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
+    "bookExam": "预约考试时间",
+    "checkout": "查看B证书",
+    "curious": "好奇考试是什么样的吗？",
+    "knowledgeableBitcoin": "熟悉比特币吗？"
   }
 }
