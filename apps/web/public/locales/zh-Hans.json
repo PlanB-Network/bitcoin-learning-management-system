@@ -70,6 +70,48 @@
     "bookExam": "预约考试时间",
     "checkout": "查看B证书",
     "curious": "好奇考试是什么样的吗？",
-    "knowledgeableBitcoin": "熟悉比特币吗？"
+    "knowledgeableBitcoin": "熟悉比特币吗？",
+    "challengeYourself": "让我们挑战自己并证明你的水平！",
+    "noBookExam": "目前还没有已排程的考试期",
+    "organizeDescription": "没问题！如果您的社区是B Plan Network的一部分，那么在您可以在您的中心组织考试。请阅读图表，确保您满足举办考试的必要条件。如果您能满足这些条件，您就可以安排考试并将其添加到平台上。",
+    "organizeExam": "组织一场考试",
+    "organizeSubtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
+    "organizeTitle": "想在您的中心组织B级证书考试吗？",
+    "pageSubtitle": "通过集中的开源教育实现大规模应用",
+    "readChart": "阅读图表",
+    "pageTitle": "B证书"
+  },
+  "bet": {
+    "contributeTitle": "想要贡献一份力量吗？",
+    "educationalContent": {
+      "description": "这些内容本来就是准备好用于教育活动及其应用的。",
+      "title": "教育内容"
+    },
+    "hereForYou": "BET在这里为您服务！",
+    "pageDescription": "大规模应用不容。为了更快接近这个目标，我们开发了一个可扩展的教育内容数据库。在这里，比特币教育者可以根据需要自由地添加和获取内容。让我们向前行进时不要每次都重新发明轮子，而是共同努力，将有用的资源集中在一个工具包！",
+    "contribute": "此工具包欢迎大家贡献各自力量。它使用Figma，任何人都可以添加、修改和翻译。如果你合作、添加类别或讨论，欢迎随时加入我们的Discord。",
+    "contributeButton": "帮助和贡献",
+    "contributeDescription": "如果您想添加、编辑或翻译一些内容，我们非常欢迎您的帮助！",
+    "pageSubtitle": "BET - 一个适用于所有教育项目的比特币开源工具包",
+    "pageTitle": "比特币教育工具包",
+    "visualContent": {
+      "description": "这些内容是原始的视觉数据，可用于您的创作。",
+      "title": "视觉内容"
+    }
+  },
+  "book": {
+    "bookSummary": {
+      "noSummary": "尚未有摘要。如果你已经阅读了这本书并想分享摘要，不要犹豫，请在Github上分享。这将对社区有很大帮助，提高大学的水平，你甚至还可以因此获得一些聪（比特币最小单位）的奖励！",
+      "modifyTooltip": "编写或修改",
+      "notice": "此摘要已链接到Github，用于任何修改或添加。",
+      "title": "书籍摘要"
+    },
+    "abstract": "摘要",
+    "buttonBuy": "购买",
+    "buttonPdf": "PDF / 电子书",
+    "offeredBy": "由慷慨的贡献者提供",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "比特币图书馆",
+    "topicsAddressed": "已写过的话题 "
   }
 }
