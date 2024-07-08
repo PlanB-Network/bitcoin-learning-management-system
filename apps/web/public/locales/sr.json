@@ -1,6 +1,24 @@
 {
   "about": {
     "activeContributors": "Aktivni saradnici",
-    "missionTitle": "Naša misija"
+    "missionTitle": "Naša misija",
+    "coreTeamContent": "PlanB Mreža je kolektiv sačinjen od stotine saradnika, nastavnika, lidera zajednice, dizajnera, programera i organizatora. Veliko hvala brojnim ljudima koji su učinili PlanB mogućim i nastavljaju to da čine svakog dana. (Lista saradnika uskoro dolazi)",
+    "storyContent": "PlanB Mreža je inicijativa koja podržava obrazovanje o Bitcoinu širom sveta. To je presek različitih strastvenih Bitcoin kompanija fokusiranih na obrazovanje, open-source softver, peer-to-peer mrežu i osećaj zajednice. Zajedno su odlučili da izgrade PlanB Mrežu i ponude Bitcoin ekosistemu prave alate za rast. Naša prezentacija za 2023. godinu dostupna je ovde.",
+    "missionContent1": "Naša misija je da podržimo lokalne Bitcoin zajednice kroz javno-dostupno obrazovanje i umrežavanje. Prikupljamo, organizujemo i stvaramo neophodne resurse (kurseve, knjige, postere, letke, video materijale) za napredak Bitcoin industrije.",
+    "corporateContent": "PlanB Mreža je zajednički projekat tri entiteta fokusirana na razvoj Bitcoina. U nastojanju da prošire obrazovnje vezano za Bitcoin, odlučili su da sarađuju kako bi formirali PlanB Mrežu. Da bi uspeli u cilju da se obrazovanje o Bitcoinu proširi svetom, mnogi drugi entiteti su odlučili da doprinesu i udruže snage. Hvala im na tome",
+    "missionContent2": "Centralizujemo znanje kako bismo ga bolje distribuirali kroz jednostavan, višejezički GitHub repozitorijum i platformu za digitalno učenje. Pomažemo lokalnim Bitcoin centrima u njihovom razvoju pružajući prave alate za rast njihovih talenata.",
+    "commitmentTitle": "Naše obaveze",
+    "coreTeamTitle": "Osnovni tim",
+    "coreTeamGiacomoRole": "Direktor i suosnivač",
+    "coreTeamRogzyRole": "Menadžer proizvoda & suosnivač",
+    "coreTeamAsioRole": "Koordinator za obrazovanje",
+    "coreTeamAjelexRole": "Koordinator za nodove",
+    "corporateTitle": "Korporativna pozadina",
+    "coportateContact": "Kontakt informacije:",
+    "storyTitle": "Naša priča",
+    "commitmentContent": "Naše obaveze prema Bitcoin zajednici su sledeće:\n • Ostati javno dostupan\n • Pružiti visokokvalitetan edukativni sadržaj\n • Prevesti naš sadržaj na što više jezika\n • Podržati Bitcoin preduzetnike na njihovom razvojnom putovanju",
+    "description": "PlanB Mreža pomaže zajednicama širom sveta da se organizuju kako bi pružile bolje obrazovanje. Platforma razvija neophodne alate za postizanje tog cilja, kroz online akademiju, portal sa priručnicima, obrazovni set alata vezanih za Bitcoin i portal sa resursima.",
+    "subtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se PlanB Mreži.",
+    "title": "O PlanB Mreži"
   }
 }
