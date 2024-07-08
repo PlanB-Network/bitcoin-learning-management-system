@@ -40,6 +40,16 @@
   "files.insertFinalNewline": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    ".*Style*",
+    ".*Styles*",
+    ".*Classes*",
+    ".*Class*"
+  ],
   "cSpell.words": [
     "basepath",
     "bitcoiners",
