@@ -19,6 +19,72 @@
     "commitmentContent": "Naše obaveze prema Bitcoin zajednici su sledeće:\n • Ostati javno dostupan\n • Pružiti visokokvalitetan edukativni sadržaj\n • Prevesti naš sadržaj na što više jezika\n • Podržati Bitcoin preduzetnike na njihovom razvojnom putovanju",
     "description": "PlanB Mreža pomaže zajednicama širom sveta da se organizuju kako bi pružile bolje obrazovanje. Platforma razvija neophodne alate za postizanje tog cilja, kroz online akademiju, portal sa priručnicima, obrazovni set alata vezanih za Bitcoin i portal sa resursima.",
     "subtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se PlanB Mreži.",
-    "title": "O PlanB Mreži"
+    "title": "O PlanB Mreži",
+    "manifesto": "Verujemo u decentralizovanu budućnost koju Bitcoin nudi.\n\nNaša misija je da u narednih deset godina Bitcoin predstavimo milijardi ljudi. Naši alati su obrazovanje i informisanje.\n\nPodržavamo lokalne zajednice Bitcoinera pružajući javno-dostupan obrazovni sadržaj i nudeći mrežu mentora za Bitcoin.\n\nNaša filozofija je inspirisana manifestom cypherpunka. Baš kao što su oni zagovarali privatnost, mi zagovaramo obrazovanje. Verujemo da je znanje temelj slobode i promene.\n\nMi smo isključivo za Bitcoin.\n\nZalažemo se za individualnu odgovornost i nezavisnost koju pruža posedovanje sopstvenih ključeva.\n\nPodstičemo verifikaciju, a ne slepo poverenje.\n\nVerujemo da popravljajući novac, popravljamo svet.\n\nMi smo decentralizovani i otvorenog koda, čime eliminišemo postojanje najslabije karike u sajber bezbednosti.\n\nPodstičemo slobodno širenje našeg sadržaja.\n\nTežimo svetu koji funkcioniše odozdo prema gore, gde je pojedinac u centru.\n\nVršimo pojednostavljenje, obrazujemo, delimo.\n\nPridružite nam se u našoj misiji da \"orange pill-ujemo\" svet.\n"
+  },
+  "auth": {
+    "resetPassword": "Resetujte svoju lozinku",
+    "passwordChanged": "Promenjena lozinka",
+    "passwordSuccessfullyChanged": "Vaša lozinka je uspešno promenjena. Sada se možete prijaviti sa Vašom novom lozinkom.",
+    "passwordResetSent": "Email za resetovanje lozinke je poslat u Vaše sanduče (ako email postoji u našoj bazi podataka).",
+    "accountCreated": "Vaš nalog je kreiran, {{userName}}!",
+    "alreadyHaveAccount": "Već imate nalog?",
+    "canSaveProgress": "Sada možete sačuvati svoj napredak na Bitcoin Akademiji",
+    "connectWithLn": "Povežite se sa LN",
+    "createOne": "Registrujte se ovde!",
+    "createAccount": "Registrujte se",
+    "emailAddress": "Email adresa",
+    "errors": {
+      "usernameRegex": "Korisničko ime može sadržati samo slova, brojeve, _, . i -",
+      "usernameRequired": "Korisničko ime je potrebno",
+      "usernameTooShort": "Korisničko ime mora sadržati najmanje 5 karaktera"
+    },
+    "forgottenPassword": "Zaboravili ste lozinku?",
+    "headerAccountCreated": "Nalog kreiran",
+    "lnurlAuthDescription": "Skenirajte ovaj QR kod sa svojim Lightning novčanikom kako biste se prijavili!",
+    "noAccountNeeded": "Nema potrebe za nalogom da biste počeli da učite na Plan B Mreži!",
+    "noAccountYet": "Nemate nalog?",
+    "newPassword": "Nova lozinka",
+    "passwordMinLength": "Lozinka mora imati najmanje {{len}} karaktera",
+    "passwordRequired": "Potrebna je lozinka",
+    "passwordsDontMatch": "Lozinke se ne podudaraju",
+    "sendLink": "Pošalji mi link",
+    "backToLogin": "Nazad na prijavu",
+    "backToHome": "Nazad na glavnu stranicu",
+    "invalidToken": "Neispravan token",
+    "checkingToken": "Provera tokena",
+    "checkingTokenExplain": "Proveravamo da li je token važeći...",
+    "invalidTokenExplain": {
+      "expired": "Token je istekao",
+      "consumed": "Token je već iskorišćen",
+      "invalid": "Token je nevažeći",
+      "notFound": "Token nije pronađen"
+    },
+    "passwordResetError": "Greška pri resetovanju lozinke",
+    "tryAgain": "Pokušajte ponovo",
+    "signIn": "Prijavite se"
+  },
+  "bCertificate": {
+    "bCertificateDescription": "B-sertifikat je međunarodno priznat ispit za procenu vašeg nivoa znanja o Bitcoinu i tema koje iz njega proizlaze. Ovaj sertifikat će vam omogućiti da dokažete svoje veštine i znanje u industriji Bitcoina, pružajući vam pristup kompanijama i pozicijama u toj industriji.",
+    "organizeSubtitle": "\"Orange pill-ovanje\" milijardu ljudi nije lako",
+    "knowledgeableBitcoin": "Imate znanje u domenu Bitcoina?",
+    "noBookExam": "Ispit još uvek nije planiran.",
+    "organizeDescription": "Nema problema! Ako je vaša zajednica deo PlanB Mreže, moguće je organizovati ispit u vašem centru. Molimo Vas da pročitate tabelu kako biste se uverili da možete da ispunite obavezne uslove za održavanje ispita. Ako možete da ispunite ove uslove, možete zakazati ispit i dodati ga na platformu.",
+    "organizeExam": "Organizujte ispit",
+    "bookExam": "Zakažite ispit",
+    "challengeYourself": "Prihvati izazov i proceni svoj nivo!",
+    "checkout": "Pogledajte B-sertifikat",
+    "curious": "Radoznali ste da saznate kako izgleda ispit?",
+    "joeNakamotoVideo": "Šta je, kog đavola, Bitcoin ispit? Autor: Džo Nakamoto",
+    "organizeTitle": "Želite da organizujete ispit za B-sertifikat u Vašem centru?",
+    "pageSubtitle": "Masovno širenje kroz centralizovano javno-dostupno obrazovanje",
+    "pageTitle": "B-Sertifikat",
+    "readChart": "Pročitajte grafikon"
+  },
+  "bet": {
+    "contribute": "Ovaj alat je otvoren za Vaš doprinos. Koristi Figmu, tako da svako može dodavati, modifikovati i prevoditi. Da biste sarađivali, dodali kategoriju ili diskutovali, ne oklevajte da se pridružite našem discordu.",
+    "contributeButton": "Pomozi i doprinesi",
+    "contributeDescription": "Ako želite da dodate, izmenite ili prevedete neki sadržaj, Vaša pomoć je dobrodošla!",
+    "contributeTitle": "Želite da doprinesete?"
   }
 }
