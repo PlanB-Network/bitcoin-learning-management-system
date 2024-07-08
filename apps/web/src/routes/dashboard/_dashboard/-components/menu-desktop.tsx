@@ -99,7 +99,7 @@ export const MenuDesktop = ({
           <MenuItem
             text={t('words.bCertificate')}
             icon={<BsMortarboard size={24} />}
-            active={pathname === bCertificatePath}
+            active={pathname.includes(bCertificatePath)}
           />
         </Link>
         <Link to={profilePath}>

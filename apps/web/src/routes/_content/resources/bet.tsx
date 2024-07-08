@@ -132,7 +132,7 @@ function BET() {
             <SectionDescription>
               {t('bet.educationalContent.description')}
             </SectionDescription>
-            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
             <SectionGrid
               elements={
                 bets
@@ -159,7 +159,7 @@ function BET() {
             <SectionDescription>
               {t('bet.visualContent.description')}
             </SectionDescription>
-            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
             <SectionGrid
               elements={
                 bets

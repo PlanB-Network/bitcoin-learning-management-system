@@ -102,7 +102,7 @@ function Conference() {
       maxWidth="1360"
       className="max-md:mx-4"
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {conference && (
         <>
           {/* Top part */}

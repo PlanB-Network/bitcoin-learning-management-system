@@ -72,7 +72,7 @@ function TutorialExplorer() {
           </div>
           <div className="flex max-w-3xl flex-wrap justify-center gap-6 px-2">
             {!isFetchedTutorials && (
-              <Spinner className="size-48 md:size-64 mx-auto" />
+              <Spinner className="size-24 md:size-32 mx-auto" />
             )}
             {tutorials
               ?.filter((tutorial) =>

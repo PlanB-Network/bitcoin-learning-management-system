@@ -88,7 +88,7 @@ function TutorialCategory() {
         <p className="hidden w-full text-justify leading-5 text-blue-800 md:flex md:text-left">
           {t(`tutorials.${category}.description`)}
         </p>
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {tutorials && (
           <div className="w-full px-2 py-4 md:px-0">
             <Tab.Group>

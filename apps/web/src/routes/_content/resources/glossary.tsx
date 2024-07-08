@@ -35,7 +35,7 @@ function Glossary() {
       activeCategory="glossary"
       maxWidth="1360"
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <div className="flex items-center flex-col px-4">
           <GlossaryFilterBar onChange={setSearchTerm} value={searchTerm} />

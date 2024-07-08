@@ -77,7 +77,14 @@ function BCertificate() {
       )
     : [];
 
-  useEffect(() => document.body.scrollTo({ top: 0 }), []);
+  useEffect(() => {
+    if (isFetched && window.location.href.includes('#bcertevents')) {
+      const element = document.querySelector('#bcertevents');
+      if (element) {
+        element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    }
+  }, [isFetched]);
 
   return (
     <PageLayout
@@ -104,7 +111,7 @@ function BCertificate() {
           </p>
         </div>
       </div>
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && <BCertificateEvents events={filteredEvents} />}
       <div className="flex flex-col items-center mb-6 md:mb-20">
         <Question className="mb-2.5 md:mb-5" />

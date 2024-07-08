@@ -295,6 +295,7 @@
       "grade": "Grade",
       "gradesDiploma": "Grades and diploma",
       "learnMore": "Learn more",
+      "noResults": "There are no grades nor certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
       "organizedSessions": "The ₿ Certificate is organised by Plan B Network at various locations and times. Make sure to book your seat at a session.",
       "presentation": "The ₿ Certificate is a table exam organised by Plan B Network and designed to assert your level about Bitcoin and all its related topics.",
       "findResults": "Here you can find your results to ₿ Certificate exams you’ve passed while registered with this account. The results usually takes 2 to 3 weeks to be processed and available here. If after a long time your results don’t show here, please contact us.",

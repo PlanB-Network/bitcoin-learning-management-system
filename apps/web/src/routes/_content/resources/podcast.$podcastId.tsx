@@ -57,7 +57,7 @@ function Podcast() {
       activeCategory="podcasts"
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {podcast && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

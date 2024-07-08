@@ -1,6 +1,6 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { useContext, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
+import React, { useContext, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import { Button } from '@sovereign-university/ui';
@@ -10,8 +10,6 @@ import { AppContext } from '#src/providers/context.js';
 import { DashboardLayout } from '../layout.tsx';
 
 export const DashboardBCertificate = () => {
-  const { t } = useTranslation();
-
   const navigate = useNavigate();
 
   const { session } = useContext(AppContext);
@@ -37,7 +35,6 @@ export const DashboardBCertificate = () => {
       place: 'Zurich, Switzerland',
       parts: [
         { topic: 'History', mark: 18, max: 20 },
-        { topic: 'Money', mark: 16, max: 20 },
         { topic: 'Privacy', mark: 19, max: 20 },
         { topic: 'Exchanges', mark: 15, max: 20 },
         { topic: 'Lightning Network', mark: 12, max: 20 },
@@ -51,15 +48,13 @@ export const DashboardBCertificate = () => {
         { topic: 'History', mark: 14, max: 20 },
         { topic: 'Money', mark: 15, max: 20 },
         { topic: 'Privacy', mark: 16, max: 20 },
-        { topic: 'Exchanges', mark: 18, max: 20 },
-        { topic: 'Lightning Network', mark: 11, max: 20 },
       ],
       downloadLink: '#',
     },
   ];
 
-  const [isResultsOpen, setIsResultOpen] = useState(
-    Array.from({ length: results.length }).fill(false),
+  const [isResultsOpen, setIsResultOpen] = useState<boolean[]>(
+    Array.from({ length: results.length }, () => false),
   );
 
   const handleResultsOpen = (index: number) => {
@@ -78,7 +73,7 @@ export const DashboardBCertificate = () => {
           <p className="desktop-body1 max-w-[579px] text-[rgba(5,10,20,0.75)]">
             {t('dashboard.bCertificate.presentation')}
           </p>
-          <Link to="/b-certificate" className="shrink-0">
+          <Link to="/b-certificate" className="shrink-0 w-fit">
             <Button mode="light" variant="newSecondary" size="m" onHoverArrow>
               {t('dashboard.bCertificate.learnMore')}
             </Button>
@@ -93,7 +88,7 @@ export const DashboardBCertificate = () => {
             <p className="desktop-body1 max-w-[495px] text-[rgba(5,10,20,0.75)]">
               {t('dashboard.bCertificate.organizedSessions')}
             </p>
-            <Link to="/b-certificate" className="shrink-0">
+            <Link to="/b-certificate" hash="bcertevents" className="shrink-0">
               <Button mode="light" variant="newPrimary" size="m" onHoverArrow>
                 {t('dashboard.bCertificate.bookExam')}
               </Button>
@@ -125,93 +120,109 @@ export const DashboardBCertificate = () => {
                   <th className="text-left w-2/12 desktop-typo2 py-4 px-1.5">
                     {t('dashboard.bCertificate.grade')}
                   </th>
-                  <th className="text-left w-fit desktop-typo2 py-4 pl-1.5">
+                  <th className="w-fit desktop-typo2 py-4 pl-1.5 text-center">
                     {t('dashboard.bCertificate.certificate')}
                   </th>
                 </tr>
               </thead>
-              <tbody className="">
-                {results.map((result, index) => (
-                  <>
-                    <tr
-                      key={index}
-                      className={
-                        isResultsOpen[index] ? 'border-b border-newGray-4' : ''
-                      }
-                    >
-                      <td className="py-1.5 pr-1.5">
-                        {result.date.toLocaleDateString()}
-                      </td>
-                      <td className="p-1.5">{result.place}</td>
-                      <td className="p-1.5">
-                        <div
-                          className="flex justify-between items-center"
-                          onClick={() => handleResultsOpen(index)}
-                          onKeyPress={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              handleResultsOpen(index);
-                            }
-                          }}
-                          tabIndex={0}
-                          role="button"
-                        >
-                          <span className="font-medium uppercase">
-                            {t('dashboard.bCertificate.general')}
-                          </span>
-                          <IoIosArrowDown
-                            size={24}
-                            className={
-                              isResultsOpen[index]
-                                ? 'transition-transform rotate-180'
-                                : 'transition-transform rotate-0'
-                            }
-                          />
-                        </div>
-                      </td>
-                      <td className="p-1.5">
-                        {result.parts.reduce(
-                          (total, part) => total + part.mark,
-                          0,
-                        )}
-                        /
-                        {result.parts.reduce(
-                          (total, part) => total + part.max,
-                          0,
-                        )}
-                      </td>
-                      <td className="py-1.5 pl-1.5">
-                        <Link to={result.downloadLink}>
-                          <Button
-                            mode="light"
-                            variant="newPrimary"
-                            size="xs"
-                            disabled
+              <tbody>
+                {results.length > 0 &&
+                  results.map((result, index) => (
+                    <React.Fragment key={index}>
+                      <tr
+                        className={
+                          isResultsOpen[index]
+                            ? 'border-b border-newGray-4'
+                            : ''
+                        }
+                      >
+                        <td className="py-1.5 pr-1.5">
+                          {result.date.toLocaleDateString()}
+                        </td>
+                        <td className="p-1.5">{result.place}</td>
+                        <td className="p-1.5">
+                          <div
+                            className="flex justify-between items-center"
+                            onClick={() => handleResultsOpen(index)}
+                            onKeyPress={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                handleResultsOpen(index);
+                              }
+                            }}
+                            tabIndex={0}
+                            role="button"
                           >
-                            {t('words.download')}
-                          </Button>
-                        </Link>
-                      </td>
-                    </tr>
-                    {isResultsOpen[index] &&
-                      result.parts.map((part, partIndex) => (
-                        <tr key={`${index}-${partIndex}`}>
-                          <td className="pr-1.5"></td>
-                          <td></td>
-                          <td className="p-1.5">
-                            <p>
-                              {t('words.part')}{' '}
-                              {`${partIndex + 1} - ${part.topic}`} :{' '}
-                              {`${part.mark} / ${part.max}`}
-                            </p>
-                          </td>
-                          <td className="p-1.5">
-                            <p>{`${part.mark} / ${part.max}`}</p>
-                          </td>
-                          <td className="pl-1.5"></td>
-                        </tr>
-                      ))}
-                  </>
-                ))}
+                            <span className="font-medium uppercase">
+                              {t('dashboard.bCertificate.general')}
+                            </span>
+                            <IoIosArrowDown
+                              size={24}
+                              className={
+                                isResultsOpen[index]
+                                  ? 'transition-transform rotate-180'
+                                  : 'transition-transform rotate-0'
+                              }
+                            />
+                          </div>
+                        </td>
+                        <td className="p-1.5">
+                          {result.parts.reduce(
+                            (total, part) => total + part.mark,
+                            0,
+                          )}
+                          /
+                          {result.parts.reduce(
+                            (total, part) => total + part.max,
+                            0,
+                          )}
+                        </td>
+                        <td className="py-1.5 pl-1.5">
+                          <Link
+                            to={result.downloadLink}
+                            className="inline-block"
+                          >
+                            <Button
+                              mode="light"
+                              variant="newPrimary"
+                              size="xs"
+                              disabled
+                              className="mx-auto"
+                            >
+                              {t('words.download')}
+                            </Button>
+                          </Link>
+                        </td>
+                      </tr>
+                      {isResultsOpen[index] &&
+                        result.parts.map((part, partIndex) => (
+                          <tr key={`${index}-${partIndex}`}>
+                            <td className="pr-1.5"></td>
+                            <td></td>
+                            <td className="p-1.5">
+                              <p>
+                                {t('words.part')}{' '}
+                                {`${partIndex + 1} - ${part.topic}`} :{' '}
+                                {`${part.mark} / ${part.max}`}
+                              </p>
+                            </td>
+                            <td className="p-1.5">
+                              <p>{`${part.mark} / ${part.max}`}</p>
+                            </td>
+                            <td className="pl-1.5"></td>
+                          </tr>
+                        ))}
+                    </React.Fragment>
+                  ))}
+                {results.length === 0 && (
+                  <tr>
+                    <td
+                      className="text-newBlack-4 whitespace-pre-line text-center"
+                      colSpan={5}
+                    >
+                      {t('dashboard.bCertificate.noResults')}
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

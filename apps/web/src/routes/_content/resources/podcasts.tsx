@@ -40,7 +40,7 @@ function Podcasts() {
       activeCategory="podcasts"
     >
       <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {sortedPodcasts
           .filter((podcast) =>
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),

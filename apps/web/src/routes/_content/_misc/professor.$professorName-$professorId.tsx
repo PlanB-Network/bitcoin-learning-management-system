@@ -68,7 +68,7 @@ function ProfessorDetail() {
       description={t('professors.pageSubtitle')}
       link={'/professors'}
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {professor && (
         <div className="flex flex-col text-white">
           <div className="mt-4 flex w-full flex-col items-start">
