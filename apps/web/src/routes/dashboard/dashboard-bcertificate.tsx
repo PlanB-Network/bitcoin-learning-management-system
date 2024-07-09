@@ -5,6 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 import { Button } from '@sovereign-university/ui';
 
+import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 
 import { DashboardLayout } from '../layout.tsx';
@@ -16,6 +17,8 @@ export const DashboardBCertificate = () => {
   if (!session) {
     navigate({ to: '/' });
   }
+
+  const isScreenMd = useGreater('md');
 
   const results = [
     {
@@ -67,29 +70,39 @@ export const DashboardBCertificate = () => {
         <h3 className="text-2xl">{t('dashboard.bCertificate.bCertificate')}</h3>
 
         <section className="flex flex-col gap-4">
-          <h4 className="desktop-h6">
+          <h4 className="mobile-h3 md:desktop-h6">
             {t('dashboard.bCertificate.assertLevel')}
           </h4>
-          <p className="desktop-body1 max-w-[579px] text-[rgba(5,10,20,0.75)]">
+          <p className="mobile-body2 md:desktop-body1 max-w-[579px] text-[rgba(5,10,20,0.75)]">
             {t('dashboard.bCertificate.presentation')}
           </p>
           <Link to="/b-certificate" className="shrink-0 w-fit">
-            <Button mode="light" variant="newSecondary" size="m" onHoverArrow>
+            <Button
+              mode="light"
+              variant="newSecondary"
+              size={isScreenMd ? 'm' : 's'}
+              onHoverArrow
+            >
               {t('dashboard.bCertificate.learnMore')}
             </Button>
           </Link>
         </section>
 
         <section className="flex flex-col gap-4">
-          <h4 className="desktop-h6">
+          <h4 className="mobile-h3 md:desktop-h6">
             {t('dashboard.bCertificate.wantToPass')}
           </h4>
           <div className="flex max-lg:flex-col gap-4 lg:gap-12 lg:items-center">
-            <p className="desktop-body1 max-w-[495px] text-[rgba(5,10,20,0.75)]">
+            <p className="mobile-body2 md:desktop-body1 max-w-[495px] text-[rgba(5,10,20,0.75)]">
               {t('dashboard.bCertificate.organizedSessions')}
             </p>
             <Link to="/b-certificate" hash="bcertevents" className="shrink-0">
-              <Button mode="light" variant="newPrimary" size="m" onHoverArrow>
+              <Button
+                mode="light"
+                variant="newPrimary"
+                size={isScreenMd ? 'm' : 's'}
+                onHoverArrow
+              >
                 {t('dashboard.bCertificate.bookExam')}
               </Button>
             </Link>
@@ -97,30 +110,30 @@ export const DashboardBCertificate = () => {
         </section>
 
         <section className="flex flex-col">
-          <h4 className="desktop-h6 mb-4">
+          <h4 className="mobile-h3 md:desktop-h6 mb-4">
             {t('dashboard.bCertificate.gradesDiploma')}
           </h4>
-          <p className="desktop-body1 text-[rgba(5,10,20,0.75)] mb-6">
+          <p className="mobile-body2 md:desktop-body1 text-[rgba(5,10,20,0.75)] mb-6">
             {t('dashboard.bCertificate.findResults')}
           </p>
 
           <div className="overflow-auto">
-            <table className="overflow-scroll table-auto w-full max-w-5xl min-w-[600px]">
+            <table className="overflow-scroll table-auto w-full max-w-5xl min-w-[400px] md:min-w-[600px]">
               <thead>
                 <tr>
-                  <th className="text-left w-fit desktop-typo2 py-4 pr-1.5">
+                  <th className="text-left w-fit mobile-subtitle2 md:desktop-typo2 py-4 pr-1.5">
                     {t('words.date')}
                   </th>
-                  <th className="text-left w-fit desktop-typo2 py-4 px-1.5">
+                  <th className="text-left w-fit mobile-subtitle2 md:desktop-typo2 py-4 px-1.5">
                     {t('conferences.location')}
                   </th>
-                  <th className="text-left w-5/12 desktop-typo2 py-4 px-1.5">
+                  <th className="text-left w-5/12 mobile-subtitle2 md:desktop-typo2 py-4 px-1.5">
                     {t('words.bCertificate')}
                   </th>
-                  <th className="text-left w-2/12 desktop-typo2 py-4 px-1.5">
+                  <th className="text-left w-2/12 mobile-subtitle2 md:desktop-typo2 py-4 px-1.5">
                     {t('dashboard.bCertificate.grade')}
                   </th>
-                  <th className="w-fit desktop-typo2 py-4 pl-1.5 text-center">
+                  <th className="w-fit mobile-subtitle2 md:desktop-typo2 py-4 pl-1.5 text-center">
                     {t('dashboard.bCertificate.certificate')}
                   </th>
                 </tr>
@@ -136,11 +149,13 @@ export const DashboardBCertificate = () => {
                             : ''
                         }
                       >
-                        <td className="py-1.5 pr-1.5">
+                        <td className="py-1.5 pr-1.5 mobile-body3 md:desktop-body1">
                           {result.date.toLocaleDateString()}
                         </td>
-                        <td className="p-1.5">{result.place}</td>
-                        <td className="p-1.5">
+                        <td className="p-1.5 mobile-body3 md:desktop-body1">
+                          {result.place}
+                        </td>
+                        <td className="p-1.5 mobile-body3 md:desktop-body1">
                           <div
                             className="flex justify-between items-center"
                             onClick={() => handleResultsOpen(index)}
@@ -165,7 +180,7 @@ export const DashboardBCertificate = () => {
                             />
                           </div>
                         </td>
-                        <td className="p-1.5">
+                        <td className="p-1.5 mobile-body3 md:desktop-body1">
                           {result.parts.reduce(
                             (total, part) => total + part.mark,
                             0,
@@ -176,7 +191,7 @@ export const DashboardBCertificate = () => {
                             0,
                           )}
                         </td>
-                        <td className="py-1.5 pl-1.5">
+                        <td className="py-1.5 pl-1.5 mobile-body3 md:desktop-body1">
                           <Link
                             to={result.downloadLink}
                             className="inline-block"
@@ -198,14 +213,14 @@ export const DashboardBCertificate = () => {
                           <tr key={`${index}-${partIndex}`}>
                             <td className="pr-1.5"></td>
                             <td></td>
-                            <td className="p-1.5">
+                            <td className="p-1.5 mobile-body3 md:desktop-body1">
                               <p>
                                 {t('words.part')}{' '}
                                 {`${partIndex + 1} - ${part.topic}`} :{' '}
                                 {`${part.mark} / ${part.max}`}
                               </p>
                             </td>
-                            <td className="p-1.5">
+                            <td className="p-1.5 mobile-body3 md:desktop-body1">
                               <p>{`${part.mark} / ${part.max}`}</p>
                             </td>
                             <td className="pl-1.5"></td>
