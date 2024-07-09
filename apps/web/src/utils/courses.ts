@@ -5,20 +5,3 @@ export function addSpaceToCourseId(courseId?: string) {
     courseId.match(/\d+/)?.[0] || ''
   }`;
 }
-
-export function fakeCourseId(courseId: string) {
-  switch (courseId) {
-    case 'cuboplus': {
-      return 'btc401';
-    }
-    case 'rgb': {
-      return 'btc402';
-    }
-    case 'bizschool': {
-      return 'econ102';
-    }
-    default: {
-      return courseId;
-    }
-  }
-}
