@@ -1,6 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { zodToTs, printNode, type GetType } from 'zod-to-ts';
+import type { ZodAny } from 'zod';
+import ts from 'typescript';
+
+import * as schemas from '@sovereign-university/schemas';
+
 const schemasDirectory = '../schemas/src';
 const outputDirectory = './src/generated';
 const ignorePaths = new Set<string>([]);
@@ -24,7 +30,7 @@ const processFile = (filePath: string, relativePath: string) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
   const exportedSchemas = extractSchemas(fileContent);
-  const newFileContent = generateFileContent(exportedSchemas);
+  const newFileContent = generateFileContent(exportedSchemas, relativePath);
 
   // Write the result in `packages/types` while maintaining folder structure
   const outputFilePath = path.join(outputDirectory, relativePath);
@@ -34,7 +40,7 @@ const processFile = (filePath: string, relativePath: string) => {
 
 // Recursive function to traverse directory structure
 const processDirectory = (directory: string, relativePath = '') => {
-  for (const file of fs.readdirSync(directory)) {
+  for (const file of fs.readdirSync(directory).reverse()) {
     const fullPath = path.join(directory, file);
     const relPath = path.join(relativePath, file);
     if (fs.statSync(fullPath).isDirectory()) {
@@ -108,29 +114,51 @@ const extractSchemas = (fileContent: string): string[] => {
   return [...schemaNames];
 };
 
-const generateFileContent = (schemaNames: string[]): string => {
-  const zodImportStatement = `import type { z } from 'zod';\n\n`;
+let currentlyProcessedFile = '';
+let currentImportSet: Set<string>;
+const generateFileContent = (
+  schemaNames: string[],
+  filePath: string, // Current file path (used to track imports)
+): string => {
+  let fileContent = ``;
+  currentlyProcessedFile = filePath;
+  currentImportSet = new Set();
 
-  const schemaImportStatement =
-    schemaNames.length > 0
-      ? `import { ${schemaNames
-          .sort()
-          .join(', ')} } from '@sovereign-university/schemas';\n\n`
-      : '';
+  for (const name of schemaNames) {
+    const schema = (schemas as any)[name] as ZodAny & GetType;
 
-  const typeDefinitions = schemaNames
-    .map(
-      (name) =>
-        `export type ${typeNameFromSchema(name)} = z.infer<typeof ${name}>;`,
-    )
-    .join('\n');
+    const typeName = typeNameFromSchema(name);
+    const { node } = zodToTs(schema);
 
-  return (
-    generatedHeader +
-    zodImportStatement +
-    schemaImportStatement +
-    typeDefinitions
-  );
+    // Append a custom getType function to the schema once it have been processed
+    schema._def.getType = (ts) => {
+      if (filePath !== currentlyProcessedFile) {
+        console.debug(
+          `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
+        );
+
+        // TODO: This is a bit hacky, but it works for now
+        const importName = /.*\/(.+)\.ts$/.exec(filePath)?.[1] + '.js';
+        currentImportSet.add(
+          `import { ${typeName} } from './${importName}';\n`,
+        );
+      }
+
+      return ts.factory.createIdentifier(typeName);
+    };
+
+    const output = printNode(node);
+
+    switch (node.kind) {
+      case ts.SyntaxKind.TypeLiteral:
+        fileContent += `export interface ${typeName} ${output};\n\n`;
+        break;
+      default:
+        fileContent += `export type ${typeName} = ${output};\n\n`;
+    }
+  }
+
+  return generatedHeader + Array.from(currentImportSet).join('') + fileContent;
 };
 
 // Convert a schema name to a type name (capitalized and without the 'Schema' suffix)

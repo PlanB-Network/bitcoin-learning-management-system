@@ -9,6 +9,7 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
@@ -16,7 +17,6 @@ import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import graduateImg from '../../../assets/birrete.png';
 import watch from '../../../assets/cloclk.png';
@@ -182,11 +182,7 @@ export const CourseDetails: React.FC = () => {
     }
   }
 
-  const Header = ({
-    course,
-  }: {
-    course: TRPCRouterOutput['content']['getCourse'];
-  }) => {
+  const Header = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="flex max-w-5xl flex-col space-y-2 px-2 sm:flex-row sm:items-center sm:space-x-10">
         {isScreenMd ? (
@@ -263,11 +259,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const CourseInfo = ({
-    course,
-  }: {
-    course: TRPCRouterOutput['content']['getCourse'];
-  }) => {
+  const CourseInfo = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="grid max-w-5xl grid-rows-1 place-items-stretch justify-items-stretch gap-y-8 sm:my-2 sm:grid-cols-2">
         <div className="w-full px-2 sm:pl-2 sm:pr-10">
@@ -376,7 +368,7 @@ export const CourseDetails: React.FC = () => {
   const DescriptionAndObjectives = ({
     course,
   }: {
-    course: TRPCRouterOutput['content']['getCourse'];
+    course: JoinedCourseWithAll;
   }) => {
     return (
       <div className="max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 sm:my-4 sm:grid sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-20">
@@ -445,11 +437,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Curriculum = ({
-    course,
-  }: {
-    course: TRPCRouterOutput['content']['getCourse'];
-  }) => {
+  const Curriculum = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
@@ -556,11 +544,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Professors = ({
-    course,
-  }: {
-    course: TRPCRouterOutput['content']['getCourse'];
-  }) => {
+  const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="my-4 max-w-5xl px-2">
         <div className="flex h-fit flex-col">
@@ -595,11 +579,7 @@ export const CourseDetails: React.FC = () => {
     );
   };
 
-  const Footer = ({
-    course,
-  }: {
-    course: TRPCRouterOutput['content']['getCourse'];
-  }) => {
+  const Footer = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <div className="my-4 max-w-5xl self-center px-2">
         <div className="flex h-fit flex-col">

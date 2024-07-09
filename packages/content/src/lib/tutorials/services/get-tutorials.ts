@@ -3,9 +3,8 @@
 import type { Dependencies } from '../../dependencies.js';
 import { getTutorialsQuery } from '../queries/index.js';
 
-export const createGetTutorials =
-  (dependencies: Dependencies) =>
-  async (category?: string, language?: string) => {
+export const createGetTutorials = (dependencies: Dependencies) => {
+  return async (category?: string, language?: string) => {
     const { postgres } = dependencies;
 
     const tutorials = await postgres.exec(
@@ -14,3 +13,4 @@ export const createGetTutorials =
 
     return [...tutorials];
   };
+};

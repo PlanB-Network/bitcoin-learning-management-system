@@ -7,6 +7,12 @@ import {
   courseProgressSchema,
   courseUserChapterSchema,
 } from '@sovereign-university/schemas';
+import type {
+  CourseProgress,
+  CourseProgressExtended,
+  CourseUserChapter,
+} from '@sovereign-university/types';
+import type { GetPaymentOutput } from '@sovereign-university/user';
 import {
   createCompleteChapter,
   createGetPayment,
@@ -19,6 +25,8 @@ import {
   generateChapterTicket,
 } from '@sovereign-university/user';
 
+import type { Parser } from '#src/trpc/types.js';
+
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
@@ -29,7 +37,7 @@ const completeChapterProcedure = protectedProcedure
       chapterId: z.string(),
     }),
   )
-  .output(courseProgressSchema.array())
+  .output<Parser<CourseProgress[]>>(courseProgressSchema.array())
   .mutation(({ ctx, input }) =>
     createCompleteChapter(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -40,14 +48,8 @@ const completeChapterProcedure = protectedProcedure
 
 const getProgressProcedure = protectedProcedure
   .input(z.void())
-  .output(
-    courseProgressExtendedSchema
-      .merge(
-        z.object({
-          totalChapters: z.number(),
-        }),
-      )
-      .array(),
+  .output<Parser<CourseProgressExtended[]>>(
+    courseProgressExtendedSchema.array(),
   )
   .query(({ ctx }) =>
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
@@ -127,7 +129,7 @@ const saveFreePaymentProcedure = protectedProcedure
 
 const getPaymentProcedure = protectedProcedure
   .input(z.void())
-  .output(
+  .output<Parser<GetPaymentOutput>>(
     coursePaymentSchema
       .pick({
         courseId: true,
@@ -142,13 +144,17 @@ const getPaymentProcedure = protectedProcedure
     createGetPayment(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
+type GetUserChapterOutput = Array<
+  Pick<CourseUserChapter, 'courseId' | 'booked' | 'chapterId' | 'completedAt'>
+>;
+
 const getUserChapterProcedure = protectedProcedure
   .input(
     z.object({
       courseId: z.string(),
     }),
   )
-  .output(
+  .output<Parser<GetUserChapterOutput>>(
     courseUserChapterSchema
       .pick({
         courseId: true,
@@ -201,9 +207,7 @@ const downloadChapterTicketProcedure = protectedProcedure
     }),
   )
   .output(z.string())
-  .mutation(async ({ input }) => {
-    return generateChapterTicket(input);
-  });
+  .mutation(({ input }) => generateChapterTicket(input));
 
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,

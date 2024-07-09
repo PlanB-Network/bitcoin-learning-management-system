@@ -1,3 +1,5 @@
+import type { JoinedTutorialLight } from '@sovereign-university/types';
+
 import exchangeSvg from '../../assets/tutorials/exchange.svg';
 import merchantSvg from '../../assets/tutorials/merchant.svg';
 import miningSvg from '../../assets/tutorials/mining.svg';
@@ -5,7 +7,6 @@ import nodeSvg from '../../assets/tutorials/node.svg';
 import otherSvg from '../../assets/tutorials/other.svg';
 import privacySvg from '../../assets/tutorials/privacy.svg';
 import walletSvg from '../../assets/tutorials/wallet.svg';
-import type { TRPCRouterOutput } from '../../utils/trpc.tsx';
 
 export const TUTORIALS_CATEGORIES = [
   {
@@ -38,9 +39,7 @@ export const TUTORIALS_CATEGORIES = [
   },
 ] as const;
 
-export const extractSubCategories = (
-  tutorials: NonNullable<TRPCRouterOutput['content']['getTutorials']>,
-) => {
+export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {
   return [
     ...new Set(tutorials.filter(Boolean).map((t) => t.subcategory)),
   ] as string[];

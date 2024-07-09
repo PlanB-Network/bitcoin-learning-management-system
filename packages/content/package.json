@@ -4,7 +4,7 @@
   "type": "module",
   "exports": {
     "development": "./src/index.ts",
-    "import": "./dist/index.js",
+    "import": "./dist/src/index.js",
     "types": "./src/index.ts"
   },
   "main": "./src/index.ts",
@@ -12,7 +12,11 @@
   "scripts": {
     "build": "tsc --build tsconfig.lib.json",
     "lint": "eslint --color './**/*.ts'",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.lib.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.lib.json | head -n 12 > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
     "@sovereign-university/database": "workspace:*",

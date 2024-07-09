@@ -3,7 +3,7 @@ import { createSelectSchema } from 'drizzle-zod';
 import {
   usersAccounts,
   usersLud4PublicKeys,
-} from '@sovereign-university/database/schemas';
+} from '@sovereign-university/database';
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
 export const userDetailsSchema = userAccountSchema.pick({

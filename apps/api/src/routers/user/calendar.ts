@@ -1,16 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable import/no-unresolved */
-
 import { z } from 'zod';
 
 import { calendarEventSchema } from '@sovereign-university/schemas';
+import type { CalendarEvent } from '@sovereign-university/types';
 import { createGetCalendarEvents } from '@sovereign-university/user';
 
 import { protectedProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
+import type { Parser } from '#src/trpc/types.js';
 
 const getCalendarEventsProcedure = protectedProcedure
   .input(
@@ -18,7 +14,7 @@ const getCalendarEventsProcedure = protectedProcedure
       language: z.string(),
     }),
   )
-  .output(calendarEventSchema.array())
+  .output<Parser<CalendarEvent[]>>(calendarEventSchema.array())
   .query(({ ctx, input }) =>
     createGetCalendarEvents(ctx.dependencies)({
       uid: ctx.user.uid,

@@ -3,18 +3,15 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
+import type { Ticket } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
-import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
+import { trpc } from '#src/utils/trpc.js';
 
-export const BookingPart = ({
-  tickets,
-}: {
-  tickets: NonNullable<TRPCRouterOutput['user']['billing']['getTickets']>;
-}) => {
+export const BookingPart = ({ tickets }: { tickets: Ticket[] }) => {
   const { t } = useTranslation();
 
   const { user } = useContext(AppContext);
@@ -99,9 +96,7 @@ const Buttons = ({
   userDisplayName,
   buttonSize,
 }: {
-  ticket: NonNullable<
-    TRPCRouterOutput['user']['billing']['getTickets'][number]
-  >;
+  ticket: Ticket;
   userDisplayName: string;
   buttonSize: 's' | 'm';
 }) => {

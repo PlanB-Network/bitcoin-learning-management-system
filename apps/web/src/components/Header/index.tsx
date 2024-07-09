@@ -2,6 +2,7 @@ import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -16,7 +17,6 @@ import aboutSvg from '../../assets/resources/world.svg?react';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { Routes } from '../../routes/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
-import type { TRPCRouterOutput } from '../../utils/trpc.tsx';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
 import { AuthModal } from '../AuthModal/index.tsx';
 import { AuthModalState } from '../AuthModal/props.ts';
@@ -25,7 +25,7 @@ import { FlyingMenu } from './FlyingMenu/index.tsx';
 import { MobileMenu } from './MobileMenu/index.tsx';
 import type { NavigationSection } from './props.tsx';
 
-type Course = NonNullable<TRPCRouterOutput['content']['getCourses']>[number];
+type Course = JoinedCourseWithProfessors;
 
 interface HeaderProps {
   variant?: 'light' | 'dark';

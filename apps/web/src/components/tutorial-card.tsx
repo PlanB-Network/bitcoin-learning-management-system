@@ -1,10 +1,11 @@
 import { Link } from '@tanstack/react-router';
 
+import type { JoinedTutorialLight } from '@sovereign-university/types';
+
 import { computeAssetCdnUrl } from '../utils/index.ts';
-import type { TRPCRouterOutput } from '../utils/trpc.tsx';
 
 interface TutorialCardProps extends React.HTMLProps<HTMLDivElement> {
-  tutorial: NonNullable<TRPCRouterOutput['content']['getTutorials']>[number];
+  tutorial: JoinedTutorialLight;
 }
 
 export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {

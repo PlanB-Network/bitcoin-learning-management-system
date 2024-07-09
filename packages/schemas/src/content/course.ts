@@ -8,7 +8,7 @@ import {
   contentCoursePartsLocalized,
   contentCourses,
   contentCoursesLocalized,
-} from '@sovereign-university/database/schemas';
+} from '@sovereign-university/database';
 
 import { formattedProfessorSchema } from './professor.js';
 
@@ -17,6 +17,11 @@ import { levelSchema } from './index.js';
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(
   contentCoursesLocalized,
+  {
+    // TODO: Remove this when the issue is fixed
+    // https://github.com/drizzle-team/drizzle-orm/issues/1609
+    objectives: z.array(z.string()),
+  },
 );
 export const coursePartSchema = createSelectSchema(contentCourseParts);
 export const coursePartLocalizedSchema = createSelectSchema(
@@ -38,6 +43,11 @@ export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
 export const courseChapterSchema = createSelectSchema(contentCourseChapters);
 export const courseChapterLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
+  {
+    // TODO: Remove this when the issue is fixed
+    // https://github.com/drizzle-team/drizzle-orm/issues/1609
+    sections: z.array(z.string()),
+  },
 );
 
 export const joinedCourseChapterSchema = courseChapterLocalizedSchema

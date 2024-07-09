@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "check-types": {
+      "dependsOn": ["@sovereign-university/database#build-types"]
+    },
+    "build-types": {
+      "dependsOn": ["@sovereign-university/database#build-types"],
+      "outputs": ["dist/**"]
+    },
+    "build": {
+      "dependsOn": ["@sovereign-university/database#build"],
+      "outputs": ["dist/**"]
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import type { CourseProgressExtended } from '@sovereign-university/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import {
   getCompletedChaptersQuery,
@@ -5,9 +7,12 @@ import {
   getProgressQuery,
 } from '../queries/index.js';
 
-export const createGetProgress =
-  (dependencies: Dependencies) =>
-  async ({ uid }: { uid: string }) => {
+export const createGetProgress = (dependencies: Dependencies) => {
+  return async ({
+    uid,
+  }: {
+    uid: string;
+  }): Promise<CourseProgressExtended[]> => {
     const { postgres } = dependencies;
 
     const progress = await postgres.exec(getProgressQuery(uid));
@@ -51,3 +56,4 @@ export const createGetProgress =
       };
     });
   };
+};

@@ -1,6 +1,7 @@
 import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import { PaymentRow } from '#src/components/payment-row.js';
@@ -14,7 +15,7 @@ const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 interface ModalBookSummaryProps {
   courseName: string;
   professorNames: string;
-  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  course: JoinedCourseWithAll;
   chapter: NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
   mobileDisplay: boolean;
 }
