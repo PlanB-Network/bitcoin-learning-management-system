@@ -183,6 +183,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     name="password"
                     type="password"
                     labelText="Password"
+                    placeholder={t('dashboard.profile.password').toLowerCase()}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.password}
@@ -199,6 +200,7 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
                     name="confirmation"
                     type="password"
                     labelText="Confirmation"
+                    placeholder={t('dashboard.profile.password').toLowerCase()}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.confirmation}

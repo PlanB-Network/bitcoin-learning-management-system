@@ -86,6 +86,15 @@
       'calt' 1;
     font-synthesis: none !important;
   }
+
+  details > summary {
+    list-style: none;
+  }
+
+  details > summary::marker,
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @layer components {
