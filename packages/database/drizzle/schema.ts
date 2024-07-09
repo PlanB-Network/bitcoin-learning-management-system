@@ -357,7 +357,10 @@ export const contentCoursesLocalized = content.table(
   {
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: varchar('language', { length: 10 }).notNull(),
 
     // Per translation
@@ -378,7 +381,10 @@ export const contentCourseParts = content.table(
   {
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     partIndex: integer('part_index').notNull(),
     partId: uuid('part_id').unique().notNull(),
     lastSync: timestamp('last_sync', { withTimezone: true })
@@ -395,7 +401,12 @@ export const contentCourseParts = content.table(
 export const contentCoursePartsLocalized = content.table(
   'course_parts_localized',
   {
-    courseId: varchar('course_id', { length: 20 }).notNull(),
+    courseId: varchar('course_id', { length: 20 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     partId: uuid('part_id')
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
@@ -428,7 +439,12 @@ export const contentCoursePartsLocalized = content.table(
 export const contentCourseChapters = content.table(
   'course_chapters',
   {
-    courseId: varchar('course_id', { length: 20 }).notNull(),
+    courseId: varchar('course_id', { length: 20 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     chapterIndex: integer('chapter_index').notNull(),
     partId: uuid('part_id')
       .notNull()
@@ -453,7 +469,12 @@ export const contentCourseChapters = content.table(
 export const contentCourseChaptersLocalized = content.table(
   'course_chapters_localized',
   {
-    courseId: varchar('course_id', { length: 20 }).notNull(),
+    courseId: varchar('course_id', { length: 20 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     chapterId: uuid('chapter_id')
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
@@ -501,7 +522,10 @@ export const contentCourseTags = content.table(
   {
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     tagId: integer('tag_id')
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
@@ -523,7 +547,10 @@ export const usersCoursePayment = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
@@ -554,7 +581,10 @@ export const usersCourseUserChapter = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     chapterId: uuid('chapter_id')
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
@@ -584,7 +614,10 @@ export const usersCourseProgress = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
 
     completedChaptersCount: integer('completed_chapters_count')
       .default(0)
@@ -962,7 +995,10 @@ export const contentCourseProfessors = content.table(
   {
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     contributorId: varchar('contributor_id', { length: 20 })
       .notNull()
       .references(() => contentContributors.id, { onDelete: 'cascade' }),
@@ -979,7 +1015,10 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
   {
     courseId: varchar('course_id', { length: 20 })
       .notNull()
-      .references(() => contentCourses.id, { onDelete: 'cascade' }),
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     chapterId: uuid('chapter_id')
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
