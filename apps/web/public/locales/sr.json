@@ -85,6 +85,89 @@
     "contribute": "Ovaj alat je otvoren za Vaš doprinos. Koristi Figmu, tako da svako može dodavati, modifikovati i prevoditi. Da biste sarađivali, dodali kategoriju ili diskutovali, ne oklevajte da se pridružite našem discordu.",
     "contributeButton": "Pomozi i doprinesi",
     "contributeDescription": "Ako želite da dodate, izmenite ili prevedete neki sadržaj, Vaša pomoć je dobrodošla!",
-    "contributeTitle": "Želite da doprinesete?"
+    "contributeTitle": "Želite da doprinesete?",
+    "educationalContent": {
+      "description": "Ovaj sadržaj je namenjen za upotrebu na događajima obrazovnog karaktera.",
+      "title": "Obrazovni Sadržaj"
+    },
+    "hereForYou": "BET je ovde za Vas!",
+    "pageDescription": "Postići masovnu primenu nije lako. Da bismo se brže i bliže približili tom cilju, razvili smo proširivu bazu obrazovnog sadržaja. Ovde, edukatori o Bitcoinu mogu slobodno da ostavljaju i pristupaju sadržaju po potrebi. Hajde da ne izmišljamo toplu vodu svaki put, i da radimo zajedno na centralizaciji korisnih resursa na jednom mestu!",
+    "pageSubtitle": "BET - Javno dostupno Bitcoin mesto za sve obrazovne projekte",
+    "pageTitle": "Edukativni alat za Bitcoin",
+    "visualContent": {
+      "description": "Ovaj sadržaj su neobrađeni vizuelni podaci, koji se koriste za vaše kreacije.",
+      "title": "Vizuelni Sadržaj"
+    }
+  },
+  "conferences": {
+    "addConferences": "Slobodno dodajte bilo konferencije koje nedostaju putem ovog <0>Github</0> repozitorijuma.",
+    "description": "Konferencije su ključni element u Bitcoin industriji. One su deo obrazovnog puta svakog Bitcoinera. Izgradili smo ovaj alat da vam pomogne da se snađete kroz stotine konferencija.",
+    "backConferences": "Nazad na konferencije",
+    "conferenceName": "Naziv konferencije",
+    "conferencesSinceGenesis": "Arhiv Bitcoin konferencija od Genezis bloka",
+    "details": {
+      "findReplay": "Pronađi reprizu",
+      "nextVideo": "Sledeći video",
+      "previousVideo": "Prethodni video",
+      "selectStage": "Izaberite fazu",
+      "selectVideo": "Izaberite video",
+      "speaker": "Govornik",
+      "watchReplay": "Pogledaj reprizu"
+    },
+    "language": "Jezik",
+    "latestConferences": "Najnovije konferencije",
+    "location": "Lokacija",
+    "noConferences": "Još uvek nisu dodate konferencije za {{year}}.",
+    "pageSubtitle": "Ovaj portal je javno dostupan i otvoren za doprinos.",
+    "pageTitle": "Reprize konferencija",
+    "planBConferences": "Plan B konferencije",
+    "topics": "Teme"
+  },
+  "courses": {
+    "categories": {
+      "ln": "\"Lightning\" Mreža",
+      "btc": "Bitcoin",
+      "crypto": "Kriptografija",
+      "cuboplus": "Bitcoin",
+      "econ": "Austrijska škola ekonomije",
+      "fin": "Finansije",
+      "min": "Rudarenje",
+      "secu": "Bezbednost i privatnost"
+    },
+    "chapter": {
+      "detail": {
+        "p1heading": "Da li nameravate da prisustvujete ovom času lično?",
+        "title": "Detalji o predmetu",
+        "p1content": "Rezervišite svoje mesto"
+      },
+      "count": "Poglavlje {{count}}",
+      "finishCourse": "Završite kurs",
+      "next": "Urađeno, pređite na sledeće poglavlje",
+      "thanksTip": "Želite da se zahvalite? Možete dati napojnicu."
+    }
+  },
+  "book": {
+    "abstract": "Apstrakt",
+    "bookSummary": {
+      "modifyTooltip": "Napiši ili izmeni",
+      "noSummary": "Još uvek nije napisan rezime. Ako ste pročitali knjigu i želite da podelite rezime, ne oklevajte da ga napišete na Githubu. To bi mnogo pomoglo zajednici, unapredilo univerzitet i čak biste mogli dobiti neke satoshije za to!",
+      "notice": "Ovaj rezime je povezan sa Github-om, za bilo kakvu modifikaciju ili dodatak",
+      "title": "Rezime knjige"
+    },
+    "buttonBuy": "Kupi",
+    "buttonPdf": "PDF / E-knjiga",
+    "offeredBy": "Ponuđeno od strane velikodušnog saradnika",
+    "pageSubtitle": "Ovaj portal je javno dostupan i otvoren za doprinos.",
+    "pageTitle": "Bitcoin Biblioteka",
+    "topicsAddressed": "Obrađene teme: "
+  },
+  "builders": {
+    "networkStrength": "Snaga mreže leži u njenim članovima",
+    "noRelatedEvents": "Još uvek nema predstojećih događaja za ovog stvaraoca.",
+    "otherCommunities": "Istražite Plan B zajednice",
+    "pageSubtitle": "Ovaj portal je javno dostupan i otvoren za doprinos.",
+    "pageTitle": "Bitcoin Stvaraoci",
+    "languages": "Jezici",
+    "relatedEvents": "Predstojeći događaji"
   }
 }
