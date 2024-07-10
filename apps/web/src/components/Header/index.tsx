@@ -15,7 +15,7 @@ import podcastSvg from '../../assets/resources/podcast.svg?react';
 import tutorialsSvg from '../../assets/resources/toolkit.svg?react';
 import aboutSvg from '../../assets/resources/world.svg?react';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
-import { Routes } from '../../routes/routes.ts';
+import { Routes } from '../../utils/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
 import { AuthModal } from '../AuthModal/index.tsx';
