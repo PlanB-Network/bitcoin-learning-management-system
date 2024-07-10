@@ -4,31 +4,28 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router';
 import type { i18n } from 'i18next';
-import React, { Suspense } from 'react';
+// import React, { Suspense } from 'react';
 
 import { LANGUAGES } from '../utils/i18n.ts';
 
-// eslint-disable-next-line react-refresh/only-export-components
 const Root = () => {
-  const TanStackRouterDevtools =
-    process.env.NODE_ENV === 'production'
-      ? () => null // Render nothing in production
-      : React.lazy(() =>
-          // Lazy load in development
-          import('@tanstack/router-devtools').then((res) => ({
-            default: res.TanStackRouterDevtools,
-            // For Embedded Mode
-            // default: res.TanStackRouterDevtoolsPanel
-          })),
-        );
+  // const TanStackRouterDevtools =
+  //   process.env.NODE_ENV === 'production'
+  //     ? () => null
+  //     : // eslint-disable-next-line import/no-named-as-default-member
+  //       React.lazy(() =>
+  //         import('@tanstack/router-devtools').then((res) => ({
+  //           default: res.TanStackRouterDevtools,
+  //         })),
+  //       );
 
   return (
     <>
       <ScrollRestoration />
       <Outlet />
-      <Suspense>
+      {/* <Suspense>
         <TanStackRouterDevtools />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 };
