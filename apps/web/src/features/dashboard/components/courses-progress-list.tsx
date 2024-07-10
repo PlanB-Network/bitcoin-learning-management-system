@@ -1,14 +1,14 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
+import type { CourseProgressExtended } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
 import OrangePill from '../../../assets/icons/orange_pill_color.svg';
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
-import type { TRPCRouterOutput } from '../../../utils/trpc.tsx';
 
 interface CoursesProgressListProps {
-  courses?: NonNullable<TRPCRouterOutput['user']['courses']['getProgress']>;
+  courses?: CourseProgressExtended[];
   completed?: boolean;
 }
 interface ProgressBarProps {

@@ -4,10 +4,13 @@ import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
+import type {
+  JoinedCourseChapter,
+  JoinedCourseWithAll,
+} from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
-import type { TRPCRouterOutput } from '../../../utils/trpc.ts';
 
 interface Chapter {
   title: string;
@@ -17,28 +20,25 @@ interface Chapter {
 }
 
 interface Props {
-  course: TRPCRouterOutput['content']['getCourse'];
-  chapters: TRPCRouterOutput['content']['getCourseChapters'];
+  course: JoinedCourseWithAll;
+  chapters: JoinedCourseChapter[];
   currentChapter: Chapter;
   style?: CSSProperties;
 }
 
 const isCurrentChapter = (
-  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
+  chapter: JoinedCourseChapter,
   currentChapter: Chapter,
 ) => {
   return chapter.chapterId === currentChapter.chapterId;
 };
 
-const isPastPart = (
-  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
-  currentChapter: Chapter,
-) => {
+const isPastPart = (chapter: JoinedCourseChapter, currentChapter: Chapter) => {
   return chapter.partIndex <= currentChapter.partIndex;
 };
 
 const isPastChapter = (
-  chapter: TRPCRouterOutput['content']['getCourseChapters'][number],
+  chapter: JoinedCourseChapter,
   currentChapter: Chapter,
 ) => {
   return (

@@ -5,7 +5,7 @@ import {
   contentResourceTags,
   contentResources,
   contentTags,
-} from '@sovereign-university/database/schemas';
+} from '@sovereign-university/database';
 
 export const resourceSchema = createSelectSchema(contentResources);
 export const resourceTagSchema = createSelectSchema(contentResourceTags);

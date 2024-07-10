@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Link, useNavigate, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useMemo, useState } from 'react';
@@ -543,7 +540,6 @@ function getRandomQuestions(
   return shuffledArray.slice(0, count);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapQuizzToQuestions(quizzArray: JoinedQuizQuestion[]): Question[] {
   return quizzArray.map((quizz) => {
     const answers = [quizz.answer, ...quizz.wrongAnswers];
@@ -664,7 +660,7 @@ export const CourseChapter = () => {
     <CourseLayout>
       <PageMeta
         title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
-        description={chapter?.course.objectives}
+        description={chapter?.course.objectives?.join(',')}
         imageSrc={
           chapter
             ? computeAssetCdnUrl(

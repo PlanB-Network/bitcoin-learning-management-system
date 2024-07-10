@@ -1,16 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
+import type { Invoice } from '@sovereign-university/types';
 import { Button } from '@sovereign-university/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { formatDate } from '#src/utils/date.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
-export const BillingSection = ({
-  invoices,
-}: {
-  invoices: NonNullable<TRPCRouterOutput['user']['billing']['getInvoices']>;
-}) => {
+export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
   const { t } = useTranslation();
 
   return (

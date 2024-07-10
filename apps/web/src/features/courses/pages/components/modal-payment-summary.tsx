@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { JoinedCourseWithAll } from '@sovereign-university/types';
 import { cn } from '@sovereign-university/ui';
 
 import { PaymentRow } from '#src/components/payment-row.js';
-import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
 import leftBackgroundImg from '../../../../assets/courses/left-background.webp';
 import { ReactPlayer } from '../../../../components/ReactPlayer/index.tsx';
@@ -37,7 +37,7 @@ const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 interface ModalPaymentSummaryProps {
   courseName: string;
   professorNames: string;
-  course: NonNullable<TRPCRouterOutput['content']['getCourse']>;
+  course: JoinedCourseWithAll;
   mobileDisplay: boolean;
   paidPriceDollars?: number | null;
   satsPrice?: number;

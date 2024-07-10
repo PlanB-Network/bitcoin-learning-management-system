@@ -1,10 +1,12 @@
+import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
+
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { getCoursesQuery } from '../queries/index.js';
 
-export const createGetCourses =
-  (dependencies: Dependencies) => async (language?: string) => {
+export const createGetCourses = (dependencies: Dependencies) => {
+  return async (language?: string): Promise<JoinedCourseWithProfessors[]> => {
     const { postgres } = dependencies;
 
     const courses = await postgres.exec(getCoursesQuery(language));
@@ -29,3 +31,4 @@ export const createGetCourses =
       ),
     }));
   };
+};

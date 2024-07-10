@@ -1,7 +1,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { contentPodcasts } from '@sovereign-university/database/schemas';
+import { contentPodcasts } from '@sovereign-university/database';
 
 import { resourceSchema } from './resource.js';
 

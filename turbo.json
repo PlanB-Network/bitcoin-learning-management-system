@@ -29,11 +29,21 @@
       "outputs": ["."]
     },
     "build": {
-      "dependsOn": ["^build", "copy-assets"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
     "type-check": {
       "dependsOn": ["^type-check"]
+    },
+    "check-types": {},
+    "build-types": {},
+    "generate-types": {},
+    "trace-performance": {
+      "cache": false
+    },
+    "clear": {
+      "dependsOn": ["^clear"],
+      "cache": false
     },
     "test": {
       "dependsOn": ["build"],

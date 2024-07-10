@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "check-types": {
+      "dependsOn": [
+        "@sovereign-university/content#build-types",
+        "@sovereign-university/user#build-types",
+        "@sovereign-university/github#build-types",
+        "@sovereign-university/redis#build-types"
+      ]
+    },
+    "build-types": {
+      "outputs": ["dist/**"],
+      "dependsOn": [
+        "@sovereign-university/content#build-types",
+        "@sovereign-university/user#build-types",
+        "@sovereign-university/github#build-types",
+        "@sovereign-university/redis#build-types"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "@sovereign-university/content#build",
+        "@sovereign-university/user#build",
+        "@sovereign-university/github#build",
+        "@sovereign-university/redis#build"
+      ],
+      "outputs": ["dist/**"]
+    }
+  }
+}

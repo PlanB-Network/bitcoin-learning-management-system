@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
+import type { FormattedProfessor } from '@sovereign-university/types';
+
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';
 import WebIcon from '../assets/icons/web.svg?react';
 import { useDisclosure } from '../hooks/index.ts';
-import type { TRPCRouterOutput } from '../utils/trpc.ts';
 
 import { TipModal } from './tip-modal.tsx';
 import { TooltipWithContent } from './tooptip-with-content.tsx';
 
 interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
-  professor: NonNullable<TRPCRouterOutput['content']['getProfessors']>[number];
+  professor: FormattedProfessor;
 }
 
 export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {

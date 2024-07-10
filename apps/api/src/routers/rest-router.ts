@@ -1,9 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 // import crypto from 'node:crypto';
 // import type { IncomingMessage } from 'node:http';
 
@@ -145,7 +139,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const setProfilePicture = createSetProfilePicture(dependencies);
   router.post(
     '/user/profile-picture',
@@ -166,7 +159,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     },
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const getFileData = createGetUserFile(dependencies);
   router.get('/file/:id', async (req, res, next) => {
     try {
