@@ -1,4 +1,4 @@
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { useContext, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -8,9 +8,13 @@ import { Button } from '@sovereign-university/ui';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 
-import { DashboardLayout } from '../layout.tsx';
+import { DashboardLayout } from './-other/layout.tsx';
 
-export const DashboardBCertificate = () => {
+export const Route = createFileRoute('/dashboard/bcertificate')({
+  component: DashboardBCertificate,
+});
+
+function DashboardBCertificate() {
   const navigate = useNavigate();
 
   const { session } = useContext(AppContext);
@@ -245,4 +249,4 @@ export const DashboardBCertificate = () => {
       </div>
     </DashboardLayout>
   );
-};
+}
