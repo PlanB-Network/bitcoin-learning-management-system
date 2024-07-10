@@ -5,11 +5,11 @@ import { BsTwitter } from 'react-icons/bs';
 
 import { Button, cn } from '@sovereign-university/ui';
 
+import HeaderPill from '#src/assets/footer_pill.webp';
 import EducationMain from '#src/assets/home/education-main.webp';
 import Flags from '#src/assets/home/flags.webp';
 import FlagsSmall from '#src/assets/home/flags_small.png';
 import HeaderLeft from '#src/assets/home/header_left.svg';
-import HeaderPill from '#src/assets/home/header_pill.webp';
 import HeaderRight from '#src/assets/home/header_right.svg';
 import Lugano from '#src/assets/home/lugano.webp';
 import NetworkMain from '#src/assets/home/network_main.webp';
@@ -52,7 +52,7 @@ function Home() {
           <NumberSection />
           <EducationSection />
           <TutorialSection />
-          <div className="max-md:mx-5">
+          <div className="max-md:mx-2.5">
             <BCertificatePresentation marginClasses="mt-0" />
           </div>
           <AboutUsSection />

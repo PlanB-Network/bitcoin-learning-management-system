@@ -241,7 +241,6 @@ export const EventsMap = ({
   const [mapState, setMapState] = useState<MapState>();
   const [filter, setFilter] = useState<readonly CourseType[]>([]);
   const courseTypes: readonly CourseType[] = [
-    'course',
     'lecture',
     'conference',
     'exam',
@@ -268,11 +267,11 @@ export const EventsMap = ({
     }
 
     setFilteredEvents(
-      events.filter((e) =>
-        filter.length > 0 ? filter.includes(e.type!) : true,
-      ),
+      events
+        .filter((e) => (filter.length > 0 ? filter.includes(e.type!) : true))
+        .filter((e) => e.endDate > new Date()),
     );
-  }, [events, filter.length]);
+  }, [events, filter]);
 
   const [groups, setGroups] = useState<Map<string, EventGroup>>();
 
@@ -334,7 +333,7 @@ export const EventsMap = ({
     return () => {
       map.setTarget();
     };
-  }, [eventsLocations, events, filter.length, mapState]);
+  }, [eventsLocations, events, filter, mapState]);
 
   // Calendar selected cards
   const [calendarCard, setCalendarCard] = useState<JoinedEvent | null>(null);
@@ -546,9 +545,9 @@ export const EventsMap = ({
                   key={f}
                   onClick={() => onFilterClick(f)}
                   className={cn(
-                    'text-[10px] md:text-base border-b border-transparent capitalize',
+                    'text-xs md:text-base border-b border-transparent capitalize',
                     filter.includes(f)
-                      ? 'border-newOrange-1 font-medium md:font-semibold'
+                      ? 'border-newOrange-1 font-semibold'
                       : '',
                   )}
                 >

@@ -82,15 +82,15 @@ export const EventCard = ({
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col gap-1">
-        <h3 className="font-semibold max-lg:leading-snug sm:text-lg lg:text-2xl">
+        <h3 className="font-semibold max-lg:leading-snug sm:text-lg lg:text-2xl max-sm:line-clamp-1">
           {event.name}
         </h3>
-        <span className="font-medium text-xs sm:text-sm md:text-base">
+        <span className="font-medium text-xs sm:text-sm md:text-base max-sm:hidden">
           {event.builder}
         </span>
-        <div className="flex flex-col gap-0.5 text-white/75 text-[10px] sm:text-xs lg:text-sm">
+        <div className="flex flex-col gap-1 text-white/75 text-[10px] sm:text-xs lg:text-sm">
           <div className="flex flex-col gap-1">
-            <span>{dateString}</span>
+            <span className="max-sm:line-clamp-1">{dateString}</span>
             {startDate.getUTCHours() !== 0 &&
               endDate.getUTCHours() !== 0 &&
               !isPassed && <span className="max-sm:hidden">{timeString}</span>}
@@ -99,7 +99,7 @@ export const EventCard = ({
             <>
               <span className="max-sm:hidden">{event.addressLine2}</span>
               <span className="max-sm:hidden">{event.addressLine3}</span>
-              <span className="font-medium">
+              <span className="sm:font-medium max-sm:line-clamp-1">
                 {event.addressLine1?.toUpperCase()}
               </span>
             </>
@@ -356,7 +356,7 @@ export const EventCard = ({
     const isScreenSm = useGreater('sm');
 
     return event.websiteUrl ? (
-      <div className="w-fit mx-auto mt-auto pt-3 pb-1">
+      <div className="w-fit sm:mx-auto mt-auto sm:pt-3 sm:pb-1">
         <Link to={event.websiteUrl} target="_blank">
           <Button
             variant="newPrimary"
@@ -374,38 +374,53 @@ export const EventCard = ({
     <>
       <article
         className={cn(
-          'flex-1 flex flex-col min-w-[290px] max-w-[360px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 p-1.5 rounded-xl sm:p-2 sm:rounded-2xl',
+          'flex-1 flex flex-col max-w-[360px] w-full sm:min-w-[316px] sm:max-w-[316px] bg-newBlack-3 rounded-xl sm:p-2 sm:rounded-2xl max-sm:overflow-hidden',
           isLive ? 'shadow-md-section sm:shadow-none' : '',
+          isPassed ? 'min-w-[280px]' : 'min-w-[290px]',
         )}
       >
-        <div className="max-sm:flex max-sm:gap-2">
+        <div className="max-sm:flex">
           {/* Image */}
-          <div className="w-[124px] sm:w-full sm:overflow-hidden rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
+          <div className="w-[126px] sm:w-full overflow-hidden sm:rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
             <img
               src={event.picture}
               alt={event.name ? event.name : ''}
-              className="object-cover aspect-[432/308] w-full rounded-2xl"
+              className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full max-sm:h-[113px] sm:rounded-2xl"
             />
             {event.type && (
               <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm max-sm:hidden">
                 {capitalizedType}
               </span>
             )}
-            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm max-sm:hidden">
               {event.languages.map((language: string) => (
                 <Flag code={language} size="m" key={language} />
               ))}
             </div>
           </div>
-          <GeneralInfos />
-        </div>
-        {!event.websiteUrl && (
-          <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
-            <PriceInfos />
-            <EventButtons />
+          <div className="max-sm:hidden">
+            <GeneralInfos />
           </div>
-        )}
-        <VisitWebsiteButton />
+          <div className="flex flex-col sm:hidden p-1">
+            <GeneralInfos />
+            {!event.websiteUrl && (
+              <div className="flex sm:flex-col gap-2.5 justify-between mt-auto sm:py-1">
+                <PriceInfos />
+                <EventButtons />
+              </div>
+            )}
+            <VisitWebsiteButton />
+          </div>
+        </div>
+        <div className="max-sm:hidden">
+          {!event.websiteUrl && (
+            <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
+              <PriceInfos />
+              <EventButtons />
+            </div>
+          )}
+          <VisitWebsiteButton />
+        </div>
       </article>
     </>
   );

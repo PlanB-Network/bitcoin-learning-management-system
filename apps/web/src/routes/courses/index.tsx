@@ -214,7 +214,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
       {/* Desktop */}
       <section className="flex bg-darkOrange-10 border border-darkOrange-5 rounded-2xl px-6 py-8 gap-10 max-md:hidden w-full max-w-[1060px] mx-auto">
         {/* First column */}
-        <div className="flex flex-col gap-6 basis-56">
+        <div className="flex flex-col gap-6 w-full max-w-52 shrink-1">
           <h3 className="text-darkOrange-5 leading-normal">
             {t('words.topics')}
           </h3>
@@ -240,7 +240,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
           </nav>
         </div>
         {/* Middle column */}
-        <div className="flex flex-col gap-2.5 flex-basis-64 shrink-[2]">
+        <div className="flex flex-col gap-2.5 w-full max-w-[280px] shrink-1">
           <h3 className="text-darkOrange-5 leading-normal">
             {t('words.courses')}
           </h3>
@@ -274,7 +274,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
           </nav>
         </div>
         {/* Last column */}
-        <div className="flex flex-col gap-4 basis-[448px]">
+        <div className="flex flex-col gap-4 w-full max-w-[448px] shrink-1">
           <h3 className="text-darkOrange-5 leading-normal">
             {t('words.description')}
           </h3>
@@ -335,7 +335,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
       {/* Mobile */}
       <section className="md:hidden flex flex-col gap-4 border border-darkOrange-5 shadow-sm-section rounded-lg max-w-lg mx-auto p-2.5">
         <span className="leading-normal text-darkOrange-5">Select a topic</span>
-        <div className="max-w-60 w-full">
+        <div className="w-full">
           <DropdownMenu
             activeItem={capitalize(activeTopic)}
             itemsList={topics
@@ -344,6 +344,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 onClick: () => setActiveTopic(topic),
               }))
               .filter((topic) => topic.name.toLowerCase() !== activeTopic)}
+            maxWidth="max-w-full"
           />
         </div>
         <div className="flex flex-col gap-4">

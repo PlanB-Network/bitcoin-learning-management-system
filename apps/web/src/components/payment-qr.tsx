@@ -22,30 +22,59 @@ interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
 export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
   const { t } = useTranslation();
   const borderClassName =
-    'border border-gray-400/25 rounded-xl overflow-hidden';
+    'border border-[rgba(115,115,115,0.1)] rounded-xl overflow-hidden';
   const invoice = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork&lightning=${paymentData.pr}`;
+
+  const onChain = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork`;
+  const lightning = paymentData.pr;
 
   return (
     <>
-      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
+      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 md:gap-8 max-lg:pb-6 max-lg:pt-8 mt-auto">
         <PlanBLogo className="h-auto" width={240} />
         <span className="text-center text-xs lg:text-base">
           {t('courses.payment.qr_unified')}
         </span>
         <QRCodeSVG value={invoice} size={220} />
-        <div
-          className={cn(
-            `flex flex-row items-center justify-center px-4 py-3 relative w-full`,
-            borderClassName,
-          )}
-        >
-          <span className="text-base flex-1 truncate">{invoice}</span>
-          <AiOutlineCopy
-            className="text-blue-1000 h-7 w-auto cursor-pointer"
-            onClick={() => {
-              navigator.clipboard.writeText(invoice);
-            }}
-          />
+        <div className="flex flex-col max-w-96 lg:w-96 w-full">
+          <span className="desktop-h7 text-center mx-auto mb-2">
+            {t('words.onChain')}
+          </span>
+          <div
+            className={cn(
+              `flex flex-row items-center justify-center px-4 py-3 w-full mb-8 bg-[#E9E9E9]`,
+              borderClassName,
+            )}
+          >
+            <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+              {onChain}
+            </span>
+            <AiOutlineCopy
+              className="h-5 w-auto cursor-pointer"
+              onClick={() => {
+                navigator.clipboard.writeText(onChain);
+              }}
+            />
+          </div>
+          <span className="desktop-h7 text-center mx-auto mb-2">
+            {t('words.lightning')}
+          </span>
+          <div
+            className={cn(
+              `flex flex-row items-center justify-center px-4 py-3 w-full bg-[#E9E9E9]`,
+              borderClassName,
+            )}
+          >
+            <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+              {lightning}
+            </span>
+            <AiOutlineCopy
+              className="h-5 w-auto cursor-pointer"
+              onClick={() => {
+                navigator.clipboard.writeText(lightning);
+              }}
+            />
+          </div>
         </div>
         {onBack && (
           <Button variant="newPrimaryGhost" onClick={onBack}>

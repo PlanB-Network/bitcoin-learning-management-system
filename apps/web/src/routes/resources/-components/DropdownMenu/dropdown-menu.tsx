@@ -13,9 +13,14 @@ interface ItemProps {
 interface DropdownMenuProps {
   activeItem: string;
   itemsList: ItemProps[];
+  maxWidth?: string;
 }
 
-export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
+export const DropdownMenu = ({
+  activeItem,
+  itemsList,
+  maxWidth = 'max-w-[400px]',
+}: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
   const ref = useRef<HTMLDivElement>(null);
@@ -46,10 +51,7 @@ export const DropdownMenu = ({ activeItem, itemsList }: DropdownMenuProps) => {
 
   return (
     <div
-      className={cn(
-        'relative w-full max-w-[400px] md:hidden',
-        isOpen && 'z-20',
-      )}
+      className={cn('relative w-full md:hidden', isOpen && 'z-20', maxWidth)}
       ref={ref}
     >
       <div>

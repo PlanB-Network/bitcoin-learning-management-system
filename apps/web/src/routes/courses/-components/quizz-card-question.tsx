@@ -94,7 +94,7 @@ export default function QuizzCardQuestion({
                       ? index === correctAnswer
                         ? 'bg-green-500'
                         : 'bg-red-500'
-                      : 'bg-beige-300',
+                      : 'bg-beige-300 hover:bg-newGray-4',
                   )}
                 >
                   <div className="text-blue-1000  text-2xl font-semibold uppercase">
