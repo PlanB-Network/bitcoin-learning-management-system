@@ -39,7 +39,7 @@ export const MetaElements = ({
       {
         <>
           {isLoggedIn && !isMobile && (
-            <Link className="flex" to="/dashboard">
+            <Link className="flex" to="/dashboard/courses">
               <button className="cursor-pointer text-white">
                 <img
                   src={

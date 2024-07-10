@@ -30,6 +30,8 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'unicorn/filename-case': 'off',
+    'unicorn/no-abusive-eslint-disable': 'off',
     'no-empty': ['warn', { allowEmptyCatch: true }],
     'require-await': 'error',
     'no-return-await': 'error',

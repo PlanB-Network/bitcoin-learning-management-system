@@ -12,7 +12,7 @@ export const TutorialCard = ({ tutorial, ...props }: TutorialCardProps) => {
   return (
     <div {...props}>
       <Link
-        to={'/tutorials/$category/$name'}
+        to={'/tutorials-category/$category/$name'}
         params={{
           category: tutorial.category,
           name: tutorial.name,

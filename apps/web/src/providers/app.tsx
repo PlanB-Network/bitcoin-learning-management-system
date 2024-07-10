@@ -12,9 +12,9 @@ import { useTranslation } from 'react-i18next';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { router } from '#src/utils/router.js';
 
 import { useTrpc } from '../hooks/index.ts';
-import { router } from '../routes/index.tsx';
 import { LANGUAGES } from '../utils/i18n.ts';
 import { trpc } from '../utils/trpc.ts';
 

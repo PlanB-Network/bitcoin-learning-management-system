@@ -11,7 +11,8 @@ import nodeSvg from '../assets/tutorials/node.svg';
 import otherSvg from '../assets/tutorials/other.svg';
 import privacySvg from '../assets/tutorials/privacy.svg';
 import walletSvg from '../assets/tutorials/wallet.svg';
-import { Routes } from '../routes/routes.ts';
+
+import { Routes } from './routes.ts';
 
 export const TUTORIALS_CATEGORIES = [
   {
