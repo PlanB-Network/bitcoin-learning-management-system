@@ -17,8 +17,6 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { DashboardLayout } from './-other/layout.tsx';
-
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -138,91 +136,85 @@ function DashboardCalendar() {
   const scrollToTime = new Date(1970, 1, 1, 9);
 
   return (
-    <DashboardLayout>
-      <div className="flex flex-col gap-4 lg:gap-8 h-full">
-        <div className="text-2xl">
-          {t('dashboard.calendar.personalCalendar')}
-        </div>
+    <div className="flex flex-col gap-4 lg:gap-8 h-full">
+      <div className="text-2xl">{t('dashboard.calendar.personalCalendar')}</div>
 
-        <div className="hidden lg:flex">
-          {courseTypes.map((f, index) => (
-            <button
-              key={f}
-              style={
-                filter.includes(f)
-                  ? {
-                      backgroundColor: `${courseColor[index]}`,
-                      color: `white`,
-                      fontWeight: 600,
-                      paddingTop: '8px',
-                      paddingBottom: '8px',
-                    }
-                  : {
-                      color: `${courseColor[index]}`,
-                      borderColor: `${courseColor[index]}`,
-                      borderWidth: `2px`,
-                      paddingTop: '6px',
-                      paddingBottom: '6px',
-                    }
-              }
-              className={cn('leading-snug mx-1 px-4 capitalize rounded-xl')}
-              onClick={() =>
-                setFilter((prev) =>
-                  prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
-                )
-              }
-            >
-              {f}s
-              <span
-                className="ml-2 bg-white rounded-md py-1 px-[6px] text-xs border-gray font-medium"
-                style={{
-                  color: `${courseColor[index]}`,
-                  borderWidth: filter.includes(f) ? '' : '1px',
-                }}
-              >
-                {events?.filter((p) => p.type === f).length}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <Calendar
-          localizer={localizer}
-          events={filteredEvents}
-          views={['week', 'month', 'agenda']}
-          onView={handleViewChange}
-          defaultView={currentView}
-          onSelectEvent={(e) => {
-            // eslint-disable-next-line sonarjs/no-small-switch
-            switch (e.type) {
-              case 'course': {
-                navigate({
-                  to: '/courses-chapter/$courseId/$chapterId',
-                  params: { courseId: e.id, chapterId: e.subId! },
-                });
-                break;
-              }
-              default: {
-                navigate({
-                  to: '/events/$eventId',
-                  params: { eventId: e.id },
-                });
-                break;
-              }
+      <div className="hidden lg:flex">
+        {courseTypes.map((f, index) => (
+          <button
+            key={f}
+            style={
+              filter.includes(f)
+                ? {
+                    backgroundColor: `${courseColor[index]}`,
+                    color: `white`,
+                    fontWeight: 600,
+                    paddingTop: '8px',
+                    paddingBottom: '8px',
+                  }
+                : {
+                    color: `${courseColor[index]}`,
+                    borderColor: `${courseColor[index]}`,
+                    borderWidth: `2px`,
+                    paddingTop: '6px',
+                    paddingBottom: '6px',
+                  }
             }
-          }}
-          style={{
-            height: '829px',
-            width: '100%',
-          }}
-          eventPropGetter={customEventGetter}
-          components={
-            currentView === 'month' ? monthComponents : weekComponents
-          }
-          scrollToTime={scrollToTime}
-          showAllEvents={true}
-        />
+            className={cn('leading-snug mx-1 px-4 capitalize rounded-xl')}
+            onClick={() =>
+              setFilter((prev) =>
+                prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
+              )
+            }
+          >
+            {f}s
+            <span
+              className="ml-2 bg-white rounded-md py-1 px-[6px] text-xs border-gray font-medium"
+              style={{
+                color: `${courseColor[index]}`,
+                borderWidth: filter.includes(f) ? '' : '1px',
+              }}
+            >
+              {events?.filter((p) => p.type === f).length}
+            </span>
+          </button>
+        ))}
       </div>
-    </DashboardLayout>
+
+      <Calendar
+        localizer={localizer}
+        events={filteredEvents}
+        views={['week', 'month', 'agenda']}
+        onView={handleViewChange}
+        defaultView={currentView}
+        onSelectEvent={(e) => {
+          // eslint-disable-next-line sonarjs/no-small-switch
+          switch (e.type) {
+            case 'course': {
+              navigate({
+                to: '/courses/$courseId/$chapterId',
+                params: { courseId: e.id, chapterId: e.subId! },
+              });
+              break;
+            }
+            default: {
+              navigate({
+                to: '/events/$eventId',
+                params: { eventId: e.id },
+              });
+              break;
+            }
+          }
+        }}
+        style={{
+          height: '829px',
+          width: '100%',
+        }}
+        eventPropGetter={customEventGetter}
+        components={currentView === 'month' ? monthComponents : weekComponents}
+        scrollToTime={scrollToTime}
+        showAllEvents={true}
+      />
+    </div>
   );
 }

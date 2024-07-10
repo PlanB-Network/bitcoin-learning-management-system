@@ -13,7 +13,6 @@ import {
 } from '../../atoms/Tabs/index.tsx';
 
 import { CoursesProgressList } from './-components/courses-progress-list.tsx';
-import { DashboardLayout } from './-other/layout.tsx';
 
 export const Route = createFileRoute('/dashboard/courses')({
   component: DashboardCourses,
@@ -39,32 +38,30 @@ function DashboardCourses() {
   );
 
   return (
-    <DashboardLayout>
-      <div className="flex flex-col gap-4 lg:gap-8">
-        <div className="text-2xl">{t('dashboard.courses')}</div>
-        <Tabs defaultValue="inprogress" className="max-w-6xl">
-          <TabsList>
-            <TabsTrigger
-              value="inprogress"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-            >
-              {t('dashboard.myCourses.inprogress')}
-            </TabsTrigger>
-            <TabsTrigger
-              value="completed"
-              className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-            >
-              {t('dashboard.myCourses.completed')}
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="inprogress">
-            <CoursesProgressList courses={inProgressCourses} />
-          </TabsContent>
-          <TabsContent value="completed">
-            <CoursesProgressList courses={completedCourses} completed />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </DashboardLayout>
+    <div className="flex flex-col gap-4 lg:gap-8">
+      <div className="text-2xl">{t('dashboard.courses')}</div>
+      <Tabs defaultValue="inprogress" className="max-w-6xl">
+        <TabsList>
+          <TabsTrigger
+            value="inprogress"
+            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
+          >
+            {t('dashboard.myCourses.inprogress')}
+          </TabsTrigger>
+          <TabsTrigger
+            value="completed"
+            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
+          >
+            {t('dashboard.myCourses.completed')}
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="inprogress">
+          <CoursesProgressList courses={inProgressCourses} />
+        </TabsContent>
+        <TabsContent value="completed">
+          <CoursesProgressList courses={completedCourses} completed />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }

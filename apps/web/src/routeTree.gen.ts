@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root';
+import { Route as DashboardImport } from './routes/dashboard';
 import { Route as IndexImport } from './routes/index';
 import { Route as TutorialsIndexImport } from './routes/tutorials/index';
 import { Route as ResourcesIndexImport } from './routes/resources/index';
@@ -48,6 +49,11 @@ import { Route as MiscResetPasswordTokenImport } from './routes/_misc/reset-pass
 import { Route as MiscProfessorProfessorIdImport } from './routes/_misc/professor.$professorId';
 
 // Create/Update Routes
+
+const DashboardRoute = DashboardImport.update({
+  path: '/dashboard',
+  getParentRoute: () => rootRoute,
+} as any);
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -115,23 +121,23 @@ const EventsEventIdRoute = EventsEventIdImport.update({
 } as any);
 
 const DashboardProfileRoute = DashboardProfileImport.update({
-  path: '/dashboard/profile',
-  getParentRoute: () => rootRoute,
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
 } as any);
 
 const DashboardCoursesRoute = DashboardCoursesImport.update({
-  path: '/dashboard/courses',
-  getParentRoute: () => rootRoute,
+  path: '/courses',
+  getParentRoute: () => DashboardRoute,
 } as any);
 
 const DashboardCalendarRoute = DashboardCalendarImport.update({
-  path: '/dashboard/calendar',
-  getParentRoute: () => rootRoute,
+  path: '/calendar',
+  getParentRoute: () => DashboardRoute,
 } as any);
 
 const DashboardBookingsRoute = DashboardBookingsImport.update({
-  path: '/dashboard/bookings',
-  getParentRoute: () => rootRoute,
+  path: '/bookings',
+  getParentRoute: () => DashboardRoute,
 } as any);
 
 const CoursesCourseIdRoute = CoursesCourseIdImport.update({
@@ -238,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport;
       parentRoute: typeof rootRoute;
     };
+    '/dashboard': {
+      id: '/dashboard';
+      path: '/dashboard';
+      fullPath: '/dashboard';
+      preLoaderRoute: typeof DashboardImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_misc/about': {
       id: '/_misc/about';
       path: '/about';
@@ -296,31 +309,31 @@ declare module '@tanstack/react-router' {
     };
     '/dashboard/bookings': {
       id: '/dashboard/bookings';
-      path: '/dashboard/bookings';
+      path: '/bookings';
       fullPath: '/dashboard/bookings';
       preLoaderRoute: typeof DashboardBookingsImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof DashboardImport;
     };
     '/dashboard/calendar': {
       id: '/dashboard/calendar';
-      path: '/dashboard/calendar';
+      path: '/calendar';
       fullPath: '/dashboard/calendar';
       preLoaderRoute: typeof DashboardCalendarImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof DashboardImport;
     };
     '/dashboard/courses': {
       id: '/dashboard/courses';
-      path: '/dashboard/courses';
+      path: '/courses';
       fullPath: '/dashboard/courses';
       preLoaderRoute: typeof DashboardCoursesImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof DashboardImport;
     };
     '/dashboard/profile': {
       id: '/dashboard/profile';
-      path: '/dashboard/profile';
+      path: '/profile';
       fullPath: '/dashboard/profile';
       preLoaderRoute: typeof DashboardProfileImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof DashboardImport;
     };
     '/events/$eventId': {
       id: '/events/$eventId';
@@ -483,6 +496,12 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
+  DashboardRoute: DashboardRoute.addChildren({
+    DashboardBookingsRoute,
+    DashboardCalendarRoute,
+    DashboardCoursesRoute,
+    DashboardProfileRoute,
+  }),
   MiscAboutRoute,
   MiscBCertificateRoute,
   MiscManifestoRoute,
@@ -491,10 +510,6 @@ export const routeTree = rootRoute.addChildren({
   MiscTermsAndConditionsRoute,
   MiscUnderConstructionRoute,
   CoursesCourseIdRoute,
-  DashboardBookingsRoute,
-  DashboardCalendarRoute,
-  DashboardCoursesRoute,
-  DashboardProfileRoute,
   EventsEventIdRoute,
   ResourcesBetRoute,
   ResourcesBooksRoute,
@@ -529,6 +544,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/dashboard",
         "/_misc/about",
         "/_misc/b-certificate",
         "/_misc/manifesto",
@@ -537,10 +553,6 @@ export const routeTree = rootRoute.addChildren({
         "/_misc/terms-and-conditions",
         "/_misc/under-construction",
         "/courses/$courseId",
-        "/dashboard/bookings",
-        "/dashboard/calendar",
-        "/dashboard/courses",
-        "/dashboard/profile",
         "/events/$eventId",
         "/resources/bet",
         "/resources/books",
@@ -567,6 +579,15 @@ export const routeTree = rootRoute.addChildren({
     "/": {
       "filePath": "index.tsx"
     },
+    "/dashboard": {
+      "filePath": "dashboard.tsx",
+      "children": [
+        "/dashboard/bookings",
+        "/dashboard/calendar",
+        "/dashboard/courses",
+        "/dashboard/profile"
+      ]
+    },
     "/_misc/about": {
       "filePath": "_misc/about.tsx"
     },
@@ -592,16 +613,20 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "courses/$courseId.tsx"
     },
     "/dashboard/bookings": {
-      "filePath": "dashboard/bookings.tsx"
+      "filePath": "dashboard/bookings.tsx",
+      "parent": "/dashboard"
     },
     "/dashboard/calendar": {
-      "filePath": "dashboard/calendar.tsx"
+      "filePath": "dashboard/calendar.tsx",
+      "parent": "/dashboard"
     },
     "/dashboard/courses": {
-      "filePath": "dashboard/courses.tsx"
+      "filePath": "dashboard/courses.tsx",
+      "parent": "/dashboard"
     },
     "/dashboard/profile": {
-      "filePath": "dashboard/profile.tsx"
+      "filePath": "dashboard/profile.tsx",
+      "parent": "/dashboard"
     },
     "/events/$eventId": {
       "filePath": "events/$eventId.tsx"

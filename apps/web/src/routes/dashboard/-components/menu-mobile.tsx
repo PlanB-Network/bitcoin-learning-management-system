@@ -1,4 +1,4 @@
-import { useLocation } from '@react-hooks-library/core';
+import type { ParsedLocation } from '@tanstack/react-router';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -8,10 +8,9 @@ import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 
 import { MenuItem } from './menu-item.tsx';
 
-export const MenuMobile = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
   const [pathname, setPathname] = useState('');
-
-  const location = useLocation();
 
   const dashboardPath = '/dashboard/courses';
   const bookingsPath = '/dashboard/bookings';

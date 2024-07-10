@@ -1,4 +1,4 @@
-import { useLocation } from '@react-hooks-library/core';
+import type { ParsedLocation } from '@tanstack/react-router';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
@@ -18,15 +18,18 @@ import { logout } from '#src/utils/session-utils.js';
 
 import { MenuItem } from './menu-item.tsx';
 
-export const MenuDesktop = () => {
+export const MenuDesktop = ({
+  location,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  location: ParsedLocation<any>;
+}) => {
   const { user } = useContext(AppContext);
   const [pathname, setPathname] = useState('');
 
   const pictureUrl = getPictureUrl(user);
 
   const navigate = useNavigate();
-
-  const location = useLocation();
 
   const dashboardPath = '/dashboard/courses';
   const bookingsPath = '/dashboard/bookings';
