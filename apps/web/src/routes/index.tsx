@@ -52,7 +52,7 @@ function Home() {
           <NumberSection />
           <EducationSection />
           <TutorialSection />
-          <div className="max-md:mx-5">
+          <div className="max-md:mx-2.5">
             <BCertificatePresentation marginClasses="mt-0" />
           </div>
           <AboutUsSection />
