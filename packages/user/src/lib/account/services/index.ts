@@ -1,3 +1,4 @@
+export * from './change-display-name.js';
 export * from './change-password.js';
 export * from './get-user.js';
 export * from './get-user-details.js';

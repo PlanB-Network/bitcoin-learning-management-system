@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  createChangeDisplayName,
   createChangeEmailConfirmation,
   createChangePassword,
   createEmailValidationToken,
@@ -34,6 +35,18 @@ export const userRouter = createTRPCRouter({
 
     .query(({ ctx }) =>
       createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid }),
+    ),
+  changeDisplayName: protectedProcedure
+    .input(
+      z.object({
+        displayName: z.string(),
+      }),
+    )
+    .mutation(({ ctx, input }) =>
+      createChangeDisplayName(ctx.dependencies)({
+        uid: ctx.user.uid,
+        displayName: input.displayName,
+      }),
     ),
   changePassword: protectedProcedure
     .input(
