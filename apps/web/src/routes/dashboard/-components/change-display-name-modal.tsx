@@ -2,10 +2,12 @@ import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
 import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
+
+import { AppContext } from '#src/providers/context.js';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
 import { TextInput } from '../../../atoms/TextInput/index.tsx';
@@ -31,11 +33,10 @@ export const ChangeDisplayNameModal = ({
   isOpen,
   onClose,
 }: ChangeDisplayNameModalProps) => {
+  const { user, setUser } = useContext(AppContext);
+
   const changeDisplayName = trpc.user.changeDisplayName.useMutation({
-    onSuccess: () => {
-      onClose();
-      window.location.reload();
-    },
+    onSuccess: onClose,
   });
 
   const handleChangeDisplayName = useCallback(
@@ -49,8 +50,11 @@ export const ChangeDisplayNameModal = ({
       changeDisplayName.mutate({
         displayName: values.displayName,
       });
+      if (user) {
+        setUser({ ...user, displayName: values.displayName });
+      }
     },
-    [changeDisplayName],
+    [changeDisplayName, setUser, user],
   );
 
   return (
