@@ -10,16 +10,19 @@ interface ItemProps {
   link?: string;
   onClick?: () => void;
 }
+
 interface DropdownMenuProps {
   activeItem: string;
   itemsList: ItemProps[];
   maxWidth?: string;
+  variant?: 'default' | 'gray';
 }
 
 export const DropdownMenu = ({
   activeItem,
   itemsList,
-  maxWidth = 'max-w-[400px]',
+  maxWidth = 'max-w-[280px]',
+  variant = 'default',
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -48,33 +51,39 @@ export const DropdownMenu = ({
 
   const filteredItems = itemsList.filter((item) => item.name !== activeItem);
 
+  const variantClasses = {
+    default: 'bg-darkOrange-11 text-darkOrange-5 border-darkOrange-9',
+    gray: 'border-newGray-6 text-black font-medium bg-newGray-6',
+  };
+
   return (
     <div
-      className={cn('relative w-full md:hidden', isOpen && 'z-20', maxWidth)}
+      className={cn(
+        'relative w-full mx-auto lg:hidden bg-newGray-6',
+        isOpen ? 'rounded-t-xl z-10' : 'rounded-xl z-10',
+        maxWidth,
+      )}
       ref={ref}
     >
-      <div>
+      <div className="rounded-t-xl p-1.5">
         {filteredItems.length > 0 ? (
           <button
             type="button"
             className={cn(
-              'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-darkOrange-11',
-              isOpen
-                ? 'rounded-t-xl border-x border-t border-darkOrange-9'
-                : 'rounded-xl border border-darkOrange-9',
+              'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-newGray-5 rounded-xl',
             )}
             id="options-menu"
             aria-expanded={isOpen}
             aria-haspopup="true"
             onClick={toggleDropdown}
           >
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px text-start">
+            <span className="font-medium leading-[140%] tracking-015px text-start bg-newGray-5 text-black">
               {activeItem}
             </span>
 
             <MdKeyboardArrowDown
               className={cn(
-                'ml-auto text-newOrange-1 size-6 transition-transform ease-in-out',
+                'ml-auto size-6 transition-transform ease-in-out text-black',
                 isOpen ? '-rotate-180' : 'rotate-0',
               )}
             />
@@ -83,15 +92,14 @@ export const DropdownMenu = ({
           <button
             type="button"
             className={cn(
-              'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-darkOrange-11',
-              isOpen
-                ? 'rounded-t-xl border-x border-t border-darkOrange-9'
-                : 'rounded-xl border border-darkOrange-9',
+              'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
+              variantClasses[variant],
+              isOpen ? ' ' : '',
             )}
             id="options-menu"
             disabled
           >
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px text-start">
+            <span className="font-medium leading-[140%] tracking-015px text-start">
               {activeItem}
             </span>
           </button>
@@ -100,7 +108,11 @@ export const DropdownMenu = ({
 
       {isOpen && filteredItems.length > 0 && (
         <div
-          className="absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl bg-darkOrange-11 border-x border-b border-darkOrange-9 z-10 overflow-auto no-scrollbar"
+          className={cn(
+            'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] rounded-b-xl overflow-auto no-scrollbar',
+            variantClasses[variant],
+            ' z-10',
+          )}
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
@@ -111,6 +123,7 @@ export const DropdownMenu = ({
               link={item.link}
               onClick={() => handleItemClick(item.onClick)}
               key={`${item.name}_${index}`}
+              variant="white"
             />
           ))}
         </div>

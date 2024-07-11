@@ -223,6 +223,7 @@ const baseConfig: Config = {
         'search-word-sm': '0px 0px 30px 8.515px rgba(255,92,0,0.25)',
         'search-word-md': '0px 0px 51.676px 8.515px rgba(255,92,0,0.25)',
         'filter-bar': '0px 0px 50px 8px rgba(255,92,0,0.50)',
+        'tabs-sm': '0px 2px 2px 0px rgba(0, 0, 0, 0.25);',
       },
       letterSpacing: {
         '015px': '0.15px',

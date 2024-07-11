@@ -1,5 +1,6 @@
 import { mergeTRPCRouters } from '../../trpc/index.js';
 
+import { blogsRouter } from './blogs.js';
 import { couponRouter } from './coupon.js';
 import { coursesRouter } from './courses.js';
 import { eventLocationRouter } from './event-location.js';
@@ -16,4 +17,5 @@ export const contentRouter = mergeTRPCRouters(
   professorsRouter,
   resourcesRouter,
   tutorialsRouter,
+  blogsRouter,
 );

@@ -583,6 +583,39 @@
       "thanksNoName": "Thanks for supporting my work !"
     }
   },
+  "publicCommunication": {
+    "title": "Public communication",
+    "description": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey",
+    "blogPost": "Blogs & News",
+    "legal": "Legal info",
+    "blogCategories": {
+      "all": "All",
+      "course": "Course release",
+      "features": "Features",
+      "patch": "Patch notes",
+      "grants": "Grants",
+      "network": "Network"
+    },
+    "legalSections": {
+      "contact": "Contact",
+      "general": "General",
+      "cookies": "Cookies",
+      "privacy": "Privacy"
+    },
+    "goBackButtons": {
+      "simpleGoBack": "Back to all articles"
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "Latest article released",
+      "pastArticleSubtitleText": "Past articles",
+      "noArticlesText": "There are no blog posts at this time.",
+      "errorMessageNotFound": "Blog not found.",
+      "blogSidebarTitle": "Previous Posts in Network",
+      "blogListButtonText": "Read",
+      "filterText": "Filter by topic :",
+      "noBlogs": "There are no articles at the moment"
+    }
+  },
   "resources": {
     "articles": {
       "title": "Articles"
