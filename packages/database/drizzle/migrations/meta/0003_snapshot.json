@@ -1,5 +1,5 @@
 {
-  "id": "44e46d1c-a921-4c06-92d2-8236761d35be",
+  "id": "8f7e8ae4-1d0a-44f6-b521-4adf361faf2a",
   "prevId": "f7ecad8d-3777-4b7f-8883-a925f06ceef9",
   "version": "7",
   "dialect": "postgresql",
@@ -212,6 +212,198 @@
         "bet_view_url_bet_id_language_pk": {
           "name": "bet_view_url_bet_id_language_pk",
           "columns": ["bet_id", "language"]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "content.blog_tags": {
+      "name": "blog_tags",
+      "schema": "content",
+      "columns": {
+        "blog_id": {
+          "name": "blog_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag_id": {
+          "name": "tag_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "blog_tags_blog_id_blogs_id_fk": {
+          "name": "blog_tags_blog_id_blogs_id_fk",
+          "tableFrom": "blog_tags",
+          "tableTo": "blogs",
+          "schemaTo": "content",
+          "columnsFrom": ["blog_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "blog_tags_tag_id_tags_id_fk": {
+          "name": "blog_tags_tag_id_tags_id_fk",
+          "tableFrom": "blog_tags",
+          "tableTo": "tags",
+          "schemaTo": "content",
+          "columnsFrom": ["tag_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "blog_tags_blog_id_tag_id_pk": {
+          "name": "blog_tags_blog_id_tag_id_pk",
+          "columns": ["blog_id", "tag_id"]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "content.blogs": {
+      "name": "blogs",
+      "schema": "content",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "blogs_id_seq",
+            "schema": "content",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "author": {
+          "name": "author",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_updated": {
+          "name": "last_updated",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "last_commit": {
+          "name": "last_commit",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_sync": {
+          "name": "last_sync",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "blogs_path_unique": {
+          "name": "blogs_path_unique",
+          "nullsNotDistinct": false,
+          "columns": ["path"]
+        },
+        "blogs_name_category_unique": {
+          "name": "blogs_name_category_unique",
+          "nullsNotDistinct": false,
+          "columns": ["name", "category"]
+        }
+      }
+    },
+    "content.blogs_localized": {
+      "name": "blogs_localized",
+      "schema": "content",
+      "columns": {
+        "blog_id": {
+          "name": "blog_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "raw_content": {
+          "name": "raw_content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "blogs_localized_blog_id_blogs_id_fk": {
+          "name": "blogs_localized_blog_id_blogs_id_fk",
+          "tableFrom": "blogs_localized",
+          "tableTo": "blogs",
+          "schemaTo": "content",
+          "columnsFrom": ["blog_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "blogs_localized_blog_id_language_pk": {
+          "name": "blogs_localized_blog_id_language_pk",
+          "columns": ["blog_id", "language"]
         }
       },
       "uniqueConstraints": {}
@@ -2902,14 +3094,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "role": {
-          "name": "role",
-          "type": "user_role",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'student'"
-        },
         "password_hash": {
           "name": "password_hash",
           "type": "varchar(255)",
@@ -3731,11 +3915,6 @@
       "name": "token_type",
       "schema": "public",
       "values": ["validate_email", "reset_password", "login"]
-    },
-    "public.user_role": {
-      "name": "user_role",
-      "schema": "public",
-      "values": ["student", "professor", "community", "admin", "superadmin"]
     }
   },
   "schemas": {
