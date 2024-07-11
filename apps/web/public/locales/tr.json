@@ -155,11 +155,11 @@
     "wallets": ""
   },
   "about": {
-    "activeContributors": "",
-    "missionTitle": "",
-    "missionContent1": "",
-    "missionContent2": "",
-    "commitmentTitle": "",
+    "activeContributors": "aktif katkıcılar",
+    "missionTitle": "Misyonumuz",
+    "missionContent1": "Misyonumuz, açık kaynaklı eğitim ve networking yoluyla yerel Bitcoin topluluklarını desteklemektir. Bitcoin endüstrisinin ilerlemesi için gerekli kaynakları toplar, düzenler ve oluştururuz. (kurslar, kitaplar, posterler, broşürler, videolar).",
+    "missionContent2": "Bilgiyi daha iyi dağıtmak için basit, çok dilli bir GitHub deposu ve bir E-öğrenme platformu aracılığıyla merkezileştiriyoruz. Yerel Bitcoin merkezlerine yeteneklerinin gelişmesi için doğru araçlarla yardımcı oluyoruz.",
+    "commitmentTitle": "Taahhütlerimiz",
     "commitmentContent": "",
     "coreTeamTitle": "",
     "coreTeamContent": "",
