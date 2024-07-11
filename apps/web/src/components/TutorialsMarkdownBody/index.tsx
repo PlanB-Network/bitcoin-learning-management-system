@@ -124,14 +124,25 @@ export const TutorialsMarkdownBody = ({
             isCodeBlock = String(children).includes('\n');
           }
 
+          const languageMatch = /language-(\w+)/.exec(className || '');
+          const language = languageMatch
+            ? languageMatch[1] === 'text'
+              ? 'plaintext'
+              : languageMatch[1]
+            : 'plaintext';
+
+          const shouldWrapLines =
+            !languageMatch || ['text', 'plaintext'].includes(language);
+
           return isCodeBlock ? (
             <div className="relative">
               <SyntaxHighlighter
                 style={atomDark}
-                language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
+                language={language}
+                wrapLines={shouldWrapLines}
                 PreTag="div"
               >
-                {String(children).replace(/\n$/, '')}
+                {childrenText}
               </SyntaxHighlighter>
               <CopyButton text={childrenText} />
             </div>
