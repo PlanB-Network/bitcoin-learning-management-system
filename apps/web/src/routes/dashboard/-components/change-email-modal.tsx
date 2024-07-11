@@ -99,7 +99,7 @@ export const ChangeEmailModal = ({
 
                 {changeEmail.error && (
                   <p className="mt-2 text-base font-semibold text-red-300">
-                    {changeEmail.error.message}
+                    {t(changeEmail.error.message)}
                   </p>
                 )}
               </div>

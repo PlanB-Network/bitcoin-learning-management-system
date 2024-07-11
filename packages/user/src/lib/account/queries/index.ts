@@ -1,3 +1,4 @@
+export { changeDisplayNameQuery } from './change-display-name.js';
 export { changePasswordQuery } from './change-password.js';
 export * from './change-email.js';
 export { getUserDetailsQuery } from './get-user-details.js';

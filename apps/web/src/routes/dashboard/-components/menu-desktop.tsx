@@ -66,7 +66,7 @@ export const MenuDesktop = ({
           className="rounded-full size-[60px]"
         />
         <p className="font-medium leading-relaxed z-10 max-w-[92px] min-[1750px]:max-w-[148px] break-words">
-          {user?.username}
+          {user?.displayName}
         </p>
       </div>
       <div className="flex flex-col px-4 text-darkOrange-5 gap-1">

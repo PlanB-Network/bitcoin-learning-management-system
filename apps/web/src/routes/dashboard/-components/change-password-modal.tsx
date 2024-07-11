@@ -143,7 +143,7 @@ export const ChangePasswordModal = ({
 
               {changePassword.error && (
                 <p className="mt-2 text-base font-semibold text-red-300">
-                  {changePassword.error.message}
+                  {t(changePassword.error.message)}
                 </p>
               )}
 

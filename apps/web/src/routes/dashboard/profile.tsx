@@ -17,6 +17,7 @@ import {
 } from '../../atoms/Tabs/index.tsx';
 import { useDisclosure } from '../../hooks/index.ts';
 
+import { ChangeDisplayNameModal } from './-components/change-display-name-modal.tsx';
 import { ChangeEmailModal } from './-components/change-email-modal.tsx';
 import { ChangePasswordModal } from './-components/change-password-modal.tsx';
 import { ChangePictureModal } from './-components/change-picture-modal.tsx';
@@ -55,7 +56,13 @@ function DashboardProfile() {
   const {
     open: openChangePasswordModal,
     isOpen: isChangePasswordModalOpen,
-    close: onClose,
+    close: onClosePasswordModal,
+  } = useDisclosure();
+
+  const {
+    open: openChangeDisplayNameModal,
+    isOpen: isChangeDisplayNameModalOpen,
+    close: onCloseDisplayNameModal,
   } = useDisclosure();
 
   const changeEmailModal = useDisclosure();
@@ -95,17 +102,27 @@ function DashboardProfile() {
                 className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
               />
             </div>
-            <div className="mt-6 flex flex-col">
+            <div className="mt-6">
               <label htmlFor="displayName">
                 {t('dashboard.profile.displayName')}
               </label>
-              <input
-                id="displayName"
-                type="text"
-                value={user?.displayName || ''}
-                disabled
-                className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
-              />
+              <div className="flex max-lg:flex-col lg:items-center gap-4">
+                <input
+                  id="displayName"
+                  type="text"
+                  value={user?.displayName || ''}
+                  disabled
+                  className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
+                />
+                <Button
+                  variant="newPrimaryGhost"
+                  size="s"
+                  onClick={openChangeDisplayNameModal}
+                  className="h-[34px] px-3 w-fit"
+                >
+                  {t('dashboard.profile.edit')}
+                </Button>
+              </div>
             </div>
             <div className="mt-6">
               <div className="flex flex-col">
@@ -193,9 +210,16 @@ function DashboardProfile() {
         <TabsContent value="document"></TabsContent>
       </Tabs>
 
+      <ChangeDisplayNameModal
+        isOpen={isChangeDisplayNameModalOpen}
+        onClose={() => {
+          onCloseDisplayNameModal();
+        }}
+      />
+
       <ChangePasswordModal
         isOpen={isChangePasswordModalOpen}
-        onClose={onClose}
+        onClose={onClosePasswordModal}
       />
 
       <ChangePictureModal
