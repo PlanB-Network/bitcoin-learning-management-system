@@ -12,12 +12,6 @@ module.exports = {
     react,
     vitest,
     { files: ['*.js'], env: { node: true } },
-    {
-      files: ['*.gen.ts'],
-      rules: {
-        'rule-name': 'off',
-      },
-    },
   ],
   ignorePatterns: ['**/node_modules', '**/dist/**', '**/build/**'],
   plugins: [
