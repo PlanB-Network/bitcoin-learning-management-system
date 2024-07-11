@@ -70,7 +70,7 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
           <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
         )}
       </div>
-      <div className="font-bold text-sm">{event.title}</div>
+      <div className="font-semibold text-sm">{event.title}</div>
       <div className="text-sm">{event.organiser}</div>
       <div className="text-sm">{event.addressLine1}</div>
     </div>

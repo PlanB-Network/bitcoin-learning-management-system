@@ -13,7 +13,6 @@ import { customEventGetter } from '#src/components/Calendar/custom-event-getter.
 import { CustomEvent } from '#src/components/Calendar/custom-event.js';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
-import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -41,10 +40,10 @@ function DashboardCalendar() {
     navigate({ to: '/' });
   }
 
-  const isScreenMd = useGreater('md');
+  const isScreenLg = window.innerWidth >= 1024;
 
   const [currentView, setCurrentView] = useState<View>(
-    isScreenMd ? Views.WEEK : Views.AGENDA,
+    isScreenLg ? Views.WEEK : Views.MONTH,
   );
 
   const handleViewChange = (view: View) => {
@@ -59,7 +58,7 @@ function DashboardCalendar() {
     'meetup',
   ];
 
-  const courseColor = ['#FF5C00', '#FF9401', '#AD3F00', '#E00000', '#19C315'];
+  const courseColor = ['#FF5C00', '#FF9401', '#AD3F00', '#E00000', '#42A86B'];
 
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
     language: i18n.language ?? 'en',
@@ -137,9 +136,11 @@ function DashboardCalendar() {
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8 h-full">
-      <div className="text-2xl">{t('dashboard.calendar.personalCalendar')}</div>
+      <div className="text-2xl max-md:px-6">
+        {t('dashboard.calendar.personalCalendar')}
+      </div>
 
-      <div className="hidden lg:flex">
+      <div className="hidden max-md:px-6 lg:flex">
         {courseTypes.map((f, index) => (
           <button
             key={f}
@@ -160,7 +161,12 @@ function DashboardCalendar() {
                     paddingBottom: '6px',
                   }
             }
-            className={cn('leading-snug mx-1 px-4 capitalize rounded-xl')}
+            className={cn(
+              'leading-snug mx-1 px-4 capitalize rounded-xl',
+              filter.includes(f)
+                ? 'hover:brightness-110'
+                : 'hover:bg-newGray-5',
+            )}
             onClick={() =>
               setFilter((prev) =>
                 prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
