@@ -119,7 +119,7 @@ export const CoursesProgressList = ({
                 )}
               >
                 <Link
-                  to={'/courses-chapter/$courseId/$chapterId'}
+                  to={'/courses/$courseId/$chapterId'}
                   params={{
                     courseId: course.courseId,
                     chapterId: course.nextChapter?.chapterId as string,

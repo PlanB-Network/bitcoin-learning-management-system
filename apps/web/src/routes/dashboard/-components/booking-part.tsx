@@ -200,7 +200,7 @@ const Buttons = ({
           <Link
             to={
               ticket.type === 'course'
-                ? '/courses-chapter/$courseId/$chapterId'
+                ? '/courses/$courseId/$chapterId'
                 : '/events/$eventId'
             }
             params={

@@ -37,13 +37,15 @@ import { Route as MiscNodeNetworkImport } from './routes/_misc/node-network';
 import { Route as MiscManifestoImport } from './routes/_misc/manifesto';
 import { Route as MiscBCertificateImport } from './routes/_misc/b-certificate';
 import { Route as MiscAboutImport } from './routes/_misc/about';
-import { Route as TutorialsCategoryCategoryNameImport } from './routes/tutorials-category/$category.$name';
+import { Route as TutorialsCategoryIndexImport } from './routes/tutorials/$category/index';
+import { Route as CoursesCourseIdIndexImport } from './routes/courses/$courseId/index';
+import { Route as TutorialsCategoryNameImport } from './routes/tutorials/$category/$name';
 import { Route as ResourcesPodcastPodcastIdImport } from './routes/resources/podcast.$podcastId';
 import { Route as ResourcesGlossaryWordIdImport } from './routes/resources/glossary.$wordId';
 import { Route as ResourcesConferenceConferenceIdImport } from './routes/resources/conference.$conferenceId';
 import { Route as ResourcesBuilderBuilderIdImport } from './routes/resources/builder.$builderId';
 import { Route as ResourcesBookBookIdImport } from './routes/resources/book.$bookId';
-import { Route as CoursesChapterCourseIdChapterIdImport } from './routes/courses-chapter/$courseId.$chapterId';
+import { Route as CoursesCourseIdChapterIdImport } from './routes/courses/$courseId/$chapterId';
 import { Route as MiscValidateEmailTokenImport } from './routes/_misc/validate-email.$token';
 import { Route as MiscResetPasswordTokenImport } from './routes/_misc/reset-password.$token';
 import { Route as MiscProfessorProfessorIdImport } from './routes/_misc/professor.$professorId';
@@ -180,11 +182,20 @@ const MiscAboutRoute = MiscAboutImport.update({
   getParentRoute: () => rootRoute,
 } as any);
 
-const TutorialsCategoryCategoryNameRoute =
-  TutorialsCategoryCategoryNameImport.update({
-    path: '/tutorials-category/$category/$name',
-    getParentRoute: () => rootRoute,
-  } as any);
+const TutorialsCategoryIndexRoute = TutorialsCategoryIndexImport.update({
+  path: '/',
+  getParentRoute: () => TutorialsCategoryRoute,
+} as any);
+
+const CoursesCourseIdIndexRoute = CoursesCourseIdIndexImport.update({
+  path: '/',
+  getParentRoute: () => CoursesCourseIdRoute,
+} as any);
+
+const TutorialsCategoryNameRoute = TutorialsCategoryNameImport.update({
+  path: '/$name',
+  getParentRoute: () => TutorialsCategoryRoute,
+} as any);
 
 const ResourcesPodcastPodcastIdRoute = ResourcesPodcastPodcastIdImport.update({
   path: '/resources/podcast/$podcastId',
@@ -212,11 +223,10 @@ const ResourcesBookBookIdRoute = ResourcesBookBookIdImport.update({
   getParentRoute: () => rootRoute,
 } as any);
 
-const CoursesChapterCourseIdChapterIdRoute =
-  CoursesChapterCourseIdChapterIdImport.update({
-    path: '/courses-chapter/$courseId/$chapterId',
-    getParentRoute: () => rootRoute,
-  } as any);
+const CoursesCourseIdChapterIdRoute = CoursesCourseIdChapterIdImport.update({
+  path: '/$chapterId',
+  getParentRoute: () => CoursesCourseIdRoute,
+} as any);
 
 const MiscValidateEmailTokenRoute = MiscValidateEmailTokenImport.update({
   path: '/validate-email/$token',
@@ -440,12 +450,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiscValidateEmailTokenImport;
       parentRoute: typeof rootRoute;
     };
-    '/courses-chapter/$courseId/$chapterId': {
-      id: '/courses-chapter/$courseId/$chapterId';
-      path: '/courses-chapter/$courseId/$chapterId';
-      fullPath: '/courses-chapter/$courseId/$chapterId';
-      preLoaderRoute: typeof CoursesChapterCourseIdChapterIdImport;
-      parentRoute: typeof rootRoute;
+    '/courses/$courseId/$chapterId': {
+      id: '/courses/$courseId/$chapterId';
+      path: '/$chapterId';
+      fullPath: '/courses/$courseId/$chapterId';
+      preLoaderRoute: typeof CoursesCourseIdChapterIdImport;
+      parentRoute: typeof CoursesCourseIdImport;
     };
     '/resources/book/$bookId': {
       id: '/resources/book/$bookId';
@@ -482,12 +492,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesPodcastPodcastIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/tutorials-category/$category/$name': {
-      id: '/tutorials-category/$category/$name';
-      path: '/tutorials-category/$category/$name';
-      fullPath: '/tutorials-category/$category/$name';
-      preLoaderRoute: typeof TutorialsCategoryCategoryNameImport;
-      parentRoute: typeof rootRoute;
+    '/tutorials/$category/$name': {
+      id: '/tutorials/$category/$name';
+      path: '/$name';
+      fullPath: '/tutorials/$category/$name';
+      preLoaderRoute: typeof TutorialsCategoryNameImport;
+      parentRoute: typeof TutorialsCategoryImport;
+    };
+    '/courses/$courseId/': {
+      id: '/courses/$courseId/';
+      path: '/';
+      fullPath: '/courses/$courseId/';
+      preLoaderRoute: typeof CoursesCourseIdIndexImport;
+      parentRoute: typeof CoursesCourseIdImport;
+    };
+    '/tutorials/$category/': {
+      id: '/tutorials/$category/';
+      path: '/';
+      fullPath: '/tutorials/$category/';
+      preLoaderRoute: typeof TutorialsCategoryIndexImport;
+      parentRoute: typeof TutorialsCategoryImport;
     };
   }
 }
@@ -509,7 +533,10 @@ export const routeTree = rootRoute.addChildren({
   MiscProfessorsRoute,
   MiscTermsAndConditionsRoute,
   MiscUnderConstructionRoute,
-  CoursesCourseIdRoute,
+  CoursesCourseIdRoute: CoursesCourseIdRoute.addChildren({
+    CoursesCourseIdChapterIdRoute,
+    CoursesCourseIdIndexRoute,
+  }),
   EventsEventIdRoute,
   ResourcesBetRoute,
   ResourcesBooksRoute,
@@ -519,7 +546,10 @@ export const routeTree = rootRoute.addChildren({
     ResourcesGlossaryWordIdRoute,
   }),
   ResourcesPodcastsRoute,
-  TutorialsCategoryRoute,
+  TutorialsCategoryRoute: TutorialsCategoryRoute.addChildren({
+    TutorialsCategoryNameRoute,
+    TutorialsCategoryIndexRoute,
+  }),
   CoursesIndexRoute,
   EventsIndexRoute,
   ResourcesIndexRoute,
@@ -527,12 +557,10 @@ export const routeTree = rootRoute.addChildren({
   MiscProfessorProfessorIdRoute,
   MiscResetPasswordTokenRoute,
   MiscValidateEmailTokenRoute,
-  CoursesChapterCourseIdChapterIdRoute,
   ResourcesBookBookIdRoute,
   ResourcesBuilderBuilderIdRoute,
   ResourcesConferenceConferenceIdRoute,
   ResourcesPodcastPodcastIdRoute,
-  TutorialsCategoryCategoryNameRoute,
 });
 
 /* prettier-ignore-end */
@@ -568,12 +596,10 @@ export const routeTree = rootRoute.addChildren({
         "/_misc/professor/$professorId",
         "/_misc/reset-password/$token",
         "/_misc/validate-email/$token",
-        "/courses-chapter/$courseId/$chapterId",
         "/resources/book/$bookId",
         "/resources/builder/$builderId",
         "/resources/conference/$conferenceId",
-        "/resources/podcast/$podcastId",
-        "/tutorials-category/$category/$name"
+        "/resources/podcast/$podcastId"
       ]
     },
     "/": {
@@ -610,7 +636,11 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_misc/under-construction.tsx"
     },
     "/courses/$courseId": {
-      "filePath": "courses/$courseId.tsx"
+      "filePath": "courses/$courseId.tsx",
+      "children": [
+        "/courses/$courseId/$chapterId",
+        "/courses/$courseId/"
+      ]
     },
     "/dashboard/bookings": {
       "filePath": "dashboard/bookings.tsx",
@@ -653,7 +683,11 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "resources/podcasts.tsx"
     },
     "/tutorials/$category": {
-      "filePath": "tutorials/$category.tsx"
+      "filePath": "tutorials/$category.tsx",
+      "children": [
+        "/tutorials/$category/$name",
+        "/tutorials/$category/"
+      ]
     },
     "/courses/": {
       "filePath": "courses/index.tsx"
@@ -676,8 +710,9 @@ export const routeTree = rootRoute.addChildren({
     "/_misc/validate-email/$token": {
       "filePath": "_misc/validate-email.$token.tsx"
     },
-    "/courses-chapter/$courseId/$chapterId": {
-      "filePath": "courses-chapter/$courseId.$chapterId.tsx"
+    "/courses/$courseId/$chapterId": {
+      "filePath": "courses/$courseId/$chapterId.tsx",
+      "parent": "/courses/$courseId"
     },
     "/resources/book/$bookId": {
       "filePath": "resources/book.$bookId.tsx"
@@ -695,8 +730,17 @@ export const routeTree = rootRoute.addChildren({
     "/resources/podcast/$podcastId": {
       "filePath": "resources/podcast.$podcastId.tsx"
     },
-    "/tutorials-category/$category/$name": {
-      "filePath": "tutorials-category/$category.$name.tsx"
+    "/tutorials/$category/$name": {
+      "filePath": "tutorials/$category/$name.tsx",
+      "parent": "/tutorials/$category"
+    },
+    "/courses/$courseId/": {
+      "filePath": "courses/$courseId/index.tsx",
+      "parent": "/courses/$courseId"
+    },
+    "/tutorials/$category/": {
+      "filePath": "tutorials/$category/index.tsx",
+      "parent": "/tutorials/$category"
     }
   }
 }

@@ -43,7 +43,7 @@ export const CourseButton: React.FC<CourseButtonProps> = ({
     >
       <div className="relative flex h-12 w-auto">
         <Link
-          to={'/courses-chapter/$courseId/$chapterId'}
+          to={'/courses/$courseId/$chapterId'}
           params={{
             courseId,
             chapterId: firstChapterId,

@@ -115,7 +115,7 @@ export const NavigationPanel: React.FC<Props> = ({
                         .map((chapter, index) => (
                           <li key={index + 1000}>
                             <Link
-                              to={'/courses-chapter/$courseId/$chapterId'}
+                              to={'/courses/$courseId/$chapterId'}
                               params={{
                                 courseId: course.id,
                                 chapterId: chapter.chapterId,
