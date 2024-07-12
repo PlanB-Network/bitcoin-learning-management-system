@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
@@ -21,13 +21,12 @@ import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { TUTORIALS_CATEGORIES } from '#src/utils/tutorials.js';
 
 import { CategoryIcon } from '../components/CategoryIcon/index.tsx';
 import { MainLayout } from '../components/MainLayout/index.tsx';
 import { NotFound } from '../components/not-found.tsx';
 import { AboutUs } from '../molecules/AboutUs/index.tsx';
-
-import { TUTORIALS_CATEGORIES } from './tutorials/-other/utils.tsx';
 
 const titleCss = 'md:text-3xl font-semibold';
 const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
@@ -50,6 +49,7 @@ function Home() {
     return (
       <MainLayout footerVariant="dark">
         <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
+          <Outlet></Outlet>
           <HeaderSection />
           <NumberSection />
           <EducationSection />
