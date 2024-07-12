@@ -2,13 +2,12 @@
 import { Outlet, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_content')({
-  component: AAAA,
+  component: ContentLayout,
 });
 
-function AAAA() {
+function ContentLayout() {
   return (
     <div>
-      <h1>HAAAAAAAAAA</h1>
       <Outlet></Outlet>
     </div>
   );
