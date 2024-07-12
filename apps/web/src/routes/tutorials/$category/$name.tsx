@@ -8,22 +8,22 @@ import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
-import { AuthorCard } from '../../components/author-card.tsx';
-import { TipModal } from '../../components/tip-modal.tsx';
-import { TooltipWithContent } from '../../components/tooptip-with-content.tsx';
-import { TutorialsMarkdownBody } from '../../components/TutorialsMarkdownBody/index.tsx';
-import { useDisclosure } from '../../hooks/index.ts';
-import { computeAssetCdnUrl, trpc } from '../../utils/index.ts';
-import { TutorialLayout } from '../tutorials/-other/layout.tsx';
+import { TutorialLayout } from '../-other/layout.tsx';
+import { AuthorCard } from '../../../components/author-card.tsx';
+import { TipModal } from '../../../components/tip-modal.tsx';
+import { TooltipWithContent } from '../../../components/tooptip-with-content.tsx';
+import { TutorialsMarkdownBody } from '../../../components/TutorialsMarkdownBody/index.tsx';
+import { useDisclosure } from '../../../hooks/index.ts';
+import { computeAssetCdnUrl, trpc } from '../../../utils/index.ts';
 
-export const Route = createFileRoute('/tutorials-category/$category/$name')({
+export const Route = createFileRoute('/tutorials/$category/$name')({
   component: TutorialDetails,
 });
 
 function TutorialDetails() {
   const { t, i18n } = useTranslation();
   const { category, name } = useParams({
-    from: '/tutorials-category/$category/$name',
+    from: '/tutorials/$category/$name',
   });
 
   const {

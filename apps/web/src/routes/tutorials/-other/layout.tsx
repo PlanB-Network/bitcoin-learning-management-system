@@ -147,7 +147,7 @@ export const TutorialLayout = ({
                                               />
                                               <Link
                                                 to={
-                                                  '/tutorials-category/$category/$name'
+                                                  '/tutorials/$category/$name'
                                                 }
                                                 params={{
                                                   category: tutorial.category,

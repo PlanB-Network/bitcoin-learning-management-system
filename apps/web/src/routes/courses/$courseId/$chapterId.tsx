@@ -15,24 +15,23 @@ import { Button } from '@sovereign-university/ui';
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import Spinner from '#src/assets/spinner_orange.svg?react';
+import { CoursesMarkdownBody } from '#src/components/CoursesMarkdownBody/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { addSpaceToCourseId } from '#src/utils/courses.js';
+import { compose, computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
+import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
-import { CoursesMarkdownBody } from '../../components/CoursesMarkdownBody/index.tsx';
-import { addSpaceToCourseId } from '../../utils/courses.ts';
-import { compose, computeAssetCdnUrl } from '../../utils/index.ts';
-import { capitalizeFirstWord, joinWords } from '../../utils/string.ts';
-import { trpc } from '../../utils/trpc.ts';
-import type { TRPCRouterOutput } from '../../utils/trpc.ts';
-import { NavigationPanel } from '../courses/-components/navigation-panel.tsx';
-import type { Question } from '../courses/-components/quizz-card.tsx';
-import QuizzCard from '../courses/-components/quizz-card.tsx';
-import { CourseLayout } from '../courses/-other/layout.tsx';
-import { ClassDetails } from '../courses/-pages-components/class-details.tsx';
-import { LiveVideo } from '../courses/-pages-components/live-video.tsx';
+import { NavigationPanel } from '../-components/navigation-panel.tsx';
+import type { Question } from '../-components/quizz-card.tsx';
+import QuizzCard from '../-components/quizz-card.tsx';
+import { CourseLayout } from '../-other/layout.tsx';
+import { ClassDetails } from '../-pages-components/class-details.tsx';
+import { LiveVideo } from '../-pages-components/live-video.tsx';
 
-export const Route = createFileRoute('/courses-chapter/$courseId/$chapterId')({
+export const Route = createFileRoute('/courses/$courseId/$chapterId')({
   component: CourseChapter,
 });
 
@@ -105,7 +104,7 @@ const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
       <p className="max-w-6xl text-darkOrange-5 md:text-[22px] text-sm leading-normal tracking-[1px] text-center mx-auto">
         {t('courses.chapter.nextLesson')}{' '}
         <Link
-          to={'/courses-chapter/$courseId/$chapterId'}
+          to={'/courses/$courseId/$chapterId'}
           params={{
             courseId: chapter.course.id,
             chapterId: closestChapter.chapterId,
@@ -177,7 +176,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             to={
               chapter.part.partIndex === 1 && chapter.chapterIndex === 1
                 ? '/courses/$courseId'
-                : '/courses-chapter/$courseId/$chapterId'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
           >
@@ -195,7 +194,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
               chapter.part.partIndex === chapter.course.parts.length &&
               chapter.chapterIndex === chapter.part.chapters.length
                 ? '/courses/$courseId'
-                : '/courses-chapter/$courseId/$chapterId'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
           >
@@ -278,7 +277,7 @@ const TimelineBig = ({
                   return (
                     <Link
                       className="border-beige-300 h-4 grow border-l-[1.5px] first:border-l-0"
-                      to={'/courses-chapter/$courseId/$chapterId'}
+                      to={'/courses/$courseId/$chapterId'}
                       params={{
                         courseId: chapter.course.id,
                         chapterId: currentChapter.chapterId,
@@ -339,7 +338,7 @@ const TimelineBig = ({
             to={
               isFirstChapter
                 ? '/courses/$courseId'
-                : '/courses-chapter/$courseId/$chapterId'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
             className="basis-1/4 truncate text-newGray-1 hover:font-medium"
@@ -354,7 +353,7 @@ const TimelineBig = ({
               to={
                 isFirstChapter
                   ? '/courses/$courseId'
-                  : '/courses-chapter/$courseId/$chapterId'
+                  : '/courses/$courseId/$chapterId'
               }
               params={goToChapterParameters(chapter, 'previous')}
             >
@@ -367,7 +366,7 @@ const TimelineBig = ({
               to={
                 isLastChapter
                   ? '/courses/$courseId'
-                  : '/courses-chapter/$courseId/$chapterId'
+                  : '/courses/$courseId/$chapterId'
               }
               params={goToChapterParameters(chapter, 'next')}
             >
@@ -381,7 +380,7 @@ const TimelineBig = ({
             to={
               isLastChapter
                 ? '/courses/$courseId'
-                : '/courses-chapter/$courseId/$chapterId'
+                : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
             className="basis-1/4 truncate text-newGray-1 hover:font-medium"
@@ -496,9 +495,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
       <Link
         className="flex w-full justify-center md:justify-end pt-5 md:pt-10"
         to={
-          isLastChapter
-            ? '/courses/$courseId'
-            : '/courses-chapter/$courseId/$chapterId'
+          isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
         }
         params={goToChapterParameters(chapter, 'next')}
       >
@@ -578,7 +575,7 @@ function CourseChapter() {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
   const { courseId, chapterId } = useParams({
-    from: '/courses-chapter/$courseId/$chapterId',
+    from: '/courses/$courseId/$chapterId',
   });
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
