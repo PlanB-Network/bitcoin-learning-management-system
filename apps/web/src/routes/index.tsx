@@ -24,6 +24,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 
 import { CategoryIcon } from '../components/CategoryIcon/index.tsx';
 import { MainLayout } from '../components/MainLayout/index.tsx';
+import { NotFound } from '../components/not-found.tsx';
 import { AboutUs } from '../molecules/AboutUs/index.tsx';
 
 import { TUTORIALS_CATEGORIES } from './tutorials/-other/utils.tsx';
@@ -33,6 +34,7 @@ const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
 
 export const Route = createFileRoute('/')({
   component: Home,
+  notFoundComponent: NotFound,
 });
 
 function Home() {
