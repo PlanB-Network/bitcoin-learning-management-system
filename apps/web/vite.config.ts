@@ -1,7 +1,8 @@
 /// <reference types="vitest" />
 /// <reference types="vite-plugin-svgr/client" />
 
-import react from '@vitejs/plugin-react';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
+import viteReact from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -10,11 +11,12 @@ const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 export default defineConfig({
   plugins: [
-    react(),
     svgr(),
     tsconfigPaths({
       root: './',
     }),
+    TanStackRouterVite(),
+    viteReact(),
   ],
 
   root: process.cwd(),

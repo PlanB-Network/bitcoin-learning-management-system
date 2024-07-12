@@ -50,7 +50,7 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const menuItems = [
     {
       buttonText: t('words.courses'),
-      link: '/dashboard',
+      link: '/dashboard/courses',
       icon: <AiOutlineBook size={24} />,
     },
     {
@@ -205,7 +205,7 @@ export const MobileMenu = ({
 
         {isLoggedIn ? (
           <div className="text-sm font-semibold ml-auto min-w-10">
-            <Link to={'/dashboard'}>
+            <Link to={'/dashboard/courses'}>
               <button className="cursor-pointer text-white">
                 <img
                   src={

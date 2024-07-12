@@ -11,10 +11,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { router } from '#src/routes/-utils/router.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
 import { useTrpc } from '../hooks/index.ts';
-import { router } from '../routes/index.tsx';
 import { LANGUAGES } from '../utils/i18n.ts';
 import { trpc } from '../utils/trpc.ts';
 
