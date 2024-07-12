@@ -8,6 +8,10 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { CopyButton } from '../CopyButton/index.tsx';
 
+const remarkMathOptions = {
+  singleDollarTextMath: false,
+};
+
 const fixEmbedUrl = (src: string) => {
   if (src.includes('embed')) {
     return src;
@@ -154,7 +158,11 @@ export const ConferencesMarkdownBody = ({
           );
         },
       }}
-      remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
+      remarkPlugins={[
+        remarkGfm,
+        remarkUnwrapImages,
+        [remarkMath, remarkMathOptions],
+      ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`

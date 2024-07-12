@@ -524,15 +524,26 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
 };
 
 const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
-  return (
-    <CoursesMarkdownBody
-      content={chapter.rawContent}
-      assetPrefix={computeAssetCdnUrl(
-        chapter.lastCommit,
-        `courses/${chapter.course.id}`,
-      )}
-    />
-  );
+  const { i18n } = useTranslation();
+
+  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery({
+    language: i18n.language,
+  });
+
+  if (isFetched) {
+    return (
+      <CoursesMarkdownBody
+        content={chapter.rawContent}
+        assetPrefix={computeAssetCdnUrl(
+          chapter.lastCommit,
+          `courses/${chapter.course.id}`,
+        )}
+        tutorials={tutorials || []}
+      />
+    );
+  }
+
+  return <Spinner className="size-48 md:size-64 mx-auto" />;
 };
 
 function getRandomQuestions(

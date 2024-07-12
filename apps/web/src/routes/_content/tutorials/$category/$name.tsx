@@ -39,6 +39,11 @@ function TutorialDetails() {
     language: i18n.language,
   });
 
+  const { data: tutorials, isFetched: isFetchedTutorials } =
+    trpc.content.getTutorials.useQuery({
+      language: i18n.language,
+    });
+
   function headerAndFooterText(creditName: string, creditUrl: string) {
     return (
       <div className="text-xs text-red-500 sm:text-base">
@@ -121,13 +126,16 @@ function TutorialDetails() {
             <div className="flex w-full flex-col items-center justify-center px-2">
               <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
                 {header(tutorial)}
-                <TutorialsMarkdownBody
-                  content={tutorial.rawContent}
-                  assetPrefix={computeAssetCdnUrl(
-                    tutorial.lastCommit,
-                    tutorial.path,
-                  )}
-                />
+                {isFetchedTutorials && (
+                  <TutorialsMarkdownBody
+                    content={tutorial.rawContent}
+                    assetPrefix={computeAssetCdnUrl(
+                      tutorial.lastCommit,
+                      tutorial.path,
+                    )}
+                    tutorials={tutorials || []}
+                  />
+                )}
                 <div>
                   {headerAndFooterText(
                     tutorial.credits?.name as string,
