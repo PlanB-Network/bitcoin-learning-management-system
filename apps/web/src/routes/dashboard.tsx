@@ -1,5 +1,7 @@
 import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
 
+import { cn } from '@sovereign-university/ui';
+
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
@@ -22,7 +24,12 @@ function Dashboard() {
       headerVariant="light"
     >
       <div>
-        <div className="p-6 pb-20 bg-white text-black">
+        <div
+          className={cn(
+            'p-6 pb-20 bg-white text-black',
+            location.href.includes('calendar') ? 'px-0 py-6 md:p-6' : 'p-6',
+          )}
+        >
           <Outlet></Outlet>
         </div>
         <MenuMobile location={location} />

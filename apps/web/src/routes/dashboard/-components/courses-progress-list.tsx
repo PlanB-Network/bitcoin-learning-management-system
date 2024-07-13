@@ -4,7 +4,8 @@ import { t } from 'i18next';
 import type { CourseProgressExtended } from '@sovereign-university/types';
 import { Button, cn } from '@sovereign-university/ui';
 
-import OrangePill from '../../../assets/icons/orange_pill_color.svg';
+import OrangePill from '#src/assets/icons/orange_pill_color.svg';
+
 import { addSpaceToCourseId } from '../../../utils/courses.ts';
 
 interface CoursesProgressListProps {
@@ -119,7 +120,7 @@ export const CoursesProgressList = ({
                 )}
               >
                 <Link
-                  to={'/courses-chapter/$courseId/$chapterId'}
+                  to={'/courses/$courseId/$chapterId'}
                   params={{
                     courseId: course.courseId,
                     chapterId: course.nextChapter?.chapterId as string,

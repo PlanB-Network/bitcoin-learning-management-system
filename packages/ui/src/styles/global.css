@@ -221,9 +221,19 @@
   max-width: 100% !important;
 }
 
+@media (min-width: 388px) {
+  .rbc-toolbar {
+    justify-content: space-between !important;
+  }
+}
+
 @media (min-width: 1024px) {
   .rbc-calendar {
     max-width: calc(100vw - 370px) !important;
+  }
+
+  .rbc-toolbar {
+    margin-bottom: 30px !important;
   }
 }
 
@@ -259,8 +269,16 @@
   background-color: #ff792e !important;
 }
 
+.rbc-toolbar {
+  width: 100%;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
 .rbc-toolbar-label {
-  visibility: hidden;
+  display: none;
 }
 
 .rbc-button-link {
