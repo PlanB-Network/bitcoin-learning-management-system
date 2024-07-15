@@ -1,1 +1,15 @@
-{}
+{
+  "about": {
+    "missionTitle": "Meie missioon",
+    "missionContent1": "Meie missiooniks on toetada kohalikke Bitcoini kogukondi avatud lähtekoodiga hariduse ja võrgustike kaudu. Me kogume, korraldame ja loome vajalikke ressursse (kursused, raamatud, plakatid, flaierid, videod) Bitcoini tööstuse edendamiseks."
+  },
+  "words": {
+    "videos": "Videod",
+    "video": "Video",
+    "view": "Vaade",
+    "update": "Uuendus",
+    "tutorials": "Õpetused",
+    "tutorial": "Õpetus",
+    "topics": "Teemad"
+  }
+}
