@@ -24,7 +24,7 @@ export const content = pgSchema('content');
 export const usersAccounts = users.table('accounts', {
   uid: uuid('uid').defaultRandom().primaryKey().notNull(),
   username: varchar('username', { length: 255 }).unique().notNull(),
-  displayName: varchar('display_name', { length: 255 }).unique(),
+  displayName: varchar('display_name', { length: 255 }),
   picture: uuid('picture'),
   email: varchar('email', { length: 255 }).unique(),
   passwordHash: varchar('password_hash', { length: 255 }),
