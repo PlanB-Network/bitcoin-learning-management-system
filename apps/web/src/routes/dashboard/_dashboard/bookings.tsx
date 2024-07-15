@@ -2,20 +2,19 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppContext } from '#src/providers/context.js';
-import { trpc } from '#src/utils/trpc.js';
-
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../atoms/Tabs/index.tsx';
+} from '#src/atoms/Tabs/index.tsx';
+import { AppContext } from '#src/providers/context.js';
+import { trpc } from '#src/utils/trpc.js';
 
 import { BillingSection } from './-components/billing-section.tsx';
 import { BookingPart } from './-components/booking-part.tsx';
 
-export const Route = createFileRoute('/dashboard/bookings')({
+export const Route = createFileRoute('/dashboard/_dashboard/bookings')({
   component: DashboardBookings,
 });
 
