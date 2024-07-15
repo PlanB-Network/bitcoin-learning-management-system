@@ -1,11 +1,18 @@
-import axios from 'axios';
-
 import type { Dependencies } from '../../../dependencies.js';
 import { insertPayment } from '../queries/insert-payment.js';
 
-export const createSavePayment =
-  (dependencies: Dependencies) =>
-  async ({
+interface CheckoutData {
+  id: string;
+  pr: string;
+  onChainAddr: string;
+  amount: number;
+  checkoutUrl: string;
+}
+
+export const createSavePayment = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
+
+  return async ({
     uid,
     courseId,
     amount,
@@ -16,8 +23,6 @@ export const createSavePayment =
     amount: number;
     couponCode?: string;
   }) => {
-    const { postgres } = dependencies;
-
     const paymentData = {
       title: courseId,
       amount: amount,
@@ -25,19 +30,26 @@ export const createSavePayment =
       onChain: true,
       webhook: `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
     };
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'api-key': process.env['SBP_API_KEY'] || '',
+    });
 
     try {
-      const { data: checkoutData } = await axios.post<{
-        id: string;
-        pr: string;
-        onChainAddr: string;
-        amount: number;
-        checkoutUrl: string;
-      }>(`https://api.swiss-bitcoin-pay.ch/checkout`, paymentData, {
-        headers: {
-          'api-key': process.env['SBP_API_KEY'],
+      const response = await fetch(
+        `https://api.swiss-bitcoin-pay.ch/checkout`,
+        {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(paymentData),
         },
-      });
+      );
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const checkoutData = (await response.json()) as CheckoutData;
 
       await postgres.exec(
         insertPayment({
@@ -55,7 +67,7 @@ export const createSavePayment =
     } catch (error) {
       console.log('Checkout error : ');
       console.log(error);
+      throw new Error('Checkout error');
     }
-
-    throw new Error('Checkout error');
   };
+};
