@@ -1,7 +1,13 @@
-import axios from 'axios';
-
 import type { Dependencies } from '../../../dependencies.js';
 import { insertEventPayment } from '../queries/insert-event-payment.js';
+
+interface CheckoutData {
+  id: string;
+  pr: string;
+  onChainAddr: string;
+  amount: number;
+  checkoutUrl: string;
+}
 
 export const createSaveEventPayment =
   (dependencies: Dependencies) =>
@@ -26,18 +32,22 @@ export const createSaveEventPayment =
       webhook: `${process.env['PUBLIC_PROXY_URL']}/users/events/payment/webhooks`,
     };
 
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'api-key': process.env['SBP_API_KEY'] || '',
+    });
+
     try {
-      const { data: checkoutData } = await axios.post<{
-        id: string;
-        pr: string;
-        onChainAddr: string;
-        amount: number;
-        checkoutUrl: string;
-      }>(`https://api.swiss-bitcoin-pay.ch/checkout`, paymentData, {
-        headers: {
-          'api-key': process.env['SBP_API_KEY'],
+      const response = await fetch(
+        `https://api.swiss-bitcoin-pay.ch/checkout`,
+        {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(paymentData),
         },
-      });
+      );
+
+      const checkoutData = (await response.json()) as CheckoutData;
 
       await postgres.exec(
         insertEventPayment({
