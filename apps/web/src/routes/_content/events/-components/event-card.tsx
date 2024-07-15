@@ -315,6 +315,21 @@ export const EventCard = ({
   const ReplayButtons = () => {
     const isScreenSm = useGreater('sm');
 
+    if (event.type === 'conference') {
+      return (
+        <Link to={'/resources/conferences'} className="w-fit">
+          <Button
+            iconRight={<HiVideoCamera size={18} />}
+            variant="newSecondary"
+            size={isScreenSm ? 's' : 'xs'}
+            className="rounded-lg text-xs md:text-base"
+          >
+            {t('events.card.watchReplay')}
+          </Button>
+        </Link>
+      );
+    }
+
     return (filteredEventPayments && filteredEventPayments.length > 0) ||
       isFree ? (
       <Link to={'/events/' + event.id} className="w-fit">
@@ -412,13 +427,13 @@ export const EventCard = ({
           </div>
         </div>
         <div className="max-sm:hidden">
-          {!event.websiteUrl && (
+          {(!event.websiteUrl || event.type === 'conference') && (
             <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
               <PriceInfos />
               <EventButtons />
             </div>
           )}
-          <VisitWebsiteButton />
+          {!isPassed && <VisitWebsiteButton />}
         </div>
       </article>
     </>
