@@ -80,7 +80,7 @@ export const EventCard = ({
 
   const GeneralInfos = () => {
     return (
-      <div className="flex flex-col gap-1">
+      <div className={cn('flex flex-col gap-1', isPassed && 'select-none')}>
         <h3 className="font-semibold max-lg:leading-snug sm:text-lg lg:text-2xl max-sm:line-clamp-1">
           {event.name}
         </h3>
@@ -307,7 +307,7 @@ export const EventCard = ({
             <span className="italic">{t('events.card.seatBooked')}</span>
           )}
 
-        {isPassed && <ReplayButtons />}
+        {isPassed && event.type !== 'conference' && <ReplayButtons />}
       </div>
     );
   };
@@ -423,17 +423,31 @@ export const EventCard = ({
                 <EventButtons />
               </div>
             )}
-            <VisitWebsiteButton />
+            {isPassed && event.type === 'conference' && (
+              <div className="mt-2.5">
+                <ReplayButtons />
+              </div>
+            )}
+            {(!isPassed || (isPassed && event.type !== 'conference')) && (
+              <VisitWebsiteButton />
+            )}
           </div>
         </div>
-        <div className="max-sm:hidden">
-          {(!event.websiteUrl || event.type === 'conference') && (
+        <div className="max-sm:hidden mt-auto">
+          {!event.websiteUrl && (
             <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
               <PriceInfos />
               <EventButtons />
             </div>
           )}
-          {!isPassed && <VisitWebsiteButton />}
+          {isPassed && event.type === 'conference' && (
+            <div className="mt-1 sm:mt-auto sm:py-1">
+              <ReplayButtons />
+            </div>
+          )}
+          {(!isPassed || (isPassed && event.type !== 'conference')) && (
+            <VisitWebsiteButton />
+          )}
         </div>
       </article>
     </>
