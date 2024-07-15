@@ -1,7 +1,20 @@
 {
   "about": {
     "missionTitle": "Meie missioon",
-    "missionContent1": "Meie missiooniks on toetada kohalikke Bitcoini kogukondi avatud lähtekoodiga hariduse ja võrgustike kaudu. Me kogume, korraldame ja loome vajalikke ressursse (kursused, raamatud, plakatid, flaierid, videod) Bitcoini tööstuse edendamiseks."
+    "missionContent1": "Meie missiooniks on toetada kohalikke Bitcoini kogukondi avatud lähtekoodiga hariduse ja võrgustike kaudu. Me kogume, korraldame ja loome vajalikke ressursse (kursused, raamatud, plakatid, flaierid, videod) Bitcoini tööstuse edendamiseks.",
+    "activeContributors": "Aktiivsed panustajad",
+    "commitmentTitle": "Meie panused",
+    "coreTeamTitle": "Põhimeeskond",
+    "coreTeamContent": "PlanB Network on sadadest panustajatest, õpetajatest, kogukonna liidritest, disaineritest, arendajatest ja korraldajatest koosnev kollektiiv. Suured tänud arvukatele inimestele, kes on teinud PlanB-st reaalsuse ja jätkavad seda iga päev. (Panustajate sein tuleb varsti)",
+    "coreTeamGiacomoRole": "Direktor ja kaasasutaja",
+    "coreTeamRogzyRole": "Tootejuht & Kaasasutaja",
+    "coreTeamAsioRole": "Hariduskoordinaator",
+    "coreTeamAjelexRole": "Sõlmede koordinaator",
+    "corporateTitle": "Ettevõtte taga",
+    "coportateContact": "Kontaktandmed:",
+    "storyTitle": "Meie lugu",
+    "commitmentContent": "Meie panused Bitcoini kogukonda ees on järgmised:\n • Säilida avatud lähtekoodiga\n • Pakkuda kõrgkvaliteedilist hariduslikku sisu\n • Tõlkida meie sisu võimalikult paljudesse keeltesse\n • Toetada Bitcoini ehitajaid nende ettevõtlusteekonnal",
+    "corporateContent": "PlanB Network on Bitcoini arendamisele keskenduv kolme osapoole ühine projekt. Püüdes Bitcoini hariduskihti laiendada, otsustasid nad koostööd teha ja luua PlanB Network. Et õnnestuda meie eesmärgis tuua Bitcoini haridus maailma, on paljud teised osapooled otsustanud panustada ja ühendada jõud. Suur tänu neile."
   },
   "words": {
     "videos": "Videod",
