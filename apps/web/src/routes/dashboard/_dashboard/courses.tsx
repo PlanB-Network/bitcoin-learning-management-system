@@ -10,11 +10,11 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../atoms/Tabs/index.tsx';
+} from '../../../atoms/Tabs/index.tsx';
 
 import { CoursesProgressList } from './-components/courses-progress-list.tsx';
 
-export const Route = createFileRoute('/dashboard/courses')({
+export const Route = createFileRoute('/dashboard/_dashboard/courses')({
   component: DashboardCourses,
 });
 

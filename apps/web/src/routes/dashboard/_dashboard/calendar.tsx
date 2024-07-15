@@ -27,7 +27,7 @@ type CourseType =
   | 'meetup'
   | 'workshop';
 
-export const Route = createFileRoute('/dashboard/calendar')({
+export const Route = createFileRoute('/dashboard/_dashboard/calendar')({
   component: DashboardCalendar,
 });
 

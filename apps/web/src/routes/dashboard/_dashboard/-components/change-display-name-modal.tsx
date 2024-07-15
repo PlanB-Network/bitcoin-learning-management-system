@@ -7,11 +7,10 @@ import { ZodError, z } from 'zod';
 
 import { Button } from '@sovereign-university/ui';
 
+import { Modal } from '#src/atoms/Modal/index.js';
+import { TextInput } from '#src/atoms/TextInput/index.js';
 import { AppContext } from '#src/providers/context.js';
-
-import { Modal } from '../../../atoms/Modal/index.tsx';
-import { TextInput } from '../../../atoms/TextInput/index.tsx';
-import { trpc } from '../../../utils/index.ts';
+import { trpc } from '#src/utils/trpc.js';
 
 const changeDisplayNameSchema = z.object({
   displayName: z

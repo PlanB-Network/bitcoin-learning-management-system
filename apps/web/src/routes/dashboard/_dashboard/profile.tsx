@@ -14,15 +14,15 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../atoms/Tabs/index.tsx';
-import { useDisclosure } from '../../hooks/index.ts';
+} from '../../../atoms/Tabs/index.tsx';
+import { useDisclosure } from '../../../hooks/index.ts';
 
 import { ChangeDisplayNameModal } from './-components/change-display-name-modal.tsx';
 import { ChangeEmailModal } from './-components/change-email-modal.tsx';
 import { ChangePasswordModal } from './-components/change-password-modal.tsx';
 import { ChangePictureModal } from './-components/change-picture-modal.tsx';
 
-export const Route = createFileRoute('/dashboard/profile')({
+export const Route = createFileRoute('/dashboard/_dashboard/profile')({
   component: DashboardProfile,
 });
 

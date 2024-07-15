@@ -5,10 +5,10 @@ import { cn } from '@sovereign-university/ui';
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
-import { MenuDesktop } from './dashboard/-components/menu-desktop.tsx';
-import { MenuMobile } from './dashboard/-components/menu-mobile.tsx';
+import { MenuDesktop } from './_dashboard/-components/menu-desktop.tsx';
+import { MenuMobile } from './_dashboard/-components/menu-mobile.tsx';
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute('/dashboard/_dashboard')({
   component: Dashboard,
 });
 
