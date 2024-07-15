@@ -127,7 +127,14 @@
       },
       "mobile": {
         "description": "Mobiilsed rahakotid on tavaliselt igapäevaste kulutuste tegemiseks. Need integreerivad Lightning Networki madalate tasude ning silmapilksete tehingute jaoks. Need on tavaliselt ühendatud internetiga (sageli nimetatakse neid \"kuumadeks rahakottideks\") ja on seetõttu vähem turvalised kui riistvara rahakotid. Neid tuleks kasutada ainult väikestes kogustes bitcoinide hoiustamiseks, mõelge neile kui oma igapäevasele rahakotile taskus."
-      }
+      },
+      "desktop": {
+        "description": "Töölaua rahakotid on tavaliselt mõeldud edasijõudnutele, kuna need ühendavad riistvara seadmete kasutamise töölaua rahakoti tarkvaraga. See on nagu uue, kohandatuma ja funktsionaalsus-intensiivsema liidese omamine teie riistvaraseadme kasutamiseks. Sellised rahakotid pakuvad mitme allkirja võimalusi, privaatsusfunktsioone, pärimise integreerimise mehhanisme ja palju muud."
+      },
+      "description": "Bitcoini rahakott on nagu teie võtmehoidja. See võimaldab teil bitcoini kulutada ja vastu võtta. Rahakotte on palju erinevaid tüüpe, kõigil erinevad kasutusjuhud, funktsioonid, kulud ja kasutajakogemused. Iga bitcoini kasutaja kasutab erinevat seadet vastavalt oma vajadustele, nõudlikkuse tasemele ja kogemustele."
+    },
+    "privacy": {
+      "title": "Privaatsus"
     }
   }
 }
