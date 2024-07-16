@@ -1,3 +1,4 @@
+export * from './bcertificate.js';
 export * from './bet.js';
 export * from './book.js';
 export * from './builder.js';

@@ -52,6 +52,38 @@ export const usersLud4PublicKeys = users.table('lud4_public_keys', {
     .notNull(),
 });
 
+// BCERTIFICATE
+
+export const contentBCertificateExam = content.table('b_certificate_exam', {
+  id: uuid('id').primaryKey().notNull(),
+  date: timestamp('date').notNull(),
+  location: text('location').notNull(),
+  minScore: integer('min_score').notNull(),
+  duration: integer('duration').notNull(),
+});
+
+export const usersBCertificateResults = users.table(
+  'b_certificate_results',
+  {
+    uid: uuid('uid')
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    bCertificateExam: varchar('b_certificate_exam')
+      .notNull()
+      .references(() => contentBCertificateExam.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    category: varchar('category').notNull(),
+    score: integer('score').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.uid, table.bCertificateExam, table.category],
+    }),
+  }),
+);
+
 // RESOURCES
 
 export const contentResources = content.table(

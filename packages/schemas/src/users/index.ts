@@ -2,6 +2,7 @@
 export type * from 'drizzle-orm/pg-core';
 
 export * from './account.js';
+export * from './bcertificate.js';
 export * from './billing.js';
 export * from './calendar.js';
 export * from './course.js';
