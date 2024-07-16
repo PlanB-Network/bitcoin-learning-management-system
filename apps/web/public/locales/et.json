@@ -14,7 +14,13 @@
     "coportateContact": "Kontaktandmed:",
     "storyTitle": "Meie lugu",
     "commitmentContent": "Meie panused Bitcoini kogukonda ees on järgmised:\n • Säilida avatud lähtekoodiga\n • Pakkuda kõrgkvaliteedilist hariduslikku sisu\n • Tõlkida meie sisu võimalikult paljudesse keeltesse\n • Toetada Bitcoini ehitajaid nende ettevõtlusteekonnal",
-    "corporateContent": "PlanB Network on Bitcoini arendamisele keskenduv kolme osapoole ühine projekt. Püüdes Bitcoini hariduskihti laiendada, otsustasid nad koostööd teha ja luua PlanB Network. Et õnnestuda meie eesmärgis tuua Bitcoini haridus maailma, on paljud teised osapooled otsustanud panustada ja ühendada jõud. Suur tänu neile."
+    "corporateContent": "PlanB Network on Bitcoini arendamisele keskenduv kolme osapoole ühine projekt. Püüdes Bitcoini hariduskihti laiendada, otsustasid nad koostööd teha ja luua PlanB Network. Et õnnestuda meie eesmärgis tuua Bitcoini haridus maailma, on paljud teised osapooled otsustanud panustada ja ühendada jõud. Suur tänu neile.",
+    "missionContent2": "Me koondame teadmisi, et neid paremini levitada lihtsa, mitmekeelse GitHubi hoidla ja E-õppe platvormi kaudu. Õigete tööriistadega aitame me kohalikke Bitcoini kogukondi nende arengus, et nende anded saaksid kasvada.",
+    "description": "Plan B Network aitab kogukondadel üle kogu maailma organiseeruda, et paremat haridust pakkuda. Antud platvorm arendab selle eesmärgi saavutamiseks vajalikke tööriistu, läbi veebiakadeemia, õpetuste portaali, Bitcoini haridusliku tööriistakomplekti ja ressursside portaali.",
+    "subtitle": "Soovid maailmale oranži pilli pakkuda? Liitu PlanB võrgustikuga.",
+    "title": "Plaan B võrgustiku kohta",
+    "storyContent": "PlanB võrgustik on algatus, mille eesmärk on toetada Bitcoini haridust kogu maailmas. See on erinevate Bitcoini ettevõtete ristumiskoht, kes on keskendunud haridusele, avatud lähtekoodiga tarkvarale, võrdsetel alustel võrgustikele ja kogukonna mõttele. Koos otsustasid nad luua PlanB võrgustiku ja pakkuda Bitcoini ökosüsteemile õigeid vahendeid kasvamiseks. Meie 2023. aasta väljalaske esitlus on saadaval siin.",
+    "manifesto": "Me usume Bitcoini poolt pakutavasse detsentraliseeritud tulevikku.\n\nMeie missiooniks on tutvustada Bitcoini miljardile inimesele järgmise kümnendi jooksul. Meie tööriistadeks on haridus ja informatsioon.\n\nToetame kohalikke Bitcoini kogukondi, pakkudes avatud lähtekoodiga hariduslikku sisu ja pakkudes Bitcoini mentorite võrgustikku.\n\nMeie filosoofia on inspireeritud küberpunki manifestist. Nii nagu nemad toetasid privaatsust, toetame meie haridust. Usume, et teadmised on vabaduse ja muutuse aluseks.\n\nKasutame ainult Bitcoini.\n\nMe propageerime individuaalset vastutust ja iseseisvust, mida pakub oma võtmete omamine.\n\nMe nõuame verifitseerimist, mitte pimedat usaldust.\n\nUsume, et raha parandades parandame maailma.\n\nOleme detsentraliseeritud ja avatud lähtekoodiga, vältides kõikvõimalikke üksikuid tõrkekohti.\n\nJulgustame meie sisu vaba ning tasuta levitamist.\n\nPüüdleme maailma poole, mis toimib alt üles ning mille keskmes on üksikisik.\n\nMe lihtsustame, me harime, me jagame.\n\nLiitu meiega meie missioonis pakkuda oranži pilli kogu maailmale.\n"
   },
   "words": {
     "videos": "Videod",
@@ -147,7 +153,71 @@
       "description": "Bitcoini rahakott on nagu teie võtmehoidja. See võimaldab teil bitcoini kulutada ja vastu võtta. Rahakotte on palju erinevaid tüüpe, kõigil erinevad kasutusjuhud, funktsioonid, kulud ja kasutajakogemused. Iga bitcoini kasutaja kasutab erinevat seadet vastavalt oma vajadustele, nõudlikkuse tasemele ja kogemustele."
     },
     "privacy": {
-      "title": "Privaatsus"
+      "title": "Privaatsus",
+      "shortDescription": "Varundamise ja privaatsuse säilitamise tööriistad",
+      "general": {
+        "description": "Massijälgimise ajastul on igapäevaelus teatud privaatsuse määra taastamine hädavajalik. Arvestades, et igal kasutajal on teatud määral paranoiat ja tehnoloogilisi teadmisi, on täiesti normaalne kasutada teatud tööriistu ja kohandada neid oma vajadustele. Siin uurime erinevaid kaitsevõimalusi, nagu VPN-id, Tor, Tails OS, PGP, krüpteeritud sõnumid ja palju muud."
+      },
+      "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele."
     }
+  },
+  "auth": {
+    "accountCreated": "Teie konto on loodud, {{userName}}!",
+    "alreadyHaveAccount": "Omate juba kontot?",
+    "canSaveProgress": "Nüüd saate oma edusamme Bitcoini Akadeemias salvestada",
+    "connectWithLn": "Ühenda LN-iga",
+    "createAccount": "Registreeri",
+    "createOne": "Registreeri siin!",
+    "emailAddress": "E-posti aadress",
+    "errors": {
+      "displayNameTooShort": "Kuvanimi peab sisaldama vähemalt 2 tähemärki.",
+      "displayNameRequired": "Kuvanimi on nõutud.",
+      "displayNameRegex": "Kuvanimi võib sisaldada ainult tähti, numbreid, _, ., - ja tühikuid.",
+      "usernameRegex": "Kasutajanimi võib sisaldada ainult tähti, numbreid, _, . ja -.",
+      "usernameRequired": "Kasutajanimi on nõutud.",
+      "usernameTooShort": "Kasutajanimi peab sisaldama vähemalt 5 tähemärki."
+    },
+    "forgottenPassword": "Unustasid oma parooli?",
+    "headerAccountCreated": "Konto loodud",
+    "lnurlAuthDescription": "Skaneeri see QR-kood oma Lightning rahakotiga, et sisse logida!",
+    "noAccountNeeded": "Pole vaja kontot, et alustada õppimist Plan B Networkis!",
+    "noAccountYet": "Pole kontot?",
+    "resetPassword": "Lähtesta oma parool",
+    "newPassword": "Uus parool",
+    "passwordRequired": "Parool on nõutud",
+    "passwordsDontMatch": "Paroolid ei klapi",
+    "passwordChanged": "Parool muudetud",
+    "passwordSuccessfullyChanged": "Teie parool on edukalt muudetud. Nüüd saate sisse logida oma uue parooliga.",
+    "sendLink": "Saada mulle link",
+    "backToLogin": "Tagasi sisselogimise juurde",
+    "backToHome": "Tagasi koju",
+    "invalidToken": "Kehtetu luba",
+    "checkingToken": "Kontrollin luba",
+    "invalidTokenExplain": {
+      "expired": "Luba on aegunud",
+      "consumed": "Luba on juba kasutatud",
+      "invalid": "Luba on kehtetu",
+      "notFound": "Luba ei leitud"
+    },
+    "passwordResetError": "Parooli lähtestamise viga",
+    "tryAgain": "Proovi uuesti",
+    "signIn": "Logi sisse",
+    "passwordMinLength": "Parool peab olema vähemalt {{len}} tähemärki pikk",
+    "checkingTokenExplain": "Kontrollime, kas luba on kehtiv...",
+    "passwordResetSent": "Parooli lähtestamise e-kiri on saadetud teie postkasti (kui e-kiri meie andmebaasis eksisteerib)."
+  },
+  "bCertificate": {
+    "bookExam": "Broneeri eksamisessioon",
+    "challengeYourself": "Tule pane end proovile & tõesta oma taset!",
+    "checkout": "Tutvuge B-sertifikaadiga",
+    "curious": "Uudishimulik, et milline eksam välja näeb?",
+    "joeNakamotoVideo": "Mis paganama asi üldse on Bitcoini eksam ? Autor Joe Nakamoto",
+    "knowledgeableBitcoin": "Teadlik ja kogenud Bitcoini alal ?",
+    "noBookExam": "Eksamisessiooni pole veel planeeritud.",
+    "organizeExam": "Korraldage eksam",
+    "organizeSubtitle": "Miljardi inimese oranž-pillimine pole sugugi lihtne",
+    "organizeTitle": "Soovite korraldada B-sertifikaadi eksami oma kogukonnas?",
+    "bCertificateDescription": "B-sertifikaat on rahvusvaheliselt tunnustatud eksam, mis hindab teie teadmisi Bitcoinist ja sellest tulenevatest teemadest. See sertifikaat võimaldab teil tõestada oma oskusi ja teadmisi Bitcoini tööstuses, andes teile juurdepääsu ettevõtetele ja positsioonidele selles tööstuses.",
+    "organizeDescription": "Pole probleemi! Kui teie kogukond on osa PlanB võrgustikust, on võimalik teie keskuses ka eksamisessiooni korraldada. Palun lugege tabelit, et veenduda, kas suudate täita eksami korraldamiseks vajalikke tingimusi. Kui suudate neid tingimusi täita, saate oma sessiooni ajastada ja lisada selle meie platvormile."
   }
 }
