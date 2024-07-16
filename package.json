@@ -8,7 +8,7 @@
     "dev": "dotenv -- turbo dev --cache-dir=.turbo",
     "dev:web": "dotenv -- turbo dev --cache-dir=.turbo --filter=@sovereign-university/web",
     "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@sovereign-university/api",
-    "dev:db:migrate": "cd ./packages/database && pnpm db:migrate:local",
+    "dev:db:migrate": "cd ./packages/database && pnpm db:migrate",
     "dev:db:generate": "cd ./packages/database && pnpm drizzle:generate",
     "dev:types:generate": "cd ./packages/types && pnpm types:generate",
     "dev:db:sync": "pnpm dev:db:generate && pnpm dev:types:generate",
