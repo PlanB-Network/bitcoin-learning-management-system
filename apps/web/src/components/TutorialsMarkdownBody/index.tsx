@@ -70,7 +70,7 @@ export const TutorialsMarkdownBody = ({
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6"
+                className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
               >
                 <img
                   src={
@@ -87,14 +87,14 @@ export const TutorialsMarkdownBody = ({
                   alt={tutorial.name}
                   className="size-20 rounded-full"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col max-md:text-center">
                   <span className="capitalize text-xl font-semibold text-darkOrange-5 mb-1">
                     {tutorial.name}
                   </span>
                   <p className="text-newBlack-3 text-xs font-light mb-2">
                     {tutorial.description}
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 max-md:justify-center">
                     {tutorial.tags.map((tag) => (
                       <span
                         key={tag}

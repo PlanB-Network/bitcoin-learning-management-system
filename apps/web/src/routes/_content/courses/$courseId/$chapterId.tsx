@@ -5,7 +5,7 @@ import {
   useParams,
 } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 
@@ -18,6 +18,7 @@ import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CoursesMarkdownBody } from '#src/components/CoursesMarkdownBody/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { AppContext } from '#src/providers/context.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { compose, computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
@@ -524,13 +525,10 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
 };
 
 const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
-  const { i18n } = useTranslation();
+  const { tutorials } = useContext(AppContext);
+  const isFetchedTutorials = tutorials && tutorials.length > 0;
 
-  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery({
-    language: i18n.language,
-  });
-
-  if (isFetched) {
+  if (isFetchedTutorials) {
     return (
       <CoursesMarkdownBody
         content={chapter.rawContent}

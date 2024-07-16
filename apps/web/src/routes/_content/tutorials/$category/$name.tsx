@@ -1,5 +1,6 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
@@ -10,6 +11,7 @@ import { TipModal } from '#src/components/tip-modal.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { TutorialsMarkdownBody } from '#src/components/TutorialsMarkdownBody/index.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { formatNameForURL } from '#src/utils/string.js';
@@ -39,10 +41,8 @@ function TutorialDetails() {
     language: i18n.language,
   });
 
-  const { data: tutorials, isFetched: isFetchedTutorials } =
-    trpc.content.getTutorials.useQuery({
-      language: i18n.language,
-    });
+  const { tutorials } = useContext(AppContext);
+  const isFetchedTutorials = tutorials && tutorials.length > 0;
 
   function headerAndFooterText(creditName: string, creditUrl: string) {
     return (

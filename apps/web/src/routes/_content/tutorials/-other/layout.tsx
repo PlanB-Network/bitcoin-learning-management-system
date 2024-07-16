@@ -1,11 +1,12 @@
 import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
 import { MainLayout } from '#src/components/MainLayout/index.js';
+import { AppContext } from '#src/providers/context.js';
 import { compose } from '#src/utils/index.js';
-import { trpc } from '#src/utils/trpc.js';
 
 import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils.tsx';
 
@@ -20,16 +21,9 @@ export const TutorialLayout = ({
   currentSubcategory?: string | null;
   currentTutorialId?: number;
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const { data: allTutorials } = trpc.content.getTutorials.useQuery(
-    {
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
-  );
+  const { tutorials: allTutorials } = useContext(AppContext);
 
   return (
     <MainLayout variant="light">

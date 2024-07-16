@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
@@ -7,9 +7,9 @@ import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { PageHeader } from '#src/components/PageHeader/index.js';
+import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-import { trpc } from '#src/utils/trpc.js';
 
 import { FilterBar } from '../resources/-components/FilterBar/index.tsx';
 
@@ -20,16 +20,11 @@ export const Route = createFileRoute('/_content/tutorials/')({
 });
 
 function TutorialExplorer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: tutorials, isFetched } = trpc.content.getTutorials.useQuery(
-    {
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
-  );
+
+  const { tutorials } = useContext(AppContext);
+  const isFetchedTutorials = tutorials && tutorials.length > 0;
 
   return (
     <MainLayout variant="gray">
@@ -76,7 +71,9 @@ function TutorialExplorer() {
             <span>{t('tutorials.explorer.description')}</span>
           </div>
           <div className="flex max-w-3xl flex-wrap justify-center gap-6">
-            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+            {!isFetchedTutorials && (
+              <Spinner className="size-48 md:size-64 mx-auto" />
+            )}
             {tutorials
               ?.filter((tutorial) =>
                 tutorial.name.toLowerCase().includes(searchTerm.toLowerCase()),
