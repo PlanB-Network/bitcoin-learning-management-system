@@ -28,7 +28,7 @@
     "eslint-plugin-vitest": "^0.4.1",
     "globals": "^15.8.0",
     "jsonc-eslint-parser": "^2.4.0",
-    "typescript": "^5.5.3",
+    "typescript": "5.4.5",
     "typescript-eslint": "^7.16.1"
   }
 }
