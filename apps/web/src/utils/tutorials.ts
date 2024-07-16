@@ -11,56 +11,55 @@ import nodeSvg from '../assets/tutorials/node.svg';
 import otherSvg from '../assets/tutorials/other.svg';
 import privacySvg from '../assets/tutorials/privacy.svg';
 import walletSvg from '../assets/tutorials/wallet.svg';
-import { Routes } from '../routes/-utils/routes.ts';
 
 export const TUTORIALS_CATEGORIES = [
   {
     name: 'wallet',
     image: walletSvg,
     icon: BsWallet2,
-    route: Routes.TutorialsWallet,
+    route: '/tutorials/wallet',
     images: 23,
   },
   {
     name: 'node',
     image: nodeSvg,
     icon: SiRaspberrypi,
-    route: Routes.TutorialsNode,
+    route: '/tutorials/node',
     images: 5,
   },
   {
     name: 'mining',
     image: miningSvg,
     icon: BsCpu,
-    route: Routes.TutorialsMining,
+    route: '/tutorials/mining',
     images: 2,
   },
   {
     name: 'merchant',
     image: merchantSvg,
     icon: BsCart,
-    route: Routes.TutorialsMerchant,
+    route: '/tutorials/merchant',
     images: 3,
   },
   {
     name: 'exchange',
     image: exchangeSvg,
     icon: BsCurrencyExchange,
-    route: Routes.TutorialsExchange,
+    route: '/tutorials/exchange',
     images: 12,
   },
   {
     name: 'privacy',
     image: privacySvg,
     icon: LiaUserSecretSolid,
-    route: Routes.TutorialsPrivacy,
+    route: '/tutorials/privacy',
     images: 4,
   },
   {
     name: 'others',
     image: otherSvg,
     icon: LiaToolsSolid,
-    route: Routes.TutorialsOther,
+    route: '/tutorials/others',
     images: 4,
   },
 ];

@@ -5,7 +5,7 @@ import { AiOutlineBook } from 'react-icons/ai';
 import { FaBars, FaRegCalendarCheck } from 'react-icons/fa';
 import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 import { LuLogOut } from 'react-icons/lu';
-import { MdKeyboardArrowUp } from 'react-icons/md';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -39,7 +39,7 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
   const { user } = useContext(AppContext);
   const pictureUrl = getPictureUrl(user);
   const isLoggedIn = user?.uid !== undefined;
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(true);
 
   const navigate = useNavigate();
 
@@ -84,7 +84,7 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
               className="size-10 shrink-0 rounded-full"
             />
             <span className="font-medium">{user?.username}</span>
-            <MdKeyboardArrowUp
+            <MdKeyboardArrowDown
               size={24}
               className={cn(
                 'ml-auto transition-transform ease-in-out',

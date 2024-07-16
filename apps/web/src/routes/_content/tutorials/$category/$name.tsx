@@ -1,5 +1,6 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
@@ -10,8 +11,10 @@ import { TipModal } from '#src/components/tip-modal.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { TutorialsMarkdownBody } from '#src/components/TutorialsMarkdownBody/index.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { formatNameForURL } from '#src/utils/string.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { TutorialLayout } from '../-other/layout.tsx';
@@ -37,6 +40,9 @@ function TutorialDetails() {
     name,
     language: i18n.language,
   });
+
+  const { tutorials } = useContext(AppContext);
+  const isFetchedTutorials = tutorials && tutorials.length > 0;
 
   function headerAndFooterText(creditName: string, creditUrl: string) {
     return (
@@ -120,13 +126,16 @@ function TutorialDetails() {
             <div className="flex w-full flex-col items-center justify-center px-2">
               <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
                 {header(tutorial)}
-                <TutorialsMarkdownBody
-                  content={tutorial.rawContent}
-                  assetPrefix={computeAssetCdnUrl(
-                    tutorial.lastCommit,
-                    tutorial.path,
-                  )}
-                />
+                {isFetchedTutorials && (
+                  <TutorialsMarkdownBody
+                    content={tutorial.rawContent}
+                    assetPrefix={computeAssetCdnUrl(
+                      tutorial.lastCommit,
+                      tutorial.path,
+                    )}
+                    tutorials={tutorials || []}
+                  />
+                )}
                 <div>
                   {headerAndFooterText(
                     tutorial.credits?.name as string,
@@ -144,10 +153,7 @@ function TutorialDetails() {
                   </p>
                   {tutorial.credits?.professor && (
                     <Link
-                      to={'/professor/$professorId'}
-                      params={{
-                        professorId: tutorial.credits.professor.id.toString(),
-                      }}
+                      to={`/professor/${formatNameForURL(tutorial.credits.professor.name)}-${tutorial.credits.professor.id}`}
                       key={tutorial.credits.professor.id}
                     >
                       <AuthorCard

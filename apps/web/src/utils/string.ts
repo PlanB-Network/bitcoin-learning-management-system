@@ -25,3 +25,7 @@ export const normalizeString = (str: string) => {
     .replaceAll(/[\u0300-\u036F]/g, '')
     .toLowerCase();
 };
+
+export const formatNameForURL = (name: string): string => {
+  return name.toLowerCase().replaceAll(/\s+/g, '-');
+};

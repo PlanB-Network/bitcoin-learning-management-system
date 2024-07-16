@@ -15,7 +15,6 @@ import podcastSvg from '../../assets/resources/podcast.svg?react';
 import tutorialsSvg from '../../assets/resources/toolkit.svg?react';
 import aboutSvg from '../../assets/resources/world.svg?react';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
-import { Routes } from '../../routes/-utils/routes.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
 import { AuthModal } from '../AuthModal/index.tsx';
@@ -103,18 +102,18 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     {
       id: 'courses',
       title: t('words.courses'),
-      path: Routes.Courses,
+      path: '/courses',
       items: coursesItems,
     },
     {
       id: 'events',
       title: t('words.events'),
-      path: Routes.Events,
+      path: '/events',
     },
     {
       id: 'resources',
       title: t('words.resources'),
-      path: Routes.Resources,
+      path: '/resources',
       items: [
         {
           id: 'resources-nested',
@@ -124,41 +123,41 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               title: t('words.library'),
               icon: coursesSvg,
               description: t('menu.libraryDescription'),
-              path: Routes.Books,
+              path: '/resources/books',
             },
             {
               id: 'podcasts',
               title: t('words.podcasts'),
               description: t('menu.podcastsDescription'),
-              path: Routes.Podcasts,
+              path: '/resources/podcasts',
               icon: podcastSvg,
             },
             {
               id: 'conferences',
               title: t('conferences.pageTitle'),
               description: t('menu.conferencesDescription'),
-              path: Routes.Conferences,
+              path: '/resources/conferences',
               icon: eventsSvg,
             },
             {
               id: 'builders',
               title: t('words.builders'),
               description: t('menu.buildersDescription'),
-              path: Routes.Builders,
+              path: '/resources/builders',
               icon: resourcesSvg,
             },
             // {
             //   id: 'glossary',
             //   title: t('words.glossary'),
             //   description: t('menu.glossaryDescription'),
-            //   path: Routes.Glossary,
+            //   path: '/resources/glossary',
             //   icon: glossarySvg,
             // },
             {
               id: 'bet',
               title: t('bet.pageTitle'),
               description: t('menu.betDescription'),
-              path: Routes.BET,
+              path: '/resources/bet',
               icon: tutorialsSvg,
             },
           ],
@@ -168,7 +167,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     {
       id: 'tutorials',
       title: t('words.tutorials'),
-      path: Routes.Tutorials,
+      path: '/tutorials',
       items: [
         {
           id: 'tutorial-nested',
@@ -184,7 +183,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     {
       id: 'about-us',
       title: t('words.about'),
-      path: Routes.About,
+      path: '/about',
       items: [
         {
           id: 'about-us-nested',
@@ -193,19 +192,19 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               id: 'professors',
               title: t('words.professors'),
               description: t('menu.teachersDescription'),
-              path: Routes.Professors,
+              path: '/professors',
             },
             {
               id: 'node-network',
               title: t('words.nodeNetwork'),
               description: t('menu.nodeNetworkDescription'),
-              path: Routes.NodeNetwork,
+              path: '/node-network',
             },
             {
               id: 'b-certificate',
               title: t('words.bCertificate'),
               description: t('menu.bCertificateDescription'),
-              path: Routes.BCertificate,
+              path: '/b-certificate',
             },
           ],
         },
@@ -217,31 +216,31 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
     {
       id: 'courses',
       title: t('words.courses'),
-      path: Routes.Courses,
+      path: '/courses',
       mobileIcon: coursesSvg,
     },
     {
       id: 'events',
       title: t('words.events'),
-      path: Routes.Events,
+      path: '/events',
       mobileIcon: eventsSvg,
     },
     {
       id: 'resources',
       title: t('words.resources'),
-      path: Routes.Resources,
+      path: '/resources',
       mobileIcon: resourcesSvg,
     },
     {
       id: 'tutorials',
       title: t('words.tutorials'),
-      path: Routes.Tutorials,
+      path: '/tutorials',
       mobileIcon: tutorialsSvg,
     },
     {
       id: 'about-us',
       title: t('words.about'),
-      path: Routes.About,
+      path: '/about',
       mobileIcon: aboutSvg,
     },
   ];
