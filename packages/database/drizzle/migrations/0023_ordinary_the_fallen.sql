@@ -1,1 +1,0 @@
-ALTER TABLE "content"."events" ADD COLUMN "chat_url" text;
