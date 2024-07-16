@@ -1,4 +1,9 @@
-import { Link, createFileRoute, useParams } from '@tanstack/react-router';
+import {
+  Link,
+  createFileRoute,
+  useNavigate,
+  useParams,
+} from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,11 +14,14 @@ import { AuthorCardFull } from '#src/components/author-card-full.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { TutorialCard } from '#src/components/tutorial-card.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
+import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { CourseCard } from '../courses/index.tsx';
 
-export const Route = createFileRoute('/_content/_misc/professor/$professorId')({
+export const Route = createFileRoute(
+  '/_content/_misc/professor/$professorName-$professorId',
+)({
   component: ProfessorDetail,
 });
 
@@ -23,9 +31,15 @@ function ProfessorDetail() {
   const params = useParams({
     from: '/professor/$professorName-$professorId',
   });
+  const navigate = useNavigate();
 
   const professorNameId = params['professorName-$professorId'];
   const professorId = professorNameId.split('-').pop();
+  const professorName = professorNameId.slice(
+    0,
+    Math.max(0, professorNameId.lastIndexOf('-')),
+  );
+  console.log('AAA', professorName);
 
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
     professorId: Number(professorId),
@@ -38,8 +52,15 @@ function ProfessorDetail() {
     if (!professor && isFetched && !navigateTo404Called.current) {
       navigateTo404();
       navigateTo404Called.current = true;
+    } else if (professor) {
+      console.log('REAL PROF NAME', professor.name);
+      if (professorName !== formatNameForURL(professor.name)) {
+        navigate({
+          to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
+        });
+      }
     }
-  }, [professor, isFetched, navigateTo404]);
+  }, [professor, isFetched, navigateTo404, professorName, navigate]);
 
   return (
     <PageLayout

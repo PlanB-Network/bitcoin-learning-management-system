@@ -50,7 +50,7 @@ import { Route as ContentResourcesBookBookIdImport } from './routes/_content/res
 import { Route as ContentCoursesCourseIdChapterIdImport } from './routes/_content/courses/$courseId/$chapterId';
 import { Route as ContentMiscValidateEmailTokenImport } from './routes/_content/_misc/validate-email.$token';
 import { Route as ContentMiscResetPasswordTokenImport } from './routes/_content/_misc/reset-password.$token';
-import { Route as ContentMiscProfessorProfessorIdImport } from './routes/_content/_misc/professor.$professorId';
+import { Route as ContentMiscProfessorProfessorNameProfessorIdImport } from './routes/_content/_misc/professor.$professorName-$professorId';
 
 // Create Virtual Routes
 
@@ -267,9 +267,9 @@ const ContentMiscResetPasswordTokenRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
-const ContentMiscProfessorProfessorIdRoute =
-  ContentMiscProfessorProfessorIdImport.update({
-    path: '/professor/$professorId',
+const ContentMiscProfessorProfessorNameProfessorIdRoute =
+  ContentMiscProfessorProfessorNameProfessorIdImport.update({
+    path: '/professor/$professorName-$professorId',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -466,11 +466,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsIndexImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/_misc/professor/$professorId': {
-      id: '/_content/_misc/professor/$professorId';
-      path: '/professor/$professorId';
-      fullPath: '/professor/$professorId';
-      preLoaderRoute: typeof ContentMiscProfessorProfessorIdImport;
+    '/_content/_misc/professor/$professorName-$professorId': {
+      id: '/_content/_misc/professor/$professorName-$professorId';
+      path: '/professor/$professorName-$professorId';
+      fullPath: '/professor/$professorName-$professorId';
+      preLoaderRoute: typeof ContentMiscProfessorProfessorNameProfessorIdImport;
       parentRoute: typeof rootRoute;
     };
     '/_content/_misc/reset-password/$token': {
@@ -593,7 +593,7 @@ export const routeTree = rootRoute.addChildren({
   ContentEventsIndexRoute,
   ContentResourcesIndexRoute,
   ContentTutorialsIndexRoute,
-  ContentMiscProfessorProfessorIdRoute,
+  ContentMiscProfessorProfessorNameProfessorIdRoute,
   ContentMiscResetPasswordTokenRoute,
   ContentMiscValidateEmailTokenRoute,
   ContentResourcesBookBookIdRoute,
@@ -632,7 +632,7 @@ export const routeTree = rootRoute.addChildren({
         "/_content/events/",
         "/_content/resources/",
         "/_content/tutorials/",
-        "/_content/_misc/professor/$professorId",
+        "/_content/_misc/professor/$professorName-$professorId",
         "/_content/_misc/reset-password/$token",
         "/_content/_misc/validate-email/$token",
         "/_content/resources/book/$bookId",
@@ -747,8 +747,8 @@ export const routeTree = rootRoute.addChildren({
     "/_content/tutorials/": {
       "filePath": "_content/tutorials/index.tsx"
     },
-    "/_content/_misc/professor/$professorId": {
-      "filePath": "_content/_misc/professor.$professorId.tsx"
+    "/_content/_misc/professor/$professorName-$professorId": {
+      "filePath": "_content/_misc/professor.$professorName-$professorId.tsx"
     },
     "/_content/_misc/reset-password/$token": {
       "filePath": "_content/_misc/reset-password.$token.tsx"
