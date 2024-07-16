@@ -6,6 +6,10 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import type { JoinedTutorialLight } from '@sovereign-university/types';
+
+import { computeAssetCdnUrl } from '#src/utils/index.js';
+
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
@@ -15,12 +19,26 @@ const remarkMathOptions = {
   singleDollarTextMath: false,
 };
 
+const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
+  const pattern = /^https:\/\/planb\.network\/tutorials\/([^/]+)\/([^/]+)$/;
+  const match = url.match(pattern);
+
+  if (match) {
+    const tutorialName = match[2];
+    return tutorials.find((tutorial) => tutorial.name === tutorialName) || null;
+  }
+
+  return null;
+};
+
 export const CoursesMarkdownBody = ({
   content,
   assetPrefix,
+  tutorials,
 }: {
   content: string;
   assetPrefix: string;
+  tutorials: JoinedTutorialLight[];
 }) => {
   return (
     <ReactMarkdown
@@ -44,16 +62,64 @@ export const CoursesMarkdownBody = ({
             {children}
           </div>
         ),
-        a: ({ children, href }) => (
-          <a
-            href={href}
-            target="_blank"
-            className="underline text-newBlue-1"
-            rel="noreferrer"
-          >
-            {children}
-          </a>
-        ),
+        a: ({ children, href = '' }) => {
+          const tutorial = getTutorial(href, tutorials);
+          if (tutorial) {
+            return (
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
+              >
+                <img
+                  src={
+                    tutorial.builder
+                      ? computeAssetCdnUrl(
+                          tutorial.builder.lastCommit,
+                          `${tutorial.builder.path}/assets/logo.webp`,
+                        )
+                      : computeAssetCdnUrl(
+                          tutorial.lastCommit,
+                          `${tutorial.path}/assets/logo.webp`,
+                        )
+                  }
+                  alt={tutorial.name}
+                  className="size-20 rounded-full"
+                />
+                <div className="flex flex-col max-md:text-center">
+                  <span className="capitalize text-xl font-semibold text-darkOrange-5 mb-1">
+                    {tutorial.name}
+                  </span>
+                  <p className="text-newBlack-3 text-xs font-light mb-2">
+                    {tutorial.description}
+                  </p>
+                  <div className="flex gap-4 max-md:justify-center">
+                    {tutorial.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="bg-[rgba(204,204,204,0.5)] px-2 py-1 rounded-md desktop-typo1 text-newBlack-3"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            );
+          }
+
+          return (
+            <a
+              href={href}
+              target="_blank"
+              className="underline text-newBlue-1"
+              rel="noreferrer"
+            >
+              {children}
+            </a>
+          );
+        },
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
