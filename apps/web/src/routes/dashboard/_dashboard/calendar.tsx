@@ -169,7 +169,11 @@ function DashboardCalendar() {
             )}
             onClick={() =>
               setFilter((prev) =>
-                prev.includes(f) ? prev.filter((p) => p !== f) : [...prev, f],
+                prev.length === courseTypes.length
+                  ? [f]
+                  : prev.includes(f)
+                    ? prev.filter((p) => p !== f)
+                    : [...prev, f],
               )
             }
           >

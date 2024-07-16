@@ -25,7 +25,7 @@ function Resources() {
           description={t('resources.pageDescription')}
         />
         <div className="mt-10 md:mt-20 px-4 md:px-8">
-          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl p-4 md:p-[30px] mx-auto gap-2 md:gap-12 bg-[#1A1A1A40] shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] rounded-3xl border border-white">
+          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl md:p-[30px] mx-auto gap-4 sm:gap-5 md:gap-12 md:bg-[#1A1A1A40] md:shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] md:rounded-3xl md:border border-white">
             {RESOURCES_CATEGORIES.map((resourceCategory) => (
               <Link
                 key={resourceCategory.name}
@@ -40,22 +40,28 @@ function Resources() {
               >
                 <div
                   className={cn(
-                    'w-40 md:w-[272px] flex items-center rounded-2xl py-[5px] px-2.5 md:py-2.5 md:px-5 gap-5 md:gap-6 transition-all',
+                    'max-md:size-[135px] md:w-[272px] flex max-md:flex-col max-md:justify-center items-center rounded-2xl p-5 md:py-2.5 md:px-5 gap-3 md:gap-6 transition-all max-md:bg-newBlack-2 max-md:border max-md:border-newGray-1',
                     resourceCategory.unreleased
                       ? 'opacity-50'
-                      : 'opacity-100 group-hover:bg-newBlack-3 group-focus:bg-newBlack-3',
+                      : 'opacity-100 md:group-hover:bg-newBlack-3 max-md:group-hover:border-darkOrange-5',
                   )}
                 >
                   <CategoryIcon
                     src={resourceCategory.image}
                     variant="resources"
+                    imgClassName={cn(
+                      'max-md:filter-white',
+                      resourceCategory.unreleased
+                        ? ''
+                        : 'max-md:group-hover:filter-newOrange1',
+                    )}
                   />
                   <h3
                     className={cn(
-                      'text-sm md:text-2xl text-white max-md:leading-[1.43] max-md:tracking-[0.17px]',
+                      'max-md:desktop-body1 md:text-2xl text-white max-md:text-center',
                       resourceCategory.unreleased
                         ? ''
-                        : 'group-hover:font-medium group-focus:font-medium',
+                        : 'max-md:group-hover:text-darkOrange-5 group-hover:font-medium',
                     )}
                   >
                     {t(`resources.${resourceCategory.name}.title`)}
@@ -65,7 +71,7 @@ function Resources() {
             ))}
           </div>
         </div>
-        <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-015px md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
+        <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-015px max-md:text-newGray-3 md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
           <Trans i18nKey="resources.github" className="">
             <a
               className="underline underline-offset-2 hover:text-darkOrange-5"
