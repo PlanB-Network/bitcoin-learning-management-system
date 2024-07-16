@@ -5,6 +5,7 @@ import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthorCard } from '#src/components/author-card.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { ProfessorCard } from '#src/components/professor-card.js';
+import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute('/_content/_misc/professors')({
@@ -39,10 +40,7 @@ function ProfessorExplorer() {
           {sortedProfessors?.map((professor) => {
             return (
               <Link
-                to={'/professor/$professorId'}
-                params={{
-                  professorId: professor.id.toString(),
-                }}
+                to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
                 key={professor.id}
                 className="h-auto w-full sm:w-auto"
               >

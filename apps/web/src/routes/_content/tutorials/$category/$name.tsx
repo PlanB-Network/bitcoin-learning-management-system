@@ -12,6 +12,7 @@ import { TutorialsMarkdownBody } from '#src/components/TutorialsMarkdownBody/ind
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { formatNameForURL } from '#src/utils/string.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { TutorialLayout } from '../-other/layout.tsx';
@@ -144,10 +145,7 @@ function TutorialDetails() {
                   </p>
                   {tutorial.credits?.professor && (
                     <Link
-                      to={'/professor/$professorId'}
-                      params={{
-                        professorId: tutorial.credits.professor.id.toString(),
-                      }}
+                      to={`/professor/${formatNameForURL(tutorial.credits.professor.name)}-${tutorial.credits.professor.id}`}
                       key={tutorial.credits.professor.id}
                     >
                       <AuthorCard

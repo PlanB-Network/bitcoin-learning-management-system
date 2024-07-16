@@ -39,6 +39,7 @@ import { AppContext } from '#src/providers/context.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { CourseButton } from '../-components/course-button.tsx';
@@ -570,10 +571,7 @@ function CourseDetails() {
           <div className="flex flex-col gap-4">
             {course.professors.map((professor) => (
               <Link
-                to={'/professor/$professorId'}
-                params={{
-                  professorId: professor.id.toString(),
-                }}
+                to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
                 key={professor.id}
               >
                 <AuthorCard
