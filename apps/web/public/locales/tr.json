@@ -1,27 +1,48 @@
 {
   "auth": {
-    "forgottenPassword": "",
+    "forgottenPassword": "Şifrenizi mi unuttunuz?",
     "accountCreated": "Hesabınız oluşturuldu, {{kullanıcı adı}}!",
-    "alreadyHaveAccount": "",
-    "canSaveProgress": "",
-    "connectWithLn": "",
-    "createAccount": "",
-    "createOne": "",
-    "emailAddress": "",
+    "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+    "canSaveProgress": "Artık Bitcoin Akademisi'nde ilerlemelerinizi kaydedebilirsiniz.",
+    "connectWithLn": "LN ile bağlantı kurun",
+    "createAccount": "Kayıt Ol",
+    "createOne": "Buraya kaydolun!",
+    "emailAddress": "E-posta adresi",
     "errors": {
-      "usernameRegex": "",
-      "usernameRequired": "",
-      "usernameTooShort": ""
+      "usernameRegex": "Kullanıcı adı yalnızca harfler, rakamlar, _, . ve - içerebilir.",
+      "usernameRequired": "Kullanıcı adı gereklidir.",
+      "usernameTooShort": "Kullanıcı adı en az 5 karakter içermelidir.",
+      "displayNameRegex": "Görünen isim yalnızca harfler, rakamlar, _, ., - ve boşluklar içerebilir.",
+      "displayNameTooShort": "Görünen isim en az 2 karakter içermelidir.",
+      "displayNameRequired": "Görünen isim gereklidir."
     },
-    "headerAccountCreated": "",
-    "lnurlAuthDescription": "",
-    "noAccountNeeded": "",
-    "noAccountYet": "",
-    "resetPassword": "",
-    "passwordRequired": "",
-    "passwordsDontMatch": "",
-    "sendLink": "",
-    "signIn": ""
+    "headerAccountCreated": "Hesap oluşturuldu",
+    "lnurlAuthDescription": "Bu QR kodu Lightning cüzdanınıza okutarak oturum açın!",
+    "noAccountNeeded": "Plan B Network'te öğrenmeye başlamak için hesaba gerek yok!",
+    "noAccountYet": "Hesabınız yok mu?",
+    "resetPassword": "Şifrenizi sıfırlayın",
+    "passwordRequired": "Şifre gereklidir",
+    "passwordsDontMatch": "Şifreler eşleşmiyor",
+    "sendLink": "Bana bir link gönder",
+    "signIn": "Oturum Aç",
+    "passwordResetSent": "Parola sıfırlama e-postası, e-posta kutunuza gönderilmiştir (eger e-postaniz verilerimizde mevcutsa).",
+    "newPassword": "Yeni şifre",
+    "passwordMinLength": "Şifre en az {{len}} karakter olmalıdır",
+    "passwordChanged": "Şifre değiştirildi",
+    "passwordSuccessfullyChanged": "Şifreniz başarıyla değiştirildi. Artık yeni şifrenizle giriş yapabilirsiniz.",
+    "backToLogin": "Giriş sayfasına geri dön",
+    "backToHome": "Anasayfaya geri dön",
+    "invalidToken": "Geçersiz token",
+    "checkingToken": "Token kontrol ediliyor",
+    "checkingTokenExplain": "Tokenin geçerli olup olmadığını kontrol ediyoruz...",
+    "invalidTokenExplain": {
+      "expired": "Tokenin süresi doldu",
+      "consumed": "Kullanılmış Token",
+      "invalid": "Geçersiz Token",
+      "notFound": "Token bulunamadı"
+    },
+    "passwordResetError": "Parola sıfırlama hatası",
+    "tryAgain": "Tekrar deneyin"
   },
   "dashboard": {
     "account": "",
@@ -157,18 +178,18 @@
   "about": {
     "activeContributors": "Aktif katılımcılar",
     "missionTitle": "Misyonumuz",
-    "missionContent1": "Misyonumuz, açık kaynaklı eğitim ve networking yoluyla yerel Bitcoin topluluklarını desteklemektir. Bitcoin endüstrisinin ilerlemesi için gerekli kaynakları toplar, düzenler ve oluştururuz. (kurslar, kitaplar, posterler, broşürler, videolar).",
-    "missionContent2": "Bilgiyi daha iyi dağıtmak için basit, çok dilli bir GitHub deposu ve bir E-öğrenme platformu aracılığıyla merkezileştiriyoruz. Yerel Bitcoin merkezlerine yeteneklerinin gelişmesi için doğru araçlarla yardımcı oluyoruz.",
+    "missionContent1": "Misyonumuz, açık kaynaklı eğitim ve networking yoluyla yerel Bitcoin topluluklarını desteklemektir. Bitcoin endüstrisinin ilerlemesi için gerekli kaynakları toplar, düzenler ve oluştururuz (kurslar, kitaplar, posterler, broşürler, vidyolar).",
+    "missionContent2": "Bilgiyi daha iyi yaymak için basit, çok dilli bir GitHub deposu ve bir E-öğrenme platformu aracılığıyla merkezileştiriyoruz. Yerel Bitcoin merkezlerinin gelişmesini için doğru araçlarla yardımcı oluyoruz.",
     "commitmentTitle": "Taahhütlerimiz",
     "commitmentContent": "Bitcoin topluluğuna olan taahhütlerimiz şunlardır:\n • Açık kaynaklı olmaya devam etmek\n • Yüksek kaliteli eğitici içerik sağlamak\n • İçeriğimizi mümkün olduğunca çok dilde çevirmek\n • Bitcoin yapımcılarını girişimcilik yolculuklarında desteklemek",
     "coreTeamTitle": "Çekirdek ekip",
-    "coreTeamContent": "PlanB Network, yüzlerce katkıda bulunan, öğretmen, topluluk lideri, tasarımcı, geliştirici ve organizatörden oluşan bir topluluktur. PlanB'yi bir gerçeklik haline getiren ve her gün bunu sürdüren sayısız kişiye çok teşekkür ederiz. (Katkıda bulunanların duvarı yakında geliyor)",
+    "coreTeamContent": "PlanB Network, yüzlerce katkıda bulunan, öğretmen, topluluk lideri, tasarımcı, geliştirici ve organizatörden oluşan bir topluluktur. PlanB'yi bir gerçeklik haline getiren ve her gün bunu sürdüren sayısız kişiye çok teşekkür ederiz. (Katkıda bulunanlar duvarı yakında geliyor)",
     "coreTeamGiacomoRole": "Yönetici ve Eş Kurucu",
     "coreTeamRogzyRole": "Ürün Müdürü & Eş Kurucu",
     "coreTeamAsioRole": "Eğitim koordinatörü",
     "coreTeamAjelexRole": "Düğüm koordinatörü",
     "corporateTitle": "Bizi destekleyenler",
-    "corporateContent": "PlanB Network, Bitcoin geliştirme üzerine odaklanan üç kuruluşun birleşik projesidir. Bitcoin eğitim katmanını ölçeklendirmek için, işbirliği yaparak PlanB network'ü kurdular. Bitcoin eğitimini dünyaya getirme hedefimizde başarılı olmak için, birçok diğer kuruluş katkıda bulunmaya ve güçlerini birleştirmeye karar verdi. Kendilerine çok teşekkür ederiz.",
+    "corporateContent": "PlanB Network, Bitcoin geliştirme üzerine odaklanan üç kuruluşun birleşik projesidir. Bitcoin eğitim katmanını ölçeklendirmek için, işbirliği yaparak PlanB network'ü kurdular. Bitcoin eğitimini dünyaya yayma hedefimizde başarılı olmak için, birçok diğer kuruluş katkıda bulunmaya ve güçlerini birleştirmeye karar verdi. Kendilerine çok teşekkür ederiz.",
     "coportateContact": "İletişim bilgileri:",
     "storyTitle": "Hikayemiz",
     "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir.  Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
@@ -178,24 +199,27 @@
     "manifesto": "Bitcoin'in sunduğu merkeziteysiz bir geleceğe inanıyoruz.\n\nMisyonumuz, on yıl içinde bir milyar kişiye Bitcoin'i tanıtmaktır. Araçlarımız eğitim ve bilgidir.\n\nYerel Bitcoin topluluklarını destekliyoruz, açık kaynaklı eğitim içeriği sağlıyoruz ve bir Bitcoin mentor ağı sunuyoruz.\n\nFelsefemiz, cypherpunk manifestosundan ilham alıyor. Tıpkı onların gizliliğini savundukları gibi, biz de eğitimi savunuyoruz. Bilginin, özgürlük ve değişimin temeli olduğuna inanıyoruz.\n\nBiz sadece Bitcoin odaklıyız.\n\nBireysel sorumluluk ve kendi anahtarlarınıza sahip olmanın sunduğu bağımsızlığı savunuyoruz.\n\nKör güveni değil, doğrulamayı teşvik ediyoruz.\n\nParayı düzelttiğimizde, dünyayı da düzelteceğimize inanıyoruz.\n\nMerkeziyetsiz ve açık kaynaklıyız, bu şekilde tek arıza noktası başarısızlıklarını önlemiş oluruz.\n\nİçeriklerimizin serbest paylaşımını teşvik ediyoruz.\n\nBireyin merkezde olduğu, alttan -yukarıya işleyen bir dünyayı hedefliyoruz.\n\nBasitleştiriyoruz, eğitiyoruz, paylaşıyoruz.\n\nDünyayı \"turuncu hap\" ile tanıştırmak için misyonumuza katılın.\n"
   },
   "bet": {
-    "contribute": "",
+    "contribute": "Bu araç seti, katkıya açıktır. Figma kullanır, bu yüzden herkes ekleyebilir, değiştirebilir ve çevirebilir. İşbirliği yapmak, bir kategori eklemek veya tartışmak için, discordumuza katılmaktan çekinmeyin.",
     "educationalContent": {
-      "description": "",
-      "title": ""
+      "description": "Bu içerik, eğitim etkinlikleri ve kullanım için gerekli olacak şekilde tasarlanmıştır.",
+      "title": "Eğitim içeriği"
     },
-    "hereForYou": "",
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "hereForYou": "BET senin için burada!",
+    "pageDescription": "Kitlesel benimsenme kolay değildir. Bu hedefe daha yakın ve daha hızlı ilerlemek için genişletilebilir bir eğitim içeriği veritabanı geliştirdik. Burada, Bitcoin eğitmenleri gerektiği gibi içerik bırakabilir ve erişebilirler. Her seferinde tekerleği yeniden icat etmeyelim ve yararlı kaynakları tek bir egitim setinde merkezileştirmek için birlikte çalışalım!",
+    "pageSubtitle": "BET - Tüm eğitim projeleri için bir açık kaynaklı Bitcoin egitim seti",
+    "pageTitle": "Bitcoin Eğitim Seti",
     "visualContent": {
-      "description": "",
-      "title": ""
-    }
+      "description": "Bu içerik, yaratımlarınız için kullanılacak ham görsel veridir.",
+      "title": "Görsel İçerik"
+    },
+    "contributeButton": "Yardım et & katkıda bulun",
+    "contributeDescription": "Eğer bazı içerikleri eklemek, düzenlemek veya çevirmek isterseniz, yardımınız memnuniyetle karşılanacaktır!",
+    "contributeTitle": "Katkıda bulunmak ister misiniz?"
   },
   "book": {
-    "abstract": "",
+    "abstract": "Taslak",
     "bookSummary": {
-      "modifyTooltip": "",
+      "modifyTooltip": "Yaz veya değiştir",
       "noSummary": "",
       "notice": "",
       "title": ""
@@ -710,5 +734,22 @@
     "p1": "",
     "p2": "",
     "pageTitle": ""
+  },
+  "bCertificate": {
+    "bCertificateDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
+    "organizeDescription": "Sorun değil! Topluluğunuz Ağ'ın bir parçasıysa, merkezinizde bir sınav oturumu düzenlemek mümkündür. Bir sınavı ağırlayabilmeniz için zorunlu koşullara uyup uymadığınızdan emin olmak için lütfen tabloyu okuyun. Bu koşulları yerine getirebiliyorsanız, oturumunuzu planlayabilir ve onu platforma ekleyebilirsiniz.",
+    "curious": "Sınavın nasıl olduğunu merak ediyor musunuz?",
+    "joeNakamotoVideo": "Bitcoin sınavı nedir ? Joe Nakamoto tarafından",
+    "knowledgeableBitcoin": "Bitcoin hakkında bilgili misiniz?",
+    "noBookExam": "Henüz planlanmış bir sınav oturumu yok.",
+    "bookExam": "Bir sınav oturumu ayırtın",
+    "challengeYourself": "Kendine meydan oku ve seviyeni belirle!",
+    "checkout": "B-Sertifikasını kontrol et",
+    "organizeExam": "Bir sınav düzenle",
+    "organizeSubtitle": "Bir milyar kişiyi turuncu haplamak kolay değil",
+    "organizeTitle": "Merkezinizde bir B-sertifika sınavı düzenlemek ister misiniz?",
+    "pageSubtitle": "Merkezi açık kaynak eğitim aracılığıyla kitlesel benimsenme",
+    "pageTitle": "B-Sertifikası",
+    "readChart": "Tabloyu oku"
   }
 }
