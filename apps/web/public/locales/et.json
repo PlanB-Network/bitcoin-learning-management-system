@@ -129,7 +129,9 @@
     "courseId": "Kursuse ID",
     "beginner": "Algaja",
     "audioBook": "Heliraamat",
-    "advanced": "Edasijõudnud"
+    "advanced": "Edasijõudnud",
+    "online": "Võrgus",
+    "wallets": "Rahakotid"
   },
   "underConstruction": {
     "pageTitle": "Oih.",
@@ -159,6 +161,25 @@
         "description": "Massijälgimise ajastul on igapäevaelus teatud privaatsuse määra taastamine hädavajalik. Arvestades, et igal kasutajal on teatud määral paranoiat ja tehnoloogilisi teadmisi, on täiesti normaalne kasutada teatud tööriistu ja kohandada neid oma vajadustele. Siin uurime erinevaid kaitsevõimalusi, nagu VPN-id, Tor, Tails OS, PGP, krüpteeritud sõnumid ja palju muud."
       },
       "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele."
+    },
+    "exchange": {
+      "title": "Valuutavahetusettevõtted"
+    },
+    "headerSignature": "Rogzy",
+    "merchant": {
+      "title": "Kaupmees"
+    },
+    "mining": {
+      "title": "Kaevandamine"
+    },
+    "node": {
+      "title": "Sõlmed",
+      "lightning-network": {
+        "name": "Lightning Network"
+      }
+    },
+    "others": {
+      "title": "Teised"
     }
   },
   "auth": {
@@ -218,6 +239,374 @@
     "organizeSubtitle": "Miljardi inimese oranž-pillimine pole sugugi lihtne",
     "organizeTitle": "Soovite korraldada B-sertifikaadi eksami oma kogukonnas?",
     "bCertificateDescription": "B-sertifikaat on rahvusvaheliselt tunnustatud eksam, mis hindab teie teadmisi Bitcoinist ja sellest tulenevatest teemadest. See sertifikaat võimaldab teil tõestada oma oskusi ja teadmisi Bitcoini tööstuses, andes teile juurdepääsu ettevõtetele ja positsioonidele selles tööstuses.",
-    "organizeDescription": "Pole probleemi! Kui teie kogukond on osa PlanB võrgustikust, on võimalik teie keskuses ka eksamisessiooni korraldada. Palun lugege tabelit, et veenduda, kas suudate täita eksami korraldamiseks vajalikke tingimusi. Kui suudate neid tingimusi täita, saate oma sessiooni ajastada ja lisada selle meie platvormile."
+    "organizeDescription": "Pole probleemi! Kui teie kogukond on osa PlanB võrgustikust, on võimalik teie keskuses ka eksamisessiooni korraldada. Palun lugege tabelit, et veenduda, kas suudate täita eksami korraldamiseks vajalikke tingimusi. Kui suudate neid tingimusi täita, saate oma sessiooni ajastada ja lisada selle meie platvormile.",
+    "pageSubtitle": "Massiline kasutuselevõtt läbi keskse avatud lähtekoodiga hariduse",
+    "pageTitle": "B-sertifikaat",
+    "readChart": "Loe tabelit"
+  },
+  "bet": {
+    "contribute": "Antud tööriistakomplekt on avatud kõigile panustamiseks. See kasutab Figmat, seega igaüks saab lisada, muuta ja tõlkida. Koostööks, kategooria lisamiseks või aruteluks ärge kõhelge liitumast meie Discordiga.",
+    "contributeButton": "Aita & panusta",
+    "contributeDescription": "Kui soovite kas sisu lisada, muuta või tõlkida, on teie abi alati teretulnud!",
+    "contributeTitle": "Soovid panustada?",
+    "educationalContent": {
+      "description": "See sisu on mõeldud kasutamiseks haridusüritustel ja üldiseks kasutamiseks.",
+      "title": "Hariduslik sisu"
+    },
+    "hereForYou": "BHT on siin teie jaoks!",
+    "pageTitle": "Bitcoini hariduslik tööriistakomplekt",
+    "pageSubtitle": "BHT - Kõigile haridusprojektidele mõeldud Bitcoini avatud lähtekoodiga tööriistakomplekt",
+    "visualContent": {
+      "description": "Antud sisu on töötlemata visuaalne andmestik, mida saate oma loomingus kasutada.",
+      "title": "Visuaalne sisu"
+    },
+    "pageDescription": "Massiline omaksvõtt pole lihtne. Selle eesmärgi poole kiiremini ja lähemale liikumiseks oleme välja töötanud laiendatava haridusliku sisuga andmebaasi. Siin saavad Bitcoini haridustöötajad vajadusel vabalt sisu lisada ning ligi pääseda. Ärgem leiuta iga kord ratast uuesti, vaid töötame koos, et keskenduda kasulikele ressurssidele ühes tööriistakomplektis !"
+  },
+  "book": {
+    "abstract": "Kokkuvõte",
+    "bookSummary": {
+      "modifyTooltip": "Kirjuta või muuda",
+      "notice": "antud kokkuvõte on seotud GitHubiga, mis tahes muudatuse või lisamise tarbeks",
+      "title": "Raamatu kokkuvõte",
+      "noSummary": "Ühtegi kokkuvõtet pole veel kirjutatud. Kui olete raamatut lugenud ja soovite jagada ühte kokkuvõtet, ärge kartke seda Githubis kirjutada. See aitaks kogukonda, parandaks ülikooli ning võiksite isegi selle eest mõned sats'id saada!"
+    },
+    "buttonBuy": "Osta",
+    "buttonPdf": "PDF / E-raamat",
+    "offeredBy": "Pakutud helde panustaja poolt",
+    "pageSubtitle": "Käesolev portaal on avatud lähtekoodiga & avatud kaastööle.",
+    "pageTitle": "Bitcoini raamatukogu",
+    "topicsAddressed": "Käsitletud teemad: "
+  },
+  "builders": {
+    "noRelatedEvents": "Antud ehitaja jaoks pole veel tulevasi seotud sündmusi.",
+    "otherCommunities": "Avastage Plan B kogukondi",
+    "pageSubtitle": "Käesolev portaal on avatud lähtekoodiga & avatud kaastööle.",
+    "pageTitle": "Bitcoini Ehitajad",
+    "languages": "Keeled",
+    "relatedEvents": "Seotud tulevased sündmused",
+    "networkStrength": "Võrgustiku tugevus peitub selle liikmetes"
+  },
+  "conferences": {
+    "backConferences": "Tagasi konverentside juurde",
+    "conferenceName": "Konverentsi nimi",
+    "conferencesSinceGenesis": "Bitcoini konverentside arhiivid alates esimesest plokist",
+    "details": {
+      "findReplay": "Leidke kordus",
+      "nextVideo": "Järgmine video",
+      "previousVideo": "Eelmine video",
+      "selectStage": "Valige lava",
+      "selectVideo": "Valige video",
+      "speaker": "Kõneleja",
+      "watchReplay": "Vaadake kordust"
+    },
+    "language": "Keel",
+    "latestConferences": "Hilisemad konverentsid",
+    "noConferences": "Aastaks {{year}} pole veel konverentse lisatud.",
+    "pageTitle": "Konverentsi kordused",
+    "planBConferences": "Plan B konverentsid",
+    "topics": "Teemad",
+    "addConferences": "Lisage julgelt igasugused puuduvad konverentsid selle <0>Github</0> hoidla kaudu.",
+    "description": "Konverentsid on võtmetähtsusega element Bitcoini tööstuses. Need on osa igast Bitcoineri haridusteekonnast. Me ehitasime selle tööriista, et aidata teil sadade konverentside vahel navigeerida.",
+    "location": "Asukoht",
+    "pageSubtitle": "Käesolev portaal on avatud lähtekoodiga & avatud kaastööle."
+  },
+  "courses": {
+    "categories": {
+      "btc": "Bitcoin",
+      "crypto": "Krüptograafia",
+      "cuboplus": "Bitcoin",
+      "econ": "Austria majandusteadus",
+      "fin": "Rahandus",
+      "ln": "Lightning Network",
+      "min": "Kaevandamine",
+      "secu": "Turvalisus ja privaatsus"
+    },
+    "chapter": {
+      "finishCourse": "Lõpeta kursus",
+      "next": "Tehtud, liigu järgmise peatüki juurde",
+      "thanksTip": "Tahad tänada ? Jäta jootraha.",
+      "detail": {
+        "title": "Õppetunni detailid",
+        "p1content": "Veenduge, et broneerite endale istekoha",
+        "bookSeat": "Broneeri oma istekoht",
+        "classIsFull": "Õppetund on juba täis broneeritud",
+        "ticketDownload": "Laadige oma pilet alla",
+        "p1heading": "Kas kavatsete seda tundi koha peal külastada ?",
+        "p2heading": "Ei saa koha peale tulla?",
+        "p2content": "Pole probleemi ! Tund edastatakse otseülekandena käesoleval lehel ning on hiljem ka taasesitamiseks saadaval.",
+        "cancelBooking": "Tühista oma broneering"
+      },
+      "nextLesson": "Järgmine tund on",
+      "live": {
+        "title": "Reaalajas video",
+        "stayTuned": "Otseülekanne algab pool tundi enne tunni algust. Püsige lainel."
+      },
+      "count": "Peatükk {{count}}"
+    },
+    "details": {
+      "accessible": "Ligipääs: Eluaegne",
+      "buyCourse": "Osta kursus",
+      "courseId": "Kursuse ID: {{courseId}}",
+      "coursePayment": "Kursuse makse",
+      "curriculum": "Õppekava",
+      "date": "Kuupäev: {{startDate}} kuni {{endDate}}",
+      "dates_to": "{{startDate}} kuni {{endDate}}",
+      "description": "Kirjeldus",
+      "duration": "Kestus: {{hours}} tundi",
+      "goal": "EESMÄRK: ",
+      "level": "Tase: $t(words.level.{{level}})",
+      "mobile": {
+        "chapters": "{{chapters}} peatükki",
+        "hours": "{{hours}} tundi"
+      },
+      "objectives": "Eesmärgid",
+      "price": "Hind: {{price}} sats",
+      "professor": "Professor",
+      "taughtBy": "Seda kursust õpetab :",
+      "teacher": "Õpetaja: {{teacher}}",
+      "teachers": "Õpetajad: {{teachers}}",
+      "teacherWord": "Paar sõna õpetajalt",
+      "total": "Kokku",
+      "payment_successful": "Makse edukalt sooritatud!",
+      "payment_details": "Makseandmed",
+      "amount": "Summa",
+      "invoiceId": "Tx ID",
+      "numberOfChapters": "Peatükkide arv: {{number}}",
+      "objectivesTitle": "Mida te õpite :",
+      "startCourse": "Alusta kursust",
+      "access_invoice": "Oma arvele pääsete juurde oma tegumiriba kaudu"
+    },
+    "explorer": {
+      "buildPath": "Raja iseenda tee jäneseurgu",
+      "exploreCourses": "Avasta kõiki Plan B kursuseid",
+      "footerTitle": "Meie professorid on siin teie jaoks !",
+      "footerp2": "Kui soovite mõnda kursust täiendada või pakkuda välja oma kursust, saate seda teha lihtsasti GitHubi kaudu. Professori toetamiseks võite kas hinnata nende kursust, jätta professorile otse jootraha või saada ülikooli liikmeks, et platvormi toetada.",
+      "journey": "Bitcoin on teekond, mitte sihtkoht",
+      "moreToCome": "... ja palju muud tulekul !",
+      "s3PickLevel": "Vali tasemed :",
+      "s3PickTopic": "Vali teemad :",
+      "seeCourse": "Vaata kursust",
+      "findCourses": "Leidke oma vajadustele sobivaim kursus tänu kursusevalijale",
+      "footerp1": "Suveräänsuse Ülikoolis on meie professoritel täielik autonoomia sisu ja tööriistade üle, mida nad soovivad, et te uuriksite, seni kuni nad järgivad eetikakoodeksit ning on sellega kooskõlas. Nad on erinevate taustalugudega kirglikud bitcoinerid."
+    },
+    "payment": {
+      "accessibility": "Juurdepääsetavus",
+      "accessibility_forever": "Igavesti",
+      "amount": "Summa",
+      "duration": "Kestus",
+      "teacher": "Õpetaja",
+      "teachers": "Õpetajad",
+      "time": "Aeg",
+      "downloadCurriculum": "Laadi õppekava alla",
+      "invoiceId": "Tx ID",
+      "payment_details": "Makseandmed",
+      "payment_successful": "Makse edukalt sooritatud!",
+      "back_course": "Tagasi kursuse juurde",
+      "dates_to": "{{startDate}} kuni {{endDate}}",
+      "numberOfChapters": "Peatükkide arv",
+      "date": "Kuupäev"
+    },
+    "part": {
+      "count": "Osa {{count}}"
+    },
+    "quizz": {
+      "quizz": "Kiirtest",
+      "quizzResults": "Kiirtesti tulemused",
+      "quizzReview": "Kiirtesti ülevaade"
+    },
+    "preview": {
+      "by": "{{professor}} poolt",
+      "letsgo": "Hakkame pihta"
+    },
+    "unreleased": {
+      "hyperinflation": "Hüperinflatsiooni uurimine",
+      "colcardAndSparrow": "Coldcard ja Sparrow"
+    }
+  },
+  "dashboard": {
+    "account": "Konto",
+    "booking": {
+      "invoiceDate": "Kuupäev",
+      "invoiceTitle": "Pealkiri",
+      "invoiceType": "Tüüp",
+      "ticketDate": "Kuupäev",
+      "ticketLocation": "Asukoht",
+      "ticketTitle": "Pealkiri",
+      "billingTitle": "Arveldusajalugu",
+      "downloadInvoice": "Laadige arve alla",
+      "downloadTicket": "Laadi pilet alla",
+      "pastTicketTitle": "Varasemad broneeringud",
+      "upcomingTicketTitle": "Eelseisvad broneeringud",
+      "ticketType": "Tüüp",
+      "accessLive": "Pääse otseülekandeni"
+    },
+    "calendar": {
+      "calendar": "Kalender",
+      "personalCalendar": "Isiklik kalender"
+    },
+    "courses": "Kursused",
+    "myCourses": {
+      "completed": "Lõpetatud",
+      "details": "Üksikasjad",
+      "completedCoursesTitle": "Läbitud kursused",
+      "inprogress": "Pooleli",
+      "inprogressCoursesTitle": "Pooleliolevad kursused",
+      "resumeLesson": "Jätka"
+    },
+    "profile": {
+      "change": "Muuda",
+      "edit": "Redigeeri",
+      "cancel": "Tühista",
+      "save": "Salvesta",
+      "saving": "Salvestamine...",
+      "crop": "Kärbi",
+      "preview": "Eelvaade",
+      "email": "E-mail",
+      "password": "Parool",
+      "security": "Turvalisus",
+      "username": "Kasutajanimi",
+      "displayName": "Kuvanimi",
+      "profilePicture": "Profiilipilt",
+      "personalInformation": "Minu isiklik teave",
+      "profileInformation": "Profiili info"
+    },
+    "logout": "Logi välja",
+    "bookings": "Broneeringud"
+  },
+  "events": {
+    "card": {
+      "free": "tasuta",
+      "unlimited": "piiramatu",
+      "limited": "piiratud",
+      "watchLive": "Vaata otseülekannet",
+      "watchReplay": "Vaata kordust",
+      "bookLive": "Broneeri otseülekanne",
+      "seatBooked": "Istekoht broneeritud",
+      "visitWebsite": "Külasta veebilehte",
+      "eventFull": "Üritus on täis",
+      "people": "inimesed",
+      "buyReplay": "Osta kordus",
+      "bookSeat": "Broneeri istekoht"
+    },
+    "main": {
+      "upcomingEvents": "Tulevased sündmused"
+    },
+    "newEvent": {
+      "button": "Lisa minu üritus"
+    },
+    "payment": {
+      "amount": "Summa",
+      "date": "Kuupäev",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "limitation": "Piirang",
+      "time": "Aeg",
+      "book_seat": "Broneeri iste",
+      "language": "Kõneldav keel",
+      "back_events": "Tagasi ürituste juurde",
+      "download_ticket": "Laadige oma pilet alla",
+      "max_capacity": "Maksimaalne mahutavus",
+      "payment_successful": "Broneering õnnestus !",
+      "address": "Aadress",
+      "payment_details": "Makseandmed",
+      "access_type": "Juurdepääsu tüüp"
+    }
+  },
+  "glossary": {
+    "definition": "Selgitus",
+    "pageTitle": "Bitcoini sõnastik",
+    "randomSearch": "Juhuslik otsing",
+    "relatedWords": "Seotud sõnad :",
+    "term": "Mõiste",
+    "loadMoreWords": "Laadige rohkem sõnu"
+  },
+  "home": {
+    "header": {
+      "startLink": "Alusta õppimist",
+      "globalNetwork": "Globaalne Bitcoini võrgustik"
+    },
+    "sectionEducation": {
+      "link": "Vaadake akadeemiat"
+    },
+    "aboutUsSection": {
+      "privacyTitle": "Privaatsus",
+      "bitcoinFocusTitle": "Bitcoini fookus",
+      "openSourceTitle": "Avatud lähtekood",
+      "communityTitle": "Kogukond"
+    },
+    "languageSection": {
+      "availableLanguages": "Saadaolevad keeled",
+      "subtitle2": "Me vajame sind!"
+    },
+    "tutorialSection": {
+      "link": "Vaata kõiki õpetusi"
+    },
+    "numbersSection": {
+      "networkMember": "Võrgustiku liige"
+    },
+    "sectionNetwork": {
+      "subtitle": "Ülemaailmsed Bitcoini ülikoolilinnakud"
+    }
+  },
+  "imagesAlt": {
+    "bookCover": "raamatu kaas",
+    "courseThumbnail": "Kursuse pisipilt",
+    "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
+    "curriculum": "Õppekava",
+    "community": "3 inimest",
+    "stylus": "stiilus",
+    "blueEllipse": "sinine ellips"
+  },
+  "library": {
+    "pageTitle": "Bitcoini raamatukogu"
+  },
+  "menu": {
+    "login": "Logi sisse"
+  },
+  "payment": {
+    "total": "Kokku"
+  },
+  "podcast": {
+    "abstract": "Kokkuvõte"
+  },
+  "professors": {
+    "pageTitle": "Professorid"
+  },
+  "podcasts": {
+    "pageTitle": "Bitcoini taskuhäälingud"
+  },
+  "resources": {
+    "books": {
+      "title": "Raamatukogu"
+    },
+    "builders": {
+      "title": "Ehitajad"
+    },
+    "glossary": {
+      "title": "Sõnastik"
+    },
+    "newsletters": {
+      "title": "Uudiskirjad"
+    },
+    "podcasts": {
+      "title": "Taskuhäälingud"
+    },
+    "bet": {
+      "title": "Hariduslik tööriistakomplekt"
+    },
+    "conferences": {
+      "title": "Konverentsi kordused"
+    },
+    "articles": {
+      "title": "Artiklid"
+    },
+    "headerSignature": "Rogzy"
+  },
+  "settings": {
+    "changePassword": "Muuda parooli",
+    "changeEmail": "Muuda e-posti"
+  },
+  "notFound": {
+    "here": "Siin",
+    "pageTitle": "Oih."
   }
 }
