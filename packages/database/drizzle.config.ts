@@ -14,6 +14,6 @@ export default defineConfig({
     user: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || 'postgres',
     database: process.env.POSTGRES_DB || 'postgres',
-    ssl: process.env['NODE_ENV'] === 'production' ? undefined : false,
+    ssl: process.env['NODE_ENV'] === 'production' ? 'prefer' : false,
   },
 });
