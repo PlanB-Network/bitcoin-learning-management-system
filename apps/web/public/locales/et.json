@@ -167,10 +167,14 @@
     },
     "headerSignature": "Rogzy",
     "merchant": {
-      "title": "Kaupmees"
+      "title": "Kaupmees",
+      "shortDescription": "Lahendused ettevõtetele Bitcoini vastuvõtmiseks",
+      "description": "Oled kunagi mõelnud, kuidas ärina bitcoini lihtsasti vastu võtta? Uurige meie erinevaid lahendusi, et saada eksperdiks, et seejärel hõlpsasti seadistada kaupmeestele sobivaid lahendusi teie ümber olevatele poodidele. Müügikoha (Point of Sale) lahendus varieerub sõltuvalt kaupmehe vajadustest (füüsiline või veebipõhine), nende mahust ja nende tegevuse keerukusest. Üldiselt hea lähenemisviis on alustada lihtsa LN rahakotiga, liikudes lihtsa, tõhusa lahenduse juurde (näiteks mobiilne PoS) ja lõpuks uurida BTC Pay Serverit keerukate, professionaalsete lahenduste jaoks."
     },
     "mining": {
-      "title": "Kaevandamine"
+      "title": "Kaevandamine",
+      "shortDescription": "Bitcoini kaevandamise lahendused",
+      "description": "Kaevandustööstus on keeruline ning mitmetasandiline teema, mis on täis rohkelt erinevaid avastatavaid jäneseurgusid. Proovime teid riist- ja tarkvara kasutades teie teekonnal saata. Alates S9 modifitseerimisest koduseks küttekehaks kuni loterii võitmise proovimiseni Nerdi kaevuriga."
     },
     "node": {
       "title": "Sõlmed",
@@ -179,8 +183,23 @@
       }
     },
     "others": {
-      "title": "Teised"
-    }
+      "title": "Teised",
+      "general": {
+        "description": "Tutvuge meie üldiste juhenditega, et suurendada oma teadmisi arvutiteaduses ja muudes isikliku sõltumatusega seotud valdkondades!"
+      },
+      "contribution": {
+        "description": "Õppige, kuidas panustada PlanB võrgustikku ning omanadage meie sisemiselt kasutatavaid avatud lähtekoodiga tööriistu läbi meie detailsete õpetuste!"
+      },
+      "OpenSource": {
+        "description": "Avastage meie õpetusi, mis on pühendatud avatud lähtekoodiga tööriistade kasutamisele!"
+      },
+      "DIY": {
+        "description": "Avastage meie \"Tee ise\" õpetusi, et õppida iseseisvalt looma asju, mis on seotud Bitcoiniga, arvutiga töötamise ja individuaalse suveräänsusega!"
+      }
+    },
+    "pageTitle": "Avastage meie õpetusi",
+    "pageSubtitle": "Kergita Bitcoini saladuseloori, avastades selle laiahaardelist ökosüsteemi",
+    "pageDescription": "Bitcoin on lai tööstus, mis muutub iga päevaga aina laiemaks. Et aidata sinul seda avastada, oleme kogunud ja koostanud suure hulga õpetusi, mis kirjeldavad erinevaid lahendusi kõigis Bitcoiniga seotud valdkondades."
   },
   "auth": {
     "accountCreated": "Teie konto on loodud, {{userName}}!",
@@ -387,7 +406,11 @@
       "s3PickTopic": "Vali teemad :",
       "seeCourse": "Vaata kursust",
       "findCourses": "Leidke oma vajadustele sobivaim kursus tänu kursusevalijale",
-      "footerp1": "Suveräänsuse Ülikoolis on meie professoritel täielik autonoomia sisu ja tööriistade üle, mida nad soovivad, et te uuriksite, seni kuni nad järgivad eetikakoodeksit ning on sellega kooskõlas. Nad on erinevate taustalugudega kirglikud bitcoinerid."
+      "footerp1": "Suveräänsuse Ülikoolis on meie professoritel täielik autonoomia sisu ja tööriistade üle, mida nad soovivad, et te uuriksite, seni kuni nad järgivad eetikakoodeksit ning on sellega kooskõlas. Nad on erinevate taustalugudega kirglikud bitcoinerid.",
+      "pageDescription": "Plan B Akadeemia eesmärk on lihtsustada Bitcoini haridust kogu maailmas. Erinevate erialade ekspertide poolt kureeritud akadeemia pakub hulgaliselt kursuseid, mis on mõeldud Bitcoini kõikide tahkude lahti selgitamiseks. Alates algajast kuni eksperdini, olgu see siis oma tempos või professori poolt nädalas jälgitav, me loodame, et akadeemia aitab teil paremini mõista seda laia teemat, mis on Bitcoin. Suur osa meie kursustest on täiesti tasuta, et igaühel, igal pool, oleks juurdepääs haridusele.",
+      "pageSubtitle": "Massiline kasutuselevõtt läbi keskse avatud lähtekoodiga hariduse",
+      "pageTitle": "Tere tulemast Plan B Akadeemiasse",
+      "s2p1": "Olles alustanud Bitcoini jäneseuru uurimist, peate teadma, et see on lõputu teekond mitmete radadega. Siin ülikoolis mõistame seda ja oleme kujundanud oma õppematerjali mitte-lineaarseks, autonoomseks ja nii ulatuslikuks kui võimalik."
     },
     "payment": {
       "accessibility": "Juurdepääsetavus",
