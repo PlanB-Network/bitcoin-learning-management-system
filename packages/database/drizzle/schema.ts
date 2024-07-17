@@ -8,7 +8,6 @@ import {
   pgEnum,
   pgSchema,
   primaryKey,
-  serial,
   text,
   timestamp,
   unique,
@@ -58,7 +57,7 @@ export const usersLud4PublicKeys = users.table('lud4_public_keys', {
 export const contentResources = content.table(
   'resources',
   {
-    id: serial('id').primaryKey().notNull(),
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
     category: varchar('category', { length: 255 }).notNull(),
     path: varchar('path', { length: 255 }).notNull(),
     lastUpdated: timestamp('last_updated', {
@@ -77,7 +76,7 @@ export const contentResources = content.table(
 );
 
 export const contentTags = content.table('tags', {
-  id: serial('id').primaryKey().notNull(),
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
   name: varchar('name', { length: 255 }).unique().notNull(),
 });
 
@@ -765,7 +764,7 @@ export const usersEventPayment = users.table(
 export const contentTutorials = content.table(
   'tutorials',
   {
-    id: serial('id').primaryKey().notNull(),
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
     path: varchar('path', { length: 255 }).unique().notNull(),
 
     name: varchar('name', { length: 255 }).notNull(),
@@ -918,7 +917,7 @@ export const contentContributors = content.table('contributors', {
 });
 
 export const contentProfessors = content.table('professors', {
-  id: serial('id').primaryKey().notNull(),
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
   path: varchar('path', { length: 255 }).unique().notNull(),
 
   name: varchar('name', { length: 255 }).unique().notNull(),
