@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
@@ -49,7 +49,6 @@ function Home() {
     return (
       <MainLayout footerVariant="dark">
         <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
-          <Outlet></Outlet>
           <HeaderSection />
           <NumberSection />
           <EducationSection />
