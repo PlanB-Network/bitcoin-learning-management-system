@@ -2,7 +2,7 @@ import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
   schema: './drizzle/schema.ts',
-  out: './drizzle',
+  out: './drizzle/migrations',
   dialect: 'postgresql',
   introspect: {
     casing: 'camel',
@@ -14,5 +14,6 @@ export default defineConfig({
     user: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || 'postgres',
     database: process.env.POSTGRES_DB || 'postgres',
+    ssl: process.env['NODE_ENV'] === 'production' ? undefined : false,
   },
 });

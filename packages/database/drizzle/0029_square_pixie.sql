@@ -1,1 +1,0 @@
-ALTER TABLE "content"."course_chapters" ALTER COLUMN "part_id" SET NOT NULL;

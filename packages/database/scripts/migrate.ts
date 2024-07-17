@@ -28,7 +28,7 @@ const database = drizzle(sql);
 
 console.log('Running migrations ...');
 
-await migrate(database, { migrationsFolder: 'drizzle' });
+await migrate(database, { migrationsFolder: 'drizzle/migrations' });
 
 await sql.end();
 

@@ -1,1 +1,0 @@
-ALTER TABLE "content"."courses" ADD COLUMN "contact" varchar(255);
