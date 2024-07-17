@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import { App } from './app.tsx';
@@ -16,8 +16,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </Suspense>
   </StrictMode>,
 );
