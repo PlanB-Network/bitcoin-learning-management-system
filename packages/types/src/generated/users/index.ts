@@ -5,6 +5,7 @@
 //export type * from 'drizzle-orm/pg-core';
 
 export type * from './account.js';
+export type * from './bcertificate.js';
 export type * from './billing.js';
 export type * from './calendar.js';
 export type * from './course.js';

@@ -68,7 +68,7 @@ export const usersBCertificateResults = users.table(
     uid: uuid('uid')
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    bCertificateExam: varchar('b_certificate_exam')
+    bCertificateExam: uuid('b_certificate_exam')
       .notNull()
       .references(() => contentBCertificateExam.id, {
         onDelete: 'cascade',

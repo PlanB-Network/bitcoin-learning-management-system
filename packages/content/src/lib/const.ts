@@ -1,5 +1,6 @@
 /* Content Types */
 export const supportedContentTypes = [
+  'bcert',
   'courses',
   'events',
   'professors',

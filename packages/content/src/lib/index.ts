@@ -1,5 +1,10 @@
 import type { ChangedFile } from '@sovereign-university/types';
 
+import {
+  createDeleteBCertificateExams,
+  createUpdateBCertificateExams,
+  groupByBCertificateExam,
+} from './bcertificate/import/index.js';
 import { supportedContentTypes } from './const.js';
 import {
   createDeleteCourses,
@@ -43,6 +48,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateQuizQuestions = createUpdateQuizQuestions(dependencies);
   const updateProfessors = createUpdateProfessors(dependencies);
   const updateEvents = createUpdateEvents(dependencies);
+  const updateBCertificates = createUpdateBCertificateExams(dependencies);
 
   return async (files: ChangedFile[]): Promise<string[]> => {
     const filteredFiles = files.filter((file) =>
@@ -88,6 +94,14 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
       await updateEvents(event, errors);
     }
 
+    const bCertificates = groupByBCertificateExam(filteredFiles, errors);
+    console.log(
+      `-- Sync procedure: Syncing ${bCertificates.length} B Certificates editions`,
+    );
+    for (const bCertificate of bCertificates) {
+      await updateBCertificates(bCertificate, errors);
+    }
+
     return errors;
   };
 };
@@ -99,6 +113,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteTutorials = createDeleteTutorials(dependencies);
   const deleteResources = createDeleteResources(dependencies);
   const deleteEvents = createDeleteEvents(dependencies);
+  const deleteBCertificates = createDeleteBCertificateExams(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
     const timeKey = '-- Sync procedure: Removing old entities';
@@ -111,6 +126,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteTutorials(sync_date, errors);
     await deleteResources(sync_date, errors);
     await deleteEvents(sync_date, errors);
+    await deleteBCertificates(sync_date, errors);
 
     console.timeEnd(timeKey);
   };
