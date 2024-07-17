@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      - testnet
   pull_request:
 
 env:
@@ -47,13 +47,9 @@ jobs:
       - name: Lint Code
         run: pnpm run lint
 
-      # TODO: Add back when we have tests
-      # - name: Run Tests
-      #   run: pnpm
-
   deploy:
     needs: build_and_test
-    if: (github.event_name == 'push') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/testnet')
     runs-on: ubuntu-latest
     permissions:
       packages: write
