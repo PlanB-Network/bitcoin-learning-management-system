@@ -449,6 +449,8 @@ function CourseDetails() {
   };
 
   const Curriculum = ({ course }: { course: JoinedCourseWithAll }) => {
+    const currentDate = new Date();
+
     return (
       <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
         <div className="flex h-fit flex-col">
@@ -529,7 +531,9 @@ function CourseDetails() {
                             !courseHasStartDate && 'hidden',
                           )}
                         >
-                          {(chapter.startDate || chapter.releasePlace) && (
+                          {((chapter.startDate &&
+                            chapter.startDate > currentDate) ||
+                            (!chapter.startDate && chapter.releasePlace)) && (
                             <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
                               {chapter.startDate && (
                                 <span>{chapter.startDate.toDateString()}</span>
