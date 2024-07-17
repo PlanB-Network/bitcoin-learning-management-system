@@ -163,7 +163,15 @@
       "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele."
     },
     "exchange": {
-      "title": "Valuutavahetusettevõtted"
+      "title": "Valuutavahetusettevõtted",
+      "shortDescription": "Bitcoinide ostu-müügi lahendused, KYC ning mitte-KYC",
+      "peer-to-peer": {
+        "description": "Peer-to-peer valuutavahetused on turud, kus üksikisikud vahetavad omavahel bitcoini teiste valuutade vastu. Need vahetused võivad olla reguleeritud või reguleerimata ning tavaliselt ei küsi need turud teie kohta palju teavet (kui üldse). Nad lihtsalt hõlbustavad kasutajatevahelist suhet. Nende tasud võivad olla kõrgemad kui traditsioonilistel vahetustel ja nende likviidsus veidi madalam. See on eelistatud valik bitcoinide kasutajatele, kes üritavad vältida KYC-d."
+      },
+      "centralized": {
+        "description": "Tsentraliseeritud valuutavahetus platvormid on tavaliselt reguleeritud asutused, mis käituvad vahendajatena pangandussüsteemi ja bitcoini ökosüsteemi vahel. Nad võimaldavad teil osta ja müüa suuri koguseid bitcoini ning väljastada see oma rahakotti või pangakontole. Tavaliselt nõuavad nad KYC-d, seega jälgivad nad teie tegevusi, teatades sellest finantsjärelevalve asutustele, et austada kohalikke seadusi."
+      },
+      "description": "Vahetusplatvormid on üks sisse- ja väljapääsuteid teie traditsioonilise valuuta (euro, dollarid) ja bitcoini maailma vahel. Vahetusplatvormid võivad olla reguleeritud ja KYC (Tunne Oma Klienti) nõuetele vastavad või hoopis peer-to-peer ja anonüümsed. Iga vahetusplatvorm pakub erinevaid funktsioone, tasustruktuure, likviidsust ja kliendituge. Iga bitcoiner kasutab erinevat platvormi, vastavalt oma vajadustele ja veendumustele."
     },
     "headerSignature": "Rogzy",
     "merchant": {
@@ -199,7 +207,19 @@
     },
     "pageTitle": "Avastage meie õpetusi",
     "pageSubtitle": "Kergita Bitcoini saladuseloori, avastades selle laiahaardelist ökosüsteemi",
-    "pageDescription": "Bitcoin on lai tööstus, mis muutub iga päevaga aina laiemaks. Et aidata sinul seda avastada, oleme kogunud ja koostanud suure hulga õpetusi, mis kirjeldavad erinevaid lahendusi kõigis Bitcoiniga seotud valdkondades."
+    "pageDescription": "Bitcoin on lai tööstus, mis muutub iga päevaga aina laiemaks. Et aidata sinul seda avastada, oleme kogunud ja koostanud suure hulga õpetusi, mis kirjeldavad erinevaid lahendusi kõigis Bitcoiniga seotud valdkondades.",
+    "explorer": {
+      "didYouKnow": "Kas teadsid ?",
+      "description": "Kõik need õpetused on kirjutanud kirglikud ja pühendunud bitcoinerid, kes soovivad levitada bitcoini haridust kogu maailmas. Ärge unustage meeldivaks märkida, arvustada ning neile sats'e jootrahana annetada!"
+    },
+    "details": {
+      "tipTooltip": "Meeldib? Jäta jootraha.",
+      "source": "Algallikas : ",
+      "madeBy": "Selle õpetuse on teinud",
+      "enjoyed": "Nautisid seda õpetust?",
+      "checkAuthor": "Tutvuge autori teiste kirjutistega ja toetage tema loomingut."
+    },
+    "headerText": "Tere tulemast Bitcoini lõputusse jäneseurgu! Selles osas pakume teile põhjalikke õpetusi enamike olemasolevate bitcoini projektide kohta. Seda lehte haldavad heatahtlikud ja kirglikud bitcoinerid, kes toetavad meie avatud lähtekoodiga projekti. Kui arvate, et oleme teinud vea, võtke meiega ühendust. Et näha meie finantsseotust mainitud projektiga, vaadake meie läbipaistvusaruannet. Täname teid usalduse eest meie ülikoolis ning nautige sõitu."
   },
   "auth": {
     "accountCreated": "Teie konto on loodud, {{userName}}!",
@@ -592,7 +612,11 @@
     "abstract": "Kokkuvõte"
   },
   "professors": {
-    "pageTitle": "Professorid"
+    "pageTitle": "Professorid",
+    "tips": {
+      "thanksNoName": "Tänan, et minu tööd toetate !",
+      "thanks": "Tänan, et toetate {{name}} tööd !"
+    }
   },
   "podcasts": {
     "pageTitle": "Bitcoini taskuhäälingud"
@@ -622,11 +646,20 @@
     "articles": {
       "title": "Artiklid"
     },
-    "headerSignature": "Rogzy"
+    "headerSignature": "Rogzy",
+    "publicGrade": "Avalik hinnang: {{grade}}/5",
+    "github": "Kõiki neid andmeid hallatakse ühe avatud lähtekoodiga <0>Githubi</0> hoidla kaudu. Võite vabalt kaasa aidata ja lisada puuduvat sisu.",
+    "pageTitle": "Tere tulemast Ressursside Portaali",
+    "pageSubtitle": "Keskendage teadmisi nende paremaks jagamiseks",
+    "filterBarLabel": "Leidke täiuslikud ressursid oma vajadustele:",
+    "pageDescription": "Katsetus Bitcoini mõista on nagu pidevalt kasvava labürindi avastamine. Teie teekonna hõlbustamiseks oleme koostanud laia valiku ressursse, sealhulgas raamatuid, taskuhäälinguid, videoid ja konverentside ülekandeid. See portaal kogub kogu teabe ühte Githubi hoidlasse, et aidata teil paremini Bitcoini ökosüsteemi mõista.",
+    "headerText": "Tere tulemast Bitcoini lõputusse jäneseurgu ! Selles osas pakume teile põhjalikke õpetusi enamike olemasolevate bitcoini projektide kohta. Seda lehte haldavad heatahtlikud ja kirglikud bitcoinerid, kes toetavad meie avatud lähtekoodiga projekti. Kui arvate, et oleme teinud vea, võtke meiega ühendust. Et näha meie finantsseotust mainitud projektiga, vaadake meie läbipaistvusaruannet. Täname teid usalduse eest meie ülikoolis ning nautige sõitu."
   },
   "settings": {
     "changePassword": "Muuda parooli",
-    "changeEmail": "Muuda e-posti"
+    "changeEmail": "Muuda e-posti",
+    "changeProfilePicture": "Muuda profiilipilti",
+    "changeDisplayName": "Muuda kuvanime"
   },
   "notFound": {
     "here": "Siin",
