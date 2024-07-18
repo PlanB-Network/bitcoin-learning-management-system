@@ -1,2 +1,1 @@
-export * from './get-professor.js';
-export * from './get-professors.js';
+export * from './get-b-certificate-results.js';

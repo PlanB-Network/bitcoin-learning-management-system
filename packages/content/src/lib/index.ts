@@ -96,7 +96,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
 
     const bCertificates = groupByBCertificateExam(filteredFiles, errors);
     console.log(
-      `-- Sync procedure: Syncing ${bCertificates.length} B Certificates editions`,
+      `-- Sync procedure: Syncing ${bCertificates.length} B Certificates exams`,
     );
     for (const bCertificate of bCertificates) {
       await updateBCertificates(bCertificate, errors);

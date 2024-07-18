@@ -3,8 +3,34 @@
 
 export interface BCertificateExam {
   id: string;
+  path: string;
   date: Date;
   location: string;
   minScore: number;
   duration: number;
+  lastUpdated: Date;
+  lastCommit: string;
+  lastSync: Date;
+}
+
+export interface BCertificateResults {
+  uid: string;
+  bCertificateExam: string;
+  category: string;
+  score: number;
+  lastUpdated: Date;
+  lastCommit: string;
+  lastSync: Date;
+}
+
+export interface JoinedBCertificateResults {
+  id: string;
+  date: Date;
+  location: string;
+  minScore: number;
+  duration: number;
+  path: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  results: BCertificateResults[];
 }

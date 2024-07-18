@@ -1,5 +1,4 @@
 import type { TransactionSql } from '@sovereign-university/database';
-import { firstRow } from '@sovereign-university/database';
 import type {
   BCertificateExam,
   ChangedFile,
@@ -29,8 +28,6 @@ export const createProcessMainFile =
       file.kind === 'modified' ||
       file.kind === 'renamed'
     ) {
-      // If new or updated file, insert or update
-
       const parsedBCertificateExam = yamlToObject<BCertificateExamMain>(
         file.data,
       );
@@ -43,9 +40,10 @@ export const createProcessMainFile =
 
       await transaction<BCertificateExam[]>`
         INSERT INTO content.b_certificate_exam (
-          id, date, location, min_score, duration, last_updated, last_commit, last_sync
+          path, id, date, location, min_score, duration, last_updated, last_commit, last_sync
         )
         VALUES (
+          ${bCertificateExam.path},
           ${parsedBCertificateExam.exam_id},
           ${parsedBCertificateExam.date},
           ${parsedBCertificateExam.location},
@@ -55,7 +53,8 @@ export const createProcessMainFile =
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (id) DO UPDATE SET
+        ON CONFLICT (path) DO UPDATE SET
+          id = EXCLUDED.id,
           date = EXCLUDED.date,
           location = EXCLUDED.location,
           min_score = EXCLUDED.min_score,
@@ -64,6 +63,6 @@ export const createProcessMainFile =
           last_commit = EXCLUDED.last_commit,
           last_sync = NOW()
         RETURNING *
-      `.then(firstRow);
+      `;
     }
   };

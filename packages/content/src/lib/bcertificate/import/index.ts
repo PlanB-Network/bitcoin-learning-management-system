@@ -13,6 +13,7 @@ import {
 } from '../../utils.js';
 
 import { createProcessMainFile } from './main.js';
+import { createProcessResultFile } from './result.js';
 
 interface BCertificateExamDetails {
   path: string;
@@ -51,7 +52,7 @@ export const groupByBCertificateExam = (
       );
 
       const bCertificateExam: ChangedBCertificateExam =
-        groupedBCertificateExams.get(file.path) || {
+        groupedBCertificateExams.get(bCertificateExamPath) || {
           type: 'bcert',
           path: bCertificateExamPath,
           fullPath: fullPath,
@@ -84,6 +85,7 @@ export const createUpdateBCertificateExams = (dependencies: Dependencies) => {
     return postgres
       .begin(async (transaction) => {
         const processMainFile = createProcessMainFile(transaction);
+        const processResultFile = createProcessResultFile(transaction);
 
         try {
           await processMainFile(bCertificateExam, main);
@@ -93,28 +95,24 @@ export const createUpdateBCertificateExams = (dependencies: Dependencies) => {
           );
         }
 
-        // TODO -> get id and add path to main file processing + add sync related fields
+        const id = await transaction<BCertificateExam[]>`
+          SELECT id FROM content.b_certificate_exam WHERE path = ${bCertificateExam.path}
+        `
+          .then(firstRow)
+          .then((row) => row?.id);
 
-        // const id = await transaction<BCertificateExam[]>`
-        //   SELECT id FROM content.b_certificate_exam WHERE id = ${bCertificateExam.path}
-        // `
-        //   .then(firstRow)
-        //   .then((row) => row?.id);
-
-        // if (!id) {
-        //   throw new Error(
-        //     `B Certificate Exam not found for path ${bCertificateExam.path}`,
-        //   );
-        // }
+        if (!id) {
+          throw new Error(
+            `B Certificate Exam not found for path ${bCertificateExam.path}`,
+          );
+        }
 
         for (const file of files) {
           try {
-            // TODO -> ensure that all files are mapped on
-            // await processResultFile(id, file);
-            console.log(file.path);
+            await processResultFile(id, file);
           } catch (error) {
             errors.push(
-              `Error processing file(B Certificate User Results) ${file?.path}: ${error}`,
+              `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
             );
           }
         }
@@ -132,6 +130,11 @@ export const createDeleteBCertificateExams = (dependencies: Dependencies) => {
     try {
       await postgres.exec(
         sql`DELETE FROM content.b_certificate_exam WHERE last_sync < ${sync_date} 
+      `,
+      );
+
+      await postgres.exec(
+        sql`DELETE FROM users.b_certificate_results WHERE last_sync < ${sync_date} 
       `,
       );
     } catch {

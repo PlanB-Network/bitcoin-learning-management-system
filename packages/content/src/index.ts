@@ -1,3 +1,4 @@
+export * from './lib/bcertificate/index.js';
 export * from './lib/coupon/index.js';
 export * from './lib/courses/index.js';
 export * from './lib/events/index.js';
