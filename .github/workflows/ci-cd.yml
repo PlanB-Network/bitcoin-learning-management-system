@@ -21,9 +21,9 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.5.0
 
       - name: Cache turbo build setup
         uses: actions/cache@v4
@@ -67,9 +67,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.5.0
           run_install: false
 
       - name: Cache turbo build setup
@@ -106,7 +106,7 @@ jobs:
             type=sha,prefix=sha-
 
       - name: Build and push Docker image for api
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v5
         with:
           push: true
           files: |
@@ -115,7 +115,7 @@ jobs:
           targets: api
 
       - name: Build and push Docker image for web
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v5
         with:
           push: true
           files: |
