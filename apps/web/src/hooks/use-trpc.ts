@@ -5,15 +5,6 @@ import { useState } from 'react';
 import { trpc } from '../utils/index.js';
 import { tRPCClientOptions } from '../utils/trpc.js';
 
-interface Meta {
-  globalErrorHandler?: boolean;
-}
-
-declare module '@tanstack/react-query' {
-  interface QueryMeta extends Meta {}
-  interface MutationMeta extends Meta {}
-}
-
 const onError = (error: unknown) => {
   if (error instanceof TRPCClientError) {
     if (

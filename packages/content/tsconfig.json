@@ -5,18 +5,13 @@
     "outDir": "dist",
     "rootDir": ".",
     "baseUrl": ".",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "incremental": true,
     "paths": {
-      "#src/*": [
-        "./src/*"
-      ]
+      "#src/*": ["./src/*"]
     }
-  },
-  "references": [
-    {
-      "path": "../database/tsconfig.lib.json"
-    },
-    {
-      "path": "../types/tsconfig.lib.json"
-    }
-  ]
+  }
 }

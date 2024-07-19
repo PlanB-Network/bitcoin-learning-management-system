@@ -4,11 +4,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "baseUrl": "."
-  },
-  "references": [
-    {
-      "path": "../database/tsconfig.lib.json"
-    }
-  ]
+    "baseUrl": ".",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "incremental": true
+  }
 }

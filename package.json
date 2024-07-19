@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@sovereign-university/eslint-config": "workspace:*",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/ui": "1.6.0",
     "autoprefixer": "10.4.19",
@@ -45,7 +45,7 @@
     "tsx": "^4.16.2",
     "turbo": "^2.0.7",
     "typescript": "5.4.5",
-    "vite": "5.3.1",
+    "vite": "5.3.4",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "1.6.0"
   },
