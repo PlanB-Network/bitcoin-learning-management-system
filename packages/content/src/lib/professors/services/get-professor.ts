@@ -1,9 +1,5 @@
 import { firstRow } from '@sovereign-university/database';
-import type {
-  FormattedProfessor,
-  JoinedCourse,
-  JoinedTutorialLight,
-} from '@sovereign-university/types';
+import type { FullProfessor } from '@sovereign-university/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import {
@@ -15,13 +11,8 @@ import {
 
 import { formatProfessor } from './utils.js';
 
-export interface GetProfessorOutput extends FormattedProfessor {
-  courses: JoinedCourse[];
-  tutorials: JoinedTutorialLight[];
-}
-
 export const createGetProfessor = (dependencies: Dependencies) => {
-  return async (id: number, language?: string): Promise<GetProfessorOutput> => {
+  return async (id: number, language?: string): Promise<FullProfessor> => {
     const { postgres } = dependencies;
 
     const professor = await postgres

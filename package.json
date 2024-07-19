@@ -17,7 +17,7 @@
     "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "format": "prettier --ignore-unknown --write --no-error-on-unmatched-pattern .",
-    "nuke": "pnpm clean && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
+    "nuke": "pnpm clear && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
     "prepare": "husky",
     "lint": "turbo run lint",
     "sync-ts-references": "./scripts/sync-ts-references.ts && prettier --ignore-unknown --write --no-error-on-unmatched-pattern ./**/*/tsconfig.json ./**/*/tsconfig.*.json",
