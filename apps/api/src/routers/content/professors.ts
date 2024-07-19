@@ -1,16 +1,17 @@
 import { z } from 'zod';
 
-import type { GetProfessorOutput } from '@sovereign-university/content';
 import {
   createGetProfessor,
   createGetProfessors,
 } from '@sovereign-university/content';
 import {
   formattedProfessorSchema,
-  joinedCourseSchema,
-  joinedTutorialLightSchema,
+  fullProfessorSchema,
 } from '@sovereign-university/schemas';
-import type { FormattedProfessor } from '@sovereign-university/types';
+import type {
+  FormattedProfessor,
+  FullProfessor,
+} from '@sovereign-university/types';
 
 import type { Parser } from '#src/trpc/types.js';
 
@@ -37,14 +38,7 @@ const getProfessorProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output<Parser<GetProfessorOutput>>(
-    formattedProfessorSchema.merge(
-      z.object({
-        courses: joinedCourseSchema.array(),
-        tutorials: joinedTutorialLightSchema.array(),
-      }),
-    ),
-  )
+  .output<Parser<FullProfessor>>(fullProfessorSchema)
   .query(({ ctx, input }) =>
     createGetProfessor(ctx.dependencies)(input.professorId, input.language),
   );
