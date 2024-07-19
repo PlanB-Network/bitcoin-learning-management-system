@@ -222,5 +222,99 @@
     "pageTitle": "比特币建设者",
     "languages": "语言",
     "relatedEvents": "即将举办的相关活动"
+  },
+  "glossary": {
+    "needHelp": "需要帮助定义一个技术词汇吗？",
+    "keepLooking": "想继续看吗？",
+    "loadMoreWords": "加载更多单词",
+    "pageSubtitle": "需要帮助定义一个技术词汇吗？",
+    "pageTitle": "比特币词汇表",
+    "placeHolder": "这是什么？",
+    "randomSearch": "随机搜索",
+    "relatedWords": "相关词汇：",
+    "term": "术语",
+    "filterBar": "找到你正在寻找的单词",
+    "anotherWord": "寻找另一个词",
+    "definition": "定义"
+  },
+  "dashboard": {
+    "profile": {
+      "cancel": "取消",
+      "emailChangeConfirmation": "更改电子邮箱地址的确认邮件已发送，请检查您的收件箱以确认更改。",
+      "save": "保存",
+      "saving": "保存中...",
+      "crop": "作物",
+      "preview": "预览",
+      "displayName": "显示名称",
+      "email": "电子邮件",
+      "password": "密码",
+      "personalInformation": "我的个人信息",
+      "profileInformation": "个人资料",
+      "profilePicture": "个人资料照片",
+      "security": "安全",
+      "username": "用户名"
+    }
+  },
+  "events": {
+    "card": {
+      "seatBooked": "已预订座位",
+      "free": "免费",
+      "online": "在线",
+      "limited": "限于",
+      "unlimited": "无限的",
+      "people": "人们",
+      "watchLive": "观看直播",
+      "watchReplay": "观看回放",
+      "buyReplay": "购买重播",
+      "bookLive": "预订现场直播",
+      "bookSeat": "预订位置",
+      "eventFull": "活动已满员",
+      "visitWebsite": "访问网站"
+    },
+    "missed": {
+      "missedh1": "之前的活动重播",
+      "missedp2": "我们在此储存了所有过去活动的重播，以便人人都可以自由了解错过的内容。",
+      "missedp1": "你错过了一个活动吗？"
+    },
+    "pageDescription": "想要实时讨论比特币吗？在这里，您可以找到Plan B Network社区支持的所有活动。无论您是想听讲座，手持饮料讨论比特币，还是想通过考试评估您的知识，您都能通过Plan B Network找到适合的活动。",
+    "payment": {
+      "callout_physical": "您即将预订此活动的实体入场权限。",
+      "description_online": "请查看活动的日期和时间。到时请登录平台并通过活动页面访问直播。",
+      "description_free_physical": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票和二维码，以在活动现场出示。",
+      "address": "地址",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "access_online_successful": "当活动开始时，登录平台，您将通过活动页面获得直播的访问权限。",
+      "access_physical_successful": "您可以在此处下载您的票据，或者稍后在您的控制面板中下载。",
+      "access_type": "访问类型",
+      "additional_free_description": "此活动免费，因此您预订的这个位置不会被收费。无论如何，请您确保出席，因为位置数量有限。",
+      "amount": "金额",
+      "back_events": "回到活动",
+      "book_seat": "预订位置",
+      "callout_online": "您即将预订此活动的在线访问权限。",
+      "callout_replay": "您即将预订此活动回放视频的访问权限。",
+      "date": "日期",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "description_physical": "请查看场地详情。\n一旦预订处理完毕，我们将为您提供活动时需出示的票据。您凭此票也可观看现场直播和重播视频（如果有的话）。",
+      "download_ticket": "下载您的票据",
+      "enjoy": "希望您喜欢它 :)",
+      "language": "解说语言",
+      "limitation": "限制",
+      "max_capacity": "最大容量为",
+      "payment_details": "付款详情",
+      "payment_successful": "预订成功！",
+      "time": "时间"
+    },
+    "main": {
+      "upcomingEvents": "即将举办的活动",
+      "currentEvents": "正在举办的活动"
+    },
+    "newEvent": {
+      "button": "添加我的活动",
+      "description": "当然！所有比特币活动都可以在这里被看见，欢迎任何创办新活动的倡议 :)",
+      "subtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
+      "title": "想要添加您的活动吗？"
+    },
+    "pageSubtitle": "强大的网络增进了自上而下的采纳过程",
+    "pageTitle": "正在寻找可以参加的比特币活动？"
   }
 }
