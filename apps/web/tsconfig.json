@@ -1,19 +1,11 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "../../packages/ui/src/atoms/Button"],
+  "include": ["src"],
   "compilerOptions": {
     "noEmit": true,
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "types": ["vite/client"],
     "allowImportingTsExtensions": true
-  },
-  "references": [
-    {
-      "path": "../api/tsconfig.trpc.json"
-    },
-    {
-      "path": "../../packages/types/tsconfig.lib.json"
-    }
-  ]
+  }
 }

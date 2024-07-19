@@ -7,7 +7,7 @@
   },
   "main": "./src/trpc/index.ts",
   "scripts": {
-    "build": "tsc --build tsconfig.app.json",
+    "build": "tsc --build tsconfig.json",
     "dev": "tsx --conditions=development --watch src/index.ts",
     "lint": "eslint --color './**/*.ts'",
     "type-check": "tsc --build",
