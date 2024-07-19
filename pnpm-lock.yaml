@@ -173,9 +173,6 @@ importers:
       '@react-hooks-library/core':
         specifier: ^0.6.2
         version: 0.6.2(react@18.3.1)
-      '@sovereign-university/schemas':
-        specifier: workspace:*
-        version: link:../../packages/schemas
       '@sovereign-university/ui':
         specifier: workspace:*
         version: link:../../packages/ui
