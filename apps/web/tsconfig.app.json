@@ -20,9 +20,6 @@
   "references": [
     {
       "path": "../api/tsconfig.trpc.json"
-    },
-    {
-      "path": "../../packages/types/tsconfig.lib.json"
     }
   ]
 }
