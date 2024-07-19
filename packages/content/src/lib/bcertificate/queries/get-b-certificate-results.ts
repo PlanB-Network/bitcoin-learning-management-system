@@ -2,32 +2,29 @@ import { sql } from '@sovereign-university/database';
 import type { JoinedBCertificateResults } from '@sovereign-university/types';
 
 export const getBCertificateResultsQuery = (uid: string) => {
-  return sql<JoinedBCertificateResults>`
-    SELECT
-      r.id,
-      r.path,
-      wl.language,
-      w.original_word,
-      w.file_name,
-      w.related_words,
-      wl.term,
-      wl.definition,
-      r.last_updated,
-      r.last_commit,
-      COALESCE((SELECT ARRAY_AGG(DISTINCT t.name)
-        FROM content.resource_tags rt
-        JOIN content.tags t ON t.id = rt.tag_id
-        WHERE rt.resource_id = r.id), ARRAY[]::text[]) AS tags
-    FROM content.glossary_words w
-    JOIN content.resources r ON r.id = w.resource_id
-    JOIN content.glossary_words_localized wl ON wl.glossary_word_id = w.resource_id
+  return sql<JoinedBCertificateResults[]>`
+    SELECT 
+      exam.id,
+      exam.date,
+      exam.location,
+      exam.min_score,
+      exam.duration,
+      exam.path,
+      exam.last_updated,
+      exam.last_commit,
+      json_agg(json_build_object(
+        'category', results.category,
+        'score', results.score
+      )) AS results
+    FROM
+      content.b_certificate_exam AS exam
+    JOIN
+      users.b_certificate_results AS results
+    ON
+      exam.id = results.b_certificate_exam
+    WHERE
+      results.uid = ${uid}
     GROUP BY
-      r.id,
-      wl.language,
-      w.original_word,
-      w.file_name,
-      w.related_words,
-      wl.term,
-      wl.definition
+      exam.id, exam.date, exam.location, exam.min_score, exam.duration, exam.path, exam.last_updated, exam.last_commit
   `;
 };

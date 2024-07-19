@@ -343,7 +343,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
           {levels.map((level) => (
             <div key={level} className="flex flex-col gap-5">
               <h4 className="leading-normal font-medium text-darkOrange-5 ">
-                {t(`words.level.${level}`) + ` ${t('words.courses')}`}
+                {t(`words.level.${level}`) + ` - ${t('words.courses')}`}
               </h4>
               <div className="flex flex-col gap-2.5">
                 {filteredCourses &&

@@ -23,4 +23,11 @@ export const JoinedBCertificateResultsSchema = BCertificateExamSchema.pick({
   path: true,
   lastUpdated: true,
   lastCommit: true,
-}).merge(z.object({ results: BCertificateResultsSchema.array() }));
+}).merge(
+  z.object({
+    results: BCertificateResultsSchema.pick({
+      category: true,
+      score: true,
+    }).array(),
+  }),
+);

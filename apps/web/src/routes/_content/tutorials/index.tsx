@@ -90,7 +90,6 @@ function TutorialExplorer() {
                 >
                   <img
                     className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
-                    className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
                     src={
                       tutorial.builder
                         ? computeAssetCdnUrl(

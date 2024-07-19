@@ -32,5 +32,8 @@ export interface JoinedBCertificateResults {
   path: string;
   lastUpdated: Date;
   lastCommit: string;
-  results: BCertificateResults[];
+  results: {
+    category: string;
+    score: number;
+  }[];
 }

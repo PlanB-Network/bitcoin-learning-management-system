@@ -1,12 +1,14 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import React, { useContext, useState } from 'react';
+import { capitalize } from 'lodash-es';
+import React, { useContext, useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import { Button } from '@sovereign-university/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
+import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute('/dashboard/_dashboard/bcertificate')({
   component: DashboardBCertificate,
@@ -20,51 +22,22 @@ function DashboardBCertificate() {
     navigate({ to: '/' });
   }
 
+  const { data: exams } =
+    trpc.user.bcertificate.getBCertificateResults.useQuery();
+
   const isScreenMd = useGreater('md');
 
-  const results = [
-    {
-      date: new Date(2023, 10, 11),
-      place: 'Lugano, Switzerland',
-      parts: [
-        { topic: 'History', mark: 15, max: 20 },
-        { topic: 'Money', mark: 17, max: 20 },
-        { topic: 'Privacy', mark: 17, max: 20 },
-        { topic: 'Exchanges', mark: 17, max: 20 },
-        { topic: 'Lightning Network', mark: 10, max: 20 },
-      ],
-      downloadLink: '#',
-    },
-    {
-      date: new Date(2023, 11, 15),
-      place: 'Zurich, Switzerland',
-      parts: [
-        { topic: 'History', mark: 18, max: 20 },
-        { topic: 'Privacy', mark: 19, max: 20 },
-        { topic: 'Exchanges', mark: 15, max: 20 },
-        { topic: 'Lightning Network', mark: 12, max: 20 },
-      ],
-      downloadLink: '#',
-    },
-    {
-      date: new Date(2024, 1, 22),
-      place: 'Geneva, Switzerland',
-      parts: [
-        { topic: 'History', mark: 14, max: 20 },
-        { topic: 'Money', mark: 15, max: 20 },
-        { topic: 'Privacy', mark: 16, max: 20 },
-      ],
-      downloadLink: '#',
-    },
-  ];
-
-  const [isResultsOpen, setIsResultOpen] = useState<boolean[]>(
-    Array.from({ length: results.length }, () => false),
-  );
+  const [isResultsOpen, setIsResultOpen] = useState<boolean[]>([]);
 
   const handleResultsOpen = (index: number) => {
     setIsResultOpen((v) => v.map((value, i) => (i === index ? !value : value)));
   };
+
+  useEffect(
+    () =>
+      setIsResultOpen(Array.from({ length: exams?.length ?? 0 }, () => false)),
+    [exams],
+  );
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
@@ -140,8 +113,9 @@ function DashboardBCertificate() {
               </tr>
             </thead>
             <tbody>
-              {results.length > 0 &&
-                results.map((result, index) => (
+              {exams &&
+                exams.length > 0 &&
+                exams.map((exam, index) => (
                   <React.Fragment key={index}>
                     <tr
                       className={
@@ -149,10 +123,10 @@ function DashboardBCertificate() {
                       }
                     >
                       <td className="py-1.5 pr-1.5 mobile-body3 md:desktop-body1">
-                        {result.date.toLocaleDateString()}
+                        {exam.date.toLocaleDateString()}
                       </td>
                       <td className="p-1.5 mobile-body3 md:desktop-body1">
-                        {result.place}
+                        {exam.location}
                       </td>
                       <td className="p-1.5 mobile-body3 md:desktop-body1">
                         <div
@@ -180,18 +154,14 @@ function DashboardBCertificate() {
                         </div>
                       </td>
                       <td className="p-1.5 mobile-body3 md:desktop-body1">
-                        {result.parts.reduce(
-                          (total, part) => total + part.mark,
+                        {exam.results.reduce(
+                          (total, result) => total + result.score,
                           0,
                         )}
-                        /
-                        {result.parts.reduce(
-                          (total, part) => total + part.max,
-                          0,
-                        )}
+                        /{exam.results.length * 20}
                       </td>
-                      <td className="py-1.5 pl-1.5 mobile-body3 md:desktop-body1">
-                        <Link to={result.downloadLink} className="inline-block">
+                      <td className="flex justify-center py-1.5 pl-1.5 mobile-body3 md:desktop-body1">
+                        <Link to="#" className="inline-block">
                           <Button
                             mode="light"
                             variant="newPrimary"
@@ -205,26 +175,26 @@ function DashboardBCertificate() {
                       </td>
                     </tr>
                     {isResultsOpen[index] &&
-                      result.parts.map((part, partIndex) => (
-                        <tr key={`${index}-${partIndex}`}>
+                      [...exam.results].reverse().map((result, resultIndex) => (
+                        <tr key={`${index}-${resultIndex}`}>
                           <td className="pr-1.5"></td>
                           <td></td>
                           <td className="p-1.5 mobile-body3 md:desktop-body1">
                             <p>
                               {t('words.part')}{' '}
-                              {`${partIndex + 1} - ${part.topic}`} :{' '}
-                              {`${part.mark} / ${part.max}`}
+                              {`${resultIndex + 1} - ${capitalize(result.category)}`}{' '}
+                              : {`${result.score} / 20`}
                             </p>
                           </td>
                           <td className="p-1.5 mobile-body3 md:desktop-body1">
-                            <p>{`${part.mark} / ${part.max}`}</p>
+                            <p>{`${result.score} / 20`}</p>
                           </td>
                           <td className="pl-1.5"></td>
                         </tr>
                       ))}
                   </React.Fragment>
                 ))}
-              {results.length === 0 && (
+              {exams && exams.length === 0 && (
                 <tr>
                   <td
                     className="text-newBlack-4 whitespace-pre-line text-center"
