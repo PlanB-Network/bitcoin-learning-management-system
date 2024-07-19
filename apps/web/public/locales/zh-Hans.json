@@ -25,7 +25,7 @@
   "auth": {
     "resetPassword": "重置您的密码",
     "passwordMinLength": "密码必须至少为{{len}}个字符",
-    "checkingTokenExplain": "我们正在检查代币是否有效.……",
+    "checkingTokenExplain": "我们正在检查通证是否有效.……",
     "accountCreated": "您的账户已创建，{{userName}}！",
     "alreadyHaveAccount": "已经有账户了吗？",
     "canSaveProgress": "您现在可以在比特币学院保存您的进度了",
@@ -36,7 +36,8 @@
     "errors": {
       "usernameRegex": "用户名只能包含字母、数字_、. 和 -",
       "usernameRequired": "需要您提供用户名",
-      "usernameTooShort": "用户名必须至少包含5个字符"
+      "usernameTooShort": "用户名必须至少包含5个字符",
+      "displayNameRequired": "需要显示名称"
     },
     "forgottenPassword": "忘记了您的密码？",
     "headerAccountCreated": "创建的账户",
@@ -55,10 +56,10 @@
     "invalidToken": "无效的代币",
     "checkingToken": "检查代币",
     "invalidTokenExplain": {
-      "expired": "代币已过期",
-      "consumed": "该代币已被使用",
-      "invalid": "代币无效",
-      "notFound": "未找到代币"
+      "expired": "通证已过期",
+      "consumed": "该通证已被使用",
+      "invalid": "通证无效",
+      "notFound": "未找到通证"
     },
     "passwordResetError": "重置密码错误",
     "passwordResetSent": "已向您的邮箱发送密码重置邮件（如果该电子邮件地址存在于我们的数据库中）。",
@@ -113,5 +114,113 @@
     "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
     "pageTitle": "比特币图书馆",
     "topicsAddressed": "已写过的话题 "
+  },
+  "words": {
+    "wallets": "钱包"
+  },
+  "conferences": {
+    "description": "会议是比特币行业的关键元素。它们是每个比特币用户教育旅程的一部分。我们构建了这个工具，帮助您在数百个会议中浏览。",
+    "noConferences": "尚未为{{year}}添加会议。",
+    "backConferences": "回到会议",
+    "conferenceName": "会议名称",
+    "conferencesSinceGenesis": "自创世区块以来的比特币会议档案",
+    "addConferences": "随时通过<0>Github</0>代码仓库添加任何缺失的会议。",
+    "details": {
+      "findReplay": "找到回放",
+      "speaker": "扬声器",
+      "nextVideo": "下一个视频",
+      "previousVideo": "上一个视频",
+      "selectStage": "选择一个阶段",
+      "selectVideo": "选择一个视频",
+      "watchReplay": "观看回放"
+    },
+    "language": "语言",
+    "latestConferences": "最新的会议",
+    "location": "位置",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "会议重播",
+    "planBConferences": "B Plan会议",
+    "topics": "话题"
+  },
+  "courses": {
+    "chapter": {
+      "finishCourse": "完成课程",
+      "detail": {
+        "p1heading": "您打算亲自参加这堂课吗？",
+        "title": "课程详情",
+        "p1content": "一定要预定您的位子",
+        "p2heading": "您不能亲自来吗？",
+        "p2content": "没问题！课程将在此页面上直播，并在稍后提供重播。",
+        "bookSeat": "预定您的位子",
+        "classIsFull": "班级已经满员",
+        "cancelBooking": "取消您的预订"
+      },
+      "live": {
+        "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
+        "title": "直播视频"
+      },
+      "count": "第{{count}}章",
+      "next": "完成，进入下一章节",
+      "thanksTip": "想说谢谢？打赏。",
+      "nextLesson": "下一节课将会是"
+    },
+    "details": {
+      "mobile": {
+        "chapters": "{{chapters}}章节",
+        "hours": "{{hours}}小时"
+      },
+      "taughtBy": "这门课程由以下人员教授：",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "amount": "金额",
+      "level": "等级：$t(words.level.{{level}})",
+      "accessible": "可终生访问",
+      "buyCourse": "购买课程",
+      "courseId": "课程名称：{{courseId}}",
+      "coursePayment": "课程付款",
+      "curriculum": "课程表",
+      "date": "日期：从{{startDate}}到{{endDate}}",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "description": "概述",
+      "duration": "时长：{{hours}}小时",
+      "goal": "目标： ",
+      "numberOfChapters": "章节数量：{{number}}",
+      "objectives": "目标",
+      "objectivesTitle": "你将学到什么：",
+      "price": "价格：{{price}} sats（聪）",
+      "professor": "教授",
+      "startCourse": "开始课程",
+      "teacher": "老师：{{teacher}}",
+      "teachers": "教师：{{teachers}}",
+      "teacherWord": "教师寄语",
+      "total": "总计",
+      "payment_successful": "付款成功！",
+      "payment_details": "付款详情",
+      "invoiceId": "交易ID"
+    },
+    "categories": {
+      "btc": "比特币",
+      "crypto": "密码学",
+      "cuboplus": "比特币",
+      "econ": "奥地利经济学",
+      "fin": "金融",
+      "ln": "闪电网络",
+      "min": "挖矿",
+      "secu": "安全与隐私"
+    },
+    "explorer": {
+      "buildPath": "進入兔子洞時建造你自己的道路",
+      "exploreCourses": "探索所有B计划课程",
+      "findCourses": "借助于课程选择器，找到最适合您需求的完美课程",
+      "footerTitle": "我们的教授在这里为您服务！"
+    }
+  },
+  "builders": {
+    "networkStrength": "网络的力量在于其成员",
+    "noRelatedEvents": "这个建设者近期没有相关活动举办。",
+    "otherCommunities": "探索计划B社区",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "比特币建设者",
+    "languages": "语言",
+    "relatedEvents": "即将举办的相关活动"
   }
 }
