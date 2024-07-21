@@ -430,7 +430,11 @@
       "pageDescription": "Plan B Akadeemia eesmärk on lihtsustada Bitcoini haridust kogu maailmas. Erinevate erialade ekspertide poolt kureeritud akadeemia pakub hulgaliselt kursuseid, mis on mõeldud Bitcoini kõikide tahkude lahti selgitamiseks. Alates algajast kuni eksperdini, olgu see siis oma tempos või professori poolt nädalas jälgitav, me loodame, et akadeemia aitab teil paremini mõista seda laia teemat, mis on Bitcoin. Suur osa meie kursustest on täiesti tasuta, et igaühel, igal pool, oleks juurdepääs haridusele.",
       "pageSubtitle": "Massiline kasutuselevõtt läbi keskse avatud lähtekoodiga hariduse",
       "pageTitle": "Tere tulemast Plan B Akadeemiasse",
-      "s2p1": "Olles alustanud Bitcoini jäneseuru uurimist, peate teadma, et see on lõputu teekond mitmete radadega. Siin ülikoolis mõistame seda ja oleme kujundanud oma õppematerjali mitte-lineaarseks, autonoomseks ja nii ulatuslikuks kui võimalik."
+      "s2p1": "Olles alustanud Bitcoini jäneseuru uurimist, peate teadma, et see on lõputu teekond mitmete radadega. Siin ülikoolis mõistame seda ja oleme kujundanud oma õppematerjali mitte-lineaarseks, autonoomseks ja nii ulatuslikuks kui võimalik.",
+      "s2p3": "Kõik meie kursused on 100% tasuta, seega miski ei saa sind takistada!",
+      "s2t1": "Bitcoini haridus on teekond, mitte sihtkoht",
+      "s2p2": "Saate valida oma tee ja seda mööda minna, omandades oskusi ja teadmisi täpselt nii palju kui teil motivatsiooni on.",
+      "s3t1": "Raja iseenda tee mööda jäneseurgu"
     },
     "payment": {
       "accessibility": "Juurdepääsetavus",
@@ -447,7 +451,12 @@
       "back_course": "Tagasi kursuse juurde",
       "dates_to": "{{startDate}} kuni {{endDate}}",
       "numberOfChapters": "Peatükkide arv",
-      "date": "Kuupäev"
+      "date": "Kuupäev",
+      "access_invoice": "Oma arvele pääsete juurde oma tegumiriba kaudu",
+      "callout": "Olete ostmas seda kursust.",
+      "description": "Antud ost annab teile juurdepääsu platvormil olevatele veebikursustele ning samuti ka kohapealsetele tundidele, eeldusel, et broneerite oma koha. Iga õppesessioon toimub kohapeal ettenähtud kuupäevadel ja kohtades enne selle salvestamist ja platvormil veebis edastamist.",
+      "book_description": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada.",
+      "qr_unified": "Antud QR-kood on ühtne, seega see aktsepteerib nii lightning kui ka on-chain makseid."
     },
     "part": {
       "count": "Osa {{count}}"
@@ -455,7 +464,10 @@
     "quizz": {
       "quizz": "Kiirtest",
       "quizzResults": "Kiirtesti tulemused",
-      "quizzReview": "Kiirtesti ülevaade"
+      "quizzReview": "Kiirtesti ülevaade",
+      "clickOnPie": "Klõpsake sektordiagrammil, et kontrollida oma vigu ja vaadata selgitusi",
+      "resultCongrats": "Tubli töö, sul läks hästi !",
+      "resultItsOk": "Ära anna alla, järgmisel korral läheb sul paremini !"
     },
     "preview": {
       "by": "{{professor}} poolt",
