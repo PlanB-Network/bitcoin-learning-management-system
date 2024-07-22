@@ -531,10 +531,6 @@ importers:
         version: 3.23.8
 
   packages/types:
-    dependencies:
-      zod-to-ts:
-        specifier: ^1.2.0
-        version: 1.2.0(typescript@5.5.3)(zod@3.23.8)
     devDependencies:
       '@sovereign-university/schemas':
         specifier: workspace:*
@@ -545,6 +541,9 @@ importers:
       zod:
         specifier: 3.23.8
         version: 3.23.8
+      zod-to-ts:
+        specifier: ^1.2.0
+        version: 1.2.0(typescript@5.5.3)(zod@3.23.8)
 
   packages/ui:
     dependencies:

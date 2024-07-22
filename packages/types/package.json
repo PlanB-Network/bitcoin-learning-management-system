@@ -23,9 +23,7 @@
   "devDependencies": {
     "@sovereign-university/schemas": "workspace:*",
     "@types/express-session": "^1.18.0",
-    "zod": "3.23.8"
-  },
-  "dependencies": {
+    "zod": "3.23.8",
     "zod-to-ts": "^1.2.0"
   }
 }

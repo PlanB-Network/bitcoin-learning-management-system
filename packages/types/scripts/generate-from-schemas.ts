@@ -150,6 +150,7 @@ const generateFileContent = (
     const output = printNode(node);
 
     switch (node.kind) {
+      // @ts-ignore TODO align ts version between zod-to-ts and workspace
       case ts.SyntaxKind.TypeLiteral:
         fileContent += `export interface ${typeName} ${output};\n\n`;
         break;
