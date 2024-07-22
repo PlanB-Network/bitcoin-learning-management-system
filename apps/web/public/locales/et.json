@@ -10,7 +10,7 @@
     "coreTeamRogzyRole": "Tootejuht & Kaasasutaja",
     "coreTeamAsioRole": "Hariduskoordinaator",
     "coreTeamAjelexRole": "Sõlmede koordinaator",
-    "corporateTitle": "Ettevõtte taga",
+    "corporateTitle": "Ettevõtlus seljataha",
     "coportateContact": "Kontaktandmed:",
     "storyTitle": "Meie lugu",
     "commitmentContent": "Meie panused Bitcoini kogukonda ees on järgmised:\n • Säilida avatud lähtekoodiga\n • Pakkuda kõrgkvaliteedilist hariduslikku sisu\n • Tõlkida meie sisu võimalikult paljudesse keeltesse\n • Toetada Bitcoini ehitajaid nende ettevõtlusteekonnal",
@@ -467,7 +467,9 @@
       "quizzReview": "Kiirtesti ülevaade",
       "clickOnPie": "Klõpsake sektordiagrammil, et kontrollida oma vigu ja vaadata selgitusi",
       "resultCongrats": "Tubli töö, sul läks hästi !",
-      "resultItsOk": "Ära anna alla, järgmisel korral läheb sul paremini !"
+      "resultItsOk": "Ära anna alla, järgmisel korral läheb sul paremini !",
+      "resultNotBad": "Pole paha !",
+      "resultPerfect": "Täiuslik sooritus ! Õnnitlused !"
     },
     "preview": {
       "by": "{{professor}} poolt",
@@ -475,7 +477,10 @@
     },
     "unreleased": {
       "hyperinflation": "Hüperinflatsiooni uurimine",
-      "colcardAndSparrow": "Coldcard ja Sparrow"
+      "colcardAndSparrow": "Coldcard ja Sparrow",
+      "financeIntroduction": "Sissejuhatus finantsidesse",
+      "financialCrisis": "Suurte finantskriiside analüüs",
+      "theoreticalLightning": "Edasijõudnud teoreetiline kursus Lightning Networki kohta"
     }
   },
   "dashboard": {
@@ -493,7 +498,8 @@
       "pastTicketTitle": "Varasemad broneeringud",
       "upcomingTicketTitle": "Eelseisvad broneeringud",
       "ticketType": "Tüüp",
-      "accessLive": "Pääse otseülekandeni"
+      "accessLive": "Pääse otseülekandeni",
+      "billingSubtitle": "Laadige siit alla oma broneeringute arved."
     },
     "calendar": {
       "calendar": "Kalender",
