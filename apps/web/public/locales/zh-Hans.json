@@ -37,7 +37,8 @@
       "usernameRegex": "用户名只能包含字母、数字_、. 和 -",
       "usernameRequired": "需要您提供用户名",
       "usernameTooShort": "用户名必须至少包含5个字符",
-      "displayNameRequired": "需要显示名称"
+      "displayNameRequired": "需要显示名称",
+      "displayNameTooShort": "显示名称必须包含至少2个字符。"
     },
     "forgottenPassword": "忘记了您的密码？",
     "headerAccountCreated": "创建的账户",
@@ -153,7 +154,8 @@
         "p2content": "没问题！课程将在此页面上直播，并在稍后提供重播。",
         "bookSeat": "预定您的位子",
         "classIsFull": "班级已经满员",
-        "cancelBooking": "取消您的预订"
+        "cancelBooking": "取消您的预订",
+        "ticketDownload": "下载您的票据"
       },
       "live": {
         "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
@@ -211,7 +213,22 @@
       "buildPath": "進入兔子洞時建造你自己的道路",
       "exploreCourses": "探索所有B计划课程",
       "findCourses": "借助于课程选择器，找到最适合您需求的完美课程",
-      "footerTitle": "我们的教授在这里为您服务！"
+      "footerTitle": "我们的教授在这里为您服务！",
+      "footerp2": "如果你想改进或提供你自己的课程，你可以通过GitHub来实现。如果要支持一位教授，你可以给他（她）的课程评价，直接给他（她）打赏，或者成为大学会员来支持这个平台。"
+    },
+    "payment": {
+      "accessibility_forever": "永远",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "accessibility": "可访问性",
+      "amount": "金额",
+      "back_course": "回到课程",
+      "callout": "您即将购买此课程。",
+      "date": "日期",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "downloadCurriculum": "下载课程大纲"
+    },
+    "part": {
+      "count": "部分{{count}}"
     }
   },
   "builders": {
