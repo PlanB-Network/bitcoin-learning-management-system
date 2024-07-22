@@ -40,5 +40,30 @@
     "newPassword": "新密碼",
     "passwordMinLength": "密碼必須至少有{{len}}個字符",
     "passwordRequired": "密碼為必填"
+  },
+  "bCertificate": {
+    "challengeYourself": "挑戰自己並展現你的實力！",
+    "checkout": "查看比特幣證書",
+    "curious": "好奇這個測驗是什麼樣子嗎？",
+    "joeNakamotoVideo": "比特幣測驗到底是什麼？作者：Joe Nakamoto",
+    "knowledgeableBitcoin": "對比特幣有所了解？",
+    "organizeExam": "舉辦考試",
+    "organizeSubtitle": "讓十億人接受比特幣並不容易",
+    "organizeTitle": "想在您的中心舉辦比特幣證書考試嗎？",
+    "pageSubtitle": "透過集中化的開源教育實現大規模採用",
+    "pageTitle": "比特幣證書",
+    "readChart": "閱讀這張圖表",
+    "noBookExam": "尚未安排考試時段。",
+    "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。"
+  },
+  "bet": {
+    "contribute": "這個工具包開放大家做出貢獻。它使用 Figma，因此任何人都可以添加、修改和翻譯。若要協作、添加類別或討論，請隨時加入我們的 Discord。",
+    "contributeButton": "幫助與貢獻",
+    "contributeDescription": "如果您想要增加、編輯或翻譯一些內容，我們非常歡迎您的幫助！",
+    "contributeTitle": "想要參與貢獻嗎？",
+    "educationalContent": {
+      "title": "教育內容",
+      "description": "這些內容目標用於教育活動和相關用途。"
+    }
   }
 }
