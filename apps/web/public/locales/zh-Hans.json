@@ -214,7 +214,20 @@
       "exploreCourses": "探索所有B计划课程",
       "findCourses": "借助于课程选择器，找到最适合您需求的完美课程",
       "footerTitle": "我们的教授在这里为您服务！",
-      "footerp2": "如果你想改进或提供你自己的课程，你可以通过GitHub来实现。如果要支持一位教授，你可以给他（她）的课程评价，直接给他（她）打赏，或者成为大学会员来支持这个平台。"
+      "footerp2": "如果你想改进或提供你自己的课程，你可以通过GitHub来实现。如果要支持一位教授，你可以给他（她）的课程评价，直接给他（她）打赏，或者成为大学会员来支持这个平台。",
+      "journey": "比特币是一场旅行，而不是一个目的地",
+      "moreToCome": ".... 还有更多！",
+      "pageDescription": "Plan B学院致力于在全球范围内简化比特币教育。由各领域的专家精心策划，学院提供了丰富的课程，旨在揭示比特币的各个方面。从初学者到专家，无论是按照你自己的节奏学习，还是每周由教授指导，我们希望学院能帮助你更好理解比特币这个广泛的主题。我们的大部分课程都是完全免费的，以便任何人，任何地方，都可以接受教育。",
+      "pageSubtitle": "通过集中的开源教育实现大规模应用",
+      "pageTitle": "欢迎来到Plan B学院",
+      "s2p1": "如果你已经开始探索比特币这个兔子洞，你必须知道这是一条无尽的旅程，有许多路径。在这所大学，我们理解这一点，并设计了我们的教育内容，使其非线性，自主性，并尽可能的广泛。",
+      "s2p2": "你将能够选择自己的道路并沿着它前进，只要你有动力，就能获取技能和知识。",
+      "s2p3": "我们所有的课程都是100%免费的，所以没有什么可以阻止你！",
+      "s2t1": "比特币教育是一场旅行，而不是一个目的地",
+      "s3PickLevel": "选择级别：",
+      "s3PickTopic": "选择话题：",
+      "s3t1": "進入兔子洞時建造你自己的道路",
+      "seeCourse": "查看课程"
     },
     "payment": {
       "accessibility_forever": "永远",
@@ -225,10 +238,42 @@
       "callout": "您即将购买此课程。",
       "date": "日期",
       "dates_to": "从{{startDate}} 到 {{endDate}}",
-      "downloadCurriculum": "下载课程大纲"
+      "downloadCurriculum": "下载课程大纲",
+      "description": "此次购买将授予您在平台上访问在线课程以及参加面对面课程的权限，前提是您预订了位子。每个课程会议都会在指定的日期和地点进行，然后被录制并在平台上在线播放。",
+      "book_description": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票据和二维码，以在活动现场出示。",
+      "duration": "持续时间",
+      "invoiceId": "交易ID",
+      "numberOfChapters": "章节数量",
+      "payment_details": "付款详情",
+      "payment_successful": "付款成功！",
+      "qr_unified": "此二维码是统一的，因此它接受闪电和链上支付。",
+      "teacher": "教师",
+      "teachers": "教师",
+      "time": "时间"
     },
     "part": {
       "count": "部分{{count}}"
+    },
+    "unreleased": {
+      "theoreticalLightning": "关于闪电网络的高级理论课程",
+      "colcardAndSparrow": "Coldcard和Sparrow",
+      "financeIntroduction": "金融入门",
+      "financialCrisis": "分析主要的金融危机",
+      "hyperinflation": "研究超级通货膨胀"
+    },
+    "preview": {
+      "by": "由{{professor}}",
+      "letsgo": "让我们出发"
+    },
+    "quizz": {
+      "clickOnPie": "点击饼状图，以检查你的错误，并查看解释",
+      "quizz": "测验",
+      "quizzResults": "测验结果",
+      "quizzReview": "测验回顾",
+      "resultCongrats": "恭喜，你做得很好！",
+      "resultItsOk": "别放弃，你下次会做得更好！",
+      "resultNotBad": "还不错！",
+      "resultPerfect": "绝对完美！恭喜！"
     }
   },
   "builders": {
@@ -269,7 +314,48 @@
       "profileInformation": "个人资料",
       "profilePicture": "个人资料照片",
       "security": "安全",
-      "username": "用户名"
+      "username": "用户名",
+      "change": "改变",
+      "edit": "编辑"
+    },
+    "account": "账户",
+    "booking": {
+      "accessLive": "访问直播",
+      "billingTitle": "账单历史",
+      "billingSubtitle": "在此处下载您的预训发票。",
+      "downloadInvoice": "下载发票",
+      "downloadTicket": "下载票据",
+      "invoiceDate": "日期",
+      "invoiceTitle": "标题",
+      "invoiceType": "类型",
+      "ticketDate": "日期",
+      "ticketLocation": "位置",
+      "ticketTitle": "标题",
+      "ticketType": "类型",
+      "noInvoice": "您还没有发票。",
+      "noTicket": "您还没有票据。",
+      "pastTicketTitle": "过去的预训",
+      "upcomingTicketTitle": "即将到来的预订",
+      "upcomingTicketSubtitle": "在此处下载您的票据，以参加您的下次活动。请确保带上票据，以便能进入活动现场。"
+    },
+    "bookings": "预订",
+    "calendar": {
+      "calendar": "日历",
+      "personalCalendar": "个人时间安排"
+    },
+    "courses": "课程",
+    "logout": "登出",
+    "myCourses": {
+      "completed": "已完成",
+      "completedCoursesTitle": "已完成的课程",
+      "completedCoursesDescription": "在这里，您可以查看您已完成的课程。",
+      "details": "详细信息",
+      "inprogress": "进行中",
+      "inprogressCoursesTitle": "正在进行的课程",
+      "inprogressCoursesDescription": "在这里，您可以查看您已开始的课程的进度。",
+      "resumeLesson": "摘要",
+      "seeProgress": "在这里查看你的进度。",
+      "startCourse": "开始或完成一门课程"
     }
   },
   "events": {
@@ -333,5 +419,22 @@
     },
     "pageSubtitle": "强大的网络增进了自上而下的采纳过程",
     "pageTitle": "正在寻找可以参加的比特币活动？"
+  },
+  "home": {
+    "header": {
+      "content": "PlanB平台旨在向全球提供最佳工具和教育内容，帮助人们重获他们的自主权。从个人到社区，我们在此帮助您走过比特币旅程。",
+      "forEducators": "给教育者和建设者",
+      "globalNetwork": "全球比特币网络",
+      "welcome": "欢迎来到PlanB网络",
+      "link": "成为网络的一部分",
+      "startLink": "开始学习"
+    },
+    "numbersSection": {
+      "networkMember": "网络会员"
+    },
+    "sectionEducation": {
+      "title": "从初级到高级",
+      "subtitle": "在学院里学习比特币"
+    }
   }
 }
