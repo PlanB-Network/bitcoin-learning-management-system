@@ -13,7 +13,8 @@
     "corporateTitle": "企業背後的支持",
     "commitmentContent": "我們對比特幣社區的承諾如下：\n • 保持開源\n • 提供高質量的教育內容\n • 將我們的內容翻譯成盡可能多的語言\n • 支援比特幣建設者的創業之旅",
     "coreTeamContent": "PlanB Network是由數百名貢獻者、教師、社區領導者、設計師、開發者和組織者組成的團體。非常感謝每一位每天努力實現PlanB的人。（貢獻者名單即將公布）",
-    "corporateContent": "PlanB Network 是三個專注於比特幣發展的實體共同參與的項目。為了擴大比特幣教育，他們決定合作成立 PlanB Network。為了實現將比特幣教育推廣到全球的目標，許多其他實體也決定貢獻力量，加入我們的行列。衷心感謝他們的支持。"
+    "corporateContent": "PlanB Network 是三個專注於比特幣發展的實體共同參與的項目。為了擴大比特幣教育，他們決定合作成立 PlanB Network。為了實現將比特幣教育推廣到全球的目標，許多其他實體也決定貢獻力量，加入我們的行列。衷心感謝他們的支持",
+    "coportateContact": "聯繫資訊："
   },
   "auth": {
     "errors": {
@@ -64,6 +65,79 @@
     "educationalContent": {
       "title": "教育內容",
       "description": "這些內容目標用於教育活動和相關用途。"
+    },
+    "hereForYou": "BET 在這裡為您服務！",
+    "pageDescription": "大規模普及不是一件容易的事。為了更快實現這個目標，我們開發了一個可擴展的教育內容資料庫。在這裡，比特幣教育者可以隨時上傳和使用需要的內容。我們不需要每次都重新發明輪子，讓我們一起合作，把有用的資源集中在一個工具包中吧！",
+    "pageSubtitle": "BET——一個適用於所有教育項目的比特幣開源工具包",
+    "pageTitle": "比特幣教育工具包",
+    "visualContent": {
+      "description": "這些內容是原始視覺資料，供你在創作中使用。",
+      "title": "視覺內容"
+    }
+  },
+  "book": {
+    "abstract": "摘要",
+    "bookSummary": {
+      "modifyTooltip": "撰寫或修改",
+      "noSummary": "目前還沒有摘要。如果你讀過這本書並想分享你的摘要，別猶豫，快到 GitHub 上寫一份吧。這不僅能幫助社區和提升學校的質量，還可能讓你賺到一些 sats！",
+      "notice": "這個摘要與 GitHub 連結，您可以在那裡進行修改或新增內容",
+      "title": "書籍摘要"
+    },
+    "buttonBuy": "購買",
+    "buttonPdf": "PDF / 電子書",
+    "offeredBy": "由慷慨的貢獻者提供",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "比特幣圖書館",
+    "topicsAddressed": "討論的主題： "
+  },
+  "builders": {
+    "noRelatedEvents": "這位建設者目前還沒有即將舉行的相關活動。",
+    "otherCommunities": "探索 Plan B 社區",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "比特幣開發者",
+    "languages": "語言",
+    "networkStrength": "網絡的力量在於其成員",
+    "relatedEvents": "即將來臨的相關活動"
+  },
+  "conferences": {
+    "addConferences": "如果有漏掉的會議，可以隨時透過這個 <0>Github</0> 資料庫新增。",
+    "backConferences": "返回會議列表",
+    "conferenceName": "會議名稱",
+    "details": {
+      "findReplay": "找到重播",
+      "nextVideo": "下一個影片",
+      "previousVideo": "前一個影片",
+      "selectStage": "選擇一個階段",
+      "selectVideo": "選擇一個影片",
+      "speaker": "演講者",
+      "watchReplay": "觀看回放"
+    },
+    "language": "語言",
+    "latestConferences": "最新的會議",
+    "location": "地點",
+    "noConferences": "暫無{{year}}的會議。",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "會議回放",
+    "planBConferences": "Plan B 研討會",
+    "topics": "主題",
+    "conferencesSinceGenesis": "自創世區塊以來的比特幣會議檔案",
+    "description": "會議在比特幣行業中扮演了關鍵角色，也是每個比特幣愛好者學習過程中的重要部分。我們做了這個工具，幫助你輕鬆找到數百場會議。"
+  },
+  "courses": {
+    "categories": {
+      "btc": "比特幣",
+      "crypto": "密碼學",
+      "cuboplus": "比特幣",
+      "econ": "奧地利經濟學",
+      "fin": "金融",
+      "min": "挖礦",
+      "secu": "安全與隱私",
+      "ln": "閃點網路"
+    },
+    "chapter": {
+      "count": "第{{count}}章",
+      "finishCourse": "完成課程",
+      "next": "完成，進入下一章篇"
     }
   }
 }
