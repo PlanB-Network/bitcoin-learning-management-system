@@ -205,7 +205,7 @@ const Buttons = ({
             }
             params={
               ticket.type === 'course'
-                ? { courseId: 'bizschool', chapterId: ticket.eventId }
+                ? { courseId: 'biz102', chapterId: ticket.eventId }
                 : {
                     eventId: ticket.eventId,
                   }

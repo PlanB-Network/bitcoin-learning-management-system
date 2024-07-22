@@ -25,4 +25,5 @@ export type Level =
   | 'intermediate'
   | 'advanced'
   | 'expert'
+  | 'wizard'
   | 'developer';

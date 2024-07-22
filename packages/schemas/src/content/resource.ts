@@ -16,5 +16,6 @@ export const levelSchema = z.enum([
   'intermediate',
   'advanced',
   'expert',
+  'wizard',
   'developer',
 ]);
