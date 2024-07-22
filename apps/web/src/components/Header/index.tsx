@@ -67,12 +67,12 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
       beginner: [],
       intermediate: [],
       advanced: [],
-      developer: [],
+      wizard: [],
     } as {
       beginner: Course[];
       intermediate: Course[];
       advanced: Course[];
-      developer: Course[];
+      wizard: Course[];
     },
   );
 

@@ -27,7 +27,7 @@ interface CourseInfoItemProps {
   className?: string;
 }
 
-const levels = ['beginner', 'intermediate', 'advanced', 'developer'];
+const levels = ['beginner', 'intermediate', 'advanced', 'wizard'];
 
 const sortCoursesByLevel = (courses: JoinedCourse[]) => {
   return courses.sort((a, b) => {
