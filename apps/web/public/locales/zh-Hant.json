@@ -14,5 +14,31 @@
     "commitmentContent": "我們對比特幣社區的承諾如下：\n • 保持開源\n • 提供高質量的教育內容\n • 將我們的內容翻譯成盡可能多的語言\n • 支援比特幣建設者的創業之旅",
     "coreTeamContent": "PlanB Network是由數百名貢獻者、教師、社區領導者、設計師、開發者和組織者組成的團體。非常感謝每一位每天努力實現PlanB的人。（貢獻者名單即將公布）",
     "corporateContent": "PlanB Network 是三個專注於比特幣發展的實體共同參與的項目。為了擴大比特幣教育，他們決定合作成立 PlanB Network。為了實現將比特幣教育推廣到全球的目標，許多其他實體也決定貢獻力量，加入我們的行列。衷心感謝他們的支持。"
+  },
+  "auth": {
+    "errors": {
+      "displayNameRequired": "顯示名稱是必要的。",
+      "displayNameTooShort": "顯示名稱必須至少包含2個字符。",
+      "usernameTooShort": "使用者名稱必須至少包含5個字符。",
+      "usernameRegex": "使用者名稱只能包含字母、數字、_、. 和 -。",
+      "usernameRequired": "使用者名稱必填。",
+      "displayNameRegex": "顯示名稱只能包含字母、數字、_、.、- 和空格。"
+    },
+    "forgottenPassword": "忘記您的密碼嗎？",
+    "headerAccountCreated": "帳號已創建",
+    "lnurlAuthDescription": "使用您的Lightning錢包掃描此QR碼登入！",
+    "noAccountNeeded": "不需帳戶在Plan B Network開始學習！",
+    "noAccountYet": "還沒有帳戶嗎？",
+    "alreadyHaveAccount": "已經有帳戶了嗎？",
+    "canSaveProgress": "您現在可以在比特幣學院保存您的進度",
+    "connectWithLn": "連接到閃電網路",
+    "createAccount": "註冊",
+    "createOne": "在此註冊！",
+    "accountCreated": "您的帳戶已經建立，{{userName}}！",
+    "emailAddress": "電子郵件地址",
+    "resetPassword": "重設您的密碼",
+    "newPassword": "新密碼",
+    "passwordMinLength": "密碼必須至少有{{len}}個字符",
+    "passwordRequired": "密碼為必填"
   }
 }
