@@ -1,1 +1,1 @@
-export { getEventsQuery } from './get-events.js';
+export { getRecentEventsQuery } from './get-events.js';

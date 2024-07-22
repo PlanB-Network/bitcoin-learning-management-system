@@ -47,7 +47,7 @@ function Builder() {
     },
   );
 
-  const { data: events } = trpc.content.getEvents.useQuery();
+  const { data: events } = trpc.content.getRecentEvents.useQuery();
 
   const filteredCommunities = communities
     ? communities

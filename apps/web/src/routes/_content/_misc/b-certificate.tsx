@@ -69,7 +69,7 @@ const BCertificateOrganize = () => {
 };
 
 function BCertificate() {
-  const { data: events, isFetched } = trpc.content.getEvents.useQuery();
+  const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery();
 
   const filteredEvents = events
     ? events.filter(

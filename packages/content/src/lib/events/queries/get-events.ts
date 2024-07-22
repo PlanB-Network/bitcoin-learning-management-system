@@ -1,7 +1,7 @@
 import { sql } from '@sovereign-university/database';
 import type { JoinedEvent } from '@sovereign-university/types';
 
-export const getEventsQuery = () => {
+export const getRecentEventsQuery = () => {
   return sql<JoinedEvent[]>`
     SELECT 
       e.*,
@@ -23,6 +23,8 @@ export const getEventsQuery = () => {
       FROM content.event_languages el
       WHERE el.event_id = e.id
     ) la ON TRUE
+
+    WHERE e.start_date >= NOW() - INTERVAL '3 months'
 
     GROUP BY e.id, ta.tags, la.languages
   `;
