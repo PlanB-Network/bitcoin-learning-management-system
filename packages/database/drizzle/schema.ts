@@ -887,6 +887,25 @@ export const contentTutorialTags = content.table(
   }),
 );
 
+export const contentTutorialLikesDislikes = content.table(
+  'tutorial_likes_dislikes',
+  {
+    tutorialId: integer('tutorial_id')
+      .notNull()
+      .references(() => contentTutorials.id, { onDelete: 'cascade' }),
+    uid: uuid('uid')
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    // true = liked, false = disliked
+    liked: boolean('liked').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.tutorialId, table.uid],
+    }),
+  }),
+);
+
 // QUIZZES
 
 export const contentQuizQuestions = content.table('quiz_questions', {

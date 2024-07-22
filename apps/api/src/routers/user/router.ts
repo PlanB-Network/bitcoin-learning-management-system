@@ -30,6 +30,7 @@ import { userBillingRouter } from './billing.js';
 import { userCalendarRouter } from './calendar.js';
 import { userCoursesRouter } from './courses.js';
 import { userEventsRouter } from './events.js';
+import { userTutorialsRouter } from './tutorials.js';
 import { paymentWebhooksProcedure } from './webhooks.js';
 
 export const userRouter = createTRPCRouter({
@@ -110,6 +111,7 @@ export const userRouter = createTRPCRouter({
   calendar: userCalendarRouter,
   courses: userCoursesRouter,
   events: userEventsRouter,
+  tutorials: userTutorialsRouter,
   webhooks: paymentWebhooksProcedure,
   tokenInfo: publicProcedure
     .input(z.object({ token: z.string() }))

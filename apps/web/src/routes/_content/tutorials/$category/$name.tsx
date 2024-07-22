@@ -44,24 +44,30 @@ function TutorialDetails() {
   const { tutorials } = useContext(AppContext);
   const isFetchedTutorials = tutorials && tutorials.length > 0;
 
-  function headerAndFooterText(creditName: string, creditUrl: string) {
+  const likeTutorialMutation = trpc.user.tutorials.likeTutorial.useMutation({
+    onSuccess: () => console.log('Success'),
+  });
+
+  function headerAndFooterText() {
     return (
       <div className="text-xs text-red-500 sm:text-base">
-        {creditName && (
-          <div>
-            <span className="font-light">{t('tutorials.details.madeBy')}</span>
-            <span className="font-semibold"> {creditName}</span>
-          </div>
+        {isFetched && tutorial && (
+          <button
+            onClick={() =>
+              likeTutorialMutation.mutate({ id: tutorial.id, liked: true })
+            }
+          >
+            Test like
+          </button>
         )}
-        {creditUrl && (
-          <div>
-            <span className="font-light uppercase">
-              {t('tutorials.details.source')}
-            </span>
-            <a href={creditUrl} target="_blank" rel="noopener noreferrer">
-              <span className="font-semibold"> {creditUrl}</span>
-            </a>
-          </div>
+        {isFetched && tutorial && (
+          <button
+            onClick={() =>
+              likeTutorialMutation.mutate({ id: tutorial.id, liked: false })
+            }
+          >
+            Test dislike
+          </button>
         )}
       </div>
     );
@@ -71,15 +77,12 @@ function TutorialDetails() {
     tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>,
   ) {
     return (
-      <div className="px-5 sm:px-0">
-        <h1 className="border-b-[0.2rem] border-gray-400/50 py-2 text-left text-2xl font-bold uppercase text-blue-800 sm:text-4xl">
+      <div className="px-5 md:px-0">
+        <h1 className="border-b-2 border-newBlack-3 py-2.5 text-left text-2xl font-bold uppercase text-newBlack-1 md:text-5xl leading-[116%] stroke-[#D9D9D9] stroke-1">
           {tutorial.title}
         </h1>
         <div className="mt-4 flex flex-row justify-between">
-          {headerAndFooterText(
-            tutorial.credits?.name as string,
-            tutorial.credits?.link as string,
-          )}
+          {headerAndFooterText()}
           {(tutorial.credits?.name || tutorial.credits?.link) && (
             <button onClick={openTipModal}>
               <TooltipWithContent
@@ -91,6 +94,33 @@ function TutorialDetails() {
             </button>
           )}
         </div>
+
+        <section className="flex flex-col">
+          {tutorial.credits?.link && (
+            <span className="body-16px text-black">
+              {t('tutorials.details.source')}
+              <a
+                href={tutorial.credits.link}
+                target="_blank"
+                rel="noreferrer"
+                className="leading-snug tracking-015px underline text-newBlue-1"
+              >
+                {tutorial.credits.link}
+              </a>
+            </span>
+          )}
+          {tutorial.credits?.professor?.name && (
+            <span className="body-16px text-black">
+              {t('tutorials.details.author')}
+              <a
+                href={`/professor/${formatNameForURL(tutorial.credits.professor.name)}-${tutorial.credits.professor.id}`}
+                className="title-small-med-16px hover:underline"
+              >
+                {tutorial.credits.professor.name}
+              </a>
+            </span>
+          )}
+        </section>
       </div>
     );
   }
@@ -111,7 +141,7 @@ function TutorialDetails() {
               )}
             />
             <div className="-mt-4 w-full max-w-5xl lg:hidden">
-              <span className=" mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
+              <span className="mb-2 w-full text-left text-lg font-normal leading-6 text-orange-500">
                 <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
                 <Link
                   to={'/tutorials/$category'}
@@ -124,7 +154,7 @@ function TutorialDetails() {
               </span>
             </div>
             <div className="flex w-full flex-col items-center justify-center px-2">
-              <div className="mt-4 w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
+              <div className="w-full space-y-6 overflow-hidden text-blue-900 md:max-w-3xl">
                 {header(tutorial)}
                 {isFetchedTutorials && (
                   <TutorialsMarkdownBody
@@ -136,12 +166,7 @@ function TutorialDetails() {
                     tutorials={tutorials || []}
                   />
                 )}
-                <div>
-                  {headerAndFooterText(
-                    tutorial.credits?.name as string,
-                    tutorial.credits?.link as string,
-                  )}
-                </div>
+                <div>{headerAndFooterText()}</div>
               </div>
               {tutorial.credits?.professor?.id && (
                 <div className="mt-4 flex w-full flex-col items-center space-y-2 p-5 text-blue-900 sm:px-0">

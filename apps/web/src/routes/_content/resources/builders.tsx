@@ -51,7 +51,6 @@ function Builders() {
       tagLine={t('builders.pageSubtitle')}
       filterBar={{
         onChange: setSearchTerm,
-        label: t('resources.filterBarLabel'),
       }}
       activeCategory="builders"
     >

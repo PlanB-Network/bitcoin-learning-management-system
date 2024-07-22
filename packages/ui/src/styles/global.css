@@ -180,6 +180,26 @@
     @apply text-sm font-medium leading-[120%];
   }
 
+  .body-14px {
+    @apply text-sm font-normal leading-[143%] tracking-[0.17px];
+  }
+
+  .body-16px {
+    @apply text-base font-normal leading-normal tracking-015px;
+  }
+
+  .display-large {
+    @apply text-5xl leading-[116%] font-normal tracking-normal;
+  }
+
+  .label-large-20px {
+    @apply text-xl leading-normal font-normal tracking-[0.1px];
+  }
+
+  .title-small-med-16px {
+    @apply text-base leading-normal font-medium tracking-015px;
+  }
+
   .width-increment-20 {
     @apply w-[calc(100%+20px)] -ml-[10px];
   }

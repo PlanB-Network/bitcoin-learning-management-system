@@ -180,6 +180,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             title: t(`tutorials.${category.name}.title`),
             path: category.route,
             description: t(`tutorials.${category.name}.shortDescription`),
+            icon: category.icon,
           })),
         },
       ],
