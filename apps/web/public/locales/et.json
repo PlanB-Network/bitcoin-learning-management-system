@@ -499,7 +499,10 @@
       "upcomingTicketTitle": "Eelseisvad broneeringud",
       "ticketType": "Tüüp",
       "accessLive": "Pääse otseülekandeni",
-      "billingSubtitle": "Laadige siit alla oma broneeringute arved."
+      "billingSubtitle": "Laadige siit alla oma broneeringute arved.",
+      "noInvoice": "Teil pole veel arveid.",
+      "noTicket": "Teil pole veel pileteid.",
+      "upcomingTicketSubtitle": "Laadige oma pilet siit alla, et järgmisel üritusel osaleda. Veenduge, et võtaksite pileti üritusele kaasa sellele pääsemiseks."
     },
     "calendar": {
       "calendar": "Kalender",
@@ -512,7 +515,11 @@
       "completedCoursesTitle": "Läbitud kursused",
       "inprogress": "Pooleli",
       "inprogressCoursesTitle": "Pooleliolevad kursused",
-      "resumeLesson": "Jätka"
+      "resumeLesson": "Jätka",
+      "completedCoursesDescription": "Siin saate oma lõpetatud kursuseid üle vaadata.",
+      "inprogressCoursesDescription": "Siin saate kontrollida oma edusamme alustatud kursustel.",
+      "seeProgress": "et siin oma edusamme näha.",
+      "startCourse": "Alusta või lõpeta kursus"
     },
     "profile": {
       "change": "Muuda",
@@ -529,7 +536,8 @@
       "displayName": "Kuvanimi",
       "profilePicture": "Profiilipilt",
       "personalInformation": "Minu isiklik teave",
-      "profileInformation": "Profiili info"
+      "profileInformation": "Profiili info",
+      "emailChangeConfirmation": "E-posti muutmise kinnituseks on e-kiri saadetud, muutmise kinnitamiseks kontrollige oma postkasti."
     },
     "logout": "Logi välja",
     "bookings": "Broneeringud"
@@ -547,13 +555,18 @@
       "eventFull": "Üritus on täis",
       "people": "inimesed",
       "buyReplay": "Osta kordus",
-      "bookSeat": "Broneeri istekoht"
+      "bookSeat": "Broneeri istekoht",
+      "online": "võrgus"
     },
     "main": {
-      "upcomingEvents": "Tulevased sündmused"
+      "upcomingEvents": "Tulevased sündmused",
+      "currentEvents": "Praegu asetleidvad sündmused"
     },
     "newEvent": {
-      "button": "Lisa minu üritus"
+      "button": "Lisa minu üritus",
+      "description": "Muidugi ! Kõik Bitcoini üritused saavad siin suurendada oma nähtavust ning iga algatus uue ürituse loomiseks on alati teretulnud :)",
+      "subtitle": "Miljardi inimese oranž-pillimine pole sugugi lihtne",
+      "title": "Soovite lisada oma sündmust ?"
     },
     "payment": {
       "amount": "Summa",
@@ -569,8 +582,27 @@
       "payment_successful": "Broneering õnnestus !",
       "address": "Aadress",
       "payment_details": "Makseandmed",
-      "access_type": "Juurdepääsu tüüp"
-    }
+      "access_type": "Juurdepääsu tüüp",
+      "access_invoice": "Oma arvele pääsete juurde oma tegumiriba kaudu.",
+      "access_physical_successful": "Saate oma pileti alla laadida siit või siis laadida selle alla hiljem oma tegumiribalt.",
+      "additional_free_description": "Antud üritus on tasuta, seega teilt ei võeta tasu antud koha broneerimise eest. Siiski, palun veenduge, et osalete üritusel, kuna kohtade arv on piiratud.",
+      "callout_online": "Olete broneerimas veebipääsu antud üritusele.",
+      "callout_physical": "Olete broneerimas füüsilist juurdepääsu antud üritusele.",
+      "callout_replay": "Olete broneerimas juurdepääsu antud ürituse videolindistusele.",
+      "description_online": "Palun vaadake üle sündmuse kuupäev ja kellaaeg.\nKui aeg kätte jõuab, logige platvormile sisse ning pääsete otseülekandele sündmuse lehe kaudu.",
+      "description_physical": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile pileti üritusel esitamiseks. See pilet annab teile ka juurdepääsu otseülekandele ja kordusvideole, kui neid on.",
+      "description_free_physical": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada.",
+      "enjoy": "Loodame, et naudite seda! :)",
+      "access_online_successful": "Sündmuse algamisel, logi platvormi sisse ning teile antakse juurdepääs otseülekandele sündmuse lehe kaudu."
+    },
+    "missed": {
+      "missedh1": "Möödunud sündmused taasesitamiseks",
+      "missedp1": "Jäid mõnest üritusest ilma ?",
+      "missedp2": "Siin säilitame kõiki meie võrgustikus toimunud sündmuste kordusi, nii et kõik saavad vabalt järele jõuda vastavalt sellele, millest ilma jäi."
+    },
+    "pageSubtitle": "Tugeva võrgustiku poolt soodustatud alt-üles omaksvõtt",
+    "pageTitle": "Otsid Bitcoini üritust, kuhu minna ?",
+    "pageDescription": "Soovid Bitcoinist rääkida reaalajas ? Siit leiate kõik Plan B Võrgustiku kogukondade poolt toetatavad sündmused. Olgu selleks loengu kuulamine, Bitcoinist vestlemine joogi kõrvale või eksami sooritamine oma teadmiste hindamiseks, siis leiate õige ürituse selleks siit Plan B Võrgustiku kaudu."
   },
   "glossary": {
     "definition": "Selgitus",
@@ -578,12 +610,19 @@
     "randomSearch": "Juhuslik otsing",
     "relatedWords": "Seotud sõnad :",
     "term": "Mõiste",
-    "loadMoreWords": "Laadige rohkem sõnu"
+    "loadMoreWords": "Laadige rohkem sõnu",
+    "anotherWord": "Otsi teist sõna",
+    "filterBar": "Leia otsitav sõna",
+    "needHelp": "Vajate abi tehnilise sõna määratlemisel ?",
+    "keepLooking": "Soovid edasi otsida ?",
+    "pageSubtitle": "Vajate abi tehnilise sõna määratlemisel ?",
+    "placeHolder": "Mis see on ?"
   },
   "home": {
     "header": {
       "startLink": "Alusta õppimist",
-      "globalNetwork": "Globaalne Bitcoini võrgustik"
+      "globalNetwork": "Globaalne Bitcoini võrgustik",
+      "content": "PlanB platvormi eesmärk on pakkuda parimaid tööriistu ja hariduslikku sisu üle kogu maailma, et aidata inimestel taastada oma suveräänsus. Alates üksikisikutest kuni kogukondadeni, oleme siin, et aidata teid teie Bitcoini teekonnal."
     },
     "sectionEducation": {
       "link": "Vaadake akadeemiat"
