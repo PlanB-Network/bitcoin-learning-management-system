@@ -25,7 +25,7 @@
   "auth": {
     "resetPassword": "重置您的密码",
     "passwordMinLength": "密码必须至少为{{len}}个字符",
-    "checkingTokenExplain": "我们正在检查代币是否有效.……",
+    "checkingTokenExplain": "我们正在检查通证是否有效.……",
     "accountCreated": "您的账户已创建，{{userName}}！",
     "alreadyHaveAccount": "已经有账户了吗？",
     "canSaveProgress": "您现在可以在比特币学院保存您的进度了",
@@ -36,7 +36,9 @@
     "errors": {
       "usernameRegex": "用户名只能包含字母、数字_、. 和 -",
       "usernameRequired": "需要您提供用户名",
-      "usernameTooShort": "用户名必须至少包含5个字符"
+      "usernameTooShort": "用户名必须至少包含5个字符",
+      "displayNameRequired": "需要显示名称",
+      "displayNameTooShort": "显示名称必须包含至少2个字符。"
     },
     "forgottenPassword": "忘记了您的密码？",
     "headerAccountCreated": "创建的账户",
@@ -55,10 +57,10 @@
     "invalidToken": "无效的代币",
     "checkingToken": "检查代币",
     "invalidTokenExplain": {
-      "expired": "代币已过期",
-      "consumed": "该代币已被使用",
-      "invalid": "代币无效",
-      "notFound": "未找到代币"
+      "expired": "通证已过期",
+      "consumed": "该通证已被使用",
+      "invalid": "通证无效",
+      "notFound": "未找到通证"
     },
     "passwordResetError": "重置密码错误",
     "passwordResetSent": "已向您的邮箱发送密码重置邮件（如果该电子邮件地址存在于我们的数据库中）。",
@@ -113,5 +115,326 @@
     "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
     "pageTitle": "比特币图书馆",
     "topicsAddressed": "已写过的话题 "
+  },
+  "words": {
+    "wallets": "钱包"
+  },
+  "conferences": {
+    "description": "会议是比特币行业的关键元素。它们是每个比特币用户教育旅程的一部分。我们构建了这个工具，帮助您在数百个会议中浏览。",
+    "noConferences": "尚未为{{year}}添加会议。",
+    "backConferences": "回到会议",
+    "conferenceName": "会议名称",
+    "conferencesSinceGenesis": "自创世区块以来的比特币会议档案",
+    "addConferences": "随时通过<0>Github</0>代码仓库添加任何缺失的会议。",
+    "details": {
+      "findReplay": "找到回放",
+      "speaker": "扬声器",
+      "nextVideo": "下一个视频",
+      "previousVideo": "上一个视频",
+      "selectStage": "选择一个阶段",
+      "selectVideo": "选择一个视频",
+      "watchReplay": "观看回放"
+    },
+    "language": "语言",
+    "latestConferences": "最新的会议",
+    "location": "位置",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "会议重播",
+    "planBConferences": "B Plan会议",
+    "topics": "话题"
+  },
+  "courses": {
+    "chapter": {
+      "finishCourse": "完成课程",
+      "detail": {
+        "p1heading": "您打算亲自参加这堂课吗？",
+        "title": "课程详情",
+        "p1content": "一定要预定您的位子",
+        "p2heading": "您不能亲自来吗？",
+        "p2content": "没问题！课程将在此页面上直播，并在稍后提供重播。",
+        "bookSeat": "预定您的位子",
+        "classIsFull": "班级已经满员",
+        "cancelBooking": "取消您的预订",
+        "ticketDownload": "下载您的票据"
+      },
+      "live": {
+        "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
+        "title": "直播视频"
+      },
+      "count": "第{{count}}章",
+      "next": "完成，进入下一章节",
+      "thanksTip": "想说谢谢？打赏。",
+      "nextLesson": "下一节课将会是"
+    },
+    "details": {
+      "mobile": {
+        "chapters": "{{chapters}}章节",
+        "hours": "{{hours}}小时"
+      },
+      "taughtBy": "这门课程由以下人员教授：",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "amount": "金额",
+      "level": "等级：$t(words.level.{{level}})",
+      "accessible": "可终生访问",
+      "buyCourse": "购买课程",
+      "courseId": "课程名称：{{courseId}}",
+      "coursePayment": "课程付款",
+      "curriculum": "课程表",
+      "date": "日期：从{{startDate}}到{{endDate}}",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "description": "概述",
+      "duration": "时长：{{hours}}小时",
+      "goal": "目标： ",
+      "numberOfChapters": "章节数量：{{number}}",
+      "objectives": "目标",
+      "objectivesTitle": "你将学到什么：",
+      "price": "价格：{{price}} sats（聪）",
+      "professor": "教授",
+      "startCourse": "开始课程",
+      "teacher": "老师：{{teacher}}",
+      "teachers": "教师：{{teachers}}",
+      "teacherWord": "教师寄语",
+      "total": "总计",
+      "payment_successful": "付款成功！",
+      "payment_details": "付款详情",
+      "invoiceId": "交易ID"
+    },
+    "categories": {
+      "btc": "比特币",
+      "crypto": "密码学",
+      "cuboplus": "比特币",
+      "econ": "奥地利经济学",
+      "fin": "金融",
+      "ln": "闪电网络",
+      "min": "挖矿",
+      "secu": "安全与隐私"
+    },
+    "explorer": {
+      "buildPath": "進入兔子洞時建造你自己的道路",
+      "exploreCourses": "探索所有B计划课程",
+      "findCourses": "借助于课程选择器，找到最适合您需求的完美课程",
+      "footerTitle": "我们的教授在这里为您服务！",
+      "footerp2": "如果你想改进或提供你自己的课程，你可以通过GitHub来实现。如果要支持一位教授，你可以给他（她）的课程评价，直接给他（她）打赏，或者成为大学会员来支持这个平台。",
+      "journey": "比特币是一场旅行，而不是一个目的地",
+      "moreToCome": ".... 还有更多！",
+      "pageDescription": "Plan B学院致力于在全球范围内简化比特币教育。由各领域的专家精心策划，学院提供了丰富的课程，旨在揭示比特币的各个方面。从初学者到专家，无论是按照你自己的节奏学习，还是每周由教授指导，我们希望学院能帮助你更好理解比特币这个广泛的主题。我们的大部分课程都是完全免费的，以便任何人，任何地方，都可以接受教育。",
+      "pageSubtitle": "通过集中的开源教育实现大规模应用",
+      "pageTitle": "欢迎来到Plan B学院",
+      "s2p1": "如果你已经开始探索比特币这个兔子洞，你必须知道这是一条无尽的旅程，有许多路径。在这所大学，我们理解这一点，并设计了我们的教育内容，使其非线性，自主性，并尽可能的广泛。",
+      "s2p2": "你将能够选择自己的道路并沿着它前进，只要你有动力，就能获取技能和知识。",
+      "s2p3": "我们所有的课程都是100%免费的，所以没有什么可以阻止你！",
+      "s2t1": "比特币教育是一场旅行，而不是一个目的地",
+      "s3PickLevel": "选择级别：",
+      "s3PickTopic": "选择话题：",
+      "s3t1": "進入兔子洞時建造你自己的道路",
+      "seeCourse": "查看课程"
+    },
+    "payment": {
+      "accessibility_forever": "永远",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "accessibility": "可访问性",
+      "amount": "金额",
+      "back_course": "回到课程",
+      "callout": "您即将购买此课程。",
+      "date": "日期",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "downloadCurriculum": "下载课程大纲",
+      "description": "此次购买将授予您在平台上访问在线课程以及参加面对面课程的权限，前提是您预订了位子。每个课程会议都会在指定的日期和地点进行，然后被录制并在平台上在线播放。",
+      "book_description": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票据和二维码，以在活动现场出示。",
+      "duration": "持续时间",
+      "invoiceId": "交易ID",
+      "numberOfChapters": "章节数量",
+      "payment_details": "付款详情",
+      "payment_successful": "付款成功！",
+      "qr_unified": "此二维码是统一的，因此它接受闪电和链上支付。",
+      "teacher": "教师",
+      "teachers": "教师",
+      "time": "时间"
+    },
+    "part": {
+      "count": "部分{{count}}"
+    },
+    "unreleased": {
+      "theoreticalLightning": "关于闪电网络的高级理论课程",
+      "colcardAndSparrow": "Coldcard和Sparrow",
+      "financeIntroduction": "金融入门",
+      "financialCrisis": "分析主要的金融危机",
+      "hyperinflation": "研究超级通货膨胀"
+    },
+    "preview": {
+      "by": "由{{professor}}",
+      "letsgo": "让我们出发"
+    },
+    "quizz": {
+      "clickOnPie": "点击饼状图，以检查你的错误，并查看解释",
+      "quizz": "测验",
+      "quizzResults": "测验结果",
+      "quizzReview": "测验回顾",
+      "resultCongrats": "恭喜，你做得很好！",
+      "resultItsOk": "别放弃，你下次会做得更好！",
+      "resultNotBad": "还不错！",
+      "resultPerfect": "绝对完美！恭喜！"
+    }
+  },
+  "builders": {
+    "networkStrength": "网络的力量在于其成员",
+    "noRelatedEvents": "这个建设者近期没有相关活动举办。",
+    "otherCommunities": "探索计划B社区",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "比特币建设者",
+    "languages": "语言",
+    "relatedEvents": "即将举办的相关活动"
+  },
+  "glossary": {
+    "needHelp": "需要帮助定义一个技术词汇吗？",
+    "keepLooking": "想继续看吗？",
+    "loadMoreWords": "加载更多单词",
+    "pageSubtitle": "需要帮助定义一个技术词汇吗？",
+    "pageTitle": "比特币词汇表",
+    "placeHolder": "这是什么？",
+    "randomSearch": "随机搜索",
+    "relatedWords": "相关词汇：",
+    "term": "术语",
+    "filterBar": "找到你正在寻找的单词",
+    "anotherWord": "寻找另一个词",
+    "definition": "定义"
+  },
+  "dashboard": {
+    "profile": {
+      "cancel": "取消",
+      "emailChangeConfirmation": "更改电子邮箱地址的确认邮件已发送，请检查您的收件箱以确认更改。",
+      "save": "保存",
+      "saving": "保存中...",
+      "crop": "作物",
+      "preview": "预览",
+      "displayName": "显示名称",
+      "email": "电子邮件",
+      "password": "密码",
+      "personalInformation": "我的个人信息",
+      "profileInformation": "个人资料",
+      "profilePicture": "个人资料照片",
+      "security": "安全",
+      "username": "用户名",
+      "change": "改变",
+      "edit": "编辑"
+    },
+    "account": "账户",
+    "booking": {
+      "accessLive": "访问直播",
+      "billingTitle": "账单历史",
+      "billingSubtitle": "在此处下载您的预训发票。",
+      "downloadInvoice": "下载发票",
+      "downloadTicket": "下载票据",
+      "invoiceDate": "日期",
+      "invoiceTitle": "标题",
+      "invoiceType": "类型",
+      "ticketDate": "日期",
+      "ticketLocation": "位置",
+      "ticketTitle": "标题",
+      "ticketType": "类型",
+      "noInvoice": "您还没有发票。",
+      "noTicket": "您还没有票据。",
+      "pastTicketTitle": "过去的预训",
+      "upcomingTicketTitle": "即将到来的预订",
+      "upcomingTicketSubtitle": "在此处下载您的票据，以参加您的下次活动。请确保带上票据，以便能进入活动现场。"
+    },
+    "bookings": "预订",
+    "calendar": {
+      "calendar": "日历",
+      "personalCalendar": "个人时间安排"
+    },
+    "courses": "课程",
+    "logout": "登出",
+    "myCourses": {
+      "completed": "已完成",
+      "completedCoursesTitle": "已完成的课程",
+      "completedCoursesDescription": "在这里，您可以查看您已完成的课程。",
+      "details": "详细信息",
+      "inprogress": "进行中",
+      "inprogressCoursesTitle": "正在进行的课程",
+      "inprogressCoursesDescription": "在这里，您可以查看您已开始的课程的进度。",
+      "resumeLesson": "摘要",
+      "seeProgress": "在这里查看你的进度。",
+      "startCourse": "开始或完成一门课程"
+    }
+  },
+  "events": {
+    "card": {
+      "seatBooked": "已预订座位",
+      "free": "免费",
+      "online": "在线",
+      "limited": "限于",
+      "unlimited": "无限的",
+      "people": "人们",
+      "watchLive": "观看直播",
+      "watchReplay": "观看回放",
+      "buyReplay": "购买重播",
+      "bookLive": "预订现场直播",
+      "bookSeat": "预订位置",
+      "eventFull": "活动已满员",
+      "visitWebsite": "访问网站"
+    },
+    "missed": {
+      "missedh1": "之前的活动重播",
+      "missedp2": "我们在此储存了所有过去活动的重播，以便人人都可以自由了解错过的内容。",
+      "missedp1": "你错过了一个活动吗？"
+    },
+    "pageDescription": "想要实时讨论比特币吗？在这里，您可以找到Plan B Network社区支持的所有活动。无论您是想听讲座，手持饮料讨论比特币，还是想通过考试评估您的知识，您都能通过Plan B Network找到适合的活动。",
+    "payment": {
+      "callout_physical": "您即将预订此活动的实体入场权限。",
+      "description_online": "请查看活动的日期和时间。到时请登录平台并通过活动页面访问直播。",
+      "description_free_physical": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票和二维码，以在活动现场出示。",
+      "address": "地址",
+      "access_invoice": "您可通过控制面板查看您的发票",
+      "access_online_successful": "当活动开始时，登录平台，您将通过活动页面获得直播的访问权限。",
+      "access_physical_successful": "您可以在此处下载您的票据，或者稍后在您的控制面板中下载。",
+      "access_type": "访问类型",
+      "additional_free_description": "此活动免费，因此您预订的这个位置不会被收费。无论如何，请您确保出席，因为位置数量有限。",
+      "amount": "金额",
+      "back_events": "回到活动",
+      "book_seat": "预订位置",
+      "callout_online": "您即将预订此活动的在线访问权限。",
+      "callout_replay": "您即将预订此活动回放视频的访问权限。",
+      "date": "日期",
+      "dates_to": "从{{startDate}} 到 {{endDate}}",
+      "description_physical": "请查看场地详情。\n一旦预订处理完毕，我们将为您提供活动时需出示的票据。您凭此票也可观看现场直播和重播视频（如果有的话）。",
+      "download_ticket": "下载您的票据",
+      "enjoy": "希望您喜欢它 :)",
+      "language": "解说语言",
+      "limitation": "限制",
+      "max_capacity": "最大容量为",
+      "payment_details": "付款详情",
+      "payment_successful": "预订成功！",
+      "time": "时间"
+    },
+    "main": {
+      "upcomingEvents": "即将举办的活动",
+      "currentEvents": "正在举办的活动"
+    },
+    "newEvent": {
+      "button": "添加我的活动",
+      "description": "当然！所有比特币活动都可以在这里被看见，欢迎任何创办新活动的倡议 :)",
+      "subtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
+      "title": "想要添加您的活动吗？"
+    },
+    "pageSubtitle": "强大的网络增进了自上而下的采纳过程",
+    "pageTitle": "正在寻找可以参加的比特币活动？"
+  },
+  "home": {
+    "header": {
+      "content": "PlanB平台旨在向全球提供最佳工具和教育内容，帮助人们重获他们的自主权。从个人到社区，我们在此帮助您走过比特币旅程。",
+      "forEducators": "给教育者和建设者",
+      "globalNetwork": "全球比特币网络",
+      "welcome": "欢迎来到PlanB网络",
+      "link": "成为网络的一部分",
+      "startLink": "开始学习"
+    },
+    "numbersSection": {
+      "networkMember": "网络会员"
+    },
+    "sectionEducation": {
+      "title": "从初级到高级",
+      "subtitle": "在学院里学习比特币"
+    }
   }
 }
