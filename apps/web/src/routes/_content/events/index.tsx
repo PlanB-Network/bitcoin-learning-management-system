@@ -33,7 +33,7 @@ function Events() {
     refetchOnReconnect: false,
   };
 
-  const { data: events, isFetched } = trpc.content.getEvents.useQuery(
+  const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery(
     undefined,
     queryOpts,
   );
