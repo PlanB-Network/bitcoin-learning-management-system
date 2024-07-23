@@ -37,7 +37,8 @@
       "displayNameRegex": "Lo username può contenere solo lettere, numeri, _, ., - e spazi.",
       "displayNameRequired": "Lo username è obbligatorio.",
       "displayNameTooShort": "Lo username deve contenere almeno due caratteri.",
-      "invalidCredentials": "Credenziali non valide"
+      "invalidCredentials": "Credenziali non valide",
+      "emailInvalid": ""
     },
     "forgottenPassword": "Hai dimenticato la password?",
     "headerAccountCreated": "Account creato",
@@ -69,7 +70,8 @@
     "tryAgain": "Prova ancora",
     "confirmation": "Conferma",
     "displayName": "Nome visualizzato",
-    "oldPassword": "Password precedente"
+    "oldPassword": "Password precedente",
+    "emailTip": ""
   },
   "bet": {
     "contribute": "Questo toolkit è aperto al contributo. Usa Figma, così chiunque può aggiungere, modificare e tradurre. Per collaborare, aggiungere una categoria o discutere, non esitare a unirti su discord.",
@@ -184,7 +186,8 @@
       "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
       "buyOnlineCourse": "Acquista corso online",
       "inPersonAccess": "È necessario scaricare il biglietto per accedere alla lezione in presenza.",
-      "buyInPersonCourse": "Acquista corso in presenza"
+      "buyInPersonCourse": "Acquista corso in presenza",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "I nostri professori sono qui per te!",
@@ -298,7 +301,63 @@
       "ratingsAndReviews": "Valutazioni e recensioni",
       "currentlyLoggedOut": "Attualmente sei disconnesso dal sito. Per inviare un feedback sul corso, per favore <0>accedi o registrati</0>.",
       "yesOfCourse": "sì, certo",
-      "yesVeryMuch": "sì, molto"
+      "yesVeryMuch": "sì, molto",
+      "edit": "",
+      "fieldRequired": "",
+      "skip": ""
+    },
+    "exam": {
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": ""
     }
   },
   "dashboard": {
@@ -312,7 +371,12 @@
       "completedCoursesDescription": "Qui puoi controllare i corsi completati.",
       "inprogressCoursesTitle": "Corsi in svolgimento",
       "seeProgress": "per vedere lo stato di avanzamento qui.",
-      "startCourse": "Inizia o completa un corso"
+      "startCourse": "Inizia o completa un corso",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": ""
     },
     "account": "Account",
     "courses": "Corsi",
@@ -373,7 +437,8 @@
       "profilePicture": "Immagine profilo",
       "security": "Sicurezza",
       "username": "Nome utente",
-      "profile": "Profilo"
+      "profile": "Profilo",
+      "emailChangeRateLimitError": ""
     },
     "administration": "Amministrazione",
     "teacher": {
@@ -432,6 +497,30 @@
         "writtenFeedbacks": "Feedback scritti"
       },
       "menu": "Menu insegnante"
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
     }
   },
   "events": {
@@ -530,7 +619,8 @@
       "title": "Rendere semplice l'istruzione su Bitcoin è il nostro obiettivo.",
       "subtitle1": "Ti aiutiamo a padroneggiare la tecnologia con numerosi tutorial approfonditi!",
       "content1": "Bitcoin è in continua evoluzione, con nuovi attori, soluzioni, protocolli e innovazioni tecnologiche in arrivo. Spesso è difficile mantenere un unico ed accurato database di buoni tutorial aggiornati. Qui a PlanB, questo è ciò che abbiamo raggiunto. Dai principianti agli utenti avanzati, puoi navigare tra centinaia di tutorial per esplorare il nostro settore in base alle tue esigenze.",
-      "link": "Visualizza tutti i tutorial"
+      "link": "Visualizza tutti i tutorial",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Chi siamo?",
@@ -552,7 +642,8 @@
       "content1": "A PlanB, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per dare forza a miliardi di persone, stiamo progettando questa piattaforma per essere multilingua ed accessibile a tutti. La piattaforma attualmente supporta 7 lingue ed altre vengono aggiunte ogni mese. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner in tutto il mondo.",
       "content2": "Anche tu puoi avviare una rete locale nel tuo paese!",
       "link": "Aiutaci a tradurre l'accademia",
-      "availableLanguages": "Lingue disponibili"
+      "availableLanguages": "Lingue disponibili",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "Insieme rendiamo migliore l'istruzione di Bitcoin ! ",
@@ -700,7 +791,12 @@
     "glossary": {
       "title": "Glossario"
     },
-    "searchFilterName": "Cerca per nome"
+    "searchFilterName": "Cerca per nome",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitlePodcast": "",
+    "pageSubtitleBooks": ""
   },
   "settings": {
     "changePassword": "Cambia password",
@@ -946,7 +1042,26 @@
     "public": "Blog e Notizie",
     "ratings": "Valutazioni",
     "users": "Utenti",
-    "view": "Vista"
+    "view": "Vista",
+    "booked": "",
+    "bookings": "",
+    "credentials": "",
+    "diploma": "",
+    "filter": "",
+    "failed": "",
+    "grade": "",
+    "id": "",
+    "inReview": "",
+    "location": "",
+    "overview": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "required": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": "",
+    "status": ""
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
@@ -993,7 +1108,8 @@
     "checkout": "Controlla il Certificato ₿",
     "organizeTitle": "Vuoi organizzare un esame Certificato ₿ nel tuo hub?",
     "pageTitle": "Supera il ₿ Certificate",
-    "readChart": "Leggi il regolamento"
+    "readChart": "Leggi il regolamento",
+    "tweetText": ""
   },
   "glossary": {
     "anotherWord": "Cerca un'altra parola",
