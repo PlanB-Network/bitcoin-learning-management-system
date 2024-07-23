@@ -57,5 +57,5 @@
       "postgres@3.4.3": "patches/postgres@3.4.3.patch"
     }
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.6.0"
 }
