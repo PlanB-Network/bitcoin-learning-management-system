@@ -1,4 +1,5 @@
 {
+  // TODO move this tsconfig to a specific package https://turbo.build/repo/docs/crafting-your-repository/structuring-a-repository#common-pitfalls
   "compilerOptions": {
     // Language and Environment
     "target": "esnext",

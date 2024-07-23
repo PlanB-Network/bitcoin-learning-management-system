@@ -22,6 +22,7 @@
     "ioredis": "^5.4.1"
   },
   "devDependencies": {
+    "@sovereign-university/eslint-config": "workspace:*",
     "@sovereign-university/types": "workspace:*"
   }
 }

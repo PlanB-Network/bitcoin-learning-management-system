@@ -31,6 +31,7 @@
     "postgres": "3.4.3"
   },
   "devDependencies": {
+    "@sovereign-university/eslint-config": "workspace:*",
     "dotenv": "^16.4.5",
     "drizzle-kit": "0.23.0",
     "pg": "8.12.0"

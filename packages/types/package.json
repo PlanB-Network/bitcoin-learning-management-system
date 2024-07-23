@@ -21,6 +21,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "devDependencies": {
+    "@sovereign-university/eslint-config": "workspace:*",
     "@sovereign-university/schemas": "workspace:*",
     "@types/express-session": "^1.18.0",
     "zod": "3.23.8",

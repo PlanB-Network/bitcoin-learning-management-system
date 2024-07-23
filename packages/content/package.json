@@ -29,6 +29,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@sovereign-university/eslint-config": "workspace:*",
     "@sovereign-university/types": "workspace:*",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.17.7",

@@ -17,6 +17,7 @@
     "src/**/*.test.jsx"
   ],
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  // TODO try to remove this last remaining reference
   "references": [
     {
       "path": "../api/tsconfig.trpc.json"

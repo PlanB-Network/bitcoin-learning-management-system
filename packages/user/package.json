@@ -30,6 +30,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@sovereign-university/eslint-config": "workspace:*",
     "@sovereign-university/types": "workspace:*",
     "@types/lodash": "^4.17.7",
     "@types/pdfkit": "^0.13.4",
