@@ -82,7 +82,7 @@ function Conferences() {
             {t('conferences.latestConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
-            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
             {latestConferences && latestConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -121,7 +121,7 @@ function Conferences() {
             {t('conferences.planBConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">
-            {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -172,7 +172,7 @@ function Conferences() {
         activeYear={activeYear}
         setActiveYear={setActiveYear}
       />
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {filteredConferences && filteredConferences.length > 0 && (
         <>
           <ConferencesTable conferences={filteredConferences} />

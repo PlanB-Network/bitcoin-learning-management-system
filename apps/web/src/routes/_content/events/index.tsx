@@ -151,7 +151,7 @@ function Events() {
           />
         )}
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {events && (
           <CurrentEvents
             events={events}
@@ -214,7 +214,7 @@ function Events() {
       </div>
 
       <div>
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {events && (
           <EventsPassed
             events={events}

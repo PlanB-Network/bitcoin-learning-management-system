@@ -631,7 +631,7 @@ function CourseDetails() {
         }
       />
       <div className="text-blue-800">
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             {!courseHasToBePurchased && (

@@ -83,7 +83,7 @@ function Builder() {
       activeCategory="builders"
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {builder && (
         <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
           <section className="flex p-2 md:p-[30px]">

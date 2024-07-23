@@ -15,6 +15,13 @@
       "when": 1721245721120,
       "tag": "0001_wakeful_impossible_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1721318903940,
+      "tag": "0002_pink_morlun",
+      "breakpoints": true
     }
   ]
 }

@@ -14,6 +14,7 @@ import {
 import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
+import { userBCertificateRouter } from './bcertificate.js';
 import { userBillingRouter } from './billing.js';
 import { userCalendarRouter } from './calendar.js';
 import { userCoursesRouter } from './courses.js';
@@ -63,6 +64,7 @@ export const userRouter = createTRPCRouter({
         newPassword: input.newPassword,
       }),
     ),
+  bcertificate: userBCertificateRouter,
   billing: userBillingRouter,
   calendar: userCalendarRouter,
   courses: userCoursesRouter,

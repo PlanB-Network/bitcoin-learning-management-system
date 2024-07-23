@@ -68,10 +68,10 @@
     "signIn": "Sign In"
   },
   "bCertificate": {
-    "bCertificateDescription": "The B-certificate is an internationally recognized exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge among the Bitcoin industry, giving you access to companies and positions in that industry.",
+    "bCertificateDescription": "The ₿ Certificate is an internationally recognized exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge among the Bitcoin industry, giving you access to companies and positions in that industry.",
     "bookExam": "Book an exam session",
     "challengeYourself": "Let's challenge yourself & assert your level !",
-    "checkout": "Check out the B-Certificate",
+    "checkout": "Check out the ₿ Certificate",
     "curious": "Curious to know what the exam is like ?",
     "joeNakamotoVideo": "What the heck is a Bitcoin exam ? By Joe Nakamoto",
     "knowledgeableBitcoin": "Knowledgeable in Bitcoin ?",
@@ -79,9 +79,9 @@
     "organizeDescription": "No problem ! If your community is part of the Network, organizing an exam session at your hub is possible. Please read the chart to make sure that you can comply with the mandatory conditions to host an exam. If you can fulfil these conditions, you can schedule your session and add it onto the platform.",
     "organizeExam": "Organize an exam",
     "organizeSubtitle": "Orange pilling a billion people is not easy",
-    "organizeTitle": "Want to organize a B-certificate exam at your hub?",
+    "organizeTitle": "Want to organize a ₿ Certificate exam at your hub?",
     "pageSubtitle": "Mass adoption through centralized open-source education",
-    "pageTitle": "The B-Certificate",
+    "pageTitle": "Pass the ₿ Certificate",
     "readChart": "Read the chart"
   },
   "bet": {
@@ -286,6 +286,21 @@
   },
   "dashboard": {
     "account": "Account",
+    "bCertificate": {
+      "assertLevel": "Assert your level in Bitcoin",
+      "bCertificate": "The ₿ Certificate",
+      "bookExam": "Book an exam session",
+      "certificate": "Certificate",
+      "general": "General",
+      "grade": "Grade",
+      "gradesDiploma": "Grades and diploma",
+      "learnMore": "Learn more",
+      "noResults": "There are no grades nor certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
+      "organizedSessions": "The ₿ Certificate is organised by Plan B Network at various locations and times. Make sure to book your seat at a session.",
+      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network and designed to assert your level about Bitcoin and all its related topics.",
+      "findResults": "Here you can find your results to ₿ Certificate exams you’ve passed while registered with this account. The results usually takes 2 to 3 weeks to be processed and available here. If after a long time your results don’t show here, please contact us.",
+      "wantToPass": "Want to pass the exam?"
+    },
     "booking": {
       "accessLive": "Access live",
       "billingTitle": "Billing history",
@@ -507,7 +522,7 @@
     "writtenBy": "Written by {{author}}"
   },
   "menu": {
-    "bCertificateDescription": "Pass the B-Certificate exam to assert your Bitcoin level",
+    "bCertificateDescription": "Pass the ₿ Certificate exam to assert your Bitcoin level",
     "betDescription": "Collection of content that you can use for your educational projects",
     "btc101Description": "Get a better understanding of bitcoin with this lessons",
     "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
@@ -728,7 +743,7 @@
     "articles": "Articles",
     "audioBook": "Audio Book",
     "back": "Back",
-    "bCertificate": "B-Certificate",
+    "bCertificate": "₿ Certificate",
     "beginner": "Beginner",
     "billing": "Billing",
     "bitcoinWhitepaper": "Bitcoin Whitepaper",
@@ -797,6 +812,7 @@
     "or": "or",
     "ourStory": "Our story",
     "paid": "Paid",
+    "part": "Part",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "price": "Price",

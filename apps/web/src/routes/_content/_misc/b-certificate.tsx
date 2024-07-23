@@ -77,7 +77,14 @@ function BCertificate() {
       )
     : [];
 
-  useEffect(() => document.body.scrollTo({ top: 0 }), []);
+  useEffect(() => {
+    if (isFetched && window.location.href.includes('#bcertevents')) {
+      const element = document.querySelector('#bcertevents');
+      if (element) {
+        element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    }
+  }, [isFetched]);
 
   return (
     <PageLayout
@@ -89,7 +96,7 @@ function BCertificate() {
       <div className="flex max-lg:flex-col justify-center items-center gap-9 mb-6 lg:mb-32">
         <img
           src={bCertificatesImage}
-          alt="B-Certificates"
+          alt="₿ Certificates"
           className="w-full max-lg:max-w-[70%] max-md:mr-[45%]"
         />
         <div className="flex flex-col lg:self-end lg:mb-3.5 w-full lg:max-w-[43%]">
@@ -104,7 +111,7 @@ function BCertificate() {
           </p>
         </div>
       </div>
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && <BCertificateEvents events={filteredEvents} />}
       <div className="flex flex-col items-center mb-6 md:mb-20">
         <Question className="mb-2.5 md:mb-5" />

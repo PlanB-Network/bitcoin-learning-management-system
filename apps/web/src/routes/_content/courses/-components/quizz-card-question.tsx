@@ -93,7 +93,7 @@ export default function QuizzCardQuestion({
                     index === clickedAnswer
                       ? index === correctAnswer
                         ? 'bg-green-500'
-                        : 'bg-red-500'
+                        : 'bg-red-6'
                       : 'bg-beige-300 hover:bg-newGray-4',
                   )}
                 >

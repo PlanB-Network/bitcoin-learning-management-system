@@ -72,7 +72,7 @@ function Book() {
       activeCategory="books"
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {book && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

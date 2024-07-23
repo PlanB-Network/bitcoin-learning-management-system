@@ -178,7 +178,7 @@ function TutorialDetails() {
           </>
         )}
 
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       </>
     </TutorialLayout>
   );

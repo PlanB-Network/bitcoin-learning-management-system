@@ -27,7 +27,7 @@ function EventDetails() {
   return (
     <MainLayout>
       <div className="flex flex-col px-5">
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         <div className="w-full max-w-3xl self-center mx-8 mt-24 flex flex-col items-start gap-2">
           <h1 className="text-lg md:text-2xl text-orange-500 font-medium">
             {event?.name}

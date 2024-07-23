@@ -89,7 +89,10 @@ export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
 
   // TODO refactor prop drilling
   return (
-    <div className="text-white mb-6 md:mb-24">
+    <div
+      id="bcertevents"
+      className="text-white mb-6 md:mb-24 md:scroll-mt-32 scroll-mt-20"
+    >
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.accessType &&
@@ -102,8 +105,6 @@ export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
             satsPrice={paymentModalData.satsPrice}
             isOpen={isPaymentModalOpen}
             onClose={(isPaid) => {
-              // TODO trigger add paid booked seat logic
-
               if (isPaid) {
                 refetchEventPayments();
                 setTimeout(() => {

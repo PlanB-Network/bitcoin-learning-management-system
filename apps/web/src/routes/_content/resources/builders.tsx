@@ -55,7 +55,7 @@ function Builders() {
       }}
       activeCategory="builders"
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       <div className="flex flex-col gap-5 p-4 pt-0 md:p-10 md:pt-0">
         {categories.map((category) => {
           const filteredBuilders = categorizedBuilders[category].filter(

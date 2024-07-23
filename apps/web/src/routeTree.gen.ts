@@ -23,6 +23,7 @@ import { Route as DashboardDashboardProfileImport } from './routes/dashboard/_da
 import { Route as DashboardDashboardCoursesImport } from './routes/dashboard/_dashboard/courses';
 import { Route as DashboardDashboardCalendarImport } from './routes/dashboard/_dashboard/calendar';
 import { Route as DashboardDashboardBookingsImport } from './routes/dashboard/_dashboard/bookings';
+import { Route as DashboardDashboardBcertificateImport } from './routes/dashboard/_dashboard/bcertificate';
 import { Route as ContentTutorialsCategoryImport } from './routes/_content/tutorials/$category';
 import { Route as ContentResourcesPodcastsImport } from './routes/_content/resources/podcasts';
 import { Route as ContentResourcesGlossaryImport } from './routes/_content/resources/glossary';
@@ -116,6 +117,12 @@ const DashboardDashboardBookingsRoute = DashboardDashboardBookingsImport.update(
     getParentRoute: () => DashboardDashboardRoute,
   } as any,
 );
+
+const DashboardDashboardBcertificateRoute =
+  DashboardDashboardBcertificateImport.update({
+    path: '/bcertificate',
+    getParentRoute: () => DashboardDashboardRoute,
+  } as any);
 
 const ContentTutorialsCategoryRoute = ContentTutorialsCategoryImport.update({
   path: '/tutorials/$category',
@@ -410,6 +417,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryImport;
       parentRoute: typeof rootRoute;
     };
+    '/dashboard/_dashboard/bcertificate': {
+      id: '/dashboard/_dashboard/bcertificate';
+      path: '/bcertificate';
+      fullPath: '/dashboard/bcertificate';
+      preLoaderRoute: typeof DashboardDashboardBcertificateImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/dashboard/_dashboard/bookings': {
       id: '/dashboard/_dashboard/bookings';
       path: '/bookings';
@@ -559,6 +573,7 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   DashboardRoute: DashboardRoute.addChildren({
     DashboardDashboardRoute: DashboardDashboardRoute.addChildren({
+      DashboardDashboardBcertificateRoute,
       DashboardDashboardBookingsRoute,
       DashboardDashboardCalendarRoute,
       DashboardDashboardCoursesRoute,
@@ -654,6 +669,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "dashboard/_dashboard.tsx",
       "parent": "/dashboard",
       "children": [
+        "/dashboard/_dashboard/bcertificate",
         "/dashboard/_dashboard/bookings",
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
@@ -718,6 +734,10 @@ export const routeTree = rootRoute.addChildren({
         "/_content/tutorials/$category/$name",
         "/_content/tutorials/$category/"
       ]
+    },
+    "/dashboard/_dashboard/bcertificate": {
+      "filePath": "dashboard/_dashboard/bcertificate.tsx",
+      "parent": "/dashboard/_dashboard"
     },
     "/dashboard/_dashboard/bookings": {
       "filePath": "dashboard/_dashboard/bookings.tsx",

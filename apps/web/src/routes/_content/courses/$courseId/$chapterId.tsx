@@ -688,7 +688,7 @@ function CourseChapter() {
       />
       {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
       <div className="text-black">
-        {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}

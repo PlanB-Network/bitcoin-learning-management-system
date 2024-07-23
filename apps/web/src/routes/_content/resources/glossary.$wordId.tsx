@@ -77,7 +77,7 @@ function GlossaryWord() {
       tagLine={t('glossary.pageSubtitle')}
       activeCategory="glossary"
     >
-      {!isFetched && <Spinner className="size-48 md:size-64 mx-auto" />}
+      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <>
           <div className="flex flex-col items-center justify-center w-full max-w-[1080px] mx-auto px-4">
