@@ -25,9 +25,6 @@
     "SENDGRID_RESET_PASSWORD_TEMPLATE_ID"
   ],
   "tasks": {
-    "copy-assets": {
-      "outputs": ["."]
-    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
