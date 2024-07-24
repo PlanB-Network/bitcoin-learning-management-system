@@ -28,6 +28,7 @@ module.exports = {
     'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',
     'prettier',
+    'turbo',
   ],
   rules: {
     'unicorn/filename-case': 'off',

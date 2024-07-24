@@ -27,7 +27,8 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"]
     },
     "type-check": {
       "dependsOn": ["^type-check"]

@@ -30,5 +30,8 @@
     "jsonc-eslint-parser": "^2.4.0",
     "typescript": "5.4.5",
     "typescript-eslint": "^7.16.1"
+  },
+  "dependencies": {
+    "eslint-config-turbo": "^2.0.9"
   }
 }
