@@ -1,14 +1,5 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-// import { AiOutlineMail } from 'react-icons/ai';
-// import {
-//   BsDiscord,
-//   BsFacebook,
-//   BsGithub,
-//   BsLinkedin,
-//   BsTwitter,
-//   BsYoutube,
-// } from 'react-icons/bs';
 
 import { cn } from '@sovereign-university/ui';
 
@@ -20,58 +11,6 @@ interface FooterProps {
   variant?: 'light' | 'dark';
   color?: string;
 }
-
-// const SocialNetworks = () => {
-//   const isScreenXl = useGreater('xl');
-//   const isScreenLg = useGreater('lg');
-//   const iconSize = isScreenLg ? (isScreenXl ? 22 : 16) : 22;
-
-//   return (
-//     <div className="flex flex-row gap-1 xl:gap-2">
-//       <a
-//         href="https://www.youtube.com/@PlanBNetwork"
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <BsYoutube size={iconSize} className="m-1 text-white" />
-//       </a>
-//       <a
-//         href="https://twitter.com/planb_network"
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <BsTwitter size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//       <a
-//         href="https://www.facebook.com/profile.php?id=61556543067522"
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <BsFacebook size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//       <a href="https://discord.gg/CHvZAhJCBh" target="_blank" rel="noreferrer">
-//         <BsDiscord size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//       <a
-//         href="https://github.com/PlanB-Network/sovereign-university-data"
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <BsGithub size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//       <a
-//         href="https://www.linkedin.com/company/planb-network/"
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         <BsLinkedin size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//       <a href="mailto:contact@planb.network ">
-//         <AiOutlineMail size={iconSize} className="m-1 text-white" />{' '}
-//       </a>
-//     </div>
-//   );
-// };
 
 export const Footer = ({ variant = 'light', color }: FooterProps) => {
   const { t } = useTranslation();
