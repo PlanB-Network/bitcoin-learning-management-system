@@ -23,10 +23,9 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
   const { t } = useTranslation();
   const borderClassName =
     'border border-[rgba(115,115,115,0.1)] rounded-xl overflow-hidden';
-  const invoice = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork&lightning=${paymentData.pr}`;
-
-  const onChain = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork`;
-  const lightning = paymentData.pr;
+  const unifiedPayment = `bitcoin:${paymentData.onChainAddr.toUpperCase()}?amount=${paymentData.amount / 100_000_000}&label=PlanBNetwork&lightning=${paymentData.pr}`;
+  const onchainAddress = `${paymentData.onChainAddr.toUpperCase()}`;
+  const lightningInvoice = paymentData.pr;
 
   return (
     <>
@@ -65,7 +64,7 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
               }}
             />
           </div>
-          <QRCodeSVG value={invoice} size={220} />
+          <QRCodeSVG value={unifiedPayment} size={220} />
         </div>
         <div className="flex flex-col max-w-96 lg:w-96 w-full">
           {/* Unified */}
@@ -79,12 +78,12 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
             )}
           >
             <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
-              {invoice}
+              {unifiedPayment}
             </span>
             <AiOutlineCopy
               className="h-5 w-auto cursor-pointer"
               onClick={() => {
-                navigator.clipboard.writeText(invoice);
+                navigator.clipboard.writeText(unifiedPayment);
               }}
             />
           </div>
@@ -99,12 +98,12 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
             )}
           >
             <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
-              {onChain}
+              {onchainAddress}
             </span>
             <AiOutlineCopy
               className="h-5 w-auto cursor-pointer"
               onClick={() => {
-                navigator.clipboard.writeText(onChain);
+                navigator.clipboard.writeText(onchainAddress);
               }}
             />
           </div>
@@ -119,12 +118,12 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
             )}
           >
             <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
-              {lightning}
+              {lightningInvoice}
             </span>
             <AiOutlineCopy
               className="h-5 w-auto cursor-pointer"
               onClick={() => {
-                navigator.clipboard.writeText(lightning);
+                navigator.clipboard.writeText(lightningInvoice);
               }}
             />
           </div>
