@@ -78,12 +78,16 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
 
   const coursesItems = Object.entries(coursesByLevel ?? {}).flatMap(
     ([level, courses]) => {
-      const formatted = courses.map((course) => ({
-        id: course.id,
-        title: course.id.toUpperCase(),
-        path: `/courses/${course.id}`,
-        description: course.name,
-      }));
+      const formatted = courses.map((course) => {
+        const courseId = course.id.toUpperCase();
+        const formattedTitle = courseId.slice(0, 3) + ' ' + courseId.slice(3);
+        return {
+          id: course.id,
+          title: formattedTitle,
+          path: `/courses/${course.id}`,
+          description: course.name,
+        };
+      });
 
       return formatted.length === 0
         ? []
