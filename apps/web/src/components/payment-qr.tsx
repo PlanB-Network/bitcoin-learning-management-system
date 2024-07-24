@@ -30,15 +30,67 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
 
   return (
     <>
-      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 md:gap-8 max-lg:pb-6 max-lg:pt-8 mt-auto">
+      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 md:gap-8 max-lg:pb-6 max-lg:pt-8 mt-auto mb-4">
         <PlanBLogo className="h-auto" width={240} />
         <span className="text-center text-xs lg:text-base">
           {t('courses.payment.qr_unified')}
         </span>
-        <QRCodeSVG value={invoice} size={220} />
-        <div className="flex flex-col max-w-96 lg:w-96 w-full">
+        {/* Amount */}
+        <div className="flex flex-col justify-center items-center">
           <span className="desktop-h7 text-center mx-auto mb-2">
-            {t('words.onChain')}
+            {t('words.amount')}
+          </span>
+          <div
+            className={cn(
+              `flex flex-row items-center justify-center px-4 py-3 w-fit min-w-48 mb-8 bg-white !border-newGray-4`,
+              borderClassName,
+            )}
+          >
+            <span className="desktop-subtitle1 text-newBlack-3 flex-1 truncate">
+              {(paymentData.amount / 100_000_000).toLocaleString('en-US', {
+                minimumFractionDigits: 8,
+                maximumFractionDigits: 8,
+              })}{' '}
+              BTC
+            </span>
+            <AiOutlineCopy
+              className="h-5 w-auto cursor-pointer"
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  (paymentData.amount / 100_000_000).toLocaleString('en-US', {
+                    minimumFractionDigits: 8,
+                    maximumFractionDigits: 8,
+                  }),
+                );
+              }}
+            />
+          </div>
+          <QRCodeSVG value={invoice} size={220} />
+        </div>
+        <div className="flex flex-col max-w-96 lg:w-96 w-full">
+          {/* Unified */}
+          <span className="desktop-h7 text-center mx-auto mb-2">
+            {t('words.unified')}
+          </span>
+          <div
+            className={cn(
+              `flex flex-row items-center justify-center px-4 py-3 w-full mb-8 bg-[#E9E9E9]`,
+              borderClassName,
+            )}
+          >
+            <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+              {invoice}
+            </span>
+            <AiOutlineCopy
+              className="h-5 w-auto cursor-pointer"
+              onClick={() => {
+                navigator.clipboard.writeText(invoice);
+              }}
+            />
+          </div>
+          {/* On-Chain */}
+          <span className="desktop-h7 text-center mx-auto mb-2">
+            {t('words.onChainAddress')}
           </span>
           <div
             className={cn(
@@ -56,8 +108,9 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
               }}
             />
           </div>
+          {/* Lightning */}
           <span className="desktop-h7 text-center mx-auto mb-2">
-            {t('words.lightning')}
+            {t('words.lightningInvoice')}
           </span>
           <div
             className={cn(
