@@ -540,7 +540,17 @@
       "emailChangeConfirmation": "E-posti muutmise kinnituseks on e-kiri saadetud, muutmise kinnitamiseks kontrollige oma postkasti."
     },
     "logout": "Logi välja",
-    "bookings": "Broneeringud"
+    "bookings": "Broneeringud",
+    "bCertificate": {
+      "assertLevel": "Kinnita oma tase Bitcoinis",
+      "bCertificate": "₿ Sertifikaat",
+      "bookExam": "Broneeri eksamisessioon",
+      "certificate": "Sertifikaat",
+      "general": "Üldine",
+      "grade": "Hinne",
+      "gradesDiploma": "Hinded ja diplom",
+      "learnMore": "Lisateave"
+    }
   },
   "events": {
     "card": {
