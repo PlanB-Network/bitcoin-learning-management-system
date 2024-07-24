@@ -227,7 +227,8 @@
       "s3PickLevel": "选择级别：",
       "s3PickTopic": "选择话题：",
       "s3t1": "進入兔子洞時建造你自己的道路",
-      "seeCourse": "查看课程"
+      "seeCourse": "查看课程",
+      "footerp1": "在B计划网络中，我们的教师对他们的内容和他们希望你探索的工具拥有完全的自主权，只要他们遵守道德规范。他们是来自各种背景的热衷比特币的人。"
     },
     "payment": {
       "accessibility_forever": "永远",
@@ -356,6 +357,16 @@
       "resumeLesson": "摘要",
       "seeProgress": "在这里查看你的进度。",
       "startCourse": "开始或完成一门课程"
+    },
+    "bCertificate": {
+      "assertLevel": "确认你在比特币方面的水平",
+      "bCertificate": "₿ 证书",
+      "bookExam": "预约考试时间",
+      "certificate": "证书",
+      "general": "将军",
+      "grade": "等级",
+      "gradesDiploma": "成绩和文凭",
+      "learnMore": "了解更多"
     }
   },
   "events": {
@@ -469,7 +480,25 @@
     },
     "patreonSection": {
       "title": "让我们一起让比特币教育变得更好！ ",
-      "subtitle": "PlanB网络能够100%开源，多亏了我们慷慨的赞助者。"
+      "subtitle": "PlanB网络能够100%开源，多亏了我们慷慨的赞助者。",
+      "content": "PlanB网络很荣幸能与世界各地的许多比特币公司合作，以最大可能提供最佳教育资源！"
     }
+  },
+  "imagesAlt": {
+    "bitcoinCurrency": "比特币货币的符号",
+    "blueEllipse": "一个蓝色的椭圆形",
+    "bookCover": "書籍封面",
+    "community": "3个人",
+    "contributorHeart": "对优秀贡献者的心意",
+    "contributorPP": "贡献者的个人资料照片",
+    "courseThumbnail": "课程缩略图",
+    "curriculum": "课程表",
+    "decouvreBitcoinLogo": "DecouvreBitcoin徽标",
+    "favorite": "一个圆圈内的心",
+    "flagsInCircle": "一圈旗帜",
+    "forwardArrow": "向前箭头",
+    "github": "Github的图标",
+    "orangePill": "一个橙色的药片",
+    "printedCircuits": "印刷电路板"
   }
 }
