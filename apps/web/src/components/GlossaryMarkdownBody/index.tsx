@@ -7,6 +7,7 @@ import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { CopyButton } from '../CopyButton/index.tsx';
+import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
 
 const fixEmbedUrl = (src: string) => {
   if (src.includes('embed')) {
@@ -57,9 +58,9 @@ export const GlossaryMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <div className="mobile-body2 md:desktop-body1 text-white my-1 last:mb-0">
+          <p className="mobile-body2 md:desktop-body1 text-white my-1 last:mb-0">
             {children}
-          </div>
+          </p>
         ),
         a: ({ children, href }) => (
           <a
@@ -125,6 +126,7 @@ export const GlossaryMarkdownBody = ({
               alt={alt}
             />
           ),
+        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');
 

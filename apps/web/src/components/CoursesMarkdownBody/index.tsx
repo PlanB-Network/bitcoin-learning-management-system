@@ -14,6 +14,7 @@ import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 import { CopyButton } from '../CopyButton/index.tsx';
+import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,
@@ -58,9 +59,9 @@ export const CoursesMarkdownBody = ({
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
         p: ({ children }) => (
-          <div className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <p className="text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
-          </div>
+          </p>
         ),
         a: ({ children, href = '' }) => {
           const tutorial = getTutorial(href, tutorials);
@@ -137,6 +138,7 @@ export const CoursesMarkdownBody = ({
               alt={alt}
             />
           ),
+        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');
 
