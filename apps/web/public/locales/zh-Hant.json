@@ -14,7 +14,12 @@
     "commitmentContent": "我們對比特幣社區的承諾如下：\n • 保持開源\n • 提供高質量的教育內容\n • 將我們的內容翻譯成盡可能多的語言\n • 支援比特幣建設者的創業之旅",
     "coreTeamContent": "PlanB Network是由數百名貢獻者、教師、社區領導者、設計師、開發者和組織者組成的團體。非常感謝每一位每天努力實現PlanB的人。（貢獻者名單即將公布）",
     "corporateContent": "PlanB Network 是三個專注於比特幣發展的實體共同參與的項目。為了擴大比特幣教育，他們決定合作成立 PlanB Network。為了實現將比特幣教育推廣到全球的目標，許多其他實體也決定貢獻力量，加入我們的行列。衷心感謝他們的支持",
-    "coportateContact": "聯繫資訊："
+    "coportateContact": "聯繫資訊：",
+    "storyTitle": "我們的故事",
+    "description": "Plan B Network 協助全球各地的社群組織起來，以便提供更好的教育。該平台透過線上學院、教學指南入口網站、比特幣教育工具包以及資源入口網站來開發達成這一目標所需的工具。",
+    "subtitle": "想要讓全世界認識比特幣嗎？加入 PlanB Network 吧。",
+    "title": "關於Plan B",
+    "manifesto": "我們相信比特幣所提供的去中心化未來。\n\n我們的使命是在十年內讓十億人認識比特幣。我們的工具是教育和資訊。\n\n我們透過提供開源教育內容及比特幣導師網絡來支持當地的比特幣社群。\n\n我們的理念受到密碼龐克宣言的啟發。他們倡導隱私，我們則倡導教育。我們相信知識是自由和變革的基礎。\n\n我們只支持比特幣。\n\n我們提倡個人責任，以及持有自己私鑰所帶來的獨立性。\n\n我們主張驗證，而非盲目信任。\n\n我們相信，修正貨幣體系就是在修正世界。\n\n我們是去中心化且開源的，避免任何單點故障。\n\n我們鼓勵自由傳播我們的內容。\n\n我們渴望一個由下而上運作的世界，以個人為中心。\n\n我們簡化，我們教育，我們分享。\n\n加入我們的使命，讓全世界認識比特幣。\n"
   },
   "auth": {
     "errors": {
@@ -40,7 +45,26 @@
     "resetPassword": "重設您的密碼",
     "newPassword": "新密碼",
     "passwordMinLength": "密碼必須至少有{{len}}個字符",
-    "passwordRequired": "密碼為必填"
+    "passwordRequired": "密碼為必填",
+    "sendLink": "發送一個連結給我",
+    "invalidTokenExplain": {
+      "invalid": "該Token無效",
+      "notFound": "找不到該Token",
+      "expired": "該Token已過期",
+      "consumed": "該Token已經被使用過"
+    },
+    "passwordResetError": "重設密碼錯誤",
+    "passwordResetSent": "重設密碼的電子郵件已經發送到您的收件匣（如果該電子郵件存在於我們的資料庫中）。",
+    "tryAgain": "再試一次",
+    "signIn": "登入",
+    "passwordsDontMatch": "密碼不符合",
+    "passwordChanged": "密碼已更改",
+    "passwordSuccessfullyChanged": "您的密碼已成功更改。您現在可以使用新密碼登入。",
+    "backToLogin": "返回登入",
+    "backToHome": "返回首頁",
+    "invalidToken": "無效的Token",
+    "checkingToken": "檢查Token",
+    "checkingTokenExplain": "我們正在檢查Token是否有效..."
   },
   "bCertificate": {
     "challengeYourself": "挑戰自己並展現你的實力！",
@@ -55,7 +79,9 @@
     "pageTitle": "比特幣證書",
     "readChart": "閱讀這張圖表",
     "noBookExam": "尚未安排考試時段。",
-    "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。"
+    "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。",
+    "bookExam": "預約考試時段",
+    "bCertificateDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。"
   },
   "bet": {
     "contribute": "這個工具包開放大家做出貢獻。它使用 Figma，因此任何人都可以添加、修改和翻譯。若要協作、添加類別或討論，請隨時加入我們的 Discord。",
@@ -137,7 +163,18 @@
     "chapter": {
       "count": "第{{count}}章",
       "finishCourse": "完成課程",
-      "next": "完成，進入下一章篇"
+      "next": "完成，進入下一章篇",
+      "thanksTip": "想要表示感謝嗎？給點小費吧。",
+      "detail": {
+        "p1heading": "您打算親自參加這堂課嗎？",
+        "title": "課程詳情",
+        "p1content": "記得預訂您的座位",
+        "p2heading": "您無法親自參加這堂課嗎？",
+        "p2content": "沒問題！課程將在此頁面進行直播，之後也可以觀看重播。",
+        "bookSeat": "預訂您的座位",
+        "classIsFull": "課程已經額滿",
+        "cancelBooking": "取消您的預約"
+      }
     }
   }
 }
