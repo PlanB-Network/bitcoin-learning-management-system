@@ -24,14 +24,6 @@ function Book() {
   const isScreenMd = useGreater('sm');
   const navigateTo404Called = useRef(false);
 
-  // TODO: change when we have contributors
-  /*const contributor = {
-    username: 'HARDCODED',
-    title: 'Bitcoiner',
-    image:
-      'https://github.com/DecouvreBitcoin/sovereign-university-data/blob/main/resources/builders/konsensus-network/assets/logo.webp?raw=true',
-  };*/
-
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language: i18n.language ?? 'en',

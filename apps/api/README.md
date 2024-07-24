@@ -11,7 +11,7 @@ To use in CI when building the container
     "metadata": {
       "images": [
         "sovereign-university-api",
-        "ghcr.io/decouvrebitcoin/sovereign-university-api"
+        "ghcr.io/PlanB-Network/sovereign-university-api"
       ],
       "load": true,
       "tags": [

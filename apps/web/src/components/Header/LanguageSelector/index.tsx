@@ -108,7 +108,7 @@ export const LanguageSelector = ({
             ))}
           </div>
           <a
-            href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+            href="https://github.com/PlanB-Network/sovereign-university-data"
             target="_blank"
             rel="noopener noreferrer"
             className="max-lg:hidden mt-6 w-full"

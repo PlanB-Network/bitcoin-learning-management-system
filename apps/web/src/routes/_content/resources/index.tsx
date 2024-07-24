@@ -75,7 +75,7 @@ function Resources() {
           <Trans i18nKey="resources.github" className="">
             <a
               className="underline underline-offset-2 hover:text-darkOrange-5"
-              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+              href="https://github.com/PlanB-Network/sovereign-university-data"
             >
               Github Repository
             </a>

@@ -190,7 +190,7 @@ function BET() {
               {t('bet.contributeDescription')}
             </p>
             <a
-              href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+              href="https://github.com/PlanB-Network/sovereign-university-data"
               target="_blank"
               className="max-md:mx-auto md:ml-auto shrink-0"
               rel="noreferrer"

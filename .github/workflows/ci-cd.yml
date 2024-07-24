@@ -87,7 +87,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta-api
         with:
-          images: ghcr.io/decouvrebitcoin/sovereign-university-api
+          images: ghcr.io/PlanB-Network/sovereign-university-api
           tags: |
             type=schedule
             type=ref,event=branch
@@ -98,7 +98,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta-web
         with:
-          images: ghcr.io/decouvrebitcoin/sovereign-university-web
+          images: ghcr.io/PlanB-Network/sovereign-university-web
           tags: |
             type=schedule
             type=ref,event=branch

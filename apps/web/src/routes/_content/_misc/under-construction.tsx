@@ -21,7 +21,7 @@ function UnderConstruction() {
             {t('underConstruction.p1')}
             <a
               className="mx-1 underline"
-              href="https://github.com/DecouvreBitcoin/sovereign-university"
+              href="https://github.com/PlanB-Network/sovereign-university"
             >
               {t('underConstruction.github')}
             </a>

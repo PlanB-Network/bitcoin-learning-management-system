@@ -53,7 +53,7 @@ interface FooterProps {
 //         <BsDiscord size={iconSize} className="m-1 text-white" />{' '}
 //       </a>
 //       <a
-//         href="https://github.com/DecouvreBitcoin/sovereign-university-data"
+//         href="https://github.com/PlanB-Network/sovereign-university-data"
 //         target="_blank"
 //         rel="noreferrer"
 //       >

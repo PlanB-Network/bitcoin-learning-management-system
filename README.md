@@ -2,7 +2,7 @@
 
 This is the repository for the PlanB Network website. The goal of this project is to create a free, open-source, and community-driven platform to learn about Bitcoin.
 
-The repository holding the data for this project is [here](https://github.com/DecouvreBitcoin/sovereign-university-data).
+The repository holding the data for this project is [here](https://github.com/PlanB-Network/sovereign-university-data).
 
 We are looking for contributors! If you want to help or learn more about the project, please reach out to us on [Twitter](https://twitter.com/planb_network) or [Discord](https://discord.com/invite/CHvZAhJCBh).
 
