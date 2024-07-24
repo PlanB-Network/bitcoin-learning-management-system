@@ -7,6 +7,7 @@ import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { CopyButton } from '../CopyButton/index.tsx';
+import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,
@@ -61,7 +62,7 @@ export const ConferencesMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <div className="desktop-subtitle1 text-newGray-1">{children}</div>
+          <p className="desktop-subtitle1 text-newGray-1">{children}</p>
         ),
         a: ({ children, href }) => (
           <a
@@ -127,6 +128,7 @@ export const ConferencesMarkdownBody = ({
               alt={alt}
             />
           ),
+        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');
 

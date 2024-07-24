@@ -9,6 +9,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
+import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
 
 export const GeneralMarkdownBody = ({
   content,
@@ -43,9 +44,9 @@ export const GeneralMarkdownBody = ({
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
         p: ({ children }) => (
-          <div className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
-          </div>
+          </p>
         ),
         a: ({ children, href }) => (
           <a
@@ -115,6 +116,7 @@ export const GeneralMarkdownBody = ({
               alt={alt}
             />
           ),
+        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
         code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
           return (
