@@ -10,15 +10,15 @@ import formidable from 'formidable';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
-import { createCalculateEventSeats } from '@sovereign-university/content';
-import type { UserFile } from '@sovereign-university/types';
+import { createCalculateEventSeats } from '@blms/content';
+import type { UserFile } from '@blms/types';
 import {
   createGetUserFile,
   createInsertFile,
   createSetProfilePicture,
   createUpdateEventPayment,
   createUpdatePayment,
-} from '@sovereign-university/user'; // Assuming this dependency is correct
+} from '@blms/user'; // Assuming this dependency is correct
 
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';

@@ -1,6 +1,6 @@
 import * as bip39 from 'bip39';
 
-import type { PostgresClient } from '@sovereign-university/database';
+import type { PostgresClient } from '@blms/database';
 
 import { anyContributorIdExistsQuery } from '../queries/index.js';
 

@@ -60,7 +60,7 @@ module.exports = {
         'newlines-between': 'always',
         pathGroups: [
           {
-            pattern: '@sovereign-university/**',
+            pattern: '@blms/**',
             group: 'internal',
             position: 'before',
           },
@@ -95,13 +95,12 @@ module.exports = {
         alias: {
           '#src': './src',
           '#test': './test',
-          '@sovereign-university/database':
-            'packages/database/drizzle/schema.ts',
+          '@blms/database': 'packages/database/drizzle/schema.ts',
         },
         extensions: ['.js', '.ts', '.tsx'],
         packages: ['packages/*'],
       },
     },
-    'import/internal-regex': '^@sovereign-university/',
+    'import/internal-regex': '^@blms/',
   },
 };

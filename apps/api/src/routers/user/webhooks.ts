@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { createUpdatePayment } from '@sovereign-university/user';
+import { createUpdatePayment } from '@blms/user';
 
 import { publicProcedure } from '../../procedures/index.js';
 

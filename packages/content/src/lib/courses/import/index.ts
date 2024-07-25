@@ -3,13 +3,13 @@ import type { Token } from 'marked';
 import { marked } from 'marked';
 import { validate as uuidValidate } from 'uuid';
 
-import { firstRow, sql } from '@sovereign-university/database';
+import { firstRow, sql } from '@blms/database';
 import type {
   ChangedFile,
   Course,
   ModifiedFile,
   RenamedFile,
-} from '@sovereign-university/types';
+} from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';

@@ -1,6 +1,6 @@
 import type { Messages, ToolbarProps, View } from 'react-big-calendar';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 interface ViewNamesGroupProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

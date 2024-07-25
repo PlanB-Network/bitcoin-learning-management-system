@@ -1,5 +1,5 @@
 import { createSelectSchema } from 'drizzle-zod';
 
-import { usersFiles } from '@sovereign-university/database';
+import { usersFiles } from '@blms/database';
 
 export const userFileSchema = createSelectSchema(usersFiles);

@@ -93,7 +93,7 @@ for (const currentDirectoryPath of allDirectoryPaths) {
 
     if (combinedDependencies) {
       for (const dependency of Object.keys(combinedDependencies)) {
-        if (dependency.startsWith('@sovereign-university/')) {
+        if (dependency.startsWith('@blms/')) {
           const referenceName = dependency.split('/').pop();
           if (!referenceName || referenceName === 'ui') continue;
 

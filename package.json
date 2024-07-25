@@ -1,13 +1,13 @@
 {
-  "name": "sovereign-university",
+  "name": "blms",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "dotenv -- turbo dev --cache-dir=.turbo",
-    "dev:web": "dotenv -- turbo dev --cache-dir=.turbo --filter=@sovereign-university/web",
-    "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@sovereign-university/api",
+    "dev:web": "dotenv -- turbo dev --cache-dir=.turbo --filter=@blms/web",
+    "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@blms/api",
     "dev:db:generate": "cd ./packages/database && pnpm drizzle:generate",
     "dev:db:migrate": "cd ./packages/database && pnpm db:migrate",
     "dev:db:studio": "cd ./packages/database && npx drizzle-kit studio",

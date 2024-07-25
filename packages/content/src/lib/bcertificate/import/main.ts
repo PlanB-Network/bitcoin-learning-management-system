@@ -1,10 +1,10 @@
-import type { TransactionSql } from '@sovereign-university/database';
+import type { TransactionSql } from '@blms/database';
 import type {
   BCertificateExam,
   ChangedFile,
   ModifiedFile,
   RenamedFile,
-} from '@sovereign-university/types';
+} from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 

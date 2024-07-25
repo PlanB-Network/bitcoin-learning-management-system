@@ -1,5 +1,5 @@
-import { firstRow } from '@sovereign-university/database';
-// import type { JoinedCourseWithAll } from '@sovereign-university/types';
+import { firstRow } from '@blms/database';
+// import type { JoinedCourseWithAll } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';

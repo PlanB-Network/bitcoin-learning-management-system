@@ -1,9 +1,6 @@
 import { createSelectSchema } from 'drizzle-zod';
 
-import {
-  usersAccounts,
-  usersLud4PublicKeys,
-} from '@sovereign-university/database';
+import { usersAccounts, usersLud4PublicKeys } from '@blms/database';
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
 export const userDetailsSchema = userAccountSchema.pick({

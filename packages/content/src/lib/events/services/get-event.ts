@@ -1,5 +1,5 @@
-import { firstRow } from '@sovereign-university/database';
-import type { JoinedEvent } from '@sovereign-university/types';
+import { firstRow } from '@blms/database';
+import type { JoinedEvent } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';

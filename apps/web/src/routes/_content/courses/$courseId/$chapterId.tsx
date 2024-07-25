@@ -9,8 +9,8 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 
-import type { JoinedQuizQuestion } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedQuizQuestion } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';

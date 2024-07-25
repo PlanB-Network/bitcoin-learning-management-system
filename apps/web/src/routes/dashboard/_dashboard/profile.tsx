@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useState } from 'react';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';

@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { CoursePayment } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { CoursePayment } from '@blms/types';
 
 export type GetPaymentQueryOutput = Array<
   Pick<

@@ -4,7 +4,7 @@ import { z } from 'zod';
 import {
   contentQuizQuestions,
   contentQuizQuestionsLocalized,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 export const quizQuestionSchema = createSelectSchema(contentQuizQuestions);
 export const quizQuestionLocalizedSchema = createSelectSchema(

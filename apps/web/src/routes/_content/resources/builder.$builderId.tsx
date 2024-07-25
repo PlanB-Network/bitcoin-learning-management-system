@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button, cn } from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Spinner from '#src/assets/spinner_orange.svg?react';

@@ -4,10 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import type {
-  CouponCode,
-  JoinedCourseWithAll,
-} from '@sovereign-university/types';
+import type { CouponCode, JoinedCourseWithAll } from '@blms/types';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { PaymentDescription } from '#src/components/payment-description.js';

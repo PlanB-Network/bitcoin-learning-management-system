@@ -1,7 +1,7 @@
 import type { ToPathOption } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { PageHeader } from '#src/components/PageHeader/index.tsx';

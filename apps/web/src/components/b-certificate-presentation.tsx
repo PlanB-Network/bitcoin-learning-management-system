@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button, cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 

@@ -1,11 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { hash } from 'argon2';
 
-import {
-  EmptyResultError,
-  firstRow,
-  rejectOnEmpty,
-} from '@sovereign-university/database';
+import { EmptyResultError, firstRow, rejectOnEmpty } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';
@@ -25,44 +21,46 @@ export const createPasswordResetToken = (deps: Dependencies) => {
   const sendEmail = createSendEmail(deps);
 
   return (email: string) => {
-    return deps.postgres
-      .exec(getUserByEmailQuery(email))
-      .then(firstRow)
-      .then(rejectOnEmpty)
-      // .then(({ uid, email }) =>
-      //   deps.postgres.exec(
-      //     createTokenQuery(uid, 'reset_password' satisfies TokenType, email),
-      //   ),
-      // )
-      .then(({ uid, email }) =>
-        deps.postgres.exec(createTokenQuery(uid, 'reset_password', email)),
-      )
-      .then(firstRow)
-      .then(rejectOnEmpty)
-      .then((token) =>
-        sendEmail({
-          email,
-          subject: 'Reset your password',
-          template,
-          data: {
-            token_url: `${domainUrl}/reset-password/${token.id}`,
-          },
-        }),
-      )
-      .then(() => ({ success: true }))
-      .catch((error) => {
-        console.error('Error sending email:', error);
+    return (
+      deps.postgres
+        .exec(getUserByEmailQuery(email))
+        .then(firstRow)
+        .then(rejectOnEmpty)
+        // .then(({ uid, email }) =>
+        //   deps.postgres.exec(
+        //     createTokenQuery(uid, 'reset_password' satisfies TokenType, email),
+        //   ),
+        // )
+        .then(({ uid, email }) =>
+          deps.postgres.exec(createTokenQuery(uid, 'reset_password', email)),
+        )
+        .then(firstRow)
+        .then(rejectOnEmpty)
+        .then((token) =>
+          sendEmail({
+            email,
+            subject: 'Reset your password',
+            template,
+            data: {
+              token_url: `${domainUrl}/reset-password/${token.id}`,
+            },
+          }),
+        )
+        .then(() => ({ success: true }))
+        .catch((error) => {
+          console.error('Error sending email:', error);
 
-        // Do not expose whether email exists or not
-        if (error instanceof EmptyResultError) {
-          return { success: true };
-        }
+          // Do not expose whether email exists or not
+          if (error instanceof EmptyResultError) {
+            return { success: true };
+          }
 
-        throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: 'Failed to send email',
-        });
-      });
+          throw new TRPCError({
+            code: 'INTERNAL_SERVER_ERROR',
+            message: 'Failed to send email',
+          });
+        })
+    );
   };
 };
 

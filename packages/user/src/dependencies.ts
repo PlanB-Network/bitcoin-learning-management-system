@@ -1,5 +1,5 @@
-import type { PostgresClient } from '@sovereign-university/database';
-import type { EnvConfig } from '@sovereign-university/types';
+import type { PostgresClient } from '@blms/database';
+import type { EnvConfig } from '@blms/types';
 
 export interface Dependencies {
   postgres: PostgresClient;

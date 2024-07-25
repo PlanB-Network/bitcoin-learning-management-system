@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { JoinedEvent } from '@blms/types';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { PaymentDescription } from '#src/components/payment-description.js';

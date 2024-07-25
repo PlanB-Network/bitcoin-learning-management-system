@@ -1,4 +1,4 @@
-import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
+import type { JoinedCourseWithProfessors } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/index.js';

@@ -1,8 +1,5 @@
-import { firstRow, sql } from '@sovereign-university/database';
-import type {
-  BCertificateExam,
-  ChangedFile,
-} from '@sovereign-university/types';
+import { firstRow, sql } from '@blms/database';
+import type { BCertificateExam, ChangedFile } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';

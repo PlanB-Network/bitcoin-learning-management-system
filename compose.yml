@@ -65,7 +65,7 @@ services:
 
   api:
     <<: [*defaults, *base]
-    command: pnpm turbo run dev --env-mode=loose --filter='@sovereign-university/api'
+    command: pnpm turbo run dev --env-mode=loose --filter='@blms/api'
     ports:
       - 3000:3000
     environment:
@@ -89,7 +89,7 @@ services:
 
   web:
     <<: [*defaults, *base]
-    command: pnpm turbo run dev --env-mode=loose --filter='@sovereign-university/web'
+    command: pnpm turbo run dev --env-mode=loose --filter='@blms/web'
     ports:
       - 8181:8181
     volumes:

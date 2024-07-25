@@ -1,4 +1,4 @@
-import type { JoinedTutorialLight } from '@sovereign-university/types';
+import type { JoinedTutorialLight } from '@blms/types';
 
 import exchangeSvg from '#src/assets/tutorials/exchange.svg';
 import merchantSvg from '#src/assets/tutorials/merchant.svg';

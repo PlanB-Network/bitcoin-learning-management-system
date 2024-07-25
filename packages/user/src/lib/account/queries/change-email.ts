@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { UserAccount } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { UserAccount } from '@blms/types';
 
 export const changeEmailQuery = (uid: string, email: string) => {
   return sql<Array<Pick<UserAccount, 'email'>>>`

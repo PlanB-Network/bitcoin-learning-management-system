@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
 import { NewTag } from '#src/atoms/Tag/index.js';

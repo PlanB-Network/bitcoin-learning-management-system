@@ -1,5 +1,5 @@
-import { firstRow } from '@sovereign-university/database';
-import type { FullProfessor } from '@sovereign-university/types';
+import { firstRow } from '@blms/database';
+import type { FullProfessor } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import {

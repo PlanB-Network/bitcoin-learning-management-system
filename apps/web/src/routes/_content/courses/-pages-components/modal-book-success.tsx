@@ -1,8 +1,8 @@
 import { t } from 'i18next';
 import { FiLoader } from 'react-icons/fi';
 
-import type { JoinedCourseWithAll } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedCourseWithAll } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { formatDate, formatTime } from '#src/utils/date.js';

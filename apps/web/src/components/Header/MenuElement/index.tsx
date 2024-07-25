@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import type { NavigationElement } from '../props.tsx';
 

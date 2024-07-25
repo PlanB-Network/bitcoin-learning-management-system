@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import type { JoinedCourse } from '@sovereign-university/types';
-import { Button, cn } from '@sovereign-university/ui';
+import type { JoinedCourse } from '@blms/types';
+import { Button, cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';

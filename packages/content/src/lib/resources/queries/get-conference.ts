@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedConference } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedConference } from '@blms/types';
 
 export const getConferenceQuery = (resourceId: number) => {
   return sql<JoinedConference[]>`

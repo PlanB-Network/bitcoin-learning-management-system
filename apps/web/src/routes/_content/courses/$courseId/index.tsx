@@ -14,8 +14,8 @@ import { IoMdStopwatch } from 'react-icons/io';
 import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
-import type { JoinedCourseWithAll } from '@sovereign-university/types';
-import { Button, cn } from '@sovereign-university/ui';
+import type { JoinedCourseWithAll } from '@blms/types';
+import { Button, cn } from '@blms/ui';
 
 import graduateImg from '#src/assets/birrete.png';
 import watch from '#src/assets/cloclk.png';

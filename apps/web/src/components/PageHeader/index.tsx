@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { Trans } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 export const PageHeader = ({
   title,

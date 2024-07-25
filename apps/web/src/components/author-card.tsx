@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import type { FormattedProfessor } from '@sovereign-university/types';
+import type { FormattedProfessor } from '@blms/types';
 
 import DonateLightning from '../assets/icons/donate_lightning.svg?react';
 import TwitterIcon from '../assets/icons/twitter.svg?react';

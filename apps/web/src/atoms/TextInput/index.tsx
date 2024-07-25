@@ -2,7 +2,7 @@ import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { useMemo, useState } from 'react';
 import { BsExclamationTriangle, BsEye, BsEyeSlash } from 'react-icons/bs';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import type { BaseAtomProps } from '../types.tsx';
 

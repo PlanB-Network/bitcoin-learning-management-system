@@ -1,6 +1,6 @@
 import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';

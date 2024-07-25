@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/types",
+  "name": "@blms/types",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -21,8 +21,8 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "devDependencies": {
-    "@sovereign-university/eslint-config": "workspace:*",
-    "@sovereign-university/schemas": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
+    "@blms/schemas": "workspace:*",
     "@types/express-session": "^1.18.0",
     "zod": "3.23.8",
     "zod-to-ts": "^1.2.0"

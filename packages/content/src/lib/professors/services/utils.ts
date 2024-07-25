@@ -1,4 +1,4 @@
-import type { JoinedProfessor } from '@sovereign-university/types';
+import type { JoinedProfessor } from '@blms/types';
 
 import { computeAssetCdnUrl, omitWithTypes } from '../../utils.js';
 

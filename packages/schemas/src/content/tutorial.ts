@@ -5,7 +5,7 @@ import {
   contentTutorialCredits,
   contentTutorials,
   contentTutorialsLocalized,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 import { joinedBuilderSchema } from './builder.js';
 import { joinedProfessorSchema } from './professor.js';

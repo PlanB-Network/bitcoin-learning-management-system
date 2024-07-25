@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/web",
+  "name": "@blms/web",
   "version": "0.0.1",
   "type": "module",
   "imports": {
@@ -15,7 +15,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@sovereign-university/ui": "workspace:*",
+    "@blms/ui": "workspace:*",
     "@emotion/css": "^11.11.2",
     "@headlessui/react": "^2.1.2",
     "@radix-ui/react-tabs": "^1.1.0",
@@ -59,9 +59,9 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@sovereign-university/api": "workspace:*",
-    "@sovereign-university/eslint-config": "workspace:*",
-    "@sovereign-university/types": "workspace:*",
+    "@blms/api": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*",
     "@storybook/react": "^8.2.4",
     "@tanstack/router-devtools": "^1.45.2",
     "@tanstack/router-plugin": "^1.45.2",

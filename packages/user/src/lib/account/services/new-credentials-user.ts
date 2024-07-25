@@ -1,7 +1,7 @@
 import { hash } from 'argon2';
 
-import { firstRow } from '@sovereign-university/database';
-import type { UserDetails } from '@sovereign-university/types';
+import { firstRow } from '@blms/database';
+import type { UserDetails } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { newCredentialsUserQuery } from '../queries/index.js';

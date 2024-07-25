@@ -1,4 +1,4 @@
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { compose } from '../../utils/index.ts';
 import type { BaseAtomProps } from '../types.tsx';

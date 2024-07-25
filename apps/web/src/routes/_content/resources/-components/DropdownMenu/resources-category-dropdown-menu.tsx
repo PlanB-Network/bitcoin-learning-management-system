@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import { capitalizeFirstWord } from '#src/utils/string.js';

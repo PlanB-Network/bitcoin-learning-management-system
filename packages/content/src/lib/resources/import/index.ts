@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { ChangedFile } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { ChangedFile } from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';

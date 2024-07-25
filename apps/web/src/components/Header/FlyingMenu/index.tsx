@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';

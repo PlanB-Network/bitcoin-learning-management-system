@@ -2,10 +2,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import {
-  contentProfessors,
-  contentProfessorsLocalized,
-} from '@sovereign-university/database';
+import { contentProfessors, contentProfessorsLocalized } from '@blms/database';
 
 export const professorSchema = createSelectSchema(contentProfessors, {
   // TODO: Remove this when the issue is fixed

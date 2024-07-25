@@ -1,5 +1,5 @@
-import { firstRow, rejectOnEmpty } from '@sovereign-university/database';
-import type { UserFile } from '@sovereign-university/types';
+import { firstRow, rejectOnEmpty } from '@blms/database';
+import type { UserFile } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 

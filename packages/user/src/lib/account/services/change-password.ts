@@ -2,7 +2,7 @@
 import { TRPCError } from '@trpc/server';
 import { hash, verify as verifyHash } from 'argon2';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery, getUserByIdQuery } from '../queries/index.js';

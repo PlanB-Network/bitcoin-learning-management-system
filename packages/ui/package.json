@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/ui",
+  "name": "@blms/ui",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -14,7 +14,7 @@
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
-    "@sovereign-university/eslint-config": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
     "@chromatic-com/storybook": "^1.6.1",
     "@storybook/addon-essentials": "^8.2.4",
     "@storybook/addon-interactions": "^8.2.4",

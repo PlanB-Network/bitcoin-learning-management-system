@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import type { JoinedCourseWithAll } from '@sovereign-university/types';
+import type { JoinedCourseWithAll } from '@blms/types';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';

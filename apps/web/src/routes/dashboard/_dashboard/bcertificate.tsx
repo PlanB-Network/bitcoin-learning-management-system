@@ -4,7 +4,7 @@ import { capitalize } from 'lodash-es';
 import React, { useContext, useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';

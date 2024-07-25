@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
-import type { ConferenceStageVideo } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { ConferenceStageVideo } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { NewTag } from '#src/atoms/Tag/index.js';

@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { Ticket } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { Ticket } from '@blms/types';
 
 export const getTicketsQuery = (uid: string /*, language: string*/) => {
   return sql<Ticket[]>`

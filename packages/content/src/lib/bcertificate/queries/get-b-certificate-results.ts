@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedBCertificateResults } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedBCertificateResults } from '@blms/types';
 
 export const getBCertificateResultsQuery = (uid: string) => {
   return sql<JoinedBCertificateResults[]>`

@@ -2,8 +2,8 @@ import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
-import type { JoinedCourseWithAll } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedCourseWithAll } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { AppContext } from '#src/providers/context.js';

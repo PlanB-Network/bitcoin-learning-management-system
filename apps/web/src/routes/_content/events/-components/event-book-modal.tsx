@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { JoinedEvent } from '@blms/types';
 
 import { Modal } from '#src/atoms/Modal/index.js';
 import { trpc } from '#src/utils/trpc.js';

@@ -2,7 +2,7 @@ import RedisStore from 'connect-redis';
 import type { RequestHandler } from 'express';
 import session from 'express-session';
 
-import type { SessionConfig } from '@sovereign-university/types';
+import type { SessionConfig } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 

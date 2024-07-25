@@ -3,7 +3,7 @@ import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 interface ModalProps {
   isOpen: boolean;

@@ -1,10 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import type {
-  EventPayment,
-  JoinedEvent,
-  UserEvent,
-} from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 
 import { EventsCarousel } from './events-carousel.tsx';
 

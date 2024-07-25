@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import OrangePill from '../../assets/footer_pill.webp';
 import PlanBLogoBlack from '../../assets/planb_logo_horizontal_black_orangepill_gradient.svg';

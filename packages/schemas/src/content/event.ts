@@ -5,7 +5,7 @@ import {
   contentEventLocation,
   contentEvents,
   usersEventPayment,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 export const eventSchema = createSelectSchema(contentEvents);
 export const joinedEventSchema = eventSchema.merge(

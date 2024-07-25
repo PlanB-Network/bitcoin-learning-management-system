@@ -1,17 +1,8 @@
 import { z } from 'zod';
 
-import {
-  createGetProfessor,
-  createGetProfessors,
-} from '@sovereign-university/content';
-import {
-  formattedProfessorSchema,
-  fullProfessorSchema,
-} from '@sovereign-university/schemas';
-import type {
-  FormattedProfessor,
-  FullProfessor,
-} from '@sovereign-university/types';
+import { createGetProfessor, createGetProfessors } from '@blms/content';
+import { formattedProfessorSchema, fullProfessorSchema } from '@blms/schemas';
+import type { FormattedProfessor, FullProfessor } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 

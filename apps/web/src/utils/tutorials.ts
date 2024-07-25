@@ -2,7 +2,7 @@ import { BsCart, BsCpu, BsCurrencyExchange, BsWallet2 } from 'react-icons/bs';
 import { LiaToolsSolid, LiaUserSecretSolid } from 'react-icons/lia';
 import { SiRaspberrypi } from 'react-icons/si';
 
-import type { JoinedTutorial } from '@sovereign-university/types';
+import type { JoinedTutorial } from '@blms/types';
 
 import exchangeSvg from '../assets/tutorials/exchange.svg';
 import merchantSvg from '../assets/tutorials/merchant.svg';

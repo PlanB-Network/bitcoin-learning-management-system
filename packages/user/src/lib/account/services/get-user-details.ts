@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { getUserDetailsQuery } from '../queries/index.js';

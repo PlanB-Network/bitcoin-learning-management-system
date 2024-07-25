@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect } from 'react';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import bCertificatesImage from '#src/assets/about/b-certificates.webp';
 import Question from '#src/assets/icons/question.svg?react';

@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/content",
+  "name": "@blms/content",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -19,7 +19,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@sovereign-university/database": "workspace:*",
+    "@blms/database": "workspace:*",
     "gray-matter": "^4.0.3",
     "ioredis": "^5.4.1",
     "js-yaml": "^4.1.0",
@@ -29,8 +29,8 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@sovereign-university/eslint-config": "workspace:*",
-    "@sovereign-university/types": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.17.7",
     "@types/uuid": "^9.0.8"

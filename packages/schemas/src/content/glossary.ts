@@ -4,7 +4,7 @@ import { z } from 'zod';
 import {
   contentGlossaryWords,
   contentGlossaryWordsLocalized,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 

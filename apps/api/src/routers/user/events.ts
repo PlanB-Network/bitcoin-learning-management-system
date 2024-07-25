@@ -1,20 +1,14 @@
 import { z } from 'zod';
 
-import {
-  createCalculateEventSeats,
-  createGetEvent,
-} from '@sovereign-university/content';
-import {
-  eventPaymentSchema,
-  userEventSchema,
-} from '@sovereign-university/schemas';
+import { createCalculateEventSeats, createGetEvent } from '@blms/content';
+import { eventPaymentSchema, userEventSchema } from '@blms/schemas';
 import {
   createGetEventPayments,
   createGetUserEvents,
   createSaveEventPayment,
   createSaveUserEvent,
   generateEventTicket,
-} from '@sovereign-university/user';
+} from '@blms/user';
 
 import { protectedProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

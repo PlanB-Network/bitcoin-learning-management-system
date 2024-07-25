@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { Footer } from '../Footer/index.tsx';
 import { Header } from '../Header/index.tsx';

@@ -5,12 +5,12 @@ import {
   createProcessContentFiles,
   createProcessDeleteOldEntities,
   createSyncEventsLocations,
-} from '@sovereign-university/content';
+} from '@blms/content';
 import {
   createSyncCdnRepository,
   createSyncRepositories,
   timeLog,
-} from '@sovereign-university/github';
+} from '@blms/github';
 
 import type { Dependencies } from '#src/dependencies.js';
 

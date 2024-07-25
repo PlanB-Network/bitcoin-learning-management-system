@@ -5,7 +5,7 @@ import {
   contentBet,
   contentBetLocalized,
   contentBetViewUrl,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 

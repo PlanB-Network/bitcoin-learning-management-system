@@ -1,11 +1,7 @@
 import { TRPCError } from '@trpc/server';
 
-import {
-  EmptyResultError,
-  firstRow,
-  rejectOnEmpty,
-} from '@sovereign-university/database';
-import type { TokenType } from '@sovereign-university/types';
+import { EmptyResultError, firstRow, rejectOnEmpty } from '@blms/database';
+import type { TokenType } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 

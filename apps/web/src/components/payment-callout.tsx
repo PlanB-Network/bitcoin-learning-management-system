@@ -1,6 +1,6 @@
 import { AiOutlineWarning } from 'react-icons/ai';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 interface PaymentCalloutProps {
   description: string;

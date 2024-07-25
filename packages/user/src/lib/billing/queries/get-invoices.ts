@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { Invoice } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { Invoice } from '@blms/types';
 
 export const getInvoicesQuery = (uid: string, language?: string) => {
   return sql<Invoice[]>`

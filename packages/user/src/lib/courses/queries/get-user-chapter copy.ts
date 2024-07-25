@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { CourseUserChapter } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { CourseUserChapter } from '@blms/types';
 
 type UserChapter = Array<
   Pick<CourseUserChapter, 'courseId' | 'chapterId' | 'completedAt' | 'booked'>

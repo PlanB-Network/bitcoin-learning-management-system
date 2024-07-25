@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { DropdownItem } from './dropdown-item.tsx';
 

@@ -3,10 +3,10 @@
   "extends": ["//"],
   "tasks": {
     "check-types": {
-      "dependsOn": ["@sovereign-university/schemas#build-types"]
+      "dependsOn": ["@blms/schemas#build-types"]
     },
     "generate-types": {
-      "dependsOn": ["@sovereign-university/schemas#build"]
+      "dependsOn": ["@blms/schemas#build"]
     },
     "build-types": {
       "dependsOn": ["generate-types"],

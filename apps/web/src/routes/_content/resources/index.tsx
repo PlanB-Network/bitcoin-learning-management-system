@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import { MainLayout } from '#src/components/MainLayout/index.js';

@@ -2,7 +2,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 interface ConferenceTimeLineProps {
   activeYear: string;

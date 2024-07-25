@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedGlossaryWord } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedGlossaryWord } from '@blms/types';
 
 export const getGlossaryWordQuery = (strId: string, language?: string) => {
   return sql<JoinedGlossaryWord[]>`

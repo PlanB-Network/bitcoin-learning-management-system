@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import ArrowFilledIcon from '#src/assets/icons/arrow_filled.svg?react';
 import RabbitHoldingPen from '#src/assets/rabbit_holding_pen.svg?react';

@@ -61,22 +61,22 @@ importers:
 
   apps/api:
     dependencies:
-      '@sovereign-university/content':
+      '@blms/content':
         specifier: workspace:*
         version: link:../../packages/content
-      '@sovereign-university/database':
+      '@blms/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@sovereign-university/github':
+      '@blms/github':
         specifier: workspace:*
         version: link:../../packages/github
-      '@sovereign-university/redis':
+      '@blms/redis':
         specifier: workspace:*
         version: link:../../packages/redis
-      '@sovereign-university/schemas':
+      '@blms/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
-      '@sovereign-university/user':
+      '@blms/user':
         specifier: workspace:*
         version: link:../../packages/user
       '@trpc/server':
@@ -119,10 +119,10 @@ importers:
         specifier: 3.23.8
         version: 3.23.8
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@types/express':
@@ -164,7 +164,7 @@ importers:
       '@react-hooks-library/core':
         specifier: ^0.6.2
         version: 0.6.2(react@18.3.1)
-      '@sovereign-university/ui':
+      '@blms/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@tanstack/react-query':
@@ -276,13 +276,13 @@ importers:
         specifier: 3.23.8
         version: 3.23.8
     devDependencies:
-      '@sovereign-university/api':
+      '@blms/api':
         specifier: workspace:*
         version: link:../api
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@storybook/react':
@@ -336,7 +336,7 @@ importers:
 
   packages/content:
     dependencies:
-      '@sovereign-university/database':
+      '@blms/database':
         specifier: workspace:*
         version: link:../database
       gray-matter:
@@ -361,10 +361,10 @@ importers:
         specifier: 3.23.8
         version: 3.23.8
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../types
       '@types/js-yaml':
@@ -386,7 +386,7 @@ importers:
         specifier: 3.4.3
         version: 3.4.3(patch_hash=m376l4oqubthsaahxofxshioba)
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       dotenv:
@@ -508,10 +508,10 @@ importers:
       '@octokit/webhooks-types':
         specifier: ^7.5.1
         version: 7.5.1
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../types
       '@types/async':
@@ -524,16 +524,16 @@ importers:
         specifier: ^5.4.1
         version: 5.4.1
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../types
 
   packages/schemas:
     dependencies:
-      '@sovereign-university/database':
+      '@blms/database':
         specifier: workspace:*
         version: link:../database
       drizzle-orm:
@@ -548,10 +548,10 @@ importers:
 
   packages/types:
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@sovereign-university/schemas':
+      '@blms/schemas':
         specifier: workspace:*
         version: link:../schemas
       '@types/express-session':
@@ -588,7 +588,7 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1.6.1
         version: 1.6.1(react@18.3.1)
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@storybook/addon-essentials':
@@ -648,7 +648,7 @@ importers:
 
   packages/user:
     dependencies:
-      '@sovereign-university/database':
+      '@blms/database':
         specifier: workspace:*
         version: link:../database
       '@trpc/server':
@@ -676,10 +676,10 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
     devDependencies:
-      '@sovereign-university/eslint-config':
+      '@blms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@sovereign-university/types':
+      '@blms/types':
         specifier: workspace:*
         version: link:../types
       '@types/lodash':

@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/schemas",
+  "name": "@blms/schemas",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@sovereign-university/database": "workspace:*",
+    "@blms/database": "workspace:*",
     "drizzle-orm": "^0.32.0",
     "drizzle-zod": "~0.5.1",
     "zod": "3.23.8"

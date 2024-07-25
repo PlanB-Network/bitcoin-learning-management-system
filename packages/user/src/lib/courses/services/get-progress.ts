@@ -1,4 +1,4 @@
-import type { CourseProgressExtended } from '@sovereign-university/types';
+import type { CourseProgressExtended } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {

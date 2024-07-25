@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { CouponCode } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { CouponCode } from '@blms/types';
 
 export const getCouponCode = (code: string, itemId: string) => {
   return sql<CouponCode[]>`

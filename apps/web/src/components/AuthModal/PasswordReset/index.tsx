@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import { trpc } from '#src/utils/index.js';
 

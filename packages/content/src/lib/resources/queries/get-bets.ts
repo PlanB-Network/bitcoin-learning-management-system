@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedBet } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedBet } from '@blms/types';
 
 export const getBetsQuery = (language?: string) => {
   return sql<JoinedBet[]>`

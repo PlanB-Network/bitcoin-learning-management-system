@@ -4,27 +4,27 @@
   "tasks": {
     "check-types": {
       "dependsOn": [
-        "@sovereign-university/content#build-types",
-        "@sovereign-university/user#build-types",
-        "@sovereign-university/github#build-types",
-        "@sovereign-university/redis#build-types"
+        "@blms/content#build-types",
+        "@blms/user#build-types",
+        "@blms/github#build-types",
+        "@blms/redis#build-types"
       ]
     },
     "build-types": {
       "outputs": ["dist/**"],
       "dependsOn": [
-        "@sovereign-university/content#build-types",
-        "@sovereign-university/user#build-types",
-        "@sovereign-university/github#build-types",
-        "@sovereign-university/redis#build-types"
+        "@blms/content#build-types",
+        "@blms/user#build-types",
+        "@blms/github#build-types",
+        "@blms/redis#build-types"
       ]
     },
     "build": {
       "dependsOn": [
-        "@sovereign-university/content#build",
-        "@sovereign-university/user#build",
-        "@sovereign-university/github#build",
-        "@sovereign-university/redis#build"
+        "@blms/content#build",
+        "@blms/user#build",
+        "@blms/github#build",
+        "@blms/redis#build"
       ],
       "outputs": ["dist/**"]
     }

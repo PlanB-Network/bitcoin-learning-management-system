@@ -1,12 +1,8 @@
 import process from 'node:process';
 
-import type { PostgresClientConfig } from '@sovereign-university/database';
-import type { RedisClientConfig } from '@sovereign-university/redis';
-import type {
-  EnvConfig,
-  GitHubSyncConfig,
-  SessionConfig,
-} from '@sovereign-university/types';
+import type { PostgresClientConfig } from '@blms/database';
+import type { RedisClientConfig } from '@blms/redis';
+import type { EnvConfig, GitHubSyncConfig, SessionConfig } from '@blms/types';
 
 function getenv<
   T,

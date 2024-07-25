@@ -7,10 +7,7 @@ import * as async from 'async';
 import type { SimpleGit } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
-import type {
-  ChangedFile,
-  GitHubSyncConfig,
-} from '@sovereign-university/types';
+import type { ChangedFile, GitHubSyncConfig } from '@blms/types';
 
 import type { GithubOctokit } from './octokit.js';
 

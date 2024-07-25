@@ -3,23 +3,14 @@
   "extends": ["//"],
   "tasks": {
     "check-types": {
-      "dependsOn": [
-        "@sovereign-university/types#build-types",
-        "@sovereign-university/database#build-types"
-      ]
+      "dependsOn": ["@blms/types#build-types", "@blms/database#build-types"]
     },
     "build-types": {
-      "dependsOn": [
-        "@sovereign-university/types#build-types",
-        "@sovereign-university/database#build-types"
-      ],
+      "dependsOn": ["@blms/types#build-types", "@blms/database#build-types"],
       "outputs": ["dist/**"]
     },
     "build": {
-      "dependsOn": [
-        "@sovereign-university/types#build",
-        "@sovereign-university/database#build"
-      ],
+      "dependsOn": ["@blms/types#build", "@blms/database#build"],
       "outputs": ["dist/**"]
     }
   }

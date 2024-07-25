@@ -7,18 +7,18 @@ import {
   createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
   createGetCourses,
-} from '@sovereign-university/content';
+} from '@blms/content';
 import {
   joinedCourseChapterSchema,
   joinedCourseWithAllSchema,
   joinedCourseWithProfessorsSchema,
   joinedQuizQuestionSchema,
-} from '@sovereign-university/schemas';
+} from '@blms/schemas';
 import type {
   JoinedCourseChapter,
   JoinedCourseWithAll,
   JoinedCourseWithProfessors,
-} from '@sovereign-university/types';
+} from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 

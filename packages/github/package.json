@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/github",
+  "name": "@blms/github",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -26,8 +26,8 @@
     "simple-git": "^3.25.0"
   },
   "devDependencies": {
-    "@sovereign-university/eslint-config": "workspace:*",
-    "@sovereign-university/types": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*",
     "@octokit/webhooks-types": "^7.5.1",
     "@types/async": "^3.2.24"
   }

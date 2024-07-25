@@ -2,10 +2,7 @@ import type { PropsWithChildren } from 'react';
 import { createContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type {
-  JoinedTutorialLight,
-  UserDetails,
-} from '@sovereign-university/types';
+import type { JoinedTutorialLight, UserDetails } from '@blms/types';
 
 import { trpcClient } from '#src/utils/trpc.js';
 

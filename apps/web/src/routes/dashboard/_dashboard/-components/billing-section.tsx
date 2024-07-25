@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import type { Invoice } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { Invoice } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import { Card } from '#src/atoms/Card/index.js';
 import { formatDate } from '#src/utils/date.js';

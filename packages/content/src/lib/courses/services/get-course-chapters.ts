@@ -1,4 +1,4 @@
-import type { JoinedCourseChapter } from '@sovereign-university/types';
+import type { JoinedCourseChapter } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getCourseChaptersQuery } from '../queries/index.js';

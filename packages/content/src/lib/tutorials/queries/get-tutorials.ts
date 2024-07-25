@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedTutorialLight } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedTutorialLight } from '@blms/types';
 
 export const getTutorialsQuery = (category?: string, language?: string) => {
   return sql<JoinedTutorialLight[]>`

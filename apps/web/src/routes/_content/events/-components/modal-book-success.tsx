@@ -2,8 +2,8 @@ import { t } from 'i18next';
 import { useContext } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
-import type { JoinedEvent } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedEvent } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
 import { AppContext } from '#src/providers/context.js';

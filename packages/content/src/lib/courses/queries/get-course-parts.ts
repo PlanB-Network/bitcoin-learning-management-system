@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedCoursePartLocalized } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedCoursePartLocalized } from '@blms/types';
 
 export const getCoursePartsQuery = (id: string, language?: string) => {
   return sql<JoinedCoursePartLocalized[]>`

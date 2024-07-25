@@ -1,7 +1,7 @@
 import { Redis } from 'ioredis';
 import type { RedisOptions } from 'ioredis';
 
-import type { RedisKey, RedisKeyValue } from '@sovereign-university/types';
+import type { RedisKey, RedisKeyValue } from '@blms/types';
 
 Redis.Command.setReplyTransformer('exists', (result: number) => result === 1);
 

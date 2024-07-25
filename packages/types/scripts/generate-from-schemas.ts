@@ -5,7 +5,7 @@ import { zodToTs, printNode, type GetType } from 'zod-to-ts';
 import type { ZodAny } from 'zod';
 import ts from 'typescript';
 
-import * as schemas from '@sovereign-university/schemas';
+import * as schemas from '@blms/schemas';
 
 const schemasDirectory = '../schemas/src';
 const outputDirectory = './src/generated';

@@ -1,10 +1,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import {
-  contentBuilders,
-  contentBuildersLocalized,
-} from '@sovereign-university/database';
+import { contentBuilders, contentBuildersLocalized } from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 

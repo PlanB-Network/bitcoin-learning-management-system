@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import type { JoinedTutorialLight } from '@sovereign-university/types';
+import type { JoinedTutorialLight } from '@blms/types';
 
 import { computeAssetCdnUrl } from '../utils/index.ts';
 

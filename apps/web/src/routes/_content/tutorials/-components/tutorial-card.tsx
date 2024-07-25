@@ -1,4 +1,4 @@
-import type { JoinedTutorialLight } from '@sovereign-university/types';
+import type { JoinedTutorialLight } from '@blms/types';
 
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 

@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import type { JoinedConference } from '@sovereign-university/types';
+import type { JoinedConference } from '@blms/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';

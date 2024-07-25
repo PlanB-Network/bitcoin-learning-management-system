@@ -9,7 +9,7 @@ import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';

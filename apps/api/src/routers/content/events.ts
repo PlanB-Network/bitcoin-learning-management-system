@@ -1,11 +1,8 @@
 import { z } from 'zod';
 
-import {
-  createGetEvent,
-  createGetRecentEvents,
-} from '@sovereign-university/content';
-import { joinedEventSchema } from '@sovereign-university/schemas';
-import type { JoinedEvent } from '@sovereign-university/types';
+import { createGetEvent, createGetRecentEvents } from '@blms/content';
+import { joinedEventSchema } from '@blms/schemas';
+import type { JoinedEvent } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 

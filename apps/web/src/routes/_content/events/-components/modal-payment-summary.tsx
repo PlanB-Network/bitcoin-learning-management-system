@@ -1,8 +1,8 @@
 import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import type { JoinedEvent } from '@blms/types';
+import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';

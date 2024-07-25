@@ -1,4 +1,4 @@
-import { sql } from '@sovereign-university/database';
+import { sql } from '@blms/database';
 
 export const anyContributorIdExistsQuery = (ids: string[]) => {
   return sql<Array<{ exists: boolean }>>`

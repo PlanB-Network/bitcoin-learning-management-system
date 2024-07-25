@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { LuPlus } from 'react-icons/lu';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
 import nodeMap from '#src/assets/about/node_map.webp';

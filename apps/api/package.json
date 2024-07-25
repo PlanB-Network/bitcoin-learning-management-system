@@ -1,5 +1,5 @@
 {
-  "name": "@sovereign-university/api",
+  "name": "@blms/api",
   "version": "0.0.1",
   "type": "module",
   "imports": {
@@ -17,12 +17,12 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@sovereign-university/content": "workspace:*",
-    "@sovereign-university/database": "workspace:*",
-    "@sovereign-university/github": "workspace:*",
-    "@sovereign-university/redis": "workspace:*",
-    "@sovereign-university/schemas": "workspace:*",
-    "@sovereign-university/user": "workspace:*",
+    "@blms/content": "workspace:*",
+    "@blms/database": "workspace:*",
+    "@blms/github": "workspace:*",
+    "@blms/redis": "workspace:*",
+    "@blms/schemas": "workspace:*",
+    "@blms/user": "workspace:*",
     "@trpc/server": "11.0.0-rc.433",
     "argon2": "^0.40.3",
     "bech32": "^2.0.0",
@@ -38,8 +38,8 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@sovereign-university/eslint-config": "workspace:*",
-    "@sovereign-university/types": "workspace:*",
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*",
     "@types/express": "^4.17.21",
     "@types/express-serve-static-core": "4.19.3",
     "@types/express-session": "^1.18.0",

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
-import type { ButtonProps } from '@sovereign-university/ui';
-import { Button, cn } from '@sovereign-university/ui';
+import type { ButtonProps } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';

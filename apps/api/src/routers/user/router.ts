@@ -9,7 +9,7 @@ import {
   createGetUserDetails,
   createPasswordReset,
   createPasswordResetToken,
-} from '@sovereign-university/user';
+} from '@blms/user';
 
 import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

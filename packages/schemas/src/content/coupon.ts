@@ -1,5 +1,5 @@
 import { createSelectSchema } from 'drizzle-zod';
 
-import { couponCode } from '@sovereign-university/database';
+import { couponCode } from '@blms/database';
 
 export const couponCodeSchema = createSelectSchema(couponCode);

@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedEvent } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedEvent } from '@blms/types';
 
 export const getRecentEventsQuery = () => {
   return sql<JoinedEvent[]>`

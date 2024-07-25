@@ -1,6 +1,6 @@
 import { t } from 'i18next';
 
-import type { JoinedConference } from '@sovereign-university/types';
+import type { JoinedConference } from '@blms/types';
 
 import { ConferenceRow } from './conference-row.tsx';
 

@@ -2,8 +2,8 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsArrowRight } from 'react-icons/bs';
 
-import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedCourseWithProfessors } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 

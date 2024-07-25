@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import ProfessorsTile from '../../assets/home/professors.webp';
 import BitcoinCircle from '../../assets/icons/bitcoin_circle.svg?react';

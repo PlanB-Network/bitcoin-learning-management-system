@@ -12,7 +12,7 @@ import {
   createGetGlossaryWords,
   createGetPodcast,
   createGetPodcasts,
-} from '@sovereign-university/content';
+} from '@blms/content';
 import {
   joinedBetSchema,
   joinedBookSchema,
@@ -20,7 +20,7 @@ import {
   joinedConferenceSchema,
   joinedGlossaryWordSchema,
   joinedPodcastSchema,
-} from '@sovereign-university/schemas';
+} from '@blms/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

@@ -25,8 +25,8 @@ import type {
   EventPayment,
   JoinedEvent,
   UserEvent,
-} from '@sovereign-university/types';
-import { Button, cn } from '@sovereign-university/ui';
+} from '@blms/types';
+import { Button, cn } from '@blms/ui';
 
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';

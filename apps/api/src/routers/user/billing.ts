@@ -1,11 +1,8 @@
 import { z } from 'zod';
 
-import { invoiceSchema, ticketSchema } from '@sovereign-university/schemas';
-import type { Invoice, Ticket } from '@sovereign-university/types';
-import {
-  createGetInvoices,
-  createGetTickets,
-} from '@sovereign-university/user';
+import { invoiceSchema, ticketSchema } from '@blms/schemas';
+import type { Invoice, Ticket } from '@blms/types';
+import { createGetInvoices, createGetTickets } from '@blms/user';
 
 import type { Parser } from '#src/trpc/types.js';
 

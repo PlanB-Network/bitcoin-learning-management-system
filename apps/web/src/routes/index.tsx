@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button, cn } from '@blms/ui';
 
 import HeaderPill from '#src/assets/footer_pill.webp';
 import EducationMain from '#src/assets/home/education-main.webp';

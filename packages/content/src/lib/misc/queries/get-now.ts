@@ -1,4 +1,4 @@
-import { sql } from '@sovereign-university/database';
+import { sql } from '@blms/database';
 
 export default interface SelectNow {
   now: number;

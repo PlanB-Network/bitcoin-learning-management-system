@@ -8,7 +8,7 @@ import { IoPersonOutline, IoTicketOutline } from 'react-icons/io5';
 import { LuLogOut } from 'react-icons/lu';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';

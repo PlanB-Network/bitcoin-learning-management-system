@@ -2,7 +2,7 @@ import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedGlossaryWord } from '@sovereign-university/types';
+import type { JoinedGlossaryWord } from '@blms/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { GlossaryMarkdownBody } from '#src/components/GlossaryMarkdownBody/index.js';

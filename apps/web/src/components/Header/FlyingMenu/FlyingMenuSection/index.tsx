@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { Fragment, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 import { MenuElement } from '../../MenuElement/index.tsx';
 import type { NavigationSection } from '../../props.tsx';

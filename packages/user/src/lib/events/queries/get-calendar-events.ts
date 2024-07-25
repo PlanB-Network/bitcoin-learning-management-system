@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { CalendarEvent } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { CalendarEvent } from '@blms/types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getCalendarEventsQuery = (uid: string, language: string) => {

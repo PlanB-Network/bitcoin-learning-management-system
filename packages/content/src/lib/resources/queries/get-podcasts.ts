@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedPodcast } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedPodcast } from '@blms/types';
 
 export const getPodcastsQuery = (language?: string) => {
   return sql<JoinedPodcast[]>`

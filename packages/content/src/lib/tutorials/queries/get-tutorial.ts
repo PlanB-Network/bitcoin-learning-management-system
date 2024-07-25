@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedTutorial } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedTutorial } from '@blms/types';
 
 export const getTutorialQuery = (
   category: string,

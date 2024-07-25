@@ -2,7 +2,7 @@ import { createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { Card } from '#src/atoms/Card/index.js';

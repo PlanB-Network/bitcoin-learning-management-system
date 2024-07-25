@@ -1,8 +1,4 @@
-import {
-  EmptyResultError,
-  firstRow,
-  rejectOnEmpty,
-} from '@sovereign-university/database';
+import { EmptyResultError, firstRow, rejectOnEmpty } from '@blms/database';
 
 import type { Dependencies } from '#src/dependencies.js';
 

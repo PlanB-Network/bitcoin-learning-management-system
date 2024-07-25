@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import 'cropperjs/dist/cropper.css';
 import { Cropper } from 'react-cropper';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button, cn } from '@blms/ui';
 
 import spinner from '#src/assets/icons/spinner.svg';
 import { Modal } from '#src/atoms/Modal/index.tsx';

@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedCourseChapterWithContent } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedCourseChapterWithContent } from '@blms/types';
 
 export const getCourseChapterQuery = (chapterId: string, language?: string) => {
   return sql<JoinedCourseChapterWithContent[]>`

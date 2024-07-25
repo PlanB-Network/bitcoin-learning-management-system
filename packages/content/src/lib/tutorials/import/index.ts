@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 
-import { firstRow, sql } from '@sovereign-university/database';
-import type { ChangedFile, Tutorial } from '@sovereign-university/types';
+import { firstRow, sql } from '@blms/database';
+import type { ChangedFile, Tutorial } from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';

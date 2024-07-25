@@ -1,4 +1,4 @@
-import type { TransactionSql } from '@sovereign-university/database';
+import type { TransactionSql } from '@blms/database';
 
 import type { ChangedFileWithLanguage } from '../../types.js';
 import { yamlToObject } from '../../utils.js';

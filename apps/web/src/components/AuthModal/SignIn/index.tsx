@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';

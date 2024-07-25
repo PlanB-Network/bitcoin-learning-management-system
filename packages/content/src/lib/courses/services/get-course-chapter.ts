@@ -1,8 +1,8 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow } from '@blms/database';
 // import type {
 //   JoinedCourseChapterWithContent,
 //   JoinedProfessor,
-// } from '@sovereign-university/types';
+// } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';

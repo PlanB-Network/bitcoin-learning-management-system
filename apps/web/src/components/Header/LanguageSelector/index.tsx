@@ -4,7 +4,7 @@ import { Fragment, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { Button, cn } from '@sovereign-university/ui';
+import { Button, cn } from '@blms/ui';
 
 import { LangContext } from '#src/providers/app.js';
 

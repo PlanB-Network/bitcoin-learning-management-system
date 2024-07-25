@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { calendarEventSchema } from '@sovereign-university/schemas';
-import type { CalendarEvent } from '@sovereign-university/types';
-import { createGetCalendarEvents } from '@sovereign-university/user';
+import { calendarEventSchema } from '@blms/schemas';
+import type { CalendarEvent } from '@blms/types';
+import { createGetCalendarEvents } from '@blms/user';
 
 import { protectedProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';

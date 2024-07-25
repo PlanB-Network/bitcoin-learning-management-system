@@ -1,4 +1,4 @@
-import { firstRow } from '@sovereign-university/database';
+import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { getUserQuery } from '../queries/index.js';

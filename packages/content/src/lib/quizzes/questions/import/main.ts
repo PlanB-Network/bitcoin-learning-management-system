@@ -1,12 +1,12 @@
-import type { TransactionSql } from '@sovereign-university/database';
-import { firstRow } from '@sovereign-university/database';
+import type { TransactionSql } from '@blms/database';
+import { firstRow } from '@blms/database';
 import type {
   ChangedFile,
   Level,
   ModifiedFile,
   QuizQuestion,
   RenamedFile,
-} from '@sovereign-university/types';
+} from '@blms/types';
 
 import { yamlToObject } from '../../../utils.js';
 

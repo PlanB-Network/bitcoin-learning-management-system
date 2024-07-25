@@ -2,8 +2,8 @@ import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedCourseWithProfessors } from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import type { JoinedCourseWithProfessors } from '@blms/types';
+import { cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 

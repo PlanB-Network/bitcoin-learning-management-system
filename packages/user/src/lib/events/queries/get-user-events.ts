@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { UserEvent } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { UserEvent } from '@blms/types';
 
 export const getUserEventsQuery = (uid: string) => {
   return sql<UserEvent[]>`

@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import type { JoinedTutorialLight } from '@sovereign-university/types';
+import type { JoinedTutorialLight } from '@blms/types';
 
 import { TutorialCard } from '#src/routes/_content/tutorials/-components/tutorial-card.js';
 

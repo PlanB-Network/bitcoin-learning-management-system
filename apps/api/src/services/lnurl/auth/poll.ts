@@ -1,4 +1,4 @@
-import type { ApiEvents } from '@sovereign-university/types';
+import type { ApiEvents } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 

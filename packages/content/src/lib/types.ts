@@ -1,4 +1,4 @@
-import type { ChangedFile } from '@sovereign-university/types';
+import type { ChangedFile } from '@blms/types';
 
 import type { ContentType, Language } from './const.js';
 

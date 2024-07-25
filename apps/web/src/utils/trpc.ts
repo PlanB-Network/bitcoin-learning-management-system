@@ -9,7 +9,7 @@ import type {
   AppRouter,
   RouterInputs,
   RouterOutputs,
-} from '@sovereign-university/api/src/trpc/types.ts';
+} from '@blms/api/src/trpc/types.ts';
 
 export type TRPCRouterInput = RouterInputs;
 export type TRPCRouterOutput = RouterOutputs;

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { createGetCouponCode } from '@sovereign-university/content';
-import { couponCodeSchema } from '@sovereign-university/schemas';
+import { createGetCouponCode } from '@blms/content';
+import { couponCodeSchema } from '@blms/schemas';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

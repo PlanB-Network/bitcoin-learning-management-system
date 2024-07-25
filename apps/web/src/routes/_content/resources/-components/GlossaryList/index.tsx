@@ -2,8 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
-import type { JoinedGlossaryWord } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { JoinedGlossaryWord } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import { normalizeString } from '#src/utils/string.js';
 

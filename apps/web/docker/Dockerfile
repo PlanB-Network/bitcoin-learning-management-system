@@ -18,7 +18,7 @@ RUN npm install --location=global pnpm@9
 RUN pnpm add --global turbo@2
 
 COPY . .
-RUN turbo prune "@sovereign-university/web" --docker
+RUN turbo prune "@blms/web" --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -46,13 +46,13 @@ RUN pnpm install --frozen-lockfile
 
 # Check the version of @tanstack/react-router
 RUN echo "Checking version of @tanstack/react-router:"
-RUN echo $(pnpm list @tanstack/react-router --filter=@sovereign-university/web)
+RUN echo $(pnpm list @tanstack/react-router --filter=@blms/web)
 
 # Build the project and its dependencies
 COPY --from=builder /app/out/full/ .
 COPY turbo.json tsconfig.json ./
 
-RUN pnpm turbo build --filter="@sovereign-university/web"...
+RUN pnpm turbo build --filter="@blms/web"...
 
 # Final image
 FROM nginx:alpine AS runner

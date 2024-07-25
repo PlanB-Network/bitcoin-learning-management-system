@@ -3,14 +3,14 @@
   "extends": ["//"],
   "tasks": {
     "check-types": {
-      "dependsOn": ["@sovereign-university/types#build-types"]
+      "dependsOn": ["@blms/types#build-types"]
     },
     "build-types": {
-      "dependsOn": ["@sovereign-university/types#build-types"],
+      "dependsOn": ["@blms/types#build-types"],
       "outputs": ["dist/**"]
     },
     "build": {
-      "dependsOn": ["@sovereign-university/types#build"]
+      "dependsOn": ["@blms/types#build"]
     }
   }
 }

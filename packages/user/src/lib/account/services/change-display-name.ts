@@ -1,7 +1,7 @@
 // TODO: use normal error
 import { TRPCError } from '@trpc/server';
 
-import { firstRow } from '@sovereign-university/database';
+import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { changeDisplayNameQuery, getUserByIdQuery } from '../queries/index.js';

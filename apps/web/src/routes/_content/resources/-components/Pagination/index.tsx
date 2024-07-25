@@ -1,6 +1,6 @@
 import { BsPlay, BsSkipEnd, BsSkipStart } from 'react-icons/bs';
 
-import { Button } from '@sovereign-university/ui';
+import { Button } from '@blms/ui';
 
 import { compose } from '#src/utils/index.js';
 

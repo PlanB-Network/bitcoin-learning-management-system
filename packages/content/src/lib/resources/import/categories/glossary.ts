@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 
-import { firstRow } from '@sovereign-university/database';
-import type { Resource } from '@sovereign-university/types';
+import { firstRow } from '@blms/database';
+import type { Resource } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { separateContentFiles, yamlToObject } from '../../../utils.js';

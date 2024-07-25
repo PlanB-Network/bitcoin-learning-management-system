@@ -1,7 +1,7 @@
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { JoinedEvent } from '@blms/types';
 
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';

@@ -2,8 +2,8 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { Trans } from 'react-i18next';
 
-import type { CouponCode, JoinedEvent } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { CouponCode, JoinedEvent } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import checkGreen from '#src/assets/icons/check_green.svg';
 import crossRed from '#src/assets/icons/cross_red.svg';

@@ -2,12 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { HiVideoCamera } from 'react-icons/hi2';
 
-import type {
-  EventPayment,
-  JoinedEvent,
-  UserEvent,
-} from '@sovereign-university/types';
-import { Button, cn } from '@sovereign-university/ui';
+import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import { Button, cn } from '@blms/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';

@@ -1,4 +1,4 @@
-import type { UserDetails } from '@sovereign-university/types';
+import type { UserDetails } from '@blms/types';
 
 import { httpClient } from '#src/utils/http.js';
 

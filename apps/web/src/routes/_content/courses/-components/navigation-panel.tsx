@@ -4,11 +4,8 @@ import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import type {
-  JoinedCourseChapter,
-  JoinedCourseWithAll,
-} from '@sovereign-university/types';
-import { cn } from '@sovereign-university/ui';
+import type { JoinedCourseChapter, JoinedCourseWithAll } from '@blms/types';
+import { cn } from '@blms/ui';
 
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 

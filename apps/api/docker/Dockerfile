@@ -18,7 +18,7 @@ RUN npm install --location=global pnpm@9
 RUN pnpm add --global turbo@2
 
 COPY . .
-RUN turbo prune "@sovereign-university/api" --docker
+RUN turbo prune "@blms/api" --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -48,7 +48,7 @@ RUN pnpm install --frozen-lockfile
 COPY --from=builder /app/out/full/ .
 COPY turbo.json tsconfig.json ./
 
-RUN pnpm turbo build --filter="@sovereign-university/api"...
+RUN pnpm turbo build --filter="@blms/api"...
 
 # Final image
 FROM base AS runner

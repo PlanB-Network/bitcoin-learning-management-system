@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
-import type { BetViewUrl } from '@sovereign-university/types';
-import { Button } from '@sovereign-university/ui';
+import type { BetViewUrl } from '@blms/types';
+import { Button } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';

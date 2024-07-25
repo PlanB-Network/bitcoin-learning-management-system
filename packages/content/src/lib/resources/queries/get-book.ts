@@ -1,5 +1,5 @@
-import { sql } from '@sovereign-university/database';
-import type { JoinedBook } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { JoinedBook } from '@blms/types';
 
 export const getBookQuery = (id: number, language?: string) => {
   return sql<JoinedBook[]>`

@@ -1,4 +1,4 @@
-import { cn } from '@sovereign-university/ui';
+import { cn } from '@blms/ui';
 
 interface LetterButtonProps {
   letter: string;

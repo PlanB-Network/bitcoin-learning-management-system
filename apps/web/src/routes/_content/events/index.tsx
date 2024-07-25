@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedEvent } from '@sovereign-university/types';
+import type { JoinedEvent } from '@blms/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';

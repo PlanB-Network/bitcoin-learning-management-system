@@ -4,7 +4,7 @@ import { z } from 'zod';
 import {
   contentBCertificateExam,
   usersBCertificateResults,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 export const BCertificateExamSchema = createSelectSchema(
   contentBCertificateExam,

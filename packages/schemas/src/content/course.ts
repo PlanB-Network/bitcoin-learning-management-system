@@ -8,7 +8,7 @@ import {
   contentCoursePartsLocalized,
   contentCourses,
   contentCoursesLocalized,
-} from '@sovereign-university/database';
+} from '@blms/database';
 
 import { formattedProfessorSchema } from './professor.js';
 

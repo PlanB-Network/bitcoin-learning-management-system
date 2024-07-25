@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import type { CourseProgressExtended } from '@sovereign-university/types';
-import { Button, cn } from '@sovereign-university/ui';
+import type { CourseProgressExtended } from '@blms/types';
+import { Button, cn } from '@blms/ui';
 
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { addSpaceToCourseId } from '#src/utils/courses.js';

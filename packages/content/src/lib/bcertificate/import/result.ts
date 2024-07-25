@@ -1,5 +1,5 @@
-import { type TransactionSql, firstRow } from '@sovereign-university/database';
-import type { ChangedFile, UserAccount } from '@sovereign-university/types';
+import { type TransactionSql, firstRow } from '@blms/database';
+import type { ChangedFile, UserAccount } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 

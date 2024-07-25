@@ -2,11 +2,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
-import type {
-  EventPayment,
-  JoinedEvent,
-  UserEvent,
-} from '@sovereign-university/types';
+import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 
 import { EventCard } from './event-card.tsx';
 

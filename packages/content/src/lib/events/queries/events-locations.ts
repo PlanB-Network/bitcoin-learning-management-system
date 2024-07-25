@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { sql } from '@sovereign-university/database';
-import type { EventLocation } from '@sovereign-university/types';
+import { sql } from '@blms/database';
+import type { EventLocation } from '@blms/types';
 
 /**
  * Get all "address_line_1" values from the events table that do not

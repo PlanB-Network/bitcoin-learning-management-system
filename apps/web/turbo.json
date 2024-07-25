@@ -3,16 +3,10 @@
   "extends": ["//"],
   "tasks": {
     "check-types": {
-      "dependsOn": [
-        "@sovereign-university/api#build-types",
-        "@sovereign-university/types#build-types"
-      ]
+      "dependsOn": ["@blms/api#build-types", "@blms/types#build-types"]
     },
     "build": {
-      "dependsOn": [
-        "@sovereign-university/api#build",
-        "@sovereign-university/types#build"
-      ],
+      "dependsOn": ["@blms/api#build", "@blms/types#build"],
       "outputs": ["dist/**"]
     }
   }
