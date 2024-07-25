@@ -87,7 +87,7 @@ export const BookSummary = ({
                 <button
                   onClick={() => {
                     window.open(
-                      'https://github.com/PlanB-Network/sovereign-university-data',
+                      'https://github.com/PlanB-Network/bitcoin-educational-content',
                       '_blank',
                       'noopener,noreferrer',
                     );

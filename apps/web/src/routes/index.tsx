@@ -460,7 +460,7 @@ function Home() {
                 {t('home.languageSection.content2')}
               </p>
               <a
-                href="https://github.com/PlanB-Network/sovereign-university-data"
+                href="https://github.com/PlanB-Network/bitcoin-educational-content"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6"

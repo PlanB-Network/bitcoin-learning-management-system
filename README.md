@@ -2,7 +2,7 @@
 
 This is the repository for the PlanB Network website. The goal of this project is to create a free, open-source, and community-driven platform to learn about Bitcoin.
 
-The repository holding the data for this project is [here](https://github.com/PlanB-Network/sovereign-university-data).
+The repository holding the data for this project is [here](https://github.com/PlanB-Network/bitcoin-educational-content).
 
 We are looking for contributors! If you want to help or learn more about the project, please reach out to us on [Twitter](https://twitter.com/planb_network) or [Discord](https://discord.com/invite/CHvZAhJCBh).
 
@@ -49,7 +49,7 @@ In order to sync the database with the data from the data repository, you can ma
 #### Sync issue
 
 When running the sync locally, there is currently and access right issue with the cdn and sync volumes. To fix it, update the access rights with the following command :
-`docker exec --user=root sovereign-university-api-1 chmod 777 /tmp/{sync,cdn}`
+`docker exec --user=root bitcoin-learning-management-system-api-1 chmod 777 /tmp/{sync,cdn}`
 
 ### Option 2 - Without docker
 
@@ -119,4 +119,4 @@ Once the database is updated, update or create the associated types running :
 
 ### Run SQL queries
 
-To open psql, run `docker exec -it sovereign-university-postgres-1 psql -U postgres -d postgres`
+To open psql, run `docker exec -it bitcoin-learning-management-system-postgres-1 psql -U postgres -d postgres`

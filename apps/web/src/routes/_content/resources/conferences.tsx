@@ -206,7 +206,7 @@ function Conferences() {
         <Trans i18nKey="conferences.addConferences">
           <a
             className="underline underline-offset-2 hover:text-darkOrange-5"
-            href="https://github.com/PlanB-Network/sovereign-university-data"
+            href="https://github.com/PlanB-Network/bitcoin-educational-content"
           >
             Github Repository
           </a>
