@@ -152,7 +152,7 @@ export const GlossaryMarkdownBody = ({
               <CopyButton text={childrenText} />
             </div>
           ) : (
-            <code className="bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm">
+            <code className="bg-white/20 px-1.5 rounded-lg font-mono inline-block text-sm text-white">
               {children}
             </code>
           );

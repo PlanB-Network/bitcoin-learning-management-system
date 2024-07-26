@@ -70,7 +70,7 @@ export const GlossaryFilterBar = ({
         />
         {isOnWordPage && (
           <Link
-            to={'/resources/glossary/$wordId'}
+            to={'/resources/word/$wordId'}
             params={{ wordId: randomWord || '' }}
           >
             <Button
