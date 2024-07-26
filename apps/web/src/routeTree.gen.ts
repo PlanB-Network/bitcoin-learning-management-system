@@ -43,8 +43,8 @@ import { Route as ContentMiscAboutImport } from './routes/_content/_misc/about';
 import { Route as ContentTutorialsCategoryIndexImport } from './routes/_content/tutorials/$category/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
+import { Route as ContentResourcesWordWordIdImport } from './routes/_content/resources/word.$wordId';
 import { Route as ContentResourcesPodcastPodcastIdImport } from './routes/_content/resources/podcast.$podcastId';
-import { Route as ContentResourcesGlossaryWordIdImport } from './routes/_content/resources/glossary.$wordId';
 import { Route as ContentResourcesConferenceConferenceIdImport } from './routes/_content/resources/conference.$conferenceId';
 import { Route as ContentResourcesBuilderBuilderIdImport } from './routes/_content/resources/builder.$builderId';
 import { Route as ContentResourcesBookBookIdImport } from './routes/_content/resources/book.$bookId';
@@ -225,16 +225,17 @@ const ContentTutorialsCategoryNameRoute =
     getParentRoute: () => ContentTutorialsCategoryRoute,
   } as any);
 
+const ContentResourcesWordWordIdRoute = ContentResourcesWordWordIdImport.update(
+  {
+    path: '/resources/word/$wordId',
+    getParentRoute: () => rootRoute,
+  } as any,
+);
+
 const ContentResourcesPodcastPodcastIdRoute =
   ContentResourcesPodcastPodcastIdImport.update({
     path: '/resources/podcast/$podcastId',
     getParentRoute: () => rootRoute,
-  } as any);
-
-const ContentResourcesGlossaryWordIdRoute =
-  ContentResourcesGlossaryWordIdImport.update({
-    path: '/$wordId',
-    getParentRoute: () => ContentResourcesGlossaryRoute,
   } as any);
 
 const ContentResourcesConferenceConferenceIdRoute =
@@ -529,18 +530,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentResourcesConferenceConferenceIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/glossary/$wordId': {
-      id: '/_content/resources/glossary/$wordId';
-      path: '/$wordId';
-      fullPath: '/resources/glossary/$wordId';
-      preLoaderRoute: typeof ContentResourcesGlossaryWordIdImport;
-      parentRoute: typeof ContentResourcesGlossaryImport;
-    };
     '/_content/resources/podcast/$podcastId': {
       id: '/_content/resources/podcast/$podcastId';
       path: '/resources/podcast/$podcastId';
       fullPath: '/resources/podcast/$podcastId';
       preLoaderRoute: typeof ContentResourcesPodcastPodcastIdImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/word/$wordId': {
+      id: '/_content/resources/word/$wordId';
+      path: '/resources/word/$wordId';
+      fullPath: '/resources/word/$wordId';
+      preLoaderRoute: typeof ContentResourcesWordWordIdImport;
       parentRoute: typeof rootRoute;
     };
     '/_content/tutorials/$category/$name': {
@@ -596,9 +597,7 @@ export const routeTree = rootRoute.addChildren({
   ContentResourcesBooksRoute,
   ContentResourcesBuildersRoute,
   ContentResourcesConferencesRoute,
-  ContentResourcesGlossaryRoute: ContentResourcesGlossaryRoute.addChildren({
-    ContentResourcesGlossaryWordIdRoute,
-  }),
+  ContentResourcesGlossaryRoute,
   ContentResourcesPodcastsRoute,
   ContentTutorialsCategoryRoute: ContentTutorialsCategoryRoute.addChildren({
     ContentTutorialsCategoryNameRoute,
@@ -615,6 +614,7 @@ export const routeTree = rootRoute.addChildren({
   ContentResourcesBuilderBuilderIdRoute,
   ContentResourcesConferenceConferenceIdRoute,
   ContentResourcesPodcastPodcastIdRoute,
+  ContentResourcesWordWordIdRoute,
 });
 
 /* prettier-ignore-end */
@@ -653,7 +653,8 @@ export const routeTree = rootRoute.addChildren({
         "/_content/resources/book/$bookId",
         "/_content/resources/builder/$builderId",
         "/_content/resources/conference/$conferenceId",
-        "/_content/resources/podcast/$podcastId"
+        "/_content/resources/podcast/$podcastId",
+        "/_content/resources/word/$wordId"
       ]
     },
     "/": {
@@ -720,10 +721,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_content/resources/conferences.tsx"
     },
     "/_content/resources/glossary": {
-      "filePath": "_content/resources/glossary.tsx",
-      "children": [
-        "/_content/resources/glossary/$wordId"
-      ]
+      "filePath": "_content/resources/glossary.tsx"
     },
     "/_content/resources/podcasts": {
       "filePath": "_content/resources/podcasts.tsx"
@@ -789,12 +787,11 @@ export const routeTree = rootRoute.addChildren({
     "/_content/resources/conference/$conferenceId": {
       "filePath": "_content/resources/conference.$conferenceId.tsx"
     },
-    "/_content/resources/glossary/$wordId": {
-      "filePath": "_content/resources/glossary.$wordId.tsx",
-      "parent": "/_content/resources/glossary"
-    },
     "/_content/resources/podcast/$podcastId": {
       "filePath": "_content/resources/podcast.$podcastId.tsx"
+    },
+    "/_content/resources/word/$wordId": {
+      "filePath": "_content/resources/word.$wordId.tsx"
     },
     "/_content/tutorials/$category/$name": {
       "filePath": "_content/tutorials/$category/$name.tsx",

@@ -14,7 +14,7 @@ import { GlossaryFilterBar } from './-components/GlossaryFilterBar/index.tsx';
 import { GlossaryList } from './-components/GlossaryList/index.tsx';
 import { ResourceLayout } from './-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/glossary/$wordId')({
+export const Route = createFileRoute('/_content/resources/word/$wordId')({
   component: GlossaryWord,
 });
 
@@ -22,7 +22,7 @@ function GlossaryWord() {
   const { t, i18n } = useTranslation();
 
   const { wordId } = useParams({
-    from: '/resources/glossary/$wordId',
+    from: '/resources/word/$wordId',
   });
 
   const [relatedWords, setRelatedWords] = useState<JoinedGlossaryWord[]>([]);
@@ -101,7 +101,7 @@ function GlossaryWord() {
                   {relatedWords.map((word) => (
                     <li className="ml-2 md:ml-6 py-2" key={word.fileName}>
                       <Link
-                        to="/resources/glossary/$wordId"
+                        to="/resources/word/$wordId"
                         params={{ wordId: word.fileName }}
                         className="text-darkOrange-5 underline underline-offset-4 capitalize"
                       >

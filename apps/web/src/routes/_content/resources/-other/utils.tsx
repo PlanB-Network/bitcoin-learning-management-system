@@ -34,6 +34,6 @@ export const RESOURCES_CATEGORIES = [
   {
     name: 'glossary',
     image: glossarySvg,
-    unreleased: true,
+    unreleased: false,
   },
 ] as const;
