@@ -28,24 +28,17 @@ export const LangContext = createContext<LangContext>({
   setCurrentLanguage: () => {},
 });
 
-const regexp = new RegExp(`^(/(${LANGUAGES.join('|')}))*`);
-const changePathLanguage = (lang: string, path: string) => {
-  return path.replace(regexp, `/${lang}`);
-};
-
 export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
 
   const { trpcQueryClient, trpcClient } = useTrpc();
   const [queryClient] = useState(() => new QueryClient());
 
-  const locationLanguage = ((l) => l && (LANGUAGES.includes(l) ? l : null))(
+  const locationLanguage = ((l) =>
+    l && (LANGUAGES.includes(l) ? l : undefined))(
     location.pathname.split('/')[1],
   );
-
-  const [currentLanguage, setCurrentLanguage] = useState(
-    locationLanguage ?? i18n.language,
-  );
+  const [currentLanguage, setCurrentLanguage] = useState(locationLanguage);
 
   // Temporary fix: the default language can be en-GB (or equivalent), until it is properly set with the selector
   // and these aren't supported. Fallback to 'en' in that case for now.
@@ -57,22 +50,9 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   }, [i18n]);
 
   useEffect(() => {
-    if (i18n.language === currentLanguage) {
-      return;
-    }
-
-    i18n.changeLanguage(currentLanguage);
-
-    router.update({
-      basepath: currentLanguage,
-      context: router.options.context,
-    });
-
-    router.navigate({
-      to: changePathLanguage(currentLanguage, location.pathname),
-    });
-
-    router.load();
+    const newLanguage = currentLanguage ? currentLanguage : i18n.language;
+    i18n.changeLanguage(newLanguage);
+    setCurrentLanguage(newLanguage);
   }, [currentLanguage, i18n, i18n.language, locationLanguage]);
 
   return (
