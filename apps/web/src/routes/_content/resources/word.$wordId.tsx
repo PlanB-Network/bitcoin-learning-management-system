@@ -75,7 +75,10 @@ function GlossaryWord() {
     <ResourceLayout
       title={t('glossary.pageTitle')}
       tagLine={t('glossary.pageSubtitle')}
+      link={'/resources/glossary'}
       activeCategory="glossary"
+      showPageHeader={false}
+      backToCategoryButton
     >
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (

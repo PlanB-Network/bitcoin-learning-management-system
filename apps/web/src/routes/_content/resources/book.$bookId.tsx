@@ -62,6 +62,7 @@ function Book() {
       tagLine={t('book.pageSubtitle')}
       link={'/resources/books'}
       activeCategory="books"
+      showPageHeader={false}
       backToCategoryButton
     >
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}

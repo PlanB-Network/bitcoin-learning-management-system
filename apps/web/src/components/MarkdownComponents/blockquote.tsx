@@ -18,8 +18,6 @@ export const Blockquote = ({
         )
     : children;
 
-  console.log(filteredChildren);
-
   return (
     <div className="flex p-2 rounded-lg bg-newGray-5">
       <FaQuoteLeft className="shrink-0 size-2 md:size-4" />

@@ -24,6 +24,14 @@ function Glossary() {
       language: i18n.language ?? 'en',
     });
 
+  const getRandomWord = () => {
+    if (glossaryWords && glossaryWords.length > 0) {
+      return glossaryWords[Math.floor(Math.random() * glossaryWords.length)]
+        .fileName;
+    }
+    return '';
+  };
+
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter === selectedLetter ? null : letter);
   };
@@ -38,7 +46,11 @@ function Glossary() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <div className="flex items-center flex-col px-4">
-          <GlossaryFilterBar onChange={setSearchTerm} value={searchTerm} />
+          <GlossaryFilterBar
+            onChange={setSearchTerm}
+            value={searchTerm}
+            randomWord={getRandomWord()}
+          />
           <AlphabetGlossary
             onLetterSelect={handleLetterSelection}
             selectedLetter={selectedLetter}

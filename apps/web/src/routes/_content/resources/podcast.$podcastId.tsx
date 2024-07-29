@@ -55,6 +55,7 @@ function Podcast() {
       tagLine={t('podcasts.pageSubtitle')}
       link={'/resources/podcasts'}
       activeCategory="podcasts"
+      showPageHeader={false}
       backToCategoryButton
     >
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
