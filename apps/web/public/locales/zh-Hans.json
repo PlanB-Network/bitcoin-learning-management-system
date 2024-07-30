@@ -19,7 +19,7 @@
     "storyContent": "PlanB网络是一个旨在全球范围内支持比特币教育的倡议。它是各种热衷于比特币的公司的相遇之处。这些公司专注于教育、开源软件、点对点网络和社区意识。他们共同决定建立PlanB网络，并为比特币生态系统提供适合的工具以助其成长。在这里你可以找到我们2023年的演示报告。",
     "subtitle": "想要让全世界接受橙色药丸吗？加入PlanB网络。",
     "title": "关于Plan B网络",
-    "corporateContent": "PlanB Network是专注于比特币发展的三个实体联合开发的项目。致力于扩展比特币教育，他们决定合作建立PlanB Network。为了实现我们的目标，将比特币教育推广到全世界，许多其他实体也决定联合起来并贡献他们的力量。非常感谢他们。",
+    "corporateContent": "PlanB Network是专注于比特币发展的三个实体联合开发的项目。致力于扩展比特币教育，他们决定合作建立PlanB Network。为了实现我们的目标，将比特币教育推广到全世界，许多其他实体也决定联合起来并贡献他们的力量。非常感谢他们",
     "manifesto": "我们相信比特币提供的去中心化的未来。\n\n我们的使命是在十年内向十亿人介绍比特币。我们的工具是教育和信息。\n\n我们以提供开源教育内容和比特币导师网络，来支持本地的比特币社区。\n\n我们的哲学受《密码朋克宣言》启发。正如他们提倡隐私，我们倡导教育。我们相信知识是自由和变革的基础。\n\n我们只支持比特币。\n\n我们倡导个人责任和拥有自己的密钥所提供的独立性。\n\n我们鼓励验证，而非盲目的信任。\n\n我们相信，通过搞定货币，我们可以修复世界。\n\n我们是去中心化和开源的，避免任何单点故障。\n\n我们鼓励自由传播我们的内容。\n\n我们渴望一个从底层向上运作的世界，那里个人处于中心位置。\n\n我们简化，我们教育，我们分享。\n\n加入我们的任务，让世界接受比特币。\n"
   },
   "auth": {
@@ -34,11 +34,12 @@
     "createOne": "在这里注册！",
     "emailAddress": "电子邮件地址",
     "errors": {
-      "usernameRegex": "用户名只能包含字母、数字_、. 和 -",
+      "usernameRegex": "用户名只能包含字母、数字、_、. 和 -",
       "usernameRequired": "需要您提供用户名",
-      "usernameTooShort": "用户名必须至少包含5个字符",
-      "displayNameRequired": "需要显示名称",
-      "displayNameTooShort": "显示名称必须包含至少2个字符。"
+      "usernameTooShort": "用户名必须至少包含5个字符。",
+      "displayNameRequired": "需要显示名称。",
+      "displayNameTooShort": "显示名称必须包含至少2个字符。",
+      "displayNameRegex": "显示名仅可包含字母、数字、下划线（_）、点号（.）、短横线（-）和空格。"
     },
     "forgottenPassword": "忘记了您的密码？",
     "headerAccountCreated": "创建的账户",
@@ -74,7 +75,7 @@
     "curious": "好奇考试是什么样的吗？",
     "knowledgeableBitcoin": "熟悉比特币吗？",
     "challengeYourself": "让我们挑战自己并证明你的水平！",
-    "noBookExam": "目前还没有已排程的考试期",
+    "noBookExam": "目前还没有已排程的考试期。",
     "organizeDescription": "没问题！如果您的社区是B Plan Network的一部分，那么在您可以在您的中心组织考试。请阅读图表，确保您满足举办考试的必要条件。如果您能满足这些条件，您就可以安排考试并将其添加到平台上。",
     "organizeExam": "组织一场考试",
     "organizeSubtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
@@ -105,7 +106,7 @@
     "bookSummary": {
       "noSummary": "尚未有摘要。如果你已经阅读了这本书并想分享摘要，不要犹豫，请在Github上分享。这将对社区有很大帮助，提高大学的水平，你甚至还可以因此获得一些聪（比特币最小单位）的奖励！",
       "modifyTooltip": "编写或修改",
-      "notice": "此摘要已链接到Github，用于任何修改或添加。",
+      "notice": "此摘要已链接到Github，可用于任何修改或添加。",
       "title": "书籍摘要"
     },
     "abstract": "摘要",
@@ -117,7 +118,121 @@
     "topicsAddressed": "已写过的话题 "
   },
   "words": {
-    "wallets": "钱包"
+    "wallets": "钱包",
+    "events": "活动",
+    "intermediate": "中级",
+    "manifesto": "宣言",
+    "onChainAddress": "链上地址",
+    "review": "评论",
+    "on": "上线",
+    "about": "关于",
+    "about-us": "关于我们",
+    "account": "账户",
+    "additionalCriteria": "额外的标准",
+    "advanced": "高级",
+    "all": "所有",
+    "amount": "金额",
+    "article": "文章",
+    "articles": "文章",
+    "audioBook": "有声读物",
+    "back": "回来",
+    "bCertificate": "₿ 证书",
+    "beginner": "初学者",
+    "billing": "计费",
+    "bitcoinWhitepaper": "比特币白皮书",
+    "book": "书",
+    "books": "书籍",
+    "builders": "建筑师",
+    "certificate": "证书",
+    "conference": "会议",
+    "conferences": "会议",
+    "content": "内容",
+    "continue": "继续",
+    "course": "课程",
+    "courseId": "课程ID",
+    "courses": "课程",
+    "date": "日期",
+    "dashboard": "控制面板",
+    "description": "概述",
+    "details": "详细信息",
+    "didYouKnow": "你知道吗？",
+    "documentaries": "纪录片",
+    "donations": "捐款",
+    "download": "下载",
+    "duration": "持续时间",
+    "economy": "经济",
+    "edit": "编辑",
+    "education": "教育",
+    "email": "电子邮件",
+    "exchanges": "交易所",
+    "followUs": "关注我们",
+    "free": "免费",
+    "glossary": "词汇表",
+    "helpUs": "帮助我们",
+    "home": "主页",
+    "interview": "采访",
+    "invoice": "发票",
+    "level": {
+      "advanced": "高级",
+      "beginner": "初学者",
+      "developer": "开发者",
+      "wizard": "巫师",
+      "intermediate": "中级",
+      "level": "级别",
+      "levels": "级别"
+    },
+    "library": "图书馆",
+    "lightning": "闪电",
+    "lightningInvoice": "闪电发票",
+    "lnurlAuth": "LNURL授权",
+    "merchandising": "商品推广",
+    "merchants": "商人",
+    "members": " 成员",
+    "mining": "挖矿",
+    "more": "更多",
+    "movieDocumentary": "电影纪录片",
+    "network": "网络",
+    "networkMember": "网络会员",
+    "newsletter": "电子报",
+    "newsletters": "电子报",
+    "node": "节点",
+    "nodeNetwork": "节点网络",
+    "onChain": "链上",
+    "online": "在线",
+    "or": "或者",
+    "ourStory": "我们的故事",
+    "paid": "付款",
+    "part": "部分",
+    "podcast": "播客",
+    "podcasts": "播客",
+    "price": "价格",
+    "professor": "教授",
+    "professors": "教授们",
+    "purchase": "购买",
+    "register": "注册",
+    "relatedResources": "相关资源",
+    "resources": "资源",
+    "resume": "摘要",
+    "rogzy": "Rogzy",
+    "sponsorUs": "赞助我们",
+    "sponsoringAndContributors": "赞助与贡献者",
+    "start": "开始",
+    "supportUs": "支持我们",
+    "teachers": "教师",
+    "termsAndConditions": "条款和条件",
+    "ticket": "票据",
+    "tickets": "票据",
+    "time": "时间",
+    "to": "至",
+    "toolkits": "工具包",
+    "topics": "话题",
+    "tutorial": "教程",
+    "tutorials": "教程",
+    "unified": "统一的",
+    "update": "更新",
+    "video": "视频",
+    "videos": "视频",
+    "view": "视图"
   },
   "conferences": {
     "description": "会议是比特币行业的关键元素。它们是每个比特币用户教育旅程的一部分。我们构建了这个工具，帮助您在数百个会议中浏览。",
@@ -366,7 +481,12 @@
       "general": "将军",
       "grade": "等级",
       "gradesDiploma": "成绩和文凭",
-      "learnMore": "了解更多"
+      "learnMore": "了解更多",
+      "noResults": "此帐户尚未关联任何等级或证书。\n如果你已经通过考试，但在较长时间后仍无法查看结果，请联系我们寻求帮助。",
+      "organizedSessions": "\"₿\"证书由Plan B Network在各种地点和时间组织。请确保预订上课时间的位置。",
+      "presentation": "\"₿证书\"是由Plan B Network组织的一项桌面考试，旨在确认你对比特币及其所有相关主题的了解程度。",
+      "wantToPass": "想要通过考试？",
+      "findResults": "您可在此找到您用此账户注册后参加的₿证书考试的结果。成绩通常需要2到3周的时间处理，并在此处显示。如果很长时间后您的成绩仍未显示，请与我们联系。"
     }
   },
   "events": {
@@ -393,10 +513,10 @@
     "pageDescription": "想要实时讨论比特币吗？在这里，您可以找到Plan B Network社区支持的所有活动。无论您是想听讲座，手持饮料讨论比特币，还是想通过考试评估您的知识，您都能通过Plan B Network找到适合的活动。",
     "payment": {
       "callout_physical": "您即将预订此活动的实体入场权限。",
-      "description_online": "请查看活动的日期和时间。到时请登录平台并通过活动页面访问直播。",
+      "description_online": "请查看活动的日期和时间。\n到时请登录平台并通过活动页面访问直播。",
       "description_free_physical": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票和二维码，以在活动现场出示。",
       "address": "地址",
-      "access_invoice": "您可通过控制面板查看您的发票",
+      "access_invoice": "您可通过控制面板查看您的发票。",
       "access_online_successful": "当活动开始时，登录平台，您将通过活动页面获得直播的访问权限。",
       "access_physical_successful": "您可以在此处下载您的票据，或者稍后在您的控制面板中下载。",
       "access_type": "访问类型",
@@ -445,10 +565,15 @@
     },
     "sectionEducation": {
       "title": "从初级到高级",
-      "subtitle": "在学院里学习比特币"
+      "subtitle": "在学院里学习比特币",
+      "link": "查看学院",
+      "content1": "比特币不仅是一种技术和货币形式，也是一种革命性生活方式。为了呼应这一点，我们的课程涵盖了广泛的领域，使每个人都能在他们感兴趣的领域中表现出色，并进一步加深他们的理解。从你的第一门比特币课程到深入研究协议的具体内容，我们的课程将帮助你安全地探索这个深深的兔子洞。没有理由犹豫。知识在等待你。"
     },
     "sectionNetwork": {
-      "link": "成为网络的一部分"
+      "link": "成为网络的一部分",
+      "title": "访问一个网络",
+      "subtitle": "全球比特币校园",
+      "content1": "连接全球的比特币爱好者，共享共同的热情。从定期会面的小社区到比特币教育中心，我们的网络地图将帮助你找到学习和建设的灵感。为爱好者提供广泛的服务，如孵化中心、实体工作坊、研讨会、比特币休闲活动等等。该网络对所有人开放，所以快来和你的本地比特币社区打个招呼吧！"
     },
     "tutorialSection": {
       "title": "我们的目标是简化比特币教育。",
@@ -461,13 +586,13 @@
       "title": "我们是谁？",
       "subtitle": "关于我们的一些情况",
       "bitcoinFocusTitle": "比特币关注",
-      "bitcoinFocusContent": "比特币革命从其基础层到围绕它的各种点对点通信是一个整体。",
+      "bitcoinFocusContent": "作为一个整体的，从基础层到围绕它的各种点对点通信的比特币革命",
       "openSourceTitle": "开源",
       "openSourceContent": "我们的目标是促进知识的自由流动，并帮助构建更多的开源解决方案",
       "communityTitle": "社区",
       "communityContent": "我们首先是一个热衷于在比特币在之旅中相互帮助的社区",
       "privacyTitle": "隐私",
-      "privacyContent": "我们认为隐私是最基本的人权之一，对于进步至关重要。"
+      "privacyContent": "我们认为隐私是最基本的人权之一，对于进步至关重要"
     },
     "languageSection": {
       "availableLanguages": "可用语言",
@@ -480,7 +605,7 @@
     },
     "patreonSection": {
       "title": "让我们一起让比特币教育变得更好！ ",
-      "subtitle": "PlanB网络能够100%开源，多亏了我们慷慨的赞助者。",
+      "subtitle": "多亏了我们慷慨的赞助者，PlanB网络能够100%开源",
       "content": "PlanB网络很荣幸能与世界各地的许多比特币公司合作，以最大可能提供最佳教育资源！"
     }
   },
@@ -499,6 +624,227 @@
     "forwardArrow": "向前箭头",
     "github": "Github的图标",
     "orangePill": "一个橙色的药片",
-    "printedCircuits": "印刷电路板"
+    "printedCircuits": "印刷电路板",
+    "rabbit404": "一只兔子用手电筒照亮一个404标志",
+    "underConstructionImage": "描绘了几只兔子在建筑工地上工作的插图",
+    "sthRepresentingCompany": "代表公司的东西",
+    "stylus": "触控笔"
+  },
+  "menu": {
+    "btc101Description": "通过这些课程更好地理解比特币",
+    "betDescription": "您可以用于教育项目的内容收集",
+    "conferencesDescription": "自创世区块以来的比特币会议重播集锦",
+    "lightningDescription": "管理您的闪电节点并使用闪电网络",
+    "nodeNetworkDescription": "加入Plan B全球社区网络",
+    "supportUsDescription": "通过任何方式找到支持我们的办法",
+    "login": "登录",
+    "bCertificateDescription": "通过₿证书考试来证明你的比特币水平",
+    "buildersDescription": "了解那些致力于改善比特币并增长其应用的公司和项目",
+    "exchangesDescription": "在交易所买卖比特币，并学习点对点交易",
+    "glossaryDescription": "理解比特币的语言",
+    "libraryDescription": "发现大量的书籍来提升你的知识",
+    "loginRegister": "登录 / 注册",
+    "manifestoDescription": "阅读Plan B的宣言",
+    "merchantsDescription": "接受比特币支付并探索商家工具",
+    "miningDescription": "挖掘你自己的比特币，并了解挖矿行业",
+    "nodeDescription": "学习如何通过自己的比特币节点实现自主权",
+    "ourStoryDescription": "了解大学的故事",
+    "podcastsDescription": "通过播客探索比特币生态系统",
+    "sponsorsDescription": "了解我们的赞助商和主要贡献者",
+    "teachersDescription": "了解我们学院的教师",
+    "walletsDescription": "保护并使用你的比特币"
+  },
+  "resources": {
+    "filterBarLabel": "找到完美的满足您需求的资源：",
+    "headerText": "欢迎进入无尽的比特币旅程！在这个部分，我们将为您提供大多数比特币项目的深入教程。这些页面由热心且热情的比特币支持者维护，他们支持这个项目开源。如果您觉得我们这里有错误，请联系我们。要查看我们提及项目的财务附件，请参阅我们的透明度报告。感谢您对这所大学的信任，请享受这次旅程。",
+    "builders": {
+      "title": "建筑师"
+    },
+    "conferences": {
+      "title": "会议重播"
+    },
+    "glossary": {
+      "title": "词汇表"
+    },
+    "headerSignature": "Rogzy",
+    "newsletters": {
+      "title": "电子报"
+    },
+    "pageDescription": "试图理解比特币就像探索一个不断增长的迷宫。为了在这个旅程中帮助您，我们整理了大量的资源，包括书籍、播客、视频和会议回放。这个门户网站将所有信息汇集在一个Github仓库中，以帮助您更好地理解比特币生态系统。",
+    "pageSubtitle": "集中知识以更好地分发它",
+    "pageTitle": "欢迎来到资源门户",
+    "github": "所有这些数据都通过一个开源的<0> Github </0>仓库进行管理。欢迎自由贡献并添加任何缺失的内容。",
+    "podcasts": {
+      "title": "播客"
+    },
+    "publicGrade": "公众评级：{{grade}}/5",
+    "bet": {
+      "title": "教育工具包"
+    },
+    "articles": {
+      "title": "文章"
+    },
+    "books": {
+      "title": "图书馆"
+    }
+  },
+  "tutorials": {
+    "details": {
+      "madeBy": "这个教程是由",
+      "checkAuthor": "查看作者的其他贡献并支持他的工作。",
+      "enjoyed": "喜欢这个教程吗？",
+      "source": "原始资源 ",
+      "tipTooltip": "喜欢吗？打赏。"
+    },
+    "headerText": "欢迎进入无尽的比特币旅程！在这个部分，我们将为您提供大多数比特币项目的深入教程。这些页面由热心且热情的比特币支持者维护，他们支持这个项目开源。如果您觉得我们这里有错误，请联系我们。要查看我们提及项目的财务附件，请参阅我们的透明度报告。感谢您对这所大学的信任，请享受这次旅程。",
+    "mining": {
+      "shortDescription": "比特币挖矿解决方案",
+      "description": "挖矿是一个充满了复杂性和深奥性的话题。在这里，我们将尝试通过硬件和软件来陪伴你的探索之旅。从将S9改造成家用暖气，到尝试用极客矿工赢得彩票。",
+      "title": "挖矿"
+    },
+    "exchange": {
+      "centralized": {
+        "description": "集中式交易所通常是受监管的实体，它们在银行系统和比特币生态系统之间充当中介。它们允许你购买和出售大量的比特币，并将其提取到你的钱包或银行账户。它们通常需要进行KYC（客户了解）程序，因此会监控你的活动，并向金融监控机构报告，以遵守当地法律。"
+      },
+      "description": "交易所是您的传统货币（欧元，美元）与比特币世界之间的进出门户之一。交易所可以是受监管的，也可以是符合KYC（客户了解）规定的，或者是点对点的，匿名的。每个交易所都会提供不同的功能，费用结构，流动性和客户支持。每个比特币用户会根据他们的需求和信念选择不同的交易所。",
+      "peer-to-peer": {
+        "description": "点对点交易所是个人之间用比特币交换其他货币的市场。这些交易所可能受到或不受到监管，通常不会要求您提供太多（如果有的话）关于您的信息。他们只是简化了用户之间的关系。他们的费用可能高于传统交易所，流动性可能稍低。这是试图避免KYC的比特币用户的首选选项。"
+      },
+      "shortDescription": "比特币买卖解决方案，KYC和非KYC",
+      "title": "交换"
+    },
+    "explorer": {
+      "description": "所有这些教程都是由热情并致力于比特币的人编写的，他们希望将比特币教育传播到世界各地。别忘了点赞，评论，并给他们打赏sats(聪）！",
+      "didYouKnow": "你知道吗？"
+    },
+    "headerSignature": "Rogzy",
+    "merchant": {
+      "description": "有没有想过如何轻松地为生意接受比特币？探索我们的各种解决方案，成为专家，并为您周围的商店设置简单的商家解决方案。销售点解决方案根据商家的需求（实体或在线）、他们的交易量以及他们运营的复杂性而变化。通常的好办法仅是简简单单从基本的LN钱包开始，转向一个简单、高效的解决方案（如移动PoS），最后探索BTC Pay Server以寻找高级、复杂、专业的解决方案。",
+      "shortDescription": "为生意接受比特币的解决方案",
+      "title": "商人"
+    },
+    "wallet": {
+      "description": "比特币钱包就像你的钥匙链。它能让你花费和接收比特币。有很多不同类型的钱包，他们都有不同的使用场景、功能、成本和用户体验。每个比特币用户会根据他们的需求、水平和经验选择不同的设备。",
+      "desktop": {
+        "description": "桌面钱包通常适用于更高级的用户，因为它们结合了硬件设备和桌面钱包软件的使用。这就像为您的硬件设备使用一个新的、更自定义、功能更强大的界面。这种钱包提供多签名选项、隐私功能、继承集成机制等更多功能。"
+      },
+      "hardware": {
+        "description": "硬件钱包通常用于存储您的长期比特币储蓄。它们是不连接互联网的物理设备（通常被称为“冷钱包”），通常具有很高的安全性。尽管这些设备的软件通常是开源的，但硬件的成本大约在50到300欧元之间。可以将这些设备视为银行账户，用于存储大额储蓄，您会偶尔使用。"
+      },
+      "mobile": {
+        "description": "移动钱包通常用于日常消费。它们整合了闪电网络，以实现低费用、即时交易。它们通常连接到互联网（通常被称为\"热钱包\"），因此比硬件钱包的安全性较低。它们应仅用于存储少量的比特币，可以将它们视为你口袋里的日常钱包。"
+      },
+      "shortDescription": "安全解决方案和比特币的使用",
+      "title": "钱包"
+    },
+    "others": {
+      "contribution": {
+        "description": "通过我们的详细教程，学习如何为PlanB网络做出贡献，并掌握我们内部使用的开源工具！"
+      },
+      "title": "其他",
+      "shortDescription": "探索与比特币主题密切相关的多样化教程",
+      "description": "深入研究与比特币族群密切相关的大量教程。从DIY到开源教程，发现新的知识领域，实现更多自主权。",
+      "DIY": {
+        "description": "探索我们的DIY教程，学习如何自己创造与比特币、计算机和个人主权相关的事物！"
+      },
+      "OpenSource": {
+        "description": "探索我们专门用于开源工具使用的教程！"
+      },
+      "general": {
+        "description": "浏览我们的通用教程，丰富您计算与个人自主权相关的其他主题的知识！"
+      }
+    },
+    "pageDescription": "比特币是一个日益扩大的广泛行业。为了帮助您探索它，我们收集并策划了大量的教程，描述了与比特币相关的所有领域的各种解决方案。",
+    "privacy": {
+      "bitcoin": {
+        "description": "比特币并非默认为私密的，它是有意设计为假名的，每一笔交易都是公开的，并且永久存储。为了重新获得一定的保密性，我们必须使用最佳的用户实践并整合至我们软件中的特定工具。从避免地址重用到CoinJoin，通过混合您的加密货币和连接到您自己的节点，我们将在这场隐私之旅中帮助您。"
+      },
+      "shortDescription": "备份和维护隐私的工具",
+      "title": "隐私",
+      "description": "隐私是一项基本权利。虽然我们向往一个隐私是默认设置的世界，但这并不是我们生活的现实。我们将尽力向您解释最佳实践，为您提供教程，并引导您在处理您的数据时走上更具自主权的道路。",
+      "general": {
+        "description": "在大规模监控的时代，恢复日常生活中一定程度的隐私是至关重要的。考虑到每个用户都会有一定程度的偏执狂和技术知识，使用某些工具并将其适应自己的需求是完全正常的。在这里，我们将探讨不同的保护解决方案，如VPN、Tor、Tails OS、PGP、加密消息等等。"
+      }
+    },
+    "node": {
+      "lightning-network": {
+        "description": "一个闪电网络节点使您能够参与被称为闪电的比特币第二层协议。您将能够打开通道，管理它们的流动性，参与图表，并使您在闪电钱包方面变得非托管。",
+        "name": "闪电网络"
+      },
+      "bitcoin": {
+        "description": "比特币核心节点是你的比特币主权堆叠的零点。它允许你运行比特币软件并成为网络的一部分。你将验证区块和交易，决定你想在网络中应用哪些规则，并停止使用中介来传播你的交易。运行比特币节点有很多方法，有些比其他方法更易于使用。"
+      },
+      "description": "节点就像您的个人服务器。在比特币中，它是允许您运行网络、收集交易、验证规则并行使真正主权的软件。在我们的生态系统中，存在各种节点，从比特币核心，到闪电网络实现，RGB，或其他更高级的隐私解决方案。",
+      "rgb": {
+        "description": "RGB是一个可扩展且保密的比特币和闪电网络智能合约系统。它是比特币的可编程层，具有私有和共同所有权的概念，抽象和关注点的分离，并代表“后区块链”。"
+      },
+      "shortDescription": "操作比特币节点并加入网络的解决方案",
+      "title": "节点"
+    },
+    "pageSubtitle": "通过探索其庞大的生态系统，揭开比特币的神秘面纱",
+    "pageTitle": "探索我们的教程"
+  },
+  "library": {
+    "pageSubtitle": "这个图书馆是开源的，并且欢迎贡献。",
+    "pageTitle": "比特币图书馆",
+    "publishedIn": "发表于{{date}}",
+    "writtenBy": "由{{author}}撰写"
+  },
+  "settings": {
+    "changeDisplayName": "更改显示名称",
+    "changePassword": "更改密码",
+    "changeProfilePicture": "更换头像",
+    "changeEmail": "更改电子邮件"
+  },
+  "nodeNetwork": {
+    "answer1": "节点是与世界某处社区相关的教育倡议。它可以包含一栋建筑，在那里进行比特币教育，但不仅限于此。Plan B Network依靠中心运营，但在全球每个城市建立这样的中心是不现实的。这就是为什么我们依赖比特币用户社区来帮助我们实现这个全球网络的原因。",
+    "description1": "Plan B网络支持全球的教育倡议。我们通过我们的平台和实体空间共同创建这些项目的最佳工具。我们一直在寻找新的节点加入我们。如果你想一起创建一个关于比特币的全球分散的教育网络，请联系我们！",
+    "answer2": "通过加入我们的网络，您可以获得Plan B通过其平台分发的独家内容，您可以与您节点的居民分享这些内容。最重要的好处是开启未来项目的讨论渠道，并与全球其他社区连接，分享经验。",
+    "answer3": "最初，Plan B网络主要关注实体空间运营。未来，我们计划整合所有可以受益于网络支持的倡议。",
+    "answer4": "比特币节点可以是任何规模。基于一些要求，将被赋予不同的等级。一个拥有黑客空间、健身房和办公空间的节点将被认为和城堡一样。",
+    "answer5": "我们希望为全球的比特币用户提供一个安全的避风港。我们相信，通过帮助本地中心发展，我们将能够创建一个城堡网络，比特币用户在那里可以安全地工作、创造、分享和讨论。",
+    "apply": "申请成为一个节点",
+    "question4": "节点的大小是多少？",
+    "question5": "什么是秘密计划？",
+    "pageSubtitle": "想让全世界接受比特币这枚橙色良药吗？加入PlanB网络。",
+    "pageTitle": "探索计划B节点网络",
+    "question1": "什么是节点？",
+    "question2": "我能得到什么？",
+    "question3": "要求都有哪些？"
+  },
+  "payment": {
+    "feeDistribution": "费用分配：作者99% - 平台1%",
+    "proceedToPayment": "继续进行付款",
+    "terms": "查看我们的<0>通用条款</0>以获取退款详情",
+    "total": "总计"
+  },
+  "professors": {
+    "pageSubtitle": "我们所有的教授都是志愿者和热衷于比特币的人。你可以打赏以表示感谢。",
+    "pageTitle": "教授们",
+    "tips": {
+      "noTipsYet": "这位教授目前不接受小费。",
+      "thanks": "感谢您支持{{name}}的工作！",
+      "thanksNoName": "感谢您对我的工作的支持！"
+    }
+  },
+  "notFound": {
+    "here": "这里",
+    "pageSubtitle": "看来有人深陷兔子洞而迷失了方向。要回到地表，请点击",
+    "pageTitle": "哎呀。"
+  },
+  "podcast": {
+    "abstract": "摘要",
+    "discover": "发现这个播客"
+  },
+  "podcasts": {
+    "hostedBy": "由{{host}}主办",
+    "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
+    "pageTitle": "比特币播客"
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "p1": "一只兔子跌进了一个洞。由于这次意外的历险，这个页面目前正在进行一些建设。我们对任何不便表示歉意。我们的团队正在全力以赴完成这个页面。如果你有兴趣帮忙，请随时查看我们",
+    "p2": "并考虑加入我们的社区！",
+    "pageTitle": "哎呀。"
   }
 }
