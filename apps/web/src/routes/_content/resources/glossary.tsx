@@ -24,6 +24,14 @@ function Glossary() {
       language: i18n.language ?? 'en',
     });
 
+  const getRandomWord = () => {
+    if (glossaryWords && glossaryWords.length > 0) {
+      return glossaryWords[Math.floor(Math.random() * glossaryWords.length)]
+        .fileName;
+    }
+    return '';
+  };
+
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter === selectedLetter ? null : letter);
   };
@@ -38,17 +46,33 @@ function Glossary() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <div className="flex items-center flex-col px-4">
-          <GlossaryFilterBar onChange={setSearchTerm} value={searchTerm} />
+          <GlossaryFilterBar
+            onChange={setSearchTerm}
+            value={searchTerm}
+            randomWord={getRandomWord()}
+          />
           <AlphabetGlossary
             onLetterSelect={handleLetterSelection}
             selectedLetter={selectedLetter}
           />
-          {glossaryWords && (
+          {glossaryWords && glossaryWords.length > 0 && (
             <GlossaryList
               glossaryTerms={glossaryWords}
               selectedLetter={selectedLetter}
               searchTerm={searchTerm}
             />
+          )}
+          {glossaryWords && glossaryWords.length === 0 && (
+            <p className="text-center mt-10 text-white max-w-2xl mobile-body2 md:desktop-body1 whitespace-pre-line">
+              {t('glossary.notTranslated')}{' '}
+              <a
+                className="underline underline-offset-2 hover:text-darkOrange-5"
+                href="https://github.com/PlanB-Network/bitcoin-educational-content"
+              >
+                {t('underConstruction.github')}
+              </a>
+              .
+            </p>
           )}
         </div>
       )}

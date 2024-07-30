@@ -42,7 +42,7 @@ export const GlossaryFilterBar = ({
               {t('glossary.needHelp')}
             </p>
             <label
-              className="mb-10 text-white text-xl md:text-[40px] leading-[171%] md:leading-[116%] -tracking-[0.77px] text-center font-normal"
+              className="mb-4 md:mb-10 text-white text-xl md:text-[40px] leading-[171%] md:leading-[116%] -tracking-[0.77px] text-center font-normal"
               htmlFor="glossaryInput"
             >
               {t('glossary.filterBar')}
@@ -54,6 +54,17 @@ export const GlossaryFilterBar = ({
         <input
           type="text"
           value={value}
+          onClick={() => {
+            const element = document.querySelector('#glossaryInput');
+            if (element) {
+              const elementPosition =
+                element.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({
+                top: elementPosition - 130,
+                behavior: 'smooth',
+              });
+            }
+          }}
           onChange={(event) => {
             onChange(event.target.value);
           }}
@@ -68,21 +79,21 @@ export const GlossaryFilterBar = ({
           }
           id="glossaryInput"
         />
-        {isOnWordPage && (
-          <Link
-            to={'/resources/word/$wordId'}
-            params={{ wordId: randomWord || '' }}
+
+        <Link
+          to={'/resources/word/$wordId'}
+          params={{ wordId: randomWord || '' }}
+          className="max-md:flex justify-center max-md:w-full max-md:mt-2 shrink-0"
+        >
+          <Button
+            variant="newTertiary"
+            size={window.innerWidth >= 768 ? 'm' : 's'}
+            iconLeft={<RxReload />}
+            className="shrink-0"
           >
-            <Button
-              variant="newTertiary"
-              size="m"
-              iconLeft={<RxReload />}
-              className="shrink-0"
-            >
-              {t('glossary.randomSearch')}
-            </Button>
-          </Link>
-        )}
+            {t('glossary.randomSearch')}
+          </Button>
+        </Link>
       </div>
     </div>
   );

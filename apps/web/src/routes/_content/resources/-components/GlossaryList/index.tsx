@@ -21,7 +21,7 @@ export const GlossaryList = ({
   const [filteredTerms, setFilteredTerms] =
     useState<JoinedGlossaryWord[]>(glossaryTerms);
 
-  const [maxWords, setMaxWords] = useState(10);
+  const [maxWords, setMaxWords] = useState(20);
 
   useEffect(() => {
     setFilteredTerms(
@@ -42,11 +42,11 @@ export const GlossaryList = ({
             )
             .sort((a, b) => a.term.localeCompare(b.term)),
     );
-    setMaxWords(10);
+    setMaxWords(20);
   }, [selectedLetter, searchTerm, glossaryTerms]);
 
   return (
-    <div className="flex flex-col mx-auto md:mt-20 w-full">
+    <div className="flex flex-col mx-auto md:mt-20 max-w-[840px]">
       {/* Desktop */}
       <section className="flex flex-col w-full gap-6 max-md:hidden">
         <div className="flex max-w-[820px] w-full gap-5 mx-auto px-4">
@@ -103,7 +103,7 @@ export const GlossaryList = ({
           variant="newSecondary"
           size="m"
           className="mx-auto mt-5"
-          onClick={() => setMaxWords((v) => v + 10)}
+          onClick={() => setMaxWords((v) => v + 20)}
         >
           {t('glossary.loadMoreWords')}
         </Button>

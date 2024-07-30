@@ -135,7 +135,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
       <h1
         className={`mb-5 w-full text-left text-4xl font-bold text-white md:text-5xl`}
       >
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="flex md:flex-wrap items-center justify-center gap-4 md:gap-2">
           <Link
             to={'/courses/$courseId'}
             params={{ courseId: chapter.course.id }}
@@ -147,7 +147,7 @@ const TimelineSmall = ({ chapter }: { chapter: Chapter }) => {
             to={'/courses/$courseId'}
             params={{ courseId: chapter.course.id }}
           >
-            <h1 className="mb-1 mr-2 text-xl font-semibold text-black">
+            <h1 className="mb-1 md:mr-2 text-xl font-semibold text-black max-md:text-center">
               {chapter.course.name}
             </h1>
           </Link>

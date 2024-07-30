@@ -81,6 +81,7 @@ function Builder() {
       tagLine={t('builders.pageSubtitle')}
       link={'/resources/builders'}
       activeCategory="builders"
+      showPageHeader={false}
       backToCategoryButton
     >
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
@@ -193,7 +194,7 @@ function Builder() {
               )}
             </div>
           </section>
-          <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5">
+          <p className="mobile-body2 md:desktop-h8 whitespace-pre-line text-white p-2.5 md:p-5 break-words">
             {builder.description}
           </p>
         </article>

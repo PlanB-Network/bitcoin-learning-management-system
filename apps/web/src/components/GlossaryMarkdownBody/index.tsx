@@ -58,7 +58,7 @@ export const GlossaryMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <p className="mobile-body2 md:desktop-body1 text-white my-1 last:mb-0">
+          <p className="mobile-body2 md:desktop-body1 text-white my-3 last:mb-0">
             {children}
           </p>
         ),

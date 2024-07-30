@@ -11,6 +11,7 @@ export const PageHeader = ({
   hasGithubDescription = false,
   hideOnMobile,
   removeTopMargin,
+  increaseHorizontalPadding,
 }: {
   title: string;
   subtitle?: string;
@@ -19,15 +20,17 @@ export const PageHeader = ({
   hasGithubDescription?: boolean;
   hideOnMobile?: boolean;
   removeTopMargin?: boolean;
+  increaseHorizontalPadding?: boolean;
 }) => {
   const isSubsectionTitle = subtitle ? false : true;
 
   return (
     <div
       className={cn(
-        'flex flex-col max-lg:px-4',
+        'flex flex-col',
         hideOnMobile && 'max-md:hidden',
         removeTopMargin ? '' : 'mt-5 md:mt-10',
+        increaseHorizontalPadding ? 'max-lg:px-6' : 'max-lg:px-4',
       )}
     >
       {subtitle && (
