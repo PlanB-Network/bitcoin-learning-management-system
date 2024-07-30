@@ -411,14 +411,14 @@
       "networkMember": "Membro Di Betwork"
     },
     "sectionEducation": {
-      "title": "Dal principiante ad avanzato",
+      "title": "Da principiante ad avanzato",
       "subtitle": "Impara Bitcoin nell'accademia",
       "content1": "Bitcoin non è solo una tecnologia e una forma di denaro, ma anche un modo rivoluzionario di avvicinarsi alla vita. Per riecheggiare questo, i nostri corsi coprono una vasta gamma di settori, consentendo a ogni individuo di eccellere nelle loro aree di interesse e di approfondire la loro comprensione. Dal tuo primo corso Bitcoin a un tuffo profondo nelle specifiche del protocollo, i nostri corsi ti aiuteranno a navigare in modo sicuro la tana del coniglio. Non c'è motivo di esitare. La conoscenza ti aspetta.",
       "link": "Controlla l'accademia"
     },
     "sectionNetwork": {
       "title": "Accedi a una rete di",
-      "subtitle": "Campi Bitcoin In tutto Il Mondo",
+      "subtitle": "Campus Bitcoin in tutto Il Mondo",
       "content1": "Connettiti con gli appassionati di Bitcoin in tutto il mondo che condividono una passione comune. Dalle piccole comunità che si incontrano regolarmente ai centri educativi BTC, la nostra mappa ti aiuterà a trovare l'ispirazione per imparare e costruire. Sono disponibili una vasta gamma di servizi, come un centro di incubazione, laboratori fisici, seminari, ritiri BTC e altro ancora. La rete è aperta a tutti, quindi vieni a dire ciao alla tua comunità BTC locale!",
       "link": "Entrare a far parte della rete"
     },
@@ -747,11 +747,11 @@
     "more": "Altro",
     "movieDocumentary": "Documentario Del Film",
     "network": "Network",
-    "networkMember": "Membro della Rete",
+    "networkMember": "Membri della Rete",
     "newsletter": "Newsletter",
     "newsletters": "Le Newsletter",
     "node": "Nodo",
-    "nodeNetwork": "La rete del nodo",
+    "nodeNetwork": "Rete dei nodi",
     "or": "o",
     "ourStory": "La nostra storia",
     "podcast": "Podcast",
@@ -799,7 +799,11 @@
     "paid": "Pagato",
     "part": "Parte",
     "start": "Inizia",
-    "topics": "Argomenti"
+    "topics": "Argomenti",
+    "unified": "Unificato",
+    "amount": "Importo",
+    "lightningInvoice": "Fattura Lightning",
+    "onChainAddress": "Indirizzo on chain"
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",

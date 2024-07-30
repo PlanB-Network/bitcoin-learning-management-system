@@ -43,7 +43,8 @@
       "developer": "Arendaja",
       "beginner": "Algtase",
       "advanced": "Edasijõudnud",
-      "levels": "Tasemed"
+      "levels": "Tasemed",
+      "wizard": "Abimees"
     },
     "invoice": "Arve",
     "interview": "Intervjuu",
@@ -131,7 +132,12 @@
     "audioBook": "Heliraamat",
     "advanced": "Edasijõudnud",
     "online": "Võrgus",
-    "wallets": "Rahakotid"
+    "wallets": "Rahakotid",
+    "onChainAddress": "On-chain aadress",
+    "amount": "Summa",
+    "lightningInvoice": "Lightning arve",
+    "part": "Osa",
+    "unified": "Ühendatud"
   },
   "underConstruction": {
     "pageTitle": "Oih.",
@@ -160,7 +166,10 @@
       "general": {
         "description": "Massijälgimise ajastul on igapäevaelus teatud privaatsuse määra taastamine hädavajalik. Arvestades, et igal kasutajal on teatud määral paranoiat ja tehnoloogilisi teadmisi, on täiesti normaalne kasutada teatud tööriistu ja kohandada neid oma vajadustele. Siin uurime erinevaid kaitsevõimalusi, nagu VPN-id, Tor, Tails OS, PGP, krüpteeritud sõnumid ja palju muud."
       },
-      "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele."
+      "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele.",
+      "bitcoin": {
+        "description": "Bitcoin ei ole vaikimisi privaatne, see on tahtlikult loodud pseudonüümseks ning iga tehing on avalik ja salvestatud igaveseks. Et taastada teatav konfidentsiaalsus, peame kasutama meie tarkvarasse integreeritud parimaid kasutajatavasid ja spetsiifilisi tööriistu. Vältides aadressi uuesti kasutamist kuni CoinJoinini, segades oma münte ja ühendudes oma sõlme, aitame teid teie privaatsuse teekonnal."
+      }
     },
     "exchange": {
       "title": "Valuutavahetusettevõtted",
@@ -187,8 +196,17 @@
     "node": {
       "title": "Sõlmed",
       "lightning-network": {
-        "name": "Lightning Network"
-      }
+        "name": "Lightning Network",
+        "description": "Lightning võimaldab teil osaleda Bitcoini 2. kihi protokollis nimega Lightning. Saate avada kanaleid, hallata nende likviidsust, osaleda graafikus ja omada täielikku kontrolli oma Lightning rahakoti üle tänu ainult sulle kuuluva võtmega."
+      },
+      "description": "Sõlmed on nagu teie isiklikud serverid. Bitcoini puhul on see tarkvara, mis võimaldab teil võrku käitada, tehinguid koguda, reegleid kontrollida ja olla tõeliselt suveräänne. Meie ökosüsteemis on erinevaid sõlmi, alates Bitcoin Core'ist kuni Lightning'i rakenduste, RGB ja muude arenenumate privaatsuslahendusteni.",
+      "bitcoin": {
+        "description": "Bitcoin Core'i sõlm on teie Bitcoini iseseisvuse riida nullpunkt. See võimaldab teil käivitada Bitcoini tarkvara ning olla osa võrgust. Kinnitate plokke ja tehinguid, otsustate, milliseid reegleid soovite võrgus rakendada ning lõpetate vahendajate kasutamise tehingute levitamiseks. Bitcoini sõlme käitamiseks on palju võimalusi, millest mõned on kasutajasõbralikumad kui teised."
+      },
+      "rgb": {
+        "description": "RGB on Bitcoini ja Lightning võrgu jaoks mõeldud skaleeritav ning konfidentsiaalne nutikate lepingute süsteem. See on programmeerimiskiht Bitcoinile, mis hõlmab endas privaatse ja vastastikuse omandiõiguse, abstraktsiooni ja murede eraldamise kontseptsioone ning esindab \"plokiahela-järgset\"."
+      },
+      "shortDescription": "Lahendused Bitcoini sõlme käitamiseks ja võrguga liitumiseks"
     },
     "others": {
       "title": "Teised",
@@ -203,7 +221,9 @@
       },
       "DIY": {
         "description": "Avastage meie \"Tee ise\" õpetusi, et õppida iseseisvalt looma asju, mis on seotud Bitcoiniga, arvutiga töötamise ja individuaalse suveräänsusega!"
-      }
+      },
+      "description": "Sukelduge suurde õpetuste kogusse, mis on Bitcoini eetosega tihedalt seotud. Alates ise tegemisest kuni avatud lähtekoodiga õpetusteni, avastage uusi teadmiste valdkondi, et saada veelgi iseseisvamaks.",
+      "shortDescription": "Avastage erinevaid õpetusi Bitcoiniga tihedalt seotud teemadel"
     },
     "pageTitle": "Avastage meie õpetusi",
     "pageSubtitle": "Kergita Bitcoini saladuseloori, avastades selle laiahaardelist ökosüsteemi",
@@ -549,7 +569,12 @@
       "general": "Üldine",
       "grade": "Hinne",
       "gradesDiploma": "Hinded ja diplom",
-      "learnMore": "Lisateave"
+      "learnMore": "Lisateave",
+      "noResults": "Sellel kontol ei ole veel ühtegi hinnet ega tunnistust. \nKui olete eksami sooritanud ja teie tulemused pole pikema aja jooksul saadaval, siis palun pöörduge meie poole abi saamiseks.",
+      "organizedSessions": "₿ sertifikaat on Plan B Võrgustiku poolt korraldatud mitmetes erinevates kohtades ning erinevatel aegadel. Veenduge, et broneerite endale istekoha sessioonil.",
+      "presentation": "₿ sertifikaat on Plan B Võrgustiku poolt korraldatud eksam, mis on mõeldud teie taseme kinnitamiseks Bitcoini alal ja kõigi sellega seotud teemade kohta.",
+      "findResults": "Siit leiate oma tulemused ₿ sertifikaadi eksamitele, mille olete selle kontoga sooritanud. Tulemuste töötlemine ja kättesaadavaks tegemine võtab tavaliselt aega 2 kuni 3 nädalat. Kui pärast pikka aega teie tulemuid siin ei kuvata, siis võtke palun meiega ühendust.",
+      "wantToPass": "Soovid eksami läbida?"
     }
   },
   "events": {
@@ -632,29 +657,58 @@
     "header": {
       "startLink": "Alusta õppimist",
       "globalNetwork": "Globaalne Bitcoini võrgustik",
-      "content": "PlanB platvormi eesmärk on pakkuda parimaid tööriistu ja hariduslikku sisu üle kogu maailma, et aidata inimestel taastada oma suveräänsus. Alates üksikisikutest kuni kogukondadeni, oleme siin, et aidata teid teie Bitcoini teekonnal."
+      "content": "PlanB platvormi eesmärk on pakkuda parimaid tööriistu ja hariduslikku sisu üle kogu maailma, et aidata inimestel taastada oma suveräänsus. Alates üksikisikutest kuni kogukondadeni, oleme siin, et aidata teid teie Bitcoini teekonnal.",
+      "forEducators": "Haridustöötajatele ja ehitajatele",
+      "welcome": "Tere tulemast PlanB Võrgustikku",
+      "link": "Ole osa võrgustikust"
     },
     "sectionEducation": {
-      "link": "Vaadake akadeemiat"
+      "link": "Vaadake akadeemiat",
+      "content1": "Bitcoin pole ainult tehnoloogia ja raha vorm, vaid ka revolutsiooniline viis elule läheneda. Selle kinnituseks hõlmavad meie kursused laia valikut valdkondadest, võimaldades igal üksikisikul oma huvivaldkondades silma paista ja oma mõistmist süvendada. Alates teie esimesest Bitcoini kursusest kuni protokolli üksikasjade põhjaliku uurimiseni aitavad meie kursused teil turvaliselt jäneseurust läbi navigeerida. Pole põhjust kõhelda. Teadmised ootavad teid.",
+      "title": "Algajast edasijõudnuni",
+      "subtitle": "Õpi Bitcoini kohta akadeemias"
     },
     "aboutUsSection": {
       "privacyTitle": "Privaatsus",
       "bitcoinFocusTitle": "Bitcoini fookus",
       "openSourceTitle": "Avatud lähtekood",
-      "communityTitle": "Kogukond"
+      "communityTitle": "Kogukond",
+      "content": "PlanB võrgustik on algatus, mille eesmärk on toetada Bitcoini haridust kogu maailmas. See on erinevate Bitcoini ettevõtete ristumiskoht, kes on keskendunud haridusele, avatud lähtekoodiga tarkvarale, võrdsetel alustel võrgustikele ja kogukonna tundele. Koos otsustasid nad luua PlanB võrgustiku ja pakkuda Bitcoini ökosüsteemile õigeid vahendeid kasvamiseks.",
+      "title": "Kes me oleme ?",
+      "subtitle": "Natuke meist",
+      "bitcoinFocusContent": "Bitcoini revolutsioon tervikuna, alates selle baaskihist kuni selle ümber toimuvate erinevate peer-to-peer suhtlusvormideni",
+      "openSourceContent": "Meie eesmärgiks on teadmiste vaba liikumise edendamine ja rohkemate avatud lähtekoodiga lahenduste loomisele kaasaaitamine",
+      "communityContent": "Oleme ennekõike kogukond entusiaste, kes aitavad üksteist oma Bitcoini teekonnal",
+      "privacyContent": "Peame privaatsust üheks kõige põhilisemaks inimõiguseks ning edasiliikumiseks hädavajalikuks"
     },
     "languageSection": {
       "availableLanguages": "Saadaolevad keeled",
-      "subtitle2": "Me vajame sind!"
+      "subtitle2": "Me vajame sind!",
+      "title": "Siin keelebarjääri pole.",
+      "subtitle": "Kõik on tõlgitud kohalikesse keeltesse",
+      "content1": "PlanB-s usume, et Bitcoin on kõiki puudutav rahvusvaheline revolutsioon. Et võimestada miljardeid inimesi, loome me seda platvormi mitmekeelseks ja kõigile kättesaadavaks. Käesolev platvorm toetab praegu 7 keelt ning iga kuu lisandub uusi. Selle saavutamiseks kasutame AI-d ja Bitcoini entusiastide kirge üle kogu maailma.",
+      "content2": "Ka sina saad alustada oma kohaliku võrgustikku loomist oma riigis!",
+      "link": "Aita meil akadeemiat tõlkida"
     },
     "tutorialSection": {
-      "link": "Vaata kõiki õpetusi"
+      "link": "Vaata kõiki õpetusi",
+      "title": "Meie eesmärgiks on muuta Bitcoini haridus lihtsaks.",
+      "content1": "Bitcoin areneb pidevalt, läbi uute osalejate, lahenduste, protokollide ja tehnoloogiliste läbimurretega, mis tulevad ja lähevad. Sageli on raske säilitada ühtset, täpset andmebaasi headest ning ajakohastest õpetustest. Siin PlanB-s oleme me selle saavutanud. Algajatest edasijõudnuteni, saate sirvida sadu erinevaid õpetusi, et avastada meie tööstust vastavalt oma vajadustele.",
+      "subtitle1": "Aitame teil õppida paljude põhjalike õpetuste abil vajalikku tehnoloogiat valdama!"
     },
     "numbersSection": {
       "networkMember": "Võrgustiku liige"
     },
     "sectionNetwork": {
-      "subtitle": "Ülemaailmsed Bitcoini ülikoolilinnakud"
+      "subtitle": "Ülemaailmsed Bitcoini ülikoolilinnakud",
+      "link": "Ole osa võrgustikust",
+      "title": "Pääse    võrgustikku",
+      "content1": "Ühenduge ülemaailmsete ühist kirge jagavate Bitcoini entusiastidega. Meie võrgustiku kaart aitab leida inspiratsiooni õppimiseks ja ehitamiseks, alates väikestest regulaarselt kohtuvatest kogukondadest kuni BTC hariduskeskusteni. Entusiastidele on saadaval lai valik teenuseid, nagu inkubatsioonikeskus, füüsilised töötoad, seminarid, BTC kogunemiskohad ja palju muud. Võrgustik on avatud kõigile, nii et tulge ja öelge tere oma kohalikule BTC kogukonnale!"
+    },
+    "patreonSection": {
+      "title": "Muudame koos Bitcoini hariduse paremaks ! ",
+      "subtitle": "PlanB võrgustik on tänu meie heldetele patroonidele 100% avatud lähtekoodiga",
+      "content": "PlanB Võrgustik teeb uhkusega koostööd mitmete Bitcoini ettevõtetega üle maailma, et pakkuda parimaid võimalikke haridusressursse !"
     }
   },
   "imagesAlt": {
@@ -664,29 +718,69 @@
     "curriculum": "Õppekava",
     "community": "3 inimest",
     "stylus": "stiilus",
-    "blueEllipse": "sinine ellips"
+    "blueEllipse": "sinine ellips",
+    "contributorHeart": "süda toredale kaastöölisele",
+    "contributorPP": "kaastöölise profiilipilt",
+    "forwardArrow": "edasiviiv nool",
+    "orangePill": "oranž pill",
+    "printedCircuits": "trükkplaatide",
+    "rabbit404": "404 märgile taskulampi suunav jänes",
+    "sthRepresentingCompany": "midagi, mis esindab ettevõtet",
+    "underConstructionImage": "Illustratsioon mitmest ehitusplatsil töötavast jänesest"
   },
   "library": {
-    "pageTitle": "Bitcoini raamatukogu"
+    "pageTitle": "Bitcoini raamatukogu",
+    "pageSubtitle": "Käesolev teek on avatud lähtekoodiga ja avatud kaastööle.",
+    "publishedIn": "Avaldatud {{date}}",
+    "writtenBy": "Kirjutatud {{author}} poolt"
   },
   "menu": {
-    "login": "Logi sisse"
+    "login": "Logi sisse",
+    "conferencesDescription": "Bitcoini konverentside korduste kogumik esmaplokist alates",
+    "betDescription": "Oma haridusprojektide jaoks kasutamiseks mõeldud materjalide kogum",
+    "btc101Description": "Saavuta parem arusaam Bitcoinist nende õppetundide abil",
+    "buildersDescription": "Õppige tundma ettevõtteid ja projekte, mis töötavad Bitcoini paremaks muutmise ja selle kasutuselevõtu suurendamise nimel",
+    "exchangesDescription": "Osta ja müü Bitcoini turgudel ning õppige P2P kohta",
+    "bCertificateDescription": "Sooritage ₿ sertifikaadi eksam, et tõestada oma teamisi Bitcoinist",
+    "glossaryDescription": "Saage aru Bitcoini keelest",
+    "libraryDescription": "Avasta mitmeid raamatuid, et parandada oma teadmisi",
+    "lightningDescription": "Halda oma lightning sõlme ning kasuta lightning networki",
+    "loginRegister": "Logi sisse / Registreeru",
+    "manifestoDescription": "Loe Plan B manifesti",
+    "merchantsDescription": "Aktsepteeri Bitcoini makseid ja avasta kaupmeestele mõeldud tööriistu",
+    "miningDescription": "Kaevake oma Bitcoine ning õppige kaevandustööstuse kohta",
+    "nodeDescription": "Õpi, kuidas olla iseseisev koos omaenda Bitcoini sõlmega",
+    "nodeNetworkDescription": "Liitu Plan B globaalse kogukonna võrgustikuga",
+    "ourStoryDescription": "Õpi ülikooli loo kohta",
+    "podcastsDescription": "Avastage Bitcoini ökosüsteemi taskuhäälingute kaudu",
+    "sponsorsDescription": "Avastage meie sponsoreid ja peamisi panustajad",
+    "supportUsDescription": "Leidke viise, kuidas meid toetada, ükskõik mismoodi",
+    "teachersDescription": "Saage tuttavaks meie akadeemia õpetajatega",
+    "walletsDescription": "Kaitske ja kasutage oma Bitcoine"
   },
   "payment": {
-    "total": "Kokku"
+    "total": "Kokku",
+    "proceedToPayment": "Jätkake maksmisega",
+    "terms": "Vaadake meie <0>üldtingimusi</0> tagasimakse üksikasjade jaoks",
+    "feeDistribution": "Tasude jaotus: Autor 99% - Platvorm 1%"
   },
   "podcast": {
-    "abstract": "Kokkuvõte"
+    "abstract": "Kokkuvõte",
+    "discover": "Avastage käesolevat taskuhäälingut"
   },
   "professors": {
     "pageTitle": "Professorid",
     "tips": {
       "thanksNoName": "Tänan, et minu tööd toetate !",
-      "thanks": "Tänan, et toetate {{name}} tööd !"
-    }
+      "thanks": "Tänan, et toetate {{name}} tööd !",
+      "noTipsYet": "Antud professor ei aktsepteeri hetkel jootraha."
+    },
+    "pageSubtitle": "Kõik meie professorid on vabatahtlikud ja kirglikud Bitcoini kasutajad. Tänamiseks saate jätta jootraha."
   },
   "podcasts": {
-    "pageTitle": "Bitcoini taskuhäälingud"
+    "pageTitle": "Bitcoini taskuhäälingud",
+    "hostedBy": "Võõrustab {{host}}",
+    "pageSubtitle": "Käesolev portaal on avatud lähtekoodiga & avatud kaastööle."
   },
   "resources": {
     "books": {
@@ -730,6 +824,23 @@
   },
   "notFound": {
     "here": "Siin",
-    "pageTitle": "Oih."
+    "pageTitle": "Oih.",
+    "pageSubtitle": "Tundub, et keegi langes liiga sügavale jäneseurgu ja eksis ära. Pinnale naasmiseks klõpsake"
+  },
+  "nodeNetwork": {
+    "answer1": "Sõlm on haridusalgatus, mis on seotud mõne kogukonnaga kusagil maailmas. See võib koosneda hoonest, kus viiakse läbi Bitcoini õpetamist, kuid see ei piirdu sellega. Plan B Võrgustik opereerib keskusi, kuid nende loomine igas maailma linnas on ebarealistlik. Seetõttu tugenemegi me selle globaalse võrgustiku teoks tegemisel Bitcoini kasutajate kogukonnale.",
+    "answer2": "Liitudes meie võrgustikuga, saate juurdepääsu Plan B platvormi kaudu levitatavale eksklusiivsele sisule, mida saate jagada oma sõlme elanikega. Kõige olulisem eelis on arutelukanalite avamine tulevaste projektide jaoks ja ühenduse loomine teiste kogukondadega üle kogu maailma, et jagada kogemusi.",
+    "description1": "Plan B Võrgustik toetab haridusalaseid algatusi üle maailma. Teeme koostööd, et luua parimad tööriistad nendele projektidele, nii meie platvormi kaudu kui ka reaalses maailmas. Me otsime alati uusi sõlmpunkte, kes sooviksid meiega liituda. Kui soovid koostööd teha, et luua detsentraliseeritud globaalne haridusvõrk Bitcoinile, siis võta meiega ühendust!",
+    "answer5": "Soovime pakkuda Bitcoini kasutajatele turvalist pelgupaika üle kogu maailma. Usume, et kohalike sõlmpunktide kasvatamise abil suudame luua kindluste võrgustiku, kus Bitcoini kasutajad on teretulnud töötama, looma, jagama ja turvaliselt arutlema.",
+    "apply": "Kandideerige, et saada Sõlmeks",
+    "pageSubtitle": "Soovid maailmale oranži pilli pakkuda? Liitu PlanB võrgustikuga.",
+    "pageTitle": "Avastage Plan B sõlmevõrku",
+    "question1": "Mis on sõlm ?",
+    "question2": "Mida ma sellest võidan ?",
+    "question3": "Mis on nõuded ?",
+    "question4": "Kui suur üldse sõlm on?",
+    "question5": "Mis on salaplaan ?",
+    "answer3": "Alguses keskendub Plan B Võrgustik kohtadele, kus on olemas füüsiline ruum tegevuste läbiviimiseks. Tulevikus plaanime integreerida mistahes algatusi, mis võiksid võrgustiku toetusest kasu saada.",
+    "answer4": "Bitcoini sõlm võib olla mistahes suurusega. Mõnede nõuete alusel omistatakse nendele erinevad hinne. Sõlme koos häkkeriruumi, jõusaali ning mõnede kontoriruumidega, peetakse rohkem kindluselaadseks."
   }
 }
