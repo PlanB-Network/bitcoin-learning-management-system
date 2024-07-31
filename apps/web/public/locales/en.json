@@ -165,7 +165,7 @@
       "count": "Chapter {{count}}",
       "finishCourse": "Finish the course",
       "next": "Done, go to next chapter",
-      "thanksTip": "Wanna say thanks ? Tip.",
+      "thanksTip": "Wanna say thanks ?\nYou can support the author with a tip",
       "detail": {
         "title": "Class details",
         "p1heading": "Do you intend to attend this lesson in person ?",
@@ -629,10 +629,12 @@
     "details": {
       "author": "Author : ",
       "checkAuthor": "Check out the author's other contributions and support his work.",
+      "didHelp": "Did this help ?",
       "enjoyed": "Enjoyed this tutorial?",
       "madeBy": "This tutorial has been made by",
       "source": "Original source : ",
-      "tipTooltip": "Like it? Tip."
+      "tipTooltip": "Like it? Tip.",
+      "writtenBy": "This tutorial was written by :"
     },
     "exchange": {
       "centralized": {
@@ -647,7 +649,8 @@
     },
     "explorer": {
       "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know ?"
+      "didYouKnow": "Did you know ?",
+      "exploreAllTutorials": "Explore all tutorials"
     },
     "headerSignature": "Rogzy",
     "headerText": "Welcome into the infinite rabbit hole of Bitcoin ! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",

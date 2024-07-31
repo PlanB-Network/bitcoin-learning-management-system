@@ -1,1 +1,1 @@
-export { createLikeTutorial } from './like-tutorial.js';
+export * from './like-tutorial.js';

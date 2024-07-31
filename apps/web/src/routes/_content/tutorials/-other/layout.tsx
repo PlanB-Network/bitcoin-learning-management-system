@@ -120,13 +120,13 @@ export const TutorialLayout = ({
                                             <li
                                               key={tutorial.id}
                                               className={
-                                                'group flex list-none items-center justify-start h-6 gap-2'
+                                                'group flex list-none items-center justify-start min-h-6 gap-2'
                                               }
                                             >
                                               <BsFillCircleFill
                                                 size={4}
                                                 className={cn(
-                                                  ' group-hover:text-darkOrange-5',
+                                                  ' group-hover:text-darkOrange-5 shrink-0',
                                                   tutorial.id ===
                                                     currentTutorialId
                                                     ? 'text-darkOrange-5'

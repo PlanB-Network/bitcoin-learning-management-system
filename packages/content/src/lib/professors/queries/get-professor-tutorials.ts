@@ -49,7 +49,9 @@ export const getProfessorTutorialsQuery = ({
         tl.description, 
         t.last_updated, 
         t.last_commit,
-        COALESCE(tag_agg.tags, ARRAY[]::text[]) AS tags
+        COALESCE(tag_agg.tags, ARRAY[]::text[]) AS tags,
+        COALESCE(likes_agg.like_count, 0) AS like_count,
+        COALESCE(likes_agg.dislike_count, 0) AS dislike_count
       FROM content.tutorials t
       JOIN content.tutorials_localized tl ON t.id = tl.tutorial_id
 
@@ -64,6 +66,15 @@ export const getProfessorTutorialsQuery = ({
         WHERE tt.tutorial_id = t.id
       ) AS tag_agg ON TRUE
 
+      -- Lateral join for aggregating likes and dislikes
+      LEFT JOIN LATERAL (
+          SELECT 
+              COUNT(*) FILTER (WHERE tld.liked = true) AS like_count,
+              COUNT(*) FILTER (WHERE tld.liked = false) AS dislike_count
+          FROM content.tutorial_likes_dislikes tld
+          WHERE tld.tutorial_id = t.id
+      ) AS likes_agg ON TRUE
+
       ${whereStatement}
 
       GROUP BY 
@@ -77,7 +88,9 @@ export const getProfessorTutorialsQuery = ({
         tl.description,
         t.last_updated, 
         t.last_commit,
-        tag_agg.tags
+        tag_agg.tags,
+        likes_agg.like_count,
+        likes_agg.dislike_count
     )
 
     SELECT 

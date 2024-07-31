@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { createLikeTutorial } from '@blms/user';
+import { createGetExistingLikeTutorial, createLikeTutorial } from '@blms/user';
 
 import { protectedProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -16,6 +16,17 @@ const likeTutorialProcedure = protectedProcedure
     }),
   );
 
+const getExistingLikeTutorialProcedure = protectedProcedure
+  .input(z.object({ id: z.number() }))
+  .query(({ ctx, input }) =>
+    createGetExistingLikeTutorial(ctx.dependencies)({
+      uid: ctx.user.uid,
+      // tutorial id
+      id: input.id,
+    }),
+  );
+
 export const userTutorialsRouter = createTRPCRouter({
   likeTutorial: likeTutorialProcedure,
+  getExistingLikeTutorial: getExistingLikeTutorialProcedure,
 });

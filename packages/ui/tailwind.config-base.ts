@@ -110,6 +110,7 @@ const baseConfig: Config = {
       },
       red: {
         1: '#E00000',
+        5: '#F7BFBF',
         6: '#FCE5E5',
       },
       beige: {
@@ -137,6 +138,12 @@ const baseConfig: Config = {
         3: '#8CE18A',
         4: '#C5F0C4',
         5: '#E3F8E3',
+      },
+      darkGreen: {
+        1: '#42A86B',
+        4: '#A0D4B5',
+        5: '#C6E5D3',
+        6: '#E3F2E9',
       },
       turquoise: {
         100: '#D7EBE9',
