@@ -286,6 +286,7 @@
   },
   "dashboard": {
     "account": "Account",
+    "administration": "Administration",
     "bCertificate": {
       "assertLevel": "Assert your level in Bitcoin",
       "bCertificate": "The ₿ Certificate",
@@ -729,6 +730,7 @@
     "account": "Account",
     "additionalCriteria": "Additional criteria",
     "advanced": "Advanced",
+    "admins": "Admins",
     "all": "All",
     "amount": "Amount",
     "article": "Article",
@@ -822,6 +824,7 @@
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsoring & contributors",
     "start": "Start",
+    "students": "Students",
     "supportUs": "Support us",
     "teachers": "Teachers",
     "termsAndConditions": "Terms and conditions",
@@ -835,6 +838,7 @@
     "tutorials": "Tutorials",
     "unified": "Unified",
     "update": "Update",
+    "users": "Users",
     "video": "Video",
     "videos": "Videos",
     "view": "View",

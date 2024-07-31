@@ -4,11 +4,11 @@ import { createGetBCertificateResults } from '@blms/content';
 import { JoinedBCertificateResultsSchema } from '@blms/schemas';
 import type { JoinedBCertificateResults } from '@blms/types';
 
-import { protectedProcedure } from '#src/procedures/protected.js';
+import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
 
-const getBCertificateResultsProcedure = protectedProcedure
+const getBCertificateResultsProcedure = studentProcedure
   .input(z.void())
   .output<Parser<JoinedBCertificateResults[]>>(
     JoinedBCertificateResultsSchema.array(),

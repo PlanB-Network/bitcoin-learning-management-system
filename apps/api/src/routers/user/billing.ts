@@ -6,10 +6,10 @@ import { createGetInvoices, createGetTickets } from '@blms/user';
 
 import type { Parser } from '#src/trpc/types.js';
 
-import { protectedProcedure } from '../../procedures/index.js';
+import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
-const getInvoicesProcedure = protectedProcedure
+const getInvoicesProcedure = studentProcedure
   .input(
     z.object({
       language: z.string(),
@@ -23,7 +23,7 @@ const getInvoicesProcedure = protectedProcedure
     }),
   );
 
-const getTicketsProcedure = protectedProcedure
+const getTicketsProcedure = studentProcedure
   .output<Parser<Ticket[]>>(ticketSchema.array())
   .query(({ ctx }) =>
     createGetTickets(ctx.dependencies)({

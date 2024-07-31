@@ -105,17 +105,17 @@ For any update to it, you first have to update the schema.ts file.
 
 Once updated, to reflect it in your database, run the following commands :
 
-1. `cd packages/database`
-2. `pnpm run drizzle:generate`
+1. `pnpm run dev:db:generate`
 
 This will add a new migration script, then you have to run it :
 
-`pnpm run db:migrate`
+`pnpm run dev:db:migrate`
 
-Once the database is updated, update or create the associated types running :
+Once the database is updated, add new schemas, if needed, in the schema pacakge.
 
-1. `cd packages/types`
-2. `pnpm run types:generate`
+Once done, create the associated types running :
+
+1. `pnpm build`
 
 ### Run SQL queries
 

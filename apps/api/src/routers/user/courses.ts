@@ -27,10 +27,10 @@ import {
 
 import type { Parser } from '#src/trpc/types.js';
 
-import { protectedProcedure } from '../../procedures/index.js';
+import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
-const completeChapterProcedure = protectedProcedure
+const completeChapterProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -46,7 +46,7 @@ const completeChapterProcedure = protectedProcedure
     }),
   );
 
-const getProgressProcedure = protectedProcedure
+const getProgressProcedure = studentProcedure
   .input(z.void())
   .output<Parser<CourseProgressExtended[]>>(
     courseProgressExtendedSchema.array(),
@@ -55,7 +55,7 @@ const getProgressProcedure = protectedProcedure
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
-const saveQuizAttemptProcedure = protectedProcedure
+const saveQuizAttemptProcedure = studentProcedure
   .input(
     z.object({
       chapterId: z.string(),
@@ -73,7 +73,7 @@ const saveQuizAttemptProcedure = protectedProcedure
     }),
   );
 
-const savePaymentProcedure = protectedProcedure
+const savePaymentProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -101,7 +101,7 @@ const savePaymentProcedure = protectedProcedure
     }),
   );
 
-const saveFreePaymentProcedure = protectedProcedure
+const saveFreePaymentProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -127,7 +127,7 @@ const saveFreePaymentProcedure = protectedProcedure
     }),
   );
 
-const getPaymentProcedure = protectedProcedure
+const getPaymentProcedure = studentProcedure
   .input(z.void())
   .output<Parser<GetPaymentOutput>>(
     coursePaymentSchema
@@ -148,7 +148,7 @@ type GetUserChapterOutput = Array<
   Pick<CourseUserChapter, 'courseId' | 'booked' | 'chapterId' | 'completedAt'>
 >;
 
-const getUserChapterProcedure = protectedProcedure
+const getUserChapterProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -171,7 +171,7 @@ const getUserChapterProcedure = protectedProcedure
     }),
   );
 
-const saveUserChapterProcedure = protectedProcedure
+const saveUserChapterProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -191,7 +191,7 @@ const saveUserChapterProcedure = protectedProcedure
     await createCalculateCourseChapterSeats(ctx.dependencies)();
   });
 
-const downloadChapterTicketProcedure = protectedProcedure
+const downloadChapterTicketProcedure = studentProcedure
   .input(
     z.object({
       title: z.string().optional(),

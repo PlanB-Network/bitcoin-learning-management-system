@@ -10,6 +10,7 @@ import {
   IoPersonOutline,
   IoTicketOutline,
 } from 'react-icons/io5';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
@@ -25,7 +26,7 @@ export const MenuDesktop = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   location: ParsedLocation<any>;
 }) => {
-  const { user } = useContext(AppContext);
+  const { user, session } = useContext(AppContext);
   const [pathname, setPathname] = useState('');
 
   const pictureUrl = getPictureUrl(user);
@@ -38,6 +39,7 @@ export const MenuDesktop = ({
   const calendarPath = '/dashboard/calendar';
   const coursesPath = '/dashboard/courses';
   const profilePath = '/dashboard/profile';
+  const administrationPath = '/dashboard/administration';
 
   useEffect(() => {
     if (location) {
@@ -109,7 +111,19 @@ export const MenuDesktop = ({
             active={pathname.includes(profilePath)}
           />
         </Link>
+        {(session?.user.role === 'admin' ||
+          session?.user.role === 'superadmin') && (
+          <Link to={administrationPath}>
+            <MenuItem
+              text={t('dashboard.administration')}
+              icon={<MdOutlineAdminPanelSettings size={24} />}
+              active={pathname.includes(administrationPath)}
+            />
+          </Link>
+        )}
+
         <Separator />
+
         <MenuItem
           text={t('dashboard.logout')}
           icon={<IoLogOutOutline size={24} />}
