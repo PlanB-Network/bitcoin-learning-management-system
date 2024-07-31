@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-import { protectedProcedure } from '../../procedures/index.js';
+import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 import { credentialsAuthRouter } from './credentials.js';
 import { lud4AuthRouter } from './lud4.js';
 
-const logoutProcedure = protectedProcedure
+const logoutProcedure = studentProcedure
   .input(z.void())
   .output(
     z.object({

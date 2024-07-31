@@ -24,6 +24,7 @@ import { Route as DashboardDashboardCoursesImport } from './routes/dashboard/_da
 import { Route as DashboardDashboardCalendarImport } from './routes/dashboard/_dashboard/calendar';
 import { Route as DashboardDashboardBookingsImport } from './routes/dashboard/_dashboard/bookings';
 import { Route as DashboardDashboardBcertificateImport } from './routes/dashboard/_dashboard/bcertificate';
+import { Route as DashboardDashboardAdministrationImport } from './routes/dashboard/_dashboard/administration';
 import { Route as ContentTutorialsCategoryImport } from './routes/_content/tutorials/$category';
 import { Route as ContentResourcesPodcastsImport } from './routes/_content/resources/podcasts';
 import { Route as ContentResourcesGlossaryImport } from './routes/_content/resources/glossary';
@@ -121,6 +122,12 @@ const DashboardDashboardBookingsRoute = DashboardDashboardBookingsImport.update(
 const DashboardDashboardBcertificateRoute =
   DashboardDashboardBcertificateImport.update({
     path: '/bcertificate',
+    getParentRoute: () => DashboardDashboardRoute,
+  } as any);
+
+const DashboardDashboardAdministrationRoute =
+  DashboardDashboardAdministrationImport.update({
+    path: '/administration',
     getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
@@ -418,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryImport;
       parentRoute: typeof rootRoute;
     };
+    '/dashboard/_dashboard/administration': {
+      id: '/dashboard/_dashboard/administration';
+      path: '/administration';
+      fullPath: '/dashboard/administration';
+      preLoaderRoute: typeof DashboardDashboardAdministrationImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/dashboard/_dashboard/bcertificate': {
       id: '/dashboard/_dashboard/bcertificate';
       path: '/bcertificate';
@@ -574,6 +588,7 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   DashboardRoute: DashboardRoute.addChildren({
     DashboardDashboardRoute: DashboardDashboardRoute.addChildren({
+      DashboardDashboardAdministrationRoute,
       DashboardDashboardBcertificateRoute,
       DashboardDashboardBookingsRoute,
       DashboardDashboardCalendarRoute,
@@ -670,6 +685,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "dashboard/_dashboard.tsx",
       "parent": "/dashboard",
       "children": [
+        "/dashboard/_dashboard/administration",
         "/dashboard/_dashboard/bcertificate",
         "/dashboard/_dashboard/bookings",
         "/dashboard/_dashboard/calendar",
@@ -732,6 +748,10 @@ export const routeTree = rootRoute.addChildren({
         "/_content/tutorials/$category/$name",
         "/_content/tutorials/$category/"
       ]
+    },
+    "/dashboard/_dashboard/administration": {
+      "filePath": "dashboard/_dashboard/administration.tsx",
+      "parent": "/dashboard/_dashboard"
     },
     "/dashboard/_dashboard/bcertificate": {
       "filePath": "dashboard/_dashboard/bcertificate.tsx",

@@ -18,6 +18,7 @@ const baseConfig: Config = {
       headerDark: '#010205',
       white: '#FFFFFF',
       black: '#000000',
+      background: '#F2F2F2',
       newBlack: {
         1: '#000000',
         2: '#1A1A1A',

@@ -7,7 +7,10 @@ import type { JoinedTutorialLight, UserDetails } from '@blms/types';
 import { trpcClient } from '#src/utils/trpc.js';
 
 interface Session {
-  user: { uid: string };
+  user: {
+    uid: string;
+    role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+  };
 }
 
 interface AppContext {
@@ -54,8 +57,19 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
     trpcClient.user.getSession
       .query()
-      .then((data) => data ?? null)
-      .then(setSession)
+      .then((data) => {
+        if (data && data.user && data.user.role) {
+          const validSession: Session = {
+            user: {
+              uid: data.user.uid,
+              role: data.user.role,
+            },
+          };
+          return setSession(validSession);
+        } else {
+          return setSession(null);
+        }
+      })
       .catch(() => null);
 
     trpcClient.content.getTutorials

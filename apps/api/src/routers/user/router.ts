@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { userRolesSchema } from '@blms/schemas';
+import type { UserRoles } from '@blms/types';
 import {
   createChangeDisplayName,
   createChangeEmailConfirmation,
@@ -7,11 +9,18 @@ import {
   createEmailValidationToken,
   createGetTokenInfo,
   createGetUserDetails,
+  createGetUsersRoles,
   createPasswordReset,
   createPasswordResetToken,
 } from '@blms/user';
 
-import { protectedProcedure, publicProcedure } from '../../procedures/index.js';
+import type { Parser } from '#src/trpc/types.js';
+
+import {
+  adminProcedure,
+  publicProcedure,
+  studentProcedure,
+} from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 import { userBCertificateRouter } from './bcertificate.js';
@@ -27,17 +36,34 @@ export const userRouter = createTRPCRouter({
     const { req } = ctx;
     return req.session.uid
       ? {
-          user: { uid: req.session.uid },
+          user: { uid: req.session.uid, role: req.session.role },
         }
       : null;
   }),
-  getDetails: protectedProcedure
+
+  getDetails: studentProcedure
     .input(z.void())
 
     .query(({ ctx }) =>
       createGetUserDetails(ctx.dependencies)({ uid: ctx.user.uid }),
     ),
-  changeDisplayName: protectedProcedure
+
+  getUsersRoles: adminProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        role: z.string(),
+      }),
+    )
+    .output(<Parser<UserRoles[]>>userRolesSchema.array())
+    .query(({ ctx, input }) =>
+      createGetUsersRoles(ctx.dependencies)({
+        name: input.name,
+        role: input.role,
+      }),
+    ),
+
+  changeDisplayName: studentProcedure
     .input(
       z.object({
         displayName: z.string(),
@@ -49,7 +75,7 @@ export const userRouter = createTRPCRouter({
         displayName: input.displayName,
       }),
     ),
-  changePassword: protectedProcedure
+  changePassword: studentProcedure
     .input(
       z.object({
         oldPassword: z.string(),
@@ -75,7 +101,7 @@ export const userRouter = createTRPCRouter({
     .query(({ ctx, input }) =>
       createGetTokenInfo(ctx.dependencies)(input.token),
     ),
-  changeEmail: protectedProcedure
+  changeEmail: studentProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(({ ctx, input }) =>
       createEmailValidationToken(ctx.dependencies)(ctx.user.uid, input.email),

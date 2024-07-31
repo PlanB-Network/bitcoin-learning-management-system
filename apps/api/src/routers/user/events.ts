@@ -10,11 +10,11 @@ import {
   generateEventTicket,
 } from '@blms/user';
 
-import { protectedProcedure } from '../../procedures/index.js';
+import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 import { formatDate, formatTime } from '../../utils/date.js';
 
-const downloadEventTicketProcedure = protectedProcedure
+const downloadEventTicketProcedure = studentProcedure
   .input(
     z.object({
       eventId: z.string(),
@@ -52,7 +52,7 @@ const downloadEventTicketProcedure = protectedProcedure
     });
   });
 
-const getEventPaymentsProcedure = protectedProcedure
+const getEventPaymentsProcedure = studentProcedure
   .input(
     z
       .object({
@@ -65,7 +65,7 @@ const getEventPaymentsProcedure = protectedProcedure
     createGetEventPayments(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
-const getUserEventsProcedure = protectedProcedure
+const getUserEventsProcedure = studentProcedure
   .input(
     z
       .object({
@@ -78,7 +78,7 @@ const getUserEventsProcedure = protectedProcedure
     createGetUserEvents(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
-const saveEventPaymentProcedure = protectedProcedure
+const saveEventPaymentProcedure = studentProcedure
   .input(
     z.object({
       eventId: z.string(),
@@ -104,7 +104,7 @@ const saveEventPaymentProcedure = protectedProcedure
     }),
   );
 
-const saveUserEventProcedure = protectedProcedure
+const saveUserEventProcedure = studentProcedure
   .input(
     z.object({
       eventId: z.string(),

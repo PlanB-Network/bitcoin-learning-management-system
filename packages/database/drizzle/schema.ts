@@ -19,6 +19,13 @@ export const users = pgSchema('users');
 export const content = pgSchema('content');
 
 // ACCOUNTS
+export const userRoleEnum = pgEnum('user_role', [
+  'student',
+  'professor',
+  'community',
+  'admin',
+  'superadmin',
+]);
 
 export const usersAccounts = users.table('accounts', {
   uid: uuid('uid').defaultRandom().primaryKey().notNull(),
@@ -26,6 +33,7 @@ export const usersAccounts = users.table('accounts', {
   displayName: varchar('display_name', { length: 255 }),
   picture: uuid('picture'),
   email: varchar('email', { length: 255 }).unique(),
+  role: userRoleEnum('role').default('student').notNull(),
   passwordHash: varchar('password_hash', { length: 255 }),
   contributorId: varchar('contributor_id', { length: 20 }).unique().notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })

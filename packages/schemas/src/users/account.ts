@@ -11,5 +11,13 @@ export const userDetailsSchema = userAccountSchema.pick({
   email: true,
   contributorId: true,
 });
+export const userRolesSchema = userAccountSchema.pick({
+  uid: true,
+  username: true,
+  displayName: true,
+  email: true,
+  contributorId: true,
+  role: true,
+});
 
 export const usersLud4PublicKeySchema = createSelectSchema(usersLud4PublicKeys);

@@ -4,11 +4,11 @@ import { calendarEventSchema } from '@blms/schemas';
 import type { CalendarEvent } from '@blms/types';
 import { createGetCalendarEvents } from '@blms/user';
 
-import { protectedProcedure } from '#src/procedures/protected.js';
+import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
 
-const getCalendarEventsProcedure = protectedProcedure
+const getCalendarEventsProcedure = studentProcedure
   .input(
     z.object({
       language: z.string(),

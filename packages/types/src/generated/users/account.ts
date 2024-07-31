@@ -7,6 +7,7 @@ export interface UserAccount {
   displayName: string | null;
   picture: string | null;
   email: string | null;
+  role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
   passwordHash: string | null;
   contributorId: string;
   createdAt: Date;
@@ -20,6 +21,15 @@ export interface UserDetails {
   picture: string | null;
   email: string | null;
   contributorId: string;
+}
+
+export interface UserRoles {
+  uid: string;
+  username: string;
+  displayName: string | null;
+  email: string | null;
+  contributorId: string;
+  role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
 }
 
 export interface UsersLud4PublicKey {
