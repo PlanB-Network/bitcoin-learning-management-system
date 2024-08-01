@@ -89,15 +89,7 @@ export const createProcessChangedBook = (
 
         for (const file of files) {
           try {
-            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
-              // If file was deleted, delete the translation from the database
-
-              await transaction`
-                DELETE FROM content.books_localized
-                WHERE book_id = ${id} AND language = ${file.language}
-              `;
-
               continue;
             }
 

@@ -12,27 +12,24 @@ interface BCertificateResult {
 
 export const createProcessResultFile =
   (transaction: TransactionSql) => async (id: string, file: ChangedFile) => {
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      const parsed = yamlToObject<BCertificateResult>(file.data);
+    if (!file || file.kind === 'removed') return;
 
-      const uid = await transaction<UserAccount[]>`
+    const parsed = yamlToObject<BCertificateResult>(file.data);
+
+    const uid = await transaction<UserAccount[]>`
           SELECT uid FROM users.accounts WHERE username = ${parsed.username}
         `
-        .then(firstRow)
-        .then((row) => row?.uid);
+      .then(firstRow)
+      .then((row) => row?.uid);
 
-      if (!uid) {
-        throw new Error(`uid not found for username ${parsed.username}`);
-      }
+    if (!uid) {
+      throw new Error(`uid not found for username ${parsed.username}`);
+    }
 
-      const categories = parsed.categories;
+    const categories = parsed.categories;
 
-      for (const category of Object.keys(categories)) {
-        await transaction`
+    for (const category of Object.keys(categories)) {
+      await transaction`
           INSERT INTO users.b_certificate_results (
             uid, b_certificate_exam, category, score, last_updated, last_commit, last_sync
           )
@@ -51,6 +48,5 @@ export const createProcessResultFile =
             last_commit = EXCLUDED.last_commit,
             last_sync = NOW()
         `;
-      }
     }
   };

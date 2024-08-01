@@ -15,24 +15,13 @@ interface QuizQuestionLocal {
 export const createProcessLocalFile =
   (transaction: TransactionSql) =>
   async (quizQuestion: ChangedQuizQuestion, file: ChangedFileWithLanguage) => {
-    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
-      // If file was deleted, delete the translation from the database
-
-      await transaction`
-        DELETE FROM content.quiz_questions_localized
-        WHERE quiz_question_id = ${quizQuestion.id} AND language = ${file.language}
-      `;
+      return;
     }
 
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      const parsed = yamlToObject<QuizQuestionLocal>(file.data);
+    const parsed = yamlToObject<QuizQuestionLocal>(file.data);
 
-      await transaction`
+    await transaction`
         INSERT INTO content.quiz_questions_localized (
           quiz_question_id, language, question, answer, wrong_answers, explanation
         )
@@ -50,5 +39,4 @@ export const createProcessLocalFile =
           wrong_answers = EXCLUDED.wrong_answers,
           explanation = EXCLUDED.explanation
       `;
-    }
   };

@@ -11,7 +11,6 @@ import type {
 import { yamlToObject } from '../../../utils.js';
 
 import type { ChangedQuizQuestion } from './index.js';
-import { parseDetailsFromPath } from './index.js';
 
 interface QuizQuestionMain {
   chapterId: string;
@@ -24,49 +23,20 @@ interface QuizQuestionMain {
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
   async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
-    if (!file) return;
-
-    // TODO IMPOSSIBLE
-    if (file.kind === 'removed') {
-      // If quiz question file was removed, delete the main quiz question and all its translations (with cascade)
-
-      await transaction`
-        DELETE FROM content.quiz_questions WHERE id = ${quizQuestion.id} 
-      `;
-
+    if (!file || file.kind === 'removed') {
       return;
     }
 
-    // TODO IMPOSSIBLE
-    if (file.kind === 'renamed') {
-      // If quiz question file was moved, update the id
+    // Only get the tags from the main quiz file
+    const parsedQuizQuestion = yamlToObject<QuizQuestionMain>(file.data);
 
-      const { id: previousId } = parseDetailsFromPath(file.previousPath);
+    const lastUpdated = quizQuestion.files
+      .filter(
+        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
+      )
+      .sort((a, b) => b.time - a.time)[0];
 
-      await transaction`
-        UPDATE content.quiz_questions
-        SET id = ${quizQuestion.id}
-        WHERE id = ${previousId}
-      `;
-    }
-
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      // If new or updated quiz file, insert or update quiz
-
-      // Only get the tags from the main quiz file
-      const parsedQuizQuestion = yamlToObject<QuizQuestionMain>(file.data);
-
-      const lastUpdated = quizQuestion.files
-        .filter(
-          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-        )
-        .sort((a, b) => b.time - a.time)[0];
-
-      const result = await transaction<QuizQuestion[]>`
+    const result = await transaction<QuizQuestion[]>`
         INSERT INTO content.quiz_questions
         (id, chapter_id, difficulty, author, duration, last_updated, last_commit, last_sync)
         VALUES (
@@ -90,26 +60,25 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
-      // If the quiz has tags, insert them into the tags table and link them to the quiz
-      if (
-        result &&
-        parsedQuizQuestion.tags &&
-        parsedQuizQuestion.tags?.length > 0
-      ) {
-        await transaction`
+    // If the quiz has tags, insert them into the tags table and link them to the quiz
+    if (
+      result &&
+      parsedQuizQuestion.tags &&
+      parsedQuizQuestion.tags?.length > 0
+    ) {
+      await transaction`
           INSERT INTO content.tags ${transaction(
             parsedQuizQuestion.tags.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;
 
-        await transaction`
+      await transaction`
           INSERT INTO content.quiz_question_tags (quiz_question_id, tag_id)
           SELECT
             ${result.id}, 
             id FROM content.tags WHERE name = ANY(${parsedQuizQuestion.tags})
           ON CONFLICT DO NOTHING
         `;
-      }
     }
   };

@@ -40,26 +40,19 @@ interface EventMain {
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
   async (event: ChangedEvent, file?: ChangedFile) => {
-    if (!file) return;
+    if (!file || file.kind === 'removed') return;
 
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      // If new or updated tutorial file, insert or update tutorial
+    // Only get the tags from the main tutorial file
+    const parsedEvents = yamlToObject<EventMain[]>(file.data);
 
-      // Only get the tags from the main tutorial file
-      const parsedEvents = yamlToObject<EventMain[]>(file.data);
+    const lastUpdated = event.files
+      .filter(
+        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
+      )
+      .sort((a, b) => b.time - a.time)[0];
 
-      const lastUpdated = event.files
-        .filter(
-          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-        )
-        .sort((a, b) => b.time - a.time)[0];
-
-      for (const parsedEvent of parsedEvents) {
-        const result = await transaction<Event[]>`
+    for (const parsedEvent of parsedEvents) {
+      const result = await transaction<Event[]>`
         INSERT INTO content.events 
           ( id,
             path,
@@ -138,34 +131,30 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
-        if (!result) {
-          throw new Error('Could not insert events');
-        }
+      if (!result) {
+        throw new Error('Could not insert events');
+      }
 
-        if (result && parsedEvent.tag && parsedEvent.tag?.length > 0) {
-          await transaction`
+      if (result && parsedEvent.tag && parsedEvent.tag?.length > 0) {
+        await transaction`
           INSERT INTO content.tags ${transaction(
             parsedEvent.tag.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;
 
-          await transaction`
+        await transaction`
           INSERT INTO content.event_tags (event_id, tag_id)
           SELECT
             ${result.id}, 
             id FROM content.tags WHERE name = ANY(${parsedEvent.tag})
           ON CONFLICT DO NOTHING
         `;
-        }
+      }
 
-        if (
-          result &&
-          parsedEvent.language &&
-          parsedEvent.language?.length > 0
-        ) {
-          for (const language of parsedEvent.language) {
-            await transaction`
+      if (result && parsedEvent.language && parsedEvent.language?.length > 0) {
+        for (const language of parsedEvent.language) {
+          await transaction`
             INSERT INTO content.event_languages (event_id, language)
             VALUES(
               ${result.id}, 
@@ -173,7 +162,6 @@ export const createProcessMainFile =
             )
             ON CONFLICT DO NOTHING
           `;
-          }
         }
       }
     }

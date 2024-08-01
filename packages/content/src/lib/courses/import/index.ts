@@ -283,71 +283,49 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
     return postgres
       .begin(async (transaction) => {
         try {
-          if (main) {
-            if (main.kind === 'removed') {
-              // If course file was removed, delete the main course and all its translations (with cascade)
-              await transaction`DELETE FROM content.courses WHERE id = ${course.id}`;
-              return;
-            }
-
-            if (main.kind === 'renamed') {
-              // If course file was moved, update the id
-              await transaction`
-                UPDATE content.courses
-                SET id = ${course.id}
-                WHERE id = ${main.previousPath.split('/')[1]}
-              `;
-            }
-
-            if (
-              main.kind === 'added' ||
-              main.kind === 'modified' ||
-              main.kind === 'renamed'
-            ) {
-              // If new or updated resource file, insert or update resource
-
-              // Remove all professors, reinsert them just after
-              await transaction`
+          if (main && main.kind !== 'removed') {
+            // Remove all professors, reinsert them just after
+            await transaction`
                 DELETE FROM content.course_professors
                 WHERE course_id = ${course.id}
               `;
 
-              await transaction`
+            await transaction`
                 DELETE FROM content.course_chapters_localized_professors
                 WHERE course_id = ${course.id}
               `;
 
-              // Only get the tags from the main resource file
-              const parsedCourse = yamlToObject<CourseMain>(main.data);
-              if (parsedCourse.requires_payment === null) {
-                parsedCourse.requires_payment = false;
-              }
+            // Only get the tags from the main resource file
+            const parsedCourse = yamlToObject<CourseMain>(main.data);
+            if (parsedCourse.requires_payment === null) {
+              parsedCourse.requires_payment = false;
+            }
 
-              const startDateTimestamp = convertStringToTimestamp(
-                parsedCourse.paid_start_date
-                  ? parsedCourse.paid_start_date.toString()
-                  : '20220101',
+            const startDateTimestamp = convertStringToTimestamp(
+              parsedCourse.paid_start_date
+                ? parsedCourse.paid_start_date.toString()
+                : '20220101',
+            );
+            if (parsedCourse.requires_payment) {
+              console.log(
+                '-- Sync procedure: StartDateTimestamp',
+                startDateTimestamp,
               );
-              if (parsedCourse.requires_payment) {
-                console.log(
-                  '-- Sync procedure: StartDateTimestamp',
-                  startDateTimestamp,
-                );
-              }
-              const endDateTimestamp = convertStringToTimestamp(
-                parsedCourse.paid_end_date
-                  ? parsedCourse.paid_end_date.toString()
-                  : '20220101',
-              );
+            }
+            const endDateTimestamp = convertStringToTimestamp(
+              parsedCourse.paid_end_date
+                ? parsedCourse.paid_end_date.toString()
+                : '20220101',
+            );
 
-              const lastUpdated = course.files
-                .filter(
-                  (file): file is ModifiedFile | RenamedFile =>
-                    file.kind !== 'removed',
-                )
-                .sort((a, b) => b.time - a.time)[0];
+            const lastUpdated = course.files
+              .filter(
+                (file): file is ModifiedFile | RenamedFile =>
+                  file.kind !== 'removed',
+              )
+              .sort((a, b) => b.time - a.time)[0];
 
-              const result = await transaction<Course[]>`
+            const result = await transaction<Course[]>`
                 INSERT INTO content.courses (id, level, hours, topic, subtopic, requires_payment, paid_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
@@ -386,11 +364,11 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                 RETURNING *
               `.then(firstRow);
 
-              if (!result) {
-                throw new Error('Could not insert course');
-              }
+            if (!result) {
+              throw new Error('Could not insert course');
+            }
 
-              await transaction`
+            await transaction`
                 INSERT INTO content.contributors ${transaction(
                   parsedCourse.professors.map((professor) => ({
                     id: professor,
@@ -399,7 +377,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                 ON CONFLICT DO NOTHING
               `;
 
-              await transaction`
+            await transaction`
                 INSERT INTO content.course_professors (course_id, contributor_id)
                 SELECT
                   ${result.id}, 
@@ -407,9 +385,9 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                 ON CONFLICT DO NOTHING
               `;
 
-              // If the resource has tags, insert them into the tags table and link them to the resource
-              if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
-                await transaction`
+            // If the resource has tags, insert them into the tags table and link them to the resource
+            if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
+              await transaction`
                   INSERT INTO content.tags ${transaction(
                     parsedCourse.tags.map((tag) => ({
                       name: tag.toLowerCase(),
@@ -418,14 +396,13 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                   ON CONFLICT (name) DO NOTHING
                 `;
 
-                await transaction`
+              await transaction`
                   INSERT INTO content.course_tags (course_id, tag_id)
                   SELECT
                     ${result.id}, 
                     id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
                   ON CONFLICT DO NOTHING
                 `;
-              }
             }
           }
         } catch (error) {
@@ -437,12 +414,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
 
         for (const file of files) {
           try {
-            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
-              await transaction`
-                DELETE FROM content.courses_localized
-                WHERE course_id = ${course.id} AND language = ${file.language}
-              `;
               continue;
             }
 

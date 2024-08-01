@@ -21,24 +21,19 @@ interface BCertificateExamMain {
 export const createProcessMainFile =
   (transaction: TransactionSql) =>
   async (bCertificateExam: ChangedBCertificateExam, file?: ChangedFile) => {
-    if (!file) return;
+    if (!file || file.kind === 'removed') return;
 
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      const parsedBCertificateExam = yamlToObject<BCertificateExamMain>(
-        file.data,
-      );
+    const parsedBCertificateExam = yamlToObject<BCertificateExamMain>(
+      file.data,
+    );
 
-      const lastUpdated = bCertificateExam.files
-        .filter(
-          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-        )
-        .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = bCertificateExam.files
+      .filter(
+        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
+      )
+      .sort((a, b) => b.time - a.time)[0];
 
-      await transaction<BCertificateExam[]>`
+    await transaction<BCertificateExam[]>`
         INSERT INTO content.b_certificate_exam (
           path, id, date, location, min_score, duration, last_updated, last_commit, last_sync
         )
@@ -64,5 +59,4 @@ export const createProcessMainFile =
           last_sync = NOW()
         RETURNING *
       `;
-    }
   };

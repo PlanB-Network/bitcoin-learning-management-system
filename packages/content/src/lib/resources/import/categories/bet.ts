@@ -89,15 +89,7 @@ export const createProcessChangedBet = (
 
         for (const file of files) {
           try {
-            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
-              // If file was deleted, delete the translation from the database
-
-              await transaction`
-                DELETE FROM content.bet_localized
-                WHERE bet_id = ${id} AND language = ${file.language}
-              `;
-
               continue;
             }
 
