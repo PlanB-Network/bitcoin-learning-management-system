@@ -6,6 +6,7 @@ import {
   createChangeDisplayName,
   createChangeEmailConfirmation,
   createChangePassword,
+  createChangeRole,
   createEmailValidationToken,
   createGetTokenInfo,
   createGetUserDetails,
@@ -20,6 +21,7 @@ import {
   adminProcedure,
   publicProcedure,
   studentProcedure,
+  superadminProcedure,
 } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
@@ -60,6 +62,19 @@ export const userRouter = createTRPCRouter({
       createGetUsersRoles(ctx.dependencies)({
         name: input.name,
         role: input.role,
+      }),
+    ),
+
+  changeRoleToAdmin: superadminProcedure
+    .input(
+      z.object({
+        uid: z.string(),
+      }),
+    )
+    .mutation(({ ctx, input }) =>
+      createChangeRole(ctx.dependencies)({
+        uid: input.uid,
+        role: 'admin',
       }),
     ),
 
