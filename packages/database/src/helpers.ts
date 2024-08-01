@@ -1,7 +1,4 @@
 import type { RowList } from 'postgres';
-import postgres from 'postgres';
-
-export const sql = postgres({});
 
 export class EmptyResultError extends Error {
   constructor(message?: string) {
