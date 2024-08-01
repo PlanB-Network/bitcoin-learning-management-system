@@ -10,7 +10,6 @@ import type {
 import { yamlToObject } from '../../utils.js';
 
 import type { ChangedProfessor } from './index.js';
-import { parseDetailsFromPath } from './index.js';
 
 interface ProfessorMain {
   name: string;
@@ -38,52 +37,26 @@ export const createProcessMainFile =
   async (professor: ChangedProfessor, file?: ChangedFile) => {
     if (!file) return;
 
-    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
-      // If professor question file was removed, delete the main professor question and all its translations (with cascade)
-
-      await transaction`
-        DELETE FROM content.professors WHERE path = ${professor.path} 
-      `;
-
       return;
     }
 
-    if (file.kind === 'renamed') {
-      // If professor question file was moved, update the id
+    // Only get the tags from the main professor file
+    const parsedProfessor = yamlToObject<ProfessorMain>(file.data);
 
-      const { path: previousPath } = parseDetailsFromPath(file.previousPath);
+    const lastUpdated = professor.files
+      .filter(
+        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
+      )
+      .sort((a, b) => b.time - a.time)[0];
 
-      await transaction`
-        UPDATE content.professors
-        SET path = ${professor.path}
-        WHERE path = ${previousPath}
-      `;
-    }
-
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      // If new or updated professor file, insert or update professor
-
-      // Only get the tags from the main professor file
-      const parsedProfessor = yamlToObject<ProfessorMain>(file.data);
-
-      const lastUpdated = professor.files
-        .filter(
-          (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-        )
-        .sort((a, b) => b.time - a.time)[0];
-
-      await transaction`
+    await transaction`
         INSERT INTO content.contributors (id)
         VALUES (${parsedProfessor.contributor_id})
         ON CONFLICT DO NOTHING
       `;
 
-      const result = await transaction<Professor[]>`
+    const result = await transaction<Professor[]>`
         INSERT INTO content.professors (
           path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url, 
           nostr, lightning_address, lnurl_pay, paynym, silent_payment, tips_url,
@@ -128,22 +101,21 @@ export const createProcessMainFile =
         RETURNING *
       `.then(firstRow);
 
-      // If the professor has tags, insert them into the tags table and link them to the professor
-      if (result && parsedProfessor.tags && parsedProfessor.tags?.length > 0) {
-        await transaction`
+    // If the professor has tags, insert them into the tags table and link them to the professor
+    if (result && parsedProfessor.tags && parsedProfessor.tags?.length > 0) {
+      await transaction`
           INSERT INTO content.tags ${transaction(
             parsedProfessor.tags.map((tag) => ({ name: tag.toLowerCase() })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;
 
-        await transaction`
+      await transaction`
           INSERT INTO content.professor_tags (professor_id, tag_id)
           SELECT
             ${result.id}, 
             id FROM content.tags WHERE name = ANY(${parsedProfessor.tags})
           ON CONFLICT DO NOTHING
         `;
-      }
     }
   };

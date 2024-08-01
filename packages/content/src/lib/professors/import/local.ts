@@ -11,24 +11,13 @@ interface ProfessorLocal {
 export const createProcessLocalFile =
   (transaction: TransactionSql) =>
   async (id: number, file: ChangedFileWithLanguage) => {
-    // TODO IMPOSSIBLE
     if (file.kind === 'removed') {
-      // If file was deleted, delete the translation from the database
-
-      await transaction`
-        DELETE FROM content.professors_localized
-        WHERE id = ${id} AND language = ${file.language}
-      `;
+      return;
     }
 
-    if (
-      file.kind === 'added' ||
-      file.kind === 'modified' ||
-      file.kind === 'renamed'
-    ) {
-      const parsed = yamlToObject<ProfessorLocal>(file.data);
+    const parsed = yamlToObject<ProfessorLocal>(file.data);
 
-      await transaction`
+    await transaction`
         INSERT INTO content.professors_localized (
           professor_id, language, bio, short_bio
         )
@@ -42,5 +31,4 @@ export const createProcessLocalFile =
           bio = EXCLUDED.bio,
           short_bio = EXCLUDED.short_bio
       `;
-    }
   };

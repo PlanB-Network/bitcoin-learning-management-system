@@ -91,13 +91,7 @@ export const createProcessChangedBuilder = (
 
         for (const file of files) {
           try {
-            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
-              await transaction`
-            DELETE FROM content.builders_localized
-            WHERE builder_id = ${id} AND language = ${file.language}
-          `;
-
               continue;
             }
 

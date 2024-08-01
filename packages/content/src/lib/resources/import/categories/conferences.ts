@@ -149,7 +149,6 @@ export const createProcessChangedConference = (
           file.path.includes('en.md'),
         )) {
           try {
-            // TODO IMPOSSIBLE
             if (file.kind === 'removed') {
               continue;
             }
