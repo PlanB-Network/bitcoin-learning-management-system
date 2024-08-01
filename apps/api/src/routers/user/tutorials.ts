@@ -2,10 +2,10 @@ import { z } from 'zod';
 
 import { createGetExistingLikeTutorial, createLikeTutorial } from '@blms/user';
 
-import { protectedProcedure } from '#src/procedures/protected.js';
+import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 
-const likeTutorialProcedure = protectedProcedure
+const likeTutorialProcedure = studentProcedure
   .input(z.object({ id: z.number(), liked: z.boolean() }))
   .mutation(({ ctx, input }) =>
     createLikeTutorial(ctx.dependencies)({
@@ -16,7 +16,7 @@ const likeTutorialProcedure = protectedProcedure
     }),
   );
 
-const getExistingLikeTutorialProcedure = protectedProcedure
+const getExistingLikeTutorialProcedure = studentProcedure
   .input(z.object({ id: z.number() }))
   .query(({ ctx, input }) =>
     createGetExistingLikeTutorial(ctx.dependencies)({

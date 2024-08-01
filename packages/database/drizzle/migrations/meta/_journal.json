@@ -29,6 +29,13 @@
       "when": 1721981622180,
       "tag": "0003_slow_wolfpack",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1722525959673,
+      "tag": "0004_solid_rocket_racer",
+      "breakpoints": true
     }
   ]
 }
