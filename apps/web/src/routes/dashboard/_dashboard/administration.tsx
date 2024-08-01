@@ -24,6 +24,11 @@ function DashboardAdministration() {
   const { session } = useContext(AppContext);
   if (!session) {
     navigate({ to: '/' });
+  } else if (
+    session?.user.role !== 'admin' &&
+    session?.user.role !== 'superadmin'
+  ) {
+    navigate({ to: '/dashboard/courses' });
   }
 
   return (
