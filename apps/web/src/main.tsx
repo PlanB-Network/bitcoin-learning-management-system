@@ -1,6 +1,8 @@
 import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
+import Spinner from '#src/assets/spinner_black.svg?react';
+
 import { App } from './app.tsx';
 import { AppProvider } from './providers/app.tsx';
 // Internationalization
@@ -16,7 +18,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="size-full flex flex-col justify-center items-center">
+          <Spinner className="size-32 md:size-64 mx-auto" />
+        </div>
+      }
+    >
       <AppProvider>
         <App />
       </AppProvider>
