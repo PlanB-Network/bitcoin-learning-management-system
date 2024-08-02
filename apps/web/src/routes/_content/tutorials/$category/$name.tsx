@@ -199,6 +199,11 @@ function TutorialDetails() {
 
   const [isLiked, setIsLiked] = useState({ liked: false, disliked: false });
 
+  const [likesCounts, setLikesCounts] = useState({
+    likeCount: 0,
+    dislikeCount: 0,
+  });
+
   // Disclosure (modals)
   const {
     open: openTipModal,
@@ -241,6 +246,10 @@ function TutorialDetails() {
   useEffect(() => {
     if (tutorial) {
       setTutorialState(tutorial);
+      setLikesCounts({
+        likeCount: tutorial.likeCount,
+        dislikeCount: tutorial.dislikeCount,
+      });
     }
   }, [tutorial]);
 
@@ -277,6 +286,14 @@ function TutorialDetails() {
         liked: !prev.liked,
         disliked: false,
       }));
+      setLikesCounts((prev) => {
+        return {
+          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount + 1,
+          dislikeCount: isLiked.disliked
+            ? prev.dislikeCount - 1
+            : prev.dislikeCount,
+        };
+      });
     };
 
     const handleDislike = () => {
@@ -287,6 +304,14 @@ function TutorialDetails() {
         liked: false,
         disliked: !prev.disliked,
       }));
+      setLikesCounts((prev) => {
+        return {
+          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount,
+          dislikeCount: isLiked.disliked
+            ? prev.dislikeCount - 1
+            : prev.dislikeCount + 1,
+        };
+      });
     };
 
     return (
@@ -354,7 +379,13 @@ function TutorialDetails() {
             </div>
             <div className="flex w-full flex-col items-center justify-center px-2">
               <div className="w-full flex flex-col gap-6 text-blue-900 md:max-w-3xl">
-                <Header tutorial={tutorialState} />
+                <Header
+                  tutorial={{
+                    ...tutorialState,
+                    likeCount: likesCounts.likeCount,
+                    dislikeCount: likesCounts.dislikeCount,
+                  }}
+                />
                 <div className="break-words overflow-hidden w-full">
                   {memoizedMarkdown}
                 </div>
