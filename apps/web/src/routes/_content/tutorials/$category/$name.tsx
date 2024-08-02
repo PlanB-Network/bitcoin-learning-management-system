@@ -80,10 +80,10 @@ const Header = ({
 };
 
 const AuthorDetails = ({
-  tutorialState,
+  tutorial,
   openTipModal,
 }: {
-  tutorialState: NonNullable<TRPCRouterOutput['content']['getTutorial']>;
+  tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>;
   openTipModal: () => void;
 }) => {
   return (
@@ -94,22 +94,22 @@ const AuthorDetails = ({
       <div className="flex max-md:flex-col max-md:gap-4 md:items-end gap-7">
         <div className="rounded-[20px] p-4 border-2 border-newBlack-1">
           <Link
-            to={`/professor/${formatNameForURL(tutorialState?.credits?.professor?.name || '')}-${tutorialState?.credits?.professor?.id}`}
+            to={`/professor/${formatNameForURL(tutorial?.credits?.professor?.name || '')}-${tutorial?.credits?.professor?.id}`}
             className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] p-2.5 w-[280px] relative overflow-hidden"
           >
             <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
-              {tutorialState?.credits?.professor?.name}
+              {tutorial?.credits?.professor?.name}
             </span>
             <img
-              src={tutorialState?.credits?.professor?.picture}
-              alt={tutorialState?.credits?.professor?.name}
+              src={tutorial?.credits?.professor?.picture}
+              alt={tutorial?.credits?.professor?.name}
               className="size-32 rounded-full z-10"
             />
             <div className="flex gap-4 items-end mt-2.5 z-10">
               {/* Courses */}
               <div className="flex flex-col gap">
                 <span className="text-5xl leading-[116%] text-center text-white">
-                  {tutorialState?.credits?.professor?.coursesCount}
+                  {tutorial?.credits?.professor?.coursesCount}
                 </span>
                 <span className="font-semibold leading-[133%] text-center text-white">
                   {t('words.courses')}
@@ -118,7 +118,7 @@ const AuthorDetails = ({
               {/* Tutorials */}
               <div className="flex flex-col gap">
                 <span className="text-5xl leading-[116%] text-center text-white">
-                  {tutorialState?.credits?.professor?.tutorialsCount}
+                  {tutorial?.credits?.professor?.tutorialsCount}
                 </span>
                 <span className="font-semibold leading-[133%] text-center text-white">
                   {t('words.tutorials')}
@@ -193,10 +193,6 @@ function TutorialDetails() {
   });
 
   // States
-  const [tutorialState, setTutorialState] = useState<
-    TRPCRouterOutput['content']['getTutorial'] | null
-  >(null);
-
   const [isLiked, setIsLiked] = useState({ liked: false, disliked: false });
 
   const [likesCounts, setLikesCounts] = useState({
@@ -228,9 +224,9 @@ function TutorialDetails() {
   const { data: existingLike } =
     trpc.user.tutorials.getExistingLikeTutorial.useQuery(
       {
-        id: tutorialState?.id || 0,
+        id: tutorial?.id || 0,
       },
-      { enabled: !!tutorialState?.id },
+      { enabled: !!tutorial?.id },
     );
 
   // Access global context
@@ -242,10 +238,9 @@ function TutorialDetails() {
   // Mutation for liking/disliking a tutorial
   const likeTutorialMutation = trpc.user.tutorials.likeTutorial.useMutation({});
 
-  // Update tutorial state when fetched tutorial change
+  // Update tutorial likes when fetched tutorial change
   useEffect(() => {
     if (tutorial) {
-      setTutorialState(tutorial);
       setLikesCounts({
         likeCount: tutorial.likeCount,
         dislikeCount: tutorial.dislikeCount,
@@ -260,20 +255,17 @@ function TutorialDetails() {
 
   // Memoized markdown content
   const memoizedMarkdown = useMemo(() => {
-    if (isFetchedTutorials && tutorialState) {
+    if (isFetchedTutorials && tutorial) {
       return (
         <TutorialsMarkdownBody
-          content={tutorialState.rawContent}
-          assetPrefix={computeAssetCdnUrl(
-            tutorialState.lastCommit,
-            tutorialState.path,
-          )}
+          content={tutorial.rawContent}
+          assetPrefix={computeAssetCdnUrl(tutorial.lastCommit, tutorial.path)}
           tutorials={tutorials || []}
         />
       );
     }
     return null;
-  }, [isFetchedTutorials, tutorialState, tutorials]);
+  }, [isFetchedTutorials, tutorial, tutorials]);
 
   // Like/dislike buttons component
   const LikeDislikeButtons = () => {
@@ -353,35 +345,35 @@ function TutorialDetails() {
 
   return (
     <TutorialLayout
-      currentCategory={tutorialState?.category}
-      currentSubcategory={tutorialState?.subcategory}
-      currentTutorialId={tutorialState?.id}
+      currentCategory={tutorial?.category}
+      currentSubcategory={tutorial?.subcategory}
+      currentTutorialId={tutorial?.id}
     >
       <>
-        {tutorialState && (
+        {tutorial && (
           <>
             <PageMeta
-              title={`${SITE_NAME} - ${tutorialState?.title}`}
-              description={capitalize(tutorialState?.description || '')}
+              title={`${SITE_NAME} - ${tutorial?.title}`}
+              description={capitalize(tutorial?.description || '')}
             />
             <div className="-mt-4 w-full max-w-5xl lg:hidden">
               <span className="mb-2 w-full text-left text-lg font-normal leading-6 text-darkOrange-5">
                 <Link to="/tutorials">{t('words.tutorials') + ` > `}</Link>
                 <Link
                   to={'/tutorials/$category'}
-                  params={{ category: tutorialState.category }}
+                  params={{ category: tutorial.category }}
                   className="capitalize"
                 >
-                  {tutorialState.category + ` > `}
+                  {tutorial.category + ` > `}
                 </Link>
-                <span className="capitalize">{tutorialState.title}</span>
+                <span className="capitalize">{tutorial.title}</span>
               </span>
             </div>
             <div className="flex w-full flex-col items-center justify-center px-2">
               <div className="w-full flex flex-col gap-6 text-blue-900 md:max-w-3xl">
                 <Header
                   tutorial={{
-                    ...tutorialState,
+                    ...tutorial,
                     likeCount: likesCounts.likeCount,
                     dislikeCount: likesCounts.dislikeCount,
                   }}
@@ -390,24 +382,24 @@ function TutorialDetails() {
                   {memoizedMarkdown}
                 </div>
                 <LikeDislikeButtons />
-                {tutorialState.credits?.link && (
+                {tutorial.credits?.link && (
                   <span className="body-16px text-black mx-auto">
                     {t('tutorials.details.source')}
                     <a
-                      href={tutorialState.credits.link}
+                      href={tutorial.credits.link}
                       target="_blank"
                       rel="noreferrer"
                       className="leading-snug tracking-015px underline text-newBlue-1"
                     >
-                      {tutorialState.credits.link}
+                      {tutorial.credits.link}
                     </a>
                   </span>
                 )}
               </div>
 
-              {tutorialState.credits?.professor?.id && (
+              {tutorial.credits?.professor?.id && (
                 <AuthorDetails
-                  tutorialState={tutorialState}
+                  tutorial={tutorial}
                   openTipModal={openTipModal}
                 />
               )}
@@ -418,10 +410,9 @@ function TutorialDetails() {
                 isOpen={isTipModalOpen}
                 onClose={closeTipModal}
                 lightningAddress={
-                  tutorialState.credits?.professor?.tips
-                    .lightningAddress as string
+                  tutorial.credits?.professor?.tips.lightningAddress as string
                 }
-                userName={tutorialState.credits?.professor?.name as string}
+                userName={tutorial.credits?.professor?.name as string}
               />
             )}
 
