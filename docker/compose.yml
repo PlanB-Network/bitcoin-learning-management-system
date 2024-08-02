@@ -38,7 +38,7 @@ services:
 
   api:
     <<: *defaults
-    image: ghcr.io/planb-network/sovereign-university-api:${IMAGE_TAG}
+    image: ghcr.io/planb-network/blms-api:${IMAGE_TAG}
     environment:
       <<: *environment
       HOST: 0.0.0.0
@@ -78,7 +78,7 @@ services:
 
   web:
     <<: *defaults
-    image: ghcr.io/planb-network/sovereign-university-web:${IMAGE_TAG}
+    image: ghcr.io/planb-network/blms-web:${IMAGE_TAG}
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-web-${ENV}.rule=Host(`${DOMAIN}`)

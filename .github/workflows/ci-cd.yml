@@ -89,7 +89,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta-api
         with:
-          images: ghcr.io/planb-network/sovereign-university-api
+          images: ghcr.io/planb-network/blms-api
           tags: |
             type=schedule
             type=ref,event=branch
@@ -100,7 +100,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta-web
         with:
-          images: ghcr.io/planb-network/sovereign-university-web
+          images: ghcr.io/planb-network/blms-web
           tags: |
             type=schedule
             type=ref,event=branch
