@@ -2,6 +2,8 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from '@blms/ui';
+
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
@@ -27,7 +29,7 @@ function TutorialExplorer() {
   const isFetchedTutorials = tutorials && tutorials.length > 0;
 
   return (
-    <MainLayout variant="gray">
+    <MainLayout footerVariant="dark">
       <PageMeta
         title={`${SITE_NAME} - ${t('tutorials.pageTitle')}`}
         description={t('tutorials.pageDescription')}
@@ -39,17 +41,34 @@ function TutorialExplorer() {
           description={t('tutorials.pageDescription')}
         />
 
-        <div className="flex w-full content-center justify-center p-4 sm:px-8 md:pb-16 md:pt-10 ">
-          <div className="grid w-[64rem] grid-cols-2 gap-x-8 sm:gap-x-12 md:grid-cols-3">
+        <div className="mt-10 md:mt-20 px-4 md:px-8">
+          <div className="flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl md:p-[30px] mx-auto gap-4 sm:gap-5 md:gap-12 md:bg-[#1A1A1A40] md:shadow-[0px_5px_30px_0px_rgba(255,255,255,0.49)] md:rounded-3xl md:border border-white">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
                 key={tutorialCategory.name}
-                to={'/tutorials/$category'}
-                params={{ category: tutorialCategory.name }}
+                to={`/tutorials/${tutorialCategory.name}`}
+                className="group"
               >
-                <div className="flex items-center space-x-2 rounded-lg py-2 sm:space-x-4 sm:p-2">
-                  <CategoryIcon src={tutorialCategory.image} />
-                  <h3 className="text-sm min-[420px]:text-lg font-semibold text-white sm:text-xl lg:text-2xl">
+                <div
+                  className={cn(
+                    'max-md:size-[135px] md:w-[272px] flex max-md:flex-col max-md:justify-center items-center rounded-2xl p-5 md:py-2.5 md:px-5 gap-3 md:gap-6 transition-all max-md:bg-newBlack-2 max-md:border max-md:border-newGray-1 opacity-100 md:group-hover:bg-newBlack-3 max-md:group-hover:border-darkOrange-5',
+                  )}
+                >
+                  <CategoryIcon
+                    src={tutorialCategory.image}
+                    variant="resources"
+                    imgClassName={cn(
+                      'max-md:filter-white max-md:group-hover:filter-newOrange1',
+                    )}
+                  />
+                  <h3
+                    className={cn(
+                      'max-md:desktop-body1 md:text-2xl text-white max-md:text-center',
+                      tutorialCategory
+                        ? ''
+                        : 'max-md:group-hover:text-darkOrange-5 group-hover:font-medium',
+                    )}
+                  >
                     {t(`tutorials.${tutorialCategory.name}.title`)}
                   </h3>
                 </div>
@@ -57,58 +76,98 @@ function TutorialExplorer() {
             ))}
           </div>
         </div>
-        <div className="mb-6 flex w-full flex-col items-center md:-mt-10">
-          <FilterBar
-            label={t('resources.filterBarLabel')}
-            onChange={setSearchTerm}
-          />
-        </div>
-        <div className="flex flex-col items-center bg-newGray-6 pt-10 text-blue-800">
-          <div className="-mt-6 hidden max-w-2xl pb-6 text-center sm:block">
+        <div className="flex w-full flex-col items-center mt-10 max-md:hidden">
+          <FilterBar onChange={setSearchTerm} />
+          <p className="max-md:hidden max-w-xl text-center body-16px">
             <span className="font-medium">
               {t('tutorials.explorer.didYouKnow')}
-            </span>
-            <span>{t('tutorials.explorer.description')}</span>
-          </div>
-          <div className="flex max-w-3xl flex-wrap justify-center gap-6 px-2">
-            {!isFetchedTutorials && (
-              <Spinner className="size-24 md:size-32 mx-auto" />
-            )}
-            {tutorials
-              ?.filter((tutorial) =>
-                tutorial.name.toLowerCase().includes(searchTerm.toLowerCase()),
-              )
-              .map((tutorial) => (
+            </span>{' '}
+            {t('tutorials.explorer.description')}
+          </p>
+          <h3 className="mt-8 display-small-reg-32px">
+            {t('tutorials.explorer.exploreAllTutorials')}
+          </h3>
+        </div>
+        <div className="flex flex-col items-center pt-10 text-blue-800 max-md:hidden gap-16">
+          {!isFetchedTutorials && (
+            <Spinner className="size-24 md:size-32 mx-auto" />
+          )}
+          {TUTORIALS_CATEGORIES.map((category) => {
+            return (
+              <section
+                key={category.name}
+                className="flex flex-col gap-16 items-center justify-center"
+              >
                 <Link
-                  to={'/tutorials/$category/$name'}
-                  params={{
-                    category: tutorial.category,
-                    name: tutorial.name,
-                  }}
-                  key={tutorial.id}
-                  className="group/builder relative flex flex-col items-center justify-center"
+                  to={`/tutorials/${category.name}`}
+                  className="flex gap-7 capitalize text-white display-medium-reg-40px hover:text-darkOrange-5 w-fit py-5"
                 >
                   <img
-                    className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all"
-                    src={
-                      tutorial.builder
-                        ? computeAssetCdnUrl(
-                            tutorial.builder.lastCommit,
-                            `${tutorial.builder.path}/assets/logo.webp`,
-                          )
-                        : computeAssetCdnUrl(
-                            tutorial.lastCommit,
-                            `${tutorial.path}/assets/logo.webp`,
-                          )
-                    }
-                    alt={tutorial.title}
+                    src={category.image}
+                    alt={category.name}
+                    className="size-11"
                   />
-                  <p className="absolute flex justify-center items-center size-full p-1 rounded-full text-center text-xs font-bold text-white group-hover/builder:bg-black/60 opacity-0 group-hover/builder:opacity-100 group-focus/builder:opacity-100 transition-all">
-                    {tutorial.title.slice(0, 18)}
-                  </p>
+                  {category.name}
                 </Link>
-              ))}
-          </div>
+                <div className="flex max-w-5xl flex-wrap justify-center gap-11 px-2">
+                  {tutorials
+                    ?.filter(
+                      (tutorial) =>
+                        tutorial.name
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase()) &&
+                        tutorial.category.toLowerCase() === category.name,
+                    )
+                    .sort((a, b) => a.title.localeCompare(b.title))
+                    .map((tutorial) => (
+                      <div
+                        key={tutorial.id}
+                        className="flex flex-col gap-2 items-center justify-center w-20 lg:w-24 h-full"
+                      >
+                        <Link
+                          to={'/tutorials/$category/$name'}
+                          params={{
+                            category: tutorial.category,
+                            name: tutorial.name,
+                          }}
+                          className="group/builder relative flex flex-col items-center justify-center"
+                        >
+                          <img
+                            className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/builder:blur-sm group-focus/builder:blur-sm group-focus/builder:brightness-[30%] transition-all bg-white/20"
+                            src={
+                              tutorial.builder
+                                ? computeAssetCdnUrl(
+                                    tutorial.builder.lastCommit,
+                                    `${tutorial.builder.path}/assets/logo.webp`,
+                                  )
+                                : computeAssetCdnUrl(
+                                    tutorial.lastCommit,
+                                    `${tutorial.path}/assets/logo.webp`,
+                                  )
+                            }
+                            alt={tutorial.title}
+                          />
+                          <p className="absolute flex justify-center items-center size-full p-1 rounded-full text-center text-xs font-bold text-white group-hover/builder:bg-black/60 opacity-0 group-hover/builder:opacity-100 group-focus/builder:opacity-100 transition-all">
+                            {tutorial.title.slice(0, 18)}
+                          </p>
+                        </Link>
+                        <Link
+                          to={'/tutorials/$category/$name'}
+                          params={{
+                            category: tutorial.category,
+                            name: tutorial.name,
+                          }}
+                          key={tutorial.id}
+                          className="text-xs font-bold text-white max-md:hidden text-center line-clamp-2"
+                        >
+                          {tutorial.title}
+                        </Link>
+                      </div>
+                    ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
     </MainLayout>

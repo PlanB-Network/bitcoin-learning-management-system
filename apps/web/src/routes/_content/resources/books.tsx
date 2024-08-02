@@ -37,7 +37,6 @@ export function Books() {
       tagLine={t('library.pageSubtitle')}
       filterBar={{
         onChange: setSearchTerm,
-        label: t('resources.filterBarLabel'),
       }}
       activeCategory="books"
     >

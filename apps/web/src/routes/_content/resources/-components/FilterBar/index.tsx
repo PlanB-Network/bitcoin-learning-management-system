@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useState } from 'react';
 
 interface Props {
@@ -14,25 +15,21 @@ export const FilterBar = ({
   const [value, setValue] = useState(initialValue);
 
   return (
-    <div className="w-full max-w-md items-center justify-between rounded-3xl  px-4 py-2 text-xs sm:rounded-2xl sm:px-6 sm:text-xs">
-      <div className="mb-2 mr-3 grow">
-        {label && (
-          <label className="mb-2 block text-white sm:mb-2">{label}</label>
-        )}
+    <div className="flex flex-col gap-4 w-full max-w-xl items-center md:mt-14 my-8 px-8">
+      {label && (
+        <label className="mb-2 block text-white sm:mb-2">{label}</label>
+      )}
 
-        <input
-          type="text"
-          value={value}
-          onChange={(event) => {
-            setValue(event.target.value);
-            onChange(event.target.value);
-          }}
-          className="inline-block h-fit w-full rounded-full border-0 bg-gray-100 py-1 pl-4 text-sm placeholder:text-gray-500 placeholder:text-opacity-50 focus:border-gray-100 focus:outline-none focus:ring focus:ring-gray-300 sm:max-w-xl sm:text-base caret-orange-500 text-blue-800"
-        />
-      </div>
-      {/* <button className="text-right font-light italic underline">
-        {t('words.additionalCriteria')}
-      </button> */}
+      <input
+        type="text"
+        value={value}
+        onChange={(event) => {
+          setValue(event.target.value);
+          onChange(event.target.value);
+        }}
+        placeholder={t('resources.searchFilterName')}
+        className="h-11 w-full rounded-full bg-newBlack-2 px-5 body-14px placeholder:text-newGray-2 focus:outline-none shadow-filter-bar border border-darkOrange-5"
+      />
     </div>
   );
 };

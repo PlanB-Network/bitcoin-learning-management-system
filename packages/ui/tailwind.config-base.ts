@@ -110,6 +110,7 @@ const baseConfig: Config = {
       },
       red: {
         1: '#E00000',
+        5: '#F7BFBF',
         6: '#FCE5E5',
       },
       beige: {
@@ -133,6 +134,16 @@ const baseConfig: Config = {
       },
       brightGreen: {
         1: '#19C315',
+        2: '#53D250',
+        3: '#8CE18A',
+        4: '#C5F0C4',
+        5: '#E3F8E3',
+      },
+      darkGreen: {
+        1: '#42A86B',
+        4: '#A0D4B5',
+        5: '#C6E5D3',
+        6: '#E3F2E9',
       },
       turquoise: {
         100: '#D7EBE9',
@@ -211,6 +222,7 @@ const baseConfig: Config = {
         'card-items-dark': '0px 4px 4px 0px #210C00',
         'search-word-sm': '0px 0px 30px 8.515px rgba(255,92,0,0.25)',
         'search-word-md': '0px 0px 51.676px 8.515px rgba(255,92,0,0.25)',
+        'filter-bar': '0px 0px 50px 8px rgba(255,92,0,0.50)',
       },
       letterSpacing: {
         '015px': '0.15px',

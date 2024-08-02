@@ -3,6 +3,7 @@ import { z } from 'zod';
 
 import {
   contentTutorialCredits,
+  contentTutorialLikesDislikes,
   contentTutorials,
   contentTutorialsLocalized,
 } from '@blms/database';
@@ -15,6 +16,10 @@ export const tutorialLocalizedSchema = createSelectSchema(
   contentTutorialsLocalized,
 );
 export const tutorialCreditSchema = createSelectSchema(contentTutorialCredits);
+
+export const tutorialLikeDislikeSchema = createSelectSchema(
+  contentTutorialLikesDislikes,
+);
 
 export const joinedTutorialLightSchema = tutorialSchema
   .pick({
@@ -36,6 +41,8 @@ export const joinedTutorialLightSchema = tutorialSchema
   )
   .merge(
     z.object({
+      likeCount: z.number(),
+      dislikeCount: z.number(),
       tags: z.array(z.string()),
       builder: joinedBuilderSchema
         .pick({

@@ -34,6 +34,12 @@ export interface TutorialCredit {
   tipsUrl: string | null;
 }
 
+export interface TutorialLikeDislike {
+  tutorialId: number;
+  uid: string;
+  liked: boolean;
+}
+
 export interface JoinedTutorialLight {
   id: number;
   path: string;
@@ -46,6 +52,8 @@ export interface JoinedTutorialLight {
   language: string;
   title: string;
   description: string | null;
+  likeCount: number;
+  dislikeCount: number;
   tags: string[];
   builder?:
     | (
@@ -70,6 +78,8 @@ export interface JoinedTutorial {
   language: string;
   title: string;
   description: string | null;
+  likeCount: number;
+  dislikeCount: number;
   tags: string[];
   builder?:
     | (

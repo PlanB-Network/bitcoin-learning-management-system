@@ -10,7 +10,6 @@ import type { JoinedTutorialLight } from '@blms/types';
 
 import { TutorialCard } from '#src/routes/_content/tutorials/-components/tutorial-card.js';
 
-import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 import { CopyButton } from '../CopyButton/index.tsx';
@@ -45,21 +44,20 @@ export const TutorialsMarkdownBody = ({
     <ReactMarkdown
       components={{
         h2: ({ children }) => (
-          <h2 className="mt-6 text-3xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
-            <div className="flex w-auto items-center">
-              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
-              {children}
-            </div>
+          <h2 className="title-large-sb-24px mt-6 md:mt-8 text-newBlack-1">
+            {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-3xl font-medium text-orange-500">{children}</h3>
+          <h3 className="subtitle-large-med-20px text-darkOrange-5">
+            {children}
+          </h3>
         ),
         h4: ({ children }) => (
-          <h3 className="text-2xl font-medium">{children}</h3>
+          <h3 className="text-lg font-medium text-black">{children}</h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <p className="text-newBlack-1 body-16px md:text-justify">
             {children}
           </p>
         ),
