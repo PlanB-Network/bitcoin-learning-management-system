@@ -204,6 +204,10 @@
     @apply text-xl leading-normal font-normal tracking-[0.1px];
   }
 
+  .label-normal-16px {
+    @apply text-base leading-normal font-normal tracking-[0.1px];
+  }
+
   .subtitle-large-med-20px {
     @apply text-xl leading-[160%] font-medium tracking-015px;
   }

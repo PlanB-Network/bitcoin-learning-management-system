@@ -87,15 +87,15 @@ const AuthorDetails = ({
   openTipModal: () => void;
 }) => {
   return (
-    <article className="flex flex-col p-7 gap-5 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8">
-      <span className="label-large-20px font-medium text-newBlack-1 w-full">
+    <article className="flex flex-col p-2 md:p-7 gap-5 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8">
+      <span className="label-normal-16px md:label-large-20px font-medium text-newBlack-1 w-full max-md:text-center">
         {t('tutorials.details.writtenBy')}
       </span>
       <div className="flex max-md:flex-col max-md:gap-4 md:items-end gap-7">
-        <div className="rounded-[20px] p-4 border-2 border-newBlack-1">
+        <div className="rounded-[20px] md:p-4 border-1 md:border-2 border-newBlack-1">
           <Link
             to={`/professor/${formatNameForURL(tutorial?.credits?.professor?.name || '')}-${tutorial?.credits?.professor?.id}`}
-            className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] p-2.5 w-[280px] relative overflow-hidden"
+            className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] p-2.5 md:w-[280px] relative overflow-hidden"
           >
             <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
               {tutorial?.credits?.professor?.name}
@@ -132,7 +132,7 @@ const AuthorDetails = ({
         </div>
         <div className="flex items-center gap-4">
           <button
-            className="flex items-center justify-center p-3 rounded-2xl bg-white shadow-course-navigation border border-darkOrange-2 overflow-hidden size-16 hover:bg-darkOrange-0"
+            className="flex items-center justify-center p-3 rounded-2xl bg-white shadow-course-navigation border border-darkOrange-2 overflow-hidden size-16 hover:bg-darkOrange-0 shrink-0"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -163,7 +163,7 @@ const BackgroundAuthorCardElement = () => {
       height="143"
       viewBox="0 0 280 143"
       fill="none"
-      className="absolute bottom-0"
+      className="absolute bottom-0 w-full"
     >
       <path
         d="M147.147 1.98324C142.545 0.222654 137.455 0.222651 132.853 1.98323L12.8534 47.8939C5.11227 50.8556 0 58.2852 0 66.5735V259.249C0 270.295 8.95431 279.249 20 279.249H260C271.046 279.249 280 270.295 280 259.249V66.5735C280 58.2852 274.888 50.8556 267.147 47.8939L147.147 1.98324Z"
@@ -383,13 +383,13 @@ function TutorialDetails() {
                 </div>
                 <LikeDislikeButtons />
                 {tutorial.credits?.link && (
-                  <span className="body-16px text-black mx-auto">
+                  <span className="body-16px text-black mx-auto w-full">
                     {t('tutorials.details.source')}
                     <a
                       href={tutorial.credits.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="leading-snug tracking-015px underline text-newBlue-1"
+                      className="leading-snug tracking-015px underline text-newBlue-1 break-words"
                     >
                       {tutorial.credits.link}
                     </a>
