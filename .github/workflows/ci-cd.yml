@@ -3,7 +3,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - main
+      - mainnet
       - testnet
       - dev
   pull_request:
@@ -52,7 +52,7 @@ jobs:
 
   deploy:
     needs: build_and_test
-    if: (github.event_name == 'push') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/testnet')
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -134,7 +134,7 @@ jobs:
           source: 'docker/compose.yml,docker/cdn'
           overwrite: true
           strip_components: 1
-          target: ${{ github.ref == 'refs/heads/main' && 'mainnet' || 'testnet' }}
+          target: ${{ github.ref == 'refs/heads/mainnet' && 'mainnet' || 'testnet' }}
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.0.3
@@ -144,7 +144,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           script: |
-            cd ${{ github.ref == 'refs/heads/main' && 'mainnet' || 'testnet' }}
+            cd ${{ github.ref == 'refs/heads/mainnet' && 'mainnet' || 'testnet' }}
             docker compose pull
             docker compose stop || true
             docker compose rm -f || true
