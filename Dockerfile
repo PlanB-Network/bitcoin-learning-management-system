@@ -31,7 +31,6 @@ WORKDIR /home/node
 USER node
 
 COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json turbo.json .npmrc ./
-COPY --chown=node:node patches ./patches
 
 RUN --mount=type=cache,uid=1000,gid=1000,id=pnpm,target=/pnpm/store pnpm fetch 
 
