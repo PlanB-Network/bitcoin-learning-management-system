@@ -31,7 +31,6 @@
   "devDependencies": {
     "@types/node": "^20.14.14",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitest/ui": "1.6.0",
     "dotenv-cli": "^7.4.2",
     "husky": "^9.1.4",
     "jsonc-parser": "^3.3.1",
@@ -42,8 +41,7 @@
     "turbo": "^2.0.11",
     "typescript": "5.4.5",
     "vite": "~5.3.5",
-    "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "1.6.0"
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "lint-staged": {
     "**/*": "prettier --loglevel warn --write --ignore-unknown"

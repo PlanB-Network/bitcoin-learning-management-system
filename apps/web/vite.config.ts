@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 /// <reference types="vite-plugin-svgr/client" />
 
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
@@ -57,11 +56,4 @@ export default defineConfig({
           },
         },
       },
-
-  test: {
-    reporters: ['default'],
-    globals: true,
-    environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-  },
 });

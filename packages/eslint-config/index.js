@@ -2,7 +2,6 @@
 const jsonc = require('./jsonc.js');
 const react = require('./react.js');
 const typescript = require('./typescript.js');
-const vitest = require('./vitest.js');
 
 module.exports = {
   env: { es2022: true, node: true },
@@ -10,7 +9,6 @@ module.exports = {
     jsonc,
     typescript,
     react,
-    vitest,
     { files: ['*.js'], env: { node: true } },
   ],
   ignorePatterns: ['**/node_modules', '**/dist/**', '**/build/**'],
