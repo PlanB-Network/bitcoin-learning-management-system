@@ -1,10 +1,11 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useMemo } from 'react';
-import '../../styles/global.css';
+import '../styles/global.css';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 
-import { cn } from '../../lib/utils.ts';
-import type { BaseAtomProps } from '../types.ts';
+import { cn } from '../lib/utils.js';
+
+import type { BaseAtomProps } from './types.js';
 
 export interface ButtonProps
   extends BaseAtomProps,
