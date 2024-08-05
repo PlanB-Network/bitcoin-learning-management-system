@@ -1,9 +1,8 @@
 import { firstRow } from '@blms/database';
 // import type { JoinedCourseWithAll } from '@blms/types';
 
-import { getProfessorsQuery } from '#src/lib/professors/queries/get-professors.js';
-
 import type { Dependencies } from '../../dependencies.js';
+import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { getCourseChaptersQuery } from '../queries/get-course-chapters.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
