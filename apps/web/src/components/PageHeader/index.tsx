@@ -9,6 +9,7 @@ export const PageHeader = ({
   description = '',
   link,
   hasGithubDescription = false,
+  addedCredits = false,
   hideOnMobile,
   removeTopMargin,
   increaseHorizontalPadding,
@@ -18,6 +19,7 @@ export const PageHeader = ({
   description?: string;
   link?: string;
   hasGithubDescription?: boolean;
+  addedCredits?: boolean;
   hideOnMobile?: boolean;
   removeTopMargin?: boolean;
   increaseHorizontalPadding?: boolean;
@@ -49,16 +51,36 @@ export const PageHeader = ({
       )}
 
       {hasGithubDescription ? (
-        <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px] mt-1 md:mt-6">
-          <Trans i18nKey="resources.github">
-            <a
-              className="underline underline-offset-2 hover:text-darkOrange-5"
-              href="https://github.com/PlanB-Network/bitcoin-educational-content"
-            >
-              Github Repository
-            </a>
-          </Trans>
-        </p>
+        <>
+          <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px] mt-1 md:mt-6">
+            <Trans i18nKey="resources.github">
+              <a
+                className="underline underline-offset-2 hover:text-darkOrange-5"
+                href="https://github.com/PlanB-Network/bitcoin-educational-content"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github Repository
+              </a>
+            </Trans>
+          </p>
+
+          {addedCredits && (
+            <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px] mt-1">
+              <Trans i18nKey="glossary.creditsLoic">
+                <span className="font-semibold">Credits</span>
+                <a
+                  className="underline underline-offset-2 hover:text-darkOrange-5"
+                  href="https://github.com/LoicPandul/Dictionnaire-de-Bitcoin/tree/main"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Bitcoin Dictionnary Github Repository
+                </a>
+              </Trans>
+            </p>
+          )}
+        </>
       ) : (
         description && (
           <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px]  mt-1 md:mt-6 max-md:hidden">

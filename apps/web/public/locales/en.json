@@ -423,6 +423,7 @@
   },
   "glossary": {
     "anotherWord": "Search for another word",
+    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionnary written by Loïc Morel (Pandul), available on this <1>Github repository</1>.",
     "definition": "Definition",
     "filterBar": "Find the word you’re looking for",
     "needHelp": "Need help defining a technical word ?",

@@ -42,6 +42,7 @@ function Glossary() {
       tagLine={t('glossary.pageSubtitle')}
       activeCategory="glossary"
       maxWidth="1360"
+      addCredits
     >
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (

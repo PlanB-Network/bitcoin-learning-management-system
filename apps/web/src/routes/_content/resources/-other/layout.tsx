@@ -28,6 +28,7 @@ interface Props {
   // link?: ToPathOption<RegisteredRouter['routeTree']>;
   showPageHeader?: boolean;
   hidePageHeaderMobile?: boolean;
+  addCredits?: boolean;
   backToCategoryButton?: boolean;
   activeCategory?: string;
   maxWidth?: '1152' | '1360';
@@ -44,6 +45,7 @@ export const ResourceLayout = ({
   link,
   showPageHeader = true,
   hidePageHeaderMobile,
+  addCredits,
   activeCategory,
   backToCategoryButton,
   maxWidth,
@@ -71,6 +73,7 @@ export const ResourceLayout = ({
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               link={link ? link : ''}
               hasGithubDescription={true}
+              addedCredits={addCredits}
               hideOnMobile={hidePageHeaderMobile}
               increaseHorizontalPadding={maxWidth === '1360'}
             />
