@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 import type { UserDetails } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { newLnurlUserQuery } from '../queries/index.js';
+import { newLnurlUserQuery } from '../queries/new-lnurl-user.js';
 
 import { createGenerateUniqueContributorId } from './generate-unique-contributor-id.js';
 

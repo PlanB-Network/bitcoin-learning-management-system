@@ -10,7 +10,7 @@ import {
   getExistingLikeTutorialQuery,
   insertLikeTutorialQuery,
   updateLikeTutorialQuery,
-} from '../queries/index.js';
+} from '../queries/like-tutorial.js';
 
 interface Options {
   uid: string;

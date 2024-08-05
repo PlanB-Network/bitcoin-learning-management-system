@@ -3,7 +3,8 @@ import { firstRow } from '@blms/database';
 import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { omitWithTypes } from '../../utils.js';
-import { getCreditsQuery, getTutorialQuery } from '../queries/index.js';
+import { getCreditsQuery } from '../queries/get-credits.js';
+import { getTutorialQuery } from '../queries/get-tutorial.js';
 
 interface Options {
   category: string;

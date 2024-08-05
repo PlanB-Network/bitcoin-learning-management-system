@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../dependencies.js';
-import { getProfessorsQuery } from '../queries/index.js';
+import { getProfessorsQuery } from '../queries/get-professors.js';
 
 import { formatProfessor } from './utils.js';
 

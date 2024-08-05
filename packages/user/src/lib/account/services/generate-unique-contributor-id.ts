@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
-import { contributorIdExistsQuery } from '../queries/index.js';
+import { contributorIdExistsQuery } from '../queries/contributor-id-exists.js';
 import { generateRandomContributorId } from '../utils/contribution.js';
 
 export const createGenerateUniqueContributorId =

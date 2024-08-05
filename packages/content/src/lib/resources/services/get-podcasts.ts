@@ -1,6 +1,6 @@
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getPodcastsQuery } from '../queries/index.js';
+import { getPodcastsQuery } from '../queries/get-podcasts.js';
 
 export const createGetPodcasts =
   (dependencies: Dependencies) => async (language?: string) => {

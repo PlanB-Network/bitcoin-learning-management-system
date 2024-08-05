@@ -1,9 +1,10 @@
 import type { JoinedCourseWithProfessors } from '@blms/types';
 
+import { getProfessorsQuery } from '#src/lib/professors/queries/get-professors.js';
+
 import type { Dependencies } from '../../dependencies.js';
-import { getProfessorsQuery } from '../../professors/queries/index.js';
 import { formatProfessor } from '../../professors/services/utils.js';
-import { getCoursesQuery } from '../queries/index.js';
+import { getCoursesQuery } from '../queries/get-courses.js';
 
 export const createGetCourses = (dependencies: Dependencies) => {
   return async (language?: string): Promise<JoinedCourseWithProfessors[]> => {

@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
-import { getCourseChapterQuizQuestionsQuery } from '../queries/index.js';
+import { getCourseChapterQuizQuestionsQuery } from '../queries/get-course-chapter-quiz-questions.js';
 
 export const createGetCourseChapterQuizQuestions =
   (dependencies: Dependencies) =>

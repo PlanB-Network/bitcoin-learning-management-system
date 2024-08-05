@@ -1,6 +1,6 @@
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getBooksQuery } from '../queries/index.js';
+import { getBooksQuery } from '../queries/get-books.js';
 
 export const createGetBooks =
   (dependencies: Dependencies) => async (language?: string) => {

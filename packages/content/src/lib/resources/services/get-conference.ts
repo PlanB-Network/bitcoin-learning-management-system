@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getConferenceQuery } from '../queries/index.js';
+import { getConferenceQuery } from '../queries/get-conference.js';
 
 export const createGetConference =
   (dependencies: Dependencies) => async (id: number) => {

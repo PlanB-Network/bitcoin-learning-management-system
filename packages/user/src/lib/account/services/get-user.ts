@@ -1,7 +1,7 @@
 import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { getUserQuery } from '../queries/index.js';
+import { getUserQuery } from '../queries/get-user.js';
 
 type GetUserOptions =
   | {

@@ -4,7 +4,7 @@ import { firstRow } from '@blms/database';
 import type { UserDetails } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { newCredentialsUserQuery } from '../queries/index.js';
+import { newCredentialsUserQuery } from '../queries/new-credentials-user.js';
 
 import { createCheckContributorIdExists } from './check-contributor-id-exists.js';
 import { createGenerateUniqueContributorId } from './generate-unique-contributor-id.js';

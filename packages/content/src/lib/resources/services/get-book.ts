@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getBookQuery } from '../queries/index.js';
+import { getBookQuery } from '../queries/get-book.js';
 
 export const createGetBook =
   (dependencies: Dependencies) => async (id: number, language?: string) => {

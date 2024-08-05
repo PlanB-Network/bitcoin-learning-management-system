@@ -5,11 +5,8 @@ import type { TokenType } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 
-import {
-  changeEmailQuery,
-  consumeTokenQuery,
-  createTokenQuery,
-} from '../queries/index.js';
+import { changeEmailQuery } from '../queries/change-email.js';
+import { consumeTokenQuery, createTokenQuery } from '../queries/token.js';
 
 import { createSendEmail } from './email.js';
 

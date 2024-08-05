@@ -4,7 +4,8 @@ import { TRPCError } from '@trpc/server';
 import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { changeDisplayNameQuery, getUserByIdQuery } from '../queries/index.js';
+import { changeDisplayNameQuery } from '../queries/change-display-name.js';
+import { getUserByIdQuery } from '../queries/get-user.js';
 
 export const createChangeDisplayName =
   (dependencies: Dependencies) =>

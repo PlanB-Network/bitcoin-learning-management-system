@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../dependencies.js';
-import { getGlossaryWordsQuery } from '../queries/index.js';
+import { getGlossaryWordsQuery } from '../queries/get-glossary-words.js';
 
 export const createGetGlossaryWords =
   (dependencies: Dependencies) => async (language?: string) => {

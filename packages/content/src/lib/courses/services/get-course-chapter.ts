@@ -7,7 +7,7 @@ import { firstRow } from '@blms/database';
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
 import { formatProfessor } from '../../professors/services/utils.js';
-import { getCourseChapterQuery } from '../queries/index.js';
+import { getCourseChapterQuery } from '../queries/get-course-chapter.js';
 
 import { createGetCourse } from './get-course.js';
 

@@ -4,7 +4,8 @@ import { TRPCError } from '@trpc/server';
 import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { changeRoleQuery, getUserByIdQuery } from '../queries/index.js';
+import { changeRoleQuery } from '../queries/change-role.js';
+import { getUserByIdQuery } from '../queries/get-user.js';
 
 export const createChangeRole =
   (dependencies: Dependencies) =>

@@ -1,11 +1,9 @@
 import type { CourseProgressExtended } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
-import {
-  getCompletedChaptersQuery,
-  getNextChaptersQuery,
-  getProgressQuery,
-} from '../queries/index.js';
+import { getCompletedChaptersQuery } from '../queries/get-completed-chapters.js';
+import { getNextChaptersQuery } from '../queries/get-next-chapters.js';
+import { getProgressQuery } from '../queries/get-progress.js';
 
 export const createGetProgress = (dependencies: Dependencies) => {
   return async ({

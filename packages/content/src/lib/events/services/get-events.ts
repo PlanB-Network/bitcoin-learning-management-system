@@ -1,6 +1,6 @@
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getRecentEventsQuery } from '../queries/index.js';
+import { getRecentEventsQuery } from '../queries/get-events.js';
 
 export const createGetRecentEvents =
   (dependencies: Dependencies) => async () => {

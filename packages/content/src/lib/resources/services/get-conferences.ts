@@ -1,6 +1,6 @@
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getConferencesQuery } from '../queries/index.js';
+import { getConferencesQuery } from '../queries/get-conferences.js';
 
 export const createGetConferences =
   (dependencies: Dependencies) => async () => {

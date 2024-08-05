@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
-import { getUserRolesQuery } from '../queries/index.js';
+import { getUserRolesQuery } from '../queries/get-user-roles.js';
 
 export const createGetUsersRoles =
   (dependencies: Dependencies) =>

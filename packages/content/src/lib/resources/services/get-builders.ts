@@ -1,6 +1,6 @@
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getBuildersQuery } from '../queries/index.js';
+import { getBuildersQuery } from '../queries/get-builders.js';
 
 export const createGetBuilders =
   (dependencies: Dependencies) => async (language?: string) => {

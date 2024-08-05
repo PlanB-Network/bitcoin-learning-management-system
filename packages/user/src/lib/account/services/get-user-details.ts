@@ -3,7 +3,7 @@ import { TRPCError } from '@trpc/server';
 import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { getUserDetailsQuery } from '../queries/index.js';
+import { getUserDetailsQuery } from '../queries/get-user-details.js';
 
 export const createGetUserDetails =
   (dependencies: Dependencies) =>

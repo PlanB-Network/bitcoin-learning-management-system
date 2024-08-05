@@ -2,12 +2,10 @@ import { firstRow } from '@blms/database';
 import type { FullProfessor } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
-import {
-  getProfessorCoursesQuery,
-  getProfessorQuery,
-  getProfessorTutorialsQuery,
-  getProfessorsQuery,
-} from '../queries/index.js';
+import { getProfessorCoursesQuery } from '../queries/get-professor-courses.js';
+import { getProfessorTutorialsQuery } from '../queries/get-professor-tutorials.js';
+import { getProfessorQuery } from '../queries/get-professor.js';
+import { getProfessorsQuery } from '../queries/get-professors.js';
 
 import { formatProfessor } from './utils.js';
 

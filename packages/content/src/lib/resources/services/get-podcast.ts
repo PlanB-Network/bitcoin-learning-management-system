@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getPodcastQuery } from '../queries/index.js';
+import { getPodcastQuery } from '../queries/get-podcast.js';
 
 export const createGetPodcast =
   (dependencies: Dependencies) => async (id: number, language?: string) => {

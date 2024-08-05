@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import type { Dependencies } from '../../dependencies.js';
-import { getTutorialsQuery } from '../queries/index.js';
+import { getTutorialsQuery } from '../queries/get-tutorials.js';
 
 export const createGetTutorials = (dependencies: Dependencies) => {
   return async (category?: string, language?: string) => {

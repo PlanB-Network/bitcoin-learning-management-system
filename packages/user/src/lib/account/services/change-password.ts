@@ -5,7 +5,8 @@ import { hash, verify as verifyHash } from 'argon2';
 import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { changePasswordQuery, getUserByIdQuery } from '../queries/index.js';
+import { changePasswordQuery } from '../queries/change-password.js';
+import { getUserByIdQuery } from '../queries/get-user.js';
 
 export const createChangePassword =
   (dependencies: Dependencies) =>
