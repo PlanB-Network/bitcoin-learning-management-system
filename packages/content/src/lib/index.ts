@@ -5,6 +5,11 @@ import {
   createUpdateBCertificateExams,
   groupByBCertificateExam,
 } from './bcertificate/import/index.js';
+import {
+  createDeleteBlogs,
+  createUpdateBlogs,
+  groupByBlog,
+} from './blogs/import/index.js';
 import { supportedContentTypes } from './const.js';
 import {
   createDeleteCourses,
@@ -49,6 +54,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateProfessors = createUpdateProfessors(dependencies);
   const updateEvents = createUpdateEvents(dependencies);
   const updateBCertificates = createUpdateBCertificateExams(dependencies);
+  const updateBlogs = createUpdateBlogs(dependencies);
 
   return async (files: ChangedFile[]): Promise<string[]> => {
     const filteredFiles = files.filter((file) =>
@@ -72,6 +78,12 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     console.log(`-- Sync procedure: Syncing ${tutorials.length} tutorials`);
     for (const tutorial of tutorials) {
       await updateTutorials(tutorial, errors);
+    }
+
+    const blogs = groupByBlog(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${blogs.length} blogs`);
+    for (const blog of blogs) {
+      await updateBlogs(blog, errors);
     }
 
     const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
@@ -114,6 +126,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteResources = createDeleteResources(dependencies);
   const deleteEvents = createDeleteEvents(dependencies);
   const deleteBCertificates = createDeleteBCertificateExams(dependencies);
+  const deleteBlogs = createDeleteBlogs(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
     const timeKey = '-- Sync procedure: Removing old entities';
@@ -127,6 +140,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteResources(sync_date, errors);
     await deleteEvents(sync_date, errors);
     await deleteBCertificates(sync_date, errors);
+    await deleteBlogs(sync_date, errors);
 
     console.timeEnd(timeKey);
   };

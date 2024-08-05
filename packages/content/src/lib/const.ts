@@ -8,6 +8,7 @@ export const supportedContentTypes = [
   'resources/conference', // Must be placed before 'resources'
   'resources',
   'tutorials',
+  'blogposts',
 ] as const;
 
 export type ContentType = (typeof supportedContentTypes)[number];

@@ -43,6 +43,7 @@ import { Route as ContentMiscBCertificateImport } from './routes/_content/_misc/
 import { Route as ContentMiscAboutImport } from './routes/_content/_misc/about';
 import { Route as ContentTutorialsCategoryIndexImport } from './routes/_content/tutorials/$category/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
+import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesWordWordIdImport } from './routes/_content/resources/word.$wordId';
 import { Route as ContentResourcesPodcastPodcastIdImport } from './routes/_content/resources/podcast.$podcastId';
@@ -53,6 +54,14 @@ import { Route as ContentCoursesCourseIdChapterIdImport } from './routes/_conten
 import { Route as ContentMiscValidateEmailTokenImport } from './routes/_content/_misc/validate-email.$token';
 import { Route as ContentMiscResetPasswordTokenImport } from './routes/_content/_misc/reset-password.$token';
 import { Route as ContentMiscProfessorProfessorNameProfessorIdImport } from './routes/_content/_misc/professor.$professorName-$professorId';
+import { Route as ContentMiscPublicCommunicationLegalInformationIndexImport } from './routes/_content/_misc/public-communication/legal-information/index';
+import { Route as ContentMiscPublicCommunicationBlogsAndNewsIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/index';
+import { Route as ContentMiscPublicCommunicationLegalInformationPrivacyInformationImport } from './routes/_content/_misc/public-communication/legal-information/privacy-information';
+import { Route as ContentMiscPublicCommunicationLegalInformationGeneralInformationImport } from './routes/_content/_misc/public-communication/legal-information/general-information';
+import { Route as ContentMiscPublicCommunicationLegalInformationCookiesInformationImport } from './routes/_content/_misc/public-communication/legal-information/cookies-information';
+import { Route as ContentMiscPublicCommunicationLegalInformationContactInformationImport } from './routes/_content/_misc/public-communication/legal-information/contact-information';
+import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/index';
+import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/$name';
 
 // Create Virtual Routes
 
@@ -226,6 +235,12 @@ const ContentCoursesCourseIdIndexRoute =
     getParentRoute: () => ContentCoursesCourseIdRoute,
   } as any);
 
+const ContentMiscPublicCommunicationIndexRoute =
+  ContentMiscPublicCommunicationIndexImport.update({
+    path: '/public-communication/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const ContentTutorialsCategoryNameRoute =
   ContentTutorialsCategoryNameImport.update({
     path: '/$name',
@@ -285,6 +300,62 @@ const ContentMiscResetPasswordTokenRoute =
 const ContentMiscProfessorProfessorNameProfessorIdRoute =
   ContentMiscProfessorProfessorNameProfessorIdImport.update({
     path: '/professor/$professorName-$professorId',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentMiscPublicCommunicationLegalInformationIndexRoute =
+  ContentMiscPublicCommunicationLegalInformationIndexImport.update({
+    path: '/public-communication/legal-information/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentMiscPublicCommunicationBlogsAndNewsIndexRoute =
+  ContentMiscPublicCommunicationBlogsAndNewsIndexImport.update({
+    path: '/public-communication/blogs-and-news/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentMiscPublicCommunicationLegalInformationPrivacyInformationRoute =
+  ContentMiscPublicCommunicationLegalInformationPrivacyInformationImport.update(
+    {
+      path: '/public-communication/legal-information/privacy-information',
+      getParentRoute: () => rootRoute,
+    } as any,
+  );
+
+const ContentMiscPublicCommunicationLegalInformationGeneralInformationRoute =
+  ContentMiscPublicCommunicationLegalInformationGeneralInformationImport.update(
+    {
+      path: '/public-communication/legal-information/general-information',
+      getParentRoute: () => rootRoute,
+    } as any,
+  );
+
+const ContentMiscPublicCommunicationLegalInformationCookiesInformationRoute =
+  ContentMiscPublicCommunicationLegalInformationCookiesInformationImport.update(
+    {
+      path: '/public-communication/legal-information/cookies-information',
+      getParentRoute: () => rootRoute,
+    } as any,
+  );
+
+const ContentMiscPublicCommunicationLegalInformationContactInformationRoute =
+  ContentMiscPublicCommunicationLegalInformationContactInformationImport.update(
+    {
+      path: '/public-communication/legal-information/contact-information',
+      getParentRoute: () => rootRoute,
+    } as any,
+  );
+
+const ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute =
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport.update({
+    path: '/public-communication/blogs-and-news/$category/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute =
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport.update({
+    path: '/public-communication/blogs-and-news/$category/$name',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -565,6 +636,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryNameImport;
       parentRoute: typeof ContentTutorialsCategoryImport;
     };
+    '/_content/_misc/public-communication/': {
+      id: '/_content/_misc/public-communication/';
+      path: '/public-communication';
+      fullPath: '/public-communication';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_content/courses/$courseId/': {
       id: '/_content/courses/$courseId/';
       path: '/';
@@ -578,6 +656,62 @@ declare module '@tanstack/react-router' {
       fullPath: '/tutorials/$category/';
       preLoaderRoute: typeof ContentTutorialsCategoryIndexImport;
       parentRoute: typeof ContentTutorialsCategoryImport;
+    };
+    '/_content/_misc/public-communication/legal-information/contact-information': {
+      id: '/_content/_misc/public-communication/legal-information/contact-information';
+      path: '/public-communication/legal-information/contact-information';
+      fullPath: '/public-communication/legal-information/contact-information';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalInformationContactInformationImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/legal-information/cookies-information': {
+      id: '/_content/_misc/public-communication/legal-information/cookies-information';
+      path: '/public-communication/legal-information/cookies-information';
+      fullPath: '/public-communication/legal-information/cookies-information';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalInformationCookiesInformationImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/legal-information/general-information': {
+      id: '/_content/_misc/public-communication/legal-information/general-information';
+      path: '/public-communication/legal-information/general-information';
+      fullPath: '/public-communication/legal-information/general-information';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalInformationGeneralInformationImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/legal-information/privacy-information': {
+      id: '/_content/_misc/public-communication/legal-information/privacy-information';
+      path: '/public-communication/legal-information/privacy-information';
+      fullPath: '/public-communication/legal-information/privacy-information';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalInformationPrivacyInformationImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/blogs-and-news/': {
+      id: '/_content/_misc/public-communication/blogs-and-news/';
+      path: '/public-communication/blogs-and-news';
+      fullPath: '/public-communication/blogs-and-news';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/legal-information/': {
+      id: '/_content/_misc/public-communication/legal-information/';
+      path: '/public-communication/legal-information';
+      fullPath: '/public-communication/legal-information';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalInformationIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/blogs-and-news/$category/$name': {
+      id: '/_content/_misc/public-communication/blogs-and-news/$category/$name';
+      path: '/public-communication/blogs-and-news/$category/$name';
+      fullPath: '/public-communication/blogs-and-news/$category/$name';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/_misc/public-communication/blogs-and-news/$category/': {
+      id: '/_content/_misc/public-communication/blogs-and-news/$category/';
+      path: '/public-communication/blogs-and-news/$category';
+      fullPath: '/public-communication/blogs-and-news/$category';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport;
+      parentRoute: typeof rootRoute;
     };
   }
 }
@@ -630,6 +764,15 @@ export const routeTree = rootRoute.addChildren({
   ContentResourcesConferenceConferenceIdRoute,
   ContentResourcesPodcastPodcastIdRoute,
   ContentResourcesWordWordIdRoute,
+  ContentMiscPublicCommunicationIndexRoute,
+  ContentMiscPublicCommunicationLegalInformationContactInformationRoute,
+  ContentMiscPublicCommunicationLegalInformationCookiesInformationRoute,
+  ContentMiscPublicCommunicationLegalInformationGeneralInformationRoute,
+  ContentMiscPublicCommunicationLegalInformationPrivacyInformationRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
+  ContentMiscPublicCommunicationLegalInformationIndexRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
 });
 
 /* prettier-ignore-end */
@@ -669,7 +812,16 @@ export const routeTree = rootRoute.addChildren({
         "/_content/resources/builder/$builderId",
         "/_content/resources/conference/$conferenceId",
         "/_content/resources/podcast/$podcastId",
-        "/_content/resources/word/$wordId"
+        "/_content/resources/word/$wordId",
+        "/_content/_misc/public-communication/",
+        "/_content/_misc/public-communication/legal-information/contact-information",
+        "/_content/_misc/public-communication/legal-information/cookies-information",
+        "/_content/_misc/public-communication/legal-information/general-information",
+        "/_content/_misc/public-communication/legal-information/privacy-information",
+        "/_content/_misc/public-communication/blogs-and-news/",
+        "/_content/_misc/public-communication/legal-information/",
+        "/_content/_misc/public-communication/blogs-and-news/$category/$name",
+        "/_content/_misc/public-communication/blogs-and-news/$category/"
       ]
     },
     "/": {
@@ -817,6 +969,9 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_content/tutorials/$category/$name.tsx",
       "parent": "/_content/tutorials/$category"
     },
+    "/_content/_misc/public-communication/": {
+      "filePath": "_content/_misc/public-communication/index.tsx"
+    },
     "/_content/courses/$courseId/": {
       "filePath": "_content/courses/$courseId/index.tsx",
       "parent": "/_content/courses/$courseId"
@@ -824,6 +979,30 @@ export const routeTree = rootRoute.addChildren({
     "/_content/tutorials/$category/": {
       "filePath": "_content/tutorials/$category/index.tsx",
       "parent": "/_content/tutorials/$category"
+    },
+    "/_content/_misc/public-communication/legal-information/contact-information": {
+      "filePath": "_content/_misc/public-communication/legal-information/contact-information.tsx"
+    },
+    "/_content/_misc/public-communication/legal-information/cookies-information": {
+      "filePath": "_content/_misc/public-communication/legal-information/cookies-information.tsx"
+    },
+    "/_content/_misc/public-communication/legal-information/general-information": {
+      "filePath": "_content/_misc/public-communication/legal-information/general-information.tsx"
+    },
+    "/_content/_misc/public-communication/legal-information/privacy-information": {
+      "filePath": "_content/_misc/public-communication/legal-information/privacy-information.tsx"
+    },
+    "/_content/_misc/public-communication/blogs-and-news/": {
+      "filePath": "_content/_misc/public-communication/blogs-and-news/index.tsx"
+    },
+    "/_content/_misc/public-communication/legal-information/": {
+      "filePath": "_content/_misc/public-communication/legal-information/index.tsx"
+    },
+    "/_content/_misc/public-communication/blogs-and-news/$category/$name": {
+      "filePath": "_content/_misc/public-communication/blogs-and-news/$category/$name.tsx"
+    },
+    "/_content/_misc/public-communication/blogs-and-news/$category/": {
+      "filePath": "_content/_misc/public-communication/blogs-and-news/$category/index.tsx"
     }
   }
 }

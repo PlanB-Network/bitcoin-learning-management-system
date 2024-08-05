@@ -62,3 +62,26 @@ export function formatTime(date: Date, timezone?: string): string {
 
   return timeFormatter.format(date);
 }
+
+export function formatDateSimple(date: Date): string {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const day = date.getDate();
+  const month = date.toLocaleString('default', { month: 'long' });
+  const year = date.getFullYear();
+
+  return `${month} ${day}${getOrdinalSuffix(day)} ${year}`;
+}
+
+export function formatMonthYear(date: Date): string {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.getFullYear();
+
+  return `${month} ${year}`;
+}

@@ -7,6 +7,6 @@ export * from './lib/quizzes/questions/index.js';
 export * from './lib/professors/index.js';
 export * from './lib/resources/index.js';
 export * from './lib/tutorials/index.js';
-
+export * from './lib/blogs/index.js';
 export * from './lib/index.js';
 export { computeAssetCdnUrl } from './lib/utils.js';

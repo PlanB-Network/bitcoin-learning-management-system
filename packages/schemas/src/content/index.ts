@@ -13,3 +13,4 @@ export * from './professors2.js';
 export * from './quiz.js';
 export * from './resource.js';
 export * from './tutorial.js';
+export * from './blogs.js';

@@ -44,6 +44,69 @@ export const usersAccounts = users.table('accounts', {
     .notNull(),
 });
 
+// BLOGS
+
+export const contentBlogs = content.table(
+  'blogs',
+  {
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+    path: varchar('path', { length: 255 }).unique().notNull(),
+
+    name: varchar('name', { length: 255 }).notNull(),
+    category: varchar('category', { length: 255 }).notNull(),
+
+    author: varchar('author', { length: 255 }),
+
+    lastUpdated: timestamp('last_updated', {
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    lastCommit: varchar('last_commit', { length: 40 }).notNull(),
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => ({
+    unqNameCategory: unique().on(table.name, table.category),
+  }),
+);
+
+export const contentBlogsLocalized = content.table(
+  'blogs_localized',
+  {
+    blogId: integer('blog_id')
+      .notNull()
+      .references(() => contentBlogs.id, { onDelete: 'cascade' }),
+    language: varchar('language', { length: 10 }).notNull(),
+    title: text('title').notNull(),
+    description: text('description'),
+    rawContent: text('raw_content').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.blogId, table.language],
+    }),
+  }),
+);
+
+export const contentBlogTags = content.table(
+  'blog_tags',
+  {
+    blogId: integer('blog_id')
+      .notNull()
+      .references(() => contentBlogs.id, { onDelete: 'cascade' }),
+    tagId: integer('tag_id')
+      .notNull()
+      .references(() => contentTags.id, { onDelete: 'cascade' }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.blogId, table.tagId],
+    }),
+  }),
+);
+
 // LUD4 PUBLIC KEYS (LNURL)
 
 export const usersLud4PublicKeys = users.table('lud4_public_keys', {
