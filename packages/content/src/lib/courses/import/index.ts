@@ -621,34 +621,27 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteCourses = (dependencies: Dependencies) => {
+export const createDeleteCourses = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
-        sql`DELETE FROM content.course_chapters_localized WHERE last_sync < ${sync_date} 
-      `,
+        sql`DELETE FROM content.course_chapters_localized WHERE last_sync < ${sync_date}`,
       );
 
       await postgres.exec(
-        sql`DELETE FROM content.course_chapters WHERE last_sync < ${sync_date} 
-      `,
+        sql`DELETE FROM content.course_chapters WHERE last_sync < ${sync_date}`,
       );
 
       await postgres.exec(
-        sql`DELETE FROM content.course_parts_localized WHERE last_sync < ${sync_date} 
-      `,
+        sql`DELETE FROM content.course_parts_localized WHERE last_sync < ${sync_date}`,
       );
 
       await postgres.exec(
-        sql`DELETE FROM content.course_parts WHERE last_sync < ${sync_date} 
-      `,
+        sql`DELETE FROM content.course_parts WHERE last_sync < ${sync_date}`,
       );
 
       await postgres.exec(
-        sql`DELETE FROM content.courses WHERE last_sync < ${sync_date} 
-      `,
+        sql`DELETE FROM content.courses WHERE last_sync < ${sync_date}`,
       );
     } catch (error) {
       errors.push(`Error deleting courses : ${error}`);

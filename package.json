@@ -48,10 +48,5 @@
   "lint-staged": {
     "**/*": "prettier --loglevel warn --write --ignore-unknown"
   },
-  "pnpm": {
-    "patchedDependencies": {
-      "postgres@3.4.3": "patches/postgres@3.4.3.patch"
-    }
-  },
   "packageManager": "pnpm@9.6.0"
 }

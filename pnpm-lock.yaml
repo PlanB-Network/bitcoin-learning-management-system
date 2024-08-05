@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  postgres@3.4.3:
-    hash: m376l4oqubthsaahxofxshioba
-    path: patches/postgres@3.4.3.patch
-
 importers:
 
   .:
@@ -381,10 +376,10 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: ^0.32.1
-        version: 0.32.1(@types/react@18.3.3)(knex@3.1.0(pg@8.12.0))(pg@8.12.0)(postgres@3.4.3(patch_hash=m376l4oqubthsaahxofxshioba))(react@18.3.1)
+        version: 0.32.1(@types/react@18.3.3)(knex@3.1.0(pg@8.12.0))(pg@8.12.0)(postgres@3.4.4)(react@18.3.1)
       postgres:
-        specifier: 3.4.3
-        version: 3.4.3(patch_hash=m376l4oqubthsaahxofxshioba)
+        specifier: 3.4.4
+        version: 3.4.4
     devDependencies:
       '@blms/eslint-config':
         specifier: workspace:*
@@ -6596,10 +6591,6 @@ packages:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
 
-  postgres@3.4.3:
-    resolution: {integrity: sha512-iHJn4+M9vbTdHSdDzNkC0crHq+1CUdFhx+YqCE+SqWxPjm+Zu63jq7yZborOBF64c8pc58O5uMudyL1FQcHacA==}
-    engines: {node: '>=12'}
-
   postgres@3.4.4:
     resolution: {integrity: sha512-IbyN+9KslkqcXa8AO9fxpk97PA4pzewvpi2B3Dwy9u4zpV32QicaEdgmF3eSQUzdRk7ttDHQejNgAEr4XoeH4A==}
     engines: {node: '>=12'}
@@ -12091,14 +12082,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.32.1(@types/react@18.3.3)(knex@3.1.0(pg@8.12.0))(pg@8.12.0)(postgres@3.4.3(patch_hash=m376l4oqubthsaahxofxshioba))(react@18.3.1):
-    optionalDependencies:
-      '@types/react': 18.3.3
-      knex: 3.1.0(pg@8.12.0)
-      pg: 8.12.0
-      postgres: 3.4.3(patch_hash=m376l4oqubthsaahxofxshioba)
-      react: 18.3.1
-
   drizzle-orm@0.32.1(@types/react@18.3.3)(knex@3.1.0(pg@8.12.0))(pg@8.12.0)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.3
@@ -14771,10 +14754,7 @@ snapshots:
     dependencies:
       xtend: 4.0.2
 
-  postgres@3.4.3(patch_hash=m376l4oqubthsaahxofxshioba): {}
-
-  postgres@3.4.4:
-    optional: true
+  postgres@3.4.4: {}
 
   prelude-ls@1.2.1: {}
 
