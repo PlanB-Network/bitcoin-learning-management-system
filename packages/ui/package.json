@@ -7,10 +7,12 @@
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clear": "link:rm -rf ./dist && rm -f *.tsbuildinfo",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.424.0",
     "react": "~18.3.1",
     "tailwind-merge": "^2.4.0"
   },

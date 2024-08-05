@@ -7,3 +7,17 @@ export const changeRoleQuery = (uid: string, role: string) => {
     WHERE uid = ${uid};
   `;
 };
+
+export const changeRoleToProfessorQuery = (
+  uid: string,
+  role: string,
+  professorId: string,
+) => {
+  return sql`
+    UPDATE users.accounts
+    SET 
+      role = ${role},
+      professor_id = ${professorId}
+    WHERE uid = ${uid};
+  `;
+};
