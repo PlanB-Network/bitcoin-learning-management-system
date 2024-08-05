@@ -9,11 +9,11 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: ^20.14.14
-        version: 20.14.14
+        specifier: ^22.1.0
+        version: 22.1.0
       '@vitejs/plugin-react':
         specifier: ^4.3.1
-        version: 4.3.1(vite@5.3.5(@types/node@20.14.14)(sass@1.77.8))
+        version: 4.3.1(vite@5.3.5(@types/node@22.1.0)(sass@1.77.8))
       dotenv-cli:
         specifier: ^7.4.2
         version: 7.4.2
@@ -43,10 +43,10 @@ importers:
         version: 5.4.5
       vite:
         specifier: ~5.3.5
-        version: 5.3.5(@types/node@20.14.14)(sass@1.77.8)
+        version: 5.3.5(@types/node@22.1.0)(sass@1.77.8)
       vite-tsconfig-paths:
         specifier: ^4.3.2
-        version: 4.3.2(typescript@5.4.5)(vite@5.3.5(@types/node@20.14.14)(sass@1.77.8))
+        version: 4.3.2(typescript@5.4.5)(vite@5.3.5(@types/node@22.1.0)(sass@1.77.8))
 
   apps/api:
     dependencies:
@@ -229,8 +229,8 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react@18.3.1)
       react-i18next:
-        specifier: 14.1.2
-        version: 14.1.2(i18next@23.12.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 15.0.0
+        version: 15.0.0(i18next@23.12.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-icons:
         specifier: 5.2.1
         version: 5.2.1(react@18.3.1)
@@ -308,8 +308,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.40)
       ol:
-        specifier: ^9.2.4
-        version: 9.2.4
+        specifier: ^10.0.0
+        version: 10.0.0
       postcss:
         specifier: ^8.4.40
         version: 8.4.40
@@ -363,8 +363,8 @@ importers:
         specifier: ^4.17.7
         version: 4.17.7
       '@types/uuid':
-        specifier: ^9.0.8
-        version: 9.0.8
+        specifier: ^10.0.0
+        version: 10.0.0
 
   packages/database:
     dependencies:
@@ -681,8 +681,8 @@ importers:
         specifier: ^0.13.4
         version: 0.13.4
       '@types/uuid':
-        specifier: ^9.0.8
-        version: 9.0.8
+        specifier: ^10.0.0
+        version: 10.0.0
 
 packages:
 
@@ -3210,9 +3210,6 @@ packages:
   '@types/node@18.19.43':
     resolution: {integrity: sha512-Mw/YlgXnyJdEwLoFv2dpuJaDFriX+Pc+0qOBJ57jC1H6cDxIj2xc5yUrdtArDVG0m+KV6622a4p2tenEqB3C/g==}
 
-  '@types/node@20.14.14':
-    resolution: {integrity: sha512-d64f00982fS9YoOgJkAMolK7MN8Iq3TDdVjchbYHdEmjth/DHowx82GnoA+tVUAN+7vxfYUgAzi+JXbKNd2SDQ==}
-
   '@types/node@22.1.0':
     resolution: {integrity: sha512-AOmuRF0R2/5j1knA3c6G3HOk523Ga+l+ZXltX8SF1+5oqcXijjfTd8fY3XRZqSihEu9XhtQnKYLmkFaoxgsJHw==}
 
@@ -3269,6 +3266,9 @@ packages:
 
   '@types/unist@3.0.2':
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
+
+  '@types/uuid@10.0.0':
+    resolution: {integrity: sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==}
 
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
@@ -4491,8 +4491,8 @@ packages:
       drizzle-orm: '>=0.23.13'
       zod: '*'
 
-  earcut@2.2.4:
-    resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
+  earcut@3.0.0:
+    resolution: {integrity: sha512-41Fs7Q/PLq1SDbqjsgcY7GA42T0jvaCNGXgGtsNdvg+Yv8eIu06bxv4/PoREkZ9nMDNwnUSG9OFB9+yv8eKhDg==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -6268,8 +6268,8 @@ packages:
   ohash@1.1.3:
     resolution: {integrity: sha512-zuHHiGTYTA1sYJ/wZN+t5HKZaH23i4yI1HMwbuXm24Nid7Dv0KcuRlKoNKS9UNfAVSBlnGLcuQrnOKWOZoEGaw==}
 
-  ol@9.2.4:
-    resolution: {integrity: sha512-bsbu4ObaAlbELMIZWnYEvX4Z9jO+OyCBshtODhDKmqYTPEfnKOX3RieCr97tpJkqWTZvyV4tS9UQDvHoCdxS+A==}
+  ol@10.0.0:
+    resolution: {integrity: sha512-Gzfh61cQAxseCWL97VpGwbF91R2D69y3ABUewTl2H1Hjy6ipCtnoKshgO+n3WBrjsbsyS8QnkfmiJZNQGQNeOA==}
 
   on-finished@2.4.1:
     resolution: {integrity: sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==}
@@ -6411,8 +6411,8 @@ packages:
   pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
 
-  pbf@3.2.1:
-    resolution: {integrity: sha512-ClrV7pNOn7rtmoQVF4TS1vyU0WhYRnP92fzbfF75jAIwpnzdJXf8iTd4CMEqO4yUenH6NDqLiwjqlh6QgZzgLQ==}
+  pbf@4.0.1:
+    resolution: {integrity: sha512-SuLdBvS42z33m8ejRbInMapQe8n0D3vN/Xd5fmWM3tufNgRQFBpaW2YVJxQZV4iPNqb0vEFvssMEo5w9c6BTIA==}
     hasBin: true
 
   pdfkit@0.15.0:
@@ -6715,8 +6715,8 @@ packages:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
 
-  rbush@3.0.1:
-    resolution: {integrity: sha512-XRaVO0YecOpEuIvbhbpTrZgoiI6xBlz6hnlr6EHhd+0x9ase6EmeN+hdwwUaJvLcsFFQ8iWVF1GAK1yB0BWi0w==}
+  rbush@4.0.0:
+    resolution: {integrity: sha512-F5xw+166FYDZI6jEcz+sWEHL5/J+du3kQWkwqWrPKb6iVoLPZh+2KhTS4OoYqrw1v/RO1xQe6WsLwBvrUAlvXw==}
 
   react-big-calendar@1.13.1:
     resolution: {integrity: sha512-6qg2ivBPnGPE+iJTJ6nNG/Kol0XElNzywWkwjjN0GtXjooHcS+9/UnpiCDuKzbele3iB6fWeobkSHWhI6xxKYw==}
@@ -6772,8 +6772,8 @@ packages:
     peerDependencies:
       react: ^16.6.0 || ^17.0.0 || ^18.0.0
 
-  react-i18next@14.1.2:
-    resolution: {integrity: sha512-FSIcJy6oauJbGEXfhUgVeLzvWBhIBIS+/9c6Lj4niwKZyGaGb4V4vUbATXSlsHJDXXB+ociNxqFNiFuV1gmoqg==}
+  react-i18next@15.0.0:
+    resolution: {integrity: sha512-2O3IgF4zivg57Q6p6i+ChDgJ371IDcEWbuWC6gvoh5NbkDMs0Q+O7RPr4v61+Se32E0V+LmtwePAeqWZW0bi6g==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
@@ -10728,10 +10728,6 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.14.14':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@22.1.0':
     dependencies:
       undici-types: 6.13.0
@@ -10795,6 +10791,8 @@ snapshots:
   '@types/unist@2.0.10': {}
 
   '@types/unist@3.0.2': {}
+
+  '@types/uuid@10.0.0': {}
 
   '@types/uuid@9.0.8': {}
 
@@ -11009,17 +11007,6 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
-
-  '@vitejs/plugin-react@4.3.1(vite@5.3.5(@types/node@20.14.14)(sass@1.77.8))':
-    dependencies:
-      '@babel/core': 7.25.2
-      '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.25.2)
-      '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.14.2
-      vite: 5.3.5(@types/node@20.14.14)(sass@1.77.8)
-    transitivePeerDependencies:
-      - supports-color
 
   '@vitejs/plugin-react@4.3.1(vite@5.3.5(@types/node@22.1.0)(sass@1.77.8))':
     dependencies:
@@ -12052,7 +12039,7 @@ snapshots:
       drizzle-orm: 0.32.1(@types/react@18.3.3)(knex@3.1.0(pg@8.12.0))(pg@8.12.0)(postgres@3.4.4)(react@18.3.1)
       zod: 3.23.8
 
-  earcut@2.2.4: {}
+  earcut@3.0.0: {}
 
   eastasianwidth@0.2.0: {}
 
@@ -14412,14 +14399,14 @@ snapshots:
 
   ohash@1.1.3: {}
 
-  ol@9.2.4:
+  ol@10.0.0:
     dependencies:
       color-rgba: 3.0.0
       color-space: 2.0.1
-      earcut: 2.2.4
+      earcut: 3.0.0
       geotiff: 2.1.3
-      pbf: 3.2.1
-      rbush: 3.0.1
+      pbf: 4.0.1
+      rbush: 4.0.0
 
   on-finished@2.4.1:
     dependencies:
@@ -14565,9 +14552,8 @@ snapshots:
 
   pathval@1.1.1: {}
 
-  pbf@3.2.1:
+  pbf@4.0.1:
     dependencies:
-      ieee754: 1.2.1
       resolve-protobuf-schema: 2.1.0
 
   pdfkit@0.15.0:
@@ -14788,7 +14774,7 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  rbush@3.0.1:
+  rbush@4.0.0:
     dependencies:
       quickselect: 2.0.0
 
@@ -14872,7 +14858,7 @@ snapshots:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
 
-  react-i18next@14.1.2(i18next@23.12.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-i18next@15.0.0(i18next@23.12.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.25.0
       html-parse-stringify: 3.0.1
@@ -16124,26 +16110,16 @@ snapshots:
       - supports-color
       - typescript
 
-  vite-tsconfig-paths@4.3.2(typescript@5.4.5)(vite@5.3.5(@types/node@20.14.14)(sass@1.77.8)):
+  vite-tsconfig-paths@4.3.2(typescript@5.4.5)(vite@5.3.5(@types/node@22.1.0)(sass@1.77.8)):
     dependencies:
       debug: 4.3.6
       globrex: 0.1.2
       tsconfck: 3.1.1(typescript@5.4.5)
     optionalDependencies:
-      vite: 5.3.5(@types/node@20.14.14)(sass@1.77.8)
+      vite: 5.3.5(@types/node@22.1.0)(sass@1.77.8)
     transitivePeerDependencies:
       - supports-color
       - typescript
-
-  vite@5.3.5(@types/node@20.14.14)(sass@1.77.8):
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.4.40
-      rollup: 4.20.0
-    optionalDependencies:
-      '@types/node': 20.14.14
-      fsevents: 2.3.3
-      sass: 1.77.8
 
   vite@5.3.5(@types/node@22.1.0)(sass@1.77.8):
     dependencies:

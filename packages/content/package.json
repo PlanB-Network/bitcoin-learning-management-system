@@ -33,6 +33,6 @@
     "@blms/types": "workspace:*",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.17.7",
-    "@types/uuid": "^9.0.8"
+    "@types/uuid": "^10.0.0"
   }
 }
