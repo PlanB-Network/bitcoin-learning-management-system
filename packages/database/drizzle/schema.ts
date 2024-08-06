@@ -36,6 +36,9 @@ export const usersAccounts = users.table('accounts', {
   role: userRoleEnum('role').default('student').notNull(),
   passwordHash: varchar('password_hash', { length: 255 }),
   contributorId: varchar('contributor_id', { length: 20 }).unique().notNull(),
+  professorId: integer('professor_id')
+    .unique()
+    .references(() => contentProfessors.id),
   createdAt: timestamp('created_at', { withTimezone: true })
     .defaultNow()
     .notNull(),

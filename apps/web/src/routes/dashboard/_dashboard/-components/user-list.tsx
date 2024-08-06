@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   AlertDialog,
@@ -10,6 +11,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
@@ -22,7 +28,11 @@ export const UserList = ({
   userRole: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
 }) => {
   const [search, setSearch] = useState('');
+  const [selectedProfessor, setSelectedProfessor] = useState<number | null>(
+    null,
+  );
   const { session } = useContext(AppContext);
+  const { i18n } = useTranslation();
 
   const { data: users } = trpc.user.getUsersRoles.useQuery(
     {
@@ -32,8 +42,19 @@ export const UserList = ({
     { enabled: search.length > 2 },
   );
 
+  const { data: professors } = trpc.content.getProfessors.useQuery({
+    language: i18n.language,
+  });
+
   const { mutate: mutateChangeRoleToAdmin, isPending } =
     trpc.user.changeRoleToAdmin.useMutation({
+      onSuccess: () => {
+        setSearch('');
+      },
+    });
+
+  const { mutate: mutateChangeRoleToProfessor } =
+    trpc.user.changeRoleToProfessor.useMutation({
       onSuccess: () => {
         setSearch('');
       },
@@ -71,6 +92,14 @@ export const UserList = ({
                     <th scope="col" className="desktop-h7 pb-5 w-40">
                       Display Name
                     </th>
+                    {userRole === 'professor' && (
+                      <th scope="col" className="desktop-h7 pb-5 w-60">
+                        Professor name
+                      </th>
+                    )}
+                    <th scope="col" className="desktop-h7 pb-5 w-60">
+                      Actions
+                    </th>
                     <th scope="col" className="desktop-h7 pb-5">
                       Actions
                     </th>
@@ -82,9 +111,12 @@ export const UserList = ({
                       <tr key={user.uid} className="">
                         <td className="">{user.username}</td>
                         <td className="">{user.displayName}</td>
-                        {session?.user.role === 'superadmin' &&
+                        {userRole === 'professor' && (
+                          <td className="">{user.professorName}</td>
+                        )}
+                        {session?.user.role === 'admin' &&
                           userRole === 'student' && (
-                            <td className="flex flex-row gap-2">
+                            <td className="">
                               <AlertDialog>
                                 <AlertDialogTrigger>
                                   <Button size="s">Make admin</Button>
@@ -104,6 +136,66 @@ export const UserList = ({
                                         mutateChangeRoleToAdmin({
                                           uid: user.uid,
                                         });
+                                      }}
+                                    >
+                                      Continue
+                                    </AlertDialogAction>
+                                  </AlertDialogFooter>
+                                </AlertDialogContent>
+                              </AlertDialog>
+                            </td>
+                          )}
+
+                        {session?.user.role === 'admin' &&
+                          userRole === 'student' && (
+                            <td className="flex flex-col gap-2">
+                              <Select
+                                value={String(selectedProfessor)}
+                                onValueChange={(e) => {
+                                  setSelectedProfessor(+e);
+                                }}
+                              >
+                                <SelectTrigger className="w-[180px]">
+                                  <SelectValue placeholder="Select a professor" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {professors?.map((p) => {
+                                    return (
+                                      <SelectItem
+                                        value={p.id.toString()}
+                                        key={p.id}
+                                      >
+                                        {p.name}
+                                      </SelectItem>
+                                    );
+                                  })}
+                                </SelectContent>
+                              </Select>
+
+                              <AlertDialog>
+                                <AlertDialogTrigger>
+                                  <Button size="s" className="-z-10">
+                                    Make professor
+                                  </Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogHeader>
+                                    <AlertDialogTitle>
+                                      Are you absolutely sure?
+                                    </AlertDialogTitle>
+                                  </AlertDialogHeader>
+                                  <AlertDialogFooter>
+                                    <AlertDialogCancel>
+                                      Cancel
+                                    </AlertDialogCancel>
+                                    <AlertDialogAction
+                                      onClick={() => {
+                                        if (selectedProfessor) {
+                                          mutateChangeRoleToProfessor({
+                                            uid: user.uid,
+                                            professorId: selectedProfessor,
+                                          });
+                                        }
                                       }}
                                     >
                                       Continue

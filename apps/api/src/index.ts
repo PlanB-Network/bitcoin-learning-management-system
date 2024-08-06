@@ -22,6 +22,7 @@ declare module 'express-session' {
   interface SessionData {
     uid?: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+    professorId?: number | null;
   }
 }
 

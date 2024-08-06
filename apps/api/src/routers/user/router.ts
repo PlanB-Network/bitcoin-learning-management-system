@@ -7,6 +7,7 @@ import {
   createChangeEmailConfirmation,
   createChangePassword,
   createChangeRole,
+  createChangeRoleToProfessor,
   createEmailValidationToken,
   createGetTokenInfo,
   createGetUserDetails,
@@ -39,7 +40,11 @@ export const userRouter = createTRPCRouter({
     const { req } = ctx;
     return req.session.uid
       ? {
-          user: { uid: req.session.uid, role: req.session.role },
+          user: {
+            uid: req.session.uid,
+            role: req.session.role,
+            professorId: req.session.professorId,
+          },
         }
       : null;
   }),
@@ -76,6 +81,21 @@ export const userRouter = createTRPCRouter({
       createChangeRole(ctx.dependencies)({
         uid: input.uid,
         role: 'admin',
+      }),
+    ),
+
+  changeRoleToProfessor: adminProcedure
+    .input(
+      z.object({
+        uid: z.string(),
+        professorId: z.number(),
+      }),
+    )
+    .mutation(({ ctx, input }) =>
+      createChangeRoleToProfessor(ctx.dependencies)({
+        uid: input.uid,
+        role: 'professor',
+        professorId: input.professorId,
       }),
     ),
 

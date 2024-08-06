@@ -43,6 +43,13 @@
       "when": 1722847098796,
       "tag": "0005_black_wallow",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1722868154872,
+      "tag": "0006_fresh_garia",
+      "breakpoints": true
     }
   ]
 }

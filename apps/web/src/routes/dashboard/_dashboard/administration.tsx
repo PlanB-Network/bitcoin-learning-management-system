@@ -43,6 +43,12 @@ function DashboardAdministration() {
             {t('words.students')}
           </TabsTrigger>
           <TabsTrigger
+            value="professors"
+            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
+          >
+            {t('words.professors')}
+          </TabsTrigger>
+          <TabsTrigger
             value="admins"
             className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
           >
@@ -51,6 +57,9 @@ function DashboardAdministration() {
         </TabsList>
         <TabsContent value="students">
           <UserList userRole="student" />
+        </TabsContent>
+        <TabsContent value="professors">
+          <UserList userRole="professor" />
         </TabsContent>
         <TabsContent value="admins">
           <UserList userRole="admin" />

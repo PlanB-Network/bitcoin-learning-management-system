@@ -14,6 +14,7 @@ interface Session {
   user: {
     uid: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+    professorId: number | null;
   };
 }
 
@@ -71,11 +72,17 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     trpcClient.user.getSession
       .query()
       .then((data) => {
-        if (data && data.user && data.user.role) {
+        if (
+          data &&
+          data.user &&
+          data.user.role &&
+          data.user.professorId !== undefined
+        ) {
           const validSession: Session = {
             user: {
               uid: data.user.uid,
               role: data.user.role,
+              professorId: data.user.professorId,
             },
           };
           return setSession(validSession);

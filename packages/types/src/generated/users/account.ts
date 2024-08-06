@@ -10,6 +10,7 @@ export interface UserAccount {
   role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
   passwordHash: string | null;
   contributorId: string;
+  professorId: number | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,6 +31,8 @@ export interface UserRoles {
   email: string | null;
   contributorId: string;
   role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+  professorId: number | null;
+  professorName?: string | undefined;
 }
 
 export interface UsersLud4PublicKey {
