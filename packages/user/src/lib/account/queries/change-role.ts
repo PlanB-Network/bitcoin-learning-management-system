@@ -11,7 +11,7 @@ export const changeRoleQuery = (uid: string, role: string) => {
 export const changeRoleToProfessorQuery = (
   uid: string,
   role: string,
-  professorId: string,
+  professorId: number,
 ) => {
   return sql`
     UPDATE users.accounts

@@ -28,7 +28,9 @@ export const UserList = ({
   userRole: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
 }) => {
   const [search, setSearch] = useState('');
-  const [selectedProfessor, setSelectedProfessor] = useState('');
+  const [selectedProfessor, setSelectedProfessor] = useState<number | null>(
+    null,
+  );
   const { session } = useContext(AppContext);
   const { i18n } = useTranslation();
 
@@ -148,9 +150,9 @@ export const UserList = ({
                           userRole === 'student' && (
                             <td className="flex flex-col gap-2">
                               <Select
-                                value={selectedProfessor}
+                                value={String(selectedProfessor)}
                                 onValueChange={(e) => {
-                                  setSelectedProfessor(e);
+                                  setSelectedProfessor(+e);
                                 }}
                               >
                                 <SelectTrigger className="w-[180px]">
@@ -188,11 +190,12 @@ export const UserList = ({
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                       onClick={() => {
-                                        alert(selectedProfessor);
-                                        mutateChangeRoleToProfessor({
-                                          uid: user.uid,
-                                          professorId: selectedProfessor,
-                                        });
+                                        if (selectedProfessor) {
+                                          mutateChangeRoleToProfessor({
+                                            uid: user.uid,
+                                            professorId: selectedProfessor,
+                                          });
+                                        }
                                       }}
                                     >
                                       Continue

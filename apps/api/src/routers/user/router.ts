@@ -40,7 +40,11 @@ export const userRouter = createTRPCRouter({
     const { req } = ctx;
     return req.session.uid
       ? {
-          user: { uid: req.session.uid, role: req.session.role },
+          user: {
+            uid: req.session.uid,
+            role: req.session.role,
+            professorId: req.session.professorId,
+          },
         }
       : null;
   }),
@@ -84,7 +88,7 @@ export const userRouter = createTRPCRouter({
     .input(
       z.object({
         uid: z.string(),
-        professorId: z.string(),
+        professorId: z.number(),
       }),
     )
     .mutation(({ ctx, input }) =>

@@ -36,7 +36,7 @@ export const createChangeRoleToProfessor =
   }: {
     uid: string;
     role: string;
-    professorId: string;
+    professorId: number;
   }) => {
     const { postgres } = dependencies;
 
