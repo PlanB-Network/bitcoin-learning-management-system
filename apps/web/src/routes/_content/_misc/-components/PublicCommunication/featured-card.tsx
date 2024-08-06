@@ -6,14 +6,23 @@ import { formatDateSimple } from '@blms/api/src/utils/date.ts';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 
-export const FeaturedCard = () => {
+interface FeaturedCardProps {
+  category: string;
+}
+
+export const FeaturedCard = ({ category }: FeaturedCardProps) => {
   const { blogs } = useContext(AppContext);
   if (!blogs || blogs.length === 0) {
     return <></>;
   }
 
-  // Sort blogs by lastUpdated and take the most recent one
-  const latestBlog = blogs.sort(
+  const filteredBlogs =
+    category === 'all'
+      ? blogs
+      : blogs.filter((blog) => blog.category === category);
+
+  // Sort filtered blogs by lastUpdated and take the most recent one
+  const latestBlog = filteredBlogs.sort(
     (a, b) =>
       new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime(),
   )[0];
