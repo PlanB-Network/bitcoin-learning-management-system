@@ -37,7 +37,7 @@ export const BlogList = ({ category }: BlogListProps) => {
       <h3 className="text-black desktop-h7 mb-4">
         {t('publicCommunication.blogPageStrings.featuredArticleTitleText')}
       </h3>
-      <FeaturedCard />
+      <FeaturedCard category={category} />
 
       {filteredBlogs.length > 1 && (
         <div>

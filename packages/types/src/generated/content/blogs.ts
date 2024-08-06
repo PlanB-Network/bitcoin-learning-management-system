@@ -10,6 +10,7 @@ export interface Blog {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  date: Date;
 }
 
 export interface BlogLocalized {
@@ -34,6 +35,7 @@ export interface JoinedBlogLight {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  date: Date;
   language: string;
   title: string;
   description: string | null;
@@ -49,6 +51,7 @@ export interface JoinedBlog {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  date: Date;
   language: string;
   title: string;
   description: string | null;
@@ -65,6 +68,7 @@ export interface BlogWithTagDetails {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  date: Date;
   language: string;
   title: string;
   description: string | null;

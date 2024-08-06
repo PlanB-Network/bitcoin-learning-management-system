@@ -1,0 +1,1 @@
+ALTER TABLE "content"."blogs" ADD COLUMN "date" timestamp with time zone NOT NULL;

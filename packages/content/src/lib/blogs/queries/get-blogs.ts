@@ -14,6 +14,7 @@ export const getBlogsQuery = (language?: string) => {
           bl.description, 
           b.last_updated, 
           b.last_commit,
+          b.date,
           COALESCE(tag_agg.tags, ARRAY[]::text[]) AS tags
       FROM content.blogs b
       JOIN content.blogs_localized bl ON b.id = bl.blog_id
@@ -37,6 +38,7 @@ export const getBlogsQuery = (language?: string) => {
           bl.description,
           b.last_updated, 
           b.last_commit,
+          b.date,
           tag_agg.tags
   `;
 };

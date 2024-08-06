@@ -49,7 +49,9 @@ export const createProcessMainFile =
         .sort((a, b) => b.time - a.time)[0];
 
       const result = await transaction<Blog[]>`
-        INSERT INTO content.blogs (path, name, category, author, last_updated, last_commit, last_sync)
+        INSERT INTO content.blogs (
+          path, name, category, author, last_updated, last_commit, last_sync, date
+        )
         VALUES (
           ${blog.path},
           ${blog.name},
@@ -57,7 +59,8 @@ export const createProcessMainFile =
           ${parsedBlog.builder},
           ${lastUpdated.time},
           ${lastUpdated.commit},
-          NOW()
+          NOW(),
+          ${parsedBlog.date ? parsedBlog.date : null}  
         )
         ON CONFLICT (path) DO UPDATE SET
           name = EXCLUDED.name,
@@ -65,7 +68,8 @@ export const createProcessMainFile =
           author = EXCLUDED.author,
           last_updated = EXCLUDED.last_updated,
           last_commit = EXCLUDED.last_commit,
-          last_sync = NOW()
+          last_sync = NOW(),
+          date = EXCLUDED.date 
         RETURNING *
       `.then(firstRow);
 

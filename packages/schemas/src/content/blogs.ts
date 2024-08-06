@@ -21,6 +21,7 @@ export const joinedBlogLightSchema = blogSchema
     lastUpdated: true,
     lastCommit: true,
     lastSync: true,
+    date: true,
   })
   .merge(
     blogLocalizedSchema.pick({

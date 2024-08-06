@@ -51,7 +51,9 @@ function SingleBlogDetail() {
                 {blog.author}
               </span>
               <span className="text-black lg:text-2xl font-medium lg:font-normal text-base">
-                {formatDateSimple(blog.lastUpdated)}
+                {blog.date
+                  ? formatDateSimple(blog.date)
+                  : 'Date not available!'}
               </span>
             </div>
             {blog.tags && (
