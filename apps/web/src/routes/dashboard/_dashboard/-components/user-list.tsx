@@ -60,6 +60,10 @@ export const UserList = ({
       },
     });
 
+  const displayMakeAdminColumn =
+    userRole === 'student' && session?.user.role === 'superadmin';
+  const displayMakeProfessorColumn = userRole === 'student';
+
   return (
     <div className="pt-2 md:pt-8">
       {isPending && <Spinner className="size-24 md:size-32 mx-auto" />}
@@ -97,12 +101,16 @@ export const UserList = ({
                         Professor name
                       </th>
                     )}
-                    <th scope="col" className="desktop-h7 pb-5 w-60">
-                      Actions
-                    </th>
-                    <th scope="col" className="desktop-h7 pb-5">
-                      Actions
-                    </th>
+                    {displayMakeAdminColumn && (
+                      <th scope="col" className="desktop-h7 pb-5 w-60">
+                        Action
+                      </th>
+                    )}
+                    {displayMakeProfessorColumn && (
+                      <th scope="col" className="desktop-h7 pb-5">
+                        Action
+                      </th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -114,97 +122,91 @@ export const UserList = ({
                         {userRole === 'professor' && (
                           <td className="">{user.professorName}</td>
                         )}
-                        {session?.user.role === 'admin' &&
-                          userRole === 'student' && (
-                            <td className="">
-                              <AlertDialog>
-                                <AlertDialogTrigger>
-                                  <Button size="s">Make admin</Button>
-                                </AlertDialogTrigger>
-                                <AlertDialogContent>
-                                  <AlertDialogHeader>
-                                    <AlertDialogTitle>
-                                      Are you absolutely sure?
-                                    </AlertDialogTitle>
-                                  </AlertDialogHeader>
-                                  <AlertDialogFooter>
-                                    <AlertDialogCancel>
-                                      Cancel
-                                    </AlertDialogCancel>
-                                    <AlertDialogAction
-                                      onClick={() => {
-                                        mutateChangeRoleToAdmin({
+                        {displayMakeAdminColumn && (
+                          <td>
+                            <AlertDialog>
+                              <AlertDialogTrigger>
+                                <Button size="s">Make admin</Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>
+                                    Are you absolutely sure?
+                                  </AlertDialogTitle>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction
+                                    onClick={() => {
+                                      mutateChangeRoleToAdmin({
+                                        uid: user.uid,
+                                      });
+                                    }}
+                                  >
+                                    Continue
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </td>
+                        )}
+
+                        {displayMakeProfessorColumn && (
+                          <td className="flex flex-col gap-2">
+                            <Select
+                              value={String(selectedProfessor)}
+                              onValueChange={(e) => {
+                                setSelectedProfessor(+e);
+                              }}
+                            >
+                              <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Select a professor" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {professors?.map((p) => {
+                                  return (
+                                    <SelectItem
+                                      value={p.id.toString()}
+                                      key={p.id}
+                                    >
+                                      {p.name}
+                                    </SelectItem>
+                                  );
+                                })}
+                              </SelectContent>
+                            </Select>
+
+                            <AlertDialog>
+                              <AlertDialogTrigger>
+                                <Button size="s" className="-z-10">
+                                  Make professor
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>
+                                    Are you absolutely sure?
+                                  </AlertDialogTitle>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction
+                                    onClick={() => {
+                                      if (selectedProfessor) {
+                                        mutateChangeRoleToProfessor({
                                           uid: user.uid,
+                                          professorId: selectedProfessor,
                                         });
-                                      }}
-                                    >
-                                      Continue
-                                    </AlertDialogAction>
-                                  </AlertDialogFooter>
-                                </AlertDialogContent>
-                              </AlertDialog>
-                            </td>
-                          )}
-
-                        {session?.user.role === 'admin' &&
-                          userRole === 'student' && (
-                            <td className="flex flex-col gap-2">
-                              <Select
-                                value={String(selectedProfessor)}
-                                onValueChange={(e) => {
-                                  setSelectedProfessor(+e);
-                                }}
-                              >
-                                <SelectTrigger className="w-[180px]">
-                                  <SelectValue placeholder="Select a professor" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {professors?.map((p) => {
-                                    return (
-                                      <SelectItem
-                                        value={p.id.toString()}
-                                        key={p.id}
-                                      >
-                                        {p.name}
-                                      </SelectItem>
-                                    );
-                                  })}
-                                </SelectContent>
-                              </Select>
-
-                              <AlertDialog>
-                                <AlertDialogTrigger>
-                                  <Button size="s" className="-z-10">
-                                    Make professor
-                                  </Button>
-                                </AlertDialogTrigger>
-                                <AlertDialogContent>
-                                  <AlertDialogHeader>
-                                    <AlertDialogTitle>
-                                      Are you absolutely sure?
-                                    </AlertDialogTitle>
-                                  </AlertDialogHeader>
-                                  <AlertDialogFooter>
-                                    <AlertDialogCancel>
-                                      Cancel
-                                    </AlertDialogCancel>
-                                    <AlertDialogAction
-                                      onClick={() => {
-                                        if (selectedProfessor) {
-                                          mutateChangeRoleToProfessor({
-                                            uid: user.uid,
-                                            professorId: selectedProfessor,
-                                          });
-                                        }
-                                      }}
-                                    >
-                                      Continue
-                                    </AlertDialogAction>
-                                  </AlertDialogFooter>
-                                </AlertDialogContent>
-                              </AlertDialog>
-                            </td>
-                          )}
+                                      }
+                                    }}
+                                  >
+                                    Continue
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </td>
+                        )}
                       </tr>
                     );
                   })}
