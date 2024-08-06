@@ -63,6 +63,8 @@ export const BlogList = ({ category }: BlogListProps) => {
                 )}
                 buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
                 tags={blog.tags}
+                category={blog.category}
+                excerpt={blog.description ?? ''}
               />
             ))}
           </div>

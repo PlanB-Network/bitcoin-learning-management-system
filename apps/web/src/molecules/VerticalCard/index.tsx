@@ -10,6 +10,8 @@ export interface VerticalCardProps {
   imageSrc: string;
   title: string;
   subtitle?: string;
+  category?: string;
+  excerpt?: string;
   cardColor?: 'grey' | 'maroon' | 'orange' | 'lightgrey';
   onHoverCardColorChange?: boolean;
   buttonText?: string;
@@ -38,6 +40,8 @@ export const VerticalCard = ({
   imageSrc,
   title,
   subtitle,
+  category,
+  excerpt,
   cardColor = 'grey',
   onHoverCardColorChange,
   buttonText,
@@ -117,7 +121,7 @@ export const VerticalCard = ({
       <div className="flex flex-col gap-1 px-1">
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-2">
-            {tags.map((tag, index) => (
+            {tags.slice(0, isScreenMd ? tags.length : 1).map((tag, index) => (
               <span
                 key={index}
                 className="text-xs font-medium text-gray-700 bg-gray-200 rounded-full px-2 py-1"
@@ -127,6 +131,16 @@ export const VerticalCard = ({
             ))}
           </div>
         )}
+        {category && (
+          <span
+            className={cn(
+              'mobile-caption1 md:desktop-body1',
+              subtitleColorClasses[cardColor],
+            )}
+          >
+            {category}
+          </span>
+        )}
         <h4
           className={cn(
             'mobile-subtitle2 md:desktop-h6 md:!font-medium capitalize',
@@ -135,6 +149,11 @@ export const VerticalCard = ({
         >
           {title}
         </h4>
+        {excerpt && (
+          <span className="hidden md:flex md:desktop-body1 text-black line-clamp-3	">
+            {excerpt}
+          </span>
+        )}
         {subtitle && (
           <span
             className={cn(

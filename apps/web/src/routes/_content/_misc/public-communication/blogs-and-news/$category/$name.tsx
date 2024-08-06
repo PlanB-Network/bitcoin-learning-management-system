@@ -85,14 +85,14 @@ function SingleBlogDetail() {
       </div>
 
       <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row md:max-w-[1120px]">
-        <div className="flex flex-col flex-1 border-b-2 md:border-b-0 lg:mb-12">
+        <div className="flex flex-col flex-1 border-b-2 md:border-b-0 lg:mb-12 py-4 lg:py-0">
           <BlogMarkdownBody
             content={blog.rawContent}
             assetPrefix=""
             blogs={[]}
           />
 
-          <div className="w-max-[135px] hidden md:flex">
+          <div className="w-max-[135px] hidden md:flex lg:mt-32">
             <Link to="/public-communication">
               <Button
                 variant="newPrimary"
