@@ -37,7 +37,7 @@ export const BlogList = ({ category }: BlogListProps) => {
       <h3 className="text-black desktop-h7 mb-4">
         {t('publicCommunication.blogPageStrings.featuredArticleTitleText')}
       </h3>
-      <FeaturedCard />
+      <FeaturedCard category={category} />
 
       {filteredBlogs.length > 1 && (
         <div>
@@ -63,6 +63,8 @@ export const BlogList = ({ category }: BlogListProps) => {
                 )}
                 buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
                 tags={blog.tags}
+                category={blog.category}
+                excerpt={blog.description ?? ''}
               />
             ))}
           </div>

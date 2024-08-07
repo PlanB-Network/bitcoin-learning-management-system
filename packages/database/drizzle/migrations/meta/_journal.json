@@ -50,6 +50,13 @@
       "when": 1722868154872,
       "tag": "0006_fresh_garia",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1722957565506,
+      "tag": "0007_heavy_madame_masque",
+      "breakpoints": true
     }
   ]
 }

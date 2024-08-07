@@ -43,7 +43,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({ currentBlogId }) => {
             <li key={index} className="flex flex-row items-center">
               <Link
                 to={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
-                className="flex items-center justify-between border-t-2 py-3 border-t-gray-600 text-start lg:px-2.5"
+                className="flex items-center justify-between border-t-2 py-3 border-t-gray-600 text-start lg:px-2.5 w.full max-w-[354px]"
               >
                 <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">
                   <p className="text-sm text-gray-600 min-w-[73px]">

@@ -69,6 +69,7 @@ export const contentBlogs = content.table(
     lastSync: timestamp('last_sync', { withTimezone: true })
       .defaultNow()
       .notNull(),
+    date: timestamp('date', { withTimezone: true }).notNull(),
   },
   (table) => ({
     unqNameCategory: unique().on(table.name, table.category),
