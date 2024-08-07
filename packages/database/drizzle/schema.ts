@@ -613,6 +613,11 @@ export const contentCourseChaptersLocalized = content.table(
     releasePlace: varchar('release_place', { length: 50 }),
     isOnline: boolean('is_online').default(false).notNull(),
     isInPerson: boolean('is_in_person').default(false).notNull(),
+    isCourseReview: boolean('is_course_review').default(false).notNull(),
+    isCourseExam: boolean('is_course_exam').default(false).notNull(),
+    isCourseConclusion: boolean('is_course_conclusion')
+      .default(false)
+      .notNull(),
     startDate: timestamp('start_date'),
     endDate: timestamp('end_date'),
     timezone: text('timezone'),
@@ -757,6 +762,35 @@ export const usersCourseProgress = users.table(
       .defaultNow()
       .notNull(),
     progressPercentage: integer('progress_percentage').default(0).notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.uid, table.courseId],
+    }),
+  }),
+);
+
+export const usersCourseReview = users.table(
+  'course_review',
+  {
+    uid: uuid('uid')
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    courseId: varchar('course_id', { length: 20 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    general: integer('general').default(0).notNull(),
+    length: integer('length').default(0).notNull(),
+    difficulty: integer('difficulty').default(0).notNull(),
+    quality: integer('quality').default(0).notNull(),
+    faithful: integer('faithful').default(0).notNull(),
+    recommand: integer('recommand').default(0).notNull(),
+    publicComment: text('public_comment'),
+    teacherComment: text('teacher_comment'),
+    adminComment: text('admin_comment'),
   },
   (table) => ({
     pk: primaryKey({

@@ -130,6 +130,9 @@ interface Chapter {
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
   startDate: string | null;
   endDate: string | null;
   timeZone: string | null;
@@ -191,6 +194,9 @@ const extractParts = (markdown: string): Part[] => {
           releasePlace: '',
           isOnline: false,
           isInPerson: false,
+          isCourseReview: false,
+          isCourseExam: false,
+          isCourseConclusion: false,
           startDate: null,
           endDate: null,
           addressLine1: '',
@@ -217,9 +223,14 @@ const extractParts = (markdown: string): Part[] => {
           }
           currentChapter.partId = currentPart.partId;
           currentChapter.releasePlace = extractData(token, 'releasePlace');
-          currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
           currentChapter.isInPerson =
             extractData(token, 'isInPerson') === 'true';
+          currentChapter.isCourseReview =
+            extractData(token, 'isCourseReview') === 'true';
+          currentChapter.isCourseExam =
+            extractData(token, 'isCourseExam') === 'true';
+          currentChapter.isCourseConclusion =
+            extractData(token, 'isCourseConclusion') === 'true';
           currentChapter.startDate = extractData(token, 'startDate');
           currentChapter.endDate = extractData(token, 'endDate');
           currentChapter.timeZone = extractData(token, 'timeZone');
@@ -246,6 +257,9 @@ const extractParts = (markdown: string): Part[] => {
             'releasePlace',
             'isOnline',
             'isInPerson',
+            'isCourseReview',
+            'isCourseExam',
+            'isCourseConclusion',
             'startDate',
             'endDate',
             'timeZone',
@@ -542,6 +556,9 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                       release_place: chapter.releasePlace,
                       is_online: chapter.isOnline,
                       is_in_person: chapter.isInPerson,
+                      is_course_review: chapter.isCourseReview,
+                      is_course_exam: chapter.isCourseExam,
+                      is_course_conclusion: chapter.isCourseConclusion,
                       start_date: chapter.startDate,
                       end_date: chapter.endDate,
                       timezone: chapter.timeZone,
@@ -566,6 +583,9 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                     release_place = EXCLUDED.release_place,
                     is_online = EXCLUDED.is_online,
                     is_in_person = EXCLUDED.is_in_person,
+                    is_course_review = EXCLUDED.is_course_review,
+                    is_course_exam = EXCLUDED.is_course_exam,
+                    is_course_conclusion = EXCLUDED.is_course_conclusion,
                     start_date = EXCLUDED.start_date,
                     end_date = EXCLUDED.end_date,
                     timezone = EXCLUDED.timezone,

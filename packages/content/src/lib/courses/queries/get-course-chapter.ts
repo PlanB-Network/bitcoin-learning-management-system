@@ -3,9 +3,9 @@ import type { JoinedCourseChapterWithContent } from '@blms/types';
 
 export const getCourseChapterQuery = (chapterId: string, language?: string) => {
   return sql<JoinedCourseChapterWithContent[]>`
-    SELECT cl.course_id, ch.part_id, cl.chapter_id, part_index, chapter_index, language, title, sections, release_place, raw_content, is_online, is_in_person, 
-    start_date, end_date, timezone, address_line_1, address_line_2, address_line_3, live_url, chat_url, available_seats, remaining_seats, live_language,
-    c.last_updated, c.last_commit, COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) AS professors
+    SELECT cl.course_id, ch.part_id, cl.chapter_id, part_index, chapter_index, language, title, sections, release_place, raw_content, is_online, is_in_person,
+    is_course_review, is_course_exam, is_course_conclusion, start_date, end_date, timezone, address_line_1, address_line_2, address_line_3, live_url, chat_url,
+    available_seats, remaining_seats, live_language, c.last_updated, c.last_commit, COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) AS professors
     FROM content.course_chapters_localized cl
     JOIN content.courses c ON c.id = cl.course_id
     LEFT JOIN content.course_chapters ch
