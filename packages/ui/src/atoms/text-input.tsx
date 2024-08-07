@@ -4,7 +4,7 @@ import { BsExclamationTriangle, BsEye, BsEyeSlash } from 'react-icons/bs';
 
 import { cn } from '@blms/ui';
 
-import type { BaseAtomProps } from '../types.tsx';
+import type { BaseAtomProps } from '../lib/types.ts';
 
 type BaseProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

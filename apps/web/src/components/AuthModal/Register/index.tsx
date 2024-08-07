@@ -7,11 +7,9 @@ import { useCallback, useEffect } from 'react';
 import { BsCheck, BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
-import { Button } from '@blms/ui';
+import { Button, Divider, TextInput } from '@blms/ui';
 
-import { Divider } from '../../../atoms/Divider/index.tsx';
 import { Modal } from '../../../atoms/Modal/index.tsx';
-import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
 

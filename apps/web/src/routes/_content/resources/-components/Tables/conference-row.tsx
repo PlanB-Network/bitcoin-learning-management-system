@@ -1,10 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
-import { Button } from '@blms/ui';
+import { Button, NewTag } from '@blms/ui';
 
 import Flag from '#src/atoms/Flag/index.js';
-import { NewTag } from '#src/atoms/Tag/index.js';
 
 interface ConferenceRowProps {
   name: string;

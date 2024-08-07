@@ -2,9 +2,8 @@ import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@blms/ui';
+import { Button, TextInput } from '@blms/ui';
 
-import { TextInput } from '#src/atoms/TextInput/index.js';
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { trpc } from '#src/utils/trpc.js';
 

@@ -1,7 +1,5 @@
-import { cn } from '@blms/ui';
-
-import { compose } from '../../utils/index.ts';
-import type { BaseAtomProps } from '../types.tsx';
+import type { BaseAtomProps } from '../lib/types.ts';
+import { cn } from '../lib/utils.js';
 
 interface TagProps extends BaseAtomProps {
   children: string;
@@ -22,7 +20,7 @@ const classesBySize = {
 export const Tag = ({ children, size, className }: TagProps) => {
   return (
     <span
-      className={compose(
+      className={cn(
         'inline-block font-semibold text-gray-500 bg-gray-200 rounded-full',
         classesBySize[size ?? 'm'],
         className ?? '',

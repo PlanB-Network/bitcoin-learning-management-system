@@ -2,12 +2,11 @@ import { Formik } from 'formik';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@blms/ui';
+import { Button, TextInput } from '@blms/ui';
 
 import { trpc } from '#src/utils/index.js';
 
 import { Modal } from '../../../atoms/Modal/index.tsx';
-import { TextInput } from '../../../atoms/TextInput/index.tsx';
 import { AuthModalState } from '../props.ts';
 
 interface LoginModalProps {

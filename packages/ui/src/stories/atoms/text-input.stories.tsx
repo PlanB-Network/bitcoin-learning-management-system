@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { TextInput } from './index.tsx';
+import { TextInput } from '../../atoms/text-input.tsx';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Atoms/TextInput',
   component: TextInput,
   tags: ['autodocs'],
 };

@@ -3,18 +3,12 @@ import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useState } from 'react';
 
-import { Button } from '@blms/ui';
+import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '../../../atoms/Tabs/index.tsx';
 import { useDisclosure } from '../../../hooks/index.ts';
 
 import { ChangeDisplayNameModal } from './-components/change-display-name-modal.tsx';

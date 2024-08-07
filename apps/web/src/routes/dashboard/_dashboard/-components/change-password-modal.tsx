@@ -6,10 +6,9 @@ import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
-import { Button } from '@blms/ui';
+import { Button, TextInput } from '@blms/ui';
 
 import { Modal } from '#src/atoms/Modal/index.js';
-import { TextInput } from '#src/atoms/TextInput/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 const password = new PasswordValidator().is().min(10);

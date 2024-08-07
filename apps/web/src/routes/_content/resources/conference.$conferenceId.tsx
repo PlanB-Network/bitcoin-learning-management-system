@@ -5,10 +5,9 @@ import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, NewTag } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import { NewTag } from '#src/atoms/Tag/index.js';
 import { ConferencesMarkdownBody } from '#src/components/ConferencesMarkdownBody/index.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';

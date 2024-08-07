@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Anchor } from './index.tsx';
+import { Anchor } from '../../atoms/anchor.tsx';
 
 const meta: Meta<typeof Anchor> = {
-  title: 'Atoms/Anchor',
   component: Anchor,
   tags: ['autodocs'],
 };

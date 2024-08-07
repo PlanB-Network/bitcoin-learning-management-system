@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { compose } from '../../utils/index.ts';
+import { cn } from '../lib/utils.js';
 
 interface AvatarProps {
   image: string;
@@ -22,5 +22,5 @@ export const Avatar = ({ rounded, size, image, alt }: AvatarProps) => {
     [rounded, size],
   );
 
-  return <img className={compose(...classes)} src={image} alt={alt}></img>;
+  return <img className={cn(...classes)} src={image} alt={alt}></img>;
 };

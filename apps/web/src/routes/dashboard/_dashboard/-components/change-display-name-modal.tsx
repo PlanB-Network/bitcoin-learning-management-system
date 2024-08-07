@@ -5,10 +5,9 @@ import { isEmpty } from 'lodash-es';
 import { useCallback, useContext } from 'react';
 import { ZodError, z } from 'zod';
 
-import { Button } from '@blms/ui';
+import { Button, TextInput } from '@blms/ui';
 
 import { Modal } from '#src/atoms/Modal/index.js';
-import { TextInput } from '#src/atoms/TextInput/index.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 

@@ -1,8 +1,8 @@
 import type { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useMemo } from 'react';
 
-import { compose } from '../../utils/index.ts';
-import type { BaseAtomProps } from '../types.ts';
+import type { BaseAtomProps } from '../lib/types.ts';
+import { cn } from '../lib/utils.js';
 
 interface AnchorProps
   extends BaseAtomProps,
@@ -61,7 +61,7 @@ export const Anchor = ({
   if (icon)
     return (
       <a
-        className={compose(
+        className={cn(
           ...classes,
           'active:scale-95',
           'flex flex-row items-center font-normal leading-normal transition-colors duration-150',
@@ -75,7 +75,7 @@ export const Anchor = ({
 
   return (
     <a
-      className={compose(
+      className={cn(
         ...classes,
         'active:scale-95',
         'flex flex-row items-center justify-center font-normal leading-normal transition-colors duration-150',

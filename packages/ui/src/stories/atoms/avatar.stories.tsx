@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from './index.tsx';
+import { Avatar } from '../../atoms/avatar.tsx';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Atoms/Avatar',
   component: Avatar,
   tags: ['autodocs'],
 };
