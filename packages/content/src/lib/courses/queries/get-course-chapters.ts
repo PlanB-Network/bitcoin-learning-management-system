@@ -11,9 +11,9 @@ export const getCourseChaptersQuery = ({
   language?: string;
 }) => {
   return sql<JoinedCourseChapter[]>`
-    SELECT ch.part_id, c.chapter_id, part_index, chapter_index, c.language, c.title, c.sections, c.release_place, c.raw_content, c.is_online, c.is_in_person, 
-      c.start_date, c.end_date, c.timezone, c.address_line_1, c.address_line_2, c.address_line_3, c.live_url, c.chat_url, c.available_seats, c.remaining_seats, c.live_language,
-      cl.title as part_title
+    SELECT ch.part_id, c.chapter_id, part_index, chapter_index, c.language, c.title, c.sections, c.release_place, c.raw_content, c.is_online, c.is_in_person,
+    c.is_course_review, c.is_course_exam, c.is_course_conclusion, c.start_date, c.end_date, c.timezone, c.address_line_1, c.address_line_2, c.address_line_3,
+    c.live_url, c.chat_url, c.available_seats, c.remaining_seats, c.live_language, cl.title as part_title
     FROM content.course_chapters_localized c
     LEFT JOIN content.course_chapters ch
       ON c.chapter_id = ch.chapter_id

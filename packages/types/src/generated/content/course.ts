@@ -68,6 +68,9 @@ export interface CourseChapterLocalized {
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;
@@ -93,6 +96,9 @@ export interface JoinedCourseChapter {
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;
@@ -222,6 +228,9 @@ export interface JoinedCourseChapterWithContent {
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;

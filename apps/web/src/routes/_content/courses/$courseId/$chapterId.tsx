@@ -580,6 +580,16 @@ function shuffleArray<T>(array: T[]): T[] {
   return newArray;
 }
 
+function CourseReview() {
+  return (
+    <div>
+      <h1 className="text-center text-sm md:text-2xl text-newOrange-1 leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
+        Feedback session
+      </h1>
+    </div>
+  );
+}
+
 function CourseChapter() {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
@@ -709,6 +719,9 @@ function CourseChapter() {
             <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
               <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:px-2 md:mt-8 md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden">
                 <Header chapter={chapter} sections={sections} />
+
+                {chapter.isCourseReview && <CourseReview></CourseReview>}
+
                 {displayLiveSection && chapter.liveUrl && chapter.startDate && (
                   <LiveVideo
                     url={chapter.liveUrl}
