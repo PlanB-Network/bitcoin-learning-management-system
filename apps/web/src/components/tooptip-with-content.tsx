@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '../atoms/Tooltip/index.tsx';
+} from '@blms/ui';
 
 interface TipIconProps {
   text: string;

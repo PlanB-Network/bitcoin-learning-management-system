@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Tag } from './index.tsx';
+import { Tooltip } from '../../atoms/tooltip.tsx';
 
-const meta: Meta<typeof Tag> = {
-  title: 'Atoms/Tag',
-  component: Tag,
+const meta: Meta<typeof Tooltip> = {
+  component: Tooltip,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof Tag>;
+type Story = StoryObj<typeof Tooltip>;
 
 export const Primary: Story = {
   args: {},

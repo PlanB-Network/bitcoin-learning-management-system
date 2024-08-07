@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
+import { Avatar } from '@blms/ui';
+
 import grayHeart from '../../assets/icons/gray_heart.svg';
-import { Avatar } from '../../atoms/Avatar/index.tsx';
 
 interface ContributorProps {
   prefix?: string;
