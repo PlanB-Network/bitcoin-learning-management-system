@@ -101,7 +101,9 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -129,6 +131,12 @@
       "financialCrisis": "",
       "hyperinflation": "",
       "theoreticalLightning": ""
+    },
+    "review": {
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     }
   },
   "words": {
@@ -259,7 +267,8 @@
     "errors": {
       "usernameRegex": "",
       "usernameRequired": "",
-      "usernameTooShort": ""
+      "usernameTooShort": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "",
     "headerAccountCreated": "",
@@ -270,7 +279,8 @@
     "passwordRequired": "",
     "passwordsDontMatch": "",
     "sendLink": "",
-    "signIn": ""
+    "signIn": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "",
@@ -285,7 +295,10 @@
     "visualContent": {
       "description": "",
       "title": ""
-    }
+    },
+    "contributeButton": "",
+    "contributeDescription": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "",
@@ -304,7 +317,8 @@
   },
   "builders": {
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -358,7 +372,14 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "resumeLesson": ""
+      "resumeLesson": "",
+      "inprogressCoursesDescription": ""
+    },
+    "bCertificate": {
+      "noResults": ""
+    },
+    "profile": {
+      "emailChangeConfirmation": ""
     }
   },
   "events": {
@@ -710,5 +731,28 @@
     "p1": "",
     "p2": "",
     "pageTitle": ""
+  },
+  "publicCommunication": {
+    "description": ""
+  },
+  "glossary": {
+    "needHelp": "",
+    "relatedWords": "",
+    "filterBar": "",
+    "keepLooking": "",
+    "pageSubtitle": "",
+    "creditsLoic": "",
+    "notTranslated": "",
+    "placeHolder": ""
+  },
+  "bCertificate": {
+    "bCertificateDescription": "",
+    "organizeDescription": "",
+    "readChart": "",
+    "curious": "",
+    "joeNakamotoVideo": ""
+  },
+  "proofreading": {
+    "thanks": ""
   }
 }
