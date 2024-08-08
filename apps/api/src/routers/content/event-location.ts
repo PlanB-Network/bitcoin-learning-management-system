@@ -1,5 +1,5 @@
-import { createGetEventsLocations } from '@blms/content';
 import { eventLocationSchema } from '@blms/schemas';
+import { createGetEventsLocations } from '@blms/service-content';
 
 import { publicProcedure } from '#src/procedures/index.js';
 import { createTRPCRouter } from '#src/trpc/index.js';

@@ -1,16 +1,16 @@
 import {
+  createSyncCdnRepository,
+  createSyncRepositories,
+  timeLog,
+} from '@blms/github';
+import {
   createCalculateCourseChapterSeats,
   createCalculateEventSeats,
   createGetNow,
   createProcessContentFiles,
   createProcessDeleteOldEntities,
   createSyncEventsLocations,
-} from '@blms/content';
-import {
-  createSyncCdnRepository,
-  createSyncRepositories,
-  timeLog,
-} from '@blms/github';
+} from '@blms/service-content';
 
 import type { Dependencies } from '#src/dependencies.js';
 

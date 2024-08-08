@@ -1,14 +1,17 @@
 import { z } from 'zod';
 
-import { createCalculateEventSeats, createGetEvent } from '@blms/content';
 import { eventPaymentSchema, userEventSchema } from '@blms/schemas';
+import {
+  createCalculateEventSeats,
+  createGetEvent,
+} from '@blms/service-content';
 import {
   createGetEventPayments,
   createGetUserEvents,
   createSaveEventPayment,
   createSaveUserEvent,
   generateEventTicket,
-} from '@blms/user';
+} from '@blms/service-user';
 
 import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

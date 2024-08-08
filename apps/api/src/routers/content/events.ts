@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { createGetEvent, createGetRecentEvents } from '@blms/content';
 import { joinedEventSchema } from '@blms/schemas';
+import { createGetEvent, createGetRecentEvents } from '@blms/service-content';
 import type { JoinedEvent } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';

@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 import { calendarEventSchema } from '@blms/schemas';
+import { createGetCalendarEvents } from '@blms/service-user';
 import type { CalendarEvent } from '@blms/types';
-import { createGetCalendarEvents } from '@blms/user';
 
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';

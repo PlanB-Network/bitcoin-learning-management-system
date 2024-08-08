@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { createGetCouponCode } from '@blms/content';
 import { couponCodeSchema } from '@blms/schemas';
+import { createGetCouponCode } from '@blms/service-content';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

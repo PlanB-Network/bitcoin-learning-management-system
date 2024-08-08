@@ -2,7 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
-import { createGetUser, createNewCredentialsUser } from '@blms/user';
+import { createGetUser, createNewCredentialsUser } from '@blms/service-user';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

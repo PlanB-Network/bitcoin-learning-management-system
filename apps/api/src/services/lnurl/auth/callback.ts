@@ -2,7 +2,7 @@ import { createHmac } from 'node:crypto';
 
 import * as secp256k1 from 'secp256k1';
 
-import { createGetUser, createNewLnurlUser } from '@blms/user';
+import { createGetUser, createNewLnurlUser } from '@blms/service-user';
 
 import type { Dependencies } from '../../../dependencies.js';
 

@@ -1,6 +1,14 @@
 import { z } from 'zod';
 
 import {
+  joinedBetSchema,
+  joinedBookSchema,
+  joinedBuilderSchema,
+  joinedConferenceSchema,
+  joinedGlossaryWordSchema,
+  joinedPodcastSchema,
+} from '@blms/schemas';
+import {
   createGetBets,
   createGetBook,
   createGetBooks,
@@ -12,15 +20,7 @@ import {
   createGetGlossaryWords,
   createGetPodcast,
   createGetPodcasts,
-} from '@blms/content';
-import {
-  joinedBetSchema,
-  joinedBookSchema,
-  joinedBuilderSchema,
-  joinedConferenceSchema,
-  joinedGlossaryWordSchema,
-  joinedPodcastSchema,
-} from '@blms/schemas';
+} from '@blms/service-content';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
