@@ -37,7 +37,8 @@
       "emailInvalid": "",
       "displayNameTooShort": "",
       "invalidCredentials": "",
-      "displayNameRequired": ""
+      "displayNameRequired": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Forgot your password?",
     "headerAccountCreated": "Account created",
@@ -68,7 +69,8 @@
     "passwordMinLength": "",
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
-    "backToLogin": ""
+    "backToLogin": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -83,7 +85,10 @@
     "visualContent": {
       "description": "This content is raw visual data, to be used for your creations.",
       "title": "Visual Content"
-    }
+    },
+    "contributeDescription": "",
+    "contributeTitle": "",
+    "contributeButton": ""
   },
   "book": {
     "abstract": "Abstract",
@@ -106,7 +111,8 @@
     "otherCommunities": "",
     "networkStrength": "",
     "languages": "",
-    "relatedEvents": ""
+    "relatedEvents": "",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
@@ -199,7 +205,9 @@
       "s3t1": "Build your own path down the rabbit hole",
       "journey": "",
       "buildPath": "",
-      "exploreCourses": ""
+      "exploreCourses": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -290,7 +298,11 @@
       "skip": "",
       "submitReview": "",
       "tooEasy": "",
-      "writeThoughts": ""
+      "writeThoughts": "",
+      "faithful": "",
+      "recommend": "",
+      "feedbackDescription": "",
+      "yesOfCourse": ""
     },
     "exam": {
       "finalExam": "",
@@ -361,7 +373,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "inprogressCoursesDescription": ""
     },
     "account": "",
     "courses": "",
@@ -416,7 +429,8 @@
       "crop": "",
       "emailChangeRateLimitError": "",
       "email": "",
-      "password": ""
+      "password": "",
+      "emailChangeConfirmation": ""
     },
     "teacher": {
       "reviews": {
@@ -493,7 +507,8 @@
     "bCertificate": {
       "bookExam": "",
       "certificate": "",
-      "grade": ""
+      "grade": "",
+      "noResults": ""
     }
   },
   "events": {
@@ -1076,14 +1091,20 @@
     "checkout": "",
     "organizeTitle": "",
     "pageTitle": "",
-    "tweetText": ""
+    "tweetText": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "organizeDescription": "",
+    "readChart": "",
+    "bCertificateDescription": ""
   },
   "proofreading": {
     "completed": "",
     "description": "",
     "status": "",
     "inProgress": "",
-    "reviewEarn": ""
+    "reviewEarn": "",
+    "thanks": ""
   },
   "publicCommunication": {
     "legal": "",
@@ -1116,7 +1137,8 @@
     "blogPost": "",
     "goBackButtons": {
       "simpleGoBack": ""
-    }
+    },
+    "description": ""
   },
   "glossary": {
     "randomSearch": "",
@@ -1124,6 +1146,14 @@
     "anotherWord": "",
     "definition": "",
     "loadMoreWords": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "placeHolder": "",
+    "relatedWords": "",
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": ""
   }
 }
