@@ -89,7 +89,9 @@
       "s3t1": "",
       "buildPath": "",
       "exploreCourses": "",
-      "journey": ""
+      "journey": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "part": {
       "count": ""
@@ -172,7 +174,11 @@
       "veryGood": "",
       "whatStudentsSay": "",
       "writeThoughts": "",
-      "yesVeryMuch": ""
+      "yesVeryMuch": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     },
     "exam": {
       "congratulationsPassed": "",
@@ -397,7 +403,8 @@
       "displayNameRequired": "",
       "displayNameTooShort": "",
       "invalidCredentials": "",
-      "emailInvalid": ""
+      "emailInvalid": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "",
     "headerAccountCreated": "",
@@ -429,7 +436,8 @@
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
     "confirmation": "",
-    "displayName": ""
+    "displayName": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "",
@@ -444,7 +452,10 @@
     "visualContent": {
       "description": "",
       "title": ""
-    }
+    },
+    "contributeDescription": "",
+    "contributeTitle": "",
+    "contributeButton": ""
   },
   "book": {
     "abstract": "",
@@ -467,7 +478,8 @@
     "otherCommunities": "",
     "languages": "",
     "relatedEvents": "",
-    "networkStrength": ""
+    "networkStrength": "",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -532,7 +544,8 @@
       "inprogressCoursesTitle": "",
       "seeProgress": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "inprogressCoursesDescription": ""
     },
     "profile": {
       "saving": "",
@@ -551,12 +564,14 @@
       "profileInformation": "",
       "profilePicture": "",
       "security": "",
-      "username": ""
+      "username": "",
+      "emailChangeConfirmation": ""
     },
     "bCertificate": {
       "certificate": "",
       "bookExam": "",
-      "grade": ""
+      "grade": "",
+      "noResults": ""
     },
     "administration": "",
     "calendar": {
@@ -1069,7 +1084,12 @@
     "organizeExam": "",
     "organizeSubtitle": "",
     "organizeTitle": "",
-    "pageSubtitle": ""
+    "pageSubtitle": "",
+    "organizeDescription": "",
+    "bCertificateDescription": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "readChart": ""
   },
   "publicCommunication": {
     "blogCategories": {
@@ -1102,7 +1122,8 @@
       "blogListButtonText": "",
       "filterText": "",
       "noBlogs": ""
-    }
+    },
+    "description": ""
   },
   "glossary": {
     "anotherWord": "",
@@ -1110,13 +1131,22 @@
     "loadMoreWords": "",
     "pageTitle": "",
     "randomSearch": "",
-    "term": ""
+    "term": "",
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
   },
   "proofreading": {
     "completed": "",
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "thanks": ""
   }
 }
