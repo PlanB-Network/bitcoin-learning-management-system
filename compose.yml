@@ -73,12 +73,12 @@ services:
     volumes:
       - ./apps/api:/home/node/apps/api
       - /home/node/apps/api/node_modules/
-      - ./packages/content/src:/home/node/packages/content/src
+      - ./packages/service-content/src:/home/node/packages/service-content/src
       - ./packages/database/src:/home/node/packages/database/src
       - ./packages/schemas/src:/home/node/packages/schemas/src
       - ./packages/redis/src:/home/node/packages/redis/src
       - ./packages/types/src:/home/node/packages/types/src
-      - ./packages/user/src:/home/node/packages/user/src
+      - ./packages/service-user/src:/home/node/packages/service-user/src
       - cdn:$CDN_PATH
       - sync:${SYNC_PATH:-/tmp/sync}
     depends_on:

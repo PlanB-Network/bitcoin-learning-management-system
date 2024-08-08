@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { createUpdatePayment } from '@blms/user';
+import { createUpdatePayment } from '@blms/service-user';
 
 import { publicProcedure } from '../../procedures/index.js';
 

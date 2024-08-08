@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { createGetProfessor, createGetProfessors } from '@blms/content';
 import { formattedProfessorSchema, fullProfessorSchema } from '@blms/schemas';
+import { createGetProfessor, createGetProfessors } from '@blms/service-content';
 import type { FormattedProfessor, FullProfessor } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';

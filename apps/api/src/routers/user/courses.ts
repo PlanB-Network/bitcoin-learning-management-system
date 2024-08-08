@@ -1,18 +1,13 @@
 import { z } from 'zod';
 
-import { createCalculateCourseChapterSeats } from '@blms/content';
 import {
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
   courseUserChapterSchema,
 } from '@blms/schemas';
-import type {
-  CourseProgress,
-  CourseProgressExtended,
-  CourseUserChapter,
-} from '@blms/types';
-import type { GetPaymentOutput } from '@blms/user';
+import { createCalculateCourseChapterSeats } from '@blms/service-content';
+import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
   createGetPayment,
@@ -23,7 +18,12 @@ import {
   createSaveQuizAttempt,
   createSaveUserChapter,
   generateChapterTicket,
-} from '@blms/user';
+} from '@blms/service-user';
+import type {
+  CourseProgress,
+  CourseProgressExtended,
+  CourseUserChapter,
+} from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 

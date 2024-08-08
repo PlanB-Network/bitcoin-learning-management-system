@@ -50,9 +50,6 @@ importers:
 
   apps/api:
     dependencies:
-      '@blms/content':
-        specifier: workspace:*
-        version: link:../../packages/content
       '@blms/database':
         specifier: workspace:*
         version: link:../../packages/database
@@ -65,9 +62,12 @@ importers:
       '@blms/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
-      '@blms/user':
+      '@blms/service-content':
         specifier: workspace:*
-        version: link:../../packages/user
+        version: link:../../packages/service-content
+      '@blms/service-user':
+        specifier: workspace:*
+        version: link:../../packages/service-user
       '@trpc/server':
         specifier: 11.0.0-rc.433
         version: 11.0.0-rc.433
@@ -323,49 +323,6 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0(rollup@4.20.0)(typescript@5.5.3)(vite@5.3.5(@types/node@22.1.0)(sass@1.77.8))
 
-  packages/content:
-    dependencies:
-      '@blms/database':
-        specifier: workspace:*
-        version: link:../database
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
-      ioredis:
-        specifier: ^5.4.1
-        version: 5.4.1
-      js-yaml:
-        specifier: ^4.1.0
-        version: 4.1.0
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-      marked:
-        specifier: ^13.0.3
-        version: 13.0.3
-      uuid:
-        specifier: ^10.0.0
-        version: 10.0.0
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
-    devDependencies:
-      '@blms/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@blms/types':
-        specifier: workspace:*
-        version: link:../types
-      '@types/js-yaml':
-        specifier: ^4.0.9
-        version: 4.0.9
-      '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
-      '@types/uuid':
-        specifier: ^10.0.0
-        version: 10.0.0
-
   packages/database:
     dependencies:
       drizzle-orm:
@@ -532,6 +489,95 @@ importers:
         specifier: 3.23.8
         version: 3.23.8
 
+  packages/service-content:
+    dependencies:
+      '@blms/database':
+        specifier: workspace:*
+        version: link:../database
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      ioredis:
+        specifier: ^5.4.1
+        version: 5.4.1
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      marked:
+        specifier: ^13.0.3
+        version: 13.0.3
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@blms/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@blms/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.7
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
+
+  packages/service-user:
+    dependencies:
+      '@blms/database':
+        specifier: workspace:*
+        version: link:../database
+      '@trpc/server':
+        specifier: 11.0.0-rc.433
+        version: 11.0.0-rc.433
+      '@types/qr-image':
+        specifier: ^3.2.9
+        version: 3.2.9
+      argon2:
+        specifier: ^0.40.3
+        version: 0.40.3
+      bip39:
+        specifier: ^3.1.0
+        version: 3.1.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      pdfkit:
+        specifier: ^0.15.0
+        version: 0.15.0
+      qr-image:
+        specifier: ^3.2.0
+        version: 3.2.0
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+    devDependencies:
+      '@blms/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@blms/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.7
+      '@types/pdfkit':
+        specifier: ^0.13.4
+        version: 0.13.4
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
+
   packages/types:
     devDependencies:
       '@blms/eslint-config':
@@ -649,52 +695,6 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.7)
-
-  packages/user:
-    dependencies:
-      '@blms/database':
-        specifier: workspace:*
-        version: link:../database
-      '@trpc/server':
-        specifier: 11.0.0-rc.433
-        version: 11.0.0-rc.433
-      '@types/qr-image':
-        specifier: ^3.2.9
-        version: 3.2.9
-      argon2:
-        specifier: ^0.40.3
-        version: 0.40.3
-      bip39:
-        specifier: ^3.1.0
-        version: 3.1.0
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-      pdfkit:
-        specifier: ^0.15.0
-        version: 0.15.0
-      qr-image:
-        specifier: ^3.2.0
-        version: 3.2.0
-      uuid:
-        specifier: ^10.0.0
-        version: 10.0.0
-    devDependencies:
-      '@blms/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@blms/types':
-        specifier: workspace:*
-        version: link:../types
-      '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
-      '@types/pdfkit':
-        specifier: ^0.13.4
-        version: 0.13.4
-      '@types/uuid':
-        specifier: ^10.0.0
-        version: 10.0.0
 
 packages:
 

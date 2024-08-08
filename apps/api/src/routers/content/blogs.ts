@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { createGetBlog, createGetBlogs } from '@blms/content';
+import { createGetBlog, createGetBlogs } from '@blms/service-content';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';

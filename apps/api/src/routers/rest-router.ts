@@ -10,15 +10,15 @@ import formidable from 'formidable';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
-import { createCalculateEventSeats } from '@blms/content';
-import type { UserFile } from '@blms/types';
+import { createCalculateEventSeats } from '@blms/service-content';
 import {
   createGetUserFile,
   createInsertFile,
   createSetProfilePicture,
   createUpdateEventPayment,
   createUpdatePayment,
-} from '@blms/user'; // Assuming this dependency is correct
+} from '@blms/service-user'; // Assuming this dependency is correct
+import type { UserFile } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';

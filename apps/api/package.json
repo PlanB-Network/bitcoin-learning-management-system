@@ -17,12 +17,12 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@blms/content": "workspace:*",
+    "@blms/service-content": "workspace:*",
     "@blms/database": "workspace:*",
     "@blms/github": "workspace:*",
     "@blms/redis": "workspace:*",
     "@blms/schemas": "workspace:*",
-    "@blms/user": "workspace:*",
+    "@blms/service-user": "workspace:*",
     "@trpc/server": "11.0.0-rc.433",
     "argon2": "^0.40.3",
     "bech32": "^2.0.0",

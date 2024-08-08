@@ -1,5 +1,5 @@
 {
-  "name": "@blms/content",
+  "name": "@blms/service-user",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -20,19 +20,20 @@
   },
   "dependencies": {
     "@blms/database": "workspace:*",
-    "gray-matter": "^4.0.3",
-    "ioredis": "^5.4.1",
-    "js-yaml": "^4.1.0",
+    "@trpc/server": "11.0.0-rc.433",
+    "@types/qr-image": "^3.2.9",
+    "argon2": "^0.40.3",
+    "bip39": "^3.1.0",
     "lodash": "^4.17.21",
-    "marked": "^13.0.3",
-    "uuid": "^10.0.0",
-    "zod": "^3.23.8"
+    "pdfkit": "^0.15.0",
+    "qr-image": "^3.2.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
     "@blms/types": "workspace:*",
-    "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.17.7",
+    "@types/pdfkit": "^0.13.4",
     "@types/uuid": "^10.0.0"
   }
 }

@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import { userRolesSchema } from '@blms/schemas';
-import type { UserRoles } from '@blms/types';
 import {
   createChangeDisplayName,
   createChangeEmailConfirmation,
@@ -14,7 +13,8 @@ import {
   createGetUsersRoles,
   createPasswordReset,
   createPasswordResetToken,
-} from '@blms/user';
+} from '@blms/service-user';
+import type { UserRoles } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 

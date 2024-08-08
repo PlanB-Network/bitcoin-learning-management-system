@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
-import { createGetExistingLikeTutorial, createLikeTutorial } from '@blms/user';
+import {
+  createGetExistingLikeTutorial,
+  createLikeTutorial,
+} from '@blms/service-user';
 
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';

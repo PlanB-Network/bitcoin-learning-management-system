@@ -4,8 +4,8 @@
   "tasks": {
     "check-types": {
       "dependsOn": [
-        "@blms/content#build-types",
-        "@blms/user#build-types",
+        "@blms/service-content#build-types",
+        "@blms/service-user#build-types",
         "@blms/github#build-types",
         "@blms/redis#build-types"
       ]
@@ -13,16 +13,16 @@
     "build-types": {
       "outputs": ["dist/**"],
       "dependsOn": [
-        "@blms/content#build-types",
-        "@blms/user#build-types",
+        "@blms/service-content#build-types",
+        "@blms/service-user#build-types",
         "@blms/github#build-types",
         "@blms/redis#build-types"
       ]
     },
     "build": {
       "dependsOn": [
-        "@blms/content#build",
-        "@blms/user#build",
+        "@blms/service-content#build",
+        "@blms/service-user#build",
         "@blms/github#build",
         "@blms/redis#build"
       ],

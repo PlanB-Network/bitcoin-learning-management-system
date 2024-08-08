@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 import { invoiceSchema, ticketSchema } from '@blms/schemas';
+import { createGetInvoices, createGetTickets } from '@blms/service-user';
 import type { Invoice, Ticket } from '@blms/types';
-import { createGetInvoices, createGetTickets } from '@blms/user';
 
 import type { Parser } from '#src/trpc/types.js';
 

@@ -1,19 +1,19 @@
 import { z } from 'zod';
 
 import {
+  joinedCourseChapterSchema,
+  joinedCourseWithAllSchema,
+  joinedCourseWithProfessorsSchema,
+  joinedQuizQuestionSchema,
+} from '@blms/schemas';
+import {
   createCalculateCourseChapterSeats,
   createGetCourse,
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
   createGetCourses,
-} from '@blms/content';
-import {
-  joinedCourseChapterSchema,
-  joinedCourseWithAllSchema,
-  joinedCourseWithProfessorsSchema,
-  joinedQuizQuestionSchema,
-} from '@blms/schemas';
+} from '@blms/service-content';
 import type {
   JoinedCourseChapter,
   JoinedCourseWithAll,
