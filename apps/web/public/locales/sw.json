@@ -33,7 +33,8 @@
     "errors": {
       "usernameRegex": "Username can only contain letters, digits, _, . and -",
       "usernameRequired": "Username is required",
-      "usernameTooShort": "Username must contain at least 5 characters"
+      "usernameTooShort": "Username must contain at least 5 characters",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Forgot your password?",
     "headerAccountCreated": "Account created",
@@ -45,7 +46,8 @@
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
     "signIn": "Sign In",
-    "checkingTokenExplain": ""
+    "checkingTokenExplain": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -60,7 +62,10 @@
     "visualContent": {
       "description": "This content is raw visual data, to be used for your creations.",
       "title": "Visual Content"
-    }
+    },
+    "contributeDescription": "",
+    "contributeButton": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "Abstract",
@@ -79,7 +84,8 @@
   },
   "builders": {
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageTitle": "The Builder Portal",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
@@ -165,7 +171,9 @@
       "s2t1": "Bitcoin education is a journey not a destination",
       "s3PickLevel": "Pick levels :",
       "s3PickTopic": "Pick topics :",
-      "s3t1": "Build your own path down the rabbit hole"
+      "s3t1": "Build your own path down the rabbit hole",
+      "seeCourse": "",
+      "findCourses": ""
     },
     "footer": {
       "": ""
@@ -223,7 +231,11 @@
       "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
     },
     "review": {
-      "loading": ""
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     },
     "exam": {
       "congratulationsPassed": "",
@@ -238,7 +250,8 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "whereYouAre": ""
+      "whereYouAre": "",
+      "inprogressCoursesDescription": ""
     },
     "account": "",
     "courses": "",
@@ -264,7 +277,11 @@
     },
     "bookings": "",
     "profile": {
-      "saving": ""
+      "saving": "",
+      "emailChangeConfirmation": ""
+    },
+    "bCertificate": {
+      "noResults": ""
     }
   },
   "events": {
@@ -742,6 +759,27 @@
     "total": ""
   },
   "bCertificate": {
-    "challengeYourself": ""
+    "challengeYourself": "",
+    "organizeDescription": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "readChart": "",
+    "bCertificateDescription": ""
+  },
+  "glossary": {
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": "",
+    "filterBar": ""
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
