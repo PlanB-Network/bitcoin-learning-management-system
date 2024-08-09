@@ -19,7 +19,10 @@ import { CoursesMarkdownBody } from '#src/components/CoursesMarkdownBody/index.j
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
-import { addSpaceToCourseId } from '#src/utils/courses.js';
+import {
+  addSpaceToCourseId,
+  goToChapterParameters,
+} from '#src/utils/courses.js';
 import { compose, computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
@@ -32,42 +35,13 @@ import { CourseLayout } from '../-other/layout.tsx';
 import { ClassDetails } from '../-pages-components/class-details.tsx';
 import { LiveVideo } from '../-pages-components/live-video.tsx';
 
+import { CourseReview } from './-components/course-review.tsx';
+
 export const Route = createFileRoute('/_content/courses/$courseId/$chapterId')({
   component: CourseChapter,
 });
 
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
-
-const goToChapterParameters = (chapter: Chapter, type: 'previous' | 'next') => {
-  const allChapters = chapter.course.parts.flatMap((part) => part.chapters);
-
-  const currentChapterPosition = allChapters.findIndex(
-    (chap) => chap.chapterId === chapter.chapterId,
-  );
-
-  if (type === 'previous') {
-    if (currentChapterPosition < 1) {
-      return { courseId: chapter.course.id };
-    } else {
-      const gotoChapter = allChapters[currentChapterPosition - 1];
-      return {
-        courseId: chapter.course.id,
-        chapterId: gotoChapter.chapterId,
-        chapterName: gotoChapter.title,
-      };
-    }
-  } else {
-    if (currentChapterPosition === allChapters.length - 1) {
-      return { courseId: chapter.course.id };
-    }
-    const gotoChapter = allChapters[currentChapterPosition + 1];
-    return {
-      courseId: chapter.course.id,
-      chapterId: gotoChapter.chapterId,
-      chapterName: gotoChapter.title,
-    };
-  }
-};
 
 const NextLessonBanner = ({ chapter }: { chapter: Chapter }) => {
   const courseParts = chapter.course.parts;
@@ -580,22 +554,15 @@ function shuffleArray<T>(array: T[]): T[] {
   return newArray;
 }
 
-function CourseReview() {
-  return (
-    <div>
-      <h1 className="text-center text-sm md:text-2xl text-newOrange-1 leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
-        Feedback session
-      </h1>
-    </div>
-  );
-}
-
 function CourseChapter() {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
   const { courseId, chapterId } = useParams({
     from: '/courses/$courseId/$chapterId',
   });
+
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
     id: courseId,
@@ -638,6 +605,11 @@ function CourseChapter() {
       return sections;
     }
   }, [chapter]);
+
+  const isSpecialChapter =
+    chapter?.isCourseReview ||
+    chapter?.isCourseExam ||
+    chapter?.isCourseConclusion;
 
   let displayClassDetails = false;
   let displayLiveSection = false;
@@ -720,7 +692,21 @@ function CourseChapter() {
               <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:px-2 md:mt-8 md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden">
                 <Header chapter={chapter} sections={sections} />
 
-                {chapter.isCourseReview && <CourseReview></CourseReview>}
+                {chapter.isCourseReview && (
+                  <>
+                    {isLoggedIn ? (
+                      <CourseReview chapter={chapter}></CourseReview>
+                    ) : (
+                      <>
+                        <p>Please log in</p>
+                        <CourseReview
+                          chapter={chapter}
+                          formDisabled={true}
+                        ></CourseReview>
+                      </>
+                    )}
+                  </>
+                )}
 
                 {displayLiveSection && chapter.liveUrl && chapter.startDate && (
                   <LiveVideo
@@ -730,7 +716,7 @@ function CourseChapter() {
                   />
                 )}
                 <MarkdownContent chapter={chapter} />
-                {displayQuizAndNext && (
+                {!isSpecialChapter && displayQuizAndNext && (
                   <>
                     {questionsArray && questionsArray.length > 0 && (
                       <>

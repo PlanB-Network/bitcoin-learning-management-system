@@ -36,6 +36,20 @@ export interface CourseQuizAttempts {
   doneAt: Date;
 }
 
+export interface CourseReview {
+  uid: string;
+  courseId: string;
+  general: number;
+  length: number;
+  difficulty: number;
+  quality: number;
+  faithful: number;
+  recommand: number;
+  publicComment: string | null;
+  teacherComment: string | null;
+  adminComment: string | null;
+}
+
 export interface CourseProgressExtended {
   uid: string;
   courseId: string;

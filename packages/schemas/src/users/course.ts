@@ -4,6 +4,7 @@ import { z } from 'zod';
 import {
   usersCoursePayment,
   usersCourseProgress,
+  usersCourseReview,
   usersCourseUserChapter,
   usersQuizAttempts,
 } from '@blms/database';
@@ -16,6 +17,7 @@ export const courseUserChapterSchema = createSelectSchema(
   usersCourseUserChapter,
 );
 export const courseQuizAttemptsSchema = createSelectSchema(usersQuizAttempts);
+export const courseReviewSchema = createSelectSchema(usersCourseReview);
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({

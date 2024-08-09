@@ -10,9 +10,11 @@ import { createCalculateCourseChapterSeats } from '@blms/service-content';
 import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
+  createGetCourseReview,
   createGetPayment,
   createGetProgress,
   createGetUserChapter,
+  createSaveCourseReview,
   createSaveFreePayment,
   createSavePayment,
   createSaveQuizAttempt,
@@ -70,6 +72,31 @@ const saveQuizAttemptProcedure = studentProcedure
       chapterId: input.chapterId,
       questionsCount: input.questionsCount,
       correctAnswersCount: input.correctAnswersCount,
+    }),
+  );
+
+const saveCourseReviewProcedure = studentProcedure
+  .input(
+    z.object({
+      general: z.number(),
+      length: z.number(),
+      difficulty: z.number(),
+      quality: z.number(),
+      faithful: z.number(),
+      recommand: z.number(),
+      publicComment: z.string(),
+      teacherComment: z.string(),
+      adminComment: z.string(),
+      courseId: z.string(),
+    }),
+  )
+  .output(z.void())
+  .mutation(({ ctx, input }) =>
+    createSaveCourseReview(ctx.dependencies)({
+      newReview: {
+        ...input,
+        uid: ctx.user.uid,
+      },
     }),
   );
 
@@ -171,6 +198,17 @@ const getUserChapterProcedure = studentProcedure
     }),
   );
 
+const getCourseReviewProcedure = studentProcedure
+  .input(z.object({ courseId: z.string() }))
+  // TODO manage null case
+  // .output<Parser<CourseReview | null>>(courseReviewSchema)
+  .query(({ ctx, input }) =>
+    createGetCourseReview(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    }),
+  );
+
 const saveUserChapterProcedure = studentProcedure
   .input(
     z.object({
@@ -212,9 +250,11 @@ const downloadChapterTicketProcedure = studentProcedure
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
+  getCourseReview: getCourseReviewProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,
+  saveCourseReview: saveCourseReviewProcedure,
   saveQuizAttempt: saveQuizAttemptProcedure,
   saveUserChapter: saveUserChapterProcedure,
   savePayment: savePaymentProcedure,
