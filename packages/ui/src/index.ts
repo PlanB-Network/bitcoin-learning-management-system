@@ -4,6 +4,7 @@ export * from './atoms/avatar.tsx';
 export * from './atoms/button.tsx';
 export * from './atoms/divider.tsx';
 export * from './atoms/select.tsx';
+export * from './atoms/slider.tsx';
 export * from './atoms/tabs.tsx';
 export * from './atoms/tag.tsx';
 export * from './atoms/text-input.tsx';
