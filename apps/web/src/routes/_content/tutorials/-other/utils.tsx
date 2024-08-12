@@ -41,6 +41,11 @@ export const TUTORIALS_CATEGORIES = [
 
 export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {
   return [
-    ...new Set(tutorials.filter(Boolean).map((t) => t.subcategory)),
+    ...new Set(
+      tutorials
+        .filter(Boolean)
+        .map((t) => t.subcategory)
+        .filter((sub): sub is string => sub !== null && sub !== undefined),
+    ),
   ] as string[];
 };
