@@ -25,8 +25,14 @@ export const getUserQuery = (options: GetUserOptions) => {
   }
 
   return sql<UserAccount[]>`
-    SELECT * FROM users.accounts
-    WHERE ${sql(key)} ILIKE ${value};
+    SELECT 
+      ua.*, p.contributor_id, array_agg(DISTINCT cp.course_id) as professor_courses, array_agg(DISTINCT tp.tutorial_id) as professor_tutorials
+    FROM users.accounts ua
+    LEFT JOIN content.professors p ON ua.professor_id = p.id
+    LEFT JOIN content.course_professors cp ON p.contributor_id = cp.contributor_id
+    LEFT JOIN content.tutorial_credits tp ON p.contributor_id = tp.contributor_id
+    WHERE ${sql(key)} ILIKE ${value}
+    GROUP BY ua.uid ,p.contributor_id;
   `;
 };
 

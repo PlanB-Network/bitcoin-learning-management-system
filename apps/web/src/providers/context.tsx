@@ -15,6 +15,8 @@ interface Session {
     uid: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
     professorId: number | null;
+    professorCourses: string[];
+    professorTutorials: number[];
   };
 }
 
@@ -83,6 +85,12 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
               uid: data.user.uid,
               role: data.user.role,
               professorId: data.user.professorId,
+              professorCourses: data.user.professorCourses
+                ? data.user.professorCourses
+                : [],
+              professorTutorials: data.user.professorTutorials
+                ? data.user.professorTutorials
+                : [],
             },
           };
           return setSession(validSession);
