@@ -14,6 +14,7 @@ export const LANGUAGES = [
   'it',
   'ja',
   'pt',
+  'ru',
   'vi',
 ];
 
@@ -27,6 +28,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   it: 'Italiano',
   ja: '日本語',
   pt: 'Português',
+  ru: 'Русский',
   vi: 'Tiếng Việt',
 };
 

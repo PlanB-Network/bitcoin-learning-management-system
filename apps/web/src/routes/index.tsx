@@ -269,15 +269,15 @@ function Home() {
         <div className={cn(subSectionClass)}>
           <div className="flex flex-col gap-3 px-4 md:text-center">
             <p className={cn(paragraphCss, 'font-medium !text-orange-500')}>
-              Wall of love
+              {t('home.wallOfLoveSection.title')}
             </p>
             <p className="font-semibold md:text-4xl">
-              What Bitcoiners say about us
+              {t('home.wallOfLoveSection.subtitle')}
             </p>
             <div className="mt-4 flex flex-row justify-center gap-8 px-6 md:mt-12 xl:px-20">
               <div className="flex flex-col gap-8 lg:max-w-sm">
                 <TwitterCard
-                  text="Bullish on Planbnetwork: they centralize #bitcoin education, so we can decentralize it"
+                  text="Bullish on Plan B Network: they centralize #bitcoin education, so we can decentralize it"
                   name="Mire"
                   handle="@mir_btc"
                   image={TwitterMirBtc}
