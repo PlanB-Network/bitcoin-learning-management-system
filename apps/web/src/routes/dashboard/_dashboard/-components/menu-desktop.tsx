@@ -40,6 +40,7 @@ export const MenuDesktop = ({
   const coursesPath = '/dashboard/courses';
   const profilePath = '/dashboard/profile';
   const administrationPath = '/dashboard/administration';
+  const professorCoursesPath = '/dashboard/professor/courses';
 
   useEffect(() => {
     if (location) {
@@ -111,15 +112,43 @@ export const MenuDesktop = ({
             active={pathname.includes(profilePath)}
           />
         </Link>
+
         {(session?.user.role === 'admin' ||
           session?.user.role === 'superadmin') && (
-          <Link to={administrationPath}>
-            <MenuItem
-              text={t('dashboard.administration')}
-              icon={<MdOutlineAdminPanelSettings size={24} />}
-              active={pathname.includes(administrationPath)}
-            />
-          </Link>
+          <>
+            <Separator />
+
+            <p className="uppercase text-white italic ml-12 text-sm">
+              Admin menu
+            </p>
+            <Link to={administrationPath}>
+              <MenuItem
+                text={t('dashboard.administration')}
+                icon={<MdOutlineAdminPanelSettings size={24} />}
+                active={pathname.includes(administrationPath)}
+              />
+            </Link>
+          </>
+        )}
+
+        {session?.user.role === 'professor' && (
+          <>
+            <Separator />
+
+            <p className="uppercase text-white italic ml-12 text-sm">
+              Teacher menu
+            </p>
+
+            {session.user.professorCourses.length > 0 && (
+              <Link to={professorCoursesPath}>
+                <MenuItem
+                  text={t('dashboard.courses')}
+                  icon={<AiOutlineBook size={24} />}
+                  active={pathname.includes(professorCoursesPath)}
+                />
+              </Link>
+            )}
+          </>
         )}
 
         <Separator />

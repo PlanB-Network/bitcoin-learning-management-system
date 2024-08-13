@@ -44,6 +44,7 @@ import { Route as ContentMiscAboutImport } from './routes/_content/_misc/about';
 import { Route as ContentTutorialsCategoryIndexImport } from './routes/_content/tutorials/$category/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
+import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesWordWordIdImport } from './routes/_content/resources/word.$wordId';
 import { Route as ContentResourcesPodcastPodcastIdImport } from './routes/_content/resources/podcast.$podcastId';
@@ -239,6 +240,12 @@ const ContentMiscPublicCommunicationIndexRoute =
   ContentMiscPublicCommunicationIndexImport.update({
     path: '/public-communication/',
     getParentRoute: () => rootRoute,
+  } as any);
+
+const DashboardDashboardProfessorCoursesRoute =
+  DashboardDashboardProfessorCoursesImport.update({
+    path: '/professor/courses',
+    getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
 const ContentTutorialsCategoryNameRoute =
@@ -636,6 +643,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryNameImport;
       parentRoute: typeof ContentTutorialsCategoryImport;
     };
+    '/dashboard/_dashboard/professor/courses': {
+      id: '/dashboard/_dashboard/professor/courses';
+      path: '/professor/courses';
+      fullPath: '/dashboard/professor/courses';
+      preLoaderRoute: typeof DashboardDashboardProfessorCoursesImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/_content/_misc/public-communication/': {
       id: '/_content/_misc/public-communication/';
       path: '/public-communication';
@@ -728,6 +742,7 @@ export const routeTree = rootRoute.addChildren({
       DashboardDashboardCalendarRoute,
       DashboardDashboardCoursesRoute,
       DashboardDashboardProfileRoute,
+      DashboardDashboardProfessorCoursesRoute,
     }),
   }),
   ContentMiscAboutRoute,
@@ -842,7 +857,8 @@ export const routeTree = rootRoute.addChildren({
         "/dashboard/_dashboard/bookings",
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
-        "/dashboard/_dashboard/profile"
+        "/dashboard/_dashboard/profile",
+        "/dashboard/_dashboard/professor/courses"
       ]
     },
     "/_content/_misc/about": {
@@ -968,6 +984,10 @@ export const routeTree = rootRoute.addChildren({
     "/_content/tutorials/$category/$name": {
       "filePath": "_content/tutorials/$category/$name.tsx",
       "parent": "/_content/tutorials/$category"
+    },
+    "/dashboard/_dashboard/professor/courses": {
+      "filePath": "dashboard/_dashboard/professor/courses.tsx",
+      "parent": "/dashboard/_dashboard"
     },
     "/_content/_misc/public-communication/": {
       "filePath": "_content/_misc/public-communication/index.tsx"

@@ -23,6 +23,8 @@ declare module 'express-session' {
     uid?: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
     professorId?: number | null;
+    professorCourses: string[];
+    professorTutorials: number[];
   }
 }
 

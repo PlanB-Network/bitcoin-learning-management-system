@@ -3,7 +3,13 @@ import { z } from 'zod';
 
 import { usersAccounts, usersLud4PublicKeys } from '@blms/database';
 
-export const userAccountSchema = createSelectSchema(usersAccounts);
+export const userAccountSchema = createSelectSchema(usersAccounts).merge(
+  z.object({
+    professorCourses: z.string().array(),
+    professorTutorials: z.number().array(),
+  }),
+);
+
 export const userDetailsSchema = userAccountSchema.pick({
   uid: true,
   username: true,
