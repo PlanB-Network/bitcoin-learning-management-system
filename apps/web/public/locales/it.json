@@ -5,15 +5,15 @@
     "missionContent1": "La nostra missione è supportare le comunità Bitcoin locali attraverso l'educazione open-source e la creazione di reti. Raccogliamo, organizziamo e creiamo le risorse necessarie (corsi, libri, manifesti, volantini, video) per far avanzare il settore Bitcoin.",
     "missionContent2": "Centralizziamo la conoscenza per distribuirla meglio attraverso un repository GitHub semplice e multilingue e una piattaforma di e-learning. Assistiamo gli hub Bitcoin locali nel loro sviluppo con gli strumenti giusti per far crescere il loro talento.",
     "commitmentTitle": "I nostri impegni",
-    "commitmentContent": "I nostri impegni nei confronti della comunità bitcoin sono i seguenti: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Traduci i nostri contenuti in quante più lingue possibili \n • Supporta i costruttori Bitcoin nel loro viaggio di imprenditorialità",
+    "commitmentContent": "I nostri impegni nei confronti della comunità bitcoin sono i seguenti: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Tradurre i nostri contenuti in quante più lingue possibili \n • Supportare i \"costruttori\" del mondo Bitcoin nel loro viaggio di imprenditorialità",
     "coreTeamTitle": "Il team principale",
-    "coreTeamContent": "PlanB Network è un collettivo di centinaia di collaboratori, insegnanti, leader della comunità, designer, sviluppatori e organizzatori. Molte grazie alle numerose persone che hanno reso PlanB una realtà e continuano a farlo ogni giorno",
+    "coreTeamContent": "PlanB Network è un collettivo di centinaia di collaboratori, insegnanti, leader della comunità, designer, sviluppatori e organizzatori. Un grazie ringraziamento va alle diverse persone che hanno reso PlanB una realtà e continuano a farlo ogni giorno",
     "coreTeamGiacomoRole": "Direttore e cofondatore",
     "coreTeamRogzyRole": "Product manager & Co-fondatore",
     "coreTeamAsioRole": "Coordinatore educativo",
     "coreTeamAjelexRole": "Coordinatore del nodo",
     "corporateTitle": "Aziende che ci supportano",
-    "corporateContent": "PlanB Network è il progetto congiunto di tre entitites concentrarsi sullo sviluppo di Bitcoin. Nel tentativo di scalare lo strato educativo bitcoin, hanno deciso di collaborare per formare PlanB Network. Per riuscire nel nostro obiettivo di portare l'educazione bitcoin al mondo, molte altre entità hanno deciso di contribuire e unire le forze. Molte grazie a loro",
+    "corporateContent": "PlanB Network è il progetto congiunto di tre organizzazioni concentrate sullo sviluppo di Bitcoin. Nel tentativo di espandere il livello educativo di Bitcoin, hanno deciso di collaborare per formare PlanB Network. Per realizzare il nostro obiettivo di portare l'educazione Bitcoin al mondo, molte altre organizzazioni hanno deciso di contribuire e unire le forze. Un grande grazie va a tutti loro.",
     "coportateContact": "Informazioni di contatto:",
     "storyTitle": "La nostra storia",
     "storyContent": "PlanB è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e l'appartenenza alla comunità. Insieme, hanno deciso di costruire PlanB e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
@@ -527,7 +527,7 @@
   },
   "notFound": {
     "here": "Qui",
-    "pageSubtitle": "Sembra che qualcuno sia caduto troppo in profondità nel buco del coniglio e si sia perso. Per tornare in superficie, clicca",
+    "pageSubtitle": "Sembra che qualcuno sia caduto troppo in profondità nella tana del coniglio e si sia perso. Per tornare in superficie, clicca",
     "pageTitle": "Ooops."
   },
   "podcast": {
@@ -580,7 +580,8 @@
     "github": "Tutti questi dati sono gestiti tramite un unico repository open source <0>Github</0>. Non esitare a contribuire e aggiungere eventuali contenuti mancanti.",
     "glossary": {
       "title": "Glossario"
-    }
+    },
+    "searchFilterName": "Cerca per nome"
   },
   "settings": {
     "changePassword": "Cambia password",
@@ -594,7 +595,10 @@
       "enjoyed": "Ti è piaciuto questo tutorial?",
       "madeBy": "Questo tutorial è stato realizzato da",
       "source": "Fonte originale : ",
-      "tipTooltip": "Ti piace? Dona."
+      "tipTooltip": "Ti piace? Dona.",
+      "author": "Autore: ",
+      "didHelp": "E' stato d'aiuto?",
+      "writtenBy": "Questo tutorial è stato scritto da:"
     },
     "exchange": {
       "centralized": {
@@ -609,7 +613,8 @@
     },
     "explorer": {
       "description": "Tutti questi tutorial sono stati scritti da appassionati e dediti bitcoiner, che desiderano diffondere l'educazione su bitcoin in tutto il mondo. Non dimenticate di mettere un like, fare una recensione, e donare qualche sats!",
-      "didYouKnow": "Lo sapevi?"
+      "didYouKnow": "Lo sapevi?",
+      "exploreAllTutorials": "Esplora tutti i tutorial"
     },
     "headerSignature": "Rogzy",
     "headerText": "Benvenuto nel foro coniglio infinito di Bitcoin! In questa sezione ti offriremo un tutoriel approfondito sulla maggior parte dei progetti bitcoin là fuori. Queste pagine in mantenere da benevolel e appassionato bitcoin che supportano il progetto open source. Se doveste pagare abbiamo commesso un errore, vi preghiamo di contattarlo.Per vedere il nostro allegato finanziario per la menzione del progetto si rimanda alla nostra relazione sulla trasparenza. Grazie per la vostra fiducia in questa università e godetevi il viaggio.",
@@ -639,7 +644,7 @@
       "title": "Nodo"
     },
     "pageDescription": "Bitcoin è un settore vasto, che si espande ogni giorno. Per aiutarvi ad esplorarlo, abbiamo raccolto un gran numero di tutorial che descrivono varie soluzioni.",
-    "pageSubtitle": "Benvenuto nella tana infinita del bianconiglio [di Bitcoin]!",
+    "pageSubtitle": "Svela i misteri di Bitcoin esplorando il suo vasto ecosistema",
     "pageTitle": "Tutorial",
     "privacy": {
       "bitcoin": {
@@ -682,7 +687,9 @@
       "general": {
         "description": "Sfoglia i nostri tutorial generali per arricchire la tua conoscenza di informatica e di altre materie relate alla sovranità individuale!"
       }
-    }
+    },
+    "approvedByCreator": "Approvato dal creatore",
+    "backTutorials": "Torna a tutti i tutorial"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -861,5 +868,28 @@
     "placeHolder": "Che cos'è questo?",
     "randomSearch": "Ricerca casuale",
     "relatedWords": "Parole correlate:"
+  },
+  "publicCommunication": {
+    "blogPost": "Blog & Notizie",
+    "legalSections": {
+      "cookies": "Cookie",
+      "contact": "Contatti"
+    },
+    "blogPageStrings": {
+      "noBlogs": "Non ci sono articoli al momento",
+      "pastArticleSubtitleText": "Articoli passati",
+      "noArticlesText": "Non ci sono post nel blog in questo momento.",
+      "errorMessageNotFound": "Blog non trovato.",
+      "blogSidebarTitle": "Post precedenti in Rete",
+      "filterText": "Filtro per argomento:"
+    },
+    "legal": "Informazioni legali",
+    "blogCategories": {
+      "all": "Tutte",
+      "network": "Rete"
+    },
+    "goBackButtons": {
+      "simpleGoBack": "Torna a tutti gli articoli"
+    }
   }
 }

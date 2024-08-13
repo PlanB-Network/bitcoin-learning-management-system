@@ -3,9 +3,9 @@
     "activeContributors": "Active contributors",
     "missionTitle": "Our mission",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
+    "missionContent2": "Centralizujemy wiedzę, aby lepiej ją dystrybuować za pomocą prostego, wielojęzycznego repozytorium GitHub i platformy do nauki online. Wspieramy lokalne centra Bitcoin w ich rozwoju, dostarczając odpowiednich narzędzi do rozwoju ich talentów.",
     "commitmentTitle": "Our commitments",
-    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "commitmentContent": "Nasze zobowiązania wobec społeczności Bitcoin są następujące:\n • Pozostać open-source\n • Dostarczać wysokiej jakości materiałów edukacyjnych\n • Tłumaczyć nasze treści na jak najwięcej języków\n • Wspierać przedsiębiorczość twórców Bitcoin",
     "coreTeamTitle": "The core team",
     "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
     "coreTeamGiacomoRole": "Director and Co-founder",
@@ -13,14 +13,14 @@
     "coreTeamAsioRole": "Educational coordinator",
     "coreTeamAjelexRole": "Node coordinator",
     "corporateTitle": "Corporate behind",
-    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "corporateContent": "PlanB Network to wspólny projekt trzech podmiotów skoncentrowanych na rozwoju Bitcoina. W dążeniu do skalowania warstwy edukacyjnej Bitcoina, zdecydowali się na współpracę, tworząc PlanB Network. Aby osiągnąć nasz cel, jakim jest szerzenie edukacji na temat Bitcoina na całym świecie, wiele innych podmiotów zdecydowało się wnieść swój wkład i połączyć siły. Jesteśmy im za to bardzo wdzięczni.",
     "coportateContact": "Contact information:",
     "storyTitle": "Our story",
-    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
+    "storyContent": "Sieć PlanB to inicjatywa mająca na celu wspieranie edukacji na temat Bitcoina na całym świecie. Jest to połączenie różnych, pełnych pasji firm z branży Bitcoin skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i poczuciu wspólnoty. Razem postanowili stworzyć sieć PlanB i oferować ekosystemowi Bitcoina odpowiednie narzędzia do rozwoju. Nasza prezentacja na rok 2023 jest dostępna tutaj.",
     "title": "About the planB network",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "description": ""
+    "description": "Sieć Plan B pomaga organizować się społecznościom na całym świecie, aby mogły polepszać jakość swojej oferty edukacyjnej. Platforma opracowuje  narzędzia niezbędne do osiągnięcia tego celu, takie jak akademia online, portal z samouczkami, zestaw edukacyjny Bitcoin i portal z materiałami edukacyjnymi."
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -33,18 +33,39 @@
     "errors": {
       "usernameRegex": "Username can only contain letters, digits, _, . and -",
       "usernameRequired": "Username is required",
-      "usernameTooShort": "Username must contain at least 5 characters"
+      "usernameTooShort": "Username must contain at least 5 characters",
+      "displayNameRegex": "Nazwa użytkownika może zawierać tylko litery, cyfry, _, ., - i spacje.",
+      "displayNameRequired": "Wymagana jest nazwa użytkownika.",
+      "displayNameTooShort": "Nazwa użytkownika musi zawierać co najmniej 2 znaki."
     },
     "forgottenPassword": "Forgot your password?",
     "headerAccountCreated": "Account created",
     "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
-    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountNeeded": "Nie potrzebujesz konta, aby zacząć naukę w sieci Plan!",
     "noAccountYet": "Don't have an account?",
     "resetPassword": "Réinitilisation de mot de passe",
     "passwordRequired": "Password is required",
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "passwordResetSent": "E-mail do zresetowania hasła został wysłany do Twojej skrzynki odbiorczej (jeśli taki adres e-mail istnieje w naszej bazie danych).",
+    "passwordMinLength": "Hasło musi mieć co najmniej {{len}} znaków",
+    "passwordChanged": "Hasło zostało zmienione",
+    "passwordSuccessfullyChanged": "Twoje hasło zostało zmienione. Teraz możesz zalogować się za pomocą nowego hasła.",
+    "backToLogin": "Powrót do logowania",
+    "backToHome": "Wróć na stronę startową",
+    "invalidToken": "Nieprawidłowy token",
+    "checkingToken": "Sprawdzanie tokenu",
+    "checkingTokenExplain": "Sprawdzamy, czy token jest ważny...",
+    "invalidTokenExplain": {
+      "expired": "Token stracił ważność",
+      "consumed": "Ten token został już wykorzystany",
+      "notFound": "Token nie został znaleziony",
+      "invalid": "Token jest nieprawidłowy"
+    },
+    "passwordResetError": "Błąd resetowania hasła",
+    "newPassword": "Nowe hasło",
+    "tryAgain": "Spróbuj ponownie"
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -59,7 +80,8 @@
     "visualContent": {
       "description": "This content is raw visual data, to be used for your creations.",
       "title": "Visual Content"
-    }
+    },
+    "contributeDescription": "Jeśli chcesz dodać, edytować lub przetłumaczyć jakąś treść, twoja pomoc będzie mile widziana!"
   },
   "book": {
     "abstract": "Abstract",
@@ -78,7 +100,10 @@
   },
   "builders": {
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Builder Portal"
+    "pageTitle": "The Builder Portal",
+    "languages": "Języki",
+    "networkStrength": "Siła sieci tkwi w jej członkach",
+    "otherCommunities": "Odkryj społeczności należące do PlanB"
   },
   "courses": {
     "categories": {
@@ -726,5 +751,20 @@
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "bCertificate": {
+    "bookExam": "Zarezerwuj termin egzaminu",
+    "challengeYourself": "Rzuć sobie wyzwanie i sprawdź swój poziom!",
+    "curious": "Ciekawy, jak wygląda egzamin?",
+    "joeNakamotoVideo": "Co to do licha jest egzamin z Bitcoina? Autorstwa Joe Nakamoto",
+    "knowledgeableBitcoin": "Znasz się na Bitcoinie?",
+    "noBookExam": "Nie zaplanowano jeszcze sesji egzaminacyjnej.",
+    "organizeDescription": "Nie ma problemu! Jeśli Twoja społeczność jest częścią sieci, zorganizowanie sesji egzaminacyjnej w Twoim centrum jest możliwe. Przeczytaj nasz statut, aby dowiedzieć się, jakie warunki należy spełnić, aby móc przeprowadzić egzamin. Jeśli możesz spełnić te warunki, możesz zaplanować swoją sesję i dodać ją na platformę.",
+    "organizeExam": "Zorganizuj egzamin",
+    "bCertificateDescription": "Certyfikat ₿ to międzynarodowo uznawany egzamin oceniający Twój poziom wiedzy na temat Bitcoina i tematów pokrewnych . Ten rozpoznawany w w branży Bitcoin certyfikat potwierdzi poziom Twoich umiejętności i wiedzy , dając Ci dostęp do firm i stanowisk w tej branży.",
+    "organizeTitle": "Chcesz zorganizować egzamin na certyfikat ₿ w swoim centrum?",
+    "pageTitle": "Zdobądź Certyfikat",
+    "pageSubtitle": "Masowe przyjęcie poprzez scentralizowane otwarte zasoby edukacyjne",
+    "checkout": "Dowiedz się więcej o Certyfikacie"
   }
 }
