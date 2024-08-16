@@ -19,6 +19,7 @@ const baseConfig: Config = {
       white: '#FFFFFF',
       black: '#000000',
       background: '#F2F2F2',
+      primary: '#FF5C00',
       secondary: '#B2B2B2',
       newBlack: {
         1: '#000000',

@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type { ChangeEventHandler } from 'react';
 import { useEffect, useState } from 'react';
 
-import { Button, Divider, Slider, cn } from '@blms/ui';
+import { Button, Divider, Ratings, Slider, cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { goToChapterParameters } from '#src/utils/courses.js';
@@ -12,12 +12,15 @@ import { trpc } from '#src/utils/trpc.js';
 type Chapter = NonNullable<TRPCRouterOutput['content']['getCourseChapter']>;
 
 const formDivClass = 'mb-6';
-const formLabelClass = 'text-center mb-2 block';
+const formLabelClass =
+  'text-center mb-2 block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-[#050A14]';
+const formSliderClass = '';
 
 function FormSlider({
   id,
   text,
   value,
+  stepNames = [],
   onChange,
   disabled,
   ...props
@@ -25,6 +28,7 @@ function FormSlider({
   id: string;
   text: string;
   value: number;
+  stepNames?: string[];
   onChange: (value: number[]) => void;
   disabled?: boolean;
 }) {
@@ -36,17 +40,53 @@ function FormSlider({
   };
 
   return (
-    <div className={formDivClass} {...props}>
-      <label className={formLabelClass} htmlFor={id}>
-        {text}
-      </label>
-      <Slider
-        {...sliderProps}
-        id={id}
-        disabled={disabled}
-        value={[value]}
-        onValueChange={onChange}
-      />
+    <div className="flex flex-col">
+      <div className={formDivClass} {...props}>
+        <label className={formLabelClass} htmlFor={id}>
+          {text}
+        </label>
+        <Slider
+          {...sliderProps}
+          className={formSliderClass}
+          id={id}
+          disabled={disabled}
+          value={[value]}
+          onValueChange={onChange}
+        />
+        <div className="relative mt-4">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2">
+            <div className="relative flex justify-between">
+              {Array.from({ length: 11 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-[2px] h-1 bg-newGray-3"
+                  style={{ left: `${(i / 10) * 100}%` }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="relative mt-8">
+          <div className="flex flex-col text-sm font-medium text-newGray-1">
+            {stepNames[0] && (
+              <span className="absolute self-start -translate-x-1/2">
+                {stepNames[0]}
+              </span>
+            )}
+            {stepNames[1] && (
+              <span className="absolute self-center">{stepNames[1]}</span>
+            )}
+            {stepNames[2] && (
+              <span className="absolute self-end translate-x-1/2">
+                {stepNames[2]}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="my-12 w-full self-center justify-center ml-auto">
+        <Divider></Divider>
+      </div>
     </div>
   );
 }
@@ -74,6 +114,7 @@ function FormTextArea({
         id={id}
         rows={3}
         value={value}
+        placeholder="Here you can write your thoughts"
         disabled={disabled}
         onChange={onChange}
         className="w-full rounded-md px-4 py-1 text-gray-400 border border-gray-400/6"
@@ -165,83 +206,97 @@ export function CourseReview({
             </p>
           </div>
           <form>
-            <FormSlider
-              id="general"
-              text="General"
-              value={review.general}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  general: v[0],
-                });
-              }}
-            />
+            <div className="mx-32">
+              <div className="my-12 mx-auto w-full">
+                <label className={formLabelClass} htmlFor={'general'}>
+                  General grade
+                </label>
+                <div className="bg-newGray-2 py-4 rounded-full w-fit mx-auto px-12">
+                  <Ratings
+                    id="general"
+                    value={review.general}
+                    variant="yellow"
+                    aria-disabled={formDisabled}
+                    totalStars={5}
+                    onValueChange={(v) => {
+                      setReview({
+                        ...review,
+                        general: v,
+                      });
+                    }}
+                  />
+                </div>
+              </div>
+              <FormSlider
+                id="length"
+                text="Length"
+                stepNames={['too short', 'as expected', 'too long']}
+                value={review.length}
+                disabled={formDisabled}
+                onChange={(v) => {
+                  setReview({
+                    ...review,
+                    length: v[0],
+                  });
+                }}
+              />
 
-            <FormSlider
-              id="length"
-              text="Length"
-              value={review.length}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  length: v[0],
-                });
-              }}
-            />
+              <FormSlider
+                id="difficulty"
+                text="Difficulty"
+                stepNames={['too easy', 'as expected', 'too hard']}
+                value={review.difficulty}
+                disabled={formDisabled}
+                onChange={(v) => {
+                  setReview({
+                    ...review,
+                    difficulty: v[0],
+                  });
+                }}
+              />
 
-            <FormSlider
-              id="difficulty"
-              text="Difficulty"
-              value={review.difficulty}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  difficulty: v[0],
-                });
-              }}
-            />
+              <FormSlider
+                id="quality"
+                text="Quality"
+                stepNames={['very bad', 'so and so', 'very good']}
+                value={review.quality}
+                disabled={formDisabled}
+                onChange={(v) => {
+                  setReview({
+                    ...review,
+                    quality: v[0],
+                  });
+                }}
+              />
 
-            <FormSlider
-              id="quality"
-              text="Quality"
-              value={review.quality}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  quality: v[0],
-                });
-              }}
-            />
+              <FormSlider
+                id="faithful"
+                text="True to objective ?"
+                stepNames={['no, not really', 'neutral', 'yes, very much']}
+                value={review.faithful}
+                disabled={formDisabled}
+                onChange={(v) => {
+                  setReview({
+                    ...review,
+                    faithful: v[0],
+                  });
+                }}
+              />
 
-            <FormSlider
-              id="faithful"
-              text="True to objective ?"
-              value={review.faithful}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  faithful: v[0],
-                });
-              }}
-            />
-
-            <FormSlider
-              id="recommand"
-              text="Would recommand ?"
-              value={review.recommand}
-              disabled={formDisabled}
-              onChange={(v) => {
-                setReview({
-                  ...review,
-                  recommand: v[0],
-                });
-              }}
-            />
+              <FormSlider
+                id="recommand"
+                text="Would recommand ?"
+                stepNames={['no', 'so and so', 'yes of course']}
+                value={review.recommand}
+                disabled={formDisabled}
+                onChange={(v) => {
+                  setReview({
+                    ...review,
+                    recommand: v[0],
+                  });
+                }}
+              />
+            </div>
 
             <div className="mb-12">
               <Divider></Divider>

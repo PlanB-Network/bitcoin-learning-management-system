@@ -3,6 +3,7 @@ export * from './atoms/alert-dialog.tsx';
 export * from './atoms/avatar.tsx';
 export * from './atoms/button.tsx';
 export * from './atoms/divider.tsx';
+export * from './atoms/ratings.tsx';
 export * from './atoms/select.tsx';
 export * from './atoms/slider.tsx';
 export * from './atoms/tabs.tsx';
