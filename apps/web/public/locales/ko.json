@@ -127,7 +127,8 @@
     "errors": {
       "usernameRegex": "",
       "usernameRequired": "",
-      "usernameTooShort": ""
+      "usernameTooShort": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "",
     "headerAccountCreated": "",
@@ -139,7 +140,8 @@
     "passwordsDontMatch": "",
     "sendLink": "",
     "signIn": "",
-    "checkingTokenExplain": ""
+    "checkingTokenExplain": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "",
@@ -154,7 +156,10 @@
     "visualContent": {
       "description": "",
       "title": ""
-    }
+    },
+    "contributeButton": "",
+    "contributeDescription": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "",
@@ -173,7 +178,8 @@
   },
   "builders": {
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -279,7 +285,9 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -337,7 +345,11 @@
       "dontGiveUpTryAgain": ""
     },
     "review": {
-      "loading": ""
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     }
   },
   "dashboard": {
@@ -369,10 +381,15 @@
       "details": "",
       "inprogress": "",
       "resumeLesson": "",
-      "whereYouAre": ""
+      "whereYouAre": "",
+      "inprogressCoursesDescription": ""
     },
     "profile": {
-      "saving": ""
+      "saving": "",
+      "emailChangeConfirmation": ""
+    },
+    "bCertificate": {
+      "noResults": ""
     }
   },
   "events": {
@@ -726,6 +743,27 @@
     "pageTitle": ""
   },
   "bCertificate": {
-    "challengeYourself": ""
+    "challengeYourself": "",
+    "organizeDescription": "",
+    "bCertificateDescription": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "readChart": ""
+  },
+  "glossary": {
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
