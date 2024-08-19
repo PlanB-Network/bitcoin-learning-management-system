@@ -39,7 +39,7 @@ export const LanguageSelector = ({
 
   const [open, setOpen] = useState(false);
 
-  const activeLanguage = i18n.resolvedLanguage ?? 'en';
+  const activeLanguage = i18n.language ?? 'en';
 
   const changeLanguage = (lang: string) => {
     setCurrentLanguage(lang);
@@ -102,7 +102,7 @@ export const LanguageSelector = ({
               >
                 <Flag code={language} size="l" />
                 <span className="capitalize leading-normal max-lg:hidden">
-                  {LANGUAGES_MAP[language] || language}
+                  {LANGUAGES_MAP[language.replaceAll('-', '')] || language}
                 </span>
               </button>
             ))}

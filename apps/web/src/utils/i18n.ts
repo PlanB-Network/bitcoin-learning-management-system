@@ -18,6 +18,7 @@ export const LANGUAGES = [
   'pt',
   'ru',
   'vi',
+  'zh-hans',
 ];
 
 export const LANGUAGES_MAP: { [key: string]: string } = {
@@ -34,6 +35,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   pt: 'Português',
   ru: 'Русский',
   vi: 'Tiếng Việt',
+  zhhans: '简体中文',
 };
 
 void i18n
@@ -41,7 +43,7 @@ void i18n
   .use(Backend)
   .use(initReactI18next)
   .init<HttpBackendOptions>({
-    load: 'languageOnly',
+    load: 'currentOnly',
     backend: {
       loadPath: '/locales/{{lng}}.json',
       requestOptions: {

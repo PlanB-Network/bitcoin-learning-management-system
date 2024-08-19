@@ -43,7 +43,10 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   // Temporary fix: the default language can be en-GB (or equivalent), until it is properly set with the selector
   // and these aren't supported. Fallback to 'en' in that case for now.
   useLayoutEffect(() => {
-    if (i18n.language.includes('-')) {
+    if (
+      i18n.language.includes('-') &&
+      i18n.language.toLowerCase() !== 'zh-hans'
+    ) {
       i18n.changeLanguage('en');
       setCurrentLanguage('en');
     }

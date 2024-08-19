@@ -41,6 +41,7 @@ export const Route = createRootRouteWithContext<{
       return;
     }
 
+    // TODO fix this (remove ?)
     // Parse language as the second element of the pathname
     // (the first one is always the basepath == current language, as the redirection occurs before)
     const pathLanguage = location.pathname.split('/')[2];
