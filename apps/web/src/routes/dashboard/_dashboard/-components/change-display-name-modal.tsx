@@ -1,22 +1,29 @@
 import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
-import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import { useCallback, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
 
-import { Button, TextInput } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  TextInput,
+} from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
 const changeDisplayNameSchema = z.object({
   displayName: z
     .string()
-    .min(2, { message: t('auth.errors.displayNameTooShort') })
+    .min(2, { message: 'auth.errors.displayNameTooShort' })
     .regex(/^[\w .\\-]+$/, {
-      message: t('auth.errors.displayNameRegex'),
+      message: 'auth.errors.displayNameRegex',
     }),
 });
 
@@ -31,6 +38,7 @@ export const ChangeDisplayNameModal = ({
   isOpen,
   onClose,
 }: ChangeDisplayNameModalProps) => {
+  const { t } = useTranslation();
   const { user, setUser } = useContext(AppContext);
 
   const changeDisplayName = trpc.user.changeDisplayName.useMutation({
@@ -56,68 +64,80 @@ export const ChangeDisplayNameModal = ({
   );
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('settings.changeDisplayName')}
-    >
-      <div className="flex flex-col items-center">
-        <Formik
-          initialValues={{
-            displayName: '',
-          }}
-          validate={(values) => {
-            try {
-              changeDisplayNameSchema.parse(values);
-            } catch (error) {
-              if (error instanceof ZodError) {
-                return error.flatten().fieldErrors;
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogTrigger asChild>
+        <button className="hidden" />
+      </DialogTrigger>
+      <DialogContent
+        showCloseButton={false}
+        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
+      >
+        <DialogHeader>
+          <DialogTitle>{t('settings.changeDisplayName')}</DialogTitle>
+        </DialogHeader>
+        <div className="flex flex-col items-center">
+          <Formik
+            initialValues={{
+              displayName: '',
+            }}
+            validate={(values) => {
+              try {
+                changeDisplayNameSchema.parse(values);
+              } catch (error) {
+                if (error instanceof ZodError) {
+                  const errors = error.flatten().fieldErrors;
+                  return {
+                    displayName: errors.displayName
+                      ?.map((msg) => t(msg))
+                      .join(', '),
+                  };
+                }
               }
-            }
-          }}
-          onSubmit={handleChangeDisplayName}
-        >
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            values,
-            errors,
-            touched,
-          }) => (
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleSubmit();
-              }}
-              className="flex w-full flex-col items-center py-6"
-            >
-              <div className="flex w-full flex-col items-center">
-                <TextInput
-                  name="displayName"
-                  type="text"
-                  labelText="Display Name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.displayName}
-                  className="w-80"
-                  error={touched.displayName ? errors.displayName : null}
-                />
-              </div>
+            }}
+            onSubmit={handleChangeDisplayName}
+          >
+            {({
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              values,
+              errors,
+              touched,
+            }) => (
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  handleSubmit();
+                }}
+                className="flex w-full flex-col items-center py-6"
+              >
+                <div className="flex w-full flex-col items-center">
+                  <TextInput
+                    name="displayName"
+                    type="text"
+                    labelText="Display Name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.displayName}
+                    className="w-80"
+                    error={touched.displayName ? errors.displayName : null}
+                  />
+                </div>
 
-              {changeDisplayName.error && (
-                <p className="mt-2 text-base font-semibold text-red-300">
-                  {t(changeDisplayName.error.message)}
-                </p>
-              )}
+                {changeDisplayName.error && (
+                  <p className="mt-2 text-base font-semibold text-red-300">
+                    {t(changeDisplayName.error.message)}
+                  </p>
+                )}
 
-              <Button className="mt-6" rounded>
-                {t('words.update')}
-              </Button>
-            </form>
-          )}
-        </Formik>
-      </div>
-    </Modal>
+                <Button type="submit" className="mt-6" rounded>
+                  {t('words.update')}
+                </Button>
+              </form>
+            )}
+          </Formik>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };

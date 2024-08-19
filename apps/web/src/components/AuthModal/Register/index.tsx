@@ -7,26 +7,23 @@ import { useCallback, useEffect } from 'react';
 import { BsCheck, BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
-import { Button, Divider, TextInput } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  Divider,
+  TextInput,
+} from '@blms/ui';
 
-import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc } from '../../../utils/trpc.ts';
 import { AuthModalState } from '../props.ts';
 
 const password = new PasswordValidator().is().min(10);
-// I am not a big fan of conditions in password validation, that lowers the entropy
-// in some way.
-/* .has()
-  .uppercase()
-  .has()
-  .lowercase()
-  .has()
-  .digits(2)
-  .has()
-  .symbols()
-  .has()
-  .not()
-  .spaces(); */
 
 const registerSchema = z
   .object({
@@ -40,7 +37,6 @@ const registerSchema = z
       (pwd) => password.validate(pwd),
       (pwd) => {
         const result = password.validate(pwd, { details: true });
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         return { message: Array.isArray(result) ? result[0].message : '' };
       },
     ),
@@ -51,7 +47,7 @@ const registerSchema = z
     path: ['confirmation'],
   });
 
-interface LoginModalProps {
+interface RegisterProps {
   isOpen: boolean;
   onClose: () => void;
   goTo: (newState: AuthModalState) => void;
@@ -59,7 +55,7 @@ interface LoginModalProps {
 
 type AccountData = z.infer<typeof registerSchema>;
 
-export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
+export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: () => {
       setTimeout(() => {
@@ -94,152 +90,167 @@ export const Register = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   }, [onClose, register.data]);
 
   return (
-    <Modal
-      closeButtonEnabled={true}
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={
-        register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
-      }
-      showAccountHelper={true}
-    >
-      {register.data && !register.error ? (
-        <div className="mb-8 flex flex-col items-center">
-          <BsCheck className="my-8 size-20 text-black" />
-          <p className="text-center">
-            {t('auth.accountCreated', {
-              userName: register.data.user.username,
-            })}
-            <br />
-            {t('auth.canSaveProgress')}
-          </p>
-        </div>
-      ) : (
-        <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
-          <Button
-            variant="ghost"
-            mode="light"
-            size="m"
-            onClick={() => goTo(AuthModalState.LnurlAuth)}
-            iconRight={<BsLightningChargeFill className="w-6" />}
-            disabled
-            className="mb-2.5"
-          >
-            {t('auth.connectWithLn')}
-          </Button>
-          <Divider>{t('words.or').toLowerCase()}</Divider>
-          <Formik
-            initialValues={{
-              username: '',
-              password: '',
-              confirmation: '',
-            }}
-            validate={(values) => {
-              try {
-                registerSchema.parse(values);
-              } catch (error) {
-                if (error instanceof ZodError) {
-                  return error.flatten().fieldErrors;
-                }
-              }
-            }}
-            onSubmit={handleCreateUserAccount}
-          >
-            {({
-              handleSubmit,
-              handleChange,
-              handleBlur,
-              values,
-              errors,
-              touched,
-            }) => (
-              <form
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  handleSubmit();
-                }}
-                className="flex w-full flex-col items-center mt-3"
-              >
-                <div className="flex w-full flex-col items-center">
-                  <TextInput
-                    name="username"
-                    labelText={t('dashboard.profile.username')}
-                    placeholder={t('dashboard.profile.username').toLowerCase()}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.username}
-                    className="w-full"
-                    error={
-                      touched.username && errors.username
-                        ? errors.username[0]
-                        : null
-                    }
-                    mandatory
-                  />
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogPortal>
+        <DialogOverlay />
+        <DialogContent
+          showCloseButton={true}
+          className="gap-3 py-2 px-4 sm:gap-6 sm:p-6 w-[90%] lg:w-full max-w-lg"
+          showAccountHelper={true}
+        >
+          <DialogHeader>
+            <DialogTitle>
+              {register.data
+                ? t('auth.headerAccountCreated')
+                : t('auth.createAccount')}
+            </DialogTitle>
+          </DialogHeader>
 
-                  <TextInput
-                    name="password"
-                    type="password"
-                    labelText="Password"
-                    placeholder={t('dashboard.profile.password').toLowerCase()}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    className="w-full"
-                    error={
-                      touched.password && errors.password
-                        ? errors.password[0]
-                        : null
-                    }
-                    mandatory
-                  />
-
-                  <TextInput
-                    name="confirmation"
-                    type="password"
-                    labelText="Confirmation"
-                    placeholder={t('dashboard.profile.password').toLowerCase()}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.confirmation}
-                    className="w-full"
-                    error={
-                      touched.confirmation && errors.confirmation
-                        ? errors.confirmation[0]
-                        : null
-                    }
-                    mandatory
-                  />
-                </div>
-
-                {register.error && (
-                  <p className="mt-2 text-base font-semibold text-red-300">
-                    {register.error.message}
-                  </p>
-                )}
-
+          {register.data && !register.error ? (
+            <div className="mb-8 flex flex-col items-center">
+              <BsCheck className="my-8 text-black" size={20} />
+              <DialogDescription>
+                {t('auth.accountCreated', {
+                  userName: register.data.user.username,
+                })}
+                <br />
+                {t('auth.canSaveProgress')}
+              </DialogDescription>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
                 <Button
-                  variant="newPrimary"
+                  variant="ghost"
+                  mode="light"
                   size="m"
-                  type="submit"
-                  className="my-8"
+                  onClick={() => goTo(AuthModalState.LnurlAuth)}
+                  iconRight={<BsLightningChargeFill className="w-6" />}
+                  disabled
+                  className="mb-2.5"
                 >
-                  {t('auth.createAccount')}
+                  {t('auth.connectWithLn')}
                 </Button>
-              </form>
-            )}
-          </Formik>
-          <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
-            {t('auth.alreadyHaveAccount')}{' '}
-            <button
-              className="cursor-pointer underline italic"
-              onClick={() => goTo(AuthModalState.SignIn)}
-            >
-              {t('menu.login')}
-            </button>
-          </p>
-        </div>
-      )}
-    </Modal>
+                <Divider>{t('words.or').toLowerCase()}</Divider>
+                <Formik
+                  initialValues={{
+                    username: '',
+                    password: '',
+                    confirmation: '',
+                  }}
+                  validate={(values) => {
+                    try {
+                      registerSchema.parse(values);
+                      return {};
+                    } catch (error) {
+                      if (error instanceof ZodError) {
+                        return error.flatten().fieldErrors;
+                      }
+                      return {};
+                    }
+                  }}
+                  onSubmit={handleCreateUserAccount}
+                >
+                  {({
+                    handleSubmit,
+                    handleChange,
+                    handleBlur,
+                    values,
+                    errors,
+                    touched,
+                  }) => (
+                    <form
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        handleSubmit();
+                      }}
+                      className="flex w-full flex-col items-center mt-3"
+                    >
+                      <div className="flex w-full flex-col items-center">
+                        <TextInput
+                          name="username"
+                          labelText={t('dashboard.profile.username')}
+                          placeholder={t(
+                            'dashboard.profile.username',
+                          ).toLowerCase()}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.username}
+                          className="w-full"
+                          error={
+                            touched.username && errors.username
+                              ? errors.username[0]
+                              : null
+                          }
+                          mandatory
+                        />
+                        <TextInput
+                          name="password"
+                          type="password"
+                          labelText={t('dashboard.profile.password')}
+                          placeholder={t(
+                            'dashboard.profile.password',
+                          ).toLowerCase()}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.password}
+                          className="w-full"
+                          error={
+                            touched.password && errors.password
+                              ? errors.password[0]
+                              : null
+                          }
+                          mandatory
+                        />
+                        <TextInput
+                          name="confirmation"
+                          type="password"
+                          labelText="Confirmation"
+                          placeholder={t(
+                            'dashboard.profile.password',
+                          ).toLowerCase()}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.confirmation}
+                          className="w-full"
+                          error={
+                            touched.confirmation && errors.confirmation
+                              ? errors.confirmation[0]
+                              : null
+                          }
+                          mandatory
+                        />
+                      </div>
+                      {register.error && (
+                        <p className="mt-2 text-base font-semibold text-red-300">
+                          {register.error.message}
+                        </p>
+                      )}
+                      <Button
+                        variant="newPrimary"
+                        size="m"
+                        type="submit"
+                        className="my-8"
+                      >
+                        {t('auth.createAccount')}
+                      </Button>
+                    </form>
+                  )}
+                </Formik>
+                <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
+                  {t('auth.alreadyHaveAccount')}{' '}
+                  <button
+                    className="cursor-pointer underline italic"
+                    onClick={() => goTo(AuthModalState.SignIn)}
+                  >
+                    {t('menu.login')}
+                  </button>
+                </p>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </DialogPortal>
+    </Dialog>
   );
 };
