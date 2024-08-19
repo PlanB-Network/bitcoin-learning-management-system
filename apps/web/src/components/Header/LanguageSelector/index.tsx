@@ -6,9 +6,9 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { Button, cn } from '@blms/ui';
 
+import Flag from '#src/molecules/Flag/index.js';
 import { LangContext } from '#src/providers/app.js';
 
-import Flag from '../../../atoms/Flag/index.tsx';
 import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
 
 interface LanguageSelectorProps {

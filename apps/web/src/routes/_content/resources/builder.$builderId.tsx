@@ -8,9 +8,9 @@ import { Button, cn } from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
+import Flag from '#src/molecules/Flag/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderEvents } from './-components/builder-events.tsx';

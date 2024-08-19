@@ -5,8 +5,8 @@ import { HiVideoCamera } from 'react-icons/hi2';
 import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
-import Flag from '#src/atoms/Flag/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import Flag from '#src/molecules/Flag/index.js';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 
 interface EventCardProps {

@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import type { ButtonProps } from '@blms/ui';
 import { Button, cn } from '@blms/ui';
 
-import Flag from '#src/atoms/Flag/index.js';
+import Flag from '#src/molecules/Flag/index.js';
 
 interface HorizontalCardProps {
   title: string;

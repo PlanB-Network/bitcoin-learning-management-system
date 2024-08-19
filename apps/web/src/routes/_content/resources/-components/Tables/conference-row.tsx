@@ -3,7 +3,7 @@ import { t } from 'i18next';
 
 import { Button, NewTag } from '@blms/ui';
 
-import Flag from '#src/atoms/Flag/index.js';
+import Flag from '#src/molecules/Flag/index.js';
 
 interface ConferenceRowProps {
   name: string;
