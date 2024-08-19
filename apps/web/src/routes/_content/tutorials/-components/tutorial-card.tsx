@@ -17,7 +17,6 @@ export const TutorialCard = ({
   return (
     <a
       href={href}
-      target="_blank"
       rel="noreferrer"
       className="flex items-center w-full bg-newGray-6 shadow-course-navigation-sm md:shadow-course-navigation md:border border-newGray-5 rounded-lg md:rounded-[20px] p-1 md:p-4 gap-2.5 md:gap-6 max-md:max-w-72"
     >

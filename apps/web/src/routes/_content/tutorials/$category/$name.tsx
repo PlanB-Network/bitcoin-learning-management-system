@@ -318,8 +318,8 @@ function TutorialDetails() {
                 isLoggedIn ? handleLike() : openAuthModal();
               }}
               className={cn(
-                'py-3 px-4 rounded-[20px] border shadow-course-navigation border-darkGreen-5',
-                isLiked.liked ? 'bg-darkGreen-5' : 'hover:bg-darkGreen-6',
+                'py-3 px-4 rounded-[20px] border shadow-course-navigation border-darkGreen-4',
+                isLiked.liked ? 'bg-darkGreen-6' : 'hover:bg-darkGreen-6',
               )}
             >
               <ThumbUp className="size-12" />
@@ -332,7 +332,7 @@ function TutorialDetails() {
               }}
               className={cn(
                 'py-3 px-4 rounded-[20px] border shadow-course-navigation border-red-5',
-                isLiked.disliked ? 'bg-red-5' : 'hover:bg-red-6',
+                isLiked.disliked ? 'bg-red-6' : 'hover:bg-red-6',
               )}
             >
               <ThumbDown className="size-12" />
@@ -378,7 +378,7 @@ function TutorialDetails() {
                     dislikeCount: likesCounts.dislikeCount,
                   }}
                 />
-                <div className="break-words overflow-hidden w-full">
+                <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
                   {memoizedMarkdown}
                 </div>
                 <LikeDislikeButtons />
