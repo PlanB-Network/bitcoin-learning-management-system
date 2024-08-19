@@ -10,7 +10,7 @@ import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
 import ThumbDown from '#src/assets/icons/thumb_down.svg?react';
 import ThumbUp from '#src/assets/icons/thumb_up.svg?react';
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
+// import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
@@ -69,10 +69,10 @@ const Header = ({
         )}
         <div className="flex max-md:flex-wrap justify-center md:justify-between py-2.5 items-center gap-2">
           <TutorialLikes tutorial={tutorial} />
-          <p className="flex items-center gap-2 text-xs italic font-poppins text-right text-darkGreen-1">
+          {/* <p className="flex items-center gap-2 text-xs italic font-poppins text-right text-darkGreen-1">
             {t('tutorials.approvedByCreator')}{' '}
             <ApprovedBadge className="size-[18px]" />
-          </p>
+          </p> */}
         </div>
       </section>
     </div>
