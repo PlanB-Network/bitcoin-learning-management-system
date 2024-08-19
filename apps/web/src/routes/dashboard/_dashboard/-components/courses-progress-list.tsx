@@ -44,7 +44,7 @@ const ProgressBar = ({
               {index === filledRectangles - 1 && (
                 <img
                   src={OrangePill}
-                  className={cn('absolute w-3 -right-1 z-10')}
+                  className={cn('absolute min-w-3 w-3 -right-1 z-10')}
                   alt="Orange Pill"
                 />
               )}
@@ -61,7 +61,7 @@ const ProgressBar = ({
         />
         <img
           src={OrangePill}
-          className={cn('absolute z-10 aspect-auto w-3')}
+          className={cn('absolute z-10 aspect-auto min-w-3 w-3')}
           style={{
             left: `${(courseCompletedChapters / courseTotalChapters) * 100 - 2}%`,
           }}

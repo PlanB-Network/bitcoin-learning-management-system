@@ -116,7 +116,7 @@ function Home() {
           </div>
           <div className="relative col-span-3 hidden items-start lg:flex">
             <img
-              className="z-10 -ml-16 mt-8 h-72 w-auto xl:h-96"
+              className="z-10 -ml-16 xl:-ml-20 2xl:-ml-24 md:mt-8 h-fit aspect-auto"
               src={HeaderPill}
               alt={t('imagesAlt.orangePill')}
               loading="lazy"
@@ -170,7 +170,7 @@ function Home() {
           </div>
         </div>
         <img
-          className="absolute -right-16 h-40 w-auto overflow-hidden lg:hidden"
+          className="absolute -right-8 md:-right-16 top-20 h-20 md:top-0 md:h-40 w-auto overflow-hidden lg:hidden"
           src={HeaderPill}
           alt={t('imagesAlt.orangePill')}
           loading="lazy"
