@@ -12,7 +12,7 @@ export const TutorialLikes = ({
     <div className="flex gap-1 items-center">
       <span className="text-black label-large-20px">{tutorial.likeCount}</span>
       <div className="flex items-center">
-        <MdThumbUp className="text-brightGreen-1 size-6 mx-1" />
+        <MdThumbUp className="text-brightGreen-5 size-6 mx-1" />
         <div
           className={cn(
             'w-[70px] rounded-full h-2 mx-2',

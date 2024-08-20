@@ -7,7 +7,7 @@ export const CourseLayout = ({
 }) => {
   return (
     <MainLayout variant="light">
-      <div className="w-full bg-white pb-6">{children}</div>
+      <div className="w-full bg-white pb-6 relative">{children}</div>
     </MainLayout>
   );
 };
