@@ -1,14 +1,21 @@
 import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
-import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ZodError, z } from 'zod';
 
-import { Button, TextInput } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  TextInput,
+} from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 const password = new PasswordValidator().is().min(10);
@@ -27,7 +34,7 @@ const changePasswordSchema = z
     newPasswordConfirmation: z.string(),
   })
   .refine((data) => data.newPassword === data.newPasswordConfirmation, {
-    message: t('auth.passwordsDontMatch'),
+    message: 'auth.passwordsDontMatch',
     path: ['newPasswordConfirmation'],
   });
 
@@ -42,6 +49,7 @@ export const ChangePasswordModal = ({
   isOpen,
   onClose,
 }: ChangePasswordModalProps) => {
+  const { t } = useTranslation();
   const changePassword = trpc.user.changePassword.useMutation({
     onSuccess: onClose,
   });
@@ -62,28 +70,43 @@ export const ChangePasswordModal = ({
     [changePassword],
   );
 
+  const validate = (values: ChangePasswordForm) => {
+    try {
+      changePasswordSchema.parse(values);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errors = error.flatten().fieldErrors;
+        if (errors.newPassword) {
+          errors.newPassword = errors.newPassword.map((msg) => t(msg));
+        }
+        if (errors.newPasswordConfirmation) {
+          errors.newPasswordConfirmation = [t('auth.passwordsDontMatch')];
+        }
+        return errors;
+      }
+    }
+  };
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('settings.changePassword')}
-    >
-      <div className="flex flex-col items-center">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogTrigger asChild>
+        <button className="hidden" />
+      </DialogTrigger>
+      <DialogContent
+        showCloseButton={false}
+        showAccountHelper={false}
+        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
+      >
+        <DialogHeader>
+          <DialogTitle>{t('settings.changePassword')}</DialogTitle>
+        </DialogHeader>
         <Formik
           initialValues={{
             oldPassword: '',
             newPassword: '',
             newPasswordConfirmation: '',
           }}
-          validate={(values) => {
-            try {
-              changePasswordSchema.parse(values);
-            } catch (error) {
-              if (error instanceof ZodError) {
-                return error.flatten().fieldErrors;
-              }
-            }
-          }}
+          validate={validate}
           onSubmit={handleChangePassword}
         >
           {({
@@ -138,21 +161,21 @@ export const ChangePasswordModal = ({
                       : null
                   }
                 />
+
+                {changePassword.error && (
+                  <p className="mt-2 text-base font-semibold text-red-300">
+                    {t(changePassword.error.message)}
+                  </p>
+                )}
+
+                <Button type="submit" className="mt-6" rounded>
+                  {t('words.update')}
+                </Button>
               </div>
-
-              {changePassword.error && (
-                <p className="mt-2 text-base font-semibold text-red-300">
-                  {t(changePassword.error.message)}
-                </p>
-              )}
-
-              <Button className="mt-6" rounded>
-                {t('words.update')}
-              </Button>
             </form>
           )}
         </Formik>
-      </div>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   );
 };

@@ -11,3 +11,4 @@ export * from './atoms/tag.tsx';
 export * from './atoms/text-input.tsx';
 export * from './atoms/tooltip.tsx';
 export * from './lib/utils.ts';
+export * from './atoms/dialog.tsx';

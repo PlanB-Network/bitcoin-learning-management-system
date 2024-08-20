@@ -2,11 +2,10 @@ import { Buffer } from 'buffer';
 
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 
 import type { JoinedEvent } from '@blms/types';
+import { Dialog, DialogContent } from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { type PaymentData, PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -61,7 +60,6 @@ export const EventPaymentModal = ({
         if (message.settled) {
           setTimeout(() => {
             setIsPaymentSuccess(true);
-            //onClose(true);
           }, 2000);
         }
       };
@@ -85,61 +83,61 @@ export const EventPaymentModal = ({
   }, [saveEventPaymentRequest, eventId, satsPrice, accessType]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
-      <button
-        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
-        aria-roledescription="Close Payment Modal"
-        onClick={() => onClose()}
+    <div className="p-4">
+      <Dialog
+        open={isOpen}
+        onOpenChange={(open) => onClose(open ? undefined : false)}
       >
-        <AiOutlineClose />
-      </button>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
-        <ModalPaymentSummary
-          event={event}
-          accessType={accessType}
-          satsPrice={satsPrice}
-          mobileDisplay={false}
-        />
-        <div className="flex flex-col items-center justify-center lg:m-6">
-          {paymentData ? (
-            isPaymentSuccess ? (
-              <ModalPaymentSuccess
-                event={event}
-                paymentData={paymentData}
-                accessType={accessType}
-                onClose={onClose}
-              />
-            ) : (
-              <PaymentQr
-                paymentData={paymentData}
-                onBack={() => setPaymentData(undefined)}
-              />
-            )
-          ) : (
-            <PaymentDescription
-              paidPriceDollars={event.priceDollars}
+        <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto lg:overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+            <ModalPaymentSummary
               event={event}
               accessType={accessType}
               satsPrice={satsPrice}
-              initPayment={initEventPayment}
-              itemId={event.id}
-              description={
-                accessType === 'replay'
-                  ? ''
-                  : t(`events.payment.description_${accessType}`)
-              }
-              callout={t(`events.payment.callout_${accessType}`)}
-            >
-              <ModalPaymentSummary
-                event={event}
-                accessType={accessType}
-                satsPrice={satsPrice}
-                mobileDisplay={true}
-              />
-            </PaymentDescription>
-          )}
-        </div>
-      </div>
-    </Modal>
+              mobileDisplay={false}
+            />
+            <div className="flex flex-col items-center justify-center lg:m-6">
+              {paymentData ? (
+                isPaymentSuccess ? (
+                  <ModalPaymentSuccess
+                    event={event}
+                    paymentData={paymentData}
+                    accessType={accessType}
+                    onClose={onClose}
+                  />
+                ) : (
+                  <PaymentQr
+                    paymentData={paymentData}
+                    onBack={() => setPaymentData(undefined)}
+                  />
+                )
+              ) : (
+                <PaymentDescription
+                  paidPriceDollars={event.priceDollars}
+                  event={event}
+                  accessType={accessType}
+                  satsPrice={satsPrice}
+                  initPayment={initEventPayment}
+                  itemId={event.id}
+                  description={
+                    accessType === 'replay'
+                      ? ''
+                      : t(`events.payment.description_${accessType}`)
+                  }
+                  callout={t(`events.payment.callout_${accessType}`)}
+                >
+                  <ModalPaymentSummary
+                    event={event}
+                    accessType={accessType}
+                    satsPrice={satsPrice}
+                    mobileDisplay={true}
+                  />
+                </PaymentDescription>
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };

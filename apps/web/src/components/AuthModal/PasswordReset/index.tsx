@@ -2,11 +2,17 @@ import { Formik } from 'formik';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, TextInput } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  TextInput,
+} from '@blms/ui';
 
 import { trpc } from '#src/utils/index.js';
 
-import { Modal } from '../../../atoms/Modal/index.tsx';
 import { AuthModalState } from '../props.ts';
 
 interface LoginModalProps {
@@ -115,14 +121,18 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('auth.resetPassword')}
-    >
-      <div className="flex flex-col items-center">
-        {modalContent[resetPasswordState]}
-      </div>
-    </Modal>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent
+        showCloseButton={false}
+        className="w-[90%] lg:w-full max-w-lg px-4 py-2 sm:p-6"
+      >
+        <DialogHeader>
+          <DialogTitle variant="orange">{t('auth.resetPassword')}</DialogTitle>
+        </DialogHeader>
+        <div className="flex flex-col items-center">
+          {modalContent[resetPasswordState]}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };

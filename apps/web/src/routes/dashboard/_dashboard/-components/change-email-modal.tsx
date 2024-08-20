@@ -5,9 +5,16 @@ import { isEmpty } from 'lodash-es';
 import { useCallback } from 'react';
 import { ZodError, z } from 'zod';
 
-import { Button, TextInput } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  TextInput,
+} from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 const changeEmailSchema = z.object({
@@ -47,12 +54,18 @@ export const ChangeEmailModal = ({
   );
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('settings.changeEmail')}
-    >
-      <div className="flex flex-col items-center">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogTrigger asChild>
+        <button className="hidden" />
+      </DialogTrigger>
+      <DialogContent
+        showCloseButton={false}
+        showAccountHelper={false}
+        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
+      >
+        <DialogHeader>
+          <DialogTitle>{t('settings.changeEmail')}</DialogTitle>
+        </DialogHeader>
         <Formik
           initialValues={{ email }}
           validate={(values) => {
@@ -119,7 +132,7 @@ export const ChangeEmailModal = ({
             </form>
           )}
         </Formik>
-      </div>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   );
 };

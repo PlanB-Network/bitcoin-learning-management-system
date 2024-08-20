@@ -2,11 +2,10 @@ import { Buffer } from 'buffer';
 
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineClose } from 'react-icons/ai';
 
 import type { CouponCode, JoinedCourseWithAll } from '@blms/types';
+import { Dialog, DialogContent } from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { PaymentDescription } from '#src/components/payment-description.js';
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
@@ -133,56 +132,56 @@ export const CoursePaymentModal = ({
   const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isLargeModal>
-      <button
-        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
-        aria-roledescription="Close Payment Modal"
-        onClick={() => onClose()}
+    <div className="p-4">
+      <Dialog
+        open={isOpen}
+        onOpenChange={(open) => onClose(open ? undefined : false)}
       >
-        <AiOutlineClose />
-      </button>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
-        <ModalPaymentSummary
-          course={course}
-          courseName={courseName}
-          professorNames={professorNames}
-          mobileDisplay={false}
-        />
-        <div className="flex flex-col items-center justify-center lg:m-6">
-          {paymentData ? (
-            isPaymentSuccess ? (
-              <ModalPaymentSuccess
-                paymentData={paymentData}
-                onClose={onClose}
-              />
-            ) : (
-              <PaymentQr
-                paymentData={paymentData}
-                onBack={() => setPaymentData(undefined)}
-              />
-            )
-          ) : (
-            <PaymentDescription
-              paidPriceDollars={coursePriceDollarsReduced}
-              satsPrice={satsPriceReduced}
-              initPayment={initCoursePayment}
-              description={t('courses.payment.description')}
-              callout={t('courses.payment.callout')}
-              itemId={course.id}
-              updateCoupon={updateCoupon}
-            >
-              <ModalPaymentSummary
-                course={course}
-                courseName={courseName}
-                professorNames={professorNames}
-                mobileDisplay={true}
-                paidPriceDollars={coursePriceDollarsReduced}
-                satsPrice={satsPriceReduced}
-              />
-            </PaymentDescription>
-          )}
-        </div>
-      </div>
-    </Modal>
+        <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto lg:overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+            <ModalPaymentSummary
+              course={course}
+              courseName={courseName}
+              professorNames={professorNames}
+              mobileDisplay={false}
+            />
+            <div className="flex flex-col items-center justify-center lg:m-6">
+              {paymentData ? (
+                isPaymentSuccess ? (
+                  <ModalPaymentSuccess
+                    paymentData={paymentData}
+                    onClose={onClose}
+                  />
+                ) : (
+                  <PaymentQr
+                    paymentData={paymentData}
+                    onBack={() => setPaymentData(undefined)}
+                  />
+                )
+              ) : (
+                <PaymentDescription
+                  paidPriceDollars={coursePriceDollarsReduced}
+                  satsPrice={satsPriceReduced}
+                  initPayment={initCoursePayment}
+                  description={t('courses.payment.description')}
+                  callout={t('courses.payment.callout')}
+                  itemId={course.id}
+                  updateCoupon={updateCoupon}
+                >
+                  <ModalPaymentSummary
+                    course={course}
+                    courseName={courseName}
+                    professorNames={professorNames}
+                    mobileDisplay={true}
+                    paidPriceDollars={coursePriceDollarsReduced}
+                    satsPrice={satsPriceReduced}
+                  />
+                </PaymentDescription>
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };
