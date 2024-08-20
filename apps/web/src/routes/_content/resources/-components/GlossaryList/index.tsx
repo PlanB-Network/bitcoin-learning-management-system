@@ -68,7 +68,7 @@ export const GlossaryList = ({
               >
                 {term.term}
               </Link>
-              <p className="w-2/3 text-white leading-[175%] tracking-015px line-clamp-4">
+              <p className="w-2/3 text-white leading-[175%] tracking-015px line-clamp-4 text-justify">
                 {term.definition}
               </p>
             </div>

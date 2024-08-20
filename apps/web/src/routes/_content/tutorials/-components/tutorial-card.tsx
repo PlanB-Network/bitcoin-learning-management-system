@@ -1,8 +1,8 @@
-import { t } from 'i18next';
+// import { t } from 'i18next';
 
 import type { JoinedTutorialLight } from '@blms/types';
 
-import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
+// import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 
 import { TutorialLikes } from './tutorial-likes.tsx';
@@ -17,7 +17,6 @@ export const TutorialCard = ({
   return (
     <a
       href={href}
-      target="_blank"
       rel="noreferrer"
       className="flex items-center w-full bg-newGray-6 shadow-course-navigation-sm md:shadow-course-navigation md:border border-newGray-5 rounded-lg md:rounded-[20px] p-1 md:p-4 gap-2.5 md:gap-6 max-md:max-w-72"
     >
@@ -56,8 +55,8 @@ export const TutorialCard = ({
       </div>
       <div className="flex flex-col max-md:hidden w-fit min-w-[187px] ml-auto h-full justify-between items-end">
         <p className="flex items-center gap-2 text-xs italic font-poppins text-right text-newBlack-4">
-          {t('tutorials.approvedByCreator')}{' '}
-          <ApprovedBadge className="size-[18px]" />
+          {/* {t('tutorials.approvedByCreator')}{' '}
+          <ApprovedBadge className="size-[18px]" /> */}
         </p>
 
         <TutorialLikes tutorial={tutorial} />

@@ -83,7 +83,7 @@ function GlossaryWord() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <>
-          <div className="flex flex-col items-center justify-center w-full max-w-[1080px] mx-auto px-4">
+          <div className="flex flex-col items-center justify-center w-full max-w-[721px] mx-auto px-4">
             <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-5">
               {glossaryWord?.term}
             </h2>
