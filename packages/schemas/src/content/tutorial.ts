@@ -29,6 +29,7 @@ export const joinedTutorialLightSchema = tutorialSchema
     level: true,
     category: true,
     subcategory: true,
+    originalLanguage: true,
     lastUpdated: true,
     lastCommit: true,
   })

@@ -242,6 +242,9 @@ export const contentBet = content.table('bet', {
   type: betTypeEnum('type').notNull(),
   builder: text('builder'),
   downloadUrl: text('download_url').notNull(),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 });
 
 export const contentBetViewUrl = content.table(
@@ -289,6 +292,9 @@ export const contentBooks = content.table('books', {
   level: varchar('level', { length: 255 }),
   author: text('author').notNull(),
   websiteUrl: text('website_url'),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 });
 
 export const contentBooksLocalized = content.table(
@@ -334,6 +340,9 @@ export const contentBuilders = content.table('builders', {
   addressLine1: text('address_line_1'),
   addressLine2: text('address_line_2'),
   addressLine3: text('address_line_3'),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 
   // Links
   websiteUrl: text('website_url'),
@@ -373,6 +382,9 @@ export const contentConferences = content.table('conferences', {
   builder: varchar('builder', { length: 255 }),
   languages: varchar('languages', { length: 255 }).array(),
   location: text('location').notNull(),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 
   // Links
   websiteUrl: text('website_url'),
@@ -431,6 +443,9 @@ export const contentGlossaryWords = content.table('glossary_words', {
   originalWord: text('original_word').notNull(),
   fileName: text('file_name').notNull(),
   relatedWords: varchar('related_words', { length: 255 }).array(),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 });
 
 export const contentGlossaryWordsLocalized = content.table(
@@ -463,6 +478,9 @@ export const contentCourses = content.table('courses', {
   hours: doublePrecision('hours').notNull(),
   topic: text('topic').notNull(),
   subtopic: text('subtopic').notNull(),
+  originalLanguage: varchar('original_language', { length: 10 })
+    .notNull()
+    .default('en'),
 
   requiresPayment: boolean('requires_payment').default(false).notNull(),
   paidPriceDollars: integer('paid_price_dollars'),
@@ -934,6 +952,9 @@ export const contentTutorials = content.table(
     name: varchar('name', { length: 255 }).notNull(),
     category: varchar('category', { length: 255 }).notNull(),
     subcategory: varchar('subcategory', { length: 255 }),
+    originalLanguage: varchar('original_language', { length: 10 })
+      .notNull()
+      .default('en'),
 
     level: varchar('level', { length: 255 }).notNull(),
     builder: varchar('builder', { length: 255 }),
@@ -1324,3 +1345,65 @@ export const contentEventLocation = content.table('event_locations', {
   lat: doublePrecision('lat').notNull(),
   lng: doublePrecision('lng').notNull(),
 });
+
+export const contentProofreading = content.table(
+  'proofreading',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+
+    courseId: varchar('course_id', { length: 20 }).references(
+      () => contentCourses.id,
+      {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      },
+    ),
+    tutorialId: integer('tutorial_id').references(() => contentTutorials.id, {
+      onDelete: 'cascade',
+    }),
+    resourceId: integer('resource_id').references(() => contentResources.id, {
+      onDelete: 'cascade',
+    }),
+
+    language: varchar('language', { length: 10 }).notNull(),
+    lastContribution: timestamp('last_contribution', {
+      withTimezone: true,
+    }).notNull(),
+    urgency: integer('urgency'),
+    reward: integer('reward'),
+  },
+  // TODO add index when drizzle bug fixed: https://github.com/drizzle-team/drizzle-kit-mirror/issues/486
+  // (table) => {
+  //   return {
+  //     compositeIdx: index('proofreading_composite_idx')
+  //       .on(
+  //         table.courseId.asc(),
+  //         table.tutorialId.asc(),
+  //         table.resourceId.asc(),
+  //       )
+  //       .concurrently(),
+  //   };
+  // },
+);
+
+export const contentProofreadingContributor = content.table(
+  'proofreading_contributor',
+  {
+    proofreadingId: uuid('proofreading_id')
+      .notNull()
+      .unique()
+      .references(() => contentProofreading.id, {
+        onDelete: 'cascade',
+      }),
+    language: varchar('language', { length: 10 }).notNull(),
+    contributorId: varchar('contributor_id', { length: 20 })
+      .notNull()
+      .references(() => contentContributors.id, { onDelete: 'cascade' }),
+    order: integer('order').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.proofreadingId, table.language, table.contributorId],
+    }),
+  }),
+);

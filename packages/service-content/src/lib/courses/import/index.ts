@@ -97,6 +97,7 @@ interface CourseMain {
   hours: number;
   topic: string;
   subtopic: string;
+  original_language: string;
   professors: string[];
   tags?: string[];
   requires_payment: boolean;
@@ -340,7 +341,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
               .sort((a, b) => b.time - a.time)[0];
 
             const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, topic, subtopic, requires_payment, paid_price_dollars,
+                INSERT INTO content.courses (id, level, hours, topic, subtopic, original_language, requires_payment, paid_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
                 VALUES (
@@ -349,6 +350,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                   ${parsedCourse.hours},
                   ${parsedCourse.topic},
                   ${parsedCourse.subtopic},
+                  ${parsedCourse.original_language},
                   ${parsedCourse.requires_payment === true ? true : false},
                   ${parsedCourse.paid_price_dollars},
                   ${parsedCourse.paid_description},
@@ -365,6 +367,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                   hours = EXCLUDED.hours,
                   topic = EXCLUDED.topic,
                   subtopic = EXCLUDED.subtopic,
+                  original_language = EXCLUDED.original_language,
                   requires_payment = EXCLUDED.requires_payment,
                   paid_price_dollars = EXCLUDED.paid_price_dollars,
                   paid_description = EXCLUDED.paid_description,

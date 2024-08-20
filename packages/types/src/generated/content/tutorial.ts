@@ -7,6 +7,7 @@ export interface Tutorial {
   name: string;
   category: string;
   subcategory: string | null;
+  originalLanguage: string;
   level: string;
   builder: string | null;
   lastUpdated: Date;
@@ -47,6 +48,7 @@ export interface JoinedTutorialLight {
   level: string;
   category: string;
   subcategory: string | null;
+  originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
   language: string;
@@ -73,6 +75,7 @@ export interface JoinedTutorial {
   level: string;
   category: string;
   subcategory: string | null;
+  originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
   language: string;

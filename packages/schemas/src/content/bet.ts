@@ -24,6 +24,7 @@ export const joinedBetSchema = resourceSchema
     betSchema.pick({
       type: true,
       downloadUrl: true,
+      originalLanguage: true,
       builder: true,
     }),
   )

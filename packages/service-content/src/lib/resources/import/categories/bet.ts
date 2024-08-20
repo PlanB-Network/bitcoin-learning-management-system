@@ -9,6 +9,7 @@ import { createProcessMainFile } from '../main.js';
 interface BetMain {
   type: string;
   builder?: string;
+  original_language: string;
   links?: {
     download?: string;
     view?: Array<{ [key: string]: string }>;
@@ -57,12 +58,13 @@ export const createProcessChangedBet = (
             parsed = yamlToObject<BetMain>(main.data);
 
             await transaction`
-              INSERT INTO content.bet (resource_id, builder, type, download_url)
-              VALUES (${id}, ${parsed.builder}, ${parsed.type.toLowerCase()}, ${parsed.links?.download})
+              INSERT INTO content.bet (resource_id, builder, type, download_url, original_language)
+              VALUES (${id}, ${parsed.builder}, ${parsed.type.toLowerCase()}, ${parsed.links?.download}, ${parsed.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
                 builder = EXCLUDED.builder,
                 type = EXCLUDED.type,
-                download_url = EXCLUDED.download_url
+                download_url = EXCLUDED.download_url,
+                original_language = EXCLUDED.original_language                
             `;
 
             if (parsed.links?.view) {

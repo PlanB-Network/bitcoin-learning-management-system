@@ -9,6 +9,7 @@ export interface Conference {
   builder: string | null;
   languages: string[] | null;
   location: string;
+  originalLanguage: string;
   websiteUrl: string | null;
   twitterUrl: string | null;
 }

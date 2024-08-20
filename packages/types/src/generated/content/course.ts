@@ -9,6 +9,7 @@ export interface Course {
   hours: number;
   topic: string;
   subtopic: string;
+  originalLanguage: string;
   requiresPayment: boolean;
   paidPriceDollars: number | null;
   paidDescription: string | null;
@@ -122,6 +123,7 @@ export interface MinimalJoinedCourse {
   hours: number;
   topic: string;
   subtopic: string;
+  originalLanguage: string;
   requiresPayment: boolean;
   paidPriceDollars: number | null;
   paidDescription: string | null;
@@ -145,6 +147,7 @@ export interface JoinedCourse {
   hours: number;
   topic: string;
   subtopic: string;
+  originalLanguage: string;
   requiresPayment: boolean;
   paidPriceDollars: number | null;
   paidDescription: string | null;
@@ -169,6 +172,7 @@ export interface JoinedCourseWithProfessors {
   hours: number;
   topic: string;
   subtopic: string;
+  originalLanguage: string;
   requiresPayment: boolean;
   paidPriceDollars: number | null;
   paidDescription: string | null;
@@ -193,6 +197,7 @@ export interface JoinedCourseWithAll {
   hours: number;
   topic: string;
   subtopic: string;
+  originalLanguage: string;
   requiresPayment: boolean;
   paidPriceDollars: number | null;
   paidDescription: string | null;

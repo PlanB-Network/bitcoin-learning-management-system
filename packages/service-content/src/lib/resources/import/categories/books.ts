@@ -14,6 +14,7 @@ interface BookMain {
   author: string;
   /** The website URL of the book or author */
   website_url?: string;
+  original_language: string;
 }
 
 interface BookLocal extends BaseResource {
@@ -72,12 +73,13 @@ export const createProcessChangedBook = (
             parsed = yamlToObject<BookMain>(main.data);
 
             await transaction`
-              INSERT INTO content.books (resource_id, author, level, website_url)
-              VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url})
+              INSERT INTO content.books (resource_id, author, level, website_url, original_language)
+              VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url}, ${parsed.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
                 author = EXCLUDED.author,
                 level = EXCLUDED.level,
-                website_url = EXCLUDED.website_url
+                website_url = EXCLUDED.website_url,
+                original_language = EXCLUDED.original_language
         `;
           }
         } catch (error) {

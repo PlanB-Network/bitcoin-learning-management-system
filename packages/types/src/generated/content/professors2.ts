@@ -37,6 +37,7 @@ export interface FullProfessor {
     hours: number;
     topic: string;
     subtopic: string;
+    originalLanguage: string;
     requiresPayment: boolean;
     paidPriceDollars: number | null;
     paidDescription: string | null;

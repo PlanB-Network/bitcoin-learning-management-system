@@ -27,6 +27,7 @@ export const joinedGlossaryWordSchema = resourceSchema
       originalWord: true,
       fileName: true,
       relatedWords: true,
+      originalLanguage: true,
     }),
   )
   .merge(

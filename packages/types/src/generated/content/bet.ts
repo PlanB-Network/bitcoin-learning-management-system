@@ -6,6 +6,7 @@ export interface Bet {
   type: 'visual content' | 'educational content';
   builder: string | null;
   downloadUrl: string;
+  originalLanguage: string;
 }
 
 export interface BetViewUrl {
@@ -28,6 +29,7 @@ export interface JoinedBet {
   lastCommit: string;
   type: 'visual content' | 'educational content';
   downloadUrl: string;
+  originalLanguage: string;
   builder: string | null;
   language: string;
   name: string;

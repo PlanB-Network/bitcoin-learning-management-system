@@ -7,6 +7,7 @@ export interface Book {
   level: string | null;
   author: string;
   websiteUrl: string | null;
+  originalLanguage: string;
 }
 
 export interface BookLocalized {

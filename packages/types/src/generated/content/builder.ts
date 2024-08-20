@@ -9,6 +9,7 @@ export interface Builder {
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
+  originalLanguage: string;
   websiteUrl: string | null;
   twitterUrl: string | null;
   githubUrl: string | null;
@@ -35,6 +36,7 @@ export interface JoinedBuilder {
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
+  originalLanguage: string;
   language: string;
   description: string | null;
   tags?: string[] | undefined;

@@ -14,6 +14,7 @@ import type { ChangedTutorial } from './index.js';
 interface TutorialMain {
   level: string;
   category?: string;
+  original_language: string;
   builder?: string;
   credits?:
     | {
@@ -42,6 +43,11 @@ export const createProcessMainFile =
     // Only get the tags from the main tutorial file
     const parsedTutorial = yamlToObject<TutorialMain>(file.data);
 
+    // TODO remove this when data is fixed
+    if (parsedTutorial.original_language === undefined) {
+      parsedTutorial.original_language = '';
+    }
+
     const lastUpdated = tutorial.files
       .filter(
         (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
@@ -49,12 +55,13 @@ export const createProcessMainFile =
       .sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (path, name, category, subcategory, level, builder, last_updated, last_commit, last_sync)
+        INSERT INTO content.tutorials (path, name, category, subcategory, original_language, level, builder, last_updated, last_commit, last_sync)
         VALUES (
           ${tutorial.path},
           ${tutorial.name},
           ${tutorial.category},
-          ${parsedTutorial.category}, 
+          ${parsedTutorial.category},
+          ${parsedTutorial.original_language},
           ${parsedTutorial.level},
           ${parsedTutorial.builder},
           ${lastUpdated.time}, 
@@ -64,6 +71,7 @@ export const createProcessMainFile =
         ON CONFLICT (path) DO UPDATE SET
           category = EXCLUDED.category,
           subcategory = EXCLUDED.subcategory,
+          original_language = EXCLUDED.original_language,
           level = EXCLUDED.level,
           builder = EXCLUDED.builder,
           last_updated = EXCLUDED.last_updated,

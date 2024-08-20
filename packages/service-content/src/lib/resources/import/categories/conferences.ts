@@ -12,6 +12,7 @@ import { createProcessMainFile } from '../main.js';
 interface ConferenceMain {
   year: string;
   location: string;
+  original_language: string;
   builder?: string;
   language: string[];
   links?: {
@@ -121,10 +122,10 @@ export const createProcessChangedConference = (
 
             await transaction`
               INSERT INTO content.conferences (
-                resource_id, languages, name, year, location, description, builder, website_url, twitter_url
+                resource_id, languages, name, year, location, original_language, description, builder, website_url, twitter_url
               )
               VALUES (
-                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location.trim()}, 
+                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location.trim()},  ${parsed.original_language},
                 '', ${parsed.builder?.trim()}, ${parsed.links?.website?.trim()}, 
                 ${parsed.links?.twitter?.trim()}
               )
@@ -133,6 +134,7 @@ export const createProcessChangedConference = (
                 name = EXCLUDED.name,
                 year = EXCLUDED.year,
                 location = EXCLUDED.location,
+                original_language = EXCLUDED.original_language,
                 description = EXCLUDED.description,
                 builder = EXCLUDED.builder,
                 website_url = EXCLUDED.website_url,
@@ -163,10 +165,10 @@ export const createProcessChangedConference = (
 
             await transaction`
               INSERT INTO content.conferences (
-                resource_id, name, year, location, description
+                resource_id, name, year, location, original_language, description
               )
               VALUES (
-                ${id}, ${data.name.trim()}, '', '', ${data.description.trim()}
+                ${id}, ${data.name.trim()}, '', '', '', ${data.description.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
                 name = EXCLUDED.name,
