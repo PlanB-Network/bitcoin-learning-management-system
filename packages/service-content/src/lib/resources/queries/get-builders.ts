@@ -17,6 +17,7 @@ export const getBuildersQuery = (language?: string) => {
       b.address_line_1, 
       b.address_line_2, 
       b.address_line_3, 
+      b.original_language,
       bl.description, 
       r.last_updated, 
       r.last_commit,
@@ -40,6 +41,7 @@ export const getBuildersQuery = (language?: string) => {
       b.address_line_1, 
       b.address_line_2, 
       b.address_line_3, 
+      b.original_language,
       bl.description
   `;
 };

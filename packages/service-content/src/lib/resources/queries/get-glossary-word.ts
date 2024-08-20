@@ -10,6 +10,7 @@ export const getGlossaryWordQuery = (strId: string, language?: string) => {
       w.original_word,
       w.file_name,
       w.related_words, 
+      w.original_language,
       wl.term,
       wl.definition, 
       r.last_updated, 
@@ -28,7 +29,8 @@ export const getGlossaryWordQuery = (strId: string, language?: string) => {
       wl.language, 
       w.original_word,
       w.file_name,
-      w.related_words, 
+      w.related_words,
+      w.original_language,
       wl.term,
       wl.definition
   `;

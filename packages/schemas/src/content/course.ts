@@ -98,6 +98,7 @@ export const minimalJoinedCourseSchema = courseSchema
     hours: true,
     topic: true,
     subtopic: true,
+    originalLanguage: true,
     requiresPayment: true,
     paidPriceDollars: true,
     paidDescription: true,

@@ -32,6 +32,7 @@ export const joinedBuilderSchema = resourceSchema
       addressLine1: true,
       addressLine2: true,
       addressLine3: true,
+      originalLanguage: true,
     }),
   )
   .merge(

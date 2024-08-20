@@ -6,6 +6,7 @@ export interface GlossaryWord {
   originalWord: string;
   fileName: string;
   relatedWords?: (string[] | undefined) | null;
+  originalLanguage: string;
 }
 
 export interface GlossaryWordLocalized {
@@ -23,6 +24,7 @@ export interface JoinedGlossaryWord {
   originalWord: string;
   fileName: string;
   relatedWords?: (string[] | undefined) | null;
+  originalLanguage: string;
   language: string;
   term: string;
   definition: string;

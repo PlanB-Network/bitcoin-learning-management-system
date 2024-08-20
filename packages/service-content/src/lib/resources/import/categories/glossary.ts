@@ -12,6 +12,7 @@ import { createProcessMainFile } from '../main.js';
 interface GlossaryWordMain {
   en_word: string;
   related_words: string[];
+  original_language: string;
 }
 
 export const createProcessChangedGlossaryWord = (
@@ -48,18 +49,23 @@ export const createProcessChangedGlossaryWord = (
         try {
           if (main && main.kind !== 'removed') {
             const parsed = yamlToObject<GlossaryWordMain>(main.data);
+            // TODO remove when data fixed
+            if (parsed.original_language === undefined) {
+              parsed.original_language = '';
+            }
 
             const fileName = resource.path.split('/').slice(-1);
 
             await transaction`
-          INSERT INTO content.glossary_words (resource_id, original_word, file_name, related_words)
+          INSERT INTO content.glossary_words (resource_id, original_word, file_name, related_words, original_language)
           VALUES (
-            ${id}, ${parsed.en_word}, ${fileName}, ${parsed.related_words}
+            ${id}, ${parsed.en_word}, ${fileName}, ${parsed.related_words}, ${parsed.original_language}
           )
           ON CONFLICT (resource_id) DO UPDATE SET
             original_word = EXCLUDED.original_word,
             file_name = EXCLUDED.file_name,
-            related_words = EXCLUDED.related_words
+            related_words = EXCLUDED.related_words,
+            original_language = EXCLUDED.original_language
         `;
           }
         } catch (error) {
