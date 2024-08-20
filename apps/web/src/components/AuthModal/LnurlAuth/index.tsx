@@ -4,9 +4,8 @@ import { QRCodeSVG } from 'qrcode.react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useSmaller } from '#src/hooks/use-smaller.js';
+import { Dialog } from '@blms/ui';
 
-import { Modal } from '../../../atoms/Modal/index.tsx';
 import { trpc, trpcClient } from '../../../utils/trpc.ts';
 import type { AuthModalState } from '../props.tsx';
 
@@ -19,7 +18,7 @@ interface LnurlAuthModalProps {
 export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
-  const isMobile = useSmaller('md');
+  // const isMobile = useSmaller('md');
 
   const [lnurl, setLnurl] = useState('');
 
@@ -66,12 +65,12 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
   }, [isOpen, queryClient, onClose]);
 
   return (
-    <Modal
-      closeButtonEnabled={isMobile ? isMobile : false}
-      isOpen={isOpen}
-      onClose={onClose}
-      headerText={t('words.lnurlAuth')}
-      showAccountHelper={isMobile ? false : true}
+    <Dialog
+      // closeButtonEnabled={isMobile ? isMobile : false}
+      open={isOpen}
+      // onClose={onClose}
+      // headerText={t('words.lnurlAuth')}
+      // showAccountHelper={isMobile ? false : true}
     >
       <div className="flex flex-col items-center justify-center py-4">
         {lnurl && (
@@ -83,6 +82,6 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
           {t('auth.lnurlAuthDescription')}
         </p>
       </div>
-    </Modal>
+    </Dialog>
   );
 };

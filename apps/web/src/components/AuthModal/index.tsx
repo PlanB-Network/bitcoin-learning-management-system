@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { LnurlAuth } from './LnurlAuth/index.tsx';
 import { PasswordReset } from './PasswordReset/index.tsx';
 import { AuthModalState } from './props.ts';
 import { Register } from './Register/index.tsx';
@@ -59,11 +58,11 @@ export const AuthModal = ({
       />
 
       {/* LnurlAuth Dialog */}
-      <LnurlAuth
+      {/* <LnurlAuth
         isOpen={isOpen && currentState === AuthModalState.LnurlAuth}
         onClose={onClose}
         goTo={goTo}
-      />
+      /> */}
     </>
   );
 };
