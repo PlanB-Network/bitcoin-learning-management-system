@@ -2,10 +2,11 @@ import { times } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Card } from '@blms/ui';
+
 import arrowForward from '#src/assets/icons/arrow_forward.svg';
 import stylusCircle from '#src/assets/icons/stylus_circle.svg';
 import blueEllipse from '#src/assets/resources/blue-ellipse.svg';
-import { Card } from '#src/atoms/Card/index.js';
 import { Contributor } from '#src/components/Contributor/index.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { compose } from '#src/utils/index.js';

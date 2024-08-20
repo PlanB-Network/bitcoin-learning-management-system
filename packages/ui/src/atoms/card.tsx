@@ -1,9 +1,6 @@
-import { isString } from 'lodash-es';
 import type { ReactNode } from 'react';
 
-import { cn } from '@blms/ui';
-
-import { compose } from '../../utils/index.ts';
+import { cn, isString } from '@blms/ui';
 
 interface CardProps {
   image?: string | { src: string; alt: string };
@@ -21,7 +18,7 @@ export const Card = ({
 }: CardProps) => {
   return (
     <div
-      className={compose(
+      className={cn(
         'flex flex-col m-2 bg-gray-100 rounded-3xl border border-gray-200 shadow',
         className ?? '',
       )}

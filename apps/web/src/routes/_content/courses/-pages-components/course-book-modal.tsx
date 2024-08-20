@@ -1,10 +1,9 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineClose } from 'react-icons/ai';
 
 import type { JoinedCourseWithAll } from '@blms/types';
+import { Dialog, DialogContent } from '@blms/ui';
 
-import { Modal } from '#src/atoms/Modal/index.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
@@ -53,48 +52,43 @@ export const CourseBookModal = ({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} isLargeModal>
-      <button
-        className="absolute right-4 top-2.5 lg:top-5 lg:right-5"
-        aria-roledescription="Close Payment Modal"
-        onClick={() => onClose()}
-      >
-        <AiOutlineClose />
-      </button>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
-        <ModalBookSummary
-          course={course}
-          chapter={chapter}
-          courseName={courseName}
-          professorNames={professorNames}
-          mobileDisplay={false}
-        />
-        <div className="flex flex-col items-center justify-center lg:m-6">
-          {isCourseBooked ? (
-            <ModalBookSuccess
-              course={course}
-              chapter={chapter}
-              onClose={closeModal}
-            />
-          ) : (
-            <ModalBookDescription
-              onBooked={() => {
-                saveAndDisplaySuccess();
-              }}
-              description={t('courses.payment.book_description')}
-              callout={t('events.payment.callout_physical')}
-            >
-              <ModalBookSummary
+    <Dialog open={isOpen} onOpenChange={() => closeModal()}>
+      <DialogContent className="max-w-4xl p-6 w-[90%] lg:h-[50rem] lg:w-full lg:p-0 overflow-auto lg:overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
+          <ModalBookSummary
+            course={course}
+            chapter={chapter}
+            courseName={courseName}
+            professorNames={professorNames}
+            mobileDisplay={false}
+          />
+          <div className="flex flex-col items-center justify-center lg:m-6">
+            {isCourseBooked ? (
+              <ModalBookSuccess
                 course={course}
                 chapter={chapter}
-                courseName={courseName}
-                professorNames={professorNames}
-                mobileDisplay={true}
+                onClose={closeModal}
               />
-            </ModalBookDescription>
-          )}
+            ) : (
+              <ModalBookDescription
+                onBooked={() => {
+                  saveAndDisplaySuccess();
+                }}
+                description={t('courses.payment.book_description')}
+                callout={t('events.payment.callout_physical')}
+              >
+                <ModalBookSummary
+                  course={course}
+                  chapter={chapter}
+                  courseName={courseName}
+                  professorNames={professorNames}
+                  mobileDisplay={true}
+                />
+              </ModalBookDescription>
+            )}
+          </div>
         </div>
-      </div>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   );
 };

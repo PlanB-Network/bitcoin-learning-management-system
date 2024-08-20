@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
 import type { JoinedCourseWithAll } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Card } from '@blms/ui';
 
-import { Card } from '#src/atoms/Card/index.js';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
 import { isDevelopmentEnvironment } from '#src/utils/misc.js';

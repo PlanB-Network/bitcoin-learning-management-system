@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
 import type { Ticket } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Card } from '@blms/ui';
 
-import { Card } from '#src/atoms/Card/index.js';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
 import { trpc } from '#src/utils/trpc.js';
