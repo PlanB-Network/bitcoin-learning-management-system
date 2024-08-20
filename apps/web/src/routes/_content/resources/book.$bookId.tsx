@@ -2,8 +2,9 @@ import { createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Card } from '@blms/ui';
+
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import { Card } from '#src/atoms/Card/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';

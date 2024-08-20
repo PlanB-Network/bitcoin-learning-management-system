@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import type { Invoice } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Card } from '@blms/ui';
 
-import { Card } from '#src/atoms/Card/index.js';
 import { formatDate } from '#src/utils/date.js';
 
 export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
