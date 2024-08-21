@@ -48,7 +48,10 @@ export const parseDetailsFromPath = (path: string): BlogDetails => {
     category: pathElements[1],
     path: blogElements.join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements.at(-1)?.replace(/\..*/, '') as Language,
+    language: pathElements
+      .at(-1)
+      ?.replace(/\..*/, '')
+      .toLowerCase() as Language,
   };
 };
 
@@ -136,7 +139,7 @@ export const createUpdateBlogs = (dependencies: Dependencies) => {
           )
           VALUES (
             ${id},
-            ${file.language},
+            ${file.language?.toLowerCase()},
             ${header.data['name']},
             ${header.data['description']},
             ${header.content.trim()}
