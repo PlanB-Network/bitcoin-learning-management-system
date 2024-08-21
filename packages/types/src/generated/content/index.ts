@@ -18,3 +18,4 @@ export type * from './quiz.js';
 export type * from './resource.js';
 export type * from './tutorial.js';
 export type * from './blogs.js';
+export type * from './legals.js';

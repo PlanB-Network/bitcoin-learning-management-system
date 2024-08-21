@@ -4,6 +4,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import type { JoinedBlogLight } from '@blms/types';
 
+import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 
 const getBlog = (url: string, blogs: JoinedBlogLight[]) => {
@@ -59,6 +60,33 @@ export const BlogMarkdownBody = ({
             {children}
           </div>
         ),
+        img: ({ src, alt }) =>
+          src?.includes('youtube.com') || src?.includes('youtu.be') ? (
+            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
+              <div className=" flex items-center">
+                <div className="ml-2">
+                  <p className="text-lg font-medium text-blue-900">Video</p>
+                </div>
+              </div>
+              <div className="relative pt-[56.25%]">
+                <ReactPlayer
+                  width={'100%'}
+                  height={'100%'}
+                  style={{ position: 'absolute', top: 0, left: 0 }}
+                  className="mx-auto mb-2 rounded-lg"
+                  controls={true}
+                  url={src}
+                  src={alt}
+                />
+              </div>
+            </div>
+          ) : (
+            <img
+              className="mx-auto flex justify-center rounded-lg py-6"
+              src={src}
+              alt={alt}
+            />
+          ),
         a: ({ children, href = '' }) => {
           const blog = getBlog(href, blogs);
           if (blog) {

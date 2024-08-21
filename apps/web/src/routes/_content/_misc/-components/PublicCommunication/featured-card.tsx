@@ -36,14 +36,14 @@ export const FeaturedCard = ({ category }: FeaturedCardProps) => {
         <Link
           to={`/public-communication/blogs-and-news/${latestBlog.category}/${latestBlog.name}`}
         >
-          <h2 className="text-darkOrange-5 mb-2 lg:mb-6 mobile-h3 md:desktop-h3">
+          <h2 className="text-darkOrange-5 mb-2 lg:mb-6 mobile-h2 lg:desktop-h3">
             {latestBlog.title}
           </h2>
-          <div className="flex flex-row space-x-5 mb-2 lg:mb-6">
-            <span className="text-black font-medium lg:font-semibold text-base lg:text-2xl">
+          <div className="flex flex-row space-x-5 mb-2 lg:mb-6 items-center">
+            <span className="text-black font-medium lg:font-semibold text-sm lg:text-2xl">
               {latestBlog.author}
             </span>
-            <span className="text-black lg:text-2xl font-medium lg:font-normal text-base">
+            <span className="text-black lg:text-2xl font-medium lg:font-normal text-sm">
               {latestBlog.date
                 ? formatDateSimple(latestBlog.date)
                 : 'No date available'}
@@ -62,7 +62,7 @@ export const FeaturedCard = ({ category }: FeaturedCardProps) => {
             </div>
           )}
           <div>
-            <p className="text-black hidden md:flex">
+            <p className="text-black max-md:hidden line-clamp-3">
               {latestBlog.description}
             </p>
           </div>

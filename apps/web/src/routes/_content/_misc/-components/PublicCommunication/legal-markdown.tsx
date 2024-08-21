@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 
 interface LegalMarkdownComponentProps {
-  content: string;
+  content?: string;
 }
 
 export const LegalMarkdownComponent = ({
@@ -33,6 +33,12 @@ export const LegalMarkdownComponent = ({
           <p className="leading-relaxed mb-5 text-start text-black">
             {children}
           </p>
+        ),
+
+        li: ({ children }) => (
+          <li className="leading-relaxed mb-5 text-start text-black">
+            {children}
+          </li>
         ),
       }}
     >

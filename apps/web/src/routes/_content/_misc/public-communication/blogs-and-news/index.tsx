@@ -13,24 +13,14 @@ const blogTabs = [
     href: '/public-communication/blogs-and-news/',
   },
   {
-    id: 'course-release',
-    label: 'publicCommunication.blogCategories.course',
-    href: '/public-communication/blogs-and-news/course-release',
+    id: 'content',
+    label: 'publicCommunication.blogCategories.content',
+    href: '/public-communication/blogs-and-news/content',
   },
   {
-    id: 'features',
-    label: 'publicCommunication.blogCategories.features',
-    href: '/public-communication/blogs-and-news/features',
-  },
-  {
-    id: 'patch-notes',
-    label: 'publicCommunication.blogCategories.patch',
-    href: '/public-communication/blogs-and-news/patch-notes',
-  },
-  {
-    id: 'grants',
-    label: 'publicCommunication.blogCategories.grants',
-    href: '/public-communication/blogs-and-news/grants',
+    id: 'feature',
+    label: 'publicCommunication.blogCategories.feature',
+    href: '/public-communication/blogs-and-news/feature',
   },
   {
     id: 'network',
@@ -87,7 +77,7 @@ export function BlogsNews() {
         </div>
 
         {/* Mobile view */}
-        <div className="flex lg:hidden md:mb-3 w-full">
+        <div className="mb-5 lg:hidden max-w-[280px] mx-auto w-full">
           <DropdownMenu
             activeItem={activeItem ? activeItem.name : ''}
             itemsList={dropdownItems}
