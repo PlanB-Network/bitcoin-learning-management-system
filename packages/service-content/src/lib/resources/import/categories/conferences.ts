@@ -2,7 +2,9 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 
 import { firstRow } from '@blms/database';
-import type { Resource } from '@blms/types';
+import type { Conference, Proofreading, Resource } from '@blms/types';
+
+import type { ProofreadingEntry } from '#src/lib/types.js';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { separateContentFiles, yamlToObject } from '../../../utils.js';
@@ -19,6 +21,7 @@ interface ConferenceMain {
     website?: string;
     twitter?: string;
   };
+  proofreading: ProofreadingEntry[];
 }
 
 interface ConferenceLocalized {
@@ -114,20 +117,20 @@ export const createProcessChangedConference = (
           throw new Error(`Resource not found for path ${resource.path}`);
         }
 
-        let parsed: ConferenceMain | null = null;
+        let parsedConference: ConferenceMain | null = null;
 
         try {
           if (main && main.kind !== 'removed') {
-            parsed = yamlToObject<ConferenceMain>(main.data);
+            parsedConference = yamlToObject<ConferenceMain>(main.data);
 
-            await transaction`
+            const result = await transaction<Conference[]>`
               INSERT INTO content.conferences (
                 resource_id, languages, name, year, location, original_language, description, builder, website_url, twitter_url
               )
               VALUES (
-                ${id}, ${parsed.language}, '', ${parsed.year.toString().trim()}, ${parsed.location.trim()},  ${parsed.original_language},
-                '', ${parsed.builder?.trim()}, ${parsed.links?.website?.trim()}, 
-                ${parsed.links?.twitter?.trim()}
+                ${id}, ${parsedConference.language}, '', ${parsedConference.year.toString().trim()}, ${parsedConference.location.trim()},  ${parsedConference.original_language},
+                '', ${parsedConference.builder?.trim()}, ${parsedConference.links?.website?.trim()}, 
+                ${parsedConference.links?.twitter?.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
                 languages = EXCLUDED.languages,
@@ -139,7 +142,29 @@ export const createProcessChangedConference = (
                 builder = EXCLUDED.builder,
                 website_url = EXCLUDED.website_url,
                 twitter_url = EXCLUDED.twitter_url
-            `;
+              RETURNING *
+            `.then(firstRow);
+
+            // If the resource has proofreads
+            if (parsedConference.proofreading) {
+              for (const p of parsedConference.proofreading) {
+                const proofreadResult = await transaction<Proofreading[]>`
+                  INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
+                  VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
+                  RETURNING *;
+                `.then(firstRow);
+
+                if (p.contributors_id) {
+                  for (const [index, contrib] of p.contributors_id.entries()) {
+                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                    await transaction`
+                      INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
+                      VALUES (${proofreadResult?.id},${contrib},${index})
+                    `;
+                  }
+                }
+              }
+            }
           }
         } catch (error) {
           errors.push(

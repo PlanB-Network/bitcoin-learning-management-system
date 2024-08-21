@@ -1366,9 +1366,9 @@ export const contentProofreading = content.table(
     }),
 
     language: varchar('language', { length: 10 }).notNull(),
-    lastContribution: timestamp('last_contribution', {
+    lastContributionDate: timestamp('last_contribution_date', {
       withTimezone: true,
-    }).notNull(),
+    }),
     urgency: integer('urgency'),
     reward: integer('reward'),
   },
@@ -1395,7 +1395,6 @@ export const contentProofreadingContributor = content.table(
       .references(() => contentProofreading.id, {
         onDelete: 'cascade',
       }),
-    language: varchar('language', { length: 10 }).notNull(),
     contributorId: varchar('contributor_id', { length: 20 })
       .notNull()
       .references(() => contentContributors.id, { onDelete: 'cascade' }),
@@ -1403,7 +1402,7 @@ export const contentProofreadingContributor = content.table(
   },
   (table) => ({
     pk: primaryKey({
-      columns: [table.proofreadingId, table.language, table.contributorId],
+      columns: [table.proofreadingId, table.contributorId],
     }),
   }),
 );

@@ -1,5 +1,7 @@
 import { firstRow } from '@blms/database';
-import type { Resource } from '@blms/types';
+import type { Book, Proofreading, Resource } from '@blms/types';
+
+import type { ProofreadingEntry } from '#src/lib/types.js';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { separateContentFiles, yamlToObject } from '../../../utils.js';
@@ -15,6 +17,7 @@ interface BookMain {
   /** The website URL of the book or author */
   website_url?: string;
   original_language: string;
+  proofreading: ProofreadingEntry[];
 }
 
 interface BookLocal extends BaseResource {
@@ -67,20 +70,42 @@ export const createProcessChangedBook = (
           throw new Error(`Resource not found for path ${resource.path}`);
         }
 
-        let parsed: BookMain | null = null;
+        let parsedBook: BookMain | null = null;
         try {
           if (main && main.kind !== 'removed') {
-            parsed = yamlToObject<BookMain>(main.data);
+            parsedBook = yamlToObject<BookMain>(main.data);
 
-            await transaction`
+            const result = await transaction<Book[]>`
               INSERT INTO content.books (resource_id, author, level, website_url, original_language)
-              VALUES (${id}, ${parsed.author}, ${parsed.level}, ${parsed.website_url}, ${parsed.original_language})
+              VALUES (${id}, ${parsedBook.author}, ${parsedBook.level}, ${parsedBook.website_url}, ${parsedBook.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
                 author = EXCLUDED.author,
                 level = EXCLUDED.level,
                 website_url = EXCLUDED.website_url,
                 original_language = EXCLUDED.original_language
-        `;
+              RETURNING *
+            `.then(firstRow);
+
+            // If the resource has proofreads
+            if (parsedBook.proofreading) {
+              for (const p of parsedBook.proofreading) {
+                const proofreadResult = await transaction<Proofreading[]>`
+                  INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
+                  VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
+                  RETURNING *;
+                `.then(firstRow);
+
+                if (p.contributors_id) {
+                  for (const [index, contrib] of p.contributors_id.entries()) {
+                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                    await transaction`
+                      INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
+                      VALUES (${proofreadResult?.id},${contrib},${index})
+                    `;
+                  }
+                }
+              }
+            }
           }
         } catch (error) {
           errors.push(

@@ -1,0 +1,1 @@
+ALTER TABLE "content"."proofreading" RENAME COLUMN "last_contribution" TO "last_contribution_date";

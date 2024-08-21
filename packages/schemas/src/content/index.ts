@@ -10,6 +10,7 @@ export * from './glossary.js';
 export * from './podcast.js';
 export * from './professor.js';
 export * from './professors2.js';
+export * from './proofreading.js';
 export * from './quiz.js';
 export * from './resource.js';
 export * from './tutorial.js';

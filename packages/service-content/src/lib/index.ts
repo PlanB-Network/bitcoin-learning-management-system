@@ -27,6 +27,7 @@ import {
   createUpdateProfessors,
   groupByProfessor,
 } from './professors/import/index.js';
+import { createDeleteProofreadings } from './proofreading/import/index.js';
 import {
   createDeleteQuizQuestions,
   createUpdateQuizQuestions,
@@ -47,6 +48,7 @@ import {
  * Updates the database from the content files
  */
 export const createProcessContentFiles = (dependencies: Dependencies) => {
+  const deleteProofreadings = createDeleteProofreadings(dependencies);
   const updateResources = createUpdateResources(dependencies);
   const updateCourses = createUpdateCourses(dependencies);
   const updateTutorials = createUpdateTutorials(dependencies);
@@ -61,6 +63,9 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
     const errors: string[] = [];
+
+    console.log(`-- Sync procedure: Deleteing proofreadings`);
+    await deleteProofreadings(errors);
 
     const resources = groupByResource(filteredFiles, errors);
     console.log(`-- Sync procedure: Syncing ${resources.length} resources`);

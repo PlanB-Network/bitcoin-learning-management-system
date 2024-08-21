@@ -13,6 +13,7 @@ export type * from './glossary.js';
 export type * from './podcast.js';
 export type * from './professor.js';
 export type * from './professors2.js';
+export type * from './proofreading.js';
 export type * from './quiz.js';
 export type * from './resource.js';
 export type * from './tutorial.js';
