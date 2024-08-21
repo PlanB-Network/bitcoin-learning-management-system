@@ -706,7 +706,7 @@ function CourseChapter() {
               )}
             </div>
 
-            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
+            <div className="flex w-full flex-col items-center justify-center lg:max-w-[66rem] lg:flex-row lg:items-stretch lg:justify-stretch">
               <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:px-2 md:mt-8 md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden">
                 <Header chapter={chapter} sections={sections} />
 
@@ -755,7 +755,7 @@ function CourseChapter() {
                   </>
                 )}
               </div>
-              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block  ">
+              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block">
                 {chapters && (
                   <NavigationPanel
                     course={chapter.course}

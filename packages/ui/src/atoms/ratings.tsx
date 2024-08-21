@@ -1,7 +1,7 @@
 'use client';
 
-import { Star } from 'lucide-react';
 import React from 'react';
+import { BsStar, BsStarFill } from 'react-icons/bs';
 
 import { cn } from '../lib/utils.js';
 
@@ -15,8 +15,8 @@ const ratingVariants = {
     emptyStar: 'text-destructive/70',
   },
   yellow: {
-    star: 'text-yellow-1',
-    emptyStar: 'text-yellow-6',
+    star: 'text-darkOrange-5',
+    emptyStar: 'text-newGray-2',
   },
 };
 
@@ -25,6 +25,7 @@ export interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
   fill?: boolean;
   Icon?: React.ReactElement;
+  FilledIcon?: React.ReactElement;
   variant?: keyof typeof ratingVariants;
   asInput?: boolean;
   value: number;
@@ -34,9 +35,10 @@ export interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Ratings = ({ ...props }: RatingsProps) => {
   const {
     totalStars = 5,
-    size = 20,
+    size = 30,
     fill = true,
-    Icon = <Star />,
+    Icon = <BsStar />,
+    FilledIcon = <BsStarFill />,
     variant = 'default',
     asInput = false,
     onValueChange,
@@ -61,7 +63,7 @@ export const Ratings = ({ ...props }: RatingsProps) => {
   return (
     <div className={cn('flex items-center gap-2')} {...props}>
       {Array.from({ length: fullStars }).map((_, i) =>
-        React.cloneElement(Icon, {
+        React.cloneElement(FilledIcon, {
           key: i,
           size,
           className: cn(
