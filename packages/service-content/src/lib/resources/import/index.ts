@@ -50,7 +50,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
     category: categorySubpath,
     path: pathElements.slice(0, 3).join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements[3].replace(/\..*/, '') as Language,
+    language: pathElements[3].replace(/\..*/, '').toLowerCase() as Language,
   };
 };
 

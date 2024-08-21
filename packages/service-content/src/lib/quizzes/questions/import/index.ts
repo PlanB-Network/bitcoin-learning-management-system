@@ -41,7 +41,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
     id,
     path: pathElements.slice(0, 4).join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements[4].replace(/\..*/, '') as Language,
+    language: pathElements[4].replace(/\..*/, '').toLowerCase() as Language,
   };
 };
 

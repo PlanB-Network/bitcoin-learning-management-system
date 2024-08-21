@@ -49,7 +49,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
     id: pathElements[1],
     path: pathElements.slice(0, 2).join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements[2].replace(/\..*/, '') as Language,
+    language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
   };
 };
 

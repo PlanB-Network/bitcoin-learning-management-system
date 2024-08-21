@@ -36,7 +36,7 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
   return {
     path: pathElements.slice(0, 2).join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements[2].replace(/\..*/, '') as Language,
+    language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
   };
 };
 

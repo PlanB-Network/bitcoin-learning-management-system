@@ -48,7 +48,10 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
     category: pathElements[1],
     path: tutorialElements.join('/'),
     fullPath: pathElements.join('/'),
-    language: pathElements.at(-1)?.replace(/\..*/, '') as Language,
+    language: pathElements
+      .at(-1)
+      ?.replace(/\..*/, '')
+      .toLowerCase() as Language,
   };
 };
 
@@ -134,7 +137,7 @@ export const createUpdateTutorials = (dependencies: Dependencies) => {
           )
           VALUES (
             ${id},
-            ${file.language},
+            ${file.language?.toLowerCase()},
             ${header.data['name']},
             ${header.data['description']},
             ${header.content.trim()}
