@@ -11,3 +11,11 @@ export interface ChangedContent {
   main?: ChangedFile;
   files: ChangedFileWithLanguage[];
 }
+
+export interface ProofreadingEntry {
+  language: string;
+  last_contribution_date: string | null;
+  urgency: number;
+  contributors_id?: string[];
+  reward: number;
+}

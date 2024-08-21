@@ -3,9 +3,12 @@ import { firstRow } from '@blms/database';
 import type {
   ChangedFile,
   ModifiedFile,
+  Proofreading,
   RenamedFile,
   Tutorial,
 } from '@blms/types';
+
+import type { ProofreadingEntry } from '#src/lib/types.js';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -33,6 +36,7 @@ interface TutorialMain {
         };
       };
   tags?: string[];
+  proofreading: ProofreadingEntry[];
 }
 
 export const createProcessMainFile =
@@ -149,5 +153,26 @@ export const createProcessMainFile =
             id FROM content.tags WHERE name = ANY(${parsedTutorial.tags})
           ON CONFLICT DO NOTHING
         `;
+    }
+
+    // If the resource has proofreads
+    if (parsedTutorial.proofreading) {
+      for (const p of parsedTutorial.proofreading) {
+        const proofreadResult = await transaction<Proofreading[]>`
+          INSERT INTO content.proofreading (tutorial_id, language, last_contribution_date, urgency, reward)
+          VALUES (${result.id}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
+          RETURNING *;
+        `.then(firstRow);
+
+        if (p.contributors_id) {
+          for (const [index, contrib] of p.contributors_id.entries()) {
+            await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+            await transaction`
+              INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
+              VALUES (${proofreadResult?.id},${contrib},${index})
+            `;
+          }
+        }
+      }
     }
   };

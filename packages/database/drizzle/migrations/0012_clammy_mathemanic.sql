@@ -1,0 +1,3 @@
+ALTER TABLE "content"."proofreading_contributor" DROP CONSTRAINT "proofreading_contributor_proofreading_id_language_contributor_id_pk";--> statement-breakpoint
+ALTER TABLE "content"."proofreading_contributor" ADD CONSTRAINT "proofreading_contributor_proofreading_id_contributor_id_pk" PRIMARY KEY("proofreading_id","contributor_id");--> statement-breakpoint
+ALTER TABLE "content"."proofreading_contributor" DROP COLUMN IF EXISTS "language";

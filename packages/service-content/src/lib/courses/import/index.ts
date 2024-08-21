@@ -8,12 +8,13 @@ import type {
   ChangedFile,
   Course,
   ModifiedFile,
+  Proofreading,
   RenamedFile,
 } from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
-import type { ChangedContent } from '../../types.js';
+import type { ChangedContent, ProofreadingEntry } from '../../types.js';
 import {
   convertStringToTimestamp,
   getContentType,
@@ -107,6 +108,7 @@ interface CourseMain {
   paid_start_date?: string;
   paid_end_date?: string;
   contact?: string;
+  proofreading: ProofreadingEntry[];
 }
 
 interface CourseLocalized {
@@ -420,6 +422,27 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                     id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
                   ON CONFLICT DO NOTHING
                 `;
+            }
+
+            // If the resource has proofreads
+            if (parsedCourse.proofreading) {
+              for (const p of parsedCourse.proofreading) {
+                const proofreadResult = await transaction<Proofreading[]>`
+                  INSERT INTO content.proofreading (course_id, language, last_contribution_date, urgency, reward)
+                  VALUES (${course.id}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
+                  RETURNING *;
+                `.then(firstRow);
+
+                if (p.contributors_id) {
+                  for (const [index, contrib] of p.contributors_id.entries()) {
+                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                    await transaction`
+                      INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
+                      VALUES (${proofreadResult?.id},${contrib},${index})
+                    `;
+                  }
+                }
+              }
             }
           }
         } catch (error) {
