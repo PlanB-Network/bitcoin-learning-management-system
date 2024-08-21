@@ -55,14 +55,20 @@ const DialogContent = React.forwardRef<
         <DialogPrimitive.Content
           ref={ref}
           className={cn(
-            'max-h-screen fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white py-2 px-4 rounded-[1.5em]',
+            'my-2 max-h-[95%] overflow-scroll no-scrollbar fixed left-1/2 top-1/2 z-50 grid -translate-x-1/2 -translate-y-1/2 gap-4 border bg-white py-2 px-4 rounded-[1.5em]',
             className,
           )}
           {...props}
         >
+          {showCloseButton && (
+            <DialogPrimitive.Close className="flex justify-end rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
+              <IoMdClose className="size-6" />
+              <span className="sr-only">Close</span>
+            </DialogPrimitive.Close>
+          )}
           {children}
           {showAccountHelper && (
-            <div className="max-md:max-w-[198px] flex flex-col items-center text-center mt-7 px-0.5 sm:px-5 mx-auto">
+            <div className="flex flex-col items-center text-center px-0.5 sm:px-5 mx-auto">
               <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
               <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
                 Did you know ?
@@ -71,12 +77,6 @@ const DialogContent = React.forwardRef<
                 No need for an account to start learning at Plan B Network !
               </span>
             </div>
-          )}
-          {showCloseButton && (
-            <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
-              <IoMdClose className="size-6" />
-              <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
           )}
         </DialogPrimitive.Content>
       </DialogPortal>
@@ -117,7 +117,7 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitleProps
 >(({ className, variant = 'orange', ...props }, ref) => {
-  const baseClass = 'text-lg font-semibold leading-none tracking-tight';
+  const baseClass = '';
   const variantStyles = {
     orange:
       'text-center mobile-h2 md:desktop-h4 text-darkOrange-5 px-0.5 sm:px-5',

@@ -62,7 +62,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
         showCloseButton={true}
-        className="py-2 px-4 sm:p-6 w-[90%] max-w-lg"
+        className="py-2 px-4 sm:p-6 w-full max-w-[90%] md:max-w-sm"
       >
         <DialogTitle>{t('menu.login')}</DialogTitle>
         <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
