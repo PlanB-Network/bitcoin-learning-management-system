@@ -81,8 +81,9 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               />
 
               <Button
+                variant="newPrimary"
                 type="submit"
-                className="mb-5 mt-10"
+                className="mb-5 mt-2"
                 disabled={values.email === ''}
               >
                 {t('auth.sendLink')}
@@ -123,8 +124,8 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        showCloseButton={false}
-        className="w-[90%] lg:w-full max-w-lg px-4 py-2 sm:p-6"
+        showCloseButton={true}
+        className="w-full max-w-[90%] md:max-w-sm px-4 py-2 sm:p-6"
       >
         <DialogHeader>
           <DialogTitle variant="orange">{t('auth.resetPassword')}</DialogTitle>

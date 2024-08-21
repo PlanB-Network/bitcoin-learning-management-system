@@ -95,7 +95,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
         <DialogOverlay />
         <DialogContent
           showCloseButton={true}
-          className="gap-3 py-2 px-4 sm:gap-6 sm:p-6 w-[90%] lg:w-full max-w-lg"
+          className="gap-3 py-2 px-4 sm:gap-6 sm:p-6 w-full max-w-[90%] md:max-w-sm"
           showAccountHelper={true}
         >
           <DialogHeader>
