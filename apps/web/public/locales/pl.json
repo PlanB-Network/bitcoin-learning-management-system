@@ -37,7 +37,8 @@
       "displayNameRegex": "Nazwa użytkownika może zawierać tylko litery, cyfry, _, ., - i spacje.",
       "displayNameRequired": "Wymagana jest nazwa użytkownika.",
       "displayNameTooShort": "Nazwa użytkownika musi zawierać co najmniej 2 znaki.",
-      "invalidCredentials": "Nieprawidłowe dane uwierzytelniające"
+      "invalidCredentials": "Nieprawidłowe dane uwierzytelniające",
+      "emailInvalid": ""
     },
     "forgottenPassword": "Nie pamiętasz hasła?",
     "headerAccountCreated": "Konto zostało stworzone",
@@ -69,7 +70,8 @@
     "tryAgain": "Spróbuj ponownie",
     "confirmation": "Potwierdzenie",
     "displayName": "Nazwa użytkownika",
-    "oldPassword": "Stare hasło"
+    "oldPassword": "Stare hasło",
+    "emailTip": ""
   },
   "bet": {
     "contribute": "Ten zestaw narzędzi jest otwarty na współpracę. Korzysta z Figma, więc każdy może dodawać, modyfikować i tłumaczyć. Aby współpracować, dodać kategorię lub podyskutować, nie wahaj się dołączyć do naszego discorda.",
@@ -184,7 +186,8 @@
       "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
       "buyOnlineCourse": "Kup kurs online",
       "inPersonAccess": "Musisz pobrać swój bilet, aby uzyskać dostęp do zajęć stacjonarnych.",
-      "buyInPersonCourse": "Kup kurs stacjonarny"
+      "buyInPersonCourse": "Kup kurs stacjonarny",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "Nasi nauczyciele są do Twojej dyspozycji!",
@@ -294,7 +297,67 @@
       "feedbackDescription": "Dodaj swoją ewaluację kursu poniżej.\nSesja ewaluacyjna jest obowiązkowa, aby uzyskać dostęp do egzaminu końcowego i zatwierdzić kurs.\nInformujemy, że nauczyciele nie będą mieli dostępu do poszczególnych ewaluacji.",
       "recommend": "Poleciłbyś ten kurs?",
       "faithful": "Jesteś nastawiony na osiągnięcie swojego celu?",
-      "currentlyLoggedOut": "W tym momencie jesteś wylogowany. Aby przekazać nam swoją opinię na temat kursu, prosimy <0>zaloguj się lub zarejestruj się</0>."
+      "currentlyLoggedOut": "W tym momencie jesteś wylogowany. Aby przekazać nam swoją opinię na temat kursu, prosimy <0>zaloguj się lub zarejestruj się</0>.",
+      "loadMoreComments": "",
+      "displayOutOf": "",
+      "edit": "",
+      "fieldRequired": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "whatStudentsSay": ""
+    },
+    "exam": {
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": ""
     }
   },
   "dashboard": {
@@ -308,7 +371,12 @@
       "inprogressCoursesTitle": "Kursy w trakcie realizacji",
       "inprogressCoursesDescription": "Tutaj możesz sprawdzić swoje postępy w kursach, które rozpocząłeś.",
       "seeProgress": "aby zobaczyć swoje postępy tutaj.",
-      "startCourse": "Rozpocznij lub ukończ kurs"
+      "startCourse": "Rozpocznij lub ukończ kurs",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": ""
     },
     "account": "Konto",
     "courses": "Kursy",
@@ -370,7 +438,8 @@
       "profilePicture": "Zdjęcie profilowe",
       "security": "Bezpieczeństwo",
       "username": "Nazwa użytkownika",
-      "profile": "Profil"
+      "profile": "Profil",
+      "emailChangeRateLimitError": ""
     },
     "teacher": {
       "courses": {
@@ -414,7 +483,44 @@
         "teacherProfile": "Profil nauczyciela",
         "tutorialModification": "Jeśli potrzebujesz pomocy, żeby zedytować coś w kursie, sprawdź informacje w tym <0>poradniku</0>."
       },
-      "menu": "Menu nauczyciela"
+      "menu": "Menu nauczyciela",
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      }
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "course": {
+      "coursesCompleted": "",
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
     }
   },
   "events": {
@@ -513,7 +619,8 @@
       "title": "Making Bitcoin education simple is our objective.",
       "subtitle1": "Ułatwiamy Ci opanowanie technologi za pomocą wielu szczegółowych tutoriali!",
       "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "Zobacz wszystkie tutoriale"
+      "link": "Zobacz wszystkie tutoriale",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Kim jesteśmy?",
@@ -535,7 +642,8 @@
       "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
       "content2": "You too can start bootstrapping your own local network in your country!",
       "link": "Pomóż nam w tłumaczeniu akademii",
-      "availableLanguages": "Dostępne języki"
+      "availableLanguages": "Dostępne języki",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "Razem możemy udoskonalić edukację na temat Bitcoina! ",
@@ -615,7 +723,10 @@
     "question2": "What do I gain?",
     "question3": "What are the requirements?",
     "question4": "What size is a node?",
-    "question5": "What's the secret plan?"
+    "question5": "What's the secret plan?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Tutaj",
@@ -680,7 +791,12 @@
     "glossary": {
       "title": "Glosariusz"
     },
-    "searchFilterName": "Szukaj według nazwy"
+    "searchFilterName": "Szukaj według nazwy",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitlePodcast": "",
+    "pageSubtitleBooks": ""
   },
   "settings": {
     "changePassword": "Zmień hasło",
@@ -794,7 +910,9 @@
     "github": "GitHub",
     "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
     "p2": "and consider joining our community!",
-    "pageTitle": "Oops."
+    "pageTitle": "Oops.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "About",
@@ -840,7 +958,8 @@
       "intermediate": "Intermediate",
       "wizard": "Kreator",
       "level": "Poziom",
-      "levels": "Poziomy"
+      "levels": "Poziomy",
+      "beginnerFriendly": ""
     },
     "library": "Library",
     "lightning": "Lightning",
@@ -920,7 +1039,29 @@
     "builder": "Twórca",
     "chapter": "Rozdział",
     "public": "Komunikacja publiczna",
-    "view": "Zobacz"
+    "view": "Zobacz",
+    "booked": "",
+    "bookings": "",
+    "credentials": "",
+    "diploma": "",
+    "filter": "",
+    "failed": "",
+    "goal": "",
+    "grade": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "location": "",
+    "overview": "",
+    "progress": "",
+    "publicationDate": "",
+    "ratings": "",
+    "required": "",
+    "status": "",
+    "writtenByPodcasts": "",
+    "teacher": "",
+    "total": "",
+    "passed": ""
   },
   "conferences": {
     "addConferences": "Zachęcamy do dodawania brakujących konferencji za pośrednictwem tego repozytorium <0>Github</0>.",
@@ -967,7 +1108,8 @@
     "pageSubtitle": "Masowe przyjęcie poprzez scentralizowane otwarte zasoby edukacyjne",
     "checkout": "Dowiedz się więcej o Certyfikacie",
     "organizeSubtitle": "Nie jest łatwo sprawić, aby miliard ludzi wziął pomarańczową pigułkę",
-    "readChart": "Przeczytaj statut"
+    "readChart": "Przeczytaj statut",
+    "tweetText": ""
   },
   "glossary": {
     "randomSearch": "Wyszukiwanie losowe",
