@@ -338,7 +338,11 @@
       "singleAttempt": "Egzamin można zdawać tylko w jednym podejściu",
       "singleAttemptAvailability": "Ten egzamin jest dostępny online od {{date}}",
       "viewExam": "Zobacz test",
-      "weight": "Wynik: {{weight}}%"
+      "weight": "Wynik: {{weight}}%",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Wszystkie rozdziały są teraz ukończone!",
@@ -450,9 +454,21 @@
         "emailPreferencesError": "Wystąpił błąd podczas próby pobrania preferencji dotyczących twojego adresu e-mail. Upewnij się, że użyty przez ciebie link jest poprawny.",
         "emailPreferencesSavedSuccessfully": "Twoje preferencje dotyczące e-maili zostały pomyślnie zaktualizowane.",
         "emailWarning": "Uwaga! Do Twojego konta nie jest przypisany żaden adres e-mail. Proszę dodać go w sekcji profil.",
-        "emailTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać przez e-maila?"
+        "emailTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać przez e-maila?",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorManage": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": "",
+        "none": "",
+        "eventsOption": "",
+        "loadEmailSettingsErrorDescription": ""
       },
-      "emailChangeRateLimitError": "Ostatnio zaktualizowałeś swój adres e-mail. Poczekaj kilka minut, zanim spróbujesz ponownie."
+      "emailChangeRateLimitError": "Ostatnio zaktualizowałeś swój adres e-mail. Poczekaj kilka minut, zanim spróbujesz ponownie.",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -471,7 +487,52 @@
         "proposeNewCourse": "Zaproponuj nowy kurs",
         "quickRecap": "Tutaj znajdziesz wszystkie informacje ogólne dotyczące tego kursu.",
         "reviews": "Opinie",
-        "goal": "Cel"
+        "goal": "Cel",
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "typeLabel": "",
+          "groupLabel": "",
+          "title": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "announcementsUpcoming": "",
+        "assignment": ""
       },
       "profile": {
         "enterTipsInformations": "Sieć Plan ₿ zachęca użytkowników do przyznawania nauczycielom napiwków. Proszę wprowadzić swoje dane, aby umożliwić kursantom przesłanie napiwku, jeśli mają na to ochotę.",
@@ -574,7 +635,21 @@
       "notSelectedAssignment": "Niestety, nie zostałeś wybrany do udziału w projekcie.\nNadal możesz brać udział w wykładach",
       "conclusionNotReleased": "Wnioski zostaną odblokowane w dniu ostatnich zajęć.",
       "coordinator": "Koordynator kursu",
-      "examScore": "Wynik:"
+      "examScore": "Wynik:",
+      "individualWork": "",
+      "keepMovingForward": "",
+      "planbSchoolGeneralInformation": "",
+      "ranking": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "summerSchool": "",
+      "assignmentTitle": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": ""
     },
     "careerPortal": {
       "applicationComplete": "Twoja aplikacja jest <highlight>Zakończona</highlight>",
@@ -1391,7 +1466,20 @@
     "dislikes": "Łapki w dół",
     "credits": "Podziękowania",
     "hybrid": "Hybrydowy",
-    "likes": "Łapki w górę"
+    "likes": "Łapki w górę",
+    "calendar": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "mode": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "conferences": {
     "addConferences": "Zachęcamy do dodawania brakujących konferencji za pośrednictwem tego repozytorium <0>Github</0>.",
@@ -1421,7 +1509,8 @@
     "haveReductionCode": "Masz kod rabatowy?",
     "payByCard": "Zapłać kartą",
     "payWithBitcoin": "Zapłać Bitcoinem",
-    "insertReductionCode": "Wprowadź swój kod zniżkowy"
+    "insertReductionCode": "Wprowadź swój kod zniżkowy",
+    "taxesMayApply": ""
   },
   "bCert": {
     "bookExam": "Zarezerwuj termin egzaminu",
@@ -1467,7 +1556,8 @@
       "errorMessageNotFound": "Blog nie został znaleziony.",
       "blogSidebarTitle": "Poprzednie wpisy w kategorii {{category}}",
       "blogListButtonText": "Czytaj",
-      "filterText": "Filtruj według tematu:"
+      "filterText": "Filtruj według tematu:",
+      "blogSidebarTitleForAll": ""
     },
     "blogPost": "Blogi i Wiadomości",
     "legal": "Informacje prawne",
@@ -1597,5 +1687,47 @@
     "online": "Online",
     "replay": "Powtórka",
     "hybrid": "Stacjonarne i online"
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "stayUpToDate": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
