@@ -208,7 +208,7 @@ function intersection<T>(a?: T[] | null, b?: T[] | null): T[] {
   return a ? (b ? a.filter((v) => b.includes(v)) : a) : b ? b : [];
 }
 
-export const EventsMap = ({
+const EventsMap = ({
   events,
   eventPayments,
   userEvents,
@@ -677,3 +677,5 @@ export const EventsMap = ({
     </div>
   );
 };
+
+export default EventsMap;

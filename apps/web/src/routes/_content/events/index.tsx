@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@blms/types';
@@ -16,8 +16,10 @@ import { CurrentEvents } from './-components/current-events.tsx';
 import { EventBookModal } from './-components/event-book-modal.tsx';
 import { EventPaymentModal } from './-components/event-payment-modal.tsx';
 import { EventsGrid } from './-components/events-grid.tsx';
-import { EventsMap } from './-components/events-map.tsx';
 import { EventsPassed } from './-components/events-passed.tsx';
+
+// eslint-disable-next-line import/no-named-as-default-member
+const EventsMap = React.lazy(() => import('./-components/events-map.tsx'));
 
 export const Route = createFileRoute('/_content/events/')({
   component: Events,
@@ -167,16 +169,20 @@ function Events() {
 
         {events && (
           <>
-            <EventsMap
-              events={events}
-              eventPayments={eventPayments}
-              userEvents={userEvents}
-              conversionRate={conversionRate}
-              openAuthModal={openAuthModal}
-              isLoggedIn={isLoggedIn}
-              setIsPaymentModalOpen={setIsPaymentModalOpen}
-              setPaymentModalData={setPaymentModalData}
-            />
+            <Suspense
+              fallback={<Spinner className="size-24 md:size-32 mx-auto" />}
+            >
+              <EventsMap
+                events={events}
+                eventPayments={eventPayments}
+                userEvents={userEvents}
+                conversionRate={conversionRate}
+                openAuthModal={openAuthModal}
+                isLoggedIn={isLoggedIn}
+                setIsPaymentModalOpen={setIsPaymentModalOpen}
+                setPaymentModalData={setPaymentModalData}
+              />
+            </Suspense>
 
             <EventsGrid
               events={events}
