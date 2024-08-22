@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import type { ChangeEventHandler } from 'react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Divider, Ratings, Slider, cn } from '@blms/ui';
 
@@ -67,24 +68,26 @@ function FormSlider({
           </div>
         </div>
         <div className="relative mt-8">
-          <div className="flex flex-col text-sm font-medium text-newGray-1">
+          <div className="flex flex-col text-[10px] md:text-sm font-medium text-newGray-1 text-center">
             {stepNames[0] && (
-              <span className="absolute self-start -translate-x-1/2">
+              <span className="absolute self-start -translate-x-1/2 max-sm:max-w-16">
                 {stepNames[0]}
               </span>
             )}
             {stepNames[1] && (
-              <span className="absolute self-center">{stepNames[1]}</span>
+              <span className="absolute self-center max-sm:max-w-16">
+                {stepNames[1]}
+              </span>
             )}
             {stepNames[2] && (
-              <span className="absolute self-end translate-x-1/2">
+              <span className="absolute self-end translate-x-1/2 max-sm:max-w-16">
                 {stepNames[2]}
               </span>
             )}
           </div>
         </div>
       </div>
-      <div className="my-12 w-full self-center justify-center ml-auto">
+      <div className="my-6 md:my-12 w-full self-center justify-center ml-auto">
         <Divider></Divider>
       </div>
     </div>
@@ -105,6 +108,8 @@ function FormTextArea({
   disabled?: boolean;
   onChange: ChangeEventHandler<HTMLTextAreaElement> | undefined;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div className={formDivClass} {...props}>
       <label className={formLabelClass} htmlFor={id}>
@@ -114,7 +119,7 @@ function FormTextArea({
         id={id}
         rows={3}
         value={value}
-        placeholder="Here you can write your thoughts"
+        placeholder={t('courses.review.writeThoughts')}
         disabled={disabled}
         onChange={onChange}
         className="w-full rounded-md px-4 py-1 text-gray-400 border border-gray-400/6"
@@ -130,6 +135,7 @@ export function CourseReview({
   chapter: Chapter;
   formDisabled?: boolean;
 }) {
+  const { t } = useTranslation();
   const { data: previousCourseReview, isFetched: isReviewFetched } =
     trpc.user.courses.getCourseReview.useQuery(
       {
@@ -186,7 +192,7 @@ export function CourseReview({
     chapter.part.partIndex === chapter.course.parts.length;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-16">
       {isReviewFetched || formDisabled ? (
         <>
           <h1
@@ -195,23 +201,18 @@ export function CourseReview({
               !formDisabled && 'text-newOrange-1',
             )}
           >
-            Feedback session
+            {t('courses.review.feedbackSessionTitle')}
           </h1>
-          <div className="text-center gap-1 leading-7">
-            <p>
-              Please rate your experience of the course below. <br />
-              This feedback session is mandatory to have access to the final
-              exam, and to validate the course. <br />
-              Note that teachers will not have access to individual evaluations.
-            </p>
+          <div className="text-center gap-1 leading-7 whitespace-pre-line">
+            <p>{t('courses.review.feedbackDescription')}</p>
           </div>
           <form>
-            <div className="mx-32">
-              <div className="my-12 mx-auto w-full">
+            <div className="mx-4 md:mx-32">
+              <div className="my-6 md:my-12 mx-auto w-full">
                 <label className={formLabelClass} htmlFor={'general'}>
-                  General grade
+                  {t('courses.review.generalGrade')}
                 </label>
-                <div className="bg-newGray-2 py-4 rounded-full w-fit mx-auto px-12">
+                <div className="bg-newGray-6 py-7 rounded-full w-fit mx-auto px-11 shadow-course-navigation">
                   <Ratings
                     id="general"
                     value={review.general}
@@ -229,8 +230,12 @@ export function CourseReview({
               </div>
               <FormSlider
                 id="length"
-                text="Length"
-                stepNames={['too short', 'as expected', 'too long']}
+                text={t('courses.review.length')}
+                stepNames={[
+                  t('courses.review.tooShort'),
+                  t('courses.review.asExpected'),
+                  t('courses.review.tooLong'),
+                ]}
                 value={review.length}
                 disabled={formDisabled}
                 onChange={(v) => {
@@ -243,8 +248,12 @@ export function CourseReview({
 
               <FormSlider
                 id="difficulty"
-                text="Difficulty"
-                stepNames={['too easy', 'as expected', 'too hard']}
+                text={t('courses.review.difficulty')}
+                stepNames={[
+                  t('courses.review.tooEasy'),
+                  t('courses.review.asExpected'),
+                  t('courses.review.tooHard'),
+                ]}
                 value={review.difficulty}
                 disabled={formDisabled}
                 onChange={(v) => {
@@ -257,8 +266,12 @@ export function CourseReview({
 
               <FormSlider
                 id="quality"
-                text="Quality"
-                stepNames={['very bad', 'so and so', 'very good']}
+                text={t('courses.review.quality')}
+                stepNames={[
+                  t('courses.review.veryBad'),
+                  t('courses.review.soAndSo'),
+                  t('courses.review.veryGood'),
+                ]}
                 value={review.quality}
                 disabled={formDisabled}
                 onChange={(v) => {
@@ -271,8 +284,12 @@ export function CourseReview({
 
               <FormSlider
                 id="faithful"
-                text="True to objective ?"
-                stepNames={['no, not really', 'neutral', 'yes, very much']}
+                text={t('courses.review.faithful')}
+                stepNames={[
+                  t('courses.review.notReally'),
+                  t('courses.review.neutral'),
+                  t('courses.review.yesVeryMuch'),
+                ]}
                 value={review.faithful}
                 disabled={formDisabled}
                 onChange={(v) => {
@@ -285,8 +302,12 @@ export function CourseReview({
 
               <FormSlider
                 id="recommand"
-                text="Would recommand ?"
-                stepNames={['no', 'so and so', 'yes of course']}
+                text={t('courses.review.recommend')}
+                stepNames={[
+                  t('courses.review.no'),
+                  t('courses.review.soAndSo'),
+                  t('courses.review.yesOfCourse'),
+                ]}
                 value={review.recommand}
                 disabled={formDisabled}
                 onChange={(v) => {
@@ -298,13 +319,9 @@ export function CourseReview({
               />
             </div>
 
-            <div className="mb-12">
-              <Divider></Divider>
-            </div>
-
             <FormTextArea
               id="publicComment"
-              text="Comment (public)"
+              text={t('courses.review.commentPublic')}
               value={review.publicComment}
               disabled={formDisabled}
               onChange={(e) => {
@@ -317,7 +334,7 @@ export function CourseReview({
 
             <FormTextArea
               id="teacherComment"
-              text="Comment to the teacher (private)"
+              text={t('courses.review.commentTeacher')}
               value={review.teacherComment}
               disabled={formDisabled}
               onChange={(e) => {
@@ -330,7 +347,7 @@ export function CourseReview({
 
             <FormTextArea
               id="adminComment"
-              text="Comment to the admin team (private)"
+              text={t('courses.review.commentAdmin')}
               value={review.adminComment}
               disabled={formDisabled}
               onChange={(e) => {
@@ -354,7 +371,7 @@ export function CourseReview({
             <Button
               className=""
               variant="newPrimary"
-              size="l"
+              size={window.innerWidth >= 768 ? 'l' : 'm'}
               onHoverArrow
               disabled={formDisabled}
               onClick={async () => {
@@ -365,7 +382,7 @@ export function CourseReview({
                 });
               }}
             >
-              <span>Submit review</span>
+              {t('courses.review.submitReview')}
             </Button>
           </Link>
         </>
