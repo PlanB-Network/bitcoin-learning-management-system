@@ -14,6 +14,7 @@ import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { TipModal } from '#src/components/tip-modal.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { TutorialsMarkdownBody } from '#src/components/TutorialsMarkdownBody/index.js';
@@ -229,6 +230,14 @@ function TutorialDetails() {
       { enabled: !!tutorial?.id },
     );
 
+  const { data: proofreading } = trpc.content.getProofreading.useQuery(
+    {
+      language: i18n.language,
+      tutorialId: tutorial?.id,
+    },
+    { enabled: !!tutorial?.id },
+  );
+
   // Access global context
   const { tutorials, session } = useContext(AppContext);
   const isFetchedTutorials = tutorials && tutorials.length > 0;
@@ -350,6 +359,17 @@ function TutorialDetails() {
       currentTutorialId={tutorial?.id}
     >
       <>
+        {proofreading ? (
+          <ProofreadingProgress
+            mode="light"
+            proofreadingData={{
+              contributors: proofreading.contributorsId,
+              reward: proofreading.reward,
+            }}
+          />
+        ) : (
+          <></>
+        )}
         {tutorial && (
           <>
             <PageMeta

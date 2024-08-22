@@ -28,7 +28,7 @@ export const TutorialLayout = ({
 
   return (
     <MainLayout variant="light">
-      <div className=":px-6 grid h-max min-h-screen w-full grid-cols-4 items-start bg-white px-3 py-5 md:py-10">
+      <div className=":px-6 grid h-max min-h-screen w-full grid-cols-4 items-start bg-white px-3 py-5 md:py-10 relative">
         <div className="hidden w-full pl-0 pr-10 lg:block xl:pl-10">
           <div className="w-full max-w-[280px] rounded-[20px] bg-newGray-6 shadow-course-navigation px-4 py-2.5">
             <h3 className="w-full border-b-2 border-b-darkOrange-3 text-2xl leading-snug uppercase text-darkOrange-5 mb-4">

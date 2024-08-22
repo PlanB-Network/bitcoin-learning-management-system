@@ -53,7 +53,12 @@ export const ResourceLayout = ({
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
-      <div className={cn('flex h-fit justify-center p-2 md:p-10', className)}>
+      <div
+        className={cn(
+          'flex h-fit justify-center p-2 md:p-10 relative',
+          className,
+        )}
+      >
         <div
           className={cn(
             'w-full text-black',

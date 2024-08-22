@@ -6,6 +6,7 @@ import type { JoinedGlossaryWord } from '@blms/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { GlossaryMarkdownBody } from '#src/components/GlossaryMarkdownBody/index.js';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -39,6 +40,16 @@ function GlossaryWord() {
   const { data: glossaryWords } = trpc.content.getGlossaryWords.useQuery({
     language: i18n.language ?? 'en',
   });
+
+  const { data: proofreading } = trpc.content.getProofreading.useQuery(
+    {
+      language: i18n.language,
+      resourceId: glossaryWord ? +glossaryWord.id : -1,
+    },
+    {
+      enabled: isFetched,
+    },
+  );
 
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter === selectedLetter ? null : letter);
@@ -83,6 +94,17 @@ function GlossaryWord() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {isFetched && (
         <>
+          {proofreading ? (
+            <ProofreadingProgress
+              mode="light"
+              proofreadingData={{
+                contributors: proofreading.contributorsId,
+                reward: proofreading.reward,
+              }}
+            />
+          ) : (
+            <></>
+          )}
           <div className="flex flex-col items-center justify-center w-full max-w-[721px] mx-auto px-4">
             <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-5">
               {glossaryWord?.term}

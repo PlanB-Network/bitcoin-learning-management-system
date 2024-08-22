@@ -160,26 +160,25 @@ const ContributorsNames = ({
   );
 };
 
+interface ProofreadingData {
+  contributors: string[];
+  reward: number | null;
+}
+
 export const ProofreadingProgress = ({
   mode = 'dark',
+  proofreadingData,
 }: {
   mode: 'light' | 'dark';
+  proofreadingData: ProofreadingData;
 }) => {
-  // Mock data, can be removed once backend is plugged
-  const proofreadingData = {
-    isOriginalLanguage: false,
-    contributors: ['Test mid', 'Very long contributor', 'Short'],
-    reward: 24_250,
-    link: 'https://github.com/PlanB-Network/bitcoin-educational-content',
-  };
-
   const contributorsLength = proofreadingData.contributors.length;
 
   return (
     <div
       className={cn(
         'group p-2.5 hover:p-5 rounded-[20px] shadow-course-navigation justify-start items-start gap-2.5 inline-flex absolute right-6 top-4',
-        proofreadingData.isOriginalLanguage ? 'hidden' : 'max-md:hidden',
+        'max-md:hidden', //proofreadingData.isOriginalLanguage ? 'hidden' : 'max-md:hidden',
         mode === 'dark'
           ? 'bg-newBlack-3'
           : contributorsLength > 2
@@ -240,7 +239,7 @@ export const ProofreadingProgress = ({
           {t('proofreading.thanks')}
         </p>
         <a
-          href={proofreadingData.link}
+          href="https://github.com/PlanB-Network/bitcoin-educational-content"
           target="_blank"
           rel="noreferrer"
           className="flex w-fit"
@@ -259,7 +258,7 @@ export const ProofreadingProgress = ({
         <LargeProgressImage progress={contributorsLength} />
         <ContributorsNames
           contributors={proofreadingData.contributors}
-          reward={proofreadingData.reward}
+          reward={proofreadingData.reward ? proofreadingData.reward : 0}
           mode={mode}
         />
       </div>

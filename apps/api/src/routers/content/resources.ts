@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import {
-  joinedBetSchema,
   joinedBookSchema,
   joinedBuilderSchema,
   joinedConferenceSchema,
@@ -46,7 +45,8 @@ const createGetResourceProcedureWithStrId = () => {
 export const resourcesRouter = createTRPCRouter({
   // Bets
   getBets: createGetResourcesProcedure()
-    .output(joinedBetSchema.merge(z.object({ logo: z.string() })).array())
+    // TODO add output
+    // .output(joinedBetSchema.merge(z.object({ logo: z.string() })).array())
     .query(async ({ ctx, input }) =>
       createGetBets(ctx.dependencies)(input?.language),
     ),
