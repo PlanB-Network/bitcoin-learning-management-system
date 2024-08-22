@@ -180,6 +180,14 @@
     @apply text-sm font-medium leading-[120%];
   }
 
+  .body-12px {
+    @apply text-xs font-normal leading-[143%] tracking-[0.17px];
+  }
+
+  .body-12px-medium {
+    @apply text-xs font-medium leading-[143%] tracking-[0.17px];
+  }
+
   .body-14px {
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }
@@ -212,12 +220,16 @@
     @apply text-xl leading-[160%] font-medium tracking-015px;
   }
 
-  .title-small-med-16px {
-    @apply text-base leading-normal font-medium tracking-015px;
-  }
-
   .title-large-sb-24px {
     @apply text-2xl font-semibold leading-[133%] tracking-normal;
+  }
+
+  .title-medium-sb-18px {
+    @apply text-lg font-semibold leading-[133%] tracking-normal;
+  }
+
+  .title-small-med-16px {
+    @apply text-base leading-normal font-medium tracking-015px;
   }
 
   .width-increment-20 {

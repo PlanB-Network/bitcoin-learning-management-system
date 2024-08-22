@@ -587,6 +587,14 @@
       "thanksNoName": "Thanks for supporting my work !"
     }
   },
+  "proofreading": {
+    "completed": "Proofreading completed",
+    "description": "The original content has been translated by AI, but human review is necessary to ensure its accuracy.",
+    "inProgress": "Proofreading in progress",
+    "reviewEarn": "Review and earn sats",
+    "status": "Proofreading status",
+    "thanks": "A big thanks to our reviewers !"
+  },
   "publicCommunication": {
     "title": "Public communication",
     "description": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey",

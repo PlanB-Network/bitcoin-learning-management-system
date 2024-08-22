@@ -17,6 +17,7 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CoursesMarkdownBody } from '#src/components/CoursesMarkdownBody/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import {
@@ -656,6 +657,7 @@ function CourseChapter() {
 
   return (
     <CourseLayout>
+      <ProofreadingProgress mode="light" />
       <PageMeta
         title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
         description={chapter?.course.objectives?.join(',')}
