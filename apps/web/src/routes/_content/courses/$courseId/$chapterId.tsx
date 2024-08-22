@@ -575,6 +575,11 @@ function CourseChapter() {
     chapterId: chapterId,
   });
 
+  const { data: proofreading } = trpc.content.getProofreading.useQuery({
+    language: i18n.language,
+    courseId: courseId,
+  });
+
   const { data: quizzArray } =
     trpc.content.getCourseChapterQuizQuestions.useQuery({
       language: i18n.language,
@@ -657,7 +662,18 @@ function CourseChapter() {
 
   return (
     <CourseLayout>
-      <ProofreadingProgress mode="light" />
+      {proofreading ? (
+        <ProofreadingProgress
+          mode="light"
+          proofreadingData={{
+            contributors: proofreading.contributorsId,
+            reward: proofreading.reward,
+          }}
+        />
+      ) : (
+        <></>
+      )}
+
       <PageMeta
         title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
         description={chapter?.course.objectives?.join(',')}

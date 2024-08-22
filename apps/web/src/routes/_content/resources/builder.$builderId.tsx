@@ -8,6 +8,7 @@ import { Button, cn } from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Spinner from '#src/assets/spinner_orange.svg?react';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import Flag from '#src/molecules/Flag/index.js';
@@ -49,6 +50,11 @@ function Builder() {
 
   const { data: events } = trpc.content.getRecentEvents.useQuery();
 
+  const { data: proofreading } = trpc.content.getProofreading.useQuery({
+    language: i18n.language,
+    resourceId: +builderId,
+  });
+
   const filteredCommunities = communities
     ? communities
         .filter(
@@ -87,6 +93,17 @@ function Builder() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {builder && (
         <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
+          {proofreading ? (
+            <ProofreadingProgress
+              mode="light"
+              proofreadingData={{
+                contributors: proofreading.contributorsId,
+                reward: proofreading.reward,
+              }}
+            />
+          ) : (
+            <></>
+          )}
           <section className="flex p-2 md:p-[30px]">
             <div className="flex flex-col gap-3">
               <img

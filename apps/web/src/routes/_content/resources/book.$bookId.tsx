@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -28,6 +29,11 @@ function Book() {
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
     language: i18n.language ?? 'en',
+  });
+
+  const { data: proofreading } = trpc.content.getProofreading.useQuery({
+    language: i18n.language,
+    resourceId: +bookId,
   });
 
   useEffect(() => {
@@ -69,6 +75,17 @@ function Book() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {book && (
         <div className="w-full">
+          {proofreading ? (
+            <ProofreadingProgress
+              mode="light"
+              proofreadingData={{
+                contributors: proofreading.contributorsId,
+                reward: proofreading.reward,
+              }}
+            />
+          ) : (
+            <></>
+          )}
           <Card className="mx-2 md:mx-auto">
             <div className="my-4 w-full grid-cols-1 grid-rows-1 sm:grid-cols-3 md:grid">
               <div className="flex flex-col items-center justify-center border-b-4 border-blue-800 md:mr-10 md:border-0">

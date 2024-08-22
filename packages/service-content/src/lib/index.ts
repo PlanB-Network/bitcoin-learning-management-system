@@ -27,7 +27,7 @@ import {
   createUpdateProfessors,
   groupByProfessor,
 } from './professors/import/index.js';
-import { createDeleteProofreadings } from './proofreading/import/index.js';
+import { createDeleteProofreadings } from './proofreadings/import/index.js';
 import {
   createDeleteQuizQuestions,
   createUpdateQuizQuestions,

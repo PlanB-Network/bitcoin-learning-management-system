@@ -17,3 +17,15 @@ export interface ProofreadingContributor {
   contributorId: string;
   order: number;
 }
+
+export interface JoinedProofreading {
+  id: string;
+  courseId: string | null;
+  tutorialId: number | null;
+  resourceId: number | null;
+  language: string;
+  lastContributionDate: Date | null;
+  urgency: number | null;
+  reward: number | null;
+  contributorsId: string[];
+}

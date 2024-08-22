@@ -9,6 +9,7 @@ import { Button, NewTag } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ConferencesMarkdownBody } from '#src/components/ConferencesMarkdownBody/index.js';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -64,6 +65,11 @@ function Conference() {
     language: i18n.language ?? 'en',
   });
 
+  const { data: proofreading } = trpc.content.getProofreading.useQuery({
+    language: i18n.language,
+    resourceId: +conferenceId,
+  });
+
   useEffect(() => {
     if (!conference && isFetched && !navigateTo404Called.current) {
       navigateTo404();
@@ -104,6 +110,18 @@ function Conference() {
       {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
       {conference && (
         <>
+          {proofreading ? (
+            <ProofreadingProgress
+              mode="light"
+              proofreadingData={{
+                contributors: proofreading.contributorsId,
+                reward: proofreading.reward,
+              }}
+            />
+          ) : (
+            <></>
+          )}
+
           {/* Top part */}
           <div className="flex justify-start mb-4 text-darkOrange-5 gap-1 max-md:hidden">
             <Link to="/resources/conferences">
