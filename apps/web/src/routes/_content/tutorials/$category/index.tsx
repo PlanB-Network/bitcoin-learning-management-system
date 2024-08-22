@@ -1,4 +1,3 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import {
   Link,
   createFileRoute,
@@ -9,7 +8,7 @@ import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, cn } from '@blms/ui';
+import { Button, Tabs, TabsContent, TabsList, TabsTrigger, cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
@@ -41,6 +40,9 @@ function TutorialCategory() {
   );
 
   const [subCategories, setSubCategories] = useState<string[]>([]);
+  const [currentSubCategory, setCurrentSubCategory] = useState<
+    string | undefined
+  >();
 
   const { data: tutorials, isFetched } =
     trpc.content.getTutorialsByCategory.useQuery({
@@ -61,6 +63,20 @@ function TutorialCategory() {
       setSubCategories(extractSubCategories(tutorials).sort());
     }
   }, [tutorials]);
+
+  useEffect(() => {
+    if (tutorials) {
+      const subCats = extractSubCategories(tutorials).sort();
+      setSubCategories(subCats);
+      if (subCats.length > 0) {
+        setCurrentSubCategory(subCats[0]);
+      }
+    }
+  }, [tutorials]);
+
+  const handleTabChange = (value: string) => {
+    setCurrentSubCategory(value);
+  };
 
   return (
     <TutorialLayout currentCategory={category}>
@@ -87,36 +103,37 @@ function TutorialCategory() {
           {t(`tutorials.${category}.description`)}
         </p>
         {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
-        {tutorials && (
+        {tutorials && subCategories.length > 0 && (
           <div className="w-full px-2 py-4 md:px-0">
-            <TabGroup className="rounded-lg md:rounded-[20px] shadow-course-navigation overflow-hidden">
-              <TabList className="flex flex-wrap bg-newGray-5 shadow-course-card relative z-[2]">
+            <Tabs
+              value={currentSubCategory}
+              onValueChange={handleTabChange}
+              className="rounded-lg md:rounded-[20px] shadow-course-navigation overflow-hidden flex flex-col gap-0 bg-transparent"
+            >
+              <TabsList className="flex flex-wrap bg-newGray-5 shadow-course-card relative z-[2] p-0 gap-0 !rounded-none">
                 {subCategories.map((subCategory, index) => (
-                  <Tab
+                  <TabsTrigger
+                    value={subCategory}
                     key={subCategory}
-                    className={({ selected }) =>
-                      cn(
-                        'max-md:basis-1/2 basis-1/4 grow md:w-full overflow-hidden px-3 py-2 md:px-2 md:py-4 font-medium capitalize md:border-l md:first:border-l-0 !outline-none',
-                        selected
-                          ? 'bg-darkOrange-1 text-darkOrange-5'
-                          : 'text-newBlack-3 hover:text-darkOrange-5',
-                        (index + 1) % 2 === 0 && 'max-md:border-l',
-                        subCategories.length > 2 &&
-                          index - 1 <= 0 &&
-                          'max-md:border-b',
-                      )
-                    }
+                    className={cn(
+                      'max-md:basis-1/2 basis-1/4 grow md:w-full overflow-hidden px-3 py-2 md:px-2 md:py-4 font-medium capitalize md:border-l md:first:border-l-0 !outline-none',
+                      'data-[state=active]:border-none data-[state=active]:bg-darkOrange-1 data-[state=active]:text-darkOrange-5 data-[state=inactive]:text-newBlack-3 data-[state=inactive]:hover:text-darkOrange-5',
+                      (index + 1) % 2 === 0 && 'max-md:border-l',
+                      subCategories.length > 2 &&
+                        index - 1 <= 0 &&
+                        'max-md:border-b',
+                    )}
                   >
                     {t([
                       `tutorials.${category}.${subCategory}.name`,
                       subCategory,
                     ])}
-                  </Tab>
+                  </TabsTrigger>
                 ))}
-              </TabList>
-              <TabPanels className="bg-newGray-5">
+              </TabsList>
+              <div className="bg-newGray-5">
                 {subCategories.map((subCategory) => (
-                  <TabPanel key={subCategory}>
+                  <TabsContent value={subCategory} key={subCategory}>
                     <div className="flex flex-col px-2 py-5 md:px-7 md:py-8 gap-4 md:gap-6">
                       {/* {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
@@ -141,10 +158,10 @@ function TutorialCategory() {
                           ))}
                       </div>
                     </div>
-                  </TabPanel>
+                  </TabsContent>
                 ))}
-              </TabPanels>
-            </TabGroup>
+              </div>
+            </Tabs>
           </div>
         )}
 
