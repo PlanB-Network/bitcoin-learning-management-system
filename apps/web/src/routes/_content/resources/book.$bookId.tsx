@@ -77,7 +77,7 @@ function Book() {
         <div className="w-full">
           {proofreading ? (
             <ProofreadingProgress
-              mode="light"
+              mode="dark"
               proofreadingData={{
                 contributors: proofreading.contributorsId,
                 reward: proofreading.reward,

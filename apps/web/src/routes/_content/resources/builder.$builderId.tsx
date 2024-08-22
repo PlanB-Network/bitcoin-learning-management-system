@@ -95,7 +95,7 @@ function Builder() {
         <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
           {proofreading ? (
             <ProofreadingProgress
-              mode="light"
+              mode="dark"
               proofreadingData={{
                 contributors: proofreading.contributorsId,
                 reward: proofreading.reward,

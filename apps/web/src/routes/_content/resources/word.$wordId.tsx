@@ -96,7 +96,7 @@ function GlossaryWord() {
         <>
           {proofreading ? (
             <ProofreadingProgress
-              mode="light"
+              mode="dark"
               proofreadingData={{
                 contributors: proofreading.contributorsId,
                 reward: proofreading.reward,
