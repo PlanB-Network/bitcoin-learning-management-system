@@ -75,13 +75,13 @@ export const createUpdateLegals = (dependencies: Dependencies) => {
   const { postgres } = dependencies;
 
   return async (legal: ChangedLegal, errors: string[]) => {
-    const { main, files } = separateContentFiles(legal, 'post.yml');
+    const { files } = separateContentFiles(legal, 'post.yml');
 
     return postgres
       .begin(async (transaction) => {
         try {
           const processMainFile = createProcessMainFile(transaction);
-          await processMainFile(legal, main);
+          await processMainFile(legal);
         } catch (error) {
           errors.push(
             `Error processing file(legals 1) ${legal?.path}: ${error}`,
