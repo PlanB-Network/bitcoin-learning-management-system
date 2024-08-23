@@ -1,4 +1,5 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { formatDateSimple } from '@blms/api/src/utils/date.ts';
@@ -8,9 +9,13 @@ import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BlogMarkdownBody } from '../../../-components/PublicCommunication/blog-markdown.js';
 import BlogSidebar from '../../../-components/PublicCommunication/blog-sidebar.js';
 import Breadcrumbs from '../../../-components/PublicCommunication/breadcrumbs.js';
+
+// eslint-disable-next-line import/no-named-as-default-member
+const BlogMarkdownBody = React.lazy(
+  () => import('../../../-components/PublicCommunication/blog-markdown.js'),
+);
 
 export const Route = createFileRoute(
   '/_content/_misc/public-communication/blogs-and-news/$category/$name',

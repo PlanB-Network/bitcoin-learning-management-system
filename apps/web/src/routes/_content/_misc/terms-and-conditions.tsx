@@ -1,8 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { GeneralMarkdownBody } from '#src/components/GeneralMarkdownBody/index.js';
 import { MainLayout } from '#src/components/MainLayout/index.js';
+
+// eslint-disable-next-line import/no-named-as-default-member
+const GeneralMarkdownBody = React.lazy(
+  () => import('#src/components/GeneralMarkdownBody/index.js'),
+);
 
 export const Route = createFileRoute('/_content/_misc/terms-and-conditions')({
   component: TermsAndConditions,

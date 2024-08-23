@@ -5,7 +5,7 @@ import {
   useParams,
 } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 
@@ -15,7 +15,7 @@ import { Button } from '@blms/ui';
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import { CoursesMarkdownBody } from '#src/components/CoursesMarkdownBody/index.js';
+import {} from '#src/components/CoursesMarkdownBody/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -37,6 +37,11 @@ import { ClassDetails } from '../-pages-components/class-details.tsx';
 import { LiveVideo } from '../-pages-components/live-video.tsx';
 
 import { CourseReview } from './-components/course-review.tsx';
+
+// eslint-disable-next-line import/no-named-as-default-member
+const CoursesMarkdownBody = React.lazy(
+  () => import('#src/components/CoursesMarkdownBody/index.js'),
+);
 
 export const Route = createFileRoute('/_content/courses/$courseId/$chapterId')({
   component: CourseChapter,

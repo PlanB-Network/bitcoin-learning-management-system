@@ -11,7 +11,7 @@ import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
 import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
 
-export const GeneralMarkdownBody = ({
+const GeneralMarkdownBody = ({
   content,
   assetPrefix,
 }: {
@@ -140,3 +140,5 @@ export const GeneralMarkdownBody = ({
     </ReactMarkdown>
   );
 };
+
+export default GeneralMarkdownBody;

@@ -32,7 +32,7 @@ const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
   return null;
 };
 
-export const CoursesMarkdownBody = ({
+const CoursesMarkdownBody = ({
   content,
   assetPrefix,
   tutorials,
@@ -195,3 +195,5 @@ export const CoursesMarkdownBody = ({
     </ReactMarkdown>
   );
 };
+
+export default CoursesMarkdownBody;

@@ -43,7 +43,7 @@ const fixEmbedUrl = (src: string) => {
   }
 };
 
-export const ConferencesMarkdownBody = ({
+const ConferencesMarkdownBody = ({
   content,
   assetPrefix,
 }: {
@@ -174,3 +174,5 @@ export const ConferencesMarkdownBody = ({
     </ReactMarkdown>
   );
 };
+
+export default ConferencesMarkdownBody;

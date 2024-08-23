@@ -19,7 +19,7 @@ const getBlog = (url: string, blogs: JoinedBlogLight[]) => {
   return null;
 };
 
-export const BlogMarkdownBody = ({
+const BlogMarkdownBody = ({
   content,
   assetPrefix,
   blogs,
@@ -218,3 +218,5 @@ export const BlogMarkdownBody = ({
     </ReactMarkdown>
   );
 };
+
+export default BlogMarkdownBody;

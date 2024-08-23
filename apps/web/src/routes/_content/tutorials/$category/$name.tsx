@@ -1,7 +1,7 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { cn } from '@blms/ui';
@@ -17,7 +17,6 @@ import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { TipModal } from '#src/components/tip-modal.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
-import { TutorialsMarkdownBody } from '#src/components/TutorialsMarkdownBody/index.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
@@ -27,6 +26,10 @@ import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 import { TutorialLayout } from '../-other/layout.tsx';
+// eslint-disable-next-line import/no-named-as-default-member
+const TutorialsMarkdownBody = React.lazy(
+  () => import('#src/components/TutorialsMarkdownBody/index.js'),
+);
 
 export const Route = createFileRoute('/_content/tutorials/$category/$name')({
   component: TutorialDetails,
