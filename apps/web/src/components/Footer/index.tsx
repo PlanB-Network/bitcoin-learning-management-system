@@ -75,6 +75,11 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                     <li>
                       <Link to={'/professors'}>{t('words.professors')}</Link>
                     </li>
+                    <li>
+                      <Link to={'/public-communication'}>
+                        {t('words.public')}
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
