@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type React from 'react';
 
 import { BlogsNews } from '../../public-communication/blogs-and-news/index.tsx';
-import { LegalInformation } from '../../public-communication/legal-information/index.tsx';
+import { LegalInformation } from '../../public-communication/legals/index.tsx';
 
 interface Tab {
   id: string;
@@ -26,7 +26,7 @@ export const TabLinks: React.FC<TabLinksProps> = ({ t }) => {
     {
       id: 'tab2',
       label: 'publicCommunication.legal',
-      href: '/public-communication/legal-information',
+      href: '/public-communication/legals',
       component: LegalInformation,
     },
   ];

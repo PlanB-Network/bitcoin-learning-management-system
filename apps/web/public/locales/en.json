@@ -631,17 +631,18 @@
     "legal": "Legal info",
     "blogCategories": {
       "all": "All",
+      "content": "Content",
       "course": "Course release",
-      "features": "Features",
+      "feature": "Feature",
       "patch": "Patch notes",
       "grants": "Grants",
       "network": "Network"
     },
     "legalSections": {
       "contact": "Contact",
-      "general": "General",
-      "cookies": "Cookies",
-      "privacy": "Privacy"
+      "legalNotice": "Legal notice",
+      "privacyPolicy": "Privacy policy",
+      "termsOfSale": "Terms of sale"
     },
     "goBackButtons": {
       "simpleGoBack": "Back to all articles"

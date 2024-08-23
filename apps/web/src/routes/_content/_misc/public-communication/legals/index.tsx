@@ -1,48 +1,45 @@
-// components/PublicCommunication/LegalTabs.tsx
-
 import { Link, createFileRoute, redirect } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import { DropdownMenu } from '../../-components/PublicCommunication/dropdown-menu.tsx';
 
 export const Route = createFileRoute(
-  '/_content/_misc/public-communication/legal-information/',
+  '/_content/_misc/public-communication/legals/',
 )({
   loader: () => {
     return redirect({
-      to: '/public-communication/legal-information/contact-information',
+      to: '/public-communication/legals/contact',
       throw: false,
     });
   },
 });
+export const legalTabs = [
+  {
+    id: 'contact',
+    label: 'publicCommunication.legalSections.contact',
+    href: '/public-communication/legals/contact',
+  },
+  {
+    id: 'legalNotice',
+    label: 'publicCommunication.legalSections.legalNotice',
+    href: '/public-communication/legals/legal-notice',
+  },
+  {
+    id: 'privacyPolicy',
+    label: 'publicCommunication.legalSections.privacyPolicy',
+    href: '/public-communication/legals/privacy-policy',
+  },
+  {
+    id: 'termsOfSale',
+    label: 'publicCommunication.legalSections.termsOfSale',
+    href: '/public-communication/legals/terms-of-sale',
+  },
+];
 
 interface LegalTabsProps {
   activeSubTab: string;
   setActiveSubTab: (subTab: string) => void;
 }
-
-const legalTabs = [
-  {
-    id: 'contact',
-    label: 'publicCommunication.legalSections.contact',
-    href: '/public-communication/legal-information/contact-information',
-  },
-  {
-    id: 'general',
-    label: 'publicCommunication.legalSections.general',
-    href: '/public-communication/legal-information/general-information',
-  },
-  {
-    id: 'cookies',
-    label: 'publicCommunication.legalSections.cookies',
-    href: '/public-communication/legal-information/cookies-information',
-  },
-  {
-    id: 'privacy',
-    label: 'publicCommunication.legalSections.privacy',
-    href: '/public-communication/legal-information/privacy-information',
-  },
-];
 
 export function LegalInformation({
   activeSubTab,
@@ -58,8 +55,7 @@ export function LegalInformation({
 
   const activeItem = dropdownItems.find(
     (item) =>
-      item.name ===
-      t(legalTabs.find((tab) => tab.id === activeSubTab)?.label ?? ''),
+      item.link === legalTabs.find((tab) => tab.id === activeSubTab)?.href,
   );
 
   return (

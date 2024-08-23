@@ -8,7 +8,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { formatMonthYear } from '@blms/api/src/utils/date.ts';
 
 import { useGreater } from '#src/hooks/use-greater.ts';
-import { AppContext } from '#src/providers/context.js'; // Ensure this is the correct path
+import { AppContext } from '#src/providers/context.js';
 
 interface BlogSidebarProps {
   currentBlogId: number;

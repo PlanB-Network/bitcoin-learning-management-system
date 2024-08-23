@@ -23,6 +23,11 @@ import {
   groupByEvent,
 } from './events/import/index.js';
 import {
+  createDeleteLegals,
+  createUpdateLegals,
+  groupByLegal,
+} from './legals/import/index.js';
+import {
   createDeleteProfessors,
   createUpdateProfessors,
   groupByProfessor,
@@ -57,6 +62,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateEvents = createUpdateEvents(dependencies);
   const updateBCertificates = createUpdateBCertificateExams(dependencies);
   const updateBlogs = createUpdateBlogs(dependencies);
+  const updateLegals = createUpdateLegals(dependencies);
 
   return async (files: ChangedFile[]): Promise<string[]> => {
     const filteredFiles = files.filter((file) =>
@@ -77,6 +83,12 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     console.log(`-- Sync procedure: Syncing ${courses.length} courses`);
     for (const course of courses) {
       await updateCourses(course, errors);
+    }
+
+    const legals = groupByLegal(filteredFiles, errors);
+    console.log(`-- Sync procedure: Syncing ${legals.length} legals`);
+    for (const legal of legals) {
+      await updateLegals(legal, errors);
     }
 
     const tutorials = groupByTutorial(filteredFiles, errors);
@@ -132,6 +144,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteEvents = createDeleteEvents(dependencies);
   const deleteBCertificates = createDeleteBCertificateExams(dependencies);
   const deleteBlogs = createDeleteBlogs(dependencies);
+  const deleteLegals = createDeleteLegals(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
     const timeKey = '-- Sync procedure: Removing old entities';
@@ -146,6 +159,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteEvents(sync_date, errors);
     await deleteBCertificates(sync_date, errors);
     await deleteBlogs(sync_date, errors);
+    await deleteLegals(sync_date, errors);
 
     console.timeEnd(timeKey);
   };

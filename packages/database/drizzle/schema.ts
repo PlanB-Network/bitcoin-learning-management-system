@@ -413,6 +413,48 @@ export const contentConferenceStageVideos = content.table(
   },
 );
 
+// LEGAL INFORMATION
+
+export const contentLegals = content.table(
+  'legals',
+  {
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+    path: varchar('path', { length: 255 }).unique().notNull(),
+
+    name: varchar('name', { length: 255 }).notNull(),
+
+    lastUpdated: timestamp('last_updated', {
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    lastCommit: varchar('last_commit', { length: 40 }).notNull(),
+    lastSync: timestamp('last_sync', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => ({
+    unqName: unique().on(table.name),
+  }),
+);
+
+export const contentLegalsLocalized = content.table(
+  'legals_localized',
+  {
+    legalId: integer('id')
+      .notNull()
+      .references(() => contentLegals.id, { onDelete: 'cascade' }),
+    language: varchar('language', { length: 10 }).notNull(),
+    title: text('title').notNull(),
+    rawContent: text('raw_content').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.legalId, table.language],
+    }),
+  }),
+);
+
 // PODCASTS
 
 export const contentPodcasts = content.table('podcasts', {

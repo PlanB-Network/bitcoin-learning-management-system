@@ -9,6 +9,7 @@ export const supportedContentTypes = [
   'resources',
   'tutorials',
   'blogposts',
+  'legals',
 ] as const;
 
 export type ContentType = (typeof supportedContentTypes)[number];
