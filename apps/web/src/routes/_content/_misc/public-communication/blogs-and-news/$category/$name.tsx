@@ -88,7 +88,7 @@ function SingleBlogDetail() {
         <div className="flex flex-col flex-1 border-b-2 md:border-b-0 lg:mb-12 py-4 lg:py-0">
           <BlogMarkdownBody
             content={blog.rawContent}
-            assetPrefix=""
+            assetPrefix={computeAssetCdnUrl(blog.lastCommit, `${blog.path}`)}
             blogs={[]}
           />
 
