@@ -134,7 +134,7 @@ export const VerticalCard = ({
         {category && (
           <span
             className={cn(
-              'mobile-caption1 md:desktop-body1',
+              'mobile-caption1 md:desktop-body1 capitalize',
               subtitleColorClasses[cardColor],
             )}
           >
@@ -150,7 +150,7 @@ export const VerticalCard = ({
           {title}
         </h4>
         {excerpt && (
-          <span className="hidden md:flex md:desktop-body1 text-black line-clamp-3	">
+          <span className="max-md:hidden md:desktop-body1 text-black line-clamp-3">
             {excerpt}
           </span>
         )}
