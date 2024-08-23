@@ -33,7 +33,8 @@
     "errors": {
       "usernameRegex": "Uživatelské jméno může obsahovat pouze písmena, _ (podtržítka), . (tečky) a - (pomlčky)",
       "usernameRequired": "Uživatelské jméno je povinné",
-      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé"
+      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Zapomněli jste heslo?",
     "lnurlAuthDescription": "Naskenujte QR kód pomocí peněženky Lightning a přihlaste se!",
@@ -44,7 +45,8 @@
     "sendLink": "Odeslat odkaz",
     "signIn": "Přihlásit se",
     "headerAccountCreated": "Účet vytvořen",
-    "noAccountNeeded": "Abyste se mohli začít učit na naší vzdělávací platformě, nepotřebujete účet!"
+    "noAccountNeeded": "Abyste se mohli začít učit na naší vzdělávací platformě, nepotřebujete účet!",
+    "passwordResetSent": ""
   },
   "bet": {
     "educationalContent": {
@@ -59,7 +61,10 @@
       "title": "Vizuální obsah"
     },
     "contribute": "Tento balíček nástrojů je otevřený k přispívání. Používá Figmu, takže kdokoli může přidávat, upravovat a překládat. Pokud chcete na tomto projektu spolupracovat, přidat kategorii nebo diskutovat, neváhejte se připojit k našemu discordu.",
-    "pageDescription": "Univerzita Sovereign podporuje pedagogy a místní komunity po celém světě, aby pomohla rozšířit přijetí bitcoinu. Za tímto účelem shromažďujeme a zpřístupňujeme rozsáhlou databázi vzdělávacího obsahu (vytvořeného námi i jinými subjekty) a také vizuálních dat."
+    "pageDescription": "Univerzita Sovereign podporuje pedagogy a místní komunity po celém světě, aby pomohla rozšířit přijetí bitcoinu. Za tímto účelem shromažďujeme a zpřístupňujeme rozsáhlou databázi vzdělávacího obsahu (vytvořeného námi i jinými subjekty) a také vizuálních dat.",
+    "contributeTitle": "",
+    "contributeButton": "",
+    "contributeDescription": ""
   },
   "book": {
     "abstract": "Abstrakt",
@@ -78,7 +83,8 @@
   },
   "builders": {
     "pageSubtitle": "Tento portál je open source a je otevřen pro přispívání.",
-    "pageTitle": "Portál pro stavitele"
+    "pageTitle": "Portál pro stavitele",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "Neváhejte přidat chybějící konference prostřednictvím tohoto <0>Github</0> repozitáře.",
@@ -184,7 +190,9 @@
       "s3t1": "Sestavte si svou vlastní cestu dolů králičí norou",
       "footerTitle": "Naši vyučující jsou tu pro vás!",
       "footerp1": "Na Univerzitě Sovereign mají naši profesoři naprostou svobodu v rozhodování o obsahu a nástrojích, které chtějí, abyste prozkoumali, pokud se řídí etickým kodexem. Jsou to vášniví bitcoineři z různých prostředí.",
-      "pageDescription": "Cílem Plan B Academy je zjednodušit vzdělávání v oblasti bitcoinu po celém světě. Akademie, kterou tvoří odborníci z různých oborů, nabízí množství kurzů zaměřených na demystifikaci všech aspektů bitcoinu. Věříme, že vám akademie pomůže lépe porozumět rozsáhlému tématu, kterým je Bitcoin, a to od začátečníků až po experty, ať už vlastním tempem, nebo pod vedením vyučujícího každý týden. Velká část našich kurzů je zcela zdarma, takže přístup ke vzdělání může mít kdokoli a kdekoli."
+      "pageDescription": "Cílem Plan B Academy je zjednodušit vzdělávání v oblasti bitcoinu po celém světě. Akademie, kterou tvoří odborníci z různých oborů, nabízí množství kurzů zaměřených na demystifikaci všech aspektů bitcoinu. Věříme, že vám akademie pomůže lépe porozumět rozsáhlému tématu, kterým je Bitcoin, a to od začátečníků až po experty, ať už vlastním tempem, nebo pod vedením vyučujícího každý týden. Velká část našich kurzů je zcela zdarma, takže přístup ke vzdělání může mít kdokoli a kdekoli.",
+      "seeCourse": "",
+      "findCourses": ""
     },
     "part": {
       "count": "Část {{count}}"
@@ -234,6 +242,12 @@
     },
     "footer": {
       "": ""
+    },
+    "review": {
+      "recommend": "",
+      "faithful": "",
+      "feedbackDescription": "",
+      "yesOfCourse": ""
     }
   },
   "dashboard": {
@@ -263,9 +277,16 @@
       "completed": "Dokončené kurzy",
       "details": "Detaily",
       "inprogress": "Probíhající kurzy",
-      "resumeLesson": "Pokračovat lekci"
+      "resumeLesson": "Pokračovat lekci",
+      "inprogressCoursesDescription": ""
     },
-    "courses": "Kurzy"
+    "courses": "Kurzy",
+    "profile": {
+      "emailChangeConfirmation": ""
+    },
+    "bCertificate": {
+      "noResults": ""
+    }
   },
   "events": {
     "card": {
@@ -710,5 +731,28 @@
     "exchanges": "Směnárny",
     "movieDocumentary": "Dokumentární film",
     "register": "Registrovat"
+  },
+  "bCertificate": {
+    "curious": "",
+    "readChart": "",
+    "bCertificateDescription": "",
+    "joeNakamotoVideo": "",
+    "organizeDescription": ""
+  },
+  "glossary": {
+    "creditsLoic": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "filterBar": "",
+    "relatedWords": "",
+    "placeHolder": "",
+    "needHelp": "",
+    "pageSubtitle": ""
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
