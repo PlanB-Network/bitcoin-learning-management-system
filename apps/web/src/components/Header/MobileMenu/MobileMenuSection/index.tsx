@@ -40,7 +40,11 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
           to={section.path as '/'}
         >
           {section.mobileIcon && (
-            <section.mobileIcon className="size-6 group-hover:filter-white group-[.is-current]:filter-white"></section.mobileIcon>
+            <img
+              src={section.mobileIcon}
+              alt=""
+              className="size-6 group-hover:filter-white group-[.is-current]:filter-white"
+            />
           )}
           {section.title}
         </Link>
