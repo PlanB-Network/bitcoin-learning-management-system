@@ -195,7 +195,7 @@
       "s3PickTopic": "Selecionar tópicos :",
       "s3t1": "Constrói o teu próprio caminho na toca do coelho",
       "exploreCourses": "Explore todos os cursos do Plan B",
-      "buildPath": "Abra seu próprio caminho no buraco do coelho",
+      "buildPath": "Construa seu próprio caminho no buraco do coelho",
       "findCourses": "Encontre o curso perfeito para suas necessidades na seleção de cursos",
       "journey": "Bitcoin é o caminho, não o destino",
       "seeCourse": "Veja o curso"
@@ -307,7 +307,8 @@
       "profilePicture": "Imagem do perfil",
       "security": "Segurança",
       "username": "Usuário",
-      "displayName": "Nome"
+      "displayName": "Nome",
+      "crop": "Cultura"
     },
     "calendar": {
       "calendar": "Calendário",
@@ -431,7 +432,7 @@
     "aboutUsSection": {
       "title": "Quem nós somos?",
       "subtitle": "Um pouco sobre nós",
-      "content": "A rede PlanB é uma iniciativa para apoiar a educação Bitcoin no mundo inteiro. É o cruzamento de várias empresas apaixonadas pelo Bitcoin focadas na educação, software de código aberto, redes peer-to-peer e sentido de comunidade. Juntos, decidiram construir a rede PlanB e oferecer ao ecossistema Bitcoin as ferramentas certas para evoluir.",
+      "content": "A rede PlanB é uma iniciativa para apoiar a educação Bitcoin no mundo inteiro. É o cruzamento de várias empresas apaixonadas pelo Bitcoin focadas na educação, software de código aberto, redes peer-to-peer e senso de comunidade. Juntos, decidiram construir a rede PlanB e oferecer ao ecossistema Bitcoin as ferramentas certas para evoluir.",
       "bitcoinFocusTitle": "Foco Bitcoin",
       "bitcoinFocusContent": "Focamos na revolução do Bitcoin como um todo, desde a sua camada base a várias comunicações peer-to-peer em torno dela",
       "openSourceTitle": "Código aberto",
@@ -454,6 +455,10 @@
       "title": "Together let's make Bitcoin education better ! ",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "A PlanB Network está orgulhosa de se juntar a muitas empresas bitcoin em todo o mundo, de modo a fornecer os melhores recursos educativos possíveis!"
+    },
+    "wallOfLoveSection": {
+      "title": "Parede de amor",
+      "subtitle": "O que os Bitcoiners dizem sobre nós"
     }
   },
   "imagesAlt": {
@@ -503,8 +508,11 @@
     "supportUsDescription": "Encontra forma de nos apoiar, de alguma maneira",
     "teachersDescription": "Conhece os nossos professores universitários, bitcoiners dedicados",
     "walletsDescription": "Protege e usa os teus bitcoins",
-    "conferencesDescription": "",
-    "bCertificateDescription": "Preste o exame do Certificado ₿ e certifique seu nível de Bitcoin"
+    "conferencesDescription": "Coleção de reprises de conferências de Bitcoin desde o Bloco Gênesis",
+    "bCertificateDescription": "Preste o exame do Certificado ₿ e certifique seu nível de Bitcoin",
+    "login": "Entrar",
+    "glossaryDescription": "Entenda a linguagem do Bitcoin",
+    "loginRegister": "Entrar / Registrar"
   },
   "nodeNetwork": {
     "answer1": "Um nó (node) é simplesmente uma comunidade Bitcoin que quer dar o próximo passo e acelerar a sua própria adoção de Bitcoin local! Não há nenhum tamanho mínimo para começar.",
@@ -514,7 +522,7 @@
     "answer5": "Queremos oferecer um porto seguro para bitcoiners de todo o mundo. Acreditamos que ajudando os centros locais a crescer, poderemos criar uma rede de citadinos e citadinas onde bitcoiners serão bem-vindos(as) para trabalhar, criar, compartilhar e discutir com segurança.",
     "apply": "Candidate-se para fazer parte da rede",
     "description1": "O nosso sistema financeiro está a desmoronar-se, os nossos alimentos estão a ser envenenados, a nossa liberdade está a ser retirada. Mal podemos esperar por um milagre, temos que criar um lugar seguro para viver. Precisamos criar nosso próprio Plano!",
-    "pageSubtitle": "A nossa força é a nossa comunidade. Vamo-nos juntar numa rede global de bitcoin.",
+    "pageSubtitle": "Quer dar a pílula laranja para o mundo? Junte-se a nós.",
     "pageTitle": "Node Map",
     "question1": "O que é um nó?",
     "question2": "O que ganho eu?",
@@ -781,15 +789,15 @@
     "videos": "Vídeos",
     "wallets": "Carteiras",
     "date": "Data",
-    "time": "",
+    "time": "Hora",
     "to": "",
     "on": "",
     "billing": "Cobrança",
     "download": "Baixar",
     "invoice": "Fatura",
     "online": "On-line",
-    "ticket": "",
-    "tickets": "",
+    "ticket": "Ingresso",
+    "tickets": "Ingressos",
     "description": "Descrição",
     "duration": "Duração",
     "professor": "Professor(a)",
@@ -832,14 +840,14 @@
     "location": "Local",
     "noConferences": "Nenhuma conferência acrescentada para {{year}} ainda.",
     "pageSubtitle": "Este portal é open-source & aberto para contribuição.",
-    "pageTitle": "Replays das Conferências",
+    "pageTitle": "Reprises das Conferências",
     "planBConferences": "Conferências do Plano B",
     "topics": "Tópicos"
   },
   "payment": {
-    "proceedToPayment": "",
-    "terms": "",
-    "feeDistribution": "",
+    "proceedToPayment": "Vá para pagamento",
+    "terms": "Veja nossos <0>termos gerais</0> e os detalhes das condições de ressarcimento",
+    "feeDistribution": "Distribuição de taxas: Autor 99% - Plataforma 1%",
     "total": "Total"
   },
   "bCertificate": {
@@ -883,7 +891,10 @@
     "blogCategories": {
       "features": "Características",
       "network": "Rede",
-      "grants": "Bolsas"
+      "grants": "Bolsas",
+      "all": "Tudo",
+      "course": "Lançamento de curso",
+      "patch": "Notas"
     },
     "legalSections": {
       "contact": "Contato",
