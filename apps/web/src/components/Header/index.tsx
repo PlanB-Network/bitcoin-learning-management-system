@@ -211,6 +211,12 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.bCertificateDescription'),
               path: '/b-certificate',
             },
+            {
+              id: 'public-release',
+              title: t('words.public'),
+              description: t('menu.publicDescription'),
+              path: '/public-communication',
+            },
           ],
         },
       ],
