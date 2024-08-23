@@ -19,6 +19,7 @@
   src: url('../assets/fonts/space_mono/SpaceMono-Italic.ttf') format('truetype');
   src: url('../assets/fonts/space_mono/SpaceMono-Regular.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -26,6 +27,7 @@
   font-style: normal;
   src: url('../assets/fonts/rubik/Rubik-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -33,12 +35,14 @@
   font-style: italic;
   src: url('../assets/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Manrope';
   src: url('../assets/fonts/manrope/Manrope-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -46,6 +50,7 @@
   font-style: normal;
   src: url('../assets/fonts/poppins/Poppins-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -53,6 +58,7 @@
   font-style: italic;
   src: url('../assets/fonts/poppins/Poppins-Italic-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap;
 }
 
 @layer base {

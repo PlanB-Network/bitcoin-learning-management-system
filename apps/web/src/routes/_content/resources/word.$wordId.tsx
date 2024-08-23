@@ -1,11 +1,10 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedGlossaryWord } from '@blms/types';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
-import { GlossaryMarkdownBody } from '#src/components/GlossaryMarkdownBody/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -14,6 +13,10 @@ import { AlphabetGlossary } from './-components/AlphabetGlossary/index.tsx';
 import { GlossaryFilterBar } from './-components/GlossaryFilterBar/index.tsx';
 import { GlossaryList } from './-components/GlossaryList/index.tsx';
 import { ResourceLayout } from './-other/layout.tsx';
+// eslint-disable-next-line import/no-named-as-default-member
+const GlossaryMarkdownBody = React.lazy(
+  () => import('#src/components/GlossaryMarkdownBody/index.js'),
+);
 
 export const Route = createFileRoute('/_content/resources/word/$wordId')({
   component: GlossaryWord,

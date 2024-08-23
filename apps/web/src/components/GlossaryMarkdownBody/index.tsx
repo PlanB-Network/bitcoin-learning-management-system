@@ -39,7 +39,7 @@ const fixEmbedUrl = (src: string) => {
   }
 };
 
-export const GlossaryMarkdownBody = ({
+const GlossaryMarkdownBody = ({
   content,
   assetPrefix,
 }: {
@@ -168,3 +168,5 @@ export const GlossaryMarkdownBody = ({
     </ReactMarkdown>
   );
 };
+
+export default GlossaryMarkdownBody;
