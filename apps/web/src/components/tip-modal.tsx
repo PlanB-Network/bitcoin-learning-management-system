@@ -6,10 +6,10 @@ import { Dialog, DialogContent } from '@blms/ui';
 
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
-import BitcoinCircleGray from '../assets/icons/bitcoin_circle_gray.svg?react';
-import LightningOrange from '../assets/icons/lightning_orange.svg?react';
-import PaynimRobotGray from '../assets/icons/paynym_robot_gray.svg?react';
-import RabbitWithPresent from '../assets/rabbit_with_present.svg?react';
+import BitcoinCircleGray from '../assets/icons/bitcoin_circle_gray.svg';
+import LightningOrange from '../assets/icons/lightning_orange.svg';
+import PaynimRobotGray from '../assets/icons/paynym_robot_gray.svg';
+import RabbitWithPresent from '../assets/rabbit_with_present.svg';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -33,18 +33,18 @@ export const TipModal = ({
         showCloseButton={isMobile ? isMobile : false}
         className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
       >
-        <RabbitWithPresent />
+        <img src={RabbitWithPresent} alt="" className="" />
         <p className="text-xs font-light italic text-blue-800 md:text-xl">
           {userName
             ? t('professors.tips.thanks', { name: userName })
             : t('professors.tips.thanksNoName')}
         </p>
         <div className="flex w-full flex-row items-center justify-evenly">
-          <BitcoinCircleGray height={'2rem'} width={'auto'} />
+          <img src={BitcoinCircleGray} alt="" className="h-8 w-auto" />
           <span className="text-2xl text-gray-300">{`<`}</span>
-          <LightningOrange height={'3rem'} width={'auto'} />
+          <img src={LightningOrange} alt="" className="h-12 w-auto" />
           <span className="text-2xl text-gray-300">{`>`}</span>
-          <PaynimRobotGray height={'2rem'} width={'auto'} />
+          <img src={PaynimRobotGray} alt="" className="h-8 w-auto" />
         </div>
 
         {lightningAddress ? (
