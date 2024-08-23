@@ -22,7 +22,7 @@
     "@octokit/app": "^14.1.0",
     "@octokit/rest": "^20.1.1",
     "@octokit/webhooks-methods": "^5.1.0",
-    "async": "^3.2.5",
+    "async": "^3.2.6",
     "simple-git": "^3.25.0"
   },
   "devDependencies": {
