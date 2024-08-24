@@ -33,7 +33,8 @@
     "errors": {
       "usernameRegex": "ユーザー名には「アルファベット」「数字」「_」「.」「-」のみ使用できます",
       "usernameRequired": "ユーザー名は必須項目です",
-      "usernameTooShort": "ユーザー名は5文字以上である必要があります"
+      "usernameTooShort": "ユーザー名は5文字以上である必要があります",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "パスワードをお忘れですか？",
     "headerAccountCreated": "アカウントが作成されました",
@@ -44,7 +45,8 @@
     "passwordRequired": "パスワードは必須項目です",
     "passwordsDontMatch": "パスワードが一致しません",
     "sendLink": "リンクを送信する",
-    "signIn": "ログイン"
+    "signIn": "ログイン",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりしたい方は、遠慮なく私たちのDiscordにご参加ください。",
@@ -59,7 +61,10 @@
     "visualContent": {
       "description": "このコンテンツは、あなたの作品に使用される生のビジュアル・データです。",
       "title": "ビジュアル・コンテンツ"
-    }
+    },
+    "contributeButton": "",
+    "contributeDescription": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "抜粋",
@@ -78,7 +83,8 @@
   },
   "builders": {
     "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
-    "pageTitle": "開発者ポータル"
+    "pageTitle": "開発者ポータル",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
@@ -164,7 +170,9 @@
       "s2t1": "ビットコイン学習は、目的地ではなく旅そのものです",
       "s3PickLevel": "レベル選択：",
       "s3PickTopic": "トピック選択：",
-      "s3t1": "ラビットホールに自分だけの道を作ろう"
+      "s3t1": "ラビットホールに自分だけの道を作ろう",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -220,6 +228,12 @@
       "financialCrisis": "主要な金融危機の分析",
       "hyperinflation": "ハイパーインフレの研究",
       "theoreticalLightning": "ライトニング・ネットワークの上級理論コース"
+    },
+    "review": {
+      "feedbackDescription": "",
+      "faithful": "",
+      "recommend": "",
+      "yesOfCourse": ""
     }
   },
   "dashboard": {
@@ -227,7 +241,8 @@
       "resumeLesson": "Resume the lesson",
       "completed": "",
       "details": "",
-      "inprogress": ""
+      "inprogress": "",
+      "inprogressCoursesDescription": ""
     },
     "account": "",
     "courses": "",
@@ -251,7 +266,13 @@
       "upcomingTicketTitle": "",
       "upcomingTicketSubtitle": ""
     },
-    "bookings": ""
+    "bookings": "",
+    "bCertificate": {
+      "noResults": ""
+    },
+    "profile": {
+      "emailChangeConfirmation": ""
+    }
   },
   "events": {
     "introduction": {
@@ -726,5 +747,28 @@
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "bCertificate": {
+    "bCertificateDescription": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "readChart": "",
+    "organizeDescription": ""
+  },
+  "glossary": {
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": "",
+    "filterBar": ""
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
