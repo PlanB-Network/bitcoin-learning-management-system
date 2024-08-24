@@ -72,7 +72,14 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "resumeLesson": ""
+      "resumeLesson": "",
+      "inprogressCoursesDescription": ""
+    },
+    "bCertificate": {
+      "noResults": ""
+    },
+    "profile": {
+      "emailChangeConfirmation": ""
     }
   },
   "payment": {
@@ -233,7 +240,8 @@
   },
   "builders": {
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -339,7 +347,9 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -389,6 +399,12 @@
       "financialCrisis": "",
       "hyperinflation": "",
       "theoreticalLightning": ""
+    },
+    "review": {
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     }
   },
   "nodeNetwork": {
@@ -751,5 +767,21 @@
     "pageSubtitle": "Merkezi açık kaynak eğitim aracılığıyla kitlesel benimsenme",
     "pageTitle": "B-Sertifikası",
     "readChart": "Tabloyu oku"
+  },
+  "glossary": {
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
