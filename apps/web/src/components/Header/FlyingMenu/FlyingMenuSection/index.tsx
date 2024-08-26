@@ -1,11 +1,12 @@
-import { useState, useRef } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Link } from '@tanstack/react-router';
-import { cn } from '@blms/ui';
+import { useRef, useState } from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+
+import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
+
 import { MenuElement } from '../../MenuElement/index.tsx';
 import type { NavigationSection } from '../../props.tsx';
 import { FlyingMenuSubSection } from '../FlyingMenuSubSection/index.tsx';
-import { Popover, PopoverTrigger, PopoverContent } from '@blms/ui';
 
 export interface FlyingMenuProps {
   section: NavigationSection;
