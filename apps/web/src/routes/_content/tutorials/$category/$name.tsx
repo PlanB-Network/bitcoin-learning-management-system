@@ -16,7 +16,6 @@ import { AuthModalState } from '#src/components/AuthModal/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { TipModal } from '#src/components/tip-modal.js';
-import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
@@ -136,19 +135,14 @@ const AuthorDetails = ({
         </div>
         <div className="flex items-center gap-4">
           <button
-            className="flex items-center justify-center p-3 rounded-2xl bg-white shadow-course-navigation border border-darkOrange-2 overflow-hidden size-16 hover:bg-darkOrange-0 shrink-0"
+            className="flex items-center justify-center p-1 rounded-2xl bg-white shadow-course-navigation border border-darkOrange-2 overflow-hidden size-16 hover:bg-darkOrange-0 shrink-0"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               openTipModal();
             }}
           >
-            <TooltipWithContent
-              text={t('tutorials.details.tipTooltip')}
-              position="bottom"
-            >
-              <DonateLightning className="size-16" />
-            </TooltipWithContent>
+            <DonateLightning className="size-16" />
           </button>
           <div className="title-small-med-16px text-black whitespace-pre-line">
             {t('courses.chapter.thanksTip')}
@@ -217,6 +211,12 @@ function TutorialDetails() {
     close: closeAuthModal,
   } = useDisclosure();
 
+  // Access global context
+  const { tutorials, session } = useContext(AppContext);
+  const isFetchedTutorials = tutorials && tutorials.length > 0;
+  const authMode = AuthModalState.SignIn;
+  const isLoggedIn = !!session;
+
   // Fetch tutorial data
   const { data: tutorial, isFetched } = trpc.content.getTutorial.useQuery({
     category,
@@ -230,7 +230,7 @@ function TutorialDetails() {
       {
         id: tutorial?.id || 0,
       },
-      { enabled: !!tutorial?.id },
+      { enabled: !!tutorial?.id && isLoggedIn },
     );
 
   const { data: proofreading } = trpc.content.getProofreading.useQuery(
@@ -240,12 +240,6 @@ function TutorialDetails() {
     },
     { enabled: !!tutorial?.id },
   );
-
-  // Access global context
-  const { tutorials, session } = useContext(AppContext);
-  const isFetchedTutorials = tutorials && tutorials.length > 0;
-  const authMode = AuthModalState.SignIn;
-  const isLoggedIn = !!session;
 
   // Mutation for liking/disliking a tutorial
   const likeTutorialMutation = trpc.user.tutorials.likeTutorial.useMutation({});

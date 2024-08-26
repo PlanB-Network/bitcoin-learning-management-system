@@ -9,6 +9,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -74,6 +75,9 @@ export const ChangeDisplayNameModal = ({
       >
         <DialogHeader>
           <DialogTitle>{t('settings.changeDisplayName')}</DialogTitle>
+          <DialogDescription className="hidden">
+            {t('settings.changeDisplayName')}
+          </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center">
           <Formik

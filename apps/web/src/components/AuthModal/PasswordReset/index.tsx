@@ -6,6 +6,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   TextInput,
@@ -129,6 +130,9 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       >
         <DialogHeader>
           <DialogTitle variant="orange">{t('auth.resetPassword')}</DialogTitle>
+          <DialogDescription className="hidden">
+            {t('auth.resetPassword')}
+          </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center">
           {modalContent[resetPasswordState]}

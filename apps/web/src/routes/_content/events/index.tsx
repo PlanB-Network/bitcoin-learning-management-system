@@ -28,6 +28,9 @@ export const Route = createFileRoute('/_content/events/')({
 function Events() {
   const { t } = useTranslation();
 
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
+
   const queryOpts = {
     staleTime: 600_000, // 10 minutes
     refetchOnMount: false,
@@ -40,9 +43,15 @@ function Events() {
     queryOpts,
   );
   const { data: eventPayments, refetch: refetchEventPayments } =
-    trpc.user.events.getEventPayment.useQuery(undefined, queryOpts);
+    trpc.user.events.getEventPayment.useQuery(undefined, {
+      ...queryOpts,
+      enabled: isLoggedIn,
+    });
   const { data: userEvents, refetch: refetchUserEvents } =
-    trpc.user.events.getUserEvents.useQuery(undefined, queryOpts);
+    trpc.user.events.getUserEvents.useQuery(undefined, {
+      ...queryOpts,
+      enabled: isLoggedIn,
+    });
 
   const [paymentModalData, setPaymentModalData] = useState<{
     eventId: string | null;
@@ -53,16 +62,15 @@ function Events() {
 
   const [conversionRate, setConversionRate] = useState<number | null>(null);
 
-  const { session } = useContext(AppContext);
-  const isLoggedIn = !!session;
-
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,
   );
 
   useEffect(() => {
-    refetchEventPayments();
-    refetchUserEvents();
+    if (isLoggedIn) {
+      refetchEventPayments();
+      refetchUserEvents();
+    }
   }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
 
   // TODO Refactor this auth stuff

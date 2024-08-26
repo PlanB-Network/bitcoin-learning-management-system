@@ -120,6 +120,9 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
           ) : (
             <>
               <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
+                <DialogDescription className="hidden">
+                  Register
+                </DialogDescription>
                 <Button
                   variant="ghost"
                   mode="light"

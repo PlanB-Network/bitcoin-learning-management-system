@@ -106,21 +106,22 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
                 <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <button
-                  className="z-10 ml-4 size-8 self-start"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    openTipModal();
-                  }}
+
+                <TooltipWithContent
+                  text={t('tutorials.details.tipTooltip')}
+                  position="bottom"
                 >
-                  <TooltipWithContent
-                    text={t('tutorials.details.tipTooltip')}
-                    position="bottom"
+                  <button
+                    className="z-10 ml-4 size-8 self-start"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      openTipModal();
+                    }}
                   >
                     <DonateLightning />
-                  </TooltipWithContent>
-                </button>
+                  </button>
+                </TooltipWithContent>
               </div>
             </div>
           </div>
