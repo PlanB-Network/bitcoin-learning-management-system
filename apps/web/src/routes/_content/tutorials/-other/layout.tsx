@@ -1,10 +1,14 @@
-import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import { cn } from '@blms/ui';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+  cn,
+} from '@blms/ui';
 
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { AppContext } from '#src/providers/context.js';
@@ -39,130 +43,115 @@ export const TutorialLayout = ({
                 allTutorials.some(
                   (tutorial) => tutorial.category === tutorialCategory.name,
                 ) ? (
-                  <Disclosure
+                  <Collapsible
                     key={
-                      /* Trick to rerender the disclosure on current category change, so it opens the correct panel */
+                      /* Trick to rerender the Collapsible on current category change, so it opens the correct panel */
                       `${tutorialCategory.name}-${currentCategory}`
                     }
                     defaultOpen={tutorialCategory.name === currentCategory}
                   >
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className="flex w-full items-center justify-start pl-5 text-left gap-3 h-9">
-                          <BsFillTriangleFill
-                            size={13}
-                            className={
-                              open
-                                ? 'rotate-180 text-newGray-1'
-                                : 'rotate-90 text-newGray-1'
-                            }
-                          />
-                          <Link
-                            to={'/tutorials/$category'}
-                            params={{
-                              category: tutorialCategory.name,
-                            }}
-                            className={cn(
-                              'text-black uppercase font-poppins',
-                              open ? 'font-bold' : 'font-medium',
-                            )}
-                          >
-                            {t([
-                              `tutorials.${tutorialCategory.name}.name`,
-                              tutorialCategory.name,
-                            ])}
-                          </Link>
-                        </Disclosure.Button>
+                    <>
+                      <CollapsibleTrigger className="group flex w-full items-center justify-start pl-5 text-left gap-3 h-9">
+                        <BsFillTriangleFill
+                          size={13}
+                          className="group-data-[state=open]:rotate-180 data-[state=closed]:rotate-90 text-newGray-1 transition-transform ease-in-out"
+                        />
+                        <Link
+                          to={'/tutorials/$category'}
+                          params={{
+                            category: tutorialCategory.name,
+                          }}
+                          className={cn(
+                            'text-black uppercase font-poppins group-data-[state=open]:font-bold group-data-[state=closed]:font-medium',
+                          )}
+                        >
+                          {t([
+                            `tutorials.${tutorialCategory.name}.name`,
+                            tutorialCategory.name,
+                          ])}
+                        </Link>
+                      </CollapsibleTrigger>
 
-                        <Disclosure.Panel className="pl-12">
-                          {allTutorials &&
-                            extractSubCategories(
-                              allTutorials.filter(
-                                (tutorial) =>
-                                  tutorial.category === tutorialCategory.name,
-                              ),
-                            ).map((subCategory) => (
-                              <Disclosure
-                                key={subCategory}
-                                defaultOpen={subCategory === currentSubcategory}
-                              >
-                                {({ open }) => (
-                                  <>
-                                    <Disclosure.Button className="flex w-full items-center justify-start gap-3 text-left text-sm h-6">
-                                      <BsFillCircleFill
-                                        size={8}
-                                        className={'text-newGray-4'}
-                                      />
-                                      <span
-                                        className={cn(
-                                          'text-newBlack-2 capitalize text-sm font-poppins',
-                                          open ? 'font-semibold' : '',
-                                        )}
-                                      >
-                                        {t([
-                                          `tutorials.${tutorialCategory.name}.${subCategory}.name`,
-                                          subCategory,
-                                        ])}
-                                      </span>
-                                    </Disclosure.Button>
+                      <CollapsibleContent className="pl-12">
+                        {allTutorials &&
+                          extractSubCategories(
+                            allTutorials.filter(
+                              (tutorial) =>
+                                tutorial.category === tutorialCategory.name,
+                            ),
+                          ).map((subCategory) => (
+                            <Collapsible
+                              key={subCategory}
+                              defaultOpen={subCategory === currentSubcategory}
+                            >
+                              <>
+                                <CollapsibleTrigger className="group flex w-full items-center justify-start gap-3 text-left text-sm h-6">
+                                  <BsFillCircleFill
+                                    size={8}
+                                    className="text-newGray-4"
+                                  />
+                                  <span
+                                    className={cn(
+                                      'text-newBlack-2 capitalize text-sm font-poppins group-data-[state=open]:font-semibold',
+                                    )}
+                                  >
+                                    {t([
+                                      `tutorials.${tutorialCategory.name}.${subCategory}.name`,
+                                      subCategory,
+                                    ])}
+                                  </span>
+                                </CollapsibleTrigger>
 
-                                    <Disclosure.Panel className="pl-7">
-                                      <ul className="flex flex-col">
-                                        {allTutorials
-                                          .filter(
-                                            (tutorial) =>
-                                              tutorial.category ===
-                                                tutorialCategory.name &&
-                                              tutorial.subcategory ===
-                                                subCategory,
-                                          )
-                                          .map((tutorial) => (
-                                            <li
-                                              key={tutorial.id}
-                                              className={
-                                                'group flex list-none items-center justify-start min-h-6 gap-2'
-                                              }
-                                            >
-                                              <BsFillCircleFill
-                                                size={4}
-                                                className={cn(
-                                                  ' group-hover:text-darkOrange-5 shrink-0',
-                                                  tutorial.id ===
-                                                    currentTutorialId
-                                                    ? 'text-darkOrange-5'
-                                                    : 'text-newBlack-2',
-                                                )}
-                                              />
-                                              <Link
-                                                to={
-                                                  '/tutorials/$category/$name'
-                                                }
-                                                params={{
-                                                  category: tutorial.category,
-                                                  name: tutorial.name,
-                                                }}
-                                                className={cn(
-                                                  'text-xs group-hover:text-darkOrange-5 font-poppins',
-                                                  tutorial.id ===
-                                                    currentTutorialId
-                                                    ? 'text-darkOrange-5 font-semibold'
-                                                    : 'text-newBlack-2 font-light',
-                                                )}
-                                              >
-                                                {t(tutorial.title)}
-                                              </Link>
-                                            </li>
-                                          ))}
-                                      </ul>
-                                    </Disclosure.Panel>
-                                  </>
-                                )}
-                              </Disclosure>
-                            ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
+                                <CollapsibleContent className="pl-7">
+                                  <ul className="flex flex-col">
+                                    {allTutorials
+                                      .filter(
+                                        (tutorial) =>
+                                          tutorial.category ===
+                                            tutorialCategory.name &&
+                                          tutorial.subcategory === subCategory,
+                                      )
+                                      .map((tutorial) => (
+                                        <li
+                                          key={tutorial.id}
+                                          className={
+                                            'group flex list-none items-center justify-start min-h-6 gap-2'
+                                          }
+                                        >
+                                          <BsFillCircleFill
+                                            size={4}
+                                            className={cn(
+                                              ' group-hover:text-darkOrange-5 shrink-0',
+                                              tutorial.id === currentTutorialId
+                                                ? 'text-darkOrange-5'
+                                                : 'text-newBlack-2',
+                                            )}
+                                          />
+                                          <Link
+                                            to={'/tutorials/$category/$name'}
+                                            params={{
+                                              category: tutorial.category,
+                                              name: tutorial.name,
+                                            }}
+                                            className={cn(
+                                              'text-xs group-hover:text-darkOrange-5 font-poppins',
+                                              tutorial.id === currentTutorialId
+                                                ? 'text-darkOrange-5 font-semibold'
+                                                : 'text-newBlack-2 font-light',
+                                            )}
+                                          >
+                                            {t(tutorial.title)}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                  </ul>
+                                </CollapsibleContent>
+                              </>
+                            </Collapsible>
+                          ))}
+                      </CollapsibleContent>
+                    </>
+                  </Collapsible>
                 ) : null,
               )}
           </div>

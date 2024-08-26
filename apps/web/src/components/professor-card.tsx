@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import type { FormattedProfessor } from '@blms/types';
 
-import TwitterIcon from '../assets/icons/twitter_blue.svg?react';
-import WebIcon from '../assets/icons/web_blue.svg?react';
+import TwitterIcon from '../assets/icons/twitter_blue.svg';
+import WebIcon from '../assets/icons/web_blue.svg';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;
@@ -59,7 +59,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             );
           }}
         >
-          <TwitterIcon className="h-20" />
+          <img src={TwitterIcon} alt="web icon" className="my-6 block" />
         </button>
       )}
       {professor.links.website && (
@@ -74,7 +74,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             );
           }}
         >
-          <WebIcon className="h-20" />
+          <img src={WebIcon} alt="web icon" className="my-6 block" />
         </button>
       )}
     </div>

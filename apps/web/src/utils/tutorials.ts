@@ -2,19 +2,19 @@
 import type { JoinedTutorial } from '@blms/types';
 
 import exchangeSvg from '../assets/tutorials/exchange.svg';
-import exchangeSvgIcon from '../assets/tutorials/exchange.svg?react';
+import exchangeSvgIcon from '../assets/tutorials/exchange.svg';
 import merchantSvg from '../assets/tutorials/merchant.svg';
-import merchantSvgIcon from '../assets/tutorials/merchant.svg?react';
+import merchantSvgIcon from '../assets/tutorials/merchant.svg';
 import miningSvg from '../assets/tutorials/mining.svg';
-import miningSvgIcon from '../assets/tutorials/mining.svg?react';
+import miningSvgIcon from '../assets/tutorials/mining.svg';
 import nodeSvg from '../assets/tutorials/node.svg';
-import nodeSvgIcon from '../assets/tutorials/node.svg?react';
+import nodeSvgIcon from '../assets/tutorials/node.svg';
 import otherSvg from '../assets/tutorials/other.svg';
-import otherSvgIcon from '../assets/tutorials/other.svg?react';
+import otherSvgIcon from '../assets/tutorials/other.svg';
 import privacySvg from '../assets/tutorials/privacy.svg';
-import privacySvgIcon from '../assets/tutorials/privacy.svg?react';
+import privacySvgIcon from '../assets/tutorials/privacy.svg';
 import walletSvg from '../assets/tutorials/wallet.svg';
-import walletSvgIcon from '../assets/tutorials/wallet.svg?react';
+import walletSvgIcon from '../assets/tutorials/wallet.svg';
 
 export const TUTORIALS_CATEGORIES = [
   {

@@ -9,8 +9,6 @@ import { ResetMode, simpleGit } from 'simple-git';
 
 import type { ChangedFile, GitHubSyncConfig } from '@blms/types';
 
-import type { GithubOctokit } from './octokit.js';
-
 export const timeLog = (str: string) => {
   const key = `-- Sync procedure: ${str}`;
   console.log(key + '...');
@@ -19,11 +17,6 @@ export const timeLog = (str: string) => {
   return () => {
     console.timeEnd(key);
   };
-};
-
-const parseRepository = (repository: string) => {
-  const [repoOwner, repoName] = repository.split('/');
-  return { repoOwner, repoName };
 };
 
 const extractRepositoryFromUrl = (url: string) => {
@@ -75,36 +68,6 @@ const createGetGitLog = (git: SimpleGitExt) => {
   }
 
   return createCache(git[cacheSymbol])(fn);
-};
-
-export const createDownloadFile = (octokit: GithubOctokit) => {
-  return async (repository: string, path: string) => {
-    try {
-      const { repoOwner, repoName } = parseRepository(repository);
-
-      const response = await octokit.rest.repos.getContent({
-        owner: repoOwner,
-        repo: repoName,
-        path,
-      });
-
-      if (Array.isArray(response.data)) {
-        throw new TypeError(`Path ${path} is a directory`);
-      }
-
-      if (response.data.type !== 'file') {
-        throw new Error(`Path ${path} is not a file`);
-      }
-
-      return Buffer.from(response.data.content, 'base64').toString();
-    } catch (error: any) {
-      throw new Error(
-        `Failed to download file ${path}. ${
-          error instanceof Error ? error.message : ''
-        }`,
-      );
-    }
-  };
 };
 
 /**

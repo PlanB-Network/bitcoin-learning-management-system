@@ -7,13 +7,13 @@ import { cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 
-import resourcesSvg from '../../assets/resources/builder.svg?react';
-import eventsSvg from '../../assets/resources/conference.svg?react';
-import glossarySvg from '../../assets/resources/glossary.svg?react';
-import coursesSvg from '../../assets/resources/library.svg?react';
-import podcastSvg from '../../assets/resources/podcast.svg?react';
-import tutorialsSvg from '../../assets/resources/toolkit.svg?react';
-import aboutSvg from '../../assets/resources/world.svg?react';
+import resourcesSvg from '../../assets/resources/builder.svg';
+import eventsSvg from '../../assets/resources/conference.svg';
+import glossarySvg from '../../assets/resources/glossary.svg';
+import coursesSvg from '../../assets/resources/library.svg';
+import podcastSvg from '../../assets/resources/podcast.svg';
+import tutorialsSvg from '../../assets/resources/toolkit.svg';
+import aboutSvg from '../../assets/resources/world.svg';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';

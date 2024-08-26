@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { cn } from '@blms/ui';
 
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
-import ThumbDown from '#src/assets/icons/thumb_down.svg?react';
-import ThumbUp from '#src/assets/icons/thumb_up.svg?react';
+import ThumbDown from '#src/assets/icons/thumb_down.svg';
+import ThumbUp from '#src/assets/icons/thumb_up.svg';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 // import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
@@ -334,7 +334,7 @@ function TutorialDetails() {
                 isLiked.liked ? 'bg-darkGreen-6' : 'hover:bg-darkGreen-6',
               )}
             >
-              <ThumbUp className="size-12" />
+              <img src={ThumbUp} alt="" className="size-12" />
             </button>
           )}
           {isFetched && tutorial && (
@@ -347,7 +347,7 @@ function TutorialDetails() {
                 isLiked.disliked ? 'bg-red-6' : 'hover:bg-red-6',
               )}
             >
-              <ThumbDown className="size-12" />
+              <img src={ThumbDown} alt="" className="size-12" />
             </button>
           )}
         </div>

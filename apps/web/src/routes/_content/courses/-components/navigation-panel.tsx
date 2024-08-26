@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Disclosure } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
 import type { JoinedCourseChapter, JoinedCourseWithAll } from '@blms/types';
-import { cn } from '@blms/ui';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+  cn,
+} from '@blms/ui';
 
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 
@@ -71,95 +75,84 @@ export const NavigationPanel: React.FC<Props> = ({
           {chapters
             .filter((chapter) => chapter.chapterIndex === 1)
             .map((chapterOne) => (
-              <Disclosure
+              <Collapsible
                 key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
                 defaultOpen={chapterOne.partIndex === currentChapter.partIndex}
               >
-                {({ open }) => (
-                  <div
-                    key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
-                  >
-                    <Disclosure.Button
-                      className={'flex justify-start text-left'}
+                <div key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}>
+                  <CollapsibleTrigger className="group flex justify-start text-left">
+                    <li
+                      className={cn(
+                        'flex items-baseline gap-2.5 text-sm font-semibold mb-1  hover:text-darkOrange-5',
+                        isPastPart(chapterOne, currentChapter)
+                          ? 'text-black'
+                          : 'text-newGray-1',
+                      )}
                     >
-                      <li
-                        className={cn(
-                          'flex items-baseline gap-2.5 text-sm font-semibold mb-1  hover:text-darkOrange-5',
-                          isPastPart(chapterOne, currentChapter)
-                            ? 'text-black'
-                            : 'text-newGray-1',
-                        )}
-                      >
-                        <BsFillTriangleFill
-                          size={10}
-                          className={
-                            open
-                              ? 'rotate-180 shrink-0 transition-transform ease-in-out'
-                              : 'rotate-90 shrink-0 transition-transform ease-in-out'
-                          }
-                        />
-                        <span className="capitalize font-poppins">
-                          {chapterOne.partTitle.toLowerCase()}
-                        </span>
-                      </li>
-                    </Disclosure.Button>
-                    <Disclosure.Panel>
-                      {chapters
-                        .filter(
-                          (chapter) =>
-                            chapter.partIndex === chapterOne.partIndex,
-                        )
-                        .map((chapter, index) => (
-                          <li key={index + 1000}>
-                            <Link
-                              to={'/courses/$courseId/$chapterId'}
-                              params={{
-                                courseId: course.id,
-                                chapterId: chapter.chapterId,
-                              }}
-                            >
-                              <div className="mt-1 grid grid-cols-8 items-center gap-1">
-                                <div className="col-span-1">
-                                  <BsFillCircleFill
-                                    size={10}
-                                    className={cn(
-                                      'text-xs ml-2',
-                                      isPastChapter(chapter, currentChapter)
-                                        ? 'text-black'
-                                        : isCurrentChapter(
-                                              chapter,
-                                              currentChapter,
-                                            )
-                                          ? 'text-darkOrange-5'
-                                          : 'text-newGray-3',
-                                    )}
-                                  />
-                                </div>
-                                <div className="col-span-7">
-                                  <span
-                                    className={cn(
-                                      'text-xs font-poppins hover:text-darkOrange-5',
-                                      isPastChapter(chapter, currentChapter)
-                                        ? 'text-black'
-                                        : isCurrentChapter(
-                                              chapter,
-                                              currentChapter,
-                                            )
-                                          ? 'text-darkOrange-5'
-                                          : 'text-newGray-3',
-                                    )}
-                                  >
-                                    {chapter.title}
-                                  </span>
-                                </div>
+                      <BsFillTriangleFill
+                        size={10}
+                        className="group-data-[state=open]:rotate-180 group-data-[state=closed]:rotate-90 shrink-0 transition-transform ease-in-out"
+                      />
+                      <span className="capitalize font-poppins">
+                        {chapterOne.partTitle.toLowerCase()}
+                      </span>
+                    </li>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    {chapters
+                      .filter(
+                        (chapter) => chapter.partIndex === chapterOne.partIndex,
+                      )
+                      .map((chapter, index) => (
+                        <li key={index + 1000}>
+                          <Link
+                            to={'/courses/$courseId/$chapterId'}
+                            params={{
+                              courseId: course.id,
+                              chapterId: chapter.chapterId,
+                            }}
+                          >
+                            <div className="mt-1 grid grid-cols-8 items-center gap-1">
+                              <div className="col-span-1">
+                                <BsFillCircleFill
+                                  size={10}
+                                  className={cn(
+                                    'text-xs ml-2',
+                                    isPastChapter(chapter, currentChapter)
+                                      ? 'text-black'
+                                      : isCurrentChapter(
+                                            chapter,
+                                            currentChapter,
+                                          )
+                                        ? 'text-darkOrange-5'
+                                        : 'text-newGray-3',
+                                  )}
+                                />
                               </div>
-                            </Link>
-                          </li>
-                        ))}
-                    </Disclosure.Panel>
-                  </div>
-                )}
-              </Disclosure>
+                              <div className="col-span-7">
+                                <span
+                                  className={cn(
+                                    'text-xs font-poppins hover:text-darkOrange-5',
+                                    isPastChapter(chapter, currentChapter)
+                                      ? 'text-black'
+                                      : isCurrentChapter(
+                                            chapter,
+                                            currentChapter,
+                                          )
+                                        ? 'text-darkOrange-5'
+                                        : 'text-newGray-3',
+                                  )}
+                                >
+                                  {chapter.title}
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                  </CollapsibleContent>
+                </div>
+              </Collapsible>
             ))}
         </ul>
       </div>

@@ -1,21 +1,13 @@
 export interface NavigationBaseItem {
   id: string;
   title?: string;
-  mobileIcon?: React.FunctionComponent<
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined;
-    }
-  >;
+  mobileIcon?: string;
 }
 
 type ActionOrPath = { action: () => void } | { path: string };
 
 export type NavigationElement = (NavigationBaseItem & {
-  icon?: React.FunctionComponent<
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined;
-    }
-  >;
+  icon?: string;
   description?: string;
 }) &
   ActionOrPath;

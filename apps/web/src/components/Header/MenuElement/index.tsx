@@ -26,8 +26,9 @@ export const MenuElement = ({
         )}
       >
         {element.icon && (
-          <div className="flex flex-none items-center justify-center">
-            <element.icon
+          <div className="flex flex-none items-center justify-center w-8">
+            <img
+              src={element.icon}
               className={cn(
                 'size-[30px]',
                 variant === 'light'
@@ -35,6 +36,7 @@ export const MenuElement = ({
                   : 'text-white filter-white',
               )}
               aria-hidden="true"
+              alt=""
             />
           </div>
         )}
