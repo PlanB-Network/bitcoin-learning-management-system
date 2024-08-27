@@ -1,9 +1,8 @@
-import { Popover, Transition } from '@headlessui/react';
 import { Link } from '@tanstack/react-router';
-import { Fragment, useState } from 'react';
+import { useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@blms/ui';
+import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 
 import { MenuElement } from '../../MenuElement/index.tsx';
 import type { NavigationSection } from '../../props.tsx';
@@ -13,6 +12,7 @@ export interface FlyingMenuProps {
   section: NavigationSection;
   variant?: 'dark' | 'light';
 }
+
 interface SectionTitleProps {
   section: NavigationSection;
   variant?: 'dark' | 'light';
@@ -38,7 +38,6 @@ const SectionTitle = ({
           'text-base font-medium leading-[144%] flex items-center gap-1.5',
           variantMap[variant],
         )}
-        /* TODO: fix */
         to={section.path as '/'}
       >
         {section.title}
@@ -55,7 +54,7 @@ const SectionTitle = ({
     );
   }
 
-  if ('action' in section)
+  if ('action' in section) {
     return (
       <button
         className="inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg"
@@ -66,10 +65,25 @@ const SectionTitle = ({
         {section.title}
       </button>
     );
+  }
 };
 
 export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = window.setTimeout(() => {
+      setOpen(false);
+    }, 100);
+  };
 
   if (!('items' in section)) {
     return (
@@ -87,66 +101,60 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const hasMultipleSubSection = section.items.length > 1;
 
   return (
-    <Popover
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      className={cn(
-        'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
-        open && 'bg-white/20',
-      )}
-    >
-      <SectionTitle
-        section={section}
-        variant={variant}
-        addArrow
-        isOpen={open}
-      />
-      <Transition
-        show={open}
-        as={Fragment}
-        enter="transition ease-out duration-200"
-        enterFrom="opacity-0 translate-y-1"
-        enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-150"
-        leaveFrom="opacity-100 translate-y-0"
-        leaveTo="opacity-0 translate-y-1"
-      >
-        <Popover.Panel
-          static
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <div
           className={cn(
-            'flex absolute z-10 mt-8 -left-1',
-            hasMultipleSubSection ? '-left-40 xl:-left-64' : '',
+            'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
+            open && 'bg-white/20',
+          )}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <SectionTitle
+            section={section}
+            variant={variant}
+            addArrow
+            isOpen={open}
+          />
+        </div>
+      </PopoverTrigger>
+      <PopoverContent
+        className={cn(
+          'flex absolute z-10 mt-6 -left-16',
+          hasMultipleSubSection ? '-left-40 xl:-left-64' : '',
+        )}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div
+          className={cn(
+            'flex-auto overflow-hidden rounded-[20px]',
+            variant === 'light' ? 'bg-darkOrange-4' : 'bg-newBlack-3',
           )}
         >
-          <div
-            className={cn(
-              'flex-auto overflow-hidden rounded-[20px]',
-              variant === 'light' ? 'bg-darkOrange-4' : 'bg-newBlack-3',
-            )}
-          >
-            <div className="flex flex-row">
-              {'items' in section &&
-                section.items.map((subSectionOrElement) => {
-                  return 'items' in subSectionOrElement ? (
-                    <FlyingMenuSubSection
-                      key={subSectionOrElement.id}
-                      subSection={subSectionOrElement}
+          <div className="flex flex-row">
+            {'items' in section &&
+              section.items.map((subSectionOrElement) => {
+                return 'items' in subSectionOrElement ? (
+                  <FlyingMenuSubSection
+                    key={subSectionOrElement.id}
+                    subSection={subSectionOrElement}
+                    variant={variant}
+                    hasMultipleSubSection={hasMultipleSubSection}
+                  />
+                ) : (
+                  <div className="mx-2 my-4" key={subSectionOrElement.id}>
+                    <MenuElement
+                      element={subSectionOrElement}
                       variant={variant}
-                      hasMultipleSubSection={hasMultipleSubSection}
                     />
-                  ) : (
-                    <div className="mx-2 my-4" key={subSectionOrElement.id}>
-                      <MenuElement
-                        element={subSectionOrElement}
-                        variant={variant}
-                      />
-                    </div>
-                  );
-                })}
-            </div>
+                  </div>
+                );
+              })}
           </div>
-        </Popover.Panel>
-      </Transition>
+        </div>
+      </PopoverContent>
     </Popover>
   );
 };
