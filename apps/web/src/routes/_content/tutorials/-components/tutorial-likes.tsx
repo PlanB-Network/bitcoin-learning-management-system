@@ -9,11 +9,11 @@ export const TutorialLikes = ({
   tutorial: JoinedTutorialLight;
 }) => {
   return (
-    <div className="flex gap-1 items-center">
+    <span className="flex gap-1 items-center">
       <span className="text-black label-large-20px">{tutorial.likeCount}</span>
-      <div className="flex items-center">
+      <span className="flex items-center">
         <MdThumbUp className="text-brightGreen-5 size-6 mx-1" />
-        <div
+        <span
           className={cn(
             'w-[70px] rounded-full h-2 mx-2',
             tutorial.likeCount === 0 &&
@@ -29,10 +29,10 @@ export const TutorialLikes = ({
           }
         />
         <MdThumbDown className="text-red-1 size-6 mx-1" />
-      </div>
+      </span>
       <span className="text-black label-large-20px">
         {tutorial.dislikeCount}
       </span>
-    </div>
+    </span>
   );
 };
