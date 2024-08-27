@@ -72,18 +72,24 @@ const ContributorsNames = ({
   reward: number;
   mode: 'light' | 'dark';
 }) => {
+  const remainingContributors = 3 - contributors.length;
+
+  const remainingRewards = calculateReward(reward, remainingContributors);
+
   const Contributor1 =
-    contributors.length > 0
-      ? contributors[0]
-      : `${Math.ceil(reward).toLocaleString('fr-FR')} sats`;
+    contributors.length > 0 ? contributors[0] : remainingRewards[0];
+
   const Contributor2 =
     contributors.length > 1
       ? contributors[1]
-      : `${Math.ceil(reward / 2).toLocaleString('fr-FR')} sats`;
+      : remainingRewards[contributors.length === 0 ? 1 : 0];
+
   const Contributor3 =
     contributors.length > 2
       ? contributors[2]
-      : `${Math.ceil(reward / 4).toLocaleString('fr-FR')} sats`;
+      : remainingRewards[
+          contributors.length === 0 ? 2 : contributors.length === 1 ? 1 : 0
+        ];
 
   const textClasses =
     'truncate max-w-24 w-full text-center text-xs font-medium leading-relaxed tracking-[0.1px]';
@@ -264,4 +270,16 @@ export const ProofreadingProgress = ({
       </div>
     </div>
   );
+};
+
+const calculateReward = (baseReward: number, remainingContributors: number) => {
+  const calculatedRewards = [];
+  let reward = baseReward;
+
+  for (let i = 0; i < remainingContributors; i++) {
+    calculatedRewards.push(`${Math.ceil(reward).toLocaleString('fr-FR')} sats`);
+    reward /= 2;
+  }
+
+  return calculatedRewards;
 };
