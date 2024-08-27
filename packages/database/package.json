@@ -33,7 +33,7 @@
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.24.1",
+    "drizzle-kit": "^0.24.2",
     "pg": "^8.12.0"
   }
 }

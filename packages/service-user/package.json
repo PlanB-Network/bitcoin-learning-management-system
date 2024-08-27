@@ -22,7 +22,7 @@
     "@blms/database": "workspace:*",
     "@trpc/server": "11.0.0-rc.433",
     "@types/qr-image": "^3.2.9",
-    "argon2": "^0.40.3",
+    "argon2": "^0.41.0",
     "bip39": "^3.1.0",
     "lodash": "^4.17.21",
     "pdfkit": "^0.15.0",

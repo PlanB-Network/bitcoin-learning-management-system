@@ -37,7 +37,7 @@
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
-    "tsx": "^4.17.0",
+    "tsx": "^4.19.0",
     "turbo": "^2.0.14",
     "typescript": "5.5.4",
     "vite": "~5.4.2",
@@ -46,5 +46,5 @@
   "lint-staged": {
     "**/*": "prettier --loglevel warn --write --ignore-unknown"
   },
-  "packageManager": "pnpm@9.8.0"
+  "packageManager": "pnpm@9.9.0"
 }
