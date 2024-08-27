@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { BsStar, BsStarFill } from 'react-icons/bs';
 

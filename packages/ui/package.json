@@ -9,6 +9,7 @@
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slider": "^1.2.0",
@@ -20,7 +21,9 @@
     "clsx": "^2.1.1",
     "lucide-react": "latest",
     "react": "~18.3.1",
-    "tailwind-merge": "^2.5.2"
+    "react-hook-form": "^7.53.0",
+    "tailwind-merge": "^2.5.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
