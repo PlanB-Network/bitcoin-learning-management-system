@@ -17,7 +17,6 @@
   "dependencies": {
     "@blms/ui": "workspace:*",
     "@emotion/css": "^11.13.0",
-    "@headlessui/react": "^2.1.2",
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@react-hooks-library/core": "^0.6.2",
