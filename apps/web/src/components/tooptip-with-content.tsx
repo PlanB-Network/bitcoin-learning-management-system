@@ -23,7 +23,7 @@ export const TooltipWithContent = ({
   return (
     <TooltipProvider delayDuration={200}>
       <Tooltip>
-        <TooltipTrigger>{children}</TooltipTrigger>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent className="bg-gray-200" sideOffset={5} side={position}>
           <p className="text-blue-800 ">{text}</p>
         </TooltipContent>

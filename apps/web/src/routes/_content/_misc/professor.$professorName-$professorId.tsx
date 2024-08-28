@@ -39,7 +39,6 @@ function ProfessorDetail() {
     0,
     Math.max(0, professorNameId.lastIndexOf('-')),
   );
-  console.log('AAA', professorName);
 
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
     professorId: Number(professorId),
@@ -52,13 +51,13 @@ function ProfessorDetail() {
     if (!professor && isFetched && !navigateTo404Called.current) {
       navigateTo404();
       navigateTo404Called.current = true;
-    } else if (professor) {
-      console.log('REAL PROF NAME', professor.name);
-      if (professorName !== formatNameForURL(professor.name)) {
-        navigate({
-          to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
-        });
-      }
+    } else if (
+      professor &&
+      professorName !== formatNameForURL(professor.name)
+    ) {
+      navigate({
+        to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
+      });
     }
   }, [professor, isFetched, navigateTo404, professorName, navigate]);
 

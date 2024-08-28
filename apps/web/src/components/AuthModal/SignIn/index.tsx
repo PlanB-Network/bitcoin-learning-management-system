@@ -10,6 +10,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   Divider,
   TextInput,
@@ -65,6 +66,9 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         className="py-2 px-4 sm:p-6 w-full max-w-[90%] md:max-w-sm"
       >
         <DialogTitle>{t('menu.login')}</DialogTitle>
+        <DialogDescription className="hidden">
+          {t('menu.login')}
+        </DialogDescription>
         <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
           <Button
             variant="ghost"

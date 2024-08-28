@@ -391,7 +391,7 @@ function Home() {
             </Button>
           </Link>
 
-          <div className="mt-6 grid w-full grid-cols-2 gap-x-6 gap-y-4 md:mt-12 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
+          <div className="mt-6 grid w-full grid-cols-2 gap-4 md:gap-x-6 md:mt-12 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
             {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
               <Link
                 key={tutorialCategory.name}
@@ -399,8 +399,8 @@ function Home() {
                 to={'/tutorials/$category'}
                 params={{ category: tutorialCategory.name }}
               >
-                <CategoryIcon src={tutorialCategory.image} />
-                <p className="ml-4 text-lg font-medium xl:ml-12">
+                <CategoryIcon className="w-6" src={tutorialCategory.image} />
+                <p className="ml-2 md:ml-4 text-sm md:text-lg font-medium xl:ml-12 max-w-full truncate">
                   {t(`tutorials.${tutorialCategory.name}.title`)}
                 </p>
               </Link>

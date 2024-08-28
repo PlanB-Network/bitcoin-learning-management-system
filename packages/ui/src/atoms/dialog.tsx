@@ -61,7 +61,7 @@ const DialogContent = React.forwardRef<
           {...props}
         >
           {showCloseButton && (
-            <DialogPrimitive.Close className="flex justify-end rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
+            <DialogPrimitive.Close className="absolute top-3 right-3 flex justify-end rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
               <IoMdClose className="size-6" />
               <span className="sr-only">Close</span>
             </DialogPrimitive.Close>

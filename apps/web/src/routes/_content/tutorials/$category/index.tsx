@@ -60,13 +60,13 @@ function TutorialCategory() {
 
   useEffect(() => {
     if (tutorials) {
-      setSubCategories(extractSubCategories(tutorials).sort());
+      setSubCategories(extractSubCategories(tutorials));
     }
   }, [tutorials]);
 
   useEffect(() => {
     if (tutorials) {
-      const subCats = extractSubCategories(tutorials).sort();
+      const subCats = extractSubCategories(tutorials);
       setSubCategories(subCats);
       if (subCats.length > 0) {
         setCurrentSubCategory(subCats[0]);

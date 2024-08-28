@@ -114,7 +114,7 @@ const GlossaryMarkdownBody = ({
                 className="mx-auto mb-2 rounded-lg"
                 src={fixEmbedUrl(src)}
                 title="Conference Replay"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />

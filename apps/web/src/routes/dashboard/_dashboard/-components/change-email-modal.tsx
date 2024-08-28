@@ -9,6 +9,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -65,6 +66,9 @@ export const ChangeEmailModal = ({
       >
         <DialogHeader>
           <DialogTitle>{t('settings.changeEmail')}</DialogTitle>
+          <DialogDescription className="hidden">
+            {t('settings.changeEmail')}
+          </DialogDescription>
         </DialogHeader>
         <Formik
           initialValues={{ email }}

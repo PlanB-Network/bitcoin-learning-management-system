@@ -4,7 +4,12 @@ import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
 import type { JoinedEvent } from '@blms/types';
-import { Dialog, DialogContent } from '@blms/ui';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@blms/ui';
 
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { type PaymentData, PaymentQr } from '#src/components/payment-qr.js';
@@ -89,6 +94,10 @@ export const EventPaymentModal = ({
         onOpenChange={(open) => onClose(open ? undefined : false)}
       >
         <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto lg:overflow-hidden">
+          <DialogTitle className="hidden">Payment Modal</DialogTitle>
+          <DialogDescription className="hidden">
+            Payment Modal
+          </DialogDescription>
           <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
             <ModalPaymentSummary
               event={event}

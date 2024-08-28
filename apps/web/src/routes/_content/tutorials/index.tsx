@@ -63,7 +63,7 @@ function TutorialExplorer() {
                   />
                   <h3
                     className={cn(
-                      'max-md:desktop-body1 md:text-2xl text-white max-md:text-center',
+                      'max-md:desktop-body1 md:text-2xl text-white max-md:text-center max-w-full truncate',
                       tutorialCategory
                         ? ''
                         : 'max-md:group-hover:text-darkOrange-5 group-hover:font-medium',

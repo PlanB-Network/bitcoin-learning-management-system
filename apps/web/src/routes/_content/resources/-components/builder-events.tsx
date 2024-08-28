@@ -22,9 +22,13 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
   const isLoggedIn = !!session;
 
   const { data: eventPayments, refetch: refetchEventPayments } =
-    trpc.user.events.getEventPayment.useQuery();
+    trpc.user.events.getEventPayment.useQuery(undefined, {
+      enabled: isLoggedIn,
+    });
   const { data: userEvents, refetch: refetchUserEvents } =
-    trpc.user.events.getUserEvents.useQuery();
+    trpc.user.events.getUserEvents.useQuery(undefined, {
+      enabled: isLoggedIn,
+    });
 
   const [paymentModalData, setPaymentModalData] = useState<{
     eventId: string | null;
@@ -49,8 +53,10 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
     .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
   useEffect(() => {
-    refetchEventPayments();
-    refetchUserEvents();
+    if (isLoggedIn) {
+      refetchEventPayments();
+      refetchUserEvents();
+    }
   }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
 
   // TODO Refactor this auth stuff

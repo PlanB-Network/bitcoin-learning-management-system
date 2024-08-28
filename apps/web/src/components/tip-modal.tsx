@@ -2,7 +2,12 @@ import { QRCodeSVG } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
 
-import { Dialog, DialogContent } from '@blms/ui';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@blms/ui';
 
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
@@ -33,6 +38,12 @@ export const TipModal = ({
         showCloseButton={isMobile ? isMobile : false}
         className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
       >
+        <DialogTitle className="hidden">
+          {t('professors.tips.thanksNoName')}
+        </DialogTitle>
+        <DialogDescription className="hidden">
+          {t('professors.tips.thanksNoName')}
+        </DialogDescription>
         <img src={RabbitWithPresent} alt="" className="" />
         <p className="text-xs font-light italic text-blue-800 md:text-xl">
           {userName

@@ -10,6 +10,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -99,6 +100,9 @@ export const ChangePasswordModal = ({
       >
         <DialogHeader>
           <DialogTitle>{t('settings.changePassword')}</DialogTitle>
+          <DialogDescription className="hidden">
+            {t('settings.changePassword')}
+          </DialogDescription>
         </DialogHeader>
         <Formik
           initialValues={{

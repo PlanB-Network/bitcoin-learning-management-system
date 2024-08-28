@@ -7,6 +7,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   cn,
@@ -74,6 +75,9 @@ export const ChangePictureModal = (props: Props) => {
       >
         <DialogHeader>
           <DialogTitle>{t('settings.changeProfilePicture')}</DialogTitle>
+          <DialogDescription className="hidden">
+            {t('settings.changeProfilePicture')}
+          </DialogDescription>
         </DialogHeader>
 
         <div className="min-h-80 my-4">

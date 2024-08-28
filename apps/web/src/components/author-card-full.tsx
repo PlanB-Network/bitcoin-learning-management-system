@@ -85,16 +85,16 @@ export const AuthorCardFull = ({
                 <div className="hidden text-justify text-[13px] font-light italic text-red-600 sm:block">
                   {t('courses.chapter.thanksTip')}
                 </div>
-                <button onClick={openTipModal}>
-                  <div className="ml-4 size-8 self-start">
-                    <TooltipWithContent
-                      text={t('tutorials.details.tipTooltip')}
-                      position="bottom"
-                    >
+                <div className="ml-4 size-8 self-start">
+                  <TooltipWithContent
+                    text={t('tutorials.details.tipTooltip')}
+                    position="bottom"
+                  >
+                    <button onClick={openTipModal}>
                       <DonateLightning />
-                    </TooltipWithContent>
-                  </div>
-                </button>
+                    </button>
+                  </TooltipWithContent>
+                </div>
               </div>
             </div>
           </div>
