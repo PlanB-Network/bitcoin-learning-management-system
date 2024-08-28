@@ -641,6 +641,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
 
                 for (const chapter of formatedChapters2) {
                   for (const professor of chapter.professors) {
+                    await transaction`INSERT INTO content.contributors (id) VALUES (${professor}) ON CONFLICT DO NOTHING`;
                     await transaction`
                         INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, language, contributor_id)
                         VALUES (${course.id}, ${chapter.chapter_id}, ${chapter.language}, ${professor})
