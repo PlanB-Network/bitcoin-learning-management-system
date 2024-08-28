@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Avatar } from '@blms/ui';
+import { Avatar, AvatarFallback, AvatarImage } from '@blms/ui';
 
 import grayHeart from '../../assets/icons/gray_heart.svg';
 
@@ -29,12 +29,10 @@ export const Contributor = ({ prefix, contributor }: ContributorProps) => {
       )}
       <div className="float-right flex flex-row rounded-l-3xl rounded-r-lg border-2 bg-white">
         {contributor?.image && (
-          <Avatar
-            rounded
-            size="xs"
-            alt={t('imagesAlt.contributorPP')}
-            image={contributor.image}
-          />
+          <Avatar>
+            <AvatarImage src={contributor.image} />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
         )}
         <div className="ml-2 flex flex-col justify-center">
           <span className="mr-2 text-sm leading-tight">
