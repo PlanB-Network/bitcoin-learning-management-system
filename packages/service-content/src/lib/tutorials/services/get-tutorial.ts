@@ -30,7 +30,7 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
         ...tutorial,
         credits: undefined,
       };
-
+    console.log('Credits:', credits);
     return {
       ...tutorial,
       credits: {

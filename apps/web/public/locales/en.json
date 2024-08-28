@@ -616,6 +616,12 @@
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
       "thanksNoName": "Thanks for supporting my work !"
+    },
+    "navigationTitles": {
+      "all": "All",
+      "teachers": "Teachers",
+      "tutorialCreators": "Tutorial creators",
+      "lecturers": "Lecturers"
     }
   },
   "proofreading": {
@@ -869,6 +875,7 @@
       "level": "Level",
       "levels": "Levels"
     },
+    "lectures": "Lectures",
     "library": "Library",
     "lightning": "Lightning",
     "lightningInvoice": "Lightning invoice",

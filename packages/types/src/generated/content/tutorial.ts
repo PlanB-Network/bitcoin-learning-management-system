@@ -133,6 +133,7 @@ export interface JoinedTutorialCredit {
         picture: string;
         coursesCount: number;
         tutorialsCount: number;
+        lecturesCount: number;
       }
     | undefined;
 }

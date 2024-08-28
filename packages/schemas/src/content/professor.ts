@@ -28,6 +28,7 @@ export const joinedProfessorSchema = professorSchema
       picture: z.string(),
       coursesCount: z.number(),
       tutorialsCount: z.number(),
+      lecturesCount: z.number(),
     }),
   );
 

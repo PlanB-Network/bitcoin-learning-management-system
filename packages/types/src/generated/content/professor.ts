@@ -55,6 +55,7 @@ export interface JoinedProfessor {
   picture: string;
   coursesCount: number;
   tutorialsCount: number;
+  lecturesCount: number;
 }
 
 export interface FormattedProfessor {
@@ -74,6 +75,7 @@ export interface FormattedProfessor {
   picture: string;
   coursesCount: number;
   tutorialsCount: number;
+  lecturesCount: number;
   links: {
     website: string | null;
     twitter: string | null;
