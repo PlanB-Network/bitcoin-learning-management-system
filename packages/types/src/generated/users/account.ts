@@ -15,6 +15,11 @@ export interface UserAccount {
   updatedAt: Date;
   professorCourses: string[];
   professorTutorials: number[];
+  professorShortBio: {
+    [x: string]: string;
+  };
+  professorTags: string[];
+  professorLightningAddress: string;
 }
 
 export interface UserDetails {

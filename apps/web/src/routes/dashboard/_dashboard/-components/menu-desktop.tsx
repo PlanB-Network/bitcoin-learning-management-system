@@ -40,6 +40,7 @@ export const MenuDesktop = ({
   const coursesPath = '/dashboard/courses';
   const profilePath = '/dashboard/profile';
   const administrationPath = '/dashboard/administration';
+  const professorProfilePath = '/dashboard/professor/profile';
   const professorCoursesPath = '/dashboard/professor/courses';
 
   useEffect(() => {
@@ -136,8 +137,16 @@ export const MenuDesktop = ({
             <Separator />
 
             <p className="uppercase text-white italic ml-12 text-sm">
-              Teacher menu
+              {t('dashboard.teacher.menu')}
             </p>
+
+            <Link to={professorProfilePath}>
+              <MenuItem
+                text={t('dashboard.profile.profile')}
+                icon={<IoPersonOutline size={24} />}
+                active={pathname.includes(professorProfilePath)}
+              />
+            </Link>
 
             {session.user.professorCourses.length > 0 && (
               <Link to={professorCoursesPath}>

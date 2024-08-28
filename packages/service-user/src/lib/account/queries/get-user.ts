@@ -26,13 +26,22 @@ export const getUserQuery = (options: GetUserOptions) => {
 
   return sql<UserAccount[]>`
     SELECT 
-      ua.*, p.contributor_id, array_agg(DISTINCT cp.course_id) as professor_courses, array_agg(DISTINCT tp.tutorial_id) as professor_tutorials
+      ua.*, 
+      p.contributor_id, 
+      p.lightning_address AS professor_lightning_address,
+      array_agg(DISTINCT cp.course_id) AS professor_courses, 
+      array_agg(DISTINCT tp.tutorial_id) AS professor_tutorials, 
+      json_object_agg(pl.language, pl.short_bio) AS professor_short_bio,
+      array_agg(DISTINCT t.name) AS professor_tags
     FROM users.accounts ua
     LEFT JOIN content.professors p ON ua.professor_id = p.id
     LEFT JOIN content.course_professors cp ON p.contributor_id = cp.contributor_id
     LEFT JOIN content.tutorial_credits tp ON p.contributor_id = tp.contributor_id
+    LEFT JOIN content.professors_localized pl ON ua.professor_id = pl.professor_id
+    LEFT JOIN content.professor_tags pt ON ua.professor_id = pt.professor_id
+    LEFT JOIN content.tags t ON pt.tag_id = t.id
     WHERE ${sql(key)} ILIKE ${value}
-    GROUP BY ua.uid ,p.contributor_id;
+    GROUP BY ua.uid, p.contributor_id, p.lightning_address;
   `;
 };
 

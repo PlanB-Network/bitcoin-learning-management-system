@@ -7,6 +7,9 @@ export const userAccountSchema = createSelectSchema(usersAccounts).merge(
   z.object({
     professorCourses: z.string().array(),
     professorTutorials: z.number().array(),
+    professorShortBio: z.record(z.string()),
+    professorTags: z.string().array(),
+    professorLightningAddress: z.string(),
   }),
 );
 

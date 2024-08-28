@@ -17,6 +17,9 @@ interface Session {
     professorId: number | null;
     professorCourses: string[];
     professorTutorials: number[];
+    professorShortBio: { [key: string]: string };
+    professorTags: string[];
+    professorLightningAddress: string;
   };
 }
 
@@ -91,6 +94,15 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
               professorTutorials: data.user.professorTutorials
                 ? data.user.professorTutorials
                 : [],
+              professorShortBio: data.user.professorShortBio
+                ? data.user.professorShortBio
+                : {},
+              professorTags: data.user.professorTags
+                ? data.user.professorTags
+                : [],
+              professorLightningAddress: data.user.professorLightningAddress
+                ? data.user.professorLightningAddress
+                : '',
             },
           };
           return setSession(validSession);

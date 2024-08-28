@@ -126,6 +126,9 @@ export const credentialsAuthRouter = createTRPCRouter({
       req.session.professorId = user.professorId;
       req.session.professorCourses = user.professorCourses;
       req.session.professorTutorials = user.professorTutorials;
+      req.session.professorShortBio = user.professorShortBio;
+      req.session.professorTags = user.professorTags;
+      req.session.professorLightningAddress = user.professorLightningAddress;
 
       return {
         status: 200,

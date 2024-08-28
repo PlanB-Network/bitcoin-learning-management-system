@@ -44,6 +44,7 @@ import { Route as ContentResourcesBooksIndexImport } from './routes/_content/res
 import { Route as ContentResourcesBetIndexImport } from './routes/_content/resources/bet/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
+import { Route as DashboardDashboardProfessorProfileImport } from './routes/dashboard/_dashboard/professor/profile';
 import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastIdImport } from './routes/_content/resources/podcasts/$podcastId';
@@ -243,6 +244,12 @@ const ContentMiscPublicCommunicationIndexRoute =
   ContentMiscPublicCommunicationIndexImport.update({
     path: '/public-communication/',
     getParentRoute: () => rootRoute,
+  } as any);
+
+const DashboardDashboardProfessorProfileRoute =
+  DashboardDashboardProfessorProfileImport.update({
+    path: '/professor/profile',
+    getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
 const DashboardDashboardProfessorCoursesRoute =
@@ -596,6 +603,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDashboardProfessorCoursesImport;
       parentRoute: typeof DashboardDashboardImport;
     };
+    '/dashboard/_dashboard/professor/profile': {
+      id: '/dashboard/_dashboard/professor/profile';
+      path: '/professor/profile';
+      fullPath: '/dashboard/professor/profile';
+      preLoaderRoute: typeof DashboardDashboardProfessorProfileImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/_content/_misc/public-communication/': {
       id: '/_content/_misc/public-communication/';
       path: '/public-communication';
@@ -699,6 +713,7 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+<<<<<<< HEAD
 interface DashboardDashboardRouteChildren {
   DashboardDashboardAdministrationRoute: typeof DashboardDashboardAdministrationRoute;
   DashboardDashboardBcertificateRoute: typeof DashboardDashboardBcertificateRoute;
@@ -775,6 +790,45 @@ interface ContentMiscPublicCommunicationLegalsRouteChildren {
 const ContentMiscPublicCommunicationLegalsRouteChildren: ContentMiscPublicCommunicationLegalsRouteChildren =
   {
     ContentMiscPublicCommunicationLegalsNameRoute:
+=======
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  DashboardRoute: DashboardRoute.addChildren({
+    DashboardDashboardRoute: DashboardDashboardRoute.addChildren({
+      DashboardDashboardAdministrationRoute,
+      DashboardDashboardBcertificateRoute,
+      DashboardDashboardBookingsRoute,
+      DashboardDashboardCalendarRoute,
+      DashboardDashboardCoursesRoute,
+      DashboardDashboardProfileRoute,
+      DashboardDashboardProfessorCoursesRoute,
+      DashboardDashboardProfessorProfileRoute,
+    }),
+  }),
+  ContentMiscAboutRoute,
+  ContentMiscBCertificateRoute,
+  ContentMiscManifestoRoute,
+  ContentMiscNodeNetworkRoute,
+  ContentMiscProfessorsRoute,
+  ContentMiscTermsAndConditionsRoute,
+  ContentMiscUnderConstructionRoute,
+  ContentCoursesCourseIdRoute: ContentCoursesCourseIdRoute.addChildren({
+    ContentCoursesCourseIdChapterIdRoute,
+    ContentCoursesCourseIdIndexRoute,
+  }),
+  ContentEventsEventIdRoute,
+  ContentTutorialsCategoryRoute: ContentTutorialsCategoryRoute.addChildren({
+    ContentTutorialsCategoryNameRoute,
+    ContentTutorialsCategoryIndexRoute,
+  }),
+  ContentCoursesIndexRoute,
+  ContentEventsIndexRoute,
+  ContentResourcesIndexRoute,
+  ContentTutorialsIndexRoute,
+  ContentMiscProfessorProfessorNameProfessorIdRoute,
+  ContentMiscPublicCommunicationLegalsRoute:
+    ContentMiscPublicCommunicationLegalsRoute.addChildren({
+>>>>>>> bca77b71 (feat: add teacher dashboard public profile)
       ContentMiscPublicCommunicationLegalsNameRoute,
     ContentMiscPublicCommunicationLegalsIndexRoute:
       ContentMiscPublicCommunicationLegalsIndexRoute,
@@ -1242,7 +1296,8 @@ export const routeTree = rootRoute
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
         "/dashboard/_dashboard/profile",
-        "/dashboard/_dashboard/professor/courses"
+        "/dashboard/_dashboard/professor/courses",
+        "/dashboard/_dashboard/professor/profile"
       ]
     },
     "/_content/_misc/about": {
@@ -1360,6 +1415,10 @@ export const routeTree = rootRoute
     },
     "/dashboard/_dashboard/professor/courses": {
       "filePath": "dashboard/_dashboard/professor/courses.tsx",
+      "parent": "/dashboard/_dashboard"
+    },
+    "/dashboard/_dashboard/professor/profile": {
+      "filePath": "dashboard/_dashboard/professor/profile.tsx",
       "parent": "/dashboard/_dashboard"
     },
     "/_content/_misc/public-communication/": {

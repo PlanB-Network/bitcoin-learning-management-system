@@ -25,6 +25,9 @@ declare module 'express-session' {
     professorId?: number | null;
     professorCourses: string[];
     professorTutorials: number[];
+    professorShortBio: { [key: string]: string };
+    professorTags: string[];
+    professorLightningAddress: string;
   }
 }
 
