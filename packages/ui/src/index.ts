@@ -1,4 +1,3 @@
-export * from './atoms/anchor.tsx';
 export * from './atoms/alert-dialog.tsx';
 export * from './atoms/avatar.tsx';
 export * from './atoms/button.tsx';

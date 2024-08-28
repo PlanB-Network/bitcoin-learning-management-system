@@ -12,6 +12,7 @@
     "dev:db:migrate": "cd ./packages/database && pnpm db:migrate",
     "dev:db:studio": "cd ./packages/database && npx drizzle-kit studio",
     "dev:db:sync": "pnpm dev:db:generate && pnpm dev:types:generate",
+    "dev:storybook": "cd ./packages/ui && pnpm storybook",
     "dev:types:generate": "cd ./packages/types && pnpm types:generate",
     "build": "turbo run build --cache-dir=.turbo",
     "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",

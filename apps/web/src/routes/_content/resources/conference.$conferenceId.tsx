@@ -5,7 +5,7 @@ import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button, NewTag } from '@blms/ui';
+import { Button, Tag } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
@@ -177,9 +177,9 @@ function Conference() {
               )}
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 {conference.tags.map((tag) => (
-                  <NewTag key={tag} className="capitalize">
+                  <Tag key={tag} className="capitalize">
                     {tag}
-                  </NewTag>
+                  </Tag>
                 ))}
               </div>
               <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
