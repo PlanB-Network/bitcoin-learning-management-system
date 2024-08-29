@@ -7,7 +7,8 @@ import { trpc } from '#src/utils/trpc.js';
 import Layout from '../-layout.tsx';
 import { LegalMarkdownComponent } from '../../-components/PublicCommunication/legal-markdown.tsx';
 
-import { LegalInformation, legalTabs } from './index.tsx';
+import { legalTabs } from './-utils.tsx';
+import { LegalInformation } from './index.tsx';
 
 export const Route = createFileRoute(
   '/_content/_misc/public-communication/legals/$name',
