@@ -13,9 +13,9 @@ export interface ButtonProps
       HTMLButtonElement
     > {
   children?: string | JSX.Element | JSX.Element[];
-  variant: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'transparent';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  mode?: 'light' | 'dark' | 'colored';
+  mode?: 'light' | 'dark';
   rounded?: boolean;
   glowing?: boolean;
   fakeDisabled?: boolean;
@@ -36,24 +36,24 @@ const sizeClasses = {
 
 const variantClasses = {
   primary: {
-    dark: 'bg-primary text-white shadow-button',
+    dark: ' bg-primary text-white shadow-button dark',
     light: 'bg-primary text-white shadow-button',
-    colored: 'bg-white text-primary shadow-button',
   },
   secondary: {
     dark: 'bg-white text-newBlack-1 shadow-button',
     light: 'bg-newGray-4 text-newBlack-1 shadow-button',
-    colored: 'bg-white/30 text-white shadow-button',
   },
   outline: {
     dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
     light: '',
-    colored: '',
   },
   ghost: {
     dark: 'text-white border border-newGray-2 hover:border-white transition-colors',
     light: 'text-darkOrange-5 border border-darkOrange-4',
-    colored: 'text-white border border-white',
+  },
+  transparent: {
+    dark: 'bg-white/30 text-white shadow-button',
+    light: 'bg-white/30 text-white shadow-button',
   },
 };
 
@@ -61,22 +61,22 @@ const variantDisabledClasses = {
   primary: {
     dark: '!bg-darkOrange-8 !text-newGray-1',
     light: '!bg-darkOrange-1 !text-darkOrange-3',
-    colored: '!bg-darkOrange-1 !text-darkOrange-3',
   },
   secondary: {
     dark: '!bg-newBlack-3 !text-newGray-1',
     light: '!bg-newGray-4 !text-newGray-2',
-    colored: '!bg-white/10 !text-white/40',
   },
   outline: {
     dark: '',
     light: '',
-    colored: '',
   },
   ghost: {
     dark: '!text-newBlack-5 !border-newBlack-5',
     light: '!text-newGray-3 !border-newGray-3',
-    colored: '!text-white/60 !border-white/50',
+  },
+  transparent: {
+    dark: '',
+    light: '',
   },
 };
 

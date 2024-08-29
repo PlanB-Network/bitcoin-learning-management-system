@@ -106,11 +106,10 @@ export const LanguageSelector = ({
           className="max-lg:hidden mt-6 w-full"
         >
           <Button
-            variant={variant === 'light' ? 'primary' : 'ghost'}
-            mode={variant === 'light' ? 'colored' : 'dark'}
+            variant={variant === 'light' ? 'secondary' : 'ghost'}
             size="m"
             onHoverArrow
-            className="w-full"
+            className={cn('w-full', variant === 'light' ? '!text-primary' : '')}
           >
             {t('home.languageSection.link')}
           </Button>

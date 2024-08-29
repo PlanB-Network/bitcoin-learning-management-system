@@ -32,7 +32,7 @@
 
   /* ShadCn */
   .dark {
-    --primary: 120 100% 25%;
+    --primary: 22, 100%, 50%; /* #FF5C00,*/
   }
   /* .dark {
     --background: 222.2 84% 4.9%;

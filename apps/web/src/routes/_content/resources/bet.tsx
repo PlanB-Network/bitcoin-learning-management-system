@@ -74,17 +74,17 @@ const SectionGrid = ({
             buttonLink={currentLanguageViewUrl}
             buttonText={t('words.view')}
             buttonIcon={<IoIosSearch size={isScreenMd ? 24 : 16} />}
-            buttonVariant="secondary"
-            buttonMode="colored"
+            buttonVariant="transparent"
+            buttonMode="dark"
             secondaryLink={item.viewurls[0].viewUrl}
             secondaryButtonText={t('words.edit')}
             secondaryButtonIcon={<FiEdit size={isScreenMd ? 24 : 16} />}
             secondaryButtonVariant="secondary"
-            secondaryButtonMode="colored"
+            secondaryButtonMode="dark"
             tertiaryLink={item.downloadUrl}
             tertiaryButtonIcon={<FiDownload size={isScreenMd ? 24 : 16} />}
             tertiaryButtonVariant="ghost"
-            tertiaryButtonMode="colored"
+            tertiaryButtonMode="dark"
             externalLink
             onHoverArrow={false}
             cardColor={cardColor}
