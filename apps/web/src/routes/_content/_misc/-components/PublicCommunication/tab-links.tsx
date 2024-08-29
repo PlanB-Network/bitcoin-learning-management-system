@@ -1,14 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
 
-import { BlogsNews } from '../../public-communication/blogs-and-news/index.tsx';
-import { LegalInformation } from '../../public-communication/legals/index.tsx';
-
 interface Tab {
   id: string;
   label: string;
   href: string;
-  component: React.FC<any>;
 }
 
 interface TabLinksProps {
@@ -21,13 +17,11 @@ export const TabLinks: React.FC<TabLinksProps> = ({ t }) => {
       id: 'tab1',
       label: 'publicCommunication.blogPost',
       href: '/public-communication/blogs-and-news',
-      component: BlogsNews,
     },
     {
       id: 'tab2',
       label: 'publicCommunication.legal',
       href: '/public-communication/legals',
-      component: LegalInformation,
     },
   ];
 
