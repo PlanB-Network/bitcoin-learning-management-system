@@ -15,7 +15,7 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const primary: Story = {
+export const Primary: Story = {
   args: {
     children: 'primary',
     size: 'm',
@@ -23,15 +23,39 @@ export const primary: Story = {
   },
 };
 
-export const NewSecondary: Story = {
+export const Secondary: Story = {
   args: {
-    children: 'NewSecondary',
+    children: 'secondary',
     size: 'l',
-    variant: 'newSecondary',
+    variant: 'secondary',
   },
 };
 
-export const Glowing: Story = {
+export const Tertiary: Story = {
+  args: {
+    children: 'tertiary',
+    size: 'l',
+    variant: 'tertiary',
+  },
+};
+
+export const PrimaryGhost: Story = {
+  args: {
+    children: 'primaryGhost',
+    size: 'l',
+    variant: 'primaryGhost',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    children: 'ghost',
+    size: 'l',
+    variant: 'ghost',
+  },
+};
+
+export const GlowingPrimary: Story = {
   args: {
     children: 'Glowing',
     glowing: true,
@@ -40,7 +64,7 @@ export const Glowing: Story = {
   },
 };
 
-export const Rounded: Story = {
+export const RoundedPrimary: Story = {
   args: {
     children: 'Rounded',
     rounded: true,
@@ -49,7 +73,7 @@ export const Rounded: Story = {
   },
 };
 
-export const FakeDisabled: Story = {
+export const FakeDisabledPrimary: Story = {
   args: {
     children: 'FakeDisabled',
     fakeDisabled: true,
