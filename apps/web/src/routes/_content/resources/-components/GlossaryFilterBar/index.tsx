@@ -90,7 +90,8 @@ export const GlossaryFilterBar = ({
           className="max-md:flex justify-center max-md:w-full max-md:mt-2 shrink-0"
         >
           <Button
-            variant="tertiary"
+            variant="ghost"
+            mode="dark"
             size={window.innerWidth >= 768 ? 'm' : 's'}
             iconLeft={<RxReload />}
             className="shrink-0"

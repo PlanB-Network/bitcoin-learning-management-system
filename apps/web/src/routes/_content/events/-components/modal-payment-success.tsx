@@ -80,7 +80,7 @@ export const ModalPaymentSuccess = ({
         </div>
         <div className="flex gap-5">
           <Button
-            variant="primaryGhost"
+            variant="outline"
             onClick={() => {
               onClose(true);
             }}

@@ -31,19 +31,11 @@ export const Secondary: Story = {
   },
 };
 
-export const Tertiary: Story = {
+export const Outline: Story = {
   args: {
-    children: 'tertiary',
+    children: 'outline',
     size: 'l',
-    variant: 'tertiary',
-  },
-};
-
-export const PrimaryGhost: Story = {
-  args: {
-    children: 'primaryGhost',
-    size: 'l',
-    variant: 'primaryGhost',
+    variant: 'outline',
   },
 };
 

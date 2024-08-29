@@ -126,7 +126,7 @@ export const UserList = ({
                           <td>
                             <AlertDialog>
                               <AlertDialogTrigger>
-                                <Button variant="tertiary" size="s">
+                                <Button variant="primary" mode="light" size="s">
                                   Make admin
                                 </Button>
                               </AlertDialogTrigger>
@@ -181,7 +181,8 @@ export const UserList = ({
                             <AlertDialog>
                               <AlertDialogTrigger>
                                 <Button
-                                  variant="tertiary"
+                                  variant="primary"
+                                  mode="light"
                                   size="s"
                                   className="-z-10"
                                 >

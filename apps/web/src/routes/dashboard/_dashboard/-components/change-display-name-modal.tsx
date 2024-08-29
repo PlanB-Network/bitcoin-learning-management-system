@@ -136,9 +136,9 @@ export const ChangeDisplayNameModal = ({
 
                 <Button
                   type="submit"
-                  variant="tertiary"
+                  variant="primary"
+                  mode="light"
                   className="mt-6"
-                  rounded
                 >
                   {t('words.update')}
                 </Button>

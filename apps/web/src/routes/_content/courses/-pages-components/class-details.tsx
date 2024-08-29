@@ -172,7 +172,7 @@ export const ClassDetails = ({
                     {t('courses.chapter.detail.ticketDownload')}
                   </Button>
                   <Button
-                    variant="primaryGhost"
+                    variant="outline"
                     onClick={() => {
                       cancelBooking();
                     }}

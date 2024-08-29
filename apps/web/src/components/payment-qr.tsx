@@ -129,7 +129,7 @@ export const PaymentQr = ({ paymentData, onBack }: PaymentQrProps) => {
           </div>
         </div>
         {onBack && (
-          <Button variant="primaryGhost" onClick={onBack}>
+          <Button variant="outline" onClick={onBack}>
             Back
           </Button>
         )}

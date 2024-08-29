@@ -13,7 +13,7 @@ export interface ButtonProps
       HTMLButtonElement
     > {
   children?: string | JSX.Element | JSX.Element[];
-  variant: 'primary' | 'secondary' | 'tertiary' | 'primaryGhost' | 'ghost';
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   mode?: 'light' | 'dark' | 'colored';
   rounded?: boolean;
@@ -36,22 +36,16 @@ const sizeClasses = {
 
 const variantClasses = {
   primary: {
-    dark: 'bg-darkOrange-5 text-white',
-    light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
-    colored: 'bg-white text-darkOrange-5 shadow-primary-button-light',
+    dark: 'bg-primary text-white shadow-button',
+    light: 'bg-primary text-white shadow-button',
+    colored: 'bg-white text-primary shadow-button',
   },
   secondary: {
-    dark: 'bg-white text-newBlack-1',
-    light: 'bg-newGray-4 text-newBlack-1 shadow-primary-button-light',
-    colored: 'bg-white/30 text-white',
+    dark: 'bg-white text-newBlack-1 shadow-button',
+    light: 'bg-newGray-4 text-newBlack-1 shadow-button',
+    colored: 'bg-white/30 text-white shadow-button',
   },
-  tertiary: {
-    dark: 'bg-newBlack-3 text-newGray-4 hover:text-white border border-newGray-1 hover:border-newGray-4 transition-colors',
-    light:
-      'bg-newGray-5 text-newGray-1 hover:text-newBlack-4 border border-newGray-3 hover:border-newGray-2 transition-colors',
-    colored: '',
-  },
-  primaryGhost: {
+  outline: {
     dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
     light: '',
     colored: '',
@@ -74,12 +68,7 @@ const variantDisabledClasses = {
     light: '!bg-newGray-4 !text-newGray-2',
     colored: '!bg-white/10 !text-white/40',
   },
-  tertiary: {
-    dark: '!bg-newBlack-2 !text-newBlack-4 !border-newBlack-4',
-    light: '!bg-newGray-5 !text-newGray-4 !border-newGray-4',
-    colored: '',
-  },
-  primaryGhost: {
+  outline: {
     dark: '',
     light: '',
     colored: '',

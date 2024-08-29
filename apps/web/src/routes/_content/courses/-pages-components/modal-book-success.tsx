@@ -52,7 +52,7 @@ export const ModalBookSuccess = ({
 
       <div className="flex gap-5">
         <Button
-          variant="primaryGhost"
+          variant="outline"
           onClick={() => {
             onClose();
           }}

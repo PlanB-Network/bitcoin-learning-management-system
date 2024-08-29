@@ -94,26 +94,6 @@ function Book() {
                   alt={t('imagesAlt.bookCover')}
                   src={book?.cover}
                 />
-                {/* <div className="my-4 flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
-                  <Button
-                    size={buttonSize}
-                    disabled={!book?.download_url}
-                    variant="tertiary"
-                    className="mx-2 w-32"
-                    onClick={DownloadEbook}
-                  >
-                    {t('book.buttonPdf')}
-                  </Button>
-                  <Button
-                    size={buttonSize}
-                    disabled={!book?.download_url}
-                    variant="tertiary"
-                    className="mx-2 w-32"
-                    onClick={BuyBook}
-                  >
-                    {t('book.buttonBuy')}
-                  </Button>
-                </div> */}
               </div>
 
               <div className="col-span-2 my-4 flex flex-col md:mt-0">

@@ -101,14 +101,19 @@ function Home() {
               <a href="/courses" rel="noopener noreferrer">
                 <Button
                   variant="primary"
-                  className="rounded-3xl !text-black"
+                  rounded={true}
+                  className="!text-black"
                   glowing={true}
                 >
                   {t('home.header.startLink')}
                 </Button>
               </a>
               <a href="/node-network" rel="noopener noreferrer">
-                <Button variant="secondary" className="rounded-3xl !text-black">
+                <Button
+                  variant="secondary"
+                  rounded={true}
+                  className="!text-black"
+                >
                   {t('home.header.link')}
                 </Button>
               </a>
@@ -203,11 +208,12 @@ function Home() {
             </p>
             <Link
               to={'/courses'}
-              className="z-10 mt-6 self-start rounded-3xl md:self-center"
+              className="z-10 mt-6 self-start md:self-center"
             >
               <Button
                 variant="secondary"
-                className=" rounded-3xl !text-black"
+                rounded={true}
+                className=" !text-black"
                 iconRight={<AiOutlineRight />}
               >
                 {t('home.sectionEducation.link')}
@@ -239,11 +245,12 @@ function Home() {
             </p>
             <Link
               to={'/node-network'}
-              className="mt-6 self-start rounded-3xl md:self-center"
+              className="mt-6 self-start md:self-center"
             >
               <Button
                 variant="secondary"
-                className=" rounded-3xl !text-black"
+                rounded={true}
+                className=" !text-black"
                 iconRight={<AiOutlineRight />}
               >
                 {t('home.sectionNetwork.link')}
@@ -383,7 +390,8 @@ function Home() {
           <Link to={'/tutorials'} className="mt-6">
             <Button
               variant="primary"
-              className="rounded-3xl !text-black md:mt-4"
+              rounded={true}
+              className=" !text-black md:mt-4"
               iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
               glowing={true}
             >
@@ -467,7 +475,8 @@ function Home() {
               >
                 <Button
                   variant="secondary"
-                  className="rounded-3xl !text-black"
+                  rounded={true}
+                  className="!text-black"
                   iconRight={<AiOutlineRight />}
                 >
                   {t('home.languageSection.link')}

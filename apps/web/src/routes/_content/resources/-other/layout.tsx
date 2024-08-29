@@ -9,7 +9,6 @@ import { PageHeader } from '#src/components/PageHeader/index.tsx';
 import { CategoryTabs } from '../-components/CategoryTabs/index.tsx';
 import { ResourcesDropdownMenu } from '../-components/DropdownMenu/resources-category-dropdown-menu.tsx';
 import { FilterBar } from '../-components/FilterBar/index.tsx';
-import { Pagination } from '../-components/Pagination/index.tsx';
 
 interface Props {
   title: string;
@@ -20,7 +19,6 @@ interface Props {
     value?: string;
     onChange: (v: string) => void;
   };
-  pagination?: boolean;
   className?: string;
   // TODO fix this build issue
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,7 +38,6 @@ export const ResourceLayout = ({
   tagLine,
   children,
   filterBar,
-  pagination,
   className,
   link,
   showPageHeader = true,
@@ -93,12 +90,6 @@ export const ResourceLayout = ({
           <div className={cn(marginTopChildren && 'mt-4 md:mt-[60px]')}>
             {children}
           </div>
-
-          {pagination && (
-            <div className="mx-auto w-max">
-              <Pagination />
-            </div>
-          )}
         </div>
       </div>
     </MainLayout>
