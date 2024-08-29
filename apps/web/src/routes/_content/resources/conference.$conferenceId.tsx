@@ -247,8 +247,7 @@ function Conference() {
                     ) : (
                       <Button
                         key={`${video.name}_${index}`}
-                        variant="primary"
-                        fakeDisabled
+                        variant="outline"
                         size="l"
                         onClick={() => setActiveVideo(index)}
                         className="capitalize"

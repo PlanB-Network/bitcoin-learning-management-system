@@ -18,7 +18,6 @@ export interface ButtonProps
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   rounded?: boolean;
   glowing?: boolean;
-  fakeDisabled?: boolean;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   icon?: JSX.Element;
@@ -35,20 +34,15 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  primary: 'bg-primary text-white shadow-button',
-  secondary: 'bg-secondary text-newBlack-1 shadow-button',
-  outline: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
+  primary:
+    'bg-primary text-white shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
+  secondary:
+    'bg-secondary text-newBlack-1 shadow-button disabled:!bg-newGray-4 disabled:!text-newGray-2',
+  outline:
+    'bg-transparent text-darkOrange-5 border border-darkOrange-4 disabled:!text-newGray-3 disabled:!border-newGray-3',
   ghost:
-    'text-white border border-newGray-2 hover:border-white transition-colors',
+    'text-white border border-newGray-2 hover:border-white transition-colors disabled:!text-newBlack-5 disabled:!border-newBlack-5',
   transparent: 'bg-white/30 text-white shadow-button',
-};
-
-const variantDisabledClasses = {
-  primary: '!bg-darkOrange-1 !text-darkOrange-3',
-  secondary: '!bg-newGray-4 !text-newGray-2',
-  outline: '!text-newGray-3 !border-newGray-3',
-  ghost: '!text-newBlack-5 !border-newBlack-5',
-  transparent: '',
 };
 
 const hoverArrowClasses =
@@ -68,7 +62,6 @@ export const Button = ({
   icon,
   className,
   disabled,
-  fakeDisabled,
   ...buttonProps
 }: ButtonProps) => {
   const classes = useMemo(
@@ -78,9 +71,8 @@ export const Button = ({
       mode === 'dark' && 'dark',
       rounded ? '!rounded-full' : '',
       disabled ? 'cursor-default active:none' : 'active:scale-95',
-      (disabled || fakeDisabled) && variantDisabledClasses[variant],
     ],
-    [rounded, size, variant, mode, disabled, fakeDisabled],
+    [rounded, size, variant, mode, disabled],
   );
 
   if (icon)

@@ -81,15 +81,6 @@ export const RoundedPrimary: Story = {
   },
 };
 
-export const FakeDisabledPrimary: Story = {
-  args: {
-    children: 'FakeDisabled',
-    fakeDisabled: true,
-    size: 'l',
-    variant: 'primary',
-  },
-};
-
 export const OnHoverArrow: Story = {
   args: {
     children: 'OnHoverArrow',
