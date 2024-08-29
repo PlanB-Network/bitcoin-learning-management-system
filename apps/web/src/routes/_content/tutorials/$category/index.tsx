@@ -167,12 +167,7 @@ function TutorialCategory() {
 
         <div className="flex justify-center lg:hidden mt-6">
           <Link to="/tutorials">
-            <Button
-              variant="ghost"
-              mode="light"
-              onHoverArrow
-              onHoverArrowDirection="left"
-            >
+            <Button variant="outline" onHoverArrow onHoverArrowDirection="left">
               {t('tutorials.backTutorials')}
             </Button>
           </Link>

@@ -125,7 +125,7 @@ export const CoursesProgressList = ({
                     chapterId: course.nextChapter?.chapterId as string,
                   }}
                 >
-                  <Button variant="ghost" mode="light" onHoverArrow size="s">
+                  <Button variant="outline" onHoverArrow size="s">
                     {t('dashboard.myCourses.resumeLesson')}
                   </Button>
                 </Link>

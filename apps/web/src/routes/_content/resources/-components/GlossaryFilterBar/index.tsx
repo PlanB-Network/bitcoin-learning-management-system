@@ -91,7 +91,6 @@ export const GlossaryFilterBar = ({
         >
           <Button
             variant="ghost"
-            mode="dark"
             size={window.innerWidth >= 768 ? 'm' : 's'}
             iconLeft={<RxReload />}
             className="shrink-0"

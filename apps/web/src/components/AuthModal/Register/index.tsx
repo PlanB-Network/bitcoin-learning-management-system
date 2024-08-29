@@ -124,8 +124,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
                   Register
                 </DialogDescription>
                 <Button
-                  variant="ghost"
-                  mode="light"
+                  variant="outline"
                   size="m"
                   onClick={() => goTo(AuthModalState.LnurlAuth)}
                   iconRight={<BsLightningChargeFill className="w-6" />}

@@ -71,8 +71,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
         </DialogDescription>
         <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
           <Button
-            variant="ghost"
-            mode="light"
+            variant="outline"
             size="m"
             onClick={() => goTo(AuthModalState.LnurlAuth)}
             iconRight={<BsLightningChargeFill className="w-6" />}

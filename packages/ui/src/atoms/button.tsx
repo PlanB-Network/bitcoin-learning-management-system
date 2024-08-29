@@ -40,19 +40,20 @@ const variantClasses = {
     light: 'bg-primary text-white shadow-button',
   },
   secondary: {
-    dark: 'bg-white text-newBlack-1 shadow-button',
+    dark: ' bg-white text-newBlack-1 shadow-button',
     light: 'bg-newGray-4 text-newBlack-1 shadow-button',
   },
   outline: {
-    dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
-    light: '',
+    dark: ' bg-transparent text-darkOrange-5 border border-darkOrange-4',
+    light: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
   },
   ghost: {
-    dark: 'text-white border border-newGray-2 hover:border-white transition-colors',
-    light: 'text-darkOrange-5 border border-darkOrange-4',
+    dark: ' text-white border border-newGray-2 hover:border-white transition-colors',
+    light:
+      ' text-white border border-newGray-2 hover:border-white transition-colors',
   },
   transparent: {
-    dark: 'bg-white/30 text-white shadow-button',
+    dark: ' bg-white/30 text-white shadow-button',
     light: 'bg-white/30 text-white shadow-button',
   },
 };
@@ -67,8 +68,8 @@ const variantDisabledClasses = {
     light: '!bg-newGray-4 !text-newGray-2',
   },
   outline: {
-    dark: '',
-    light: '',
+    dark: '!text-newGray-3 !border-newGray-3',
+    light: '!text-newGray-3 !border-newGray-3',
   },
   ghost: {
     dark: '!text-newBlack-5 !border-newBlack-5',
