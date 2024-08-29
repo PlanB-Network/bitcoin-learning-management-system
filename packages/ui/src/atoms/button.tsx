@@ -13,17 +13,7 @@ export interface ButtonProps
       HTMLButtonElement
     > {
   children?: string | JSX.Element | JSX.Element[];
-  variant?:
-    | 'primary'
-    | 'newPrimary'
-    | 'newPrimaryGhost'
-    | 'secondary'
-    | 'newSecondary'
-    | 'tertiary'
-    | 'newTertiary'
-    | 'ghost'
-    | 'download'
-    | 'text';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'primaryGhost' | 'ghost';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   mode?: 'light' | 'dark' | 'colored';
   rounded?: boolean;
@@ -46,40 +36,24 @@ const sizeClasses = {
 
 const variantClasses = {
   primary: {
-    dark: 'text-white bg-blue-700 hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-    light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
-    colored: 'bg-white text-darkOrange-5 shadow-primary-button-light',
-  },
-  newPrimary: {
     dark: 'bg-darkOrange-5 text-white',
     light: 'bg-darkOrange-5 text-white shadow-primary-button-light',
     colored: 'bg-white text-darkOrange-5 shadow-primary-button-light',
   },
-  newPrimaryGhost: {
-    dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
-    light: '',
-    colored: '',
-  },
   secondary: {
-    dark: 'bg-white text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300',
-    light: 'bg-newGray-4 text-newBlack-1 shadow-primary-button-light',
-    colored: 'bg-white/30 text-white',
-  },
-  newSecondary: {
     dark: 'bg-white text-newBlack-1',
     light: 'bg-newGray-4 text-newBlack-1 shadow-primary-button-light',
     colored: 'bg-white/30 text-white',
   },
   tertiary: {
-    dark: 'bg-orange-600 text-white',
+    dark: 'bg-newBlack-3 text-newGray-4 hover:text-white border border-newGray-1 hover:border-newGray-4 transition-colors',
     light:
       'bg-newGray-5 text-newGray-1 hover:text-newBlack-4 border border-newGray-3 hover:border-newGray-2 transition-colors',
     colored: '',
   },
-  newTertiary: {
-    dark: 'bg-newBlack-3 text-newGray-4 hover:text-white border border-newGray-1 hover:border-newGray-4 transition-colors',
-    light:
-      'bg-newGray-5 text-newGray-1 hover:text-newBlack-4 border border-newGray-3 hover:border-newGray-2 transition-colors',
+  primaryGhost: {
+    dark: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
+    light: '',
     colored: '',
   },
   ghost: {
@@ -87,68 +61,33 @@ const variantClasses = {
     light: 'text-darkOrange-5 border border-darkOrange-4',
     colored: 'text-white border border-white',
   },
-  download: {
-    dark: 'bg-green-600 text-white',
-    light: '',
-    colored: '',
-  },
-  text: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
 };
 
 const variantDisabledClasses = {
   primary: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
-  newPrimary: {
     dark: '!bg-darkOrange-8 !text-newGray-1',
     light: '!bg-darkOrange-1 !text-darkOrange-3',
     colored: '!bg-darkOrange-1 !text-darkOrange-3',
   },
-  newPrimaryGhost: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
   secondary: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
-  newSecondary: {
     dark: '!bg-newBlack-3 !text-newGray-1',
     light: '!bg-newGray-4 !text-newGray-2',
     colored: '!bg-white/10 !text-white/40',
   },
   tertiary: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
-  newTertiary: {
     dark: '!bg-newBlack-2 !text-newBlack-4 !border-newBlack-4',
     light: '!bg-newGray-5 !text-newGray-4 !border-newGray-4',
+    colored: '',
+  },
+  primaryGhost: {
+    dark: '',
+    light: '',
     colored: '',
   },
   ghost: {
     dark: '!text-newBlack-5 !border-newBlack-5',
     light: '!text-newGray-3 !border-newGray-3',
     colored: '!text-white/60 !border-white/50',
-  },
-  download: {
-    dark: '',
-    light: '',
-    colored: '',
-  },
-  text: {
-    dark: '',
-    light: '',
-    colored: '',
   },
 };
 
@@ -157,7 +96,7 @@ const hoverArrowClasses =
 
 export const Button = ({
   children,
-  variant = 'primary',
+  variant,
   size = 'm',
   mode = 'dark',
   rounded,
@@ -206,8 +145,7 @@ export const Button = ({
       className={cn(
         ...classes,
         'flex flex-row items-center justify-center transition-colors duration-150',
-        glowing && variant !== 'secondary' ? 'shadow-md-button' : '',
-        glowing && variant === 'secondary' ? '!shadow-md-button-white' : '',
+        glowing ? 'shadow-md-button' : '',
         'group',
         className,
       )}

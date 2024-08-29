@@ -178,7 +178,7 @@ function Builder() {
               <div className="flex gap-2.5 md:gap-4 items-center flex-wrap max-md:mt-1.5">
                 {builder.tags?.map((tag) => (
                   <Button
-                    variant="newSecondary"
+                    variant="secondary"
                     mode="colored"
                     key={tag}
                     className="cursor-default capitalize shadow-card-items-dark"

@@ -121,7 +121,7 @@ export const ChangeEmailModal = ({
               </div>
 
               <div className="p-4 flex gap-4 justify-between">
-                <Button variant="newPrimary" size="m" type="submit">
+                <Button variant="primary" size="m" type="submit">
                   {t('dashboard.profile.save')}
                 </Button>
                 <Button

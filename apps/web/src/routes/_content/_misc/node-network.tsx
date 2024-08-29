@@ -134,7 +134,7 @@ function NodeNetwork() {
             rel="noopener noreferrer"
             className="mt-10 z-10"
           >
-            <Button variant="newSecondary" onHoverArrow size="l">
+            <Button variant="secondary" onHoverArrow size="l">
               {t('nodeNetwork.apply')}
             </Button>
           </a>

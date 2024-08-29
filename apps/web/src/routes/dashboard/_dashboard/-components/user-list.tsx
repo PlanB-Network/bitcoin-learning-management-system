@@ -126,7 +126,9 @@ export const UserList = ({
                           <td>
                             <AlertDialog>
                               <AlertDialogTrigger>
-                                <Button size="s">Make admin</Button>
+                                <Button variant="tertiary" size="s">
+                                  Make admin
+                                </Button>
                               </AlertDialogTrigger>
                               <AlertDialogContent>
                                 <AlertDialogHeader>
@@ -178,7 +180,11 @@ export const UserList = ({
 
                             <AlertDialog>
                               <AlertDialogTrigger>
-                                <Button size="s" className="-z-10">
+                                <Button
+                                  variant="tertiary"
+                                  size="s"
+                                  className="-z-10"
+                                >
                                   Make professor
                                 </Button>
                               </AlertDialogTrigger>

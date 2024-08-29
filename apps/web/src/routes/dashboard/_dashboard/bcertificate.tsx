@@ -53,7 +53,7 @@ function DashboardBCertificate() {
         <Link to="/b-certificate" className="shrink-0 w-fit">
           <Button
             mode="light"
-            variant="newSecondary"
+            variant="secondary"
             size={isScreenMd ? 'm' : 's'}
             onHoverArrow
           >
@@ -73,7 +73,7 @@ function DashboardBCertificate() {
           <Link to="/b-certificate" hash="bcertevents" className="shrink-0">
             <Button
               mode="light"
-              variant="newPrimary"
+              variant="primary"
               size={isScreenMd ? 'm' : 's'}
               onHoverArrow
             >
@@ -164,7 +164,7 @@ function DashboardBCertificate() {
                         <Link to="#" className="inline-block">
                           <Button
                             mode="light"
-                            variant="newPrimary"
+                            variant="primary"
                             size="xs"
                             disabled
                             className="mx-auto"

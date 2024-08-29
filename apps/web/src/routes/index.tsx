@@ -100,7 +100,7 @@ function Home() {
             <div className="mt-6 flex flex-row justify-center gap-4 lg:mt-9">
               <a href="/courses" rel="noopener noreferrer">
                 <Button
-                  variant="tertiary"
+                  variant="primary"
                   className="rounded-3xl !text-black"
                   glowing={true}
                 >
@@ -382,7 +382,7 @@ function Home() {
 
           <Link to={'/tutorials'} className="mt-6">
             <Button
-              variant="tertiary"
+              variant="primary"
               className="rounded-3xl !text-black md:mt-4"
               iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
               glowing={true}

@@ -90,7 +90,7 @@ function Conferences() {
                   title={latestConferences[0].name}
                   subtitle={latestConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
-                  buttonVariant="newPrimary"
+                  buttonVariant="primary"
                   buttonLink={
                     latestConferences[0].stages.length > 0
                       ? `/resources/conference/${latestConferences[0].id}`
@@ -103,7 +103,7 @@ function Conferences() {
                   title={latestConferences[1].name}
                   subtitle={latestConferences[1].location}
                   buttonText={t('events.card.watchReplay')}
-                  buttonVariant="newPrimary"
+                  buttonVariant="primary"
                   buttonLink={
                     latestConferences[1].stages.length > 0
                       ? `/resources/conference/${latestConferences[1].id}`
@@ -129,7 +129,7 @@ function Conferences() {
                   title={latestPlanBConferences[0].name}
                   subtitle={latestPlanBConferences[0].location}
                   buttonText={t('events.card.watchReplay')}
-                  buttonVariant="newPrimary"
+                  buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[0].stages.length > 0
                       ? `/resources/conference/${latestPlanBConferences[0].id}`
@@ -142,7 +142,7 @@ function Conferences() {
                   title={latestPlanBConferences[1].name}
                   subtitle={latestPlanBConferences[1].location}
                   buttonText={t('events.card.watchReplay')}
-                  buttonVariant="newPrimary"
+                  buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[1].stages.length > 0
                       ? `/resources/conference/${latestPlanBConferences[1].id}`
@@ -183,7 +183,7 @@ function Conferences() {
                 title={conference.name}
                 subtitle={conference.location}
                 buttonText={t('events.card.watchReplay')}
-                buttonVariant="newPrimary"
+                buttonVariant="primary"
                 buttonLink={
                   conference.stages.length > 0
                     ? `/resources/conference/${conference.id}`

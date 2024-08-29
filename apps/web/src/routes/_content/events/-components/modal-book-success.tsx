@@ -48,7 +48,7 @@ export const ModalBookSuccess = ({
 
       <div className="flex gap-5">
         <Button
-          variant="newPrimaryGhost"
+          variant="primaryGhost"
           onClick={() => {
             onClose();
           }}
@@ -58,7 +58,7 @@ export const ModalBookSuccess = ({
         </Button>
         {accessType === 'physical' && (
           <Button
-            variant="newPrimary"
+            variant="primary"
             onClick={async () => {
               const base64 = await downloadTicketAsync({
                 eventId: event.id,

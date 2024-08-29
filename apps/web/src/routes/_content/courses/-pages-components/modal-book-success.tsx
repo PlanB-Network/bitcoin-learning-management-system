@@ -52,7 +52,7 @@ export const ModalBookSuccess = ({
 
       <div className="flex gap-5">
         <Button
-          variant="newPrimaryGhost"
+          variant="primaryGhost"
           onClick={() => {
             onClose();
           }}
@@ -60,7 +60,7 @@ export const ModalBookSuccess = ({
           {t('courses.payment.back_course')}
         </Button>
         <Button
-          variant="newPrimary"
+          variant="primary"
           onClick={async () => {
             const base64 = await downloadChapterAsync({
               ...chapter,

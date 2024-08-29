@@ -33,12 +33,14 @@ export const Pagination = ({
   return (
     <div className="flex flex-row space-x-4">
       <Button
+        variant="tertiary"
         className={buttonClasses}
         rounded
         icon={<BsSkipStart className={iconClasses} />}
         onClick={() => onSkipBack?.()}
       />
       <Button
+        variant="tertiary"
         className={buttonClasses}
         rounded
         icon={<BsPlay className={compose(iconClasses, 'rotate-180')} />}
@@ -53,12 +55,14 @@ export const Pagination = ({
         {currentPage} / {totalPages}
       </div>
       <Button
+        variant="tertiary"
         className={buttonClasses}
         rounded
         icon={<BsPlay className={iconClasses} />}
         onClick={() => onNext?.()}
       />
       <Button
+        variant="tertiary"
         className={buttonClasses}
         rounded
         icon={<BsSkipEnd className={iconClasses} />}

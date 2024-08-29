@@ -92,7 +92,7 @@ const Mission = () => {
 
       <div className="mt-12 w-full max-w-5xl self-center">
         <Link to={'/manifesto'}>
-          <Button variant="tertiary" className="self-start" glowing={true}>
+          <Button variant="primary" className="self-start" glowing={true}>
             Read our manifesto
           </Button>
         </Link>

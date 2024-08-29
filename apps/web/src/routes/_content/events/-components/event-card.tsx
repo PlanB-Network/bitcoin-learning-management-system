@@ -172,7 +172,7 @@ export const EventCard = ({
           >
             <Button
               size={isScreenSm ? 's' : 'xs'}
-              variant="newPrimary"
+              variant="primary"
               className="rounded-lg text-xs md:text-base"
             >
               {t('events.card.watchLive')}
@@ -190,7 +190,7 @@ export const EventCard = ({
             >
               <Button
                 size={isScreenSm ? 's' : 'xs'}
-                variant="newPrimary"
+                variant="primary"
                 className="rounded-lg text-xs md:text-base"
               >
                 {t('events.card.watchLive')}
@@ -198,7 +198,7 @@ export const EventCard = ({
             </Link>
           ) : (
             <Button
-              variant="newPrimary"
+              variant="primary"
               size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
@@ -221,7 +221,7 @@ export const EventCard = ({
         {isFreeOnlineUpcomingEvent && (
           <Button
             size={isScreenSm ? 's' : 'xs'}
-            variant="newSecondary"
+            variant="secondary"
             disabled={true}
             className="rounded-lg text-xs md:text-base"
           >
@@ -234,7 +234,7 @@ export const EventCard = ({
             <Link to={'/events/' + event.id} target="_blank" className="w-fit">
               <Button
                 size={isScreenSm ? 's' : 'xs'}
-                variant="newSecondary"
+                variant="secondary"
                 disabled={true}
                 className="rounded-lg text-xs md:text-base"
               >
@@ -243,7 +243,7 @@ export const EventCard = ({
             </Link>
           ) : (
             <Button
-              variant="newPrimary"
+              variant="primary"
               size={isScreenSm ? 's' : 'xs'}
               className="rounded-lg text-xs md:text-base"
               onClick={() => {
@@ -271,7 +271,7 @@ export const EventCard = ({
             event.remainingSeats > 0 &&
             userEvent === undefined ? (
               <Button
-                variant="newPrimary"
+                variant="primary"
                 size={isScreenSm ? 's' : 'xs'}
                 className="rounded-lg text-xs md:text-base"
                 onClick={() => {
@@ -316,7 +316,7 @@ export const EventCard = ({
         <Link to={'/resources/conferences'} className="w-fit">
           <Button
             iconRight={<HiVideoCamera size={18} />}
-            variant="newSecondary"
+            variant="secondary"
             size={isScreenSm ? 's' : 'xs'}
             className="rounded-lg text-xs md:text-base"
           >
@@ -331,7 +331,7 @@ export const EventCard = ({
       <Link to={'/events/' + event.id} className="w-fit">
         <Button
           iconRight={<HiVideoCamera size={18} />}
-          variant="newSecondary"
+          variant="secondary"
           size={isScreenSm ? 's' : 'xs'}
           className="rounded-lg text-xs md:text-base"
         >
@@ -341,7 +341,7 @@ export const EventCard = ({
     ) : (
       <Button
         iconRight={<HiVideoCamera size={18} />}
-        variant="newSecondary"
+        variant="secondary"
         size={isScreenSm ? 's' : 'xs'}
         className="rounded-lg text-xs md:text-base"
         onClick={() => {
@@ -369,7 +369,7 @@ export const EventCard = ({
       <div className="w-fit sm:mx-auto mt-auto sm:pt-3 sm:pb-1">
         <Link to={event.websiteUrl} target="_blank">
           <Button
-            variant="newPrimary"
+            variant="primary"
             size={isScreenSm ? 's' : 'xs'}
             className="rounded-lg text-xs md:text-base"
           >

@@ -39,11 +39,7 @@ export const BCertificatePresentation = ({
           {t('bCertificate.bCertificateDescription')}
         </p>
         <Link to="/b-certificate" className="max-lg:mx-auto mt-11">
-          <Button
-            variant="newPrimary"
-            size={isScreenMd ? 'l' : 'm'}
-            onHoverArrow
-          >
+          <Button variant="primary" size={isScreenMd ? 'l' : 'm'} onHoverArrow>
             {t('bCertificate.checkout')}
           </Button>
         </Link>

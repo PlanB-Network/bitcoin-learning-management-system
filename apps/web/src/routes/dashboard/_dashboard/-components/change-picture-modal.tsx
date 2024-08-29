@@ -154,11 +154,7 @@ export const ChangePictureModal = (props: Props) => {
                   </div>
                 ) : (
                   <>
-                    <Button
-                      variant="newPrimary"
-                      size="m"
-                      onClick={validateChange}
-                    >
+                    <Button variant="primary" size="m" onClick={validateChange}>
                       <span>{t('dashboard.profile.save')}</span>
                     </Button>
 

@@ -252,7 +252,7 @@ export const ProofreadingProgress = ({
         >
           <Button
             mode={mode}
-            variant={contributorsLength > 2 ? 'newSecondary' : 'newPrimary'}
+            variant={contributorsLength > 2 ? 'secondary' : 'primary'}
             size="xs"
             onHoverArrow
           >

@@ -166,7 +166,7 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
       </div>
       <div className="max-md:hidden relative mt-auto">
         <Button
-          variant="newPrimary"
+          variant="primary"
           size="m"
           onHoverArrow
           className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
@@ -312,7 +312,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 params={{ courseId: activeCourse.id }}
               >
                 <Button
-                  variant="newPrimary"
+                  variant="primary"
                   size="l"
                   onHoverArrow
                   className="w-full"
@@ -379,7 +379,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                             params={{ courseId: course.id }}
                           >
                             <Button
-                              variant="newPrimary"
+                              variant="primary"
                               size="m"
                               onHoverArrow
                               className="w-full"
@@ -436,7 +436,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
             <p>{t('words.topics')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeTopic === 'all' ? 'newPrimary' : 'newTertiary'}
+                variant={activeTopic === 'all' ? 'primary' : 'tertiary'}
                 size="s"
                 onClick={() => setActiveTopic('all')}
               >
@@ -445,7 +445,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               {topics.map((topic) => (
                 <Button
                   key={topic}
-                  variant={activeTopic === topic ? 'newPrimary' : 'newTertiary'}
+                  variant={activeTopic === topic ? 'primary' : 'tertiary'}
                   size="s"
                   onClick={() => setActiveTopic(topic)}
                   className="capitalize"
@@ -460,7 +460,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
             <p>{t('words.level.levels')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeLevel === 'all' ? 'newPrimary' : 'newTertiary'}
+                variant={activeLevel === 'all' ? 'primary' : 'tertiary'}
                 size="s"
                 onClick={() => setActiveLevel('all')}
               >
@@ -469,7 +469,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               {levels.map((level) => (
                 <Button
                   key={level}
-                  variant={activeLevel === level ? 'newPrimary' : 'newTertiary'}
+                  variant={activeLevel === level ? 'primary' : 'tertiary'}
                   size="s"
                   onClick={() => setActiveLevel(level)}
                   className="capitalize"

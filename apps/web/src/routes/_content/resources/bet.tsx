@@ -74,12 +74,12 @@ const SectionGrid = ({
             buttonLink={currentLanguageViewUrl}
             buttonText={t('words.view')}
             buttonIcon={<IoIosSearch size={isScreenMd ? 24 : 16} />}
-            buttonVariant="newSecondary"
+            buttonVariant="secondary"
             buttonMode="colored"
             secondaryLink={item.viewurls[0].viewUrl}
             secondaryButtonText={t('words.edit')}
             secondaryButtonIcon={<FiEdit size={isScreenMd ? 24 : 16} />}
-            secondaryButtonVariant="newSecondary"
+            secondaryButtonVariant="secondary"
             secondaryButtonMode="colored"
             tertiaryLink={item.downloadUrl}
             tertiaryButtonIcon={<FiDownload size={isScreenMd ? 24 : 16} />}
@@ -195,7 +195,7 @@ function BET() {
               className="max-md:mx-auto md:ml-auto shrink-0"
               rel="noreferrer"
             >
-              <Button variant="newPrimary" onHoverArrow size="l">
+              <Button variant="primary" onHoverArrow size="l">
                 {t('bet.contributeButton')}
               </Button>
             </a>

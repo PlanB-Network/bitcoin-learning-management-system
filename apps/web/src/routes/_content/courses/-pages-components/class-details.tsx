@@ -128,7 +128,7 @@ export const ClassDetails = ({
                 chapter.remainingSeats > 0 &&
                 !userChapter && (
                   <Button
-                    variant="newPrimary"
+                    variant="primary"
                     onClick={() => {
                       setIsBookModalOpen(true);
                     }}
@@ -139,14 +139,14 @@ export const ClassDetails = ({
               {chapter.remainingSeats !== null &&
                 chapter.remainingSeats <= 0 &&
                 !userChapter && (
-                  <Button variant="newPrimary" disabled={true}>
+                  <Button variant="primary" disabled={true}>
                     {t('courses.chapter.detail.classIsFull')}
                   </Button>
                 )}
               {userChapter && user && user.displayName !== null && (
                 <div className="flex flex-row gap-2">
                   <Button
-                    variant="newPrimary"
+                    variant="primary"
                     onClick={async () => {
                       let pdf = downloadedPdf;
                       if (!pdf) {
@@ -172,7 +172,7 @@ export const ClassDetails = ({
                     {t('courses.chapter.detail.ticketDownload')}
                   </Button>
                   <Button
-                    variant="newPrimaryGhost"
+                    variant="primaryGhost"
                     onClick={() => {
                       cancelBooking();
                     }}

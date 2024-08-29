@@ -37,7 +37,7 @@ export const ModalBookDescription = ({
         )}
       </div>
       {children}
-      <Button variant="newPrimary" className="lg:w-full" onClick={onBooked}>
+      <Button variant="primary" className="lg:w-full" onClick={onBooked}>
         {t('events.payment.book_seat')}
       </Button>
     </div>

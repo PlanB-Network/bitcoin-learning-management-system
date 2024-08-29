@@ -100,7 +100,7 @@ function SingleBlogDetail() {
           <div className="w-max-[135px] hidden md:flex lg:mt-32">
             <Link to="/public-communication">
               <Button
-                variant="newPrimary"
+                variant="primary"
                 onHoverArrow={true}
                 onHoverArrowDirection="left"
               >
@@ -115,7 +115,7 @@ function SingleBlogDetail() {
         <div className="flex md:hidden w-max-[135px] justify-center">
           <Link to="/public-communication">
             <Button
-              variant="newPrimary"
+              variant="primary"
               onHoverArrow={true}
               onHoverArrowDirection="left"
             >

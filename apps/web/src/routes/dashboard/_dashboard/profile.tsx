@@ -109,7 +109,7 @@ function DashboardProfile() {
                   className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
                 />
                 <Button
-                  variant="newPrimaryGhost"
+                  variant="primaryGhost"
                   size="s"
                   onClick={openChangeDisplayNameModal}
                   className="h-[34px] px-3 w-fit"
@@ -132,7 +132,7 @@ function DashboardProfile() {
                   />
 
                   <Button
-                    variant="newPrimaryGhost"
+                    variant="primaryGhost"
                     size="s"
                     onClick={changeEmailModal.open}
                     className="h-[34px] px-3 w-fit"
@@ -166,7 +166,7 @@ function DashboardProfile() {
                 />
 
                 <div>
-                  <Button variant="newPrimaryGhost" size="m" className="p-0">
+                  <Button variant="primaryGhost" size="m" className="p-0">
                     <label
                       htmlFor="profilePictureFile"
                       className="px-2.5 py-1.5 cursor-pointer"
@@ -192,7 +192,7 @@ function DashboardProfile() {
           <div className="mt-6 flex justify-between">
             <div>{t('dashboard.profile.password')}</div>
             <Button
-              variant="newPrimary"
+              variant="primary"
               size="s"
               onClick={openChangePasswordModal}
             >

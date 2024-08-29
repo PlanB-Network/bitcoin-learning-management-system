@@ -134,7 +134,12 @@ export const ChangeDisplayNameModal = ({
                   </p>
                 )}
 
-                <Button type="submit" className="mt-6" rounded>
+                <Button
+                  type="submit"
+                  variant="tertiary"
+                  className="mt-6"
+                  rounded
+                >
                   {t('words.update')}
                 </Button>
               </form>

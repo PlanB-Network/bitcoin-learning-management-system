@@ -41,11 +41,7 @@ const BCertificateOrganize = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button
-            variant="newPrimary"
-            onHoverArrow
-            size={isScreenMd ? 'l' : 's'}
-          >
+          <Button variant="primary" onHoverArrow size={isScreenMd ? 'l' : 's'}>
             {t('bCertificate.readChart')}
           </Button>
         </a>
@@ -54,11 +50,7 @@ const BCertificateOrganize = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button
-            variant="newPrimary"
-            onHoverArrow
-            size={isScreenMd ? 'l' : 's'}
-          >
+          <Button variant="primary" onHoverArrow size={isScreenMd ? 'l' : 's'}>
             {t('bCertificate.organizeExam')}
           </Button>
         </a>

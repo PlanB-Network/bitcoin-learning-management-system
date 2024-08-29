@@ -53,7 +53,7 @@ export const ModalPaymentSuccess = ({
           />
         </div>
         <Button
-          variant="newPrimary"
+          variant="primary"
           className="w-full"
           onClick={() => {
             onClose(true);

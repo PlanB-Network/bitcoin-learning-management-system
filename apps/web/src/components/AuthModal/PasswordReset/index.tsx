@@ -82,7 +82,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               />
 
               <Button
-                variant="newPrimary"
+                variant="primary"
                 type="submit"
                 className="mb-5 mt-2"
                 disabled={values.email === ''}
@@ -105,7 +105,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     [ResetPasswordState.Sent]: (
       <div>
         <p className="mb-8">{t('auth.passwordResetSent')}</p>
-        <Button onClick={() => goTo(AuthModalState.SignIn)}>
+        <Button variant="primary" onClick={() => goTo(AuthModalState.SignIn)}>
           {t('auth.backToLogin')}
         </Button>
       </div>
@@ -114,6 +114,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       <div>
         <p className="mb-8">{t('auth.passwordResetError')}</p>
         <Button
+          variant="tertiary"
           onClick={() => setResetPasswordState(ResetPasswordState.Initial)}
         >
           {t('auth.tryAgain')}

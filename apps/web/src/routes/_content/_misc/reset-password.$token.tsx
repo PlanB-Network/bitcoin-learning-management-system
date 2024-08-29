@@ -109,7 +109,7 @@ function ResetPasswordPage() {
             </div>
 
             <Button
-              variant="newPrimary"
+              variant="primary"
               size="m"
               type="submit"
               className="my-8"

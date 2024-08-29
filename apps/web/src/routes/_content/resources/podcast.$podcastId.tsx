@@ -73,7 +73,7 @@ function Podcast() {
                     <a href={podcast.podcastUrl}>
                       <Button
                         size={isScreenMd ? 's' : 'xs'}
-                        variant="tertiary"
+                        variant="primary"
                         className="mx-2"
                       >
                         {t('podcast.discover')}

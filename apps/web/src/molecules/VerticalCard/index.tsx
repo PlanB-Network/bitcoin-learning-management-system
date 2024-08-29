@@ -16,7 +16,7 @@ export interface VerticalCardProps {
   onHoverCardColorChange?: boolean;
   buttonText?: string;
   buttonIcon?: JSX.Element;
-  buttonVariant?: ButtonProps['variant'];
+  buttonVariant: ButtonProps['variant'];
   buttonMode?: ButtonProps['mode'];
   buttonLink?: string;
   secondaryButtonText?: string;
@@ -46,17 +46,17 @@ export const VerticalCard = ({
   onHoverCardColorChange,
   buttonText,
   buttonIcon,
-  buttonVariant = 'newPrimary',
+  buttonVariant = 'primary',
   buttonMode,
   buttonLink,
   secondaryButtonText,
   secondaryButtonIcon,
-  secondaryButtonVariant,
+  secondaryButtonVariant = 'tertiary',
   secondaryButtonMode,
   secondaryLink,
   tertiaryButtonText,
   tertiaryButtonIcon,
-  tertiaryButtonVariant,
+  tertiaryButtonVariant = 'tertiary',
   tertiaryButtonMode,
   tertiaryLink,
   externalLink,

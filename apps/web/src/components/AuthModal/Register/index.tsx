@@ -230,7 +230,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
                         </p>
                       )}
                       <Button
-                        variant="newPrimary"
+                        variant="primary"
                         size="m"
                         type="submit"
                         className="my-8"

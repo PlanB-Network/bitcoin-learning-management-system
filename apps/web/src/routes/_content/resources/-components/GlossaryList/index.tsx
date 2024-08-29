@@ -100,7 +100,7 @@ export const GlossaryList = ({
 
       {filteredTerms.length > maxWords && (
         <Button
-          variant="newSecondary"
+          variant="secondary"
           size="m"
           className="mx-auto mt-5"
           onClick={() => setMaxWords((v) => v + 20)}

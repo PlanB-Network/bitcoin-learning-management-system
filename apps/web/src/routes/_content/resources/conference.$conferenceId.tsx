@@ -202,7 +202,7 @@ function Conference() {
                   return index === activeStage ? (
                     <Button
                       key={`${stage.name}_${index}`}
-                      variant="newPrimary"
+                      variant="primary"
                       size="l"
                       className="capitalize"
                     >
@@ -238,7 +238,7 @@ function Conference() {
                     return index === activeVideo ? (
                       <Button
                         key={`${video.name}_${index}`}
-                        variant="newPrimary"
+                        variant="primary"
                         size="l"
                         className="capitalize"
                       >
@@ -247,7 +247,7 @@ function Conference() {
                     ) : (
                       <Button
                         key={`${video.name}_${index}`}
-                        variant="newPrimary"
+                        variant="primary"
                         fakeDisabled
                         size="l"
                         onClick={() => setActiveVideo(index)}
@@ -322,7 +322,7 @@ function Conference() {
               {/* Desktop */}
               {activeVideo > 0 && (
                 <Button
-                  variant="newSecondary"
+                  variant="secondary"
                   size="l"
                   onHoverArrow
                   onHoverArrowDirection="left"
@@ -336,7 +336,7 @@ function Conference() {
               {activeVideo <
                 conference.stages[activeStage].videos.length - 1 && (
                 <Button
-                  variant="newSecondary"
+                  variant="secondary"
                   size="l"
                   onHoverArrow
                   className="ml-auto max-sm:hidden"
@@ -349,7 +349,7 @@ function Conference() {
               {/* Mobile */}
               {activeVideo > 0 && (
                 <Button
-                  variant="newSecondary"
+                  variant="secondary"
                   size="s"
                   className="mr-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v - 1)}
@@ -363,7 +363,7 @@ function Conference() {
               {activeVideo <
                 conference.stages[activeStage].videos.length - 1 && (
                 <Button
-                  variant="newSecondary"
+                  variant="secondary"
                   size="s"
                   className="ml-auto sm:hidden"
                   onClick={() => setActiveVideo((v) => v + 1)}

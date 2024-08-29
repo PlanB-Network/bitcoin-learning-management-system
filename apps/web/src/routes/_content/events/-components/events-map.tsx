@@ -573,7 +573,7 @@ const EventsMap = ({
           {/* Switch mode */}
           <div className="absolute bottom-2 left-2 hidden xl:block">
             <Button
-              variant="newPrimary"
+              variant="primary"
               size="s"
               className="h-8 border border-darkOrange-5 flex gap-2"
               onClick={() =>

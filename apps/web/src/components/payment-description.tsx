@@ -150,7 +150,7 @@ export const PaymentDescription = ({
             )}
           </div>
           <Button
-            variant="newSecondary"
+            variant="secondary"
             size="s"
             className="-ml-1"
             onClick={applyCoupon}
@@ -170,7 +170,7 @@ export const PaymentDescription = ({
         {/* Todo : a generic component should not reference a specific one */}
         {children}
         <Button
-          variant="newPrimary"
+          variant="primary"
           className="lg:w-full text-xs lg:text-sm"
           onClick={() => {
             initPayment();

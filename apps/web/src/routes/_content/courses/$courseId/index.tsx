@@ -139,7 +139,7 @@ function CourseDetails() {
                 },
               });
             },
-            variant: 'newPrimary' as const,
+            variant: 'primary' as const,
           },
     [
       course?.parts,

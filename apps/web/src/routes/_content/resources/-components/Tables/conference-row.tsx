@@ -49,12 +49,12 @@ export const ConferenceRow = ({
         <div className="flex justify-center items-center">
           {link ? (
             <Link to={link} className="min-w-fit">
-              <Button variant="newPrimary" onHoverArrow>
+              <Button variant="primary" onHoverArrow>
                 {t('events.card.watchReplay')}
               </Button>
             </Link>
           ) : (
-            <Button variant="newPrimary" disabled className="min-w-fit">
+            <Button variant="primary" disabled className="min-w-fit">
               {t('events.card.watchReplay')}
             </Button>
           )}

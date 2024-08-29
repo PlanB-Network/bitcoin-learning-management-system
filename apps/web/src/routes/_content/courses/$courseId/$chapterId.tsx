@@ -482,7 +482,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
       >
         {isLastChapter ? (
           <Button
-            variant="newPrimary"
+            variant="primary"
             size="l"
             onHoverArrow
             onClick={completeChapter}
@@ -491,7 +491,7 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
           </Button>
         ) : (
           <Button
-            variant="newPrimary"
+            variant="primary"
             size="l"
             onHoverArrow
             onClick={completeChapter}

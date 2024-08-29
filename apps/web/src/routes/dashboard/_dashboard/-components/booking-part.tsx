@@ -154,7 +154,7 @@ const Buttons = ({
       <div className="flex flex-row gap-3">
         {ticket.isInPerson && (
           <Button
-            variant="newPrimary"
+            variant="primary"
             size={buttonSize}
             mode="light"
             iconRight={
@@ -211,7 +211,7 @@ const Buttons = ({
             }
           >
             <Button
-              variant="newPrimary"
+              variant="primary"
               size={buttonSize}
               mode="light"
               disabled={ticket.date.getTime() > Date.now()}

@@ -19,7 +19,7 @@ export const HorizontalCard = ({
   title,
   subtitle,
   buttonText,
-  buttonVariant = 'newPrimary',
+  buttonVariant = 'primary',
   buttonLink,
   languages,
   className,

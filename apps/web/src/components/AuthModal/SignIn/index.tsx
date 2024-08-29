@@ -140,7 +140,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
                   </p>
                 )}
                 <Button
-                  variant="newPrimary"
+                  variant="primary"
                   size="m"
                   type="submit"
                   className="my-8"

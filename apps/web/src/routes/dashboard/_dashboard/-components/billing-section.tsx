@@ -51,7 +51,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                       </div>
                       <span className="w-[100px] flex-none ml-auto">
                         <Button
-                          variant="newPrimary"
+                          variant="primary"
                           size="s"
                           mode="light"
                           disabled
@@ -71,7 +71,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                           <span className="capitalize"> {invoice.type}</span>
                         </span>
                         <span className="">
-                          <Button variant="newPrimary" size="xs" disabled>
+                          <Button variant="primary" size="xs" disabled>
                             {t('dashboard.booking.downloadInvoice')}
                           </Button>
                         </span>

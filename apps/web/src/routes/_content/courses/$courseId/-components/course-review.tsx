@@ -381,7 +381,7 @@ export function CourseReview({
               <Button
                 type="submit"
                 className="w-full"
-                variant="newPrimary"
+                variant="primary"
                 size={window.innerWidth >= 768 ? 'l' : 'm'}
                 onHoverArrow
                 disabled={formDisabled}

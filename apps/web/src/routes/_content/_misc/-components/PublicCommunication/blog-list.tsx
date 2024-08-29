@@ -56,7 +56,7 @@ export const BlogList = ({ category }: BlogListProps) => {
                 languages={[]}
                 cardColor="lightgrey"
                 className="text-start"
-                buttonVariant="newPrimary"
+                buttonVariant="primary"
                 buttonMode="dark"
                 buttonText={t(
                   'publicCommunication.blogPageStrings.blogListButtonText',
