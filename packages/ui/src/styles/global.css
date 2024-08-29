@@ -33,6 +33,7 @@
   /* ShadCn */
   .dark {
     --primary: 22, 100%, 50%; /* #FF5C00,*/
+    --secondary: 0 0% 100%; /* #B2B2B2,*/
   }
   /* .dark {
     --background: 222.2 84% 4.9%;

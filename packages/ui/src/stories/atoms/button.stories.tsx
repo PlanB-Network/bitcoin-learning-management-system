@@ -8,7 +8,17 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
   },
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {},
+  argTypes: {
+    disabled: {
+      control: 'boolean', // This enables a toggle control in the Storybook UI
+      description: 'Disable the button',
+      defaultValue: false,
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
   tags: ['autodocs'],
 };
 
@@ -44,6 +54,12 @@ export const Ghost: Story = {
     children: 'ghost',
     size: 'l',
     variant: 'ghost',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
   },
 };
 

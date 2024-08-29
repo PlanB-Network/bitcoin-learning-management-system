@@ -114,7 +114,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       <div>
         <p className="mb-8">{t('auth.passwordResetError')}</p>
         <Button
-          variant="secondary"
+          variant="primary"
           mode="light"
           onClick={() => setResetPasswordState(ResetPasswordState.Initial)}
         >

@@ -14,8 +14,8 @@ export interface ButtonProps
     > {
   children?: string | JSX.Element | JSX.Element[];
   variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'transparent';
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   mode?: 'light' | 'dark';
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   rounded?: boolean;
   glowing?: boolean;
   fakeDisabled?: boolean;
@@ -35,50 +35,20 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  primary: {
-    dark: ' bg-primary text-white shadow-button dark',
-    light: 'bg-primary text-white shadow-button',
-  },
-  secondary: {
-    dark: ' bg-white text-newBlack-1 shadow-button',
-    light: 'bg-newGray-4 text-newBlack-1 shadow-button',
-  },
-  outline: {
-    dark: ' bg-transparent text-darkOrange-5 border border-darkOrange-4',
-    light: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
-  },
-  ghost: {
-    dark: ' text-white border border-newGray-2 hover:border-white transition-colors',
-    light:
-      ' text-white border border-newGray-2 hover:border-white transition-colors',
-  },
-  transparent: {
-    dark: ' bg-white/30 text-white shadow-button',
-    light: 'bg-white/30 text-white shadow-button',
-  },
+  primary: 'bg-primary text-white shadow-button',
+  secondary: 'bg-secondary text-newBlack-1 shadow-button',
+  outline: 'bg-transparent text-darkOrange-5 border border-darkOrange-4',
+  ghost:
+    'text-white border border-newGray-2 hover:border-white transition-colors',
+  transparent: 'bg-white/30 text-white shadow-button',
 };
 
 const variantDisabledClasses = {
-  primary: {
-    dark: '!bg-darkOrange-8 !text-newGray-1',
-    light: '!bg-darkOrange-1 !text-darkOrange-3',
-  },
-  secondary: {
-    dark: '!bg-newBlack-3 !text-newGray-1',
-    light: '!bg-newGray-4 !text-newGray-2',
-  },
-  outline: {
-    dark: '!text-newGray-3 !border-newGray-3',
-    light: '!text-newGray-3 !border-newGray-3',
-  },
-  ghost: {
-    dark: '!text-newBlack-5 !border-newBlack-5',
-    light: '!text-newGray-3 !border-newGray-3',
-  },
-  transparent: {
-    dark: '',
-    light: '',
-  },
+  primary: '!bg-darkOrange-1 !text-darkOrange-3',
+  secondary: '!bg-newGray-4 !text-newGray-2',
+  outline: '!text-newGray-3 !border-newGray-3',
+  ghost: '!text-newBlack-5 !border-newBlack-5',
+  transparent: '',
 };
 
 const hoverArrowClasses =
@@ -104,12 +74,11 @@ export const Button = ({
   const classes = useMemo(
     () => [
       sizeClasses[size],
-      variantClasses[variant]?.[mode],
+      variantClasses[variant],
+      mode === 'dark' && 'dark',
       rounded ? '!rounded-full' : '',
       disabled ? 'cursor-default active:none' : 'active:scale-95',
-      (disabled || fakeDisabled) &&
-        (variantDisabledClasses[variant]?.[mode] ||
-          'active:none bg-newBlack-3 !text-newGray-1'),
+      (disabled || fakeDisabled) && variantDisabledClasses[variant],
     ],
     [rounded, size, variant, mode, disabled, fakeDisabled],
   );

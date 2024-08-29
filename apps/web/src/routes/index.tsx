@@ -108,7 +108,11 @@ function Home() {
                   {t('home.header.startLink')}
                 </Button>
               </a>
-              <a href="/node-network" rel="noopener noreferrer">
+              <a
+                href="/node-network"
+                rel="noopener noreferrer"
+                className="darky"
+              >
                 <Button
                   variant="secondary"
                   rounded={true}
