@@ -6,6 +6,13 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
+    backgrounds: {
+      default: 'dark', // Choose a name for the background
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#333333' }, // You can adjust this color
+      ],
+    },
   },
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {

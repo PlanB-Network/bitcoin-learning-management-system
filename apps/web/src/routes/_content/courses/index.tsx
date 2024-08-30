@@ -436,7 +436,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
             <p>{t('words.topics')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeTopic === 'all' ? 'primary' : 'ghost'}
+                variant={activeTopic === 'all' ? 'primary' : 'outlineWhite'}
                 size="s"
                 onClick={() => setActiveTopic('all')}
               >
@@ -445,7 +445,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               {topics.map((topic) => (
                 <Button
                   key={topic}
-                  variant={activeTopic === topic ? 'primary' : 'ghost'}
+                  variant={activeTopic === topic ? 'primary' : 'outlineWhite'}
                   size="s"
                   onClick={() => setActiveTopic(topic)}
                   className="capitalize"
@@ -460,7 +460,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
             <p>{t('words.level.levels')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeLevel === 'all' ? 'primary' : 'ghost'}
+                variant={activeLevel === 'all' ? 'primary' : 'outlineWhite'}
                 size="s"
                 onClick={() => setActiveLevel('all')}
               >
@@ -469,7 +469,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               {levels.map((level) => (
                 <Button
                   key={level}
-                  variant={activeLevel === level ? 'primary' : 'ghost'}
+                  variant={activeLevel === level ? 'primary' : 'outlineWhite'}
                   size="s"
                   onClick={() => setActiveLevel(level)}
                   className="capitalize"

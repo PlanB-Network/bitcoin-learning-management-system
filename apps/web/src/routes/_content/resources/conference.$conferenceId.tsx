@@ -377,7 +377,7 @@ function Conference() {
 
           <div className="flex justify-center">
             <Link to="/resources/conferences">
-              <Button variant="ghost" className="mt-10">
+              <Button variant="outlineWhite" className="mt-10">
                 {t('conferences.backConferences')}
               </Button>
             </Link>

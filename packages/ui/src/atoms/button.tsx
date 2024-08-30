@@ -13,7 +13,13 @@ export interface ButtonProps
       HTMLButtonElement
     > {
   children?: string | JSX.Element | JSX.Element[];
-  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'transparent';
+  variant:
+    | 'primary'
+    | 'secondary'
+    | 'outline'
+    | 'outlineWhite'
+    | 'ghost'
+    | 'transparent';
   mode?: 'light' | 'dark';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl';
   rounded?: boolean;
@@ -39,9 +45,10 @@ const variantClasses = {
   secondary:
     'bg-secondary text-newBlack-1 shadow-button disabled:!bg-newGray-4 disabled:!text-newGray-2',
   outline:
-    'bg-transparent text-darkOrange-5 border border-darkOrange-4 disabled:!text-newGray-3 disabled:!border-newGray-3',
-  ghost:
+    'bg-transparent text-primary border border-primary disabled:!text-newGray-3 disabled:!border-newGray-3',
+  outlineWhite:
     'text-white border border-newGray-2 hover:border-white transition-colors disabled:!text-newBlack-5 disabled:!border-newBlack-5',
+  ghost: 'text-text disabled:!text-newBlack-5 disabled:!border-newBlack-5',
   transparent: 'bg-white/30 text-white shadow-button',
 };
 

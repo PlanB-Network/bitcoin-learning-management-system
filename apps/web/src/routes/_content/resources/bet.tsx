@@ -83,7 +83,7 @@ const SectionGrid = ({
             secondaryButtonMode="dark"
             tertiaryLink={item.downloadUrl}
             tertiaryButtonIcon={<FiDownload size={isScreenMd ? 24 : 16} />}
-            tertiaryButtonVariant="ghost"
+            tertiaryButtonVariant="outlineWhite"
             tertiaryButtonMode="dark"
             externalLink
             onHoverArrow={false}

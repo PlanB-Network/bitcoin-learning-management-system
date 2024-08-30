@@ -106,7 +106,7 @@ export const LanguageSelector = ({
           className="max-lg:hidden mt-6 w-full"
         >
           <Button
-            variant={variant === 'light' ? 'secondary' : 'ghost'}
+            variant={variant === 'light' ? 'secondary' : 'outlineWhite'}
             size="m"
             onHoverArrow
             className={cn('w-full', variant === 'light' ? '!text-primary' : '')}
