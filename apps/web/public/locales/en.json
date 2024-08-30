@@ -390,7 +390,10 @@
       "username": "Username"
     },
     "teacher": {
-      "courses": {},
+      "courses": {
+        "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
+        "makeModifications": "Need to make modifications ?"
+      },
       "menu": "Teacher menu",
       "profile": {
         "account": "Teacher account",
@@ -409,7 +412,7 @@
         "publicProfileDescription": "Here you can fill or edit all the information associated with your activity as a teacher at Plan ₿ Network.",
         "writeShortBio": "Write a short bio about yourself",
         "teacher": "Teacher",
-        "tutorialModification": "If you need help to edit something in the course, please check this <0>tutorial</0>."
+        "tutorialModification": "If you need help to edit something, please check this <0>tutorial</0>."
       }
     }
   },

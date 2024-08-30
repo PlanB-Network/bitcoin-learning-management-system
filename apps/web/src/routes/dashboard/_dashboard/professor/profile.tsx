@@ -99,7 +99,7 @@ function DashboardProfessorProfile() {
                 {t('dashboard.teacher.profile.publicDescription')}
               </p>
               <div className="flex items-end gap-9">
-                <p className="h-[100px] py-1 px-4 bg-[#E9E9E9] w-[302px] rounded-md border border-[#7373731A] overflow-y-scroll text-newGray-1 body-14px">
+                <p className="h-[100px] py-1 px-4 bg-[#E9E9E9] w-[302px] rounded-md border border-[#7373731A] overflow-y-scroll no-scrollbar text-newGray-1 body-14px">
                   {session?.user.professorShortBio[i18n.language] ||
                     t('dashboard.teacher.profile.noShortBio')}
                 </p>
@@ -193,7 +193,7 @@ function DashboardProfessorProfile() {
                 {t('dashboard.teacher.profile.lightningAddress')}
               </span>
               <div className="flex flex-wrap items-end gap-x-9 gap-y-2">
-                <p className="py-1 px-4 bg-[#E9E9E9] w-full lg:w-fit lg:max-w-lg rounded-md border border-[#7373731A] text-newGray-1 body-14px overflow-y-scroll">
+                <p className="py-1 px-4 bg-[#E9E9E9] w-full lg:w-fit lg:max-w-lg rounded-md border border-[#7373731A] text-newGray-1 body-14px overflow-y-scroll no-scrollbar">
                   {session?.user.professorLightningAddress ||
                     t('dashboard.teacher.profile.noLightningAddress')}
                 </p>

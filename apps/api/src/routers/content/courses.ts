@@ -13,6 +13,7 @@ import {
   createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
   createGetCourses,
+  createGetProfessorCourses,
 } from '@blms/service-content';
 import type {
   JoinedCourseChapter,
@@ -38,6 +39,25 @@ const getCoursesProcedure = publicProcedure
   )
   .query(({ ctx, input }) => {
     return createGetCourses(ctx.dependencies)(input?.language);
+  });
+
+const getProfessorCoursesProcedure = publicProcedure
+  .input(
+    z
+      .object({
+        coursesId: z.string().array(),
+        language: z.string().optional(),
+      })
+      .optional(),
+  )
+  .output<Parser<JoinedCourseWithProfessors[]>>(
+    joinedCourseWithProfessorsSchema.array(),
+  )
+  .query(({ ctx, input }) => {
+    return createGetProfessorCourses(ctx.dependencies)(
+      input?.coursesId || [],
+      input?.language,
+    );
   });
 
 const getCourseProcedure = publicProcedure
@@ -132,6 +152,7 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
 
 export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,
+  getProfessorCourses: getProfessorCoursesProcedure,
   getCourse: getCourseProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
