@@ -4,6 +4,7 @@ import { TextInput } from '../../atoms/text-input.tsx';
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
+  title: 'Stories/form/textinput(deprecated)',
   tags: ['autodocs'],
 };
 

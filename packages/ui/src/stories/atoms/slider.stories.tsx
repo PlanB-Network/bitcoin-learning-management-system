@@ -4,6 +4,7 @@ import { Slider } from '../../atoms/slider.tsx';
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
+  title: 'Stories/form/slider',
   tags: ['autodocs'],
 };
 

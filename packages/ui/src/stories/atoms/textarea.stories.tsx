@@ -4,6 +4,7 @@ import { Textarea } from '../../atoms/textarea.tsx';
 
 const meta: Meta<typeof Textarea> = {
   component: Textarea,
+  title: 'Stories/form/textarea',
   tags: ['autodocs'],
 };
 
