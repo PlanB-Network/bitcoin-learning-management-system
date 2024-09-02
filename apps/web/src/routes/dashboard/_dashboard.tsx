@@ -26,10 +26,10 @@ function Dashboard() {
       <div>
         <div
           className={cn(
-            'p-6 pb-20 bg-white text-black',
+            'bg-white text-black',
             location.href.includes('calendar')
               ? 'px-0 pt-6 pb-12 md:p-6'
-              : 'p-6 pb-20',
+              : 'px-4 pt-6 pb-20',
           )}
         >
           <Outlet></Outlet>

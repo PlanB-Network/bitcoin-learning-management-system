@@ -23,11 +23,18 @@ declare module 'express-session' {
     uid?: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
     professorId?: number | null;
+    professorName: string;
+    professorPath: string;
+    professorTwitterUrl: string;
+    professorWebsiteUrl: string;
+    professorGithubUrl: string;
+    professorNostr: string;
     professorCourses: string[];
     professorTutorials: number[];
     professorShortBio: { [key: string]: string };
     professorTags: string[];
     professorLightningAddress: string;
+    professorLastCommit: string;
   }
 }
 

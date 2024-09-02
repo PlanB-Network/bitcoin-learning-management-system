@@ -3,9 +3,10 @@ import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useState } from 'react';
 
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from '@blms/ui';
+import { Button, Tabs, TabsContent } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
@@ -62,26 +63,39 @@ function DashboardProfile() {
   const changeEmailModal = useDisclosure();
   const [emailSent, setEmailSent] = useState(false);
 
+  const [currentTab, setCurrentTab] = useState('info');
+
+  const onTabChange = (value: string) => {
+    setCurrentTab(value);
+  };
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">
         {t('dashboard.profile.profileInformation')}
       </div>
-      <Tabs defaultValue="info" className="max-w-[600px]">
-        <TabsList>
-          <TabsTrigger
-            value="info"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('dashboard.profile.personalInformation')}
-          </TabsTrigger>
-          <TabsTrigger
-            value="security"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('dashboard.profile.security')}
-          </TabsTrigger>
-        </TabsList>
+      <Tabs
+        defaultValue="info"
+        value={currentTab}
+        onValueChange={onTabChange}
+        className="max-w-[600px]"
+      >
+        <TabsListUnderlined
+          tabs={[
+            {
+              key: 'info',
+              value: 'info',
+              text: t('dashboard.profile.personalInformation'),
+              active: 'info' === currentTab,
+            },
+            {
+              key: 'security',
+              value: 'security',
+              text: t('dashboard.profile.security'),
+              active: 'security' === currentTab,
+            },
+          ]}
+        />
         <TabsContent value="info">
           <div className="flex w-full flex-col">
             <div className="mt-6 flex flex-col">

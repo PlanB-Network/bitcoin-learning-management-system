@@ -5,11 +5,18 @@ import { usersAccounts, usersLud4PublicKeys } from '@blms/database';
 
 export const userAccountSchema = createSelectSchema(usersAccounts).merge(
   z.object({
+    professorName: z.string(),
+    professorPath: z.string(),
+    professorTwitterUrl: z.string(),
+    professorWebsiteUrl: z.string(),
+    professorGithubUrl: z.string(),
+    professorNostr: z.string(),
     professorCourses: z.string().array(),
     professorTutorials: z.number().array(),
     professorShortBio: z.record(z.string()),
     professorTags: z.string().array(),
     professorLightningAddress: z.string(),
+    professorLastCommit: z.string(),
   }),
 );
 

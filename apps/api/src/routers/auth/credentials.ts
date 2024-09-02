@@ -124,11 +124,18 @@ export const credentialsAuthRouter = createTRPCRouter({
       req.session.uid = user.uid;
       req.session.role = user.role;
       req.session.professorId = user.professorId;
+      req.session.professorName = user.professorName;
+      req.session.professorPath = user.professorPath;
+      req.session.professorTwitterUrl = user.professorTwitterUrl;
+      req.session.professorWebsiteUrl = user.professorWebsiteUrl;
+      req.session.professorGithubUrl = user.professorGithubUrl;
+      req.session.professorNostr = user.professorNostr;
       req.session.professorCourses = user.professorCourses;
       req.session.professorTutorials = user.professorTutorials;
       req.session.professorShortBio = user.professorShortBio;
       req.session.professorTags = user.professorTags;
       req.session.professorLightningAddress = user.professorLightningAddress;
+      req.session.professorLastCommit = user.professorLastCommit;
 
       return {
         status: 200,

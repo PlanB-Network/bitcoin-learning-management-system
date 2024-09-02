@@ -391,14 +391,31 @@
     },
     "teacher": {
       "courses": {
+        "analytics": "Analytics",
+        "courseDetails": "Course details",
+        "courseId": "Course ID",
+        "courseLongDescription": "Introductive description",
         "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
-        "makeModifications": "Need to make modifications ?"
+        "courseName": "Course name",
+        "courseShortDescription": "Goal",
+        "coursesManagementPanel": "Courses panel",
+        "curriculum": "Course curriculum",
+        "curriculumDescription": "Here is the current curriculum of this course.",
+        "editOnGithub": "Edit on Github",
+        "examResults": "Exam Results",
+        "makeModifications": "Need to make modifications?",
+        "objectives": "Objectives",
+        "proposeNewCourse": "Propose a new course",
+        "quickRecap": "Here you can find all the general informations regarding this course.",
+        "reviewInfos": "Here you can control and review all the information concerning each course you've coordinated.",
+        "reviews": "Reviews"
       },
       "menu": "Teacher menu",
       "profile": {
         "account": "Teacher account",
         "billingInformations": "Billing informations",
         "chooseTags": "Choose the tags that describe you the best",
+        "description": "Your description",
         "descriptionTags": "These tags complete your public profile as they show your specialities as a bitcoiner.",
         "enterTipsInformations": "Plan ₿ Network encourages users to tip teachers. Please enter your informations so that people can tip you when they wish to.",
         "lightningAddress": "Lightning address",
@@ -407,11 +424,12 @@
         "noShortBio": "No short bio linked to this account yet, feel free to add it on GitHub.",
         "noTags": "No tags linked to this account yet.",
         "notifications": "Notifications",
-        "publicDescription": "This description will be displayed in your public profile on the platform.",
+        "publicDescription": "This description is displayed in your teacher information card on the platform.",
         "publicProfile": "Public profile",
         "publicProfileDescription": "Here you can fill or edit all the information associated with your activity as a teacher at Plan ₿ Network.",
         "writeShortBio": "Write a short bio about yourself",
         "teacher": "Teacher",
+        "teacherProfile": "Teacher profile",
         "tutorialModification": "If you need help to edit something, please check this <0>tutorial</0>."
       }
     }
@@ -884,6 +902,7 @@
     "glossary": "Glossary",
     "helpUs": "Help us",
     "home": "Home",
+    "hours": "hours",
     "intermediate": "Intermediate",
     "interview": "Interview",
     "invoice": "Invoice",

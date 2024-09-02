@@ -13,6 +13,12 @@ export interface UserAccount {
   professorId: number | null;
   createdAt: Date;
   updatedAt: Date;
+  professorName: string;
+  professorPath: string;
+  professorTwitterUrl: string;
+  professorWebsiteUrl: string;
+  professorGithubUrl: string;
+  professorNostr: string;
   professorCourses: string[];
   professorTutorials: number[];
   professorShortBio: {
@@ -20,6 +26,7 @@ export interface UserAccount {
   };
   professorTags: string[];
   professorLightningAddress: string;
+  professorLastCommit: string;
 }
 
 export interface UserDetails {

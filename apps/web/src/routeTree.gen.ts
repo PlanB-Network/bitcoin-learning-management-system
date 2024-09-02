@@ -713,7 +713,6 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-<<<<<<< HEAD
 interface DashboardDashboardRouteChildren {
   DashboardDashboardAdministrationRoute: typeof DashboardDashboardAdministrationRoute;
   DashboardDashboardBcertificateRoute: typeof DashboardDashboardBcertificateRoute;
@@ -722,6 +721,7 @@ interface DashboardDashboardRouteChildren {
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
   DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
+  DashboardDashboardProfessorProfileRoute: typeof DashboardDashboardProfessorProfileRoute;
 }
 
 const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
@@ -733,6 +733,8 @@ const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
   DashboardDashboardProfessorCoursesRoute:
     DashboardDashboardProfessorCoursesRoute,
+  DashboardDashboardProfessorProfileRoute:
+    DashboardDashboardProfessorProfileRoute,
 };
 
 const DashboardDashboardRouteWithChildren =
@@ -790,45 +792,6 @@ interface ContentMiscPublicCommunicationLegalsRouteChildren {
 const ContentMiscPublicCommunicationLegalsRouteChildren: ContentMiscPublicCommunicationLegalsRouteChildren =
   {
     ContentMiscPublicCommunicationLegalsNameRoute:
-=======
-export const routeTree = rootRoute.addChildren({
-  IndexRoute,
-  DashboardRoute: DashboardRoute.addChildren({
-    DashboardDashboardRoute: DashboardDashboardRoute.addChildren({
-      DashboardDashboardAdministrationRoute,
-      DashboardDashboardBcertificateRoute,
-      DashboardDashboardBookingsRoute,
-      DashboardDashboardCalendarRoute,
-      DashboardDashboardCoursesRoute,
-      DashboardDashboardProfileRoute,
-      DashboardDashboardProfessorCoursesRoute,
-      DashboardDashboardProfessorProfileRoute,
-    }),
-  }),
-  ContentMiscAboutRoute,
-  ContentMiscBCertificateRoute,
-  ContentMiscManifestoRoute,
-  ContentMiscNodeNetworkRoute,
-  ContentMiscProfessorsRoute,
-  ContentMiscTermsAndConditionsRoute,
-  ContentMiscUnderConstructionRoute,
-  ContentCoursesCourseIdRoute: ContentCoursesCourseIdRoute.addChildren({
-    ContentCoursesCourseIdChapterIdRoute,
-    ContentCoursesCourseIdIndexRoute,
-  }),
-  ContentEventsEventIdRoute,
-  ContentTutorialsCategoryRoute: ContentTutorialsCategoryRoute.addChildren({
-    ContentTutorialsCategoryNameRoute,
-    ContentTutorialsCategoryIndexRoute,
-  }),
-  ContentCoursesIndexRoute,
-  ContentEventsIndexRoute,
-  ContentResourcesIndexRoute,
-  ContentTutorialsIndexRoute,
-  ContentMiscProfessorProfessorNameProfessorIdRoute,
-  ContentMiscPublicCommunicationLegalsRoute:
-    ContentMiscPublicCommunicationLegalsRoute.addChildren({
->>>>>>> bca77b71 (feat: add teacher dashboard public profile)
       ContentMiscPublicCommunicationLegalsNameRoute,
     ContentMiscPublicCommunicationLegalsIndexRoute:
       ContentMiscPublicCommunicationLegalsIndexRoute,
@@ -874,6 +837,7 @@ export interface FileRoutesByFullPath {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -922,6 +886,7 @@ export interface FileRoutesByTo {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -975,6 +940,7 @@ export interface FileRoutesById {
   '/_content/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/_dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/_dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/_content/_misc/public-communication/': typeof ContentMiscPublicCommunicationIndexRoute;
   '/_content/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/_content/resources/bet/': typeof ContentResourcesBetIndexRoute;
@@ -1028,6 +994,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
     | '/public-communication'
     | '/courses/$courseId/'
     | '/resources/bet'
@@ -1075,6 +1042,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
     | '/public-communication'
     | '/courses/$courseId'
     | '/resources/bet'
@@ -1126,6 +1094,7 @@ export interface FileRouteTypes {
     | '/_content/resources/podcasts/$podcastId'
     | '/_content/tutorials/$category/$name'
     | '/dashboard/_dashboard/professor/courses'
+    | '/dashboard/_dashboard/professor/profile'
     | '/_content/_misc/public-communication/'
     | '/_content/courses/$courseId/'
     | '/_content/resources/bet/'
