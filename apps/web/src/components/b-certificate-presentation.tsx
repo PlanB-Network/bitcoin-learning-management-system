@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import { Button, cn } from '@blms/ui';
 
@@ -39,8 +40,14 @@ export const BCertificatePresentation = ({
           {t('bCertificate.bCertificateDescription')}
         </p>
         <Link to="/b-certificate" className="max-lg:mx-auto mt-11">
-          <Button variant="primary" size={isScreenMd ? 'l' : 'm'} onHoverArrow>
+          <Button variant="primary" size={isScreenMd ? 'l' : 'm'}>
             {t('bCertificate.checkout')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         </Link>
       </div>

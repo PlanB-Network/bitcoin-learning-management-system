@@ -2,9 +2,10 @@ import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { useContext, useEffect, useState } from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoIosArrowDown } from 'react-icons/io';
 
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
@@ -55,9 +56,14 @@ function DashboardBCertificate() {
             mode="light"
             variant="secondary"
             size={isScreenMd ? 'm' : 's'}
-            onHoverArrow
           >
             {t('dashboard.bCertificate.learnMore')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         </Link>
       </section>
@@ -75,9 +81,14 @@ function DashboardBCertificate() {
               mode="light"
               variant="primary"
               size={isScreenMd ? 'm' : 's'}
-              onHoverArrow
             >
               {t('dashboard.bCertificate.bookExam')}
+              <FaArrowRightLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:ml-3',
+                )}
+              />
             </Button>
           </Link>
         </div>

@@ -167,9 +167,13 @@ export const ClassDetails = ({
                       link.click();
                       link.remove();
                     }}
-                    iconRight={isPending ? <FiLoader /> : undefined}
                   >
                     {t('courses.chapter.detail.ticketDownload')}
+                    {isPending ? (
+                      <span className="ml-3">
+                        <FiLoader />
+                      </span>
+                    ) : null}
                   </Button>
                   <Button
                     variant="outline"

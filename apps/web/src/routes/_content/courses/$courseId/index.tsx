@@ -115,7 +115,6 @@ function CourseDetails() {
     () =>
       course?.requiresPayment && !isCoursePaid
         ? {
-            iconLeft: <FaLock />,
             onClick: () => {
               if (isLoggedIn) {
                 setIsPaymentModalOpen(true);
@@ -333,6 +332,11 @@ function CourseDetails() {
                   {...buttonProps}
                   disabled={isStartOrBuyButtonDisabled}
                 >
+                  {course?.requiresPayment && !isCoursePaid ? (
+                    <span className="mr-3">
+                      <FaLock />
+                    </span>
+                  ) : null}
                   <span className="sm:px-6">
                     {t(
                       courseHasToBePurchased
@@ -356,6 +360,12 @@ function CourseDetails() {
                       {...buttonProps}
                       disabled={isStartOrBuyButtonDisabled}
                     >
+                      {course?.requiresPayment && !isCoursePaid ? (
+                        <span className="mr-3">
+                          <FaLock />
+                        </span>
+                      ) : null}
+
                       <span className="relative z-10 text-sm font-medium sm:px-6">
                         {t(
                           courseHasToBePurchased
@@ -599,16 +609,21 @@ function CourseDetails() {
             size={isScreenMd ? 'l' : 's'}
             disabled={isStartOrBuyButtonDisabled}
             {...buttonProps}
-            {...(course.requiresPayment
-              ? {}
-              : {
-                  iconRight: <BsRocketTakeoff />,
-                })}
           >
+            {course?.requiresPayment && !isCoursePaid ? (
+              <span className="mr-3">
+                <FaLock />
+              </span>
+            ) : null}
             {t(
               courseHasToBePurchased
                 ? 'courses.details.buyCourse'
                 : 'courses.details.startCourse',
+            )}
+            {course.requiresPayment ? null : (
+              <span className="ml-3">
+                <BsRocketTakeoff />
+              </span>
             )}
           </Button>
         </div>

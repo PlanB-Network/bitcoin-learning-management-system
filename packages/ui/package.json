@@ -5,6 +5,17 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build": "tsc --build tsconfig.json",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+  },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-avatar": "^1.1.0",
@@ -32,7 +43,6 @@
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/addon-links": "^8.2.9",
-    "@storybook/addon-mdx-gfm": "^8.2.9",
     "@storybook/addon-onboarding": "^8.2.9",
     "@storybook/blocks": "^8.2.9",
     "@storybook/core-server": "^8.2.9",
@@ -48,9 +58,5 @@
     "storybook": "^8.2.9",
     "tailwindcss": "^3.4.10",
     "tailwindcss-animate": "^1.0.7"
-  },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
   }
 }

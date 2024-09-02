@@ -662,9 +662,6 @@ importers:
       '@storybook/addon-links':
         specifier: ^8.2.9
         version: 8.2.9(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))
-      '@storybook/addon-mdx-gfm':
-        specifier: ^8.2.9
-        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))
       '@storybook/addon-onboarding':
         specifier: ^8.2.9
         version: 8.2.9(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))
@@ -2750,11 +2747,6 @@ packages:
     peerDependenciesMeta:
       react:
         optional: true
-
-  '@storybook/addon-mdx-gfm@8.2.9':
-    resolution: {integrity: sha512-qpv3oVBVStXKcYmhmsEDVlWvdOpG4bHGOchCe2iU/wlcT5zFQSpQj2IoCNbj5MxhwAw2VobrAvRjNQjv95fYAg==}
-    peerDependencies:
-      storybook: ^8.2.9
 
   '@storybook/addon-measure@8.2.9':
     resolution: {integrity: sha512-XUfQtYRKWB2dfbPRmHuos816wt1JrLbtRld5ZC8J8ljeqZ4hFBPTQcgI5GAzZqjQuclLC0KuhlA/0bKxdxMMGA==}
@@ -10056,14 +10048,6 @@ snapshots:
       ts-dedent: 2.2.0
     optionalDependencies:
       react: 18.3.1
-
-  '@storybook/addon-mdx-gfm@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))':
-    dependencies:
-      remark-gfm: 4.0.0
-      storybook: 8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2))
-      ts-dedent: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@storybook/addon-measure@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))':
     dependencies:

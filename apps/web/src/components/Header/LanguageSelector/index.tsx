@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
@@ -108,10 +109,15 @@ export const LanguageSelector = ({
           <Button
             variant={variant === 'light' ? 'secondary' : 'outlineWhite'}
             size="m"
-            onHoverArrow
             className={cn('w-full', variant === 'light' ? '!text-primary' : '')}
           >
             {t('home.languageSection.link')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         </a>
       </PopoverContent>

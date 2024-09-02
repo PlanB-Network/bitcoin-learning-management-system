@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { CourseProgressExtended } from '@blms/types';
 import { Button, cn } from '@blms/ui';
@@ -125,8 +126,14 @@ export const CoursesProgressList = ({
                     chapterId: course.nextChapter?.chapterId as string,
                   }}
                 >
-                  <Button variant="outline" onHoverArrow size="s">
+                  <Button variant="outline" size="s">
                     {t('dashboard.myCourses.resumeLesson')}
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
                   </Button>
                 </Link>
               </div>

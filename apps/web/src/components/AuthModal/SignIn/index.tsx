@@ -74,11 +74,13 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInModalProps) => {
             variant="outline"
             size="m"
             onClick={() => goTo(AuthModalState.LnurlAuth)}
-            iconRight={<BsLightningChargeFill className="w-6" />}
             disabled
             className="mb-2.5"
           >
             {t('auth.connectWithLn')}
+            <span className="ml-3">
+              <BsLightningChargeFill className="w-6" />
+            </span>
           </Button>
           <Divider>{t('words.or').toLowerCase()}</Divider>
           <Formik

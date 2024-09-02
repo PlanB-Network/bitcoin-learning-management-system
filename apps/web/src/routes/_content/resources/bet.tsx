@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
 import type { BetViewUrl } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -195,8 +196,14 @@ function BET() {
               className="max-md:mx-auto md:ml-auto shrink-0"
               rel="noreferrer"
             >
-              <Button variant="primary" onHoverArrow size="l">
-                {t('bet.contributeButton')}
+              <Button variant="primary" size="l">
+                {t('bet.contributeButton')}{' '}
+                <FaArrowRightLong
+                  className={cn(
+                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                    'group-hover:ml-3',
+                  )}
+                />
               </Button>
             </a>
           </div>

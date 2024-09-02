@@ -7,6 +7,7 @@ import {
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 import { Button, Tabs, TabsContent, TabsList, TabsTrigger, cn } from '@blms/ui';
 
@@ -167,7 +168,13 @@ function TutorialCategory() {
 
         <div className="flex justify-center lg:hidden mt-6">
           <Link to="/tutorials">
-            <Button variant="outline" onHoverArrow onHoverArrowDirection="left">
+            <Button variant="outline">
+              <FaArrowLeftLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:mr-3',
+                )}
+              />
               {t('tutorials.backTutorials')}
             </Button>
           </Link>

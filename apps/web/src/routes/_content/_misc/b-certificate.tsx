@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect } from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import bCertificatesImage from '#src/assets/about/b-certificates.webp';
 import Question from '#src/assets/icons/question.svg?react';
@@ -41,8 +42,14 @@ const BCertificateOrganize = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="primary" onHoverArrow size={isScreenMd ? 'l' : 's'}>
+          <Button variant="primary" size={isScreenMd ? 'l' : 's'}>
             {t('bCertificate.readChart')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         </a>
         <a
@@ -50,8 +57,14 @@ const BCertificateOrganize = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="primary" onHoverArrow size={isScreenMd ? 'l' : 's'}>
+          <Button variant="primary" size={isScreenMd ? 'l' : 's'}>
             {t('bCertificate.organizeExam')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         </a>
       </div>

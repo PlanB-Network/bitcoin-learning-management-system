@@ -315,12 +315,14 @@ export const EventCard = ({
       return (
         <Link to={'/resources/conferences'} className="w-fit">
           <Button
-            iconRight={<HiVideoCamera size={18} />}
             variant="secondary"
             size={isScreenSm ? 's' : 'xs'}
             className="rounded-lg text-xs md:text-base"
           >
             {t('events.card.watchReplay')}
+            <span className="ml-3">
+              <HiVideoCamera size={18} />
+            </span>
           </Button>
         </Link>
       );
@@ -330,17 +332,18 @@ export const EventCard = ({
       isFree ? (
       <Link to={'/events/' + event.id} className="w-fit">
         <Button
-          iconRight={<HiVideoCamera size={18} />}
           variant="secondary"
           size={isScreenSm ? 's' : 'xs'}
           className="rounded-lg text-xs md:text-base"
         >
           {t('events.card.watchReplay')}
+          <span className="ml-3">
+            <HiVideoCamera size={18} />
+          </span>
         </Button>
       </Link>
     ) : (
       <Button
-        iconRight={<HiVideoCamera size={18} />}
         variant="secondary"
         size={isScreenSm ? 's' : 'xs'}
         className="rounded-lg text-xs md:text-base"
@@ -358,6 +361,9 @@ export const EventCard = ({
         }}
       >
         {t('events.card.buyReplay')}
+        <span className="ml-3">
+          <HiVideoCamera size={18} />
+        </span>
       </Button>
     );
   };

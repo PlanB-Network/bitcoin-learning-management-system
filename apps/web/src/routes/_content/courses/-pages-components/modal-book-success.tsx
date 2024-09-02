@@ -77,9 +77,13 @@ export const ModalBookSuccess = ({
             link.click();
             link.remove();
           }}
-          iconRight={isPending ? <FiLoader /> : undefined}
         >
           {t('events.payment.download_ticket')}
+          {isPending ? (
+            <span className="ml-3">
+              <FiLoader />
+            </span>
+          ) : null}
         </Button>
       </div>
     </div>

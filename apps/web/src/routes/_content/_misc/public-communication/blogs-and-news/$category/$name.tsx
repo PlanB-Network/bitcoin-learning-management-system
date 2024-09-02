@@ -1,9 +1,10 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 import { formatDateSimple } from '@blms/api/src/utils/date.ts';
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
@@ -99,11 +100,13 @@ function SingleBlogDetail() {
 
           <div className="w-max-[135px] hidden md:flex lg:mt-32">
             <Link to="/public-communication">
-              <Button
-                variant="primary"
-                onHoverArrow={true}
-                onHoverArrowDirection="left"
-              >
+              <Button variant="primary">
+                <FaArrowLeftLong
+                  className={cn(
+                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                    'group-hover:mr-3',
+                  )}
+                />
                 {t('publicCommunication.goBackButtons.simpleGoBack')}
               </Button>
             </Link>
@@ -114,11 +117,13 @@ function SingleBlogDetail() {
         </div>
         <div className="flex md:hidden w-max-[135px] justify-center">
           <Link to="/public-communication">
-            <Button
-              variant="primary"
-              onHoverArrow={true}
-              onHoverArrowDirection="left"
-            >
+            <Button variant="primary">
+              <FaArrowLeftLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:mr-3',
+                )}
+              />
               {t('publicCommunication.goBackButtons.simpleGoBack')}
             </Button>
           </Link>

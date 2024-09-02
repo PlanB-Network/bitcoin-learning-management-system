@@ -3,6 +3,7 @@ import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import type { JoinedCourse } from '@blms/types';
@@ -168,10 +169,15 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
         <Button
           variant="primary"
           size="m"
-          onHoverArrow
           className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
         >
           {t('courses.explorer.seeCourse')}
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+              'group-hover:ml-3',
+            )}
+          />
         </Button>
       </div>
     </article>
@@ -311,13 +317,14 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 to="/courses/$courseId"
                 params={{ courseId: activeCourse.id }}
               >
-                <Button
-                  variant="primary"
-                  size="l"
-                  onHoverArrow
-                  className="w-full"
-                >
+                <Button variant="primary" size="l" className="w-full">
                   {t('courses.explorer.seeCourse')}
+                  <FaArrowRightLong
+                    className={cn(
+                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                      'group-hover:ml-3',
+                    )}
+                  />
                 </Button>
               </Link>
             </article>
@@ -381,10 +388,15 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                             <Button
                               variant="primary"
                               size="m"
-                              onHoverArrow
                               className="w-full"
                             >
                               {t('courses.explorer.seeCourse')}
+                              <FaArrowRightLong
+                                className={cn(
+                                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                                  'group-hover:ml-3',
+                                )}
+                              />
                             </Button>
                           </Link>
                         </article>

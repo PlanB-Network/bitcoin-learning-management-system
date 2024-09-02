@@ -1,7 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button, Tag } from '@blms/ui';
+import { Button, Tag, cn } from '@blms/ui';
 
 import Flag from '#src/molecules/Flag/index.js';
 
@@ -49,8 +50,14 @@ export const ConferenceRow = ({
         <div className="flex justify-center items-center">
           {link ? (
             <Link to={link} className="min-w-fit">
-              <Button variant="primary" onHoverArrow>
+              <Button variant="primary">
                 {t('events.card.watchReplay')}
+                <FaArrowRightLong
+                  className={cn(
+                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                    'group-hover:ml-3',
+                  )}
+                />
               </Button>
             </Link>
           ) : (

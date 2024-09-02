@@ -157,9 +157,6 @@ const Buttons = ({
             variant="primary"
             size={buttonSize}
             mode="light"
-            iconRight={
-              isPendingTicket || isPendingChapter ? <FiLoader /> : undefined
-            }
             onClick={async () => {
               let base64 = '';
 
@@ -192,6 +189,11 @@ const Buttons = ({
             }}
           >
             {t('words.download')}
+            {isPendingTicket || isPendingChapter ? (
+              <span className="ml-3">
+                <FiLoader />
+              </span>
+            ) : null}
           </Button>
         )}
 

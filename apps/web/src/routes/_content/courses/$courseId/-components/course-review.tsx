@@ -3,6 +3,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { z } from 'zod';
 
 import {
@@ -383,10 +384,15 @@ export function CourseReview({
                 className="w-full"
                 variant="primary"
                 size={window.innerWidth >= 768 ? 'l' : 'm'}
-                onHoverArrow
                 disabled={formDisabled}
               >
                 {t('courses.review.submitReview')}
+                <FaArrowRightLong
+                  className={cn(
+                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                    'group-hover:ml-3',
+                  )}
+                />
               </Button>
             </form>
           </Form>
