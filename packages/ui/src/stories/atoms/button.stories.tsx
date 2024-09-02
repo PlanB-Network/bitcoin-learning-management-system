@@ -7,10 +7,10 @@ const meta: Meta<typeof Button> = {
   parameters: {
     layout: 'centered',
     backgrounds: {
-      default: 'dark', // Choose a name for the background
+      default: 'light',
       values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#333333' }, // You can adjust this color
+        { name: 'light', value: '#F2F2F2' },
+        { name: 'dark', value: '#333333' },
       ],
     },
   },
@@ -66,6 +66,7 @@ export const Ghost: Story = {
 
 export const Disabled: Story = {
   args: {
+    children: 'Disabled',
     disabled: true,
   },
 };

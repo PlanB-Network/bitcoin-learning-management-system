@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from '../../atoms/avatar.tsx';
+import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/avatar.tsx';
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
@@ -11,5 +11,12 @@ export default meta;
 type Story = StoryObj<typeof Avatar>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    children: (
+      <>
+        <AvatarImage src={'src/stories/assets/discord.svg'} />
+        <AvatarFallback>CN</AvatarFallback>
+      </>
+    ),
+  },
 };

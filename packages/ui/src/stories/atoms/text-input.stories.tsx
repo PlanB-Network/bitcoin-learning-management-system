@@ -11,5 +11,11 @@ export default meta;
 type Story = StoryObj<typeof TextInput>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    labelText: 'Label',
+    placeholder: 'Placeholder',
+    cornerHint: 'Corner hint',
+    mandatory: true,
+    error: 'Error ',
+  },
 };
