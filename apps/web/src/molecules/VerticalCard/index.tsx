@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { ButtonProps } from '@blms/ui';
 import { Button, cn } from '@blms/ui';
@@ -179,11 +180,18 @@ export const VerticalCard = ({
                   variant={buttonVariant}
                   mode={buttonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={buttonIcon}
                 >
                   {buttonText}
+                  <span className="ml-3">{buttonIcon}</span>
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </a>
             ) : (
@@ -195,11 +203,18 @@ export const VerticalCard = ({
                   variant={buttonVariant}
                   mode={buttonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={buttonIcon}
                 >
                   {buttonText}
+                  <span className="ml-3">{buttonIcon}</span>
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </Link>
             )
@@ -210,9 +225,9 @@ export const VerticalCard = ({
               size={isScreenMd ? 'm' : 'xs'}
               disabled
               className={cn(secondaryButtonText ? 'max-md:w-full' : 'w-full')}
-              iconRight={buttonIcon}
             >
               {buttonText}
+              <span className="ml-3">{buttonIcon}</span>
             </Button>
           ))}
         {secondaryButtonText &&
@@ -229,11 +244,18 @@ export const VerticalCard = ({
                   variant={secondaryButtonVariant}
                   mode={secondaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={secondaryButtonIcon}
                 >
                   {secondaryButtonText}
+                  <span className="ml-3">{secondaryButtonIcon}</span>
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </a>
             ) : (
@@ -242,11 +264,18 @@ export const VerticalCard = ({
                   variant={secondaryButtonVariant}
                   mode={secondaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={secondaryButtonIcon}
                 >
                   {secondaryButtonText}
+                  <span className="ml-3">{secondaryButtonIcon}</span>
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </Link>
             )
@@ -257,9 +286,9 @@ export const VerticalCard = ({
               size={isScreenMd ? 'm' : 'xs'}
               disabled
               className="max-md:w-full"
-              iconRight={secondaryButtonIcon}
             >
               {secondaryButtonText}
+              <span className="ml-3">{secondaryButtonIcon}</span>
             </Button>
           ))}
         {(tertiaryButtonText || tertiaryButtonIcon) &&
@@ -275,13 +304,18 @@ export const VerticalCard = ({
                   variant={tertiaryButtonVariant}
                   mode={tertiaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={
-                    tertiaryButtonText ? tertiaryButtonIcon : undefined
-                  }
                 >
                   {tertiaryButtonText || tertiaryButtonIcon}
+                  <span className="ml-3">{tertiaryButtonIcon}</span>
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </a>
             ) : (
@@ -290,13 +324,19 @@ export const VerticalCard = ({
                   variant={tertiaryButtonVariant}
                   mode={tertiaryButtonMode}
                   size={isScreenMd ? 'm' : 'xs'}
-                  onHoverArrow={onHoverArrow}
                   className="w-full"
-                  iconRight={
-                    tertiaryButtonText ? tertiaryButtonIcon : undefined
-                  }
                 >
                   {tertiaryButtonText || tertiaryButtonIcon}
+                  <span className="ml-3">{tertiaryButtonIcon}</span>
+
+                  {onHoverArrow ? (
+                    <FaArrowRightLong
+                      className={cn(
+                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                        'group-hover:ml-3',
+                      )}
+                    />
+                  ) : null}
                 </Button>
               </Link>
             )
@@ -307,9 +347,9 @@ export const VerticalCard = ({
               size={isScreenMd ? 'm' : 'xs'}
               disabled
               className="max-md:w-full ml-auto"
-              iconRight={tertiaryButtonText ? tertiaryButtonIcon : undefined}
             >
               {tertiaryButtonText || tertiaryButtonIcon}
+              <span className="ml-3">{tertiaryButtonIcon}</span>
             </Button>
           ))}
       </div>

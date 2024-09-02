@@ -92,9 +92,11 @@ export const GlossaryFilterBar = ({
           <Button
             variant="outlineWhite"
             size={window.innerWidth >= 768 ? 'm' : 's'}
-            iconLeft={<RxReload />}
             className="shrink-0"
           >
+            <span className="mr-3">
+              <RxReload />
+            </span>
             {t('glossary.randomSearch')}
           </Button>
         </Link>

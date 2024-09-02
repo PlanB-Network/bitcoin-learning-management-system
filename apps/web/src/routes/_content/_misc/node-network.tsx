@@ -1,8 +1,9 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { LuPlus } from 'react-icons/lu';
 
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
 import nodeMap from '#src/assets/about/node_map.webp';
@@ -134,8 +135,14 @@ function NodeNetwork() {
             rel="noopener noreferrer"
             className="mt-10 z-10"
           >
-            <Button variant="secondary" onHoverArrow size="l">
+            <Button variant="secondary" size="l">
               {t('nodeNetwork.apply')}
+              <FaArrowRightLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:ml-3',
+                )}
+              />
             </Button>
           </a>
         </div>

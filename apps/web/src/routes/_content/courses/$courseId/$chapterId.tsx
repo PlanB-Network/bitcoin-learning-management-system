@@ -8,9 +8,10 @@ import { t } from 'i18next';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { JoinedQuizQuestion } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
@@ -481,22 +482,24 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
         params={goToChapterParameters(chapter, 'next')}
       >
         {isLastChapter ? (
-          <Button
-            variant="primary"
-            size="l"
-            onHoverArrow
-            onClick={completeChapter}
-          >
+          <Button variant="primary" size="l" onClick={completeChapter}>
             <span>{t('courses.chapter.finishCourse')}</span>
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         ) : (
-          <Button
-            variant="primary"
-            size="l"
-            onHoverArrow
-            onClick={completeChapter}
-          >
+          <Button variant="primary" size="l" onClick={completeChapter}>
             <span>{t('courses.chapter.next')}</span>
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
           </Button>
         )}
       </Link>

@@ -52,9 +52,13 @@ export const ModalBookSuccess = ({
           onClick={() => {
             onClose();
           }}
-          iconRight={isPending ? <FiLoader /> : undefined}
         >
           {t('events.payment.back_events')}
+          {isPending ? (
+            <span className="ml-3">
+              <FiLoader />
+            </span>
+          ) : null}
         </Button>
         {accessType === 'physical' && (
           <Button

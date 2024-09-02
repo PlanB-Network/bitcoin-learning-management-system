@@ -218,9 +218,11 @@ function Home() {
                 variant="secondary"
                 rounded={true}
                 className=" !text-black"
-                iconRight={<AiOutlineRight />}
               >
                 {t('home.sectionEducation.link')}
+                <span className="ml-3">
+                  <AiOutlineRight />
+                </span>
               </Button>
             </Link>
 
@@ -255,9 +257,11 @@ function Home() {
                 variant="secondary"
                 rounded={true}
                 className=" !text-black"
-                iconRight={<AiOutlineRight />}
               >
                 {t('home.sectionNetwork.link')}
+                <span className="ml-3">
+                  <AiOutlineRight />
+                </span>
               </Button>
             </Link>
             <Link to={'/node-network'}>
@@ -396,10 +400,14 @@ function Home() {
               variant="primary"
               rounded={true}
               className=" !text-black md:mt-4"
-              iconRight={isScreenMd ? <AiOutlineRight /> : undefined}
               glowing={true}
             >
               {t('home.tutorialSection.link')}
+              {isScreenMd ? (
+                <span className="ml-3">
+                  <AiOutlineRight />
+                </span>
+              ) : null}
             </Button>
           </Link>
 
@@ -481,9 +489,11 @@ function Home() {
                   variant="secondary"
                   rounded={true}
                   className="!text-black"
-                  iconRight={<AiOutlineRight />}
                 >
                   {t('home.languageSection.link')}
+                  <span className="ml-3">
+                    <AiOutlineRight />
+                  </span>
                 </Button>
               </a>
             </div>

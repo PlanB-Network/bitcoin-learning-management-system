@@ -2,10 +2,11 @@ import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button, Tag } from '@blms/ui';
+import { Button, Tag, cn } from '@blms/ui';
 
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
@@ -323,11 +324,15 @@ function Conference() {
                 <Button
                   variant="secondary"
                   size="l"
-                  onHoverArrow
-                  onHoverArrowDirection="left"
                   className="mr-auto max-sm:hidden"
                   onClick={() => setActiveVideo((v) => v - 1)}
                 >
+                  <FaArrowLeftLong
+                    className={cn(
+                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                      'group-hover:mr-3',
+                    )}
+                  />
                   {t('conferences.details.previousVideo')}
                 </Button>
               )}
@@ -337,11 +342,16 @@ function Conference() {
                 <Button
                   variant="secondary"
                   size="l"
-                  onHoverArrow
                   className="ml-auto max-sm:hidden"
                   onClick={() => setActiveVideo((v) => v + 1)}
                 >
                   {t('conferences.details.nextVideo')}
+                  <FaArrowRightLong
+                    className={cn(
+                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                      'group-hover:ml-3',
+                    )}
+                  />
                 </Button>
               )}
 

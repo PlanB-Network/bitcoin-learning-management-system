@@ -11,5 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    children: 'Primary tag',
+  },
 };

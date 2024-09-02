@@ -87,12 +87,3 @@ export const RoundedPrimary: Story = {
     variant: 'primary',
   },
 };
-
-export const OnHoverArrow: Story = {
-  args: {
-    children: 'OnHoverArrow',
-    onHoverArrow: true,
-    size: 'l',
-    variant: 'primary',
-  },
-};
