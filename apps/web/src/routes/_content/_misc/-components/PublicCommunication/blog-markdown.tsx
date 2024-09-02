@@ -149,7 +149,7 @@ const BlogMarkdownBody = ({
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 text-base tracking-wide last:mb-0 md:text-justify">
+          <li className="leading-relaxed mb-5 text-start text-black">
             {children}
           </li>
         ),
