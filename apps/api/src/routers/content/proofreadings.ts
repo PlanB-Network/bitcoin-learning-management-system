@@ -14,7 +14,7 @@ const getProofreadingProcedure = publicProcedure
     z.object({
       language: z.string(),
       courseId: z.string().optional(),
-      tutorialId: z.number().optional(),
+      tutorialId: z.string().optional(),
       resourceId: z.number().optional(),
     }),
   )

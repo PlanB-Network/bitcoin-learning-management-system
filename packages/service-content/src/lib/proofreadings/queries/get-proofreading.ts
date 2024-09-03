@@ -9,7 +9,7 @@ export const getProofreadingQuery = ({
 }: {
   language: string;
   courseId?: string;
-  tutorialId?: number;
+  tutorialId?: string;
   resourceId?: number;
 }) => {
   if (!courseId && !tutorialId && !resourceId) {

@@ -13,7 +13,7 @@ export const getProfessorTutorialsQuery = ({
       contributorId: string;
     }
   | {
-      id: number;
+      id: string;
       contributorId?: undefined;
     }
 )) => {

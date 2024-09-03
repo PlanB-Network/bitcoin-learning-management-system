@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedTutorialCredit } from '@blms/types';
 
-export const getCreditsQuery = (id: number, language?: string) => {
+export const getCreditsQuery = (id: string, language?: string) => {
   return sql<JoinedTutorialCredit[]>`
     SELECT 
         tc.*,

@@ -2,7 +2,7 @@ import { sql } from '@blms/database';
 
 export const getExistingLikeTutorialQuery = (
   uid: string,
-  tutorialId: number,
+  tutorialId: string,
 ) => {
   return sql`
     SELECT tld.tutorial_id, tld.uid, tld.liked
@@ -11,7 +11,7 @@ export const getExistingLikeTutorialQuery = (
   `;
 };
 
-export const deleteLikeTutorialQuery = (uid: string, tutorialId: number) => {
+export const deleteLikeTutorialQuery = (uid: string, tutorialId: string) => {
   return sql`
     DELETE FROM content.tutorial_likes_dislikes
     WHERE tutorial_id = ${tutorialId} AND uid = ${uid}
@@ -21,7 +21,7 @@ export const deleteLikeTutorialQuery = (uid: string, tutorialId: number) => {
 
 export const updateLikeTutorialQuery = (
   uid: string,
-  tutorialId: number,
+  tutorialId: string,
   liked: boolean,
 ) => {
   return sql`
@@ -34,7 +34,7 @@ export const updateLikeTutorialQuery = (
 
 export const insertLikeTutorialQuery = (
   uid: string,
-  tutorialId: number,
+  tutorialId: string,
   liked: boolean,
 ) => {
   return sql`
