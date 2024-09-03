@@ -8,7 +8,6 @@ import { z } from 'zod';
 
 import {
   Button,
-  Divider,
   Form,
   FormControl,
   FormField,
@@ -54,6 +53,7 @@ function FormSlider({
 
   return (
     <div className="flex flex-col">
+      <div className="mb-5 w-full h-px my-2.5 bg-newGray-4" />
       <div className={formDivClass}>
         <FormField
           control={form.control}
@@ -110,9 +110,6 @@ function FormSlider({
           </div>
         </div>
       </div>
-      <div className="my-6 md:my-12 w-full self-center justify-center ml-auto">
-        <Divider></Divider>
-      </div>
     </div>
   );
 }
@@ -144,7 +141,7 @@ function FormTextArea({
               placeholder={t('courses.review.writeThoughts')}
               rows={3}
               disabled={disabled}
-              className="w-full rounded-md px-4 py-1 text-gray-400 border border-gray-400/6"
+              className="w-full rounded-md px-4 py-2.5 text-newGray-1 border border-newGray-4 bg-white disabled:bg-newGray-4 subtitle-med-reg-16px"
               {...field}
             />
           </FormControl>
@@ -270,7 +267,7 @@ export function CourseReview({
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mx-4 md:mx-32 space-y-6"
+              className="flex flex-col mt-12 mx-4 md:mx-32 gap-5"
             >
               <FormField
                 control={form.control}
@@ -278,9 +275,16 @@ export function CourseReview({
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 render={({ field }: { field: any }) => (
                   <FormItem>
-                    <FormLabel> {t('courses.review.generalGrade')}</FormLabel>
+                    <FormLabel className="!mb-4">
+                      {t('courses.review.generalGrade')}
+                    </FormLabel>
                     <FormControl>
-                      <div className="bg-newGray-6 py-7 rounded-full w-fit mx-auto px-11 shadow-course-navigation">
+                      <div
+                        className={cn(
+                          'bg-newGray-6 py-7 rounded-full w-fit mx-auto px-11 shadow-course-navigation',
+                          formDisabled && 'pointer-events-none',
+                        )}
+                      >
                         <Ratings
                           id="general"
                           variant="yellow"
@@ -358,30 +362,34 @@ export function CourseReview({
                 disabled={formDisabled}
               />
 
-              <FormTextArea
-                id="publicComment"
-                control={form.control}
-                label={t('courses.review.commentPublic')}
-                disabled={formDisabled}
-              />
+              <div className="mb-5 w-10/12 mx-auto h-px my-2.5 bg-newGray-1" />
 
-              <FormTextArea
-                id="teacherComment"
-                control={form.control}
-                label={t('courses.review.commentTeacher')}
-                disabled={formDisabled}
-              />
+              <div className="flex flex-col gap-6">
+                <FormTextArea
+                  id="publicComment"
+                  control={form.control}
+                  label={t('courses.review.commentPublic')}
+                  disabled={formDisabled}
+                />
 
-              <FormTextArea
-                id="adminComment"
-                control={form.control}
-                label={t('courses.review.commentAdmin')}
-                disabled={formDisabled}
-              />
+                <FormTextArea
+                  id="teacherComment"
+                  control={form.control}
+                  label={t('courses.review.commentTeacher')}
+                  disabled={formDisabled}
+                />
+
+                <FormTextArea
+                  id="adminComment"
+                  control={form.control}
+                  label={t('courses.review.commentAdmin')}
+                  disabled={formDisabled}
+                />
+              </div>
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-fit mx-auto mt-6 lg:mt-12"
                 variant="primary"
                 size={window.innerWidth >= 768 ? 'l' : 'm'}
                 disabled={formDisabled}

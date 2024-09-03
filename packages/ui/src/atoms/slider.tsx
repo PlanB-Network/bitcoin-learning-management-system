@@ -26,7 +26,8 @@ const Slider = React.forwardRef<
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
         className={cn(
-          'block size-5 rounded-full bg-darkOrange-5 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+          'block size-7 rounded-full bg-darkOrange-5 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ',
+          props.disabled && 'bg-newGray-2',
         )}
       />
       {/* Hack - course review slider */}
@@ -34,6 +35,7 @@ const Slider = React.forwardRef<
         className={cn(
           'absolute bg-darkOrange-5 h-full rounded-full left-1/2',
           props.value && props.value[0] < average ? '-translate-x-full' : '',
+          props.disabled && 'bg-newGray-2',
         )}
         style={{
           width:
