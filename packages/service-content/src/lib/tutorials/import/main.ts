@@ -15,6 +15,7 @@ import { yamlToObject } from '../../utils.js';
 import type { ChangedTutorial } from './index.js';
 
 interface TutorialMain {
+  id: string;
   level: string;
   category?: string;
   original_language: string;
@@ -59,8 +60,9 @@ export const createProcessMainFile =
       .sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (path, name, category, subcategory, original_language, level, builder, last_updated, last_commit, last_sync)
+        INSERT INTO content.tutorials (uuid, path, name, category, subcategory, original_language, level, builder, last_updated, last_commit, last_sync)
         VALUES (
+          ${parsedTutorial.id},
           ${tutorial.path},
           ${tutorial.name},
           ${tutorial.category},
@@ -73,6 +75,7 @@ export const createProcessMainFile =
           NOW()
         )
         ON CONFLICT (path) DO UPDATE SET
+          uuid = EXCLUDED.uuid,
           category = EXCLUDED.category,
           subcategory = EXCLUDED.subcategory,
           original_language = EXCLUDED.original_language,

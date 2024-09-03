@@ -989,6 +989,7 @@ export const contentTutorials = content.table(
   'tutorials',
   {
     id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
+    uuid: uuid('uuid'),
     path: varchar('path', { length: 255 }).unique().notNull(),
 
     name: varchar('name', { length: 255 }).notNull(),
