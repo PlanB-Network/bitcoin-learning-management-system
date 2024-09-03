@@ -24,7 +24,7 @@ export const TutorialLayout = ({
   children?: JSX.Element | JSX.Element[];
   currentCategory?: string;
   currentSubcategory?: string | null;
-  currentTutorialId?: number;
+  currentTutorialId?: string;
 }) => {
   const { t } = useTranslation();
 

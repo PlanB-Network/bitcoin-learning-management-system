@@ -8,7 +8,7 @@ export const createGetProofreading =
   async (
     language: string,
     courseId: string | undefined,
-    tutorialId: number | undefined,
+    tutorialId: string | undefined,
     resourceId: number | undefined,
   ) => {
     const { postgres } = dependencies;

@@ -988,8 +988,7 @@ export const usersEventPayment = users.table(
 export const contentTutorials = content.table(
   'tutorials',
   {
-    id: integer('id').primaryKey().generatedAlwaysAsIdentity().notNull(),
-    uuid: uuid('uuid'),
+    id: uuid('id').primaryKey().notNull(),
     path: varchar('path', { length: 255 }).unique().notNull(),
 
     name: varchar('name', { length: 255 }).notNull(),
@@ -1020,9 +1019,11 @@ export const contentTutorials = content.table(
 export const contentTutorialsLocalized = content.table(
   'tutorials_localized',
   {
-    tutorialId: integer('tutorial_id')
+    tutorialId: uuid('tutorial_id')
       .notNull()
-      .references(() => contentTutorials.id, { onDelete: 'cascade' }),
+      .references(() => contentTutorials.id, {
+        onDelete: 'cascade',
+      }),
     language: varchar('language', { length: 10 }).notNull(),
     title: text('title').notNull(),
     description: text('description'),
@@ -1038,9 +1039,11 @@ export const contentTutorialsLocalized = content.table(
 export const contentTutorialTags = content.table(
   'tutorial_tags',
   {
-    tutorialId: integer('tutorial_id')
+    tutorialId: uuid('tutorial_id')
       .notNull()
-      .references(() => contentTutorials.id, { onDelete: 'cascade' }),
+      .references(() => contentTutorials.id, {
+        onDelete: 'cascade',
+      }),
     tagId: integer('tag_id')
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
@@ -1055,14 +1058,15 @@ export const contentTutorialTags = content.table(
 export const contentTutorialLikesDislikes = content.table(
   'tutorial_likes_dislikes',
   {
-    tutorialId: integer('tutorial_id')
+    tutorialId: uuid('tutorial_id')
       .notNull()
-      .references(() => contentTutorials.id, { onDelete: 'cascade' }),
+      .references(() => contentTutorials.id, {
+        onDelete: 'cascade',
+      }),
     uid: uuid('uid')
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    // true = liked, false = disliked
-    liked: boolean('liked').notNull(),
+    liked: boolean('liked').notNull(), // true = liked, false = disliked
   },
   (table) => ({
     pk: primaryKey({
@@ -1288,10 +1292,12 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
 );
 
 export const contentTutorialCredits = content.table('tutorial_credits', {
-  tutorialId: integer('tutorial_id')
+  tutorialId: uuid('tutorial_id')
     .primaryKey()
     .notNull()
-    .references(() => contentTutorials.id, { onDelete: 'cascade' }),
+    .references(() => contentTutorials.id, {
+      onDelete: 'cascade',
+    }),
   contributorId: varchar('contributor_id', { length: 20 }).references(
     () => contentContributors.id,
     { onDelete: 'cascade' },
@@ -1401,7 +1407,7 @@ export const contentProofreading = content.table(
         onUpdate: 'cascade',
       },
     ),
-    tutorialId: integer('tutorial_id').references(() => contentTutorials.id, {
+    tutorialId: uuid('tutorial_id').references(() => contentTutorials.id, {
       onDelete: 'cascade',
     }),
     resourceId: integer('resource_id').references(() => contentResources.id, {

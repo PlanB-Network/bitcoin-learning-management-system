@@ -14,7 +14,7 @@ import {
 
 interface Options {
   uid: string;
-  id: number;
+  id: string;
   liked: boolean;
 }
 
@@ -45,7 +45,7 @@ export const createLikeTutorial =
 
 export const createGetExistingLikeTutorial =
   (dependencies: Dependencies) =>
-  async ({ uid, id }: { uid: string; id: number }) => {
+  async ({ uid, id }: { uid: string; id: string }) => {
     const { postgres } = dependencies;
 
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);

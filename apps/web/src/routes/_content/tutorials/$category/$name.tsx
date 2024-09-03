@@ -228,7 +228,7 @@ function TutorialDetails() {
   const { data: existingLike } =
     trpc.user.tutorials.getExistingLikeTutorial.useQuery(
       {
-        id: tutorial?.id || 0,
+        id: tutorial?.id || '',
       },
       { enabled: !!tutorial?.id && isLoggedIn },
     );

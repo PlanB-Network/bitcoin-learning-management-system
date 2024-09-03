@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorials" DROP COLUMN IF EXISTS "id_old";

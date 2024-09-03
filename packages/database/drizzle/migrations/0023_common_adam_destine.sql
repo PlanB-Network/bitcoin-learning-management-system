@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorial_credits" ADD PRIMARY KEY ("tutorial_id");

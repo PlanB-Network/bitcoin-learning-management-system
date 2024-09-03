@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorials" RENAME COLUMN "id" TO "id_old";

@@ -4,7 +4,7 @@
 export interface Proofreading {
   id: string;
   courseId: string | null;
-  tutorialId: number | null;
+  tutorialId: string | null;
   resourceId: number | null;
   language: string;
   lastContributionDate: Date | null;
@@ -21,7 +21,7 @@ export interface ProofreadingContributor {
 export interface JoinedProofreading {
   id: string;
   courseId: string | null;
-  tutorialId: number | null;
+  tutorialId: string | null;
   resourceId: number | null;
   language: string;
   lastContributionDate: Date | null;
