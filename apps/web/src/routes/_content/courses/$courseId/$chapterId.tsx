@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
@@ -17,8 +17,11 @@ import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import {} from '#src/components/CoursesMarkdownBody/index.js';
+import { AuthModal } from '#src/components/AuthModal/index.js';
+import { AuthModalState } from '#src/components/AuthModal/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
+import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import {
@@ -620,6 +623,14 @@ function CourseChapter() {
     }
   }, [chapter]);
 
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const authMode = AuthModalState.SignIn;
+
   const isSpecialChapter =
     chapter?.isCourseReview ||
     chapter?.isCourseExam ||
@@ -724,11 +735,31 @@ function CourseChapter() {
                       <CourseReview chapter={chapter}></CourseReview>
                     ) : (
                       <>
-                        <p>Please log in</p>
+                        <p className="text-black text-center italic leading-relaxed tracking-015px w-full max-w-[596px] mx-auto">
+                          <Trans i18nKey="courses.review.currentlyLoggedOut">
+                            <button
+                              onClick={() => {
+                                !isLoggedIn && openAuthModal();
+                              }}
+                              className="underline hover:text-darkOrange-5 italic"
+                            >
+                              Login or Register
+                            </button>
+                          </Trans>
+                        </p>
+
                         <CourseReview
                           chapter={chapter}
                           formDisabled={true}
                         ></CourseReview>
+
+                        {isAuthModalOpen && (
+                          <AuthModal
+                            isOpen={isAuthModalOpen}
+                            onClose={closeAuthModal}
+                            initialState={authMode}
+                          />
+                        )}
                       </>
                     )}
                   </>

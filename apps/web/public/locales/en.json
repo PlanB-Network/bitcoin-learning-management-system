@@ -281,6 +281,7 @@
       "commentAdmin": "Comment to the admin team (private)",
       "commentPublic": "Comment (public)",
       "commentTeacher": "Comment to the teacher (private)",
+      "currentlyLoggedOut": "You are currently logged out. In order to give us feedback on the course, please <0>log in or register</0>.",
       "difficulty": "Difficulty",
       "faithful": "True to objective?",
       "feedbackDescription": "Please rate your experience of the course below.\nThis feedback session is mandatory to have access to the final exam, and to validate the course.\nNote that teachers will not have access to individual evaluations.",
