@@ -55,6 +55,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 };
 
 export const groupByResource = (files: ChangedFile[], errors: string[]) => {
+  // Filter the resource files
   const resourceFiles = files.filter(
     (item) =>
       getContentType(item.path) === 'resources' ||
@@ -93,7 +94,17 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
     }
   }
 
-  return [...groupedResources.values()];
+  const groupedResourceValues = [...groupedResources.values()];
+
+  // Return builders first
+  return [
+    ...groupedResourceValues.filter((resource) =>
+      resource.path.startsWith('resources/builders'),
+    ),
+    ...groupedResourceValues.filter(
+      (resource) => !resource.path.startsWith('resources/builders'),
+    ),
+  ];
 };
 
 export const createUpdateResources = (dependencies: Dependencies) => {
