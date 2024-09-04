@@ -24,7 +24,7 @@
     "@blms/service-content": "workspace:*",
     "@blms/service-user": "workspace:*",
     "@trpc/server": "11.0.0-rc.433",
-    "argon2": "^0.41.0",
+    "argon2": "^0.41.1",
     "bech32": "^2.0.0",
     "bip39": "^3.1.0",
     "connect-redis": "^7.1.1",
