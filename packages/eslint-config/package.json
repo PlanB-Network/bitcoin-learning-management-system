@@ -31,6 +31,6 @@
     "typescript-eslint": "^7.18.0"
   },
   "dependencies": {
-    "eslint-config-turbo": "^2.1.1"
+    "eslint-config-turbo": "^2.0.14"
   }
 }
