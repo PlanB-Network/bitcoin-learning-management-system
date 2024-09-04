@@ -35,7 +35,7 @@ export const credentialsAuthRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { dependencies, req } = ctx;
+      const { dependencies } = ctx;
 
       const getUser = createGetUser(dependencies);
 
@@ -54,8 +54,6 @@ export const credentialsAuthRouter = createTRPCRouter({
         contributorId: input.contributor_id,
         email: input.email,
       });
-
-      req.session.uid = user.uid;
 
       return {
         status: 201,
