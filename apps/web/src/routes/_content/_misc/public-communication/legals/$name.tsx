@@ -18,12 +18,12 @@ export function LegalInformationTab() {
     from: '/public-communication/legals/$name',
   });
 
-  const { data: legal } = trpc.content.getLegal.useQuery({
+  const { data: legal, isFetched } = trpc.content.getLegal.useQuery({
     name,
     language: i18n.language,
   });
 
-  if (!legal) {
+  if (isFetched && !legal) {
     return <div className="text-black">Legal information not found!</div>;
   }
 
