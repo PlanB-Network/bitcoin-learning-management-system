@@ -299,6 +299,10 @@
   .width-increment-20 {
     @apply w-[calc(100%+20px)] -ml-[10px];
   }
+
+  .blockquote-desktop {
+    @apply text-lg font-semibold text-center not-italic;
+  }
 }
 
 @layer utilities {
