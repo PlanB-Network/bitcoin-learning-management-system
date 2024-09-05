@@ -1,5 +1,7 @@
 // import { t } from 'i18next';
 
+import { Link } from '@tanstack/react-router';
+
 import type { JoinedTutorialLight } from '@blms/types';
 
 // import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
@@ -15,8 +17,8 @@ export const TutorialCard = ({
   href: string;
 }) => {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       rel="noreferrer"
       className="flex items-center w-full bg-newGray-6 shadow-course-navigation-sm md:shadow-course-navigation md:border border-newGray-5 rounded-lg md:rounded-[20px] p-1 md:p-4 gap-2.5 md:gap-6 max-md:max-w-72 my-4"
     >
@@ -61,6 +63,6 @@ export const TutorialCard = ({
 
         <TutorialLikes tutorial={tutorial} />
       </span>
-    </a>
+    </Link>
   );
 };
