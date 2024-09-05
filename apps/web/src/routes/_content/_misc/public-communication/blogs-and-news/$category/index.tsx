@@ -68,7 +68,7 @@ function BlogsCategory() {
   );
 
   return (
-    <Layout t={t}>
+    <Layout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">
         {/* Desktop view */}
         <div className="hidden lg:flex space-x-5">

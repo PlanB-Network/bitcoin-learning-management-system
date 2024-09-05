@@ -6,6 +6,12 @@ import Layout from '../-layout.tsx';
 import { BlogList } from '../../-components/PublicCommunication/blog-list.tsx';
 import { DropdownMenu } from '../../-components/PublicCommunication/dropdown-menu.tsx';
 
+export const Route = createFileRoute(
+  '/_content/_misc/public-communication/blogs-and-news/',
+)({
+  component: BlogsNews,
+});
+
 const blogTabs = [
   {
     id: 'all',
@@ -29,12 +35,6 @@ const blogTabs = [
   },
 ];
 
-export const Route = createFileRoute(
-  '/_content/_misc/public-communication/blogs-and-news/',
-)({
-  component: BlogsNews,
-});
-
 export function BlogsNews() {
   const { t } = useTranslation();
   const [selectedMainTab, setSelectedMainTab] = useState(blogTabs[0].id);
@@ -56,7 +56,7 @@ export function BlogsNews() {
   );
 
   return (
-    <Layout t={t}>
+    <Layout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">
         {/* Desktop view */}
         <div className="hidden lg:flex space-x-5">
@@ -85,7 +85,6 @@ export function BlogsNews() {
           />
         </div>
       </div>
-
       {/* Blog List */}
       <div className="flex flex-row text-center lg:justify-start lg:text-start space-x-5 mt-5">
         <BlogList category={selectedMainTab} />

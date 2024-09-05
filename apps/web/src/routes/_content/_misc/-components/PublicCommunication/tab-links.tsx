@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Tab {
   id: string;
@@ -7,11 +8,9 @@ interface Tab {
   href: string;
 }
 
-interface TabLinksProps {
-  t: (key: string) => string;
-}
+export const TabLinks: React.FC = () => {
+  const { t } = useTranslation();
 
-export const TabLinks: React.FC<TabLinksProps> = ({ t }) => {
   const mainTabs: Tab[] = [
     {
       id: 'tab1',
