@@ -9,17 +9,19 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceLayout } from './-other/layout.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/podcast/$podcastId')({
-  component: Podcast,
-});
+export const Route = createFileRoute('/_content/resources/podcasts/$podcastId')(
+  {
+    component: Podcast,
+  },
+);
 
 function Podcast() {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { podcastId } = useParams({
-    from: '/resources/podcast/$podcastId',
+    from: '/resources/podcasts/$podcastId',
   });
   const { data: podcast, isFetched } = trpc.content.getPodcast.useQuery({
     id: Number(podcastId),

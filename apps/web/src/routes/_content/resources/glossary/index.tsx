@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
-import { AlphabetGlossary } from './-components/AlphabetGlossary/index.tsx';
-import { GlossaryFilterBar } from './-components/GlossaryFilterBar/index.tsx';
-import { GlossaryList } from './-components/GlossaryList/index.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { AlphabetGlossary } from '../-components/AlphabetGlossary/index.tsx';
+import { GlossaryFilterBar } from '../-components/GlossaryFilterBar/index.tsx';
+import { GlossaryList } from '../-components/GlossaryList/index.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/glossary')({
+export const Route = createFileRoute('/_content/resources/glossary/')({
   component: Glossary,
 });
 

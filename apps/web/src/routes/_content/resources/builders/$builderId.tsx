@@ -14,19 +14,21 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import Flag from '#src/molecules/Flag/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BuilderEvents } from './-components/builder-events.tsx';
-import { BuilderCard } from './-components/Cards/builder-card.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { BuilderEvents } from '../-components/builder-events.tsx';
+import { BuilderCard } from '../-components/Cards/builder-card.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/builder/$builderId')({
-  component: Builder,
-});
+export const Route = createFileRoute('/_content/resources/builders/$builderId')(
+  {
+    component: Builder,
+  },
+);
 
 function Builder() {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { builderId } = useParams({
-    from: '/resources/builder/$builderId',
+    from: '/resources/builders/$builderId',
   });
   const isScreenMd = useGreater('sm');
   const { data: builder, isFetched } = trpc.content.getBuilder.useQuery(
@@ -230,7 +232,7 @@ function Builder() {
           <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
             {filteredCommunities.map((community) => (
               <Link
-                to={'/resources/builder/$builderId'}
+                to={'/resources/builders/$builderId'}
                 params={{
                   builderId: community.id.toString(),
                 }}

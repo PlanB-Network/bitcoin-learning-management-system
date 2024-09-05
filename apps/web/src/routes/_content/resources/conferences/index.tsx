@@ -9,11 +9,11 @@ import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ConferencesTable } from '../resources/-components/Tables/conferences-table.tsx';
-import { ConferencesTimeLine } from '../resources/-components/Timelines/conferences-timeline.tsx';
-import { ResourceLayout } from '../resources/-other/layout.tsx';
+import { ConferencesTable } from '../-components/Tables/conferences-table.tsx';
+import { ConferencesTimeLine } from '../-components/Timelines/conferences-timeline.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/conferences')({
+export const Route = createFileRoute('/_content/resources/conferences/')({
   component: Conferences,
 });
 
@@ -93,7 +93,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestConferences[0].stages.length > 0
-                      ? `/resources/conference/${latestConferences[0].id}`
+                      ? `/resources/conferences/${latestConferences[0].id}`
                       : ''
                   }
                   languages={latestConferences[0].languages}
@@ -106,7 +106,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestConferences[1].stages.length > 0
-                      ? `/resources/conference/${latestConferences[1].id}`
+                      ? `/resources/conferences/${latestConferences[1].id}`
                       : ''
                   }
                   languages={latestConferences[1].languages}
@@ -132,7 +132,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[0].stages.length > 0
-                      ? `/resources/conference/${latestPlanBConferences[0].id}`
+                      ? `/resources/conferences/${latestPlanBConferences[0].id}`
                       : ''
                   }
                   languages={latestPlanBConferences[0].languages}
@@ -145,7 +145,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[1].stages.length > 0
-                      ? `/resources/conference/${latestPlanBConferences[1].id}`
+                      ? `/resources/conferences/${latestPlanBConferences[1].id}`
                       : ''
                   }
                   languages={latestPlanBConferences[1].languages}
@@ -186,7 +186,7 @@ function Conferences() {
                 buttonVariant="primary"
                 buttonLink={
                   conference.stages.length > 0
-                    ? `/resources/conference/${conference.id}`
+                    ? `/resources/conferences/${conference.id}`
                     : ''
                 }
                 languages={conference.languages}

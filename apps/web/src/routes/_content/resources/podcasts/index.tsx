@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceCard } from './-components/Cards/resource-card.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { ResourceCard } from '../-components/Cards/resource-card.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/podcasts')({
+export const Route = createFileRoute('/_content/resources/podcasts/')({
   component: Podcasts,
 });
 
@@ -47,7 +47,7 @@ function Podcasts() {
           )
           .map((podcast) => (
             <Link
-              to={'/resources/podcast/$podcastId'}
+              to={'/resources/podcasts/$podcastId'}
               params={{
                 podcastId: podcast.id.toString(),
               }}

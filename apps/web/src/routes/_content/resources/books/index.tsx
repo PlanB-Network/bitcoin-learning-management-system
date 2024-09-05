@@ -7,10 +7,10 @@ import type { JoinedBook } from '@blms/types';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceCard } from './-components/Cards/resource-card.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { ResourceCard } from '../-components/Cards/resource-card.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/books')({
+export const Route = createFileRoute('/_content/resources/books/')({
   component: Books,
 });
 
@@ -48,7 +48,7 @@ export function Books() {
           )
           .map((book) => (
             <Link
-              to={'/resources/book/$bookId'}
+              to={'/resources/books/$bookId'}
               params={{
                 bookId: book.id.toString(),
               }}

@@ -9,16 +9,16 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { AlphabetGlossary } from './-components/AlphabetGlossary/index.tsx';
-import { GlossaryFilterBar } from './-components/GlossaryFilterBar/index.tsx';
-import { GlossaryList } from './-components/GlossaryList/index.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { AlphabetGlossary } from '../-components/AlphabetGlossary/index.tsx';
+import { GlossaryFilterBar } from '../-components/GlossaryFilterBar/index.tsx';
+import { GlossaryList } from '../-components/GlossaryList/index.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const GlossaryMarkdownBody = React.lazy(
   () => import('#src/components/GlossaryMarkdownBody/index.js'),
 );
 
-export const Route = createFileRoute('/_content/resources/word/$wordId')({
+export const Route = createFileRoute('/_content/resources/glossary/$wordId')({
   component: GlossaryWord,
 });
 
@@ -26,7 +26,7 @@ function GlossaryWord() {
   const { t, i18n } = useTranslation();
 
   const { wordId } = useParams({
-    from: '/resources/word/$wordId',
+    from: '/resources/glossary/$wordId',
   });
 
   const [relatedWords, setRelatedWords] = useState<JoinedGlossaryWord[]>([]);
@@ -129,7 +129,7 @@ function GlossaryWord() {
                   {relatedWords.map((word) => (
                     <li className="ml-2 md:ml-6 py-2" key={word.fileName}>
                       <Link
-                        to="/resources/word/$wordId"
+                        to="/resources/glossary/$wordId"
                         params={{ wordId: word.fileName }}
                         className="text-darkOrange-5 underline underline-offset-4 capitalize"
                       >

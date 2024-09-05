@@ -7,10 +7,10 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import Spinner from '#src/assets/spinner_orange.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BuilderCard } from './-components/Cards/builder-card.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { BuilderCard } from '../-components/Cards/builder-card.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/builders')({
+export const Route = createFileRoute('/_content/resources/builders/')({
   component: Builders,
 });
 
@@ -80,7 +80,7 @@ function Builders() {
               <div className="mt-5 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
                 {filteredBuilders.map((builder) => (
                   <Link
-                    to={'/resources/builder/$builderId'}
+                    to={'/resources/builders/$builderId'}
                     params={{
                       builderId: builder.id.toString(),
                     }}

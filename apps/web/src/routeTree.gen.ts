@@ -26,12 +26,6 @@ import { Route as DashboardDashboardBookingsImport } from './routes/dashboard/_d
 import { Route as DashboardDashboardBcertificateImport } from './routes/dashboard/_dashboard/bcertificate';
 import { Route as DashboardDashboardAdministrationImport } from './routes/dashboard/_dashboard/administration';
 import { Route as ContentTutorialsCategoryImport } from './routes/_content/tutorials/$category';
-import { Route as ContentResourcesPodcastsImport } from './routes/_content/resources/podcasts';
-import { Route as ContentResourcesGlossaryImport } from './routes/_content/resources/glossary';
-import { Route as ContentResourcesConferencesImport } from './routes/_content/resources/conferences';
-import { Route as ContentResourcesBuildersImport } from './routes/_content/resources/builders';
-import { Route as ContentResourcesBooksImport } from './routes/_content/resources/books';
-import { Route as ContentResourcesBetImport } from './routes/_content/resources/bet';
 import { Route as ContentEventsEventIdImport } from './routes/_content/events/$eventId';
 import { Route as ContentCoursesCourseIdImport } from './routes/_content/courses/$courseId';
 import { Route as ContentMiscUnderConstructionImport } from './routes/_content/_misc/under-construction';
@@ -42,15 +36,21 @@ import { Route as ContentMiscManifestoImport } from './routes/_content/_misc/man
 import { Route as ContentMiscBCertificateImport } from './routes/_content/_misc/b-certificate';
 import { Route as ContentMiscAboutImport } from './routes/_content/_misc/about';
 import { Route as ContentTutorialsCategoryIndexImport } from './routes/_content/tutorials/$category/index';
+import { Route as ContentResourcesPodcastsIndexImport } from './routes/_content/resources/podcasts/index';
+import { Route as ContentResourcesGlossaryIndexImport } from './routes/_content/resources/glossary/index';
+import { Route as ContentResourcesConferencesIndexImport } from './routes/_content/resources/conferences/index';
+import { Route as ContentResourcesBuildersIndexImport } from './routes/_content/resources/builders/index';
+import { Route as ContentResourcesBooksIndexImport } from './routes/_content/resources/books/index';
+import { Route as ContentResourcesBetIndexImport } from './routes/_content/resources/bet/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
 import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
-import { Route as ContentResourcesWordWordIdImport } from './routes/_content/resources/word.$wordId';
-import { Route as ContentResourcesPodcastPodcastIdImport } from './routes/_content/resources/podcast.$podcastId';
-import { Route as ContentResourcesConferenceConferenceIdImport } from './routes/_content/resources/conference.$conferenceId';
-import { Route as ContentResourcesBuilderBuilderIdImport } from './routes/_content/resources/builder.$builderId';
-import { Route as ContentResourcesBookBookIdImport } from './routes/_content/resources/book.$bookId';
+import { Route as ContentResourcesPodcastsPodcastIdImport } from './routes/_content/resources/podcasts/$podcastId';
+import { Route as ContentResourcesGlossaryWordIdImport } from './routes/_content/resources/glossary/$wordId';
+import { Route as ContentResourcesConferencesConferenceIdImport } from './routes/_content/resources/conferences/$conferenceId';
+import { Route as ContentResourcesBuildersBuilderIdImport } from './routes/_content/resources/builders/$builderId';
+import { Route as ContentResourcesBooksBookIdImport } from './routes/_content/resources/books/$bookId';
 import { Route as ContentCoursesCourseIdChapterIdImport } from './routes/_content/courses/$courseId/$chapterId';
 import { Route as ContentMiscValidateEmailTokenImport } from './routes/_content/_misc/validate-email.$token';
 import { Route as ContentMiscResetPasswordTokenImport } from './routes/_content/_misc/reset-password.$token';
@@ -143,37 +143,6 @@ const ContentTutorialsCategoryRoute = ContentTutorialsCategoryImport.update({
   getParentRoute: () => rootRoute,
 } as any);
 
-const ContentResourcesPodcastsRoute = ContentResourcesPodcastsImport.update({
-  path: '/resources/podcasts',
-  getParentRoute: () => rootRoute,
-} as any);
-
-const ContentResourcesGlossaryRoute = ContentResourcesGlossaryImport.update({
-  path: '/resources/glossary',
-  getParentRoute: () => rootRoute,
-} as any);
-
-const ContentResourcesConferencesRoute =
-  ContentResourcesConferencesImport.update({
-    path: '/resources/conferences',
-    getParentRoute: () => rootRoute,
-  } as any);
-
-const ContentResourcesBuildersRoute = ContentResourcesBuildersImport.update({
-  path: '/resources/builders',
-  getParentRoute: () => rootRoute,
-} as any);
-
-const ContentResourcesBooksRoute = ContentResourcesBooksImport.update({
-  path: '/resources/books',
-  getParentRoute: () => rootRoute,
-} as any);
-
-const ContentResourcesBetRoute = ContentResourcesBetImport.update({
-  path: '/resources/bet',
-  getParentRoute: () => rootRoute,
-} as any);
-
 const ContentEventsEventIdRoute = ContentEventsEventIdImport.update({
   path: '/events/$eventId',
   getParentRoute: () => rootRoute,
@@ -227,6 +196,42 @@ const ContentTutorialsCategoryIndexRoute =
     getParentRoute: () => ContentTutorialsCategoryRoute,
   } as any);
 
+const ContentResourcesPodcastsIndexRoute =
+  ContentResourcesPodcastsIndexImport.update({
+    path: '/resources/podcasts/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentResourcesGlossaryIndexRoute =
+  ContentResourcesGlossaryIndexImport.update({
+    path: '/resources/glossary/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentResourcesConferencesIndexRoute =
+  ContentResourcesConferencesIndexImport.update({
+    path: '/resources/conferences/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentResourcesBuildersIndexRoute =
+  ContentResourcesBuildersIndexImport.update({
+    path: '/resources/builders/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentResourcesBooksIndexRoute = ContentResourcesBooksIndexImport.update(
+  {
+    path: '/resources/books/',
+    getParentRoute: () => rootRoute,
+  } as any,
+);
+
+const ContentResourcesBetIndexRoute = ContentResourcesBetIndexImport.update({
+  path: '/resources/bet/',
+  getParentRoute: () => rootRoute,
+} as any);
+
 const ContentCoursesCourseIdIndexRoute =
   ContentCoursesCourseIdIndexImport.update({
     path: '/',
@@ -251,37 +256,35 @@ const ContentTutorialsCategoryNameRoute =
     getParentRoute: () => ContentTutorialsCategoryRoute,
   } as any);
 
-const ContentResourcesWordWordIdRoute = ContentResourcesWordWordIdImport.update(
-  {
-    path: '/resources/word/$wordId',
-    getParentRoute: () => rootRoute,
-  } as any,
-);
-
-const ContentResourcesPodcastPodcastIdRoute =
-  ContentResourcesPodcastPodcastIdImport.update({
-    path: '/resources/podcast/$podcastId',
+const ContentResourcesPodcastsPodcastIdRoute =
+  ContentResourcesPodcastsPodcastIdImport.update({
+    path: '/resources/podcasts/$podcastId',
     getParentRoute: () => rootRoute,
   } as any);
 
-const ContentResourcesConferenceConferenceIdRoute =
-  ContentResourcesConferenceConferenceIdImport.update({
-    path: '/resources/conference/$conferenceId',
+const ContentResourcesGlossaryWordIdRoute =
+  ContentResourcesGlossaryWordIdImport.update({
+    path: '/resources/glossary/$wordId',
     getParentRoute: () => rootRoute,
   } as any);
 
-const ContentResourcesBuilderBuilderIdRoute =
-  ContentResourcesBuilderBuilderIdImport.update({
-    path: '/resources/builder/$builderId',
+const ContentResourcesConferencesConferenceIdRoute =
+  ContentResourcesConferencesConferenceIdImport.update({
+    path: '/resources/conferences/$conferenceId',
     getParentRoute: () => rootRoute,
   } as any);
 
-const ContentResourcesBookBookIdRoute = ContentResourcesBookBookIdImport.update(
-  {
-    path: '/resources/book/$bookId',
+const ContentResourcesBuildersBuilderIdRoute =
+  ContentResourcesBuildersBuilderIdImport.update({
+    path: '/resources/builders/$builderId',
     getParentRoute: () => rootRoute,
-  } as any,
-);
+  } as any);
+
+const ContentResourcesBooksBookIdRoute =
+  ContentResourcesBooksBookIdImport.update({
+    path: '/resources/books/$bookId',
+    getParentRoute: () => rootRoute,
+  } as any);
 
 const ContentCoursesCourseIdChapterIdRoute =
   ContentCoursesCourseIdChapterIdImport.update({
@@ -425,48 +428,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentEventsEventIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/bet': {
-      id: '/_content/resources/bet';
-      path: '/resources/bet';
-      fullPath: '/resources/bet';
-      preLoaderRoute: typeof ContentResourcesBetImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/resources/books': {
-      id: '/_content/resources/books';
-      path: '/resources/books';
-      fullPath: '/resources/books';
-      preLoaderRoute: typeof ContentResourcesBooksImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/resources/builders': {
-      id: '/_content/resources/builders';
-      path: '/resources/builders';
-      fullPath: '/resources/builders';
-      preLoaderRoute: typeof ContentResourcesBuildersImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/resources/conferences': {
-      id: '/_content/resources/conferences';
-      path: '/resources/conferences';
-      fullPath: '/resources/conferences';
-      preLoaderRoute: typeof ContentResourcesConferencesImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/resources/glossary': {
-      id: '/_content/resources/glossary';
-      path: '/resources/glossary';
-      fullPath: '/resources/glossary';
-      preLoaderRoute: typeof ContentResourcesGlossaryImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/resources/podcasts': {
-      id: '/_content/resources/podcasts';
-      path: '/resources/podcasts';
-      fullPath: '/resources/podcasts';
-      preLoaderRoute: typeof ContentResourcesPodcastsImport;
-      parentRoute: typeof rootRoute;
-    };
     '/_content/tutorials/$category': {
       id: '/_content/tutorials/$category';
       path: '/tutorials/$category';
@@ -572,39 +533,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentCoursesCourseIdChapterIdImport;
       parentRoute: typeof ContentCoursesCourseIdImport;
     };
-    '/_content/resources/book/$bookId': {
-      id: '/_content/resources/book/$bookId';
-      path: '/resources/book/$bookId';
-      fullPath: '/resources/book/$bookId';
-      preLoaderRoute: typeof ContentResourcesBookBookIdImport;
+    '/_content/resources/books/$bookId': {
+      id: '/_content/resources/books/$bookId';
+      path: '/resources/books/$bookId';
+      fullPath: '/resources/books/$bookId';
+      preLoaderRoute: typeof ContentResourcesBooksBookIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/builder/$builderId': {
-      id: '/_content/resources/builder/$builderId';
-      path: '/resources/builder/$builderId';
-      fullPath: '/resources/builder/$builderId';
-      preLoaderRoute: typeof ContentResourcesBuilderBuilderIdImport;
+    '/_content/resources/builders/$builderId': {
+      id: '/_content/resources/builders/$builderId';
+      path: '/resources/builders/$builderId';
+      fullPath: '/resources/builders/$builderId';
+      preLoaderRoute: typeof ContentResourcesBuildersBuilderIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/conference/$conferenceId': {
-      id: '/_content/resources/conference/$conferenceId';
-      path: '/resources/conference/$conferenceId';
-      fullPath: '/resources/conference/$conferenceId';
-      preLoaderRoute: typeof ContentResourcesConferenceConferenceIdImport;
+    '/_content/resources/conferences/$conferenceId': {
+      id: '/_content/resources/conferences/$conferenceId';
+      path: '/resources/conferences/$conferenceId';
+      fullPath: '/resources/conferences/$conferenceId';
+      preLoaderRoute: typeof ContentResourcesConferencesConferenceIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/podcast/$podcastId': {
-      id: '/_content/resources/podcast/$podcastId';
-      path: '/resources/podcast/$podcastId';
-      fullPath: '/resources/podcast/$podcastId';
-      preLoaderRoute: typeof ContentResourcesPodcastPodcastIdImport;
+    '/_content/resources/glossary/$wordId': {
+      id: '/_content/resources/glossary/$wordId';
+      path: '/resources/glossary/$wordId';
+      fullPath: '/resources/glossary/$wordId';
+      preLoaderRoute: typeof ContentResourcesGlossaryWordIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/resources/word/$wordId': {
-      id: '/_content/resources/word/$wordId';
-      path: '/resources/word/$wordId';
-      fullPath: '/resources/word/$wordId';
-      preLoaderRoute: typeof ContentResourcesWordWordIdImport;
+    '/_content/resources/podcasts/$podcastId': {
+      id: '/_content/resources/podcasts/$podcastId';
+      path: '/resources/podcasts/$podcastId';
+      fullPath: '/resources/podcasts/$podcastId';
+      preLoaderRoute: typeof ContentResourcesPodcastsPodcastIdImport;
       parentRoute: typeof rootRoute;
     };
     '/_content/tutorials/$category/$name': {
@@ -634,6 +595,48 @@ declare module '@tanstack/react-router' {
       fullPath: '/courses/$courseId/';
       preLoaderRoute: typeof ContentCoursesCourseIdIndexImport;
       parentRoute: typeof ContentCoursesCourseIdImport;
+    };
+    '/_content/resources/bet/': {
+      id: '/_content/resources/bet/';
+      path: '/resources/bet';
+      fullPath: '/resources/bet';
+      preLoaderRoute: typeof ContentResourcesBetIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/books/': {
+      id: '/_content/resources/books/';
+      path: '/resources/books';
+      fullPath: '/resources/books';
+      preLoaderRoute: typeof ContentResourcesBooksIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/builders/': {
+      id: '/_content/resources/builders/';
+      path: '/resources/builders';
+      fullPath: '/resources/builders';
+      preLoaderRoute: typeof ContentResourcesBuildersIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/conferences/': {
+      id: '/_content/resources/conferences/';
+      path: '/resources/conferences';
+      fullPath: '/resources/conferences';
+      preLoaderRoute: typeof ContentResourcesConferencesIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/glossary/': {
+      id: '/_content/resources/glossary/';
+      path: '/resources/glossary';
+      fullPath: '/resources/glossary';
+      preLoaderRoute: typeof ContentResourcesGlossaryIndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_content/resources/podcasts/': {
+      id: '/_content/resources/podcasts/';
+      path: '/resources/podcasts';
+      fullPath: '/resources/podcasts';
+      preLoaderRoute: typeof ContentResourcesPodcastsIndexImport;
+      parentRoute: typeof rootRoute;
     };
     '/_content/tutorials/$category/': {
       id: '/_content/tutorials/$category/';
@@ -707,12 +710,6 @@ export const routeTree = rootRoute.addChildren({
     ContentCoursesCourseIdIndexRoute,
   }),
   ContentEventsEventIdRoute,
-  ContentResourcesBetRoute,
-  ContentResourcesBooksRoute,
-  ContentResourcesBuildersRoute,
-  ContentResourcesConferencesRoute,
-  ContentResourcesGlossaryRoute,
-  ContentResourcesPodcastsRoute,
   ContentTutorialsCategoryRoute: ContentTutorialsCategoryRoute.addChildren({
     ContentTutorialsCategoryNameRoute,
     ContentTutorialsCategoryIndexRoute,
@@ -724,12 +721,18 @@ export const routeTree = rootRoute.addChildren({
   ContentMiscProfessorProfessorNameProfessorIdRoute,
   ContentMiscResetPasswordTokenRoute,
   ContentMiscValidateEmailTokenRoute,
-  ContentResourcesBookBookIdRoute,
-  ContentResourcesBuilderBuilderIdRoute,
-  ContentResourcesConferenceConferenceIdRoute,
-  ContentResourcesPodcastPodcastIdRoute,
-  ContentResourcesWordWordIdRoute,
+  ContentResourcesBooksBookIdRoute,
+  ContentResourcesBuildersBuilderIdRoute,
+  ContentResourcesConferencesConferenceIdRoute,
+  ContentResourcesGlossaryWordIdRoute,
+  ContentResourcesPodcastsPodcastIdRoute,
   ContentMiscPublicCommunicationIndexRoute,
+  ContentResourcesBetIndexRoute,
+  ContentResourcesBooksIndexRoute,
+  ContentResourcesBuildersIndexRoute,
+  ContentResourcesConferencesIndexRoute,
+  ContentResourcesGlossaryIndexRoute,
+  ContentResourcesPodcastsIndexRoute,
   ContentMiscPublicCommunicationLegalsNameRoute,
   ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
   ContentMiscPublicCommunicationLegalsIndexRoute,
@@ -756,12 +759,6 @@ export const routeTree = rootRoute.addChildren({
         "/_content/_misc/under-construction",
         "/_content/courses/$courseId",
         "/_content/events/$eventId",
-        "/_content/resources/bet",
-        "/_content/resources/books",
-        "/_content/resources/builders",
-        "/_content/resources/conferences",
-        "/_content/resources/glossary",
-        "/_content/resources/podcasts",
         "/_content/tutorials/$category",
         "/_content/courses/",
         "/_content/events/",
@@ -770,12 +767,18 @@ export const routeTree = rootRoute.addChildren({
         "/_content/_misc/professor/$professorName-$professorId",
         "/_content/_misc/reset-password/$token",
         "/_content/_misc/validate-email/$token",
-        "/_content/resources/book/$bookId",
-        "/_content/resources/builder/$builderId",
-        "/_content/resources/conference/$conferenceId",
-        "/_content/resources/podcast/$podcastId",
-        "/_content/resources/word/$wordId",
+        "/_content/resources/books/$bookId",
+        "/_content/resources/builders/$builderId",
+        "/_content/resources/conferences/$conferenceId",
+        "/_content/resources/glossary/$wordId",
+        "/_content/resources/podcasts/$podcastId",
         "/_content/_misc/public-communication/",
+        "/_content/resources/bet/",
+        "/_content/resources/books/",
+        "/_content/resources/builders/",
+        "/_content/resources/conferences/",
+        "/_content/resources/glossary/",
+        "/_content/resources/podcasts/",
         "/_content/_misc/public-communication/legals/$name",
         "/_content/_misc/public-communication/blogs-and-news/",
         "/_content/_misc/public-communication/legals/",
@@ -836,24 +839,6 @@ export const routeTree = rootRoute.addChildren({
     "/_content/events/$eventId": {
       "filePath": "_content/events/$eventId.tsx"
     },
-    "/_content/resources/bet": {
-      "filePath": "_content/resources/bet.tsx"
-    },
-    "/_content/resources/books": {
-      "filePath": "_content/resources/books.tsx"
-    },
-    "/_content/resources/builders": {
-      "filePath": "_content/resources/builders.tsx"
-    },
-    "/_content/resources/conferences": {
-      "filePath": "_content/resources/conferences.tsx"
-    },
-    "/_content/resources/glossary": {
-      "filePath": "_content/resources/glossary.tsx"
-    },
-    "/_content/resources/podcasts": {
-      "filePath": "_content/resources/podcasts.tsx"
-    },
     "/_content/tutorials/$category": {
       "filePath": "_content/tutorials/$category.tsx",
       "children": [
@@ -910,20 +895,20 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_content/courses/$courseId/$chapterId.tsx",
       "parent": "/_content/courses/$courseId"
     },
-    "/_content/resources/book/$bookId": {
-      "filePath": "_content/resources/book.$bookId.tsx"
+    "/_content/resources/books/$bookId": {
+      "filePath": "_content/resources/books/$bookId.tsx"
     },
-    "/_content/resources/builder/$builderId": {
-      "filePath": "_content/resources/builder.$builderId.tsx"
+    "/_content/resources/builders/$builderId": {
+      "filePath": "_content/resources/builders/$builderId.tsx"
     },
-    "/_content/resources/conference/$conferenceId": {
-      "filePath": "_content/resources/conference.$conferenceId.tsx"
+    "/_content/resources/conferences/$conferenceId": {
+      "filePath": "_content/resources/conferences/$conferenceId.tsx"
     },
-    "/_content/resources/podcast/$podcastId": {
-      "filePath": "_content/resources/podcast.$podcastId.tsx"
+    "/_content/resources/glossary/$wordId": {
+      "filePath": "_content/resources/glossary/$wordId.tsx"
     },
-    "/_content/resources/word/$wordId": {
-      "filePath": "_content/resources/word.$wordId.tsx"
+    "/_content/resources/podcasts/$podcastId": {
+      "filePath": "_content/resources/podcasts/$podcastId.tsx"
     },
     "/_content/tutorials/$category/$name": {
       "filePath": "_content/tutorials/$category/$name.tsx",
@@ -939,6 +924,24 @@ export const routeTree = rootRoute.addChildren({
     "/_content/courses/$courseId/": {
       "filePath": "_content/courses/$courseId/index.tsx",
       "parent": "/_content/courses/$courseId"
+    },
+    "/_content/resources/bet/": {
+      "filePath": "_content/resources/bet/index.tsx"
+    },
+    "/_content/resources/books/": {
+      "filePath": "_content/resources/books/index.tsx"
+    },
+    "/_content/resources/builders/": {
+      "filePath": "_content/resources/builders/index.tsx"
+    },
+    "/_content/resources/conferences/": {
+      "filePath": "_content/resources/conferences/index.tsx"
+    },
+    "/_content/resources/glossary/": {
+      "filePath": "_content/resources/glossary/index.tsx"
+    },
+    "/_content/resources/podcasts/": {
+      "filePath": "_content/resources/podcasts/index.tsx"
     },
     "/_content/tutorials/$category/": {
       "filePath": "_content/tutorials/$category/index.tsx",

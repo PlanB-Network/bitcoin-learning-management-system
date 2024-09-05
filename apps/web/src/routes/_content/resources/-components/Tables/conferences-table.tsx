@@ -41,7 +41,7 @@ export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
                 languages={conference.languages}
                 link={
                   conference.stages.length > 0
-                    ? `/resources/conference/${conference.id}`
+                    ? `/resources/conferences/${conference.id}`
                     : ''
                 }
               />

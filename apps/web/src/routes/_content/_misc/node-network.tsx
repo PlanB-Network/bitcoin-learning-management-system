@@ -110,7 +110,7 @@ function NodeNetwork() {
           {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
           {filteredCommunities.map((community) => (
             <Link
-              to={'/resources/builder/$builderId'}
+              to={'/resources/builders/$builderId'}
               params={{
                 builderId: community.id.toString(),
               }}

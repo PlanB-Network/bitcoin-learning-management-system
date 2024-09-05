@@ -13,9 +13,9 @@ import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceLayout } from './-other/layout.tsx';
+import { ResourceLayout } from '../-other/layout.js';
 
-export const Route = createFileRoute('/_content/resources/bet')({
+export const Route = createFileRoute('/_content/resources/bet/')({
   component: BET,
 });
 

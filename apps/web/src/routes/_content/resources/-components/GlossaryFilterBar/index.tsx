@@ -83,7 +83,7 @@ export const GlossaryFilterBar = ({
         <Link
           to={
             randomWord && randomWord.length > 0
-              ? '/resources/word/$wordId'
+              ? '/resources/glossary/$wordId'
               : '/resources/glossary'
           }
           params={{ wordId: randomWord || '' }}

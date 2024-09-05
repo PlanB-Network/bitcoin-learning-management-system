@@ -13,15 +13,15 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { DropdownMenu } from './-components/DropdownMenu/dropdown-menu.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { DropdownMenu } from '../-components/DropdownMenu/dropdown-menu.tsx';
+import { ResourceLayout } from '../-other/layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const ConferencesMarkdownBody = React.lazy(
   () => import('#src/components/ConferencesMarkdownBody/index.js'),
 );
 
 export const Route = createFileRoute(
-  '/_content/resources/conference/$conferenceId',
+  '/_content/resources/conferences/$conferenceId',
 )({
   component: Conference,
 });
@@ -60,7 +60,7 @@ function Conference() {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { conferenceId } = useParams({
-    from: '/resources/conference/$conferenceId',
+    from: '/resources/conferences/$conferenceId',
   });
   const navigateTo404Called = useRef(false);
 

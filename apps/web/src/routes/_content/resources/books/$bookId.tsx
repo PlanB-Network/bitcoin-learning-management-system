@@ -10,10 +10,10 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BookSummary } from './-components/book-summary.tsx';
-import { ResourceLayout } from './-other/layout.tsx';
+import { BookSummary } from '../-components/book-summary.js';
+import { ResourceLayout } from '../-other/layout.js';
 
-export const Route = createFileRoute('/_content/resources/book/$bookId')({
+export const Route = createFileRoute('/_content/resources/books/$bookId')({
   component: Book,
 });
 
@@ -21,7 +21,7 @@ function Book() {
   const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { bookId } = useParams({
-    from: '/resources/book/$bookId',
+    from: '/resources/books/$bookId',
   });
   const isScreenMd = useGreater('sm');
   const navigateTo404Called = useRef(false);

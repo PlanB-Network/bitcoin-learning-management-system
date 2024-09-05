@@ -62,7 +62,7 @@ export const GlossaryList = ({
           <div key={term.originalWord} className="flex flex-col gap-6">
             <div className="flex items-center max-w-[820px] w-full gap-5 mx-auto px-4">
               <Link
-                to="/resources/word/$wordId"
+                to="/resources/glossary/$wordId"
                 params={{ wordId: term.fileName }}
                 className="w-1/3 text-darkOrange-5 desktop-h7 underline underline-offset-4 capitalize"
               >
@@ -83,7 +83,7 @@ export const GlossaryList = ({
           <div key={term.originalWord} className="flex flex-col gap-5 w-full">
             <div className="flex flex-col w-full gap-2 mb-5">
               <Link
-                to="/resources/word/$wordId"
+                to="/resources/glossary/$wordId"
                 params={{ wordId: term.fileName }}
                 className="text-darkOrange-5 text-lg font-medium leading-relaxed tracking-015px underline underline-offset-4 capitalize"
               >

@@ -306,8 +306,8 @@ export const VerticalCard = ({
                   size={isScreenMd ? 'm' : 'xs'}
                   className="w-full"
                 >
-                  {tertiaryButtonText || tertiaryButtonIcon}
-                  <span className="ml-3">{tertiaryButtonIcon}</span>
+                  {tertiaryButtonText}
+                  <span>{tertiaryButtonIcon}</span>
                   {onHoverArrow ? (
                     <FaArrowRightLong
                       className={cn(
