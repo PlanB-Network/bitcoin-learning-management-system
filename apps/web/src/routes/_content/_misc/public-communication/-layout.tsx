@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 
 import { TabLinks } from '../-components/PublicCommunication/tab-links.tsx';
 
 interface LayoutProps {
-  t: (key: string) => string;
   children: ReactNode;
 }
 
-const Layout = ({ t, children }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
+  const { t } = useTranslation();
+
   return (
     <PageLayout
       variant="light"
@@ -17,7 +19,7 @@ const Layout = ({ t, children }: LayoutProps) => {
       title={t('publicCommunication.title')}
       description={t('publicCommunication.description')}
     >
-      <TabLinks t={t} />
+      <TabLinks />
       {children}
     </PageLayout>
   );

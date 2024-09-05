@@ -54,6 +54,7 @@ import { Route as ContentResourcesBooksBookIdImport } from './routes/_content/re
 import { Route as ContentCoursesCourseIdChapterIdImport } from './routes/_content/courses/$courseId/$chapterId';
 import { Route as ContentMiscValidateEmailTokenImport } from './routes/_content/_misc/validate-email.$token';
 import { Route as ContentMiscResetPasswordTokenImport } from './routes/_content/_misc/reset-password.$token';
+import { Route as ContentMiscPublicCommunicationLegalsImport } from './routes/_content/_misc/public-communication/legals';
 import { Route as ContentMiscProfessorProfessorNameProfessorIdImport } from './routes/_content/_misc/professor.$professorName-$professorId';
 import { Route as ContentMiscPublicCommunicationLegalsIndexImport } from './routes/_content/_misc/public-communication/legals/index';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/index';
@@ -304,6 +305,12 @@ const ContentMiscResetPasswordTokenRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
+const ContentMiscPublicCommunicationLegalsRoute =
+  ContentMiscPublicCommunicationLegalsImport.update({
+    path: '/public-communication/legals',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const ContentMiscProfessorProfessorNameProfessorIdRoute =
   ContentMiscProfessorProfessorNameProfessorIdImport.update({
     path: '/professor/$professorName-$professorId',
@@ -312,8 +319,8 @@ const ContentMiscProfessorProfessorNameProfessorIdRoute =
 
 const ContentMiscPublicCommunicationLegalsIndexRoute =
   ContentMiscPublicCommunicationLegalsIndexImport.update({
-    path: '/public-communication/legals/',
-    getParentRoute: () => rootRoute,
+    path: '/',
+    getParentRoute: () => ContentMiscPublicCommunicationLegalsRoute,
   } as any);
 
 const ContentMiscPublicCommunicationBlogsAndNewsIndexRoute =
@@ -324,8 +331,8 @@ const ContentMiscPublicCommunicationBlogsAndNewsIndexRoute =
 
 const ContentMiscPublicCommunicationLegalsNameRoute =
   ContentMiscPublicCommunicationLegalsNameImport.update({
-    path: '/public-communication/legals/$name',
-    getParentRoute: () => rootRoute,
+    path: '/$name',
+    getParentRoute: () => ContentMiscPublicCommunicationLegalsRoute,
   } as any);
 
 const ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute =
@@ -512,6 +519,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentMiscProfessorProfessorNameProfessorIdImport;
       parentRoute: typeof rootRoute;
     };
+    '/_content/_misc/public-communication/legals': {
+      id: '/_content/_misc/public-communication/legals';
+      path: '/public-communication/legals';
+      fullPath: '/public-communication/legals';
+      preLoaderRoute: typeof ContentMiscPublicCommunicationLegalsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_content/_misc/reset-password/$token': {
       id: '/_content/_misc/reset-password/$token';
       path: '/reset-password/$token';
@@ -647,10 +661,10 @@ declare module '@tanstack/react-router' {
     };
     '/_content/_misc/public-communication/legals/$name': {
       id: '/_content/_misc/public-communication/legals/$name';
-      path: '/public-communication/legals/$name';
+      path: '/$name';
       fullPath: '/public-communication/legals/$name';
       preLoaderRoute: typeof ContentMiscPublicCommunicationLegalsNameImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof ContentMiscPublicCommunicationLegalsImport;
     };
     '/_content/_misc/public-communication/blogs-and-news/': {
       id: '/_content/_misc/public-communication/blogs-and-news/';
@@ -661,10 +675,10 @@ declare module '@tanstack/react-router' {
     };
     '/_content/_misc/public-communication/legals/': {
       id: '/_content/_misc/public-communication/legals/';
-      path: '/public-communication/legals';
-      fullPath: '/public-communication/legals';
+      path: '/';
+      fullPath: '/public-communication/legals/';
       preLoaderRoute: typeof ContentMiscPublicCommunicationLegalsIndexImport;
-      parentRoute: typeof rootRoute;
+      parentRoute: typeof ContentMiscPublicCommunicationLegalsImport;
     };
     '/_content/_misc/public-communication/blogs-and-news/$category/$name': {
       id: '/_content/_misc/public-communication/blogs-and-news/$category/$name';
@@ -719,6 +733,11 @@ export const routeTree = rootRoute.addChildren({
   ContentResourcesIndexRoute,
   ContentTutorialsIndexRoute,
   ContentMiscProfessorProfessorNameProfessorIdRoute,
+  ContentMiscPublicCommunicationLegalsRoute:
+    ContentMiscPublicCommunicationLegalsRoute.addChildren({
+      ContentMiscPublicCommunicationLegalsNameRoute,
+      ContentMiscPublicCommunicationLegalsIndexRoute,
+    }),
   ContentMiscResetPasswordTokenRoute,
   ContentMiscValidateEmailTokenRoute,
   ContentResourcesBooksBookIdRoute,
@@ -733,9 +752,7 @@ export const routeTree = rootRoute.addChildren({
   ContentResourcesConferencesIndexRoute,
   ContentResourcesGlossaryIndexRoute,
   ContentResourcesPodcastsIndexRoute,
-  ContentMiscPublicCommunicationLegalsNameRoute,
   ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
-  ContentMiscPublicCommunicationLegalsIndexRoute,
   ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
   ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
 });
@@ -765,6 +782,7 @@ export const routeTree = rootRoute.addChildren({
         "/_content/resources/",
         "/_content/tutorials/",
         "/_content/_misc/professor/$professorName-$professorId",
+        "/_content/_misc/public-communication/legals",
         "/_content/_misc/reset-password/$token",
         "/_content/_misc/validate-email/$token",
         "/_content/resources/books/$bookId",
@@ -779,9 +797,7 @@ export const routeTree = rootRoute.addChildren({
         "/_content/resources/conferences/",
         "/_content/resources/glossary/",
         "/_content/resources/podcasts/",
-        "/_content/_misc/public-communication/legals/$name",
         "/_content/_misc/public-communication/blogs-and-news/",
-        "/_content/_misc/public-communication/legals/",
         "/_content/_misc/public-communication/blogs-and-news/$category/$name",
         "/_content/_misc/public-communication/blogs-and-news/$category/"
       ]
@@ -885,6 +901,13 @@ export const routeTree = rootRoute.addChildren({
     "/_content/_misc/professor/$professorName-$professorId": {
       "filePath": "_content/_misc/professor.$professorName-$professorId.tsx"
     },
+    "/_content/_misc/public-communication/legals": {
+      "filePath": "_content/_misc/public-communication/legals.tsx",
+      "children": [
+        "/_content/_misc/public-communication/legals/$name",
+        "/_content/_misc/public-communication/legals/"
+      ]
+    },
     "/_content/_misc/reset-password/$token": {
       "filePath": "_content/_misc/reset-password.$token.tsx"
     },
@@ -948,13 +971,15 @@ export const routeTree = rootRoute.addChildren({
       "parent": "/_content/tutorials/$category"
     },
     "/_content/_misc/public-communication/legals/$name": {
-      "filePath": "_content/_misc/public-communication/legals/$name.tsx"
+      "filePath": "_content/_misc/public-communication/legals/$name.tsx",
+      "parent": "/_content/_misc/public-communication/legals"
     },
     "/_content/_misc/public-communication/blogs-and-news/": {
       "filePath": "_content/_misc/public-communication/blogs-and-news/index.tsx"
     },
     "/_content/_misc/public-communication/legals/": {
-      "filePath": "_content/_misc/public-communication/legals/index.tsx"
+      "filePath": "_content/_misc/public-communication/legals/index.tsx",
+      "parent": "/_content/_misc/public-communication/legals"
     },
     "/_content/_misc/public-communication/blogs-and-news/$category/$name": {
       "filePath": "_content/_misc/public-communication/blogs-and-news/$category/$name.tsx"
