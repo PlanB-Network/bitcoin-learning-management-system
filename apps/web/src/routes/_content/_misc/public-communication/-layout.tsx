@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { PageLayout } from '#src/components/page-layout.js';
 
 import { TabLinks } from '../-components/PublicCommunication/tab-links.tsx';
 

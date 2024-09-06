@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@blms/ui';
 
-import grayHeart from '../../assets/icons/gray_heart.svg';
+import grayHeart from '../assets/icons/gray_heart.svg';
 
 interface ContributorProps {
   prefix?: string;

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button, TextInput } from '@blms/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
 const minLength = 10;

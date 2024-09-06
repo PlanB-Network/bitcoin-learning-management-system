@@ -21,9 +21,8 @@ import { Button, Loader, cn } from '@blms/ui';
 
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
-import {} from '#src/components/CoursesMarkdownBody/index.js';
-import { AuthModal } from '#src/components/AuthModal/index.js';
-import { AuthModalState } from '#src/components/AuthModal/props.js';
+import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModalState } from '#src/components/AuthModals/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
@@ -49,7 +48,7 @@ import { CourseReview } from './-components/course-review.tsx';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const CoursesMarkdownBody = React.lazy(
-  () => import('#src/components/CoursesMarkdownBody/index.js'),
+  () => import('#src/components/Markdown/courses-markdown-body.js'),
 );
 
 export const Route = createFileRoute('/_content/courses/$courseId/$chapterId')({

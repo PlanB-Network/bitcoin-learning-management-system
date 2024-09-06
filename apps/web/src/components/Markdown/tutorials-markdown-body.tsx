@@ -11,9 +11,10 @@ import type { JoinedTutorialLight } from '@blms/types';
 import { TutorialCard } from '#src/routes/_content/tutorials/-components/tutorial-card.js';
 
 import VideoSVG from '../../assets/resources/video.svg?react';
-import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
-import { CopyButton } from '../CopyButton/index.tsx';
-import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
+import { CopyButton } from '../copy-button.tsx';
+import { ReactPlayer } from '../react-player.tsx';
+
+import { Blockquote } from './blockquote.tsx';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,

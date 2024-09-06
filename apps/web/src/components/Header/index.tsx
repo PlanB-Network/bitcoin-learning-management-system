@@ -17,8 +17,8 @@ import aboutSvg from '../../assets/resources/world.svg';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
-import { AuthModal } from '../AuthModal/index.tsx';
-import { AuthModalState } from '../AuthModal/props.ts';
+import { AuthModal } from '../AuthModals/index.tsx';
+import { AuthModalState } from '../AuthModals/props.ts';
 
 import { FlyingMenu } from './FlyingMenu/index.tsx';
 import { MobileMenu } from './MobileMenu/index.tsx';

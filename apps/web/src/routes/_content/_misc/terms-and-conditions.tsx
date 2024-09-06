@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 import { Loader } from '@blms/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const GeneralMarkdownBody = React.lazy(
-  () => import('#src/components/GeneralMarkdownBody/index.js'),
+  () => import('#src/components/Markdown/general-markdown-body.js'),
 );
 
 export const Route = createFileRoute('/_content/_misc/terms-and-conditions')({

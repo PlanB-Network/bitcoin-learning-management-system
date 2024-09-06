@@ -20,13 +20,13 @@ import TwitterLoic from '#src/assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
+import { CategoryIcon } from '#src/components/category-icon.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { TUTORIALS_CATEGORIES } from '#src/utils/tutorials.js';
 
-import { CategoryIcon } from '../components/CategoryIcon/index.tsx';
-import { MainLayout } from '../components/MainLayout/index.tsx';
+import { MainLayout } from '../components/main-layout.tsx';
 import { NotFound } from '../components/not-found.tsx';
-import { AboutUs } from '../molecules/AboutUs/index.tsx';
+import { AboutUs } from '../molecules/about-us.tsx';
 
 const titleCss = 'md:text-3xl font-semibold';
 const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';

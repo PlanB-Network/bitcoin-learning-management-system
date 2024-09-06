@@ -1,4 +1,4 @@
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 
 export const EventLayout = ({
   children,

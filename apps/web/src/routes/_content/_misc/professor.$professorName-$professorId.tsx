@@ -12,7 +12,7 @@ import { Loader } from '@blms/ui';
 import yellowBook from '#src/assets/icons/book_yellow.png';
 import handWriting from '#src/assets/icons/hand_writing.png';
 import { AuthorCardFull } from '#src/components/author-card-full.js';
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { PageLayout } from '#src/components/page-layout.js';
 import { TutorialCard } from '#src/components/tutorial-card.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { formatNameForURL } from '#src/utils/string.js';

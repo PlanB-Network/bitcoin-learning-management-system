@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from '@blms/ui';
 
 import { AuthorCard } from '#src/components/author-card.js';
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { PageLayout } from '#src/components/page-layout.js';
 import { ProfessorCard } from '#src/components/professor-card.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
+import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 

@@ -7,7 +7,7 @@ import { Button, Loader, cn } from '@blms/ui';
 
 import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
 import nodeMap from '#src/assets/about/node_map.webp';
-import { PageLayout } from '#src/components/PageLayout/index.js';
+import { PageLayout } from '#src/components/page-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../resources/-components/Cards/builder-card.tsx';

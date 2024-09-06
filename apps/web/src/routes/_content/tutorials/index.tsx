@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import { Loader, cn } from '@blms/ui';
 
-import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
+import { CategoryIcon } from '#src/components/category-icon.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
-import { MainLayout } from '#src/components/MainLayout/index.js';
-import { PageHeader } from '#src/components/PageHeader/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
+import { PageHeader } from '#src/components/page-header.js';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';

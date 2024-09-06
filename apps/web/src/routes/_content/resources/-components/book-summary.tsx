@@ -7,7 +7,7 @@ import { Card } from '@blms/ui';
 import arrowForward from '#src/assets/icons/arrow_forward.svg';
 import stylusCircle from '#src/assets/icons/stylus_circle.svg';
 import blueEllipse from '#src/assets/resources/blue-ellipse.svg';
-import { Contributor } from '#src/components/Contributor/index.js';
+import { Contributor } from '#src/components/contributor.js';
 import { TooltipWithContent } from '#src/components/tooptip-with-content.js';
 import { compose } from '#src/utils/index.js';
 

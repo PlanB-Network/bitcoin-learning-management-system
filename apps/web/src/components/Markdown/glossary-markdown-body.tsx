@@ -6,8 +6,9 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { CopyButton } from '../CopyButton/index.tsx';
-import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
+import { CopyButton } from '../copy-button.tsx';
+
+import { Blockquote } from './blockquote.tsx';
 
 const fixEmbedUrl = (src: string) => {
   if (src.includes('embed')) {

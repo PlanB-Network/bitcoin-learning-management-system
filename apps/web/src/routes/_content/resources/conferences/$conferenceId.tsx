@@ -16,7 +16,7 @@ import { DropdownMenu } from '../-components/DropdownMenu/dropdown-menu.tsx';
 import { ResourceLayout } from '../-other/layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const ConferencesMarkdownBody = React.lazy(
-  () => import('#src/components/ConferencesMarkdownBody/index.js'),
+  () => import('#src/components/Markdown/conference-markdown-body.js'),
 );
 
 export const Route = createFileRoute(

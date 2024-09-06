@@ -1,7 +1,7 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { useContext, useEffect, useRef, useState } from 'react';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 

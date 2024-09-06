@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 
 export const Route = createFileRoute('/_content/_misc/manifesto')({
   component: Manifesto,

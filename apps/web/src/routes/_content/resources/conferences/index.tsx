@@ -5,8 +5,8 @@ import { Trans, useTranslation } from 'react-i18next';
 import type { JoinedConference } from '@blms/types';
 import { Loader } from '@blms/ui';
 
-import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';
-import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
+import { HorizontalCard } from '#src/molecules/horizontal-card.js';
+import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ConferencesTable } from '../-components/Tables/conferences-table.tsx';

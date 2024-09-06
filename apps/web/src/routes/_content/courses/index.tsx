@@ -10,7 +10,7 @@ import type { JoinedCourse } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
-import { PageLayout } from '#src/components/PageLayout/index.js';
+import { PageLayout } from '#src/components/page-layout.js';
 import { computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 
 import { DropdownMenu } from '../resources/-components/DropdownMenu/dropdown-menu.tsx';

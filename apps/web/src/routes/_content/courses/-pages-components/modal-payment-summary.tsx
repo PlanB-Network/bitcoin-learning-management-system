@@ -6,9 +6,7 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';
-import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
-
-// import { computeAssetCdnUrl } from '../../../../utils/index.ts';
+import { ReactPlayer } from '#src/components/react-player.js';
 
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   let prefix = '';

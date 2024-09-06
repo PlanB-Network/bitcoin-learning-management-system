@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedEvent } from '@blms/types';
 import { Loader } from '@blms/ui';
 
-import { AuthModal } from '#src/components/AuthModal/index.js';
-import { AuthModalState } from '#src/components/AuthModal/props.js';
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModalState } from '#src/components/AuthModals/props.js';
+import { PageLayout } from '#src/components/page-layout.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';

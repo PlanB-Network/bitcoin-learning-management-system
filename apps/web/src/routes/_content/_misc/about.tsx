@@ -39,9 +39,9 @@ import PpRogzy from '#src/assets/people/rogzy.webp';
 import PpTheom from '#src/assets/people/theo_m.webp';
 import PpTheop from '#src/assets/people/theo_p.webp';
 import PpTodd from '#src/assets/people/todd.webp';
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
-import { AboutUs } from '#src/molecules/AboutUs/index.js';
-import { Person } from '#src/molecules/Person/index.js';
+import { PageLayout } from '#src/components/page-layout.js';
+import { AboutUs } from '#src/molecules/about-us.js';
+import { Person } from '#src/molecules/person.js';
 
 const Mission = () => {
   const { t } = useTranslation();

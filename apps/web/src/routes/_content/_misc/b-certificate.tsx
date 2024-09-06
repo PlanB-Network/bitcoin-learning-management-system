@@ -7,8 +7,8 @@ import { Button, Loader, cn } from '@blms/ui';
 
 import bCertificatesImage from '#src/assets/about/b-certificates.webp';
 import Question from '#src/assets/icons/question.svg?react';
-import { PageLayout } from '#src/components/PageLayout/index.js';
-import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
+import { PageLayout } from '#src/components/page-layout.js';
+import { ReactPlayer } from '#src/components/react-player.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { trpc } from '#src/utils/trpc.js';
 

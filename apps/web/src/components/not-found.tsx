@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import lostRabbit from '#src/assets/404.svg';
 
-import { MainLayout } from './MainLayout/index.tsx';
+import { MainLayout } from './main-layout.tsx';
 
 export function NotFound() {
   const { t } = useTranslation();

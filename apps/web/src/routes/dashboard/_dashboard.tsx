@@ -2,7 +2,7 @@ import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
 
 import { cn } from '@blms/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import { MenuDesktop } from './_dashboard/-components/menu-desktop.tsx';

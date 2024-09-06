@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@blms/ui';
 
-import OrangePill from '../../assets/footer_pill.webp';
-import PlanBLogoBlack from '../../assets/planb_logo_horizontal_black_orangepill_gradient.svg';
-import PlanBLogoWhite from '../../assets/planb_logo_horizontal_white_orangepill_gradient.svg';
+import OrangePill from '../assets/footer_pill.webp';
+import PlanBLogoBlack from '../assets/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoWhite from '../assets/planb_logo_horizontal_white_orangepill_gradient.svg';
 
 interface FooterProps {
   variant?: 'light' | 'dark';

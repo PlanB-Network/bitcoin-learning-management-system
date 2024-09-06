@@ -8,8 +8,8 @@ import type { BetViewUrl } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
-import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
-import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
+import type { VerticalCardProps } from '#src/molecules/vertical-card.js';
+import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceLayout } from '../-other/layout.js';

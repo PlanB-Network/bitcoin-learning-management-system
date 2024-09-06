@@ -4,7 +4,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import type { JoinedBlogLight } from '@blms/types';
 
-import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
+import { ReactPlayer } from '#src/components/react-player.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 
 const getBlog = (url: string, blogs: JoinedBlogLight[]) => {

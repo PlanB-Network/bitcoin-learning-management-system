@@ -7,12 +7,7 @@ interface PersonProps {
 export const Person = ({ name, job, picture }: PersonProps) => {
   return (
     <div className="flex flex-row gap-6">
-      <img
-        src={picture}
-        className="size-20 rounded-md"
-        alt=""
-        loading="lazy"
-      />
+      <img src={picture} className="size-20 rounded-md" alt="" loading="lazy" />
       <div className="flex flex-col self-center">
         <p className="text-3xl font-semibold uppercase text-orange-500">
           {name}

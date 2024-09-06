@@ -9,8 +9,8 @@ import { Loader, cn } from '@blms/ui';
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
-import { AuthModal } from '#src/components/AuthModal/index.js';
-import { AuthModalState } from '#src/components/AuthModal/props.js';
+import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModalState } from '#src/components/AuthModals/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { TipModal } from '#src/components/tip-modal.js';
@@ -26,7 +26,7 @@ import { TutorialLayout } from '../-other/layout.tsx';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const TutorialsMarkdownBody = React.lazy(
-  () => import('#src/components/TutorialsMarkdownBody/index.js'),
+  () => import('#src/components/Markdown/tutorials-markdown-body.js'),
 );
 
 export const Route = createFileRoute('/_content/tutorials/$category/$name')({

@@ -2,7 +2,7 @@ import { createFileRoute, useParams } from '@tanstack/react-router';
 
 import { Loader } from '@blms/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
+import { MainLayout } from '#src/components/main-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute('/_content/events/$eventId')({

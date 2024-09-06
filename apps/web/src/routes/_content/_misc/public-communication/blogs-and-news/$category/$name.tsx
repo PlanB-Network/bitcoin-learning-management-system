@@ -6,7 +6,7 @@ import { FaArrowLeftLong } from 'react-icons/fa6';
 import { formatDateSimple } from '@blms/api/src/utils/date.ts';
 import { Button, Loader, cn } from '@blms/ui';
 
-import { PageLayout } from '#src/components/PageLayout/index.tsx';
+import { PageLayout } from '#src/components/page-layout.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 

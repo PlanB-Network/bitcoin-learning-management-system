@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
+import { CategoryIcon } from '#src/components/category-icon.js';
 import { capitalizeFirstWord } from '#src/utils/string.js';
 
 interface ResourcesDropdownItemProps {

@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@blms/ui';
 
-import ProfessorsTile from '../../assets/home/professors.webp';
-import BitcoinCircle from '../../assets/icons/bitcoin_circle.svg?react';
-import Groups from '../../assets/icons/groups.svg?react';
-import OpenSource from '../../assets/icons/open_source.svg?react';
-import VisibilityOff from '../../assets/icons/visibility_off.svg?react';
+import ProfessorsTile from '../assets/home/professors.webp';
+import BitcoinCircle from '../assets/icons/bitcoin_circle.svg?react';
+import Groups from '../assets/icons/groups.svg?react';
+import OpenSource from '../assets/icons/open_source.svg?react';
+import VisibilityOff from '../assets/icons/visibility_off.svg?react';
 
 const paragraphClassName = cn(
   'text-sm text-gray-400 sm:text-sm lg:text-base',

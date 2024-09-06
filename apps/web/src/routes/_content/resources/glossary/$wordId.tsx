@@ -15,7 +15,7 @@ import { GlossaryList } from '../-components/GlossaryList/index.tsx';
 import { ResourceLayout } from '../-other/layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const GlossaryMarkdownBody = React.lazy(
-  () => import('#src/components/GlossaryMarkdownBody/index.js'),
+  () => import('#src/components/Markdown/glossary-markdown-body.js'),
 );
 
 export const Route = createFileRoute('/_content/resources/glossary/$wordId')({

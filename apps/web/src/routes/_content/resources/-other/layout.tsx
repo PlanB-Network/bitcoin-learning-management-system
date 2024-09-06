@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 
 import { cn } from '@blms/ui';
 
-import { MainLayout } from '#src/components/MainLayout/index.js';
-import { PageHeader } from '#src/components/PageHeader/index.tsx';
+import { MainLayout } from '#src/components/main-layout.js';
+import { PageHeader } from '#src/components/page-header.js';
 
 import { CategoryTabs } from '../-components/CategoryTabs/index.tsx';
 import { ResourcesDropdownMenu } from '../-components/DropdownMenu/resources-category-dropdown-menu.tsx';

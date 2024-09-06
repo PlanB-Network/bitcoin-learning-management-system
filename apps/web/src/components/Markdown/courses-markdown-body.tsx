@@ -1,34 +1,50 @@
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import rehypeMathjax from 'rehype-mathjax';
+import rehypeMathjax from 'rehype-mathjax/svg';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import type { JoinedTutorialLight } from '@blms/types';
+
+import { TutorialCard } from '#src/routes/_content/tutorials/-components/tutorial-card.js';
+
 import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
-import { ReactPlayer } from '../../components/ReactPlayer/index.tsx';
-import { Blockquote } from '../MarkdownComponents/blockquote.tsx';
+import { CopyButton } from '../copy-button.tsx';
+import { ReactPlayer } from '../react-player.tsx';
 
-const GeneralMarkdownBody = ({
+import { Blockquote } from './blockquote.tsx';
+
+const remarkMathOptions = {
+  singleDollarTextMath: false,
+};
+
+const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
+  const pattern = /^https:\/\/planb\.network\/tutorials\/([^/]+)\/([^/]+)$/;
+  const match = url.match(pattern);
+
+  if (match) {
+    const tutorialName = match[2];
+    return tutorials.find((tutorial) => tutorial.name === tutorialName) || null;
+  }
+
+  return null;
+};
+
+const CoursesMarkdownBody = ({
   content,
   assetPrefix,
+  tutorials,
 }: {
   content: string;
   assetPrefix: string;
+  tutorials: JoinedTutorialLight[];
 }) => {
   return (
     <ReactMarkdown
       components={{
-        h1: ({ children }) => (
-          <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
-            <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
-              {children}
-            </div>
-          </h2>
-        ),
         h2: ({ children }) => (
           <h2 className="mt-6 text-3xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
             <div className="flex w-auto items-center">
@@ -44,20 +60,27 @@ const GeneralMarkdownBody = ({
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-base tracking-wide md:text-justify">
+          <p className="text-blue-1000 text-base tracking-wide md:text-justify">
             {children}
           </p>
         ),
-        a: ({ children, href }) => (
-          <a
-            href={href}
-            target="_blank"
-            className=" text-blue-500 "
-            rel="noreferrer"
-          >
-            {children}
-          </a>
-        ),
+        a: ({ children, href = '' }) => {
+          const tutorial = getTutorial(href, tutorials);
+          if (tutorial) {
+            return <TutorialCard tutorial={tutorial} href={href} />;
+          }
+
+          return (
+            <a
+              href={href}
+              target="_blank"
+              className="underline text-newBlue-1"
+              rel="noreferrer"
+            >
+              {children}
+            </a>
+          );
+        },
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
@@ -118,19 +141,52 @@ const GeneralMarkdownBody = ({
           ),
         blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
         code({ className, children }) {
-          const match = /language-(\w+)/.exec(className || '');
-          return (
-            <SyntaxHighlighter
-              style={atomDark}
-              language={match ? match[1] : undefined}
-              PreTag="div"
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+          const childrenText = String(children).replace(/\n$/, '');
+
+          // Default to treating as inline code
+          let isCodeBlock = false;
+
+          if ((className || '').startsWith('language-')) {
+            isCodeBlock = true;
+          } else if (!className && children) {
+            // If it contains line breaks, treat as a code block
+            isCodeBlock = String(children).includes('\n');
+          }
+
+          const languageMatch = /language-(\w+)/.exec(className || '');
+          const language = languageMatch
+            ? languageMatch[1] === 'text'
+              ? 'plaintext'
+              : languageMatch[1]
+            : 'plaintext';
+
+          const shouldWrapLines =
+            !languageMatch || ['text', 'plaintext'].includes(language);
+
+          return isCodeBlock ? (
+            <div className="relative">
+              <SyntaxHighlighter
+                style={atomDark}
+                language={language}
+                wrapLines={shouldWrapLines}
+                PreTag="div"
+              >
+                {childrenText}
+              </SyntaxHighlighter>
+              <CopyButton text={childrenText} />
+            </div>
+          ) : (
+            <code className="bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm">
+              {children}
+            </code>
           );
         },
       }}
-      remarkPlugins={[remarkGfm, remarkUnwrapImages, remarkMath]}
+      remarkPlugins={[
+        remarkGfm,
+        remarkUnwrapImages,
+        [remarkMath, remarkMathOptions],
+      ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`
@@ -141,4 +197,4 @@ const GeneralMarkdownBody = ({
   );
 };
 
-export default GeneralMarkdownBody;
+export default CoursesMarkdownBody;
