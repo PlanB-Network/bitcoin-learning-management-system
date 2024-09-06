@@ -20,7 +20,7 @@
     "description": "Plan B Network helps communities worldwide to get organized in order to provide better education. The platform develops the  necessary tools towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
     "subtitle": "Want to orange pill the world? Join the PlanB Network.",
     "title": "About the Plan B Network",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n"
+    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people within a decade, and our tools are education and information.\n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. In fact, we believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only.\n\nWe advocate for the individual responsibility and the independence offered by owning your own keys.\n\nWe urge verification, not blind trust.\n\nWe believe that by fixing the money, we can fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure.\n\nWe encourage the free dissemination of our content.\n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share.\n\nJoin us in our mission to orange-pill the world!\n"
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -68,21 +68,21 @@
     "signIn": "Sign In"
   },
   "bCertificate": {
-    "bCertificateDescription": "The ₿ Certificate is an internationally recognized exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge among the Bitcoin industry, giving you access to companies and positions in that industry.",
+    "bCertificateDescription": "The ₿ Certificate is an internationally recognized exam that evaluates your mastery of Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge in the Bitcoin industry, giving you access to the best companies and great job positions.",
     "bookExam": "Book an exam session",
     "challengeYourself": "Challenge yourself & assert your level !",
     "checkout": "Check out the ₿ Certificate",
-    "curious": "Curious to know what the exam is like ?",
-    "joeNakamotoVideo": "What the heck is a Bitcoin exam ? By Joe Nakamoto",
+    "curious": "Curious to know what the exam is like?",
+    "joeNakamotoVideo": "What the heck is a Bitcoin exam? By Joe Nakamoto",
     "knowledgeableBitcoin": "Knowledgeable in Bitcoin ?",
     "noBookExam": "There is no exam session planned yet.",
-    "organizeDescription": "No problem! If your community is part of the Network, organizing an exam session at your hub is possible. Please read the chart to make sure that you can comply with the mandatory conditions to host an exam. If you can fulfill these conditions, you can schedule your session and add it onto the platform.",
+    "organizeDescription": "No problem! If your community is part of the Network, you can organize an exam session at your hub. Please read the charter to make sure that you can comply with the mandatory conditions to host an exam. If you can fulfill them, then you can schedule your session and add it onto the platform.",
     "organizeExam": "Organize an exam",
     "organizeSubtitle": "Orange pilling a billion people is not easy",
     "organizeTitle": "Want to organize a ₿ Certificate exam at your hub?",
     "pageSubtitle": "Mass adoption through centralized open-source education",
     "pageTitle": "Pass the ₿ Certificate",
-    "readChart": "Read the chart"
+    "readChart": "Read the charter"
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -90,7 +90,7 @@
     "contributeDescription": "If you either want to add, edit or translate some content, your help will be welcome!",
     "contributeTitle": "Want to contribute?",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
+      "description": "This content is meant to be ready to use for educational events and purposes.",
       "title": "Educational Content"
     },
     "hereForYou": "The BET is here for you!",
@@ -98,7 +98,7 @@
     "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
+      "description": "The images below can be used for your own creations.",
       "title": "Visual Content"
     }
   },
@@ -106,7 +106,7 @@
     "abstract": "Abstract",
     "bookSummary": {
       "modifyTooltip": "Write or modify",
-      "noSummary": "No summary has been written yet. If you've read the book and want to share one summary, don't hesitate to write one on Github. It would help a lot the community, improve the university and you could even get some sats for it !",
+      "noSummary": "A summary is yet to be written. If you've read the book and want to share yours, don't hesitate to write one on Github. It would greatly benefit the community, enhance the university's resources, and you might even earn some sats for your effort!",
       "notice": "this summary is linked to github, for any modification or addition",
       "title": "The book summary"
     },
@@ -115,11 +115,11 @@
     "offeredBy": "Offered by a generous contributor",
     "pageSubtitle": "This portal is open-source & open to contribution.",
     "pageTitle": "Bitcoin Library",
-    "topicsAddressed": "Topics addressed: "
+    "topicsAddressed": "Topics addressed:"
   },
   "builders": {
     "networkStrength": "The strength of a network lies in its members",
-    "noRelatedEvents": "There is no related upcoming events for this builder yet.",
+    "noRelatedEvents": "There are no upcoming events related to this builder at the moment.",
     "otherCommunities": "Explore Plan B Communities",
     "pageSubtitle": "This portal is open-source & open to contribution.",
     "pageTitle": "Bitcoin Builders",
@@ -130,7 +130,7 @@
     "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
     "backConferences": "Back to conferences",
     "conferenceName": "Conference name",
-    "conferencesSinceGenesis": "Bitcoin Conferences Archives since Genesis Block",
+    "conferencesSinceGenesis": "Bitcoin Conferences Archive since the Genesis Block",
     "description": "Conferences are a key element in the Bitcoin industry. They are part of any Bitcoiner’s educational journey.  We built this tool to help you navigate through hundreds of conferences.",
     "details": {
       "findReplay": "Find a replay",
@@ -165,13 +165,13 @@
       "count": "Chapter {{count}}",
       "finishCourse": "Finish the course",
       "next": "Done, go to next chapter",
-      "thanksTip": "Wanna say thanks ?\nYou can support the author with a tip",
+      "thanksTip": "Want to show your appreciation?\nYou can support the author with a tip.",
       "detail": {
         "title": "Class details",
         "p1heading": "Do you intend to attend this lesson in person ?",
         "p1content": "Make sure to book your seat",
         "p2heading": "You can't make it in person?",
-        "p2content": "No problem ! The lesson will be live streamed on this page and available on replay later on.",
+        "p2content": "No problem! The lesson will be live-streamed on this page and available for replay afterward.",
         "bookSeat": "Book your seat",
         "classIsFull": "Class is already full",
         "cancelBooking": "Cancel your booking",
@@ -180,7 +180,7 @@
       "nextLesson": "Next lesson will be",
       "live": {
         "title": "Live video",
-        "stayTuned": "The live will be on half an hour before the beginning of the class. Stay tuned."
+        "stayTuned": "The live session will start 30 minutes before the class begins. Stay tuned!"
       }
     },
     "details": {
@@ -193,7 +193,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
       "duration": "Duration: {{hours}} hours",
-      "goal": "GOAL: ",
+      "goal": "Goal:",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapters",
@@ -201,11 +201,11 @@
       },
       "numberOfChapters": "Number of chapters: {{number}}",
       "objectives": "Objectives",
-      "objectivesTitle": "What you will learn :",
+      "objectivesTitle": "What you will learn:",
       "price": "Price: {{price}} sats",
       "professor": "Professor",
       "startCourse": "Start the course",
-      "taughtBy": "This course is being taught by :",
+      "taughtBy": "This course is taught by:",
       "teacher": "Teacher: {{teacher}}",
       "teachers": "Teachers: {{teachers}}",
       "teacherWord": "A word from the teacher",
@@ -220,20 +220,20 @@
       "buildPath": "Build your own path down the rabbit hole",
       "exploreCourses": "Explore all Plan B Courses",
       "findCourses": "Find the perfect course for your needs thanks to the course selector",
-      "footerTitle": "Our professors are here for you !",
+      "footerTitle": "Our professors are here for you!",
       "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
-      "footerp2": "If you want to improve on a course or provide your own, you can simply do so via the GitHub. To support a professor you can either grade one's course, tip the professor directly or become a university member to support the platform.",
+      "footerp2": "If you want to improve a course or propose your own, you can easily do so via the GitHub repository. Instead, to support a professor, you have several options: you can provide course feedback, tip the professor directly, or become a university member to help sustain the platform.",
       "journey": "Bitcoin is a journey, not a destination",
       "moreToCome": ".... and more to come !",
-      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worldwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
+      "pageDescription": "The Plan B Academy is dedicated to simplify Bitcoin education worldwide. Curated by experts from various fields, our academy provides a comprehensive range of courses designed to clarify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free so that anyone, anywhere, can have access to education.",
       "pageSubtitle": "Mass adoption through centralized open-source education",
       "pageTitle": "Welcome to the Plan B Academy",
       "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
       "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
-      "s2p3": "All our courses are 100% free so nothing can stop you !",
-      "s2t1": "Bitcoin education is a journey not a destination",
-      "s3PickLevel": "Pick levels :",
-      "s3PickTopic": "Pick topics :",
+      "s2p3": "All our courses are 100% free so nothing can stop you!",
+      "s2t1": "Bitcoin education is a journey, not a destination.",
+      "s3PickLevel": "Select level:",
+      "s3PickTopic": "Select a topic:",
       "s3t1": "Build your own path down the rabbit hole",
       "seeCourse": "See the course"
     },
@@ -250,8 +250,8 @@
       "date": "Date",
       "dates_to": "{{startDate}} to {{endDate}}",
       "downloadCurriculum": "Download curriculum",
-      "description": "This purchase will grant you access to online courses on the platform as well as in-person classes, provided you reserve your seat. Each class session takes place in person on the specified dates and locations before being recorded and streamed online on the platform.",
-      "book_description": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
+      "description": "This purchase grants you access to online courses on the platform as well as in-person classes, provided you reserve your seat. Each class session takes place in person on the specified dates and locations, before being recorded and streamed online on the platform.",
+      "book_description": "Please review the venue details provided.\nOnce your booking is processed, we will send you a confirmation ticket and a QR code to present at the event.",
       "duration": "Duration",
       "invoiceId": "Tx ID",
       "numberOfChapters": "Number of chapters",
@@ -267,14 +267,14 @@
       "letsgo": "Let's go"
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
-      "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
+      "clickOnPie": "Click on the pie chart to check your mistakes and see the explanation",
+      "quizz": "Quiz",
+      "quizzResults": "Quiz results",
+      "quizzReview": "Quiz review",
       "resultCongrats": "Congratulations, you did well !",
       "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "resultNotBad": "Not too bad!",
+      "resultPerfect": "Absolutely perfect! Congrats!"
     },
     "review": {
       "asExpected": "as expected",
@@ -284,7 +284,7 @@
       "currentlyLoggedOut": "You are currently logged out. In order to give us feedback on the course, please <0>log in or register</0>.",
       "difficulty": "Difficulty",
       "faithful": "True to objective?",
-      "feedbackDescription": "Please rate your experience of the course below.\nThis feedback session is mandatory to have access to the final exam, and to validate the course.\nNote that teachers will not have access to individual evaluations.",
+      "feedbackDescription": "Please rate your experience with the course below.\nThis feedback session is mandatory to have access to the final exam and to validate the course.\nNote that teachers will not have access to individual evaluations.",
       "feedbackSessionTitle": "Feedback session",
       "generalGrade": "General grade",
       "length": "Length",
@@ -303,15 +303,15 @@
       "veryBad": "very bad",
       "veryGood": "very good",
       "writeThoughts": "Here you can write your thoughts",
-      "yesOfCourse": "yes of course",
+      "yesOfCourse": "yes, of course",
       "yesVeryMuch": "yes, very much"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "colcardAndSparrow": "Coldcard and Sparrow",
+      "financeIntroduction": "Introduction to finance",
+      "financialCrisis": "Analysis of major financial crises",
+      "hyperinflation": "Study of hyperinflation",
+      "theoreticalLightning": "Advanced theoretical course on Lightning Network"
     }
   },
   "dashboard": {
@@ -326,9 +326,9 @@
       "grade": "Grade",
       "gradesDiploma": "Grades and diploma",
       "learnMore": "Learn more",
-      "noResults": "There are no grades nor certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
+      "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
       "organizedSessions": "The ₿ Certificate is organised by Plan B Network at various locations and times. Make sure to book your seat at a session.",
-      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network and designed to assert your level about Bitcoin and all its related topics.",
+      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network and is designed to assess your knowledge of Bitcoin and all its related topics.",
       "findResults": "Here you can find your results to ₿ Certificate exams you’ve passed while registered with this account. The results usually takes 2 to 3 weeks to be processed and available here. If after a long time your results don’t show here, please contact us.",
       "wantToPass": "Want to pass the exam?"
     },
@@ -477,7 +477,7 @@
       "startLink": "Start Learning"
     },
     "numbersSection": {
-      "networkMember": "Betwork Member"
+      "networkMember": "Network Member"
     },
     "sectionEducation": {
       "title": "From beginner to advanced",

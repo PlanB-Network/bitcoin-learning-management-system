@@ -20,7 +20,7 @@
     "title": "Sobre PlanB Network",
     "subtitle": "Nuestra fortaleza es nuestra comunidad. Unámonos en una red global de Bitcoin.",
     "manifesto": "Creemos en el futuro descentralizado que ofrece Bitcoin.\n\nNuestra misión es introducir Bitcoin a mil millones de personas en un plazo de una década. Nuestras herramientas son la educación y la información.\n\nApoyamos a las comunidades locales de Bitcoiners proporcionando contenido educativo de código abierto y ofreciendo una red de mentores de Bitcoin.\n\nNuestra filosofía está inspirada en el manifiesto cypherpunk. Así como ellos defendieron la privacidad, nosotros defendemos la educación. Creemos que el conocimiento es la base de la libertad y el cambio.\n\nSomos solo Bitcoin.\n\nAbogamos por la responsabilidad individual y la independencia que ofrece tener tus propias claves.\n\nInstamos a la verificación, no a la confianza ciega.\n\nCreemos que al arreglar el dinero, arreglamos el mundo.\n\nSomos descentralizados y de código abierto, evitando cualquier punto único de fallo.\n\nFomentamos la libre difusión de nuestro contenido.\n\nAspiramos a un mundo que funcione desde la base, donde el individuo esté en el centro.\n\nSimplificamos, educamos, compartimos.\n\nÚnete a nosotros en nuestra misión de hacer que el mundo tome la píldora naranja.\n",
-    "description": ""
+    "description": "Plan B Network ayuda a comunidades de todo el mundo a organizarse para proporcionar una mejor educación. La plataforma desarrolla las herramientas necesarias para lograr ese objetivo, a través de la academia en línea, el portal de tutoriales, el kit de herramientas educativas de Bitcoin y el portal de recursos."
   },
   "auth": {
     "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
@@ -33,7 +33,10 @@
     "errors": {
       "usernameRegex": "El nombre de usuario solo puede contener letras, dígitos, _, y -",
       "usernameRequired": "Nombre de usuario es requerido",
-      "usernameTooShort": "El nombre de usuario debe tener al menos 5 caracteres"
+      "usernameTooShort": "El nombre de usuario debe tener al menos 5 caracteres",
+      "displayNameRequired": "Se requiere un nombre para mostrar.",
+      "displayNameRegex": "El nombre para mostrar solo puede contener letras, dígitos, _, ., - y espacios.",
+      "displayNameTooShort": "El nombre para mostrar debe contener al menos 2 caracteres."
     },
     "forgottenPassword": "¿Olvidó su contraseña?",
     "headerAccountCreated": "Cuenta creada",
@@ -44,7 +47,25 @@
     "passwordRequired": "Contraseña requerida",
     "passwordsDontMatch": "Las contraseñas no coinciden",
     "sendLink": "Enviar un enlace",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "invalidTokenExplain": {
+      "expired": "El token ha expirado",
+      "consumed": "El token ya ha sido utilizado",
+      "invalid": "El token es inválido",
+      "notFound": "El token no fue encontrado"
+    },
+    "passwordResetError": "Error en el restablecimiento de la contraseña",
+    "newPassword": "Nueva contraseña",
+    "passwordMinLength": "La contraseña debe tener al menos {{len}} caracteres",
+    "passwordChanged": "Contraseña cambiada",
+    "passwordSuccessfullyChanged": "Tu contraseña ha sido cambiada correctamente. Ahora puedes iniciar sesión con tu nueva contraseña.",
+    "backToLogin": "Volver al inicio de sesión",
+    "backToHome": "Volver a inicio",
+    "invalidToken": "Token inválido",
+    "checkingToken": "Verificando token",
+    "checkingTokenExplain": "Estamos verificando si el token es válido...",
+    "passwordResetSent": "Se ha enviado un correo electrónico para restablecer la contraseña a tu bandeja de entrada (Si la dirección de correo electrónico existe en nuestra base de datos).",
+    "tryAgain": "Inténtalo de nuevo"
   },
   "bet": {
     "contribute": "Este kit de herramientas está abierto a la contribución. Utiliza Figma, así que cualquiera puede añadir, modificar y traducir. Para colaborar, agregar una categoría o discutir, no dude en unirse a nuestro discord.",
@@ -59,7 +80,10 @@
     "visualContent": {
       "description": "Este contenido es datos visuales sin formato, para ser usado para tus creaciones.",
       "title": "Contenido visual"
-    }
+    },
+    "contributeButton": "Ayuda y contribuye",
+    "contributeTitle": "¿Quieres contribuir?",
+    "contributeDescription": "Si quieres agregar, editar o traducir algún contenido, ¡tu ayuda será más que bienvenida!"
   },
   "book": {
     "abstract": "Abstracto",
@@ -78,7 +102,12 @@
   },
   "builders": {
     "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución. ¡Gracias por calificar y compartir!",
-    "pageTitle": "El Portal del Constructor"
+    "pageTitle": "El Portal del Constructor",
+    "noRelatedEvents": "No hay eventos próximos relacionados con este constructor en este momento.",
+    "languages": "Idiomas",
+    "relatedEvents": "Eventos próximos relacionados",
+    "networkStrength": "La fuerza de una red yace en sus miembros",
+    "otherCommunities": "Explora las comunidades de Plan B"
   },
   "courses": {
     "categories": {
@@ -97,21 +126,21 @@
       "next": "¡Listo, vamos al siguiente capítulo!",
       "thanksTip": "¿Quieres dar las gracias? Tip.",
       "detail": {
-        "title": "",
-        "p1heading": "",
-        "p1content": "",
-        "p2heading": "",
-        "p2content": "",
-        "bookSeat": "",
-        "classIsFull": "",
-        "cancelBooking": "",
-        "ticketDownload": ""
+        "title": "Detalles de la clase",
+        "p1heading": "¿Tienes la intención de asistir a esta lección en persona?",
+        "p1content": "Asegúrate de reservar tu cupo",
+        "p2heading": "¿No puedes asistir en persona?",
+        "p2content": "¡No hay problema! La lección se transmitirá en vivo en esta página y estará disponible para volver a verla después.",
+        "bookSeat": "Reserva tu cupo",
+        "classIsFull": "La clase ya está llena",
+        "cancelBooking": "Cancela tu reservación",
+        "ticketDownload": "Descarga tu ticket"
       },
       "live": {
-        "title": "",
-        "stayTuned": ""
+        "title": "Video en vivo",
+        "stayTuned": "La sesión en vivo comenzará 30 minutos antes de que comience la clase. ¡Mantente pendiente!"
       },
-      "nextLesson": ""
+      "nextLesson": "La próxima lección será"
     },
     "details": {
       "accessible": "Accesible: por vida",
@@ -164,7 +193,12 @@
       "s2t1": "La educación en Bitcoin es un viaje no un destino",
       "s3PickLevel": "Elegir niveles :",
       "s3PickTopic": "Elegir temas :",
-      "s3t1": "Construye tu propio camino a través del agujero del conejo"
+      "s3t1": "Construye tu propio camino a través del agujero del conejo",
+      "findCourses": "Encuentra el curso perfecto para tus necesidades gracias al selector de cursos",
+      "buildPath": "Construye tu propio camino a través de la madriguera del conejo",
+      "exploreCourses": "Explora todos los cursos de Plan B",
+      "journey": "Bitcoin es un viaje, no un destino",
+      "seeCourse": "Ve el curso"
     },
     "footer": {
       "": ""
@@ -192,12 +226,12 @@
       "terms3": "and conditions for refund details",
       "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
       "total": "Total",
-      "back_course": "",
-      "callout": "",
-      "description": "",
-      "book_description": "",
-      "qr_unified": "",
-      "time": ""
+      "back_course": "Regresar al curso",
+      "callout": "Estás a punto de comprar este curso.",
+      "description": "Esta compra te otorga acceso a cursos en línea en la plataforma, así como a clases presenciales, siempre que reserves tu cupo. Cada sesión de clase se lleva a cabo en persona en las fechas y lugares especificados, antes de ser grabada y transmitida en línea en la plataforma.",
+      "book_description": "Por favor revise los detalles del lugar proporcionados.\nUna vez que se procese su reserva, le enviaremos un ticket de confirmación y un código QR para presentar en el evento.",
+      "qr_unified": "Este código QR es unificado, por lo que acepta pagos en lightning y on-chain.",
+      "time": "Hora"
     },
     "preview": {
       "by": "por {{professor}}",
@@ -220,38 +254,112 @@
       "financialCrisis": "Análisis de las principales crisis financieras",
       "hyperinflation": "Estudio de las hiperinflaciones",
       "theoreticalLightning": "Curso teórico avanzado sobre la Lightning Network"
+    },
+    "review": {
+      "currentlyLoggedOut": "Actualmente estás desconectado. Para darnos tu opinión sobre el curso, por favor <0>inicia sesión o regístrate</0>.",
+      "faithful": "¿Fiel al objetivo?",
+      "feedbackDescription": "Por favor, califica tu experiencia con el curso a continuación.\nEsta sesión de retroalimentación es obligatoria para tener acceso al examen final y para validar el curso.\nTenga en cuenta que los profesores no tendrán acceso a las evaluaciones individuales.",
+      "loading": "Cargando...",
+      "neutral": "neutral",
+      "no": "no",
+      "quality": "Calidad",
+      "feedbackSessionTitle": "Sesión de opinión",
+      "generalGrade": "Calificación general",
+      "length": "Duración",
+      "recommend": "¿Lo recomendarías?",
+      "notReally": "no. no realmente",
+      "submitReview": "Enviar reseña",
+      "soAndSo": "más o menos",
+      "tooEasy": "muy fácil",
+      "tooHard": "muy difícil",
+      "tooLong": "muy largo",
+      "tooShort": "muy corto",
+      "veryBad": "muy mal",
+      "veryGood": "muy bien",
+      "writeThoughts": "Aquí puedes escribir tus comentarios",
+      "yesOfCourse": "sí, por supuesto",
+      "yesVeryMuch": "sí, mucho",
+      "asExpected": "como se esperaba",
+      "commentAdmin": "Comentario para el equipo de administración (privado)",
+      "commentPublic": "Comentario (público)",
+      "commentTeacher": "Comentario para el profesor (privado)",
+      "difficulty": "Dificultad"
     }
   },
   "dashboard": {
     "myCourses": {
       "resumeLesson": "Reanudar la sesión",
-      "completed": "",
-      "details": "",
-      "inprogress": ""
+      "completed": "Completado",
+      "details": "Detalles",
+      "inprogress": "En progreso",
+      "completedCoursesTitle": "Cursos completados",
+      "completedCoursesDescription": "Aquí puedes revisar tus cursos completados.",
+      "inprogressCoursesTitle": "Cursos en progreso",
+      "inprogressCoursesDescription": "Aquí puedes verificar tu progreso en los cursos que has comenzado.",
+      "seeProgress": "para ver tu progreso aquí.",
+      "startCourse": "Iniciar o completar un curso"
     },
-    "account": "",
-    "courses": "",
-    "logout": "",
+    "account": "Cuenta",
+    "courses": "Cursos",
+    "logout": "Cerrar sesión",
     "booking": {
-      "accessLive": "",
-      "billingTitle": "",
-      "billingSubtitle": "",
-      "downloadInvoice": "",
-      "downloadTicket": "",
-      "invoiceDate": "",
-      "invoiceTitle": "",
-      "invoiceType": "",
-      "ticketDate": "",
-      "ticketLocation": "",
-      "ticketTitle": "",
-      "ticketType": "",
-      "noInvoice": "",
-      "noTicket": "",
-      "pastTicketTitle": "",
-      "upcomingTicketTitle": "",
-      "upcomingTicketSubtitle": ""
+      "accessLive": "Acceso en vivo",
+      "billingTitle": "Historial de facturación",
+      "billingSubtitle": "Descarga las facturas de tus reservas aquí.",
+      "downloadInvoice": "Descargar factura",
+      "downloadTicket": "Descargar ticket",
+      "invoiceDate": "Fecha",
+      "invoiceTitle": "Título",
+      "invoiceType": "Tipo",
+      "ticketDate": "Fecha",
+      "ticketLocation": "Ubicación",
+      "ticketTitle": "Titulo",
+      "ticketType": "Tipo",
+      "noInvoice": "Aún no tienes facturas.",
+      "noTicket": "Aún no tienes tickets.",
+      "pastTicketTitle": "Reservas pasadas",
+      "upcomingTicketTitle": "Próximas reservas",
+      "upcomingTicketSubtitle": "Descarga tu ticket aquí para asistir a tu próximo evento. Asegúrate de traer tu ticket contigo para tener acceso al evento."
     },
-    "bookings": ""
+    "bookings": "Reservas",
+    "administration": "Administración",
+    "bCertificate": {
+      "assertLevel": "Afirma tu nivel en Bitcoin",
+      "bCertificate": "El ₿ Certificate",
+      "bookExam": "Reserva una sección de examen",
+      "certificate": "Certificado",
+      "general": "General",
+      "grade": "Calificación",
+      "gradesDiploma": "Calificaciones y diploma",
+      "learnMore": "Aprende más",
+      "noResults": "Aún no hay calificaciones ni certificados asociados con esta cuenta. \nSi aprobaste un examen y tus resultados no están disponibles después de un período prolongado, por favor contáctanos para obtener ayuda.",
+      "organizedSessions": "El ₿ Certificate es organizado por Plan B Network en varias ubicaciones y horarios. Asegúrate de reservar tu asiento en una sesión.",
+      "presentation": "El ₿ Certificate es un examen de mesa organizado por Plan B Network y está diseñado para evaluar tus conocimientos sobre Bitcoin y todos sus temas relacionados.",
+      "findResults": "Aquí puedes encontrar los resultados de los exámenes del ₿ Certificate que has aprobado mientras estabas registrado con esta cuenta. Los resultados generalmente tardan de 2 a 3 semanas en procesarse y estar disponibles aquí. Si después de mucho tiempo tus resultados no aparecen aquí, por favor contáctanos.",
+      "wantToPass": "¿Quieres aprobar el examen?"
+    },
+    "profile": {
+      "personalInformation": "Mi información personal",
+      "profileInformation": "Información de perfil",
+      "profilePicture": "Foto de perfil",
+      "security": "Seguridad",
+      "username": "Nombre de usuario",
+      "cancel": "Cancelar",
+      "change": "Cambiar",
+      "edit": "Editar",
+      "save": "Guardar",
+      "saving": "Guardando...",
+      "crop": "Recortar",
+      "emailChangeConfirmation": "Se ha enviado un correo de confirmación de cambio de correo electrónico, revisa tu bandeja de entrada para confirmar el cambio.",
+      "preview": "Vista previa",
+      "displayName": "Nombre para mostrar",
+      "email": "Correo electrónico",
+      "password": "Contraseña"
+    },
+    "calendar": {
+      "calendar": "Calendario",
+      "personalCalendar": "Calendario personal"
+    }
   },
   "events": {
     "introduction": {
@@ -280,24 +388,24 @@
       "bookLive": "Book live",
       "bookSeat": "Book your seat",
       "visitWebsite": "Visit website",
-      "buyReplay": "",
-      "eventFull": "",
-      "seatBooked": ""
+      "buyReplay": "Comprar repetición",
+      "eventFull": "El evento está lleno",
+      "seatBooked": "Asiento reservado"
     },
     "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
+      "button": "Agregar mi evento",
+      "description": "¡Por supuesto! Todos los eventos de Bitcoin pueden mejorar su visibilidad aquí, y toda iniciativa para crear un nuevo evento es bienvenida :)",
+      "subtitle": "El orange pilling a mil millones de personas no es fácil",
+      "title": "¿Deseas agregar tu evento?"
     },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "pageDescription": "¿Quieres hablar sobre Bitcoin en tiempo real? Aquí puedes encontrar todos los eventos respaldados por las comunidades de Plan B Network. Ya sea que quieras escuchar una conferencia, discutir sobre Bitcoin mientras tomas una bebida, o hacer un examen para evaluar tus conocimientos, podrás encontrar el evento adecuado aquí a través de Plan B Network.",
+    "pageSubtitle": "Adopción de abajo hacia arriba, potenciada por una red sólida",
+    "pageTitle": "¿Buscas un evento de Bitcoin al que asistir?",
     "payment": {
-      "access_invoice": "",
-      "access_online_successful": "",
-      "access_physical_successful": "",
-      "access_type": "",
+      "access_invoice": "Puedes acceder a tu factura a través de tu panel de control.",
+      "access_online_successful": "Cuando comience el evento, inicia sesión en la plataforma y se te concederá acceso a la transmisión en vivo a través de la página del evento.",
+      "access_physical_successful": "Puede descargar tu ticket aquí, o descargarlo más tarde en tu panel de control.",
+      "access_type": "Tipo de acceso",
       "address": "",
       "additional_free_description": "",
       "amount": "",
@@ -698,33 +806,50 @@
     "tickets": ""
   },
   "conferences": {
-    "addConferences": "",
-    "backConferences": "",
-    "conferenceName": "",
-    "conferencesSinceGenesis": "",
-    "description": "",
+    "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
+    "backConferences": "Regresar a conferencias",
+    "conferenceName": "Nombre de la conferencia",
+    "conferencesSinceGenesis": "Archivo de Coferencias de Bitcoin desde el Bloque Génesis",
+    "description": "Las conferencias son un elemento clave en la industria de Bitcoin. Son parte del viaje educativo de cualquier Bitcoiner. Construimos esta herramienta para ayudarte a navegar a través de cientos de conferencias.",
     "details": {
-      "findReplay": "",
-      "nextVideo": "",
-      "previousVideo": "",
-      "selectStage": "",
-      "selectVideo": "",
-      "speaker": "",
-      "watchReplay": ""
+      "findReplay": "Encuentra una repetición",
+      "nextVideo": "Próximo video",
+      "previousVideo": "Video anterior",
+      "selectStage": "Selecciona un escenario",
+      "selectVideo": "Selecciona un video",
+      "speaker": "Ponente",
+      "watchReplay": "Mira la repetición"
     },
-    "language": "",
-    "latestConferences": "",
-    "location": "",
-    "noConferences": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
-    "planBConferences": "",
-    "topics": ""
+    "language": "Idioma",
+    "latestConferences": "Últimas conferencias",
+    "location": "Ubicación",
+    "noConferences": "Aún no se han añadido conferencias para {{year}}.",
+    "pageSubtitle": "Este portal es de código abierto y está abierto a la contribución.",
+    "pageTitle": "Repeticiones de conferencias",
+    "planBConferences": "Conferencias de Plan B",
+    "topics": "Temas"
   },
   "payment": {
     "proceedToPayment": "",
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "bCertificate": {
+    "pageTitle": "Aprueba el ₿ Certificate",
+    "readChart": "Lee el estatuto",
+    "organizeDescription": "¡No hay problema! Si tu comunidad es parte de la Red, puedes organizar una sesión de examen en tu hub. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
+    "bCertificateDescription": "El ₿ Certificate es un examen reconocido internacionalmente que evalúa tu nivel de dominio en Bitcoin y sus temas relacionados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, brindándote acceso a las mejores empresas y excelentes oportunidades laborales.",
+    "checkout": "Echa un vistazo al ₿ Certificate",
+    "organizeTitle": "¿Quieres organizar un examen de ₿ Certificate en tu centro?",
+    "bookExam": "Reserva una sesión de examen",
+    "challengeYourself": "¡Desafíate a ti mismo y afirma tu nivel!",
+    "noBookExam": "Aún no se ha planificado ninguna sesión de examen.",
+    "organizeExam": "Organiza un examen",
+    "organizeSubtitle": "El orange pilling a mil millones de personas no es fácil",
+    "pageSubtitle": "Adopción masiva a través de educación centralizada de código abierto.",
+    "curious": "¿Curioso por saber cómo es el examen?",
+    "joeNakamotoVideo": "¿Qué diablos es un examen de Bitcoin? Por Joe Nakamoto",
+    "knowledgeableBitcoin": "¿Conocedor de Bitcoin?"
   }
 }

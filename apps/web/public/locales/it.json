@@ -78,7 +78,7 @@
     "pageSubtitle": "BET - Un kit di strumenti open-source Bitcoin per tutti i progetti educativi",
     "pageTitle": "Kit Educativo Bitcoin",
     "visualContent": {
-      "description": "Questo contenuto è dati visivi grezzi, da utilizzare per le tue creazioni.",
+      "description": "Le immagini seguenti possono essere usate per le tue creazioni.",
       "title": "Contenuto Visivo"
     },
     "contributeButton": "Aiuta e contribuisci",
@@ -89,7 +89,7 @@
     "abstract": "Astratto",
     "bookSummary": {
       "modifyTooltip": "Scrivi o modifica",
-      "noSummary": "Nessun riassunto è stato ancora scritto. Se hai letto il libro e vuoi condividere un riepilogo, non esitare a scriverne uno su Github. Potrebbe essere utile alla comunità, migliorare l'università e tu potresti persino guadagnare quale sats!",
+      "noSummary": "Nessun riassunto è stato ancora scritto. Se hai letto il libro e vuoi condividere il tuo, non esitare a scriverne uno su Github. Potrebbe essere davvero utile alla comunità, migliorare le risorse dell'università e tu potresti persino guadagnare quale sats per il tuo impegno!",
       "notice": "questo sommario è collegato a github, per qualsiasi modifica o aggiunta",
       "title": "Riepilogo del libro"
     },
@@ -98,13 +98,13 @@
     "offeredBy": "Offerto da un generoso contributore",
     "pageSubtitle": "Questa libreria è open source e aperta al contributo. Grazie per aver valutato e condiviso !",
     "pageTitle": "La biblioteca",
-    "topicsAddressed": "Argomenti trattati: "
+    "topicsAddressed": "Argomenti trattati:"
   },
   "builders": {
     "pageSubtitle": "Questo portale è open-source e aperto al contributo. Grazie per la classificazione e la condivisione!",
     "pageTitle": "Il Portale Del Costruttore",
     "networkStrength": "La forza di una rete sta nei suoi membri",
-    "noRelatedEvents": "Non ci sono eventi futuri correlati per questo costruttore al momento.",
+    "noRelatedEvents": "Non ci sono prossimi eventi correlati per questo costruttore al momento.",
     "otherCommunities": "Esplora le comunità Plan B",
     "languages": "Lingue",
     "relatedEvents": "Eventi futuri correlati"
@@ -124,15 +124,15 @@
       "count": "Capitolo {{count}}",
       "finishCourse": "Termina il corso",
       "next": "Fatto, andiamo al prossimo capitolo!",
-      "thanksTip": "Vuoi dire grazie? Dona.",
+      "thanksTip": "Vuoi mostrare il tuo apprezzamento?\nPuoi supportare l'autore con una mancia.",
       "detail": {
-        "title": "",
+        "title": "Dettagli della lezione",
         "p1heading": "Intendi partecipare a questa lezione di persona?",
         "p1content": "Assicurati di prenotare un posto",
         "p2heading": "Non riesci a venire di persona?",
-        "p2content": "Nessun problema! La lezione sarà trasmessa in streaming in questa pagina e la registrazione sarà disponibile successivamente.",
+        "p2content": "Nessun problema! La lezione sarà trasmessa in diretta streaming in questa pagina e la registrazione sarà disponibile successivamente.",
         "bookSeat": "Prenota il tuo posto",
-        "classIsFull": "",
+        "classIsFull": "La lezione è già piena",
         "cancelBooking": "Annulla la tua prenotazione",
         "ticketDownload": "Scarica il tuo biglietto"
       },
@@ -152,7 +152,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Descrizione",
       "duration": "Durata: {{hours}} ore",
-      "goal": "OBIETTIVO:",
+      "goal": "Obiettivo:",
       "level": "Livello: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} capitoli",
@@ -160,11 +160,11 @@
       },
       "numberOfChapters": "Numero di capitoli: {{number}}",
       "objectives": "Obiettivi",
-      "objectivesTitle": "Cosa imparerai con questo corso?",
+      "objectivesTitle": "Cosa imparerai:",
       "price": "Prezzo: {{price}} sats",
       "professor": "Professore",
       "startCourse": "Inizia il corso",
-      "taughtBy": "Questo corso è stato insegnato da:",
+      "taughtBy": "Questo corso è tenuto da:",
       "teacher": "Insegnante: {{teacher}}",
       "teachers": "Insegnanti: {{teachers}}",
       "teacherWord": "Una parola dall'insegnante",
@@ -182,9 +182,9 @@
     "explorer": {
       "footerTitle": "I nostri professori sono qui per te!",
       "footerp1": "Alla Sovrana Università, i nostri professori hanno piena autonomia sul loro contenuto e sugli strumenti che vogliono esplorare, purché seguano il codice etico. Sono bitcoiner appassionati provenienti da vari sfondi.",
-      "footerp2": "Se si desidera migliorare su un corso o fornire il proprio, si può semplicemente farlo tramite GitHub. Per sostenere un professore si può entrambi il corso di laurea, suggerire il professore direttamente o diventare un membro universitario per sostenere la piattaforma.",
+      "footerp2": "Se vuoi migliorare un corso o proporne uno tuo, puoi farlo facilmente tramite il repository GitHub. Altrimenti, per sostenere un professore, ci sono diverse opzioni: puoi fornire un feedback del corso, inviare una mancia al professore direttamente o diventare un membro di PlanB Network per aiutare a sostenere la piattaforma.",
       "moreToCome": ".... e altro ancora da venire!",
-      "pageDescription": "Qui sarai in grado di trovare un gran numero di corsi relativi a Bitcoin con una vasta gamma di argomenti. Questo contenuto educativo è organico, cresce con la crescita di Bitcoin. Tutti i contenuti sono gratuiti, open source e accessibili a tutti. Si prega di consultare l'indice dei corsi, organizzato in circoli per adattarsi al percorso di apprendimento di chiunque.",
+      "pageDescription": "L'accademia PlanB è dedicata a semplificare l'educazione Bitcoin nel mondo. Curata da esperti di molti campi, la nostra accademia fornisce un ventaglio esaustivo di corsi progettati per chiarificare ogni aspetto di Bitcoin. Dal principiante all'esporto, al tuo ritmo o seguito settimanalmente da un professore, speriamo che l'accademia possa aiutarti a comprendere meglio il vasto tema di Bitcoin. Una larga parte dei nostri corsi sono interamente gratuiti in modo che chiunque, da qualsiasi luogo, possa avere accesso all'educazione.",
       "pageSubtitle": "Benvenuti all'entrata della piattaforma di e-learning.",
       "pageTitle": "Corsi",
       "s2p1": "Se hai iniziato ad esplorare il foro di coniglio Bitcoin, devi sapere che è un viaggio infinito con molti percorsi. Qui all'università, lo capiamo e progettiamo i nostri contenuti educativi per essere non lineari, autonomi e altrettanto estesi possibile.",
@@ -220,7 +220,7 @@
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
       "teacher": "Teacher",
-      "teachers": "Teachers",
+      "teachers": "Insegnanti",
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
@@ -254,6 +254,33 @@
       "financialCrisis": "Analisi delle crisi finanziarie",
       "hyperinflation": "Analisi sull'iperinflazione",
       "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+    },
+    "review": {
+      "asExpected": "in linea con le aspettative",
+      "commentAdmin": "Commento al team degli amministratori (privato)",
+      "commentPublic": "Commento (pubblico)",
+      "commentTeacher": "Commento per l'insegnante (privato)",
+      "difficulty": "Difficoltà",
+      "feedbackDescription": "Valuta la tua esperienza qui sotto.\nQuesta sessione di feedback è obbligatoria per avere accesso all'esame finale e validare il corso.\nNOTA: gli insegnanti non avranno accesso alle valutazioni individuali.",
+      "feedbackSessionTitle": "Sessione di feedback",
+      "generalGrade": "Valutazione generale",
+      "length": "Lunghezza",
+      "loading": "Caricamento...",
+      "neutral": "neutrale",
+      "no": "no",
+      "notReally": "no, non proprio",
+      "quality": "Qualità",
+      "recommend": "Lo consiglieresti?",
+      "soAndSo": "così così",
+      "submitReview": "Invia recensione",
+      "tooEasy": "troppo facile",
+      "tooHard": "troppo difficile",
+      "tooLong": "troppo lungo",
+      "tooShort": "troppo corto",
+      "veryBad": "molto scarso",
+      "veryGood": "molto buono",
+      "writeThoughts": "Qui puoi scrivere i tuoi pensieri",
+      "faithful": "Coerente con l'obiettivo?"
     }
   },
   "dashboard": {
@@ -328,7 +355,8 @@
       "profilePicture": "Immagine profilo",
       "security": "Sicurezza",
       "username": "Nome utente"
-    }
+    },
+    "administration": "Amministrazione"
   },
   "events": {
     "introduction": {
@@ -454,6 +482,10 @@
       "title": "Insieme rendiamo migliore l'istruzione di Bitcoin ! ",
       "subtitle": "PlanB è open source al 100% grazie al nostro generoso patreon",
       "content": "PlanB è orgoglioso di collaborare con numerose aziende bitcoin in tutto il mondo per fornire le migliori risorse educative possibili!"
+    },
+    "wallOfLoveSection": {
+      "title": "Muro dell'amore",
+      "subtitle": "Cosa dicono di noi i Bitcoiner"
     }
   },
   "imagesAlt": {
@@ -507,7 +539,8 @@
     "login": "Accedi",
     "bCertificateDescription": "Supera l'esame Certificato ₿ per dimostrare il tuo livello Bitcoin",
     "glossaryDescription": "Comprendere il linguaggio di Bitcoin",
-    "loginRegister": "Accedi / Registrati"
+    "loginRegister": "Accedi / Registrati",
+    "publicDescription": "Esplora gli articoli di comunicazione pubblica"
   },
   "nodeNetwork": {
     "answer1": "Un nodo è semplicemente una comunità Bitcoin che vuole progredire al passo successivo e accelerare la propria adozione locale Bitcoin! Non c'è nessuna dimensione minima con cui iniziare.",
@@ -536,7 +569,7 @@
   },
   "podcasts": {
     "hostedBy": "Ospitato da {{host}}",
-    "pageSubtitle": "Questo portale è open-source e aperto al contributo. Grazie per la classificazione e la condivisione!",
+    "pageSubtitle": "Questo portale è Open Source e aperto al contributo.",
     "pageTitle": "Il Portale Podcast"
   },
   "professors": {
@@ -816,7 +849,7 @@
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
     "backConferences": "Torna alle conferenze",
     "conferenceName": "Nome conferenza",
-    "conferencesSinceGenesis": "Archivi delle conferenze Bitcoin dal Blocco Genesi",
+    "conferencesSinceGenesis": "Archivio delle conferenze Bitcoin dal Blocco Genesi",
     "description": "Le conferenze sono un elemento chiave del settore Bitcoin. Sono parte integrante del viaggio educativo di ogni Bitcoiner. Abbiamo costruito questo strumento per aiutarti a navigare attraverso centinaia di conferenze.",
     "details": {
       "findReplay": "Cerca una registrazione",
@@ -849,13 +882,15 @@
     "joeNakamotoVideo": "Che cavolo è un esame Bitcoin? Di Joe Nakamoto",
     "knowledgeableBitcoin": "Conoscenze in Bitcoin?",
     "noBookExam": "Non ci sono ancora sessioni di esame programmate.",
-    "organizeDescription": "Nessun problema! Se la tua comunità è parte del Network, è possibile organizzare una sessione di esame presso il tuo hub. Leggi il chart per assicurarti che puoi soddisfare tutte le condizioni obbligatorie per ospitare un esame. Se puoi soddisfare le condizioni, puoi pianificare una sessione e aggiungerla alla piattaforma.",
+    "organizeDescription": "Nessun problema! Se la tua comunità è parte del Network, è possibile organizzare una sessione di esame presso il tuo hub. Leggi il regolamento per assicurarti che tu possa soddisfare tutte le condizioni obbligatorie per ospitare un esame. Se puoi soddisfare le condizioni, puoi pianificare una sessione e aggiungerla alla piattaforma.",
     "organizeExam": "Organizza un esame",
     "organizeSubtitle": "Orangepillare un miliardo di persone non è facile",
     "pageSubtitle": "Adozione di massa attraverso un'educazione centralizzata open source",
     "bCertificateDescription": "Il Certificato ₿ è un esame riconosciuto a livello internazionale che valuta il tuo livello su Bitcoin e i suoi argomenti derivati. Questo certificato ti permetterà di dimostrare le tue capacità e la tua conoscenza nel settore Bitcoin, dandoti accesso ad aziende e posizioni in questo settore.",
     "checkout": "Controlla il Certificato ₿",
-    "organizeTitle": "Vuoi organizzare un esame Certificato ₿ nel tuo hub?"
+    "organizeTitle": "Vuoi organizzare un esame Certificato ₿ nel tuo hub?",
+    "pageTitle": "Supera il ₿ Certificate",
+    "readChart": "Leggi il regolamento"
   },
   "glossary": {
     "anotherWord": "Cerca un'altra parola",
@@ -867,13 +902,19 @@
     "pageTitle": "Glossario Bitcoin",
     "placeHolder": "Che cos'è questo?",
     "randomSearch": "Ricerca casuale",
-    "relatedWords": "Parole correlate:"
+    "relatedWords": "Parole correlate:",
+    "creditsLoic": "<0>Crediti</0>: Bitcoin Dictionary scritto da Loïc Morel (Pandul), disponibile in questo <1>repository Github</1>.",
+    "term": "Termine",
+    "keepLooking": "Vuoi continuare a cercare?"
   },
   "publicCommunication": {
     "blogPost": "Blog & Notizie",
     "legalSections": {
       "cookies": "Cookie",
-      "contact": "Contatti"
+      "contact": "Contatti",
+      "legalNotice": "Nota legale",
+      "privacyPolicy": "Politica sulla privacy",
+      "termsOfSale": "Condizioni di vendita"
     },
     "blogPageStrings": {
       "noBlogs": "Non ci sono articoli al momento",
@@ -881,15 +922,30 @@
       "noArticlesText": "Non ci sono post nel blog in questo momento.",
       "errorMessageNotFound": "Blog non trovato.",
       "blogSidebarTitle": "Post precedenti in Rete",
-      "filterText": "Filtro per argomento:"
+      "filterText": "Filtro per argomento:",
+      "blogListButtonText": "Leggi",
+      "featuredArticleTitleText": "Ultimi articoli pubblicati"
     },
     "legal": "Informazioni legali",
     "blogCategories": {
       "all": "Tutte",
-      "network": "Rete"
+      "network": "Rete",
+      "content": "Contenuti",
+      "course": "Nuovi corsi",
+      "feature": "In evidenza"
     },
     "goBackButtons": {
       "simpleGoBack": "Torna a tutti gli articoli"
-    }
+    },
+    "description": "In Plan B Network, siamo orgogliosi di seguire gli standard Open Source e mantenere la trasparenza durante tutto il nostro percorso",
+    "title": "Comunicazione pubblica"
+  },
+  "proofreading": {
+    "description": "Il contenuto originale è stato tradotto con intelligenza artificiale, ma una revisione umana è necessaria per assicurarne l'accuratezza.",
+    "status": "Stato della revisione",
+    "completed": "Revisione completata",
+    "inProgress": "Revisione in corso",
+    "reviewEarn": "Fai una revisione e guadagna sats",
+    "thanks": "Un grande grazie a tutti i nostri revisori!"
   }
 }
