@@ -97,7 +97,7 @@ function Home() {
             <p className={cn(paragraphCss, 'mt-2 lg:mt-9')}>
               {t('home.header.content')}
             </p>
-            <div className="mt-6 flex flex-row justify-center gap-4 lg:mt-9">
+            <div className="mt-6 flex flex-row flex-wrap justify-center gap-4 lg:mt-9">
               <a href="/courses" rel="noopener noreferrer">
                 <Button
                   variant="primary"
