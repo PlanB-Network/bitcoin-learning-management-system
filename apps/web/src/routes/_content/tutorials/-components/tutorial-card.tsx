@@ -20,7 +20,7 @@ export const TutorialCard = ({
     <Link
       to={href}
       rel="noreferrer"
-      className="flex items-center w-full bg-newGray-6 shadow-course-navigation-sm md:shadow-course-navigation md:border border-newGray-5 rounded-lg md:rounded-[20px] p-1 md:p-4 gap-2.5 md:gap-6 max-md:max-w-72 my-4"
+      className="flex items-center w-full bg-newGray-6 shadow-course-navigation-sm md:shadow-course-navigation md:border border-newGray-5 rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 max-md:max-w-72 my-4"
     >
       <img
         src={
@@ -44,6 +44,9 @@ export const TutorialCard = ({
         <span className="text-newBlack-3 text-xs font-light mb-2 max-md:hidden">
           {tutorial.description}
         </span>
+        <div className="md:hidden">
+          <TutorialLikes tutorial={tutorial} />
+        </div>
         <span className="flex gap-2.5 md:gap-4 flex-wrap">
           {tutorial.tags.map((tag) => (
             <span
