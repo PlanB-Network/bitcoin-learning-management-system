@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { cn } from '@blms/ui';
 
 import { Footer } from './footer.tsx';
-import { Header } from './Header/index.tsx';
+import { Header } from './Header/header.tsx';
 import ScrollToTopButton from './scroll-to-top-button.tsx';
 
 interface MainLayoutProps {

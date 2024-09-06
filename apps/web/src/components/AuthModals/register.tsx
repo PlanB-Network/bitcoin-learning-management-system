@@ -20,8 +20,9 @@ import {
   TextInput,
 } from '@blms/ui';
 
-import { trpc } from '../../../utils/trpc.ts';
-import { AuthModalState } from '../props.ts';
+import { trpc } from '../../utils/trpc.ts';
+
+import { AuthModalState } from './props.ts';
 
 const password = new PasswordValidator().is().min(10);
 

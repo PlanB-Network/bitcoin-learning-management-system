@@ -7,9 +7,10 @@ import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 
-import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
-import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
-import { LanguageSelector } from '../LanguageSelector/index.tsx';
+import SignInIconDark from '../../assets/icons/profile_log_in_dark.svg';
+import SignInIconLight from '../../assets/icons/profile_log_in_light.svg';
+
+import { LanguageSelector } from './language-selector.tsx';
 
 export interface MetaElementsProps {
   onClickLogin: () => void;

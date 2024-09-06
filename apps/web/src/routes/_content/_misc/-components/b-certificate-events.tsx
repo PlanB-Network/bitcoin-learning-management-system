@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import type { JoinedEvent } from '@blms/types';
 
-import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';

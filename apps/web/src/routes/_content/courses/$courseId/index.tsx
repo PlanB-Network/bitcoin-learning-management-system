@@ -27,7 +27,7 @@ import staricon from '#src/assets/courses/star.png';
 import wizard from '#src/assets/courses/wizard.png';
 import yellowBook from '#src/assets/courses/yellowbook.png';
 import rabitPen from '#src/assets/rabbit_holding_pen.svg';
-import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';

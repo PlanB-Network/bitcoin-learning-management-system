@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 import { Dialog } from '@blms/ui';
 
-import { trpc, trpcClient } from '../../../utils/trpc.ts';
-import type { AuthModalState } from '../props.tsx';
+import { trpc, trpcClient } from '../../utils/trpc.ts';
+
+import type { AuthModalState } from './props.ts';
 
 interface LnurlAuthModalProps {
   isOpen: boolean;

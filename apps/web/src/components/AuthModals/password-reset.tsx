@@ -14,7 +14,7 @@ import {
 
 import { trpc } from '#src/utils/index.js';
 
-import { AuthModalState } from '../props.ts';
+import { AuthModalState } from './props.ts';
 
 interface LoginModalProps {
   isOpen: boolean;

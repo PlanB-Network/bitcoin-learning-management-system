@@ -1,9 +1,9 @@
 import { FiChevronDown } from 'react-icons/fi';
 
-import { useDisclosure } from '../../../../hooks/use-disclosure.ts';
-import { compose } from '../../../../utils/index.ts';
-import { MenuElement } from '../../MenuElement/index.tsx';
-import type { NavigationSubSection } from '../../props.tsx';
+import { useDisclosure } from '../../../hooks/use-disclosure.ts';
+import { compose } from '../../../utils/index.ts';
+import { MenuElement } from '../menu-elements.tsx';
+import type { NavigationSubSection } from '../props.ts';
 
 export interface MobileMenuSubSectionProps {
   subSection: NavigationSubSection;

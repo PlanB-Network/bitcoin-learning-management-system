@@ -8,7 +8,7 @@ import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 import Flag from '#src/molecules/Flag/index.js';
 import { LangContext } from '#src/providers/app.js';
 
-import { LANGUAGES, LANGUAGES_MAP } from '../../../utils/i18n.ts';
+import { LANGUAGES, LANGUAGES_MAP } from '../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';

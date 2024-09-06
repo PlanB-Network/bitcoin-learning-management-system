@@ -4,10 +4,10 @@ import { cn } from '@blms/ui';
 
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
-import { MetaElements } from '../MetaElements/index.tsx';
-import type { NavigationSection } from '../props.tsx';
+import { MetaElements } from '../meta-elements.tsx';
+import type { NavigationSection } from '../props.ts';
 
-import { FlyingMenuSection } from './FlyingMenuSection/index.tsx';
+import { FlyingMenuSection } from './flying-menu-section.tsx';
 
 export interface FlyingMenuProps {
   sections: NavigationSection[];

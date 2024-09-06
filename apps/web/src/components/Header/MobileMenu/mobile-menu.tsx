@@ -20,10 +20,10 @@ import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoOrange from '../../../assets/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/planb_logo_horizontal_white_whitepill.svg?react';
 import { useDisclosure } from '../../../hooks/index.ts';
-import { LanguageSelector } from '../LanguageSelector/index.tsx';
-import type { NavigationSection } from '../props.tsx';
+import { LanguageSelector } from '../language-selector.tsx';
+import type { NavigationSection } from '../props.ts';
 
-import { MobileMenuSection } from './MobileMenuSection/index.tsx';
+import { MobileMenuSection } from './mobile-menu-section.tsx';
 
 export interface MobileMenuProps {
   sections: NavigationSection[];

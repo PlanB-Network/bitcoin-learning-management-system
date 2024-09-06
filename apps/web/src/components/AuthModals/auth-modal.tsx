@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { PasswordReset } from './PasswordReset/index.tsx';
+import { PasswordReset } from './password-reset.tsx';
 import { AuthModalState } from './props.ts';
-import { Register } from './Register/index.tsx';
-import { SignIn } from './SignIn/index.tsx';
+import { Register } from './register.tsx';
+import { SignIn } from './sign-in.tsx';
 
 interface LoginModalProps {
   isOpen: boolean;

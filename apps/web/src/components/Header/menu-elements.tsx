@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { cn } from '@blms/ui';
 
-import type { NavigationElement } from '../props.tsx';
+import type { NavigationElement } from './props.ts';
 
 export interface MenuElementProps {
   element: NavigationElement;

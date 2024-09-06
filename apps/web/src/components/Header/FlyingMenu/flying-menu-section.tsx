@@ -4,9 +4,10 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 
-import { MenuElement } from '../../MenuElement/index.tsx';
-import type { NavigationSection } from '../../props.tsx';
-import { FlyingMenuSubSection } from '../FlyingMenuSubSection/index.tsx';
+import { MenuElement } from '../menu-elements.tsx';
+import type { NavigationSection } from '../props.ts';
+
+import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 export interface FlyingMenuProps {
   section: NavigationSection;

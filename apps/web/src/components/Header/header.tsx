@@ -17,12 +17,12 @@ import aboutSvg from '../../assets/resources/world.svg';
 import { useDisclosure } from '../../hooks/use-disclosure.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
-import { AuthModal } from '../AuthModals/index.tsx';
+import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
 
-import { FlyingMenu } from './FlyingMenu/index.tsx';
-import { MobileMenu } from './MobileMenu/index.tsx';
-import type { NavigationSection } from './props.tsx';
+import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
+import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
+import type { NavigationSection } from './props.ts';
 
 type Course = JoinedCourseWithProfessors;
 

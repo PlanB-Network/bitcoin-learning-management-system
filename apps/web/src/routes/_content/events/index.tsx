@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedEvent } from '@blms/types';
 import { Loader } from '@blms/ui';
 
-import { AuthModal } from '#src/components/AuthModals/index.js';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
