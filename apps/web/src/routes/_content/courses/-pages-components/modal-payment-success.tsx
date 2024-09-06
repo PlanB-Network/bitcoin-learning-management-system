@@ -3,7 +3,7 @@ import { Trans } from 'react-i18next';
 
 import { Button } from '@blms/ui';
 
-import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDate } from '#src/utils/date.js';

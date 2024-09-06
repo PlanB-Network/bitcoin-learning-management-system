@@ -5,7 +5,6 @@ import { BsTwitter } from 'react-icons/bs';
 
 import { Button, cn } from '@blms/ui';
 
-import HeaderPill from '#src/assets/footer_pill.webp';
 import EducationMain from '#src/assets/home/education-main.webp';
 import Flags from '#src/assets/home/flags.webp';
 import FlagsSmall from '#src/assets/home/flags_small.png';
@@ -19,6 +18,7 @@ import TwitterLecompte from '#src/assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '#src/assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg';
+import HeaderPill from '#src/assets/icons/footer_pill.webp';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { CategoryIcon } from '#src/components/category-icon.js';
 import { useGreater } from '#src/hooks/use-greater.js';

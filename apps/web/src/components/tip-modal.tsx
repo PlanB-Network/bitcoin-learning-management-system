@@ -14,7 +14,7 @@ import { useSmaller } from '#src/hooks/use-smaller.js';
 import BitcoinCircleGray from '../assets/icons/bitcoin_circle_gray.svg';
 import LightningOrange from '../assets/icons/lightning_orange.svg';
 import PaynimRobotGray from '../assets/icons/paynym_robot_gray.svg';
-import RabbitWithPresent from '../assets/rabbit_with_present.svg';
+import RabbitWithPresent from '../assets/icons/rabbit_with_present.svg';
 
 interface LoginModalProps {
   isOpen: boolean;

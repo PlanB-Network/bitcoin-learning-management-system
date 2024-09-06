@@ -2,7 +2,7 @@ import { t } from 'i18next';
 
 import { Button } from '@blms/ui';
 
-import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 
 interface ModalBookDescriptionProps {

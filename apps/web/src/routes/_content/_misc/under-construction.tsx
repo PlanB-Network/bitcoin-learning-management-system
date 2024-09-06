@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import underConstructionImage from '#src/assets/under-construction.png';
+import underConstructionImage from '#src/assets/icons/under-construction.png';
 import { MainLayout } from '#src/components/main-layout.js';
 
 export const Route = createFileRoute('/_content/_misc/under-construction')({

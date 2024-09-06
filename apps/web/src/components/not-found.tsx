@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import lostRabbit from '#src/assets/404.svg';
+import lostRabbit from '#src/assets/icons/404.svg';
 
 import { MainLayout } from './main-layout.tsx';
 

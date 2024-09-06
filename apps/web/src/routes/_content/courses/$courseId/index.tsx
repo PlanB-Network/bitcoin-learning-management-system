@@ -17,8 +17,6 @@ import ReactMarkdown from 'react-markdown';
 import type { JoinedCourseWithAll } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
-import graduateImg from '#src/assets/birrete.png';
-import watch from '#src/assets/cloclk.png';
 import checkBoxSVG from '#src/assets/courses/checkboxFilled.svg';
 import crayonSVG from '#src/assets/courses/Crayon.svg';
 import Book from '#src/assets/courses/livre.svg?react';
@@ -26,7 +24,9 @@ import rocketSVG from '#src/assets/courses/rocketcourse.svg';
 import staricon from '#src/assets/courses/star.png';
 import wizard from '#src/assets/courses/wizard.png';
 import yellowBook from '#src/assets/courses/yellowbook.png';
-import rabitPen from '#src/assets/rabbit_holding_pen.svg';
+import graduateImg from '#src/assets/icons/birrete.png';
+import clock from '#src/assets/icons/clock.png';
+import rabitPen from '#src/assets/icons/rabbit_holding_pen.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.js';
@@ -250,7 +250,7 @@ function CourseDetails() {
                 </div>
                 <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
                   <img
-                    src={watch}
+                    src={clock}
                     alt="Icono de estudio"
                     className="mr-2 size-4"
                   />

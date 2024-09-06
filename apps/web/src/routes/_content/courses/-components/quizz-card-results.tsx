@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import RabbitHoldingPen from '#src/assets/rabbit_holding_pen.svg?react';
+import RabbitHoldingPen from '#src/assets/icons/rabbit_holding_pen.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
 import PieChart from './pie-chart.tsx';

@@ -4,7 +4,7 @@ import { AiOutlineCopy } from 'react-icons/ai';
 
 import { Button, cn } from '@blms/ui';
 
-import PlanBLogo from '../assets/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
 
 export interface PaymentData {
   id: string;

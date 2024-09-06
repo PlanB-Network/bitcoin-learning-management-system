@@ -42,8 +42,7 @@ export const PageHeader = ({
       )}
 
       {link ? (
-        // TODO fix
-        <Link to={link as '/'}>
+        <Link to={link}>
           <PageTitle title={title} isSubsectionTitle={isSubsectionTitle} />
         </Link>
       ) : (

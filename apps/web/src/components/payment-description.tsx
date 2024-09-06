@@ -8,7 +8,7 @@ import { Button } from '@blms/ui';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import crossRed from '#src/assets/icons/cross_red.svg';
 import spinner from '#src/assets/icons/spinner.svg';
-import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { trpc } from '#src/utils/trpc.js';
 

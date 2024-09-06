@@ -4,7 +4,7 @@ import { FiLoader } from 'react-icons/fi';
 import type { JoinedCourseWithAll } from '@blms/types';
 import { Button } from '@blms/ui';
 
-import PlanBLogo from '#src/assets/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { formatDate, formatTime } from '#src/utils/date.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 

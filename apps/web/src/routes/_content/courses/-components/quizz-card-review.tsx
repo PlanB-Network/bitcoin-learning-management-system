@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { cn } from '@blms/ui';
 
 import ArrowFilledIcon from '#src/assets/icons/arrow_filled.svg?react';
-import RabbitHoldingPen from '#src/assets/rabbit_holding_pen.svg?react';
+import RabbitHoldingPen from '#src/assets/icons/rabbit_holding_pen.svg?react';
 
 import PieChart from './pie-chart.tsx';
 import QuizzResultMessage from './quizz-result-message.tsx';
