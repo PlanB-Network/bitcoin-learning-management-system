@@ -5,7 +5,7 @@ import { cn } from '@blms/ui';
 
 import { capitalizeFirstWord } from '#src/utils/string.js';
 
-import { RESOURCES_CATEGORIES } from '../../-other/utils.tsx';
+import { RESOURCES_CATEGORIES } from '../-other/utils.tsx';
 
 interface CategoryTabsProps {
   resourceActiveCategory?: string;

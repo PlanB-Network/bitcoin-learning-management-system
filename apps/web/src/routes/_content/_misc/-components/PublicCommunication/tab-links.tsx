@@ -77,5 +77,3 @@ export const TabLinks: React.FC = () => {
     </div>
   );
 };
-
-export default TabLinks;

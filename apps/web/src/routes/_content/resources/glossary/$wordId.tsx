@@ -9,9 +9,9 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { AlphabetGlossary } from '../-components/AlphabetGlossary/index.tsx';
-import { GlossaryFilterBar } from '../-components/GlossaryFilterBar/index.tsx';
-import { GlossaryList } from '../-components/GlossaryList/index.tsx';
+import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
+import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
+import { GlossaryList } from '../-components/glossary-list.tsx';
 import { ResourceLayout } from '../-other/layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const GlossaryMarkdownBody = React.lazy(

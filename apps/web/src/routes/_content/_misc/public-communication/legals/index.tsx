@@ -11,7 +11,7 @@ export const Route = createFileRoute(
   component: LegalContactInformation,
 });
 
-export function LegalContactInformation() {
+function LegalContactInformation() {
   const { i18n } = useTranslation();
 
   const name = 'contact';

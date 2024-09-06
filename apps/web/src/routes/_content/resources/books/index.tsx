@@ -14,7 +14,7 @@ export const Route = createFileRoute('/_content/resources/books/')({
   component: Books,
 });
 
-export function Books() {
+function Books() {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
