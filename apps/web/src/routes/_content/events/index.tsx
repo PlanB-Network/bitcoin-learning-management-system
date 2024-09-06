@@ -3,8 +3,8 @@ import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@blms/types';
+import { Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
@@ -161,7 +161,7 @@ function Events() {
           />
         )}
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-4 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {events && (
           <CurrentEvents
             events={events}
@@ -177,9 +177,7 @@ function Events() {
 
         {events && (
           <>
-            <Suspense
-              fallback={<Spinner className="size-24 md:size-32 mx-auto" />}
-            >
+            <Suspense fallback={<Loader size={'s'} />}>
               <EventsMap
                 events={events}
                 eventPayments={eventPayments}
@@ -228,7 +226,7 @@ function Events() {
       </div>
 
       <div>
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {events && (
           <EventsPassed
             events={events}

@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedConference } from '@blms/types';
+import { Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { HorizontalCard } from '#src/molecules/HorizontalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.tsx';
 import { trpc } from '#src/utils/trpc.js';
@@ -82,7 +82,7 @@ function Conferences() {
             {t('conferences.latestConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
-            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+            {!isFetched && <Loader size={'s'} />}
             {latestConferences && latestConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -121,7 +121,7 @@ function Conferences() {
             {t('conferences.planBConferences')}
           </h3>
           <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">
-            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+            {!isFetched && <Loader size={'s'} />}
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
                 <VerticalCard
@@ -172,7 +172,7 @@ function Conferences() {
         activeYear={activeYear}
         setActiveYear={setActiveYear}
       />
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {filteredConferences && filteredConferences.length > 0 && (
         <>
           <ConferencesTable conferences={filteredConferences} />

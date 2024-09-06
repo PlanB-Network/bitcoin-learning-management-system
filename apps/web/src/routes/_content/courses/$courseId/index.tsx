@@ -15,7 +15,7 @@ import { RxTriangleDown } from 'react-icons/rx';
 import ReactMarkdown from 'react-markdown';
 
 import type { JoinedCourseWithAll } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import graduateImg from '#src/assets/birrete.png';
 import watch from '#src/assets/cloclk.png';
@@ -27,7 +27,6 @@ import staricon from '#src/assets/courses/star.png';
 import wizard from '#src/assets/courses/wizard.png';
 import yellowBook from '#src/assets/courses/yellowbook.png';
 import rabitPen from '#src/assets/rabbit_holding_pen.svg';
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import { AuthorCard } from '#src/components/author-card.js';
@@ -646,7 +645,7 @@ function CourseDetails() {
         }
       />
       <div className="text-blue-800">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             {!courseHasToBePurchased && (

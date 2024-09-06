@@ -1,10 +1,10 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 
 import { formatDateSimple } from '@blms/api/src/utils/date.ts';
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
@@ -92,11 +92,13 @@ function SingleBlogDetail() {
 
       <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row md:max-w-[1120px]">
         <div className="flex flex-col flex-1 border-b-2 md:border-b-0 lg:mb-12 py-4 lg:py-0">
-          <BlogMarkdownBody
-            content={blog.rawContent}
-            assetPrefix={computeAssetCdnUrl(blog.lastCommit, `${blog.path}`)}
-            blogs={[]}
-          />
+          <Suspense fallback={<Loader variant="black" size={'s'} />}>
+            <BlogMarkdownBody
+              content={blog.rawContent}
+              assetPrefix={computeAssetCdnUrl(blog.lastCommit, `${blog.path}`)}
+              blogs={[]}
+            />
+          </Suspense>
 
           <div className="w-max-[135px] hidden md:flex lg:mt-32">
             <Link to="/public-communication">

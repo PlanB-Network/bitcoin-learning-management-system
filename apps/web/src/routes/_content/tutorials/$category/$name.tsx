@@ -1,16 +1,14 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@blms/ui';
+import { Loader, cn } from '@blms/ui';
 
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
-import Spinner from '#src/assets/spinner_orange.svg?react';
-// import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
@@ -25,6 +23,7 @@ import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 import { TutorialLayout } from '../-other/layout.tsx';
+
 // eslint-disable-next-line import/no-named-as-default-member
 const TutorialsMarkdownBody = React.lazy(
   () => import('#src/components/TutorialsMarkdownBody/index.js'),
@@ -213,7 +212,6 @@ function TutorialDetails() {
 
   // Access global context
   const { tutorials, session } = useContext(AppContext);
-  const isFetchedTutorials = tutorials && tutorials.length > 0;
   const authMode = AuthModalState.SignIn;
   const isLoggedIn = !!session;
 
@@ -259,21 +257,6 @@ function TutorialDetails() {
     setIsLiked(existingLike || { liked: false, disliked: false });
   }, [existingLike]);
 
-  // Memoized markdown content
-  const memoizedMarkdown = useMemo(() => {
-    if (isFetchedTutorials && tutorial) {
-      return (
-        <TutorialsMarkdownBody
-          content={tutorial.rawContent}
-          assetPrefix={computeAssetCdnUrl(tutorial.lastCommit, tutorial.path)}
-          tutorials={tutorials || []}
-        />
-      );
-    }
-    return null;
-  }, [isFetchedTutorials, tutorial, tutorials]);
-
-  // Like/dislike buttons component
   const LikeDislikeButtons = () => {
     // Handler functions for like and dislike buttons
     const handleLike = () => {
@@ -396,7 +379,16 @@ function TutorialDetails() {
                   }}
                 />
                 <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
-                  {memoizedMarkdown}
+                  <Suspense fallback={<Loader size={'s'} />}>
+                    <TutorialsMarkdownBody
+                      content={tutorial.rawContent}
+                      assetPrefix={computeAssetCdnUrl(
+                        tutorial.lastCommit,
+                        tutorial.path,
+                      )}
+                      tutorials={tutorials || []}
+                    />
+                  </Suspense>
                 </div>
                 <LikeDislikeButtons />
                 {tutorial.credits?.link && (
@@ -443,7 +435,7 @@ function TutorialDetails() {
           </>
         )}
 
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
       </>
     </TutorialLayout>
   );

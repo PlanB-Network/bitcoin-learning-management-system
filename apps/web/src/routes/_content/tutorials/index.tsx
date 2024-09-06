@@ -2,9 +2,8 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@blms/ui';
+import { Loader, cn } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/MainLayout/index.js';
@@ -89,9 +88,7 @@ function TutorialExplorer() {
           </h3>
         </div>
         <div className="flex flex-col items-center pt-10 text-blue-800 max-md:hidden gap-16">
-          {!isFetchedTutorials && (
-            <Spinner className="size-24 md:size-32 mx-auto" />
-          )}
+          {!isFetchedTutorials && <Loader size={'s'} />}
           {TUTORIALS_CATEGORIES.map((category) => {
             return (
               <section

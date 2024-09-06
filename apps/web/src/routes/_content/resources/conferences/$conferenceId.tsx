@@ -1,14 +1,13 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button, Tag, cn } from '@blms/ui';
+import { Button, Loader, Tag, cn } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -32,10 +31,14 @@ const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
       .replaceAll('[live replay]', '![video]')
       .split('\n')
       .map((content, index) => (
-        <ConferencesMarkdownBody key={index} content={content} />
+        <Suspense key={index} fallback={<Loader size={'s'} />}>
+          <ConferencesMarkdownBody content={content} />
+        </Suspense>
       ))
   ) : (
-    <ConferencesMarkdownBody content={rawContent} />
+    <Suspense fallback={<Loader size={'s'} />}>
+      <ConferencesMarkdownBody content={rawContent} />
+    </Suspense>
   );
 };
 
@@ -111,7 +114,7 @@ function Conference() {
       maxWidth="1360"
       className="max-md:mx-4"
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {conference && (
         <>
           {proofreading ? (

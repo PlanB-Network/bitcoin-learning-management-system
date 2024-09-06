@@ -2,7 +2,8 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
+import { Loader } from '@blms/ui';
+
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceCard } from '../-components/Cards/resource-card.tsx';
@@ -40,7 +41,7 @@ function Podcasts() {
       activeCategory="podcasts"
     >
       <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {sortedPodcasts
           .filter((podcast) =>
             podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),

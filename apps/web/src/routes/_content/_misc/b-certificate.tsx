@@ -3,11 +3,10 @@ import { t } from 'i18next';
 import { useEffect } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import bCertificatesImage from '#src/assets/about/b-certificates.webp';
 import Question from '#src/assets/icons/question.svg?react';
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 import { ReactPlayer } from '#src/components/ReactPlayer/index.js';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -116,7 +115,7 @@ function BCertificate() {
           </p>
         </div>
       </div>
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {isFetched && <BCertificateEvents events={filteredEvents} />}
       <div className="flex flex-col items-center mb-6 md:mb-20">
         <Question className="mb-2.5 md:mb-5" />

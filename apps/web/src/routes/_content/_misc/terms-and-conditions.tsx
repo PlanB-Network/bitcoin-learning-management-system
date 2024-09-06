@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Loader } from '@blms/ui';
 
 import { MainLayout } from '#src/components/MainLayout/index.js';
 
@@ -355,7 +357,9 @@ function TermsAndConditions() {
 
         <div className="mt-6 flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch">
           <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:ml-2 md:mt-8 md:w-full md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden md:px-0">
-            <GeneralMarkdownBody content={termsString} assetPrefix="" />
+            <Suspense fallback={<Loader variant="black" size={'s'} />}>
+              <GeneralMarkdownBody content={termsString} assetPrefix="" />
+            </Suspense>
           </div>
         </div>
       </div>

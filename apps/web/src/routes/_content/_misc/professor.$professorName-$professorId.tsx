@@ -7,9 +7,10 @@ import {
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Loader } from '@blms/ui';
+
 import yellowBook from '#src/assets/icons/book_yellow.png';
 import handWriting from '#src/assets/icons/hand_writing.png';
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AuthorCardFull } from '#src/components/author-card-full.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { TutorialCard } from '#src/components/tutorial-card.js';
@@ -67,7 +68,7 @@ function ProfessorDetail() {
       description={t('professors.pageSubtitle')}
       link={'/professors'}
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {professor && (
         <div className="flex flex-col text-white">
           <div className="mt-4 flex w-full flex-col items-start">

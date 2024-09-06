@@ -5,9 +5,8 @@ import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
 import type { BetViewUrl } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
 import type { VerticalCardProps } from '#src/molecules/VerticalCard/index.js';
 import { VerticalCard } from '#src/molecules/VerticalCard/index.js';
@@ -133,7 +132,7 @@ function BET() {
             <SectionDescription>
               {t('bet.educationalContent.description')}
             </SectionDescription>
-            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+            {!isFetched && <Loader size={'s'} />}
             <SectionGrid
               elements={
                 bets
@@ -160,7 +159,7 @@ function BET() {
             <SectionDescription>
               {t('bet.visualContent.description')}
             </SectionDescription>
-            {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+            {!isFetched && <Loader size={'s'} />}
             <SectionGrid
               elements={
                 bets

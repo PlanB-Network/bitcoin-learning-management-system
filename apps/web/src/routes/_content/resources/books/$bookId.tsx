@@ -2,9 +2,8 @@ import { createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Card } from '@blms/ui';
+import { Card, Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
@@ -72,7 +71,7 @@ function Book() {
       showPageHeader={false}
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {book && (
         <div className="w-full">
           {proofreading ? (

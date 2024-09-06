@@ -1,10 +1,10 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedGlossaryWord } from '@blms/types';
+import { Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -94,7 +94,7 @@ function GlossaryWord() {
       showPageHeader={false}
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <>
           {proofreading ? (
@@ -112,13 +112,15 @@ function GlossaryWord() {
             <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-5">
               {glossaryWord?.term}
             </h2>
-            <GlossaryMarkdownBody
-              content={glossaryWord?.definition || ''}
-              assetPrefix={computeAssetCdnUrl(
-                glossaryWord?.lastCommit || '',
-                glossaryWord?.path || '',
-              )}
-            />
+            <Suspense fallback={<Loader size={'s'} />}>
+              <GlossaryMarkdownBody
+                content={glossaryWord?.definition || ''}
+                assetPrefix={computeAssetCdnUrl(
+                  glossaryWord?.lastCommit || '',
+                  glossaryWord?.path || '',
+                )}
+              />
+            </Suspense>
 
             {relatedWords.length > 0 && (
               <>

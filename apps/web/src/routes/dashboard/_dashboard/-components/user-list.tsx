@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
+  Loader,
   Select,
   SelectContent,
   SelectItem,
@@ -18,7 +19,6 @@ import {
   SelectValue,
 } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -66,7 +66,7 @@ export const UserList = ({
 
   return (
     <div className="pt-2 md:pt-8">
-      {isPending && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {isPending && <Loader size={'s'} />}
       {!isPending && (
         <>
           <div className="flex flex-col">

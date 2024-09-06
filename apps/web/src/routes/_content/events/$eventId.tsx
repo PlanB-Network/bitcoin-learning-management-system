@@ -1,6 +1,7 @@
 import { createFileRoute, useParams } from '@tanstack/react-router';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
+import { Loader } from '@blms/ui';
+
 import { MainLayout } from '#src/components/MainLayout/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -27,7 +28,7 @@ function EventDetails() {
   return (
     <MainLayout>
       <div className="flex flex-col px-5">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         <div className="w-full max-w-3xl self-center mx-8 mt-24 flex flex-col items-start gap-2">
           <h1 className="text-lg md:text-2xl text-orange-500 font-medium">
             {event?.name}

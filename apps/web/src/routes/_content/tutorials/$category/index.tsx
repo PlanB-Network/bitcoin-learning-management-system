@@ -9,9 +9,16 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger, cn } from '@blms/ui';
+import {
+  Button,
+  Loader,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  cn,
+} from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { CategoryIcon } from '#src/components/CategoryIcon/index.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
@@ -103,7 +110,7 @@ function TutorialCategory() {
         <p className="hidden w-full text-justify body-16px text-black md:flex">
           {t(`tutorials.${category}.description`)}
         </p>
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {tutorials && subCategories.length > 0 && (
           <div className="w-full px-2 py-4 md:px-0">
             <Tabs

@@ -8,6 +8,7 @@ export * from './atoms/divider.tsx';
 export * from './atoms/form.tsx';
 export * from './atoms/input.tsx';
 export * from './atoms/label.tsx';
+export * from './atoms/loader.tsx';
 export * from './atoms/popover.tsx';
 export * from './atoms/ratings.tsx';
 export * from './atoms/select.tsx';

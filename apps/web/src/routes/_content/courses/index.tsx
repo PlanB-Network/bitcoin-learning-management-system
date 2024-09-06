@@ -7,9 +7,8 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import type { JoinedCourse } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 import { computeAssetCdnUrl, trpc } from '#src/utils/index.js';
@@ -529,7 +528,7 @@ function CoursesExplorer() {
       paddingXClasses="px-2.5 md:px-4"
       maxWidth="max-w-[1227px]"
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
 
       {courses && (
         <>
