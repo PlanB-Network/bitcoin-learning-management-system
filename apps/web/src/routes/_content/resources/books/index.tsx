@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedBook } from '@blms/types';
+import { Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceCard } from '../-components/Cards/resource-card.tsx';
@@ -41,7 +41,7 @@ export function Books() {
       activeCategory="books"
     >
       <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {sortedBooks
           .filter((book) =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase()),

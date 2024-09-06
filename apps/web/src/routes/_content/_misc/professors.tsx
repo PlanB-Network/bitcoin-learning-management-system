@@ -1,7 +1,8 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
+import { Loader } from '@blms/ui';
+
 import { AuthorCard } from '#src/components/author-card.js';
 import { PageLayout } from '#src/components/PageLayout/index.tsx';
 import { ProfessorCard } from '#src/components/professor-card.js';
@@ -36,7 +37,7 @@ function ProfessorExplorer() {
     >
       <div className="bg-black flex w-full flex-col items-center justify-center">
         <div className="flex max-w-[22rem] flex-wrap items-stretch justify-evenly gap-4 text-center text-xl text-white sm:max-w-none">
-          {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+          {!isFetched && <Loader size={'s'} />}
           {sortedProfessors?.map((professor) => {
             return (
               <Link

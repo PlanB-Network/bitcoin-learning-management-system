@@ -3,11 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { LuPlus } from 'react-icons/lu';
 
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
 import nodeMap from '#src/assets/about/node_map.webp';
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { PageLayout } from '#src/components/PageLayout/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -107,7 +106,7 @@ function NodeNetwork() {
     >
       <div className="flex flex-col items-center text-white">
         <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
-          {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+          {!isFetched && <Loader size={'s'} />}
           {filteredCommunities.map((community) => (
             <Link
               to={'/resources/builders/$builderId'}

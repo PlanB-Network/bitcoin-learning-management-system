@@ -5,17 +5,22 @@ import {
   useParams,
 } from '@tanstack/react-router';
 import { t } from 'i18next';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  Suspense,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { JoinedQuizQuestion } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import {} from '#src/components/CoursesMarkdownBody/index.js';
 import { AuthModal } from '#src/components/AuthModal/index.js';
 import { AuthModalState } from '#src/components/AuthModal/props.js';
@@ -516,18 +521,20 @@ const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
 
   if (isFetchedTutorials) {
     return (
-      <CoursesMarkdownBody
-        content={chapter.rawContent}
-        assetPrefix={computeAssetCdnUrl(
-          chapter.lastCommit,
-          `courses/${chapter.course.id}`,
-        )}
-        tutorials={tutorials || []}
-      />
+      <Suspense fallback={<Loader size={'s'} />}>
+        <CoursesMarkdownBody
+          content={chapter.rawContent}
+          assetPrefix={computeAssetCdnUrl(
+            chapter.lastCommit,
+            `courses/${chapter.course.id}`,
+          )}
+          tutorials={tutorials || []}
+        />
+      </Suspense>
     );
   }
 
-  return <Spinner className="size-48 md:size-64 mx-auto" />;
+  return <Loader size={'xl'} />;
 };
 
 function getRandomQuestions(
@@ -707,7 +714,7 @@ function CourseChapter() {
       />
       {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
       <div className="text-black">
-        {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+        {!isFetched && <Loader size={'s'} />}
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}

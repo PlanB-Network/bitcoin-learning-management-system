@@ -2,7 +2,8 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
+import { Loader } from '@blms/ui';
+
 import { trpc } from '#src/utils/trpc.js';
 
 import { AlphabetGlossary } from '../-components/AlphabetGlossary/index.tsx';
@@ -44,7 +45,7 @@ function Glossary() {
       maxWidth="1360"
       addCredits
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <div className="flex items-center flex-col px-4">
           <GlossaryFilterBar

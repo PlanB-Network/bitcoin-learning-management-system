@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
+import { Loader } from '@blms/ui';
+
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../-components/Cards/builder-card.tsx';
@@ -54,7 +55,7 @@ function Builders() {
       }}
       activeCategory="builders"
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       <div className="flex flex-col gap-5 p-4 pt-0 md:p-10 md:pt-0">
         {categories.map((category) => {
           const filteredBuilders = categorizedBuilders[category].filter(

@@ -2,9 +2,8 @@ import { createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Card } from '@blms/ui';
+import { Button, Card, Loader } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -59,7 +58,7 @@ function Podcast() {
       showPageHeader={false}
       backToCategoryButton
     >
-      {!isFetched && <Spinner className="size-24 md:size-32 mx-auto" />}
+      {!isFetched && <Loader size={'s'} />}
       {podcast && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

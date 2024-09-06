@@ -14,13 +14,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Loader,
   Ratings,
   Slider,
   Textarea,
   cn,
 } from '@blms/ui';
 
-import Spinner from '#src/assets/spinner_orange.svg?react';
 import { goToChapterParameters } from '#src/utils/courses.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -406,7 +406,7 @@ export function CourseReview({
           </Form>
         </>
       ) : (
-        <Spinner className="size-32 md:size-64 mx-auto" />
+        <Loader size={'m'} />
       )}
     </div>
   );
