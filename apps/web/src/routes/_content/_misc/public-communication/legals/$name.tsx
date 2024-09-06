@@ -11,7 +11,7 @@ export const Route = createFileRoute(
   component: LegalInformationTab,
 });
 
-export function LegalInformationTab() {
+function LegalInformationTab() {
   const { i18n } = useTranslation();
 
   const { name } = useParams({

@@ -6,9 +6,9 @@ import { Loader } from '@blms/ui';
 
 import { trpc } from '#src/utils/trpc.js';
 
-import { AlphabetGlossary } from '../-components/AlphabetGlossary/index.tsx';
-import { GlossaryFilterBar } from '../-components/GlossaryFilterBar/index.tsx';
-import { GlossaryList } from '../-components/GlossaryList/index.tsx';
+import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
+import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
+import { GlossaryList } from '../-components/glossary-list.tsx';
 import { ResourceLayout } from '../-other/layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/glossary/')({

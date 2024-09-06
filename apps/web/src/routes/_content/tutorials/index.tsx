@@ -12,7 +12,7 @@ import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
-import { FilterBar } from '../resources/-components/FilterBar/index.tsx';
+import { FilterBar } from '../resources/-components/filter-bar.tsx';
 
 import { TUTORIALS_CATEGORIES } from './-other/utils.tsx';
 

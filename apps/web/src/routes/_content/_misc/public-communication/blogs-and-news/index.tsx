@@ -35,7 +35,7 @@ const blogTabs = [
   },
 ];
 
-export function BlogsNews() {
+function BlogsNews() {
   const { t } = useTranslation();
   const [selectedMainTab, setSelectedMainTab] = useState(blogTabs[0].id);
 
@@ -92,5 +92,3 @@ export function BlogsNews() {
     </Layout>
   );
 }
-
-export default BlogsNews;

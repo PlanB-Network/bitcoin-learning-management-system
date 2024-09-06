@@ -9,8 +9,8 @@ import { HorizontalCard } from '#src/molecules/horizontal-card.js';
 import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ConferencesTable } from '../-components/Tables/conferences-table.tsx';
-import { ConferencesTimeLine } from '../-components/Timelines/conferences-timeline.tsx';
 import { ResourceLayout } from '../-other/layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/conferences/')({
