@@ -57,10 +57,7 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   // Filter the resource files
   const resourceFiles = files.filter(
-    (item) =>
-      getContentType(item.path) === 'resources' ||
-      (getContentType(item.path) === 'resources/conference' &&
-        !item.path.includes('events')),
+    (item) => getContentType(item.path) === 'resources',
   );
 
   const groupedResources = new Map<string, ChangedResource>();
@@ -113,7 +110,7 @@ export const createUpdateResources = (dependencies: Dependencies) => {
       bet: createProcessChangedBet,
       books: createProcessChangedBook,
       builders: createProcessChangedBuilder,
-      conference: createProcessChangedConference,
+      conferences: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
       glossary: createProcessChangedGlossaryWord,
     } as const;
