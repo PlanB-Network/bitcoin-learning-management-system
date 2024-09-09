@@ -8,7 +8,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceLayout } from '../-other/layout.tsx';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/podcasts/$podcastId')(
   {

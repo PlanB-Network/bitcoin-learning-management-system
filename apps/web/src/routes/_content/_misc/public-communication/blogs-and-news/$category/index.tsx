@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Layout from '../../-layout.tsx';
-import { BlogList } from '../../../-components/PublicCommunication/blog-list.tsx';
-import { DropdownMenu } from '../../../-components/PublicCommunication/dropdown-menu.tsx';
+import { BlogList } from '../../../-components/public-communication/blog-list.tsx';
+import { DropdownMenu } from '../../../-components/public-communication/dropdown-menu.tsx';
 
 const blogTabs = [
   {

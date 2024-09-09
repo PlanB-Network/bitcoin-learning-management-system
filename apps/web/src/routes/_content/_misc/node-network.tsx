@@ -10,7 +10,7 @@ import nodeMap from '#src/assets/about/node_map.webp';
 import { PageLayout } from '#src/components/page-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BuilderCard } from '../resources/-components/Cards/builder-card.tsx';
+import { BuilderCard } from '../resources/-components/cards/builder-card.tsx';
 
 export const Route = createFileRoute('/_content/_misc/node-network')({
   component: NodeNetwork,

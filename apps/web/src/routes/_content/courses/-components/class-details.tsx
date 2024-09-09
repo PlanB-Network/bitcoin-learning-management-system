@@ -10,7 +10,7 @@ import { formatDate, formatTime } from '#src/utils/date.js';
 import { isDevelopmentEnvironment } from '#src/utils/misc.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
-import { CourseBookModal } from './course-book-modal.tsx';
+import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
 interface ClassDetailsProps {
   course: JoinedCourseWithAll;

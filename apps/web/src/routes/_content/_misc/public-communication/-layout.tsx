@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { PageLayout } from '#src/components/page-layout.js';
 
-import { TabLinks } from '../-components/PublicCommunication/tab-links.tsx';
+import { TabLinks } from '../-components/public-communication/tab-links.tsx';
 
 interface LayoutProps {
   children: ReactNode;

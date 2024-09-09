@@ -21,8 +21,8 @@ import { SITE_NAME } from '#src/utils/meta.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
+import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
-import { TutorialLayout } from '../-other/layout.tsx';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const TutorialsMarkdownBody = React.lazy(

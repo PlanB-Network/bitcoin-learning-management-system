@@ -12,9 +12,8 @@ import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
+import { TUTORIALS_CATEGORIES } from '../../../services/utils.tsx';
 import { FilterBar } from '../resources/-components/filter-bar.tsx';
-
-import { TUTORIALS_CATEGORIES } from './-other/utils.tsx';
 
 export const Route = createFileRoute('/_content/tutorials/')({
   component: TutorialExplorer,

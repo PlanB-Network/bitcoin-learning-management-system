@@ -42,8 +42,8 @@ import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { CourseButton } from '../-components/course-button.tsx';
-import { CourseLayout } from '../-other/layout.tsx';
-import { CoursePaymentModal } from '../-pages-components/course-payment-modal.tsx';
+import { CourseLayout } from '../-components/course-layout.tsx';
+import { CoursePaymentModal } from '../-components/payment-modal/course-payment-modal.tsx';
 
 export const Route = createFileRoute('/_content/courses/$courseId/')({
   component: CourseDetails,

@@ -6,9 +6,9 @@ import { cn } from '@blms/ui';
 import { MainLayout } from '#src/components/main-layout.js';
 import { PageHeader } from '#src/components/page-header.js';
 
-import { CategoryTabs } from '../-components/category-tabs.tsx';
-import { ResourcesDropdownMenu } from '../-components/DropdownMenu/resources-category-dropdown-menu.tsx';
-import { FilterBar } from '../-components/filter-bar.tsx';
+import { CategoryTabs } from './category-tabs.tsx';
+import { ResourcesDropdownMenu } from './dropdown-menu/resources-category-dropdown-menu.tsx';
+import { FilterBar } from './filter-bar.tsx';
 
 interface Props {
   title: string;

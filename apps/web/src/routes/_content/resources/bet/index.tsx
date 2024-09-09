@@ -12,7 +12,7 @@ import type { VerticalCardProps } from '#src/molecules/vertical-card.js';
 import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceLayout } from '../-other/layout.js';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/bet/')({
   component: BET,

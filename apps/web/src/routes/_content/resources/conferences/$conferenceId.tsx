@@ -12,8 +12,8 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { DropdownMenu } from '../-components/DropdownMenu/dropdown-menu.tsx';
-import { ResourceLayout } from '../-other/layout.tsx';
+import { DropdownMenu } from '../-components/dropdown-menu/dropdown-menu.tsx';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const ConferencesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/conference-markdown-body.js'),
