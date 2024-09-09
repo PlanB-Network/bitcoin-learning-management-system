@@ -273,7 +273,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     }
   });
 
-  const base64 = (value: string) => Buffer.from(value).toString('base64');
+  const base64 = (value: string) => btoa(encodeURIComponent(value));
 
   // curl "localhost:3000/api/metadata?uri=/" -I
   router.get('/metadata', async (req, res) => {
