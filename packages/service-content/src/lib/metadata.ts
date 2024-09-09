@@ -1,7 +1,10 @@
-import { firstRow, rejectOnEmpty } from '@blms/database';
-
-import { getCourseChapterQuery } from './courses/queries/get-course-chapter.js';
-import { getCourseQuery } from './courses/queries/get-course.js';
+import { createGetCourseChapterMeta } from './courses/services/get-course-chapter-meta.js';
+import { createGetBook } from './resources/services/get-book.js';
+import { createGetPodcast } from './resources/services/get-podcast.js';
+import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
+import { createGetBuilderMeta } from './resources/services/get-builder-meta.js';
+import { createGetCourseMeta } from './courses/services/get-course-meta.js';
+import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
 import type { Dependencies } from './dependencies.js';
 
 interface Metadata {
@@ -22,85 +25,118 @@ const DEFAULT: Metadata = {
 };
 
 const defaultMeta = (lang: string): Metadata => ({ ...DEFAULT, lang });
+const defaultOnError = (lang: string) => (err: Error) => {
+  console.error('Error resolving metadata:', err?.message);
+  return defaultMeta(lang);
+};
+
+const ellipsis = (text: string, length = 200) =>
+  text.length > length ? text.slice(0, length) + '...' : text;
+
+const meta = (
+  title?: string | null,
+  description?: string | null,
+  image?: string | null,
+  lang = 'en',
+) => ({
+  title: title || DEFAULT.title,
+  description: ellipsis(
+    description?.replaceAll(/<[^>]*>?/gm, '') || DEFAULT.description,
+  ),
+  image: image || DEFAULT_IMAGE,
+  lang,
+});
 
 export const createGetMetadata = (dependencies: Dependencies) => {
+  // courses
+  const getCourseMeta = createGetCourseMeta(dependencies);
+  const getChapterMeta = createGetCourseChapterMeta(dependencies);
+
+  // Resources
+  const getBook = createGetBook(dependencies);
+  const getPodcast = createGetPodcast(dependencies);
+  const getBuilder = createGetBuilderMeta(dependencies);
+  const getGlossaryWord = createGetGlossaryWord(dependencies);
+  const getConferenceMeta = createGetConferenceMeta(dependencies);
+
   const getCourseMetadata = async (
     lang: string,
     parts: string[],
   ): Promise<Metadata> => {
     const [courseId, chapterId] = parts;
 
-    console.log(`getCourseMetadata`, { courseId, chapterId });
-
     if (!courseId) {
       return defaultMeta(lang);
     }
 
     if (chapterId) {
-      const chapter = await dependencies.postgres
-        .exec(getCourseChapterQuery(chapterId, lang))
-        .then(firstRow)
-        .then(rejectOnEmpty);
-
-      return {
-        title: chapter.title,
-        description: chapter.rawContent
-          .replaceAll(/<[^>]*>?/gm, '')
-          .slice(0, 200),
-        image: DEFAULT_IMAGE,
-        lang,
-      };
+      const chapter = await getChapterMeta(chapterId, lang);
+      return meta(chapter.title, chapter.rawContent, chapter.thumbnail, lang);
     }
 
-    const course = await dependencies.postgres
-      .exec(getCourseQuery(courseId, lang))
-      .then(firstRow)
-      .then(rejectOnEmpty);
+    const course = await getCourseMeta(courseId, lang);
+    return meta(course.name, course.goal, course.thumbnail, course.language);
+  };
 
-    return {
-      title: course.name,
-      description: course.goal,
-      image: DEFAULT_IMAGE,
-      lang: lang,
-    };
+  const getResourceMetadata = async (
+    lang: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const resourceType = parts.shift();
+    const resourceId = parts.shift();
+    console.log(`getResourceMetadata`, { resourceType, resourceId });
+
+    if (!resourceType || !resourceId) {
+      return defaultMeta(lang);
+    }
+
+    switch (resourceType) {
+      case 'books': {
+        const book = await getBook(+resourceId, lang);
+        return meta(book.title, book.description, book.cover, lang);
+      }
+      case 'podcasts': {
+        const podcast = await getPodcast(+resourceId, lang);
+        return meta(podcast.name, podcast.description, podcast.logo, lang);
+      }
+      case 'conferences': {
+        const conf = await getConferenceMeta(+resourceId);
+        return meta(conf.name, conf.description, conf.thumbnail);
+      }
+      case 'builders': {
+        const builder = await getBuilder(+resourceId, lang);
+        return meta(
+          builder.name,
+          builder.description,
+          builder.logo,
+          builder.language,
+        );
+      }
+      case 'glossary': {
+        const word = await getGlossaryWord(resourceId, lang);
+        return meta(word.term, word.definition, DEFAULT_IMAGE, lang);
+      }
+      case 'bet':
+      default:
+        return defaultMeta(lang);
+    }
   };
 
   return async (parts: string[]): Promise<Metadata> => {
-    const lang =
-      (parts.length > 0 && parts[0].length === 2 ? parts.shift() : 'en') ??
-      'en';
+    const lang = (parts[0]?.length === 2 && parts.shift()) || 'en';
 
-    console.log(`Metadata query`, { lang, pathParts: parts });
-
-    const [category, name] = parts;
-
-    console.log(`Metadata query`, { category, name });
+    const [category, ...rest] = parts;
 
     switch (category) {
-      // - /courses/:name[/:chapter]
-      case 'courses': {
-        return getCourseMetadata(lang, parts.slice(1)).catch((error) => {
-          console.error('Error resolving metadata', error);
-          return defaultMeta(lang);
-        });
-      }
-      case 'events': {
+      case 'courses':
+        return getCourseMetadata(lang, rest) //
+          .catch(defaultOnError(lang));
+      case 'resources':
+        return getResourceMetadata(lang, rest) //
+          .catch(defaultOnError(lang));
+      case 'events':
+      default:
         return defaultMeta(lang);
-        break;
-      }
-      case 'resources': {
-        return defaultMeta(lang);
-        break;
-      }
-      default: {
-        return {
-          title: 'PlanB Network',
-          description:
-            'PlanB Network is a community-driven platform for learning and sharing knowledge.',
-          image: DEFAULT_IMAGE,
-          lang,
-        };
-      }
     }
   };
 };

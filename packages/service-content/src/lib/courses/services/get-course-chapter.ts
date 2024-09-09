@@ -18,12 +18,12 @@ import { createGetCourse } from './get-course.js';
 // }
 
 export const createGetCourseChapter = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
+
   const getCourse = createGetCourse(dependencies);
 
   // TODO: Add return type
   return async (chapterId: string, language: string) => {
-    const { postgres } = dependencies;
-
     const chapter = await postgres
       .exec(getCourseChapterQuery(chapterId, language))
       .then(firstRow);

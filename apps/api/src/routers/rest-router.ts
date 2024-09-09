@@ -273,6 +273,8 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     }
   });
 
+  const base64 = (value: string) => Buffer.from(value).toString('base64');
+
   // curl "localhost:3000/api/metadata?uri=/" -I
   router.get('/metadata', async (req, res) => {
     try {
@@ -280,16 +282,17 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
       const host = req.headers['host'] as string;
 
       const url = new URL(`${proto}://${host}${req.query.uri as string}`);
-
-      console.log(`Metadata query`, url.toString());
-
       const parts = url.pathname.split('/').filter(Boolean);
 
+      console.log(`Metadata query`, url.toString());
       const metadata = await getMetadata(parts);
-      console.log(`Metadata response`, metadata);
+      console.log(`Metadata response`, {
+        ...metadata,
+        description: metadata.description.slice(0, 60) + '...',
+      });
 
-      res.setHeader('X-Title', btoa(metadata.title));
-      res.setHeader('X-Description', btoa(metadata.description));
+      res.setHeader('X-Title', base64(metadata.title));
+      res.setHeader('X-Description', base64(metadata.description));
       res.setHeader('X-Locale', metadata.lang);
       res.setHeader('X-Image', metadata.image);
       res.setHeader('X-Type', 'website');
