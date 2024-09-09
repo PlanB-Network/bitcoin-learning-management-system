@@ -307,6 +307,10 @@
   .label-med-med-16 {
     @apply text-base leading-normal font-normal tracking-[0.1px];
   }
+
+  .subtitle-small-med-14 {
+    @apply text-sm font-medium tracking-[0.1px];
+  }
 }
 
 @layer utilities {

@@ -51,9 +51,9 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
   );
 };
 
-const TopicTags = ({ professor }: ProfessorCardProps) => {
+export const TopicTags = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-4 flex flex-wrap mx-auto items-center gap-2.5 justify-center text-xs text-white">
+    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs text-white">
       {professor.tags?.map((tag) => (
         <span
           key={tag}
@@ -66,10 +66,10 @@ const TopicTags = ({ professor }: ProfessorCardProps) => {
   );
 };
 
-const SocialLinks = ({ professor }: ProfessorCardProps) => {
+export const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
     <div
-      className="mt-5 flex w-full justify-evenly self-stretch px-1 text-primary
+      className="mt-5 flex w-full justify-evenly self-stretch px-1 text-primary gap-x-6
     "
     >
       {professor.links.twitter && (

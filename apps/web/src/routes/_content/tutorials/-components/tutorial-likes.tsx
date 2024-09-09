@@ -10,7 +10,9 @@ export const TutorialLikes = ({
 }) => {
   return (
     <span className="flex gap-1 items-center">
-      <span className="text-black label-large-20px">{tutorial.likeCount}</span>
+      <span className="text-black dark:text-white label-large-20px">
+        {tutorial.likeCount}
+      </span>
       <span className="flex items-center">
         <MdThumbUp className="text-brightGreen-5 size-6 mx-1" />
         <span
@@ -30,7 +32,7 @@ export const TutorialLikes = ({
         />
         <MdThumbDown className="text-red-1 size-6 mx-1" />
       </span>
-      <span className="text-black label-large-20px">
+      <span className="text-black dark:text-white label-large-20px">
         {tutorial.dislikeCount}
       </span>
     </span>

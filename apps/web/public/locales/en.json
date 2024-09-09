@@ -615,7 +615,8 @@
     "tips": {
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "thanksNoName": "Thanks for supporting my work !",
+      "authorSupport": "Support the author with a tip"
     },
     "navigationTitles": {
       "all": "All",
