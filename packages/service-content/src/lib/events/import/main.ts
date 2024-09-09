@@ -1,6 +1,7 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
 import type {
+  Builder,
   ChangedFile,
   Event,
   ModifiedFile,
@@ -52,6 +53,18 @@ export const createProcessMainFile =
       .sort((a, b) => b.time - a.time)[0];
 
     for (const parsedEvent of parsedEvents) {
+      const builderId = await transaction<Builder[]>`
+      SELECT resource_id FROM content.builders WHERE name = ${parsedEvent.builder}
+    `
+        .then(firstRow)
+        .then((row) => row?.resourceId);
+
+      if (builderId === undefined && parsedEvent.builder) {
+        throw new Error(
+          `Cannot affect builder ${parsedEvent.builder} onto event ${event.fullPath} as builder does not exist`,
+        );
+      }
+
       const result = await transaction<Event[]>`
         INSERT INTO content.events 
           ( id,
@@ -70,6 +83,7 @@ export const createProcessMainFile =
             address_line_2,
             address_line_3,
             builder,
+            builder_id,
             type,
             website_url,
             replay_url,
@@ -96,6 +110,7 @@ export const createProcessMainFile =
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
           ${parsedEvent.builder},
+          ${builderId},
           ${parsedEvent.type.toLowerCase()},
           ${parsedEvent.links.website},
           ${parsedEvent.links.replay_url},
@@ -119,6 +134,7 @@ export const createProcessMainFile =
           address_line_2 = EXCLUDED.address_line_2,
           address_line_3 = EXCLUDED.address_line_3,
           builder = EXCLUDED.builder,
+          builder_id = EXCLUDED.builder_id,
           type = EXCLUDED.type,
           website_url = EXCLUDED.website_url,
           replay_url = EXCLUDED.replay_url,

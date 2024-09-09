@@ -1,5 +1,5 @@
 import { firstRow } from '@blms/database';
-import type { Bet, Proofreading, Resource } from '@blms/types';
+import type { Bet, Builder, Proofreading, Resource } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
 
@@ -60,11 +60,24 @@ export const createProcessChangedBet = (
           if (main && main.kind !== 'removed') {
             parsedBet = yamlToObject<BetMain>(main.data);
 
+            const builderId = await transaction<Builder[]>`
+            SELECT resource_id FROM content.builders WHERE name = ${parsedBet.builder}
+          `
+              .then(firstRow)
+              .then((row) => row?.resourceId);
+
+            if (builderId === undefined && parsedBet.builder) {
+              throw new Error(
+                `Cannot affect builder ${parsedBet.builder} onto bet ${resource.fullPath} as builder does not exist`,
+              );
+            }
+
             const result = await transaction<Bet[]>`
-              INSERT INTO content.bet (resource_id, builder, type, download_url, original_language)
-              VALUES (${id}, ${parsedBet.builder}, ${parsedBet.type.toLowerCase()}, ${parsedBet.links?.download}, ${parsedBet.original_language})
+              INSERT INTO content.bet (resource_id, builder, builder_id, type, download_url, original_language)
+              VALUES (${id}, ${parsedBet.builder}, ${builderId}, ${parsedBet.type.toLowerCase()}, ${parsedBet.links?.download}, ${parsedBet.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
                 builder = EXCLUDED.builder,
+                builder_id = EXCLUDED.builder_id,
                 type = EXCLUDED.type,
                 download_url = EXCLUDED.download_url,
                 original_language = EXCLUDED.original_language

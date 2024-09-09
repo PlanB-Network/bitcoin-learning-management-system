@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 
 import { firstRow } from '@blms/database';
-import type { Conference, Proofreading, Resource } from '@blms/types';
+import type { Builder, Conference, Proofreading, Resource } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
 
@@ -123,13 +123,25 @@ export const createProcessChangedConference = (
           if (main && main.kind !== 'removed') {
             parsedConference = yamlToObject<ConferenceMain>(main.data);
 
+            const builderId = await transaction<Builder[]>`
+            SELECT resource_id FROM content.builders WHERE name = ${parsedConference.builder}
+          `
+              .then(firstRow)
+              .then((row) => row?.resourceId);
+
+            if (builderId === undefined && parsedConference.builder) {
+              throw new Error(
+                `Cannot affect builder ${parsedConference.builder} onto conference ${resource.fullPath} as builder does not exist`,
+              );
+            }
+
             const result = await transaction<Conference[]>`
               INSERT INTO content.conferences (
-                resource_id, languages, name, year, location, original_language, description, builder, website_url, twitter_url
+                resource_id, languages, name, year, location, original_language, description, builder, builder_id, website_url, twitter_url
               )
               VALUES (
                 ${id}, ${parsedConference.language}, '', ${parsedConference.year.toString().trim()}, ${parsedConference.location.trim()},  ${parsedConference.original_language},
-                '', ${parsedConference.builder?.trim()}, ${parsedConference.links?.website?.trim()}, 
+                '', ${parsedConference.builder?.trim()}, ${builderId}, ${parsedConference.links?.website?.trim()}, 
                 ${parsedConference.links?.twitter?.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -140,6 +152,7 @@ export const createProcessChangedConference = (
                 original_language = EXCLUDED.original_language,
                 description = EXCLUDED.description,
                 builder = EXCLUDED.builder,
+                builder_id = EXCLUDED.builder_id,
                 website_url = EXCLUDED.website_url,
                 twitter_url = EXCLUDED.twitter_url
               RETURNING *

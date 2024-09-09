@@ -1,6 +1,7 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
 import type {
+  Builder,
   ChangedFile,
   ModifiedFile,
   Proofreading,
@@ -53,6 +54,18 @@ export const createProcessMainFile =
       parsedTutorial.original_language = '';
     }
 
+    const builderId = await transaction<Builder[]>`
+    SELECT resource_id FROM content.builders WHERE name = ${parsedTutorial.builder}
+  `
+      .then(firstRow)
+      .then((row) => row?.resourceId);
+
+    if (builderId === undefined && parsedTutorial.builder) {
+      throw new Error(
+        `Cannot affect builder ${parsedTutorial.builder} onto tutorial ${file.path} as builder does not exist`,
+      );
+    }
+
     const lastUpdated = tutorial.files
       .filter(
         (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
@@ -81,6 +94,7 @@ export const createProcessMainFile =
           original_language = EXCLUDED.original_language,
           level = EXCLUDED.level,
           builder = EXCLUDED.builder,
+          builder_id = EXCLUDED.builder_id,
           last_updated = EXCLUDED.last_updated,
           last_commit = EXCLUDED.last_commit,
           last_sync = NOW()

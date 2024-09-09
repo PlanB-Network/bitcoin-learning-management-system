@@ -241,6 +241,10 @@ export const contentBet = content.table('bet', {
     .references(() => contentResources.id, { onDelete: 'cascade' }),
   type: betTypeEnum('type').notNull(),
   builder: text('builder'),
+  builderId: integer('builder_id').references(
+    () => contentBuilders.resourceId,
+    { onDelete: 'cascade' },
+  ),
   downloadUrl: text('download_url').notNull(),
   originalLanguage: varchar('original_language', { length: 10 })
     .notNull()
@@ -380,6 +384,10 @@ export const contentConferences = content.table('conferences', {
   description: text('description'),
   year: text('year').notNull(),
   builder: varchar('builder', { length: 255 }),
+  builderId: integer('builder_id').references(
+    () => contentBuilders.resourceId,
+    { onDelete: 'cascade' },
+  ),
   languages: varchar('languages', { length: 255 }).array(),
   location: text('location').notNull(),
   originalLanguage: varchar('original_language', { length: 10 })
@@ -888,6 +896,10 @@ export const contentEvents = content.table('events', {
   addressLine2: text('address_line_2'),
   addressLine3: text('address_line_3'),
   builder: varchar('builder', { length: 255 }),
+  builderId: integer('builder_id').references(
+    () => contentBuilders.resourceId,
+    { onDelete: 'cascade' },
+  ),
   websiteUrl: text('website_url'),
   replayUrl: text('replay_url'),
   liveUrl: text('live_url'),
@@ -1000,6 +1012,10 @@ export const contentTutorials = content.table(
 
     level: varchar('level', { length: 255 }).notNull(),
     builder: varchar('builder', { length: 255 }),
+    builderId: integer('builder_id').references(
+      () => contentBuilders.resourceId,
+      { onDelete: 'cascade' },
+    ),
 
     lastUpdated: timestamp('last_updated', {
       withTimezone: true,
