@@ -699,63 +699,484 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({
-  IndexRoute,
-  DashboardRoute: DashboardRoute.addChildren({
-    DashboardDashboardRoute: DashboardDashboardRoute.addChildren({
-      DashboardDashboardAdministrationRoute,
-      DashboardDashboardBcertificateRoute,
-      DashboardDashboardBookingsRoute,
-      DashboardDashboardCalendarRoute,
-      DashboardDashboardCoursesRoute,
-      DashboardDashboardProfileRoute,
-      DashboardDashboardProfessorCoursesRoute,
-    }),
-  }),
-  ContentMiscAboutRoute,
-  ContentMiscBCertificateRoute,
-  ContentMiscManifestoRoute,
-  ContentMiscNodeNetworkRoute,
-  ContentMiscProfessorsRoute,
-  ContentMiscTermsAndConditionsRoute,
-  ContentMiscUnderConstructionRoute,
-  ContentCoursesCourseIdRoute: ContentCoursesCourseIdRoute.addChildren({
-    ContentCoursesCourseIdChapterIdRoute,
-    ContentCoursesCourseIdIndexRoute,
-  }),
-  ContentEventsEventIdRoute,
-  ContentTutorialsCategoryRoute: ContentTutorialsCategoryRoute.addChildren({
-    ContentTutorialsCategoryNameRoute,
-    ContentTutorialsCategoryIndexRoute,
-  }),
-  ContentCoursesIndexRoute,
-  ContentEventsIndexRoute,
-  ContentResourcesIndexRoute,
-  ContentTutorialsIndexRoute,
-  ContentMiscProfessorProfessorNameProfessorIdRoute,
-  ContentMiscPublicCommunicationLegalsRoute:
-    ContentMiscPublicCommunicationLegalsRoute.addChildren({
+interface DashboardDashboardRouteChildren {
+  DashboardDashboardAdministrationRoute: typeof DashboardDashboardAdministrationRoute;
+  DashboardDashboardBcertificateRoute: typeof DashboardDashboardBcertificateRoute;
+  DashboardDashboardBookingsRoute: typeof DashboardDashboardBookingsRoute;
+  DashboardDashboardCalendarRoute: typeof DashboardDashboardCalendarRoute;
+  DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
+  DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
+  DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
+}
+
+const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
+  DashboardDashboardAdministrationRoute: DashboardDashboardAdministrationRoute,
+  DashboardDashboardBcertificateRoute: DashboardDashboardBcertificateRoute,
+  DashboardDashboardBookingsRoute: DashboardDashboardBookingsRoute,
+  DashboardDashboardCalendarRoute: DashboardDashboardCalendarRoute,
+  DashboardDashboardCoursesRoute: DashboardDashboardCoursesRoute,
+  DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
+  DashboardDashboardProfessorCoursesRoute:
+    DashboardDashboardProfessorCoursesRoute,
+};
+
+const DashboardDashboardRouteWithChildren =
+  DashboardDashboardRoute._addFileChildren(DashboardDashboardRouteChildren);
+
+interface DashboardRouteChildren {
+  DashboardDashboardRoute: typeof DashboardDashboardRouteWithChildren;
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardDashboardRoute: DashboardDashboardRouteWithChildren,
+};
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+);
+
+interface ContentCoursesCourseIdRouteChildren {
+  ContentCoursesCourseIdChapterIdRoute: typeof ContentCoursesCourseIdChapterIdRoute;
+  ContentCoursesCourseIdIndexRoute: typeof ContentCoursesCourseIdIndexRoute;
+}
+
+const ContentCoursesCourseIdRouteChildren: ContentCoursesCourseIdRouteChildren =
+  {
+    ContentCoursesCourseIdChapterIdRoute: ContentCoursesCourseIdChapterIdRoute,
+    ContentCoursesCourseIdIndexRoute: ContentCoursesCourseIdIndexRoute,
+  };
+
+const ContentCoursesCourseIdRouteWithChildren =
+  ContentCoursesCourseIdRoute._addFileChildren(
+    ContentCoursesCourseIdRouteChildren,
+  );
+
+interface ContentTutorialsCategoryRouteChildren {
+  ContentTutorialsCategoryNameRoute: typeof ContentTutorialsCategoryNameRoute;
+  ContentTutorialsCategoryIndexRoute: typeof ContentTutorialsCategoryIndexRoute;
+}
+
+const ContentTutorialsCategoryRouteChildren: ContentTutorialsCategoryRouteChildren =
+  {
+    ContentTutorialsCategoryNameRoute: ContentTutorialsCategoryNameRoute,
+    ContentTutorialsCategoryIndexRoute: ContentTutorialsCategoryIndexRoute,
+  };
+
+const ContentTutorialsCategoryRouteWithChildren =
+  ContentTutorialsCategoryRoute._addFileChildren(
+    ContentTutorialsCategoryRouteChildren,
+  );
+
+interface ContentMiscPublicCommunicationLegalsRouteChildren {
+  ContentMiscPublicCommunicationLegalsNameRoute: typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  ContentMiscPublicCommunicationLegalsIndexRoute: typeof ContentMiscPublicCommunicationLegalsIndexRoute;
+}
+
+const ContentMiscPublicCommunicationLegalsRouteChildren: ContentMiscPublicCommunicationLegalsRouteChildren =
+  {
+    ContentMiscPublicCommunicationLegalsNameRoute:
       ContentMiscPublicCommunicationLegalsNameRoute,
+    ContentMiscPublicCommunicationLegalsIndexRoute:
       ContentMiscPublicCommunicationLegalsIndexRoute,
-    }),
-  ContentMiscResetPasswordTokenRoute,
-  ContentMiscValidateEmailTokenRoute,
-  ContentResourcesBooksBookIdRoute,
-  ContentResourcesBuildersBuilderIdRoute,
-  ContentResourcesConferencesConferenceIdRoute,
-  ContentResourcesGlossaryWordIdRoute,
-  ContentResourcesPodcastsPodcastIdRoute,
-  ContentMiscPublicCommunicationIndexRoute,
-  ContentResourcesBetIndexRoute,
-  ContentResourcesBooksIndexRoute,
-  ContentResourcesBuildersIndexRoute,
-  ContentResourcesConferencesIndexRoute,
-  ContentResourcesGlossaryIndexRoute,
-  ContentResourcesPodcastsIndexRoute,
-  ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
-  ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
-  ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
-});
+  };
+
+const ContentMiscPublicCommunicationLegalsRouteWithChildren =
+  ContentMiscPublicCommunicationLegalsRoute._addFileChildren(
+    ContentMiscPublicCommunicationLegalsRouteChildren,
+  );
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute;
+  '/dashboard': typeof DashboardDashboardRouteWithChildren;
+  '/about': typeof ContentMiscAboutRoute;
+  '/b-certificate': typeof ContentMiscBCertificateRoute;
+  '/manifesto': typeof ContentMiscManifestoRoute;
+  '/node-network': typeof ContentMiscNodeNetworkRoute;
+  '/professors': typeof ContentMiscProfessorsRoute;
+  '/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
+  '/under-construction': typeof ContentMiscUnderConstructionRoute;
+  '/courses/$courseId': typeof ContentCoursesCourseIdRouteWithChildren;
+  '/events/$eventId': typeof ContentEventsEventIdRoute;
+  '/tutorials/$category': typeof ContentTutorialsCategoryRouteWithChildren;
+  '/dashboard/administration': typeof DashboardDashboardAdministrationRoute;
+  '/dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
+  '/dashboard/bookings': typeof DashboardDashboardBookingsRoute;
+  '/dashboard/calendar': typeof DashboardDashboardCalendarRoute;
+  '/dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/profile': typeof DashboardDashboardProfileRoute;
+  '/courses': typeof ContentCoursesIndexRoute;
+  '/events': typeof ContentEventsIndexRoute;
+  '/resources': typeof ContentResourcesIndexRoute;
+  '/tutorials': typeof ContentTutorialsIndexRoute;
+  '/professor/$professorName-$professorId': typeof ContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/public-communication/legals': typeof ContentMiscPublicCommunicationLegalsRouteWithChildren;
+  '/reset-password/$token': typeof ContentMiscResetPasswordTokenRoute;
+  '/validate-email/$token': typeof ContentMiscValidateEmailTokenRoute;
+  '/courses/$courseId/$chapterId': typeof ContentCoursesCourseIdChapterIdRoute;
+  '/resources/books/$bookId': typeof ContentResourcesBooksBookIdRoute;
+  '/resources/builders/$builderId': typeof ContentResourcesBuildersBuilderIdRoute;
+  '/resources/conferences/$conferenceId': typeof ContentResourcesConferencesConferenceIdRoute;
+  '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
+  '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
+  '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
+  '/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
+  '/resources/bet': typeof ContentResourcesBetIndexRoute;
+  '/resources/books': typeof ContentResourcesBooksIndexRoute;
+  '/resources/builders': typeof ContentResourcesBuildersIndexRoute;
+  '/resources/conferences': typeof ContentResourcesConferencesIndexRoute;
+  '/resources/glossary': typeof ContentResourcesGlossaryIndexRoute;
+  '/resources/podcasts': typeof ContentResourcesPodcastsIndexRoute;
+  '/tutorials/$category/': typeof ContentTutorialsCategoryIndexRoute;
+  '/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
+  '/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
+  '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/public-communication/blogs-and-news/$category': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+}
+
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute;
+  '/dashboard': typeof DashboardDashboardRouteWithChildren;
+  '/about': typeof ContentMiscAboutRoute;
+  '/b-certificate': typeof ContentMiscBCertificateRoute;
+  '/manifesto': typeof ContentMiscManifestoRoute;
+  '/node-network': typeof ContentMiscNodeNetworkRoute;
+  '/professors': typeof ContentMiscProfessorsRoute;
+  '/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
+  '/under-construction': typeof ContentMiscUnderConstructionRoute;
+  '/events/$eventId': typeof ContentEventsEventIdRoute;
+  '/dashboard/administration': typeof DashboardDashboardAdministrationRoute;
+  '/dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
+  '/dashboard/bookings': typeof DashboardDashboardBookingsRoute;
+  '/dashboard/calendar': typeof DashboardDashboardCalendarRoute;
+  '/dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/profile': typeof DashboardDashboardProfileRoute;
+  '/courses': typeof ContentCoursesIndexRoute;
+  '/events': typeof ContentEventsIndexRoute;
+  '/resources': typeof ContentResourcesIndexRoute;
+  '/tutorials': typeof ContentTutorialsIndexRoute;
+  '/professor/$professorName-$professorId': typeof ContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/reset-password/$token': typeof ContentMiscResetPasswordTokenRoute;
+  '/validate-email/$token': typeof ContentMiscValidateEmailTokenRoute;
+  '/courses/$courseId/$chapterId': typeof ContentCoursesCourseIdChapterIdRoute;
+  '/resources/books/$bookId': typeof ContentResourcesBooksBookIdRoute;
+  '/resources/builders/$builderId': typeof ContentResourcesBuildersBuilderIdRoute;
+  '/resources/conferences/$conferenceId': typeof ContentResourcesConferencesConferenceIdRoute;
+  '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
+  '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
+  '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
+  '/courses/$courseId': typeof ContentCoursesCourseIdIndexRoute;
+  '/resources/bet': typeof ContentResourcesBetIndexRoute;
+  '/resources/books': typeof ContentResourcesBooksIndexRoute;
+  '/resources/builders': typeof ContentResourcesBuildersIndexRoute;
+  '/resources/conferences': typeof ContentResourcesConferencesIndexRoute;
+  '/resources/glossary': typeof ContentResourcesGlossaryIndexRoute;
+  '/resources/podcasts': typeof ContentResourcesPodcastsIndexRoute;
+  '/tutorials/$category': typeof ContentTutorialsCategoryIndexRoute;
+  '/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
+  '/public-communication/legals': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
+  '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/public-communication/blogs-and-news/$category': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+}
+
+export interface FileRoutesById {
+  __root__: typeof rootRoute;
+  '/': typeof IndexRoute;
+  '/dashboard': typeof DashboardRouteWithChildren;
+  '/dashboard/_dashboard': typeof DashboardDashboardRouteWithChildren;
+  '/_content/_misc/about': typeof ContentMiscAboutRoute;
+  '/_content/_misc/b-certificate': typeof ContentMiscBCertificateRoute;
+  '/_content/_misc/manifesto': typeof ContentMiscManifestoRoute;
+  '/_content/_misc/node-network': typeof ContentMiscNodeNetworkRoute;
+  '/_content/_misc/professors': typeof ContentMiscProfessorsRoute;
+  '/_content/_misc/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
+  '/_content/_misc/under-construction': typeof ContentMiscUnderConstructionRoute;
+  '/_content/courses/$courseId': typeof ContentCoursesCourseIdRouteWithChildren;
+  '/_content/events/$eventId': typeof ContentEventsEventIdRoute;
+  '/_content/tutorials/$category': typeof ContentTutorialsCategoryRouteWithChildren;
+  '/dashboard/_dashboard/administration': typeof DashboardDashboardAdministrationRoute;
+  '/dashboard/_dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
+  '/dashboard/_dashboard/bookings': typeof DashboardDashboardBookingsRoute;
+  '/dashboard/_dashboard/calendar': typeof DashboardDashboardCalendarRoute;
+  '/dashboard/_dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/_dashboard/profile': typeof DashboardDashboardProfileRoute;
+  '/_content/courses/': typeof ContentCoursesIndexRoute;
+  '/_content/events/': typeof ContentEventsIndexRoute;
+  '/_content/resources/': typeof ContentResourcesIndexRoute;
+  '/_content/tutorials/': typeof ContentTutorialsIndexRoute;
+  '/_content/_misc/professor/$professorName-$professorId': typeof ContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/_content/_misc/public-communication/legals': typeof ContentMiscPublicCommunicationLegalsRouteWithChildren;
+  '/_content/_misc/reset-password/$token': typeof ContentMiscResetPasswordTokenRoute;
+  '/_content/_misc/validate-email/$token': typeof ContentMiscValidateEmailTokenRoute;
+  '/_content/courses/$courseId/$chapterId': typeof ContentCoursesCourseIdChapterIdRoute;
+  '/_content/resources/books/$bookId': typeof ContentResourcesBooksBookIdRoute;
+  '/_content/resources/builders/$builderId': typeof ContentResourcesBuildersBuilderIdRoute;
+  '/_content/resources/conferences/$conferenceId': typeof ContentResourcesConferencesConferenceIdRoute;
+  '/_content/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
+  '/_content/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
+  '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/_dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/_content/_misc/public-communication/': typeof ContentMiscPublicCommunicationIndexRoute;
+  '/_content/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
+  '/_content/resources/bet/': typeof ContentResourcesBetIndexRoute;
+  '/_content/resources/books/': typeof ContentResourcesBooksIndexRoute;
+  '/_content/resources/builders/': typeof ContentResourcesBuildersIndexRoute;
+  '/_content/resources/conferences/': typeof ContentResourcesConferencesIndexRoute;
+  '/_content/resources/glossary/': typeof ContentResourcesGlossaryIndexRoute;
+  '/_content/resources/podcasts/': typeof ContentResourcesPodcastsIndexRoute;
+  '/_content/tutorials/$category/': typeof ContentTutorialsCategoryIndexRoute;
+  '/_content/_misc/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/_content/_misc/public-communication/blogs-and-news/': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
+  '/_content/_misc/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
+  '/_content/_misc/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/_content/_misc/public-communication/blogs-and-news/$category/': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+}
+
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/about'
+    | '/b-certificate'
+    | '/manifesto'
+    | '/node-network'
+    | '/professors'
+    | '/terms-and-conditions'
+    | '/under-construction'
+    | '/courses/$courseId'
+    | '/events/$eventId'
+    | '/tutorials/$category'
+    | '/dashboard/administration'
+    | '/dashboard/bcertificate'
+    | '/dashboard/bookings'
+    | '/dashboard/calendar'
+    | '/dashboard/courses'
+    | '/dashboard/profile'
+    | '/courses'
+    | '/events'
+    | '/resources'
+    | '/tutorials'
+    | '/professor/$professorName-$professorId'
+    | '/public-communication/legals'
+    | '/reset-password/$token'
+    | '/validate-email/$token'
+    | '/courses/$courseId/$chapterId'
+    | '/resources/books/$bookId'
+    | '/resources/builders/$builderId'
+    | '/resources/conferences/$conferenceId'
+    | '/resources/glossary/$wordId'
+    | '/resources/podcasts/$podcastId'
+    | '/tutorials/$category/$name'
+    | '/dashboard/professor/courses'
+    | '/public-communication'
+    | '/courses/$courseId/'
+    | '/resources/bet'
+    | '/resources/books'
+    | '/resources/builders'
+    | '/resources/conferences'
+    | '/resources/glossary'
+    | '/resources/podcasts'
+    | '/tutorials/$category/'
+    | '/public-communication/legals/$name'
+    | '/public-communication/blogs-and-news'
+    | '/public-communication/legals/'
+    | '/public-communication/blogs-and-news/$category/$name'
+    | '/public-communication/blogs-and-news/$category';
+  fileRoutesByTo: FileRoutesByTo;
+  to:
+    | '/'
+    | '/dashboard'
+    | '/about'
+    | '/b-certificate'
+    | '/manifesto'
+    | '/node-network'
+    | '/professors'
+    | '/terms-and-conditions'
+    | '/under-construction'
+    | '/events/$eventId'
+    | '/dashboard/administration'
+    | '/dashboard/bcertificate'
+    | '/dashboard/bookings'
+    | '/dashboard/calendar'
+    | '/dashboard/courses'
+    | '/dashboard/profile'
+    | '/courses'
+    | '/events'
+    | '/resources'
+    | '/tutorials'
+    | '/professor/$professorName-$professorId'
+    | '/reset-password/$token'
+    | '/validate-email/$token'
+    | '/courses/$courseId/$chapterId'
+    | '/resources/books/$bookId'
+    | '/resources/builders/$builderId'
+    | '/resources/conferences/$conferenceId'
+    | '/resources/glossary/$wordId'
+    | '/resources/podcasts/$podcastId'
+    | '/tutorials/$category/$name'
+    | '/dashboard/professor/courses'
+    | '/public-communication'
+    | '/courses/$courseId'
+    | '/resources/bet'
+    | '/resources/books'
+    | '/resources/builders'
+    | '/resources/conferences'
+    | '/resources/glossary'
+    | '/resources/podcasts'
+    | '/tutorials/$category'
+    | '/public-communication/legals/$name'
+    | '/public-communication/blogs-and-news'
+    | '/public-communication/legals'
+    | '/public-communication/blogs-and-news/$category/$name'
+    | '/public-communication/blogs-and-news/$category';
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/dashboard/_dashboard'
+    | '/_content/_misc/about'
+    | '/_content/_misc/b-certificate'
+    | '/_content/_misc/manifesto'
+    | '/_content/_misc/node-network'
+    | '/_content/_misc/professors'
+    | '/_content/_misc/terms-and-conditions'
+    | '/_content/_misc/under-construction'
+    | '/_content/courses/$courseId'
+    | '/_content/events/$eventId'
+    | '/_content/tutorials/$category'
+    | '/dashboard/_dashboard/administration'
+    | '/dashboard/_dashboard/bcertificate'
+    | '/dashboard/_dashboard/bookings'
+    | '/dashboard/_dashboard/calendar'
+    | '/dashboard/_dashboard/courses'
+    | '/dashboard/_dashboard/profile'
+    | '/_content/courses/'
+    | '/_content/events/'
+    | '/_content/resources/'
+    | '/_content/tutorials/'
+    | '/_content/_misc/professor/$professorName-$professorId'
+    | '/_content/_misc/public-communication/legals'
+    | '/_content/_misc/reset-password/$token'
+    | '/_content/_misc/validate-email/$token'
+    | '/_content/courses/$courseId/$chapterId'
+    | '/_content/resources/books/$bookId'
+    | '/_content/resources/builders/$builderId'
+    | '/_content/resources/conferences/$conferenceId'
+    | '/_content/resources/glossary/$wordId'
+    | '/_content/resources/podcasts/$podcastId'
+    | '/_content/tutorials/$category/$name'
+    | '/dashboard/_dashboard/professor/courses'
+    | '/_content/_misc/public-communication/'
+    | '/_content/courses/$courseId/'
+    | '/_content/resources/bet/'
+    | '/_content/resources/books/'
+    | '/_content/resources/builders/'
+    | '/_content/resources/conferences/'
+    | '/_content/resources/glossary/'
+    | '/_content/resources/podcasts/'
+    | '/_content/tutorials/$category/'
+    | '/_content/_misc/public-communication/legals/$name'
+    | '/_content/_misc/public-communication/blogs-and-news/'
+    | '/_content/_misc/public-communication/legals/'
+    | '/_content/_misc/public-communication/blogs-and-news/$category/$name'
+    | '/_content/_misc/public-communication/blogs-and-news/$category/';
+  fileRoutesById: FileRoutesById;
+}
+
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute;
+  DashboardRoute: typeof DashboardRouteWithChildren;
+  ContentMiscAboutRoute: typeof ContentMiscAboutRoute;
+  ContentMiscBCertificateRoute: typeof ContentMiscBCertificateRoute;
+  ContentMiscManifestoRoute: typeof ContentMiscManifestoRoute;
+  ContentMiscNodeNetworkRoute: typeof ContentMiscNodeNetworkRoute;
+  ContentMiscProfessorsRoute: typeof ContentMiscProfessorsRoute;
+  ContentMiscTermsAndConditionsRoute: typeof ContentMiscTermsAndConditionsRoute;
+  ContentMiscUnderConstructionRoute: typeof ContentMiscUnderConstructionRoute;
+  ContentCoursesCourseIdRoute: typeof ContentCoursesCourseIdRouteWithChildren;
+  ContentEventsEventIdRoute: typeof ContentEventsEventIdRoute;
+  ContentTutorialsCategoryRoute: typeof ContentTutorialsCategoryRouteWithChildren;
+  ContentCoursesIndexRoute: typeof ContentCoursesIndexRoute;
+  ContentEventsIndexRoute: typeof ContentEventsIndexRoute;
+  ContentResourcesIndexRoute: typeof ContentResourcesIndexRoute;
+  ContentTutorialsIndexRoute: typeof ContentTutorialsIndexRoute;
+  ContentMiscProfessorProfessorNameProfessorIdRoute: typeof ContentMiscProfessorProfessorNameProfessorIdRoute;
+  ContentMiscPublicCommunicationLegalsRoute: typeof ContentMiscPublicCommunicationLegalsRouteWithChildren;
+  ContentMiscResetPasswordTokenRoute: typeof ContentMiscResetPasswordTokenRoute;
+  ContentMiscValidateEmailTokenRoute: typeof ContentMiscValidateEmailTokenRoute;
+  ContentResourcesBooksBookIdRoute: typeof ContentResourcesBooksBookIdRoute;
+  ContentResourcesBuildersBuilderIdRoute: typeof ContentResourcesBuildersBuilderIdRoute;
+  ContentResourcesConferencesConferenceIdRoute: typeof ContentResourcesConferencesConferenceIdRoute;
+  ContentResourcesGlossaryWordIdRoute: typeof ContentResourcesGlossaryWordIdRoute;
+  ContentResourcesPodcastsPodcastIdRoute: typeof ContentResourcesPodcastsPodcastIdRoute;
+  ContentMiscPublicCommunicationIndexRoute: typeof ContentMiscPublicCommunicationIndexRoute;
+  ContentResourcesBetIndexRoute: typeof ContentResourcesBetIndexRoute;
+  ContentResourcesBooksIndexRoute: typeof ContentResourcesBooksIndexRoute;
+  ContentResourcesBuildersIndexRoute: typeof ContentResourcesBuildersIndexRoute;
+  ContentResourcesConferencesIndexRoute: typeof ContentResourcesConferencesIndexRoute;
+  ContentResourcesGlossaryIndexRoute: typeof ContentResourcesGlossaryIndexRoute;
+  ContentResourcesPodcastsIndexRoute: typeof ContentResourcesPodcastsIndexRoute;
+  ContentMiscPublicCommunicationBlogsAndNewsIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  ContentMiscAboutRoute: ContentMiscAboutRoute,
+  ContentMiscBCertificateRoute: ContentMiscBCertificateRoute,
+  ContentMiscManifestoRoute: ContentMiscManifestoRoute,
+  ContentMiscNodeNetworkRoute: ContentMiscNodeNetworkRoute,
+  ContentMiscProfessorsRoute: ContentMiscProfessorsRoute,
+  ContentMiscTermsAndConditionsRoute: ContentMiscTermsAndConditionsRoute,
+  ContentMiscUnderConstructionRoute: ContentMiscUnderConstructionRoute,
+  ContentCoursesCourseIdRoute: ContentCoursesCourseIdRouteWithChildren,
+  ContentEventsEventIdRoute: ContentEventsEventIdRoute,
+  ContentTutorialsCategoryRoute: ContentTutorialsCategoryRouteWithChildren,
+  ContentCoursesIndexRoute: ContentCoursesIndexRoute,
+  ContentEventsIndexRoute: ContentEventsIndexRoute,
+  ContentResourcesIndexRoute: ContentResourcesIndexRoute,
+  ContentTutorialsIndexRoute: ContentTutorialsIndexRoute,
+  ContentMiscProfessorProfessorNameProfessorIdRoute:
+    ContentMiscProfessorProfessorNameProfessorIdRoute,
+  ContentMiscPublicCommunicationLegalsRoute:
+    ContentMiscPublicCommunicationLegalsRouteWithChildren,
+  ContentMiscResetPasswordTokenRoute: ContentMiscResetPasswordTokenRoute,
+  ContentMiscValidateEmailTokenRoute: ContentMiscValidateEmailTokenRoute,
+  ContentResourcesBooksBookIdRoute: ContentResourcesBooksBookIdRoute,
+  ContentResourcesBuildersBuilderIdRoute:
+    ContentResourcesBuildersBuilderIdRoute,
+  ContentResourcesConferencesConferenceIdRoute:
+    ContentResourcesConferencesConferenceIdRoute,
+  ContentResourcesGlossaryWordIdRoute: ContentResourcesGlossaryWordIdRoute,
+  ContentResourcesPodcastsPodcastIdRoute:
+    ContentResourcesPodcastsPodcastIdRoute,
+  ContentMiscPublicCommunicationIndexRoute:
+    ContentMiscPublicCommunicationIndexRoute,
+  ContentResourcesBetIndexRoute: ContentResourcesBetIndexRoute,
+  ContentResourcesBooksIndexRoute: ContentResourcesBooksIndexRoute,
+  ContentResourcesBuildersIndexRoute: ContentResourcesBuildersIndexRoute,
+  ContentResourcesConferencesIndexRoute: ContentResourcesConferencesIndexRoute,
+  ContentResourcesGlossaryIndexRoute: ContentResourcesGlossaryIndexRoute,
+  ContentResourcesPodcastsIndexRoute: ContentResourcesPodcastsIndexRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsIndexRoute:
+    ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute:
+    ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
+  ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute:
+    ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
+};
+
+export const routeTree = rootRoute
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>();
 
 /* prettier-ignore-end */
 
