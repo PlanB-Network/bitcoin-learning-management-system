@@ -3,11 +3,7 @@ import type { ChangedFile } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
-import {
-  getContentType,
-  getRelativePath,
-  separateContentFiles,
-} from '../../utils.js';
+import { getContentType, getRelativePath } from '../../utils.js';
 
 import { createProcessMainFile } from './main.js';
 
@@ -21,9 +17,22 @@ export interface ChangedEvent extends ChangedContent {
   id: string;
 }
 
+const parseDetailsFromPath = (path: string): EventDetails => {
+  const pathElements = path.split('/');
+
+  // Validate that the path has at least 3 elements (courses/name)
+  if (pathElements.length < 3) throw new Error('Invalid resource path');
+
+  return {
+    id: pathElements[1],
+    path: pathElements.slice(0, 2).join('/'),
+    fullPath: pathElements.join('/'),
+  };
+};
+
 export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
   const eventsFiles = files.filter(
-    (item) => getContentType(item.path) === 'resources/conference',
+    (item) => getContentType(item.path) === 'events',
   );
 
   const groupedEvents = new Map<string, ChangedEvent>();
@@ -54,23 +63,9 @@ export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
   return [...groupedEvents.values()];
 };
 
-const parseDetailsFromPath = (path: string): EventDetails => {
-  const pathElements = path.split('/');
-
-  // Validate that the path has at least 3 elements (courses/name)
-  if (pathElements.length < 3) throw new Error('Invalid resource path');
-
-  return {
-    id: pathElements[2],
-    path: pathElements.slice(0, 3).join('/'),
-    fullPath: pathElements.join('/'),
-  };
-};
-
 export const createUpdateEvents = ({ postgres }: Dependencies) => {
   return async (event: ChangedEvent, errors: string[]) => {
-    const { main } = separateContentFiles(event, 'events.yml');
-
+    const main = event.files[0];
     return postgres
       .begin(async (transaction) => {
         try {

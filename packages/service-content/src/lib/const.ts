@@ -5,7 +5,6 @@ export const supportedContentTypes = [
   'events',
   'professors',
   'quizzes/questions',
-  'resources/conference', // Must be placed before 'resources'
   'resources',
   'tutorials',
   'blogposts',

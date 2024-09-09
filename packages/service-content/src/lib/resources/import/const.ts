@@ -3,7 +3,7 @@ export const supportedCategories = [
   'books',
   'podcasts',
   'builders',
-  'conference',
+  'conferences',
   'glossary',
 ] as const;
 
