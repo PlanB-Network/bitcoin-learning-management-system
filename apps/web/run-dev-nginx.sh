@@ -8,9 +8,9 @@ scriptpath="$( cd "$(dirname "$0")" ; pwd -P )"
 docker run --rm \
   -p 8181:80 \
   --name nginx-dev \
-  --network cf-tunnel-network \
   -v ${scriptpath}/dist:/usr/share/nginx/html:ro \
-  -v ${scriptpath}/docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro \
+  -v ${scriptpath}/docker/decode.js:/etc/nginx/decode.js:ro \
+  -v ${scriptpath}/docker/nginx.conf:/etc/nginx/nginx.conf:ro \
   nginx:alpine
 
 # docker network create cf-tunnel-network

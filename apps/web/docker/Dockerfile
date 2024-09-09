@@ -49,4 +49,4 @@ RUN pnpm turbo build --filter="@blms/web"...
 FROM nginx:alpine AS runner
 
 COPY --from=installer /app/apps/web/dist /usr/share/nginx/html
-COPY --from=installer /app/apps/web/docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=installer /app/apps/web/docker/nginx.conf /etc/nginx/nginx.conf

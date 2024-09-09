@@ -10,7 +10,8 @@ import formidable from 'formidable';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
-import { createCalculateEventSeats } from '@blms/service-content';
+import { createCalculateEventSeats, createGetMetadata } from '@blms/content';
+import type { UserFile } from '@blms/types';
 import {
   createGetUserFile,
   createInsertFile,
@@ -55,6 +56,7 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
   const redis = dependencies.redis;
   const syncGithubRepositories = createSyncGithubRepositories(dependencies);
+  const getMetadata = createGetMetadata(dependencies);
 
   router.post('/github/sync', async (req, res) => {
     if (await redis.get('github-sync-locked')) {
@@ -267,7 +269,35 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
         result,
       });
     } catch (error) {
-      console.error('Erorr in events webhook', error);
+      console.error('Error in events webhook', error);
+    }
+  });
+
+  // curl "localhost:3000/api/metadata?uri=/" -I
+  router.get('/metadata', async (req, res) => {
+    try {
+      const proto = (req.headers['x-forwarded-proto'] as string) ?? 'http';
+      const host = req.headers['host'] as string;
+
+      const url = new URL(`${proto}://${host}${req.query.uri as string}`);
+
+      console.log(`Metadata query`, url.toString());
+
+      const parts = url.pathname.split('/').filter(Boolean);
+
+      const metadata = await getMetadata(parts);
+      console.log(`Metadata response`, metadata);
+
+      res.setHeader('X-Title', btoa(metadata.title));
+      res.setHeader('X-Description', btoa(metadata.description));
+      res.setHeader('X-Locale', metadata.lang);
+      res.setHeader('X-Image', metadata.image);
+      res.setHeader('X-Type', 'website');
+
+      res.status(204).end();
+    } catch (error) {
+      console.error('Error resolving metadata', error);
+      res.status(204).end();
     }
   });
 

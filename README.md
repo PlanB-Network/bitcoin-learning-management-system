@@ -35,10 +35,7 @@ This will start all the necessary containers.
 
 On the first run, you will need to run the DB migrations.
 
-To do so, run go to the database folder with then run the migration script :
-
-1. `cd packages/database`
-2. `pnpm run db:migrate`
+To do so, run the migration script : `pnpm run dev:db:migrate`
 
 Once the containers are up and running, you can access the front at `http://localhost:8181`. The app will automatically reload if you change any of the source files.
 
@@ -81,8 +78,7 @@ Update your `.env` file accordingly.
 #### Sync the database
 
 ```bash
-cd packages/database
-pnpm run db:migrate:local
+pnpm run dev:db:migrate:local
 ```
 
 #### Start a local CDN
