@@ -10,8 +10,8 @@ import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
-import { ConferencesTable } from '../-components/Tables/conferences-table.tsx';
-import { ResourceLayout } from '../-other/layout.tsx';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
+import { ConferencesTable } from '../-components/tables/conferences-table.tsx';
 
 export const Route = createFileRoute('/_content/resources/conferences/')({
   component: Conferences,

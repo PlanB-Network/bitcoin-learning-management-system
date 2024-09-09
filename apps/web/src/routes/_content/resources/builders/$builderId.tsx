@@ -14,8 +14,8 @@ import Flag from '#src/molecules/Flag/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderEvents } from '../-components/builder-events.tsx';
-import { BuilderCard } from '../-components/Cards/builder-card.tsx';
-import { ResourceLayout } from '../-other/layout.tsx';
+import { BuilderCard } from '../-components/cards/builder-card.tsx';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/builders/$builderId')(
   {

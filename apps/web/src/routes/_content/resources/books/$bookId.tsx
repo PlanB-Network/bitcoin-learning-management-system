@@ -10,7 +10,7 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BookSummary } from '../-components/book-summary.js';
-import { ResourceLayout } from '../-other/layout.js';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/books/$bookId')({
   component: Book,

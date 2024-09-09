@@ -10,12 +10,12 @@ import { PageLayout } from '#src/components/page-layout.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import BlogSidebar from '../../../-components/PublicCommunication/blog-sidebar.js';
-import Breadcrumbs from '../../../-components/PublicCommunication/breadcrumbs.js';
+import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';
+import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const BlogMarkdownBody = React.lazy(
-  () => import('../../../-components/PublicCommunication/blog-markdown.js'),
+  () => import('../../../-components/public-communication/blog-markdown.tsx'),
 );
 
 export const Route = createFileRoute(

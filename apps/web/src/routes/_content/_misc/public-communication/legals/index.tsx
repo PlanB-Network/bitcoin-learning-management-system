@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { trpc } from '#src/utils/trpc.js';
 
-import { LegalMarkdownComponent } from '../../-components/PublicCommunication/legal-markdown.tsx';
+import { LegalMarkdownComponent } from '../../-components/public-communication/legal-markdown.tsx';
 
 export const Route = createFileRoute(
   '/_content/_misc/public-communication/legals/',

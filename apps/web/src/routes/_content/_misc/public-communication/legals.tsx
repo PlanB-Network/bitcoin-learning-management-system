@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@blms/ui';
 
-import { DropdownMenu } from '../-components/PublicCommunication/dropdown-menu.tsx';
+import { DropdownMenu } from '../-components/public-communication/dropdown-menu.tsx';
 
 import Layout from './-layout.tsx';
 

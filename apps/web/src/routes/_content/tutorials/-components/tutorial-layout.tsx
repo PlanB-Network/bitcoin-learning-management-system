@@ -12,7 +12,10 @@ import {
 
 import { AppContext } from '#src/providers/context.js';
 
-import { TUTORIALS_CATEGORIES, extractSubCategories } from './utils.tsx';
+import {
+  TUTORIALS_CATEGORIES,
+  extractSubCategories,
+} from '../../../../services/utils.tsx';
 
 export const TutorialLayout = ({
   children,

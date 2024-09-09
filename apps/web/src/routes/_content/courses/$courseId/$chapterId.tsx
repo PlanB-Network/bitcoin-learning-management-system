@@ -37,12 +37,12 @@ import { SITE_NAME } from '#src/utils/meta.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 
+import { ClassDetails } from '../-components/class-details.tsx';
+import { CourseLayout } from '../-components/course-layout.tsx';
+import { LiveVideo } from '../-components/live-video.tsx';
 import { NavigationPanel } from '../-components/navigation-panel.tsx';
-import type { Question } from '../-components/quizz-card.tsx';
-import QuizzCard from '../-components/quizz-card.tsx';
-import { CourseLayout } from '../-other/layout.tsx';
-import { ClassDetails } from '../-pages-components/class-details.tsx';
-import { LiveVideo } from '../-pages-components/live-video.tsx';
+import type { Question } from '../-components/quizz/quizz-card.tsx';
+import QuizzCard from '../-components/quizz/quizz-card.tsx';
 
 import { CourseReview } from './-components/course-review.tsx';
 

@@ -25,11 +25,11 @@ import { SITE_NAME } from '#src/utils/meta.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { TutorialCard } from '../-components/tutorial-card.tsx';
-import { TutorialLayout } from '../-other/layout.tsx';
+import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import {
   TUTORIALS_CATEGORIES,
   extractSubCategories,
-} from '../-other/utils.tsx';
+} from '../../../../services/utils.tsx';
 
 export const Route = createFileRoute('/_content/tutorials/$category/')({
   component: TutorialCategory,

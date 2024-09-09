@@ -6,8 +6,8 @@ import { Loader } from '@blms/ui';
 
 import { trpc } from '#src/utils/trpc.js';
 
-import { ResourceCard } from '../-components/Cards/resource-card.tsx';
-import { ResourceLayout } from '../-other/layout.tsx';
+import { ResourceCard } from '../-components/cards/resource-card.tsx';
+import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/podcasts/')({
   component: Podcasts,

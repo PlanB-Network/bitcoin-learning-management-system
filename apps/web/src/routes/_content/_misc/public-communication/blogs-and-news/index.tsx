@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Layout from '../-layout.tsx';
-import { BlogList } from '../../-components/PublicCommunication/blog-list.tsx';
-import { DropdownMenu } from '../../-components/PublicCommunication/dropdown-menu.tsx';
+import { BlogList } from '../../-components/public-communication/blog-list.tsx';
+import { DropdownMenu } from '../../-components/public-communication/dropdown-menu.tsx';
 
 export const Route = createFileRoute(
   '/_content/_misc/public-communication/blogs-and-news/',

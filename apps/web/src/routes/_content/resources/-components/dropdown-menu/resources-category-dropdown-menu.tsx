@@ -6,9 +6,8 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/category-icon.js';
+import { RESOURCES_CATEGORIES } from '#src/services/utils.js';
 import { capitalizeFirstWord } from '#src/utils/string.js';
-
-import { RESOURCES_CATEGORIES } from '../../-other/utils.tsx';
 
 import { ResourcesDropdownItem } from './resources-category-dropdown-item.tsx';
 

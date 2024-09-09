@@ -6,8 +6,7 @@ import { cn } from '@blms/ui';
 import { CategoryIcon } from '#src/components/category-icon.js';
 import { MainLayout } from '#src/components/main-layout.js';
 import { PageHeader } from '#src/components/page-header.js';
-
-import { RESOURCES_CATEGORIES } from './-other/utils.tsx';
+import { RESOURCES_CATEGORIES } from '#src/services/utils.js';
 
 export const Route = createFileRoute('/_content/resources/')({
   component: Resources,
