@@ -1,9 +1,9 @@
 import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
-import { t } from 'i18next';
 import { isEmpty } from 'lodash-es';
 import PasswordValidator from 'password-validator';
 import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BsCheck, BsLightningChargeFill } from 'react-icons/bs';
 import { ZodError, z } from 'zod';
 
@@ -24,39 +24,41 @@ import { trpc } from '../../utils/trpc.ts';
 
 import { AuthModalState } from './props.ts';
 
-const password = new PasswordValidator().is().min(10);
-
-const registerSchema = z
-  .object({
-    username: z
-      .string({ required_error: t('auth.errors.usernameRequired') })
-      .min(5, { message: t('auth.errors.usernameTooShort') })
-      .regex(/^[\w.\\-]+$/, {
-        message: t('auth.errors.usernameRegex'),
-      }),
-    password: z.string().refine(
-      (pwd) => password.validate(pwd),
-      (pwd) => {
-        const result = password.validate(pwd, { details: true });
-        return { message: Array.isArray(result) ? result[0].message : '' };
-      },
-    ),
-    confirmation: z.string(),
-  })
-  .refine((data) => data.password === data.confirmation, {
-    message: t('auth.passwordsDontMatch'),
-    path: ['confirmation'],
-  });
-
 interface RegisterProps {
   isOpen: boolean;
   onClose: () => void;
   goTo: (newState: AuthModalState) => void;
 }
 
-type AccountData = z.infer<typeof registerSchema>;
-
 export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
+  const password = new PasswordValidator().is().min(10);
+
+  const { t } = useTranslation();
+
+  const registerSchema = z
+    .object({
+      username: z
+        .string({ required_error: t('auth.errors.usernameRequired') })
+        .min(5, { message: t('auth.errors.usernameTooShort') })
+        .regex(/^[\w.\\-]+$/, {
+          message: t('auth.errors.usernameRegex'),
+        }),
+      password: z.string().refine(
+        (pwd) => password.validate(pwd),
+        (pwd) => {
+          const result = password.validate(pwd, { details: true });
+          return { message: Array.isArray(result) ? result[0].message : '' };
+        },
+      ),
+      confirmation: z.string(),
+    })
+    .refine((data) => data.password === data.confirmation, {
+      message: t('auth.passwordsDontMatch'),
+      path: ['confirmation'],
+    });
+
+  type AccountData = z.infer<typeof registerSchema>;
+
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: () => {
       setTimeout(() => {
