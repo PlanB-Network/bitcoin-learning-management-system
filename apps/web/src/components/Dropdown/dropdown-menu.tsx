@@ -92,7 +92,7 @@ export const DropdownMenu = ({
 
   return (
     <div
-      className={cn('relative w-full md:hidden', isOpen && 'z-20', maxWidth)}
+      className={cn('relative w-full lg:hidden', isOpen && 'z-20', maxWidth)}
       ref={ref}
       {...props}
     >

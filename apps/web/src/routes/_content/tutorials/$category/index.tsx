@@ -103,10 +103,11 @@ function TutorialCategory() {
       <div className="lg:max-w-[785px] xl:max-w-5xl">
         <div className="flex w-full items-center gap-5">
           <CategoryIcon src={tutorialCategory!.image} className="size-16" />
-          <h1 className="text-black capitalize display-large">
+          <h1 className="text-black capitalize desktop desktop-h4 lg:display-large">
             {tutorialCategory!.name}
           </h1>
         </div>
+        <hr className="mb-5 lg:mb-8"></hr>
         <p className="hidden w-full text-justify body-16px text-black md:flex">
           {t(`tutorials.${category}.description`)}
         </p>
@@ -142,7 +143,7 @@ function TutorialCategory() {
               <div className="bg-newGray-5">
                 {subCategories.map((subCategory) => (
                   <TabsContent value={subCategory} key={subCategory}>
-                    <div className="flex flex-col px-2 py-5 md:px-7 md:py-8 gap-4 md:gap-6">
+                    <div className="flex flex-col px-2 py-5 md:px-7 md:py-8">
                       {/* {i18n.exists(
                         `tutorials.${category}.${subCategory}.description`,
                       ) && (
@@ -152,7 +153,7 @@ function TutorialCategory() {
                           )}
                         </div>
                       )} */}
-                      <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
+                      <div className="flex flex-wrap gap-y-4 md:gap-y-6 justify-center">
                         {tutorials
                           .filter(
                             (tutorial) => tutorial.subcategory === subCategory,

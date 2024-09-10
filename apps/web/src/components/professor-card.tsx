@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+
 import { useTranslation } from 'react-i18next';
 
 import type { FormattedProfessor } from '@blms/types';
 
-import TwitterIcon from '../assets/icons/twitter_blue.svg';
-import WebIcon from '../assets/icons/web_blue.svg';
+import WebIcon from '../assets/icons/world-primary.svg';
+import TwitterIcon from '../assets/icons/x-primary.svg';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;
@@ -11,42 +13,65 @@ interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
 
 const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
   const { t } = useTranslation();
-
+  const showLectures =
+    professor.coursesCount === 0 && professor.tutorialsCount === 0;
   return (
-    <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-base  text-blue-800">
-      <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.coursesCount}</div>
-        <div className="">{t('words.courses')}</div>
-      </div>
-      <span className="text-3xl">•</span>
-      <div className="flex items-center gap-2">
-        <div className="font-semibold">{professor.tutorialsCount}</div>
-        <div className="">{t('words.tutorials')}</div>
-      </div>
+    <section className="flex content-center items-center gap-2 lg:gap-x-6 text-white">
+      {professor.coursesCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.coursesCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.courses')}
+          </span>
+        </div>
+      )}
+      {professor.tutorialsCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.tutorialsCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.tutorials')}
+          </span>
+        </div>
+      )}
+      {showLectures && professor.lecturesCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.lecturesCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.lectures')}
+          </span>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export const TopicTags = ({ professor }: ProfessorCardProps) => {
+  return (
+    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs text-white">
+      {professor.tags?.map((tag) => (
+        <span
+          key={tag}
+          className="flex items-center desktop-typo1 rounded-lg bg-[#FFFFFF40] px-2 py-1 capitalize"
+        >
+          {tag}
+        </span>
+      ))}
     </div>
   );
 };
 
-const TopicTags = ({ professor }: ProfessorCardProps) => {
+export const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-4 flex flex-wrap  items-start gap-2.5 self-stretch text-xs text-blue-700">
-      {professor.tags?.map((tag) => {
-        return (
-          <div
-            key={tag}
-            className="shadow-md-dark flex items-center rounded-lg bg-gray-100 px-2 py-1"
-          >
-            {tag}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const SocialLinks = ({ professor }: ProfessorCardProps) => {
-  return (
-    <div className="mt-2 flex w-full justify-evenly self-stretch px-1">
+    <div
+      className="mt-5 flex w-full justify-evenly self-stretch px-1 text-primary gap-x-6
+    "
+    >
       {professor.links.twitter && (
         <button
           onClick={(e) => {
@@ -59,7 +84,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             );
           }}
         >
-          <img src={TwitterIcon} alt="web icon" className="my-6 block" />
+          <img src={TwitterIcon} alt="Twitter" className="block" />
         </button>
       )}
       {professor.links.website && (
@@ -74,7 +99,7 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
             );
           }}
         >
-          <img src={WebIcon} alt="web icon" className="my-6 block" />
+          <img src={WebIcon} alt="Website" className="block" />
         </button>
       )}
     </div>
@@ -83,32 +108,65 @@ const SocialLinks = ({ professor }: ProfessorCardProps) => {
 
 export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
   return (
-    <div {...props}>
-      <div className="border-blue-1000 bg-beige-300 flex h-full flex-col items-start gap-2.5 rounded-[1.25rem] border p-1">
-        <div className="flex w-[240px] grow flex-col">
-          <div className="border-blue-1000 flex flex-col rounded-t-2xl border bg-orange-500 px-5 py-2">
-            <span className="text-beige-300 break-words text-xl font-semibold">
+    <section
+      className="flex  flex-wrap w-full p-2 md:p-7 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8"
+      {...props}
+    >
+      <div className="rounded-[10px] size-full md:rounded-[20px] flex max-md:flex-col md:items-end gap-4 bg-white w-[137px] sm:w-[226px] lg:w-[296px]">
+        <div className="rounded-[10px] size-full md:rounded-[20px] p-1 lg:p-2 border-1 md:border-2 border-white">
+          {/* eslint-disable-next-line tailwindcss/no-contradicting-classname */}
+          <div className="rounded-[10px] h-full md:rounded-[20px] py-4 flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[180px] lg:to-[240px] p-2.5 relative overflow-hidden">
+            <span className="max-w-48 mb-8 w-full text-center text-base lg:title-large-sb-24px text-white lg:uppercase z-10 absolute">
               {professor.name}
             </span>
-          </div>
-          <div className="border-blue-1000 flex h-full flex-col items-center justify-center gap-2.5 self-stretch rounded-b-2xl border px-0">
-            <div className="bg-gradient-diagonal flex w-full flex-col items-center">
-              <img
-                src={professor.picture}
-                alt="Professor"
-                className="object-cover mt-8 size-28 rounded-full bg-white"
-              />
-            </div>
-            <div className="mt-2 flex h-full flex-col items-center justify-center self-stretch px-5 py-0">
+            <img
+              src={professor.picture}
+              alt={professor.name}
+              className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20"
+            />
+            <div className="flex gap-4 items-end mt-2.5 z-10">
               <CourseAndTutorials professor={professor} />
-              <TopicTags professor={professor} />
             </div>
-            <div className="flex w-full flex-col px-4">
+            <div className="hidden lg:flex z-10 flex-col items-center justify-center px-3 py-0">
+              <TopicTags professor={professor} />
               <SocialLinks professor={professor} />
             </div>
+
+            {/* Background element */}
+            <BackgroundAuthorCardElement />
           </div>
         </div>
       </div>
-    </div>
+    </section>
+  );
+};
+
+const BackgroundAuthorCardElement = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 280 45"
+      fill="none"
+      preserveAspectRatio="xMidYMid meet"
+      className="absolute bottom-0 h-full max-h-[120px] lg:max-h-[290px]"
+    >
+      <path
+        d="M147.147 1.98324C142.545 0.222654 137.455 0.222651 132.853 1.98323L12.8534 47.8939C5.11227 50.8556 0 58.2852 0 66.5735V259.249C0 270.295 8.95431 279.249 20 279.249H260C271.046 279.249 280 270.295 280 259.249V66.5735C280 58.2852 274.888 50.8556 267.147 47.8939L147.147 1.98324Z"
+        fill="url(#paint0_linear_5830_16430)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_5830_16430"
+          x1="140"
+          y1="-0.750977"
+          x2="140"
+          y2="279.249"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#853000" />
+          <stop offset="100%" stopColor="#000" />
+        </linearGradient>
+      </defs>
+    </svg>
   );
 };

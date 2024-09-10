@@ -11,10 +11,12 @@ export const TutorialLikes = ({
   tutorial: JoinedTutorialLight;
 }) => {
   return (
-    <span className="flex gap-1 items-center my-1">
-      <span className="text-black label-large-20px">{tutorial.likeCount}</span>
+    <span className="flex gap-1 md:gap-3 items-center my-1">
+      <span className="text-black text-base md:label-large-20px">
+        {tutorial.likeCount}
+      </span>
       <span className="flex items-center">
-        <MdThumbUp className="text-darkGreen-1 size-7 mx-1" />
+        <MdThumbUp className="text-darkGreen-1 size-[18px] lg:size-[21px]" />
         <span
           className={cn(
             'w-[70px] rounded-full h-2 mx-2 max-md:hidden',
@@ -34,11 +36,11 @@ export const TutorialLikes = ({
         <img
           src={SeparatorIcon}
           alt="separator icon"
-          className="inline-block md:hidden mx-3 h-[10px]"
+          className="inline-block md:hidden mx-[18px] h-[10px]"
         />
-        <MdThumbDown className="text-red-1 size-7 mx-1" />
+        <MdThumbDown className="text-red-1 size-[18px] lg:size-[21px]" />
       </span>
-      <span className="text-black label-large-20px">
+      <span className="text-black text-base md:label-large-20px">
         {tutorial.dislikeCount}
       </span>
     </span>

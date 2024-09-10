@@ -658,9 +658,16 @@
     "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
     "pageTitle": "Professors",
     "tips": {
+      "authorSupport": "Support the author with a tip",
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
       "thanksNoName": "Thanks for supporting my work !"
+    },
+    "navigationTitles": {
+      "all": "All",
+      "lecturers": "Lecturers",
+      "teachers": "Teachers",
+      "tutorialCreators": "Tutorial creators"
     }
   },
   "proofreading": {
@@ -915,6 +922,7 @@
       "level": "Level",
       "levels": "Levels"
     },
+    "lectures": "Lectures",
     "library": "Library",
     "lightning": "Lightning",
     "lightningInvoice": "Lightning invoice",
