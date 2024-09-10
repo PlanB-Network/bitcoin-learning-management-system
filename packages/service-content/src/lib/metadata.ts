@@ -14,7 +14,7 @@ interface Metadata {
   lang: string;
 }
 
-const DEFAULT_IMAGE = 'https://planb.network/share-default.jpg';
+const DEFAULT_IMAGE = '/share-default.jpg';
 
 const DEFAULT: Metadata = {
   title: 'Plan B Network',
