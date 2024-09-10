@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getConferenceMetaQuery } from '../queries/index.js';
+import { getConferenceMetaQuery } from '../queries/get-conference-meta.js';
 
 export const createGetConferenceMeta = ({ postgres }: Dependencies) => {
   return async (id: number) => {

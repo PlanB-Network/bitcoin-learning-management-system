@@ -1,11 +1,11 @@
 import { createGetCourseChapterMeta } from './courses/services/get-course-chapter-meta.js';
-import { createGetBook } from './resources/services/get-book.js';
-import { createGetPodcast } from './resources/services/get-podcast.js';
-import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
-import { createGetBuilderMeta } from './resources/services/get-builder-meta.js';
 import { createGetCourseMeta } from './courses/services/get-course-meta.js';
-import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
 import type { Dependencies } from './dependencies.js';
+import { createGetBook } from './resources/services/get-book.js';
+import { createGetBuilderMeta } from './resources/services/get-builder-meta.js';
+import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
+import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
+import { createGetPodcast } from './resources/services/get-podcast.js';
 
 interface Metadata {
   title: string;
@@ -14,12 +14,11 @@ interface Metadata {
   lang: string;
 }
 
-const DEFAULT_IMAGE = 'https://planb.network/assets/lugano-CtUShZFl.webp';
+const DEFAULT_IMAGE = 'https://planb.network/share-default.jpg';
 
 const DEFAULT: Metadata = {
-  title: 'PlanB Network',
-  description:
-    'PlanB Network is a community-driven platform for learning and sharing knowledge.',
+  title: 'Plan B Network',
+  description: "Let's build together the Bitcoin educational layer",
   image: DEFAULT_IMAGE,
   lang: 'en',
 };
@@ -116,9 +115,9 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         const word = await getGlossaryWord(resourceId, lang);
         return meta(word.term, word.definition, DEFAULT_IMAGE, lang);
       }
-      case 'bet':
-      default:
+      default: {
         return defaultMeta(lang);
+      }
     }
   };
 
@@ -128,15 +127,17 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     const [category, ...rest] = parts;
 
     switch (category) {
-      case 'courses':
+      case 'courses': {
         return getCourseMetadata(lang, rest) //
           .catch(defaultOnError(lang));
-      case 'resources':
+      }
+      case 'resources': {
         return getResourceMetadata(lang, rest) //
           .catch(defaultOnError(lang));
-      case 'events':
-      default:
+      }
+      default: {
         return defaultMeta(lang);
+      }
     }
   };
 };

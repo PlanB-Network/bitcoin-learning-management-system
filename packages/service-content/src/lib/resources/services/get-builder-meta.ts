@@ -2,7 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
-import { getBuilderMetaQuery } from '../queries/index.js';
+import { getBuilderMetaQuery } from '../queries/get-builder-meta.js';
 
 export const createGetBuilderMeta = ({ postgres }: Dependencies) => {
   return async (id: number, language?: string) => {

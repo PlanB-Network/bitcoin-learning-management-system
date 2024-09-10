@@ -1,5 +1,5 @@
-import type { JoinedConference } from '@blms/types';
 import { sql } from '@blms/database';
+import type { JoinedConference } from '@blms/types';
 
 type ConferenceMeta = Pick<
   JoinedConference,

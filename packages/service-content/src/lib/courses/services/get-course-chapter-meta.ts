@@ -1,7 +1,8 @@
 import { firstRow } from '@blms/database';
+
 import type { Dependencies } from '../../dependencies.js';
-import { getCourseChapterMetaQuery } from '../queries/index.js';
 import { computeAssetCdnUrl } from '../../utils.js';
+import { getCourseChapterMetaQuery } from '../queries/get-course-chapter-meta.js';
 
 export const createGetCourseChapterMeta = (dependencies: Dependencies) => {
   const { postgres } = dependencies;

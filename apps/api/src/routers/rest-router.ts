@@ -10,8 +10,10 @@ import formidable from 'formidable';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
-import { createCalculateEventSeats, createGetMetadata } from '@blms/content';
-import type { UserFile } from '@blms/types';
+import {
+  createCalculateEventSeats,
+  createGetMetadata,
+} from '@blms/service-content';
 import {
   createGetUserFile,
   createInsertFile,
@@ -51,6 +53,9 @@ const defaultResizeOptions: ResizeOptions = {
   height: 200,
   withoutEnlargement: true,
 };
+
+// Encode a string to url-safe base64
+const b64enc = (value: string) => btoa(encodeURIComponent(value));
 
 export const createRestRouter = (dependencies: Dependencies): Router => {
   const router = Router();
@@ -273,8 +278,6 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     }
   });
 
-  const base64 = (value: string) => btoa(encodeURIComponent(value));
-
   // curl "localhost:3000/api/metadata?uri=/" -I
   router.get('/metadata', async (req, res) => {
     try {
@@ -283,16 +286,10 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
 
       const url = new URL(`${proto}://${host}${req.query.uri as string}`);
       const parts = url.pathname.split('/').filter(Boolean);
-
-      console.log(`Metadata query`, url.toString());
       const metadata = await getMetadata(parts);
-      console.log(`Metadata response`, {
-        ...metadata,
-        description: metadata.description.slice(0, 60) + '...',
-      });
 
-      res.setHeader('X-Title', base64(metadata.title));
-      res.setHeader('X-Description', base64(metadata.description));
+      res.setHeader('X-Title', b64enc(metadata.title));
+      res.setHeader('X-Description', b64enc(metadata.description));
       res.setHeader('X-Locale', metadata.lang);
       res.setHeader('X-Image', metadata.image);
       res.setHeader('X-Type', 'website');
