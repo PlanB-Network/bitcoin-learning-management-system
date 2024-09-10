@@ -289,11 +289,12 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
 
       console.log(`Metadata query`, url.toString());
       const metadata = await getMetadata(parts);
+      const imageUrl = dependencies.config.domainUrl + metadata.image;
 
       res.setHeader('X-Title', b64enc(metadata.title));
       res.setHeader('X-Description', b64enc(metadata.description));
       res.setHeader('X-Locale', metadata.lang);
-      res.setHeader('X-Image', metadata.image);
+      res.setHeader('X-Image', imageUrl);
       res.setHeader('X-Type', 'website');
 
       res.status(204).end();
