@@ -10,6 +10,7 @@
     "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@blms/api",
     "dev:db:generate": "cd ./packages/database && pnpm drizzle:generate",
     "dev:db:migrate": "cd ./packages/database && pnpm db:migrate",
+    "dev:db:migrate:local": "cd ./packages/database && pnpm db:migrate:local",
     "dev:db:studio": "cd ./packages/database && npx drizzle-kit studio",
     "dev:db:sync": "pnpm dev:db:generate && pnpm dev:types:generate",
     "dev:storybook": "cd ./packages/ui && pnpm storybook",

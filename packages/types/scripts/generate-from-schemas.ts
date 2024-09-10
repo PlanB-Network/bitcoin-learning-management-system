@@ -61,7 +61,7 @@ const processDirectory = (directory: string, relativePath = '') => {
 
 // We process index files differently because we want to keep the wildcard exports
 const processIndexFile = (sourcePath: string, relativePath: string) => {
-  const fileContent = fs.readFileSync(sourcePath, 'utf-8');
+  const fileContent = fs.readFileSync(sourcePath, 'utf8');
 
   const isValidIndexFile = (fileContent: string): boolean => {
     // Check if the file only contains export statements, empty lines or the zod import zod

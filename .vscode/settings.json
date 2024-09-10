@@ -53,12 +53,14 @@
     "bitcoiners",
     "blms",
     "bytea",
+    "getenv",
     "nostr",
     "psql",
     "resave",
     "sats",
     "sendgrid",
     "tanstack",
+    "trpc",
     "tsbuildinfo",
     "zoomable"
   ]
