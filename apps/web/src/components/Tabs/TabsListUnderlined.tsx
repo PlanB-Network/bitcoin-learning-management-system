@@ -1,6 +1,4 @@
-import { TabsList, TabsTrigger } from '@radix-ui/react-tabs';
-
-import { cn } from '@blms/ui';
+import { cn, TabsList, TabsTrigger } from '@blms/ui';
 
 interface TabsListUnderlinedProps {
   tabs: Array<{
@@ -28,16 +26,20 @@ export const TabsListUnderlined = ({
   };
 
   return (
-    <TabsList className="flex overflow-x-scroll no-scrollbar max-w-full gap-8">
+    <TabsList
+      className="flex overflow-x-scroll no-scrollbar max-w-full gap-8"
+      removeDefaultClasses={true}
+    >
       {tabs.map((tab) => (
         <TabsTrigger
           value={tab.value}
           key={tab.key}
           className={cn(
-            'max-lg:label-medium-med-16px text-xl hover:font-medium data-[state=active]:font-medium  inline-flex items-center justify-center whitespace-nowrap pb-2.5 lg:pb-4 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-b-2 ',
+            'max-lg:label-medium-med-16px text-xl hover:font-medium data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap pb-2.5 lg:pb-4 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-b-2',
             variantClasses[variant],
           )}
           disabled={tab.disabled}
+          removeDefaultClasses={true}
         >
           <span className="line-clamp-2">
             {slice && tab.active ? tab.text : tab.text.slice(0, slice)}

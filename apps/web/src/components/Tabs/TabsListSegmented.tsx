@@ -1,6 +1,4 @@
-import { TabsList, TabsTrigger } from '@radix-ui/react-tabs';
-
-import { cn } from '@blms/ui';
+import { cn, TabsList, TabsTrigger } from '@blms/ui';
 
 interface TabsListSegmentedProps {
   tabs: Array<{
@@ -35,6 +33,7 @@ export const TabsListSegmented = ({
         'flex flex-wrap bg-newGray-5 shadow-course-card relative z-[2] p-0 gap-0 rounded-t-[20px] overflow-hidden w-full',
         classname,
       )}
+      removeDefaultClasses={true}
     >
       {tabs.map((tab, index) => (
         <TabsTrigger
@@ -48,6 +47,7 @@ export const TabsListSegmented = ({
             tab.value.length > 2 && index - 1 <= 0 && 'max-md:border-b',
           )}
           disabled={tab.disabled}
+          removeDefaultClasses={true}
         >
           <span className="line-clamp-2">
             {slice && tab.active ? tab.text : tab.text.slice(0, slice)}
