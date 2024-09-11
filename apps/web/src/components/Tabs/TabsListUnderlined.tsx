@@ -1,4 +1,4 @@
-import { cn, TabsList, TabsTrigger } from '@blms/ui';
+import { TabsList, TabsTrigger, cn } from '@blms/ui';
 
 interface TabsListUnderlinedProps {
   tabs: Array<{
@@ -28,7 +28,7 @@ export const TabsListUnderlined = ({
   return (
     <TabsList
       className="flex overflow-x-scroll no-scrollbar max-w-full gap-8"
-      removeDefaultClasses={true}
+      removeClasses={true}
     >
       {tabs.map((tab) => (
         <TabsTrigger
@@ -39,7 +39,7 @@ export const TabsListUnderlined = ({
             variantClasses[variant],
           )}
           disabled={tab.disabled}
-          removeDefaultClasses={true}
+          removeClasses={true}
         >
           <span className="line-clamp-2">
             {slice && tab.active ? tab.text : tab.text.slice(0, slice)}

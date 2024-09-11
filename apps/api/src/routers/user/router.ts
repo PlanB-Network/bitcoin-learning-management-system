@@ -43,18 +43,8 @@ export const userRouter = createTRPCRouter({
             uid: req.session.uid,
             role: req.session.role,
             professorId: req.session.professorId,
-            professorName: req.session.professorName,
-            professorPath: req.session.professorPath,
-            professorTwitterUrl: req.session.professorTwitterUrl,
-            professorWebsiteUrl: req.session.professorWebsiteUrl,
-            professorGithubUrl: req.session.professorGithubUrl,
-            professorNostr: req.session.professorNostr,
             professorCourses: req.session.professorCourses,
             professorTutorials: req.session.professorTutorials,
-            professorShortBio: req.session.professorShortBio,
-            professorTags: req.session.professorTags,
-            professorLightningAddress: req.session.professorLightningAddress,
-            professorLastCommit: req.session.professorLastCommit,
           },
         }
       : null;

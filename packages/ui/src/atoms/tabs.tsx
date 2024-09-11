@@ -8,13 +8,13 @@ const Tabs = TabsPrimitive.Root;
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
-    removeDefaultClasses?: boolean;
+    removeClasses?: boolean;
   }
->(({ className, removeDefaultClasses, ...props }, ref) => (
+>(({ className, removeClasses, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      removeDefaultClasses
+      removeClasses
         ? ''
         : 'inline-flex items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground gap-3',
       className,
@@ -27,13 +27,13 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & {
-    removeDefaultClasses?: boolean;
+    removeClasses?: boolean;
   }
->(({ className, removeDefaultClasses, ...props }, ref) => (
+>(({ className, removeClasses, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      removeDefaultClasses
+      removeClasses
         ? ''
         : `inline-flex items-center justify-center whitespace-nowrap
       py-1 font-medium ring-offset-background transition-all 

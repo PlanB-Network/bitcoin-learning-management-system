@@ -24,6 +24,7 @@ export interface FullProfessor {
     website: string | null;
     twitter: string | null;
     github: string | null;
+    nostr: string | null;
   };
   tips: {
     lightningAddress: string | null;
@@ -75,6 +76,7 @@ export interface FullProfessor {
         website: string | null;
         twitter: string | null;
         github: string | null;
+        nostr: string | null;
       };
       tips: {
         lightningAddress: string | null;

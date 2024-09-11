@@ -15,18 +15,8 @@ interface Session {
     uid: string;
     role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
     professorId: number | null;
-    professorName: string;
-    professorPath: string;
-    professorTwitterUrl: string;
-    professorWebsiteUrl: string;
-    professorGithubUrl: string;
-    professorNostr: string;
     professorCourses: string[];
     professorTutorials: number[];
-    professorShortBio: { [key: string]: string };
-    professorTags: string[];
-    professorLightningAddress: string;
-    professorLastCommit: string;
   };
 }
 
@@ -95,19 +85,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
               uid: data.user.uid,
               role: data.user.role,
               professorId: data.user.professorId,
-              professorName: data.user.professorName || '',
-              professorPath: data.user.professorPath || '',
-              professorTwitterUrl: data.user.professorTwitterUrl || '',
-              professorWebsiteUrl: data.user.professorWebsiteUrl || '',
-              professorGithubUrl: data.user.professorGithubUrl || '',
-              professorNostr: data.user.professorNostr || '',
               professorCourses: data.user.professorCourses || [],
               professorTutorials: data.user.professorTutorials || [],
-              professorShortBio: data.user.professorShortBio || {},
-              professorTags: data.user.professorTags || [],
-              professorLightningAddress:
-                data.user.professorLightningAddress || '',
-              professorLastCommit: data.user.professorLastCommit || '',
             },
           };
           return setSession(validSession);
