@@ -1,12 +1,25 @@
 import { Link } from '@tanstack/react-router';
+import { type VariantProps, cva } from 'class-variance-authority';
 
-import { cn } from '@blms/ui';
+const dropdownItemVariant = cva(
+  'flex items-center gap-4 p-2 leading-[140%] tracking-015px',
+  {
+    variants: {
+      variant: {
+        light: 'text-black hover:bg-newGray-5',
+        dark: 'text-white hover:bg-white/15',
+      },
+    },
+    defaultVariants: {
+      variant: 'dark',
+    },
+  },
+);
 
-interface DropdownItemProps {
+interface DropdownItemProps extends VariantProps<typeof dropdownItemVariant> {
   name: string;
   link?: string;
   onClick?: () => void;
-  variant?: 'dark' | 'light';
 }
 
 export const DropdownItem = ({
@@ -14,33 +27,17 @@ export const DropdownItem = ({
   link,
   onClick,
   variant = 'dark',
+  ...props
 }: DropdownItemProps) => {
   return link ? (
-    <Link
-      to={link}
-      className={cn(
-        'flex items-center gap-4 p-2 ',
-        variant === 'light' ? 'hover:bg-newGray-5' : 'hover:bg-white/15',
-      )}
-    >
-      <span
-        className={cn(
-          'leading-[140%] tracking-015px',
-          variant === 'light' ? 'text-black' : 'text-white',
-        )}
-      >
-        {name}
-      </span>
+    <Link to={link} className={dropdownItemVariant({ variant })} {...props}>
+      <span>{name}</span>
     </Link>
   ) : (
     <button
-      className={cn(
-        'text-left p-2 leading-[140%] tracking-015px rounded-2xl w-full',
-        variant === 'light'
-          ? 'text-black hover:bg-newGray-5'
-          : 'text-white hover:bg-white/15',
-      )}
+      className={dropdownItemVariant({ variant })}
       onClick={onClick}
+      {...props}
     >
       {name}
     </button>

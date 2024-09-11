@@ -72,7 +72,7 @@ function DashboardProfessorProfile() {
           {t('dashboard.teacher.profile.teacher')}
         </TextTag>
       </div>
-      {isFetched && !professor && <Loader size="s" />}
+      {!isFetched && <Loader size="s" />}
       {isFetched && professor && (
         <Tabs
           defaultValue="profile"
@@ -82,10 +82,10 @@ function DashboardProfessorProfile() {
         >
           <TabsListUnderlined tabs={tabs} />
           <TabsContent value="profile" className="flex flex-col mt-4 lg:mt-10">
-            <h4 className="mb-2.5 lg:mb-4 text-[#060B15] title-medium-sb-18px lg:title-large-sb-24px">
+            <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
               {t('dashboard.teacher.profile.teacherProfile')}
             </h4>
-            <p className="mb-5 lg:mb-6 text-[#050A14BF] body-14px lg:body-16px">
+            <p className="mb-5 lg:mb-6 text-dashboardSectionText/75 body-14px lg:body-16px">
               {t('dashboard.teacher.profile.publicProfileDescription')}
             </p>
 
@@ -103,7 +103,7 @@ function DashboardProfessorProfile() {
               <div className="flex flex-col gap-5">
                 {/* Description */}
                 <div className="flex flex-col gap-2">
-                  <span className="leading-tight font-medium text-[#050A14]">
+                  <span className="leading-tight font-medium text-dashboardSectionText">
                     {t('dashboard.teacher.profile.description')}
                   </span>
                   <p className="text-sm text-newGray-1 leading-tight">
@@ -203,14 +203,14 @@ function DashboardProfessorProfile() {
 
             {/* Billing */}
             <div className="flex flex-col">
-              <h4 className="mb-2.5 lg:mb-4 text-[#060B15] title-medium-sb-18px lg:title-large-sb-24px">
+              <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
                 {t('dashboard.teacher.profile.billingInformations')}
               </h4>
-              <p className="mb-5 lg:mb-6 text-[#050A14BF] body-14px lg:body-16px">
+              <p className="mb-5 lg:mb-6 text-dashboardSectionText/75 body-14px lg:body-16px">
                 {t('dashboard.teacher.profile.enterTipsInformations')}
               </p>
               <div className="flex flex-col gap-2 w-full">
-                <span className="text-[#050A14] font-medium leading-tight">
+                <span className="text-dashboardSectionText font-medium leading-tight">
                   {t('dashboard.teacher.profile.lightningAddress')}
                 </span>
                 <div className="flex flex-wrap items-end gap-x-9 gap-y-2">

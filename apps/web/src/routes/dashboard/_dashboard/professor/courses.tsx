@@ -87,7 +87,7 @@ function DashboardProfessorCourses() {
           {t('dashboard.teacher.profile.teacher')}
         </span>
       </div>
-      <p className="body-14px lg:body-16px text-[#060B15]">
+      <p className="body-14px lg:body-16px text-dashboardSectionTitle">
         {t('dashboard.teacher.courses.reviewInfos')}
       </p>
       {!isFetched && <Loader size={'s'} />}
@@ -118,7 +118,7 @@ function CourseTabs({ courses }: { courses: JoinedCourseWithProfessors[] }) {
           active: course.id === currentTab,
         }))}
         slice={6}
-        classname="max-md:hidden"
+        className="max-md:hidden"
       >
         <a
           href="https://kutt.planb.network/add-course"
@@ -256,11 +256,11 @@ function CourseDetails({ course }: { course: JoinedCourseWithProfessors }) {
   const labelClasses = 'leading-tight font-medium text-black';
 
   return (
-    <div className="flex flex-col text-[#060B15] w-full mt-3 lg:mt-10">
-      <h2 className="mb-2.5 lg:mb-4 text-[#060B15] title-medium-sb-18px lg:title-large-sb-24px">
+    <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-10">
+      <h2 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
         {course.name}
       </h2>
-      <p className="text-[#050A14BF] body-14px lg:body-16px">
+      <p className="text-dashboardSectionText/75 body-14px lg:body-16px">
         {t('dashboard.teacher.courses.quickRecap')}
       </p>
 

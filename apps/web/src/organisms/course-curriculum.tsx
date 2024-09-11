@@ -12,7 +12,7 @@ export const CourseCurriculum = ({
 
   return (
     <div className="flex flex-col max-w-5xl">
-      <h4 className="mb-2.5 lg:mb-4 text-[#060B15] title-medium-sb-18px lg:title-large-sb-24px">
+      <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
         {t('dashboard.teacher.courses.curriculum')}
       </h4>
       <p className="mb-8 body-14px lg:body-16px">

@@ -1,3 +1,4 @@
+import { type VariantProps, cva } from 'class-variance-authority';
 import { useEffect, useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
@@ -5,16 +6,54 @@ import { cn } from '@blms/ui';
 
 import { DropdownItem } from './dropdown-item.tsx';
 
-interface ItemProps {
-  name: string;
-  link?: string;
-  onClick?: () => void;
-}
-interface DropdownMenuProps {
+const dropdownButtonVariant = cva(
+  'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
+  {
+    variants: {
+      variant: {
+        light: 'bg-newGray-6 border-newGray-4',
+        dark: 'bg-darkOrange-11 border-darkOrange-9',
+      },
+      isOpen: {
+        true: 'rounded-t-xl border-x border-t',
+        false: 'rounded-xl border',
+      },
+    },
+    defaultVariants: {
+      variant: 'dark',
+      isOpen: false,
+    },
+  },
+);
+
+const dropdownContainerVariant = cva(
+  'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl border-x border-b z-10 overflow-auto no-scrollbar',
+  {
+    variants: {
+      variant: {
+        light: 'bg-newGray-6 border-newGray-4',
+        dark: 'bg-darkOrange-11 border-darkOrange-9',
+      },
+    },
+    defaultVariants: {
+      variant: 'dark',
+    },
+  },
+);
+
+interface DropdownMenuProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof dropdownButtonVariant> {
   activeItem: string;
   itemsList: ItemProps[];
   maxWidth?: string;
   variant?: 'dark' | 'light';
+}
+
+interface ItemProps {
+  name: string;
+  link?: string;
+  onClick?: () => void;
 }
 
 export const DropdownMenu = ({
@@ -22,6 +61,7 @@ export const DropdownMenu = ({
   itemsList,
   maxWidth = 'max-w-[400px]',
   variant = 'dark',
+  ...props
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -54,19 +94,13 @@ export const DropdownMenu = ({
     <div
       className={cn('relative w-full md:hidden', isOpen && 'z-20', maxWidth)}
       ref={ref}
+      {...props}
     >
       <div>
         {filteredItems.length > 0 ? (
           <button
             type="button"
-            className={cn(
-              'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
-              isOpen ? 'rounded-t-xl border-x border-t' : 'rounded-xl border',
-
-              variant === 'light'
-                ? 'bg-newGray-6 border-newGray-4'
-                : 'bg-darkOrange-11 border-darkOrange-9',
-            )}
+            className={dropdownButtonVariant({ variant, isOpen: isOpen })}
             id="options-menu"
             aria-expanded={isOpen}
             aria-haspopup="true"
@@ -90,13 +124,7 @@ export const DropdownMenu = ({
         ) : (
           <button
             type="button"
-            className={cn(
-              'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
-              isOpen ? 'rounded-t-xl border-x border-t' : 'rounded-xl border',
-              variant === 'light'
-                ? 'bg-newGray-6 border-newGray-4'
-                : 'bg-darkOrange-11 border-darkOrange-9',
-            )}
+            className={dropdownButtonVariant({ variant, isOpen: isOpen })}
             id="options-menu"
             disabled
           >
@@ -113,12 +141,7 @@ export const DropdownMenu = ({
 
       {isOpen && filteredItems.length > 0 && (
         <div
-          className={cn(
-            'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl  border-x border-b z-10 overflow-auto no-scrollbar',
-            variant === 'light'
-              ? 'bg-newGray-6 border-newGray-4'
-              : 'bg-darkOrange-11 border-darkOrange-9',
-          )}
+          className={dropdownContainerVariant({ variant })}
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"

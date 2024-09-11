@@ -22,7 +22,7 @@ export const MakeModificationBlock = ({
       >
         {title}
       </Link>
-      <p className="label-normal-16px text-[#050A14BF]">
+      <p className="label-normal-16px text-dashboardSectionText/75">
         <Trans i18nKey={text}>
           <Link
             className="text-newBlue-1 hover:text-darkOrange-5 underline underline-offset-2"

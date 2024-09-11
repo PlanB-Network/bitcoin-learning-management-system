@@ -14,6 +14,8 @@ const baseConfig: Config = {
     colors: {
       transparent: 'transparent',
       dashboardsection: '#FFFFFF0D',
+      dashboardSectionTitle: '#060B15',
+      dashboardSectionText: '#050A14',
       headerGray: '#25262D',
       headerDark: '#010205',
       white: '#FFFFFF',
