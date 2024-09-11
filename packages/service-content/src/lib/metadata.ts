@@ -6,6 +6,7 @@ import { createGetBuilderMeta } from './resources/services/get-builder-meta.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
 import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
 import { createGetPodcast } from './resources/services/get-podcast.js';
+import { createGetTutorialMeta } from './tutorials/services/get-tutorial-meta.js';
 
 interface Metadata {
   title: string;
@@ -58,6 +59,9 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   const getGlossaryWord = createGetGlossaryWord(dependencies);
   const getConferenceMeta = createGetConferenceMeta(dependencies);
 
+  // Tutorials
+  const getTutorialMeta = createGetTutorialMeta(dependencies);
+
   const getCourseMetadata = async (
     lang: string,
     parts: string[],
@@ -83,7 +87,6 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   ): Promise<Metadata> => {
     const resourceType = parts.shift();
     const resourceId = parts.shift();
-    console.log(`getResourceMetadata`, { resourceType, resourceId });
 
     if (!resourceType || !resourceId) {
       return defaultMeta(lang);
@@ -121,6 +124,21 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     }
   };
 
+  const getTutorialMetadata = async (
+    language: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const category = parts.shift();
+    const name = parts.shift();
+
+    if (!category || !name) {
+      return defaultMeta(language);
+    }
+
+    const tutorial = await getTutorialMeta({ category, name, language });
+    return meta(tutorial.title, tutorial.description, DEFAULT_IMAGE, language);
+  };
+
   return async (parts: string[]): Promise<Metadata> => {
     const lang = (parts[0]?.length === 2 && parts.shift()) || 'en';
 
@@ -133,6 +151,10 @@ export const createGetMetadata = (dependencies: Dependencies) => {
       }
       case 'resources': {
         return getResourceMetadata(lang, rest) //
+          .catch(defaultOnError(lang));
+      }
+      case 'tutorials': {
+        return getTutorialMetadata(lang, rest) //
           .catch(defaultOnError(lang));
       }
       default: {
