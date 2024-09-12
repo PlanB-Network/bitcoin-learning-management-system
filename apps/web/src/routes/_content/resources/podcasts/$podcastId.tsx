@@ -1,11 +1,9 @@
 import { createFileRoute, useParams } from '@tanstack/react-router';
-import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Card, Loader } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
-import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -17,7 +15,6 @@ export const Route = createFileRoute('/_content/resources/podcasts/$podcastId')(
 );
 
 function Podcast() {
-  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { podcastId } = useParams({
     from: '/resources/podcasts/$podcastId',
@@ -27,14 +24,6 @@ function Podcast() {
     language: i18n.language ?? 'en',
   });
   const isScreenMd = useGreater('sm');
-  const navigateTo404Called = useRef(false);
-
-  useEffect(() => {
-    if (!podcast && isFetched && !navigateTo404Called.current) {
-      navigateTo404();
-      navigateTo404Called.current = true;
-    }
-  }, [podcast, isFetched, navigateTo404]);
 
   function displayAbstract() {
     return (
@@ -59,6 +48,13 @@ function Podcast() {
       backToCategoryButton
     >
       {!isFetched && <Loader size={'s'} />}
+      {isFetched && !podcast && (
+        <div className="w-[768px] mx-auto text-white">
+          {t('general.itemNotFoundOrTranslated', {
+            item: t('words.podcast'),
+          })}
+        </div>
+      )}
       {podcast && (
         <div className="w-full">
           <Card className="mx-2 md:mx-auto">

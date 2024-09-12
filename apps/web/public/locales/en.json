@@ -496,6 +496,10 @@
       "time": "Time"
     }
   },
+  "general": {
+    "itemNotFound": "{{item}} not found",
+    "itemNotFoundOrTranslated": "{{item}} not found, or not translated in your language"
+  },
   "glossary": {
     "anotherWord": "Search for another word",
     "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by Loïc Morel (Pandul), available on our <1>Github repository</1>.",
@@ -880,8 +884,10 @@
     "bitcoinWhitepaper": "Bitcoin Whitepaper",
     "book": "Book",
     "books": "Books",
+    "builder": "Builder",
     "builders": "Builders",
     "certificate": "Certificate",
+    "chapter": "Chapter",
     "conference": "Conference",
     "conferences": "Conferences",
     "content": "Content",

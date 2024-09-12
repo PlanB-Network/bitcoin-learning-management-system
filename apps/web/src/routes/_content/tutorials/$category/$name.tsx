@@ -1,7 +1,7 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Loader, cn } from '@blms/ui';
@@ -232,7 +232,6 @@ function TutorialDetails() {
 
   // Access global context
   const { tutorials, session } = useContext(AppContext);
-  const isFetchedTutorials = tutorials && tutorials.length > 0;
   const authMode = AuthModalState.SignIn;
   const isLoggedIn = !!session;
 
@@ -277,20 +276,6 @@ function TutorialDetails() {
   useEffect(() => {
     setIsLiked(existingLike || { liked: false, disliked: false });
   }, [existingLike]);
-
-  // Memoized markdown content
-  const memoizedMarkdown = useMemo(() => {
-    if (isFetchedTutorials && tutorial) {
-      return (
-        <TutorialsMarkdownBody
-          content={tutorial.rawContent}
-          assetPrefix={computeAssetCdnUrl(tutorial.lastCommit, tutorial.path)}
-          tutorials={tutorials || []}
-        />
-      );
-    }
-    return null;
-  }, [isFetchedTutorials, tutorial, tutorials]);
 
   // Like/dislike buttons component
   const LikeDislikeButtons = () => {
@@ -375,6 +360,14 @@ function TutorialDetails() {
       currentTutorialId={tutorial?.id}
     >
       <>
+        {!isFetched && <Loader size={'s'} />}
+        {isFetched && !tutorial && (
+          <div className="flex flex-col text-black">
+            {t('general.itemNotFoundOrTranslated', {
+              item: t('words.tutorial'),
+            })}
+          </div>
+        )}
         {proofreading ? (
           <ProofreadingProgress
             mode="light"
@@ -415,7 +408,16 @@ function TutorialDetails() {
                   }}
                 />
                 <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
-                  {memoizedMarkdown}
+                  <Suspense fallback={<Loader size={'s'} />}>
+                    <TutorialsMarkdownBody
+                      content={tutorial.rawContent}
+                      assetPrefix={computeAssetCdnUrl(
+                        tutorial.lastCommit,
+                        tutorial.path,
+                      )}
+                      tutorials={tutorials || []}
+                    />
+                  </Suspense>
                 </div>
                 <LikeDislikeButtons />
                 {tutorial.credits?.link && (
@@ -461,8 +463,6 @@ function TutorialDetails() {
             )}
           </>
         )}
-
-        {!isFetched && <Loader size={'s'} />}
       </>
     </TutorialLayout>
   );

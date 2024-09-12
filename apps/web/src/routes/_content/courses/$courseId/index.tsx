@@ -33,7 +33,6 @@ import { AuthorCard } from '#src/components/author-card.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { AppContext } from '#src/providers/context.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
@@ -67,7 +66,6 @@ function CourseDetails() {
   const { courseId } = useParams({
     from: '/courses/$courseId',
   });
-  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const isScreenMd = useGreater('sm');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
@@ -107,8 +105,6 @@ function CourseDetails() {
   if (!professorNames) {
     professorNames = '';
   }
-
-  if (!course && isFetched) navigateTo404();
 
   const buttonProps = useMemo(
     () =>
@@ -646,6 +642,13 @@ function CourseDetails() {
       />
       <div className="text-blue-800">
         {!isFetched && <Loader size={'s'} />}
+        {isFetched && !course && (
+          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
+            {t('general.itemNotFoundOrTranslated', {
+              item: t('words.course'),
+            })}
+          </div>
+        )}
         {course && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
             {!courseHasToBePurchased && (

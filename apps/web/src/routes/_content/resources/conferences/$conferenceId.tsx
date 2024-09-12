@@ -1,5 +1,5 @@
 import { Link, createFileRoute, useParams } from '@tanstack/react-router';
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
@@ -10,7 +10,6 @@ import { Button, Loader, Tag, cn } from '@blms/ui';
 
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
-import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -60,12 +59,10 @@ function Conference() {
   const [activeStage, setActiveStage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
 
-  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { conferenceId } = useParams({
     from: '/resources/conferences/$conferenceId',
   });
-  const navigateTo404Called = useRef(false);
 
   const { data: conference, isFetched } = trpc.content.getConference.useQuery({
     id: Number(conferenceId),
@@ -76,13 +73,6 @@ function Conference() {
     language: i18n.language,
     resourceId: +conferenceId,
   });
-
-  useEffect(() => {
-    if (!conference && isFetched && !navigateTo404Called.current) {
-      navigateTo404();
-      navigateTo404Called.current = true;
-    }
-  }, [conference, isFetched, navigateTo404]);
 
   const handleKeyDownVideo = (
     event: React.KeyboardEvent<HTMLDivElement>,
@@ -100,10 +90,6 @@ function Conference() {
     }
   };
 
-  if (!conference) {
-    return;
-  }
-
   return (
     <ResourceLayout
       title={t('conferences.pageTitle')}
@@ -115,6 +101,13 @@ function Conference() {
       className="max-md:mx-4"
     >
       {!isFetched && <Loader size={'s'} />}
+      {isFetched && !conference && (
+        <div className="w-[768px] mx-auto text-white">
+          {t('general.itemNotFoundOrTranslated', {
+            item: t('words.conference'),
+          })}
+        </div>
+      )}
       {conference && (
         <>
           {proofreading ? (
