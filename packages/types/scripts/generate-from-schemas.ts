@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { zodToTs, printNode, type GetType } from 'zod-to-ts';
-import type { ZodAny } from 'zod';
+import type { ZodEnumDef, ZodTypeAny } from 'zod';
 import ts from 'typescript';
 
 import * as schemas from '@blms/schemas';
@@ -114,8 +114,12 @@ const extractSchemas = (fileContent: string): string[] => {
   return [...schemaNames];
 };
 
+// Map of enum values to their corresponding type name and import path
+let enumsMap = new Map<string, string>();
+
 let currentlyProcessedFile = '';
 let currentImportSet: Set<string>;
+
 const generateFileContent = (
   schemaNames: string[],
   filePath: string, // Current file path (used to track imports)
@@ -125,9 +129,18 @@ const generateFileContent = (
   currentImportSet = new Set();
 
   for (const name of schemaNames) {
-    const schema = (schemas as any)[name] as ZodAny & GetType;
+    const schema = (schemas as any)[name] as ZodTypeAny & GetType;
 
     const typeName = typeNameFromSchema(name);
+
+    const zodType = schema._def?.typeName;
+
+    // Register enum
+    if (zodType === 'ZodEnum') {
+      const values = (schema._def as ZodEnumDef).values;
+      enumsMap.set(values.map((v) => `"${v}"`).join(' | '), typeName);
+    }
+
     const { node } = zodToTs(schema);
 
     // Append a custom getType function to the schema once it have been processed
@@ -147,7 +160,22 @@ const generateFileContent = (
       return ts.factory.createIdentifier(typeName);
     };
 
-    const output = printNode(node);
+    let output = printNode(node);
+
+    if (name.startsWith('token')) {
+      console.debug(`Generated type for ${name}:`, output);
+    }
+
+    // Look for enum values in the output and replace them with the corresponding type name
+    // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
+    if (zodType !== 'ZodEnum') {
+      for (const [values, type] of enumsMap) {
+        if (output.includes(values)) {
+          console.debug('Replacing', values, 'with', type);
+          output = output.replace(values, type);
+        }
+      }
+    }
 
     switch (node.kind) {
       // @ts-ignore TODO align ts version between zod-to-ts and workspace
