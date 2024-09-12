@@ -147,7 +147,12 @@ function Builder() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Nostr className={cn(isScreenMd ? 'size-8' : 'size-4')} />
+                    <Nostr
+                      className={cn(
+                        'fill-white',
+                        isScreenMd ? 'size-8' : 'size-4',
+                      )}
+                    />
                   </a>
                 )}
                 {builder.githubUrl && (

@@ -78,6 +78,7 @@ export interface FormattedProfessor {
     website: string | null;
     twitter: string | null;
     github: string | null;
+    nostr: string | null;
   };
   tips: {
     lightningAddress: string | null;

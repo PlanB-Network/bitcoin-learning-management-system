@@ -20,6 +20,7 @@ export const formatProfessor = (professor: JoinedProfessor) => {
       website: professor.websiteUrl,
       twitter: professor.twitterUrl,
       github: professor.githubUrl,
+      nostr: professor.nostr,
     },
     tips: {
       lightningAddress: professor.lightningAddress,

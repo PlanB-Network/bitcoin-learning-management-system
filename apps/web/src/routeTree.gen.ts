@@ -44,6 +44,7 @@ import { Route as ContentResourcesBooksIndexImport } from './routes/_content/res
 import { Route as ContentResourcesBetIndexImport } from './routes/_content/resources/bet/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
+import { Route as DashboardDashboardProfessorProfileImport } from './routes/dashboard/_dashboard/professor/profile';
 import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastIdImport } from './routes/_content/resources/podcasts/$podcastId';
@@ -243,6 +244,12 @@ const ContentMiscPublicCommunicationIndexRoute =
   ContentMiscPublicCommunicationIndexImport.update({
     path: '/public-communication/',
     getParentRoute: () => rootRoute,
+  } as any);
+
+const DashboardDashboardProfessorProfileRoute =
+  DashboardDashboardProfessorProfileImport.update({
+    path: '/professor/profile',
+    getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
 const DashboardDashboardProfessorCoursesRoute =
@@ -596,6 +603,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDashboardProfessorCoursesImport;
       parentRoute: typeof DashboardDashboardImport;
     };
+    '/dashboard/_dashboard/professor/profile': {
+      id: '/dashboard/_dashboard/professor/profile';
+      path: '/professor/profile';
+      fullPath: '/dashboard/professor/profile';
+      preLoaderRoute: typeof DashboardDashboardProfessorProfileImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/_content/_misc/public-communication/': {
       id: '/_content/_misc/public-communication/';
       path: '/public-communication';
@@ -707,6 +721,7 @@ interface DashboardDashboardRouteChildren {
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
   DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
+  DashboardDashboardProfessorProfileRoute: typeof DashboardDashboardProfessorProfileRoute;
 }
 
 const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
@@ -718,6 +733,8 @@ const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
   DashboardDashboardProfessorCoursesRoute:
     DashboardDashboardProfessorCoursesRoute,
+  DashboardDashboardProfessorProfileRoute:
+    DashboardDashboardProfessorProfileRoute,
 };
 
 const DashboardDashboardRouteWithChildren =
@@ -820,6 +837,7 @@ export interface FileRoutesByFullPath {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -868,6 +886,7 @@ export interface FileRoutesByTo {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -921,6 +940,7 @@ export interface FileRoutesById {
   '/_content/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/_dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/_dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/_content/_misc/public-communication/': typeof ContentMiscPublicCommunicationIndexRoute;
   '/_content/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/_content/resources/bet/': typeof ContentResourcesBetIndexRoute;
@@ -974,6 +994,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
     | '/public-communication'
     | '/courses/$courseId/'
     | '/resources/bet'
@@ -1021,6 +1042,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
     | '/public-communication'
     | '/courses/$courseId'
     | '/resources/bet'
@@ -1072,6 +1094,7 @@ export interface FileRouteTypes {
     | '/_content/resources/podcasts/$podcastId'
     | '/_content/tutorials/$category/$name'
     | '/dashboard/_dashboard/professor/courses'
+    | '/dashboard/_dashboard/professor/profile'
     | '/_content/_misc/public-communication/'
     | '/_content/courses/$courseId/'
     | '/_content/resources/bet/'
@@ -1242,7 +1265,8 @@ export const routeTree = rootRoute
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
         "/dashboard/_dashboard/profile",
-        "/dashboard/_dashboard/professor/courses"
+        "/dashboard/_dashboard/professor/courses",
+        "/dashboard/_dashboard/professor/profile"
       ]
     },
     "/_content/_misc/about": {
@@ -1360,6 +1384,10 @@ export const routeTree = rootRoute
     },
     "/dashboard/_dashboard/professor/courses": {
       "filePath": "dashboard/_dashboard/professor/courses.tsx",
+      "parent": "/dashboard/_dashboard"
+    },
+    "/dashboard/_dashboard/professor/profile": {
+      "filePath": "dashboard/_dashboard/professor/profile.tsx",
       "parent": "/dashboard/_dashboard"
     },
     "/_content/_misc/public-communication/": {
