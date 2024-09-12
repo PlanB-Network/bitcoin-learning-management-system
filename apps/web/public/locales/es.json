@@ -198,7 +198,7 @@
       "buildPath": "Construye tu propio camino a través de la madriguera del conejo",
       "exploreCourses": "Explora todos los cursos de Plan B",
       "journey": "Bitcoin es un viaje, no un destino",
-      "seeCourse": "Ve el curso"
+      "seeCourse": "Mira el curso"
     },
     "footer": {
       "": ""
@@ -303,9 +303,9 @@
     "courses": "Cursos",
     "logout": "Cerrar sesión",
     "booking": {
-      "accessLive": "Acceso en vivo",
+      "accessLive": "Accede al examen en vivo",
       "billingTitle": "Historial de facturación",
-      "billingSubtitle": "Descarga las facturas de tus reservas aquí.",
+      "billingSubtitle": "Descarga las facturas de tus reservaciones aquí.",
       "downloadInvoice": "Descargar factura",
       "downloadTicket": "Descargar ticket",
       "invoiceDate": "Fecha",
@@ -315,11 +315,11 @@
       "ticketLocation": "Ubicación",
       "ticketTitle": "Titulo",
       "ticketType": "Tipo",
-      "noInvoice": "Aún no tienes facturas.",
-      "noTicket": "Aún no tienes tickets.",
+      "noInvoice": "Actualmente no tienes facturas.",
+      "noTicket": "Actualmente no tienes tickets.",
       "pastTicketTitle": "Reservas pasadas",
       "upcomingTicketTitle": "Próximas reservas",
-      "upcomingTicketSubtitle": "Descarga tu ticket aquí para asistir a tu próximo evento. Asegúrate de traer tu ticket contigo para tener acceso al evento."
+      "upcomingTicketSubtitle": "Descarga tu ticket aquí para asistir a tu próximo evento. Por favor recuerda llevarlo contigo para entrar."
     },
     "bookings": "Reservas",
     "administration": "Administración",
@@ -334,9 +334,9 @@
       "learnMore": "Aprende más",
       "noResults": "Aún no hay calificaciones ni certificados asociados con esta cuenta. \nSi aprobaste un examen y tus resultados no están disponibles después de un período prolongado, por favor contáctanos para obtener ayuda.",
       "organizedSessions": "El ₿ Certificate es organizado por Plan B Network en varias ubicaciones y horarios. Asegúrate de reservar tu asiento en una sesión.",
-      "presentation": "El ₿ Certificate es un examen de mesa organizado por Plan B Network y está diseñado para evaluar tus conocimientos sobre Bitcoin y todos sus temas relacionados.",
+      "presentation": "El ₿ Certificate es un examen de mesa organizado por Plan B Network, diseñado para evaluar tus conocimientos sobre Bitcoin y todos sus temas relacionados.",
       "findResults": "Aquí puedes encontrar los resultados de los exámenes del ₿ Certificate que has aprobado mientras estabas registrado con esta cuenta. Los resultados generalmente tardan de 2 a 3 semanas en procesarse y estar disponibles aquí. Si después de mucho tiempo tus resultados no aparecen aquí, por favor contáctanos.",
-      "wantToPass": "¿Quieres aprobar el examen?"
+      "wantToPass": "¿Quieres tomar el examen?"
     },
     "profile": {
       "personalInformation": "Mi información personal",
@@ -350,7 +350,7 @@
       "save": "Guardar",
       "saving": "Guardando...",
       "crop": "Recortar",
-      "emailChangeConfirmation": "Se ha enviado un correo de confirmación de cambio de correo electrónico, revisa tu bandeja de entrada para confirmar el cambio.",
+      "emailChangeConfirmation": "Se ha enviado un correo de confirmación de cambio de correo electrónico, por favor revisa tu bandeja de entrada para confirmar.",
       "preview": "Vista previa",
       "displayName": "Nombre para mostrar",
       "email": "Correo electrónico",
@@ -374,8 +374,8 @@
     },
     "missed": {
       "missedh1": "Past events to replay",
-      "missedp1": "Did you miss an event ?",
-      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+      "missedp1": "¿Te perdiste un evento?",
+      "missedp2": "¡No te preocupes! Almacenamos todas las repeticiones de eventos pasados que tuvieron lugar en la comunidad, permitiendo que todos puedan ponerse al día libremente sobre lo que se perdieron."
     },
     "card": {
       "free": "free",
@@ -394,83 +394,83 @@
     },
     "newEvent": {
       "button": "Agregar mi evento",
-      "description": "¡Por supuesto! Todos los eventos de Bitcoin pueden mejorar su visibilidad aquí, y toda iniciativa para crear un nuevo evento es bienvenida :)",
+      "description": "¡Por supuesto! Todos los eventos de Bitcoin pueden aumentar su visibilidad aquí, por lo que toda iniciativa para crear un nuevo evento es más que bienvenida :)",
       "subtitle": "El orange pilling a mil millones de personas no es fácil",
-      "title": "¿Deseas agregar tu evento?"
+      "title": "¿Deseas añadir tu evento?"
     },
-    "pageDescription": "¿Quieres hablar sobre Bitcoin en tiempo real? Aquí puedes encontrar todos los eventos respaldados por las comunidades de Plan B Network. Ya sea que quieras escuchar una conferencia, discutir sobre Bitcoin mientras tomas una bebida, o hacer un examen para evaluar tus conocimientos, podrás encontrar el evento adecuado aquí a través de Plan B Network.",
+    "pageDescription": "¿Quieres hablar sobre Bitcoin en tiempo real? Aquí puedes encontrar todos los eventos respaldados por las comunidades de Plan B Network. Ya sea que quieras escuchar una conferencia, discutir sobre Bitcoin mientras tomas una bebida, o tomar un examen para evaluar tus conocimientos, encontrarás el evento adecuado aquí a través de Plan B Network.",
     "pageSubtitle": "Adopción de abajo hacia arriba, potenciada por una red sólida",
-    "pageTitle": "¿Buscas un evento de Bitcoin al que asistir?",
+    "pageTitle": "¿Buscas un evento de Bitcoin al cual asistir?",
     "payment": {
       "access_invoice": "Puedes acceder a tu factura a través de tu panel de control.",
-      "access_online_successful": "Cuando comience el evento, inicia sesión en la plataforma y se te concederá acceso a la transmisión en vivo a través de la página del evento.",
+      "access_online_successful": "Cuando comience el evento, inicia sesión en la plataforma para obtener acceso a la transmisión en vivo en la página del evento.",
       "access_physical_successful": "Puede descargar tu ticket aquí, o descargarlo más tarde en tu panel de control.",
       "access_type": "Tipo de acceso",
-      "address": "",
-      "additional_free_description": "",
-      "amount": "",
-      "back_events": "",
-      "book_seat": "",
-      "callout_online": "",
-      "callout_physical": "",
-      "callout_replay": "",
-      "date": "",
-      "dates_to": "",
-      "description_online": "",
-      "description_physical": "",
-      "description_free_physical": "",
-      "download_ticket": "",
-      "enjoy": "",
-      "language": "",
-      "limitation": "",
-      "max_capacity": "",
-      "payment_details": "",
-      "payment_successful": "",
-      "time": ""
+      "address": "Dirección",
+      "additional_free_description": "Este evento es gratuito, por lo que no hay costo por reservar este asiento. Sin embargo, por favor, asegúrate de asistir, ya que el número de asientos es limitado.",
+      "amount": "Monto",
+      "back_events": "Regresar a eventos",
+      "book_seat": "Reservar asiento",
+      "callout_online": "Estás por reservar acceso en línea a este evento.",
+      "callout_physical": "Estás por reservar acceso físico a este evento.",
+      "callout_replay": "Estás por reservar el acceso al video de repetición de este evento.",
+      "date": "Fecha",
+      "dates_to": "{{startDate}}{{endDate}}",
+      "description_online": "Por favor, revisa la fecha y hora proporcionadas del evento.\nCuando llegue el momento, inicie sesión en la plataforma para acceder a la transmisión en vivo a través de la página del evento.",
+      "description_physical": "Por favor revise los detalles proporcionados del lugar.\nUna vez que su reserva esté confirmada, emitiremos un ticket para presentar en el evento. Este ticket también le dará acceso a la transmisión en vivo y al video de repetición, si está disponible.",
+      "description_free_physical": "Por favor revise los detalles proporcionados del lugar.\nUna vez que la reserva esté confirmada, emitiremos un ticket de confirmación y un código QR para presentar en el evento.",
+      "download_ticket": "Descarga tu ticket",
+      "enjoy": "Esperamos que lo disfrutes :)",
+      "language": "Idioma",
+      "limitation": "Limitación",
+      "max_capacity": "Capacidad máxima de",
+      "payment_details": "Detalles del pago",
+      "payment_successful": "¡Reservación exitosa!",
+      "time": "Hora"
     }
   },
   "home": {
     "header": {
-      "content": "La plataforma PlanB tiene como objetivo proporcionar las mejores herramientas y contenidos educativos de todo el mundo para ayudar a la gente a recuperar su soberanía. Desde individuos hasta comunidades, estamos aquí para ayudarte a lo largo de tu viaje en Bitcoin.",
+      "content": "La plataforma de Plan ₿ Network tiene como objetivo proporcionar las mejores herramientas y contenido educativo a nivel mundial, empoderando a las personas para recuperar su soberanía. Desde individuos hasta comunidades, estamos aquí para ayudarte en tu viaje con Bitcoin.",
       "forEducators": "Para educadores y constructores",
-      "globalNetwork": "Red global de Bitcoin",
-      "welcome": "Bienvenido a PlanB Network",
+      "globalNetwork": "Una Red Global de Bitcoin",
+      "welcome": "Bienvenido a Plan ₿ Network",
       "link": "Se parte de la red",
       "startLink": "Comienza tu aprendizaje"
     },
     "numbersSection": {
-      "networkMember": "Miembro de la Red"
+      "networkMember": "Miembros de la Red"
     },
     "sectionEducation": {
       "title": "De principiante a avanzado",
       "subtitle": "Aprende Bitcoin en la academia",
-      "content1": "Bitcoin no es sólo una tecnología y una forma de dinero, sino también una manera revolucionaria de acercarse a la vida. Para hacernos eco de esto, nuestros cursos abarcan una amplia gama de campos, capacitando a cada individuo para exceder en sus áreas de interés y profundizando en su comprensión. Desde tu primer curso de Bitcoin hasta una inmersión profunda en las especificaciones del protocolo, nuestros cursos te ayudarán a navegar el agujero de conejo de forma segura. No hay ninguna razón para luchar. El conocimiento te espera.",
+      "content1": "Bitcoin no es solo una tecnología y una forma de dinero, sino también una manera revolucionaria de abordar la vida. En línea con esta conciencia, nuestros cursos cubren una amplia gama de áreas, empoderando a las personas para que sobresalgan en sus campos de interés y profundicen su comprensión. Desde tu primera lección sobre Bitcoin hasta una inmersión en los detalles del protocolo, te ayudaremos a navegar por la madriguera de manera segura. No hay razón para dudar. El conocimiento te espera.",
       "link": "Revisa la academia"
     },
     "sectionNetwork": {
-      "title": "Acceder a una red de",
+      "title": "Accede a una red de",
       "subtitle": "Campuses de bitcoin a nivel mundial",
-      "content1": "Conéctate con los entusiastas de Bitcoin en todo el mundo que comparten una pasión común. Desde pequeñas comunidades que se reúnen regularmente hasta centros educativos del BTC, nuestro mapa de red le ayudará a encontrar la inspiración para aprender y construir. Hay una amplia gama de servicios disponibles para entusiastas como un centro de incubación, talleres físicos, seminarios, retiros de BTC y mucho más. La red está abierta a todos, así que ¡venga a su comunidad BTC local!",
+      "content1": "Conéctate con entusiastas de Bitcoin de todo el mundo que comparten una pasión común. Desde pequeñas comunidades que se reúnen regularmente, hasta centros educativos de BTC, nuestro mapa de nodos te ayudará a encontrar la inspiración para aprender y construir. Descubrirás una amplia gama de servicios, como un centro de incubación, talleres presenciales, seminarios, retiros de BTC y más. La red está abierta a todos, ¡así que ven y saluda a tu comunidad local de BTC!",
       "link": "Se parte de la red"
     },
     "tutorialSection": {
-      "title": "Nuestro objetivo es simplificar la educación en Bitcoin.",
+      "title": "Educación sobre Bitcoin simplificada.",
       "subtitle1": "¡Te ayudamos a dominar la tecnología con numerosos y profundos tutoriales!",
-      "content1": "Bitcoin está evolucionando constantemente, con nuevos actores, soluciones, protocolos y avances tecnológicos que van y vienen. A menudo es difícil mantener una base de datos única y precisa de buenos tutoriales actualizados. Aquí en PlanB, esto es lo que hemos logrado. Desde principiantes hasta usuarios avanzados, puedes navegar cientos de tutoriales para explorar nuestra industria basada en tus necesidades.",
+      "content1": "Bitcoin está en constante evolución, con la aparición de nuevos actores, soluciones, protocolos y avances tecnológicos. Por lo tanto, puede ser un desafío mantener una base de datos precisa y actualizada de tutoriales de calidad. Aquí en Plan ₿, hemos logrado justamente eso. Ya sea que seas un principiante o un usuario avanzado, puedes navegar por cientos de tutoriales para explorar nuestra industria según tus necesidades.",
       "link": "Ver todos los tutoriales"
     },
     "aboutUsSection": {
       "title": "¿Quiénes somos?",
       "subtitle": "Un poco sobre nosotros",
-      "content": "La red PlanB es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir la red PlanB y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
+      "content": "Plan ₿ Network apoya la educación sobre Bitcoin en todo el mundo. Representa una colaboración de empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, la red peer-to-peer y la construcción de comunidades. Juntos, han lanzado esta iniciativa para proporcionar al ecosistema Bitcoin las herramientas esenciales para su crecimiento.",
       "bitcoinFocusTitle": "Enfoque Bitcoin",
-      "bitcoinFocusContent": "Nos enfocamos en la revolución de Bitcoin en su totalidad, desde su capa base hasta varias comunicaciones de peer-to-peer a su alrededor",
+      "bitcoinFocusContent": "Exploramos la revolución de Bitcoin desde el nivel básico hasta las comunicaciones peer-to-peer.",
       "openSourceTitle": "Código abierto",
-      "openSourceContent": "Nuestro objetivo es promover el libre flujo del conocimiento y ayudar a construir más soluciones de código abierto",
+      "openSourceContent": "Promovemos el flujo libre de conocimiento y apoyamos las soluciones de código abierto",
       "communityTitle": "Comunidad",
-      "communityContent": "En primer lugar, somos una comunidad de entusiastas que se ayudan mutuamente en su viaje con Bitcoin",
+      "communityContent": "Somos, ante todo, una comunidad de entusiastas que se ayudan mutuamente en el camino de Bitcoin",
       "privacyTitle": "Privacidad",
-      "privacyContent": "Consideramos que la privacidad es uno de los derechos humanos más fundamentales y esencial para el progreso"
+      "privacyContent": "Creemos que la privacidad es uno de los derechos humanos más fundamentales y esenciales para el progreso"
     },
     "languageSection": {
       "title": "Aquí no hay barrera lingüística.",
@@ -479,12 +479,16 @@
       "content1": "En PlanB, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos. La plataforma soporta actualmente 7 idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los bitcoineros en todo el mundo.",
       "content2": "¡También puedes empezar a arrancar tu propia red local en tu país!",
       "link": "Ayúdanos a traducir la academia",
-      "availableLanguages": ""
+      "availableLanguages": "Idiomas disponibles"
     },
     "patreonSection": {
       "title": "¡Juntos vamos a mejorar la educación en Bitcoin! ",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "¡La red PlanB se enorgullece de colaborar con numerosas empresas de Bitcoin en todo el mundo para proporcionar los mejores recursos educativos posibles! "
+    },
+    "wallOfLoveSection": {
+      "title": "Muro de amor",
+      "subtitle": "Lo que los Bitcoiners dicen sobre nosotros"
     }
   },
   "imagesAlt": {
@@ -534,7 +538,12 @@
     "supportUsDescription": "Encuentra formas de apoyarnos, de cualquier manera",
     "teachersDescription": "Conoce a nuestros profesores universitarios, entusiastas de Bitcoin",
     "walletsDescription": "Asegura y utiliza tus bitcoins",
-    "conferencesDescription": ""
+    "conferencesDescription": "Colección de repeticiones de conferencias de Bitcoin desde el Bloque Génesis",
+    "bCertificateDescription": "Aprueba el examen el ₿ Certificate para demostrar tu nivel de Bitcoin",
+    "glossaryDescription": "Entiende el lenguaje de Bitcoin",
+    "login": "Iniciar Sesión",
+    "loginRegister": "Iniciar sesión / Registrarse",
+    "publicDescription": "Explora artículos de comunicación pública"
   },
   "nodeNetwork": {
     "answer1": "Un nodo es simplemente una comunidad de Bitcoin que desea avanzar al siguiente nivel y acelerar su propia adopción local de Bitcoin. No hay un tamaño mínimo para comenzar.",
@@ -604,10 +613,17 @@
       "title": "Podcasts"
     },
     "publicGrade": "Calificación pública: {{grade}}/5",
-    "github": ""
+    "github": "Todos esta información se gestiona a través de un repositorio <0>Github</0> de código abierto. Siéntete libre de contribuir y agregar cualquier contenido que falte.",
+    "glossary": {
+      "title": "Glosario"
+    },
+    "searchFilterName": "Buscar por nombre"
   },
   "settings": {
-    "changePassword": "Cambiar contraseña"
+    "changePassword": "Cambiar contraseña",
+    "changeDisplayName": "Cambiar nombre paraa mostrar",
+    "changeProfilePicture": "Cambiar foto de perfil",
+    "changeEmail": "Cambiar correo electrónico"
   },
   "tutorials": {
     "details": {
@@ -615,7 +631,10 @@
       "enjoyed": "¿Disfrutaste de este tutorial?",
       "madeBy": "Este tutorial ha sido hecho por",
       "source": "Fuente original: ",
-      "tipTooltip": "¿Te gusta? Tip."
+      "tipTooltip": "¿Te gusta? Tip.",
+      "writtenBy": "Este tutorial fue escrito por:",
+      "author": "Autor: ",
+      "didHelp": "¿Ayudó esto?"
     },
     "exchange": {
       "centralized": {
@@ -630,7 +649,8 @@
     },
     "explorer": {
       "description": "Todos estos tutoriales han sido escritos por apasionados y dedicados bitcoiner, que desean difundir la educación sobre Bitcoin en todo el mundo. ¡No olvides darles un \"me gusta\", hacer una reseña y dejarles propinas en sats!",
-      "didYouKnow": "¿Lo sabías?"
+      "didYouKnow": "¿Lo sabías?",
+      "exploreAllTutorials": "Explora todos los tutoriales"
     },
     "headerSignature": "Rogzy",
     "headerText": "¡Bienvenido al infinito agujero del conejo de Bitcoin! En esta sección, te ofreceremos tutoriales en profundidad sobre la mayoría de los proyectos de Bitcoin disponibles. Esta página es mantenida por voluntarios y apasionados de Bitcoin que apoyan este proyecto de código abierto. Si sientes que hemos cometido un error, por favor contáctanos. Para ver nuestros documentos financieros relacionados con el proyecto, consulta nuestro informe de transparencia. Gracias por confiar en esta universidad y disfruta del viaje.",
@@ -688,22 +708,24 @@
       "title": "Billetera"
     },
     "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
+      "title": "Otros",
+      "shortDescription": "Explora diversos tutoriales sobre temas estrechamente relacionados con bitcoin",
+      "description": "Sumérgete en una gran colección de tutoriales que están estrechamente relacionados con la ética de Bitcoin. Desde bricolaje hasta tutoriales de código abierto, descubre nuevas áreas de conocimiento para volverte aún más soberano.",
       "DIY": {
-        "description": ""
+        "description": "¡Descubre nuestros tutoriales de bricolaje para aprender cómo crear cosas relacionadas con Bitcoin, la informática y la soberanía individual por ti mismo!"
       },
       "OpenSource": {
-        "description": ""
+        "description": "¡Explora nuestros tutoriales dedicados al uso de herramientas de código abierto!"
       },
       "contribution": {
-        "description": ""
+        "description": "¡Aprende cómo contribuir a Plan ₿ Netowork y domina las herramientas de código abierto que usamos internamente a través de nuestros tutoriales detallados!"
       },
       "general": {
-        "description": ""
+        "description": "¡Explora nuestros tutoriales generales para enriquecer tu conocimiento en informática y otros temas relacionados con la soberanía individual!"
       }
-    }
+    },
+    "approvedByCreator": "Aprobado por el creador",
+    "backTutorials": "Regresar a todos los tutoriales"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -752,7 +774,10 @@
       "advanced": "Avanzado",
       "beginner": "Principiante",
       "developer": "desarrollador",
-      "intermediate": "Intermedio"
+      "intermediate": "Intermedio",
+      "wizard": "Experto",
+      "level": "Nivel",
+      "levels": "Niveles"
     },
     "library": "Biblioteca",
     "lightning": "Lightning",
@@ -794,16 +819,40 @@
     "video": "Vídeo",
     "videos": "Vídeos",
     "wallets": "Billeteras",
-    "date": "",
-    "time": "",
-    "to": "",
-    "billing": "",
-    "download": "",
-    "invoice": "",
-    "on": "",
-    "online": "",
-    "ticket": "",
-    "tickets": ""
+    "date": "Fecha",
+    "time": "Hora",
+    "to": "a",
+    "billing": "Facturación",
+    "download": "Descargar",
+    "invoice": "Factura",
+    "on": "en",
+    "online": "En línea",
+    "ticket": "Ticket",
+    "tickets": "Tickets",
+    "all": "Todo",
+    "courseId": "ID del curso",
+    "description": "Descripción",
+    "duration": "Duración",
+    "lightningInvoice": "Factura de lightning",
+    "price": "Precio",
+    "public": "Comunicación pública",
+    "unified": "Unificado",
+    "users": "Usuarios",
+    "view": "Vista",
+    "admins": "Administradores",
+    "amount": "Monto",
+    "bCertificate": "₿ Certificate",
+    "edit": "Editar",
+    "free": "Libre",
+    "glossary": "Glosario",
+    "onChain": "On chain",
+    "onChainAddress": "Dirección On-chain",
+    "paid": "Pagado",
+    "part": "Parte",
+    "professor": "Profesor",
+    "start": "Iniciar",
+    "students": "Estudiantes",
+    "topics": "Temas"
   },
   "conferences": {
     "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
@@ -830,10 +879,10 @@
     "topics": "Temas"
   },
   "payment": {
-    "proceedToPayment": "",
-    "terms": "",
-    "feeDistribution": "",
-    "total": ""
+    "proceedToPayment": "Proceder al pago",
+    "terms": "Consulta nuestros <0>términos generales</0> y condiciones para obtener detalles sobre reembolsos",
+    "feeDistribution": "Distribución de la tarifa: Autor 99 % - Plataforma 1 %",
+    "total": "Total"
   },
   "bCertificate": {
     "pageTitle": "Aprueba el ₿ Certificate",
@@ -851,5 +900,63 @@
     "curious": "¿Curioso por saber cómo es el examen?",
     "joeNakamotoVideo": "¿Qué diablos es un examen de Bitcoin? Por Joe Nakamoto",
     "knowledgeableBitcoin": "¿Conocedor de Bitcoin?"
+  },
+  "glossary": {
+    "anotherWord": "Busca otra palabra",
+    "creditsLoic": "<0>Créditos</0>: Diccionario de Bitcoin escrito por Loïc Morel (Pandul), disponible en nuestro <1>repositorio de Github</1>.",
+    "definition": "Definición",
+    "filterBar": "Encuentra la palabra que necesitas aquí",
+    "needHelp": "¿Necesitas ayuda para definir una palabra técnica?",
+    "keepLooking": "¿Quieres seguir buscando?",
+    "loadMoreWords": "Cargar más palabras",
+    "notTranslated": "Los datos en el glosario aún no han sido traducidos.\nSi te gustaría ayudar, no dudes en contribuir en nuestro",
+    "pageSubtitle": "¿Necesitas ayuda con una definición técnica?",
+    "pageTitle": "Glosario de Bitcoin",
+    "placeHolder": "¿Qué es esto?",
+    "randomSearch": "Búsqueda aleatoria",
+    "relatedWords": "Palabras relacionadas:",
+    "term": "Término"
+  },
+  "publicCommunication": {
+    "legalSections": {
+      "legalNotice": "Aviso legal",
+      "privacyPolicy": "Política de privacidad",
+      "contact": "Contacto",
+      "termsOfSale": "Términos de venta"
+    },
+    "blogCategories": {
+      "content": "Contenido",
+      "feature": "Característica",
+      "grants": "Subvenciones",
+      "network": "Red",
+      "patch": "Notas de la actualización",
+      "course": "Publicación del curso",
+      "all": "Todo"
+    },
+    "goBackButtons": {
+      "simpleGoBack": "Volver a todos los artículos"
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "Último artículo publicado",
+      "pastArticleSubtitleText": "Artículos pasados",
+      "noArticlesText": "No hay publicaciones de blog en este momento.",
+      "errorMessageNotFound": "Blog no encontrado.",
+      "blogSidebarTitle": "Publicaciones anteriores en la Red",
+      "blogListButtonText": "Leer",
+      "filterText": "Filtrar por tema:",
+      "noBlogs": "No hay artículos en este momento"
+    },
+    "title": "Comunicación pública",
+    "description": "En Plan ₿ Network, nos enorgullece seguir los patrones de código abierto y mantener la transparencia a lo largo de nuestro camino",
+    "blogPost": "Blogs y Noticias",
+    "legal": "Información legal"
+  },
+  "proofreading": {
+    "completed": "Proofreading completado",
+    "description": "El contenido original ha sido traducido por IA, pero es necesaria una revisión humana para garantizar su precisión.",
+    "inProgress": "Proofreading en progreso",
+    "reviewEarn": "Revisa y gana sats",
+    "status": "Estado del proofreading",
+    "thanks": "¡Un gran agradecimiento a nuestros revisores!"
   }
 }
