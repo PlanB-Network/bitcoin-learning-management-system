@@ -215,12 +215,12 @@
       "dates_to": "จาก {{startDate}} ถึง {{endDate}}",
       "downloadCurriculum": "ดาวน์โหลดรายละเอียดหลักสูตร",
       "duration": "ระยะเวลา",
-      "invoiceId": "รหัสของธุรกรรม",
-      "numberOfChapters": "Number of chapters",
-      "payment_details": "Payment details",
-      "payment_successful": "Payment successful!",
-      "teacher": "Teacher",
-      "teachers": "Teachers",
+      "invoiceId": "รหัสธุรกรรม",
+      "numberOfChapters": "จำนวนของบท",
+      "payment_details": "รายละเอียดการชำระเงิน",
+      "payment_successful": "การชำระเงินเสร็จสมบูรณ์!",
+      "teacher": "ผู้สอน",
+      "teachers": "เหล่าผู้สอน",
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
@@ -230,30 +230,60 @@
       "callout": "คุณกำลังจะซื้อหลักสูตรนี้",
       "description": "การซื้อนี้จะทำให้คุณสามารถเข้าถึงคอร์สออนไลน์บนแพลตฟอร์มนี้ รวมถึงการเรียนในห้องเรียนจริง หากคุณจองที่นั่งของคุณไว้ โดยแต่ละคลาสจะจัดขึ้น ณ สถาณที่จริงดในวันที่และสถานที่ที่ได้ระบุไว้ โดยจะถูกบันทึกและสตรีมออนไลน์บนแพลตฟอร์มนี้",
       "book_description": "โปรดตรวจสอบรายละเอียดสถานที่ที่ให้มา\nเมื่อการจองของคุณได้รับการดำเนินการแล้ว เราจะส่งบัตรยืนยันและรหัส QR ให้คุณเพื่อให้คุณนำไปแสดงในงาน",
-      "qr_unified": "",
-      "time": ""
+      "qr_unified": "QR โค้ดนี้เป็นแบบครบวงจร จึงสามารถรองรับการชำระเงินทั้งทาง Lightning และการชำระเงินแบบ On-chain ได้",
+      "time": "เวลา"
     },
     "preview": {
-      "by": "by {{professor}}",
-      "letsgo": "Let's go"
+      "by": "โดย {{professor}}",
+      "letsgo": "มาเริ่มกันเถอะ"
     },
     "proceedToPayment": "Proceed to payment",
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
-      "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "clickOnPie": "คลิกที่แผนภูมิวงกลมเพื่อตรวจสอบข้อผิดพลาดของคุณและดูคำอธิบาย",
+      "quizz": "แบบทดสอบ",
+      "quizzResults": "ผลการทดสอบ",
+      "quizzReview": "ตรวจสอบ การทดสอบ",
+      "resultCongrats": "ยินดีด้วย คุณทำได้ดีเลย !",
+      "resultItsOk": "อย่ายอมแพ้นะ ครั้งหน้า คุณจะทำได้ดีกว่านี้!",
+      "resultNotBad": "ก็ไม่เลวนะ!",
+      "resultPerfect": "เพอร์เฟ็คสุดๆ! ขอแสดงความยินดีด้วยนะ!"
     },
     "unreleased": {
-      "colcardAndSparrow": "Coldcard et Sparrow",
-      "financeIntroduction": "Introduction à la finance",
-      "financialCrisis": "Analyse des crises financières majeures",
-      "hyperinflation": "Etude des hyperinflations",
-      "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+      "colcardAndSparrow": "Coldcard และ Sparrow",
+      "financeIntroduction": "เริ่มต้นเรียนรู้เรื่องการเงิน",
+      "financialCrisis": "วิเคราะห์วิกฤติการณ์ทางการเงินขนาดใหญ่ต่างๆ",
+      "hyperinflation": "งานศึกษาเกี่ยวกับ สภาวะเงินเฟ้อรุนแรง (Hyperinflation)",
+      "theoreticalLightning": "หลักสูตรทฤษฎีขั้นสูงในด้านเครือข่าย Lightning"
+    },
+    "review": {
+      "asExpected": "ตรงตามที่คาดการณ์ไว้",
+      "commentAdmin": "แสดงความคิดเห็น ต่อทีมผู้ดูแลระบบ (แบบส่วนตัว)",
+      "commentPublic": "แสดงความคิดเห็น (แบบสาธารณะ)",
+      "commentTeacher": "แสดงความคิดเห็นถึงผู้สอน (แบบส่วนตัว)",
+      "difficulty": "ความยาก",
+      "faithful": "ยึดมั่นต่อวัตถุประสงค์หรือไม่?",
+      "veryGood": "ดีมาก",
+      "writeThoughts": "สามารถเขียนความคิดเห็นของคุณได้ที่นี่",
+      "yesVeryMuch": "ใช่ ประมาณนั้น",
+      "currentlyLoggedOut": "คุณยังไม่ได้เข้าสู่ระบบ หากต้องการให้คำติชมเกี่ยวกับหลักสูตร กรุณา <0>เข้าสู่ระบบหรือลงทะเบียน</0>",
+      "feedbackDescription": "โปรดให้คะแนนประสบการณ์ของคุณกับหลักสูตรด้านล่างนี้\nการส่งความคิดเห็นนี้เป็นขั้นตอนที่จำเป็นเพื่อเข้าสู่การสอบปลายภาคและทำให้หลักสูตรเป็นผล\nโปรดทราบว่า เหล่าผู้สอนจะไม่สามารถเข้าถึงการประเมินของแต่ละบุคคลได้",
+      "feedbackSessionTitle": "เซสชันการประเมินผล",
+      "generalGrade": "เกรดโดยทั่วไป",
+      "length": "ความยาว",
+      "loading": "กำลังโหลด...",
+      "neutral": "กลางๆ",
+      "no": "ไม่",
+      "notReally": "ไม่เชิงแบบนั้นนะ",
+      "quality": "คุณภาพ",
+      "recommend": "จะแนะนำต่อไหม?",
+      "soAndSo": "ก็ประมาณนั้น",
+      "submitReview": "ส่งรีวิว",
+      "tooEasy": "ง่ายเกินไป",
+      "tooHard": "ยากเกินไป",
+      "tooLong": "ยาวเกินไป",
+      "tooShort": "สั้นเกินไป",
+      "veryBad": "แย่มาก",
+      "yesOfCourse": "ใช่ แน่นอน"
     }
   },
   "dashboard": {
@@ -263,7 +293,7 @@
       "details": "",
       "inprogress": ""
     },
-    "account": "",
+    "account": "บัญชี",
     "courses": "",
     "logout": "",
     "booking": {
@@ -285,7 +315,18 @@
       "upcomingTicketTitle": "",
       "upcomingTicketSubtitle": ""
     },
-    "bookings": ""
+    "bookings": "",
+    "administration": "การจัดการระบบ",
+    "bCertificate": {
+      "assertLevel": "ประเมินระดับของคุณในด้าน Bitcoin",
+      "bCertificate": "ใบรับรอง ₿",
+      "bookExam": "จองช่วงเวลาสอบ",
+      "certificate": "ใบรับรอง",
+      "general": "ทั่วไป",
+      "grade": "เกรด",
+      "gradesDiploma": "เกรดและปริญญาบัตร",
+      "learnMore": "เรียนรู้เพิ่มเติม"
+    }
   },
   "events": {
     "introduction": {

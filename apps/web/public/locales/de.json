@@ -354,11 +354,56 @@
       "profileInformation": "Informationen zum Profil",
       "profilePicture": "Profilbild",
       "security": "Sicherheit",
-      "username": "Benutzername"
+      "username": "Benutzername",
+      "profile": "Profil"
     },
     "calendar": {
       "calendar": "Kalender",
       "personalCalendar": "Persönlicher Kalender"
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "Analytik",
+        "courseModification": "Wenn Sie Hilfe benötigen, um etwas im Kurs zu bearbeiten, überprüfen Sie bitte dieses <0>Tutorial</0>.",
+        "reviewInfos": "Hier können Sie alle Informationen zu jedem von Ihnen koordinierten Kurs kontrollieren und überprüfen.",
+        "courseDetails": "Kursdetails",
+        "courseId": "Kurs-ID",
+        "courseLongDescription": "Einführende Beschreibung",
+        "courseName": "Kursname",
+        "courseShortDescription": "Ziel",
+        "coursesManagementPanel": "Kurse Panel",
+        "curriculum": "Kursplan",
+        "curriculumDescription": "Hier ist der aktuelle Lehrplan für diesen Kurs.",
+        "editOnGithub": "Auf Github bearbeiten",
+        "examResults": "Prüfungsergebnisse",
+        "makeModifications": "Müssen Änderungen vorgenommen werden?",
+        "objectives": "Ziele",
+        "proposeNewCourse": "Einen neuen Kurs vorschlagen",
+        "quickRecap": "Hier finden Sie alle allgemeinen Informationen zu diesem Kurs.",
+        "reviews": "Bewertungen"
+      },
+      "profile": {
+        "descriptionTags": "Diese Schlagwörter vervollständigen Ihr öffentliches Profil, da sie Ihre Spezialgebiete als Bitcoiner zeigen.",
+        "noShortBio": "Bisher ist keine kurze Biografie mit diesem Konto verknüpft, fühlen Sie sich frei, sie auf GitHub hinzuzufügen.",
+        "publicProfileDescription": "Hier können Sie alle Informationen, die mit Ihrer Tätigkeit als Lehrer bei Plan ₿ Network verbunden sind, ausfüllen oder bearbeiten.",
+        "account": "Lehrerkonto",
+        "billingInformations": "Rechnungsinformationen",
+        "chooseTags": "Wählen Sie die Schlagwörter, die Ihnen am besten beschreiben",
+        "description": "Ihre Beschreibung",
+        "enterTipsInformations": "Plan ₿ Netzwerk ermutigt Benutzer, Lehrern Trinkgeld zu geben. Bitte geben Sie Ihre Informationen ein, damit die Leute Ihnen Trinkgeld geben können, wenn sie es möchten.",
+        "lightningAddress": "Lightning Adresse",
+        "makeModifications": "Müssen Änderungen vorgenommen werden ?",
+        "noLightningAddress": "Noch keine Lightning-Adresse hinzugefügt.",
+        "noTags": "Noch keine Schlagwörter mit diesem Konto verknüpft.",
+        "notifications": "Benachrichtigungen",
+        "publicDescription": "Diese Beschreibung wird in Ihrer Lehrerinformationskarte auf der Plattform angezeigt.",
+        "publicProfile": "Öffentliches Profil",
+        "writeShortBio": "Schreiben Sie eine kurze Biografie über sich selbst",
+        "teacher": "Lehrer*in",
+        "teacherProfile": "Lehrerprofil",
+        "tutorialModification": "Wenn Sie Hilfe brauchen, um etwas zu bearbeiten, sehen Sie sich bitte dieses <0>Tutorial</0> an."
+      },
+      "menu": "Lehrermenü"
     }
   },
   "events": {
@@ -431,7 +476,7 @@
   },
   "home": {
     "header": {
-      "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Communities, wir sind hier, um Ihnen auf Ihrer Bitcoin-Reise zu helfen.",
+      "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Gemeinschaften, wir sind hier, um Sie auf Ihrer Bitcoin-Reise zu unterstützen.",
       "forEducators": "Für Erzieher *innen und Entwickler*innen",
       "globalNetwork": "Weltweites Bitcoin-Netzwerk",
       "welcome": "Willkommen im Plan ₿ Netzwerk",
@@ -450,41 +495,45 @@
     "sectionNetwork": {
       "title": "Greifen Sie auf ein Netzwerk zu",
       "subtitle": "Weltweite Bitcoin-Campus",
-      "content1": "Verbinden Sie sich mit Bitcoin-Enthusiasten weltweit, die eine gemeinsame Leidenschaft teilen. Von kleinen Communities, die sich regelmäßig treffen, bis hin zu BTC-Bildungszentren - unsere Netzwerkkarte wird Ihnen helfen, die Inspiration zum Lernen und Aufbauen zu finden. Für Enthusiasten steht eine breite Palette von Dienstleistungen zur Verfügung, wie z. B. ein Inkubationszentrum, physische Workshops, Seminare, BTC-Retreats und mehr. Das Netzwerk steht allen offen, also kommen Sie und begrüßen Sie Ihre lokale BTC-Community!",
-      "link": "Werden Sie Teil des Netzwerks"
+      "content1": "Verbinden Sie sich mit Bitcoin-Enthusiasten weltweit, die eine gemeinsame Leidenschaft teilen. Von kleinen Gemeinschaften, die sich regelmäßig treffen, bis hin zu BTC-Bildungszentren - unsere Netzwerkkarte wird Ihnen helfen, die Inspiration zum Lernen und Aufbauen zu finden. Für Enthusiasten steht eine breite Palette von Dienstleistungen zur Verfügung, wie z. B. ein Inkubationszentrum, physische Workshops, Seminare, BTC-Retreats und mehr. Das Netzwerk steht allen offen, also kommen Sie und begrüßen Sie Ihre lokale BTC-Community!",
+      "link": "Seien Sie ein Teil des Netzwerks"
     },
     "tutorialSection": {
-      "title": "Bitcoin-Bildung einfach zu machen, ist unser Ziel.",
+      "title": "Bitcoin-Bildung leicht gemacht.",
       "subtitle1": "Wir helfen Ihnen, die Technologie mit zahlreichen ausführlichen Tutorials zu beherrschen!",
-      "content1": "Bitcoin entwickelt sich ständig weiter, mit neuen Akteuren, Lösungen, Protokollen und technologischen Durchbrüchen, die kommen und gehen. Es ist oft schwierig, eine einzige, genaue Datenbank mit guten, aktualisierten Anleitungen zu führen. Hier bei PlanB haben wir genau das erreicht. Von Anfängern bis hin zu fortgeschrittenen Nutzern können Sie durch Hunderte von Tutorials navigieren, um unsere Branche nach Ihren Bedürfnissen zu erkunden.",
+      "content1": "Bitcoin entwickelt sich ständig weiter, mit dem Auftauchen neuer Akteuren, Lösungen, Protokollen und technologischen Durchbrüchen. Daher kann es eine Herausforderung sein, eine genaue und aktuelle Datenbank mit hochwertigen Anleitungen zu führen. Hier bei Plan ₿ haben wir genau das erreicht. Ob Sie Anfänger oder Fortgeschrittener sind, können Sie durch Hunderte von Tutorials navigieren, um unsere Branche nach Ihren Bedürfnissen zu erkunden.",
       "link": "Alle Tutorials anzeigen"
     },
     "aboutUsSection": {
       "title": "Wer sind wir?",
       "subtitle": "Ein wenig über uns",
-      "content": "Das PlanB-Netzwerk ist eine Initiative zur Unterstützung der Bitcoin-Ausbildung weltweit. Es ist die Kreuzung verschiedener leidenschaftlicher Bitcoin-Unternehmen, die sich auf Bildung, Open-Source-Software, Peer-to-Peer-Netzwerke und den Sinn von Communities konzentrieren. Gemeinsam haben sie beschlossen, das PlanB-Netzwerk aufzubauen und dem Bitcoin-Ökosystem die richtigen Werkzeuge zu bieten, um zu wachsen.",
-      "bitcoinFocusTitle": "Bitcoin Fokus",
-      "bitcoinFocusContent": "Wir konzentrieren uns auf die Bitcoin-Revolution als Ganzes, von dem Base-Layer bis hin zu verschiedenen Peer-to-Peer-Kommunikation um das Netzwerk herum",
-      "openSourceTitle": "Open-Source",
-      "openSourceContent": "Unser Ziel ist es, den freien Wissensfluss zu fördern und beim Aufbau von mehr Open-Source-Lösungen zu helfen",
+      "content": "Das PlanB-Netzwerk ist eine Initiative zur Unterstützung der Bitcoin-Bldung weltweit. Es ist die Kreuzung verschiedener leidenschaftlicher Bitcoin-Unternehmen, die sich auf Bildung, Open-Source-Software, Peer-to-Peer-Netzwerke und den Aufbau von Gemeinschaften konzentrieren. Gemeinsam haben sie beschlossen, das PlanB-Netzwerk aufzubauen und dem Bitcoin-Ökosystem die richtigen Werkzeuge zum Wachstum zu bieten.",
+      "bitcoinFocusTitle": "Bitcoin Schwerpunkt",
+      "bitcoinFocusContent": "Wir erforschen die Bitcoin-Revolution von der Basisschicht bis zur umgebenden Peer-to-Peer-Kommunikation.",
+      "openSourceTitle": "Open Source",
+      "openSourceContent": "Wir fördern den freien Fluss von Wissen und unterstützen Open-Source-Lösungen",
       "communityTitle": "Community",
-      "communityContent": "Wir sind in erster Linie eine Community von Enthusiasten, die sich gegenseitig auf ihrer Bitcoin-Reise unterstützen",
+      "communityContent": "Wir sind in erster Linie eine Community von Enthusiasten, die sich gegenseitig auf der Bitcoin-Reise unterstützen",
       "privacyTitle": "Datenschutz",
       "privacyContent": "Wir betrachten den Schutz der Privatsphäre als eines der grundlegendsten Menschenrechte und als wesentlich für den Fortschritt"
     },
     "languageSection": {
-      "title": "Keine Sprachbarriere hier.",
+      "title": "Hier gibt es keine Sprachbarriere.",
       "subtitle": "Alles ist in lokale Sprachen übersetzt",
       "subtitle2": "Wir brauchen Sie!",
       "content1": "Wir bei PlanB glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit 7 Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt.",
-      "content2": "Beginnen auch Sie mit dem Aufbau Ihres eigenen lokalen Netzes in Ihrem Land!",
+      "content2": "Beginnen auch Sie mit Bootstrapping Ihres eigenen lokalen Netzes in Ihrem Land!",
       "link": "Helfen Sie uns, die Akademie zu übersetzen",
-      "availableLanguages": ""
+      "availableLanguages": "Verfügbare Sprachen"
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
-      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
+      "title": "Lassen Sie uns gemeinsam die Bitcoin-Bildung verbessern! ",
+      "subtitle": "Das PlanB-Netzwerk ist zu 100 % quelloffen, dank unserer großzügigen Gönner",
       "content": "Das PlanB Network ist stolz darauf, mit vielen Bitcoin-Unternehmen auf der ganzen Welt zusammenzuarbeiten, um die bestmöglichen Bildungsressourcen bereitzustellen!"
+    },
+    "wallOfLoveSection": {
+      "title": "Wall of love",
+      "subtitle": "Was Bitcoiner über uns sagen"
     }
   },
   "imagesAlt": {
@@ -534,7 +583,12 @@
     "supportUsDescription": "Finden Sie Wege, uns zu unterstützen, auf irgendeine Weise",
     "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner",
     "walletsDescription": "Sichern und verwenden Sie Ihre Bitcoins",
-    "conferencesDescription": ""
+    "conferencesDescription": "Sammlung von Bitcoin-Konferenzwiederholungen seit dem Genesis Block",
+    "publicDescription": "Erkunden Sie öffentliche Kommunikationsartikel",
+    "bCertificateDescription": "Bestehen Sie die ₿ Zertifikatsprüfung, um Ihr Bitcoin-Niveau zu bestätigen",
+    "glossaryDescription": "Verstehen Sie die Sprache von Bitcoin",
+    "loginRegister": "Anmelden / Registrieren",
+    "login": "Anmelden"
   },
   "nodeNetwork": {
     "answer1": "Ein Node ist einfach eine Bitcoin Community, die den nächsten Schritt machen will und ihre eigene lokale Bitcoin-Einführung beschleunigen will! Es gibt keine Mindestgröße, mit der man beginnen muss.",
@@ -572,7 +626,14 @@
     "tips": {
       "noTipsYet": "Dieser Professor akzeptiert momentan kein Tip.",
       "thanks": "Vielen Dank, dass Sie die Arbeit von {{name}} unterstützen!",
-      "thanksNoName": "Vielen Dank für die Unterstützung meiner Arbeit !"
+      "thanksNoName": "Vielen Dank für die Unterstützung meiner Arbeit !",
+      "authorSupport": "Unterstützen Sie den Autor mit einem Tipp"
+    },
+    "navigationTitles": {
+      "all": "Alle",
+      "lecturers": "Dozent:innen",
+      "teachers": "Lehrer*innen",
+      "tutorialCreators": "Tutorialersteller:innen"
     }
   },
   "resources": {
@@ -830,10 +891,10 @@
     "conferencesSinceGenesis": "Archiv der Bitcoin-Konferenzen seit dem Genesis-Block"
   },
   "payment": {
-    "proceedToPayment": "",
-    "terms": "",
-    "feeDistribution": "",
-    "total": ""
+    "proceedToPayment": "Weiter zur Zahlung",
+    "terms": "Sehen Sie unsere <0>Allgemeinen Geschäftsbedingungen</0> für die Angabe der Rückerstattung",
+    "feeDistribution": "Honorarverteilung: Autor 99 % - Plattform 1 %",
+    "total": "Summe"
   },
   "bCertificate": {
     "bCertificateDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
@@ -867,5 +928,12 @@
     "loadMoreWords": "Mehr Wörter laden",
     "pageSubtitle": "Brauchen Sie Hilfe bei einer technischen Definition?",
     "term": "Begriff"
+  },
+  "general": {
+    "itemNotFound": "{{item}} nicht gefunden",
+    "itemNotFoundOrTranslated": "{{item}} nicht gefunden oder nicht in Ihre Sprache übersetzt"
+  },
+  "proofreading": {
+    "completed": "Korrekturlesen abgeschlossen"
   }
 }
