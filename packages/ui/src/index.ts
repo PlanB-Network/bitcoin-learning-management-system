@@ -2,6 +2,7 @@ export * from './atoms/alert-dialog.tsx';
 export * from './atoms/avatar.tsx';
 export * from './atoms/button.tsx';
 export * from './atoms/card.tsx';
+export * from './atoms/charts.tsx';
 export * from './atoms/collapsible.tsx';
 export * from './atoms/dialog.tsx';
 export * from './atoms/divider.tsx';

@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { type VariantProps, cva } from 'class-variance-authority';
 
 const dropdownItemVariant = cva(
-  'flex items-center gap-4 p-2 leading-[140%] tracking-015px',
+  'flex items-center gap-4 p-2 leading-[140%] tracking-015px text-start',
   {
     variants: {
       variant: {

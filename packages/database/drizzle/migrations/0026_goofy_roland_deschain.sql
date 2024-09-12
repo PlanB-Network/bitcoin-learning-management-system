@@ -1,0 +1,1 @@
+ALTER TABLE "users"."course_review" ADD COLUMN "created_at" timestamp with time zone DEFAULT now() NOT NULL;

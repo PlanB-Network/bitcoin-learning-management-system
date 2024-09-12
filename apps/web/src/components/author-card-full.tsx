@@ -106,7 +106,7 @@ export const AuthorCardFull = ({
                   alt={professor.name}
                   className="size-8"
                 />
-                <div className="subtitle-small-med-14 text-darkOrange-6 whitespace-pre-line">
+                <div className="subtitle-small-med-14px text-darkOrange-6 whitespace-pre-line">
                   {t('professors.tips.authorSupport')}
                 </div>
               </button>

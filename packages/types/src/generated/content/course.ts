@@ -325,3 +325,19 @@ export interface CourseChapterResponse {
   course: CourseResponse;
   part: PartWithChapters;
 }
+
+export interface CourseReviewsExtended {
+  general: number[];
+  difficulty: number[];
+  length: number[];
+  faithful: number[];
+  recommand: number[];
+  quality: number[];
+  feedbacks: {
+    date: string;
+    user: string;
+    publicComment: string;
+    teacherComment: string | null;
+    adminComment: string | null;
+  }[];
+}

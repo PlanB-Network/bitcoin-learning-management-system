@@ -851,6 +851,9 @@ export const usersCourseReview = users.table(
     publicComment: text('public_comment'),
     teacherComment: text('teacher_comment'),
     adminComment: text('admin_comment'),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (table) => ({
     pk: primaryKey({

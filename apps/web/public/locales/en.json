@@ -431,6 +431,19 @@
         "teacher": "Teacher",
         "teacherProfile": "Teacher profile",
         "tutorialModification": "If you need help to edit something, please check this <0>tutorial</0>."
+      },
+      "reviews": {
+        "checkComments": "Here you can read the comments given by the students. The comments are sorted by date.",
+        "checkReviews": "Here you can check the grades and reviews your course has received.",
+        "noReviewsYet": "This course didn't receive reviews & grades yet.",
+        "privateComment": "Private comment",
+        "publicComment": "Public comment",
+        "review": "Review",
+        "reviews": "Reviews",
+        "reviewsAndGrading": "Reviews & grading",
+        "seeStatistics": "See statistics",
+        "viewDetails": "View details",
+        "writtenFeedbacks": "Written feedbacks"
       }
     }
   },

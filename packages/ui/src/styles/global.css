@@ -284,6 +284,10 @@
     @apply text-base leading-normal font-normal tracking-[0.1px];
   }
 
+  .label-small-12px {
+    @apply text-xs leading-relaxed font-normal tracking-[0.1px];
+  }
+
   .subtitle-large-caps-22px {
     @apply text-[22px] leading-[120%] font-normal -tracking-[0.132px] uppercase;
   }
@@ -317,14 +321,6 @@
 
   .blockquote-desktop {
     @apply text-lg font-semibold text-center not-italic;
-  }
-
-  .label-med-med-16 {
-    @apply text-base leading-normal font-normal tracking-[0.1px];
-  }
-
-  .subtitle-small-med-14 {
-    @apply text-sm font-medium tracking-[0.1px];
   }
 }
 

@@ -82,7 +82,7 @@ function FormSlider({
           )}
         />
         <div className="relative mt-4">
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 max-w-[95%] mx-auto">
             <div className="relative flex justify-between">
               {Array.from({ length: 11 }).map((_, i) => (
                 <div
