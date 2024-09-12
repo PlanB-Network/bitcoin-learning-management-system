@@ -16,6 +16,7 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
       raw_content,
       is_online,
       is_in_person,
+      is_course_review,
       start_date,
       end_date,
       timezone,
