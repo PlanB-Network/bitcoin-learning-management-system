@@ -76,6 +76,7 @@ export function ProfessorCategoryPage() {
         <DropdownMenu
           activeItem={t(activeItem ? activeItem.label : '')}
           itemsList={dropdownItems}
+          className="lg:hidden"
         />
       </div>
       <div

@@ -274,6 +274,7 @@ function Conference() {
                   },
                 };
               })}
+              className="lg:hidden"
             />
             <DropdownMenu
               activeItem={
@@ -287,6 +288,7 @@ function Conference() {
                   };
                 },
               )}
+              className="lg:hidden"
             />
           </div>
 

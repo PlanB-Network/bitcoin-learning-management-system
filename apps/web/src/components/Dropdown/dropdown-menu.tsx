@@ -61,6 +61,7 @@ export const DropdownMenu = ({
   itemsList,
   maxWidth = 'max-w-[400px]',
   variant = 'dark',
+  className,
   ...props
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -92,7 +93,7 @@ export const DropdownMenu = ({
 
   return (
     <div
-      className={cn('relative w-full lg:hidden', isOpen && 'z-20', maxWidth)}
+      className={cn('relative w-full', className, isOpen && 'z-20', maxWidth)}
       ref={ref}
       {...props}
     >
