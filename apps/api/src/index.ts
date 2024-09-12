@@ -6,6 +6,8 @@ import { pathToFileURL } from 'node:url';
 
 import * as dotenv from 'dotenv';
 
+import type { UserRole } from '@blms/types';
+
 import { startDependencies } from './dependencies.js';
 import { startServer } from './server.js';
 
@@ -21,7 +23,7 @@ declare global {
 declare module 'express-session' {
   interface SessionData {
     uid?: string;
-    role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+    role: UserRole;
     professorId?: number | null;
     professorCourses: string[];
     professorTutorials: number[];

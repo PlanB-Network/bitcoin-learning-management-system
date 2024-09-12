@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { UserRole } from '@blms/types';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,11 +23,7 @@ import {
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
-export const UserList = ({
-  userRole,
-}: {
-  userRole: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
-}) => {
+export const UserList = ({ userRole }: { userRole: UserRole }) => {
   const [search, setSearch] = useState('');
   const [selectedProfessor, setSelectedProfessor] = useState<number | null>(
     null,

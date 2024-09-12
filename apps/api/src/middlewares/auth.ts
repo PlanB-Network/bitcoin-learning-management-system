@@ -1,6 +1,8 @@
 import { TRPCError } from '@trpc/server';
 import type { NextFunction, Request, Response } from 'express';
 
+import type { UserRole } from '@blms/types';
+
 import { Unauthorized } from '#src/errors.js';
 
 import { createMiddleware } from '../trpc/index.js';
@@ -8,10 +10,8 @@ import { createMiddleware } from '../trpc/index.js';
 /**
  * TRPC middleware that enforces that the user is authenticated.
  */
-export const enforceAuthenticatedUserMiddleware = (
-  requiredRole: 'student' | 'professor' | 'community' | 'admin' | 'superadmin',
-) =>
-  createMiddleware(({ ctx, next }) => {
+export const enforceAuthenticatedUserMiddleware = (requiredRole: UserRole) => {
+  return createMiddleware(({ ctx, next }) => {
     const { req } = ctx;
 
     const userRole = req.session.role;
@@ -49,6 +49,7 @@ export const enforceAuthenticatedUserMiddleware = (
       ctx: { user: { uid: userId, role: userRole } },
     });
   });
+};
 
 /**
  * Express middleware that enforces that the user is authenticated.

@@ -50,6 +50,7 @@
   "cSpell.words": [
     "basepath",
     "bcert",
+    "bcertificate",
     "bitcoiners",
     "blms",
     "bytea",
@@ -59,6 +60,7 @@
     "resave",
     "sats",
     "sendgrid",
+    "superadmin",
     "tanstack",
     "trpc",
     "tsbuildinfo",

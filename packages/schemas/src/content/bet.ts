@@ -2,12 +2,15 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 import {
+  betTypeEnum,
   contentBet,
   contentBetLocalized,
   contentBetViewUrl,
 } from '@blms/database';
 
 import { resourceSchema } from './resource.js';
+
+export const betTypeSchema = z.enum(betTypeEnum.enumValues);
 
 export const betSchema = createSelectSchema(contentBet);
 export const betViewUrlSchema = createSelectSchema(contentBetViewUrl);
