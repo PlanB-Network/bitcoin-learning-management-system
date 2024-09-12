@@ -29,6 +29,7 @@ import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import {
+  COURSES_WITH_INLINE_LATEX_SUPPORT,
   addSpaceToCourseId,
   goToChapterParameters,
 } from '#src/utils/courses.js';
@@ -528,6 +529,9 @@ const MarkdownContent = ({ chapter }: { chapter: Chapter }) => {
             `courses/${chapter.course.id}`,
           )}
           tutorials={tutorials || []}
+          supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
+            chapter.course.id,
+          )}
         />
       </Suspense>
     );

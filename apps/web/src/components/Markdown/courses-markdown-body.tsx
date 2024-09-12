@@ -17,10 +17,6 @@ import { ReactPlayer } from '../react-player.tsx';
 
 import { Blockquote } from './blockquote.tsx';
 
-const remarkMathOptions = {
-  singleDollarTextMath: false,
-};
-
 const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
   const pattern = /^https:\/\/planb\.network\/tutorials\/([^/]+)\/([^/]+)$/;
   const match = url.match(pattern);
@@ -37,10 +33,12 @@ const CoursesMarkdownBody = ({
   content,
   assetPrefix,
   tutorials,
+  supportInlineLatex = false,
 }: {
   content: string;
   assetPrefix: string;
   tutorials: JoinedTutorialLight[];
+  supportInlineLatex: boolean;
 }) => {
   return (
     <ReactMarkdown
@@ -185,7 +183,12 @@ const CoursesMarkdownBody = ({
       remarkPlugins={[
         remarkGfm,
         remarkUnwrapImages,
-        [remarkMath, remarkMathOptions],
+        [
+          remarkMath,
+          {
+            singleDollarTextMath: supportInlineLatex,
+          },
+        ],
       ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
