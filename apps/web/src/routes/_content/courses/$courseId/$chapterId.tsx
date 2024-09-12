@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
@@ -16,11 +16,8 @@ import { Button, Loader, cn } from '@blms/ui';
 
 import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
-import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
-import { AuthModalState } from '#src/components/AuthModals/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
-import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import {
@@ -400,13 +397,15 @@ const Header = ({
   return (
     <>
       <div>
-        <h2 className="text-black desktop-h5 max-sm:hidden capitalize">
-          {t('courses.part.count', {
-            count: chapter.part.partIndex,
-            total: chapter.course.parts.length,
-          })}{' '}
-          : {chapter?.part.title.toLowerCase()}
-        </h2>
+        {!chapter.isCourseReview && (
+          <h2 className="text-black desktop-h5 max-sm:hidden capitalize">
+            {t('courses.part.count', {
+              count: chapter.part.partIndex,
+              total: chapter.course.parts.length,
+            })}{' '}
+            : {chapter?.part.title.toLowerCase()}
+          </h2>
+        )}
         <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
           {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
         </h2>
@@ -627,14 +626,6 @@ function CourseChapter() {
     }
   }, [chapter]);
 
-  const {
-    open: openAuthModal,
-    isOpen: isAuthModalOpen,
-    close: closeAuthModal,
-  } = useDisclosure();
-
-  const authMode = AuthModalState.SignIn;
-
   const isSpecialChapter =
     chapter?.isCourseReview ||
     chapter?.isCourseExam ||
@@ -742,31 +733,10 @@ function CourseChapter() {
                       <CourseReview chapter={chapter}></CourseReview>
                     ) : (
                       <>
-                        <p className="text-black text-center italic leading-relaxed tracking-015px w-full max-w-[596px] mx-auto">
-                          <Trans i18nKey="courses.review.currentlyLoggedOut">
-                            <button
-                              onClick={() => {
-                                !isLoggedIn && openAuthModal();
-                              }}
-                              className="underline hover:text-darkOrange-5 italic"
-                            >
-                              Login or Register
-                            </button>
-                          </Trans>
-                        </p>
-
                         <CourseReview
                           chapter={chapter}
                           formDisabled={true}
                         ></CourseReview>
-
-                        {isAuthModalOpen && (
-                          <AuthModal
-                            isOpen={isAuthModalOpen}
-                            onClose={closeAuthModal}
-                            initialState={authMode}
-                          />
-                        )}
                       </>
                     )}
                   </>
