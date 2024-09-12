@@ -151,6 +151,7 @@ function CourseTabs({ courses }: { courses: JoinedCourseWithProfessors[] }) {
           `${courses[0].id.toLocaleUpperCase()} - ${courses[0].name}`
         }
         variant="light"
+        className="md:hidden"
       />
 
       {courses?.map((course) => (

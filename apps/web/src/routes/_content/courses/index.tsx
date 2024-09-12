@@ -342,6 +342,7 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
               }))
               .filter((topic) => topic.name.toLowerCase() !== activeTopic)}
             maxWidth="max-w-full"
+            className="lg:hidden"
           />
         </div>
         <div className="flex flex-col gap-4">
