@@ -1,7 +1,13 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { usersAccounts, usersLud4PublicKeys } from '@blms/database';
+import {
+  userRoleEnum,
+  usersAccounts,
+  usersLud4PublicKeys,
+} from '@blms/database';
+
+export const userRoleSchema = z.enum(userRoleEnum.enumValues);
 
 export const userAccountSchema = createSelectSchema(usersAccounts).merge(
   z.object({
@@ -18,6 +24,7 @@ export const userDetailsSchema = userAccountSchema.pick({
   email: true,
   contributorId: true,
 });
+
 export const userRolesSchema = userAccountSchema
   .pick({
     uid: true,
