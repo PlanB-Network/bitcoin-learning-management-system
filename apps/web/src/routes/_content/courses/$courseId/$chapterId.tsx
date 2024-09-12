@@ -1,9 +1,4 @@
-import {
-  Link,
-  createFileRoute,
-  useNavigate,
-  useParams,
-} from '@tanstack/react-router';
+import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, {
   Suspense,
@@ -577,7 +572,6 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 function CourseChapter() {
-  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const { courseId, chapterId } = useParams({
     from: '/courses/$courseId/$chapterId',
@@ -685,10 +679,6 @@ function CourseChapter() {
     }
   }
 
-  if (!chapter && isFetched) {
-    navigate({ to: '/404' });
-  }
-
   return (
     <CourseLayout>
       {proofreading ? (
@@ -718,6 +708,13 @@ function CourseChapter() {
       {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
       <div className="text-black">
         {!isFetched && <Loader size={'s'} />}
+        {isFetched && !chapter && (
+          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
+            {t('general.itemNotFoundOrTranslated', {
+              item: t('words.chapter'),
+            })}
+          </div>
+        )}
         {chapter && (
           <div className="flex size-full flex-col items-center justify-center">
             {/* Desktop */}

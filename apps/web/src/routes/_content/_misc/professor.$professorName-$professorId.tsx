@@ -4,7 +4,7 @@ import {
   useNavigate,
   useParams,
 } from '@tanstack/react-router';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Loader } from '@blms/ui';
@@ -44,16 +44,8 @@ function ProfessorDetail() {
     language: i18n.language,
   });
 
-  const navigateTo404Called = useRef(false);
-
   useEffect(() => {
-    if (!professor && isFetched && !navigateTo404Called.current) {
-      navigateTo404();
-      navigateTo404Called.current = true;
-    } else if (
-      professor &&
-      professorName !== formatNameForURL(professor.name)
-    ) {
+    if (professor && professorName !== formatNameForURL(professor.name)) {
       navigate({
         to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
       });
@@ -63,6 +55,13 @@ function ProfessorDetail() {
   return (
     <PageLayout className="max-w-[980px] mx-auto">
       {!isFetched && <Loader size={'s'} />}
+      {isFetched && !professor && (
+        <div className="w-[850px] mx-auto text-white">
+          {t('general.itemNotFound', {
+            item: t('words.professor'),
+          })}
+        </div>
+      )}
       {professor && (
         <div className="flex flex-col gap-1 items-start text-white">
           <Link
