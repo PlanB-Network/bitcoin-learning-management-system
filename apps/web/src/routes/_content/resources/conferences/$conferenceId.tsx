@@ -8,11 +8,11 @@ import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import type { ConferenceStageVideo } from '@blms/types';
 import { Button, Loader, Tag, cn } from '@blms/ui';
 
+import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { DropdownMenu } from '../-components/dropdown-menu/dropdown-menu.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
 const ConferencesMarkdownBody = React.lazy(

@@ -7,5 +7,10 @@
     "lib": ["dom", "esnext"],
     "types": ["vite/client"],
     "allowImportingTsExtensions": true
-  }
+  },
+  "references": [
+    {
+      "path": "../api/tsconfig.trpc.json"
+    }
+  ]
 }

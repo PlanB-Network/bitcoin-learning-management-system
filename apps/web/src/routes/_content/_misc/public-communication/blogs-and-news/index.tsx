@@ -67,7 +67,7 @@ function BlogsNews() {
               className={`lg:px-4 lg:py-3.5 lg:text-xl font-normal text-base py-2 px-2.5 transition-all duration-300 border-b-4 ${
                 selectedMainTab === tab.id
                   ? 'border-darkOrange-5 text-black font-bold'
-                  : 'border-darkOrange-0 text-[#050A14] opacity-50'
+                  : 'border-darkOrange-0 text-dashboardSectionText opacity-50'
               }`}
               onClick={() => handleMainTabChange(tab.id)}
             >

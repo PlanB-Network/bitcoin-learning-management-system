@@ -105,7 +105,7 @@ function LegalInformation({ activeSubTab, setActiveSubTab }: LegalTabsProps) {
               'lg:px-4 lg:py-3.5 lg:text-xl font-normal text-base py-2 px-2.5 transition-all duration-300 border-b-4',
               tab.id === activeItem?.id
                 ? 'text-black border-darkOrange-5'
-                : 'text-[#050A14] border-darkOrange-0 opacity-50',
+                : 'text-dashboardSectionText border-darkOrange-0 opacity-50',
             )}
             value={tab.id}
             onClick={() => {

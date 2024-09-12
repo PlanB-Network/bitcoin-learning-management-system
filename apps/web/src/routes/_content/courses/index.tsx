@@ -10,10 +10,9 @@ import type { JoinedCourse } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
+import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 import { computeAssetCdnUrl, trpc } from '#src/utils/index.js';
-
-import { DropdownMenu } from '../resources/-components/dropdown-menu/dropdown-menu.tsx';
 
 export const Route = createFileRoute('/_content/courses/')({
   component: CoursesExplorer,
@@ -56,7 +55,7 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
       /> */}
       <CourseInfoItem
         leftText={t('words.duration')}
-        rightText={course.hours + ' hours'}
+        rightText={`${course.hours} ${t('words.hours')}`}
       />
       <CourseInfoItem
         leftText={t('words.price')}

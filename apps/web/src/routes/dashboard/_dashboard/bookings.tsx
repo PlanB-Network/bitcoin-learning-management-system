@@ -1,9 +1,10 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@blms/ui';
+import { Tabs, TabsContent } from '@blms/ui';
 
+import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -24,6 +25,12 @@ function DashboardBookings() {
     navigate({ to: '/' });
   }
 
+  const [currentTab, setCurrentTab] = useState('tickets');
+
+  const onTabChange = (value: string) => {
+    setCurrentTab(value);
+  };
+
   const { data: invoices } = trpc.user.billing.getInvoices.useQuery({
     language: i18n.language ?? 'en',
   });
@@ -39,21 +46,28 @@ function DashboardBookings() {
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">{t('dashboard.bookings')}</div>
-      <Tabs defaultValue="tickets" className="max-w-[1100px]">
-        <TabsList>
-          <TabsTrigger
-            value="tickets"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('words.tickets')}
-          </TabsTrigger>
-          <TabsTrigger
-            value="billings"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('words.billing')}
-          </TabsTrigger>
-        </TabsList>
+      <Tabs
+        defaultValue="tickets"
+        value={currentTab}
+        onValueChange={onTabChange}
+        className="max-w-[1100px]"
+      >
+        <TabsListUnderlined
+          tabs={[
+            {
+              key: 'tickets',
+              value: 'tickets',
+              text: t('words.tickets'),
+              active: 'tickets' === currentTab,
+            },
+            {
+              key: 'billings',
+              value: 'billings',
+              text: t('words.billing'),
+              active: 'billings' === currentTab,
+            },
+          ]}
+        />
         <TabsContent value="tickets">
           {tickets && (
             <div className="pt-2 md:pt-8">

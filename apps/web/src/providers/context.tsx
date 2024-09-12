@@ -85,12 +85,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
               uid: data.user.uid,
               role: data.user.role,
               professorId: data.user.professorId,
-              professorCourses: data.user.professorCourses
-                ? data.user.professorCourses
-                : [],
-              professorTutorials: data.user.professorTutorials
-                ? data.user.professorTutorials
-                : [],
+              professorCourses: data.user.professorCourses || [],
+              professorTutorials: data.user.professorTutorials || [],
             },
           };
           return setSession(validSession);

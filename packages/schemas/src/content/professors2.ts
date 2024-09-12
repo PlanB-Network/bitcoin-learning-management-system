@@ -22,6 +22,7 @@ export const fullProfessorSchema = joinedProfessorSchema
         website: joinedProfessorSchema.shape.websiteUrl,
         twitter: joinedProfessorSchema.shape.twitterUrl,
         github: joinedProfessorSchema.shape.githubUrl,
+        nostr: joinedProfessorSchema.shape.nostr,
       }),
       tips: z.object({
         lightningAddress: joinedProfessorSchema.shape.lightningAddress,

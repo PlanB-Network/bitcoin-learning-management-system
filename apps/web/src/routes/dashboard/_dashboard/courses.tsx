@@ -1,9 +1,10 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@blms/ui';
+import { Tabs, TabsContent } from '@blms/ui';
 
+import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -32,24 +33,37 @@ function DashboardCourses() {
     (course) => course.progressPercentage !== 100,
   );
 
+  const [currentTab, setCurrentTab] = useState('inprogress');
+
+  const onTabChange = (value: string) => {
+    setCurrentTab(value);
+  };
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">{t('dashboard.courses')}</div>
-      <Tabs defaultValue="inprogress" className="max-w-6xl">
-        <TabsList>
-          <TabsTrigger
-            value="inprogress"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('dashboard.myCourses.inprogress')}
-          </TabsTrigger>
-          <TabsTrigger
-            value="completed"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            {t('dashboard.myCourses.completed')}
-          </TabsTrigger>
-        </TabsList>
+      <Tabs
+        defaultValue="inprogress"
+        value={currentTab}
+        onValueChange={onTabChange}
+        className="max-w-6xl"
+      >
+        <TabsListUnderlined
+          tabs={[
+            {
+              key: 'inprogress',
+              value: 'inprogress',
+              text: t('dashboard.myCourses.inprogress'),
+              active: 'inprogress' === currentTab,
+            },
+            {
+              key: 'completed',
+              value: 'completed',
+              text: t('dashboard.myCourses.completed'),
+              active: 'completed' === currentTab,
+            },
+          ]}
+        />
         <TabsContent value="inprogress">
           <CoursesProgressList courses={inProgressCourses} />
         </TabsContent>
