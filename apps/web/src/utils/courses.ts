@@ -43,3 +43,5 @@ export const goToChapterParameters = (
     };
   }
 };
+
+export const COURSES_WITH_INLINE_LATEX_SUPPORT = ['btc204'];
