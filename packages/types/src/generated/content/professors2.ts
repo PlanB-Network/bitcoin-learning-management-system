@@ -20,6 +20,7 @@ export interface FullProfessor {
   picture: string;
   coursesCount: number;
   tutorialsCount: number;
+  lecturesCount: number;
   links: {
     website: string | null;
     twitter: string | null;
@@ -72,6 +73,7 @@ export interface FullProfessor {
       picture: string;
       coursesCount: number;
       tutorialsCount: number;
+      lecturesCount: number;
       links: {
         website: string | null;
         twitter: string | null;

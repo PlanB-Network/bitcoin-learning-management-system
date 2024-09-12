@@ -121,7 +121,7 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
         />
         <div className="flex flex-col">
-          <span className="max-md:flex flex-col justify-center mb-1.5 md:mb-2 line-clamp-3 group-hover:line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full">
+          <span className="max-md:flex flex-col mb-1.5 md:mb-2 line-clamp-3 group-hover:line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full align-top">
             {course.name}
           </span>
           <div className="flex items-center flex-wrap gap-1.5 md:gap-2 mt-auto">
