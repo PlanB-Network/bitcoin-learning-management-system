@@ -9,6 +9,8 @@ export { createGetGlossaryWord } from './get-glossary-word.js';
 export { createGetGlossaryWords } from './get-glossary-words.js';
 export { createGetPodcast } from './get-podcast.js';
 export { createGetPodcasts } from './get-podcasts.js';
+export { createGetBuildersLocations } from './builders-locations.get.js';
+export { createSyncBuildersLocations } from './builders-locations.sync.js';
 
 // Metadata requests
 export { createGetBuilderMeta } from './get-builder-meta.js';

@@ -12,6 +12,8 @@ import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../resources/-components/cards/builder-card.tsx';
 
+import { CommunitiesMap } from './-components/communities-map.tsx';
+
 export const Route = createFileRoute('/_content/_misc/node-network')({
   component: NodeNetwork,
 });
@@ -79,6 +81,13 @@ const QnA = () => {
   );
 };
 
+const normalizeText = (text: string): string => {
+  return text
+    .trim()
+    .toLowerCase()
+    .replaceAll(/[^\dA-Za-z]/g, '');
+};
+
 function NodeNetwork() {
   const { t, i18n } = useTranslation();
 
@@ -91,12 +100,28 @@ function NodeNetwork() {
     },
   );
 
+  const { data: builderLocations } =
+    trpc.content.getBuildersLocations.useQuery();
   const filteredCommunities = communities
     ? communities
         .filter((el) => el.category.toLowerCase() === 'communities')
+        .map((community) => {
+          const normalizedCommunityAddress = normalizeText(
+            community.addressLine1 ?? '',
+          );
+
+          const location = builderLocations?.find((loc: { name: string }) => {
+            const normalizedLocationName = normalizeText(loc.name);
+            return normalizedLocationName === normalizedCommunityAddress;
+          });
+          return {
+            ...community,
+            lat: location?.lat ?? 0,
+            lng: location?.lng ?? 0,
+          };
+        })
         .sort((a, b) => a.name.localeCompare(b.name))
     : [];
-
   return (
     <PageLayout
       title={t('nodeNetwork.pageTitle')}
@@ -124,6 +149,11 @@ function NodeNetwork() {
             </Link>
           ))}
         </div>
+
+        <div className="w-full mt-10">
+          <CommunitiesMap communities={filteredCommunities} />
+        </div>
+
         <img src={nodeMap} alt="Node map" className="max-md:hidden my-20" />
         <QnA />
         <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
