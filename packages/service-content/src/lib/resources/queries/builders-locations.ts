@@ -18,7 +18,7 @@ export const getBuildersWithoutLocationQuery = () => {
 };
 
 /**
- * Insert location in table builders_locations.
+ * Insertar la ubicación en la tabla builders_locations.
  */
 export const setBuilderLocationQuery = (input: BuilderLocation) => {
   return sql`

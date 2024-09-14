@@ -33,7 +33,7 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
         }),
       ],
       view: new View({
-        center: transform([-100, 40], 'EPSG:4326', 'EPSG:3857'), // Centro del mapa
+        center: transform([-100, 40], 'EPSG:4326', 'EPSG:3857'),
         zoom: 2,
       }),
     });
@@ -60,9 +60,9 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
 
         new Style({
           image: new CircleStyle({
-            radius: 9, // Tamaño del círculo blanco
+            radius: 9,
             fill: new Fill({
-              color: 'white', // Color del círculo
+              color: 'white',
             }),
           }),
         }),

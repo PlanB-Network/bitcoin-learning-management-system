@@ -29,6 +29,7 @@ const fetchBuilderLocation = async (query: string) => {
   const res = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${q}`,
   );
+  console.log('Buscando ubicación para:', query);
 
   const data = await res.json();
   return expectedResponseSchema.parse(data)?.[0];
@@ -54,6 +55,7 @@ export const createSyncBuildersLocations = ({ postgres }: Dependencies) => {
             );
             continue;
           }
+          console.log('-- Sync procedure: Found location for', name, result);
 
           await postgres.exec(setBuilderLocationQuery({ ...result, name }));
         } catch (error) {
