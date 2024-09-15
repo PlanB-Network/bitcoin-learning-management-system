@@ -1,4 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
+import { Attribution, Zoom, defaults as defaultControls } from 'ol/control.js'; // Importar controles
 import Feature from 'ol/Feature.js';
 import Point from 'ol/geom/Point.js';
 import TileLayer from 'ol/layer/Tile.js';
@@ -29,13 +30,25 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
       target: 'communities-map',
       layers: [
         new TileLayer({
-          source: new OSM(),
+          source: new OSM({
+            attributions: [],
+          }),
         }),
       ],
       view: new View({
-        center: transform([-100, 40], 'EPSG:4326', 'EPSG:3857'),
+        center: transform([0, 30], 'EPSG:4326', 'EPSG:3857'),
         zoom: 2,
       }),
+      controls: defaultControls({ zoom: false }).extend([
+        // Deshabilitar controles duplicados
+        new Zoom({
+          className: 'custom-zoom-controls', // Clase personalizada para el zoom
+        }),
+        new Attribution({
+          collapsible: false,
+          className: 'custom-attribution', // Clase personalizada para la atribución
+        }),
+      ]),
     });
 
     const markers = communities.map((community) => {
@@ -57,7 +70,6 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
             }),
           }),
         }),
-
         new Style({
           image: new CircleStyle({
             radius: 9,
@@ -66,7 +78,6 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
             }),
           }),
         }),
-
         new Style({
           image: new Icon({
             src: '/src/assets/icons/orange_pill_color.svg',
@@ -110,12 +121,69 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
       }
     });
 
+    // Aplicar clases personalizadas a los controles de zoom y atribución
+    const zoomControls = document.querySelector('.custom-zoom-controls');
+    const attributionControl = document.querySelector('.custom-attribution');
+
+    // Verificar que los controles existen antes de aplicar las clases
+    if (zoomControls) {
+      // Convertir NodeList a array con `Array.prototype.slice`
+      const buttons = Array.prototype.slice.call(
+        zoomControls.querySelectorAll('button'),
+      ) as HTMLButtonElement[];
+      for (const button of buttons) {
+        button.classList.add(
+          'w-8', // Ajustar ancho del botón
+          'h-8', // Ajustar alto del botón
+          'flex',
+          'items-center',
+          'justify-center', // Centrar los iconos dentro del botón
+          'bg-white', // Fondo blanco
+          'text-black', // Color del icono
+          'rounded', // Esquinas redondeadas para los botones
+          'shadow-sm', // Sombra ligera para los botones
+        );
+      }
+
+      // Establecer clases para el contenedor de los controles
+      zoomControls.classList.add(
+        'absolute',
+        'top-4',
+        'left-4',
+        'z-10',
+        'p-1', // Padding para cuadro
+        'bg-white', // Fondo blanco
+        'rounded-lg',
+        'shadow-lg', // Sombra
+        'flex',
+        'flex-col', // Para que los botones de zoom estén uno debajo del otro
+        'gap-1', // Espacio entre los botones
+      );
+    }
+
+    // Ajustar la posición de la atribución
+    if (attributionControl) {
+      attributionControl.classList.add(
+        'absolute',
+        'bottom-0',
+        'right-0',
+        'bg-white',
+        'p-2',
+        'rounded-md',
+        'text-xs',
+        'opacity-80',
+      );
+    }
+
     return () => {
       map.setTarget(undefined);
     };
   }, [communities, navigate]);
 
   return (
-    <div id="communities-map" style={{ height: '500px', width: '100%' }} />
+    <div
+      id="communities-map"
+      className="w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-xl overflow-hidden relative"
+    />
   );
 };
