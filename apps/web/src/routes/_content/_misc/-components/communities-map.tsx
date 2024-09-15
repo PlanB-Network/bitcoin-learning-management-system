@@ -1,5 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
-import { Attribution, Zoom, defaults as defaultControls } from 'ol/control.js'; // Importar controles
+import { Attribution, Zoom, defaults as defaultControls } from 'ol/control.js';
 import Feature from 'ol/Feature.js';
 import Point from 'ol/geom/Point.js';
 import TileLayer from 'ol/layer/Tile.js';
@@ -40,13 +40,12 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
         zoom: 2,
       }),
       controls: defaultControls({ zoom: false }).extend([
-        // Deshabilitar controles duplicados
         new Zoom({
-          className: 'custom-zoom-controls', // Clase personalizada para el zoom
+          className: 'custom-zoom-controls',
         }),
         new Attribution({
           collapsible: false,
-          className: 'custom-attribution', // Clase personalizada para la atribución
+          className: 'custom-attribution',
         }),
       ]),
     });
@@ -121,47 +120,42 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
       }
     });
 
-    // Aplicar clases personalizadas a los controles de zoom y atribución
     const zoomControls = document.querySelector('.custom-zoom-controls');
     const attributionControl = document.querySelector('.custom-attribution');
 
-    // Verificar que los controles existen antes de aplicar las clases
     if (zoomControls) {
-      // Convertir NodeList a array con `Array.prototype.slice`
       const buttons = Array.prototype.slice.call(
         zoomControls.querySelectorAll('button'),
       ) as HTMLButtonElement[];
       for (const button of buttons) {
         button.classList.add(
-          'w-8', // Ajustar ancho del botón
-          'h-8', // Ajustar alto del botón
+          'w-8',
+          'h-8',
           'flex',
           'items-center',
-          'justify-center', // Centrar los iconos dentro del botón
-          'bg-white', // Fondo blanco
-          'text-black', // Color del icono
-          'rounded', // Esquinas redondeadas para los botones
-          'shadow-sm', // Sombra ligera para los botones
+          'justify-center',
+          'bg-white',
+          'text-black',
+          'rounded',
+          'shadow-sm',
         );
       }
 
-      // Establecer clases para el contenedor de los controles
       zoomControls.classList.add(
         'absolute',
         'top-4',
         'left-4',
         'z-10',
-        'p-1', // Padding para cuadro
-        'bg-white', // Fondo blanco
+        'p-1',
+        'bg-white',
         'rounded-lg',
-        'shadow-lg', // Sombra
+        'shadow-lg',
         'flex',
-        'flex-col', // Para que los botones de zoom estén uno debajo del otro
-        'gap-1', // Espacio entre los botones
+        'flex-col',
+        'gap-1',
       );
     }
 
-    // Ajustar la posición de la atribución
     if (attributionControl) {
       attributionControl.classList.add(
         'absolute',
