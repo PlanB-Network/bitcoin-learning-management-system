@@ -111,7 +111,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
 
           {register.data && !register.error ? (
             <div className="mb-8 flex flex-col items-center">
-              <BsCheck className="my-8 text-black" size={20} />
+              <BsCheck className="my-8 text-black" size={80} />
               <DialogDescription>
                 {t('auth.accountCreated', {
                   userName: register.data.user.username,
