@@ -245,7 +245,7 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-svh pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
+          'flex flex-col fixed top-0 left-0 items-center w-full max-w-[270px] h-dvh pb-5 bg-darkOrange-11 duration-300 rounded-br-sm border-r border-b border-darkOrange-9 overflow-scroll no-scrollbar',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
         )}
         ref={mobileMenuRef}
