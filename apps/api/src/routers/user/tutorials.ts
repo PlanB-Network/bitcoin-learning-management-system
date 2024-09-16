@@ -7,9 +7,11 @@ import {
 
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
+import type { Parser } from '#src/trpc/types.js';
 
 const likeTutorialProcedure = studentProcedure
   .input(z.object({ id: z.string(), liked: z.boolean() }))
+  .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) =>
     createLikeTutorial(ctx.dependencies)({
       uid: ctx.user.uid,

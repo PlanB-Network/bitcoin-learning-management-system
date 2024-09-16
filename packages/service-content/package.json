@@ -23,7 +23,6 @@
     "gray-matter": "^4.0.3",
     "ioredis": "^5.4.1",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21",
     "marked": "^14.1.2",
     "uuid": "^10.0.0",
     "zod": "^3.23.8"
@@ -32,7 +31,6 @@
     "@blms/eslint-config": "workspace:*",
     "@blms/types": "workspace:*",
     "@types/js-yaml": "^4.0.9",
-    "@types/lodash": "^4.17.7",
     "@types/uuid": "^10.0.0"
   }
 }

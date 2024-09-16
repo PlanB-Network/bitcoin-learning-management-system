@@ -8,3 +8,4 @@ export * from './course.js';
 export * from './event.js';
 export * from './file.js';
 export * from './token.js';
+export * from './payment.js';

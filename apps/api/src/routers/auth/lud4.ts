@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import type { Parser } from '#src/trpc/types.js';
+
 import { publicProcedure } from '../../procedures/index.js';
 import { createCallbackLnurlAuth } from '../../services/lnurl/auth/callback.js';
 import { createGenerateLnurlAuth } from '../../services/lnurl/auth/generate.js';
@@ -8,7 +10,7 @@ import { createTRPCRouter } from '../../trpc/index.js';
 
 const lud4GenerateProcedure = publicProcedure
   .input(z.void())
-  .output(
+  .output<Parser<{ lnurl: string }>>(
     z.object({
       lnurl: z.string(),
     }),
@@ -27,7 +29,7 @@ const lud4CallbackProcedure = publicProcedure
       hmac: z.string(),
     }),
   )
-  .output(
+  .output<Parser<{ status: string; reason?: string }>>(
     z.object({
       status: z.string(),
       reason: z.string().optional(),
@@ -37,7 +39,7 @@ const lud4CallbackProcedure = publicProcedure
 
 const lud4PollProcedure = publicProcedure
   .input(z.void())
-  .output(
+  .output<Parser<{ uid: string }>>(
     z.object({
       uid: z.string(),
     }),

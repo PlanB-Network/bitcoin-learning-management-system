@@ -2,8 +2,8 @@ import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBuildersQuery } from '../queries/get-builders.js';
 
-export const createGetBuilders =
-  (dependencies: Dependencies) => async (language?: string) => {
+export const createGetBuilders = (dependencies: Dependencies) => {
+  return async (language?: string) => {
     const { postgres } = dependencies;
 
     const result = await postgres.exec(getBuildersQuery(language));
@@ -13,3 +13,4 @@ export const createGetBuilders =
       logo: computeAssetCdnUrl(row.lastCommit, row.path, 'logo.webp'),
     }));
   };
+};

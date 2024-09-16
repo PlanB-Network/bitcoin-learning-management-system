@@ -1,34 +1,31 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import type { CheckoutData } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { insertPayment } from '../queries/insert-payment.js';
 import { updateCoupon } from '../queries/update-coupon.js';
 
-export const createSaveFreePayment =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    courseId,
-    couponCode,
-  }: {
-    uid: string;
-    courseId: string;
-    couponCode?: string;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  courseId: string;
+  couponCode?: string;
+}
 
+export const createSaveFreePayment = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
+
+  return async (opts: Options): Promise<CheckoutData> => {
     try {
       const randomUUID = uuidv4();
 
       const payment = await postgres.exec(
         insertPayment({
-          uid,
-          courseId,
           paymentStatus: 'paid',
           amount: 0,
           paymentId: randomUUID,
           invoiceUrl: '',
-          couponCode: couponCode,
+          ...opts,
         }),
       );
 
@@ -53,3 +50,4 @@ export const createSaveFreePayment =
 
     throw new Error('createSaveFreePayment error');
   };
+};

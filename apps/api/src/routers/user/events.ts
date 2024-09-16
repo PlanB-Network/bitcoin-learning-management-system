@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
-import { eventPaymentSchema, userEventSchema } from '@blms/schemas';
+import {
+  checkoutDataSchema,
+  eventPaymentSchema,
+  userEventSchema,
+} from '@blms/schemas';
 import {
   createCalculateEventSeats,
   createGetEvent,
@@ -12,6 +16,9 @@ import {
   createSaveUserEvent,
   generateEventTicket,
 } from '@blms/service-user';
+import type { CheckoutData, EventPayment, UserEvent } from '@blms/types';
+
+import type { Parser } from '#src/trpc/types.js';
 
 import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -24,7 +31,7 @@ const downloadEventTicketProcedure = studentProcedure
       userDisplayName: z.string(),
     }),
   )
-  .output(z.string())
+  .output<Parser<string>>(z.string())
   .mutation(async ({ ctx, input }) => {
     const event = await createGetEvent(ctx.dependencies)(input.eventId);
 
@@ -63,7 +70,7 @@ const getEventPaymentsProcedure = studentProcedure
       })
       .optional(),
   )
-  .output(eventPaymentSchema.array())
+  .output<Parser<EventPayment[]>>(eventPaymentSchema.array())
   .query(async ({ ctx }) =>
     createGetEventPayments(ctx.dependencies)({ uid: ctx.user.uid }),
   );
@@ -76,8 +83,8 @@ const getUserEventsProcedure = studentProcedure
       })
       .optional(),
   )
-  .output(userEventSchema.array())
-  .query(async ({ ctx }) =>
+  .output<Parser<UserEvent[]>>(userEventSchema.array())
+  .query(({ ctx }) =>
     createGetUserEvents(ctx.dependencies)({ uid: ctx.user.uid }),
   );
 
@@ -89,15 +96,7 @@ const saveEventPaymentProcedure = studentProcedure
       withPhysical: z.boolean(),
     }),
   )
-  .output(
-    z.object({
-      id: z.string(),
-      pr: z.string(),
-      onChainAddr: z.string(),
-      amount: z.number(),
-      checkoutUrl: z.string(),
-    }),
-  )
+  .output<Parser<CheckoutData>>(checkoutDataSchema)
   .mutation(({ ctx, input }) =>
     createSaveEventPayment(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -115,7 +114,7 @@ const saveUserEventProcedure = studentProcedure
       withPhysical: z.boolean(),
     }),
   )
-  .output(z.void())
+  .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveUserEvent(ctx.dependencies)({
       uid: ctx.user.uid,

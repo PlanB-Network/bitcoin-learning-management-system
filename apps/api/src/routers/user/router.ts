@@ -64,7 +64,7 @@ export const userRouter = createTRPCRouter({
         role: z.string(),
       }),
     )
-    .output(<Parser<UserRoles[]>>userRolesSchema.array())
+    .output<Parser<UserRoles[]>>(userRolesSchema.array())
     .query(({ ctx, input }) =>
       createGetUsersRoles(ctx.dependencies)({
         name: input.name,
@@ -78,6 +78,7 @@ export const userRouter = createTRPCRouter({
         uid: z.string(),
       }),
     )
+    .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
       createChangeRole(ctx.dependencies)({
         uid: input.uid,
@@ -92,6 +93,7 @@ export const userRouter = createTRPCRouter({
         professorId: z.number(),
       }),
     )
+    .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
       createChangeRoleToProfessor(ctx.dependencies)({
         uid: input.uid,
@@ -106,6 +108,7 @@ export const userRouter = createTRPCRouter({
         displayName: z.string(),
       }),
     )
+    .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
       createChangeDisplayName(ctx.dependencies)({
         uid: ctx.user.uid,
@@ -119,7 +122,7 @@ export const userRouter = createTRPCRouter({
         newPassword: z.string(),
       }),
     )
-
+    .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
       createChangePassword(ctx.dependencies)({
         uid: ctx.user.uid,

@@ -19,6 +19,7 @@ import type {
   JoinedCourseChapter,
   JoinedCourseWithAll,
   JoinedCourseWithProfessors,
+  JoinedQuizQuestion,
 } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -131,7 +132,7 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(joinedQuizQuestionSchema.array())
+  .output<Parser<JoinedQuizQuestion[]>>(joinedQuizQuestionSchema.array())
   .query(({ ctx, input }) => {
     return createGetCourseChapterQuizQuestions(ctx.dependencies)({
       chapterId: input.chapterId,
@@ -146,6 +147,7 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
       newPassword: z.string(),
     }),
   )
+  .output<Parser<void>>(z.void())
   .mutation(({ ctx }) => {
     return createCalculateCourseChapterSeats(ctx.dependencies)();
   });

@@ -1,9 +1,11 @@
 import { z } from 'zod';
 
 import {
+  checkoutDataSchema,
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
+  courseReviewSchema,
   courseUserChapterSchema,
 } from '@blms/schemas';
 import { createCalculateCourseChapterSeats } from '@blms/service-content';
@@ -22,8 +24,10 @@ import {
   generateChapterTicket,
 } from '@blms/service-user';
 import type {
+  CheckoutData,
   CourseProgress,
   CourseProgressExtended,
+  CourseReview,
   CourseUserChapter,
 } from '@blms/types';
 
@@ -65,7 +69,7 @@ const saveQuizAttemptProcedure = studentProcedure
       correctAnswersCount: z.number(),
     }),
   )
-  .output(z.void())
+  .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) =>
     createSaveQuizAttempt(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -90,7 +94,7 @@ const saveCourseReviewProcedure = studentProcedure
       courseId: z.string(),
     }),
   )
-  .output(z.void())
+  .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) =>
     createSaveCourseReview(ctx.dependencies)({
       newReview: {
@@ -110,15 +114,7 @@ const savePaymentProcedure = studentProcedure
       couponCode: z.string().optional(),
     }),
   )
-  .output(
-    z.object({
-      id: z.string(),
-      pr: z.string(),
-      onChainAddr: z.string(),
-      amount: z.number(),
-      checkoutUrl: z.string(),
-    }),
-  )
+  .output<Parser<CheckoutData>>(checkoutDataSchema)
   .mutation(({ ctx, input }) =>
     createSavePayment(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -137,15 +133,7 @@ const saveFreePaymentProcedure = studentProcedure
       couponCode: z.string().optional(),
     }),
   )
-  .output(
-    z.object({
-      id: z.string(),
-      pr: z.string(),
-      onChainAddr: z.string(),
-      amount: z.number(),
-      checkoutUrl: z.string(),
-    }),
-  )
+  .output<Parser<CheckoutData>>(checkoutDataSchema)
   .mutation(({ ctx, input }) =>
     createSaveFreePayment(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -200,8 +188,7 @@ const getUserChapterProcedure = studentProcedure
 
 const getCourseReviewProcedure = studentProcedure
   .input(z.object({ courseId: z.string() }))
-  // TODO manage null case
-  // .output<Parser<CourseReview | null>>(courseReviewSchema)
+  .output<Parser<CourseReview | null>>(courseReviewSchema.nullable())
   .query(({ ctx, input }) =>
     createGetCourseReview(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -217,7 +204,7 @@ const saveUserChapterProcedure = studentProcedure
       booked: z.boolean(),
     }),
   )
-  .output(z.void())
+  .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveUserChapter(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -244,7 +231,7 @@ const downloadChapterTicketProcedure = studentProcedure
       userDisplayName: z.string(),
     }),
   )
-  .output(z.string())
+  .output<Parser<string>>(z.string())
   .mutation(({ input }) => generateChapterTicket(input));
 
 export const userCoursesRouter = createTRPCRouter({

@@ -1,5 +1,4 @@
 import yaml from 'js-yaml';
-import _ from 'lodash';
 
 import { supportedContentTypes } from './const.js';
 import type { ChangedContent } from './types.js';
@@ -88,12 +87,18 @@ export function convertStringToTimestamp(inputString: string) {
   return dateObject.getTime();
 }
 
-export const omitWithTypes = <
-  A extends object,
-  B extends ReadonlyArray<keyof A>,
->(
+export const omit = <A extends object, B extends ReadonlyArray<keyof A>>(
   obj: A,
-  typeArray: B,
+  arr: B,
 ) => {
-  return _.omit(obj, typeArray) as Omit<A, B[number]>;
+  const omit = new Set(arr);
+  const res = {} as Partial<A>;
+
+  for (const key in obj) {
+    if (!omit.has(key)) {
+      res[key] = obj[key];
+    }
+  }
+
+  return res as Omit<A, B[number]>;
 };

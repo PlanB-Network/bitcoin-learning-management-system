@@ -3,8 +3,8 @@ import { firstRow } from '@blms/database';
 import type { Dependencies } from '../../dependencies.js';
 import { getGlossaryWordQuery } from '../queries/get-glossary-word.js';
 
-export const createGetGlossaryWord =
-  (dependencies: Dependencies) => async (strId: string, language?: string) => {
+export const createGetGlossaryWord = (dependencies: Dependencies) => {
+  return async (strId: string, language?: string) => {
     const { postgres } = dependencies;
 
     const word = await postgres
@@ -15,3 +15,4 @@ export const createGetGlossaryWord =
 
     return word;
   };
+};
