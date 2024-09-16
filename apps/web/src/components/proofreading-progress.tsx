@@ -1,7 +1,19 @@
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { IoMdClose } from 'react-icons/io';
 
-import { Button, cn } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+  cn,
+} from '@blms/ui';
 
 import largeCircleProgress0 from '#src/assets/proofreading/large_circle_progress_0.webp';
 import largeCircleProgress1 from '#src/assets/proofreading/large_circle_progress_1.webp';
@@ -60,7 +72,11 @@ const LargeProgressImage = ({ progress }: { progress: number }) => {
   }
 
   return (
-    <img src={imgSrc} alt={`Progress: ${progress}/3`} className="w-[167px]" />
+    <img
+      src={imgSrc}
+      alt={`Progress: ${progress}/3`}
+      className="w-[160px] lg:w-[167px] lg:mt-0 mx-auto"
+    />
   );
 };
 
@@ -138,7 +154,7 @@ const ContributorsNames = ({
     <>
       <span
         className={cn(
-          'absolute top-6 -right-6 rotate-[60deg]',
+          'absolute top-7 right-1 lg:top-6 lg:-right-6 rotate-[60deg]',
           textClasses,
           getColorClass(0),
         )}
@@ -147,7 +163,7 @@ const ContributorsNames = ({
       </span>
       <span
         className={cn(
-          'absolute left-1/2 -translate-x-1/2 bottom-0',
+          'absolute left-1/2 -translate-x-1/2 -bottom-1 lg:bottom-0',
           textClasses,
           getColorClass(1),
         )}
@@ -156,7 +172,7 @@ const ContributorsNames = ({
       </span>
       <span
         className={cn(
-          'absolute top-6 -left-6 -rotate-[60deg]',
+          'absolute top-7 left-1 lg:top-6 lg:-left-6 -rotate-[60deg]',
           textClasses,
           getColorClass(2),
         )}
@@ -182,97 +198,209 @@ export const ProofreadingProgress = ({
   const contributorsLength = proofreadingData.contributors.length;
 
   return (
-    <div
-      className={cn(
-        'group p-2.5 hover:p-5 rounded-[20px] shadow-course-navigation justify-start items-start gap-2.5 inline-flex absolute right-6 top-4',
-        'max-md:hidden', //proofreadingData.isOriginalLanguage ? 'hidden' : 'max-md:hidden',
-        mode === 'dark'
-          ? 'bg-newBlack-3'
-          : contributorsLength > 2
-            ? 'bg-brightGreen-1'
-            : 'bg-darkOrange-0',
-      )}
-    >
-      <div className="group-hover:hidden flex items-center gap-1.5">
-        <SmallProgressImage progress={contributorsLength} />
-        <span
-          className={cn(
-            'max-lg:hidden body-12px-medium w-[118px] whitespace-pre-line',
-            mode === 'dark' ? 'text-white' : 'text-black',
-          )}
-        >
-          {contributorsLength === 3
-            ? t('proofreading.completed')
-            : t('proofreading.inProgress')}
-        </span>
-      </div>
-      <div className="hidden group-hover:flex max-w-[258px] flex-col gap-4 justify-center">
-        <div className="flex items-center gap-4">
-          <span
+    <div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <button
+            className="button-class absolute right-3 top-3 lg:hidden"
+            aria-label="Open Proofreading Progress Dialog"
+          >
+            <SmallProgressImage progress={contributorsLength} />
+          </button>
+        </DialogTrigger>
+        <DialogPortal>
+          <DialogOverlay className="fixed inset-0 z-50 bg-black/80" />
+          <DialogContent
+            showCloseButton={false}
             className={cn(
-              'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',
+              'my-2 fixed left-1/2 top-1/2 z-50 grid -translate-x-1/2 -translate-y-1/2 gap-4 border-0 p-6 rounded-[20px] w-[280px]',
               mode === 'dark'
-                ? 'bg-white/15 text-newGray-4'
+                ? 'bg-newBlack-3'
                 : contributorsLength > 2
-                  ? 'bg-brightGreen-2 text-brightGreen-7'
-                  : 'bg-[#ff5c00]/15 text-darkOrange-6',
+                  ? 'bg-brightGreen-1'
+                  : 'bg-darkOrange-0',
             )}
           >
-            {contributorsLength}/3
-          </span>
+            <DialogClose className="flex justify-end rounded-sm focus:outline-none disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
+              <IoMdClose
+                className={cn(
+                  'size-6',
+                  mode === 'dark' ? 'text-newGray-2' : 'text-darkOrange-6',
+                )}
+              />
+              <span className="sr-only">Close</span>
+            </DialogClose>
+
+            <div className="flex flex-col relative pointer-events-none">
+              <LargeProgressImage progress={contributorsLength} />
+              <ContributorsNames
+                contributors={proofreadingData.contributors}
+                reward={proofreadingData.reward ? proofreadingData.reward : 0}
+                mode={mode}
+              />
+            </div>
+
+            <div className="flex max-w-[258px] flex-col gap-4 justify-start">
+              <div className="flex flex-col items-start gap-4">
+                <span
+                  className={cn(
+                    'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',
+                    mode === 'dark'
+                      ? 'bg-white/15 text-newGray-4'
+                      : contributorsLength > 2
+                        ? 'bg-brightGreen-2 text-brightGreen-7'
+                        : 'bg-[#ff5c00]/15 text-darkOrange-6',
+                  )}
+                >
+                  {contributorsLength}/3
+                </span>
+                <DialogTitle>
+                  <span
+                    className={cn(
+                      'text-black title-medium-sb-18px',
+                      mode === 'dark' ? 'text-white' : 'text-black',
+                    )}
+                  >
+                    {t('proofreading.status')}
+                  </span>
+                </DialogTitle>
+              </div>
+              <DialogDescription>
+                <span
+                  className={cn(
+                    '!body-12px',
+                    mode === 'dark' ? 'text-white' : 'text-black',
+                  )}
+                >
+                  {t('proofreading.description')}
+                </span>
+              </DialogDescription>
+
+              <p
+                className={cn(
+                  'body-12px',
+                  mode === 'dark' ? 'text-white' : 'text-black',
+                )}
+              >
+                {t('proofreading.thanks')}
+              </p>
+              <a
+                href="https://github.com/PlanB-Network/bitcoin-educational-content"
+                target="_blank"
+                rel="noreferrer"
+                className="flex w-full"
+              >
+                <Button
+                  mode={mode}
+                  variant={contributorsLength > 2 ? 'secondary' : 'primary'}
+                  size="s"
+                  className="w-full"
+                >
+                  {t('proofreading.reviewEarn')}
+                  <FaArrowRightLong
+                    className={cn(
+                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                      'group-hover:ml-3',
+                    )}
+                  />
+                </Button>
+              </a>
+            </div>
+          </DialogContent>
+        </DialogPortal>
+      </Dialog>
+      <div
+        className={cn(
+          'max-md:hidden group p-2.5 hover:p-5 rounded-[20px] shadow-course-navigation justify-start items-start gap-2.5 inline-flex absolute right-6 top-4',
+          '', //proofreadingData.isOriginalLanguage ? 'hidden' : 'max-md:hidden',
+          mode === 'dark'
+            ? 'bg-newBlack-3'
+            : contributorsLength > 2
+              ? 'bg-brightGreen-1'
+              : 'bg-darkOrange-0',
+        )}
+      >
+        <div className="max-md:hidden group-hover:hidden flex items-center gap-1.5">
+          <SmallProgressImage progress={contributorsLength} />
           <span
             className={cn(
-              'text-black title-medium-sb-18px',
+              'max-lg:hidden body-12px-medium w-[118px] whitespace-pre-line',
               mode === 'dark' ? 'text-white' : 'text-black',
             )}
           >
-            {t('proofreading.status')}
+            {contributorsLength === 3
+              ? t('proofreading.completed')
+              : t('proofreading.inProgress')}
           </span>
         </div>
-        <p
-          className={cn(
-            'body-12px',
-            mode === 'dark' ? 'text-white' : 'text-black',
-          )}
-        >
-          {t('proofreading.description')}
-        </p>
-        <p
-          className={cn(
-            'body-12px',
-            mode === 'dark' ? 'text-white' : 'text-black',
-          )}
-        >
-          {t('proofreading.thanks')}
-        </p>
-        <a
-          href="https://github.com/PlanB-Network/bitcoin-educational-content"
-          target="_blank"
-          rel="noreferrer"
-          className="flex w-fit"
-        >
-          <Button
-            mode={mode}
-            variant={contributorsLength > 2 ? 'secondary' : 'primary'}
-            size="xs"
-          >
-            {t('proofreading.reviewEarn')}
-            <FaArrowRightLong
+        <div className="hidden group-hover:flex max-w-[258px] flex-col gap-4 justify-center">
+          <div className="flex items-center gap-4">
+            <span
               className={cn(
-                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                'group-hover:ml-3',
+                'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',
+                mode === 'dark'
+                  ? 'bg-white/15 text-newGray-4'
+                  : contributorsLength > 2
+                    ? 'bg-brightGreen-2 text-brightGreen-7'
+                    : 'bg-[#ff5c00]/15 text-darkOrange-6',
               )}
-            />
-          </Button>
-        </a>
-      </div>
-      <div className="hidden group-hover:flex flex-col relative pointer-events-none">
-        <LargeProgressImage progress={contributorsLength} />
-        <ContributorsNames
-          contributors={proofreadingData.contributors}
-          reward={proofreadingData.reward ? proofreadingData.reward : 0}
-          mode={mode}
-        />
+            >
+              {contributorsLength}/3
+            </span>
+            <span
+              className={cn(
+                'text-black title-medium-sb-18px',
+                mode === 'dark' ? 'text-white' : 'text-black',
+              )}
+            >
+              {t('proofreading.status')}
+            </span>
+          </div>
+          <p
+            className={cn(
+              'body-12px',
+              mode === 'dark' ? 'text-white' : 'text-black',
+            )}
+          >
+            {t('proofreading.description')}
+          </p>
+          <p
+            className={cn(
+              'body-12px',
+              mode === 'dark' ? 'text-white' : 'text-black',
+            )}
+          >
+            {t('proofreading.thanks')}
+          </p>
+          <a
+            href="https://github.com/PlanB-Network/bitcoin-educational-content"
+            target="_blank"
+            rel="noreferrer"
+            className="flex w-fit"
+          >
+            <Button
+              mode={mode}
+              variant={contributorsLength > 2 ? 'secondary' : 'primary'}
+              size="xs"
+            >
+              {t('proofreading.reviewEarn')}
+              <FaArrowRightLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:ml-3',
+                )}
+              />
+            </Button>
+          </a>
+        </div>
+        <div className="hidden group-hover:flex flex-col relative pointer-events-none">
+          <LargeProgressImage progress={contributorsLength} />
+          <ContributorsNames
+            contributors={proofreadingData.contributors}
+            reward={proofreadingData.reward ? proofreadingData.reward : 0}
+            mode={mode}
+          />
+        </div>
       </div>
     </div>
   );
