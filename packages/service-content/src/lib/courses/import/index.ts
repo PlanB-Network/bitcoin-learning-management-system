@@ -570,7 +570,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 RETURNING *
               `;
 
-                const formatedChapters = parts.flatMap((part) =>
+                const formattedChapters = parts.flatMap((part) =>
                   part.chapters.map((chapter) => {
                     return {
                       course_id: course.id,
@@ -601,7 +601,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 );
 
                 await transaction`
-                  INSERT INTO content.course_chapters_localized ${transaction(formatedChapters)}
+                  INSERT INTO content.course_chapters_localized ${transaction(formattedChapters)}
                   ON CONFLICT (course_id, chapter_id, language) DO UPDATE SET
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,

@@ -4,8 +4,9 @@ import type { JoinedCoursePartLocalized } from '@blms/types';
 export const getCoursePartsQuery = (id: string, language?: string) => {
   return sql<JoinedCoursePartLocalized[]>`
     SELECT
-      cpl.part_id,
+      cpl.course_id,
       cpl.language,
+      cpl.part_id,
       cpl.title,
       cp.part_index
     FROM content.course_parts_localized cpl
