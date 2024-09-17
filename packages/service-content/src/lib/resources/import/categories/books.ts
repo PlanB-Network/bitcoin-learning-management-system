@@ -40,11 +40,9 @@ interface BookLocal extends BaseResource {
 }
 
 export const createProcessChangedBook = (
-  dependencies: Dependencies,
+  { postgres }: Dependencies,
   errors: string[],
 ) => {
-  const { postgres } = dependencies;
-
   return async (resource: ChangedResource) => {
     return postgres
       .begin(async (transaction) => {

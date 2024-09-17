@@ -1,22 +1,17 @@
+import type { UserEvent } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { insertUserEvent } from '../queries/insert-user-event.js';
 
-export const createSaveUserEvent =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    eventId,
-    booked,
-    withPhysical,
-  }: {
-    uid: string;
-    eventId: string;
-    booked: boolean;
-    withPhysical: boolean;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  eventId: string;
+  booked: boolean;
+  withPhysical: boolean;
+}
 
-    return postgres.exec(
-      insertUserEvent({ uid, eventId, booked, withPhysical }),
-    );
+export const createSaveUserEvent = ({ postgres }: Dependencies) => {
+  return (options: Options): Promise<UserEvent[]> => {
+    return postgres.exec(insertUserEvent(options));
   };
+};

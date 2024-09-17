@@ -1,14 +1,17 @@
 import { firstRow } from '@blms/database';
+import type { GetBookResponse } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBookQuery } from '../queries/get-book.js';
 
 export const createGetBook = ({ postgres }: Dependencies) => {
-  return async (id: number, language?: string) => {
+  return async (id: number, language?: string): Promise<GetBookResponse> => {
     const book = await postgres.exec(getBookQuery(id, language)).then(firstRow);
 
-    if (!book) throw new Error('Book not found');
+    if (!book) {
+      throw new Error('Book not found');
+    }
 
     return {
       ...book,

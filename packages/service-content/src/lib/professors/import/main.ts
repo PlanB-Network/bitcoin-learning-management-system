@@ -32,9 +32,8 @@ interface ProfessorMain {
   tags?: string[];
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (professor: ChangedProfessor, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (professor: ChangedProfessor, file?: ChangedFile) => {
     if (!file) return;
 
     if (file.kind === 'removed') {
@@ -119,3 +118,4 @@ export const createProcessMainFile =
         `;
     }
   };
+};

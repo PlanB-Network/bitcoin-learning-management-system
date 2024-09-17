@@ -8,10 +8,8 @@ import {
   getProfessorCoursesQuery,
 } from '../queries/get-courses.js';
 
-export const createGetCourses = (dependencies: Dependencies) => {
+export const createGetCourses = ({ postgres }: Dependencies) => {
   return async (language?: string): Promise<JoinedCourseWithProfessors[]> => {
-    const { postgres } = dependencies;
-
     const courses = await postgres.exec(getCoursesQuery(language));
 
     const professors = await postgres
@@ -36,13 +34,11 @@ export const createGetCourses = (dependencies: Dependencies) => {
   };
 };
 
-export const createGetProfessorCourses = (dependencies: Dependencies) => {
+export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
   return async (
     coursesId: string[],
     language?: string,
   ): Promise<JoinedCourseWithProfessors[]> => {
-    const { postgres } = dependencies;
-
     const courses = await postgres.exec(
       getProfessorCoursesQuery(coursesId, language),
     );

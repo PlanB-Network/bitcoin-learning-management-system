@@ -14,7 +14,9 @@ export const createGetLegal = ({ postgres }: Dependencies) => {
       .exec(getLegalQuery(name, language))
       .then(firstRow);
 
-    if (!legal) throw new Error(`Legal document not found`);
+    if (!legal) {
+      throw new Error(`Legal document not found`);
+    }
 
     return legal;
   };

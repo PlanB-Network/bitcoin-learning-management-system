@@ -7,11 +7,13 @@ import type { Dependencies } from '../../../dependencies.js';
 import { changeDisplayNameQuery } from '../queries/change-display-name.js';
 import { getUserByIdQuery } from '../queries/get-user.js';
 
-export const createChangeDisplayName =
-  (dependencies: Dependencies) =>
-  async ({ uid, displayName }: { uid: string; displayName: string }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  displayName: string;
+}
 
+export const createChangeDisplayName = ({ postgres }: Dependencies) => {
+  return async ({ uid, displayName }: Options) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -23,3 +25,4 @@ export const createChangeDisplayName =
 
     await postgres.exec(changeDisplayNameQuery(uid, displayName));
   };
+};

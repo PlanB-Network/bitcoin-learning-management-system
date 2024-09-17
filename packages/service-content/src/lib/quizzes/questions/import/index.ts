@@ -33,7 +33,9 @@ export interface ChangedQuizQuestion extends ChangedContent {
 export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   const pathElements = path.split('/');
 
-  if (pathElements.length < 4) throw new Error('Invalid quiz question path');
+  if (pathElements.length < 4) {
+    throw new Error('Invalid quiz question path');
+  }
 
   const id = `${pathElements[1]}-${pathElements[3]}`;
 
@@ -87,10 +89,8 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   return [...groupedQuizQuestions.values()];
 };
 
-export const createUpdateQuizQuestions = (dependencies: Dependencies) => {
+export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
   return async (quizQuestion: ChangedQuizQuestion, errors: string[]) => {
-    const { postgres } = dependencies;
-
     const { main, files } = separateContentFiles(quizQuestion, 'question.yml');
 
     return postgres
@@ -135,11 +135,8 @@ export const createUpdateQuizQuestions = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteQuizQuestions =
-  (dependencies: Dependencies) =>
-  async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
+export const createDeleteQuizQuestions = ({ postgres }: Dependencies) => {
+  return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
         sql`DELETE FROM content.quiz_questions WHERE last_sync < ${sync_date} 
@@ -149,3 +146,4 @@ export const createDeleteQuizQuestions =
       errors.push(`Error deleting quiz_questions`);
     }
   };
+};

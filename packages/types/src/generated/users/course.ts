@@ -75,3 +75,10 @@ export interface CourseProgressExtended {
       }
     | undefined;
 }
+
+export interface GetUserChapterResponse {
+  courseId: string;
+  chapterId: string;
+  completedAt: Date;
+  booked: boolean | null;
+}

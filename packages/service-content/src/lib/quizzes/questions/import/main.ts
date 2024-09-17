@@ -20,9 +20,8 @@ interface QuizQuestionMain {
   tags?: string[];
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
     if (!file || file.kind === 'removed') {
       return;
     }
@@ -82,3 +81,4 @@ export const createProcessMainFile =
         `;
     }
   };
+};

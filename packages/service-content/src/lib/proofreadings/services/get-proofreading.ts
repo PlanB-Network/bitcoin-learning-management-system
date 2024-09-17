@@ -1,17 +1,16 @@
 import { firstRow } from '@blms/database';
+import type { JoinedProofreading } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProofreadingQuery } from '../queries/get-proofreading.js';
 
-export const createGetProofreading =
-  (dependencies: Dependencies) =>
-  async (
+export const createGetProofreading = ({ postgres }: Dependencies) => {
+  return async (
     language: string,
     courseId: string | undefined,
     tutorialId: string | undefined,
     resourceId: number | undefined,
-  ) => {
-    const { postgres } = dependencies;
+  ): Promise<JoinedProofreading | null> => {
     try {
       const result = await postgres
         .exec(
@@ -28,3 +27,4 @@ export const createGetProofreading =
       throw new Error('Proofreading not found');
     }
   };
+};

@@ -9,25 +9,22 @@ import { newCredentialsUserQuery } from '../queries/new-credentials-user.js';
 import { createCheckContributorIdExists } from './check-contributor-id-exists.js';
 import { createGenerateUniqueContributorId } from './generate-unique-contributor-id.js';
 
-interface NewCredentialsUser {
-  (options: {
-    username: string;
-    password: string;
-    contributorId?: string;
-    email?: string;
-  }): Promise<UserDetails>;
+interface Options {
+  username: string;
+  password: string;
+  contributorId?: string;
+  email?: string;
 }
 
-export const createNewCredentialsUser =
-  (dependencies: Dependencies): NewCredentialsUser =>
-  async (options) => {
-    const { postgres } = dependencies;
+export const createNewCredentialsUser = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
 
-    const checkContributorIdExists =
-      createCheckContributorIdExists(dependencies);
-    const generateUniqueContributorId =
-      createGenerateUniqueContributorId(dependencies);
+  const checkContributorIdExists = createCheckContributorIdExists(dependencies);
 
+  const generateUniqueContributorId =
+    createGenerateUniqueContributorId(dependencies);
+
+  return async (options: Options): Promise<UserDetails> => {
     const contributorId =
       options.contributorId || (await generateUniqueContributorId());
     const passwordHash = await hash(options.password);
@@ -47,3 +44,4 @@ export const createNewCredentialsUser =
       )
       .then(firstRow) as Promise<UserDetails>;
   };
+};

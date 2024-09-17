@@ -40,9 +40,8 @@ interface TutorialMain {
   proofreading: ProofreadingEntry[];
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (tutorial: ChangedTutorial, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (tutorial: ChangedTutorial, file?: ChangedFile) => {
     if (!file || file.kind === 'removed') return;
 
     // Only get the tags from the main tutorial file
@@ -179,3 +178,4 @@ export const createProcessMainFile =
       }
     }
   };
+};

@@ -7,7 +7,9 @@ export const createPollLnurlAuth =
   ({ sessionId }: { sessionId?: string }) => {
     const { events } = dependencies;
 
-    if (!sessionId) throw new Error('No sessionId provided');
+    if (!sessionId) {
+      throw new Error('No sessionId provided');
+    }
 
     return new Promise<{ uid: string }>((resolve) => {
       const listener: ApiEvents['lnurl-auth:logged'] = (event) => {

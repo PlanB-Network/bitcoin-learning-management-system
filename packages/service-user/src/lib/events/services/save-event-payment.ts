@@ -10,9 +10,7 @@ interface Options {
   withPhysical: boolean;
 }
 
-export const createSaveEventPayment = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createSaveEventPayment = ({ postgres }: Dependencies) => {
   return async ({ uid, eventId, amount, withPhysical }: Options) => {
     const paymentData = {
       title: eventId,

@@ -3,20 +3,15 @@ import type { CheckoutData } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import { insertPayment } from '../queries/insert-payment.js';
 
-export const createSavePayment = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  courseId: string;
+  amount: number;
+  couponCode?: string;
+}
 
-  return async ({
-    uid,
-    courseId,
-    amount,
-    couponCode,
-  }: {
-    uid: string;
-    courseId: string;
-    amount: number;
-    couponCode?: string;
-  }) => {
+export const createSavePayment = ({ postgres }: Dependencies) => {
+  return async ({ uid, courseId, amount, couponCode }: Options) => {
     const paymentData = {
       title: courseId,
       amount: amount,

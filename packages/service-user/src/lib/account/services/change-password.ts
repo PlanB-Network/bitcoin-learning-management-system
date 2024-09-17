@@ -8,19 +8,14 @@ import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';
 import { getUserByIdQuery } from '../queries/get-user.js';
 
-export const createChangePassword =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    oldPassword,
-    newPassword,
-  }: {
-    uid: string;
-    oldPassword: string;
-    newPassword: string;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  oldPassword: string;
+  newPassword: string;
+}
 
+export const createChangePassword = ({ postgres }: Dependencies) => {
+  return async ({ uid, oldPassword, newPassword }: Options) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -47,3 +42,4 @@ export const createChangePassword =
     const hashedPassword = await hash(newPassword);
     await postgres.exec(changePasswordQuery(uid, hashedPassword));
   };
+};

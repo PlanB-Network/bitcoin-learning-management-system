@@ -1,10 +1,15 @@
+import type { Invoice } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { getInvoicesQuery } from '../queries/get-invoices.js';
 
-export const createGetInvoices =
-  (dependencies: Dependencies) =>
-  async ({ uid, language }: { uid: string; language: string }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  language: string;
+}
 
+export const createGetInvoices = ({ postgres }: Dependencies) => {
+  return ({ uid, language }: Options): Promise<Invoice[]> => {
     return postgres.exec(getInvoicesQuery(uid, language));
   };
+};

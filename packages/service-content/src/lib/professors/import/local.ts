@@ -8,9 +8,8 @@ interface ProfessorLocal {
   short_bio?: string;
 }
 
-export const createProcessLocalFile =
-  (transaction: TransactionSql) =>
-  async (id: number, file: ChangedFileWithLanguage) => {
+export const createProcessLocalFile = (transaction: TransactionSql) => {
+  return async (id: number, file: ChangedFileWithLanguage) => {
     if (file.kind === 'removed') {
       return;
     }
@@ -32,3 +31,4 @@ export const createProcessLocalFile =
           short_bio = EXCLUDED.short_bio
       `;
   };
+};
