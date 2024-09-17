@@ -130,9 +130,7 @@ function NodeNetwork() {
       footerVariant="dark"
     >
       <div className="flex flex-col items-center text-white px-4 sm:px-10">
-        {/* Tarjetas de Comunidades */}
         <div className="max-w-[1017px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11">
-          {/* En pantallas pequeñas el margen superior es `mt-8`, y en pantallas más grandes es `sm:mt-14` */}
           {!isFetched && <Loader size={'s'} />}
           {filteredCommunities.map((community) => (
             <Link
@@ -147,24 +145,18 @@ function NodeNetwork() {
                 name={community.name}
                 logo={community.logo}
                 cardWidth="size-[70px] sm:size-[90px]"
-                // En pantallas pequeñas la tarjeta tiene un tamaño de `70px`, pero en pantallas más grandes (`sm`) será de `90px`
               />
             </Link>
           ))}
         </div>
 
-        {/* Mapa de Comunidades */}
         <div className="w-full  mt-10">
-          {/* El mapa tiene un margen superior de `mt-10`, que se ajusta para ser más espacioso en móviles */}
           <CommunitiesMap communities={filteredCommunities} />
         </div>
 
-        {/* Preguntas Frecuentes */}
         <QnA />
 
-        {/* Botón de Aplicación */}
         <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
-          {/* El padding inferior es más pequeño en pantallas móviles (`pb-10`), pero aumenta en pantallas más grandes (`sm:pb-40`) */}
           <SonarCircle className="hidden md:block absolute size-72 sm:size-fit z-0" />
           <a
             href="https://web.telegram.org/k/#@ajelex"

@@ -2,10 +2,6 @@
 import { sql } from '@blms/database';
 import type { BuilderLocation } from '@blms/types';
 
-/**
- * Obtener todas las direcciones (address_line_1) de la tabla builders
- * que no tienen una entrada correspondiente en la tabla builders_locations.
- */
 export const getBuildersWithoutLocationQuery = () => {
   return sql<Array<{ name: string }>>`
     SELECT b.address_line_1 as name
@@ -17,9 +13,6 @@ export const getBuildersWithoutLocationQuery = () => {
   `;
 };
 
-/**
- * Insertar la ubicación en la tabla builders_locations.
- */
 export const setBuilderLocationQuery = (input: BuilderLocation) => {
   return sql`
     INSERT INTO content.builders_locations (place_id, name, lat, lng)
@@ -27,9 +20,6 @@ export const setBuilderLocationQuery = (input: BuilderLocation) => {
   `;
 };
 
-/**
- * Obtener todas las ubicaciones de builders.
- */
 export const getBuildersLocationsQuery = () => {
   return sql<BuilderLocation[]>`
     SELECT *
