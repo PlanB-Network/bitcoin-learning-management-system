@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  courseChapterResponseSchema,
   joinedCourseChapterSchema,
   joinedCourseWithAllSchema,
   joinedCourseWithProfessorsSchema,
@@ -16,6 +17,7 @@ import {
   createGetProfessorCourses,
 } from '@blms/service-content';
 import type {
+  CourseChapterResponse,
   JoinedCourseChapter,
   JoinedCourseWithAll,
   JoinedCourseWithProfessors,
@@ -92,32 +94,7 @@ const getCourseChapterProcedure = publicProcedure
       chapterId: z.string(),
     }),
   )
-  // TODO fix this validation issue
-  // .output(
-  //   joinedCourseChapterWithContentSchema.merge(
-  //     z.object({
-  //       course: joinedCourseSchema.merge(
-  //         z.object({
-  //           professors: formattedProfessorSchema.array(),
-  //           parts: coursePartLocalizedSchema
-  //             .merge(
-  //               z.object({
-  //                 chapters: joinedCourseChapterSchema.array(),
-  //               }),
-  //             )
-  //             .array(),
-  //           partsCount: z.number(),
-  //           chaptersCount: z.number(),
-  //         }),
-  //       ),
-  //       part: coursePartSchema.merge(
-  //         z.object({
-  //           chapters: joinedCourseChapterSchema.array(),
-  //         }),
-  //       ),
-  //     }),
-  //   ),
-  // )
+  .output<Parser<CourseChapterResponse>>(courseChapterResponseSchema)
   .query(({ ctx, input }) => {
     return createGetCourseChapter(ctx.dependencies)(
       input.chapterId,
