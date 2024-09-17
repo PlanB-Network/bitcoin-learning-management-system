@@ -121,7 +121,10 @@ function SingleBlogDetail() {
               </div>
             </div>
             <div className="max-w-[300px] mx-auto lg:max-w-[400px] flex-1">
-              <BlogSidebar currentBlogId={blog.id} />
+              <BlogSidebar
+                currentBlogId={blog.id}
+                currentCategory={blog.category}
+              />{' '}
             </div>
             <div className="flex md:hidden w-max-[135px] justify-center">
               <Link to="/public-communication">
