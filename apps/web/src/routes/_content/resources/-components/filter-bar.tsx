@@ -28,7 +28,7 @@ export const FilterBar = ({
           onChange(event.target.value);
         }}
         placeholder={t('resources.searchFilterName')}
-        className="h-11 w-full rounded-full bg-newBlack-2 px-5 body-14px placeholder:text-newGray-2 focus:outline-none shadow-filter-bar border border-darkOrange-5"
+        className="text-white h-11 w-full rounded-full bg-newBlack-2 px-5 body-14px placeholder:text-newGray-2 focus:outline-none shadow-filter-bar border border-darkOrange-5"
       />
     </div>
   );
