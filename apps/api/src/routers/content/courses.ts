@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  courseChapterResponseSchema,
   joinedCourseChapterSchema,
   joinedCourseWithAllSchema,
   joinedCourseWithProfessorsSchema,
@@ -16,9 +17,11 @@ import {
   createGetProfessorCourses,
 } from '@blms/service-content';
 import type {
+  CourseChapterResponse,
   JoinedCourseChapter,
   JoinedCourseWithAll,
   JoinedCourseWithProfessors,
+  JoinedQuizQuestion,
 } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -91,32 +94,7 @@ const getCourseChapterProcedure = publicProcedure
       chapterId: z.string(),
     }),
   )
-  // TODO fix this validation issue
-  // .output(
-  //   joinedCourseChapterWithContentSchema.merge(
-  //     z.object({
-  //       course: joinedCourseSchema.merge(
-  //         z.object({
-  //           professors: formattedProfessorSchema.array(),
-  //           parts: coursePartLocalizedSchema
-  //             .merge(
-  //               z.object({
-  //                 chapters: joinedCourseChapterSchema.array(),
-  //               }),
-  //             )
-  //             .array(),
-  //           partsCount: z.number(),
-  //           chaptersCount: z.number(),
-  //         }),
-  //       ),
-  //       part: coursePartSchema.merge(
-  //         z.object({
-  //           chapters: joinedCourseChapterSchema.array(),
-  //         }),
-  //       ),
-  //     }),
-  //   ),
-  // )
+  .output<Parser<CourseChapterResponse>>(courseChapterResponseSchema)
   .query(({ ctx, input }) => {
     return createGetCourseChapter(ctx.dependencies)(
       input.chapterId,
@@ -131,7 +109,7 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output(joinedQuizQuestionSchema.array())
+  .output<Parser<JoinedQuizQuestion[]>>(joinedQuizQuestionSchema.array())
   .query(({ ctx, input }) => {
     return createGetCourseChapterQuizQuestions(ctx.dependencies)({
       chapterId: input.chapterId,
@@ -146,6 +124,7 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
       newPassword: z.string(),
     }),
   )
+  .output<Parser<void>>(z.void())
   .mutation(({ ctx }) => {
     return createCalculateCourseChapterSeats(ctx.dependencies)();
   });

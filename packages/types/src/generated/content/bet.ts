@@ -39,3 +39,20 @@ export interface JoinedBet {
   viewurls: BetViewUrl[];
   tags: string[];
 }
+
+export interface GetBetResponse {
+  id: number;
+  path: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  type: BetType;
+  downloadUrl: string;
+  originalLanguage: string;
+  builder: string | null;
+  language: string;
+  name: string;
+  description: string;
+  viewurls: BetViewUrl[];
+  tags: string[];
+  logo?: string | undefined;
+}

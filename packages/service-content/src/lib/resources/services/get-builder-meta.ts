@@ -10,7 +10,9 @@ export const createGetBuilderMeta = ({ postgres }: Dependencies) => {
       .exec(getBuilderMetaQuery(id, language))
       .then(firstRow);
 
-    if (!builder) throw new Error('Builder not found');
+    if (!builder) {
+      throw new Error('Builder not found');
+    }
 
     return {
       ...builder,

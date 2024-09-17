@@ -84,11 +84,9 @@ const extractStages = (markdown: string, id: number): Stage[] => {
 };
 
 export const createProcessChangedConference = (
-  dependencies: Dependencies,
+  { postgres }: Dependencies,
   errors: string[],
 ) => {
-  const { postgres } = dependencies;
-
   return async (resource: ChangedResource) => {
     return postgres
       .begin(async (transaction) => {

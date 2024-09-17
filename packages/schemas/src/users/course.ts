@@ -43,3 +43,10 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
       .optional(),
   }),
 );
+
+export const getUserChapterResponseSchema = courseUserChapterSchema.pick({
+  courseId: true,
+  chapterId: true,
+  completedAt: true,
+  booked: true,
+});

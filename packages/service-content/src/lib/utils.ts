@@ -1,5 +1,4 @@
 import yaml from 'js-yaml';
-import _ from 'lodash';
 
 import { supportedContentTypes } from './const.js';
 import type { ChangedContent } from './types.js';
@@ -10,13 +9,17 @@ export const getContentType = (path: string) => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 1 element (content/)
-  if (pathElements.length === 0) throw new Error('Invalid content path');
+  if (pathElements.length === 0) {
+    throw new Error('Invalid content path');
+  }
 
   const contentType = supportedContentTypes.find((value) =>
     path.startsWith(value),
   );
 
-  if (!contentType) throw new Error(`Invalid content type path: ${path}`);
+  if (!contentType) {
+    throw new Error(`Invalid content type path: ${path}`);
+  }
 
   return contentType;
 };
@@ -73,7 +76,10 @@ export const getRelativePath = (fullPath: string, directoryPath?: string) => {
 export const getFileExtension = (path: string) => {
   const pathElements = path.split('/');
   const fileName = pathElements.at(-1);
-  if (!fileName) throw new Error('Invalid file path');
+  if (!fileName) {
+    throw new Error('Invalid file path');
+  }
+
   const fileNameElements = fileName.split('.');
   return fileNameElements.at(-1);
 };
@@ -88,12 +94,18 @@ export function convertStringToTimestamp(inputString: string) {
   return dateObject.getTime();
 }
 
-export const omitWithTypes = <
-  A extends object,
-  B extends ReadonlyArray<keyof A>,
->(
+export const omit = <A extends object, B extends ReadonlyArray<keyof A>>(
   obj: A,
-  typeArray: B,
+  arr: B,
 ) => {
-  return _.omit(obj, typeArray) as Omit<A, B[number]>;
+  const omit = new Set(arr);
+  const res = {} as Partial<A>;
+
+  for (const key in obj) {
+    if (!omit.has(key)) {
+      res[key] = obj[key];
+    }
+  }
+
+  return res as Omit<A, B[number]>;
 };

@@ -37,9 +37,8 @@ interface EventMain {
   tag?: string[];
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (event: ChangedEvent, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (event: ChangedEvent, file?: ChangedFile) => {
     if (!file || file.kind === 'removed') return;
 
     // Only get the tags from the main tutorial file
@@ -167,3 +166,4 @@ export const createProcessMainFile =
       }
     }
   };
+};

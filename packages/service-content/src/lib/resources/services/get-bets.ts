@@ -1,11 +1,11 @@
+import type { GetBetResponse } from '@blms/types';
+
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBetsQuery } from '../queries/get-bets.js';
 
-export const createGetBets =
-  (dependencies: Dependencies) => async (language?: string) => {
-    const { postgres } = dependencies;
-
+export const createGetBets = ({ postgres }: Dependencies) => {
+  return async (language?: string): Promise<GetBetResponse[]> => {
     const result = await postgres.exec(getBetsQuery(language));
 
     return result.map((bet) => ({
@@ -13,3 +13,4 @@ export const createGetBets =
       logo: computeAssetCdnUrl(bet.lastCommit, bet.path, 'logo.webp'),
     }));
   };
+};

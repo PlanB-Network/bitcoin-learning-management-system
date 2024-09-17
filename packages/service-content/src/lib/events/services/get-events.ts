@@ -2,10 +2,8 @@ import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getRecentEventsQuery } from '../queries/get-events.js';
 
-export const createGetRecentEvents =
-  (dependencies: Dependencies) => async () => {
-    const { postgres } = dependencies;
-
+export const createGetRecentEvents = ({ postgres }: Dependencies) => {
+  return async () => {
     const events = await postgres.exec(getRecentEventsQuery());
 
     return events.map((event) => ({
@@ -15,3 +13,4 @@ export const createGetRecentEvents =
         : undefined,
     }));
   };
+};

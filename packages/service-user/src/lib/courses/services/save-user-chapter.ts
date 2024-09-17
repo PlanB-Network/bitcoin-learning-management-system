@@ -1,22 +1,17 @@
+import type { CourseUserChapter } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { insertUserChapter } from '../queries/insert-user-chapter.js';
 
-export const createSaveUserChapter =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    courseId,
-    chapterId,
-    booked,
-  }: {
-    uid: string;
-    courseId: string;
-    chapterId: string;
-    booked: boolean;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+  courseId: string;
+  chapterId: string;
+  booked: boolean;
+}
 
-    return postgres.exec(
-      insertUserChapter({ uid, courseId, chapterId, booked }),
-    );
+export const createSaveUserChapter = ({ postgres }: Dependencies) => {
+  return (options: Options): Promise<CourseUserChapter[]> => {
+    return postgres.exec(insertUserChapter(options));
   };
+};

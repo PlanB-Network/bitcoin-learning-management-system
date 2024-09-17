@@ -51,3 +51,13 @@ export interface UsersLud4PublicKey {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface LoginResponse {
+  status: number;
+  message: string;
+  user: {
+    uid: string;
+    username: string;
+    email?: string | undefined;
+  };
+}

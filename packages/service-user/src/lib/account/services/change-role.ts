@@ -10,11 +10,13 @@ import {
 } from '../queries/change-role.js';
 import { getUserByIdQuery } from '../queries/get-user.js';
 
-export const createChangeRole =
-  (dependencies: Dependencies) =>
-  async ({ uid, role }: { uid: string; role: string }) => {
-    const { postgres } = dependencies;
+interface ChangeRoleOptions {
+  uid: string;
+  role: string;
+}
 
+export const createChangeRole = ({ postgres }: Dependencies) => {
+  return async ({ uid, role }: ChangeRoleOptions) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -26,20 +28,16 @@ export const createChangeRole =
 
     await postgres.exec(changeRoleQuery(uid, role));
   };
+};
 
-export const createChangeRoleToProfessor =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    role,
-    professorId,
-  }: {
-    uid: string;
-    role: string;
-    professorId: number;
-  }) => {
-    const { postgres } = dependencies;
+interface ChangeRoleToProfessorOptions {
+  uid: string;
+  role: string;
+  professorId: number;
+}
 
+export const createChangeRoleToProfessor = ({ postgres }: Dependencies) => {
+  return async ({ uid, role, professorId }: ChangeRoleToProfessorOptions) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -51,3 +49,4 @@ export const createChangeRoleToProfessor =
 
     await postgres.exec(changeRoleToProfessorQuery(uid, role, professorId));
   };
+};

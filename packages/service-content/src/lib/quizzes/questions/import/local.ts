@@ -12,9 +12,11 @@ interface QuizQuestionLocal {
   explanation?: string;
 }
 
-export const createProcessLocalFile =
-  (transaction: TransactionSql) =>
-  async (quizQuestion: ChangedQuizQuestion, file: ChangedFileWithLanguage) => {
+export const createProcessLocalFile = (transaction: TransactionSql) => {
+  return async (
+    quizQuestion: ChangedQuizQuestion,
+    file: ChangedFileWithLanguage,
+  ) => {
     if (file.kind === 'removed') {
       return;
     }
@@ -40,3 +42,4 @@ export const createProcessLocalFile =
           explanation = EXCLUDED.explanation
       `;
   };
+};

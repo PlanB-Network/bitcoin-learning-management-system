@@ -13,9 +13,8 @@ interface BlogMain {
   tags?: string[];
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (blog: ChangedBlog, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (blog: ChangedBlog, file?: ChangedFile) => {
     if (!file) return;
 
     if (file.kind === 'removed') {
@@ -95,3 +94,4 @@ export const createProcessMainFile =
       }
     }
   };
+};

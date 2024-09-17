@@ -48,3 +48,24 @@ export interface JoinedBuilder {
   description: string | null;
   tags?: string[] | undefined;
 }
+
+export interface GetBuilderResponse {
+  id: number;
+  path: string;
+  lastCommit: string;
+  name: string;
+  category: string;
+  languages: string[] | null;
+  websiteUrl: string | null;
+  twitterUrl: string | null;
+  githubUrl: string | null;
+  nostr: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
+  originalLanguage: string;
+  language: string;
+  description: string | null;
+  tags?: string[] | undefined;
+  logo: string;
+}

@@ -1,5 +1,5 @@
 import { firstRow } from '@blms/database';
-// import type { JoinedCourseWithAll } from '@blms/types';
+import type { CourseResponse } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
@@ -8,15 +8,8 @@ import { getCourseChaptersQuery } from '../queries/get-course-chapters.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
 import { getCourseQuery } from '../queries/get-course.js';
 
-// interface Output extends JoinedCourseWithAll {
-//   professors: any[];
-// }
-
-export const createGetCourse = (dependencies: Dependencies) => {
-  // TODO: Add return type
-  return async (id: string, language: string) => {
-    const { postgres } = dependencies;
-
+export const createGetCourse = ({ postgres }: Dependencies) => {
+  return async (id: string, language: string): Promise<CourseResponse> => {
     const course = await postgres
       .exec(getCourseQuery(id, language))
       .then(firstRow);

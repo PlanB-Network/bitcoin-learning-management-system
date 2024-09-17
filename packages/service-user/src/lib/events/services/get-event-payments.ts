@@ -1,10 +1,14 @@
+import type { EventPayment } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { getEventPaymentsQuery } from '../queries/get-event-payments.js';
 
-export const createGetEventPayments =
-  (dependencies: Dependencies) =>
-  async ({ uid }: { uid: string }) => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+}
 
+export const createGetEventPayments = ({ postgres }: Dependencies) => {
+  return ({ uid }: Options): Promise<EventPayment[]> => {
     return postgres.exec(getEventPaymentsQuery(uid));
   };
+};

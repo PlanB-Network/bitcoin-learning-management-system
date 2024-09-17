@@ -51,3 +51,21 @@ export interface JoinedConference {
   tags: string[];
   thumbnail: string;
 }
+
+export interface GetConferenceResponse {
+  id: number;
+  path: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  name: string;
+  description: string | null;
+  year: string;
+  builder: string | null;
+  languages: string[] | null;
+  location: string;
+  websiteUrl: string | null;
+  twitterUrl: string | null;
+  stages: JoinedConferenceStage[];
+  tags: string[];
+  thumbnail: string;
+}

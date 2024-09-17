@@ -143,7 +143,7 @@ function BET() {
                       builder: bet.builder || '',
                       downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: bet.logo,
+                      logo: bet.logo ?? '',
                     };
                   }) || []
               }
@@ -170,7 +170,7 @@ function BET() {
                       builder: bet.builder || '',
                       downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: bet.logo,
+                      logo: bet.logo ?? '',
                     };
                   }) || []
               }

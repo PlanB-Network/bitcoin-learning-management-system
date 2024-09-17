@@ -14,9 +14,8 @@ type GetUserOptions =
       lud4PublicKey: string;
     };
 
-export const createGetUser =
-  (dependencies: Dependencies) => async (options: GetUserOptions) => {
-    const { postgres } = dependencies;
-
+export const createGetUser = ({ postgres }: Dependencies) => {
+  return (options: GetUserOptions) => {
     return postgres.exec(getUserQuery(options)).then(firstRow);
   };
+};

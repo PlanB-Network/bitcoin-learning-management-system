@@ -23,11 +23,9 @@ interface PodcastMain {
 }
 
 export const createProcessChangedPodcast = (
-  dependencies: Dependencies,
+  { postgres }: Dependencies,
   errors: string[],
 ) => {
-  const { postgres } = dependencies;
-
   return async (resource: ChangedResource) => {
     return postgres
       .begin(async (transaction) => {
