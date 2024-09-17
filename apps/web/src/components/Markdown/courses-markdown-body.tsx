@@ -137,7 +137,9 @@ const CoursesMarkdownBody = ({
               alt={alt}
             />
           ),
-        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+        blockquote: ({ children }) => (
+          <Blockquote mode={'light'}>{children}</Blockquote>
+        ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');
 
