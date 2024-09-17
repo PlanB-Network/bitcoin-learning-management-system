@@ -18,9 +18,11 @@ interface BCertificateExamMain {
   score_min: number;
 }
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (bCertificateExam: ChangedBCertificateExam, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (
+    bCertificateExam: ChangedBCertificateExam,
+    file?: ChangedFile,
+  ) => {
     if (!file || file.kind === 'removed') return;
 
     const parsedBCertificateExam = yamlToObject<BCertificateExamMain>(
@@ -60,3 +62,4 @@ export const createProcessMainFile =
         RETURNING *
       `;
   };
+};

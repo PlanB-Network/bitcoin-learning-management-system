@@ -97,9 +97,7 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
   return [...groupedTutorials.values()];
 };
 
-export const createUpdateTutorials = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createUpdateTutorials = ({ postgres }: Dependencies) => {
   return async (tutorial: ChangedTutorial, errors: string[]) => {
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
@@ -161,10 +159,8 @@ export const createUpdateTutorials = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteTutorials = (dependencies: Dependencies) => {
+export const createDeleteTutorials = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 

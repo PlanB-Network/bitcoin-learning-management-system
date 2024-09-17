@@ -96,9 +96,7 @@ export const groupByBlog = (files: ChangedFile[], errors: string[]) => {
   return [...groupedBlogs.values()];
 };
 
-export const createUpdateBlogs = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createUpdateBlogs = ({ postgres }: Dependencies) => {
   return async (blog: ChangedBlog, errors: string[]) => {
     const { main, files } = separateContentFiles(blog, 'post.yml');
 
@@ -164,10 +162,8 @@ export const createUpdateBlogs = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteBlogs = (dependencies: Dependencies) => {
+export const createDeleteBlogs = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.blogs WHERE last_sync < ${sync_date} 

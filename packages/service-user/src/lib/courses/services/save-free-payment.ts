@@ -12,9 +12,7 @@ interface Options {
   couponCode?: string;
 }
 
-export const createSaveFreePayment = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createSaveFreePayment = ({ postgres }: Dependencies) => {
   return async (opts: Options): Promise<CheckoutData> => {
     try {
       const randomUUID = uuidv4();

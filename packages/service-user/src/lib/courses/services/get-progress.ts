@@ -5,14 +5,12 @@ import { getCompletedChaptersQuery } from '../queries/get-completed-chapters.js'
 import { getNextChaptersQuery } from '../queries/get-next-chapters.js';
 import { getProgressQuery } from '../queries/get-progress.js';
 
-export const createGetProgress = (dependencies: Dependencies) => {
-  return async ({
-    uid,
-  }: {
-    uid: string;
-  }): Promise<CourseProgressExtended[]> => {
-    const { postgres } = dependencies;
+interface Options {
+  uid: string;
+}
 
+export const createGetProgress = ({ postgres }: Dependencies) => {
+  return async ({ uid }: Options): Promise<CourseProgressExtended[]> => {
     const progress = await postgres.exec(getProgressQuery(uid));
     const completedChapters = await postgres.exec(
       getCompletedChaptersQuery(uid),

@@ -74,9 +74,7 @@ export const groupByLegal = (files: ChangedFile[], errors: string[]) => {
   return [...groupedLegals.values()];
 };
 
-export const createUpdateLegals = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createUpdateLegals = ({ postgres }: Dependencies) => {
   return async (legal: ChangedLegal, errors: string[]) => {
     const { files } = separateContentFiles(legal, 'post.yml');
 
@@ -147,10 +145,8 @@ export const createUpdateLegals = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteLegals = (dependencies: Dependencies) => {
+export const createDeleteLegals = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.legals WHERE last_sync < ${sync_date}`,

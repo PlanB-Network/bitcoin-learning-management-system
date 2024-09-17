@@ -293,10 +293,8 @@ const extractParts = (markdown: string): Part[] => {
   return parts;
 };
 
-export const createUpdateCourses = (dependencies: Dependencies) => {
+export const createUpdateCourses = ({ postgres }: Dependencies) => {
   return async (course: ChangedCourse, errors: string[]) => {
-    const { postgres } = dependencies;
-
     const { main, files } = separateContentFiles(course, 'course.yml');
 
     return postgres

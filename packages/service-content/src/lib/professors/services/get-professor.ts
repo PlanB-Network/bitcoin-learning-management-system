@@ -9,10 +9,8 @@ import { getProfessorsQuery } from '../queries/get-professors.js';
 
 import { formatProfessor } from './utils.js';
 
-export const createGetProfessor = (dependencies: Dependencies) => {
+export const createGetProfessor = ({ postgres }: Dependencies) => {
   return async (id: number, language?: string): Promise<FullProfessor> => {
-    const { postgres } = dependencies;
-
     const professor = await postgres
       .exec(getProfessorQuery(id, language))
       .then(firstRow);

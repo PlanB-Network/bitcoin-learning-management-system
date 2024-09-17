@@ -122,10 +122,8 @@ export const createUpdateResources = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteResources = (dependencies: Dependencies) => {
+export const createDeleteResources = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.resources WHERE last_sync < ${sync_date} 

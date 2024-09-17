@@ -6,18 +6,17 @@ import { newLnurlUserQuery } from '../queries/new-lnurl-user.js';
 
 import { createGenerateUniqueContributorId } from './generate-unique-contributor-id.js';
 
-interface NewLnurlUser {
-  (options: { publicKey: string }): Promise<UserDetails>;
+interface Options {
+  publicKey: string;
 }
 
-export const createNewLnurlUser =
-  (dependencies: Dependencies): NewLnurlUser =>
-  async ({ publicKey }) => {
-    const { postgres } = dependencies;
+export const createNewLnurlUser = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
 
-    const generateUniqueContributorId =
-      createGenerateUniqueContributorId(dependencies);
+  const generateUniqueContributorId =
+    createGenerateUniqueContributorId(dependencies);
 
+  return async ({ publicKey }: Options): Promise<UserDetails> => {
     const username = publicKey.slice(0, 10);
     const contributorId = await generateUniqueContributorId();
 
@@ -31,3 +30,4 @@ export const createNewLnurlUser =
       )
       .then(firstRow) as Promise<UserDetails>;
   };
+};

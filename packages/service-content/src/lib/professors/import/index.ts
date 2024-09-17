@@ -81,10 +81,8 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
   return [...groupedProfessors.values()];
 };
 
-export const createUpdateProfessors = (dependencies: Dependencies) => {
+export const createUpdateProfessors = ({ postgres }: Dependencies) => {
   return async (professor: ChangedProfessor, errors: string[]) => {
-    const { postgres } = dependencies;
-
     const { main, files } = separateContentFiles(professor, 'professor.yml');
 
     return postgres
@@ -126,10 +124,8 @@ export const createUpdateProfessors = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteProfessors = (dependencies: Dependencies) => {
+export const createDeleteProfessors = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.professors WHERE last_sync < ${sync_date} 
