@@ -31,7 +31,9 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (professors/name)
-  if (pathElements.length < 2) throw new Error('Invalid professor path');
+  if (pathElements.length < 2) {
+    throw new Error('Invalid professor path');
+  }
 
   return {
     path: pathElements.slice(0, 2).join('/'),

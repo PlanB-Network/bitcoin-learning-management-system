@@ -51,3 +51,7 @@ export const joinedConferenceSchema = resourceSchema
       thumbnail: z.string(),
     }),
   );
+
+export const getConferenceResponseSchema = joinedConferenceSchema.merge(
+  z.object({ thumbnail: z.string() }),
+);

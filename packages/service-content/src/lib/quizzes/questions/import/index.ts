@@ -33,7 +33,9 @@ export interface ChangedQuizQuestion extends ChangedContent {
 export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   const pathElements = path.split('/');
 
-  if (pathElements.length < 4) throw new Error('Invalid quiz question path');
+  if (pathElements.length < 4) {
+    throw new Error('Invalid quiz question path');
+  }
 
   const id = `${pathElements[1]}-${pathElements[3]}`;
 

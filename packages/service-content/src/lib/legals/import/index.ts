@@ -27,7 +27,10 @@ export interface ChangedLegal extends ChangedContent {
 
 export const parseDetailsFromPath = (path: string): LegalDetails => {
   const pathElements = path.split('/');
-  if (pathElements.length < 2) throw new Error('Invalid resource path');
+  if (pathElements.length < 2) {
+    throw new Error('Invalid resource path');
+  }
+
   return {
     path: pathElements.slice(0, -1).join('/'),
     fullPath: pathElements.join('/'),

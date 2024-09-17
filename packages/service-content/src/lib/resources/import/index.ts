@@ -40,7 +40,9 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (resources/category/name)
-  if (pathElements.length < 3) throw new Error('Invalid resource path');
+  if (pathElements.length < 3) {
+    throw new Error('Invalid resource path');
+  }
 
   // Validate that the file is located under a supported resource category directory
   const categorySubpath = pathElements[1];

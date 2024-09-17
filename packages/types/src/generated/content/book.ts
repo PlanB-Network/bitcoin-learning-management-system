@@ -48,3 +48,26 @@ export interface JoinedBook {
   level: Level;
   tags: string[];
 }
+
+export interface GetBookResponse {
+  id: number;
+  path: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  author: string;
+  websiteUrl: string | null;
+  language: string;
+  title: string;
+  translator: string | null;
+  description: string | null;
+  publisher: string | null;
+  publicationYear: number | null;
+  cover?: string | undefined;
+  summaryText: string | null;
+  summaryContributorId: string | null;
+  shopUrl: string | null;
+  downloadUrl: string | null;
+  original: boolean;
+  level: Level;
+  tags: string[];
+}

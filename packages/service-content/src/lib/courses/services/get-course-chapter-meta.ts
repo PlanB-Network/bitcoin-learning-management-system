@@ -13,7 +13,9 @@ export const createGetCourseChapterMeta = (dependencies: Dependencies) => {
       .exec(getCourseChapterMetaQuery(chapterId, language))
       .then(firstRow);
 
-    if (!chapter) throw new Error('Chapter not found');
+    if (!chapter) {
+      throw new Error('Chapter not found');
+    }
 
     return {
       ...chapter,

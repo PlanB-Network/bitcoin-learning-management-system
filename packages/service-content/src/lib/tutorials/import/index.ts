@@ -36,7 +36,9 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (tutorials/)
-  if (pathElements.length < 4) throw new Error('Invalid resource path');
+  if (pathElements.length < 4) {
+    throw new Error('Invalid resource path');
+  }
 
   // If pathElements has 'assets', get the path until 'assets'
   // If not, get the direct parent of the file

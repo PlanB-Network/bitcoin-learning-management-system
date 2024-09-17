@@ -28,3 +28,20 @@ export interface JoinedPodcast {
   nostr: string | null;
   tags: string[];
 }
+
+export interface GetPodcastResponse {
+  id: number;
+  path: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  language: string;
+  name: string;
+  host: string;
+  description: string | null;
+  websiteUrl: string | null;
+  twitterUrl: string | null;
+  podcastUrl: string | null;
+  nostr: string | null;
+  tags: string[];
+  logo: string;
+}

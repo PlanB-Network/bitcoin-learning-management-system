@@ -10,7 +10,9 @@ export const createGetConferenceMeta = ({ postgres }: Dependencies) => {
       .exec(getConferenceMetaQuery(id))
       .then(firstRow);
 
-    if (!conference) throw new Error(`Conference ${id} not found`);
+    if (!conference) {
+      throw new Error(`Conference ${id} not found`);
+    }
 
     return {
       ...conference,

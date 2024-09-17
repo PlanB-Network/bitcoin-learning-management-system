@@ -17,7 +17,9 @@ export const createGetProfessor = (dependencies: Dependencies) => {
       .exec(getProfessorQuery(id, language))
       .then(firstRow);
 
-    if (!professor) throw new Error(`Professor not found`);
+    if (!professor) {
+      throw new Error(`Professor not found`);
+    }
 
     const courses = await postgres.exec(
       getProfessorCoursesQuery({

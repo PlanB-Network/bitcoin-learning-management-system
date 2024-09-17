@@ -9,13 +9,17 @@ export const getContentType = (path: string) => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 1 element (content/)
-  if (pathElements.length === 0) throw new Error('Invalid content path');
+  if (pathElements.length === 0) {
+    throw new Error('Invalid content path');
+  }
 
   const contentType = supportedContentTypes.find((value) =>
     path.startsWith(value),
   );
 
-  if (!contentType) throw new Error(`Invalid content type path: ${path}`);
+  if (!contentType) {
+    throw new Error(`Invalid content type path: ${path}`);
+  }
 
   return contentType;
 };
@@ -72,7 +76,10 @@ export const getRelativePath = (fullPath: string, directoryPath?: string) => {
 export const getFileExtension = (path: string) => {
   const pathElements = path.split('/');
   const fileName = pathElements.at(-1);
-  if (!fileName) throw new Error('Invalid file path');
+  if (!fileName) {
+    throw new Error('Invalid file path');
+  }
+
   const fileNameElements = fileName.split('.');
   return fileNameElements.at(-1);
 };
