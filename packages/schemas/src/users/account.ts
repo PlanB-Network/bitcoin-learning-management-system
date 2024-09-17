@@ -42,3 +42,13 @@ export const userRolesSchema = userAccountSchema
   );
 
 export const usersLud4PublicKeySchema = createSelectSchema(usersLud4PublicKeys);
+
+export const loginResponseSchema = z.object({
+  status: z.number(),
+  message: z.string(),
+  user: z.object({
+    uid: z.string(),
+    username: z.string(),
+    email: z.string().optional(),
+  }),
+});

@@ -3,7 +3,11 @@ import { Buffer } from 'buffer';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { CouponCode, JoinedCourseWithAll } from '@blms/types';
+import type {
+  CheckoutData,
+  CouponCode,
+  JoinedCourseWithAll,
+} from '@blms/types';
 import {
   Dialog,
   DialogContent,
@@ -12,7 +16,6 @@ import {
 } from '@blms/ui';
 
 import { PaymentDescription } from '#src/components/payment-description.js';
-import type { PaymentData } from '#src/components/payment-qr.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -49,7 +52,7 @@ export const CoursePaymentModal = ({
   const saveFreePaymentRequest =
     trpc.user.courses.saveFreePayment.useMutation();
 
-  const [paymentData, setPaymentData] = useState<PaymentData>();
+  const [paymentData, setPaymentData] = useState<CheckoutData>();
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   const [validatedCoupon, setValidatedCoupon] = useState<CouponCode | null>(
     null,

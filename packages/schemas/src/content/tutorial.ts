@@ -9,7 +9,10 @@ import {
 } from '@blms/database';
 
 import { joinedBuilderSchema } from './builder.js';
-import { joinedProfessorSchema } from './professor.js';
+import {
+  formattedProfessorSchema,
+  joinedProfessorSchema,
+} from './professor.js';
 
 export const tutorialSchema = createSelectSchema(contentTutorials);
 export const tutorialLocalizedSchema = createSelectSchema(
@@ -64,5 +67,33 @@ export const joinedTutorialSchema = joinedTutorialLightSchema.merge(
 export const joinedTutorialCreditSchema = tutorialCreditSchema.merge(
   z.object({
     professor: joinedProfessorSchema.optional(),
+  }),
+);
+
+export const getTutorialResponseSchema = joinedTutorialSchema.merge(
+  z.object({
+    credits: joinedTutorialCreditSchema
+      .omit({
+        tutorialId: true,
+        contributorId: true,
+        lightningAddress: true,
+        lnurlPay: true,
+        paynym: true,
+        silentPayment: true,
+        tipsUrl: true,
+      })
+      .merge(
+        z.object({
+          professor: formattedProfessorSchema.optional(),
+          tips: z.object({
+            lightningAddress: joinedTutorialCreditSchema.shape.lightningAddress,
+            lnurlPay: joinedTutorialCreditSchema.shape.lnurlPay,
+            paynym: joinedTutorialCreditSchema.shape.paynym,
+            silentPayment: joinedTutorialCreditSchema.shape.silentPayment,
+            url: joinedTutorialCreditSchema.shape.tipsUrl,
+          }),
+        }),
+      )
+      .optional(),
   }),
 );

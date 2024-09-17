@@ -11,3 +11,4 @@ export type * from './course.js';
 export type * from './event.js';
 export type * from './file.js';
 export type * from './token.js';
+export type * from './payment.js';

@@ -3,7 +3,7 @@ import { Buffer } from 'buffer';
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
-import type { JoinedEvent } from '@blms/types';
+import type { CheckoutData, JoinedEvent } from '@blms/types';
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,7 @@ import {
 } from '@blms/ui';
 
 import { PaymentDescription } from '#src/components/payment-description.js';
-import { type PaymentData, PaymentQr } from '#src/components/payment-qr.js';
+import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
@@ -46,7 +46,7 @@ export const EventPaymentModal = ({
   const saveEventPaymentRequest =
     trpc.user.events.saveEventPayment.useMutation();
 
-  const [paymentData, setPaymentData] = useState<PaymentData>();
+  const [paymentData, setPaymentData] = useState<CheckoutData>();
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
   useEffect(() => {

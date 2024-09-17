@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import type { Parser } from '#src/trpc/types.js';
+
 import { studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
@@ -8,7 +10,7 @@ import { lud4AuthRouter } from './lud4.js';
 
 const logoutProcedure = studentProcedure
   .input(z.void())
-  .output(
+  .output<Parser<{ status: number; message: string }>>(
     z.object({
       status: z.number(),
       message: z.string(),

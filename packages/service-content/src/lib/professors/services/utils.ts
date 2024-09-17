@@ -1,11 +1,12 @@
-import type { JoinedProfessor } from '@blms/types';
+import type { FormattedProfessor, JoinedProfessor } from '@blms/types';
 
-import { computeAssetCdnUrl, omitWithTypes } from '../../utils.js';
+import { computeAssetCdnUrl, omit } from '../../utils.js';
 
-// TODO: Add return type
-export const formatProfessor = (professor: JoinedProfessor) => {
+export const formatProfessor = (
+  professor: JoinedProfessor,
+): FormattedProfessor => {
   return {
-    ...omitWithTypes(professor, [
+    ...omit(professor, [
       'websiteUrl',
       'twitterUrl',
       'githubUrl',

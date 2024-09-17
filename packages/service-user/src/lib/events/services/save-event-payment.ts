@@ -1,29 +1,19 @@
+import type { CheckoutData } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { insertEventPayment } from '../queries/insert-event-payment.js';
 
-interface CheckoutData {
-  id: string;
-  pr: string;
-  onChainAddr: string;
+interface Options {
+  uid: string;
+  eventId: string;
   amount: number;
-  checkoutUrl: string;
+  withPhysical: boolean;
 }
 
-export const createSaveEventPayment =
-  (dependencies: Dependencies) =>
-  async ({
-    uid,
-    eventId,
-    amount,
-    withPhysical,
-  }: {
-    uid: string;
-    eventId: string;
-    amount: number;
-    withPhysical: boolean;
-  }) => {
-    const { postgres } = dependencies;
+export const createSaveEventPayment = (dependencies: Dependencies) => {
+  const { postgres } = dependencies;
 
+  return async ({ uid, eventId, amount, withPhysical }: Options) => {
     const paymentData = {
       title: eventId,
       amount: amount,
@@ -69,3 +59,4 @@ export const createSaveEventPayment =
 
     throw new Error('Checkout error');
   };
+};

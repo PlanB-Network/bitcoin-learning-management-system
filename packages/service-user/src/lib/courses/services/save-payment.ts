@@ -1,13 +1,7 @@
+import type { CheckoutData } from '@blms/types';
+
 import type { Dependencies } from '../../../dependencies.js';
 import { insertPayment } from '../queries/insert-payment.js';
-
-interface CheckoutData {
-  id: string;
-  pr: string;
-  onChainAddr: string;
-  amount: number;
-  checkoutUrl: string;
-}
 
 export const createSavePayment = (dependencies: Dependencies) => {
   const { postgres } = dependencies;

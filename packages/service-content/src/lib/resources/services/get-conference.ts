@@ -4,8 +4,8 @@ import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getConferenceQuery } from '../queries/get-conference.js';
 
-export const createGetConference =
-  (dependencies: Dependencies) => async (id: number) => {
+export const createGetConference = (dependencies: Dependencies) => {
+  return async (id: number) => {
     const { postgres } = dependencies;
 
     const conference = await postgres
@@ -23,3 +23,4 @@ export const createGetConference =
       ),
     };
   };
+};

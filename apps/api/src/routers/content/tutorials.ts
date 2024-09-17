@@ -1,6 +1,13 @@
 import { z } from 'zod';
 
+import {
+  getTutorialResponseSchema,
+  joinedTutorialLightSchema,
+} from '@blms/schemas';
 import { createGetTutorial, createGetTutorials } from '@blms/service-content';
+import type { GetTutorialResponse, JoinedTutorialLight } from '@blms/types';
+
+import type { Parser } from '#src/trpc/types.js';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -13,8 +20,7 @@ const getTutorialsProcedure = publicProcedure
       })
       .optional(),
   )
-  // Todo add output?
-  //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
+  .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
   .query(({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(undefined, input?.language),
   );
@@ -26,8 +32,7 @@ const getTutorialsByCategoryProcedure = publicProcedure
       language: z.string().optional(),
     }),
   )
-  // Todo add output?
-  //.output(joinedTutorialSchema.omit({ rawContent: true }).array())
+  .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
   .query(({ ctx, input }) =>
     createGetTutorials(ctx.dependencies)(input.category, input.language),
   );
@@ -40,37 +45,7 @@ const getTutorialProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  // TODO fix this validation issue
-  // .output(
-  //   joinedTutorialSchema.merge(
-  //     z.object({
-  //       credits: joinedTutorialCreditSchema
-  //         .omit({
-  //           tutorialId: true,
-  //           contributorId: true,
-  //           lightningAddress: true,
-  //           lnurlPay: true,
-  //           paynym: true,
-  //           silentPayment: true,
-  //           tipsUrl: true,
-  //         })
-  //         .merge(
-  //           z.object({
-  //             professor: formattedProfessorSchema.optional(),
-  //             tips: z.object({
-  //               lightningAddress:
-  //                 joinedTutorialCreditSchema.shape.lightningAddress,
-  //               lnurlPay: joinedTutorialCreditSchema.shape.lnurlPay,
-  //               paynym: joinedTutorialCreditSchema.shape.paynym,
-  //               silentPayment: joinedTutorialCreditSchema.shape.silentPayment,
-  //               url: joinedTutorialCreditSchema.shape.tipsUrl,
-  //             }),
-  //           }),
-  //         )
-  //         .optional(),
-  //     }),
-  //   ),
-  // )
+  .output<Parser<GetTutorialResponse>>(getTutorialResponseSchema)
   .query(({ ctx, input }) =>
     createGetTutorial(ctx.dependencies)({
       category: input.category,

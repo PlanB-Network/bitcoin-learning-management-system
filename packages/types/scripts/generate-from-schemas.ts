@@ -117,6 +117,7 @@ const extractSchemas = (fileContent: string): string[] => {
 // Map of enum values to their corresponding type name and import path
 let enumsMap = new Map<string, string>();
 
+let currentlyProcessedType = '';
 let currentlyProcessedFile = '';
 let currentImportSet: Set<string>;
 
@@ -132,6 +133,9 @@ const generateFileContent = (
     const schema = (schemas as any)[name] as ZodTypeAny & GetType;
 
     const typeName = typeNameFromSchema(name);
+    currentlyProcessedType = typeName;
+
+    console.debug(`Processing schema "${typeName}"`);
 
     const zodType = schema._def?.typeName;
 
@@ -145,6 +149,13 @@ const generateFileContent = (
 
     // Append a custom getType function to the schema once it have been processed
     schema._def.getType = (ts) => {
+      console.debug(`Get type "${currentlyProcessedType}" -> "${typeName}"`);
+
+      // Do not return self-references (otherwise you end up with export A = A)
+      if (currentlyProcessedType === typeName) {
+        return null;
+      }
+
       if (filePath !== currentlyProcessedFile) {
         console.debug(
           `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
@@ -197,3 +208,4 @@ const typeNameFromSchema = (schemaName: string): string => {
 };
 
 processDirectory(schemasDirectory);
+processDirectory(schemasDirectory); // Do it twice to handle imports correctly

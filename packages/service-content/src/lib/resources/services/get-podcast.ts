@@ -4,10 +4,8 @@ import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getPodcastQuery } from '../queries/get-podcast.js';
 
-export const createGetPodcast =
-  (dependencies: Dependencies) => async (id: number, language?: string) => {
-    const { postgres } = dependencies;
-
+export const createGetPodcast = ({ postgres }: Dependencies) => {
+  return async (id: number, language?: string) => {
     const podcast = await postgres
       .exec(getPodcastQuery(id, language))
       .then(firstRow);
@@ -19,3 +17,4 @@ export const createGetPodcast =
       logo: computeAssetCdnUrl(podcast.lastCommit, podcast.path, 'logo.webp'),
     };
   };
+};
