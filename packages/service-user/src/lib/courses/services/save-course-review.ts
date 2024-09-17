@@ -8,7 +8,7 @@ interface Options {
 }
 
 export const createSaveCourseReview = ({ postgres }: Dependencies) => {
-  return (options: Options): Promise<CourseReview[]> => {
-    return postgres.exec(saveCourseReview(options));
+  return (options: Options): Promise<void> => {
+    return postgres.exec(saveCourseReview(options)).then(() => void 0);
   };
 };

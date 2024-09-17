@@ -1,5 +1,3 @@
-import type { CourseQuizAttempts } from '@blms/types';
-
 import type { Dependencies } from '../../../dependencies.js';
 import { insertQuizAttempt } from '../queries/insert-quiz-attempt.js';
 
@@ -11,7 +9,7 @@ interface Options {
 }
 
 export const createSaveQuizAttempt = ({ postgres }: Dependencies) => {
-  return (options: Options): Promise<CourseQuizAttempts[]> => {
-    return postgres.exec(insertQuizAttempt(options));
+  return (options: Options): Promise<void> => {
+    return postgres.exec(insertQuizAttempt(options)).then(() => void 0);
   };
 };
