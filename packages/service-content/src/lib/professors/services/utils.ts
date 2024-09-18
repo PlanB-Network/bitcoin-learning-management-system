@@ -17,6 +17,8 @@ export const formatProfessor = (
       'silentPayment',
       'tipsUrl',
     ]),
+    lastSync: new Date(professor.lastSync),
+    lastUpdated: new Date(professor.lastUpdated),
     links: {
       website: professor.websiteUrl,
       twitter: professor.twitterUrl,
