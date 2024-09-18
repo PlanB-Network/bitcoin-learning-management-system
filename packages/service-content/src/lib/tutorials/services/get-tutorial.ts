@@ -1,4 +1,5 @@
 import { firstRow } from '@blms/database';
+import type { GetTutorialResponse } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
@@ -13,7 +14,9 @@ interface Options {
 }
 
 export const createGetTutorial = ({ postgres }: Dependencies) => {
-  return async ({ category, name, language }: Options) => {
+  return async (options: Options): Promise<GetTutorialResponse> => {
+    const { category, name, language } = options;
+
     const tutorial = await postgres
       .exec(getTutorialQuery(category, name, language))
       .then(firstRow);

@@ -21,9 +21,9 @@ const getTutorialsProcedure = publicProcedure
       .optional(),
   )
   .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
-  .query(({ ctx, input }) =>
-    createGetTutorials(ctx.dependencies)(undefined, input?.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetTutorials(ctx.dependencies)(undefined, input?.language);
+  });
 
 const getTutorialsByCategoryProcedure = publicProcedure
   .input(
@@ -33,9 +33,9 @@ const getTutorialsByCategoryProcedure = publicProcedure
     }),
   )
   .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
-  .query(({ ctx, input }) =>
-    createGetTutorials(ctx.dependencies)(input.category, input.language),
-  );
+  .query(({ ctx, input }) => {
+    return createGetTutorials(ctx.dependencies)(input.category, input.language);
+  });
 
 const getTutorialProcedure = publicProcedure
   .input(
@@ -46,13 +46,13 @@ const getTutorialProcedure = publicProcedure
     }),
   )
   .output<Parser<GetTutorialResponse>>(getTutorialResponseSchema)
-  .query(({ ctx, input }) =>
-    createGetTutorial(ctx.dependencies)({
+  .query(({ ctx, input }) => {
+    return createGetTutorial(ctx.dependencies)({
       category: input.category,
       name: input.name,
       language: input.language,
-    }),
-  );
+    });
+  });
 
 export const tutorialsRouter = createTRPCRouter({
   getTutorialsByCategory: getTutorialsByCategoryProcedure,
