@@ -22,7 +22,6 @@ import crayonSVG from '#src/assets/courses/Crayon.svg';
 import Book from '#src/assets/courses/livre.svg?react';
 import rocketSVG from '#src/assets/courses/rocketcourse.svg';
 import staricon from '#src/assets/courses/star.png';
-import wizard from '#src/assets/courses/wizard.png';
 import yellowBook from '#src/assets/courses/yellowbook.png';
 import graduateImg from '#src/assets/icons/birrete.png';
 import clock from '#src/assets/icons/clock.png';
@@ -566,17 +565,8 @@ function CourseDetails() {
 
   const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
-      <div className="my-4 max-w-5xl px-2">
+      <div className="my-4 max-w-5xl mx-auto lg:mx-0 w-full">
         <div className="flex h-fit flex-col">
-          <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={wizard} alt="" className="size-5" />
-            <h4 className="text-blue-1000 mb-1 font-semibold uppercase italic sm:hidden">
-              {t('courses.details.professor')}
-            </h4>
-          </div>
-          <h4 className="hidden self-center text-2xl font-light uppercase italic text-gray-400 sm:block">
-            {t('courses.details.taughtBy')}
-          </h4>
           <div className="flex flex-col gap-4">
             {course.professors.map((professor) => (
               <Link

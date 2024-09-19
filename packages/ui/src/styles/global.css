@@ -299,6 +299,10 @@
     @apply text-base leading-[160%] font-normal tracking-015px;
   }
 
+  .subtitle-small-caps-reg-14px {
+    @apply font-normal text-sm uppercase;
+  }
+
   .subtitle-small-med-14px {
     @apply text-sm leading-[160%] font-medium tracking-[0.1px];
   }

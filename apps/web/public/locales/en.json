@@ -205,7 +205,7 @@
       "price": "Price: {{price}} sats",
       "professor": "Professor",
       "startCourse": "Start the course",
-      "taughtBy": "This course is taught by:",
+      "taughtBy": "This course is taught by",
       "teacher": "Teacher: {{teacher}}",
       "teachers": "Teachers: {{teachers}}",
       "teacherWord": "A word from the teacher",

@@ -140,7 +140,7 @@ export const AuthorCardFull = ({
   );
 };
 
-const BackgroundAuthorCardElement = ({
+export const BackgroundAuthorCardElement = ({
   showAllCounts,
 }: {
   showAllCounts: boolean;
