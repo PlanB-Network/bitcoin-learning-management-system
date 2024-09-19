@@ -55,7 +55,7 @@ export const TutorialLayout = ({
                     <CollapsibleTrigger className="group flex w-full items-center justify-start pl-5 text-left gap-3 h-9">
                       <BsFillTriangleFill
                         size={13}
-                        className="group-data-[state=open]:rotate-180 data-[state=closed]:rotate-90 text-newGray-1 transition-transform ease-in-out"
+                        className="group-data-[state=open]:rotate-180 group-data-[state=closed]:rotate-90  text-newGray-1 transition-transform ease-in-out"
                       />
                       <Link
                         to={'/tutorials/$category'}
