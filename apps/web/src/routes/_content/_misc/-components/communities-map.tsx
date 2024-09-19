@@ -13,6 +13,8 @@ import { Circle as CircleStyle, Fill, Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import { useEffect } from 'react';
 
+import OrangePillPath from '#src/assets/icons/orange_pill_color.svg';
+
 interface CommunitiesMapProps {
   communities: Array<{
     id: number;
@@ -79,7 +81,7 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
         }),
         new Style({
           image: new Icon({
-            src: '/src/assets/icons/orange_pill_color.svg',
+            src: OrangePillPath,
             scale: 0.03,
             anchor: [0.5, 1.2],
             anchorXUnits: 'fraction',
