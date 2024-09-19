@@ -129,7 +129,9 @@ const ConferencesMarkdownBody = ({
               alt={alt}
             />
           ),
-        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+        blockquote: ({ children }) => (
+          <Blockquote mode="dark">{children}</Blockquote>
+        ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');
 
