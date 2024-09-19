@@ -176,6 +176,13 @@
       "when": 1725354103942,
       "tag": "0024_cool_infant_terrible",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1726246639504,
+      "tag": "0025_open_leech",
+      "breakpoints": true
     }
   ]
 }

@@ -1435,6 +1435,16 @@ export const contentProofreading = content.table(
   // },
 );
 
+/**
+ * Table to store coordinates for builders (bound by address_line_1).
+ */
+export const contentBuilderLocation = content.table('builders_locations', {
+  placeId: integer('place_id').notNull(), // OSM place_id
+  name: text('name').primaryKey(), // address_line_1 in the builders table
+  lat: doublePrecision('lat').notNull(),
+  lng: doublePrecision('lng').notNull(),
+});
+
 export const contentProofreadingContributor = content.table(
   'proofreading_contributor',
   {

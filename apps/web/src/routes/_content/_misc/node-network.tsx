@@ -6,11 +6,12 @@ import { LuPlus } from 'react-icons/lu';
 import { Button, Loader, cn } from '@blms/ui';
 
 import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
-import nodeMap from '#src/assets/about/node_map.webp';
 import { PageLayout } from '#src/components/page-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../resources/-components/cards/builder-card.tsx';
+
+import { CommunitiesMap } from './-components/communities-map.tsx';
 
 export const Route = createFileRoute('/_content/_misc/node-network')({
   component: NodeNetwork,
@@ -33,7 +34,7 @@ const QnAItem = ({
           <LuPlus size={24} />
         </span>
       </summary>
-      <p className="w-full whitespace-pre-line leading-normal text-justify max-w-[708px]">
+      <p className="w-full whitespace-pre-line leading-normal text-justify max-w-[708px] text-sm sm:text-base">
         {answer}
       </p>
     </details>
@@ -67,7 +68,7 @@ const QnA = () => {
   ];
 
   return (
-    <div className="flex w-full px-10 sm:px-0 flex-col z-10">
+    <div className="flex w-full px-4 sm:px-10 flex-col z-10">
       {questions.map((item) => (
         <QnAItem
           question={item.question}
@@ -77,6 +78,13 @@ const QnA = () => {
       ))}
     </div>
   );
+};
+
+const normalizeText = (text: string): string => {
+  return text
+    .trim()
+    .toLowerCase()
+    .replaceAll(/[^\dA-Za-z]/g, '');
 };
 
 function NodeNetwork() {
@@ -91,9 +99,26 @@ function NodeNetwork() {
     },
   );
 
+  const { data: builderLocations } =
+    trpc.content.getBuildersLocations.useQuery();
   const filteredCommunities = communities
     ? communities
         .filter((el) => el.category.toLowerCase() === 'communities')
+        .map((community) => {
+          const normalizedCommunityAddress = normalizeText(
+            community.addressLine1 ?? '',
+          );
+
+          const location = builderLocations?.find((loc: { name: string }) => {
+            const normalizedLocationName = normalizeText(loc.name);
+            return normalizedLocationName === normalizedCommunityAddress;
+          });
+          return {
+            ...community,
+            lat: location?.lat ?? 0,
+            lng: location?.lng ?? 0,
+          };
+        })
         .sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
@@ -104,8 +129,8 @@ function NodeNetwork() {
       description={t('nodeNetwork.description1')}
       footerVariant="dark"
     >
-      <div className="flex flex-col items-center text-white">
-        <div className="max-w-[1017px] md:mt-14 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
+      <div className="flex flex-col items-center text-white px-4 sm:px-10">
+        <div className="max-w-[1017px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11">
           {!isFetched && <Loader size={'s'} />}
           {filteredCommunities.map((community) => (
             <Link
@@ -119,15 +144,20 @@ function NodeNetwork() {
               <BuilderCard
                 name={community.name}
                 logo={community.logo}
-                cardWidth="size-[90px]"
+                cardWidth="size-[70px] sm:size-[90px]"
               />
             </Link>
           ))}
         </div>
-        <img src={nodeMap} alt="Node map" className="max-md:hidden my-20" />
+
+        <div className="w-full  mt-10">
+          <CommunitiesMap communities={filteredCommunities} />
+        </div>
+
         <QnA />
+
         <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
-          <SonarCircle className="max-md:hidden absolute size-72 sm:size-fit z-0" />
+          <SonarCircle className="hidden md:block absolute size-72 sm:size-fit z-0" />
           <a
             href="https://web.telegram.org/k/#@ajelex"
             target="_blank"
