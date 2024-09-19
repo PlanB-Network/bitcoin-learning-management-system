@@ -31,7 +31,7 @@ export const AuthorCard = ({ professor, ...props }: AuthorCardProps) => {
             <img
               src={professor.picture}
               alt="Professor"
-              className="mt-4 size-20 rounded-full sm:size-28"
+              className="mt-4 size-20 rounded-full sm:size-28 object-cover [overflow-clip-margin:_unset]"
             />
             <div className="mt-2 hidden w-full flex-row justify-around sm:flex">
               {professor.links.twitter && (
