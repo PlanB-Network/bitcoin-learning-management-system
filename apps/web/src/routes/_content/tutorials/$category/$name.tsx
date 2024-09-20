@@ -114,7 +114,7 @@ const AuthorDetails = ({
             <img
               src={tutorial?.credits?.professor?.picture}
               alt={tutorial?.credits?.professor?.name}
-              className="size-32 rounded-full z-10"
+              className="size-32 rounded-full z-10 object-cover [overflow-clip-margin:_unset]"
             />
 
             <div className="flex gap-4 items-end mt-2.5 z-10">

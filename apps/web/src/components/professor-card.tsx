@@ -122,7 +122,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
             <img
               src={professor.picture}
               alt={professor.name}
-              className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20"
+              className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20 object-cover [overflow-clip-margin:_unset]"
             />
             <div className="flex gap-4 items-end mt-2.5 z-10">
               <CourseAndTutorials professor={professor} />

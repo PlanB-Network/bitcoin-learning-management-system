@@ -45,10 +45,11 @@ export const AuthorCardFull = ({
               <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
                 {professor?.name}
               </span>
+
               <img
                 src={professor?.picture}
                 alt={professor?.name}
-                className="size-32 rounded-full z-10"
+                className="size-32 rounded-full z-10  object-cover [overflow-clip-margin:_unset]"
               />
               {(professor?.coursesCount > 0 ||
                 professor?.tutorialsCount > 0 ||
