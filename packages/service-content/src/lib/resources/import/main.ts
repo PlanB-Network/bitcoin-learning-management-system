@@ -11,9 +11,8 @@ import { yamlToObject } from '../../utils.js';
 
 import type { ChangedResource } from './index.js';
 
-export const createProcessMainFile =
-  (transaction: TransactionSql) =>
-  async (resource: ChangedResource, file?: ChangedFile) => {
+export const createProcessMainFile = (transaction: TransactionSql) => {
+  return async (resource: ChangedResource, file?: ChangedFile) => {
     if (!file || file.kind === 'removed') return;
 
     // Only get the tags from the main resource file
@@ -71,3 +70,4 @@ export const createProcessMainFile =
         `;
     }
   };
+};

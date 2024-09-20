@@ -6,21 +6,16 @@ import { createGetUser, createNewLnurlUser } from '@blms/service-user';
 
 import type { Dependencies } from '../../../dependencies.js';
 
-export const createCallbackLnurlAuth =
-  (dependencies: Dependencies) =>
-  async ({
-    tag,
-    k1,
-    sig,
-    key,
-    hmac,
-  }: {
-    tag: string;
-    k1: string;
-    sig: string;
-    key: string;
-    hmac: string;
-  }) => {
+interface Options {
+  tag: string;
+  k1: string;
+  sig: string;
+  key: string;
+  hmac: string;
+}
+
+export const createCallbackLnurlAuth = (dependencies: Dependencies) => {
+  return async ({ tag, k1, sig, key, hmac }: Options) => {
     const { events, redis } = dependencies;
 
     const getUser = createGetUser(dependencies);
@@ -32,6 +27,7 @@ export const createCallbackLnurlAuth =
       if (!user) {
         return newLnurlUser({ publicKey: key });
       }
+
       return user;
     };
 
@@ -87,3 +83,4 @@ export const createCallbackLnurlAuth =
       status: 'OK',
     };
   };
+};

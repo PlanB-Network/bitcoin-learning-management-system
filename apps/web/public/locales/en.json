@@ -328,14 +328,14 @@
       "learnMore": "Learn more",
       "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
       "organizedSessions": "The ₿ Certificate is organised by Plan B Network at various locations and times. Make sure to book your seat at a session.",
-      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network and is designed to assess your knowledge of Bitcoin and all its related topics.",
+      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network, designed to assess your knowledge of Bitcoin and all its related topics.",
       "findResults": "Here you can find your results to ₿ Certificate exams you’ve passed while registered with this account. The results usually takes 2 to 3 weeks to be processed and available here. If after a long time your results don’t show here, please contact us.",
-      "wantToPass": "Want to pass the exam?"
+      "wantToPass": "Want to take the exam?"
     },
     "booking": {
-      "accessLive": "Access live",
+      "accessLive": "Access the live exam",
       "billingTitle": "Billing history",
-      "billingSubtitle": "Download invoices from your bookings here.",
+      "billingSubtitle": "Download the invoices from your bookings here.",
       "downloadInvoice": "Download invoice",
       "downloadTicket": "Download ticket",
       "invoiceDate": "Date",
@@ -345,11 +345,11 @@
       "ticketLocation": "Location",
       "ticketTitle": "Title",
       "ticketType": "Type",
-      "noInvoice": "You have no invoices yet.",
-      "noTicket": "You have no tickets yet.",
+      "noInvoice": "You currently have no invoices.",
+      "noTicket": "You currently have no tickets.",
       "pastTicketTitle": "Past bookings",
       "upcomingTicketTitle": "Upcoming bookings",
-      "upcomingTicketSubtitle": "Download your ticket here to attend your next event. Make sure to bring your ticket with you to have access to the event."
+      "upcomingTicketSubtitle": "Download your ticket here to attend your upcoming event. Please remember to bring it with you for entry."
     },
     "bookings": "Bookings",
     "calendar": {
@@ -365,7 +365,7 @@
       "details": "Details",
       "inprogress": "In progress",
       "inprogressCoursesTitle": "Courses in progress",
-      "inprogressCoursesDescription": "Here you can check your progress in the courses you’ve started.",
+      "inprogressCoursesDescription": "Here you can check your progress in the courses you have started.",
       "resumeLesson": "Resume",
       "seeProgress": "to see your progress here.",
       "startCourse": "Start or complete a course"
@@ -377,16 +377,61 @@
       "save": "Save",
       "saving": "Saving...",
       "crop": "Crop",
-      "emailChangeConfirmation": "Email change confirmation email has been sent, check your inbox to confirm the change.",
+      "emailChangeConfirmation": "A confirmation email for your email change has been sent, please check your inbox to confirm.",
       "preview": "Preview",
       "displayName": "Display Name",
       "email": "Email",
       "password": "Password",
       "personalInformation": "My personal information",
+      "profile": "Profile",
       "profileInformation": "Profile information",
       "profilePicture": "Profile picture",
       "security": "Security",
       "username": "Username"
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "Analytics",
+        "courseDetails": "Course details",
+        "courseId": "Course ID",
+        "courseLongDescription": "Introductive description",
+        "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
+        "courseName": "Course name",
+        "courseShortDescription": "Goal",
+        "coursesManagementPanel": "Courses panel",
+        "curriculum": "Course curriculum",
+        "curriculumDescription": "Here is the current curriculum of this course.",
+        "editOnGithub": "Edit on Github",
+        "examResults": "Exam Results",
+        "makeModifications": "Need to make modifications?",
+        "objectives": "Objectives",
+        "proposeNewCourse": "Propose a new course",
+        "quickRecap": "Here you can find all the general informations regarding this course.",
+        "reviewInfos": "Here you can control and review all the information concerning each course you've coordinated.",
+        "reviews": "Reviews"
+      },
+      "menu": "Teacher menu",
+      "profile": {
+        "account": "Teacher account",
+        "billingInformations": "Billing informations",
+        "chooseTags": "Choose the tags that describe you the best",
+        "description": "Your description",
+        "descriptionTags": "These tags complete your public profile as they show your specialities as a bitcoiner.",
+        "enterTipsInformations": "Plan ₿ Network encourages users to tip teachers. Please enter your informations so that people can tip you when they wish to.",
+        "lightningAddress": "Lightning address",
+        "makeModifications": "Need to make modifications ?",
+        "noLightningAddress": "No lightning address added yet.",
+        "noShortBio": "No short bio linked to this account yet, feel free to add it on GitHub.",
+        "noTags": "No tags linked to this account yet.",
+        "notifications": "Notifications",
+        "publicDescription": "This description is displayed in your teacher information card on the platform.",
+        "publicProfile": "Public profile",
+        "publicProfileDescription": "Here you can fill or edit all the information associated with your activity as a teacher at Plan ₿ Network.",
+        "writeShortBio": "Write a short bio about yourself",
+        "teacher": "Teacher",
+        "teacherProfile": "Teacher profile",
+        "tutorialModification": "If you need help to edit something, please check this <0>tutorial</0>."
+      }
     }
   },
   "events": {
@@ -411,104 +456,108 @@
     },
     "missed": {
       "missedh1": "Past events to replay",
-      "missedp1": "Did you miss an event ?",
-      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+      "missedp1": "Did you miss an event?",
+      "missedp2": "No worries! We store all the replays of past events that took place in the Network, allowing everyone can catch up freely on what they missed."
     },
     "newEvent": {
       "button": "Add my event",
-      "description": "Of course ! All Bitcoin events can enhance their visibility here, and every initiative for creating a new event is welcome :)",
+      "description": "Of course! All Bitcoin events can increase their visibility here, so every initiative to create a new event is more than welcome :)",
       "subtitle": "Orange pilling a billion people is not easy",
-      "title": "Want to add your event ?"
+      "title": "Want to add your event?"
     },
-    "pageDescription": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you'll be able to find the right event here through the Plan B Network.",
-    "pageSubtitle": "Bottom up adoption enhanced by a strong network",
-    "pageTitle": "Looking for a Bitcoin event to go to ?",
+    "pageDescription": "Want to talk about Bitcoin in real time? Here, you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin over a drink, or take an exam to assess your knowledge, you will find the right event here through the Plan B Network.",
+    "pageSubtitle": "Bottom-up adoption enhanced by a strong network",
+    "pageTitle": "Looking for a Bitcoin event to attend?",
     "payment": {
       "access_invoice": "You can access your invoice via your dashboard.",
-      "access_online_successful": "When the event starts, log onto the platform and you’ll be granted access to the live stream via the event page.",
+      "access_online_successful": "When the event starts, log into the platform to gain access to the live stream on the event page.",
       "access_physical_successful": "You can download your ticket here, or download it later in your dashboard.",
       "access_type": "Type of access",
       "address": "Address",
-      "additional_free_description": "This event is free so you will not be charged to book this seat. Anyhow, please make sure to attend since the number of seats is limited.",
+      "additional_free_description": "This event is free, so there is no charge for booking this seat. However, please make sure to attend, since the number of seats is limited.",
       "amount": "Amount",
       "back_events": "Back to events",
       "book_seat": "Book seat",
-      "callout_online": "You are about to book an online access to this event.",
-      "callout_physical": "You are about to book a physical access to this event.",
-      "callout_replay": "You are about to book an access to this event replay video.",
+      "callout_online": "You are about to book online access to this event.",
+      "callout_physical": "You are about to book physical access to this event.",
+      "callout_replay": "You are about to book access to the replay video of this event.",
       "date": "Date",
       "dates_to": "{{startDate}}{{endDate}}",
-      "description_online": "Please review the date and time of the event provided.\nWhen the time comes, log in to the platform and access the live stream via the event page.",
-      "description_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a ticket to present at the event. This ticket will also give you access to the live stream and replay video, if any.",
-      "description_free_physical": "Please review the venue details provided.\nOnce the booking is processed, we'll provide you with a confirmation ticket and a QR code, to present at the event.",
+      "description_online": "Please review the date and time of the event provided.\nWhen the time comes, log in to the platform to access the live stream via the event page.",
+      "description_physical": "Please review the provided venue details.\nOnce your booking is confirmed, we will issue a ticket to present at the event. This ticket will also grant you access to the live stream and replay video, if available.",
+      "description_free_physical": "Please review the provided venue details.\nOnce the booking is confirmed, we will issue a confirmation ticket and a QR code to present at the event.",
       "download_ticket": "Download your ticket",
       "enjoy": "We hope you'll enjoy it :)",
-      "language": "Language spoken",
+      "language": "Language",
       "limitation": "Limitation",
       "max_capacity": "Max capacity of",
       "payment_details": "Payment details",
-      "payment_successful": "Booking successful !",
+      "payment_successful": "Booking successful!",
       "time": "Time"
     }
   },
+  "general": {
+    "itemNotFound": "{{item}} not found",
+    "itemNotFoundOrTranslated": "{{item}} not found, or not translated in your language"
+  },
   "glossary": {
     "anotherWord": "Search for another word",
-    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by Loïc Morel (Pandul), available on this <1>Github repository</1>.",
+    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by Loïc Morel (Pandul), available on our <1>Github repository</1>.",
     "definition": "Definition",
-    "filterBar": "Find the word you’re looking for",
-    "needHelp": "Need help defining a technical word ?",
-    "keepLooking": "Wanna keep looking ?",
+    "filterBar": "Find the word you need here",
+    "needHelp": "Need help defining a technical word?",
+    "keepLooking": "Want to keep searching?",
     "loadMoreWords": "Load more words",
-    "notTranslated": "The data in the glossary has not been translated yet.\nIf you would like like to help, feel free to contribute on our",
-    "pageSubtitle": "Need help defining a technical word ?",
+    "notTranslated": "The data in the glossary has not yet been translated.\nIf you would like to help, feel free to contribute on our",
+    "pageSubtitle": "Need help with a technical definition?",
     "pageTitle": "Bitcoin Glossary",
-    "placeHolder": "What is this ?",
+    "placeHolder": "What is this?",
     "randomSearch": "Random search",
-    "relatedWords": "Related words :",
+    "relatedWords": "Related words:",
     "term": "Term"
   },
   "home": {
     "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "content": "The Plan ₿ network platform aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Welcome to PlanB Network",
+      "globalNetwork": "A Global Bitcoin Network",
+      "welcome": "Welcome to Plan ₿ Network",
       "link": "Be part of the network",
       "startLink": "Start Learning"
     },
     "numbersSection": {
-      "networkMember": "Network Member"
+      "networkMember": "Network Members"
     },
     "sectionEducation": {
       "title": "From beginner to advanced",
-      "subtitle": "Learn Bitcoin in the academy",
-      "content1": "Bitcoin is not only a technology and a form of money but also a revolutionary way to approach life. To echo this, our courses span a wide range of fields, empowering each individual to excel in their areas of interest and further their understanding. From your first Bitcoin course to a deep dive into the protocol's specifics, our courses will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
+      "subtitle": "Learn Bitcoin at the academy",
+      "content1": "Bitcoin is not only a technology and a form of money, but also a revolutionary way to approach life. In line with this awareness, our courses cover a wide range of fields, empowering individuals to excel in their areas of interest and further their understanding. From your first Bitcoin lesson to a deep dive into the protocol's specifics, we will help you navigate the rabbit hole safely. There's no reason to hesitate. Knowledge awaits you.",
       "link": "Check the academy"
     },
     "sectionNetwork": {
-      "title": "Access a  network of",
+      "title": "Access a network of",
       "subtitle": "Worldwide Bitcoin Campuses",
-      "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
+      "content1": "Connect with worldwide Bitcoin enthusiasts who share a common passion. From small communities meeting regularly, to BTC educational centers, our network map will help you find the inspiration to learn and build. You will discover a wide range of services, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come and say hi to your local BTC community!",
       "link": "Be part of the network"
     },
     "tutorialSection": {
-      "title": "Making Bitcoin education simple is our objective.",
+      "title": "Bitcoin education made simple.",
       "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
-      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
+      "content1": "Bitcoin is constantly evolving, with the emergence of new actors, solutions, protocols, and technological breakthroughs. Thus, it can be challenging to maintain an accurate and up-to-date database of quality tutorials. Here at Plan ₿, we have achieved just that. Whether you are a beginner or an advanced user, you can navigate hundreds of tutorials to explore our industry according to your needs.",
       "link": "See all tutorials"
     },
     "aboutUsSection": {
-      "title": "Who are we ?",
+      "title": "Who are we?",
       "subtitle": "A little bit about us",
-      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
+      "content": "Plan ₿ Network supports Bitcoin education worldwide. It represents a collaboration of passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and community building. Together, they have launched this initiative to provide the Bitcoin ecosystem with the essential tools for growth.",
       "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "bitcoinFocusContent": "We explore the Bitcoin revolution from the base layer to the surrounding peer-to-peer communications.",
       "openSourceTitle": "Open source",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "openSourceContent": "We promote the free flow of knowledge and support open-source solutions",
       "communityTitle": "Community",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
+      "communityContent": "We are first and foremost a community of enthusiasts helping each other on the Bitcoin journey",
       "privacyTitle": "Privacy",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+      "privacyContent": "We believe privacy is one of the most fundamental human rights that is essential for progress"
     },
     "languageSection": {
       "availableLanguages": "Available languages",
@@ -613,9 +662,16 @@
     "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
     "pageTitle": "Professors",
     "tips": {
+      "authorSupport": "Support the author with a tip",
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
       "thanksNoName": "Thanks for supporting my work !"
+    },
+    "navigationTitles": {
+      "all": "All",
+      "lecturers": "Lecturers",
+      "teachers": "Teachers",
+      "tutorialCreators": "Tutorial creators"
     }
   },
   "proofreading": {
@@ -828,8 +884,11 @@
     "bitcoinWhitepaper": "Bitcoin Whitepaper",
     "book": "Book",
     "books": "Books",
+    "builder": "Builder",
     "builders": "Builders",
     "certificate": "Certificate",
+    "chapter": "Chapter",
+    "communities": "Communities",
     "conference": "Conference",
     "conferences": "Conferences",
     "content": "Content",
@@ -857,6 +916,7 @@
     "glossary": "Glossary",
     "helpUs": "Help us",
     "home": "Home",
+    "hours": "hours",
     "intermediate": "Intermediate",
     "interview": "Interview",
     "invoice": "Invoice",
@@ -869,6 +929,7 @@
       "level": "Level",
       "levels": "Levels"
     },
+    "lectures": "Lectures",
     "library": "Library",
     "lightning": "Lightning",
     "lightningInvoice": "Lightning invoice",

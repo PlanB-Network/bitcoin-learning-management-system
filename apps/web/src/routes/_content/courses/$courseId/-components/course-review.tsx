@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
@@ -21,6 +22,9 @@ import {
   cn,
 } from '@blms/ui';
 
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { goToChapterParameters } from '#src/utils/courses.js';
 import type { TRPCRouterOutput } from '#src/utils/trpc.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -176,6 +180,14 @@ export function CourseReview({
   const completeChapterMutation =
     trpc.user.courses.completeChapter.useMutation();
 
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const authMode = AuthModalState.SignIn;
+
   const FormSchema = z.object({
     general: z.number().min(0).max(5),
     length: z.number().min(-5).max(5),
@@ -268,6 +280,12 @@ export function CourseReview({
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col mt-12 mx-4 md:mx-32 gap-5"
+              onClick={() => {
+                formDisabled && openAuthModal();
+              }}
+              onKeyDown={() => {
+                formDisabled && openAuthModal();
+              }}
             >
               <FormField
                 control={form.control}
@@ -404,6 +422,13 @@ export function CourseReview({
               </Button>
             </form>
           </Form>
+          {isAuthModalOpen && (
+            <AuthModal
+              isOpen={isAuthModalOpen}
+              onClose={closeAuthModal}
+              initialState={authMode}
+            />
+          )}
         </>
       ) : (
         <Loader size={'m'} />

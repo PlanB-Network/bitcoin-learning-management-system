@@ -11,11 +11,8 @@ const encodeUrlToLnurl = (url: string) => {
   return bech32.encode(prefix, words, limit);
 };
 
-export const createGenerateLnurlAuth =
-  (dependencies: Dependencies) =>
-  async ({ sessionId }: { sessionId?: string }) => {
-    const { redis } = dependencies;
-
+export const createGenerateLnurlAuth = ({ redis }: Dependencies) => {
+  return async ({ sessionId }: { sessionId?: string }) => {
     if (!sessionId) {
       throw new Error('Session not found');
     }
@@ -51,3 +48,4 @@ export const createGenerateLnurlAuth =
 
     return { lnurl };
   };
+};

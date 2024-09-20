@@ -255,3 +255,73 @@ export interface JoinedCourseChapterWithContent {
   lastCommit: string;
   professors: FormattedProfessor[];
 }
+
+export interface PartWithChapters {
+  courseId: string;
+  language: string;
+  partId: string;
+  title: string;
+  partIndex: number;
+  chapters: JoinedCourseChapter[];
+}
+
+export interface CourseResponse {
+  id: string;
+  hours: number;
+  topic: string;
+  subtopic: string;
+  originalLanguage: string;
+  requiresPayment: boolean;
+  paidPriceDollars: number | null;
+  paidDescription: string | null;
+  paidVideoLink: string | null;
+  paidStartDate: Date | null;
+  paidEndDate: Date | null;
+  contact: string | null;
+  lastUpdated: Date;
+  lastCommit: string;
+  language: string;
+  name: string;
+  goal: string;
+  objectives: string[];
+  rawDescription: string;
+  level: Level;
+  chaptersCount: number;
+  professors: FormattedProfessor[];
+  parts: PartWithChapters[];
+  partsCount: number;
+}
+
+export interface CourseChapterResponse {
+  courseId: string;
+  chapterId: string;
+  language: string;
+  title: string;
+  sections: string[];
+  releasePlace: string | null;
+  isOnline: boolean;
+  isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
+  startDate: Date | null;
+  endDate: Date | null;
+  timezone: string | null;
+  liveUrl: string | null;
+  chatUrl: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
+  liveLanguage: string | null;
+  rawContent: string;
+  partId: string;
+  chapterIndex: number;
+  partIndex: number;
+  lastUpdated: Date;
+  lastCommit: string;
+  professors?: FormattedProfessor[] | undefined;
+  course: CourseResponse;
+  part: PartWithChapters;
+}

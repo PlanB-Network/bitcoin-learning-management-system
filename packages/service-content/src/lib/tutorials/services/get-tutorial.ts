@@ -1,8 +1,9 @@
 import { firstRow } from '@blms/database';
+import type { GetTutorialResponse } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { formatProfessor } from '../../professors/services/utils.js';
-import { omitWithTypes } from '../../utils.js';
+import { omit } from '../../utils.js';
 import { getCreditsQuery } from '../queries/get-credits.js';
 import { getTutorialQuery } from '../queries/get-tutorial.js';
 
@@ -13,28 +14,32 @@ interface Options {
 }
 
 export const createGetTutorial = ({ postgres }: Dependencies) => {
-  // TODO: Add output type
-  return async ({ category, name, language }: Options) => {
+  return async (options: Options): Promise<GetTutorialResponse> => {
+    const { category, name, language } = options;
+
     const tutorial = await postgres
       .exec(getTutorialQuery(category, name, language))
       .then(firstRow);
 
-    if (!tutorial) throw new Error(`Tutorial not found`);
+    if (!tutorial) {
+      throw new Error(`Tutorial not found`);
+    }
 
     const credits = await postgres
       .exec(getCreditsQuery(tutorial.id))
       .then(firstRow);
 
-    if (!credits)
+    if (!credits) {
       return {
         ...tutorial,
         credits: undefined,
       };
+    }
 
     return {
       ...tutorial,
       credits: {
-        ...omitWithTypes(credits, [
+        ...omit(credits, [
           'tutorialId',
           'contributorId',
           'lightningAddress',

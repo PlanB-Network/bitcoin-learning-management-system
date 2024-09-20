@@ -18,11 +18,8 @@ interface Options {
   liked: boolean;
 }
 
-export const createLikeTutorial =
-  (dependencies: Dependencies) =>
-  async ({ uid, id, liked }: Options) => {
-    const { postgres } = dependencies;
-
+export const createLikeTutorial = ({ postgres }: Dependencies) => {
+  return async ({ uid, id, liked }: Options) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -42,12 +39,10 @@ export const createLikeTutorial =
         : await postgres.exec(updateLikeTutorialQuery(uid, id, liked))
       : await postgres.exec(insertLikeTutorialQuery(uid, id, liked));
   };
+};
 
-export const createGetExistingLikeTutorial =
-  (dependencies: Dependencies) =>
-  async ({ uid, id }: { uid: string; id: string }) => {
-    const { postgres } = dependencies;
-
+export const createGetExistingLikeTutorial = ({ postgres }: Dependencies) => {
+  return async ({ uid, id }: { uid: string; id: string }) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -68,3 +63,4 @@ export const createGetExistingLikeTutorial =
         }
       : { liked: false, disliked: false };
   };
+};

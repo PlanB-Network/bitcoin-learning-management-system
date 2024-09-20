@@ -32,7 +32,16 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
 
   const { trpcQueryClient, trpcClient } = useTrpc();
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 1,
+          },
+        },
+      }),
+  );
 
   const locationLanguage = ((l) =>
     l && (LANGUAGES.includes(l) ? l : undefined))(

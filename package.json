@@ -10,17 +10,19 @@
     "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@blms/api",
     "dev:db:generate": "cd ./packages/database && pnpm drizzle:generate",
     "dev:db:migrate": "cd ./packages/database && pnpm db:migrate",
+    "dev:db:migrate:local": "cd ./packages/database && pnpm db:migrate:local",
     "dev:db:studio": "cd ./packages/database && npx drizzle-kit studio",
     "dev:db:sync": "pnpm dev:db:generate && pnpm dev:types:generate",
     "dev:storybook": "cd ./packages/ui && pnpm storybook",
     "dev:types:generate": "cd ./packages/types && pnpm types:generate",
     "build": "turbo run build --cache-dir=.turbo",
-    "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "build:packages": "turbo run build --filter='./packages/*'",
+    "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "format": "prettier --ignore-unknown --write --no-error-on-unmatched-pattern .",
     "nuke": "pnpm clear && rm -r .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
     "prepare": "husky",
     "lint": "turbo run lint",
+    "knip": "knip",
     "sync-ts-references": "./scripts/sync-ts-references.ts && prettier --ignore-unknown --write --no-error-on-unmatched-pattern ./**/*/tsconfig.json ./**/*/tsconfig.*.json",
     "type-check": "turbo run type-check",
     "build-types": "turbo run build-types",
@@ -35,17 +37,18 @@
     "dotenv-cli": "^7.4.2",
     "husky": "^9.1.5",
     "jsonc-parser": "^3.3.1",
+    "knip": "^5.30.1",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tsx": "^4.19.0",
     "turbo": "^2.1.1",
-    "typescript": "5.5.4",
+    "typescript": "5.6.2",
     "vite": "~5.4.3",
     "vite-tsconfig-paths": "^5.0.1"
   },
   "lint-staged": {
     "**/*": "prettier --loglevel warn --write --ignore-unknown"
   },
-  "packageManager": "pnpm@9.9.0"
+  "packageManager": "pnpm@9.10.0"
 }

@@ -196,3 +196,27 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
       })
       .merge(z.object({ professors: formattedProfessorSchema.array() })),
   );
+
+export const partWithChaptersSchema = joinedCoursePartLocalizedSchema.merge(
+  z.object({
+    chapters: joinedCourseChapterSchema.array(),
+  }),
+);
+
+export const courseResponseSchema = joinedCourseWithAllSchema.merge(
+  z.object({
+    professors: formattedProfessorSchema.array(),
+    parts: partWithChaptersSchema.array(),
+    partsCount: z.number(),
+    chaptersCount: z.number(),
+  }),
+);
+
+export const courseChapterResponseSchema =
+  joinedCourseChapterWithContentSchema.merge(
+    z.object({
+      course: courseResponseSchema,
+      part: partWithChaptersSchema,
+      professors: formattedProfessorSchema.array().optional(),
+    }),
+  );

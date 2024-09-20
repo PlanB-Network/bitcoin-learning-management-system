@@ -75,7 +75,7 @@ export const TextInput = ({
       <div className="flex flex-col justify-between text-center mb-2">
         <label
           htmlFor="email"
-          className="max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-[#050A14]"
+          className="max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText"
         >
           {labelText} {mandatory && <span className="text-[#E72940]">*</span>}
         </label>

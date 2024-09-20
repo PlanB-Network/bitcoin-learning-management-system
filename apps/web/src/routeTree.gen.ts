@@ -30,7 +30,6 @@ import { Route as ContentEventsEventIdImport } from './routes/_content/events/$e
 import { Route as ContentCoursesCourseIdImport } from './routes/_content/courses/$courseId';
 import { Route as ContentMiscUnderConstructionImport } from './routes/_content/_misc/under-construction';
 import { Route as ContentMiscTermsAndConditionsImport } from './routes/_content/_misc/terms-and-conditions';
-import { Route as ContentMiscProfessorsImport } from './routes/_content/_misc/professors';
 import { Route as ContentMiscNodeNetworkImport } from './routes/_content/_misc/node-network';
 import { Route as ContentMiscManifestoImport } from './routes/_content/_misc/manifesto';
 import { Route as ContentMiscBCertificateImport } from './routes/_content/_misc/b-certificate';
@@ -44,6 +43,8 @@ import { Route as ContentResourcesBooksIndexImport } from './routes/_content/res
 import { Route as ContentResourcesBetIndexImport } from './routes/_content/resources/bet/index';
 import { Route as ContentCoursesCourseIdIndexImport } from './routes/_content/courses/$courseId/index';
 import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_content/_misc/public-communication/index';
+import { Route as ContentMiscProfessorsIndexImport } from './routes/_content/_misc/professors/index';
+import { Route as DashboardDashboardProfessorProfileImport } from './routes/dashboard/_dashboard/professor/profile';
 import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastIdImport } from './routes/_content/resources/podcasts/$podcastId';
@@ -58,6 +59,7 @@ import { Route as ContentMiscPublicCommunicationLegalsImport } from './routes/_c
 import { Route as ContentMiscProfessorProfessorNameProfessorIdImport } from './routes/_content/_misc/professor.$professorName-$professorId';
 import { Route as ContentMiscPublicCommunicationLegalsIndexImport } from './routes/_content/_misc/public-communication/legals/index';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/index';
+import { Route as ContentMiscProfessorsCategoryIndexImport } from './routes/_content/_misc/professors/$category/index';
 import { Route as ContentMiscPublicCommunicationLegalsNameImport } from './routes/_content/_misc/public-communication/legals/$name';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/index';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/$name';
@@ -166,11 +168,6 @@ const ContentMiscTermsAndConditionsRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
-const ContentMiscProfessorsRoute = ContentMiscProfessorsImport.update({
-  path: '/professors',
-  getParentRoute: () => rootRoute,
-} as any);
-
 const ContentMiscNodeNetworkRoute = ContentMiscNodeNetworkImport.update({
   path: '/node-network',
   getParentRoute: () => rootRoute,
@@ -243,6 +240,19 @@ const ContentMiscPublicCommunicationIndexRoute =
   ContentMiscPublicCommunicationIndexImport.update({
     path: '/public-communication/',
     getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentMiscProfessorsIndexRoute = ContentMiscProfessorsIndexImport.update(
+  {
+    path: '/professors/',
+    getParentRoute: () => rootRoute,
+  } as any,
+);
+
+const DashboardDashboardProfessorProfileRoute =
+  DashboardDashboardProfessorProfileImport.update({
+    path: '/professor/profile',
+    getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
 const DashboardDashboardProfessorCoursesRoute =
@@ -329,6 +339,12 @@ const ContentMiscPublicCommunicationBlogsAndNewsIndexRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
+const ContentMiscProfessorsCategoryIndexRoute =
+  ContentMiscProfessorsCategoryIndexImport.update({
+    path: '/professors/$category/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const ContentMiscPublicCommunicationLegalsNameRoute =
   ContentMiscPublicCommunicationLegalsNameImport.update({
     path: '/$name',
@@ -398,13 +414,6 @@ declare module '@tanstack/react-router' {
       path: '/node-network';
       fullPath: '/node-network';
       preLoaderRoute: typeof ContentMiscNodeNetworkImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_content/_misc/professors': {
-      id: '/_content/_misc/professors';
-      path: '/professors';
-      fullPath: '/professors';
-      preLoaderRoute: typeof ContentMiscProfessorsImport;
       parentRoute: typeof rootRoute;
     };
     '/_content/_misc/terms-and-conditions': {
@@ -596,6 +605,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDashboardProfessorCoursesImport;
       parentRoute: typeof DashboardDashboardImport;
     };
+    '/dashboard/_dashboard/professor/profile': {
+      id: '/dashboard/_dashboard/professor/profile';
+      path: '/professor/profile';
+      fullPath: '/dashboard/professor/profile';
+      preLoaderRoute: typeof DashboardDashboardProfessorProfileImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
+    '/_content/_misc/professors/': {
+      id: '/_content/_misc/professors/';
+      path: '/professors';
+      fullPath: '/professors';
+      preLoaderRoute: typeof ContentMiscProfessorsIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_content/_misc/public-communication/': {
       id: '/_content/_misc/public-communication/';
       path: '/public-communication';
@@ -666,6 +689,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentMiscPublicCommunicationLegalsNameImport;
       parentRoute: typeof ContentMiscPublicCommunicationLegalsImport;
     };
+    '/_content/_misc/professors/$category/': {
+      id: '/_content/_misc/professors/$category/';
+      path: '/professors/$category';
+      fullPath: '/professors/$category';
+      preLoaderRoute: typeof ContentMiscProfessorsCategoryIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_content/_misc/public-communication/blogs-and-news/': {
       id: '/_content/_misc/public-communication/blogs-and-news/';
       path: '/public-communication/blogs-and-news';
@@ -707,6 +737,7 @@ interface DashboardDashboardRouteChildren {
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
   DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
+  DashboardDashboardProfessorProfileRoute: typeof DashboardDashboardProfessorProfileRoute;
 }
 
 const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
@@ -718,6 +749,8 @@ const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
   DashboardDashboardProfessorCoursesRoute:
     DashboardDashboardProfessorCoursesRoute,
+  DashboardDashboardProfessorProfileRoute:
+    DashboardDashboardProfessorProfileRoute,
 };
 
 const DashboardDashboardRouteWithChildren =
@@ -792,7 +825,6 @@ export interface FileRoutesByFullPath {
   '/b-certificate': typeof ContentMiscBCertificateRoute;
   '/manifesto': typeof ContentMiscManifestoRoute;
   '/node-network': typeof ContentMiscNodeNetworkRoute;
-  '/professors': typeof ContentMiscProfessorsRoute;
   '/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
   '/under-construction': typeof ContentMiscUnderConstructionRoute;
   '/courses/$courseId': typeof ContentCoursesCourseIdRouteWithChildren;
@@ -820,6 +852,8 @@ export interface FileRoutesByFullPath {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
+  '/professors': typeof ContentMiscProfessorsIndexRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -830,6 +864,7 @@ export interface FileRoutesByFullPath {
   '/resources/podcasts': typeof ContentResourcesPodcastsIndexRoute;
   '/tutorials/$category/': typeof ContentTutorialsCategoryIndexRoute;
   '/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/professors/$category': typeof ContentMiscProfessorsCategoryIndexRoute;
   '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
@@ -843,7 +878,6 @@ export interface FileRoutesByTo {
   '/b-certificate': typeof ContentMiscBCertificateRoute;
   '/manifesto': typeof ContentMiscManifestoRoute;
   '/node-network': typeof ContentMiscNodeNetworkRoute;
-  '/professors': typeof ContentMiscProfessorsRoute;
   '/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
   '/under-construction': typeof ContentMiscUnderConstructionRoute;
   '/events/$eventId': typeof ContentEventsEventIdRoute;
@@ -868,6 +902,8 @@ export interface FileRoutesByTo {
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
+  '/professors': typeof ContentMiscProfessorsIndexRoute;
   '/public-communication': typeof ContentMiscPublicCommunicationIndexRoute;
   '/courses/$courseId': typeof ContentCoursesCourseIdIndexRoute;
   '/resources/bet': typeof ContentResourcesBetIndexRoute;
@@ -878,6 +914,7 @@ export interface FileRoutesByTo {
   '/resources/podcasts': typeof ContentResourcesPodcastsIndexRoute;
   '/tutorials/$category': typeof ContentTutorialsCategoryIndexRoute;
   '/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/professors/$category': typeof ContentMiscProfessorsCategoryIndexRoute;
   '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/public-communication/legals': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
@@ -893,7 +930,6 @@ export interface FileRoutesById {
   '/_content/_misc/b-certificate': typeof ContentMiscBCertificateRoute;
   '/_content/_misc/manifesto': typeof ContentMiscManifestoRoute;
   '/_content/_misc/node-network': typeof ContentMiscNodeNetworkRoute;
-  '/_content/_misc/professors': typeof ContentMiscProfessorsRoute;
   '/_content/_misc/terms-and-conditions': typeof ContentMiscTermsAndConditionsRoute;
   '/_content/_misc/under-construction': typeof ContentMiscUnderConstructionRoute;
   '/_content/courses/$courseId': typeof ContentCoursesCourseIdRouteWithChildren;
@@ -921,6 +957,8 @@ export interface FileRoutesById {
   '/_content/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/_dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
+  '/dashboard/_dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
+  '/_content/_misc/professors/': typeof ContentMiscProfessorsIndexRoute;
   '/_content/_misc/public-communication/': typeof ContentMiscPublicCommunicationIndexRoute;
   '/_content/courses/$courseId/': typeof ContentCoursesCourseIdIndexRoute;
   '/_content/resources/bet/': typeof ContentResourcesBetIndexRoute;
@@ -931,6 +969,7 @@ export interface FileRoutesById {
   '/_content/resources/podcasts/': typeof ContentResourcesPodcastsIndexRoute;
   '/_content/tutorials/$category/': typeof ContentTutorialsCategoryIndexRoute;
   '/_content/_misc/public-communication/legals/$name': typeof ContentMiscPublicCommunicationLegalsNameRoute;
+  '/_content/_misc/professors/$category/': typeof ContentMiscProfessorsCategoryIndexRoute;
   '/_content/_misc/public-communication/blogs-and-news/': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/_content/_misc/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/_content/_misc/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
@@ -946,7 +985,6 @@ export interface FileRouteTypes {
     | '/b-certificate'
     | '/manifesto'
     | '/node-network'
-    | '/professors'
     | '/terms-and-conditions'
     | '/under-construction'
     | '/courses/$courseId'
@@ -974,6 +1012,8 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
+    | '/professors'
     | '/public-communication'
     | '/courses/$courseId/'
     | '/resources/bet'
@@ -984,6 +1024,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts'
     | '/tutorials/$category/'
     | '/public-communication/legals/$name'
+    | '/professors/$category'
     | '/public-communication/blogs-and-news'
     | '/public-communication/legals/'
     | '/public-communication/blogs-and-news/$category/$name'
@@ -996,7 +1037,6 @@ export interface FileRouteTypes {
     | '/b-certificate'
     | '/manifesto'
     | '/node-network'
-    | '/professors'
     | '/terms-and-conditions'
     | '/under-construction'
     | '/events/$eventId'
@@ -1021,6 +1061,8 @@ export interface FileRouteTypes {
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
     | '/dashboard/professor/courses'
+    | '/dashboard/professor/profile'
+    | '/professors'
     | '/public-communication'
     | '/courses/$courseId'
     | '/resources/bet'
@@ -1031,6 +1073,7 @@ export interface FileRouteTypes {
     | '/resources/podcasts'
     | '/tutorials/$category'
     | '/public-communication/legals/$name'
+    | '/professors/$category'
     | '/public-communication/blogs-and-news'
     | '/public-communication/legals'
     | '/public-communication/blogs-and-news/$category/$name'
@@ -1044,7 +1087,6 @@ export interface FileRouteTypes {
     | '/_content/_misc/b-certificate'
     | '/_content/_misc/manifesto'
     | '/_content/_misc/node-network'
-    | '/_content/_misc/professors'
     | '/_content/_misc/terms-and-conditions'
     | '/_content/_misc/under-construction'
     | '/_content/courses/$courseId'
@@ -1072,6 +1114,8 @@ export interface FileRouteTypes {
     | '/_content/resources/podcasts/$podcastId'
     | '/_content/tutorials/$category/$name'
     | '/dashboard/_dashboard/professor/courses'
+    | '/dashboard/_dashboard/professor/profile'
+    | '/_content/_misc/professors/'
     | '/_content/_misc/public-communication/'
     | '/_content/courses/$courseId/'
     | '/_content/resources/bet/'
@@ -1082,6 +1126,7 @@ export interface FileRouteTypes {
     | '/_content/resources/podcasts/'
     | '/_content/tutorials/$category/'
     | '/_content/_misc/public-communication/legals/$name'
+    | '/_content/_misc/professors/$category/'
     | '/_content/_misc/public-communication/blogs-and-news/'
     | '/_content/_misc/public-communication/legals/'
     | '/_content/_misc/public-communication/blogs-and-news/$category/$name'
@@ -1096,7 +1141,6 @@ export interface RootRouteChildren {
   ContentMiscBCertificateRoute: typeof ContentMiscBCertificateRoute;
   ContentMiscManifestoRoute: typeof ContentMiscManifestoRoute;
   ContentMiscNodeNetworkRoute: typeof ContentMiscNodeNetworkRoute;
-  ContentMiscProfessorsRoute: typeof ContentMiscProfessorsRoute;
   ContentMiscTermsAndConditionsRoute: typeof ContentMiscTermsAndConditionsRoute;
   ContentMiscUnderConstructionRoute: typeof ContentMiscUnderConstructionRoute;
   ContentCoursesCourseIdRoute: typeof ContentCoursesCourseIdRouteWithChildren;
@@ -1115,6 +1159,7 @@ export interface RootRouteChildren {
   ContentResourcesConferencesConferenceIdRoute: typeof ContentResourcesConferencesConferenceIdRoute;
   ContentResourcesGlossaryWordIdRoute: typeof ContentResourcesGlossaryWordIdRoute;
   ContentResourcesPodcastsPodcastIdRoute: typeof ContentResourcesPodcastsPodcastIdRoute;
+  ContentMiscProfessorsIndexRoute: typeof ContentMiscProfessorsIndexRoute;
   ContentMiscPublicCommunicationIndexRoute: typeof ContentMiscPublicCommunicationIndexRoute;
   ContentResourcesBetIndexRoute: typeof ContentResourcesBetIndexRoute;
   ContentResourcesBooksIndexRoute: typeof ContentResourcesBooksIndexRoute;
@@ -1122,6 +1167,7 @@ export interface RootRouteChildren {
   ContentResourcesConferencesIndexRoute: typeof ContentResourcesConferencesIndexRoute;
   ContentResourcesGlossaryIndexRoute: typeof ContentResourcesGlossaryIndexRoute;
   ContentResourcesPodcastsIndexRoute: typeof ContentResourcesPodcastsIndexRoute;
+  ContentMiscProfessorsCategoryIndexRoute: typeof ContentMiscProfessorsCategoryIndexRoute;
   ContentMiscPublicCommunicationBlogsAndNewsIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
   ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
@@ -1134,7 +1180,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContentMiscBCertificateRoute: ContentMiscBCertificateRoute,
   ContentMiscManifestoRoute: ContentMiscManifestoRoute,
   ContentMiscNodeNetworkRoute: ContentMiscNodeNetworkRoute,
-  ContentMiscProfessorsRoute: ContentMiscProfessorsRoute,
   ContentMiscTermsAndConditionsRoute: ContentMiscTermsAndConditionsRoute,
   ContentMiscUnderConstructionRoute: ContentMiscUnderConstructionRoute,
   ContentCoursesCourseIdRoute: ContentCoursesCourseIdRouteWithChildren,
@@ -1158,6 +1203,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContentResourcesGlossaryWordIdRoute: ContentResourcesGlossaryWordIdRoute,
   ContentResourcesPodcastsPodcastIdRoute:
     ContentResourcesPodcastsPodcastIdRoute,
+  ContentMiscProfessorsIndexRoute: ContentMiscProfessorsIndexRoute,
   ContentMiscPublicCommunicationIndexRoute:
     ContentMiscPublicCommunicationIndexRoute,
   ContentResourcesBetIndexRoute: ContentResourcesBetIndexRoute,
@@ -1166,6 +1212,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContentResourcesConferencesIndexRoute: ContentResourcesConferencesIndexRoute,
   ContentResourcesGlossaryIndexRoute: ContentResourcesGlossaryIndexRoute,
   ContentResourcesPodcastsIndexRoute: ContentResourcesPodcastsIndexRoute,
+  ContentMiscProfessorsCategoryIndexRoute:
+    ContentMiscProfessorsCategoryIndexRoute,
   ContentMiscPublicCommunicationBlogsAndNewsIndexRoute:
     ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
   ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute:
@@ -1192,7 +1240,6 @@ export const routeTree = rootRoute
         "/_content/_misc/b-certificate",
         "/_content/_misc/manifesto",
         "/_content/_misc/node-network",
-        "/_content/_misc/professors",
         "/_content/_misc/terms-and-conditions",
         "/_content/_misc/under-construction",
         "/_content/courses/$courseId",
@@ -1211,6 +1258,7 @@ export const routeTree = rootRoute
         "/_content/resources/conferences/$conferenceId",
         "/_content/resources/glossary/$wordId",
         "/_content/resources/podcasts/$podcastId",
+        "/_content/_misc/professors/",
         "/_content/_misc/public-communication/",
         "/_content/resources/bet/",
         "/_content/resources/books/",
@@ -1218,6 +1266,7 @@ export const routeTree = rootRoute
         "/_content/resources/conferences/",
         "/_content/resources/glossary/",
         "/_content/resources/podcasts/",
+        "/_content/_misc/professors/$category/",
         "/_content/_misc/public-communication/blogs-and-news/",
         "/_content/_misc/public-communication/blogs-and-news/$category/$name",
         "/_content/_misc/public-communication/blogs-and-news/$category/"
@@ -1242,7 +1291,8 @@ export const routeTree = rootRoute
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
         "/dashboard/_dashboard/profile",
-        "/dashboard/_dashboard/professor/courses"
+        "/dashboard/_dashboard/professor/courses",
+        "/dashboard/_dashboard/professor/profile"
       ]
     },
     "/_content/_misc/about": {
@@ -1256,9 +1306,6 @@ export const routeTree = rootRoute
     },
     "/_content/_misc/node-network": {
       "filePath": "_content/_misc/node-network.tsx"
-    },
-    "/_content/_misc/professors": {
-      "filePath": "_content/_misc/professors.tsx"
     },
     "/_content/_misc/terms-and-conditions": {
       "filePath": "_content/_misc/terms-and-conditions.tsx"
@@ -1362,6 +1409,13 @@ export const routeTree = rootRoute
       "filePath": "dashboard/_dashboard/professor/courses.tsx",
       "parent": "/dashboard/_dashboard"
     },
+    "/dashboard/_dashboard/professor/profile": {
+      "filePath": "dashboard/_dashboard/professor/profile.tsx",
+      "parent": "/dashboard/_dashboard"
+    },
+    "/_content/_misc/professors/": {
+      "filePath": "_content/_misc/professors/index.tsx"
+    },
     "/_content/_misc/public-communication/": {
       "filePath": "_content/_misc/public-communication/index.tsx"
     },
@@ -1394,6 +1448,9 @@ export const routeTree = rootRoute
     "/_content/_misc/public-communication/legals/$name": {
       "filePath": "_content/_misc/public-communication/legals/$name.tsx",
       "parent": "/_content/_misc/public-communication/legals"
+    },
+    "/_content/_misc/professors/$category/": {
+      "filePath": "_content/_misc/professors/$category/index.tsx"
     },
     "/_content/_misc/public-communication/blogs-and-news/": {
       "filePath": "_content/_misc/public-communication/blogs-and-news/index.tsx"

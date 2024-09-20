@@ -6,6 +6,7 @@ import type {
   JoinedBlogLight,
   JoinedTutorialLight,
   UserDetails,
+  UserRole,
 } from '@blms/types';
 
 import { trpcClient } from '#src/utils/trpc.js';
@@ -13,7 +14,7 @@ import { trpcClient } from '#src/utils/trpc.js';
 interface Session {
   user: {
     uid: string;
-    role: 'student' | 'professor' | 'community' | 'admin' | 'superadmin';
+    role: UserRole;
     professorId: number | null;
     professorCourses: string[];
     professorTutorials: number[];
@@ -85,12 +86,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
               uid: data.user.uid,
               role: data.user.role,
               professorId: data.user.professorId,
-              professorCourses: data.user.professorCourses
-                ? data.user.professorCourses
-                : [],
-              professorTutorials: data.user.professorTutorials
-                ? data.user.professorTutorials
-                : [],
+              professorCourses: data.user.professorCourses || [],
+              professorTutorials: data.user.professorTutorials || [],
             },
           };
           return setSession(validSession);

@@ -1,12 +1,36 @@
+import { cva } from 'class-variance-authority';
 import type { ReactNode } from 'react';
+import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
-import QuoteLeft from '../../assets/icons/quote-left.svg';
-import QuoteRight from '../../assets/icons/quote-right.svg';
+import { cn } from '@blms/ui';
+
+const blockQuoteVariants = cva(
+  'max-md:text-center text-base font-medium md:blockquote-desktop py-2.5 mx-2 md:mx-4 whitespace-pre-line break-words max-w-[650px]',
+  {
+    variants: {
+      mode: {
+        dark: '!text-white',
+        light: '!text-black',
+      },
+    },
+  },
+);
+
+const quoteVariants = cva('', {
+  variants: {
+    mode: {
+      dark: '!text-white',
+      light: '!text-black',
+    },
+  },
+});
 
 export const Blockquote = ({
   children,
+  mode,
 }: {
   children: ReactNode | Iterable<ReactNode>;
+  mode: 'light' | 'dark';
 }) => {
   const filteredChildren = Array.isArray(children)
     ? children
@@ -22,13 +46,16 @@ export const Blockquote = ({
 
   return (
     <div className="p-2">
-      <img src={QuoteLeft} alt="quote left" className="shrink-0 size-10" />
+      <ImQuotesLeft size={40} className={quoteVariants({ mode })} />
       <div className="lg:px-[73px]">
-        <blockquote className="max-md:text-center text-base font-medium md:blockquote-desktop py-2.5 mx-2 md:mx-4 whitespace-pre-line break-words max-w-[650px]">
+        <blockquote className={blockQuoteVariants({ mode })}>
           {filteredChildren}
         </blockquote>
       </div>
-      <img src={QuoteRight} alt="qoute right" className="ml-auto size-10" />
+      <ImQuotesRight
+        size={40}
+        className={cn('ml-auto', quoteVariants({ mode }))}
+      />
     </div>
   );
 };

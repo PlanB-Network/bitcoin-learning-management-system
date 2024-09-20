@@ -36,7 +36,9 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (tutorials/)
-  if (pathElements.length < 4) throw new Error('Invalid resource path');
+  if (pathElements.length < 4) {
+    throw new Error('Invalid resource path');
+  }
 
   // If pathElements has 'assets', get the path until 'assets'
   // If not, get the direct parent of the file
@@ -95,9 +97,7 @@ export const groupByTutorial = (files: ChangedFile[], errors: string[]) => {
   return [...groupedTutorials.values()];
 };
 
-export const createUpdateTutorials = (dependencies: Dependencies) => {
-  const { postgres } = dependencies;
-
+export const createUpdateTutorials = ({ postgres }: Dependencies) => {
   return async (tutorial: ChangedTutorial, errors: string[]) => {
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
@@ -159,10 +159,8 @@ export const createUpdateTutorials = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteTutorials = (dependencies: Dependencies) => {
+export const createDeleteTutorials = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 

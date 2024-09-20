@@ -360,7 +360,7 @@
     "bitcoinWhitepaper": "Bitcoin Whitepaper",
     "book": "Bok",
     "books": "Bøker",
-    "builders": "Utviklere",
+    "builders": "Bidragsytere",
     "certificate": "Sertifikat",
     "conference": "Konferanse",
     "conferences": "Konferanser",
@@ -447,14 +447,14 @@
       "grade": "Karakter",
       "gradesDiploma": "Karakterer og diplom",
       "learnMore": "Lær mer",
-      "presentation": "₿-sertifikatet er en prøve organisert av Plan B Network og er designet for å vurdere din kunnskap om Bitcoin og alle relaterte emner.",
-      "wantToPass": "Vil du bestå eksamen?",
+      "presentation": "₿-sertifikatet er en prøve organisert av Plan B Network, designet for å vurdere din kunnskap om Bitcoin og alle relaterte emner.",
+      "wantToPass": "Vil du ta eksamen?",
       "noResults": "Det er ingen karakterer eller sertifikater knyttet til denne kontoen ennå.\nHvis du har bestått en eksamen og resultatene dine ikke er tilgjengelige etter en lengre periode, vennligst ta kontakt med oss for hjelp.",
       "organizedSessions": "₿-sertifikatet er organisert av Plan B Network på forskjellige steder og tidspunkter. Sørg for å bestille plassen din på en økt.",
       "findResults": "Her kan du finne resultatene dine til ₿ sertifikateksamener du har bestått mens du var registrert med denne kontoen. Resultatene tar vanligvis 2 til 3 uker å behandle og være tilgjengelige her. Hvis resultatene dine ikke vises her etter lang tid, vennligst kontakt oss."
     },
     "booking": {
-      "accessLive": "Få tilgang til direktesending",
+      "accessLive": "Få tilgang til live eksamen",
       "billingTitle": "Faktureringshistorikk",
       "billingSubtitle": "Last ned fakturaer fra bestillingene dine her.",
       "downloadInvoice": "Last ned faktura",
@@ -466,11 +466,11 @@
       "ticketLocation": "Sted",
       "ticketTitle": "Tittel",
       "ticketType": "Skriv",
-      "noInvoice": "Du har ingen fakturaer ennå.",
-      "noTicket": "Du har ingen billetter ennå.",
+      "noInvoice": "Du har ingen fakturaer.",
+      "noTicket": "Du har for øyeblikket ingen billetter.",
       "pastTicketTitle": "Tidligere bestillinger",
       "upcomingTicketTitle": "Kommende bestillinger",
-      "upcomingTicketSubtitle": "Last ned billetten din her for å delta på ditt neste arrangement. Husk å ta med billetten din for å få tilgang til arrangementet."
+      "upcomingTicketSubtitle": "Last ned billetten din her for å delta på kommende arrangement. Husk å ta med billetten din for å få inngang til arrangementet."
     },
     "bookings": "Bestillinger",
     "calendar": {
@@ -498,7 +498,7 @@
       "save": "Lagre",
       "saving": "Lagrer...",
       "crop": "Beskjær",
-      "emailChangeConfirmation": "Bekreftelsesepost for endring av epost er sendt, sjekk innboksen din for å bekrefte endringen.",
+      "emailChangeConfirmation": "En bekreftelses for endring av epost er sendt, sjekk innboksen din for å bekrefte endringen.",
       "preview": "Forhåndsvisning",
       "displayName": "Visningsnavn",
       "email": "Epost",
@@ -533,19 +533,19 @@
     "missed": {
       "missedh1": "Tidligere arrangement å se igjen",
       "missedp1": "Gikk du glipp av et arrangement?",
-      "missedp2": "Her lagrer vi alle opptak av tidligere arrangement som har funnet sted i nettverket, slik at alle fritt kan ta igjen det de gikk glipp av."
+      "missedp2": "Ingen bekymringer! Vi lagrer alle opptak av tidligere arrangement som har funnet sted i nettverket, slik at alle fritt kan ta igjen det de gikk glipp av."
     },
     "newEvent": {
       "button": "Legg til arrangementet mitt",
-      "description": "Selvfølgelig! Alle Bitcoin-arrangementer kan øke synligheten sin her, og alle initiativer for å skape en ny begivenhet er velkomne :)",
+      "description": "Selvfølgelig! Alle Bitcoin-arrangementer kan øke synligheten sin her, så alle initiativer til å skape et nytt arrangement er mer enn velkomne :)",
       "subtitle": "Å overbevise en milliard mennesker er ikke lett",
       "title": "Ønsker du å legge til arrangementet ditt?"
     },
     "pageSubtitle": "Adopsjon nedenfra og opp forbedret av et sterkt nettverk",
-    "pageTitle": "Leter du etter et Bitcoin-arrangement å gå til?",
+    "pageTitle": "Leter du etter et Bitcoin-arrangement delta på?",
     "payment": {
       "access_invoice": "Du kan få tilgang til fakturaen din via dashbordet ditt.",
-      "access_online_successful": "Når arrangementet starter, logg på plattformen og du vil få tilgang til direktesendingen via arrangementsiden.",
+      "access_online_successful": "Når arrangementet starter, logg inn på plattformen for å få tilgang til direktesendingen på arrangementsiden.",
       "access_physical_successful": "Du kan laste ned billetten din her, eller laste den ned senere i dashbordet ditt.",
       "address": "Adresse",
       "amount": "Beløp",
@@ -553,35 +553,35 @@
       "book_seat": "Bestill sete",
       "callout_online": "Du er i ferd med å bestille online tilgang til dette arrangementet.",
       "callout_physical": "Du er i ferd med å bestille fysisk tilgang til dette arrangementet.",
-      "callout_replay": "Du er i ferd med å bestille tilgang til dette arrangementets opptaksvideo.",
+      "callout_replay": "Du er i ferd med å bestille tilgang til opptaket av dette arrangementet.",
       "date": "Dato",
       "dates_to": "{{startDate}}{{endDate}}",
-      "description_free_physical": "Vennligst gjennomgå detaljene for lokalet som er oppgitt.\nNår bookingen er behandlet, vil vi gi deg en bekreftelsesbillett og en QR-kode, som skal presenteres på arrangementet.",
+      "description_free_physical": "Vennligst gjennomgå de oppgitte detaljene for lokalet.\nNår bookingen er bekreftet, vil vi utstede en bekreftelsesbillett og en QR-kode som skal vises på arrangementet.",
       "download_ticket": "Last ned billetten din",
       "enjoy": "Vi håper du vil nyte det :)",
       "language": "Språk",
       "limitation": "Begrensning",
       "max_capacity": "Maksimum kapasitet",
       "payment_details": "Betalingsdetaljer",
-      "payment_successful": "Bestilling vellykket !",
+      "payment_successful": "Bestilling vellykket!",
       "time": "Tid",
       "access_type": "Type tilgang",
-      "additional_free_description": "Denne hendelsen er gratis, så du vil ikke bli belastet for å bestille denne plassen. Uansett, vær vennlig å sørge for å delta siden antallet seter er begrenset.",
-      "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen og få tilgang til direktesendingen via arrangementsiden.",
-      "description_physical": "Vennligst gjennomgå detaljene om stedet som er gitt.\nNår bookingen er behandlet, vil vi gi deg en billett som skal presenteres på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptaket, hvis det er noen."
+      "additional_free_description": "Dette arrangementet er gratis, så det er ingen kostnad for å bestille denne plassen. Men vær snill å delta, siden antallet seter er begrenset.",
+      "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen for å få tilgang til direktesendingen via arrangementsiden.",
+      "description_physical": "Vennligst gjennomgå de oppgitte detaljene for lokalet.\nNår bookingen din er bekreftet, vil vi utstede en billett som du kan presentere på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptak, hvis tilgjengelig."
     },
-    "pageDescription": "Vil du snakke om Bitcoin i nåtid? Her kan du finne alle arrangementene som støttes av Plan B Network-samfunnene. Enten du vil lytte til et foredrag, diskutere Bitcoin over en drink, eller ta en eksamen for å vurdere kunnskapen din, vil du kunne finne det rette arrangementet her gjennom Plan B Network."
+    "pageDescription": "Vil du snakke om Bitcoin i nåtid? Her, kan du finne alle arrangementene som støttes av Plan B Network-samfunnene. Enten du vil lytte til et foredrag, diskutere Bitcoin over en drink, eller ta en eksamen for å vurdere kunnskapen din, du vil finne det rette arrangementet her gjennom Plan B Network."
   },
   "glossary": {
     "anotherWord": "Søk etter et annet ord",
-    "creditsLoic": "<0>Kredittering</0>: Bitcoin-ordbok skrevet av Loïc Morel (Pandul), tilgjengelig på dette <1>Github-lageret</1>.",
+    "creditsLoic": "<0>Kreditter</0>: Bitcoin-ordbok skrevet av Loïc Morel (Pandul), tilgjengelig på vår <1>Github-repository</1>.",
     "definition": "Definisjon",
-    "filterBar": "Finn ordet du leter etter",
-    "notTranslated": "Dataene i ordlisten er ikke oversatt ennå.\nHvis du vil hjelpe, er du velkommen til å bidra på vår",
+    "filterBar": "Finn ordet du trenger her",
+    "notTranslated": "Dataene i ordlisten er ennå ikke oversatt.\nHvis du vil hjelpe til, er du velkommen til å bidra på vår",
     "needHelp": "Trenger du hjelp til å definere et teknisk ord?",
-    "keepLooking": "Vil du fortsette å lete?",
+    "keepLooking": "Vil du fortsette å søke?",
     "loadMoreWords": "Last inn flere ord",
-    "pageSubtitle": "Trenger du hjelp til å definere et teknisk ord?",
+    "pageSubtitle": "Trenger du hjelp med en teknisk definisjon?",
     "pageTitle": "Bitcoin-ordliste",
     "placeHolder": "Hva er dette?",
     "randomSearch": "Tilfeldig søk",
@@ -590,43 +590,43 @@
   },
   "home": {
     "header": {
-      "content": "PlanB-plattformen har som mål å tilby de beste verktøyene og pedagogiske innholdet rundt om i verden for å hjelpe folk med å gjenvinne sin suverenitet. Fra enkeltpersoner til samfunn, vi er her for å hjelpe deg langs din Bitcoin-reise.",
+      "content": "Plan ₿ nettverksplattformen har som mål å tilby de beste verktøyene og læringsinnholdet globalt, for å gi folk muligheten til å gjenvinne sin suverenitet. Fra enkeltpersoner til samfunn, vi er her for å hjelpe deg på din Bitcoin-reise.",
       "forEducators": "For pedagoger og byggere",
-      "globalNetwork": "Globalt Bitcoin-nettverk",
+      "globalNetwork": "Et globalt Bitcoin-nettverk",
       "welcome": "Velkommen til PlanB Network",
       "link": "Bli en del av nettverket",
       "startLink": "Start læring"
     },
     "sectionEducation": {
-      "content1": "Bitcoin er ikke bare en teknologi og en form for penger, men også en revolusjonerende måte å tilnærme seg livet på. For å gjenspeile dette, spenner kursene våre over et bredt spekter av felt, noe som gir hver enkelt muligheten til å utmerke seg i sine interesseområder og videreutvikle sin forståelse. Fra ditt første Bitcoin-kurs til en dypdykk i protokollens spesifikasjoner, vil kursene våre hjelpe deg å navigere trygt gjennom kaninhullet. Det er ingen grunn til å nøle. Kunnskap venter på deg.",
+      "content1": "Bitcoin er ikke bare en teknologi og en form for penger, men også en revolusjonerende måte å tilnærme seg livet på. I tråd med denne bevisstheten, dekker kursene våre et bredt spekter av felt, og gir enkeltpersoner muligheten til å utmerke seg i sine interesseområder og videreutvikle sin forståelse. Fra din første Bitcoin-leksjon til en dypdykk i protokollens spesifikasjoner, vil vi hjelpe deg med å navigere trygt i kaninhullet. Det er ingen grunn til å nøle. Kunnskap venter på deg.",
       "title": "Fra nybegynner til avansert",
-      "subtitle": "Lær Bitcoin i akademiet",
+      "subtitle": "Lær Bitcoin på akademiet",
       "link": "Sjekk ut akademiet"
     },
     "sectionNetwork": {
-      "content1": "Koble deg til Bitcoin-entusiaster over hele verden som deler en felles lidenskap. Fra små samfunn som møtes regelmessig til BTC-opplæringssentre, vil vårt nettverkskart hjelpe deg med å finne inspirasjonen til å lære og bygge. Et bredt spekter av tjenester er tilgjengelig for entusiaster, som et inkubasjonssenter, fysiske verksteder, seminarer, BTC-retreater og mer. Nettverket er åpent for alle, så kom og si hei til ditt lokale BTC-samfunn!",
+      "content1": "Koble deg til Bitcoin-entusiaster over hele verden som deler en felles lidenskap. Fra små samfunn som møtes regelmessig, til BTC-opplæringssentre, vil nettverkskartet vårt hjelpe deg med å finne inspirasjon til å lære og bygge. Du vil oppdage et bredt spekter av tjenester, som et inkubasjonssenter, fysiske verksteder, seminarer, BTC-retreater og mer. Nettverket er åpent for alle, så kom og si hei til din lokale BTC-samfunn!",
       "title": "Få tilgang til et nettverk av",
       "subtitle": "Verdensomspennende Bitcoin-studiesteder",
       "link": "Bli en del av nettverket"
     },
     "tutorialSection": {
-      "title": "Å gjøre Bitcoin-utdanning enkel er vårt mål.",
+      "title": "Bitcoin-utdanning gjort enkelt.",
       "subtitle1": "Vi hjelper deg med å mestre teknologien med mange grundige opplæringsprogrammer!",
-      "content1": "Bitcoin utvikler seg stadig, med nye aktører, løsninger, protokoller og teknologiske gjennombrudd som kommer og går. Det er ofte vanskelig å opprettholde en enkelt, nøyaktig database med gode, oppdaterte veiledninger. Her på PlanB er dette det vi har oppnådd. Fra nybegynnere til avanserte brukere, kan du navigere gjennom hundrevis av veiledninger for å utforske vår industri basert på dine behov.",
+      "content1": "Bitcoin utvikler seg stadig, med fremveksten av nye aktører, løsninger, protokoller og teknologiske gjennombrudd. Derfor kan det være utfordrende å opprettholde en nøyaktig og oppdatert database med kvalitetsopplæringer. Her på Plan ₿ har vi oppnådd nettopp det. Enten du er en nybegynner eller en avansert bruker, kan du navigere gjennom hundrevis av opplæringer for å utforske vår industri i henhold til dine behov.",
       "link": "Se alle veiledninger"
     },
     "aboutUsSection": {
-      "privacyContent": "Vi anser personvern som en av de mest grunnleggende menneskerettighetene og essensielt for fremgang",
-      "openSourceContent": "Vi har som mål å fremme fri flyt av kunnskap og å bidra til å bygge flere åpen kildekode-løsninger",
+      "privacyContent": "Vi tror at personvern er en av de mest grunnleggende menneskerettighetene som er essensiell for fremgang",
+      "openSourceContent": "Vi fremmer fri flyt av kunnskap og støtter åpen kildekode-løsninger",
       "communityTitle": "Fellesskap",
       "privacyTitle": "Personvern",
       "title": "Hvem er vi?",
       "subtitle": "Litt om oss",
-      "content": "PlanB-nettverket er et initiativ for å støtte Bitcoin-utdanning over hele verden. Det er en krysning av forskjellige lidenskapelige Bitcoin-selskaper som fokuserer på utdanning, åpen kildekode-programvare, peer-to-peer-nettverk og fellesskapsfølelse. Sammen har de bestemt seg for å bygge PlanB-nettverket og tilby Bitcoin-økosystemet de riktige verktøyene for å vokse.",
+      "content": "Plan ₿ Network støtter Bitcoin-utdanning over hele verden. Det representerer et samarbeid mellom lidenskapelige Bitcoin-selskaper som fokuserer på utdanning, åpen kildekode-programvare, peer-to-peer-nettverk og fellesskapsbygging. Sammen har de lansert dette initiativet for å gi Bitcoin-økosystemet de essensielle verktøyene for vekst.",
       "bitcoinFocusTitle": "Fokus på Bitcoin",
-      "bitcoinFocusContent": "Bitcoin-revolusjonen som helhet, fra grunnlaget til forskjellige peer-to-peer-kommunikasjoner rundt det",
+      "bitcoinFocusContent": "Vi utforsker Bitcoin-revolusjonen fra grunnlaget til de omkringliggende peer-to-peer-kommunikasjonene.",
       "openSourceTitle": "Åpen kildekode",
-      "communityContent": "Vi er først og fremst et fellesskap av entusiaster som hjelper hverandre på deres Bitcoin-reise"
+      "communityContent": "Vi er først og fremst et fellesskap av entusiaster som hjelper hverandre på Bitcoin-reisen"
     },
     "languageSection": {
       "content1": "Hos PlanB tror vi at Bitcoin er en internasjonal revolusjon som angår alle. For å gi milliarder av mennesker makt, designer vi denne plattformen for å være flerspråklig og tilgjengelig for alle. Plattformen støtter for øyeblikket 7 språk, og flere blir lagt til hver måned. For å oppnå dette, bruker vi en blanding av AI og lidenskapen til Bitcoiners rundt om i verden.",
@@ -638,7 +638,7 @@
       "link": "Hjelp oss med å oversette akademiet"
     },
     "numbersSection": {
-      "networkMember": "Nettverksmedlem"
+      "networkMember": "Nettverksmedlemmer"
     },
     "patreonSection": {
       "title": "La oss sammen gjøre Bitcoin-utdanning bedre! ",
@@ -646,7 +646,7 @@
       "content": "PlanB-nettverket er stolt av å samarbeide med mange bitcoin-selskaper rundt om i verden for å kunne tilby de beste mulige utdanningsressursene!"
     },
     "wallOfLoveSection": {
-      "title": "Wall of love",
+      "title": "Takknemlighetsveggen",
       "subtitle": "Hva Bitcoinere sier om oss"
     }
   },
@@ -758,7 +758,7 @@
       "title": "Bibliotek"
     },
     "builders": {
-      "title": "Byggere"
+      "title": "Bidragsytere"
     },
     "conferences": {
       "title": "Konferanseopptak"
@@ -847,7 +847,7 @@
       "didHelp": "Hjalp dette?",
       "enjoyed": "Likte du denne opplæringen?",
       "madeBy": "Denne opplæringen er laget av",
-      "source": "Du har ikke gitt noe tekst for oversettelse. Vennligst gi teksten du vil ha oversatt. ",
+      "source": "Kilde: ",
       "tipTooltip": "Liker du det? Tips.",
       "writtenBy": "Denne opplæringen ble skrevet av :"
     },

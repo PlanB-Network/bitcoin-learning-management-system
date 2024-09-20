@@ -1,15 +1,16 @@
+import type { FormattedProfessor } from '@blms/types';
+
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../queries/get-professors.js';
 
 import { formatProfessor } from './utils.js';
 
-export const createGetProfessors = (dependencies: Dependencies) => {
-  // TODO: Add return type
-  return async (language?: string) => {
-    const { postgres } = dependencies;
-
-    const professors = await postgres.exec(getProfessorsQuery({ language }));
-
-    return professors.map((element) => formatProfessor(element));
+export const createGetProfessors = ({ postgres }: Dependencies) => {
+  return (language?: string): Promise<FormattedProfessor[]> => {
+    return postgres
+      .exec(getProfessorsQuery({ language }))
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
   };
 };

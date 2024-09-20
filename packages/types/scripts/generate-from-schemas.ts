@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { zodToTs, printNode, type GetType } from 'zod-to-ts';
-import type { ZodAny } from 'zod';
+import type { ZodEnumDef, ZodTypeAny } from 'zod';
 import ts from 'typescript';
 
 import * as schemas from '@blms/schemas';
@@ -61,7 +61,7 @@ const processDirectory = (directory: string, relativePath = '') => {
 
 // We process index files differently because we want to keep the wildcard exports
 const processIndexFile = (sourcePath: string, relativePath: string) => {
-  const fileContent = fs.readFileSync(sourcePath, 'utf-8');
+  const fileContent = fs.readFileSync(sourcePath, 'utf8');
 
   const isValidIndexFile = (fileContent: string): boolean => {
     // Check if the file only contains export statements, empty lines or the zod import zod
@@ -114,8 +114,13 @@ const extractSchemas = (fileContent: string): string[] => {
   return [...schemaNames];
 };
 
+// Map of enum values to their corresponding type name and import path
+let enumsMap = new Map<string, string>();
+
+let currentlyProcessedType = '';
 let currentlyProcessedFile = '';
 let currentImportSet: Set<string>;
+
 const generateFileContent = (
   schemaNames: string[],
   filePath: string, // Current file path (used to track imports)
@@ -125,13 +130,33 @@ const generateFileContent = (
   currentImportSet = new Set();
 
   for (const name of schemaNames) {
-    const schema = (schemas as any)[name] as ZodAny & GetType;
+    const schema = (schemas as any)[name] as ZodTypeAny & GetType;
 
     const typeName = typeNameFromSchema(name);
+    currentlyProcessedType = typeName;
+
+    console.debug(`Processing schema "${typeName}"`);
+
+    const zodType = schema._def?.typeName;
+
+    // Register enum
+    if (zodType === 'ZodEnum') {
+      const values = (schema._def as ZodEnumDef).values;
+      enumsMap.set(values.map((v) => `"${v}"`).join(' | '), typeName);
+    }
+
     const { node } = zodToTs(schema);
 
     // Append a custom getType function to the schema once it have been processed
     schema._def.getType = (ts) => {
+      // Do not return self-references (otherwise you end up with export A = A)
+      if (currentlyProcessedType === typeName) {
+        console.debug(`Skipping self-reference for type "${typeName}"`);
+        return null;
+      }
+
+      console.debug(`Get type "${currentlyProcessedType}" -> "${typeName}"`);
+
       if (filePath !== currentlyProcessedFile) {
         console.debug(
           `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
@@ -147,7 +172,18 @@ const generateFileContent = (
       return ts.factory.createIdentifier(typeName);
     };
 
-    const output = printNode(node);
+    let output = printNode(node);
+
+    // Look for enum values in the output and replace them with the corresponding type name
+    // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
+    if (zodType !== 'ZodEnum') {
+      for (const [values, type] of enumsMap) {
+        if (output.includes(values)) {
+          console.debug('Replacing', values, 'with', type);
+          output = output.replace(values, type);
+        }
+      }
+    }
 
     switch (node.kind) {
       // @ts-ignore TODO align ts version between zod-to-ts and workspace
@@ -169,3 +205,4 @@ const typeNameFromSchema = (schemaName: string): string => {
 };
 
 processDirectory(schemasDirectory);
+processDirectory(schemasDirectory); // Do it twice to handle imports correctly

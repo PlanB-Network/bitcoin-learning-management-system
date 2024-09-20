@@ -1,12 +1,10 @@
 import { createFileRoute, useParams } from '@tanstack/react-router';
-import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Card, Loader } from '@blms/ui';
 
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BookSummary } from '../-components/book-summary.js';
@@ -17,13 +15,11 @@ export const Route = createFileRoute('/_content/resources/books/$bookId')({
 });
 
 function Book() {
-  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const { bookId } = useParams({
     from: '/resources/books/$bookId',
   });
   const isScreenMd = useGreater('sm');
-  const navigateTo404Called = useRef(false);
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: Number(bookId),
@@ -34,13 +30,6 @@ function Book() {
     language: i18n.language,
     resourceId: +bookId,
   });
-
-  useEffect(() => {
-    if (!book && isFetched && !navigateTo404Called.current) {
-      navigateTo404();
-      navigateTo404Called.current = true;
-    }
-  }, [book, isFetched, navigateTo404]);
 
   function displayAbstract() {
     return (
@@ -57,11 +46,6 @@ function Book() {
     );
   }
 
-  // let buttonSize: 'xs' | 's' = 'xs';
-  // if (isScreenMd) {
-  //   buttonSize = 's';
-  // }
-
   return (
     <ResourceLayout
       title={t('book.pageTitle')}
@@ -72,6 +56,13 @@ function Book() {
       backToCategoryButton
     >
       {!isFetched && <Loader size={'s'} />}
+      {isFetched && !book && (
+        <div className="w-[768px] mx-auto text-white">
+          {t('general.itemNotFoundOrTranslated', {
+            item: t('words.book'),
+          })}
+        </div>
+      )}
       {book && (
         <div className="w-full">
           {proofreading ? (

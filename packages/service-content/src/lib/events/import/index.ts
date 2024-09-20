@@ -21,7 +21,9 @@ const parseDetailsFromPath = (path: string): EventDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (courses/name)
-  if (pathElements.length < 3) throw new Error('Invalid resource path');
+  if (pathElements.length < 3) {
+    throw new Error('Invalid resource path');
+  }
 
   return {
     id: pathElements[1],

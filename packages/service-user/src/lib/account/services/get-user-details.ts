@@ -5,11 +5,8 @@ import { firstRow } from '@blms/database';
 import type { Dependencies } from '../../../dependencies.js';
 import { getUserDetailsQuery } from '../queries/get-user-details.js';
 
-export const createGetUserDetails =
-  (dependencies: Dependencies) =>
-  async ({ uid }: { uid: string }) => {
-    const { postgres } = dependencies;
-
+export const createGetUserDetails = ({ postgres }: Dependencies) => {
+  return async ({ uid }: { uid: string }) => {
     const user = await postgres.exec(getUserDetailsQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -21,3 +18,4 @@ export const createGetUserDetails =
 
     return user;
   };
+};

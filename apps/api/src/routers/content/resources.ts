@@ -1,11 +1,12 @@
 import { z } from 'zod';
 
 import {
-  joinedBookSchema,
-  joinedBuilderSchema,
-  joinedConferenceSchema,
+  getBetResponseSchema,
+  getBookResponseSchema,
+  getBuilderResponseSchema,
+  getConferenceResponseSchema,
+  getPodcastResponseSchema,
   joinedGlossaryWordSchema,
-  joinedPodcastSchema,
 } from '@blms/schemas';
 import {
   createGetBets,
@@ -20,6 +21,16 @@ import {
   createGetPodcast,
   createGetPodcasts,
 } from '@blms/service-content';
+import type {
+  GetBetResponse,
+  GetBookResponse,
+  GetBuilderResponse,
+  GetConferenceResponse,
+  GetPodcastResponse,
+  JoinedGlossaryWord,
+} from '@blms/types';
+
+import type { Parser } from '#src/trpc/types.js';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -45,68 +56,64 @@ const createGetResourceProcedureWithStrId = () => {
 export const resourcesRouter = createTRPCRouter({
   // Bets
   getBets: createGetResourcesProcedure()
-    // TODO add output
-    // .output(joinedBetSchema.merge(z.object({ logo: z.string() })).array())
-    .query(async ({ ctx, input }) =>
-      createGetBets(ctx.dependencies)(input?.language),
-    ),
+    .output<Parser<GetBetResponse[]>>(getBetResponseSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetBets(ctx.dependencies)(input?.language);
+    }),
   // Books
   getBooks: createGetResourcesProcedure()
-    .output(
-      joinedBookSchema
-        .merge(z.object({ cover: z.string().optional() }))
-        .array(),
-    )
-    .query(async ({ ctx, input }) =>
-      createGetBooks(ctx.dependencies)(input?.language),
-    ),
+    .output<Parser<GetBookResponse[]>>(getBookResponseSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetBooks(ctx.dependencies)(input?.language);
+    }),
   getBook: createGetResourceProcedure()
-    .output(joinedBookSchema.merge(z.object({ cover: z.string().optional() })))
-    .query(async ({ ctx, input }) =>
-      createGetBook(ctx.dependencies)(input.id, input.language),
-    ),
+    .output<Parser<GetBookResponse>>(getBookResponseSchema)
+    .query(({ ctx, input }) => {
+      return createGetBook(ctx.dependencies)(input.id, input.language);
+    }),
   // Builders
   getBuilders: createGetResourcesProcedure()
-    .output(joinedBuilderSchema.merge(z.object({ logo: z.string() })).array())
-    .query(async ({ ctx, input }) =>
-      createGetBuilders(ctx.dependencies)(input?.language),
-    ),
+    .output<Parser<GetBuilderResponse[]>>(getBuilderResponseSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetBuilders(ctx.dependencies)(input?.language);
+    }),
   getBuilder: createGetResourceProcedure()
-    .output(joinedBuilderSchema.merge(z.object({ logo: z.string() })))
-    .query(async ({ ctx, input }) =>
-      createGetBuilder(ctx.dependencies)(input.id, input.language),
-    ),
+    .output<Parser<GetBuilderResponse>>(getBuilderResponseSchema)
+    .query(({ ctx, input }) => {
+      return createGetBuilder(ctx.dependencies)(input.id, input.language);
+    }),
   // Conferences
   getConferences: createGetResourcesProcedure()
-    .output(
-      joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })).array(),
+    .output<Parser<GetConferenceResponse[]>>(
+      getConferenceResponseSchema.array(),
     )
-    .query(async ({ ctx }) => createGetConferences(ctx.dependencies)()),
+    .query(({ ctx }) => createGetConferences(ctx.dependencies)()),
   getConference: createGetResourceProcedure()
-    .output(joinedConferenceSchema.merge(z.object({ thumbnail: z.string() })))
-    .query(async ({ ctx, input }) =>
-      createGetConference(ctx.dependencies)(input.id),
-    ),
+    .output<Parser<GetConferenceResponse>>(getConferenceResponseSchema)
+    .query(({ ctx, input }) => createGetConference(ctx.dependencies)(input.id)),
   // Glossary Words
   getGlossaryWords: createGetResourcesProcedure()
-    .output(joinedGlossaryWordSchema.array())
-    .query(async ({ ctx, input }) =>
-      createGetGlossaryWords(ctx.dependencies)(input?.language),
-    ),
+    .output<Parser<JoinedGlossaryWord[]>>(joinedGlossaryWordSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetGlossaryWords(ctx.dependencies)(input?.language);
+    }),
   getGlossaryWord: createGetResourceProcedureWithStrId()
-    .output(joinedGlossaryWordSchema)
-    .query(async ({ ctx, input }) =>
-      createGetGlossaryWord(ctx.dependencies)(input.strId, input.language),
-    ),
+    .output<Parser<JoinedGlossaryWord>>(joinedGlossaryWordSchema)
+    .query(({ ctx, input }) => {
+      return createGetGlossaryWord(ctx.dependencies)(
+        input.strId,
+        input.language,
+      );
+    }),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()
-    .output(joinedPodcastSchema.merge(z.object({ logo: z.string() })).array())
-    .query(async ({ ctx, input }) =>
-      createGetPodcasts(ctx.dependencies)(input?.language),
-    ),
+    .output<Parser<GetPodcastResponse[]>>(getPodcastResponseSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetPodcasts(ctx.dependencies)(input?.language);
+    }),
   getPodcast: createGetResourceProcedure()
-    .output(joinedPodcastSchema.merge(z.object({ logo: z.string() })))
-    .query(async ({ ctx, input }) =>
-      createGetPodcast(ctx.dependencies)(input.id, input.language),
-    ),
+    .output<Parser<GetPodcastResponse>>(getPodcastResponseSchema)
+    .query(({ ctx, input }) => {
+      return createGetPodcast(ctx.dependencies)(input.id, input.language);
+    }),
 });

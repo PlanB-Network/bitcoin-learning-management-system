@@ -1,13 +1,15 @@
 import { sql } from '@blms/database';
 import type { JoinedQuizQuestion } from '@blms/types';
 
+interface Options {
+  chapterId: string;
+  language?: string;
+}
+
 export const getCourseChapterQuizQuestionsQuery = ({
   chapterId,
   language,
-}: {
-  chapterId: string;
-  language?: string;
-}) => {
+}: Options) => {
   return sql<JoinedQuizQuestion[]>`
     SELECT 
       qq.*, qql.language, qql.question, qql.answer, qql.wrong_answers,

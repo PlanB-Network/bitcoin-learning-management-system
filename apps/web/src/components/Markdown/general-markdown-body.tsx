@@ -117,7 +117,9 @@ const GeneralMarkdownBody = ({
               alt={alt}
             />
           ),
-        blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+        blockquote: ({ children }) => (
+          <Blockquote mode="light">{children}</Blockquote>
+        ),
         code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
           return (

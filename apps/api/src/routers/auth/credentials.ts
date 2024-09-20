@@ -2,7 +2,11 @@ import { TRPCError } from '@trpc/server';
 import { verify as verifyHash } from 'argon2';
 import { z } from 'zod';
 
+import { loginResponseSchema } from '@blms/schemas';
 import { createGetUser, createNewCredentialsUser } from '@blms/service-user';
+import type { LoginResponse } from '@blms/types';
+
+import type { Parser } from '#src/trpc/types.js';
 
 import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
@@ -23,17 +27,7 @@ const loginCredentialsSchema = z.object({
 export const credentialsAuthRouter = createTRPCRouter({
   register: publicProcedure
     .input(registerCredentialsSchema)
-    .output(
-      z.object({
-        status: z.number(),
-        message: z.string(),
-        user: z.object({
-          uid: z.string(),
-          username: z.string(),
-          email: z.string().optional(),
-        }),
-      }),
-    )
+    .output<Parser<LoginResponse>>(loginResponseSchema)
     .mutation(async ({ ctx, input }) => {
       const { dependencies } = ctx;
 
@@ -67,17 +61,7 @@ export const credentialsAuthRouter = createTRPCRouter({
     }),
   login: publicProcedure
     .input(loginCredentialsSchema)
-    .output(
-      z.object({
-        status: z.number(),
-        message: z.string(),
-        user: z.object({
-          uid: z.string(),
-          username: z.string(),
-          email: z.string().optional(),
-        }),
-      }),
-    )
+    .output<Parser<LoginResponse>>(loginResponseSchema)
     .mutation(async ({ ctx, input }) => {
       const { dependencies, req } = ctx;
 

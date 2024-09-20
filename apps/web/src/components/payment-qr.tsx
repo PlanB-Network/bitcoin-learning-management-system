@@ -2,20 +2,13 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Trans, useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
 
+import type { CheckoutData } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
 import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
 
-export interface PaymentData {
-  id: string;
-  pr: string;
-  onChainAddr: string;
-  amount: number;
-  checkoutUrl: string;
-}
-
 interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
-  paymentData: PaymentData;
+  paymentData: CheckoutData;
   onBack?: () => void;
 }
 

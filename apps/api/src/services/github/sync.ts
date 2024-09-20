@@ -9,6 +9,7 @@ import {
   createGetNow,
   createProcessContentFiles,
   createProcessDeleteOldEntities,
+  createSyncBuildersLocations,
   createSyncEventsLocations,
 } from '@blms/service-content';
 
@@ -26,6 +27,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     createCalculateCourseChapterSeats(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
   const syncEventsLocations = createSyncEventsLocations(dependencies);
+  const syncBuildersLocations = createSyncBuildersLocations(dependencies);
   const processContentFiles = createProcessContentFiles(dependencies);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
 
@@ -55,7 +57,10 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     console.log('-- Sync procedure: Calculate remaining seats');
     await calculateCourseChapterSeats();
     await calculateEventSeats();
+
     await syncEventsLocations().catch((error: Error) => console.error(error));
+
+    await syncBuildersLocations().catch((error: Error) => console.error(error));
 
     if (syncErrors.length > 0) {
       console.error(

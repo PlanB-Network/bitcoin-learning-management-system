@@ -9,6 +9,7 @@ import { Loader, cn } from '@blms/ui';
 import DonateLightning from '#src/assets/icons/donate_lightning.svg?react';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
+// import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
@@ -80,6 +81,9 @@ const Header = ({
     </div>
   );
 };
+{
+  /* eslint-disable tailwindcss/no-contradicting-classname */
+}
 
 const AuthorDetails = ({
   tutorial,
@@ -88,6 +92,11 @@ const AuthorDetails = ({
   tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>;
   openTipModal: () => void;
 }) => {
+  const professor = tutorial?.credits?.professor;
+  const coursesCount = professor?.coursesCount ?? 0;
+  const tutorialsCount = professor?.tutorialsCount ?? 0;
+  const lecturesCount = professor?.lecturesCount ?? 0;
+
   return (
     <article className="flex flex-col p-2 md:p-7 gap-5 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8">
       <span className="label-normal-16px md:label-large-20px font-medium text-newBlack-1 w-full max-md:text-center">
@@ -97,7 +106,7 @@ const AuthorDetails = ({
         <div className="rounded-[20px] md:p-4 border-1 md:border-2 border-newBlack-1">
           <Link
             to={`/professor/${formatNameForURL(tutorial?.credits?.professor?.name || '')}-${tutorial?.credits?.professor?.id}`}
-            className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] p-2.5 md:w-[280px] relative overflow-hidden"
+            className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 md:w-[280px] relative overflow-hidden"
           >
             <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
               {tutorial?.credits?.professor?.name}
@@ -107,25 +116,38 @@ const AuthorDetails = ({
               alt={tutorial?.credits?.professor?.name}
               className="size-32 rounded-full z-10"
             />
+
             <div className="flex gap-4 items-end mt-2.5 z-10">
-              {/* Courses */}
-              <div className="flex flex-col gap">
-                <span className="text-5xl leading-[116%] text-center text-white">
-                  {tutorial?.credits?.professor?.coursesCount}
-                </span>
-                <span className="font-semibold leading-[133%] text-center text-white">
-                  {t('words.courses')}
-                </span>
-              </div>
-              {/* Tutorials */}
-              <div className="flex flex-col gap">
-                <span className="text-5xl leading-[116%] text-center text-white">
-                  {tutorial?.credits?.professor?.tutorialsCount}
-                </span>
-                <span className="font-semibold leading-[133%] text-center text-white">
-                  {t('words.tutorials')}
-                </span>
-              </div>
+              {coursesCount > 0 && (
+                <div className="flex flex-col gap">
+                  <span className="text-5xl leading-[116%] text-center text-white">
+                    {coursesCount}
+                  </span>
+                  <span className="font-semibold leading-[133%] text-center text-white">
+                    {t('words.courses')}
+                  </span>
+                </div>
+              )}
+              {tutorialsCount > 0 && (
+                <div className="flex flex-col gap">
+                  <span className="text-5xl leading-[116%] text-center text-white">
+                    {tutorialsCount}
+                  </span>
+                  <span className="font-semibold leading-[133%] text-center text-white">
+                    {t('words.tutorials')}
+                  </span>
+                </div>
+              )}
+              {lecturesCount > 0 && (
+                <div className="flex flex-col gap">
+                  <span className="text-5xl leading-[116%] text-center text-white">
+                    {lecturesCount}
+                  </span>
+                  <span className="font-semibold leading-[133%] text-center text-white">
+                    {t('words.lectures')}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Background element */}
@@ -156,11 +178,9 @@ const BackgroundAuthorCardElement = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="280"
-      height="143"
-      viewBox="0 0 280 143"
+      viewBox="0 0 280 45"
       fill="none"
-      className="absolute bottom-0 w-full"
+      className="absolute bottom-0 h-full max-h-[140px]"
     >
       <path
         d="M147.147 1.98324C142.545 0.222654 137.455 0.222651 132.853 1.98323L12.8534 47.8939C5.11227 50.8556 0 58.2852 0 66.5735V259.249C0 270.295 8.95431 279.249 20 279.249H260C271.046 279.249 280 270.295 280 259.249V66.5735C280 58.2852 274.888 50.8556 267.147 47.8939L147.147 1.98324Z"
@@ -257,6 +277,7 @@ function TutorialDetails() {
     setIsLiked(existingLike || { liked: false, disliked: false });
   }, [existingLike]);
 
+  // Like/dislike buttons component
   const LikeDislikeButtons = () => {
     // Handler functions for like and dislike buttons
     const handleLike = () => {
@@ -339,6 +360,14 @@ function TutorialDetails() {
       currentTutorialId={tutorial?.id}
     >
       <>
+        {!isFetched && <Loader size={'s'} />}
+        {isFetched && !tutorial && (
+          <div className="flex flex-col text-black">
+            {t('general.itemNotFoundOrTranslated', {
+              item: t('words.tutorial'),
+            })}
+          </div>
+        )}
         {proofreading ? (
           <ProofreadingProgress
             mode="light"
@@ -434,8 +463,6 @@ function TutorialDetails() {
             )}
           </>
         )}
-
-        {!isFetched && <Loader size={'s'} />}
       </>
     </TutorialLayout>
   );

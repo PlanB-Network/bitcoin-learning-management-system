@@ -1,11 +1,11 @@
+import type { GetBookResponse } from '@blms/types';
+
 import type { Dependencies } from '../../dependencies.js';
 import { computeAssetCdnUrl } from '../../utils.js';
 import { getBooksQuery } from '../queries/get-books.js';
 
-export const createGetBooks =
-  (dependencies: Dependencies) => async (language?: string) => {
-    const { postgres } = dependencies;
-
+export const createGetBooks = ({ postgres }: Dependencies) => {
+  return async (language?: string): Promise<GetBookResponse[]> => {
     const books = await postgres.exec(getBooksQuery(language));
 
     return books.map((book) => ({
@@ -15,3 +15,4 @@ export const createGetBooks =
         : undefined,
     }));
   };
+};

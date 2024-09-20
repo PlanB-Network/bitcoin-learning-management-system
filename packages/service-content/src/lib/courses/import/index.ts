@@ -44,7 +44,9 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (courses/name)
-  if (pathElements.length < 2) throw new Error('Invalid resource path');
+  if (pathElements.length < 2) {
+    throw new Error('Invalid resource path');
+  }
 
   return {
     id: pathElements[1],
@@ -291,10 +293,8 @@ const extractParts = (markdown: string): Part[] => {
   return parts;
 };
 
-export const createUpdateCourses = (dependencies: Dependencies) => {
+export const createUpdateCourses = ({ postgres }: Dependencies) => {
   return async (course: ChangedCourse, errors: string[]) => {
-    const { postgres } = dependencies;
-
     const { main, files } = separateContentFiles(course, 'course.yml');
 
     return postgres
@@ -570,7 +570,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                 RETURNING *
               `;
 
-                const formatedChapters = parts.flatMap((part) =>
+                const formattedChapters = parts.flatMap((part) =>
                   part.chapters.map((chapter) => {
                     return {
                       course_id: course.id,
@@ -601,7 +601,7 @@ export const createUpdateCourses = (dependencies: Dependencies) => {
                 );
 
                 await transaction`
-                  INSERT INTO content.course_chapters_localized ${transaction(formatedChapters)}
+                  INSERT INTO content.course_chapters_localized ${transaction(formattedChapters)}
                   ON CONFLICT (course_id, chapter_id, language) DO UPDATE SET
                     title = EXCLUDED.title,
                     sections = EXCLUDED.sections,

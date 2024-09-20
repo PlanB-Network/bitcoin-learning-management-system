@@ -150,31 +150,37 @@ function Home() {
 
     return (
       <div className={cn(sectionClass, 'relative')}>
-        <div className="flex flex-col gap-3 md:flex-row md:gap-12 ">
-          <div className="flex flex-row justify-center gap-3 md:gap-12">
+        <div className="flex flex-col gap-3 md:flex-col md:gap-12 ">
+          <div className="flex flex-row justify-center gap-3 md:gap-10">
             <div className="flex flex-col text-center">
-              <span className={cn(element1css)}>13+</span>
-              <span className={cn(element2css)}>
-                {t('words.networkMember')}
-              </span>
+              <span className={cn(element1css)}>15+</span>
+              <span className={cn(element2css)}>{t('words.communities')}</span>
             </div>
             <div className="flex flex-col text-center">
-              <span className={cn(element1css)}>18+</span>
-              <span className={cn(element2css)}>{t('words.professors')}</span>
-            </div>
-            <div className="flex flex-col text-center">
-              <span className={cn(element1css)}>12+</span>
+              <span className={cn(element1css)}>20+</span>
               <span className={cn(element2css)}>{t('words.courses')}</span>
+            </div>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>80+</span>
+              <span className={cn(element2css)}>{t('words.events')}</span>
+            </div>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>880+</span>
+              <span className={cn(element2css)}>{t('words.students')}</span>
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3 md:gap-12">
             <div className="flex flex-col text-center">
-              <span className={cn(element1css)}>60+</span>
+              <span className={cn(element1css)}>50+</span>
+              <span className={cn(element2css)}>{t('words.professors')}</span>
+            </div>
+            <div className="flex flex-col text-center">
+              <span className={cn(element1css)}>100+</span>
               <span className={cn(element2css)}>{t('words.tutorials')}</span>
             </div>
             <div className="flex flex-col text-center">
-              <span className={cn(element1css)}>694+</span>
-              <span className={cn(element2css)}>{t('words.members')}</span>
+              <span className={cn(element1css)}>1220+</span>
+              <span className={cn(element2css)}>{t('words.resources')}</span>
             </div>
           </div>
         </div>

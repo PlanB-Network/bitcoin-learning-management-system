@@ -2,32 +2,18 @@ import type { Dependencies } from '../../../dependencies.js';
 import { updateCoupon } from '../queries/update-coupon.js';
 import { updatePayment } from '../queries/update-payment.js';
 
-export const createUpdatePayment =
-  (dependencies: Dependencies) =>
-  async ({
-    id,
-    isPaid,
-    isExpired,
-  }: {
-    id: string;
-    isPaid: boolean;
-    isExpired: boolean;
-  }) => {
-    const { postgres } = dependencies;
+interface Options {
+  id: string;
+  isPaid: boolean;
+  isExpired: boolean;
+}
 
-    await postgres.exec(
-      updatePayment({
-        id,
-        isPaid,
-        isExpired,
-      }),
-    );
+export const createUpdatePayment = ({ postgres }: Dependencies) => {
+  return async (options: Options) => {
+    await postgres.exec(updatePayment(options));
 
-    if (isPaid) {
-      await postgres.exec(
-        updateCoupon({
-          paymentId: id,
-        }),
-      );
+    if (options.isPaid) {
+      await postgres.exec(updateCoupon({ paymentId: options.id }));
     }
   };
+};

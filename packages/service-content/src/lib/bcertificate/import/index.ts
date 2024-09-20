@@ -70,13 +70,11 @@ export const groupByBCertificateExam = (
   return [...groupedBCertificateExams.values()];
 };
 
-export const createUpdateBCertificateExams = (dependencies: Dependencies) => {
+export const createUpdateBCertificateExams = ({ postgres }: Dependencies) => {
   return async (
     bCertificateExam: ChangedBCertificateExam,
     errors: string[],
   ) => {
-    const { postgres } = dependencies;
-
     const { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
 
     return postgres
@@ -120,10 +118,8 @@ export const createUpdateBCertificateExams = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteBCertificateExams = (dependencies: Dependencies) => {
+export const createDeleteBCertificateExams = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
-    const { postgres } = dependencies;
-
     try {
       await postgres.exec(
         sql`DELETE FROM content.b_certificate_exam WHERE last_sync < ${sync_date} 
