@@ -257,7 +257,7 @@
       "certificateAvailable": "จะสามารถใช้งานได้ หลังจากการยื่นส่ง ในอีกประมาณ 10 ชั่วโมง",
       "timeStamped": "เวลาที่ถูกบันทึก",
       "timeStampHow": "วิธีการทำงาน:",
-      "timeStampHowDescription": "เมื่อใบปริญญาของคุณถูกออกมาแล้ว ลายนิ้วมือดิจิตอลของแต่ละใบจะถูกสร้างขึ้นแบบไม่ซ้ำกันและเก็บไว้บนบล็อกเชน ทำให้การบันทึกประวัตินี้ถาวรและไม่สามารถแก้ไขได้ การพยายามเปลี่ยนแปลงใบปริญญาของคุณจะทำให้ลายนิ้วมือดิจิตอลเปลี่ยนไป ซึ่งจะแสดงให้เห็นการเปลี่ยนแปลง",
+      "timeStampHowDescription": "เมื่อใบปริญญาของคุณถูกออกมาแล้ว ลายนิ้วมือดิจิตอลของแต่ละใบจะถูกสร้างขึ้นแบบไม่ซ้ำกันและเก็บไว้บนบล็อกเชน ทำให้การบันทึกปร���วัตินี้ถาวรและไม่สามารถแก้ไขได้ การพยายามเปลี่ยนแปลงใบปริญญาของคุณจะทำให้ลายนิ้วมือดิจิตอลเปลี่ยนไป ซึ่งจะแสดงให้เห็นการเปลี่ยนแปลง",
       "timerStart": "เมื่อคุณคลิกเริ่มต้น เราจะเริ่มนับเวลา 20 นาที",
       "tryAgain": "กรุณาลองอีกครั้ง",
       "verifyDisplayName": "ก่อนที่จะเริ่มต้น โปรดตรวจสอบชื่อที่แสดงของคุณด้านล่าง เนื่องจากมันจะถูกใช้ในบนใบปริญญาของคุณ",
@@ -338,7 +338,11 @@
         "questions": "คำถามที่ได้รับการตอบแล้ว",
         "time": "เวลาที่ใช้ไป"
       },
-      "viewExam": "ดูข้อสอบ"
+      "viewExam": "ดูข้อสอบ",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "conclusion": {
       "completedFeedbackSubHeadline": "คุณสามารถแก้ไขคะแนนและความคิดเห็นของคุณได้ทุกเวลาในแดชบอร์ดของคุณ",
@@ -451,7 +455,52 @@
         "quickRecap": "คุณสามารถหาข้อมูลทั่วไปทั้งหมดเกี่ยวกับหลักสูตรนี้ได้ที่นี่",
         "reviewInfos": "คุณสามารถควบคุมและตรวจสอบข้อมูลทั้งหมดที่เกี่ยวข้องกับแต่ละคอร์สที่คุณได้ประสานงานไว้ได้ที่นี่",
         "reviews": "รีวิว",
-        "goal": "จุดมุ่งหมาย"
+        "goal": "จุดมุ่งหมาย",
+        "announcementModal": {
+          "create": "",
+          "dateLabel": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcementsPast": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "announcements": "",
+        "allStudents": "",
+        "announcementsIntroduction": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "เมนูของผู้สอน",
       "reviews": {
@@ -497,8 +546,22 @@
         "emailPreferencesSavedSuccessfully": "การตั้งค่าอีเมลของคุณได้รับการอัปเดตเรียบร้อยแล้ว",
         "emailPreferencesTitle": "จัดการการตั้งค่าอีเมลในเครือข่าย Plan ₿ ของคุณ",
         "emailWarning": "คำเตือน! ไม่มีที่อยู่อีเมลที่เชื่อมโยงกับบัญชีของคุณ กรุณาเพิ่มในส่วนข้อมูลส่วนตัวของคุณ",
-        "emailTitle": "คุณต้องการรับการแจ้งเตือนประเภทใดผ่านทางอีเมล์บ้าง?"
-      }
+        "emailTitle": "คุณต้องการรับการแจ้งเตือนประเภทใดผ่านทางอีเมล์บ้าง?",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "calendar": {
       "calendar": "ปฏิทิน",
@@ -551,7 +614,28 @@
       "mustBePdf": "ไฟล์ของคุณต้องอยู่ในรูปแบบ PDF หากคุณต้องส่งไฟล์เพิ่มเติม โปรดรวมลิงค์ไปยังไฟล์นั้นใน PDF ของคุณ",
       "projectRankingInstructions": "คำแนะนำการจัดอันดับโครงการ:",
       "rankingOnly24Hours": "พอร์ทัลจัดอันดับจะเปิดแค่เพียง 24 ชั่วโมงในวันที่ 2 มิถุนายน ตั้งแต่เวลา 00:00 ถึง 23:59 (UTC+2) เท่านั้น",
-      "readAssignment": "อ่านงานที่ได้รับมอบหมาย"
+      "readAssignment": "อ่านงานที่ได้รับมอบหมาย",
+      "summerSchool": "",
+      "yourProject": "",
+      "submissionInstructions": "",
+      "planbSchoolGeneralInformation": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "keepMovingForward": "",
+      "saveList": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "assignmentTitle": "",
+      "ranking": ""
     },
     "credentials": {
       "bCert": "ใบรับรอง ₿",
@@ -923,7 +1007,13 @@
       "access_online_successful": "เมื่อกิจกรรมเริ่มต้น ให้เข้าสู่ระบบของแพลตฟอร์มเพื่อเข้าถึงการถ่ายทอดสดใน หน้ากิจกรรม",
       "access_physical_successful": "คุณสามารถดาวน์โหลดบัตรของคุณได้ที่นี่ หรือดาวน์โหลดในแดชบอร์ดของคุณในภายหลัง",
       "description_online": "โปรดตรวจสอบวันที่และเวลาของกิจกรรมที่ได้รับ\nเมื่อถึงเวลางาน กรุณาเข้าสู่ระบบเพื่อเข้าถึงการถ่ายทอดสดผ่านทางหน้ากิจกรรม",
-      "description_physical": "โปรดตรวจสอบรายละเอียดสถานที่ที่ให้ไว้\nเมื่อการจองของคุณได้รับการยืนยันแล้ว เราจะออกบัตรให้คุณเพื่อนำไปแสดงในงาน บัตรนี้ยังจะให้สิทธิ์ให้คุณเข้าร่วมการถ่ายทอดสดและดูวิดีโอย้อนหลังหากมีให้บริการ"
+      "description_physical": "โปรดตรวจสอบรายละเอียดสถานที่ที่ให้ไว้\nเมื่อการจองของคุณได้รับการยืนยันแล้ว เราจะออกบัตรให้คุณเพื่อนำไปแสดงในงาน บัตรนี้ยังจะให้สิทธิ์ให้คุณเข้าร่วมการถ่ายทอดสดและดูวิดีโอย้อนหลังหากมีให้บริการ",
+      "callout_purchase_replay": "",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "คุณต้องเข้าสู่ระบบเพื่อเข้าถึงกิจกรรมนี้",
@@ -1066,7 +1156,8 @@
   },
   "resources": {
     "books": {
-      "author": "ผู้เขียน "
+      "author": "ผู้เขียน ",
+      "title": ""
     },
     "newsletters": {
       "title": "จดหมายข่าว",
@@ -1095,7 +1186,32 @@
       "noYoutubeChannels": "ขณะนี้ยังไม่มีช่อง Youtube ในภาษาที่คุณเลือก"
     },
     "pageSubtitleChannels": "<0>ช่อง Youtube อื่นๆ</0> ที่คุณอาจชอบ:",
-    "toggleLabelSelectedLanguage": "ภาษาที่เลือก"
+    "toggleLabelSelectedLanguage": "ภาษาที่เลือก",
+    "bet": {
+      "title": ""
+    },
+    "articles": {
+      "title": ""
+    },
+    "conferences": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "lectures": {
+      "noLectures": "",
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleFreeOnly": ""
   },
   "settings": {
     "changePassword": "แก้ไขรหัสผ่าน",
@@ -1146,7 +1262,45 @@
       "title": "กระเป๋าเงิน"
     },
     "approvedByCreator": "ได้รับการอนุมัติจากผู้สร้าง",
-    "backTutorials": "กลับไปที่บทช่วยสอนทุกอัน"
+    "backTutorials": "กลับไปที่บทช่วยสอนทุกอัน",
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasBeenProofreadBy": "",
+    "hasNotBeenProofread": "",
+    "subCategories": {
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "writtenBy": ""
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1180,7 +1334,8 @@
       "level": "ระดับ",
       "levels": "ระดับ",
       "wizard": "พ่อมด",
-      "beginnerFriendly": "เป็นมิตรกับผู้เริ่มต้น"
+      "beginnerFriendly": "เป็นมิตรกับผู้เริ่มต้น",
+      "expert": ""
     },
     "library": "คลังข้อมูล",
     "lnurlAuth": "การรับรอง LNURL",
@@ -1285,7 +1440,47 @@
     "unavailable": "ไม่สามารถใช้งานได้",
     "user": "ผู้ใช้งาน",
     "username": "ชื่อผู้ใช้",
-    "startHere": "เริ่มที่นี่!"
+    "startHere": "เริ่มที่นี่!",
+    "mentor": "",
+    "timeZone": "",
+    "continue": "",
+    "lecture": "",
+    "calendar": "",
+    "channels": "",
+    "complete": "",
+    "careerPortal": "",
+    "company": "",
+    "congrats": "",
+    "country": "",
+    "credits": "",
+    "day": "",
+    "delete": "",
+    "email": "",
+    "exam": "",
+    "github": "",
+    "incomplete": "",
+    "language": "",
+    "linkedin": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "no": "",
+    "notApplicable": "",
+    "password": "",
+    "previous": "",
+    "producer": "",
+    "project": "",
+    "projects": "",
+    "save": "",
+    "saving": "",
+    "selectedAmount": "",
+    "skip": "",
+    "submit": "",
+    "telegram": "",
+    "title": "",
+    "video": "",
+    "yes": ""
   },
   "conferences": {
     "language": "ภาษา",
@@ -1314,7 +1509,9 @@
     "total": "รวมทั้งหมด",
     "payWithBitcoin": "ชำระด้วยบิตคอยน์",
     "payByCard": "ชำระด้วยบัตร",
-    "haveReductionCode": "มีรหัสลดราคาหรือไม่?"
+    "haveReductionCode": "มีรหัสลดราคาหรือไม่?",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "bCert": {
     "bCertDescription": "ใบรับรอง ₿ นั้นถือเป็นข้อรสอบที่ได้รับการยอมรับในระดับสากลที่ประเมินความชำนาญของคุณในด้าน Bitcoin และหัวข้อที่เกี่ยวข้อง โดยใบรับรองนี้จะช่วยให้คุณสามารถพิสูจน์ทักษะและความรู้ของคุณในอุตสาหกรรมที่เกี่ยวข้องกับ Bitcoin ได้ และทำให้คุณสามารถเข้าถึงบริษัทที่ดีที่สุดและตำแหน่งงานที่ยอดเยี่ยม",
@@ -1372,7 +1569,8 @@
       "noArticlesText": "ไม่มีการโพสต์บล็อกในเวลานี้",
       "errorMessageNotFound": "ไม่พบบล็อก",
       "blogSidebarTitle": "โพสต์ในเครือข่ายก่อนหน้านี้",
-      "filterText": "กรองตามหัวข้อ :"
+      "filterText": "กรองตามหัวข้อ :",
+      "blogSidebarTitleForAll": ""
     },
     "title": "การสื่อสารสาธารณะ",
     "blogPost": "บล็อกและข่าว",
@@ -1387,7 +1585,8 @@
     "inProgress": "กำลังดำเนินการ ตรวจแก้ไขคำผิด",
     "reviewEarn": "มาช่วยรีวิวและรับ Sat กัน",
     "status": "สถานะในการตรวจแก้ไขคำผิด",
-    "thanks": "ขอขอบคุณผู้ที่ให้คำแนะนำ!"
+    "thanks": "ขอขอบคุณผู้ที่ให้คำแนะนำ!",
+    "rewardsText": ""
   },
   "youtubeChannels": {
     "pageTitle": "ช่อง Youtube",
@@ -1438,6 +1637,94 @@
       "title": "พอร์ทัลการค้นหา"
     },
     "filterByType": "กรองตามประเภท",
-    "glossary_word": "คำศัพท์อธิบาย"
+    "glossary_word": "คำศัพท์อธิบาย",
+    "all": "",
+    "resultInfo": "",
+    "tutorial": "",
+    "professor": "",
+    "professors": "",
+    "project": "",
+    "projects": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "glossary_words": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "newsletter": "",
+    "newsletters": "",
+    "podcast": "",
+    "podcasts": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "results": "",
+    "resultsRemaining": "",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": "",
+    "conference": ""
+  },
+  "notifications": {
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "unread": "",
+    "bCertResults": "",
+    "today": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "projects": {
+    "languages": "",
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": ""
   }
 }
