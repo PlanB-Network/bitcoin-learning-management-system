@@ -10,13 +10,15 @@ interface BCertificateResult {
   };
 }
 
-export const createProcessResultFile =
-  (transaction: TransactionSql) => async (id: string, file: ChangedFile) => {
-    if (!file || file.kind === 'removed') return;
+export const createProcessResultFile = (transaction: TransactionSql) => {
+  return async (id: string, file: ChangedFile) => {
+    if (!file || file.kind === 'removed') {
+      return;
+    }
 
     const parsed = yamlToObject<BCertificateResult>(file.data);
 
-    const uid = await transaction<UserAccount[]>`
+    const uid = await transaction<Array<Pick<UserAccount, 'uid'>>>`
           SELECT uid FROM users.accounts WHERE username = ${parsed.username}
         `
       .then(firstRow)
@@ -50,3 +52,4 @@ export const createProcessResultFile =
         `;
     }
   };
+};
