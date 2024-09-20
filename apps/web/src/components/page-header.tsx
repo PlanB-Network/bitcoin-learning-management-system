@@ -70,11 +70,19 @@ export const PageHeader = ({
                 <span className="font-semibold">Credits</span>
                 <a
                   className="underline underline-offset-2 hover:text-darkOrange-5"
+                  href="https://planb.network/en/professor/lo%C3%AFc-morel-50"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Loïc Morel (Pandul)
+                </a>
+                <a
+                  className="underline underline-offset-2 hover:text-darkOrange-5"
                   href="https://github.com/LoicPandul/Dictionnaire-de-Bitcoin/tree/main"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Bitcoin Dictionnary Github Repository
+                  Github repository
                 </a>
               </Trans>
             </p>

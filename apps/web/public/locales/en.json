@@ -502,7 +502,7 @@
   },
   "glossary": {
     "anotherWord": "Search for another word",
-    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by Loïc Morel (Pandul), available on our <1>Github repository</1>.",
+    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by <1>Loïc Morel (Pandul)</1>, available on this <2>Github repository</2>.",
     "definition": "Definition",
     "filterBar": "Find the word you need here",
     "needHelp": "Need help defining a technical word?",
