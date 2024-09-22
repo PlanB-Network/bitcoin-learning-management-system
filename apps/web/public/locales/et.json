@@ -274,7 +274,8 @@
     },
     "contribution": {
       "title": "Panus",
-      "shortDescription": ""
+      "shortDescription": "",
+      "description": ""
     },
     "computer-security": {
       "title": "Arvutiturve",
@@ -458,7 +459,8 @@
       "hasNotBeenProofread": "",
       "otherCoursesInterest": "",
       "pastEditionsRatings": "",
-      "premiumContentNeedsLogin": ""
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPayment": ""
     },
     "explorer": {
       "buildPath": "Raja iseenda tee jäneseurgu",
@@ -493,7 +495,8 @@
       "onlineDescription": "",
       "inPersonDescription": "",
       "checkoutError": "",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "part": {
       "count": "Osa {{count}}"
@@ -601,7 +604,8 @@
       "takeExam": "",
       "viewExam": "",
       "weight": "",
-      "nbMinutes": ""
+      "nbMinutes": "",
+      "bCertCompletionText": ""
     },
     "review": {
       "commentTeacher": "",
@@ -643,7 +647,8 @@
       "feedbackDescription2": "",
       "commentAdminMobile": "",
       "thankYou": "",
-      "whatStudentsSayPasEdition": ""
+      "whatStudentsSayPasEdition": "",
+      "feedbackDescription1": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Kõik peatükid on nüüd valmis!",
@@ -1033,7 +1038,8 @@
         "numberOfCodes": "",
         "numberOfCodesPlaceholder": "",
         "discountValue": "",
-        "discountValuePlaceholder": ""
+        "discountValuePlaceholder": "",
+        "discountValueExplanation": ""
       },
       "bookingsPanel": "Broneeringute paneel",
       "coursesIndexes": "Kursuste nimekirjad",
@@ -1305,7 +1311,8 @@
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
       "description_online": "",
-      "description_physical": ""
+      "description_physical": "",
+      "limitedSeats": ""
     },
     "missed": {
       "missedH1": "Möödunud sündmused taasesitamiseks",
@@ -1317,7 +1324,8 @@
     "pageDescription": "Soovid Bitcoinist rääkida reaalajas ? Siit leiate kõik Plan B Võrgustiku kogukondade poolt toetatavad sündmused. Olgu selleks loengu kuulamine, Bitcoinist vestlemine joogi kõrvale või eksami sooritamine oma teadmiste hindamiseks, siis leiate õige ürituse selleks siit Plan B Võrgustiku kaudu.",
     "errors": {
       "premiumContentNeedsLogin": "",
-      "premiumContentNeedsPaymentAction": ""
+      "premiumContentNeedsPaymentAction": "",
+      "premiumContentNeedsPayment": ""
     },
     "tcDisclaimer": "",
     "tcMustBeAccepted": ""
@@ -1389,7 +1397,8 @@
     },
     "courseSection": {
       "checkAllCourses": "",
-      "upcomingCourseTitle": ""
+      "upcomingCourseTitle": "",
+      "upcomingCourseDescription": ""
     },
     "eventSection": {
       "checkEvents": "",
@@ -1545,7 +1554,8 @@
     "reviewEarn": "",
     "status": "Toimetamise staatus",
     "thanks": "",
-    "rewardsText": ""
+    "rewardsText": "",
+    "descriptionOriginalLanguage": ""
   },
   "publicCommunication": {
     "blogPageStrings": {
