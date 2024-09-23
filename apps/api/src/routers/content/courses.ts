@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import {
   courseChapterResponseSchema,
+  courseReviewsExtendedSchema,
   joinedCourseChapterSchema,
   joinedCourseWithAllSchema,
   joinedCourseWithProfessorsSchema,
@@ -13,11 +14,13 @@ import {
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
+  createGetCourseReviews,
   createGetCourses,
   createGetProfessorCourses,
 } from '@blms/service-content';
 import type {
   CourseChapterResponse,
+  CourseReviewsExtended,
   JoinedCourseChapter,
   JoinedCourseWithAll,
   JoinedCourseWithProfessors,
@@ -61,6 +64,13 @@ const getProfessorCoursesProcedure = publicProcedure
       input?.coursesId || [],
       input?.language,
     );
+  });
+
+const getCourseReviewsProcedure = publicProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<CourseReviewsExtended>>(courseReviewsExtendedSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseReviews(ctx.dependencies)(input.courseId);
   });
 
 const getCourseProcedure = publicProcedure
@@ -137,4 +147,5 @@ export const coursesRouter = createTRPCRouter({
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
+  getCourseReviews: getCourseReviewsProcedure,
 });

@@ -220,3 +220,21 @@ export const courseChapterResponseSchema =
       professors: formattedProfessorSchema.array().optional(),
     }),
   );
+
+export const courseReviewsExtendedSchema = z.object({
+  general: z.array(z.number()),
+  difficulty: z.array(z.number()),
+  length: z.array(z.number()),
+  faithful: z.array(z.number()),
+  recommand: z.array(z.number()),
+  quality: z.array(z.number()),
+  feedbacks: z.array(
+    z.object({
+      date: z.string(),
+      user: z.string(),
+      publicComment: z.string(),
+      teacherComment: z.string().nullable(),
+      adminComment: z.string().nullable(),
+    }),
+  ),
+});

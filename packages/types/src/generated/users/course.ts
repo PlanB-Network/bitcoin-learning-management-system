@@ -48,6 +48,7 @@ export interface CourseReview {
   publicComment: string | null;
   teacherComment: string | null;
   adminComment: string | null;
+  createdAt: Date;
 }
 
 export interface CourseProgressExtended {

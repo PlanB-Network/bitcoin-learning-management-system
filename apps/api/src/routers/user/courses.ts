@@ -99,6 +99,7 @@ const saveCourseReviewProcedure = studentProcedure
     createSaveCourseReview(ctx.dependencies)({
       newReview: {
         ...input,
+        createdAt: new Date(),
         uid: ctx.user.uid,
       },
     }),

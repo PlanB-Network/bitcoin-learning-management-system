@@ -17,7 +17,8 @@ export const saveCourseReview = ({
     recommand = EXCLUDED.recommand,
     public_comment = EXCLUDED.public_comment,
     teacher_comment = EXCLUDED.teacher_comment,
-    admin_comment = EXCLUDED.admin_comment
+    admin_comment = EXCLUDED.admin_comment,
+    created_at = EXCLUDED.created_at
   RETURNING *;
   `;
 };

@@ -183,6 +183,13 @@
       "when": 1726246639504,
       "tag": "0025_open_leech",
       "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1726737626295,
+      "tag": "0026_goofy_roland_deschain",
+      "breakpoints": true
     }
   ]
 }
