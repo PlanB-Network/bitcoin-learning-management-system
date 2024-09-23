@@ -40,7 +40,7 @@ function Books() {
       }}
       activeCategory="books"
     >
-      <div className="flex flex-wrap justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
+      <div className="flex flex-wrap md:justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
         {!isFetched && <Loader size={'s'} />}
         {sortedBooks
           .filter((book) =>
