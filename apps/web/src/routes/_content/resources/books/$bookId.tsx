@@ -1,13 +1,22 @@
-import { createFileRoute, useParams } from '@tanstack/react-router';
+import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { Card, Loader } from '@blms/ui';
+import {
+  Card,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  Loader,
+  TextTag,
+} from '@blms/ui';
 
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { useSuggestedContent } from '#src/utils/resources-hook.ts';
 import { trpc } from '#src/utils/trpc.js';
 
-import { BookSummary } from '../-components/book-summary.js';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/_content/resources/books/$bookId')({
@@ -31,14 +40,17 @@ function Book() {
     resourceId: +bookId,
   });
 
+  const { data: suggestedBooks, isFetched: isFetchedSuggestedBooks } =
+    useSuggestedContent('books');
+
   function displayAbstract() {
     return (
       book?.description && (
-        <div className="mt-6 border-l-4 border-blue-600 pl-4">
-          <h3 className="mb-4 text-lg font-semibold text-blue-900">
+        <div className="mt-5 lg:mt-8">
+          <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white">
             {t('book.abstract')}
           </h3>
-          <p className="mb-4 line-clamp-[20] max-w-2xl text-ellipsis whitespace-pre-line pr-4 text-justify text-sm md:pr-8">
+          <p className="line-clamp-[20] max-w-3xl text-ellipsis whitespace-pre-line text-white text-justify body-14px lg:body-16px">
             {book?.description}
           </p>
         </div>
@@ -76,58 +88,111 @@ function Book() {
           ) : (
             <></>
           )}
-          <Card className="mx-2 md:mx-auto">
-            <div className="my-4 w-full grid-cols-1 grid-rows-1 sm:grid-cols-3 md:grid">
-              <div className="flex flex-col items-center justify-center border-b-4 border-blue-800 md:mr-10 md:border-0">
+          <Card className="md:mx-auto" color="orange">
+            <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
+              <div className="flex flex-col items-center justify-center">
                 <img
-                  className="max-h-72 sm:max-h-96"
+                  className="md:w-[367px]  max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px]"
                   alt={t('imagesAlt.bookCover')}
                   src={book?.cover}
                 />
               </div>
 
-              <div className="col-span-2 my-4 flex flex-col md:mt-0">
+              <div className="w-full max-w-2xl my-4 flex flex-col md:mt-0">
                 <div>
-                  <h2 className="mb-2 max-w-lg text-2xl font-bold text-blue-800 sm:text-4xl">
+                  <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
                     {book?.title}
                   </h2>
 
-                  <div className="mt-2 text-sm">
-                    <h5 className="font-light italic">
-                      {book?.author}, {book?.publicationYear}.
+                  <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                    {book?.tags.map((tag, i) => (
+                      <TextTag
+                        key={i}
+                        size="resourcesNewSize"
+                        variant="newGray"
+                      >
+                        {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                      </TextTag>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center">
+                    <span className="text-white body-14px-medium md:label-medium-med-16px pr-1">
+                      {t('words.writtenByPodcasts')}
+                    </span>
+                    <h5 className="text-white body-14px md:body-16px ">
+                      {book?.author}
                     </h5>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="body-14px-medium md:label-medium-med-16px text-white pr-1">
+                      {t('words.publicationDate')}
+                    </span>
+                    <span className="body-14px md:body-16px text-white ">
+                      {book?.publicationYear}
+                    </span>
                   </div>
                 </div>
 
-                <div className="mt-2 text-blue-700">
-                  <span className="text-xs font-light italic">
-                    {t('book.topicsAddressed')}
-                  </span>
-                  {book?.tags.map((object, i) => (
-                    <span key={i}>
-                      {i > 0 && ', '}
-                      {object.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
                 {isScreenMd && displayAbstract()}
               </div>
-            </div>
+            </article>
             {!isScreenMd && displayAbstract()}
           </Card>
-
-          <div className="mx-auto my-6 flex flex-row justify-between p-2">
-            <div className="flex flex-col">
-              {!book?.summaryText && (
-                <BookSummary
-                  content={book?.summaryText as string}
-                  title={book?.title ? book?.title : ''}
-                />
-              )}
-            </div>
-          </div>
         </div>
       )}
+      <section className="mt-8 lg:mt-[100px]">
+        <h3 className="label-medium-med-16px md:title-large-24px font-medium leading-none md:leading-[116%] text-white mb-5 md:mb-10">
+          {t('resources.pageSubtitleBooks')}
+        </h3>
+        <Carousel>
+          <CarouselContent>
+            {isFetchedSuggestedBooks ? (
+              suggestedBooks?.map((suggestedBook) => {
+                const isBook =
+                  'cover' in suggestedBook && 'title' in suggestedBook;
+                if (isBook) {
+                  return (
+                    <CarouselItem
+                      key={suggestedBook.id}
+                      className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative w-full bg-gradient-to-r max-w-[282px] max-h-[350px] rounded-2xl lg:rounded-[22px]"
+                    >
+                      <Link to={`/resources/books/${suggestedBook.id}`}>
+                        <div className="relative h-full">
+                          <img
+                            className="max-h-72 sm:max-h-96 size-full object-cover rounded-[10px]"
+                            alt={suggestedBook.title}
+                            src={suggestedBook.cover}
+                          />
+                          <div
+                            className="absolute inset-0 -bottom-px rounded-[10px]"
+                            style={{
+                              background: `linear-gradient(360deg, rgba(40, 33, 33, 0.90) 10%, rgba(0, 0, 0, 0.00) 60%),
+                              linear-gradient(0deg, rgba(57, 53, 49, 0.20) 0%, rgba(57, 53, 49, 0.20) 100%)`,
+                              backgroundSize: '153.647% 100%',
+                              backgroundPosition: '-5.216px 0px',
+                              backgroundRepeat: 'no-repeat',
+                            }}
+                          />
+                        </div>
+
+                        <h3 className="absolute px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                          {suggestedBook.title}
+                        </h3>
+                      </Link>
+                    </CarouselItem>
+                  );
+                }
+                return null;
+              })
+            ) : (
+              <Loader size={'s'} />
+            )}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </section>
     </ResourceLayout>
   );
 }

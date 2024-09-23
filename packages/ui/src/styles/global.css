@@ -252,8 +252,16 @@
     @apply text-sm font-normal leading-[143%] tracking-[0.17px];
   }
 
+  .body-14px-medium {
+    @apply text-sm font-medium leading-[143%] tracking-[0.17px];
+  }
+
   .body-16px {
     @apply text-base font-normal leading-normal tracking-015px;
+  }
+
+  .body-16px-medium {
+    @apply text-base font-medium leading-[150%] tracking-015px;
   }
 
   .display-large {
@@ -303,6 +311,7 @@
   .subtitle-large-caps-22px {
     @apply text-[22px] leading-[120%] font-normal -tracking-[0.132px] uppercase;
   }
+
   .subtitle-large-med-20px {
     @apply text-xl leading-[160%] font-medium tracking-015px;
   }

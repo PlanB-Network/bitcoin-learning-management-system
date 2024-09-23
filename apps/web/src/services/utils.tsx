@@ -14,6 +14,8 @@ import otherSvg from '#src/assets/tutorials/other.svg';
 import privacySvg from '#src/assets/tutorials/privacy.svg';
 import walletSvg from '#src/assets/tutorials/wallet.svg';
 
+// import webSvg from '../assets/icons/world-pixelated.svg';
+
 export const TUTORIALS_CATEGORIES = [
   {
     name: 'wallet',
@@ -76,6 +78,11 @@ export const RESOURCES_CATEGORIES = [
     image: glossarySvg,
     unreleased: false,
   },
+  // {
+  //   name: 'newsletter',
+  //   image: webSvg,
+  //   unreleased: false,
+  // },
 ] as const;
 
 export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {

@@ -747,6 +747,9 @@
     "conferences": {
       "title": "Conference replays"
     },
+    "newsletter": {
+      "title": "Newsletter"
+    },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "github": "All this data is managed via one open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
     "glossary": {
@@ -759,6 +762,8 @@
     },
     "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
     "pageSubtitle": "Centralize knowledge to better distribute it",
+    "pageSubtitleBooks": "Another book you may like:",
+    "pageSubtitlePodcast": "Another podcast you would like:",
     "pageTitle": "Welcome to the Resource Portal",
     "podcasts": {
       "title": "Podcasts"
@@ -980,6 +985,7 @@
     "price": "Price",
     "professor": "Professor",
     "professors": "Professors",
+    "publicationDate": "Publication date:",
     "purchase": "Purchase",
     "register": "Register",
     "public": "Public communication",
@@ -1010,6 +1016,7 @@
     "video": "Video",
     "videos": "Videos",
     "view": "View",
-    "wallets": "Wallets"
+    "wallets": "Wallets",
+    "writtenByPodcasts": "Written by:"
   }
 }

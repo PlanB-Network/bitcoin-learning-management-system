@@ -84,7 +84,10 @@ export const ClassDetails = ({
           <p className="font-medium text-sm ml-2">
             {t('courses.chapter.detail.title')}
           </p>
-          <Card className="h-fit !bg-newGray-5 !shadow-course-card border-none">
+          <Card
+            className="h-fit !bg-newGray-5 !shadow-course-card border-none"
+            color="gray"
+          >
             {chapter.startDate && (
               <TextLine
                 label={`${t('words.date')} :`}

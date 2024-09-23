@@ -64,7 +64,11 @@ export const BookingPart = ({ tickets }: { tickets: Ticket[] }) => {
                   />
                 </div>
 
-                <Card withPadding={false} className="flex md:hidden p-3">
+                <Card
+                  withPadding={false}
+                  className="flex md:hidden p-3"
+                  color="gray"
+                >
                   <div className="flex flex-col gap-1">
                     <span className="text-newBlack-1 font-medium">
                       {ticket.title}

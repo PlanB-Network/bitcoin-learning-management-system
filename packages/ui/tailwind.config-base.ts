@@ -253,6 +253,8 @@ const baseConfig: Config = {
       backgroundImage: {
         'gradient-diagonal':
           'linear-gradient(175deg, #20376C 83%, rgba(255,255,255,1) 85%);',
+        'gradient-cards':
+          'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 48.98%, rgba(40, 33, 33, 0.90) 80.73%);',
       },
       boxShadow: {
         'md-dark':

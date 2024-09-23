@@ -31,6 +31,7 @@
     "class-variance-authority": "^0.7.0",
     "clear": "link:rm -rf ./dist && rm -f *.tsbuildinfo",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.2.1",
     "lucide-react": "latest",
     "react": "~18.3.1",
     "react-hook-form": "^7.53.0",
