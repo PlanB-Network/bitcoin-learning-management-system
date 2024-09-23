@@ -38,7 +38,7 @@ export const TutorialLikes = ({
           alt="separator icon"
           className="inline-block md:hidden mx-[18px] h-[10px]"
         />
-        <MdThumbDown className="text-red-1 size-[18px] lg:size-[21px]" />
+        <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
       </span>
       <span className="text-black text-base md:label-large-20px">
         {tutorial.dislikeCount}

@@ -9,6 +9,15 @@ interface PieChartProps {
   handlePieClick?: (index: number) => void;
   selectedPieNumber?: number | null;
   onClickNextStep?: () => void;
+  className?: string;
+}
+
+interface PieSliceData {
+  data: number;
+  index: number;
+  value: number;
+  startAngle: number;
+  endAngle: number;
 }
 
 export default function PieChart({
@@ -19,6 +28,7 @@ export default function PieChart({
   handlePieClick,
   selectedPieNumber,
   onClickNextStep,
+  className,
 }: PieChartProps) {
   const ref = useRef<SVGSVGElement | null>(null);
 
@@ -49,11 +59,7 @@ export default function PieChart({
     const arcGenerator = d3
       .arc<d3.PieArcDatum<number>>()
       .innerRadius(0)
-      .outerRadius((_, i) =>
-        selectedPieNumber === i
-          ? Math.min(width, height) / 2
-          : Math.min(width, height) / 2 - 10,
-      );
+      .outerRadius(Math.min(width, height) / 2);
 
     // Append the pie slices to the SVG
     container
@@ -64,8 +70,12 @@ export default function PieChart({
       .attr('d', arcGenerator)
       .attr('fill', (_, i) => (colors && colors[i]) || d3.schemeCategory10[i])
       .attr('stroke', 'black')
-      .attr('stroke-width', 3)
-      .attr('transform', `translate(${width / 2},${height / 2}) scale(0.88)`)
+      .attr('stroke-width', 1)
+      .attr(
+        'transform',
+        (_, i) =>
+          `translate(${width / 2},${height / 2}) scale(${selectedPieNumber === i ? 0.97 : 0.88})`,
+      )
       .on('click', (_, i) => {
         if (handlePieClick) {
           handlePieClick(i.index);
@@ -95,7 +105,8 @@ export default function PieChart({
         }
       })
       .on('mouseout', function (_, i) {
-        if (handlePieClick && i !== selectedPieNumber) {
+        const sliceData = i as PieSliceData;
+        if (handlePieClick && sliceData.index !== selectedPieNumber) {
           d3.select(this).attr(
             'transform',
             `translate(${width / 2},${height / 2}) scale(0.88)`,
@@ -112,5 +123,5 @@ export default function PieChart({
     onClickNextStep,
   ]);
 
-  return <svg ref={ref}></svg>;
+  return <svg className={className} ref={ref}></svg>;
 }

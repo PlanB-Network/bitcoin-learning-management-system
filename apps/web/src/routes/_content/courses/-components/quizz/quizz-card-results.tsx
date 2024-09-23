@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import RabbitHoldingPen from '#src/assets/icons/rabbit_holding_pen.svg?react';
-import { useSmaller } from '#src/hooks/use-smaller.js';
-
+import { QuizzHeader } from './-components/quizz-header.tsx';
 import PieChart from './pie-chart.tsx';
 import QuizzResultMessage from './quizz-result-message.tsx';
 
@@ -24,7 +22,8 @@ export default function QuizzCardResults({
   questionChange,
 }: QuizzCardResultsProps) {
   const { t } = useTranslation();
-  const isMobile = useSmaller('md');
+
+  const isMobile = window.innerWidth < 768;
 
   function pieClick(i: number) {
     questionChange(i);
@@ -32,48 +31,30 @@ export default function QuizzCardResults({
 
   return (
     <>
-      <div className="border-blue-1000 flex h-12 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2 md:h-16">
-        <div className="flex items-center gap-3">
-          <div className="flex size-12 flex-col items-center justify-end pr-0 md:size-16">
-            <RabbitHoldingPen className="ml-[7px] md:ml-[-10px]" />
-          </div>
-          <div className="text-beige-300 text-center text-2xl font-semibold uppercase leading-[120%] md:text-3xl">
-            {t('courses.quizz.quizzResults')}
-          </div>
-        </div>
-        <div className="flex items-center justify-end gap-2.5">
-          <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
-            <span className="hidden md:block">{name}</span>
-            <span className="mx-1 hidden md:block">{`/`}</span>
-            <span>{chapter}</span>
-          </div>
-        </div>
-      </div>
-      <div className="border-blue-1000 bg-beige-400 flex flex-col items-center self-stretch rounded-b-2xl border-2 px-8 pb-9 pt-6">
-        <div className="mb-5 flex flex-col items-center gap-2.5 self-stretch">
-          <div className="text-blue-1000 text-xl font-semibold">
-            <QuizzResultMessage
-              numberOfCorrectAnswers={numberOfCorrectAnswers}
-            />
-          </div>
-        </div>
-        <div>
-          <button onClick={nextStep}>
-            <div>
-              <PieChart
-                colors={answersColors}
-                globalCursorPointer={true}
-                width={isMobile ? 270 : 350}
-                height={isMobile ? 270 : 400}
-                handlePieClick={pieClick}
-                onClickNextStep={nextStep}
-              />
-            </div>
-          </button>
-        </div>
-        <div>
-          <p className="text-[13px]">{t('courses.quizz.clickOnPie')}</p>
-        </div>
+      <QuizzHeader
+        title={t('courses.quizz.quizzResults')}
+        name={name}
+        chapter={chapter}
+        questionIndex={5}
+        answersColors={answersColors}
+      />
+      <div className="border-newBlack-1 bg-darkOrange-1 flex flex-col items-center self-stretch rounded-b-2xl border-2 p-5 md:px-8 md:py-9">
+        <span className="mb-4 md:mb-6 text-newBlack-1 label-medium-16px md:title-large-24px">
+          <QuizzResultMessage numberOfCorrectAnswers={numberOfCorrectAnswers} />
+        </span>
+        <button onClick={nextStep} className="mb-2 md:mb-4">
+          <PieChart
+            colors={answersColors}
+            globalCursorPointer={true}
+            width={isMobile ? 100 : 200}
+            height={isMobile ? 100 : 200}
+            handlePieClick={pieClick}
+            onClickNextStep={nextStep}
+          />
+        </button>
+        <span className="body-14px md:body-16px">
+          {t('courses.quizz.clickOnPie')}
+        </span>
       </div>
     </>
   );
