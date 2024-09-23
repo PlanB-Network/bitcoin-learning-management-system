@@ -16,6 +16,7 @@ const baseConfig: Config = {
       dashboardsection: '#FFFFFF0D',
       dashboardSectionTitle: '#060B15',
       dashboardSectionText: '#050A14',
+      commentTextBackground: '#E9E9E9',
       headerGray: '#25262D',
       headerDark: '#010205',
       white: '#FFFFFF',

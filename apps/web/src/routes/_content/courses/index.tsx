@@ -11,20 +11,13 @@ import { Button, Loader, cn } from '@blms/ui';
 
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
+import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 import { computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 
 export const Route = createFileRoute('/_content/courses/')({
   component: CoursesExplorer,
 });
-
-interface CourseInfoItemProps {
-  leftText: string;
-  rightText: string;
-  isMobileOnly?: boolean;
-  isDesktopOnly?: boolean;
-  className?: string;
-}
 
 const levels = ['beginner', 'intermediate', 'advanced', 'wizard'];
 
@@ -37,27 +30,27 @@ const sortCoursesByLevel = (courses: JoinedCourse[]) => {
 const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
   return (
     <section className="flex flex-col md:border-t border-white/10 md:mb-8">
-      <CourseInfoItem
+      <ListItem
         leftText={t('words.professor')}
         rightText={course.professors
           .map((professor) => professor.name)
           .join(', ')}
       />
-      <CourseInfoItem
+      <ListItem
         leftText={t('words.level.level')}
         rightText={t(`words.level.${course.level}`)}
       />
       {/* no chaptersCount on course, to fix */}
-      {/* <CourseInfoItem
+      {/* <ListItem
         leftText={t('words.chapters')}
         rightText={course.chaptersCount ? `${course.chaptersCount}` : '/'}
         isMobileOnly
       /> */}
-      <CourseInfoItem
+      <ListItem
         leftText={t('words.duration')}
         rightText={`${course.hours} ${t('words.hours')}`}
       />
-      <CourseInfoItem
+      <ListItem
         leftText={t('words.price')}
         rightText={
           course.paidPriceDollars
@@ -65,38 +58,12 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
             : t('words.free')
         }
       />
-      <CourseInfoItem
+      <ListItem
         leftText={t('words.courseId')}
         rightText={course.id.toUpperCase()}
         isDesktopOnly
       />
     </section>
-  );
-};
-
-const CourseInfoItem = ({
-  leftText,
-  rightText,
-  isMobileOnly,
-  isDesktopOnly,
-  className,
-}: CourseInfoItemProps) => {
-  return (
-    <div
-      className={cn(
-        'flex items-center justify-between border-b border-white/10 py-2 gap-2',
-        isMobileOnly && 'md:hidden',
-        isDesktopOnly && 'max-md:hidden',
-        className,
-      )}
-    >
-      <span className="text-white/70 leading-relaxed tracking-[0.08px]">
-        {leftText}
-      </span>
-      <span className="font-medium leading-relaxed tracking-[0.08px] text-right">
-        {rightText}
-      </span>
-    </div>
   );
 };
 
@@ -147,12 +114,12 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
             {t('words.professor')} :{' '}
             {course.professors.map((professor) => professor.name).join(', ')}
           </span>
-          <CourseInfoItem
+          <ListItem
             leftText={t('words.duration')}
             rightText={course.hours + ' hours'}
             className="border-t"
           />
-          <CourseInfoItem
+          <ListItem
             leftText={t('words.price')}
             rightText={
               course.paidPriceDollars

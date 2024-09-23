@@ -1,8 +1,12 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 
+import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import type { FormattedProfessor } from '@blms/types';
+
+import { formatNameForURL } from '#src/utils/string.ts';
 
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
@@ -68,10 +72,7 @@ export const TopicTags = ({ professor }: ProfessorCardProps) => {
 
 export const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
-    <div
-      className="mt-5 flex w-full justify-evenly self-stretch px-1 text-primary gap-x-6
-    "
-    >
+    <div className="mt-4 md:mt-5 flex w-full justify-evenly self-stretch px-1 text-primary gap-x-6">
       {professor.links.twitter && (
         <button
           onClick={(e) => {
@@ -85,6 +86,21 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
           }}
         >
           <img src={TwitterIcon} alt="Twitter" className="block" />
+        </button>
+      )}
+      {professor.links.nostr && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(
+              professor.links.nostr as string,
+              '_blank',
+              'noopener noreferrer',
+            );
+          }}
+        >
+          <img src={TwitterIcon} alt="Nostr" className="block" />
         </button>
       )}
       {professor.links.website && (
@@ -109,7 +125,7 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
 export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
   return (
     <section
-      className="flex  flex-wrap w-full p-2 md:p-7 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8"
+      className="flex flex-wrap w-full p-2 md:p-7 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8"
       {...props}
     >
       <div className="rounded-[10px] size-full md:rounded-[20px] flex max-md:flex-col md:items-end gap-4 bg-white w-[137px] sm:w-[226px] lg:w-[296px]">
@@ -141,14 +157,79 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
   );
 };
 
-const BackgroundAuthorCardElement = () => {
+export const ProfessorCardReduced = ({ professor }: ProfessorCardProps) => {
+  return (
+    <div className="rounded-[20px] p-2 border-2 border-newBlack-1 max-md:mx-auto h-fit">
+      <Link
+        to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+        // eslint-disable-next-line tailwindcss/no-contradicting-classname
+        className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]"
+      >
+        <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
+          {professor.name}
+        </span>
+        <img
+          src={professor.picture}
+          alt={professor.name}
+          className="size-32 rounded-full z-10 object-cover [overflow-clip-margin:_unset]"
+        />
+
+        <div className="flex gap-4 items-end mt-2.5 z-10">
+          {professor.coursesCount > 0 && (
+            <div className="flex flex-col gap">
+              <span className="text-5xl leading-[116%] text-center text-white">
+                {professor.coursesCount}
+              </span>
+              <span className="font-semibold leading-[133%] text-center text-white">
+                {t('words.courses')}
+              </span>
+            </div>
+          )}
+          {professor.tutorialsCount > 0 && (
+            <div className="flex flex-col gap">
+              <span className="text-5xl leading-[116%] text-center text-white">
+                {professor.tutorialsCount}
+              </span>
+              <span className="font-semibold leading-[133%] text-center text-white">
+                {t('words.tutorials')}
+              </span>
+            </div>
+          )}
+          {professor.lecturesCount > 0 && (
+            <div className="flex flex-col gap">
+              <span className="text-5xl leading-[116%] text-center text-white">
+                {professor.lecturesCount}
+              </span>
+              <span className="font-semibold leading-[133%] text-center text-white">
+                {t('words.lectures')}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Background element */}
+        <BackgroundAuthorCardElement reduced />
+      </Link>
+    </div>
+  );
+};
+
+const BackgroundAuthorCardElement = ({
+  reduced = false,
+}: {
+  reduced?: boolean;
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 280 45"
       fill="none"
       preserveAspectRatio="xMidYMid meet"
-      className="absolute bottom-0 h-full max-h-[120px] lg:max-h-[290px]"
+      className={
+        reduced
+          ? 'absolute bottom-0 h-full max-h-[140px]'
+          : 'absolute bottom-0 h-full max-h-[120px] lg:max-h-[290px]'
+      }
     >
       <path
         d="M147.147 1.98324C142.545 0.222654 137.455 0.222651 132.853 1.98323L12.8534 47.8939C5.11227 50.8556 0 58.2852 0 66.5735V259.249C0 270.295 8.95431 279.249 20 279.249H260C271.046 279.249 280 270.295 280 259.249V66.5735C280 58.2852 274.888 50.8556 267.147 47.8939L147.147 1.98324Z"

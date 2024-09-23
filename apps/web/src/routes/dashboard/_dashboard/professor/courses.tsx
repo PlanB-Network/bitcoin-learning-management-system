@@ -22,6 +22,7 @@ import {
 import { RatingChart } from '#src/components/Chart/rating-chart.tsx';
 import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.js';
+import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { TabsListSegmented } from '#src/components/Tabs/TabsListSegmented.js';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
@@ -37,34 +38,6 @@ export const Route = createFileRoute('/dashboard/_dashboard/professor/courses')(
     component: DashboardProfessorCourses,
   },
 );
-
-interface CourseInfoItemProps {
-  leftText: string;
-  rightText: string;
-  className?: string;
-}
-
-const CourseInfoItem = ({
-  leftText,
-  rightText,
-  className,
-}: CourseInfoItemProps) => {
-  return (
-    <div
-      className={cn(
-        'flex items-center justify-between last-of-type:border-none border-b border-newGray-4 pb-2 last:pb-0 gap-2',
-        className,
-      )}
-    >
-      <span className="text-newBlack-4 leading-relaxed tracking-[0.08px]">
-        {leftText}
-      </span>
-      <span className="text-black font-medium leading-relaxed tracking-[0.08px] text-right">
-        {rightText}
-      </span>
-    </div>
-  );
-};
 
 function DashboardProfessorCourses() {
   const navigate = useNavigate();
@@ -92,7 +65,7 @@ function DashboardProfessorCourses() {
   return (
     <div className="flex flex-col gap-4 lg:gap-8 text-black">
       <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-        <h3 className="display-small-reg-32px">
+        <h3 className="display-small-32px">
           {t('dashboard.teacher.courses.coursesManagementPanel')}
         </h3>
         <span className="flex size-fit p-1 lg:py-[3px] lg:px-2 justify-center items-center rounded-md bg-[rgba(204,204,204,0.50)] text-newBlack-3 desktop-typo1 uppercase">
@@ -292,12 +265,13 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
         <div className="flex flex-col gap-5 lg:gap-10 w-full items-center">
           <div className="flex max-lg:flex-col items-center justify-center w-full gap-x-[60px] gap-y-5">
             <div className="flex flex-col gap-2.5 w-full max-w-[517px]">
-              <div className="flex flex-col gap-2.5 w-full">
+              <div className="flex flex-col w-full">
                 {Object.entries(courseItems).map(([key, value]) => (
-                  <CourseInfoItem
+                  <ListItem
                     key={key}
                     leftText={key}
                     rightText={value.toLocaleString()}
+                    variant="light"
                   />
                 ))}
               </div>
@@ -367,7 +341,14 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
 
       {/* TODO: check why we need type */}
       {isFetched && (
-        <CourseCurriculum course={courseWithDetails as JoinedCourseWithAll} />
+        <CourseCurriculum course={courseWithDetails as JoinedCourseWithAll}>
+          <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
+            {t('dashboard.teacher.courses.curriculum')}
+          </h4>
+          <p className="mb-8 body-14px lg:body-16px">
+            {t('dashboard.teacher.courses.curriculumDescription')}
+          </p>
+        </CourseCurriculum>
       )}
 
       <MakeModificationBlock
@@ -402,9 +383,7 @@ const GeneralGradeSection = ({ ratings }: { ratings: number[] }) => {
       <StarRating
         rating={averageRating}
         totalStars={maxRating}
-        fillColor="#FF5C00"
-        strokeColor="#FF5C00"
-        unfilledStrokeColor="#FF5C0030"
+        starSize={window.innerWidth < 768 ? 41 : 45}
         className="mt-5"
       />
       <span className="lowercase body-16px text-dashboardSectionTitle mt-5">{`${averageRating}/${maxRating} (${numberOfReviews} ${numberOfReviews > 1 ? t('dashboard.teacher.reviews.reviews') : t('dashboard.teacher.reviews.review')})`}</span>
@@ -612,10 +591,11 @@ const WrittenFeedbacks = ({
             onClick={showMoreFeedbacks}
             className="mt-6 lg:mt-8"
           >
-            Load more comments
+            {t('courses.review.loadMoreComments')}
           </Button>
           <span className="body-14px">
-            {visibleFeedbacks} displayed out of {feedbacks.length}
+            {visibleFeedbacks} {t('courses.review.displayOutOf')}{' '}
+            {feedbacks.length}
           </span>
         </div>
       )}
@@ -624,14 +604,15 @@ const WrittenFeedbacks = ({
 };
 
 const CourseReview = ({ courseId }: { courseId: string }) => {
-  const { data: reviews, isFetched } = trpc.content.getCourseReviews.useQuery(
-    {
-      courseId: courseId,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
-  );
+  const { data: reviews, isFetched } =
+    trpc.content.getTeacherCourseReviews.useQuery(
+      {
+        courseId: courseId,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    );
 
   return (
     <section className="flex flex-col mt-6 lg:mt-10">
