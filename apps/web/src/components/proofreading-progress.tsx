@@ -311,7 +311,7 @@ export const ProofreadingProgress = ({
       </Dialog>
       <div
         className={cn(
-          'max-md:hidden group p-2.5 hover:p-5 rounded-[20px] shadow-course-navigation justify-start items-start gap-2.5 inline-flex absolute right-6 top-4',
+          'max-lg:hidden group p-2.5 hover:p-5 rounded-[20px] shadow-course-navigation justify-start items-start gap-2.5 inline-flex absolute right-6 top-4',
           '', //proofreadingData.isOriginalLanguage ? 'hidden' : 'max-md:hidden',
           mode === 'dark'
             ? 'bg-newBlack-3'
@@ -320,7 +320,7 @@ export const ProofreadingProgress = ({
               : 'bg-darkOrange-0',
         )}
       >
-        <div className="max-md:hidden group-hover:hidden flex items-center gap-1.5">
+        <div className="max-lg:hidden group-hover:hidden flex items-center gap-1.5">
           <SmallProgressImage progress={contributorsLength} />
           <span
             className={cn(
