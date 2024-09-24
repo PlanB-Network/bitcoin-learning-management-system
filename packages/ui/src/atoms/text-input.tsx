@@ -101,7 +101,7 @@ export const TextInput = ({
         </div>
       </div>
       {error && (
-        <p className="mt-0.5 px-1 text-sm text-red-1" id="email-error">
+        <p className="mt-0.5 px-1 text-sm text-red-5" id="email-error">
           {error}
         </p>
       )}

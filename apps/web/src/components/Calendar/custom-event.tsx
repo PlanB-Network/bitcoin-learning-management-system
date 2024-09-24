@@ -22,7 +22,7 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
       break;
     }
     case 'exam': {
-      cssclasses = 'bg-red-6 text-red-1';
+      cssclasses = 'bg-red-1 text-red-5';
       break;
     }
     case 'meetups': {

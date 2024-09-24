@@ -14,7 +14,6 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import type { JoinedQuizQuestion } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
-import QuizIcon from '#src/assets/courses/quiz-icon.svg';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
@@ -475,37 +474,35 @@ const BottomButton = ({ chapter }: { chapter: Chapter }) => {
     chapter.part.partIndex === chapter.course.parts.length;
 
   return (
-    <div>
-      <Link
-        className="flex w-full justify-center md:justify-end pt-5 md:pt-10"
-        to={
-          isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
-        }
-        params={goToChapterParameters(chapter, 'next')}
-      >
-        {isLastChapter ? (
-          <Button variant="primary" size="l" onClick={completeChapter}>
-            <span>{t('courses.chapter.finishCourse')}</span>
-            <FaArrowRightLong
-              className={cn(
-                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                'group-hover:ml-3',
-              )}
-            />
-          </Button>
-        ) : (
-          <Button variant="primary" size="l" onClick={completeChapter}>
-            <span>{t('courses.chapter.next')}</span>
-            <FaArrowRightLong
-              className={cn(
-                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                'group-hover:ml-3',
-              )}
-            />
-          </Button>
-        )}
-      </Link>
-    </div>
+    <Link
+      className="flex w-fit !mt-8 md:!mt-16 max-md:mx-auto md:ml-auto"
+      to={
+        isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
+      }
+      params={goToChapterParameters(chapter, 'next')}
+    >
+      {isLastChapter ? (
+        <Button variant="primary" size="l" onClick={completeChapter}>
+          <span>{t('courses.chapter.finishCourse')}</span>
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+              'group-hover:ml-3',
+            )}
+          />
+        </Button>
+      ) : (
+        <Button variant="primary" size="l" onClick={completeChapter}>
+          <span>{t('courses.chapter.next')}</span>
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+              'group-hover:ml-3',
+            )}
+          />
+        </Button>
+      )}
+    </Link>
   );
 };
 
@@ -753,19 +750,11 @@ function CourseChapter() {
                 {!isSpecialChapter && displayQuizAndNext && (
                   <>
                     {questionsArray && questionsArray.length > 0 && (
-                      <>
-                        <div className="flex items-center">
-                          <img src={QuizIcon} className="ml-4 size-6" alt="" />
-                          <p className="ml-2 text-lg font-medium text-blue-900">
-                            {t('courses.quizz.quizz')}
-                          </p>
-                        </div>
-                        <QuizzCard
-                          name={chapter.course.id}
-                          chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
-                          questions={questionsArray}
-                        />
-                      </>
+                      <QuizzCard
+                        name={chapter.course.id}
+                        chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
+                        questions={questionsArray}
+                      />
                     )}
                     <BottomButton chapter={chapter} />
                   </>

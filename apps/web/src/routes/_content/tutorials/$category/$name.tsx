@@ -341,8 +341,8 @@ function TutorialDetails() {
                 isLoggedIn ? handleDislike() : openAuthModal();
               }}
               className={cn(
-                'py-3 px-4 rounded-[20px] border shadow-course-navigation border-red-5',
-                isLiked.disliked ? 'bg-red-6' : 'hover:bg-red-6',
+                'py-3 px-4 rounded-[20px] border shadow-course-navigation border-red-2',
+                isLiked.disliked ? 'bg-red-1' : 'hover:bg-red-1',
               )}
             >
               <img src={ThumbDown} alt="" className="size-12" />

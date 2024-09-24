@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaPlay } from 'react-icons/fa6';
 
 import { cn } from '@blms/ui';
 
-import ArrowFilledIcon from '#src/assets/icons/arrow_filled.svg?react';
-import RabbitHoldingPen from '#src/assets/icons/rabbit_holding_pen.svg?react';
-
-import PieChart from './pie-chart.tsx';
+import { QuizzHeader } from './-components/quizz-header.tsx';
 
 interface QuizzCardQuestionProps {
   name: string;
@@ -45,70 +43,55 @@ export default function QuizzCardQuestion({
 
   return (
     <>
-      <div className="border-blue-1000 flex h-12 items-center justify-between self-stretch rounded-t-[0.9375rem] border-2 bg-blue-800 py-3 pl-0 pr-2 md:h-16">
-        <div className="flex items-center gap-3">
-          <div className="flex size-12 flex-col items-center justify-end pr-0 md:size-16">
-            <RabbitHoldingPen className="ml-[7px] md:ml-[-10px]" />
-          </div>
-          <div className="text-beige-300 text-center text-2xl font-semibold uppercase leading-[120%] md:text-3xl">
-            {t('courses.quizz.quizz')}
-          </div>
+      <QuizzHeader
+        title={t('courses.quizz.quizz')}
+        name={name}
+        chapter={chapter}
+        questionIndex={questionIndex}
+        answersColors={answersColors}
+      />
+      <div className="border-newBlack-1 flex flex-col items-center self-stretch rounded-b-2xl border md:border-2 bg-darkOrange-1 px-2 py-4 md:px-8 md:pb-9 md:pt-6">
+        <div className="mb-6 flex items-start gap-2.5 text-newBlack-1">
+          <FaPlay
+            size={window.innerWidth < 768 ? 10 : 24}
+            className="max-md:mt-[5px]"
+          />
+          <span className="body-14px md:label-large-20px">{question}</span>
         </div>
-        {/* Big screen */}
-        <div className="hidden items-center justify-end gap-2.5 md:flex">
-          <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
-            {name} / {chapter}
-          </div>
-          <div className="flex size-14 items-center justify-center">
-            <PieChart width={60} height={60} colors={answersColors} />
-          </div>
-        </div>
-        {/* Small device */}
-        <div className="flex items-center justify-end gap-2.5 md:hidden">
-          <div className="text-beige-300 flex items-center text-center text-xl font-light md:text-3xl">
-            n° {questionIndex + 1}/5
-          </div>
-        </div>
-      </div>
-      <div className="border-blue-1000 flex flex-col items-center self-stretch rounded-b-2xl border-2 bg-orange-500 px-2 py-4 md:px-8 md:pb-9 md:pt-6">
-        <div className="mb-5 flex items-start gap-2.5 self-stretch">
-          <ArrowFilledIcon />
-          <div className=" text-blue-1000 text-xl font-medium italic">
-            {question}
-          </div>
-        </div>
-        <div className="flex flex-col items-start gap-3 self-stretch pl-0 md:gap-5 md:pl-6">
+        <div className="flex flex-col items-start gap-3 self-stretch pl-0 md:gap-5 md:pl-7">
           {answers.map((question, index) => (
             <button
               onClick={() => {
                 answerClick(index);
               }}
               key={index}
-              className="w-full"
+              className="group w-full"
             >
-              <div className="flex w-full cursor-pointer items-start">
-                <div
+              <div className="border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden">
+                <span
                   className={cn(
-                    'border-blue-1000 flex w-full items-center gap-4 self-stretch rounded-2xl border-2 px-4 py-0',
+                    'subtitle-small-med-14px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
                     index === clickedAnswer
-                      ? index === correctAnswer
-                        ? 'bg-green-500'
-                        : 'bg-red-6'
-                      : 'bg-beige-300 hover:bg-newGray-4',
+                      ? clickedAnswer === correctAnswer
+                        ? 'bg-brightGreen-4'
+                        : 'bg-red-4'
+                      : 'bg-newGray-5 group-hover:bg-newGray-3',
                   )}
                 >
-                  <div className="text-blue-1000  text-2xl font-semibold uppercase">
-                    {String.fromCodePoint(97 + index)}
-                  </div>
-                  <div
-                    className={cn(
-                      ' text-blue-1000 text-start',
-                      index === clickedAnswer ? 'font-bold' : 'font-medium',
-                    )}
-                  >
-                    {question}
-                  </div>
-                </div>
+                  {String.fromCodePoint(97 + index)}
+                </span>
+                <span
+                  className={cn(
+                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-4 border-l border-newBlack-1 max-md:py-0.5',
+                    index === clickedAnswer
+                      ? clickedAnswer === correctAnswer
+                        ? 'bg-brightGreen-3 !font-semibold'
+                        : 'bg-red-3 !font-semibold'
+                      : 'bg-white group-hover:bg-newGray-5',
+                  )}
+                >
+                  {question}
+                </span>
               </div>
             </button>
           ))}

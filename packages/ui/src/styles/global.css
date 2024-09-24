@@ -260,12 +260,20 @@
     @apply text-5xl leading-[116%] font-normal tracking-normal;
   }
 
+  .display-large-bold-caps-48px {
+    @apply text-5xl leading-[116%] font-bold tracking-normal uppercase;
+  }
+
   .display-medium-reg-40px {
     @apply text-[40px] leading-[116%] font-normal tracking-normal;
   }
 
   .display-small-reg-32px {
     @apply text-[32px] leading-[120%] font-normal tracking-normal;
+  }
+
+  .display-small-bold-caps-22px {
+    @apply text-[22px] leading-[116%] font-bold tracking-normal uppercase;
   }
 
   .label-large-20px {
@@ -295,12 +303,19 @@
     @apply text-xl leading-[160%] font-medium tracking-015px;
   }
 
+  .subtitle-med-caps-18px {
+    @apply text-base leading-normal font-normal tracking-normal uppercase;
+  }
   .subtitle-med-reg-16px {
     @apply text-base leading-[160%] font-normal tracking-015px;
   }
 
   .subtitle-small-med-14px {
     @apply text-sm leading-[160%] font-medium tracking-[0.1px];
+  }
+
+  .title-large-24px {
+    @apply text-2xl font-normal leading-[133%] tracking-normal;
   }
 
   .title-large-sb-24px {

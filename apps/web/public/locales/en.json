@@ -164,7 +164,7 @@
     "chapter": {
       "count": "Chapter {{count}}",
       "finishCourse": "Finish the course",
-      "next": "Done, go to next chapter",
+      "next": "Next chapter",
       "thanksTip": "Want to show your appreciation?\nYou can support the author with a tip.",
       "detail": {
         "title": "Class details",
@@ -267,7 +267,7 @@
       "letsgo": "Let's go"
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart to check your mistakes and see the explanation",
+      "clickOnPie": "Click to review",
       "quizz": "Quiz",
       "quizzResults": "Quiz results",
       "quizzReview": "Quiz review",
