@@ -6,7 +6,7 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';
-import { ReactPlayer } from '#src/components/react-player.js';
+import { computeAssetCdnUrl } from '#src/utils/index.ts';
 
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   let prefix = '';
@@ -89,18 +89,13 @@ export const ModalPaymentSummary = ({
         <span className="text-lg lg:text-base text-black lg:text-white font-bold lg:font-medium leading-snug lg:leading-tight capitalize mb-5 lg:mb-6">
           {courseName}
         </span>
-        <div
-          className={cn(
-            'rounded-2xl w-full aspect-video mb-5 lg:mb-8',
-            borderClassName,
-          )}
-        >
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            className="m-0"
-            controls={true}
-            url={course.paidVideoLink as string}
+        <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
+          <img
+            src={computeAssetCdnUrl(
+              course.lastCommit,
+              `courses/${course.id}/assets/thumbnail.webp`,
+            )}
+            alt={courseName}
           />
         </div>
         <div className="flex flex-col gap-1 lg:gap-2 mt-1 lg:mt-4 mb-5 lg:mb-8">

@@ -43,7 +43,7 @@ export const EventBookModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl p-6 w-[90%] lg:w-full lg:p-0 overflow-auto lg:overflow-hidden">
+      <DialogContent className="max-w-4xl p-6 w-[90%] lg:w-full lg:p-0 overflow-auto">
         <DialogTitle className="hidden">Booking Modal</DialogTitle>
         <DialogDescription className="hidden">Booking Modal</DialogDescription>
         <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
