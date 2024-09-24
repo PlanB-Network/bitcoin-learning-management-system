@@ -145,7 +145,7 @@ export const CoursePaymentModal = ({
         open={isOpen}
         onOpenChange={(open) => onClose(open ? undefined : false)}
       >
-        <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto lg:overflow-hidden">
+        <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto">
           <DialogTitle className="hidden">Payment Modal</DialogTitle>
           <DialogDescription className="hidden">
             Payment Modal
