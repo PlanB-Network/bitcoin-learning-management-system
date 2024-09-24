@@ -67,6 +67,10 @@ export function ProfessorCategoryPage() {
     }
   });
 
+  const sortedProfessors = [...(filteredProfessors || [])].sort((a, b) =>
+    a.name.localeCompare(b.name, i18n.language),
+  );
+
   return (
     <PageLayout
       title={t('professors.pageTitle')}
@@ -108,7 +112,7 @@ export function ProfessorCategoryPage() {
       <div className="bg-black items-center justify-center">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-[60px] lg:grid-cols-3  max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto py-4 lg:py-32">
           {!isFetched && <Loader size={'s'} />}
-          {filteredProfessors?.map((professor) => (
+          {sortedProfessors?.map((professor) => (
             <Link
               to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
               key={professor.id}
