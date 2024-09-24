@@ -110,7 +110,9 @@ const CoursesMarkdownBody = ({
           </td>
         ),
         img: ({ src, alt }) =>
-          src?.includes('youtube.com') || src?.includes('youtu.be') ? (
+          src?.includes('youtube.com') ||
+          src?.includes('youtu.be') ||
+          src?.includes('rumble.com') ? (
             <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
               <div className=" flex items-center">
                 <VideoSVG className="mb-2 ml-4 size-10" />
@@ -119,15 +121,27 @@ const CoursesMarkdownBody = ({
                 </div>
               </div>
               <div className="relative pt-[56.25%]">
-                <ReactPlayer
-                  width={'100%'}
-                  height={'100%'}
-                  style={{ position: 'absolute', top: 0, left: 0 }}
-                  className="mx-auto mb-2 rounded-lg"
-                  controls={true}
-                  url={src}
-                  src={alt}
-                />
+                {src?.includes('youtube.com') || src?.includes('youtu.be') ? (
+                  <ReactPlayer
+                    width={'100%'}
+                    height={'100%'}
+                    style={{ position: 'absolute', top: 0, left: 0 }}
+                    className="mx-auto mb-2 rounded-lg"
+                    controls={true}
+                    url={src}
+                    src={alt}
+                  />
+                ) : (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    style={{ position: 'absolute', top: 0, left: 0 }}
+                    className="mx-auto mb-2 rounded-lg"
+                    src={src}
+                    title={alt}
+                    allowFullScreen
+                  />
+                )}
               </div>
             </div>
           ) : (
