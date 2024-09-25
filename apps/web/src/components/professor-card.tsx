@@ -57,7 +57,7 @@ export const TopicTags = ({ professor }: ProfessorCardProps) => {
       {professor.tags?.map((tag) => (
         <span
           key={tag}
-          className="flex items-center desktop-typo1 rounded-lg bg-[#FFFFFF40] px-2 py-1 capitalize"
+          className="flex items-center desktop-typo1  px-2 py-1 rounded-lg bg-[#FFFFFF40] capitalize"
         >
           {tag}
         </span>
