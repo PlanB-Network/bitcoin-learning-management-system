@@ -88,6 +88,17 @@ services:
       - traefik.http.routers.university-web-${ENV}.middlewares=university-web-${ENV}-compress
       - traefik.http.middlewares.university-web-${ENV}-compress.compress=true
 
+  seed:
+    image: ghcr.io/max-lt/pears-cdn:v1.0.3
+    environment:
+      - SEED=/data
+      - CORESTORE_PATH=/corestore
+      - CORS=https://testnet.planb.network
+      - PROXY_URL=https://testnet-cdn.planb.network
+    volumes:
+      - ./corestore:/corestore
+      - ./data/cdn:/data
+
 networks:
   default:
     name: ${DOCKER_NETWORK}
