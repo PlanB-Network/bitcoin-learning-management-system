@@ -1,9 +1,11 @@
 export { trpc } from './trpc.ts';
 
-let customCdnUrl = '';
+let customCdnUrl = window.localStorage.getItem('cdnUrl');
 
 Object.defineProperty(window, 'setCustomCdnUrl', {
-  value: (url: string) => (customCdnUrl = url),
+  value: (url: string) => {
+    window.localStorage.setItem('cdnUrl', (customCdnUrl = url));
+  },
 });
 
 export const computeAssetCdnUrl = (commitHash: string, path: string) => {
