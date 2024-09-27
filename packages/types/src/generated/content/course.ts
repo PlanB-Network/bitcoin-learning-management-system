@@ -336,6 +336,7 @@ export interface CourseReviewsExtended {
   feedbacks: {
     date: string;
     user: string;
+    userPicture: string | null;
     publicComment: string;
     teacherComment: string | null;
     adminComment: string | null;

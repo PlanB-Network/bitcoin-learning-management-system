@@ -4,25 +4,30 @@ import * as React from 'react';
 
 import { cn } from '../lib/utils.js';
 
-const textTagVariants = cva('justify-center items-center gap-2 inline-flex', {
-  variants: {
-    size: {
-      large: 'p-2 text-base font-medium leading-none rounded-md',
-      small:
-        'px-2 py-[3px] text-sm leading-[143%] tracking-[0.17px] rounded-md',
-      verySmall:
-        'px-[5px] py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
+const textTagVariants = cva(
+  'shadow-course-navigation-sm justify-center items-center gap-2 inline-flex',
+  {
+    variants: {
+      size: {
+        large: 'p-2 text-base font-medium leading-none rounded-md',
+        small:
+          'px-2 py-[3px] text-sm leading-[143%] tracking-[0.17px] rounded-md',
+        verySmall:
+          'px-[5px] py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
+      },
+      variant: {
+        light: 'bg-[#CCCCCC80] text-newBlack-3',
+        dark: 'bg-newGray-1 text-white',
+        orange: 'bg-darkOrange-0 text-darkOrange-6',
+        green: 'bg-brightGreen-1 text-brightGreen-7',
+      },
     },
-    variant: {
-      light: 'bg-[#CCCCCC80] text-newBlack-3',
-      dark: 'bg-newGray-1 text-white',
+    defaultVariants: {
+      size: 'large',
+      variant: 'light',
     },
   },
-  defaultVariants: {
-    size: 'large',
-    variant: 'light',
-  },
-});
+);
 
 export interface TextTagProps
   extends React.HTMLAttributes<HTMLDivElement>,

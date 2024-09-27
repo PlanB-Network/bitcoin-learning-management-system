@@ -62,7 +62,7 @@ function DashboardProfessorProfile() {
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-        <h3 className="display-small-reg-32px">
+        <h3 className="display-small-32px">
           {t('dashboard.teacher.profile.account')}
         </h3>
         <TextTag

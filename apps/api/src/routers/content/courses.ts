@@ -14,9 +14,10 @@ import {
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
   createGetCourseChapters,
-  createGetCourseReviews,
   createGetCourses,
   createGetProfessorCourses,
+  createGetPublicCourseReviews,
+  createGetTeacherCourseReviews,
 } from '@blms/service-content';
 import type {
   CourseChapterResponse,
@@ -29,7 +30,7 @@ import type {
 
 import type { Parser } from '#src/trpc/types.js';
 
-import { publicProcedure } from '../../procedures/index.js';
+import { professorProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 const getCoursesProcedure = publicProcedure
@@ -66,11 +67,26 @@ const getProfessorCoursesProcedure = publicProcedure
     );
   });
 
-const getCourseReviewsProcedure = publicProcedure
-  .input(z.object({ courseId: z.string() }))
+const getPublicCourseReviewsProcedure = publicProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
   .output<Parser<CourseReviewsExtended>>(courseReviewsExtendedSchema)
   .query(({ ctx, input }) => {
-    return createGetCourseReviews(ctx.dependencies)(input.courseId);
+    return createGetPublicCourseReviews(ctx.dependencies)(input.courseId);
+  });
+
+const getTeacherCourseReviewsProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<CourseReviewsExtended>>(courseReviewsExtendedSchema)
+  .query(({ ctx, input }) => {
+    return createGetTeacherCourseReviews(ctx.dependencies)(input.courseId);
   });
 
 const getCourseProcedure = publicProcedure
@@ -147,5 +163,6 @@ export const coursesRouter = createTRPCRouter({
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
-  getCourseReviews: getCourseReviewsProcedure,
+  getPublicCourseReviews: getPublicCourseReviewsProcedure,
+  getTeacherCourseReviews: getTeacherCourseReviewsProcedure,
 });
