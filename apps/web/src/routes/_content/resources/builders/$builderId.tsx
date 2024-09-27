@@ -82,7 +82,7 @@ function Builder() {
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !builder && (
         <div className="w-[768px] mx-auto text-white">
-          {t('general.itemNotFoundOrTranslated', {
+          {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.builder'),
           })}
         </div>

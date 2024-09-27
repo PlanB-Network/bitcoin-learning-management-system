@@ -536,7 +536,7 @@ function CourseDetails() {
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !course && (
           <div className="flex size-full max-w-[1222px] flex-col items-start justify-center px-4 pt-3 sm:items-center md:pt-10">
-            {t('general.itemNotFoundOrTranslated', {
+            {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.course'),
             })}
           </div>

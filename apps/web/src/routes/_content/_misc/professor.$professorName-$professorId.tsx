@@ -57,7 +57,7 @@ function ProfessorDetail() {
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !professor && (
         <div className="w-[850px] mx-auto text-white">
-          {t('general.itemNotFound', {
+          {t('underConstruction.itemNotFound', {
             item: t('words.professor'),
           })}
         </div>
