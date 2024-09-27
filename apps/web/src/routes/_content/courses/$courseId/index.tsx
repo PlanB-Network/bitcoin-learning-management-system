@@ -281,21 +281,28 @@ function CourseDetails() {
           <ListItem
             leftText={t('words.ratings')}
             rightText={
-              <StarRating
-                rating={
-                  reviews?.general && reviews.general.length > 0
-                    ? Number(
-                        (
-                          reviews?.general.reduce(
-                            (acc, rating) => acc + rating,
-                            0,
-                          ) / reviews.general.length
-                        ).toFixed(1),
-                      )
-                    : 0
-                }
-                starSize={isMobile ? 40 : 30}
-              />
+              <div className="flex gap-2.5 items-center">
+                <StarRating
+                  rating={
+                    reviews?.general && reviews.general.length > 0
+                      ? Number(
+                          (
+                            reviews?.general.reduce(
+                              (acc, rating) => acc + rating,
+                              0,
+                            ) / reviews.general.length
+                          ).toFixed(1),
+                        )
+                      : 0
+                  }
+                  starSize={isMobile ? 40 : 30}
+                />
+                {reviews?.general && reviews.general.length > 0 && (
+                  <span className="font-medium leading-relaxed tracking-[0.08px] text-right text-newBlack-1">
+                    ({reviews.general.length})
+                  </span>
+                )}
+              </div>
             }
             variant="light"
             wrapOnMobile
