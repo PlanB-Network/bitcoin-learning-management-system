@@ -33,7 +33,8 @@ export const CourseCurriculum = ({
             <div className="flex flex-col gap-2.5 lg:gap-4 mt-5">
               {part.chapters?.map((chapter, index) => {
                 return (
-                  chapter !== undefined && (
+                  chapter !== undefined &&
+                  !chapter.isCourseReview && (
                     <div
                       key={index}
                       className="flex justify-between items-center pl-8"
