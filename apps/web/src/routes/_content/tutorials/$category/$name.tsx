@@ -282,7 +282,7 @@ function TutorialDetails() {
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !tutorial && (
           <div className="flex flex-col text-black">
-            {t('general.itemNotFoundOrTranslated', {
+            {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.tutorial'),
             })}
           </div>

@@ -50,7 +50,7 @@ function Podcast() {
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !podcast && (
         <div className="w-[768px] mx-auto text-white">
-          {t('general.itemNotFoundOrTranslated', {
+          {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.podcast'),
           })}
         </div>

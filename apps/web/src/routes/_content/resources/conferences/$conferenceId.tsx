@@ -103,7 +103,7 @@ function Conference() {
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !conference && (
         <div className="w-[768px] mx-auto text-white">
-          {t('general.itemNotFoundOrTranslated', {
+          {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.conference'),
           })}
         </div>

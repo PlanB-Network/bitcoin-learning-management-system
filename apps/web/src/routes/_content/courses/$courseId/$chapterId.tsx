@@ -698,7 +698,7 @@ function CourseChapter() {
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !chapter && (
           <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            {t('general.itemNotFoundOrTranslated', {
+            {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.chapter'),
             })}
           </div>
