@@ -1,0 +1,12 @@
+# sovereign-university % docker compose -f compose.yml -f compose.seed.yml -f compose.vector.yml up -V
+# Hot reload vector config: docker kill --signal=HUP vector_container_id
+
+services:
+  vector:
+    image: timberio/vector:0.41.1-alpine
+    ports:
+      - 8686:8686
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/vector/vector.yml:/etc/vector/vector.yaml:ro
+      - ./logs:/var/log/vector

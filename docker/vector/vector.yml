@@ -1,0 +1,235 @@
+# https://vector.dev/docs/reference/configuration/
+data_dir: '/var/lib/vector'
+
+api:
+  enabled: true
+  address: 0.0.0.0:8686
+
+# https://vector.dev/docs/reference/configuration/sources/docker_logs/
+# Ingest data by tailing one or more files
+sources:
+  docker:
+    type: 'docker_logs'
+
+# Structure and parse via Vector's Remap Language
+transforms:
+  empty_message_filter:
+    inputs:
+      - docker
+    type: 'filter'
+    condition: '.message != ""'
+  docker_remap:
+    inputs:
+      - empty_message_filter
+    type: 'remap'
+    source: |
+      del(.stream)
+      del(.source_type)
+      .service = del(.label."com.docker.compose.service") # api / web / redis / ...
+      .project = del(.label."com.docker.compose.project") # mainnet / testnet
+      .container_number = del(.label."com.docker.compose.container-number")
+      .platform = "Docker"
+      del(.label)
+
+  api_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "api"'
+
+  api_light_remap:
+    inputs:
+      - api_filter
+    type: 'remap'
+    source: | # Keep only message and timestamp
+      .old = del(.)
+      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
+      del(.old)
+
+  # Web logs
+  web_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "web"'
+
+  web_remap_light:
+    inputs:
+      - web_filter
+    type: 'remap'
+    source: | # Keep only message and timestamp
+      .old = del(.)
+      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
+      del(.old)
+
+  # Redis logs
+  redis_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "redis"'
+
+  redis_remap:
+    inputs:
+      - redis_filter
+    type: 'remap'
+    source: | # Replace prepending iso date
+      .message = replace!(.message, r'^.*[*#]\s+', "")
+
+  redis_light_remap:
+    inputs:
+      - redis_remap
+    type: 'remap'
+    source: | # Keep only message and timestamp
+      .old = del(.)
+      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
+      del(.old)
+
+  # Postgres logs
+  postgres_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "postgres"'
+
+  postgres_remap:
+    inputs:
+      - postgres_filter
+    type: 'remap'
+    source: | # Replace prepending iso date and log level
+      .message = replace!(.message, r'^[\d-]{10} [\d:.]+ UTC\s+\[\d+\]\s+[A-Z]+:\s+', "")
+
+  postgres_light_remap:
+    inputs:
+      - postgres_remap
+    type: 'remap'
+    source: | # Keep only message and timestamp
+      .old = del(.)
+      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
+      del(.old)
+
+  # Seed logs
+  seed_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "seed"'
+
+  seed_remap:
+    inputs:
+      - seed_filter
+    type: 'remap'
+    source: | # Replace prepending iso date
+      .message = replace!(.message, r'^\s?[\d-]+T[\d:.]+Z\s+', "")
+
+  seed_light_remap:
+    inputs:
+      - seed_remap
+    type: 'remap'
+    source: | # Keep only message and timestamp
+      .old = del(.)
+      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
+      del(.old)
+
+# Send structured data to a short-term storage
+sinks:
+  raw:
+    inputs:
+      - docker
+    type: 'file'
+    path: '/var/log/vector/raw.log'
+    encoding:
+      codec: json
+
+  compose:
+    inputs:
+      - docker_remap
+    type: 'file'
+    path: '/var/log/vector/compose.log'
+    encoding:
+      codec: json
+
+  # API output
+  api:
+    inputs:
+      - api_filter
+    type: 'file'
+    path: '/var/log/vector/api.log'
+    encoding:
+      codec: json
+
+  api_light:
+    inputs:
+      - api_light_remap
+    type: 'file'
+    path: '/var/log/vector/api_light.log'
+    encoding:
+      codec: text
+
+  # Web output
+  web:
+    inputs:
+      - web_filter
+    type: 'file'
+    path: '/var/log/vector/web.log'
+    encoding:
+      codec: json
+
+  web_light:
+    inputs:
+      - web_remap_light
+    type: 'file'
+    path: '/var/log/vector/web_light.log'
+    encoding:
+      codec: text
+
+  # Redis output
+  redis:
+    inputs:
+      - redis_remap
+    type: 'file'
+    path: '/var/log/vector/redis.log'
+    encoding:
+      codec: json
+
+  redis_light:
+    inputs:
+      - redis_light_remap
+    type: 'file'
+    path: '/var/log/vector/redis_light.log'
+    encoding:
+      codec: text
+
+  # Postgres output
+  postgres:
+    inputs:
+      - postgres_remap
+    type: 'file'
+    path: '/var/log/vector/postgres.log'
+    encoding:
+      codec: json
+
+  postgres_light:
+    inputs:
+      - postgres_light_remap
+    type: 'file'
+    path: '/var/log/vector/postgres_light.log'
+    encoding:
+      codec: text
+
+  # Seed output
+  seed:
+    inputs:
+      - seed_remap
+    type: 'file'
+    path: '/var/log/vector/seed.log'
+    encoding:
+      codec: json
+
+  seed_light:
+    inputs:
+      - seed_light_remap
+    type: 'file'
+    path: '/var/log/vector/seed_light.log'
+    encoding:
+      codec: text
