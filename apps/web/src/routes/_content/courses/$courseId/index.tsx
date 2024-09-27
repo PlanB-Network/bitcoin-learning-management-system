@@ -1,45 +1,33 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
-  Link,
   createFileRoute,
   useNavigate,
   useParams,
 } from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BsCheckCircle, BsCircleFill, BsRocketTakeoff } from 'react-icons/bs';
-import { FaChalkboardTeacher, FaLock } from 'react-icons/fa';
-import { HiOutlineAcademicCap, HiOutlineBookOpen } from 'react-icons/hi';
-import { IoMdStopwatch } from 'react-icons/io';
-import { RxTriangleDown } from 'react-icons/rx';
+import { FaLock } from 'react-icons/fa';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { IoCheckmark } from 'react-icons/io5';
 import ReactMarkdown from 'react-markdown';
 
-import type { JoinedCourseWithAll } from '@blms/types';
-import { Button, Loader, cn } from '@blms/ui';
+import type { CourseReviewsExtended, JoinedCourseWithAll } from '@blms/types';
+import { Button, Divider, Loader, TextTag, cn } from '@blms/ui';
 
-import checkBoxSVG from '#src/assets/courses/checkboxFilled.svg';
-import crayonSVG from '#src/assets/courses/Crayon.svg';
-import Book from '#src/assets/courses/livre.svg?react';
-import rocketSVG from '#src/assets/courses/rocketcourse.svg';
-import staricon from '#src/assets/courses/star.png';
-import yellowBook from '#src/assets/courses/yellowbook.png';
-import graduateImg from '#src/assets/icons/birrete.png';
-import clock from '#src/assets/icons/clock.png';
-import rabitPen from '#src/assets/icons/rabbit_holding_pen.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
-import { AuthorCard } from '#src/components/author-card.js';
+import { AuthorCard } from '#src/components/author-card.tsx';
+import { PublicComment } from '#src/components/Comments/public-comment.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { ListItem } from '#src/components/ListItem/list-item.tsx';
+import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { useGreater } from '#src/hooks/use-greater.js';
+import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.js';
-import { addSpaceToCourseId } from '#src/utils/courses.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { CourseButton } from '../-components/course-button.tsx';
 import { CourseLayout } from '../-components/course-layout.tsx';
 import { CoursePaymentModal } from '../-components/payment-modal/course-payment-modal.tsx';
 
@@ -66,7 +54,6 @@ function CourseDetails() {
     from: '/courses/$courseId',
   });
   const { t, i18n } = useTranslation();
-  const isScreenMd = useGreater('sm');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -94,8 +81,13 @@ function CourseDetails() {
     [courseId, payments],
   );
 
-  const courseHasStartDate = course?.parts.some((part) =>
-    part.chapters.some((chapter) => chapter?.startDate !== null),
+  const { data: reviews } = trpc.content.getPublicCourseReviews.useQuery(
+    {
+      courseId: courseId,
+    },
+    {
+      staleTime: 300_000, // 5 minutes
+    },
   );
 
   let professorNames = course?.professors
@@ -176,6 +168,19 @@ function CourseDetails() {
     fetchData();
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   let satsPrice = -1;
   if (course && course.paidPriceDollars && conversionRate) {
     satsPrice = Math.round(
@@ -187,196 +192,140 @@ function CourseDetails() {
   }
 
   const Header = ({ course }: { course: JoinedCourseWithAll }) => {
+    const beginnerFriendlyCourses = ['btc101', 'btc102', 'scu101'];
+
     return (
-      <div className="flex max-w-5xl flex-col space-y-2 px-2 sm:flex-row sm:items-center sm:space-x-10">
-        {isScreenMd ? (
-          <>
-            <div
-              className="flex shrink-0 grow-0 flex-col items-center justify-center rounded-full bg-orange-500 p-8 text-5xl font-bold uppercase text-white"
-              title={t('courses.details.courseId', { courseId: course.id })}
+      <section className="flex flex-col self-start w-full">
+        <h1 className="text-newBlack-1 max-md:text-center title-large-sb-24px md:display-large-med-48px">
+          {course.name}
+        </h1>
+        <div className="mt-6 md:mt-4 flex flex-wrap gap-2 items-center">
+          <TextTag
+            size={isMobile ? 'verySmall' : 'large'}
+            variant="orange"
+            className="uppercase"
+          >
+            {course.requiresPayment ? t('words.paid') : t('words.free')}
+          </TextTag>
+          <TextTag
+            size={isMobile ? 'verySmall' : 'large'}
+            className="uppercase"
+          >
+            {course.parts.some((part) =>
+              part.chapters.some((chapter) => chapter?.isInPerson),
+            )
+              ? t('words.inPerson')
+              : t('words.online')}
+          </TextTag>
+          {beginnerFriendlyCourses.includes(course.id) && (
+            <TextTag
+              size={isMobile ? 'verySmall' : 'large'}
+              variant="green"
+              className="uppercase"
             >
-              <span>{addSpaceToCourseId(course.id)}</span>
-            </div>
-            <div>
-              <h1 className="text-3xl  font-semibold text-blue-800  lg:text-5xl">
-                {course.name}
-              </h1>
-              <h2 className="mt-4 text-lg font-light italic text-blue-800">
-                <span>{t('courses.details.goal')}</span>
-                <span>{course.goal}</span>
-              </h2>
-            </div>
-          </>
-        ) : (
-          <div className="mb-4 flex flex-col items-center ">
-            <div className="mt-2 flex flex-col items-center">
-              <div className="size-fit rounded-2xl bg-orange-500 px-3 py-2 text-left text-3xl font-bold uppercase text-white">
-                {addSpaceToCourseId(course.id)}
-              </div>
-              <h1 className="mt-2 px-1 text-center text-xl font-semibold text-orange-500 lg:text-5xl">
-                {course.name}
-              </h1>
-            </div>
-            <h2 className="mt-2 text-sm font-light italic text-blue-800">
-              <span className="font-semibold">{t('courses.details.goal')}</span>
-              <span>{course.goal}</span>
-            </h2>
-            <div className="flex flex-col space-y-2 p-3 sm:px-0">
-              <div className="flex flex-wrap gap-2">
-                <div className="m-1 max-w-fit flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <img src={rabitPen} alt="" className="mr-2 size-4" />
-                  <span className="max-w-full flex flex-wrap text-sm text-blue-800">
-                    {professorNames}
-                  </span>
-                </div>
-                <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <img src={graduateImg} alt="" className="mr-2 size-4" />
-                  <span className="text-sm capitalize text-blue-800">
-                    {course.level}
-                  </span>
-                </div>
-                <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <Book className="mr-2 size-4" />
-                  <span className="text-sm text-blue-800">
-                    {t('courses.details.mobile.chapters', {
-                      chapters: course.chaptersCount,
-                    })}
-                  </span>
-                </div>
-                <div className="m-1 flex shrink-0 items-center rounded bg-gray-200 px-2 py-1 shadow-md">
-                  <img
-                    src={clock}
-                    alt="Icono de estudio"
-                    className="mr-2 size-4"
-                  />
-                  <span className="text-sm text-blue-800">
-                    {t('courses.details.mobile.hours', {
-                      hours: course.hours,
-                    })}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+              {t('words.level.beginnerFriendly')}
+            </TextTag>
+          )}
+        </div>
+        <div className="mt-4 md:mt-7 max-md:flex max-md:flex-col gap-1 label-medium-16px md:label-large-20px text-newBlack-1 border-l border-newBlack-5 pl-2.5">
+          <span className="!font-medium">{t('words.goal')} : </span>
+          <span>{course.goal}</span>
+        </div>
+      </section>
     );
   };
 
   const CourseInfo = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
-      <div className="grid max-w-5xl grid-rows-1 place-items-stretch justify-items-stretch gap-y-8 sm:my-2 sm:grid-cols-2">
-        <div className="w-full px-2 sm:pl-2 sm:pr-10">
-          <img
-            src={computeAssetCdnUrl(
-              course.lastCommit,
-              `courses/${course.id}/assets/thumbnail.webp`,
-            )}
-            alt=""
+      <section className="flex max-lg:flex-col lg:py-2.5 mt-6 lg:mt-7 w-full gap-5 lg:gap-10">
+        <img
+          src={computeAssetCdnUrl(
+            course.lastCommit,
+            `courses/${course.id}/assets/thumbnail.webp`,
+          )}
+          alt={course.name}
+          className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
+        />
+        <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px]">
+          <ListItem
+            leftText={t('words.professor')}
+            rightText={course.professors
+              .map((professor) => professor.name)
+              .join(', ')}
+            variant="light"
           />
-        </div>
-        <div className="hidden w-full flex-col space-y-5 p-3 sm:block sm:px-0 lg:block xl:block 2xl:block ">
-          <div className="flex flex-row items-start space-x-5 ">
-            <FaChalkboardTeacher size="35" className="text-orange-600" />
-            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
-              {course.professors?.length > 1
-                ? t('courses.details.teachers', {
-                    teachers: professorNames,
-                  })
-                : t('courses.details.teacher', {
-                    teacher: professorNames,
-                  })}
-            </span>
-          </div>
-          <div className="flex flex-row items-start space-x-5">
-            <HiOutlineAcademicCap size="35" className="text-orange-600" />
-            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
-              {t(`courses.details.level`, { level: course.level })}
-            </span>
-          </div>
-          <div className="flex flex-row items-start space-x-5">
-            <HiOutlineBookOpen size="35" className="text-orange-600" />
-            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
-              {t('courses.details.numberOfChapters', {
-                number: course.chaptersCount,
-              })}
-            </span>
-          </div>
-          <div className="flex flex-row items-start space-x-5">
-            <IoMdStopwatch size="35" className="text-orange-600" />
-            <span className="w-full rounded bg-gray-200 px-3 py-1 text-blue-900">
-              {t('courses.details.duration', { hours: course.hours })}
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const StartTheCourseHR = () => {
-    return (
-      <div className="relative my-4 w-full max-w-5xl flex-col space-y-2 px-2 sm:my-8 sm:flex-row sm:items-center sm:space-x-10">
-        {isScreenMd ? (
-          <div>
-            <hr className="border-2 border-gray-300" />
-            <div className="absolute right-[15%] top-1/2 -translate-y-1/2">
-              <div className="relative">
-                <Button
-                  rounded
-                  {...buttonProps}
-                  disabled={isStartOrBuyButtonDisabled}
-                >
-                  {course?.requiresPayment && !isCoursePaid ? (
-                    <span className="mr-3">
-                      <FaLock />
-                    </span>
-                  ) : null}
-                  <span className="sm:px-6">
-                    {t(
-                      courseHasToBePurchased
-                        ? 'courses.details.buyCourse'
-                        : 'courses.details.startCourse',
-                    )}
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <div className="flex items-center justify-center">
-              <div className="h-0 grow border-t-2 border-orange-600"></div>
-              <div className=" p-2">
-                <div className=" mx-1 flex items-center justify-center">
-                  <div className="flex">
-                    <Button
-                      rounded
-                      {...buttonProps}
-                      disabled={isStartOrBuyButtonDisabled}
-                    >
-                      {course?.requiresPayment && !isCoursePaid ? (
-                        <span className="mr-3">
-                          <FaLock />
-                        </span>
-                      ) : null}
-
-                      <span className="relative z-10 text-sm font-medium sm:px-6">
-                        {t(
-                          courseHasToBePurchased
-                            ? 'courses.details.buyCourse'
-                            : 'courses.details.startCourse',
-                        )}
-                      </span>
-                      <img src={rocketSVG} alt="" className="m-0 ml-1 size-5" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <div className="h-0 grow border-t-2 border-orange-600"></div>
-            </div>
-          </div>
-        )}
-      </div>
+          <ListItem
+            leftText={t('words.level.level')}
+            rightText={t(`words.level.${course.level}`)}
+            variant="light"
+          />
+          <ListItem
+            leftText={t('words.duration')}
+            rightText={`${course.hours} ${t('words.hours')}`}
+            variant="light"
+          />
+          <ListItem
+            leftText={t('words.price')}
+            rightText={
+              course.paidPriceDollars
+                ? `${course.paidPriceDollars}$`
+                : t('words.free')
+            }
+            variant="light"
+          />
+          <ListItem
+            leftText={t('words.courseId')}
+            rightText={course.id.toUpperCase()}
+            variant="light"
+          />
+          <ListItem
+            leftText={t('words.ratings')}
+            rightText={
+              <StarRating
+                rating={
+                  reviews?.general && reviews.general.length > 0
+                    ? Number(
+                        (
+                          reviews?.general.reduce(
+                            (acc, rating) => acc + rating,
+                            0,
+                          ) / reviews.general.length
+                        ).toFixed(1),
+                      )
+                    : 0
+                }
+                starSize={isMobile ? 40 : 30}
+              />
+            }
+            variant="light"
+            wrapOnMobile
+          />
+          <Button
+            size="l"
+            mode="dark"
+            disabled={isStartOrBuyButtonDisabled}
+            className="max-lg:my-6 mt-5 w-full max-lg:max-w-[290px] md:w-fit self-center lg:self-end"
+            {...buttonProps}
+          >
+            {course?.requiresPayment && !isCoursePaid ? (
+              <FaLock className="mr-2" />
+            ) : null}
+            {t(
+              courseHasToBePurchased
+                ? 'courses.details.buyCourse'
+                : 'courses.details.startCourse',
+            )}
+            {course?.requiresPayment && !isCoursePaid ? null : (
+              <FaArrowRightLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                  'group-hover:ml-3',
+                )}
+              />
+            )}
+          </Button>
+        </article>
+      </section>
     );
   };
 
@@ -386,233 +335,179 @@ function CourseDetails() {
     course: JoinedCourseWithAll;
   }) => {
     return (
-      <div className="max-w-5xl grid-rows-2 place-items-stretch justify-items-stretch px-2 sm:my-4 sm:grid sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-20">
-        <div className="mb-5 flex w-full flex-col sm:mb-0">
-          <div className="flex flex-row gap-1 sm:hidden">
-            <img src={crayonSVG} alt="" className="m-0 block size-5" />
-            <h4 className="text-blue-1000 mb-1 font-bold uppercase italic sm:hidden">
-              {t('courses.details.description')}
-            </h4>
-          </div>
-          <h4 className="mb-1 hidden text-sm font-normal uppercase italic sm:block">
+      <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
+        <div className="flex flex-col gap-4 md:gap-6">
+          <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
             {t('courses.details.description')}
           </h4>
           <ReactMarkdown
             components={{
               h1: ({ children }) => (
-                <h3 className="mb-2 text-[14px] font-medium text-blue-800 sm:mb-5 sm:text-2xl sm:font-normal sm:text-blue-900">
+                <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
                   {children}
                 </h3>
               ),
               p: ({ children }) => (
-                <div className="mb-3 text-justify text-xs text-blue-800 sm:text-sm ">
+                <p className="body-14px md:subtitle-med-16px text-newBlack-1 text-justify">
                   {children}
-                </div>
+                </p>
               ),
             }}
           >
             {course.rawDescription}
           </ReactMarkdown>
         </div>
-        <div className="flex w-full flex-col">
-          <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={staricon} alt="" className=" block size-5" />
-            <h4 className="text-blue-1000 mb-1 font-bold uppercase italic sm:hidden">
-              {t('courses.details.objectives')}
-            </h4>
-          </div>
-          <h4 className="mb-1 hidden text-sm font-light uppercase italic sm:block">
+        <Divider width="w-full" className="md:hidden" />
+        <div className="flex w-full flex-col gap-4 md:gap-6">
+          <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
             {t('courses.details.objectives')}
           </h4>
-          <h3 className="mb-5 hidden text-2xl font-normal text-blue-900 sm:block">
+          <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
             {t('courses.details.objectivesTitle')}
           </h3>
-          <ul className="space-y-2 text-xs font-light capitalize text-blue-800 sm:text-base sm:uppercase">
-            {(course.objectives as unknown as string[])?.map((goal, index) => (
-              <li
-                className="flex flex-row items-center sm:items-start sm:space-x-3"
-                key={index}
-              >
-                <div>
-                  <BsCheckCircle className="mt-1 hidden size-4 sm:block" />
-                </div>
-                <img
-                  src={checkBoxSVG}
-                  alt=""
-                  className="mt-1 block size-4 sm:hidden"
-                />
-                <span className="ml-2 p-1 font-medium sm:ml-0 sm:font-normal">
-                  {goal}
-                </span>
+          <ul className="flex flex-col gap-4 md:gap-6">
+            {course.objectives?.map((goal, index) => (
+              <li className="flex gap-2.5 text-newBlack-1" key={index}>
+                <IoCheckmark size={isMobile ? 18 : 24} className="shrink-0" />
+                <span className="body-16px md:label-large-20px">{goal}</span>
               </li>
             ))}
           </ul>
         </div>
-      </div>
-    );
-  };
-
-  const Curriculum = ({ course }: { course: JoinedCourseWithAll }) => {
-    const currentDate = new Date();
-
-    return (
-      <div className="mb-4 mt-6 max-w-5xl px-2 sm:mt-4">
-        <div className="flex h-fit flex-col">
-          <div className="mb-3 flex flex-row gap-1 sm:hidden">
-            <img src={yellowBook} alt="" className="size-5" />
-            <h4 className="text-blue-1000 mb-1  font-semibold uppercase italic sm:hidden">
-              {t('courses.details.curriculum')}
-            </h4>
-          </div>
-          <h4 className="mb-5 hidden text-2xl font-light uppercase italic text-gray-400 sm:block">
-            {t('courses.details.curriculum')}
-          </h4>
-          <ul
-            className={
-              (cn('space-y-5 text-xs capitalize sm:text-base sm:uppercase'),
-              courseHasToBePurchased ? 'pointer-events-none' : '')
-            }
-          >
-            {course.parts?.map((part, partIndex) => (
-              <li key={partIndex}>
-                <div className="mb-1 flex flex-row mt-3">
-                  <RxTriangleDown
-                    className="mr-2 mt-1 text-orange-500"
-                    size={20}
-                  />
-                  <Link
-                    to={'/courses/$courseId/$chapterId'}
-                    params={{
-                      courseId,
-                      chapterId: part.chapters[0]
-                        ? part.chapters[0].chapterId
-                        : '',
-                    }}
-                  >
-                    <p
-                      className={cn(
-                        'ml-1 text-base font-normal capitalize  sm:text-lg sm:uppercase text-orange-500',
-                      )}
-                    >
-                      {part.title}
-                    </p>
-                  </Link>
-                </div>
-                {part.chapters?.map((chapter, index) => {
-                  return (
-                    chapter !== undefined && (
-                      <div
-                        className="mb-0.5 ml-10 flex flex-col md:flex-row justify-between gap-2 md:gap-32 mt-3"
-                        key={index}
-                      >
-                        <div className="flex flew-row items-center">
-                          <BsCircleFill
-                            className="mr-2 text-blue-500"
-                            size={7}
-                          />
-                          <Link
-                            to={'/courses/$courseId/$chapterId'}
-                            params={{
-                              courseId,
-                              chapterId: chapter.chapterId,
-                            }}
-                          >
-                            <p
-                              className={cn(
-                                'capitalize',
-                                courseHasToBePurchased
-                                  ? 'text-gray-400'
-                                  : 'text-blue-700',
-                              )}
-                            >
-                              {chapter.title}
-                            </p>
-                          </Link>
-                        </div>
-                        <p
-                          className={cn(
-                            'w-auto',
-                            !courseHasStartDate && 'hidden',
-                          )}
-                        >
-                          {((chapter.startDate &&
-                            chapter.startDate > currentDate) ||
-                            (!chapter.startDate && chapter.releasePlace)) && (
-                            <span className="bg-gray-300 rounded-xl p-2 text-xs md:text-sm font-medium text-white">
-                              {chapter.startDate && (
-                                <span>{chapter.startDate.toDateString()}</span>
-                              )}
-                              {chapter.startDate && chapter.releasePlace && (
-                                <span> - </span>
-                              )}
-                              {chapter.releasePlace && (
-                                <span>{chapter.releasePlace}</span>
-                              )}
-                            </span>
-                          )}
-                        </p>
-                      </div>
-                    )
-                  );
-                })}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </section>
     );
   };
 
   const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
-      <div className="my-4 max-w-5xl mx-auto lg:mx-0 w-full">
-        <div className="flex h-fit flex-col">
-          <div className="flex flex-col gap-4">
-            {course.professors.map((professor) => (
-              <Link
-                to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
-                key={professor.id}
-              >
-                <AuthorCard
-                  key={professor.id}
-                  className="sm:mt-4"
-                  professor={professor}
-                />
-              </Link>
-            ))}
-          </div>
+      <section className="max-lg:mx-auto w-full flex flex-col">
+        <span className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+          {t('words.professor')}
+        </span>
+        <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
+          {t('courses.details.taughtBy')}{' '}
+          <span className="text-darkOrange-5 label-large-20px md:display-small-32px !font-medium">
+            {course.professors.map((professor) => professor.name).join(', ')}
+          </span>
+        </h4>
+        <div className="flex h-fit flex-col max-md:gap-4">
+          {course.professors.map((professor) => (
+            <AuthorCard
+              key={professor.id}
+              className="sm:mt-4"
+              professor={professor}
+            />
+          ))}
         </div>
-      </div>
+      </section>
+    );
+  };
+
+  const RatingsAndReviews = ({
+    reviews,
+  }: {
+    reviews: CourseReviewsExtended;
+  }) => {
+    const numberOfReviews = reviews.general.length;
+    const averageRating = Number(
+      (
+        reviews.general.reduce((acc, rating) => acc + rating, 0) /
+        numberOfReviews
+      ).toFixed(1),
+    );
+    const maxRating = 5;
+
+    const [visibleFeedbacks, setVisibleFeedbacks] = useState(12);
+
+    const showMoreFeedbacks = () => {
+      setVisibleFeedbacks((prev) => prev + 12);
+    };
+
+    return (
+      <section className="flex w-full flex-col gap-4 md:gap-9">
+        <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+          {t('courses.review.ratingsAndReviews')}
+        </h4>
+        <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+          {t('courses.review.whatStudentsSay')}
+        </h3>
+        <div className="flex flex-col w-full md:items-center">
+          <h3 className="lg:text-center subtitle-large-med-20px text-dashboardSectionTitle">
+            {t('courses.review.generalGrade')}
+          </h3>
+          <StarRating
+            rating={averageRating}
+            totalStars={maxRating}
+            starSize={isMobile ? 41 : 45}
+            className="mt-2.5 md:mt-5"
+          />
+          <span className="lowercase body-16px text-dashboardSectionTitle mt-2.5 md:mt-5">{`${averageRating}/${maxRating} (${numberOfReviews} ${numberOfReviews > 1 ? t('dashboard.teacher.reviews.reviews') : t('dashboard.teacher.reviews.review')})`}</span>
+        </div>
+        <Divider
+          width="w-4/5 max-w-[850px]"
+          className="max-md:hidden mx-auto"
+          mode="light"
+        />
+        <section className="w-full max-w-[1016px] mx-auto flex flex-wrap gap-6 justify-center mt-2">
+          {reviews.feedbacks
+            .slice(0, visibleFeedbacks)
+            .map((feedback, index) => (
+              <PublicComment
+                key={index}
+                author={feedback.user}
+                date={feedback.date}
+                avatar={feedback.userPicture || ''}
+                comment={feedback.publicComment}
+              />
+            ))}
+        </section>
+        {visibleFeedbacks < reviews.feedbacks.length && (
+          <div className="flex flex-col gap-2 items-center">
+            <Button
+              variant="outline"
+              mode="light"
+              size="m"
+              onClick={showMoreFeedbacks}
+              className="mt-7 lg:mt-8"
+            >
+              {t('courses.review.loadMoreComments')}
+            </Button>
+            <span className="body-14px">
+              {visibleFeedbacks} {t('courses.review.displayOutOf')}{' '}
+              {reviews.feedbacks.length}
+            </span>
+          </div>
+        )}
+      </section>
     );
   };
 
   const Footer = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
-      <div className="my-4 max-w-5xl self-center px-2">
-        <div className="flex h-fit flex-col">
-          <Button
-            size={isScreenMd ? 'l' : 's'}
-            disabled={isStartOrBuyButtonDisabled}
-            {...buttonProps}
-          >
-            {course?.requiresPayment && !isCoursePaid ? (
-              <span className="mr-3">
-                <FaLock />
-              </span>
-            ) : null}
-            {t(
-              courseHasToBePurchased
-                ? 'courses.details.buyCourse'
-                : 'courses.details.startCourse',
+      <Button
+        size="l"
+        mode="dark"
+        disabled={isStartOrBuyButtonDisabled}
+        className="mt-6 lg:mt-12 w-full max-lg:max-w-[290px] md:w-fit mx-auto"
+        {...buttonProps}
+      >
+        {course?.requiresPayment && !isCoursePaid ? (
+          <FaLock className="mr-2" />
+        ) : null}
+        {t(
+          courseHasToBePurchased
+            ? 'courses.details.buyCourse'
+            : 'courses.details.startCourse',
+        )}
+        {course?.requiresPayment && !isCoursePaid ? null : (
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+              'group-hover:ml-3',
             )}
-            {course.requiresPayment ? null : (
-              <span className="ml-3">
-                <BsRocketTakeoff />
-              </span>
-            )}
-          </Button>
-        </div>
-      </div>
+          />
+        )}
+      </Button>
     );
   };
 
@@ -630,38 +525,48 @@ function CourseDetails() {
             : ''
         }
       />
-      <div className="text-blue-800">
+      <div className="text-newBlack-1">
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !course && (
-          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
+          <div className="flex size-full max-w-[1222px] flex-col items-start justify-center px-4 pt-3 sm:items-center md:pt-10">
             {t('general.itemNotFoundOrTranslated', {
               item: t('words.course'),
             })}
           </div>
         )}
         {course && (
-          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
-            {!courseHasToBePurchased && (
-              <CourseButton
-                courseId={courseId}
-                firstChapterId={
-                  course?.parts[0] && course?.parts[0].chapters[0]
-                    ? course.parts[0].chapters[0].chapterId
-                    : ''
-                }
-              />
-            )}
+          <div className="flex size-full max-w-[1222px] flex-col items-start justify-center px-4 pt-3 sm:items-center md:pt-10 mx-auto">
             <Header course={course} />
-            <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
+
             <CourseInfo course={course} />
-            <StartTheCourseHR />
+
+            <Divider className="mt-6 mb-9 max-lg:hidden" width="w-full" />
+
             <DescriptionAndObjectives course={course} />
-            <hr className="my-4 hidden w-full max-w-5xl border-2 border-gray-300 sm:my-8 sm:block " />
-            <Curriculum course={course} />
-            <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
+
+            <Divider className="my-6 lg:my-9" width="w-full" />
+
+            <CourseCurriculum
+              course={course}
+              courseHasToBePurchased={courseHasToBePurchased}
+              hideGithubLink
+              className="self-start"
+            >
+              <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5 mb-4 lg:mb-9">
+                {t('courses.details.curriculum')}
+              </h4>
+            </CourseCurriculum>
+
+            <Divider className="my-6 lg:my-9" width="w-full" />
+
             <Professors course={course} />
-            <hr className="mb-8 mt-12 hidden w-full max-w-5xl border-2 border-gray-300 sm:inline" />
+
+            <Divider className="my-6 lg:my-9" width="w-full" />
+
+            {reviews && <RatingsAndReviews reviews={reviews} />}
+
             <Footer course={course} />
+
             <CoursePaymentModal
               course={course}
               satsPrice={satsPrice}

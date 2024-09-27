@@ -260,15 +260,19 @@
     @apply text-5xl leading-[116%] font-normal tracking-normal;
   }
 
+  .display-large-med-48px {
+    @apply text-5xl leading-[116%] font-medium tracking-normal;
+  }
+
   .display-large-bold-caps-48px {
     @apply text-5xl leading-[116%] font-bold tracking-normal uppercase;
   }
 
-  .display-medium-reg-40px {
+  .display-medium-40px {
     @apply text-[40px] leading-[116%] font-normal tracking-normal;
   }
 
-  .display-small-reg-32px {
+  .display-small-32px {
     @apply text-[32px] leading-[120%] font-normal tracking-normal;
   }
 
@@ -306,11 +310,11 @@
   .subtitle-med-caps-18px {
     @apply text-base leading-normal font-normal tracking-normal uppercase;
   }
-  .subtitle-med-reg-16px {
+  .subtitle-med-16px {
     @apply text-base leading-[160%] font-normal tracking-015px;
   }
 
-  .subtitle-small-caps-reg-14px {
+  .subtitle-small-caps-14px {
     @apply font-normal text-sm uppercase;
   }
 
@@ -366,7 +370,6 @@
     width: 8px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: #ffffff33;
     border-radius: 4px;
   }
 

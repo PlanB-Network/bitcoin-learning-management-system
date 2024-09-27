@@ -232,6 +232,7 @@ export const courseReviewsExtendedSchema = z.object({
     z.object({
       date: z.string(),
       user: z.string(),
+      userPicture: z.string().nullable(),
       publicComment: z.string(),
       teacherComment: z.string().nullable(),
       adminComment: z.string().nullable(),

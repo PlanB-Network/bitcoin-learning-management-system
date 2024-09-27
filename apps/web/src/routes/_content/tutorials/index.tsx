@@ -82,7 +82,7 @@ function TutorialExplorer() {
             </span>{' '}
             {t('tutorials.explorer.description')}
           </p>
-          <h3 className="mt-8 display-small-reg-32px">
+          <h3 className="mt-8 display-small-32px">
             {t('tutorials.explorer.exploreAllTutorials')}
           </h3>
         </div>
@@ -96,7 +96,7 @@ function TutorialExplorer() {
               >
                 <Link
                   to={`/tutorials/${category.name}`}
-                  className="flex gap-7 capitalize text-white display-medium-reg-40px hover:text-darkOrange-5 w-fit py-5"
+                  className="flex gap-7 capitalize text-white display-medium-40px hover:text-darkOrange-5 w-fit py-5"
                 >
                   <img
                     src={category.image}
