@@ -1,0 +1,19 @@
+# sovereign-university % docker compose -f compose.yml -f compose.seed.yml -V
+
+services:
+  seed:
+    image: ghcr.io/max-lt/pears-cdn:v1.0.4
+    environment:
+      - SEED=/data
+      - CORESTORE_PATH=/corestore
+      - CORS=https://testnet.planb.network
+      - PROXY_URL=https://testnet-cdn.planb.network
+    volumes:
+      - corestore:/corestore
+      - cdn:/data
+    labels:
+      - vector.seed=true
+
+volumes:
+  corestore:
+  cdn:

@@ -47,3 +47,4 @@ out
 tsconfig.*.tsbuildinfo
 *storybook.log
 *.cpuprofile
+logs

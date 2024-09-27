@@ -89,7 +89,7 @@ services:
       - traefik.http.middlewares.university-web-${ENV}-compress.compress=true
 
   seed:
-    image: ghcr.io/max-lt/pears-cdn:v1.0.3
+    image: ghcr.io/max-lt/pears-cdn:v1.0.4
     environment:
       - SEED=/data
       - CORESTORE_PATH=/corestore
