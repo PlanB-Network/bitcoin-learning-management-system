@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
@@ -251,6 +251,20 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
 
   const labelClasses = 'leading-tight font-medium text-black';
 
+  // Hack to ensure that the max height of second column is equal to the first column (not reproducible with CSS alone)
+  const goalAndObjectivesRef = useRef<HTMLDivElement | null>(null);
+  const descriptionRef = useRef<HTMLDivElement | null>(null);
+  const [goalAndObjectivesHeight, setGoalAndObjectivesHeight] = useState(0);
+
+  useEffect(() => {
+    if (goalAndObjectivesRef.current && descriptionRef.current) {
+      const height1 =
+        goalAndObjectivesRef.current.getBoundingClientRect().height;
+      setGoalAndObjectivesHeight(height1);
+    }
+  }, [course]);
+  // End of hack
+
   return (
     <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-10">
       <h2 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
@@ -289,14 +303,15 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
             </div>
           </div>
           <div className="flex flex-wrap gap-5">
-            <div className="flex flex-col gap-5 lg:max-w-[482px]">
+            <div
+              className="flex flex-col gap-5 lg:flex-1"
+              ref={goalAndObjectivesRef}
+            >
               <div className="flex flex-col gap-3 w-full">
                 <span className={labelClasses}>
                   {t('dashboard.teacher.courses.courseShortDescription')}
                 </span>
-                <p className={cn('lg:h-[44px]', infoTextClasses)}>
-                  {course.goal}
-                </p>
+                <p className={infoTextClasses}>{course.goal}</p>
               </div>
               <div className="flex flex-col gap-3 w-full">
                 <span className={labelClasses}>
@@ -304,7 +319,7 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
                 </span>
                 <ul
                   className={cn(
-                    'gap-0.5 lg:h-[115px] w-full list-disc list-inside',
+                    'gap-0.5 w-full list-disc list-inside',
                     infoTextClasses,
                   )}
                 >
@@ -314,7 +329,11 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
                 </ul>
               </div>
             </div>
-            <div className="flex flex-col gap-3 w-full lg:max-w-[482px]">
+            <div
+              className="flex flex-col gap-3 w-full  lg:flex-1 max-lg:!max-h-full"
+              style={{ maxHeight: `${goalAndObjectivesHeight}px` }}
+              ref={descriptionRef}
+            >
               <span className={labelClasses}>
                 {t('dashboard.teacher.courses.courseLongDescription')}
               </span>
@@ -327,10 +346,7 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
                     <div className="body-14px">{children}</div>
                   ),
                 }}
-                className={cn(
-                  'gap-2 lg:max-h-[210px] lg:h-full w-full',
-                  infoTextClasses,
-                )}
+                className={cn('gap-2 w-full', infoTextClasses)}
               >
                 {course.rawDescription}
               </ReactMarkdown>
