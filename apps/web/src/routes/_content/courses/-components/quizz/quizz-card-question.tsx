@@ -70,7 +70,7 @@ export default function QuizzCardQuestion({
               <div className="border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden">
                 <span
                   className={cn(
-                    'subtitle-small-med-14px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
+                    'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
                         ? 'bg-brightGreen-4'
@@ -82,7 +82,7 @@ export default function QuizzCardQuestion({
                 </span>
                 <span
                   className={cn(
-                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-4 border-l border-newBlack-1 max-md:py-0.5',
+                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
                         ? 'bg-brightGreen-3 !font-semibold'
