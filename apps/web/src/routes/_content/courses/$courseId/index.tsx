@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
+  Link,
   createFileRoute,
   useNavigate,
   useParams,
 } from '@tanstack/react-router';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaLock } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
@@ -26,6 +27,7 @@ import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { computeAssetCdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { CourseLayout } from '../-components/course-layout.tsx';
@@ -249,9 +251,17 @@ function CourseDetails() {
         <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px]">
           <ListItem
             leftText={t('words.professor')}
-            rightText={course.professors
-              .map((professor) => professor.name)
-              .join(', ')}
+            rightText={course.professors.map((professor, index) => (
+              <React.Fragment key={professor.id}>
+                <Link
+                  to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+                  className="hover:text-darkOrange-5"
+                >
+                  {professor.name}
+                </Link>
+                {index < course.professors.length - 1 && ', '}
+              </React.Fragment>
+            ))}
             variant="light"
           />
           <ListItem
@@ -295,12 +305,10 @@ function CourseDetails() {
                         )
                       : 0
                   }
-                  starSize={isMobile ? 40 : 30}
+                  starSize={isMobile ? 35 : 30}
                 />
                 {reviews?.general && reviews.general.length > 0 && (
-                  <span className="font-medium leading-relaxed tracking-[0.08px] text-right text-newBlack-1">
-                    ({reviews.general.length})
-                  </span>
+                  <span>({reviews.general.length})</span>
                 )}
               </div>
             }
