@@ -1,4 +1,5 @@
 export * from './change-display-name.js';
+export * from './change-certificate-name.js';
 export * from './change-role.js';
 export * from './change-password.js';
 export * from './get-user.js';

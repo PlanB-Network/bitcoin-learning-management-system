@@ -31,6 +31,7 @@ export const usersAccounts = users.table('accounts', {
   uid: uuid('uid').defaultRandom().primaryKey().notNull(),
   username: varchar('username', { length: 255 }).unique().notNull(),
   displayName: varchar('display_name', { length: 255 }),
+  certificateName: varchar('certificate_name', { length: 255 }),
   picture: uuid('picture'),
   email: varchar('email', { length: 255 }).unique(),
   role: userRoleEnum('role').default('student').notNull(),
@@ -1078,10 +1079,14 @@ export const contentTutorialLikesDislikes = content.table(
   }),
 );
 
-// QUIZZES
+// QUIZZES AND EXAMS
 
 export const contentQuizQuestions = content.table('quiz_questions', {
-  id: varchar('id', { length: 20 }).primaryKey().notNull(),
+  id: uuid('id').primaryKey().notNull(),
+
+  courseId: varchar('course_id', { length: 20 })
+    .notNull()
+    .references(() => contentCourses.id, { onDelete: 'cascade' }),
 
   chapterId: uuid('chapter_id')
     .notNull()
@@ -1092,6 +1097,8 @@ export const contentQuizQuestions = content.table('quiz_questions', {
   difficulty: varchar('difficulty', { length: 255 }).notNull(),
   author: varchar('author', { length: 255 }),
   duration: integer('duration'),
+
+  disabled: boolean('disabled').default(false),
 
   lastUpdated: timestamp('last_updated', {
     withTimezone: true,
@@ -1107,7 +1114,7 @@ export const contentQuizQuestions = content.table('quiz_questions', {
 export const contentQuizQuestionsLocalized = content.table(
   'quiz_questions_localized',
   {
-    quizQuestionId: varchar('quiz_question_id', { length: 20 })
+    quizQuestionId: uuid('quiz_question_id')
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
     language: varchar('language', { length: 10 }).notNull(),
@@ -1123,10 +1130,51 @@ export const contentQuizQuestionsLocalized = content.table(
   }),
 );
 
+export const contentQuizAnswers = content.table(
+  'quiz_answers',
+  {
+    quizQuestionId: uuid('quiz_question_id')
+      .notNull()
+      .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
+
+    order: integer('order').notNull(),
+    correct: boolean('correct').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.quizQuestionId, table.order],
+    }),
+  }),
+);
+
+export const contentQuizAnswersLocalized = content.table(
+  'quiz_answers_localized',
+  {
+    quizQuestionId: uuid('quiz_question_id').notNull(),
+    order: integer('order').notNull(),
+
+    language: varchar('language', { length: 10 }).notNull(),
+    text: text('text').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.quizQuestionId, table.order, table.language],
+    }),
+    parent: foreignKey({
+      columns: [table.quizQuestionId, table.order],
+      foreignColumns: [
+        contentQuizAnswers.quizQuestionId,
+        contentQuizAnswers.order,
+      ],
+      name: 'quiz_answers_localized_to_quiz_answers_fk',
+    }).onDelete('cascade'),
+  }),
+);
+
 export const contentQuizQuestionTags = content.table(
   'quiz_question_tags',
   {
-    quizQuestionId: varchar('quiz_question_id', { length: 20 })
+    quizQuestionId: uuid('quiz_question_id')
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
     tagId: integer('tag_id')
@@ -1139,6 +1187,45 @@ export const contentQuizQuestionTags = content.table(
     }),
   }),
 );
+
+export const usersExamQuestions = users.table('exam_questions', {
+  id: uuid('id').defaultRandom().primaryKey().notNull(),
+
+  examId: uuid('exam_id')
+    .notNull()
+    .references(() => usersExamAttempts.id, { onDelete: 'cascade' }),
+  questionId: uuid('question_id')
+    .notNull()
+    .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
+});
+
+export const usersExamAnswers = users.table('exam_answers', {
+  questionId: uuid('question_id')
+    .primaryKey()
+    .notNull()
+    .references(() => usersExamQuestions.id, { onDelete: 'cascade' }),
+
+  order: integer('order'),
+});
+
+export const usersExamAttempts = users.table('exam_attempts', {
+  id: uuid('id').defaultRandom().primaryKey().notNull(),
+
+  uid: uuid('uid')
+    .notNull()
+    .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  courseId: varchar('course_id', { length: 20 })
+    .notNull()
+    .references(() => contentCourses.id, { onDelete: 'cascade' }),
+
+  language: varchar('language', { length: 10 }).notNull(),
+  finalized: boolean('finalized').default(false).notNull(),
+  score: integer('score').default(0),
+  succeeded: boolean('succeeded').default(false).notNull(),
+
+  startedAt: timestamp('started_at', { withTimezone: true }).notNull(),
+  finishedAt: timestamp('finished_at', { withTimezone: true }),
+});
 
 export const usersQuizAttempts = users.table(
   'quiz_attempts',

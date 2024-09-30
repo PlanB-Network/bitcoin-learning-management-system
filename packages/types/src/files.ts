@@ -3,6 +3,8 @@ export type ChangeKind = 'added' | 'modified' | 'removed' | 'renamed';
 interface ModifiedBaseFile {
   /** Path to the file */
   path: string;
+  /** Full path to the file */
+  fullPath?: string;
   /** Commit hash */
   commit: string;
   /** Commit timestamp */
@@ -28,6 +30,8 @@ export interface ModifiedFile extends ModifiedBaseFile {
 export interface RemovedFile {
   /** Path to the file */
   path: string;
+  /** Full path to the file */
+  fullPath?: string;
   /** Change kind */
   kind: Extract<ChangeKind, 'removed'>;
 }

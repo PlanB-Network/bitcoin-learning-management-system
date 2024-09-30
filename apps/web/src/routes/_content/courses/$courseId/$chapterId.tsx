@@ -36,6 +36,7 @@ import { NavigationPanel } from '../-components/navigation-panel.tsx';
 import type { Question } from '../-components/quizz/quizz-card.tsx';
 import QuizzCard from '../-components/quizz/quizz-card.tsx';
 
+import { CourseExam } from './-components/course-exam.tsx';
 import { CourseReview } from './-components/course-review.tsx';
 
 // eslint-disable-next-line import/no-named-as-default-member
@@ -206,7 +207,7 @@ const TimelineBig = ({
     chapter.part.partIndex === chapter.course.parts.length;
 
   return (
-    <div className="mb-0 w-full max-w-[66rem] max-sm:hidden mt-7 px-5 md:px-2">
+    <div className="mb-0 w-full max-w-[1102px] max-sm:hidden mt-7 px-5 md:px-2">
       <h1 className="flex items-center mb-5 mt-2 text-2xl md:text-4xl text-orange-800 lg:text-5xl gap-7">
         <Link
           to={'/courses/$courseId'}
@@ -710,7 +711,7 @@ function CourseChapter() {
             {/* Mobile */}
             <TimelineSmall chapter={chapter} />
 
-            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[66rem] md:flex-row md:items-stretch md:justify-stretch">
+            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[1102px] md:flex-row md:items-stretch md:justify-stretch">
               {displayClassDetails && (
                 <ClassDetails
                   course={chapter.course}
@@ -720,9 +721,11 @@ function CourseChapter() {
               )}
             </div>
 
-            <div className="flex w-full flex-col items-center justify-center lg:max-w-[66rem] lg:flex-row lg:items-stretch lg:justify-stretch">
-              <div className="text-blue-1000 w-full space-y-4 break-words px-5 md:px-2 md:mt-8 md:max-w-3xl md:grow md:space-y-6 md:overflow-hidden">
-                <Header chapter={chapter} sections={sections} />
+            <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:flex-row lg:items-stretch lg:justify-stretch">
+              <div className="text-blue-1000 w-full space-y-4 break-words px-4 md:px-2 md:mt-8 md:grow md:space-y-6 md:overflow-hidden pb-2">
+                {!chapter.isCourseExam && (
+                  <Header chapter={chapter} sections={sections} />
+                )}
 
                 {chapter.isCourseReview && (
                   <>
@@ -737,6 +740,10 @@ function CourseChapter() {
                       </>
                     )}
                   </>
+                )}
+
+                {chapter.isCourseExam && (
+                  <CourseExam chapter={chapter} disabled={!isLoggedIn} />
                 )}
 
                 {displayLiveSection && chapter.liveUrl && chapter.startDate && (
@@ -760,16 +767,19 @@ function CourseChapter() {
                   </>
                 )}
               </div>
-              <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block">
-                {chapters && (
-                  <NavigationPanel
-                    course={chapter.course}
-                    chapters={chapters}
-                    currentChapter={chapter}
-                    style={{ position: 'sticky', top: '6rem' }}
-                  />
-                )}
-              </div>
+
+              {!chapter.isCourseExam && (
+                <div className="3xl:block ml-10 mt-7 hidden shrink-0 lg:block xl:block 2xl:block">
+                  {chapters && (
+                    <NavigationPanel
+                      course={chapter.course}
+                      chapters={chapters}
+                      currentChapter={chapter}
+                      style={{ position: 'sticky', top: '6.5rem' }}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}

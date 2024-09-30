@@ -57,7 +57,7 @@ export const NavigationPanel: React.FC<Props> = ({
 }: Props) => {
   return (
     <div
-      className="bg-white z-10 h-auto w-full max-w-[270px] rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation"
+      className="bg-white z-10 w-full max-w-[270px] max-h-[80lvh] rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation overflow-y-scroll scrollbar-light"
       style={style}
     >
       <Link

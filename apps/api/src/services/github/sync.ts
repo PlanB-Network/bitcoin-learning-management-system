@@ -9,6 +9,7 @@ import {
   createGetNow,
   createProcessContentFiles,
   createProcessDeleteOldEntities,
+  createProcessDisableOldEntities,
   createSyncBuildersLocations,
   createSyncEventsLocations,
 } from '@blms/service-content';
@@ -30,6 +31,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
   const syncBuildersLocations = createSyncBuildersLocations(dependencies);
   const processContentFiles = createProcessContentFiles(dependencies);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
+  const processDisableOldEntities =
+    createProcessDisableOldEntities(dependencies);
 
   return async () => {
     const databaseTime = await getNow();
@@ -102,6 +105,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     if (syncErrors.length === 0) {
       await processDeleteOldEntities(databaseTime.now, syncErrors);
     }
+
+    await processDisableOldEntities(databaseTime.now, syncErrors);
 
     console.timeEnd('-- Sync procedure');
     console.log('-- Sync procedure: END ====================================');

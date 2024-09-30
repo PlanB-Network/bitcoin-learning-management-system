@@ -12,6 +12,7 @@ export interface UserAccount {
   uid: string;
   username: string;
   displayName: string | null;
+  certificateName: string | null;
   picture: string | null;
   email: string | null;
   role: UserRole;
@@ -28,6 +29,7 @@ export interface UserDetails {
   uid: string;
   username: string;
   displayName: string | null;
+  certificateName: string | null;
   picture: string | null;
   email: string | null;
   contributorId: string;
@@ -37,6 +39,7 @@ export interface UserRoles {
   uid: string;
   username: string;
   displayName: string | null;
+  certificateName: string | null;
   email: string | null;
   contributorId: string;
   role: UserRole;

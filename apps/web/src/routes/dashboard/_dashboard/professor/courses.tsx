@@ -247,7 +247,7 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
     );
 
   const infoTextClasses =
-    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-thin';
+    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
 
   const labelClasses = 'leading-tight font-medium text-black';
 

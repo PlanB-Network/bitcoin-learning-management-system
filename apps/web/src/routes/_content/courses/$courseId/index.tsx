@@ -352,7 +352,7 @@ function CourseDetails() {
     return (
       <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
         <div className="flex flex-col gap-4 md:gap-6">
-          <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+          <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
             {t('courses.details.description')}
           </h4>
           <ReactMarkdown
@@ -374,7 +374,7 @@ function CourseDetails() {
         </div>
         <Divider width="w-full" className="md:hidden" />
         <div className="flex w-full flex-col gap-4 md:gap-6">
-          <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+          <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
             {t('courses.details.objectives')}
           </h4>
           <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
@@ -396,7 +396,7 @@ function CourseDetails() {
   const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
     return (
       <section className="max-lg:mx-auto w-full flex flex-col">
-        <span className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+        <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
           {t('words.professor')}
         </span>
         <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
@@ -450,7 +450,7 @@ function CourseDetails() {
 
     return (
       <section className="flex w-full flex-col gap-4 md:gap-9">
-        <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
           {t('courses.review.ratingsAndReviews')}
         </h4>
         <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
@@ -577,7 +577,7 @@ function CourseDetails() {
               hideGithubLink
               className="self-start"
             >
-              <h4 className="subtitle-small-caps-14px md:subtitle-med-caps-18px text-darkOrange-5 mb-4 lg:mb-9">
+              <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-4 lg:mb-9">
                 {t('courses.details.curriculum')}
               </h4>
             </CourseCurriculum>
