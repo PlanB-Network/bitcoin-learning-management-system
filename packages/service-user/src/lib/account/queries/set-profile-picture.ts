@@ -10,6 +10,7 @@ export const setProfilePictureQuery = (uid: string, fileId: string) => {
       uid,
       username,
       display_name,
+      certificate_name,
       email,
       picture,
       contributor_id,

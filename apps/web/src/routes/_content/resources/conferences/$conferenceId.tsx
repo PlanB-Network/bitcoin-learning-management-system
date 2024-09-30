@@ -224,7 +224,7 @@ function Conference() {
               <span className="desktop-h7 text-white">
                 {t('conferences.details.selectVideo')}
               </span>
-              <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto scrollbar-thin scroll-smooth">
+              <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto scrollbar-dark scroll-smooth">
                 {sortVideos(conference.stages[activeStage].videos).map(
                   (video, index) => {
                     const videoName =

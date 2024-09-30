@@ -324,7 +324,7 @@ export const ProofreadingProgress = ({
           <SmallProgressImage progress={contributorsLength} />
           <span
             className={cn(
-              'max-lg:hidden body-12px-medium w-[118px] whitespace-pre-line',
+              'max-lg:hidden body-medium-12px w-[118px] whitespace-pre-line',
               mode === 'dark' ? 'text-white' : 'text-black',
             )}
           >
