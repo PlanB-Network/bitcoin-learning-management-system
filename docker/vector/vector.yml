@@ -59,7 +59,7 @@ transforms:
     type: 'remap'
     source:
       | # Replace prepending iso date (web is an nginx service in production)
-      .message = replace!(.message, r'^.+ \[\S+ \+0000\]\s+', "")
+      .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
 
   web_remap_light:
     inputs:
@@ -96,7 +96,7 @@ transforms:
       - cdn_filter
     type: 'remap'
     source: | # Replace prepending iso date
-      .message = replace!(.message, r'^.+ \[\S+ \+0000\]\s+', "")
+      .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
 
   # Traefik logs
   traefik_filter:
@@ -217,7 +217,7 @@ sinks:
     inputs:
       - docker
     type: 'file'
-    path: '/var/log/vector/raw.log'
+    path: '/var/log/vector/%Y-%m-%d/raw.log'
     encoding:
       codec: json
 
@@ -225,7 +225,7 @@ sinks:
     inputs:
       - docker_remap
     type: 'file'
-    path: '/var/log/vector/compose.log'
+    path: '/var/log/vector/%Y-%m-%d/remap.log'
     encoding:
       codec: json
 
@@ -234,7 +234,7 @@ sinks:
     inputs:
       - api_filter
     type: 'file'
-    path: '/var/log/vector/api.log'
+    path: '/var/log/vector/%Y-%m-%d/full/api.log'
     encoding:
       codec: json
 
@@ -242,7 +242,7 @@ sinks:
     inputs:
       - api_light_remap
     type: 'file'
-    path: '/var/log/vector/api_light.log'
+    path: '/var/log/vector/%Y-%m-%d/light/api.log'
     encoding:
       codec: text
 
@@ -251,7 +251,7 @@ sinks:
     inputs:
       - web_remap
     type: 'file'
-    path: '/var/log/vector/web.log'
+    path: '/var/log/vector/%Y-%m-%d/full/web.log'
     encoding:
       codec: json
 
@@ -259,7 +259,7 @@ sinks:
     inputs:
       - web_remap_light
     type: 'file'
-    path: '/var/log/vector/web_light.log'
+    path: '/var/log/vector/%Y-%m-%d/light/web.log'
     encoding:
       codec: text
 
@@ -268,7 +268,7 @@ sinks:
     inputs:
       - redis_remap
     type: 'file'
-    path: '/var/log/vector/redis.log'
+    path: '/var/log/vector/%Y-%m-%d/full/redis.log'
     encoding:
       codec: json
 
@@ -276,7 +276,7 @@ sinks:
     inputs:
       - redis_light_remap
     type: 'file'
-    path: '/var/log/vector/redis_light.log'
+    path: '/var/log/vector/%Y-%m-%d/light/redis.log'
     encoding:
       codec: text
 
@@ -285,7 +285,7 @@ sinks:
     inputs:
       - postgres_remap
     type: 'file'
-    path: '/var/log/vector/postgres.log'
+    path: '/var/log/vector/%Y-%m-%d/full/postgres.log'
     encoding:
       codec: json
 
@@ -293,7 +293,7 @@ sinks:
     inputs:
       - postgres_light_remap
     type: 'file'
-    path: '/var/log/vector/postgres_light.log'
+    path: '/var/log/vector/%Y-%m-%d/light/postgres.log'
     encoding:
       codec: text
 
@@ -302,7 +302,7 @@ sinks:
     inputs:
       - seed_remap
     type: 'file'
-    path: '/var/log/vector/seed.log'
+    path: '/var/log/vector/%Y-%m-%d/full/seed.log'
     encoding:
       codec: json
 
@@ -310,7 +310,7 @@ sinks:
     inputs:
       - seed_light_remap
     type: 'file'
-    path: '/var/log/vector/seed_light.log'
+    path: '/var/log/vector/%Y-%m-%d/light/seed.log'
     encoding:
       codec: text
 
