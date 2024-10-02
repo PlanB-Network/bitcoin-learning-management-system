@@ -575,16 +575,16 @@
     "languageSection": {
       "availableLanguages": "Available languages",
       "title": "No language barrier here.",
-      "subtitle": "Everything is translated to local languages",
+      "subtitle": "Everything is translated into local languages!",
       "subtitle2": "We need you!",
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "content2": "You too can start bootstrapping your own local network in your country!",
+      "content1": "At PlanB, we believe Bitcoin is an international revolution that affects everyone. We want to empower billions of people, so we are designing this platform to be multilingual and accessible to all, continually adding more and more languages every month. To achieve this goal, we leverage a mix of AI and the passion of Bitcoiners around the world.",
+      "content2": "You too can form your own local network in your country!",
       "link": "Help us translate the academy"
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
-      "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
-      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
+      "title": "Let’s work together to enhance Bitcoin education!",
+      "subtitle": "Plan ₿ Network is 100% open-source thanks to our generous patrons.",
+      "content": "We are proud to partner with numerous Bitcoin companies worldwide to provide the best educational resources possible!"
     },
     "wallOfLoveSection": {
       "title": "Wall of love",
@@ -605,7 +605,7 @@
     "underConstructionImage": "Illustration of several rabbits working on a construction site"
   },
   "library": {
-    "pageSubtitle": "This library is open-source & open to contribution.",
+    "pageSubtitle": "This library is open-source and welcomes any contributions.",
     "pageTitle": "Bitcoin Library",
     "publishedIn": "Published in {{date}}",
     "writtenBy": "Written by {{author}}"
@@ -613,8 +613,8 @@
   "menu": {
     "bCertificateDescription": "Pass the ₿ Certificate exam to assert your Bitcoin level",
     "betDescription": "Collection of content that you can use for your educational projects",
-    "btc101Description": "Get a better understanding of bitcoin with this lessons",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
+    "btc101Description": "Get a better understanding of bitcoin by taking these classes.",
+    "buildersDescription": "Learn about the companies and projects that work at improving Bitcoin and increasing its adoption",
     "conferencesDescription": "Collection of Bitcoin conference replays since the Genesis Block",
     "exchangesDescription": "Buy and sell bitcoins on exchanges and learn about P2P",
     "glossaryDescription": "Understand the language of Bitcoin",
@@ -636,20 +636,20 @@
     "walletsDescription": "Secure and use your bitcoins"
   },
   "nodeNetwork": {
-    "answer1": "A node is an educational initiative tied to a community somewhere in the world. It can consist of a building where Bitcoin education takes place, but it is not limited to that. Plan B Network operates hubs, but establishing them in every city worldwide is unrealistic. That’s why we rely on a community of bitcoiners to help us make this global network a reality.",
-    "answer2": "By joining our network, you gain access to exclusive content that Plan B distributes through its platform, which you can share with the residents of your node. The most important benefit is opening channels of discussion for future projects and connecting with other communities worldwide to share experiences.",
-    "answer3": "Initially, Plan B Network focuses on places with a physical space to operate from. In the future, we plan to integrate any initiative that could benefit from the network’s support to grow.",
-    "answer4": "A Bitcoin node can be of any size. Based on some requirements, different grades will be attributed. A node with a hackerspace, a gym, and some office space will be considered more citadel-like.",
-    "answer5": "We wish to offer a safe haven for Bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where Bitcoiners will be welcome to work, create, share, and discuss safely.",
+    "answer1": "A node is an educational initiative connected to a community somewhere in the world. It can take the form of a building where Bitcoin education takes place, but it can include so much more. Although Plan ₿ Network operates hubs, establishing them in every city worldwide is unrealistic. That’s why we rely on communities of bitcoiners to help us turn this global network into a reality.",
+    "answer2": "By joining our network, you gain access to exclusive content that Plan ₿ distributes through its platform, which you can share with the residents of your node. The most important benefit is the opportunity to open channels of discussion for future projects and connect with other communities worldwide to share each other's experiences.",
+    "answer3": "Plan ₿ Network initially focuses on nodes that operate from a physical space. In the future, we plan to integrate more initiatives that could benefit from the network’s support for growth.",
+    "answer4": "A Bitcoin node can vary in size, and different grades will be assigned based on specific requirements. For instance, a node that includes a hackerspace, a gym, and office space will be regarded as more citadel-like.",
+    "answer5": "We wish to offer a safe haven for bitcoiners around the world. We believe that by helping local hubs grow, we will be able to create a network of citadels where they will be welcome to work, create, share, and discuss safely.",
     "apply": "Apply to become a Node",
-    "description1": "Plan B Network supports educational initiatives worldwide. We collaborate to create the best tools for these projects, both through our platform and in the meat space. We are always looking for new nodes to join us. If you want to work together to create a decentralized global educational network for Bitcoin, get in touch!",
-    "pageSubtitle": "Want to orange pill the world ? Join the PlanB Network.",
-    "pageTitle": "Explore Plan B Node Network",
-    "question1": "What's a node ?",
-    "question2": "What do I gain ?",
-    "question3": "What are the requirements ?",
-    "question4": "What size is a node ?",
-    "question5": "What's the secret plan ?"
+    "description1": "Plan ₿ Network supports educational initiatives worldwide, so we collaborate to develop the best tools to equip these projects, both through our platform and our physical spaces. We are always seeking new nodes to join us in creating a decentralized global educational network for Bitcoin, so if you're interested in collaborating, please get in touch!",
+    "pageSubtitle": "Want to orange pill the world? Join Plan ₿ Network.",
+    "pageTitle": "Explore Plan ₿ Node Network",
+    "question1": "What is a node?",
+    "question2": "What will you gain?",
+    "question3": "What are the requirements?",
+    "question4": "What is the size of a node?",
+    "question5": "What is the secret plan?"
   },
   "notFound": {
     "here": "Here",
@@ -659,7 +659,7 @@
   "payment": {
     "proceedToPayment": "Proceed to payment",
     "terms": "See our <0>general terms</0> and conditions for refund details",
-    "feeDistribution": "Fee distribution: Author 99 % - Platform 1 %",
+    "feeDistribution": "Fee distribution: Author 99% - Platform 1%",
     "total": "Total"
   },
   "podcast": {
@@ -668,17 +668,17 @@
   },
   "podcasts": {
     "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageSubtitle": "This portal is open-source and welcomes contributions.",
     "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
+    "pageSubtitle": "All our professors are volunteers and passionate Bitcoiners. You can send them a donation to show your appreciation.",
     "pageTitle": "Professors",
     "tips": {
       "authorSupport": "Support the author with a tip",
-      "noTipsYet": "This professor does not accept tips at the moment.",
-      "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "noTipsYet": "This professor does not accept donations at the moment.",
+      "thanks": "Thank you for supporting {{name}}'s work!",
+      "thanksNoName": "Thank you for supporting my work!"
     },
     "navigationTitles": {
       "all": "All",
@@ -693,11 +693,11 @@
     "inProgress": "Proofreading in progress",
     "reviewEarn": "Review and earn sats",
     "status": "Proofreading status",
-    "thanks": "A big thanks to our reviewers !"
+    "thanks": "A big thank you goes to our amazing reviewers!"
   },
   "publicCommunication": {
     "title": "Public communication",
-    "description": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey",
+    "description": "Plan ₿ Network is proud to adhere to open-source standards and maintain transparency throughout its journey",
     "blogPost": "Blogs & News",
     "legal": "Legal info",
     "blogCategories": {
