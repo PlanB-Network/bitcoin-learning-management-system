@@ -51,9 +51,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-api-${ENV}.rule=(Host(`${DOMAIN}`) && PathPrefix(`/api`))
-      - traefik.http.routers.university-api-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-api-${ENV}.entrypoints=https
       - traefik.http.routers.university-api-${ENV}.tls=true
-      - traefik.http.routers.university-api-${ENV}.tls.certresolver=security
       - traefik.http.services.university-api-${ENV}.loadbalancer.server.port=3000
       - traefik.http.routers.university-api-${ENV}.service=university-api-${ENV}
     depends_on:
@@ -69,9 +68,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-cdn-${ENV}.rule=(Host(`${DOMAIN}`) && PathPrefix(`/cdn`))
-      - traefik.http.routers.university-cdn-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-cdn-${ENV}.entrypoints=https
       - traefik.http.routers.university-cdn-${ENV}.tls=true
-      - traefik.http.routers.university-cdn-${ENV}.tls.certresolver=security
       - traefik.http.routers.university-cdn-${ENV}.middlewares=university-cdn-${ENV}-stripprefix,university-cdn-${ENV}-compress
       - traefik.http.middlewares.university-cdn-${ENV}-compress.compress=true
       - traefik.http.middlewares.university-cdn-${ENV}-stripprefix.stripprefix.prefixes=/cdn
@@ -82,9 +80,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-web-${ENV}.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.university-web-${ENV}.entrypoints=https,http
+      - traefik.http.routers.university-web-${ENV}.entrypoints=https
       - traefik.http.routers.university-web-${ENV}.tls=true
-      - traefik.http.routers.university-web-${ENV}.tls.certresolver=security
       - traefik.http.routers.university-web-${ENV}.middlewares=university-web-${ENV}-compress
       - traefik.http.middlewares.university-web-${ENV}-compress.compress=true
 

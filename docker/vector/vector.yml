@@ -53,14 +53,94 @@ transforms:
     type: 'filter'
     condition: '.service == "web"'
 
-  web_remap_light:
+  web_remap:
     inputs:
       - web_filter
+    type: 'remap'
+    source:
+      | # Replace prepending iso date (web is an nginx service in production)
+      .message = replace!(.message, r'^.+ \[\S+ \+0000\]\s+', "")
+
+  web_remap_light:
+    inputs:
+      - web_remap
     type: 'remap'
     source: | # Keep only message and timestamp
       .old = del(.)
       .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
       del(.old)
+
+  # Grafana logs
+  grafana_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "grafana"'
+
+  grafana_remap:
+    inputs:
+      - grafana_filter
+    type: 'remap'
+    source: | # Replace prepending iso date, log level and service
+      .message = replace!(.message, r't=[\d-]+T[\d:.]+Z level=\S+\s+', "")
+
+  # CDN Logs (nginx)
+  cdn_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "cdn"'
+
+  cdn_remap:
+    inputs:
+      - cdn_filter
+    type: 'remap'
+    source: | # Replace prepending iso date
+      .message = replace!(.message, r'^.+ \[\S+ \+0000\]\s+', "")
+
+  # Traefik logs
+  traefik_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "traefik"'
+
+  traefik_remap:
+    inputs:
+      - traefik_filter
+    type: 'remap'
+    source: | # Replace prepending iso date
+      .message = replace!(.message, r'^time=".+Z" level=\S+\s+', "")
+
+  # ElasticSearch logs
+  elasticsearch_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "elasticsearch"'
+
+  elasticsearch_remap:
+    inputs:
+      - elasticsearch_filter
+    type: 'remap'
+    source: | # Extract message from JSON
+      .tmp = parse_json!(.message)
+      .message = .tmp.message
+      del(.tmp)
+
+  # Prometheus logs
+  prometheus_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "prometheus"'
+
+  prometheus_remap:
+    inputs:
+      - prometheus_filter
+    type: 'remap'
+    source: | # Replace prepending iso date
+      .message = replace!(.message, r'^ts=[\d-]+T[\d:.]+Z\s+', "")
 
   # Redis logs
   redis_filter:
@@ -169,7 +249,7 @@ sinks:
   # Web output
   web:
     inputs:
-      - web_filter
+      - web_remap
     type: 'file'
     path: '/var/log/vector/web.log'
     encoding:
@@ -233,3 +313,23 @@ sinks:
     path: '/var/log/vector/seed_light.log'
     encoding:
       codec: text
+
+  elasticsearch_logs:
+    env_file:
+      - .env
+    type: elasticsearch
+    inputs:
+      - web_remap
+      - cdn_remap
+      - api_filter
+      - redis_remap
+      - postgres_remap
+      - seed_remap
+      - traefik_remap
+      - grafana_remap
+      - elasticsearch_remap
+      - prometheus_remap
+    endpoints:
+      - 'http://elasticsearch:9200'
+    auth:
+      access_key_id: ${ELASTICSEARCH_WRITE_KEY}

@@ -67,8 +67,10 @@
     "sendgrid",
     "superadmin",
     "tanstack",
+    "traefik",
     "trpc",
     "tsbuildinfo",
+    "webp",
     "zoomable"
   ]
 }
