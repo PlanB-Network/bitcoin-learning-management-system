@@ -623,10 +623,7 @@ function CourseChapter() {
     }
   }, [chapter]);
 
-  const isSpecialChapter =
-    chapter?.isCourseReview ||
-    chapter?.isCourseExam ||
-    chapter?.isCourseConclusion;
+  const isSpecialChapter = chapter?.isCourseExam || chapter?.isCourseConclusion;
 
   let displayClassDetails = false;
   let displayLiveSection = false;
@@ -749,13 +746,15 @@ function CourseChapter() {
                 <MarkdownContent chapter={chapter} />
                 {!isSpecialChapter && displayQuizAndNext && (
                   <>
-                    {questionsArray && questionsArray.length > 0 && (
-                      <QuizzCard
-                        name={chapter.course.id}
-                        chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
-                        questions={questionsArray}
-                      />
-                    )}
+                    {!chapter.isCourseReview &&
+                      questionsArray &&
+                      questionsArray.length > 0 && (
+                        <QuizzCard
+                          name={chapter.course.id}
+                          chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
+                          questions={questionsArray}
+                        />
+                      )}
                     <BottomButton chapter={chapter} />
                   </>
                 )}
