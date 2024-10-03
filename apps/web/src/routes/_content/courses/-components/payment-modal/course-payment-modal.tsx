@@ -1,5 +1,3 @@
-import { Buffer } from 'buffer';
-
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,12 +21,8 @@ import { trpc } from '#src/utils/trpc.js';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
-const hexToBase64 = (hexString: string) => {
-  return Buffer.from(hexString, 'hex').toString('base64');
-};
-
 interface WebSocketMessage {
-  settled: boolean;
+  status: string;
 }
 
 interface CoursePaymentModalProps {
@@ -96,24 +90,27 @@ export const CoursePaymentModal = ({
 
   useEffect(() => {
     if (paymentData && isOpen && satsPrice >= 0) {
-      const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
+      const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice');
 
       ws.addEventListener('open', () => {
-        const hash = hexToBase64(paymentData.id);
-        ws.send(JSON.stringify({ hash: hash }));
+        ws.send(JSON.stringify({ id: paymentData.id }));
       });
 
       const handleMessage = (event: MessageEvent) => {
-        console.log('Message received');
         const message: WebSocketMessage = JSON.parse(
           event.data as string,
         ) as WebSocketMessage;
-        if (message.settled) {
+        if (message.status === 'settled') {
           setIsPaymentSuccess(true);
         }
       };
 
       ws.addEventListener('message', handleMessage);
+
+      return () => {
+        ws.removeEventListener('message', handleMessage);
+        ws.close();
+      };
     }
   }, [paymentData, isOpen, satsPrice]);
 
