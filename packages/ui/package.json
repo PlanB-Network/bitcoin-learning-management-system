@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
-    "@chromatic-com/storybook": "^1.9.0",
+    "@chromatic-com/storybook": "^2.0.2",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",

@@ -63,9 +63,10 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
   const syncGithubRepositories = createSyncGithubRepositories(dependencies);
   const getMetadata = createGetMetadata(dependencies);
 
-  router.post('/github/sync', async (req, res) => {
+  router.post('/github/sync', async (req, res): Promise<void> => {
     if (await redis.get('github-sync-locked')) {
-      return res.status(409).json({ error: 'Already syncing' });
+      res.status(409).json({ error: 'Already syncing' });
+      return;
     } else {
       await redis.set('github-sync-locked', true);
     }
@@ -180,103 +181,115 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     }
   });
 
-  router.post('/users/courses/payment/webhooks', async (req, res) => {
-    try {
-      interface PaymentWebhookRequest {
-        id: string;
-        isPaid: boolean;
-        isExpired: boolean;
-      }
+  router.post(
+    '/users/courses/payment/webhooks',
+    async (req, res): Promise<void> => {
+      try {
+        interface PaymentWebhookRequest {
+          id: string;
+          isPaid: boolean;
+          isExpired: boolean;
+        }
 
-      // if (!validateHmacSignature(req)) {
-      //   console.error('Hmac validation error!');
+        // if (!validateHmacSignature(req)) {
+        //   console.error('Hmac validation error!');
 
-      //   res.statusCode = 403;
-      //   res.json({
-      //     message: 'hmac validation error',
-      //   });
-      //   res.end();
-      //   return;
-      // }
+        //   res.statusCode = 403;
+        //   res.json({
+        //     message: 'hmac validation error',
+        //   });
+        //   res.end();
+        //   return;
+        // }
 
-      const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
+        const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
 
-      if (!id || typeof id !== 'string') {
-        return res.status(400).json({ message: 'Invalid or missing id' });
-      }
+        if (!id || typeof id !== 'string') {
+          res.status(400).json({ message: 'Invalid or missing id' });
+          return;
+        }
 
-      if (isPaid === null || isExpired === null) {
-        return res.status(400).json({
-          message: 'Invalid isPaid or isExpired values. Must be true or false.',
+        if (isPaid === null || isExpired === null) {
+          res.status(400).json({
+            message:
+              'Invalid isPaid or isExpired values. Must be true or false.',
+          });
+          return;
+        }
+
+        const result = await createUpdatePayment(dependencies)({
+          id: id,
+          isPaid: isPaid,
+          isExpired: isExpired,
         });
-      }
 
-      const result = await createUpdatePayment(dependencies)({
-        id: id,
-        isPaid: isPaid,
-        isExpired: isExpired,
-      });
-
-      res.json({
-        message: 'success',
-        result,
-      });
-    } catch (error) {
-      console.error('Error in courses webhook', error);
-    }
-  });
-
-  router.post('/users/events/payment/webhooks', async (req, res) => {
-    try {
-      interface PaymentWebhookRequest {
-        id: string;
-        isPaid: boolean;
-        isExpired: boolean;
-      }
-
-      // if (!validateHmacSignature(req)) {
-      //   console.error('Hmac validation error!');
-
-      //   res.statusCode = 403;
-      //   res.json({
-      //     message: 'hmac validation error',
-      //   });
-      //   res.end();
-      //   return;
-      // }
-
-      console.log(req.body);
-
-      const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
-
-      if (!id || typeof id !== 'string') {
-        return res.status(400).json({ message: 'Invalid or missing id' });
-      }
-
-      if (isPaid === null || isExpired === null) {
-        return res.status(400).json({
-          message: 'Invalid isPaid or isExpired values. Must be true or false.',
+        res.json({
+          message: 'success',
+          result,
         });
+      } catch (error) {
+        console.error('Error in courses webhook', error);
       }
+    },
+  );
 
-      const result = await createUpdateEventPayment(dependencies)({
-        id: id,
-        isPaid: isPaid,
-        isExpired: isExpired,
-      });
+  router.post(
+    '/users/events/payment/webhooks',
+    async (req, res): Promise<void> => {
+      try {
+        interface PaymentWebhookRequest {
+          id: string;
+          isPaid: boolean;
+          isExpired: boolean;
+        }
 
-      if (isPaid === true) {
-        await createCalculateEventSeats(dependencies)();
+        // if (!validateHmacSignature(req)) {
+        //   console.error('Hmac validation error!');
+
+        //   res.statusCode = 403;
+        //   res.json({
+        //     message: 'hmac validation error',
+        //   });
+        //   res.end();
+        //   return;
+        // }
+
+        console.log(req.body);
+
+        const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
+
+        if (!id || typeof id !== 'string') {
+          res.status(400).json({ message: 'Invalid or missing id' });
+          return;
+        }
+
+        if (isPaid === null || isExpired === null) {
+          res.status(400).json({
+            message:
+              'Invalid isPaid or isExpired values. Must be true or false.',
+          });
+          return;
+        }
+
+        const result = await createUpdateEventPayment(dependencies)({
+          id: id,
+          isPaid: isPaid,
+          isExpired: isExpired,
+        });
+
+        if (isPaid === true) {
+          await createCalculateEventSeats(dependencies)();
+        }
+
+        res.json({
+          message: 'success',
+          result,
+        });
+      } catch (error) {
+        console.error('Error in events webhook', error);
       }
-
-      res.json({
-        message: 'success',
-        result,
-      });
-    } catch (error) {
-      console.error('Error in events webhook', error);
-    }
-  });
+    },
+  );
 
   // curl "localhost:3000/api/metadata?uri=/" -I
   router.get('/metadata', async (req, res) => {
