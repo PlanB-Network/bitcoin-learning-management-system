@@ -60,6 +60,7 @@ transforms:
     source:
       | # Replace prepending iso date (web is an nginx service in production)
       .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
+      .message = replace(.message, r'^[\d\/]+ [\d:.]+ ', "")
 
   web_remap_light:
     inputs:
@@ -97,6 +98,7 @@ transforms:
     type: 'remap'
     source: | # Replace prepending iso date
       .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
+      .message = replace(.message, r'^[\d\/]+ [\d:.]+ ', "")'
 
   # Traefik logs
   traefik_filter:
