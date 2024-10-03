@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "async": "^3.2.6",
-    "simple-git": "^3.26.0"
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",

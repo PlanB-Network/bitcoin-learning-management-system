@@ -31,7 +31,7 @@
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
     "@blms/types": "workspace:*",
-    "@types/pdfkit": "^0.13.4",
+    "@types/pdfkit": "^0.13.5",
     "@types/uuid": "^10.0.0"
   }
 }

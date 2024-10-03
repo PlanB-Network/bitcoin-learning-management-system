@@ -19,7 +19,7 @@ export const CategoryTabs = ({ resourceActiveCategory }: CategoryTabsProps) => {
         <Link
           key={resourceCategory.name}
           to={`/resources/${resourceCategory.name}`}
-          onClick={(event) =>
+          onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
             resourceCategory.unreleased && event.preventDefault()
           }
           className={cn(
