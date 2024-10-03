@@ -118,11 +118,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       '@types/express':
-        specifier: ^4.17.21
-        version: 4.17.21
+        specifier: ^5.0.0
+        version: 5.0.0
       '@types/express-serve-static-core':
-        specifier: ^4.19.6
-        version: 4.19.6
+        specifier: ^5.0.0
+        version: 5.0.0
       '@types/express-session':
         specifier: ^1.18.0
         version: 1.18.0
@@ -178,8 +178,8 @@ importers:
         specifier: ^7.9.0
         version: 7.9.0
       date-fns:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^4.1.0
+        version: 4.1.0
       embla-carousel-react:
         specifier: ^8.3.0
         version: 8.3.0(react@18.3.1)
@@ -639,8 +639,8 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config
       '@chromatic-com/storybook':
-        specifier: ^1.9.0
-        version: 1.9.0(react@18.3.1)
+        specifier: ^2.0.2
+        version: 2.0.2(react@18.3.1)
       '@storybook/addon-essentials':
         specifier: ^8.3.4
         version: 8.3.4(storybook@8.3.4)(webpack-sources@3.2.3)
@@ -818,8 +818,8 @@ packages:
   '@base2/pretty-print-object@1.0.1':
     resolution: {integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==}
 
-  '@chromatic-com/storybook@1.9.0':
-    resolution: {integrity: sha512-vYQ+TcfktEE3GHnLZXHCzXF/sN9dw+KivH8a5cmPyd9YtQs7fZtHrEgsIjWpYycXiweKMo1Lm1RZsjxk8DH3rA==}
+  '@chromatic-com/storybook@2.0.2':
+    resolution: {integrity: sha512-7bPIliISedeIpnVKbzktysFYW5n56bN91kxuOj1XXKixmjbUHRUMvcXd4K2liN6MiR5ZqJtmtcPsZ6CebbGlEA==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
 
   '@drizzle-team/brocli@0.10.1':
@@ -2629,11 +2629,17 @@ packages:
   '@types/express-serve-static-core@4.19.6':
     resolution: {integrity: sha512-N4LZ2xG7DatVqhCZzOGb1Yi5lMbXSZcmdLDe9EzSndPV2HpWYWzRbaerl2n27irrm94EPpprqa8KpskPT085+A==}
 
+  '@types/express-serve-static-core@5.0.0':
+    resolution: {integrity: sha512-AbXMTZGt40T+KON9/Fdxx0B2WK5hsgxcfXJLr5bFpZ7b4JCex2WyQPTEKdXqfHiY5nKKBScZ7yCoO6Pvgxfvnw==}
+
   '@types/express-session@1.18.0':
     resolution: {integrity: sha512-27JdDRgor6PoYlURY+Y5kCakqp5ulC0kmf7y+QwaY+hv9jEFuQOThgkjyA53RP3jmKuBsH5GR6qEfFmvb8mwOA==}
 
   '@types/express@4.17.21':
     resolution: {integrity: sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==}
+
+  '@types/express@5.0.0':
+    resolution: {integrity: sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==}
 
   '@types/find-cache-dir@3.2.1':
     resolution: {integrity: sha512-frsJrz2t/CeGifcu/6uRo4b+SzAwT4NYCVPu1GN8IB9XTzrpPkGuV0tmh9mN+/L0PklAlsC3u5Fxt0ju00LXIw==}
@@ -3623,8 +3629,8 @@ packages:
   date-arithmetic@4.1.0:
     resolution: {integrity: sha512-QWxYLR5P/6GStZcdem+V1xoto6DMadYWpMXU82ES3/RfR3Wdwr3D0+be7mgOJ+Ov0G9D5Dmb9T17sNLQYj9XOg==}
 
-  date-fns@3.6.0:
-    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
@@ -7299,7 +7305,7 @@ snapshots:
 
   '@base2/pretty-print-object@1.0.1': {}
 
-  '@chromatic-com/storybook@1.9.0(react@18.3.1)':
+  '@chromatic-com/storybook@2.0.2(react@18.3.1)':
     dependencies:
       chromatic: 11.11.0
       filesize: 10.1.6
@@ -8951,14 +8957,28 @@ snapshots:
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
 
+  '@types/express-serve-static-core@5.0.0':
+    dependencies:
+      '@types/node': 22.7.4
+      '@types/qs': 6.9.16
+      '@types/range-parser': 1.2.7
+      '@types/send': 0.17.4
+
   '@types/express-session@1.18.0':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/express@4.17.21':
     dependencies:
       '@types/body-parser': 1.19.5
       '@types/express-serve-static-core': 4.19.6
+      '@types/qs': 6.9.16
+      '@types/serve-static': 1.15.7
+
+  '@types/express@5.0.0':
+    dependencies:
+      '@types/body-parser': 1.19.5
+      '@types/express-serve-static-core': 5.0.0
       '@types/qs': 6.9.16
       '@types/serve-static': 1.15.7
 
@@ -10054,7 +10074,7 @@ snapshots:
 
   date-arithmetic@4.1.0: {}
 
-  date-fns@3.6.0: {}
+  date-fns@4.1.0: {}
 
   dayjs@1.11.13: {}
 

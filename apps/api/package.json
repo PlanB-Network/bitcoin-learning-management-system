@@ -40,8 +40,8 @@
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
     "@blms/types": "workspace:*",
-    "@types/express": "^4.17.21",
-    "@types/express-serve-static-core": "^4.19.6",
+    "@types/express": "^5.0.0",
+    "@types/express-serve-static-core": "^5.0.0",
     "@types/express-session": "^1.18.0",
     "@types/formidable": "^3.4.5",
     "@types/qs": "^6.9.16",
