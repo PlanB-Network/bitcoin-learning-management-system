@@ -2,10 +2,12 @@ import type { Messages, ToolbarProps, View } from 'react-big-calendar';
 
 import { cn } from '@blms/ui';
 
+import type { CalendarEvent } from './calendar-event.ts';
+
 interface ViewNamesGroupProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   views: any;
-  messages: Messages;
+  messages: Messages<CalendarEvent>;
   view: View;
   onView: (view: View) => void;
 }
@@ -49,7 +51,7 @@ export default function CustomToolbar({
   onView,
   view,
   views,
-}: ToolbarProps) {
+}: ToolbarProps<CalendarEvent, object>) {
   return (
     <div className="rbc-toolbar max-md:px-6">
       <span className="rbc-btn-group examples--custom-toolbar">
