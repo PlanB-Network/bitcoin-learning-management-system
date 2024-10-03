@@ -31,9 +31,9 @@
     "createOne": "Hier anmelden!",
     "emailAddress": "E-Mail Adresse",
     "errors": {
-      "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, _, und - enthalten",
-      "usernameRequired": "Benutzername erforderlich",
-      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten",
+      "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, _, und - enthalten.",
+      "usernameRequired": "Benutzername erforderlich.",
+      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten.",
       "displayNameRequired": "Anzeigename ist erforderlich.",
       "displayNameRegex": "Der Anzeigename darf nur Buchstaben, Ziffern, _, ., - und Leerzeichen enthalten.",
       "displayNameTooShort": "Der Anzeigename muss mindestens 2 Zeichen enthalten."
@@ -96,12 +96,12 @@
     "buttonBuy": "Kaufen",
     "buttonPdf": "PDF / E-Book",
     "offeredBy": "Von einem großzügigen Mitwirkend*n angeboten",
-    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für Beiträge. Vielen Dank für jeden Beitrag oder Verteilung!",
+    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für Beiträge.",
     "pageTitle": "Die Bibliothek",
     "topicsAddressed": "Behandelte Themen:"
   },
   "builders": {
-    "pageSubtitle": "Dieses Portal ist Open Source & offen für Ergänzungen. Vielen Dank für jeden Betrag und Verteilung",
+    "pageSubtitle": "Dieses Portal ist Open Source & offen für Ergänzungen.",
     "pageTitle": "Bitcoin Builders",
     "networkStrength": "Die Stärke eines Netzwerks liegt in seinen Mitgliedern",
     "noRelatedEvents": "Es gibt derzeit keine bevorstehende Veranstaltungen in Bezug auf diesen Builder.",
@@ -132,7 +132,7 @@
         "p2heading": "Sie können nicht persönlich vorbeikommen?",
         "p2content": "Kein Problem! Die Lektion wird auf dieser Seite live gestreamt und ist danach zur Wiedergabe verfügbar.",
         "bookSeat": "Buchen Sie Ihren Platz",
-        "classIsFull": "Die Klasse ist bereits voll.",
+        "classIsFull": "Die Klasse ist bereits voll",
         "cancelBooking": "Stornieren Sie Ihre Buchung",
         "ticketDownload": "Laden Sie Ihr Ticket herunter"
       },
@@ -162,7 +162,7 @@
       "objectives": "Ziele",
       "objectivesTitle": "Was werden Sie mit diesem Kurs lernen:",
       "price": "Preis: {{price}} sats",
-      "professor": "Professor",
+      "professor": "Professor:in",
       "startCourse": "Kurs beginnen",
       "taughtBy": "Dieser Kurs wird unterrichtet von:",
       "teacher": "Lehrer*n: {{teacher}}",
@@ -403,7 +403,20 @@
         "teacherProfile": "Lehrerprofil",
         "tutorialModification": "Wenn Sie Hilfe brauchen, um etwas zu bearbeiten, sehen Sie sich bitte dieses <0>Tutorial</0> an."
       },
-      "menu": "Lehrermenü"
+      "menu": "Lehrermenü",
+      "reviews": {
+        "checkComments": "Hier können Sie die Kommentare der Schüler lesen. Die Kommentare sind nach Datum sortiert.",
+        "checkReviews": "Hier können Sie die Noten und Bewertungen einsehen, die Ihr Kurs erhalten hat.",
+        "noReviewsYet": "Dieser Kurs hat noch keine Bewertungen und Noten erhalten.",
+        "privateComment": "Privater Kommentar",
+        "publicComment": "Öffentlicher Kommentar",
+        "review": "Bewertung",
+        "reviews": "Bewertungen",
+        "reviewsAndGrading": "Bewertungen & Benotung",
+        "seeStatistics": "Statistiken sehen",
+        "viewDetails": "Details anzeigen",
+        "writtenFeedbacks": "Schriftliche Rückmeldungen"
+      }
     }
   },
   "events": {
@@ -430,7 +443,7 @@
       "people": "Menschen",
       "watchLive": "Live schauen",
       "watchReplay": "Replay anschauen",
-      "bookLive": "Book live",
+      "bookLive": "Live buchen",
       "bookSeat": "Buchen Sie Ihren Platz",
       "visitWebsite": "Zur Website gehen",
       "buyReplay": "Wiederholung kaufen",
@@ -447,7 +460,7 @@
       "additional_free_description": "Diese Veranstaltung ist kostenlos, daher fallen keine Gebühren für die Reservierung dieses Platzes an. Bitte stellen Sie jedoch sicher, dass Sie teilnehmen, da die Anzahl der Plätze begrenzt ist.",
       "amount": "Menge",
       "back_events": "Zurück zu den Veranstaltungen",
-      "book_seat": "Buchen Sie Ihren Platz",
+      "book_seat": "Platz buchen",
       "callout_online": "Sie sind im Begriff, den Online-Zugang zu dieser Veranstaltung zu buchen.",
       "callout_physical": "Sie sind im Begriff, den physischen Zugang zu dieser Veranstaltung zu buchen.",
       "callout_replay": "Sie sind im Begriff, den Zugang zum Wiederholungsvideo dieses Ereignisses zu buchen.",
@@ -542,7 +555,7 @@
     "bookCover": "ein Buchcover",
     "community": "3 Personen",
     "contributorHeart": "ein Herz für netten Mitwirkenden",
-    "contributorPP": "mitwirkendes Profilbild",
+    "contributorPP": "Profilbild des Mitwirkenden",
     "courseThumbnail": "Kurs-Vorschaubild",
     "curriculum": "Lehrplan",
     "decouvreBitcoinLogo": "DecouvreBitcoin Logo",
@@ -553,16 +566,16 @@
     "orangePill": "eine orange Pille",
     "printedCircuits": "eine Leiterplatte",
     "rabbit404": "ein Kaninchen leuchtet mit einer Taschenlampe auf ein Schild 404",
-    "sthRepresentingCompany": "etwas für das Unternehmen",
-    "stylus": "ein Stift",
-    "underConstructionImage": "Abbildung mehrerer Kaninchen auf einer Baustelle",
+    "sthRepresentingCompany": "etwas, was das Unternehmen repräsentiert",
+    "stylus": "ein Stylus",
+    "underConstructionImage": "Illustration von mehreren Kaninchen, die auf einer Baustelle arbeiten",
     "visibilityOff": "das Augensymbol ohne Zeichen",
     "worldMap": "Weltkarte mit verlinkten Hubs"
   },
   "library": {
-    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für einen Beitrag. Danke für die Bewertung und Freigabe !",
+    "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für einen Beitrag.",
     "pageTitle": "Die Bibliothek",
-    "publishedIn": "Veröffentlicht in {{date}}",
+    "publishedIn": "Veröffentlicht am {{date}}",
     "writtenBy": "Geschrieben von {{author}}"
   },
   "menu": {
@@ -571,17 +584,17 @@
     "buildersDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die daran arbeiten, Bitcoin zu verbessern und seine Annahme zu steigern",
     "exchangesDescription": "Kaufen und verkaufen Sie Bitcoins an Börsen und erfahren Sie mehr über P2P",
     "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",
-    "lightningDescription": "Verwalten Sie Ihren Blitzknoten und nutzen Sie das Blitznetzwerk",
-    "manifestoDescription": "Plan B Manifest lesen",
+    "lightningDescription": "Verwalten Sie Ihren Lightning-Knoten und nutzen Sie das Lighting-Netzwerk",
+    "manifestoDescription": "Lesen Sie das Manifest von Plan B",
     "merchantsDescription": "Akzeptieren Sie Bitcoin-Zahlungen und entdecken Sie Tools für Händler",
-    "miningDescription": "Baue deine eigenen Bitcoins ab und lerne mehr über die Bergbauindustrie",
-    "nodeDescription": "Erfahren Sie, wie Sie mit Ihrem eigenen Bitcoin-Knoten souverän sein können",
-    "nodeNetworkDescription": "Treten Sie dem globalen Netzwerk der Bitcoin-Communities bei!",
+    "miningDescription": "Bauen Sie Ihre eigenen Bitcoins ab und lernen Sie mehr über die Mineindustrie",
+    "nodeDescription": "Erfahren Sie, wie Sie mit Ihrem eigenen Bitcoin-Knoten selbstverwaltet sein können",
+    "nodeNetworkDescription": "Treten Sie dem weltweiten Netzwerk der Bitcoin-Community bei",
     "ourStoryDescription": "Erfahren Sie mehr über die Geschichte der Universität",
-    "podcastsDescription": "Erkunde das Bitcoin-Ökosystem durch Podcasts",
+    "podcastsDescription": "Erkunden Sie das Bitcoin-Ökosystem durch Podcasts",
     "sponsorsDescription": "Entdecken Sie unsere Sponsoren und Hauptbeitragszahler",
-    "supportUsDescription": "Finden Sie Wege, uns zu unterstützen, auf irgendeine Weise",
-    "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner",
+    "supportUsDescription": "Finden Sie Wege, uns zu unterstützen, auf jede Art und Weise",
+    "teachersDescription": "Lernen Sie unsere Universitätslehrkräfte kennen",
     "walletsDescription": "Sichern und verwenden Sie Ihre Bitcoins",
     "conferencesDescription": "Sammlung von Bitcoin-Konferenzwiederholungen seit dem Genesis Block",
     "publicDescription": "Erkunden Sie öffentliche Kommunikationsartikel",
@@ -591,24 +604,24 @@
     "login": "Anmelden"
   },
   "nodeNetwork": {
-    "answer1": "Ein Node ist einfach eine Bitcoin Community, die den nächsten Schritt machen will und ihre eigene lokale Bitcoin-Einführung beschleunigen will! Es gibt keine Mindestgröße, mit der man beginnen muss.",
-    "answer2": "Bei Plan B wollen wir das Bitcoin-Ökosystem verbessern, indem wir die richtigen Werkzeuge für den Aufbau und die Ausbildung von Bitcoin bereitstellen. Indem Sie ein Knoten werden, erhält Ihre Community Zugang zu einer großen Auswahl an Ressourcen, Dienstleistungen, speziellem Bildungstraining und mehr. Machen Sie Ihre Community zu einer Referenz in der Bitcoin-Welt.",
-    "answer3": "Um Teil des Netzwerks zu werden, müssen Sie sich einigen Grundwerten anschließen. Diese sind: \n - Bitcoin-only sein \n - Wert auf Privatsphäre legen \n - Sorge für die Open-Source-Arbeit.",
+    "answer1": "Ein Node ist eine Bildungsinitiative, die an eine Gemeinschaft irgendwo auf der Welt gebunden ist. Er kann aus einem Gebäude bestehen, in dem Bitcoin-Bildung stattfindet, ist aber nicht darauf beschränkt. Plan B Network betreibt Hubs, aber es ist unrealistisch, sie in jeder Stadt weltweit einzurichten. Deshalb sind wir auf eine Gemeinschaft von Bitcoinern angewiesen, die uns helfen, dieses globale Netzwerk zu verwirklichen.",
+    "answer2": "Wenn Sie unserem Netzwerk beitreten, erhalten Sie Zugang zu exklusiven Inhalten, die Plan B über seine Plattform verbreitet und die Sie mit den Bewohnern Ihres Knotens teilen können. Der wichtigste Vorteil ist die Eröffnung von Diskussionskanälen für zukünftige Projekte und die Verbindung mit anderen Gemeinschaften weltweit, um Erfahrungen auszutauschen.",
+    "answer3": "Zunächst konzentriert sich das Plan B Network auf Orte, die über einen physischen Raum verfügen, in dem es arbeiten kann. Künftig wollen wir jede Initiative einbeziehen, die von der Unterstützung des Netzwerks profitieren kann, um zu wachsen.",
     "answer4": "Ein Bitcoin-Knoten kann eine beliebige Größe haben. Basierend auf einigen Anforderungen werden verschiedene Grade zugeschrieben. Ein Knoten mit einem Hackerspace, einem Fitnessstudio, einem Büro wird als \"Zitadelle\" angesehen.",
     "answer5": "Wir möchten einen sicheren Paradies für bitcoiners auf der ganzen Welt bieten. Wir glauben, dass wir durch die Unterstützung lokaler Hubs in der Lage sein werden, ein Netzwerk von Zitadellen zu schaffen, in denen Bitcoin-Spieler willkommen sind, um sicher zu arbeiten, zu erstellen, zu teilen und zu diskutieren.",
-    "apply": "Bewerben Sie sich, um ein Knoten zu werden",
-    "description1": "Unser Finanzsystem bricht zusammen, unsere Lebensmittel werden vergiftet, unsere Freiheit wird uns genommen. Wir können nicht auf ein Wunder warten, wir müssen einen sicheren Ort schaffen, an dem wir leben können. Wir müssen unseren eigenen Plan B erstellen!",
-    "pageSubtitle": "Unsere Stärke ist unsere Community. Lassen Sie uns zu einem globalen Bitcoin-Netzwerk zusammenkommen.",
-    "pageTitle": "Node Map",
-    "question1": "Was ist ein Knoten?",
+    "apply": "Bewerben Sie sich, um ein Node zu werden",
+    "description1": "Plan B Network unterstützt weltweit Bildungsinitiativen. Wir arbeiten zusammen, um die besten Werkzeuge für diese Projekte zu schaffen, sowohl über unsere Plattform als auch im realen Leben. Wir sind immer auf der Suche nach neuen Nodes, die sich uns anschließen möchten. Wenn Sie mit uns zusammenarbeiten wollen, um ein dezentralisiertes globales Bildungsnetzwerk für Bitcoin zu schaffen, melden Sie sich!",
+    "pageSubtitle": "Möchten Sie die Welt orange pillen? Treten Sie dem PlanB-Netzwerk bei.",
+    "pageTitle": "Erkunden Sie das Plan B Node Netzwerk",
+    "question1": "Was ist ein Node?",
     "question2": "Was habe ich davon?",
     "question3": "Was sind die Voraussetzungen?",
     "question4": "Welche Größe hat ein Knoten?",
-    "question5": "Was ist der geheime Plan?"
+    "question5": "Was ist der Geheimplan?"
   },
   "notFound": {
     "here": "Hier",
-    "pageSubtitle": "Anscheinend fiel jemand zu tief in das Kaninchenloch und ist verloren gegangen. Um an die Oberfläche zurückzukehren, klicke auf",
+    "pageSubtitle": "Es scheint, als wäre jemand zu tief in den Kaninchenbau gefallen und hätte sich verirrt. Um wieder an die Oberfläche zu kommen, klicken Sie auf",
     "pageTitle": "Hoppla."
   },
   "podcast": {
@@ -617,17 +630,17 @@
   },
   "podcasts": {
     "hostedBy": "Gehostet von {{host}}",
-    "pageSubtitle": "Dieses Portal ist Open Source & offen für einen Beitrag. Vielen Dank für die Bewertung und das Teilen!",
-    "pageTitle": "Das Podcast-Portal"
+    "pageSubtitle": "Dieses Portal ist Open Source & offen für einen Beitrag.",
+    "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
-    "pageSubtitle": "Alle unsere Professoren sind Freiwillige und leidenschaftliche Bitcoiner. Sie können sich bei denen mit einem Tip bedanken.",
-    "pageTitle": "Professoren",
+    "pageSubtitle": "Alle unsere Professoren sind Freiwillige und leidenschaftliche Bitcoiner. Sie können sich bei denen mit einem Tipp bedanken.",
+    "pageTitle": "Professor:innen",
     "tips": {
       "noTipsYet": "Dieser Professor akzeptiert momentan kein Tip.",
       "thanks": "Vielen Dank, dass Sie die Arbeit von {{name}} unterstützen!",
       "thanksNoName": "Vielen Dank für die Unterstützung meiner Arbeit !",
-      "authorSupport": "Unterstützen Sie den Autor mit einem Tipp"
+      "authorSupport": "Unterstützen Sie den Autor mit einem Tip"
     },
     "navigationTitles": {
       "all": "Alle",
@@ -644,31 +657,38 @@
       "title": "Bildungs-Toolkit"
     },
     "books": {
-      "title": "Bücher"
+      "title": "Bibliothek"
     },
     "builders": {
-      "title": "Entwickler"
+      "title": "Entwickler:innen"
     },
     "conferences": {
-      "title": "Konferenzen"
+      "title": "Konferenzwiederholungen"
     },
     "filterBarLabel": "Finden Sie die perfekten Ressourcen für Ihre Bedürfnisse:",
     "headerSignature": "Rogzy",
-    "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! Diese Seiten werden von benevolel und leidenschaftlichen Bitcoin gepflegt und unterstützen dieses Open-Source-Projekt. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an unseren Finanzanhänger. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
+    "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! In Diesem Abschnitt bieten wir Ihnen eine ausführliche Anleitung zu den meisten Bitcoin-Projekten. Diese Seiten werden von wohlwollenden und leidenschaftlichen Bitcoin gepflegt, die und dieses Open-Source-Projekt unterstützen. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an unseren Finanzanhänger. Um zu sehen, unsere finanzielle Bindung an das Projekt erwähnen, beziehen sich auf unsere Transparenz Bericht. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
     "newsletters": {
       "title": "Newsletters"
     },
-    "pageDescription": "Der Versuch, Bitcoin zu verstehen, ist wie die Erkundung eines Labyrinths, das immer größer wird. Um Sie auf Ihrer Reise zu unterstützen, haben wir eine umfangreiche Sammlung von Ressourcen zusammengestellt, die eine Vielzahl von Themen behandeln.",
-    "pageSubtitle": "Willkommen im unendlichen Kaninchenbau des Bitcoin!",
-    "pageTitle": "Ressourcen",
+    "pageDescription": "Der Versuch, Bitcoin zu verstehen, ist wie die Erkundung eines Labyrinths, das immer größer wird. Um Sie auf Ihrer Reise zu unterstützen, haben wir eine umfangreiche Sammlung von Ressourcen zusammengestellt, darunter Bücher, Podcasts, Videos und Konferenzaufzeichnungen. Dieses Portal sammelt alle Informationen in einem Github-Repository, um Ihnen ein besseres Verständnis des Bitcoin-Ökosystems zu ermöglichen.",
+    "pageSubtitle": "Wissen zentralisieren, um es besser zu verbreiten",
+    "pageTitle": "Willkommen auf dem Ressourcenportal",
     "podcasts": {
       "title": "Podcasts"
     },
-    "publicGrade": "Öffentliche Klasse: {{grade}}/5",
-    "github": ""
+    "publicGrade": "Öffentliche Note: {{grade}}/5",
+    "github": "Alle diese Daten werden über ein Open-Source-<0>Github</0>-Repository verwaltet. Fühlen Sie sich frei, beizutragen und fehlende Inhalte hinzuzufügen.",
+    "glossary": {
+      "title": "Glossar"
+    },
+    "searchFilterName": "Suche nach Name"
   },
   "settings": {
-    "changePassword": "Passwort ändern"
+    "changePassword": "Passwort ändern",
+    "changeDisplayName": "Namen ändern",
+    "changeProfilePicture": "Profilbild ändern",
+    "changeEmail": "E-Mail ändern"
   },
   "tutorials": {
     "details": {
@@ -676,34 +696,38 @@
       "enjoyed": "Gefällt Ihnen dieses Tutorial?",
       "madeBy": "Dieses Tutorial wurde erstellt von",
       "source": "Ursprüngliche Quelle: ",
-      "tipTooltip": "Gefällt er Ihnen? Tip."
+      "tipTooltip": "Gefällt er Ihnen? Tip.",
+      "author": "Autor : ",
+      "didHelp": "Hat das geholfen?",
+      "writtenBy": "Dieses Tutorial wurde geschrieben von :"
     },
     "exchange": {
       "centralized": {
-        "description": "Zentralisierte Exchanges sind in der Regel regulierte Organisationen, die als Vermittler zwischen dem Bankensystem und dem Bitcoin-Ökosystem fungieren. Sie ermöglichen es Ihnen, große Mengen an Bitcoin zu kaufen und zu verkaufen und sie auf Ihr Wallet oder Bankkonto abzuheben. Sie verlangen in der Regel eine KYC-Prüfung und überwachen daher Ihre Aktivitäten und melden sie an die Finanzaufsichtsbehörden, um die lokalen Gesetze einzuhalten."
+        "description": "Zentralisierte Börsen sind in der Regel regulierte Einrichtungen, die als Vermittler zwischen dem Bankensystem und dem Bitcoin-Ökosystem fungieren. Sie ermöglichen es Ihnen, große Mengen an Bitcoin zu kaufen und zu verkaufen und sie auf Ihr Wallet oder Bankkonto abzuheben. Sie verlangen in der Regel eine KYC-Prüfung und überwachen daher Ihre Aktivitäten und melden sie an die Finanzaufsichtsbehörden, um die lokalen Gesetze einzuhalten."
       },
-      "description": "Exchanges sind eine der Eingangs- und Ausgangstüren zwischen Ihrer traditionellen Währung (Euro, Dollar) und der Bitcoin-Welt. Börsen können reguliert und KYC (Know Your Customer) konform sein, oder Peer-to-Peer und anonym. Jede Exchange bietet unterschiedliche Funktionen, Gebührenstrukturen, Liquidität und Kundenbetreuung. Jeder Bitcoiner wird je nach seinen Bedürfnissen und Überzeugungen eine andere Plattform nutzen.",
+      "description": "Börsen sind eine der Eingangs- und Ausgangstüren zwischen Ihrer traditionellen Währung (Euro, Dollar) und der Bitcoin-Welt. Börsen können reguliert und KYC (Know Your Customer) konform sein, oder Peer-to-Peer und anonym. Jede Börse bietet unterschiedliche Funktionen, Gebührenstrukturen, Liquidität und Kundenbetreuung. Jeder Bitcoiner wird je nach seinen Bedürfnissen und Überzeugungen eine andere Plattform nutzen.",
       "peer-to-peer": {
-        "description": "Peer-to-Peer-Exchanges sind Marktplätze, auf denen Personen untereinander Bitcoin gegen andere Währungen tauschen. Diese Austauschplattformen können reguliert oder nicht reguliert sein und fragen in der Regel nicht nach vielen Informationen (wenn überhaupt) über Sie. Sie erleichtern lediglich die Beziehung zwischen den Nutzern. Ihre Gebühren können höher sein als bei traditionellen Exchanges und ihre Liquidität ist etwas geringer. Sie sind die bevorzugte Option für Bitcoiner, die eine KYC vermeiden wollen."
+        "description": "Peer-to-Peer-Börsen sind Marktplätze, auf denen Personen untereinander Bitcoin gegen andere Währungen tauschen. Diese Austausch können reguliert oder nicht reguliert sein und fragen in der Regel nicht nach vielen Informationen (wenn überhaupt) über Sie. Sie erleichtern lediglich die Beziehung zwischen den Nutzern. Ihre Gebühren können höher sein als bei traditionellen Börsen und ihre Liquidität ist etwas geringer. Sie sind die bevorzugte Option für Bitcoiner, die eine KYC vermeiden wollen."
       },
-      "shortDescription": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
-      "title": "Umtausch"
+      "shortDescription": "Bitcoin-Kauf-Verkaufslösungen, KYC und Nicht-KYC",
+      "title": "Austausch"
     },
     "explorer": {
       "description": "Alle diese Tutorials wurden von leidenschaftlichen und engagierten Bitcoinern geschrieben, die Bitcoin-Bildung auf der ganzen Welt verbreiten wollen. Vergessen Sie nicht, sie zu liken, zu bewerten und ihnen Tips zu geben!",
-      "didYouKnow": "Wussten Sie schon?"
+      "didYouKnow": "Wussten Sie schon?",
+      "exploreAllTutorials": "Erkunden Sie alle Tutorials"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! Diese Seiten werden von benevolel und leidenschaftlichen Bitcoin gepflegt und unterstützen dieses Open-Source-Projekt. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an uns. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
+    "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! In Diesem Abschnitt bieten wir Ihnen eine ausführliche Anleitung zu den meisten Bitcoin-Projekten. Diese Seiten werden von wohlwollenden und leidenschaftlichen Bitcoin gepflegt, die und dieses Open-Source-Projekt unterstützen. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an unseren Finanzanhänger. Um zu sehen, unsere finanzielle Bindung an das Projekt erwähnen, beziehen sich auf unsere Transparenz Bericht. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
     "merchant": {
       "description": "Haben Sie sich schon einmal gefragt, wie Sie Bitcoin in Ihrem Geschäft akzeptieren können? Entdecken Sie unsere verschiedenen Lösungen, um ein Experte zu werden und eine Händlerlösung für die Geschäfte in Ihrer Umgebung einzurichten. Die Point-of-Sale-Lösung variiert je nach den Bedürfnissen des Händlers (physisch oder online), seinem Volumen und der Komplexität seiner Geschäfte. Im Allgemeinen empfiehlt es sich, mit einer einfachen LN-Wallet zu beginnen, zu einer einfachen, effizienten Lösung überzugehen (z. B. Mobile PoS) und schließlich den BTC Pay Server für fortgeschrittene, komplexe, professionelle Lösungen zu erkunden.",
       "shortDescription": "Lösungen für Unternehmen, die Bitcoin akzeptieren",
-      "title": "Händler"
+      "title": "Verkäufer"
     },
     "mining": {
-      "description": "Die Mining-Industrie ist ein komplexes Thema, in dem es viele Kaninchenlöcher gibt. Hier werden wir versuchen, Sie mit Hilfe von Hardware und Software auf Ihrer Reise zu begleiten. Vom Umbau eines S9 in einen Heizlüfter bis hin zum Versuch, mit einem Nerd-Miner im Gewinnspiel zu landen.",
+      "description": "Die Minenindustrie ist ein komplexes Thema, in dem es viele Kaninchenlöcher gibt. Hier werden wir versuchen, Sie mit Hilfe von Hardware und Software auf Ihrer Reise zu begleiten. Vom Umbau eines S9 in einen Heizlüfter bis hin zum Versuch, mit einem Nerd-Miner im Lotto zu gewinnen.",
       "shortDescription": "Bitcoin Mining Lösungen",
-      "title": "Bergbau"
+      "title": "Mining"
     },
     "node": {
       "bitcoin": {
@@ -711,21 +735,21 @@
       },
       "description": "Knoten (\"Nodes\") sind wie Ihre persönlichen Server. In Bitcoin ist es die Software, die es Ihnen erlaubt, das Netzwerk zu betreiben, Transaktionen zu sammeln, die Regeln zu verifizieren und wirklich souverän zu sein. Innerhalb unseres Ökosystems gibt es verschiedene Nodes, von Bitcoin Core über Lightning-Implementierungen bis hin zu RGB und anderen fortschrittlicheren Datenschutzlösungen.",
       "lightning-network": {
-        "description": "Ein Lightning-Knoten (node) ermöglicht Ihnen die Teilnahme am Bitcoin-Layer-2-Protokoll genannt Lightning. Sie können Kanäle öffnen, ihre Liquidität verwalten, am Graphen teilnehmen und Ihre Lightning-Wallet als non-custodial betrachten.",
+        "description": "Ein Lightning-Knoten (node) ermöglicht Ihnen die Teilnahme am Bitcoin-Layer-2-Protokoll genannt Lightning. Sie können Kanäle öffnen, ihre Liquidität verwalten, am Graphen teilnehmen und Ihre Lightning-Wallet als non-custodial Wallet betrachten.",
         "name": "Lightning Netzwerk"
       },
       "rgb": {
         "description": "RGB ist ein skalierbares und vertrauliches Smart-Contracts-System für Bitcoin und das Lightning-Netzwerk. Es ist eine Programmierbarkeitsschicht für Bitcoin, mit Konzepten von privatem und gegenseitigem Eigentum, Abstraktion und Trennung von Belangen und repräsentiert \"post-blockchain\"."
       },
-      "shortDescription": "Lösungen für den Betrieb eines Bitcoin-Knotens und den Beitritt zum Netzwerk",
-      "title": "Knoten"
+      "shortDescription": "Lösungen für den Betrieb eines Bitcoin-Nodes und den Beitritt zum Netzwerk",
+      "title": "Node"
     },
-    "pageDescription": "Bitcoin ist ein weites Feld, das jeden Tag größer und größer wird. Um Ihnen dabei zu helfen, sie zu erkunden, haben wir eine große Anzahl von Anleitungen zusammengestellt, die verschiedene Lösungen beschreiben.",
-    "pageSubtitle": "Willkommen in den unendlichen Bitcoin Kaninchenbau!",
-    "pageTitle": "Anleitungen",
+    "pageDescription": "Bitcoin ist eine weite Branche, die jeden Tag größer und größer wird. Um Ihnen bei der Erkundung zu helfen, haben wir eine große Anzahl von Tutorials gesammelt und kuratiert, die verschiedene Lösungen in allen Bereichen bezüglich Bitcoin beschreiben.",
+    "pageSubtitle": "Entschlüsseln Sie die Geheimnisse von Bitcoin, indem Sie sein riesiges Ökosystem erforschen",
+    "pageTitle": "Entdecken Sie unsere Tutorials",
     "privacy": {
       "bitcoin": {
-        "description": "Bitcoin ist standardmäßig nicht privat, sondern absichtlich pseudonym, und jede Transaktion ist öffentlich und wird für immer gespeichert. Um ein gewisses Maß an Vertraulichkeit wiederzuerlangen, müssen wir bewährte Benutzerpraktiken und spezielle, in unsere Software integrierte Tools verwenden. Von der Vermeidung der Wiederverwendung von Adressen bis hin zu CoinJoin, dem Mischen Ihrer Coins und der Verbindung zu Ihrem eigenen Knoten (Node) - wir helfen Ihnen auf Ihrem Weg zur Privatsphäre."
+        "description": "Bitcoin ist standardmäßig nicht privat, sondern absichtlich pseudonym, und jede Transaktion ist öffentlich und wird für immer gespeichert. Um ein gewisses Maß an Vertraulichkeit wiederzuerlangen, müssen wir bewährte Benutzerpraktiken und spezielle, in unsere Software integrierte Tools verwenden. Von der Vermeidung der Wiederverwendung von Adressen bis hin zu CoinJoin, dem Mischen Ihrer Coins und der Verbindung zu Ihrem eigenen Node - wir helfen Ihnen auf Ihrem Weg zur Privatsphäre."
       },
       "description": "Die Privatsphäre ist ein Grundrecht. Obwohl wir eine Welt anstreben, in der der Datenschutz Standard ist, ist dies nicht die Realität, in der wir leben. Wir werden versuchen, Ihnen die besten Praktiken zu erklären, Sie mit Anleitungen zu unterstützen und Sie auf einen souveränen Weg im Umgang mit Ihren Daten zu bringen.",
       "general": {
@@ -749,26 +773,28 @@
       "title": "Wallet"
     },
     "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
+      "title": "Andere",
+      "shortDescription": "Erkunden Sie vielfältige Tutorials zu eng verwandten Themen von Bitcoin",
+      "description": "Tauchen Sie ein in eine große Sammlung von Tutorials, die eng mit der Bitcoin-Ethos verbunden sind. Von Heimwerker- bis Open-Source-Tutorials, entdecken Sie neue Wissensbereiche, um noch souveräner zu werden.",
       "DIY": {
-        "description": ""
+        "description": "Entdecken Sie unsere DIY-Anleitungen, um zu lernen, wie Sie Dinge im Zusammenhang mit Bitcoin, Informatik und individueller Souveränität selbst erstellen können!"
       },
       "OpenSource": {
-        "description": ""
+        "description": "Erkunden Sie unsere Tutorials, die sich der Verwendung von Open-Source-Tools widmen!"
       },
       "contribution": {
-        "description": ""
+        "description": "Lernen Sie, wie Sie zum PlanB-Netzwerk beitragen und die Open-Source-Tools, die wir intern verwenden, durch unsere detaillierten Tutorials meistern können!"
       },
       "general": {
-        "description": ""
+        "description": "Durchsuchen Sie unsere allgemeinen Tutorials, um Ihr Wissen in der Informatik und anderen Themen im Zusammenhang mit individueller Souveränität zu bereichern!"
       }
-    }
+    },
+    "backTutorials": "Zurück zu allen Tutorials",
+    "approvedByCreator": "Vom Ersteller genehmigt"
   },
   "underConstruction": {
     "github": "GitHub",
-    "p1": "Ein Kaninchen hat ein Loch niedergeschlagen. Aufgrund dieses unerwarteten Abenteuers befindet sich diese Seite im Moment noch im Bau. Wir entschuldigen uns für jegliche Unannehmlichkeiten. Unser Team ist in vollem Gang, um diese Seite zu vervollständigen. Wenn Sie Interesse an einer Hand haben, zögern Sie bitte nicht unsere Seite zu besuchen",
+    "p1": "Ein Kaninchen hat ein Loch gestolpert. Aufgrund dieses unerwarteten Abenteuers befindet sich diese Seite im Moment noch im Bau. Wir entschuldigen uns für jegliche Unannehmlichkeiten. Unser Team ist in vollem Gang, um diese Seite zu vervollständigen.Wenn Sie daran interessiert sind, uns zu helfen, besuchen Sie doch einfach unsere",
     "p2": "und erwägen Sie, unserer Community beizutreten!",
     "pageTitle": "Hoppla."
   },
@@ -777,16 +803,16 @@
     "about-us": "Über uns",
     "account": "Konto",
     "additionalCriteria": "Zusätzliche Kriterien",
-    "advanced": "Erweitert",
-    "article": "Artikel",
-    "articles": "Artikel",
-    "audioBook": "Audio-Buch",
+    "advanced": "Fortgeschritten",
+    "article": "Beitrag",
+    "articles": "Beiträge",
+    "audioBook": "Hörbuch",
     "back": "Zurück",
     "beginner": "Anfänger",
-    "bitcoinWhitepaper": "Bitcoin-Whitepaper",
-    "book": "Buch",
+    "bitcoinWhitepaper": "Bitcoin Weißbuch",
+    "book": "Buchen",
     "books": "Bücher",
-    "builders": "Baumeister",
+    "builders": "Ersteller:innen",
     "certificate": "Zertifikat",
     "conference": "Konferenz",
     "conferences": "Konferenzen",
@@ -795,42 +821,45 @@
     "course": "Kurs",
     "courses": "Kurse",
     "dashboard": "Dashboard",
-    "details": "Details",
+    "details": "Angaben",
     "didYouKnow": "Wussten Sie schon?",
-    "documentaries": "Dokumentationen",
+    "documentaries": "Dokumentarfilme",
     "donations": "Spenden",
     "economy": "Wirtschaft",
     "education": "Bildung",
     "email": "E-Mail",
-    "events": "Events",
+    "events": "Veranstaltungen",
     "exchanges": "Austausche",
     "followUs": "Folgen Sie uns",
-    "helpUs": "Hilf uns",
-    "home": "Zuhause",
-    "intermediate": "Mittler",
+    "helpUs": "Helfen Sie uns",
+    "home": "Homepage",
+    "intermediate": "Mittelstufe",
     "interview": "Interview",
     "level": {
-      "advanced": "Erweitert",
+      "advanced": "Fortgeschritten",
       "beginner": "Anfänger",
       "developer": "Entwickler",
-      "intermediate": "Mittler"
+      "intermediate": "Mittelstufe",
+      "level": "Stufe",
+      "levels": "Stufen",
+      "wizard": "Assistent"
     },
     "library": "Bibliothek",
-    "lightning": "Blitz",
+    "lightning": "Lightning",
     "lnurlAuth": "LNURL Auth",
     "manifesto": "Das Manifest",
     "merchandising": "Merchandising",
-    "merchants": "Händler",
+    "merchants": "Verkäufer",
     "members": " Mitglieder",
-    "mining": "Bergbau",
+    "mining": "Mining",
     "more": "Mehr",
-    "movieDocumentary": "Filmdokument",
+    "movieDocumentary": "Dokumentarfilm",
     "network": "Netzwerk",
-    "networkMember": "Netzwerkmitglieder",
+    "networkMember": "Netzwerkmitglied",
     "newsletter": "Newsletter",
-    "newsletters": "Newsletter",
-    "node": "Knoten",
-    "nodeNetwork": "Knoten Netzwerk",
+    "newsletters": "Newsletters",
+    "node": "Node",
+    "nodeNetwork": "Node Netzwerk",
     "or": "oder",
     "ourStory": "Unsere Geschichte",
     "podcast": "Podcast",
@@ -843,28 +872,57 @@
     "resume": "Fortsetzen",
     "review": "Überprüfen",
     "rogzy": "Rogzy",
-    "sponsorUs": "Sponsor uns",
+    "sponsorUs": "Sponsern Sie uns",
     "sponsoringAndContributors": "Sponsoring & Mitwirkende",
-    "supportUs": "Unterstütze uns",
-    "teachers": "Lehrer",
-    "termsAndConditions": "Nutzungsbedingungen",
+    "supportUs": "Unterstützen Sie uns",
+    "teachers": "Lehrer*innen",
+    "termsAndConditions": "AGBs",
     "toolkits": "Toolkits",
     "tutorial": "Tutorial",
-    "tutorials": "Anleitungen",
+    "tutorials": "Tutorials",
     "update": "Aktualisieren",
     "video": "Video",
     "videos": "Videos",
     "wallets": "Wallets",
-    "date": "",
-    "time": "",
-    "to": "",
-    "billing": "",
-    "download": "",
-    "invoice": "",
-    "on": "",
-    "online": "",
-    "ticket": "",
-    "tickets": ""
+    "date": "Datum",
+    "time": "Zeit",
+    "to": "zu",
+    "billing": "Abrechnung",
+    "download": "Herunterladen",
+    "invoice": "Rechnung",
+    "on": "auf",
+    "online": "Online",
+    "ticket": "Ticket",
+    "tickets": "Tickets",
+    "builder": "Ersteller:in",
+    "chapter": "Kapitel",
+    "description": "Beschreibung",
+    "lectures": "Vorträge",
+    "lightningInvoice": "Lightning Rechnung",
+    "public": "Öffentliche Mitteilung",
+    "start": "Starten",
+    "all": "Alle",
+    "amount": "Menge",
+    "admins": "Administratoren",
+    "users": "Benutzer",
+    "courseId": "Kurs-ID",
+    "duration": "Dauer",
+    "edit": "Bearbeiten",
+    "free": "Kostenlos",
+    "glossary": "Glossar",
+    "hours": "Stunden",
+    "onChain": "Auf Kette",
+    "onChainAddress": "Auf der Kette Adresse",
+    "paid": "Bezahlt",
+    "part": "Teil",
+    "price": "Preis",
+    "professor": "Professor:in",
+    "students": "Schüler:innen",
+    "topics": "Themen",
+    "view": "Schauen",
+    "bCertificate": "₿ Zertifikat",
+    "unified": "Vereinigt",
+    "communities": "Gemeinschaften"
   },
   "conferences": {
     "description": "Konferenzen sind ein Schlüsselelement in der Bitcoin-Branche. Sie sind Teil der Bildungsreise eines jeden Bitcoiners. Wir haben dieses Tool entwickelt, um Ihnen bei der Navigation durch Hunderte von Konferenzen zu helfen.",
@@ -934,6 +992,45 @@
     "itemNotFoundOrTranslated": "{{item}} nicht gefunden oder nicht in Ihre Sprache übersetzt"
   },
   "proofreading": {
-    "completed": "Korrekturlesen abgeschlossen"
+    "completed": "Korrekturlesen abgeschlossen",
+    "description": "Der ursprüngliche Inhalt wurde von KI übersetzt, aber eine menschliche Überprüfung ist notwendig, um seine Genauigkeit zu gewährleisten.",
+    "inProgress": "Korrekturlesen in Bearbeitung",
+    "reviewEarn": "Überprüfen und Sats verdienen",
+    "status": "Status des Korrekturlesens",
+    "thanks": "Ein großes Dankeschön an unsere Prüfer:innen!"
+  },
+  "publicCommunication": {
+    "title": "Öffentliche Mitteilung",
+    "blogPost": "Blogs & Nachrichten",
+    "legal": "Rechtliche Informationen",
+    "blogCategories": {
+      "all": "Alle",
+      "course": "Kursfreigabe",
+      "feature": "Merkmal",
+      "patch": "Patchnotizen",
+      "grants": "Zuschüsse",
+      "network": "Netzwerk",
+      "content": "Inhalt"
+    },
+    "legalSections": {
+      "contact": "Kontakt",
+      "legalNotice": "Rechtliche Hinweise",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfSale": "Verkaufsbedingungen"
+    },
+    "description": "Bei Plan B Network sind wir stolz darauf, Open-Source-Standards zu folgen und während unserer gesamten Reise Transparenz zu wahren",
+    "goBackButtons": {
+      "simpleGoBack": "Zurück zu allen Artikeln"
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "Neuester Artikel veröffentlicht",
+      "pastArticleSubtitleText": "Vergangene Artikel",
+      "noArticlesText": "Zurzeit gibt es keine Blogbeiträge.",
+      "errorMessageNotFound": "Blog nicht gefunden.",
+      "blogSidebarTitle": "Vorherige Beiträge im Netzwerk",
+      "blogListButtonText": "Lesen",
+      "filterText": "Filtern nach Thema :",
+      "noBlogs": "Es gibt im Moment keinen Beitrag"
+    }
   }
 }

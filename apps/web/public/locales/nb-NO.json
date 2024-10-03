@@ -433,7 +433,12 @@
     "toolkits": "Verktøy",
     "topics": "Emner",
     "tutorial": "Veiledning",
-    "tutorials": "Veiledninger"
+    "tutorials": "Veiledninger",
+    "chapter": "Kapittel",
+    "builder": "Bidragsyter",
+    "hours": "timer",
+    "lectures": "Forelesninger",
+    "communities": "Fellesskap"
   },
   "dashboard": {
     "account": "Konto",
@@ -507,7 +512,52 @@
       "profilePicture": "Profilbilde",
       "security": "Sikkerhet",
       "username": "Brukernavn",
-      "personalInformation": "Min personlige informasjon"
+      "personalInformation": "Min personlige informasjon",
+      "profile": "Profil"
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "Analyse",
+        "courseDetails": "Kursdetaljer",
+        "courseId": "Kurs-ID",
+        "courseLongDescription": "Innledende beskrivelse",
+        "reviewInfos": "Her kan du kontrollere og gjennomgå all informasjon om hvert kurs du har koordinert.",
+        "courseName": "Kursnavn",
+        "courseShortDescription": "Mål",
+        "coursesManagementPanel": "Kurskontrollpanel",
+        "curriculum": "Kursstudieplan",
+        "curriculumDescription": "Her er det nåværende studieplan for dette kurset.",
+        "editOnGithub": "Rediger på Github",
+        "examResults": "Eksamensresultater",
+        "makeModifications": "Trenger du å gjøre endringer?",
+        "objectives": "Mål",
+        "proposeNewCourse": "Foreslå en ny kurs",
+        "courseModification": "Hvis du trenger hjelp til å redigere noe i kurset, vennligst sjekk denne <0>tutorial</0>.",
+        "quickRecap": "Her kan du finne all generell informasjon om dette kurset.",
+        "reviews": "Anmeldelser"
+      },
+      "profile": {
+        "descriptionTags": "Disse taggene fullfører din offentlige profil da de viser dine spesialiteter som en bitcoiner.",
+        "enterTipsInformations": "Plan ₿ Network oppfordrer brukere til å tipse lærere. Vennligst oppgi informasjonen din slik at folk kan tipse deg når de ønsker det.",
+        "publicDescription": "Denne beskrivelsen vises i lærerinformasjonskortet ditt på plattformen.",
+        "tutorialModification": "Hvis du trenger hjelp til å redigere noe, vennligst sjekk denne <0>tutorial</0>.",
+        "account": "Lærerkonto",
+        "billingInformations": "Faktureringsinformasjon",
+        "chooseTags": "Velg de taggene som beskriver deg best",
+        "description": "Din beskrivelse",
+        "lightningAddress": "Lightningadresse",
+        "makeModifications": "Trenger du å gjøre endringer?",
+        "noLightningAddress": "Ingen lightningadresse lagt til ennå.",
+        "noShortBio": "Ingen kort bio er koblet til denne kontoen ennå, føl deg fri til å legge den til på GitHub.",
+        "noTags": "Ingen tagger er koblet til denne kontoen ennå.",
+        "notifications": "Varsler",
+        "publicProfile": "Offentlig profil",
+        "publicProfileDescription": "Her kan du fylle ut eller redigere all informasjon knyttet til din aktivitet som lærer på Plan ₿ Network.",
+        "writeShortBio": "Skriv en kort biografi om deg selv",
+        "teacher": "Lærer",
+        "teacherProfile": "Lærerprofil"
+      },
+      "menu": "Lærer-meny"
     }
   },
   "events": {
@@ -698,10 +748,17 @@
     "tips": {
       "thanksNoName": "Takk for at du støtter arbeidet mitt!",
       "noTipsYet": "Denne professoren aksepterer ikke tips for øyeblikket.",
-      "thanks": "Takk for at du støtter {{name}}s arbeid!"
+      "thanks": "Takk for at du støtter {{name}}s arbeid!",
+      "authorSupport": "Støtt forfatteren med et tips"
     },
     "pageSubtitle": "Alle våre professorer er frivillige og lidenskapelige bitcoinere. Du kan gi tips for å si takk.",
-    "pageTitle": "Professorer"
+    "pageTitle": "Professorer",
+    "navigationTitles": {
+      "all": "Alt",
+      "lecturers": "Forelesere",
+      "teachers": "Lærere",
+      "tutorialCreators": "Veilednings lærere"
+    }
   },
   "proofreading": {
     "description": "Det originale innholdet har blitt oversatt av AI, men menneskelig gjennomgang er nødvendig for å sikre nøyaktigheten.",
@@ -929,5 +986,9 @@
     "p1": "En kanin har tumlet ned i et hull. På grunn av dette uventede eventyret, er denne siden under litt konstruksjon for øyeblikket. Vi beklager eventuelle ulemper. Vårt team jobber på høygir for å fullføre denne siden. Hvis du er interessert i å gi en hjelpende hånd, nøl ikke med å sjekke ut vår",
     "p2": "og vurder å bli med i fellesskapet vårt!",
     "pageTitle": "Oisann."
+  },
+  "general": {
+    "itemNotFound": "{{item}} ikke funnet",
+    "itemNotFoundOrTranslated": "{{item}} ikke funnet, eller ikke oversatt til ditt språk"
   }
 }
