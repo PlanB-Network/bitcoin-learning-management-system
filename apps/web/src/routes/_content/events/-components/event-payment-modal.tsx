@@ -1,5 +1,3 @@
-import { Buffer } from 'buffer';
-
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -18,10 +16,6 @@ import { trpc } from '#src/utils/trpc.js';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
-const hexToBase64 = (hexstring: string) => {
-  return Buffer.from(hexstring, 'hex').toString('base64');
-};
-
 interface EventPaymentModalProps {
   eventId: string;
   event: JoinedEvent;
@@ -32,7 +26,7 @@ interface EventPaymentModalProps {
 }
 
 interface WebSocketMessage {
-  settled: boolean;
+  status: string;
 }
 
 export const EventPaymentModal = ({
@@ -54,18 +48,15 @@ export const EventPaymentModal = ({
       const ws = new WebSocket('wss://api.swiss-bitcoin-pay.ch/invoice/ln');
 
       ws.addEventListener('open', () => {
-        const hash = hexToBase64(paymentData.id);
-        ws.send(JSON.stringify({ hash: hash }));
+        ws.send(JSON.stringify({ id: paymentData.id }));
       });
 
       const handleMessage = (event: MessageEvent) => {
         const message: WebSocketMessage = JSON.parse(
           event.data as string,
         ) as WebSocketMessage;
-        if (message.settled) {
-          setTimeout(() => {
-            setIsPaymentSuccess(true);
-          }, 2000);
+        if (message.status === 'settled') {
+          setIsPaymentSuccess(true);
         }
       };
 
