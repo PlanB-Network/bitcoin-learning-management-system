@@ -53,6 +53,7 @@ function Podcasts() {
                 podcastId: podcast.id.toString(),
               }}
               key={podcast.id}
+              className="grow"
             >
               <ResourceCard
                 name={podcast.name}
