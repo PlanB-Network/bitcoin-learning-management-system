@@ -40,7 +40,11 @@ export const CourseCurriculum = ({
                       className="flex justify-between items-center pl-8"
                     >
                       <Link
-                        to={'/courses/$courseId/$chapterId'}
+                        to={
+                          courseHasToBePurchased
+                            ? ''
+                            : '/courses/$courseId/$chapterId'
+                        }
                         params={{
                           courseId: course.id,
                           chapterId: chapter.chapterId,
