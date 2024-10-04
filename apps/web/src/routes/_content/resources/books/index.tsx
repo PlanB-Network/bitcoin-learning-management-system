@@ -53,6 +53,7 @@ function Books() {
                 bookId: book.id.toString(),
               }}
               key={book.id}
+              className="grow"
             >
               <ResourceCard
                 name={book.title}
