@@ -401,8 +401,18 @@ function CourseDetails() {
         </span>
         <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           {t('courses.details.taughtBy')}{' '}
-          <span className="text-darkOrange-5 label-large-20px md:display-small-32px !font-medium">
-            {course.professors.map((professor) => professor.name).join(', ')}
+          <span className="text-darkOrange-5 label-large-20px md:display-small-32px hover:!font-medium">
+            {course.professors.map((professor, index) => (
+              <React.Fragment key={professor.id}>
+                <Link
+                  to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+                  className="hover:text-darkOrange-5"
+                >
+                  {professor.name}
+                </Link>
+                {index < course.professors.length - 1 && ', '}
+              </React.Fragment>
+            ))}
           </span>
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
