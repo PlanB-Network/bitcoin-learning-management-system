@@ -130,6 +130,9 @@ function NodeNetwork() {
       footerVariant="dark"
     >
       <div className="flex flex-col items-center text-white px-4 sm:px-10">
+        <p className="px-2 max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px]  mt-1 md:mt-0 max-md:hidden">
+          {t('nodeNetwork.descriptionextend')}
+        </p>
         <div className="max-w-[1017px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11">
           {!isFetched && <Loader size={'s'} />}
           {filteredCommunities.map((community) => (
@@ -152,6 +155,12 @@ function NodeNetwork() {
 
         <div className="w-full  mt-10">
           <CommunitiesMap communities={filteredCommunities} />
+        </div>
+
+        <div>
+          <p className="block md:hidden max-w-4xl mx-auto px-2 text-center text-lg desktop-subtitle1 text-white leading-[1.66] tracking-[0.4px] mt-4 md:mt-0">
+            {t('nodeNetwork.descriptionextend')}
+          </p>
         </div>
 
         <QnA />
