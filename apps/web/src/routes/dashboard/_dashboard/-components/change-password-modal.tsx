@@ -1,10 +1,9 @@
-import type { FormikHelpers } from 'formik';
-import { Formik } from 'formik';
-import { isEmpty } from 'lodash-es';
+import { zodResolver } from '@hookform/resolvers/zod';
 import PasswordValidator from 'password-validator';
-import { useCallback } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ZodError, z } from 'zod';
+import { z } from 'zod';
 
 import {
   Button,
@@ -14,37 +13,22 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  TextInput,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
 } from '@blms/ui';
 
 import { trpc } from '#src/utils/trpc.js';
 
 const password = new PasswordValidator().is().min(10);
 
-const changePasswordSchema = z
-  .object({
-    oldPassword: z.string(),
-    newPassword: z.string().refine(
-      (pwd) => password.validate(pwd),
-      (pwd) => {
-        const result = password.validate(pwd, { details: true });
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-        return { message: Array.isArray(result) ? result[0].message : '' };
-      },
-    ),
-    newPasswordConfirmation: z.string(),
-  })
-  .refine((data) => data.newPassword === data.newPasswordConfirmation, {
-    message: 'auth.passwordsDontMatch',
-    path: ['newPasswordConfirmation'],
-  });
-
 interface ChangePasswordModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
 
 export const ChangePasswordModal = ({
   isOpen,
@@ -54,39 +38,44 @@ export const ChangePasswordModal = ({
   const changePassword = trpc.user.changePassword.useMutation({
     onSuccess: onClose,
   });
+  const passwordsDontMatchMessage = t('auth.passwordsDontMatch');
 
-  const handleChangePassword = useCallback(
-    async (
-      values: ChangePasswordForm,
-      actions: FormikHelpers<ChangePasswordForm>,
-    ) => {
-      const errors = await actions.validateForm();
-      if (!isEmpty(errors)) return;
+  const changePasswordSchema = z
+    .object({
+      oldPassword: z.string(),
+      newPassword: z.string().refine(
+        (pwd) => password.validate(pwd),
+        (pwd) => {
+          const result = password.validate(pwd, { details: true });
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          return { message: Array.isArray(result) ? result[0].message : '' };
+        },
+      ),
+      newPasswordConfirmation: z.string(),
+    })
+    .refine((data) => data.newPassword === data.newPasswordConfirmation, {
+      message: passwordsDontMatchMessage,
+      path: ['newPasswordConfirmation'],
+    });
 
-      changePassword.mutate({
-        oldPassword: values.oldPassword,
-        newPassword: values.newPassword,
-      });
+  type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
+
+  const form = useForm<z.infer<typeof changePasswordSchema>>({
+    resolver: zodResolver(changePasswordSchema),
+    defaultValues: {
+      oldPassword: '',
+      newPassword: '',
+      newPasswordConfirmation: '',
     },
-    [changePassword],
-  );
+  });
 
-  const validate = (values: ChangePasswordForm) => {
-    try {
-      changePasswordSchema.parse(values);
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const errors = error.flatten().fieldErrors;
-        if (errors.newPassword) {
-          errors.newPassword = errors.newPassword.map((msg) => t(msg));
-        }
-        if (errors.newPasswordConfirmation) {
-          errors.newPasswordConfirmation = [t('auth.passwordsDontMatch')];
-        }
-        return errors;
-      }
-    }
+  const onSubmit: SubmitHandler<ChangePasswordForm> = async (values) => {
+    await changePassword.mutateAsync({
+      oldPassword: values.oldPassword,
+      newPassword: values.newPassword,
+    });
   };
+  const methods = useForm();
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -104,86 +93,72 @@ export const ChangePasswordModal = ({
             {t('settings.changePassword')}
           </DialogDescription>
         </DialogHeader>
-        <Formik
-          initialValues={{
-            oldPassword: '',
-            newPassword: '',
-            newPasswordConfirmation: '',
-          }}
-          validate={validate}
-          onSubmit={handleChangePassword}
-        >
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            values,
-            errors,
-            touched,
-          }) => (
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleSubmit();
-              }}
-              className="flex w-full flex-col items-center py-6"
+        <FormProvider {...methods}>
+          <form
+            className="flex w-full flex-col items-center py-6"
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
+            <FormField
+              control={form.control}
+              name="oldPassword"
+              render={({ field, fieldState }) => (
+                <FormItem className="flex flex-col justify-between text-center">
+                  <div className="my-2 w-80">
+                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                      Old password
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                  </div>
+                  <FormMessage>{fieldState.error?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="newPassword"
+              render={({ field, fieldState }) => (
+                <FormItem className="flex flex-col justify-between text-center">
+                  <div className="my-2 w-80">
+                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                      New password
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                  </div>
+                  <FormMessage>{fieldState.error?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="newPasswordConfirmation"
+              render={({ field, fieldState }) => (
+                <FormItem className="flex flex-col justify-between text-center">
+                  <div className="my-2 w-80">
+                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                      Confirmation
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                  </div>
+                  <FormMessage>{fieldState.error?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              variant="primary"
+              mode="light"
+              className="mt-6"
             >
-              <div className="flex w-full flex-col items-center">
-                <TextInput
-                  name="oldPassword"
-                  type="password"
-                  labelText="Old password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.oldPassword}
-                  className="w-80"
-                  error={touched.oldPassword ? errors.oldPassword : null}
-                />
-
-                <TextInput
-                  name="newPassword"
-                  type="password"
-                  labelText="New password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.newPassword}
-                  className="w-80"
-                  error={touched.newPassword ? errors.newPassword : null}
-                />
-
-                <TextInput
-                  name="newPasswordConfirmation"
-                  type="password"
-                  labelText="Confirmation"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.newPasswordConfirmation}
-                  className="w-80"
-                  error={
-                    touched.newPasswordConfirmation
-                      ? errors.newPasswordConfirmation
-                      : null
-                  }
-                />
-
-                {changePassword.error && (
-                  <p className="mt-2 text-base font-semibold text-red-300">
-                    {t(changePassword.error.message)}
-                  </p>
-                )}
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  mode="light"
-                  className="mt-6"
-                >
-                  {t('words.update')}
-                </Button>
-              </div>
-            </form>
-          )}
-        </Formik>
+              {t('words.update')}
+            </Button>
+          </form>
+        </FormProvider>
       </DialogContent>
     </Dialog>
   );

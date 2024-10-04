@@ -1,11 +1,11 @@
-import type { FormikHelpers } from 'formik';
-import { Formik } from 'formik';
-import { isEmpty } from 'lodash-es';
+import { zodResolver } from '@hookform/resolvers/zod';
 import PasswordValidator from 'password-validator';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { BsCheck, BsLightningChargeFill } from 'react-icons/bs';
-import { ZodError, z } from 'zod';
+import { BsCheck } from 'react-icons/bs';
+import { z } from 'zod';
 
 import {
   Button,
@@ -16,13 +16,22 @@ import {
   DialogOverlay,
   DialogPortal,
   DialogTitle,
-  Divider,
-  TextInput,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  Input,
 } from '@blms/ui';
 
 import { trpc } from '../../utils/trpc.ts';
 
 import { AuthModalState } from './props.ts';
+
+interface RegisterFormData {
+  username: string;
+  password: string;
+  confirmation: string;
+}
 
 interface RegisterProps {
   isOpen: boolean;
@@ -31,9 +40,8 @@ interface RegisterProps {
 }
 
 export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
-  const password = new PasswordValidator().is().min(10);
-
   const { t } = useTranslation();
+  const password = new PasswordValidator().is().min(10);
 
   const registerSchema = z
     .object({
@@ -57,7 +65,14 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
       path: ['confirmation'],
     });
 
-  type AccountData = z.infer<typeof registerSchema>;
+  const methods = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: '',
+      password: '',
+      confirmation: '',
+    },
+  });
 
   const register = trpc.auth.credentials.register.useMutation({
     onSuccess: () => {
@@ -68,11 +83,8 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
     },
   });
 
-  const handleCreateUserAccount = useCallback(
-    async (values: AccountData, actions: FormikHelpers<AccountData>) => {
-      const errors = await actions.validateForm();
-      if (!isEmpty(errors)) return;
-
+  const handleCreateUserAccount: SubmitHandler<RegisterFormData> = useCallback(
+    (values) => {
       register.mutate({
         password: values.password,
         username: values.username,
@@ -81,25 +93,14 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
     [register],
   );
 
-  useEffect(() => {
-    async function initial() {
-      if (register.data) {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        onClose();
-      }
-    }
-
-    initial();
-  }, [onClose, register.data]);
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogPortal>
         <DialogOverlay />
         <DialogContent
-          showCloseButton={true}
+          showCloseButton
           className="gap-3 py-2 px-4 sm:gap-6 sm:p-6 w-full max-w-[90%] md:max-w-sm"
-          showAccountHelper={true}
+          showAccountHelper
         >
           <DialogHeader>
             <DialogTitle>
@@ -126,124 +127,86 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
                 <DialogDescription className="hidden">
                   Register
                 </DialogDescription>
-                <Button
-                  variant="outline"
-                  size="m"
-                  onClick={() => goTo(AuthModalState.LnurlAuth)}
-                  disabled
-                  className="mb-2.5"
-                >
-                  {t('auth.connectWithLn')}
-                  <span className="ml-3">
-                    <BsLightningChargeFill className="w-6" />
-                  </span>
-                </Button>
-                <Divider>{t('words.or').toLowerCase()}</Divider>
-                <Formik
-                  initialValues={{
-                    username: '',
-                    password: '',
-                    confirmation: '',
-                  }}
-                  validate={(values) => {
-                    try {
-                      registerSchema.parse(values);
-                      return {};
-                    } catch (error) {
-                      if (error instanceof ZodError) {
-                        return error.flatten().fieldErrors;
-                      }
-                      return {};
-                    }
-                  }}
-                  onSubmit={handleCreateUserAccount}
-                >
-                  {({
-                    handleSubmit,
-                    handleChange,
-                    handleBlur,
-                    values,
-                    errors,
-                    touched,
-                  }) => (
-                    <form
-                      onSubmit={(event) => {
-                        event.preventDefault();
-                        handleSubmit();
-                      }}
-                      className="flex w-full flex-col items-center mt-3"
-                    >
-                      <div className="flex w-full flex-col items-center">
-                        <TextInput
-                          name="username"
-                          labelText={t('dashboard.profile.username')}
-                          placeholder={t(
-                            'dashboard.profile.username',
-                          ).toLowerCase()}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.username}
-                          className="w-full"
-                          error={
-                            touched.username && errors.username
-                              ? errors.username[0]
-                              : null
-                          }
-                          mandatory
-                        />
-                        <TextInput
-                          name="password"
-                          type="password"
-                          labelText={t('dashboard.profile.password')}
-                          placeholder={t(
-                            'dashboard.profile.password',
-                          ).toLowerCase()}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.password}
-                          className="w-full"
-                          error={
-                            touched.password && errors.password
-                              ? errors.password[0]
-                              : null
-                          }
-                          mandatory
-                        />
-                        <TextInput
-                          name="confirmation"
-                          type="password"
-                          labelText="Confirmation"
-                          placeholder={t(
-                            'dashboard.profile.password',
-                          ).toLowerCase()}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.confirmation}
-                          className="w-full"
-                          error={
-                            touched.confirmation && errors.confirmation
-                              ? errors.confirmation[0]
-                              : null
-                          }
-                          mandatory
-                        />
-                      </div>
-                      {register.error && (
-                        <p className="mt-2 text-base font-semibold text-red-300">
-                          {register.error.message}
-                        </p>
+
+                <FormProvider {...methods}>
+                  <form
+                    onSubmit={methods.handleSubmit(handleCreateUserAccount)}
+                    className="flex w-full flex-col items-center mt-3"
+                  >
+                    <FormField
+                      control={methods.control}
+                      name="username"
+                      render={({ field, fieldState }) => (
+                        <FormItem className="my-2 w-full">
+                          <FormLabel>
+                            {t('dashboard.profile.username')}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="username"
+                              {...field}
+                              error={fieldState.error?.message || null}
+                            />
+                          </FormControl>
+                        </FormItem>
                       )}
-                      <Button
-                        variant="primary"
-                        size="m"
-                        type="submit"
-                        className="my-8"
-                      >
-                        {t('auth.createAccount')}
-                      </Button>
-                    </form>
-                  )}
-                </Formik>
+                    />
+
+                    <FormField
+                      control={methods.control}
+                      name="password"
+                      render={({ field, fieldState }) => (
+                        <FormItem className="my-2 w-full">
+                          <FormLabel>
+                            {t('dashboard.profile.password')}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="password"
+                              type="password"
+                              {...field}
+                              error={fieldState.error?.message || null}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={methods.control}
+                      name="confirmation"
+                      render={({ field, fieldState }) => (
+                        <FormItem className="my-2 w-full">
+                          <FormLabel>{t('auth.confirmation')}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="password"
+                              type="password"
+                              {...field}
+                              error={fieldState.error?.message || null}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+
+                    {register.error && (
+                      <p className="mt-2 text-base font-semibold text-red-300">
+                        {register.error.message}
+                      </p>
+                    )}
+
+                    <Button
+                      variant="primary"
+                      size="m"
+                      type="submit"
+                      className="my-8"
+                    >
+                      {t('auth.createAccount')}
+                    </Button>
+                  </form>
+                </FormProvider>
+
                 <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
                   {t('auth.alreadyHaveAccount')}{' '}
                   <button

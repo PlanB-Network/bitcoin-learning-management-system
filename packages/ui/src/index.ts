@@ -17,7 +17,6 @@ export * from './atoms/slider.tsx';
 export * from './atoms/tabs.tsx';
 export * from './atoms/tag.tsx';
 export * from './atoms/text-tag.tsx';
-export * from './atoms/text-input.tsx';
 export * from './atoms/textarea.tsx';
 export * from './atoms/tooltip.tsx';
 export * from './lib/utils.ts';

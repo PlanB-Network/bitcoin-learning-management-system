@@ -89,7 +89,7 @@ const FormLabel = React.forwardRef<
     <Label
       ref={ref}
       className={cn(
-        'text-center mb-4 block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
+        'text-center block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
         error && 'text-destructive',
         className,
       )}

@@ -1,9 +1,9 @@
-import type { FormikHelpers } from 'formik';
-import { Formik } from 'formik';
-import { t } from 'i18next';
-import { isEmpty } from 'lodash-es';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
-import { ZodError, z } from 'zod';
+import type { SubmitHandler } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 
 import {
   Button,
@@ -13,43 +13,53 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  TextInput,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  Input,
 } from '@blms/ui';
 
 import { trpc } from '#src/utils/trpc.js';
 
 const changeEmailSchema = z.object({
-  email: z.string(),
+  email: z.string().email({ message: 'Invalid email address' }),
 });
 
-interface ChangePasswordModalProps {
+type ChangeEmailForm = z.infer<typeof changeEmailSchema>;
+
+interface ChangeEmailModalProps {
   isOpen: boolean;
   onClose: () => void;
   email: string;
   onEmailSent: () => void;
 }
 
-type ChangeEmailForm = z.infer<typeof changeEmailSchema>;
-
 export const ChangeEmailModal = ({
   isOpen,
   onClose,
   email,
   onEmailSent,
-}: ChangePasswordModalProps) => {
+}: ChangeEmailModalProps) => {
+  const { t } = useTranslation();
   const changeEmail = trpc.user.changeEmail.useMutation({
     onSuccess: () => {
       onClose();
       onEmailSent();
     },
+    onError: (error) => {
+      console.error('Error changing email:', error.message);
+    },
   });
 
-  const handleChangeEmail = useCallback(
-    async (form: ChangeEmailForm, actions: FormikHelpers<ChangeEmailForm>) => {
-      const errors = await actions.validateForm();
-      if (!isEmpty(errors)) return;
+  const form = useForm<ChangeEmailForm>({
+    resolver: zodResolver(changeEmailSchema),
+    defaultValues: { email },
+  });
 
-      changeEmail.mutate(form);
+  const onSubmit: SubmitHandler<ChangeEmailForm> = useCallback(
+    async (values) => {
+      await changeEmail.mutateAsync(values);
     },
     [changeEmail],
   );
@@ -70,72 +80,47 @@ export const ChangeEmailModal = ({
             {t('settings.changeEmail')}
           </DialogDescription>
         </DialogHeader>
-        <Formik
-          initialValues={{ email }}
-          validate={(values) => {
-            try {
-              changeEmailSchema.parse(values);
-            } catch (error) {
-              if (error instanceof ZodError) {
-                return error.flatten().fieldErrors;
-              }
-            }
-          }}
-          onSubmit={handleChangeEmail}
-        >
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            values,
-            errors,
-            touched,
-          }) => (
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleSubmit();
-              }}
-              className="flex w-full flex-col"
-            >
-              <div className="pb-8">
-                <div className="flex w-full flex-col">
-                  <TextInput
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    labelText="Email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    className="w-80"
-                    error={touched.email ? errors.email : null}
-                  />
-                </div>
+        <FormProvider {...form}>
+          <form
+            className="flex w-full flex-col items-center py-6"
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field, fieldState }) => (
+                <FormItem className="flex flex-col justify-between text-center">
+                  <div className="my-2 w-80">
+                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                      Email{' '}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        {...field}
+                        error={fieldState.error?.message || null}
+                      />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
 
-                {changeEmail.error && (
-                  <p className="mt-2 text-base font-semibold text-red-300">
-                    {t(changeEmail.error.message)}
-                  </p>
-                )}
-              </div>
-
-              <div className="p-4 flex gap-4 justify-between">
-                <Button variant="primary" size="m" type="submit">
-                  {t('dashboard.profile.save')}
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="m"
-                  type="reset"
-                  onClick={onClose}
-                >
-                  {t('dashboard.profile.cancel')}
-                </Button>
-              </div>
-            </form>
-          )}
-        </Formik>
+            <div className="p-4 flex gap-4 justify-between">
+              <Button variant="primary" size="m" type="submit">
+                {t('dashboard.profile.save')}
+              </Button>
+              <Button
+                variant="secondary"
+                size="m"
+                type="button"
+                onClick={onClose}
+              >
+                {t('dashboard.profile.cancel')}
+              </Button>
+            </div>
+          </form>
+        </FormProvider>
       </DialogContent>
     </Dialog>
   );

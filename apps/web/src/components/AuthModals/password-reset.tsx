@@ -1,5 +1,5 @@
-import { Formik } from 'formik';
 import { useCallback, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -9,7 +9,12 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  TextInput,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
 } from '@blms/ui';
 
 import { trpc } from '#src/utils/index.js';
@@ -45,6 +50,10 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     },
   });
 
+  const methods = useForm<{ email: string }>({
+    defaultValues: { email: '' },
+  });
+
   const handlePasswordReset = useCallback(
     ({ email }: { email: string }) => {
       console.log('Reset password for email:', email);
@@ -57,41 +66,34 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const modalContent = {
     [ResetPasswordState.Initial]: (
       <>
-        <Formik initialValues={{ email: '' }} onSubmit={handlePasswordReset}>
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            errors,
-          }) => (
-            <form
-              onSubmit={handleSubmit}
-              className="flex w-full flex-col items-center"
-            >
-              <TextInput
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(handlePasswordReset)}
+            className="flex w-full flex-col items-center"
+          >
+            <FormItem className="my-2 w-4/5">
+              <FormLabel>{t('auth.emailAddress')}</FormLabel>
+              <FormField
                 name="email"
-                labelText={t('auth.emailAddress')}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                autoComplete="email"
-                className="w-4/5"
-                error={touched.email ? errors.email : null}
+                render={({ field }) => (
+                  <FormControl>
+                    <Input type="email" {...field} className="w-full" />
+                  </FormControl>
+                )}
               />
+              <FormMessage />
+            </FormItem>
+            <Button
+              variant="primary"
+              type="submit"
+              className="mb-5 mt-2"
+              disabled={!methods.watch('email')}
+            >
+              {t('auth.sendLink')}
+            </Button>
+          </form>
+        </FormProvider>
 
-              <Button
-                variant="primary"
-                type="submit"
-                className="mb-5 mt-2"
-                disabled={values.email === ''}
-              >
-                {t('auth.sendLink')}
-              </Button>
-            </form>
-          )}
-        </Formik>
         <p className="mb-0 text-xs">
           <button
             className="cursor-pointer border-none bg-transparent text-xs underline"
@@ -103,7 +105,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       </>
     ),
     [ResetPasswordState.Sent]: (
-      <div>
+      <div className="flex flex-col items-center">
         <p className="mb-8">{t('auth.passwordResetSent')}</p>
         <Button variant="primary" onClick={() => goTo(AuthModalState.SignIn)}>
           {t('auth.backToLogin')}
@@ -111,7 +113,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
       </div>
     ),
     [ResetPasswordState.Error]: (
-      <div>
+      <div className="flex flex-col items-center">
         <p className="mb-8">{t('auth.passwordResetError')}</p>
         <Button
           variant="primary"
