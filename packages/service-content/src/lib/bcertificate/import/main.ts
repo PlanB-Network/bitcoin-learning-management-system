@@ -37,11 +37,11 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     await transaction<BCertificateExam[]>`
         INSERT INTO content.b_certificate_exam (
-          path, id, date, location, min_score, duration, last_updated, last_commit, last_sync
+          id, path, date, location, min_score, duration, last_updated, last_commit, last_sync
         )
         VALUES (
-          ${bCertificateExam.path},
           ${parsedBCertificateExam.exam_id},
+          ${bCertificateExam.path},
           ${parsedBCertificateExam.date},
           ${parsedBCertificateExam.location},
           ${parsedBCertificateExam.score_min},
@@ -50,8 +50,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (path) DO UPDATE SET
-          id = EXCLUDED.id,
+        ON CONFLICT (id) DO UPDATE SET
+          path = EXCLUDED.path,
           date = EXCLUDED.date,
           location = EXCLUDED.location,
           min_score = EXCLUDED.min_score,

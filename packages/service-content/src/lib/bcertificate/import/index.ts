@@ -27,7 +27,7 @@ export const parseDetailsFromPath = (path: string): BCertificateExamDetails => {
     throw new Error('Invalid B Certificate Exam path');
 
   return {
-    path: pathElements.slice(0, 2).join('/'),
+    path: pathElements.slice(0, 3).join('/'),
     fullPath: pathElements.join('/'),
   };
 };
@@ -37,7 +37,7 @@ export const groupByBCertificateExam = (
   errors: string[],
 ) => {
   const bCertificateExamsFiles = files.filter(
-    (item) => getContentType(item.path) === 'bcert',
+    (item) => getContentType(item.path) === 'bcert/editions',
   );
 
   const groupedBCertificateExams = new Map<string, ChangedBCertificateExam>();
@@ -50,7 +50,7 @@ export const groupByBCertificateExam = (
 
       const bCertificateExam: ChangedBCertificateExam =
         groupedBCertificateExams.get(bCertificateExamPath) || {
-          type: 'bcert',
+          type: 'bcert/editions',
           path: bCertificateExamPath,
           fullPath: fullPath,
           files: [],
@@ -75,7 +75,10 @@ export const createUpdateBCertificateExams = ({ postgres }: Dependencies) => {
     bCertificateExam: ChangedBCertificateExam,
     errors: string[],
   ) => {
-    const { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
+    // eslint-disable-next-line prefer-const
+    let { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
+
+    files = files.filter((file) => !file.path.includes('exam/'));
 
     return postgres
       .begin(async (transaction) => {
