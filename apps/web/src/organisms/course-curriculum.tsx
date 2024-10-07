@@ -33,8 +33,7 @@ export const CourseCurriculum = ({
             <div className="flex flex-col gap-2.5 lg:gap-4 mt-5">
               {part.chapters?.map((chapter, index) => {
                 return (
-                  chapter !== undefined &&
-                  !chapter.isCourseReview && (
+                  chapter !== undefined && (
                     <div
                       key={index}
                       className="flex justify-between items-center pl-8"
@@ -50,11 +49,28 @@ export const CourseCurriculum = ({
                           chapterId: chapter.chapterId,
                         }}
                         className={cn(
-                          'label-medium-16px hover:font-medium hover:underline',
+                          'flex items-center group/link gap-7',
                           courseHasToBePurchased && 'pointer-events-none',
                         )}
                       >
-                        {`${partIndex + 1}.${chapter.chapterIndex} - ${chapter.title}`}
+                        <span className="label-medium-16px group-hover/link:font-medium group-hover/link:underline">{`${partIndex + 1}.${chapter.chapterIndex} - ${chapter.title}`}</span>
+                        {chapter.startDate &&
+                          chapter.startDate > new Date() && (
+                            <span className="text-newGray-1 leading-[121%] hover:no-underline max-lg:hidden">
+                              {'//'}{' '}
+                              {new Intl.DateTimeFormat(undefined, {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                hour12: true,
+                                timeZoneName: 'short',
+                              }).format(new Date(chapter.startDate))}
+                              {chapter.addressLine1 &&
+                                ` - ${chapter.addressLine1}`}
+                            </span>
+                          )}
                       </Link>
                       {!hideGithubLink && (
                         <Link
