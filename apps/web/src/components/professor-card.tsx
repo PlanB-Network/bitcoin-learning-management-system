@@ -8,6 +8,7 @@ import type { FormattedProfessor } from '@blms/types';
 
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import NostrIcon from '../assets/icons/nostr-primary.svg';
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
 
@@ -93,16 +94,20 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.open(
-              professor.links.nostr as string,
-              '_blank',
-              'noopener noreferrer',
-            );
+            const baseUrl = 'https://primal.net/p/';
+            const nostrLink = professor.links.nostr as string;
+            const fullUrl =
+              nostrLink.startsWith('http://') ||
+              nostrLink.startsWith('https://')
+                ? nostrLink
+                : baseUrl + nostrLink;
+            window.open(fullUrl, '_blank', 'noopener noreferrer');
           }}
         >
-          <img src={TwitterIcon} alt="Nostr" className="block" />
+          <img src={NostrIcon} alt="Nostr" className="block" />
         </button>
       )}
+
       {professor.links.website && (
         <button
           onClick={(e) => {
