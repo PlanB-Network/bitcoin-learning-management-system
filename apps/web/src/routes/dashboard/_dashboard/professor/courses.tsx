@@ -229,8 +229,9 @@ const CourseDetails = ({ course }: { course: JoinedCourseWithProfessors }) => {
     Level: t(`words.level.${course.level}`),
     Duration: `${course.hours} ${t('words.hours')}`,
     Price:
-      course.paidPriceDollars && course.paidPriceDollars > 0
-        ? `$${course.paidPriceDollars}`
+      (course.onlinePriceDollars && course.onlinePriceDollars > 0) ||
+      (course.inpersonPriceDollars && course.inpersonPriceDollars > 0)
+        ? `$${course.inpersonPriceDollars} (in-person) \n $${course.onlinePriceDollars} (online)`
         : t('words.free'),
     'Course ID': course.id.toUpperCase(),
   };

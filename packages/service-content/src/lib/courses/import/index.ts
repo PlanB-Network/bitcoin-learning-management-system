@@ -104,7 +104,9 @@ interface CourseMain {
   professors: string[];
   tags?: string[];
   requires_payment: boolean;
-  paid_price_dollars?: number;
+  format: string;
+  online_price_dollars?: number;
+  inperson_price_dollars?: number;
   paid_description?: string;
   paid_video_link?: string;
   paid_start_date?: string;
@@ -342,8 +344,12 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
               )
               .sort((a, b) => b.time - a.time)[0];
 
+            if (!parsedCourse.format) {
+              parsedCourse.format = 'online';
+            }
+
             const result = await transaction<Course[]>`
-                INSERT INTO content.courses (id, level, hours, topic, subtopic, original_language, requires_payment, paid_price_dollars,
+                INSERT INTO content.courses (id, level, hours, topic, subtopic, original_language, requires_payment, format, online_price_dollars, inperson_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
                   last_updated, last_commit, last_sync)
                 VALUES (
@@ -354,7 +360,9 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.subtopic},
                   ${parsedCourse.original_language},
                   ${parsedCourse.requires_payment === true ? true : false},
-                  ${parsedCourse.paid_price_dollars},
+                  ${parsedCourse.format},
+                  ${parsedCourse.online_price_dollars},
+                  ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
                   ${parsedCourse.paid_video_link},
                   ${startDateTimestamp},
@@ -371,7 +379,9 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   subtopic = EXCLUDED.subtopic,
                   original_language = EXCLUDED.original_language,
                   requires_payment = EXCLUDED.requires_payment,
-                  paid_price_dollars = EXCLUDED.paid_price_dollars,
+                  format = EXCLUDED.format,
+                  online_price_dollars = EXCLUDED.online_price_dollars,
+                  inperson_price_dollars = EXCLUDED.inperson_price_dollars,
                   paid_description = EXCLUDED.paid_description,
                   paid_video_link = EXCLUDED.paid_video_link,
                   paid_start_date = EXCLUDED.paid_start_date,

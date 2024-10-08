@@ -8,10 +8,11 @@ interface Options {
   courseId: string;
   amount: number;
   couponCode?: string;
+  format: string;
 }
 
 export const createSavePayment = ({ postgres }: Dependencies) => {
-  return async ({ uid, courseId, amount, couponCode }: Options) => {
+  return async ({ uid, courseId, amount, couponCode, format }: Options) => {
     const paymentData = {
       title: courseId,
       amount: amount,
@@ -45,6 +46,7 @@ export const createSavePayment = ({ postgres }: Dependencies) => {
           uid,
           courseId,
           paymentStatus: 'pending',
+          format: format,
           amount: checkoutData.amount,
           paymentId: checkoutData.id,
           invoiceUrl: checkoutData.checkoutUrl,

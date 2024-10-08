@@ -10,6 +10,7 @@ interface Options {
   uid: string;
   courseId: string;
   couponCode?: string;
+  format: string;
 }
 
 export const createSaveFreePayment = ({ postgres }: Dependencies) => {

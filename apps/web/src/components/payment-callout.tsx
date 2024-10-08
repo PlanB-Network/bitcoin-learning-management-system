@@ -3,7 +3,7 @@ import { AiOutlineWarning } from 'react-icons/ai';
 import { cn } from '@blms/ui';
 
 interface PaymentCalloutProps {
-  description: string;
+  description: React.ReactNode;
 }
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';

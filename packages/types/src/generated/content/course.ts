@@ -11,7 +11,9 @@ export interface Course {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;
@@ -125,7 +127,9 @@ export interface MinimalJoinedCourse {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;
@@ -149,7 +153,9 @@ export interface JoinedCourse {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;
@@ -174,7 +180,9 @@ export interface JoinedCourseWithProfessors {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;
@@ -199,7 +207,9 @@ export interface JoinedCourseWithAll {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;
@@ -272,7 +282,9 @@ export interface CourseResponse {
   subtopic: string;
   originalLanguage: string;
   requiresPayment: boolean;
-  paidPriceDollars: number | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
   paidDescription: string | null;
   paidVideoLink: string | null;
   paidStartDate: Date | null;

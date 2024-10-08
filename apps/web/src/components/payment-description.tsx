@@ -39,7 +39,7 @@ interface PaymentDescriptionProps {
   event?: JoinedEvent;
   accessType?: 'physical' | 'online' | 'replay';
   satsPrice: number;
-  callout: string;
+  callout: React.ReactNode;
   description: string;
   itemId: string;
   initPayment: () => Promise<void>;
@@ -120,7 +120,7 @@ export const PaymentDescription = ({
         <div className="w-full flex flex-col">
           {splitDescription &&
             splitDescription.map((desc) => (
-              <p className="text-sm max-lg:text-center" key={desc}>
+              <p className="text-sm max-lg:text-center mt-3" key={desc}>
                 {desc}
               </p>
             ))}
@@ -158,7 +158,7 @@ export const PaymentDescription = ({
             Apply
           </Button>
         </div>
-        <div className="flex flex-row justify-between w-full max-lg:hidden">
+        <div className="flex flex-row justify-between w-full">
           <span className="text-lg font-medium">{t('payment.total')}</span>
           <div className="flex flex-col items-end">
             <span className="text-lg font-medium">

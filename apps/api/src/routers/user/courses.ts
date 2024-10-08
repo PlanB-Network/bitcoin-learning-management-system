@@ -110,9 +110,8 @@ const savePaymentProcedure = studentProcedure
     z.object({
       courseId: z.string(),
       amount: z.number(),
-      part: z.number().optional(),
-      chapter: z.number().optional(),
       couponCode: z.string().optional(),
+      format: z.string(),
     }),
   )
   .output<Parser<CheckoutData>>(checkoutDataSchema)
@@ -122,6 +121,7 @@ const savePaymentProcedure = studentProcedure
       courseId: input.courseId,
       amount: input.amount,
       couponCode: input.couponCode,
+      format: input.format,
     }),
   );
 
@@ -129,9 +129,8 @@ const saveFreePaymentProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
-      part: z.number().optional(),
-      chapter: z.number().optional(),
       couponCode: z.string().optional(),
+      format: z.string(),
     }),
   )
   .output<Parser<CheckoutData>>(checkoutDataSchema)
@@ -140,6 +139,7 @@ const saveFreePaymentProcedure = studentProcedure
       uid: ctx.user.uid,
       courseId: input.courseId,
       couponCode: input.couponCode,
+      format: input.format,
     }),
   );
 
@@ -150,6 +150,7 @@ const getPaymentProcedure = studentProcedure
       .pick({
         courseId: true,
         paymentStatus: true,
+        format: true,
         amount: true,
         paymentId: true,
         invoiceUrl: true,

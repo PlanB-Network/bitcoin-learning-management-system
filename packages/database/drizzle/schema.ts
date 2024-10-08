@@ -513,6 +513,12 @@ export const contentGlossaryWordsLocalized = content.table(
 
 // COURSES
 
+export const courseFormatEnum = pgEnum('course_format', [
+  'online',
+  'inperson',
+  'hybrid',
+]);
+
 export const contentCourses = content.table('courses', {
   id: varchar('id', { length: 20 }).primaryKey().notNull(),
 
@@ -525,7 +531,9 @@ export const contentCourses = content.table('courses', {
     .default('en'),
 
   requiresPayment: boolean('requires_payment').default(false).notNull(),
-  paidPriceDollars: integer('paid_price_dollars'),
+  format: courseFormatEnum('format').default('online').notNull(),
+  onlinePriceDollars: integer('online_price_dollars'),
+  inpersonPriceDollars: integer('inperson_price_dollars'),
   paidDescription: text('paid_description'),
   paidVideoLink: text('paid_video_link'),
   paidStartDate: timestamp('paid_start_date', { withTimezone: true }),
@@ -732,6 +740,10 @@ export const contentCourseTags = content.table(
 );
 
 // COURSE PAYMENTS
+export const coursePaymentFormatEnum = pgEnum('course_payment_format', [
+  'online',
+  'inperson',
+]);
 
 export const usersCoursePayment = users.table(
   'course_payment',
@@ -745,6 +757,7 @@ export const usersCoursePayment = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    format: coursePaymentFormatEnum('format').default('inperson').notNull(),
     paymentStatus: varchar('payment_status', { length: 30 }).notNull(),
     amount: integer('amount').notNull(),
     paymentId: varchar('payment_id', { length: 255 }).notNull(),
