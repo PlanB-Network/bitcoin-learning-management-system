@@ -1,17 +1,16 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
 import { LuPlus } from 'react-icons/lu';
 
-import { Button, Loader, cn } from '@blms/ui';
+import { Loader } from '@blms/ui';
 
-import SonarCircle from '#src/assets/about/circle_sonar.svg?react';
 import { PageLayout } from '#src/components/page-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../resources/-components/cards/builder-card.tsx';
 
 import { CommunitiesMap } from './-components/communities-map.tsx';
+import { NodeLocationSelector } from './-components/node-buttons.tsx';
 
 export const Route = createFileRoute('/_content/_misc/node-network')({
   component: NodeNetwork,
@@ -165,24 +164,13 @@ function NodeNetwork() {
 
         <QnA />
 
-        <div className="relative flex flex-col justify-center items-center pb-10 sm:pb-40 lg:pb-10">
-          <SonarCircle className="hidden md:block absolute size-72 sm:size-fit z-0" />
-          <a
-            href="https://web.telegram.org/k/#@ajelex"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 z-10"
-          >
-            <Button variant="secondary" size="l">
-              {t('nodeNetwork.apply')}
-              <FaArrowRightLong
-                className={cn(
-                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                  'group-hover:ml-3',
-                )}
-              />
-            </Button>
-          </a>
+        <div className="relative flex flex-col justify-center items-center mt-7 pb-10 sm:pb-40 lg:pb-10">
+          <p className="text-xl font-medium mb-4"> {t('nodeNetwork.apply')}</p>
+          <NodeLocationSelector />
+          <p className="text-lg mt-3 text-orange-400 font-medium ">
+            {' '}
+            {t('nodeNetwork.applyhelp')}
+          </p>
         </div>
       </div>
     </PageLayout>
