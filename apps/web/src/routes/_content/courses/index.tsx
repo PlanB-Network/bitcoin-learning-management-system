@@ -53,8 +53,10 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
       <ListItem
         leftText={t('words.price')}
         rightText={
-          course.paidPriceDollars
-            ? `${course.paidPriceDollars}$`
+          course.requiresPayment
+            ? course.onlinePriceDollars === null
+              ? `${course.inpersonPriceDollars}$`
+              : `${course.onlinePriceDollars}$`
             : t('words.free')
         }
       />
@@ -122,8 +124,10 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           <ListItem
             leftText={t('words.price')}
             rightText={
-              course.paidPriceDollars
-                ? `${course.paidPriceDollars}$`
+              course.requiresPayment
+                ? course.onlinePriceDollars === null
+                  ? `${course.inpersonPriceDollars}$`
+                  : `${course.onlinePriceDollars}$`
                 : t('words.free')
             }
             className="border-none"

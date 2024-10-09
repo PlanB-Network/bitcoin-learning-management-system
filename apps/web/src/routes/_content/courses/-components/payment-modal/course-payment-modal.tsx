@@ -1,17 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import type {
   CheckoutData,
   CouponCode,
   JoinedCourseWithAll,
 } from '@blms/types';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from '@blms/ui';
+import { Dialog, DialogContent } from '@blms/ui';
 
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
@@ -29,7 +24,9 @@ interface CoursePaymentModalProps {
   course: JoinedCourseWithAll;
   professorNames: string;
   satsPrice: number;
+  dollarPrice: number;
   isOpen: boolean;
+  coursePaymentFormat: 'online' | 'inperson';
   onClose: (isPaid?: boolean) => void;
 }
 
@@ -37,7 +34,9 @@ export const CoursePaymentModal = ({
   course,
   professorNames,
   satsPrice,
+  dollarPrice,
   isOpen,
+  coursePaymentFormat,
   onClose,
 }: CoursePaymentModalProps) => {
   const { t } = useTranslation();
@@ -51,9 +50,8 @@ export const CoursePaymentModal = ({
   const [validatedCoupon, setValidatedCoupon] = useState<CouponCode | null>(
     null,
   );
-  const [coursePriceDollarsReduced, setCoursePriceDollarsReduced] = useState(
-    course.paidPriceDollars,
-  );
+  const [coursePriceDollarsReduced, setCoursePriceDollarsReduced] =
+    useState(dollarPrice);
   const [satsPriceReduced, setSatsPriceReduced] = useState(satsPrice);
 
   const initCoursePayment = useCallback(async () => {
@@ -61,6 +59,7 @@ export const CoursePaymentModal = ({
       const serverPaymentData = await saveFreePaymentRequest.mutateAsync({
         courseId: course.id,
         couponCode: validatedCoupon?.code,
+        format: coursePaymentFormat,
       });
       setPaymentData(serverPaymentData);
       setIsPaymentSuccess(true);
@@ -71,6 +70,7 @@ export const CoursePaymentModal = ({
         courseId: course.id,
         amount: satsPriceReduced,
         couponCode: validatedCoupon?.code,
+        format: coursePaymentFormat,
       });
       setPaymentData(serverPaymentData);
     }
@@ -78,6 +78,7 @@ export const CoursePaymentModal = ({
     await (satsPriceReduced === 0 ? saveFreePayment() : savePayment());
   }, [
     course.id,
+    coursePaymentFormat,
     satsPriceReduced,
     saveFreePaymentRequest,
     savePaymentRequest,
@@ -87,6 +88,10 @@ export const CoursePaymentModal = ({
   useEffect(() => {
     setSatsPriceReduced(satsPrice);
   }, [satsPrice]);
+
+  useEffect(() => {
+    setCoursePriceDollarsReduced(dollarPrice);
+  }, [dollarPrice]);
 
   useEffect(() => {
     if (paymentData && isOpen && satsPrice >= 0) {
@@ -120,16 +125,16 @@ export const CoursePaymentModal = ({
       setSatsPriceReduced(
         Math.ceil((satsPrice * (100 - coupon.reductionPercentage)) / 100),
       );
-      if (course.paidPriceDollars) {
+      if (dollarPrice) {
         setCoursePriceDollarsReduced(
-          (course.paidPriceDollars * (100 - coupon.reductionPercentage)) / 100,
+          (dollarPrice * (100 - coupon.reductionPercentage)) / 100,
         );
       }
     }
 
     if (!coupon) {
       setSatsPriceReduced(satsPrice);
-      setCoursePriceDollarsReduced(course.paidPriceDollars);
+      setCoursePriceDollarsReduced(dollarPrice);
       setValidatedCoupon(null);
     }
   }
@@ -143,10 +148,6 @@ export const CoursePaymentModal = ({
         onOpenChange={(open) => onClose(open ? undefined : false)}
       >
         <DialogContent className="max-h-screen w-[90%] lg:w-full max-w-[1440px] h-[90vh] sm:w-[80vw] lg:p-0 sm:h-[85vh] overflow-auto">
-          <DialogTitle className="hidden">Payment Modal</DialogTitle>
-          <DialogDescription className="hidden">
-            Payment Modal
-          </DialogDescription>
           <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
             <ModalPaymentSummary
               course={course}
@@ -172,20 +173,27 @@ export const CoursePaymentModal = ({
                   paidPriceDollars={coursePriceDollarsReduced}
                   satsPrice={satsPriceReduced}
                   initPayment={initCoursePayment}
-                  description={t('courses.payment.description')}
-                  callout={t('courses.payment.callout')}
+                  description={
+                    coursePaymentFormat === 'inperson'
+                      ? t('courses.payment.inPersonDescription')
+                      : t('courses.payment.onlineDescription')
+                  }
+                  callout={
+                    coursePaymentFormat === 'inperson' ? (
+                      <Trans i18nKey="courses.payment.inPersonCallout">
+                        You are about to purchase <strong>in-person</strong>{' '}
+                        access to this course.
+                      </Trans>
+                    ) : (
+                      <Trans i18nKey="courses.payment.onlineCallout">
+                        You are about to purchase <strong>online</strong> access
+                        to this course.
+                      </Trans>
+                    )
+                  }
                   itemId={course.id}
                   updateCoupon={updateCoupon}
-                >
-                  <ModalPaymentSummary
-                    course={course}
-                    courseName={courseName}
-                    professorNames={professorNames}
-                    mobileDisplay={true}
-                    paidPriceDollars={coursePriceDollarsReduced}
-                    satsPrice={satsPriceReduced}
-                  />
-                </PaymentDescription>
+                ></PaymentDescription>
               )}
             </div>
           </div>

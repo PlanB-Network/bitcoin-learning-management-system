@@ -12,6 +12,7 @@ export interface CourseProgress {
 export interface CoursePayment {
   uid: string;
   courseId: string;
+  format: 'online' | 'inperson';
   paymentStatus: string;
   amount: number;
   paymentId: string;
