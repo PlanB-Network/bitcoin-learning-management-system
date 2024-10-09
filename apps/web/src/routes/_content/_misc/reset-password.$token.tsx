@@ -2,7 +2,7 @@ import { Link, createFileRoute, useParams } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, TextInput } from '@blms/ui';
+import { Button, Input } from '@blms/ui';
 
 import { MainLayout } from '#src/components/main-layout.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -91,7 +91,7 @@ function ResetPasswordPage() {
             className="flex w-full flex-col items-center mt-3"
           >
             <div className="text-start w-full max-w-xl mb-8">
-              <TextInput
+              <Input
                 name="password"
                 type="password"
                 placeholder={t('auth.newPassword')}
