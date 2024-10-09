@@ -220,7 +220,7 @@
     "abstract": "Taslak",
     "bookSummary": {
       "modifyTooltip": "Yaz veya değiştir",
-      "noSummary": "",
+      "noSummary": "Bir özet henüz yazılmamış. Kitabı okuduysanız ve sizinki paylaşmak isterseniz, Github'da bir tane yazmaktan çekinmeyin. Bu, topluluğa büyük ölçüde fayda sağlar, üniversitenin kaynaklarını artırır ve hatta çabanız için bazı sats kazanabilirsiniz!",
       "notice": "",
       "title": ""
     },
