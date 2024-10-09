@@ -1,1 +1,117 @@
-{}
+{
+  "about": {
+    "activeContributors": "Colaboradores activos",
+    "missionTitle": "Nuestra misión",
+    "missionContent2": "Centralizamos el conocimiento para distribuirlo mejor a través de un repositorio de GitHub sencillo y multilingüe y una plataforma de E-learning. Ayudamos a los centros locales de Bitcoin en su desarrollo con las herramientas adecuadas para que sus talentos crezcan.",
+    "commitmentTitle": "Nuestros compromisos",
+    "coreTeamTitle": "El equipo central",
+    "coreTeamContent": "Plan ₿ Network es un colectivo de cientos de colaboradores, maestros, líderes comunitarios, diseñadores, desarrolladores y organizadores. Muchas gracias a las numerosas personas que han hecho de Plan ₿ una realidad y continúan haciéndolo cada día. (Muro de colaboradores próximamente)",
+    "coreTeamGiacomoRole": "Director y Cofundador",
+    "coreTeamRogzyRole": "Product manager y cofundador",
+    "coreTeamAsioRole": "Coordinador educativo",
+    "coreTeamAjelexRole": "Coordinador de nodo",
+    "corporateTitle": "Corporativo detrás",
+    "coportateContact": "Información de contacto:",
+    "storyTitle": "Nuestra historia",
+    "description": "Plan ₿ Network ayuda a las comunidades de todo el mundo a organizarse para proporcionar una mejor educación. La plataforma desarrolla las herramientas necesarias para ese objetivo, a través de la academia en línea, el portal de tutoriales, el kit de herramientas educativas de Bitcoin y el portal de recursos.",
+    "subtitle": "¿Quieres darle la píldora naranja al mundo? Únete a Plan ₿ Network.",
+    "title": "Acerca de Plan ₿ Network",
+    "missionContent1": "Nuestra misión es apoyar a las comunidades locales de Bitcoin a través de la educación en open source y el networking. Para hacerlo, recopilamos, organizamos y creamos los recursos necesarios (cursos, libros, pósters, volantes, videos) para que la industria de Bitcoin avance.",
+    "commitmentContent": "Nuestros compromisos hacia la comunidad de bitcoin son los siguientes:\n • Permanecer de código abierto\n • Proporcionar contenido educativo de alta calidad\n • Traducir nuestros contenidos en tantos idiomas como sea posible\n • Apoyar a los constructores de Bitcoin en su viaje emprendedor",
+    "corporateContent": "Plan ₿ Network es el proyecto conjunto de tres entidades centradas en el desarrollo de Bitcoin. En un esfuerzo por hacer que las capas de educación de Bitcoin escalen, decidieron colaborar para formar Plan ₿ Network. Desde entonces, muchas otras entidades decidieron contribuir y unir fuerzas para ayudarnos a llevar la educación de Bitcoin al mundo. Por esta razón, se les debe un enorme agradecimiento.",
+    "storyContent": "Plan ₿ Network es una iniciativa que apoya la educación de Bitcoin a nivel mundial. Es la colaboración de varias empresas apasionadas por Bitcoin enfocadas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir Plan ₿ Network y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer. Nuestra presentación de lanzamiento para 2023 está disponible aquí."
+  },
+  "auth": {
+    "newPassword": "Nueva contraseña",
+    "passwordMinLength": "La contraseña debe tener al menos {{len}} caracteres",
+    "passwordRequired": "Se requiere contraseña",
+    "passwordsDontMatch": "Las contraseñas no coinciden",
+    "passwordChanged": "Contraseña cambiada",
+    "accountCreated": "¡Tu cuenta ha sido creada, {{userName}}!",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "canSaveProgress": "Ahora puedes guardar tu progreso en la Academia de Bitcoin",
+    "connectWithLn": "Conéctate con LN",
+    "createAccount": "Registrar",
+    "createOne": "¡Regístrate aquí!",
+    "emailAddress": "Dirección de correo electrónico",
+    "errors": {
+      "displayNameRegex": "El nombre para mostrar solo puede contener letras, dígitos, _, ., - y espacios.",
+      "displayNameRequired": "Se requiere un nombre para mostrar.",
+      "displayNameTooShort": "El nombre para mostrar debe contener al menos 2 caracteres.",
+      "usernameRegex": "El nombre de usuario solo puede contener letras, dígitos, _, . y -.",
+      "usernameRequired": "Se requiere un nombre de usuario.",
+      "usernameTooShort": "El nombre de usuario debe contener al menos 5 caracteres."
+    },
+    "forgottenPassword": "¿Olvidaste tu contraseña?",
+    "headerAccountCreated": "Cuenta creada",
+    "lnurlAuthDescription": "¡Escanea este código QR con tu billetera Lightning para iniciar sesión!",
+    "noAccountNeeded": "¡No necesitas una cuenta para comenzar a aprender en Plan ₿ Network!",
+    "noAccountYet": "¿No tienes una cuenta?",
+    "resetPassword": "Restablece tu contraseña",
+    "passwordSuccessfullyChanged": "Tu contraseña ha sido cambiada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.",
+    "sendLink": "Envíame un enlace",
+    "backToLogin": "Regresar al inicio de sesión",
+    "backToHome": "Regresar a inicio",
+    "invalidToken": "Token inválido",
+    "checkingToken": "Verificando token",
+    "checkingTokenExplain": "Estamos verificando si el token es válido...",
+    "invalidTokenExplain": {
+      "expired": "El token ha expirado",
+      "invalid": "El token es inválido",
+      "notFound": "El token no fue encontrado",
+      "consumed": "El token ya ha sido utilizado"
+    },
+    "passwordResetError": "Error en el restablecimiento de la contraseña",
+    "tryAgain": "Intentar de nuevo",
+    "signIn": "Iniciar sesión",
+    "passwordResetSent": "Se ha enviado un correo electrónico para restablecer la contraseña a tu bandeja de entrada (si la dirección de correo electrónico existe en nuestra base de datos)."
+  },
+  "bCertificate": {
+    "bookExam": "Reserva una sesión de examen",
+    "challengeYourself": "¡Ponte a prueba y afirma tu nivel!",
+    "checkout": "Revisa el ₿ Certificate",
+    "curious": "¿Curioso por saber cómo es el examen?",
+    "joeNakamotoVideo": "¿Qué diablos es un examen de Bitcoin? Por Joe Nakamoto",
+    "knowledgeableBitcoin": "¿Conocedor de Bitcoin?",
+    "noBookExam": "Aún no se ha planeado ninguna sesión de examen.",
+    "organizeExam": "Organiza un examen",
+    "organizeSubtitle": "El orange pilling a mil millones de personas no es fácil",
+    "organizeTitle": "¿Quieres organizar un examen de ₿ Certificate en tu hub?",
+    "pageSubtitle": "Adopción masiva a través de la educación abierta y centralizada de código abierto",
+    "pageTitle": "Aprueba el ₿ Certificate",
+    "readChart": "Lee el estatuto",
+    "bCertificateDescription": "El ₿ Certificate es un examen reconocido internacionalmente que evalúa tu dominio de Bitcoin y sus temas relacionados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a las mejores empresas y excelentes oportunidades de trabajo.",
+    "organizeDescription": "¡No hay problema! Si tu comunidad es parte de la Red, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma."
+  },
+  "bet": {
+    "contribute": "Este kit de herramientas está abierto a contribuciones. Utiliza Figma, por lo que cualquiera puede agregar, modificar y traducir. Para colaborar, agregar una categoría o discutir, no dudes en unirte a nuestro discord.",
+    "contributeButton": "Ayuda y contribuye",
+    "contributeDescription": "Si quieres agregar, editar o traducir algún contenido, ¡tu ayuda será más que bienvenida!",
+    "contributeTitle": "¿Quieres contribuir?",
+    "educationalContent": {
+      "description": "Este contenido está diseñado para estar listo para usar en eventos y propósitos educativos.",
+      "title": "Contenido Educativo"
+    },
+    "hereForYou": "¡El BET está aquí para ti!",
+    "pageSubtitle": "BET - Un kit de herramientas de código abierto de Bitcoin para todos los proyectos educativos",
+    "pageTitle": "Kit Educativo de Bitcoin",
+    "visualContent": {
+      "description": "Las imágenes a continuación pueden ser utilizadas para tus propias creaciones.",
+      "title": "Contenido Visual"
+    },
+    "pageDescription": "La adopción masiva no es fácil. Para acercarnos más rápido a ese objetivo, hemos desarrollado una base de datos extensible de contenido educativo. Aquí, los educadores de Bitcoin pueden dejar y acceder al contenido según sea necesario. ¡No reinventemos la rueda cada vez, y trabajemos juntos para centralizar los recursos útiles en un solo kit de herramientas!"
+  },
+  "book": {
+    "abstract": "Resumen",
+    "bookSummary": {
+      "modifyTooltip": "Escribir o modificar",
+      "notice": "este resumen está vinculado a github, para cualquier modificación o adición",
+      "title": "Resumen del libro",
+      "noSummary": "Aún falta escribir un resumen. Si has leído el libro y quieres compartir el tuyo, no dudes en escribir uno en Github. Beneficiaría enormemente a la comunidad, mejoraría los recursos de la universidad e incluso ¡podrías ganar algunos sats por tu esfuerzo!"
+    },
+    "buttonBuy": "Comprar",
+    "buttonPdf": "PDF / E-book",
+    "offeredBy": "Ofrecido por un generoso contribuyente",
+    "pageSubtitle": "Este portal es de código abierto y abierto a contribuciones."
+  }
+}
