@@ -479,7 +479,7 @@ const EventsMap = ({
                   localizer={localizer}
                   events={calendarEvents}
                   onView={() => {}}
-                  view="week"
+                  view="month"
                   toolbar={false}
                   onSelectEvent={({ id }) => {
                     const event = events.find((e) => e.id === id);
