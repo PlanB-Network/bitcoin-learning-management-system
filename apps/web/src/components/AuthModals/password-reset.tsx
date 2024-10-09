@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -9,6 +9,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -66,7 +67,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const modalContent = {
     [ResetPasswordState.Initial]: (
       <>
-        <FormProvider {...methods}>
+        <Form {...methods}>
           <form
             onSubmit={methods.handleSubmit(handlePasswordReset)}
             className="flex w-full flex-col items-center"
@@ -92,7 +93,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               {t('auth.sendLink')}
             </Button>
           </form>
-        </FormProvider>
+        </Form>
 
         <p className="mb-0 text-xs">
           <button

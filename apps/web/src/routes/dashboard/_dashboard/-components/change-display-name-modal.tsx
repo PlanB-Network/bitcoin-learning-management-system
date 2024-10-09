@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -83,7 +84,7 @@ export const ChangeDisplayNameModal = ({
             {t('settings.changeDisplayName')}
           </DialogDescription>
         </DialogHeader>
-        <FormProvider {...form}>
+        <Form {...form}>
           <form
             className="flex w-full flex-col items-center py-6"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -118,7 +119,7 @@ export const ChangeDisplayNameModal = ({
               {t('words.update')}
             </Button>
           </form>
-        </FormProvider>
+        </Form>
       </DialogContent>
     </Dialog>
   );

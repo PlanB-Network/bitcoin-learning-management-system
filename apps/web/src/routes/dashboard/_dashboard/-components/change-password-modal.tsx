@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import PasswordValidator from 'password-validator';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -93,7 +94,7 @@ export const ChangePasswordModal = ({
             {t('settings.changePassword')}
           </DialogDescription>
         </DialogHeader>
-        <FormProvider {...methods}>
+        <Form {...methods}>
           <form
             className="flex w-full flex-col items-center py-6"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -158,7 +159,7 @@ export const ChangePasswordModal = ({
               {t('words.update')}
             </Button>
           </form>
-        </FormProvider>
+        </Form>
       </DialogContent>
     </Dialog>
   );

@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -86,7 +87,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInProps) => {
           {t('menu.login')}
         </DialogDescription>
 
-        <FormProvider {...methods}>
+        <Form {...methods}>
           <form
             onSubmit={methods.handleSubmit(handleLogin)}
             className="flex w-full flex-col items-center mt-3"
@@ -149,7 +150,7 @@ export const SignIn = ({ isOpen, onClose, goTo }: SignInProps) => {
               </button>
             </p>
           </form>
-        </FormProvider>
+        </Form>
       </DialogContent>
     </Dialog>
   );

@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -80,7 +81,7 @@ export const ChangeEmailModal = ({
             {t('settings.changeEmail')}
           </DialogDescription>
         </DialogHeader>
-        <FormProvider {...form}>
+        <Form {...form}>
           <form
             className="flex w-full flex-col items-center py-6"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -120,7 +121,7 @@ export const ChangeEmailModal = ({
               </Button>
             </div>
           </form>
-        </FormProvider>
+        </Form>
       </DialogContent>
     </Dialog>
   );

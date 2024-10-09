@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { z } from 'zod';
@@ -16,6 +16,7 @@ import {
   DialogOverlay,
   DialogPortal,
   DialogTitle,
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -128,7 +129,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
                   Register
                 </DialogDescription>
 
-                <FormProvider {...methods}>
+                <Form {...methods}>
                   <form
                     onSubmit={methods.handleSubmit(handleCreateUserAccount)}
                     className="flex w-full flex-col items-center mt-3"
@@ -205,7 +206,7 @@ export const Register = ({ isOpen, onClose, goTo }: RegisterProps) => {
                       {t('auth.createAccount')}
                     </Button>
                   </form>
-                </FormProvider>
+                </Form>
 
                 <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
                   {t('auth.alreadyHaveAccount')}{' '}
