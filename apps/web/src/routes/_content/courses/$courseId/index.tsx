@@ -547,7 +547,7 @@ function CourseDetails() {
         )}
       </>
     ) : (
-      <div className="flex flex-row">
+      <div className="flex flex-col lg:flex-row">
         <BuyCourseButton format={'online'}>
           <>
             {t('courses.details.startCourse')}
