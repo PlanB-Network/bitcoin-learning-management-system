@@ -197,6 +197,13 @@
       "when": 1728377421871,
       "tag": "0027_nappy_loki",
       "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1728457830986,
+      "tag": "0028_motionless_maginty",
+      "breakpoints": true
     }
   ]
 }

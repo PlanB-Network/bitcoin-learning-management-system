@@ -10,6 +10,7 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { FiLoader } from 'react-icons/fi';
 
 import type { JoinedQuizQuestion } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
@@ -237,7 +238,6 @@ const TimelineBig = ({
         </div>
         <div>{professor}</div>
       </div>
-
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
         {chapter.course.parts.map((currentPart) => {
           const firstPart = currentPart.partIndex === 1;
@@ -370,7 +370,6 @@ const TimelineBig = ({
           </Link>
         )}
       </div>
-
       <div className="mt-2 bg-newGray-1 h-px" />
     </div>
   );
@@ -575,6 +574,7 @@ function CourseChapter() {
 
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
+  const { user } = useContext(AppContext);
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
     id: courseId,
@@ -596,6 +596,25 @@ function CourseChapter() {
       language: i18n.language,
       chapterId: chapterId,
     });
+
+  const ticketAvailable =
+    (chapter?.course?.availableSeats && chapter.course.availableSeats > 0) ||
+    false;
+
+  const { data: payments } = trpc.user.courses.getPayment.useQuery(undefined, {
+    enabled: isLoggedIn && ticketAvailable,
+  });
+
+  const isCoursePaidForInPerson = useMemo(
+    () =>
+      payments?.some(
+        (coursePayment) =>
+          coursePayment.paymentStatus === 'paid' &&
+          coursePayment.courseId === courseId &&
+          coursePayment.format === 'inperson',
+      ),
+    [courseId, payments],
+  );
 
   const questionsArray: Question[] = useMemo(() => {
     if (quizzArray === undefined) {
@@ -622,6 +641,12 @@ function CourseChapter() {
       return sections;
     }
   }, [chapter]);
+
+  const {
+    mutateAsync: downloadTicketMutateAsync,
+    isPending: downloadTicketisPending,
+  } = trpc.user.courses.downloadChapterTicket.useMutation();
+  const [downloadedPdf, setDownloadedPdf] = useState('');
 
   const isSpecialChapter =
     chapter?.isCourseReview ||
@@ -717,6 +742,54 @@ function CourseChapter() {
                   chapter={chapter}
                   professor={computerProfessor}
                 />
+              )}
+              {ticketAvailable && isCoursePaidForInPerson && (
+                <div className="flex flex-col mt-4">
+                  <div className="flex flex-row gap-4 text-xl leading-8 items-center">
+                    <Button
+                      size="l"
+                      mode="dark"
+                      className="max-lg:my-6 !m-2 lg:mt-5 w-full max-lg:max-w-[290px] md:w-fit self-center lg:self-end"
+                      variant="outline"
+                      onClick={async () => {
+                        let pdf = downloadedPdf;
+                        if (!pdf) {
+                          pdf = await downloadTicketMutateAsync({
+                            title: chapter.course.name,
+                            addressLine1: 'Lugano, Switzerland',
+                            addressLine2: '',
+                            addressLine3: '',
+                            formattedStartDate: 'Start date: October 21st 2024',
+                            formattedTime: 'End date : October 23rd 2024',
+                            liveLanguage: '',
+                            formattedCapacity: '',
+                            contact: 'contact@planb.network',
+                            userDisplayName: user
+                              ? (user.displayName as string)
+                              : '',
+                          });
+                          setDownloadedPdf(pdf);
+                        }
+                        const link = document.createElement('a');
+                        link.href = `data:application/pdf;base64,${pdf}`;
+                        link.download = 'ticket.pdf';
+                        document.body.append(link);
+                        link.click();
+                        link.remove();
+                      }}
+                    >
+                      {t('courses.chapter.detail.ticketDownload')}
+                      {downloadTicketisPending ? (
+                        <span className="ml-3">
+                          <FiLoader />
+                        </span>
+                      ) : null}
+                    </Button>
+                    <p className="text-lg font-normal max-md:text-base">
+                      {t('courses.details.inPersonAccess')}
+                    </p>
+                  </div>
+                </div>
               )}
             </div>
 

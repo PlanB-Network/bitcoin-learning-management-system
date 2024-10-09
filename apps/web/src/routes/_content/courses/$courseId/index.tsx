@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaLock } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { FiLoader } from 'react-icons/fi';
 import { IoCheckmark } from 'react-icons/io5';
 import ReactMarkdown from 'react-markdown';
 
@@ -62,6 +63,9 @@ function CourseDetails() {
   >('online');
   const [satsPrice, setSatsPrice] = useState<number>(0);
   const [dollarPrice, setDollarPrice] = useState<number>(0);
+  const [downloadedPdf, setDownloadedPdf] = useState('');
+
+  const { user } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -88,6 +92,22 @@ function CourseDetails() {
     [courseId, payments],
   );
 
+  const isCoursePaidForInPerson = useMemo(
+    () =>
+      payments?.some(
+        (coursePayment) =>
+          coursePayment.paymentStatus === 'paid' &&
+          coursePayment.courseId === courseId &&
+          coursePayment.format === 'inperson',
+      ),
+    [courseId, payments],
+  );
+
+  const {
+    mutateAsync: downloadTicketMutateAsync,
+    isPending: downloadTicketisPending,
+  } = trpc.user.courses.downloadChapterTicket.useMutation();
+
   const { data: reviews } = trpc.content.getPublicCourseReviews.useQuery(
     {
       courseId: courseId,
@@ -105,6 +125,10 @@ function CourseDetails() {
   }
 
   const courseHasToBePurchased = course?.requiresPayment && !isCoursePaid;
+  const displayDownloadTicket =
+    isCoursePaidForInPerson &&
+    course?.availableSeats &&
+    course.availableSeats > 0;
 
   const isStartOrBuyButtonDisabled = false;
 
@@ -312,6 +336,13 @@ function CourseDetails() {
           <div className="max-lg:my-2">
             <BuyCourseButtons />
           </div>
+          {displayDownloadTicket && (
+            <div className="ml-2 max-lg:mb-4 max-lg:italic lg:mt-2 flex flex-col gap-4 w-fit">
+              <p className="text-lg font-normal max-md:text-base">
+                {t('courses.details.inPersonAccess')}
+              </p>
+            </div>
+          )}
         </article>
       </section>
     );
@@ -516,17 +547,66 @@ function CourseDetails() {
         )}
       </>
     ) : (
-      <BuyCourseButton format={'online'}>
-        <>
-          {t('courses.details.startCourse')}
-          <FaArrowRightLong
-            className={cn(
-              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-              'group-hover:ml-3',
-            )}
-          />
-        </>
-      </BuyCourseButton>
+      <div className="flex flex-row">
+        <BuyCourseButton format={'online'}>
+          <>
+            {t('courses.details.startCourse')}
+            <FaArrowRightLong
+              className={cn(
+                'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                'group-hover:ml-3',
+              )}
+            />
+          </>
+        </BuyCourseButton>
+        {displayDownloadTicket && <DownloadTicketButton course={course} />}
+      </div>
+    );
+  };
+
+  const DownloadTicketButton = ({
+    course,
+  }: {
+    course: JoinedCourseWithAll;
+  }) => {
+    return (
+      <Button
+        size="l"
+        mode="dark"
+        className="max-lg:my-6 !m-2 lg:mt-5 w-full max-lg:max-w-[290px] md:w-fit self-center lg:self-end"
+        variant="outline"
+        onClick={async () => {
+          let pdf = downloadedPdf;
+          if (!pdf) {
+            pdf = await downloadTicketMutateAsync({
+              title: course.name,
+              addressLine1: 'Lugano, Switzerland',
+              addressLine2: '',
+              addressLine3: '',
+              formattedStartDate: 'Start date: October 21st 2024',
+              formattedTime: 'End date : October 23rd 2024',
+              liveLanguage: '',
+              formattedCapacity: '',
+              contact: 'contact@planb.network',
+              userDisplayName: user ? (user.displayName as string) : '',
+            });
+            setDownloadedPdf(pdf);
+          }
+          const link = document.createElement('a');
+          link.href = `data:application/pdf;base64,${pdf}`;
+          link.download = 'ticket.pdf';
+          document.body.append(link);
+          link.click();
+          link.remove();
+        }}
+      >
+        {t('courses.chapter.detail.ticketDownload')}
+        {downloadTicketisPending ? (
+          <span className="ml-3">
+            <FiLoader />
+          </span>
+        ) : null}
+      </Button>
     );
   };
 

@@ -107,6 +107,8 @@ export const minimalJoinedCourseSchema = courseSchema
     paidVideoLink: true,
     paidStartDate: true,
     paidEndDate: true,
+    availableSeats: true,
+    remainingSeats: true,
     contact: true,
     lastUpdated: true,
     lastCommit: true,

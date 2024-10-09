@@ -539,6 +539,8 @@ export const contentCourses = content.table('courses', {
   paidStartDate: timestamp('paid_start_date', { withTimezone: true }),
   paidEndDate: timestamp('paid_end_date', { withTimezone: true }),
   contact: varchar('contact', { length: 255 }),
+  availableSeats: integer('available_seats').default(0),
+  remainingSeats: integer('remaining_seats'),
 
   lastUpdated: timestamp('last_updated', { withTimezone: true })
     .defaultNow()

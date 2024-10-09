@@ -19,6 +19,8 @@ export interface Course {
   paidStartDate: Date | null;
   paidEndDate: Date | null;
   contact: string | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
@@ -134,6 +136,8 @@ export interface MinimalJoinedCourse {
   paidVideoLink: string | null;
   paidStartDate: Date | null;
   paidEndDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
@@ -160,6 +164,8 @@ export interface JoinedCourse {
   paidVideoLink: string | null;
   paidStartDate: Date | null;
   paidEndDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
@@ -187,6 +193,8 @@ export interface JoinedCourseWithProfessors {
   paidVideoLink: string | null;
   paidStartDate: Date | null;
   paidEndDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
@@ -214,6 +222,8 @@ export interface JoinedCourseWithAll {
   paidVideoLink: string | null;
   paidStartDate: Date | null;
   paidEndDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
@@ -289,6 +299,8 @@ export interface CourseResponse {
   paidVideoLink: string | null;
   paidStartDate: Date | null;
   paidEndDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;

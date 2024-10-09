@@ -112,6 +112,7 @@ interface CourseMain {
   paid_start_date?: string;
   paid_end_date?: string;
   contact?: string;
+  available_seats: number;
   proofreading: ProofreadingEntry[];
 }
 
@@ -350,7 +351,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
             const result = await transaction<Course[]>`
                 INSERT INTO content.courses (id, level, hours, topic, subtopic, original_language, requires_payment, format, online_price_dollars, inperson_price_dollars,
-                  paid_description, paid_video_link, paid_start_date, paid_end_date, contact,
+                  paid_description, paid_video_link, paid_start_date, paid_end_date, contact, available_seats, remaining_seats,
                   last_updated, last_commit, last_sync)
                 VALUES (
                   ${course.id}, 
@@ -368,6 +369,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${startDateTimestamp},
                   ${endDateTimestamp},
                   ${parsedCourse.contact},
+                  ${parsedCourse.available_seats},
+                  ${parsedCourse.available_seats},
                   ${lastUpdated.time}, 
                   ${lastUpdated.commit},
                   NOW()
@@ -387,6 +390,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   paid_start_date = EXCLUDED.paid_start_date,
                   paid_end_date = EXCLUDED.paid_end_date,
                   contact = EXCLUDED.contact,
+                  available_seats = EXCLUDED.available_seats,
+                  remaining_seats = EXCLUDED.remaining_seats,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()

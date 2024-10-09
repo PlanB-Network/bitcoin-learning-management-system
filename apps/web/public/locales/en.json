@@ -196,6 +196,7 @@
       "description": "Description",
       "duration": "Duration: {{hours}} hours",
       "goal": "Goal:",
+      "inPersonAccess": "To access the course in person, please download your ticket",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapters",
