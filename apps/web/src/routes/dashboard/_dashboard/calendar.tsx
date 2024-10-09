@@ -40,11 +40,7 @@ function DashboardCalendar() {
     navigate({ to: '/' });
   }
 
-  const isScreenLg = window.innerWidth >= 1024;
-
-  const [currentView, setCurrentView] = useState<View>(
-    isScreenLg ? Views.WEEK : Views.MONTH,
-  );
+  const [currentView, setCurrentView] = useState<View>(Views.MONTH);
 
   const handleViewChange = (view: View) => {
     setCurrentView(view);
