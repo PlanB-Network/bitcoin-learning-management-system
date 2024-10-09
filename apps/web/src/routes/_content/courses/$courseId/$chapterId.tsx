@@ -744,7 +744,7 @@ function CourseChapter() {
                 />
               )}
               {ticketAvailable && isCoursePaidForInPerson && (
-                <div className="flex flex-col md:flex-row md:mt-4 gap-4 text-xl leading-8 md:items-center">
+                <div className="flex flex-col md:flex-row md:mt-4 gap-2 md:gap-4 text-xl leading-8 md:items-center">
                   <Button
                     size="l"
                     mode="dark"
@@ -784,7 +784,7 @@ function CourseChapter() {
                       </span>
                     ) : null}
                   </Button>
-                  <p className="text-lg font-normal max-md:text-base">
+                  <p className="text-lg font-normal max-md:text-base max-md:ml-3 max-md:italic">
                     {t('courses.details.inPersonAccess')}
                   </p>
                 </div>
