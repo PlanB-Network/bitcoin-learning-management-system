@@ -744,51 +744,49 @@ function CourseChapter() {
                 />
               )}
               {ticketAvailable && isCoursePaidForInPerson && (
-                <div className="flex flex-col mt-4">
-                  <div className="flex flex-row gap-4 text-xl leading-8 items-center">
-                    <Button
-                      size="l"
-                      mode="dark"
-                      className="max-lg:my-6 !m-2 lg:mt-5 w-full max-lg:max-w-[290px] md:w-fit self-center lg:self-end"
-                      variant="outline"
-                      onClick={async () => {
-                        let pdf = downloadedPdf;
-                        if (!pdf) {
-                          pdf = await downloadTicketMutateAsync({
-                            title: chapter.course.name,
-                            addressLine1: 'Lugano, Switzerland',
-                            addressLine2: '',
-                            addressLine3: '',
-                            formattedStartDate: 'Start date: October 22nd 2024',
-                            formattedTime: 'End date : October 23rd 2024',
-                            liveLanguage: '',
-                            formattedCapacity: '',
-                            contact: 'contact@planb.network',
-                            userDisplayName: user
-                              ? (user.displayName as string)
-                              : '',
-                          });
-                          setDownloadedPdf(pdf);
-                        }
-                        const link = document.createElement('a');
-                        link.href = `data:application/pdf;base64,${pdf}`;
-                        link.download = 'ticket.pdf';
-                        document.body.append(link);
-                        link.click();
-                        link.remove();
-                      }}
-                    >
-                      {t('courses.chapter.detail.ticketDownload')}
-                      {downloadTicketisPending ? (
-                        <span className="ml-3">
-                          <FiLoader />
-                        </span>
-                      ) : null}
-                    </Button>
-                    <p className="text-lg font-normal max-md:text-base">
-                      {t('courses.details.inPersonAccess')}
-                    </p>
-                  </div>
+                <div className="flex flex-col md:flex-row md:mt-4 gap-4 text-xl leading-8 md:items-center">
+                  <Button
+                    size="l"
+                    mode="dark"
+                    className="max-md:my-6 !m-2 md:mt-5 w-full max-md:max-w-[290px] md:w-fit self-center md:self-end"
+                    variant="outline"
+                    onClick={async () => {
+                      let pdf = downloadedPdf;
+                      if (!pdf) {
+                        pdf = await downloadTicketMutateAsync({
+                          title: chapter.course.name,
+                          addressLine1: 'Lugano, Switzerland',
+                          addressLine2: '',
+                          addressLine3: '',
+                          formattedStartDate: 'Start date: October 22nd 2024',
+                          formattedTime: 'End date : October 23rd 2024',
+                          liveLanguage: '',
+                          formattedCapacity: '',
+                          contact: 'contact@planb.network',
+                          userDisplayName: user
+                            ? (user.displayName as string)
+                            : '',
+                        });
+                        setDownloadedPdf(pdf);
+                      }
+                      const link = document.createElement('a');
+                      link.href = `data:application/pdf;base64,${pdf}`;
+                      link.download = 'ticket.pdf';
+                      document.body.append(link);
+                      link.click();
+                      link.remove();
+                    }}
+                  >
+                    {t('courses.chapter.detail.ticketDownload')}
+                    {downloadTicketisPending ? (
+                      <span className="ml-3">
+                        <FiLoader />
+                      </span>
+                    ) : null}
+                  </Button>
+                  <p className="text-lg font-normal max-md:text-base">
+                    {t('courses.details.inPersonAccess')}
+                  </p>
                 </div>
               )}
             </div>
