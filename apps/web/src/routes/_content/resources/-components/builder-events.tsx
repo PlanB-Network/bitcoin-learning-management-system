@@ -20,7 +20,9 @@ interface BuilderEventsProps {
 export const BuilderEvents = ({ events }: BuilderEventsProps) => {
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
-
+  useEffect(() => {
+    console.log('Events data:', events);
+  }, [events]);
   const { data: eventPayments, refetch: refetchEventPayments } =
     trpc.user.events.getEventPayment.useQuery(undefined, {
       enabled: isLoggedIn,
@@ -145,6 +147,7 @@ export const BuilderEvents = ({ events }: BuilderEventsProps) => {
         <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
           {t('builders.relatedEvents')}
         </h3>
+
         {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
             {sortedEvents?.map((event) => (
