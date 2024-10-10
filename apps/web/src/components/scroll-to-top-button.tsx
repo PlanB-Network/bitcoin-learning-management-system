@@ -50,13 +50,13 @@ const ScrollToTopButton = () => {
         <div
           className="absolute inset-0 z-10 scale-[1.15] rounded-full"
           style={{
-            background: `conic-gradient(rgba(242, 135, 13, 1) 0% ${scrollPercentage}%, transparent ${scrollPercentage}% 100%)`,
+            background: `conic-gradient(rgba(255, 92, 0, 1) 0% ${scrollPercentage}%, transparent ${scrollPercentage}% 100%)`,
           }}
         ></div>
 
         <button
           onClick={scrollToTop}
-          className="relative z-20 flex size-12 items-center justify-center rounded-full bg-blue-800 text-white"
+          className="relative z-20 flex size-12 items-center justify-center rounded-full bg-darkOrange-9 text-white"
         >
           ↑
         </button>
