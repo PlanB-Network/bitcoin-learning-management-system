@@ -216,7 +216,9 @@ function Builder() {
               {builder.description}
             </p>
           </article>
-          <BuilderEvents events={filteredEvents} />
+          {builder.category === 'communities' && (
+            <BuilderEvents events={filteredEvents} />
+          )}
         </>
       )}
       {builder?.category === 'communities' && (
