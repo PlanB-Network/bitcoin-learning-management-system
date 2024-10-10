@@ -74,6 +74,7 @@ export const createUpdateBCertificateExams = ({ postgres }: Dependencies) => {
   return async (
     bCertificateExam: ChangedBCertificateExam,
     errors: string[],
+    warnings: string[],
   ) => {
     // eslint-disable-next-line prefer-const
     let { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
@@ -109,9 +110,21 @@ export const createUpdateBCertificateExams = ({ postgres }: Dependencies) => {
           try {
             await processResultFile(id, file);
           } catch (error) {
-            errors.push(
-              `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
-            );
+            if (error instanceof Error) {
+              if (error.message.includes('uid not found')) {
+                warnings.push(
+                  `Missing uid in B Certificate User Result : ${file?.path}: ${error}`,
+                );
+              } else {
+                errors.push(
+                  `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
+                );
+              }
+            } else {
+              errors.push(
+                `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
+              );
+            }
           }
         }
       })

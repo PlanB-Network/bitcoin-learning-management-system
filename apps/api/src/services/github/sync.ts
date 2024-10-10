@@ -51,7 +51,9 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     console.log('-- Sync procedure: UPDATE DATABASE =========================');
 
     const timeProcessContentFiles = timeLog('Processing content files');
-    const syncErrors = await processContentFiles(context.files);
+    const { errors: syncErrors, warnings: syncWarnings } =
+      await processContentFiles(context.files);
+
     timeProcessContentFiles();
 
     console.log('-- Sync procedure: Calculate remaining seats');
@@ -108,6 +110,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     return {
       success: syncErrors.length === 0,
+      syncWarnings: syncWarnings.length > 0 ? syncWarnings : undefined,
       syncErrors: syncErrors.length > 0 ? syncErrors : undefined,
       publicCdnError: publicCdnError,
       privateCdnError: privateCdnError,

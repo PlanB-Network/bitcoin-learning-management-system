@@ -64,11 +64,14 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateBlogs = createUpdateBlogs(dependencies);
   const updateLegals = createUpdateLegals(dependencies);
 
-  return async (files: ChangedFile[]): Promise<string[]> => {
+  return async (
+    files: ChangedFile[],
+  ): Promise<{ errors: string[]; warnings: string[] }> => {
     const filteredFiles = files.filter((file) =>
       supportedContentTypes.some((value) => file.path.startsWith(value)),
     );
     const errors: string[] = [];
+    const warnings: string[] = [];
 
     console.log(`-- Sync procedure: Deleteing proofreadings`);
     await deleteProofreadings(errors);
@@ -128,10 +131,10 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
       `-- Sync procedure: Syncing ${bCertificates.length} B Certificates exams`,
     );
     for (const bCertificate of bCertificates) {
-      await updateBCertificates(bCertificate, errors);
+      await updateBCertificates(bCertificate, errors, warnings);
     }
 
-    return errors;
+    return { errors, warnings };
   };
 };
 
