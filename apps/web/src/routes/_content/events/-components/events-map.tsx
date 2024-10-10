@@ -340,21 +340,18 @@ const EventsMap = ({
 
   // [MAP] Event filter
   const [cards, setCards] = useState<JoinedEvent[] | null>(null);
+
   useEffect(() => {
     if (calendarCard) {
       return setCards([calendarCard]);
     }
 
-    if (selectedEventGroup && filteredEvents) {
-      setCards(intersection(selectedEventGroup.events, filteredEvents));
-    } else if (selectedEventGroup) {
+    if (selectedEventGroup) {
       setCards(selectedEventGroup.events);
-    } else if (filteredEvents) {
-      setCards(filteredEvents);
     } else {
       setCards(null);
     }
-  }, [selectedEventGroup, filteredEvents, calendarCard]);
+  }, [selectedEventGroup, calendarCard]);
 
   /*
    * Calendar
@@ -615,38 +612,26 @@ const EventsMap = ({
       </div>
 
       {/* Event cards */}
+      {/* Event cards */}
       <div
         className={cn(
           'p-4 border-t',
-          calendarCard || selectedEventGroup || filteredEvents
-            ? 'rounded-b-xl'
-            : 'hidden',
+          calendarCard || selectedEventGroup ? 'rounded-b-xl' : 'hidden',
         )}
       >
         <div
           className={cn(
             'flex justify-between font-semibold text-gray-800',
-            (calendarCard || selectedEventGroup || filteredEvents) && 'pb-4',
+            (calendarCard || selectedEventGroup) && 'pb-4',
           )}
         >
           <div className="flex">
-            {filteredEvents && (
-              <div className="first-letter:uppercase">
-                {filter
-                  .map((f) => f + 's')
-                  .join(', ')
-                  .replaceAll(/(.*),/gm, '$1 and')}
-              </div>
-            )}
-            {selectedEventGroup && filteredEvents && (
-              <span>&nbsp;in&nbsp;</span>
-            )}
             {selectedEventGroup && (
               <span>{selectedEventGroup?.location.name}</span>
             )}
           </div>
 
-          <button onClick={() => (setSelectedEventGroup(null), setFilter([]))}>
+          <button onClick={() => setSelectedEventGroup(null)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -666,7 +651,7 @@ const EventsMap = ({
 
         <div className="flex flex-wrap gap-5 justify-center">
           {cards?.length ? (
-            cards?.map((event) => (
+            cards.map((event) => (
               <EventCard
                 event={event}
                 eventPayments={eventPayments}
