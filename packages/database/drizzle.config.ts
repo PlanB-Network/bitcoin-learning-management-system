@@ -7,6 +7,7 @@ export default defineConfig({
   introspect: {
     casing: 'camel',
   },
+  casing: 'snake_case',
   schemaFilter: ['users', 'content'],
   dbCredentials: {
     host: process.env.POSTGRES_HOST || '127.0.0.1',
