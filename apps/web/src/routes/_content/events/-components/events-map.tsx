@@ -204,10 +204,6 @@ function createMarker(group: EventGroup) {
   });
 }
 
-function intersection<T>(a?: T[] | null, b?: T[] | null): T[] {
-  return a ? (b ? a.filter((v) => b.includes(v)) : a) : b ? b : [];
-}
-
 const EventsMap = ({
   events,
   eventPayments,
@@ -255,23 +251,6 @@ const EventsMap = ({
       zoom: view.getZoom() ?? 4,
     });
   };
-
-  // [MAP] Filter effect
-  const [filteredEvents, setFilteredEvents] = useState<JoinedEvent[] | null>(
-    null,
-  );
-  useEffect(() => {
-    if (!events || filter.length === 0) {
-      setFilteredEvents(null);
-      return;
-    }
-
-    setFilteredEvents(
-      events
-        .filter((e) => (filter.length > 0 ? filter.includes(e.type!) : true))
-        .filter((e) => e.endDate > new Date()),
-    );
-  }, [events, filter]);
 
   const [groups, setGroups] = useState<Map<string, EventGroup>>();
 
@@ -340,21 +319,18 @@ const EventsMap = ({
 
   // [MAP] Event filter
   const [cards, setCards] = useState<JoinedEvent[] | null>(null);
+
   useEffect(() => {
     if (calendarCard) {
       return setCards([calendarCard]);
     }
 
-    if (selectedEventGroup && filteredEvents) {
-      setCards(intersection(selectedEventGroup.events, filteredEvents));
-    } else if (selectedEventGroup) {
+    if (selectedEventGroup) {
       setCards(selectedEventGroup.events);
-    } else if (filteredEvents) {
-      setCards(filteredEvents);
     } else {
       setCards(null);
     }
-  }, [selectedEventGroup, filteredEvents, calendarCard]);
+  }, [selectedEventGroup, calendarCard]);
 
   /*
    * Calendar
@@ -618,35 +594,22 @@ const EventsMap = ({
       <div
         className={cn(
           'p-4 border-t',
-          calendarCard || selectedEventGroup || filteredEvents
-            ? 'rounded-b-xl'
-            : 'hidden',
+          calendarCard || selectedEventGroup ? 'rounded-b-xl' : 'hidden',
         )}
       >
         <div
           className={cn(
             'flex justify-between font-semibold text-gray-800',
-            (calendarCard || selectedEventGroup || filteredEvents) && 'pb-4',
+            (calendarCard || selectedEventGroup) && 'pb-4',
           )}
         >
           <div className="flex">
-            {filteredEvents && (
-              <div className="first-letter:uppercase">
-                {filter
-                  .map((f) => f + 's')
-                  .join(', ')
-                  .replaceAll(/(.*),/gm, '$1 and')}
-              </div>
-            )}
-            {selectedEventGroup && filteredEvents && (
-              <span>&nbsp;in&nbsp;</span>
-            )}
             {selectedEventGroup && (
               <span>{selectedEventGroup?.location.name}</span>
             )}
           </div>
 
-          <button onClick={() => (setSelectedEventGroup(null), setFilter([]))}>
+          <button onClick={() => setSelectedEventGroup(null)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -666,7 +629,7 @@ const EventsMap = ({
 
         <div className="flex flex-wrap gap-5 justify-center">
           {cards?.length ? (
-            cards?.map((event) => (
+            cards.map((event) => (
               <EventCard
                 event={event}
                 eventPayments={eventPayments}
