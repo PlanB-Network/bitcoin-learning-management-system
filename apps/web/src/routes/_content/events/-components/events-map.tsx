@@ -359,11 +359,12 @@ const EventsMap = ({
   /*
    * Calendar
    */
-  const [weekShift, setWeekShift] = useState(0);
+
+  const [monthShift, setMonthShift] = useState(0);
 
   const getDate = () => {
     const date = new Date();
-    date.setDate(date.getDate() + weekShift * 7);
+    date.setMonth(date.getMonth() + monthShift);
     return date;
   };
 
@@ -419,12 +420,14 @@ const EventsMap = ({
   const onFilterClick = (course: CourseType) => {
     setFilter((prev) =>
       prev.includes(course)
-        ? prev.filter((p) => p !== course)
+        ? prev.filter((f) => f !== course)
         : [...prev, course],
     );
     setCalendarCard(null);
   };
-
+  useEffect(() => {
+    setFilter(courseTypes);
+  }, []);
   return (
     <div className="bg-gray-100 rounded-xl">
       <div className="flex ">
@@ -438,34 +441,34 @@ const EventsMap = ({
           <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
             <div>
               Calendar -{' '}
-              {weekShift === 0
-                ? 'This week'
-                : weekShift === -1
-                  ? 'Last week'
-                  : weekShift === 1
-                    ? 'Next week'
-                    : weekShift > 0
-                      ? `In ${weekShift} weeks`
-                      : `${-weekShift} weeks ago`}
+              {monthShift === 0
+                ? 'This month'
+                : monthShift === -1
+                  ? 'Last month'
+                  : monthShift === 1
+                    ? 'Next month'
+                    : monthShift > 0
+                      ? `In ${monthShift} months`
+                      : `${-monthShift} months ago`}
             </div>
 
             {/* Date controls */}
             <div className="flex items-center gap-1 font-normal">
               <button
                 className="border bg-white rounded-lg p-1"
-                onClick={() => setWeekShift(weekShift - 1)}
+                onClick={() => setMonthShift(monthShift - 1)}
               >
                 <BsChevronLeft className="size-6 p-1" />
               </button>
               <button
                 className="border bg-white rounded-lg py-1 px-3"
-                onClick={() => setWeekShift(0)}
+                onClick={() => setMonthShift(0)}
               >
                 Today
               </button>
               <button
                 className="border bg-white rounded-lg p-1"
-                onClick={() => setWeekShift(weekShift + 1)}
+                onClick={() => setMonthShift(monthShift + 1)}
               >
                 <BsChevronRight className="size-6 p-1" />
               </button>
@@ -479,7 +482,7 @@ const EventsMap = ({
                   localizer={localizer}
                   events={calendarEvents}
                   onView={() => {}}
-                  view="week"
+                  view="month"
                   toolbar={false}
                   onSelectEvent={({ id }) => {
                     const event = events.find((e) => e.id === id);
@@ -518,9 +521,9 @@ const EventsMap = ({
 
         {/* MAP */}
         <div className="relative flex-1">
-          <div className="flex sm:justify-between items-center h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
+          <div className="flex items-center h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
             <div>
-              <div className="hidden sm:flex gap-4 items-center">
+              <div className="hidden sm:flex items-center mr-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -535,11 +538,10 @@ const EventsMap = ({
                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
                   />
                 </svg>
-                Filters
               </div>
             </div>
 
-            <div className="flex gap-3 md:gap-4 font-light mx-auto">
+            <div className="flex gap-3 md:gap-4 font-light">
               {courseTypes.map((f) => (
                 <button
                   key={f}
@@ -568,10 +570,20 @@ const EventsMap = ({
                   ? 'rounded-br-xl'
                   : 'rounded-b-xl'),
             )}
-          ></div>
+          >
+            <style>
+              {`
+      #ol-map .ol-zoom {
+        top: 1rem; 
+        right: 1rem; 
+        left: auto; 
+      }
+    `}
+            </style>
+          </div>
 
           {/* Switch mode */}
-          <div className="absolute bottom-2 left-2 hidden xl:block">
+          <div className="absolute top-20 left-2 hidden xl:block">
             <Button
               variant="primary"
               size="s"
