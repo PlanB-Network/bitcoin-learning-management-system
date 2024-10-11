@@ -112,6 +112,8 @@ export const minimalJoinedCourseSchema = courseSchema
     contact: true,
     lastUpdated: true,
     lastCommit: true,
+    numberOfRating: true,
+    sumOfAllRating: true,
   })
   .merge(
     courseLocalizedSchema.pick({
@@ -127,16 +129,25 @@ export const minimalJoinedCourseSchema = courseSchema
       level: levelSchema,
       chaptersCount: z.number().optional(),
     }),
+  )
+  .merge(
+    z.object({
+      averageRating: z.number(),
+    }),
   );
 
 export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
   z.object({
     professors: formattedProfessorSchema.array(),
+    averageRating: z.number(),
   }),
 );
 
 export const joinedCourseWithProfessorsSchema = minimalJoinedCourseSchema.merge(
-  z.object({ professors: formattedProfessorSchema.array() }),
+  z.object({
+    professors: formattedProfessorSchema.array(),
+    averageRating: z.number(),
+  }),
 );
 
 export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
