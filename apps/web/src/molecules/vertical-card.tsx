@@ -99,13 +99,13 @@ export const VerticalCard = ({
   return (
     <div
       className={cn(
-        'flex flex-col p-2.5 rounded-xl md:rounded-3xl gap-2.5 md:gap-4',
+        'flex flex-col p-2.5 rounded-[10px] md:rounded-3xl gap-2.5 md:gap-4',
         className,
         cardColorClasses[cardColor],
         onHoverCardColorChange && hoverCardColorClasses[cardColor],
       )}
     >
-      <div className="relative w-full rounded-2xl overflow-hidden">
+      <div className="relative w-full rounded-[10px] overflow-hidden">
         <img
           src={imageSrc}
           alt={title}
