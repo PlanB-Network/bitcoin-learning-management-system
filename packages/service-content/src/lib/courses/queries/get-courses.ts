@@ -22,6 +22,9 @@ export const getCoursesQuery = (language?: string) => {
       c.contact,
       c.available_seats,
       c.remaining_seats,
+      c.number_of_rating,
+      c.sum_of_all_rating,
+      COALESCE(NULLIF(c.sum_of_all_rating, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
       cl.name, 
       cl.goal,
       cl.objectives, 
@@ -31,16 +34,12 @@ export const getCoursesQuery = (language?: string) => {
       COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) as professors
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
-
-    -- Lateral join for aggregating professors
     LEFT JOIN LATERAL (
       SELECT ARRAY_AGG(cp.contributor_id) as professors
       FROM content.course_professors cp
       WHERE cp.course_id = c.id
     ) AS cp_agg ON TRUE
-
     ${language ? sql`WHERE cl.language = ${language}` : sql``}
-
     GROUP BY 
       c.id, 
       cl.language, 
@@ -60,6 +59,8 @@ export const getCoursesQuery = (language?: string) => {
       c.contact,
       c.available_seats,
       c.remaining_seats,
+      c.number_of_rating,
+      c.sum_of_all_rating,
       cl.name, 
       cl.goal,
       cl.objectives, 
@@ -94,6 +95,9 @@ export const getProfessorCoursesQuery = (
       c.contact,
       c.available_seats,
       c.remaining_seats,
+      c.number_of_rating,                  
+      c.sum_of_all_rating,                 
+      COALESCE(NULLIF(c.sum_of_all_rating, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating, 
       cl.name, 
       cl.goal,
       cl.objectives, 
@@ -133,6 +137,8 @@ export const getProfessorCoursesQuery = (
       c.contact,
       c.available_seats,
       c.remaining_seats,
+      c.number_of_rating,                  -- New field
+      c.sum_of_all_rating,                 -- New field
       cl.name, 
       cl.goal,
       cl.objectives, 
