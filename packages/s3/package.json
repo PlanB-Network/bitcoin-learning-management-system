@@ -1,0 +1,28 @@
+{
+  "name": "@blms/s3",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/src/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.670.0"
+  }
+}

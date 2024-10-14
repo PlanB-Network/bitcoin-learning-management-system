@@ -44,3 +44,11 @@ export interface OpenTimestampsConfig {
     password: string;
   };
 }
+
+export interface S3Config {
+  bucket: string;
+  region: string;
+  endpoint: string;
+  accessKey: string;
+  secretKey: string;
+}

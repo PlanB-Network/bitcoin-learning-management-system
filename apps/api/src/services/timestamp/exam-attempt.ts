@@ -109,6 +109,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
   };
 
   return {
+    getExamTimestamp,
     timestampExamAttempt,
     upgradeAndValidate,
     verifyExamTimestamp,
