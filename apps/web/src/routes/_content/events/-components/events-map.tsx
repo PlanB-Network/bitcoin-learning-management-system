@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import type { Components } from 'react-big-calendar';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { CiShare2 } from 'react-icons/ci';
 
 import type {
   EventLocation,
@@ -35,6 +36,7 @@ import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { EventCard } from './event-card.tsx';
+import ShareModal from './modal-link-sharing.tsx';
 
 enum DisplayMode {
   Calendar = 'calendar',
@@ -215,6 +217,8 @@ const EventsMap = ({
   conversionRate,
 }: EventsMapProps) => {
   const [mode, setMode] = useState<DisplayMode>(DisplayMode.Map);
+  const [isShareModalOpen, setShareModalOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
 
   const queryOpts = {
     staleTime: 600_000, // 10 minutes
@@ -243,14 +247,25 @@ const EventsMap = ({
     'meetup',
   ];
 
-  // [MAP] Update map state
-  const updateMapState = (map: OpenLayerMap) => {
+  const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
+
+  function prepareShareUrl(map: OpenLayerMap): void {
     const view = map.getView();
-    setMapState({
-      center: view.getCenter() ?? [0, 0],
-      zoom: view.getZoom() ?? 4,
-    });
-  };
+    const center = view.getCenter();
+
+    if (center) {
+      const [lng, lat] = transform(center, 'EPSG:3857', 'EPSG:4326');
+      const zoom = view.getZoom();
+
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set('lat', lat.toFixed(6));
+      newUrl.searchParams.set('lng', lng.toFixed(6));
+      newUrl.searchParams.set('zoom', zoom?.toString() ?? '3');
+
+      setShareUrl(newUrl.toString());
+      setShareModalOpen(true);
+    }
+  }
 
   const [groups, setGroups] = useState<Map<string, EventGroup>>();
 
@@ -263,18 +278,16 @@ const EventsMap = ({
 
     let state = mapState;
     if (!state) {
-      // Find most populated event group
-      const center =
-        groups.length === 1
-          ? latLonToCoordinate(groups[0].coordinate)
-          : groups.length > 1
-            ? latLonToCoordinate(
-                groups.sort((a, b) => b.events.length - a.events.length)[0]
-                  .coordinate,
-              )
-            : [0, 0];
+      const urlParams = new URLSearchParams(window.location.search);
+      const lat = Number.parseFloat(urlParams.get('lat') ?? '34.298470');
+      const lng = Number.parseFloat(urlParams.get('lng') ?? '-21.269531');
+      const zoom = Number.parseFloat(urlParams.get('zoom') ?? '3');
 
-      state = { center, zoom: 4 };
+      const initialCoordinates = latLonToCoordinate([lng, lat]);
+      state = {
+        center: initialCoordinates,
+        zoom: zoom,
+      };
 
       setMapState(state);
       setGroups(new Map(groups.map((g) => [g.location.name, g])));
@@ -285,6 +298,8 @@ const EventsMap = ({
       layers: [osmLayer],
       view: new View(state),
     });
+
+    setMapInstance(map);
 
     for (const group of groups) {
       map.addLayer(createMarker(group));
@@ -306,11 +321,8 @@ const EventsMap = ({
       }
     });
 
-    map.on('moveend', () => updateMapState(map));
-    map.on('zoomend', () => updateMapState(map));
-
     return () => {
-      map.setTarget();
+      map.setTarget(undefined);
     };
   }, [eventsLocations, events, filter, mapState]);
 
@@ -557,6 +569,21 @@ const EventsMap = ({
     `}
             </style>
           </div>
+          <div className="absolute bottom-2 right-2">
+            <button
+              onClick={() => mapInstance && prepareShareUrl(mapInstance)}
+              className="bg-orange-500 text-white px-3 py-2 rounded-lg shadow-md hover:bg-blue-900 flex items-center gap-2"
+            >
+              <p>Share</p>
+              <CiShare2 />
+            </button>
+          </div>
+
+          <ShareModal
+            isOpen={isShareModalOpen}
+            url={shareUrl}
+            onClose={() => setShareModalOpen(false)}
+          />
 
           {/* Switch mode */}
           <div className="absolute top-20 left-2 hidden xl:block">
