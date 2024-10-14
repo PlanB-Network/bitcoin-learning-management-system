@@ -211,6 +211,13 @@
       "when": 1728563140482,
       "tag": "0029_parallel_midnight",
       "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1728894094074,
+      "tag": "0030_rapid_tinkerer",
+      "breakpoints": true
     }
   ]
 }

@@ -104,8 +104,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (id) DO UPDATE SET
-          path = EXCLUDED.path,
+        ON CONFLICT (path) DO UPDATE SET
+          id = EXCLUDED.id,
           name = EXCLUDED.name,
           description = EXCLUDED.description,
           start_date = EXCLUDED.start_date,

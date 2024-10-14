@@ -923,7 +923,10 @@ export const contentEventTags = content.table(
     eventId: t
       .varchar({ length: 100 })
       .notNull()
-      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+      .references(() => contentEvents.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     tagId: t
       .integer()
       .notNull()
@@ -942,7 +945,10 @@ export const contentEventLanguages = content.table(
     eventId: t
       .varchar({ length: 100 })
       .notNull()
-      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+      .references(() => contentEvents.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.varchar({ length: 10 }).notNull(),
   }),
   (table) => ({
@@ -962,7 +968,10 @@ export const usersUserEvent = users.table(
     eventId: t
       .varchar({ length: 100 })
       .notNull()
-      .references(() => contentEvents.id, { onDelete: 'cascade' }),
+      .references(() => contentEvents.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     booked: t.boolean().default(false),
     withPhysical: t.boolean().default(false),
   }),
@@ -985,7 +994,9 @@ export const usersEventPayment = users.table(
     eventId: t
       .varchar({ length: 100 })
       .notNull()
-      .references(() => contentEvents.id),
+      .references(() => contentEvents.id, {
+        onUpdate: 'cascade',
+      }),
     withPhysical: t.boolean().default(false),
     paymentStatus: t.varchar({ length: 30 }).notNull(),
     amount: t.integer().notNull(),
