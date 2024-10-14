@@ -2,7 +2,13 @@ import process from 'node:process';
 
 import type { PostgresClientConfig } from '@blms/database';
 import type { RedisClientConfig } from '@blms/redis';
-import type { EnvConfig, GitHubSyncConfig, SessionConfig } from '@blms/types';
+import type {
+  EnvConfig,
+  GitHubSyncConfig,
+  OpenTimestampsConfig,
+  S3Config,
+  SessionConfig,
+} from '@blms/types';
 
 function getenv<
   T,
@@ -95,8 +101,16 @@ export const session: SessionConfig = {
 
 const rpcUrl = getenv('OTS_RPC_URL', null);
 const rpcPwd = getenv('OTS_RPC_PASSWORD', null);
-export const opentimestamps = {
+export const opentimestamps: OpenTimestampsConfig = {
   armoredKey: getenv('OTS_PGP_KEY', null),
   passphrase: getenv('OTS_PGP_PASSPHRASE', null),
   rpc: rpcUrl && rpcPwd ? { url: rpcUrl, password: rpcPwd } : undefined,
+};
+
+export const s3: S3Config = {
+  endpoint: getenv('S3_ENDPOINT').trim(),
+  region: getenv('S3_REGION').trim(),
+  bucket: getenv('S3_BUCKET').trim(),
+  accessKey: getenv('S3_ACCESS_KEY').trim(),
+  secretKey: getenv('S3_SECRET_KEY').trim(),
 };
