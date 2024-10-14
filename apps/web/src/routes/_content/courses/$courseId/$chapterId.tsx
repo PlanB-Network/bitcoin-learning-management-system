@@ -763,9 +763,7 @@ function CourseChapter() {
                           liveLanguage: '',
                           formattedCapacity: '',
                           contact: 'contact@planb.network',
-                          userDisplayName: user
-                            ? (user.displayName as string)
-                            : '',
+                          userName: user ? user.username : '',
                         });
                         setDownloadedPdf(pdf);
                       }

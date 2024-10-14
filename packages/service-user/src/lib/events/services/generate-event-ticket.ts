@@ -14,7 +14,7 @@ export const generateEventTicket = async ({
   liveLanguage,
   formattedCapacity,
   contact,
-  userDisplayName,
+  userName,
 }: {
   title?: string;
   addressLine1: string | null;
@@ -25,7 +25,7 @@ export const generateEventTicket = async ({
   liveLanguage: string | null;
   formattedCapacity?: string;
   contact: string | null;
-  userDisplayName: string;
+  userName: string;
 }) => {
   const chunks: Buffer[] = [];
   const doc = new PDFDocument();
@@ -145,14 +145,14 @@ export const generateEventTicket = async ({
       continued: true,
     });
     doc.font('Helvetica');
-    doc.text(userDisplayName, {
+    doc.text(userName, {
       continued: false,
     });
 
     x -= 20;
     y += 10;
     // eslint-disable-next-line import/no-named-as-default-member
-    const qrBuffer = qr.imageSync(`displayName:${userDisplayName}`);
+    const qrBuffer = qr.imageSync(`displayName:${userName}`);
     doc.image(qrBuffer, x, y, { width: 170 });
   }
 

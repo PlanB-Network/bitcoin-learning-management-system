@@ -59,7 +59,7 @@ export const BookingPart = ({ tickets }: { tickets: Ticket[] }) => {
                   </div>
                   <Buttons
                     ticket={ticket}
-                    userDisplayName={user?.displayName as string}
+                    userName={user?.displayName as string}
                     buttonSize="m"
                   />
                 </div>
@@ -74,7 +74,7 @@ export const BookingPart = ({ tickets }: { tickets: Ticket[] }) => {
                     </span>
                     <Buttons
                       ticket={ticket}
-                      userDisplayName={user?.displayName as string}
+                      userName={user?.displayName as string}
                       buttonSize="s"
                     />
                   </div>
@@ -92,11 +92,11 @@ export const BookingPart = ({ tickets }: { tickets: Ticket[] }) => {
 
 const Buttons = ({
   ticket,
-  userDisplayName,
+  userName,
   buttonSize,
 }: {
   ticket: Ticket;
-  userDisplayName: string;
+  userName: string;
   buttonSize: 's' | 'm';
 }) => {
   const { t } = useTranslation();
@@ -168,7 +168,7 @@ const Buttons = ({
                     formattedStartDate,
                     formattedTime,
                     formattedCapacity,
-                    userDisplayName,
+                    userName,
                   });
                 } else {
                   return;
@@ -176,7 +176,7 @@ const Buttons = ({
               } else {
                 base64 = await downloadTicketAsync({
                   eventId: ticket.eventId,
-                  userDisplayName: userDisplayName,
+                  userName: userName,
                 });
               }
 

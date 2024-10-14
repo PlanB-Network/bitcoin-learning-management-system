@@ -68,7 +68,7 @@ export const ModalBookSuccess = ({
               formattedStartDate,
               formattedTime,
               formattedCapacity,
-              userDisplayName: user?.displayName as string,
+              userName: user?.username as string,
             });
             const link = document.createElement('a');
             link.href = `data:application/pdf;base64,${base64}`;

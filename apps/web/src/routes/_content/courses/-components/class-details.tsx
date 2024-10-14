@@ -143,7 +143,7 @@ export const ClassDetails = ({
                     {t('courses.chapter.detail.classIsFull')}
                   </Button>
                 )}
-              {userChapter && user && user.displayName !== null && (
+              {userChapter && user && user.username !== null && (
                 <div className="flex flex-row gap-2">
                   <Button
                     variant="primary"
@@ -156,7 +156,7 @@ export const ClassDetails = ({
                           formattedStartDate,
                           formattedTime,
                           formattedCapacity,
-                          userDisplayName: user.displayName as string,
+                          userName: user.username,
                         });
                         setDownloadedPdf(pdf);
                       }

@@ -97,7 +97,7 @@ export const ModalPaymentSuccess = ({
               onClick={async () => {
                 const base64 = await downloadTicketAsync({
                   eventId: event.id,
-                  userDisplayName: user?.displayName as string,
+                  userName: user?.username as string,
                 });
                 const link = document.createElement('a');
                 link.href = `data:application/pdf;base64,${base64}`;

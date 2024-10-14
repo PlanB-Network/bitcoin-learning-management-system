@@ -230,7 +230,7 @@ const downloadChapterTicketProcedure = studentProcedure
       liveLanguage: z.string().nullable(),
       formattedCapacity: z.string().optional(),
       contact: z.string().nullable(),
-      userDisplayName: z.string(),
+      userName: z.string(),
     }),
   )
   .output<Parser<string>>(z.string())

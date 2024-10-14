@@ -28,7 +28,7 @@ const downloadEventTicketProcedure = studentProcedure
   .input(
     z.object({
       eventId: z.string(),
-      userDisplayName: z.string(),
+      userName: z.string(),
     }),
   )
   .output<Parser<string>>(z.string())
@@ -58,7 +58,7 @@ const downloadEventTicketProcedure = studentProcedure
       liveLanguage: '',
       formattedCapacity: formattedCapacity,
       contact: '',
-      userDisplayName: input.userDisplayName,
+      userName: input.userName,
     });
   });
 
