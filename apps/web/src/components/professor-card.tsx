@@ -73,7 +73,7 @@ export const TopicTags = ({ professor }: ProfessorCardProps) => {
 
 export const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-4 md:mt-5 flex w-full justify-evenly self-stretch px-1 text-primary gap-x-6">
+    <div className="mt-4 md:mt-5 flex w-full justify-center px-1 text-primary gap-x-6">
       {professor.links.twitter && (
         <button
           onClick={(e) => {
