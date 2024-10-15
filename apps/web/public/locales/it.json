@@ -31,12 +31,13 @@
     "createOne": "Registrati qui!",
     "emailAddress": "Indirizzo e-mail",
     "errors": {
-      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, _, e -",
-      "usernameRequired": "È richiesto il nome utente",
-      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri",
+      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, \"_\" , e \"-\"",
+      "usernameRequired": "È richiesto il nome utente.",
+      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri.",
       "displayNameRegex": "Lo username può contenere solo lettere, numeri, _, ., - e spazi.",
       "displayNameRequired": "Lo username è obbligatorio.",
-      "displayNameTooShort": "Lo username deve contenere almeno due caratteri."
+      "displayNameTooShort": "Lo username deve contenere almeno due caratteri.",
+      "invalidCredentials": "Credenziali non valide"
     },
     "forgottenPassword": "Hai dimenticato la password?",
     "headerAccountCreated": "Account creato",
@@ -65,7 +66,10 @@
     },
     "passwordResetError": "Errore di reimpostazione password",
     "passwordResetSent": "Una email di reimpostazione della password è stata inviata al tuo indirizzo email (se esiste nel nostro database).",
-    "tryAgain": "Prova ancora"
+    "tryAgain": "Prova ancora",
+    "confirmation": "Conferma",
+    "displayName": "Nome visualizzato",
+    "oldPassword": "Password precedente"
   },
   "bet": {
     "contribute": "Questo toolkit è aperto al contributo. Usa Figma, così chiunque può aggiungere, modificare e tradurre. Per collaborare, aggiungere una categoria o discutere, non esitare a unirti su discord.",
@@ -96,7 +100,7 @@
     "buttonBuy": "Acquista",
     "buttonPdf": "PDF / E-book",
     "offeredBy": "Offerto da un generoso contributore",
-    "pageSubtitle": "Questa libreria è open source e aperta al contributo. Grazie per aver valutato e condiviso !",
+    "pageSubtitle": "Questa libreria è open-source e aperta a qualsiasi contributo. Grazie per aver valutato e condiviso!",
     "pageTitle": "La biblioteca",
     "topicsAddressed": "Argomenti trattati:"
   },
@@ -169,15 +173,18 @@
       "teachers": "Insegnanti: {{teachers}}",
       "teacherWord": "Una parola dall'insegnante",
       "total": "Total",
-      "payment_successful": "Payment successful!",
-      "access_invoice": "You can access your invoice via your dashboard",
-      "payment_details": "Payment details",
-      "amount": "Amount",
+      "payment_successful": "Pagamento avvenuto con successo!",
+      "access_invoice": "Puoi accedere all'invoice dalla dashboard",
+      "payment_details": "Dettagli di pagamento",
+      "amount": "Cifra",
       "invoiceId": "Invoice ID",
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "buyOnlineCourse": "Acquista corso online",
+      "inPersonAccess": "È necessario scaricare il biglietto per accedere alla lezione in presenza.",
+      "buyInPersonCourse": "Acquista corso in presenza"
     },
     "explorer": {
       "footerTitle": "I nostri professori sono qui per te!",
@@ -207,19 +214,19 @@
       "count": "Parte n°{{count}}/{{total}}"
     },
     "payment": {
-      "access_invoice": "You can access your invoice via your dashboard",
-      "accessibility": "Accessibility",
-      "accessibility_forever": "Forever",
-      "amount": "Amount",
+      "access_invoice": "Puoi accedere all'invoice dalla dashboard",
+      "accessibility": "Accessibilità",
+      "accessibility_forever": "Per sempre",
+      "amount": "Cifra",
       "date": "Date",
       "dates_to": "{{startDate}} to {{endDate}}",
-      "downloadCurriculum": "Download curriculum",
-      "duration": "Duration",
+      "downloadCurriculum": "Scarica il curriculum",
+      "duration": "Durata",
       "invoiceId": "Invoice ID",
-      "numberOfChapters": "Number of chapters",
-      "payment_details": "Payment details",
-      "payment_successful": "Payment successful!",
-      "teacher": "Teacher",
+      "numberOfChapters": "Numero di capitoli",
+      "payment_details": "Dettagli di pagamento",
+      "payment_successful": "Pagamento avvenuto con successo!",
+      "teacher": "Insegnante",
       "teachers": "Insegnanti",
       "terms1": "See our",
       "terms2": "general terms",
@@ -231,7 +238,11 @@
       "description": "Questo acquisto ti darà accesso ai corsi online sulla piattaforma e alle lezioni di persona, a condizione che prenoti il posto. Ogni lezione ha luogo di persona nelle date e nei luoghi specificati prima di essere registrate e trasmesse via streaming online sulla piattaforma.",
       "book_description": "Controlla i dettagli del luogo forniti.\nDopo che la prenotazione sarà elaborata, ti forniremo un ticket di conferma e un codice QR da presentare all'evento.",
       "qr_unified": "Questo codice QR è unificato, quindi accetta sia pagamenti lightning che on-chain.",
-      "time": "Orario"
+      "time": "Orario",
+      "inPersonCallout": "Stai per acquistare l'accesso <strong>in presenza</strong> a questo corso.",
+      "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video di replay.",
+      "inPersonDescription": "Ogni lezione si svolge di persona nelle date e nei luoghi specificati, ed è anche trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle lezioni sia in presenza che online.\nNon dimenticare di prenotare il tuo posto per le lezioni a cui vuoi partecipare di persona.",
+      "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso."
     },
     "preview": {
       "by": "da {{professor}}",
@@ -280,7 +291,14 @@
       "veryBad": "molto scarso",
       "veryGood": "molto buono",
       "writeThoughts": "Qui puoi scrivere i tuoi pensieri",
-      "faithful": "Coerente con l'obiettivo?"
+      "faithful": "Coerente con l'obiettivo?",
+      "whatStudentsSay": "Cosa dicono gli studenti su questo corso",
+      "displayOutOf": "mostrato fuori di",
+      "loadMoreComments": "Carica più commenti",
+      "ratingsAndReviews": "Valutazioni e recensioni",
+      "currentlyLoggedOut": "Attualmente sei disconnesso dal sito. Per inviare un feedback sul corso, per favore <0>accedi o registrati</0>.",
+      "yesOfCourse": "sì, certo",
+      "yesVeryMuch": "sì, molto"
     }
   },
   "dashboard": {
@@ -354,9 +372,67 @@
       "profileInformation": "Informazioni profilo",
       "profilePicture": "Immagine profilo",
       "security": "Sicurezza",
-      "username": "Nome utente"
+      "username": "Nome utente",
+      "profile": "Profilo"
     },
-    "administration": "Amministrazione"
+    "administration": "Amministrazione",
+    "teacher": {
+      "courses": {
+        "courseDetails": "Dettagli del corso",
+        "courseId": "ID del corso",
+        "courseLongDescription": "Descrizione introduttiva",
+        "courseModification": "Se hai bisogno di aiuto per modificare il corso, leggi questo <0>tutorial</0>.",
+        "courseName": "Nome del corso",
+        "courseShortDescription": "Obiettivi",
+        "coursesManagementPanel": "Elenco dei corsi",
+        "analytics": "Analisi",
+        "curriculum": "Programma del corso",
+        "curriculumDescription": "Ecco il programma attuale di questo corso.",
+        "editOnGithub": "Modifica su Github",
+        "examResults": "Risultati dell'esame",
+        "reviews": "Recensioni",
+        "makeModifications": "Bisogna fare delle modifiche?",
+        "objectives": "Obiettivi",
+        "proposeNewCourse": "Proponi un nuovo corso",
+        "quickRecap": "Qui puoi trovare tutte le informazioni riguardanti questo corso.",
+        "reviewInfos": "Qui puoi controllare e rivedere tutte le informazioni relative a ogni corso che hai coordinato."
+      },
+      "profile": {
+        "teacher": "Insegnante",
+        "teacherProfile": "Profilo dell'insegnante",
+        "tutorialModification": "Se hai bisogno di aiuto per modificare qualcosa, leggi questo <0>tutorial</0>.",
+        "account": "Account insegnante",
+        "billingInformations": "Informazioni di fatturazione",
+        "chooseTags": "Scegli i tag che ti descrivono meglio",
+        "publicProfile": "Profilo pubblico",
+        "publicProfileDescription": "Qui puoi compilare o modificare tutte le informazioni associate alla tua attività come insegnante presso Plan ₿ Network.",
+        "writeShortBio": "Scrivi una breve biografia su di te",
+        "notifications": "Notifiche",
+        "publicDescription": "Questa descrizione viene visualizzata nella tua scheda informativa da insegnante sulla piattaforma.",
+        "description": "La tua descrizione",
+        "descriptionTags": "Questi tag completano il tuo profilo pubblico poiché mostrano le tue specializzazioni come bitcoiner.",
+        "enterTipsInformations": "La rete Plan ₿ incoraggia gli utenti a fare donazioni agli insegnanti. Inserisci le tue informazioni in modo che le persone possano mandarti un contributo quando lo desiderano.",
+        "noLightningAddress": "Nessun indirizzo lightning aggiunto fin ora.",
+        "noShortBio": "Nessuna breve biografia è stata collegata a questo account fin ora: sentiti libero di aggiungerla su GitHub.",
+        "noTags": "Nessun tag è stato collegato a questo account fin ora.",
+        "lightningAddress": "Indirizzo Lightning",
+        "makeModifications": "Hai bisogno di effettuare modifiche?"
+      },
+      "reviews": {
+        "checkComments": "Qui puoi leggere i commenti degli studenti, in ordine di data.",
+        "checkReviews": "Qui puoi controllare i voti e le recensioni che il tuo corso ha ricevuto.",
+        "noReviewsYet": "Questo corso non ha ancora ricevuto recensioni e voti.",
+        "privateComment": "Commento privato",
+        "publicComment": "Commento pubblico",
+        "review": "Modifica",
+        "reviews": "Recensioni",
+        "reviewsAndGrading": "Recensioni e valutazioni",
+        "seeStatistics": "Vedi le statistiche",
+        "viewDetails": "Visualizza dettagli",
+        "writtenFeedbacks": "Feedback scritti"
+      },
+      "menu": "Menu insegnante"
+    }
   },
   "events": {
     "introduction": {
@@ -366,25 +442,25 @@
       "introductionp3": "Want to talk about Bitcoin in real time ? Here you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin around a drink, or take an exam to assess your knowledge, you’ll be able to find the right event here through the Plan B Network."
     },
     "main": {
-      "upcomingEvents": "Upcoming events",
-      "currentEvents": "Events happening right now"
+      "upcomingEvents": "Prossimi eventi",
+      "currentEvents": "Eventi in corso ora"
     },
     "missed": {
-      "missedh1": "Past events to replay",
+      "missedh1": "Eventi passati da rivedere",
       "missedp1": "Did you miss an event ?",
       "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
     },
     "card": {
       "free": "free",
       "online": "online",
-      "limited": "limited to",
-      "unlimited": "unlimited",
+      "limited": "limite di",
+      "unlimited": "illimitato",
       "people": "people",
-      "watchLive": "Watch live",
-      "watchReplay": "Watch replay",
-      "bookLive": "Book live",
+      "watchLive": "Guarda la live",
+      "watchReplay": "Guarda il replay",
+      "bookLive": "Prenota l'accesso in presenza",
       "bookSeat": "Book your seat",
-      "visitWebsite": "Visit website",
+      "visitWebsite": "Visita il sito",
       "eventFull": "L'evento è pieno",
       "seatBooked": "Posto prenotato",
       "buyReplay": "Acquista una registrazione"
@@ -460,7 +536,7 @@
       "title": "Chi siamo?",
       "subtitle": "Un po' su di noi",
       "content": "PlanB è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e l'appartenenza alla comunità. Insieme, hanno deciso di costruire PlanB e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
-      "bitcoinFocusTitle": "Bitcoin focus",
+      "bitcoinFocusTitle": "Focus su Bitcoin",
       "bitcoinFocusContent": "Rivoluzione Bitcoin nel suo insieme, dal suo livello base a varie comunicazioni peer-to-peer intorno ad esso",
       "openSourceTitle": "Open source",
       "openSourceContent": "Il nostro obiettivo è promuovere il libero flusso di conoscenze e contribuire a costruire più soluzioni open source",
@@ -556,7 +632,10 @@
     "question2": "Che cosa guadagno?",
     "question3": "Quali sono i requisiti?",
     "question4": "Che dimensione ha un Nodo?",
-    "question5": "Qual è il piano segreto?"
+    "question5": "Qual è il piano segreto?",
+    "mobiledescription": "Crediamo che l'educazione non dovrebbe svolgersi solo online, ma anche in spazi fisici. Per raggiungere questo obiettivo, Plan B Network gestisce una rete di hub in tutto il mondo per accogliere pensatori, ideatori di progetti ed educatori che promuovono l di Bitcoin e delle tecnologie. Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo i \"nodi completi\" della nostra rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
+    "descriptionextend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
+    "applyhelp": "*Seleziona la posizione del nodo"
   },
   "notFound": {
     "here": "Qui",
@@ -578,7 +657,14 @@
     "tips": {
       "noTipsYet": "Questo professore non accetta donazioni al momento.",
       "thanks": "Grazie per aver supportato il lavoro di {{name}}!",
-      "thanksNoName": "Grazie per aver supportato il mio lavoro!"
+      "thanksNoName": "Grazie per aver supportato il mio lavoro!",
+      "authorSupport": "Sostieni l'autore con una donazione"
+    },
+    "navigationTitles": {
+      "all": "Tutti",
+      "lecturers": "Docenti",
+      "teachers": "Professori",
+      "tutorialCreators": "Creatori di tutorial"
     }
   },
   "resources": {
@@ -728,7 +814,9 @@
     "github": "GitHub",
     "p1": "Un coniglio ha abbattuto un buco. A causa di questa avventura inaspettata, questa pagina è sotto un po 'di costruzione al momento. Ci scusiamo per qualsiasi inconveniente. Il nostro team è in pieno equipaggiamento per completare questa pagina. Se siete interessati a prestare una mano, non esitate a controllare il nostro",
     "p2": "e considerare di unirsi alla nostra comunità!",
-    "pageTitle": "Ooops."
+    "pageTitle": "Ooops.",
+    "itemNotFoundOrTranslated": "{{item}} non trovato, o non tradotto nella tua lingua",
+    "itemNotFound": "{{item}} non trovato"
   },
   "words": {
     "about": "Informazioni",
@@ -774,7 +862,8 @@
       "intermediate": "Intermedio",
       "wizard": "Procedura guidata",
       "level": "Livello",
-      "levels": "Livelli"
+      "levels": "Livelli",
+      "beginnerFriendly": "Per principianti"
     },
     "library": "Libreria",
     "lightning": "Fulmine",
@@ -818,11 +907,11 @@
     "wallets": "Portafogli",
     "date": "Data",
     "time": "Orario",
-    "to": "",
+    "to": "a",
     "billing": "Fatturazione",
     "download": "Scarica",
     "invoice": "Fattura",
-    "on": "",
+    "on": "su",
     "online": "Online",
     "ticket": "Biglietto",
     "tickets": "Biglietti",
@@ -843,7 +932,21 @@
     "unified": "Unificato",
     "amount": "Importo",
     "lightningInvoice": "Fattura Lightning",
-    "onChainAddress": "Indirizzo on chain"
+    "onChainAddress": "Indirizzo on chain",
+    "chapter": "Capitolo",
+    "admins": "Amministratori",
+    "builder": "Ideatori di progetti",
+    "communities": "Le comunità",
+    "free": "Gratuito",
+    "goal": "Obiettivo",
+    "hours": "ore",
+    "inPerson": "In presenza",
+    "lectures": "Lezioni",
+    "students": "Studenti",
+    "public": "Blog e Notizie",
+    "ratings": "Valutazioni",
+    "users": "Utenti",
+    "view": "Vista"
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
@@ -905,7 +1008,8 @@
     "relatedWords": "Parole correlate:",
     "creditsLoic": "<0>Crediti</0>: Bitcoin Dictionary scritto da Loïc Morel (Pandul), disponibile in questo <1>repository Github</1>.",
     "term": "Termine",
-    "keepLooking": "Vuoi continuare a cercare?"
+    "keepLooking": "Vuoi continuare a cercare?",
+    "notTranslated": "I dati nel glossario non sono ancora stati tradotti.\nSe hai voglia di aiutarci, sentiti libero di contribuire sul nostro"
   },
   "publicCommunication": {
     "blogPost": "Blog & Notizie",
@@ -932,7 +1036,9 @@
       "network": "Rete",
       "content": "Contenuti",
       "course": "Nuovi corsi",
-      "feature": "In evidenza"
+      "feature": "In evidenza",
+      "grants": "Sovvenzioni",
+      "patch": "Note sulla patch"
     },
     "goBackButtons": {
       "simpleGoBack": "Torna a tutti gli articoli"
