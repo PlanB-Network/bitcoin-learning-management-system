@@ -35,6 +35,7 @@
     }
   ],
   "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.classAttributes": [
@@ -58,6 +59,7 @@
     "getenv",
     "lnurl",
     "nostr",
+    "opentimestamps",
     "paynym",
     "planb",
     "psql",

@@ -8,6 +8,12 @@ import {
   unique,
 } from 'drizzle-orm/pg-core';
 
+const blob = customType<{ data: Buffer; notNull: false; default: false }>({
+  dataType() {
+    return 'bytea';
+  },
+});
+
 export const users = pgSchema('users');
 export const content = pgSchema('content');
 
@@ -1267,6 +1273,32 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
 
   startedAt: t.timestamp({ withTimezone: true }).notNull(),
   finishedAt: t.timestamp({ withTimezone: true }),
+}));
+
+export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
+  id: t.uuid().primaryKey().notNull(),
+
+  // Reference to exam attempt
+  examAttemptId: t
+    .uuid()
+    .notNull()
+    .references(() => usersExamAttempts.id, { onDelete: 'cascade' }),
+
+  // Timestamp data
+  txt: t.text().notNull(), // Text to timestamp
+  sig: t.text().notNull(), // Signed message
+  ots: blob('ots').notNull(), // OpenTimestamps proof
+
+  // Is the timestamp is confirmed
+  confirmed: t.boolean().default(false).notNull(),
+  txId: t.varchar({ length: 64 }),
+  blockHash: t.varchar({ length: 64 }),
+  blockHeight: t.integer(),
+  blockTimestamp: t.bigint({ mode: 'bigint' }),
+
+  createdAt: t.timestamp().defaultNow().notNull(),
+  updatedAt: t.timestamp().defaultNow().notNull(),
+  confirmedAt: t.timestamp(),
 }));
 
 export const usersQuizAttempts = users.table(
