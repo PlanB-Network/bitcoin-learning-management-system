@@ -53,8 +53,8 @@ function Home() {
           <NumberSection />
           <EducationSection />
           <TutorialSection />
-          <div className="max-md:mx-2.5">
-            <BCertificatePresentation marginClasses="mt-0" />
+          <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]">
+            <BCertificatePresentation marginClasses="mt-0 border-0 shadow-none" />
           </div>
           <AboutUsSection />
           <LanguageSection />
