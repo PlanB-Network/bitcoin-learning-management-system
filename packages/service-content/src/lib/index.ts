@@ -34,7 +34,7 @@ import {
 } from './professors/import/index.js';
 import { createDeleteProofreadings } from './proofreadings/import/index.js';
 import {
-  createDeleteQuizQuestions,
+  createDisableQuizQuestions,
   createUpdateQuizQuestions,
   groupByQuizQuestion,
 } from './quizzes/questions/import/index.js';
@@ -141,7 +141,6 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
 export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteProfessors = createDeleteProfessors(dependencies);
   const deleteCourses = createDeleteCourses(dependencies);
-  const deleteQuizQuestions = createDeleteQuizQuestions(dependencies);
   const deleteTutorials = createDeleteTutorials(dependencies);
   const deleteResources = createDeleteResources(dependencies);
   const deleteEvents = createDeleteEvents(dependencies);
@@ -156,13 +155,26 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
 
     await deleteProfessors(sync_date, errors);
     await deleteCourses(sync_date, errors);
-    await deleteQuizQuestions(sync_date, errors);
     await deleteTutorials(sync_date, errors);
     await deleteResources(sync_date, errors);
     await deleteEvents(sync_date, errors);
     await deleteBCertificates(sync_date, errors);
     await deleteBlogs(sync_date, errors);
     await deleteLegals(sync_date, errors);
+
+    console.timeEnd(timeKey);
+  };
+};
+
+export const createProcessDisableOldEntities = (dependencies: Dependencies) => {
+  const disableQuizQuestions = createDisableQuizQuestions(dependencies);
+
+  return async (sync_date: number, errors: string[]) => {
+    const timeKey = '-- Sync procedure: Disabling old entities';
+    console.log(timeKey + '...');
+    console.time(timeKey);
+
+    await disableQuizQuestions(sync_date, errors);
 
     console.timeEnd(timeKey);
   };

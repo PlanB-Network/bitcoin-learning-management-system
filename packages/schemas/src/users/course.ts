@@ -6,6 +6,8 @@ import {
   usersCourseProgress,
   usersCourseReview,
   usersCourseUserChapter,
+  usersExamAttempts,
+  usersExamQuestions,
   usersQuizAttempts,
 } from '@blms/database';
 
@@ -18,6 +20,9 @@ export const courseUserChapterSchema = createSelectSchema(
 );
 export const courseQuizAttemptsSchema = createSelectSchema(usersQuizAttempts);
 export const courseReviewSchema = createSelectSchema(usersCourseReview);
+
+export const courseExamAttemptSchema = createSelectSchema(usersExamAttempts);
+export const courseExamQuestionSchema = createSelectSchema(usersExamQuestions);
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
@@ -50,3 +55,50 @@ export const getUserChapterResponseSchema = courseUserChapterSchema.pick({
   completedAt: true,
   booked: true,
 });
+
+export const partialExamQuestionSchema = courseExamQuestionSchema
+  .pick({
+    id: true,
+  })
+  .merge(
+    z.object({
+      text: z.string(),
+      answers: z
+        .object({
+          order: z.number(),
+          text: z.string(),
+        })
+        .array(),
+    }),
+  );
+
+export const courseExamResultsSchema = courseExamAttemptSchema
+  .pick({
+    score: true,
+    finalized: true,
+    succeeded: true,
+    startedAt: true,
+    finishedAt: true,
+  })
+  .merge(
+    z.object({
+      questions: z.array(
+        z.object({
+          text: z.string(),
+          explanation: z.string(),
+          chapterName: z.string(),
+          chapterPart: z.number(),
+          chapterIndex: z.number(),
+          chapterLink: z.string(),
+          userAnswer: z.number().nullable(),
+          answers: z.array(
+            z.object({
+              text: z.string(),
+              order: z.number(),
+              correctAnswer: z.boolean(),
+            }),
+          ),
+        }),
+      ),
+    }),
+  );

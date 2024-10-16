@@ -57,7 +57,7 @@ function DashboardProfessorProfile() {
   ];
 
   const infoTextClasses =
-    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-thin';
+    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">

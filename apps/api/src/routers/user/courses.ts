@@ -2,17 +2,21 @@ import { z } from 'zod';
 
 import {
   checkoutDataSchema,
+  courseExamResultsSchema,
   coursePaymentSchema,
   courseProgressExtendedSchema,
   courseProgressSchema,
   courseReviewSchema,
   courseUserChapterSchema,
+  partialExamQuestionSchema,
 } from '@blms/schemas';
 import { createCalculateCourseChapterSeats } from '@blms/service-content';
 import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
+  createCompleteExamAttempt,
   createGetCourseReview,
+  createGetLatestExamResults,
   createGetPayment,
   createGetProgress,
   createGetUserChapter,
@@ -21,14 +25,17 @@ import {
   createSavePayment,
   createSaveQuizAttempt,
   createSaveUserChapter,
+  createStartExamAttempt,
   generateChapterTicket,
 } from '@blms/service-user';
 import type {
   CheckoutData,
+  CourseExamResults,
   CourseProgress,
   CourseProgressExtended,
   CourseReview,
   CourseUserChapter,
+  PartialExamQuestion,
 } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -59,6 +66,38 @@ const getProgressProcedure = studentProcedure
   )
   .query(({ ctx }) =>
     createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
+  );
+
+const startExamAttemptProcedure = studentProcedure
+  .input(z.object({ courseId: z.string(), language: z.string() }))
+  .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
+  .mutation(async ({ ctx, input }) =>
+    createStartExamAttempt(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+      language: input.language,
+    }),
+  );
+
+const completeExamAttemptProcedure = studentProcedure
+  .input(
+    z.object({
+      answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) =>
+    createCompleteExamAttempt(ctx.dependencies)({ answers: input.answers }),
+  );
+
+const getLatestExamResultsProcedure = studentProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<CourseExamResults>>(courseExamResultsSchema)
+  .query(({ ctx, input }) =>
+    createGetLatestExamResults(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    }),
   );
 
 const saveQuizAttemptProcedure = studentProcedure
@@ -238,8 +277,10 @@ const downloadChapterTicketProcedure = studentProcedure
 
 export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
+  completeExamAttempt: completeExamAttemptProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
   getCourseReview: getCourseReviewProcedure,
+  getLatestExamResults: getLatestExamResultsProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,
@@ -248,4 +289,5 @@ export const userCoursesRouter = createTRPCRouter({
   saveUserChapter: saveUserChapterProcedure,
   savePayment: savePaymentProcedure,
   saveFreePayment: saveFreePaymentProcedure,
+  startExamAttempt: startExamAttemptProcedure,
 });

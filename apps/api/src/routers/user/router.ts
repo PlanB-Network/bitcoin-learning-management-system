@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import { userRolesSchema } from '@blms/schemas';
 import {
+  createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
   createChangePassword,
@@ -115,6 +116,21 @@ export const userRouter = createTRPCRouter({
         displayName: input.displayName,
       }),
     ),
+
+  changeCertificateName: studentProcedure
+    .input(
+      z.object({
+        certificateName: z.string(),
+      }),
+    )
+    .output<Parser<void>>(z.void())
+    .mutation(({ ctx, input }) =>
+      createChangeCertificateName(ctx.dependencies)({
+        uid: ctx.user.uid,
+        certificateName: input.certificateName,
+      }),
+    ),
+
   changePassword: studentProcedure
     .input(
       z.object({

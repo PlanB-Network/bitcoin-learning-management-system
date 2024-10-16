@@ -15,6 +15,7 @@ interface QuizQuestionLocal {
 export const createProcessLocalFile = (transaction: TransactionSql) => {
   return async (
     quizQuestion: ChangedQuizQuestion,
+    id: string,
     file: ChangedFileWithLanguage,
   ) => {
     if (file.kind === 'removed') {
@@ -28,7 +29,7 @@ export const createProcessLocalFile = (transaction: TransactionSql) => {
           quiz_question_id, language, question, answer, wrong_answers, explanation
         )
         VALUES (
-          ${quizQuestion.id},
+          ${id},
           ${file.language},
           ${parsed.question},
           ${parsed.answer},
@@ -41,5 +42,35 @@ export const createProcessLocalFile = (transaction: TransactionSql) => {
           wrong_answers = EXCLUDED.wrong_answers,
           explanation = EXCLUDED.explanation
       `;
+
+    await transaction`
+        INSERT INTO content.quiz_answers_localized (
+          quiz_question_id, "order", language, text
+        )
+        VALUES (
+          ${id},
+          0,
+          ${file.language},
+          ${parsed.answer}
+        )
+        ON CONFLICT (quiz_question_id, "order", language) DO UPDATE SET
+          text = EXCLUDED.text
+      `;
+
+    for (let i = 0; i < 3; i++) {
+      await transaction`
+          INSERT INTO content.quiz_answers_localized (
+            quiz_question_id, "order", language, text
+          )
+          VALUES (
+            ${id},
+            ${i + 1},
+            ${file.language},
+            ${parsed.wrong_answers[i]}
+          )
+          ON CONFLICT (quiz_question_id, "order", language) DO UPDATE SET
+            text = EXCLUDED.text
+        `;
+    }
   };
 };

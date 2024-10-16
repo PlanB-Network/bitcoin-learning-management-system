@@ -52,6 +52,24 @@ export interface CourseReview {
   createdAt: Date;
 }
 
+export interface CourseExamAttempt {
+  id: string;
+  uid: string;
+  courseId: string;
+  language: string;
+  finalized: boolean;
+  score: number | null;
+  succeeded: boolean;
+  startedAt: Date;
+  finishedAt: Date | null;
+}
+
+export interface CourseExamQuestion {
+  id: string;
+  examId: string;
+  questionId: string;
+}
+
 export interface CourseProgressExtended {
   uid: string;
   courseId: string;
@@ -83,4 +101,35 @@ export interface GetUserChapterResponse {
   chapterId: string;
   completedAt: Date;
   booked: boolean | null;
+}
+
+export interface PartialExamQuestion {
+  id: string;
+  text: string;
+  answers: {
+    order: number;
+    text: string;
+  }[];
+}
+
+export interface CourseExamResults {
+  score: number | null;
+  finalized: boolean;
+  succeeded: boolean;
+  startedAt: Date;
+  finishedAt: Date | null;
+  questions: {
+    text: string;
+    explanation: string;
+    chapterName: string;
+    chapterPart: number;
+    chapterIndex: number;
+    chapterLink: string;
+    userAnswer: number | null;
+    answers: {
+      text: string;
+      order: number;
+      correctAnswer: boolean;
+    }[];
+  }[];
 }

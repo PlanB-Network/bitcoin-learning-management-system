@@ -25,10 +25,10 @@ export const QuizzHeader = ({
       {/* Big screen */}
       <div className="hidden items-center justify-end gap-2.5 md:flex">
         <div className="flex flex-col ">
-          <span className="subtitle-med-caps-18px text-white text-right">
+          <span className="subtitle-medium-caps-18px text-white text-right">
             {name}
           </span>
-          <span className="subtitle-med-caps-18px !lowercase text-white text-right">
+          <span className="subtitle-medium-caps-18px !lowercase text-white text-right">
             {t('words.chapter')} {chapter}
           </span>
         </div>
@@ -42,7 +42,7 @@ export const QuizzHeader = ({
         </div>
       </div>
       {/* Small device */}
-      <span className="text-white subtitle-med-caps-18px md:hidden px-2.5">
+      <span className="text-white subtitle-medium-caps-18px md:hidden px-2.5">
         {questionIndex + 1}/5
       </span>
     </div>
