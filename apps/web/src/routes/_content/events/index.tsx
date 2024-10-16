@@ -172,6 +172,9 @@ function Events() {
             isLoggedIn={isLoggedIn}
             setIsPaymentModalOpen={setIsPaymentModalOpen}
             setPaymentModalData={setPaymentModalData}
+            headingColor="text-darkOrange-5"
+            headingText={t('events.main.currentEvents')}
+            headingClass="text-lg  font-medium md:text-2xl md:font-normal md:tracking-[0.25px] "
           />
         )}
 

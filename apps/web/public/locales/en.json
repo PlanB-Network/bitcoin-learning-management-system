@@ -605,7 +605,7 @@
   },
   "home": {
     "header": {
-      "content": "The Plan ₿ network platform aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "content": "The Plan ₿ Network platform aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "For educators and builders",
       "globalNetwork": "A Global Bitcoin Network",
       "welcome": "Welcome to Plan ₿ Network",
@@ -628,10 +628,11 @@
       "link": "Be part of the network"
     },
     "tutorialSection": {
-      "title": "Bitcoin education made simple.",
-      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
+      "title": "Centralize knowledge to better distribute it",
+      "subtitle1": "Bitcoin education made simple.",
       "content1": "Bitcoin is constantly evolving, with the emergence of new actors, solutions, protocols, and technological breakthroughs. Thus, it can be challenging to maintain an accurate and up-to-date database of quality tutorials. Here at Plan ₿, we have achieved just that. Whether you are a beginner or an advanced user, you can navigate hundreds of tutorials to explore our industry according to your needs.",
-      "link": "See all tutorials"
+      "link": "See all tutorials",
+      "link2": "See all resources"
     },
     "aboutUsSection": {
       "title": "Who are we?",
@@ -648,15 +649,16 @@
     },
     "languageSection": {
       "availableLanguages": "Available languages",
+      "availableLanguagesVariation": "Languages available: ",
       "title": "No language barrier here.",
       "subtitle": "Everything is translated into local languages!",
       "subtitle2": "We need you!",
-      "content1": "At Plan ₿, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
+      "content1": "At Plan ₿, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world. You too can start bootstrapping your own local network in your country!",
       "content2": "You too can start bootstrapping your own local network in your country!",
       "link": "Help us translate the academy"
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
+      "title": "Together, let's make Bitcoin education better ! ",
       "subtitle": "The Plan ₿ Network is 100% open-source thanks to our generous patrons",
       "content": "The Plan ₿ Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     },
