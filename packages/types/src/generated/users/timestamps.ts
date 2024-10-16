@@ -9,8 +9,10 @@ export interface UserExamTimestamp {
   ots?: any;
   hash: string;
   confirmed: boolean;
-  height: number | null;
-  timestamp: bigint | null;
+  txid: string | null;
+  blockHash: string | null;
+  blockHeight: number | null;
+  blockTimestamp: bigint | null;
   createdAt: Date;
   updatedAt: Date;
   confirmedAt: Date | null;
