@@ -10,9 +10,7 @@ import Flags from '#src/assets/home/flags.webp';
 import FlagsSmall from '#src/assets/home/flags_small.png';
 import HeaderLeft from '#src/assets/home/header_left.svg';
 import HeaderRight from '#src/assets/home/header_right.svg';
-import Lugano from '#src/assets/home/lugano.webp';
 import NetworkMain from '#src/assets/home/network_main.webp';
-import Sponsors from '#src/assets/home/sponsors.webp';
 import TwitterClaire from '#src/assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '#src/assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '#src/assets/home/twitter_loic.jpeg';
@@ -24,6 +22,7 @@ import { CategoryIcon } from '#src/components/category-icon.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { TUTORIALS_CATEGORIES } from '#src/utils/tutorials.js';
 
+import SponsorsIcon from '../../src/assets/icons/sponsors.svg';
 import { MainLayout } from '../components/main-layout.tsx';
 import { NotFound } from '../components/not-found.tsx';
 import { AboutUs } from '../molecules/about-us.tsx';
@@ -54,7 +53,7 @@ function Home() {
           <EducationSection />
           <TutorialSection />
           <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]">
-            <BCertificatePresentation marginClasses="mt-0 border-0 shadow-none" />
+            <BCertificatePresentation marginClasses="mt-0 border-0 !shadow-none" />
           </div>
           <AboutUsSection />
           <LanguageSection />
@@ -528,10 +527,10 @@ function Home() {
 
   const PatreonSection = () => {
     return (
-      <div className={cn('text-left !pb-0', sectionClass)}>
+      <div className={cn('text-left !pb-0 flex flex-col', sectionClass)}>
         <div
           className={cn(
-            'flex flex-col md:flex-row items-center',
+            'flex flex-col items-center px-0 md:px-0 lg:px-0',
             subSectionClass,
           )}
         >
@@ -553,19 +552,13 @@ function Home() {
           </div>
           <div className="mb-12 flex h-[26rem] w-full justify-center gap-6 md:mb-6 md:ml-9 md:h-[22rem] lg:ml-16 lg:h-[34rem] lg:justify-start">
             <img
-              className="mt-9 h-full w-auto xl:ml-20 2xl:ml-40"
-              src={Sponsors}
+              className="mt-9 h-full w-auto"
+              src={SponsorsIcon}
               alt={t('')}
               loading="lazy"
             />
           </div>
         </div>
-        <img
-          className="h-full w-auto"
-          src={Lugano}
-          alt={t('')}
-          loading="lazy"
-        />
       </div>
     );
   };
