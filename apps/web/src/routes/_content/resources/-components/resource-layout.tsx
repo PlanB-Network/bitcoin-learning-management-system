@@ -52,7 +52,7 @@ export const ResourceLayout = ({
     <MainLayout footerVariant="dark">
       <div
         className={cn(
-          'flex h-fit justify-center p-2 md:p-10 relative',
+          'flex h-fit justify-center p-4 md:p-10 relative',
           className,
         )}
       >

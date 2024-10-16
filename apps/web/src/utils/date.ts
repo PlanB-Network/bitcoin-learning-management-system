@@ -121,3 +121,19 @@ export const getTimeString = (
 
   return timeString;
 };
+
+export function formatFullDateWithDay(date: Date, timezone?: string): string {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: timezone,
+  };
+
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+}
