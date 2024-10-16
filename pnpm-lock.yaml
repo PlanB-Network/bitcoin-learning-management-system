@@ -59,6 +59,9 @@ importers:
       '@blms/github':
         specifier: workspace:*
         version: link:../../packages/github
+      '@blms/opentimestamps':
+        specifier: workspace:*
+        version: link:../../packages/opentimestamps
       '@blms/redis':
         specifier: workspace:*
         version: link:../../packages/redis
@@ -448,6 +451,9 @@ importers:
 
   packages/opentimestamps:
     dependencies:
+      '@blms/database':
+        specifier: workspace:*
+        version: link:../database
       openpgp:
         specifier: 5.11.2
         version: 5.11.2

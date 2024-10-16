@@ -92,3 +92,11 @@ export const session: SessionConfig = {
   secure: production,
   domain: production ? domain : undefined,
 };
+
+const rpcUrl = getenv('OTS_RPC_URL', null);
+const rpcPwd = getenv('OTS_RPC_PASSWORD', null);
+export const opentimestamps = {
+  armoredKey: getenv('OTS_PGP_KEY', null),
+  passphrase: getenv('OTS_PGP_PASSPHRASE', null),
+  rpc: rpcUrl && rpcPwd ? { url: rpcUrl, password: rpcPwd } : undefined,
+};

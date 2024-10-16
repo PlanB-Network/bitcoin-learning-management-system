@@ -1,8 +1,10 @@
 import { createHash } from 'node:crypto';
 
 import type { PrivateKey } from 'openpgp';
-import { createCleartextMessage, sign } from 'openpgp';
+import * as openpgp from 'openpgp';
 import ots from 'opentimestamps';
+
+import type { OpenTimestampsConfig } from '@blms/types';
 
 const getLatestBlockHeight = async (): Promise<number> => {
   const res = await fetch('https://mempool.space/api/blocks/tip/height');
@@ -35,44 +37,21 @@ const getLatestBlockHash = async (): Promise<string> => {
   return blockHash;
 };
 
-interface TemplateOptions {
-  blockHash: string;
-  fullName: string;
-  subject: string;
-}
-
-// TODO: read from template file
-const fillTemplate = ({ blockHash, fullName, subject }: TemplateOptions) => {
-  return `This is to certify that ${fullName} has successfully completed the ${subject} at block ${blockHash}.`;
-};
-
-interface GenerateOptions extends TemplateOptions {
-  userName: string;
-}
-
-// Generate diploma text
-const generateDiplomaText = ({ userName, ...opts }: GenerateOptions) => {
-  const text = fillTemplate(opts);
-
-  return { userName, text };
-};
-
 // Sign diploma text
 interface SignOptions {
-  userName: string;
   text: string;
 }
 
 const createSignature = (privateKey: PrivateKey) => {
-  return async ({ userName, text }: SignOptions) => {
-    const message = await createCleartextMessage({ text });
+  return async ({ text }: SignOptions) => {
+    const message = await openpgp.createCleartextMessage({ text });
 
-    const signature = await sign({
+    const signature = await openpgp.sign({
       message,
       signingKeys: [privateKey],
     });
 
-    return { userName, text, signature };
+    return { text, signature };
   };
 };
 
@@ -89,24 +68,36 @@ const createStamp = () => {
 
     await ots.stamp(detached);
 
-    return { ...options, ots: Buffer.from(detached.serializeToBytes()) };
+    return {
+      ...options,
+      hash: hash.toString('hex'),
+      ots: Buffer.from(detached.serializeToBytes()),
+    };
   };
 };
 
 interface TimeStampDiplomaOptions {
-  userName: string;
-  fullName: string;
-  subject: string;
+  text: string;
 }
 
-export function createTimeStampDiploma(ctx: { privateKey: PrivateKey }) {
-  const sign = createSignature(ctx.privateKey);
+export async function loadPrivateKey(config: OpenTimestampsConfig) {
+  const { armoredKey, passphrase } = config;
+  let privateKey = await openpgp.readPrivateKey({ armoredKey });
+
+  if (passphrase) {
+    privateKey = await openpgp.decryptKey({ passphrase, privateKey });
+  }
+
+  return privateKey;
+}
+
+export function createTimestamp(privateKey: PrivateKey) {
+  const sign = createSignature(privateKey);
   const stamp = createStamp();
 
-  return (options: TimeStampDiplomaOptions) => {
+  return ({ text }: TimeStampDiplomaOptions) => {
     return getLatestBlockHash()
-      .then((blockHash) => ({ blockHash, ...options }))
-      .then(generateDiplomaText)
+      .then((blockHash) => ({ blockHash, text }))
       .then(sign)
       .then(stamp);
   };

@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "openpgp": "5.11.2",
-    "opentimestamps": "0.4.9"
+    "opentimestamps": "0.4.9",
+    "@blms/database": "workspace:*"
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
