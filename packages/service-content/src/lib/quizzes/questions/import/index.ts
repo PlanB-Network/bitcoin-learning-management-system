@@ -1,5 +1,5 @@
-import { firstRow, sql } from '@blms/database';
-import type { ChangedFile, QuizQuestion } from '@blms/types';
+import { sql } from '@blms/database';
+import type { ChangedFile } from '@blms/types';
 
 import type { Language } from '../../../const.js';
 import type { Dependencies } from '../../../dependencies.js';
@@ -77,6 +77,7 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
       quizQuestion.files.push({
         ...file,
         path: getRelativePath(file.path, quizQuestionPath),
+        fullPath: file.path,
         language,
       });
 
@@ -98,20 +99,16 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
         const processMainFile = createProcessMainFile(transaction);
         const processLocalFile = createProcessLocalFile(transaction);
 
+        let id;
+
         try {
-          await processMainFile(quizQuestion, main);
+          id = await processMainFile(quizQuestion, main);
         } catch (error) {
           errors.push(
             `Error processing file(quiz) ${quizQuestion?.fullPath} for quiz question ${quizQuestion.id}: ${error}`,
           );
           return;
         }
-
-        const id = await transaction<QuizQuestion[]>`
-            SELECT id FROM content.quiz_questions WHERE id = ${quizQuestion.id}
-          `
-          .then(firstRow)
-          .then((row) => row?.id);
 
         if (!id) {
           throw new Error(
@@ -121,7 +118,7 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            await processLocalFile(quizQuestion, file);
+            await processLocalFile(quizQuestion, id, file);
           } catch (error) {
             errors.push(
               `Error processing file(quiz) ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
@@ -135,15 +132,14 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteQuizQuestions = ({ postgres }: Dependencies) => {
+export const createDisableQuizQuestions = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
-        sql`DELETE FROM content.quiz_questions WHERE last_sync < ${sync_date} 
-      `,
+        sql`UPDATE content.quiz_questions SET disabled = true WHERE last_sync < ${sync_date}`,
       );
     } catch {
-      errors.push(`Error deleting quiz_questions`);
+      errors.push(`Error disabling quiz_questions`);
     }
   };
 };

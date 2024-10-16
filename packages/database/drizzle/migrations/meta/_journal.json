@@ -218,6 +218,20 @@
       "when": 1728894094074,
       "tag": "0030_rapid_tinkerer",
       "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1728920040851,
+      "tag": "0031_wet_the_anarchist",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1728920098359,
+      "tag": "0032_nostalgic_talos",
+      "breakpoints": true
     }
   ]
 }

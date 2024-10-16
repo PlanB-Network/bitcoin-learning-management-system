@@ -18,15 +18,17 @@ export const newCredentialsUserQuery = ({
     INSERT INTO users.accounts (
       username, 
       display_name, 
+      certificate_name, 
       password_hash, 
       email, 
       contributor_id
     ) VALUES (
       ${username.toLowerCase()},
       ${username},
+      ${username},
       ${passwordHash},
       ${email || null}, 
       ${contributorId})
-    RETURNING uid, username, display_name, email, contributor_id;
+    RETURNING uid, username, display_name, certificate_name, email, contributor_id;
   `;
 };

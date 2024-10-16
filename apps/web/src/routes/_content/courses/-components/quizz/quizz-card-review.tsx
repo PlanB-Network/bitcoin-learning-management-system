@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa6';
 
-import { cn } from '@blms/ui';
-
 import { QuizzHeader } from './-components/quizz-header.tsx';
+import { CompletedExamAnswer } from './completed-exam-answer.tsx';
 import PieChart from './pie-chart.tsx';
 import QuizzResultMessage from './quizz-result-message.tsx';
 
@@ -78,38 +77,15 @@ export default function QuizzCardReview({
             {explanation}
           </p>
           <div className="flex flex-col gap-5">
-            {answers.map((question, index) => (
-              <div
-                key={index}
-                className="border-newBlack-1 flex w-full items-stretch rounded-lg border overflow-hidden"
-              >
-                <span
-                  className={cn(
-                    'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
-                    index === correctAnswer
-                      ? 'bg-brightGreen-4'
-                      : index === selectedAnswer
-                        ? 'bg-red-4'
-                        : 'bg-newGray-5 group-hover:bg-newGray-3',
-                  )}
-                >
-                  {String.fromCodePoint(97 + index)}
-                </span>
-                <span
-                  className={cn(
-                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5',
-                    index === correctAnswer
-                      ? index === selectedAnswer
-                        ? 'bg-brightGreen-3 !font-semibold'
-                        : 'bg-brightGreen-3'
-                      : index === selectedAnswer
-                        ? 'bg-red-3 !font-semibold'
-                        : 'bg-white group-hover:bg-newGray-5',
-                  )}
-                >
-                  {question}
-                </span>
-              </div>
+            {answers.map((answer, answerIndex) => (
+              <CompletedExamAnswer
+                key={answerIndex}
+                answer={answer}
+                answerIndex={answerIndex}
+                answerOrder={answerIndex}
+                correctAnswer={correctAnswer}
+                selectedAnswer={selectedAnswer}
+              />
             ))}
           </div>
         </div>

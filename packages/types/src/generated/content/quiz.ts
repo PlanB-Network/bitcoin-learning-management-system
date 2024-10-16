@@ -3,13 +3,21 @@
 
 export interface QuizQuestion {
   id: string;
+  courseId: string;
   chapterId: string;
   difficulty: string;
   author: string | null;
   duration: number | null;
+  disabled: boolean | null;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+}
+
+export interface QuizAnswer {
+  quizQuestionId: string;
+  order: number;
+  correct: boolean;
 }
 
 export interface QuizQuestionLocalized {
@@ -21,12 +29,21 @@ export interface QuizQuestionLocalized {
   explanation: string | null;
 }
 
+export interface QuizAnswerLocalized {
+  quizQuestionId: string;
+  order: number;
+  language: string;
+  text: string;
+}
+
 export interface JoinedQuizQuestion {
   id: string;
+  courseId: string;
   chapterId: string;
   difficulty: string;
   author: string | null;
   duration: number | null;
+  disabled: boolean | null;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;

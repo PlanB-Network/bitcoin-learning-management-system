@@ -19,6 +19,7 @@ export const getCourseChapterQuizQuestionsQuery = ({
     WHERE
       qq.chapter_id = ${chapterId}
       ${language ? sql`AND qql.language = ${language}` : sql``}
+      AND qq.disabled = false
     GROUP BY qq.id, qql.language, qql.question, qql.answer, qql.wrong_answers, qql.explanation
   `;
 };

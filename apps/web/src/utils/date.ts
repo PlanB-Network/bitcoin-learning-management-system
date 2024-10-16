@@ -1,3 +1,9 @@
+export const formatSecondsToMinutes = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}'${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+};
+
 const getOrdinalSuffix = (day: number) => {
   const j = day % 10,
     k = day % 100;
@@ -121,3 +127,19 @@ export const getTimeString = (
 
   return timeString;
 };
+
+export function formatFullDateWithDay(date: Date, timezone?: string): string {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: timezone,
+  };
+
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+}

@@ -17,9 +17,11 @@ export const newLnurlUserQuery = ({
       INSERT INTO users.accounts (
         username, 
         display_name,
+        certificate_name,
         contributor_id
       ) VALUES (
         ${username.toLowerCase()},
+        ${username},
         ${username},
         ${contributorId})
       RETURNING *
@@ -29,7 +31,7 @@ export const newLnurlUserQuery = ({
       SELECT uid, ${publicKey} FROM inserted_user
       RETURNING uid
     )
-    SELECT iu.uid, iu.username, iu.display_name, iu.contributor_id 
+    SELECT iu.uid, iu.username, iu.display_name, iu.certificate_name, iu.contributor_id 
     FROM inserted_user iu;
   `;
 };
