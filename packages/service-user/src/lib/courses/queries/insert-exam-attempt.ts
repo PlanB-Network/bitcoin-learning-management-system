@@ -33,6 +33,7 @@ export const insertExamQuestionsQuery = ({
       FROM content.quiz_questions
       WHERE course_id = ${courseId}
       AND difficulty = 'hard'
+      AND disabled = false
       ORDER BY RANDOM()
       LIMIT 20
     ),
@@ -41,6 +42,7 @@ export const insertExamQuestionsQuery = ({
       FROM content.quiz_questions
       WHERE course_id = ${courseId}
       AND difficulty = 'intermediate'
+      AND disabled = false
       ORDER BY RANDOM()
       LIMIT 15 + GREATEST(0, 20 - (SELECT COUNT(*) FROM hard_questions))
     ),
@@ -49,6 +51,7 @@ export const insertExamQuestionsQuery = ({
       FROM content.quiz_questions
       WHERE course_id = ${courseId}
       AND difficulty = 'easy'
+      AND disabled = false
       ORDER BY RANDOM()
       LIMIT 5 + GREATEST(0, (20 - (SELECT COUNT(*) FROM hard_questions)) + (15 - (SELECT COUNT(*) FROM intermediate_questions)))
     ),
