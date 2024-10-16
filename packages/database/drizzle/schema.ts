@@ -1288,6 +1288,7 @@ export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
   txt: t.text().notNull(), // Text to timestamp
   sig: t.text().notNull(), // Signed message
   ots: blob('ots').notNull(), // OpenTimestamps proof
+  hash: text('hash').notNull(), // Hash of the signature
 
   // Is the timestamp is confirmed
   confirmed: t.boolean().default(false).notNull(),

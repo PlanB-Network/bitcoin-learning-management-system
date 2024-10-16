@@ -35,3 +35,12 @@ export interface EnvConfig {
   sync: GitHubSyncConfig;
   session: SessionConfig;
 }
+
+export interface OpenTimestampsConfig {
+  armoredKey: string;
+  passphrase: string;
+  rpc?: {
+    url: string;
+    password: string;
+  };
+}

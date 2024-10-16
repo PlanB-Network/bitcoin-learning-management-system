@@ -6,6 +6,7 @@
       "dependsOn": [
         "@blms/service-content#build-types",
         "@blms/service-user#build-types",
+        "@blms/opentimestamps#build-types",
         "@blms/github#build-types",
         "@blms/redis#build-types"
       ]
@@ -15,6 +16,7 @@
       "dependsOn": [
         "@blms/service-content#build-types",
         "@blms/service-user#build-types",
+        "@blms/opentimestamps#build-types",
         "@blms/github#build-types",
         "@blms/redis#build-types"
       ]
@@ -23,6 +25,7 @@
       "dependsOn": [
         "@blms/service-content#build",
         "@blms/service-user#build",
+        "@blms/opentimestamps#build",
         "@blms/github#build",
         "@blms/redis#build"
       ],
