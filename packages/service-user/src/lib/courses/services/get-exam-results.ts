@@ -2,6 +2,7 @@ import type { CourseExamResults } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
+  getAllUserCourseExamsResultsQuery,
   getExamResultsQuery,
   getLatestExamAttemptIdQuery,
 } from '../queries/get-exam.js';
@@ -20,5 +21,13 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
     return postgres
       .exec(getExamResultsQuery({ examId: lastExamId[0].id }))
       .then((result) => result[0]);
+  };
+};
+
+export const createGetAllUserCourseExamResults = ({
+  postgres,
+}: Dependencies) => {
+  return async (options: Options): Promise<CourseExamResults[]> => {
+    return postgres.exec(getAllUserCourseExamsResultsQuery(options));
   };
 };

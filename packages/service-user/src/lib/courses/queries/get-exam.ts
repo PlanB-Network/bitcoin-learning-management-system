@@ -110,6 +110,67 @@ export const getExamResultsQuery = ({ examId }: { examId: string }) => {
   `;
 };
 
+export const getAllUserCourseExamsResultsQuery = ({
+  courseId,
+  uid,
+}: {
+  courseId: string;
+  uid: string;
+}) => {
+  return sql<CourseExamResults[]>`
+    SELECT
+      jsonb_agg(
+          jsonb_build_object(
+              'text', ql.question,
+              'explanation', ql.explanation,
+              'chapterName', ccl.title,
+              'chapterPart', cp.part_index,
+              'chapterIndex', cc.chapter_index,
+              'chapterLink', CONCAT('/courses/', cc.course_id, '/', cc.chapter_id),
+              'userAnswer', uea.order,
+              'answers', (
+                  SELECT jsonb_agg(
+                      jsonb_build_object(
+                          'text', qal.text,
+                          'order', qal."order",
+                          'correctAnswer', qa.correct
+                      )
+                      ORDER BY qal.text
+                  )
+                  FROM content.quiz_answers qa
+                  JOIN content.quiz_answers_localized qal
+                  ON qa.quiz_question_id = qal.quiz_question_id
+                  AND qa."order" = qal."order"
+                  WHERE qa.quiz_question_id = q.id
+                  AND qal.language = ea.language
+              )
+          )
+        ORDER BY eq.id
+      ) AS questions,
+      ea.succeeded,
+      ea.finalized,
+      ea.score,
+      ea.started_at,
+      ea.finished_at
+    FROM
+      users.exam_questions eq
+    JOIN content.quiz_questions q ON eq.question_id = q.id
+    JOIN content.quiz_questions_localized ql ON q.id = ql.quiz_question_id
+    JOIN content.course_chapters cc ON q.chapter_id = cc.chapter_id
+    JOIN content.course_chapters_localized ccl ON cc.chapter_id = ccl.chapter_id
+    JOIN content.course_parts cp ON cc.part_id = cp.part_id
+    LEFT JOIN users.exam_answers uea ON eq.id = uea.question_id
+    JOIN users.exam_attempts ea ON eq.exam_id = ea.id
+    WHERE ea.uid = ${uid}
+    AND ea.course_id = ${courseId}
+    AND ea.finalized = true
+    AND ql.language = ea.language
+    AND ccl.language = ea.language
+    GROUP BY
+      ea.id, ea.score, ea.finalized, ea.succeeded, ea.started_at, ea.finished_at;
+  `;
+};
+
 export const getCorrectAnswersCountQuery = ({ examId }: { examId: string }) => {
   return sql`
         SELECT

@@ -15,6 +15,7 @@ import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
   createCompleteExamAttempt,
+  createGetAllUserCourseExamResults,
   createGetCourseReview,
   createGetLatestExamResults,
   createGetPayment,
@@ -95,6 +96,16 @@ const getLatestExamResultsProcedure = studentProcedure
   .output<Parser<CourseExamResults>>(courseExamResultsSchema)
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    }),
+  );
+
+const getAllUserCourseExamResultsProcedure = studentProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<CourseExamResults[]>>(courseExamResultsSchema.array())
+  .query(({ ctx, input }) =>
+    createGetAllUserCourseExamResults(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
     }),
@@ -279,6 +290,7 @@ export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   completeExamAttempt: completeExamAttemptProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
+  getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getCourseReview: getCourseReviewProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getProgress: getProgressProcedure,
