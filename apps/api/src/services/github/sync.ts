@@ -106,9 +106,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     if (syncErrors.length === 0) {
       await processDeleteOldEntities(databaseTime.now, syncErrors);
+      await processDisableOldEntities(databaseTime.now, syncErrors);
     }
-
-    await processDisableOldEntities(databaseTime.now, syncErrors);
 
     console.timeEnd('-- Sync procedure');
     console.log('-- Sync procedure: END ====================================');
