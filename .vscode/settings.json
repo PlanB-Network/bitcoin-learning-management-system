@@ -57,6 +57,7 @@
     "blms",
     "bytea",
     "esplora",
+    "fontkit",
     "getenv",
     "lnurl",
     "nostr",
@@ -74,6 +75,7 @@
     "traefik",
     "trpc",
     "tsbuildinfo",
+    "txid",
     "webp",
     "zoomable"
   ]

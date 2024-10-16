@@ -34,6 +34,7 @@ export interface EnvConfig {
   sendgrid: SendGridConfig;
   sync: GitHubSyncConfig;
   session: SessionConfig;
+  opentimestamps: OpenTimestampsConfig;
 }
 
 export interface OpenTimestampsConfig {
