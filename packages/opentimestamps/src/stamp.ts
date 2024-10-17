@@ -21,8 +21,9 @@ export const getLatestBlockHeight = async (): Promise<number> => {
   return height;
 };
 
-export const getLatestBlockHash = async (): Promise<string> => {
-  const height = await getLatestBlockHeight();
+export const getBlockHashFromHeight = async (
+  height: number | string,
+): Promise<string> => {
   const res = await fetch(`https://mempool.space/api/block-height/${height}`);
   const blockHash = await res.text();
 
@@ -35,6 +36,11 @@ export const getLatestBlockHash = async (): Promise<string> => {
   }
 
   return blockHash;
+};
+
+export const getLatestBlockHash = async (): Promise<string> => {
+  const height = await getLatestBlockHeight();
+  return getBlockHashFromHeight(height);
 };
 
 // Sign diploma text
