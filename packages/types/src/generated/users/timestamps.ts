@@ -9,7 +9,6 @@ export interface UserExamTimestamp {
   ots?: any;
   hash: string;
   confirmed: boolean;
-  txId: string | null;
   blockHash: string | null;
   blockHeight: number | null;
   blockTimestamp: bigint | null;

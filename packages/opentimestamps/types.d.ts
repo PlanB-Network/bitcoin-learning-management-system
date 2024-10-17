@@ -1,14 +1,14 @@
 declare module 'opentimestamps' {
-  declare class Op {}
-  declare class OpSHA256 extends Op {}
+  class Op {}
+  class OpSHA256 extends Op {}
 
-  declare type GenericBuffer = ArrayBuffer | Uint8Array;
+  type GenericBuffer = ArrayBuffer | Uint8Array;
 
-  declare interface Ops {
+  interface Ops {
     OpSHA256: typeof OpSHA256;
   }
 
-  declare class DetachedTimestampFile {
+  class DetachedTimestampFile {
     static fromHash(op: Op, hash: GenericBuffer): DetachedTimestampFile;
     static fromBytes(op: Op, hash: GenericBuffer): DetachedTimestampFile;
     static deserialize(buffer: GenericBuffer): DetachedTimestampFile;
@@ -20,19 +20,16 @@ declare module 'opentimestamps' {
     m?: number; // at least M calendars replied.
   }
 
-  declare function stamp(
+  function stamp(
     data: DetachedTimestampFile,
     options?: StampOptions,
-  ): Promise<void, Error>;
+  ): Promise<void>;
 
   interface InfoOptions {
     verbose?: boolean;
   }
 
-  declare function info(
-    data: DetachedTimestampFile,
-    options?: InfoOptions,
-  ): string;
+  function info(data: DetachedTimestampFile, options?: InfoOptions): string;
 
   interface VerifyOptions {
     ignoreBitcoinNode?: boolean; // Ignore verification with bitcoin node, only with explorer.
@@ -46,30 +43,31 @@ declare module 'opentimestamps' {
     bitcoin?: { timestamp: number; height: number };
   }
 
-  declare function verify(
+  function verify(
     detachedStamped: DetachedTimestampFile,
     detachedOriginal: DetachedTimestampFile,
     options?: VerifyOptions,
-  ): Promise<VerifyResult, Error>;
+  ): Promise<VerifyResult>;
 
   interface UpgradeOptions {
     calendars?: string[]; // Override calendars in timestamp.
     whitelist?: never; // todo
   }
 
-  declare function upgrade(
+  function upgrade(
     detachedStamped: DetachedTimestampFile,
     options?: UpgradeOptions,
-  ): Promise<HashMap<string, object>, Error>;
+  ): Promise<boolean>;
 
-  declare const Ops: Ops;
+  interface DefaultExport {
+    DetachedTimestampFile: typeof DetachedTimestampFile;
+    upgrade: typeof upgrade;
+    verify: typeof verify;
+    stamp: typeof stamp;
+    info: typeof info;
+    Ops: Ops;
+  }
 
-  export default {
-    DetachedTimestampFile,
-    upgrade,
-    verify,
-    stamp,
-    info,
-    Ops,
-  };
+  const ots: DefaultExport;
+  export default ots;
 }
