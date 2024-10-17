@@ -1276,7 +1276,7 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
 }));
 
 export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
-  id: t.uuid().primaryKey().notNull(),
+  id: t.uuid().defaultRandom().primaryKey().notNull(),
 
   // Reference to exam attempt
   examAttemptId: t
@@ -1292,14 +1292,13 @@ export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
 
   // Is the timestamp is confirmed
   confirmed: t.boolean().default(false).notNull(),
-  txId: t.varchar({ length: 64 }),
   blockHash: t.varchar({ length: 64 }),
   blockHeight: t.integer(),
   blockTimestamp: t.bigint({ mode: 'bigint' }),
 
   // If pdf/image has been generated
-  pdfKey: t.varchar({ length: 255 }).notNull(),
-  imgKey: t.varchar({ length: 255 }).notNull(),
+  pdfKey: t.varchar({ length: 255 }),
+  imgKey: t.varchar({ length: 255 }),
 
   createdAt: t.timestamp().defaultNow().notNull(),
   updatedAt: t.timestamp().defaultNow().notNull(),

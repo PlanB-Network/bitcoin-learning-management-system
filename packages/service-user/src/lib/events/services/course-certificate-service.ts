@@ -6,6 +6,7 @@ import {
   createTimestamp,
   createUpgrade,
   createVerify,
+  getBlockHashFromHeight,
   getLatestBlockHash,
   loadPrivateKey,
 } from '@blms/opentimestamps';
@@ -150,7 +151,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       .exec(
         sql<UserExamTimestamp[]>`
           SELECT * FROM users.exam_timestamps
-          WHERE exam_attempt_id = ${id}
+          WHERE exam_attempt_id = ${id};
         `,
       )
       .then(firstRow)
@@ -163,25 +164,27 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       .then((res: VerifyReturn | null) => res);
   };
 
-  const validateExamTimestamp = (examAttemptId: string) => {
-    return verifyExamTimestamp(examAttemptId) //
-      .then((res) => {
-        if (!res) {
-          return null;
-        }
+  const validateExamTimestamp = async (examAttemptId: string) => {
+    const res = await verifyExamTimestamp(examAttemptId); //
+    if (!res) {
+      return null;
+    }
 
-        return ctx.postgres.exec(
-          sql<UserExamTimestamp[]>`
-              UPDATE users.exam_timestamps
-              SET height = ${res.height},
-                  timestamp = ${res.timestamp},
-                  confirmed = true,
-                  confirmed_at = NOW()
-              WHERE exam_attempt_id = ${examAttemptId}
-            `,
-        );
-      })
-      .then((res) => !!res);
+    const blockHash = await getBlockHashFromHeight(res.height);
+
+    const ok = await ctx.postgres.exec(
+      sql<UserExamTimestamp[]>`
+        UPDATE users.exam_timestamps
+        SET block_timestamp = ${res.timestamp},
+            block_height = ${res.height},
+            block_hash = ${blockHash},
+            confirmed = true,
+            confirmed_at = NOW()
+        WHERE exam_attempt_id = ${examAttemptId};
+      `,
+    );
+
+    return !!ok;
   };
 
   const upgradeAndValidate = (examAttemptId: string) => {
@@ -238,7 +241,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       sql<UserExamTimestamp[]>`
         INSERT INTO users.exam_timestamps (exam_attempt_id, txt, sig, hash, ots)
         VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots})
-        RETURNING
+        RETURNING *;
       `,
     );
 
@@ -249,7 +252,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const exam = await getExamAttempt(examAttemptId);
     const timestamp = await getExamTimestamp(examAttemptId);
 
-    if (!exam || !timestamp || !timestamp.confirmed || !timestamp.txId) {
+    if (!exam || !timestamp || !timestamp.confirmed || !timestamp.blockHash) {
       return null;
     }
 
@@ -260,7 +263,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       duration: `${exam.course.hours} hours`,
       date: formatDate(exam.startedAt),
       hash: timestamp.hash,
-      txid: timestamp.txId,
+      txid: timestamp.blockHash,
     });
 
     const fileKey = `certificates/${examAttemptId}.pdf`;
@@ -297,9 +300,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     generatePdfCertificate,
     //
     timestampAllExams: async () => {
-      console.log('Timestamp all exams');
-
-      const examAttempts = await ctx.postgres.exec(
+      const exams = await ctx.postgres.exec(
         sql<Array<{ id: string }>>`
           SELECT a.id
           FROM users.exam_attempts a
@@ -310,25 +311,29 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         `,
       );
 
-      for (const { id } of examAttempts) {
+      console.log('Timestamp all exams', exams);
+
+      for (const { id } of exams) {
         await timestampExamAttempt({ examAttemptId: id });
       }
     },
     upgradeAllTimeStamps: async () => {
       const timestamps = await ctx.postgres.exec(
-        sql<Array<{ examTimestampId: string }>>`
+        sql<Array<{ examAttemptId: string }>>`
           SELECT exam_attempt_id
           FROM users.exam_timestamps
           WHERE confirmed = false;
         `,
       );
 
-      for (const { examTimestampId } of timestamps) {
-        await upgradeAndValidate(examTimestampId);
+      console.log('Upgrade all timestamps', timestamps);
+
+      for (const { examAttemptId } of timestamps) {
+        await upgradeAndValidate(examAttemptId);
       }
     },
     generateAllCertificates: async () => {
-      const examAttempts = await ctx.postgres.exec(
+      const timestamps = await ctx.postgres.exec(
         sql<Array<{ examAttemptId: string }>>`
           SELECT exam_attempt_id
           FROM users.exam_timestamps
@@ -337,7 +342,9 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         `,
       );
 
-      for (const { examAttemptId } of examAttempts) {
+      console.log('Generate all certificates', timestamps);
+
+      for (const { examAttemptId } of timestamps) {
         await generatePdfCertificate(examAttemptId);
       }
     },
