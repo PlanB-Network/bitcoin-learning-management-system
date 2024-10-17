@@ -64,6 +64,7 @@ export const ExamPresentation = ({
   useEffect(() => {
     if (startExamAttempt.isSuccess) {
       setPartialExamQuestions(startExamAttempt.data);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       setIsExamStarted(true);
     }
   }, [startExamAttempt, setPartialExamQuestions, setIsExamStarted]);
