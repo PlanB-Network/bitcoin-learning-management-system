@@ -16,7 +16,6 @@ import { createPdf } from './course-certificate-gen-pdf.js';
 
 interface TimestampOptions {
   examAttemptId: string;
-  text: string;
 }
 
 interface VerifyReturn {
@@ -201,8 +200,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
         // Save the upgraded ots
         return validateExamTimestamp(examAttemptId);
-      })
-      .then((res) => !!res);
+      });
   };
 
   const timestampExamAttempt = async ({ examAttemptId }: TimestampOptions) => {
@@ -289,5 +287,49 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     upgradeAndValidate,
     verifyExamTimestamp,
     generatePdfCertificate,
+    //
+    timestampAllExams: async () => {
+      const examAttempts = await ctx.postgres.exec(
+        sql<Array<{ id: string }>>`
+          SELECT a.id
+          FROM users.exam_attempts a
+          LEFT JOIN users.exam_timestamps t ON a.id = t.exam_attempt_id
+          WHERE t.exam_attempt_id IS NULL
+            AND a.finalized = true
+            AND a.succeeded = true;
+        `,
+      );
+
+      for (const { id } of examAttempts) {
+        await timestampExamAttempt({ examAttemptId: id });
+      }
+    },
+    upgradeAllTimeStamps: async () => {
+      const timestamps = await ctx.postgres.exec(
+        sql<Array<{ examTimestampId: string }>>`
+          SELECT exam_attempt_id
+          FROM users.exam_timestamps
+          WHERE confirmed = false;
+        `,
+      );
+
+      for (const { examTimestampId } of timestamps) {
+        await upgradeAndValidate(examTimestampId);
+      }
+    },
+    generateAllCertificates: async () => {
+      const examAttempts = await ctx.postgres.exec(
+        sql<Array<{ examAttemptId: string }>>`
+          SELECT exam_attempt_id
+          FROM users.exam_timestamps
+          WHERE confirmed = true
+            AND pdf_key IS NULL;
+        `,
+      );
+
+      for (const { examAttemptId } of examAttempts) {
+        await generatePdfCertificate(examAttemptId);
+      }
+    },
   };
 };

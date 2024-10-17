@@ -13,6 +13,8 @@ export interface UserExamTimestamp {
   blockHash: string | null;
   blockHeight: number | null;
   blockTimestamp: bigint | null;
+  pdfKey: string;
+  imgKey: string;
   createdAt: Date;
   updatedAt: Date;
   confirmedAt: Date | null;
