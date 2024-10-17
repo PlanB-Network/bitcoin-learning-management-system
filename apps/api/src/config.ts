@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import process from 'node:process';
 
 import type { PostgresClientConfig } from '@blms/database';
@@ -22,7 +23,7 @@ function getenv<
   }
 
   // If the value is empty and a fallback is provided, log a warning
-  if (!value && fallback !== null) {
+  if (!value) {
     console.warn(
       `No value found for ${name}, defaulting to ${JSON.stringify(fallback)}`,
     );
@@ -100,11 +101,16 @@ export const session: SessionConfig = {
 };
 
 const rpcUrl = getenv('OTS_RPC_URL', null);
-const rpcPwd = getenv('OTS_RPC_PASSWORD', null);
+const rpcUser = getenv('OTS_RPC_USER', null);
+const rpcPassword = getenv('OTS_RPC_PASSWORD', null);
+const pgpKeyPath = getenv('OTS_PGP_KEY_PATH', null);
 export const opentimestamps: OpenTimestampsConfig = {
-  armoredKey: getenv('OTS_PGP_KEY', null),
-  passphrase: getenv('OTS_PGP_PASSPHRASE', null),
-  rpc: rpcUrl && rpcPwd ? { url: rpcUrl, password: rpcPwd } : undefined,
+  armoredKey: pgpKeyPath && fs.readFileSync(pgpKeyPath, 'utf8'),
+  passphrase: getenv('OTS_PGP_KEY_PASSPHRASE', null),
+  rpc:
+    rpcUrl && rpcUser
+      ? { url: rpcUrl, user: rpcUser, password: rpcPassword }
+      : undefined,
 };
 
 export const s3: S3Config = {

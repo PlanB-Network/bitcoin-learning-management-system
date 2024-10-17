@@ -42,7 +42,8 @@ export interface OpenTimestampsConfig {
   passphrase: string;
   rpc?: {
     url: string;
-    password: string;
+    user: string;
+    password?: string | null;
   };
 }
 
