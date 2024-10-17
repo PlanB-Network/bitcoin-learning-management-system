@@ -1297,6 +1297,10 @@ export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
   blockHeight: t.integer(),
   blockTimestamp: t.bigint({ mode: 'bigint' }),
 
+  // If pdf/image has been generated
+  pdfKey: t.varchar({ length: 255 }).notNull(),
+  imgKey: t.varchar({ length: 255 }).notNull(),
+
   createdAt: t.timestamp().defaultNow().notNull(),
   updatedAt: t.timestamp().defaultNow().notNull(),
   confirmedAt: t.timestamp(),

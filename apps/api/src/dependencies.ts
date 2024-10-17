@@ -8,6 +8,7 @@ import { type S3Service, createS3Service } from '@blms/s3';
 import type { ApiEvents, EnvConfig } from '@blms/types';
 
 import * as config from './config.js';
+import { registerCronTasks } from './services/cron/index.js';
 
 export interface Dependencies {
   s3: S3Service;
@@ -34,6 +35,8 @@ export const startDependencies = async () => {
     config,
     crons,
   };
+
+  await registerCronTasks(dependencies);
 
   const stopDependencies = async () => {
     await postgres.disconnect();
