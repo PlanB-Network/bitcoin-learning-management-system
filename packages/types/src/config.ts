@@ -34,4 +34,23 @@ export interface EnvConfig {
   sendgrid: SendGridConfig;
   sync: GitHubSyncConfig;
   session: SessionConfig;
+  opentimestamps: OpenTimestampsConfig;
+}
+
+export interface OpenTimestampsConfig {
+  armoredKey: string;
+  passphrase: string;
+  rpc?: {
+    url: string;
+    user: string;
+    password?: string | null;
+  };
+}
+
+export interface S3Config {
+  bucket: string;
+  region: string;
+  endpoint: string;
+  accessKey: string;
+  secretKey: string;
 }
