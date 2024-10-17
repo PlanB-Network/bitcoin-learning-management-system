@@ -269,6 +269,14 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const fileKey = `certificates/${examAttemptId}.pdf`;
     await ctx.s3.put(fileKey, pdf, 'application/pdf');
 
+    await ctx.postgres.exec(
+      sql<UserExamTimestamp[]>`
+        UPDATE users.exam_timestamps
+        SET pdf_key = ${fileKey}
+        WHERE exam_attempt_id = ${examAttemptId};
+      `,
+    );
+
     return true;
   };
 

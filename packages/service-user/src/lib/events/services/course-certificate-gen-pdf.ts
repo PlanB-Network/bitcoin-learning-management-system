@@ -117,9 +117,8 @@ export async function createPdf(options: PdfCertificateOptions) {
   const page = pages[0];
 
   // Display dimensions of the first page
-  const { width, height } = page.getSize();
+  const width = page.getWidth();
   const margin = 25;
-  console.log({ width, height });
 
   // TXID
   {
