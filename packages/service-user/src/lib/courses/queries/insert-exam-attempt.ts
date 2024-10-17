@@ -23,35 +23,46 @@ export const insertExamAttemptQuery = ({
 export const insertExamQuestionsQuery = ({
   examId,
   courseId,
+  language,
 }: {
   examId: string;
   courseId: string;
+  language: string;
 }) => {
   return sql<CourseExamQuestion[]>`
     WITH hard_questions AS (
-      SELECT id
-      FROM content.quiz_questions
-      WHERE course_id = ${courseId}
-      AND difficulty = 'hard'
-      AND disabled = false
+      SELECT qq.id
+      FROM content.quiz_questions qq
+      JOIN content.quiz_questions_localized qql
+        ON qq.id = qql.quiz_question_id
+      WHERE qq.course_id = ${courseId}
+      AND qql.language = ${language}
+      AND qq.difficulty = 'hard'
+      AND qq.disabled = false
       ORDER BY RANDOM()
       LIMIT 20
     ),
     intermediate_questions AS (
-      SELECT id
-      FROM content.quiz_questions
-      WHERE course_id = ${courseId}
-      AND difficulty = 'intermediate'
-      AND disabled = false
+      SELECT qq.id
+      FROM content.quiz_questions qq
+      JOIN content.quiz_questions_localized qql
+        ON qq.id = qql.quiz_question_id
+      WHERE qq.course_id = ${courseId}
+      AND qql.language = ${language}
+      AND qq.difficulty = 'intermediate'
+      AND qq.disabled = false
       ORDER BY RANDOM()
       LIMIT 15 + GREATEST(0, 20 - (SELECT COUNT(*) FROM hard_questions))
     ),
     easy_questions AS (
-      SELECT id
-      FROM content.quiz_questions
-      WHERE course_id = ${courseId}
-      AND difficulty = 'easy'
-      AND disabled = false
+      SELECT qq.id
+      FROM content.quiz_questions qq
+      JOIN content.quiz_questions_localized qql
+        ON qq.id = qql.quiz_question_id
+      WHERE qq.course_id = ${courseId}
+      AND qql.language = ${language}
+      AND qq.difficulty = 'easy'
+      AND qq.disabled = false
       ORDER BY RANDOM()
       LIMIT 5 + GREATEST(0, (20 - (SELECT COUNT(*) FROM hard_questions)) + (15 - (SELECT COUNT(*) FROM intermediate_questions)))
     ),

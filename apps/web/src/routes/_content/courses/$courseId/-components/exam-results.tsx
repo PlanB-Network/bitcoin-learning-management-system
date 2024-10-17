@@ -195,7 +195,8 @@ export const ExamResults = ({
 
                       {/* TODO: ensure that certificate is generated before showing the button */}
                       <Link
-                        to={'/dashboard/courses/certificates'}
+                        to={'/dashboard/course/$courseId/exam'}
+                        params={{ courseId: chapter.courseId }}
                         className="w-fit"
                       >
                         <ButtonWithArrow

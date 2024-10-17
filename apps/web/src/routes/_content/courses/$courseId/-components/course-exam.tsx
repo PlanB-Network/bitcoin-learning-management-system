@@ -5,6 +5,7 @@ import type { PartialExamQuestion } from '@blms/types';
 import type { TRPCRouterOutput } from '#src/utils/trpc.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { ExamNotTranslated } from './exam-not-translated.tsx';
 import { ExamPresentation } from './exam-presentation.tsx';
 import { ExamResults } from './exam-results.tsx';
 import { FinalExam } from './final-exam.tsx';
@@ -55,6 +56,12 @@ export const CourseExam = ({ chapter, disabled }: CourseExamProps) => {
           setIsExamCompleted={setIsExamCompleted}
         />
       )}
+
+      {isExamStarted &&
+        !isExamCompleted &&
+        partialExamQuestions.length === 0 && (
+          <ExamNotTranslated chapter={chapter} />
+        )}
 
       {((!isExamCompleted && !isExamStarted && previousExamResults) ||
         isExamCompleted) && (

@@ -284,6 +284,10 @@
     @apply text-[40px] leading-[116%] font-normal tracking-normal;
   }
 
+  .display-medium-bold-caps-40px {
+    @apply text-[40px] leading-[116%] font-bold tracking-normal uppercase;
+  }
+
   .display-small-32px {
     @apply text-[32px] leading-[120%] font-normal tracking-normal;
   }
