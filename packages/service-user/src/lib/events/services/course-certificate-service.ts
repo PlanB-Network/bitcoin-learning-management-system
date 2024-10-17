@@ -167,7 +167,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const exam = await getExamAttempt(examAttemptId);
     const timestamp = await getExamTimestamp(examAttemptId);
 
-    if (!exam || !timestamp || !timestamp.confirmed || !timestamp.txid) {
+    if (!exam || !timestamp || !timestamp.confirmed || !timestamp.txId) {
       return null;
     }
 
@@ -178,7 +178,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       duration: exam.duration,
       date: exam.date,
       hash: timestamp.hash,
-      txid: timestamp.txid,
+      txid: timestamp.txId,
     });
 
     const fileKey = `certificates/${examAttemptId}.pdf`;

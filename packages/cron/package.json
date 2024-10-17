@@ -1,0 +1,28 @@
+{
+  "name": "@blms/crons",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/src/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "lint": "eslint --color './**/*.ts'",
+    "type-check": "tsc --build",
+    "check-types": "tsc --noEmit",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+  },
+  "dependencies": {
+    "cron": "^3.1.7"
+  },
+  "devDependencies": {
+    "@blms/eslint-config": "workspace:*",
+    "@blms/types": "workspace:*"
+  }
+}
