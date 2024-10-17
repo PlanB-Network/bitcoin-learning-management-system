@@ -38,6 +38,8 @@ export const startDependencies = async () => {
 
   await registerCronTasks(dependencies);
 
+  crons.start();
+
   const stopDependencies = async () => {
     await postgres.disconnect();
   };

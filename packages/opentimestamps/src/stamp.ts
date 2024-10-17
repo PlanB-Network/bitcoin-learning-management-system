@@ -82,6 +82,10 @@ interface TimeStampDiplomaOptions {
 
 export async function loadPrivateKey(config: OpenTimestampsConfig) {
   const { armoredKey, passphrase } = config;
+  if (!armoredKey) {
+    return null;
+  }
+
   let privateKey = await openpgp.readPrivateKey({ armoredKey });
 
   if (passphrase) {
@@ -91,7 +95,11 @@ export async function loadPrivateKey(config: OpenTimestampsConfig) {
   return privateKey;
 }
 
-export function createTimestamp(privateKey: PrivateKey) {
+export function createTimestamp(privateKey: PrivateKey | null) {
+  if (!privateKey) {
+    throw new Error('Private key is required');
+  }
+
   const sign = createSignature(privateKey);
   const stamp = createStamp();
 

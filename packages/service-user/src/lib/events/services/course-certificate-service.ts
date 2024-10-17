@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { join } from 'node:path';
 
 import { firstRow, rejectOnEmpty, sql } from '@blms/database';
 import {
@@ -24,7 +25,7 @@ interface VerifyReturn {
 }
 
 const textTemplate = fs.readFileSync(
-  './pdf/templates/course-certificate-template.txt',
+  join(import.meta.dirname, './pdf/templates/course-certificate-template.txt'),
   'utf8',
 );
 
@@ -96,6 +97,13 @@ interface ExamAttemptWithUser {
 
 export const createExamTimestampService = async (ctx: Dependencies) => {
   const privateKey = await loadPrivateKey(ctx.config.opentimestamps);
+  if (!privateKey) {
+    console.warn(
+      'No private key found for OpenTimestamps, timestamps will not be available',
+    );
+
+    return null;
+  }
 
   const timestamp = createTimestamp(privateKey);
   const upgrade = createUpgrade();
@@ -289,6 +297,8 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     generatePdfCertificate,
     //
     timestampAllExams: async () => {
+      console.log('Timestamp all exams');
+
       const examAttempts = await ctx.postgres.exec(
         sql<Array<{ id: string }>>`
           SELECT a.id

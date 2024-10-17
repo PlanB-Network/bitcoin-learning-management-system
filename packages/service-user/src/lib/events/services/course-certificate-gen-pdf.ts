@@ -1,19 +1,22 @@
 import * as fs from 'node:fs';
+import { join } from 'node:path';
 
 import fontkit from '@pdf-lib/fontkit';
 import type { PDFPage, PDFPageDrawTextOptions } from 'pdf-lib';
 import { PDFDocument, rgb } from 'pdf-lib';
 
+const dir = import.meta.dirname;
+
 // Load template
 const pdfTemplateBytes = fs.readFileSync(
-  './pdf/templates/course-certificate-template.pdf',
+  join(dir, './pdf/templates/course-certificate-template.pdf'),
 );
 
 // Load custom fonts
 const fontsBytes = {
-  mono: fs.readFileSync('./fonts/JetBrainsMono.ttf'),
-  rubik: fs.readFileSync('./fonts/Rubik.ttf'),
-  styleScript: fs.readFileSync('./fonts/StyleScript.otf'),
+  mono: fs.readFileSync(join(dir, './pdf/fonts/JetBrainsMono.ttf')),
+  rubik: fs.readFileSync(join(dir, './pdf/fonts/Rubik.ttf')),
+  styleScript: fs.readFileSync(join(dir, './pdf/fonts/StyleScript.otf')),
 };
 
 const white = rgb(1, 1, 1); // ffffff

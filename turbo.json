@@ -35,7 +35,12 @@
     "S3_SECRET_KEY",
     "S3_BUCKET",
     "S3_REGION",
-    "S3_ENDPOINT"
+    "S3_ENDPOINT",
+    "OTS_PGP_KEY_PATH",
+    "OTS_PGP_KEY_PASSPHRASE",
+    "OTS_RPC_URL",
+    "OTS_RPC_USER",
+    "OTS_RPC_PASSWORD"
   ],
   "tasks": {
     "build": {
