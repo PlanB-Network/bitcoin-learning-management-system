@@ -1,0 +1,1021 @@
+{
+  "about": {
+    "activeContributors": "活躍的貢獻者",
+    "missionTitle": "我們的願景",
+    "missionContent1": "我們的願景是透過開源教育和網絡支持當地比特幣社區。我們收集、組織並創建必要的資源（課程、書籍、海報、傳單、影片）以推動比特幣行業的發展。",
+    "missionContent2": "我們將知識集中，透過一個簡單的、多語言的GitHub程式庫和一個數位學習平台來更好地分配它。我們為當地的比特幣中心提供發展所需的正確工具，以幫助他們的能力成長。",
+    "commitmentContent": "我們對比特幣社區的承諾如下：\n • 保持開源\n • 提供高質量的教育內容\n • 將我們的內容翻譯成盡可能多的語言\n • 支援比特幣建設者的創業之旅",
+    "coreTeamContent": "PlanB Network是由數百名貢獻者、教師、社區領導者、設計師、開發者和組織者組成的團體。非常感謝每一位每天努力實現PlanB的人。（貢獻者名單即將公布）",
+    "coreTeamGiacomoRole": "董事兼聯合創辦人",
+    "coreTeamRogzyRole": "產品經理 & 共同創辦人",
+    "coreTeamAsioRole": "教育統籌者",
+    "coreTeamAjelexRole": "節點統籌者",
+    "corporateTitle": "企業背後的支持",
+    "corporateContent": "PlanB Network 是三個專注於比特幣發展的實體共同合作的項目。為了擴大比特幣教育，他們決定合作成立 PlanB Network。自那時起，    許多其他實體也決定參與並聯手，幫助我們將比特幣教育帶向全球。因此，我們要對他們表示衷心的感謝。",
+    "coportateContact": "聯繫資訊：",
+    "storyTitle": "我們的故事",
+    "description": "Plan B Network 協助全球各地的社群組織起來，以便提供更好的教育。該平台透過線上學院、教學指南入口網站、比特幣教育工具包以及資源入口網站來開發達成這一目標所需的工具。",
+    "subtitle": "想要讓全世界認識比特幣嗎？加入 PlanB Network 吧。",
+    "title": "關於Plan B",
+    "manifesto": "我們相信比特幣所提供的去中心化未來。\n\n我們的使命是在十年內讓十億人認識比特幣。我們的工具是教育和資訊。\n\n我們透過提供開源教育內容及比特幣導師網絡來支持當地的比特幣社群。\n\n我們的理念受到密碼龐克宣言的啟發。他們倡導隱私，我們則倡導教育。我們相信知識是自由和變革的基礎。\n\n我們只支持比特幣。\n\n我們提倡個人責任，以及持有自己私鑰所帶來的獨立性。\n\n我們主張驗證，而非盲目信任。\n\n我們相信，修正貨幣體系就是在修正世界。\n\n我們是去中心化且開源的，避免任何單點故障。\n\n我們鼓勵自由傳播我們的內容。\n\n我們渴望一個由下而上運作的世界，以個人為中心。\n\n我們簡化，我們教育，我們分享。\n\n加入我們的使命，讓全世界認識比特幣。\n",
+    "commitmentTitle": "我們的承諾",
+    "coreTeamTitle": "核心團隊",
+    "storyContent": "PlanB Network 是一項支持比特幣教育的全球性倡議。這是一個由多家熱衷於推動比特幣教育的公司所組成的跨界聯盟，專注於教育、開源軟體、點對點網路及社群建立。他們共同決定打造 PlanB Network，為比特幣生態系提供適當的成長工具。我們的 2023 年發佈簡報可在此查閱。"
+  },
+  "auth": {
+    "connectWithLn": "連接到閃電網路",
+    "errors": {
+      "usernameTooShort": "使用者名稱必須至少包含5個字符。",
+      "displayNameRegex": "顯示名稱只能包含字母、數字、_、.、- 和空格。",
+      "displayNameRequired": "顯示名稱是必要的。",
+      "displayNameTooShort": "顯示名稱必須至少包含2個字符。",
+      "usernameRegex": "使用者名稱只能包含字母、數字、_、. 和 -。",
+      "usernameRequired": "使用者名稱必填。"
+    },
+    "forgottenPassword": "忘記您的密碼嗎？",
+    "headerAccountCreated": "帳號已創建",
+    "noAccountNeeded": "不需帳戶在Plan B Network開始學習！",
+    "noAccountYet": "還沒有帳戶嗎？",
+    "resetPassword": "重設您的密碼",
+    "newPassword": "新密碼",
+    "passwordMinLength": "密碼必須至少有{{len}}個字符",
+    "passwordRequired": "密碼為必填",
+    "passwordsDontMatch": "密碼不符合",
+    "passwordChanged": "密碼已更改",
+    "passwordSuccessfullyChanged": "您的密碼已成功更改。您現在可以使用新密碼登入。",
+    "sendLink": "發送一個連結給我",
+    "backToLogin": "返回登入",
+    "backToHome": "返回首頁",
+    "invalidToken": "無效的Token",
+    "checkingToken": "檢查Token",
+    "checkingTokenExplain": "我們正在檢查Token是否有效...",
+    "invalidTokenExplain": {
+      "expired": "該Token已過期",
+      "consumed": "該Token已經被使用過",
+      "invalid": "該Token無效",
+      "notFound": "找不到該Token"
+    },
+    "passwordResetError": "重設密碼錯誤",
+    "passwordResetSent": "重設密碼的電子郵件已經發送到您的收件匣（如果該電子郵件存在於我們的資料庫中）。",
+    "tryAgain": "再試一次",
+    "signIn": "登入",
+    "accountCreated": "您的帳戶已經建立，{{userName}}！",
+    "alreadyHaveAccount": "已經有帳戶了嗎？",
+    "canSaveProgress": "您現在可以在比特幣學院保存您的進度",
+    "createAccount": "註冊",
+    "createOne": "在此註冊！",
+    "emailAddress": "電子郵件地址",
+    "lnurlAuthDescription": "使用您的Lightning錢包掃描此QR碼登入！"
+  },
+  "bCertificate": {
+    "bCertificateDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
+    "bookExam": "預約考試時段",
+    "challengeYourself": "挑戰自己並展現你的實力！",
+    "checkout": "查看比特幣證書",
+    "curious": "好奇這個測驗是什麼樣子嗎？",
+    "joeNakamotoVideo": "比特幣測驗到底是什麼？作者：Joe Nakamoto",
+    "knowledgeableBitcoin": "對比特幣有所了解？",
+    "noBookExam": "尚未安排考試時段。",
+    "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。",
+    "organizeExam": "舉辦考試",
+    "organizeSubtitle": "讓十億人接受比特幣並不容易",
+    "organizeTitle": "想在您的中心舉辦比特幣證書考試嗎？",
+    "pageSubtitle": "透過集中化的開源教育實現大規模採用",
+    "pageTitle": "比特幣證書",
+    "readChart": "閱讀這張圖表"
+  },
+  "bet": {
+    "contribute": "這個工具包開放大家做出貢獻。它使用 Figma，因此任何人都可以添加、修改和翻譯。若要協作、添加類別或討論，請隨時加入我們的 Discord。",
+    "contributeButton": "幫助與貢獻",
+    "contributeDescription": "如果您想要增加、編輯或翻譯一些內容，我們非常歡迎您的幫助！",
+    "contributeTitle": "想要參與貢獻嗎？",
+    "educationalContent": {
+      "description": "這些內容目標用於教育活動和相關用途。",
+      "title": "教育內容"
+    },
+    "hereForYou": "BET 在這裡為您服務！",
+    "pageDescription": "大規模普及不是一件容易的事。為了更快實現這個目標，我們開發了一個可擴展的教育內容資料庫。在這裡，比特幣教育者可以隨時上傳和使用需要的內容。我們不需要每次都重新發明輪子，讓我們一起合作，把有用的資源集中在一個工具包中吧！",
+    "pageSubtitle": "BET——一個適用於所有教育項目的比特幣開源工具包",
+    "pageTitle": "比特幣教育工具包",
+    "visualContent": {
+      "description": "這些內容是原始視覺資料，供你在創作中使用。",
+      "title": "視覺內容"
+    }
+  },
+  "book": {
+    "abstract": "摘要",
+    "bookSummary": {
+      "modifyTooltip": "撰寫或修改",
+      "noSummary": "目前還沒有摘要。如果你讀過這本書並想分享你的摘要，別猶豫，快到 GitHub 上寫一份吧。這不僅能幫助社區和提升學校的質量，還可能讓你賺到一些 sats！",
+      "notice": "這個摘要與 GitHub 連結，您可以在那裡進行修改或新增內容",
+      "title": "書籍摘要"
+    },
+    "buttonBuy": "購買",
+    "buttonPdf": "PDF / 電子書",
+    "offeredBy": "由慷慨的貢獻者提供",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "比特幣圖書館",
+    "topicsAddressed": "討論的主題："
+  },
+  "builders": {
+    "noRelatedEvents": "這位建設者目前還沒有即將舉行的相關活動。",
+    "otherCommunities": "探索 Plan B 社區",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "比特幣開發者",
+    "languages": "語言",
+    "relatedEvents": "即將來臨的相關活動",
+    "networkStrength": "網絡的力量在於其成員"
+  },
+  "conferences": {
+    "addConferences": "如果有漏掉的會議，可以隨時透過這個 <0>Github</0> 資料庫新增。",
+    "backConferences": "返回會議列表",
+    "conferenceName": "會議名稱",
+    "conferencesSinceGenesis": "自創世區塊以來的比特幣會議檔案",
+    "description": "會議在比特幣行業中扮演了關鍵角色，也是每個比特幣愛好者學習過程中的重要部分。我們做了這個工具，幫助你輕鬆找到數百場會議。",
+    "details": {
+      "findReplay": "找到重播",
+      "nextVideo": "下一個影片",
+      "previousVideo": "前一個影片",
+      "speaker": "演講者",
+      "watchReplay": "觀看回放",
+      "selectStage": "選擇一個階段",
+      "selectVideo": "選擇一個影片"
+    },
+    "language": "語言",
+    "latestConferences": "最新的會議",
+    "location": "地點",
+    "noConferences": "暫無{{year}}的會議。",
+    "pageSubtitle": "這個平台是開源的，歡迎大家參與貢獻。",
+    "pageTitle": "會議回放",
+    "planBConferences": "Plan B 研討會",
+    "topics": "主題"
+  },
+  "courses": {
+    "categories": {
+      "btc": "比特幣",
+      "crypto": "密碼學",
+      "cuboplus": "比特幣",
+      "econ": "奧地利經濟學",
+      "fin": "金融",
+      "ln": "閃點網路",
+      "min": "挖礦",
+      "secu": "安全與隱私"
+    },
+    "chapter": {
+      "count": "第{{count}}章",
+      "finishCourse": "完成課程",
+      "next": "完成，進入下一章篇",
+      "thanksTip": "想要表示感謝嗎？\n給點小費吧。",
+      "detail": {
+        "title": "課程詳情",
+        "p1heading": "您打算親自參加這堂課嗎？",
+        "p1content": "記得預訂您的座位",
+        "p2heading": "您無法親自參加這堂課嗎？",
+        "p2content": "沒問題！課程將在此頁面進行直播，之後也可以觀看重播。",
+        "bookSeat": "預訂您的座位",
+        "classIsFull": "課程已經額滿",
+        "cancelBooking": "取消您的預約",
+        "ticketDownload": "下載您的票券"
+      },
+      "nextLesson": "下一節課將是",
+      "live": {
+        "title": "直播影片",
+        "stayTuned": "直播將在課程開始前 30 分鐘開放，敬請期待！"
+      }
+    },
+    "details": {
+      "date": "日期：{{startDate}} 至 {{endDate}}",
+      "mobile": {
+        "chapters": "{{chapters}} 章節",
+        "hours": "{{hours}} 小時"
+      },
+      "taughtBy": "此課程由以下講師授課",
+      "accessible": "使用期限：永久存取",
+      "buyCourse": "購買課程",
+      "buyInPersonCourse": "購買實體課程",
+      "buyOnlineCourse": "購買線上課程",
+      "courseId": "課程ID：{{courseId}}",
+      "coursePayment": "課程付款",
+      "curriculum": "課表",
+      "dates_to": "{{startDate}} 至 {{endDate}}",
+      "description": "概述",
+      "duration": "課程時間：{{hours}}小時",
+      "goal": "目標:",
+      "inPersonAccess": "您需要下載您的票券才能進入實體課程。",
+      "level": "等級：$t(words.level.{{level}})",
+      "numberOfChapters": "章節數量：{{number}}",
+      "objectives": "目標",
+      "objectivesTitle": "您將學到：",
+      "price": "價格：{{price}} sats",
+      "professor": "教授",
+      "startCourse": "開始課程",
+      "teacher": "老師：{{teacher}}",
+      "teachers": "老師：{{teachers}}",
+      "teacherWord": "老師的話",
+      "total": "總計",
+      "payment_successful": "付款成功！",
+      "access_invoice": "您可以透過儀表板查看您的發票",
+      "payment_details": "付款詳情",
+      "amount": "金額",
+      "invoiceId": "交易ID"
+    },
+    "explorer": {
+      "buildPath": "打造屬於你自己的探索之路",
+      "footerp1": "在 Sovereign 大學，我們的教授擁有完整的內容與工具選擇自主權，只要遵循道德規範即可。他們都是來自各個領域，對比特幣充滿熱情的專業人士。",
+      "footerp2": "如果您想改進課程或提出自己的課程，您可以輕鬆地透過 GitHub 來進行。如果您想支持某位教授，您有多種選擇：可以提供課程回饋、直接給予教授小費，或成為大學會員以協助維持這個平台的運作。",
+      "pageDescription": "Plan ₿ 學院致力於簡化全球的比特幣教育。由各領域的專家精心策劃，我們的學院提供一系列完整的課程，目標在釐清比特幣的各個面向。無論是初學者或專家，您可以依照自己的步調學習，或每週由教授帶領。我們希望學院能幫助您更深入理解比特幣這個龐大主題。我們的大部分課程完全免費，讓任何人、在任何地點都能獲取教育資源。",
+      "exploreCourses": "探索所有 Plan ₿ 的課程",
+      "findCourses": "藉由課程篩選器，找到最適合您需求的課程",
+      "footerTitle": "我們的教授在這裡為您服務！",
+      "journey": "比特幣是一場旅程，而非終點",
+      "moreToCome": "……更多精彩內容即將推出！",
+      "pageSubtitle": "透過集中化的開源教育實現大規模採用",
+      "pageTitle": "歡迎來到Plan ₿ 學院",
+      "s2p1": "如果你已經開始探索比特幣的「兔子洞」，你會發現這是一條充滿無限可能的旅程，有著無數的探索路徑。在我們大學，我們理解這一點，並設計了非線性、自主且內容廣泛的教育資源，讓您能夠自由選擇自己的學習方向。",
+      "s2p2": "您將能夠選擇自己的路徑並沿著它前進，隨著您的動機獲得技能和知識。",
+      "s2p3": "我們的所有課程都是 100% 免費的，所以沒有什麼能阻擋您！",
+      "s2t1": "比特幣教育是一個旅程，而非終點。",
+      "s3PickLevel": "選擇等級：",
+      "s3PickTopic": "選擇一個主題：",
+      "s3t1": "打造屬於你自己的探索之路，深入「兔子洞」的世界",
+      "seeCourse": "查看課程"
+    },
+    "payment": {
+      "downloadCurriculum": "下載課程表",
+      "onlineDescription": "每堂課程都會在平台上進行直播。\n此購買將讓您獲得直播與回放影片的觀看權限。",
+      "inPersonDescription": "每堂課將在指定的日期和地點進行實體授課，並同步在平台上直播。\n此購買將讓您同時獲得實體課程和線上課程的學習權限。\n請記得為您想親自參加的課程預留座位。",
+      "access_invoice": "您可以透過儀表板查看您的發票",
+      "accessibility": "可訪問性",
+      "accessibility_forever": "永遠",
+      "amount": "金額",
+      "back_course": "回到課程",
+      "inPersonCallout": "您即將購買此課程的<strong>實體課程</strong>學習權限。",
+      "onlineCallout": "您即將購買此課程的<strong>線上課程</strong>學習權限。",
+      "date": "日期",
+      "dates_to": "{{startDate}} 至 {{endDate}}",
+      "book_description": "請確認提供的場地詳情。\n當您的預訂完成後，我們將寄送確認票券及一組 QR code，請於活動當日出示。",
+      "duration": "課程時間",
+      "invoiceId": "交易ID",
+      "numberOfChapters": "章節數量",
+      "payment_details": "付款詳情",
+      "payment_successful": "付款成功！",
+      "qr_unified": "此 QR code 為統一支付碼，可接受 Lightning 和鏈上付款。",
+      "teacher": "老師",
+      "teachers": "老師",
+      "time": "時間"
+    },
+    "review": {
+      "commentAdmin": "給管理團隊的留言（私人）",
+      "currentlyLoggedOut": "您目前已登出。若要提供課程回饋，請先<0>登入或註冊</0>。",
+      "feedbackDescription": "請評價您對本課程的體驗。\n此回饋填寫為必填項目，完成後方可參加期末考試並完成課程認證。\n請注意，老師無法查看個別評價。",
+      "asExpected": "如預期",
+      "commentPublic": "留言（公開）",
+      "commentTeacher": "給老師的留言（私人）",
+      "difficulty": "困難",
+      "displayOutOf": "顯示於",
+      "faithful": "符合目標嗎？",
+      "feedbackSessionTitle": "回饋填寫",
+      "generalGrade": "整體評分",
+      "length": "長度",
+      "loading": "載入中...",
+      "loadMoreComments": "載入更多評論",
+      "neutral": "中立",
+      "no": "否",
+      "notReally": "不完全是",
+      "quality": "品質",
+      "ratingsAndReviews": "評分與評論",
+      "recommend": "是否推薦？",
+      "soAndSo": "馬馬虎虎",
+      "submitReview": "提交評論",
+      "tooEasy": "太容易了",
+      "tooHard": "太難了",
+      "tooLong": "太冗長了",
+      "tooShort": "太短了",
+      "veryBad": "非常糟糕",
+      "veryGood": "非常好",
+      "whatStudentsSay": "學生對本課程的評價",
+      "writeThoughts": "在這裡你可以寫下你的想法",
+      "yesOfCourse": "是的，當然可以",
+      "yesVeryMuch": "是的，非常滿意"
+    },
+    "part": {
+      "count": "第 {{count}} 部分"
+    },
+    "preview": {
+      "by": "由 {{professor}} 主講",
+      "letsgo": "我們出發吧"
+    },
+    "quizz": {
+      "clickOnPie": "點擊查看詳情",
+      "quizz": "測驗",
+      "quizzResults": "測驗結果",
+      "quizzReview": "測驗回顧",
+      "resultCongrats": "恭喜，你做得很好！",
+      "resultItsOk": "不要放棄，下次你會做得更好！",
+      "resultNotBad": "還不錯！",
+      "resultPerfect": "完全完美！恭喜！"
+    },
+    "unreleased": {
+      "colcardAndSparrow": "Coldcard 和 Sparrow",
+      "financeIntroduction": "金融概論",
+      "financialCrisis": "重大金融危機分析",
+      "hyperinflation": "惡性通貨膨脹研究",
+      "theoreticalLightning": "閃電網路高階理論課程"
+    }
+  },
+  "dashboard": {
+    "bCertificate": {
+      "gradesDiploma": "成績和證書",
+      "learnMore": "了解更多",
+      "noResults": "此帳戶目前沒有任何成績或證書記錄。\n若您已通過考試且成績在長時間後仍未顯示，請聯繫我們以獲得協助。",
+      "presentation": "比特幣 ₿ 證書考試是由 Plan B Network 聚辦的一場筆試，目標在評估您對比特幣及其相關主題的知識。",
+      "assertLevel": "評估您的比特幣知識水平",
+      "bCertificate": "比特幣證書",
+      "bookExam": "預約考試場次",
+      "certificate": "證書",
+      "general": "一般",
+      "grade": "等級",
+      "organizedSessions": "比特幣 ₿ 證書考試由 Plan B Network 在不同的地點和時間組織舉行。請務必預約您所參加場次的座位。",
+      "findResults": "在這裡，您可以查看使用此帳戶報名參加的比特幣 ₿ 證書考試成績。成績通常需要 2 至 3 週的時間處理並顯示在這裡，如果長時間後您的成績仍未顯示，請聯繫我們。",
+      "wantToPass": "想參加考試嗎？"
+    },
+    "booking": {
+      "noTicket": "您目前沒有任何票券。",
+      "upcomingTicketSubtitle": "在此下載您的票券以參加即將到來的活動，請記得攜帶以便入場。",
+      "accessLive": "進入線上考試",
+      "billingTitle": "帳單紀錄",
+      "billingSubtitle": "在此下載您的訂單收據。",
+      "downloadInvoice": "下載收據",
+      "downloadTicket": "下載票券",
+      "invoiceDate": "日期",
+      "invoiceTitle": "標題",
+      "invoiceType": "類型",
+      "ticketDate": "日期",
+      "ticketLocation": "地點",
+      "ticketTitle": "標題",
+      "ticketType": "類型",
+      "noInvoice": "您目前沒有任何收據。",
+      "pastTicketTitle": "過去的訂單",
+      "upcomingTicketTitle": "即將到來的訂單"
+    },
+    "profile": {
+      "emailChangeConfirmation": "已向您發送了確認更改電子郵件的確認郵件，請檢查您的收件箱以確認。",
+      "change": "變更",
+      "edit": "編輯",
+      "cancel": "取消",
+      "save": "儲存",
+      "saving": "儲存中...",
+      "crop": "裁剪",
+      "preview": "預覽",
+      "displayName": "顯示名稱",
+      "email": "電子郵件",
+      "password": "密碼",
+      "personalInformation": "我的個人資訊",
+      "profile": "個人資料",
+      "profileInformation": "個人資料",
+      "profilePicture": "個人照片",
+      "security": "安全",
+      "username": "使用者名稱"
+    },
+    "teacher": {
+      "courses": {
+        "quickRecap": "您可以在此找到本課程的所有基本資訊。",
+        "analytics": "分析",
+        "courseDetails": "課程詳情",
+        "courseId": "課程 ID",
+        "courseLongDescription": "概述",
+        "courseModification": "如果您需要協助編輯課程內容，請參閱此<0>教學</0>。",
+        "courseName": "課程名稱",
+        "courseShortDescription": "目標",
+        "coursesManagementPanel": "課程面板",
+        "curriculum": "課程大綱",
+        "curriculumDescription": "以下是本課程的最新課程大綱。",
+        "editOnGithub": "在Github上編輯",
+        "examResults": "測驗結果",
+        "makeModifications": "需要進行修改嗎？",
+        "objectives": "目標",
+        "proposeNewCourse": "提出新課程",
+        "reviewInfos": "在此您可以管理並檢視您所有您參與課程的相關資訊。",
+        "reviews": "評論"
+      },
+      "profile": {
+        "descriptionTags": "這些標籤將完整您的公開檔案，表示您身為 Bitcoiner 的專長。",
+        "noShortBio": "此帳戶尚未連結簡短個人介紹，您可以隨時在 GitHub 上新增。",
+        "publicProfileDescription": "在此您可以填寫或編輯與您在 Plan ₿ Network 擔任教師相關的所有資訊。",
+        "account": "教師帳戶",
+        "billingInformations": "帳單資訊",
+        "chooseTags": "選擇最能描述您的標籤",
+        "description": "您的描述",
+        "enterTipsInformations": "Plan ₿ Network 鼓勵使用者給教師小費。請填入您的相關資訊，以便有需要時他人可以向您支付小費。",
+        "lightningAddress": "閃電網路地址",
+        "makeModifications": "需要進行修改嗎？",
+        "noLightningAddress": "尚未添加閃電網路地址。",
+        "noTags": "此帳戶尚未連結任何標籤。",
+        "notifications": "通知",
+        "publicDescription": "此描述將顯示在平台上的您的教師資訊卡中。",
+        "publicProfile": "公開個人資料",
+        "writeShortBio": "撰寫一段簡短的個人介紹",
+        "teacher": "老師",
+        "teacherProfile": "教師簡介",
+        "tutorialModification": "如果您需要協助編輯課程內容，請參閱此<0>教學</0>。"
+      },
+      "menu": "教師選單",
+      "reviews": {
+        "checkComments": "在此您可以查看學生所留下的評論，評論將依日期排序。",
+        "checkReviews": "在此您可以檢視您的課程所獲得的成績和評價。",
+        "noReviewsYet": "此課程尚未收到評價和成績。",
+        "privateComment": "私人評論",
+        "publicComment": "公開評論",
+        "review": "評論",
+        "reviews": "評論",
+        "reviewsAndGrading": "評價和成績",
+        "seeStatistics": "查看統計數據",
+        "viewDetails": "查看詳情",
+        "writtenFeedbacks": "書面回饋"
+      }
+    },
+    "account": "帳戶",
+    "administration": "管理",
+    "bookings": "訂單",
+    "calendar": {
+      "calendar": "日曆",
+      "personalCalendar": "個人日曆"
+    },
+    "courses": "課程",
+    "logout": "登出",
+    "myCourses": {
+      "completed": "已完成",
+      "completedCoursesTitle": "已完成的課程",
+      "completedCoursesDescription": "您可以在這裡查看您已完成的課程。",
+      "details": "詳情",
+      "inprogress": "進行中",
+      "inprogressCoursesTitle": "進行中的課程",
+      "inprogressCoursesDescription": "您可以在這裡查看您已開始的課程的進度。",
+      "resumeLesson": "摘要",
+      "seeProgress": "在這裡查看您的進度。",
+      "startCourse": "開始或完成一門課程"
+    }
+  },
+  "glossary": {
+    "filterBar": "在這裡找到你需要的詞彙",
+    "keepLooking": "想要繼續搜尋嗎？",
+    "notTranslated": "詞彙表中的資料尚未翻譯。\n如果您想幫忙，歡迎貢獻在我們的",
+    "anotherWord": "尋找另一個詞",
+    "creditsLoic": "<0>出處</0>: 比特幣字典，由 <1>Loïc Morel (Pandul)</1> 編寫，可在此 <2>Github</2> 取得。",
+    "definition": "定義",
+    "needHelp": "需要幫助定義技術術語嗎？",
+    "loadMoreWords": "載入更多詞彙",
+    "pageSubtitle": "需要幫助了解技術定義嗎？",
+    "pageTitle": "比特幣詞彙表",
+    "placeHolder": "這是什麼？",
+    "randomSearch": "隨機搜尋",
+    "relatedWords": "相關詞彙：",
+    "term": "術語"
+  },
+  "home": {
+    "header": {
+      "content": "PlanB 平台目標在提供全球最優質的工具和教育內容，幫助人們重新獲得自主權。無論是個人還是社群，我們都在這裡幫助您在比特幣之旅中前行。",
+      "forEducators": "對於教育者和開發者",
+      "globalNetwork": "全球比特幣網絡",
+      "welcome": "歡迎來到 Plan ₿ Network",
+      "link": "成為網絡的一員",
+      "startLink": "開始學習"
+    },
+    "sectionEducation": {
+      "content1": "比特幣不僅是一項技術和一種貨幣，還是一種革命性的生活方式。我們的課程涵蓋廣泛領域，目標在幫助每個人發揮興趣所在，深入理解比特幣。無論是從您的第一門比特幣課程開始，還是深入探索協議的細節，我們的課程都將幫助您安全地探索這個領域。不要猶豫，知識在等著您。",
+      "title": "從初級到進階",
+      "subtitle": "在學院中學習比特幣",
+      "link": "查看學院"
+    },
+    "tutorialSection": {
+      "content1": "比特幣不斷在演變，隨著新角色、解決方案、協議和技術突破的出現，維護一個準確且最新的高品質教學資料庫可能會變得具有挑戰性。在 Plan ₿，我們正是做到這一點。無論您是初學者還是進階用戶，都可以根據您的需求瀏覽數百個教學資源，探索我們的產業。",
+      "title": "簡單易懂的比特幣教育。",
+      "subtitle1": "我們提供大量深入的教程，幫助您精通這項技術！",
+      "link": "查看所有課程"
+    },
+    "aboutUsSection": {
+      "content": "Plan ₿ Network 支援全球的比特幣教育。這是一個由熱衷於教育、開源軟體、點對點網路和社群建立的比特幣公司合作組成的聯盟。他們共同啟動了這一倡議，以為比特幣生態系提供成長所需的基本工具。",
+      "communityContent": "我們是第一個致力於推動比特幣教育的社群，互相幫助，共同踏上比特幣的旅程",
+      "title": "我們是誰？",
+      "subtitle": "關於我們的簡單介紹",
+      "bitcoinFocusTitle": "比特幣重點",
+      "bitcoinFocusContent": "我們從基礎層面到周邊的點對點通訊，深入探討比特幣革命。",
+      "openSourceTitle": "開源",
+      "openSourceContent": "我們致力於促進知識的自由流通，並協助建立更多的開源解決方案",
+      "communityTitle": "社群",
+      "privacyTitle": "隱私",
+      "privacyContent": "我們認為隱私是最基本的人權之一，也是進步的關鍵"
+    },
+    "languageSection": {
+      "content1": "在 Plan ₿，我們相信比特幣是一場全球性的革命，影響每一個人。為了讓數十億人受益，我們正在打造一個多語言的平台，確保所有人都能輕鬆使用。目前平台支持 7 種語言，未來每月還會新增更多語言。我們利用人工智慧和全球比特幣愛好者的熱情來實現這個目標。",
+      "availableLanguages": "可用語言",
+      "title": "這裡沒有語言障礙。",
+      "subtitle": "所有事物都被翻譯成當地語言！",
+      "subtitle2": "我們需要你！",
+      "content2": "您也可以開始在您的國家建立自己的本地網絡！",
+      "link": "幫助我們翻譯教材"
+    },
+    "numbersSection": {
+      "networkMember": "網路成員"
+    },
+    "sectionNetwork": {
+      "title": "瀏覽一個網絡",
+      "subtitle": "全球比特幣校區",
+      "content1": "與全球比特幣愛好者連結，分享共同的熱情。從定期聚會的小型社群到比特幣教育中心，我們的網絡地圖將幫助您找到學習和創建的靈感。愛好者可以享受多種服務，如孵化中心、實體工作坊、研討會、比特幣營等。這個網絡對所有人開放，快來和您當地的比特幣社群打聲招呼吧！",
+      "link": "成為網絡的一員"
+    },
+    "patreonSection": {
+      "title": "一起讓比特幣教育變得更好吧！ ",
+      "subtitle": "多虧了我們慷慨的支持者，Plan ₿ Network是完全開源的",
+      "content": "Plan ₿ Network 很榮幸與全球多家比特幣公司合作，提供最佳的教育資源！"
+    },
+    "wallOfLoveSection": {
+      "subtitle": "比特幣者對我們的評價",
+      "title": "讚美牆"
+    }
+  },
+  "menu": {
+    "bCertificateDescription": "通過比特幣 ₿ 證書考試來衡量您的比特幣知識等級",
+    "libraryDescription": "探索大量書籍來提升你的知識",
+    "miningDescription": "挖掘您自己的比特幣並了解挖礦產業",
+    "betDescription": "您可以用於教育專案的內容集",
+    "btc101Description": "透過這些課程更深入了解比特幣。",
+    "buildersDescription": "了解那些致力於改善比特幣並推動其普及的公司和專案",
+    "conferencesDescription": "自創世區塊以來的比特幣會議重播集錦",
+    "exchangesDescription": "在交易所買賣比特幣並了解點對點交易",
+    "glossaryDescription": "了解比特幣的語言",
+    "lightningDescription": "管理你的閃電網絡節點並使用閃電網絡",
+    "login": "登入",
+    "loginRegister": "登入 / 註冊",
+    "manifestoDescription": "閱讀Plan B的宣言",
+    "merchantsDescription": "接受比特幣支付並探索商業工具",
+    "nodeDescription": "學習如何使用自己的比特幣節點實現自主控制",
+    "nodeNetworkDescription": "加入 Plan ₿ 全球社群網絡",
+    "ourStoryDescription": "了解大學的歷史",
+    "podcastsDescription": "透過 Podcast 探索比特幣生態系統",
+    "publicDescription": "探索公開交流的文章",
+    "sponsorsDescription": "了解我們的贊助商和主要貢獻者",
+    "supportUsDescription": "尋找任何方式來支持我們",
+    "teachersDescription": "了解我們的學院老師",
+    "walletsDescription": "保護並使用你的比特幣"
+  },
+  "events": {
+    "card": {
+      "free": "免費",
+      "online": "線上",
+      "limited": "限於",
+      "unlimited": "無限制",
+      "people": "人們",
+      "watchLive": "觀看直播",
+      "watchReplay": "觀看重播",
+      "buyReplay": "購買重播",
+      "bookLive": "預約直播",
+      "bookSeat": "預約座位",
+      "eventFull": "活動已額滿",
+      "seatBooked": "已預約座位",
+      "visitWebsite": "造訪網站"
+    },
+    "main": {
+      "upcomingEvents": "即將開始的活動",
+      "currentEvents": "正在進行的活動"
+    },
+    "missed": {
+      "missedh1": "重播過去的活動",
+      "missedp1": "你錯過了一個活動嗎？",
+      "missedp2": "沒問題！我們會儲存所有在網路上舉辦過的過去活動的回放，讓每個人都能自由回顧錯過的內容。"
+    },
+    "newEvent": {
+      "button": "新增我的活動",
+      "description": "當然！所有比特幣相關的活動都可以在這裡提升其曝光度，任何創建新活動的倡議都非常歡迎 :)",
+      "subtitle": "讓十億人了解比特幣並不是一件容易的事",
+      "title": "想要新增您的活動？"
+    },
+    "pageDescription": "想要即時討論比特幣嗎？在這裡，您可以找到所有由 Plan B Network 社群支持的活動。無論您是想聽講座、喝飲料時討論比特幣，還是參加考試評估自己的知識，您都可以透過 Plan B Network 在這裡找到適合的活動。",
+    "pageSubtitle": "由下而上的推廣，配合強大的網絡支持",
+    "pageTitle": "在找比特幣相關的活動嗎？",
+    "payment": {
+      "access_invoice": "您可以透過儀表板查看您的發票。",
+      "access_online_successful": "活動開始時，請登入平台，您將能夠透過活動頁面觀看直播。",
+      "access_physical_successful": "您可以在這裡下載您的票券，或者稍後在您的儀表板中下載。",
+      "access_type": "存取類型",
+      "address": "地址",
+      "additional_free_description": "此活動免費，因此預訂座位不收費用。不過，請務必參加，因為座位數量有限。",
+      "amount": "金額",
+      "back_events": "回到活動列表",
+      "book_seat": "預約座位",
+      "callout_online": "您即將預訂此活動的線上參加權限。",
+      "callout_physical": "您即將預約此活動的實體入場資格。",
+      "callout_replay": "您即將預訂此活動重播影片的觀看權限。",
+      "date": "日期",
+      "dates_to": "{{startDate}} {{endDate}}",
+      "description_online": "請檢查活動的日期和時間。\n當活動開始時，請登入平台，並透過活動頁面觀看直播。",
+      "description_physical": "請確認以下的場地詳情。\n當您的預訂確認後，我們將發送一張票券以便於活動當日出示。此票券還將讓您獲得直播和重播影片的觀看權限（如有提供）。",
+      "description_free_physical": "請確認以下場地詳情。\n當您的預訂完成後，我們將寄送確認票券及一組 QR code，請於活動當日出示。",
+      "download_ticket": "下載您的票券",
+      "enjoy": "我們希望你會喜歡它 :)",
+      "language": "語言",
+      "limitation": "限制",
+      "max_capacity": "最大容量為",
+      "payment_details": "付款詳情",
+      "payment_successful": "預約成功！",
+      "time": "時間"
+    }
+  },
+  "imagesAlt": {
+    "blueEllipse": "藍色橢圓形",
+    "bookCover": "書籍封面",
+    "contributorHeart": "對優秀貢獻者的心意",
+    "contributorPP": "貢獻者的大頭照",
+    "forwardArrow": "向前的箭頭",
+    "orangePill": "橙色藥丸",
+    "printedCircuits": "印刷電路板",
+    "rabbit404": "一隻兔子用手電筒照射著404標誌",
+    "sthRepresentingCompany": "代表公司的某個東西",
+    "stylus": "觸控筆",
+    "underConstructionImage": "幾隻兔子在建築工地上工作的插圖"
+  },
+  "library": {
+    "pageSubtitle": "這個資料庫開源且歡迎大家參與貢獻。",
+    "pageTitle": "比特幣圖書館",
+    "publishedIn": "發布於{{date}}",
+    "writtenBy": "由{{author}}撰寫"
+  },
+  "nodeNetwork": {
+    "answer1": "節點是與全球某個社群相關的教育管道。它可以是進行比特幣教育的建築，但還包含更多的可能性。雖然 Plan ₿ Network 營運著一些中心，但在全球每個城市建立這些中心並不現實。因此，我們依賴比特幣社群的力量，幫助我們將這個全球網路變為現實。",
+    "answer5": "我們希望為全球的比特幣者提供一個安全的避風港。我們相信，通過幫助當地中心成長，我們將能夠建立一個城堡網路，讓他們可以在這裡安全地工作、創造、分享和討論。",
+    "descriptionextend": "我們的第一步是邀請擁有實體空間的社群，這些我們稱之為我們網路的「完整節點」，與我們合作。未來，隨著我們網路的強化，我們將向全球更多的倡議發出這個邀請。如果您贊同我們的價值觀，請聯繫我們的代表，加入我們的網路，共同打造最優質的比特幣教育。",
+    "mobiledescription": "我們相信教育不僅應該在線上進行，也應該在實體空間中發生。為了達成這個目標，Plan ₿ Network 在全球管理一個中心網路，以歡迎思考者、建設者和教育者，共同促進比特幣和自由技術的發展。我們的第一步是邀請擁有實體空間的社群，這些我們稱之為我們網路的「完整節點」，與我們合作。未來，隨著我們網路的強化，我們將向全球更多的倡議發出這個邀請。如果您贊同我們的價值觀，請聯繫我們的代表，加入我們的網路，共同打造最優質的比特幣教育。",
+    "answer2": "加入我們的網絡後，你將獲得 Plan ₿ 透過此平台推播的專屬內容，這些內容可以與你所在節點的成員分享。最重要的好處是有機會為未來的專案開啟討論管道，並與全球其他社群連結，分享彼此的經驗。",
+    "answer3": "Plan ₿ Network 最初聚焦在從實體空間運作的節點。未來，我們計劃整合更多可以受惠的項目，以促進其成長。",
+    "answer4": "比特幣節點的大小可以有所不同，會根據特定要求給予不同的等級。例如，一個有黑客空間、健身房和辦公室的節點，就會被認為更像一個城堡。",
+    "apply": "申請成為節點",
+    "applyhelp": "*選擇節點位置",
+    "description1": "我們相信教育不僅應該在線上進行，也應該在實體空間中發生。為了達成這個目標，Plan ₿ Network 在全球管理一個中心網路，以歡迎思考者、建設者和教育者，共同促進比特幣和自由技術的發展。",
+    "pageSubtitle": "想要讓全世界認識比特幣嗎？加入 Plan ₿ Network 吧。",
+    "pageTitle": "探索 Plan ₿ 節點網絡",
+    "question1": "什麼是節點？",
+    "question2": "我能得到什麼？",
+    "question3": "必要條件是什麼？",
+    "question4": "節點的大小是多少？",
+    "question5": "什麼是秘密計劃？"
+  },
+  "payment": {
+    "feeDistribution": "費用分配：作者 99% - 平台 1%",
+    "proceedToPayment": "繼續進行付款",
+    "terms": "請查看我們的<0>一般條款</0>以取得退款明細",
+    "total": "總計"
+  },
+  "publicCommunication": {
+    "description": "Plan ₿ Network 以遵循開源標準為傲，並在整個過程中保持透明",
+    "legalSections": {
+      "contact": "聯繫",
+      "privacyPolicy": "隱私政策",
+      "legalNotice": "法律通知",
+      "termsOfSale": "銷售條款"
+    },
+    "blogPageStrings": {
+      "filterText": "按主題篩選：",
+      "featuredArticleTitleText": "最新發布的文章",
+      "pastArticleSubtitleText": "過去的文章",
+      "noArticlesText": "目前沒有任何部落格文章。",
+      "errorMessageNotFound": "找不到部落格。",
+      "blogSidebarTitle": "網路中的過去文章",
+      "blogListButtonText": "閱讀",
+      "noBlogs": "目前沒有任何文章"
+    },
+    "title": "公開交流",
+    "blogPost": "部落格與新聞",
+    "legal": "法律資訊",
+    "blogCategories": {
+      "all": "所有",
+      "content": "內容",
+      "course": "課程發布",
+      "feature": "特色",
+      "patch": "更新說明",
+      "grants": "補助金",
+      "network": "網絡"
+    },
+    "goBackButtons": {
+      "simpleGoBack": "返回所有文章"
+    }
+  },
+  "resources": {
+    "github": "這裡的所有資料都透過開源的 <0>Github</0> 倉庫進行管理。歡迎隨時貢獻並添加任何缺失的內容。",
+    "headerText": "歡迎進入比特幣的無限奇妙世界！在本章節中，我們將為您提供各種比特幣專案的深入教學。本頁面由支持此開源專案熱心且充滿熱情的比特幣愛好者維護。如果您發現我們有任何錯誤，請隨時聯絡我們。欲查看我們對於相關專案的財務附件，請參閱我們的透明度報告。感謝您對這所大學的信任，祝您探索愉快。",
+    "articles": {
+      "title": "文章"
+    },
+    "bet": {
+      "title": "教育工具包"
+    },
+    "books": {
+      "title": "圖書館"
+    },
+    "builders": {
+      "title": "開發者"
+    },
+    "conferences": {
+      "title": "會議重播"
+    },
+    "filterBarLabel": "找到最適合您需求的資源：",
+    "glossary": {
+      "title": "詞彙表"
+    },
+    "headerSignature": "Rogzy",
+    "newsletters": {
+      "title": "電子報"
+    },
+    "pageDescription": "試圖理解比特幣就像在探索一個不斷延伸的迷宮。為了幫助您在這段旅程中，我們收集了大量資源，包括書籍、Podcasts、影片和研討會重播等。這個入口網站將所有資訊集中在一個 GitHub 資料庫中，幫助您更好地了解比特幣生態系統。",
+    "pageSubtitle": "集中知識以更好地分配它",
+    "pageTitle": "歡迎來到資源網站",
+    "podcasts": {
+      "title": "Podcasts"
+    },
+    "publicGrade": "公開評分：{{grade}}/5",
+    "searchFilterName": "按名稱搜索"
+  },
+  "tutorials": {
+    "details": {
+      "didHelp": "這有幫助嗎？",
+      "enjoyed": "喜歡這個教學嗎？",
+      "author": "作者： ",
+      "checkAuthor": "查看作者的其他貢獻並支援他的工作。",
+      "madeBy": "本課程由以下人員製作",
+      "source": "原始來源： ",
+      "tipTooltip": "喜歡嗎？給點小費吧。",
+      "writtenBy": "這個教學資源是由以下人士撰寫的："
+    },
+    "exchange": {
+      "centralized": {
+        "description": "集中式交易所通常是受監管的實體，作爲銀行系統與比特幣生態系統之間的媒介。它們允許您買賣大量的比特幣，並將其提款到您的錢包或銀行帳戶。這些交易所通常要求進行 KYC 驗證，因此會監控您的活動，並依據當地法律向金融監管機構報告。"
+      },
+      "description": "交易所是您在傳統貨幣（如歐元、美元）和比特幣世界之間進出的一個管道。交易所可以是受監管且符合 KYC 要求的，也可以是點對點和匿名的。每個交易所提供不同的功能、費用結構、流動性和客戶服務，每位比特幣使用者會根據自己的需求和理念選擇不同的交易所。",
+      "peer-to-peer": {
+        "description": "點對點交易所是使用者之間進行比特幣與其他貨幣交換的市場平台。這些交易所可以是受規範的，也可以是非受規範的，通常不會要求你提供太多資訊（如果有的話）。點對點交易所單純媒合使用者之間的交易。與傳統交易所相比，點對點交易所的手續費可能較高，流動性也可能稍低。是那些希望不想經過 KYC 流程的比特幣愛好者之首選。"
+      },
+      "shortDescription": "比特幣交易方式：KYC 與非 KYC",
+      "title": "交易所"
+    },
+    "headerText": "歡迎來到比特幣的無限兔子洞！在本章節中，我們將為您提供各種比特幣專案的深入教學。本頁面由支持此開源專案熱心且充滿熱情的比特幣愛好者維護。如果您發現我們有任何錯誤，請隨時聯絡我們。欲查看我們對於相關專案的財務附件，請參閱我們的透明度報告。感謝您對這所大學的信任，祝您探索愉快。",
+    "merchant": {
+      "description": "你是否曾想過如何輕鬆地在商業場合接受比特幣？探索我們的多種解決方案，讓你成為專家，並輕鬆設置適合你周邊商家的交易解決方案。銷售解決方案的選擇取決於商戶的需求（實體店或線上商店）、交易量以及操作的複雜性。一般來說，一個好的入門方案是從基本的閃電網絡（LN）錢包開始，然後轉向簡單高效的解決方案（如mobile PoS），最後可以探索適合進階、複雜及專業需求的解決方案-- BTC Pay Server。",
+      "shortDescription": "讓企業接受比特幣的解決方案",
+      "title": "商家"
+    },
+    "mining": {
+      "description": "挖礦領域是一個充滿複雜性和無盡未知的領域。在這裡，我們會協助你深入了解這個行業，從硬體到軟體，陪伴你完成探索之旅。無論是將 S9 改裝成家用暖氣器，還是嘗試用樂透小礦機來贏得樂透，我們都會幫助你了解一切。",
+      "shortDescription": "比特幣挖礦解決方案",
+      "title": "挖礦"
+    },
+    "node": {
+      "bitcoin": {
+        "description": "比特幣核心節點是您比特幣自主權體系的核心基礎，它使您能夠執行比特幣程式並成為網絡的成員。您將驗證區塊和交易、決定您希望在網絡中應用的規則，並不再透過第三方中間人來傳遞您的交易。運行比特幣節點的方法有很多種，其中某些方法更容易上手。"
+      },
+      "rgb": {
+        "description": "RGB 是一個可擴展且具隱私性的智能合約系統，適用於比特幣及閃電網路。它是比特幣的程式設計層，具備私有與共同所有權、抽象化及職責分離的概念，並體現了「區塊鏈後」的概念。"
+      },
+      "description": "節點就像是您的個人伺服器。在比特幣系統中，節點是讓您運行網絡、收集交易、驗證規則並實現真正主權的程式。在我們的生態系統中，存在著各種不同的節點，包括比特幣核心、閃電網絡實作、RGB 以及其他更進階的隱私解決方案。",
+      "lightning-network": {
+        "description": "閃電網路節點使您能夠參與比特幣第二層協議——閃電網路。您可以開設通道、管理流動性、參與節點網絡，並將您的 Lightning 錢包進行非托管管理。",
+        "name": "閃電網路"
+      },
+      "shortDescription": "運行比特幣節點並加入網絡的解決方案",
+      "title": "節點"
+    },
+    "others": {
+      "OpenSource": {
+        "description": "探索我們專門針對開源工具使用的教學指南！"
+      },
+      "contribution": {
+        "description": "了解如何為 Plan ₿ Network 做出貢獻，並透過我們詳細的教學掌握我們內部使用的開源工具！"
+      },
+      "title": "其他",
+      "shortDescription": "探索有關比特幣主題的多元教學資源",
+      "description": "深入探索與比特幣精神密切相關的大量教程。無論是DIY還是開源課程，皆能協助你發掘新知識領域，讓你的學習更加自主。",
+      "DIY": {
+        "description": "了解我們的 DIY 學習指南，學習如何自行製作與比特幣、計算機以及個人主權相關的項目！"
+      },
+      "general": {
+        "description": "瀏覽我們的綜合概論課程，拓展您在計算機科學以及其他與個人主權相關的領域的知識！"
+      }
+    },
+    "pageDescription": "比特幣是一個涵蓋範圍廣泛且不斷擴展的產業。為了協助您深入了解這個領域，我們整理並策劃了大量的教學資源，涵蓋與比特幣相關的各個領域及其解決方案。",
+    "privacy": {
+      "bitcoin": {
+        "description": "比特幣在預設狀態下並不具備隱私性，它被刻意設計為類擬名的系統，每筆交易都是公開的，並且會永久儲存。為了提高隱私性，我們必須採取最佳方法並使用整合於我們軟體中的特定工具。從避免地址重複使用，到使用 CoinJoin 混合您的比特幣，再到連接到您自己的節點，我們將協助您往提高交易隱私的目標前進。"
+      },
+      "description": "隱私是一項基本權利，我們期望隱私能成為預設狀態，但現實並非如此。我們將向您解釋最佳方法，提供教學支援，幫助您在資料處理上獲得更多的自主權。",
+      "general": {
+        "description": "在大規模監控的時代，重拾一定程度的隱私在日常生活中變得相當重要。由於每位使用者的疑慮和技術知識有所不同，使用某些工具並根據需求進行調整是完全正常的。在此，我們將探討各種保護解決方案，例如 VPN、Tor、Tails OS、PGP、加密訊息等。"
+      },
+      "shortDescription": "備份和維護隱私的工具",
+      "title": "隱私"
+    },
+    "wallet": {
+      "description": "比特幣錢包就像你的鑰匙圈一樣，它讓你可以進行比特幣的支出和接收。錢包有很多不同的類型，各自具有不同的用途、功能、成本和使用體驗。每位比特幣使用者會根據自身需求、要求程度和經驗選擇不同的設備。",
+      "desktop": {
+        "description": "電腦版錢包通常適合較為進階的使用者，因為它們結合了硬體設備與桌面錢包軟體的使用。這就像是為你的硬體設備提供了一個更新、更具客製化功能的介面。這類錢包提供了多重簽名選項、隱私功能、繼承整合機制等多種功能。"
+      },
+      "hardware": {
+        "description": "硬體錢包通常用於長期儲存比特幣。這些實體裝置不連接到互聯網（通常稱為「冷錢包」），因此安全性較高，即使這些裝置的軟體通常是開源的，但硬體價格約為50至300歐元。可以將這些裝置視為存放大筆儲蓄的銀行帳戶，偶爾使用一次。"
+      },
+      "mobile": {
+        "description": "行動錢包通常用於日常消費。它們整合了閃電網路，能進行低手續費、即時交易。這些錢包通常會連接到互聯網（通常稱為「熱錢包」），因此相較硬體錢包安全性較低。它們應該僅用來儲存少量比特幣，可以將它們視為你口袋中的日常錢包。"
+      },
+      "shortDescription": "比特幣的安全解決方案與使用方式",
+      "title": "錢包"
+    },
+    "approvedByCreator": "由創作者批准",
+    "backTutorials": "返回所有教學資源",
+    "explorer": {
+      "description": "所有教學資源都是由熱心貢獻的比特幣愛好者所撰寫，他們希望將比特幣教育傳播到全世界。別忘了點讚、評論並給他們一些 sats 作為小費！",
+      "didYouKnow": "你知道嗎？",
+      "exploreAllTutorials": "探索所有教學資源"
+    },
+    "headerSignature": "Rogzy",
+    "pageSubtitle": "透過探索比特幣龐大的生態系統，揭開其神秘面紗",
+    "pageTitle": "探索我們的課程"
+  },
+  "words": {
+    "nodeNetwork": "節點網絡",
+    "professors": "教授",
+    "about": "關於",
+    "about-us": "關於我們",
+    "account": "帳戶",
+    "additionalCriteria": "額外條件",
+    "advanced": "進階的",
+    "admins": "管理員",
+    "all": "所有",
+    "amount": "金額",
+    "article": "文章",
+    "articles": "文章",
+    "audioBook": "有聲書",
+    "back": "返回",
+    "bCertificate": "比特幣 ₿ 證書",
+    "beginner": "初學者",
+    "billing": "帳單",
+    "bitcoinWhitepaper": "比特幣白皮書",
+    "book": "書籍",
+    "books": "書籍",
+    "builder": "開發者",
+    "builders": "開發者",
+    "certificate": "證書",
+    "chapter": "章節",
+    "communities": "社區",
+    "conference": "研討會",
+    "conferences": "研討會",
+    "content": "內容",
+    "continue": "繼續",
+    "course": "課程",
+    "courseId": "課程 ID",
+    "courses": "課程",
+    "date": "日期",
+    "dashboard": "儀表板",
+    "description": "概述",
+    "details": "詳情",
+    "didYouKnow": "你知道嗎？",
+    "documentaries": "紀錄片",
+    "donations": "捐款",
+    "download": "下載",
+    "duration": "課程時間",
+    "economy": "經濟",
+    "edit": "編輯",
+    "education": "教育",
+    "email": "電子郵件",
+    "events": "活動",
+    "exchanges": "交易所",
+    "followUs": "關注我們",
+    "free": "免費",
+    "glossary": "詞彙表",
+    "goal": "目標",
+    "helpUs": "幫助我們",
+    "home": "首頁",
+    "hours": "小時",
+    "inPerson": "實體",
+    "intermediate": "中級",
+    "interview": "採訪",
+    "invoice": "收據",
+    "level": {
+      "advanced": "進階的",
+      "beginner": "初學者",
+      "beginnerFriendly": "適合初學者",
+      "developer": "開發者",
+      "wizard": "專家",
+      "intermediate": "中級",
+      "level": "等級",
+      "levels": "等級"
+    },
+    "lectures": "講座",
+    "library": "圖書館",
+    "lightning": "閃電",
+    "lightningInvoice": "閃電網路收據",
+    "lnurlAuth": "LNURL 授權",
+    "manifesto": "宣言",
+    "merchandising": "商品銷售",
+    "merchants": "商家",
+    "members": " 會員",
+    "mining": "挖礦",
+    "more": "更多",
+    "movieDocumentary": "電影紀錄片",
+    "network": "網絡",
+    "networkMember": "網路成員",
+    "newsletter": "電子報",
+    "newsletters": "電子報",
+    "node": "節點",
+    "on": "上",
+    "onChain": "在鏈上",
+    "onChainAddress": "鏈上地址",
+    "online": "線上",
+    "or": "或",
+    "ourStory": "我們的故事",
+    "paid": "付款",
+    "part": "部分",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "price": "價錢",
+    "professor": "教授",
+    "purchase": "購買",
+    "register": "註冊",
+    "public": "公開交流",
+    "ratings": "評分",
+    "relatedResources": "相關資源",
+    "resources": "資源",
+    "resume": "摘要",
+    "review": "評論",
+    "rogzy": "Rogzy",
+    "sponsorUs": "贊助我們",
+    "sponsoringAndContributors": "贊助與貢獻者",
+    "start": "開始",
+    "students": "學生",
+    "supportUs": "支持我們",
+    "teachers": "老師",
+    "termsAndConditions": "條款和條件",
+    "ticket": "票券",
+    "tickets": "票券",
+    "time": "時間",
+    "to": "至",
+    "toolkits": "工具包",
+    "topics": "主題",
+    "tutorial": "教學",
+    "tutorials": "教學",
+    "unified": "統一的",
+    "update": "更新",
+    "users": "使用者",
+    "video": "影片",
+    "videos": "影片",
+    "view": "檢視",
+    "wallets": "錢包"
+  },
+  "notFound": {
+    "here": "這裡",
+    "pageSubtitle": "看起來有人深陷兔子洞並迷失了方向。要回到地面，請點擊",
+    "pageTitle": "哎呀。"
+  },
+  "podcast": {
+    "abstract": "摘要",
+    "discover": "探索這個 Podcast"
+  },
+  "podcasts": {
+    "hostedBy": "由{{host}}主辦",
+    "pageSubtitle": "這個入口是開源的，歡迎大家的貢獻。",
+    "pageTitle": "比特幣 Podcasts"
+  },
+  "professors": {
+    "pageSubtitle": "我們所有的教授都是志工且熱愛比特幣的人士。您可以向他們捐款以表達您的感謝。",
+    "pageTitle": "教授",
+    "tips": {
+      "authorSupport": "通過小費支持作者",
+      "noTipsYet": "這位教授目前不接受小費。",
+      "thanks": "感謝您支持{{name}}的工作！",
+      "thanksNoName": "感謝您支持我的工作！"
+    },
+    "navigationTitles": {
+      "all": "所有",
+      "lecturers": "講師",
+      "teachers": "老師",
+      "tutorialCreators": "教學資源創作者"
+    }
+  },
+  "proofreading": {
+    "completed": "校對完成",
+    "description": "原始內容已由人工智慧翻譯，但仍需人工審核以確保其準確性。",
+    "inProgress": "正在進行校對",
+    "reviewEarn": "評論並賺取sats",
+    "status": "校對狀態",
+    "thanks": "特別感謝我們的優秀審核者！"
+  },
+  "settings": {
+    "changeDisplayName": "更改顯示名稱",
+    "changePassword": "更改密碼",
+    "changeProfilePicture": "更改個人資料照片",
+    "changeEmail": "更改電子郵件"
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "itemNotFound": "找不到{{item}}",
+    "itemNotFoundOrTranslated": "找不到 {{item}}，或者您的語言中沒有翻譯",
+    "p1": "一隻兔子跌落了洞裡，由於這次意外的冒險，這個頁面目前正在維護中。對此造成的任何不便我們深感抱歉，我們的團隊正全力以赴完成這個頁面。如果您有興趣協助我們，請隨時查看我們的",
+    "p2": "並考慮加入我們的社群！",
+    "pageTitle": "哎呀。"
+  }
+}
