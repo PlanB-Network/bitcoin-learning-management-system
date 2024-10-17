@@ -140,7 +140,7 @@ export const ExamPresentation = ({
       </div>
 
       <div className="flex max-md:flex-col gap-2.5 md:gap-5 w-full">
-        <Button
+        <ButtonWithArrow
           className="w-full max-md:max-w-[290px] md:w-fit"
           variant={disabled || !user?.displayName ? 'fakeDisabled' : 'primary'}
           size={window.innerWidth < 768 ? 'm' : 'l'}
@@ -153,7 +153,7 @@ export const ExamPresentation = ({
           }
         >
           {t('courses.exam.startExam')}
-        </Button>
+        </ButtonWithArrow>
         <Link
           className="w-full max-md:max-w-[290px] md:w-fit"
           to={
@@ -163,7 +163,7 @@ export const ExamPresentation = ({
           }
           params={goToChapterParameters(chapter, 'next')}
         >
-          <ButtonWithArrow
+          <Button
             className="w-full max-md:max-w-[290px] md:w-fit"
             variant="outline"
             size={window.innerWidth < 768 ? 'm' : 'l'}
@@ -173,7 +173,7 @@ export const ExamPresentation = ({
                 ? t('courses.exam.skipExam')
                 : t('courses.exam.skipExamGoConclusion')}
             </span>
-          </ButtonWithArrow>
+          </Button>
         </Link>
       </div>
 

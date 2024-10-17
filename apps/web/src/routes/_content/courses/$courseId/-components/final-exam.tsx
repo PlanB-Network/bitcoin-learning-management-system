@@ -39,15 +39,38 @@ export const FinalExam = ({
     trpc.user.courses.completeExamAttempt.useMutation();
 
   const onSubmit = useCallback(async () => {
-    await completeExamAttempt.mutateAsync({
-      answers: selectedAnswers
-        .filter((answer) => answer.order !== -1)
-        .map((answer) => ({
+    const validAnswers = selectedAnswers.filter(
+      (answer) => answer.order !== -1,
+    );
+
+    if (validAnswers.length === 0) {
+      setIsExamCompleted(true);
+    } else {
+      await completeExamAttempt.mutateAsync({
+        answers: validAnswers.map((answer) => ({
           questionId: answer.questionId,
           order: answer.order,
         })),
+      });
+    }
+  }, [completeExamAttempt, selectedAnswers, setIsExamCompleted]);
+
+  const handleAnswerClick = (questionIndex: number, answerIndex: number) => {
+    setSelectedAnswers((prev) => {
+      const currentAnswer = prev[questionIndex];
+      return prev.map((ans, i) =>
+        i === questionIndex
+          ? currentAnswer.index === answerIndex
+            ? { ...ans, index: -1, order: -1 }
+            : {
+                ...ans,
+                order: questions[questionIndex].answers[answerIndex].order,
+                index: answerIndex,
+              }
+          : ans,
+      );
     });
-  }, [completeExamAttempt, selectedAnswers]);
+  };
 
   const [isTimeLeftAlertOpen, setIsTimeLeftAlertOpen] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -104,82 +127,107 @@ export const FinalExam = ({
   const isMobile = window.innerWidth < 768;
 
   return (
-    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden shadow-course-navigation">
-      <div className="flex px-4 py-2.5 md:p-5 w-full items-center justify-between gap-1 md:gap-4 bg-newGray-4">
-        <h2 className="body-medium-16px uppercase md:display-large-bold-caps-48px text-newBlack-1">
-          {t('courses.exam.finalExam')}
-        </h2>
-        <div className="flex gap-[5px] md:gap-4 items-center">
-          <span className="body-12px md:subtitle-large-caps-22px text-newBlack-1">
-            {t('courses.exam.timeLeft')}
-          </span>
-          <Button
-            variant="primary"
-            size={isMobile ? 'xs' : 'm'}
-            className="w-fit pointer-events-none flex gap-2 md:gap-2.5 items-center"
-          >
-            <MdTimer size={isMobile ? 16 : 24} className="shrink-0" />
-            <span className="w-9 md:w-12 text-xs md:text-lg leading-normal font-medium text-white">
-              {formatSecondsToMinutes(timeLeft)}
-            </span>
-          </Button>
+    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden shadow-course-navigation border-2 border-newBlack-1">
+      <div className="flex flex-col w-full gap-5 bg-darkOrange-1 border-b-2 border-newBlack-1 px-4 py-2.5 md:px-7 md:py-5">
+        <div className="flex w-full items-center gap-1 md:gap-4 ">
+          <h2 className="body-medium-16px uppercase md:display-medium-bold-caps-40px text-darkOrange-11">
+            {t('courses.exam.finalExam')}
+          </h2>
+        </div>
+        <div className="flex flex-wrap w-full gap-2 max-md:hidden">
+          {questions.map((_, questionIndex) => (
+            <button
+              key={questionIndex}
+              onClick={() => {
+                const article =
+                  document.querySelectorAll('article')[questionIndex];
+                const container = document.querySelector('#examContainer');
+
+                if (!container) return;
+                const containerRect = container.getBoundingClientRect();
+                const articleRect = article.getBoundingClientRect();
+
+                container.scrollTo({
+                  top:
+                    articleRect.top - containerRect.top + container.scrollTop,
+                  behavior: 'smooth',
+                });
+              }}
+              className={cn(
+                'size-8 flex justify-center items-center rounded-lg border border-newGray-1 bg-white text-newBlack-1 cursor-pointer label-medium-med-16px',
+                selectedAnswers[questionIndex].order !== -1 &&
+                  'bg-darkOrange-4',
+              )}
+            >
+              {questionIndex + 1}
+            </button>
+          ))}
         </div>
       </div>
       <div className="flex flex-col items-center px-2.5 md:px-10 py-5 md:pt-10 md:pb-6 bg-newGray-6 w-full gap-5 md:gap-11">
-        <div className="w-full scrollbar-light overflow-y-scroll max-h-[929px] md:max-h-[1201px] pb-1.5 pr-3 md:pr-2 flex flex-col gap-5 md:gap-11">
-          {questions.map((q, questionIndex) => (
-            <article
-              key={questionIndex}
-              className={cn(
-                'flex flex-col gap-4 md:gap-6 w-full max-w-[584px]',
-                questionIndex === 0 && 'pt-0',
-              )}
+        <div
+          className="relative w-full scrollbar-light overflow-y-scroll max-h-[929px] md:max-h-[1201px] pb-1.5 pr-3 md:pr-2 flex flex-col items-center"
+          id="examContainer"
+        >
+          <div className="sticky top-0 left-0 w-full">
+            <Button
+              variant="primary"
+              size={isMobile ? 'xs' : 'm'}
+              className="absolute left-0 w-fit pointer-events-none flex gap-2 md:gap-2.5 items-center !bg-darkOrange-7 z-10"
             >
-              <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
-                {questionIndex + 1}. {q.text}
-              </p>
-              <section className="flex flex-col gap-2.5 md:gap-4 w-full">
-                {q.answers.map((answer, answerIndex) => (
-                  <button
-                    key={answerIndex}
-                    onClick={() =>
-                      setSelectedAnswers((prev) =>
-                        prev.map((ans, i) =>
-                          i === questionIndex
-                            ? {
-                                ...ans,
-                                order: q.answers[answerIndex].order,
-                                index: answerIndex,
-                              }
-                            : ans,
-                        ),
-                      )
-                    }
-                    className="group border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden"
-                  >
-                    <span
-                      className={cn(
-                        'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center bg-newGray-5 group-hover:bg-newGray-3',
-                        selectedAnswers[questionIndex].index === answerIndex &&
-                          '!bg-newGray-3',
-                      )}
+              <MdTimer size={isMobile ? 16 : 24} className="shrink-0" />
+              <span className="w-9 md:w-12 text-xs md:text-lg leading-normal font-medium text-white">
+                {formatSecondsToMinutes(timeLeft)}
+              </span>
+            </Button>
+          </div>
+          <div className="flex flex-col gap-5 md:gap-11 max-md:pt-10">
+            {questions.map((q, questionIndex) => (
+              <article
+                key={questionIndex}
+                className={cn(
+                  'flex flex-col gap-4 md:gap-6 w-full max-w-[584px]',
+                  questionIndex === 0 && 'pt-0',
+                )}
+              >
+                <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
+                  {questionIndex + 1}. {q.text}
+                </p>
+                <section className="flex flex-col gap-2.5 md:gap-4 w-full">
+                  {q.answers.map((answer, answerIndex) => (
+                    <button
+                      key={answerIndex}
+                      onClick={() =>
+                        handleAnswerClick(questionIndex, answerIndex)
+                      }
+                      className="group border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden"
                     >
-                      {String.fromCodePoint(97 + answerIndex)}
-                    </span>
-                    <p
-                      className={cn(
-                        'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white group-hover:bg-newGray-4',
-                        selectedAnswers[questionIndex].index === answerIndex &&
-                          '!bg-newGray-4',
-                      )}
-                    >
-                      {answer.text}
-                    </p>
-                  </button>
-                ))}
-              </section>
-            </article>
-          ))}
+                      <span
+                        className={cn(
+                          'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center bg-newGray-5 group-hover:bg-newGray-3',
+                          selectedAnswers[questionIndex].index ===
+                            answerIndex &&
+                            '!bg-darkOrange-4 group-hover:!bg-darkOrange-3',
+                        )}
+                      >
+                        {String.fromCodePoint(97 + answerIndex)}
+                      </span>
+                      <p
+                        className={cn(
+                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white group-hover:bg-newGray-4',
+                          selectedAnswers[questionIndex].index ===
+                            answerIndex &&
+                            '!bg-darkOrange-1 group-hover:!bg-darkOrange-0',
+                        )}
+                      >
+                        {answer.text}
+                      </p>
+                    </button>
+                  ))}
+                </section>
+              </article>
+            ))}
+          </div>
         </div>
         {/* Handle submit */}
         <Dialog>
