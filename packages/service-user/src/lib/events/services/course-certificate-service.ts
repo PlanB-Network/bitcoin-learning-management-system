@@ -5,6 +5,7 @@ import {
   createTimestamp,
   createUpgrade,
   createVerify,
+  getLatestBlockHash,
   loadPrivateKey,
 } from '@blms/opentimestamps';
 import type { UserExamTimestamp } from '@blms/types';
@@ -12,8 +13,6 @@ import type { UserExamTimestamp } from '@blms/types';
 import type { Dependencies } from '#src/dependencies.js';
 
 import { createPdf } from './course-certificate-gen-pdf.js';
-
-declare function getExamAttempt(id: string): Promise<any>; // TODO
 
 interface TimestampOptions {
   examAttemptId: string;
@@ -57,12 +56,87 @@ const getExamAttemptTextToSign = (options: CourseCertificateOptions) => {
     .replace('{lastBlockHash}', options.lastBlockHash);
 };
 
+const formatDate = (date: Date) => {
+  const day = date.getDate();
+  const month = date.toLocaleString('default', { month: 'long' });
+  const year = date.getFullYear();
+
+  // Determine the correct ordinal suffix for the day
+  const suffix =
+    day % 10 === 1 && day !== 11
+      ? 'st'
+      : day % 10 === 2 && day !== 12
+        ? 'nd'
+        : day % 10 === 3 && day !== 13
+          ? 'rd'
+          : 'th';
+
+  return `${day}${suffix} ${month}, ${year}`;
+};
+
+interface ExamAttemptWithUser {
+  succeeded: boolean;
+  finalized: boolean;
+  score: number;
+  startedAt: Date;
+  finishedAt: Date;
+  user: {
+    id: string;
+    userName: string;
+    displayName: string;
+  };
+  course: {
+    id: string;
+    level: string;
+    goal: string;
+    name: string;
+    lastCommit: string;
+    hours: number;
+  };
+}
+
 export const createExamTimestampService = async (ctx: Dependencies) => {
   const privateKey = await loadPrivateKey(ctx.config.opentimestamps);
 
   const timestamp = createTimestamp(privateKey);
   const upgrade = createUpgrade();
   const verify = createVerify({ ignoreBitcoinNode: true });
+
+  const getExamAttempt = (id: string) => {
+    return ctx.postgres
+      .exec(
+        sql<ExamAttemptWithUser[]>`
+          SELECT
+            a.succeeded,
+            a.finalized,
+            a.score,
+            a.started_at,
+            a.finished_at,
+            a.language,
+            (SELECT jsonb_build_object(
+              'id', u.uid,
+              'userName', u.username,
+              'displayName', u.display_name)
+            FROM users.accounts u
+            WHERE u.uid = a.uid) AS user,
+            (SELECT jsonb_build_object(
+              'id', c.id,
+              'level', c.level,
+              'goal', cl.goal,
+              'name', cl.name,
+              'hours', c.hours,
+              'lastCommit', c.last_commit)
+            FROM content.courses c
+            JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language =  a.language
+            WHERE c.id = a.course_id) AS course
+          FROM
+            users.exam_attempts a
+          WHERE a.id = ${id};
+        `,
+      )
+      .then(firstRow)
+      .then(rejectOnEmpty);
+  };
 
   const getExamTimestamp = (id: string): Promise<UserExamTimestamp> => {
     return ctx.postgres
@@ -137,17 +211,19 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       return false;
     }
 
+    const lastBlockHash = await getLatestBlockHash();
+
     const text = getExamAttemptTextToSign({
-      userName: exam.user_name,
-      fullName: exam.full_name,
-      courseName: exam.course_name,
-      courseId: exam.course_id,
-      level: exam.level,
-      goal: exam.goal,
-      duration: exam.duration,
-      lastCommitHash: exam.last_commit_hash,
-      date: exam.date,
-      lastBlockHash: exam.last_block_hash,
+      userName: exam.user.userName,
+      fullName: exam.user.displayName,
+      courseName: exam.course.name,
+      courseId: exam.course.id,
+      level: exam.course.level,
+      goal: exam.course.goal,
+      duration: `${exam.course.hours} hours`,
+      lastCommitHash: exam.course.lastCommit,
+      date: formatDate(exam.startedAt),
+      lastBlockHash,
     });
 
     const { signature, ots, hash } = await timestamp({ text });
@@ -172,11 +248,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     }
 
     const pdf = await createPdf({
-      fullName: exam.full_name,
-      courseName: exam.course_name,
-      courseId: exam.course_id,
-      duration: exam.duration,
-      date: exam.date,
+      fullName: exam.user.displayName,
+      courseName: exam.course.name,
+      courseId: exam.course.id,
+      duration: `${exam.course.hours} hours`,
+      date: formatDate(exam.startedAt),
       hash: timestamp.hash,
       txid: timestamp.txId,
     });

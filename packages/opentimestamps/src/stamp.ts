@@ -6,7 +6,7 @@ import ots from 'opentimestamps';
 
 import type { OpenTimestampsConfig } from '@blms/types';
 
-const getLatestBlockHeight = async (): Promise<number> => {
+export const getLatestBlockHeight = async (): Promise<number> => {
   const res = await fetch('https://mempool.space/api/blocks/tip/height');
   const height = await res.json();
 
@@ -21,7 +21,7 @@ const getLatestBlockHeight = async (): Promise<number> => {
   return height;
 };
 
-const getLatestBlockHash = async (): Promise<string> => {
+export const getLatestBlockHash = async (): Promise<string> => {
   const height = await getLatestBlockHeight();
   const res = await fetch(`https://mempool.space/api/block-height/${height}`);
   const blockHash = await res.text();
