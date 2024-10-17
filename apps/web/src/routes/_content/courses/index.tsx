@@ -13,6 +13,8 @@ import { BCertificatePresentation } from '#src/components/b-certificate-presenta
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
+import { StarRating } from '#src/components/Stars/star-rating.js';
+import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 import { computeAssetCdnUrl, trpc } from '#src/utils/index.js';
 
 export const Route = createFileRoute('/_content/courses/')({
@@ -35,10 +37,12 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
         rightText={course.professors
           .map((professor) => professor.name)
           .join(', ')}
+        className="lg:py-[3px]"
       />
       <ListItem
         leftText={t('words.level.level')}
         rightText={t(`words.level.${course.level}`)}
+        className="lg:py-[3px]"
       />
       {/* no chaptersCount on course, to fix */}
       {/* <ListItem
@@ -49,6 +53,7 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
       <ListItem
         leftText={t('words.duration')}
         rightText={`${course.hours} ${t('words.hours')}`}
+        className="lg:py-[3px]"
       />
       <ListItem
         leftText={t('words.price')}
@@ -59,19 +64,23 @@ const CourseInfoSection = ({ course }: { course: JoinedCourse }) => {
               : `${course.onlinePriceDollars}$`
             : t('words.free')
         }
+        className="lg:py-[3px]"
       />
       <ListItem
         leftText={t('words.courseId')}
         rightText={course.id.toUpperCase()}
         isDesktopOnly
+        className="lg:py-[3px]"
       />
     </section>
   );
 };
 
 export const CourseCard = ({ course }: { course: JoinedCourse }) => {
+  const maxRating = 5;
+
   return (
-    <article className="group flex flex-col w-full md:h-[472px] bg-darkOrange-11 p-2.5 rounded-[20px] overflow-hidden">
+    <article className="group flex flex-col w-full md:h-[472px] bg-tertiary-10 p-2.5 rounded-[10px] md:rounded-[20px] overflow-hidden">
       <img
         src={computeAssetCdnUrl(
           course.lastCommit,
@@ -89,31 +98,41 @@ export const CourseCard = ({ course }: { course: JoinedCourse }) => {
           alt={course.name}
           className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
         />
-        <div className="flex flex-col">
-          <span className="max-md:flex flex-col mb-1.5 md:mb-2 line-clamp-3 group-hover:line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-darkOrange-5 max-md:h-full align-top">
+        <div className="flex flex-col md:gap-2">
+          <span className="max-md:flex flex-col md:mb-2 !line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-white md:align-top mb-2 lg:mb-0">
             {course.name}
           </span>
-          <div className="flex items-center flex-wrap gap-1.5 md:gap-2 mt-auto">
-            <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
-              {course.id === 'btc101'
-                ? t('words.start')
-                : t(`words.level.${course.level}`)}
-            </span>
-            <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
-              {course.requiresPayment ? t('words.paid') : t('words.free')}
-            </span>
+          <div className="flex md:items-center flex-col md:flex-row flex-wrap gap-2 md:gap-5 md:mt-auto">
+            <div className="flex md:items-center gap-1.5 md:gap-2 order-2 md:order-1">
+              <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                {course.id === 'btc101'
+                  ? t('words.start')
+                  : t(`words.level.${course.level}`)}
+              </span>
+              <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                {course.requiresPayment ? t('words.paid') : t('words.free')}
+              </span>
+            </div>
+            <div className="flex order-1 md:order-2">
+              <StarRating
+                rating={course.averageRating}
+                totalStars={maxRating}
+                starSize={20}
+                className="gap-2"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div className="relative">
-        <p className="text-white/70 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
+        <p className="text-tertiary-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-4 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
           {course.goal}
         </p>
       </div>
       <div className="max-md:hidden relative">
         <div className="flex flex-col transition-opacity opacity-0 md:group-hover:opacity-100 absolute md:group-hover:static duration-0 md:group-hover:duration-150">
           <span className="font-medium leading-normal tracking-015px mb-2 line-clamp-1">
-            {t('words.professor')} :{' '}
+            {t('words.professor')}:{' '}
             {course.professors.map((professor) => professor.name).join(', ')}
           </span>
           <ListItem
@@ -381,55 +400,98 @@ const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
   );
 };
 
+const toggleSelection = (
+  item: string,
+  activeItems: string[],
+  setActiveItems: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
+  if (item === 'all') {
+    setActiveItems(['all']);
+  } else {
+    const isSelected = activeItems.includes(item);
+    let newSelection = isSelected
+      ? activeItems.filter((i) => i !== item)
+      : [...activeItems.filter((i) => i !== 'all'), item];
+
+    if (newSelection.length === 0) {
+      newSelection = ['all'];
+    }
+
+    setActiveItems(newSelection);
+  }
+};
+
 const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
-  const topics = [...new Set(courses.map((course) => course.topic))].sort();
+  const topics = [
+    'all',
+    ...[...new Set(courses.map((course) => course.topic))].sort(),
+  ];
 
+  const levels = ['all', 'beginner', 'intermediate', 'advanced', 'wizard'];
+
+  const mobileLevels = [
+    'all',
+    'advanced',
+    'beginner',
+    'wizard',
+    'intermediate',
+  ];
+
+  const [activeTopics, setActiveTopics] = useState<string[]>(['all']);
+  const [activeLevels, setActiveLevels] = useState<string[]>(['all']);
   const [filteredCourses, setFilteredCourses] = useState(courses);
-
-  const [activeTopic, setActiveTopic] = useState('all');
-  const [activeLevel, setActiveLevel] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setFilteredCourses(
-      courses
-        .filter(
-          (course) => activeTopic === 'all' || course.topic === activeTopic,
-        )
-        .filter(
-          (course) => activeLevel === 'all' || course.level === activeLevel,
-        ),
+      courses.filter(
+        (course) =>
+          (activeTopics.includes('all') ||
+            activeTopics.includes(course.topic)) &&
+          (activeLevels.includes('all') ||
+            activeLevels.includes(course.level)) &&
+          course.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
     );
-  }, [courses, activeTopic, activeLevel]);
+  }, [courses, activeTopics, activeLevels, searchQuery]);
+
+  const handleFilterChange = (category: string, option: string) => {
+    if (category === 'Topics') {
+      toggleSelection(option, activeTopics, setActiveTopics);
+    } else if (category === 'Levels') {
+      toggleSelection(option, activeLevels, setActiveLevels);
+    }
+  };
 
   return (
     <>
-      <div className="flex flex-col gap-2 text-center mt-8 md:mt-20 max-md:px-1">
-        <span className="text-darkOrange-5 mobile-h3 md:desktop-h7">
-          {t('courses.explorer.journey')}
-        </span>
-        <h3 className="text-white mobile-h2 md:desktop-h4">
-          {t('courses.explorer.exploreCourses')}
-        </h3>
-      </div>
-      <div className="max-md:hidden mt-12">
+      <div className="max-md:hidden mt-12 max-w-[1126px] mx-auto">
         <p className="desktop-h6">{t('courses.explorer.buildPath')}</p>
-        <div className="flex flex-col p-5 gap-8 bg-white/5 mt-5 rounded-[20px]">
-          <div className="flex items-center gap-8">
+        <div className="flex flex-col p-5 gap-8 bg-tertiary-10 mt-5 rounded-[20px] max-w-[1126px] mx-auto">
+          <div className="flex items-center gap-8 font-medium">
             <p>{t('words.topics')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeTopic === 'all' ? 'primary' : 'outlineWhite'}
+                variant={
+                  activeTopics.includes('all') ? 'primary' : 'outlineWhite'
+                }
                 size="s"
-                onClick={() => setActiveTopic('all')}
+                onClick={() =>
+                  toggleSelection('all', activeTopics, setActiveTopics)
+                }
               >
                 {t('words.all')}
               </Button>
-              {topics.map((topic) => (
+              {topics.slice(1).map((topic) => (
                 <Button
                   key={topic}
-                  variant={activeTopic === topic ? 'primary' : 'outlineWhite'}
+                  variant={
+                    activeTopics.includes(topic) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
-                  onClick={() => setActiveTopic(topic)}
+                  onClick={() =>
+                    toggleSelection(topic, activeTopics, setActiveTopics)
+                  }
                   className="capitalize"
                 >
                   {topic}
@@ -438,22 +500,30 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 font-medium">
             <p>{t('words.level.levels')}</p>
             <div className="flex flex-wrap gap-2">
               <Button
-                variant={activeLevel === 'all' ? 'primary' : 'outlineWhite'}
+                variant={
+                  activeLevels.includes('all') ? 'primary' : 'outlineWhite'
+                }
                 size="s"
-                onClick={() => setActiveLevel('all')}
+                onClick={() =>
+                  toggleSelection('all', activeLevels, setActiveLevels)
+                }
               >
                 {t('words.all')}
               </Button>
-              {levels.map((level) => (
+              {levels.slice(1).map((level) => (
                 <Button
                   key={level}
-                  variant={activeLevel === level ? 'primary' : 'outlineWhite'}
+                  variant={
+                    activeLevels.includes(level) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
-                  onClick={() => setActiveLevel(level)}
+                  onClick={() =>
+                    toggleSelection(level, activeLevels, setActiveLevels)
+                  }
                   className="capitalize"
                 >
                   {level}
@@ -463,7 +533,24 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
           </div>
         </div>
       </div>
-      <section className="flex justify-center gap-5 md:gap-10 flex-wrap mt-8 md:mt-12">
+
+      <div className="md:hidden">
+        <FilterDropdown
+          filters={{
+            Topics: topics,
+            Levels: mobileLevels,
+          }}
+          selectedFilters={{
+            Topics: activeTopics,
+            Levels: activeLevels,
+          }}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onChange={handleFilterChange}
+        />
+      </div>
+
+      <section className="flex justify-center gap-5 md:gap-[50px] flex-wrap mt-8 md:mt-12 mb-5 lg:mb-[60px]">
         {filteredCourses.length > 0 &&
           filteredCourses.map((course) => (
             <Link
@@ -482,7 +569,12 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
 function CoursesExplorer() {
   const { i18n } = useTranslation();
-  const { data: courses, isFetched } = trpc.content.getCourses.useQuery(
+  const {
+    data: courses,
+    isFetched,
+    isLoading,
+    error,
+  } = trpc.content.getCourses.useQuery(
     {
       language: i18n.language,
     },
@@ -491,15 +583,35 @@ function CoursesExplorer() {
     },
   );
 
+  if (isLoading) {
+    return <Loader size={'s'} />;
+  }
+
+  if (error) {
+    return (
+      <div>
+        <Loader size={'s'} />
+        <p>Error loading courses: {error.message}</p>
+      </div>
+    );
+  }
+
   return (
     <PageLayout
-      title={t('courses.explorer.pageTitle')}
-      subtitle={t('courses.explorer.pageSubtitle')}
+      title={t('courses.explorer.exploreCourses')}
+      subtitle={t('courses.explorer.journey')}
       description={t('courses.explorer.pageDescription')}
       paddingXClasses="px-2.5 md:px-4"
       maxWidth="max-w-[1227px]"
     >
       {!isFetched && <Loader size={'s'} />}
+
+      {courses && <CoursesGallery courses={courses} />}
+      <div className="border-t border-newGray-1 max-w-[1115px] w-full mx-auto"></div>
+      <div className="py-5 lg:py-[60px]">
+        <BCertificatePresentation marginClasses="mt-0" />
+      </div>
+      <div className="border-t border-newGray-1 max-w-[1115px] w-full mx-auto"></div>
 
       {courses && (
         <>
@@ -509,10 +621,6 @@ function CoursesExplorer() {
           <CourseSelector courses={courses} />
         </>
       )}
-
-      {courses && <CoursesGallery courses={courses} />}
-
-      <BCertificatePresentation />
     </PageLayout>
   );
 }

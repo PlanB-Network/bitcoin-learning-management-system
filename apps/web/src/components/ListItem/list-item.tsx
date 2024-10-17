@@ -14,7 +14,7 @@ interface ListItemProps {
 }
 
 const listItemVariant = cva(
-  'text-base flex items-center justify-between border-b py-2 md:py-3 gap-2',
+  'text-base flex items-center justify-between border-b py-2 md:py-[3px] gap-2',
   {
     variants: {
       variant: {
