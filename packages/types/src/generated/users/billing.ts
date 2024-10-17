@@ -11,6 +11,10 @@ export interface Ticket {
   eventId: string;
   title: string;
   location: string;
+  addressLine1: string;
+  addressLine2: string;
+  addressLine3: string;
+  timezone: string;
   type: string;
   date: Date;
   isInPerson: boolean;

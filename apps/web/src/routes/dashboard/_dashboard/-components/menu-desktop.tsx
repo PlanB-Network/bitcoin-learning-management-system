@@ -34,7 +34,7 @@ export const MenuDesktop = ({
   const navigate = useNavigate();
 
   const dashboardPath = '/dashboard/courses';
-  const bCertificatePath = '/dashboard/bcertificate';
+  const credentialsPath = '/dashboard/credentials';
   const bookingsPath = '/dashboard/bookings';
   const calendarPath = '/dashboard/calendar';
   const coursesPath = '/dashboard/courses';
@@ -94,16 +94,16 @@ export const MenuDesktop = ({
         </Link>
         <Link to={bookingsPath}>
           <MenuItem
-            text={t('dashboard.bookings')}
+            text={t('words.bookings')}
             icon={<IoTicketOutline size={24} />}
             active={pathname.includes(bookingsPath)}
           />
         </Link>
-        <Link to={bCertificatePath}>
+        <Link to={credentialsPath}>
           <MenuItem
-            text={t('words.bCertificate')}
+            text={t('words.credentials')}
             icon={<BsMortarboard size={24} />}
-            active={pathname.includes(bCertificatePath)}
+            active={pathname.includes(credentialsPath)}
           />
         </Link>
         <Link to={profilePath}>

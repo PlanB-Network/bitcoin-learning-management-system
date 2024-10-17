@@ -1,7 +1,11 @@
 import { z } from 'zod';
 
 import { invoiceSchema, ticketSchema } from '@blms/schemas';
-import { createGetInvoices, createGetTickets } from '@blms/service-user';
+import {
+  createGetExamTickets,
+  createGetInvoices,
+  createGetTickets,
+} from '@blms/service-user';
 import type { Invoice, Ticket } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -23,6 +27,15 @@ const getInvoicesProcedure = studentProcedure
     }),
   );
 
+const getExamTicketsProcedure = studentProcedure
+  .input(z.void())
+  .output<Parser<Ticket[]>>(ticketSchema.array())
+  .query(({ ctx }) =>
+    createGetExamTickets(ctx.dependencies)({
+      uid: ctx.user.uid,
+    }),
+  );
+
 const getTicketsProcedure = studentProcedure
   .output<Parser<Ticket[]>>(ticketSchema.array())
   .query(({ ctx }) =>
@@ -32,6 +45,7 @@ const getTicketsProcedure = studentProcedure
   );
 
 export const userBillingRouter = createTRPCRouter({
+  getExamTickets: getExamTicketsProcedure,
   getInvoices: getInvoicesProcedure,
   getTickets: getTicketsProcedure,
 });

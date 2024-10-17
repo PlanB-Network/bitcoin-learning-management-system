@@ -23,11 +23,27 @@ export const JoinedBCertificateResultsSchema = BCertificateExamSchema.pick({
   path: true,
   lastUpdated: true,
   lastCommit: true,
-}).merge(
-  z.object({
-    results: BCertificateResultsSchema.pick({
-      category: true,
-      score: true,
-    }).array(),
-  }),
-);
+})
+  .merge(
+    z.object({
+      results: BCertificateResultsSchema.pick({
+        category: true,
+        score: true,
+      }).array(),
+      score: z.number().optional(),
+    }),
+  )
+  .transform((data) => {
+    const totalScore = data.results.reduce(
+      (acc, result) => acc + result.score,
+      0,
+    );
+
+    return {
+      ...data,
+      score: totalScore,
+    };
+  })
+  .refine((data) => typeof data.score === 'number', {
+    message: 'Score must be a valid number after transformation',
+  });
