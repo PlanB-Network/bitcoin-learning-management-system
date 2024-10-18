@@ -12,4 +12,4 @@ Goal: {goal}
 Duration: {duration}
 Last course hash commit: {lastCommitHash}
 Date of completion: {date}
-Last block header: {lastBlockHash}
+Last block hash: {lastBlockHash}
