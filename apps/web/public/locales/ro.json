@@ -36,7 +36,8 @@
       "displayNameTooShort": "Numele trebuie să conțină cel puțin 2 caractere.",
       "usernameRegex": "Username-ul poate conține doar litere, cifre, _, . și -.",
       "usernameRequired": "Username-ul este necesar.",
-      "usernameTooShort": "Username-ul trebuie să conțină cel puțin 5 caractere."
+      "usernameTooShort": "Username-ul trebuie să conțină cel puțin 5 caractere.",
+      "invalidCredentials": "Credențiale invalide"
     },
     "forgottenPassword": "Ți-ai uitat parola?",
     "headerAccountCreated": "Cont creat",
@@ -65,7 +66,10 @@
     "passwordResetSent": "E-mailul de resetare a parolei a fost trimis în căsuța dvs. de e-mail (dacă adresa de e-mail există în baza noastră de date).",
     "passwordResetError": "Eroare de resetare a parolei",
     "tryAgain": "Încearcă din nou",
-    "signIn": "Înregistrează-te"
+    "signIn": "Înregistrează-te",
+    "confirmation": "Confirmare",
+    "displayName": "Numele afișat",
+    "oldPassword": "Parola veche"
   },
   "bCertificate": {
     "bCertificateDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
@@ -192,7 +196,8 @@
       "payment_successful": "Plata efectuată cu succes!",
       "payment_details": "Detalii de plată",
       "amount": "Cantitate",
-      "invoiceId": "ID-ul tranzacției"
+      "invoiceId": "ID-ul tranzacției",
+      "buyOnlineCourse": "Cumpărați cursul online"
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
