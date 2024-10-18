@@ -7,6 +7,7 @@ import { Tabs, TabsContent } from '@blms/ui';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 
+import { CourseDiplomas } from './-components/course-diplomas.tsx';
 import { GlobalCertifications } from './-components/global-certifications.tsx';
 
 export const Route = createFileRoute('/dashboard/_dashboard/credentials')({
@@ -57,7 +58,7 @@ function DashboardCredentials() {
           <GlobalCertifications />
         </TabsContent>
         <TabsContent value="diplomas">
-          <div className="pt-2 md:pt-8 italic">Coming soon</div>
+          <CourseDiplomas />
         </TabsContent>
       </Tabs>
     </div>
