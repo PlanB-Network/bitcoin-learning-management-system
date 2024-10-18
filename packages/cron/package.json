@@ -1,5 +1,5 @@
 {
-  "name": "@blms/service-user",
+  "name": "@blms/crons",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -11,7 +11,6 @@
   "types": "./src/index.ts",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "postbuild": "cp -r src/lib/events/services/pdf dist/src/lib/events/services/",
     "lint": "eslint --color './**/*.ts'",
     "type-check": "tsc --build",
     "check-types": "tsc --noEmit",
@@ -20,23 +19,10 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@blms/database": "workspace:*",
-    "@blms/opentimestamps": "workspace:*",
-    "@blms/s3": "workspace:*",
-    "@pdf-lib/fontkit": "^1.1.1",
-    "@trpc/server": "11.0.0-rc.433",
-    "@types/qr-image": "^3.2.9",
-    "argon2": "^0.41.1",
-    "bip39": "^3.1.0",
-    "pdf-lib": "^1.17.1",
-    "pdfkit": "^0.15.0",
-    "qr-image": "^3.2.0",
-    "uuid": "^10.0.0"
+    "cron": "^3.1.7"
   },
   "devDependencies": {
     "@blms/eslint-config": "workspace:*",
-    "@blms/types": "workspace:*",
-    "@types/pdfkit": "^0.13.5",
-    "@types/uuid": "^10.0.0"
+    "@blms/types": "workspace:*"
   }
 }

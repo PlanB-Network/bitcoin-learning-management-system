@@ -232,6 +232,13 @@
       "when": 1728920098359,
       "tag": "0032_nostalgic_talos",
       "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "7",
+      "when": 1729179810579,
+      "tag": "0033_useful_doctor_spectrum",
+      "breakpoints": true
     }
   ]
 }

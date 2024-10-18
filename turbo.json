@@ -5,6 +5,7 @@
     "DOCKER",
     "NODE_ENV",
     "PUBLIC_PROXY_URL",
+    "CDN_PATH",
     "PORT",
     "SESSION_SECRET",
     "POSTGRES_DB",
@@ -29,7 +30,17 @@
     "SENDGRID_EMAIL",
     "SENDGRID_EMAIL_CHANGE_TEMPLATE_ID",
     "SENDGRID_RESET_PASSWORD_TEMPLATE_ID",
-    "SBP_API_KEY"
+    "SBP_API_KEY",
+    "S3_ACCESS_KEY",
+    "S3_SECRET_KEY",
+    "S3_BUCKET",
+    "S3_REGION",
+    "S3_ENDPOINT",
+    "OTS_PGP_KEY_PATH",
+    "OTS_PGP_KEY_PASSPHRASE",
+    "OTS_RPC_URL",
+    "OTS_RPC_USER",
+    "OTS_RPC_PASSWORD"
   ],
   "tasks": {
     "build": {
