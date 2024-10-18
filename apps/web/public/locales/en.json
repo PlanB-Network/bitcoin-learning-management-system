@@ -382,19 +382,10 @@
     "account": "Account",
     "administration": "Administration",
     "bCertificate": {
-      "assertLevel": "Assert your level in Bitcoin",
-      "bCertificate": "The ₿ Certificate",
       "bookExam": "Book an exam session",
       "certificate": "Certificate",
-      "general": "General",
       "grade": "Grade",
-      "gradesDiploma": "Grades and diploma",
-      "learnMore": "Learn more",
-      "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance.",
-      "organizedSessions": "The ₿ Certificate is organised by Plan B Network at various locations and times. Make sure to book your seat at a session.",
-      "presentation": "The ₿ Certificate is a table exam organised by Plan B Network, designed to assess your knowledge of Bitcoin and all its related topics.",
-      "findResults": "Here you can find your results to ₿ Certificate exams you’ve passed while registered with this account. The results usually takes 2 to 3 weeks to be processed and available here. If after a long time your results don’t show here, please contact us.",
-      "wantToPass": "Want to take the exam?"
+      "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please reach out to us for assistance."
     },
     "booking": {
       "accessLive": "Access the live exam",
@@ -415,7 +406,6 @@
       "upcomingTicketTitle": "Upcoming bookings",
       "upcomingTicketSubtitle": "Download your ticket here to attend your upcoming event. Please remember to bring it with you for entry."
     },
-    "bookings": "Bookings",
     "calendar": {
       "calendar": "Calendar",
       "personalCalendar": "Personal calendar"
@@ -433,6 +423,19 @@
       "resumeLesson": "Resume",
       "seeProgress": "to see your progress here.",
       "startCourse": "Start or complete a course"
+    },
+    "credentials": {
+      "bCertificate": "₿ Certificate",
+      "bCertificateSubtitle": "Here you can find the details concerning your bookings and grades of your past and future ₿ Certificates.\nThe ₿ Certificate is a table exam organised by Plan ₿ Network to assert your level in Bitcoin and its related topics.",
+      "beingGraded": "Your exam is being graded. The results should be available in 1 or 2 weeks.",
+      "courseDiplomas": "Course diplomas",
+      "downloadAvailableSoon": "Download of certificate will be available soon",
+      "globalCertifications": "Global certifications",
+      "retakeExam": "Retake the exam",
+      "seatBooked": "Your seat at the exam session is booked",
+      "seeTicket": "See ticket",
+      "takePlaceAt": "The session will take place at",
+      "yourCertificate": "Your certificate"
     },
     "profile": {
       "change": "Change",
@@ -966,6 +969,8 @@
     "billing": "Billing",
     "bitcoinWhitepaper": "Bitcoin Whitepaper",
     "book": "Book",
+    "booked": "Booked",
+    "bookings": "Bookings",
     "books": "Books",
     "builder": "Builder",
     "builders": "Builders",
@@ -979,6 +984,7 @@
     "course": "Course",
     "courseId": "Course ID",
     "courses": "Courses",
+    "credentials": "Credentials",
     "date": "Date",
     "dashboard": "Dashboard",
     "description": "Description",
@@ -994,6 +1000,7 @@
     "email": "Email",
     "events": "Events",
     "exchanges": "Exchanges",
+    "failed": "Failed",
     "followUs": "Follow us",
     "free": "Free",
     "glossary": "Glossary",
@@ -1001,7 +1008,9 @@
     "helpUs": "Help us",
     "home": "Home",
     "hours": "hours",
+    "id": "ID",
     "inPerson": "In-person",
+    "inReview": "In review",
     "intermediate": "Intermediate",
     "interview": "Interview",
     "invoice": "Invoice",
@@ -1041,6 +1050,7 @@
     "ourStory": "Our story",
     "paid": "Paid",
     "part": "Part",
+    "passed": "Passed",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "price": "Price",
@@ -1059,6 +1069,7 @@
     "sponsorUs": "Sponsor Us",
     "sponsoringAndContributors": "Sponsoring & contributors",
     "start": "Start",
+    "status": "Status",
     "students": "Students",
     "supportUs": "Support us",
     "teachers": "Teachers",
@@ -1067,6 +1078,7 @@
     "tickets": "Tickets",
     "time": "Time",
     "to": "to",
+    "total": "Total",
     "toolkits": "Toolkits",
     "topics": "Topics",
     "tutorial": "Tutorial",

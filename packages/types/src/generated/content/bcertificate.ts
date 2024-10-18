@@ -36,4 +36,5 @@ export interface JoinedBCertificateResults {
     category: string;
     score: number;
   }[];
+  score?: number | undefined;
 }

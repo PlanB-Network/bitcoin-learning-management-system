@@ -84,7 +84,7 @@ export const CoursesProgressList = ({
           ? t('dashboard.myCourses.completedCoursesTitle')
           : t('dashboard.myCourses.inprogressCoursesTitle')}
       </h2>
-      <h2 className="desktop-typo1 md:font-medium md:leading-relaxed md:font-poppins text-[rgba(5,10,20,0.75)]">
+      <h2 className="desktop-typo1 md:font-medium md:leading-relaxed md:font-poppins text-newBlack-4">
         {completed
           ? t('dashboard.myCourses.completedCoursesDescription')
           : t('dashboard.myCourses.inprogressCoursesDescription')}

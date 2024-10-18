@@ -14,7 +14,7 @@ export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
   const [pathname, setPathname] = useState('');
 
   const dashboardPath = '/dashboard/courses';
-  const bCertificatePath = '/dashboard/bcertificate';
+  const credentialsPath = '/dashboard/credentials';
   const bookingsPath = '/dashboard/bookings';
   const calendarPath = '/dashboard/calendar';
   const courseDetailPath = '/dashboard/course';
@@ -49,16 +49,16 @@ export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
       </Link>
       <Link to={bookingsPath}>
         <MenuItem
-          text={t('dashboard.bookings')}
+          text={t('words.bookings')}
           icon={<IoTicketOutline size={18} />}
           active={pathname === bookingsPath}
         />
       </Link>
-      <Link to={bCertificatePath}>
+      <Link to={credentialsPath}>
         <MenuItem
-          text={t('words.bCertificate')}
+          text={t('words.credentials')}
           icon={<BsMortarboard size={18} />}
-          active={pathname === bCertificatePath}
+          active={pathname === credentialsPath}
         />
       </Link>
       <Link to={profilePath}>
@@ -68,15 +68,6 @@ export const MenuMobile = ({ location }: { location: ParsedLocation<any> }) => {
           active={pathname === profilePath}
         />
       </Link>
-      {/* <MenuItem
-        text={t('dashboard.logout')}
-        icon={<LuLogOut size={28} />}
-        onClick={async () => {
-          await logout();
-          await navigate({ to: '/' });
-          window.location.reload();
-        }}
-      /> */}
     </div>
   );
 };
