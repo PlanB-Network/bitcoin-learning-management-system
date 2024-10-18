@@ -143,3 +143,5 @@ export function formatFullDateWithDay(date: Date, timezone?: string): string {
 
   return new Intl.DateTimeFormat('en-US', options).format(date);
 }
+
+export const oneDayInMs = 24 * 60 * 60 * 1000;
