@@ -276,6 +276,7 @@ const baseConfig: Config = {
         'search-word-md': '0px 0px 51.676px 8.515px rgba(255,92,0,0.25)',
         'filter-bar': '0px 0px 50px 8px rgba(255,92,0,0.50)',
         'tabs-sm': '0px 2px 2px 0px rgba(0, 0, 0, 0.25);',
+        lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);',
       },
       letterSpacing: {
         '015px': '0.15px',

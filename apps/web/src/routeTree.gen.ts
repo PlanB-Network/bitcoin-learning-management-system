@@ -20,10 +20,10 @@ import { Route as ContentResourcesIndexImport } from './routes/_content/resource
 import { Route as ContentEventsIndexImport } from './routes/_content/events/index';
 import { Route as ContentCoursesIndexImport } from './routes/_content/courses/index';
 import { Route as DashboardDashboardProfileImport } from './routes/dashboard/_dashboard/profile';
+import { Route as DashboardDashboardCredentialsImport } from './routes/dashboard/_dashboard/credentials';
 import { Route as DashboardDashboardCoursesImport } from './routes/dashboard/_dashboard/courses';
 import { Route as DashboardDashboardCalendarImport } from './routes/dashboard/_dashboard/calendar';
 import { Route as DashboardDashboardBookingsImport } from './routes/dashboard/_dashboard/bookings';
-import { Route as DashboardDashboardBcertificateImport } from './routes/dashboard/_dashboard/bcertificate';
 import { Route as DashboardDashboardAdministrationImport } from './routes/dashboard/_dashboard/administration';
 import { Route as ContentTutorialsCategoryImport } from './routes/_content/tutorials/$category';
 import { Route as ContentEventsEventIdImport } from './routes/_content/events/$eventId';
@@ -110,6 +110,12 @@ const DashboardDashboardProfileRoute = DashboardDashboardProfileImport.update({
   getParentRoute: () => DashboardDashboardRoute,
 } as any);
 
+const DashboardDashboardCredentialsRoute =
+  DashboardDashboardCredentialsImport.update({
+    path: '/credentials',
+    getParentRoute: () => DashboardDashboardRoute,
+  } as any);
+
 const DashboardDashboardCoursesRoute = DashboardDashboardCoursesImport.update({
   path: '/courses',
   getParentRoute: () => DashboardDashboardRoute,
@@ -128,12 +134,6 @@ const DashboardDashboardBookingsRoute = DashboardDashboardBookingsImport.update(
     getParentRoute: () => DashboardDashboardRoute,
   } as any,
 );
-
-const DashboardDashboardBcertificateRoute =
-  DashboardDashboardBcertificateImport.update({
-    path: '/bcertificate',
-    getParentRoute: () => DashboardDashboardRoute,
-  } as any);
 
 const DashboardDashboardAdministrationRoute =
   DashboardDashboardAdministrationImport.update({
@@ -458,13 +458,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDashboardAdministrationImport;
       parentRoute: typeof DashboardDashboardImport;
     };
-    '/dashboard/_dashboard/bcertificate': {
-      id: '/dashboard/_dashboard/bcertificate';
-      path: '/bcertificate';
-      fullPath: '/dashboard/bcertificate';
-      preLoaderRoute: typeof DashboardDashboardBcertificateImport;
-      parentRoute: typeof DashboardDashboardImport;
-    };
     '/dashboard/_dashboard/bookings': {
       id: '/dashboard/_dashboard/bookings';
       path: '/bookings';
@@ -484,6 +477,13 @@ declare module '@tanstack/react-router' {
       path: '/courses';
       fullPath: '/dashboard/courses';
       preLoaderRoute: typeof DashboardDashboardCoursesImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
+    '/dashboard/_dashboard/credentials': {
+      id: '/dashboard/_dashboard/credentials';
+      path: '/credentials';
+      fullPath: '/dashboard/credentials';
+      preLoaderRoute: typeof DashboardDashboardCredentialsImport;
       parentRoute: typeof DashboardDashboardImport;
     };
     '/dashboard/_dashboard/profile': {
@@ -731,10 +731,10 @@ declare module '@tanstack/react-router' {
 
 interface DashboardDashboardRouteChildren {
   DashboardDashboardAdministrationRoute: typeof DashboardDashboardAdministrationRoute;
-  DashboardDashboardBcertificateRoute: typeof DashboardDashboardBcertificateRoute;
   DashboardDashboardBookingsRoute: typeof DashboardDashboardBookingsRoute;
   DashboardDashboardCalendarRoute: typeof DashboardDashboardCalendarRoute;
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
+  DashboardDashboardCredentialsRoute: typeof DashboardDashboardCredentialsRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
   DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
   DashboardDashboardProfessorProfileRoute: typeof DashboardDashboardProfessorProfileRoute;
@@ -742,10 +742,10 @@ interface DashboardDashboardRouteChildren {
 
 const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardAdministrationRoute: DashboardDashboardAdministrationRoute,
-  DashboardDashboardBcertificateRoute: DashboardDashboardBcertificateRoute,
   DashboardDashboardBookingsRoute: DashboardDashboardBookingsRoute,
   DashboardDashboardCalendarRoute: DashboardDashboardCalendarRoute,
   DashboardDashboardCoursesRoute: DashboardDashboardCoursesRoute,
+  DashboardDashboardCredentialsRoute: DashboardDashboardCredentialsRoute,
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
   DashboardDashboardProfessorCoursesRoute:
     DashboardDashboardProfessorCoursesRoute,
@@ -831,10 +831,10 @@ export interface FileRoutesByFullPath {
   '/events/$eventId': typeof ContentEventsEventIdRoute;
   '/tutorials/$category': typeof ContentTutorialsCategoryRouteWithChildren;
   '/dashboard/administration': typeof DashboardDashboardAdministrationRoute;
-  '/dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
   '/dashboard/bookings': typeof DashboardDashboardBookingsRoute;
   '/dashboard/calendar': typeof DashboardDashboardCalendarRoute;
   '/dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/credentials': typeof DashboardDashboardCredentialsRoute;
   '/dashboard/profile': typeof DashboardDashboardProfileRoute;
   '/courses': typeof ContentCoursesIndexRoute;
   '/events': typeof ContentEventsIndexRoute;
@@ -882,10 +882,10 @@ export interface FileRoutesByTo {
   '/under-construction': typeof ContentMiscUnderConstructionRoute;
   '/events/$eventId': typeof ContentEventsEventIdRoute;
   '/dashboard/administration': typeof DashboardDashboardAdministrationRoute;
-  '/dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
   '/dashboard/bookings': typeof DashboardDashboardBookingsRoute;
   '/dashboard/calendar': typeof DashboardDashboardCalendarRoute;
   '/dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/credentials': typeof DashboardDashboardCredentialsRoute;
   '/dashboard/profile': typeof DashboardDashboardProfileRoute;
   '/courses': typeof ContentCoursesIndexRoute;
   '/events': typeof ContentEventsIndexRoute;
@@ -936,10 +936,10 @@ export interface FileRoutesById {
   '/_content/events/$eventId': typeof ContentEventsEventIdRoute;
   '/_content/tutorials/$category': typeof ContentTutorialsCategoryRouteWithChildren;
   '/dashboard/_dashboard/administration': typeof DashboardDashboardAdministrationRoute;
-  '/dashboard/_dashboard/bcertificate': typeof DashboardDashboardBcertificateRoute;
   '/dashboard/_dashboard/bookings': typeof DashboardDashboardBookingsRoute;
   '/dashboard/_dashboard/calendar': typeof DashboardDashboardCalendarRoute;
   '/dashboard/_dashboard/courses': typeof DashboardDashboardCoursesRoute;
+  '/dashboard/_dashboard/credentials': typeof DashboardDashboardCredentialsRoute;
   '/dashboard/_dashboard/profile': typeof DashboardDashboardProfileRoute;
   '/_content/courses/': typeof ContentCoursesIndexRoute;
   '/_content/events/': typeof ContentEventsIndexRoute;
@@ -991,10 +991,10 @@ export interface FileRouteTypes {
     | '/events/$eventId'
     | '/tutorials/$category'
     | '/dashboard/administration'
-    | '/dashboard/bcertificate'
     | '/dashboard/bookings'
     | '/dashboard/calendar'
     | '/dashboard/courses'
+    | '/dashboard/credentials'
     | '/dashboard/profile'
     | '/courses'
     | '/events'
@@ -1041,10 +1041,10 @@ export interface FileRouteTypes {
     | '/under-construction'
     | '/events/$eventId'
     | '/dashboard/administration'
-    | '/dashboard/bcertificate'
     | '/dashboard/bookings'
     | '/dashboard/calendar'
     | '/dashboard/courses'
+    | '/dashboard/credentials'
     | '/dashboard/profile'
     | '/courses'
     | '/events'
@@ -1093,10 +1093,10 @@ export interface FileRouteTypes {
     | '/_content/events/$eventId'
     | '/_content/tutorials/$category'
     | '/dashboard/_dashboard/administration'
-    | '/dashboard/_dashboard/bcertificate'
     | '/dashboard/_dashboard/bookings'
     | '/dashboard/_dashboard/calendar'
     | '/dashboard/_dashboard/courses'
+    | '/dashboard/_dashboard/credentials'
     | '/dashboard/_dashboard/profile'
     | '/_content/courses/'
     | '/_content/events/'
@@ -1286,10 +1286,10 @@ export const routeTree = rootRoute
       "parent": "/dashboard",
       "children": [
         "/dashboard/_dashboard/administration",
-        "/dashboard/_dashboard/bcertificate",
         "/dashboard/_dashboard/bookings",
         "/dashboard/_dashboard/calendar",
         "/dashboard/_dashboard/courses",
+        "/dashboard/_dashboard/credentials",
         "/dashboard/_dashboard/profile",
         "/dashboard/_dashboard/professor/courses",
         "/dashboard/_dashboard/professor/profile"
@@ -1334,10 +1334,6 @@ export const routeTree = rootRoute
       "filePath": "dashboard/_dashboard/administration.tsx",
       "parent": "/dashboard/_dashboard"
     },
-    "/dashboard/_dashboard/bcertificate": {
-      "filePath": "dashboard/_dashboard/bcertificate.tsx",
-      "parent": "/dashboard/_dashboard"
-    },
     "/dashboard/_dashboard/bookings": {
       "filePath": "dashboard/_dashboard/bookings.tsx",
       "parent": "/dashboard/_dashboard"
@@ -1348,6 +1344,10 @@ export const routeTree = rootRoute
     },
     "/dashboard/_dashboard/courses": {
       "filePath": "dashboard/_dashboard/courses.tsx",
+      "parent": "/dashboard/_dashboard"
+    },
+    "/dashboard/_dashboard/credentials": {
+      "filePath": "dashboard/_dashboard/credentials.tsx",
       "parent": "/dashboard/_dashboard"
     },
     "/dashboard/_dashboard/profile": {

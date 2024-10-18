@@ -60,7 +60,7 @@ const LoggedMenu = ({ onClickLogin }: LoggedMenuProps) => {
       icon: <FaRegCalendarCheck size={24} />,
     },
     {
-      buttonText: t('dashboard.bookings'),
+      buttonText: t('words.bookings'),
       link: '/dashboard/bookings',
       icon: <IoTicketOutline size={24} />,
     },
