@@ -7,11 +7,15 @@ import { getProgressQuery } from '../queries/get-progress.js';
 
 interface Options {
   uid: string;
+  courseId?: string;
 }
 
 export const createGetProgress = ({ postgres }: Dependencies) => {
-  return async ({ uid }: Options): Promise<CourseProgressExtended[]> => {
-    const progress = await postgres.exec(getProgressQuery(uid));
+  return async ({
+    uid,
+    courseId,
+  }: Options): Promise<CourseProgressExtended[]> => {
+    const progress = await postgres.exec(getProgressQuery(uid, courseId));
     const completedChapters = await postgres.exec(
       getCompletedChaptersQuery(uid),
     );
@@ -46,6 +50,8 @@ export const createGetProgress = ({ postgres }: Dependencies) => {
 
       return {
         ...course,
+        progressPercentage:
+          course.progressPercentage > 100 ? 100 : course.progressPercentage,
         chapters,
         nextChapter,
         lastCompletedChapter,

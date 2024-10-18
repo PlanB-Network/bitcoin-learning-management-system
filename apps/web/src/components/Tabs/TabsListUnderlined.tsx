@@ -42,7 +42,7 @@ export const TabsListUnderlined: React.FC<TabsListUnderlinedProps> = ({
 }) => {
   return (
     <TabsList
-      className="flex overflow-x-scroll no-scrollbar max-w-full gap-8"
+      className="flex overflow-x-scroll no-scrollbar max-w-full gap-4 lg:gap-8"
       removeClasses={true}
       {...props}
     >

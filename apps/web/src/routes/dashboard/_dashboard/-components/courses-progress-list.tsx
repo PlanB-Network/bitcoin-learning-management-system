@@ -17,7 +17,7 @@ interface ProgressBarProps {
   courseTotalChapters: number;
 }
 
-const ProgressBar = ({
+export const ProgressBar = ({
   courseCompletedChapters,
   courseTotalChapters,
 }: ProgressBarProps) => {

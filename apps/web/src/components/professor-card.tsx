@@ -167,6 +167,7 @@ export const ProfessorCardReduced = ({ professor }: ProfessorCardProps) => {
     <div className="rounded-[20px] p-2 border-2 border-newBlack-1 max-md:mx-auto h-fit">
       <Link
         to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+        target="_blank"
         // eslint-disable-next-line tailwindcss/no-contradicting-classname
         className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]"
       >

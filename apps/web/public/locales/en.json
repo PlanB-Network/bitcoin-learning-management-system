@@ -431,7 +431,8 @@
       "inprogressCoursesDescription": "Here you can check your progress in the courses you have started.",
       "resumeLesson": "Resume",
       "seeProgress": "to see your progress here.",
-      "startCourse": "Start or complete a course"
+      "startCourse": "Start or complete a course",
+      "whereYouAre": "Let's see where you're at !"
     },
     "credentials": {
       "bCertificate": "₿ Certificate",
@@ -1068,6 +1069,7 @@
     "price": "Price",
     "professor": "Professor",
     "professors": "Professors",
+    "progress": "Progress",
     "publicationDate": "Publication date:",
     "purchase": "Purchase",
     "register": "Register",
@@ -1084,6 +1086,7 @@
     "status": "Status",
     "students": "Students",
     "supportUs": "Support us",
+    "teacher": "Teacher",
     "teachers": "Teachers",
     "termsAndConditions": "Terms and conditions",
     "ticket": "Ticket",
