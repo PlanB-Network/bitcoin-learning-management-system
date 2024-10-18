@@ -6,8 +6,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
 
   if (timestampService) {
-    ctx.crons.addTask('1m', () => timestampService.timestampAllExams());
-    ctx.crons.addTask('1m', () => timestampService.upgradeAllTimeStamps());
-    ctx.crons.addTask('1m', () => timestampService.generateAllCertificates());
+    ctx.crons.addTask('5m', () => timestampService.timestampAllExams());
+    ctx.crons.addTask('5m', () => timestampService.upgradeAllTimeStamps());
+    ctx.crons.addTask('5m', () => timestampService.generateAllCertificates());
   }
 };

@@ -51,6 +51,8 @@ export const production = getenv('NODE_ENV') === 'production';
  */
 export const domain = getenv('DOMAIN', 'localhost:8181');
 
+export const docker = getenv('DOCKER', false);
+
 /**
  * Real application domain (without trailing slash)
  */
@@ -103,7 +105,7 @@ export const session: SessionConfig = {
 const rpcUrl = getenv('OTS_RPC_URL', null);
 const rpcUser = getenv('OTS_RPC_USER', null);
 const rpcPassword = getenv('OTS_RPC_PASSWORD', null);
-const pgpKeyPath = getenv('OTS_PGP_KEY_PATH', null);
+const pgpKeyPath = docker ? '/tmp/key.asc' : getenv('OTS_PGP_KEY_PATH', null);
 export const opentimestamps: OpenTimestampsConfig = {
   armoredKey: pgpKeyPath && fs.readFileSync(pgpKeyPath, 'utf8'),
   passphrase: getenv('OTS_PGP_KEY_PASSPHRASE', null),
