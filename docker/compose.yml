@@ -48,6 +48,7 @@ services:
     volumes:
       - ./data/cdn:$CDN_PATH
       - ./data/sync:$SYNC_PATH
+      - ./key.asc:/tmp/key.asc:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-api-${ENV}.rule=(Host(`${DOMAIN}`) && PathPrefix(`/api`))
