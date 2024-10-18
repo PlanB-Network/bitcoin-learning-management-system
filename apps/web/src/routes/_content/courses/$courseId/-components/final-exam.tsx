@@ -15,7 +15,7 @@ import {
   cn,
 } from '@blms/ui';
 
-import SandClockEmpty from '#src/assets/icons/sand_clock/sand_clock_empty.svg';
+import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';

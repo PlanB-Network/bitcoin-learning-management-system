@@ -46,6 +46,7 @@ import { Route as ContentMiscPublicCommunicationIndexImport } from './routes/_co
 import { Route as ContentMiscProfessorsIndexImport } from './routes/_content/_misc/professors/index';
 import { Route as DashboardDashboardProfessorProfileImport } from './routes/dashboard/_dashboard/professor/profile';
 import { Route as DashboardDashboardProfessorCoursesImport } from './routes/dashboard/_dashboard/professor/courses';
+import { Route as DashboardDashboardCourseCourseIdImport } from './routes/dashboard/_dashboard/course/$courseId';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastIdImport } from './routes/_content/resources/podcasts/$podcastId';
 import { Route as ContentResourcesGlossaryWordIdImport } from './routes/_content/resources/glossary/$wordId';
@@ -258,6 +259,12 @@ const DashboardDashboardProfessorProfileRoute =
 const DashboardDashboardProfessorCoursesRoute =
   DashboardDashboardProfessorCoursesImport.update({
     path: '/professor/courses',
+    getParentRoute: () => DashboardDashboardRoute,
+  } as any);
+
+const DashboardDashboardCourseCourseIdRoute =
+  DashboardDashboardCourseCourseIdImport.update({
+    path: '/course/$courseId',
     getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
@@ -598,6 +605,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryNameImport;
       parentRoute: typeof ContentTutorialsCategoryImport;
     };
+    '/dashboard/_dashboard/course/$courseId': {
+      id: '/dashboard/_dashboard/course/$courseId';
+      path: '/course/$courseId';
+      fullPath: '/dashboard/course/$courseId';
+      preLoaderRoute: typeof DashboardDashboardCourseCourseIdImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/dashboard/_dashboard/professor/courses': {
       id: '/dashboard/_dashboard/professor/courses';
       path: '/professor/courses';
@@ -736,6 +750,7 @@ interface DashboardDashboardRouteChildren {
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
   DashboardDashboardCredentialsRoute: typeof DashboardDashboardCredentialsRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
+  DashboardDashboardCourseCourseIdRoute: typeof DashboardDashboardCourseCourseIdRoute;
   DashboardDashboardProfessorCoursesRoute: typeof DashboardDashboardProfessorCoursesRoute;
   DashboardDashboardProfessorProfileRoute: typeof DashboardDashboardProfessorProfileRoute;
 }
@@ -747,6 +762,7 @@ const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardCoursesRoute: DashboardDashboardCoursesRoute,
   DashboardDashboardCredentialsRoute: DashboardDashboardCredentialsRoute,
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
+  DashboardDashboardCourseCourseIdRoute: DashboardDashboardCourseCourseIdRoute,
   DashboardDashboardProfessorCoursesRoute:
     DashboardDashboardProfessorCoursesRoute,
   DashboardDashboardProfessorProfileRoute:
@@ -851,6 +867,7 @@ export interface FileRoutesByFullPath {
   '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
   '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/professors': typeof ContentMiscProfessorsIndexRoute;
@@ -901,6 +918,7 @@ export interface FileRoutesByTo {
   '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
   '/dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
   '/dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/professors': typeof ContentMiscProfessorsIndexRoute;
@@ -956,6 +974,7 @@ export interface FileRoutesById {
   '/_content/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/_content/resources/podcasts/$podcastId': typeof ContentResourcesPodcastsPodcastIdRoute;
   '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/_dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
   '/dashboard/_dashboard/professor/courses': typeof DashboardDashboardProfessorCoursesRoute;
   '/dashboard/_dashboard/professor/profile': typeof DashboardDashboardProfessorProfileRoute;
   '/_content/_misc/professors/': typeof ContentMiscProfessorsIndexRoute;
@@ -1011,6 +1030,7 @@ export interface FileRouteTypes {
     | '/resources/glossary/$wordId'
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
+    | '/dashboard/course/$courseId'
     | '/dashboard/professor/courses'
     | '/dashboard/professor/profile'
     | '/professors'
@@ -1060,6 +1080,7 @@ export interface FileRouteTypes {
     | '/resources/glossary/$wordId'
     | '/resources/podcasts/$podcastId'
     | '/tutorials/$category/$name'
+    | '/dashboard/course/$courseId'
     | '/dashboard/professor/courses'
     | '/dashboard/professor/profile'
     | '/professors'
@@ -1113,6 +1134,7 @@ export interface FileRouteTypes {
     | '/_content/resources/glossary/$wordId'
     | '/_content/resources/podcasts/$podcastId'
     | '/_content/tutorials/$category/$name'
+    | '/dashboard/_dashboard/course/$courseId'
     | '/dashboard/_dashboard/professor/courses'
     | '/dashboard/_dashboard/professor/profile'
     | '/_content/_misc/professors/'
@@ -1291,6 +1313,7 @@ export const routeTree = rootRoute
         "/dashboard/_dashboard/courses",
         "/dashboard/_dashboard/credentials",
         "/dashboard/_dashboard/profile",
+        "/dashboard/_dashboard/course/$courseId",
         "/dashboard/_dashboard/professor/courses",
         "/dashboard/_dashboard/professor/profile"
       ]
@@ -1404,6 +1427,10 @@ export const routeTree = rootRoute
     "/_content/tutorials/$category/$name": {
       "filePath": "_content/tutorials/$category/$name.tsx",
       "parent": "/_content/tutorials/$category"
+    },
+    "/dashboard/_dashboard/course/$courseId": {
+      "filePath": "dashboard/_dashboard/course/$courseId.tsx",
+      "parent": "/dashboard/_dashboard"
     },
     "/dashboard/_dashboard/professor/courses": {
       "filePath": "dashboard/_dashboard/professor/courses.tsx",

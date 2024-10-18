@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { CourseProgress } from '@blms/types';
 
-export const getProgressQuery = (uid: string) => {
+export const getProgressQuery = (uid: string, courseId?: string) => {
   return sql<
     Array<
       CourseProgress & {
@@ -17,6 +17,7 @@ export const getProgressQuery = (uid: string) => {
         WHERE cc.course_id = cp.course_id
       ) as total_chapters
     FROM users.course_progress cp
-    WHERE uid = ${uid};
+    WHERE cp.uid = ${uid}
+    ${courseId ? sql`AND cp.course_id = ${courseId}` : sql``};
   `;
 };

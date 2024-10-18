@@ -78,7 +78,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ...classes,
           'flex flex-row items-center justify-center transition-colors duration-150',
           glowing ? 'shadow-md-button' : '',
-          'group',
+          'group/arrow',
         )}
         ref={ref}
         {...props}

@@ -478,7 +478,10 @@ function CourseDetails() {
           mode="light"
         />
         <section className="w-full max-w-[1016px] mx-auto flex flex-wrap gap-6 justify-center mt-2">
-          {reviews.feedbacks
+          {[...reviews.feedbacks]
+            .sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            )
             .slice(0, visibleFeedbacks)
             .map((feedback, index) => (
               <PublicComment

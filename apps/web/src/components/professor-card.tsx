@@ -6,14 +6,19 @@ import { useTranslation } from 'react-i18next';
 
 import type { FormattedProfessor } from '@blms/types';
 
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 import NostrIcon from '../assets/icons/nostr-primary.svg';
+import DonateLightning from '../assets/icons/tips-icon.svg';
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
 
+import { TipModal } from './tip-modal.tsx';
+
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;
+  hasDonateButton?: boolean;
 }
 
 const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
@@ -162,11 +167,21 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
   );
 };
 
-export const ProfessorCardReduced = ({ professor }: ProfessorCardProps) => {
+export const ProfessorCardReduced = ({
+  professor,
+  hasDonateButton,
+}: ProfessorCardProps) => {
+  const {
+    open: openTipModal,
+    isOpen: isTipModalOpen,
+    close: closeTipModal,
+  } = useDisclosure();
+
   return (
-    <div className="rounded-[20px] p-2 border-2 border-newBlack-1 max-md:mx-auto h-fit">
+    <div className="rounded-[20px] p-2 border-2 border-newBlack-1 max-md:mx-auto h-fit flex flex-col">
       <Link
         to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+        target="_blank"
         // eslint-disable-next-line tailwindcss/no-contradicting-classname
         className="rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]"
       >
@@ -215,6 +230,37 @@ export const ProfessorCardReduced = ({ professor }: ProfessorCardProps) => {
         {/* Background element */}
         <BackgroundAuthorCardElement reduced />
       </Link>
+
+      {hasDonateButton && (
+        <div className="flex items-center justify-center py-4 lg:py-[18px] px-[18px]">
+          <button
+            className="flex items-center overflow-hidden shrink-0"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              openTipModal();
+            }}
+          >
+            <img
+              src={DonateLightning}
+              alt={professor.name}
+              className="size-8"
+            />
+            <div className="subtitle-small-med-14px text-darkOrange-6 whitespace-pre-line">
+              {t('professors.tips.authorSupport')}
+            </div>
+          </button>
+        </div>
+      )}
+
+      {isTipModalOpen && (
+        <TipModal
+          isOpen={isTipModalOpen}
+          onClose={closeTipModal}
+          lightningAddress={professor.tips.lightningAddress as string}
+          userName={professor.name}
+        />
+      )}
     </div>
   );
 };

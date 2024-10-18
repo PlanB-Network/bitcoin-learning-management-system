@@ -15,6 +15,7 @@ import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
   createCompleteExamAttempt,
+  createGetAllUserCourseExamResults,
   createGetCourseReview,
   createGetLatestExamResults,
   createGetPayment,
@@ -60,12 +61,15 @@ const completeChapterProcedure = studentProcedure
   );
 
 const getProgressProcedure = studentProcedure
-  .input(z.void())
+  .input(z.object({ courseId: z.string() }).optional())
   .output<Parser<CourseProgressExtended[]>>(
     courseProgressExtendedSchema.array(),
   )
-  .query(({ ctx }) =>
-    createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
+  .query(({ ctx, input }) =>
+    createGetProgress(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input?.courseId || '',
+    }),
   );
 
 const startExamAttemptProcedure = studentProcedure
@@ -95,6 +99,16 @@ const getLatestExamResultsProcedure = studentProcedure
   .output<Parser<CourseExamResults>>(courseExamResultsSchema)
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    }),
+  );
+
+const getAllUserCourseExamResultsProcedure = studentProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<CourseExamResults[]>>(courseExamResultsSchema.array())
+  .query(({ ctx, input }) =>
+    createGetAllUserCourseExamResults(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
     }),
@@ -279,6 +293,7 @@ export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   completeExamAttempt: completeExamAttemptProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
+  getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getCourseReview: getCourseReviewProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getProgress: getProgressProcedure,

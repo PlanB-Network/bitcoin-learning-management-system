@@ -17,6 +17,7 @@ import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.js';
+import { trpc } from '#src/utils/trpc.ts';
 
 import { MenuItem } from './menu-item.tsx';
 
@@ -28,6 +29,20 @@ export const MenuDesktop = ({
 }) => {
   const { user, session } = useContext(AppContext);
   const [pathname, setPathname] = useState('');
+
+  const { data: courses } = trpc.user.courses.getProgress.useQuery(undefined, {
+    staleTime: 300_000, // 5 minutes
+  });
+
+  // TODO: filter only in progress courses
+  const inProgressCourses = courses
+    ?.filter((course) => course.progressPercentage)
+    .map((course) => {
+      return {
+        text: course.courseId.toLocaleUpperCase(),
+        to: `/dashboard/course/${course.courseId}`,
+      };
+    });
 
   const pictureUrl = getPictureUrl(user);
 
@@ -76,15 +91,18 @@ export const MenuDesktop = ({
         </p>
       </div>
       <div className="flex flex-col px-4 text-darkOrange-5 gap-1">
-        <Link to={coursesPath}>
-          <MenuItem
-            text={t('dashboard.courses')}
-            icon={<AiOutlineBook size={24} />}
-            active={
-              pathname.includes(coursesPath) || pathname.endsWith(dashboardPath)
-            }
-          />
-        </Link>
+        <MenuItem
+          text={t('dashboard.courses')}
+          icon={<AiOutlineBook size={24} />}
+          active={
+            pathname.includes(coursesPath) || pathname.endsWith(dashboardPath)
+          }
+          dropdown={[
+            ...(inProgressCourses ?? []),
+            // TODO: add completed courses
+            // { text: 'Completed', to: coursesPath },
+          ]}
+        />
         <Link to={calendarPath}>
           <MenuItem
             text={t('dashboard.calendar.calendar')}
