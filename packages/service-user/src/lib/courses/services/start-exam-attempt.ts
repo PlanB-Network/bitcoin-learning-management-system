@@ -20,7 +20,11 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
       .then((result) => result[0].id);
 
     await postgres.exec(
-      insertExamQuestionsQuery({ examId, courseId: options.courseId }),
+      insertExamQuestionsQuery({
+        examId,
+        courseId: options.courseId,
+        language: options.language,
+      }),
     );
 
     return postgres.exec(
