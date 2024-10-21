@@ -24,7 +24,7 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createGetAllUserCourseExamResults = ({
+export const createGetAllUserCourseExamsResults = ({
   postgres,
 }: Dependencies) => {
   return async (options: Options): Promise<CourseExamResults[]> => {

@@ -133,3 +133,13 @@ export interface CourseExamResults {
     }[];
   }[];
 }
+
+export interface CourseSuccededExam {
+  score: number | null;
+  finalized: boolean;
+  succeeded: boolean;
+  startedAt: Date;
+  finishedAt: Date | null;
+  courseId: string;
+  courseName: string;
+}

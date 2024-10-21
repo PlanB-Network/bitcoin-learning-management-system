@@ -23,8 +23,8 @@ const buttonVariants = cva(
         fakeDisabled: '!bg-darkOrange-1 !text-darkOrange-3',
       },
       size: {
-        xs: 'px-2 py-1.5 text-xs leading-[14px] !font-medium rounded-md',
-        s: 'px-2.5 py-1.5 text-base leading-[19px] !font-medium rounded-md',
+        xs: 'px-2 py-1 text-xs leading-[14px] !font-medium rounded-lg',
+        s: 'px-2.5 py-1.5 text-base leading-[19px] !font-medium rounded-lg',
         m: 'px-3.5 py-3 text-lg leading-[21px] !font-medium rounded-lg',
         l: 'px-[18px] py-[14px] text-xl leading-[24px] !font-medium rounded-2xl',
         xl: 'px-12 py-3 text-xl !font-medium rounded-2xl',

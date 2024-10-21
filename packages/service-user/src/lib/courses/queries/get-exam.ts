@@ -2,6 +2,7 @@ import { sql } from '@blms/database';
 import type {
   CourseExamAttempt,
   CourseExamResults,
+  CourseSuccededExam,
   PartialExamQuestion,
 } from '@blms/types';
 
@@ -110,11 +111,44 @@ export const getExamResultsQuery = ({ examId }: { examId: string }) => {
   `;
 };
 
+export const getAllUserSuccededExamsQuery = ({
+  courseId,
+  uid,
+  language,
+}: {
+  courseId?: string;
+  uid: string;
+  language?: string;
+}) => {
+  return sql<CourseSuccededExam[]>`
+    SELECT
+      ea.succeeded,
+      ea.finalized,
+      ea.score,
+      ea.started_at,
+      ea.finished_at,
+      ea.course_id,
+      cl.name as course_name
+    FROM
+      users.exam_questions eq
+    JOIN users.exam_attempts ea ON eq.exam_id = ea.id
+    JOIN content.courses c ON c.id = ea.course_id
+    JOIN content.courses_localized cl ON c.id = cl.course_id
+    WHERE ea.uid = ${uid}
+      AND ea.succeeded = true
+      AND ea.finalized = true
+      ${courseId ? sql`AND ea.course_id = ${courseId}` : sql``}
+      ${language ? sql`AND cl.language = ${language}` : sql``}
+    GROUP BY
+      ea.id, ea.score, ea.finalized, ea.succeeded, ea.started_at, ea.finished_at, cl.name;
+  `;
+};
+
 export const getAllUserCourseExamsResultsQuery = ({
   courseId,
   uid,
 }: {
-  courseId: string;
+  courseId?: string;
   uid: string;
 }) => {
   return sql<CourseExamResults[]>`
@@ -162,7 +196,7 @@ export const getAllUserCourseExamsResultsQuery = ({
     LEFT JOIN users.exam_answers uea ON eq.id = uea.question_id
     JOIN users.exam_attempts ea ON eq.exam_id = ea.id
     WHERE ea.uid = ${uid}
-    AND ea.course_id = ${courseId}
+     ${courseId ? sql`AND ea.course_id = ${courseId}` : sql``}
     AND ea.finalized = true
     AND ql.language = ea.language
     AND ccl.language = ea.language
