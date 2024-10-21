@@ -90,10 +90,12 @@ export const CourseDiplomas = () => {
                           <span className="font-medium">{`${exam.score}%`}</span>
                         </p>
 
-                        <Button className="gap-2.5" size={'xs'}>
-                          {t('words.view')}
-                          <HiOutlineMagnifyingGlass size={24} />
-                        </Button>
+                        <Link to={`/dashboard/course/${exam.courseId}`}>
+                          <Button className="gap-2.5" size={'xs'}>
+                            {t('words.view')}
+                            <HiOutlineMagnifyingGlass size={24} />
+                          </Button>
+                        </Link>
                       </p>
                       <p className=""></p>
                     </Card>
