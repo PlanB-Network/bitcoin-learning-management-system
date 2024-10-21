@@ -33,15 +33,17 @@ export const Blockquote = ({
   mode: 'light' | 'dark';
 }) => {
   const filteredChildren = Array.isArray(children)
-    ? children
-        .slice(1, -1)
-        .map((child) =>
-          child && child.props && child.props.node.tagName === 'p'
-            ? child.props.children
-            : child === '\n'
-              ? '\n\n'
-              : child,
-        )
+    ? children.slice(1, -1).map((child) => {
+        if (
+          child &&
+          child.props &&
+          child.props.node &&
+          child.props.node.tagName === 'p'
+        ) {
+          return child.props.children;
+        }
+        return child === '\n' ? '\n\n' : child;
+      })
     : children;
 
   return (
