@@ -73,7 +73,9 @@ const getPublicCourseReviewsProcedure = publicProcedure
       courseId: z.string(),
     }),
   )
-  .output<Parser<CourseReviewsExtended>>(courseReviewsExtendedSchema)
+  .output<Parser<CourseReviewsExtended | undefined>>(
+    courseReviewsExtendedSchema.optional(),
+  )
   .query(({ ctx, input }) => {
     return createGetPublicCourseReviews(ctx.dependencies)(input.courseId);
   });
