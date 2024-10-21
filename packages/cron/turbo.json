@@ -1,0 +1,16 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "check-types": {
+      "dependsOn": ["@blms/types#build-types"]
+    },
+    "build-types": {
+      "dependsOn": ["@blms/types#build-types"],
+      "outputs": ["dist/**"]
+    },
+    "build": {
+      "dependsOn": ["@blms/types#build"]
+    }
+  }
+}

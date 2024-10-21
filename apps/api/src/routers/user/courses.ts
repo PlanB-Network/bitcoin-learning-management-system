@@ -75,7 +75,7 @@ const getProgressProcedure = studentProcedure
 const startExamAttemptProcedure = studentProcedure
   .input(z.object({ courseId: z.string(), language: z.string() }))
   .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
-  .mutation(async ({ ctx, input }) =>
+  .mutation(({ ctx, input }) =>
     createStartExamAttempt(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,

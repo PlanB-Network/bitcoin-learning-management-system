@@ -1,8 +1,15 @@
+import fs from 'node:fs';
 import process from 'node:process';
 
 import type { PostgresClientConfig } from '@blms/database';
 import type { RedisClientConfig } from '@blms/redis';
-import type { EnvConfig, GitHubSyncConfig, SessionConfig } from '@blms/types';
+import type {
+  EnvConfig,
+  GitHubSyncConfig,
+  OpenTimestampsConfig,
+  S3Config,
+  SessionConfig,
+} from '@blms/types';
 
 function getenv<
   T,
@@ -16,7 +23,7 @@ function getenv<
   }
 
   // If the value is empty and a fallback is provided, log a warning
-  if (!value && fallback !== null) {
+  if (!value) {
     console.warn(
       `No value found for ${name}, defaulting to ${JSON.stringify(fallback)}`,
     );
@@ -43,6 +50,8 @@ export const production = getenv('NODE_ENV') === 'production';
  * Application domain (without protocol)
  */
 export const domain = getenv('DOMAIN', 'localhost:8181');
+
+export const docker = getenv('DOCKER', false);
 
 /**
  * Real application domain (without trailing slash)
@@ -91,4 +100,25 @@ export const session: SessionConfig = {
   maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
   secure: production,
   domain: production ? domain : undefined,
+};
+
+const rpcUrl = getenv('OTS_RPC_URL', null);
+const rpcUser = getenv('OTS_RPC_USER', null);
+const rpcPassword = getenv('OTS_RPC_PASSWORD', null);
+const pgpKeyPath = docker ? '/tmp/key.asc' : getenv('OTS_PGP_KEY_PATH', null);
+export const opentimestamps: OpenTimestampsConfig = {
+  armoredKey: pgpKeyPath && fs.readFileSync(pgpKeyPath, 'utf8'),
+  passphrase: getenv('OTS_PGP_KEY_PASSPHRASE', null),
+  rpc:
+    rpcUrl && rpcUser
+      ? { url: rpcUrl, user: rpcUser, password: rpcPassword }
+      : undefined,
+};
+
+export const s3: S3Config = {
+  endpoint: getenv('S3_ENDPOINT').trim(),
+  region: getenv('S3_REGION').trim(),
+  bucket: getenv('S3_BUCKET').trim(),
+  accessKey: getenv('S3_ACCESS_KEY').trim(),
+  secretKey: getenv('S3_SECRET_KEY').trim(),
 };

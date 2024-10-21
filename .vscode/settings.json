@@ -35,6 +35,7 @@
     }
   ],
   "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.classAttributes": [
@@ -55,9 +56,13 @@
     "bitcoiners",
     "blms",
     "bytea",
+    "esplora",
+    "fontkit",
     "getenv",
     "lnurl",
     "nostr",
+    "openpgp",
+    "opentimestamps",
     "paynym",
     "planb",
     "psql",
@@ -70,6 +75,7 @@
     "traefik",
     "trpc",
     "tsbuildinfo",
+    "txid",
     "webp",
     "zoomable"
   ]

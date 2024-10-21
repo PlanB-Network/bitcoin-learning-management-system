@@ -1,0 +1,15 @@
+Certificate of Completion of Online Course on Plan ₿ Network
+
+This certificate is conferred upon successful completion of the specified online course, attesting to the candidate's proficiency in the subject matter. The following details verify this accomplishment:
+
+Student username: {userName}
+Full name: {fullName}
+
+Course name: {courseName}
+Course ID: {courseId}
+Level: {level}
+Goal: {goal}
+Duration: {duration}
+Last course hash commit: {lastCommitHash}
+Date of completion: {date}
+Last block hash: {lastBlockHash}

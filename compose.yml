@@ -83,6 +83,7 @@ services:
       - ./packages/service-user/src:/home/node/packages/service-user/src
       - cdn:$CDN_PATH
       - sync:${SYNC_PATH:-/tmp/sync}
+      - ${OTS_PGP_KEY_PATH:-./key.asc}:/tmp/key.asc:ro
     depends_on:
       - postgres
       - redis

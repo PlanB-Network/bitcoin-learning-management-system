@@ -1,9 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "./src/**/*.ts",
-    "./src/lib/events/services/pdf/**/**/*.{pdf,txt,ttf,otf}"
-  ],
+  "include": ["./src/**/*.ts", "types.d.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
