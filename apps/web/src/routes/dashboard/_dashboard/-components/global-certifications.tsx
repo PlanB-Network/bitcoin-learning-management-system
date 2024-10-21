@@ -1,12 +1,13 @@
-import { useNavigate } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { useContext, useEffect, useState } from 'react';
 import { FiLoader } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
+import { IoReload } from 'react-icons/io5';
 
 import type { JoinedBCertificateResults, Ticket } from '@blms/types';
-import { cn } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 
 import DummyBCert from '#src/assets/about/dummy-bcert.webp';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
@@ -149,6 +150,26 @@ const ExamResult = ({
   );
   const isMobile = useSmaller('md');
 
+  function RetakeExam() {
+    const examLink = `/b-certificate`;
+
+    return (
+      <Link
+        to={examLink}
+        className="block md:float-right max-md:mx-auto m-4 w-fit"
+      >
+        <Button
+          className="w-fit flex gap-2.5"
+          size={isMobile ? 's' : 'm'}
+          variant="primary"
+        >
+          {t('dashboard.credentials.retakeExam')}
+          <IoReload size={isMobile ? 18 : 24} />
+        </Button>
+      </Link>
+    );
+  }
+
   return (
     <React.Fragment>
       <tr
@@ -262,9 +283,7 @@ const ExamResult = ({
                         />
                       </div>
                     </div>
-                    <ButtonWithArrow className="md:float-right max-md:mx-auto m-4">
-                      {t('dashboard.credentials.retakeExam')}
-                    </ButtonWithArrow>
+                    <RetakeExam />
                   </td>
                 </>
               ) : (
@@ -285,9 +304,7 @@ const ExamResult = ({
                         />
                       </div>
                     </div>
-                    <ButtonWithArrow className="md:float-right max-md:mx-auto m-4">
-                      {t('dashboard.credentials.retakeExam')}
-                    </ButtonWithArrow>
+                    <RetakeExam />
                   </td>
                 </>
               )}
@@ -342,6 +359,7 @@ const ExamTicket = ({
       </ButtonWithArrow>
     );
   }
+
   return (
     <>
       <tr
