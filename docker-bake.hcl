@@ -2,7 +2,7 @@
 target "docker-metadata-action" {}
 
 variable "NODE_VERSION" {
-  default = "22.10.0-slim"
+  default = "22-alpine"
 }
 
 target "api" {
