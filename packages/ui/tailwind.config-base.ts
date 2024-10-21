@@ -188,6 +188,20 @@ const baseConfig: Config = {
       grayblue: {
         300: '#B6BFD3',
       },
+
+      tertiary: {
+        1: '#F1EEEC',
+        2: '#E3DDD9',
+        3: '#D6CCC6',
+        4: '#C8BCB4',
+        5: '#BBABA2',
+        6: '#A18C7F',
+        7: '#876D5D',
+        8: '#695142',
+        9: '#49372C',
+        10: '#2B1F18',
+        11: '#100A07',
+      },
     },
     extend: {
       colors: {

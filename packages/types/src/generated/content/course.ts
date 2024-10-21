@@ -24,6 +24,8 @@ export interface Course {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  numberOfRating: number;
+  sumOfAllRating: number;
 }
 
 export interface CourseLocalized {
@@ -141,6 +143,8 @@ export interface MinimalJoinedCourse {
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
   language: string;
   name: string;
   goal: string;
@@ -148,6 +152,7 @@ export interface MinimalJoinedCourse {
   rawDescription: string;
   level: Level;
   chaptersCount?: number | undefined;
+  averageRating: number;
 }
 
 export interface JoinedCourse {
@@ -169,6 +174,8 @@ export interface JoinedCourse {
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
   language: string;
   name: string;
   goal: string;
@@ -176,6 +183,7 @@ export interface JoinedCourse {
   rawDescription: string;
   level: Level;
   chaptersCount?: number | undefined;
+  averageRating: number;
   professors: FormattedProfessor[];
 }
 
@@ -198,6 +206,8 @@ export interface JoinedCourseWithProfessors {
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
   language: string;
   name: string;
   goal: string;
@@ -205,6 +215,7 @@ export interface JoinedCourseWithProfessors {
   rawDescription: string;
   level: Level;
   chaptersCount?: number | undefined;
+  averageRating: number;
   professors: FormattedProfessor[];
 }
 
@@ -227,6 +238,8 @@ export interface JoinedCourseWithAll {
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
   language: string;
   name: string;
   goal: string;
@@ -234,6 +247,7 @@ export interface JoinedCourseWithAll {
   rawDescription: string;
   level: Level;
   chaptersCount: number;
+  averageRating: number;
   professors: FormattedProfessor[];
   parts: {
     part?: number | undefined;
@@ -304,6 +318,8 @@ export interface CourseResponse {
   contact: string | null;
   lastUpdated: Date;
   lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
   language: string;
   name: string;
   goal: string;
@@ -311,6 +327,7 @@ export interface CourseResponse {
   rawDescription: string;
   level: Level;
   chaptersCount: number;
+  averageRating: number;
   professors: FormattedProfessor[];
   parts: PartWithChapters[];
   partsCount: number;

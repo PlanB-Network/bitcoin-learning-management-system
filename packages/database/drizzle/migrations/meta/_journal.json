@@ -239,6 +239,13 @@
       "when": 1729179810579,
       "tag": "0033_useful_doctor_spectrum",
       "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1729517692137,
+      "tag": "0034_glamorous_sumo",
+      "breakpoints": true
     }
   ]
 }
