@@ -1,0 +1,2 @@
+ALTER TABLE "content"."courses" ADD COLUMN "number_of_rating" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
+ALTER TABLE "content"."courses" ADD COLUMN "sum_of_all_rating" integer DEFAULT 0 NOT NULL;
