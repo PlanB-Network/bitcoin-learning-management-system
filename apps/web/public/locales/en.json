@@ -349,6 +349,7 @@
       "currentlyLoggedOut": "You are currently logged out. In order to give us feedback on the course, please <0>log in or register</0>.",
       "difficulty": "Difficulty",
       "displayOutOf": "displayed out of",
+      "edit": "Edit",
       "faithful": "True to objective?",
       "feedbackDescription": "Please rate your experience with the course below.\nThis feedback session is mandatory to have access to the final exam and to validate the course.\nNote that teachers will not have access to individual evaluations.",
       "feedbackSessionTitle": "Feedback session",
@@ -417,7 +418,9 @@
     },
     "course": {
       "completionDiploma": "Completion diploma",
-      "completionExamInfo": "Here you can find the information related to the completion exam at the end of this course."
+      "completionExamInfo": "Here you can find the information related to the completion exam at the end of this course.",
+      "feedbacks": "A chapter at the end of the course is dedicated to feedbacks. If you wish to give your feedback now, you can do it here.",
+      "ratingsAndFeedbacks": "Ratings & Feedbacks"
     },
     "courses": "Courses",
     "logout": "Log out",

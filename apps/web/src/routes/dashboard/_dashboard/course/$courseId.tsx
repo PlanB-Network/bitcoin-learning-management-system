@@ -29,6 +29,7 @@ import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx'
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseReview } from '#src/routes/_content/courses/$courseId/-components/course-review.tsx';
 import { AnswersReviewPanel } from '#src/routes/_content/courses/$courseId/-components/exam-results.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
@@ -87,9 +88,9 @@ function DashboardStudentCourse() {
   return (
     <>
       {isFetched && course && (
-        <div className="flex flex-col gap-4 lg:gap-8">
-          <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-            <TextTag size="large" className="uppercase w-fit max-lg:hidden">
+        <div className="flex flex-col gap-4 md:gap-8">
+          <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
+            <TextTag size="large" className="uppercase w-fit max-md:hidden">
               {addSpaceToCourseId(course.id)}
             </TextTag>
             <h3 className="display-small-32px">{course.name}</h3>
@@ -124,7 +125,9 @@ function DashboardStudentCourse() {
               />
             </TabsContent>
 
-            <TabsContent value="ratings">Under development</TabsContent>
+            <TabsContent value="ratings">
+              <CourseRatings courseId={course.id} />
+            </TabsContent>
           </Tabs>
         </div>
       )}
@@ -140,12 +143,12 @@ const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
   const isTablet = useSmaller('lg');
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-fit">
       {courseProgress &&
         courseProgress.length > 0 &&
         courseProgress[0].progressPercentage < 100 && (
           <>
-            <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 lg:mt-10">
+            <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 md:mt-10">
               {t('dashboard.myCourses.whereYouAre')}
             </span>
 
@@ -162,12 +165,12 @@ const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
         hideGithubLink
         className="self-start mt-7 md:mt-10 w-full"
       >
-        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 lg:mb-6">
+        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 md:mb-6">
           {t('courses.details.curriculum')}
         </h4>
       </CourseCurriculum>
 
-      <Divider className="my-6 lg:my-9" width="w-full" />
+      <Divider className="my-6 md:my-9" width="w-full" />
 
       <section className="flex flex-col md:gap-5">
         <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
@@ -262,7 +265,7 @@ const CourseExams = ({
   };
 
   return (
-    <div className="flex flex-col mt-4 lg:mt-10">
+    <div className="flex flex-col mt-4 md:mt-10 w-fit">
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.completionDiploma')}
       </h2>
@@ -427,5 +430,23 @@ const CourseExams = ({
         </div>
       )}
     </div>
+  );
+};
+
+const CourseRatings = ({ courseId }: { courseId: string }) => {
+  return (
+    <section className="flex flex-col mt-4 md:mt-10 w-full">
+      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+        {t('dashboard.course.ratingsAndFeedbacks')}
+      </h2>
+      <p className="desktop-typo-1 md:body-16px text-dashboardSectionText/75 mt-4">
+        {t('dashboard.course.feedbacks')}
+      </p>
+      <div className="w-full max-w-[796px] mt-5 md:mt-10">
+        <div className="w-full max-w-[534px] mx-auto">
+          <CourseReview courseId={courseId} />
+        </div>
+      </div>
+    </section>
   );
 };

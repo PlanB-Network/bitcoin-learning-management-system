@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router';
+import { Link, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
@@ -18,6 +18,8 @@ export const MenuItem = ({
   dropdown?: Array<{ text: string; to: string }>;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
 
   return (
     <button
@@ -47,12 +49,16 @@ export const MenuItem = ({
         )}
       </div>
       {dropdown && dropdown.length > 0 && isOpen && (
-        <div className="flex flex-col w-full pl-9">
+        <div className="flex flex-col w-full pl-9 gap-1">
           {dropdown.map((item, index) => (
             <Link
               key={index}
               to={item.to}
-              className="text-left px-2 py-1 hover:bg-white/20 lg:hover:bg-darkOrange-9 hover:text-white hover:font-medium w-full rounded-sm"
+              className={cn(
+                'text-left px-2 py-1 hover:bg-white/20 lg:hover:bg-darkOrange-9 hover:text-white hover:font-medium w-full rounded-sm',
+                location.pathname.includes(item.to) &&
+                  'bg-white/20 lg:bg-darkOrange-9 text-white font-medium',
+              )}
             >
               {item.text}
             </Link>

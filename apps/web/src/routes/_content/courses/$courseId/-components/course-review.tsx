@@ -4,7 +4,6 @@ import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
 import { z } from 'zod';
 
 import {
@@ -95,19 +94,19 @@ function FormSlider({
           </div>
         </div>
         <div className="relative mt-8">
-          <div className="flex flex-col text-[10px] md:text-sm font-medium text-newGray-1 text-center">
+          <div className="flex lg:flex-col max-lg:justify-between text-[10px] md:text-sm font-medium text-newGray-1 text-center">
             {stepNames[0] && (
-              <span className="absolute self-start -translate-x-1/2 max-sm:max-w-16">
+              <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/3 text-left">
                 {stepNames[0]}
               </span>
             )}
             {stepNames[1] && (
-              <span className="absolute self-center max-sm:max-w-16">
+              <span className="lg:absolute lg:self-center max-lg:w-1/3 text-center">
                 {stepNames[1]}
               </span>
             )}
             {stepNames[2] && (
-              <span className="absolute self-end translate-x-1/2 max-sm:max-w-16">
+              <span className="lg:absolute lg:self-end lg:translate-x-1/2 max-lg:w-1/3 text-right">
                 {stepNames[2]}
               </span>
             )}
@@ -158,10 +157,16 @@ function FormTextArea({
 
 export function CourseReview({
   chapter,
+  courseId,
   formDisabled = false,
+  showExplanation,
+  addMarginToForm,
 }: {
-  chapter: Chapter;
+  chapter?: Chapter;
+  courseId?: string;
   formDisabled?: boolean;
+  showExplanation?: boolean;
+  addMarginToForm?: boolean;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -169,10 +174,10 @@ export function CourseReview({
   const { data: previousCourseReview, isFetched: isReviewFetched } =
     trpc.user.courses.getCourseReview.useQuery(
       {
-        courseId: chapter.courseId,
+        courseId: chapter?.courseId || courseId || '',
       },
       {
-        enabled: !formDisabled,
+        enabled: !formDisabled && !!(chapter || courseId),
       },
     );
 
@@ -195,9 +200,7 @@ export function CourseReview({
     quality: z.number().min(-5).max(5),
     faithful: z.number().min(-5).max(5),
     recommand: z.number().min(-5).max(5),
-    publicComment: z
-      .string()
-      .min(1, { message: 'Public comment is mandatory' }),
+    publicComment: z.string(),
     teacherComment: z.string(),
     adminComment: z.string(),
   });
@@ -235,14 +238,24 @@ export function CourseReview({
   }, [form, previousCourseReview]);
 
   const isLastChapter =
+    chapter &&
     chapter.chapterIndex === chapter.part.chapters.length &&
     chapter.part.partIndex === chapter.course.parts.length;
 
   async function onSubmit() {
+    if (!chapter && !courseId) {
+      return;
+    }
+
     await saveCourseReview.mutateAsync({
       ...form.getValues(),
-      courseId: chapter.courseId,
+      courseId: chapter?.courseId || courseId || '',
     });
+
+    if (!chapter) {
+      return;
+    }
+
     await completeChapterMutation.mutateAsync({
       courseId: chapter.courseId,
       chapterId: chapter.chapterId,
@@ -262,24 +275,31 @@ export function CourseReview({
   }
 
   return (
-    <div className="flex flex-col mt-16">
+    <div className={cn('flex flex-col', addMarginToForm && 'mt-16')}>
       {isReviewFetched || formDisabled ? (
         <>
-          <h1
-            className={cn(
-              'text-center text-sm md:text-2xl mb-4',
-              !formDisabled && 'text-newOrange-1',
-            )}
-          >
-            {t('courses.review.feedbackSessionTitle')}
-          </h1>
-          <div className="text-center gap-1 leading-7 whitespace-pre-line">
-            <p>{t('courses.review.feedbackDescription')}</p>
-          </div>
+          {showExplanation && (
+            <>
+              <h1
+                className={cn(
+                  'text-center text-sm md:text-2xl mb-4',
+                  !formDisabled && 'text-newOrange-1',
+                )}
+              >
+                {t('courses.review.feedbackSessionTitle')}
+              </h1>
+              <div className="text-center gap-1 leading-7 whitespace-pre-line">
+                <p>{t('courses.review.feedbackDescription')}</p>
+              </div>
+            </>
+          )}
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col mt-12 mx-4 md:mx-32 gap-5"
+              className={cn(
+                'flex flex-col gap-5',
+                addMarginToForm && 'mt-12 mx-4 md:mx-32',
+              )}
               onClick={() => {
                 formDisabled && openAuthModal();
               }}
@@ -412,13 +432,9 @@ export function CourseReview({
                 size={window.innerWidth >= 768 ? 'l' : 'm'}
                 disabled={formDisabled}
               >
-                {t('courses.review.submitReview')}
-                <FaArrowRightLong
-                  className={cn(
-                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                    'group-hover:ml-3',
-                  )}
-                />
+                {previousCourseReview
+                  ? t('courses.review.edit')
+                  : t('courses.review.submitReview')}
               </Button>
             </form>
           </Form>

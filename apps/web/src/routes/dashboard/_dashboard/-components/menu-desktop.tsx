@@ -16,6 +16,7 @@ import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
+import { addSpaceToCourseId } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -39,7 +40,7 @@ export const MenuDesktop = ({
     ?.filter((course) => course.progressPercentage)
     .map((course) => {
       return {
-        text: course.courseId.toLocaleUpperCase(),
+        text: addSpaceToCourseId(course.courseId.toLocaleUpperCase()),
         to: `/dashboard/course/${course.courseId}`,
       };
     });
