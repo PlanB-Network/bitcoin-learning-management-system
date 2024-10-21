@@ -102,3 +102,14 @@ export const courseExamResultsSchema = courseExamAttemptSchema
       ),
     }),
   );
+
+export const courseSuccededExamSchema = courseExamAttemptSchema
+  .pick({
+    score: true,
+    finalized: true,
+    succeeded: true,
+    startedAt: true,
+    finishedAt: true,
+    courseId: true,
+  })
+  .merge(z.object({ courseName: z.string() }));

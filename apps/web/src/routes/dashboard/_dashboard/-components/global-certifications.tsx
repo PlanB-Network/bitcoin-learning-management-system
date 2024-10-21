@@ -9,6 +9,7 @@ import type { JoinedBCertificateResults, Ticket } from '@blms/types';
 import { cn } from '@blms/ui';
 
 import DummyBCert from '#src/assets/about/dummy-bcert.webp';
+import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.js';
@@ -412,8 +413,16 @@ const ExamTicket = ({
                       <p className="font-medium text-center px-6">
                         {t('dashboard.credentials.beingGraded')}
                       </p>
-                      {/* // TODO Add rotating hourglass */}
-                      <img src={DummyBCert} alt="Dummy b-cert"></img>
+                      <img
+                        className="mt-4 h-10"
+                        src={SandClockGif}
+                        alt="Sandclock"
+                      />
+                      <img
+                        className="mt-4"
+                        src={DummyBCert}
+                        alt="Dummy b-cert"
+                      ></img>
                     </div>
                   </>
                 )}
@@ -446,7 +455,7 @@ const ExamTicket = ({
                     <p className="font-medium text-center">
                       {t('dashboard.credentials.beingGraded')}
                     </p>
-                    {/* // TODO Add rotating hourglass */}
+                    <img className="mt-6" src={SandClockGif} alt="Sandclock" />
                   </div>
                 )}
               </td>
