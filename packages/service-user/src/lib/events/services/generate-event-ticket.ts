@@ -67,7 +67,7 @@ export const generateEventTicket = async ({
 
     doc.fontSize(20).fillColor('black').font('Helvetica-Bold');
     print(title);
-    y += 30;
+    y += 60;
 
     doc.font('Helvetica').fontSize(12);
     doc.text('organised by ', x, y, {
