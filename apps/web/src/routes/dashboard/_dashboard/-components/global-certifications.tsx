@@ -363,7 +363,7 @@ const ExamTicket = ({
         <td className="max-md:hidden"></td>
         <td className="max-md:hidden"></td>
         <td className="italic pl-8">
-          {examTicket.date.getTime() < Date.now() ? (
+          {examTicket.date.getTime() > Date.now() ? (
             <span>{t('words.booked')}</span>
           ) : (
             <span>{t('words.inReview')}</span>
@@ -386,7 +386,7 @@ const ExamTicket = ({
           {isMobile ? (
             <>
               <td colSpan={4}>
-                {examTicket.date.getTime() < Date.now() ? (
+                {examTicket.date.getTime() > Date.now() ? (
                   <div className="flex flex-col items-center desktop-body1 mt-4">
                     <p className="font-medium">
                       {t('dashboard.credentials.seatBooked')}
@@ -434,7 +434,7 @@ const ExamTicket = ({
                 <img src={DummyBCert} alt="Dummy b-cert"></img>
               </td>
               <td className="pt-6 " colSpan={3}>
-                {examTicket.date.getTime() < Date.now() ? (
+                {examTicket.date.getTime() > Date.now() ? (
                   <div className="items-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
                     <p className="font-medium">
                       {t('dashboard.credentials.seatBooked')}
