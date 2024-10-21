@@ -105,7 +105,9 @@ export const generateEventTicket = async ({
   function printContact() {
     y += 20;
     doc.fontSize(18).fillColor('black').font('Helvetica-Bold');
-    printAndMove('Contact', 30);
+    if (contact) {
+      printAndMove('Contact', 30);
+    }
 
     doc.fontSize(16).font('Helvetica');
     x = 25;
