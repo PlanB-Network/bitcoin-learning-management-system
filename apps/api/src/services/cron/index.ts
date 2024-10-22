@@ -13,6 +13,5 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     ctx.crons.addTask('5m', () => timestampService.timestampAllExams());
     ctx.crons.addTask('5m', () => timestampService.upgradeAllTimeStamps());
     ctx.crons.addTask('5m', () => timestampService.generateAllCertificates());
-    ctx.crons.addTask('5m', () => timestampService.generateAllThumbnails());
   }
 };

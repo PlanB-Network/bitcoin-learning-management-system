@@ -15,7 +15,6 @@ import type { UserExamTimestamp } from '@blms/types';
 import type { Dependencies } from '#src/dependencies.js';
 
 import { createPdf } from './course-certificate-gen-pdf.js';
-import { createPngFromFirstPage } from './course-certificate-gen-png.js';
 
 interface TimestampOptions {
   examAttemptId: string;
@@ -271,39 +270,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     return true;
   };
 
-  const generateCertificateThumbnail = async (
-    examAttemptId: string,
-    pdfKey: string,
-  ) => {
-    const pdf = await ctx.s3.getBlob(pdfKey);
-    if (!pdf) {
-      console.warn('No pdf found for', pdfKey);
-      return null;
-    }
-
-    const fileKey = `certificates/${examAttemptId}.png`;
-    const thumbnail = await createPngFromFirstPage(pdf);
-    if (!thumbnail) {
-      console.warn('No thumbnail found for', pdfKey);
-      return null;
-    }
-
-    await ctx.s3.put(fileKey, thumbnail, 'image/png');
-
-    await ctx.postgres.exec(
-      sql<UserExamTimestamp[]>`
-        UPDATE users.exam_timestamps
-        SET img_key = ${fileKey}
-        WHERE exam_attempt_id = ${examAttemptId};
-      `,
-    );
-
-    return true;
-  };
-
   const getPdfCertificate = async (examAttemptId: string, stream?: boolean) => {
     const timestamp = await getExamTimestamp(examAttemptId);
-    if (!timestamp || !timestamp.pdfKey) {
+
+    // No chance the pdf exists if the timestamp is not confirmed
+    if (!timestamp || !timestamp.confirmed) {
       return null;
     }
 
@@ -316,25 +287,10 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     return ctx.s3.getBlob(fileKey);
   };
 
-  const getPngCertificate = async (examAttemptId: string, stream?: boolean) => {
-    const timestamp = await getExamTimestamp(examAttemptId);
-    if (!timestamp || !timestamp.imgKey) {
-      return null;
-    }
-
-    const fileKey = `certificates/${examAttemptId}.png`;
-    if (stream) {
-      return ctx.s3.getStream(fileKey);
-    }
-
-    return ctx.s3.getBlob(fileKey);
-  };
-
   return {
     //
     getExamTimestamp,
     getPdfCertificate,
-    getPngCertificate,
     getOpenTimestampFile: async (examAttemptId: string) => {
       const timestamp = await getExamTimestamp(examAttemptId);
       if (!timestamp) {
@@ -396,22 +352,6 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
       for (const { examAttemptId } of timestamps) {
         await generatePdfCertificate(examAttemptId);
-      }
-    },
-    generateAllThumbnails: async () => {
-      const docs = await ctx.postgres.exec(
-        sql<Array<{ examAttemptId: string; pdfKey: string }>>`
-          SELECT exam_attempt_id, pdf_key
-          FROM users.exam_timestamps
-          WHERE pdf_key IS NOT NULL
-            AND img_key IS NULL;
-        `,
-      );
-
-      console.log('Generate all certificates thumbnails', docs);
-
-      for (const { examAttemptId, pdfKey } of docs) {
-        await generateCertificateThumbnail(examAttemptId, pdfKey);
       }
     },
   };

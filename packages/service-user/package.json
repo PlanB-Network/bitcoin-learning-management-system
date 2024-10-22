@@ -28,7 +28,6 @@
     "@types/qr-image": "^3.2.9",
     "argon2": "^0.41.1",
     "bip39": "^3.1.0",
-    "pdf-img-convert": "^2.0.0",
     "pdf-lib": "^1.17.1",
     "pdfkit": "^0.15.0",
     "qr-image": "^3.2.0",
