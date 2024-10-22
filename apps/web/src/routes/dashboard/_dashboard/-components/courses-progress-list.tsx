@@ -1,23 +1,24 @@
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { CourseProgressExtended } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { cn } from '@blms/ui';
 
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
+import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 
 interface CoursesProgressListProps {
   courses?: CourseProgressExtended[];
   completed?: boolean;
+  showViewDetails?: boolean;
 }
 interface ProgressBarProps {
   courseCompletedChapters: number;
   courseTotalChapters: number;
 }
 
-const ProgressBar = ({
+export const ProgressBar = ({
   courseCompletedChapters,
   courseTotalChapters,
 }: ProgressBarProps) => {
@@ -62,7 +63,10 @@ const ProgressBar = ({
         />
         <img
           src={OrangePill}
-          className={cn('absolute z-10 aspect-auto min-w-3 w-3')}
+          className={cn(
+            'absolute z-10 aspect-auto min-w-3 w-3',
+            courseCompletedChapters / courseTotalChapters > 1 && 'hidden',
+          )}
           style={{
             left: `${(courseCompletedChapters / courseTotalChapters) * 100 - 2}%`,
           }}
@@ -76,6 +80,7 @@ const ProgressBar = ({
 export const CoursesProgressList = ({
   courses,
   completed,
+  showViewDetails,
 }: CoursesProgressListProps) => (
   <section>
     <div className="flex flex-col gap-2.5 md:gap-4 mt-5 mb-2.5 md:my-10">
@@ -114,27 +119,30 @@ export const CoursesProgressList = ({
               <span className="text-xl font-medium text-darkOrange-5 leading-normal ml-auto w-[52px] shrink-0 text-end max-md:hidden">
                 {course.progressPercentage}%
               </span>
+
               <div
                 className={cn(
-                  course.progressPercentage === 100 ? 'hidden' : '',
+                  course.progressPercentage >= 100 && !showViewDetails
+                    ? 'hidden'
+                    : '',
                 )}
               >
                 <Link
-                  to={'/courses/$courseId/$chapterId'}
+                  to={
+                    showViewDetails
+                      ? '/dashboard/course/$courseId'
+                      : '/courses/$courseId/$chapterId'
+                  }
                   params={{
                     courseId: course.courseId,
                     chapterId: course.nextChapter?.chapterId as string,
                   }}
                 >
-                  <Button variant="outline" size="s">
-                    {t('dashboard.myCourses.resumeLesson')}
-                    <FaArrowRightLong
-                      className={cn(
-                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                        'group-hover:ml-3',
-                      )}
-                    />
-                  </Button>
+                  <ButtonWithArrow variant="outline" size="s">
+                    {showViewDetails
+                      ? t('dashboard.myCourses.viewDetails')
+                      : t('dashboard.myCourses.resumeLesson')}
+                  </ButtonWithArrow>
                 </Link>
               </div>
             </div>

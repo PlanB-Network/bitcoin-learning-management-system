@@ -10,25 +10,38 @@ import { useTranslation } from 'react-i18next';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
 
-import { Button, Loader, Tabs, TabsContent, TextTag, cn } from '@blms/ui';
+import type { CourseProgressExtended, JoinedCourseWithAll } from '@blms/types';
+import {
+  Button,
+  Divider,
+  Loader,
+  Tabs,
+  TabsContent,
+  TextTag,
+  cn,
+} from '@blms/ui';
 
 import CertificateLockImage from '#src/assets/courses/course-exam-certificate-lock.webp';
 import CertificateImage from '#src/assets/courses/course-exam-certificate.webp';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
+import { AuthorCard } from '#src/components/author-card.tsx';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
+import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseReview } from '#src/routes/_content/courses/$courseId/-components/course-review.tsx';
 import { AnswersReviewPanel } from '#src/routes/_content/courses/$courseId/-components/exam-results.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
+
+import { ProgressBar } from '../-components/courses-progress-list.tsx';
 
 export const Route = createFileRoute('/dashboard/_dashboard/course/$courseId')({
   component: DashboardStudentCourse,
 });
 
 function DashboardStudentCourse() {
-  const isSmallDisplay = useSmaller('lg');
-
   const { i18n } = useTranslation();
   const { courseId } = useParams({
     from: '/dashboard/_dashboard/course/$courseId',
@@ -75,12 +88,9 @@ function DashboardStudentCourse() {
   return (
     <>
       {isFetched && course && (
-        <div className="flex flex-col gap-4 lg:gap-8">
-          <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-            <TextTag
-              size={isSmallDisplay ? 'verySmall' : 'large'}
-              className="uppercase w-fit"
-            >
+        <div className="flex flex-col gap-4 md:gap-8">
+          <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
+            <TextTag size="large" className="uppercase w-fit max-md:hidden">
               {addSpaceToCourseId(course.id)}
             </TextTag>
             <h3 className="display-small-32px">{course.name}</h3>
@@ -97,7 +107,9 @@ function DashboardStudentCourse() {
                 active: currentTab === tab.value,
               }))}
             />
-            <TabsContent value="overview">Under development</TabsContent>
+            <TabsContent value="overview">
+              <CourseOverview course={course} />
+            </TabsContent>
 
             <TabsContent value="exam">
               <CourseExams
@@ -113,13 +125,119 @@ function DashboardStudentCourse() {
               />
             </TabsContent>
 
-            <TabsContent value="ratings">Under development</TabsContent>
+            <TabsContent value="ratings">
+              <CourseRatings courseId={course.id} />
+            </TabsContent>
           </Tabs>
         </div>
       )}
     </>
   );
 }
+
+const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
+  const { data: courseProgress } = trpc.user.courses.getProgress.useQuery({
+    courseId: course.id,
+  });
+
+  const isTablet = useSmaller('lg');
+
+  return (
+    <div className="flex flex-col w-fit">
+      {courseProgress &&
+        courseProgress.length > 0 &&
+        courseProgress[0].progressPercentage < 100 && (
+          <>
+            <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 md:mt-10">
+              {t('dashboard.myCourses.whereYouAre')}
+            </span>
+
+            <CourseProgress courseProgress={courseProgress[0]} />
+          </>
+        )}
+
+      <CourseCurriculum
+        course={course}
+        completedChapters={courseProgress?.[0].chapters.map(
+          (chapter) => chapter.chapterId,
+        )}
+        nextChapter={courseProgress?.[0].nextChapter?.chapterId}
+        hideGithubLink
+        className="self-start mt-7 md:mt-10 w-full"
+      >
+        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 md:mb-6">
+          {t('courses.details.curriculum')}
+        </h4>
+      </CourseCurriculum>
+
+      <Divider className="my-6 md:my-9" width="w-full" />
+
+      <section className="flex flex-col md:gap-5">
+        <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
+          {t('words.teacher')}
+        </h4>
+        <div className="flex h-fit flex-col max-md:gap-4">
+          {course.professors.map((professor) => (
+            <AuthorCard
+              key={professor.id}
+              professor={professor}
+              hasDonateButton={!isTablet}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+const CourseProgress = ({
+  courseProgress,
+}: {
+  courseProgress: CourseProgressExtended;
+}) => {
+  return (
+    <div
+      key={courseProgress.courseId}
+      className="rounded-[20px] md:p-1.5 xl:p-2.5 shadow-course-navigation bg-newGray-6 w-full max-w-[1082px] mt-2.5 md:mt-10"
+    >
+      <div className="flex max-md:flex-col md:items-center md:justify-between md:gap-4 p-2 md:p-3 xl:p-5">
+        <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
+          <span className="max-md:mobile-subtitle1 text-xl">
+            {t('words.progress')}
+          </span>
+          <span className="mobile-subtitle1 text-darkOrange-5 md:hidden">
+            {courseProgress.progressPercentage}%
+          </span>
+        </div>
+
+        <ProgressBar
+          courseCompletedChapters={courseProgress.completedChaptersCount}
+          courseTotalChapters={courseProgress.totalChapters}
+        />
+        <span className="text-xl font-medium text-darkOrange-5 leading-normal w-[52px] shrink-0 text-end max-md:hidden">
+          {courseProgress.progressPercentage}%
+        </span>
+        <div
+          className={cn(
+            courseProgress.progressPercentage === 100 ? 'hidden' : '',
+          )}
+        >
+          <Link
+            to={'/courses/$courseId/$chapterId'}
+            params={{
+              courseId: courseProgress.courseId,
+              chapterId: courseProgress.nextChapter?.chapterId as string,
+            }}
+          >
+            <ButtonWithArrow variant="primary" size="s">
+              {t('dashboard.myCourses.resumeLesson')}
+            </ButtonWithArrow>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const CourseExams = ({
   courseId,
@@ -147,7 +265,7 @@ const CourseExams = ({
   };
 
   return (
-    <div className="flex flex-col mt-4 lg:mt-10">
+    <div className="flex flex-col mt-4 md:mt-10 w-fit">
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.completionDiploma')}
       </h2>
@@ -195,7 +313,7 @@ const CourseExams = ({
                   <div
                     className={cn(
                       'flex flex-col py-2.5',
-                      isCollapsed && 'bg-newGray-6',
+                      isCollapsed && 'bg-newGray-6 rounded-b-[20px]',
                     )}
                     key={index}
                   >
@@ -312,5 +430,23 @@ const CourseExams = ({
         </div>
       )}
     </div>
+  );
+};
+
+const CourseRatings = ({ courseId }: { courseId: string }) => {
+  return (
+    <section className="flex flex-col mt-4 md:mt-10 w-full">
+      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+        {t('dashboard.course.ratingsAndFeedbacks')}
+      </h2>
+      <p className="desktop-typo-1 md:body-16px text-dashboardSectionText/75 mt-4">
+        {t('dashboard.course.feedbacks')}
+      </p>
+      <div className="w-full max-w-[796px] mt-5 md:mt-10">
+        <div className="w-full max-w-[534px] mx-auto">
+          <CourseReview courseId={courseId} />
+        </div>
+      </div>
+    </section>
   );
 };

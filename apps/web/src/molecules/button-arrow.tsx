@@ -17,8 +17,8 @@ export const ButtonWithArrow = React.forwardRef<
       {children}
       <FaArrowRightLong
         className={cn(
-          'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-          'group-hover:ml-3',
+          'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover/arrow:max-w-96 group-hover/arrow:opacity-100',
+          'group-hover/arrow:ml-3',
         )}
       />
     </Button>

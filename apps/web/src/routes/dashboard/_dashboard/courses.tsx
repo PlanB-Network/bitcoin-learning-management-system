@@ -65,10 +65,14 @@ function DashboardCourses() {
           ]}
         />
         <TabsContent value="inprogress">
-          <CoursesProgressList courses={inProgressCourses} />
+          <CoursesProgressList courses={inProgressCourses} showViewDetails />
         </TabsContent>
         <TabsContent value="completed">
-          <CoursesProgressList courses={completedCourses} completed />
+          <CoursesProgressList
+            courses={completedCourses}
+            completed
+            showViewDetails
+          />
         </TabsContent>
       </Tabs>
     </div>

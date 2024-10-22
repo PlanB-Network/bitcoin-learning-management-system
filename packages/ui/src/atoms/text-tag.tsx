@@ -47,7 +47,7 @@ const TextTag = React.forwardRef<HTMLDivElement, TextTagProps>(
         ref={ref}
         {...props}
       >
-        <div>{children}</div>
+        {children}
       </Comp>
     );
   },

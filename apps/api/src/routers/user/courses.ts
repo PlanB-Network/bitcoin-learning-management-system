@@ -67,12 +67,15 @@ const completeChapterProcedure = studentProcedure
   );
 
 const getProgressProcedure = studentProcedure
-  .input(z.void())
+  .input(z.object({ courseId: z.string() }).optional())
   .output<Parser<CourseProgressExtended[]>>(
     courseProgressExtendedSchema.array(),
   )
-  .query(({ ctx }) =>
-    createGetProgress(ctx.dependencies)({ uid: ctx.user.uid }),
+  .query(({ ctx, input }) =>
+    createGetProgress(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input?.courseId || '',
+    }),
   );
 
 const startExamAttemptProcedure = studentProcedure

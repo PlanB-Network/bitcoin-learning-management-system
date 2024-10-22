@@ -799,12 +799,18 @@ function CourseChapter() {
                 {chapter.isCourseReview && (
                   <>
                     {isLoggedIn ? (
-                      <CourseReview chapter={chapter}></CourseReview>
+                      <CourseReview
+                        chapter={chapter}
+                        showExplanation
+                        addMarginToForm
+                      ></CourseReview>
                     ) : (
                       <>
                         <CourseReview
                           chapter={chapter}
                           formDisabled={true}
+                          showExplanation
+                          addMarginToForm
                         ></CourseReview>
                       </>
                     )}
