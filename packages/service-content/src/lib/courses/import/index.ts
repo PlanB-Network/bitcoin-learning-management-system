@@ -233,6 +233,7 @@ const extractParts = (markdown: string): Part[] => {
           currentChapter.releasePlace = extractData(token, 'releasePlace');
           currentChapter.isInPerson =
             extractData(token, 'isInPerson') === 'true';
+          currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
           currentChapter.isCourseReview =
             extractData(token, 'isCourseReview') === 'true';
           currentChapter.isCourseExam =
@@ -354,7 +355,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact, available_seats, remaining_seats,
                   last_updated, last_commit, last_sync)
                 VALUES (
-                  ${course.id}, 
+                  ${course.id},
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
                   ${parsedCourse.topic},
@@ -371,7 +372,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.contact},
                   ${parsedCourse.available_seats},
                   ${parsedCourse.available_seats},
-                  ${lastUpdated.time}, 
+                  ${lastUpdated.time},
                   ${lastUpdated.commit},
                   NOW()
                 )
@@ -414,7 +415,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             await transaction`
                 INSERT INTO content.course_professors (course_id, contributor_id)
                 SELECT
-                  ${result.id}, 
+                  ${result.id},
                   id FROM content.contributors WHERE id = ANY(${parsedCourse.professors})
                 ON CONFLICT DO NOTHING
               `;
@@ -433,7 +434,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
               await transaction`
                   INSERT INTO content.course_tags (course_id, tag_id)
                   SELECT
-                    ${result.id}, 
+                    ${result.id},
                     id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
                   ON CONFLICT DO NOTHING
                 `;
@@ -552,7 +553,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   'title',
                 )}
                 ON CONFLICT (course_id, language, part_id)
-                DO UPDATE SET 
+                DO UPDATE SET
                   title = EXCLUDED.title,
                   last_sync = NOW()
               `;
@@ -578,7 +579,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ),
                 )}
                 ON CONFLICT (chapter_id)
-                DO UPDATE SET 
+                DO UPDATE SET
                   chapter_index = EXCLUDED.chapter_index,
                   part_id = EXCLUDED.part_id,
                   last_sync = NOW()
