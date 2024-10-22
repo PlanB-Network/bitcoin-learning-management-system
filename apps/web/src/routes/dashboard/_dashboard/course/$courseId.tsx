@@ -7,6 +7,7 @@ import {
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FiDownload } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
 
@@ -30,7 +31,10 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { CourseReview } from '#src/routes/_content/courses/$courseId/-components/course-review.tsx';
-import { AnswersReviewPanel } from '#src/routes/_content/courses/$courseId/-components/exam-results.tsx';
+import {
+  AnswersReviewPanel,
+  TimeStampDialog,
+} from '#src/routes/_content/courses/$courseId/-components/exam-results.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -265,7 +269,7 @@ const CourseExams = ({
   };
 
   return (
-    <div className="flex flex-col mt-4 md:mt-10 w-fit">
+    <div className="flex flex-col mt-4 md:mt-10 w-full">
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.completionDiploma')}
       </h2>
@@ -308,6 +312,13 @@ const CourseExams = ({
               )
               .map((exam, index) => {
                 const isCollapsed = collapsedStates[index];
+
+                if (
+                  isCollapsed === undefined &&
+                  index === examResults.length - 1
+                ) {
+                  setCollapsedStates({ [index]: true });
+                }
 
                 return (
                   <div
@@ -372,10 +383,63 @@ const CourseExams = ({
                     </div>
                     <div
                       className={cn(
-                        'flex flex-col max-md:gap-4 w-full',
+                        'flex flex-col max-md:gap-4 w-full items-center',
                         isCollapsed ? 'w-full' : 'hidden',
                       )}
                     >
+                      {/* Succeeded exam */}
+                      {exam.succeeded &&
+                        (exam.isTimestamped ? (
+                          <div className="flex flex-col w-full max-w-[549px] items-center max-md:px-3 max-md:pt-6 max-md:pb-3 pt-5">
+                            <span className="subtitle-small-caps-14px text-newBlack-5">
+                              {t('dashboard.myCourses.yourCertificate')}
+                            </span>
+
+                            {exam.imgKey && (
+                              <img
+                                src={`/api/files/${exam.imgKey}`}
+                                alt="Certificate"
+                                className="mt-4 md:mt-2.5"
+                              />
+                            )}
+
+                            <div className="flex max-md:flex-col md:justify-between w-full mt-7 md:mt-5">
+                              <a
+                                href={`/api/files/${exam.pdfKey}`}
+                                download
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <Button
+                                  size={isMobile ? 's' : 'm'}
+                                  variant="primary"
+                                  className="items-center flex gap-2.5"
+                                >
+                                  {t('dashboard.myCourses.downloadPdf')}
+                                  <FiDownload className="size-[18px] md:size-6" />
+                                </Button>
+                              </a>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex max-md:flex-col w-full gap-7 md:gap-10 md:py-5 md:px-2.5 max-md:pt-7">
+                            <img
+                              src={CertificateLockImage}
+                              alt="Certificate"
+                              className="max-md:order-2 max-md:px-3"
+                            />
+                            <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
+                              <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
+                                {t('courses.exam.certificateGeneration')}
+                                <TimeStampDialog />{' '}
+                                {t('courses.exam.certificateAvailable')}
+                              </span>
+                              <img src={SandClockGif} alt="Time" />
+                            </div>
+                          </div>
+                        ))}
+
+                      {/* Failed exam */}
                       {!exam.succeeded && (
                         <div className="flex max-md:flex-col w-full gap-7 md:gap-10 md:py-5 md:px-2.5 max-md:pt-7">
                           <img
@@ -384,7 +448,7 @@ const CourseExams = ({
                             className="max-md:order-2 max-md:px-3"
                           />
                           <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                            <span className="whitespace-pre-line text-center body-16px-medium text-newBlack-1">
+                            <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
                               {t('courses.exam.dontGiveUpTryAgain')}
                             </span>
                             <img src={SandClockGif} alt="Time" />
@@ -392,6 +456,13 @@ const CourseExams = ({
                               to={examLink}
                               target="_blank"
                               className="w-fit"
+                              disabled={
+                                examResults
+                                  ? new Date(exam.startedAt).getTime() +
+                                      oneDayInMs >
+                                    Date.now()
+                                  : true
+                              }
                             >
                               <Button
                                 className="w-fit flex gap-2.5"

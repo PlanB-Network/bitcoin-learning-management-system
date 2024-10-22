@@ -181,6 +181,19 @@ export const createRestRouter = (dependencies: Dependencies): Router => {
     }
   });
 
+  router.get('/files/certificates/:fileName', async (req, res) => {
+    const fileName = req.params.fileName;
+
+    const stream = await dependencies.s3.getStream(`certificates/${fileName}`);
+
+    if (!stream) {
+      res.status(404).send('Not found');
+      return;
+    }
+
+    stream.pipe(res);
+  });
+
   router.post(
     '/users/courses/payment/webhooks',
     async (req, res): Promise<void> => {

@@ -17,7 +17,7 @@ export const MenuItem = ({
   onClick?: () => void;
   dropdown?: Array<{ text: string; to: string }>;
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const location = useLocation();
 

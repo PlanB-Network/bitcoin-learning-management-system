@@ -118,6 +118,7 @@ export interface CourseExamResults {
   succeeded: boolean;
   startedAt: Date;
   finishedAt: Date | null;
+  id: string;
   questions: {
     text: string;
     explanation: string;
@@ -132,6 +133,9 @@ export interface CourseExamResults {
       correctAnswer: boolean;
     }[];
   }[];
+  isTimestamped?: boolean | undefined;
+  pdfKey?: string | undefined;
+  imgKey?: string | undefined;
 }
 
 export interface CourseSuccededExam {

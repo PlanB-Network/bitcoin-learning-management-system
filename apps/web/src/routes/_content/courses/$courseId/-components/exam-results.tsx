@@ -122,70 +122,7 @@ export const ExamResults = ({
                         <span className="text-newBlack-1 md:title-large-sb-24px text-center">
                           {t('courses.exam.certificateGeneration')}
 
-                          {/* Time stamping infos dialog */}
-                          <Dialog>
-                            <DialogTrigger asChild>
-                              <button className="group relative justify-center text-darkOrange-5 underline decoration-darkOrange-5 text-nowrap max-md:font-medium">
-                                {t('courses.exam.timeStamped')}
-                                <img
-                                  src={QuestionBelow}
-                                  alt="Question"
-                                  className="absolute left-1/2 -translate-x-1/2 -bottom-[76px] size-20 hidden md:group-hover:block"
-                                />
-                              </button>
-                            </DialogTrigger>
-                            <DialogContent
-                              className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[731px] p-4 md:!px-6 md:!py-11 !gap-5 md:!gap-10"
-                              showCloseButton
-                            >
-                              <DialogHeader>
-                                <DialogTitle className="!title-medium-sb-18px md:!display-small-32px !text-darkOrange-5 !px-2.5 md:!px-7 !text-center !mt-10 !w-full !max-w-[683px] md:whitespace-pre-line">
-                                  {t('courses.exam.whyTimeStamp')}
-                                </DialogTitle>
-                                <DialogDescription className="hidden">
-                                  {t('courses.exam.whyTimeStamp')}
-                                </DialogDescription>
-                              </DialogHeader>
-                              <div className="!flex !flex-col !gap-10 !items-center">
-                                <img
-                                  src={TimeStamp}
-                                  alt="Time stamp"
-                                  className="shrink-0 max-md:w-[90px]"
-                                />
-                                <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
-                                  {t('courses.exam.planBTimeStamp')}
-                                </p>
-                                <div className="flex flex-col gap-5 w-full text-newBlack-1">
-                                  <div className="flex flex-col">
-                                    <span className="title-small-med-16px">
-                                      {t('courses.exam.timeStampHow')}
-                                    </span>
-                                    <p className="subtitle-med-16px">
-                                      {t(
-                                        'courses.exam.timeStampHowDescription',
-                                      )}
-                                    </p>
-                                  </div>
-
-                                  <div className="flex flex-col">
-                                    <span className="title-small-med-16px">
-                                      {t('courses.exam.timeStampBenefits')}
-                                    </span>
-                                    <ul className="subtitle-medium-16px text-justify flex flex-col list-disc list-outside pl-6">
-                                      <li>
-                                        {t('courses.exam.instantVerification')}
-                                      </li>
-                                      <li>{t('courses.exam.tamperProof')}</li>
-                                      <li>
-                                        {t('courses.exam.globallyRecognized')}
-                                      </li>
-                                      <li>{t('courses.exam.futureProof')}</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </DialogContent>
-                          </Dialog>
+                          <TimeStampDialog />
                         </span>
                         <span className="text-newBlack-1 md:title-large-24px text-center max-md:pl-1">
                           {t('courses.exam.availableDashboard')}
@@ -255,6 +192,68 @@ export const ExamResults = ({
         </>
       )}
     </div>
+  );
+};
+
+export const TimeStampDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="group relative justify-center text-darkOrange-5 underline decoration-darkOrange-5 text-nowrap max-md:font-medium">
+          {t('courses.exam.timeStamped')}
+          <img
+            src={QuestionBelow}
+            alt="Question"
+            className="absolute left-1/2 -translate-x-1/2 -bottom-[76px] size-20 hidden md:group-hover:block"
+          />
+        </button>
+      </DialogTrigger>
+      <DialogContent
+        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[731px] p-4 md:!px-6 md:!py-11 !gap-5 md:!gap-10"
+        showCloseButton
+      >
+        <DialogHeader>
+          <DialogTitle className="!title-medium-sb-18px md:!display-small-32px !text-darkOrange-5 !px-2.5 md:!px-7 !text-center !mt-10 !w-full !max-w-[683px] md:whitespace-pre-line">
+            {t('courses.exam.whyTimeStamp')}
+          </DialogTitle>
+          <DialogDescription className="hidden">
+            {t('courses.exam.whyTimeStamp')}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="!flex !flex-col !gap-10 !items-center">
+          <img
+            src={TimeStamp}
+            alt="Time stamp"
+            className="shrink-0 max-md:w-[90px]"
+          />
+          <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
+            {t('courses.exam.planBTimeStamp')}
+          </p>
+          <div className="flex flex-col gap-5 w-full text-newBlack-1">
+            <div className="flex flex-col">
+              <span className="title-small-med-16px">
+                {t('courses.exam.timeStampHow')}
+              </span>
+              <p className="subtitle-med-16px">
+                {t('courses.exam.timeStampHowDescription')}
+              </p>
+            </div>
+
+            <div className="flex flex-col">
+              <span className="title-small-med-16px">
+                {t('courses.exam.timeStampBenefits')}
+              </span>
+              <ul className="subtitle-medium-16px text-justify flex flex-col list-disc list-outside pl-6">
+                <li>{t('courses.exam.instantVerification')}</li>
+                <li>{t('courses.exam.tamperProof')}</li>
+                <li>{t('courses.exam.globallyRecognized')}</li>
+                <li>{t('courses.exam.futureProof')}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 

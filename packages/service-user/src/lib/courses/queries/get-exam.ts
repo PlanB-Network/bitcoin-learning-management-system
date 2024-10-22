@@ -93,7 +93,8 @@ export const getExamResultsQuery = ({ examId }: { examId: string }) => {
       ea.finalized,
       ea.score,
       ea.started_at,
-      ea.finished_at
+      ea.finished_at,
+      ea.id
     FROM
       users.exam_questions eq
     JOIN content.quiz_questions q ON eq.question_id = q.id
@@ -185,7 +186,8 @@ export const getAllUserCourseExamsResultsQuery = ({
       ea.finalized,
       ea.score,
       ea.started_at,
-      ea.finished_at
+      ea.finished_at,
+      ea.id
     FROM
       users.exam_questions eq
     JOIN content.quiz_questions q ON eq.question_id = q.id
