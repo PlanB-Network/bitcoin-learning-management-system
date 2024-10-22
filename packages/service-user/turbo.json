@@ -3,14 +3,26 @@
   "extends": ["//"],
   "tasks": {
     "check-types": {
-      "dependsOn": ["@blms/types#build-types", "@blms/database#build-types"]
+      "dependsOn": [
+        "@blms/types#build-types",
+        "@blms/database#build-types",
+        "@blms/opentimestamps#build-types"
+      ]
     },
     "build-types": {
-      "dependsOn": ["@blms/types#build-types", "@blms/database#build-types"],
+      "dependsOn": [
+        "@blms/types#build-types",
+        "@blms/database#build-types",
+        "@blms/opentimestamps#build-types"
+      ],
       "outputs": ["dist/**"]
     },
     "build": {
-      "dependsOn": ["@blms/types#build", "@blms/database#build"],
+      "dependsOn": [
+        "@blms/types#build",
+        "@blms/database#build",
+        "@blms/opentimestamps#build"
+      ],
       "outputs": ["dist/**"]
     }
   }
