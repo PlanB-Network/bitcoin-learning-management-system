@@ -14,6 +14,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   netcat-traditional \
   build-essential \
   python3 \
+  libcairo2-dev \
+  pkg-config \
+  libpixman-1-dev \
   cmake \
   rsync \
   git \
