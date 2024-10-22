@@ -762,11 +762,20 @@ function Home() {
       return <></>;
     }
 
-    const latestBlogs = blogs
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 3);
+    const categoriesOrder = ['network', 'content', 'feature'];
+    const latestBlogsByCategory = categoriesOrder
+      .map((category) => {
+        const blogsInCategory = blogs
+          .filter((blog) => blog.category === category)
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+          );
 
-    if (latestBlogs.length === 0) {
+        return blogsInCategory[0];
+      })
+      .filter(Boolean);
+
+    if (latestBlogsByCategory.length === 0) {
       return (
         <p className="text-black p-14 justify-center text-4xl font-medium mx-auto">
           {t('publicCommunication.blogPageStrings.noArticlesText')}
@@ -788,7 +797,7 @@ function Home() {
           <div className="block md:hidden">
             <Carousel className="relative">
               <CarouselContent className="ml-0">
-                {latestBlogs.map((blog) => (
+                {latestBlogsByCategory.map((blog) => (
                   <CarouselItem
                     key={blog.id}
                     className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-[10px]"
@@ -821,7 +830,7 @@ function Home() {
           </div>
 
           <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4">
-            {latestBlogs.map((blog) => (
+            {latestBlogsByCategory.map((blog) => (
               <VerticalCard
                 key={blog.id}
                 imageSrc={computeAssetCdnUrl(
