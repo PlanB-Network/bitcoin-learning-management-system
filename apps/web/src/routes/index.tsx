@@ -238,7 +238,14 @@ function Home() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {filteredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
+            <Link
+              key={course.id}
+              to="/courses/$courseId"
+              params={{ courseId: course.id }}
+              className="flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]"
+            >
+              <CourseCard key={course.id} course={course} />
+            </Link>
           ))}
         </div>
         <Link to={'/courses'} className="flex justify-center lg:justify-start">
