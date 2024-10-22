@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button, cn } from '@blms/ui';
 
-import { useSmaller } from '#src/hooks/use-smaller.js'; // Import your custom hook
+import { useSmaller } from '#src/hooks/use-smaller.js';
 import Flag from '#src/molecules/Flag/index.js';
 import { LangContext } from '#src/providers/app.js';
 
@@ -50,7 +50,7 @@ export const LanguageSelectorHomepage = ({
           disabled={language === activeLanguage}
         >
           <Flag code={language} size="l" />
-          <span className="capitalize w-[60px] lg:w-auto truncate">
+          <span className="capitalize w-[75px] sm:w-auto lg:w-auto truncate">
             {LANGUAGES_MAP[language.replaceAll('-', '')] || language}
           </span>
         </Button>
