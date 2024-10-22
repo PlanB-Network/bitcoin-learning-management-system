@@ -17,6 +17,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   libcairo2-dev \
   pkg-config \
   libpixman-1-dev \
+  libpango1.0-dev \
   cmake \
   rsync \
   git \
