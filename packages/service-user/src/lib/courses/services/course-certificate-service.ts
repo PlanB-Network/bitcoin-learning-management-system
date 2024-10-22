@@ -291,6 +291,14 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     //
     getExamTimestamp,
     getPdfCertificate,
+    getOpenTimestampFile: async (examAttemptId: string) => {
+      const timestamp = await getExamTimestamp(examAttemptId);
+      if (!timestamp) {
+        return null;
+      }
+
+      return timestamp.ots as Buffer;
+    },
     //
     timestampExamAttempt,
     upgradeAndValidate,
