@@ -129,7 +129,7 @@ export const VerticalCard = ({
           </div>
         )}
       </div>
-      <div className={cn('', bodyClassName)}>
+      <div className={cn('grow flex flex-col justify-between', bodyClassName)}>
         <div className="flex flex-col">
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap md:hidden gap-1">
@@ -185,7 +185,7 @@ export const VerticalCard = ({
                   href={buttonLink}
                   target="_blank"
                   className={cn(
-                    secondaryButtonText ? 'max-md:w-full' : 'w-full',
+                    secondaryButtonText ? 'max-md:w-full mt-auto' : 'w-full',
                   )}
                   rel="noreferrer"
                 >

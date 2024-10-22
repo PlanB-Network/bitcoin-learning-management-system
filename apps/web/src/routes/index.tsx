@@ -828,7 +828,10 @@ function Home() {
             ))}
           </div>
           <div className="max-w-[1079px]">
-            <Link to={'/blogs'} className="flex justify-center lg:justify-end">
+            <Link
+              to={'/public-communication/blogs-and-news'}
+              className="flex justify-center lg:justify-end"
+            >
               <Button
                 variant="secondary"
                 rounded={false}
