@@ -30,10 +30,10 @@ RUN apk add --no-cache -U \
     g++ \
     make \
     cmake \
-    libcairo2-dev \
     pkg-config \
-    libpixman-1-dev \
     findutils \
+    cairo-dev \
+    pango-dev \
     shadow
 RUN npm install --location=global pnpm@9
 WORKDIR /app
