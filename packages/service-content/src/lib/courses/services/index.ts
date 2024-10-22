@@ -6,3 +6,7 @@ export { createGetCourseChapters } from './get-course-chapters.js';
 export { createCalculateCourseChapterSeats } from './calculate-course-chapter-seats.js';
 export { createGetPublicCourseReviews } from './get-course-reviews.js';
 export { createGetTeacherCourseReviews } from './get-course-reviews.js';
+export {
+  createRefreshCoursesRatings,
+  createRefreshCourseRating,
+} from './refresh-courses-ratings.js';

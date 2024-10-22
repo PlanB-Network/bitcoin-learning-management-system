@@ -11,7 +11,10 @@ import {
   courseUserChapterSchema,
   partialExamQuestionSchema,
 } from '@blms/schemas';
-import { createCalculateCourseChapterSeats } from '@blms/service-content';
+import {
+  createCalculateCourseChapterSeats,
+  createRefreshCourseRating,
+} from '@blms/service-content';
 import type { GetPaymentOutput } from '@blms/service-user';
 import {
   createCompleteChapter,
@@ -162,15 +165,17 @@ const saveCourseReviewProcedure = studentProcedure
     }),
   )
   .output<Parser<void>>(z.void())
-  .mutation(({ ctx, input }) =>
-    createSaveCourseReview(ctx.dependencies)({
+  .mutation(async ({ ctx, input }) => {
+    await createSaveCourseReview(ctx.dependencies)({
       newReview: {
         ...input,
         createdAt: new Date(),
         uid: ctx.user.uid,
       },
-    }),
-  );
+    });
+
+    await createRefreshCourseRating(ctx.dependencies)(input.courseId);
+  });
 
 const savePaymentProcedure = studentProcedure
   .input(
