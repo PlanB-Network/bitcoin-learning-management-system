@@ -118,7 +118,7 @@ export const CourseCurriculum = ({
                           chapterId: chapter.chapterId,
                         }}
                         className={cn(
-                          'flex items-center group/link gap-7',
+                          'flex max-lg:flex-col lg:items-center group/link gap-[5px] lg:gap-7',
                           courseHasToBePurchased && 'pointer-events-none',
                         )}
                       >
@@ -131,7 +131,7 @@ export const CourseCurriculum = ({
                         >{`${partIndex + 1}.${chapter.chapterIndex} - ${chapter.title}`}</span>
                         {chapter.startDate &&
                           chapter.startDate > new Date() && (
-                            <span className="text-newGray-1 leading-[121%] hover:no-underline max-lg:hidden">
+                            <span className="max-lg:label-medium-16px text-newGray-1 leading-[121%] hover:no-underline">
                               {'//'}{' '}
                               {new Intl.DateTimeFormat(undefined, {
                                 month: 'short',

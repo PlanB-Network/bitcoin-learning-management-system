@@ -226,7 +226,8 @@
     "exam": {
       "answersReview": "Answers review",
       "availableDashboard": "It will be available in your dashboard in about 10 hours.",
-      "certificateGeneration": "Your certificate is being generated and ",
+      "certificateAvailable": "It will be available about 8 hours after submission.",
+      "certificateGeneration": "Your certificate is being ",
       "congratulations": "Congratulations, you’ve reached the end of this course!",
       "congratulationsPassed": "Congratulations, you <0>passed</0> the final exam !",
       "dontGiveUpTryAgain": "Don't give up !\nYou can try again after 24 hours.",
@@ -431,6 +432,7 @@
       "completedOutOf": "{{completed}} units completed of {{total}} available",
       "details": "Details",
       "done": "Done",
+      "downloadPdf": "Download PDF",
       "inprogress": "In progress",
       "inprogressCoursesTitle": "Courses in progress",
       "inprogressCoursesDescription": "Here you can check your progress in the courses you have started.",
@@ -438,7 +440,8 @@
       "seeProgress": "to see your progress here.",
       "startCourse": "Start or complete a course",
       "whereYouAre": "Let's see where you're at !",
-      "viewDetails": "View details"
+      "viewDetails": "View details",
+      "yourCertificate": "Your certificate"
     },
     "credentials": {
       "bCertificate": "₿ Certificate",

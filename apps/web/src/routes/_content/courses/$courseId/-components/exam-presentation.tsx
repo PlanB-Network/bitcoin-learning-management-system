@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +31,7 @@ export const ExamPresentation = ({
   setPartialExamQuestions: (value: PartialExamQuestion[]) => void;
 }) => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const {
     open: openAuthModal,
@@ -53,6 +54,31 @@ export const ExamPresentation = ({
     chapter.part.partIndex === chapter.course.parts.length;
 
   const startExamAttempt = trpc.user.courses.startExamAttempt.useMutation();
+  const completeChapterMutation =
+    trpc.user.courses.completeChapter.useMutation();
+
+  async function navigateToNextChapter() {
+    if (!chapter) {
+      return;
+    }
+
+    await completeChapterMutation.mutateAsync({
+      courseId: chapter.courseId,
+      chapterId: chapter.chapterId,
+    });
+
+    if (isLastChapter) {
+      navigate({
+        to: '/courses/$courseId',
+        params: goToChapterParameters(chapter, 'next'),
+      });
+    } else {
+      navigate({
+        to: '/courses/$courseId/$chapterId',
+        params: goToChapterParameters(chapter, 'next'),
+      });
+    }
+  }
 
   async function onStart() {
     await startExamAttempt.mutateAsync({
@@ -154,27 +180,19 @@ export const ExamPresentation = ({
         >
           {t('courses.exam.startExam')}
         </ButtonWithArrow>
-        <Link
+
+        <Button
           className="w-full max-md:max-w-[290px] md:w-fit"
-          to={
-            isLastChapter
-              ? '/courses/$courseId'
-              : '/courses/$courseId/$chapterId'
-          }
-          params={goToChapterParameters(chapter, 'next')}
+          variant="outline"
+          size={window.innerWidth < 768 ? 'm' : 'l'}
+          onClick={navigateToNextChapter}
         >
-          <Button
-            className="w-full max-md:max-w-[290px] md:w-fit"
-            variant="outline"
-            size={window.innerWidth < 768 ? 'm' : 'l'}
-          >
-            <span>
-              {window.innerWidth < 768
-                ? t('courses.exam.skipExam')
-                : t('courses.exam.skipExamGoConclusion')}
-            </span>
-          </Button>
-        </Link>
+          <span>
+            {window.innerWidth < 768
+              ? t('courses.exam.skipExam')
+              : t('courses.exam.skipExamGoConclusion')}
+          </span>
+        </Button>
       </div>
 
       {isAuthModalOpen && (

@@ -1,4 +1,5 @@
-import type { CourseExamResults } from '@blms/types';
+import { sql } from '@blms/database';
+import type { CourseExamResults, UserExamTimestamp } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
@@ -28,6 +29,34 @@ export const createGetAllUserCourseExamsResults = ({
   postgres,
 }: Dependencies) => {
   return async (options: Options): Promise<CourseExamResults[]> => {
-    return postgres.exec(getAllUserCourseExamsResultsQuery(options));
+    const examResults = await postgres.exec(
+      getAllUserCourseExamsResultsQuery(options),
+    );
+
+    const examAttemptIds = examResults.map((exam) => exam.id);
+
+    const examTimestamps = await postgres.exec(
+      sql<UserExamTimestamp[]>`
+          SELECT * FROM users.exam_timestamps
+          WHERE exam_attempt_id = ANY(${examAttemptIds});
+        `,
+    );
+
+    const timestampMap: Record<string, UserExamTimestamp> = {};
+
+    for (const timestamp of examTimestamps) {
+      timestampMap[timestamp.examAttemptId] = timestamp;
+    }
+
+    return examResults.map((exam) => {
+      const timestamp = timestampMap[exam.id];
+
+      return {
+        ...exam,
+        isTimestamped: !!timestamp?.confirmed || false,
+        pdfKey: timestamp?.pdfKey || undefined,
+        imgKey: timestamp?.imgKey || undefined,
+      };
+    });
   };
 };

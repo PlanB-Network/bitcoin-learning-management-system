@@ -79,6 +79,7 @@ export const courseExamResultsSchema = courseExamAttemptSchema
     succeeded: true,
     startedAt: true,
     finishedAt: true,
+    id: true,
   })
   .merge(
     z.object({
@@ -100,6 +101,9 @@ export const courseExamResultsSchema = courseExamAttemptSchema
           ),
         }),
       ),
+      isTimestamped: z.boolean().optional(),
+      pdfKey: z.string().optional(),
+      imgKey: z.string().optional(),
     }),
   );
 

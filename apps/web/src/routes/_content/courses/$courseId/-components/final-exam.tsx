@@ -181,7 +181,7 @@ export const FinalExam = ({
               </span>
             </Button>
           </div>
-          <div className="flex flex-col gap-5 md:gap-11 max-md:pt-10">
+          <div className="flex flex-col gap-5 md:gap-11 max-md:pt-10 max-lg:pt-16 max-md:w-full max-md:max-w-full">
             {questions.map((q, questionIndex) => (
               <article
                 key={questionIndex}
