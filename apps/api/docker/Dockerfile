@@ -31,6 +31,8 @@ RUN apk add --no-cache -U \
     make \
     cmake \
     findutils \
+    cairo-dev \
+    pango-dev \
     shadow
 RUN npm install --location=global pnpm@9
 WORKDIR /app
@@ -54,6 +56,8 @@ ENV PORT=3000
 RUN apk add --no-cache -U \
     python3 \
     git \
+    cairo \
+    pango \
     shadow
 
 WORKDIR /app
