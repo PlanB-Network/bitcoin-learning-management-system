@@ -4,6 +4,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { z } from 'zod';
 
 import {
@@ -252,14 +253,20 @@ export function CourseReview({
       courseId: chapter?.courseId || courseId || '',
     });
 
+    navigateToNextChapter();
+  }
+
+  async function navigateToNextChapter() {
     if (!chapter) {
       return;
     }
 
-    await completeChapterMutation.mutateAsync({
-      courseId: chapter.courseId,
-      chapterId: chapter.chapterId,
-    });
+    if (!formDisabled) {
+      await completeChapterMutation.mutateAsync({
+        courseId: chapter.courseId,
+        chapterId: chapter.chapterId,
+      });
+    }
 
     if (isLastChapter) {
       navigate({
@@ -424,18 +431,36 @@ export function CourseReview({
                   disabled={formDisabled}
                 />
               </div>
+              <div className="flex flex-wrap items-center justify-center gap-4 mx-auto mt-6 lg:mt-4">
+                <Button
+                  type="submit"
+                  className="w-fit"
+                  variant="primary"
+                  size={window.innerWidth >= 768 ? 'l' : 'm'}
+                  disabled={formDisabled}
+                >
+                  {previousCourseReview
+                    ? t('courses.review.edit')
+                    : t('courses.review.submitReview')}
+                </Button>
 
-              <Button
-                type="submit"
-                className="w-fit mx-auto mt-6 lg:mt-12"
-                variant="primary"
-                size={window.innerWidth >= 768 ? 'l' : 'm'}
-                disabled={formDisabled}
-              >
-                {previousCourseReview
-                  ? t('courses.review.edit')
-                  : t('courses.review.submitReview')}
-              </Button>
+                <Button
+                  variant="outline"
+                  className="w-fit"
+                  size={window.innerWidth >= 768 ? 'l' : 'm'}
+                  onClick={() => {
+                    navigateToNextChapter();
+                  }}
+                >
+                  <span>{t('courses.chapter.next')}</span>
+                  <FaArrowRightLong
+                    className={cn(
+                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                      'group-hover:ml-3',
+                    )}
+                  />
+                </Button>
+              </div>
             </form>
           </Form>
           {isAuthModalOpen && (
