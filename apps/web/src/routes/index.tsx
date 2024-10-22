@@ -50,7 +50,9 @@ export const Route = createFileRoute('/')({
 function Home() {
   const { t } = useTranslation();
   const isScreenMd = useGreater('md');
-  const buttonSize = isScreenMd ? 'l' : 'flagsMobile';
+  const buttonSize = isScreenMd ? 'l' : 'm';
+  const tutorialButtonSize = isScreenMd ? 'l' : 's';
+
   const sectionClass =
     'flex flex-col w-full items-center py-8 md:py-16 overflow-hidden font-light md:font-normal px-4 text-center lg:text-start';
   const subSectionClass =
@@ -234,10 +236,10 @@ function Home() {
 
     return (
       <section className="max-w-[1080px] mx-auto mt-[30px] lg:mt-[111px] px-4">
-        <h2 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-start">
+        <h2 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
           Upcoming & new courses
         </h2>
-        <p className="text-darkOrange-5 body-14px-medium text-center lg:text-start lg:title-large-sb-24px mb-8">
+        <p className="text-darkOrange-5 body-16px-medium lg:title-large-sb-24px text-center lg:text-start  mb-8">
           Find out the latest courses released onto the platform. Learning never
           stops !
         </p>
@@ -344,7 +346,7 @@ function Home() {
             <img
               src={Map}
               alt=""
-              className="mx-auto lg:mx-0 object-contain lg:object-cover w-[320px] lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
+              className="mx-auto lg:mx-0 object-cover w-full lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
             />
 
             {paymentModalData.eventId &&
@@ -540,17 +542,21 @@ function Home() {
 
   const TutorialSection = () => {
     return (
-      <div className={cn('', sectionClass)}>
+      <div className={cn('mt-5 lg:mt-[60px]', sectionClass)}>
         <div
           className={cn(
             'flex flex-col md:text-center md:items-center',
             subSectionClass,
           )}
         >
-          <p className="hidden text-4xl font-semibold md:flex text-darkOrange-5">
+          <p className="subtitle-large-med-20px lg:display-semibold-40px md:flex text-darkOrange-5">
             {t('home.tutorialSection.title')}
           </p>
-          <p className={cn(titleCss, 'max-w-[45rem] ')}>
+          <p
+            className={cn(
+              'max-w-[45rem] body-16px-medium lg:display-semibold-40px',
+            )}
+          >
             {t('home.tutorialSection.subtitle1')}
           </p>
           <p className={cn(paragraphCss, 'mt-4 max-w-[60rem]')}>
@@ -567,14 +573,12 @@ function Home() {
             variant="outlineWhite"
             rounded={false}
             glowing={false}
-            size="l"
+            size={tutorialButtonSize}
           >
             {t('home.tutorialSection.link')}
-            {isScreenMd ? (
-              <span className="ml-3">
-                <AiOutlineRight />
-              </span>
-            ) : null}
+            <span className="ml-3">
+              <AiOutlineRight />
+            </span>
           </Button>
         </Link>
         <CategoryItemList
@@ -587,14 +591,12 @@ function Home() {
             variant="outlineWhite"
             rounded={false}
             glowing={false}
-            size="l"
+            size={tutorialButtonSize}
           >
             {t('home.tutorialSection.link2')}
-            {isScreenMd ? (
-              <span className="ml-3">
-                <AiOutlineRight />
-              </span>
-            ) : null}
+            <span className="ml-3">
+              <AiOutlineRight />
+            </span>
           </Button>
         </Link>
 
@@ -640,7 +642,7 @@ function Home() {
     return (
       <div className={cn('', sectionClass)}>
         <div className={cn('md:text-center', subSectionClass)}>
-          <p className={cn(paragraphCss, 'font-medium !text-orange-500')}>
+          <p className={cn('font-medium !text-orange-500')}>
             {t('home.aboutUsSection.title')}
           </p>
           <p className={cn(titleCss, 'mt-2 font-medium')}>
@@ -659,13 +661,13 @@ function Home() {
   const LanguageSection = () => {
     return (
       <article className="lg:-mx-12 md:-mx-8 bg-gradient-to-b from-[rgba(33,12,0,0.9)] via-[rgba(102,102,102,0.9)] to-[rgba(33,12,0,0.9)]">
-        <div className="!py-0 my-8 md:mt-[98px] md:mb-[130px] max-w-[1164px] mx-auto px-4">
+        <div className="!py-0 my-8 md:mt-[98px] md:mb-[130px] max-w-[1164px] mx-auto">
           <div>
             <div className="flex flex-col">
-              <p className="text-white body-16px-medium lg:display-semibold-40px text-center lg:text-start">
+              <p className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.title')}
               </p>
-              <p className="text-darkOrange-5 subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
+              <p className="text-darkOrange-5 body-16px-medium  lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.subtitle')}
               </p>
               <p
@@ -691,7 +693,7 @@ function Home() {
                 <Button
                   variant="secondary"
                   rounded={false}
-                  size={buttonSize}
+                  size={tutorialButtonSize}
                   className="!text-black !rounded-[16px]"
                 >
                   {t('home.languageSection.link')}
@@ -711,7 +713,7 @@ function Home() {
     return (
       <div
         className={cn(
-          'text-left !pb-0 flex flex-col !2xl:w-[1225]',
+          'text-left !pb-0 flex flex-col !2xl:w-[1225] mt-5 lg:mt-[100px]',
           sectionClass,
         )}
       >
@@ -775,10 +777,10 @@ function Home() {
     return (
       <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] lg:mt-[107px] px-[15px] lg:px-0">
         <div className="mx-auto max-w-[1079px]">
-          <h3 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-end">
+          <h3 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-end">
             What’s new at Plan ₿ Network
           </h3>
-          <p className="text-darkOrange-5 text-center lg:text-end body-14px-medium lg:title-large-sb-24px mb-8">
+          <p className="text-darkOrange-5 text-center lg:text-end body-16px-medium lg:title-large-sb-24px mb-8">
             We keep on improving the platform, the content, and the network -
             check it out!
           </p>
