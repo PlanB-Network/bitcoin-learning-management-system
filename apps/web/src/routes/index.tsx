@@ -1,32 +1,43 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 
-import { Button, cn } from '@blms/ui';
+import type { JoinedEvent } from '@blms/types';
+import { Button, Carousel, CarouselContent, CarouselItem, cn } from '@blms/ui';
 
-import EducationMain from '#src/assets/home/education-main.webp';
-import Flags from '#src/assets/home/flags.webp';
-import FlagsSmall from '#src/assets/home/flags_small.png';
 import HeaderLeft from '#src/assets/home/header_left.svg';
 import HeaderRight from '#src/assets/home/header_right.svg';
-import Lugano from '#src/assets/home/lugano.webp';
-import NetworkMain from '#src/assets/home/network_main.webp';
-import Sponsors from '#src/assets/home/sponsors.webp';
 import TwitterClaire from '#src/assets/home/twitter_claire.jpeg';
 import TwitterLecompte from '#src/assets/home/twitter_lecompte.jpeg';
 import TwitterLoic from '#src/assets/home/twitter_loic.jpeg';
 import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg';
 import HeaderPill from '#src/assets/icons/footer_pill.webp';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
-import { CategoryIcon } from '#src/components/category-icon.js';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { TUTORIALS_CATEGORIES } from '#src/utils/tutorials.js';
+import { VerticalCard } from '#src/molecules/vertical-card.tsx';
+import CategoryItemList from '#src/organisms/category-item.tsx';
+import { LanguageSelectorHomepage } from '#src/organisms/language-selector-homepage.tsx';
+import { AppContext } from '#src/providers/context.tsx';
+import { computeAssetCdnUrl } from '#src/utils/index.ts';
+import { trpc } from '#src/utils/trpc.ts';
 
+import Map from '../../src/assets/home/map.webp';
+import Sponsor from '../../src/assets/home/sponsor-images.webp';
+import SponsorMobile from '../../src/assets/home/sponsors-mobile.webp';
 import { MainLayout } from '../components/main-layout.tsx';
 import { NotFound } from '../components/not-found.tsx';
 import { AboutUs } from '../molecules/about-us.tsx';
+
+import { CourseCard } from './_content/courses/index.tsx';
+import { CurrentEvents } from './_content/events/-components/current-events.tsx';
+import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
+import { EventPaymentModal } from './_content/events/-components/event-payment-modal.tsx';
 
 const titleCss = 'md:text-3xl font-semibold';
 const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
@@ -39,9 +50,9 @@ export const Route = createFileRoute('/')({
 function Home() {
   const { t } = useTranslation();
   const isScreenMd = useGreater('md');
-
+  const buttonSize = isScreenMd ? 'l' : 'flagsMobile';
   const sectionClass =
-    'flex flex-col w-[100%] items-center py-8 md:py-16 overflow-hidden font-light md:font-normal px-4';
+    'flex flex-col w-full items-center py-8 md:py-16 overflow-hidden font-light md:font-normal px-4 text-center lg:text-start';
   const subSectionClass =
     'px-2 md:px-8 lg:px-24 w-auto md:w-[45rem] lg:w-[69rem] xl:w-[85rem] 2xl:w-[100rem]';
 
@@ -51,14 +62,16 @@ function Home() {
         <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
           <HeaderSection />
           <NumberSection />
-          <EducationSection />
-          <TutorialSection />
-          <div className="max-md:mx-2.5">
-            <BCertificatePresentation marginClasses="mt-0" />
-          </div>
+          <CourseSection />
+          <EventSection />
           <AboutUsSection />
+          <BlogSection />
+          <TutorialSection />
           <LanguageSection />
           <WallOfLoveSection />
+          <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]">
+            <BCertificatePresentation marginClasses="mt-0 !border-0 !shadow-none text-center lg:text-start" />
+          </div>
           <PatreonSection />
         </div>
       </MainLayout>
@@ -185,7 +198,7 @@ function Home() {
           </div>
         </div>
         <img
-          className="absolute -right-8 md:-right-16 top-20 h-20 md:top-0 md:h-40 w-auto overflow-hidden lg:hidden"
+          className="max-md:hidden absolute -right-8 md:-right-16 top-20 h-20 md:top-0 md:h-40 w-auto overflow-hidden lg:hidden"
           src={HeaderPill}
           alt={t('imagesAlt.orangePill')}
           loading="lazy"
@@ -194,93 +207,224 @@ function Home() {
     );
   };
 
-  const EducationSection = () => {
+  const CourseSection = () => {
+    const { data: courses, isFetched } = trpc.content.getCourses.useQuery(
+      {
+        language: 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    );
+
+    const filteredCourses = isFetched
+      ? courses?.filter((course) =>
+          ['min302', 'eco102', 'btc402'].includes(course.id),
+        )
+      : [];
+
+    if (!filteredCourses || filteredCourses.length === 0) {
+      return <div>No courses found</div>;
+    }
+
     return (
-      <div className={cn(sectionClass)}>
-        <div
-          className={cn(
-            'md:text-center grid grid-cols-2 items-start gap-12 md:gap-2',
-            subSectionClass,
-          )}
-        >
-          <div className="col-span-2 flex flex-col items-start md:col-span-1 md:items-center md:px-4">
-            <p className="rounded-lg bg-[#ffffff1a] px-4 py-2 text-xl font-semibold uppercase text-orange-500">
-              {t('words.education')}
-            </p>
-            <p className={cn(titleCss, 'mt-6')}>
-              {t('home.sectionEducation.title')}
-            </p>
-            <p className={cn(titleCss, 'text-orange-500')}>
-              {t('home.sectionEducation.subtitle')}
-            </p>
-            <p className={cn(paragraphCss, 'mt-6 z-10')}>
-              {t('home.sectionEducation.content1')}
-            </p>
+      <section className="max-w-[1080px] mx-auto mt-[30px] lg:mt-[111px] px-4">
+        <h2 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-start">
+          Upcoming & new courses
+        </h2>
+        <p className="text-darkOrange-5 body-14px-medium text-center lg:text-start lg:title-large-sb-24px mb-8">
+          Find out the latest courses released onto the platform. Learning never
+          stops !
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {filteredCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+        <Link to={'/courses'} className="flex justify-center lg:justify-start">
+          <Button
+            variant="primary"
+            rounded={false}
+            className="mt-8"
+            glowing={false}
+            size={buttonSize}
+          >
+            Check all courses
+            <span className="ml-3">
+              <AiOutlineRight />
+            </span>
+          </Button>
+        </Link>
+      </section>
+    );
+  };
+
+  const EventSection = () => {
+    const { session } = useContext(AppContext);
+    const isLoggedIn = !!session;
+
+    const {
+      open: openAuthModal,
+      isOpen: isAuthModalOpen,
+      close: closeAuthModal,
+    } = useDisclosure();
+
+    const queryOpts = {
+      staleTime: 600_000, // 10 minutes
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    };
+
+    const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery(
+      undefined,
+      queryOpts,
+    );
+
+    const { data: eventPayments, refetch: refetchEventPayments } =
+      trpc.user.events.getEventPayment.useQuery(undefined, {
+        ...queryOpts,
+        enabled: isLoggedIn,
+      });
+
+    const { data: userEvents, refetch: refetchUserEvents } =
+      trpc.user.events.getUserEvents.useQuery(undefined, {
+        ...queryOpts,
+        enabled: isLoggedIn,
+      });
+
+    const authMode = AuthModalState.SignIn;
+
+    const [paymentModalData, setPaymentModalData] = useState<{
+      eventId: string | null;
+      satsPrice: number | null;
+      accessType: 'physical' | 'online' | 'replay' | null;
+    }>({ eventId: null, satsPrice: null, accessType: null });
+
+    const payingEvent: JoinedEvent | undefined = events?.find(
+      (e) => e.id === paymentModalData.eventId,
+    );
+
+    const [conversionRate, setConversionRate] = useState<number | null>(null);
+    const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
+    useEffect(() => {
+      const fetchConversionRate = async () => {
+        try {
+          const response = await fetch('https://mempool.space/api/v1/prices');
+          const data = await response.json();
+          setConversionRate(data.USD);
+        } catch (error) {
+          console.error('Failed to fetch conversion rate:', error);
+        }
+      };
+
+      fetchConversionRate();
+    }, []);
+
+    return (
+      <section className="lg:-mx-12 md:-mx-8 mt-[30px] lg:h-[913px] lg:mt-[108px]">
+        <div className="bg-home-gradient-mobile lg:bg-home-gradient h-full">
+          <div className="flex flex-col lg:relative h-full">
+            <h1 className="flex justify-center lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 w-full text-white title-small-med-16px lg:display-large-med-48px text-center">
+              A Global Bitcoin Network of Educators
+            </h1>
+            <img
+              src={Map}
+              alt=""
+              className="object-contain lg:object-cover w-[320px] lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
+            />
+
+            {paymentModalData.eventId &&
+              paymentModalData.satsPrice &&
+              paymentModalData.accessType &&
+              paymentModalData.satsPrice > 0 &&
+              payingEvent && (
+                <EventPaymentModal
+                  eventId={paymentModalData.eventId}
+                  event={payingEvent}
+                  accessType={paymentModalData.accessType}
+                  satsPrice={paymentModalData.satsPrice}
+                  isOpen={isPaymentModalOpen}
+                  onClose={(isPaid) => {
+                    // TODO trigger add paid booked seat logic
+
+                    if (isPaid) {
+                      refetchEventPayments();
+                      setTimeout(() => {
+                        refetchEventPayments();
+                      }, 5000);
+                    }
+                    setPaymentModalData({
+                      eventId: null,
+                      satsPrice: null,
+                      accessType: null,
+                    });
+                    setIsPaymentModalOpen(false);
+                  }}
+                />
+              )}
+            {paymentModalData.eventId &&
+              paymentModalData.satsPrice === 0 &&
+              paymentModalData.accessType &&
+              payingEvent && (
+                <EventBookModal
+                  event={payingEvent}
+                  accessType={paymentModalData.accessType}
+                  isOpen={isPaymentModalOpen}
+                  onClose={() => {
+                    setIsPaymentModalOpen(false);
+                    refetchEventPayments();
+                    refetchUserEvents();
+                  }}
+                />
+              )}
+            <div className="flex lg:absolute top-0 right-64 mt-2 lg:mt-[160px] lg:pr-[75px] mx-auto lg:mx-0">
+              {isFetched && events && (
+                <CurrentEvents
+                  events={events}
+                  eventPayments={eventPayments}
+                  userEvents={userEvents}
+                  openAuthModal={openAuthModal}
+                  isLoggedIn={isLoggedIn}
+                  conversionRate={conversionRate}
+                  setIsPaymentModalOpen={setIsPaymentModalOpen}
+                  setPaymentModalData={setPaymentModalData}
+                  headingColor="text-white "
+                  headingText="Hottest bitcoin event"
+                  headingClass="!body-14px lg:!display-small-32px"
+                  showUpcomingIfNone={true}
+                  showDivider={false}
+                />
+              )}
+              {isAuthModalOpen && (
+                <AuthModal
+                  isOpen={isAuthModalOpen}
+                  onClose={closeAuthModal}
+                  initialState={authMode}
+                />
+              )}
+            </div>
             <Link
-              to={'/courses'}
-              className="z-10 mt-6 self-start md:self-center"
+              className="flex justify-center lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 mt-[30px]"
+              to={'/events'}
             >
               <Button
-                variant="secondary"
-                rounded={true}
-                className=" !text-black"
+                variant="flags"
+                rounded={false}
+                className=""
+                glowing={false}
+                size={buttonSize}
               >
-                {t('home.sectionEducation.link')}
+                Check all events
                 <span className="ml-3">
                   <AiOutlineRight />
                 </span>
               </Button>
-            </Link>
-
-            <Link to={'/courses'}>
-              <img
-                src={EducationMain}
-                className="mt-6"
-                alt={t('')}
-                loading="lazy"
-              />
-            </Link>
-          </div>
-
-          <div className="col-span-2 flex flex-col items-start md:col-span-1 md:items-center md:px-4">
-            <p className="rounded-lg bg-[#ffffff1a] px-4 py-2 text-xl font-semibold uppercase text-orange-500">
-              {t('words.network')}
-            </p>
-            <p className={cn(titleCss, 'mt-6')}>
-              {t('home.sectionNetwork.title')}
-            </p>
-            <p className={cn(titleCss, 'text-orange-500')}>
-              {t('home.sectionNetwork.subtitle')}
-            </p>
-            <p className={cn(paragraphCss, 'mt-6 z-10')}>
-              {t('home.sectionNetwork.content1')}
-            </p>
-            <Link
-              to={'/node-network'}
-              className="mt-6 self-start md:self-center"
-            >
-              <Button
-                variant="secondary"
-                rounded={true}
-                className=" !text-black"
-              >
-                {t('home.sectionNetwork.link')}
-                <span className="ml-3">
-                  <AiOutlineRight />
-                </span>
-              </Button>
-            </Link>
-            <Link to={'/node-network'}>
-              <img
-                src={NetworkMain}
-                className="mt-12"
-                alt={t('')}
-                loading="lazy"
-              />
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     );
   };
 
@@ -391,22 +535,57 @@ function Home() {
             subSectionClass,
           )}
         >
-          <p className="hidden text-4xl font-semibold md:flex">
+          <p className="hidden text-4xl font-semibold md:flex text-darkOrange-5">
             {t('home.tutorialSection.title')}
           </p>
-          <p className={cn(titleCss, 'max-w-[45rem] md:text-orange-500')}>
+          <p className={cn(titleCss, 'max-w-[45rem] ')}>
             {t('home.tutorialSection.subtitle1')}
           </p>
           <p className={cn(paragraphCss, 'mt-4 max-w-[60rem]')}>
             {t('home.tutorialSection.content1')}
           </p>
+        </div>
+        <CategoryItemList baseUrl="/tutorials" categoryType="tutorials" />
+        <Link to={'/tutorials'} className="mt-[30px] lg:hidden">
+          <Button
+            variant="outlineWhite"
+            rounded={false}
+            glowing={false}
+            size="l"
+          >
+            {t('home.tutorialSection.link')}
+            {isScreenMd ? (
+              <span className="ml-3">
+                <AiOutlineRight />
+              </span>
+            ) : null}
+          </Button>
+        </Link>
+        <CategoryItemList baseUrl="/resources" categoryType="resources" />
+        <Link to={'/resources'} className="mt-[30px] lg:hidden">
+          <Button
+            variant="outlineWhite"
+            rounded={false}
+            glowing={false}
+            size="l"
+          >
+            {t('home.tutorialSection.link2')}
+            {isScreenMd ? (
+              <span className="ml-3">
+                <AiOutlineRight />
+              </span>
+            ) : null}
+          </Button>
+        </Link>
 
-          <Link to={'/tutorials'} className="mt-6">
+        <div className="flex gap-10 mt-10 max-md:hidden">
+          <Link to={'/tutorials'}>
             <Button
-              variant="primary"
-              rounded={true}
-              className=" !text-black md:mt-4"
-              glowing={true}
+              variant="outlineWhite"
+              rounded={false}
+              className=""
+              glowing={false}
+              size="l"
             >
               {t('home.tutorialSection.link')}
               {isScreenMd ? (
@@ -416,22 +595,22 @@ function Home() {
               ) : null}
             </Button>
           </Link>
-
-          <div className="mt-6 grid w-full grid-cols-2 gap-4 md:gap-x-6 md:mt-12 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-6">
-            {TUTORIALS_CATEGORIES.map((tutorialCategory) => (
-              <Link
-                key={tutorialCategory.name}
-                className="flex w-full flex-row items-center rounded-3xl bg-[#ffffff0d] py-3 pl-4 lg:py-5 lg:pl-12"
-                to={'/tutorials/$category'}
-                params={{ category: tutorialCategory.name }}
-              >
-                <CategoryIcon className="w-6" src={tutorialCategory.image} />
-                <p className="ml-2 md:ml-4 text-sm md:text-lg font-medium xl:ml-12 max-w-full truncate">
-                  {t(`tutorials.${tutorialCategory.name}.title`)}
-                </p>
-              </Link>
-            ))}
-          </div>
+          <Link to={'/resources'}>
+            <Button
+              variant="outlineWhite"
+              rounded={false}
+              className=""
+              glowing={false}
+              size="l"
+            >
+              {t('home.tutorialSection.link2')}
+              {isScreenMd ? (
+                <span className="ml-3">
+                  <AiOutlineRight />
+                </span>
+              ) : null}
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -459,113 +638,212 @@ function Home() {
 
   const LanguageSection = () => {
     return (
-      <div className="mx-4 md:mx-auto md:w-fit md:max-w-full">
-        <div
-          className={cn(
-            '!py-0 my-8 md:my-16 bg-orange-500 rounded-2xl relative',
-            sectionClass,
-          )}
-        >
-          <div
-            className={cn('grid grid-cols-1 md:grid-cols-4', subSectionClass)}
-          >
-            <div className="z-10 col-span-3 flex flex-col py-8 pr-6 md:py-12">
-              <p className={cn(paragraphCss, '!text-black font-medium')}>
-                {t('home.languageSection.subtitle2')}
-              </p>
-              <p className={cn(titleCss, 'font-semibold mt-2')}>
+      <article className="lg:-mx-12 md:-mx-8 bg-gradient-to-b from-[rgba(33,12,0,0.9)] via-[rgba(102,102,102,0.9)] to-[rgba(33,12,0,0.9)]">
+        <div className="!py-0 my-8 md:mt-[98px] md:mb-[130px] max-w-[1164px] mx-auto px-4">
+          <div>
+            <div className="flex flex-col">
+              <p className="text-white body-16px-medium lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.title')}
               </p>
-              <p className={cn(titleCss, 'font-semibold text-black')}>
+              <p className="text-darkOrange-5 subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.subtitle')}
               </p>
-              <p className={cn(paragraphCss, 'mt-5 !text-white max-w-[43rem]')}>
+              <p
+                className={cn(
+                  paragraphCss,
+                  'mt-5 !text-newGray-5 max-w-[43rem] body-14px lg:subtitle-med-16px text-center lg:text-start',
+                )}
+              >
                 {t('home.languageSection.content1')}
               </p>
-              <p className={cn(paragraphCss, 'mt-5 !text-white')}>
-                {t('home.languageSection.content2')}
-              </p>
-              <a
-                href="https://github.com/PlanB-Network/bitcoin-educational-content"
+
+              <span className="mt-[50px] subtitle-small-med-14px lg:title-large-sb-24px text-center lg:text-start">
+                {t('home.languageSection.availableLanguagesVariation')}
+              </span>
+
+              <LanguageSelectorHomepage />
+              <Link
+                to="https://github.com/PlanB-Network/bitcoin-educational-content"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6"
+                className="mt-[50px] !rounded-[16px] mx-auto lg:mx-0"
               >
                 <Button
                   variant="secondary"
-                  rounded={true}
-                  className="!text-black"
+                  rounded={false}
+                  size={buttonSize}
+                  className="!text-black !rounded-[16px]"
                 >
                   {t('home.languageSection.link')}
                   <span className="ml-3">
                     <AiOutlineRight />
                   </span>
                 </Button>
-              </a>
+              </Link>
             </div>
-            <div className="z-0 col-span-1 hidden h-full w-[23rem] md:flex">
-              <img
-                src={Flags}
-                className="size-auto object-cover"
-                alt={t('')}
-                loading="lazy"
-              />
-            </div>
+          </div>
+        </div>
+      </article>
+    );
+  };
 
-            <div className="absolute -right-[210px] z-0 flex md:-right-52 md:hidden">
-              <img
-                src={FlagsSmall}
-                className="h-full w-auto object-cover"
-                alt={t('')}
-                loading="lazy"
-              />
-            </div>
+  const PatreonSection = () => {
+    return (
+      <div
+        className={cn(
+          'text-left !pb-0 flex flex-col !2xl:w-[1225]',
+          sectionClass,
+        )}
+      >
+        <div className="flex flex-col items-start px-2 md:px-8 lg:px-24 w-auto md:w-[45rem] lg:w-[69rem] xl:w-[85rem]">
+          <div>
+            <p
+              className={cn(
+                'mb-3 !text-orange-500 title-medium-sb-18px lg:!display-small-32px text-center lg:text-start',
+              )}
+            >
+              {t('home.patreonSection.title')}
+            </p>
+
+            <p
+              className={cn(
+                'mt-3 lg:mt-8 max-w-[48.75rem] body-14px lg:subtitle-large-med-20px text-center lg:text-start',
+              )}
+            >
+              {t('home.patreonSection.content')}
+            </p>
+          </div>
+          <div className="mb-12 flex w-full gap-6 md:mb-6 lg:justify-start">
+            <img
+              className="mt-9 max-lg:hidden lg:flex object-cover [overflow-clip-margin:_unset]"
+              src={Sponsor}
+              alt={t('')}
+              loading="lazy"
+            />
+            <img
+              className="mt-9 flex lg:hidden object-cover [overflow-clip-margin:_unset] mx-auto"
+              src={SponsorMobile}
+              alt={t('')}
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
     );
   };
 
-  const PatreonSection = () => {
+  const BlogSection = () => {
+    const { blogs } = useContext(AppContext);
+    const { t } = useTranslation();
+
+    if (!blogs) {
+      return <></>;
+    }
+
+    const latestBlogs = blogs
+      .sort((a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime())
+      .slice(0, 3);
+
+    if (latestBlogs.length === 0) {
+      return (
+        <p className="text-black p-14 justify-center text-4xl font-medium mx-auto">
+          {t('publicCommunication.blogPageStrings.noArticlesText')}
+        </p>
+      );
+    }
+
     return (
-      <div className={cn('text-left !pb-0', sectionClass)}>
-        <div
-          className={cn(
-            'flex flex-col md:flex-row items-center',
-            subSectionClass,
-          )}
-        >
-          <div>
-            <p
-              className={cn(
-                paragraphCss,
-                'mb-3 font-semibold !text-orange-500',
-              )}
-            >
-              {t('home.patreonSection.title')}
-            </p>
-            <p className={cn(titleCss, 'font-medium')}>
-              {t('home.patreonSection.subtitle')}
-            </p>
-            <p className={cn(paragraphCss, 'mt-3 lg:mt-9 max-w-[30rem]')}>
-              {t('home.patreonSection.content')}
-            </p>
+      <div
+        className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]
+      lg:mt-[107px] px-[15px] lg:px-0"
+      >
+        <div className="mx-auto max-w-[1079px]">
+          <h3 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-end">
+            What’s new at Plan ₿ Network
+          </h3>
+          <p className="text-darkOrange-5 text-center lg:text-end body-14px-medium lg:title-large-sb-24px mb-8">
+            We keep on improving the platform, the content, and the network -
+            check it out!
+          </p>
+
+          {/* Carousel for mobile version */}
+          <div className="block md:hidden">
+            <Carousel className="relative">
+              <CarouselContent className="ml-0">
+                {latestBlogs.map((blog, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-[10px]"
+                  >
+                    <VerticalCard
+                      imageSrc={computeAssetCdnUrl(
+                        blog.lastCommit,
+                        `${blog.path}/assets/thumbnail.webp`,
+                      )}
+                      title={blog.title}
+                      languages={[]}
+                      cardColor="lightgrey"
+                      className="text-start p-0 !lg:p-2.5"
+                      buttonVariant="primary"
+                      buttonMode="dark"
+                      buttonText={t(
+                        'publicCommunication.blogPageStrings.blogListButtonText',
+                      )}
+                      buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+                      tags={blog.tags}
+                      category={blog.category}
+                      excerpt={blog.description ?? ''}
+                      imgClassName=""
+                      bodyClassName="p-2.5 lg:p-0"
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
-          <div className="mb-12 flex h-[26rem] w-full justify-center gap-6 md:mb-6 md:ml-9 md:h-[22rem] lg:ml-16 lg:h-[34rem] lg:justify-start">
-            <img
-              className="mt-9 h-full w-auto xl:ml-20 2xl:ml-40"
-              src={Sponsors}
-              alt={t('')}
-              loading="lazy"
-            />
+
+          {/* Grid layout for larger screens */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4">
+            {latestBlogs.map((blog, index) => (
+              <VerticalCard
+                key={index}
+                imageSrc={computeAssetCdnUrl(
+                  blog.lastCommit,
+                  `${blog.path}/assets/thumbnail.webp`,
+                )}
+                title={blog.title}
+                languages={[]}
+                cardColor="lightgrey"
+                className="text-start"
+                buttonVariant="primary"
+                buttonMode="dark"
+                buttonText={t(
+                  'publicCommunication.blogPageStrings.blogListButtonText',
+                )}
+                buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+                tags={blog.tags}
+                category={blog.category}
+                excerpt={blog.description ?? ''}
+              />
+            ))}
+          </div>
+          <div className="max-w-[1079px]">
+            <Link to={'/blogs'} className="flex justify-center lg:justify-end">
+              <Button
+                variant="secondary"
+                rounded={false}
+                className="mt-8"
+                glowing={false}
+                size={buttonSize}
+              >
+                See all
+                <span className="ml-3">
+                  <AiOutlineRight />
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
-        <img
-          className="h-full w-auto"
-          src={Lugano}
-          alt={t('')}
-          loading="lazy"
-        />
       </div>
     );
   };

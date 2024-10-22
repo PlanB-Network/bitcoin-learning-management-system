@@ -269,6 +269,10 @@ const baseConfig: Config = {
           'linear-gradient(175deg, #20376C 83%, rgba(255,255,255,1) 85%);',
         'gradient-cards':
           'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 48.98%, rgba(40, 33, 33, 0.90) 80.73%);',
+        'home-gradient':
+          'linear-gradient(180deg, rgba(255, 92, 0, 0.00) 0%, rgba(255, 92, 0, 0.90) 10.5%, rgba(255, 92, 0, 0.00) 50%)',
+        'home-gradient-mobile':
+          'linear-gradient(180deg, rgba(255, 92, 0, 0.00) 0%, rgba(255, 92, 0, 0.90) 6.5%, rgba(255, 92, 0, 0.00) 30%)',
       },
       boxShadow: {
         'md-dark':
