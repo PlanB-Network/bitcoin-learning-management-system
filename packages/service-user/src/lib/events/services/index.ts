@@ -5,4 +5,3 @@ export * from './save-event-payment.js';
 export * from './update-event-payment.js';
 export * from './save-user-event.js';
 export * from './generate-event-ticket.js';
-export * from './course-certificate-service.js';

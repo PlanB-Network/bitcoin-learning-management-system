@@ -11,7 +11,7 @@
   "types": "./src/index.ts",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "postbuild": "cp -r src/lib/events/services/pdf dist/src/lib/events/services/",
+    "postbuild": "cp -r src/lib/courses/services/pdf dist/src/lib/courses/services/",
     "lint": "eslint --color './**/*.ts'",
     "type-check": "tsc --build",
     "check-types": "tsc --noEmit",

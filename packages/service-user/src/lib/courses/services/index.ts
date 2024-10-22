@@ -14,3 +14,4 @@ export * from './save-quiz-attempt.js';
 export * from './save-user-chapter.js';
 export * from './start-exam-attempt.js';
 export * from './update-payment.js';
+export * from './course-certificate-service.js';
