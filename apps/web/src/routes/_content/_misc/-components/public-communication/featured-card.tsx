@@ -12,6 +12,7 @@ interface FeaturedCardProps {
 
 export const FeaturedCard = ({ category }: FeaturedCardProps) => {
   const { blogs } = useContext(AppContext);
+
   if (!blogs || blogs.length === 0) {
     return <></>;
   }
@@ -21,11 +22,17 @@ export const FeaturedCard = ({ category }: FeaturedCardProps) => {
       ? blogs
       : blogs.filter((blog) => blog.category === category);
 
-  // Sort filtered blogs by lastUpdated and take the most recent one
-  const latestBlog = filteredBlogs.sort(
-    (a, b) =>
-      new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime(),
-  )[0];
+  const sortedBlogs = filteredBlogs.sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
+
+  const latestBlog = sortedBlogs[0];
+
+  if (!latestBlog) {
+    return <p>No blogs available.</p>;
+  }
 
   return (
     <div className="mb-[47px] text-start flex flex-col mx-auto md:flex-row justify-center bg-newGray-6 px-[8px] py-[10px] lg:p-[30px] w-full max-w-[290px] md:max-w-[1120px] rounded-sm md:rounded-[30px] items-center">

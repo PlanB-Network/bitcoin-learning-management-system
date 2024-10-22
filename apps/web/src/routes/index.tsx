@@ -218,9 +218,14 @@ function Home() {
     );
 
     const filteredCourses = isFetched
-      ? courses?.filter((course) =>
-          ['min302', 'eco102', 'btc402'].includes(course.id),
-        )
+      ? courses
+          ?.filter((course) =>
+            ['min302', 'btc402', 'eco102'].includes(course.id),
+          )
+          .sort((a, b) => {
+            const order = ['btc402', 'min302', 'eco102'];
+            return order.indexOf(a.id) - order.indexOf(b.id);
+          })
       : [];
 
     if (!filteredCourses || filteredCourses.length === 0) {
@@ -236,13 +241,13 @@ function Home() {
           Find out the latest courses released onto the platform. Learning never
           stops !
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 justify-center">
           {filteredCourses.map((course) => (
             <Link
               key={course.id}
               to="/courses/$courseId"
               params={{ courseId: course.id }}
-              className="flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]"
+              className="flex w-full max-w-[320px] max-md:mx-auto"
             >
               <CourseCard key={course.id} course={course} />
             </Link>
@@ -339,7 +344,7 @@ function Home() {
             <img
               src={Map}
               alt=""
-              className="object-contain lg:object-cover w-[320px] lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
+              className="mx-auto lg:mx-0 object-contain lg:object-cover w-[320px] lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
             />
 
             {paymentModalData.eventId &&
@@ -552,7 +557,11 @@ function Home() {
             {t('home.tutorialSection.content1')}
           </p>
         </div>
-        <CategoryItemList baseUrl="/tutorials" categoryType="tutorials" />
+        <CategoryItemList
+          baseUrl="/tutorials"
+          categoryType="tutorials"
+          title={(category) => t(`tutorials.${category.name}.title`)}
+        />
         <Link to={'/tutorials'} className="mt-[30px] lg:hidden">
           <Button
             variant="outlineWhite"
@@ -568,7 +577,11 @@ function Home() {
             ) : null}
           </Button>
         </Link>
-        <CategoryItemList baseUrl="/resources" categoryType="resources" />
+        <CategoryItemList
+          baseUrl="/resources"
+          categoryType="resources"
+          title={(category) => t(`resources.${category.name}.title`)}
+        />
         <Link to={'/resources'} className="mt-[30px] lg:hidden">
           <Button
             variant="outlineWhite"
@@ -585,7 +598,7 @@ function Home() {
           </Button>
         </Link>
 
-        <div className="flex gap-10 mt-10 max-md:hidden">
+        <div className="flex gap-10 mt-10 max-lg:hidden">
           <Link to={'/tutorials'}>
             <Button
               variant="outlineWhite"
@@ -748,7 +761,7 @@ function Home() {
     }
 
     const latestBlogs = blogs
-      .sort((a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime())
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 3);
 
     if (latestBlogs.length === 0) {
@@ -760,10 +773,7 @@ function Home() {
     }
 
     return (
-      <div
-        className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]
-      lg:mt-[107px] px-[15px] lg:px-0"
-      >
+      <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] lg:mt-[107px] px-[15px] lg:px-0">
         <div className="mx-auto max-w-[1079px]">
           <h3 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-end">
             What’s new at Plan ₿ Network
@@ -773,13 +783,12 @@ function Home() {
             check it out!
           </p>
 
-          {/* Carousel for mobile version */}
           <div className="block md:hidden">
             <Carousel className="relative">
               <CarouselContent className="ml-0">
-                {latestBlogs.map((blog, index) => (
+                {latestBlogs.map((blog) => (
                   <CarouselItem
-                    key={index}
+                    key={blog.id}
                     className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-[10px]"
                   >
                     <VerticalCard
@@ -809,11 +818,10 @@ function Home() {
             </Carousel>
           </div>
 
-          {/* Grid layout for larger screens */}
           <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4">
-            {latestBlogs.map((blog, index) => (
+            {latestBlogs.map((blog) => (
               <VerticalCard
-                key={index}
+                key={blog.id}
                 imageSrc={computeAssetCdnUrl(
                   blog.lastCommit,
                   `${blog.path}/assets/thumbnail.webp`,
@@ -834,6 +842,7 @@ function Home() {
               />
             ))}
           </div>
+
           <div className="max-w-[1079px]">
             <Link
               to={'/public-communication/blogs-and-news'}
