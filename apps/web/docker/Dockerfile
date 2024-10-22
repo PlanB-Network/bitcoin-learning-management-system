@@ -30,7 +30,6 @@ RUN apk add --no-cache -U \
     g++ \
     make \
     cmake \
-    pkg-config \
     findutils \
     cairo-dev \
     pango-dev \
