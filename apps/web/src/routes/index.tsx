@@ -33,8 +33,8 @@ import SponsorMobile from '../../src/assets/home/sponsorsmobile.png';
 import { MainLayout } from '../components/main-layout.tsx';
 import { NotFound } from '../components/not-found.tsx';
 import { AboutUs } from '../molecules/about-us.tsx';
+import { CourseCard } from '../organisms/course-card.tsx';
 
-import { CourseCard } from './_content/courses/index.tsx';
 import { CurrentEvents } from './_content/events/-components/current-events.tsx';
 import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
 import { EventPaymentModal } from './_content/events/-components/event-payment-modal.tsx';

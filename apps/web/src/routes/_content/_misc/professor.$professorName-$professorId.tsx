@@ -11,7 +11,7 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { CourseCard } from '../courses/index.tsx';
+import { CourseCard } from '../../../organisms/course-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 
 export const Route = createFileRoute(
