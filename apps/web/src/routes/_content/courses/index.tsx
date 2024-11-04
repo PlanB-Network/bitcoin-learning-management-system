@@ -465,9 +465,9 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   return (
     <>
-      <div className="max-md:hidden mt-12 max-w-[1126px] mx-auto">
+      <div className="max-md:hidden mt-12 max-w-[730px] xl:max-w-[1126px] mx-auto">
         <p className="desktop-h6">{t('courses.explorer.buildPath')}</p>
-        <div className="flex flex-col p-5 gap-8 bg-tertiary-10 mt-5 rounded-[20px] max-w-[1126px] mx-auto">
+        <div className="flex flex-col p-5 gap-8 bg-tertiary-10 mt-5 rounded-[20px] max-w-[730px] xl:max-w-[1126px] mx-auto">
           <div className="flex items-center gap-8 font-medium">
             <p>{t('words.topics')}</p>
             <div className="flex flex-wrap gap-2">
@@ -534,7 +534,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
         </div>
       </div>
 
-      <div className="md:hidden">
+      <div className="md:hidden w-full max-w-[500px] mx-auto">
         <FilterDropdown
           filters={{
             Topics: topics,
@@ -550,7 +550,7 @@ const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
         />
       </div>
 
-      <section className="flex justify-center gap-5 md:gap-[50px] flex-wrap mt-8 md:mt-12 mb-5 lg:mb-[60px]">
+      <section className="flex justify-center gap-5 md:gap-[50px] flex-wrap mt-8 md:mt-12 mb-5 lg:mb-[60px] max-w-[1226px] mx-auto">
         {filteredCourses.length > 0 &&
           filteredCourses.map((course) => (
             <Link
@@ -601,25 +601,26 @@ function CoursesExplorer() {
       title={t('courses.explorer.exploreCourses')}
       subtitle={t('courses.explorer.journey')}
       description={t('courses.explorer.pageDescription')}
-      paddingXClasses="px-2.5 md:px-4"
-      maxWidth="max-w-[1227px]"
+      paddingXClasses="px-0 md:px-0"
+      maxWidth="max-w-[3000px]"
     >
       {!isFetched && <Loader size={'s'} />}
-
-      {courses && <CoursesGallery courses={courses} />}
+      <div className="px-2.5">
+        {courses && <CoursesGallery courses={courses} />}
+      </div>
       <div className="border-t border-newGray-1 max-w-[1115px] w-full mx-auto"></div>
-      <div className="py-5 lg:py-[60px]">
-        <BCertificatePresentation marginClasses="mt-0" />
+      <div className="bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] w-full break-inside-avoid-column">
+        <BCertificatePresentation marginClasses="mt-0 !border-0 !shadow-none text-center lg:text-start" />
       </div>
       <div className="border-t border-newGray-1 max-w-[1115px] w-full mx-auto"></div>
 
       {courses && (
-        <>
+        <div className="px-[15px]">
           <p className="mobile-h3 md:desktop-h6 max-w-[451px] text-center mx-auto mt-6 mb-5 md:mt-16 md:mb-10">
             {t('courses.explorer.findCourses')}
           </p>
           <CourseSelector courses={courses} />
-        </>
+        </div>
       )}
     </PageLayout>
   );

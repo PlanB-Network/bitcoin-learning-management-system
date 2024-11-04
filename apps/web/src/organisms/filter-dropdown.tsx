@@ -90,7 +90,7 @@ export const FilterDropdown = ({
   };
 
   return (
-    <section className="max-w-72 mx-auto" ref={dropdownRef}>
+    <section className="mx-auto" ref={dropdownRef}>
       <div className="relative">
         <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[10px]">
           <img src={SearchIcon} sizes="20" alt="" />
