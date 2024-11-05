@@ -1,0 +1,1 @@
+ALTER TABLE "content"."newsletters" RENAME COLUMN "link" TO "website_url";

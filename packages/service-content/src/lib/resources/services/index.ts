@@ -11,6 +11,8 @@ export { createGetPodcast } from './get-podcast.js';
 export { createGetPodcasts } from './get-podcasts.js';
 export { createGetBuildersLocations } from './builders-locations.get.js';
 export { createSyncBuildersLocations } from './builders-locations.sync.js';
+export { createGetNewsletters } from './get-newsletters.js';
+export { createGetNewsletter } from './get-newsletter.js';
 
 // Metadata requests
 export { createGetBuilderMeta } from './get-builder-meta.js';

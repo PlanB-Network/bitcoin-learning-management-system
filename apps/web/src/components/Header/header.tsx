@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedCourse } from '@blms/types';
 import { cn } from '@blms/ui';
 
+import webSvg from '#src/assets/icons/world-pixelated.svg';
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import resourcesSvg from '../../assets/resources/builder.svg';
@@ -163,6 +164,13 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.betDescription'),
               path: '/resources/bet',
               icon: tutorialsSvg,
+            },
+            {
+              id: 'newsletter',
+              title: t('resources.newsletter.title'),
+              description: t('menu.betDescription'),
+              path: '/resources/newsletter',
+              icon: webSvg,
             },
           ],
         },
