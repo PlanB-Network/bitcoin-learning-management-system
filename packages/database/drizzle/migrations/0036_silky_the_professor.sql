@@ -1,0 +1,1 @@
+ALTER TABLE "content"."newsletters" ALTER COLUMN "publication_date" SET DATA TYPE text;
