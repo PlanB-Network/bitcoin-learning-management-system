@@ -11,3 +11,4 @@ export * from './set-profile-picture.js';
 export * from './change-email.js';
 export * from './reset-password.js';
 export * from './token-info.js';
+export * from './api-key.js';

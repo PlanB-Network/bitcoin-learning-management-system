@@ -4,6 +4,7 @@ import { z } from 'zod';
 import {
   userRoleEnum,
   usersAccounts,
+  usersApiKeys,
   usersLud4PublicKeys,
 } from '@blms/database';
 
@@ -57,3 +58,5 @@ export const loginResponseSchema = z.object({
     email: z.string().nullable(),
   }),
 });
+
+export const apiKeySchema = createSelectSchema(usersApiKeys);

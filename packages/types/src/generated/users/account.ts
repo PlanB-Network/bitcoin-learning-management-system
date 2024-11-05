@@ -67,3 +67,12 @@ export interface LoginResponse {
     email: string | null;
   };
 }
+
+export interface ApiKey {
+  id: string;
+  uid: string;
+  revokedAt: Date | null;
+  expiresAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+}

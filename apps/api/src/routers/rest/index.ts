@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 
+import { createRestEventRoutes } from './events.js';
 import { createRestFilesRoutes } from './files.js';
 import { createRestMetadataRoutes } from './metadata.js';
 import { createRestPaymentRoutes } from './payment.js';
@@ -16,6 +17,7 @@ export const createRestRouter = async (
   createRestMetadataRoutes(dependencies, router);
   createRestPaymentRoutes(dependencies, router);
   createRestSyncRoutes(dependencies, router);
+  createRestEventRoutes(dependencies, router);
 
   return router;
 };

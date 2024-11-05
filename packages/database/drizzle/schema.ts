@@ -126,6 +126,20 @@ export const usersLud4PublicKeys = users.table('lud4_public_keys', (t) => ({
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
+// API KEYS
+
+export const usersApiKeys = users.table('api_keys', (t) => ({
+  id: t.uuid().defaultRandom().primaryKey().notNull(),
+  uid: t
+    .uuid()
+    .notNull()
+    .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  revokedAt: t.timestamp({ withTimezone: true }),
+  expiresAt: t.timestamp({ withTimezone: true }),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
 // BCERTIFICATE
 
 export const contentBCertificateExam = content.table(
