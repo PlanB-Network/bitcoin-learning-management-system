@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { format, getDay, parse, startOfWeek } from 'date-fns';
+import { format, getDay, isAfter, parse, startOfWeek } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
 import { useContext, useEffect, useState } from 'react';
 import type { Components, View } from 'react-big-calendar';
@@ -63,17 +63,21 @@ function DashboardCalendar() {
 
   useEffect(() => {
     if (allEvents) {
-      const ev: CalendarEvent[] = allEvents?.map((e) => ({
-        title: e.name,
-        type: e.type,
-        id: e.id,
-        subId: e.subId,
-        addressLine1: e.addressLine1,
-        organiser: e.organiser,
-        start: e.startDate!,
-        end: e.endDate!,
-        isOnline: e.isOnline,
-      }));
+      const ev: CalendarEvent[] = allEvents
+        .filter(
+          (e) => e.startDate && isAfter(new Date(e.startDate), new Date()),
+        )
+        .map((e) => ({
+          title: e.name,
+          type: e.type,
+          id: e.id,
+          subId: e.subId,
+          addressLine1: e.addressLine1,
+          organiser: e.organiser,
+          start: e.startDate!,
+          end: e.endDate!,
+          isOnline: e.isOnline,
+        }));
 
       if (ev) {
         setEvents(ev);
@@ -90,6 +94,7 @@ function DashboardCalendar() {
   ]);
 
   const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>();
+
   useEffect(() => {
     if (!events || filter.length === 0) {
       setFilteredEvents([]);
@@ -98,9 +103,11 @@ function DashboardCalendar() {
 
     setFilteredEvents(
       events &&
-        events.filter((e) =>
-          filter.length > 0 ? filter.includes(e.type! as CourseType) : true,
-        ),
+        events
+          .filter((e) =>
+            filter.length > 0 ? filter.includes(e.type! as CourseType) : true,
+          )
+          .filter((e) => e.start && isAfter(new Date(e.start), new Date())),
     );
   }, [events, filter, filter.length]);
 
