@@ -58,7 +58,9 @@ function DashboardCalendar() {
 
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
     language: i18n.language ?? 'en',
+    upcomingEvents: true,
   });
+
   const [events, setEvents] = useState<CalendarEvent[]>();
 
   useEffect(() => {
@@ -90,6 +92,7 @@ function DashboardCalendar() {
   ]);
 
   const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>();
+
   useEffect(() => {
     if (!events || filter.length === 0) {
       setFilteredEvents([]);
