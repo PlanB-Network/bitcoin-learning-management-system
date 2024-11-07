@@ -320,7 +320,11 @@
       "tryAgain": "",
       "verifyDisplayName": "",
       "whyTimeStamp": "",
-      "yesSubmit": ""
+      "yesSubmit": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "congratulationsPassed": "",
+      "tryOneMoreTime": ""
     },
     "review": {
       "commentTeacher": "",
@@ -352,7 +356,8 @@
       "yesVeryMuch": "",
       "commentPublic": "",
       "asExpected": "",
-      "commentAdmin": ""
+      "commentAdmin": "",
+      "loading": ""
     }
   },
   "dashboard": {
@@ -371,7 +376,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "account": "Conta",
     "courses": "Cursos",
