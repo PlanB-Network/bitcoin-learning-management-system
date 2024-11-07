@@ -19,7 +19,8 @@
     "missionContent1": "Nuestra misión es apoyar a las comunidades locales de Bitcoin a través de la educación en open source y el networking. Para hacerlo, recopilamos, organizamos y creamos los recursos necesarios (cursos, libros, pósters, volantes, videos) para que la industria de Bitcoin avance.",
     "commitmentContent": "Nuestros compromisos hacia la comunidad de bitcoin son los siguientes:\n • Permanecer de código abierto\n • Proporcionar contenido educativo de alta calidad\n • Traducir nuestros contenidos en tantos idiomas como sea posible\n • Apoyar a los constructores de Bitcoin en su viaje emprendedor",
     "corporateContent": "Plan ₿ Network es el proyecto conjunto de tres entidades centradas en el desarrollo de Bitcoin. En un esfuerzo por hacer que las capas de educación de Bitcoin escalen, decidieron colaborar para formar Plan ₿ Network. Desde entonces, muchas otras entidades decidieron contribuir y unir fuerzas para ayudarnos a llevar la educación de Bitcoin al mundo. Por esta razón, se les debe un enorme agradecimiento.",
-    "storyContent": "Plan ₿ Network es una iniciativa que apoya la educación de Bitcoin a nivel mundial. Es la colaboración de varias empresas apasionadas por Bitcoin enfocadas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir Plan ₿ Network y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer. Nuestra presentación de lanzamiento para 2023 está disponible aquí."
+    "storyContent": "Plan ₿ Network es una iniciativa que apoya la educación de Bitcoin a nivel mundial. Es la colaboración de varias empresas apasionadas por Bitcoin enfocadas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir Plan ₿ Network y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer. Nuestra presentación de lanzamiento para 2023 está disponible aquí.",
+    "manifesto": ""
   },
   "auth": {
     "newPassword": "Nueva contraseña",
@@ -148,11 +149,13 @@
         "p2heading": "",
         "p2content": "",
         "bookSeat": "",
-        "title": ""
+        "title": "",
+        "p1heading": ""
       },
       "nextLesson": "",
       "finishCourse": "",
-      "thanksTip": ""
+      "thanksTip": "",
+      "next": ""
     },
     "details": {
       "date": "",
@@ -187,7 +190,9 @@
       "payment_successful": "",
       "access_invoice": "",
       "payment_details": "",
-      "amount": ""
+      "amount": "",
+      "invoiceId": "",
+      "accessible": ""
     },
     "review": {
       "skip": "",
@@ -222,7 +227,9 @@
       "writeThoughts": "",
       "yesOfCourse": "",
       "yesVeryMuch": "",
-      "loading": ""
+      "loading": "",
+      "faithful": "",
+      "recommend": ""
     },
     "exam": {
       "score": "",
@@ -297,7 +304,10 @@
       "moreToCome": "",
       "pageDescription": "",
       "s2p1": "",
-      "s2p2": ""
+      "s2p2": "",
+      "seeCourse": "",
+      "findCourses": "",
+      "footerp1": ""
     },
     "payment": {
       "inPersonCallout": "",
@@ -442,7 +452,8 @@
     "planBConferences": "",
     "topics": "",
     "language": "",
-    "latestConferences": ""
+    "latestConferences": "",
+    "description": ""
   },
   "tutorials": {
     "mining": {
@@ -874,7 +885,8 @@
       "amount": "",
       "back_events": "",
       "access_online_successful": "",
-      "access_physical_successful": ""
+      "access_physical_successful": "",
+      "book_seat": ""
     },
     "card": {
       "free": "",
@@ -923,7 +935,8 @@
     "placeHolder": "",
     "randomSearch": "",
     "relatedWords": "",
-    "term": ""
+    "term": "",
+    "filterBar": ""
   },
   "imagesAlt": {
     "blueEllipse": "",
