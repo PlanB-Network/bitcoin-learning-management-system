@@ -1,1 +1,56 @@
-{}
+{
+  "courses": {
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
+    },
+    "quizz": {
+      "resultCongrats": "",
+      "resultItsOk": ""
+    },
+    "explorer": {
+      "pageDescription": "",
+      "s2p2": "",
+      "s2p1": "",
+      "moreToCome": ""
+    },
+    "review": {
+      "loading": ""
+    }
+  },
+  "dashboard": {
+    "myCourses": {
+      "whereYouAre": ""
+    },
+    "profile": {
+      "saving": ""
+    }
+  },
+  "resources": {
+    "headerText": ""
+  },
+  "tutorials": {
+    "details": {
+      "source": ""
+    },
+    "headerText": ""
+  },
+  "about": {
+    "missionContent2": "",
+    "coreTeamContent": ""
+  },
+  "auth": {
+    "checkingTokenExplain": ""
+  },
+  "bCertificate": {
+    "challengeYourself": ""
+  },
+  "home": {
+    "patreonSection": {
+      "content": "",
+      "title": ""
+    }
+  }
+}
