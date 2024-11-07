@@ -392,7 +392,11 @@
       "resultPerfect": "绝对完美！恭喜！"
     },
     "review": {
-      "loading": ""
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     },
     "exam": {
       "congratulationsPassed": "",
@@ -422,7 +426,9 @@
     "term": "术语",
     "filterBar": "找到你正在寻找的单词",
     "anotherWord": "寻找另一个词",
-    "definition": "定义"
+    "definition": "定义",
+    "creditsLoic": "",
+    "notTranslated": ""
   },
   "dashboard": {
     "profile": {
@@ -856,5 +862,11 @@
     "p1": "一只兔子跌进了一个洞。由于这次意外的历险，这个页面目前正在进行一些建设。我们对任何不便表示歉意。我们的团队正在全力以赴完成这个页面。如果你有兴趣帮忙，请随时查看我们",
     "p2": "并考虑加入我们的社区！",
     "pageTitle": "哎呀。"
+  },
+  "proofreading": {
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "description": ""
   }
 }
