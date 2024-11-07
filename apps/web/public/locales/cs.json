@@ -70,7 +70,8 @@
     "displayName": "",
     "newPassword": "",
     "passwordMinLength": "",
-    "emailTip": ""
+    "emailTip": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "educationalContent": {
@@ -316,7 +317,8 @@
       "tooLong": "",
       "tooShort": "",
       "veryGood": "",
-      "whatStudentsSay": ""
+      "whatStudentsSay": "",
+      "loading": ""
     },
     "exam": {
       "availableDashboard": "",
@@ -369,7 +371,11 @@
       "timeStampHow": "",
       "timerStart": "",
       "verifyDisplayName": "",
-      "whyTimeStamp": ""
+      "whyTimeStamp": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -410,7 +416,8 @@
       "viewDetails": "",
       "yourCertificate": "",
       "inprogressCoursesTitle": "",
-      "startCourse": ""
+      "startCourse": "",
+      "whereYouAre": ""
     },
     "courses": "Kurzy",
     "profile": {
@@ -430,7 +437,8 @@
       "profileInformation": "",
       "profilePicture": "",
       "security": "",
-      "emailChangeRateLimitError": ""
+      "emailChangeRateLimitError": "",
+      "saving": ""
     },
     "bCertificate": {
       "noResults": "",
@@ -1080,7 +1088,8 @@
     "noBookExam": "",
     "organizeExam": "",
     "organizeSubtitle": "",
-    "tweetText": ""
+    "tweetText": "",
+    "challengeYourself": ""
   },
   "glossary": {
     "creditsLoic": "",
