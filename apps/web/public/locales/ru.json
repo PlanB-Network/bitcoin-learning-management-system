@@ -388,6 +388,15 @@
       "financialCrisis": "Анализ крупнейших финансовых кризисов",
       "hyperinflation": "Изучение гиперинфляций",
       "theoreticalLightning": "Продвинутый теоретический курс по сети Lightning"
+    },
+    "review": {
+      "loading": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "tryOneMoreTime": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -424,7 +433,8 @@
       "inprogressCoursesTitle": "Текущие курсы",
       "inprogressCoursesDescription": "Здесь Вы можете проверить свой прогресс в курсах, которые Вы начали.",
       "seeProgress": "чтобы увидеть Ваш прогресс здесь.",
-      "startCourse": "Начать или завершить курс"
+      "startCourse": "Начать или завершить курс",
+      "whereYouAre": ""
     },
     "calendar": {
       "calendar": "Календарь",
