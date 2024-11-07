@@ -219,7 +219,8 @@
     "passwordMinLength": "",
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
-    "passwordResetError": ""
+    "passwordResetError": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "",
@@ -465,7 +466,8 @@
       "tooShort": "",
       "veryBad": "",
       "veryGood": "",
-      "yesVeryMuch": ""
+      "yesVeryMuch": "",
+      "loading": ""
     },
     "exam": {
       "passed": "",
@@ -518,7 +520,11 @@
       "letsConclude": "",
       "planBTimeStamp": "",
       "explanations": "",
-      "finalExam": ""
+      "finalExam": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -560,7 +566,8 @@
       "seeProgress": "",
       "startCourse": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "bCertificate": {
       "noResults": "",
@@ -585,7 +592,8 @@
       "password": "",
       "personalInformation": "",
       "profile": "",
-      "username": ""
+      "username": "",
+      "saving": ""
     },
     "teacher": {
       "courses": {
@@ -1080,7 +1088,8 @@
     "noBookExam": "",
     "organizeTitle": "",
     "pageSubtitle": "",
-    "tweetText": ""
+    "tweetText": "",
+    "challengeYourself": ""
   },
   "glossary": {
     "filterBar": "",
