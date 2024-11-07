@@ -70,7 +70,8 @@
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
     "emailTip": "",
-    "passwordResetSent": ""
+    "passwordResetSent": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "Dieses Toolkit ist offen für einen Beitrag. Es verwendet Figma, so dass jeder etwas hinzufügen, verändern und übersetzen kann. Um zusammenzuarbeiten, erstelle eine Kategorie oder starte eine Unterhaltung. Zögere nicht und komme in unseren Discord.",
@@ -319,7 +320,11 @@
       "tryAgain": "",
       "verifyDisplayName": "",
       "whyTimeStamp": "",
-      "wishTryAgain": ""
+      "wishTryAgain": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     },
     "review": {
       "skip": "",
@@ -355,7 +360,8 @@
       "recommend": "",
       "faithful": "",
       "feedbackDescription": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "loading": ""
     }
   },
   "dashboard": {
@@ -374,7 +380,8 @@
       "seeProgress": "",
       "startCourse": "",
       "viewDetails": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "account": "",
     "courses": "",
@@ -441,7 +448,8 @@
       "profile": "",
       "profileInformation": "",
       "username": "",
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "saving": ""
     },
     "bCertificate": {
       "bookExam": "",
@@ -1146,7 +1154,8 @@
     "bCertificateDescription": "",
     "curious": "",
     "readChart": "",
-    "organizeDescription": ""
+    "organizeDescription": "",
+    "challengeYourself": ""
   },
   "proofreading": {
     "completed": "",
