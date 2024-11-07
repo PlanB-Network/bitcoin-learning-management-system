@@ -548,7 +548,8 @@
   "home": {
     "patreonSection": {
       "title": "",
-      "content": ""
+      "content": "",
+      "subtitle": ""
     },
     "header": {
       "content": "",
@@ -598,7 +599,10 @@
       "title": "",
       "subtitle2": "",
       "link": "",
-      "availableLanguages": ""
+      "availableLanguages": "",
+      "subtitle": "",
+      "content1": "",
+      "content2": ""
     },
     "wallOfLoveSection": {
       "title": "",
@@ -954,7 +958,8 @@
       "download_ticket": "",
       "enjoy": "",
       "language": "",
-      "max_capacity": ""
+      "max_capacity": "",
+      "book_seat": ""
     }
   },
   "glossary": {
@@ -970,7 +975,8 @@
     "pageSubtitle": "",
     "pageTitle": "",
     "placeHolder": "",
-    "randomSearch": ""
+    "randomSearch": "",
+    "filterBar": ""
   },
   "imagesAlt": {
     "blueEllipse": "",
@@ -1006,13 +1012,28 @@
     "bCertificateDescription": "",
     "betDescription": "",
     "conferencesDescription": "",
-    "exchangesDescription": ""
+    "exchangesDescription": "",
+    "buildersDescription": "",
+    "btc101Description": ""
   },
   "nodeNetwork": {
     "mobiledescription": "",
     "apply": "",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionextend": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "pageSubtitle": "",
+    "pageTitle": "",
+    "question1": "",
+    "question2": "",
+    "question3": "",
+    "question4": "",
+    "question5": "",
+    "answer1": "",
+    "answer5": "",
+    "description1": ""
   },
   "notFound": {
     "pageTitle": "",
@@ -1024,7 +1045,8 @@
     "reviewEarn": "",
     "status": "",
     "completed": "",
-    "description": ""
+    "description": "",
+    "thanks": ""
   },
   "publicCommunication": {
     "title": "",
@@ -1057,7 +1079,8 @@
       "blogListButtonText": "",
       "filterText": "",
       "noBlogs": ""
-    }
+    },
+    "description": ""
   },
   "settings": {
     "changeDisplayName": "",
@@ -1076,19 +1099,24 @@
   },
   "podcasts": {
     "hostedBy": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "pageSubtitle": ""
   },
   "professors": {
     "pageTitle": "",
     "tips": {
-      "authorSupport": ""
+      "authorSupport": "",
+      "noTipsYet": "",
+      "thanks": "",
+      "thanksNoName": ""
     },
     "navigationTitles": {
       "all": "",
       "lecturers": "",
       "teachers": "",
       "tutorialCreators": ""
-    }
+    },
+    "pageSubtitle": ""
   },
   "underConstruction": {
     "github": "",
@@ -1101,6 +1129,7 @@
   "library": {
     "pageTitle": "",
     "publishedIn": "",
-    "writtenBy": ""
+    "writtenBy": "",
+    "pageSubtitle": ""
   }
 }
