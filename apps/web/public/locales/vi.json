@@ -278,7 +278,11 @@
       "timeStampHow": "",
       "timeStampHowDescription": "",
       "timerStart": "",
-      "tryAgain": ""
+      "tryAgain": "",
+      "congratulationsPassed": "",
+      "goodLuck": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": ""
     }
   },
   "events": {
@@ -455,7 +459,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "booking": {
       "invoiceTitle": "Tiêu đề",
