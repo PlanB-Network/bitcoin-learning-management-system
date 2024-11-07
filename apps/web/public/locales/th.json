@@ -284,6 +284,12 @@
       "tooShort": "สั้นเกินไป",
       "veryBad": "แย่มาก",
       "yesOfCourse": "ใช่ แน่นอน"
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "dashboard": {
@@ -297,7 +303,8 @@
       "completedCoursesTitle": "หลักสูตรที่เรียนจบแล้ว",
       "inprogressCoursesTitle": "หลักสูตรที่กำลังเรียน",
       "seeProgress": "ดูความคืบหน้าของคุณได้ที่นี่",
-      "startCourse": "เริ่มเรียนหลักสูตรหรือเรียนต่อให้จบ"
+      "startCourse": "เริ่มเรียนหลักสูตรหรือเรียนต่อให้จบ",
+      "whereYouAre": ""
     },
     "account": "บัญชี",
     "courses": "หลักสูตร",
