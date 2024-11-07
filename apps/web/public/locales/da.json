@@ -70,7 +70,8 @@
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
     "backToLogin": "",
-    "passwordResetSent": ""
+    "passwordResetSent": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -302,7 +303,8 @@
       "faithful": "",
       "recommend": "",
       "feedbackDescription": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "loading": ""
     },
     "exam": {
       "finalExam": "",
@@ -355,7 +357,11 @@
       "timeStampBenefits": "",
       "timeStamped": "",
       "timeStampHow": "",
-      "tryAgain": ""
+      "tryAgain": "",
+      "goodLuck": "",
+      "dontGiveUpTryAgain": "",
+      "congratulationsPassed": "",
+      "tryOneMoreTime": ""
     }
   },
   "dashboard": {
@@ -374,7 +380,8 @@
       "downloadPdf": "",
       "viewDetails": "",
       "yourCertificate": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "account": "",
     "courses": "",
@@ -430,7 +437,8 @@
       "emailChangeRateLimitError": "",
       "email": "",
       "password": "",
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "saving": ""
     },
     "teacher": {
       "reviews": {
@@ -1096,7 +1104,8 @@
     "joeNakamotoVideo": "",
     "organizeDescription": "",
     "readChart": "",
-    "bCertificateDescription": ""
+    "bCertificateDescription": "",
+    "challengeYourself": ""
   },
   "proofreading": {
     "completed": "",
