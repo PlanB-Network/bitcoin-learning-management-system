@@ -357,7 +357,11 @@
       "commentPublic": "",
       "asExpected": "",
       "commentAdmin": "",
-      "loading": ""
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     }
   },
   "dashboard": {
@@ -1171,6 +1175,7 @@
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "thanks": ""
   }
 }
