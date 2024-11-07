@@ -44,7 +44,8 @@
     "passwordRequired": "Password is required",
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
@@ -220,6 +221,15 @@
       "financialCrisis": "Analyse des crises financières majeures",
       "hyperinflation": "Etude des hyperinflations",
       "theoreticalLightning": "Cours théorique avancé sur le Lightning Network"
+    },
+    "review": {
+      "loading": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "dashboard": {
@@ -227,7 +237,8 @@
       "resumeLesson": "Resume the lesson",
       "completed": "",
       "details": "",
-      "inprogress": ""
+      "inprogress": "",
+      "whereYouAre": ""
     },
     "account": "",
     "courses": "",
@@ -251,7 +262,10 @@
       "upcomingTicketTitle": "",
       "upcomingTicketSubtitle": ""
     },
-    "bookings": ""
+    "bookings": "",
+    "profile": {
+      "saving": ""
+    }
   },
   "events": {
     "introduction": {
@@ -726,5 +740,8 @@
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "bCertificate": {
+    "challengeYourself": ""
   }
 }
