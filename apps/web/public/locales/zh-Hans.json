@@ -390,6 +390,15 @@
       "resultItsOk": "别放弃，你下次会做得更好！",
       "resultNotBad": "还不错！",
       "resultPerfect": "绝对完美！恭喜！"
+    },
+    "review": {
+      "loading": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "builders": {
@@ -471,7 +480,8 @@
       "inprogressCoursesDescription": "在这里，您可以查看您已开始的课程的进度。",
       "resumeLesson": "摘要",
       "seeProgress": "在这里查看你的进度。",
-      "startCourse": "开始或完成一门课程"
+      "startCourse": "开始或完成一门课程",
+      "whereYouAre": ""
     },
     "bCertificate": {
       "assertLevel": "确认你在比特币方面的水平",
