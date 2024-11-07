@@ -357,7 +357,11 @@
       "retakeInstructions": "",
       "submit": "",
       "sureSubmit": "",
-      "testResults": ""
+      "testResults": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": "",
+      "congratulationsPassed": ""
     }
   },
   "dashboard": {
@@ -376,7 +380,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "account": "Cuenta",
     "courses": "Cursos",
