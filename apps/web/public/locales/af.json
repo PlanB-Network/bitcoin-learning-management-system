@@ -177,7 +177,8 @@
       "soAndSo": "",
       "submitReview": "",
       "tooEasy": "",
-      "tooHard": ""
+      "tooHard": "",
+      "loading": ""
     },
     "exam": {
       "notTranslatedYet": "",
@@ -230,7 +231,11 @@
       "startExam": "",
       "submit": "",
       "timeStamped": "",
-      "verifyDisplayName": ""
+      "verifyDisplayName": "",
+      "dontGiveUpTryAgain": "",
+      "congratulationsPassed": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "words": {
@@ -453,7 +458,8 @@
     "passwordMinLength": "",
     "confirmation": "",
     "displayName": "",
-    "tryAgain": ""
+    "tryAgain": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "",
@@ -560,7 +566,8 @@
       "seeProgress": "",
       "startCourse": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "bCertificate": {
       "noResults": "",
@@ -585,7 +592,8 @@
       "personalInformation": "",
       "profileInformation": "",
       "profilePicture": "",
-      "username": ""
+      "username": "",
+      "saving": ""
     },
     "course": {
       "tweetText": "",
@@ -1130,7 +1138,8 @@
     "bookExam": "",
     "checkout": "",
     "knowledgeableBitcoin": "",
-    "tweetText": ""
+    "tweetText": "",
+    "challengeYourself": ""
   },
   "proofreading": {
     "thanks": "",
