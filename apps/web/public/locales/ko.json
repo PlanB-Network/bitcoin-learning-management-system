@@ -138,7 +138,8 @@
     "passwordRequired": "",
     "passwordsDontMatch": "",
     "sendLink": "",
-    "signIn": ""
+    "signIn": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "",
@@ -328,6 +329,15 @@
       "financialCrisis": "",
       "hyperinflation": "",
       "theoreticalLightning": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "goodLuck": "",
+      "tryOneMoreTime": "",
+      "dontGiveUpTryAgain": ""
+    },
+    "review": {
+      "loading": ""
     }
   },
   "dashboard": {
@@ -358,7 +368,11 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "resumeLesson": ""
+      "resumeLesson": "",
+      "whereYouAre": ""
+    },
+    "profile": {
+      "saving": ""
     }
   },
   "events": {
@@ -710,5 +724,8 @@
     "p1": "",
     "p2": "",
     "pageTitle": ""
+  },
+  "bCertificate": {
+    "challengeYourself": ""
   }
 }
