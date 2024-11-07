@@ -15,7 +15,9 @@
     "corporateContent": "",
     "coportateContact": "",
     "storyTitle": "",
-    "subtitle": ""
+    "subtitle": "",
+    "missionContent2": "",
+    "coreTeamContent": ""
   },
   "bet": {
     "hereForYou": "",
@@ -137,7 +139,11 @@
       "footerTitle": "",
       "footerp2": "",
       "journey": "",
-      "s3t1": ""
+      "s3t1": "",
+      "s2p1": "",
+      "s2p2": "",
+      "moreToCome": "",
+      "pageDescription": ""
     },
     "payment": {
       "payment_successful": "",
@@ -213,7 +219,11 @@
       "planBTimeStamp": "",
       "quitWithoutSubmitting": "",
       "retakeExam": "",
-      "retakeInstructions": ""
+      "retakeInstructions": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     },
     "part": {
       "count": ""
@@ -252,7 +262,12 @@
       "whatStudentsSay": "",
       "writeThoughts": "",
       "yesVeryMuch": "",
-      "difficulty": ""
+      "difficulty": "",
+      "loading": ""
+    },
+    "quizz": {
+      "resultCongrats": "",
+      "resultItsOk": ""
     }
   },
   "events": {
@@ -363,7 +378,8 @@
       "enjoyed": "",
       "madeBy": "",
       "tipTooltip": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "source": ""
     },
     "headerSignature": "",
     "exchange": {
@@ -453,7 +469,8 @@
       },
       "shortDescription": "",
       "title": ""
-    }
+    },
+    "headerText": ""
   },
   "words": {
     "helpUs": "",
@@ -650,7 +667,8 @@
     "passwordResetError": "",
     "passwordResetSent": "",
     "tryAgain": "",
-    "signIn": ""
+    "signIn": "",
+    "checkingTokenExplain": ""
   },
   "bCertificate": {
     "organizeExam": "",
@@ -666,7 +684,8 @@
     "organizeTitle": "",
     "pageSubtitle": "",
     "pageTitle": "",
-    "readChart": ""
+    "readChart": "",
+    "challengeYourself": ""
   },
   "book": {
     "bookSummary": {
@@ -696,7 +715,8 @@
       "seeProgress": "",
       "startCourse": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "teacher": {
       "profile": {
@@ -822,7 +842,8 @@
       "profilePicture": "",
       "security": "",
       "username": "",
-      "change": ""
+      "change": "",
+      "saving": ""
     }
   },
   "resources": {
@@ -862,7 +883,8 @@
       "title": ""
     },
     "filterBarLabel": "",
-    "pageSubtitle": ""
+    "pageSubtitle": "",
+    "headerText": ""
   },
   "glossary": {
     "anotherWord": "",
@@ -908,6 +930,10 @@
     "wallOfLoveSection": {
       "title": "",
       "subtitle": ""
+    },
+    "patreonSection": {
+      "title": "",
+      "content": ""
     }
   },
   "imagesAlt": {
