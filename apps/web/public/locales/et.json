@@ -640,7 +640,11 @@
       "displayOutOf": "",
       "asExpected": "",
       "commentAdmin": "",
-      "commentPublic": ""
+      "commentPublic": "",
+      "faithful": "",
+      "recommend": "",
+      "feedbackDescription": "",
+      "yesOfCourse": ""
     }
   },
   "dashboard": {
@@ -880,7 +884,9 @@
     "needHelp": "Vajate abi tehnilise sõna määratlemisel ?",
     "keepLooking": "Soovid edasi otsida ?",
     "pageSubtitle": "Vajate abi tehnilise sõna määratlemisel ?",
-    "placeHolder": "Mis see on ?"
+    "placeHolder": "Mis see on ?",
+    "notTranslated": "",
+    "creditsLoic": ""
   },
   "home": {
     "header": {
@@ -1100,7 +1106,8 @@
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "thanks": ""
   },
   "publicCommunication": {
     "blogPageStrings": {
@@ -1133,6 +1140,7 @@
       "feature": ""
     },
     "blogPost": "",
-    "legal": ""
+    "legal": "",
+    "description": ""
   }
 }
