@@ -284,6 +284,12 @@
       "writeThoughts": "Hier können Sie Ihre Gedanken aufschreiben",
       "yesOfCourse": "ja, natürlich",
       "yesVeryMuch": "ja, sehr gerne"
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -297,7 +303,8 @@
       "completedCoursesTitle": "Abgeschlossene Kurse",
       "completedCoursesDescription": "Hier können Sie Ihre abgeschlossenen Kurse überprüfen.",
       "inprogressCoursesTitle": "Laufende Kurse",
-      "inprogressCoursesDescription": "Hier können Sie Ihren Fortschritt in den von Ihnen begonnenen Kursen überprüfen."
+      "inprogressCoursesDescription": "Hier können Sie Ihren Fortschritt in den von Ihnen begonnenen Kursen überprüfen.",
+      "whereYouAre": ""
     },
     "account": "Konto",
     "courses": "Kurse",
