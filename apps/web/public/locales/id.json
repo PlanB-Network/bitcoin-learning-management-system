@@ -258,6 +258,15 @@
       "financialCrisis": "Analisis krisis keuangan besar",
       "hyperinflation": "Studi tentang hiperinflasi",
       "theoreticalLightning": "Kuliah teori tingkat lanjut tentang jaringan Lightning"
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
+    },
+    "review": {
+      "loading": ""
     }
   },
   "dashboard": {
@@ -271,7 +280,8 @@
       "inprogress": "Sedang berlangsung",
       "resumeLesson": "Lanjutkan",
       "seeProgress": "untuk melihat perkembangan Anda.",
-      "startCourse": "Mulai atau selesaikan kursus"
+      "startCourse": "Mulai atau selesaikan kursus",
+      "whereYouAre": ""
     },
     "booking": {
       "downloadTicket": "Unduh tiket",
