@@ -608,7 +608,11 @@
       "retakeExam": "",
       "skipExam": "",
       "skipExamGoConclusion": "",
-      "startExam": ""
+      "startExam": "",
+      "tryOneMoreTime": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "congratulationsPassed": ""
     },
     "review": {
       "commentTeacher": "",
@@ -644,7 +648,8 @@
       "faithful": "",
       "recommend": "",
       "feedbackDescription": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "loading": ""
     }
   },
   "dashboard": {
@@ -688,7 +693,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "profile": {
       "change": "Muuda",
