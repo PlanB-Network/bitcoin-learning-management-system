@@ -18,7 +18,9 @@
     "subtitle": "",
     "commitmentContent": "",
     "corporateTitle": "",
-    "manifesto": ""
+    "manifesto": "",
+    "missionContent2": "",
+    "coreTeamContent": ""
   },
   "auth": {
     "resetPassword": "",
@@ -68,7 +70,8 @@
     "passwordResetError": "",
     "passwordResetSent": "",
     "signIn": "",
-    "emailTip": ""
+    "emailTip": "",
+    "checkingTokenExplain": ""
   },
   "book": {
     "bookSummary": {
@@ -100,7 +103,8 @@
     "bCertificateDescription": "",
     "curious": "",
     "organizeDescription": "",
-    "readChart": ""
+    "readChart": "",
+    "challengeYourself": ""
   },
   "bet": {
     "pageTitle": "",
@@ -242,7 +246,11 @@
       "s3PickTopic": "",
       "findCourses": "",
       "seeCourse": "",
-      "footerp1": ""
+      "footerp1": "",
+      "pageDescription": "",
+      "s2p2": "",
+      "moreToCome": "",
+      "s2p1": ""
     },
     "exam": {
       "findInformationChapter": "",
@@ -295,7 +303,11 @@
       "timeLeft": "",
       "timeStampBenefits": "",
       "timeStamped": "",
-      "timeStampHow": ""
+      "timeStampHow": "",
+      "goodLuck": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": ""
     },
     "part": {
       "count": ""
@@ -358,7 +370,8 @@
       "faithful": "",
       "feedbackDescription": "",
       "recommend": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "loading": ""
     },
     "quizz": {
       "clickOnPie": "",
@@ -366,7 +379,9 @@
       "quizzReview": "",
       "resultNotBad": "",
       "resultPerfect": "",
-      "quizz": ""
+      "quizz": "",
+      "resultCongrats": "",
+      "resultItsOk": ""
     },
     "unreleased": {
       "colcardAndSparrow": "",
@@ -643,7 +658,8 @@
       "startCourse": "",
       "viewDetails": "",
       "yourCertificate": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "credentials": {
       "takePlaceAt": "",
@@ -676,7 +692,8 @@
       "profilePicture": "",
       "security": "",
       "username": "",
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "saving": ""
     },
     "teacher": {
       "courses": {
@@ -810,7 +827,8 @@
       "title": ""
     },
     "publicGrade": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "headerText": ""
   },
   "tutorials": {
     "approvedByCreator": "",
@@ -871,7 +889,8 @@
       "enjoyed": "",
       "madeBy": "",
       "tipTooltip": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "source": ""
     },
     "exchange": {
       "centralized": {
@@ -910,7 +929,8 @@
       "shortDescription": "",
       "title": ""
     },
-    "pageDescription": ""
+    "pageDescription": "",
+    "headerText": ""
   },
   "underConstruction": {
     "github": "",
@@ -995,7 +1015,9 @@
       "networkMember": ""
     },
     "patreonSection": {
-      "subtitle": ""
+      "subtitle": "",
+      "title": "",
+      "content": ""
     }
   },
   "imagesAlt": {
