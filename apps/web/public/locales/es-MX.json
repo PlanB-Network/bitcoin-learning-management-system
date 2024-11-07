@@ -221,7 +221,8 @@
       "whatStudentsSay": "",
       "writeThoughts": "",
       "yesOfCourse": "",
-      "yesVeryMuch": ""
+      "yesVeryMuch": "",
+      "loading": ""
     },
     "exam": {
       "score": "",
@@ -274,7 +275,11 @@
       "verifyDisplayName": "",
       "whyTimeStamp": "",
       "wishTryAgain": "",
-      "yesSubmit": ""
+      "yesSubmit": "",
+      "dontGiveUpTryAgain": "",
+      "congratulationsPassed": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     },
     "explorer": {
       "footerp2": "",
@@ -288,7 +293,11 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "moreToCome": "",
+      "pageDescription": "",
+      "s2p1": "",
+      "s2p2": ""
     },
     "payment": {
       "inPersonCallout": "",
@@ -334,7 +343,9 @@
       "quizzResults": "",
       "quizzReview": "",
       "resultNotBad": "",
-      "resultPerfect": ""
+      "resultPerfect": "",
+      "resultCongrats": "",
+      "resultItsOk": ""
     }
   },
   "home": {
@@ -396,7 +407,9 @@
       "networkMember": ""
     },
     "patreonSection": {
-      "subtitle": ""
+      "subtitle": "",
+      "title": "",
+      "content": ""
     }
   },
   "builders": {
@@ -446,7 +459,8 @@
       "tipTooltip": "",
       "writtenBy": "",
       "author": "",
-      "checkAuthor": ""
+      "checkAuthor": "",
+      "source": ""
     },
     "exchange": {
       "centralized": {
@@ -529,7 +543,8 @@
     },
     "pageDescription": "",
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "headerText": ""
   },
   "dashboard": {
     "course": {
@@ -559,7 +574,8 @@
       "profileInformation": "",
       "username": "",
       "profilePicture": "",
-      "security": ""
+      "security": "",
+      "saving": ""
     },
     "teacher": {
       "courses": {
@@ -654,7 +670,8 @@
       "startCourse": "",
       "viewDetails": "",
       "yourCertificate": "",
-      "inprogressCoursesTitle": ""
+      "inprogressCoursesTitle": "",
+      "whereYouAre": ""
     },
     "credentials": {
       "bCertificate": "",
@@ -1071,7 +1088,8 @@
       "title": ""
     },
     "publicGrade": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "headerText": ""
   },
   "settings": {
     "changeDisplayName": "",
