@@ -73,13 +73,15 @@
       "details": "",
       "inprogress": "",
       "resumeLesson": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "bCertificate": {
       "noResults": ""
     },
     "profile": {
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "saving": ""
     }
   },
   "payment": {
@@ -404,7 +406,14 @@
       "feedbackDescription": "",
       "yesOfCourse": "",
       "faithful": "",
-      "recommend": ""
+      "recommend": "",
+      "loading": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "nodeNetwork": {
