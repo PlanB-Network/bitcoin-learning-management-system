@@ -14,10 +14,25 @@
       "pageDescription": "",
       "s2p2": "",
       "s2p1": "",
-      "moreToCome": ""
+      "moreToCome": "",
+      "findCourses": "",
+      "footerp1": "",
+      "seeCourse": ""
     },
     "review": {
-      "loading": ""
+      "loading": "",
+      "recommend": "",
+      "faithful": ""
+    },
+    "details": {
+      "invoiceId": "",
+      "accessible": ""
+    },
+    "chapter": {
+      "next": "",
+      "detail": {
+        "p1heading": ""
+      }
     }
   },
   "dashboard": {
@@ -39,18 +54,51 @@
   },
   "about": {
     "missionContent2": "",
-    "coreTeamContent": ""
+    "coreTeamContent": "",
+    "commitmentContent": "",
+    "corporateTitle": "",
+    "manifesto": ""
   },
   "auth": {
-    "checkingTokenExplain": ""
+    "checkingTokenExplain": "",
+    "errors": {
+      "displayNameRegex": "",
+      "usernameRegex": ""
+    }
   },
   "bCertificate": {
-    "challengeYourself": ""
+    "challengeYourself": "",
+    "bCertificateDescription": ""
   },
   "home": {
     "patreonSection": {
       "content": "",
       "title": ""
     }
+  },
+  "bet": {
+    "contributeButton": "",
+    "contribute": "",
+    "educationalContent": {
+      "description": ""
+    },
+    "pageDescription": ""
+  },
+  "book": {
+    "bookSummary": {
+      "notice": ""
+    },
+    "pageSubtitle": ""
+  },
+  "conferences": {
+    "description": ""
+  },
+  "events": {
+    "payment": {
+      "book_seat": ""
+    }
+  },
+  "glossary": {
+    "filterBar": ""
   }
 }
