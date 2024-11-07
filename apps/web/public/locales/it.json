@@ -357,7 +357,11 @@
       "retakeExam": "",
       "retakeInstructions": "",
       "sameRules": "",
-      "score": ""
+      "score": "",
+      "tryOneMoreTime": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -376,7 +380,8 @@
       "done": "",
       "downloadPdf": "",
       "viewDetails": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "account": "Account",
     "courses": "Corsi",
