@@ -37,7 +37,8 @@
       "emailInvalid": "",
       "displayNameRequired": "",
       "displayNameTooShort": "",
-      "invalidCredentials": ""
+      "invalidCredentials": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Unohditko salasanasi?",
     "headerAccountCreated": "Tili luotu",
@@ -69,7 +70,8 @@
     "displayName": "",
     "invalidToken": "",
     "checkingToken": "",
-    "checkingTokenExplain": ""
+    "checkingTokenExplain": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "Tämä työkalupakki on avoinna muokkauksille ja lisäyksille. Se käyttää Figmaa, joten kuka tahansa voi lisätä, muokata ja kääntää sitä. Jos haluat osallistua, lisätä kategorian tai keskustella, älä epäröi liittyä Discord-kanavallemme.",
@@ -84,7 +86,10 @@
     "visualContent": {
       "description": "Tämä sisältö on raakaa visuaalista dataa, jota voit käyttää omiin luomuksiisi.",
       "title": "Visuaalinen sisältö"
-    }
+    },
+    "contributeButton": "",
+    "contributeDescription": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "Abstrakti",
@@ -107,7 +112,8 @@
     "languages": "",
     "otherCommunities": "",
     "networkStrength": "",
-    "relatedEvents": ""
+    "relatedEvents": "",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
@@ -200,7 +206,9 @@
       "s3t1": "Rakenna oma polkusi kaninkolon syövereihin",
       "buildPath": "",
       "exploreCourses": "",
-      "journey": ""
+      "journey": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -349,7 +357,11 @@
       "loadMoreComments": "",
       "neutral": "",
       "tooShort": "",
-      "loading": ""
+      "loading": "",
+      "yesOfCourse": "",
+      "recommend": "",
+      "faithful": "",
+      "feedbackDescription": ""
     }
   },
   "dashboard": {
@@ -368,7 +380,8 @@
       "completedCoursesDescription": "",
       "completedOutOf": "",
       "done": "",
-      "whereYouAre": ""
+      "whereYouAre": "",
+      "inprogressCoursesDescription": ""
     },
     "account": "Tili",
     "courses": "Luennot",
@@ -410,7 +423,8 @@
       "save": "",
       "crop": "",
       "emailChangeRateLimitError": "",
-      "saving": ""
+      "saving": "",
+      "emailChangeConfirmation": ""
     },
     "teacher": {
       "reviews": {
@@ -473,7 +487,8 @@
     "bCertificate": {
       "bookExam": "",
       "certificate": "",
-      "grade": ""
+      "grade": "",
+      "noResults": ""
     },
     "calendar": {
       "calendar": "",
@@ -1085,7 +1100,12 @@
     "knowledgeableBitcoin": "",
     "noBookExam": "",
     "tweetText": "",
-    "challengeYourself": ""
+    "challengeYourself": "",
+    "readChart": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "bCertificateDescription": "",
+    "organizeDescription": ""
   },
   "publicCommunication": {
     "title": "",
@@ -1118,7 +1138,8 @@
       "blogListButtonText": "",
       "filterText": "",
       "noBlogs": ""
-    }
+    },
+    "description": ""
   },
   "glossary": {
     "definition": "",
@@ -1126,13 +1147,22 @@
     "loadMoreWords": "",
     "pageTitle": "",
     "randomSearch": "",
-    "term": ""
+    "term": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "filterBar": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
   },
   "proofreading": {
     "completed": "",
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "thanks": ""
   }
 }
