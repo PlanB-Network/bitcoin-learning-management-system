@@ -390,7 +390,11 @@
       "theoreticalLightning": "Продвинутый теоретический курс по сети Lightning"
     },
     "review": {
-      "loading": ""
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     },
     "exam": {
       "congratulationsPassed": "",
@@ -873,7 +877,9 @@
     "placeHolder": "Что это?",
     "randomSearch": "Случайный поиск",
     "relatedWords": "Связанные слова :",
-    "term": "Термин"
+    "term": "Термин",
+    "creditsLoic": "",
+    "notTranslated": ""
   },
   "publicCommunication": {
     "blogCategories": {
@@ -890,5 +896,8 @@
     },
     "title": "Публичное общение",
     "description": "В Сети Plan B мы используем стандарты открытого кода и поддерживаем прозрачность на нашем пути"
+  },
+  "proofreading": {
+    "thanks": ""
   }
 }
