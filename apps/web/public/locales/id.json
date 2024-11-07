@@ -362,7 +362,11 @@
       "soAndSo": "",
       "submitReview": "",
       "tooEasy": "",
-      "tooHard": ""
+      "tooHard": "",
+      "faithful": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "recommend": ""
     }
   },
   "dashboard": {
@@ -996,7 +1000,9 @@
     "placeHolder": "Apa ini?",
     "randomSearch": "Pencarian acak",
     "relatedWords": "Kata terkait :",
-    "term": "Istilah"
+    "term": "Istilah",
+    "creditsLoic": "",
+    "notTranslated": ""
   },
   "imagesAlt": {
     "blueEllipse": "sebuah elips biru",
@@ -1102,7 +1108,8 @@
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "thanks": ""
   },
   "publicCommunication": {
     "title": "",
@@ -1135,6 +1142,7 @@
       "blogListButtonText": "",
       "filterText": "",
       "noBlogs": ""
-    }
+    },
+    "description": ""
   }
 }
