@@ -68,7 +68,8 @@
     "confirmation": "",
     "displayName": "",
     "invalidToken": "",
-    "checkingToken": ""
+    "checkingToken": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "Tämä työkalupakki on avoinna muokkauksille ja lisäyksille. Se käyttää Figmaa, joten kuka tahansa voi lisätä, muokata ja kääntää sitä. Jos haluat osallistua, lisätä kategorian tai keskustella, älä epäröi liittyä Discord-kanavallemme.",
@@ -311,7 +312,11 @@
       "verifyDisplayName": "",
       "whyTimeStamp": "",
       "yesSubmit": "",
-      "wishTryAgain": ""
+      "wishTryAgain": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     },
     "review": {
       "asExpected": "",
@@ -343,7 +348,8 @@
       "length": "",
       "loadMoreComments": "",
       "neutral": "",
-      "tooShort": ""
+      "tooShort": "",
+      "loading": ""
     }
   },
   "dashboard": {
@@ -361,7 +367,8 @@
       "completedCoursesTitle": "",
       "completedCoursesDescription": "",
       "completedOutOf": "",
-      "done": ""
+      "done": "",
+      "whereYouAre": ""
     },
     "account": "Tili",
     "courses": "Luennot",
@@ -402,7 +409,8 @@
       "profile": "",
       "save": "",
       "crop": "",
-      "emailChangeRateLimitError": ""
+      "emailChangeRateLimitError": "",
+      "saving": ""
     },
     "teacher": {
       "reviews": {
@@ -1076,7 +1084,8 @@
     "checkout": "",
     "knowledgeableBitcoin": "",
     "noBookExam": "",
-    "tweetText": ""
+    "tweetText": "",
+    "challengeYourself": ""
   },
   "publicCommunication": {
     "title": "",
