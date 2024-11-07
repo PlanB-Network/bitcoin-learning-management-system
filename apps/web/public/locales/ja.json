@@ -46,7 +46,8 @@
     "passwordsDontMatch": "パスワードが一致しません",
     "sendLink": "リンクを送信する",
     "signIn": "ログイン",
-    "passwordResetSent": ""
+    "passwordResetSent": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "このツールキットは支援を受け付けています。Figmaを使用していますので、誰でも追加、修正、翻訳ができます。協力したり、カテゴリーを追加したり、議論したりしたい方は、遠慮なく私たちのDiscordにご参加ください。",
@@ -233,7 +234,14 @@
       "feedbackDescription": "",
       "faithful": "",
       "recommend": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "loading": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
     }
   },
   "dashboard": {
@@ -242,7 +250,8 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "account": "",
     "courses": "",
@@ -271,7 +280,8 @@
       "noResults": ""
     },
     "profile": {
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "saving": ""
     }
   },
   "events": {
@@ -753,7 +763,8 @@
     "curious": "",
     "joeNakamotoVideo": "",
     "readChart": "",
-    "organizeDescription": ""
+    "organizeDescription": "",
+    "challengeYourself": ""
   },
   "glossary": {
     "creditsLoic": "",
