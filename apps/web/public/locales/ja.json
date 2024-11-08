@@ -19,7 +19,7 @@
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "title": "About the planB network",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-    "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。",
+    "manifesto": "私たちはビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。私たちのツールは教育と情報です。\n\nオープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちのローカル・コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちはビットコイン・オンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちはシンプルさを促し、教育し、共有します。\n\n世界をオレンジ色に染める（オレンジ・ピル）という私たちのミッションに参加しませんか。\n",
     "description": ""
   },
   "auth": {
@@ -74,7 +74,7 @@
     "offeredBy": "寛大なコントリビュータによって提供されました",
     "pageSubtitle": "このライブラリはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
     "pageTitle": "ライブラリ",
-    "topicsAddressed": "トピックのアドレス： "
+    "topicsAddressed": "トピックのアドレス："
   },
   "builders": {
     "pageSubtitle": "このポータルはオープンソースであり、いつでも支援を受け付けています。評価と共有に感謝します！",
@@ -352,7 +352,7 @@
       "link": "すべてのチュートリアルを見る"
     },
     "aboutUsSection": {
-      "title": "私たちについて",
+      "title": "私たちについて?",
       "subtitle": "私たちについて少しだけ",
       "content": "PlanBネットワークは、世界中のビットコイン教育を支援するイニシアチブです。これは、教育、オープンソース・ソフトウェア、ピアツーピア・ネットワーク、コミュニティ運営に焦点を当てた様々な情熱的なビットコイン企業のクロスオーバー・チームです。彼らは共にPlanBネットワークを構築し、ビットコイン・エコシステムが成長するための適切なツールの提供を決定しました。",
       "bitcoinFocusTitle": "ビットコイン・ファースト",
@@ -374,7 +374,7 @@
       "availableLanguages": ""
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
+      "title": "Together let's make Bitcoin education better !",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
     }
@@ -503,7 +503,7 @@
   },
   "tutorials": {
     "details": {
-      "checkAuthor": "作成者の他の貢献物もチェックし、同時にサポートしていただけませんか？",
+      "checkAuthor": "作成者の他の貢献物もチェックして、サポートをお願いします。",
       "enjoyed": "このチュートリアルを楽しんでいただけましたか？",
       "madeBy": "このチュートリアルの作成者：",
       "source": "オリジナル・ソース：",

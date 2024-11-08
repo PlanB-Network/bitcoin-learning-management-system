@@ -19,7 +19,7 @@
     "storyContent": "Sieć PlanB to inicjatywa mająca na celu wspieranie edukacji na temat Bitcoina na całym świecie. Jest to połączenie różnych, pełnych pasji firm z branży Bitcoin skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i poczuciu wspólnoty. Razem postanowiły stworzyć sieć PlanB i oferować ekosystemowi Bitcoina odpowiednie narzędzia do rozwoju. Nasza prezentacja na rok 2023 jest dostępna tutaj.",
     "title": "O sieci PlanB",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-    "manifesto": "Wierzymy w zdecentralizowaną przyszłość, którą oferuje Bitcoin.\n\nNaszym zadaniem jest zapoznanie z Bitcoinem  miliarda osób w ciągu dekady, a naszymi narzędziami są edukacja i informacja.\n\nWspieramy lokalne społeczności Bitcoinerów, dostarczając otwartych treści edukacyjnych  i oferując sieć mentorów Bitcoin.\n\nNasza filozofia jest inspirowana manifestem cypherpunk. Bronimy edukacji tak, jak oni bronili prywatności. Wierzymy, że wiedza jest fundamentem wolności i zmiany.\n\nJesteśmy zainteresowani  tylko Bitcoinem.\n\nOpowiadamy się za indywidualną odpowiedzialnością i niezależnością, którą daje posiadanie własnych kluczy.\n\nNawołujemy do weryfikacji, a nie ślepego zaufania.\n\nWierzymy, że naprawiając pieniądze, możemy naprawić świat.\n\nJesteśmy zdecentralizowani i open-source, unikając w ten sposób jakichkolwiek pojedynczych krytycznych punktów wystąpienia awarii.\n\nZachęcamy do darmowego rozpowszechniania naszych treści.\n\nAspirujemy do świata, który działa od dołu do góry, gdzie jednostka jest w centrum.\n\nUpraszczamy, edukujemy, udostepniamy.\n\nDołącz do  naszej misji poczęstowania świata pomarańczową pigułką!\n",
+    "manifesto": "Wierzymy w zdecentralizowaną przyszłość, którą oferuje Bitcoin.\n\nNaszym zadaniem jest zapoznanie z Bitcoinem miliarda osób w ciągu dekady, a naszymi narzędziami są edukacja i informacja.\n\nWspieramy lokalne społeczności Bitcoinerów, dostarczając otwartych treści edukacyjnych i oferując sieć mentorów Bitcoin.\n\nNasza filozofia jest inspirowana manifestem cypherpunk. Bronimy edukacji tak, jak oni bronili prywatności. Wierzymy, że wiedza jest fundamentem wolności i zmiany.\n\nJesteśmy zainteresowani tylko Bitcoinem.\n\nOpowiadamy się za indywidualną odpowiedzialnością i niezależnością, którą daje posiadanie własnych kluczy.\n\nNawołujemy do weryfikacji, a nie ślepego zaufania.\n\nWierzymy, że naprawiając pieniądze, możemy naprawić świat.\n\nJesteśmy zdecentralizowani i open-source, unikając w ten sposób jakichkolwiek pojedynczych krytycznych punktów wystąpienia awarii.\n\nZachęcamy do darmowego rozpowszechniania naszych treści.\n\nAspirujemy do świata, który działa od dołu do góry, gdzie jednostka jest w centrum.\n\nUpraszczamy, edukujemy, udostepniamy.\n\nDołącz do naszej misji poczęstowania świata pomarańczową pigułką!\n",
     "description": "Sieć Plan B pomaga organizować się społecznościom na całym świecie, aby mogły polepszać jakość swojej oferty edukacyjnej. Platforma opracowuje  narzędzia niezbędne do osiągnięcia tego celu, takie jak akademia online, portal z samouczkami, zestaw edukacyjny Bitcoin i portal z materiałami edukacyjnymi."
   },
   "auth": {
@@ -57,7 +57,7 @@
     "backToHome": "Wróć na stronę startową",
     "invalidToken": "Nieprawidłowy token",
     "checkingToken": "Sprawdzanie tokenu",
-    "checkingTokenExplain": "Sprawdzamy, czy token jest ważny...",
+    "checkingTokenExplain": "Sprawdzamy, czy token jest ważny…",
     "invalidTokenExplain": {
       "expired": "Token stracił ważność",
       "consumed": "Ten token został już wykorzystany",
@@ -275,7 +275,7 @@
       "difficulty": "Poziom trudności",
       "generalGrade": "Wynik ogólny",
       "length": "Długość",
-      "loading": "Trwa ładowanie...",
+      "loading": "Trwa ładowanie…",
       "neutral": "neutralnie",
       "no": "nie",
       "notReally": "nie, nie za bardzo",
@@ -358,7 +358,7 @@
       "edit": "Edytuj",
       "cancel": "Anuluj",
       "save": "Zapisz",
-      "saving": "Zapisywanie...",
+      "saving": "Zapisywanie…",
       "email": "Email",
       "crop": "Przytnij",
       "emailChangeConfirmation": "Wiadomość z potwierdzeniem zmiany adresu e-mail została wysłana, sprawdź swoją skrzynkę odbiorczą, aby potwierdzić zmianę.",
@@ -504,7 +504,7 @@
       "link": "Dowiedz się więcej o akademii"
     },
     "sectionNetwork": {
-      "title": "Access a  network of",
+      "title": "Access a network of",
       "subtitle": "Globalny Kampus Bitcoina",
       "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
       "link": "Be part of the network"

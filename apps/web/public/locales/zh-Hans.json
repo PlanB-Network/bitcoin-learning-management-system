@@ -115,7 +115,7 @@
     "offeredBy": "由慷慨的贡献者提供",
     "pageSubtitle": "此门户网站是开源的，欢迎大家贡献。",
     "pageTitle": "比特币图书馆",
-    "topicsAddressed": "已写过的话题 "
+    "topicsAddressed": "已写过的话题"
   },
   "words": {
     "wallets": "钱包",
@@ -420,7 +420,7 @@
       "cancel": "取消",
       "emailChangeConfirmation": "更改电子邮箱地址的确认邮件已发送，请检查您的收件箱以确认更改。",
       "save": "保存",
-      "saving": "保存中...",
+      "saving": "保存中…",
       "crop": "作物",
       "preview": "预览",
       "displayName": "显示名称",
