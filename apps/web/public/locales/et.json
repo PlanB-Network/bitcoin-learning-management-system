@@ -283,7 +283,7 @@
     "tryAgain": "Proovi uuesti",
     "signIn": "Logi sisse",
     "passwordMinLength": "Parool peab olema vähemalt {{len}} tähemärki pikk",
-    "checkingTokenExplain": "Kontrollime, kas luba on kehtiv...",
+    "checkingTokenExplain": "Kontrollime, kas luba on kehtiv…",
     "passwordResetSent": "Parooli lähtestamise e-kiri on saadetud teie postkasti (kui e-kiri meie andmebaasis eksisteerib)."
   },
   "bCertificate": {
@@ -334,7 +334,7 @@
     "offeredBy": "Pakutud helde panustaja poolt",
     "pageSubtitle": "Käesolev portaal on avatud lähtekoodiga & avatud kaastööle.",
     "pageTitle": "Bitcoini raamatukogu",
-    "topicsAddressed": "Käsitletud teemad: "
+    "topicsAddressed": "Käsitletud teemad:"
   },
   "builders": {
     "noRelatedEvents": "Antud ehitaja jaoks pole veel tulevasi seotud sündmusi.",
@@ -412,7 +412,7 @@
       "dates_to": "{{startDate}} kuni {{endDate}}",
       "description": "Kirjeldus",
       "duration": "Kestus: {{hours}} tundi",
-      "goal": "EESMÄRK: ",
+      "goal": "EESMÄRK:",
       "level": "Tase: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} peatükki",
@@ -546,7 +546,7 @@
       "edit": "Redigeeri",
       "cancel": "Tühista",
       "save": "Salvesta",
-      "saving": "Salvestamine...",
+      "saving": "Salvestamine…",
       "crop": "Kärbi",
       "preview": "Eelvaade",
       "email": "E-mail",
@@ -702,7 +702,7 @@
     "sectionNetwork": {
       "subtitle": "Ülemaailmsed Bitcoini ülikoolilinnakud",
       "link": "Ole osa võrgustikust",
-      "title": "Pääse    võrgustikku",
+      "title": "Pääse võrgustikku",
       "content1": "Ühenduge ülemaailmsete ühist kirge jagavate Bitcoini entusiastidega. Meie võrgustiku kaart aitab leida inspiratsiooni õppimiseks ja ehitamiseks, alates väikestest regulaarselt kohtuvatest kogukondadest kuni BTC hariduskeskusteni. Entusiastidele on saadaval lai valik teenuseid, nagu inkubatsioonikeskus, füüsilised töötoad, seminarid, BTC kogunemiskohad ja palju muud. Võrgustik on avatud kõigile, nii et tulge ja öelge tere oma kohalikule BTC kogukonnale!"
     },
     "patreonSection": {

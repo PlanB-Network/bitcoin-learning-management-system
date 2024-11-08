@@ -62,7 +62,7 @@
     "backToHome": "Kembali ke halaman utama",
     "invalidToken": "Token tidak valid",
     "checkingToken": "Memeriksa token",
-    "checkingTokenExplain": "Kami sedang memeriksa apakah token tersebut valid",
+    "checkingTokenExplain": "Kami sedang memeriksa apakah token tersebut valid…",
     "passwordResetError": "Atur ulang kata sandi error",
     "tryAgain": "Coba lagi",
     "signIn": "Masuk"
@@ -153,14 +153,14 @@
       "access_invoice": "Anda dapat mengakses tagihan Anda melalui dashboard Anda",
       "accessible": "Dapat diakses: Seumur Hidup",
       "buyCourse": "Beli kursus",
-      "courseId": "ID kursus:  {{courseId}}",
+      "courseId": "ID kursus: {{courseId}}",
       "coursePayment": "Pembayaran kursus",
       "curriculum": "Kurikulum",
       "date": "Tanggal: {{startDate}} sampai {{endDate}}",
       "dates_to": "{{startDate}} sampai {{endDate}}",
       "description": "Deskripsi",
       "duration": "Durasi: {{hours}} jam",
-      "goal": "TUJUAN: ",
+      "goal": "TUJUAN:",
       "level": "Tingkatan: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} bab",
@@ -305,7 +305,7 @@
       "edit": "Ubah",
       "cancel": "Batal",
       "save": "Simpan",
-      "saving": "Menyimpan...",
+      "saving": "Menyimpan…",
       "crop": "Potong",
       "preview": "Pratampil",
       "displayName": "Tampilan nama",
@@ -347,7 +347,7 @@
     "offeredBy": "Disediakan oleh kontributor yang dermawan",
     "pageSubtitle": "Portal ini bersifat open-source dan terbuka terhadap kontribusi.",
     "pageTitle": "Perpustakaan Bitcoin",
-    "topicsAddressed": "Topik yang dibahas: "
+    "topicsAddressed": "Topik yang dibahas:"
   },
   "builders": {
     "networkStrength": "Kekuatan sebuah jaringan ada pada anggota-anggotanya",
@@ -725,7 +725,7 @@
     "patreonSection": {
       "subtitle": "Jaringan PlanB adalah 100% sumber terbuka berkat para donor kami yang dermawan",
       "content": "Jaringan PlanB dengan bangga bekerja sama dengan banyak perusahaan Bitcoin di seluruh dunia untuk menyediakan sumber daya edukasi terbaik yang mungkin!",
-      "title": "Bersama-sama, mari kita buat pendidikan Bitcoin lebih baik! "
+      "title": "Bersama-sama, mari kita buat pendidikan Bitcoin lebih baik!"
     },
     "languageSection": {
       "availableLanguages": "Bahasa yang tersedia",
@@ -789,7 +789,7 @@
     "merchantsDescription": "Terima pembayaran Bitcoin dan temukan alat untuk para pedagang"
   },
   "library": {
-    "pageSubtitle": "Perpustakaan ini bersifat sumber terbuka & terbuka terhadap kontribusi.",
+    "pageSubtitle": "Perpustakaan ini bersifat sumber terbuka & menerima kontribusi.",
     "pageTitle": "Perpustakaan Bitcoin",
     "publishedIn": "Dipublikasikan pada {{date}}",
     "writtenBy": "Ditulis oleh {{author}}"

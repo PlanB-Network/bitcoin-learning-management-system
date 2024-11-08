@@ -74,7 +74,7 @@
     "offeredBy": "Tämän teille tarjoaa arvokas kehittäjämme",
     "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille. Kiitos kehittämisestä, arvioinnista ja jakamisesta.",
     "pageTitle": "Bitcoin-kirjasto",
-    "topicsAddressed": "Aihe-alueittain: "
+    "topicsAddressed": "Aihe-alueittain:"
   },
   "builders": {
     "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille.",
@@ -123,7 +123,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
       "duration": "Kesto: {{hours}} tuntia",
-      "goal": "GOAL: ",
+      "goal": "GOAL:",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} osainen",

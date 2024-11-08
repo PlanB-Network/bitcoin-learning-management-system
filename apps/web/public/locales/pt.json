@@ -56,7 +56,7 @@
     "backToHome": "Tela inicial",
     "invalidToken": "Token inválido",
     "checkingToken": "Confira o token",
-    "checkingTokenExplain": "Estamos conferindo se o token é válido",
+    "checkingTokenExplain": "Estamos conferindo se o token é válido…",
     "invalidTokenExplain": {
       "expired": "O token expirou",
       "consumed": "Este token já foi utilizado",
@@ -297,7 +297,7 @@
       "emailChangeConfirmation": "Confirmação da mudança de email foi enviado, confira sua caixa de entrada para confirmar.",
       "cancel": "Cancelar",
       "save": "Salvar",
-      "saving": "Salvando...",
+      "saving": "Salvando…",
       "personalInformation": "Meus dados pessoais",
       "profileInformation": "Informação do perfil",
       "change": "Mudar",
@@ -657,7 +657,7 @@
       },
       "description": "A privacidade é um direito fundamental. Embora aspiremos a um mundo onde a privacidade é o padrão, não é ainda a realidade em que vivemos. Tentaremos explicar-te as melhores práticas, ajudar-te com os tutoriais e colocar-te num caminho mais soberano em relação aos teus dados.",
       "general": {
-        "description": "Na era da vigilância em massa, é essencial recuperar um certo nível de privacidade no  dia a dia. Dado que cada utilizador terá um certo grau de paranóia e conhecimento tecnológico, é perfeitamente normal usar certas ferramentas e adaptá-las às suas necessidades. Aqui, exploraremos diferentes soluções de proteção como VPNs, Tor, Tails OS, PGP, mensagens criptografadas e muito mais."
+        "description": "Na era da vigilância em massa, é essencial recuperar um certo nível de privacidade no dia a dia. Dado que cada utilizador terá um certo grau de paranóia e conhecimento tecnológico, é perfeitamente normal usar certas ferramentas e adaptá-las às suas necessidades. Aqui, exploraremos diferentes soluções de proteção como VPNs, Tor, Tails OS, PGP, mensagens criptografadas e muito mais."
       },
       "shortDescription": "Ferramentas para backup e manutenção da privacidade",
       "title": "Privacidade"

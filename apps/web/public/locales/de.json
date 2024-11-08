@@ -58,7 +58,7 @@
     "backToHome": "Zurück zur Startseite",
     "invalidToken": "Ungültiges Token",
     "checkingToken": "Verifizierung des Tokens",
-    "checkingTokenExplain": "Wir überprüfen die Gültigkeit des Tokens...",
+    "checkingTokenExplain": "Wir überprüfen die Gültigkeit des Tokens…",
     "invalidTokenExplain": {
       "expired": "Das Token ist abgelaufen",
       "consumed": "Das Token wurde bereits verwendet",
@@ -261,7 +261,7 @@
       "feedbackSessionTitle": "Bewertung",
       "generalGrade": "Allgemeine Bewertung",
       "length": "Länge",
-      "loading": "Laden...",
+      "loading": "Laden…",
       "neutral": "neutral",
       "no": "nein",
       "asExpected": "wie erwartet",
@@ -342,7 +342,7 @@
       "edit": "Bearbeiten",
       "cancel": "Absagen",
       "save": "Speichern",
-      "saving": "Speichern...",
+      "saving": "Speichern…",
       "change": "Ändern",
       "crop": "ausschneiden",
       "emailChangeConfirmation": "Eine Bestätigungs-E-Mail für Ihre E-Mail-Änderung wurde gesendet, bitte überprüfen Sie Ihren Posteingang zur Bestätigung.",
@@ -512,7 +512,7 @@
       "link": "Seien Sie ein Teil des Netzwerks"
     },
     "tutorialSection": {
-      "title": "Bitcoin-Bildung leicht gemacht.",
+      "title": "Bitcoin-Bildung leicht gemacht",
       "subtitle1": "Wir helfen Ihnen, die Technologie mit zahlreichen ausführlichen Tutorials zu beherrschen!",
       "content1": "Bitcoin entwickelt sich ständig weiter, mit dem Auftauchen neuer Akteuren, Lösungen, Protokollen und technologischen Durchbrüchen. Daher kann es eine Herausforderung sein, eine genaue und aktuelle Datenbank mit hochwertigen Anleitungen zu führen. Hier bei Plan ₿ haben wir genau das erreicht. Ob Sie Anfänger oder Fortgeschrittener sind, können Sie durch Hunderte von Tutorials navigieren, um unsere Branche nach Ihren Bedürfnissen zu erkunden.",
       "link": "Alle Tutorials anzeigen"
@@ -580,7 +580,7 @@
   },
   "menu": {
     "betDescription": "Sammlung von Inhalten, die Sie für Ihre Bildungsprojekte verwenden können",
-    "btc101Description": "Erhalte ein besseres Verständnis von Bitcoin mit diesen Lektionen",
+    "btc101Description": "Erhalte ein besseres Verständnis von Bitcoin mit diesen Lektionen.",
     "buildersDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die daran arbeiten, Bitcoin zu verbessern und seine Annahme zu steigern",
     "exchangesDescription": "Kaufen und verkaufen Sie Bitcoins an Börsen und erfahren Sie mehr über P2P",
     "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",

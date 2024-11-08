@@ -74,7 +74,7 @@
     "offeredBy": "Nabídnuto laskavým přispěvatelem",
     "pageSubtitle": "Tento portal je open-source a otevřen příspěvkům.",
     "pageTitle": "Bitcoinová knihovna",
-    "topicsAddressed": "Probíraná témata: "
+    "topicsAddressed": "Probíraná témata:"
   },
   "builders": {
     "pageSubtitle": "Tento portál je open source a je otevřen pro přispívání.",
@@ -146,7 +146,7 @@
       "date": "Datum: {{startDate}} do {{endDate}}",
       "dates_to": "{{startDate}} do {{endDate}}",
       "description": "Popis",
-      "goal": "CÍL: ",
+      "goal": "CÍL:",
       "level": "Úroveň: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} kapitol",

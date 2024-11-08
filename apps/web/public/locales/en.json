@@ -3,16 +3,16 @@
     "activeContributors": "Active contributors",
     "missionTitle": "Our mission",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. In order to do it, we collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talents to grow.",
+    "missionContent2": "We centralize knowledge so we can share it in the best possible way, using a simple, multilingual GitHub repository and an E-learning platform. We also assist local Bitcoin hubs in their development by providing the right tools for their talents to grow.",
     "commitmentTitle": "Our commitments",
-    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high-quality educational content \n • Translate our contents in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
+    "commitmentContent": "We have the following commitments towards the bitcoin community: \n • Remain open-source \n • Provide high-quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurial journey",
     "coreTeamTitle": "The core team",
-    "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
+    "coreTeamContent": "Plan ₿ Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Special thanks go to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
     "coreTeamGiacomoRole": "Director and Co-founder",
     "coreTeamRogzyRole": "Product manager & Co-founder",
     "coreTeamAsioRole": "Educational coordinator",
     "coreTeamAjelexRole": "Node coordinator",
-    "corporateTitle": "Corporate behind",
+    "corporateTitle": "Corporations behind the project",
     "corporateContent": "PlanB Network is the joint project of three entities focused on Bitcoin development. In an effort to make the Bitcoin education layers scale, they decided to collaborate to form PlanB Network. Since then,  many other entities have decided to contribute and join forces to help us bring Bitcoin education to the world. For this reason, a huge thank-you is due to them.",
     "coportateContact": "Contact information:",
     "storyTitle": "Our story",
@@ -20,7 +20,7 @@
     "description": "Plan B Network helps communities worldwide to get organized in order to provide better education. The platform develops the  necessary tools towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
     "subtitle": "Want to orange pill the world? Join the Plan ₿ Network.",
     "title": "About the Plan B Network",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people within a decade, and our tools are education and information.\n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. In fact, we believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only.\n\nWe advocate for the individual responsibility and the independence offered by owning your own keys.\n\nWe urge verification, not blind trust.\n\nWe believe that by fixing the money, we can fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure.\n\nWe encourage the free dissemination of our content.\n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share.\n\nJoin us in our mission to orange-pill the world!\n"
+    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. In fact, we believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we can fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n"
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -34,12 +34,12 @@
     "emailAddress": "Email address",
     "emailTip": "Email is not mandatory, but it can be useful case of a forgotten password :)",
     "errors": {
-      "displayNameRegex": "Display name can only contain letters, digits, _, ., - and spaces.",
+      "displayNameRegex": "The display name can only contain letters, digits, underscores (_), full-stops (.), dashes (-) and spaces.",
       "displayNameRequired": "Display name is required.",
       "displayNameTooShort": "Display name must contain at least 2 characters.",
       "invalidCredentials": "Invalid credentials",
       "emailInvalid": "Invalid email",
-      "usernameRegex": "Username can only contain letters, digits, _, . and -.",
+      "usernameRegex": "The username can only contain letters, digits, underscores (_), full-stops (.) and dashes (-).",
       "usernameRequired": "Username is required.",
       "usernameTooShort": "Username must contain at least 5 characters."
     },
@@ -61,7 +61,7 @@
     "backToHome": "Back to home",
     "invalidToken": "Invalid token",
     "checkingToken": "Checking token",
-    "checkingTokenExplain": "We are checking if the token is valid...",
+    "checkingTokenExplain": "We are checking if the token is valid…",
     "invalidTokenExplain": {
       "expired": "The token has expired",
       "consumed": "The token has already been used",
@@ -74,9 +74,9 @@
     "signIn": "Sign In"
   },
   "bCertificate": {
-    "bCertificateDescription": "The ₿ Certificate is an internationally recognized exam that evaluates your mastery of Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge in the Bitcoin industry, giving you access to the best companies and great job positions.",
+    "bCertificateDescription": "The ₿ Certificate is an internationally recognized exam to assess your preparedness on Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge in the Bitcoin industry, giving you access to companies and positions in that industry.",
     "bookExam": "Book an exam session",
-    "challengeYourself": "Challenge yourself & assert your level !",
+    "challengeYourself": "Challenge yourself & assert your level!",
     "checkout": "Check out the ₿ Certificate",
     "curious": "Curious to know what the exam is like?",
     "joeNakamotoVideo": "What the heck is a Bitcoin exam? By Joe Nakamoto",
@@ -92,16 +92,16 @@
     "tweetText": "Thrilled to have passed the B-Certificate at @planb_network with a score of {{score}}/100! {{emoji}}\n\n{{certificateUrl}}"
   },
   "bet": {
-    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate. To collaborate, add a category or discuss, don't hesitate to join our discord.",
-    "contributeButton": "Help & contribute",
+    "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate content. To collaborate, add a category or a discussion, and don't hesitate to join our discord.",
+    "contributeButton": "Help & Contribute",
     "contributeDescription": "If you either want to add, edit or translate some content, your help will be welcome!",
     "contributeTitle": "Want to contribute?",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and purposes.",
+      "description": "The items below can be used for educational events and purposes.",
       "title": "Educational Content"
     },
     "hereForYou": "The BET is here for you!",
-    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards  that goal, we’ve developed an extendible database of educational content. Here, Bitcoin educators can freely drop and access content as needed. Let’s not reinvent the wheel every time, and work together to centralise the useful resources is one toolkit !",
+    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards  that goal, we’ve developed an extendible database to host educational content. Here, Bitcoin educators can freely drop and access content as needed. We don't need to reinvent the wheel every time, so let's work together to centralize the useful resources is one toolkit!",
     "pageSubtitle": "The BET - A Bitcoin open-source toolkit for all educational projects",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
@@ -114,13 +114,13 @@
     "bookSummary": {
       "modifyTooltip": "Write or modify",
       "noSummary": "A summary is yet to be written. If you've read the book and want to share yours, don't hesitate to write one on Github. It would greatly benefit the community, enhance the university's resources, and you might even earn some sats for your effort!",
-      "notice": "this summary is linked to github, for any modification or addition",
+      "notice": "This summary is linked to Github, for any modification or addition.",
       "title": "The book summary"
     },
     "buttonBuy": "Buy",
     "buttonPdf": "PDF / E-book",
     "offeredBy": "Offered by a generous contributor",
-    "pageSubtitle": "This portal is open-source & open to contribution.",
+    "pageSubtitle": "This portal is open-source & accepts contribution.",
     "pageTitle": "Bitcoin Library",
     "topicsAddressed": "Topics addressed:"
   },
@@ -138,7 +138,7 @@
     "backConferences": "Back to conferences",
     "conferenceName": "Conference name",
     "conferencesSinceGenesis": "Bitcoin Conferences Archive since the Genesis Block",
-    "description": "Conferences are a key element in the Bitcoin industry. They are part of any Bitcoiner’s educational journey.  We built this tool to help you navigate through hundreds of conferences.",
+    "description": "Conferences play a crucial role in the Bitcoin industry, forming an essential part of every Bitcoiner’s educational journey. For that reason, we created this tool to help you easily navigate through hundreds of Bitcoin events.",
     "details": {
       "findReplay": "Find a replay",
       "nextVideo": "Next video",
@@ -171,11 +171,11 @@
     "chapter": {
       "count": "Chapter {{count}}",
       "finishCourse": "Finish the course",
-      "next": "Next chapter",
+      "next": "Completed, move on to the next chapter.",
       "thanksTip": "Want to show your appreciation?\nYou can support the author with a tip.",
       "detail": {
         "title": "Class details",
-        "p1heading": "Do you intend to attend this lesson in person ?",
+        "p1heading": "Are you planning to attend this lesson in person?",
         "p1content": "Make sure to book your seat",
         "p2heading": "You can't make it in person?",
         "p2content": "No problem! The lesson will be live-streamed on this page and available for replay afterward.",
@@ -191,7 +191,7 @@
       }
     },
     "details": {
-      "accessible": "Accessible: Lifetime",
+      "accessible": "Accessibility: Lifetime access",
       "buyCourse": "Buy the course",
       "buyInPersonCourse": "Buy in-person course",
       "buyOnlineCourse": "Buy online course",
@@ -225,7 +225,7 @@
       "access_invoice": "You can access your invoice via your dashboard",
       "payment_details": "Payment details",
       "amount": "Amount",
-      "invoiceId": "Tx ID"
+      "invoiceId": "TX ID"
     },
     "exam": {
       "answersReview": "Answers review",
@@ -233,8 +233,8 @@
       "certificateAvailable": "It will be available about 8 hours after submission.",
       "certificateGeneration": "Your certificate is being ",
       "congratulations": "Congratulations, you’ve reached the end of this course!",
-      "congratulationsPassed": "Congratulations, you <0>passed</0> the final exam !",
-      "dontGiveUpTryAgain": "Don't give up !\nYou can try again after 24 hours.",
+      "congratulationsPassed": "Congratulations, you <0>passed</0> the final exam!",
+      "dontGiveUpTryAgain": "Don't give up!\nYou can try again after 24 hours.",
       "dontWorry": "Don't worry about mistakes; this test helps reinforce your learning. If you don't pass, you can retake it after 24 hours.",
       "examAndDiploma": "Exam & Diploma",
       "examDetails": "The exam has 40 multiple-choice questions, each with one correct answer. You can change your answers anytime before submitting, as long as the timer is running.",
@@ -246,7 +246,7 @@
       "getCertificate": "Get my certificate",
       "globallyRecognized": "Globally Recognized: Blockchain-backed credentials are trusted worldwide.",
       "goBack": "Go back",
-      "goodLuck": "Good luck !",
+      "goodLuck": "Good luck!",
       "instantVerification": "Instant Verification: Employers can easily verify your degree’s authenticity and issue date.",
       "instructions": "Instructions:",
       "letsConclude": "All done, let's conclude",
@@ -278,7 +278,7 @@
       "timeStampHowDescription": "When your degree is issued, a unique digital 'fingerprint' is created and stored on the blockchain. This makes the record permanent and tamper-proof. Any attempt to alter your degree will break the link, revealing the change.",
       "timerStart": "Once you click Start, a 20-minute timer will begin.",
       "tryAgain": "Try again",
-      "tryOneMoreTime": "Let's try one more time !",
+      "tryOneMoreTime": "Let's try one more time!",
       "verifyDisplayName": "Before starting, please verify your display name below, as it will be used to generate your diploma.",
       "whyTimeStamp": "Time-Stamping Your Degree:\nWhy It Matters",
       "wishTryAgain": "If you wish to try again, the exam will be available in 24 hours.",
@@ -287,23 +287,23 @@
     "explorer": {
       "buildPath": "Build your own path down the rabbit hole",
       "exploreCourses": "Explore all Plan ₿ Courses",
-      "findCourses": "Find the perfect course for your needs thanks to the course selector",
+      "findCourses": "Find the perfect course for your needs thanks to the Course Selection Tool",
       "footerTitle": "Our professors are here for you!",
-      "footerp1": "At the Sovereign University, our professors have complete autonomy over their content and the tools they want you to explore, as long as they follow the code of ethics. They are passionate bitcoiners from various backgrounds.",
+      "footerp1": "At the Sovereign University, our professors have full autonomy in designing their course content and selecting the tools for your exploration, provided they adhere to our code of ethics. They are passionate bitcoiners from diverse backgrounds who share their valuable experience with us.",
       "footerp2": "If you want to improve a course or propose your own, you can easily do so via the GitHub repository. Instead, to support a professor, you have several options: you can provide course feedback, tip the professor directly, or become a university member to help sustain the platform.",
       "journey": "Bitcoin is a journey, not a destination",
-      "moreToCome": ".... and more to come !",
-      "pageDescription": "The Plan B Academy aims to simplify Bitcoin education worlwide. Curated by experts across diverse disciplines, the academy offers a wealth of courses designed to demystify every aspect of Bitcoin. From beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you comprehend better the vast subject that is Bitcoin. A large part of our courses are entirely free, so than anyone anywhere can have access to education.",
+      "moreToCome": "…and more to come!",
+      "pageDescription": "The Plan ₿ Academy aims at simplifying Bitcoin education worldwide. Curated by experts from various fields, our academy provides a comprehensive range of courses designed to clarify every aspect of Bitcoin.\nFrom beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you gain a deeper understanding of the expansive world of Bitcoin. Many of our courses are completely free so that anyone, anywhere, can access quality education.",
       "pageSubtitle": "Mass adoption through centralized open-source education",
       "pageTitle": "Welcome to the Plan ₿ Academy",
-      "s2p1": "If you've started exploring the Bitcoin rabbit hole, you must know that it's an endless journey with many paths. Here at the university, we understand this and have design our educational content to be non-linear, autonomous and as extensive as it can be.",
-      "s2p2": "You will be able to pick your own path and go along it, gaining skills and knowledge as far as your motivation goes.",
+      "s2p1": "If you've just started exploring the Bitcoin rabbit hole, you must know that it's an endless journey down many paths. At our university, we recognize this complexity, so we have designed our educational content to be non-linear, self-directed and as extensive as it can be.",
+      "s2p2": "You will be able to choose your own path, gaining skills and knowledge driven by your own motivation and determination.",
       "s2p3": "All our courses are 100% free so nothing can stop you!",
       "s2t1": "Bitcoin education is a journey, not a destination.",
       "s3PickLevel": "Select level:",
       "s3PickTopic": "Select a topic:",
       "s3t1": "Build your own path down the rabbit hole",
-      "seeCourse": "See the course"
+      "seeCourse": "Discover the Course"
     },
     "part": {
       "count": "Part {{count}}"
@@ -341,8 +341,8 @@
       "quizz": "Quiz",
       "quizzResults": "Quiz results",
       "quizzReview": "Quiz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
+      "resultCongrats": "Congratulations, you did well!",
+      "resultItsOk": "Don't give up, you'll do better next time!",
       "resultNotBad": "Not too bad!",
       "resultPerfect": "Absolutely perfect! Congrats!"
     },
@@ -355,20 +355,20 @@
       "difficulty": "Difficulty",
       "displayOutOf": "displayed out of",
       "edit": "Edit",
-      "faithful": "True to objective?",
+      "faithful": "Aligned with objective?",
       "feedbackDescription": "Please rate your experience with the course below.\nThis feedback session is mandatory to have access to the final exam and to validate the course.\nNote that teachers will not have access to individual evaluations.",
       "feedbackSessionTitle": "Feedback session",
       "fieldRequired": "This field is required",
       "generalGrade": "General grade",
       "length": "Length",
-      "loading": "Loading...",
+      "loading": "Loading…",
       "loadMoreComments": "Load more comments",
       "neutral": "neutral",
       "no": "no",
       "notReally": "no, not really",
       "quality": "Quality",
       "ratingsAndReviews": "Ratings & reviews",
-      "recommend": "Would recommend?",
+      "recommend": "Would you recommend it?",
       "skip": "Skip review",
       "soAndSo": "so and so",
       "submitReview": "Submit review",
@@ -449,7 +449,7 @@
       "resumeLesson": "Resume",
       "seeProgress": "to see your progress here.",
       "startCourse": "Start or complete a course",
-      "whereYouAre": "Let's see where you're at !",
+      "whereYouAre": "Let's see where you're at!",
       "viewDetails": "View details",
       "yourCertificate": "Your certificate"
     },
@@ -472,7 +472,7 @@
       "edit": "Edit",
       "cancel": "Cancel",
       "save": "Save",
-      "saving": "Saving...",
+      "saving": "Saving…",
       "crop": "Crop",
       "emailChangeConfirmation": "A confirmation email for your email change has been sent, please check your inbox to confirm.",
       "emailChangeRateLimitError": "Email change request already sent less than 5 minutes ago, please wait before trying again.",
@@ -588,7 +588,7 @@
       "additional_free_description": "This event is free, so there is no charge for booking this seat. However, please make sure to attend, since the number of seats is limited.",
       "amount": "Amount",
       "back_events": "Back to events",
-      "book_seat": "Book seat",
+      "book_seat": "Book a seat",
       "callout_online": "You are about to book online access to this event.",
       "callout_physical": "You are about to book physical access to this event.",
       "callout_replay": "You are about to book access to the replay video of this event.",
@@ -611,7 +611,7 @@
     "anotherWord": "Search for another word",
     "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by <1>Loïc Morel (Pandul)</1>, available on this <2>Github repository</2>.",
     "definition": "Definition",
-    "filterBar": "Find the word you need here",
+    "filterBar": "Find the word you need right here",
     "needHelp": "Need help defining a technical word?",
     "keepLooking": "Want to keep searching?",
     "loadMoreWords": "Load more words",
@@ -678,9 +678,9 @@
       "link": "Help us translate the academy"
     },
     "patreonSection": {
-      "title": "Together, let's make Bitcoin education better ! ",
+      "title": "Together, let's make Bitcoin education better!",
       "subtitle": "The Plan ₿ Network is 100% open-source thanks to our generous patrons",
-      "content": "The Plan ₿ Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
+      "content": "The Plan ₿ Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible!"
     },
     "wallOfLoveSection": {
       "title": "Wall of love",
@@ -852,7 +852,7 @@
       "title": "Glossary"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinite rabbit hole of Bitcoin ! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome into the infinite rabbit hole of Bitcoin! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
     "newsletters": {
       "title": "Newsletters"
     },
@@ -903,7 +903,7 @@
       "exploreAllTutorials": "Explore all tutorials"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinite rabbit hole of Bitcoin ! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Welcome into the infinite rabbit hole of Bitcoin! In this section we will offer you in depth tutorial on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support this open source project. If you fee we made a mistake please reach out. To see our financial attachment ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
     "merchant": {
       "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions for businesses to accept Bitcoin",

@@ -54,7 +54,7 @@
     "backToHome": "Regresar a inicio",
     "invalidToken": "Token inválido",
     "checkingToken": "Verificando token",
-    "checkingTokenExplain": "Estamos verificando si el token es válido...",
+    "checkingTokenExplain": "Estamos verificando si el token es válido…",
     "invalidTokenExplain": {
       "expired": "El token ha expirado",
       "invalid": "El token es inválido",

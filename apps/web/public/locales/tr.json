@@ -34,7 +34,7 @@
     "backToHome": "Anasayfaya geri dön",
     "invalidToken": "Geçersiz token",
     "checkingToken": "Token kontrol ediliyor",
-    "checkingTokenExplain": "Tokenin geçerli olup olmadığını kontrol ediyoruz...",
+    "checkingTokenExplain": "Tokenin geçerli olup olmadığını kontrol ediyoruz…",
     "invalidTokenExplain": {
       "expired": "Tokenin süresi doldu",
       "consumed": "Kullanılmış Token",
@@ -192,7 +192,7 @@
     "corporateContent": "PlanB Network, Bitcoin geliştirme üzerine odaklanan üç kuruluşun birleşik projesidir. Bitcoin eğitim katmanını ölçeklendirmek için, işbirliği yaparak PlanB network'ü kurdular. Bitcoin eğitimini dünyaya yayma hedefimizde başarılı olmak için, birçok diğer kuruluş katkıda bulunmaya ve güçlerini birleştirmeye karar verdi. Kendilerine çok teşekkür ederiz.",
     "coportateContact": "İletişim bilgileri:",
     "storyTitle": "Hikayemiz",
-    "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir.  Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
+    "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir. Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
     "description": "Plan B Network, toplulukların dünya genelinde daha iyi eğitim sağlamak için organize olmalarına yardımcı olur. Platform, bu hedefe yönelik olarak gerekli araçları, online akademi, eğitim portalı, Bitcoin eğitim araç seti ve kaynak portalı aracılığıyla geliştirir.",
     "subtitle": "Tum dünyayı turuncu haplamak mi istiyorsunuz? PlanB Ağı'na katılın.",
     "title": "Plan B Network Hakkında",
