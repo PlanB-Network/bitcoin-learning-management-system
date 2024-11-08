@@ -60,15 +60,31 @@ export const userRouter = createTRPCRouter({
   getUsersRoles: adminProcedure
     .input(
       z.object({
-        name: z.string(),
         role: z.string(),
+        name: z.string(),
+        orderField: z
+          .enum(['displayName', 'username'])
+          .optional()
+          .default('username'),
+        orderDirection: z.enum(['asc', 'desc']).optional().default('asc'),
+        limit: z.number(),
+        cursor: z.string().optional(),
       }),
     )
-    .output<Parser<UserRoles[]>>(userRolesSchema.array())
+    .output<Parser<{ users: UserRoles[]; nextCursor: string | null }>>(
+      z.object({
+        users: userRolesSchema.array(),
+        nextCursor: z.string().nullable(),
+      }),
+    )
     .query(({ ctx, input }) =>
       createGetUsersRoles(ctx.dependencies)({
-        name: input.name,
         role: input.role,
+        name: input.name,
+        orderField: input.orderField,
+        orderDirection: input.orderDirection,
+        limit: input.limit,
+        cursor: input.cursor,
       }),
     ),
 
@@ -90,14 +106,15 @@ export const userRouter = createTRPCRouter({
     .input(
       z.object({
         uid: z.string(),
-        professorId: z.number(),
+        role: z.string().optional(),
+        professorId: z.number().nullable(),
       }),
     )
     .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
       createChangeRoleToProfessor(ctx.dependencies)({
         uid: input.uid,
-        role: 'professor',
+        role: input.role ?? 'professor',
         professorId: input.professorId,
       }),
     ),

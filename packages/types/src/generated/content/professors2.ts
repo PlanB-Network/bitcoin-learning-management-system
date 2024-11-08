@@ -18,6 +18,7 @@ export interface FullProfessor {
   shortBio: string | null;
   tags: string[];
   coursesCount: number;
+  coursesId: string[];
   tutorialsCount: number;
   lecturesCount: number;
   links: {

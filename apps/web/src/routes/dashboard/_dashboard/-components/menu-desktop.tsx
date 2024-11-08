@@ -10,7 +10,7 @@ import {
   IoPersonOutline,
   IoTicketOutline,
 } from 'react-icons/io5';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import { LuShieldAlert } from 'react-icons/lu';
 
 import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
@@ -142,13 +142,10 @@ export const MenuDesktop = ({
           <>
             <Separator />
 
-            <p className="uppercase text-white italic ml-12 text-sm">
-              Admin menu
-            </p>
             <Link to={administrationPath}>
               <MenuItem
-                text={t('dashboard.administration')}
-                icon={<MdOutlineAdminPanelSettings size={24} />}
+                text={t('dashboard.adminPanel.userRolesAllocation')}
+                icon={<LuShieldAlert size={24} />}
                 active={pathname.includes(administrationPath)}
               />
             </Link>

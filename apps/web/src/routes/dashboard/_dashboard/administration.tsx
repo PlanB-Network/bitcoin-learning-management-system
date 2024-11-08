@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
 
-import { UserList } from './-components/user-list.tsx';
+import { AdminTable } from './-components/admin-table.tsx';
 
 export const Route = createFileRoute('/dashboard/_dashboard/administration')({
   component: DashboardAdministration,
@@ -30,7 +30,7 @@ function DashboardAdministration() {
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">{t('dashboard.administration')}</div>
-      <Tabs defaultValue="students" className="max-w-[600px]">
+      <Tabs defaultValue="students" className="w-full max-w-[900px]">
         <TabsList>
           <TabsTrigger
             value="students"
@@ -52,13 +52,13 @@ function DashboardAdministration() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="students">
-          <UserList userRole="student" />
+          <AdminTable userRole="student" />
         </TabsContent>
         <TabsContent value="professors">
-          <UserList userRole="professor" />
+          <AdminTable userRole="professor" />
         </TabsContent>
         <TabsContent value="admins">
-          <UserList userRole="admin" />
+          <AdminTable userRole="admin" />
         </TabsContent>
       </Tabs>
     </div>

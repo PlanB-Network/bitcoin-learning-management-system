@@ -33,11 +33,15 @@ export const createChangeRole = ({ postgres }: Dependencies) => {
 interface ChangeRoleToProfessorOptions {
   uid: string;
   role: string;
-  professorId: number;
+  professorId?: number | null;
 }
 
 export const createChangeRoleToProfessor = ({ postgres }: Dependencies) => {
-  return async ({ uid, role, professorId }: ChangeRoleToProfessorOptions) => {
+  return async ({
+    uid,
+    role,
+    professorId = null,
+  }: ChangeRoleToProfessorOptions) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {

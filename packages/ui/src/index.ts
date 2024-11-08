@@ -14,6 +14,7 @@ export * from './atoms/popover.tsx';
 export * from './atoms/ratings.tsx';
 export * from './atoms/select.tsx';
 export * from './atoms/slider.tsx';
+export * from './atoms/table.tsx';
 export * from './atoms/tabs.tsx';
 export * from './atoms/tag.tsx';
 export * from './atoms/text-tag.tsx';
