@@ -37,7 +37,8 @@
       "displayNameRequired": "Se requiere un nombre para mostrar.",
       "displayNameRegex": "El nombre para mostrar solo puede contener letras, dígitos, _, ., - y espacios.",
       "displayNameTooShort": "El nombre para mostrar debe contener al menos 2 caracteres.",
-      "invalidCredentials": "Credenciales inválidas"
+      "invalidCredentials": "Credenciales inválidas",
+      "emailInvalid": ""
     },
     "forgottenPassword": "¿Olvidaste tu contraseña?",
     "headerAccountCreated": "Cuenta creada",
@@ -69,7 +70,8 @@
     "tryAgain": "Inténtalo de nuevo",
     "confirmation": "Confirmación",
     "displayName": "Nombre para mostrar",
-    "oldPassword": "Contraseña antigua"
+    "oldPassword": "Contraseña antigua",
+    "emailTip": ""
   },
   "bet": {
     "contribute": "Este kit de herramientas está abierto a la contribución. Utiliza Figma, así que cualquiera puede añadir, modificar y traducir. Para colaborar, agregar una categoría o discutir, no dudes en unirte a nuestro discord.",
@@ -184,7 +186,8 @@
       "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
       "buyInPersonCourse": "Comprar curso presencial",
       "inPersonAccess": "Necesitas descargar tu boleto para acceder a la clase en persona.",
-      "buyOnlineCourse": "Comprar curso en línea"
+      "buyOnlineCourse": "Comprar curso en línea",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "¡Nuestros profesores están aquí para ti!",
@@ -298,7 +301,63 @@
       "displayOutOf": "mostrado fuera de",
       "loadMoreComments": "Cargar más comentarios",
       "ratingsAndReviews": "Calificaciones y comentarios",
-      "whatStudentsSay": "Lo que los estudiantes dicen sobre este curso"
+      "whatStudentsSay": "Lo que los estudiantes dicen sobre este curso",
+      "skip": "",
+      "edit": "",
+      "fieldRequired": ""
+    },
+    "exam": {
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "certificateAvailable": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "startExam": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "yesSubmit": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateGeneration": "",
+      "instantVerification": "",
+      "explanations": "",
+      "sameRules": "",
+      "score": "",
+      "congratulations": "",
+      "examDetails": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instructions": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "submit": "",
+      "sureSubmit": "",
+      "testResults": ""
     }
   },
   "dashboard": {
@@ -312,7 +371,12 @@
       "inprogressCoursesTitle": "Cursos en progreso",
       "inprogressCoursesDescription": "Aquí puedes verificar tu progreso en los cursos que has comenzado.",
       "seeProgress": "para ver tu progreso aquí.",
-      "startCourse": "Inicia o termina un curso"
+      "startCourse": "Inicia o termina un curso",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": ""
     },
     "account": "Cuenta",
     "courses": "Cursos",
@@ -370,7 +434,8 @@
       "displayName": "Nombre para mostrar",
       "email": "Correo electrónico",
       "password": "Contraseña",
-      "profile": "Perfil"
+      "profile": "Perfil",
+      "emailChangeRateLimitError": ""
     },
     "calendar": {
       "calendar": "Calendario",
@@ -432,6 +497,30 @@
         "viewDetails": "Ver detalles",
         "writtenFeedbacks": "Comentarios escritos"
       }
+    },
+    "course": {
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": "",
+      "checkDetailsCompleted": "",
+      "completionDiploma": ""
+    },
+    "credentials": {
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": "",
+      "bCertificate": ""
     }
   },
   "events": {
@@ -530,7 +619,8 @@
       "title": "Educación sobre Bitcoin simplificada.",
       "subtitle1": "¡Te ayudamos a dominar la tecnología con numerosos y profundos tutoriales!",
       "content1": "Bitcoin está en constante evolución, con la aparición de nuevos actores, soluciones, protocolos y avances tecnológicos. Por lo tanto, puede ser un desafío mantener una base de datos precisa y actualizada de tutoriales de calidad. Aquí en Plan ₿, hemos logrado justamente eso. Ya sea que seas un principiante o un usuario avanzado, puedes navegar por cientos de tutoriales para explorar nuestra industria según tus necesidades.",
-      "link": "Ver todos los tutoriales"
+      "link": "Ver todos los tutoriales",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "¿Quiénes somos?",
@@ -552,7 +642,8 @@
       "content1": "En Plan ₿, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos. La plataforma soporta actualmente 7 idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los Bitcoiners en todo el mundo.",
       "content2": "¡Tú también puedes comenzar a desarrollar tu propia red local en tu país!",
       "link": "Ayúdanos a traducir la academia",
-      "availableLanguages": "Idiomas disponibles"
+      "availableLanguages": "Idiomas disponibles",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "¡Juntos vamos a mejorar la educación en Bitcoin! ",
@@ -700,7 +791,12 @@
     "glossary": {
       "title": "Glosario"
     },
-    "searchFilterName": "Buscar por nombre"
+    "searchFilterName": "Buscar por nombre",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Cambiar contraseña",
@@ -946,7 +1042,26 @@
     "goal": "Meta",
     "hours": "horas",
     "inPerson": "En persona",
-    "ratings": "Valoraciones"
+    "ratings": "Valoraciones",
+    "booked": "",
+    "bookings": "",
+    "filter": "",
+    "failed": "",
+    "grade": "",
+    "required": "",
+    "status": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": "",
+    "credentials": "",
+    "diploma": "",
+    "progress": "",
+    "publicationDate": "",
+    "id": "",
+    "inReview": "",
+    "location": "",
+    "overview": "",
+    "passed": ""
   },
   "conferences": {
     "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
@@ -993,7 +1108,8 @@
     "pageSubtitle": "Adopción masiva a través de educación centralizada de código abierto",
     "curious": "¿Curioso por saber cómo es el examen?",
     "joeNakamotoVideo": "¿Qué rayos es un examen de Bitcoin? Por Joe Nakamoto",
-    "knowledgeableBitcoin": "¿Experto en Bitcoin?"
+    "knowledgeableBitcoin": "¿Experto en Bitcoin?",
+    "tweetText": ""
   },
   "glossary": {
     "anotherWord": "Busca otra palabra",
