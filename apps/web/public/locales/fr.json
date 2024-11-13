@@ -505,7 +505,7 @@
       "shareOnSocials": "Partager sur les réseaux :"
     },
     "credentials": {
-      "bCertificate": "Certificat ₿",
+      "bCertificate": "₿-Certificate",
       "beingGraded": "Votre examen est en cours de correction. Les résultats devraient être disponibles dans 1 ou 2 semaines.",
       "courseDiplomas": "Diplômes de cours",
       "courseDiplomasSubtitle": "Ici vous pouvez trouver les détails concernant tous les examens que vous avez passés après avoir terminé un cours sur la plateforme.",
@@ -516,7 +516,7 @@
       "seatBooked": "Votre place à la session d'examen est réservée",
       "seeTicket": "Voir le billet",
       "yourCertificate": "Votre certificat",
-      "bCertificateSubtitle": "Ici vous pouvez trouver les détails concernant vos réservations et les notes de vos certificats ₿ passés et futurs.\nLe certificat ₿ est un examen sur table organisé par Plan ₿ Network pour affirmer votre niveau en Bitcoin et ses sujets connexes.",
+      "bCertificateSubtitle": "Ici vous pouvez trouver les détails concernant vos réservations et les notes de vos ₿-Certificates passés et futurs.\nLe ₿-Certificate est un examen sur table organisé par Plan ₿ Network pour affirmer votre niveau en Bitcoin et ses sujets connexes.",
       "takePlaceAt": "La session aura lieu à",
       "downloadTicket": "Télécharger le billet"
     }
@@ -702,7 +702,7 @@
     "walletsDescription": "Sécurisez et utilisez vos bitcoins",
     "conferencesDescription": "Collection de rediffusions de conférences Bitcoin depuis le Bloc Genesis",
     "publicDescription": "Explorez les articles sur la communication publique",
-    "bCertificateDescription": "Passez l'examen pour le certificat ₿ pour affirmer votre niveau de Bitcoin",
+    "bCertificateDescription": "Passez l'examen pour le ₿-Certificate pour verifier votre niveau de Bitcoin",
     "glossaryDescription": "Comprendre le langage du Bitcoin",
     "login": "Se connecter",
     "loginRegister": "Se connecter / S'inscrire"
@@ -1010,7 +1010,7 @@
     "ticket": "Billet",
     "tickets": "Billets",
     "onChain": "Sur la chaîne",
-    "bCertificate": "Certificat ₿",
+    "bCertificate": "₿-Certificate",
     "glossary": "Glossaire",
     "public": "Communication publique",
     "ratings": "Évaluations",
@@ -1092,22 +1092,22 @@
     "total": "Total"
   },
   "bCertificate": {
-    "bCertificateDescription": "Le Certificat ₿ est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
+    "bCertificateDescription": "Le ₿-Certificate est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
     "noBookExam": "Il n'y a pas encore de session d'examen prévue.",
     "organizeDescription": "Pas de problème ! Si votre communauté fait partie de Plan ₿ Network, il est possible d'organiser une session d'examen dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
     "bookExam": "Réservez une session d'examen",
     "challengeYourself": "Mettez-vous au défi et évaluez votre niveau !",
-    "checkout": "Consultez le certificat ₿",
+    "checkout": "Consultez le ₿-Certificate",
     "curious": "Curieux de savoir à quoi ressemble l'examen ?",
     "joeNakamotoVideo": "Qu'est-ce que c'est qu'un examen Bitcoin ? Par Joe Nakamoto",
     "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
     "organizeExam": "Organiser un examen",
     "organizeSubtitle": "Orangepill un milliard de personnes n'est pas facile",
-    "organizeTitle": "Voulez-vous organiser un examen du certificat ₿ dans votre Hub ?",
+    "organizeTitle": "Voulez-vous organiser un examen du ₿-Certificate dans votre Hub ?",
     "readChart": "Lire la charte",
-    "pageSubtitle": "Adoption de masse grâce à une éducation centralisé open-source",
-    "pageTitle": "Passer le certificat ₿",
-    "tweetText": "Fier d'avoir réussi le certificat B au @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}"
+    "pageSubtitle": "Adoption de masse grâce à une éducation centralisée open-source",
+    "pageTitle": "Passer le ₿-Certificate",
+    "tweetText": "Fier d'avoir réussi le ₿-Certificate au @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}"
   },
   "publicCommunication": {
     "blogPageStrings": {
