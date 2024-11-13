@@ -80,7 +80,7 @@
       "title": "Contenu pédagogique"
     },
     "hereForYou": "Le BET est là pour vous !",
-    "pageDescription": "L’adoption de masse n’est pas chose aisée. Pour nous rapprocher plus rapidement de cet objectif, nous avons développé une base de données extensible de contenu éducatif. Ici, les enseignants Bitcoin peuvent librement déposer et accéder au contenu selon leurs besoins. Ne réinventons pas la roue à chaque fois, et travaillons ensemble pour centraliser les ressources utiles dans une seule boîte à outils !",
+    "pageDescription": "L’adoption de masse n’est pas chose aisée. Pour nous rapprocher plus rapidement de cet objectif, nous avons développé une base de données extensible de contenu éducatif. Ici, les éducateurs Bitcoin peuvent librement déposer et accéder au contenu selon leurs besoins. Nous n'avons pas besoin de réinventer la roue à chaque fois, alors travaillons ensemble pour centraliser les ressources utiles dans un seul outil !",
     "pageSubtitle": "Le BET - Une boîte à outils Bitcoin open-source pour tous les projets éducatifs",
     "pageTitle": "Boîte à outils pédagogique Bitcoin",
     "visualContent": {
@@ -133,7 +133,7 @@
       "thanksTip": "Vous souhaitez montrer votre appréciation ?\nVous pouvez soutenir l'auteur en lui laissant un pourboire.",
       "detail": {
         "title": "Détails de la classe",
-        "p1heading": "Avez-vous l'intention d'assister à cette leçon en personne ?",
+        "p1heading": "Prévoyez-vous d'assister à ce cours en personne ?",
         "p1content": "Assurez-vous de réserver votre place",
         "bookSeat": "Réserver votre place",
         "classIsFull": "La classe est déjà complète",
@@ -149,7 +149,7 @@
       "nextLesson": "La prochaine leçon sera"
     },
     "details": {
-      "accessible": "Accessible : à vie",
+      "accessible": "Accessibilité : Accès à vie",
       "buyCourse": "Achetez le cours",
       "courseId": "ID du cours : {{courseId}}",
       "coursePayment": "Paiement du cours",
@@ -1064,7 +1064,7 @@
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
     "conferencesSinceGenesis": "Archives des conférences Bitcoin depuis le Bloc Genesis",
-    "description": "Les conférences sont des éléments clés de l'industrie du Bitcoin. Elles font partie du parcours éducatif de tout Bitcoiner. Nous avons construit cet outil pour vous aider à naviguer à travers des centaines de conférences.",
+    "description": "Les conférences jouent un rôle crucial dans l'industrie du Bitcoin. Elles font partie du parcours éducatif de tout Bitcoiner. C'est pour cette raison que nous avons construit cet outil, pour vous aider à naviguer à travers des centaines de conférences.",
     "backConferences": "Retour aux conférences",
     "conferenceName": "Nom de la conférence",
     "details": {
