@@ -434,17 +434,17 @@
     },
     "teacher": {
       "reviews": {
-        "review": "",
-        "checkComments": "",
-        "checkReviews": "",
-        "noReviewsYet": "",
-        "privateComment": "",
-        "publicComment": "",
-        "reviews": "",
-        "reviewsAndGrading": "",
-        "seeStatistics": "",
-        "viewDetails": "",
-        "writtenFeedbacks": ""
+        "review": "Recension",
+        "checkComments": "Här kan du läsa kommentarer som ges av studenterna. Kommentarerna är sorterade efter datum.",
+        "checkReviews": "Här kan du se betyg och recensioner som din kurs har fått.",
+        "noReviewsYet": "Denna kurs har ännu inte fått recensioner och betyg.",
+        "privateComment": "Privat kommentar",
+        "publicComment": "Offentlig kommentar",
+        "reviews": "Recensioner",
+        "reviewsAndGrading": "Recensioner & betygssättning",
+        "seeStatistics": "Se statistik",
+        "viewDetails": "Visa detaljer",
+        "writtenFeedbacks": "Skriftlig feedback"
       },
       "courses": {
         "analytics": "Analys",
@@ -468,25 +468,25 @@
       },
       "menu": "Meny för lärare",
       "profile": {
-        "account": "",
-        "billingInformations": "",
-        "chooseTags": "",
-        "description": "",
-        "descriptionTags": "",
-        "enterTipsInformations": "",
-        "lightningAddress": "",
-        "makeModifications": "",
-        "noLightningAddress": "",
-        "noShortBio": "",
-        "noTags": "",
-        "notifications": "",
-        "publicDescription": "",
-        "publicProfile": "",
-        "publicProfileDescription": "",
-        "writeShortBio": "",
-        "teacher": "",
-        "teacherProfile": "",
-        "tutorialModification": ""
+        "account": "Lärares konto",
+        "billingInformations": "Information om fakturering",
+        "chooseTags": "Välj de taggar som beskriver dig bäst",
+        "description": "Din beskrivning",
+        "descriptionTags": "Dessa taggar kompletterar din offentliga profil eftersom de visar dina specialiteter som en bitcoiner.",
+        "enterTipsInformations": "Plan ₿ Network uppmuntrar användare att ge dricks till lärare. Ange dina uppgifter så att folk kan ge dig dricks när de önskar.",
+        "lightningAddress": "Lightning-adress",
+        "makeModifications": "Behöver du göra ändringar?",
+        "noLightningAddress": "Ingen lightning-adress har lagts till ännu.",
+        "noShortBio": "Ingen kort biografi är ännu kopplad till detta konto, lägg gärna till det på GitHub.",
+        "noTags": "Inga taggar kopplade till detta konto ännu.",
+        "notifications": "Aviseringar",
+        "publicDescription": "Denna beskrivning visas på ditt informationskort för lärare på plattformen.",
+        "publicProfile": "Offentlig profil",
+        "publicProfileDescription": "Här kan du fylla i eller redigera all information som är kopplad till din aktivitet som lärare på Plan ₿ Network.",
+        "writeShortBio": "Skriv en kort biografi om dig själv",
+        "teacher": "Lärare",
+        "teacherProfile": "Lärarprofil",
+        "tutorialModification": "Om du behöver hjälp med att redigera något, vänligen kolla in denna <0>tutorial</0>."
       }
     },
     "administration": "Administration",
@@ -546,9 +546,9 @@
       "bookLive": "Book live",
       "bookSeat": "Book your seat",
       "visitWebsite": "Visit website",
-      "buyReplay": "",
-      "eventFull": "",
-      "seatBooked": ""
+      "buyReplay": "Köp inspelning",
+      "eventFull": "Eventet är fullt",
+      "seatBooked": "Plats bokad"
     },
     "payment": {
       "limitation": "",
@@ -578,14 +578,14 @@
       "time": ""
     },
     "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
+      "button": "Lägg till mitt event",
+      "description": "Självklart! Alla Bitcoin-event kan öka sin synlighet här, så varje initiativ till att skapa ett nytt event är mer än välkommet :)",
+      "subtitle": "Att orange-pilla en miljard människor är inte enkelt",
+      "title": "Vill du lägga till ditt event?"
     },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": ""
+    "pageDescription": "Vill du prata om Bitcoin i realtid? Här kan du hitta alla events som stöds av Plan B Network-communityn. Oavsett om du vill lyssna på en föreläsning, diskutera Bitcoin över en drink, eller ta ett prov för att bedöma din kunskap, här kommer du att hitta rätt evenemang genom Plan B Network.",
+    "pageSubtitle": "Adoption nerifrån och upp förbättras av ett starkt nätverk",
+    "pageTitle": "Letar du efter ett Bitcoin-event att delta i?"
   },
   "home": {
     "header": {
