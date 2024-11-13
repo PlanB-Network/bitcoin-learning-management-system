@@ -1,8 +1,8 @@
 {
   "about": {
-    "activeContributors": "Active contributors",
-    "missionTitle": "Our mission",
-    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
+    "activeContributors": "Aktiva samarbetare",
+    "missionTitle": "Vårt uppdrag",
+    "missionContent1": "Vårt mål är att stödja lokala Bitcoin-communities genom utbildning och nätverkande baserat på open source. Vi samlar in, organiserar och skapar de resurser (kurser, böcker, affischer, flygblad, videor) som behövs för att Bitcoin-industrin ska kunna gå framåt.",
     "missionContent2": "Vi centraliserar kunskap så att det kan förmedlas på bästa möjliga sätt, genom att använda ett enkelt, flerspråkigt GitHub-repo och en E-lärplattform. Vi hjälper också lokala Bitcoin-hubbar i deras utveckling genom att tillhandahålla rätt verktyg för att deras talanger ska kunna växa.",
     "commitmentTitle": "Out commitments",
     "commitmentContent": "Vi har följande åtaganden gentemot bitcoin-communityn:\n • Förbli öppen källkod\n • Tillhandahålla högkvalitativt utbildningsinnehåll\n • Översätta vårt innehåll till så många språk som möjligt\n • Stödja Bitcoin-utvecklare på deras entreprenörsresa",
@@ -772,7 +772,7 @@
     },
     "filterBarLabel": "Find the perfect resources for your needs:",
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparancie repport. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Välkommen till Bitcoins oändliga kaninhål! I den här sektionen kommer vi att erbjuda dig en djupgående tutorial av de flesta bitcoin-projekt där ute. Denna sida underhålls av generösa och passionerade bitcoin-användare som stöder detta open source-projekt. Om du tycker att vi har gjort ett misstag, vänligen kontakta oss. För att se vår finansiella koppling till de nämnda projekten, hänvisa till vår transparensrapport. Tack för ditt förtroende för detta universitet och njut av resan.",
     "newsletters": {
       "title": "Newsletters"
     },
@@ -783,22 +783,22 @@
       "title": "Podcasts"
     },
     "publicGrade": "Public grade: {{grade}}/5",
-    "github": "",
-    "searchFilterName": "",
+    "github": "All denna data hanteras via en open source <0>Github</0>-repo. Bidra gärna och lägg till eventuellt saknat innehåll.",
+    "searchFilterName": "Sök efter namn",
     "newsletter": {
-      "title": ""
+      "title": "Nyhetsbrev"
     },
     "glossary": {
-      "title": ""
+      "title": "Ordlista"
     },
-    "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": ""
+    "pageSubtitleBooks": "En annan bok du kanske gillar:",
+    "pageSubtitlePodcast": "En annan podcast du skulle gilla:"
   },
   "settings": {
     "changePassword": "Change password",
-    "changeDisplayName": "",
-    "changeProfilePicture": "",
-    "changeEmail": ""
+    "changeDisplayName": "Ändra visningsnamn",
+    "changeProfilePicture": "Ändra profilbild",
+    "changeEmail": "Ändra e-post"
   },
   "tutorials": {
     "details": {
@@ -807,9 +807,9 @@
       "madeBy": "This tutorial has been made by",
       "source": "Original source : ",
       "tipTooltip": "Like it? Tip.",
-      "author": "",
-      "didHelp": "",
-      "writtenBy": ""
+      "author": "Skribent: ",
+      "didHelp": "Hjälpte detta?",
+      "writtenBy": "Denna tutorial skrevs av:"
     },
     "exchange": {
       "centralized": {
@@ -825,10 +825,10 @@
     "explorer": {
       "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
       "didYouKnow": "Did you know?",
-      "exploreAllTutorials": ""
+      "exploreAllTutorials": "Utforska alla tutorials"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Welcome into the infinit rabbit hole of Bitcoin ! In this section we will offer you in depth tutoriel on most bitcoin project out there. This pages in maintain by benevolel and passionate bitcoin who support thie open source project. If you fee we made a mistake please reach out. To see our financial attachement ot the project mention refer to our transparency report. Thanks for your trust in this university and enjoy the ride.",
+    "headerText": "Välkommen till Bitcoins oändliga kaninhål! I den här sektionen kommer vi att erbjuda dig en djupgående lektion om de flesta bitcoin-projekt där ute. Denna sida underhålls av generösa och passionerade bitcoin-användare som stöder detta open source-projekt. Om du tycker att vi har gjort ett misstag, vänligen kontakta oss. För att se vår finansiella koppling till de nämnda projekten, hänvisa till vår transparensrapport. Tack för ditt förtroende för detta universitet och njut av resan.",
     "merchant": {
       "description": "Ever wonder how to easily accept bitcoin for a business? Explore our various solutions to become an expert and easily set up a merchant solution for the shops around you. The Point of Sale solution varies based on the merchant's needs (physical or online), their volume, and the complexity of their operations. A generally good proxy is to simply start with a basic LN wallet, move to an easy, efficient solution (such as mobile PoS), and finally explore BTC Pay Server for advanced, complex, professional solutions.",
       "shortDescription": "Solutions for businesses to accept Bitcoin",
@@ -883,32 +883,32 @@
       "title": "Wallet"
     },
     "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
+      "title": "Andra",
+      "shortDescription": "Utforska diverse lektioner om bitcoins nära relaterade ämnen",
+      "description": "Dyk ner i en stor samling av lektioner som är nära kopplade till Bitcoin-etos. Från gör-det-själv till open source-lektioner, upptäck nya kunskapsområden för att bli ännu mer suverän.",
       "DIY": {
-        "description": ""
+        "description": "Upptäck våra DIY-tutorials för att lära dig hur du själv skapar saker relaterade till Bitcoin, datorer och individuell suveränitet!"
       },
       "OpenSource": {
-        "description": ""
+        "description": "Utforska våra lektioner ägnat åt användningen av open source-verktyg!"
       },
       "contribution": {
-        "description": ""
+        "description": "Lär dig hur du kan bidra till PlanB Network och bemästra de open source-verktyg vi använder internt genom våra detaljerade lektioner!"
       },
       "general": {
-        "description": ""
+        "description": "Bläddra bland våra allmänna lektioner för att berika din kunskap inom datateknik och andra ämnen relaterade till individuell suveränitet!"
       }
     },
-    "approvedByCreator": "",
-    "backTutorials": ""
+    "approvedByCreator": "Godkänd av skaparen",
+    "backTutorials": "Tillbaka till alla tutorials"
   },
   "underConstruction": {
     "github": "GitHub",
     "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
     "p2": "and consider joining our community!",
     "pageTitle": "Oops.",
-    "itemNotFound": "",
-    "itemNotFoundOrTranslated": ""
+    "itemNotFound": "{{item}} hittades inte",
+    "itemNotFoundOrTranslated": "{{item}} hittades inte, eller översattes inte till ditt språk"
   },
   "words": {
     "about": "About",
@@ -952,10 +952,10 @@
       "beginner": "Beginner",
       "developer": "developer",
       "intermediate": "Intermediate",
-      "beginnerFriendly": "",
-      "wizard": "",
-      "level": "",
-      "levels": ""
+      "beginnerFriendly": "Nybörjarvänlig",
+      "wizard": "Mästare",
+      "level": "Nivå",
+      "levels": "Nivåer"
     },
     "library": "Library",
     "lightning": "Lightning",
@@ -997,67 +997,67 @@
     "video": "Video",
     "videos": "Videos",
     "wallets": "Wallets",
-    "date": "",
-    "time": "",
-    "to": "",
-    "billing": "",
-    "download": "",
-    "invoice": "",
-    "on": "",
-    "online": "",
-    "ticket": "",
-    "tickets": "",
-    "onChain": "",
-    "bookings": "",
-    "price": "",
-    "description": "",
-    "admins": "",
-    "all": "",
-    "amount": "",
-    "bCertificate": "",
-    "booked": "",
-    "builder": "",
-    "chapter": "",
-    "communities": "",
-    "courseId": "",
-    "credentials": "",
-    "diploma": "",
-    "duration": "",
-    "edit": "",
-    "filter": "",
-    "failed": "",
-    "free": "",
-    "glossary": "",
-    "goal": "",
-    "grade": "",
-    "hours": "",
-    "id": "",
-    "inPerson": "",
-    "inReview": "",
-    "lectures": "",
-    "lightningInvoice": "",
-    "location": "",
-    "onChainAddress": "",
-    "overview": "",
-    "paid": "",
-    "part": "",
-    "passed": "",
-    "professor": "",
-    "progress": "",
-    "publicationDate": "",
-    "public": "",
-    "ratings": "",
-    "required": "",
-    "start": "",
-    "status": "",
-    "students": "",
-    "teacher": "",
-    "total": "",
-    "topics": "",
-    "unified": "",
-    "users": "",
-    "view": "",
-    "writtenByPodcasts": ""
+    "date": "Datum",
+    "time": "Tid",
+    "to": "till",
+    "billing": "Fakturering",
+    "download": "Ladda ner",
+    "invoice": "Faktura",
+    "on": "på",
+    "online": "Online",
+    "ticket": "Biljett",
+    "tickets": "Biljetter",
+    "onChain": "On chain",
+    "bookings": "Bokningar",
+    "price": "Pris",
+    "description": "Beskrivning",
+    "admins": "Administratörer",
+    "all": "Alla",
+    "amount": "Belopp",
+    "bCertificate": "₿-Certifikat",
+    "booked": "Bokad",
+    "builder": "Skapare",
+    "chapter": "Kapitel",
+    "communities": "Communities",
+    "courseId": "Kurs-ID",
+    "credentials": "Intyg",
+    "diploma": "Diplom",
+    "duration": "Varaktighet",
+    "edit": "Redigera",
+    "filter": "Filter",
+    "failed": "Underkänd",
+    "free": "Fri",
+    "glossary": "Ordlista",
+    "goal": "Mål",
+    "grade": "Betyg",
+    "hours": "timmar",
+    "id": "ID",
+    "inPerson": "Personligen",
+    "inReview": "Under granskning",
+    "lectures": "Föreläsningar",
+    "lightningInvoice": "lightning-faktura",
+    "location": "Plats",
+    "onChainAddress": "On chain-adress",
+    "overview": "Översikt",
+    "paid": "Betald",
+    "part": "Del",
+    "passed": "Godkänd",
+    "professor": "Lärare",
+    "progress": "Framsteg",
+    "publicationDate": "Publiceringsdatum:",
+    "public": "Offentlig kommunikation",
+    "ratings": "Betyg",
+    "required": "Obligatorisk",
+    "start": "Starta",
+    "status": "Status",
+    "students": "Studenter",
+    "teacher": "Lärare",
+    "total": "Totalt",
+    "topics": "Ämnen",
+    "unified": "Förenad",
+    "users": "Användare",
+    "view": "Visa",
+    "writtenByPodcasts": "Skriven av:"
   },
   "conferences": {
     "location": "Plats",
@@ -1134,35 +1134,35 @@
   "publicCommunication": {
     "description": "Plan ₿ Network är stolta över att följa open source-standard och bibehålla transparens genom hela sin resa",
     "blogCategories": {
-      "course": "",
-      "feature": "",
-      "patch": "",
-      "grants": "",
-      "network": "",
+      "course": "Släpp av kurs",
+      "feature": "Funktion",
+      "patch": "Release notes",
+      "grants": "Bidrag",
+      "network": "Nätverk",
       "all": "Alla",
       "content": "Innehåll"
     },
     "legalSections": {
-      "contact": "",
-      "legalNotice": "",
-      "privacyPolicy": "",
-      "termsOfSale": ""
+      "contact": "Kontakt",
+      "legalNotice": "Juridiska notiser",
+      "privacyPolicy": "Integritetspolicy",
+      "termsOfSale": "Försäljningsvillkor"
     },
     "title": "Offentlig kommunikation",
     "blogPost": "Bloggar & Nyheter",
     "legal": "Juridisk information",
     "goBackButtons": {
-      "simpleGoBack": ""
+      "simpleGoBack": "Tillbaka till alla artiklar"
     },
     "blogPageStrings": {
-      "featuredArticleTitleText": "",
-      "pastArticleSubtitleText": "",
-      "noArticlesText": "",
-      "errorMessageNotFound": "",
-      "blogSidebarTitle": "",
-      "blogListButtonText": "",
-      "filterText": "",
-      "noBlogs": ""
+      "featuredArticleTitleText": "Senaste artikeln släppt",
+      "pastArticleSubtitleText": "Tidigare artiklar",
+      "noArticlesText": "Det finns inga blogginlägg just nu.",
+      "errorMessageNotFound": "Bloggen hittades inte.",
+      "blogSidebarTitle": "Tidigare inlägg i nätverket",
+      "blogListButtonText": "Läs",
+      "filterText": "Filtrera efter ämne:",
+      "noBlogs": "Det finns inga artiklar för tillfället"
     }
   }
 }
