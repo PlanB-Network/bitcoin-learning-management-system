@@ -125,10 +125,6 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const header = matter(file.data, { excerpt: false });
 
             await transaction`
@@ -163,7 +159,7 @@ export const createDeleteTutorials = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
-        sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date} 
+        sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date}
       `,
       );
     } catch {

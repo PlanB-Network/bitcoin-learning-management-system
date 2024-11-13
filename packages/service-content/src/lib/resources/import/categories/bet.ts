@@ -32,6 +32,7 @@ export const createProcessChangedBet = (
     return postgres
       .begin(async (transaction) => {
         const { main, files } = separateContentFiles(resource, 'bet.yml');
+        if (!main) return;
 
         try {
           const processMainFile = createProcessMainFile(transaction);
@@ -55,10 +56,9 @@ export const createProcessChangedBet = (
 
         let parsedBet: BetMain | null = null;
         try {
-          if (main && main.kind !== 'removed') {
-            parsedBet = yamlToObject<BetMain>(main.data);
+          parsedBet = yamlToObject<BetMain>(main.data);
 
-            const result = await transaction<Bet[]>`
+          const result = await transaction<Bet[]>`
               INSERT INTO content.bet (resource_id, builder, type, download_url, original_language)
               VALUES (${id}, ${parsedBet.builder}, ${parsedBet.type.toLowerCase()}, ${parsedBet.links?.download}, ${parsedBet.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -66,41 +66,40 @@ export const createProcessChangedBet = (
                 type = EXCLUDED.type,
                 download_url = EXCLUDED.download_url,
                 original_language = EXCLUDED.original_language
-              
+
             `.then(firstRow);
 
-            if (parsedBet.links?.view) {
-              for (let i = 0; i < parsedBet.links.view.length; i++) {
-                const currentViewUrl = parsedBet.links.view[i];
-                for (const key of Object.keys(currentViewUrl)) {
-                  await transaction`
+          if (parsedBet.links?.view) {
+            for (let i = 0; i < parsedBet.links.view.length; i++) {
+              const currentViewUrl = parsedBet.links.view[i];
+              for (const key of Object.keys(currentViewUrl)) {
+                await transaction`
                   INSERT INTO content.bet_view_url (bet_id, language, view_url)
                   VALUES (${id}, ${key}, ${currentViewUrl[key]})
                   ON CONFLICT (bet_id, language) DO UPDATE SET
                     language = EXCLUDED.language,
                     view_url = EXCLUDED.view_url
                   `;
-                }
               }
             }
+          }
 
-            // If the resource has proofreads
-            if (parsedBet.proofreading) {
-              for (const p of parsedBet.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedBet.proofreading) {
+            for (const p of parsedBet.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
                   VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -114,10 +113,6 @@ export const createProcessChangedBet = (
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const parsed = yamlToObject<BetLocal>(file.data);
 
             await transaction`

@@ -1,6 +1,6 @@
-Certificate of Completion of Online Course on Plan ₿ Network
+Diploma of Completion for Online Course at Plan ₿ Network
 
-This certificate is conferred upon successful completion of the specified online course, attesting to the candidate's proficiency in the subject matter. The following details verify this accomplishment:
+This diploma is awarded upon the successful completion of the specified online course, certifying the candidate's proficiency in the subject matter. The following details verify this accomplishment:
 
 Student username: {userName}
 Full name: {fullName}

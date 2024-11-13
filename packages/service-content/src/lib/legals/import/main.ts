@@ -1,6 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type { Legal, ModifiedFile, RenamedFile } from '@blms/types';
+import type { Legal } from '@blms/types';
 
 import type { ChangedLegal } from './index.js';
 
@@ -13,11 +13,7 @@ import type { ChangedLegal } from './index.js';
  */
 export const createProcessMainFile =
   (transaction: TransactionSql) => async (legal: ChangedLegal) => {
-    const lastUpdated = legal.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = legal.files.sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Legal[]>`
         INSERT INTO content.legals (

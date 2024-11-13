@@ -30,6 +30,8 @@ export const createProcessChangedPodcast = (
     return postgres
       .begin(async (transaction) => {
         const { main } = separateContentFiles(resource, 'podcast.yml');
+        if (!main) return;
+
         try {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
@@ -51,17 +53,16 @@ export const createProcessChangedPodcast = (
         }
 
         try {
-          if (main && main.kind !== 'removed') {
-            const parsed = yamlToObject<PodcastMain>(main.data);
+          const parsed = yamlToObject<PodcastMain>(main.data);
 
-            await transaction`
+          await transaction`
               INSERT INTO content.podcasts (
                 resource_id, language, name, host, description, website_url, twitter_url, podcast_url, nostr
               )
               VALUES (
-                ${id}, ${parsed.language}, ${parsed.name}, ${parsed.host}, 
-                ${parsed.description?.trim()}, ${parsed.links?.website}, 
-                ${parsed.links?.twitter}, ${parsed.links?.podcast}, 
+                ${id}, ${parsed.language}, ${parsed.name}, ${parsed.host},
+                ${parsed.description?.trim()}, ${parsed.links?.website},
+                ${parsed.links?.twitter}, ${parsed.links?.podcast},
                 ${parsed.links?.nostr}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -74,7 +75,6 @@ export const createProcessChangedPodcast = (
                 podcast_url = EXCLUDED.podcast_url,
                 nostr = EXCLUDED.nostr
             `;
-          }
         } catch (error) {
           errors.push(
             `Error processing file(podcasts) ${main?.path} (${resource.fullPath}): ${error}`,

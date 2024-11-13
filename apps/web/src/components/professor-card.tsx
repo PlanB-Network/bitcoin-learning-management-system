@@ -177,7 +177,7 @@ export const ProfessorCardReduced = ({
   } = useDisclosure();
 
   return (
-    <div className="rounded-[20px] p-2 border-2 border-newBlack-1 max-md:mx-auto h-fit flex flex-col">
+    <div className="rounded-[20px] p-2 border-2 border-newBlack-1 bg-newGray-6 max-md:mx-auto h-fit flex flex-col">
       <Link
         to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
         target="_blank"

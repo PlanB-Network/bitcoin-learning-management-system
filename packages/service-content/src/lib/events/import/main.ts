@@ -1,11 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type {
-  ChangedFile,
-  Event,
-  ModifiedFile,
-  RenamedFile,
-} from '@blms/types';
+import type { ChangedFile, Event } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -39,20 +34,16 @@ interface EventMain {
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (event: ChangedEvent, file?: ChangedFile) => {
-    if (!file || file.kind === 'removed') return;
+    if (!file) return;
 
     // Only get the tags from the main tutorial file
     const parsedEvents = yamlToObject<EventMain[]>(file.data);
 
-    const lastUpdated = event.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = event.files.sort((a, b) => b.time - a.time)[0];
 
     for (const parsedEvent of parsedEvents) {
       const result = await transaction<Event[]>`
-        INSERT INTO content.events 
+        INSERT INTO content.events
           ( id,
             path,
             name,
@@ -100,7 +91,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedEvent.links.replay_url},
           ${parsedEvent.links.live_url},
           ${parsedEvent.links.chat_url},
-          ${lastUpdated.time}, 
+          ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
         )
@@ -146,7 +137,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         await transaction`
           INSERT INTO content.event_tags (event_id, tag_id)
           SELECT
-            ${result.id}, 
+            ${result.id},
             id FROM content.tags WHERE name = ANY(${parsedEvent.tag})
           ON CONFLICT DO NOTHING
         `;
@@ -157,7 +148,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           await transaction`
             INSERT INTO content.event_languages (event_id, language)
             VALUES(
-              ${result.id}, 
+              ${result.id},
               ${language}
             )
             ON CONFLICT DO NOTHING

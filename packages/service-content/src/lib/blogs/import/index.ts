@@ -122,10 +122,6 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const header = matter(file.data, { excerpt: false });
 
             await transaction`

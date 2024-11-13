@@ -83,15 +83,18 @@ const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & {
     required?: boolean;
+    removeDefaultClasses?: boolean;
   }
->(({ className, required = false, ...props }, ref) => {
+>(({ className, removeDefaultClasses, required = false, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
   return (
     <Label
       ref={ref}
       className={cn(
-        'text-center block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
+        removeDefaultClasses
+          ? ''
+          : 'text-center block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
         error && 'text-destructive',
         className,
       )}

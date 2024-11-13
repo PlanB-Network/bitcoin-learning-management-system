@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { z } from 'zod';
 
-import type { CourseChapterResponse } from '@blms/types';
+import type { CourseChapterResponse, CourseReview } from '@blms/types';
 import {
   Button,
   Form,
@@ -23,9 +23,11 @@ import {
   cn,
 } from '@blms/ui';
 
+import LockGif from '#src/assets/icons/lock.gif';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { goToChapterParameters } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -62,7 +64,7 @@ function FormSlider({
           name={id}
           render={({ field: { value, onChange } }) => (
             <FormItem>
-              <FormLabel>{label}</FormLabel>
+              <FormLabel className="mb-3.5">{label}</FormLabel>
               <FormControl>
                 <Slider
                   {...sliderProps}
@@ -93,19 +95,19 @@ function FormSlider({
           </div>
         </div>
         <div className="relative mt-8">
-          <div className="flex lg:flex-col max-lg:justify-between text-[10px] md:text-sm font-medium text-newGray-1 text-center">
+          <div className="flex lg:flex-col max-lg:justify-between body-14px-medium text-newGray-1 text-center">
             {stepNames[0] && (
-              <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/3 text-left">
+              <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/4 text-left">
                 {stepNames[0]}
               </span>
             )}
             {stepNames[1] && (
-              <span className="lg:absolute lg:self-center max-lg:w-1/3 text-center">
+              <span className="lg:absolute lg:self-center max-lg:w-1/4 text-center">
                 {stepNames[1]}
               </span>
             )}
             {stepNames[2] && (
-              <span className="lg:absolute lg:self-end lg:translate-x-1/2 max-lg:w-1/3 text-right">
+              <span className="lg:absolute lg:self-end lg:translate-x-1/2 max-lg:w-1/4 text-right">
                 {stepNames[2]}
               </span>
             )}
@@ -137,13 +139,18 @@ function FormTextArea({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       render={({ field }: { field: any }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel
+            removeDefaultClasses
+            className="block text-left md:text-center label-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText"
+          >
+            {label}
+          </FormLabel>
           <FormControl>
             <Textarea
               placeholder={t('courses.review.writeThoughts')}
               rows={3}
               disabled={disabled}
-              className="w-full rounded-md px-4 py-2.5 text-newGray-1 border border-newGray-4 bg-white disabled:bg-newGray-4 subtitle-med-16px"
+              className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-med-16px"
               {...field}
             />
           </FormControl>
@@ -157,28 +164,38 @@ function FormTextArea({
 export function CourseReview({
   chapter,
   courseId,
+  existingReview,
   formDisabled = false,
-  showExplanation,
+  isDashboardReview,
+  isLockedReview,
   addMarginToForm,
 }: {
   chapter?: CourseChapterResponse;
   courseId?: string;
+  existingReview?: CourseReview;
   formDisabled?: boolean;
-  showExplanation?: boolean;
+  isDashboardReview?: boolean;
+  isLockedReview?: boolean;
   addMarginToForm?: boolean;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { data: previousCourseReview, isFetched: isReviewFetched } =
+  const [isEditable, setIsEditable] = useState(
+    !isDashboardReview && !formDisabled,
+  );
+
+  const { data: fetchedCourseReview, isFetched: isReviewFetched } =
     trpc.user.courses.getCourseReview.useQuery(
       {
         courseId: chapter?.courseId || courseId || '',
       },
       {
-        enabled: !formDisabled && !!(chapter || courseId),
+        enabled: !formDisabled && !!(chapter || courseId) && !existingReview,
       },
     );
+
+  const previousCourseReview = existingReview || fetchedCourseReview;
 
   const saveCourseReview = trpc.user.courses.saveCourseReview.useMutation();
   const completeChapterMutation =
@@ -282,6 +299,8 @@ export function CourseReview({
     }
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div
       className={cn('flex flex-col', addMarginToForm && 'mt-16')}
@@ -289,7 +308,7 @@ export function CourseReview({
     >
       {isReviewFetched || formDisabled ? (
         <>
-          {showExplanation && (
+          {!isDashboardReview && !isLockedReview && (
             <>
               <h1
                 className={cn(
@@ -305,169 +324,220 @@ export function CourseReview({
             </>
           )}
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit, scrollToForm)}
-              className={cn(
-                'flex flex-col gap-5',
-                addMarginToForm && 'mt-12 mx-4 md:mx-32',
+            <div className="relative">
+              {isLockedReview && (
+                <img
+                  src={LockGif}
+                  alt="Locked"
+                  className="absolute -top-6 md:-top-10 right-0 z-10 size-16 md:size-24"
+                />
               )}
-              onClick={() => {
-                formDisabled && openAuthModal();
-              }}
-              onKeyDown={() => {
-                formDisabled && openAuthModal();
-              }}
-            >
-              <FormField
-                control={form.control}
-                name={'general'}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                render={({ field }: { field: any }) => (
-                  <FormItem>
-                    <FormLabel className="!mb-4">
-                      {t('courses.review.generalGrade')}
-                    </FormLabel>
-                    <FormControl>
-                      <div
-                        className={cn(
-                          'bg-newGray-6 py-7 rounded-full w-fit mx-auto px-11 shadow-course-navigation',
-                          formDisabled && 'pointer-events-none',
-                        )}
-                      >
-                        <Ratings
-                          id="general"
-                          variant="yellow"
-                          disabled={formDisabled}
-                          totalStars={5}
-                          onValueChange={(v) => {
-                            form.setValue('general', v);
-                          }}
-                          {...field}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage className="w-full text-center" />
-                  </FormItem>
+              <form
+                onSubmit={form.handleSubmit(onSubmit, scrollToForm)}
+                className={cn(
+                  'flex max-lg:flex-col gap-6 lg:gap-10',
+                  addMarginToForm && 'mt-12 mx-4 md:mx-32',
+                  isLockedReview &&
+                    'pointer-events-none bg-newGray-6 shadow-course-navigation blur-[1.5px] rounded-lg md:rounded-[20px] py-5 px-2 relative',
                 )}
-              />
-
-              <FormSlider
-                id="length"
-                form={form}
-                label={t('courses.review.length')}
-                stepNames={[
-                  t('courses.review.tooShort'),
-                  t('courses.review.asExpected'),
-                  t('courses.review.tooLong'),
-                ]}
-                disabled={formDisabled}
-              />
-
-              <FormSlider
-                id="difficulty"
-                form={form}
-                label={t('courses.review.difficulty')}
-                stepNames={[
-                  t('courses.review.tooEasy'),
-                  t('courses.review.asExpected'),
-                  t('courses.review.tooHard'),
-                ]}
-                disabled={formDisabled}
-              />
-
-              <FormSlider
-                id="quality"
-                form={form}
-                label={t('courses.review.quality')}
-                stepNames={[
-                  t('courses.review.veryBad'),
-                  t('courses.review.soAndSo'),
-                  t('courses.review.veryGood'),
-                ]}
-                disabled={formDisabled}
-              />
-
-              <FormSlider
-                id="faithful"
-                form={form}
-                label={t('courses.review.faithful')}
-                stepNames={[
-                  t('courses.review.notReally'),
-                  t('courses.review.neutral'),
-                  t('courses.review.yesVeryMuch'),
-                ]}
-                disabled={formDisabled}
-              />
-
-              <FormSlider
-                id="recommand"
-                form={form}
-                label={t('courses.review.recommend')}
-                stepNames={[
-                  t('courses.review.no'),
-                  t('courses.review.soAndSo'),
-                  t('courses.review.yesOfCourse'),
-                ]}
-                disabled={formDisabled}
-              />
-
-              <div className="mb-5 w-10/12 mx-auto h-px my-2.5 bg-newGray-1" />
-
-              <div className="flex flex-col gap-6">
-                <FormTextArea
-                  id="publicComment"
-                  control={form.control}
-                  label={t('courses.review.commentPublic')}
-                  disabled={formDisabled}
-                />
-
-                <FormTextArea
-                  id="teacherComment"
-                  control={form.control}
-                  label={t('courses.review.commentTeacher')}
-                  disabled={formDisabled}
-                />
-
-                <FormTextArea
-                  id="adminComment"
-                  control={form.control}
-                  label={t('courses.review.commentAdmin')}
-                  disabled={formDisabled}
-                />
-              </div>
-              <div className="flex flex-wrap items-center justify-center gap-4 mx-auto mt-6 lg:mt-4">
-                <Button
-                  type="submit"
-                  className="w-fit"
-                  variant="primary"
-                  size={window.innerWidth >= 768 ? 'l' : 'm'}
-                  disabled={formDisabled}
-                >
-                  {previousCourseReview
-                    ? t('courses.review.edit')
-                    : t('courses.review.submitReview')}
-                </Button>
-
-                {showExplanation && (
-                  <Button
-                    variant="outline"
-                    className="w-fit"
-                    size={window.innerWidth >= 768 ? 'l' : 'm'}
-                    onClick={() => {
-                      navigateToNextChapter();
-                    }}
-                  >
-                    <span>{t('courses.review.skip')}</span>
-                    <FaArrowRightLong
-                      className={cn(
-                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                        'group-hover:ml-3',
+                onClick={() => {
+                  formDisabled && openAuthModal();
+                }}
+                onKeyDown={() => {
+                  formDisabled && openAuthModal();
+                }}
+              >
+                <div className="w-full flex flex-col gap-5">
+                  <div className="flex flex-col gap-5 md:px-10">
+                    <FormField
+                      control={form.control}
+                      name={'general'}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      render={({ field }: { field: any }) => (
+                        <FormItem>
+                          <FormLabel className="!mb-5 md:!mb-4">
+                            {t('courses.review.generalGrade')}
+                          </FormLabel>
+                          <FormControl>
+                            <div
+                              className={cn(
+                                'md:bg-newGray-6 md:py-7 md:rounded-full w-full max-md:max-w-[270px] md:w-fit mx-auto md:px-11 md:shadow-course-navigation',
+                                !isEditable && 'pointer-events-none',
+                              )}
+                            >
+                              <Ratings
+                                id="general"
+                                variant={isEditable ? 'yellow' : 'disabled'}
+                                disabled={!isEditable}
+                                totalStars={5}
+                                size={isMobile ? 40 : 30}
+                                onValueChange={(v) => {
+                                  form.setValue('general', v);
+                                }}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage className="w-full text-center" />
+                        </FormItem>
                       )}
                     />
+
+                    <FormSlider
+                      id="length"
+                      form={form}
+                      label={t('courses.review.length')}
+                      stepNames={[
+                        t('courses.review.tooShort'),
+                        t('courses.review.asExpected'),
+                        t('courses.review.tooLong'),
+                      ]}
+                      disabled={!isEditable}
+                    />
+
+                    <FormSlider
+                      id="difficulty"
+                      form={form}
+                      label={t('courses.review.difficulty')}
+                      stepNames={[
+                        t('courses.review.tooEasy'),
+                        t('courses.review.asExpected'),
+                        t('courses.review.tooHard'),
+                      ]}
+                      disabled={!isEditable}
+                    />
+
+                    <FormSlider
+                      id="quality"
+                      form={form}
+                      label={t('courses.review.quality')}
+                      stepNames={[
+                        t('courses.review.veryBad'),
+                        t('courses.review.soAndSo'),
+                        t('courses.review.veryGood'),
+                      ]}
+                      disabled={!isEditable}
+                    />
+
+                    <FormSlider
+                      id="faithful"
+                      form={form}
+                      label={t('courses.review.faithful')}
+                      stepNames={[
+                        t('courses.review.notReally'),
+                        t('courses.review.neutral'),
+                        t('courses.review.yesVeryMuch'),
+                      ]}
+                      disabled={!isEditable}
+                    />
+
+                    <FormSlider
+                      id="recommand"
+                      form={form}
+                      label={t('courses.review.recommend')}
+                      stepNames={[
+                        t('courses.review.no'),
+                        t('courses.review.soAndSo'),
+                        t('courses.review.yesOfCourse'),
+                      ]}
+                      disabled={!isEditable}
+                    />
+                  </div>
+
+                  <div className="mb-5 w-10/12 mx-auto h-px my-2.5 bg-newGray-1" />
+
+                  <div className="flex flex-col gap-6">
+                    <FormTextArea
+                      id="publicComment"
+                      control={form.control}
+                      label={
+                        isMobile
+                          ? t('courses.review.commentPublicMobile')
+                          : t('courses.review.commentPublic')
+                      }
+                      disabled={!isEditable}
+                    />
+
+                    <FormTextArea
+                      id="teacherComment"
+                      control={form.control}
+                      label={
+                        isMobile
+                          ? t('courses.review.commentTeacherMobile')
+                          : t('courses.review.commentTeacher')
+                      }
+                      disabled={!isEditable}
+                    />
+
+                    <FormTextArea
+                      id="adminComment"
+                      control={form.control}
+                      label={
+                        isMobile
+                          ? t('courses.review.commentAdminMobile')
+                          : t('courses.review.commentAdmin')
+                      }
+                      disabled={!isEditable}
+                    />
+                  </div>
+
+                  {!isDashboardReview && (
+                    <div className="flex flex-wrap items-center justify-center gap-4 mx-auto mt-6 lg:mt-4">
+                      <Button
+                        type="submit"
+                        className="w-fit"
+                        variant="primary"
+                        size={window.innerWidth >= 768 ? 'l' : 'm'}
+                        disabled={!isEditable}
+                      >
+                        {previousCourseReview
+                          ? t('courses.review.edit')
+                          : t('courses.review.submitReview')}
+                      </Button>
+
+                      {!isLockedReview && (
+                        <Button
+                          variant="outline"
+                          className="w-fit"
+                          size={window.innerWidth >= 768 ? 'l' : 'm'}
+                          onClick={() => {
+                            navigateToNextChapter();
+                          }}
+                        >
+                          <span>{t('courses.review.skip')}</span>
+                          <FaArrowRightLong
+                            className={cn(
+                              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
+                              'group-hover:ml-3',
+                            )}
+                          />
+                        </Button>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {isDashboardReview && (
+                  <Button
+                    className="w-full max-w-[152px] h-fit max-lg:self-center lg:self-end"
+                    variant="primary"
+                    size={isMobile ? 'm' : 'l'}
+                    onClick={async () => {
+                      if (isEditable) {
+                        await onSubmit();
+                        setIsEditable(false);
+                      } else {
+                        setIsEditable(true);
+                      }
+                    }}
+                  >
+                    {isEditable
+                      ? t('courses.review.saveReview')
+                      : t('courses.review.editReview')}
                   </Button>
                 )}
-              </div>
-            </form>
+              </form>
+            </div>
           </Form>
           {isAuthModalOpen && (
             <AuthModal

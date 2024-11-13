@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { JoinedCourseWithAll } from '@blms/types';
-import { TextTag, cn } from '@blms/ui';
+import { Button, TextTag, cn } from '@blms/ui';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
@@ -48,7 +49,7 @@ export const CourseCurriculum = ({
               <span className="hidden group-open:inline subtitle-large-caps-22px max-lg:text-lg">
                 -
               </span>
-              <div className="flex gap-2 max-md:flex-col md:justify-between md:items-center w-full">
+              <div className="flex gap-2 justify-between items-center w-full">
                 <span className="subtitle-large-caps-22px max-lg:text-lg">
                   {part.title}
                 </span>
@@ -61,47 +62,13 @@ export const CourseCurriculum = ({
                   <TextTag
                     variant="orange"
                     size={isTablet ? 'verySmall' : 'small'}
-                    className="flex gap-2.5 w-fit font-medium"
+                    className="flex gap-2.5 w-fit font-medium shrink-0"
                   >
-                    {t('dashboard.myCourses.done')}
+                    <span className="max-lg:hidden">
+                      {t('dashboard.myCourses.done')}
+                    </span>
                     <BsCheck size={18} className="shrink-0" />
                   </TextTag>
-                )}
-
-                {part.chapters.some(
-                  (chapter) => chapter?.chapterId === nextChapter,
-                ) && (
-                  <div className="flex flex-col gap-3 lg:hidden">
-                    <span className="body-14px-medium text-newBlack-1">
-                      {t('dashboard.myCourses.completedOutOf', {
-                        completed: part.chapters.filter(
-                          (chapter) =>
-                            chapter?.chapterId &&
-                            completedChapters?.includes(chapter.chapterId),
-                        )?.length,
-                        total: part.chapters.length,
-                      })}
-                    </span>
-                    <Link
-                      to={
-                        courseHasToBePurchased
-                          ? ''
-                          : '/courses/$courseId/$chapterId'
-                      }
-                      params={{
-                        courseId: course.id,
-                        chapterId: nextChapter,
-                      }}
-                      className={cn(
-                        'flex items-center',
-                        courseHasToBePurchased && 'pointer-events-none',
-                      )}
-                    >
-                      <ButtonWithArrow variant="primary" size="s">
-                        {t('dashboard.myCourses.resumeLesson')}
-                      </ButtonWithArrow>
-                    </Link>
-                  </div>
                 )}
               </div>
             </summary>
@@ -111,7 +78,7 @@ export const CourseCurriculum = ({
                   chapter !== undefined && (
                     <div
                       key={index}
-                      className="flex justify-between items-center pl-4 lg:pl-8"
+                      className="flex justify-between items-center pl-4 lg:pl-8 gap-2"
                     >
                       <Link
                         to={
@@ -124,7 +91,9 @@ export const CourseCurriculum = ({
                           chapterId: chapter.chapterId,
                         }}
                         className={cn(
-                          'flex max-lg:flex-col lg:items-center group/link gap-[5px] lg:gap-7',
+                          'flex items-center group/link gap-[5px] lg:gap-7',
+                          chapter.startDate &&
+                            'max-lg:flex-col max-lg:items-start',
                           courseHasToBePurchased && 'pointer-events-none',
                         )}
                       >
@@ -165,10 +134,12 @@ export const CourseCurriculum = ({
                       {completedChapters?.includes(chapter.chapterId) && (
                         <TextTag
                           variant="orange"
-                          size="small"
-                          className="flex gap-2.5 w-fit font-medium max-lg:hidden"
+                          size={isTablet ? 'verySmall' : 'small'}
+                          className="flex gap-2.5 w-fit font-medium shrink-0"
                         >
-                          {t('dashboard.myCourses.done')}
+                          <span className="max-lg:hidden">
+                            {t('dashboard.myCourses.done')}
+                          </span>
                           <BsCheck size={18} className="shrink-0" />
                         </TextTag>
                       )}
@@ -189,6 +160,13 @@ export const CourseCurriculum = ({
                             courseHasToBePurchased && 'pointer-events-none',
                           )}
                         >
+                          <Button
+                            variant="primary"
+                            size="s"
+                            className="lg:hidden"
+                          >
+                            <FaArrowRightLong />
+                          </Button>
                           <ButtonWithArrow
                             variant="primary"
                             size="s"

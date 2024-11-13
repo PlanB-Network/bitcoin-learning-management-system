@@ -1,11 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type {
-  ChangedFile,
-  ModifiedFile,
-  Professor,
-  RenamedFile,
-} from '@blms/types';
+import type { ChangedFile, Professor } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -36,18 +31,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (professor: ChangedProfessor, file?: ChangedFile) => {
     if (!file) return;
 
-    if (file.kind === 'removed') {
-      return;
-    }
-
     // Only get the tags from the main professor file
     const parsedProfessor = yamlToObject<ProfessorMain>(file.data);
 
-    const lastUpdated = professor.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = professor.files.sort((a, b) => b.time - a.time)[0];
 
     await transaction`
         INSERT INTO content.contributors (id)
@@ -57,7 +44,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const result = await transaction<Professor[]>`
         INSERT INTO content.professors (
-          path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url, 
+          path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url,
           nostr, lightning_address, lnurl_pay, paynym, silent_payment, tips_url,
           last_updated, last_commit, last_sync
         )
@@ -112,7 +99,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       await transaction`
           INSERT INTO content.professor_tags (professor_id, tag_id)
           SELECT
-            ${result.id}, 
+            ${result.id},
             id FROM content.tags WHERE name = ANY(${parsedProfessor.tags})
           ON CONFLICT DO NOTHING
         `;

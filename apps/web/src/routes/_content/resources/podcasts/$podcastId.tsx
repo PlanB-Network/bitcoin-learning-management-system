@@ -15,6 +15,7 @@ import {
 } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
+import { BackLink } from '#src/molecules/backlink.tsx';
 import { useSuggestedContent } from '#src/utils/resources-hook.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -70,7 +71,7 @@ function Podcast() {
       link={'/resources/podcasts'}
       activeCategory="podcasts"
       showPageHeader={false}
-      backToCategoryButton
+      showResourcesDropdownMenu={false}
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !podcast && (
@@ -81,62 +82,69 @@ function Podcast() {
         </div>
       )}
       {podcast && (
-        <article className="w-full">
-          <Card className="md:mx-auto" color="orange">
-            <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-16">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-8 lg:mb-12"
-                  alt={t('imagesAlt.bookCover')}
-                  src={podcast.logo}
-                />
-                <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
-                  {podcast?.podcastUrl && (
-                    <Link to={podcast.podcastUrl}>
-                      <Button
-                        size={isScreenMd ? 'l' : 'm'}
-                        variant="primary"
-                        className="mx-2"
-                      >
-                        {t('podcast.discover')}
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-              </div>
+        <div className="flex-col">
+          <BackLink
+            to={'/resources/podcasts'}
+            label={t('resources.podcasts.title')}
+          />
 
-              <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
-                <div>
-                  <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
-                    {podcast?.name}
-                  </h2>
-
-                  <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
-                    {podcast?.tags.map((tag, i) => (
-                      <TextTag
-                        key={i}
-                        size="resourcesNewSize"
-                        variant="newGray"
-                      >
-                        {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                      </TextTag>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center flex-wrap">
-                    <span className="text-white body-14px-medium md:body-16px-medium">
-                      {podcast.host}
-                    </span>
+          <article className="w-full">
+            <Card className="md:mx-auto" color="orange">
+              <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-16">
+                <div className="flex flex-col items-center justify-center">
+                  <img
+                    className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-8 lg:mb-12"
+                    alt={t('imagesAlt.bookCover')}
+                    src={podcast.logo}
+                  />
+                  <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
+                    {podcast?.podcastUrl && (
+                      <Link to={podcast.podcastUrl}>
+                        <Button
+                          size={isScreenMd ? 'l' : 'm'}
+                          variant="primary"
+                          className="mx-2"
+                        >
+                          {t('podcast.discover')}
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
 
-                {isScreenMd && displayAbstract()}
-              </div>
-            </div>
+                <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
+                  <div>
+                    <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
+                      {podcast?.name}
+                    </h2>
 
-            {!isScreenMd && displayAbstract()}
-          </Card>
-        </article>
+                    <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                      {podcast?.tags.map((tag, i) => (
+                        <TextTag
+                          key={i}
+                          size="resourcesNewSize"
+                          variant="newGray"
+                        >
+                          {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                        </TextTag>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center flex-wrap">
+                      <span className="text-white body-14px-medium md:body-16px-medium">
+                        {podcast.host}
+                      </span>
+                    </div>
+                  </div>
+
+                  {isScreenMd && displayAbstract()}
+                </div>
+              </div>
+
+              {!isScreenMd && displayAbstract()}
+            </Card>
+          </article>
+        </div>
       )}
 
       <section className="mt-8 lg:mt-[100px]">

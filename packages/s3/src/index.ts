@@ -10,6 +10,9 @@ import {
 
 import type { S3Config } from '@blms/types';
 
+// Re-export NoSuchKey from the S3 client
+export { NoSuchKey } from '@aws-sdk/client-s3';
+
 type Data = string | Uint8Array | Buffer | Readable;
 
 export interface S3Service {

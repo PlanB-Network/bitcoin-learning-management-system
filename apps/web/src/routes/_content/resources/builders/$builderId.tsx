@@ -9,6 +9,7 @@ import { Button, Loader, cn } from '@blms/ui';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { BackLink } from '#src/molecules/backlink.tsx';
 import Flag from '#src/molecules/Flag/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -84,6 +85,7 @@ function Builder() {
       activeCategory="builders"
       showPageHeader={false}
       backToCategoryButton
+      showResourcesDropdownMenu={false}
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !builder && (
@@ -95,6 +97,7 @@ function Builder() {
       )}
       {builder && (
         <>
+          <BackLink to={'/resources/builders'} label={t('words.builders')} />
           <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
             {proofreading ? (
               <ProofreadingProgress

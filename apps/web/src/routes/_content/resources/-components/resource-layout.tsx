@@ -31,6 +31,7 @@ interface Props {
   activeCategory?: string;
   maxWidth?: '1152' | '1360';
   marginTopChildren?: boolean;
+  showResourcesDropdownMenu?: boolean;
 }
 
 export const ResourceLayout = ({
@@ -47,6 +48,7 @@ export const ResourceLayout = ({
   backToCategoryButton,
   maxWidth,
   marginTopChildren = true,
+  showResourcesDropdownMenu = true,
 }: Props) => {
   return (
     <MainLayout footerVariant="dark">
@@ -63,10 +65,12 @@ export const ResourceLayout = ({
           )}
         >
           <CategoryTabs resourceActiveCategory={activeCategory} />
-          <ResourcesDropdownMenu
-            resourceActiveCategory={activeCategory}
-            backToCategoryButton={backToCategoryButton}
-          />
+          {showResourcesDropdownMenu && (
+            <ResourcesDropdownMenu
+              resourceActiveCategory={activeCategory}
+              backToCategoryButton={backToCategoryButton}
+            />
+          )}
 
           {showPageHeader && (
             <PageHeader

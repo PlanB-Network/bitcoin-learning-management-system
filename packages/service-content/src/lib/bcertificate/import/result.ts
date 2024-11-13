@@ -15,10 +15,6 @@ interface BCertificateResult {
 
 export const createProcessResultFile = (transaction: TransactionSql) => {
   return async (bcertId: string, file: ChangedFile) => {
-    if (!file || file.kind === 'removed') {
-      return;
-    }
-
     const parsed = yamlToObject<BCertificateResult>(file.data);
 
     const uid = await transaction<Array<Pick<UserAccount, 'uid'>>>`
@@ -62,10 +58,6 @@ export const createProcessTimestampFile = (
   s3: S3Service,
 ) => {
   return async (file: ChangedFile, bcertEdition: string, bcertId: string) => {
-    if (!file || file.kind === 'removed') {
-      return;
-    }
-
     const fileBuffer = file.data;
 
     // file.path => results/03f15fce2e/bitcoin_certificate-signed.pdf

@@ -4,13 +4,7 @@ import { marked } from 'marked';
 import { validate as uuidValidate } from 'uuid';
 
 import { firstRow, sql } from '@blms/database';
-import type {
-  ChangedFile,
-  Course,
-  ModifiedFile,
-  Proofreading,
-  RenamedFile,
-} from '@blms/types';
+import type { ChangedFile, Course, Proofreading } from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -306,57 +300,52 @@ const extractParts = (markdown: string): Part[] => {
 export const createUpdateCourses = ({ postgres }: Dependencies) => {
   return async (course: ChangedCourse, errors: string[]) => {
     const { main, files } = separateContentFiles(course, 'course.yml');
+    if (!main) return;
 
     return postgres
       .begin(async (transaction) => {
         try {
-          if (main && main.kind !== 'removed') {
-            // Remove all professors, reinsert them just after
-            await transaction`
+          // Remove all professors, reinsert them just after
+          await transaction`
                 DELETE FROM content.course_professors
                 WHERE course_id = ${course.id}
               `;
 
-            await transaction`
+          await transaction`
                 DELETE FROM content.course_chapters_localized_professors
                 WHERE course_id = ${course.id}
               `;
 
-            // Only get the tags from the main resource file
-            const parsedCourse = yamlToObject<CourseMain>(main.data);
-            if (parsedCourse.requires_payment === null) {
-              parsedCourse.requires_payment = false;
-            }
+          // Only get the tags from the main resource file
+          const parsedCourse = yamlToObject<CourseMain>(main.data);
+          if (parsedCourse.requires_payment === null) {
+            parsedCourse.requires_payment = false;
+          }
 
-            const startDateTimestamp = convertStringToTimestamp(
-              parsedCourse.paid_start_date
-                ? parsedCourse.paid_start_date.toString()
-                : '20220101',
+          const startDateTimestamp = convertStringToTimestamp(
+            parsedCourse.paid_start_date
+              ? parsedCourse.paid_start_date.toString()
+              : '20220101',
+          );
+          if (parsedCourse.requires_payment) {
+            console.log(
+              '-- Sync procedure: StartDateTimestamp',
+              startDateTimestamp,
             );
-            if (parsedCourse.requires_payment) {
-              console.log(
-                '-- Sync procedure: StartDateTimestamp',
-                startDateTimestamp,
-              );
-            }
-            const endDateTimestamp = convertStringToTimestamp(
-              parsedCourse.paid_end_date
-                ? parsedCourse.paid_end_date.toString()
-                : '20220101',
-            );
+          }
+          const endDateTimestamp = convertStringToTimestamp(
+            parsedCourse.paid_end_date
+              ? parsedCourse.paid_end_date.toString()
+              : '20220101',
+          );
 
-            const lastUpdated = course.files
-              .filter(
-                (file): file is ModifiedFile | RenamedFile =>
-                  file.kind !== 'removed',
-              )
-              .sort((a, b) => b.time - a.time)[0];
+          const lastUpdated = course.files.sort((a, b) => b.time - a.time)[0];
 
-            if (!parsedCourse.format) {
-              parsedCourse.format = 'online';
-            }
+          if (!parsedCourse.format) {
+            parsedCourse.format = 'online';
+          }
 
-            const result = await transaction<Course[]>`
+          const result = await transaction<Course[]>`
                 INSERT INTO content.courses (id, level, hours, topic, subtopic, original_language, requires_payment, format, online_price_dollars, inperson_price_dollars,
                   paid_description, paid_video_link, paid_start_date, paid_end_date, contact, available_seats, remaining_seats,
                   last_updated, last_commit, last_sync)
@@ -405,11 +394,11 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 RETURNING *
               `.then(firstRow);
 
-            if (!result) {
-              throw new Error('Could not insert course');
-            }
+          if (!result) {
+            throw new Error('Could not insert course');
+          }
 
-            await transaction`
+          await transaction`
                 INSERT INTO content.contributors ${transaction(
                   parsedCourse.professors.map((professor) => ({
                     id: professor,
@@ -418,7 +407,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 ON CONFLICT DO NOTHING
               `;
 
-            await transaction`
+          await transaction`
                 INSERT INTO content.course_professors (course_id, contributor_id)
                 SELECT
                   ${result.id},
@@ -426,9 +415,9 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 ON CONFLICT DO NOTHING
               `;
 
-            // If the resource has tags, insert them into the tags table and link them to the resource
-            if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
-              await transaction`
+          // If the resource has tags, insert them into the tags table and link them to the resource
+          if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
+            await transaction`
                   INSERT INTO content.tags ${transaction(
                     parsedCourse.tags.map((tag) => ({
                       name: tag.toLowerCase(),
@@ -437,32 +426,31 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ON CONFLICT (name) DO NOTHING
                 `;
 
-              await transaction`
+            await transaction`
                   INSERT INTO content.course_tags (course_id, tag_id)
                   SELECT
                     ${result.id},
                     id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
                   ON CONFLICT DO NOTHING
                 `;
-            }
+          }
 
-            // If the resource has proofreads
-            if (parsedCourse.proofreading) {
-              for (const p of parsedCourse.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedCourse.proofreading) {
+            for (const p of parsedCourse.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (course_id, language, last_contribution_date, urgency, reward)
                   VALUES (${course.id}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -476,10 +464,6 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             if (!file.language) {
               console.warn(
                 `Course file ${file.path} does not have a language, skipping...`,

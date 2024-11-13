@@ -11,6 +11,7 @@ import type { JoinedBCertificateResults, Ticket } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
 import DummyBCert from '#src/assets/about/dummy-bcert.webp';
+import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
@@ -247,9 +248,9 @@ const ExamResult = ({
                         />
                       )}
                     </div>
-                    <div className="flex flex-col items-center italic mt-4 gap-4">
+                    <div className="flex flex-col items-center mt-4 gap-4">
                       <a
-                        href={`/api/files/${exam.pdfKey}`}
+                        href={`/api/files/zip/bcert/${exam.pdfKey?.split('/').slice(1, 3).join('/')}`}
                         download
                         target="_blank"
                         rel="noreferrer"
@@ -259,7 +260,7 @@ const ExamResult = ({
                           variant="primary"
                           className="items-center flex gap-2.5"
                         >
-                          {t('dashboard.myCourses.downloadPdf')}
+                          {t('bCertificate.download')}
                           <FiDownload className="size-[18px] md:size-6" />
                         </Button>
                       </a>
@@ -286,6 +287,15 @@ const ExamResult = ({
                           </Link>
                         </div>
                       </div>
+
+                      <Link
+                        to={'/tutorials/other/bcert-verification'}
+                        target="_blank"
+                        className="flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+                      >
+                        <ApprovedIcon className="size-4" />
+                        <span>{t('bCertificate.verify')}</span>
+                      </Link>
                     </div>
                   </td>
                 </>
@@ -311,9 +321,9 @@ const ExamResult = ({
                         />
                       )}
                     </div>
-                    <div className="flex flex-row justify-between italic mt-4">
+                    <div className="flex flex-row justify-between mt-4">
                       <a
-                        href={`/api/files/${exam.pdfKey}`}
+                        href={`/api/files/zip/bcert/${exam.pdfKey?.split('/').slice(1, 3).join('/')}`}
                         download
                         target="_blank"
                         rel="noreferrer"
@@ -323,9 +333,17 @@ const ExamResult = ({
                           variant="primary"
                           className="items-center flex gap-2.5"
                         >
-                          {t('dashboard.myCourses.downloadPdf')}
+                          {t('bCertificate.download')}
                           <FiDownload className="size-[18px] md:size-6" />
                         </Button>
+                        <Link
+                          to={'/tutorials/others/bcert-verification'}
+                          target="_blank"
+                          className="flex flex-row items-center mt-4 gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+                        >
+                          <ApprovedIcon className="size-4" />
+                          <span>{t('bCertificate.verify')}</span>
+                        </Link>
                       </a>
 
                       <div className="flex items-center gap-4">

@@ -27,6 +27,7 @@ export const createProcessChangedGlossaryWord = (
       .begin(async (transaction) => {
         const processMainFile = createProcessMainFile(transaction);
         const { main, files } = separateContentFiles(resource, 'word.yml');
+        if (!main) return;
 
         try {
           await processMainFile(resource, main);
@@ -48,16 +49,15 @@ export const createProcessChangedGlossaryWord = (
         }
 
         try {
-          if (main && main.kind !== 'removed') {
-            const parsedWord = yamlToObject<GlossaryWordMain>(main.data);
-            // TODO remove when data fixed
-            if (parsedWord.original_language === undefined) {
-              parsedWord.original_language = '';
-            }
+          const parsedWord = yamlToObject<GlossaryWordMain>(main.data);
+          // TODO remove when data fixed
+          if (parsedWord.original_language === undefined) {
+            parsedWord.original_language = '';
+          }
 
-            const fileName = resource.path.split('/').slice(-1);
+          const fileName = resource.path.split('/').slice(-1);
 
-            const result = await transaction<GlossaryWord[]>`
+          const result = await transaction<GlossaryWord[]>`
               INSERT INTO content.glossary_words (resource_id, original_word, file_name, related_words, original_language)
               VALUES (
                 ${id}, ${parsedWord.en_word}, ${fileName}, ${parsedWord.related_words}, ${parsedWord.original_language}
@@ -70,23 +70,22 @@ export const createProcessChangedGlossaryWord = (
               RETURNING *
             `.then(firstRow);
 
-            // If the resource has proofreads
-            if (parsedWord.proofreading) {
-              for (const p of parsedWord.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedWord.proofreading) {
+            for (const p of parsedWord.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
                   VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -100,10 +99,6 @@ export const createProcessChangedGlossaryWord = (
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const header = matter(file.data, {
               excerpt: false,
             });

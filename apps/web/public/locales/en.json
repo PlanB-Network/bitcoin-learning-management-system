@@ -79,6 +79,7 @@
     "challengeYourself": "Challenge yourself & assert your level!",
     "checkout": "Check out the ₿ Certificate",
     "curious": "Curious to know what the exam is like?",
+    "download": "Download certificate",
     "joeNakamotoVideo": "What the heck is a Bitcoin exam? By Joe Nakamoto",
     "knowledgeableBitcoin": "Knowledgeable in Bitcoin ?",
     "noBookExam": "There is no exam session planned yet.",
@@ -89,7 +90,8 @@
     "pageSubtitle": "Mass adoption through centralized open-source education",
     "pageTitle": "Pass the ₿ Certificate",
     "readChart": "Read the charter",
-    "tweetText": "Thrilled to have passed the B-Certificate at @planb_network with a score of {{score}}/100! {{emoji}}\n\n{{certificateUrl}}"
+    "tweetText": "Thrilled to have passed the B-Certificate at @planb_network with a score of {{score}}/100! {{emoji}} #BCert\n\n{{certificateUrl}}",
+    "verify": "Verify the authenticity of your certificate"
   },
   "bet": {
     "contribute": "This toolkit is open to contribution. It uses Figma, so anyone can add, modify and translate content. To collaborate, add a category or a discussion, and don't hesitate to join our discord.",
@@ -349,12 +351,16 @@
     "review": {
       "asExpected": "as expected",
       "commentAdmin": "Comment to the admin team (private)",
+      "commentAdminMobile": "Private comment to the admin team",
       "commentPublic": "Comment (public)",
+      "commentPublicMobile": "Public comment",
       "commentTeacher": "Comment to the teacher (private)",
+      "commentTeacherMobile": "Private comment to the teacher",
       "currentlyLoggedOut": "You are currently logged out. In order to give us feedback on the course, please <0>log in or register</0>.",
       "difficulty": "Difficulty",
       "displayOutOf": "displayed out of",
       "edit": "Edit",
+      "editReview": "Edit review",
       "faithful": "Aligned with objective?",
       "feedbackDescription": "Please rate your experience with the course below.\nThis feedback session is mandatory to have access to the final exam and to validate the course.\nNote that teachers will not have access to individual evaluations.",
       "feedbackSessionTitle": "Feedback session",
@@ -369,6 +375,7 @@
       "quality": "Quality",
       "ratingsAndReviews": "Ratings & reviews",
       "recommend": "Would you recommend it?",
+      "saveReview": "Save review",
       "skip": "Skip review",
       "soAndSo": "so and so",
       "submitReview": "Submit review",
@@ -426,12 +433,13 @@
     "course": {
       "checkDetailsCompleted": "Here you can check all the details concerning this course you completed.",
       "completionDiploma": "Completion diploma",
-      "completionExamInfo": "Here you can find the information related to the completion exam at the end of this course.",
+      "completionExamInfo": "You have to complete the exam to have access to this feature.",
       "coursesCompleted": "Courses completed",
-      "feedbacks": "A chapter at the end of the course is dedicated to feedbacks. If you wish to give your feedback now, you can do it here.",
+      "feedbacks": "Here you can check and edit the ratings and feedback you’ve given to this course.",
       "ratingsAndFeedbacks": "Ratings & Feedbacks",
       "shareOnSocials": "Share on socials:",
-      "tweetText": "Thrilled to have completed {{courseId}} course at @planb_network and earned my certificate with a score of {{score}}/100 on the final exam! {{emoji}}\n\n{{certificateUrl}}"
+      "submitReviewInfo": "You have to submit a review to have access to this feature.",
+      "tweetText": "Thrilled to have completed {{courseId}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
     },
     "courses": "Courses",
     "logout": "Log out",
@@ -442,7 +450,7 @@
       "completedOutOf": "{{completed}} units completed of {{total}} available",
       "details": "Details",
       "done": "Done",
-      "downloadPdf": "Download PDF",
+      "download": "Download diploma",
       "inprogress": "In progress",
       "inprogressCoursesTitle": "Courses in progress",
       "inprogressCoursesDescription": "Here you can check your progress in the courses you have started.",
@@ -450,6 +458,7 @@
       "seeProgress": "to see your progress here.",
       "startCourse": "Start or complete a course",
       "whereYouAre": "Let's see where you're at!",
+      "verify": "Verify the authenticity of your diploma",
       "viewDetails": "View details",
       "yourCertificate": "Your certificate"
     },

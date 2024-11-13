@@ -131,7 +131,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
       `-- Sync procedure: Syncing ${bCertificates.length} B Certificates exams`,
     );
     for (const bCertificate of bCertificates) {
-      await updateBCertificates(bCertificate, errors, warnings);
+      await updateBCertificates(bCertificate, errors);
     }
 
     return { errors, warnings };

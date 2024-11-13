@@ -808,7 +808,6 @@ function CourseChapter() {
                     {isLoggedIn ? (
                       <CourseReview
                         chapter={chapter}
-                        showExplanation
                         addMarginToForm
                       ></CourseReview>
                     ) : (
@@ -816,7 +815,6 @@ function CourseChapter() {
                         <CourseReview
                           chapter={chapter}
                           formDisabled={true}
-                          showExplanation
                           addMarginToForm
                         ></CourseReview>
                       </>

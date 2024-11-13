@@ -5,7 +5,7 @@ import express, { Router, json } from 'express';
 
 import type { Dependencies } from './dependencies.js';
 import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
-import { createRestRouter } from './routers/rest-router.js';
+import { createRestRouter } from './routers/rest/index.js';
 import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
 
@@ -49,7 +49,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     }),
   );
 
-  const restRouter = createRestRouter(dependencies);
+  const restRouter = await createRestRouter(dependencies);
 
   const baseRoute = '/api';
   app.use(baseRoute, router);

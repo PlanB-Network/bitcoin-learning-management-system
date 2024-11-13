@@ -1,10 +1,5 @@
 import type { TransactionSql } from '@blms/database';
-import type {
-  BCertificateExam,
-  ChangedFile,
-  ModifiedFile,
-  RenamedFile,
-} from '@blms/types';
+import type { BCertificateExam, ChangedFile } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -23,17 +18,15 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     bCertificateExam: ChangedBCertificateExam,
     file?: ChangedFile,
   ) => {
-    if (!file || file.kind === 'removed') return;
+    if (!file) return;
 
     const parsedBCertificateExam = yamlToObject<BCertificateExamMain>(
       file.data,
     );
 
-    const lastUpdated = bCertificateExam.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = bCertificateExam.files.sort(
+      (a, b) => b.time - a.time,
+    )[0];
 
     await transaction<BCertificateExam[]>`
         INSERT INTO content.b_certificate_exam (

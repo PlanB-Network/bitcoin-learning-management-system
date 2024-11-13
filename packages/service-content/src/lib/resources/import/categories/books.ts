@@ -47,6 +47,7 @@ export const createProcessChangedBook = (
     return postgres
       .begin(async (transaction) => {
         const { main, files } = separateContentFiles(resource, 'book.yml');
+        if (!main) return;
 
         try {
           const processMainFile = createProcessMainFile(transaction);
@@ -70,10 +71,9 @@ export const createProcessChangedBook = (
 
         let parsedBook: BookMain | null = null;
         try {
-          if (main && main.kind !== 'removed') {
-            parsedBook = yamlToObject<BookMain>(main.data);
+          parsedBook = yamlToObject<BookMain>(main.data);
 
-            const result = await transaction<Book[]>`
+          const result = await transaction<Book[]>`
               INSERT INTO content.books (resource_id, author, level, website_url, original_language)
               VALUES (${id}, ${parsedBook.author}, ${parsedBook.level}, ${parsedBook.website_url}, ${parsedBook.original_language})
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -84,23 +84,22 @@ export const createProcessChangedBook = (
               RETURNING *
             `.then(firstRow);
 
-            // If the resource has proofreads
-            if (parsedBook.proofreading) {
-              for (const p of parsedBook.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedBook.proofreading) {
+            for (const p of parsedBook.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
                   VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -114,16 +113,12 @@ export const createProcessChangedBook = (
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const parsed = yamlToObject<BookLocal>(file.data);
 
             await transaction`
               INSERT INTO content.books_localized (
-                book_id, language, original, title, translator, description, publisher, 
-                publication_year, cover, summary_text, summary_contributor_id, shop_url, 
+                book_id, language, original, title, translator, description, publisher,
+                publication_year, cover, summary_text, summary_contributor_id, shop_url,
                 download_url
               )
               VALUES (

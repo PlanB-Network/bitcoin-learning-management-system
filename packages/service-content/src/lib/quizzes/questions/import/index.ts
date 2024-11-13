@@ -56,8 +56,6 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   const groupedQuizQuestions = new Map<string, ChangedQuizQuestion>();
 
   for (const file of quizQuestionsFiles) {
-    if (!file || file.kind === 'removed') continue;
-
     try {
       const {
         id,

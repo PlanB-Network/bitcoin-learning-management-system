@@ -34,6 +34,7 @@
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "formidable": "^3.5.2",
+    "jszip": "^3.10.1",
     "secp256k1": "^5.0.1",
     "sharp": "^0.33.5",
     "superjson": "^2.2.1",

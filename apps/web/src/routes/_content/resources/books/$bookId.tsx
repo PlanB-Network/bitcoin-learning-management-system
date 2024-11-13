@@ -15,6 +15,7 @@ import {
 
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { BackLink } from '#src/molecules/backlink.tsx';
 import { useSuggestedContent } from '#src/utils/resources-hook.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -72,6 +73,7 @@ function Book() {
       activeCategory="books"
       showPageHeader={false}
       backToCategoryButton
+      showResourcesDropdownMenu={false}
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !book && (
@@ -94,57 +96,60 @@ function Book() {
           ) : (
             <></>
           )}
-          <Card className="md:mx-auto" color="orange">
-            <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  className="md:w-[367px]  max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px]"
-                  alt={t('imagesAlt.bookCover')}
-                  src={book?.cover}
-                />
-              </div>
-
-              <div className="w-full max-w-2xl my-4 flex flex-col md:mt-0">
-                <div>
-                  <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
-                    {book?.title}
-                  </h2>
-
-                  <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
-                    {book?.tags.map((tag, i) => (
-                      <TextTag
-                        key={i}
-                        size="resourcesNewSize"
-                        variant="newGray"
-                      >
-                        {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                      </TextTag>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center">
-                    <span className="text-white body-14px-medium md:label-medium-med-16px pr-1">
-                      {t('words.writtenByPodcasts')}
-                    </span>
-                    <h5 className="text-white body-14px md:body-16px ">
-                      {book?.author}
-                    </h5>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="body-14px-medium md:label-medium-med-16px text-white pr-1">
-                      {t('words.publicationDate')}
-                    </span>
-                    <span className="body-14px md:body-16px text-white ">
-                      {book?.publicationYear}
-                    </span>
-                  </div>
+          <div className="flex-col">
+            <BackLink to={'/resources/books'} label={t('words.library')} />
+            <Card className="md:mx-auto" color="orange">
+              <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
+                <div className="flex flex-col items-center justify-center">
+                  <img
+                    className="md:w-[367px]  max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px]"
+                    alt={t('imagesAlt.bookCover')}
+                    src={book?.cover}
+                  />
                 </div>
 
-                {isScreenMd && displayAbstract()}
-              </div>
-            </article>
-            {!isScreenMd && displayAbstract()}
-          </Card>
+                <div className="w-full max-w-2xl my-4 flex flex-col md:mt-0">
+                  <div>
+                    <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
+                      {book?.title}
+                    </h2>
+
+                    <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                      {book?.tags.map((tag, i) => (
+                        <TextTag
+                          key={i}
+                          size="resourcesNewSize"
+                          variant="newGray"
+                        >
+                          {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                        </TextTag>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center">
+                      <span className="text-white body-14px-medium md:label-medium-med-16px pr-1">
+                        {t('words.writtenByPodcasts')}
+                      </span>
+                      <h5 className="text-white body-14px md:body-16px ">
+                        {book?.author}
+                      </h5>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="body-14px-medium md:label-medium-med-16px text-white pr-1">
+                        {t('words.publicationDate')}
+                      </span>
+                      <span className="body-14px md:body-16px text-white ">
+                        {book?.publicationYear}
+                      </span>
+                    </div>
+                  </div>
+
+                  {isScreenMd && displayAbstract()}
+                </div>
+              </article>
+              {!isScreenMd && displayAbstract()}
+            </Card>
+          </div>
         </div>
       )}
       <section className="mt-8 lg:mt-[100px]">

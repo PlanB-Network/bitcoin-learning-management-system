@@ -80,7 +80,6 @@ export const createUpdateBCertificateExams = ({
   return async (
     bCertificateExam: ChangedBCertificateExam,
     errors: string[],
-    warnings: string[],
   ) => {
     // eslint-disable-next-line prefer-const
     let { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
@@ -146,9 +145,9 @@ export const createUpdateBCertificateExams = ({
           } catch (error) {
             if (error instanceof Error) {
               if (error.message.includes('uid not found')) {
-                warnings.push(
-                  `Missing uid in B Certificate User Result : ${file?.path}: ${error}`,
-                );
+                // warnings.push(
+                //   `Missing uid in B Certificate User Result : ${file?.path}: ${error}`,
+                // );
               } else {
                 errors.push(
                   `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,

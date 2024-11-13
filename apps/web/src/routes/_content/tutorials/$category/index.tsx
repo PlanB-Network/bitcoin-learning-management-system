@@ -156,7 +156,7 @@ function TutorialCategory() {
                           )}
                         </div>
                       )} */}
-                        <div className="flex flex-wrap gap-y-4 md:gap-y-6 justify-center">
+                        <div className="flex flex-wrap gap-4 md:gap-x-0 md:gap-y-6 justify-center">
                           {tutorials
                             .filter(
                               (tutorial) =>

@@ -25,16 +25,15 @@ export const AuthorCard = ({
         />
 
         <div className="flex flex-col items-center md:items-start">
-          <div className="md:mt-4 flex flex-wrap gap-2.5 items-center md:order-2">
-            {professor.tags?.map((tag) => <TextTag key={tag}>{tag}</TextTag>)}
-          </div>
-
-          <div className="max-md:mt-1 md:order-3">
-            <SocialLinks professor={professor} />
-          </div>
-          <p className="max-md:mt-5 body-16px text-newBlack-1 md:max-w-[596px] md:order-1 w-full">
+          <p className="body-16px text-newBlack-1 md:max-w-[596px] w-full">
             {professor.bio}
           </p>
+          <div className="mt-5 md:mt-4 flex flex-wrap gap-2.5 items-center">
+            {professor.tags?.map((tag) => <TextTag key={tag}>{tag}</TextTag>)}
+          </div>
+          <div className="mt-1">
+            <SocialLinks professor={professor} />
+          </div>
         </div>
       </div>
     </article>

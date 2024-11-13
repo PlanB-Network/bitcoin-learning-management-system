@@ -94,6 +94,7 @@ export const createProcessChangedConference = (
           resource,
           'conference.yml',
         );
+        if (!main) return;
 
         try {
           const processMainFile = createProcessMainFile(transaction);
@@ -118,16 +119,15 @@ export const createProcessChangedConference = (
         let parsedConference: ConferenceMain | null = null;
 
         try {
-          if (main && main.kind !== 'removed') {
-            parsedConference = yamlToObject<ConferenceMain>(main.data);
+          parsedConference = yamlToObject<ConferenceMain>(main.data);
 
-            const result = await transaction<Conference[]>`
+          const result = await transaction<Conference[]>`
               INSERT INTO content.conferences (
                 resource_id, languages, name, year, location, original_language, description, builder, website_url, twitter_url
               )
               VALUES (
                 ${id}, ${parsedConference.language}, '', ${parsedConference.year.toString().trim()}, ${parsedConference.location.trim()},  ${parsedConference.original_language},
-                '', ${parsedConference.builder?.trim()}, ${parsedConference.links?.website?.trim()}, 
+                '', ${parsedConference.builder?.trim()}, ${parsedConference.links?.website?.trim()},
                 ${parsedConference.links?.twitter?.trim()}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
@@ -143,23 +143,22 @@ export const createProcessChangedConference = (
               RETURNING *
             `.then(firstRow);
 
-            // If the resource has proofreads
-            if (parsedConference.proofreading) {
-              for (const p of parsedConference.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedConference.proofreading) {
+            for (const p of parsedConference.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
                   VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -174,10 +173,6 @@ export const createProcessChangedConference = (
           file.path.includes('en.md'),
         )) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const header = matter(file.data, {
               excerpt: false,
             });

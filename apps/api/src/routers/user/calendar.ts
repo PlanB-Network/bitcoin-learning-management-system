@@ -12,15 +12,17 @@ const getCalendarEventsProcedure = studentProcedure
   .input(
     z.object({
       language: z.string(),
+      upcomingEvents: z.boolean().optional(),
     }),
   )
   .output<Parser<CalendarEvent[]>>(calendarEventSchema.array())
-  .query(({ ctx, input }) =>
-    createGetCalendarEvents(ctx.dependencies)({
+  .query(async ({ ctx, input }) => {
+    return createGetCalendarEvents(ctx.dependencies)({
       uid: ctx.user.uid,
       language: input.language,
-    }),
-  );
+      upcomingEvents: input?.upcomingEvents ?? false,
+    });
+  });
 
 export const userCalendarRouter = createTRPCRouter({
   getCalendarEvents: getCalendarEventsProcedure,

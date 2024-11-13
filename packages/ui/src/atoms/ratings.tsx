@@ -16,6 +16,10 @@ const ratingVariants = {
     star: 'text-darkOrange-5',
     emptyStar: 'text-newGray-2',
   },
+  disabled: {
+    star: 'text-newGray-1',
+    emptyStar: 'text-newGray-2',
+  },
 };
 
 export interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -62,7 +66,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
 
   return (
     <div
-      className={cn('flex items-center gap-2')}
+      className={cn('flex items-center max-md:justify-between md:gap-5')}
       onMouseEnter={() => setHoverValue(value)}
       onMouseLeave={() => setHoverValue(null)}
       {...props}

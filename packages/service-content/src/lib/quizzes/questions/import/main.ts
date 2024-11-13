@@ -1,12 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type {
-  ChangedFile,
-  Level,
-  ModifiedFile,
-  QuizQuestion,
-  RenamedFile,
-} from '@blms/types';
+import type { ChangedFile, Level, QuizQuestion } from '@blms/types';
 
 import { yamlToObject } from '../../../utils.js';
 
@@ -23,18 +17,12 @@ interface QuizQuestionMain {
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (quizQuestion: ChangedQuizQuestion, file?: ChangedFile) => {
-    if (!file || file.kind === 'removed') {
-      return;
-    }
+    if (!file) return;
 
     // Only get the tags from the main quiz file
     const parsedQuizQuestion = yamlToObject<QuizQuestionMain>(file.data);
 
-    const lastUpdated = quizQuestion.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = quizQuestion.files.sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<QuizQuestion[]>`
         INSERT INTO content.quiz_questions
@@ -42,12 +30,12 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         VALUES (
           ${parsedQuizQuestion.id},
           ${file.fullPath?.split('/')[1]},
-          ${parsedQuizQuestion.chapterId}, 
+          ${parsedQuizQuestion.chapterId},
           ${parsedQuizQuestion.difficulty},
           ${parsedQuizQuestion.author},
           ${parsedQuizQuestion.duration},
           false,
-          ${lastUpdated.time}, 
+          ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
         )
@@ -110,7 +98,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       await transaction`
           INSERT INTO content.quiz_question_tags (quiz_question_id, tag_id)
           SELECT
-            ${result.id}, 
+            ${result.id},
             id FROM content.tags WHERE name = ANY(${parsedQuizQuestion.tags})
           ON CONFLICT DO NOTHING
         `;

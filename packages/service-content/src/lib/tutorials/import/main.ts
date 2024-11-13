@@ -1,12 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type {
-  ChangedFile,
-  ModifiedFile,
-  Proofreading,
-  RenamedFile,
-  Tutorial,
-} from '@blms/types';
+import type { ChangedFile, Proofreading, Tutorial } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
 
@@ -42,8 +36,7 @@ interface TutorialMain {
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (tutorial: ChangedTutorial, file?: ChangedFile) => {
-    if (!file || file.kind === 'removed') return;
-
+    if (!file) return;
     // Only get the tags from the main tutorial file
     const parsedTutorial = yamlToObject<TutorialMain>(file.data);
 
@@ -52,11 +45,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       parsedTutorial.original_language = '';
     }
 
-    const lastUpdated = tutorial.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = tutorial.files.sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Tutorial[]>`
         INSERT INTO content.tutorials (id, path, name, category, subcategory, original_language, level, builder, last_updated, last_commit, last_sync)
@@ -69,7 +58,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedTutorial.original_language},
           ${parsedTutorial.level},
           ${parsedTutorial.builder},
-          ${lastUpdated.time}, 
+          ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
         )
@@ -114,7 +103,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       } else {
         await transaction`
             INSERT INTO content.tutorial_credits (
-              tutorial_id, name, link, lightning_address, 
+              tutorial_id, name, link, lightning_address,
               lnurl_pay, paynym, silent_payment, tips_url
             ) VALUES (
               ${result.id},
@@ -151,7 +140,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       await transaction`
           INSERT INTO content.tutorial_tags (tutorial_id, tag_id)
           SELECT
-            ${result.id}, 
+            ${result.id},
             id FROM content.tags WHERE name = ANY(${parsedTutorial.tags})
           ON CONFLICT DO NOTHING
         `;

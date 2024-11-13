@@ -102,10 +102,6 @@ export const createUpdateLegals = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             if ('data' in file) {
               const header = matter(file.data, { excerpt: false });
 

@@ -1,6 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type { Blog, ChangedFile, ModifiedFile, RenamedFile } from '@blms/types';
+import type { Blog, ChangedFile } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -16,16 +16,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (blog: ChangedBlog, file?: ChangedFile) => {
     if (!file) return;
 
-    if (file.kind === 'removed') {
-      return;
-    }
     const parsedBlog = yamlToObject<BlogMain>(file.data);
 
-    const lastUpdated = blog.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = blog.files.sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Blog[]>`
         INSERT INTO content.blogs (

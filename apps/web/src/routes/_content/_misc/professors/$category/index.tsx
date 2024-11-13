@@ -120,6 +120,7 @@ export function ProfessorCategoryPage() {
               to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
               key={professor.id}
               className="h-auto w-full sm:w-auto"
+              hash={`${params.category}`}
             >
               <div className="h-full">
                 <ProfessorCard professor={professor} className="h-full" />

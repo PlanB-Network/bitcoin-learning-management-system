@@ -1,11 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type {
-  ChangedFile,
-  ModifiedFile,
-  RenamedFile,
-  Resource,
-} from '@blms/types';
+import type { ChangedFile, Resource } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
@@ -13,25 +8,21 @@ import type { ChangedResource } from './index.js';
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (resource: ChangedResource, file?: ChangedFile) => {
-    if (!file || file.kind === 'removed') return;
+    if (!file) return;
 
     // Only get the tags from the main resource file
     const parsedResource = yamlToObject<{
       tags?: string[];
     }>(file.data);
 
-    const lastUpdated = resource.files
-      .filter(
-        (file): file is ModifiedFile | RenamedFile => file.kind !== 'removed',
-      )
-      .sort((a, b) => b.time - a.time)[0];
+    const lastUpdated = resource.files.sort((a, b) => b.time - a.time)[0];
 
     const result = await transaction<Resource[]>`
         INSERT INTO content.resources (category, path, last_updated, last_commit, last_sync)
         VALUES (
-          ${resource.category}, 
+          ${resource.category},
           ${resource.path},
-          ${lastUpdated.time}, 
+          ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
         )
@@ -64,7 +55,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       await transaction`
           INSERT INTO content.resource_tags (resource_id, tag_id)
           SELECT
-            ${result.id}, 
+            ${result.id},
             id FROM content.tags WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;

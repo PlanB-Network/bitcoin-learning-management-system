@@ -2,9 +2,13 @@ import { sql } from '@blms/database';
 import type { CalendarEvent } from '@blms/types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getCalendarEventsQuery = (uid: string, language: string) => {
+export const getCalendarEventsQuery = (
+  uid: string,
+  language: string,
+  upcomingEvents?: boolean,
+) => {
   return sql<CalendarEvent[]>`
-  SELECT 
+  SELECT
     e.id as id,
     '' as sub_id,
     e.type,
@@ -20,8 +24,9 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
     e.address_line_3
   FROM content.events e
   JOIN users.user_event ue on e.id = ue.event_id
-  WHERE uid = ${uid} AND ue.booked = true
-  
+    WHERE uid = ${uid} AND ue.booked = true
+    ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
+
   UNION
 
   SELECT
@@ -40,11 +45,12 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
     e.address_line_3
   FROM content.events e
   JOIN users.event_payment ep ON e.id = ep.event_id
-  WHERE ep.uid = ${uid} AND ep.payment_status = 'paid'
+ WHERE ep.uid = ${uid} AND ep.payment_status = 'paid'
+    ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
 
   UNION
 
-    SELECT 
+    SELECT
       cl.course_id as id,
       cl.chapter_id::text as sub_id,
       'course' as type,
@@ -66,6 +72,7 @@ export const getCalendarEventsQuery = (uid: string, language: string) => {
       JOIN content.professors pr on cp.contributor_id = pr.contributor_id
       WHERE cp.course_id = cl.course_id
     ) AS cp_agg ON TRUE
-    WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'
+   WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'
+      ${upcomingEvents ? sql`AND cl.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
   `;
 };

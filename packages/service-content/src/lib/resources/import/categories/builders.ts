@@ -40,6 +40,7 @@ export const createProcessChangedBuilder = (
       .begin(async (transaction) => {
         const processMainFile = createProcessMainFile(transaction);
         const { main, files } = separateContentFiles(resource, 'builder.yml');
+        if (!main) return;
 
         try {
           await processMainFile(resource, main);
@@ -61,17 +62,16 @@ export const createProcessChangedBuilder = (
         }
 
         try {
-          if (main && main.kind !== 'removed') {
-            const parsedBuilder = yamlToObject<BuilderMain>(main.data);
-            // TODO remove when correct data
-            if (parsedBuilder.original_language === undefined) {
-              parsedBuilder.original_language = '';
-            }
+          const parsedBuilder = yamlToObject<BuilderMain>(main.data);
+          // TODO remove when correct data
+          if (parsedBuilder.original_language === undefined) {
+            parsedBuilder.original_language = '';
+          }
 
-            const result = await transaction<Builder[]>`
+          const result = await transaction<Builder[]>`
               INSERT INTO content.builders (resource_id, name, category, languages, website_url, twitter_url, github_url, nostr, address_line_1, address_line_2, address_line_3, original_language)
               VALUES (
-                ${id}, ${parsedBuilder.name}, ${parsedBuilder.category.toLowerCase()}, ${parsedBuilder.language}, 
+                ${id}, ${parsedBuilder.name}, ${parsedBuilder.category.toLowerCase()}, ${parsedBuilder.language},
                 ${parsedBuilder.links.website}, ${parsedBuilder.links.twitter},
                 ${parsedBuilder.links.github}, ${parsedBuilder.links.nostr}, ${parsedBuilder.address_line_1}, ${parsedBuilder.address_line_2}, ${parsedBuilder.address_line_3}, ${parsedBuilder.original_language}
               )
@@ -90,23 +90,22 @@ export const createProcessChangedBuilder = (
               RETURNING *
             `.then(firstRow);
 
-            // If the resource has proofreads
-            if (parsedBuilder.proofreading) {
-              for (const p of parsedBuilder.proofreading) {
-                const proofreadResult = await transaction<Proofreading[]>`
+          // If the resource has proofreads
+          if (parsedBuilder.proofreading) {
+            for (const p of parsedBuilder.proofreading) {
+              const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (resource_id, language, last_contribution_date, urgency, reward)
                   VALUES (${result?.resourceId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${p.reward})
                   RETURNING *;
                 `.then(firstRow);
 
-                if (p.contributors_id) {
-                  for (const [index, contrib] of p.contributors_id.entries()) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
-                    await transaction`
+              if (p.contributors_id) {
+                for (const [index, contrib] of p.contributors_id.entries()) {
+                  await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
+                  await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
                       VALUES (${proofreadResult?.id},${contrib},${index})
                     `;
-                  }
                 }
               }
             }
@@ -120,10 +119,6 @@ export const createProcessChangedBuilder = (
 
         for (const file of files) {
           try {
-            if (file.kind === 'removed') {
-              continue;
-            }
-
             const parsed = yamlToObject<BuilderLocal>(file.data);
 
             await transaction`

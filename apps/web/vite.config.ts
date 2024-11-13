@@ -26,16 +26,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     cssCodeSplit: true,
     outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      onwarn(warning, defaultHandler) {
-        if (warning.code === 'SOURCEMAP_ERROR') {
-          return;
-        }
-
-        defaultHandler(warning);
-      },
-    },
   },
 
   assetsInclude: [UI_PACKAGE_ASSETS],

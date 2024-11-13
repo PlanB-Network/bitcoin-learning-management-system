@@ -23,7 +23,10 @@ import {
   cn,
 } from '@blms/ui';
 
-import CertificateLockImage from '#src/assets/courses/course-exam-certificate-lock.webp';
+import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp';
+import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp';
+import ApprovedIcon from '#src/assets/icons/approved.svg?react';
+import LockGif from '#src/assets/icons/lock.gif';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
@@ -149,8 +152,6 @@ const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
     courseId: course.id,
   });
 
-  const isTablet = useSmaller('lg');
-
   return (
     <div className="flex flex-col w-fit">
       {courseProgress &&
@@ -190,7 +191,7 @@ const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
             <AuthorCard
               key={professor.id}
               professor={professor}
-              hasDonateButton={!isTablet}
+              hasDonateButton
             />
           ))}
         </div>
@@ -207,13 +208,14 @@ const CourseProgress = ({
   return (
     <div
       key={courseProgress.courseId}
-      className="rounded-[20px] md:p-1.5 xl:p-2.5 shadow-course-navigation bg-newGray-6 w-full max-w-[1082px] mt-2.5 md:mt-10"
+      className="rounded-lg md:rounded-[20px] md:p-1.5 xl:p-2.5 max-md:border max-md:border-newGray-5 shadow-course-navigation-sm md:shadow-course-navigation bg-white md:bg-newGray-6 w-full max-w-[1082px] mt-2.5 md:mt-10"
     >
       <div className="flex max-md:flex-col md:items-center md:justify-between md:gap-4 p-2 md:p-3 xl:p-5">
         <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
-          <span className="max-md:mobile-subtitle1 text-xl">
-            {t('words.progress')}
+          <span className="mobile-subtitle1 md:hidden">
+            {courseProgress.courseId.toUpperCase()}
           </span>
+          <span className="max-md:hidden text-xl">{t('words.progress')}</span>
           <span className="mobile-subtitle1 text-darkOrange-5 md:hidden">
             {courseProgress.progressPercentage}%
           </span>
@@ -238,7 +240,7 @@ const CourseProgress = ({
               chapterId: courseProgress.nextChapter?.chapterId as string,
             }}
           >
-            <ButtonWithArrow variant="primary" size="s">
+            <ButtonWithArrow variant="outline" size="s">
               {t('dashboard.myCourses.resumeLesson')}
             </ButtonWithArrow>
           </Link>
@@ -264,14 +266,28 @@ export const CourseExams = ({
 
   return (
     <div className="flex flex-col mt-4 md:mt-10 w-full">
-      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle max-md:mb-4">
         {t('dashboard.course.completionDiploma')}
       </h2>
-      <p className="desktop-typo-1 md:body-16px text-dashboardSectionText/75 mt-4">
-        {t('dashboard.course.completionExamInfo')}
-      </p>
 
       {!isExamResultsFetched && <Loader />}
+
+      {isExamResultsFetched && examResults && examResults.length === 0 && (
+        <>
+          <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-newBlack-1">
+            {t('dashboard.course.completionExamInfo')}
+          </p>
+          <div className="flex justify-center items-center relative w-full max-w-[264px] md:max-w-[652px] mt-7 md:mt-10">
+            <img src={CertificateSatoshiImage} alt="Certificate" />
+            <img
+              src={LockGif}
+              alt="Locked"
+              className="absolute size-16 md:size-24"
+            />
+          </div>
+        </>
+      )}
+
       {isExamResultsFetched && examResults && examResults?.length > 0 && (
         <CourseExamsTable
           examResults={examResults}
@@ -430,7 +446,7 @@ const CourseExamsTable = ({
 
                         <div className="flex justify-between w-full mt-7 md:mt-5">
                           <a
-                            href={`/api/files/${exam.pdfKey}`}
+                            href={`/api/files/zip/diplomas/${exam.id}`}
                             download
                             target="_blank"
                             rel="noreferrer"
@@ -440,10 +456,11 @@ const CourseExamsTable = ({
                               variant="primary"
                               className="items-center flex gap-2.5"
                             >
-                              {t('dashboard.myCourses.downloadPdf')}
+                              {t('dashboard.myCourses.download')}
                               <FiDownload className="size-[18px] md:size-6" />
                             </Button>
                           </a>
+
                           <div className="flex items-center gap-4">
                             <span className="text-xs italic font-light text-black max-md:hidden">
                               {t('dashboard.course.shareOnSocials')}
@@ -470,14 +487,25 @@ const CourseExamsTable = ({
                             </div>
                           </div>
                         </div>
+                        <Link
+                          to={'/tutorials/others/bcert-verification'}
+                          target="_blank"
+                          className="mt-4 self-start flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+                        >
+                          <ApprovedIcon className="size-4" />
+                          <span>{t('dashboard.myCourses.verify')}</span>
+                        </Link>
                       </div>
                     ) : (
                       <div className="flex max-md:flex-col w-full gap-7 md:gap-10 md:py-5 md:px-2.5 max-md:pt-7">
-                        <img
-                          src={CertificateLockImage}
-                          alt="Certificate"
-                          className="max-md:order-2 max-md:px-3"
-                        />
+                        <div className="flex justify-center items-center relative max-md:order-2 max-md:px-3 w-full max-w-[364px]">
+                          <img
+                            src={CertificateLockImage}
+                            alt="Certificate"
+                            className="w-full"
+                          />
+                        </div>
+
                         <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
                           <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
                             {t('courses.exam.certificateGeneration')}
@@ -492,45 +520,49 @@ const CourseExamsTable = ({
                   {/* Failed exam */}
                   {!exam.succeeded && (
                     <div className="flex max-md:flex-col w-full gap-7 md:gap-10 md:py-5 md:px-2.5 max-md:pt-7">
-                      <img
-                        src={CertificateLockImage}
-                        alt="Certificate"
-                        className="max-md:order-2 max-md:px-3"
-                      />
-                      <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                        <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
-                          {t('courses.exam.dontGiveUpTryAgain')}
-                        </span>
-                        <img src={SandClockGif} alt="Time" />
-                        <Link
-                          to={examLink}
-                          target="_blank"
-                          className="w-fit"
-                          disabled={
-                            examResults
-                              ? new Date(exam.startedAt).getTime() +
-                                  oneDayInMs >
-                                Date.now()
-                              : true
-                          }
-                        >
-                          <Button
-                            className="w-fit flex gap-2.5"
-                            size={isMobile ? 's' : 'm'}
-                            variant="primary"
+                      <div className="flex justify-center items-center relative max-md:order-2 max-md:px-3 w-full max-w-[364px]">
+                        <img
+                          src={CertificateLockImage}
+                          alt="Certificate"
+                          className="w-full"
+                        />
+                      </div>
+                      {!examResults.some((e) => e.succeeded) && (
+                        <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
+                          <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
+                            {t('courses.exam.dontGiveUpTryAgain')}
+                          </span>
+                          <img src={SandClockGif} alt="Time" />
+                          <Link
+                            to={examLink}
+                            target="_blank"
+                            className="w-fit"
                             disabled={
-                              exam
+                              examResults
                                 ? new Date(exam.startedAt).getTime() +
                                     oneDayInMs >
                                   Date.now()
                                 : true
                             }
                           >
-                            {t('courses.exam.retakeExam')}
-                            <IoReload size={isMobile ? 18 : 24} />
-                          </Button>
-                        </Link>
-                      </div>
+                            <Button
+                              className="w-fit flex gap-2.5"
+                              size={isMobile ? 's' : 'm'}
+                              variant="primary"
+                              disabled={
+                                exam
+                                  ? new Date(exam.startedAt).getTime() +
+                                      oneDayInMs >
+                                    Date.now()
+                                  : true
+                              }
+                            >
+                              {t('courses.exam.retakeExam')}
+                              <IoReload size={isMobile ? 18 : 24} />
+                            </Button>
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -553,17 +585,42 @@ const CourseExamsTable = ({
 };
 
 export const CourseRatings = ({ courseId }: { courseId: string }) => {
+  const { data: previousCourseReview, isFetched: isReviewFetched } =
+    trpc.user.courses.getCourseReview.useQuery({
+      courseId: courseId,
+    });
+
   return (
     <section className="flex flex-col mt-4 md:mt-10 w-full">
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.ratingsAndFeedbacks')}
       </h2>
-      <p className="desktop-typo-1 md:body-16px text-dashboardSectionText/75 mt-4">
-        {t('dashboard.course.feedbacks')}
-      </p>
-      <div className="w-full max-w-[796px] mt-5 md:mt-10">
-        <div className="w-full max-w-[534px] mx-auto">
-          <CourseReview courseId={courseId} />
+
+      {isReviewFetched && !previousCourseReview && (
+        <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-newBlack-1 mt-4 md:mt-10">
+          {t('dashboard.course.submitReviewInfo')}
+        </p>
+      )}
+
+      {isReviewFetched && previousCourseReview && (
+        <p className="desktop-typo-1 md:body-16px text-dashboardSectionText/75 mt-4">
+          {t('dashboard.course.feedbacks')}
+        </p>
+      )}
+
+      <div className="w-full mt-5 md:mt-10">
+        <div className="w-full max-w-[716px]">
+          {isReviewFetched && !previousCourseReview && (
+            <CourseReview courseId={courseId} isLockedReview />
+          )}
+
+          {previousCourseReview && (
+            <CourseReview
+              courseId={courseId}
+              existingReview={previousCourseReview}
+              isDashboardReview
+            />
+          )}
         </div>
       </div>
     </section>

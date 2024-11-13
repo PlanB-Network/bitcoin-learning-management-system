@@ -49,6 +49,7 @@ const createCache = <T>(map = new Map<string, T>()) => {
 const cacheSymbol = Symbol('logCache');
 type GitLogReturn = Promise<{ hash: string; date: string } | null>;
 type SimpleGitExt = SimpleGit & { [cacheSymbol]?: Map<string, GitLogReturn> };
+
 const createGetGitLog = (git: SimpleGitExt) => {
   const fn = (file: string) =>
     git

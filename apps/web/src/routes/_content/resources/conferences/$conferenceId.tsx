@@ -11,6 +11,7 @@ import { Button, Loader, Tag, cn } from '@blms/ui';
 
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
+import { BackLink } from '#src/molecules/backlink.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -104,6 +105,7 @@ function Conference() {
       backToCategoryButton={true}
       maxWidth="1360"
       className="max-md:mx-4"
+      showResourcesDropdownMenu={false}
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !conference && (
@@ -128,15 +130,10 @@ function Conference() {
           )}
 
           {/* Top part */}
-          <div className="flex justify-start mb-4 text-darkOrange-5 gap-1 max-md:hidden">
-            <Link to="/resources/conferences">
-              <span className="">{t('conferences.pageTitle')}</span>
-            </Link>
-            <span>&gt;</span>
-            <span className="underline underline-offset-2">
-              {conference.name}
-            </span>
-          </div>
+          <BackLink
+            to={'/resources/conferences'}
+            label={t('conferences.pageTitle')}
+          />
 
           <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-4 lg:gap-8">
             <div className="lg:order-2 w-full max-w-full">

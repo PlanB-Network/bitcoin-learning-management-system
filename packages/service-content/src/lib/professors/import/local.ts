@@ -10,10 +10,6 @@ interface ProfessorLocal {
 
 export const createProcessLocalFile = (transaction: TransactionSql) => {
   return async (id: number, file: ChangedFileWithLanguage) => {
-    if (file.kind === 'removed') {
-      return;
-    }
-
     const parsed = yamlToObject<ProfessorLocal>(file.data);
 
     await transaction`

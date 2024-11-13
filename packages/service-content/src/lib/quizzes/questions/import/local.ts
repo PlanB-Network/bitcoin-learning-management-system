@@ -18,10 +18,6 @@ export const createProcessLocalFile = (transaction: TransactionSql) => {
     id: string,
     file: ChangedFileWithLanguage,
   ) => {
-    if (file.kind === 'removed') {
-      return;
-    }
-
     const parsed = yamlToObject<QuizQuestionLocal>(file.data);
 
     await transaction`
