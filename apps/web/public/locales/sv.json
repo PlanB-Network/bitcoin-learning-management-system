@@ -749,9 +749,9 @@
     },
     "navigationTitles": {
       "all": "",
-      "lecturers": "",
-      "teachers": "",
-      "tutorialCreators": ""
+      "lecturers": "Föreläsare",
+      "teachers": "Lärare",
+      "tutorialCreators": "Skapare av tutorials"
     }
   },
   "resources": {
@@ -1124,23 +1124,23 @@
     "term": ""
   },
   "proofreading": {
-    "thanks": "",
-    "completed": "",
-    "description": "",
-    "inProgress": "",
-    "reviewEarn": "",
-    "status": ""
+    "thanks": "Ett stort tack går till våra fantastiska granskare!",
+    "completed": "Korrekturläsning slutförd",
+    "description": "Det ursprungliga innehållet har översatts av AI, men mänsklig granskning är nödvändig för att säkerställa att det är korrekt.",
+    "inProgress": "Korrekturläsning pågår",
+    "reviewEarn": "Granska och tjäna sats",
+    "status": "Status på korrekturläsning"
   },
   "publicCommunication": {
-    "description": "",
+    "description": "Plan ₿ Network är stolta över att följa open source-standard och bibehålla transparens genom hela sin resa",
     "blogCategories": {
       "course": "",
       "feature": "",
       "patch": "",
       "grants": "",
       "network": "",
-      "all": "",
-      "content": ""
+      "all": "Alla",
+      "content": "Innehåll"
     },
     "legalSections": {
       "contact": "",
@@ -1148,9 +1148,9 @@
       "privacyPolicy": "",
       "termsOfSale": ""
     },
-    "title": "",
-    "blogPost": "",
-    "legal": "",
+    "title": "Offentlig kommunikation",
+    "blogPost": "Bloggar & Nyheter",
+    "legal": "Juridisk information",
     "goBackButtons": {
       "simpleGoBack": ""
     },
