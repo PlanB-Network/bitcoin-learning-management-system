@@ -191,14 +191,14 @@
     },
     "explorer": {
       "footerTitle": "Nos professeurs sont là pour vous !",
-      "footerp1": "À Sovereign University, nos professeurs ont une autonomie totale vis à vis de leur contenu et aux outils qu'ils veulent explorer, aussi longtemps qu'ils suivent le code d'éthique. Ce sont des bitcoineurs passionnés venus de différents horizons.",
+      "footerp1": "À l'Université Sovereign, nos professeurs ont une autonomie totale dans la conception de leur contenu de cours et la sélection des outils pour votre exploration, à condition qu'ils adhèrent à notre code de déontologie. Ce sont des bitcoiners passionnés issus de divers horizons qui partagent avec nous leur précieuse expérience.",
       "footerp2": "Si vous voulez améliorer un cours ou fournir le vôtre, vous pouvez simplement le faire via le GitHub. Pour soutenir un professeur, vous pouvez soit noter son cours, le faire directement ou devenir membre de l'université pour soutenir la plateforme.",
       "moreToCome": "…et plus à venir !",
       "pageDescription": "L'Académie Plan ₿ vise à simplifier l'éducation sur Bitcoin à l'échelle mondiale. Curée par des experts de divers domaines, notre académie propose une gamme complète de cours conçus pour clarifier chaque aspect de Bitcoin.\nDu débutant à l'expert, que ce soit à votre propre rythme ou suivi chaque semaine par un professeur, nous espérons que l'Académie peut vous aider à acquérir une compréhension plus profonde du vaste monde de Bitcoin. Beaucoup de nos cours sont entièrement gratuits afin que quiconque, n'importe où, puisse accéder à une éducation de qualité.",
       "pageSubtitle": "Adoption massive grâce à une éducation open source centralisée",
       "pageTitle": "Bienvenue à l'Académie Plan ₿",
-      "s2p1": "Si vous avez commencé à explorer le terrier du Bitcoin, vous devez savoir qu'il s'agit d'un voyage sans fin avec de nombreux chemins. Ici, à l'université, nous comprenons cela et avons conçu notre contenu éducatif pour être non linéaire, autonome et aussi vaste que possible.",
-      "s2p2": "Vous serez en mesure de choisir votre propre voie et de la suivre, en acquérant des compétences et des connaissances aussi loin que votre motivation vous emmènera.",
+      "s2p1": "Si vous venez de commencer à explorer le terrier du Bitcoin, vous devez savoir que c'est un voyage sans fin sur de nombreux chemins. Dans notre université, nous reconnaissons cette complexité, nous avons donc conçu notre contenu éducatif pour qu'il soit non linéaire, autodirigé et aussi complet que possible.",
+      "s2p2": "Vous pourrez choisir votre propre voie, acquérir des compétences et des connaissances grâce à votre propre motivation et détermination.",
       "s2p3": "Tous nos cours sont 100% gratuits donc rien ne peut vous arrêter !",
       "s2t1": "L’éducation Bitcoin est un voyage, pas une destination.",
       "s3PickLevel": "Choisir les niveaux :",
@@ -208,7 +208,7 @@
       "findCourses": "Trouvez le cours parfait pour vos besoins grâce au sélecteur de cours",
       "exploreCourses": "Explorez tous les cours Plan ₿",
       "buildPath": "Construisez votre propre chemin dans le terrier du lapin",
-      "seeCourse": "Voir le cours"
+      "seeCourse": "Découvrir le cours"
     },
     "footer": {
       "": ""
@@ -329,7 +329,7 @@
     "review": {
       "generalGrade": "Note générale",
       "ratingsAndReviews": "Notes et avis",
-      "recommend": "Recommanderiez-vous ?",
+      "recommend": "Le recommanderiez-vous ?",
       "quality": "Qualité",
       "tooHard": "trop dur",
       "tooLong": "trop long",
@@ -570,7 +570,7 @@
       "additional_free_description": "Cet événement est gratuit, il n'y a donc aucun frais pour réserver cette place. Cependant, assurez-vous d'y assister, car le nombre de places est limité.",
       "amount": "Montant",
       "back_events": "Retour aux événements",
-      "book_seat": "Réserver une place",
+      "book_seat": "Réservez une place",
       "callout_online": "Vous êtes sur le point de réserver un accès en ligne à cet événement.",
       "callout_physical": "Vous êtes sur le point de réserver un accès physique à cet événement.",
       "callout_replay": "Vous êtes sur le point de réserver l'accès à la rediffusion de cet événement.",
@@ -1151,7 +1151,7 @@
     "randomSearch": "Recherche aléatoire",
     "relatedWords": "Mots associés :",
     "term": "Terme",
-    "filterBar": "Trouvez le mot dont vous avez besoin ici",
+    "filterBar": "Trouvez le mot dont vous avez besoin juste ici",
     "keepLooking": "Voulez-vous continuer à chercher ?",
     "needHelp": "Besoin d'aide pour définir un mot technique ?",
     "loadMoreWords": "Charger plus de mots",
