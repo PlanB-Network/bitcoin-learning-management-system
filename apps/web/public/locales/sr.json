@@ -101,7 +101,7 @@
       "title": "Obrazovni Sadržaj"
     },
     "hereForYou": "BET je ovde za Vas!",
-    "pageDescription": "Postići masovnu primenu nije lako. Da bismo se brže i bliže približili tom cilju, razvili smo proširivu bazu obrazovnog sadržaja. Ovde, edukatori o Bitcoinu mogu slobodno da ostavljaju i pristupaju sadržaju po potrebi. Nemojmo svaki put iznova izmišljati točak, već hajde da radimo zajedno na centralizaciji korisnih resursa na jednom mestu!",
+    "pageDescription": "Postići masovnu primenu nije lako. Da bismo se brže i bliže približili tom cilju, razvili smo proširivu bazu obrazovnog sadržaja. Ovde, edukatori o Bitcoinu mogu slobodno da ostavljaju i pristupaju sadržaju po potrebi. Nemoramo svaki put iznova izmišljati točak, nego hajde da radimo zajedno na centralizaciji korisnih resursa na jednom mestu!",
     "pageSubtitle": "BET - Bitcoin alat otvorenog koda za sve obrazovne projekte",
     "pageTitle": "Edukativni alat za Bitcoin",
     "visualContent": {
@@ -196,7 +196,7 @@
       "date": "Datum: {{startDate}} do {{endDate}}",
       "numberOfChapters": "Broj poglavlja: {{number}}",
       "payment_successful": "Uplata uspešna!",
-      "accessible": "Dostupno: Doživotno",
+      "accessible": "Dostupno: Doživotan pristup",
       "buyCourse": "Kupite kurs",
       "courseId": "ID kursa: {{courseId}}",
       "coursePayment": "Plaćanje kursa",
@@ -231,8 +231,8 @@
     },
     "explorer": {
       "findCourses": "Pronađite savršen kurs za vaše potrebe zahvaljujući alatu za izbor kursa",
-      "footerp1": "Na Suverenom univerzitetu, naši profesori imaju potpunu autonomiju nad svojim sadržajem i alatima koje žele da istražite, sve dok se pridržavaju etičkog kodeksa. Oni su strastveni ljubitelji Bitcoina iz različitih oblasti.",
-      "pageDescription": "Plan B Akademija ima za cilj da pojednostavi obrazovanje o Bitcoinu širom sveta. Uređena od strane stručnjaka iz različitih disciplina, akademija nudi bogatstvo kurseva dizajniranih da otkriju svaki aspekt Bitcoina. Od početnika do stručnjaka, bilo da učite u svom ritmu ili pratite predavanja sa profesorom, nadamo se da Akademija može da Vam pomogne da bolje razumete obimnu temu kao što je Bitcoin. Veliki deo naših kurseva je potpuno besplatan kako bi svako, bilo gde, mogao da ima pristup obrazovanju.",
+      "footerp1": "Na Suverenom univerzitetu, naši profesori imaju potpunu autonomiju u kreiranju svog sadržaja i izboru alata koje žele da istražite, sve dok se pridržavaju našeg etičkog kodeksa. Oni su strastveni ljubitelji Bitcoina iz različitih oblasti koji vole da dele svoje vredno iskustvo sa vama.",
+      "pageDescription": "Plan ₿ Akademija ima za cilj da pojednostavi obrazovanje o Bitcoinu širom sveta. Uređena od strane stručnjaka iz različitih disciplina, naša akademija nudi bogatstvo kurseva dizajniranih da pojasne svaki aspekt Bitcoina. Od početnika do stručnjaka, bilo da učite u svom ritmu ili pratite nedeljna predavanja sa profesorom, nadamo se da Akademija može da Vam pomogne da bolje razumete obimnu temu kao što je Bitcoin. Veliki deo naših kurseva je potpuno besplatan kako bi svako, bilo gde, mogao da ima pristup kvalitetnom obrazovanju.",
       "exploreCourses": "Istražite sve Plan B kurseve",
       "footerTitle": "Naši profesori su ovde za vas!",
       "buildPath": "Izgradite svoj put \"niz zečju rupu\"",
@@ -241,8 +241,8 @@
       "moreToCome": "... i još mnogo toga predstoji!",
       "pageSubtitle": "Masovno širenje kroz centralizovano obrazovanje otvorenog koda",
       "pageTitle": "Dobrodošli u Plan ₿ Akademiju",
-      "s2p1": "Ako ste počeli da istražujete Bitcoin \"zečju rupu\", morate znati da je to beskrajno putovanje sa mnogo staza. Ovde na Univerzitetu to razumemo, tako da smo dizajnirali naš edukativni sadržaj da bude nelinearan, autonoman i što je moguće obimniji.",
-      "s2p2": "Bićete u mogućnosti da izaberete svoj sopstveni ritam učenja, stičući veštine i znanje brzinom koja zavisi od vaše motivacije.",
+      "s2p1": "Ako ste tek počeli da istražujete Bitcoin \"zečju rupu\", morate znati da je to beskrajno putovanje sa mnogo staza. Na našem Univerzitetu mi prepoznajemo tu kompleksnost, tako da smo dizajnirali naš edukativni sadržaj da bude nelinearan, samoinicijativan i što je moguće obimniji.",
+      "s2p2": "Bićete u mogućnosti da izaberete svoj sopstveni ritam učenja, stičući veštine i znanje brzinom koja zavisi od vaše motivacije i posvećenosti.",
       "s2p3": "Svi naši kursevi su 100% besplatni, tako da vas ništa ne može zaustaviti!",
       "s2t1": "Obrazovanje o Bitcoinu je putovanje, a ne destinacija.",
       "s3PickLevel": "Izaberite nivo:",
@@ -380,7 +380,7 @@
     "buttonBuy": "Kupi",
     "buttonPdf": "PDF / E-knjiga",
     "offeredBy": "Ponuđeno od strane velikodušnog saradnika",
-    "pageSubtitle": "Ovaj portal je javno dostupan i otvoren za doprinos.",
+    "pageSubtitle": "Ovaj portal je javno dostupan i otvoren za doprinose.",
     "pageTitle": "Bitcoin Biblioteka",
     "topicsAddressed": "Obrađene teme:"
   },
