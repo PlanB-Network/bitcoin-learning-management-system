@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  getNewsletterResponseSchema,
   joinedBetSchema,
   joinedBookSchema,
   joinedBuilderSchema,
@@ -18,10 +19,13 @@ import {
   createGetConferences,
   createGetGlossaryWord,
   createGetGlossaryWords,
+  createGetNewsletter,
+  createGetNewsletters,
   createGetPodcast,
   createGetPodcasts,
 } from '@blms/service-content';
 import type {
+  GetNewsletterResponse,
   JoinedBet,
   JoinedBook,
   JoinedBuilder,
@@ -102,6 +106,19 @@ export const resourcesRouter = createTRPCRouter({
         input.strId,
         input.language,
       );
+    }),
+  //Newsletters
+  getNewsletters: createGetResourcesProcedure()
+    .output<Parser<GetNewsletterResponse[]>>(
+      getNewsletterResponseSchema.array(),
+    )
+    .query(({ ctx, input }) => {
+      return createGetNewsletters(ctx.dependencies)(input?.language);
+    }),
+  getNewsletter: createGetResourceProcedure()
+    .output<Parser<GetNewsletterResponse>>(getNewsletterResponseSchema)
+    .query(({ ctx, input }) => {
+      return createGetNewsletter(ctx.dependencies)(input.id, input.language);
     }),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()

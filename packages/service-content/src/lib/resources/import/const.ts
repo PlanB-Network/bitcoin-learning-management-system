@@ -5,6 +5,7 @@ export const supportedCategories = [
   'builders',
   'conferences',
   'glossary',
+  'newsletters',
 ] as const;
 
 export type ResourceCategory = (typeof supportedCategories)[number];

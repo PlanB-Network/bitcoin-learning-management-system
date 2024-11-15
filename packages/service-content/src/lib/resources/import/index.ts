@@ -11,6 +11,7 @@ import { createProcessChangedBook } from './categories/books.js';
 import { createProcessChangedBuilder } from './categories/builders.js';
 import { createProcessChangedConference } from './categories/conferences.js';
 import { createProcessChangedGlossaryWord } from './categories/glossary.js';
+import { createProcessChangedNewsletter } from './categories/newsletters.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { assertSupportedCategoryPath } from './const.js';
 import type { ResourceCategory } from './const.js';
@@ -115,6 +116,7 @@ export const createUpdateResources = (dependencies: Dependencies) => {
       conferences: createProcessChangedConference,
       podcasts: createProcessChangedPodcast,
       glossary: createProcessChangedGlossaryWord,
+      newsletters: createProcessChangedNewsletter,
     } as const;
 
     const handler = mapHandlers[resource.category];
@@ -126,7 +128,7 @@ export const createDeleteResources = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
-        sql`DELETE FROM content.resources WHERE last_sync < ${sync_date} 
+        sql`DELETE FROM content.resources WHERE last_sync < ${sync_date}
       `,
       );
     } catch {
