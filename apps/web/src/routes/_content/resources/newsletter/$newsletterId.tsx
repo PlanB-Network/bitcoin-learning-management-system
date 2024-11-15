@@ -104,7 +104,7 @@ function NewsletterDetail() {
               </div>
             </div>
 
-            <div className="w-full max-w-2xl my-4 flex flex-col md:mt-0">
+            <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
               <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
                 {newsletter.title}
               </h2>

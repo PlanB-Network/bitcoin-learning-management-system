@@ -48,7 +48,7 @@ function Newsletter() {
               newsletterId: newsletter.newsletterId.toString(),
             }}
             key={newsletter.id}
-            className="grow md:grow-0 shrink-0"
+            className="grow md:grow-0"
           >
             <ResourceCard
               name={newsletter.title}
