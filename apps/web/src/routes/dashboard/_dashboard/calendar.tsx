@@ -10,6 +10,7 @@ import { cn } from '@blms/ui';
 
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
+import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
 import { CustomEvent } from '#src/components/Calendar/custom-event.js';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
@@ -129,10 +130,7 @@ function DashboardCalendar() {
 
   const monthComponents: Components<CalendarEvent> = {
     toolbar: CustomToolbar,
-    event: CustomEvent,
-    week: {
-      header: CustomWeekHeader,
-    },
+    event: CustomEventMonth,
   };
 
   const scrollToTime = new Date(1970, 1, 1, 9);

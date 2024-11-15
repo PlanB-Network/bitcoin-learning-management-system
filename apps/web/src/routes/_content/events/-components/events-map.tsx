@@ -480,8 +480,6 @@ const EventsMap = ({
                       setSelectedEventGroup(null);
                       setCalendarCard(event);
 
-                      setFilter([]);
-
                       const group =
                         event.addressLine1 && groups?.get(event.addressLine1);
 
@@ -623,15 +621,10 @@ const EventsMap = ({
       <div
         className={cn(
           'p-4 border-t',
-          calendarCard || selectedEventGroup ? 'rounded-b-xl' : 'hidden',
+          calendarCard || selectedEventGroup ? 'rounded-b-xl pb-4' : 'hidden',
         )}
       >
-        <div
-          className={cn(
-            'flex justify-between font-semibold text-gray-800',
-            (calendarCard || selectedEventGroup) && 'pb-4',
-          )}
-        >
+        <div className="flex justify-between font-semibold text-gray-800">
           <div className="flex">
             {selectedEventGroup && (
               <span>{selectedEventGroup?.location.name}</span>

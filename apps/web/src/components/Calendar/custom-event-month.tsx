@@ -18,8 +18,7 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       break;
     }
     case 'conference': {
-      cssclasses =
-        'bg-[#8530001a] hover:bg-darkOrange-7 hover:text-white text-darkOrange-7';
+      cssclasses = 'bg-[#f2eae5] text-darkOrange-7';
       break;
     }
     case 'exam': {
@@ -39,10 +38,11 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       break;
     }
   }
+  console.log('Event:', event);
 
   return (
     <div
-      className={`${cssclasses} flex flex-col h-[30px] hover:h-screen hover:z-20 hover:absolute hover:top-0`}
+      className={`${cssclasses} flex flex-col h-[30px] hover:h-full hover:z-20 hover:absolute hover:top-0 hover:w-fit hover:max-w-[220px]`}
       style={{
         padding: '10px',
         width: '100%',
@@ -56,15 +56,18 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       <div
         className={`flex flex-row text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
       >
-        {' '}
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
         {event.isOnline && (
           <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
         )}
       </div>
-      <div className="font-semibold text-sm">{event.title}</div>
-      <div className="text-sm">{event.organiser}</div>
-      <div className="text-sm">{event.addressLine1}</div>
+      <div className="font-semibold text-sm whitespace-normal w-full">
+        {event.title}
+      </div>
+      <div className="text-sm whitespace-normal w-full">{event.organiser}</div>
+      <div className="text-sm whitespace-normal w-full">
+        {event.addressLine1}
+      </div>
     </div>
   );
 };
