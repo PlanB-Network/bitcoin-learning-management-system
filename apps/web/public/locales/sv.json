@@ -710,45 +710,45 @@
     "answer2": "Genom att gå med i vårt nätverk får du tillgång till exklusivt innehåll som Plan ₿ distribuerar genom sin plattform, vilket du kan dela med användarna av din nod. Den viktigaste fördelen är möjligheten att öppna diskussionskanaler för framtida projekt och ansluta dig med andra communities världen över för att dela varandras erfarenheter.",
     "answer3": "Plan ₿ Network inriktar sig främst på noder som opererar från en fysisk plats. I framtiden planerar vi att integrera fler initiativ som kan dra nytta av nätverkets stöd för tillväxt.",
     "answer4": "En Bitcoin-nod kan variera i storlek, och olika kategorier kommer att tilldelas baserat på specifika kriterier. Till exempel kommer en nod som innehåller ett hackerspace, ett gym och kontorsutrymme att betraktas som mer citadelliknande.",
-    "answer5": "We wish to offer a safe heaven for bitcoiners around the world. We beleive that by helping local hubs grow, we will be able to create a network of citadels where bitcoiners will be welcome to work, create, share and discuss safely.",
-    "apply": "Apply to become a Node",
-    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "Node Map",
-    "question1": "What's a node?",
-    "question2": "What do I gain?",
-    "question3": "What are the requirements?",
-    "question4": "What size is a node?",
-    "question5": "What's the secret plan?",
-    "applyhelp": "",
-    "descriptionextend": "",
-    "mobiledescription": ""
+    "answer5": "Vi strävar efter att erbjuda en fristad för bitcoin-användare runt om i världen. Genom att hjälpa lokala hubb att växa kan vi skapa ett nätverk av citadeller där de är välkomna att arbeta, skapa, förmedla och diskutera på ett säkert sätt.",
+    "apply": "Ansök om att starta en nod",
+    "description1": "Vi tror på att utbildning inte enbart borde ske online utan också i fysiska utrymmen. För att uppnå detta hanterar Plan B Network ett nätverk av hubbar runt om i världen för att välkomna filosofer, skapare och utbildare som främjar utvecklingen av Bitcoin och frihetsteknologier.",
+    "pageSubtitle": "Vill du \"orange-pilla\" världen? Gå med i Plan ₿ Network.",
+    "pageTitle": "Utforska Plan ₿ Nod-nätverk",
+    "question1": "Vad är en nod?",
+    "question2": "Vad tjänar jag på det?",
+    "question3": "Vilka är kraven?",
+    "question4": "Vilken storlek har en nod?",
+    "question5": "Vad är den hemliga planen?",
+    "applyhelp": "*Välj nodens plats",
+    "descriptionextend": "Vårt första steg är att bjuda in communities som har fysiska platser, vilka vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att ansluta till vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen.",
+    "mobiledescription": "Vi tror att utbildning inte enbart bör ske online utan också på fysiska platser. För att uppnå detta hanterar Plan B Network ett nätverk av hubbar runt om i världen för att välkomna filosofer, skapare och utbildare som främjar utvecklingen av Bitcoin och frihetsteknologier. Vårt första steg är att bjuda in communities med fysiska platser, som vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta sig till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att gå med i vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen."
   },
   "notFound": {
-    "here": "Here",
-    "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
-    "pageTitle": "Oops."
+    "here": "Här",
+    "pageSubtitle": "Det verkar som att någon har fallit för djupt ner i kaninhålet och gått vilse. Klicka för att återvända till ytan.",
+    "pageTitle": "Hoppsan."
   },
   "podcast": {
-    "abstract": "Abstract",
-    "discover": "Discover this podcast"
+    "abstract": "Abstrakt",
+    "discover": "Utforska denna podcast"
   },
   "podcasts": {
-    "hostedBy": "Hosted by {{host}}",
-    "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
-    "pageTitle": "The Podcast Portal"
+    "hostedBy": "Värd: {{host}}",
+    "pageSubtitle": "Denna portal är open source och tar emot bidrag.",
+    "pageTitle": "Bitcoin-podcasts"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors",
+    "pageSubtitle": "Alla våra lärare är volontärer och brinner för Bitcoin. Du kan donera till dem för att visa din uppskattning.",
+    "pageTitle": "Lärare",
     "tips": {
-      "noTipsYet": "This professor does not accept tips at the moment.",
-      "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !",
-      "authorSupport": ""
+      "noTipsYet": "Den här läraren tar inte emot donationer för tillfället.",
+      "thanks": "Tack för att du stödjer {{name}}s arbete!",
+      "thanksNoName": "Tack för att du stödjer mitt arbete!",
+      "authorSupport": "Stöd skribenten med dricks"
     },
     "navigationTitles": {
-      "all": "",
+      "all": "Alla",
       "lecturers": "Föreläsare",
       "teachers": "Lärare",
       "tutorialCreators": "Skapare av tutorials"
@@ -756,35 +756,35 @@
   },
   "resources": {
     "articles": {
-      "title": "Articles"
+      "title": "Artiklar"
     },
     "bet": {
-      "title": "Educational Toolkit"
+      "title": "Utbildningskit"
     },
     "books": {
-      "title": "Books"
+      "title": "Bibliotek"
     },
     "builders": {
-      "title": "Builders"
+      "title": "Skapare"
     },
     "conferences": {
-      "title": "Conferences"
+      "title": "Inspelningar av konferenser"
     },
-    "filterBarLabel": "Find the perfect resources for your needs:",
+    "filterBarLabel": "Hitta de perfekta resurserna för dina behov:",
     "headerSignature": "Rogzy",
-    "headerText": "Välkommen till Bitcoins oändliga kaninhål! I den här sektionen kommer vi att erbjuda dig en djupgående tutorial av de flesta bitcoin-projekt där ute. Denna sida underhålls av generösa och passionerade bitcoin-användare som stöder detta open source-projekt. Om du tycker att vi har gjort ett misstag, vänligen kontakta oss. För att se vår finansiella koppling till de nämnda projekten, hänvisa till vår transparensrapport. Tack för ditt förtroende för detta universitet och njut av resan.",
+    "headerText": "Välkommen till Bitcoins oändliga kaninhål! I den här sektionen kommer vi att erbjuda dig en djupgående tutorial av de flesta bitcoin-projekt där ute. Denna sida underhålls av generösa och passionerade bitcoin-användare som stödjer detta open source-projekt. Om du tycker att vi har gjort ett misstag, vänligen kontakta oss. För att se vår finansiella anknytning till de nämnda projekten, se vår transparensrapport. Tack för ditt förtroende för detta universitet och njut av resan.",
     "newsletters": {
-      "title": "Newsletters"
+      "title": "Nyhetsbrev"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Resources",
+    "pageDescription": "Att försöka förstå Bitcoin är som att navigera i en ständigt växande labyrint. För att hjälpa dig på din resa har vi samlat en omfattande samling resurser, inklusive böcker, podcasts, videor och inspelningar av konferenser. All denna information finns samlad i ett Github-repo för att hjälpa dig att bättre förstå Bitcoin-ekosystemet.",
+    "pageSubtitle": "Centralisera kunskap för att sprida det på ett bättre sätt",
+    "pageTitle": "Välkommen till Resursportalen",
     "podcasts": {
       "title": "Podcasts"
     },
-    "publicGrade": "Public grade: {{grade}}/5",
-    "github": "All denna data hanteras via en open source <0>Github</0>-repo. Bidra gärna och lägg till eventuellt saknat innehåll.",
-    "searchFilterName": "Sök efter namn",
+    "publicGrade": "Offentligt betyg: {{grade}}/5",
+    "github": "All data hanteras via ett open source <0>Github</0>-repo. Bidra gärna och lägg till eventuellt saknat innehåll.",
+    "searchFilterName": "Sök via namn",
     "newsletter": {
       "title": "Nyhetsbrev"
     },
@@ -795,18 +795,18 @@
     "pageSubtitlePodcast": "En annan podcast du skulle gilla:"
   },
   "settings": {
-    "changePassword": "Change password",
+    "changePassword": "Ändra lösenord",
     "changeDisplayName": "Ändra visningsnamn",
     "changeProfilePicture": "Ändra profilbild",
     "changeEmail": "Ändra e-post"
   },
   "tutorials": {
     "details": {
-      "checkAuthor": "Check out the author's other contributions and support his work.",
-      "enjoyed": "Enjoyed this tutorial?",
-      "madeBy": "This tutorial has been made by",
-      "source": "Original source : ",
-      "tipTooltip": "Like it? Tip.",
+      "checkAuthor": "Ta en titt på författarens andra bidrag och stöd hans arbete.",
+      "enjoyed": "Tyckte du om denna tutorial?",
+      "madeBy": "Denna tutorial har skapats av",
+      "source": "Ursprunglig källa: ",
+      "tipTooltip": "Gillar du det? Ge dricks.",
       "author": "Skribent: ",
       "didHelp": "Hjälpte detta?",
       "writtenBy": "Denna tutorial skrevs av:"
@@ -1084,10 +1084,10 @@
     "topics": "Ämnen"
   },
   "payment": {
-    "proceedToPayment": "",
-    "terms": "",
+    "proceedToPayment": "Fortsätt till betalning",
+    "terms": "Se våra <0>allmänna villkor</0> för detaljer om återbetalning",
     "feeDistribution": "",
-    "total": ""
+    "total": "Totalt"
   },
   "bCertificate": {
     "challengeYourself": "Utmana dig själv & testa din nivå!",
@@ -1126,8 +1126,8 @@
   "proofreading": {
     "thanks": "Ett stort tack går till våra fantastiska granskare!",
     "completed": "Korrekturläsning slutförd",
-    "description": "Det ursprungliga innehållet har översatts av AI, men mänsklig granskning är nödvändig för att säkerställa att det är korrekt.",
-    "inProgress": "Korrekturläsning pågår",
+    "description": "Det ursprungliga innehållet har översatts av AI, men mänsklig granskning är nödvändig för att säkerställa korrektheten.",
+    "inProgress": "Korrekturläsning pågående",
     "reviewEarn": "Granska och tjäna sats",
     "status": "Status på korrekturläsning"
   },
@@ -1146,7 +1146,7 @@
       "contact": "Kontakt",
       "legalNotice": "Juridiska notiser",
       "privacyPolicy": "Integritetspolicy",
-      "termsOfSale": "Försäljningsvillkor"
+      "termsOfSale": "Köpvillkor"
     },
     "title": "Offentlig kommunikation",
     "blogPost": "Bloggar & Nyheter",
@@ -1155,7 +1155,7 @@
       "simpleGoBack": "Tillbaka till alla artiklar"
     },
     "blogPageStrings": {
-      "featuredArticleTitleText": "Senaste artikeln släppt",
+      "featuredArticleTitleText": "Senaste artikeln publicerad",
       "pastArticleSubtitleText": "Tidigare artiklar",
       "noArticlesText": "Det finns inga blogginlägg just nu.",
       "errorMessageNotFound": "Bloggen hittades inte.",
