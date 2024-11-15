@@ -622,24 +622,24 @@
       "title": "Vilka är vi?",
       "subtitle": "Lite om oss",
       "content": "Plan ₿ Network främjar Bitcoin-utbildning globalt. Det symboliserar ett samarbete mellan engagerade Bitcoin-företag inriktade på utbildning, öppen källkodsprogramvara, peer-to-peer-nätverk och byggande av gemenskap. Tillsammans har de startat detta initiativ för att förse Bitcoin-ekosystemet med de väsentliga verktygen för tillväxt.",
-      "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "bitcoinFocusTitle": "Bitcoin i fokus",
+      "bitcoinFocusContent": "Vi utforskar Bitcoin-revolutionen från grunden till peer-to-peer-kommunikationerna runt omkring.",
       "openSourceTitle": "Open source",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "openSourceContent": "Vi arbetar för att främja den fria tillgängligheten av kunskap och stödja open source-lösningar",
       "communityTitle": "Community",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
-      "privacyTitle": "Privacy",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+      "communityContent": "Vi är i framförallt en grupp entusiaster som stöttar varandra på Bitcoin-resan",
+      "privacyTitle": "Sekretess",
+      "privacyContent": "Vi anser att integritet är en av de mest grundläggande mänskliga rättigheterna och är avgörande för framsteg"
     },
     "languageSection": {
-      "title": "No language barrier here.",
-      "subtitle": "Everything is translated to local languages",
-      "subtitle2": "We need you!",
+      "title": "Här finns ingen språkbarriär.",
+      "subtitle": "Allt översätts till lokala språk!",
+      "subtitle2": "Vi behöver dig!",
       "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
       "content2": "You too can start bootstrapping your own local network in your country!",
       "link": "Help us translate the academy",
-      "availableLanguages": "",
-      "availableLanguagesVariation": ""
+      "availableLanguages": "Tillgängliga språk",
+      "availableLanguagesVariation": "Tillgängliga språk: "
     },
     "patreonSection": {
       "title": "Together let's make Bitcoin education better ! ",
