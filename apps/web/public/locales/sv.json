@@ -5,7 +5,7 @@
     "missionContent1": "Vårt mål är att stödja lokala Bitcoin-communities genom utbildning och nätverkande baserat på open source. Vi samlar in, organiserar och skapar de resurser (kurser, böcker, affischer, flygblad, videor) som behövs för att Bitcoin-industrin ska kunna gå framåt.",
     "missionContent2": "Vi centraliserar kunskap för att det ska kunna förmedlas på bästa möjliga sätt, genom att använda ett enkelt, flerspråkigt GitHub-repo och en E-lärplattform. Vi hjälper även lokala Bitcoin-hubbar i deras utveckling genom att bidra med rätt verktyg för att deras talanger ska kunna växa.",
     "commitmentTitle": "Våra åtaganden",
-    "commitmentContent": "Vi har följande åtaganden gentemot bitcoin-communityn:\n • Förbli open source\n • Tillhandahålla högkvalitativt utbildningsinnehåll\n • Översätta vårt innehåll till så många språk som möjligt\n • Stödja Bitcoin-utvecklare på deras entreprenörsresa",
+    "commitmentContent": "Vi har följande åtaganden gentemot bitcoin-communityn:\n • Förbli open source\n • Bidra med högkvalitativt utbildningsinnehåll\n • Översätta vårt innehåll till så många språk som möjligt\n • Stödja Bitcoin-utvecklare på deras entreprenörsresa",
     "coreTeamTitle": "Huvudteamet",
     "coreTeamContent": "Plan ₿ Network är en gemenskap av hundratals medverkande, lärare, community-ledare, designers, utvecklare och organisatörer. Ett särskilt tack går till alla människor som har gjort PlanB till verklighet och fortsätter att göra det varje dag. (Vägg med medverkande kommer snart)",
     "coreTeamGiacomoRole": "Direktör och Medgrundare",
@@ -16,11 +16,11 @@
     "corporateContent": "PlanB Network är ett samarbetsprojekt mellan tre enheter fokuserade på Bitcoin-utveckling. I syfte att få Bitcoin-utbildning att växa, beslutade de att samarbeta för att skapa PlanB Network. Sedan dess har många andra enheter valt att bidra och gå samman för att hjälpa oss att förmedla Bitcoin-utbildning runt om i världen. Därför förtjänar de ett stort tack.",
     "coportateContact": "Kontaktuppgifter:",
     "storyTitle": "Vår historia",
-    "storyContent": "PlanB Network är ett initiativ som stödjer Bitcoin-utbildning runt om i världen. Det är en blandning av olika passionerade Bitcoin-företag med fokus på utbildning, open source-software, peer-to-peer-nätverk och känslan av gemenskap. Tillsammans har de bestämt sig för att bygga upp PlanB Network och erbjuda Bitcoin-ekosystemet de rätta verktygen för att växa. Vår presentation av utgåvan år 2023 är tillgänglig här.",
+    "storyContent": "PlanB Network är ett initiativ som stödjer Bitcoin-utbildning runt om i världen. Det är en samverkan av olika passionerade Bitcoin-företag med fokus på utbildning, open source-software, peer-to-peer-nätverk, samt känslan av gemenskap. Tillsammans har de bestämt sig för att bygga upp PlanB Network och erbjuda Bitcoin-ekosystemet de rätta verktygen för att växa. Vår presentation av utgåvan år 2023 är tillgänglig här.",
     "title": "Om Plan ₿ Network",
     "subtitle": "Vill du \"orange-pilla\" världen? Gå med i Plan ₿ Network.",
-    "manifesto": "Vi tror på den decentraliserade framtid som Bitcoin erbjuder.\n\nVårt uppdrag är att introducera Bitcoin för en miljard människor inom ett decennium. Våra verktyg är utbildning och information.\n\nVi stödjer lokala Bitcoin-communities genom att bidra med utbildningsinnehåll som är open source samt erbjuda ett nätverk av Bitcoin-mentorer.\n\nVår filosofi är inspirerad av cypherpunk-manifestet. Precis som de förespråkade integritet, förespråkar vi utbildning. Vi tror verkligen på att kunskap är grunden för frihet och förändring.\n\nVi är Bitcoin-only.\n\nVi förespråkar individuellt ansvar och den självständighet som förekommer genom att ha kontroll över sina egna nycklar.\n\nVi tror på verifiering, inte blind tillit.\n\nVi tror att genom att fixa det monetära systemet, kan vi fixa världen.\n\nVi är decentraliserade och open source, vilket undviker ett totalt driftstopp.\n\nVi uppmuntrar till fri spridning av vårt innehåll.\n\nVi strävar efter en värld som fungerar nerifrån och upp, där individen är i centrum.\n\nVi förenklar, vi utbildar, vi förmedlar\n\nFölj med oss i vårt uppdrag att orange-pilla världen.\n",
-    "description": "Plan B Network hjälper communities världen över att arrangera sig för att kunna förse bättre utbildning. Plattformen utvecklar de nödvändiga verktygen för det målet, genom onlineakademin, föreläsningsportalen, Bitcoin-utbildningsverktyget och resursportalen."
+    "manifesto": "Vi tror på den decentraliserade framtid som Bitcoin erbjuder.\n\nVårt uppdrag är att introducera Bitcoin för en miljard människor inom ett decennium. Våra verktyg är utbildning och information.\n\nVi stödjer lokala Bitcoin-communities genom att bidra med utbildningsinnehåll som är open source samt erbjuda ett nätverk av Bitcoin-mentorer.\n\nVår filosofi är inspirerad av cypherpunk-manifestet. Precis som de förespråkade sekretess, förespråkar vi utbildning. Vi tror verkligen på att kunskap är grunden för frihet och förändring.\n\nVi är Bitcoin-only.\n\nVi förespråkar individuellt ansvar och den självständighet som förekommer genom att ha kontroll över sina egna nycklar.\n\nVi tror på verifiering, inte blind tillit.\n\nVi tror att genom att fixa det monetära systemet, kan vi fixa världen.\n\nVi är decentraliserade och open source, vilket undviker ett totalt driftstopp.\n\nVi uppmuntrar till fri spridning av vårt innehåll.\n\nVi strävar efter en värld som fungerar nerifrån och upp, där individen är i centrum.\n\nVi förenklar, vi utbildar, vi förmedlar\n\nFölj med oss i vårt uppdrag att orange-pilla världen.\n",
+    "description": "Plan B Network hjälper communities världen över att organiseras för att kunna bidra med bättre utbildning. Plattformen utvecklar de nödvändiga verktygen för det målet, genom onlineakademin, tutorial-portalen, Bitcoin-utbildningsverktyget och resursportalen."
   },
   "auth": {
     "accountCreated": "Ditt konto har skapats, {{userName}}!",
@@ -76,7 +76,7 @@
   "bet": {
     "contribute": "Detta verktygskit är öppet för bidrag. Vi använder Figma, så vem som helst kan lägga till, ändra och översätta innehåll. För att medverka, lägg till en kategori eller en diskussion, och tveka inte att gå med i vår discord.",
     "educationalContent": {
-      "description": "Föremålen nedan kan användas för utbildningsevent och ändamål.",
+      "description": "Objekten nedan kan användas för events och utbildningsändamål.",
       "title": "Utbildningsinnehåll"
     },
     "hereForYou": "BET är här för dig!",
@@ -192,7 +192,7 @@
     "explorer": {
       "footerTitle": "Våra lärare är här för dig!",
       "footerp1": "Vid Sovereign University har våra lärare full autonomi när det gäller att utforma sitt kursinnehåll och välja verktyg för din inlärning, förutsatt att de följer vår etiska kod. De är passionerade bitcoiners från olika bakgrunder som delar med sig av sin värdefulla erfarenhet till oss.",
-      "footerp2": "Om du vill förbättra en kurs eller föreslå din egen, kan du enkelt göra det genom GitHub-repot. För att stödja en lärare, har du flera alternativ: du kan ge kursfeedback, ge läraren dricks direkt, eller bli medlem i universitetet för att stödja plattformen.",
+      "footerp2": "Om du vill förbättra en kurs eller föreslå din egen, kan du enkelt göra det genom GitHub-repot. Det finns flera även alternativ för att stödja en lärare: du kan ge kursfeedback, ge läraren dricks, eller bli medlem i universitetet för att stödja plattformen.",
       "moreToCome": "...och mer kommer!",
       "pageDescription": "Plan ₿ Academy strävar efter att göra Bitcoin-utbildning världen över enklare. Skapad av experter från olika områden, vår akademi erbjuder ett omfattande utbud av kurser utformade för att skapa klarhet kring alla delar av Bitcoin.\nFrån nybörjare till expert, oavsett i din egen takt eller följt veckovis av en lärare, vi hoppas att akademin kan hjälpa dig att få en djupare förståelse för den expansiva världen av Bitcoin. Många av våra kurser är helt gratis så att vem som helst, var som helst, kan få tillgång till kvalitetsutbildning.",
       "pageSubtitle": "Massadoption genom centraliserad open source-utbildning",
@@ -242,7 +242,7 @@
       "book_description": "Vänligen granska de angivna uppgifterna för lokalen.\nNär din bokning har behandlats kommer vi att skicka dig en bekräftelsebiljett och en QR-kod att presentera vid eventet.",
       "qr_unified": "Denna QR-kod är enhetlig, så den accepterar betalningar med både lightning och on-chain.",
       "time": "Tid",
-      "inPersonCallout": "Du är på väg att köpa <strong>personlig</strong> tillgång till denna kurs.",
+      "inPersonCallout": "Du är på väg att köpa <strong>fysisk</strong> tillgång till denna kurs.",
       "onlineCallout": "Du är på väg att köpa <strong>online-</strong>-tillgång till denna kurs.",
       "onlineDescription": "Varje föreläsnings-session sänds live på plattformen.\nDetta köp ger dig tillgång till live-sändningar och inspelade videor.",
       "inPersonDescription": "Varje föreläsnings-session äger rum på plats på de angivna datumen och lokalerna och sänds även live på plattformen. \nDetta köp ger dig tillgång till lektioner både online och på plats.\nGlöm inte att reservera din plats för de lektioner du vill delta i fysiskt."
@@ -256,7 +256,7 @@
       "clickOnPie": "Klicka för att granska",
       "quizz": "Quiz",
       "quizzResults": "Resultat av quizet",
-      "quizzReview": "Quiz översikt",
+      "quizzReview": "Översikt av quizet",
       "resultCongrats": "Grattis, du gjorde bra ifrån dig!",
       "resultItsOk": "Ge inte upp, du kommer att göra bättre ifrån dig nästa gång!",
       "resultNotBad": "Inte alltför dåligt!",
@@ -264,9 +264,9 @@
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard och Sparrow",
-      "financeIntroduction": "Introduktion till ekonomi",
+      "financeIntroduction": "Introduktion till finans",
       "financialCrisis": "Analys av betydande finansiella kriser",
-      "hyperinflation": "Studier av hyperinflation",
+      "hyperinflation": "Studier om hyperinflation",
       "theoreticalLightning": "Avancerad teoretisk kurs om Lightning Network"
     },
     "review": {
@@ -344,7 +344,7 @@
       "sameRules": "Du är på väg att göra om slutprovet. Samma regler kvarstår.",
       "skipExam": "Hoppa över provet",
       "skipExamGoConclusion": "Hoppa över provet, gå till sammanställningen",
-      "skipExamDescription": "Du kan även hoppa över provet och gå direkt till slutsatsen genom att klicka på knappen nedan.",
+      "skipExamDescription": "Du kan även hoppa över provet och gå direkt till sammanställningen genom att klicka på knappen nedan.",
       "startExam": "Starta provet",
       "submit": "Skicka in",
       "sureSubmit": "Är du säker på att du vill lämna in ditt prov?",
@@ -472,7 +472,7 @@
         "billingInformations": "Information om fakturering",
         "chooseTags": "Välj de taggar som beskriver dig bäst",
         "description": "Din beskrivning",
-        "descriptionTags": "Dessa taggar kompletterar din offentliga profil eftersom de visar dina speciella områden som bitcoiner.",
+        "descriptionTags": "Dessa taggar kompletterar din offentliga profil eftersom de visar dina specifika områden som bitcoiner.",
         "enterTipsInformations": "Plan ₿ Network uppmuntrar användare att ge dricks till lärare. Ange dina uppgifter så att folk kan ge dig dricks när de önskar.",
         "lightningAddress": "Lightning-adress",
         "makeModifications": "Behöver du göra ändringar?",
@@ -486,7 +486,7 @@
         "writeShortBio": "Skriv en kort biografi om dig själv",
         "teacher": "Lärare",
         "teacherProfile": "Lärarprofil",
-        "tutorialModification": "Om du behöver hjälp med att redigera något, vänligen kolla in denna <0>tutorial</0>."
+        "tutorialModification": "Om du behöver hjälp med att redigera något, vänligen titta på denna <0>tutorial</0>."
       }
     },
     "administration": "Administration",
@@ -496,7 +496,7 @@
     },
     "course": {
       "checkDetailsCompleted": "Här kan du se alla detaljer angående denna kurs som du har slutfört.",
-      "completionDiploma": "Slutdiplom",
+      "completionDiploma": "Examensdiplom",
       "completionExamInfo": "Här kan du hitta information angående slutprovet vid kursen slut.",
       "coursesCompleted": "Slutförda kurser",
       "feedbacks": "Ett kapitel i slutet av kursen är ägnat åt feedback. Om du vill ge din feedback nu kan du göra det här.",
@@ -506,11 +506,11 @@
     },
     "credentials": {
       "bCertificate": "₿-Certifikat",
-      "bCertificateSubtitle": "Här kan du se detaljerna angående dina bokningar och betyg för dina tidigare och framtida ₿-Certifikat.\n₿-Certifikatet är ett tabellprov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
+      "bCertificateSubtitle": "Här kan du se detaljerna angående dina bokningar samt betyg för dina tidigare och framtida ₿-Certifikat.\n₿-Certifikatet är ett tabellprov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
       "beingGraded": "Ditt prov är under betygsättning. Resultatet bör vara tillgängligt om 1 eller 2 veckor.",
       "courseDiplomas": "Kursdiplom",
       "courseDiplomasSubtitle": "Här kan du se detaljerna angående alla prov du har tagit efter att ha slutfört en kurs på plattformen.",
-      "completionDiplomas": "Slutdiplom",
+      "completionDiplomas": "Examensdiplom",
       "downloadTicket": "Ladda ner biljett",
       "globalCertifications": "Globala certifieringar",
       "retakeExam": "Gör om provet",
@@ -533,7 +533,7 @@
     "missed": {
       "missedh1": "Tidigare event att spela upp",
       "missedp1": "Missade du ett event?",
-      "missedp2": "Oroa dig inte! Vi sparar alla inspelningar av tidigare events som inträffade i nätverket, vilket gör att alla kan ta igen det de missade utan problem."
+      "missedp2": "Oroa dig inte! Vi sparar alla inspelningar av tidigare events som har skett inom nätverket, vilket betyder att man enkelt kan ta igen det som man missade."
     },
     "card": {
       "free": "gratis",
@@ -566,11 +566,11 @@
       "callout_replay": "Du är på väg att boka tillgång till den inspelade videon av detta event.",
       "date": "Datum",
       "dates_to": "{{startDate}}{{endDate}}",
-      "description_online": "Vänligen granska datum och tid för eventet som hålls.\nNär tiden kommer, logga in på plattformen för att få tillgång till live-sändningen via eventsidan.",
+      "description_online": "Vänligen granska datum och tid för eventet som hålls.\nNär det är dags, logga in på plattformen för att få tillgång till live-sändningen via eventsidan.",
       "description_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär din bokning är bekräftad kommer vi att utfärda en biljett att presentera vid eventet. Denna biljett ger dig också tillgång till live-sändningen och den inspelade videon, om tillgänglig.",
       "description_free_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär bokningen är bekräftad kommer vi att utfärda en bekräftelsebiljett och en QR-kod att presentera vid eventet.",
       "download_ticket": "Ladda ner din biljett",
-      "enjoy": "Vi hoppas att du kommer att njuta av det :)",
+      "enjoy": "Vi hoppas att du kommer ha nöje av det :)",
       "language": "Språk",
       "max_capacity": "Maximal kapacitet av",
       "payment_details": "Betalningsdetaljer",
@@ -602,30 +602,30 @@
     "sectionEducation": {
       "title": "Från nybörjare till avancerad",
       "subtitle": "Lär dig om Bitcoin på akademin",
-      "content1": "Bitcoin är inte bara en teknologi och en form av pengar, utan också ett revolutionerande sätt att närma sig livet. I linje med denna medvetenhet täcker våra kurser ett brett spektrum av områden, vilket ger individer möjlighet att utmärka sig inom sina intresseområden och fördjupa sin förståelse. Från din första Bitcoin-lektion till en djupdykning i protokollets specifika, kommer vi att hjälpa dig att navigera säkert genom kaninhålet. Det finns ingen anledning att tveka. Kunskap väntar på dig.",
-      "link": "Se över akademin"
+      "content1": "Bitcoin är inte bara en teknologi och en form av pengar, utan också en revolutionerande livssyn. I enlighet med denna medvetenhet täcker våra kurser ett brett spektrum av områden, vilket ger personer möjlighet att utmärka sig inom sina intresseområden och fördjupa sin förståelse. Från din första Bitcoin-lektion till en djupdykning i protokollets detaljer, kommer vi att hjälpa dig att navigera säkert genom kaninhålet. Det finns ingen anledning att tveka. Kunskap väntar på dig.",
+      "link": "Utforska akademin"
     },
     "sectionNetwork": {
       "title": "Få tillgång till ett nätverk av",
       "subtitle": "Globala Bitcoin-Campus",
-      "content1": "Anslut till Bitcoin-entusiaster runt om i världen som delar en gemensam passion. Från små samhällen som regelbundet möts till BTC-utbildningscenter, kommer vår nätverkskarta att hjälpa dig att hitta inspirationen att lära och bygga. Ett brett utbud av tjänster finns tillgängliga, såsom ett inkubationscenter, fysiska workshops, seminarier, BTC-retreater och mer. Nätverket är öppet för alla, så kom och säg hej till din lokala BTC-gemenskap!",
+      "content1": "Skapa kontakter med Bitcoin-entusiaster runt om i världen som delar en gemensam passion. Från små communities som har regelbundna träffar, till BTC-utbildningscenter, vår nätverkskarta kommer att hjälpa dig att hitta inspirationen att lära och skapa. Du kommer att upptäcka ett brett utbud av tjänster, såsom ett inkubationscenter, fysiska workshops, seminarier, BTC-retreater, och mer. Nätverket är öppet för alla, så kom och säg hej till din lokala BTC-community!",
       "link": "Bli en del av nätverket"
     },
     "tutorialSection": {
-      "title": "Centralisera kunskap för att bättre distribuera den",
+      "title": "Centralisera kunskap för att bättre förmedla den",
       "subtitle1": "Bitcoin-utbildning förenklad.",
-      "content1": "Bitcoin är i ständig utveckling, med nya aktörer, lösningar, protokoll och tekniska genombrott som ständigt framträder. Det kan därför vara en utmaning att upprätthålla en korrekt och aktuell databas med kvalitetshandledningar. Här på Plan ₿ har vi lyckats med just det. Oavsett om du är en nybörjare eller en avancerad användare, kan du navigera genom hundratals handledningar för att utforska vår bransch enligt dina behov.",
+      "content1": "Bitcoin är i ständig utveckling med nya aktörer, lösningar, protokoll och tekniska genombrott som ständigt dyker upp. Det kan därför vara en utmaning att upprätthålla en korrekt och aktuell databas av tutorials med hög kvalitet. Här på Plan ₿ har vi lyckats med just det. Oavsett om du är en nybörjare eller en avancerad användare, kan du navigera genom hundratals tutorials för att utforska vår industri enligt dina behov.",
       "link": "Visa alla tutorials",
       "link2": "Se alla resurser"
     },
     "aboutUsSection": {
       "title": "Vilka är vi?",
       "subtitle": "Lite om oss",
-      "content": "Plan ₿ Network främjar Bitcoin-utbildning globalt. Det symboliserar ett samarbete mellan engagerade Bitcoin-företag inriktade på utbildning, öppen källkodsprogramvara, peer-to-peer-nätverk och byggande av gemenskap. Tillsammans har de startat detta initiativ för att förse Bitcoin-ekosystemet med de väsentliga verktygen för tillväxt.",
+      "content": "Plan ₿ Network främjar Bitcoin-utbildning globalt. Det symboliserar ett samarbete mellan engagerade Bitcoin-företag inriktade på utbildning, open source-mjukvara, peer-to-peer-nätverk och skapande av community. Tillsammans har de startat detta initiativ för att bidra med de väsentliga verktygen för tillväxt av Bitcoin-ekosystemet.",
       "bitcoinFocusTitle": "Bitcoin i fokus",
       "bitcoinFocusContent": "Vi utforskar Bitcoin-revolutionen från grunden till peer-to-peer-kommunikationerna runt omkring.",
       "openSourceTitle": "Open source",
-      "openSourceContent": "Vi arbetar för att främja den fria tillgängligheten av kunskap och stödja open source-lösningar",
+      "openSourceContent": "Vi arbetar för att främja det fria flödet av kunskap och stödja open source-lösningar",
       "communityTitle": "Community",
       "communityContent": "Vi är i framförallt en grupp entusiaster som stöttar varandra på Bitcoin-resan",
       "privacyTitle": "Sekretess",
@@ -635,7 +635,7 @@
       "title": "Här finns ingen språkbarriär.",
       "subtitle": "Allt översätts till lokala språk!",
       "subtitle2": "Vi behöver dig!",
-      "content1": "På Plan ₿ anser vi att Bitcoin är en internationell revolution som berör alla. För att stärka miljarder människor utformar vi denna plattform för att vara flerspråkig och tillgänglig för alla. Plattformen stödjer för närvarande 7 språk, och fler tillkommer varje månad. För att uppnå detta använder vi en kombination av AI och entusiasmen hos Bitcoin-användare över hela världen. Du kan även starta ditt eget lokala nätverk i ditt land!",
+      "content1": "På Plan ₿ anser vi att Bitcoin är en internationell revolution som berör alla. För att stärka miljarder människor utformar vi denna plattform för att vara flerspråkig och tillgänglig för alla. Plattformen stödjer för närvarande 7 språk, och fler tillkommer varje månad. För att uppnå detta använder vi en kombination av AI och entusiasmen hos Bitcoiners runt om i världen. Du kan även starta ditt eget lokala nätverk i ditt land!",
       "content2": "Du kan även börja bygga upp ditt eget lokala nätverk i ditt land!",
       "link": "Hjälp oss att översätta akademin",
       "availableLanguages": "Tillgängliga språk",
@@ -656,7 +656,7 @@
     "blueEllipse": "en blå ellips",
     "bookCover": "ett bokomslag",
     "community": "3 people",
-    "contributorHeart": "ett hjärta för vänlig medverkande",
+    "contributorHeart": "ett hjärta till en trevlig medverkande",
     "contributorPP": "Den medverkandes profilbild",
     "courseThumbnail": "Course thumbnail",
     "curriculum": "Curriculum",
@@ -669,7 +669,7 @@
     "printedCircuits": "en utskriven krets",
     "rabbit404": "En kanin som lyser med en ficklampa på en 404-skylt",
     "sthRepresentingCompany": "något som representerar företaget",
-    "stylus": "en stylus",
+    "stylus": "en pekare",
     "underConstructionImage": "Illustration av flera kaniner som arbetar på en byggarbetsplats",
     "visibilityOff": "the eyes icon without off sign",
     "worldMap": "world map with hubs linked"
@@ -688,7 +688,7 @@
     "libraryDescription": "Utforska ett stort antal böcker för att förbättra din kunskap",
     "lightningDescription": "Hantera din lightning-nod och använd lightning network",
     "manifestoDescription": "Läs Plan Bs manifest",
-    "merchantsDescription": "Ta emot bitcoin-betalningar och utforska verktyg för försäljare",
+    "merchantsDescription": "Ta emot bitcoin-betalningar och utforska verktyg för handlare",
     "miningDescription": "Minea dina egna bitcoins och lär dig om mining-industrin",
     "nodeDescription": "Lär dig att vara självsuverän med din egen bitcoin-nod",
     "nodeNetworkDescription": "Bli en del av det globala nätverket för Plan ₿-communities",
@@ -699,7 +699,7 @@
     "teachersDescription": "Lär känna våra akademilärare",
     "walletsDescription": "Säkra och använd dina bitcoins",
     "conferencesDescription": "Samling av inspelningar från Bitcoin-konferenser sedan Genesis Block",
-    "bCertificateDescription": "Klara ₿-certifikatprovet för att bevisa din Bitcoin-nivå",
+    "bCertificateDescription": "Klara ₿-certifikatprovet för att visa din Bitcoin-nivå",
     "glossaryDescription": "Förstå Bitcoins språk",
     "login": "Logga in",
     "loginRegister": "Logga in / Registrera dig",
@@ -845,7 +845,7 @@
       },
       "description": "Noder fungerar som dina personliga servrar. I Bitcoin är det programvaran som gör att du kan köra nätverket, inhämta transaktioner, verifiera reglerna och vara fullständigt suverän. Inom vårt ekosystem existerar olika noder, från Bitcoin Core till Lightning-implementeringar, RGB eller andra mer avancerade lösningar för integritet.",
       "lightning-network": {
-        "description": "En Lightning-nod ger dig möjlighet att delta i Bitcoin-protokollet på layer 2, kallat Lightning. Du kommer att kunna öppna kanaler, hantera deras likviditet, delta i grafen och bli non-custodial för din Lightning-plånbok.",
+        "description": "En Lightning-nod ger dig möjlighet att delta i Bitcoin-protokollet på layer 2, kallat Lightning. Du kommer att kunna öppna kanaler, hantera dess likviditet, delta i grafen och bli non-custodial för din Lightning-plånbok.",
         "name": "Lightning Network"
       },
       "rgb": {
@@ -874,7 +874,7 @@
         "description": "Desktop-plånböcker brukar vara för mer avancerade användare då de kombinerar användandet av hårdvaruenheter och mjukvaran av desktop-plånboken. Det är som att ha ett nytt, mer skräddarsytt och funktionsrikt gränssnitt för din hårdvaruenhet att använda. Dessa plånböcker erbjuder multisig-alternativ, sekretessfunktioner, integrationer för arv och mer."
       },
       "hardware": {
-        "description": "Hårdvaruplånböcker används vanligen för att förvara ditt långsiktiga bitcoin-sparande. Dessa är fysiska enheter som inte är uppkopplade till internet (ofta kallade \"kalla plånböcker\") och är vanligtvis mycket säkra. Även om dessa enheter ofta är open source angående dess programvara, kostar hårdvaran mellan 50 till 300 euro. Tänk på dessa enheter som ett bankkonto för större sparbelopp som du skulle använda då och då."
+        "description": "Hårdvaruplånböcker används vanligen för att förvara ditt långsiktiga bitcoin-sparande. Dessa är fysiska enheter som inte är uppkopplade till internet (ofta kallade \"kalla plånböcker\") och är oftast mycket säkra. Även om dessa enheter vanligtvis är open source angående dess programvara, kostar hårdvaran mellan 50 till 300 euro. Tänk på dessa enheter som ett bankkonto för större sparbelopp som du skulle använda då och då."
       },
       "mobile": {
         "description": "Mobila plånböcker brukar användas för dagliga transaktioner. De integrerar Lightning Network för snabba transaktioner med låga avgifter. De är vanligtvis uppkopplade till internet (ofta benämnda som \"varma plånböcker\") och är därför mindre säkra än hårdvaruplånböcker. De bör endast användas för att förvara små mängder bitcoin, tänk på dem som din vardagliga plånbok i fickan."
@@ -1035,7 +1035,7 @@
     "inPerson": "Fysiskt närvarande",
     "inReview": "Under granskning",
     "lectures": "Föreläsningar",
-    "lightningInvoice": "lightning-faktura",
+    "lightningInvoice": "Lightning-faktura",
     "location": "Plats",
     "onChainAddress": "On chain-adress",
     "overview": "Översikt",
