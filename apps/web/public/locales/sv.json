@@ -130,7 +130,7 @@
       "count": "Kapitel {{count}}",
       "finishCourse": "Slutför kursen",
       "next": "Slutfört, gå vidare till nästa kapitel.",
-      "thanksTip": "Vill du visa din uppskattning? Du kan stödja skribenten med dricks.",
+      "thanksTip": "Vill du visa din uppskattning?\nDu kan stödja skribenten med dricks.",
       "detail": {
         "title": "Detaljer av lektionen",
         "p1heading": "Planerar du att delta i denna lektion fysiskt?",
@@ -817,7 +817,7 @@
       },
       "description": "Börser är en av ingångs- och utgångsvägarna mellan din traditionella valuta (euro, dollar) och bitcoin-världen. Börser kan vara reglerade och följa KYC (Know Your Customer), eller vara peer-to-peer och anonyma. Varje börs kommer att erbjuda olika funktioner, avgifter, likviditet och kundsupport. Varje bitcoiner kommer att använda olika börser baserat på sina behov och övertygelser.",
       "peer-to-peer": {
-        "description": "Peer-to-peer börser är marknadsplatser där individer växlar bitcoin mot andra valutor mellan varandra. Dessa växlingar kan vara reglerade eller inte och de frågar vanligtvis inte efter mycket information (om något alls) om dig. De underlättar helt enkelt relationen mellan användare. Deras avgifter kan vara högre än traditionella växlingar och deras likviditet något lägre. Det här alternativet föredras av  bitcoiners som försöker undvika KYC."
+        "description": "Peer-to-peer börser är marknadsplatser där individer växlar bitcoin mot andra valutor mellan varandra. Dessa växlingar kan vara reglerade eller inte och de frågar vanligtvis inte efter mycket information (om något alls) om dig. De underlättar helt enkelt relationen mellan användare. Deras avgifter kan vara högre än traditionella växlingar och deras likviditet något lägre. Det här alternativet föredras av bitcoiners som försöker undvika KYC."
       },
       "shortDescription": "Lösningar för köp och sälj av Bitcoin, KYC och icke-KYC",
       "title": "Börser"
@@ -849,7 +849,7 @@
         "name": "Lightning Network"
       },
       "rgb": {
-        "description": "RGB är ett skalbart och konfidentiellt system av  smarta kontrakt för Bitcoin och Lightning Network. Det är ett programmeringslager för Bitcoin, med koncept av privat och gemensamt ägande, abstraktion och separation av bekymmer och representerar \"post-blockchain\"."
+        "description": "RGB är ett skalbart och konfidentiellt system av smarta kontrakt för Bitcoin och Lightning Network. Det är ett programmeringslager för Bitcoin, med koncept av privat och gemensamt ägande, abstraktion och separation av bekymmer och representerar \"post-blockchain\"."
       },
       "shortDescription": "Lösningar för att köra en bitcoin-nod och ansluta till nätverket",
       "title": "Nod"
