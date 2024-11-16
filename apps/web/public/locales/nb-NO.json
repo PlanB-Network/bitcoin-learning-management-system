@@ -155,7 +155,7 @@
     "pageTitle": "Konferanseopptak",
     "planBConferences": "Plan B-konferanser",
     "topics": "Emner",
-    "description": "Konferanser er et nøkkelelement i Bitcoin-industrien. De er en del av enhver Bitcoiners utdanningsreise. Vi bygde dette verktøyet for å hjelpe deg med å navigere gjennom hundrevis av konferanser."
+    "description": "Konferanser spiller en avgjørende rolle i Bitcoin-industrien, og utgjør en essensiell del av hver Bitcoiners utdanningsreise. Av den grunn har vi laget dette verktøyet for å hjelpe deg med å enkelt navigere gjennom hundrevis av Bitcoin-arrangementer."
   },
   "courses": {
     "categories": {
@@ -175,7 +175,7 @@
       "thanksTip": "Ønsker du å vise din takknemlighet?\nDu kan støtte forfatteren med en donasjon.",
       "detail": {
         "title": "Klasse detaljer",
-        "p1heading": "Har du tenkt å delta på denne leksjonen personlig?",
+        "p1heading": "Planlegger du å delta på denne leksjonen personlig tilsted?",
         "p1content": "Sørg for å reservere plass",
         "p2heading": "Du kan ikke komme personlig?",
         "p2content": "Ingen problem! Leksjonen vil bli strømmet direkte på denne siden og tilgjengelig for avspilling etterpå.",
@@ -191,7 +191,7 @@
       }
     },
     "details": {
-      "accessible": "Tilgjengelig: Livstid",
+      "accessible": "Tilgjengelighet: Livstids tilgang",
       "buyCourse": "Kjøp kurset",
       "courseId": "Kurs-ID: {{courseId}}",
       "coursePayment": "Kursbetaling",
@@ -230,11 +230,11 @@
     "explorer": {
       "buildPath": "Lag din egen sti ned i kaninhullet",
       "exploreCourses": "Utforsk alle Plan B-kurs",
-      "findCourses": "Finn det perfekte kurset for dine behov takket være kursvelgeren",
+      "findCourses": "Finn det perfekte kurset for dine behov takket være verktøyet for kursvalg",
       "footerTitle": "Våre professorer er her for deg!",
-      "footerp1": "Ved Sovereign University har professorene våre full autonomi over innholdet sitt og verktøyene de vil at du skal utforske, så lenge de følger etiske retningslinjer. De er lidenskapelige bitcoiners fra forskjellige bakgrunner.",
+      "footerp1": "Ved Sovereign University har professorene våre full autonomi når det gjelder å designe innholdet i kursene sine og velge verktøyene for utforskningen din, forutsatt at de overholder vår etiske kodeks. De er lidenskapelige bitcoiners fra forskjellige bakgrunner som deler sin verdifulle erfaring med oss.",
       "journey": "Bitcoin er en reise, ikke en destinasjon",
-      "moreToCome": ".... og mer kommer !",
+      "moreToCome": "...og mer kommer!",
       "pageSubtitle": "Masseadopsjon gjennom sentralisert åpen kildekode-utdanning",
       "pageTitle": "Velkommen til Plan B Akademiet",
       "s2p1": "Hvis du nettopp har begynt å utforske Bitcoin-kaninhullet, må du vite at det er en endeløs reise ned mange stier. På universitetet vårt anerkjenner vi denne kompleksiteten, så vi har designet vårt pedagogiske innhold til å være ikke-lineært, selvstyrt og så omfattende som det kan være.",
@@ -342,7 +342,7 @@
       "availableDashboard": "Det vil være tilgjengelig i dashbordet ditt om omtrent 10 timer.",
       "certificateGeneration": "Ditt sertifikat er under behandling ",
       "congratulations": "Gratulerer, du har nådd slutten av dette kurset!",
-      "congratulationsPassed": "Gratulerer, du <0>besto</0> den endelige eksamenen !",
+      "congratulationsPassed": "Gratulerer, du <0>besto</0> den endelige eksamen!",
       "dontWorry": "Bekymre deg ikke for feil; denne testen hjelper med å forsterke læringen din. Hvis du ikke består, kan du ta den på nytt etter 24 timer.",
       "examDetails": "Eksamen har 40 flervalgsspørsmål, hver med ett riktig svar. Du kan endre svarene dine når som helst før du sender inn, så lenge tidtakeren går.",
       "explanations": "Forklaringer :",
@@ -353,7 +353,7 @@
       "globallyRecognized": "Globalt anerkjent: Blockchain-støttede legitimasjoner er betrodd over hele verden.",
       "planBTimeStamp": "Hos Plan ₿ Network sikrer vi graden din ved hjelp av tidsstemplings teknologi støttet av blockchain.",
       "goBack": "Gå tilbake",
-      "goodLuck": "Lykke til !",
+      "goodLuck": "Lykke til!",
       "instantVerification": "Umiddelbar verifisering: Arbeidsgivere kan enkelt verifisere ektheten og utstedelsesdatoen for graden din.",
       "instructions": "Instruksjoner:",
       "letsConclude": "Alt er gjort, la oss avslutte",
