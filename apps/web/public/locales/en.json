@@ -337,14 +337,14 @@
       "letsgo": "Let's go"
     },
     "quizz": {
-      "clickOnPie": "Click to review",
+      "clickOnPie": "Click on the pie chart to check the right answer",
       "quizz": "Quiz",
       "quizzResults": "Quiz results",
       "quizzReview": "Quiz review",
       "resultCongrats": "Congratulations, you did well!",
       "resultItsOk": "Don't give up, you'll do better next time!",
       "resultNotBad": "Not too bad!",
-      "resultPerfect": "Absolutely perfect! Congrats!"
+      "resultPerfect": "Absolutely perfect! Congratulations!"
     },
     "review": {
       "asExpected": "as expected",
