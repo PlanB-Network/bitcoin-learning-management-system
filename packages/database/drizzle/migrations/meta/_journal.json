@@ -260,6 +260,13 @@
       "when": 1730820042218,
       "tag": "0036_next_tenebrous",
       "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "7",
+      "when": 1731945068252,
+      "tag": "0037_striped_black_tom",
+      "breakpoints": true
     }
   ]
 }
