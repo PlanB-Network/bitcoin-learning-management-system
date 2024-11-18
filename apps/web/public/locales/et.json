@@ -269,7 +269,7 @@
     },
     "details": {
       "tipTooltip": "Meeldib? Jäta jootraha.",
-      "source": "Algallikas : ",
+      "source": "Algallikas :",
       "madeBy": "Selle õpetuse on teinud",
       "enjoyed": "Nautisid seda õpetust?",
       "checkAuthor": "Tutvuge autori teiste kirjutistega ja toetage tema loomingut.",
@@ -949,7 +949,7 @@
       "content1": "Ühenduge ülemaailmsete ühist kirge jagavate Bitcoini entusiastidega. Meie võrgustiku kaart aitab leida inspiratsiooni õppimiseks ja ehitamiseks, alates väikestest regulaarselt kohtuvatest kogukondadest kuni BTC hariduskeskusteni. Entusiastidele on saadaval lai valik teenuseid, nagu inkubatsioonikeskus, füüsilised töötoad, seminarid, BTC kogunemiskohad ja palju muud. Võrgustik on avatud kõigile, nii et tulge ja öelge tere oma kohalikule BTC kogukonnale!"
     },
     "patreonSection": {
-      "title": "Muudame koos Bitcoini hariduse paremaks ! ",
+      "title": "Muudame koos Bitcoini hariduse paremaks !",
       "subtitle": "PlanB võrgustik on tänu meie heldetele patroonidele 100% avatud lähtekoodiga",
       "content": "PlanB Võrgustik teeb uhkusega koostööd mitmete Bitcoini ettevõtetega üle maailma, et pakkuda parimaid võimalikke haridusressursse !"
     },
