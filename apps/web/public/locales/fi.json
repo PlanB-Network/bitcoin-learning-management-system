@@ -642,7 +642,7 @@
       "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi! ",
+      "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi!",
       "subtitle": "Plan-B on 100% avointa lähdekoodia, kiitos arvokkaiden ja anteliaiden tukijoidemme",
       "content": "PlanB-verkosto on ylpeä yhteistyöstään monien Bitcoin-yritysten kanssa ympäri maailmaa, tarjotessaan yhdessä parhaat mahdolliset koulutusresurssit!"
     },
@@ -805,7 +805,7 @@
       "checkAuthor": "Katso kirjoittajan muita julkaisuja ja tue hänen työtänsä.",
       "enjoyed": "Piditkö oppaasta?",
       "madeBy": "Tämän oppaan on tehnyt",
-      "source": "Alkuperäinen lähde : ",
+      "source": "Alkuperäinen lähde :",
       "tipTooltip": "Piditkö siitä? Lahjoita.",
       "author": "",
       "didHelp": "",
