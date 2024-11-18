@@ -43,7 +43,7 @@
     "pageTitle": "Những bản xem lại của các hội nghị",
     "planBConferences": "Hội nghị Plan B",
     "topics": "Các chủ đề",
-    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào.   Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
+    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào. Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
     "conferenceName": "Tên của hội nghị"
   },
   "courses": {
@@ -659,7 +659,7 @@
       "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn! ",
+      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn!",
       "subtitle": "PlanB Network hoàn toàn là mã nguồn mở nhờ vào những người bảo trợ đầy hào phóng của chúng tôi",
       "content": "PlanB Network rất tự hào khi hợp tác với nhiều công ty Bitcoin trên toàn thế giới để cung cấp các tài nguyên giáo dục tốt nhất!"
     },
@@ -828,7 +828,7 @@
       "checkAuthor": "Xem những đóng góp khác của tác giả và ủng hộ cho công việc của anh ấy.",
       "enjoyed": "Bạn thích hướng dẫn này?",
       "madeBy": "Hướng dẫn này được tạo bởi",
-      "source": "Nguồn chính thức: ",
+      "source": "Nguồn chính thức:",
       "tipTooltip": "Bạn thích nó? Típ.",
       "author": "Tác giả: ",
       "writtenBy": "Hướng dẫn này được viết bởi:",
