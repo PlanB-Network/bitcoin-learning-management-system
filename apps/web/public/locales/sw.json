@@ -104,7 +104,7 @@
     "offeredBy": "Offered by a generous contributor",
     "pageSubtitle": "This library is open-source & open to contribution. Thanks for grading and sharing !",
     "pageTitle": "The library",
-    "topicsAddressed": "Topics addressed: "
+    "topicsAddressed": "Topics addressed:"
   },
   "builders": {
     "pageSubtitle": "This portal is open-source & open to contribution. Thanks for grading and sharing!",
@@ -158,7 +158,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
       "duration": "Duration: {{hours}} hours",
-      "goal": "GOAL: ",
+      "goal": "GOAL:",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} chapters",
@@ -642,7 +642,7 @@
       "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
+      "title": "Together let's make Bitcoin education better !",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
     },
@@ -805,7 +805,7 @@
       "checkAuthor": "Check out the author's other contributions and support his work.",
       "enjoyed": "Enjoyed this tutorial?",
       "madeBy": "This tutorial has been made by",
-      "source": "Original source : ",
+      "source": "Original source :",
       "tipTooltip": "Like it? Tip.",
       "writtenBy": "",
       "author": "",
