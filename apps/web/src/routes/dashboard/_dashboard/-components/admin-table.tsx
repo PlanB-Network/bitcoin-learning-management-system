@@ -59,7 +59,7 @@ export const AdminTable = ({ userRole }: { userRole: UserRole }) => {
       name: debouncedSearch,
       role: userRole,
       orderField: sortConfig.key,
-      orderDirection: sortConfig.direction === 'asc' ? 'asc' : 'desc',
+      orderDirection: sortConfig.direction,
       limit: 50,
     },
     {
@@ -320,7 +320,7 @@ export const AdminTable = ({ userRole }: { userRole: UserRole }) => {
                       <TableCell>
                         {professors
                           ?.find((p) => p.id === user.professorId)
-                          ?.coursesId.map((courseId) => (
+                          ?.coursesIds.map((courseId) => (
                             <span className="block uppercase" key={courseId}>
                               {courseId}
                             </span>

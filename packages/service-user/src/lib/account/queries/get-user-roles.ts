@@ -18,6 +18,7 @@ export const getUserRolesQuery = (
   const cursorCondition = cursor
     ? sql`AND a.${sql(orderFieldPattern)} ${comparisonOperator} ${cursor}`
     : sql``;
+  const orderDirectionKeyword = orderDirection === 'asc' ? sql`ASC` : sql`DESC`;
 
   return sql<UserRoles[]>`
     SELECT
@@ -36,7 +37,7 @@ export const getUserRolesQuery = (
       AND (username ILIKE ${searchPattern}
         OR display_name ILIKE ${searchPattern})
       ${cursorCondition}
-    ORDER BY a.${sql(orderField)} ${orderDirection === 'asc' ? sql`ASC` : sql`DESC`}
+    ORDER BY a.${sql(orderFieldPattern)} ${orderDirectionKeyword}
     ${limit && sql`LIMIT ${limit}`}
     ;
   `;

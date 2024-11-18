@@ -10,7 +10,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ({ className, maxHeightClass, ...props }, ref) => (
     <div
       className={cn(
-        'relative w-full overflow-auto scrollbar-light',
+        'relative w-full pr-2 md:pr-4 overflow-auto scrollbar-light',
         maxHeightClass,
       )}
     >

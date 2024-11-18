@@ -26,7 +26,7 @@ export const joinedProfessorSchema = professorSchema
     z.object({
       tags: z.array(z.string()),
       coursesCount: z.number(),
-      coursesId: z.array(z.string()),
+      coursesIds: z.array(z.string()),
       tutorialsCount: z.number(),
       lecturesCount: z.number(),
     }),

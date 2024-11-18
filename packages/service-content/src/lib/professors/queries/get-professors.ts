@@ -15,7 +15,7 @@ export const getProfessorsQuery = ({
       pl.bio,
       pl.short_bio,
       COALESCE(ca.courses_count, 0) AS courses_count,
-      COALESCE(ca.courses_id, ARRAY[]::text[]) AS courses_id,
+      COALESCE(ca.courses_ids, ARRAY[]::text[]) AS courses_ids,
       COALESCE(tca.tutorials_count, 0) AS tutorials_count,
       COALESCE(lca.lectures_count, 0) AS lectures_count,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags
@@ -34,7 +34,7 @@ export const getProfessorsQuery = ({
     LEFT JOIN LATERAL (
       SELECT
         COUNT(cp) AS courses_count,
-        ARRAY_AGG(course_id) as courses_id
+        ARRAY_AGG(course_id) as courses_ids
       FROM content.course_professors cp
       WHERE cp.contributor_id = p.contributor_id
     ) ca ON TRUE
@@ -63,6 +63,6 @@ export const getProfessorsQuery = ({
         : sql``
     }
 
-    GROUP BY p.id, pl.language, pl.bio, pl.short_bio, ca.courses_count, ca.courses_id, tca.tutorials_count, lca.lectures_count, ta.tags
+    GROUP BY p.id, pl.language, pl.bio, pl.short_bio, ca.courses_count, ca.courses_ids, tca.tutorials_count, lca.lectures_count, ta.tags
   `;
 };
