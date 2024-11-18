@@ -338,7 +338,7 @@
       "dates_to": "从{{startDate}} 到 {{endDate}}",
       "description": "概述",
       "duration": "时长：{{hours}}小时",
-      "goal": "目标： ",
+      "goal": "目标：",
       "numberOfChapters": "章节数量：{{number}}",
       "objectives": "目标",
       "objectivesTitle": "你将学到什么：",
@@ -839,7 +839,7 @@
       "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "让我们一起让比特币教育变得更好！ ",
+      "title": "让我们一起让比特币教育变得更好！",
       "subtitle": "多亏了我们慷慨的赞助者，PlanB网络能够100%开源",
       "content": "PlanB网络很荣幸能与世界各地的许多比特币公司合作，以最大可能提供最佳教育资源！"
     },
@@ -939,7 +939,7 @@
       "madeBy": "这个教程是由",
       "checkAuthor": "查看作者的其他贡献并支持他的工作。",
       "enjoyed": "喜欢这个教程吗？",
-      "source": "原始资源 ",
+      "source": "原始资源",
       "tipTooltip": "喜欢吗？打赏。",
       "writtenBy": "",
       "author": "",
