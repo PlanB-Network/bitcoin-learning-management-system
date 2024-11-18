@@ -253,9 +253,9 @@
     },
     "proceedToPayment": "Proceed to payment",
     "quizz": {
-      "clickOnPie": "Cliquez sur le camembert pour vérifiez vos erreurs et obtenir les explications",
+      "clickOnPie": "Cliquez sur le camembert pour vérifier la bonne réponse",
       "quizz": "Questionnaire",
-      "quizzResults": "Résultats des quiz",
+      "quizzResults": "Résultats du questionnaire",
       "quizzReview": "Revue du quiz",
       "resultCongrats": "Félicitations, vous avez bien réussi !",
       "resultItsOk": "Ne renoncez pas, vous ferez mieux la prochaine fois !",
@@ -807,7 +807,7 @@
       "checkAuthor": "Découvrez les autres contributions de l'auteur et soutenez son travail.",
       "enjoyed": "Vous avez aimé ce tutoriel ?",
       "madeBy": "Ce tutoriel a été réalisé par",
-      "source": "Source originale : ",
+      "source": "Source originale :",
       "tipTooltip": "Vous aimez ? Faites un pourboire.",
       "author": "Auteur : ",
       "didHelp": "Cela a-t-il aidé ?",
@@ -1064,7 +1064,7 @@
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
     "conferencesSinceGenesis": "Archives des conférences Bitcoin depuis le Bloc Genesis",
-    "description": "Les conférences jouent un rôle crucial dans l'industrie du Bitcoin. Elles font partie du parcours éducatif de tout Bitcoiner. C'est pour cette raison que nous avons construit cet outil, pour vous aider à naviguer à travers des centaines de conférences.",
+    "description": "Les conférences sont des éléments clés de l'industrie du Bitcoin. Elles font partie du parcours éducatif de tout Bitcoiner. Nous avons construit cet outil pour vous aider à naviguer à travers des centaines de conférences.",
     "backConferences": "Retour aux conférences",
     "conferenceName": "Nom de la conférence",
     "details": {
