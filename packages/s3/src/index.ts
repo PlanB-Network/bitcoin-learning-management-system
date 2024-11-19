@@ -2,6 +2,7 @@ import { Readable } from 'node:stream';
 
 import type { GetObjectCommandOutput } from '@aws-sdk/client-s3';
 import {
+  DeleteObjectCommand,
   GetObjectCommand,
   HeadObjectCommand,
   PutObjectCommand,
@@ -20,6 +21,7 @@ export interface S3Service {
   getStream(key: string): Promise<Readable | null>;
   put(key: string, body: Data, contentType?: string): Promise<void>;
   head(key: string): Promise<S3Head>;
+  delete(key: string): Promise<void>;
 }
 
 export interface S3Head {
@@ -88,6 +90,12 @@ export const createS3Service = (config: S3Config): S3Service => {
         contentLength: res.ContentLength,
         contentType: res.ContentType,
       }));
+    },
+    // Delete the requested file
+    delete(key: string) {
+      const cmd = new DeleteObjectCommand({ Bucket, Key: base(key) });
+
+      return s3.send(cmd).then(() => void 0);
     },
   };
 };
