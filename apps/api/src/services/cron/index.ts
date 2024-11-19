@@ -22,7 +22,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
   // Execute once
   {
-    const migrateUserFiles = await createMigrateUserFiles(ctx);
+    const migrateUserFiles = createMigrateUserFiles(ctx);
     queueMicrotask(() => migrateUserFiles());
   }
 };
