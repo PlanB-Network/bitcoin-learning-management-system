@@ -10,7 +10,6 @@ import sharp from 'sharp';
 import { NoSuchKey } from '@blms/s3';
 import {
   createExamTimestampService,
-  createGetUserFile,
   createInsertFile,
   createSetProfilePicture,
 } from '@blms/service-user';
@@ -105,7 +104,7 @@ export const createRestFilesRoutes = async (
 
   const setProfilePicture = createSetProfilePicture(dependencies);
   router.post(
-    '/user/profile-picture',
+    '/user-file/profile-picture',
     expressAuthMiddleware,
     (req, res, next) => {
       const uid = req.session.uid;
@@ -122,21 +121,6 @@ export const createRestFilesRoutes = async (
         .catch(next);
     },
   );
-
-  const getFileData = createGetUserFile(dependencies);
-  router.get('/file/:id', async (req, res, next) => {
-    try {
-      const file: UserFile = await getFileData(req.params.id);
-
-      res.setHeader('Content-Type', file.mimetype);
-      res.setHeader('Content-Length', file.filesize.toString());
-
-      res.end(file.data);
-    } catch (error) {
-      console.log('Error:', error);
-      next(error);
-    }
-  });
 
   // Get all B-Cert files in a zip; typical key will be <exam-id>/<user-id>
   router.get('/files/zip/bcert/:edition/:username', async (req, res, next) => {
@@ -227,7 +211,7 @@ export const createRestFilesRoutes = async (
     try {
       const { bucket, key } = req.params;
 
-      const allowedBuckets = ['certificates', 'bcertresults'];
+      const allowedBuckets = ['certificates', 'bcertresults', 'user-files'];
       if (!allowedBuckets.includes(bucket)) {
         res.status(401).send('Unauthorized');
         return;
