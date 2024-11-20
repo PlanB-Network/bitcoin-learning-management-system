@@ -405,10 +405,16 @@
     "account": "Account",
     "administration": "Administration",
     "adminPanel": {
+      "bookings": "Bookings",
+      "bookingsPanel": "Bookings panel",
       "confirmRemoval": "Confirm removal",
       "coursesIds": "Courses IDs",
       "githubLink": "Github link",
+      "date": "Date",
+      "downloadList": "Download list",
+      "listOfParticipants": "List of participants",
       "makeProfessor": "Make professor",
+      "nameOfEvent": "Name of Event",
       "professorName": "Professor name",
       "removeTeacherDescription": "Are you sure you want to remove this teacher?",
       "searchByNameOrCategory": "Search by name or category",
@@ -417,6 +423,11 @@
       "tutorialAnalytics": "Tutorial analytics",
       "tutorialAnalyticsDescription": "Here you can check and compare all tutorials on the platform.",
       "tutorialsManagementPanel": "Tutorials management panel",
+      "type": "Type",
+      "upcomingBookings": "Upcoming bookings",
+      "upcomingBookingsSubtitle": "Here you can download the list of participants for all in-person events.",
+      "upcomingEvents": "Upcoming events",
+      "upcomingEventsSubtitle": "Here you can download the list of participants for all in-person events.",
       "userRolesAllocation": "User roles allocation"
     },
     "bCertificate": {

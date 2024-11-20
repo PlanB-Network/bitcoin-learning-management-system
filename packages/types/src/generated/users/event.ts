@@ -7,3 +7,12 @@ export interface UserEvent {
   booked: boolean | null;
   withPhysical: boolean | null;
 }
+
+export interface ExtendedUserEvent {
+  uid: string;
+  eventId: string;
+  booked: boolean | null;
+  withPhysical: boolean | null;
+  username: string;
+  displayName: string;
+}

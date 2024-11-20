@@ -49,6 +49,7 @@ import { Route as DashboardDashboardCourseCompletedImport } from './routes/dashb
 import { Route as DashboardDashboardCourseCourseIdImport } from './routes/dashboard/_dashboard/course/$courseId';
 import { Route as DashboardDashboardAdministrationTutorialsImport } from './routes/dashboard/_dashboard/administration/tutorials';
 import { Route as DashboardDashboardAdministrationRoleImport } from './routes/dashboard/_dashboard/administration/role';
+import { Route as DashboardDashboardAdministrationBookingsImport } from './routes/dashboard/_dashboard/administration/bookings';
 import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastNamePodcastIdImport } from './routes/_content/resources/podcasts/$podcastName-$podcastId';
 import { Route as ContentResourcesNewslettersNewsletterNameNewsletterIdImport } from './routes/_content/resources/newsletters/$newsletterName-$newsletterId';
@@ -320,6 +321,13 @@ const DashboardDashboardAdministrationRoleRoute =
   DashboardDashboardAdministrationRoleImport.update({
     id: '/administration/role',
     path: '/administration/role',
+    getParentRoute: () => DashboardDashboardRoute,
+  } as any);
+
+const DashboardDashboardAdministrationBookingsRoute =
+  DashboardDashboardAdministrationBookingsImport.update({
+    id: '/administration/bookings',
+    path: '/administration/bookings',
     getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
@@ -698,6 +706,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentTutorialsCategoryNameImport;
       parentRoute: typeof rootRoute;
     };
+    '/dashboard/_dashboard/administration/bookings': {
+      id: '/dashboard/_dashboard/administration/bookings';
+      path: '/administration/bookings';
+      fullPath: '/dashboard/administration/bookings';
+      preLoaderRoute: typeof DashboardDashboardAdministrationBookingsImport;
+      parentRoute: typeof DashboardDashboardImport;
+    };
     '/dashboard/_dashboard/administration/role': {
       id: '/dashboard/_dashboard/administration/role';
       path: '/administration/role';
@@ -877,6 +892,7 @@ interface DashboardDashboardRouteChildren {
   DashboardDashboardCoursesRoute: typeof DashboardDashboardCoursesRoute;
   DashboardDashboardCredentialsRoute: typeof DashboardDashboardCredentialsRoute;
   DashboardDashboardProfileRoute: typeof DashboardDashboardProfileRoute;
+  DashboardDashboardAdministrationBookingsRoute: typeof DashboardDashboardAdministrationBookingsRoute;
   DashboardDashboardAdministrationRoleRoute: typeof DashboardDashboardAdministrationRoleRoute;
   DashboardDashboardAdministrationTutorialsRoute: typeof DashboardDashboardAdministrationTutorialsRoute;
   DashboardDashboardCourseCourseIdRoute: typeof DashboardDashboardCourseCourseIdRoute;
@@ -892,6 +908,8 @@ const DashboardDashboardRouteChildren: DashboardDashboardRouteChildren = {
   DashboardDashboardCoursesRoute: DashboardDashboardCoursesRoute,
   DashboardDashboardCredentialsRoute: DashboardDashboardCredentialsRoute,
   DashboardDashboardProfileRoute: DashboardDashboardProfileRoute,
+  DashboardDashboardAdministrationBookingsRoute:
+    DashboardDashboardAdministrationBookingsRoute,
   DashboardDashboardAdministrationRoleRoute:
     DashboardDashboardAdministrationRoleRoute,
   DashboardDashboardAdministrationTutorialsRoute:
@@ -973,6 +991,7 @@ export interface FileRoutesByFullPath {
   '/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
   '/dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
@@ -1031,6 +1050,7 @@ export interface FileRoutesByTo {
   '/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
   '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
   '/dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
@@ -1092,6 +1112,7 @@ export interface FileRoutesById {
   '/_content/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/_content/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
   '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
+  '/dashboard/_dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/_dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/_dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
   '/dashboard/_dashboard/course/$courseId': typeof DashboardDashboardCourseCourseIdRoute;
@@ -1153,6 +1174,7 @@ export interface FileRouteTypes {
     | '/resources/newsletters/$newsletterName-$newsletterId'
     | '/resources/podcasts/$podcastName-$podcastId'
     | '/tutorials/$category/$name'
+    | '/dashboard/administration/bookings'
     | '/dashboard/administration/role'
     | '/dashboard/administration/tutorials'
     | '/dashboard/course/$courseId'
@@ -1210,6 +1232,7 @@ export interface FileRouteTypes {
     | '/resources/newsletters/$newsletterName-$newsletterId'
     | '/resources/podcasts/$podcastName-$podcastId'
     | '/tutorials/$category/$name'
+    | '/dashboard/administration/bookings'
     | '/dashboard/administration/role'
     | '/dashboard/administration/tutorials'
     | '/dashboard/course/$courseId'
@@ -1269,6 +1292,7 @@ export interface FileRouteTypes {
     | '/_content/resources/newsletters/$newsletterName-$newsletterId'
     | '/_content/resources/podcasts/$podcastName-$podcastId'
     | '/_content/tutorials/$category/$name'
+    | '/dashboard/_dashboard/administration/bookings'
     | '/dashboard/_dashboard/administration/role'
     | '/dashboard/_dashboard/administration/tutorials'
     | '/dashboard/_dashboard/course/$courseId'
@@ -1472,6 +1496,7 @@ export const routeTree = rootRoute
         "/dashboard/_dashboard/courses",
         "/dashboard/_dashboard/credentials",
         "/dashboard/_dashboard/profile",
+        "/dashboard/_dashboard/administration/bookings",
         "/dashboard/_dashboard/administration/role",
         "/dashboard/_dashboard/administration/tutorials",
         "/dashboard/_dashboard/course/$courseId",
@@ -1579,6 +1604,10 @@ export const routeTree = rootRoute
     },
     "/_content/tutorials/$category/$name": {
       "filePath": "_content/tutorials/$category/$name.tsx"
+    },
+    "/dashboard/_dashboard/administration/bookings": {
+      "filePath": "dashboard/_dashboard/administration/bookings.tsx",
+      "parent": "/dashboard/_dashboard"
     },
     "/dashboard/_dashboard/administration/role": {
       "filePath": "dashboard/_dashboard/administration/role.tsx",

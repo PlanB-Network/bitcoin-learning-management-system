@@ -145,3 +145,18 @@ export function formatFullDateWithDay(date: Date, timezone?: string): string {
 }
 
 export const oneDayInMs = 24 * 60 * 60 * 1000;
+
+export function formatDateWithoutTime(date: Date, timezone?: string): string {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const options: Intl.DateTimeFormatOptions = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    timeZone: timezone,
+  };
+
+  return new Intl.DateTimeFormat(undefined, options).format(date);
+}

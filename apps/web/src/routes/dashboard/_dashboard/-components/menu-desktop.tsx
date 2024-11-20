@@ -61,6 +61,7 @@ export const MenuDesktop = ({
   const profilePath = '/dashboard/profile';
   const adminRolePath = '/dashboard/administration/role';
   const adminTutorialsPath = '/dashboard/administration/tutorials';
+  const adminBookingsPath = '/dashboard/administration/bookings';
   const professorProfilePath = '/dashboard/professor/profile';
   const professorCoursesPath = '/dashboard/professor/courses';
   const professorTutorialsPath = '/dashboard/professor/tutorials';
@@ -160,6 +161,13 @@ export const MenuDesktop = ({
                 text={t('words.tutorials')}
                 icon={<LuPencilRuler size={24} />}
                 active={pathname.includes(adminTutorialsPath)}
+              />
+            </Link>
+            <Link to={adminBookingsPath}>
+              <MenuItem
+                text={t('dashboard.adminPanel.bookings')}
+                icon={<IoTicketOutline size={24} />}
+                active={pathname.includes(adminBookingsPath)}
               />
             </Link>
           </>

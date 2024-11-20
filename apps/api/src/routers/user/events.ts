@@ -3,6 +3,7 @@ import { z } from 'zod';
 import {
   checkoutDataSchema,
   eventPaymentSchema,
+  extendedUserEventSchema,
   userEventSchema,
 } from '@blms/schemas';
 import {
@@ -11,12 +12,18 @@ import {
 } from '@blms/service-content';
 import {
   createGetEventPayments,
+  createGetParticipants,
   createGetUserEvents,
   createSaveEventPayment,
   createSaveUserEvent,
   generateEventTicket,
 } from '@blms/service-user';
-import type { CheckoutData, EventPayment, UserEvent } from '@blms/types';
+import type {
+  CheckoutData,
+  EventPayment,
+  ExtendedUserEvent,
+  UserEvent,
+} from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 
@@ -126,10 +133,24 @@ const saveUserEventProcedure = studentProcedure
     await createCalculateEventSeats(ctx.dependencies)();
   });
 
+const getParticipantsForEventProcedure = studentProcedure
+  .input(
+    z.object({
+      eventIds: z.array(z.string()),
+    }),
+  )
+  .output<Parser<ExtendedUserEvent[]>>(z.array(extendedUserEventSchema))
+  .query(({ ctx, input }) => {
+    return createGetParticipants(ctx.dependencies)({
+      eventIds: input.eventIds,
+    });
+  });
+
 export const userEventsRouter = createTRPCRouter({
   downloadEventTicket: downloadEventTicketProcedure,
   getEventPayment: getEventPaymentsProcedure,
   getUserEvents: getUserEventsProcedure,
   saveEventPayment: saveEventPaymentProcedure,
   saveUserEvent: saveUserEventProcedure,
+  getParticipantsForEvent: getParticipantsForEventProcedure,
 });
