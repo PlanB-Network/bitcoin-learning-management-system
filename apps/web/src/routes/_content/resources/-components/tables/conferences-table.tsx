@@ -2,6 +2,8 @@ import { t } from 'i18next';
 
 import type { JoinedConference } from '@blms/types';
 
+import { formatNameForURL } from '#src/utils/string.ts';
+
 import { ConferenceRow } from './conference-row.tsx';
 
 interface ConferencesTableProps {
@@ -41,7 +43,7 @@ export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
                 languages={conference.languages}
                 link={
                   conference.stages.length > 0
-                    ? `/resources/conferences/${conference.id}`
+                    ? `/resources/conferences/conference/${formatNameForURL(conference.name)}-${conference.id}`
                     : ''
                 }
               />

@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -15,25 +16,42 @@ import {
 } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useSuggestedContent } from '#src/utils/resources-hook.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/podcasts/$podcastId')(
-  {
-    params: {
-      parse: (params) => ({
-        podcastId: z.number().int().parse(Number(params.podcastId)),
-      }),
-      stringify: ({ podcastId }) => ({ podcastId: `${podcastId}` }),
+export const Route = createFileRoute(
+  '/_content/resources/podcasts/podcast/$podcastName-$podcastId',
+)({
+  params: {
+    parse: (params) => {
+      const podcastNameId = params['podcastName-$podcastId'];
+      const podcastId = podcastNameId.split('-').pop();
+      const podcastName = podcastNameId.slice(
+        0,
+        Math.max(0, podcastNameId.lastIndexOf('-')),
+      );
+
+      return {
+        'podcastName-$podcastId': `${podcastName}-${podcastId}`,
+        podcastName: z.string().parse(podcastName),
+        podcastId: z.number().int().parse(Number(podcastId)),
+      };
     },
-    component: Podcast,
+    stringify: ({ podcastName, podcastId }) => ({
+      'podcastName-$podcastId': `${podcastName}-${podcastId}`,
+    }),
   },
-);
+  component: Podcast,
+});
 
 function Podcast() {
+  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
@@ -46,6 +64,14 @@ function Podcast() {
     useSuggestedContent('podcasts');
 
   const isScreenMd = useGreater('sm');
+
+  useEffect(() => {
+    if (podcast && params.podcastName !== formatNameForURL(podcast.name)) {
+      navigate({
+        to: `/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`,
+      });
+    }
+  }, [podcast, isFetched, navigateTo404, navigate, params.podcastName]);
 
   function displayAbstract() {
     return (
@@ -165,7 +191,9 @@ function Podcast() {
                         key={podcast.id}
                         className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative bg-gradient-to-r w-full max-w-[282px] max-h-[350px] rounded-[22px]"
                       >
-                        <Link to={`/resources/podcasts/${podcast.id}`}>
+                        <Link
+                          to={`/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`}
+                        >
                           <div className="relative h-full">
                             <img
                               className="max-h-72 sm:max-h-96 size-full object-cover rounded-[10px]"

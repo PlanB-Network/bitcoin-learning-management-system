@@ -21,13 +21,26 @@ const ConferencesMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/_content/resources/conferences/$conferenceId',
+  '/_content/resources/conferences/conference/$conferenceName-$conferenceId',
 )({
   params: {
-    parse: (params) => ({
-      conferenceId: z.number().int().parse(Number(params.conferenceId)),
+    parse: (params) => {
+      const conferenceNameId = params['conferenceName-$conferenceId'];
+      const conferenceId = conferenceNameId.split('-').pop();
+      const conferenceName = conferenceNameId.slice(
+        0,
+        Math.max(0, conferenceNameId.lastIndexOf('-')),
+      );
+
+      return {
+        'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`,
+        conferenceName: z.string().parse(conferenceName), // Validate the conference name
+        conferenceId: z.number().int().parse(Number(conferenceId)), // Validate and parse the ID
+      };
+    },
+    stringify: ({ conferenceName, conferenceId }) => ({
+      'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`, // Combine name and ID into the original format
     }),
-    stringify: ({ conferenceId }) => ({ conferenceId: `${conferenceId}` }),
   },
   component: Conference,
 });

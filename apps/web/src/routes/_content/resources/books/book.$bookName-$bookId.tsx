@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -15,32 +16,51 @@ import {
 
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { assetUrl, trpc } from '#src/utils/index.js';
 import { useSuggestedContent } from '#src/utils/resources-hook.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/books/$bookId')({
+export const Route = createFileRoute(
+  '/_content/resources/books/book/$bookName-$bookId',
+)({
   params: {
-    parse: (params) => ({
-      bookId: z.number().int().parse(Number(params.bookId)),
+    parse: (params) => {
+      const bookNameId = params['bookName-$bookId'];
+      const bookId = bookNameId.split('-').pop();
+      const bookName = bookNameId.slice(
+        0,
+        Math.max(0, bookNameId.lastIndexOf('-')),
+      );
+
+      return {
+        'bookName-$bookId': `${bookName}-${bookId}`,
+        bookName: z.string().parse(bookName),
+        bookId: z.number().int().parse(Number(bookId)),
+      };
+    },
+    stringify: ({ bookName, bookId }) => ({
+      'bookName-$bookId': `${bookName}-${bookId}`,
     }),
-    stringify: ({ bookId }) => ({ bookId: `${bookId}` }),
   },
   component: Book,
 });
 
 function Book() {
-  const { t, i18n } = useTranslation();
   const params = Route.useParams();
-
-  const isScreenMd = useGreater('sm');
+  const { t, i18n } = useTranslation();
 
   const { data: book, isFetched } = trpc.content.getBook.useQuery({
     id: params.bookId,
     language: i18n.language ?? 'en',
   });
+  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
+
+  const isScreenMd = useGreater('sm');
 
   const { data: proofreading } = trpc.content.getProofreading.useQuery({
     language: i18n.language,
@@ -49,6 +69,14 @@ function Book() {
 
   const { data: suggestedBooks, isFetched: isFetchedSuggestedBooks } =
     useSuggestedContent('books');
+
+  useEffect(() => {
+    if (book && params.bookName !== formatNameForURL(book.title)) {
+      navigate({
+        to: `/book/${formatNameForURL(book.title)}-${book.id}`,
+      });
+    }
+  }, [book, isFetched, navigateTo404, navigate, params.bookName]);
 
   function displayAbstract() {
     return (
@@ -174,7 +202,9 @@ function Book() {
                         key={book.id}
                         className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative w-full bg-gradient-to-r max-w-[282px] max-h-[350px] rounded-2xl lg:rounded-[22px]"
                       >
-                        <Link to={`/resources/books/${book.id}`}>
+                        <Link
+                          to={`/resources/books/book/${formatNameForURL(book.title)}-${book.id}`}
+                        >
                           <div className="relative h-full">
                             <img
                               className="max-h-72 sm:max-h-96 size-full object-cover rounded-[10px]"

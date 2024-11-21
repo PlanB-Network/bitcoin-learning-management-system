@@ -6,6 +6,7 @@ import type { JoinedBook } from '@blms/types';
 import { Loader } from '@blms/ui';
 
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
@@ -49,7 +50,7 @@ function Books() {
           )
           .map((book) => (
             <Link
-              to={'/resources/books/$bookId'}
+              to={`/resources/books/book/${formatNameForURL(book.title)}-${book.id}`}
               params={{
                 bookId: book.id.toString(),
               }}

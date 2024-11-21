@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from '@blms/ui';
 
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
@@ -49,7 +50,7 @@ function Podcasts() {
           )
           .map((podcast) => (
             <Link
-              to={'/resources/podcasts/$podcastId'}
+              to={`/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`}
               params={{
                 podcastId: podcast.id.toString(),
               }}

@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
@@ -9,30 +10,47 @@ import { Button, Loader, cn } from '@blms/ui';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import Flag from '#src/molecules/Flag/index.js';
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderEvents } from '../-components/builder-events.tsx';
 import { BuilderCard } from '../-components/cards/builder-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
-export const Route = createFileRoute('/_content/resources/builders/$builderId')(
-  {
-    params: {
-      parse: (params) => ({
-        builderId: z.number().int().parse(Number(params.builderId)),
-      }),
-      stringify: ({ builderId }) => ({ builderId: `${builderId}` }),
+export const Route = createFileRoute(
+  '/_content/resources/builders/builder/$builderName-$builderId',
+)({
+  params: {
+    parse: (params) => {
+      const builderNameId = params['builderName-$builderId'];
+      const builderId = builderNameId.split('-').pop();
+      const builderName = builderNameId.slice(
+        0,
+        Math.max(0, builderNameId.lastIndexOf('-')),
+      );
+
+      return {
+        'builderName-$builderId': `${builderName}-${builderId}`,
+        builderName: z.string().parse(builderName),
+        builderId: z.number().int().parse(Number(builderId)),
+      };
     },
-    component: Builder,
+    stringify: ({ builderName, builderId }) => ({
+      'builderName-$builderId': `${builderName}-${builderId}`,
+    }),
   },
-);
+  component: Builder,
+});
 
 function Builder() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
+  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
 
   const isScreenMd = useGreater('sm');
   const { data: builder, isFetched } = trpc.content.getBuilder.useQuery(
@@ -77,6 +95,14 @@ function Builder() {
           event.builder === builder?.name && event.startDate > new Date(),
       )
     : [];
+
+  useEffect(() => {
+    if (builder && params.builderName !== formatNameForURL(builder.name)) {
+      navigate({
+        to: `/builder/${formatNameForURL(builder.name)}-${builder.id}`,
+      });
+    }
+  }, [builder, isFetched, navigateTo404, navigate, params.builderName]);
 
   return (
     <ResourceLayout
@@ -245,7 +271,7 @@ function Builder() {
           <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
             {filteredCommunities.map((community) => (
               <Link
-                to={'/resources/builders/$builderId'}
+                to={`/resources/builders/builder/${formatNameForURL(community.name)}-${community.id}`}
                 params={{
                   builderId: community.id.toString(),
                 }}

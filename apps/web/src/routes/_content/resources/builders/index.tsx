@@ -7,6 +7,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Loader } from '@blms/ui';
 
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { BuilderCard } from '../-components/cards/builder-card.tsx';
@@ -82,7 +83,7 @@ function Builders() {
               <div className="mt-5 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
                 {filteredBuilders.map((builder) => (
                   <Link
-                    to={'/resources/builders/$builderId'}
+                    to={`/resources/builders/builder/${formatNameForURL(builder.name)}-${builder.id}`}
                     params={{
                       builderId: builder.id.toString(),
                     }}
