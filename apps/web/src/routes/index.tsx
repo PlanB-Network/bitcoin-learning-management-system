@@ -233,11 +233,10 @@ function Home() {
     return (
       <section className="max-w-[1080px] mx-auto mt-[30px] lg:mt-[111px] px-4">
         <h2 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
-          Upcoming & new courses
+          {t('home.courseSection.upcomingCourseTitle')}
         </h2>
         <p className="text-darkOrange-5 body-16px-medium lg:title-large-sb-24px text-center lg:text-start  mb-8">
-          Find out the latest courses released onto the platform. Learning never
-          stops !
+          {t('home.courseSection.upcomingCourseDescription')}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 justify-center">
           {filteredCourses &&
@@ -261,7 +260,7 @@ function Home() {
             glowing={false}
             size={buttonSize}
           >
-            Check all courses
+            {t('home.courseSection.checkAllCourses')}
             <span className="ml-3">
               <AiOutlineRight />
             </span>
@@ -288,10 +287,8 @@ function Home() {
       refetchOnReconnect: false,
     };
 
-    const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery(
-      undefined,
-      queryOpts,
-    );
+    const { data: event, isFetched } =
+      trpc.content.getUpcomingEvent.useQuery<JoinedEvent>(undefined, queryOpts);
 
     const { data: eventPayments, refetch: refetchEventPayments } =
       trpc.user.events.getEventPayment.useQuery(undefined, {
@@ -313,9 +310,8 @@ function Home() {
       accessType: 'physical' | 'online' | 'replay' | null;
     }>({ eventId: null, satsPrice: null, accessType: null });
 
-    const payingEvent: JoinedEvent | undefined = events?.find(
-      (e) => e.id === paymentModalData.eventId,
-    );
+    const payingEvent =
+      event?.id === paymentModalData.eventId ? event : undefined;
 
     const [conversionRate, setConversionRate] = useState<number | null>(null);
     const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
@@ -339,7 +335,7 @@ function Home() {
         <div className="bg-home-gradient-mobile lg:bg-home-gradient h-full">
           <div className="flex flex-col lg:relative h-full">
             <h1 className="flex justify-center lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 w-full text-white title-small-med-16px lg:display-large-med-48px text-center">
-              A Global Bitcoin Network of Educators
+              {t('home.eventSection.eventTitle')}
             </h1>
             <img
               src={Map}
@@ -392,9 +388,9 @@ function Home() {
                 />
               )}
             <div className="flex lg:absolute top-0 right-0 lg:right-80 2xl:right-96 mt-2 lg:mt-[160px] mx-auto lg:mx-0">
-              {isFetched && events && (
+              {isFetched && event && (
                 <CurrentEvents
-                  events={events}
+                  events={[event]}
                   eventPayments={eventPayments}
                   userEvents={userEvents}
                   openAuthModal={openAuthModal}
@@ -402,7 +398,7 @@ function Home() {
                   conversionRate={conversionRate}
                   setIsPaymentModalOpen={setIsPaymentModalOpen}
                   setPaymentModalData={setPaymentModalData}
-                  headingColor="text-white "
+                  headingColor="text-white"
                   headingText="Hottest bitcoin event"
                   headingClass="!body-14px lg:!display-small-32px"
                   showUpcomingIfNone={true}
@@ -428,7 +424,7 @@ function Home() {
                 glowing={false}
                 size={buttonSize}
               >
-                Check all events
+                {t('home.eventSection.checkEvents')}
                 <span className="ml-3">
                   <AiOutlineRight />
                 </span>
@@ -785,11 +781,10 @@ function Home() {
       <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] lg:mt-[107px] px-[15px] lg:px-0">
         <div className="mx-auto max-w-[1079px]">
           <h3 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-end">
-            What’s new at Plan ₿ Network
+            {t('home.blogSection.blogTitle')}
           </h3>
           <p className="text-darkOrange-5 text-center lg:text-end body-16px-medium lg:title-large-sb-24px mb-8">
-            We keep on improving the platform, the content, and the network -
-            check it out!
+            {t('home.blogSection.description')}
           </p>
 
           <div className="block md:hidden">
@@ -858,7 +853,7 @@ function Home() {
                 glowing={false}
                 size={buttonSize}
               >
-                See all
+                {t('home.blogSection.seeAll')}
                 <span className="ml-3">
                   <AiOutlineRight />
                 </span>

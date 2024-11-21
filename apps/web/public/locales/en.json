@@ -645,6 +645,20 @@
     "term": "Term"
   },
   "home": {
+    "blogSection": {
+      "blogTitle": "What’s new at Plan ₿ Network",
+      "description": "We keep on improving the platform, the content, and the network - check it out!",
+      "seeAll": "See all"
+    },
+    "courseSection": {
+      "checkAllCourses": "Check all courses",
+      "upcomingCourseDescription": "Find out the latest courses released onto the platform. Learning never stops !",
+      "upcomingCourseTitle": "Upcoming & new courses"
+    },
+    "eventSection": {
+      "checkEvents": "Check all events",
+      "eventTitle": "A Global Bitcoin Network of Educators"
+    },
     "header": {
       "content": "The Plan ₿ Network platform aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "For educators and builders",
