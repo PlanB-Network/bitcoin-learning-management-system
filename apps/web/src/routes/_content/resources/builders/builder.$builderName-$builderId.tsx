@@ -99,7 +99,7 @@ function Builder() {
   useEffect(() => {
     if (builder && params.builderName !== formatNameForURL(builder.name)) {
       navigate({
-        to: `/builder/${formatNameForURL(builder.name)}-${builder.id}`,
+        to: `/resources/builders/builder/${formatNameForURL(builder.name)}-${builder.id}`,
       });
     }
   }, [builder, isFetched, navigateTo404, navigate, params.builderName]);

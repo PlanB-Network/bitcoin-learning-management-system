@@ -1,5 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import React, { Suspense, useState } from 'react';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
@@ -11,8 +11,10 @@ import { Button, Loader, Tag, cn } from '@blms/ui';
 
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { assetUrl, trpc } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.js';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 // eslint-disable-next-line import/no-named-as-default-member
@@ -34,12 +36,12 @@ export const Route = createFileRoute(
 
       return {
         'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`,
-        conferenceName: z.string().parse(conferenceName), // Validate the conference name
-        conferenceId: z.number().int().parse(Number(conferenceId)), // Validate and parse the ID
+        conferenceName: z.string().parse(conferenceName),
+        conferenceId: z.number().int().parse(Number(conferenceId)),
       };
     },
     stringify: ({ conferenceName, conferenceId }) => ({
-      'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`, // Combine name and ID into the original format
+      'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`,
     }),
   },
   component: Conference,
@@ -79,7 +81,8 @@ function getVideoIdNumber(video: ConferenceStageVideo) {
 function Conference() {
   const [activeStage, setActiveStage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
-
+  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
@@ -108,6 +111,17 @@ function Conference() {
       setActiveVideo((v) => v + 1);
     }
   };
+
+  useEffect(() => {
+    if (
+      conference &&
+      params.conferenceName !== formatNameForURL(conference.name)
+    ) {
+      navigate({
+        to: `/resources/conferences/conference/${formatNameForURL(conference.name)}-${conference.id}`,
+      });
+    }
+  }, [conference, isFetched, navigateTo404, navigate, params.conferenceName]);
 
   return (
     <ResourceLayout

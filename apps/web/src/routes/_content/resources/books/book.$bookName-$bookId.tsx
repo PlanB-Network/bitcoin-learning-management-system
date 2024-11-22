@@ -73,7 +73,7 @@ function Book() {
   useEffect(() => {
     if (book && params.bookName !== formatNameForURL(book.title)) {
       navigate({
-        to: `/book/${formatNameForURL(book.title)}-${book.id}`,
+        to: `/resources/books/book/${formatNameForURL(book.title)}-${book.id}`,
       });
     }
   }, [book, isFetched, navigateTo404, navigate, params.bookName]);
