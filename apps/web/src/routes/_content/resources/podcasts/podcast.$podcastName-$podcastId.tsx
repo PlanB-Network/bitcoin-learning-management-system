@@ -68,7 +68,7 @@ function Podcast() {
   useEffect(() => {
     if (podcast && params.podcastName !== formatNameForURL(podcast.name)) {
       navigate({
-        to: `/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`,
+        to: `/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`,
       });
     }
   }, [podcast, isFetched, navigateTo404, navigate, params.podcastName]);
