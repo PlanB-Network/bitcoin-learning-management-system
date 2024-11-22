@@ -50,7 +50,7 @@ function Books() {
           )
           .map((book) => (
             <Link
-              to={`/resources/books/book/${formatNameForURL(book.title)}-${book.id}`}
+              to={`/resources/books/${formatNameForURL(book.title)}-${book.id}`}
               params={{
                 bookId: book.id.toString(),
               }}

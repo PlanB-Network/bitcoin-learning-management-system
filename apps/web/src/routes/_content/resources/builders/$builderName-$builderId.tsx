@@ -22,7 +22,7 @@ import { BuilderCard } from '../-components/cards/builder-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute(
-  '/_content/resources/builders/builder/$builderName-$builderId',
+  '/_content/resources/builders/$builderName-$builderId',
 )({
   params: {
     parse: (params) => {
@@ -99,7 +99,7 @@ function Builder() {
   useEffect(() => {
     if (builder && params.builderName !== formatNameForURL(builder.name)) {
       navigate({
-        to: `/resources/builders/builder/${formatNameForURL(builder.name)}-${builder.id}`,
+        to: `/resources/builders/${formatNameForURL(builder.name)}-${builder.id}`,
       });
     }
   }, [builder, isFetched, navigateTo404, navigate, params.builderName]);
@@ -271,7 +271,7 @@ function Builder() {
           <div className="max-w-[1017px] flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
             {filteredCommunities.map((community) => (
               <Link
-                to={`/resources/builders/builder/${formatNameForURL(community.name)}-${community.id}`}
+                to={`/resources/builders/${formatNameForURL(community.name)}-${community.id}`}
                 params={{
                   builderId: community.id.toString(),
                 }}

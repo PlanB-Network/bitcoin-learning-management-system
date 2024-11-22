@@ -50,7 +50,7 @@ function Podcasts() {
           )
           .map((podcast) => (
             <Link
-              to={`/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`}
+              to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
               params={{
                 podcastId: podcast.id.toString(),
               }}

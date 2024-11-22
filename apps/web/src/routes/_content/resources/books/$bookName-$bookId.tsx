@@ -25,7 +25,7 @@ import { formatNameForURL } from '#src/utils/string.ts';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute(
-  '/_content/resources/books/book/$bookName-$bookId',
+  '/_content/resources/books/$bookName-$bookId',
 )({
   params: {
     parse: (params) => {
@@ -73,7 +73,7 @@ function Book() {
   useEffect(() => {
     if (book && params.bookName !== formatNameForURL(book.title)) {
       navigate({
-        to: `/resources/books/book/${formatNameForURL(book.title)}-${book.id}`,
+        to: `/resources/books/${formatNameForURL(book.title)}-${book.id}`,
       });
     }
   }, [book, isFetched, navigateTo404, navigate, params.bookName]);
@@ -203,7 +203,7 @@ function Book() {
                         className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative w-full bg-gradient-to-r max-w-[282px] max-h-[350px] rounded-2xl lg:rounded-[22px]"
                       >
                         <Link
-                          to={`/resources/books/book/${formatNameForURL(book.title)}-${book.id}`}
+                          to={`/resources/books/${formatNameForURL(book.title)}-${book.id}`}
                         >
                           <div className="relative h-full">
                             <img

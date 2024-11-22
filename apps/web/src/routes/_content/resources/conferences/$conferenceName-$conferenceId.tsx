@@ -23,7 +23,7 @@ const ConferencesMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/_content/resources/conferences/conference/$conferenceName-$conferenceId',
+  '/_content/resources/conferences/$conferenceName-$conferenceId',
 )({
   params: {
     parse: (params) => {
@@ -118,7 +118,7 @@ function Conference() {
       params.conferenceName !== formatNameForURL(conference.name)
     ) {
       navigate({
-        to: `/resources/conferences/conference/${formatNameForURL(conference.name)}-${conference.id}`,
+        to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`,
       });
     }
   }, [conference, isFetched, navigateTo404, navigate, params.conferenceName]);

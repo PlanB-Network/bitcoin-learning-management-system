@@ -83,7 +83,7 @@ function Builders() {
               <div className="mt-5 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-11">
                 {filteredBuilders.map((builder) => (
                   <Link
-                    to={`/resources/builders/builder/${formatNameForURL(builder.name)}-${builder.id}`}
+                    to={`/resources/builders/${formatNameForURL(builder.name)}-${builder.id}`}
                     params={{
                       builderId: builder.id.toString(),
                     }}

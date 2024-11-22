@@ -97,7 +97,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestConferences[0].stages.length > 0
-                      ? `/resources/conferences/conference/${formatNameForURL(latestConferences[0].name)}-${latestConferences[0].id}`
+                      ? `/resources/conferences/${formatNameForURL(latestConferences[0].name)}-${latestConferences[0].id}`
                       : ''
                   }
                   languages={latestConferences[0].languages}
@@ -113,7 +113,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestConferences[1].stages.length > 0
-                      ? `/resources/conferences/conference/${formatNameForURL(latestConferences[1].name)}-${latestConferences[1].id}`
+                      ? `/resources/conferences/${formatNameForURL(latestConferences[1].name)}-${latestConferences[1].id}`
                       : ''
                   }
                   languages={latestConferences[1].languages}
@@ -142,7 +142,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[0].stages.length > 0
-                      ? `/resources/conferences/conference/${formatNameForURL(latestPlanBConferences[0].name)}-${latestPlanBConferences[0].id}`
+                      ? `/resources/conferences/${formatNameForURL(latestPlanBConferences[0].name)}-${latestPlanBConferences[0].id}`
                       : ''
                   }
                   languages={latestPlanBConferences[0].languages}
@@ -158,7 +158,7 @@ function Conferences() {
                   buttonVariant="primary"
                   buttonLink={
                     latestPlanBConferences[1].stages.length > 0
-                      ? `/resources/conferences/conference/${formatNameForURL(latestPlanBConferences[1].name)}-${latestPlanBConferences[1].id}`
+                      ? `/resources/conferences/${formatNameForURL(latestPlanBConferences[1].name)}-${latestPlanBConferences[1].id}`
                       : ''
                   }
                   languages={latestPlanBConferences[1].languages}
@@ -199,7 +199,7 @@ function Conferences() {
                 buttonVariant="primary"
                 buttonLink={
                   conference.stages.length > 0
-                    ? `/resources/conferences/conference/${formatNameForURL(conference.name)}-${conference.id}`
+                    ? `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`
                     : ''
                 }
                 languages={conference.languages}

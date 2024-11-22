@@ -25,7 +25,7 @@ import { formatNameForURL } from '#src/utils/string.ts';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute(
-  '/_content/resources/podcasts/podcast/$podcastName-$podcastId',
+  '/_content/resources/podcasts/$podcastName-$podcastId',
 )({
   params: {
     parse: (params) => {
@@ -68,7 +68,7 @@ function Podcast() {
   useEffect(() => {
     if (podcast && params.podcastName !== formatNameForURL(podcast.name)) {
       navigate({
-        to: `/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`,
+        to: `/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`,
       });
     }
   }, [podcast, isFetched, navigateTo404, navigate, params.podcastName]);
@@ -192,7 +192,7 @@ function Podcast() {
                         className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative bg-gradient-to-r w-full max-w-[282px] max-h-[350px] rounded-[22px]"
                       >
                         <Link
-                          to={`/resources/podcasts/podcast/${formatNameForURL(podcast.name)}-${podcast.id}`}
+                          to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
                         >
                           <div className="relative h-full">
                             <img
