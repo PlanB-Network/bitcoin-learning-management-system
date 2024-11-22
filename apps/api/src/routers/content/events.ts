@@ -1,4 +1,4 @@
-import { createGetSingleEvent } from 'node_modules/@blms/service-content/src/lib/events/services/get-events.js';
+import { createGetUpcomingEvent } from 'node_modules/@blms/service-content/src/lib/events/services/get-events.js';
 import { z } from 'zod';
 
 import { joinedEventSchema } from '@blms/schemas';
@@ -29,7 +29,7 @@ const getEventProcedure = publicProcedure
 const getUpcomingEventProcedure = publicProcedure
   .output<Parser<JoinedEvent | null>>(joinedEventSchema.nullable())
   .query(({ ctx }) => {
-    return createGetSingleEvent(ctx.dependencies)();
+    return createGetUpcomingEvent(ctx.dependencies)();
   });
 
 export const eventsRouter = createTRPCRouter({
