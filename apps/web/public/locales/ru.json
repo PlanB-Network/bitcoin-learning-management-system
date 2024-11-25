@@ -2,10 +2,10 @@
   "about": {
     "activeContributors": "Активные участники",
     "missionTitle": "Наша миссия",
-    "missionContent1": "Наша миссия - поддерживать локальные сообщества Bitcoin через  образование  на основании  материлов в открытом доступе и сетевое сотрудничество. Мы собираем, организуем и создаем необходимые ресурсы (курсы, книги, плакаты, листовки, видео) для развития  Bitcoin индустрии.",
+    "missionContent1": "Наша миссия - поддерживать локальные сообщества Bitcoin через образование на основании материлов в открытом доступе и сетевое сотрудничество. Мы собираем, организуем и создаем необходимые ресурсы (курсы, книги, плакаты, листовки, видео) для развития Bitcoin индустрии.",
     "missionContent2": "Мы централизуем знания, чтобы лучше распространять их через простой, многоязычный репозиторий GitHub и платформу дистанционного обучения. Мы помогаем локальным Биткойн хабам в их развитии, предоставляя подходящие инструменты для роста их талантов.",
     "commitmentTitle": "Наши обязательства",
-    "commitmentContent": "Наши обязательства перед  биткойн сообществом следующие:\n • Оставаться програмным обеспечением с  открытым исходным кодом\n • Предоставлять образовательный контент высокого качества\n • Переводить наш контент на как можно больше языков\n • Поддерживать Биткойн разработчиков в их предпринимательском пути",
+    "commitmentContent": "Наши обязательства перед биткойн сообществом следующие:\n • Оставаться програмным обеспечением с открытым исходным кодом\n • Предоставлять образовательный контент высокого качества\n • Переводить наш контент на как можно больше языков\n • Поддерживать Биткойн разработчиков в их предпринимательском пути",
     "coreTeamTitle": "Основная команда",
     "coreTeamContent": "Сеть Plan B - это коллектив сотен участников, учителей, лидеров сообщества, дизайнеров, разработчиков и организаторов. Большое спасибо многим людям, которые сделали Plan B реальностью и продолжают делать это каждый день. (Список участников появится в ближайшее время)",
     "coreTeamGiacomoRole": "Директор и со-основатель",
@@ -115,7 +115,8 @@
       "intermediate": "Промежуточный",
       "level": "Уровень",
       "levels": "Уровни",
-      "wizard": "Мастер"
+      "wizard": "Мастер",
+      "beginnerFriendly": ""
     },
     "library": "Библиотека",
     "lightning": "Lightning",
@@ -164,7 +165,35 @@
     "part": "Часть",
     "admins": "Администраторы",
     "students": "Студенты",
-    "users": "Пользователи"
+    "users": "Пользователи",
+    "credentials": "",
+    "bookings": "",
+    "builder": "",
+    "chapter": "",
+    "communities": "",
+    "booked": "",
+    "diploma": "",
+    "filter": "",
+    "failed": "",
+    "goal": "",
+    "grade": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "lectures": "",
+    "location": "",
+    "overview": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "required": "",
+    "status": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": ""
   },
   "auth": {
     "accountCreated": "Ваш аккаунт создан, {{userName}}!",
@@ -176,11 +205,13 @@
     "emailAddress": "Адрес электронной почты",
     "errors": {
       "usernameRegex": "Имя пользователя может содержать только буквы, цифры, _, . и -",
-      "usernameRequired": "Требуется имя пользователя",
-      "usernameTooShort": "Имя пользователя должно содержать не менее 5 символов",
+      "usernameRequired": "Требуется имя пользователя.",
+      "usernameTooShort": "Имя пользователя должно содержать не менее 5 символов.",
       "displayNameRegex": "Отображаемое имя может содержать только буквы, цифры, _, ., - и пробелы.",
       "displayNameRequired": "Требуется отображаемое имя.",
-      "displayNameTooShort": "Отображаемое имя должно содержать как минимум 2 символа."
+      "displayNameTooShort": "Отображаемое имя должно содержать как минимум 2 символа.",
+      "emailInvalid": "",
+      "invalidCredentials": ""
     },
     "forgottenPassword": "Забыли свой пароль?",
     "headerAccountCreated": "Аккаунт создан",
@@ -209,7 +240,11 @@
     "backToHome": "Назад домой",
     "invalidToken": "Недействительный токен",
     "checkingToken": "Проверка токена",
-    "checkingTokenExplain": "Мы проверяем, действителен ли токен..."
+    "checkingTokenExplain": "Мы проверяем, действителен ли токен…",
+    "emailTip": "",
+    "confirmation": "",
+    "displayName": "",
+    "oldPassword": ""
   },
   "bet": {
     "contribute": "Этот набор инструментов открыт для участия в нем. Он использует Figma, поэтому каждый может добавлять, изменять и переводить. Чтобы сотрудничать, добавить категорию или обсудить, не стесняйтесь и присоединяйтесь к нашему Discord.",
@@ -242,7 +277,7 @@
     "offeredBy": "Предложено великодушным участником",
     "pageSubtitle": "Этот портал имеет открытый исходный код и открыт для сотрудничества.",
     "pageTitle": "Библиотека Биткойн",
-    "topicsAddressed": "Темы, которые обсуждались: "
+    "topicsAddressed": "Темы, которые обсуждались:"
   },
   "builders": {
     "pageSubtitle": "Этот портал имеет открытый исходный код и открыт для сотрудничества.",
@@ -293,10 +328,10 @@
       "coursePayment": "Оплата курса",
       "curriculum": "Учебный план",
       "date": "Дата: {{startDate}} до {{endDate}}",
-      "dates_to": "{{startDate}} до  {{endDate}}",
+      "dates_to": "{{startDate}} до {{endDate}}",
       "description": "Описание",
       "duration": "Продолжительность: {{hours}} часов",
-      "goal": "ЦЕЛЬ: ",
+      "goal": "ЦЕЛЬ:",
       "level": "Уровень: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} главы",
@@ -317,7 +352,11 @@
       "access_invoice": "Вы можете получить доступ к своему счету через свою панель управления",
       "payment_details": "Платежные реквизиты",
       "amount": "Количество",
-      "invoiceId": "ID транзакции"
+      "invoiceId": "ID транзакции",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "Наши профессора здесь для Вас!",
@@ -354,7 +393,7 @@
       "back_course": "Вернуться к курсу",
       "callout": "Вы собираетесь приобрести этот курс.",
       "date": "Дата",
-      "dates_to": "{{startDate}} до  {{endDate}}",
+      "dates_to": "{{startDate}} до {{endDate}}",
       "downloadCurriculum": "Скачать учебную программу",
       "description": "Эта покупка предоставит Вам доступ к онлайн-курсам на платформе, а также к очным занятиям, при условии, что Вы зарезервируете место. Каждое занятие проходит очно в указанные даты и по указаному месту, после чего оно записывается и транслируется онлайн на платформе.",
       "book_description": "Пожалуйста, проверьте предоставленные детали места проведения.\nКак только бронирование будет обработано, мы предоставим Вам подтверждение билета и QR-код, который нужно будет предъявить на мероприятии.",
@@ -366,7 +405,11 @@
       "qr_unified": "Этот QR-код унифицирован, поэтому он принимает lightning платежи и платежи начейн.",
       "teacher": "Учитель",
       "teachers": "Учителя",
-      "time": "Время"
+      "time": "Время",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "от {{professor}}",
@@ -388,6 +431,100 @@
       "financialCrisis": "Анализ крупнейших финансовых кризисов",
       "hyperinflation": "Изучение гиперинфляций",
       "theoreticalLightning": "Продвинутый теоретический курс по сети Lightning"
+    },
+    "review": {
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": "",
+      "generalGrade": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "tryOneMoreTime": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": ""
     }
   },
   "dashboard": {
@@ -424,7 +561,13 @@
       "inprogressCoursesTitle": "Текущие курсы",
       "inprogressCoursesDescription": "Здесь Вы можете проверить свой прогресс в курсах, которые Вы начали.",
       "seeProgress": "чтобы увидеть Ваш прогресс здесь.",
-      "startCourse": "Начать или завершить курс"
+      "startCourse": "Начать или завершить курс",
+      "whereYouAre": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": ""
     },
     "calendar": {
       "calendar": "Календарь",
@@ -435,7 +578,7 @@
       "edit": "Редактировать",
       "cancel": "Отмена",
       "save": "Сохранить",
-      "saving": "Сохраняем...",
+      "saving": "Сохраняем…",
       "crop": "Обрезать",
       "preview": "Предварительный просмотр",
       "displayName": "Отображаемое имя",
@@ -446,7 +589,9 @@
       "profilePicture": "Фотография профиля",
       "security": "Безопасность",
       "username": "Имя пользователя",
-      "emailChangeConfirmation": "Письмо с подтверждением изменения электронной почты было отправлено, проверьте свой почтовый ящик, чтобы подтвердить изменение."
+      "emailChangeConfirmation": "Письмо с подтверждением изменения электронной почты было отправлено, проверьте свой почтовый ящик, чтобы подтвердить изменение.",
+      "emailChangeRateLimitError": "",
+      "profile": ""
     },
     "bCertificate": {
       "gradesDiploma": "Оценки и диплом",
@@ -462,6 +607,88 @@
       "bCertificate": "Сертификат ₿",
       "general": "Общее",
       "wantToPass": "Хотите сдать экзамен?"
+    },
+    "administration": "",
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseLongDescription": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      },
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      }
     }
   },
   "events": {
@@ -554,7 +781,8 @@
       "title": "Наша цель - сделать обучение Биткойну простым.",
       "subtitle1": "Мы помогаем Вам освоить технологию с помощью множества подробных материалов!",
       "content1": "Биткойн постоянно развивается, появляются и исчезают новые участники, решения, протоколы и технологические прорывы. Часто сложно поддерживать единую, точную базу хороших, современных учебников. Это то, что мы достигли здесь, в Plan B. От новичков до продвинутых пользователей, Вы можете просмотреть сотни учебников, чтобы изучить нашу отрасль в соответствии с Вашими потребностями.",
-      "link": "Посмотреть все уроки"
+      "link": "Посмотреть все уроки",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Кто мы?",
@@ -576,15 +804,17 @@
       "subtitle2": "Нам нужны Вы!",
       "content1": "В Plan B мы верим, что Биткойн - это международная революция, которая касается каждого. Чтобы дать возможности миллиардам людей, мы разрабатываем эту платформу так, чтобы она была многоязычной и доступной для всех. В настоящее время платформа поддерживает 7 языков, и каждый месяц добавляются новые. Для достижения этого мы используем сочетание искусственного интеллекта и энтузиазм биткоинеров по всему миру.",
       "content2": "Вы тоже можете начать создание собственной локальной сети в вашей стране!",
-      "link": "Помогите нам перевести академию"
+      "link": "Помогите нам перевести академию",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Давайте вместе сделаем образование по Биткойну лучше! ",
+      "title": "Давайте вместе сделаем образование по Биткойну лучше!",
       "subtitle": "Сеть Plan B на 100% имеет открытый исходный код благодаря нашим щедрым покровителям",
       "content": "Сеть Plan B гордится сотрудничеством со многими биткойн-компаниями по всему миру, чтобы предоставить наилучшие возможные образовательные ресурсы!"
     },
     "wallOfLoveSection": {
-      "subtitle": "Что биткойнеры говорят о нас"
+      "subtitle": "Что биткойнеры говорят о нас",
+      "title": ""
     }
   },
   "imagesAlt": {
@@ -638,7 +868,8 @@
     "login": "Войти в систему",
     "bCertificateDescription": "Сдайте экзамен на Сертификат Б, чтобы подтвердить свой уровень знаний в области Биткойна",
     "loginRegister": "Войти / Зарегистрироваться",
-    "glossaryDescription": "Поймите язык Биткойна"
+    "glossaryDescription": "Поймите язык Биткойна",
+    "publicDescription": ""
   },
   "nodeNetwork": {
     "answer1": "Узел - это образовательная инициатива, связанная с сообществом в каком-либо месте мира. Это может быть здание, где проходит обучение по Биткойну, но не ограничивается этим. Сеть Plan B управляет хабами, но создание их в каждом городе мира нереально. Вот почему мы полагаемся на сообщество биткойнеров, чтобы помочь нам сделать глобальную сеть реальностью.",
@@ -654,7 +885,10 @@
     "question2": "Что я получаю?",
     "question3": "Какие требования?",
     "question4": "Какого размера узел?",
-    "question5": "Какой секретный план?"
+    "question5": "Какой секретный план?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Здесь",
@@ -682,7 +916,14 @@
     "tips": {
       "noTipsYet": "В настоящее время этот профессор не принимает чаевые.",
       "thanks": "Спасибо за поддержку работы {{name}}!",
-      "thanksNoName": "Спасибо за поддержку моей работы!"
+      "thanksNoName": "Спасибо за поддержку моей работы!",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
   },
   "resources": {
@@ -718,7 +959,12 @@
     "glossary": {
       "title": "Глоссарий"
     },
-    "searchFilterName": "Искать по имени"
+    "searchFilterName": "Искать по имени",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Сменить пароль",
@@ -731,7 +977,7 @@
       "checkAuthor": "Ознакомьтесь с другими работами автора и поддержите его творчество.",
       "enjoyed": "Понравился этот учебный материал?",
       "madeBy": "Этот учебный материал был создан",
-      "source": "Оригинальный ресурс: ",
+      "source": "Оригинальный ресурс:",
       "tipTooltip": "Понравилось? Чаевые.",
       "didHelp": "Это помогло?",
       "writtenBy": "Этот учебный материал был написан:",
@@ -832,7 +1078,9 @@
     "github": "GitHub",
     "p1": "Кролик упал в нору. Из-за этого неожиданного приключения, эта страница в данный момент находится в стадии доработки. Приносим извинения за любые неудобства. Наша команда работает в полную силу, чтобы завершить эту страницу. Если Вы заинтересованы в помощи, не стесняйтесь посмотреть наш",
     "p2": "и рассмотрите возможность присоединения к нашему сообществу!",
-    "pageTitle": "Ой."
+    "pageTitle": "Ой.",
+    "itemNotFoundOrTranslated": "",
+    "itemNotFound": ""
   },
   "bCertificate": {
     "bCertificateDescription": "Б-Сертификат - это международно признанный экзамен для оценки Вашего уровня знаний о Биткойне и связанных с ним темах. Этот сертификат позволит Вам подтвердить свои навыки и знания в индустрии Биткойн, обеспечивая Вам доступ к компаниям и должностям в этой отрасли.",
@@ -849,7 +1097,8 @@
     "organizeTitle": "Хотите организовать экзамен на ₿ Сертификат в вашем хабе?",
     "pageSubtitle": "Массовое принятие через централизованное образование с открытым исходным кодом",
     "pageTitle": "₿ Сертификат",
-    "readChart": "Читайте диаграмму"
+    "readChart": "Читайте диаграмму",
+    "tweetText": ""
   },
   "glossary": {
     "anotherWord": "Поиск по другому слову",
@@ -863,22 +1112,51 @@
     "placeHolder": "Что это?",
     "randomSearch": "Случайный поиск",
     "relatedWords": "Связанные слова :",
-    "term": "Термин"
+    "term": "Термин",
+    "creditsLoic": "",
+    "notTranslated": ""
   },
   "publicCommunication": {
     "blogCategories": {
       "all": "Все",
       "grants": "Гранты",
-      "network": "Сеть"
+      "network": "Сеть",
+      "content": "",
+      "course": "",
+      "feature": "",
+      "patch": ""
     },
     "legalSections": {
       "contact": "Контакты",
-      "general": "Общее"
+      "general": "Общее",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
     },
     "goBackButtons": {
       "simpleGoBack": "Назад ко всем статьям"
     },
     "title": "Публичное общение",
-    "description": "В Сети Plan B мы используем стандарты открытого кода и поддерживаем прозрачность на нашем пути"
+    "description": "В Сети Plan B мы используем стандарты открытого кода и поддерживаем прозрачность на нашем пути",
+    "blogPost": "",
+    "legal": "",
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "pastArticleSubtitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    }
+  },
+  "proofreading": {
+    "thanks": "",
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": ""
   }
 }

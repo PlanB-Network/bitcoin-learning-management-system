@@ -33,7 +33,12 @@
     "errors": {
       "usernameRegex": "Uživatelské jméno může obsahovat pouze písmena, _ (podtržítka), . (tečky) a - (pomlčky)",
       "usernameRequired": "Uživatelské jméno je povinné",
-      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé"
+      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé",
+      "displayNameRegex": "",
+      "displayNameRequired": "",
+      "displayNameTooShort": "",
+      "emailInvalid": "",
+      "invalidCredentials": ""
     },
     "forgottenPassword": "Zapomněli jste heslo?",
     "lnurlAuthDescription": "Naskenujte QR kód pomocí peněženky Lightning a přihlaste se!",
@@ -44,7 +49,29 @@
     "sendLink": "Odeslat odkaz",
     "signIn": "Přihlásit se",
     "headerAccountCreated": "Účet vytvořen",
-    "noAccountNeeded": "Abyste se mohli začít učit na naší vzdělávací platformě, nepotřebujete účet!"
+    "noAccountNeeded": "Abyste se mohli začít učit na naší vzdělávací platformě, nepotřebujete účet!",
+    "passwordResetSent": "",
+    "confirmation": "",
+    "oldPassword": "",
+    "passwordChanged": "",
+    "passwordSuccessfullyChanged": "",
+    "backToLogin": "",
+    "backToHome": "",
+    "tryAgain": "",
+    "invalidToken": "",
+    "checkingToken": "",
+    "invalidTokenExplain": {
+      "expired": "",
+      "consumed": "",
+      "invalid": "",
+      "notFound": ""
+    },
+    "passwordResetError": "",
+    "displayName": "",
+    "newPassword": "",
+    "passwordMinLength": "",
+    "emailTip": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "educationalContent": {
@@ -59,7 +86,10 @@
       "title": "Vizuální obsah"
     },
     "contribute": "Tento balíček nástrojů je otevřený k přispívání. Používá Figmu, takže kdokoli může přidávat, upravovat a překládat. Pokud chcete na tomto projektu spolupracovat, přidat kategorii nebo diskutovat, neváhejte se připojit k našemu discordu.",
-    "pageDescription": "Univerzita Sovereign podporuje pedagogy a místní komunity po celém světě, aby pomohla rozšířit přijetí bitcoinu. Za tímto účelem shromažďujeme a zpřístupňujeme rozsáhlou databázi vzdělávacího obsahu (vytvořeného námi i jinými subjekty) a také vizuálních dat."
+    "pageDescription": "Univerzita Sovereign podporuje pedagogy a místní komunity po celém světě, aby pomohla rozšířit přijetí bitcoinu. Za tímto účelem shromažďujeme a zpřístupňujeme rozsáhlou databázi vzdělávacího obsahu (vytvořeného námi i jinými subjekty) a také vizuálních dat.",
+    "contributeTitle": "",
+    "contributeButton": "",
+    "contributeDescription": ""
   },
   "book": {
     "abstract": "Abstrakt",
@@ -74,11 +104,16 @@
     "offeredBy": "Nabídnuto laskavým přispěvatelem",
     "pageSubtitle": "Tento portal je open-source a otevřen příspěvkům.",
     "pageTitle": "Bitcoinová knihovna",
-    "topicsAddressed": "Probíraná témata: "
+    "topicsAddressed": "Probíraná témata:"
   },
   "builders": {
     "pageSubtitle": "Tento portál je open source a je otevřen pro přispívání.",
-    "pageTitle": "Portál pro stavitele"
+    "pageTitle": "Portál pro stavitele",
+    "noRelatedEvents": "",
+    "relatedEvents": "",
+    "networkStrength": "",
+    "otherCommunities": "",
+    "languages": ""
   },
   "conferences": {
     "addConferences": "Neváhejte přidat chybějící konference prostřednictvím tohoto <0>Github</0> repozitáře.",
@@ -146,7 +181,7 @@
       "date": "Datum: {{startDate}} do {{endDate}}",
       "dates_to": "{{startDate}} do {{endDate}}",
       "description": "Popis",
-      "goal": "CÍL: ",
+      "goal": "CÍL:",
       "level": "Úroveň: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} kapitol",
@@ -168,7 +203,11 @@
       "amount": "Počet",
       "invoiceId": "ID transakce",
       "duration": "Trvání: {{hours}} hodin",
-      "teachers": "Vyučující: {{teachers}}"
+      "teachers": "Vyučující: {{teachers}}",
+      "paidCourse": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": ""
     },
     "explorer": {
       "footerp2": "Pokud chcete nějaký kurz vylepšit nebo vytvořit vlastní, můžete tak jednoduše učinit prostřednictvím GitHubu. Chcete-li podpořit daného vyučujícího, můžete buď zhodnotit jeho kurz, podpořit ho přispěvkem, nebo se stát členem univerzity a podpořit tak platformu.",
@@ -184,7 +223,12 @@
       "s3t1": "Sestavte si svou vlastní cestu dolů králičí norou",
       "footerTitle": "Naši vyučující jsou tu pro vás!",
       "footerp1": "Na Univerzitě Sovereign mají naši profesoři naprostou svobodu v rozhodování o obsahu a nástrojích, které chtějí, abyste prozkoumali, pokud se řídí etickým kodexem. Jsou to vášniví bitcoineři z různých prostředí.",
-      "pageDescription": "Cílem Plan B Academy je zjednodušit vzdělávání v oblasti bitcoinu po celém světě. Akademie, kterou tvoří odborníci z různých oborů, nabízí množství kurzů zaměřených na demystifikaci všech aspektů bitcoinu. Věříme, že vám akademie pomůže lépe porozumět rozsáhlému tématu, kterým je Bitcoin, a to od začátečníků až po experty, ať už vlastním tempem, nebo pod vedením vyučujícího každý týden. Velká část našich kurzů je zcela zdarma, takže přístup ke vzdělání může mít kdokoli a kdekoli."
+      "pageDescription": "Cílem Plan B Academy je zjednodušit vzdělávání v oblasti bitcoinu po celém světě. Akademie, kterou tvoří odborníci z různých oborů, nabízí množství kurzů zaměřených na demystifikaci všech aspektů bitcoinu. Věříme, že vám akademie pomůže lépe porozumět rozsáhlému tématu, kterým je Bitcoin, a to od začátečníků až po experty, ať už vlastním tempem, nebo pod vedením vyučujícího každý týden. Velká část našich kurzů je zcela zdarma, takže přístup ke vzdělání může mít kdokoli a kdekoli.",
+      "seeCourse": "",
+      "findCourses": "",
+      "journey": "",
+      "buildPath": "",
+      "exploreCourses": ""
     },
     "part": {
       "count": "Část {{count}}"
@@ -209,7 +253,11 @@
       "time": "Čas",
       "callout": "Právě se chystáte zakoupit tento kurz.",
       "description": "Tento nákup vám umožní přístup k online kurzům na platformě i k prezenčním lekcím, pokud si rezervujete místo. Každá lekce se koná ve stanovených termínech a na určených místech osobně a poté je nahrána a streamována online na platformě.",
-      "book_description": "Zkontrolujte si prosím podrobnosti o místě konání.\nPo zpracování rezervace vám zašleme potvrzovací vstupenku a QR kód, který předložíte na místě konání akce."
+      "book_description": "Zkontrolujte si prosím podrobnosti o místě konání.\nPo zpracování rezervace vám zašleme potvrzovací vstupenku a QR kód, který předložíte na místě konání akce.",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "od {{professor}}",
@@ -234,6 +282,100 @@
     },
     "footer": {
       "": ""
+    },
+    "review": {
+      "recommend": "",
+      "faithful": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "ratingsAndReviews": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "veryBad": "",
+      "writeThoughts": "",
+      "skip": "",
+      "tooHard": "",
+      "currentlyLoggedOut": "",
+      "commentTeacher": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "quality": "",
+      "tooEasy": "",
+      "yesVeryMuch": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "loading": ""
+    },
+    "exam": {
+      "availableDashboard": "",
+      "examAndDiploma": "",
+      "instructions": "",
+      "retakeExam": "",
+      "answersReview": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "timeStampHowDescription": "",
+      "yesSubmit": "",
+      "testResults": "",
+      "testKnowledge": "",
+      "tryAgain": "",
+      "startExam": "",
+      "timeLeft": "",
+      "wishTryAgain": "",
+      "certificateAvailable": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeInstructions": "",
+      "skipExamDescription": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timerStart": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": ""
     }
   },
   "dashboard": {
@@ -263,9 +405,133 @@
       "completed": "Dokončené kurzy",
       "details": "Detaily",
       "inprogress": "Probíhající kurzy",
-      "resumeLesson": "Pokračovat lekci"
+      "resumeLesson": "Pokračovat lekci",
+      "inprogressCoursesDescription": "",
+      "completedCoursesTitle": "",
+      "completedCoursesDescription": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "seeProgress": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "inprogressCoursesTitle": "",
+      "startCourse": "",
+      "whereYouAre": ""
     },
-    "courses": "Kurzy"
+    "courses": "Kurzy",
+    "profile": {
+      "emailChangeConfirmation": "",
+      "edit": "",
+      "cancel": "",
+      "save": "",
+      "crop": "",
+      "email": "",
+      "password": "",
+      "personalInformation": "",
+      "username": "",
+      "change": "",
+      "preview": "",
+      "displayName": "",
+      "profile": "",
+      "profileInformation": "",
+      "profilePicture": "",
+      "security": "",
+      "emailChangeRateLimitError": "",
+      "saving": ""
+    },
+    "bCertificate": {
+      "noResults": "",
+      "grade": "",
+      "certificate": "",
+      "bookExam": ""
+    },
+    "course": {
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": "",
+      "checkDetailsCompleted": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "downloadTicket": "",
+      "seatBooked": "",
+      "retakeExam": "",
+      "takePlaceAt": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "globalCertifications": "",
+      "completionDiplomas": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "profile": {
+        "notifications": "",
+        "publicDescription": "",
+        "teacherProfile": "",
+        "account": "",
+        "noTags": "",
+        "publicProfile": "",
+        "writeShortBio": "",
+        "tutorialModification": "",
+        "description": "",
+        "descriptionTags": "",
+        "lightningAddress": "",
+        "teacher": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "enterTipsInformations": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "publicProfileDescription": ""
+      },
+      "reviews": {
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "noReviewsYet": "",
+        "review": "",
+        "reviews": "",
+        "checkComments": "",
+        "checkReviews": "",
+        "privateComment": "",
+        "publicComment": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      },
+      "courses": {
+        "courseLongDescription": "",
+        "courseId": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviews": "",
+        "analytics": "",
+        "courseDetails": "",
+        "reviewInfos": ""
+      },
+      "menu": ""
+    },
+    "calendar": {
+      "calendar": "",
+      "personalCalendar": ""
+    },
+    "administration": ""
   },
   "events": {
     "card": {
@@ -357,7 +623,8 @@
       "title": "Naším cílem je zjednodušit výuku o bitcoinu.",
       "subtitle1": "Pomůžeme vám osvojit si technologii pomocí mnoha podrobných výukových programů!",
       "content1": "Bitcoin se neustále vyvíjí, přicházejí a odcházejí noví aktéři, řešení, protokoly a technologické objevy. Často je obtížné udržovat jedinou přesnou databázi dobrých a aktualizovaných návodů. Zde v PlanB jsme toho dosáhli. Od začátečníků až po pokročilé uživatele se můžete orientovat ve stovkách výukových materiálů a prozkoumat tak naše odvětví na základě svých potřeb.",
-      "link": "Prohlédnout si všechny návody"
+      "link": "Prohlédnout si všechny návody",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Kdo jsme?",
@@ -379,12 +646,17 @@
       "subtitle2": "Potřebujeme tě!",
       "content2": "I vy můžete začít budovat vlastní místní síť ve své zemi!",
       "link": "Pomozte nám s překladem akademie",
-      "content1": "V PlanB věříme, že Bitcoin je mezinárodní revoluce, která se týká všech. Chceme posílit postavení miliard lidí, a proto navrhujeme tuto platformu tak, aby byla vícejazyčná a přístupná všem. Platforma v současné době podporuje 7 jazyků a každý měsíc přibývají další. Abychom toho dosáhli, využíváme kombinaci umělé inteligence a nadšení bitcoinerů z celého světa."
+      "content1": "V PlanB věříme, že Bitcoin je mezinárodní revoluce, která se týká všech. Chceme posílit postavení miliard lidí, a proto navrhujeme tuto platformu tak, aby byla vícejazyčná a přístupná všem. Platforma v současné době podporuje 7 jazyků a každý měsíc přibývají další. Abychom toho dosáhli, využíváme kombinaci umělé inteligence a nadšení bitcoinerů z celého světa.",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Pojďme společně zlepšit vzdělávání o bitcoinu! ",
+      "title": "Pojďme společně zlepšit vzdělávání o bitcoinu!",
       "subtitle": "Síť PlanB je 100% open-source díky našim štědrým patronům",
       "content": "PlanB Network je hrdá na spojení s mnoha bitcoinovými firmami po celém světě, za účelem poskytnout nejlepší dostupné vzdělávací materiály!"
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "imagesAlt": {
@@ -434,7 +706,12 @@
     "btc101Description": "Získejte lepší představu o bitcoinu díky této lekci",
     "buildersDescription": "Seznamte se společnostmi a projekty, které pracují na zlepšování bitcoinu a zvyšování jeho přijetí",
     "nodeDescription": "Naučte se, jak být samostatný s vlastním uzlem Bitcoin",
-    "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery"
+    "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery",
+    "glossaryDescription": "",
+    "login": "",
+    "bCertificateDescription": "",
+    "loginRegister": "",
+    "publicDescription": ""
   },
   "nodeNetwork": {
     "answer3": "Chcete-li se stát součástí sítě, musíme se shodnout na některých základních hodnotách, kterými jsou:\n - být výhradně bitcoinový \n - vážit si soukromí \n - starat se o práci s otevřeným zdrojovým kódem.",
@@ -450,7 +727,10 @@
     "question5": "Jaký je tajný plán?",
     "answer1": "Uzel (node) je jednoduše bitcoinová komunita, která se chce posunout dále a chce pomoci urychlit místní adopci bitcoinu! Pro začátek není žádná minimální velikost.",
     "answer2": "V Plan B se snažíme zlepšit vzdělávací bitcoinový ekosystém tím, že poskytujeme správné nástroje pro budování a vzdělávání v oblasti bitcoinu. Tím, že se stanete uzlem, získá vaše komunita přístup k široké škále zdrojů, služeb, speciálních vzdělávacích školení a dalších. Udělejte ze své komunity uznávanou referenci ve světě bitcoinu.",
-    "description1": "Náš finanční systém se hroutí, naše potraviny jsou otrávené, naše svoboda je odňata. Nemůžeme čekat na zázrak, musíme vytvořit bezpečné místo pro život. Musíme si vytvořit vlastní PlanB!"
+    "description1": "Náš finanční systém se hroutí, naše potraviny jsou otrávené, naše svoboda je odňata. Nemůžeme čekat na zázrak, musíme vytvořit bezpečné místo pro život. Musíme si vytvořit vlastní PlanB!",
+    "descriptionextend": "",
+    "applyhelp": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Zde",
@@ -478,7 +758,14 @@
     "tips": {
       "thanks": "Děkujeme za podporu práce {{name}}!",
       "thanksNoName": "Děkuji za podporu!",
-      "noTipsYet": "Tento profesor v současnou chvíli nepřijímá příspěvky."
+      "noTipsYet": "Tento profesor v současnou chvíli nepřijímá příspěvky.",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "tutorialCreators": "",
+      "lecturers": "",
+      "teachers": "",
+      "all": ""
     }
   },
   "resources": {
@@ -510,18 +797,33 @@
     },
     "publicGrade": "Veřejné hodnocení: {{grade}}/5",
     "headerText": "Vítejte v nekonečné králičí noře Bitcoinu! V této sekci vám nabízíme podrobné průvodce většinou nejběžnějších bitcoinových projektů. Tuto stránku spravuje uživatel „benevolel“, vášnivý bitcoiner, který tento open-source projekt podporuje. Pokud najdete nějaké chyby, neváhejte nás kontaktovat. Chcete-li se podívat na finanční zprávu dříve zmíněného projektu, podívejte se na naši zprávu o transparentnosti (Transparancie repport). Děkujeme vám za důvěru a podporu naší univerzity. Vítejte mezi námi.",
-    "pageDescription": "Snažit se porozumět Bitcoinu je jako prozkoumávat bludiště, které se neustále zvětšuje. Abychom vám na této cestě pomohli, připravili jsme pro vás širokou nabídku materiálů včetně knih, podcastů, videí a záznamů z konferencí. Tento portál shromažďuje všechny informace v jednom repozitáři Github, aby vám pomohl lépe pochopit ekosystém Bitcoinu."
+    "pageDescription": "Snažit se porozumět Bitcoinu je jako prozkoumávat bludiště, které se neustále zvětšuje. Abychom vám na této cestě pomohli, připravili jsme pro vás širokou nabídku materiálů včetně knih, podcastů, videí a záznamů z konferencí. Tento portál shromažďuje všechny informace v jednom repozitáři Github, aby vám pomohl lépe pochopit ekosystém Bitcoinu.",
+    "pageSubtitleBooks": "",
+    "newsletter": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "pageSubtitlePodcast": "",
+    "searchFilterName": ""
   },
   "settings": {
-    "changePassword": "Změnit heslo"
+    "changePassword": "Změnit heslo",
+    "changeDisplayName": "",
+    "changeProfilePicture": "",
+    "changeEmail": ""
   },
   "tutorials": {
     "details": {
       "checkAuthor": "Podívejte se na další autorovy příspěvky a podpořte jeho práci.",
       "enjoyed": "Líbí se vám tento návod?",
       "madeBy": "Tento návod byl vytvořen",
-      "source": "Původní zdroj: ",
-      "tipTooltip": "Líbí se vám to? Přispějte."
+      "source": "Původní zdroj:",
+      "tipTooltip": "Líbí se vám to? Přispějte.",
+      "writtenBy": "",
+      "didHelp": "",
+      "author": ""
     },
     "exchange": {
       "description": "Směnárny jsou jednou ze vstupních a výstupních bran mezi vaší tradiční měnou (eura, dolary) a světem bitcoinu. Burzy mohou být regulované a vyhovující pravidlům KYC (Know Your Customer) nebo peer-to-peer a anonymní. Každá burza bude nabízet jiné funkce, strukturu poplatků, likviditu a zákaznickou podporu. Každý bitcoiner bude používat jinou na základě svých potřeb a přesvědčení.",
@@ -536,7 +838,8 @@
     },
     "explorer": {
       "didYouKnow": "Věděli jste?",
-      "description": "Všechny tyto výukové programy byly napsány nadšenými a oddanými bitcoinery, kteří chtějí šířit bitcoinové vzdělání po celém světě. Nezapomeňte je lajkovat, recenzovat a přispět jim saty!"
+      "description": "Všechny tyto výukové programy byly napsány nadšenými a oddanými bitcoinery, kteří chtějí šířit bitcoinové vzdělání po celém světě. Nezapomeňte je lajkovat, recenzovat a přispět jim saty!",
+      "exploreAllTutorials": ""
     },
     "merchant": {
       "shortDescription": "Řešení pro podniky akceptující Bitcoin",
@@ -609,13 +912,17 @@
       "mobile": {
         "description": "Mobilní peněženky se obvykle používají ke každodenním výdajům. Integrují síť Lightning Network pro okamžité transakce s nízkými poplatky. Obvykle jsou připojeny k internetu (často se jim říká „hot wallets“), a proto jsou méně bezpečné než hardwarové peněženky. Měly by se používat pouze k ukládání malých částek bitcoinů, považujte je za každodenní peněženku v kapse."
       }
-    }
+    },
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "underConstruction": {
     "github": "GitHub",
     "p1": "Králík spadl do díry. Kvůli tomuto nečekanému dobrodružství je tato stránka v současné době ve výstavbě. Omlouváme se za případné nepříjemnosti. Náš tým je v plném nasazení, aby tuto stránku dokončil. Pokud máte zájem přiložit ruku k dílu, neváhejte se podívat na naše",
     "p2": "a zvažte členství v naší komunitě!",
-    "pageTitle": "Ups."
+    "pageTitle": "Ups.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about-us": "O nás",
@@ -659,7 +966,11 @@
       "advanced": "Pokročilý",
       "beginner": "Začátečník",
       "intermediate": "Mírně pokročilý",
-      "developer": "vývojář"
+      "developer": "vývojář",
+      "beginnerFriendly": "",
+      "wizard": "",
+      "level": "",
+      "levels": ""
     },
     "library": "Knihovna",
     "lightning": "Lightning",
@@ -709,6 +1020,133 @@
     "course": "Kurz",
     "exchanges": "Směnárny",
     "movieDocumentary": "Dokumentární film",
-    "register": "Registrovat"
+    "register": "Registrovat",
+    "booked": "",
+    "progress": "",
+    "publicationDate": "",
+    "status": "",
+    "total": "",
+    "topics": "",
+    "unified": "",
+    "free": "",
+    "glossary": "",
+    "goal": "",
+    "all": "",
+    "chapter": "",
+    "onChain": "",
+    "onChainAddress": "",
+    "overview": "",
+    "paid": "",
+    "start": "",
+    "students": "",
+    "teacher": "",
+    "users": "",
+    "view": "",
+    "bookings": "",
+    "credentials": "",
+    "admins": "",
+    "amount": "",
+    "writtenByPodcasts": "",
+    "lectures": "",
+    "bCertificate": "",
+    "builder": "",
+    "communities": "",
+    "courseId": "",
+    "description": "",
+    "diploma": "",
+    "duration": "",
+    "edit": "",
+    "filter": "",
+    "failed": "",
+    "grade": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "lightningInvoice": "",
+    "location": "",
+    "part": "",
+    "passed": "",
+    "price": "",
+    "professor": "",
+    "public": "",
+    "ratings": "",
+    "required": ""
+  },
+  "bCertificate": {
+    "curious": "",
+    "readChart": "",
+    "bCertificateDescription": "",
+    "joeNakamotoVideo": "",
+    "organizeDescription": "",
+    "organizeTitle": "",
+    "pageSubtitle": "",
+    "pageTitle": "",
+    "bookExam": "",
+    "checkout": "",
+    "knowledgeableBitcoin": "",
+    "noBookExam": "",
+    "organizeExam": "",
+    "organizeSubtitle": "",
+    "tweetText": "",
+    "challengeYourself": ""
+  },
+  "glossary": {
+    "creditsLoic": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "filterBar": "",
+    "relatedWords": "",
+    "placeHolder": "",
+    "needHelp": "",
+    "pageSubtitle": "",
+    "definition": "",
+    "loadMoreWords": "",
+    "pageTitle": "",
+    "randomSearch": "",
+    "anotherWord": "",
+    "term": ""
+  },
+  "proofreading": {
+    "thanks": "",
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": ""
+  },
+  "publicCommunication": {
+    "description": "",
+    "legal": "",
+    "blogPageStrings": {
+      "pastArticleSubtitleText": "",
+      "errorMessageNotFound": "",
+      "featuredArticleTitleText": "",
+      "noArticlesText": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    },
+    "title": "",
+    "blogCategories": {
+      "all": "",
+      "content": "",
+      "course": "",
+      "feature": "",
+      "patch": "",
+      "grants": "",
+      "network": ""
+    },
+    "blogPost": "",
+    "legalSections": {
+      "contact": "",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "goBackButtons": {
+      "simpleGoBack": ""
+    }
   }
 }

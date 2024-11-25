@@ -43,7 +43,7 @@
     "pageTitle": "Những bản xem lại của các hội nghị",
     "planBConferences": "Hội nghị Plan B",
     "topics": "Các chủ đề",
-    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào.   Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
+    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào. Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
     "conferenceName": "Tên của hội nghị"
   },
   "courses": {
@@ -88,7 +88,11 @@
       "teachers": "Các giáo viên",
       "time": "Thời gian",
       "downloadCurriculum": "Tải về chương trình giảng dạy",
-      "description": "Giao dịch mua này sẽ cấp cho bạn quyền truy cập vào các khoá học trực tuyến trên nền tảng cũng như các lớp học trực tiếp, miễn là bạn đặt chỗ trước. Mỗi buổi học trực tiếp sẽ diễn ra vào ngày giờ và địa điểm củ thể được chỉ định trước khi được ghi lại và phát trực tuyến trên nền tảng."
+      "description": "Giao dịch mua này sẽ cấp cho bạn quyền truy cập vào các khoá học trực tuyến trên nền tảng cũng như các lớp học trực tiếp, miễn là bạn đặt chỗ trước. Mỗi buổi học trực tiếp sẽ diễn ra vào ngày giờ và địa điểm củ thể được chỉ định trước khi được ghi lại và phát trực tuyến trên nền tảng.",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "unreleased": {
       "theoreticalLightning": "Khoá học lý thuyết nâng cao về Lightning Network",
@@ -160,7 +164,11 @@
       "dates_to": "{{startDate}} tới {{endDate}}",
       "level": "Cấp độ: $t(words.level.{{level}})",
       "price": "Giá: {{price}} satoshi",
-      "teacherWord": "Một lời từ giáo viên"
+      "teacherWord": "Một lời từ giáo viên",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "preview": {
       "by": "bởi {{professor}}",
@@ -196,7 +204,7 @@
       "feedbackSessionTitle": "Phần phản hồi",
       "generalGrade": "Điểm chung",
       "length": "Độ dài",
-      "loading": "Đang tải...",
+      "loading": "Đang tải…",
       "neutral": "trung lập",
       "no": "không",
       "notReally": "không, không chắc",
@@ -210,7 +218,71 @@
       "tooShort": "quá ngắn",
       "veryBad": "rất tệ",
       "veryGood": "rất tốt",
-      "yesOfCourse": "vâng, tất nhiên"
+      "yesOfCourse": "vâng, tất nhiên",
+      "displayOutOf": "",
+      "edit": "",
+      "fieldRequired": "",
+      "loadMoreComments": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "whatStudentsSay": ""
+    },
+    "exam": {
+      "examAndDiploma": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "congratulationsPassed": "",
+      "goodLuck": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": ""
     }
   },
   "events": {
@@ -288,7 +360,9 @@
       "usernameRegex": "Tên người dùng chỉ được bao gồm chữ cái, chữ số, _, . và -",
       "displayNameRegex": "Tên hiển thị chỉ có thể bao gồm chữ cái, chữ số, _, ., - và khoảng trống.",
       "displayNameRequired": "Tên hiển thị là bắt buộc.",
-      "displayNameTooShort": "Tên hiển thị phải có ít nhất hai ký tự."
+      "displayNameTooShort": "Tên hiển thị phải có ít nhất hai ký tự.",
+      "emailInvalid": "",
+      "invalidCredentials": ""
     },
     "forgottenPassword": "Bạn quên mật khẩu của mình?",
     "headerAccountCreated": "Tài khoản đã được tạo",
@@ -310,7 +384,7 @@
     "backToHome": "Quay lại trang chủ",
     "invalidToken": "Token không hợp lệ",
     "checkingToken": "Kiểm tra token",
-    "checkingTokenExplain": "Chúng tôi đang kiểm tra xem token có hợp lệ không...",
+    "checkingTokenExplain": "Chúng tôi đang kiểm tra xem token có hợp lệ không…",
     "invalidTokenExplain": {
       "expired": "Token đã hết hạn",
       "consumed": "Token đã được sử dụng",
@@ -318,7 +392,11 @@
       "notFound": "Token không tìm thấy"
     },
     "passwordResetError": "Đặt lại mật khẩu bị lỗi",
-    "tryAgain": "Thử lại"
+    "tryAgain": "Thử lại",
+    "emailTip": "",
+    "oldPassword": "",
+    "confirmation": "",
+    "displayName": ""
   },
   "bet": {
     "educationalContent": {
@@ -376,7 +454,13 @@
       "completedCoursesDescription": "Bạn có thể kiểm tra các khoá học đã hoàn thành tại đây.",
       "inprogressCoursesTitle": "Các khoá đang học",
       "seeProgress": "để thấy tiến độ của bạn ở đây.",
-      "startCourse": "Bắt đầu hoặc hoàn thành một khoá học"
+      "startCourse": "Bắt đầu hoặc hoàn thành một khoá học",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "booking": {
       "invoiceTitle": "Tiêu đề",
@@ -421,7 +505,7 @@
       "edit": "Chỉnh sửa",
       "cancel": "Huỷ",
       "save": "Lưu lại",
-      "saving": "Đang lưu...",
+      "saving": "Đang lưu…",
       "crop": "Cắt",
       "preview": "Xem trước",
       "displayName": "Tên hiển thị",
@@ -431,7 +515,8 @@
       "profileInformation": "Thông tin hồ sơ",
       "profilePicture": "Ảnh hồ sơ",
       "security": "Bảo mật",
-      "username": "Tên người dùng"
+      "username": "Tên người dùng",
+      "emailChangeRateLimitError": ""
     },
     "teacher": {
       "courses": {
@@ -475,11 +560,48 @@
         "teacher": "Giáo viên",
         "teacherProfile": "Hồ sơ giáo viên",
         "tutorialModification": "Nếu bạn muốn hỗ trợ để chỉnh sửa điều gì đó, vui lòng kiểm tra <0>tutorial</0> này."
+      },
+      "reviews": {
+        "writtenFeedbacks": "",
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": ""
       }
     },
     "calendar": {
       "calendar": "Lịch",
       "personalCalendar": "Lịch cá nhân"
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
     }
   },
   "home": {
@@ -510,7 +632,8 @@
       "title": "Đơn giản hoá việc giáo dục Bitcoin là mục tiêu của chúng tôi.",
       "subtitle1": "Chúng tôi giúp bạn làm chủ công nghệ với rất nhiều hướng dẫn chi tiết!",
       "link": "Xem tất cả các hướng dẫn",
-      "content1": "Bitcoin không ngừng phát triển, với các tác nhân, giải pháp, giao thức và các đột phát công nghệ mới sẽ đến và đi. Rất khó đề duy trì một cơ sở dữ liệu các hướng dẫn chất lượng, được cập nhất chính xác và duy nhất. Tại PlanB, đây là những gì chúng tôi đã đạt được. Từ người mới bắt đầu cho tới người dùng nâng cao, bạn có thể tham khảo hàng trăm hướng dẫn để khám phá ngành công nghiệp này dựa trên nhu cầu của bản thân."
+      "content1": "Bitcoin không ngừng phát triển, với các tác nhân, giải pháp, giao thức và các đột phát công nghệ mới sẽ đến và đi. Rất khó đề duy trì một cơ sở dữ liệu các hướng dẫn chất lượng, được cập nhất chính xác và duy nhất. Tại PlanB, đây là những gì chúng tôi đã đạt được. Từ người mới bắt đầu cho tới người dùng nâng cao, bạn có thể tham khảo hàng trăm hướng dẫn để khám phá ngành công nghiệp này dựa trên nhu cầu của bản thân.",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Chúng tôi là ai?",
@@ -532,10 +655,11 @@
       "content2": "Bạn cũng có thể bắt đầu xây dựng và phát triển mạng lưới ở địa phương của bạn!",
       "link": "Giúp chúng tôi dịch các nội dung trên học viện",
       "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ 7 ngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới.",
-      "availableLanguages": "Các ngôn ngữ có sẵn"
+      "availableLanguages": "Các ngôn ngữ có sẵn",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn! ",
+      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn!",
       "subtitle": "PlanB Network hoàn toàn là mã nguồn mở nhờ vào những người bảo trợ đầy hào phóng của chúng tôi",
       "content": "PlanB Network rất tự hào khi hợp tác với nhiều công ty Bitcoin trên toàn thế giới để cung cấp các tài nguyên giáo dục tốt nhất!"
     },
@@ -612,7 +736,10 @@
     "answer2": "Tại PlanB, chúng tôi mong muốn cải thiện mảng giáo dục trong hệ sinh thái bitcoin bằng cách cung cấp những công cụ phù hợp để xây dựng và giáo dục về Bitcoin. Bằng việc trở thành một nút, cộng đồng của bạn sẽ được tiếp cận với một loạt các nguồn tài nguyên, dịch vụ và các khoá đào tạo về Bitcoin. Hãy biến cộng đồng của bạn trở thành một điểm tham khảo trong thế giới Bitcoin.",
     "answer4": "Một nút Bitcoin có thể có quy mô bất kỳ. Dựa trên một số yêu cầu, các cấp độ khác nhau sẽ là thuộc tính. Một nút với không gian dành cho tổ chức sự kiện, phòng gym, một vài vị trí văn phòng sẽ được xem là một nơi lý tưởng hơn.",
     "answer5": "Chúng tôi mong muốn cung cấp một thiên đường an toàn cho các bitcoiner xung quanh thế giới. Chúng tôi tin rằng bằng cách hỗ trợ cho trung tâm Bitcoin địa phương phát triển, chúng ta có thể tạo ra một mạng lưới của các điểm đến, nơi mà các bitcoiner được chào mừng tới để làm việc, sáng tạo và thảo luận một cách an toàn.",
-    "question2": "Tôi sẽ thu được gì?"
+    "question2": "Tôi sẽ thu được gì?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Tại đây",
@@ -683,7 +810,12 @@
     "glossary": {
       "title": "Thuật ngữ"
     },
-    "searchFilterName": "Tìm kiếm theo tên"
+    "searchFilterName": "Tìm kiếm theo tên",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Thay đổi mật khẩu",
@@ -696,7 +828,7 @@
       "checkAuthor": "Xem những đóng góp khác của tác giả và ủng hộ cho công việc của anh ấy.",
       "enjoyed": "Bạn thích hướng dẫn này?",
       "madeBy": "Hướng dẫn này được tạo bởi",
-      "source": "Nguồn chính thức: ",
+      "source": "Nguồn chính thức:",
       "tipTooltip": "Bạn thích nó? Típ.",
       "author": "Tác giả: ",
       "writtenBy": "Hướng dẫn này được viết bởi:",
@@ -797,7 +929,9 @@
     "github": "GitHub",
     "p2": "và cân nhắc tham gia cộng đồng của chúng tôi!",
     "pageTitle": "Ôi.",
-    "p1": "Một chú thỏ vừa chui vào hang. Bởi vì cuộc phiêu lưu bất ngờ này, trang này đang trong quá trình phát triển ở thời điểm hiện tại. Chúng tôi xin lỗi về sự bất tiện này. Đội ngũ của chúng tôi đang nỗ lực để hoàn thiện trang này. Nếu bạn muốn giúp một tay, đừng ngại xem qua"
+    "p1": "Một chú thỏ vừa chui vào hang. Bởi vì cuộc phiêu lưu bất ngờ này, trang này đang trong quá trình phát triển ở thời điểm hiện tại. Chúng tôi xin lỗi về sự bất tiện này. Đội ngũ của chúng tôi đang nỗ lực để hoàn thiện trang này. Nếu bạn muốn giúp một tay, đừng ngại xem qua",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "Về",
@@ -841,7 +975,8 @@
       "developer": "lập trình viên",
       "wizard": "Phù thuỷ",
       "level": "Trình độ",
-      "levels": "Các trình độ"
+      "levels": "Các trình độ",
+      "beginnerFriendly": ""
     },
     "library": "Thư viện",
     "lightning": "Lightning",
@@ -923,7 +1058,29 @@
     "amount": "Số lượng",
     "bCertificate": "Chứng chỉ ₿",
     "builder": "Builder",
-    "chapter": "Chương"
+    "chapter": "Chương",
+    "bookings": "",
+    "filter": "",
+    "failed": "",
+    "credentials": "",
+    "goal": "",
+    "grade": "",
+    "booked": "",
+    "diploma": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "location": "",
+    "overview": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "ratings": "",
+    "required": "",
+    "status": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": ""
   },
   "bCertificate": {
     "bCertificateDescription": "Chứng chỉ ₿ là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
@@ -940,7 +1097,8 @@
     "organizeExam": "Tổ chức một kỳ thi",
     "organizeSubtitle": "Giúp một tỷ người hiểu và tin Bitcoin (Orange Pill) không phải là chuyện dễ dàng",
     "pageSubtitle": "Mở rộng sự áp dụng rộng rãi thông qua giáo dục mã nguồn mở tập trung",
-    "readChart": "Đọc điều lệ"
+    "readChart": "Đọc điều lệ",
+    "tweetText": ""
   },
   "general": {
     "itemNotFoundOrTranslated": "{{item}} không được tìm thấy, hoặc chưa được dịch sang ngôn ngữ của bạn",

@@ -36,7 +36,9 @@
       "usernameTooShort": "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 5 ตัว",
       "displayNameRegex": "ชื่อที่แสดง มีได้เฉพาะตัวอักษร ตัวเลข เครื่องหมาย _ . - และช่องว่างเท่านั้น.",
       "displayNameRequired": "จำเป็นต้องมี ชื่อที่แสดง",
-      "displayNameTooShort": "ชื่อที่แสดงต้องมีตัวอักษรอย่างน้อย 2 ตัว"
+      "displayNameTooShort": "ชื่อที่แสดงต้องมีตัวอักษรอย่างน้อย 2 ตัว",
+      "invalidCredentials": "",
+      "emailInvalid": ""
     },
     "forgottenPassword": "ลืมรหัสผ่าน?",
     "headerAccountCreated": "สร้างบัญชีแล้ว",
@@ -63,9 +65,13 @@
     "passwordResetSent": "อีเมลสำหรับการตั้งรหัสผ่านใหม่ได้ถูกส่งไปยังกล่องจดหมายของคุณแล้ว (ถ้าหากที่อยู่อีเมลนี้ มีอยู่ในฐานข้อมูลของเรา)",
     "invalidToken": "token ไม่ถูกต้อง",
     "checkingToken": "ตรวจสอบ token",
-    "checkingTokenExplain": "เรากำลังตรวจสอบว่า token นี้ถูกต้องหรือไม่...",
+    "checkingTokenExplain": "เรากำลังตรวจสอบว่า token นี้ถูกต้องหรือไม่…",
     "passwordResetError": "เกิดข้อผิดพลาดในการตั้งรหัสผ่านใหม่",
-    "tryAgain": "กรุณาลองอีกครั้ง"
+    "tryAgain": "กรุณาลองอีกครั้ง",
+    "emailTip": "",
+    "confirmation": "",
+    "displayName": "",
+    "oldPassword": ""
   },
   "bet": {
     "contribute": "ตัวชุดเครื่องมือนี้เปิดรับการสนับสนุนจากทุกคน โดยตัวชุดเครื่องมือนั้นใช้ Figma ทำให้ทุกคนสามารถเพิ่ม แก้ไข และแปลได้ และหากคุณต้องการทำงานที่จะร่วมกัน หรือเพิ่มหมวดหมู่หรือต้องการถกประเด็นใดๆ สามารถเข้าร่วมคอร์ดของเราได้เลย ไม่ต้องลังเล",
@@ -177,7 +183,11 @@
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "เหล่าอาจารย์ของเราพร้อมที่จะช่วยเหลือคุณ!",
@@ -231,7 +241,11 @@
       "description": "การซื้อนี้จะทำให้คุณสามารถเข้าถึงคอร์สออนไลน์บนแพลตฟอร์มนี้ รวมถึงการเรียนในห้องเรียนจริง หากคุณจองที่นั่งของคุณไว้ โดยแต่ละคลาสจะจัดขึ้น ณ สถาณที่จริงดในวันที่และสถานที่ที่ได้ระบุไว้ โดยจะถูกบันทึกและสตรีมออนไลน์บนแพลตฟอร์มนี้",
       "book_description": "โปรดตรวจสอบรายละเอียดสถานที่ที่ให้มา\nเมื่อการจองของคุณได้รับการดำเนินการแล้ว เราจะส่งบัตรยืนยันและรหัส QR ให้คุณเพื่อให้คุณนำไปแสดงในงาน",
       "qr_unified": "QR โค้ดนี้เป็นแบบครบวงจร จึงสามารถรองรับการชำระเงินทั้งทาง Lightning และการชำระเงินแบบ On-chain ได้",
-      "time": "เวลา"
+      "time": "เวลา",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "โดย {{professor}}",
@@ -270,7 +284,7 @@
       "feedbackSessionTitle": "เซสชันการประเมินผล",
       "generalGrade": "เกรดโดยทั่วไป",
       "length": "ความยาว",
-      "loading": "กำลังโหลด...",
+      "loading": "กำลังโหลด…",
       "neutral": "กลางๆ",
       "no": "ไม่",
       "notReally": "ไม่เชิงแบบนั้นนะ",
@@ -283,7 +297,71 @@
       "tooLong": "ยาวเกินไป",
       "tooShort": "สั้นเกินไป",
       "veryBad": "แย่มาก",
-      "yesOfCourse": "ใช่ แน่นอน"
+      "yesOfCourse": "ใช่ แน่นอน",
+      "displayOutOf": "",
+      "edit": "",
+      "fieldRequired": "",
+      "loadMoreComments": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "whatStudentsSay": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": "",
+      "finalExam": "",
+      "certificateAvailable": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "timeStampBenefits": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": ""
     }
   },
   "dashboard": {
@@ -297,7 +375,13 @@
       "completedCoursesTitle": "หลักสูตรที่เรียนจบแล้ว",
       "inprogressCoursesTitle": "หลักสูตรที่กำลังเรียน",
       "seeProgress": "ดูความคืบหน้าของคุณได้ที่นี่",
-      "startCourse": "เริ่มเรียนหลักสูตรหรือเรียนต่อให้จบ"
+      "startCourse": "เริ่มเรียนหลักสูตรหรือเรียนต่อให้จบ",
+      "whereYouAre": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": ""
     },
     "account": "บัญชี",
     "courses": "หลักสูตร",
@@ -396,7 +480,7 @@
       }
     },
     "profile": {
-      "saving": "กำลังบันทึก...",
+      "saving": "กำลังบันทึก…",
       "profile": "โปรไฟล์",
       "username": "ชื่อผู้ใช้",
       "change": "เปลี่ยนแปลง",
@@ -412,11 +496,36 @@
       "personalInformation": "ข้อมูลส่วนตัวของฉัน",
       "profileInformation": "ข้อมูลโปรไฟล์",
       "profilePicture": "รูปโปรไฟล์",
-      "security": "ด้านความปลอดภัย"
+      "security": "ด้านความปลอดภัย",
+      "emailChangeRateLimitError": ""
     },
     "calendar": {
       "calendar": "ปฏิทิน",
       "personalCalendar": "ปฏิทินส่วนตัว"
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
     }
   },
   "events": {
@@ -515,7 +624,8 @@
       "title": "ทำการศึกษาบิตคอยน์ให้กลายเป็นเรื่องง่ายๆ",
       "subtitle1": "เราจะช่วยให้คุณเชี่ยวชาญในตัวเทคโนโลยี ผ่านบทช่วยสอนแบบลงลึกหลากหลายอัน!",
       "content1": "Bitcoin มีวิวัฒนาการอย่างต่อเนื่อง จากการเข้ามาของผู้เล่นใหม่ ๆ โซลูชันใหม่ๆ โปรโตคอลใหม่ๆ และการค้นพบทางเทคโนโลยีครั้งใหญ่ แบบใหม่ๆ ดังนั้น มันอาจจะถือเป็นสิ่งที่ท้าทายที่จะทำให้ฐานข้อมูลของตัวบทช่วยสอนนั้นยังคงถูกต้องและทันสมัยได้ แต่ที่ Plan ₿ นี้ เราสามารถทำสิ่งนี้ได้ โดยไม่ว่าคุณจะเป็นผู้เพิ่มเริ่มต้นหรือผู้ที่เชี่ยวชาญแล้วก็ตาม คุณก็สามารถค้นดู บทช่วยสอนนับร้อยๆบทเพื่อสำรวจตัวอุตสาหกรรมของเราให้ตรงกับความต้องการของคุณ",
-      "link": "ดูบทช่วยสอนทั้งหมด"
+      "link": "ดูบทช่วยสอนทั้งหมด",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "เราเป็นใคร?",
@@ -537,7 +647,8 @@
       "content1": "ที่ PlanB, เรามองว่า Bitcoin เป็นการปฏิวัติระดับโลกที่ทุกคนควรรับรู้ น เรากำลังสร้างแพลตฟอร์มนี้ให้สามารถรองรับหลายภาษาและทุกคนสามารถเข้าถึงได้ เพื่อเพิ่มอำนาจให้กับคนจำนวนหลายพันล้านคน ณ ขณะนี้ แพลตฟอร์มนี้รองรับได้ 7 ภาษา และยังมีภาษาอื่น ๆ ที่กำลังถูกเพิ่มเข้ามาทุกเดือน และเพื่อที่จะสามารถทำสิ่งนี้ได้ เราใช้การผสมผสานระหว่าง AI และ Bitcoiners ผุ้เต็มเปี่ยมไปด้วยความหลงไหลทั่วทั้งโลก",
       "content2": "คุณเองก็สามารถเริ่มต้นการสร้างเครือข่ายท้องถิ่นของคุณ ในประเทศของคุณ ด้วยตัวคุณเองได้!",
       "link": "มาช่วยเราทำการแปลเนื้อหาของสถาบันกัน",
-      "availableLanguages": "ภาษาที่มีให้บริการ"
+      "availableLanguages": "ภาษาที่มีให้บริการ",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "มาทำให้การศึกษาเกี่ยวกับด้านบิตคอยน์ดีขึ้นด้วยกัน!",
@@ -617,7 +728,10 @@
     "question2": "ฉันจะได้รับอะไรบ้าง ?",
     "question3": "ข้อกำหนดมีอะไรบ้าง?",
     "question4": "โหนดมีขนาดเท่าไหร่?",
-    "question5": "แผนการลับคืออะไร?"
+    "question5": "แผนการลับคืออะไร?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "ที่ตรงนี้",
@@ -682,7 +796,12 @@
     "glossary": {
       "title": "คลังคำศัพท์"
     },
-    "searchFilterName": "ค้นหาด้วยชื่อ"
+    "searchFilterName": "ค้นหาด้วยชื่อ",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "แก้ไขรหัสผ่าน",
@@ -695,7 +814,7 @@
       "checkAuthor": "สำรวจผลงานอื่น ๆ ที่ผู้เขียนได้สร้างขึ้นและแสดงการสนับสนุนงานของเขา",
       "enjoyed": "คุณสนุกกับบทช่วยสอนนี้หรือไม่?",
       "madeBy": "บทช่วยสอนนี้ถูกสร้างขึ้นโดย",
-      "source": "แหล่งข้อมูลดั้งเดิม: ",
+      "source": "แหล่งข้อมูลดั้งเดิม:",
       "tipTooltip": "ชอบใช่ไหม? ให้ทิปเลย.",
       "author": "ผู้เขียน ",
       "didHelp": "สิ่งนี้ช่วยได้หรือไม่?",
@@ -796,7 +915,9 @@
     "github": "GitHub",
     "p1": "กระต่ายได้ล้มกลิ้งลงมาหลุม และจากการผจญภัยที่เราก็ไม่ได้คาดฝันนี้ ทำให้หน้านี้ก็เลยกำลังอยู่ในระหว่างการก่อสร้างเล็กน้อย ขออภัยในความไม่สะดวก ทีมงานของเรากำลังทำงานเต็มที่เพื่อสร้างหน้านี้ ถ้าคุณสนใจที่จะมาช่วยเรา โปรดอย่าลังเล และสามารถที่จะเข้าไปดูได้ที่",
     "p2": "และลองพิจารณาที่จะเข้าร่วมชุมชนของเรา!",
-    "pageTitle": "อุ๊ย"
+    "pageTitle": "อุ๊ย",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "เกี่ยวกับ",
@@ -842,7 +963,8 @@
       "intermediate": "ปานกลาง",
       "level": "ระดับ",
       "levels": "ระดับ",
-      "wizard": "พ่อมด"
+      "wizard": "พ่อมด",
+      "beginnerFriendly": ""
     },
     "library": "คลังข้อมูล",
     "lightning": "ไลท์นิ่ง (Lightning)",
@@ -922,7 +1044,29 @@
     "view": "วิว",
     "topics": "หัวข้อ",
     "unified": "รวมเข้าด้วยกัน",
-    "users": "ผู้ใช้งาน"
+    "users": "ผู้ใช้งาน",
+    "ratings": "",
+    "overview": "",
+    "diploma": "",
+    "booked": "",
+    "bookings": "",
+    "credentials": "",
+    "filter": "",
+    "failed": "",
+    "goal": "",
+    "grade": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "location": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "required": "",
+    "status": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": ""
   },
   "conferences": {
     "language": "ภาษา",
@@ -969,7 +1113,8 @@
     "joeNakamotoVideo": "ข้อสอบด้าน Bitcoin มันคืออะไรกันวะเนี่ย? โดย Joe Nakamoto",
     "noBookExam": "ยังไม่มีแผนการนัดสอบ",
     "pageTitle": "สอบผ่านใบรับรอง ₿",
-    "readChart": "อ่านข้อบังคับ"
+    "readChart": "อ่านข้อบังคับ",
+    "tweetText": ""
   },
   "glossary": {
     "creditsLoic": "<0>เครดิต</0>: พจนานุกรม Bitcoin ที่เขียนโดย Loïc Morel (Pandul) สามารถเข้าถึงได้ที่ <1>ที่เก็บข้อมูลบน Github ของเรา</1>.",

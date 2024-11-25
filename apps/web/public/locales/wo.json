@@ -66,7 +66,11 @@
       "access_invoice": "",
       "payment_details": "",
       "amount": "",
-      "invoiceId": ""
+      "invoiceId": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "",
@@ -82,7 +86,12 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "buildPath": "",
+      "exploreCourses": "",
+      "journey": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "part": {
       "count": ""
@@ -107,7 +116,11 @@
       "qr_unified": "",
       "teacher": "",
       "teachers": "",
-      "time": ""
+      "time": "",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "",
@@ -129,6 +142,100 @@
       "financialCrisis": "",
       "hyperinflation": "",
       "theoreticalLightning": ""
+    },
+    "review": {
+      "loading": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": ""
     }
   },
   "menu": {
@@ -149,7 +256,12 @@
     "podcastsDescription": "",
     "sponsorsDescription": "",
     "supportUsDescription": "",
-    "walletsDescription": ""
+    "walletsDescription": "",
+    "bCertificateDescription": "",
+    "glossaryDescription": "",
+    "login": "",
+    "loginRegister": "",
+    "publicDescription": ""
   },
   "tutorials": {
     "mining": {
@@ -162,7 +274,10 @@
       "enjoyed": "",
       "madeBy": "",
       "source": "",
-      "tipTooltip": ""
+      "tipTooltip": "",
+      "didHelp": "",
+      "author": "",
+      "writtenBy": ""
     },
     "exchange": {
       "centralized": {
@@ -177,7 +292,8 @@
     },
     "explorer": {
       "description": "",
-      "didYouKnow": ""
+      "didYouKnow": "",
+      "exploreAllTutorials": ""
     },
     "headerSignature": "",
     "headerText": "",
@@ -245,7 +361,9 @@
       },
       "shortDescription": "",
       "title": ""
-    }
+    },
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "about": {
     "activeContributors": "",
@@ -281,7 +399,12 @@
     "errors": {
       "usernameRegex": "",
       "usernameRequired": "",
-      "usernameTooShort": ""
+      "usernameTooShort": "",
+      "displayNameRequired": "",
+      "displayNameTooShort": "",
+      "invalidCredentials": "",
+      "emailInvalid": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "",
     "headerAccountCreated": "",
@@ -292,7 +415,29 @@
     "passwordRequired": "",
     "passwordsDontMatch": "",
     "sendLink": "",
-    "signIn": ""
+    "signIn": "",
+    "checkingTokenExplain": "",
+    "emailTip": "",
+    "oldPassword": "",
+    "backToLogin": "",
+    "backToHome": "",
+    "invalidToken": "",
+    "checkingToken": "",
+    "invalidTokenExplain": {
+      "expired": "",
+      "consumed": "",
+      "invalid": "",
+      "notFound": ""
+    },
+    "passwordResetError": "",
+    "tryAgain": "",
+    "newPassword": "",
+    "passwordMinLength": "",
+    "passwordChanged": "",
+    "passwordSuccessfullyChanged": "",
+    "confirmation": "",
+    "displayName": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "",
@@ -307,7 +452,10 @@
     "visualContent": {
       "description": "",
       "title": ""
-    }
+    },
+    "contributeDescription": "",
+    "contributeTitle": "",
+    "contributeButton": ""
   },
   "book": {
     "abstract": "",
@@ -326,7 +474,12 @@
   },
   "builders": {
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "otherCommunities": "",
+    "languages": "",
+    "relatedEvents": "",
+    "networkStrength": "",
+    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -380,7 +533,131 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "resumeLesson": ""
+      "resumeLesson": "",
+      "whereYouAre": "",
+      "startCourse": "",
+      "completedCoursesTitle": "",
+      "completedCoursesDescription": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "inprogressCoursesTitle": "",
+      "seeProgress": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "inprogressCoursesDescription": ""
+    },
+    "profile": {
+      "saving": "",
+      "change": "",
+      "edit": "",
+      "cancel": "",
+      "save": "",
+      "crop": "",
+      "emailChangeRateLimitError": "",
+      "preview": "",
+      "displayName": "",
+      "email": "",
+      "password": "",
+      "personalInformation": "",
+      "profile": "",
+      "profileInformation": "",
+      "profilePicture": "",
+      "security": "",
+      "username": "",
+      "emailChangeConfirmation": ""
+    },
+    "bCertificate": {
+      "certificate": "",
+      "bookExam": "",
+      "grade": "",
+      "noResults": ""
+    },
+    "administration": "",
+    "calendar": {
+      "calendar": "",
+      "personalCalendar": ""
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseLongDescription": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      },
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      }
     }
   },
   "words": {
@@ -428,7 +705,11 @@
       "advanced": "",
       "beginner": "",
       "developer": "",
-      "intermediate": ""
+      "intermediate": "",
+      "beginnerFriendly": "",
+      "wizard": "",
+      "level": "",
+      "levels": ""
     },
     "library": "",
     "lightning": "",
@@ -475,7 +756,58 @@
     "update": "",
     "video": "",
     "videos": "",
-    "wallets": ""
+    "wallets": "",
+    "all": "",
+    "id": "",
+    "progress": "",
+    "admins": "",
+    "amount": "",
+    "bCertificate": "",
+    "booked": "",
+    "bookings": "",
+    "builder": "",
+    "chapter": "",
+    "communities": "",
+    "courseId": "",
+    "credentials": "",
+    "description": "",
+    "diploma": "",
+    "duration": "",
+    "edit": "",
+    "filter": "",
+    "failed": "",
+    "free": "",
+    "glossary": "",
+    "goal": "",
+    "grade": "",
+    "hours": "",
+    "inPerson": "",
+    "inReview": "",
+    "lectures": "",
+    "lightningInvoice": "",
+    "location": "",
+    "onChain": "",
+    "onChainAddress": "",
+    "overview": "",
+    "paid": "",
+    "part": "",
+    "passed": "",
+    "price": "",
+    "professor": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "required": "",
+    "start": "",
+    "status": "",
+    "students": "",
+    "teacher": "",
+    "total": "",
+    "topics": "",
+    "unified": "",
+    "users": "",
+    "view": "",
+    "writtenByPodcasts": ""
   },
   "events": {
     "card": {
@@ -567,7 +899,8 @@
       "title": "",
       "subtitle1": "",
       "content1": "",
-      "link": ""
+      "link": "",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "",
@@ -589,12 +922,17 @@
       "subtitle2": "",
       "content1": "",
       "content2": "",
-      "link": ""
+      "link": "",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "",
       "subtitle": "",
       "content": ""
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "imagesAlt": {
@@ -640,7 +978,10 @@
     "question2": "",
     "question3": "",
     "question4": "",
-    "question5": ""
+    "question5": "",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "",
@@ -668,7 +1009,14 @@
     "tips": {
       "noTipsYet": "",
       "thanks": "",
-      "thanksNoName": ""
+      "thanksNoName": "",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
   },
   "resources": {
@@ -700,15 +1048,105 @@
     "podcasts": {
       "title": ""
     },
-    "publicGrade": ""
+    "publicGrade": "",
+    "newsletter": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
+    "searchFilterName": ""
   },
   "settings": {
-    "changePassword": ""
+    "changePassword": "",
+    "changeDisplayName": "",
+    "changeProfilePicture": "",
+    "changeEmail": ""
   },
   "underConstruction": {
     "github": "",
     "p1": "",
     "p2": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
+  },
+  "bCertificate": {
+    "challengeYourself": "",
+    "pageTitle": "",
+    "knowledgeableBitcoin": "",
+    "tweetText": "",
+    "bookExam": "",
+    "checkout": "",
+    "noBookExam": "",
+    "organizeExam": "",
+    "organizeSubtitle": "",
+    "organizeTitle": "",
+    "pageSubtitle": "",
+    "organizeDescription": "",
+    "bCertificateDescription": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "readChart": ""
+  },
+  "publicCommunication": {
+    "blogCategories": {
+      "grants": "",
+      "network": "",
+      "feature": "",
+      "patch": "",
+      "all": "",
+      "content": "",
+      "course": ""
+    },
+    "legalSections": {
+      "contact": "",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "title": "",
+    "blogPost": "",
+    "legal": "",
+    "goBackButtons": {
+      "simpleGoBack": ""
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "pastArticleSubtitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    },
+    "description": ""
+  },
+  "glossary": {
+    "anotherWord": "",
+    "definition": "",
+    "loadMoreWords": "",
+    "pageTitle": "",
+    "randomSearch": "",
+    "term": "",
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
+  },
+  "proofreading": {
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": "",
+    "thanks": ""
   }
 }

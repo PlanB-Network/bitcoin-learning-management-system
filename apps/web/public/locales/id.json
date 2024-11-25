@@ -29,7 +29,9 @@
       "displayNameRequired": "Nama tampilan diperlukan",
       "displayNameTooShort": "Nama tampilan harus mengandung setidaknya 2 karakter.",
       "usernameRequired": "Nama pengguna diperlukan.",
-      "usernameTooShort": "Nama pengguna harus mengandung setidaknya lima karakter."
+      "usernameTooShort": "Nama pengguna harus mengandung setidaknya lima karakter.",
+      "invalidCredentials": "",
+      "emailInvalid": ""
     },
     "noAccountNeeded": "Tidak perlu akun untuk mulai belajar di Plan B Network !",
     "passwordSuccessfullyChanged": "Kata sandi Anda telah berhasil diubah. Anda dapat masuk sekarang dengan kata sandi baru Anda.",
@@ -62,10 +64,14 @@
     "backToHome": "Kembali ke halaman utama",
     "invalidToken": "Token tidak valid",
     "checkingToken": "Memeriksa token",
-    "checkingTokenExplain": "Kami sedang memeriksa apakah token tersebut valid",
+    "checkingTokenExplain": "Kami sedang memeriksa apakah token tersebut valid…",
     "passwordResetError": "Atur ulang kata sandi error",
     "tryAgain": "Coba lagi",
-    "signIn": "Masuk"
+    "signIn": "Masuk",
+    "confirmation": "",
+    "displayName": "",
+    "emailTip": "",
+    "oldPassword": ""
   },
   "bCertificate": {
     "bCertificateDescription": "Sertifikat ₿ merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Sertifikat ini dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
@@ -82,7 +88,8 @@
     "organizeTitle": "Ingin menyelenggarakan ujian sertifikasi ₿ di hub Anda?",
     "pageSubtitle": "Adopsi skala besar melalui edukasi bersumber terbuka yang tersentralisasi",
     "pageTitle": "Lulus sertifikasi ₿",
-    "readChart": "Silakan baca diagram"
+    "readChart": "Silakan baca diagram",
+    "tweetText": ""
   },
   "bet": {
     "contribute": "Toolkit ini terbuka untuk kontribusi. Toolkit ini menggunakan Figma, sehingga siapapun dapat menambah, memodifikasi dan menerjemahkan. Untuk berkolaborasi, tambahkan kategori atau diskusi, dan jangan ragu untuk bergabung dalam discord kami.",
@@ -153,14 +160,14 @@
       "access_invoice": "Anda dapat mengakses tagihan Anda melalui dashboard Anda",
       "accessible": "Dapat diakses: Seumur Hidup",
       "buyCourse": "Beli kursus",
-      "courseId": "ID kursus:  {{courseId}}",
+      "courseId": "ID kursus: {{courseId}}",
       "coursePayment": "Pembayaran kursus",
       "curriculum": "Kurikulum",
       "date": "Tanggal: {{startDate}} sampai {{endDate}}",
       "dates_to": "{{startDate}} sampai {{endDate}}",
       "description": "Deskripsi",
       "duration": "Durasi: {{hours}} jam",
-      "goal": "TUJUAN: ",
+      "goal": "TUJUAN:",
       "level": "Tingkatan: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} bab",
@@ -180,7 +187,11 @@
       "payment_successful": "Pembayaran berhasil!",
       "payment_details": "Detail pembayaran",
       "amount": "Jumlah",
-      "invoiceId": "ID Transaksi"
+      "invoiceId": "ID Transaksi",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "categories": {
       "btc": "Bitcoin",
@@ -233,7 +244,11 @@
       "qr_unified": "Kode QR ini bersifat seragam, jadi dia dapat menerima pembayaran dengan metode jaringan lightning maupun jaringan on-chain.",
       "teacher": "Guru",
       "teachers": "Para guru",
-      "time": "Waktu"
+      "time": "Waktu",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "part": {
       "count": "Bagian {{count}}"
@@ -258,6 +273,100 @@
       "financialCrisis": "Analisis krisis keuangan besar",
       "hyperinflation": "Studi tentang hiperinflasi",
       "theoreticalLightning": "Kuliah teori tingkat lanjut tentang jaringan Lightning"
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": "",
+      "certificateAvailable": "",
+      "timeStampHow": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": ""
+    },
+    "review": {
+      "loading": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "faithful": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "recommend": ""
     }
   },
   "dashboard": {
@@ -271,7 +380,13 @@
       "inprogress": "Sedang berlangsung",
       "resumeLesson": "Lanjutkan",
       "seeProgress": "untuk melihat perkembangan Anda.",
-      "startCourse": "Mulai atau selesaikan kursus"
+      "startCourse": "Mulai atau selesaikan kursus",
+      "whereYouAre": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "yourCertificate": "",
+      "viewDetails": ""
     },
     "booking": {
       "downloadTicket": "Unduh tiket",
@@ -305,7 +420,7 @@
       "edit": "Ubah",
       "cancel": "Batal",
       "save": "Simpan",
-      "saving": "Menyimpan...",
+      "saving": "Menyimpan…",
       "crop": "Potong",
       "preview": "Pratampil",
       "displayName": "Tampilan nama",
@@ -315,7 +430,9 @@
       "profileInformation": "Informasi profil",
       "profilePicture": "Foto profil",
       "security": "Keamanan",
-      "username": "Nama pengguna"
+      "username": "Nama pengguna",
+      "emailChangeRateLimitError": "",
+      "profile": ""
     },
     "account": "Akun",
     "bCertificate": {
@@ -332,6 +449,88 @@
       "presentation": "Sertifikat ₿ adalah ujian berbasis \"meja\" yang diselenggarakan oleh Plan B Network dan dirancang untuk menilai tingkat pengetahuan Anda tentang Bitcoin dan semua topik terkaitnya.",
       "findResults": "Di sini Anda dapat menemukan hasil ujian Sertifikat ₿ yang  mana Anda telah lulus saat terdaftar dengan akun ini. Hasil biasanya memerlukan waktu 2 hingga 3 minggu untuk diproses dan dapat tersedia di sini. Jika setelah waktu yang lama hasil Anda tidak muncul di sini, harap hubungi kami.",
       "wantToPass": "Ingin lulus ujiannya?"
+    },
+    "administration": "",
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "courses": {
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": "",
+        "courseLongDescription": "",
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "publicProfileDescription": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "writeShortBio": ""
+      },
+      "reviews": {
+        "checkComments": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": "",
+        "checkReviews": "",
+        "noReviewsYet": ""
+      }
     }
   },
   "book": {
@@ -347,7 +546,7 @@
     "offeredBy": "Disediakan oleh kontributor yang dermawan",
     "pageSubtitle": "Portal ini bersifat open-source dan terbuka terhadap kontribusi.",
     "pageTitle": "Perpustakaan Bitcoin",
-    "topicsAddressed": "Topik yang dibahas: "
+    "topicsAddressed": "Topik yang dibahas:"
   },
   "builders": {
     "networkStrength": "Kekuatan sebuah jaringan ada pada anggota-anggotanya",
@@ -388,8 +587,11 @@
       "checkAuthor": "Lihat kontribusi lain dari penulis dan dukung karyanya.",
       "enjoyed": "Senang dengan tutorial ini?",
       "madeBy": "Tutorial ini telah dibuat oleh",
-      "source": "Sumber asli : ",
-      "tipTooltip": "Suka? Berikan tip."
+      "source": "Sumber asli :",
+      "tipTooltip": "Suka? Berikan tip.",
+      "author": "",
+      "didHelp": "",
+      "writtenBy": ""
     },
     "privacy": {
       "title": "Privasi",
@@ -424,7 +626,8 @@
     },
     "explorer": {
       "description": "Seluruh tutorial ini telah ditulis oleh para bitcoiner yang berdedikasi dan antusias, dan mereka berharap untuk menyebarkan edukasi bitcoin ke seluruh dunia. Jangan lupa untuk memberi like, memberi ulasan, dan memberi tip berupa sat!",
-      "didYouKnow": "Apakah Anda tahu ?"
+      "didYouKnow": "Apakah Anda tahu ?",
+      "exploreAllTutorials": ""
     },
     "headerSignature": "Rogzy",
     "headerText": "Selamat datang di lubang kelinci tak terbatas Bitcoin ! Di bagian ini, kami akan menawarkan Anda tutorial mendalam mengenai sebagian besar proyek bitcoin di luar sana. Halaman ini diperlihara oleh bitcoiner baik hati dan antusias yang mendukung proyek open-source ini. Apabila Anda menemukan bahwa kami melakukan kesalahan, silakan hubungi kami. Untuk melihat lampiran keuangan proyek, silakan merujuk pada laporan transparansi kami. Terima kasih atas kepercayaan Anda terhadap universitas ini dan nikmati perjalanan Anda.",
@@ -452,13 +655,17 @@
     },
     "pageDescription": "Bitcoin adalah industri yang luas, dan terus bertambah luas tiap harinya. Untuk membantu Anda mengekspolasinya, kami telah mengumpulkan dan menyusun banyak tutorial yang mendeskripsikan berbagai macam solusi di semua bidang terkait Bitcoin.",
     "pageTitle": "Jelajahi tutorial kami",
-    "pageSubtitle": "Ungkap misteri Bitcoin dengan menjelajahi ekosistemnya yang luas."
+    "pageSubtitle": "Ungkap misteri Bitcoin dengan menjelajahi ekosistemnya yang luas.",
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "underConstruction": {
     "p2": "dan pertimbangkan untuk bergabung dengan komunitas kami!",
     "github": "GitHub",
     "p1": "Seekor kelinci telah terjatuh ke dalam lubang. Karena itu, halaman ini sedang diperbaiki. Kami mohon maaf atas ketidaknyamanan yang ada. Tim kami sedang bekerja giat untuk menyelesaikan halaman ini. Apabila Anda tertarik untuk membantu, jangan ragu untuk memeriksa",
-    "pageTitle": "Ups."
+    "pageTitle": "Ups.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "resources": {
     "pageSubtitle": "Kumpulkan ilmu untuk distribusi pengetahuan yang lebih baik",
@@ -492,7 +699,13 @@
       "title": "Alat Bantu Pendidikan"
     },
     "headerText": "Selamat datang di lubang kelinci Bitcoin yang tak berujung! Di bagian ini, kami akan menyediakan tutorial mendalam tentang sebagian besar proyek Bitcoin yang ada. Halaman ini dikelola oleh para penggemar Bitcoin yang penuh dedikasi dan mendukung proyek sumber terbuka ini. Jika Anda merasa kami membuat kesalahan, silakan hubungi kami. Untuk melihat keterkaitan finansial kami dengan proyek yang disebutkan, silakan merujuk pada laporan transparansi kami. Terima kasih atas kepercayaan Anda pada universitas ini dan selamat menikmati perjalanannya!",
-    "pageDescription": "Mempelajari Bitcoin seperti menjelajahi labirin yang terus berkembang. Untuk membantu perjalanan Anda, kami telah mengumpulkan berbagai sumber daya, termasuk buku, podcast, video, dan rekaman konferensi. Portal ini mengumpulkan semua informasi dalam satu repositori GitHub untuk membantu Anda memahami ekosistem Bitcoin dengan lebih baik."
+    "pageDescription": "Mempelajari Bitcoin seperti menjelajahi labirin yang terus berkembang. Untuk membantu perjalanan Anda, kami telah mengumpulkan berbagai sumber daya, termasuk buku, podcast, video, dan rekaman konferensi. Portal ini mengumpulkan semua informasi dalam satu repositori GitHub untuk membantu Anda memahami ekosistem Bitcoin dengan lebih baik.",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
+    "searchFilterName": ""
   },
   "events": {
     "main": {
@@ -582,7 +795,8 @@
       "developer": "Pengembang",
       "wizard": "Panduan interaktif",
       "level": "Tingkatan",
-      "levels": "Tingkatan"
+      "levels": "Tingkatan",
+      "beginnerFriendly": ""
     },
     "members": " Anggota",
     "onChainAddress": "Alamat jaringan on chain",
@@ -677,7 +891,38 @@
     "conference": "Konferensi",
     "conferences": "Konferensi",
     "content": "Konten",
-    "continue": "Lanjutkan"
+    "continue": "Lanjutkan",
+    "builder": "",
+    "booked": "",
+    "bookings": "",
+    "chapter": "",
+    "communities": "",
+    "filter": "",
+    "failed": "",
+    "goal": "",
+    "grade": "",
+    "inReview": "",
+    "lectures": "",
+    "location": "",
+    "overview": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "required": "",
+    "status": "",
+    "students": "",
+    "teacher": "",
+    "total": "",
+    "users": "",
+    "writtenByPodcasts": "",
+    "admins": "",
+    "credentials": "",
+    "diploma": "",
+    "hours": "",
+    "id": "",
+    "inPerson": ""
   },
   "home": {
     "header": {
@@ -707,7 +952,8 @@
       "content1": "Bitcoin terus berkembang dengan munculnya aktor, solusi, protokol, dan terobosan teknologi baru. Seringkali sulit untuk menjaga database yang akurat dan terkini dari tutorial yang baik. Di sini di PlanB, kami telah mencapai hal tersebut. Dari pemula hingga pengguna berpengalaman, Anda dapat menjelajahi ratusan tutorial untuk mengeksplorasi industri kami sesuai kebutuhan Anda.",
       "title": "Membuat pendidikan Bitcoin menjadi sederhana adalah tujuan kami.",
       "subtitle1": "Kami membantu Anda menguasai teknologi ini dengan berbagai tutorial mendalam!",
-      "link": "Lihat semua tutorial"
+      "link": "Lihat semua tutorial",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Siapakah kami?",
@@ -725,7 +971,7 @@
     "patreonSection": {
       "subtitle": "Jaringan PlanB adalah 100% sumber terbuka berkat para donor kami yang dermawan",
       "content": "Jaringan PlanB dengan bangga bekerja sama dengan banyak perusahaan Bitcoin di seluruh dunia untuk menyediakan sumber daya edukasi terbaik yang mungkin!",
-      "title": "Bersama-sama, mari kita buat pendidikan Bitcoin lebih baik! "
+      "title": "Bersama-sama, mari kita buat pendidikan Bitcoin lebih baik!"
     },
     "languageSection": {
       "availableLanguages": "Bahasa yang tersedia",
@@ -734,7 +980,12 @@
       "subtitle2": "Kami membutuhkan Anda!",
       "content1": "Di PlanB, kami percaya bahwa Bitcoin adalah revolusi internasional yang menyangkut semua orang. Untuk memberdayakan miliaran orang, kami merancang platform ini agar dapat diakses dalam berbagai bahasa. Saat ini, platform ini mendukung 7 bahasa, dan lebih banyak bahasa akan ditambahkan setiap bulan. Untuk mencapainya, kami menggunakan kombinasi AI dan semangat para penggemar Bitcoin di seluruh dunia.",
       "content2": "Anda juga dapat mulai membangun jaringan lokal Anda sendiri di negara Anda!",
-      "link": "Bantu kami menerjemahkan akademi"
+      "link": "Bantu kami menerjemahkan akademi",
+      "availableLanguagesVariation": ""
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "glossary": {
@@ -749,7 +1000,9 @@
     "placeHolder": "Apa ini?",
     "randomSearch": "Pencarian acak",
     "relatedWords": "Kata terkait :",
-    "term": "Istilah"
+    "term": "Istilah",
+    "creditsLoic": "",
+    "notTranslated": ""
   },
   "imagesAlt": {
     "blueEllipse": "sebuah elips biru",
@@ -786,10 +1039,11 @@
     "sponsorsDescription": "Kenali sponsor dan kontributor utama kami",
     "supportUsDescription": "Temukan berbagai cara untuk mendukung kami",
     "walletsDescription": "Lindungi dan gunakan bitcoin Anda",
-    "merchantsDescription": "Terima pembayaran Bitcoin dan temukan alat untuk para pedagang"
+    "merchantsDescription": "Terima pembayaran Bitcoin dan temukan alat untuk para pedagang",
+    "publicDescription": ""
   },
   "library": {
-    "pageSubtitle": "Perpustakaan ini bersifat sumber terbuka & terbuka terhadap kontribusi.",
+    "pageSubtitle": "Perpustakaan ini bersifat sumber terbuka & menerima kontribusi.",
     "pageTitle": "Perpustakaan Bitcoin",
     "publishedIn": "Dipublikasikan pada {{date}}",
     "writtenBy": "Ditulis oleh {{author}}"
@@ -813,7 +1067,10 @@
     "question1": "Apa itu node?",
     "question2": "Apa yang bisa saya dapatkan?",
     "question3": "Apa saja persyaratannya?",
-    "question4": "Berapa ukuran sebuah node?"
+    "question4": "Berapa ukuran sebuah node?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Disini",
@@ -836,7 +1093,56 @@
     "tips": {
       "noTipsYet": "Profesor ini tidak menerima tip saat ini.",
       "thanks": "Terima kasih telah mendukung karya {{name}}!",
-      "thanksNoName": "Terima kasih telah mendukung pekerjaanku!"
+      "thanksNoName": "Terima kasih telah mendukung pekerjaanku!",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
+  },
+  "proofreading": {
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": "",
+    "thanks": ""
+  },
+  "publicCommunication": {
+    "title": "",
+    "blogPost": "",
+    "legal": "",
+    "blogCategories": {
+      "all": "",
+      "content": "",
+      "course": "",
+      "feature": "",
+      "patch": "",
+      "grants": "",
+      "network": ""
+    },
+    "legalSections": {
+      "contact": "",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "goBackButtons": {
+      "simpleGoBack": ""
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "pastArticleSubtitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    },
+    "description": ""
   }
 }

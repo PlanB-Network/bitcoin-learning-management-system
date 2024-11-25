@@ -33,7 +33,12 @@
     "errors": {
       "usernameRegex": "Käyttäjänimi voi sisältää vain kirjaimia, numeroita, alaviivoja \"_\", ja viivoja \"-\"",
       "usernameRequired": "Käyttäjänimi vaaditaan",
-      "usernameTooShort": "Käyttäjänimen pitää sisältää vähintään 5 merkkiä"
+      "usernameTooShort": "Käyttäjänimen pitää sisältää vähintään 5 merkkiä",
+      "emailInvalid": "",
+      "displayNameRequired": "",
+      "displayNameTooShort": "",
+      "invalidCredentials": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Unohditko salasanasi?",
     "headerAccountCreated": "Tili luotu",
@@ -44,7 +49,29 @@
     "passwordRequired": "Salasana vaaditaan",
     "passwordsDontMatch": "Salasanat ei täsmää",
     "sendLink": "lähetä linkki",
-    "signIn": "Kirjaudu sisään"
+    "signIn": "Kirjaudu sisään",
+    "passwordResetError": "",
+    "newPassword": "",
+    "passwordMinLength": "",
+    "passwordChanged": "",
+    "passwordSuccessfullyChanged": "",
+    "invalidTokenExplain": {
+      "invalid": "",
+      "notFound": "",
+      "expired": "",
+      "consumed": ""
+    },
+    "tryAgain": "",
+    "emailTip": "",
+    "backToLogin": "",
+    "backToHome": "",
+    "oldPassword": "",
+    "confirmation": "",
+    "displayName": "",
+    "invalidToken": "",
+    "checkingToken": "",
+    "checkingTokenExplain": "",
+    "passwordResetSent": ""
   },
   "bet": {
     "contribute": "Tämä työkalupakki on avoinna muokkauksille ja lisäyksille. Se käyttää Figmaa, joten kuka tahansa voi lisätä, muokata ja kääntää sitä. Jos haluat osallistua, lisätä kategorian tai keskustella, älä epäröi liittyä Discord-kanavallemme.",
@@ -59,7 +86,10 @@
     "visualContent": {
       "description": "Tämä sisältö on raakaa visuaalista dataa, jota voit käyttää omiin luomuksiisi.",
       "title": "Visuaalinen sisältö"
-    }
+    },
+    "contributeButton": "",
+    "contributeDescription": "",
+    "contributeTitle": ""
   },
   "book": {
     "abstract": "Abstrakti",
@@ -74,11 +104,16 @@
     "offeredBy": "Tämän teille tarjoaa arvokas kehittäjämme",
     "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille. Kiitos kehittämisestä, arvioinnista ja jakamisesta.",
     "pageTitle": "Bitcoin-kirjasto",
-    "topicsAddressed": "Aihe-alueittain: "
+    "topicsAddressed": "Aihe-alueittain:"
   },
   "builders": {
     "pageSubtitle": "Tämä portaali on avointa lähdekoodia ja avoin muokkauksille.",
-    "pageTitle": "Kehittäjä-portaali"
+    "pageTitle": "Kehittäjä-portaali",
+    "languages": "",
+    "otherCommunities": "",
+    "networkStrength": "",
+    "relatedEvents": "",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
@@ -123,7 +158,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
       "duration": "Kesto: {{hours}} tuntia",
-      "goal": "GOAL: ",
+      "goal": "GOAL:",
       "level": "Level: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} osainen",
@@ -148,7 +183,11 @@
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "paidCourse": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": ""
     },
     "explorer": {
       "footerTitle": "Professorimme ovat täällä Sinua varten!",
@@ -164,7 +203,12 @@
       "s2t1": "Bitcoin-kouluttautuminen on matka, ei määränpää",
       "s3PickLevel": "Valitse tasot :",
       "s3PickTopic": "Valitse aiheet :",
-      "s3t1": "Rakenna oma polkusi kaninkolon syövereihin"
+      "s3t1": "Rakenna oma polkusi kaninkolon syövereihin",
+      "buildPath": "",
+      "exploreCourses": "",
+      "journey": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -197,7 +241,11 @@
       "description": "Tämä ostos antaa sinulle pääsyn online koulutus-materiaaleihin alustallamme, sekä luennoillemme, joihin voit varata istumapaikan portaalimme kautta. Jokainen koulutuksen luento järjestetään ennalta määrätyissä ajankohdissa ja paikoissa ennen niiden julkaisua online-alustallamme.",
       "book_description": "Tarkista seuraavat tilauksenne tiedot.\nKun tilauksenne on käsitelty, lähetämme teille vahvistusviestissä pääsylipun ja QR-koodin. Tarvitsette niitä ilmoittautuessanne tapahtuman sisääntulo-portilla.",
       "qr_unified": "Tämä QR-koodi on yhdistetty, joten se hyväksyy sekä Lightning- että on-chain-maksut.",
-      "time": "Aika"
+      "time": "Aika",
+      "onlineCallout": "",
+      "inPersonDescription": "",
+      "onlineDescription": "",
+      "inPersonCallout": ""
     },
     "preview": {
       "by": "Julkaisijana {{professor}}",
@@ -220,6 +268,100 @@
       "financialCrisis": "Merkittävien talouskriisien analyysi",
       "hyperinflation": "Hyperinflaatioiden tutkimus",
       "theoreticalLightning": "Edistynyt teoreettinen kurssi Lightning-verkostosta"
+    },
+    "exam": {
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "explanations": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "certificateAvailable": "",
+      "failed": "",
+      "examDetails": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "yesSubmit": "",
+      "wishTryAgain": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
+    },
+    "review": {
+      "asExpected": "",
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "tooLong": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": "",
+      "displayOutOf": "",
+      "no": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "tooShort": "",
+      "loading": "",
+      "yesOfCourse": "",
+      "recommend": "",
+      "faithful": "",
+      "feedbackDescription": ""
     }
   },
   "dashboard": {
@@ -227,7 +369,19 @@
       "resumeLesson": "Jatka luentoa",
       "completed": "Suoritetut luennot",
       "details": "Tiedot",
-      "inprogress": "Keskeneräiset luennot"
+      "inprogress": "Keskeneräiset luennot",
+      "downloadPdf": "",
+      "inprogressCoursesTitle": "",
+      "seeProgress": "",
+      "startCourse": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "completedCoursesTitle": "",
+      "completedCoursesDescription": "",
+      "completedOutOf": "",
+      "done": "",
+      "whereYouAre": "",
+      "inprogressCoursesDescription": ""
     },
     "account": "Tili",
     "courses": "Luennot",
@@ -251,7 +405,119 @@
       "upcomingTicketTitle": "Tulevat",
       "pastTicketTitle": "Aiemmat"
     },
-    "bookings": "Tilaukset"
+    "bookings": "Tilaukset",
+    "profile": {
+      "personalInformation": "",
+      "change": "",
+      "edit": "",
+      "cancel": "",
+      "preview": "",
+      "displayName": "",
+      "email": "",
+      "password": "",
+      "profileInformation": "",
+      "profilePicture": "",
+      "security": "",
+      "username": "",
+      "profile": "",
+      "save": "",
+      "crop": "",
+      "emailChangeRateLimitError": "",
+      "saving": "",
+      "emailChangeConfirmation": ""
+    },
+    "teacher": {
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      },
+      "courses": {
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseLongDescription": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": "",
+        "courseModification": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      }
+    },
+    "administration": "",
+    "bCertificate": {
+      "bookExam": "",
+      "certificate": "",
+      "grade": "",
+      "noResults": ""
+    },
+    "calendar": {
+      "calendar": "",
+      "personalCalendar": ""
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomasSubtitle": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "courseDiplomas": "",
+      "completionDiplomas": "",
+      "yourCertificate": ""
+    }
   },
   "events": {
     "introduction": {
@@ -349,7 +615,8 @@
       "title": "Bitcoin-kouluttautumisen teko helpoksi on tavoitteemme.",
       "subtitle1": "Autamme sinua hallitsemaan teknologian lukuisilla syventävillä tutorial-materiaaleilla!",
       "content1": "Bitcoin kehittyy jatkuvasti, ja uusia toimijoita, ratkaisuja, protokollia ja teknologisia läpimurtoja tulee ja menee. On usein vaikeaa ylläpitää yhtenäistä, tarkkaa tietokantaa hyvistä ja ajantasaisista oppaista. Täällä PlanB:llä olemme saavuttaneet juuri tämän. Aloittelijoista edistyneisiin käyttäjiin, voit selata satoja oppaita ja tutustua alaan tarpeidesi mukaan.",
-      "link": "Katso kaikki oppaat"
+      "link": "Katso kaikki oppaat",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Keitä me olemme?",
@@ -371,12 +638,17 @@
       "content1": "Me PlanB:llä uskomme, että Bitcoin on kansainvälinen vallankumous, joka koskee kaikkia. Voimaannuttaaksemme mahdollisesti miljardeja ihmisiä suunnittelimme tämän alustan monikieliseksi ja kaikille saavutettavaksi. Alusta tukee tällä hetkellä seitsemää kieltä, ja lisää lisätään joka kuukausi. Tämän saavuttamiseksi käytämme yhdistelmää tekoälyä ja Bitcoin-harrastajien intohimoa ympäri maailmaa.",
       "content2": "Sinäkin voit aloittaa oman paikallisen verkostosi käynnistämisen omassa maassasi!",
       "link": "Auta meitä kääntämään materiaaleja",
-      "availableLanguages": "Saatavilla olevat kielet"
+      "availableLanguages": "Saatavilla olevat kielet",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi! ",
+      "title": "Kehitetään Bitcoin-koulutusta yhdessä paremmaksi!",
       "subtitle": "Plan-B on 100% avointa lähdekoodia, kiitos arvokkaiden ja anteliaiden tukijoidemme",
       "content": "PlanB-verkosto on ylpeä yhteistyöstään monien Bitcoin-yritysten kanssa ympäri maailmaa, tarjotessaan yhdessä parhaat mahdolliset koulutusresurssit!"
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "imagesAlt": {
@@ -426,7 +698,12 @@
     "supportUsDescription": "Löydä tapoja tukea meitä, millä tahansa tavalla",
     "teachersDescription": "Tutustu opistomme yliopisto-kouluttajiin, intohimoisiin bitcoinereihin",
     "walletsDescription": "Turvaa ja käytä bitcoinejasi",
-    "conferencesDescription": "Kokoelma Bitcoin-konferenssitallenteista ennen The Genesis Blockkia"
+    "conferencesDescription": "Kokoelma Bitcoin-konferenssitallenteista ennen The Genesis Blockkia",
+    "glossaryDescription": "",
+    "login": "",
+    "bCertificateDescription": "",
+    "loginRegister": "",
+    "publicDescription": ""
   },
   "nodeNetwork": {
     "answer1": "PlanB node on yksinkertaisesti paikallinen bitcoin-yhteisö joka tahtoo ottaa seuraavan askeleen ja kiihdyttää bitcoinin käyttöönottoa omalla alueellaan! Yhteisöllä ei ole minimikokoa mistä aloittaa.",
@@ -442,7 +719,10 @@
     "question2": "Mitä hyödyn?",
     "question3": "Mitkä ovat vaatimukset?",
     "question4": "Minkä kokoinen on node?",
-    "question5": "Mikä on \"salainen suunnitelma\"?"
+    "question5": "Mikä on \"salainen suunnitelma\"?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Tässä",
@@ -464,7 +744,14 @@
     "tips": {
       "noTipsYet": "Tämä professori ei vastaanota lahjoituksia tällä hetkellä.",
       "thanks": "Kiitos että tuet {{name}} :n työtä !",
-      "thanksNoName": "Kiitos että tuet työtäni! !"
+      "thanksNoName": "Kiitos että tuet työtäni! !",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
   },
   "resources": {
@@ -496,18 +783,33 @@
       "title": "Podcastit"
     },
     "publicGrade": "Julkinen arvosana: {{grade}}/5",
-    "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä."
+    "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä.",
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
+    "searchFilterName": "",
+    "newsletter": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    }
   },
   "settings": {
-    "changePassword": "Vaihda salasana"
+    "changePassword": "Vaihda salasana",
+    "changeDisplayName": "",
+    "changeProfilePicture": "",
+    "changeEmail": ""
   },
   "tutorials": {
     "details": {
       "checkAuthor": "Katso kirjoittajan muita julkaisuja ja tue hänen työtänsä.",
       "enjoyed": "Piditkö oppaasta?",
       "madeBy": "Tämän oppaan on tehnyt",
-      "source": "Alkuperäinen lähde : ",
-      "tipTooltip": "Piditkö siitä? Lahjoita."
+      "source": "Alkuperäinen lähde :",
+      "tipTooltip": "Piditkö siitä? Lahjoita.",
+      "author": "",
+      "didHelp": "",
+      "writtenBy": ""
     },
     "exchange": {
       "centralized": {
@@ -522,7 +824,8 @@
     },
     "explorer": {
       "description": "Kaikki nämä oppaat on kirjoittanut joukko intohimoisia ja omistautuneita bitcoin-harrastajia, jotka haluaa levittää bitcoin-koulutusta ympäri maailmaa. Älä unohda tykätä, arvioida ja antaa heille tippiä satosheina!",
-      "didYouKnow": "Tiesitkö?"
+      "didYouKnow": "Tiesitkö?",
+      "exploreAllTutorials": ""
     },
     "headerSignature": "Rogzy",
     "headerText": "Tervetuloa Bitcoinin loputtomaan kaninkoloon! Tässä osiossa tarjoamme sinulle syventäviä oppaita suurimmasta osasta yleisimpiä bitcoin-projekteja. Tätä sivua ylläpitää nimimerkki \"benevolel\", sekä eräs intohimoinen bitcoineri, joka tukee tätä avoimen lähdekoodin projektia. Jos havaitsette virheitä, älkää epäröikö ottaa meihin yhteyttä. Nähdäksenne talousraportin aiemmin mainitusta projektista, tutustu meidän läpinäkyvyys-raporttiimme (Transparancie repport). Kiitos luottamuksestanne ja tuestanne opistoamme kohtaan ja nauttikaa kyydistä.",
@@ -595,13 +898,17 @@
       "general": {
         "description": "Selaa yleis-aiheisia oppaitamme kerryttääksesi osaamistasi tietokoneiden käytöstä ja muista aiheista. Esimerkiksi oppaita liittyen yksilönvapauteen!"
       }
-    }
+    },
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "underConstruction": {
     "github": "GitHub",
     "p1": "Kani on sukeltanut koloihinsa eksyen. Tästä ennenkuulumattomasta ja odottamattomasta seikkailusta johtuen, tämä kaninkolojen onkalon sivu on vasta kehitteillä, \"Under Construction\". Pahoittelemme tilannetta, kehitystiimimme tekee parhaansa kehittäessään sivustoa. Älä epäröi tarjota apua ja osallistua yhteisölliseen kehitystyöhön, lisätietoa löydät osoitteestamme",
     "p2": "ja liity yhteisöömme!",
-    "pageTitle": "Oho."
+    "pageTitle": "Oho.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "Tietoja",
@@ -644,7 +951,11 @@
       "advanced": "Edistynyt",
       "beginner": "Aloittelija",
       "developer": "kehittäjä",
-      "intermediate": "Keskitaso"
+      "intermediate": "Keskitaso",
+      "beginnerFriendly": "",
+      "wizard": "",
+      "level": "",
+      "levels": ""
     },
     "library": "Kirjasto",
     "lightning": "Lightning",
@@ -695,7 +1006,58 @@
     "on": "päällä",
     "online": "Online",
     "ticket": "Pääsylippu",
-    "tickets": "Pääsyliput"
+    "tickets": "Pääsyliput",
+    "admins": "",
+    "bCertificate": "",
+    "courseId": "",
+    "credentials": "",
+    "description": "",
+    "diploma": "",
+    "duration": "",
+    "edit": "",
+    "filter": "",
+    "failed": "",
+    "free": "",
+    "glossary": "",
+    "goal": "",
+    "grade": "",
+    "lectures": "",
+    "lightningInvoice": "",
+    "location": "",
+    "passed": "",
+    "price": "",
+    "professor": "",
+    "progress": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "required": "",
+    "start": "",
+    "status": "",
+    "students": "",
+    "teacher": "",
+    "total": "",
+    "topics": "",
+    "unified": "",
+    "users": "",
+    "view": "",
+    "writtenByPodcasts": "",
+    "chapter": "",
+    "booked": "",
+    "bookings": "",
+    "builder": "",
+    "communities": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "onChain": "",
+    "onChainAddress": "",
+    "overview": "",
+    "paid": "",
+    "part": "",
+    "all": "",
+    "amount": ""
   },
   "payment": {
     "total": "Yhteensä",
@@ -726,5 +1088,81 @@
     "pageTitle": "Konferenssien tallenteet",
     "planBConferences": "Plan B konferenssit",
     "topics": "Aiheet"
+  },
+  "bCertificate": {
+    "organizeExam": "",
+    "organizeSubtitle": "",
+    "pageTitle": "",
+    "organizeTitle": "",
+    "pageSubtitle": "",
+    "bookExam": "",
+    "checkout": "",
+    "knowledgeableBitcoin": "",
+    "noBookExam": "",
+    "tweetText": "",
+    "challengeYourself": "",
+    "readChart": "",
+    "curious": "",
+    "joeNakamotoVideo": "",
+    "bCertificateDescription": "",
+    "organizeDescription": ""
+  },
+  "publicCommunication": {
+    "title": "",
+    "blogPost": "",
+    "legal": "",
+    "blogCategories": {
+      "all": "",
+      "content": "",
+      "course": "",
+      "feature": "",
+      "patch": "",
+      "grants": "",
+      "network": ""
+    },
+    "legalSections": {
+      "contact": "",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "goBackButtons": {
+      "simpleGoBack": ""
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "pastArticleSubtitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    },
+    "description": ""
+  },
+  "glossary": {
+    "definition": "",
+    "anotherWord": "",
+    "loadMoreWords": "",
+    "pageTitle": "",
+    "randomSearch": "",
+    "term": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "filterBar": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": ""
+  },
+  "proofreading": {
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": "",
+    "thanks": ""
   }
 }

@@ -14,7 +14,9 @@
       "usernameTooShort": "Kullanıcı adı en az 5 karakter içermelidir.",
       "displayNameRegex": "Görünen isim yalnızca harfler, rakamlar, _, ., - ve boşluklar içerebilir.",
       "displayNameTooShort": "Görünen isim en az 2 karakter içermelidir.",
-      "displayNameRequired": "Görünen isim gereklidir."
+      "displayNameRequired": "Görünen isim gereklidir.",
+      "emailInvalid": "",
+      "invalidCredentials": ""
     },
     "headerAccountCreated": "Hesap oluşturuldu",
     "lnurlAuthDescription": "Bu QR kodu Lightning cüzdanınıza okutarak oturum açın!",
@@ -34,7 +36,7 @@
     "backToHome": "Anasayfaya geri dön",
     "invalidToken": "Geçersiz token",
     "checkingToken": "Token kontrol ediliyor",
-    "checkingTokenExplain": "Tokenin geçerli olup olmadığını kontrol ediyoruz...",
+    "checkingTokenExplain": "Tokenin geçerli olup olmadığını kontrol ediyoruz…",
     "invalidTokenExplain": {
       "expired": "Tokenin süresi doldu",
       "consumed": "Kullanılmış Token",
@@ -42,7 +44,11 @@
       "notFound": "Token bulunamadı"
     },
     "passwordResetError": "Parola sıfırlama hatası",
-    "tryAgain": "Tekrar deneyin"
+    "tryAgain": "Tekrar deneyin",
+    "confirmation": "",
+    "displayName": "",
+    "emailTip": "",
+    "oldPassword": ""
   },
   "dashboard": {
     "account": "",
@@ -72,7 +78,131 @@
       "completed": "",
       "details": "",
       "inprogress": "",
-      "resumeLesson": ""
+      "resumeLesson": "",
+      "inprogressCoursesDescription": "",
+      "whereYouAre": "",
+      "viewDetails": "",
+      "completedCoursesTitle": "",
+      "completedCoursesDescription": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "inprogressCoursesTitle": "",
+      "seeProgress": "",
+      "startCourse": "",
+      "yourCertificate": ""
+    },
+    "bCertificate": {
+      "noResults": "",
+      "grade": "",
+      "bookExam": "",
+      "certificate": ""
+    },
+    "profile": {
+      "emailChangeConfirmation": "",
+      "saving": "",
+      "change": "",
+      "edit": "",
+      "cancel": "",
+      "save": "",
+      "crop": "",
+      "emailChangeRateLimitError": "",
+      "preview": "",
+      "displayName": "",
+      "email": "",
+      "password": "",
+      "personalInformation": "",
+      "profile": "",
+      "profileInformation": "",
+      "profilePicture": "",
+      "security": "",
+      "username": ""
+    },
+    "administration": "",
+    "calendar": {
+      "calendar": "",
+      "personalCalendar": ""
+    },
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "courses": {
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseLongDescription": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      },
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      }
     }
   },
   "payment": {
@@ -131,7 +261,11 @@
       "advanced": "",
       "beginner": "",
       "developer": "",
-      "intermediate": ""
+      "intermediate": "",
+      "beginnerFriendly": "",
+      "wizard": "",
+      "level": "",
+      "levels": ""
     },
     "library": "",
     "lightning": "",
@@ -173,7 +307,58 @@
     "update": "",
     "video": "",
     "videos": "",
-    "wallets": ""
+    "wallets": "",
+    "free": "",
+    "admins": "",
+    "all": "",
+    "amount": "",
+    "bCertificate": "",
+    "booked": "",
+    "bookings": "",
+    "builder": "",
+    "chapter": "",
+    "communities": "",
+    "courseId": "",
+    "credentials": "",
+    "description": "",
+    "diploma": "",
+    "duration": "",
+    "edit": "",
+    "filter": "",
+    "failed": "",
+    "glossary": "",
+    "goal": "",
+    "grade": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "lectures": "",
+    "lightningInvoice": "",
+    "location": "",
+    "onChain": "",
+    "onChainAddress": "",
+    "overview": "",
+    "paid": "",
+    "part": "",
+    "passed": "",
+    "price": "",
+    "professor": "",
+    "progress": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "required": "",
+    "start": "",
+    "status": "",
+    "students": "",
+    "teacher": "",
+    "total": "",
+    "topics": "",
+    "unified": "",
+    "users": "",
+    "view": "",
+    "writtenByPodcasts": ""
   },
   "about": {
     "activeContributors": "Aktif katılımcılar",
@@ -192,7 +377,7 @@
     "corporateContent": "PlanB Network, Bitcoin geliştirme üzerine odaklanan üç kuruluşun birleşik projesidir. Bitcoin eğitim katmanını ölçeklendirmek için, işbirliği yaparak PlanB network'ü kurdular. Bitcoin eğitimini dünyaya yayma hedefimizde başarılı olmak için, birçok diğer kuruluş katkıda bulunmaya ve güçlerini birleştirmeye karar verdi. Kendilerine çok teşekkür ederiz.",
     "coportateContact": "İletişim bilgileri:",
     "storyTitle": "Hikayemiz",
-    "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir.  Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
+    "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir. Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
     "description": "Plan B Network, toplulukların dünya genelinde daha iyi eğitim sağlamak için organize olmalarına yardımcı olur. Platform, bu hedefe yönelik olarak gerekli araçları, online akademi, eğitim portalı, Bitcoin eğitim araç seti ve kaynak portalı aracılığıyla geliştirir.",
     "subtitle": "Tum dünyayı turuncu haplamak mi istiyorsunuz? PlanB Ağı'na katılın.",
     "title": "Plan B Network Hakkında",
@@ -233,7 +418,12 @@
   },
   "builders": {
     "pageSubtitle": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "noRelatedEvents": "",
+    "networkStrength": "",
+    "otherCommunities": "",
+    "languages": "",
+    "relatedEvents": ""
   },
   "conferences": {
     "addConferences": "",
@@ -323,7 +513,11 @@
       "access_invoice": "",
       "payment_details": "",
       "amount": "",
-      "invoiceId": ""
+      "invoiceId": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": "",
+      "paidCourse": ""
     },
     "explorer": {
       "footerTitle": "",
@@ -339,7 +533,12 @@
       "s2t1": "",
       "s3PickLevel": "",
       "s3PickTopic": "",
-      "s3t1": ""
+      "s3t1": "",
+      "findCourses": "",
+      "seeCourse": "",
+      "buildPath": "",
+      "exploreCourses": "",
+      "journey": ""
     },
     "footer": {
       "": ""
@@ -367,7 +566,11 @@
       "qr_unified": "",
       "teacher": "",
       "teachers": "",
-      "time": ""
+      "time": "",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "",
@@ -389,6 +592,100 @@
       "financialCrisis": "",
       "hyperinflation": "",
       "theoreticalLightning": ""
+    },
+    "review": {
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": "",
+      "loading": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "yesSubmit": ""
     }
   },
   "nodeNetwork": {
@@ -405,7 +702,10 @@
     "question2": "",
     "question3": "",
     "question4": "",
-    "question5": ""
+    "question5": "",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "tutorials": {
     "merchant": {
@@ -418,7 +718,10 @@
       "enjoyed": "",
       "madeBy": "",
       "source": "",
-      "tipTooltip": ""
+      "tipTooltip": "",
+      "didHelp": "",
+      "author": "",
+      "writtenBy": ""
     },
     "exchange": {
       "centralized": {
@@ -433,7 +736,8 @@
     },
     "explorer": {
       "description": "",
-      "didYouKnow": ""
+      "didYouKnow": "",
+      "exploreAllTutorials": ""
     },
     "headerSignature": "",
     "headerText": "",
@@ -501,7 +805,9 @@
       },
       "shortDescription": "",
       "title": ""
-    }
+    },
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "events": {
     "card": {
@@ -593,7 +899,8 @@
       "title": "",
       "subtitle1": "",
       "content1": "",
-      "link": ""
+      "link": "",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "",
@@ -615,12 +922,17 @@
       "subtitle2": "",
       "content1": "",
       "content2": "",
-      "link": ""
+      "link": "",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
       "title": "",
       "subtitle": "",
       "content": ""
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "imagesAlt": {
@@ -670,7 +982,12 @@
     "sponsorsDescription": "",
     "supportUsDescription": "",
     "teachersDescription": "",
-    "walletsDescription": ""
+    "walletsDescription": "",
+    "bCertificateDescription": "",
+    "glossaryDescription": "",
+    "login": "",
+    "loginRegister": "",
+    "publicDescription": ""
   },
   "notFound": {
     "here": "",
@@ -692,7 +1009,14 @@
     "tips": {
       "noTipsYet": "",
       "thanks": "",
-      "thanksNoName": ""
+      "thanksNoName": "",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
   },
   "resources": {
@@ -724,16 +1048,30 @@
     "podcasts": {
       "title": ""
     },
-    "publicGrade": ""
+    "publicGrade": "",
+    "newsletter": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
+    "searchFilterName": ""
   },
   "settings": {
-    "changePassword": ""
+    "changePassword": "",
+    "changeDisplayName": "",
+    "changeProfilePicture": "",
+    "changeEmail": ""
   },
   "underConstruction": {
     "github": "",
     "p1": "",
     "p2": "",
-    "pageTitle": ""
+    "pageTitle": "",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "bCertificate": {
     "bCertificateDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
@@ -750,6 +1088,65 @@
     "organizeTitle": "Merkezinizde bir B-sertifika sınavı düzenlemek ister misiniz?",
     "pageSubtitle": "Merkezi açık kaynak eğitim aracılığıyla kitlesel benimsenme",
     "pageTitle": "B-Sertifikası",
-    "readChart": "Tabloyu oku"
+    "readChart": "Tabloyu oku",
+    "tweetText": ""
+  },
+  "glossary": {
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": "",
+    "notTranslated": "",
+    "pageSubtitle": "",
+    "placeHolder": "",
+    "relatedWords": "",
+    "anotherWord": "",
+    "definition": "",
+    "loadMoreWords": "",
+    "pageTitle": "",
+    "randomSearch": "",
+    "term": ""
+  },
+  "proofreading": {
+    "thanks": "",
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": ""
+  },
+  "publicCommunication": {
+    "description": "",
+    "blogCategories": {
+      "grants": "",
+      "network": "",
+      "feature": "",
+      "patch": "",
+      "all": "",
+      "content": "",
+      "course": ""
+    },
+    "legalSections": {
+      "contact": "",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "title": "",
+    "blogPost": "",
+    "legal": "",
+    "goBackButtons": {
+      "simpleGoBack": ""
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "pastArticleSubtitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "blogSidebarTitle": "",
+      "blogListButtonText": "",
+      "filterText": "",
+      "noBlogs": ""
+    }
   }
 }

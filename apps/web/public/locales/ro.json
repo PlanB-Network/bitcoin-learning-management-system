@@ -57,7 +57,7 @@
     "backToHome": "Înapoi acasă",
     "invalidToken": "token invalid",
     "checkingToken": "Verificarea tokenului",
-    "checkingTokenExplain": "Verificăm dacă tokenul este valid...",
+    "checkingTokenExplain": "Verificăm dacă tokenul este valid…",
     "invalidTokenExplain": {
       "expired": "Tokenul a expirat",
       "consumed": "Tokenul a fost deja folosit",
@@ -202,7 +202,8 @@
       "invoiceId": "ID-ul tranzacției",
       "buyOnlineCourse": "Cumpărați cursul online",
       "buyInPersonCourse": "Cumpărați cursul în persoană",
-      "inPersonAccess": "Trebuie să vă descărcați biletul pentru a avea acces la cursul în persoană."
+      "inPersonAccess": "Trebuie să vă descărcați biletul pentru a avea acces la cursul în persoană.",
+      "paidCourse": "Plătit"
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
@@ -298,7 +299,7 @@
       "faithful": "Fidel obiectivului?",
       "generalGrade": "Notă generală",
       "length": "Lungime",
-      "loading": "Se încarcă...",
+      "loading": "Se încarcă…",
       "neutral": "neutru",
       "no": "nu",
       "notReally": "nu, nu chiar",
@@ -459,7 +460,7 @@
       "edit": "Editare",
       "cancel": "Anulează",
       "save": "Salvează",
-      "saving": "Salvare...",
+      "saving": "Salvare…",
       "crop": "Decupați",
       "emailChangeConfirmation": "Un e-mail de confirmare pentru schimbarea adresei de e-mail a fost trimis, vă rugăm să verificați inbox-ul pentru a confirma.",
       "preview": "Previzualizare",
@@ -641,8 +642,8 @@
     },
     "tutorialSection": {
       "content1": "Bitcoin este în continuă evoluție, cu apariția unor noi actori, soluții, protocoale și progrese tehnologice. Astfel, poate fi dificil să menții o bază de date precisă și actualizată cu tutoriale de calitate. Aici, la Plan ₿, am reușit exact asta. Indiferent dacă ești un începător sau un utilizator avansat, poți naviga prin sute de tutoriale pentru a explora industria noastră în funcție de nevoile tale.",
-      "title": "Educația Bitcoin făcută simplă.",
-      "subtitle1": "Vă ajutăm să stăpâniți tehnologia cu numeroase tutoriale detaliate!",
+      "title": "Centralizează cunoștințele pentru a le distribui mai bine",
+      "subtitle1": "Educația Bitcoin făcută simplă.",
       "link": "Vezi toate tutorialele",
       "link2": "Vedeți toate resursele"
     },
@@ -669,12 +670,12 @@
       "subtitle": "Totul este tradus în limbile locale!",
       "content2": "Și tu poți forma propria ta rețea locală în țara ta!",
       "link": "Ajuta-ne să traducem academia",
-      "content1": "La PlanB, credem că Bitcoin este o revoluție internațională care afectează pe toată lumea. Dorim să împuternicim miliarde de oameni, așa că proiectăm această platformă pentru a fi multilingvă și accesibilă tuturor, adăugând în fiecare lună tot mai multe limbi. Pentru a atinge acest obiectiv, ne bazăm pe o combinație de AI și pasiunea Bitcoinerilor din întreaga lume.",
+      "content1": "La Plan ₿, credem că Bitcoin este o revoluție internațională care afectează pe toată lumea. Dorim să împuternicim miliarde de oameni, așa că proiectăm această platformă pentru a fi multilingvă și accesibilă tuturor, adăugând în fiecare lună tot mai multe limbi. Pentru a atinge acest obiectiv, ne bazăm pe o combinație de AI și pasiunea Bitcoinerilor din întreaga lume!",
       "availableLanguagesVariation": "Limbi disponibile: "
     },
     "patreonSection": {
-      "title": "Să lucrăm împreună pentru a îmbunătăți educația Bitcoin!",
-      "subtitle": "Rețeaua Plan ₿ este 100% open-source datorită susținătorilor noștri generoși.",
+      "title": "Să lucrăm împreună pentru a îmbunătăți educația Bitcoin !",
+      "subtitle": "Plan ₿ Network este 100% open-source datorită susținătorilor noștri generoși",
       "content": "Suntem mândri să colaborăm cu numeroase companii Bitcoin din întreaga lume pentru a oferi cele mai bune resurse educaționale posibile!"
     },
     "wallOfLoveSection": {
@@ -825,7 +826,7 @@
       "didHelp": "A fost de ajutor?",
       "madeBy": "Acest tutorial a fost realizat de",
       "enjoyed": "Ți-a plăcut acest tutorial?",
-      "source": "Sursa originală : ",
+      "source": "Sursa originală :",
       "tipTooltip": "Îți place? Lasă bacșiș.",
       "writtenBy": "Acest tutorial a fost scris de :"
     },
@@ -923,7 +924,7 @@
     "answer2": "Prin alăturarea la rețeaua noastră, obțineți acces la conținut exclusiv pe care Plan ₿ îl distribuie prin platforma sa, pe care îl puteți împărtăși în comunitatea dumneavoastră. Cel mai important beneficiu este oportunitatea de a deschide canale de discuție pentru proiecte viitoare și de a vă conecta cu alte comunități din întreaga lume pentru a împărtăși experiențele fiecăruia.",
     "answer5": "Dorim să oferim un refugiu sigur pentru bitcoiners din întreaga lume. Credem că, ajutând la creșterea hub-urilor locale, vom putea crea o rețea de citadele unde aceștia vor fi bineveniți să lucreze, să creeze, să împărtășească și să discute în siguranță.",
     "answer1": "Un nod este o inițiativă educațională legată de o comunitate undeva în lume. Poate lua forma unei clădiri unde are loc educația Bitcoin, dar poate include mult mai mult. Deși Plan ₿ Network operează prin hub-uri, stabilirea lor în fiecare oraș din lume este nerealistă. De aceea ne bazăm pe comunitățile de bitcoineri pentru a ne ajuta să transformăm această rețea globală în realitate.",
-    "description1": "Rețeaua Plan ₿ susține inițiativele educaționale la nivel mondial, așa că colaborăm pentru a dezvolta cele mai bune instrumente pentru a echipa aceste proiecte, atât prin platforma noastră, cât și prin spațiile noastre fizice. Suntem întotdeauna în căutarea de noi noduri care să ni se alăture în crearea unei rețele educaționale globale descentralizate pentru Bitcoin, așa că dacă ești interesat de colaborare, te rugăm să ne contactezi!",
+    "description1": "Credem că educația nu ar trebui să se limiteze doar la mediul online, ci să se extindă și în spațiile fizice. Pentru a atinge acest obiectiv, Plan ₿ Network coordonează o rețea de hub-uri la nivel global pentru a aduna gânditori, constructori și educatori care susțin progresul Bitcoin și al tehnologiilor libertății.",
     "answer3": "Plan ₿ Network se concentrează În primul rănd pe nodurile care operează dintr-un loc fizic. În viitor, intenționăm să integrăm mai multe inițiative care ar putea beneficia de sprijinul rețelei pentru creștere.",
     "answer4": "Un nod Bitcoin poate varia ca dimensiune, iar diferite grade vor fi atribuite în funcție de cerințele specifice. De exemplu, un nod care include un hackerspace, o sală de gimnastică și birouri va fi considerat mai asemănător cu o cetate.",
     "apply": "Aplicați pentru a deveni un Nod",

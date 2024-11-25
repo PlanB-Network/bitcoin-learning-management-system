@@ -36,7 +36,9 @@
       "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten.",
       "displayNameRequired": "Anzeigename ist erforderlich.",
       "displayNameRegex": "Der Anzeigename darf nur Buchstaben, Ziffern, _, ., - und Leerzeichen enthalten.",
-      "displayNameTooShort": "Der Anzeigename muss mindestens 2 Zeichen enthalten."
+      "displayNameTooShort": "Der Anzeigename muss mindestens 2 Zeichen enthalten.",
+      "emailInvalid": "",
+      "invalidCredentials": ""
     },
     "forgottenPassword": "Haben Sie Ihr Passwort vergessen?",
     "headerAccountCreated": "Konto erstellt",
@@ -58,14 +60,18 @@
     "backToHome": "Zurück zur Startseite",
     "invalidToken": "Ungültiges Token",
     "checkingToken": "Verifizierung des Tokens",
-    "checkingTokenExplain": "Wir überprüfen die Gültigkeit des Tokens...",
+    "checkingTokenExplain": "Wir überprüfen die Gültigkeit des Tokens…",
     "invalidTokenExplain": {
       "expired": "Das Token ist abgelaufen",
       "consumed": "Das Token wurde bereits verwendet",
       "invalid": "Das Token ist ungültig",
       "notFound": "Das Token wurde nicht gefunden"
     },
-    "passwordResetError": "Fehler beim Zurücksetzen des Passworts"
+    "passwordResetError": "Fehler beim Zurücksetzen des Passworts",
+    "oldPassword": "",
+    "confirmation": "",
+    "displayName": "",
+    "emailTip": ""
   },
   "bet": {
     "contribute": "Dieses Toolkit ist offen für Beiträge. Es verwendet Figma, so dass jeder hinzufügen, ändern und übersetzen kann. Um mitzuarbeiten, eine Kategorie hinzuzufügen oder zu diskutieren, zögern Sie nicht, unserem Discord beizutreten.",
@@ -177,7 +183,11 @@
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "paidCourse": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": ""
     },
     "explorer": {
       "footerTitle": "Unsere Professor*innen sind für Sie da!",
@@ -231,7 +241,11 @@
       "description": "Dieser Kauf gewährt Ihnen Zugang zu Online-Kursen auf der Plattform sowie zu Präsenzkursen, vorausgesetzt, Sie reservieren Ihren Platz. Jede Unterrichtseinheit findet persönlich zu den angegebenen Terminen und Orten statt, bevor sie aufgezeichnet und online auf der Plattform gestreamt wird.",
       "book_description": "Bitte überprüfen Sie die bereitgestellten Angabe zum Verantstaltungsort.\nSobald Ihre Buchung bearbeitet wurde, senden wir Ihnen ein Bestätigungsticket und einen QR-Code, den Sie bei der Veranstaltung vorlegen müssen.",
       "qr_unified": "Dieser QR-Code ist vereinheitlicht, d.h. er akzeptiert Lightning- und On-Chain-Zahlungen.",
-      "time": "Zeit"
+      "time": "Zeit",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "von {{professor}}",
@@ -261,7 +275,7 @@
       "feedbackSessionTitle": "Bewertung",
       "generalGrade": "Allgemeine Bewertung",
       "length": "Länge",
-      "loading": "Laden...",
+      "loading": "Laden…",
       "neutral": "neutral",
       "no": "nein",
       "asExpected": "wie erwartet",
@@ -283,7 +297,71 @@
       "veryGood": "sehr gut",
       "writeThoughts": "Hier können Sie Ihre Gedanken aufschreiben",
       "yesOfCourse": "ja, natürlich",
-      "yesVeryMuch": "ja, sehr gerne"
+      "yesVeryMuch": "ja, sehr gerne",
+      "fieldRequired": "",
+      "whatStudentsSay": "",
+      "displayOutOf": "",
+      "edit": "",
+      "loadMoreComments": "",
+      "ratingsAndReviews": "",
+      "skip": ""
+    },
+    "exam": {
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "tryOneMoreTime": "",
+      "goodLuck": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateGeneration": "",
+      "congratulations": "",
+      "failed": "",
+      "planBTimeStamp": "",
+      "retakeExam": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "testResults": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "yesSubmit": "",
+      "certificateAvailable": "",
+      "dontWorry": "",
+      "examDetails": "",
+      "explanations": "",
+      "testKnowledge": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timerStart": "",
+      "examAndDiploma": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "instructions": "",
+      "letsConclude": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "quitWithoutSubmitting": "",
+      "retakeInstructions": "",
+      "wishTryAgain": ""
     }
   },
   "dashboard": {
@@ -297,7 +375,13 @@
       "completedCoursesTitle": "Abgeschlossene Kurse",
       "completedCoursesDescription": "Hier können Sie Ihre abgeschlossenen Kurse überprüfen.",
       "inprogressCoursesTitle": "Laufende Kurse",
-      "inprogressCoursesDescription": "Hier können Sie Ihren Fortschritt in den von Ihnen begonnenen Kursen überprüfen."
+      "inprogressCoursesDescription": "Hier können Sie Ihren Fortschritt in den von Ihnen begonnenen Kursen überprüfen.",
+      "whereYouAre": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": ""
     },
     "account": "Konto",
     "courses": "Kurse",
@@ -342,7 +426,7 @@
       "edit": "Bearbeiten",
       "cancel": "Absagen",
       "save": "Speichern",
-      "saving": "Speichern...",
+      "saving": "Speichern…",
       "change": "Ändern",
       "crop": "ausschneiden",
       "emailChangeConfirmation": "Eine Bestätigungs-E-Mail für Ihre E-Mail-Änderung wurde gesendet, bitte überprüfen Sie Ihren Posteingang zur Bestätigung.",
@@ -355,7 +439,8 @@
       "profilePicture": "Profilbild",
       "security": "Sicherheit",
       "username": "Benutzername",
-      "profile": "Profil"
+      "profile": "Profil",
+      "emailChangeRateLimitError": ""
     },
     "calendar": {
       "calendar": "Kalender",
@@ -417,6 +502,30 @@
         "viewDetails": "Details anzeigen",
         "writtenFeedbacks": "Schriftliche Rückmeldungen"
       }
+    },
+    "course": {
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "shareOnSocials": "",
+      "tweetText": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "checkDetailsCompleted": "",
+      "coursesCompleted": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "yourCertificate": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": ""
     }
   },
   "events": {
@@ -512,10 +621,11 @@
       "link": "Seien Sie ein Teil des Netzwerks"
     },
     "tutorialSection": {
-      "title": "Bitcoin-Bildung leicht gemacht.",
+      "title": "Bitcoin-Bildung leicht gemacht",
       "subtitle1": "Wir helfen Ihnen, die Technologie mit zahlreichen ausführlichen Tutorials zu beherrschen!",
       "content1": "Bitcoin entwickelt sich ständig weiter, mit dem Auftauchen neuer Akteuren, Lösungen, Protokollen und technologischen Durchbrüchen. Daher kann es eine Herausforderung sein, eine genaue und aktuelle Datenbank mit hochwertigen Anleitungen zu führen. Hier bei Plan ₿ haben wir genau das erreicht. Ob Sie Anfänger oder Fortgeschrittener sind, können Sie durch Hunderte von Tutorials navigieren, um unsere Branche nach Ihren Bedürfnissen zu erkunden.",
-      "link": "Alle Tutorials anzeigen"
+      "link": "Alle Tutorials anzeigen",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Wer sind wir?",
@@ -537,10 +647,11 @@
       "content1": "Wir bei PlanB glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit 7 Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt.",
       "content2": "Beginnen auch Sie mit Bootstrapping Ihres eigenen lokalen Netzes in Ihrem Land!",
       "link": "Helfen Sie uns, die Akademie zu übersetzen",
-      "availableLanguages": "Verfügbare Sprachen"
+      "availableLanguages": "Verfügbare Sprachen",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Lassen Sie uns gemeinsam die Bitcoin-Bildung verbessern! ",
+      "title": "Lassen Sie uns gemeinsam die Bitcoin-Bildung verbessern!",
       "subtitle": "Das PlanB-Netzwerk ist zu 100 % quelloffen, dank unserer großzügigen Gönner",
       "content": "Das PlanB Network ist stolz darauf, mit vielen Bitcoin-Unternehmen auf der ganzen Welt zusammenzuarbeiten, um die bestmöglichen Bildungsressourcen bereitzustellen!"
     },
@@ -580,7 +691,7 @@
   },
   "menu": {
     "betDescription": "Sammlung von Inhalten, die Sie für Ihre Bildungsprojekte verwenden können",
-    "btc101Description": "Erhalte ein besseres Verständnis von Bitcoin mit diesen Lektionen",
+    "btc101Description": "Erhalte ein besseres Verständnis von Bitcoin mit diesen Lektionen.",
     "buildersDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die daran arbeiten, Bitcoin zu verbessern und seine Annahme zu steigern",
     "exchangesDescription": "Kaufen und verkaufen Sie Bitcoins an Börsen und erfahren Sie mehr über P2P",
     "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",
@@ -617,7 +728,10 @@
     "question2": "Was habe ich davon?",
     "question3": "Was sind die Voraussetzungen?",
     "question4": "Welche Größe hat ein Knoten?",
-    "question5": "Was ist der Geheimplan?"
+    "question5": "Was ist der Geheimplan?",
+    "mobiledescription": "",
+    "applyhelp": "",
+    "descriptionextend": ""
   },
   "notFound": {
     "here": "Hier",
@@ -682,7 +796,12 @@
     "glossary": {
       "title": "Glossar"
     },
-    "searchFilterName": "Suche nach Name"
+    "searchFilterName": "Suche nach Name",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Passwort ändern",
@@ -695,7 +814,7 @@
       "checkAuthor": "Sehen Sie sich die anderen Beiträge des Autors an und unterstützen Sie seine Arbeit.",
       "enjoyed": "Gefällt Ihnen dieses Tutorial?",
       "madeBy": "Dieses Tutorial wurde erstellt von",
-      "source": "Ursprüngliche Quelle: ",
+      "source": "Ursprüngliche Quelle:",
       "tipTooltip": "Gefällt er Ihnen? Tip.",
       "author": "Autor : ",
       "didHelp": "Hat das geholfen?",
@@ -796,7 +915,9 @@
     "github": "GitHub",
     "p1": "Ein Kaninchen hat ein Loch gestolpert. Aufgrund dieses unerwarteten Abenteuers befindet sich diese Seite im Moment noch im Bau. Wir entschuldigen uns für jegliche Unannehmlichkeiten. Unser Team ist in vollem Gang, um diese Seite zu vervollständigen.Wenn Sie daran interessiert sind, uns zu helfen, besuchen Sie doch einfach unsere",
     "p2": "und erwägen Sie, unserer Community beizutreten!",
-    "pageTitle": "Hoppla."
+    "pageTitle": "Hoppla.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "Über",
@@ -842,7 +963,8 @@
       "intermediate": "Mittelstufe",
       "level": "Stufe",
       "levels": "Stufen",
-      "wizard": "Assistent"
+      "wizard": "Assistent",
+      "beginnerFriendly": ""
     },
     "library": "Bibliothek",
     "lightning": "Lightning",
@@ -922,7 +1044,29 @@
     "view": "Schauen",
     "bCertificate": "₿ Zertifikat",
     "unified": "Vereinigt",
-    "communities": "Gemeinschaften"
+    "communities": "Gemeinschaften",
+    "failed": "",
+    "diploma": "",
+    "bookings": "",
+    "credentials": "",
+    "id": "",
+    "inReview": "",
+    "overview": "",
+    "passed": "",
+    "progress": "",
+    "teacher": "",
+    "total": "",
+    "writtenByPodcasts": "",
+    "booked": "",
+    "status": "",
+    "goal": "",
+    "filter": "",
+    "grade": "",
+    "inPerson": "",
+    "location": "",
+    "publicationDate": "",
+    "ratings": "",
+    "required": ""
   },
   "conferences": {
     "description": "Konferenzen sind ein Schlüsselelement in der Bitcoin-Branche. Sie sind Teil der Bildungsreise eines jeden Bitcoiners. Wir haben dieses Tool entwickelt, um Ihnen bei der Navigation durch Hunderte von Konferenzen zu helfen.",
@@ -969,7 +1113,8 @@
     "pageSubtitle": "Masseneinführung durch zentralisierte Open-Source-Bildung",
     "readChart": "Lesen Sie die Satzung",
     "pageTitle": "Bestehen Sie das ₿ Zertifikat",
-    "organizeExam": "Eine Prüfung organisieren"
+    "organizeExam": "Eine Prüfung organisieren",
+    "tweetText": ""
   },
   "glossary": {
     "notTranslated": "Die Daten im Glossar wurden noch nicht übersetzt.\nWenn Sie helfen möchten, können Sie gerne auf unserer",

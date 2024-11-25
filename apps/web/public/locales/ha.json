@@ -66,7 +66,7 @@
     "passwordResetError": "Ansamu matsala wajen canza kalmar sirri",
     "tryAgain": "Asake gwada wa",
     "signIn": "Shiga ciki",
-    "checkingTokenExplain": "Muna bincike idan tokin dai-dai ne...",
+    "checkingTokenExplain": "Muna bincike idan tokin dai-dai ne…",
     "passwordResetSent": "An turo imel adireshi na canza kalmar sirri(idan akwai imel aderishin ka acikin kushin baya nan mu).",
     "confirmation": "Tabbatarwa",
     "displayName": "Suna",
@@ -214,7 +214,8 @@
       "access_invoice": "Za ka iya samun takardar biyan kudi ta hanyar duba dashbord ɗinka",
       "buyInPersonCourse": "Sayi kwas ɗin koyo na gani-gaka",
       "buyOnlineCourse": "Sayi kwas ɗin online",
-      "inPersonAccess": "Dole ne ka sauke tikitinka don samun damar shiga ajin gani-gaka."
+      "inPersonAccess": "Dole ne ka sauke tikitinka don samun damar shiga ajin gani-gaka.",
+      "paidCourse": "An biya"
     },
     "preview": {
       "letsgo": "Mu je",
@@ -240,7 +241,7 @@
       "feedbackSessionTitle": "Zaman ba da ra'ayi",
       "generalGrade": "Jimlar daraja",
       "length": "Tsayi",
-      "loading": "Lodawa...",
+      "loading": "Lodawa…",
       "neutral": "Tsaka-tsaki",
       "no": "a'a",
       "notReally": "A'a, ba haka ba",
@@ -258,7 +259,14 @@
       "currentlyLoggedOut": "Yanzu haka an fita daga cikin asus. Don ba mu ra'ayi kan darasin, don Allah <0>shiga ko a yi rijista</0>.",
       "feedbackDescription": "Da fatan za a ƙididdige kwarewar ku da darasin a ƙasa.\nWannan ba da ra'ayi wajibi ne don samun damar zuwa jarrabawar ƙarshe da tabbatar da darasin.\nA lura cewa malamai ba za su sami damar ganin bayanan kowane mai koyo ba.",
       "veryBad": "mugun gaske",
-      "writeThoughts": "Anan za ka/ki iya rubuta ra'ayoyinka/ki"
+      "writeThoughts": "Anan za ka/ki iya rubuta ra'ayoyinka/ki",
+      "whatStudentsSay": "Abin da dalibai ke cewa akan wannan kwas",
+      "displayOutOf": "an nuna a cikin",
+      "edit": "Gyara",
+      "fieldRequired": "Wajibi ne cike wannan gurbi",
+      "skip": "Tsallake shawarwari",
+      "loadMoreComments": "Loda ƙarin ra'ayoyi",
+      "ratingsAndReviews": "Bayanai da ra'ayoyi"
     },
     "unreleased": {
       "colcardAndSparrow": "Coldcard da Sparrow",
@@ -318,7 +326,11 @@
       "qr_unified": "Wannan lambar QR na gaba daya, don haka yana karɓar biyan kuɗin da ke lightning da on-chain.",
       "teacher": "Malami",
       "teachers": "Malamai",
-      "time": "Lokaci"
+      "time": "Lokaci",
+      "inPersonCallout": "Ka/kina gab da sayan damar shiga wannan kwas na <strong>fuska-da-fuska.</strong>",
+      "onlineCallout": "Ka/kina gab da sayan damar shiga wannan kwas <strong>ta yanar gizo. </strong>",
+      "onlineDescription": "Kowane zaman ajin ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga watsawar kai tsaye da bidiyon maimaitawa.",
+      "inPersonDescription": "Kowane zaman ajin yana gudana a zahiri a kwanaki da wuraren da aka sa, kuma ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga ajin na zahiri da na kan layi(online).\nKada ka/ki manta da kama kujerarka/ki don ajin da ka/kike son halarta a zahiri."
     },
     "part": {
       "count": "Rukuni {{count}}"
@@ -360,7 +372,25 @@
       "timeStampHowDescription": "Lokacin da aka samar da digirinka, ana ƙirƙirar \"fingernail\" na dijital na musamman wanda aka adana a kan blockchain. Wannan yana sa adana shi ya zama dindindin kuma ba za a iya canza shi ba. Kowanne yunkuri na canza digirinka zai karya haɗin, wanda zai bayyana canjin.",
       "timerStart": "Da zarar ka/kin danna Start, agogon lokaci na minti 20 zai fara.",
       "tryAgain": "Asake gwadawa",
-      "tryOneMoreTime": "Bari mu kara gwadawa a sabon karo !"
+      "tryOneMoreTime": "Bari mu kara gwadawa a sabon karo !",
+      "dontGiveUpTryAgain": "Kada ka/ki karaya! \nZaka/ki iya kara gwadawa bayan sa'o'i 24.",
+      "examAndDiploma": "Jarabawa & Takardar Shaida",
+      "failed": "An kasa",
+      "findInformationChapter": "Samu karin bayani a wannan babi :",
+      "futureProof": "Tabbatacce: Takardar shaidarka tana da kariya har abada kuma tana da inganci koda yaushe.",
+      "getCertificate": "Samu takardar shaidata",
+      "globallyRecognized": "Amincewa ta Duniya: Takardar shaida mai ɗauke da bayanan blockchain ana amincewa da ita a duk faɗin duniya.",
+      "goBack": "Koma baya",
+      "goodLuck": "Fatan nasara !",
+      "verifyDisplayName": "Kafin ka/ki fara, don Allah ka/ki tabbatar da sunan da aka nuna a ƙasa, domin za a yi amfani da shi wajen samar maka da takardar shaidar kammala karatunka/ki.",
+      "whyTimeStamp": "Yin Lura da Lokacin Takardar Shaida Ta Hanyar Timestamp: \nMe Yasa Yake Da Mahimmanci",
+      "wishTryAgain": "Idan ka/kina son sake gwadawa, za a sake ba da damar jarabawar bayan awanni 24.",
+      "yesSubmit": "Eh, aika",
+      "congratulationsPassed": "Muna taya murna, ka/kin <0>ci nasara</0> a jarabawar ƙarshe!",
+      "dontWorry": "Kada ka/ki damu da kuskure; wannan jarabawar tana taimakawa wajen karfafa koyonka/ki. Idan ba ka/ki ci nasara ba, za ka/ki iya kara gwadawa bayan sa'o'i 24.",
+      "examDetails": "Jarabawar tana da tambayoyi masu zaɓuɓɓuka guda 40, kowacce tambaya tana da amsa guda ɗaya dai-dai. Za ka/ki iya canza amsoshinka/ki a kowane lokaci kafin ka/ki aika, muddin agogon ƙididdiga yana gudana.",
+      "explanations": "Bayanai :",
+      "finalExam": "Jarrabawar Karshe"
     }
   },
   "dashboard": {
@@ -413,7 +443,7 @@
       "edit": "Gyara",
       "cancel": "Soke",
       "save": "Ajiye",
-      "saving": "Ana ajiyewa...",
+      "saving": "Ana ajiyewa…",
       "crop": "Rage",
       "preview": "Bayanan farko",
       "displayName": "Sunan ka",
@@ -422,7 +452,8 @@
       "personalInformation": "Bayanina na kansa",
       "profileInformation": "Bayanan na Asali",
       "emailChangeConfirmation": "Antura maka imel na tabbatarwa don canja imel ɗin ka an aika, don Allah duba akwatin saƙonka don tabbatawa.",
-      "profile": "Baya nan mutum"
+      "profile": "Baya nan mutum",
+      "emailChangeRateLimitError": "An riga an aika da buƙatar canjin imel kasa da da minti 5 da suka wuce, don Allah a dan jira kafin a sake gwadawa."
     },
     "courses": "Darasi",
     "logout": "Fita daga asusun",
@@ -436,7 +467,13 @@
       "seeProgress": "don gani yadda ka ke ci gaba nan.",
       "startCourse": "Fara ko ka kammala darasi",
       "completedCoursesTitle": "Darasin da aka kammala",
-      "inprogressCoursesDescription": "Tanan zaka iya duba cigaban darusan da ka fara."
+      "inprogressCoursesDescription": "Tanan zaka iya duba cigaban darusan da ka fara.",
+      "completedOutOf": "{{completed}} na cikin darussan da aka kammala daga {{total}} da ake da su",
+      "downloadPdf": "Sauke PDF",
+      "done": "An gama",
+      "whereYouAre": "Bari mu ga inda ka/kike!",
+      "viewDetails": "Duba cikakkun bayanai",
+      "yourCertificate": "Takardar shaidarka/ki"
     },
     "teacher": {
       "courses": {
@@ -494,6 +531,30 @@
         "viewDetails": "Duba cikakkun bayanai",
         "writtenFeedbacks": "Ra'ayoyi da aka rubuta"
       }
+    },
+    "course": {
+      "checkDetailsCompleted": "A nan zaka/ki iya duba dukkan bayanai game da wannan kwas ɗin da ka/kika kammala.",
+      "completionDiploma": "Takardun kammala kwas",
+      "completionExamInfo": "A nan zaka/ki iya samun bayanan da suka shafi jarabawar ƙarhse a ƙarshen wannan kwas ɗin.",
+      "coursesCompleted": "Kwasa-kwasan da aka kammala",
+      "tweetText": "Ina farin cikin kammala kwas din {{courseId}} a @planb_network da kuma samun takardar shaida ta tare da maki {{score}}/100 a jarabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}",
+      "feedbacks": "Akwai wani babi a ƙarshen kwas ɗinnan da aka keɓe don ra'ayoyi. Idan kuna son ba da ra'ayinku yanzu, za ku iya yin hakan anan.",
+      "ratingsAndFeedbacks": "Bayanai da Ra'ayoyi",
+      "shareOnSocials": "Yada akan kafofin sada zumunta:"
+    },
+    "credentials": {
+      "completionDiplomas": "Takardun kammala kwas",
+      "downloadTicket": "Dauko tikiti",
+      "seatBooked": "An adana wurin zamanka/ki na jarabawar",
+      "takePlaceAt": "Zaman zai gudana a",
+      "yourCertificate": "Takardar shaidarka",
+      "globalCertifications": "Takardun shaida na duniya",
+      "retakeExam": "Sake yin jarabawa",
+      "courseDiplomas": "Takardun shaidar ƙwararrun kwasa-kwasai",
+      "courseDiplomasSubtitle": "A nan zaka/ki iya samun cikakkun bayanai game da duk gwaje-gwajen da ka/kika yi bayan kammala kwas ɗin akan dandalin.",
+      "bCertificate": "Takardar shaida ta ₿",
+      "bCertificateSubtitle": "A nan za ka iya samun cikakkun bayanai game da ajiyar ka da darajojin takardun shaida na ₿ da ka gabatar da kuma waɗanda za su zo nan gaba. Takardar shaida ta ₿ jarabawar tebur ce da Plan ₿ Network ke shiryawa don tantance matakin ka/ki gameda Bitcoin da batutuwan da suka shafe shi.",
+      "beingGraded": "Ana duba jarabawar ka/ki. Sakamakon zai kasance cikin makonni 1 ko 2."
     }
   },
   "events": {
@@ -636,7 +697,10 @@
     "question1": "Mene ne node?",
     "question3": "Mai ake bukata ?",
     "question4": "Mene ne girman node ?",
-    "question5": "Menene shirin sirri ?"
+    "question5": "Menene shirin sirri ?",
+    "descriptionextend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
+    "mobiledescription": "Muna yarda cewa ilimi bai kamata ya kasance kawai akan layi (online) ba, ya kamata a ce ya kasance a wurare na zahiri. Domin cimma wannan, Plan B Network na gudanar da hanyar sadarwa na cibiyoyi a duk duniya da kuma maraba da masu tunani, masu gina abubuwa, da malamai waɗanda ke haɓaka ci gaban Bitcoin da fasahohin 'yanci. Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu don taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
+    "applyhelp": "*Zaɓi Wurin Node"
   },
   "resources": {
     "books": {
@@ -671,7 +735,12 @@
       "title": "Kamus"
     },
     "headerSignature": "Rogzy",
-    "headerText": "Maraba da shiga cikin ramin Rabbit zomo mara iyaka na Bitcoin! A wannan sashin, za mu ba ku cikakkiyar koyarwa kan mafi yawan ayyukan Bitcoin. Wannan shafin yana kulawa da masu son wannan aikin tushen bude (open source). Idan anji mun yi kuskure, don Allah a tuntube mu. Don ganin alaƙar mu ta kudi da aikin, duba rahotonmu na bayyana gaskiya. Mun gode da amincewarku a wannan jami'a. da fatan kuma za ku ji dadin tafiyar."
+    "headerText": "Maraba da shiga cikin ramin Rabbit zomo mara iyaka na Bitcoin! A wannan sashin, za mu ba ku cikakkiyar koyarwa kan mafi yawan ayyukan Bitcoin. Wannan shafin yana kulawa da masu son wannan aikin tushen bude (open source). Idan anji mun yi kuskure, don Allah a tuntube mu. Don ganin alaƙar mu ta kudi da aikin, duba rahotonmu na bayyana gaskiya. Mun gode da amincewarku a wannan jami'a. da fatan kuma za ku ji dadin tafiyar.",
+    "newsletter": {
+      "title": "Labarai ta Imel"
+    },
+    "pageSubtitleBooks": "Wani littafi da zaka /ki iya so:",
+    "pageSubtitlePodcast": "Wani shirin sauti da zaka/ki iya so:"
   },
   "payment": {
     "proceedToPayment": "Ci gaba da biyan kuɗi",
@@ -764,7 +833,8 @@
       "link": "Kalli dukkanin abun karatu",
       "title": "Ilimin Bitcoin ya sauya zuwa kalmar mai sauƙi.",
       "subtitle1": "Mun taimaka maka waje fahimtar fasa ta hanyoyi da dama!",
-      "content1": "Bitcoin yana ci gaba da sauyawa, tare da fitowar sabbin masu ruwa da tsaki, mafita, tsarin sadarwa, da ci gaban fasaha. Saboda haka, yana iya zama kalubale a kiyaye ingantacciyar bayanai da darussan koyarwa da ke sabo. A nan a Plan ₿, mun cimma wannan nasara. Ko kai sabon shiga ne ko kuma mai gogewa, za ka iya samun darussa da dama don bincika masana'antarmu bisa bukatunka."
+      "content1": "Bitcoin yana ci gaba da sauyawa, tare da fitowar sabbin masu ruwa da tsaki, mafita, tsarin sadarwa, da ci gaban fasaha. Saboda haka, yana iya zama kalubale a kiyaye ingantacciyar bayanai da darussan koyarwa da ke sabo. A nan a Plan ₿, mun cimma wannan nasara. Ko kai sabon shiga ne ko kuma mai gogewa, za ka iya samun darussa da dama don bincika masana'antarmu bisa bukatunka.",
+      "link2": "Duba dukkanin kayayyakin"
     },
     "aboutUsSection": {
       "title": "Su waye mu?",
@@ -801,7 +871,8 @@
       "availableLanguages": "Harsunan da ke akwai",
       "subtitle": "Komai ana fassara shi zuwa harsunan gida!",
       "content1": "A PlanB, muna ganin Bitcoin juyin juya halin kasa da kasa ne da ya shafi kowa. Don karfafa miliyoyin mutane, muna ƙirƙirar wannan dandali don ya kasance mai harsuna da yawa da kuma samuwa ga kowa. Dandalin a halin yanzu yana goyon bayan harsuna 7, kuma ana ƙara wasu kowanne wata. Don cimma wannan, muna amfani da haɗin gwiwar AI da sha'awar masu Bitcoin daga ko ina cikin duniya.",
-      "content2": "Ku ma za ku iya fara gina hanyar sadarwarku ta gida a ƙasar ku!"
+      "content2": "Ku ma za ku iya fara gina hanyar sadarwarku ta gida a ƙasar ku!",
+      "availableLanguagesVariation": "Harsunan da ake da su: "
     },
     "patreonSection": {
       "title": "Tare, mu inganta ilimin Bitcoin !",
@@ -826,7 +897,7 @@
       "didHelp": "Wan nan ya taimaka?",
       "enjoyed": "Kaji dadin wan nan karatun?",
       "madeBy": "Wanda yayi wan nan karatun shine",
-      "source": "Rahoton asalin: ",
+      "source": "Rahoton asalin:",
       "tipTooltip": "Kana sonshi? Bashi kyauta.",
       "writtenBy": "Wanda yayi wan nan karatun shine :",
       "checkAuthor": "Duba aikin da marubucin ya yi a wani bangare kuma kabashi goyon baya a sauran aikinsa."
@@ -925,7 +996,9 @@
     "github": "Github",
     "p1": "Zomo ya fada cikin rami. Saboda wannan ba zato ba tsammani, wannan shafin yana ƙarƙashin gini a halin yanzu. Muna ba da hakuri kan duk wata matsala. Tawagar mu na aiki tukuru don kammala wannan shafin. Idan kuna da sha'awar bayar da taimako, don Allah kar ku yi shakkar tuntubarmu",
     "p2": "kuma ku yi yunkurin shiga cikin al'ummarmu!",
-    "pageTitle": "Kash."
+    "pageTitle": "Kash.",
+    "itemNotFoundOrTranslated": "{{item}} bai samu ba, ko kuma ba a fassara shi zuwa harshenka/ki ba",
+    "itemNotFound": "ba a samu {{item}} ba"
   },
   "words": {
     "about": "Game da",
@@ -972,7 +1045,8 @@
       "intermediate": "Tsaka-tsaki",
       "level": "Matsayi",
       "levels": "Matakai",
-      "wizard": "Kwararre"
+      "wizard": "Kwararre",
+      "beginnerFriendly": "‬‬Mai dacewa da masu farawa"
     },
     "lectures": "Laccoci",
     "library": "Dakin karatu",
@@ -1051,6 +1125,28 @@
     "wallets": "Lalita",
     "network": "Hanyar sadarwa",
     "networkMember": "Memba na hanyar sadarwa",
-    "newsletter": "Jaridar Labarai"
+    "newsletter": "Jaridar Labarai",
+    "progress": "Ci gaba",
+    "teacher": "Mai Koyarwa",
+    "writtenByPodcasts": "Wanda ya/ta rubuta:",
+    "booked": "An kama",
+    "bookings": "Kamu",
+    "credentials": "Takardun shaida",
+    "diploma": "Takardar shaidar kammala karatu",
+    "filter": "Tace",
+    "failed": "An kasa",
+    "goal": "Manufa",
+    "grade": "Daraja",
+    "id": "ID",
+    "overview": "Bayanin bai-ɗaya",
+    "passed": "An yi nasara",
+    "publicationDate": "Ranar da aka wallafa:",
+    "ratings": "Darajoji",
+    "status": "Matsayi",
+    "total": "JImlila",
+    "inPerson": "Fuska-da-fuska",
+    "inReview": "Ana kan dubawa",
+    "location": "Wuri",
+    "required": "Ana bukata"
   }
 }

@@ -36,7 +36,9 @@
       "usernameTooShort": "O nome de utilizador deve conter pelo menos 5 caracteres.",
       "displayNameRegex": "Nome exibido pode conter apenas letras, dígitos,_,.,- e espaços.",
       "displayNameRequired": "Nome é necessário.",
-      "displayNameTooShort": "Nome deve conter ao menos 2 caracteres."
+      "displayNameTooShort": "Nome deve conter ao menos 2 caracteres.",
+      "invalidCredentials": "",
+      "emailInvalid": ""
     },
     "forgottenPassword": "Esqueceste-te da tua palavra-passe?",
     "headerAccountCreated": "Conta criada",
@@ -56,7 +58,7 @@
     "backToHome": "Tela inicial",
     "invalidToken": "Token inválido",
     "checkingToken": "Confira o token",
-    "checkingTokenExplain": "Estamos conferindo se o token é válido",
+    "checkingTokenExplain": "Estamos conferindo se o token é válido…",
     "invalidTokenExplain": {
       "expired": "O token expirou",
       "consumed": "Este token já foi utilizado",
@@ -65,7 +67,11 @@
     },
     "passwordResetError": "Erro no reset da senha",
     "passwordResetSent": "Instruções para o reset da senha foram enviados para sua caixa (se o email exisitir em nosso cadastro)",
-    "tryAgain": "Tente novamente"
+    "tryAgain": "Tente novamente",
+    "displayName": "",
+    "confirmation": "",
+    "oldPassword": "",
+    "emailTip": ""
   },
   "bet": {
     "contribute": "Este kit de ferramentas está aberto para contribuição. Ele usa Figma, para que qualquer pessoa possa adicionar, modificar e traduzir. Para colaborar, adicionar uma categoria ou discussão, não hesites em juntar-te ao nosso discord.",
@@ -98,7 +104,7 @@
     "offeredBy": "Oferecido por um(a) contribuidor(a) generoso(a)",
     "pageSubtitle": "Esta biblioteca é open-source e aberta para contribuição. Gratidão por avaliar e compartilhar!",
     "pageTitle": "A biblioteca",
-    "topicsAddressed": "Tópicos abordados: "
+    "topicsAddressed": "Tópicos abordados:"
   },
   "builders": {
     "pageSubtitle": "Este portal é open-source e aberto para contribuição. Gratidão por avaliar e compartilhar!",
@@ -152,7 +158,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Description",
       "duration": "Duração: {{hours}} horas",
-      "goal": "GOAL: ",
+      "goal": "GOAL:",
       "level": "Nível: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} capítulos",
@@ -177,7 +183,11 @@
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "inPersonAccess": "",
+      "buyOnlineCourse": "",
+      "paidCourse": "",
+      "buyInPersonCourse": ""
     },
     "explorer": {
       "footerTitle": "Os nossos professores estão aqui para ti !",
@@ -231,7 +241,11 @@
       "description": "Esta compra garantirá a você o acesso aos cursos on-line da plataforma bem como das aulas presenciais, desde que você reserve sua vaga. Cada sessão de aulas acontecem presencialmente nas datas e locais específicos antes de serem gravadas e transmitidas on-line na plataforma.",
       "book_description": "Por avor confira os detalhes fornecidos do local,\nUma vez efetuada a reserva, nós te forneceremos um ingresso com a confirmação e um QR code, para ser apresentado no evento.",
       "qr_unified": "Este QR code é unificado, aceitando pagamentos lightning and on-chain.",
-      "time": "Hora"
+      "time": "Hora",
+      "inPersonCallout": "",
+      "onlineCallout": "",
+      "onlineDescription": "",
+      "inPersonDescription": ""
     },
     "preview": {
       "by": "por {{professor}}",
@@ -254,6 +268,100 @@
       "financialCrisis": "Análise das maiores crises financeiras",
       "hyperinflation": "Estudo das hiperinflações",
       "theoreticalLightning": "Curso teórico avançado sobre a Lightning Network"
+    },
+    "exam": {
+      "certificateAvailable": "",
+      "congratulations": "",
+      "dontWorry": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "explanations": "",
+      "failed": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instantVerification": "",
+      "noGoBack": "",
+      "notTranslatedYet": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passed": "",
+      "passRate": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "retakeExam": "",
+      "retakeInstructions": "",
+      "sameRules": "",
+      "score": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "sureSubmit": "",
+      "tamperProof": "",
+      "wishTryAgain": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "certificateGeneration": "",
+      "instructions": "",
+      "letsConclude": "",
+      "testKnowledge": "",
+      "testResults": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "yesSubmit": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "congratulationsPassed": "",
+      "tryOneMoreTime": ""
+    },
+    "review": {
+      "commentTeacher": "",
+      "currentlyLoggedOut": "",
+      "difficulty": "",
+      "displayOutOf": "",
+      "edit": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "neutral": "",
+      "no": "",
+      "notReally": "",
+      "quality": "",
+      "ratingsAndReviews": "",
+      "skip": "",
+      "soAndSo": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "tooHard": "",
+      "tooLong": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "writeThoughts": "",
+      "yesVeryMuch": "",
+      "commentPublic": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "loading": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "faithful": "",
+      "recommend": ""
     }
   },
   "dashboard": {
@@ -267,7 +375,13 @@
       "completedCoursesTitle": "Cursos finalizados",
       "completedCoursesDescription": "Aqui você confere seus cursos finalizados.",
       "seeProgress": "para ver seu progresso aqui.",
-      "startCourse": "Inicie ou finalize um curso"
+      "startCourse": "Inicie ou finalize um curso",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "viewDetails": "",
+      "yourCertificate": "",
+      "whereYouAre": ""
     },
     "account": "Conta",
     "courses": "Cursos",
@@ -297,7 +411,7 @@
       "emailChangeConfirmation": "Confirmação da mudança de email foi enviado, confira sua caixa de entrada para confirmar.",
       "cancel": "Cancelar",
       "save": "Salvar",
-      "saving": "Salvando...",
+      "saving": "Salvando…",
       "personalInformation": "Meus dados pessoais",
       "profileInformation": "Informação do perfil",
       "change": "Mudar",
@@ -308,7 +422,9 @@
       "security": "Segurança",
       "username": "Usuário",
       "displayName": "Nome",
-      "crop": "Cultura"
+      "crop": "Cultura",
+      "emailChangeRateLimitError": "",
+      "profile": ""
     },
     "calendar": {
       "calendar": "Calendário",
@@ -329,7 +445,88 @@
       "findResults": "Aqui você pode encontrar todos resultados dos exames do Certiicado ₿ que você prestou quando registrado com sua conta. Os resultados geralmente levam entre 2 e 3 semanas para ficarem disponíveis. Se após um longo período seus resultados não aparecerem aqui, favor contactar-nos.",
       "wantToPass": "Quer prestar um exame?"
     },
-    "administration": "Administração"
+    "administration": "Administração",
+    "course": {
+      "checkDetailsCompleted": "",
+      "completionDiploma": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "credentials": {
+      "bCertificate": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "courseDiplomasSubtitle": "",
+      "completionDiplomas": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "teacher": {
+      "reviews": {
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": "",
+        "privateComment": "",
+        "publicComment": "",
+        "review": "",
+        "reviews": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": ""
+      },
+      "courses": {
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": "",
+        "courseLongDescription": "",
+        "courseModification": "",
+        "courseName": "",
+        "courseShortDescription": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "examResults": "",
+        "makeModifications": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "reviews": ""
+      },
+      "menu": "",
+      "profile": {
+        "account": "",
+        "billingInformations": "",
+        "chooseTags": "",
+        "description": "",
+        "descriptionTags": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "noShortBio": "",
+        "noTags": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "teacher": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      }
+    }
   },
   "events": {
     "introduction": {
@@ -427,7 +624,8 @@
       "title": "Tornar a educação em Bitcoin simples é o nosso objetivo.",
       "subtitle1": "Ajudamos você a dominar a tecnologia com inúmeros tutoriais detalhados!",
       "content1": "O Bitcoin está em constante evolução, com novos atores, soluções, protocolos e avanços tecnológicos vindos e vindo. Muitas vezes é difícil manter um único banco de dados preciso de bons tutoriais atualizados. Aqui no PlanB, foi isso que conseguimos. De iniciantes a usuários avançados, você pode navegar por centenas de tutoriais para explorar nossa indústria de acordo com suas necessidades.",
-      "link": "Ver todos os tutoriais"
+      "link": "Ver todos os tutoriais",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Quem nós somos?",
@@ -449,10 +647,11 @@
       "content1": "No PlanB, nós acreditamos que o Bitcoin é uma revolução internacional que diz respeito a todos. Para capacitar bilhões de pessoas, estamos projetando essa plataforma para ser multilingue e acessível a todos. A plataforma atualmente suporta 7 idiomas e mais estão sendo adicionados a cada mês. Para conseguir isso, usamos uma mistura de IA e a paixão de Bitcoiners ao redor do mundo.",
       "content2": "Tu também podes começar a iniciar a tua própria rede local no teu país!",
       "link": "Ajuda-nos a traduzir a academia",
-      "availableLanguages": "Idiomas disponíveis"
+      "availableLanguages": "Idiomas disponíveis",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
+      "title": "Together let's make Bitcoin education better !",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "A PlanB Network está orgulhosa de se juntar a muitas empresas bitcoin em todo o mundo, de modo a fornecer os melhores recursos educativos possíveis!"
     },
@@ -512,7 +711,8 @@
     "bCertificateDescription": "Preste o exame do Certificado ₿ e certifique seu nível de Bitcoin",
     "login": "Entrar",
     "glossaryDescription": "Entenda a linguagem do Bitcoin",
-    "loginRegister": "Entrar / Registrar"
+    "loginRegister": "Entrar / Registrar",
+    "publicDescription": ""
   },
   "nodeNetwork": {
     "answer1": "Um nó (node) é simplesmente uma comunidade Bitcoin que quer dar o próximo passo e acelerar a sua própria adoção de Bitcoin local! Não há nenhum tamanho mínimo para começar.",
@@ -528,7 +728,10 @@
     "question2": "O que ganho eu?",
     "question3": "Quais são os requisitos?",
     "question4": "Qual é o tamanho de um Nó?",
-    "question5": "Qual é o plano secreto?"
+    "question5": "Qual é o plano secreto?",
+    "applyhelp": "",
+    "descriptionextend": "",
+    "mobiledescription": ""
   },
   "notFound": {
     "here": "Aqui",
@@ -550,7 +753,14 @@
     "tips": {
       "noTipsYet": "Este(a) professor(a) não aceita gorjetas de momento.",
       "thanks": "Gratidão por apoiar o trabalho de {{name}}!",
-      "thanksNoName": "Gratidão por apoiar o meu trabalho !"
+      "thanksNoName": "Gratidão por apoiar o meu trabalho !",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "teachers": "",
+      "tutorialCreators": ""
     }
   },
   "resources": {
@@ -586,7 +796,12 @@
     "glossary": {
       "title": "Glossário"
     },
-    "searchFilterName": "Procura pelo nome"
+    "searchFilterName": "Procura pelo nome",
+    "newsletter": {
+      "title": ""
+    },
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Alterar palavra-passe",
@@ -599,7 +814,7 @@
       "checkAuthor": "Confere as outras contribuições do(a) autor(a) e apoia o seu trabalho.",
       "enjoyed": "Gostaste deste tutorial?",
       "madeBy": "Este tutorial foi feito por",
-      "source": "Fonte original: ",
+      "source": "Fonte original:",
       "tipTooltip": "Gostas? Deixa uma gorjeta.",
       "author": "Autor(a) : ",
       "didHelp": "Isto ajudou?",
@@ -657,7 +872,7 @@
       },
       "description": "A privacidade é um direito fundamental. Embora aspiremos a um mundo onde a privacidade é o padrão, não é ainda a realidade em que vivemos. Tentaremos explicar-te as melhores práticas, ajudar-te com os tutoriais e colocar-te num caminho mais soberano em relação aos teus dados.",
       "general": {
-        "description": "Na era da vigilância em massa, é essencial recuperar um certo nível de privacidade no  dia a dia. Dado que cada utilizador terá um certo grau de paranóia e conhecimento tecnológico, é perfeitamente normal usar certas ferramentas e adaptá-las às suas necessidades. Aqui, exploraremos diferentes soluções de proteção como VPNs, Tor, Tails OS, PGP, mensagens criptografadas e muito mais."
+        "description": "Na era da vigilância em massa, é essencial recuperar um certo nível de privacidade no dia a dia. Dado que cada utilizador terá um certo grau de paranóia e conhecimento tecnológico, é perfeitamente normal usar certas ferramentas e adaptá-las às suas necessidades. Aqui, exploraremos diferentes soluções de proteção como VPNs, Tor, Tails OS, PGP, mensagens criptografadas e muito mais."
       },
       "shortDescription": "Ferramentas para backup e manutenção da privacidade",
       "title": "Privacidade"
@@ -700,7 +915,9 @@
     "github": "GitHub",
     "p1": "Um coelho caiu numa toca. Devido a esta aventura inesperada, esta página está de momento em construção. Pedimos desculpas por qualquer inconveniente. A nossa equipa encontra-se em plena engrenagem para concluir esta página. Se estás interessado(a) em dar uma ajuda, por favor, não hesites em conferir os nossos",
     "p2": "e considera fazer parte da nossa comunidade!",
-    "pageTitle": "Oops."
+    "pageTitle": "Oops.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "Sobre",
@@ -746,7 +963,8 @@
       "intermediate": "Intermédio",
       "wizard": "Nível Wizard",
       "level": "Nível",
-      "levels": "Níveis"
+      "levels": "Níveis",
+      "beginnerFriendly": ""
     },
     "library": "Biblioteca",
     "lightning": "Lightning",
@@ -818,7 +1036,37 @@
     "onChainAddress": "Endereço On chain",
     "admins": "Admins",
     "lightningInvoice": "Fatura Ligthning",
-    "unified": "Unificado"
+    "unified": "Unificado",
+    "credentials": "",
+    "diploma": "",
+    "part": "",
+    "passed": "",
+    "progress": "",
+    "publicationDate": "",
+    "public": "",
+    "ratings": "",
+    "writtenByPodcasts": "",
+    "chapter": "",
+    "communities": "",
+    "booked": "",
+    "bookings": "",
+    "builder": "",
+    "filter": "",
+    "failed": "",
+    "goal": "",
+    "grade": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "inReview": "",
+    "lectures": "",
+    "location": "",
+    "overview": "",
+    "required": "",
+    "status": "",
+    "teacher": "",
+    "total": "",
+    "view": ""
   },
   "conferences": {
     "addConferences": "Sinta-se a vontade para acrescentar qualquer conferência através deste repositório do <0>Github</0>",
@@ -865,7 +1113,8 @@
     "organizeTitle": "Quer organizar um Certificado BITCOIN no seu hub?",
     "pageSubtitle": "Adoção em massa através de educação open-source centralizada",
     "readChart": "Leia o quadro",
-    "checkout": "Confira o Certificado ₿"
+    "checkout": "Confira o Certificado ₿",
+    "tweetText": ""
   },
   "glossary": {
     "notTranslated": "Os dados do glossário ainda não foram traduzidos,\nSe você quiser ajudar, sinta-se a vontade de contibuir no nosso",
@@ -894,13 +1143,18 @@
       "grants": "Bolsas",
       "all": "Tudo",
       "course": "Lançamento de curso",
-      "patch": "Notas"
+      "patch": "Notas",
+      "content": "",
+      "feature": ""
     },
     "legalSections": {
       "contact": "Contato",
       "general": "Geral",
       "cookies": "Cookies",
-      "privacy": "Privacidade"
+      "privacy": "Privacidade",
+      "legalNotice": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
     },
     "goBackButtons": {
       "simpleGoBack": "Retorne aos artigos"
@@ -915,5 +1169,13 @@
       "filterText": "Filtrar por tópico :",
       "noBlogs": "Neste momento não há artigos"
     }
+  },
+  "proofreading": {
+    "completed": "",
+    "description": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": "",
+    "thanks": ""
   }
 }

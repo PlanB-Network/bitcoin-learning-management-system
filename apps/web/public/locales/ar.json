@@ -33,7 +33,12 @@
     "errors": {
       "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, _, und - enthalten",
       "usernameRequired": "Benutzername erforderlich",
-      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten"
+      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten",
+      "emailInvalid": "",
+      "displayNameRequired": "",
+      "displayNameTooShort": "",
+      "invalidCredentials": "",
+      "displayNameRegex": ""
     },
     "forgottenPassword": "Passwort vergessen ?",
     "headerAccountCreated": "Konto erstellt",
@@ -44,7 +49,29 @@
     "passwordRequired": "Passwort ist erforderlich",
     "passwordsDontMatch": "Passwörter stimmen nicht überein",
     "sendLink": "Link versenden",
-    "signIn": "Einloggen"
+    "signIn": "Einloggen",
+    "confirmation": "",
+    "oldPassword": "",
+    "invalidTokenExplain": {
+      "invalid": "",
+      "notFound": "",
+      "expired": "",
+      "consumed": ""
+    },
+    "passwordResetError": "",
+    "tryAgain": "",
+    "displayName": "",
+    "backToLogin": "",
+    "backToHome": "",
+    "invalidToken": "",
+    "checkingToken": "",
+    "newPassword": "",
+    "passwordMinLength": "",
+    "passwordChanged": "",
+    "passwordSuccessfullyChanged": "",
+    "emailTip": "",
+    "passwordResetSent": "",
+    "checkingTokenExplain": ""
   },
   "bet": {
     "contribute": "Dieses Toolkit ist offen für einen Beitrag. Es verwendet Figma, so dass jeder etwas hinzufügen, verändern und übersetzen kann. Um zusammenzuarbeiten, erstelle eine Kategorie oder starte eine Unterhaltung. Zögere nicht und komme in unseren Discord.",
@@ -59,7 +86,10 @@
     "visualContent": {
       "description": "Dieser Inhalt sind Rohdaten für deine Projekte.",
       "title": "Visueller Inhalt"
-    }
+    },
+    "contributeDescription": "",
+    "contributeTitle": "",
+    "contributeButton": ""
   },
   "book": {
     "abstract": "Abstrakt",
@@ -74,18 +104,23 @@
     "offeredBy": "Von einem großzügigen Mitwirkenden angeboten",
     "pageSubtitle": "Diese Bibliothek ist Open-Source & offen für Änderungen. Danke fürs bewerten und teilen !",
     "pageTitle": "Die Bibliothek",
-    "topicsAddressed": "Aufgegriffene Themen: "
+    "topicsAddressed": "Aufgegriffene Themen:"
   },
   "builders": {
     "pageSubtitle": "Dieses Portal ist Open Source & offen für Ergänzungen. Vielen Dank fürs bewerten und teilen!",
-    "pageTitle": "Das Builder Portal"
+    "pageTitle": "Das Builder Portal",
+    "languages": "",
+    "relatedEvents": "",
+    "networkStrength": "",
+    "otherCommunities": "",
+    "noRelatedEvents": ""
   },
   "courses": {
     "categories": {
       "btc": "Bitcoin",
       "crypto": "Kryptographie",
       "cuboplus": "Bitcoin",
-      "econ": "Österreichische Ökonomie ",
+      "econ": "Österreichische Ökonomie",
       "fin": "Finanzen",
       "ln": "Lightning Network",
       "min": "Mining",
@@ -123,7 +158,7 @@
       "dates_to": "{{startDate}} to {{endDate}}",
       "description": "Beschreibung",
       "duration": "Dauer: {{hours}} Stunden",
-      "goal": "ZIEL: ",
+      "goal": "ZIEL:",
       "level": "Stufe: $t(words.level.{{level}})",
       "mobile": {
         "chapters": "{{chapters}} Kapitel",
@@ -131,7 +166,7 @@
       },
       "numberOfChapters": "Anzahl der Kapitel: {{number}}",
       "objectives": "Ziele",
-      "objectivesTitle": "Was werden Sie mit diesem Kurs lernen?",
+      "objectivesTitle": "ماذا ستتعلم:",
       "price": "Price: {{price}} sats",
       "professor": "Professor",
       "startCourse": "Kurs beginnen",
@@ -148,7 +183,11 @@
       "terms1": "See our",
       "terms2": "general terms",
       "terms3": "and conditions for refund details",
-      "terms4": "Fee distribution: Author 99 % - Plateform 1 %"
+      "terms4": "Fee distribution: Author 99 % - Plateform 1 %",
+      "paidCourse": "",
+      "buyInPersonCourse": "",
+      "buyOnlineCourse": "",
+      "inPersonAccess": ""
     },
     "explorer": {
       "footerTitle": "Unsere Professoren sind für Sie da!",
@@ -164,7 +203,12 @@
       "s2t1": "Bitcoin-Bildung ist eine Reise ohne Ziel",
       "s3PickLevel": "Level wählen:",
       "s3PickTopic": "Themen wählen:",
-      "s3t1": "Alle Kurse sind nach deren Hauptthema benannt"
+      "s3t1": "Alle Kurse sind nach deren Hauptthema benannt",
+      "buildPath": "",
+      "exploreCourses": "",
+      "journey": "",
+      "findCourses": "",
+      "seeCourse": ""
     },
     "footer": {
       "": ""
@@ -197,7 +241,11 @@
       "description": "",
       "book_description": "",
       "qr_unified": "",
-      "time": ""
+      "time": "",
+      "onlineDescription": "",
+      "inPersonDescription": "",
+      "inPersonCallout": "",
+      "onlineCallout": ""
     },
     "preview": {
       "by": "von {{professor}}",
@@ -220,6 +268,100 @@
       "financialCrisis": "Analyse der Finanzkrisen",
       "hyperinflation": "Analyse der Hyperinflation",
       "theoreticalLightning": "Theoretischer Kurs über das Lightning Netzwerk für Fortgeschrittene"
+    },
+    "exam": {
+      "letsConclude": "",
+      "notTranslatedYet": "",
+      "failed": "",
+      "certificateAvailable": "",
+      "certificateGeneration": "",
+      "examAndDiploma": "",
+      "examDetails": "",
+      "finalExam": "",
+      "findInformationChapter": "",
+      "globallyRecognized": "",
+      "goBack": "",
+      "instructions": "",
+      "planBTimeStamp": "",
+      "quitWithoutSubmitting": "",
+      "sureSubmit": "",
+      "testKnowledge": "",
+      "yesSubmit": "",
+      "answersReview": "",
+      "availableDashboard": "",
+      "dontWorry": "",
+      "noGoBack": "",
+      "oneMinuteLeft": "",
+      "oopsFailed": "",
+      "passRate": "",
+      "skipExam": "",
+      "skipExamGoConclusion": "",
+      "skipExamDescription": "",
+      "startExam": "",
+      "submit": "",
+      "tamperProof": "",
+      "testResults": "",
+      "timeStampHow": "",
+      "timeStampHowDescription": "",
+      "congratulations": "",
+      "retakeInstructions": "",
+      "explanations": "",
+      "futureProof": "",
+      "getCertificate": "",
+      "instantVerification": "",
+      "passed": "",
+      "retakeExam": "",
+      "sameRules": "",
+      "score": "",
+      "timeLeft": "",
+      "timeStampBenefits": "",
+      "timeStamped": "",
+      "timerStart": "",
+      "tryAgain": "",
+      "verifyDisplayName": "",
+      "whyTimeStamp": "",
+      "wishTryAgain": "",
+      "congratulationsPassed": "",
+      "dontGiveUpTryAgain": "",
+      "goodLuck": "",
+      "tryOneMoreTime": ""
+    },
+    "review": {
+      "skip": "",
+      "asExpected": "",
+      "commentAdmin": "",
+      "commentPublic": "",
+      "currentlyLoggedOut": "",
+      "edit": "",
+      "soAndSo": "",
+      "tooShort": "",
+      "veryBad": "",
+      "veryGood": "",
+      "whatStudentsSay": "",
+      "tooLong": "",
+      "neutral": "",
+      "no": "",
+      "tooHard": "",
+      "yesVeryMuch": "",
+      "difficulty": "",
+      "ratingsAndReviews": "",
+      "commentTeacher": "",
+      "displayOutOf": "",
+      "feedbackSessionTitle": "",
+      "fieldRequired": "",
+      "generalGrade": "",
+      "length": "",
+      "loadMoreComments": "",
+      "notReally": "",
+      "quality": "",
+      "submitReview": "",
+      "tooEasy": "",
+      "writeThoughts": "",
+      "recommend": "",
+      "faithful": "",
+      "feedbackDescription": "",
+      "yesOfCourse": "",
+      "loading": ""
     }
   },
   "dashboard": {
@@ -227,7 +369,19 @@
       "resumeLesson": "Resume the lesson",
       "completed": "",
       "details": "",
-      "inprogress": ""
+      "inprogress": "",
+      "yourCertificate": "",
+      "completedCoursesTitle": "",
+      "completedCoursesDescription": "",
+      "completedOutOf": "",
+      "done": "",
+      "downloadPdf": "",
+      "inprogressCoursesTitle": "",
+      "seeProgress": "",
+      "startCourse": "",
+      "viewDetails": "",
+      "inprogressCoursesDescription": "",
+      "whereYouAre": ""
     },
     "account": "",
     "courses": "",
@@ -251,7 +405,119 @@
       "upcomingTicketTitle": "",
       "upcomingTicketSubtitle": ""
     },
-    "bookings": ""
+    "bookings": "",
+    "administration": "",
+    "credentials": {
+      "bCertificate": "",
+      "courseDiplomasSubtitle": "",
+      "downloadTicket": "",
+      "globalCertifications": "",
+      "retakeExam": "",
+      "bCertificateSubtitle": "",
+      "beingGraded": "",
+      "courseDiplomas": "",
+      "completionDiplomas": "",
+      "seatBooked": "",
+      "takePlaceAt": "",
+      "yourCertificate": ""
+    },
+    "course": {
+      "completionDiploma": "",
+      "checkDetailsCompleted": "",
+      "completionExamInfo": "",
+      "coursesCompleted": "",
+      "feedbacks": "",
+      "ratingsAndFeedbacks": "",
+      "shareOnSocials": "",
+      "tweetText": ""
+    },
+    "profile": {
+      "profilePicture": "",
+      "cancel": "",
+      "security": "",
+      "preview": "",
+      "change": "",
+      "edit": "",
+      "save": "",
+      "crop": "",
+      "emailChangeRateLimitError": "",
+      "displayName": "",
+      "email": "",
+      "password": "",
+      "personalInformation": "",
+      "profile": "",
+      "profileInformation": "",
+      "username": "",
+      "emailChangeConfirmation": "",
+      "saving": ""
+    },
+    "bCertificate": {
+      "bookExam": "",
+      "certificate": "",
+      "grade": "",
+      "noResults": ""
+    },
+    "calendar": {
+      "calendar": "",
+      "personalCalendar": ""
+    },
+    "teacher": {
+      "profile": {
+        "teacher": "",
+        "noShortBio": "",
+        "noTags": "",
+        "billingInformations": "",
+        "descriptionTags": "",
+        "chooseTags": "",
+        "description": "",
+        "enterTipsInformations": "",
+        "lightningAddress": "",
+        "makeModifications": "",
+        "noLightningAddress": "",
+        "notifications": "",
+        "publicDescription": "",
+        "publicProfile": "",
+        "publicProfileDescription": "",
+        "writeShortBio": "",
+        "account": "",
+        "teacherProfile": "",
+        "tutorialModification": ""
+      },
+      "reviews": {
+        "privateComment": "",
+        "reviews": "",
+        "publicComment": "",
+        "review": "",
+        "reviewsAndGrading": "",
+        "seeStatistics": "",
+        "viewDetails": "",
+        "writtenFeedbacks": "",
+        "checkComments": "",
+        "checkReviews": "",
+        "noReviewsYet": ""
+      },
+      "courses": {
+        "makeModifications": "",
+        "courseModification": "",
+        "courseShortDescription": "",
+        "examResults": "",
+        "objectives": "",
+        "proposeNewCourse": "",
+        "reviews": "",
+        "courseLongDescription": "",
+        "courseName": "",
+        "coursesManagementPanel": "",
+        "curriculum": "",
+        "curriculumDescription": "",
+        "editOnGithub": "",
+        "quickRecap": "",
+        "reviewInfos": "",
+        "analytics": "",
+        "courseDetails": "",
+        "courseId": ""
+      },
+      "menu": ""
+    }
   },
   "events": {
     "introduction": {
@@ -340,7 +606,7 @@
       "link": "Check the academy"
     },
     "sectionNetwork": {
-      "title": "Access a  network of",
+      "title": "Access a network of",
       "subtitle": "Worldwide Bitcoin Campuses",
       "content1": "Connect with Bitcoin enthusiasts worldwide who share a common passion. From small communities meeting regularly to BTC educational centers, our network map will help you find the inspiration to learn and build. A wide range of services are available for enthusiasts, such as an incubation center, physical workshops, seminars, BTC retreats, and more. The network is open to everyone, so come say hi to your local BTC community!",
       "link": "Be part of the network"
@@ -349,7 +615,8 @@
       "title": "Making Bitcoin education simple is our objective.",
       "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
       "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials"
+      "link": "See all tutorials",
+      "link2": ""
     },
     "aboutUsSection": {
       "title": "Who are we ?",
@@ -371,12 +638,17 @@
       "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
       "content2": "You too can start bootstrapping your own local network in your country!",
       "link": "Help us translate the academy",
-      "availableLanguages": ""
+      "availableLanguages": "",
+      "availableLanguagesVariation": ""
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better ! ",
+      "title": "Together let's make Bitcoin education better !",
       "subtitle": "The PlanB Network is 100% open-source thanks to our generous patrons",
       "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
+    },
+    "wallOfLoveSection": {
+      "title": "",
+      "subtitle": ""
     }
   },
   "imagesAlt": {
@@ -426,7 +698,12 @@
     "supportUsDescription": "Finden Sie Wege, uns zu unterstützen, auf irgendeine Weise",
     "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner",
     "walletsDescription": "Sichern und verwenden Sie Ihre Bitcoins",
-    "conferencesDescription": ""
+    "conferencesDescription": "",
+    "bCertificateDescription": "",
+    "loginRegister": "",
+    "glossaryDescription": "",
+    "login": "",
+    "publicDescription": ""
   },
   "nodeNetwork": {
     "answer1": "A node is simply a bitcoin community that wants to move to the next step and accelerate its own local Bitcoin adoption ! There is no minimum size to start with.",
@@ -442,7 +719,10 @@
     "question2": "What do I gain?",
     "question3": "Was sind die Voraussetzungen?",
     "question4": "What size is a node?",
-    "question5": "What's the secret plan?"
+    "question5": "What's the secret plan?",
+    "descriptionextend": "",
+    "mobiledescription": "",
+    "applyhelp": ""
   },
   "notFound": {
     "here": "Hier",
@@ -464,7 +744,14 @@
     "tips": {
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !"
+      "thanksNoName": "Thanks for supporting my work !",
+      "authorSupport": ""
+    },
+    "navigationTitles": {
+      "all": "",
+      "lecturers": "",
+      "tutorialCreators": "",
+      "teachers": ""
     }
   },
   "resources": {
@@ -496,18 +783,33 @@
       "title": "Podcasts"
     },
     "publicGrade": "Öffentliche Klasse: {{grade}}/5",
-    "github": ""
+    "github": "",
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
+    "searchFilterName": "",
+    "newsletter": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    }
   },
   "settings": {
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "changeProfilePicture": "",
+    "changeEmail": "",
+    "changeDisplayName": ""
   },
   "tutorials": {
     "details": {
       "checkAuthor": "Check out the author's other contributions and support his work.",
       "enjoyed": "Enjoyed this tutorial?",
       "madeBy": "This tutorial has been made by",
-      "source": "Original source : ",
-      "tipTooltip": "Like it? Tip."
+      "source": "Original source :",
+      "tipTooltip": "Like it? Tip.",
+      "author": "",
+      "didHelp": "",
+      "writtenBy": ""
     },
     "exchange": {
       "centralized": {
@@ -522,7 +824,8 @@
     },
     "explorer": {
       "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?"
+      "didYouKnow": "Did you know?",
+      "exploreAllTutorials": ""
     },
     "headerSignature": "Rogzy",
     "headerText": "Willkommen in der unendlichen Kaninchenloch von Bitcoin ! Diese Seiten werden von benevolel und leidenschaftlichen Bitcoin gepflegt und unterstützen dieses Open-Source-Projekt. Wenn Sie einen Fehler gemacht haben, wenden Sie sich bitte an uns. Vielen Dank für Ihr Vertrauen in diese Universität und genießen Sie die Fahrt.",
@@ -595,13 +898,17 @@
       "general": {
         "description": ""
       }
-    }
+    },
+    "approvedByCreator": "",
+    "backTutorials": ""
   },
   "underConstruction": {
     "github": "GitHub",
     "p1": "Ein Kaninchen hat ein Loch niedergeschlagen. Aufgrund dieses unerwarteten Abenteuers befindet sich diese Seite im Moment noch im Bau. Wir entschuldigen uns für jegliche Unannehmlichkeiten. Unser Team ist in vollem Gang, um diese Seite zu vervollständigen. Wenn Sie Interesse an einer Hand haben, zögern Sie bitte nicht unsere Seite zu besuchen",
     "p2": "und erwägen Sie, unserer Community beizutreten!",
-    "pageTitle": "Hoppla."
+    "pageTitle": "Hoppla.",
+    "itemNotFound": "",
+    "itemNotFoundOrTranslated": ""
   },
   "words": {
     "about": "Über",
@@ -644,7 +951,11 @@
       "advanced": "Erweitert",
       "beginner": "Anfänger",
       "developer": "developer",
-      "intermediate": "Mittler"
+      "intermediate": "Mittler",
+      "level": "",
+      "beginnerFriendly": "",
+      "wizard": "",
+      "levels": ""
     },
     "library": "Bibliothek",
     "lightning": "Blitz",
@@ -695,7 +1006,58 @@
     "on": "",
     "online": "",
     "ticket": "",
-    "tickets": ""
+    "tickets": "",
+    "professor": "",
+    "progress": "",
+    "total": "",
+    "topics": "",
+    "all": "",
+    "amount": "",
+    "description": "",
+    "booked": "",
+    "bookings": "",
+    "diploma": "",
+    "duration": "",
+    "edit": "",
+    "failed": "",
+    "free": "",
+    "inReview": "",
+    "onChain": "",
+    "overview": "",
+    "paid": "",
+    "part": "",
+    "passed": "",
+    "price": "",
+    "public": "",
+    "students": "",
+    "teacher": "",
+    "unified": "",
+    "users": "",
+    "bCertificate": "",
+    "builder": "",
+    "onChainAddress": "",
+    "view": "",
+    "writtenByPodcasts": "",
+    "admins": "",
+    "chapter": "",
+    "communities": "",
+    "courseId": "",
+    "credentials": "",
+    "lectures": "",
+    "location": "",
+    "filter": "",
+    "glossary": "",
+    "publicationDate": "",
+    "ratings": "",
+    "required": "",
+    "start": "",
+    "status": "",
+    "goal": "",
+    "grade": "",
+    "hours": "",
+    "id": "",
+    "inPerson": "",
+    "lightningInvoice": ""
   },
   "conferences": {
     "topics": "",
@@ -726,5 +1088,81 @@
     "terms": "",
     "feeDistribution": "",
     "total": ""
+  },
+  "publicCommunication": {
+    "legalSections": {
+      "legalNotice": "",
+      "contact": "",
+      "privacyPolicy": "",
+      "termsOfSale": ""
+    },
+    "blogPageStrings": {
+      "featuredArticleTitleText": "",
+      "noArticlesText": "",
+      "errorMessageNotFound": "",
+      "pastArticleSubtitleText": "",
+      "blogListButtonText": "",
+      "blogSidebarTitle": "",
+      "filterText": "",
+      "noBlogs": ""
+    },
+    "title": "",
+    "blogPost": "",
+    "legal": "",
+    "blogCategories": {
+      "all": "",
+      "content": "",
+      "course": "",
+      "feature": "",
+      "patch": "",
+      "grants": "",
+      "network": ""
+    },
+    "goBackButtons": {
+      "simpleGoBack": ""
+    },
+    "description": ""
+  },
+  "glossary": {
+    "term": "",
+    "randomSearch": "",
+    "anotherWord": "",
+    "pageTitle": "",
+    "definition": "",
+    "loadMoreWords": "",
+    "pageSubtitle": "",
+    "notTranslated": "",
+    "placeHolder": "",
+    "relatedWords": "",
+    "filterBar": "",
+    "creditsLoic": "",
+    "needHelp": "",
+    "keepLooking": ""
+  },
+  "bCertificate": {
+    "knowledgeableBitcoin": "",
+    "noBookExam": "",
+    "bookExam": "",
+    "organizeSubtitle": "",
+    "pageSubtitle": "",
+    "organizeExam": "",
+    "checkout": "",
+    "organizeTitle": "",
+    "pageTitle": "",
+    "tweetText": "",
+    "joeNakamotoVideo": "",
+    "bCertificateDescription": "",
+    "curious": "",
+    "readChart": "",
+    "organizeDescription": "",
+    "challengeYourself": ""
+  },
+  "proofreading": {
+    "completed": "",
+    "inProgress": "",
+    "reviewEarn": "",
+    "status": "",
+    "description": "",
+    "thanks": ""
   }
 }

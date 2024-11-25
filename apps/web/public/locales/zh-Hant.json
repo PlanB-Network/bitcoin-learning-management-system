@@ -50,7 +50,7 @@
     "backToHome": "返回首頁",
     "invalidToken": "無效的Token",
     "checkingToken": "檢查Token",
-    "checkingTokenExplain": "我們正在檢查Token是否有效...",
+    "checkingTokenExplain": "我們正在檢查Token是否有效…",
     "invalidTokenExplain": {
       "expired": "該Token已過期",
       "consumed": "該Token已經被使用過",
@@ -88,7 +88,8 @@
     "organizeTitle": "想在您的中心舉辦比特幣證書考試嗎？",
     "pageSubtitle": "透過集中化的開源教育實現大規模採用",
     "pageTitle": "比特幣證書",
-    "readChart": "閱讀這張圖表"
+    "readChart": "閱讀這張圖表",
+    "tweetText": ""
   },
   "bet": {
     "contribute": "這個工具包開放大家做出貢獻。它使用 Figma，因此任何人都可以添加、修改和翻譯。若要協作、添加類別或討論，請隨時加入我們的 Discord。",
@@ -223,7 +224,8 @@
       "access_invoice": "您可以透過儀表板查看您的發票",
       "payment_details": "付款詳情",
       "amount": "金額",
-      "invoiceId": "交易ID"
+      "invoiceId": "交易ID",
+      "paidCourse": ""
     },
     "explorer": {
       "buildPath": "打造屬於你自己的探索之路",
@@ -283,7 +285,7 @@
       "feedbackSessionTitle": "回饋填寫",
       "generalGrade": "整體評分",
       "length": "長度",
-      "loading": "載入中...",
+      "loading": "載入中…",
       "loadMoreComments": "載入更多評論",
       "neutral": "中立",
       "no": "否",
@@ -304,7 +306,8 @@
       "yesOfCourse": "是的，當然可以",
       "yesVeryMuch": "是的，非常滿意",
       "skip": "跳過回顧",
-      "edit": "編輯"
+      "edit": "編輯",
+      "fieldRequired": ""
     },
     "part": {
       "count": "第 {{count}} 部分"
@@ -429,7 +432,7 @@
       "edit": "編輯",
       "cancel": "取消",
       "save": "儲存",
-      "saving": "儲存中...",
+      "saving": "儲存中…",
       "crop": "裁剪",
       "preview": "預覽",
       "displayName": "顯示名稱",
@@ -549,7 +552,8 @@
       "takePlaceAt": "會議將在此地進行",
       "yourCertificate": "您的證書",
       "bCertificateSubtitle": "在這裡，你可以找到有關你過去和未來比特幣 ₿ 證書的預約和成績的詳細資訊。\n比特幣 ₿ 證書是由 Plan ₿ Network 組織的表格考試，目標在評估你在比特幣及其相關主題的水平。",
-      "courseDiplomasSubtitle": "在這裡，您可以找到您在平台上完成課程後所參加的所有考試的詳細資訊。"
+      "courseDiplomasSubtitle": "在這裡，您可以找到您在平台上完成課程後所參加的所有考試的詳細資訊。",
+      "downloadTicket": ""
     }
   },
   "glossary": {
@@ -623,7 +627,7 @@
       "link": "成為網絡的一員"
     },
     "patreonSection": {
-      "title": "一起讓比特幣教育變得更好吧！ ",
+      "title": "一起讓比特幣教育變得更好吧！",
       "subtitle": "多虧了我們慷慨的支持者，Plan ₿ Network是完全開源的",
       "content": "Plan ₿ Network 很榮幸與全球多家比特幣公司合作，提供最佳的教育資源！"
     },
@@ -844,7 +848,7 @@
       "author": "作者： ",
       "checkAuthor": "查看作者的其他貢獻並支援他的工作。",
       "madeBy": "本課程由以下人員製作",
-      "source": "原始來源： ",
+      "source": "原始來源：",
       "tipTooltip": "喜歡嗎？給點小費吧。",
       "writtenBy": "這個教學資源是由以下人士撰寫的："
     },
@@ -1085,7 +1089,8 @@
     "passed": "通過",
     "status": "狀態",
     "teacher": "老師",
-    "total": "總計"
+    "total": "總計",
+    "required": ""
   },
   "notFound": {
     "here": "這裡",
