@@ -37,7 +37,6 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
       break;
     }
   }
-  console.log('Event:', event);
 
   return (
     <div

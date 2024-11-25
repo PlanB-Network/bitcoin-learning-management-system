@@ -38,27 +38,29 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       break;
     }
   }
-  console.log('Event:', event);
 
   return (
     <div
-      className={`${cssclasses} flex flex-col h-[30px] hover:h-full hover:z-20 hover:absolute hover:top-0 hover:w-fit hover:max-w-[220px]`}
+      className={`${cssclasses} flex flex-col h-[30px] hover:size-auto hover:relative hover:z-20 transition-all duration-200`}
       style={{
         padding: '10px',
         width: '100%',
         paddingLeft: 8,
         paddingTop: 8,
-        overflow: `${isSelected ? 'visible' : 'hidden'}`,
+        overflow: isSelected ? 'visible' : 'hidden',
       }}
-      onPointerEnter={() => setIsSelected(!isSelected)}
-      onPointerLeave={() => setIsSelected(!isSelected)}
+      onPointerEnter={() => setIsSelected(true)}
+      onPointerLeave={() => setIsSelected(false)}
     >
       <div
         className={`flex flex-row text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
       >
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
         {event.isOnline && (
-          <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
+          <FaVideo
+            className="size-6 ml-auto bg-white p-1 rounded-lg"
+            aria-label="Online event"
+          />
         )}
       </div>
       <div className="font-semibold text-sm whitespace-normal w-full">
