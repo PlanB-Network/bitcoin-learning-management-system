@@ -66,7 +66,7 @@ const BookingTable = () => {
   const eventIds = allEvents ? allEvents.map((event) => event.id) : [];
 
   const { data: participantsData, isFetched: isParticipantsFetched } =
-    trpc.user.events.getParticipantsForEvent.useQuery({
+    trpc.user.events.getParticipantsForEvents.useQuery({
       eventIds,
     });
 
@@ -74,7 +74,7 @@ const BookingTable = () => {
     return <Loader size="s" />;
   }
 
-  const getParticipantsForEvent = (eventId: string) =>
+  const getParticipantsForEvents = (eventId: string) =>
     participantsData?.filter(
       (participant) => participant.eventId === eventId,
     ) || [];
@@ -101,7 +101,7 @@ const BookingTable = () => {
           </TableHeader>
           <TableBody>
             {allEvents?.map((event) => {
-              const eventParticipants = getParticipantsForEvent(event.id);
+              const eventParticipants = getParticipantsForEvents(event.id);
               return (
                 <EventRow
                   key={event.id}
@@ -116,7 +116,7 @@ const BookingTable = () => {
 
       <div className="flex flex-col gap-4 md:hidden">
         {allEvents?.map((event) => {
-          const eventParticipants = getParticipantsForEvent(event.id);
+          const eventParticipants = getParticipantsForEvents(event.id);
           return (
             <EventCard
               key={event.id}

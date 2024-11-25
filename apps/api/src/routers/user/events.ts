@@ -12,7 +12,7 @@ import {
 } from '@blms/service-content';
 import {
   createGetEventPayments,
-  createGetParticipants,
+  createGetParticipantsForEvents,
   createGetUserEvents,
   createSaveEventPayment,
   createSaveUserEvent,
@@ -27,7 +27,7 @@ import type {
 
 import type { Parser } from '#src/trpc/types.js';
 
-import { studentProcedure } from '../../procedures/index.js';
+import { adminProcedure, studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 import { formatDate, formatTime } from '../../utils/date.js';
 
@@ -133,7 +133,7 @@ const saveUserEventProcedure = studentProcedure
     await createCalculateEventSeats(ctx.dependencies)();
   });
 
-const getParticipantsForEventProcedure = studentProcedure
+const getParticipantsForEventsProcedure = adminProcedure
   .input(
     z.object({
       eventIds: z.array(z.string()),
@@ -141,7 +141,7 @@ const getParticipantsForEventProcedure = studentProcedure
   )
   .output<Parser<ExtendedUserEvent[]>>(z.array(extendedUserEventSchema))
   .query(({ ctx, input }) => {
-    return createGetParticipants(ctx.dependencies)({
+    return createGetParticipantsForEvents(ctx.dependencies)({
       eventIds: input.eventIds,
     });
   });
@@ -152,5 +152,5 @@ export const userEventsRouter = createTRPCRouter({
   getUserEvents: getUserEventsProcedure,
   saveEventPayment: saveEventPaymentProcedure,
   saveUserEvent: saveUserEventProcedure,
-  getParticipantsForEvent: getParticipantsForEventProcedure,
+  getParticipantsForEvents: getParticipantsForEventsProcedure,
 });

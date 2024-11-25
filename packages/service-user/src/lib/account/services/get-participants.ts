@@ -3,12 +3,12 @@ import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../../dependencies.js';
 import { getAllParticipants } from '../queries/get-participants.js';
 
-interface GetParticipantsOptions {
+interface GetParticipantsForEventsOptions {
   eventIds: string[];
 }
 
-export const createGetParticipants = ({ postgres }: Dependencies) => {
-  return async ({ eventIds }: GetParticipantsOptions) => {
+export const createGetParticipantsForEvents = ({ postgres }: Dependencies) => {
+  return async ({ eventIds }: GetParticipantsForEventsOptions) => {
     if (!eventIds || eventIds.length === 0) {
       throw new TRPCError({
         code: 'BAD_REQUEST',
