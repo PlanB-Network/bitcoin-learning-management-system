@@ -15,11 +15,13 @@ const textTagVariants = cva(
         verySmall:
           'px-[5px] py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
         resourcesNewSize:
-          'px-2 py-[6px] md:p-2 rounded-sm md:rounded-md text-xs font-medium lg:text-base',
+          'px-2 py-1.5 md:p-2 rounded-[8px] md:rounded-[10px] text-xs font-medium lg:text-base',
         publicCommunication:
           'py-0.5 px-2 lg:p-3.5 font-medium text-base lg:text-lg rounded-xl',
         featuredCard:
-          'py-[3px] px-2 lg:py-[11.5px] lg:px-[14px] font-medium text-sm lg:text-lg rounded-[8px] lg:rounded-[10px] shadow-sm shadow-black/25',
+          'py-[3px] px-2 lg:py-[11.5px] lg:px-3.5 font-medium text-sm lg:text-lg rounded-[8px] lg:rounded-[10px] shadow-sm shadow-black/25',
+        conferenceReplays:
+          'py-1.5 px-2 lg:py-[11.5px] lg:px-3.5 rounded-[8px] lg:rounded-[10px] text-xs font-medium lg:text-base',
       },
       variant: {
         light: 'bg-[#CCCCCC80] text-newBlack-3',

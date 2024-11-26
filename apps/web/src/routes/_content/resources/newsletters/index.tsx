@@ -26,7 +26,7 @@ function Newsletter() {
       staleTime: 300_000, // 5 minutes
     },
   );
-  console.log(newsletters);
+
   const filteredNewsletters =
     newsletters?.filter((newsletter) =>
       newsletter.title?.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -46,10 +46,10 @@ function Newsletter() {
         {filteredNewsletters.map((newsletter) => (
           <Link
             to={`/resources/newsletters/${formatNameForURL(newsletter.title)}-${newsletter.resourceId}`}
+            key={`${newsletter.resourceId}`}
             params={{
               newsletterId: newsletter?.resourceId.toString(),
             }}
-            key={newsletter.id}
             className="grow md:grow-0"
           >
             <ResourceCard

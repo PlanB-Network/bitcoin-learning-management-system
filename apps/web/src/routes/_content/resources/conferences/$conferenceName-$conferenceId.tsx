@@ -7,7 +7,7 @@ import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import { z } from 'zod';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button, Loader, Tag, cn } from '@blms/ui';
+import { Button, Card, Loader, TextTag, cn } from '@blms/ui';
 
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
@@ -131,7 +131,6 @@ function Conference() {
       showPageHeader={false}
       backToCategoryButton={true}
       maxWidth="1360"
-      className="max-md:mx-4"
       showResourcesDropdownMenu={false}
     >
       {!isFetched && <Loader size={'s'} />}
@@ -161,64 +160,72 @@ function Conference() {
             to={'/resources/conferences'}
             label={t('conferences.pageTitle')}
           />
-
-          <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-4 lg:gap-8">
-            <div className="lg:order-2 w-full max-w-full">
-              <img
-                src={assetUrl(conference.path, 'thumbnail.webp')}
-                alt={conference.name}
-                className="w-full object-cover aspect-[915/388] rounded-2xl"
-              />
-            </div>
-            <div className="lg:max-w-[560px] lg:order-1 text-white w-full">
-              <h2 className="text-white mobile-h2 sm:text-[40px] sm:leading-tight sm:tracking-[0.25px]">
-                {conference.name}
-              </h2>
-              <span className="text-newGray-4 mobile-body2 sm:desktop-h8">
-                {conference.location}, {conference.year}
-              </span>
-              {(conference.twitterUrl || conference.websiteUrl) && (
-                <>
-                  <div className="flex flex-wrap items-center gap-4 mt-2">
-                    {conference.twitterUrl && (
-                      <a
-                        href={conference.twitterUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsTwitterX className="size-4 md:size-6" />
-                      </a>
-                    )}
-                    {conference.websiteUrl && (
-                      <a
-                        href={conference.websiteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsLink className="size-4 md:size-6" />
-                      </a>
-                    )}
-                  </div>
-                </>
-              )}
-              <div className="flex flex-wrap items-center gap-4 mt-4">
-                {conference.tags.map((tag) => (
-                  <Tag key={tag} className="capitalize">
-                    {tag}
-                  </Tag>
-                ))}
+          <Card
+            className="md:mx-auto w-full !rounded-[10px] !md:rounded-[20px]"
+            withPadding={false}
+            paddingClass="p-5 md:p-[30px]"
+            color="orange"
+          >
+            <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-5 lg:gap-10">
+              <div className="lg:order-2 w-full max-w-full">
+                <img
+                  src={assetUrl(conference.path, 'thumbnail.webp')}
+                  alt={conference.name}
+                  className="w-full object-cover aspect-[915/388] rounded-2xl"
+                />
               </div>
-              <p className="max-lg:hidden sm:desktop-body1 text-newGray-1 mt-8">
-                {conference.description}
-              </p>
+              <div className="lg:max-w-[560px] lg:order-1 text-white w-full">
+                <h2 className="text-white body-medium-16px md:display-medium-40px">
+                  {conference.name}
+                </h2>
+                <span className="text-newGray-4 label-medium-16px sm:desktop-h8">
+                  {conference.location}, {conference.year}
+                </span>
+                {(conference.twitterUrl || conference.websiteUrl) && (
+                  <>
+                    <div className="flex flex-wrap items-center gap-4 mt-[15px]">
+                      {conference.twitterUrl && (
+                        <a
+                          href={conference.twitterUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <BsTwitterX className="size-4 md:size-6" />
+                        </a>
+                      )}
+                      {conference.websiteUrl && (
+                        <a
+                          href={conference.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <BsLink className="size-4 md:size-6" />
+                        </a>
+                      )}
+                    </div>
+                  </>
+                )}
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-5 md:mt-[25px]">
+                  {conference.tags.map((tag) => (
+                    <TextTag
+                      key={tag}
+                      size="conferenceReplays"
+                      variant="newGray"
+                    >
+                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                    </TextTag>
+                  ))}
+                </div>
+                <p className="max-lg:hidden body-16px text-white mt-[25px]">
+                  {conference.description}
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div className="h-px bg-newBlack-5 lg:bg-white/25 my-8 max-md:hidden" />
+          </Card>
 
           {/* Stage and Video Selectors */}
           {/* Desktop */}
-          <div className="flex flex-col gap-11 max-md:hidden">
+          <div className="flex flex-col gap-11 max-md:hidden mt-10">
             <div className="flex flex-col gap-5">
               <span className="desktop-h7 text-white">
                 {t('conferences.details.selectStage')}
@@ -289,7 +296,7 @@ function Conference() {
 
           {/* Stage and Video Selectors */}
           {/* Mobile */}
-          <div className="flex flex-col gap-4 md:hidden mt-6 mb-9">
+          <div className="flex flex-col gap-4 md:hidden mt-[30px] mb-9">
             <h3 className="mobile-subtitle1 text-white mb-2.5">
               {t('conferences.details.findReplay')}
             </h3>

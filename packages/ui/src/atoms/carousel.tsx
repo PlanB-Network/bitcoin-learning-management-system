@@ -138,7 +138,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn('relative', className)}
+          className={cn('relative max-w-[1216px]', className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -208,7 +208,7 @@ const CarouselPrevious = React.forwardRef<
       className={cn(
         'absolute  size-8 rounded-full',
         orientation === 'horizontal'
-          ? '-left-2 top-1/2 -translate-y-1/2 md:-left-9 lg:-left-8'
+          ? '-left-2 top-1/2 -translate-y-1/2 md:-left-7 lg:-left-6'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
@@ -237,7 +237,7 @@ const CarouselNext = React.forwardRef<
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
-          ? '-right-2 top-1/2 -translate-y-1/2 md:-right-9 lg:-right-9'
+          ? '-right-2 top-1/2 -translate-y-1/2 md:-right-9 lg:-right-6'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
         className,
       )}

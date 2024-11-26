@@ -1,6 +1,6 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
@@ -15,6 +15,7 @@ import {
   TextTag,
 } from '@blms/ui';
 
+import ThumbUp from '#src/assets/icons/thumb-up-pixelated.svg';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
@@ -75,14 +76,14 @@ function Podcast() {
 
   function displayAbstract() {
     return (
-      <div className="mt-6">
-        <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white">
+      <article>
+        <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white md:text-newGray-3">
           {t('podcast.abstract')}
         </h3>
-        <p className="line-clamp-[20] max-w-3xl text-ellipsis whitespace-pre-line text-white text-justify body-14px lg:body-16px">
+        <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px">
           {podcast?.description}
         </p>
-      </div>
+      </article>
     );
   }
 
@@ -115,7 +116,12 @@ function Podcast() {
           />
 
           <article className="w-full">
-            <Card className="md:mx-auto" color="orange">
+            <Card
+              className="md:mx-auto w-full max-w-[1179px]"
+              withPadding={false}
+              paddingClass="p-5 md:p-[30px]"
+              color="orange"
+            >
               <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-16">
                 <div className="flex flex-col items-center justify-center">
                   <img
@@ -131,7 +137,7 @@ function Podcast() {
                           variant="primary"
                           className="mx-2"
                         >
-                          {t('podcast.discover')}
+                          {t('podcast.check')}
                         </Button>
                       </Link>
                     )}
@@ -140,7 +146,7 @@ function Podcast() {
 
                 <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
                   <div>
-                    <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
+                    <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px]">
                       {podcast?.name}
                     </h2>
 
@@ -156,8 +162,8 @@ function Podcast() {
                       ))}
                     </div>
 
-                    <div className="flex items-center flex-wrap">
-                      <span className="text-white body-14px-medium md:body-16px-medium">
+                    <div className="flex items-center flex-wrap mb-5 md:mb-[30px]">
+                      <span className="text-white subtitle-small-med-14px md:title-small-med-16px">
                         {podcast.host}
                       </span>
                     </div>
@@ -174,9 +180,21 @@ function Podcast() {
       )}
 
       <section className="mt-8 lg:mt-[100px]">
-        <h3 className="label-medium-med-16px md:title-large-24px font-medium leading-none md:leading-[116%] text-white mb-5 md:mb-10">
-          {t('resources.pageSubtitlePodcast')}
-        </h3>
+        <div className="flex items-center justify-center md:justify-start mb-5 lg:mb-10">
+          <img
+            src={ThumbUp}
+            className="size-[20px] lg:size-[32px] mr-3 my-1"
+            alt=""
+          />
+          <h3 className="flex items-center title-small-med-16px md:title-large-24px font-medium leading-none md:leading-[116%] text-white mt-2">
+            <Trans i18nKey="resources.pageSubtitlePodcast">
+              <span className="text-darkOrange-5 mr-1 title-small-med-16px md:title-large-24px">
+                Other podcasts{''}
+              </span>
+            </Trans>
+          </h3>
+        </div>
+
         <Carousel>
           <CarouselContent>
             {isFetchedSuggested ? (
@@ -189,14 +207,14 @@ function Podcast() {
                     return (
                       <CarouselItem
                         key={podcast.id}
-                        className="text-white basis-1/2 md:basis-1/2 lg:basis-1/4 relative bg-gradient-to-r w-full max-w-[282px] max-h-[350px] rounded-[22px]"
+                        className="basis-1/2 md:basis-1/4 text-white size-full bg-gradient-to-r max-w-[282px] max-h-[400px] rounded-[10px]"
                       >
                         <Link
                           to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
                         >
                           <div className="relative h-full">
                             <img
-                              className="max-h-72 sm:max-h-96 size-full object-cover rounded-[10px]"
+                              className="size-full min-h-[198px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                               alt={podcast.name}
                               src={assetUrl(podcast.path, 'logo.webp')}
                             />
@@ -204,7 +222,7 @@ function Podcast() {
                               className="absolute inset-0 -bottom-px rounded-[10px]"
                               style={{
                                 background: `linear-gradient(360deg, rgba(40, 33, 33, 0.90) 10%, rgba(0, 0, 0, 0.00) 60%),
-                                linear-gradient(0deg, rgba(57, 53, 49, 0.20) 0%, rgba(57, 53, 49, 0.20) 100%)`,
+                                  linear-gradient(0deg, rgba(57, 53, 49, 0.20) 0%, rgba(57, 53, 49, 0.20) 100%)`,
                                 backgroundSize: '153.647% 100%',
                                 backgroundPosition: '-5.216px 0px',
                                 backgroundRepeat: 'no-repeat',
@@ -212,7 +230,7 @@ function Podcast() {
                             />
                           </div>
 
-                          <h3 className="absolute px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                          <h3 className="absolute max-w-[119px] md:max-w-[152px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                             {podcast.name}
                           </h3>
                         </Link>
@@ -225,8 +243,8 @@ function Podcast() {
               <Loader size={'s'} />
             )}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="*:size-[16px] lg:*:size-[20px]" />
+          <CarouselNext className="*:size-[16px] lg:*:size-[20px]" />
         </Carousel>
       </section>
     </ResourceLayout>

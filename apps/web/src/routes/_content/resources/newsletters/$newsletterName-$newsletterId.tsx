@@ -1,6 +1,6 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
@@ -15,6 +15,7 @@ import {
   TextTag,
 } from '@blms/ui';
 
+import ThumbUp from '#src/assets/icons/thumb-up-pixelated.svg';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.js';
@@ -84,6 +85,21 @@ function NewsletterDetail() {
     }
   }, [newsletter, isFetched, navigateTo404, params.newsletterName, navigate]);
 
+  function displayAbstract() {
+    return (
+      newsletter?.description && (
+        <article>
+          <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white md:text-newGray-3">
+            {t('resources.newsletters.abstract')}
+          </h3>
+          <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px">
+            {newsletter.description}
+          </p>
+        </article>
+      )
+    );
+  }
+
   if (!newsletter) {
     return (
       <ResourceLayout
@@ -127,7 +143,7 @@ function NewsletterDetail() {
             paddingClass="p-5 md:p-[30px]"
           >
             <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col">
                 <img
                   className="md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-8 lg:mb-12"
                   alt={newsletter.title}
@@ -141,7 +157,7 @@ function NewsletterDetail() {
                         variant="primary"
                         className="mx-2"
                       >
-                        {t('resources.newsletter.discover')}
+                        {t('resources.newsletter.check')}
                       </Button>
                     </Link>
                   )}
@@ -149,9 +165,26 @@ function NewsletterDetail() {
               </div>
 
               <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
-                <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-8">
+                <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px]">
                   {newsletter.title}
                 </h2>
+
+                <p className="text-newGray-3 pr-1 subtitle-small-med-14px md:label-large-med-20px">
+                  {t('resources.newsletters.author')}
+                  <span className="inline text-white subtitle-small-med-14px md:label-large-med-20px">
+                    {newsletter.author}
+                  </span>
+                </p>
+
+                <div className="flex items-center mb-5 lg:mb-[30px]">
+                  <span className="text-newGray-3 pr-1 subtitle-small-med-14px md:label-large-med-20px">
+                    {t('resources.newsletters.level')}
+                  </span>
+                  <span className="capitalize text-white max-w-[140px] md:max-w-none subtitle-small-med-14px md:label-large-med-20px">
+                    {newsletter.level}
+                  </span>
+                </div>
+
                 <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
                   {newsletter.tags.map((tag, i) => (
                     <TextTag key={i} size="resourcesNewSize" variant="newGray">
@@ -159,38 +192,46 @@ function NewsletterDetail() {
                     </TextTag>
                   ))}
                 </div>
-                <div className="flex items-center">
-                  <span className="text-white body-14px-medium md:label-medium-med-16px pr-1">
-                    {t('words.writtenByPodcasts')}
-                  </span>
-                  <h5 className="text-white body-14px md:body-16px ">
-                    {newsletter.author}
-                  </h5>
-                </div>
-
-                <p className="text-white mt-4">{newsletter.description}</p>
+                {isScreenMd && displayAbstract()}
               </div>
             </article>
+            {!isScreenMd && displayAbstract()}
           </Card>
         </article>
       </div>
 
       <section className="mt-8 lg:mt-[100px]">
-        <h3 className="label-medium-med-16px md:title-large-24px font-medium leading-none md:leading-[116%] text-white mb-5 md:mb-10">
-          {t('resources.newsletters.subtitle')}
-        </h3>
+        <div className="flex items-center justify-center md:justify-start mb-5 lg:mb-10">
+          <img
+            src={ThumbUp}
+            className="size-[20px] lg:size-[32px] mr-3 my-1"
+            alt=""
+          />
+
+          <h3 className="flex items-center title-small-med-16px md:title-large-24px font-medium leading-none md:leading-[116%] text-white mt-2">
+            <Trans i18nKey="resources.newsletters.subtitle">
+              <span className="text-darkOrange-5 mr-1 title-small-med-16px md:title-large-24px">
+                Other newsletters{''}
+              </span>
+            </Trans>
+          </h3>
+        </div>
+
         <Carousel>
-          <CarouselContent className="max-w-[240px]">
+          <CarouselContent>
             {newsletters
               ?.filter((item) => item.resourceId !== newsletter.resourceId)
               .map((item) => (
-                <CarouselItem key={item.resourceId}>
+                <CarouselItem
+                  key={item.resourceId}
+                  className="basis-1/2 md:basis-1/4 text-white size-full bg-gradient-to-r max-w-[282px] max-h-[400px] rounded-[10px]"
+                >
                   <Link
                     to={`/resources/newsletters/${formatNameForURL(item.title)}-${item.resourceId}`}
                   >
                     <div className="relative h-full">
                       <img
-                        className="max-h-72 sm:max-h-96 size-full object-cover rounded-[10px]"
+                        className="size-full min-h-[198px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                         alt={item.title}
                         src={assetUrl(newsletter.path, 'thumbnail.webp')}
                       />
@@ -205,7 +246,7 @@ function NewsletterDetail() {
                         }}
                       />
                     </div>
-                    <h3 className="absolute text-white px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                    <h3 className="absolute max-w-[119px] md:max-w-[152px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                       {item.title}
                     </h3>
                   </Link>
