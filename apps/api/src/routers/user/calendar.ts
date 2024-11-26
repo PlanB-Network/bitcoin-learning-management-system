@@ -13,14 +13,15 @@ const getCalendarEventsProcedure = studentProcedure
     z.object({
       language: z.string(),
       upcomingEvents: z.boolean().optional(),
+      userSpecific: z.boolean().optional(),
     }),
   )
   .output<Parser<CalendarEvent[]>>(calendarEventSchema.array())
   .query(async ({ ctx, input }) => {
     return createGetCalendarEvents(ctx.dependencies)({
-      uid: ctx.user.uid,
       language: input.language,
       upcomingEvents: input?.upcomingEvents ?? false,
+      uid: input?.userSpecific ? ctx.user.uid : undefined,
     });
   });
 

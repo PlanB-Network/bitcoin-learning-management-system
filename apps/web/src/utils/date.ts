@@ -152,8 +152,8 @@ export function formatDateWithoutTime(date: Date, timezone?: string): string {
   }
 
   const options: Intl.DateTimeFormatOptions = {
-    day: '2-digit',
-    month: '2-digit',
+    day: 'numeric',
+    month: 'short',
     year: 'numeric',
     timeZone: timezone,
   };

@@ -4,17 +4,17 @@ import type { Dependencies } from '../../../dependencies.js';
 import { getCalendarEventsQuery } from '../queries/get-calendar-events.js';
 
 interface Options {
-  uid: string;
   language: string;
+  uid?: string;
   upcomingEvents?: boolean;
 }
 
 export const createGetCalendarEvents = ({ postgres }: Dependencies) => {
   return ({
-    uid,
     language,
+    uid,
     upcomingEvents,
   }: Options): Promise<CalendarEvent[]> => {
-    return postgres.exec(getCalendarEventsQuery(uid, language, upcomingEvents));
+    return postgres.exec(getCalendarEventsQuery(language, uid, upcomingEvents));
   };
 };

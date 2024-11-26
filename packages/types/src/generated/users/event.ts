@@ -16,3 +16,11 @@ export interface ExtendedUserEvent {
   username: string;
   displayName: string;
 }
+
+export interface CalendarEventParticipant {
+  uid: string;
+  username: string;
+  displayName: string;
+  email: string;
+  id: string;
+}

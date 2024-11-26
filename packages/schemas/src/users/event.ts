@@ -11,3 +11,11 @@ export const extendedUserEventSchema = userEventSchema.merge(
     displayName: z.string(),
   }),
 );
+
+export const calendarEventParticipantSchema = z.object({
+  uid: z.string(),
+  username: z.string(),
+  displayName: z.string(),
+  email: z.string(),
+  id: z.string(),
+});

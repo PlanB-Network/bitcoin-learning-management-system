@@ -2,8 +2,8 @@ import { sql } from '@blms/database';
 import type { CalendarEvent } from '@blms/types';
 
 export const getCalendarEventsQuery = (
-  uid: string,
   language: string,
+  uid?: string,
   upcomingEvents?: boolean,
 ) => {
   return sql<CalendarEvent[]>`
@@ -22,8 +22,9 @@ export const getCalendarEventsQuery = (
     e.address_line_2,
     e.address_line_3
   FROM content.events e
-  JOIN users.user_event ue on e.id = ue.event_id
-    WHERE uid = ${uid} AND ue.booked = true
+  FULL JOIN users.user_event ue on e.id = ue.event_id
+    WHERE 1 = 1
+    ${uid ? sql`AND ue.uid = ${uid} AND ue.booked = true` : sql``}
     ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
 
   UNION
@@ -44,7 +45,7 @@ export const getCalendarEventsQuery = (
     e.address_line_3
   FROM content.events e
   JOIN users.event_payment ep ON e.id = ep.event_id
- WHERE ep.uid = ${uid} AND ep.payment_status = 'paid'
+  ${uid ? sql`WHERE ep.uid = ${uid} AND ep.payment_status = 'paid'` : sql`WHERE ep.payment_status = 'paid'`}
     ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
 
   UNION
@@ -71,7 +72,7 @@ export const getCalendarEventsQuery = (
     JOIN content.professors pr on cp.contributor_id = pr.contributor_id
     WHERE cp.course_id = cl.course_id
   ) AS cp_agg ON TRUE
- WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'
+  ${uid ? sql`WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'` : sql`WHERE cp.payment_status = 'paid'`}
     ${upcomingEvents ? sql`AND cl.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
   `;
 };

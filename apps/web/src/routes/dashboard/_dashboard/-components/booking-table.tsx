@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import type { CalendarEvent, ExtendedUserEvent } from '@blms/types';
+import type { CalendarEvent, CalendarEventParticipant } from '@blms/types';
 import {
   Button,
   Card,
@@ -18,10 +18,10 @@ import { trpc } from '#src/utils/trpc.ts';
 
 interface EventProps {
   event: CalendarEvent;
-  participants: ExtendedUserEvent[];
+  participants: CalendarEventParticipant[];
 }
 
-const convertToCSV = (data: ExtendedUserEvent[]) => {
+const convertToCSV = (data: CalendarEventParticipant[]) => {
   const header = ['Index', 'Username', 'Display Name'].join(',');
 
   const rows = data.map((row, index) =>
@@ -33,17 +33,17 @@ const convertToCSV = (data: ExtendedUserEvent[]) => {
   return [header, ...rows].join('\n');
 };
 
+// TODO: Improve notification system when there are not participants
 const handleDownload = (
-  participants: ExtendedUserEvent[],
+  participants: CalendarEventParticipant[],
   eventName: string,
 ) => {
   if (!participants || participants.length === 0) {
-    console.error('No participants available for download.');
+    alert('There are no participants for this event!');
     return;
   }
 
   const csvData = convertToCSV(participants);
-
   const blob = new Blob([csvData], { type: 'text/csv' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
@@ -62,21 +62,28 @@ const BookingTable = () => {
   const { data: allEvents, isFetched } =
     trpc.user.calendar.getCalendarEvents.useQuery({
       language: 'en',
+      upcomingEvents: true,
+      userSpecific: false,
     });
-  const eventIds = allEvents ? allEvents.map((event) => event.id) : [];
+
+  const sortedEvents = allEvents
+    ?.filter((event) => event.type !== 'conference')
+    .sort((a, b) => {
+      const dateA = new Date(a.startDate || 0).getTime();
+      const dateB = new Date(b.startDate || 0).getTime();
+      return dateA - dateB;
+    });
 
   const { data: participantsData, isFetched: isParticipantsFetched } =
-    trpc.user.events.getParticipantsForEvents.useQuery({
-      eventIds,
-    });
+    trpc.user.events.getParticipantsForEvent.useQuery();
 
   if (!isFetched || !isParticipantsFetched) {
     return <Loader size="s" />;
   }
 
-  const getParticipantsForEvents = (eventId: string) =>
+  const getParticipantsForEvents = (eventId: string, subId: string | null) =>
     participantsData?.filter(
-      (participant) => participant.eventId === eventId,
+      (participant) => participant.id === eventId || participant.id === subId,
     ) || [];
 
   return (
@@ -100,11 +107,14 @@ const BookingTable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {allEvents?.map((event) => {
-              const eventParticipants = getParticipantsForEvents(event.id);
+            {sortedEvents?.map((event) => {
+              const eventParticipants = getParticipantsForEvents(
+                event.id,
+                event.subId,
+              );
               return (
                 <EventRow
-                  key={event.id}
+                  key={event.name}
                   event={event}
                   participants={eventParticipants}
                 />
@@ -115,11 +125,14 @@ const BookingTable = () => {
       </div>
 
       <div className="flex flex-col gap-4 md:hidden">
-        {allEvents?.map((event) => {
-          const eventParticipants = getParticipantsForEvents(event.id);
+        {sortedEvents?.map((event) => {
+          const eventParticipants = getParticipantsForEvents(
+            event.id,
+            event.subId,
+          );
           return (
             <EventCard
-              key={event.id}
+              key={event.name}
               event={event}
               participants={eventParticipants}
             />
@@ -130,9 +143,9 @@ const BookingTable = () => {
   );
 };
 
+// TODO: Add counter to how many participants are on one event so we know there are participants there or find some other solution with Muriel and team
 const EventRow = ({ event, participants }: EventProps) => {
   const { t } = useTranslation();
-
   const startDate = event.startDate || new Date();
 
   return (

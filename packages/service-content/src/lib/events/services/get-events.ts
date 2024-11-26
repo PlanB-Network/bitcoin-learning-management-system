@@ -11,6 +11,7 @@ export const createGetRecentEvents = ({ postgres }: Dependencies) => {
     return postgres.exec(getRecentEventsQuery());
   };
 };
+
 export const createGetUpcomingEvent = ({ postgres }: Dependencies) => {
   return async (): Promise<JoinedEvent | null> => {
     const result = await postgres.exec(getUpcomingEventQuery());

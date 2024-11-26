@@ -60,6 +60,7 @@ function DashboardCalendar() {
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
     language: i18n.language ?? 'en',
     upcomingEvents: true,
+    userSpecific: true,
   });
 
   const [events, setEvents] = useState<CalendarEvent[]>();
