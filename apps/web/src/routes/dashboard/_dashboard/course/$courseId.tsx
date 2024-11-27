@@ -102,7 +102,7 @@ function DashboardStudentCourse() {
       {isFetched && course && (
         <div className="flex flex-col gap-4 md:gap-8">
           <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
-            <TextTag size="large" className="uppercase w-fit max-md:hidden">
+            <TextTag size="small" className="uppercase w-fit max-md:hidden">
               {addSpaceToCourseId(course.id)}
             </TextTag>
             <h3 className="display-small-32px">{course.name}</h3>

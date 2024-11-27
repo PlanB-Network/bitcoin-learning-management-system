@@ -71,7 +71,7 @@ function DashboardProfessorProfile() {
           {t('dashboard.teacher.profile.account')}
         </h3>
         <TextTag
-          size={window.innerWidth < 1024 ? 'verySmall' : 'large'}
+          size={window.innerWidth < 1024 ? 'verySmall' : 'small'}
           className="uppercase w-fit"
         >
           {t('dashboard.teacher.profile.teacher')}
@@ -126,7 +126,7 @@ function DashboardProfessorProfile() {
                         <TextTag
                           key={tag}
                           size={
-                            window.innerWidth < 1024 ? 'verySmall' : 'large'
+                            window.innerWidth < 1024 ? 'verySmall' : 'small'
                           }
                           className="capitalize"
                         >

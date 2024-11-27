@@ -583,7 +583,7 @@ const WrittenFeedbacks = ({
                 {feedback.teacherComment || "User didn't add comment."}
                 &quot;
               </p>
-              <TextTag size={'verySmall'} variant={'dark'} className="self-end">
+              <TextTag size={'verySmall'} mode="dark" className="self-end">
                 {t('dashboard.teacher.reviews.privateComment')}
               </TextTag>
             </div>

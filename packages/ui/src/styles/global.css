@@ -339,8 +339,12 @@
   .subtitle-medium-caps-18px {
     @apply text-base leading-normal font-normal tracking-normal uppercase;
   }
-  .subtitle-med-16px {
+  .subtitle-medium-med-16px {
     @apply text-base leading-[160%] font-medium tracking-015px;
+  }
+
+  .subtitle-medium-16px {
+    @apply text-base leading-[160%] font-normal tracking-015px;
   }
 
   .subtitle-small-caps-14px {

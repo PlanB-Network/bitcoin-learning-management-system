@@ -76,12 +76,7 @@ export const FeaturedCard = ({ category, background }: FeaturedCardProps) => {
           {latestBlog.tags && (
             <div className="flex flex-row space-x-2 md:space-x-4 mb-2 lg:mb-5">
               {latestBlog.tags.map((tag, index) => (
-                <TextTag
-                  key={index}
-                  size="featuredCard"
-                  variant="newGrayBlogs"
-                  className="capitalize"
-                >
+                <TextTag key={index} variant="grey" className="capitalize">
                   {tag}
                 </TextTag>
               ))}

@@ -209,8 +209,9 @@ function Conference() {
                   {conference.tags.map((tag) => (
                     <TextTag
                       key={tag}
-                      size="conferenceReplays"
-                      variant="newGray"
+                      size="small"
+                      variant="lightMaroon"
+                      mode="dark"
                     >
                       {tag.charAt(0).toUpperCase() + tag.slice(1)}
                     </TextTag>

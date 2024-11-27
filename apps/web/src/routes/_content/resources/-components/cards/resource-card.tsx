@@ -22,7 +22,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
           {props.name}
         </span>
         <div className="flex justify-between flex-row items-center gap-1">
-          <span className="text-white text-xs md:subtitle-med-16px transition-all line-clamp-1 md:line-clamp-2">
+          <span className="text-white text-xs md:subtitle-medium-med-16px transition-all line-clamp-1 md:line-clamp-2">
             {props.author}
             {props.year && (
               <>
@@ -44,9 +44,9 @@ export const ResourceCard = (props: ResourceCardProps) => {
 
         <div className="flex md:flex-col gap-4 max-md:hidden">
           {props.level && (
-            <p className="subtitle-med-16px text-newGray-3">
+            <p className="subtitle-medium-med-16px text-newGray-3">
               Level : {''}
-              <span className="subtitle-med-16px text-white capitalize">
+              <span className="subtitle-medium-med-16px text-white capitalize">
                 {props.level}
               </span>
             </p>

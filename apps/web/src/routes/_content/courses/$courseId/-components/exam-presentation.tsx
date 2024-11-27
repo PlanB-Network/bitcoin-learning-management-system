@@ -105,7 +105,7 @@ export const ExamPresentation = ({
           mode="light"
         />
 
-        <p className="text-darkOrange-5 subtitle-med-16px md:title-large-24px">
+        <p className="text-darkOrange-5 subtitle-medium-med-16px md:title-large-24px">
           {t('courses.exam.congratulations')}
         </p>
         <p className="body-16px text-justify mt-[18px]">
@@ -124,7 +124,7 @@ export const ExamPresentation = ({
 
       <div className="flex flex-col w-full max-w-[604px] max-md:gap-4">
         <Divider className="mx-0" width="w-full" mode="dark" />
-        <p className="subtitle-medium-16px text-newBlack-1 md:mt-4">
+        <p className="subtitle-medium-med-16px text-newBlack-1 md:mt-4">
           {t('courses.exam.verifyDisplayName')}
         </p>
         <section className="flex flex-col md:mt-5 gap-2">

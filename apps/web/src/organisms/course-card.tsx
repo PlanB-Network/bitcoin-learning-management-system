@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { JoinedCourse } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, TextTag, cn } from '@blms/ui';
 
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
@@ -71,16 +71,26 @@ export const CourseCard = ({
             </span>
             <div className="flex flex-col flex-wrap gap-2.5 md:mt-auto">
               <div className="flex md:items-center gap-1.5 md:gap-2 order-2 md:order-1">
-                <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                <TextTag
+                  size="verySmall"
+                  variant="lightMaroon"
+                  mode="dark"
+                  className="uppercase"
+                >
                   {course.id === 'btc101'
                     ? t('words.start')
                     : t(`words.level.${course.level}`)}
-                </span>
-                <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                </TextTag>
+                <TextTag
+                  size="verySmall"
+                  variant="lightMaroon"
+                  mode="dark"
+                  className="uppercase"
+                >
                   {course.requiresPayment
                     ? t('courses.details.paidCourse')
                     : t('words.free')}
-                </span>
+                </TextTag>
               </div>
               <div className="flex order-1 md:order-2">
                 <StarRating

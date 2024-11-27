@@ -187,7 +187,12 @@ function NewsletterDetail() {
 
                 <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
                   {newsletter.tags.map((tag, i) => (
-                    <TextTag key={i} size="resourcesNewSize" variant="newGray">
+                    <TextTag
+                      key={i}
+                      size="small"
+                      variant="lightMaroon"
+                      mode="dark"
+                    >
                       {tag.charAt(0).toUpperCase() + tag.slice(1)}
                     </TextTag>
                   ))}

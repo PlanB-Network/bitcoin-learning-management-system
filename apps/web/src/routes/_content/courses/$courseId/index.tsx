@@ -163,7 +163,7 @@ function CourseDetails() {
         </h1>
         <div className="mt-6 md:mt-4 flex flex-wrap gap-2 items-center">
           <TextTag
-            size={isMobile ? 'verySmall' : 'large'}
+            size={isMobile ? 'verySmall' : 'small'}
             variant="orange"
             className="uppercase"
           >
@@ -172,14 +172,14 @@ function CourseDetails() {
               : t('words.free')}
           </TextTag>
           <TextTag
-            size={isMobile ? 'verySmall' : 'large'}
+            size={isMobile ? 'verySmall' : 'small'}
             className="uppercase"
           >
             {t(`words.${course.format}`)}
           </TextTag>
           {beginnerFriendlyCourses.includes(course.id) && (
             <TextTag
-              size={isMobile ? 'verySmall' : 'large'}
+              size={isMobile ? 'verySmall' : 'small'}
               variant="green"
               className="uppercase"
             >
@@ -351,7 +351,7 @@ function CourseDetails() {
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="body-14px md:subtitle-med-16px text-newBlack-1 text-justify">
+                <p className="body-14px md:subtitle-medium-med-16px text-newBlack-1 text-justify">
                   {children}
                 </p>
               ),

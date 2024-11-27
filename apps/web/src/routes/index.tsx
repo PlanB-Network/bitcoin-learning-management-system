@@ -644,7 +644,7 @@ function Home() {
               <p
                 className={cn(
                   paragraphCss,
-                  'mt-5 !text-newGray-5 max-w-[43rem] body-14px lg:subtitle-med-16px text-center lg:text-start',
+                  'mt-5 !text-newGray-5 max-w-[43rem] body-14px lg:subtitle-medium-med-16px text-center lg:text-start',
                 )}
               >
                 {t('home.languageSection.content1')}

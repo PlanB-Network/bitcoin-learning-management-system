@@ -152,7 +152,7 @@ function FormTextArea({
               placeholder={t('courses.review.writeThoughts')}
               rows={3}
               disabled={disabled}
-              className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-med-16px"
+              className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-medium-med-16px"
               {...field}
             />
           </FormControl>

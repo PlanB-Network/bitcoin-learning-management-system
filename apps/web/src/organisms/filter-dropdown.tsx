@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { HiSearch } from 'react-icons/hi';
+import { IoMdClose } from 'react-icons/io';
+import { MdOutlineClear } from 'react-icons/md';
+
+import { TextTag, cn } from '@blms/ui';
 
 import FilterIcon from '../../../../apps/web/src/assets/icons/Filter.svg';
-import SearchIcon from '../../../../apps/web/src/assets/icons/search.svg';
 
 interface FilterDropdownProps {
   filters: Record<string, string[]>;
@@ -90,31 +94,61 @@ export const FilterDropdown = ({
   };
 
   return (
-    <section className="mx-auto" ref={dropdownRef}>
+    <section
+      className="mx-auto rounded-[10px] bg-tertiary-11"
+      ref={dropdownRef}
+    >
       <div className="relative">
-        <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[10px]">
-          <img src={SearchIcon} sizes="20" alt="" />
-        </span>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search..."
-          className={`block w-full pl-9 py-[10px] body-16px placeholder:body-16px bg-tertiary-10 text-darkOrange-6 placeholder:text-tertiary-6 rounded-[10px] focus:outline-none focus:border focus:border-darkOrange-7 focus:ring-0 ${
-            isOpen ? 'rounded-b-0' : 'rounded-b-[10px]'
-          }`}
+        <div
+          className={cn(
+            'w-full flex items-center gap-2.5 overflow-x-scroll bg-tertiary-10 pl-[10px] py-[10px] pr-14 rounded-[10px]',
+            isFocused && 'border border-darkOrange-7',
+            isOpen ? 'rounded-b-0' : 'rounded-b-[10px]',
+          )}
           style={{
             borderBottomLeftRadius: isOpen ? '0' : '10px',
             borderBottomRightRadius: isOpen ? '0' : '10px',
           }}
-          onFocus={() => {
-            setIsFocused(true);
-            if (isOpen) {
-              setIsOpen(false);
+          onClick={() =>
+            (
+              document.querySelector('#searchInput') as HTMLInputElement
+            )?.focus()
+          }
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              (
+                document.querySelector('#searchInput') as HTMLInputElement
+              )?.focus();
             }
           }}
-          onBlur={() => setIsFocused(false)}
-        />
+        >
+          <HiSearch size={18} className="text-darkOrange-0 shrink-0" />
+          <input
+            id="searchInput"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search..."
+            className={cn(
+              'w-full body-16px placeholder:body-16px !bg-transparent text-darkOrange-6 placeholder:text-tertiary-6 focus:ring-0 focus:outline-none',
+            )}
+            onFocus={() => {
+              setIsFocused(true);
+              if (isOpen) {
+                setIsOpen(false);
+              }
+            }}
+            onBlur={() => setIsFocused(false)}
+          />
+          <button
+            className="text-darkOrange-0 flex items-center shrink-0"
+            onClick={clearSearch}
+          >
+            <MdOutlineClear size={18} />
+          </button>
+        </div>
 
         <button
           className={`absolute text-darkOrange-0 inset-y-0 right-0 flex items-center rounded-tr-[10px]
@@ -126,26 +160,6 @@ export const FilterDropdown = ({
         >
           <span>
             <img className="p-[10px]" src={FilterIcon} sizes="20" alt="" />
-          </span>
-        </button>
-
-        <button
-          className="absolute text-darkOrange-0 inset-y-0 right-14 flex items-center"
-          onClick={clearSearch}
-        >
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-[18px]"
-              viewBox="0 0 20 20"
-              fill="#E3DDD9"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 9.293l4.95-4.95a1 1 0 011.415 1.415L11.414 10l4.95 4.95a1 1 0 01-1.415 1.415L10 11.414l-4.95 4.95a1 1 0 01-1.415-1.415L8.586 10 3.636 5.05A1 1 0 015.05 3.636L10 8.586z"
-                clipRule="evenodd"
-              />
-            </svg>
           </span>
         </button>
       </div>
@@ -206,6 +220,32 @@ export const FilterDropdown = ({
                 </div>
               ))}
             </div>
+          )}
+        </div>
+      )}
+      {Object.values(selectedFilters).some(
+        (options) => options.length > 0 && !options.includes('all'),
+      ) && (
+        <div className="flex flex-wrap items-center gap-[5px] px-2.5 py-2">
+          {Object.entries(selectedFilters).map(([category, options]) =>
+            options
+              .filter((option) => option !== 'all')
+              .map((option) => (
+                <TextTag
+                  key={`${category}-${option}`}
+                  variant="lightMaroon"
+                  mode="dark"
+                  size="verySmall"
+                  className="text-nowrap capitalize"
+                >
+                  <span>{option}</span>
+                  <IoMdClose
+                    className="text-tertiary-4"
+                    size={16}
+                    onClick={() => onChange(category, option)}
+                  />
+                </TextTag>
+              )),
           )}
         </div>
       )}

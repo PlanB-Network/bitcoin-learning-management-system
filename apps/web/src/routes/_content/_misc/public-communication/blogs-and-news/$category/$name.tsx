@@ -81,8 +81,7 @@ function SingleBlogDetail() {
                     {blog.tags.map((tag, index) => (
                       <TextTag
                         key={index}
-                        size="featuredCard"
-                        variant="newGrayBlogs"
+                        variant="grey"
                         className="capitalize"
                       >
                         {tag}

@@ -171,8 +171,9 @@ function Book() {
                       {book?.tags.map((tag, i) => (
                         <TextTag
                           key={i}
-                          size="resourcesNewSize"
-                          variant="newGray"
+                          size="small"
+                          variant="lightMaroon"
+                          mode="dark"
                         >
                           {tag.charAt(0).toUpperCase() + tag.slice(1)}
                         </TextTag>
