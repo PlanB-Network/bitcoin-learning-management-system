@@ -110,8 +110,8 @@ export const resourcesRouter = createTRPCRouter({
   //Newsletters
   getNewsletters: createGetResourcesProcedure()
     .output<Parser<JoinedNewsletter[]>>(joinedNewsletterSchema.array())
-    .query(({ ctx, input }) => {
-      return createGetNewsletters(ctx.dependencies)(input?.language ?? 'en');
+    .query(({ ctx }) => {
+      return createGetNewsletters(ctx.dependencies)();
     }),
   getNewsletter: createGetResourceProcedure()
     .output<Parser<JoinedNewsletter>>(joinedNewsletterSchema)

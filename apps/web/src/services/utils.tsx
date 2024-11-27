@@ -1,6 +1,6 @@
 import type { JoinedTutorialLight } from '@blms/types';
 
-// import webSvg from '#src/assets/icons/world-pixelated.svg';
+import webSvg from '#src/assets/icons/world-pixelated.svg';
 import builderSvg from '#src/assets/resources/builder.svg';
 import conferenceSvg from '#src/assets/resources/conference.svg';
 import glossarySvg from '#src/assets/resources/glossary.svg';
@@ -84,11 +84,11 @@ export const RESOURCES_CATEGORIES = [
     image: glossarySvg,
     unreleased: false,
   },
-  // {
-  //   name: 'newsletters',
-  //   image: webSvg,
-  //   unreleased: false,
-  // },
+  {
+    name: 'newsletters',
+    image: webSvg,
+    unreleased: false,
+  },
 ] as const;
 
 export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {

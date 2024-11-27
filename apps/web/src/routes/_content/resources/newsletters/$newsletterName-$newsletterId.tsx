@@ -60,7 +60,7 @@ function NewsletterDetail() {
 
   const { data: newsletter, isFetched } = trpc.content.getNewsletter.useQuery({
     id: Number(params.newsletterId),
-    language: i18n.language ?? 'en',
+    language: i18n.language,
   });
 
   const { data: newsletters } = trpc.content.getNewsletters.useQuery(

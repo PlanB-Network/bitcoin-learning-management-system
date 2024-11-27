@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedNewsletter } from '@blms/types';
 
-export const getNewslettersQuery = (language?: string) => {
+export const getNewslettersQuery = () => {
   return sql<JoinedNewsletter[]>`
     SELECT
       r.id AS resource_id,
@@ -22,7 +22,7 @@ export const getNewslettersQuery = (language?: string) => {
     JOIN content.resources r ON r.id = n.resource_id
     LEFT JOIN content.resource_tags rt ON rt.resource_id = r.id
     LEFT JOIN content.tags t ON t.id = rt.tag_id
-    ${language ? sql`WHERE n.language = ${language}` : sql``}
+    -- Remove the language filter to get all languages
     GROUP BY r.id, r.path, n.id, n.language, n.level, n.author, n.title,
       n.description, n.website_url, n.publication_date, n.tags, n.contributors;
   `;

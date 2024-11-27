@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@blms/ui';
 
-// import webSvg from '#src/assets/icons/world-pixelated.svg';
 import resourcesSvg from '#src/assets/resources/builder.svg';
 import eventsSvg from '#src/assets/resources/conference.svg';
 import glossarySvg from '#src/assets/resources/glossary.svg';
@@ -162,13 +161,13 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               path: '/resources/bet',
               icon: tutorialsSvg,
             },
-            // {
-            //   id: 'newsletter',
-            //   title: t('resources.newsletters.title'),
-            //   description: t('menu.newsletterDescription'),
-            //   path: '/resources/newsletters',
-            //   icon: webSvg,
-            // },
+            {
+              id: 'newsletter',
+              title: t('resources.newsletters.title'),
+              description: t('menu.newsletterDescription'),
+              path: '/resources/newsletters',
+              icon: socialStudiesSvg,
+            },
           ],
         },
       ],
