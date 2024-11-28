@@ -106,6 +106,8 @@ export const session: SessionConfig = {
 
 export const stripe: StripeConfig = {
   publicKey: getenv('VITE_STRIPE_PUBLIC', null),
+  secret: getenv('STRIPE_SECRET', ''),
+  endpointSecret: getenv('STRIPE_ENDPOINT_SECRET', null),
 };
 
 export const swissBitcoinPay: SwissBitcoinPayConfig = {

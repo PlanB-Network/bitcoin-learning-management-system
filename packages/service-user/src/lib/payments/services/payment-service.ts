@@ -1,9 +1,6 @@
-import Stripe from 'stripe';
+import type { CheckoutData, SwissBitcoinPayConfig } from '@blms/types';
 
-import type { CheckoutData } from '@blms/types';
-
-const stripeSecret = process.env['STRIPE_SECRET'];
-const stripe = new Stripe(stripeSecret ? stripeSecret : '');
+import type { Dependencies } from '#src/dependencies.js';
 
 export async function checkSatsPrice(dollarPrice: number, satsPrice: number) {
   const response = await fetch('https://mempool.space/api/v1/prices');
@@ -30,78 +27,83 @@ export async function checkSatsPrice(dollarPrice: number, satsPrice: number) {
   }
 }
 
-export async function sbpPayment(
-  elementId: string,
-  satsPrice: number,
-  webhookUrl: string,
-) {
-  const paymentData = {
-    title: elementId,
-    amount: satsPrice,
-    unit: 'sat',
-    onChain: true,
-    webhook: webhookUrl,
-  };
+export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
+  return async (elementId: string, satsPrice: number) => {
+    const paymentData = {
+      title: elementId,
+      amount: satsPrice,
+      unit: 'sat',
+      onChain: true,
+      webhook: `${config.proxyUrl}/users/events/payment/webhooks`,
+    };
 
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    'api-key': process.env['SBP_API_KEY'] || '',
-  });
-
-  try {
-    const response = await fetch(`https://api.swiss-bitcoin-pay.ch/checkout`, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(paymentData),
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'api-key': config.apiKey || '',
     });
 
-    if (!response.ok) {
-      console.log('Network response was not ok', response);
-      throw new Error('Network response was not ok');
+    try {
+      const response = await fetch(
+        `https://api.swiss-bitcoin-pay.ch/checkout`,
+        {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(paymentData),
+        },
+      );
+
+      if (!response.ok) {
+        console.log('Network response was not ok', response);
+        throw new Error('Network response was not ok');
+      }
+
+      return (await response.json()) as CheckoutData;
+    } catch (error) {
+      console.log('Checkout error :', error);
+      throw new Error('Checkout error');
     }
+  };
+};
 
-    return (await response.json()) as CheckoutData;
-  } catch (error) {
-    console.log('Checkout error :', error);
-    throw new Error('Checkout error');
-  }
-}
-
-export function stripePayment(
-  productName: string,
-  productType: string,
-  dollarPrice: number,
-  paymentId: string,
-) {
-  return stripe.checkout.sessions.create({
-    mode: 'payment',
-    ui_mode: 'embedded',
-    invoice_creation: {
-      enabled: true,
-    },
-    billing_address_collection: 'required',
-    metadata: {
-      product: productType,
-    },
-    payment_intent_data: {
+export const createStripePayment = ({
+  stripe,
+}: Pick<Dependencies, 'stripe'>) => {
+  return (
+    productName: string,
+    productType: string,
+    dollarPrice: number,
+    paymentId: string,
+  ) => {
+    return stripe.checkout.sessions.create({
+      mode: 'payment',
+      ui_mode: 'embedded',
+      invoice_creation: {
+        enabled: true,
+      },
+      billing_address_collection: 'required',
       metadata: {
-        paymentId: paymentId,
         product: productType,
       },
-    },
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          unit_amount: dollarPrice * 100,
-          product_data: {
-            name: productName,
-          },
+      payment_intent_data: {
+        metadata: {
+          paymentId: paymentId,
+          product: productType,
         },
-        quantity: 1,
       },
-    ],
-    redirect_on_completion: 'never',
-    automatic_tax: { enabled: true },
-  });
-}
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            unit_amount: dollarPrice * 100,
+            product_data: {
+              name: productName,
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      redirect_on_completion: 'never',
+      automatic_tax: { enabled: true },
+    });
+  };
+};

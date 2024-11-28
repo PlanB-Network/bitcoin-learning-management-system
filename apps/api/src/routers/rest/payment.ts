@@ -1,5 +1,4 @@
 import type { Router } from 'express';
-import Stripe from 'stripe';
 
 import { createCalculateEventSeats } from '@blms/service-content';
 import {
@@ -14,14 +13,12 @@ import type { SwissBitcoinPayCheckout } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 
-const stripeSecret = process.env['STRIPE_SECRET'];
-const stripe = new Stripe(stripeSecret ? stripeSecret : '');
-const endpointSecret = process.env['STRIPE_ENDPOINT_SECRET'];
-
 export const createRestPaymentRoutes = (
   dependencies: Dependencies,
   router: Router,
 ) => {
+  const { stripe, config } = dependencies;
+
   router.post(
     '/users/courses/payment/webhooks',
     async (req, res): Promise<void> => {
@@ -113,7 +110,7 @@ export const createRestPaymentRoutes = (
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        if (endpointSecret) {
+        if (config.stripe.endpointSecret) {
           const signature = req.headers['stripe-signature'] as string;
 
           try {
@@ -121,7 +118,7 @@ export const createRestPaymentRoutes = (
               // @ts-expect-error TODO: fix this?
               req.rawBody,
               signature,
-              endpointSecret,
+              config.stripe.endpointSecret,
             );
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (error: any) {

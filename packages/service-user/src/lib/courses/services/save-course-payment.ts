@@ -6,8 +6,8 @@ import type { CouponCode, Course } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import {
   checkSatsPrice,
-  sbpPayment,
-  stripePayment,
+  createSbpPayment,
+  createStripePayment,
 } from '../../payments/services/payment-service.js';
 import { insertCoursePayment } from '../queries/insert-course-payment.js';
 import { updateCourseCoupon } from '../queries/update-course-coupon.js';
@@ -23,7 +23,12 @@ interface Options {
   format: string;
 }
 
-export const createSaveCoursePayment = ({ postgres }: Dependencies) => {
+export const createSaveCoursePayment = (dependencies: Dependencies) => {
+  const { postgres, config, stripe } = dependencies;
+
+  const sbpPayment = createSbpPayment(config.swissBitcoinPay);
+  const stripePayment = createStripePayment({ stripe });
+
   return async ({
     uid,
     courseId,
@@ -106,11 +111,7 @@ export const createSaveCoursePayment = ({ postgres }: Dependencies) => {
     }
 
     if (method === 'sbp') {
-      const checkoutData = await sbpPayment(
-        courseId,
-        satsPrice,
-        `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
-      );
+      const checkoutData = await sbpPayment(courseId, satsPrice);
 
       await postgres.exec(
         insertCoursePayment({

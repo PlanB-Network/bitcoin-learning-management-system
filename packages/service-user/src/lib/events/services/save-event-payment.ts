@@ -11,8 +11,8 @@ import type {
 import type { Dependencies } from '../../../dependencies.js';
 import {
   checkSatsPrice,
-  sbpPayment,
-  stripePayment,
+  createSbpPayment,
+  createStripePayment,
 } from '../../payments/services/payment-service.js';
 import { insertEventPayment } from '../queries/insert-event-payment.js';
 import { updateEventCoupon } from '../queries/update-event-coupon.js';
@@ -28,7 +28,12 @@ interface Options {
   withPhysical: boolean;
 }
 
-export const createSaveEventPayment = ({ postgres }: Dependencies) => {
+export const createSaveEventPayment = (dependencies: Dependencies) => {
+  const { postgres, config, stripe } = dependencies;
+
+  const sbpPayment = createSbpPayment(config.swissBitcoinPay);
+  const stripePayment = createStripePayment({ stripe });
+
   return async ({
     uid,
     eventId,
@@ -103,11 +108,7 @@ export const createSaveEventPayment = ({ postgres }: Dependencies) => {
     }
 
     if (method === 'sbp') {
-      const checkoutData = await sbpPayment(
-        eventId,
-        satsPrice,
-        `${process.env['PUBLIC_PROXY_URL']}/users/events/payment/webhooks`,
-      );
+      const checkoutData = await sbpPayment(eventId, satsPrice);
 
       await postgres.exec(
         insertEventPayment({
@@ -117,8 +118,8 @@ export const createSaveEventPayment = ({ postgres }: Dependencies) => {
           amount: checkoutData.amount,
           paymentId: checkoutData.id,
           invoiceUrl: checkoutData.checkoutUrl,
-          method: method,
-          withPhysical: withPhysical,
+          method,
+          withPhysical,
         }),
       );
 
@@ -141,8 +142,8 @@ export const createSaveEventPayment = ({ postgres }: Dependencies) => {
           amount: dollarPrice,
           paymentStatus: 'pending',
           invoiceUrl: '',
-          method: method,
-          couponCode: couponCode,
+          method,
+          couponCode,
         }),
       );
 
@@ -198,11 +199,11 @@ export const createGetCheckout = (ctx: Dependencies) => {
   };
 };
 
-export const createGetPendingPayments = (ctx: Dependencies) => {
-  return () => {
-    return ctx.postgres.exec(sql<
-      Array<Pick<EventPayment, 'uid' | 'eventId' | 'paymentId'>>
-    >`
+export const createGetPendingPayments = ({ postgres }: Dependencies) => {
+  type Result = Pick<EventPayment, 'uid' | 'eventId' | 'paymentId'>;
+
+  return (): Promise<Result[]> => {
+    return postgres.exec(sql<Result[]>`
       SELECT uid, event_id, payment_id FROM users.event_payment WHERE payment_status = 'pending';
     `);
   };

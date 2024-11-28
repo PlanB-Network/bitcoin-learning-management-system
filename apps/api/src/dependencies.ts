@@ -1,4 +1,5 @@
 import { EventEmitter } from 'eventemitter3';
+import Stripe from 'stripe';
 
 import { type CronService, createCronService } from '@blms/crons';
 import { createPostgresClient } from '@blms/database';
@@ -17,6 +18,7 @@ export interface Dependencies {
   events: EventEmitter<ApiEvents>;
   config: EnvConfig;
   crons: CronService;
+  stripe: Stripe;
 }
 
 export const startDependencies = async () => {
@@ -25,6 +27,7 @@ export const startDependencies = async () => {
   const s3 = createS3Service(config.s3);
   const redis = new RedisClient(config.redis);
   const events = new EventEmitter<ApiEvents>();
+  const stripe = new Stripe(config.stripe.secret);
   await postgres.connect();
 
   const dependencies: Dependencies = {
@@ -34,6 +37,7 @@ export const startDependencies = async () => {
     events,
     config,
     crons,
+    stripe,
   };
 
   await registerCronTasks(dependencies);

@@ -29,6 +29,8 @@ export interface SessionConfig {
 
 export interface StripeConfig {
   publicKey: string;
+  secret: string;
+  endpointSecret: string;
 }
 
 export interface EnvConfig {
