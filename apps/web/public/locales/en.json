@@ -620,6 +620,11 @@
       "subtitle": "Orange pilling a billion people is not easy",
       "title": "Want to add your event?"
     },
+    "errors": {
+      "premiumContentNeedsLogin": "You need to be logged in to access this event.",
+      "premiumContentNeedsPayment": "This event is part of a paid program.",
+      "premiumContentNeedsPaymentAction": "Go to events page"
+    },
     "pageDescription": "Want to talk about Bitcoin in real time? Here, you can find all the events supported by the Plan B Network communities. Whether you want to listen to a lecture, discuss Bitcoin over a drink, or take an exam to assess your knowledge, you will find the right event here through the Plan B Network.",
     "pageSubtitle": "Bottom-up adoption enhanced by a strong network",
     "pageTitle": "Looking for a Bitcoin event to attend?",

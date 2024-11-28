@@ -23,7 +23,9 @@ export const updateEventPayment = ({
       WHERE payment_id = ${id}
     ;
     `;
-  } else if (isPaid) {
+  }
+
+  if (isPaid) {
     return sql<EventPayment[]>`
       UPDATE users.event_payment
         SET payment_status = 'paid'
@@ -32,9 +34,9 @@ export const updateEventPayment = ({
         WHERE payment_id = ${id}
       ;
     `;
-  } else {
-    throw new Error('Should have isPaid or isExpired = true');
   }
+
+  throw new Error('Should have isPaid or isExpired = true');
 };
 
 export const updateEventPaymentInvoiceId = ({

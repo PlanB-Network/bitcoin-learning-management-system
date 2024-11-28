@@ -4,12 +4,13 @@ import process from 'node:process';
 import type { PostgresClientConfig } from '@blms/database';
 import type { RedisClientConfig } from '@blms/redis';
 import type {
-  EnvConfig,
   GitHubSyncConfig,
   OpenTimestampsConfig,
   S3Config,
+  SendGridConfig,
   SessionConfig,
   StripeConfig,
+  SwissBitcoinPayConfig,
 } from '@blms/types';
 
 function getenv<
@@ -59,7 +60,7 @@ export const docker = getenv('DOCKER', false);
  */
 export const domainUrl = getenv('DOMAIN_URL', 'http://localhost:8181');
 
-export const sendgrid: EnvConfig['sendgrid'] = {
+export const sendgrid: SendGridConfig = {
   key: getenv('SENDGRID_KEY', null),
   enable: getenv('SENDGRID_ENABLE', false),
   email: getenv('SENDGRID_EMAIL', null),
@@ -105,6 +106,11 @@ export const session: SessionConfig = {
 
 export const stripe: StripeConfig = {
   publicKey: getenv('VITE_STRIPE_PUBLIC', null),
+};
+
+export const swissBitcoinPay: SwissBitcoinPayConfig = {
+  apiKey: getenv('SBP_API_KEY', null),
+  proxyUrl: getenv('PUBLIC_PROXY_URL', null),
 };
 
 const rpcUrl = getenv('OTS_RPC_URL', null);

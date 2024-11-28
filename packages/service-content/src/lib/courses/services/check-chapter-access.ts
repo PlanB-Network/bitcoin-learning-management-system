@@ -5,16 +5,16 @@ import type { Dependencies } from '../../dependencies.js';
 
 interface CourseAccessResponse
   extends Pick<Course, 'id' | 'paidStartDate' | 'paidEndDate'> {
-  uid: string;
+  uid: string | null;
   allowed: string;
 }
 
 export const createCheckChapterAccess = ({ postgres }: Dependencies) => {
-  return async (
+  return (
     chapterId: string,
     uid: string | null,
   ): Promise<CourseAccessResponse> => {
-    const course = await postgres
+    return postgres
       .exec(
         sql<CourseAccessResponse[]>`
         SELECT
@@ -39,9 +39,5 @@ export const createCheckChapterAccess = ({ postgres }: Dependencies) => {
       )
       .then(firstRow)
       .then(rejectOnEmpty);
-
-    console.log('course for user', uid, course);
-
-    return course;
   };
 };

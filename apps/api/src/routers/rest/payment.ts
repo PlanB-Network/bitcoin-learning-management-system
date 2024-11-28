@@ -1,6 +1,3 @@
-// import crypto from 'node:crypto';
-// import type { IncomingMessage } from 'node:http';
-
 import type { Router } from 'express';
 import Stripe from 'stripe';
 
@@ -13,6 +10,7 @@ import {
   createUpdateEventPaymentStatus,
   createUpdatePayment,
 } from '@blms/service-user';
+import type { SwissBitcoinPayCheckout } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -33,17 +31,6 @@ export const createRestPaymentRoutes = (
           isPaid: boolean;
           isExpired: boolean;
         }
-
-        // if (!validateHmacSignature(req)) {
-        //   console.error('Hmac validation error!');
-
-        //   res.statusCode = 403;
-        //   res.json({
-        //     message: 'hmac validation error',
-        //   });
-        //   res.end();
-        //   return;
-        // }
 
         const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
 
@@ -76,30 +63,13 @@ export const createRestPaymentRoutes = (
     },
   );
 
+  const updateEventPayment = createUpdateEventPayment(dependencies);
+  const calculateEventSeats = createCalculateEventSeats(dependencies);
   router.post(
     '/users/events/payment/webhooks',
     async (req, res): Promise<void> => {
       try {
-        interface PaymentWebhookRequest {
-          id: string;
-          isPaid: boolean;
-          isExpired: boolean;
-        }
-
-        // if (!validateHmacSignature(req)) {
-        //   console.error('Hmac validation error!');
-
-        //   res.statusCode = 403;
-        //   res.json({
-        //     message: 'hmac validation error',
-        //   });
-        //   res.end();
-        //   return;
-        // }
-
-        console.log(req.body);
-
-        const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
+        const { id, isPaid, isExpired } = req.body as SwissBitcoinPayCheckout;
 
         if (!id || typeof id !== 'string') {
           res.status(400).json({ message: 'Invalid or missing id' });
@@ -114,14 +84,14 @@ export const createRestPaymentRoutes = (
           return;
         }
 
-        const result = await createUpdateEventPayment(dependencies)({
-          id: id,
-          isPaid: isPaid,
-          isExpired: isExpired,
+        const result = await updateEventPayment({
+          id,
+          isPaid,
+          isExpired,
         });
 
         if (isPaid === true) {
-          await createCalculateEventSeats(dependencies)();
+          await calculateEventSeats();
         }
 
         res.json({

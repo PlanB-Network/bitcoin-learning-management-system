@@ -4,3 +4,9 @@ export * from './redis.js';
 export * from './events.js';
 export * from './config.js';
 export * from './session.js';
+
+export interface SwissBitcoinPayCheckout {
+  id: string;
+  isPaid: boolean;
+  isExpired: boolean;
+}

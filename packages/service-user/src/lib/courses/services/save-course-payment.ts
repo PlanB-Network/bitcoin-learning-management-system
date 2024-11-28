@@ -5,9 +5,9 @@ import type { CouponCode, Course } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
-  CheckSatsPrice,
-  SbpPayment,
-  StripePayment,
+  checkSatsPrice,
+  sbpPayment,
+  stripePayment,
 } from '../../payments/services/payment-service.js';
 import { insertCoursePayment } from '../queries/insert-course-payment.js';
 import { updateCourseCoupon } from '../queries/update-course-coupon.js';
@@ -102,11 +102,11 @@ export const createSaveCoursePayment = ({ postgres }: Dependencies) => {
     }
 
     if (method === 'sbp') {
-      await CheckSatsPrice(coursePriceInDollars, satsPrice);
+      await checkSatsPrice(coursePriceInDollars, satsPrice);
     }
 
     if (method === 'sbp') {
-      const checkoutData = await SbpPayment(
+      const checkoutData = await sbpPayment(
         courseId,
         satsPrice,
         `${process.env['PUBLIC_PROXY_URL']}/users/courses/payment/webhooks`,
@@ -129,7 +129,7 @@ export const createSaveCoursePayment = ({ postgres }: Dependencies) => {
       return checkoutData;
     } else if (method === 'stripe') {
       const paymentId = uuidv4();
-      const session = await StripePayment(
+      const session = await stripePayment(
         `${courseId}: ${format} course`,
         'course',
         dollarPrice,

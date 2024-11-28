@@ -5,7 +5,7 @@ import type { CheckoutData } from '@blms/types';
 const stripeSecret = process.env['STRIPE_SECRET'];
 const stripe = new Stripe(stripeSecret ? stripeSecret : '');
 
-export async function CheckSatsPrice(dollarPrice: number, satsPrice: number) {
+export async function checkSatsPrice(dollarPrice: number, satsPrice: number) {
   const response = await fetch('https://mempool.space/api/v1/prices');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: any = await response.json();
@@ -30,7 +30,7 @@ export async function CheckSatsPrice(dollarPrice: number, satsPrice: number) {
   }
 }
 
-export async function SbpPayment(
+export async function sbpPayment(
   elementId: string,
   satsPrice: number,
   webhookUrl: string,
@@ -42,6 +42,7 @@ export async function SbpPayment(
     onChain: true,
     webhook: webhookUrl,
   };
+
   const headers = new Headers({
     'Content-Type': 'application/json',
     'api-key': process.env['SBP_API_KEY'] || '',
@@ -66,7 +67,7 @@ export async function SbpPayment(
   }
 }
 
-export function StripePayment(
+export function stripePayment(
   productName: string,
   productType: string,
   dollarPrice: number,

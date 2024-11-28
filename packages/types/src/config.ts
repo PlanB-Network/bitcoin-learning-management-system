@@ -40,6 +40,7 @@ export interface EnvConfig {
   session: SessionConfig;
   stripe: StripeConfig;
   opentimestamps: OpenTimestampsConfig;
+  swissBitcoinPay: SwissBitcoinPayConfig;
 }
 
 export interface OpenTimestampsConfig {
@@ -58,4 +59,9 @@ export interface S3Config {
   endpoint: string;
   accessKey: string;
   secretKey: string;
+}
+
+export interface SwissBitcoinPayConfig {
+  apiKey: string | null;
+  proxyUrl: string | null;
 }
