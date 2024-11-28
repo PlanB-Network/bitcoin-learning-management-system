@@ -1,18 +1,18 @@
 import type { Dependencies } from '../../../dependencies.js';
 import {
-  updateEventPayment,
   updateEventPaymentInvoiceId,
+  updateEventPaymentQuery,
 } from '../queries/update-event-payment.js';
 
-interface Options {
-  id: string;
-  isPaid: boolean;
-  isExpired: boolean;
-}
+type Options = { id: string } & (
+  | { isPaid: true; isExpired: false }
+  | { isPaid: false; isExpired: true }
+);
 
 export const createUpdateEventPayment = ({ postgres }: Dependencies) => {
   return async (options: Options) => {
-    await postgres.exec(updateEventPayment(options));
+    const query = updateEventPaymentQuery(options);
+    await postgres.exec(query);
   };
 };
 

@@ -1,12 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { firstRow, sql } from '@blms/database';
-import type {
-  CouponCode,
-  Event,
-  EventPayment,
-  SwissBitcoinPayCheckout,
-} from '@blms/types';
+import type { CouponCode, Event } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
@@ -16,7 +11,7 @@ import {
 } from '../../payments/services/payment-service.js';
 import { insertEventPayment } from '../queries/insert-event-payment.js';
 import { updateEventCoupon } from '../queries/update-event-coupon.js';
-import { updateEventPayment } from '../queries/update-event-payment.js';
+import { updateEventPaymentQuery } from '../queries/update-event-payment.js';
 
 interface Options {
   uid: string;
@@ -170,41 +165,12 @@ export const createUpdateEventPaymentStatus = ({ postgres }: Dependencies) => {
     paymentIntentId: string;
   }) => {
     await postgres.exec(
-      updateEventPayment({
+      updateEventPaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
         isPaid: true,
         isExpired: false,
       }),
     );
-  };
-};
-
-/**
- * Pull SwissBitcoinPay checkout status
- */
-export const createGetCheckout = (ctx: Dependencies) => {
-  const config = ctx.config.swissBitcoinPay;
-
-  return async (id: string) => {
-    const url = `https://api.swiss-bitcoin-pay.ch/checkout/${id}`;
-    const response = await fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': config.apiKey || '',
-      },
-    });
-
-    return response.json() as Promise<SwissBitcoinPayCheckout>;
-  };
-};
-
-export const createGetPendingPayments = ({ postgres }: Dependencies) => {
-  type Result = Pick<EventPayment, 'uid' | 'eventId' | 'paymentId'>;
-
-  return (): Promise<Result[]> => {
-    return postgres.exec(sql<Result[]>`
-      SELECT uid, event_id, payment_id FROM users.event_payment WHERE payment_status = 'pending';
-    `);
   };
 };

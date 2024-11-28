@@ -11,7 +11,7 @@ import {
 } from '../../payments/services/payment-service.js';
 import { insertCoursePayment } from '../queries/insert-course-payment.js';
 import { updateCourseCoupon } from '../queries/update-course-coupon.js';
-import { updatePayment } from '../queries/update-payment.js';
+import { updateCoursePaymentQuery } from '../queries/update-payment.js';
 
 interface Options {
   uid: string;
@@ -174,7 +174,7 @@ export const createUpdateCoursePaymentStatus = ({ postgres }: Dependencies) => {
     paymentIntentId: string;
   }) => {
     await postgres.exec(
-      updatePayment({
+      updateCoursePaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
         isPaid: true,

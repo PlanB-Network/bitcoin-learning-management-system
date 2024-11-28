@@ -2,12 +2,12 @@ import type { Router } from 'express';
 
 import { createCalculateEventSeats } from '@blms/service-content';
 import {
+  createUpdateCoursePayment,
   createUpdateCoursePaymentInvoiceId,
   createUpdateCoursePaymentStatus,
   createUpdateEventPayment,
   createUpdateEventPaymentInvoiceId,
   createUpdateEventPaymentStatus,
-  createUpdatePayment,
 } from '@blms/service-user';
 import type { SwissBitcoinPayCheckout } from '@blms/types';
 
@@ -19,24 +19,19 @@ export const createRestPaymentRoutes = (
 ) => {
   const { stripe, config } = dependencies;
 
+  const updateCoursePayment = createUpdateCoursePayment(dependencies);
   router.post(
     '/users/courses/payment/webhooks',
     async (req, res): Promise<void> => {
       try {
-        interface PaymentWebhookRequest {
-          id: string;
-          isPaid: boolean;
-          isExpired: boolean;
-        }
+        const status = req.body as SwissBitcoinPayCheckout;
 
-        const { id, isPaid, isExpired } = req.body as PaymentWebhookRequest;
-
-        if (!id || typeof id !== 'string') {
+        if (typeof status.id !== 'string') {
           res.status(400).json({ message: 'Invalid or missing id' });
           return;
         }
 
-        if (isPaid === null || isExpired === null) {
+        if (status.isPaid === null || status.isExpired === null) {
           res.status(400).json({
             message:
               'Invalid isPaid or isExpired values. Must be true or false.',
@@ -44,11 +39,7 @@ export const createRestPaymentRoutes = (
           return;
         }
 
-        const result = await createUpdatePayment(dependencies)({
-          id: id,
-          isPaid: isPaid,
-          isExpired: isExpired,
-        });
+        const result = await updateCoursePayment(status);
 
         res.json({
           message: 'success',
@@ -66,14 +57,14 @@ export const createRestPaymentRoutes = (
     '/users/events/payment/webhooks',
     async (req, res): Promise<void> => {
       try {
-        const { id, isPaid, isExpired } = req.body as SwissBitcoinPayCheckout;
+        const status = req.body as SwissBitcoinPayCheckout;
 
-        if (!id || typeof id !== 'string') {
+        if (typeof status.id !== 'string') {
           res.status(400).json({ message: 'Invalid or missing id' });
           return;
         }
 
-        if (isPaid === null || isExpired === null) {
+        if (status.isPaid === null || status.isExpired === null) {
           res.status(400).json({
             message:
               'Invalid isPaid or isExpired values. Must be true or false.',
@@ -81,13 +72,9 @@ export const createRestPaymentRoutes = (
           return;
         }
 
-        const result = await updateEventPayment({
-          id,
-          isPaid,
-          isExpired,
-        });
+        const result = await updateEventPayment(status);
 
-        if (isPaid === true) {
+        if (status.isPaid === true) {
           await calculateEventSeats();
         }
 

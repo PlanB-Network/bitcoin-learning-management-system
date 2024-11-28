@@ -1,4 +1,8 @@
-import type { CheckoutData, SwissBitcoinPayConfig } from '@blms/types';
+import type {
+  CheckoutData,
+  SwissBitcoinPayCheckout,
+  SwissBitcoinPayConfig,
+} from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -62,6 +66,25 @@ export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
       console.log('Checkout error :', error);
       throw new Error('Checkout error');
     }
+  };
+};
+
+/**
+ * Pull SwissBitcoinPay checkout status
+ */
+export const createGetSbpCheckout = (ctx: Dependencies) => {
+  const config = ctx.config.swissBitcoinPay;
+
+  return async (id: string) => {
+    const url = `https://api.swiss-bitcoin-pay.ch/checkout/${id}`;
+    const response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': config.apiKey || '',
+      },
+    });
+
+    return response.json() as Promise<SwissBitcoinPayCheckout>;
   };
 };
 

@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { CoursePayment } from '@blms/types';
 
-export const updatePayment = ({
+export const updateCoursePaymentQuery = ({
   id,
   isPaid,
   isExpired,
@@ -23,7 +23,9 @@ export const updatePayment = ({
       WHERE payment_id = ${id}
     ;
     `;
-  } else if (isPaid) {
+  }
+
+  if (isPaid) {
     return sql<CoursePayment[]>`
       UPDATE users.course_payment
         SET payment_status = 'paid'
@@ -32,9 +34,9 @@ export const updatePayment = ({
         WHERE payment_id = ${id}
       ;
     `;
-  } else {
-    throw new Error('Should have isPaid or isExpired = true');
   }
+
+  throw new Error('Should have isPaid or isExpired = true');
 };
 
 export const updatePaymentInvoiceId = ({
@@ -53,6 +55,4 @@ export const updatePaymentInvoiceId = ({
         WHERE stripe_payment_intent = ${intentId}
       ;
     `;
-
-  throw new Error('Should have isPaid or isExpired = true');
 };

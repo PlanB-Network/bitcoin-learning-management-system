@@ -4,8 +4,10 @@ import {
 } from '@blms/service-content';
 import {
   createExamTimestampService,
-  createGetCheckout,
-  createGetPendingPayments,
+  createGetPendingCoursePayments,
+  createGetPendingEventPayments,
+  createGetSbpCheckout,
+  createUpdateCoursePayment,
   createUpdateEventPayment,
 } from '@blms/service-user';
 
@@ -29,20 +31,46 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   // This is useful for payments that are
   // not confirmed from webhook (missed or failed)
   {
-    const getCheckout = createGetCheckout(ctx);
-    const getPendingPayments = createGetPendingPayments(ctx);
+    const getCheckout = createGetSbpCheckout(ctx);
+    const getPendingCoursePayments = createGetPendingCoursePayments(ctx);
+    const getPendingEventsPayments = createGetPendingEventPayments(ctx);
     const updateEventPayment = createUpdateEventPayment(ctx);
+    const updateCoursePayment = createUpdateCoursePayment(ctx);
     const calculateEventSeats = createCalculateEventSeats(ctx);
     ctx.crons.addTask('1m', async () => {
-      const payments = await getPendingPayments();
+      // Events payments
+      {
+        let refreshEventsSeats = false;
+        const payments = await getPendingEventsPayments();
 
-      for (const payment of payments) {
-        const status = await getCheckout(payment.paymentId);
+        for (const payment of payments) {
+          console.log('Refreshing event payment', payment.paymentId);
+          const status = await getCheckout(payment.paymentId);
+          if (!status.isPaid && !status.isExpired) {
+            continue;
+          }
 
-        await updateEventPayment(status);
+          await updateEventPayment(status);
+          refreshEventsSeats ||= status.isPaid;
+        }
 
-        if (status.isPaid) {
+        if (refreshEventsSeats) {
           await calculateEventSeats();
+        }
+      }
+
+      // Courses payments
+      {
+        const payments = await getPendingCoursePayments();
+
+        for (const payment of payments) {
+          console.log('Refreshing course payment', payment.paymentId);
+          const status = await getCheckout(payment.paymentId);
+          if (!status.isPaid && !status.isExpired) {
+            continue;
+          }
+
+          await updateCoursePayment(status);
         }
       }
     });
