@@ -92,7 +92,7 @@ function NewsletterDetail() {
           <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white md:text-newGray-3">
             {t('resources.newsletters.abstract')}
           </h3>
-          <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px">
+          <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px whitespace-pre-line">
             {newsletter.description}
           </p>
         </article>
@@ -145,7 +145,7 @@ function NewsletterDetail() {
             <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
               <div className="flex flex-col">
                 <img
-                  className="md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-8 lg:mb-12"
+                  className="md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-5 lg:mb-[30px]"
                   alt={newsletter.title}
                   src={assetUrl(newsletter.path, 'thumbnail.webp')}
                 />
@@ -164,7 +164,7 @@ function NewsletterDetail() {
                 </div>
               </div>
 
-              <div className="w-full max-w-2xl mt-4 flex flex-col md:mt-0">
+              <div className="w-full max-w-2xl flex flex-col md:mt-0">
                 <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px]">
                   {newsletter.title}
                 </h2>
@@ -176,7 +176,7 @@ function NewsletterDetail() {
                   </span>
                 </p>
 
-                <div className="flex items-center mb-5 lg:mb-[30px]">
+                <div className="flex items-center mb-5 lg:mb-[30px] mt-2.5 md:mt-0">
                   <span className="text-newGray-3 pr-1 subtitle-small-med-14px md:label-large-med-20px">
                     {t('resources.newsletters.level')}
                   </span>
@@ -254,8 +254,8 @@ function NewsletterDetail() {
               ))}
           </CarouselContent>
 
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="*:size-5 md:*:size-8" />
+          <CarouselNext className="*:size-5 md:*:size-8" />
         </Carousel>
       </section>
     </ResourceLayout>

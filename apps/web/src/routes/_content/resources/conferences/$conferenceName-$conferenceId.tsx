@@ -179,7 +179,7 @@ function Conference() {
                   {conference.name}
                 </h2>
                 <span className="text-newGray-4 label-medium-16px sm:desktop-h8">
-                  {conference.location}, {conference.year}
+                  {conference.location} · {conference.year}
                 </span>
                 {(conference.twitterUrl || conference.websiteUrl) && (
                   <>
@@ -216,7 +216,7 @@ function Conference() {
                     </TextTag>
                   ))}
                 </div>
-                <p className="max-lg:hidden body-16px text-white mt-[25px]">
+                <p className="max-lg:hidden body-16px text-white mt-[25px] text-justify whitespace-pre-line">
                   {conference.description}
                 </p>
               </div>

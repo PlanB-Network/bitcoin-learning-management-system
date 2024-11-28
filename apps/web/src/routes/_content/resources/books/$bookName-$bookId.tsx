@@ -86,7 +86,7 @@ function Book() {
           <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white md:text-newGray-3">
             {t('book.abstract')}
           </h3>
-          <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px">
+          <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px whitespace-pre-line">
             {book?.description}
           </p>
         </article>
@@ -136,7 +136,7 @@ function Book() {
               <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
                 <div className="flex flex-col">
                   <img
-                    className="md:w-[367px] max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px]"
+                    className="md:w-[367px] max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none"
                     alt={t('imagesAlt.bookCover')}
                     src={
                       book.cover ? assetUrl(book.path, book.cover) : undefined
@@ -144,9 +144,9 @@ function Book() {
                   />
                 </div>
 
-                <div className="w-full max-w-2xl my-4 flex flex-col md:mt-0">
+                <div className="w-full max-w-2xl flex flex-col md:mt-0">
                   <div>
-                    <h2 className="title-large-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px] text-center md:text-start">
+                    <h2 className="title-large-sb-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px] text-center md:text-start">
                       {book?.title}
                     </h2>
 
@@ -257,8 +257,8 @@ function Book() {
               <Loader size={'s'} />
             )}
           </CarouselContent>
-          <CarouselPrevious className="*:size-[16px] lg:*:size-[20px]" />
-          <CarouselNext className="*:size-[16px] lg:*:size-[20px]" />
+          <CarouselPrevious className="*:size-5 md:*:size-8" />
+          <CarouselNext className="*:size-5 md:*:size-8" />
         </Carousel>
       </section>
     </ResourceLayout>
