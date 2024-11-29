@@ -65,7 +65,7 @@ const BookingTable = () => {
       upcomingEvents: true,
       userSpecific: false,
     });
-
+  console.log(allEvents);
   const sortedEvents = allEvents
     ?.filter((event) => event.type !== 'conference')
     .sort((a, b) => {
