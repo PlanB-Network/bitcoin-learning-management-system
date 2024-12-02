@@ -35,14 +35,14 @@ function Newsletter() {
   const englishNewsletters =
     newsletters?.filter((newsletter) => newsletter.language === 'en') ?? [];
 
-  const [showLocalOnly, setShowLocalOnly] = useState(false);
+  const [showLocalOnly, setShowLocalOnly] = useState(true);
 
   const handleSwitchChange = (checked: boolean) => {
     setShowLocalOnly(checked);
   };
 
   const sortedNewsletters = (
-    showLocalOnly ? localNewsletters : newsletters
+    showLocalOnly ? [...localNewsletters] : [...(newsletters ?? [])]
   )?.sort((a, b) => a.title.localeCompare(b.title));
 
   const isEnglishLanguage = i18n.language === 'en';
@@ -58,7 +58,7 @@ function Newsletter() {
           <span className="label-small-12px md:label-large-med-20px text-white">
             {t('resources.newsletters.toggleLabelAll')}
           </span>
-          <Switch onCheckedChange={handleSwitchChange} />
+          <Switch onCheckedChange={handleSwitchChange} defaultChecked />
           <span className="label-small-12px md:label-large-med-20px text-white">
             {t('resources.newsletters.toggleLabelSelectedLanguage')}
           </span>

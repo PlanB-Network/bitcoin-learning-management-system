@@ -18,10 +18,10 @@ export const ResourceCard = (props: ResourceCardProps) => {
         alt={props.name}
       />
       <div className="md:absolute w-full flex md:justify-center md:items-center flex-col gap-[10px] md:gap-4 md:px-4 md:text-center md:size-full md:group-hover:bg-darkOrange-9/20 md:opacity-0 md:group-hover:opacity-100 transition-all">
-        <span className="text-white text-sm font-medium md:subtitle-large-med-20px line-clamp-3 md:line-clamp-2">
+        <span className="text-white leading-[160%] text-sm font-medium md:subtitle-large-med-20px line-clamp-3 md:line-clamp-2">
           {props.name}
         </span>
-        <div className="flex justify-between flex-row items-center">
+        <div className="flex justify-between flex-row items-center gap-1">
           <span className="text-white max-md:group-hover:text-darkOrange-1 text-xs md:subtitle-med-16px transition-all line-clamp-1 md:line-clamp-2">
             {props.author}
             {props.year && (
@@ -42,9 +42,9 @@ export const ResourceCard = (props: ResourceCardProps) => {
           )}
         </div>
 
-        <div className="flex md:flex-col gap-4">
+        <div className="flex md:flex-col gap-4 max-md:hidden">
           {props.level && (
-            <p className="subtitle-med-16px text-newGray-3 max-md:hidden">
+            <p className="subtitle-med-16px text-newGray-3">
               Level : {''}
               <span className="subtitle-med-16px text-white capitalize">
                 {props.level}
@@ -55,7 +55,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
             <Flag
               code={props.language}
               size="l"
-              className="md:self-center shrink-0 max-md:hidden"
+              className="md:self-center shrink-0"
             />
           )}
         </div>

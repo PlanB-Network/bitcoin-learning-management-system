@@ -22,7 +22,6 @@ export const getNewslettersQuery = () => {
     JOIN content.resources r ON r.id = n.resource_id
     LEFT JOIN content.resource_tags rt ON rt.resource_id = r.id
     LEFT JOIN content.tags t ON t.id = rt.tag_id
-    -- Remove the language filter to get all languages
     GROUP BY r.id, r.path, n.id, n.language, n.level, n.author, n.title,
       n.description, n.website_url, n.publication_date, n.tags, n.contributors;
   `;
