@@ -90,7 +90,7 @@ function Newsletter() {
                     newsletterId: newsletter.resourceId.toString(),
                   }}
                   key={`${newsletter.id}-${newsletter.resourceId}`}
-                  className="grow"
+                  className="grow md:grow-0"
                 >
                   <ResourceCard
                     name={newsletter.title}
@@ -133,7 +133,7 @@ function Newsletter() {
                       newsletterId: newsletter.resourceId.toString(),
                     }}
                     key={newsletter.id}
-                    className="grow"
+                    className="grow md:grow-0"
                   >
                     <ResourceCard
                       name={newsletter.title}
