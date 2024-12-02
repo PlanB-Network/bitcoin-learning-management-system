@@ -838,8 +838,8 @@
     "newsletter": {
       "title": "電子報"
     },
-    "pageSubtitleBooks": "你可能會喜歡的另一本書：",
-    "pageSubtitlePodcast": "你可能會喜歡的另一個 podcast："
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "tutorials": {
     "details": {

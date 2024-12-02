@@ -789,9 +789,9 @@
     "newsletter": {
       "title": "Bulletin d'information"
     },
-    "pageSubtitlePodcast": "Un autre podcast que vous pourriez aimer :",
+    "pageSubtitlePodcast": "",
     "searchFilterName": "Recherche par nom",
-    "pageSubtitleBooks": "Un autre livre que vous pourriez aimer :",
+    "pageSubtitleBooks": "",
     "glossary": {
       "title": "Glossaire"
     }

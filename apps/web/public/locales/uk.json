@@ -846,8 +846,8 @@
     "newsletter": {
       "title": "Бюлетень"
     },
-    "pageSubtitleBooks": "Ще одна книга, яка може вам сподобатися:",
-    "pageSubtitlePodcast": "Інший подкаст, який вам сподобається:"
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changeDisplayName": "Змінити ім'я відображення",

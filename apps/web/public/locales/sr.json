@@ -836,8 +836,8 @@
     },
     "pageDescription": "Pokušaj razumevanja Bitcoina je kao istraživanje lavirinta koji neprestano raste. Da bismo Vam pomogli u vašem putovanju, sastavili smo ogroman niz resursa uključujući knjige, podcaste, video zapise i reprize konferencija. Ovaj portal sakuplja sve informacije u jednom Github repozitorijumu kako bi vam pomogao da bolje razumete Bitcoin ekosistem.",
     "pageSubtitle": "Centralizujte znanje da biste ga bolje distribuirali",
-    "pageSubtitleBooks": "Još jedna knjiga koja bi Vam se mogla svideti:",
-    "pageSubtitlePodcast": "Još jedan podcast koji bi Vam se svideo:",
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": "",
     "pageTitle": "Dobrodošli na portal sa resursima",
     "podcasts": {
       "title": "Podkasti"

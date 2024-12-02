@@ -739,8 +739,8 @@
     "newsletter": {
       "title": "Labarai ta Imel"
     },
-    "pageSubtitleBooks": "Wani littafi da zaka /ki iya so:",
-    "pageSubtitlePodcast": "Wani shirin sauti da zaka/ki iya so:"
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "payment": {
     "proceedToPayment": "Ci gaba da biyan kuɗi",

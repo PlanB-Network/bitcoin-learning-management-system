@@ -815,8 +815,8 @@
     "newsletter": {
       "title": "newsletter"
     },
-    "pageSubtitleBooks": "O altă carte care s-ar putea să îți placă:",
-    "pageSubtitlePodcast": "Un alt podcast care ți-ar plăcea:"
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "tutorials": {
     "backTutorials": "Înapoi la toate tutorialele",

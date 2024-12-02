@@ -791,8 +791,8 @@
     "glossary": {
       "title": "Ordlista"
     },
-    "pageSubtitleBooks": "En annan bok du kanske gillar:",
-    "pageSubtitlePodcast": "En annan podcast du skulle gilla:"
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "settings": {
     "changePassword": "Ändra lösenord",

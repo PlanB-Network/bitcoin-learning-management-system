@@ -989,8 +989,8 @@
     "newsletter": {
       "title": "Nyhetsbrev"
     },
-    "pageSubtitleBooks": "En annen bok du kanskje vil like:",
-    "pageSubtitlePodcast": "En annen podcast du vil like:"
+    "pageSubtitleBooks": "",
+    "pageSubtitlePodcast": ""
   },
   "nodeNetwork": {
     "answer1": "En node er et pedagogisk initiativ knyttet til et samfunn et sted i verden. Det kan bestå av en bygning der Bitcoin-utdanning finner sted, men det er ikke begrenset til det. Plan B Network driver knutepunkter, men å etablere dem i hver by over hele verden er urealistisk. Derfor er vi avhengige av et samfunn av bitcoiners for å hjelpe oss med å gjøre dette globale nettverket til virkelighet.",
