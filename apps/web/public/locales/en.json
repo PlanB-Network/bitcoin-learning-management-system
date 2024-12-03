@@ -931,6 +931,7 @@
       "abstract": "Abstract",
       "author": "Author : ",
       "level": "Level :",
+      "noNewsletters": "There are currently no newsletters for selected language.",
       "title": "Newsletters",
       "subtitle": "<0>Other newsletters</0> you may like: ",
       "toggleLabelAll": "All",
@@ -942,7 +943,10 @@
     "pageSubtitlePodcast": "<0>Other podcasts</0> you may like:",
     "pageTitle": "Welcome to the Resource Portal",
     "podcasts": {
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "toggleLabelAll": "All",
+      "toggleLabelSelectedLanguage": "Selected language",
+      "noPodcasts": "There are currently no podcasts for selected language."
     },
     "publicGrade": "Public grade: {{grade}}/5",
     "searchFilterName": "Search by name"

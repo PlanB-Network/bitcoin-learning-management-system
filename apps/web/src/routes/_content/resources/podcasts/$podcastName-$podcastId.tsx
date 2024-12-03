@@ -230,7 +230,7 @@ function Podcast() {
                             />
                           </div>
 
-                          <h3 className="absolute max-w-[119px] md:max-w-[152px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                          <h3 className="absolute w-full max-w-[140px] lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                             {podcast.name}
                           </h3>
                         </Link>

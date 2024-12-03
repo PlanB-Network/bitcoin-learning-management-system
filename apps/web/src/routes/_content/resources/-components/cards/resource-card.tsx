@@ -11,7 +11,7 @@ interface ResourceCardProps {
 
 export const ResourceCard = (props: ResourceCardProps) => {
   return (
-    <div className="md:relative group min-w-[288px] sm:min-w-[400px] md:min-w-[250px] md:max-w-64 flex md:flex-col gap-4 md:gap-8 px-2 py-1.5 md:p-0 max-md:hover:bg-darkOrange-10 hover:shadow-sm-card border grow shrink-0 border-transparent hover:border-darkOrange-6 rounded-2xl transition-all overflow-hidden">
+    <div className="md:relative group min-w-[288px] sm:min-w-[400px] md:min-w-[250px] md:max-w-[254px] flex md:flex-col gap-4 md:gap-8 px-2 py-1.5 md:p-0 md:hover:bg-darkOrange-10 md:hover:shadow-sm-card border grow shrink-0 border-transparent md:hover:border-darkOrange-6 rounded-2xl transition-all overflow-hidden">
       <img
         className="aspect-square object-contain w-[84px] md:w-full md:group-hover:blur-[10px] md:group-hover:brightness-[0.2] transition-all"
         src={props.imageSrc ? props.imageSrc : ''}

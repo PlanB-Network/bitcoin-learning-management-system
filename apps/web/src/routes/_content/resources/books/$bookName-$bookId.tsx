@@ -218,14 +218,14 @@ function Book() {
                     return (
                       <CarouselItem
                         key={book.id}
-                        className="basis-1/2 md:basis-1/4 text-white size-full bg-gradient-to-r max-w-[282px] max-h-[400px] rounded-[10px]"
+                        className="basis-1/2 md:basis-1/4 text-white size-full bg-gradient-to-r min-h-[203px]  max-w-[282px] max-h-[400px] rounded-[10px]"
                       >
                         <Link
                           to={`/resources/books/${formatNameForURL(book.title)}-${book.id}`}
                         >
                           <div className="relative h-full">
                             <img
-                              className="size-full min-h-[198px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
+                              className="size-full h-[203px] max-h-[203px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                               alt={book.title}
                               src={assetUrl(
                                 book.path,
@@ -244,7 +244,7 @@ function Book() {
                             />
                           </div>
 
-                          <h3 className="absolute max-w-[119px] md:max-w-[152px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                          <h3 className="absolute w-full max-w-[140px]  lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                             {book.title}
                           </h3>
                         </Link>
