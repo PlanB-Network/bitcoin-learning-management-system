@@ -129,7 +129,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         );
       }
       case 'podcasts': {
-        const podcast = await getPodcast(+resourceId, lang);
+        const podcast = await getPodcast(+resourceId);
         return meta(
           podcast.name,
           podcast.description,

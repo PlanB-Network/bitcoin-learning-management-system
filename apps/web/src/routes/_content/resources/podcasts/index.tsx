@@ -62,7 +62,7 @@ function Podcasts() {
         </div>
 
         {showLocalOnly && (
-          <div className="flex items-center gap-3 mb-4 md:mb-9">
+          <div className="flex items-center gap-3">
             <Flag
               code={i18n.language}
               size={isMobile ? 'm' : 'l'}
