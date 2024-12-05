@@ -116,7 +116,8 @@
       "seeTheCourse": "",
       "shareOn": "",
       "verify": "",
-      "yourProgress": ""
+      "yourProgress": "",
+      "professor": ""
     },
     "bCert": {
       "noResults": "Bu hesapla henüz ilişkilendirilmiş bir not veya sertifika bulunmamaktadır.\nBir sınavı geçtiyseniz ve sonuçlarınız uzun bir süre sonra hala mevcut değilse, lütfen yardım için <0>bize ulaşın</0>.",
@@ -1240,7 +1241,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     },
     "hasNotBeenProofread": "",
     "writtenBy": ""
@@ -1304,11 +1306,13 @@
       "callout_purchase_physical": "",
       "callout_purchase_replay": "",
       "description_online": "",
-      "description_physical": ""
+      "description_physical": "",
+      "limitedSeats": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "",
-      "premiumContentNeedsPaymentAction": ""
+      "premiumContentNeedsPaymentAction": "",
+      "premiumContentNeedsPayment": ""
     },
     "tcDisclaimer": "",
     "tcMustBeAccepted": ""
@@ -1365,7 +1369,8 @@
     },
     "courseSection": {
       "checkAllCourses": "",
-      "upcomingCourseTitle": ""
+      "upcomingCourseTitle": "",
+      "upcomingCourseDescription": ""
     },
     "eventSection": {
       "checkEvents": "",
@@ -1460,7 +1465,8 @@
       "title": ""
     },
     "books": {
-      "title": ""
+      "title": "",
+      "author": ""
     },
     "conferences": {
       "title": ""
@@ -1548,7 +1554,8 @@
     "inProgress": "",
     "reviewEarn": "",
     "status": "",
-    "rewardsText": ""
+    "rewardsText": "",
+    "descriptionOriginalLanguage": ""
   },
   "publicCommunication": {
     "description": "",
