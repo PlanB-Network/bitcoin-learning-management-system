@@ -91,10 +91,12 @@ function TutorialExplorer() {
                         className="flex flex-col gap-2 items-center justify-center w-20 lg:w-24 h-full"
                       >
                         <Link
-                          to={'/tutorials/$category/$name'}
+                          to={'/tutorials/$category/$subcategory/$name-$id'}
                           params={{
                             category: tutorial.category,
+                            subcategory: tutorial.subcategory,
                             name: tutorial.name,
+                            id: tutorial.id,
                           }}
                           className="group/builder relative flex flex-col items-center justify-center"
                         >
@@ -111,10 +113,12 @@ function TutorialExplorer() {
                           </p>
                         </Link>
                         <Link
-                          to={'/tutorials/$category/$name'}
+                          to={'/tutorials/$category/$subcategory/$name-$id'}
                           params={{
                             category: tutorial.category,
+                            subcategory: tutorial.subcategory,
                             name: tutorial.name,
+                            id: tutorial.id,
                           }}
                           key={tutorial.id}
                           className="text-xs font-bold text-white max-md:hidden text-center line-clamp-2"

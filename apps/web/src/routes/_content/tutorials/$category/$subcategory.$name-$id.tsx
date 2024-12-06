@@ -35,20 +35,27 @@ const TutorialsMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/_content/tutorials/$category/$subcategory/$name/$id',
+  '/_content/tutorials/$category/$subcategory/$name-$id',
 )({
   params: {
-    parse: (params) => ({
-      name: z.string().parse(params.name),
-      category: z.string().parse(params.category),
-      subcategory: z.string().parse(params.subcategory),
-      id: z.string().parse(params.id),
-    }),
-    stringify: ({ name, category, subcategory, id }) => ({
-      name: `${name}`,
-      category: `${category}`,
-      subcategory: `${subcategory}`,
-      id: `${id}`,
+    parse: (params) => {
+      const nameId = params['name-$id'];
+      // Extract the id from the name (36 chars since id is an uuid)
+      const id = nameId.slice(-36);
+      const name = nameId.slice(0, -37);
+
+      return {
+        'name-$id': nameId,
+        name: z.string().parse(name),
+        id: z.string().parse(id),
+        category: z.string().parse(params.category),
+        subcategory: z.string().parse(params.subcategory),
+      };
+    },
+    stringify: ({ name, id, category, subcategory }) => ({
+      category: category,
+      subcategory: subcategory,
+      'name-$id': `${name}-${id}`,
     }),
   },
   component: TutorialDetails,
@@ -144,6 +151,7 @@ const AuthorDetails = ({
 function TutorialDetails() {
   const { i18n } = useTranslation();
   const params = Route.useParams();
+  console.log(params);
   const id = params.id;
   const navigate = useNavigate();
   const { navigateTo404 } = useNavigateMisc();
@@ -189,7 +197,7 @@ function TutorialDetails() {
         params.subcategory !== tutorial.subcategory)
     ) {
       navigate({
-        to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}/${tutorial.id}`,
+        to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}-${tutorial.id}`,
       });
     }
   }, [
