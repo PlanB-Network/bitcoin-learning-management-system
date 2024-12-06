@@ -129,11 +129,7 @@ export const TutorialLayout = ({
                                           )}
                                         />
                                         <Link
-                                          to={'/tutorials/$category/$name'}
-                                          params={{
-                                            category: tutorial.category,
-                                            name: tutorial.name,
-                                          }}
+                                          to={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}/${tutorial.id}`}
                                           className={cn(
                                             'text-xs group-hover:text-darkOrange-5 font-poppins',
                                             tutorial.id === currentTutorialId

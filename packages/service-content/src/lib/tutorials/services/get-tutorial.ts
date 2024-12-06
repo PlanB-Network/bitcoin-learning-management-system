@@ -7,24 +7,23 @@ import { omit } from '../../utils.js';
 import { getCreditsQuery } from '../queries/get-credits.js';
 import { getTutorialQuery } from '../queries/get-tutorial.js';
 
-interface Options {
-  category: string;
-  name: string;
-  language: string;
-}
-
 export const createGetTutorial = ({ postgres }: Dependencies) => {
-  return async (options: Options): Promise<GetTutorialResponse> => {
-    const { category, name, language } = options;
+  return async (options: {
+    id: string;
+    language: string;
+  }): Promise<GetTutorialResponse> => {
+    const { id, language } = options;
 
+    // Fetch the tutorial by ID and language
     const tutorial = await postgres
-      .exec(getTutorialQuery(category, name, language))
+      .exec(getTutorialQuery(id, language))
       .then(firstRow);
 
     if (!tutorial) {
       throw new Error(`Tutorial not found`);
     }
 
+    // Fetch credits associated with the tutorial
     const credits = await postgres
       .exec(getCreditsQuery(tutorial.id))
       .then(firstRow);
@@ -36,6 +35,7 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
       };
     }
 
+    // Return tutorial with credits data (after formatting credits)
     return {
       ...tutorial,
       credits: {

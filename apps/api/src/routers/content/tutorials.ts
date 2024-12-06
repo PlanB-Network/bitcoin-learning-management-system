@@ -103,16 +103,14 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
 const getTutorialProcedure = publicProcedure
   .input(
     z.object({
-      category: z.string(),
-      name: z.string(),
+      id: z.string(),
       language: z.string(),
     }),
   )
   .output<Parser<GetTutorialResponse>>(getTutorialResponseSchema)
   .query(({ ctx, input }) => {
     return createGetTutorial(ctx.dependencies)({
-      category: input.category,
-      name: input.name,
+      id: input.id,
       language: input.language,
     });
   });

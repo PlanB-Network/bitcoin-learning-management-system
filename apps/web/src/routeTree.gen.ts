@@ -50,7 +50,6 @@ import { Route as DashboardDashboardCourseCourseIdImport } from './routes/dashbo
 import { Route as DashboardDashboardAdministrationTutorialsImport } from './routes/dashboard/_dashboard/administration/tutorials';
 import { Route as DashboardDashboardAdministrationRoleImport } from './routes/dashboard/_dashboard/administration/role';
 import { Route as DashboardDashboardAdministrationBookingsImport } from './routes/dashboard/_dashboard/administration/bookings';
-import { Route as ContentTutorialsCategoryNameImport } from './routes/_content/tutorials/$category/$name';
 import { Route as ContentResourcesPodcastsPodcastNamePodcastIdImport } from './routes/_content/resources/podcasts/$podcastName-$podcastId';
 import { Route as ContentResourcesNewslettersNewsletterNameNewsletterIdImport } from './routes/_content/resources/newsletters/$newsletterName-$newsletterId';
 import { Route as ContentResourcesGlossaryWordIdImport } from './routes/_content/resources/glossary/$wordId';
@@ -69,6 +68,7 @@ import { Route as ContentMiscPublicCommunicationBlogsAndNewsIndexImport } from '
 import { Route as ContentMiscProfessorsCategoryIndexImport } from './routes/_content/_misc/professors/$category/index';
 import { Route as ContentMiscPublicCommunicationLegalsNameImport } from './routes/_content/_misc/public-communication/legals/$name';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/index';
+import { Route as ContentTutorialsCategorySubcategoryNameIdImport } from './routes/_content/tutorials/$category/$subcategory.$name.$id';
 import { Route as ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport } from './routes/_content/_misc/public-communication/blogs-and-news/$category/$name';
 
 // Create Virtual Routes
@@ -331,13 +331,6 @@ const DashboardDashboardAdministrationBookingsRoute =
     getParentRoute: () => DashboardDashboardRoute,
   } as any);
 
-const ContentTutorialsCategoryNameRoute =
-  ContentTutorialsCategoryNameImport.update({
-    id: '/_content/tutorials/$category/$name',
-    path: '/tutorials/$category/$name',
-    getParentRoute: () => rootRoute,
-  } as any);
-
 const ContentResourcesPodcastsPodcastNamePodcastIdRoute =
   ContentResourcesPodcastsPodcastNamePodcastIdImport.update({
     id: '/_content/resources/podcasts/$podcastName-$podcastId',
@@ -461,6 +454,13 @@ const ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute =
   ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport.update({
     id: '/_content/_misc/public-communication/blogs-and-news/$category/',
     path: '/public-communication/blogs-and-news/$category/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const ContentTutorialsCategorySubcategoryNameIdRoute =
+  ContentTutorialsCategorySubcategoryNameIdImport.update({
+    id: '/_content/tutorials/$category/$subcategory/$name/$id',
+    path: '/tutorials/$category/$subcategory/$name/$id',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -699,13 +699,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentResourcesPodcastsPodcastNamePodcastIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/_content/tutorials/$category/$name': {
-      id: '/_content/tutorials/$category/$name';
-      path: '/tutorials/$category/$name';
-      fullPath: '/tutorials/$category/$name';
-      preLoaderRoute: typeof ContentTutorialsCategoryNameImport;
-      parentRoute: typeof rootRoute;
-    };
     '/dashboard/_dashboard/administration/bookings': {
       id: '/dashboard/_dashboard/administration/bookings';
       path: '/administration/bookings';
@@ -874,6 +867,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport;
       parentRoute: typeof rootRoute;
     };
+    '/_content/tutorials/$category/$subcategory/$name/$id': {
+      id: '/_content/tutorials/$category/$subcategory/$name/$id';
+      path: '/tutorials/$category/$subcategory/$name/$id';
+      fullPath: '/tutorials/$category/$subcategory/$name/$id';
+      preLoaderRoute: typeof ContentTutorialsCategorySubcategoryNameIdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_content/_misc/public-communication/blogs-and-news/$category/': {
       id: '/_content/_misc/public-communication/blogs-and-news/$category/';
       path: '/public-communication/blogs-and-news/$category';
@@ -990,7 +990,6 @@ export interface FileRoutesByFullPath {
   '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
-  '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
@@ -1015,6 +1014,7 @@ export interface FileRoutesByFullPath {
   '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/tutorials/$category/$subcategory/$name/$id': typeof ContentTutorialsCategorySubcategoryNameIdRoute;
   '/public-communication/blogs-and-news/$category': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
 }
 
@@ -1049,7 +1049,6 @@ export interface FileRoutesByTo {
   '/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
-  '/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
@@ -1074,6 +1073,7 @@ export interface FileRoutesByTo {
   '/public-communication/blogs-and-news': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/public-communication/legals': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/tutorials/$category/$subcategory/$name/$id': typeof ContentTutorialsCategorySubcategoryNameIdRoute;
   '/public-communication/blogs-and-news/$category': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
 }
 
@@ -1111,7 +1111,6 @@ export interface FileRoutesById {
   '/_content/resources/glossary/$wordId': typeof ContentResourcesGlossaryWordIdRoute;
   '/_content/resources/newsletters/$newsletterName-$newsletterId': typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/_content/resources/podcasts/$podcastName-$podcastId': typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
-  '/_content/tutorials/$category/$name': typeof ContentTutorialsCategoryNameRoute;
   '/dashboard/_dashboard/administration/bookings': typeof DashboardDashboardAdministrationBookingsRoute;
   '/dashboard/_dashboard/administration/role': typeof DashboardDashboardAdministrationRoleRoute;
   '/dashboard/_dashboard/administration/tutorials': typeof DashboardDashboardAdministrationTutorialsRoute;
@@ -1136,6 +1135,7 @@ export interface FileRoutesById {
   '/_content/_misc/public-communication/blogs-and-news/': typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/_content/_misc/public-communication/legals/': typeof ContentMiscPublicCommunicationLegalsIndexRoute;
   '/_content/_misc/public-communication/blogs-and-news/$category/$name': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  '/_content/tutorials/$category/$subcategory/$name/$id': typeof ContentTutorialsCategorySubcategoryNameIdRoute;
   '/_content/_misc/public-communication/blogs-and-news/$category/': typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
 }
 
@@ -1173,7 +1173,6 @@ export interface FileRouteTypes {
     | '/resources/glossary/$wordId'
     | '/resources/newsletters/$newsletterName-$newsletterId'
     | '/resources/podcasts/$podcastName-$podcastId'
-    | '/tutorials/$category/$name'
     | '/dashboard/administration/bookings'
     | '/dashboard/administration/role'
     | '/dashboard/administration/tutorials'
@@ -1198,6 +1197,7 @@ export interface FileRouteTypes {
     | '/public-communication/blogs-and-news'
     | '/public-communication/legals/'
     | '/public-communication/blogs-and-news/$category/$name'
+    | '/tutorials/$category/$subcategory/$name/$id'
     | '/public-communication/blogs-and-news/$category';
   fileRoutesByTo: FileRoutesByTo;
   to:
@@ -1231,7 +1231,6 @@ export interface FileRouteTypes {
     | '/resources/glossary/$wordId'
     | '/resources/newsletters/$newsletterName-$newsletterId'
     | '/resources/podcasts/$podcastName-$podcastId'
-    | '/tutorials/$category/$name'
     | '/dashboard/administration/bookings'
     | '/dashboard/administration/role'
     | '/dashboard/administration/tutorials'
@@ -1256,6 +1255,7 @@ export interface FileRouteTypes {
     | '/public-communication/blogs-and-news'
     | '/public-communication/legals'
     | '/public-communication/blogs-and-news/$category/$name'
+    | '/tutorials/$category/$subcategory/$name/$id'
     | '/public-communication/blogs-and-news/$category';
   id:
     | '__root__'
@@ -1291,7 +1291,6 @@ export interface FileRouteTypes {
     | '/_content/resources/glossary/$wordId'
     | '/_content/resources/newsletters/$newsletterName-$newsletterId'
     | '/_content/resources/podcasts/$podcastName-$podcastId'
-    | '/_content/tutorials/$category/$name'
     | '/dashboard/_dashboard/administration/bookings'
     | '/dashboard/_dashboard/administration/role'
     | '/dashboard/_dashboard/administration/tutorials'
@@ -1316,6 +1315,7 @@ export interface FileRouteTypes {
     | '/_content/_misc/public-communication/blogs-and-news/'
     | '/_content/_misc/public-communication/legals/'
     | '/_content/_misc/public-communication/blogs-and-news/$category/$name'
+    | '/_content/tutorials/$category/$subcategory/$name/$id'
     | '/_content/_misc/public-communication/blogs-and-news/$category/';
   fileRoutesById: FileRoutesById;
 }
@@ -1347,7 +1347,6 @@ export interface RootRouteChildren {
   ContentResourcesGlossaryWordIdRoute: typeof ContentResourcesGlossaryWordIdRoute;
   ContentResourcesNewslettersNewsletterNameNewsletterIdRoute: typeof ContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   ContentResourcesPodcastsPodcastNamePodcastIdRoute: typeof ContentResourcesPodcastsPodcastNamePodcastIdRoute;
-  ContentTutorialsCategoryNameRoute: typeof ContentTutorialsCategoryNameRoute;
   ContentMiscProfessorsIndexRoute: typeof ContentMiscProfessorsIndexRoute;
   ContentMiscPublicCommunicationIndexRoute: typeof ContentMiscPublicCommunicationIndexRoute;
   ContentCoursesCourseIdIndexRoute: typeof ContentCoursesCourseIdIndexRoute;
@@ -1362,6 +1361,7 @@ export interface RootRouteChildren {
   ContentMiscProfessorsCategoryIndexRoute: typeof ContentMiscProfessorsCategoryIndexRoute;
   ContentMiscPublicCommunicationBlogsAndNewsIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
+  ContentTutorialsCategorySubcategoryNameIdRoute: typeof ContentTutorialsCategorySubcategoryNameIdRoute;
   ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute: typeof ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
 }
 
@@ -1401,7 +1401,6 @@ const rootRouteChildren: RootRouteChildren = {
     ContentResourcesNewslettersNewsletterNameNewsletterIdRoute,
   ContentResourcesPodcastsPodcastNamePodcastIdRoute:
     ContentResourcesPodcastsPodcastNamePodcastIdRoute,
-  ContentTutorialsCategoryNameRoute: ContentTutorialsCategoryNameRoute,
   ContentMiscProfessorsIndexRoute: ContentMiscProfessorsIndexRoute,
   ContentMiscPublicCommunicationIndexRoute:
     ContentMiscPublicCommunicationIndexRoute,
@@ -1420,6 +1419,8 @@ const rootRouteChildren: RootRouteChildren = {
     ContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
   ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute:
     ContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
+  ContentTutorialsCategorySubcategoryNameIdRoute:
+    ContentTutorialsCategorySubcategoryNameIdRoute,
   ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute:
     ContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
 };
@@ -1460,7 +1461,6 @@ export const routeTree = rootRoute
         "/_content/resources/glossary/$wordId",
         "/_content/resources/newsletters/$newsletterName-$newsletterId",
         "/_content/resources/podcasts/$podcastName-$podcastId",
-        "/_content/tutorials/$category/$name",
         "/_content/_misc/professors/",
         "/_content/_misc/public-communication/",
         "/_content/courses/$courseId/",
@@ -1475,6 +1475,7 @@ export const routeTree = rootRoute
         "/_content/_misc/professors/$category/",
         "/_content/_misc/public-communication/blogs-and-news/",
         "/_content/_misc/public-communication/blogs-and-news/$category/$name",
+        "/_content/tutorials/$category/$subcategory/$name/$id",
         "/_content/_misc/public-communication/blogs-and-news/$category/"
       ]
     },
@@ -1602,9 +1603,6 @@ export const routeTree = rootRoute
     "/_content/resources/podcasts/$podcastName-$podcastId": {
       "filePath": "_content/resources/podcasts/$podcastName-$podcastId.tsx"
     },
-    "/_content/tutorials/$category/$name": {
-      "filePath": "_content/tutorials/$category/$name.tsx"
-    },
     "/dashboard/_dashboard/administration/bookings": {
       "filePath": "dashboard/_dashboard/administration/bookings.tsx",
       "parent": "/dashboard/_dashboard"
@@ -1686,6 +1684,9 @@ export const routeTree = rootRoute
     },
     "/_content/_misc/public-communication/blogs-and-news/$category/$name": {
       "filePath": "_content/_misc/public-communication/blogs-and-news/$category/$name.tsx"
+    },
+    "/_content/tutorials/$category/$subcategory/$name/$id": {
+      "filePath": "_content/tutorials/$category/$subcategory.$name.$id.tsx"
     },
     "/_content/_misc/public-communication/blogs-and-news/$category/": {
       "filePath": "_content/_misc/public-communication/blogs-and-news/$category/index.tsx"

@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { Suspense, useContext, useEffect, useState } from 'react';
@@ -19,6 +19,7 @@ import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { TipModal } from '#src/components/tip-modal.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
+import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
@@ -33,15 +34,21 @@ const TutorialsMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/tutorials-markdown-body.js'),
 );
 
-export const Route = createFileRoute('/_content/tutorials/$category/$name')({
+export const Route = createFileRoute(
+  '/_content/tutorials/$category/$subcategory/$name/$id',
+)({
   params: {
     parse: (params) => ({
       name: z.string().parse(params.name),
       category: z.string().parse(params.category),
+      subcategory: z.string().parse(params.subcategory),
+      id: z.string().parse(params.id),
     }),
-    stringify: ({ name, category }) => ({
+    stringify: ({ name, category, subcategory, id }) => ({
       name: `${name}`,
       category: `${category}`,
+      subcategory: `${subcategory}`,
+      id: `${id}`,
     }),
   },
   component: TutorialDetails,
@@ -137,8 +144,9 @@ const AuthorDetails = ({
 function TutorialDetails() {
   const { i18n } = useTranslation();
   const params = Route.useParams();
-  const category = params.category;
-  const name = params.name;
+  const id = params.id;
+  const navigate = useNavigate();
+  const { navigateTo404 } = useNavigateMisc();
 
   // States
   const [isLiked, setIsLiked] = useState({ liked: false, disliked: false });
@@ -168,10 +176,30 @@ function TutorialDetails() {
 
   // Fetch tutorial data
   const { data: tutorial, isFetched } = trpc.content.getTutorial.useQuery({
-    category,
-    name,
+    id,
     language: i18n.language,
   });
+
+  // Rewrite URL
+  useEffect(() => {
+    if (
+      tutorial &&
+      (params.name !== tutorial.name ||
+        params.category !== tutorial.category ||
+        params.subcategory !== tutorial.subcategory)
+    ) {
+      navigate({
+        to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}/${tutorial.id}`,
+      });
+    }
+  }, [
+    tutorial,
+    params.category,
+    params.name,
+    params.subcategory,
+    navigate,
+    navigateTo404,
+  ]);
 
   // Fetch existing like/dislike status
   const { data: existingLike } =
