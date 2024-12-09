@@ -115,7 +115,7 @@ function ProfessorDetail() {
                 <TutorialCard
                   tutorial={tutorial}
                   key={tutorial.id}
-                  href={`/tutorials/${tutorial.category}/${tutorial.name}`}
+                  href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
                   dark={true}
                 />
               );
