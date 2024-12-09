@@ -68,7 +68,7 @@ function CourseDetails() {
   const [dollarPrice, setDollarPrice] = useState<number>(0);
   const [downloadedPdf, setDownloadedPdf] = useState('');
 
-  const { user } = useContext(AppContext);
+  const { user, conversionRate } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -134,33 +134,6 @@ function CourseDetails() {
     course.availableSeats > 0;
 
   const isStartOrBuyButtonDisabled = false;
-
-  const [conversionRate, setConversionRate] = useState<number | null>(null);
-
-  interface MempoolPrice {
-    USD: number;
-    EUR: number;
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('https://mempool.space/api/v1/prices');
-        const data = (await response.json()) as MempoolPrice;
-
-        if (data) {
-          const newConversionRate = data.USD;
-          setConversionRate(newConversionRate);
-        } else {
-          console.error('Failed to retrieve conversion rate from Kraken API.');
-        }
-      } catch (error) {
-        console.error('Failed to fetch conversion rate:', error);
-      }
-    }
-
-    fetchData();
-  }, []);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -645,7 +618,6 @@ function CourseDetails() {
 
               setDollarPrice(dollarPrice);
               setSatsPrice(satsPrice);
-
               setIsPaymentModalOpen(true);
             } else {
               setAuthMode(AuthModalState.SignIn);

@@ -29,7 +29,7 @@ export const Route = createFileRoute('/_content/events/')({
 function Events() {
   const { t } = useTranslation();
 
-  const { session } = useContext(AppContext);
+  const { session, conversionRate } = useContext(AppContext);
   const isLoggedIn = !!session;
 
   const queryOpts = {
@@ -63,8 +63,6 @@ function Events() {
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
-  const [conversionRate, setConversionRate] = useState<number | null>(null);
-
   const payingEvent: JoinedEvent | undefined = events?.find(
     (e) => e.id === paymentModalData.eventId,
   );
@@ -76,7 +74,6 @@ function Events() {
     }
   }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
 
-  // TODO Refactor this auth stuff
   const authMode = AuthModalState.SignIn;
 
   const {
@@ -85,32 +82,6 @@ function Events() {
     close: closeAuthModal,
   } = useDisclosure();
 
-  interface MempoolPrice {
-    USD: number;
-    EUR: number;
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('https://mempool.space/api/v1/prices');
-        const data = (await response.json()) as MempoolPrice;
-
-        if (data) {
-          const newConversionRate = data.USD;
-          setConversionRate(newConversionRate);
-        } else {
-          console.error('Failed to retrieve conversion rate from Kraken API.');
-        }
-      } catch (error) {
-        console.error('Failed to fetch conversion rate:', error);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  // TODO refactor prop drilling
   return (
     <PageLayout
       title={t('events.pageTitle')}

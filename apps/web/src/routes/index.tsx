@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
@@ -265,7 +265,7 @@ function Home() {
   };
 
   const EventSection = () => {
-    const { session } = useContext(AppContext);
+    const { session, conversionRate } = useContext(AppContext);
     const isLoggedIn = !!session;
 
     const {
@@ -309,22 +309,7 @@ function Home() {
     const payingEvent =
       event?.id === paymentModalData.eventId ? event : undefined;
 
-    const [conversionRate, setConversionRate] = useState<number | null>(null);
     const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
-    useEffect(() => {
-      const fetchConversionRate = async () => {
-        try {
-          const response = await fetch('https://mempool.space/api/v1/prices');
-          const data = await response.json();
-          setConversionRate(data.USD);
-        } catch (error) {
-          console.error('Failed to fetch conversion rate:', error);
-        }
-      };
-
-      fetchConversionRate();
-    }, []);
 
     return (
       <section className="lg:-mx-12 md:-mx-8 mt-[30px] lg:h-[913px] lg:mt-[108px]">
