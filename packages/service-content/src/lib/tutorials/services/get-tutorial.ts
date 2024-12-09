@@ -14,7 +14,6 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
   }): Promise<GetTutorialResponse> => {
     const { id, language } = options;
 
-    // Fetch the tutorial by ID and language
     const tutorial = await postgres
       .exec(getTutorialQuery(id, language))
       .then(firstRow);
@@ -23,7 +22,6 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
       throw new Error(`Tutorial not found`);
     }
 
-    // Fetch credits associated with the tutorial
     const credits = await postgres
       .exec(getCreditsQuery(tutorial.id))
       .then(firstRow);
@@ -35,7 +33,6 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
       };
     }
 
-    // Return tutorial with credits data (after formatting credits)
     return {
       ...tutorial,
       credits: {
