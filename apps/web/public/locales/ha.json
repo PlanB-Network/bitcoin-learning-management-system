@@ -83,7 +83,9 @@
       "errorValidatingEmailChange": "",
       "errorValidatingEmailChangeDescription": ""
     },
-    "trackProgress": ""
+    "trackProgress": "",
+    "dashboardUnlocked": "",
+    "didYouKnow": ""
   },
   "bCert": {
     "bookExam": "Kama gurbin yin jarabawa",
@@ -192,7 +194,9 @@
       "otherCoursesInterest": "",
       "pastEditionsRatings": "",
       "premiumContentNeedsPaymentAction": "",
-      "thanksTipping": ""
+      "thanksTipping": "",
+      "premiumContentNeedsPayment": "",
+      "teacherLed": ""
     },
     "quizz": {
       "clickOnPie": "Danna kan da’irar zanen chat don duba kurakuranka da ganin bayanin su",
@@ -244,7 +248,8 @@
       "feedbackDescription2": "",
       "saveReview": "",
       "thankYou": "",
-      "whatStudentsSayPasEdition": ""
+      "whatStudentsSayPasEdition": "",
+      "feedbackDescription1": ""
     },
     "explorer": {
       "buildPath": "Ka gina naka tafarki a cikin zurfin bincike",
@@ -279,7 +284,8 @@
       "onlineDescription": "Kowane zaman ajin ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga watsawar kai tsaye da bidiyon maimaitawa.",
       "inPersonDescription": "Kowane zaman ajin yana gudana a zahiri a kwanaki da wuraren da aka sa, kuma ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga ajin na zahiri da na kan layi(online).\nKada ka/ki manta da kama kujerarka/ki don ajin da ka/kike son halarta a zahiri.",
       "checkoutError": "",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "part": {
       "count": "Rukuni {{count}}"
@@ -377,7 +383,8 @@
       "examCertificateCompletionText": "",
       "examNotPassed": "",
       "failedDiploma": "",
-      "takeExam": ""
+      "takeExam": "",
+      "bCertCompletionText": ""
     },
     "conclusion": {
       "unlockFeatures1": "",
@@ -502,7 +509,8 @@
       "seeTheCourse": "",
       "shareOn": "",
       "completeAll": "",
-      "courseDashboard": ""
+      "courseDashboard": "",
+      "professor": ""
     },
     "teacher": {
       "courses": {
@@ -749,7 +757,8 @@
         },
         "noCouponsFound": "",
         "numberOfCodes": "",
-        "numberOfCodesPlaceholder": ""
+        "numberOfCodesPlaceholder": "",
+        "discountValueExplanation": ""
       },
       "accessGranted": "",
       "bookings": "",
@@ -790,7 +799,9 @@
       "type": "",
       "upcomingBookings": "",
       "upcomingBookingsSubtitle": "",
-      "userRolesAllocation": ""
+      "userRolesAllocation": "",
+      "downloadList": "",
+      "makeProfessor": ""
     },
     "announcements": {
       "groups": {
@@ -978,7 +989,8 @@
       "yourLanguages": "",
       "yourRoles": "",
       "chooseFile": "",
-      "noFileSelected": ""
+      "noFileSelected": "",
+      "emailAddress": ""
     },
     "goToDashboard": "",
     "goToHomepage": "",
@@ -1037,7 +1049,8 @@
       "callout_purchase_physical": "",
       "callout_purchase_replay": "",
       "description_online": "",
-      "description_physical": ""
+      "description_physical": "",
+      "limitedSeats": ""
     },
     "main": {
       "upcomingEvents": "Tarurruka masu zuwa",
@@ -1047,7 +1060,8 @@
     "pageTitle": "Ana neman halartar taron Bitcoin?",
     "errors": {
       "premiumContentNeedsPaymentAction": "",
-      "premiumContentNeedsLogin": ""
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPayment": ""
     },
     "tcDisclaimer": "",
     "tcMustBeAccepted": ""
@@ -1130,7 +1144,8 @@
     "pageSubtitleBooks": "",
     "pageSubtitlePodcast": "",
     "books": {
-      "title": ""
+      "title": "",
+      "author": ""
     },
     "channels": {
       "title": "",
@@ -1203,7 +1218,8 @@
     "reviewEarn": "Duba kuma a samu sats",
     "status": "Matsayin duba kurakurai",
     "thanks": "Godiya ta masumman ga masu duba ayyukanmu!",
-    "rewardsText": ""
+    "rewardsText": "",
+    "descriptionOriginalLanguage": ""
   },
   "publicCommunication": {
     "blogCategories": {
@@ -1293,7 +1309,8 @@
     },
     "courseSection": {
       "upcomingCourseTitle": "",
-      "checkAllCourses": ""
+      "checkAllCourses": "",
+      "upcomingCourseDescription": ""
     },
     "eventSection": {
       "checkEvents": "",
@@ -1353,7 +1370,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     },
     "subCategories": {
       "on-chain": "",
