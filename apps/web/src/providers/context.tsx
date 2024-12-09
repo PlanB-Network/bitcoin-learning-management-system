@@ -93,7 +93,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       if (data?.USD) {
         setConversionRate(data.USD);
       } else {
-        throw new Error('Failed to retrieve conversion rate from Kraken API.');
+        throw new Error(
+          'Failed to retrieve conversion rate from mempool.space.',
+        );
       }
     } catch (error) {
       console.error('Error fetching conversion rate:', error);
