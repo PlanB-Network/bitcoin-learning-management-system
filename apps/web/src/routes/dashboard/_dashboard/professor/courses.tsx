@@ -44,7 +44,7 @@ function DashboardProfessorCourses() {
   const { i18n, t } = useTranslation();
 
   const { user } = useContext(AppContext);
-  if (!user || user.role !== 'professor') {
+  if (!user || !['professor', 'admin', 'superadmin'].includes(user.role)) {
     navigate({ to: '/' });
   }
 
@@ -56,7 +56,9 @@ function DashboardProfessorCourses() {
       },
       {
         staleTime: 300_000, // 5 minutes
-        enabled: user?.role === 'professor',
+        enabled: ['professor', 'admin', 'superadmin'].includes(
+          user?.role ?? '',
+        ),
       },
     );
 
