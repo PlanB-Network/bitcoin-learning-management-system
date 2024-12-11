@@ -98,7 +98,7 @@ export const FilterDropdown = ({
       className="mx-auto rounded-[10px] bg-tertiary-11"
       ref={dropdownRef}
     >
-      <div className="relative">
+      <div className="relative no-scrollbar">
         <div
           className={cn(
             'w-full flex items-center gap-2.5 overflow-x-scroll bg-tertiary-10 pl-[10px] py-[10px] pr-14 rounded-[10px]',
@@ -240,7 +240,7 @@ export const FilterDropdown = ({
                 >
                   <span>{option}</span>
                   <IoMdClose
-                    className="text-tertiary-4"
+                    className="text-tertiary-4 cursor-pointer"
                     size={16}
                     onClick={() => onChange(category, option)}
                   />
