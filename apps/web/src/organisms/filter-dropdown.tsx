@@ -98,10 +98,10 @@ export const FilterDropdown = ({
       className="mx-auto rounded-[10px] bg-tertiary-11"
       ref={dropdownRef}
     >
-      <div className="relative no-scrollbar">
+      <div className="relative">
         <div
           className={cn(
-            'w-full flex items-center gap-2.5 overflow-x-scroll bg-tertiary-10 pl-[10px] py-[10px] pr-14 rounded-[10px]',
+            'w-full flex items-center gap-2.5 overflow-x-scroll bg-tertiary-10 pl-[10px] py-[10px] pr-14 rounded-[10px] no-scrollbar',
             isFocused && 'border border-darkOrange-7',
             isOpen ? 'rounded-b-0' : 'rounded-b-[10px]',
           )}
