@@ -55,6 +55,7 @@ export const courseProgressExtendedSchema = courseProgressSchema.merge(
         completedAt: true,
       })
       .optional(),
+    courseName: z.string().optional(),
   }),
 );
 

@@ -8,12 +8,12 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.js';
 
-interface CoursesProgressListProps {
+export interface CoursesProgressListProps {
   courses?: CourseProgressExtended[];
   completed?: boolean;
   showViewDetails?: boolean;
 }
-interface ProgressBarProps {
+export interface ProgressBarProps {
   courseCompletedChapters: number;
   courseTotalChapters: number;
 }

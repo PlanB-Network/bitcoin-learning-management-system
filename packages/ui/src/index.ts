@@ -24,3 +24,4 @@ export * from './atoms/tooltip.tsx';
 export * from './lib/utils.ts';
 export * from './atoms/carousel.tsx';
 export * from './atoms/switch.tsx';
+export * from './atoms/progress.tsx';

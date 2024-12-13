@@ -10,7 +10,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ({ className, maxHeightClass, ...props }, ref) => (
     <div
       className={cn(
-        'relative w-full pr-2 md:pr-4 overflow-auto scrollbar-light',
+        'relative w-full overflow-auto scrollbar-light',
         maxHeightClass,
       )}
     >
@@ -112,11 +112,7 @@ const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
   React.HTMLAttributes<HTMLTableCaptionElement>
 >(({ className, ...props }, ref) => (
-  <caption
-    ref={ref}
-    className={cn('mt-4 text-sm text-muted-foreground', className)}
-    {...props}
-  />
+  <caption ref={ref} className={cn('mt-4 ', className)} {...props} />
 ));
 TableCaption.displayName = 'TableCaption';
 

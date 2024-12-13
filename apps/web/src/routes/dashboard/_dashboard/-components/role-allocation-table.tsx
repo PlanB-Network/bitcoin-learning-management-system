@@ -145,7 +145,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
             />
           </div>
 
-          <Table maxHeightClass="max-h-[720px]">
+          <Table maxHeightClass="max-h-[720px]" className="pr-2 md:pr-4">
             <TableHeader className="sticky top-0 z-10 bg-white">
               <TableRow>
                 <TableHead

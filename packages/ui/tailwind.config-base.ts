@@ -240,6 +240,10 @@ const baseConfig: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      cursor: {
+        fancy:
+          'url(../../../../apps/web/src/assets/icons/cursor-courses.svg), pointer',
+      },
       borderRadius: {
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 2px)`,
