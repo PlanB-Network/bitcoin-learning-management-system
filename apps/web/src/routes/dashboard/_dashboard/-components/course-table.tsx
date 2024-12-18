@@ -94,13 +94,13 @@ export const CourseTable = ({
   }
 
   return (
-    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-[18px] 2xl:gap-16 w-full mx-auto max-2xl:max-w-[698px]">
+    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-[18px] 2xl:gap-16 w-full max-lg:mx-auto max-2xl:max-w-[698px]">
       <div className="max-w-[698px] max-md:hidden shrink-0">
         <Table
           maxHeightClass="max-h-[665px]"
           className="size-full border-spacing-[10px]"
         >
-          <TableCaption className="!body-16px-medium text-black mt-[31px]">
+          <TableCaption className="max-md:hidden !body-16px-medium text-black mt-[31px]">
             {t('dashboard.myCourses.newCourses')}
           </TableCaption>
           {/* Table Header */}
@@ -157,12 +157,12 @@ export const CourseTable = ({
 
                           return (
                             <TooltipProvider key={i}>
-                              <Tooltip>
+                              <Tooltip delayDuration={0}>
                                 <TooltipTrigger>
                                   <div
                                     role="button"
                                     tabIndex={0}
-                                    className={`md:w-[50px] md:h-[52px] rounded hover:cursor-fancy ${bgColor} hover:border-black hover:border flex items-center justify-center hover:course-navigation-sm`}
+                                    className={`md:w-[50px] md:h-[52px] rounded hover:cursor-fancy ${bgColor} flex items-center justify-center hover:course-navigation-sm`}
                                     onClick={() =>
                                       setSelectedCourse(course?.name)
                                     }

@@ -13,18 +13,9 @@ export const Route = createFileRoute('/dashboard/_dashboard/courses')({
 });
 
 function DashboardCourses() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
-
-  const {
-    data: courses,
-    isLoading: coursesLoading,
-    error: coursesError,
-  } = trpc.content.getCourses.useQuery(
-    { language: i18n.language },
-    { staleTime: 300_000 }, // 5 minutes
-  );
+  const { session, courses } = useContext(AppContext);
 
   const {
     data: progress,
@@ -37,21 +28,25 @@ function DashboardCourses() {
     return null;
   }
 
-  if (coursesLoading || progressLoading) {
-    return <div>Loading courses...</div>;
+  if (progressLoading) {
+    return <div>Loading progress...</div>;
   }
 
-  if (coursesError || progressError) {
-    return <div>Error: {coursesError?.message || progressError?.message}</div>;
+  if (progressError) {
+    return <div>Error: {progressError.message}</div>;
+  }
+
+  if (!courses) {
+    return <div>No courses available.</div>;
   }
 
   return (
-    <div className="max-md:max-w-[320px] max-xl:max-w-[698px] flex flex-col mx-auto">
+    <div className="max-xl:max-w-[698px] flex flex-col max-lg:mx-auto">
       <h1 className="title-large-24px text-center md:text-start md:display-small-32px text-dashboardSectionText max-xl:mb-[21px] xl:mb-[42px]">
         {t('dashboard.myCourses.courseDashboard')}
       </h1>
-      <CourseTable courses={courses || []} progress={progress || []} />
-      <CourseTableMobile courses={courses || []} progress={progress || []} />
+      <CourseTable courses={courses} progress={progress || []} />
+      <CourseTableMobile courses={courses} progress={progress || []} />
     </div>
   );
 }

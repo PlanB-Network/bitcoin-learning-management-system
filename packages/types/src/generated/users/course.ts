@@ -108,7 +108,6 @@ export interface CourseProgressExtended {
         completedAt: Date;
       }
     | undefined;
-  courseName?: string | undefined;
 }
 
 export interface GetUserChapterResponse {

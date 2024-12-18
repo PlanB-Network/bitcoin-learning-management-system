@@ -22,20 +22,20 @@ const Progress = React.forwardRef<
       <ProgressPrimitive.Root
         ref={ref}
         className={cn(
-          'h-2 md:h-4 w-full rounded-full overflow-hidden bg-darkOrange-1 mx-auto',
+          'h-2 w-full rounded-full overflow-hidden bg-darkOrange-1 md:bg-newGray-3 mx-auto',
           className,
         )}
         {...props}
       >
         <ProgressPrimitive.Indicator
-          className="size-full relative bg-primary transition-all"
+          className="size-full relative bg-primary transition-all h-2"
           style={{
             transform: `translateX(-${100 - (value || 0)}%)`,
           }}
         />
         <img
           src={pillImage}
-          className="absolute -bottom-3 md:bottom-1.5 z-10 min-w-3 w-[13px] h-[33px]"
+          className="absolute -bottom-3 md:-bottom-3 z-10 min-w-3 w-[13px] h-[32px]"
           alt="Orange Pill"
           style={{
             left: `${progressPercentage}%`,

@@ -61,7 +61,7 @@ export const CourseDashboardCard = ({
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
   return (
-    <article className="flex flex-row max-md:max-w-[320px] md:max-h-[242px] 2xl:max-h-[697px] size-full 2xl:flex-col rounded-[10px] border border-black">
+    <article className="flex flex-row md:max-h-[242px] 2xl:max-h-[697px] size-full 2xl:flex-col rounded-[10px] border border-black">
       <span
         className={`p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] max-2xl:[transform:rotate(180deg)] max-2xl:border-l max-2xl:rounded-r-[10px] 2xl:rounded-t-[10px] border-black text-center text-sm ${bgColor}`}
       >
@@ -70,6 +70,9 @@ export const CourseDashboardCard = ({
       <div className="flex flex-col justify-between w-full max-md:items-start pt-[5px] md:p-2.5 2xl:pb-[30px] px-2.5 pb-2.5 gap-2 md:gap-[15px]">
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
           <div className="flex gap-2 max-2xl:order-2 max-md:hidden">
+            <TextTag size={'verySmall'} variant="grey" className="uppercase">
+              {course.id}
+            </TextTag>
             <TextTag size={'verySmall'} variant="orange" className="uppercase">
               {course.requiresPayment
                 ? t('courses.details.paidCourse')
@@ -80,11 +83,12 @@ export const CourseDashboardCard = ({
             </TextTag>
             {beginnerFriendlyCourses.has(course.id) && (
               <TextTag size={'verySmall'} variant="green" className="uppercase">
-                {t('words.level.beginnerFriendly')}
+                {t('words.level.beginner')}
               </TextTag>
             )}
           </div>
-          <h4 className="flex text-start title-small-med-16px md:title-medium-sb-18px line-clamp-1 max-h-[45px] h-full lg:line-clamp-2 max-xl:order-1">
+
+          <h4 className="flex text-start title-small-med-16px md:title-medium-sb-18px line-clamp-2 max-xl:order-1 max-h-[48px]">
             {course.name}
           </h4>
         </div>
@@ -94,33 +98,54 @@ export const CourseDashboardCard = ({
             alt={course.name}
             className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px] 2xl:max-h-72"
           />
-          <div className="flex flex-col gap-2 2xl:gap-[15px] w-full">
+          <div className="flex flex-col gap-2 2xl:gap-2.5 w-full">
             {!isInProgress && (
               <div className="flex flex-col md:gap-2.5">
-                <span className="p-0 md:border-b border-newGray-4 md:!pb-2.5 body-14px font-normal text-newBlack-4 line-clamp-1">
-                  {t('words.professor')}: {''}
-                  {course.professors
-                    .map((professor) => professor.name)
-                    .join(', ')}
-                </span>
-                <span className="p-0 md:border-b border-newGray-4 md:!pb-2.5 body-14px font-normal text-newBlack-4 line-clamp-1">
-                  {t('words.duration')}: {''}
-                  {`${course.hours} hours`}
-                </span>
+                <div className="flex items-center md:justify-between">
+                  <span className="body-14px shrink-0 md:mr-2 font-normal text-newBlack-4 md:body-16px">
+                    {t('dashboard.myCourses.professor')} {''}
+                  </span>
+                  <span className="body-14px font-normal text-newBlack-4  line-clamp-1 md:text-black md:label-medium-med-16px">
+                    {course.professors
+                      .map((professor) => professor.name)
+                      .join(', ')}
+                  </span>
+                </div>
+
+                <hr className="max-md:hidden" />
+                <div className="flex items-center md:justify-between">
+                  <span className="body-14px font-normal text-newBlack-4 md:body-16px">
+                    {t('dashboard.myCourses.duration')} {''}
+                  </span>
+                  <span className="body-14px font-normal text-newBlack-4 md:text-black md:label-medium-med-16px">{`${course.hours} hours`}</span>
+                </div>
+
+                <hr className="max-md:hidden" />
               </div>
             )}
-            <span className="max-md:hidden body-14px xl:border-b text-newBlack-4 line-clamp-2 xl:line-clamp-4 md:pb-[15px]">
+            <span className="max-md:hidden body-14px text-newBlack-4 line-clamp-2 2xl:line-clamp-4">
               {course.goal}
             </span>
+            <hr className="max-md:hidden" />
 
             {isInProgress && (
-              <div className="relative w-full my-4 md:border-b md:pb-[15px]">
-                <Progress
-                  value={progress.progressPercentage}
-                  totalChapters={progress.totalChapters}
-                  completedChapters={progress.completedChaptersCount}
-                  pillImage={OrangePill}
-                />
+              <div className="flex flex-col gap-5">
+                <div className="hidden 2xl:flex flex-row justify-between items-center">
+                  <span className="label-medium-med-16px text-black">
+                    {t('dashboard.myCourses.yourProgress')}
+                  </span>
+                  <span className="text-darkOrange-5 label-medium-med-16px">
+                    {progress.progressPercentage}%
+                  </span>
+                </div>
+                <div className="relative w-full my-4">
+                  <Progress
+                    value={progress.progressPercentage}
+                    totalChapters={progress.totalChapters}
+                    completedChapters={progress.completedChaptersCount}
+                    pillImage={OrangePill}
+                  />
+                </div>
               </div>
             )}
 

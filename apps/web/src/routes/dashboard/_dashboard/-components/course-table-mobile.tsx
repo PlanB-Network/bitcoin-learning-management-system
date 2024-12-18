@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
+import type { CarouselApi } from '@blms/ui';
 import {
   Carousel,
   CarouselContent,
@@ -43,72 +44,66 @@ export const CourseTableMobile = ({
   progress: CourseProgressExtended[];
 }) => {
   const { t } = useTranslation();
+  const { combinedMap, coursesByCategory } = useMemo(() => {
+    const progressMap = new Map(progress.map((p) => [p.courseId, p]));
 
-  const progressMap = new Map(progress.map((p) => [p.courseId, p]));
+    const combinedMap = new Map(
+      courses.map((course) => [
+        course.id,
+        { course, progress: progressMap.get(course.id) || null },
+      ]),
+    );
 
-  const combinedMap = new Map(
-    courses.map((course) => [
-      course.id,
-      {
-        course,
-        progress: progressMap.get(course.id) || null,
-      },
-    ]),
-  );
+    const coursesByCategory: Record<
+      string,
+      Array<{ course: JoinedCourse; progress: CourseProgressExtended | null }>
+    > = {};
 
-  const coursesByCategory: Record<
-    string,
-    Array<{ course: JoinedCourse; progress: CourseProgressExtended | null }>
-  > = {};
+    for (const { course, progress } of combinedMap.values()) {
+      const category = course.topic?.toLowerCase();
+      if (!category) continue;
 
-  for (const { course, progress } of combinedMap.values()) {
-    const category = course.topic?.toLowerCase();
-    if (!category) continue;
+      if (!coursesByCategory[category]) {
+        coursesByCategory[category] = [];
+      }
 
-    if (!coursesByCategory[category]) {
-      coursesByCategory[category] = [];
+      coursesByCategory[category].push({ course, progress });
     }
 
-    coursesByCategory[category].push({ course, progress });
-  }
+    return { progressMap, combinedMap, coursesByCategory };
+  }, [courses, progress]);
 
-  const getStatusStyles = (progress: CourseProgressExtended | null) => {
-    if (!progress)
+  const getStatusStyles = (
+    progress: CourseProgressExtended | null,
+    isSelected: boolean,
+  ) => {
+    if (!progress) {
       return {
         text: t('dashboard.myCourses.notStarted'),
         bgColor: 'bg-newGray-5',
       };
+    }
 
     const { progressPercentage } = progress;
+
     if (progressPercentage === 100) {
       return {
         text: t('dashboard.myCourses.completed'),
-        bgColor: 'bg-brightGreen-4',
+        bgColor: isSelected ? 'bg-brightGreen-5' : 'bg-brightGreen-4',
       };
     }
+
     if (progressPercentage > 0) {
       return {
         text: t('dashboard.myCourses.inprogress'),
-        bgColor: 'bg-darkOrange-4',
+        bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
       };
     }
+
     return {
       text: t('dashboard.myCourses.notStarted'),
-      bgColor: 'bg-newGray-5',
+      bgColor: isSelected ? 'bg-newGray-5' : 'bg-newGray-4',
     };
-  };
-
-  const carouselRefs = useRef<Map<string, HTMLDivElement | null>>(new Map());
-  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
-
-  const handleScrollToCourse = (courseId: string) => {
-    const courseRef = carouselRefs.current.get(courseId);
-    if (courseRef) {
-      courseRef.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
   };
 
   const getHighestProgressCourse = () => {
@@ -132,24 +127,55 @@ export const CourseTableMobile = ({
       }
     }
 
-    return highestProgressCourse ? highestProgressCourse.courseId : null;
+    return (
+      highestProgressCourse?.courseId ||
+      courses.find((course) => course.id === 'btc101')?.id ||
+      null
+    );
   };
 
+  const defaultCourse = getHighestProgressCourse();
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(
+    defaultCourse,
+  );
+  const [api, setApi] = useState<CarouselApi | null>(null);
+
   useEffect(() => {
-    if (!selectedCourse) {
-      const courseToScrollTo = getHighestProgressCourse();
-      if (courseToScrollTo) {
-        setSelectedCourse(courseToScrollTo);
-        handleScrollToCourse(courseToScrollTo);
-      } else {
-        setSelectedCourse('btc101');
-        handleScrollToCourse('btc101');
+    if (api && selectedCourse) {
+      const flatCourses = categories.flatMap((category) =>
+        (coursesByCategory[category.toLowerCase()] || []).map(
+          ({ course }) => course,
+        ),
+      );
+      const index = flatCourses.findIndex(
+        (course) => course.id === selectedCourse,
+      );
+      if (index >= 0) {
+        api.scrollTo(index);
       }
     }
-  }, [selectedCourse]);
+  });
+
+  useEffect(() => {
+    if (api) {
+      const onSelect = () => {
+        const selectedIndex = api.selectedScrollSnap();
+        const flatCourses = categories.flatMap((category) =>
+          (coursesByCategory[category.toLowerCase()] || []).map(
+            ({ course }) => course,
+          ),
+        );
+        setSelectedCourse(flatCourses[selectedIndex]?.id || null);
+      };
+      api.on('select', onSelect);
+      return () => {
+        api.off('select', onSelect);
+      };
+    }
+  }, [api, coursesByCategory]);
 
   return (
-    <section className="max-w-[320px] w-full mx-auto md:hidden rounded-[10px]">
+    <section className="w-full mx-auto md:hidden rounded-[10px]">
       <div className="h-[277px] overflow-scroll no-scrollbar">
         <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
           <TableHeader className="border-none">
@@ -173,46 +199,39 @@ export const CourseTableMobile = ({
               ))}
             </TableRow>
           </TableHeader>
-
           <TableBody className="bg-newGray-6">
             <TableRow>
               {categories.map((category) => (
                 <TableCell
                   key={category}
-                  className="align-top text-center px-[2.5px] pb-2 !w-[35px]"
+                  className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
                 >
                   <div className="flex flex-col w-[35px] gap-[5px] mx-auto">
                     {(coursesByCategory[category.toLowerCase()] || []).map(
-                      ({ course, progress }, i) => {
-                        const { bgColor } = getStatusStyles(progress);
-
+                      ({ course, progress }) => {
+                        const { bgColor } = getStatusStyles(
+                          progress,
+                          selectedCourse === course.id,
+                        );
                         const isActive = selectedCourse === course.id;
-                        const isHighestProgress =
-                          !selectedCourse &&
-                          getHighestProgressCourse() === course.id;
-                        const activeBorder =
-                          isActive || isHighestProgress
-                            ? 'border border-black'
-                            : '';
+                        const activeBorder = isActive
+                          ? 'border border-black'
+                          : '';
 
                         return (
                           <div
-                            key={i}
+                            key={course.id}
                             role="button"
                             tabIndex={0}
                             className={`rounded-md size-[35px] ${bgColor} ${activeBorder} flex items-center justify-center p-4 mx-auto`}
-                            onClick={() => {
-                              setSelectedCourse(course.id);
-                              handleScrollToCourse(course.id);
-                            }}
+                            onClick={() => setSelectedCourse(course.id)}
                             onKeyDown={(e) => {
                               if (e.key === 'Enter' || e.key === ' ') {
                                 setSelectedCourse(course.id);
-                                handleScrollToCourse(course.id);
                               }
                             }}
                           >
-                            <span className="text-center text-brightGreen-11 body-medium-12px uppercase">
+                            <span className="text-center text-brightGreen-11 body-medium-12px uppercase !leading-[110%]">
                               {course.id.slice(0, 3)}
                               <br />
                               {course.id.slice(3)}
@@ -230,7 +249,7 @@ export const CourseTableMobile = ({
       </div>
 
       <div className="mt-4">
-        <Carousel opts={{ loop: true }} className="w-full max-w-[320px]">
+        <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
           <CarouselContent className="ml-0">
             {categories
               .flatMap((category) =>
@@ -238,78 +257,18 @@ export const CourseTableMobile = ({
                   ({ course, progress }) => ({ course, progress }),
                 ),
               )
-              .map(({ course, progress }) => {
-                return (
-                  <CarouselItem
-                    key={course.id}
-                    className="max-h-[146px] w-full max-w-[320px] px-1"
-                    ref={(el) => carouselRefs.current.set(course.id, el)}
-                  >
-                    <CourseDashboardCard course={course} progress={progress} />
-                  </CarouselItem>
-                );
-              })}
+              .map(({ course, progress }) => (
+                <CarouselItem
+                  key={course.id}
+                  className="max-h-[146px] w-full px-1"
+                >
+                  <CourseDashboardCard course={course} progress={progress} />
+                </CarouselItem>
+              ))}
           </CarouselContent>
 
-          <CarouselPrevious
-            variant={'carouselDashboard'}
-            className="-left-4"
-            onClick={() => {
-              const currentIndex = categories
-                .flatMap((category) =>
-                  (coursesByCategory[category.toLowerCase()] || []).map(
-                    ({ course }) => course,
-                  ),
-                )
-                .findIndex((course) => course.id === selectedCourse);
-
-              const prevCourse =
-                categories.flatMap((category) =>
-                  (coursesByCategory[category.toLowerCase()] || []).map(
-                    ({ course }) => course,
-                  ),
-                )[currentIndex - 1] ||
-                categories
-                  .flatMap((category) =>
-                    (coursesByCategory[category.toLowerCase()] || []).map(
-                      ({ course }) => course,
-                    ),
-                  )
-                  .at(-1);
-
-              setSelectedCourse(prevCourse.id);
-              handleScrollToCourse(prevCourse.id);
-            }}
-          />
-
-          <CarouselNext
-            variant={'carouselDashboard'}
-            className="-right-4"
-            onClick={() => {
-              const currentIndex = categories
-                .flatMap((category) =>
-                  (coursesByCategory[category.toLowerCase()] || []).map(
-                    ({ course }) => course,
-                  ),
-                )
-                .findIndex((course) => course.id === selectedCourse);
-
-              const nextCourse =
-                categories.flatMap((category) =>
-                  (coursesByCategory[category.toLowerCase()] || []).map(
-                    ({ course }) => course,
-                  ),
-                )[currentIndex + 1] ||
-                categories.flatMap((category) =>
-                  (coursesByCategory[category.toLowerCase()] || []).map(
-                    ({ course }) => course,
-                  ),
-                )[0];
-
-              setSelectedCourse(nextCourse.id);
-              handleScrollToCourse(nextCourse.id);
-            }}
-          />
+          <CarouselPrevious variant="carouselDashboard" className="-left-4" />
+          <CarouselNext variant="carouselDashboard" className="-right-4" />
         </Carousel>
       </div>
     </section>

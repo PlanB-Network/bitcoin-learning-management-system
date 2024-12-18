@@ -494,12 +494,14 @@
       "detailsAndCertificate": "Details & certificate",
       "done": "Done",
       "download": "Download diploma",
+      "duration": "Duration :",
       "inprogress": "In progress",
       "inprogressCoursesTitle": "Courses in progress",
       "inprogressCoursesDescription": "Here you can check your progress in the courses you have started.",
       "newCourses": "New courses are added each month",
       "notStarted": "Not started",
       "notValidated": "Not validated",
+      "professor": "Professor :",
       "resumeLesson": "Resume",
       "seeDetails": "See details",
       "seeProgress": "to see your progress here.",
@@ -508,7 +510,8 @@
       "whereYouAre": "Let's see where you're at !",
       "verify": "Verify the authenticity of your diploma",
       "viewDetails": "View details",
-      "yourCertificate": "Your certificate"
+      "yourCertificate": "Your certificate",
+      "yourProgress": "Your progress :"
     },
     "credentials": {
       "bCertificate": "₿ Certificate",
