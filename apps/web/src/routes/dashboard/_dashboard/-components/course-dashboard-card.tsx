@@ -16,7 +16,7 @@ export const CourseDashboardCard = ({
   course: JoinedCourse;
   progress: CourseProgressExtended | null;
 }) => {
-  const isScreenLg = useGreater('xl');
+  const isScreenLg = useGreater('2xl');
 
   const { t } = useTranslation();
   const renderStartButton = !progress || progress.progressPercentage === 0;
@@ -63,11 +63,11 @@ export const CourseDashboardCard = ({
   return (
     <article className="flex flex-row md:max-h-[242px] 2xl:max-h-[697px] size-full 2xl:flex-col rounded-[10px] border border-black">
       <span
-        className={`p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] max-2xl:[transform:rotate(180deg)] max-2xl:border-l max-2xl:rounded-r-[10px] 2xl:rounded-t-[10px] border-black text-center text-sm ${bgColor}`}
+        className={`p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] max-2xl:[transform:rotate(180deg)] max-2xl:border-l 2xl:border-b max-2xl:rounded-r-[10px] 2xl:rounded-t-[10px] border-black text-center text-sm ${bgColor}`}
       >
         {text}
       </span>
-      <div className="flex flex-col justify-between w-full max-md:items-start pt-[5px] md:p-2.5 2xl:pb-[30px] px-2.5 pb-2.5 gap-2 md:gap-[15px]">
+      <div className="flex flex-col justify-between w-full max-md:items-start pt-[5px] md:p-2.5 2xl:pb-[30px] px-2.5 pb-2.5 gap-2 md:gap-4">
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
           <div className="flex gap-2 max-2xl:order-2 max-md:hidden">
             <TextTag size={'verySmall'} variant="grey" className="uppercase">
@@ -88,20 +88,22 @@ export const CourseDashboardCard = ({
             )}
           </div>
 
-          <h4 className="flex text-start title-small-med-16px md:title-medium-sb-18px line-clamp-2 max-xl:order-1 max-h-[48px]">
-            {course.name}
-          </h4>
+          <div className="flex text-start title-small-med-16px md:title-medium-sb-18px max-xl:order-1">
+            <span className="line-clamp-2 md:line-clamp-1 2xl:line-clamp-2">
+              {course.name}
+            </span>
+          </div>
         </div>
         <div className=" w-full flex flex-row 2xl:flex-col gap-5">
           <img
             src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
             alt={course.name}
-            className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px] 2xl:max-h-72"
+            className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px]"
           />
-          <div className="flex flex-col gap-2 2xl:gap-2.5 w-full">
+          <div className="flex flex-col gap-2 md:gap-4 w-full">
             {!isInProgress && (
               <div className="flex flex-col md:gap-2.5">
-                <div className="flex items-center md:justify-between">
+                <div className="flex items-center md:justify-between gap-1">
                   <span className="body-14px shrink-0 md:mr-2 font-normal text-newBlack-4 md:body-16px">
                     {t('dashboard.myCourses.professor')} {''}
                   </span>
@@ -113,7 +115,7 @@ export const CourseDashboardCard = ({
                 </div>
 
                 <hr className="max-md:hidden" />
-                <div className="flex items-center md:justify-between">
+                <div className="flex items-center md:justify-between gap-1">
                   <span className="body-14px font-normal text-newBlack-4 md:body-16px">
                     {t('dashboard.myCourses.duration')} {''}
                   </span>
@@ -123,14 +125,16 @@ export const CourseDashboardCard = ({
                 <hr className="max-md:hidden" />
               </div>
             )}
-            <span className="max-md:hidden body-14px text-newBlack-4 line-clamp-2 2xl:line-clamp-4">
-              {course.goal}
-            </span>
-            <hr className="max-md:hidden" />
+            <div className="max-md:hidden flex flex-col gap-4 order-2 2xl:order-1">
+              <span className="body-14px text-newBlack-4 line-clamp-2 2xl:line-clamp-4">
+                {course.goal}
+              </span>
+              <hr className="max-2xl:hidden" />
+            </div>
 
             {isInProgress && (
-              <div className="flex flex-col gap-5">
-                <div className="hidden 2xl:flex flex-row justify-between items-center">
+              <div className="flex flex-col gap-3 2xl:gap-4 2xl:order-2">
+                <div className="hidden md:flex flex-row items-center justify-between">
                   <span className="label-medium-med-16px text-black">
                     {t('dashboard.myCourses.yourProgress')}
                   </span>
@@ -146,10 +150,12 @@ export const CourseDashboardCard = ({
                     pillImage={OrangePill}
                   />
                 </div>
+
+                <hr className="max-2xl:hidden" />
               </div>
             )}
 
-            <div className="w-full mt-auto">
+            <div className="w-full order-3">
               {renderStartButton && (
                 <div className="w-full">
                   <Link className="w-full" to={`/courses/${course.id}`}>

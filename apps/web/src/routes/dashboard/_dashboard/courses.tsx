@@ -17,27 +17,15 @@ function DashboardCourses() {
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
 
-  const {
-    data: progress,
-    isLoading: progressLoading,
-    error: progressError,
-  } = trpc.user.courses.getProgress.useQuery();
+  const { data: progress } = trpc.user.courses.getProgress.useQuery();
 
   if (!session) {
     navigate({ to: '/' });
     return null;
   }
 
-  if (progressLoading) {
-    return <div>Loading progress...</div>;
-  }
-
-  if (progressError) {
-    return <div>Error: {progressError.message}</div>;
-  }
-
   if (!courses) {
-    return <div>No courses available.</div>;
+    return <div>{t('dashboard.myCourses.noCoursesAvailable')}</div>;
   }
 
   return (
