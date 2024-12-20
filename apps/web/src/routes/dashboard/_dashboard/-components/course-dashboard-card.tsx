@@ -56,7 +56,7 @@ export const CourseDashboardCard = ({
       bgColor: 'bg-newGray-5',
     };
   };
-
+  console.log(course);
   const { text, bgColor } = getStatusStyles(progress);
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
@@ -94,13 +94,13 @@ export const CourseDashboardCard = ({
             </span>
           </div>
         </div>
-        <div className=" w-full flex flex-row 2xl:flex-col gap-5">
+        <div className=" w-full flex flex-row 2xl:flex-col gap-4">
           <img
             src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
             alt={course.name}
             className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px]"
           />
-          <div className="flex flex-col gap-2 md:gap-4 w-full">
+          <div className="flex flex-col gap-2 md:gap-3 2xl:gap-4 w-full">
             {!isInProgress && (
               <div className="flex flex-col md:gap-2.5">
                 <div className="flex items-center md:justify-between gap-1">
@@ -123,6 +123,22 @@ export const CourseDashboardCard = ({
                 </div>
 
                 <hr className="max-md:hidden" />
+
+                {!progress && course.requiresPayment && (
+                  <>
+                    <div className="max-2xl:hidden 2xl:flex items-center md:justify-between gap-1">
+                      <span className="body-14px font-normal text-newBlack-4 md:body-16px">
+                        {t('dashboard.myCourses.price')} {''}
+                      </span>
+                      <span className="body-14px font-normal text-newBlack-4 md:text-black md:label-medium-med-16px">
+                        {course.onlinePriceDollars === null
+                          ? `$${course.inpersonPriceDollars || 5300}`
+                          : `$${course.onlinePriceDollars}`}
+                      </span>
+                    </div>
+                    <hr className="max-2xl:hidden" />
+                  </>
+                )}
               </div>
             )}
             <div className="max-md:hidden flex flex-col gap-4 order-2 2xl:order-1">
