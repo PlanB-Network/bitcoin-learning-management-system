@@ -19,15 +19,12 @@ export const CourseDashboardCard = ({
   const isScreenLg = useGreater('2xl');
 
   const { t } = useTranslation();
-  const renderStartButton = !progress || progress.progressPercentage === 0;
   const isInProgress =
     progress &&
-    progress.progressPercentage > 0 &&
+    progress.progressPercentage >= 0 &&
     progress.progressPercentage < 100;
-  const renderResumeAndViewButtons =
-    progress &&
-    progress.progressPercentage > 0 &&
-    progress.progressPercentage < 100;
+
+  const renderStartButton = !progress;
   const renderCompletionButton =
     progress && progress.progressPercentage === 100;
 
@@ -45,7 +42,7 @@ export const CourseDashboardCard = ({
         bgColor: 'bg-brightGreen-4',
       };
     }
-    if (progressPercentage > 0) {
+    if (progressPercentage > 0 || progressPercentage === 0) {
       return {
         text: t('dashboard.myCourses.inprogress'),
         bgColor: 'bg-darkOrange-4',
@@ -186,7 +183,7 @@ export const CourseDashboardCard = ({
                 </div>
               )}
 
-              {renderResumeAndViewButtons && (
+              {isInProgress && (
                 <div className="flex flex-row 2xl:flex-col gap-2.5 items-center w-full mt-auto">
                   <Link
                     className="w-full"

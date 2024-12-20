@@ -93,7 +93,7 @@ export const CourseTableMobile = ({
       };
     }
 
-    if (progressPercentage > 0) {
+    if (progressPercentage >= 0) {
       return {
         text: t('dashboard.myCourses.inprogress'),
         bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
@@ -258,10 +258,7 @@ export const CourseTableMobile = ({
                 ),
               )
               .map(({ course, progress }) => (
-                <CarouselItem
-                  key={course.id}
-                  className="max-h-[146px] w-full px-1"
-                >
+                <CarouselItem key={course.id} className="w-full px-1">
                   <CourseDashboardCard course={course} progress={progress} />
                 </CarouselItem>
               ))}
