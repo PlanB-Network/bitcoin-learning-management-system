@@ -25,7 +25,7 @@ import protocolSvg from '#src/assets/icons/protocol-black.svg';
 import socialStudiesSvg from '#src/assets/icons/world-black.svg';
 
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
-import { categories } from './course-table.tsx';
+import { courseCategoriesDashboard } from './course-table.tsx';
 
 const categoryIcons = {
   bitcoin: bitcoinSvg,
@@ -80,7 +80,7 @@ export const CourseTableMobile = ({
     if (!progress) {
       return {
         text: t('dashboard.myCourses.notStarted'),
-        bgColor: 'bg-newGray-5',
+        bgColor: isSelected ? 'bg-newGray-5' : 'bg-newGray-4',
       };
     }
 
@@ -93,16 +93,9 @@ export const CourseTableMobile = ({
       };
     }
 
-    if (progressPercentage >= 0) {
-      return {
-        text: t('dashboard.myCourses.inprogress'),
-        bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
-      };
-    }
-
     return {
-      text: t('dashboard.myCourses.notStarted'),
-      bgColor: isSelected ? 'bg-newGray-5' : 'bg-newGray-4',
+      text: t('dashboard.myCourses.inprogress'),
+      bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
     };
   };
 
@@ -142,7 +135,7 @@ export const CourseTableMobile = ({
 
   useEffect(() => {
     if (api && selectedCourse) {
-      const flatCourses = categories.flatMap((category) =>
+      const flatCourses = courseCategoriesDashboard.flatMap((category) =>
         (coursesByCategory[category.toLowerCase()] || []).map(
           ({ course }) => course,
         ),
@@ -160,7 +153,7 @@ export const CourseTableMobile = ({
     if (api) {
       const onSelect = () => {
         const selectedIndex = api.selectedScrollSnap();
-        const flatCourses = categories.flatMap((category) =>
+        const flatCourses = courseCategoriesDashboard.flatMap((category) =>
           (coursesByCategory[category.toLowerCase()] || []).map(
             ({ course }) => course,
           ),
@@ -180,7 +173,7 @@ export const CourseTableMobile = ({
         <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
           <TableHeader className="border-none">
             <TableRow>
-              {categories.map((category) => (
+              {courseCategoriesDashboard.map((category) => (
                 <TableHead
                   key={category}
                   className="text-center py-2 w-[35px] px-1 mx-auto"
@@ -201,7 +194,7 @@ export const CourseTableMobile = ({
           </TableHeader>
           <TableBody className="bg-newGray-6">
             <TableRow>
-              {categories.map((category) => (
+              {courseCategoriesDashboard.map((category) => (
                 <TableCell
                   key={category}
                   className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
@@ -251,7 +244,7 @@ export const CourseTableMobile = ({
       <div className="mt-4">
         <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
           <CarouselContent className="ml-0">
-            {categories
+            {courseCategoriesDashboard
               .flatMap((category) =>
                 (coursesByCategory[category.toLowerCase()] || []).map(
                   ({ course, progress }) => ({ course, progress }),

@@ -19,7 +19,7 @@ import {
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const categories = [
+export const courseCategoriesDashboard = [
   'bitcoin',
   'business',
   'mining',
@@ -59,7 +59,7 @@ export const CourseTable = ({
     if (!progressForCourse)
       return {
         text: t('dashboard.myCourses.notStarted'),
-        bgColor: 'bg-newGray-5',
+        bgColor: 'bg-newGray-5 hover:bg-newGray-6',
       };
 
     const { progressPercentage } = progressForCourse;
@@ -107,7 +107,7 @@ export const CourseTable = ({
           <TableHeader className="border-none">
             <TableRow>
               <TableHead className="bg-white p-1 text-sm" />
-              {categories.map((category) => (
+              {courseCategoriesDashboard.map((category) => (
                 <TableHead
                   key={category}
                   className="text-center lg:w-[101px] max-w-[101px] pb-[11px] pt-[6px]"
@@ -131,7 +131,7 @@ export const CourseTable = ({
                 </TableCell>
 
                 {/* Course Cells */}
-                {categories.map((category, categoryIndex) => {
+                {courseCategoriesDashboard.map((category, categoryIndex) => {
                   const coursesForCell = courses.filter(
                     (c) =>
                       c.level?.toLowerCase() === level.toLowerCase() &&
