@@ -107,7 +107,10 @@ function TutorialCategory() {
           <div className="flex w-full items-center gap-5">
             <CategoryIcon src={tutorialCategory!.image} className="size-16" />
             <h1 className="text-black capitalize desktop desktop-h4 lg:display-large">
-              {tutorialCategory!.name}
+              {t([
+                `tutorials.${tutorialCategory!.name}.title`,
+                tutorialCategory!.name,
+              ])}
             </h1>
           </div>
           <hr className="mb-5 lg:mb-8"></hr>
@@ -157,11 +160,12 @@ function TutorialCategory() {
                         </div>
                       )} */}
                         <div className="flex flex-wrap gap-4 md:gap-x-0 md:gap-y-6 justify-center">
-                          {tutorials
+                          {[...tutorials]
                             .filter(
                               (tutorial) =>
                                 tutorial.subcategory === subCategory,
                             )
+                            .sort((a, b) => a.title.localeCompare(b.title))
                             .map((tutorial) => (
                               <TutorialCard
                                 key={tutorial.id}

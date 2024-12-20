@@ -67,7 +67,7 @@ export const TutorialLayout = ({
                         )}
                       >
                         {t([
-                          `tutorials.${tutorialCategory.name}.name`,
+                          `tutorials.${tutorialCategory.name}.title`,
                           tutorialCategory.name,
                         ])}
                       </Link>
@@ -105,12 +105,15 @@ export const TutorialLayout = ({
 
                               <CollapsibleContent className="pl-7">
                                 <ul className="flex flex-col">
-                                  {allTutorials
+                                  {[...allTutorials]
                                     .filter(
                                       (tutorial) =>
                                         tutorial.category ===
                                           tutorialCategory.name &&
                                         tutorial.subcategory === subCategory,
+                                    )
+                                    .sort((a, b) =>
+                                      a.title.localeCompare(b.title),
                                     )
                                     .map((tutorial) => (
                                       <li
