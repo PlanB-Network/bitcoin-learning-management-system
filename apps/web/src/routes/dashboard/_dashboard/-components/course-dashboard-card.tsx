@@ -56,7 +56,7 @@ export const CourseDashboardCard = ({
       bgColor: 'bg-newGray-5',
     };
   };
-  console.log(course);
+
   const { text, bgColor } = getStatusStyles(progress);
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
