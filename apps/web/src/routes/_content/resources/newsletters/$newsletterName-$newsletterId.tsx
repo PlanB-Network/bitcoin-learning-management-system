@@ -155,7 +155,7 @@ function NewsletterDetail() {
                 />
                 <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                   {newsletter?.websiteUrl && (
-                    <Link to={newsletter.websiteUrl}>
+                    <Link to={newsletter.websiteUrl} target="_blank">
                       <Button
                         size={isScreenMd ? 'l' : 'm'}
                         variant="primary"
@@ -190,17 +190,20 @@ function NewsletterDetail() {
                 </div>
 
                 <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
-                  {newsletter.tags.map((tag, i) => (
-                    <TextTag
-                      key={i}
-                      size="small"
-                      variant="lightMaroon"
-                      mode="dark"
-                    >
-                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                    </TextTag>
-                  ))}
+                  {newsletter.tags
+                    ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
+                    .map((tag, i) => (
+                      <TextTag
+                        key={i}
+                        size="small"
+                        variant="lightMaroon"
+                        mode="dark"
+                      >
+                        {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                      </TextTag>
+                    ))}
                 </div>
+
                 {isScreenMd && displayAbstract()}
               </div>
             </article>

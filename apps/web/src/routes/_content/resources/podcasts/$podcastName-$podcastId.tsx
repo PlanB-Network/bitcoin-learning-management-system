@@ -132,7 +132,7 @@ function Podcast() {
                   />
                   <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                     {podcast?.podcastUrl && (
-                      <Link to={podcast.podcastUrl}>
+                      <Link to={podcast.podcastUrl} target="_blank">
                         <Button
                           size={isScreenMd ? 'l' : 'm'}
                           variant="primary"
@@ -152,16 +152,18 @@ function Podcast() {
                     </h2>
 
                     <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
-                      {podcast?.tags.map((tag, i) => (
-                        <TextTag
-                          key={i}
-                          size="small"
-                          variant="lightMaroon"
-                          mode="dark"
-                        >
-                          {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                        </TextTag>
-                      ))}
+                      {podcast?.tags
+                        ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
+                        .map((tag, i) => (
+                          <TextTag
+                            key={i}
+                            size="small"
+                            variant="lightMaroon"
+                            mode="dark"
+                          >
+                            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                          </TextTag>
+                        ))}
                     </div>
 
                     <div className="flex items-center flex-wrap mb-5 md:mb-[30px]">

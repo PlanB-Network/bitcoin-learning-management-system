@@ -134,7 +134,7 @@ function Channel() {
                   />
                   <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                     {channel?.channel && (
-                      <Link to={channel.channel}>
+                      <Link to={channel.channel} target="_blank">
                         <Button
                           size={isScreenMd ? 'l' : 'm'}
                           variant="primary"
@@ -161,16 +161,18 @@ function Channel() {
                     </div>
 
                     <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
-                      {channel.tags.map((tag, i) => (
-                        <TextTag
-                          key={i}
-                          size="small"
-                          variant="lightMaroon"
-                          mode="dark"
-                        >
-                          {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                        </TextTag>
-                      ))}
+                      {channel.tags
+                        ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
+                        .map((tag, i) => (
+                          <TextTag
+                            key={i}
+                            size="small"
+                            variant="lightMaroon"
+                            mode="dark"
+                          >
+                            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                          </TextTag>
+                        ))}
                     </div>
                   </div>
 
