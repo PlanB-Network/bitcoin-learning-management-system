@@ -187,7 +187,7 @@ export const MobileMenu = ({
       {isLoggedIn && (
         <nav
           className={cn(
-            'flex flex-col fixed top-0 right-0 items-center w-full max-w-[440px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden',
+            'flex flex-col fixed top-0 right-0 items-center w-[90%] max-w-[440px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden border-l border-darkOrange-8',
             isMobileDashboardMenuOpen ? 'translate-x-0' : 'translate-x-full',
             variant === 'dark' && 'dark',
           )}
