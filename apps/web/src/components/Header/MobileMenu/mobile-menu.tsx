@@ -149,7 +149,7 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 left-0 items-center w-full max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2',
+          'flex flex-col fixed top-0 left-0 items-center w-[90%] max-w-[320px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2  border-r border-darkOrange-4 dark:border-r dark:border-newBlack-4',
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
           variant === 'dark' && 'dark',
         )}
