@@ -22,8 +22,8 @@ function Dashboard() {
           className={cn(
             'bg-white text-black',
             location.href.includes('calendar')
-              ? 'px-0 pt-6 pb-12 md:p-6'
-              : 'px-4 pt-6 pb-20',
+              ? 'px-0 py-6 md:p-6'
+              : 'px-4 py-6',
           )}
         >
           <Outlet></Outlet>

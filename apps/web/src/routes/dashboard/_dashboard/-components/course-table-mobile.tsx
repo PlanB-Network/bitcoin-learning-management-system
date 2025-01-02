@@ -170,83 +170,80 @@ export const CourseTableMobile = ({
   }, [api, coursesByCategory]);
 
   return (
-    <section className="flex flex-col h-screen md:hidden">
-      <div className="grow max-h-[50vh] overflow-y-auto no-scrollbar rounded-[10px] w-full max-w-[330px] min-[425px]:max-w-[350px] min-[650px]:max-w-[432px] mx-auto">
-        <div className="h-full">
-          <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
-            <TableHeader className="border-none">
-              <TableRow>
-                {courseCategoriesDashboard.map((category) => (
-                  <TableHead
-                    key={category}
-                    className="text-center py-2 w-[35px] min-[425px]:w-[50px] px-1 mx-auto"
-                  >
-                    <div className="w-[30px] max-w-[30px] flex mx-auto">
-                      <img
-                        src={
-                          categoryIcons[
-                            category as keyof typeof categoryIcons
-                          ] || ''
-                        }
-                        alt={category}
-                        className="size-[30px] mx-auto"
-                      />
-                    </div>
-                  </TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody className="bg-newGray-6">
-              <TableRow>
-                {courseCategoriesDashboard.map((category) => (
-                  <TableCell
-                    key={category}
-                    className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
-                  >
-                    <div className="flex flex-col gap-[5px] min-[650px]:gap-2.5">
-                      {(coursesByCategory[category.toLowerCase()] || []).map(
-                        ({ course, progress }) => {
-                          const { bgColor } = getStatusStyles(
-                            progress,
-                            selectedCourse === course.id,
-                          );
-                          const isActive = selectedCourse === course.id;
-                          const activeBorder = isActive
-                            ? 'border border-black'
-                            : '';
+    <section className="flex flex-col md:hidden max-h-[calc(100dvh-140px)]">
+      <div className="overflow-y-auto no-scrollbar rounded-[10px] w-full max-w-[330px] min-[425px]:max-w-[350px] min-[650px]:max-w-[432px] mx-auto">
+        <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
+          <TableHeader className="border-none">
+            <TableRow>
+              {courseCategoriesDashboard.map((category) => (
+                <TableHead
+                  key={category}
+                  className="text-center py-2 w-[35px] min-[425px]:w-[50px] px-1 mx-auto"
+                >
+                  <div className="w-[30px] max-w-[30px] flex mx-auto">
+                    <img
+                      src={
+                        categoryIcons[category as keyof typeof categoryIcons] ||
+                        ''
+                      }
+                      alt={category}
+                      className="size-[30px] mx-auto"
+                    />
+                  </div>
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody className="bg-newGray-6">
+            <TableRow>
+              {courseCategoriesDashboard.map((category) => (
+                <TableCell
+                  key={category}
+                  className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
+                >
+                  <div className="flex flex-col gap-[5px] min-[650px]:gap-2.5">
+                    {(coursesByCategory[category.toLowerCase()] || []).map(
+                      ({ course, progress }) => {
+                        const { bgColor } = getStatusStyles(
+                          progress,
+                          selectedCourse === course.id,
+                        );
+                        const isActive = selectedCourse === course.id;
+                        const activeBorder = isActive
+                          ? 'border border-black'
+                          : '';
 
-                          return (
-                            <div
-                              key={course.id}
-                              role="button"
-                              tabIndex={0}
-                              className={`rounded-md size-[35px] min-[425px]:size-[50px] ${bgColor} ${activeBorder} flex items-center justify-center p-4 mx-auto`}
-                              onClick={() => setSelectedCourse(course.id)}
-                              onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                  setSelectedCourse(course.id);
-                                }
-                              }}
-                            >
-                              <span className="text-center text-brightGreen-11 body-medium-12px uppercase !leading-[110%]">
-                                {course.id.slice(0, 3)}
-                                <br />
-                                {course.id.slice(3)}
-                              </span>
-                            </div>
-                          );
-                        },
-                      )}
-                    </div>
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
+                        return (
+                          <div
+                            key={course.id}
+                            role="button"
+                            tabIndex={0}
+                            className={`rounded-md size-[35px] min-[425px]:size-[50px] ${bgColor} ${activeBorder} flex items-center justify-center p-4 mx-auto`}
+                            onClick={() => setSelectedCourse(course.id)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                setSelectedCourse(course.id);
+                              }
+                            }}
+                          >
+                            <span className="text-center text-brightGreen-11 body-medium-12px uppercase !leading-[110%]">
+                              {course.id.slice(0, 3)}
+                              <br />
+                              {course.id.slice(3)}
+                            </span>
+                          </div>
+                        );
+                      },
+                    )}
+                  </div>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
-      <div className="mt-4 min-[375px]:mt-[50px] min-[425px]:mt-[69px] shrink-0">
+      <div className="mt-4">
         <Carousel setApi={setApi} opts={{ loop: false }} className="w-full">
           <CarouselContent className="ml-0">
             {courseCategoriesDashboard
