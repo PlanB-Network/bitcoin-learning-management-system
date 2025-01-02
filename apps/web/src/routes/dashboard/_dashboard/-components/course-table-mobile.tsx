@@ -171,8 +171,8 @@ export const CourseTableMobile = ({
 
   return (
     <>
-      <section className="w-full max-w-[330px] min-[425px]:max-w-[350px] min-[650px]:max-w-[400px] mx-auto md:hidden rounded-[10px]">
-        <div className="h-[277px] min-[375px]:h-full overflow-scroll no-scrollbar">
+      <section className="w-full max-w-[330px] min-[425px]:max-w-[350px] min-[650px]:max-w-[432px] mx-auto md:hidden rounded-[10px]">
+        <div className="h-full overflow-scroll no-scrollbar">
           <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
             <TableHeader className="border-none">
               <TableRow>
@@ -246,7 +246,7 @@ export const CourseTableMobile = ({
         </div>
       </section>
 
-      <div className="mt-[50px] min-[425px]:mt-[69px] md:hidden">
+      <div className="mt-4 min-[375px]:mt-[50px] min-[425px]:mt-[69px] md:hidden">
         <Carousel setApi={setApi} opts={{ loop: false }} className="w-full">
           <CarouselContent className="ml-0">
             {courseCategoriesDashboard
