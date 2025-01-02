@@ -140,7 +140,7 @@ export const PaymentDescription = ({
             }}
             className="border-2 w-24 ml-4 p-1 rounded-lg border-newGray-5 bg-newGray-6 text-newBlack-5"
           />
-          <div className="ml-2">
+          <div className="mx-2">
             {isLoading === true && (
               <img src={spinner} alt="spinner" className="size-6" />
             )}

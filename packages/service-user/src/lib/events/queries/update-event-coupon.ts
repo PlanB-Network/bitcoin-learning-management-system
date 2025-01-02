@@ -6,6 +6,7 @@ export const updateEventCoupon = ({ paymentId }: { paymentId: string }) => {
     SET is_used = true
     FROM users.event_payment
     WHERE
+      content.coupon_code.is_unique = true AND
       content.coupon_code.code = users.event_payment.coupon_code AND
       users.event_payment.coupon_code IS NOT NULL AND
       users.event_payment.payment_id = ${paymentId}

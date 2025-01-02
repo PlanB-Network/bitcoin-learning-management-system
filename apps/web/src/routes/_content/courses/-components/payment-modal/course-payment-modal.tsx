@@ -88,6 +88,12 @@ export const CoursePaymentModal = ({
           method: method,
         });
         setCheckoutData(serverCheckoutData);
+        if (
+          serverCheckoutData.id === 'free' &&
+          serverCheckoutData.amount === 0
+        ) {
+          setIsPaymentSuccess(true);
+        }
       }
 
       setMethod(method);

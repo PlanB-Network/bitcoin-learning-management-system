@@ -61,7 +61,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
         .exec(
           sql<
             CouponCode[]
-          >`SELECT * FROM content.coupon_code WHERE code = ${couponCode} AND item_id = ${courseId} and is_used = false`,
+          >`SELECT * FROM content.coupon_code WHERE code = ${couponCode} AND item_id = ${courseId} and (is_used = false OR is_unique = false)`,
         )
         .then(firstRow);
 
@@ -104,6 +104,15 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
           }),
         );
       }
+
+      return {
+        id: 'free',
+        pr: '',
+        onChainAddr: undefined,
+        amount: dollarPrice,
+        checkoutUrl: '',
+        clientSecret: '',
+      };
     }
 
     if (method === 'sbp') {

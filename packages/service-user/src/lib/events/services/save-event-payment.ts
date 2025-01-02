@@ -53,7 +53,7 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
         .exec(
           sql<
             CouponCode[]
-          >`SELECT * FROM content.coupon_code WHERE code = ${couponCode} AND item_id = ${eventId} and is_used = false`,
+          >`SELECT * FROM content.coupon_code WHERE code = ${couponCode} AND item_id = ${eventId} and (is_used = false OR is_unique = false)`,
         )
         .then(firstRow);
 
