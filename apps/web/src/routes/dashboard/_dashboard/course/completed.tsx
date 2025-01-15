@@ -8,7 +8,6 @@ import { Divider, Tabs, TabsContent } from '@blms/ui';
 
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { addSpaceToCourseId } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -116,8 +115,6 @@ const CompletedCourseDetails = ({
 }) => {
   const { i18n } = useTranslation();
 
-  const isTablet = useSmaller('lg');
-
   const { data: course, isFetched } = trpc.content.getCourse.useQuery(
     {
       id: courseId,
@@ -204,7 +201,8 @@ const CompletedCourseDetails = ({
                 <AuthorCard
                   key={professor.id}
                   professor={professor}
-                  hasDonateButton={!isTablet}
+                  hasDonateButton
+                  mobileSize="medium"
                 />
               ))}
             </div>
