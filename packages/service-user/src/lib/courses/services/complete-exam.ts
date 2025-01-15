@@ -39,7 +39,7 @@ export const createCompleteExamAttempt = ({ postgres }: Dependencies) => {
       .exec(getExamQuestionsCountQuery({ examId }))
       .then((result) => result[0].questionsCount);
 
-    const succeeded = correctAnswersCount >= questionsCount * 0.8;
+    const succeeded = correctAnswersCount >= questionsCount * 0.75;
     await postgres
       .exec(
         updateExamAttemptQuery({
