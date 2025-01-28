@@ -12,7 +12,7 @@ import { resourceSchema } from './resource.js';
 export const builderLocationSchema = createSelectSchema(contentBuilderLocation);
 
 export const builderSchema = createSelectSchema(contentBuilders, {
-  languages: z.array(z.string()),
+  languages: z.array(z.string()).nullable(),
 });
 
 export const builderLocalizedSchema = createSelectSchema(

@@ -64,7 +64,6 @@ function Builder() {
       staleTime: 300_000, // 5 minutes
     },
   );
-
   const { data: communities } = trpc.content.getBuilders.useQuery(
     {
       language: i18n.language ?? 'en',
@@ -73,7 +72,6 @@ function Builder() {
       staleTime: 300_000, // 5 minutes
     },
   );
-
   const { data: events } = trpc.content.getRecentEvents.useQuery();
 
   const { data: proofreading } = trpc.content.getProofreading.useQuery({

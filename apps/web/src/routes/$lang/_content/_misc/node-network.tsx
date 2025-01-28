@@ -34,7 +34,6 @@ function NodeNetwork() {
       staleTime: 300_000, // 5 minutes
     },
   );
-
   const { data: builderLocations } =
     trpc.content.getBuildersLocations.useQuery();
   const filteredCommunities = communities
@@ -57,7 +56,6 @@ function NodeNetwork() {
         })
         .sort((a, b) => a.name.localeCompare(b.name))
     : [];
-
   return (
     <PageLayout
       title={t('nodeNetwork.pageTitle')}
@@ -82,23 +80,24 @@ function NodeNetwork() {
 
         <div className="max-w-[1017px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11">
           {!isFetched && <Loader size={'s'} />}
-          {filteredCommunities.map((community) => (
-            <Link
-              to={'/resources/builders/$builderName-$builderId'}
-              params={{
-                builderId: community.id.toString(),
-                builderName: formatNameForURL(community.name),
-              }}
-              key={community.id}
-              className="flex flex-col items-center"
-            >
-              <BuilderCard
-                name={community.name}
-                logo={assetUrl(community.path, 'logo.webp')}
-                cardWidth="size-[70px] sm:size-[90px]"
-              />
-            </Link>
-          ))}
+          {filteredCommunities.map((community) => {
+            const builderName = formatNameForURL(community.name);
+            const builderId = community.id.toString();
+
+            return (
+              <Link
+                to={`/resources/builders/${builderName}-${builderId}`}
+                key={community.id}
+                className="flex flex-col items-center"
+              >
+                <BuilderCard
+                  name={community.name}
+                  logo={assetUrl(community.path, 'logo.webp')}
+                  cardWidth="size-[70px] sm:size-[90px]"
+                />
+              </Link>
+            );
+          })}
         </div>
 
         <div className="relative flex flex-col justify-center items-center mt-7 pb-10 sm:pb-40 lg:pb-10">
