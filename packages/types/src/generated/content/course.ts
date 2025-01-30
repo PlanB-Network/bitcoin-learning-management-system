@@ -26,6 +26,7 @@ export interface Course {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  publishedAt: Date | null;
   numberOfRating: number;
   sumOfAllRating: number;
 }
@@ -191,6 +192,7 @@ export interface JoinedCourse {
   chaptersCount?: number | undefined;
   averageRating: number;
   professors: FormattedProfessor[];
+  publishedAt?: (Date | null) | undefined;
 }
 
 export interface JoinedCourseWithProfessorsContributorIds {
@@ -224,6 +226,7 @@ export interface JoinedCourseWithProfessorsContributorIds {
   level: Level;
   chaptersCount?: number | undefined;
   averageRating: number;
+  publishedAt?: (Date | null) | undefined;
   professors: string[];
 }
 

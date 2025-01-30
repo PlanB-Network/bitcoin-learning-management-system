@@ -12,7 +12,6 @@ import {
 export const createGetCourses = ({ postgres }: Dependencies) => {
   return async (language?: string): Promise<JoinedCourse[]> => {
     const courses = await postgres.exec(getCoursesQuery(language));
-
     const professors = await postgres
       .exec(
         getProfessorsQuery({

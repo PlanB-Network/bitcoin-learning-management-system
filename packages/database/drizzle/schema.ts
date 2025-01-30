@@ -887,6 +887,7 @@ export const contentCourses = content.table('courses', (t) => ({
   lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  publishedAt: t.timestamp({ withTimezone: true }),
   numberOfRating: t.integer().default(0).notNull(),
   sumOfAllRating: t.integer().default(0).notNull(),
 }));

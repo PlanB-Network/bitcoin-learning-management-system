@@ -33,6 +33,7 @@ export const getCoursesQuery = (language?: string) => {
       cl.raw_description,
       c.last_updated,
       c.last_commit,
+      c.published_at,
       COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) as professors
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
@@ -73,6 +74,7 @@ export const getCoursesQuery = (language?: string) => {
       cl.raw_description,
       c.last_updated,
       c.last_commit,
+      c.published_at,
       cp_agg.professors
   `;
 };

@@ -212,16 +212,15 @@ function Home() {
   const CourseSection = () => {
     const { courses } = useContext(AppContext);
 
-    const filteredCourses = courses
+    const latestPublishedCourses = courses
       ? courses
-          ?.filter((course) => course.isArchived === false)
-          .filter((course) =>
-            ['min302', 'btc402', 'eco102'].includes(course.id),
+          .filter((course) => !course.isArchived)
+          .sort(
+            (a, b) =>
+              new Date(b.publishedAt ?? 0).getTime() -
+              new Date(a.publishedAt ?? 0).getTime(),
           )
-          .sort((a, b) => {
-            const order = ['btc402', 'min302', 'eco102'];
-            return order.indexOf(a.id) - order.indexOf(b.id);
-          })
+          .slice(0, 3)
       : [];
 
     return (
@@ -233,9 +232,9 @@ function Home() {
           {t('home.courseSection.upcomingCourseDescription')}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 justify-center">
-          {filteredCourses &&
-            filteredCourses.length > 0 &&
-            filteredCourses.map((course) => (
+          {latestPublishedCourses &&
+            latestPublishedCourses.length > 0 &&
+            latestPublishedCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
         </div>

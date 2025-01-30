@@ -132,6 +132,7 @@ export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
   z.object({
     professors: formattedProfessorSchema.array(),
     averageRating: z.number(),
+    publishedAt: z.date().nullable().optional(),
   }),
 );
 
