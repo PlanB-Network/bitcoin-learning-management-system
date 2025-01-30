@@ -58,7 +58,7 @@ export const BlogList = ({ category }: BlogListProps) => {
                 title={blog.title}
                 languages={[]}
                 cardColor="lightgrey"
-                className="text-start"
+                className="text-start shadow-course-navigation"
                 buttonVariant="primary"
                 buttonMode="dark"
                 buttonText={t(

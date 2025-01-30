@@ -808,6 +808,8 @@
     "blogSection": {
       "blogTitle": "What’s new at Plan ₿ Network",
       "description": "We keep on improving the platform, the content, and the network - check it out!",
+      "noBlogsAvailable": "No blogs available.",
+      "noDateAvailable": "No date available",
       "seeAll": "See all"
     },
     "courseSection": {
@@ -961,7 +963,7 @@
     },
     "blogPageStrings": {
       "blogListButtonText": "Read",
-      "blogSidebarTitle": "Previous Posts in Network",
+      "blogSidebarTitle": "Previous {{category}} Posts",
       "errorMessageNotFound": "Blog not found.",
       "featuredArticleTitleText": "Latest article released",
       "filterText": "Filter by topic :",
