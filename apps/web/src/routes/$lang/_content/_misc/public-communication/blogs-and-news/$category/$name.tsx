@@ -67,7 +67,7 @@ function SingleBlogDetail() {
           </div>
 
           <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row md:max-w-[1120px]">
-            <div className="flex flex-col flex-1 border-b-2 md:border-b-0 lg:mb-12 py-4 lg:py-0">
+            <div className="flex flex-col flex-1 border-b-2 md:border-b-0 py-4 lg:py-0">
               <Suspense fallback={<Loader variant="black" size={'s'} />}>
                 <BlogMarkdownBody
                   content={blog.rawContent}
@@ -75,40 +75,26 @@ function SingleBlogDetail() {
                   blogs={[]}
                 />
               </Suspense>
-
-              <div className="w-max-[135px] hidden md:flex lg:mt-32">
-                <Link to="/public-communication">
-                  <Button variant="primary" className="group">
-                    <FaArrowLeftLong
-                      className={cn(
-                        'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width,opacity] overflow-hidden ease-in-out duration-150',
-                        'group-hover:max-w-96 group-hover:opacity-100 group-hover:mr-3',
-                      )}
-                    />
-                    {t('publicCommunication.goBackButtons.simpleGoBack')}
-                  </Button>
-                </Link>
-              </div>
             </div>
-            <div className="max-w-[300px] mx-auto lg:max-w-[400px] flex-1">
+            <div className="max-w-[300px] mx-auto lg:max-w-[336px] flex-1">
               <BlogSidebar
                 currentBlogId={blog.id}
                 currentCategory={blog.category}
               />
             </div>
-            <div className="flex md:hidden w-max-[135px] justify-center">
-              <Link to="/public-communication">
-                <Button variant="primary" className="group">
-                  <FaArrowLeftLong
-                    className={cn(
-                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width,opacity] overflow-hidden ease-in-out duration-150',
-                      'group-hover:max-w-96 group-hover:opacity-100 group-hover:mr-3',
-                    )}
-                  />
-                  {t('publicCommunication.goBackButtons.simpleGoBack')}
-                </Button>
-              </Link>
-            </div>
+          </div>
+          <div className="flex w-max-[135px] mt-6 max-md:justify-center">
+            <Link to="/public-communication">
+              <Button variant="primary" className="group">
+                <FaArrowLeftLong
+                  className={cn(
+                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width,opacity] overflow-hidden ease-in-out duration-150',
+                    'group-hover:max-w-96 group-hover:opacity-100 group-hover:mr-3',
+                  )}
+                />
+                {t('publicCommunication.goBackButtons.simpleGoBack')}
+              </Button>
+            </Link>
           </div>
         </>
       )}

@@ -87,7 +87,12 @@ export const FeaturedCard = ({
           {latestBlog.tags && (
             <div className="flex flex-row space-x-2 md:space-x-4 mb-2 lg:mb-[22px]">
               {latestBlog.tags.map((tag) => (
-                <TextTag key={tag} variant="grey" className="capitalize">
+                <TextTag
+                  key={tag}
+                  variant="grey"
+                  className="capitalize"
+                  mode="light100"
+                >
                   {tag}
                 </TextTag>
               ))}
@@ -106,7 +111,7 @@ export const FeaturedCard = ({
           to={`/public-communication/blogs-and-news/${latestBlog.category}/${latestBlog.name}`}
         >
           <img
-            className="rounded-sm lg:rounded-[20px] "
+            className="rounded-sm lg:rounded-[20px] lg:max-w-[404px]"
             src={assetUrl(latestBlog.path, 'thumbnail.webp')}
             alt={latestBlog.title}
           />

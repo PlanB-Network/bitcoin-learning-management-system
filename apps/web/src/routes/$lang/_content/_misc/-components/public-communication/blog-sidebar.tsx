@@ -51,8 +51,8 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
                 <p className="subtitle-medium-16px text-gray-600 min-w-[73px]">
                   {formatMonthYear(new Date(blog.lastUpdated))}
                 </p>
-                <IoIosArrowForward size={16} className="text-black mx-1.5" />
-                <p className="subtitle-medium-med-16px truncate min-w-[183px] max-w-56">
+                <IoIosArrowForward size={16} className="text-black mx-1" />
+                <p className="subtitle-medium-med-16px truncate min-w-[183px] max-w-52">
                   {blog.title}
                 </p>
               </div>

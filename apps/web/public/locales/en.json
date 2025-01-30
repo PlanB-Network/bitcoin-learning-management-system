@@ -962,7 +962,7 @@
       "network": "Network"
     },
     "blogPageStrings": {
-      "blogListButtonText": "Read",
+      "blogListButtonText": "Read article",
       "blogSidebarTitle": "Previous {{category}} Posts",
       "errorMessageNotFound": "Blog not found.",
       "featuredArticleTitleText": "Latest article released",
