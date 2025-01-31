@@ -85,7 +85,7 @@ export const FeaturedCard = ({
             </span>
           </div>
           {latestBlog.tags && (
-            <div className="flex flex-row space-x-2 md:space-x-4 mb-2 lg:mb-[22px]">
+            <div className="flex flex-row flex-wrap gap-2 md:gap-4 mb-2 lg:mb-[22px]">
               {latestBlog.tags.map((tag) => (
                 <TextTag
                   key={tag}
