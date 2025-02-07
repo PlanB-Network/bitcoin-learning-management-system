@@ -16,6 +16,17 @@ export function extractNumbers(s: string) {
   return s.replaceAll(/^\D+/g, '');
 }
 
+export const toCamelCase = (str: string) => {
+  return str
+    .split(' ')
+    .map((word, index) =>
+      index === 0
+        ? word.toLowerCase()
+        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+    )
+    .join('');
+};
+
 export const capitalizeFirstWord = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
 

@@ -20,7 +20,7 @@ interface FilterDropdownProps {
 
 interface FilterDropdownPropsWithFilters
   extends Omit<FilterDropdownProps, 'filters' | 'selectedFilters'> {
-  filters: Record<string, string[]>;
+  filters: Record<string, { name: string; translation: string }[]>;
   selectedFilters: Record<string, Set<string>>;
 }
 
@@ -192,14 +192,17 @@ export const FilterDropdown = ({
           {activeCategory && (
             <div className="grid grid-cols-2 gap-x-7 gap-y-5">
               {filters[activeCategory].map((option) => (
-                <div className="flex items-center" key={option}>
+                <div className="flex items-center" key={option.name}>
                   <label className="flex items-center cursor-pointer relative gap-[7px]">
                     <input
                       type="checkbox"
                       checked={
-                        selectedFilters[activeCategory]?.has(option) || false
+                        selectedFilters[activeCategory]?.has(option.name) ||
+                        false
                       }
-                      onChange={() => props.onChange?.(activeCategory, option)}
+                      onChange={() =>
+                        props.onChange?.(activeCategory, option.name)
+                      }
                       className="peer size-5 shrink-0 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border-2 border-gray-200 checked:bg-transparent checked:border-gray-200"
                       id={`check-${option}`}
                     />
@@ -221,8 +224,8 @@ export const FilterDropdown = ({
                         />
                       </svg>
                     </span>
-                    <span className="text-tertiary-2 body-14px capitalize shrink-0 max-w-[150px] w-full">
-                      {option}
+                    <span className="text-tertiary-2 body-14px capitalize shrink-0 max-[400px]:max-w-[90px] max-w-[150px] w-full">
+                      {option.translation}
                     </span>
                   </label>
                 </div>
@@ -247,7 +250,12 @@ export const FilterDropdown = ({
                     size="verySmall"
                     className="text-nowrap capitalize"
                   >
-                    <span>{option}</span>
+                    <span>
+                      {
+                        filters[category].find((opt) => opt.name === option)
+                          ?.translation
+                      }
+                    </span>
                     <IoMdClose
                       className="text-tertiary-4 cursor-pointer"
                       size={16}

@@ -8,24 +8,37 @@ import { Button } from '@blms/ui';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 
+import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   const location = useLocation();
 
+  // TODO: fix this
   const topics = [
-    'all',
-    ...[...new Set(courses.map((course) => course.topic))].sort(),
+    { name: 'all', translation: t('words.all') },
+    ...[...new Set(courses.map((course) => course.topic))]
+      .sort()
+      .map((topic) => ({
+        name: topic,
+        translation: t(`words.${toCamelCase(topic)}`),
+      })),
   ];
 
-  const levels = ['all', 'beginner', 'intermediate', 'advanced', 'wizard'];
+  const levels = [
+    { name: 'all', translation: t('words.all') },
+    { name: 'beginner', translation: t('words.level.beginner') },
+    { name: 'intermediate', translation: t('words.level.intermediate') },
+    { name: 'advanced', translation: t('words.level.advanced') },
+    { name: 'wizard', translation: t('words.level.wizard') },
+  ];
 
   const mobileLevels = [
-    'all',
-    'advanced',
-    'beginner',
-    'wizard',
-    'intermediate',
+    { name: 'all', translation: t('words.all') },
+    { name: 'advanced', translation: t('words.level.advanced') },
+    { name: 'beginner', translation: t('words.level.beginner') },
+    { name: 'wizard', translation: t('words.level.wizard') },
+    { name: 'intermediate', translation: t('words.level.intermediate') },
   ];
 
   const [activeLevels, setActiveLevels] = useState<Set<string>>(
@@ -37,8 +50,8 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   const getDefaultTopic = () => {
     const hash = location.hash.replace('#', '').replaceAll('%20', ' ');
-    const validTopics = topics.map((topic) => topic);
-    return validTopics.includes(hash) ? hash : topics[0];
+    const validTopics = topics.map((topic) => topic.name);
+    return validTopics.includes(hash) ? hash : topics[0].name;
   };
 
   const [activeTopics, setActiveTopics] = useState<Set<string>>(
@@ -48,10 +61,10 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   // Sync topic with URL hash changes
   useEffect(() => {
     const hash = location.hash.replace('#', '');
-    if (topics.includes(hash)) {
+    if (topics.some((topic) => topic.name === hash)) {
       setActiveTopics(new Set([hash]));
     }
-  }, [location.hash]);
+  }, [location.hash, topics]);
 
   useEffect(() => {
     window.location.hash =
@@ -110,15 +123,17 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               </Button>
               {topics.slice(1).map((topic) => (
                 <Button
-                  key={topic}
-                  variant={activeTopics.has(topic) ? 'primary' : 'outlineWhite'}
+                  key={topic.name}
+                  variant={
+                    activeTopics.has(topic.name) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
                   onClick={() =>
-                    toggleSelection(topic, activeTopics, setActiveTopics)
+                    toggleSelection(topic.name, activeTopics, setActiveTopics)
                   }
                   className="capitalize"
                 >
-                  {topic}
+                  {topic.translation}
                 </Button>
               ))}
             </div>
@@ -138,15 +153,17 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               </Button>
               {levels.slice(1).map((level) => (
                 <Button
-                  key={level}
-                  variant={activeLevels.has(level) ? 'primary' : 'outlineWhite'}
+                  key={level.name}
+                  variant={
+                    activeLevels.has(level.name) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
                   onClick={() =>
-                    toggleSelection(level, activeLevels, setActiveLevels)
+                    toggleSelection(level.name, activeLevels, setActiveLevels)
                   }
                   className="capitalize"
                 >
-                  {level}
+                  {level.translation}
                 </Button>
               ))}
             </div>
