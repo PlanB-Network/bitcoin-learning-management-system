@@ -84,14 +84,6 @@
     "contributeButton": "Ajude & contribua",
     "contributeDescription": "Queira você acrescentar, editar ou traduzir conteúdo, sua ajuda será bem-vinda!"
   },
-  "builders": {
-    "pageTitle": "Portal do Construtor",
-    "networkStrength": "A força da rede está no seus membros",
-    "noRelatedEvents": "Ainda não há eventos previstos relacionados para novos construtores.",
-    "otherCommunities": "Explore as Comunidades do Plan B",
-    "languages": "Idiomas",
-    "relatedEvents": "Eventos relacionados previstos"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Terminar o curso",
@@ -520,7 +512,6 @@
   },
   "menu": {
     "betDescription": "Coleção de conteúdo que podes usar para os teus projetos educacionais",
-    "buildersDescription": "Aprende sobre as empresas e projetos que trabalham para tornar o bitcoin melhor e aumentar a sua adoção",
     "libraryDescription": "Descobre vários livros para melhorar o teu conhecimento",
     "nodeNetworkDescription": "Junta-te à rede global das comunidades Bitcoin!",
     "podcastsDescription": "Explora o ecossistema bitcoin através de podcasts",

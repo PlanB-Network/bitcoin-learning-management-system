@@ -361,14 +361,6 @@
     "contributeDescription": "",
     "contributeTitle": ""
   },
-  "builders": {
-    "pageTitle": "",
-    "noRelatedEvents": "",
-    "networkStrength": "",
-    "otherCommunities": "",
-    "languages": "",
-    "relatedEvents": ""
-  },
   "conferences": {
     "addConferences": "",
     "backConferences": "",
@@ -644,7 +636,6 @@
   },
   "menu": {
     "betDescription": "",
-    "buildersDescription": "",
     "conferencesDescription": "",
     "libraryDescription": "",
     "nodeNetworkDescription": "",

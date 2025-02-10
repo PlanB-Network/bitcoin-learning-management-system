@@ -306,14 +306,6 @@
     },
     "pageDescription": "Massiline omaksvõtt pole lihtne. Selle eesmärgi poole kiiremini ja lähemale liikumiseks oleme välja töötanud laiendatava haridusliku sisuga andmebaasi. Siin saavad Bitcoini haridustöötajad vajadusel vabalt sisu lisada ning ligi pääseda. Ärgem leiuta iga kord ratast uuesti, vaid töötame koos, et keskenduda kasulikele ressurssidele ühes tööriistakomplektis !"
   },
-  "builders": {
-    "noRelatedEvents": "Antud ehitaja jaoks pole veel tulevasi seotud sündmusi.",
-    "otherCommunities": "Avastage Plan B kogukondi",
-    "pageTitle": "Bitcoini Ehitajad",
-    "languages": "Keeled",
-    "relatedEvents": "Seotud tulevased sündmused",
-    "networkStrength": "Võrgustiku tugevus peitub selle liikmetes"
-  },
   "conferences": {
     "backConferences": "Tagasi konverentside juurde",
     "conferenceName": "Konverentsi nimi",
@@ -781,7 +773,6 @@
     "login": "Logi sisse",
     "conferencesDescription": "Bitcoini konverentside korduste kogumik esmaplokist alates",
     "betDescription": "Oma haridusprojektide jaoks kasutamiseks mõeldud materjalide kogum",
-    "buildersDescription": "Õppige tundma ettevõtteid ja projekte, mis töötavad Bitcoini paremaks muutmise ja selle kasutuselevõtu suurendamise nimel",
     "bCertificateDescription": "Sooritage ₿ sertifikaadi eksam, et tõestada oma teamisi Bitcoinist",
     "glossaryDescription": "Saage aru Bitcoini keelest",
     "libraryDescription": "Avasta mitmeid raamatuid, et parandada oma teadmisi",

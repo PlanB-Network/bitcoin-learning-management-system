@@ -177,7 +177,6 @@
   "menu": {
     "teachersDescription": "",
     "betDescription": "",
-    "buildersDescription": "",
     "conferencesDescription": "",
     "libraryDescription": "",
     "nodeNetworkDescription": "",
@@ -367,14 +366,6 @@
     "contributeDescription": "",
     "contributeTitle": "",
     "contributeButton": ""
-  },
-  "builders": {
-    "pageTitle": "",
-    "otherCommunities": "",
-    "languages": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "noRelatedEvents": ""
   },
   "conferences": {
     "addConferences": "",

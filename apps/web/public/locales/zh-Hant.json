@@ -105,14 +105,6 @@
       "title": "視覺內容"
     }
   },
-  "builders": {
-    "noRelatedEvents": "這位建設者目前還沒有即將舉行的相關活動。",
-    "otherCommunities": "探索 Plan B 社區",
-    "pageTitle": "比特幣開發者",
-    "languages": "語言",
-    "relatedEvents": "即將來臨的相關活動",
-    "networkStrength": "網絡的力量在於其成員"
-  },
   "conferences": {
     "addConferences": "如果有漏掉的會議，可以隨時透過這個 <0>Github</0> 資料庫新增。",
     "backConferences": "返回會議列表",
@@ -590,7 +582,6 @@
     "bCertificateDescription": "通過比特幣 ₿ 證書考試來衡量您的比特幣知識等級",
     "libraryDescription": "探索大量書籍來提升你的知識",
     "betDescription": "您可以用於教育專案的內容集",
-    "buildersDescription": "了解那些致力於改善比特幣並推動其普及的公司和專案",
     "conferencesDescription": "自創世區塊以來的比特幣會議重播集錦",
     "glossaryDescription": "了解比特幣的語言",
     "login": "登入",

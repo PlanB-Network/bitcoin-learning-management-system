@@ -87,7 +87,7 @@
     "pageSubtitle": "Adopsi skala besar melalui edukasi bersumber terbuka yang tersentralisasi",
     "pageTitle": "Lulus sertifikasi ₿",
     "readChart": "Silakan baca diagram",
-    "tweetText": "",
+    "tweetText": "Senang sekali bisa lulus ₿-Sertifikat di @planb_network dengan skor {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
     "download": "Unduh sertifikat",
     "verify": "Verifikasi keaslian sertifikat Anda"
   },
@@ -174,7 +174,10 @@
       "otherCoursesInterest": "Kursus lain yang mungkin anda tertarik",
       "premiumContentNeedsLogin": "Anda harus login untuk mengakses kursus ini.",
       "premiumContentNeedsPaymentAction": "Pergi ke beranda kursus",
-      "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor."
+      "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor.",
+      "teacherLed": "Dipimpin oleh guru",
+      "ledBy": "Kursus ini dipimpin oleh",
+      "pastEditionsRatings": "Peringkat Edisi Sebelumnya"
     },
     "explorer": {
       "pageDescription": "Akademi Plan B bertujuan untuk menyederhanakan edukasi Bitcoin secara global. Disusun oleh para ahli dari berbagai disiplin ilmu, akademi ini menawarkan berbagai macam kursus yang dirancang untuk memaparkan tiap aspek Bitcoin dengan jelas. Dari pemula hingga ahli, baik dengan ritme Anda sendiri atau mengikuti jadwal mingguan dari profesor, kami berharap akademi ini dapat membantu Anda untuk memahami lebih baik topik-topik luas tentang Bitcoin. Sebagian besar dari kursus kami bersifat gratis, sehingga siapapun, dimanapun dapat mengakses pendidikan.",
@@ -227,7 +230,7 @@
     "exam": {
       "congratulationsPassed": "Selamat, Anda <0>lulus</0> ujian akhir!",
       "dontGiveUpTryAgain": "Jangan menyerah!\nAnda dapat mencoba lagi setelah 24 jam.",
-      "goodLuck": "",
+      "goodLuck": "Semoga berhasil!",
       "tryOneMoreTime": "",
       "certificateAvailable": "Ini akan tersedia sekitar 10 jam setelah pengajuan.",
       "timeStampHow": "",
@@ -239,31 +242,31 @@
       "examAndDiploma": "Ujian & Diploma",
       "examDetails": "Ujian ini terdiri dari 40 pertanyaan pilihan ganda, masing-masing dengan satu jawaban yang benar. Anda dapat mengubah jawaban Anda kapan saja sebelum mengirimkannya, selama pengatur waktu masih berjalan.",
       "explanations": "Penjelasan:",
-      "failed": "",
-      "finalExam": "",
-      "findInformationChapter": "",
-      "futureProof": "",
-      "getCertificate": "",
-      "globallyRecognized": "",
-      "goBack": "",
-      "instantVerification": "",
-      "instructions": "",
-      "letsConclude": "",
-      "noGoBack": "",
-      "notTranslatedYet": "",
-      "oneMinuteLeft": "",
-      "oopsFailed": "",
-      "passed": "",
-      "passRate": "",
-      "planBTimeStamp": "",
-      "quitWithoutSubmitting": "",
-      "retakeExam": "",
-      "retakeInstructions": "",
-      "sameRules": "",
-      "score": "",
-      "skipExam": "",
-      "skipExamGoConclusion": "",
-      "skipExamDescription": "",
+      "failed": "Gagal",
+      "finalExam": "Ujian akhir",
+      "findInformationChapter": "Temukan informasi lebih lanjut dalam bab ini :",
+      "futureProof": "Bukti Masa Depan: Gelar Anda dilindungi secara permanen dan selalu valid.",
+      "getCertificate": "Dapatkan sertifikat saya",
+      "globallyRecognized": "Diakui secara global: Kredensial yang didukung Blockchain dipercaya di seluruh dunia.",
+      "goBack": "Kembali",
+      "instantVerification": "Verifikasi Instan: Pemberi kerja dapat dengan mudah memverifikasi keaslian dan tanggal penerbitan ijazah Anda.",
+      "instructions": "Instruksi:",
+      "letsConclude": "Selesai, mari kita simpulkan",
+      "noGoBack": "Tidak, kembali",
+      "notTranslatedYet": "Mohon maaf, fitur ujian akhir belum tersedia dalam bahasa yang anda pilih. Anda dapat memilih untuk beralih ke bahasa lain untuk melanjutkan.",
+      "oneMinuteLeft": "Anda hanya punya waktu 1 menit tersisa",
+      "oopsFailed": "Ups, tampaknya Anda <0>gagal</0> dalam ujian akhir.",
+      "passed": "Lulus",
+      "passRate": "Tingkat kelulusan adalah 80%.",
+      "planBTimeStamp": "Di Plan ₿ Network, kami mengamankan gelar Anda menggunakan teknologi stempel waktu yang didukung oleh blockchain.",
+      "quitWithoutSubmitting": "Oops, sepertinya anda meninggalkan halaman tanpa mengirimkan jawaban Anda. Ini akan membatalkan tes.",
+      "retakeExam": "ikuti ujian ulang",
+      "retakeInstructions": "Anda memiliki waktu 20 menit untuk menjawab 40 pertanyaan, masing-masing dengan hanya satu jawaban yang benar. Anda dapat berpindah antar pertanyaan dan mengirimkan jawaban anda di akhir.",
+      "sameRules": "Anda akan mengikuti ulang ujian akhir. Peraturannya tetap sama.",
+      "score": "Skor Anda adalah",
+      "skipExam": "Lewati ujian",
+      "skipExamGoConclusion": "Lewati ujian, lanjutkan ke kesimpulan",
+      "skipExamDescription": "Anda juga dapat melewati ujian dan langsung melanjutkan ke kesimpulan dengan mengklik tombol di bawah ini.",
       "startExam": "",
       "submit": "",
       "sureSubmit": "",
@@ -308,9 +311,9 @@
       "loadMoreComments": "",
       "neutral": "",
       "no": "",
-      "notReally": "",
-      "quality": "",
-      "ratingsAndReviews": "",
+      "notReally": "tidak, tidak juga",
+      "quality": "Kualitas",
+      "ratingsAndReviews": "Peringkat & ulasan",
       "skip": "Lewati ulasan",
       "soAndSo": "",
       "submitReview": "Kirimkan ulasan",
@@ -641,14 +644,6 @@
     "backToDashboard": "Kembali ke dasbor",
     "studentDashboard": "Dasbor siswa"
   },
-  "builders": {
-    "networkStrength": "Kekuatan sebuah jaringan ada pada anggota-anggotanya",
-    "noRelatedEvents": "Belum ada aktivitas mendatang terkait untuk pembangun ini.",
-    "otherCommunities": "Jelajahi Komunitas-komunitas Plan B",
-    "pageTitle": "Pembangun Bitcoin",
-    "languages": "Bahasa",
-    "relatedEvents": "Acara mendatang terkait"
-  },
   "tutorials": {
     "wallet": {
       "desktop": {
@@ -758,15 +753,59 @@
     "github": "Semua data ini dikelola via satu repositori <0>Github</0> yang bersifat open-source. Jangan ragu untuk berkontribusi dan menambahkan konten yang belum ada.",
     "pageTitle": "Selamat datang di Portal Sumber Daya",
     "podcasts": {
-      "title": "Podcast"
+      "title": "Podcast",
+      "noPodcasts": "Saat ini tidak ada podcast untuk bahasa yang dipilih."
     },
     "newsletters": {
-      "title": "Buletin"
+      "title": "Buletin",
+      "noNewsletters": "Saat ini tidak ada buletin untuk bahasa yang dipilih.",
+      "author": "Penulis : ",
+      "level": "Tingkatan :",
+      "subtitle": "<0>Buletin lain</0> yang mungkin Anda sukai"
     },
     "pageDescription": "Mempelajari Bitcoin seperti menjelajahi labirin yang terus berkembang. Untuk membantu perjalanan Anda, kami telah mengumpulkan berbagai sumber daya, termasuk buku, podcast, video, dan rekaman konferensi. Portal ini mengumpulkan semua informasi dalam satu repositori GitHub untuk membantu Anda memahami ekosistem Bitcoin dengan lebih baik.",
-    "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "pageSubtitleBooks": "<0>Buku-buku lain</0> yang mungkin Anda sukai",
+    "pageSubtitlePodcast": "<0>Podcast lain</0> yang mungkin Anda sukai",
+    "searchFilterName": "Cari berdasarkan nama",
+    "lectures": {
+      "noLectures": "Saat ini tidak ada Pemutaran Ulang Kuliah untuk bahasa yang dipilih.",
+      "title": "Pemutaran Ulang Kuliah"
+    },
+    "channels": {
+      "noYoutubeChannels": "Saat ini tidak ada Saluran Youtube untuk bahasa yang dipilih.",
+      "title": "Chanel Youtube"
+    },
+    "glossary": {
+      "title": "Daftar Istilah"
+    },
+    "projects": {
+      "title": "Proyek"
+    },
+    "books": {
+      "author": "Penulis : ",
+      "title": "Perpustakaan"
+    },
+    "conferences": {
+      "title": "Pemutaran ulang konferensi"
+    },
+    "movies": {
+      "noMovies": "Saat ini tidak ada Film atau Dokumenter untuk bahasa yang dipilih.",
+      "title": "Film & Dokumenter"
+    },
+    "newsletter": {
+      "check": "Periksa buletin"
+    },
+    "pageSubtitleLectures": "<0>Replay Kuliah Lainnya</0> yang mungkin Anda sukai",
+    "articles": {
+      "title": "Artikel"
+    },
+    "bet": {
+      "title": "Perangkat Pembelajaran"
+    },
+    "pageSubtitleChannels": "<0>Chanel Youtube lainnya</0> yang mungkin Anda sukai",
+    "toggleFreeOnly": "Hanya yang gratis",
+    "toggleLabelAll": "Semua",
+    "toggleLabelSelectedLanguage": "Bahasa yang dipilih"
   },
   "events": {
     "main": {
@@ -843,7 +882,7 @@
       "wizard": "Panduan interaktif",
       "level": "Tingkatan",
       "levels": "Tingkatan",
-      "beginnerFriendly": ""
+      "beginnerFriendly": "Ramah pemula"
     },
     "members": " Anggota",
     "onChainAddress": "Alamat jaringan on chain",
@@ -903,19 +942,19 @@
     "booked": "",
     "bookings": "",
     "chapter": "",
-    "communities": "",
-    "filter": "",
-    "failed": "",
-    "goal": "",
-    "grade": "",
-    "inReview": "",
-    "lectures": "",
-    "location": "",
-    "overview": "",
-    "passed": "",
-    "progress": "",
-    "publicationDate": "",
-    "public": "",
+    "communities": "Komunitas",
+    "filter": "Saring",
+    "failed": "Gagal",
+    "goal": "Tujuan",
+    "grade": "Kelas",
+    "inReview": "Dalam ulasan",
+    "lectures": "Kuliah",
+    "location": "Lokasi",
+    "overview": "Ikhtisar",
+    "passed": "Lulus",
+    "progress": "Kemajuan",
+    "publicationDate": "Tanggal publikasi:",
+    "public": "Komunikasi publik",
     "ratings": "",
     "required": "",
     "status": "",
@@ -924,10 +963,37 @@
     "total": "",
     "users": "",
     "admins": "",
-    "credentials": "",
-    "diploma": "",
-    "hours": "",
-    "id": ""
+    "credentials": "Kredensial",
+    "diploma": "Diploma",
+    "hours": "Jam",
+    "id": "ID",
+    "complete": "Lengkap",
+    "dislikes": "Tidak suka",
+    "displayName": "Nama tampilan",
+    "exam": "Ujian",
+    "finish": "Selesai",
+    "github": "Github",
+    "hybrid": "Hibrida",
+    "language": "Bahasa",
+    "lecture": "Kuliah",
+    "likes": "Suka",
+    "linkedin": "Linkedin",
+    "movie": "Movie",
+    "name": "Nama",
+    "next": "Berikutnya",
+    "no": "Tidak",
+    "previous": "Sebelumnya",
+    "producer": "Produser",
+    "project": "Proyek",
+    "projects": "Proyek",
+    "protocol": "Protokol",
+    "incomplete": "Tidak lengkap",
+    "inperson": "Per-orangan",
+    "close": "Tutup",
+    "congrats": "Selamat!",
+    "country": "Negara",
+    "credits": "Kredit",
+    "delete": "Hapus"
   },
   "home": {
     "header": {
@@ -1003,7 +1069,6 @@
     "betDescription": "Koleksi konten yang dapat Anda gunakan untuk proyek pendidikan Anda",
     "teachersDescription": "Kenali pengajar di akademi kami",
     "bCertificateDescription": "Lulus ujian sertifikat ₿ untuk membuktikan tingkat pemahaman Anda tentang Bitcoin",
-    "buildersDescription": "Pelajari tentang perusahaan dan proyek yang berperan dalam membuat Bitcoin semakin baik dan memperluas penggunaannya",
     "conferencesDescription": "Koleksi tayangan ulang konferensi Bitcoin sejak Genesis Block",
     "glossaryDescription": "Memahami bahasa Bitcoin",
     "libraryDescription": "Temukan berbagai buku untuk meningkatkan pengetahuan Anda",
@@ -1060,7 +1125,7 @@
     "thanks": ""
   },
   "publicCommunication": {
-    "title": "",
+    "title": "String ini muncul di bagian komunikasi Publik: https://planb.network/en/public-communication/blogs-and-news",
     "blogPost": "",
     "legal": "",
     "blogCategories": {
@@ -1073,7 +1138,7 @@
       "contact": "",
       "legalNotice": "",
       "privacyPolicy": "",
-      "termsOfSale": ""
+      "termsOfSale": "Ketentuan penjualan"
     },
     "goBackButtons": {
       "simpleGoBack": ""
@@ -1088,5 +1153,26 @@
       "filterText": ""
     },
     "description": ""
+  },
+  "search": {
+    "event": "Acara",
+    "events": "Acara",
+    "explorer": {
+      "subtitle": "Apa yang anda cari?",
+      "title": "Portal Pencarian"
+    },
+    "filterByType": "Saring berdasarkan jenis",
+    "glossary_word": "Kata istilah",
+    "glossary_words": "Kata istilah",
+    "languageSelected": "Bahasa yang dipilih: {{language}}",
+    "loadMoreResults": "Lihat lebih banyak hasil",
+    "courses": "Kursus",
+    "all": "Semua",
+    "book": "Buku",
+    "books": "Buku-Buku",
+    "categories": "Kategori",
+    "course": "Kursus",
+    "course_chapter": "Bab kursus",
+    "course_part": "Bagian kursus"
   }
 }

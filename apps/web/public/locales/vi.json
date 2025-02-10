@@ -392,14 +392,6 @@
     "contributeButton": "Hỗ trợ & Đóng góp",
     "contributeTitle": "Muốn đóng góp?"
   },
-  "builders": {
-    "pageTitle": "Những nhà phát triển Bitcoin",
-    "relatedEvents": "Các sự kiện liên quan sắp diễn ra",
-    "networkStrength": "Sức mạnh của một mạng lưới nằm ở cách thành viên của nó",
-    "noRelatedEvents": "Không có sự kiện nào sắp tới liên quan đến builder này ở thời điểm hiện tại.",
-    "otherCommunities": "Khám phá các cộng đồng Plan B",
-    "languages": "Các ngôn ngữ"
-  },
   "dashboard": {
     "account": "Tài khoản",
     "courses": "Các khoá học của tôi",
@@ -858,7 +850,6 @@
     "podcastsDescription": "Khám phá hệ sinh thái Bitcoin thông qua các podcast",
     "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê",
     "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
-    "buildersDescription": "Tìm hiểu về những công ty và dự án đang nỗ lực xây dựng Bitcoin trở nên tốt hơn và gia tăng sự mở rộng áp dụng của nó",
     "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
     "bCertificateDescription": "Vượt qua kỳ thi Chứng chỉ ₿ để khẳng định đẳng cấp của bạn về Bitcoin",
     "glossaryDescription": "Hiểu về ngôn ngữ của Bitcoin",

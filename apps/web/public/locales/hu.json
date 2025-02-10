@@ -100,14 +100,6 @@
     "contributeButton": "",
     "pageDescription": ""
   },
-  "builders": {
-    "otherCommunities": "",
-    "pageTitle": "",
-    "languages": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "noRelatedEvents": ""
-  },
   "conferences": {
     "addConferences": "",
     "backConferences": "",
@@ -832,8 +824,7 @@
     "nodeNetworkDescription": "",
     "podcastsDescription": "",
     "publicDescription": "",
-    "teachersDescription": "",
-    "buildersDescription": ""
+    "teachersDescription": ""
   },
   "nodeNetwork": {
     "apply": "",

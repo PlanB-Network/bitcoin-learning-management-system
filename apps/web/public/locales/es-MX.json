@@ -321,14 +321,6 @@
       "content": ""
     }
   },
-  "builders": {
-    "languages": "",
-    "pageTitle": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "noRelatedEvents": "",
-    "otherCommunities": ""
-  },
   "conferences": {
     "details": {
       "findReplay": "",
@@ -776,7 +768,6 @@
     "publicDescription": "",
     "bCertificateDescription": "",
     "betDescription": "",
-    "buildersDescription": "",
     "libraryDescription": "",
     "nodeNetworkDescription": "",
     "podcastsDescription": "",

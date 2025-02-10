@@ -670,7 +670,6 @@
     "login": "",
     "bCertificateDescription": "",
     "betDescription": "",
-    "buildersDescription": "",
     "conferencesDescription": "",
     "glossaryDescription": "",
     "libraryDescription": ""
@@ -856,14 +855,6 @@
     "termsAndConditions": "",
     "ticket": "",
     "wallets": ""
-  },
-  "builders": {
-    "networkStrength": "",
-    "noRelatedEvents": "",
-    "otherCommunities": "",
-    "pageTitle": "",
-    "languages": "",
-    "relatedEvents": ""
   },
   "imagesAlt": {
     "bookCover": "",

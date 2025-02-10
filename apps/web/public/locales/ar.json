@@ -85,14 +85,6 @@
     "contributeTitle": "",
     "contributeButton": ""
   },
-  "builders": {
-    "pageTitle": "Das Builder Portal",
-    "languages": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "otherCommunities": "",
-    "noRelatedEvents": ""
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Kurs beenden",
@@ -521,7 +513,6 @@
   },
   "menu": {
     "betDescription": "Collection of content that you can use for your educational projects",
-    "buildersDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die daran arbeiten, Bitcoin zu verbessern und seine Annahme zu steigern",
     "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",
     "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
     "podcastsDescription": "Erkunde das Bitcoin-Ökosystem durch Podcasts",

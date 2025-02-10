@@ -504,14 +504,6 @@
       "completedChaptersHeadline": "所有章节已完成！"
     }
   },
-  "builders": {
-    "networkStrength": "网络的力量在于其成员",
-    "noRelatedEvents": "这个建设者近期没有相关活动举办。",
-    "otherCommunities": "探索Plan ₿社区",
-    "pageTitle": "比特币建设者",
-    "languages": "语言",
-    "relatedEvents": "即将举办的相关活动"
-  },
   "glossary": {
     "needHelp": "需要帮助定义一个技术词汇吗？",
     "keepLooking": "想继续看吗？",
@@ -1048,7 +1040,6 @@
     "nodeNetworkDescription": "加入Plan ₿的全球社区网络",
     "login": "登录",
     "bCertificateDescription": "通过₿证书考试来证明您的比特币水平",
-    "buildersDescription": "了解那些致力于改善比特币并增长其应用的公司和项目",
     "glossaryDescription": "理解比特币的语言",
     "libraryDescription": "发现大量的书籍来提升你的知识",
     "podcastsDescription": "通过播客探索比特币生态系统",

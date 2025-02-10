@@ -666,7 +666,6 @@
     "pageTitle": ""
   },
   "menu": {
-    "buildersDescription": "",
     "bCertificateDescription": "",
     "betDescription": "",
     "conferencesDescription": "",
@@ -742,14 +741,6 @@
     },
     "blogPost": "",
     "legal": ""
-  },
-  "builders": {
-    "noRelatedEvents": "",
-    "pageTitle": "",
-    "languages": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "otherCommunities": ""
   },
   "words": {
     "about": "",

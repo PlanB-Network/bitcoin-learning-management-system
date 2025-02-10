@@ -37,14 +37,6 @@
     "pageDescription": "",
     "contributeButton": ""
   },
-  "builders": {
-    "pageTitle": "",
-    "languages": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "noRelatedEvents": "",
-    "otherCommunities": ""
-  },
   "conferences": {
     "details": {
       "previousVideo": "",
@@ -305,8 +297,7 @@
     "nodeNetworkDescription": "",
     "podcastsDescription": "",
     "publicDescription": "",
-    "teachersDescription": "",
-    "buildersDescription": ""
+    "teachersDescription": ""
   },
   "publicCommunication": {
     "goBackButtons": {

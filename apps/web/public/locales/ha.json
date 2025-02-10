@@ -100,14 +100,6 @@
     },
     "pageDescription": "Yada amfani ga jama'a ba abu ne mai sauƙi ba. Don mu kusanci wannan buri cikin sauri, mun haɓaka wani ɗakunan bayanai na abun cikin ilimi wanda za a iya faɗaɗa. A nan, malaman Bitcoin za su iya saka da samun abun ciki cikin sauƙi gwargwadon bukatarsu. Bari mu daina ƙirƙirar abin da ya riga ya wanzu, mu haɗa kai domin tattara mahimman albarkatu a cikin kayan aiki guda!"
   },
-  "builders": {
-    "networkStrength": "Karfin hanyar sadarwa yana cikin mambobinta",
-    "otherCommunities": "Bincika Al'ummomin Shirin B",
-    "pageTitle": "Masu Gina Bitcoin",
-    "languages": "Harsuna",
-    "relatedEvents": "Tarurrukan da zasu biyo baya da suka shafi wannan",
-    "noRelatedEvents": "A halin yanzu, babu wani taron da ke zuwa da ya shafi wannan mai gini."
-  },
   "conferences": {
     "backConferences": "Komawa zuwa ga tarurruka",
     "conferenceName": "Sunan Taro",
@@ -517,7 +509,6 @@
     "libraryDescription": "Gano littattafai da yawa don inganta iliminka/ki",
     "login": "Shiga ciki",
     "betDescription": "Tarin abubuwan da za'a iya amfani da su don ayyukan ilimi",
-    "buildersDescription": "Samu sani game da kamfanoni da ayyukan da ke aiki wajen inganta Bitcoin da kuma ƙara yawaita amfani da shi",
     "conferencesDescription": "Tarin maimaici na taron Bitcoin tun daga Genesis Block",
     "podcastsDescription": "Bincika tsarin Bitcoin ta hanyar podcasts",
     "bCertificateDescription": "Rubuta jarrabawar ₿ Certificate don tabbatar da ilimin Bitcoin ɗinka/ki",
