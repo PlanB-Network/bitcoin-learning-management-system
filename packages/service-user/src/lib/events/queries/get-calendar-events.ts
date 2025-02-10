@@ -2,7 +2,6 @@ import { sql } from '@blms/database';
 import type { CalendarEvent } from '@blms/types';
 
 export const getCalendarEventsQuery = (
-  language: string,
   uid?: string,
   upcomingEvents?: boolean,
 ) => {
@@ -20,6 +19,7 @@ export const getCalendarEventsQuery = (
     e.end_date,
     e.timezone,
     e.book_online as is_online,
+    COALESCE(e.book_in_person, false) AS is_in_person,
     e.address_line_1,
     e.address_line_2,
     e.address_line_3
@@ -44,6 +44,7 @@ export const getCalendarEventsQuery = (
     e.end_date,
     e.timezone,
     e.book_online as is_online,
+    COALESCE(e.book_in_person, false) AS is_in_person,
     e.address_line_1,
     e.address_line_2,
     e.address_line_3
@@ -64,6 +65,7 @@ export const getCalendarEventsQuery = (
     cl.end_date,
     cl.timezone,
     cl.is_online,
+    cl.is_in_person,
     cl.address_line_1,
     cl.address_line_2,
     cl.address_line_3

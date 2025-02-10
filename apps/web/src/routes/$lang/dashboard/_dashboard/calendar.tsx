@@ -34,7 +34,7 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/calendar')({
 
 function DashboardCalendar() {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { session } = useContext(AppContext);
 
@@ -55,7 +55,6 @@ function DashboardCalendar() {
   const courseColor = ['#FF5C00', '#FF9401', '#AD3F00', '#E00000', '#42A86B'];
 
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
-    language: i18n.language ?? 'en',
     upcomingEvents: true,
     userSpecific: true,
   });

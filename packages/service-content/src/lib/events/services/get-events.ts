@@ -4,7 +4,14 @@ import type { Dependencies } from '../../dependencies.js';
 import {
   getRecentEventsQuery,
   getUpcomingEventQuery,
+  getUpcomingEventsBookingQuery,
 } from '../queries/get-events.js';
+
+export const createGetUpcomingEventsBooking = ({ postgres }: Dependencies) => {
+  return (): Promise<JoinedEvent[]> => {
+    return postgres.exec(getUpcomingEventsBookingQuery());
+  };
+};
 
 export const createGetRecentEvents = ({ postgres }: Dependencies) => {
   return (): Promise<JoinedEvent[]> => {

@@ -7,13 +7,19 @@ import {
   createGetEvent,
   createGetRecentEvents,
   createGetUpcomingEvent,
+  createGetUpcomingEventsBooking,
 } from '@blms/service-content';
 import type { JoinedEvent } from '@blms/types';
 
 import type { Parser } from '#src/trpc/types.js';
 
-import { publicProcedure } from '../../procedures/index.js';
+import { adminProcedure, publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
+
+const getUpcomingEventsBookingsProcedure = adminProcedure
+  .input(z.object({ language: z.string().optional() }).optional())
+  .output<Parser<JoinedEvent[]>>(joinedEventSchema.array())
+  .query(({ ctx }) => createGetUpcomingEventsBooking(ctx.dependencies)());
 
 const getRecentEventsProcedure = publicProcedure
   .input(z.object({ language: z.string().optional() }).optional())
@@ -46,6 +52,7 @@ const getUpcomingEventProcedure = publicProcedure
   .query(({ ctx }) => createGetUpcomingEvent(ctx.dependencies)());
 
 export const eventsRouter = createTRPCRouter({
+  getUpcomingEventsBookings: getUpcomingEventsBookingsProcedure,
   getRecentEvents: getRecentEventsProcedure,
   getEvent: getEventProcedure,
   getUpcomingEvent: getUpcomingEventProcedure,

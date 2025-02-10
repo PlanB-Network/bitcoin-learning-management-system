@@ -60,13 +60,14 @@ const BookingTable = () => {
 
   const { data: allEvents, isFetched } =
     trpc.user.calendar.getCalendarEvents.useQuery({
-      language: 'en',
       upcomingEvents: true,
       userSpecific: false,
     });
 
   const sortedEvents = allEvents
     ?.filter((event) => event.type !== 'conference')
+    .filter((event) => new Date(event.startDate).getTime() >= Date.now())
+    .filter((event) => event.isOnline === true || event.isInPerson === true)
     .sort((a, b) => {
       const dateA = new Date(a.startDate || 0).getTime();
       const dateB = new Date(b.startDate || 0).getTime();

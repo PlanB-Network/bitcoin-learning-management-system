@@ -11,7 +11,6 @@ import type { Parser } from '#src/trpc/types.js';
 const getCalendarEventsProcedure = studentProcedure
   .input(
     z.object({
-      language: z.string(),
       upcomingEvents: z.boolean().optional(),
       userSpecific: z.boolean().optional(),
     }),
@@ -19,7 +18,6 @@ const getCalendarEventsProcedure = studentProcedure
   .output<Parser<CalendarEvent[]>>(calendarEventSchema.array())
   .query(async ({ ctx, input }) => {
     return createGetCalendarEvents(ctx.dependencies)({
-      language: input.language,
       upcomingEvents: input?.upcomingEvents ?? false,
       uid: input?.userSpecific ? ctx.user.uid : undefined,
     });

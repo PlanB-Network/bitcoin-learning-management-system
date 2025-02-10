@@ -7,10 +7,11 @@ export interface CalendarEvent {
   type: string;
   name: string;
   organizer: string | null;
-  startDate: Date | null;
+  startDate: Date;
   endDate: Date | null;
   timezone: string | null;
   isOnline: boolean;
+  isInPerson: boolean;
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
