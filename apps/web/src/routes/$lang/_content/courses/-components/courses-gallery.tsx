@@ -14,15 +14,15 @@ import { toggleSelection } from '#src/utils/toggle.ts';
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   const location = useLocation();
 
-  // TODO: fix this
+  const uniqueTopics = Array.from(
+    new Set(courses.map((course) => course.topic)),
+  ).sort((a, b) => a.localeCompare(b));
   const topics = [
     { name: 'all', translation: t('words.all') },
-    ...[...new Set(courses.map((course) => course.topic))]
-      .sort()
-      .map((topic) => ({
-        name: topic,
-        translation: t(`words.${toCamelCase(topic)}`),
-      })),
+    ...uniqueTopics.map((topic: string) => ({
+      name: topic,
+      translation: t(`words.${toCamelCase(topic)}`),
+    })),
   ];
 
   const levels = [
@@ -60,17 +60,19 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   // Sync topic with URL hash changes
   useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (topics.some((topic) => topic.name === hash)) {
-      setActiveTopics(new Set([hash]));
+    if (courses.length > 0) {
+      const hash = location.hash.replace('#', '');
+      if (topics.some((topic) => topic.name === hash)) {
+        setActiveTopics(new Set([hash]));
+      }
     }
-  }, [location.hash, topics]);
+  }, [location.hash, courses]);
 
   useEffect(() => {
     window.location.hash =
       activeTopics.size === 1 && !activeTopics.has('all')
         ? activeTopics.values().next().value!
-        : '';
+        : 'filters';
   }, [activeTopics]);
 
   useEffect(() => {
@@ -107,6 +109,11 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   return (
     <>
       <div className="md:mt-12 max-w-[730px] lg:max-w-[1126px] mx-auto">
+        {/* Hidden div to improve hash scroll */}
+        <div
+          className="invisible block relative -top-16 md:-top-32"
+          id="filters"
+        />
         <p className="desktop-h6 mb-5">{t('courses.explorer.buildPath')}</p>
         <div className="max-md:hidden flex flex-col p-5 gap-8 bg-tertiary-10 rounded-[20px] max-w-[1126px] mx-auto">
           <div className="flex items-center gap-8 font-medium">
