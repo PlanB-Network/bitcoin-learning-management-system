@@ -14,6 +14,7 @@ import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { useDebounce } from '#src/utils/search.ts';
+import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 import { SearchResult } from './-components/search-result.tsx';
 
@@ -92,8 +93,20 @@ function SearchPage() {
             onClear={clearSearch}
             onChange={handleFilterChange}
             filters={{
-              Categories: availableCategories,
-              Resources: availableResources,
+              Categories: availableCategories.map((category) => ({
+                name: category,
+                translation:
+                  category !== 'all'
+                    ? t(`search.${toCamelCase(category)}`)
+                    : t('search.all'),
+              })),
+              Resources: availableResources.map((resource) => ({
+                name: resource,
+                translation:
+                  resource !== 'all'
+                    ? t(`search.${toCamelCase(resource)}`)
+                    : t('search.all'),
+              })),
             }}
             selectedFilters={{
               Categories: categories,

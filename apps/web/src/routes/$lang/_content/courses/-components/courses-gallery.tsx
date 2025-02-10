@@ -8,24 +8,37 @@ import { Button } from '@blms/ui';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 
+import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   const location = useLocation();
 
+  const uniqueTopics = Array.from(
+    new Set(courses.map((course) => course.topic)),
+  ).sort((a, b) => a.localeCompare(b));
   const topics = [
-    'all',
-    ...[...new Set(courses.map((course) => course.topic))].sort(),
+    { name: 'all', translation: t('words.all') },
+    ...uniqueTopics.map((topic: string) => ({
+      name: topic,
+      translation: t(`words.${toCamelCase(topic)}`),
+    })),
   ];
 
-  const levels = ['all', 'beginner', 'intermediate', 'advanced', 'wizard'];
+  const levels = [
+    { name: 'all', translation: t('words.all') },
+    { name: 'beginner', translation: t('words.level.beginner') },
+    { name: 'intermediate', translation: t('words.level.intermediate') },
+    { name: 'advanced', translation: t('words.level.advanced') },
+    { name: 'wizard', translation: t('words.level.wizard') },
+  ];
 
   const mobileLevels = [
-    'all',
-    'advanced',
-    'beginner',
-    'wizard',
-    'intermediate',
+    { name: 'all', translation: t('words.all') },
+    { name: 'advanced', translation: t('words.level.advanced') },
+    { name: 'beginner', translation: t('words.level.beginner') },
+    { name: 'wizard', translation: t('words.level.wizard') },
+    { name: 'intermediate', translation: t('words.level.intermediate') },
   ];
 
   const [activeLevels, setActiveLevels] = useState<Set<string>>(
@@ -37,8 +50,8 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   const getDefaultTopic = () => {
     const hash = location.hash.replace('#', '').replaceAll('%20', ' ');
-    const validTopics = topics.map((topic) => topic);
-    return validTopics.includes(hash) ? hash : topics[0];
+    const validTopics = topics.map((topic) => topic.name);
+    return validTopics.includes(hash) ? hash : topics[0].name;
   };
 
   const [activeTopics, setActiveTopics] = useState<Set<string>>(
@@ -47,17 +60,19 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   // Sync topic with URL hash changes
   useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (topics.includes(hash)) {
-      setActiveTopics(new Set([hash]));
+    if (courses.length > 0) {
+      const hash = location.hash.replace('#', '');
+      if (topics.some((topic) => topic.name === hash)) {
+        setActiveTopics(new Set([hash]));
+      }
     }
-  }, [location.hash]);
+  }, [location.hash, courses]);
 
   useEffect(() => {
     window.location.hash =
       activeTopics.size === 1 && !activeTopics.has('all')
         ? activeTopics.values().next().value!
-        : '';
+        : 'filters';
   }, [activeTopics]);
 
   useEffect(() => {
@@ -94,6 +109,11 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   return (
     <>
       <div className="md:mt-12 max-w-[730px] lg:max-w-[1126px] mx-auto">
+        {/* Hidden div to improve hash scroll */}
+        <div
+          className="invisible block relative -top-16 md:-top-32"
+          id="filters"
+        />
         <p className="desktop-h6 mb-5">{t('courses.explorer.buildPath')}</p>
         <div className="max-md:hidden flex flex-col p-5 gap-8 bg-tertiary-10 rounded-[20px] max-w-[1126px] mx-auto">
           <div className="flex items-center gap-8 font-medium">
@@ -110,15 +130,17 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               </Button>
               {topics.slice(1).map((topic) => (
                 <Button
-                  key={topic}
-                  variant={activeTopics.has(topic) ? 'primary' : 'outlineWhite'}
+                  key={topic.name}
+                  variant={
+                    activeTopics.has(topic.name) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
                   onClick={() =>
-                    toggleSelection(topic, activeTopics, setActiveTopics)
+                    toggleSelection(topic.name, activeTopics, setActiveTopics)
                   }
                   className="capitalize"
                 >
-                  {topic}
+                  {topic.translation}
                 </Button>
               ))}
             </div>
@@ -138,15 +160,17 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
               </Button>
               {levels.slice(1).map((level) => (
                 <Button
-                  key={level}
-                  variant={activeLevels.has(level) ? 'primary' : 'outlineWhite'}
+                  key={level.name}
+                  variant={
+                    activeLevels.has(level.name) ? 'primary' : 'outlineWhite'
+                  }
                   size="s"
                   onClick={() =>
-                    toggleSelection(level, activeLevels, setActiveLevels)
+                    toggleSelection(level.name, activeLevels, setActiveLevels)
                   }
                   className="capitalize"
                 >
-                  {level}
+                  {level.translation}
                 </Button>
               ))}
             </div>
