@@ -757,7 +757,6 @@ function CourseChapter() {
                           formattedTime: `End date: ${formatDate(chapter.course.endDate)}`,
                           liveLanguage: chapter.liveLanguage,
                           formattedCapacity: '',
-                          contact: 'contact@planb.network',
                           userName: user?.username ?? '',
                         });
                         setDownloadedPdf(pdf);

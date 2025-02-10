@@ -17,7 +17,6 @@ export interface GenerateTicketOptions {
   formattedTime?: string;
   liveLanguage: string | null;
   formattedCapacity?: string;
-  contact?: string | null;
   userName: string;
   purchaseDate?: string | null;
   ticketNumber?: string | null;
@@ -62,11 +61,6 @@ export async function generateTicket(options: GenerateTicketOptions) {
       font: fonts.rubikRegular,
       color: grey,
       lineHeight: 16,
-    },
-    contact: {
-      size: 14,
-      font: fonts.rubikRegular,
-      lineHeight: 20,
     },
   } satisfies Record<string, PDFPageDrawTextOptions>;
 
@@ -149,17 +143,6 @@ export async function generateTicket(options: GenerateTicketOptions) {
     }
   }
 
-  // Contact
-  {
-    const { contact } = options;
-    const x = margin + 30;
-    const y = height - 530;
-
-    if (contact) {
-      page.drawText(contact, { x, y, ...conf.contact });
-    }
-  }
-
   // Ticket number / purchase date
   {
     const { ticketNumber, purchaseDate } = options;
@@ -190,7 +173,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
   {
     const { userName } = options;
     const x = margin + 322;
-    const y = height - 198;
+    const y = height - 280;
 
     const label = 'Display name:';
 
@@ -209,8 +192,8 @@ export async function generateTicket(options: GenerateTicketOptions) {
 
     const qr = await doc.embedPng(png);
     const x = margin + 322;
-    const y = height - 440;
-    const size = 200;
+    const y = height - 500;
+    const size = 180;
 
     page.drawImage(qr, { x, y, width: size, height: size });
   }

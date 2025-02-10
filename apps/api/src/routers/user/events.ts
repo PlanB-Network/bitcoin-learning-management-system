@@ -63,7 +63,6 @@ const downloadEventTicketProcedure = studentProcedure
       formattedTime: formattedTime,
       liveLanguage: '',
       formattedCapacity: formattedCapacity,
-      contact: 'contact@planb.network',
       userName: input.userName,
     }).then((buffer) => buffer.toString('base64'));
   });
