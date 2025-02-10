@@ -28,7 +28,7 @@ export const getBetsQuery = (language?: string) => {
       b.original_language,
       b.type,
       COALESCE(
-        (SELECT bu.name FROM content.builders bu WHERE bu.id = b.project_id LIMIT 1),
+        (SELECT bu.name FROM content.projects bu WHERE bu.id = b.project_id LIMIT 1),
         ''
         ) AS project_name,
       r.last_updated,

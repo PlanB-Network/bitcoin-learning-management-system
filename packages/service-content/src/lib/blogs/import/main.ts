@@ -8,7 +8,7 @@ import type { ChangedBlog } from './index.js';
 
 interface BlogMain {
   date?: string;
-  builder?: string; // TODO keep this builder ftm
+  builder?: string;
   tags?: string[];
 }
 

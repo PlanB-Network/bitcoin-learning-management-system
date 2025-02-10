@@ -13,7 +13,7 @@ export const getCalendarEventsQuery = (
     e.type,
     e.name,
     COALESCE(
-      (SELECT bu.name FROM content.builders bu WHERE bu.id = e.project_id LIMIT 1),
+      (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
       ''
       ) AS organizer,
     e.start_date,
@@ -37,7 +37,7 @@ export const getCalendarEventsQuery = (
     e.type,
     e.name,
     COALESCE(
-      (SELECT bu.name FROM content.builders bu WHERE bu.id = e.project_id LIMIT 1),
+      (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
       ''
       ) AS organizer,
     e.start_date,

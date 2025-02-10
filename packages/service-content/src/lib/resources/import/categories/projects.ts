@@ -66,7 +66,7 @@ export const createProcessChangedProject = (
           const parsedProject = await yamlToObject<ProjectMain>(main);
 
           const result = await transaction<Project[]>`
-              INSERT INTO content.builders (id, resource_id, name, category, languages, website_url, twitter_url, github_url, nostr, address_line_1, address_line_2, address_line_3, original_language)
+              INSERT INTO content.projects (id, resource_id, name, category, languages, website_url, twitter_url, github_url, nostr, address_line_1, address_line_2, address_line_3, original_language)
               VALUES (
                 ${parsedProject.id},${resourceId}, ${parsedProject.name}, ${parsedProject.category.toLowerCase()}, ${parsedProject.language},
                 ${parsedProject.links.website}, ${parsedProject.links.twitter},
@@ -114,7 +114,7 @@ export const createProcessChangedProject = (
               const parsed = await yamlToObject<ProjectLocal>(file);
 
               await transaction`
-              INSERT INTO content.builders_localized (id, language, description)
+              INSERT INTO content.projects_localized (id, language, description)
               VALUES (
                 ${parsedProject.id},  ${file.language}, ${parsed.description.trim()})
               ON CONFLICT (id, language) DO UPDATE SET

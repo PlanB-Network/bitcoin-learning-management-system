@@ -22,9 +22,9 @@ export const getProjectQuery = (id: number, language?: string) => {
       r.last_updated,
       r.last_commit,
       ARRAY_AGG(t.name) AS tags
-    FROM content.builders b
+    FROM content.projects b
     JOIN content.resources r ON r.id = b.resource_id
-    JOIN content.builders_localized bl ON bl.id = b.id
+    JOIN content.projects_localized bl ON bl.id = b.id
     LEFT JOIN content.resource_tags rt ON rt.resource_id = r.id
     LEFT JOIN content.tags t ON t.id = rt.tag_id
     WHERE r.id = ${id}

@@ -47,7 +47,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     if (!logoUrl) {
       logoUrl = await transaction`
         SELECT r.path
-        FROM content.builders b
+        FROM content.projects b
         JOIN content.resources r ON b.resource_id = r.id
         WHERE b.id = ${parsedTutorial.project_id}
       `

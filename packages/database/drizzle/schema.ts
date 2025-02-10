@@ -598,7 +598,7 @@ export const contentBooksLocalized = content.table(
 
 // PROJECTS
 
-export const contentProjects = content.table('builders', (t) => ({
+export const contentProjects = content.table('projects', (t) => ({
   id: t.uuid().primaryKey().unique(),
   resourceId: t
     .integer()
@@ -620,7 +620,7 @@ export const contentProjects = content.table('builders', (t) => ({
 }));
 
 export const contentProjectsLocalized = content.table(
-  'builders_localized',
+  'projects_localized',
   (t) => ({
     id: t
       .uuid()
@@ -635,6 +635,19 @@ export const contentProjectsLocalized = content.table(
     pk: primaryKey({
       columns: [table.id, table.language],
     }),
+  }),
+);
+
+/**
+ * Coordinates for projects, bound by address_line_1
+ */
+export const contentProjectLocation = content.table(
+  'projects_locations',
+  (t) => ({
+    placeId: t.integer().notNull(), // OSM place_id
+    name: t.text().primaryKey(), // address_line_1 in the projects table
+    lat: t.doublePrecision().notNull(),
+    lng: t.doublePrecision().notNull(),
   }),
 );
 
@@ -1945,19 +1958,6 @@ export const contentProofreading = content.table(
   //       .concurrently(),
   //   };
   // },
-);
-
-/**
- * Coordinates for projects, bound by address_line_1
- */
-export const contentProjectLocation = content.table(
-  'builders_locations',
-  (t) => ({
-    placeId: t.integer().notNull(), // OSM place_id
-    name: t.text().primaryKey(), // address_line_1 in the projects table
-    lat: t.doublePrecision().notNull(),
-    lng: t.doublePrecision().notNull(),
-  }),
 );
 
 export const contentProofreadingContributor = content.table(

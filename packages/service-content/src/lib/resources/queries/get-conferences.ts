@@ -14,7 +14,7 @@ export const getConferencesQuery = () => {
       c.website_url,
       c.twitter_url,
       COALESCE(
-        (SELECT bu.name FROM content.builders bu WHERE bu.id = c.project_id LIMIT 1),
+        (SELECT bu.name FROM content.projects bu WHERE bu.id = c.project_id LIMIT 1),
         ''
         ) AS project_name,
       r.last_updated,

@@ -6,7 +6,7 @@ export const getRecentEventsQuery = () => {
     SELECT
       e.*,
       COALESCE(
-        (SELECT bu.name FROM content.builders bu WHERE bu.id = e.project_id LIMIT 1),
+        (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
         ''
         ) AS project_name,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags,
