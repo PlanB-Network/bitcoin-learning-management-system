@@ -155,7 +155,9 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const x = margin + 30;
     const y = height - 530;
 
-    page.drawText(contact ?? 'telegram plan B', { x, y, ...conf.contact });
+    if (contact) {
+      page.drawText(contact, { x, y, ...conf.contact });
+    }
   }
 
   // Ticket number / purchase date
