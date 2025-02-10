@@ -88,14 +88,6 @@
     "contributeTitle": "¿Quieres contribuir?",
     "contributeDescription": "Si quieres agregar, editar o traducir algún contenido, ¡tu ayuda será más que bienvenida!"
   },
-  "builders": {
-    "pageTitle": "Proyectos de Bitcoin",
-    "noRelatedEvents": "No hay eventos próximos relacionados con este constructor en este momento.",
-    "languages": "Idiomas",
-    "relatedEvents": "Eventos próximos relacionados",
-    "networkStrength": "La fuerza de una red yace en sus miembros",
-    "otherCommunities": "Explora las comunidades de Plan B"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Terminar el curso",
@@ -627,7 +619,6 @@
   },
   "menu": {
     "betDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
-    "buildersDescription": "Aprende acerca de las empresas y proyectos que trabajan para mejorar Bitcoin y aumentar su adopción",
     "libraryDescription": "Descubre una gran cantidad de libros para mejorar tu conocimiento",
     "nodeNetworkDescription": "Únete a la red global de la comunidad de Plan ₿",
     "podcastsDescription": "Explora el ecosistema Bitcoin a través de podcasts",

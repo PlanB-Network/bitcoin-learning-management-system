@@ -70,7 +70,8 @@
     "emailTip": "Vous pouvez ajouter une adresse mail à votre compte si vous le souhaitez. Dans le cas où vous oubliez votre mot de passe, cela peut être utile ;)",
     "didYouKnow": "Le saviez vous ?",
     "dashboardUnlocked": "Votre tableau de bord d'étudiant est déverrouillé !",
-    "trackProgress": "Créez un compte ou connectez-vous pour suivre votre progression"
+    "trackProgress": "Créez un compte ou connectez-vous pour suivre votre progression",
+    "passwordChangedSuccess": "Mot de passe modifié avec succès"
   },
   "bet": {
     "educationalContent": {
@@ -86,14 +87,6 @@
     "contributeButton": "Aider et contribuer",
     "contributeTitle": "Vous souhaitez contribuer ?",
     "contributeDescription": "Si vous souhaitez ajouter, modifier ou traduire du contenu, votre aide sera la bienvenue !"
-  },
-  "builders": {
-    "pageTitle": "Portail créateur",
-    "otherCommunities": "Explorez les communautés de Plan ₿ Network",
-    "languages": "Langues",
-    "relatedEvents": "Événements à venir liés",
-    "networkStrength": "La force d'un réseau réside dans ses membres",
-    "noRelatedEvents": "Il n'y a aucun événement à venir lié à ce contributeur pour le moment."
   },
   "courses": {
     "chapter": {
@@ -140,7 +133,11 @@
       "hasBeenProofreadBy": "Ce cours a été relu par",
       "otherCourses": "Autres cours",
       "otherCoursesInterest": "D'autres cours qui pourraient vous intéresser",
-      "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur."
+      "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur.",
+      "hasNotBeenProofread": "Ce cours n'a pas encore été relu",
+      "teacherLed": "Dirigé par l'enseignant",
+      "ledBy": "Ce cours est dirigé par",
+      "pastEditionsRatings": "Évaluations des Éditions Précédentes"
     },
     "explorer": {
       "pageDescription": "L'Académie Plan ₿ vise à simplifier l'éducation sur Bitcoin à l'échelle mondiale. Curée par des experts de divers domaines, notre académie propose une gamme complète de cours conçus pour clarifier chaque aspect de Bitcoin.\nDu débutant à l'expert, que ce soit à votre propre rythme ou suivi chaque semaine par un professeur, nous espérons que l'Académie peut vous aider à acquérir une compréhension plus profonde du vaste monde de Bitcoin. Beaucoup de nos cours sont entièrement gratuits afin que quiconque, n'importe où, puisse accéder à une éducation de qualité.",
@@ -148,7 +145,10 @@
       "findCourses": "Trouvez le cours parfait pour vos besoins grâce au sélecteur de cours",
       "exploreCourses": "Explorez tous les cours Plan ₿",
       "buildPath": "Construisez votre propre chemin dans le terrier du lapin",
-      "seeCourse": "Découvrir le cours"
+      "seeCourse": "Découvrir le cours",
+      "planbSchoolHeadline": "L'école Plan ₿ (Plan ₿ school) , dirigée par Giacomo Zucco, propose des programmes éducatifs intensifs de trois mois conçus pour combler le fossé entre l'apprentissage et les applications concrètes. Au-delà des cours traditionnels, les étudiants participent à des projets pratiques dirigés par des entreprises et à un bootcamp de première classe dédié aux meilleurs performeurs. Seuls les meilleurs talents avancent après deux tours de sélection compétitifs, garantissant que les meilleurs étudiants finaux sont entièrement équipés pour lancer leur carrière dans l'industrie du Bitcoin.",
+      "comingSoon": "bientôt disponible",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "part": {
       "count": "Partie n°{{count}}"
@@ -293,7 +293,8 @@
       "feedbackDescription2": "Notez que les enseignants n'auront pas accès aux évaluations individuelles.",
       "saveReview": "Enregistrer l'avis",
       "thankYou": "Merci pour votre avis ! Il sera pris en compte",
-      "feedback": "Retour d'information"
+      "feedback": "Retour d'information",
+      "whatStudentsSayPasEdition": "Ce que disent les étudiants sur les éditions précédentes"
     },
     "conclusion": {
       "takeFinalExam": "Maintenant que vous avez terminé tous les chapitres, il est temps de passer l'examen final pour tester vos connaissances.",
@@ -490,10 +491,199 @@
       "makeProfessor": "Faire professeur",
       "nameOfEvent": "Nom de l'événement",
       "professorName": "Nom du professeur",
-      "participants": "Participants"
+      "participants": "Participants",
+      "careers": {
+        "careersSubtitle": "Ici, vous pouvez consulter la liste des participants qui ont terminé leurs candidatures. Vous pouvez trouver toutes les informations sur les candidatures à l'intérieur du tableur.",
+        "careers": "Carrières",
+        "cv": "CV",
+        "downloadProfiles": "Télécharger le tableau (spreadsheet)",
+        "downloadSpreadsheet": "Télécharger le tableau (spreadsheet)",
+        "lastUpdate": "Dernière mise à jour",
+        "lastUpdated": "Dernière mise à jour",
+        "profession": "Profession",
+        "resultsRemaining": "{{results}} résultats restants",
+        "seeMore": "Voir plus",
+        "viewCV": "Voir le CV"
+      }
     },
     "studentDashboard": "Tableau de bord de l'étudiant",
-    "backToDashboard": "Retour au tableau de bord"
+    "backToDashboard": "Retour au tableau de bord",
+    "careerPortal": {
+      "availabilityStartPlaceholder": "Date",
+      "bitcoinCommunityParticipant": "Faites-vous partie d'une communauté locale de Bitcoin ?",
+      "bitcoinCommunityText": "Si oui, lequel et quel est votre niveau d'implication ?\nCette communauté fait-elle partie de Plan ₿ Network ?",
+      "bitcoinProjectParticipant": "Avez-vous activement contribué à des projets Bitcoin ? \n(dans le passé ou actuellement)",
+      "bitcoinProjectPlaceholder": "Exemples : Projet communautaire, projet open source, etc...",
+      "bitcoinProjectSubLabel": "Décrivez votre projet ci-dessous.",
+      "bitcoinProjectText": "Lequel ?",
+      "deleteCareerProfileTitle": "Êtes-vous sûr de vouloir supprimer votre profil de carrière ?",
+      "deleteCareerProfile": "Supprimer le profil de carrière",
+      "fileUploaded": "CV téléchargé avec succès !",
+      "jobTitles": {
+        "cloudInfrastructureEngineer": "Ingénieur en infrastructure cloud",
+        "uxResearcher": "Chercheur en UX",
+        "businessDevelopmentManager": "Directeur du développement commercial",
+        "dataEngineer": "Ingénieur de données",
+        "marketingManager": "Directeur Marketing",
+        "operationsManager": "Directeur des opérations",
+        "revenueManager": "Directeur des revenus",
+        "technicalProductManager": "Gestionnaire de produit technique",
+        "accountingManager": "Directeur de la comptabilité",
+        "amlKycSpecialist": "Spécialiste AML/KYC",
+        "backendEngineer": "Ingénieur Backend",
+        "bitcoinInvestmentAnalyst": "Analyste d'investissement Bitcoin",
+        "brandStrategist": "Stratège de marque",
+        "businessAnalyst": "Analyste d'affaires",
+        "communityManager": "Gestionnaire de communauté",
+        "complianceOfficer": "Responsable de la conformité",
+        "contentWriter": "Rédacteur de contenu",
+        "cryptographer": "Cryptographe",
+        "customerSuccessManager": "Gestionnaire de réussite client",
+        "customerSupportSpecialist": "Spécialiste du support client",
+        "cybersecurity": "Cybersécurité",
+        "devOpsEngineer": "Ingénieur DevOps",
+        "economicAnalyst": "Analyste économique",
+        "educator": "Éducateur",
+        "eventCoordinator": "Coordinateur d'événements",
+        "hrSpecialist": "Spécialiste en ressources humaines",
+        "legalContractSpecialist": "Spécialiste en contrats juridiques",
+        "logisticManager": "Responsable logistique",
+        "miningEngineer": "Ingénieur des mines",
+        "miningOperationsManager": "Directeur des opérations minières",
+        "mobileAppDeveloper": "Développeur d'application mobile",
+        "productManager": "Chef de produit",
+        "protocolEngineer": "Ingénieur de protocole",
+        "publicRelationsManager": "Directeur des relations publiques",
+        "researcher": "Chercheur",
+        "riskAnalyst": "Analyste de risque",
+        "sales": "Ventes",
+        "seoSpecialist": "Spécialiste SEO",
+        "socialMediaManager": "Gestionnaire de médias sociaux",
+        "technicalSupportEngineer": "Ingénieur de support technique",
+        "technicalWriter": "Rédacteur technique",
+        "uiUxDesigner": "Concepteur UI/UX",
+        "frontendEngineer": "Ingénieur Frontend",
+        "fullStackDeveloper": "Développeur Full Stack",
+        "graphicDesigner": "Graphiste"
+      },
+      "acceptTermsAndConditions": "J'ai lu et j'accepte les termes et conditions",
+      "allowReceivingEmails": "Je suis d'accord pour recevoir des emails de Plan ₿ Network concernant des opportunités d'emploi potentielles.",
+      "applicationStatus": "Votre application est",
+      "beAware": "Sachez que Plan ₿ Network collectera et stockera vos données uniquement à des fins de recrutement. Les données sont traitées et partagées avec nos partenaires commerciaux conformément aux dispositions du Règlement général sur la protection des données de l'UE (RGPD). Cliquez <0>ici</0> pour en savoir plus sur notre Avis de confidentialité des candidats.",
+      "description": "En tant qu'étudiant du Plan ₿ Network, vous faites partie d'une vaste communauté qui peut soutenir votre croissance professionnelle. Dans cette section, vous pouvez soumettre votre CV et partager vos aspirations de carrière. Nous travaillerons en étroite collaboration avec nos partenaires industriels pour faire correspondre votre profil avec des opportunités d'emploi potentielles, vous aidant à franchir la prochaine étape de votre parcours professionnel.",
+      "expectedSalarySubLabel": "Selon votre profil, indiquez-nous vos attentes en matière de taux horaire ou de salaire mensuel. Veuillez préciser s'il s'agit d'un montant net ou brut.",
+      "followProcess": "Suivez ce processus étape par étape pour soumettre votre CV et vos informations professionnelles.",
+      "jobCategories": {
+        "financeCompliance": "Finance et Conformité",
+        "productDesign": "Produit et Design",
+        "businessRoles": "Rôles d'affaires",
+        "marketingCommunity": "Marketing et Communauté",
+        "more": "En savoir plus",
+        "operationsSupport": "Opérations et Support",
+        "researchEducation": "Recherche et Éducation",
+        "technicalRoles": "Rôles techniques"
+      },
+      "jobSearchSubtitle": "Définissez vos préférences de travail pour nous aider à adapter les meilleures opportunités à votre profil.",
+      "languageLevels": {
+        "beginner": "Débutant (Compréhension limitée)",
+        "advanced": "Avancé (Confiance et précision)",
+        "elementary": "Élémentaire (conversation et écriture de base)",
+        "fluent": "Courant (Niveau natif)",
+        "intermediate": "Intermédiaire (Communication confortable)"
+      },
+      "acceptedFormat": "Format de fichier accepté : pdf / Taille maximale du fichier : 10 Mo.",
+      "add": "Ajouter",
+      "applicationSaved": "Votre application est enregistrée !",
+      "availability": "Votre disponibilité",
+      "availabilityStart": "Quand pouvez-vous commencer ?",
+      "bitcoinRelatedExperience": "Expérience liée au Bitcoin",
+      "bitcoinRelatedExperienceSubtitle": "S'il vous plait partager des informations sur votre participation aux initiatives Bitcoin.",
+      "emailAddress": "Adresse e-mail",
+      "emailPlaceholder": "mail@mail.com",
+      "fileTooLarge": "Le fichier sélectionné est trop volumineux",
+      "fileUploadError": "Une erreur s'est produite lors du téléchargement de votre fichier. Veuillez réessayer.",
+      "firstName": "Prénom (ou pseudo)",
+      "fullTime": "Temps plein",
+      "invalidFile": "Format de fichier invalide",
+      "jobSearch": "Recherche d'emploi",
+      "languageLevel": "Niveau de compétence",
+      "languageLevelSubLabel": "Sélectionnez le niveau qui correspond le mieux à vos compétences.",
+      "languageRequired": "Ajoutez au moins une langue.",
+      "languageSkills": "Compétences linguistiques",
+      "contactInformationSubtitle": "Veuillez fournir votre adresse e-mail et d'autres méthodes de contact.",
+      "countryResidence": "Pays de résidence",
+      "cvRequired": "Le téléchargement de votre CV est requis.",
+      "cvUpload": "Téléchargez votre CV",
+      "cvUploadLabel": "Téléchargement de CV",
+      "cvUploadSubtitle": "Téléchargez votre CV pour présenter vos compétences et expériences aux employeurs potentiels.",
+      "cannotUndo": "Cette action ne peut pas être annulée.",
+      "companySizePreference": "Quelle taille d'entreprise préférez-vous ?",
+      "companySizePreferenceSubLabel": "Vous pouvez sélectionner plusieurs réponses.",
+      "companySizeRequired": "Sélectionnez au moins une taille d'entreprise.",
+      "companySizes": {
+        "100More": "100 employés et plus",
+        "11To40": "11 à 40 employés",
+        "1To10": "1 à 10 employés",
+        "41To100": "41 à 100 employés",
+        "noPreference": "Aucune préférence"
+      },
+      "completeApplication": "Complètes l'application",
+      "confirmDelete": "Confirmer la suppression",
+      "contactInformation": "Informations de contact",
+      "expectedSalaryPlaceholder": "Salaire mensuel : 2,5K net",
+      "expectedSalary": "Salaire attendu",
+      "roleLevelSubLabel": "Sélectionnez le niveau qui correspond le mieux à vos compétences.",
+      "selectRoleSubLabel": "Veuillez sélectionner l'intitulé de poste qui correspond le mieux à votre recherche d'emploi.",
+      "seeOrEditProfile": "Voir ou modifier le profil",
+      "languageSkillsSubtitle": "Faites-nous savoir quelles langues vous parlez et écrivez, et leur niveau de compétence correspondant.",
+      "lastName": "Nom de famille",
+      "legalInformation": "Informations juridiques",
+      "legalInformationSubtitle": "Veuillez accepter les termes et conditions ci-dessous, afin que nous puissions faire correspondre vos compétences et expériences avec les opportunités d'emploi de nos partenaires commerciaux.",
+      "legalTerms": "Termes juridiques",
+      "lookingForJob": "Nous recherchons actuellement des opportunités d'emploi pour vous.",
+      "provideValidEmail": "Veuillez fournir un email valide.",
+      "remoteWorkPreference": "Êtes-vous prêt à travailler à distance ?",
+      "remoteWorkPreferences": {
+        "no": "Je préférerais ne pas",
+        "sometimes": "De temps en temps, pourquoi pas",
+        "yes": "Oui, avec plaisir"
+      },
+      "roleLevel": "Niveau d'expérience",
+      "roleLevels": {
+        "junior": "Junior (1 à 3 ans)",
+        "mid": "Niveau intermédiaire (3 à 5 ans)",
+        "senior": "Senior (5+ ans)",
+        "student": "Étudiant (0 an)"
+      },
+      "roleRequired": "Ajoutez au moins un rôle.",
+      "selectJobTitle": "Sélectionnez un titre de poste",
+      "selectLanguage": "Sélectionnez une langue",
+      "selectRole": "Quel(s) poste(s) recherchez-vous ?",
+      "startApplication": "Démarrer l'application",
+      "steps": {
+        "step1": "Information personnelle",
+        "step2": "Recherche d'emploi",
+        "step3": "Téléchargement de CV",
+        "step4": "Termes juridiques"
+      },
+      "motivationLetterSubLabel": "Vous pouvez écrire quelques mots ci-dessous pour décrire votre expérience et votre motivation.",
+      "motivationSubtitle": "Vous pouvez enrichir votre candidature avec une lettre de présentation, pour nous donner plus de contexte sur vous-même et votre recherche d'emploi.",
+      "other": "Autre",
+      "partTime": "À temps partiel",
+      "maxCharacters": "{{caractères}} caractères max",
+      "maxRoles": "Vous pouvez sélectionner jusqu'à 3 intitulés de poste maximum.",
+      "motivation": "Motivation",
+      "motivationLetter": "Lettre de motivation",
+      "motivationLetterPlaceholder": "Quelle est votre motivation ?",
+      "personalInformation": "Information personnelle",
+      "personalInformationSubtitle": "Veuillez ajouter votre nom complet et votre lieu de résidence.",
+      "termsAndConditions": "Conditions générales",
+      "uploadCV": "Téléchargez votre CV",
+      "uploadCVSubLabel": "Téléchargez votre CV pour présenter vos compétences et expériences aux employeurs potentiels.",
+      "welcome": "Bienvenue sur votre portail de carrière",
+      "yourLanguages": "Vos langues",
+      "yourRoles": "Vos postes de travail"
+    }
   },
   "events": {
     "main": {
@@ -547,7 +737,13 @@
       "limitation": "Limite",
       "max_capacity": "Capacité maximale de",
       "payment_successful": "Réservation réussie !",
-      "time": "Temps"
+      "time": "Temps",
+      "description_online": "Veuillez vérifier la date et l'heure de l'événement indiquées.\nLorsque le moment sera venu, connectez-vous à la plateforme pour accéder à la diffusion en direct via la page de l'événement.",
+      "description_physical": "Veuillez examiner les détails du lieu fournis.\nUne fois votre réservation confirmée, nous émettrons un billet à présenter lors de l'événement. Ce billet vous donnera également accès à la diffusion en direct et à la rediffusion, si disponible.",
+      "access_online_successful": "Lorsque l'événement commence, connectez-vous à la plateforme pour accéder à la diffusion en direct sur la page de l'événement.",
+      "access_physical_successful": "Vous pouvez télécharger votre billet ici, ou le télécharger plus tard dans votre tableau de bord.",
+      "callout_online": "Vous êtes sur le point de réserver un accès en ligne à cet événement.",
+      "callout_replay": "Vous êtes sur le point de réserver l'accès à la rediffusion de cet événement."
     },
     "errors": {
       "premiumContentNeedsLogin": "Vous devez être connecté pour accéder à cet événement.",
@@ -603,11 +799,14 @@
     "blogSection": {
       "description": "Nous continuons d'améliorer la plateforme, le contenu et le réseau - allez voir !",
       "blogTitle": "Quoi de neuf chez Plan ₿ Network",
-      "seeAll": "Voir tout"
+      "seeAll": "Voir tout",
+      "noBlogsAvailable": "Aucun blog disponible.",
+      "noDateAvailable": "Aucune date disponible"
     },
     "eventSection": {
       "eventTitle": "Un Réseau Mondial d'Éducateurs Bitcoin",
-      "checkEvents": "Vérifiez tous les événements"
+      "checkEvents": "Vérifiez tous les événements",
+      "hottestEvent": "L'événement Bitcoin le plus chaud"
     },
     "courseSection": {
       "checkAllCourses": "Vérifiez tous les cours",
@@ -629,7 +828,6 @@
   },
   "menu": {
     "betDescription": "Collection de contenu que vous pouvez utiliser pour vos projets éducatifs",
-    "buildersDescription": "Apprenez-en davantage sur les entreprises et les projets qui travaillent à l'amélioration de bitcoin et à son adoption",
     "libraryDescription": "Découvrez beaucoup de livres pour améliorer vos connaissances",
     "nodeNetworkDescription": "Rejoignez le réseau communautaire mondial Plan ₿",
     "podcastsDescription": "Explorez l'écosystème bitcoin à travers des podcasts",
@@ -648,7 +846,9 @@
     "socialStudiesDescription": "Étudiez l'impact de Bitcoin sur la société.",
     "channelsDescription": "Accédez à notre sélection exclusive de chaînes Youtube pour en savoir plus sur Bitcoin",
     "chooseLanguage": "Choisissez une langue",
-    "lecturesDescription": "Revoir les conférences enregistrées d'experts Bitcoin"
+    "lecturesDescription": "Revoir les conférences enregistrées d'experts Bitcoin",
+    "moviesDescription": "Découvrez des histoires captivantes et des explorations approfondies de l'évolution et de l'impact du Bitcoin",
+    "projectsDescription": "Apprenez à connaître les entreprises et les projets qui contribuent à améliorer Bitcoin et à augmenter son adoption"
   },
   "nodeNetwork": {
     "apply": "Postuler pour devenir un Nœud",
@@ -734,7 +934,15 @@
     "glossary": {
       "title": "Glossaire"
     },
-    "pageSubtitleLectures": "<0>Autres rediffusions de conférences</0> qui pourraient vous intéresser"
+    "pageSubtitleLectures": "<0>Autres rediffusions de conférences</0> qui pourraient vous intéresser",
+    "movies": {
+      "noMovies": "Il n'y a actuellement aucun film ou documentaire pour la langue sélectionnée.",
+      "title": "Films & Documentaires"
+    },
+    "projects": {
+      "title": "Projets"
+    },
+    "toggleFreeOnly": "Gratuit seulement"
   },
   "settings": {
     "changePassword": "Changer le mot de passe",
@@ -838,7 +1046,10 @@
       }
     },
     "approvedByCreator": "Approuvé par le créateur",
-    "backTutorials": "Retour à tous les tutoriels"
+    "backTutorials": "Retour à tous les tutoriels",
+    "writtenBy": "Ce tutoriel a été écrit par",
+    "hasNotBeenProofread": "Ce tutoriel n'a pas encore été relu",
+    "hasBeenProofreadBy": "Ce tutoriel a été relu par"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1020,7 +1231,26 @@
     "channels": "Chaîne",
     "exam": "Examen",
     "lecture": "Conférence",
-    "skip": "Sauter"
+    "skip": "Sauter",
+    "complete": "Terminé",
+    "country": "Pays",
+    "project": "Projet",
+    "projects": "Projets",
+    "telegram": "Telegram",
+    "language": "Langue",
+    "producer": "Producteur",
+    "careerPortal": "Portail de carrière",
+    "incomplete": "Incomplet",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "linkedin": "Linkedin",
+    "delete": "Supprimé",
+    "github": "Github",
+    "movie": "Film",
+    "name": "Nom",
+    "next": "Prochain",
+    "no": "Non",
+    "yes": "Oui"
   },
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
@@ -1119,7 +1349,9 @@
     "inProgress": "Relecture en cours",
     "reviewEarn": "Examinez et gagnez des sats",
     "status": "Statut de relecture",
-    "thanks": "Un grand merci à nos incroyables examinateurs !"
+    "thanks": "Un grand merci à nos incroyables examinateurs !",
+    "descriptionOriginalLanguage": "Même si cette page est dans sa langue d'origine, une révision humaine est toujours nécessaire pour garantir son exactitude.",
+    "rewardsText": "*Les récompenses peuvent varier en fonction du taux de change $"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -1133,5 +1365,18 @@
     "pageTitle": "Reprises de conférences",
     "partCourse": "Cette conférence fait partie du cours :",
     "watchLecture": "Regardez la rediffusion de la conférence"
+  },
+  "movies": {
+    "goToMovie": "Aller au cinéma",
+    "pageTitle": "Films & Documentaires",
+    "watchTrailer": "Regardez la bande-annonce"
+  },
+  "projects": {
+    "languages": "Langues",
+    "networkStrength": "La force d'un réseau réside dans ses membres",
+    "noRelatedEvents": "Il n'y a actuellement aucun événement à venir lié à cet éducateur.",
+    "otherCommunities": "Explorez les communautés de Plan ₿ Network",
+    "pageTitle": "Projets Bitcoin",
+    "relatedEvents": "Événements à venir liés"
   }
 }

@@ -84,14 +84,6 @@
     "contributeDescription": "",
     "contributeTitle": ""
   },
-  "builders": {
-    "pageTitle": "Kehittäjä-portaali",
-    "languages": "",
-    "otherCommunities": "",
-    "networkStrength": "",
-    "relatedEvents": "",
-    "noRelatedEvents": ""
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Viimeistele luento",
@@ -520,7 +512,6 @@
   },
   "menu": {
     "betDescription": "Sisältökokoelma, jota voit käyttää koulutushankkeissasi",
-    "buildersDescription": "Opi lisää yrityksistä ja erilaisista projekteista jotka kehittävät Bitcoinin-ekosysteemiä paremmaksi ja laajentaa sen käyttöönottoa",
     "libraryDescription": "Löydä paljon kirjoja laajentamaan ja kehittämään tietotaitoasi",
     "nodeNetworkDescription": "Liity globaaliin verkostoomme Bitcoin-yhteisöjä!",
     "podcastsDescription": "Selaa ja tutki bitcoinin ekosysteemiä podcastien avulla",

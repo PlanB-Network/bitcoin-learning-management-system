@@ -84,14 +84,6 @@
     "contributeDescription": "Wenn Sie Inhalte hinzufügen, bearbeiten oder übersetzen möchten, ist Ihre Hilfe willkommen!",
     "contributeTitle": "Möchten Sie einen Beitrag leisten?"
   },
-  "builders": {
-    "pageTitle": "Bitcoin Builders",
-    "networkStrength": "Die Stärke eines Netzwerks liegt in seinen Mitgliedern",
-    "noRelatedEvents": "Es gibt derzeit keine bevorstehende Veranstaltungen in Bezug auf diesen Builder.",
-    "otherCommunities": "Erkunden Sie Plan B Gemeinschaften",
-    "languages": "Sprachen",
-    "relatedEvents": "Verwandte bevorstehende Veranstaltungen"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Beenden Sie den Kurs",
@@ -520,7 +512,6 @@
   },
   "menu": {
     "betDescription": "Sammlung von Inhalten, die Sie für Ihre Bildungsprojekte verwenden können",
-    "buildersDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die daran arbeiten, Bitcoin zu verbessern und seine Annahme zu steigern",
     "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",
     "nodeNetworkDescription": "Treten Sie dem weltweiten Netzwerk der Bitcoin-Community bei",
     "podcastsDescription": "Erkunden Sie das Bitcoin-Ökosystem durch Podcasts",

@@ -88,14 +88,6 @@
     "contributeDescription": "コンテンツの追加、編集、翻訳のいずれかを希望する場合、あなたの助けを歓迎します！",
     "contributeTitle": "貢献したいですか？"
   },
-  "builders": {
-    "pageTitle": "開発者ポータル",
-    "noRelatedEvents": "現在、この教育者に関連する今後のイベントはありません。",
-    "networkStrength": "ネットワークの強さはメンバーにある",
-    "otherCommunities": "Plan ₿ コミュニティを探求する",
-    "languages": "言語",
-    "relatedEvents": "関連イベント"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "コースを終了する",
@@ -200,8 +192,8 @@
     },
     "review": {
       "faithful": "目的に合致していますか？",
-      "recommend": "",
-      "yesOfCourse": "",
+      "recommend": "おすすめしますか？",
+      "yesOfCourse": "はい、もちろんです",
       "asExpected": "推定",
       "commentAdmin": "管理チームへコメントする（非公開）",
       "commentPublic": "コメント（公開）",
@@ -210,33 +202,36 @@
       "displayOutOf": "非表示",
       "feedbackSessionTitle": "ご意見・ご感想をお寄せください。",
       "fieldRequired": "このフィールドは必須です",
-      "generalGrade": "",
-      "length": "",
-      "loadMoreComments": "",
-      "neutral": "",
-      "no": "",
-      "notReally": "",
-      "quality": "",
-      "ratingsAndReviews": "",
-      "skip": "",
-      "soAndSo": "",
-      "submitReview": "",
-      "tooEasy": "",
-      "tooHard": "",
-      "tooLong": "",
-      "tooShort": "",
-      "writeThoughts": "",
-      "yesVeryMuch": "",
-      "veryBad": "",
-      "veryGood": "",
-      "whatStudentsSay": "",
+      "generalGrade": "標準成績",
+      "length": "長さ",
+      "loadMoreComments": "コメントをさらに読み込む",
+      "neutral": "ニュートラル",
+      "no": "いいえ",
+      "notReally": "いいえ、そうでもありません",
+      "quality": "品質",
+      "ratingsAndReviews": "評価とレビュー",
+      "skip": "レビューをスキップする",
+      "soAndSo": "かくかくしかじか",
+      "submitReview": "レビューを投稿する",
+      "tooEasy": "簡単すぎる",
+      "tooHard": "難しすぎる",
+      "tooLong": "長すぎる",
+      "tooShort": "短すぎる",
+      "writeThoughts": "ここにあなたの意見を投稿することができます",
+      "yesVeryMuch": "はい、とてもそうです",
+      "veryBad": "非常に悪い",
+      "veryGood": "非常に良い",
+      "whatStudentsSay": "このコースについての学生の声",
       "commentAdminMobile": "管理チームへ非公開でコメントする",
       "commentPublicMobile": "公開コメント",
       "editReview": "レビューを編集する",
       "feedback": "フィードバック",
       "feedbackDescription1": "このコースでの経験を以下で評価してください。",
       "commentTeacherMobile": "講師へ非公開でコメントする",
-      "feedbackDescription2": "なお、講師陣は各評価にアクセスすることができません。"
+      "feedbackDescription2": "なお、講師陣は各評価にアクセスすることができません。",
+      "whatStudentsSayPasEdition": "過去のコースについての学生の声",
+      "saveReview": "レビューを保存する",
+      "thankYou": "レビューありがとうございました！しっかりと参考にさせていただきます"
     },
     "exam": {
       "congratulationsPassed": "おめでとうございます。あなたは最終試験に<0>合格</0>しました！",
@@ -336,9 +331,9 @@
     "courses": "コース",
     "logout": "",
     "booking": {
-      "accessLive": "",
-      "billingTitle": "",
-      "billingSubtitle": "",
+      "accessLive": "ライブストリーミングにアクセスする",
+      "billingTitle": "請求履歴",
+      "billingSubtitle": "ご予約時のインボイスはこちらからダウンロードできます。",
       "invoiceDate": "日付",
       "invoiceTitle": "",
       "invoiceType": "",
@@ -353,8 +348,8 @@
       "upcomingTicketSubtitle": ""
     },
     "bCertificate": {
-      "noResults": "",
-      "grade": ""
+      "noResults": "このアカウントに関連する成績認定証はまだありません。.\n試験に合格したにも関わらず、長期間経っても結果が反映されない場合は、私たちに<0>ご連絡</0>ください。",
+      "grade": "成績"
     },
     "profile": {
       "emailChangeConfirmation": "",
@@ -379,8 +374,8 @@
       "reviews": {
         "publicComment": "",
         "checkComments": "",
-        "checkReviews": "",
-        "noReviewsYet": "",
+        "checkReviews": "ここでは、あなたが受けたのコースの成績とレビューを確認できます。",
+        "noReviewsYet": "このコースにはまだレビューと成績がありません。",
         "privateComment": "",
         "review": "",
         "reviews": "",
@@ -390,7 +385,7 @@
         "writtenFeedbacks": ""
       },
       "profile": {
-        "billingInformations": "お支払い情報",
+        "billingInformations": "請求情報",
         "account": "講師アカウント",
         "lightningAddress": "ライトニングアドレス",
         "makeModifications": "編集が必要ですか？",
@@ -444,7 +439,7 @@
     "credentials": {
       "bCertificate": "₿ 認定証",
       "bCertificateSubtitle": "ここでは、あなたの₿ 認定証の予約状況および成績状況に関する詳細をご覧いただけます。\n₿ 認定証とは、Plan ₿ Networkが主催するビットコインとその関連トピックに関するレベルを証明するための試験です。",
-      "beingGraded": "",
+      "beingGraded": "あなたの試験は採点中です。 結果は1～2週間後にアナウンスします。",
       "courseDiplomas": "コース修了証書",
       "courseDiplomasSubtitle": "ここでは、プラットフォーム上のコースを完了した後に受験したすべての試験の詳細を見ることができます。",
       "completionDiplomas": "修了証書",
@@ -471,8 +466,43 @@
     },
     "adminPanel": {
       "upcomingBookingsSubtitle": "ここでは、すべての会場イベントの参加者リストをダウンロードできます。",
-      "removeTeacherDescription": "本当にこの講師をカットしたいのですか？"
-    }
+      "removeTeacherDescription": "本当にこの講師をカットしたいのですか？",
+      "careers": {
+        "cv": "CV（履歴書）",
+        "careers": "採用情報",
+        "careersSubtitle": "ここでは、申し込みが完了した参加者リストを見ることができます。 スプレッドシート内には、すべての申し込み情報が記載されています。",
+        "downloadProfiles": "スプレッドシートをダウンロードする",
+        "downloadSpreadsheet": "スプレッドシートをダウンロードする",
+        "lastUpdate": "最終更新日",
+        "lastUpdated": "最終更新日",
+        "profession": "職業",
+        "resultsRemaining": "{{results}} 残りの結果",
+        "seeMore": "さらに見る",
+        "viewCV": "CV（履歴書）を見る"
+      },
+      "listOfParticipants": "参加者リスト",
+      "bookings": "予約",
+      "bookingsPanel": "予約パネル",
+      "confirmRemoval": "削除する",
+      "coursesIds": "コースID",
+      "downloadList": "ダウンロードリスト",
+      "githubLink": "Githubリンク",
+      "makeProfessor": "講師作成",
+      "date": "日付",
+      "type": "タイプ",
+      "upcomingBookings": "今後の予約状況",
+      "userRolesAllocation": "ユーザーの役割分担",
+      "nameOfEvent": "イベント名",
+      "participants": "参加者",
+      "professorName": "講師名",
+      "searchByNameOrCategory": "名前またはカテゴリーで検索する",
+      "seeOrEdit": "参照または編集する",
+      "selectProfessor": "講師を選ぶ",
+      "tutorialAnalytics": "チュートリアル分析",
+      "tutorialAnalyticsDescription": "ここでは、プラットフォーム上のすべてのチュートリアルをチェックし、比較することができます。",
+      "tutorialsManagementPanel": "チュートリアル管理パネル"
+    },
+    "backToDashboard": "ダッシュボードに戻る"
   },
   "events": {
     "main": {
@@ -592,7 +622,6 @@
   },
   "menu": {
     "betDescription": "教育プロジェクトに使えるコンテンツ集",
-    "buildersDescription": "ビットコインをより良いものにし、その普及を拡大するために活動している企業やプロジェクトについて学ぶ",
     "libraryDescription": "あなたの知識を向上させるためのたくさんの本を見つける",
     "nodeNetworkDescription": "Plan ₿ グローバルコミュニティネットワークに参加しよう",
     "podcastsDescription": "ポッドキャストをとおしてビットコイン・エコシステムについて探求する",
@@ -811,7 +840,7 @@
     "date": "日付",
     "time": "",
     "to": "",
-    "billing": "",
+    "billing": "請求",
     "download": "",
     "invoice": "",
     "on": "",
@@ -837,7 +866,7 @@
     "free": "",
     "glossary": "",
     "goal": "",
-    "grade": "",
+    "grade": "成績",
     "hours": "",
     "id": "",
     "inReview": "",

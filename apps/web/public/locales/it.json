@@ -88,14 +88,6 @@
     "contributeDescription": "Se vuoi aggiungere, modificare o tradurre qualche contenuto, il tuo aiuto sarà benvenuto!",
     "contributeTitle": "Vuoi contribuire?"
   },
-  "builders": {
-    "pageTitle": "Il Portale Dei Progetti",
-    "networkStrength": "La forza di una rete sta nei suoi membri",
-    "noRelatedEvents": "Non ci sono prossimi eventi correlati per questo creator al momento.",
-    "otherCommunities": "Esplora le comunità Plan ₿",
-    "languages": "Lingue",
-    "relatedEvents": "Eventi futuri correlati"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Termina il corso",
@@ -832,7 +824,6 @@
   },
   "menu": {
     "betDescription": "Raccolta di contenuti che puoi utilizzare per i tuoi progetti educativi",
-    "buildersDescription": "Scopri le aziende e i progetti che lavorano per rendere bitcoin migliore e crescere la sua adozione",
     "libraryDescription": "Scopri un sacco di libri per migliorare la tua conoscenza",
     "nodeNetworkDescription": "Unisciti alla rete globale delle comunità Plan ₿!",
     "podcastsDescription": "Esplora l'ecosistema bitcoin attraverso podcast",

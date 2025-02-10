@@ -106,14 +106,6 @@
       "title": "Visuelt innhold"
     }
   },
-  "builders": {
-    "networkStrength": "Nettverkets styrke ligger i dets medlemmer",
-    "noRelatedEvents": "Det er ingen kommende arrangementer relatert til denne utviklere n for øyeblikket.",
-    "otherCommunities": "Utforsk Plan B-samfunn",
-    "pageTitle": "Bitcoin Utviklere",
-    "languages": "Språk",
-    "relatedEvents": "Relaterte kommende arrangementer"
-  },
   "conferences": {
     "addConferences": "Føl deg fri til å legge til eventuelle manglende konferanser via dette <0>Github</0> depotet.",
     "backConferences": "Tilbake til konferanser",
@@ -883,7 +875,6 @@
   },
   "menu": {
     "bCertificateDescription": "Bestå ₿-sertifikateksamen for å bekrefte ditt Bitcoin-nivå",
-    "buildersDescription": "Lær om selskapene og prosjektene som jobber for å forbedre bitcoin og øke adopsjonen av det",
     "podcastsDescription": "Utforsk bitcoin-økosystemet gjennom podcaster",
     "betDescription": "Samling av innhold som du kan bruke til dine pedagogiske prosjekter",
     "conferencesDescription": "Samling av opptak fra Bitcoin-konferanser siden Genesis-blokken",

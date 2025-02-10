@@ -319,14 +319,6 @@
       "stepsToComplete": "Ovo su koraci za označavanje ovog kursa kao završenog na vašoj kontrolnoj tabli, pre nego što nastavite svoje putovanje!"
     }
   },
-  "builders": {
-    "networkStrength": "Snaga mreže leži u njenim članovima",
-    "noRelatedEvents": "Još uvek nema predstojećih događaja za ovog kreatora.",
-    "otherCommunities": "Istražite Plan B zajednice",
-    "pageTitle": "Bitcoin Stvaraoci",
-    "languages": "Jezici",
-    "relatedEvents": "Povezani predstojeći događaji"
-  },
   "dashboard": {
     "booking": {
       "noInvoice": "Trenutno nemate fakture.",
@@ -585,7 +577,6 @@
     "bCertificateDescription": "Polaganjem ispita za ₿ sertifikat potvrdite svoj nivo znanja o Bitcoinu",
     "publicDescription": "Proučite članke o javnoj komunikaciji",
     "betDescription": "Kolekcija sadržaja koju možete koristiti za Vaše obrazovne projekte",
-    "buildersDescription": "Saznajte više o kompanijama i projektima koji rade na poboljšanju Bitcoina i poboljšanju njegovog usvajanja",
     "conferencesDescription": "Kolekcija snimaka konferencija o Bitcoinu od Genesis Bloka",
     "glossaryDescription": "Razumite jezik Bitcoina",
     "libraryDescription": "Otkrijte mnogo knjiga kako biste poboljšali Vaše znanje",

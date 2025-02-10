@@ -88,14 +88,6 @@
     "contributeDescription": "Om du vill lägga till, redigera eller översätta något innehåll, din hjälp kommer att vara uppskattad!",
     "contributeTitle": "Vill du bidra?"
   },
-  "builders": {
-    "pageTitle": "Bitcoin-projekt",
-    "noRelatedEvents": "Det finns inga kommande händelser relaterade till denna utbildare för tillfället.",
-    "networkStrength": "Styrkan av ett nätverk ligger hos dess medlemmar",
-    "otherCommunities": "Utforska Plan ₿ communities",
-    "languages": "Språk",
-    "relatedEvents": "Relaterade kommande events"
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Slutför kursen",
@@ -827,7 +819,6 @@
   },
   "menu": {
     "betDescription": "En samling av innehåll som kan användas för dina utbildningsprojekt",
-    "buildersDescription": "Lär dig om företagen och projekten som strävar efter att förbättra Bitcoin och öka dess användning",
     "libraryDescription": "Utforska ett stort antal böcker för att förbättra din kunskap",
     "nodeNetworkDescription": "Bli en del av det globala nätverket för Plan ₿-communities",
     "podcastsDescription": "Utforska bitcoin-ekosystemet genom podcasts",

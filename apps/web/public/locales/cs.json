@@ -84,14 +84,6 @@
     "contributeButton": "",
     "contributeDescription": ""
   },
-  "builders": {
-    "pageTitle": "Portál pro stavitele",
-    "noRelatedEvents": "",
-    "relatedEvents": "",
-    "networkStrength": "",
-    "otherCommunities": "",
-    "languages": ""
-  },
   "conferences": {
     "addConferences": "Neváhejte přidat chybějící konference prostřednictvím tohoto <0>Github</0> repozitáře.",
     "backConferences": "Zpět na konference",
@@ -546,7 +538,6 @@
     "nodeNetworkDescription": "Připojte se ke světové bitcoinové komunitě!",
     "podcastsDescription": "Objevte bitcoinový ekosystém pomocí podcastů",
     "betDescription": "Sbírka materiálů, které můžete použít pro své vzdělávací projekty",
-    "buildersDescription": "Seznamte se společnostmi a projekty, které pracují na zlepšování bitcoinu a zvyšování jeho přijetí",
     "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery",
     "glossaryDescription": "",
     "login": "",

@@ -12,8 +12,8 @@
       "usernameRequired": "Kullanıcı adı gereklidir.",
       "usernameTooShort": "Kullanıcı adı en az 5 karakter içermelidir.",
       "displayNameTooShort": "Görünen isim en az 2 karakter içermelidir.",
-      "emailInvalid": "",
-      "invalidCredentials": ""
+      "emailInvalid": "Geçersiz e-mail",
+      "invalidCredentials": "Geçersiz hesap bilgileri"
     },
     "headerAccountCreated": "Hesap oluşturuldu",
     "lnurlAuthDescription": "Bu QR kodu Lightning cüzdanınıza okutarak oturum açın!",
@@ -45,7 +45,10 @@
     "confirmation": "Parola Tekrarı",
     "displayName": "Görünen Ad",
     "emailTip": "E-posta zorunlu değildir ancak şifrenizin unutulması durumunda faydalı olabilir :)",
-    "didYouKnow": "Biliyor Muydunuz?"
+    "didYouKnow": "Biliyor Muydunuz?",
+    "dashboardUnlocked": "Öğrenci ana ekranınız aktifleşti!",
+    "passwordChangedSuccess": "Şifre başarıyla değiştirildi",
+    "trackProgress": "İlerlemelerinizi takip etmek için giriş yapın veya bir hesap oluşturun"
   },
   "dashboard": {
     "account": "",
@@ -331,56 +334,48 @@
     "contributeDescription": "Eğer bazı içerikleri eklemek, düzenlemek veya çevirmek isterseniz, yardımınız memnuniyetle karşılanacaktır!",
     "contributeTitle": "Katkıda bulunmak ister misiniz?"
   },
-  "builders": {
-    "pageTitle": "",
-    "noRelatedEvents": "",
-    "networkStrength": "",
-    "otherCommunities": "",
-    "languages": "",
-    "relatedEvents": ""
-  },
   "conferences": {
-    "addConferences": "",
-    "backConferences": "",
-    "conferenceName": "",
-    "conferencesSinceGenesis": "",
-    "description": "",
+    "addConferences": "Bu <0>Github</0> repository aracılığıyla eksik konferansları ekleyebilirsiniz.",
+    "backConferences": "Konferanslara geri dönüş",
+    "conferenceName": "Konferans adı",
+    "conferencesSinceGenesis": "Genesis Bloğundan bu yana Bitcoin Konferansları Arşivi",
+    "description": "Konferanslar, Bitcoin endüstrisinde kritik bir rol oynar ve her Bitcoiner'ın eğitim yolculuğunun vazgeçilmez bir parçasıdır. Bu nedenle, yüzlerce Bitcoin etkinliğine kolayca göz atmanızı sağlamak için bu aracı oluşturduk.",
     "details": {
-      "findReplay": "",
-      "nextVideo": "",
-      "previousVideo": "",
-      "selectStage": "",
-      "selectVideo": "",
-      "watchReplay": ""
+      "findReplay": "Bir replay bulun",
+      "nextVideo": "Sonraki vidyo",
+      "previousVideo": "Önceki vidyo",
+      "selectStage": "Bir sahne seçin",
+      "selectVideo": "Bir vidyo seçin",
+      "watchReplay": "Tekrarı izleyin"
     },
-    "language": "",
-    "latestConferences": "",
-    "location": "",
-    "noConferences": "",
-    "pageTitle": "",
-    "planBConferences": "",
-    "topics": ""
+    "language": "Dil",
+    "latestConferences": "Son konferanslar",
+    "location": "Lokasyon",
+    "noConferences": "Henüz {{year}} için eklenmiş konferans yok.",
+    "pageTitle": "Konferans tekrarları",
+    "planBConferences": "Plan ₿ konferansları",
+    "topics": "Konular"
   },
   "courses": {
     "chapter": {
-      "finishCourse": "",
-      "thanksTip": "",
+      "finishCourse": "Kursu bitirin",
+      "thanksTip": "Takdirinizi göstermek ister misiniz?\nYazarı bir bahşiş ile destekleyebilirsiniz.",
       "detail": {
-        "title": "",
-        "p1heading": "",
-        "p1content": "",
-        "p2heading": "",
-        "p2content": "",
-        "bookSeat": "",
-        "classIsFull": "",
-        "cancelBooking": "",
-        "ticketDownload": ""
+        "title": "Ders detayları",
+        "p1heading": "Bu derse yüz yüze katılmayı planlıyor musunuz?",
+        "p1content": "Koltuğunuzu ayırtmayı unutmayın",
+        "p2heading": "Yüz yüze gelemiyor musun?",
+        "p2content": "Sorun değil! Ders, bu sayfada canlı yayınlanacak ve sonrasında tekrar izlemek üzere kullanılabilir olacak.",
+        "bookSeat": "Koltuğunuzu ayırtın",
+        "classIsFull": "Ders kontenjanı doldu",
+        "cancelBooking": "Rezervasyonunuzu iptal edin",
+        "ticketDownload": "Biletinizi indirin"
       },
-      "next": "",
-      "nextLesson": "",
+      "next": "Bölümü bitir",
+      "nextLesson": "Bir sonraki ders",
       "live": {
-        "title": "",
-        "stayTuned": ""
+        "title": "Canlı vidyo",
+        "stayTuned": "Canlı oturum, dersin başlamasından 30 dakika önce başlayacak. Takipte kalın!"
       }
     },
     "details": {
@@ -534,6 +529,10 @@
       "whyTimeStamp": "",
       "wishTryAgain": "",
       "yesSubmit": ""
+    },
+    "conclusion": {
+      "completedFeedbackHeadline": "Geri bildiriminiz için teşekkür ederiz!\nBu bizim için çok önemli, gerçekten minnettarız.",
+      "completedChaptersHeadline": "Tüm bölümler şimdi tamamlandı!"
     }
   },
   "nodeNetwork": {
@@ -753,7 +752,6 @@
   },
   "menu": {
     "betDescription": "",
-    "buildersDescription": "",
     "conferencesDescription": "",
     "libraryDescription": "",
     "nodeNetworkDescription": "",
@@ -831,7 +829,9 @@
     "pageSubtitle": "Merkezi açık kaynak eğitim aracılığıyla kitlesel benimsenme",
     "pageTitle": "B-Sertifikası",
     "readChart": "Tabloyu oku",
-    "tweetText": ""
+    "tweetText": "@planb_network'da ₿-Sertifikasını {{score}}/100 puanla geçtiğim için çok heyecanlıyım! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
+    "download": "Sertifika indir",
+    "verify": "Belgenizin geçerliliğini kontrol edin"
   },
   "glossary": {
     "filterBar": "",

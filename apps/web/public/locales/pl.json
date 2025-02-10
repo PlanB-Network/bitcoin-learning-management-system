@@ -84,14 +84,6 @@
     "contributeButton": "Pomoc i współpraca",
     "contributeTitle": "Chcesz się przyłączyć?"
   },
-  "builders": {
-    "pageTitle": "Partnerzy Bitcoina",
-    "languages": "Języki",
-    "networkStrength": "Siła sieci tkwi w jej członkach",
-    "otherCommunities": "Odkryj społeczności należące do PlanB",
-    "relatedEvents": "Powiązane nadchodzące wydarzenia",
-    "noRelatedEvents": "Obecnie nie ma żadnych nadchodzących wydarzeń związanych z tą firmą lub organizacją."
-  },
   "courses": {
     "chapter": {
       "finishCourse": "Zakończ kurs",
@@ -520,7 +512,6 @@
   },
   "menu": {
     "betDescription": "Collection of content that you can use for your educational projects",
-    "buildersDescription": "Learn about the companies and projects that work at making bitcoin better and growing its adoption",
     "libraryDescription": "Discover plenty of books to improve your knowledge",
     "nodeNetworkDescription": "Dołącz do globalnej sieci społeczności Plan B",
     "podcastsDescription": "Poznaj ekosystem Bitcoina słuchając podcastów",

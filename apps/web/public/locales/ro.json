@@ -70,7 +70,8 @@
     "emailTip": "E-mailul nu este obligatoriu, dar poate fi util în cazul unei parole uitate :)",
     "trackProgress": "Creează un cont sau autentifică-te pentru a urmări progresul tău",
     "dashboardUnlocked": "Dashboard-ul tău de student este deblocat!",
-    "didYouKnow": "Știai?"
+    "didYouKnow": "Știai?",
+    "passwordChangedSuccess": "Parola a fost schimbată cu succes"
   },
   "bCertificate": {
     "bCertificateDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
@@ -104,14 +105,6 @@
       "description": "Imaginile de mai jos pot fi folosite pentru propriile tale creații.",
       "title": "Conținut vizual"
     }
-  },
-  "builders": {
-    "networkStrength": "Forța unei rețele constă în membrii săi",
-    "otherCommunities": "Explorează comunitățile Plan B",
-    "pageTitle": "Constructori Bitcoin",
-    "languages": "Limbi",
-    "relatedEvents": "Evenimente viitoare conexe",
-    "noRelatedEvents": "Nu există evenimente viitoare legate de acest creator în acest moment."
   },
   "conferences": {
     "addConferences": "Nu ezitați să adăugați orice conferințe lipsă prin acest repository <0>Github</0>.",
@@ -159,7 +152,9 @@
       "hasNotBeenProofread": "Acest curs încă nu a fost corectat",
       "hasBeenProofreadBy": "Acest curs a fost corectat de",
       "otherCourses": "Alte cursuri",
-      "courseAddedToDashboard": "Acest curs a fost adăugat la dashboardul al studentului dumneavoastră"
+      "courseAddedToDashboard": "Acest curs a fost adăugat la dashboardul al studentului dumneavoastră",
+      "pastEditionsRatings": "Evaluările edițiilor anterioare",
+      "ledBy": "Acest curs este condus de"
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
@@ -188,7 +183,9 @@
       "journey": "Bitcoin este o călătorie, nu o destinație",
       "pageDescription": "Academia Plan B este dedicată simplificării educației Bitcoin la nivel mondial. Curată de experți din diverse domenii, academia noastră oferă o gamă completă de cursuri concepute pentru a clarifica fiecare aspect al Bitcoin. De la începător la expert, fie în ritmul propriu, fie urmat săptămânal de un profesor, sperăm că academia poate ajuta la înțelegerea mai bună a subiectului vast care este Bitcoin. O mare parte din cursurile noastre sunt complet gratuite, astfel încât oricine, oriunde, să aibă acces la educație.",
       "seeCourse": "Vezi cursul",
-      "buildPath": "Construiește-ți propriul drum în \"gaura iepurelui\""
+      "buildPath": "Construiește-ți propriul drum în \"gaura iepurelui\"",
+      "comingSoon": "în curând",
+      "planbSchool": "ȘCOALA PLAN ₿"
     },
     "payment": {
       "access_invoice": "Puteți accesa factura dvs. prin intermediul dashboard-ului",
@@ -630,7 +627,6 @@
     "glossaryDescription": "Înțelege limba Bitcoin",
     "bCertificateDescription": "Trece examenul pentru Certificatul ₿ pentru a-ți demonstra nivelul de cunoștințe despre Bitcoin",
     "betDescription": "Colecție de conținut pe care îl puteți utiliza pentru proiectele dvs. educaționale",
-    "buildersDescription": "Aflați despre companiile și proiectele care lucrează la îmbunătățirea Bitcoin și la creșterea adoptării sale",
     "conferencesDescription": "Colecție de reluări ale conferințelor Bitcoin de la Blocul Genesis",
     "libraryDescription": "Descoperă multe cărți pentru a-ți îmbunătăți cunoștințele",
     "login": "Autentificare",
