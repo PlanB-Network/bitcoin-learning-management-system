@@ -1,13 +1,18 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-  useHasMounted,
-} from '@react-hooks-library/core';
+import { BreakPointHooks, useHasMounted } from '@react-hooks-library/core';
 import { useEffect, useState } from 'react';
 
-const { useSmaller: rhlUseSmaller } = BreakPointHooks(breakpointsTailwind);
+const customBreakpoints = {
+  sm: 639,
+  md: 767,
+  lg: 1023,
+  xl: 1279,
+  '2xl': 1535,
+};
 
-export const useSmaller = (breakpoint: keyof typeof breakpointsTailwind) => {
+// Using custom breakpoints instead of Tailwind's one to prevent discrepancies
+const { useSmaller: rhlUseSmaller } = BreakPointHooks(customBreakpoints);
+
+export const useSmaller = (breakpoint: keyof typeof customBreakpoints) => {
   const [isSmaller, setIsSmaller] = useState<boolean | null>(null);
   const isRhlSmaller = rhlUseSmaller(breakpoint);
   const hasMounted = useHasMounted();
