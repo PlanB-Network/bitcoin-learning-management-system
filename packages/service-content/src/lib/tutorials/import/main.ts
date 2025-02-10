@@ -32,12 +32,21 @@ interface TutorialMain {
       };
   tags?: string[];
   proofreading: ProofreadingEntry[];
+  test_only?: boolean;
 }
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (tutorial: ChangedTutorial, file?: ChangedFile) => {
     if (!file) return;
     const parsedTutorial = await yamlToObject<TutorialMain>(file);
+
+    if (
+      parsedTutorial.test_only === true &&
+      process.env.NODE_ENV === 'production'
+    ) {
+      console.log('-- Sync: Ignore tutorial', parsedTutorial.id);
+      return;
+    }
 
     const lastUpdated = tutorial.files.sort((a, b) => b.time - a.time)[0];
 
