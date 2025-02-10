@@ -30,7 +30,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import { BiPlus } from 'react-icons/bi';
@@ -66,6 +66,8 @@ function CareerPortal() {
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedFileName, setSelectedFileName] = useState('');
   const [cvErrorMessage, setCvErrorMessage] = useState('');
 
   const navigate = useNavigate();
@@ -1004,18 +1006,37 @@ function CareerPortal() {
               />
 
               <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
+                {/* Hidden file input */}
                 <input
                   type="file"
                   accept=".pdf"
-                  className="w-full max-w-[614px] rounded-[10px] overflow-hidden body-16px md:label-medium-16px text-newBlack-5 border border-newBlack-4 file:p-3.5 file:mr-3.5 file:rounded-none file:border-0 file:border-r file:border-newBlack-4 md:file:text-lg file:leading-normal file:font-medium file:bg-darkOrange-5 file:text-white hover:file:cursor-pointer appearance-none"
-                  onChange={handleCVUpload}
+                  ref={fileInputRef}
+                  className="hidden"
+                  onChange={(e) => {
+                    handleCVUpload(e);
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      setSelectedFileName(file.name);
+                    }
+                  }}
                 />
+                <div className="flex items-center rounded-[10px] overflow-hidden max-w-[614px] w-full md:hover:shadow-course-navigation-sm h-[46px]">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                  >
+                    {t('dashboard.careerPortal.chooseFile')}
+                  </button>
+                  <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                    {selectedFileName ||
+                      t('dashboard.careerPortal.noFileSelected')}
+                  </span>
+                </div>
                 <p className="body-14px text-newGray-1">
                   {t('dashboard.careerPortal.acceptedFormat')}
                 </p>
-
                 {cvErrorMessage && <FormMessage>{cvErrorMessage}</FormMessage>}
-
                 {form.formState.errors.cvUrl && (
                   <FormMessage>
                     {t('dashboard.careerPortal.cvRequired')}
