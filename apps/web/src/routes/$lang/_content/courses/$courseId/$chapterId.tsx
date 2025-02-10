@@ -750,15 +750,15 @@ function CourseChapter() {
                       if (!pdf) {
                         pdf = await downloadTicketMutateAsync({
                           title: chapter.course.name,
-                          addressLine1: 'Lugano, Switzerland',
-                          addressLine2: '',
-                          addressLine3: '',
+                          addressLine1: chapter.addressLine1,
+                          addressLine2: chapter.addressLine2,
+                          addressLine3: chapter.addressLine3,
                           formattedStartDate: `Start date: ${formatDate(chapter.course.startDate)}`,
                           formattedTime: `End date: ${formatDate(chapter.course.endDate)}`,
-                          liveLanguage: '',
+                          liveLanguage: chapter.liveLanguage,
                           formattedCapacity: '',
                           contact: 'contact@planb.network',
-                          userName: user ? user.username : '',
+                          userName: user?.username ?? '',
                         });
                         setDownloadedPdf(pdf);
                       }

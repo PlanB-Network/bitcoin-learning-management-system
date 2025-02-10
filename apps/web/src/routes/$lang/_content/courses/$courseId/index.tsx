@@ -657,7 +657,7 @@ function CourseDetails() {
           if (!pdf) {
             pdf = await downloadTicketMutateAsync({
               title: course.name,
-              addressLine1: 'Lugano, Switzerland',
+              addressLine1: '',
               addressLine2: '',
               addressLine3: '',
               formattedStartDate: `Start date: ${formatDate(course.startDate)}`,
