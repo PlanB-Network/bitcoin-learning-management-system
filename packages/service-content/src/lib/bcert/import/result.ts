@@ -6,7 +6,7 @@ import type { ChangedFile, UserAccount } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
-interface BCertificateResult {
+interface BCertResult {
   username: string;
   categories: {
     [key: string]: number;
@@ -15,7 +15,7 @@ interface BCertificateResult {
 
 export const createProcessResultFile = (transaction: TransactionSql) => {
   return async (bcertId: string, file: ChangedFile) => {
-    const parsed = await yamlToObject<BCertificateResult>(file);
+    const parsed = await yamlToObject<BCertResult>(file);
 
     const uid = await transaction<Array<Pick<UserAccount, 'uid'>>>`
           SELECT uid FROM users.accounts WHERE username = LOWER( ${parsed.username} )

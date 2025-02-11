@@ -8,7 +8,7 @@ import { FiDownload, FiLoader } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
 
-import type { JoinedBCertificateResults, Ticket } from '@blms/types';
+import type { JoinedBCertResults, Ticket } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
 import DummyBCert from '#src/assets/about/dummy-bcert.webp';
@@ -146,7 +146,7 @@ const ExamResult = ({
   handleExamOpen,
   isExamOpen,
 }: {
-  exam: JoinedBCertificateResults;
+  exam: JoinedBCertResults;
   index: number;
   handleExamOpen: (index: number) => void;
   isExamOpen: boolean[];
@@ -698,7 +698,7 @@ const BcertDetails = ({
   examScore,
   examIndex,
 }: {
-  exam: JoinedBCertificateResults;
+  exam: JoinedBCertResults;
   examScore: number;
   examIndex: number;
 }) => {

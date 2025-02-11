@@ -359,7 +359,7 @@ export const usersApiKeys = users.table('api_keys', (t) => ({
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
-// BCERTIFICATE
+// BCERT
 
 export const contentBCertificateExam = content.table(
   'b_certificate_exam',

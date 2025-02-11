@@ -1,5 +1,5 @@
 import { firstRow, sql } from '@blms/database';
-import type { BCertificateExam, ChangedFile } from '@blms/types';
+import type { BCertExam, ChangedFile } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
@@ -35,57 +35,46 @@ export const parseDetailsFromPath = (path: string): BCertExamDetails => {
   };
 };
 
-export const groupByBCertificateExam = (
-  files: ChangedFile[],
-  errors: string[],
-) => {
-  const bCertificateExamsFiles = files.filter(
+export const groupByBCertExam = (files: ChangedFile[], errors: string[]) => {
+  const bCertExamsFiles = files.filter(
     (item) => getContentType(item.path) === 'bcert/editions',
   );
 
-  const groupedBCertificateExams = new Map<string, ChangedBCertExam>();
+  const groupedBCertExams = new Map<string, ChangedBCertExam>();
 
-  for (const file of bCertificateExamsFiles) {
+  for (const file of bCertExamsFiles) {
     try {
-      const { path: bCertificateExamPath, fullPath } = parseDetailsFromPath(
-        file.path,
-      );
+      const { path: bCertExamPath, fullPath } = parseDetailsFromPath(file.path);
 
-      const bCertificateExam: ChangedBCertExam = groupedBCertificateExams.get(
-        bCertificateExamPath,
+      const bCertExam: ChangedBCertExam = groupedBCertExams.get(
+        bCertExamPath,
       ) || {
         type: 'bcert/editions',
-        path: bCertificateExamPath,
+        path: bCertExamPath,
         fullPath: fullPath,
         files: [],
       };
 
-      bCertificateExam.files.push({
+      bCertExam.files.push({
         ...file,
-        path: getRelativePath(file.path, bCertificateExamPath),
+        path: getRelativePath(file.path, bCertExamPath),
       });
 
-      groupedBCertificateExams.set(bCertificateExamPath, bCertificateExam);
+      groupedBCertExams.set(bCertExamPath, bCertExam);
     } catch {
       errors.push(`Unsupported path ${file.path}, skipping file...`);
     }
   }
 
-  return [...groupedBCertificateExams.values()];
+  return [...groupedBCertExams.values()];
 };
 
-export const createUpdateBCertificateExams = ({
-  postgres,
-  s3,
-}: Dependencies) => {
-  return async (bCertificateExam: ChangedBCertExam, errors: string[]) => {
-    const { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
+export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
+  return async (bCertExam: ChangedBCertExam, errors: string[]) => {
+    const { main, files } = separateContentFiles(bCertExam, 'bcert.yml');
 
     // bcert/editions/2024-btc-prague/bcert.yml
-    const bcertEdition = bCertificateExam.fullPath
-      .split('/')
-      .slice(2, 3)
-      .join('/');
+    const bcertEdition = bCertExam.fullPath.split('/').slice(2, 3).join('/');
 
     const resultFiles = files.filter((file) =>
       file.path.includes('result.yml'),
@@ -117,22 +106,22 @@ export const createUpdateBCertificateExams = ({
         );
 
         try {
-          await processMainFile(bCertificateExam, main);
+          await processMainFile(bCertExam, main);
         } catch (error) {
           errors.push(
-            `Error processing file(B Certificate Exam) ${bCertificateExam?.fullPath} : ${error}`,
+            `Error processing file(B Certificate Exam) ${bCertExam?.fullPath} : ${error}`,
           );
         }
 
-        const bcertId = await transaction<BCertificateExam[]>`
-          SELECT id FROM content.b_certificate_exam WHERE path = ${bCertificateExam.path}
+        const bcertId = await transaction<BCertExam[]>`
+          SELECT id FROM content.b_certificate_exam WHERE path = ${bCertExam.path}
         `
           .then(firstRow)
           .then((row) => row?.id);
 
         if (!bcertId) {
           throw new Error(
-            `B Certificate Exam not found for path ${bCertificateExam.path}`,
+            `B Certificate Exam not found for path ${bCertExam.path}`,
           );
         }
 
@@ -179,7 +168,7 @@ export const createUpdateBCertificateExams = ({
   };
 };
 
-export const createDeleteBCertificateExams = ({ postgres }: Dependencies) => {
+export const createDeleteBCertExams = ({ postgres }: Dependencies) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

@@ -7,19 +7,15 @@ import {
   usersBCertificateTimestamps,
 } from '@blms/database';
 
-export const BCertificateExamSchema = createSelectSchema(
-  contentBCertificateExam,
-);
+export const BCertExamSchema = createSelectSchema(contentBCertificateExam);
 
-export const BCertificateResultsSchema = createSelectSchema(
-  usersBCertificateResults,
-);
+export const BCertResultsSchema = createSelectSchema(usersBCertificateResults);
 
-export const BCertificateTimestampsSchema = createSelectSchema(
+export const BCertTimestampsSchema = createSelectSchema(
   usersBCertificateTimestamps,
 );
 
-export const JoinedBCertificateResultsSchema = BCertificateExamSchema.pick({
+export const JoinedBCertResultsSchema = BCertExamSchema.pick({
   id: true,
   date: true,
   location: true,
@@ -30,7 +26,7 @@ export const JoinedBCertificateResultsSchema = BCertificateExamSchema.pick({
   lastCommit: true,
 })
   .merge(
-    BCertificateTimestampsSchema.pick({
+    BCertTimestampsSchema.pick({
       pdfKey: true,
       imgKey: true,
       txtKey: true,
@@ -39,7 +35,7 @@ export const JoinedBCertificateResultsSchema = BCertificateExamSchema.pick({
   )
   .merge(
     z.object({
-      results: BCertificateResultsSchema.pick({
+      results: BCertResultsSchema.pick({
         category: true,
         score: true,
       }).array(),

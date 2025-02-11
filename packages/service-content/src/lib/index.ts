@@ -1,9 +1,9 @@
 import type { ChangedAsset, ChangedFile } from '@blms/types';
 
 import {
-  createDeleteBCertificateExams,
-  createUpdateBCertificateExams,
-  groupByBCertificateExam,
+  createDeleteBCertExams,
+  createUpdateBCertExams,
+  groupByBCertExam,
 } from './bcert/import/index.js';
 import {
   createDeleteBlogs,
@@ -76,7 +76,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateQuizQuestions = createUpdateQuizQuestions(dependencies);
   const updateProfessors = createUpdateProfessors(dependencies);
   const updateEvents = createUpdateEvents(dependencies);
-  const updateBCertificates = createUpdateBCertificateExams(dependencies);
+  const updateBCerts = createUpdateBCertExams(dependencies);
   const updateBlogs = createUpdateBlogs(dependencies);
   const updateLegals = createUpdateLegals(dependencies);
   const indexContent = createIndexContent(dependencies);
@@ -179,10 +179,10 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
 
     // Sync B Certificates exams
     {
-      const bCertificates = groupByBCertificateExam(filteredFiles, errors);
-      const time = timeLog(bCertificates.length, 'B Certificate exam');
-      for (const bCertificate of bCertificates) {
-        await updateBCertificates(bCertificate, errors);
+      const bCerts = groupByBCertExam(filteredFiles, errors);
+      const time = timeLog(bCerts.length, 'B Certificate exam');
+      for (const bCert of bCerts) {
+        await updateBCerts(bCert, errors);
       }
       time();
     }
@@ -201,7 +201,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteTutorials = createDeleteTutorials(dependencies);
   const deleteResources = createDeleteResources(dependencies);
   const deleteEvents = createDeleteEvents(dependencies);
-  const deleteBCertificates = createDeleteBCertificateExams(dependencies);
+  const deleteBCerts = createDeleteBCertExams(dependencies);
   const deleteBlogs = createDeleteBlogs(dependencies);
   const deleteLegals = createDeleteLegals(dependencies);
 
@@ -215,7 +215,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteTutorials(sync_date, errors);
     await deleteResources(sync_date, errors);
     await deleteEvents(sync_date, errors);
-    await deleteBCertificates(sync_date, errors);
+    await deleteBCerts(sync_date, errors);
     await deleteBlogs(sync_date, errors);
     await deleteLegals(sync_date, errors);
 
