@@ -48,14 +48,14 @@ export const CurrentEvents = ({
       const startDate = event.startDate.getTime();
       let endDate = event.endDate.getTime();
       const ONE_HOUR = 60 * 60 * 1000;
-      const THIRTY_MINUTES = 30 * 60 * 1000;
+      const THREE_HOURS = 3 * 60 * 60 * 1000;
 
       if (event.endDate.getUTCHours() === 0) {
         const TWENTY_FOUR_HOURS = 24 * ONE_HOUR;
         endDate += TWENTY_FOUR_HOURS;
       }
 
-      return startDate - now < THIRTY_MINUTES && now < endDate + ONE_HOUR;
+      return startDate - now < THREE_HOURS && now < endDate + ONE_HOUR;
     });
   }
 

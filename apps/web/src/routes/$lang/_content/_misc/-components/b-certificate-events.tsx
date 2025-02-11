@@ -45,14 +45,9 @@ export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
     (e) => e.id === paymentModalData.eventId,
   );
 
-  const sortedEvents = [...events]
-    .filter((event) => {
-      const now = Date.now();
-      const startDate = event.startDate.getTime();
-
-      return now < startDate;
-    })
-    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+  const sortedEvents = [...events].sort(
+    (a, b) => a.startDate.getTime() - b.startDate.getTime(),
+  );
 
   useEffect(() => {
     if (isLoggedIn) {

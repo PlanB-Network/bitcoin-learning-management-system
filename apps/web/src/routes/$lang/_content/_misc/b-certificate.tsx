@@ -73,10 +73,15 @@ function BCertificate() {
   const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery();
   const { t } = useTranslation();
 
+  const ONE_HOUR = 60 * 60 * 1000;
+  const now = Date.now();
+
   const filteredEvents = events
-    ? events.filter(
-        (event) => event.type === 'exam' && event.startDate > new Date(),
-      )
+    ? events.filter((event) => {
+        const endDate = event.endDate.getTime();
+
+        return event.type === 'exam' && now < endDate + ONE_HOUR;
+      })
     : [];
 
   useEffect(() => {
