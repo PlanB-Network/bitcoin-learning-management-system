@@ -43,7 +43,7 @@ export const ConferencesTimeLine = ({
   );
 
   return (
-    <div className="flex relative w-full max-w-[914px] mx-auto mt-8 gap-2 max-md:bg-darkOrange-11 max-md:py-4 max-md:shadow-sm-card">
+    <div className="flex relative w-full max-w-[914px] mx-auto mt-8 gap-2 max-md:bg-darkOrange-11 max-md:py-4 max-md:shadow-sm-card-dark">
       <button
         type="button"
         onClick={scrollPrev}

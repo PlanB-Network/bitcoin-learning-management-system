@@ -652,7 +652,7 @@ const HeaderBox = ({
           isDone
             ? 'border-darkOrange-1 bg-darkOrange-5 shadow-course-navigation-sm'
             : isCurrentStep
-              ? 'border-darkOrange-5 shadow-sm-card'
+              ? 'border-darkOrange-5 shadow-sm-card-dark'
               : 'border-newGray-5',
         )}
       >
