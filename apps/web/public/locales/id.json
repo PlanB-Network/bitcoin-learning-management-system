@@ -307,7 +307,7 @@
       "veryGood": "sangat bagus",
       "whatStudentsSay": "Apa yang para siswa katakan tentang kursus ini",
       "writeThoughts": "Di sini anda dapat menulis pemikiran Anda",
-      "yesVeryMuch": "",
+      "yesVeryMuch": "sangat, iya",
       "loadMoreComments": "",
       "neutral": "",
       "no": "",
@@ -320,7 +320,7 @@
       "tooEasy": "terlalu gampang",
       "tooHard": "terlalu susah",
       "faithful": "",
-      "yesOfCourse": "",
+      "yesOfCourse": "ya, tentu saja",
       "recommend": "",
       "commentAdminMobile": "Komentar pribadi kepada tim admin",
       "commentPublicMobile": "Komentar publik",
@@ -611,13 +611,23 @@
       "uploadCV": "Unggah CV Anda",
       "uploadCVSubLabel": "Unggah CV Anda untuk menunjukkan keahlian dan pengalaman Anda kepada calon pemberi kerja.",
       "welcome": "Selamat datang di Portal Karier Anda",
-      "yourLanguages": "Bahasa anda"
+      "yourLanguages": "Bahasa anda",
+      "applicationStatus": "Aplikasi anda adalah",
+      "bitcoinProjectSubLabel": "Jelaskan proyek Anda di bawah ini."
     },
     "adminPanel": {
       "careers": {
         "resultsRemaining": "{{results}} hasil yang tersisa",
         "seeMore": "Lihat lebih lanjut",
-        "viewCV": "Lihat CV"
+        "viewCV": "Lihat CV",
+        "careers": "Karir",
+        "careersSubtitle": "Di sini anda dapat melihat daftar peserta yang telah menyelesaikan aplikasi mereka. Anda dapat menemukan semua informasi lamaran di dalam spreadsheet.",
+        "cv": "CV",
+        "downloadProfiles": "Unduh spreadsheet",
+        "downloadSpreadsheet": "Unduh spreadsheet",
+        "lastUpdate": "Pembaharuan terakhir",
+        "lastUpdated": "Terakhir diperbarui",
+        "profession": "Profesi"
       },
       "confirmRemoval": "Konfirmasi penghapusan",
       "coursesIds": "ID kursus",
@@ -639,7 +649,9 @@
       "type": "Jenis",
       "upcomingBookings": "Pemesanan yang akan datang",
       "upcomingBookingsSubtitle": "Di sini anda dapat mengunduh daftar peserta untuk semua acara tatap muka.",
-      "userRolesAllocation": "Alokasi peran pengguna"
+      "userRolesAllocation": "Alokasi peran pengguna",
+      "bookings": "Pemesanan",
+      "bookingsPanel": "Panel pemesanan"
     },
     "backToDashboard": "Kembali ke dasbor",
     "studentDashboard": "Dasbor siswa"
