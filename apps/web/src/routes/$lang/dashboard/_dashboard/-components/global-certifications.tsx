@@ -267,7 +267,7 @@ const ExamResult = ({
                           variant="primary"
                           className="items-center flex gap-2.5"
                         >
-                          {t('bCertificate.download')}
+                          {t('bCert.download')}
                           <FiDownload className="size-[18px] md:size-6" />
                         </Button>
                       </a>
@@ -279,7 +279,7 @@ const ExamResult = ({
                         <div className="flex items-center gap-2.5">
                           <Link
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                              t('bCertificate.tweetText', {
+                              t('bCert.tweetText', {
                                 certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(exam.imgKey ? exam.imgKey.split('.').slice(0, 1).join('.') : '')}`,
                                 score: `${exam.score}`,
                                 emoji:
@@ -303,7 +303,7 @@ const ExamResult = ({
                         className="flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
                       >
                         <ApprovedIcon className="size-4" />
-                        <span>{t('bCertificate.verify')}</span>
+                        <span>{t('bCert.verify')}</span>
                       </Link>
                     </div>
                   </td>
@@ -342,7 +342,7 @@ const ExamResult = ({
                           variant="primary"
                           className="items-center flex gap-2.5"
                         >
-                          {t('bCertificate.download')}
+                          {t('bCert.download')}
                           <FiDownload className="size-[18px] md:size-6" />
                         </Button>
                         <Link
@@ -353,7 +353,7 @@ const ExamResult = ({
                           className="flex flex-row items-center mt-4 gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
                         >
                           <ApprovedIcon className="size-4" />
-                          <span>{t('bCertificate.verify')}</span>
+                          <span>{t('bCert.verify')}</span>
                         </Link>
                       </a>
 
@@ -364,7 +364,7 @@ const ExamResult = ({
                         <div className="flex items-center gap-2.5">
                           <Link
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                              t('bCertificate.tweetText', {
+                              t('bCert.tweetText', {
                                 certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(exam.imgKey ? exam.imgKey.split('.').slice(0, 1).join('.') : '')}`,
                                 score: `${exam.score}`,
                                 emoji:
@@ -617,7 +617,7 @@ const NoResults = () => {
         className="text-newBlack-4 whitespace-pre-line text-center pt-6"
         colSpan={6}
       >
-        <Trans i18nKey="dashboard.bCertificate.noResults">
+        <Trans i18nKey="dashboard.bCert.noResults">
           <a
             href="mailto:contact@planb.network"
             className="underline underline-offset-2 hover:text-darkOrange-5"
@@ -659,7 +659,7 @@ const TableHead = () => {
             {t('words.id')}
           </th>
           <th className="w-[8%] mobile-subtitle2 md:desktop-typo2 px-1.5">
-            {t('dashboard.bCertificate.grade')}
+            {t('dashboard.bCert.grade')}
           </th>
           <th className="w-[15%] mobile-subtitle2 md:desktop-typo2 pl-6">
             {t('words.status')}

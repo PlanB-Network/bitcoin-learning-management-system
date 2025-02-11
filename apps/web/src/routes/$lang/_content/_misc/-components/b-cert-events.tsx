@@ -114,7 +114,7 @@ export const BCertEvents = ({ events }: BCertificateEventsProps) => {
 
       <div className="flex flex-col">
         <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-9">
-          {t('bCertificate.bookExam')}
+          {t('bCert.bookExam')}
         </h3>
         {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
@@ -135,7 +135,7 @@ export const BCertEvents = ({ events }: BCertificateEventsProps) => {
         )}
         {sortedEvents.length === 0 && (
           <p className="mobile-h4 md:desktop-h5 text-center">
-            {t('bCertificate.noBookExam')}
+            {t('bCert.noBookExam')}
           </p>
         )}
       </div>

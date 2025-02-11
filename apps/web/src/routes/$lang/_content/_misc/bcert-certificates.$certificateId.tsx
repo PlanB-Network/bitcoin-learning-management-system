@@ -92,13 +92,13 @@ function Certificate() {
 
       <div className="max-w-[266px] md:max-w-[563px] mx-auto text-center">
         <h3 className="max-md:title-medium-sb-18px md:desktop-h4 mb-1 md:mb-2.5">
-          {t('bCertificate.knowledgeableBitcoin')}
+          {t('bCert.knowledgeableBitcoin')}
         </h3>
         <span className="max-md:label-medium-16px md:text-2xl font-medium leading-tight tracking-[0.25px] text-darkOrange-5">
-          {t('bCertificate.challengeYourself')}
+          {t('bCert.challengeYourself')}
         </span>
         <p className="md:desktop-h8 body-16px  mt-4 lg:mt-8">
-          {t('bCertificate.bCertificateDescription')}
+          {t('bCert.bCertificateDescription')}
         </p>
         <Link to="/b-cert" className="flex justify-center mt-[15px] md:mt-8">
           <ButtonWithArrow variant="primary" size={isScreenMd ? 'l' : 'm'}>

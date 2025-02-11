@@ -29,17 +29,17 @@ export const BCertPresentation = ({
       <img src={BCertImage} alt="B-CERT" className="w-1/2 max-lg:w-full" />
       <div className="flex flex-col w-1/2 max-lg:w-full">
         <h3 className="max-md:mobile-h3 md:desktop-h4 mb-2.5">
-          {t('bCertificate.knowledgeableBitcoin')}
+          {t('bCert.knowledgeableBitcoin')}
         </h3>
         <span className="max-md:mobile-h3 md:text-2xl font-medium leading-tight tracking-[0.25px] text-darkOrange-5 mb-2.5 lg:mb-10">
-          {t('bCertificate.challengeYourself')}
+          {t('bCert.challengeYourself')}
         </span>
         <p className="md:desktop-h8 mobile-body1">
-          {t('bCertificate.bCertificateDescription')}
+          {t('bCert.bCertificateDescription')}
         </p>
         <Link to="/b-cert" className="max-lg:mx-auto mt-11">
           <Button variant="primary" size={isScreenMd ? 'l' : 'm'}>
-            {t('bCertificate.checkout')}
+            {t('bCert.checkout')}
             <FaArrowRightLong
               className={cn(
                 'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
