@@ -3,13 +3,13 @@ import type { JoinedCourseChapterWithContent } from '@blms/types';
 
 export const getCourseChapterQuery = (chapterId: string, language?: string) => {
   return sql<JoinedCourseChapterWithContent[]>`
-    SELECT
+    SELECT DISTINCT ON (cl.chapter_id)
       cl.course_id,
       ch.part_id,
       cl.chapter_id,
       part_index,
       chapter_index,
-      language,
+      cl.language,
       title,
       sections,
       release_place,
@@ -42,12 +42,25 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
     LEFT JOIN LATERAL (
       SELECT ARRAY_AGG(cp.contributor_id) AS professors
       FROM content.course_chapters_localized_professors cp
-      WHERE
-        cp.chapter_id = ${chapterId}
-        AND cp.language = ${language ? language : 'language'} -- Fallback to the chapter's language if none provided
+      WHERE cp.chapter_id = ${chapterId}
+        AND ${
+          language
+            ? sql`(cp.language = LOWER(${language}) OR cp.language = cl.language)`
+            : sql`cp.language = cl.language`
+        }
     ) AS cp_agg ON TRUE
-    WHERE
-      cl.chapter_id = ${chapterId}
-    ${language ? sql`AND cl.language = LOWER(${language})` : sql``}
+    WHERE cl.chapter_id = ${chapterId}
+      ${
+        language
+          ? sql`AND (cl.language = LOWER(${language}) OR cl.language = c.original_language)`
+          : sql``
+      }
+    ORDER BY
+      cl.chapter_id,
+      CASE
+        WHEN ${language ? sql`cl.language = LOWER(${language})` : sql`false`} THEN 1
+        WHEN cl.language = c.original_language THEN 2
+        ELSE 3
+      END
   `;
 };
