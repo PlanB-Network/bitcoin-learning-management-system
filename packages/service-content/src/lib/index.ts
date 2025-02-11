@@ -4,7 +4,7 @@ import {
   createDeleteBCertificateExams,
   createUpdateBCertificateExams,
   groupByBCertificateExam,
-} from './bcertificate/import/index.js';
+} from './bcert/import/index.js';
 import {
   createDeleteBlogs,
   createUpdateBlogs,

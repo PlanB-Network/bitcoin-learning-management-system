@@ -1,4 +1,4 @@
-export * from './lib/bcertificate/services/index.js';
+export * from './lib/bcert/services/index.js';
 export * from './lib/blogs/services/index.js';
 export * from './lib/coupon/services/index.js';
 export * from './lib/courses/services/index.js';

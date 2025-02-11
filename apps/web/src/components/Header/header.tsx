@@ -251,8 +251,8 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             },
             {
               id: 'b-cert',
-              title: t('words.bCertificate'),
-              description: t('menu.bCertificateDescription'),
+              title: t('words.bCert'),
+              description: t('menu.bCertDescription'),
               path: '/b-cert',
             },
             {
@@ -313,8 +313,8 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
         },
         {
           id: 'b-cert',
-          title: t('words.bCertificate'),
-          description: t('menu.bCertificateDescription'),
+          title: t('words.bCert'),
+          description: t('menu.bCertDescription'),
           path: '/b-cert',
           icon: <MdOutlineSchool size={20} className="shrink-0" />,
         },

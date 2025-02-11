@@ -35,7 +35,7 @@ export const BCertPresentation = ({
           {t('bCert.challengeYourself')}
         </span>
         <p className="md:desktop-h8 mobile-body1">
-          {t('bCert.bCertificateDescription')}
+          {t('bCert.bCertDescription')}
         </p>
         <Link to="/b-cert" className="max-lg:mx-auto mt-11">
           <Button variant="primary" size={isScreenMd ? 'l' : 'm'}>

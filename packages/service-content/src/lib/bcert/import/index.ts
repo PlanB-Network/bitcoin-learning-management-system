@@ -15,14 +15,14 @@ import {
   createProcessTimestampFile,
 } from './result.js';
 
-interface BCertificateExamDetails {
+interface BCertExamDetails {
   path: string;
   fullPath: string;
 }
 
-export type ChangedBCertificateExam = ChangedContent;
+export type ChangedBCertExam = ChangedContent;
 
-export const parseDetailsFromPath = (path: string): BCertificateExamDetails => {
+export const parseDetailsFromPath = (path: string): BCertExamDetails => {
   const pathElements = path.split('/');
 
   // Validate that the path has at least 3 elements (bcert/name)
@@ -43,7 +43,7 @@ export const groupByBCertificateExam = (
     (item) => getContentType(item.path) === 'bcert/editions',
   );
 
-  const groupedBCertificateExams = new Map<string, ChangedBCertificateExam>();
+  const groupedBCertificateExams = new Map<string, ChangedBCertExam>();
 
   for (const file of bCertificateExamsFiles) {
     try {
@@ -51,13 +51,14 @@ export const groupByBCertificateExam = (
         file.path,
       );
 
-      const bCertificateExam: ChangedBCertificateExam =
-        groupedBCertificateExams.get(bCertificateExamPath) || {
-          type: 'bcert/editions',
-          path: bCertificateExamPath,
-          fullPath: fullPath,
-          files: [],
-        };
+      const bCertificateExam: ChangedBCertExam = groupedBCertificateExams.get(
+        bCertificateExamPath,
+      ) || {
+        type: 'bcert/editions',
+        path: bCertificateExamPath,
+        fullPath: fullPath,
+        files: [],
+      };
 
       bCertificateExam.files.push({
         ...file,
@@ -77,10 +78,7 @@ export const createUpdateBCertificateExams = ({
   postgres,
   s3,
 }: Dependencies) => {
-  return async (
-    bCertificateExam: ChangedBCertificateExam,
-    errors: string[],
-  ) => {
+  return async (bCertificateExam: ChangedBCertExam, errors: string[]) => {
     const { main, files } = separateContentFiles(bCertificateExam, 'bcert.yml');
 
     // bcert/editions/2024-btc-prague/bcert.yml

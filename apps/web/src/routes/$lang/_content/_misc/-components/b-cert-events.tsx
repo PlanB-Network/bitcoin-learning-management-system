@@ -15,11 +15,11 @@ import { EventBookModal } from '../../events/-components/event-book-modal.tsx';
 import { EventCard } from '../../events/-components/event-card.tsx';
 import { EventPaymentModal } from '../../events/-components/event-payment-modal.tsx';
 
-interface BCertificateEventsProps {
+interface BCertEventsProps {
   events: JoinedEvent[];
 }
 
-export const BCertEvents = ({ events }: BCertificateEventsProps) => {
+export const BCertEvents = ({ events }: BCertEventsProps) => {
   const { session } = useContext(AppContext);
   const { conversionRate } = useContext(ConversionRateContext);
 

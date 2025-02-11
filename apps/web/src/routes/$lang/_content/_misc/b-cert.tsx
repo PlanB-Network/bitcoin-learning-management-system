@@ -4,7 +4,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 import { Button, Loader, cn } from '@blms/ui';
 
-import bCertificatesImage from '#src/assets/about/bcert-image.webp';
+import bCertsImage from '#src/assets/about/bcert-image.webp';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/$lang/_content/_misc/b-cert')({
   component: BCert,
 });
 
-const BCertificateOrganize = () => {
+const BCertOrganize = () => {
   const isScreenMd = useGreater('md');
   const { t } = useTranslation();
 
@@ -102,7 +102,7 @@ function BCert() {
     >
       <div className="flex max-lg:flex-col justify-center items-center gap-6 lg:gap-[111px] my-6 md:mt-14 lg:mb-32">
         <img
-          src={bCertificatesImage}
+          src={bCertsImage}
           alt="₿ Certificates"
           className="w-full max-w-[456px] [overflow-clip-margin:_unset] max-h-[382px] "
         />
@@ -114,14 +114,14 @@ function BCert() {
             {t('bCert.challengeYourself')}
           </span>
           <p className="mobile-body2 md:desktop-h8">
-            {t('bCert.bCertificateDescription')}
+            {t('bCert.bCertDescription')}
           </p>
         </div>
       </div>
       {!isFetched && <Loader size={'s'} />}
       {isFetched && <BCertEvents events={filteredEvents} />}
 
-      <BCertificateOrganize />
+      <BCertOrganize />
     </PageLayout>
   );
 }

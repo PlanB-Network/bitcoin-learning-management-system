@@ -49,10 +49,10 @@ function Certificate() {
   return (
     <PageLayout footerVariant="dark" variant="dark" maxWidth="max-w-[1392px]">
       <h2 className="text-center display-small-32px lg:display-large">
-        {t('words.bCertificate')}
+        {t('words.bCert')}
       </h2>
       <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-[35px] lg:mt-[80px]">
-        {t('courses.exam.bCertificateCompletionText', {
+        {t('courses.exam.bCertCompletionText', {
           username: capitalizedUsername,
         })}
       </p>
@@ -98,7 +98,7 @@ function Certificate() {
           {t('bCert.challengeYourself')}
         </span>
         <p className="md:desktop-h8 body-16px  mt-4 lg:mt-8">
-          {t('bCert.bCertificateDescription')}
+          {t('bCert.bCertDescription')}
         </p>
         <Link to="/b-cert" className="flex justify-center mt-[15px] md:mt-8">
           <ButtonWithArrow variant="primary" size={isScreenMd ? 'l' : 'm'}>

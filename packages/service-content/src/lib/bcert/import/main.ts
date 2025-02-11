@@ -3,9 +3,9 @@ import type { BCertificateExam, ChangedFile } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';
 
-import type { ChangedBCertificateExam } from './index.js';
+import type { ChangedBCertExam } from './index.js';
 
-interface BCertificateExamMain {
+interface BCertExamMain {
   exam_id: string;
   date: string;
   location: string;
@@ -14,14 +14,10 @@ interface BCertificateExamMain {
 }
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
-  return async (
-    bCertificateExam: ChangedBCertificateExam,
-    file?: ChangedFile,
-  ) => {
+  return async (bCertificateExam: ChangedBCertExam, file?: ChangedFile) => {
     if (!file) return;
 
-    const parsedBCertificateExam =
-      await yamlToObject<BCertificateExamMain>(file);
+    const parsedBCertExam = await yamlToObject<BCertExamMain>(file);
 
     const lastUpdated = bCertificateExam.files.sort(
       (a, b) => b.time - a.time,
@@ -32,12 +28,12 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           id, path, date, location, min_score, duration, last_updated, last_commit, last_sync
         )
         VALUES (
-          ${parsedBCertificateExam.exam_id},
+          ${parsedBCertExam.exam_id},
           ${bCertificateExam.path},
-          ${parsedBCertificateExam.date},
-          ${parsedBCertificateExam.location},
-          ${parsedBCertificateExam.score_min},
-          ${parsedBCertificateExam.duration},
+          ${parsedBCertExam.date},
+          ${parsedBCertExam.location},
+          ${parsedBCertExam.score_min},
+          ${parsedBCertExam.duration},
           ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()

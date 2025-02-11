@@ -89,10 +89,10 @@ export const GlobalCertifications = () => {
     <div className="flex flex-col gap-4 lg:gap-8 mt-10">
       <section className="flex flex-col">
         <h4 className="mobile-h3 md:desktop-h6 mb-4">
-          {t('dashboard.credentials.bCertificate')}
+          {t('dashboard.credentials.bCert')}
         </h4>
         <p className="mobile-body2 md:desktop-body1 text-newBlack-4 whitespace-pre-line">
-          {t('dashboard.credentials.bCertificateSubtitle')}
+          {t('dashboard.credentials.bCertSubtitle')}
         </p>
 
         <div className="mt-10">
@@ -250,7 +250,7 @@ const ExamResult = ({
                       {exam.imgKey && (
                         <img
                           src={`/api/files/${exam.imgKey}`}
-                          alt="BCertificate"
+                          alt="BCert"
                           className="mt-4 mx-auto"
                         />
                       )}
@@ -325,7 +325,7 @@ const ExamResult = ({
                       {exam.imgKey && (
                         <img
                           src={`/api/files/${exam.imgKey}`}
-                          alt="BCertificate"
+                          alt="BCert"
                           className="mt-4 md:mt-2.5"
                         />
                       )}
