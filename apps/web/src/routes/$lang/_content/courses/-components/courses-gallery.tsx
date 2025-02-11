@@ -72,7 +72,9 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
     window.location.hash =
       activeTopics.size === 1 && !activeTopics.has('all')
         ? activeTopics.values().next().value!
-        : 'filters';
+        : activeTopics.size > 1
+          ? 'filters'
+          : '';
   }, [activeTopics]);
 
   useEffect(() => {
