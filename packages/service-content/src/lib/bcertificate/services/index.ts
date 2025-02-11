@@ -1,1 +1,1 @@
-export * from './get-b-certificate-results.js';
+export * from './get-bcert-results.js';

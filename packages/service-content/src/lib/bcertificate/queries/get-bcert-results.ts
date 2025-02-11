@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedBCertificateResults } from '@blms/types';
 
-export const getBCertificateResultsQuery = (uid: string) => {
+export const getBCertResultsQuery = (uid: string) => {
   return sql<JoinedBCertificateResults[]>`
     SELECT
       exam.id,

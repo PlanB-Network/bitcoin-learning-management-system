@@ -31,7 +31,7 @@ import { Route as LangContentMiscUnderConstructionImport } from './routes/$lang/
 import { Route as LangContentMiscTermsAndConditionsImport } from './routes/$lang/_content/_misc/terms-and-conditions';
 import { Route as LangContentMiscNodeNetworkImport } from './routes/$lang/_content/_misc/node-network';
 import { Route as LangContentMiscManifestoImport } from './routes/$lang/_content/_misc/manifesto';
-import { Route as LangContentMiscBCertificateImport } from './routes/$lang/_content/_misc/b-certificate';
+import { Route as LangContentMiscBCertImport } from './routes/$lang/_content/_misc/b-cert';
 import { Route as LangContentMiscAboutImport } from './routes/$lang/_content/_misc/about';
 import { Route as LangContentTutorialsCategoryIndexImport } from './routes/$lang/_content/tutorials/$category/index';
 import { Route as LangContentResourcesProjectsIndexImport } from './routes/$lang/_content/resources/projects/index';
@@ -209,12 +209,11 @@ const LangContentMiscManifestoRoute = LangContentMiscManifestoImport.update({
   getParentRoute: () => rootRoute,
 } as any);
 
-const LangContentMiscBCertificateRoute =
-  LangContentMiscBCertificateImport.update({
-    id: '/$lang/_content/_misc/b-certificate',
-    path: '/$lang/b-certificate',
-    getParentRoute: () => rootRoute,
-  } as any);
+const LangContentMiscBCertRoute = LangContentMiscBCertImport.update({
+  id: '/$lang/_content/_misc/b-cert',
+  path: '/$lang/b-cert',
+  getParentRoute: () => rootRoute,
+} as any);
 
 const LangContentMiscAboutRoute = LangContentMiscAboutImport.update({
   id: '/$lang/_content/_misc/about',
@@ -576,11 +575,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscAboutImport;
       parentRoute: typeof rootRoute;
     };
-    '/$lang/_content/_misc/b-certificate': {
-      id: '/$lang/_content/_misc/b-certificate';
-      path: '/$lang/b-certificate';
-      fullPath: '/$lang/b-certificate';
-      preLoaderRoute: typeof LangContentMiscBCertificateImport;
+    '/$lang/_content/_misc/b-cert': {
+      id: '/$lang/_content/_misc/b-cert';
+      path: '/$lang/b-cert';
+      fullPath: '/$lang/b-cert';
+      preLoaderRoute: typeof LangContentMiscBCertImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/_misc/manifesto': {
@@ -1109,7 +1108,7 @@ export interface FileRoutesByFullPath {
   '/$lang': typeof LangIndexRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/about': typeof LangContentMiscAboutRoute;
-  '/$lang/b-certificate': typeof LangContentMiscBCertificateRoute;
+  '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
@@ -1178,7 +1177,7 @@ export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/about': typeof LangContentMiscAboutRoute;
-  '/$lang/b-certificate': typeof LangContentMiscBCertificateRoute;
+  '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
@@ -1248,7 +1247,7 @@ export interface FileRoutesById {
   '/$lang/dashboard': typeof LangDashboardRouteWithChildren;
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/_content/_misc/about': typeof LangContentMiscAboutRoute;
-  '/$lang/_content/_misc/b-certificate': typeof LangContentMiscBCertificateRoute;
+  '/$lang/_content/_misc/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/_content/_misc/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/_content/_misc/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
@@ -1319,7 +1318,7 @@ export interface FileRouteTypes {
     | '/$lang'
     | '/$lang/dashboard'
     | '/$lang/about'
-    | '/$lang/b-certificate'
+    | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
     | '/$lang/terms-and-conditions'
@@ -1387,7 +1386,7 @@ export interface FileRouteTypes {
     | '/$lang'
     | '/$lang/dashboard'
     | '/$lang/about'
-    | '/$lang/b-certificate'
+    | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
     | '/$lang/terms-and-conditions'
@@ -1455,7 +1454,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard'
     | '/$lang/dashboard/_dashboard'
     | '/$lang/_content/_misc/about'
-    | '/$lang/_content/_misc/b-certificate'
+    | '/$lang/_content/_misc/b-cert'
     | '/$lang/_content/_misc/manifesto'
     | '/$lang/_content/_misc/node-network'
     | '/$lang/_content/_misc/terms-and-conditions'
@@ -1525,7 +1524,7 @@ export interface RootRouteChildren {
   LangIndexRoute: typeof LangIndexRoute;
   LangDashboardRoute: typeof LangDashboardRouteWithChildren;
   LangContentMiscAboutRoute: typeof LangContentMiscAboutRoute;
-  LangContentMiscBCertificateRoute: typeof LangContentMiscBCertificateRoute;
+  LangContentMiscBCertRoute: typeof LangContentMiscBCertRoute;
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
   LangContentMiscNodeNetworkRoute: typeof LangContentMiscNodeNetworkRoute;
   LangContentMiscTermsAndConditionsRoute: typeof LangContentMiscTermsAndConditionsRoute;
@@ -1577,7 +1576,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangDashboardRoute: LangDashboardRouteWithChildren,
   LangContentMiscAboutRoute: LangContentMiscAboutRoute,
-  LangContentMiscBCertificateRoute: LangContentMiscBCertificateRoute,
+  LangContentMiscBCertRoute: LangContentMiscBCertRoute,
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
   LangContentMiscNodeNetworkRoute: LangContentMiscNodeNetworkRoute,
   LangContentMiscTermsAndConditionsRoute:
@@ -1669,7 +1668,7 @@ export const routeTree = rootRoute
         "/$lang/",
         "/$lang/dashboard",
         "/$lang/_content/_misc/about",
-        "/$lang/_content/_misc/b-certificate",
+        "/$lang/_content/_misc/b-cert",
         "/$lang/_content/_misc/manifesto",
         "/$lang/_content/_misc/node-network",
         "/$lang/_content/_misc/terms-and-conditions",
@@ -1750,8 +1749,8 @@ export const routeTree = rootRoute
     "/$lang/_content/_misc/about": {
       "filePath": "$lang/_content/_misc/about.tsx"
     },
-    "/$lang/_content/_misc/b-certificate": {
-      "filePath": "$lang/_content/_misc/b-certificate.tsx"
+    "/$lang/_content/_misc/b-cert": {
+      "filePath": "$lang/_content/_misc/b-cert.tsx"
     },
     "/$lang/_content/_misc/manifesto": {
       "filePath": "$lang/_content/_misc/manifesto.tsx"

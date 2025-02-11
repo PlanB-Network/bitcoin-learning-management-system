@@ -27,7 +27,7 @@ import {
 } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
-import { userBCertificateRouter } from './bcertificate.js';
+import { userBCertRouter } from './bcert.js';
 import { userBillingRouter } from './billing.js';
 import { userCalendarRouter } from './calendar.js';
 import { userCareerRouter } from './career.js';
@@ -162,7 +162,7 @@ export const userRouter = createTRPCRouter({
         newPassword: input.newPassword,
       }),
     ),
-  bcertificate: userBCertificateRouter,
+  bcert: userBCertRouter,
   billing: userBillingRouter,
   calendar: userCalendarRouter,
   career: userCareerRouter,

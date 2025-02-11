@@ -17,7 +17,7 @@ import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg';
 import HeaderPill from '#src/assets/icons/footer_pill.webp';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
-import { BCertificatePresentation } from '#src/components/b-certificate-presentation.js';
+import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { VerticalCard } from '#src/molecules/vertical-card.tsx';
@@ -72,7 +72,7 @@ function Home() {
           <LanguageSection />
           <WallOfLoveSection />
           <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)]">
-            <BCertificatePresentation marginClasses="mt-0 !border-0 !shadow-none text-center lg:text-start" />
+            <BCertPresentation marginClasses="mt-0 !border-0 !shadow-none text-center lg:text-start" />
           </div>
           <PatreonSection />
         </div>

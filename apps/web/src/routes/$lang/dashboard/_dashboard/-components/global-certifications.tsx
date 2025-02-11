@@ -25,8 +25,7 @@ export const GlobalCertifications = () => {
 
   const { session } = useContext(AppContext);
 
-  const { data: exams } =
-    trpc.user.bcertificate.getBCertificateResults.useQuery();
+  const { data: exams } = trpc.user.bcert.getBCertResults.useQuery();
 
   const { data: examTickets } = trpc.user.billing.getExamTickets.useQuery();
 
@@ -160,7 +159,7 @@ const ExamResult = ({
   const isMobile = useSmaller('md');
 
   function RetakeExam() {
-    const examLink = '/b-certificate';
+    const examLink = '/b-cert';
 
     return (
       <Link

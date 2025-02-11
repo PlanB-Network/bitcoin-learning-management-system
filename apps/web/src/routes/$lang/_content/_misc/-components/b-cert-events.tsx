@@ -19,7 +19,7 @@ interface BCertificateEventsProps {
   events: JoinedEvent[];
 }
 
-export const BCertificateEvents = ({ events }: BCertificateEventsProps) => {
+export const BCertEvents = ({ events }: BCertificateEventsProps) => {
   const { session } = useContext(AppContext);
   const { conversionRate } = useContext(ConversionRateContext);
 

@@ -250,10 +250,10 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               path: '/node-network',
             },
             {
-              id: 'b-certificate',
+              id: 'b-cert',
               title: t('words.bCertificate'),
               description: t('menu.bCertificateDescription'),
-              path: '/b-certificate',
+              path: '/b-cert',
             },
             {
               id: 'public-release',
@@ -312,10 +312,10 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
           icon: <TbWorld size={20} className="shrink-0" />,
         },
         {
-          id: 'b-certificate',
+          id: 'b-cert',
           title: t('words.bCertificate'),
           description: t('menu.bCertificateDescription'),
-          path: '/b-certificate',
+          path: '/b-cert',
           icon: <MdOutlineSchool size={20} className="shrink-0" />,
         },
         {

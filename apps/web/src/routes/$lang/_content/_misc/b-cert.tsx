@@ -10,10 +10,10 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { useTranslation } from 'react-i18next';
-import { BCertificateEvents } from './-components/b-certificate-events.tsx';
+import { BCertEvents } from './-components/b-cert-events.tsx';
 
-export const Route = createFileRoute('/$lang/_content/_misc/b-certificate')({
-  component: BCertificate,
+export const Route = createFileRoute('/$lang/_content/_misc/b-cert')({
+  component: BCert,
 });
 
 const BCertificateOrganize = () => {
@@ -69,7 +69,7 @@ const BCertificateOrganize = () => {
   );
 };
 
-function BCertificate() {
+function BCert() {
   const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery();
   const { t } = useTranslation();
 
@@ -119,7 +119,7 @@ function BCertificate() {
         </div>
       </div>
       {!isFetched && <Loader size={'s'} />}
-      {isFetched && <BCertificateEvents events={filteredEvents} />}
+      {isFetched && <BCertEvents events={filteredEvents} />}
 
       <BCertificateOrganize />
     </PageLayout>
