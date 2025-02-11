@@ -128,7 +128,9 @@ export const PaymentDescription = ({
           ))}
         </div>
         <div className="place-self-start flex flex-row place-items-center">
-          <span className="max-md:text-sm">Have a reduction code ?</span>
+          <span className="max-md:text-sm">
+            {t('payment.haveReductionCode')}
+          </span>
 
           <input
             id="emailId"

@@ -934,6 +934,7 @@
     "pageTitle": "Oops."
   },
   "payment": {
+    "haveReductionCode": "Have a reduction code ?",
     "payByCard": "Pay by Card",
     "payWithBitcoin": "Pay with Bitcoin",
     "terms": "See our <0>general terms</0> and conditions for refund details",
