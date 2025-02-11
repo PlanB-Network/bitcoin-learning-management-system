@@ -121,7 +121,7 @@ services:
     environment:
       - TYPESENSE_API_KEY=${TYPESENSE_API_KEY:-xyz}
       - TYPESENSE_DATA_DIR=/usr/share/typesense/data
-      - GLOG_minloglevel=1 # https://github.com/typesense/typesense/issues/475
+      - GLOG_minloglevel=2 # https://github.com/typesense/typesense/issues/475
     volumes:
       - typesense:/usr/share/typesense/data
 
