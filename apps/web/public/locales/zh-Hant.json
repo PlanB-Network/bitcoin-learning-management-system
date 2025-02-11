@@ -72,8 +72,8 @@
     "dashboardUnlocked": "您的學員儀表板已解鎖！",
     "didYouKnow": "你知道嗎？"
   },
-  "bCertificate": {
-    "bCertificateDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
+  "bCert": {
+    "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
     "bookExam": "預約考試時段",
     "challengeYourself": "挑戰自己並展現你的實力！",
     "checkout": "查看比特幣證書",
@@ -317,7 +317,7 @@
     }
   },
   "dashboard": {
-    "bCertificate": {
+    "bCert": {
       "noResults": "此帳戶目前沒有任何成績或證書記錄。\n若您已通過考試且成績在長時間後仍未顯示，請聯繫我們以獲得協助。",
       "grade": "等級"
     },
@@ -463,7 +463,7 @@
       "submitReviewInfo": "您必須提交評論才能使用此功能。"
     },
     "credentials": {
-      "bCertificate": "比特幣 ₿ 證書",
+      "bCert": "比特幣 ₿ 證書",
       "beingGraded": "您的考試正在進行評分。結果應在1到2週內公布。",
       "courseDiplomas": "課程文憑",
       "completionDiplomas": "結業證書",
@@ -472,7 +472,7 @@
       "seatBooked": "您的考試座位已經預訂好了",
       "takePlaceAt": "會議將在此地進行",
       "yourCertificate": "您的證書",
-      "bCertificateSubtitle": "在這裡，你可以找到有關你過去和未來比特幣 ₿ 證書的預約和成績的詳細資訊。\n比特幣 ₿ 證書是由 Plan ₿ Network 組織的表格考試，目標在評估你在比特幣及其相關主題的水平。",
+      "bCertSubtitle": "在這裡，你可以找到有關你過去和未來比特幣 ₿ 證書的預約和成績的詳細資訊。\n比特幣 ₿ 證書是由 Plan ₿ Network 組織的表格考試，目標在評估你在比特幣及其相關主題的水平。",
       "courseDiplomasSubtitle": "在這裡，您可以找到您在平台上完成課程後所參加的所有考試的詳細資訊。",
       "downloadTicket": "下載票券"
     },
@@ -579,7 +579,7 @@
     }
   },
   "menu": {
-    "bCertificateDescription": "通過比特幣 ₿ 證書考試來衡量您的比特幣知識等級",
+    "bCertDescription": "通過比特幣 ₿ 證書考試來衡量您的比特幣知識等級",
     "libraryDescription": "探索大量書籍來提升你的知識",
     "betDescription": "您可以用於教育專案的內容集",
     "conferencesDescription": "自創世區塊以來的比特幣會議重播集錦",
@@ -854,7 +854,7 @@
     "all": "所有",
     "amount": "金額",
     "back": "返回",
-    "bCertificate": "比特幣 ₿ 證書",
+    "bCert": "比特幣 ₿ 證書",
     "beginner": "初學者",
     "billing": "帳單",
     "book": "書籍",

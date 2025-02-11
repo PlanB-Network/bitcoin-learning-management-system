@@ -289,7 +289,7 @@
       "timeStampHow": "仕組み：",
       "timerStart": "「開始する」をクリックすると、20分間のタイマーが始まります。",
       "examCertificateCompletionText": "Plan ₿ Networkは、{{username}}が「{{courseName}}」コースの修了証書を授与されたことを祝福いたします。",
-      "bCertificateCompletionText": "Plan ₿ Networkは、{{username}}が₿ 認定証を授与されたことを祝福します。",
+      "bCertCompletionText": "Plan ₿ Networkは、{{username}}が₿ 認定証を授与されたことを祝福します。",
       "buttonTextBCert": "さらに詳しく知る",
       "certificatePageOtherCourses": "その他の関連コース",
       "courseDiploma": "コース修了証書",
@@ -347,7 +347,7 @@
       "upcomingTicketTitle": "今後の予約状況",
       "upcomingTicketSubtitle": "チケットのダウンロードはこちらから。 入場の際は忘れずにお持ちください。"
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "このアカウントに関連する成績認定証はまだありません。.\n試験に合格したにも関わらず、長期間経っても結果が反映されない場合は、私たちに<0>ご連絡</0>ください。",
       "grade": "成績"
     },
@@ -437,8 +437,8 @@
       "tweetText": "@planb_network の{{courseId}}コースを完了し、最終試験で{{score}}/100点を獲得。修了証書をもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
     },
     "credentials": {
-      "bCertificate": "₿ 認定証",
-      "bCertificateSubtitle": "ここでは、あなたの₿ 認定証の予約状況および成績状況に関する詳細をご覧いただけます。\n₿ 認定証とは、Plan ₿ Networkが主催するビットコインとその関連トピックに関するレベルを証明するための試験です。",
+      "bCert": "₿ 認定証",
+      "bCertSubtitle": "ここでは、あなたの₿ 認定証の予約状況および成績状況に関する詳細をご覧いただけます。\n₿ 認定証とは、Plan ₿ Networkが主催するビットコインとその関連トピックに関するレベルを証明するための試験です。",
       "beingGraded": "あなたの試験は採点中です。 結果は1～2週間後にアナウンスします。",
       "courseDiplomas": "コース修了証書",
       "courseDiplomasSubtitle": "ここでは、プラットフォーム上のコースを完了した後に受験したすべての試験の詳細を見ることができます。",
@@ -719,7 +719,7 @@
     "podcastsDescription": "ポッドキャストをとおしてビットコイン・エコシステムについて探求する",
     "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
     "conferencesDescription": "",
-    "bCertificateDescription": "ビットコイン・レベルを評価する ₿ 認定証 試験に合格しよう",
+    "bCertDescription": "ビットコイン・レベルを評価する ₿ 認定証 試験に合格しよう",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
@@ -942,7 +942,7 @@
     "admins": "",
     "all": "",
     "amount": "",
-    "bCertificate": "₿ 認定証",
+    "bCert": "₿ 認定証",
     "booked": "",
     "bookings": "",
     "chapter": "",
@@ -1015,8 +1015,8 @@
     "terms": "",
     "total": "合計"
   },
-  "bCertificate": {
-    "bCertificateDescription": "₿ 認定証は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 この認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
+  "bCert": {
+    "bCertDescription": "₿ 認定証は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 この認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
     "readChart": "憲章を読む",
     "organizeDescription": "問題ありません！ あなたのコミュニティがネットワークの一部であれば、あなたの地域で試験セッションを開催することができます。 規約をお読みいただき、試験を主催するための必須条件を満たしていることをご確認ください。 条件を満たすことができれば、セッションのスケジュールを組み、プラットフォームに追加することができます。",
     "challengeYourself": "自分に挑戦し、自分のレベルを見極めよう！",

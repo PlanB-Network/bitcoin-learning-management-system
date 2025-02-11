@@ -287,7 +287,7 @@
       "dontWorryRetake": "Non preoccuparti, puoi rifare l'esame dopo 24 ore.",
       "certificatePageOtherCourses": "Altri corsi correlati",
       "examCertificateCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ottenuto il certificato del corso \"{{courseName}}\".",
-      "bCertificateCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il ₿-Certificate.",
+      "bCertCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il ₿-Certificate.",
       "courseDiploma": "Certificato",
       "courseNotFound": "Corso non trovato",
       "buttonTextBCert": "Ulteriori informazioni"
@@ -355,7 +355,7 @@
       "upcomingTicketTitle": "Prenotazioni future",
       "upcomingTicketSubtitle": "Qui puoi scaricare il tuo biglietto per partecipare al prossimo evento. Assicurati di portare il biglietto con te per avere accesso all'evento."
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Voto",
       "noResults": "Non ci sono ancora voti o certificati associati a questo account.\nSe hai superato un esame e i tuoi risultati non sono ancora visibili dopo un lungo periodo di tempo, ti preghiamo di contattarci per assistenza."
     },
@@ -451,8 +451,8 @@
       "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione."
     },
     "credentials": {
-      "bCertificate": "₿ Certificate",
-      "bCertificateSubtitle": "Qui puoi trovare i dettagli relativi alle tue prenotazioni e ai voti dei tuoi ₿-Certificate passati e futuri.\nIl ₿-Certificate è un esame in presenza organizzato da Plan ₿ Network per attestare il tuo livello di conoscenza su Bitcoin e i relativi argomenti.",
+      "bCert": "₿ Certificate",
+      "bCertSubtitle": "Qui puoi trovare i dettagli relativi alle tue prenotazioni e ai voti dei tuoi ₿-Certificate passati e futuri.\nIl ₿-Certificate è un esame in presenza organizzato da Plan ₿ Network per attestare il tuo livello di conoscenza su Bitcoin e i relativi argomenti.",
       "beingGraded": "Il tuo esame è in fase di correzione. I risultati dovrebbero essere disponibili tra 1 o 2 settimane.",
       "courseDiplomas": "Diplomi dei corsi",
       "courseDiplomasSubtitle": "Qui puoi trovare i dettagli relativi a tutti gli esami che hai sostenuto dopo aver completato un corso sulla piattaforma.",
@@ -830,7 +830,7 @@
     "teachersDescription": "Conosci i nostri insegnanti universitari, bitcoiner apassionati",
     "conferencesDescription": "Collezione di registrazioni di conferenze Bitcoin dal Blocco Genesi",
     "login": "Accedi",
-    "bCertificateDescription": "Supera l'esame del ₿ Certificate per dimostrare il tuo livello Bitcoin",
+    "bCertDescription": "Supera l'esame del ₿ Certificate per dimostrare il tuo livello Bitcoin",
     "glossaryDescription": "Comprendere il linguaggio di Bitcoin",
     "publicDescription": "Esplora gli articoli di comunicazione pubblica",
     "miningCourseDescription": "Comprendi i processi, gli strumenti e l'industria dietro il mining di Bitcoin.",
@@ -1112,7 +1112,7 @@
     "price": "Prezzo",
     "professor": "Professore",
     "all": "Tutti",
-    "bCertificate": "₿ Certificate",
+    "bCert": "₿ Certificate",
     "courseId": "ID corso",
     "duration": "Durata",
     "edit": "Modifica",
@@ -1238,7 +1238,7 @@
     "payWithBitcoin": "Paga in Bitcoin",
     "payByCard": "Paga con carta"
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Prenota una sessione di esame",
     "challengeYourself": "Sfida te stesso e dimostra il tuo livello!",
     "knowledgeableBitcoin": "Quanto sai su Bitcoin?",
@@ -1247,7 +1247,7 @@
     "organizeExam": "Organizza un esame",
     "organizeSubtitle": "Orangepillare un miliardo di persone non è facile",
     "pageSubtitle": "Adozione di massa attraverso un'educazione centralizzata open source",
-    "bCertificateDescription": "Il ₿ Certificate è un esame riconosciuto a livello internazionale che valuta il tuo livello di istruzione su Bitcoin e i relativi argomenti. Questo certificato ti permetterà di dimostrare le tue capacità e la tua conoscenza nel settore Bitcoin, dandoti accesso ad aziende e posizioni in questo settore.",
+    "bCertDescription": "Il ₿ Certificate è un esame riconosciuto a livello internazionale che valuta il tuo livello di istruzione su Bitcoin e i relativi argomenti. Questo certificato ti permetterà di dimostrare le tue capacità e la tua conoscenza nel settore Bitcoin, dandoti accesso ad aziende e posizioni in questo settore.",
     "checkout": "Accedi al ₿ Certificate",
     "organizeTitle": "Vuoi organizzare un esame ₿ Certificate nel tuo hub?",
     "pageTitle": "Supera il ₿ Certificate",

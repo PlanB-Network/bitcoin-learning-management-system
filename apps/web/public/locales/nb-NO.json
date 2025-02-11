@@ -73,7 +73,7 @@
     "trackProgress": "Opprett en konto eller logg inn for å holde oversikt over fremdriften din",
     "passwordChangedSuccess": "Passordet ble endret"
   },
-  "bCertificate": {
+  "bCert": {
     "checkout": "Sjekk ut ₿-sertifikatet",
     "knowledgeableBitcoin": "Kunnskapsrik i Bitcoin?",
     "noBookExam": "Det er ingen eksamener planlagt ennå.",
@@ -83,7 +83,7 @@
     "pageSubtitle": "Masseadopsjon gjennom sentralisert åpen kildekode-utdanning",
     "pageTitle": "Bestå ₿-sertifikatet",
     "readChart": "Les charteret",
-    "bCertificateDescription": "₿-sertifikatet er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
+    "bCertDescription": "₿-sertifikatet er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
     "bookExam": "Bestill eksamen",
     "challengeYourself": "Utfordre deg selv og bekreft ditt nivå!",
     "organizeDescription": "Ingen problem! Hvis fellesskapet ditt er en del av nettverket, kan du organisere en eksamensøkt på ditt knutepunkt. Vennligst les charteret for å forsikre deg om at du kan overholde de obligatoriske vilkårene for å være vert for en eksamen. Hvis du kan oppfylle dem, kan du planlegge økten din og legge den til på plattformen.",
@@ -325,7 +325,7 @@
       "courseDiploma": "Kursdiplom",
       "courseNotFound": "Kurset ble ikke funnet",
       "examCertificateCompletionText": "Plan ₿ Network gratulerer {{username}} med å ha blitt tildelt kursdiplomet \"{{courseName}}\".",
-      "bCertificateCompletionText": "Plan ₿ Network er glad for å gratulere {{username}} med å ha mottatt ₿-sertifikatet.",
+      "bCertCompletionText": "Plan ₿ Network er glad for å gratulere {{username}} med å ha mottatt ₿-sertifikatet.",
       "buttonTextBCert": "Lær mer",
       "certificatePageOtherCourses": "Andre relaterte kurs"
     },
@@ -345,7 +345,7 @@
     "wallets": "Lommebøker",
     "view": "Visning",
     "about-us": "Om Oss",
-    "bCertificate": "₿ Sertifikat",
+    "bCert": "₿ Sertifikat",
     "level": {
       "advanced": "Avansert",
       "beginner": "Nybegynner",
@@ -482,7 +482,7 @@
   },
   "dashboard": {
     "account": "Konto",
-    "bCertificate": {
+    "bCert": {
       "grade": "Karakter",
       "noResults": "Det er ingen karakterer eller sertifikater knyttet til denne kontoen ennå.\nHvis du har bestått en eksamen og resultatene dine ikke er tilgjengelige etter en lengre periode, vennligst ta kontakt med oss for hjelp."
     },
@@ -627,8 +627,8 @@
       "submitReviewInfo": "Du må sende inn en anmeldelse for å få tilgang til denne funksjonen."
     },
     "credentials": {
-      "bCertificate": "₿ Sertifikat",
-      "bCertificateSubtitle": "Her kan du finne detaljene angående dine bestillinger og karakterer fra dine tidligere og fremtidige ₿ Sertifikater.\n₿ Sertifikatet er en tabell-eksamen organisert av Plan ₿ Network for å bekrefte ditt nivå i Bitcoin og relaterte emner.",
+      "bCert": "₿ Sertifikat",
+      "bCertSubtitle": "Her kan du finne detaljene angående dine bestillinger og karakterer fra dine tidligere og fremtidige ₿ Sertifikater.\n₿ Sertifikatet er en tabell-eksamen organisert av Plan ₿ Network for å bekrefte ditt nivå i Bitcoin og relaterte emner.",
       "courseDiplomas": "Kursdiplomer",
       "globalCertifications": "Globale sertifiseringer",
       "retakeExam": "Ta eksamen på nytt",
@@ -874,7 +874,7 @@
     "pageTitle": "Bitcoin-biblioteket"
   },
   "menu": {
-    "bCertificateDescription": "Bestå ₿-sertifikateksamen for å bekrefte ditt Bitcoin-nivå",
+    "bCertDescription": "Bestå ₿-sertifikateksamen for å bekrefte ditt Bitcoin-nivå",
     "podcastsDescription": "Utforsk bitcoin-økosystemet gjennom podcaster",
     "betDescription": "Samling av innhold som du kan bruke til dine pedagogiske prosjekter",
     "conferencesDescription": "Samling av opptak fra Bitcoin-konferanser siden Genesis-blokken",

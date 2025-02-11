@@ -86,7 +86,7 @@
       "startCourse": "",
       "yourCertificate": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -124,8 +124,8 @@
       "tweetText": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -252,7 +252,7 @@
     "admins": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "booked": "",
     "bookings": "",
     "chapter": "",
@@ -757,7 +757,7 @@
     "nodeNetworkDescription": "",
     "podcastsDescription": "",
     "teachersDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "login": "Giriş Yap",
     "publicDescription": ""
@@ -815,8 +815,8 @@
     "itemNotFound": "",
     "itemNotFoundOrTranslated": ""
   },
-  "bCertificate": {
-    "bCertificateDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
+  "bCert": {
+    "bCertDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
     "organizeDescription": "Sorun değil! Topluluğunuz Ağ'ın bir parçasıysa, merkezinizde bir sınav oturumu düzenlemek mümkündür. Bir sınavı ağırlayabilmeniz için zorunlu koşullara uyup uymadığınızdan emin olmak için lütfen tabloyu okuyun. Bu koşulları yerine getirebiliyorsanız, oturumunuzu planlayabilir ve onu platforma ekleyebilirsiniz.",
     "knowledgeableBitcoin": "Bitcoin hakkında bilgili misiniz?",
     "noBookExam": "Henüz planlanmış bir sınav oturumu yok.",

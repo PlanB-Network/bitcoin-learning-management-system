@@ -295,7 +295,7 @@
       "upcomingTicketTitle": "Kommende Buchungen",
       "upcomingTicketSubtitle": "Laden Sie hier Ihr Ticket herunter, um an Ihrer kommende Veranstaltung teilzunehmen. Bitte denken Sie daran, es für den Eintritt mitzubringen."
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Note",
       "noResults": "Mit diesem Konto sind noch keine Noten oder Zertifikate verbunden. \nWenn Sie eine Prüfung bestanden haben und Ihre Ergebnisse nach einer längeren Zeit nicht verfügbar sind, wenden Sie sich bitte an uns um Hilfe."
     },
@@ -385,8 +385,8 @@
       "coursesCompleted": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -518,7 +518,7 @@
     "teachersDescription": "Lernen Sie unsere Universitätslehrkräfte kennen",
     "conferencesDescription": "Sammlung von Bitcoin-Konferenzwiederholungen seit dem Genesis Block",
     "publicDescription": "Erkunden Sie öffentliche Kommunikationsartikel",
-    "bCertificateDescription": "Bestehen Sie die ₿ Zertifikatsprüfung, um Ihr Bitcoin-Niveau zu bestätigen",
+    "bCertDescription": "Bestehen Sie die ₿ Zertifikatsprüfung, um Ihr Bitcoin-Niveau zu bestätigen",
     "glossaryDescription": "Verstehen Sie die Sprache von Bitcoin",
     "login": "Anmelden"
   },
@@ -757,7 +757,7 @@
     "students": "Schüler:innen",
     "topics": "Themen",
     "view": "Schauen",
-    "bCertificate": "₿ Zertifikat",
+    "bCert": "₿ Zertifikat",
     "unified": "Vereinigt",
     "communities": "Gemeinschaften",
     "failed": "",
@@ -807,8 +807,8 @@
     "terms": "Sehen Sie unsere <0>Allgemeinen Geschäftsbedingungen</0> für die Angabe der Rückerstattung",
     "total": "Summe"
   },
-  "bCertificate": {
-    "bCertificateDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
+  "bCert": {
+    "bCertDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
     "challengeYourself": "Fordern Sie sich selbst heraus und behaupten Sie Ihr Niveau!",
     "bookExam": "Buchen Sie eine Prüfungssitzung",
     "checkout": "Schauen Sie sich das ₿ Zertifikat an",

@@ -69,7 +69,7 @@
     "displayName": "",
     "emailTip": ""
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Reserva una sesión de examen",
     "challengeYourself": "¡Ponte a prueba y afirma tu nivel!",
     "checkout": "Revisa el ₿ Certificate",
@@ -81,7 +81,7 @@
     "pageSubtitle": "Adopción masiva a través de la educación abierta y centralizada de código abierto",
     "pageTitle": "Aprueba el ₿ Certificate",
     "readChart": "Lee el estatuto",
-    "bCertificateDescription": "El ₿ Certificate es un examen reconocido internacionalmente que evalúa tu dominio de Bitcoin y sus temas relacionados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a las mejores empresas y excelentes oportunidades de trabajo.",
+    "bCertDescription": "El ₿ Certificate es un examen reconocido internacionalmente que evalúa tu dominio de Bitcoin y sus temas relacionados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a las mejores empresas y excelentes oportunidades de trabajo.",
     "organizeDescription": "¡No hay problema! Si tu comunidad es parte de la Red, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
     "tweetText": ""
   },
@@ -556,7 +556,7 @@
       "whereYouAre": ""
     },
     "credentials": {
-      "bCertificate": "",
+      "bCert": "",
       "courseDiplomasSubtitle": "",
       "completionDiplomas": "",
       "downloadTicket": "",
@@ -565,11 +565,11 @@
       "seatBooked": "",
       "takePlaceAt": "",
       "yourCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -588,7 +588,7 @@
     "admins": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "beginner": "",
     "billing": "",
     "book": "",
@@ -766,7 +766,7 @@
     "glossaryDescription": "",
     "login": "",
     "publicDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "betDescription": "",
     "libraryDescription": "",
     "nodeNetworkDescription": "",

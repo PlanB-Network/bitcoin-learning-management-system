@@ -73,8 +73,8 @@
     "trackProgress": "Create an account or log in to keep track of your progress",
     "tryAgain": "Try again"
   },
-  "bCertificate": {
-    "bCertificateDescription": "The ₿-Certificate is an internationally recognized exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge in the Bitcoin industry.",
+  "bCert": {
+    "bCertDescription": "The ₿-Certificate is an internationally recognized exam to assess your level about Bitcoin and its derived topics. This certificate will enable you to prove your skills and knowledge in the Bitcoin industry.",
     "bookExam": "Book an exam session",
     "challengeYourself": "Challenge yourself & assess your level!",
     "checkout": "Check out the ₿-Certificate",
@@ -193,7 +193,7 @@
     "exam": {
       "answersReview": "Answers review",
       "availableDashboard": "It will be available in your dashboard in about 10 hours.",
-      "bCertificateCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the ₿-Certificate.",
+      "bCertCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the ₿-Certificate.",
       "buttonTextBCert": "Learn more",
       "certificateAvailable": "It will be available about 10 hours after submission.",
       "certificateGeneration": "Your certificate is being ",
@@ -388,7 +388,7 @@
       "upcomingBookingsSubtitle": "Here you can download the list of participants for all in-person events.",
       "userRolesAllocation": "User roles allocation"
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Grade",
       "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please <0>reach out to us</0> for assistance."
     },
@@ -606,8 +606,8 @@
     },
     "courses": "Courses",
     "credentials": {
-      "bCertificate": "₿-Certificate",
-      "bCertificateSubtitle": "Here you can find the details concerning your bookings and grades of your past and future ₿-Certificate exams.\nThe ₿-Certificate is a table exam organized by Plan ₿ Network to assess your level in Bitcoin and its related topics.",
+      "bCert": "₿-Certificate",
+      "bCertSubtitle": "Here you can find the details concerning your bookings and grades of your past and future ₿-Certificate exams.\nThe ₿-Certificate is a table exam organized by Plan ₿ Network to assess your level in Bitcoin and its related topics.",
       "beingGraded": "Your exam is being graded. The results should be available in 1 or 2 weeks.",
       "completionDiplomas": "Completion diplomas",
       "courseDiplomas": "Course diplomas",
@@ -892,7 +892,7 @@
     "pageTitle": "Bitcoin Library"
   },
   "menu": {
-    "bCertificateDescription": "Pass the ₿-Certificate exam to assess your Bitcoin level",
+    "bCertDescription": "Pass the ₿-Certificate exam to assess your Bitcoin level",
     "betDescription": "Collection of content that you can use for your educational projects",
     "bitcoinDescription": "Learn Bitcoin from fundamentals to advanced applications.",
     "businessDescription": "Uncover Bitcoin usage in commerce.",
@@ -1232,7 +1232,7 @@
     "all": "All",
     "amount": "Amount",
     "author": "Author",
-    "bCertificate": "₿-Certificate",
+    "bCert": "₿-Certificate",
     "back": "Back",
     "beginner": "Beginner",
     "billing": "Billing",

@@ -60,7 +60,7 @@
     "conference": "Konverents",
     "book": "Raamat",
     "billing": "Arveldamine",
-    "bCertificate": "B-sertifikaat",
+    "bCert": "B-sertifikaat",
     "back": "Tagasi",
     "resources": "Materjalid",
     "register": "Registreeri",
@@ -275,7 +275,7 @@
     "displayName": "",
     "emailTip": ""
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Broneeri eksamisessioon",
     "challengeYourself": "Tule pane end proovile & tõesta oma taset!",
     "checkout": "Tutvuge B-sertifikaadiga",
@@ -284,7 +284,7 @@
     "organizeExam": "Korraldage eksam",
     "organizeSubtitle": "Miljardi inimese oranž-pillimine pole sugugi lihtne",
     "organizeTitle": "Soovite korraldada B-sertifikaadi eksami oma kogukonnas?",
-    "bCertificateDescription": "B-sertifikaat on rahvusvaheliselt tunnustatud eksam, mis hindab teie teadmisi Bitcoinist ja sellest tulenevatest teemadest. See sertifikaat võimaldab teil tõestada oma oskusi ja teadmisi Bitcoini tööstuses, andes teile juurdepääsu ettevõtetele ja positsioonidele selles tööstuses.",
+    "bCertDescription": "B-sertifikaat on rahvusvaheliselt tunnustatud eksam, mis hindab teie teadmisi Bitcoinist ja sellest tulenevatest teemadest. See sertifikaat võimaldab teil tõestada oma oskusi ja teadmisi Bitcoini tööstuses, andes teile juurdepääsu ettevõtetele ja positsioonidele selles tööstuses.",
     "organizeDescription": "Pole probleemi! Kui teie kogukond on osa PlanB võrgustikust, on võimalik teie keskuses ka eksamisessiooni korraldada. Palun lugege tabelit, et veenduda, kas suudate täita eksami korraldamiseks vajalikke tingimusi. Kui suudate neid tingimusi täita, saate oma sessiooni ajastada ja lisada selle meie platvormile.",
     "pageSubtitle": "Massiline kasutuselevõtt läbi keskse avatud lähtekoodiga hariduse",
     "pageTitle": "B-sertifikaat",
@@ -562,7 +562,7 @@
       "profile": ""
     },
     "logout": "Logi välja",
-    "bCertificate": {
+    "bCert": {
       "grade": "Hinne",
       "noResults": "Sellel kontol ei ole veel ühtegi hinnet ega tunnistust. \nKui olete eksami sooritanud ja teie tulemused pole pikema aja jooksul saadaval, siis palun pöörduge meie poole abi saamiseks."
     },
@@ -580,8 +580,8 @@
       "seatBooked": "",
       "takePlaceAt": "",
       "yourCertificate": "",
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -773,7 +773,7 @@
     "login": "Logi sisse",
     "conferencesDescription": "Bitcoini konverentside korduste kogumik esmaplokist alates",
     "betDescription": "Oma haridusprojektide jaoks kasutamiseks mõeldud materjalide kogum",
-    "bCertificateDescription": "Sooritage ₿ sertifikaadi eksam, et tõestada oma teamisi Bitcoinist",
+    "bCertDescription": "Sooritage ₿ sertifikaadi eksam, et tõestada oma teamisi Bitcoinist",
     "glossaryDescription": "Saage aru Bitcoini keelest",
     "libraryDescription": "Avasta mitmeid raamatuid, et parandada oma teadmisi",
     "nodeNetworkDescription": "Liitu Plan B globaalse kogukonna võrgustikuga",

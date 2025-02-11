@@ -181,7 +181,7 @@
     "libraryDescription": "",
     "nodeNetworkDescription": "",
     "podcastsDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
@@ -444,7 +444,7 @@
       "username": "",
       "emailChangeConfirmation": ""
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     },
@@ -463,8 +463,8 @@
       "tweetText": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -588,7 +588,7 @@
     "progress": "",
     "admins": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "booked": "",
     "bookings": "",
     "chapter": "",
@@ -807,7 +807,7 @@
     "itemNotFound": "",
     "itemNotFoundOrTranslated": ""
   },
-  "bCertificate": {
+  "bCert": {
     "challengeYourself": "",
     "pageTitle": "",
     "knowledgeableBitcoin": "",
@@ -820,7 +820,7 @@
     "organizeTitle": "",
     "pageSubtitle": "",
     "organizeDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "readChart": ""
   },
   "publicCommunication": {

@@ -318,7 +318,7 @@
       "calendar": "Calendário",
       "personalCalendar": "Calendário pessoal"
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Nota",
       "noResults": "Ainda não há notas nem certificados associados a esta conta.\nSe você prestou um exame e seus resultados ainda não estão disponíveis após um longo período, favor contactar-nos para assistência."
     },
@@ -333,8 +333,8 @@
       "tweetText": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -517,7 +517,7 @@
     "podcastsDescription": "Explora o ecossistema bitcoin através de podcasts",
     "teachersDescription": "Conhece os nossos professores universitários, bitcoiners dedicados",
     "conferencesDescription": "Coleção de reprises de conferências de Bitcoin desde o Bloco Gênesis",
-    "bCertificateDescription": "Preste o exame do Certificado ₿ e certifique seu nível de Bitcoin",
+    "bCertDescription": "Preste o exame do Certificado ₿ e certifique seu nível de Bitcoin",
     "login": "Entrar",
     "glossaryDescription": "Entenda a linguagem do Bitcoin",
     "publicDescription": ""
@@ -736,7 +736,7 @@
     "description": "Descrição",
     "duration": "Duração",
     "professor": "Professor(a)",
-    "bCertificate": "Certificado Bitcoin",
+    "bCert": "Certificado Bitcoin",
     "amount": "Quantia",
     "edit": "Editar",
     "free": "Grátis",
@@ -807,12 +807,12 @@
     "terms": "Veja nossos <0>termos gerais</0> e os detalhes das condições de ressarcimento",
     "total": "Total"
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Marque seu exame",
     "challengeYourself": "Desafie-se & avalie seu nível!",
     "knowledgeableBitcoin": "Sabichão do Bitcoin?",
     "noBookExam": "Não há exames no momento.",
-    "bCertificateDescription": "O Certificado BITCOIN é um exame internacionalmente reconhecido que avalia seu nível sobre Bitcoin e assuntos derivados. Este certificado habilitará você a provar suas habilidades e conhecimento sobre a indústria Bitcoin, possibiltando seu acesso às empresas e vagas nessa indústria.",
+    "bCertDescription": "O Certificado BITCOIN é um exame internacionalmente reconhecido que avalia seu nível sobre Bitcoin e assuntos derivados. Este certificado habilitará você a provar suas habilidades e conhecimento sobre a indústria Bitcoin, possibiltando seu acesso às empresas e vagas nessa indústria.",
     "pageTitle": "Obtenha o Certificado BITCOIN",
     "organizeDescription": "Tranquilo! Se tua comunidade é parte da Rede, organizar um exame no teu hub é possível. Por favor leia o quadro para certificar-se que você reúne as condiçoes obrigatórias para passar um exame. Se você tem os requisitos, você pode agendar uma sessão e incluir na plataforma.",
     "organizeExam": "Organize um exame",

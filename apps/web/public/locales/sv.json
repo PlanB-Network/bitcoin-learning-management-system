@@ -281,7 +281,7 @@
       "whyTimeStamp": "Tidsstämpla din examen:\nVarför det är viktigt",
       "wishTryAgain": "Du kan göra om provet efter 24 timmar.",
       "yesSubmit": "Ja, skicka in",
-      "bCertificateCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ₿-certifikatet.",
+      "bCertCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ₿-certifikatet.",
       "buttonTextBCert": "Läs mer",
       "certificatePageOtherCourses": "Andra relaterade kurser",
       "courseDiploma": "Kursdiplom",
@@ -371,7 +371,7 @@
       "security": "Säkerhet",
       "username": "Användarnamn"
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "Det finns ännu inga betyg eller certifikat kopplade till detta konto.\nOm du har klarat ett prov och dina resultat inte syns efter en längre tid, vänligen <0>hör av dig till oss</0> för att få hjälp.",
       "grade": "Betyg"
     },
@@ -448,8 +448,8 @@
       "submitReviewInfo": "Du måste skicka in en recension för att få tillgång till denna funktion."
     },
     "credentials": {
-      "bCertificate": "₿-certifikat",
-      "bCertificateSubtitle": "Här kan du se detaljerna angående dina bokningar samt betyg för dina tidigare och framtida ₿-certifikat.\n₿-certifikatet är ett prov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
+      "bCert": "₿-certifikat",
+      "bCertSubtitle": "Här kan du se detaljerna angående dina bokningar samt betyg för dina tidigare och framtida ₿-certifikat.\n₿-certifikatet är ett prov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
       "beingGraded": "Ditt prov är under betygsättning. Resultatet bör vara tillgängligt om 1 eller 2 veckor.",
       "courseDiplomas": "Kursdiplom",
       "courseDiplomasSubtitle": "Här kan du se detaljerna angående alla prov du har tagit efter att ha slutfört en kurs på plattformen.",
@@ -824,7 +824,7 @@
     "podcastsDescription": "Utforska bitcoin-ekosystemet genom podcasts",
     "teachersDescription": "Lär känna våra lärare på akademin",
     "conferencesDescription": "Samling av inspelningar från Bitcoin-konferenser sedan genesisblocket",
-    "bCertificateDescription": "Klara ₿-certifikatprovet för att bedöma din Bitcoin-nivå",
+    "bCertDescription": "Klara ₿-certifikatprovet för att bedöma din Bitcoin-nivå",
     "glossaryDescription": "Förstå Bitcoins språk",
     "login": "Logga in",
     "publicDescription": "Utforska artiklar om offentlig kommunikation",
@@ -1106,7 +1106,7 @@
     "admins": "Admins",
     "all": "Alla",
     "amount": "Belopp",
-    "bCertificate": "₿-certifikat",
+    "bCert": "₿-certifikat",
     "booked": "Bokad",
     "chapter": "Kapitel",
     "communities": "Communities",
@@ -1228,11 +1228,11 @@
     "payByCard": "Betala med kort",
     "payWithBitcoin": "Betala med Bitcoin"
   },
-  "bCertificate": {
+  "bCert": {
     "challengeYourself": "Utmana dig själv och testa din nivå!",
     "organizeDescription": "Inga problem! Om din community är en del av nätverket kan du arrangera ett provtillfälle vid din hubb. Läs igenom föreskriften för att försäkra dig om att du kan uppfylla de obligatoriska villkoren för att hålla ett prov. Om du kan uppfylla dem kan du schemalägga din session och lägga till den på plattformen.",
     "readChart": "Läs föreskriften",
-    "bCertificateDescription": "₿-certifikatet är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
+    "bCertDescription": "₿-certifikatet är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
     "tweetText": "Överlycklig över att ha klarat ₿-certifikatet på @planb_network med ett resultat på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "bookExam": "Boka ett provtillfälle",
     "checkout": "Kolla in ₿-certifikatet",

@@ -295,7 +295,7 @@
       "upcomingTicketTitle": "Nadchodzące rezerwacje",
       "upcomingTicketSubtitle": "Pobierz swój bilet tutaj, aby wziąć udział w najbliższym wydarzeniu. Upewnij się, że masz ze sobą bilet, aby mieć wstęp na wydarzenie."
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "Nie ma jeszcze żadnych ocen ani certyfikatów powiązanych z tym kontem.\nJeśli zdałeś egzamin, ale twoje wyniki nie są dostępne po dłuższym czasie, skontaktuj się z nami w celu uzyskania pomocy.",
       "grade": "Ocena"
     },
@@ -375,8 +375,8 @@
       }
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -519,7 +519,7 @@
     "conferencesDescription": "Kolekcja powtórek z konferencji Bitcoina od Bloku Genesis",
     "glossaryDescription": "Zrozum język Bitcoina",
     "login": "Zaloguj się",
-    "bCertificateDescription": "Zdaj egzamin na certyfikat ₿, aby potwierdzić swój poziom wiedzy o Bitcoinie",
+    "bCertDescription": "Zdaj egzamin na certyfikat ₿, aby potwierdzić swój poziom wiedzy o Bitcoinie",
     "publicDescription": "Zobacz artykuły komunikacji publicznej"
   },
   "nodeNetwork": {
@@ -736,7 +736,7 @@
     "admins": "Administratorzy",
     "all": "Wszystko",
     "amount": "Ilość",
-    "bCertificate": "Certyfikat ₿",
+    "bCert": "Certyfikat ₿",
     "courseId": "ID kursu",
     "description": "Opis",
     "duration": "Czas trwania",
@@ -807,14 +807,14 @@
     "terms": "Zobacz nasze <0>ogólne warunki</0> i szczegóły dotyczące zwrotu kosztów",
     "total": "Razem"
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Zarezerwuj termin egzaminu",
     "challengeYourself": "Rzuć sobie wyzwanie i sprawdź swój poziom!",
     "knowledgeableBitcoin": "Znasz się na Bitcoinie?",
     "noBookExam": "Nie zaplanowano jeszcze sesji egzaminacyjnej.",
     "organizeDescription": "Nie ma problemu! Jeśli Twoja społeczność jest częścią sieci, możesz zorganizować sesję egzaminacyjną w Twoim centrum. Przeczytaj nasz statut, aby dowiedzieć się, jakie warunki należy spełnić, aby móc przeprowadzić egzamin. Jeśli możesz je spełnić, możesz zaplanować swoją sesję egzaminacyjną i dodać ją na platformę.",
     "organizeExam": "Zorganizuj egzamin",
-    "bCertificateDescription": "Certyfikat ₿ to międzynarodowo uznawany egzamin oceniający Twój poziom wiedzy na temat Bitcoina i tematów pokrewnych . Ten rozpoznawany w branży Bitcoin certyfikat potwierdzi poziom Twoich umiejętności i wiedzy , dając Ci dostęp do najlepszych firm i stanowisk.",
+    "bCertDescription": "Certyfikat ₿ to międzynarodowo uznawany egzamin oceniający Twój poziom wiedzy na temat Bitcoina i tematów pokrewnych . Ten rozpoznawany w branży Bitcoin certyfikat potwierdzi poziom Twoich umiejętności i wiedzy , dając Ci dostęp do najlepszych firm i stanowisk.",
     "organizeTitle": "Chcesz zorganizować egzamin na certyfikat ₿ w swoim centrum?",
     "pageTitle": "Zdobądź Certyfikat",
     "pageSubtitle": "Masowe przyjęcie poprzez scentralizowane otwarte zasoby edukacyjne",

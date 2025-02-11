@@ -73,8 +73,8 @@
     "passwordChangedSuccess": "Kata sandi berhasil diubah",
     "trackProgress": "Buat akun atau masuk untuk tetap mengikuti progres anda"
   },
-  "bCertificate": {
-    "bCertificateDescription": "Sertifikat ₿ merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Sertifikat ini dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
+  "bCert": {
+    "bCertDescription": "Sertifikat ₿ merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Sertifikat ini dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
     "organizeDescription": "Tak masalah! Apabila komunitas Anda adalah bagian dari Network, Anda dapat mengadakan ujian di hub Anda. Silakan baca diagram untuk memastikan bahwa Anda dapat memenuhi persyaratan wajib untuk menyelenggarakan ujian. Apabila Anda dapat memenuhi syarat-syarat ini, Anda dapat menjadwalkan sesi ujian Anda dan menambahkannya ke platform.",
     "bookExam": "Jadwalkan sesi ujian",
     "challengeYourself": "Mari tantang diri Anda & buktikan tingkat kemampuanmu!",
@@ -282,7 +282,7 @@
       "whyTimeStamp": "",
       "wishTryAgain": "Anda dapat mengikuti ujian ulang setelah 24 jam.",
       "yesSubmit": "Ya, kirimkan",
-      "bCertificateCompletionText": "Plan ₿ Network dengan bangga mengucapkan selamat kepada {{username}} karena telah dianugerahi ₿-Sertifikat.",
+      "bCertCompletionText": "Plan ₿ Network dengan bangga mengucapkan selamat kepada {{username}} karena telah dianugerahi ₿-Sertifikat.",
       "buttonTextBCert": "Pelajari lebih lanjut",
       "certificatePageOtherCourses": "Mata kuliah terkait lainnya",
       "courseDiploma": "Kursus diploma",
@@ -414,7 +414,7 @@
       "profile": "Profil"
     },
     "account": "Akun",
-    "bCertificate": {
+    "bCert": {
       "grade": "Tingkat",
       "noResults": "Belum ada nilai atau sertifikat yang terkait dengan akun ini. Jika Anda telah lulus ujian dan hasilnya belum tersedia setelah waktu yang lama, harap hubungi kami untuk mendapatkan bantuan."
     },
@@ -431,8 +431,8 @@
       "submitReviewInfo": "Anda harus mengirimkan ulasan untuk dapat mengakses fitur ini."
     },
     "credentials": {
-      "bCertificate": "₿-Sertifikat",
-      "bCertificateSubtitle": "Di sini Anda dapat menemukan detail mengenai pemesanan dan nilai ujian ₿-Sertifikat Anda di masa lalu dan yang akan datang.\nSertifikat ₿ adalah ujian yang diselenggarakan oleh Plan ₿ Network untuk menilai level anda dalam Bitcoin dan topik-topik terkait.",
+      "bCert": "₿-Sertifikat",
+      "bCertSubtitle": "Di sini Anda dapat menemukan detail mengenai pemesanan dan nilai ujian ₿-Sertifikat Anda di masa lalu dan yang akan datang.\nSertifikat ₿ adalah ujian yang diselenggarakan oleh Plan ₿ Network untuk menilai level anda dalam Bitcoin dan topik-topik terkait.",
       "beingGraded": "Ujian Anda sedang dinilai. Hasilnya akan tersedia dalam 1 atau 2 minggu.",
       "courseDiplomas": "Ijazah kursus",
       "courseDiplomasSubtitle": "Di sini Anda dapat menemukan detail mengenai semua ujian yang telah Anda ikuti setelah menyelesaikan kursus di platform.",
@@ -945,7 +945,7 @@
     "unified": "Terpadu",
     "update": "Pembaharuan",
     "back": "Kembali",
-    "bCertificate": "Sertifikat ₿",
+    "bCert": "Sertifikat ₿",
     "beginner": "Pemula",
     "billing": "Penagihan",
     "book": "Buku",
@@ -1080,7 +1080,7 @@
   "menu": {
     "betDescription": "Koleksi konten yang dapat Anda gunakan untuk proyek pendidikan Anda",
     "teachersDescription": "Kenali pengajar di akademi kami",
-    "bCertificateDescription": "Lulus ujian sertifikat ₿ untuk membuktikan tingkat pemahaman Anda tentang Bitcoin",
+    "bCertDescription": "Lulus ujian sertifikat ₿ untuk membuktikan tingkat pemahaman Anda tentang Bitcoin",
     "conferencesDescription": "Koleksi tayangan ulang konferensi Bitcoin sejak Genesis Block",
     "glossaryDescription": "Memahami bahasa Bitcoin",
     "libraryDescription": "Temukan berbagai buku untuk meningkatkan pengetahuan Anda",

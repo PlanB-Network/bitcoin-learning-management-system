@@ -73,8 +73,8 @@
     "didYouKnow": "您知道吗?",
     "passwordChangedSuccess": "已成功更改密码"
   },
-  "bCertificate": {
-    "bCertificateDescription": "₿-证书是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。这个证书将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
+  "bCert": {
+    "bCertDescription": "₿-证书是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。这个证书将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
     "bookExam": "预约考试时间",
     "checkout": "查看₿证书",
     "knowledgeableBitcoin": "熟悉比特币吗？",
@@ -118,7 +118,7 @@
     "all": "所有",
     "amount": "金额",
     "back": "返回",
-    "bCertificate": "₿ 证书",
+    "bCert": "₿ 证书",
     "beginner": "初学者",
     "billing": "计费",
     "book": "书籍",
@@ -484,7 +484,7 @@
       "whyTimeStamp": "为您的学位进行时间戳：\n为何这很重要",
       "wishTryAgain": "24小时后，您可以重新参加考试。",
       "yesSubmit": "是，提交",
-      "bCertificateCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得₿证书。",
+      "bCertCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得₿证书。",
       "buttonTextBCert": "进一步学习",
       "certificatePageOtherCourses": "其他相关课程",
       "dontWorryRetake": "不要担心，24小时后，您可以重新参加考试。",
@@ -593,7 +593,7 @@
       "notStarted": "尚未开始",
       "notValidated": "尚未验证"
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "成绩",
       "noResults": "此帐户尚未关联任何成绩或证书。\n如果你已经通过考试，但在较长时间后仍无法查看结果，请联系我们寻求帮助。"
     },
@@ -666,8 +666,8 @@
       "submitReviewInfo": "您必须提交评论以访问此功能。"
     },
     "credentials": {
-      "bCertificate": "₿证书",
-      "bCertificateSubtitle": "在这里，您可以找到关于您的过去和未来₿证书的预订和成绩细节。\n₿证书是一个由Plan ₿网络组织的考试，用于证明您在比特币与其相关题目的知识水平。",
+      "bCert": "₿证书",
+      "bCertSubtitle": "在这里，您可以找到关于您的过去和未来₿证书的预订和成绩细节。\n₿证书是一个由Plan ₿网络组织的考试，用于证明您在比特币与其相关题目的知识水平。",
       "beingGraded": "您的考试正在被评分。结果将在1到2周内公布。",
       "courseDiplomas": "课程文凭",
       "courseDiplomasSubtitle": "在这里，您可以查看自己在平台上完成课程后参加的所有考试的相关详情。",
@@ -1039,7 +1039,7 @@
     "conferencesDescription": "自创世区块以来的比特币会议重播集锦",
     "nodeNetworkDescription": "加入Plan ₿的全球社区网络",
     "login": "登录",
-    "bCertificateDescription": "通过₿证书考试来证明您的比特币水平",
+    "bCertDescription": "通过₿证书考试来证明您的比特币水平",
     "glossaryDescription": "理解比特币的语言",
     "libraryDescription": "发现大量的书籍来提升你的知识",
     "podcastsDescription": "通过播客探索比特币生态系统",

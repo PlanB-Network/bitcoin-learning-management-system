@@ -349,7 +349,7 @@
       "upcomingTicketTitle": "Próximas reservas",
       "upcomingTicketSubtitle": "Descarga tu boleto aquí para asistir a tu próximo evento. Por favor recuerda llevarlo contigo para entrar."
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Calificación",
       "noResults": "Aún no hay calificaciones ni certificados asociados con esta cuenta. \nSi aprobaste un examen y tus resultados no están disponibles después de un período prolongado, por favor contáctanos para obtener ayuda."
     },
@@ -445,7 +445,7 @@
       "submitReviewInfo": "Debes compartirnos una reseña para poder habilitar el acceso a esta función."
     },
     "credentials": {
-      "bCertificateSubtitle": "Aquí puedes encontrar los detalles sobre tus reservas y calificaciones de tus Certificados ₿ pasados y futuros.\nEl Certificado ₿ es un examen de mesa organizado por la Plan ₿ Network para que puedas afirmar tu nivel en Bitcoin y sus temas relacionados.",
+      "bCertSubtitle": "Aquí puedes encontrar los detalles sobre tus reservas y calificaciones de tus Certificados ₿ pasados y futuros.\nEl Certificado ₿ es un examen de mesa organizado por la Plan ₿ Network para que puedas afirmar tu nivel en Bitcoin y sus temas relacionados.",
       "beingGraded": "Tu examen está siendo calificado. Los resultados deberían estar disponibles en 1 o 2 semanas.",
       "courseDiplomas": "Diplomas de curso",
       "courseDiplomasSubtitle": "Aquí puedes encontrar los detalles sobre todos los exámenes que has realizado después de completar un curso en la plataforma.",
@@ -456,7 +456,7 @@
       "seatBooked": "Tu asiento en la sesión de examen está reservado",
       "takePlaceAt": "La sesión se llevará a cabo en",
       "yourCertificate": "Tu certificado",
-      "bCertificate": "Certificado ₿"
+      "bCert": "Certificado ₿"
     },
     "adminPanel": {
       "bookings": "Reservas",
@@ -624,7 +624,7 @@
     "podcastsDescription": "Explora el ecosistema Bitcoin a través de podcasts",
     "teachersDescription": "Conoce a nuestros profesores de la academia",
     "conferencesDescription": "Colección de repeticiones de conferencias de Bitcoin desde el Bloque Génesis",
-    "bCertificateDescription": "Aprueba el examen el Certificado ₿ para demostrar tu nivel de Bitcoin",
+    "bCertDescription": "Aprueba el examen el Certificado ₿ para demostrar tu nivel de Bitcoin",
     "glossaryDescription": "Entiende el lenguaje de Bitcoin",
     "login": "Iniciar Sesión",
     "publicDescription": "Explora artículos de comunicación pública",
@@ -862,7 +862,7 @@
     "view": "Ver",
     "admins": "Administradores",
     "amount": "Monto",
-    "bCertificate": "Certificado ₿",
+    "bCert": "Certificado ₿",
     "edit": "Editar",
     "free": "Gratuito",
     "glossary": "Glosario",
@@ -947,11 +947,11 @@
     "terms": "Consulta nuestros <0>términos generales</0> y condiciones para obtener detalles sobre reembolsos",
     "total": "Total"
   },
-  "bCertificate": {
+  "bCert": {
     "pageTitle": "Consigue el Certificado ₿",
     "readChart": "Lee el estatuto",
     "organizeDescription": "¡No hay problema! Si tu comunidad es parte de la Red, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
-    "bCertificateDescription": "El Certificado ₿ es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",
+    "bCertDescription": "El Certificado ₿ es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",
     "checkout": "Echa un vistazo al Certificado ₿",
     "organizeTitle": "¿Quieres organizar un examen del Certificado ₿ en tu centro?",
     "bookExam": "Reserva una sesión de examen",

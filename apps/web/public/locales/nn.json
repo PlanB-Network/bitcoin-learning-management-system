@@ -289,7 +289,7 @@
   },
   "menu": {
     "betDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "conferencesDescription": "",
     "glossaryDescription": "",
     "libraryDescription": "",
@@ -435,7 +435,7 @@
     "all": "",
     "amount": "",
     "back": "",
-    "bCertificate": "",
+    "bCert": "",
     "beginner": "",
     "billing": "",
     "book": "",
@@ -574,7 +574,7 @@
     "signIn": "",
     "checkingTokenExplain": ""
   },
-  "bCertificate": {
+  "bCert": {
     "organizeExam": "",
     "tweetText": "",
     "organizeDescription": "",
@@ -588,7 +588,7 @@
     "pageTitle": "",
     "readChart": "",
     "challengeYourself": "",
-    "bCertificateDescription": ""
+    "bCertDescription": ""
   },
   "dashboard": {
     "myCourses": {
@@ -659,7 +659,7 @@
       }
     },
     "account": "",
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     },
@@ -697,8 +697,8 @@
     "courses": "",
     "logout": "",
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",

@@ -336,7 +336,7 @@
       "security": "",
       "saving": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -351,8 +351,8 @@
       "checkDetailsCompleted": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "downloadTicket": "",
       "seatBooked": "",
       "retakeExam": "",
@@ -541,7 +541,7 @@
     "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery",
     "glossaryDescription": "",
     "login": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "publicDescription": ""
   },
   "nodeNetwork": {
@@ -784,7 +784,7 @@
     "admins": "",
     "amount": "",
     "lectures": "",
-    "bCertificate": "",
+    "bCert": "",
     "communities": "",
     "courseId": "",
     "description": "",
@@ -807,9 +807,9 @@
     "ratings": "",
     "required": ""
   },
-  "bCertificate": {
+  "bCert": {
     "readChart": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "organizeDescription": "",
     "organizeTitle": "",
     "pageSubtitle": "",

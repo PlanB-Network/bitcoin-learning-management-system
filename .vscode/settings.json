@@ -131,7 +131,7 @@
     "Asio",
     "basepath",
     "bcert",
-    "bcertificate",
+    "bcert",
     "bcertresults",
     "bech32",
     "bitcoiners",

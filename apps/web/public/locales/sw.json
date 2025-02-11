@@ -314,7 +314,7 @@
       "security": "",
       "username": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -333,8 +333,8 @@
       "tweetText": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -517,7 +517,7 @@
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
     "conferencesDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
@@ -738,7 +738,7 @@
     "admins": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "booked": "",
     "bookings": "",
     "chapter": "",
@@ -807,11 +807,11 @@
     "terms": "",
     "total": ""
   },
-  "bCertificate": {
+  "bCert": {
     "challengeYourself": "",
     "organizeDescription": "",
     "readChart": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "tweetText": "",
     "pageTitle": "",
     "checkout": "",

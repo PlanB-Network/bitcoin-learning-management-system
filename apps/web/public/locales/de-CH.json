@@ -211,8 +211,8 @@
     },
     "credentials": {
       "globalCertifications": "",
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
       "beingGraded": "",
@@ -307,7 +307,7 @@
       "ratingsAndFeedbacks": "",
       "shareOnSocials": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -495,9 +495,9 @@
     "invalidToken": "",
     "checkingToken": ""
   },
-  "bCertificate": {
+  "bCert": {
     "challengeYourself": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "bookExam": "",
     "checkout": "",
     "knowledgeableBitcoin": "",
@@ -668,7 +668,7 @@
     "publicDescription": "",
     "teachersDescription": "",
     "login": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "betDescription": "",
     "conferencesDescription": "",
     "glossaryDescription": "",
@@ -756,7 +756,7 @@
   },
   "words": {
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "dashboard": "",
     "about": "",
     "about-us": "",

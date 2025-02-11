@@ -73,8 +73,8 @@
     "trackProgress": "Kreirajte nalog ili se prijavite da biste pratili svoj napredak",
     "passwordChangedSuccess": "Lozinka je uspešno promenjena"
   },
-  "bCertificate": {
-    "bCertificateDescription": "₿ -sertifikat je međunarodno priznat ispit za procenu Vašeg nivoa znanja o Bitcoinu i tema koje iz njega proizlaze. Ovaj sertifikat će Vam omogućiti da dokažete svoje veštine i znanje u industriji Bitcoina, pružajući Vam pristup kompanijama i pozicijama u toj industriji.",
+  "bCert": {
+    "bCertDescription": "₿ -sertifikat je međunarodno priznat ispit za procenu Vašeg nivoa znanja o Bitcoinu i tema koje iz njega proizlaze. Ovaj sertifikat će Vam omogućiti da dokažete svoje veštine i znanje u industriji Bitcoina, pružajući Vam pristup kompanijama i pozicijama u toj industriji.",
     "organizeSubtitle": "\"Orange pill-ovanje\" milijardu ljudi nije lako",
     "knowledgeableBitcoin": "Imate znanje o Bitcoinu?",
     "noBookExam": "Ispit još uvek nije planiran.",
@@ -351,7 +351,7 @@
       "checkDetailsCompleted": "Ovde možete proveriti sve detalje vezane za ovaj kurs koji ste završili.",
       "coursesCompleted": "Završeni kursevi"
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Ocena",
       "noResults": "Još uvek ne postoje ocene ni sertifikati povezani sa ovim nalogom.\nAko ste položili ispit i Vaši rezultati nisu dostupni nakon dužeg vremena, molimo Vas da nas kontaktirate za pomoć."
     },
@@ -372,10 +372,10 @@
       "viewDetails": "Pogledajte detalje"
     },
     "credentials": {
-      "bCertificateSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama vaših prošlih i budućih ₿ sertifikata. \n₿ Sertifikat je ispit koji organizuje Plan ₿ mreža kako bi se utvrdio Vaš nivo poznavanja Bitcoin-a i sa njim povezanih tema.",
+      "bCertSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama vaših prošlih i budućih ₿ sertifikata. \n₿ Sertifikat je ispit koji organizuje Plan ₿ mreža kako bi se utvrdio Vaš nivo poznavanja Bitcoin-a i sa njim povezanih tema.",
       "beingGraded": "Vaš ispit se ocenjuje. Rezultati bi trebalo da budu dostupni za 1 ili 2 nedelje.",
       "courseDiplomasSubtitle": "Ovde možete pronaći detalje o svim ispitima koje ste polagali nakon završetka kursa na platformi.",
-      "bCertificate": "₿ Sertifikat",
+      "bCert": "₿ Sertifikat",
       "courseDiplomas": "Diplome kurseva",
       "completionDiplomas": "Diplome o završetku",
       "globalCertifications": "Globalne sertifikacije",
@@ -574,7 +574,7 @@
     }
   },
   "menu": {
-    "bCertificateDescription": "Polaganjem ispita za ₿ sertifikat potvrdite svoj nivo znanja o Bitcoinu",
+    "bCertDescription": "Polaganjem ispita za ₿ sertifikat potvrdite svoj nivo znanja o Bitcoinu",
     "publicDescription": "Proučite članke o javnoj komunikaciji",
     "betDescription": "Kolekcija sadržaja koju možete koristiti za Vaše obrazovne projekte",
     "conferencesDescription": "Kolekcija snimaka konferencija o Bitcoinu od Genesis Bloka",
@@ -819,7 +819,7 @@
     "advanced": "Napredni",
     "amount": "Iznos",
     "back": "Povratak",
-    "bCertificate": "₿ Sertifikat",
+    "bCert": "₿ Sertifikat",
     "beginner": "Početnik",
     "billing": "Naplaćivanje",
     "book": "Knjiga",

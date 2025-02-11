@@ -73,8 +73,8 @@
     "didYouKnow": "Știai?",
     "passwordChangedSuccess": "Parola a fost schimbată cu succes"
   },
-  "bCertificate": {
-    "bCertificateDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
+  "bCert": {
+    "bCertDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
     "noBookExam": "încă nu este planificată nicio sesiune de examene.",
     "organizeDescription": "Nici o problemă! Dacă comunitatea ta face parte din Rețea, poți organiza o sesiune de examinare la hub-ul tău. Te rog să citești statutul pentru a te asigura că poți respecta condițiile obligatorii pentru a găzdui un examen. Dacă le poți îndeplini, atunci poți programa sesiunea ta și să o adaugi pe platformă.",
     "bookExam": "Rezervați o sesiune de examen",
@@ -324,7 +324,7 @@
       "testKnowledge": "Acum că ai terminat acest curs, să îți testăm cunoștințele.",
       "testResults": "Rezultatele testului",
       "timeStampBenefits": "De ce este important:",
-      "bCertificateCompletionText": "Plan ₿ Network are plăcerea să îl felicite pe {{username}} pentru primirea Certificatului ₿.",
+      "bCertCompletionText": "Plan ₿ Network are plăcerea să îl felicite pe {{username}} pentru primirea Certificatului ₿.",
       "buttonTextBCert": "Aflați mai multe",
       "certificatePageOtherCourses": "Alte cursuri conexe",
       "courseDiploma": "Diplomă de curs",
@@ -345,7 +345,7 @@
   },
   "dashboard": {
     "account": "Cont",
-    "bCertificate": {
+    "bCert": {
       "grade": "Nota",
       "noResults": "încă nu există note sau certificate asociate cu acest cont .\nDacă ați trecut un examen și rezultatele dvs. nu sunt disponibile după o perioadă îndelungată, vă rugăm să ne contactați pentru asistență."
     },
@@ -469,8 +469,8 @@
       "tweetText": "Bucuros că am finalizat cursul {{courseId}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}"
     },
     "credentials": {
-      "bCertificateSubtitle": "Aici puteți găsi detalii referitoare la rezervările și notele dumneavoastră pentru Certificatele ₿ trecute și viitoare.\nCertificatul ₿ este un examen organizat de Plan ₿ Network pentru a confirma cunoștințele dumneavoastră în Bitcoin și subiectele sale conexe.",
-      "bCertificate": "Certificatul ₿",
+      "bCertSubtitle": "Aici puteți găsi detalii referitoare la rezervările și notele dumneavoastră pentru Certificatele ₿ trecute și viitoare.\nCertificatul ₿ este un examen organizat de Plan ₿ Network pentru a confirma cunoștințele dumneavoastră în Bitcoin și subiectele sale conexe.",
+      "bCert": "Certificatul ₿",
       "courseDiplomas": "Diplome de curs",
       "courseDiplomasSubtitle": "Aici puteți găsi detalii referitoare la toate examenele pe care le-ați dat după finalizarea unui curs pe platformă.",
       "downloadTicket": "Descărcați biletul dvs",
@@ -625,7 +625,7 @@
     "nodeNetworkDescription": "Alăturați-vă rețelei globale a comunității Plan B",
     "podcastsDescription": "Explorează ecosistemul bitcoin prin podcasturi",
     "glossaryDescription": "Înțelege limba Bitcoin",
-    "bCertificateDescription": "Trece examenul pentru Certificatul ₿ pentru a-ți demonstra nivelul de cunoștințe despre Bitcoin",
+    "bCertDescription": "Trece examenul pentru Certificatul ₿ pentru a-ți demonstra nivelul de cunoștințe despre Bitcoin",
     "betDescription": "Colecție de conținut pe care îl puteți utiliza pentru proiectele dvs. educaționale",
     "conferencesDescription": "Colecție de reluări ale conferințelor Bitcoin de la Blocul Genesis",
     "libraryDescription": "Descoperă multe cărți pentru a-ți îmbunătăți cunoștințele",
@@ -870,7 +870,7 @@
     "all": "Toate",
     "amount": "Cantitate",
     "back": "Înapoi",
-    "bCertificate": "Certificatul ₿",
+    "bCert": "Certificatul ₿",
     "beginner": "Începător",
     "billing": "Facturare",
     "book": "Carte",

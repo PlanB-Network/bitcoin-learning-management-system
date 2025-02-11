@@ -90,7 +90,7 @@
     "topics": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "booked": "",
     "bookings": "",
     "ratings": "",
@@ -419,7 +419,7 @@
       "yourCertificate": "",
       "whereYouAre": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -508,8 +508,8 @@
       "completionDiplomas": "",
       "downloadTicket": "",
       "takePlaceAt": "",
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "courseDiplomasSubtitle": "",
@@ -642,7 +642,7 @@
     "podcastsDescription": "",
     "teachersDescription": "",
     "login": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "publicDescription": ""
   },
@@ -807,10 +807,10 @@
     "itemNotFound": "",
     "itemNotFoundOrTranslated": ""
   },
-  "bCertificate": {
+  "bCert": {
     "organizeDescription": "",
     "readChart": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "pageTitle": "",
     "organizeExam": "",
     "organizeSubtitle": "",

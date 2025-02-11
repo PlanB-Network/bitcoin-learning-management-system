@@ -366,7 +366,7 @@
         "tutorialModification": ""
       }
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     },
@@ -385,8 +385,8 @@
       "tweetText": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomasSubtitle": "",
       "downloadTicket": "",
@@ -519,7 +519,7 @@
     "conferencesDescription": "Kokoelma Bitcoin-konferenssitallenteista ennen The Genesis Blockkia",
     "glossaryDescription": "",
     "login": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "publicDescription": ""
   },
   "nodeNetwork": {
@@ -734,7 +734,7 @@
     "ticket": "Pääsylippu",
     "tickets": "Pääsyliput",
     "admins": "",
-    "bCertificate": "",
+    "bCert": "",
     "courseId": "",
     "credentials": "",
     "description": "",
@@ -807,7 +807,7 @@
     "planBConferences": "Plan B konferenssit",
     "topics": "Aiheet"
   },
-  "bCertificate": {
+  "bCert": {
     "organizeExam": "",
     "organizeSubtitle": "",
     "pageTitle": "",
@@ -820,7 +820,7 @@
     "tweetText": "",
     "challengeYourself": "",
     "readChart": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "organizeDescription": ""
   },
   "publicCommunication": {

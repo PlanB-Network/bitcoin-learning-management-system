@@ -242,7 +242,7 @@
       "tryOneMoreTime": "Hãy thử thêm một lần nữa!",
       "courseDiploma": "Chứng chỉ khoá học",
       "examCertificateCompletionText": "Plan ₿ Network rất vinh hạnh được chúc mừng {{username}} vì đã nhận được chứng chỉ của khoá học “{{courseName}}”.",
-      "bCertificateCompletionText": "Plan ₿ Network rất vinh hạnh được chúng mừng {{username}} vì đã nhận được Chứng chỉ - ₿.",
+      "bCertCompletionText": "Plan ₿ Network rất vinh hạnh được chúng mừng {{username}} vì đã nhận được Chứng chỉ - ₿.",
       "buttonTextBCert": "Tìm hiểu thêm",
       "certificatePageOtherCourses": "Các khoá học liên quan khác",
       "courseNotFound": "Không tìm thấy khoá học",
@@ -443,7 +443,7 @@
       "upcomingTicketTitle": "Đặt chỗ sắp tới",
       "upcomingTicketSubtitle": "Tải xuống vé của bạn ở đây để tham dự sự kiện sắp tới. Vui lòng mang theo vé ở cổng vào."
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "Điểm",
       "noResults": "Chưa có bảng điểm hoặc chứng chỉ nào liên quan tới tài khoản này.\nNếu bạn đã vượt qua một kỳ thi và kết quả của bạn không có sau một thời gian dài, vui lòng liên hệ với chúng tôi để được hỗ trợ."
     },
@@ -539,8 +539,8 @@
       "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này."
     },
     "credentials": {
-      "bCertificate": "Chứng chỉ - ₿",
-      "bCertificateSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới đặt chỗ và điểm số trong quá khứ cũng như tương lai của bài kiểm tra cấp Chứng chỉ - ₿.\nChứng chỉ - ₿ là một bài kiểm tra được tổ chức bởi Plan ₿ Network để đánh giá trình độ của bạn về Bitcoin và các chủ đề liên quan.",
+      "bCert": "Chứng chỉ - ₿",
+      "bCertSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới đặt chỗ và điểm số trong quá khứ cũng như tương lai của bài kiểm tra cấp Chứng chỉ - ₿.\nChứng chỉ - ₿ là một bài kiểm tra được tổ chức bởi Plan ₿ Network để đánh giá trình độ của bạn về Bitcoin và các chủ đề liên quan.",
       "beingGraded": "Bài kiểm tra của bạn đang được chấm điểm. Các kết quả sẽ có trong khoảng 1 hoặc 2 tuần.",
       "courseDiplomas": "Các chứng chỉ khoá học",
       "courseDiplomasSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới tất cả các bài kiểm tra mà bạn đã tham gia sau khi hoàn thành một khoá học trên nền tảng.",
@@ -851,7 +851,7 @@
     "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê",
     "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
     "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
-    "bCertificateDescription": "Vượt qua kỳ thi Chứng chỉ ₿ để khẳng định đẳng cấp của bạn về Bitcoin",
+    "bCertDescription": "Vượt qua kỳ thi Chứng chỉ ₿ để khẳng định đẳng cấp của bạn về Bitcoin",
     "glossaryDescription": "Hiểu về ngôn ngữ của Bitcoin",
     "login": "Đăng nhập",
     "publicDescription": "Khám phá các bài viết truyền thông công khai",
@@ -1158,7 +1158,7 @@
     "admins": "Quản trị viên",
     "all": "Tất cả",
     "amount": "Số lượng",
-    "bCertificate": "Chứng chỉ ₿",
+    "bCert": "Chứng chỉ ₿",
     "chapter": "Chương",
     "bookings": "Đặt chỗ",
     "filter": "Lọc",
@@ -1235,8 +1235,8 @@
     "viewMore": "Xem thêm",
     "yes": "Vâng"
   },
-  "bCertificate": {
-    "bCertificateDescription": "Chứng chỉ ₿ là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
+  "bCert": {
+    "bCertDescription": "Chứng chỉ ₿ là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
     "checkout": "Kiểm tra chứng chỉ ₿",
     "organizeTitle": "Muốn tổ chức một kỳ thi cấp chứng chỉ ₿ ở trung tâm của bạn?",
     "pageTitle": "Đạt chứng chỉ ₿",

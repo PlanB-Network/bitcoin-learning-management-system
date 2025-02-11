@@ -234,7 +234,7 @@
     "failed": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "bookings": "",
     "chapter": "",
     "communities": "",
@@ -419,7 +419,7 @@
       "yourCertificate": "",
       "whereYouAre": ""
     },
-    "bCertificate": {
+    "bCert": {
       "noResults": "",
       "grade": ""
     },
@@ -458,11 +458,11 @@
       "seatBooked": "",
       "beingGraded": "",
       "globalCertifications": "",
-      "bCertificateSubtitle": "",
+      "bCertSubtitle": "",
       "courseDiplomasSubtitle": "",
       "retakeExam": "",
       "takePlaceAt": "",
-      "bCertificate": "",
+      "bCert": "",
       "courseDiplomas": "",
       "yourCertificate": ""
     },
@@ -641,7 +641,7 @@
     "nodeNetworkDescription": "",
     "podcastsDescription": "",
     "teachersDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
@@ -852,8 +852,8 @@
     "anotherWord": "",
     "term": ""
   },
-  "bCertificate": {
-    "bCertificateDescription": "",
+  "bCert": {
+    "bCertDescription": "",
     "organizeDescription": "",
     "readChart": "",
     "noBookExam": "",

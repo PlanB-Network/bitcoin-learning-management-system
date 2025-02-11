@@ -298,10 +298,10 @@
     "credentials": {
       "downloadTicket": "",
       "courseDiplomas": "",
-      "bCertificate": "",
+      "bCert": "",
       "retakeExam": "",
       "seatBooked": "",
-      "bCertificateSubtitle": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomasSubtitle": "",
       "completionDiplomas": "",
@@ -394,7 +394,7 @@
       "personalCalendar": "",
       "calendar": ""
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     }
@@ -517,7 +517,7 @@
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
     "conferencesDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "publicDescription": "",
     "glossaryDescription": "",
     "login": ""
@@ -761,7 +761,7 @@
     "view": "",
     "all": "",
     "amount": "",
-    "bCertificate": "",
+    "bCert": "",
     "credentials": "",
     "diploma": "",
     "duration": "",
@@ -807,7 +807,7 @@
     "terms": "",
     "total": ""
   },
-  "bCertificate": {
+  "bCert": {
     "knowledgeableBitcoin": "",
     "noBookExam": "",
     "organizeExam": "",
@@ -820,7 +820,7 @@
     "tweetText": "",
     "organizeDescription": "",
     "readChart": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "challengeYourself": ""
   },
   "proofreading": {

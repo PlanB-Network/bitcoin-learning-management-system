@@ -69,7 +69,7 @@
     "displayName": "Suna",
     "emailTip": "Amfani da imel ba dole ba ne, amma zai iya amfani idan an manta kalmar sirri :)"
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "Kama gurbin yin jarabawa",
     "challengeYourself": "Kama da kai da tabbatar da darajarka!",
     "checkout": "Duba takardar ₿",
@@ -78,7 +78,7 @@
     "organizeExam": "Shirya jarabawa",
     "organizeTitle": "Kana son shirya jarrabawar takaddar ₿ a cibiyarka?",
     "organizeSubtitle": "Gabatar da Bitcoin ga mutane biliyan ɗaya ba abu ne mai sauƙi ba",
-    "bCertificateDescription": "Takaddar ₿ wata jarrabawa ce da ake amincewa da ita a duniya baki ɗaya wadda ke tantance ƙwarewarka a kan Bitcoin da batutuwan da suka shafi shi. Wannan takaddar za ta ba ka damar tabbatar da ƙwarewarka da iliminka a masana'antar Bitcoin, wanda zai ba ka damar samun damar shiga kamfanoni mafi kyau da samun manyan mukamai na aiki.",
+    "bCertDescription": "Takaddar ₿ wata jarrabawa ce da ake amincewa da ita a duniya baki ɗaya wadda ke tantance ƙwarewarka a kan Bitcoin da batutuwan da suka shafi shi. Wannan takaddar za ta ba ka damar tabbatar da ƙwarewarka da iliminka a masana'antar Bitcoin, wanda zai ba ka damar samun damar shiga kamfanoni mafi kyau da samun manyan mukamai na aiki.",
     "organizeDescription": "Babu matsala! Idan al'ummarka tana cikin Cibiyar, za ku iya shirya zama na jarrabawa a cibiyarku. Da fatan za ku karanta tsarin dokoki don tabbatar da cewa kuna bin sharuddan da ake buƙata don karɓar jarrabawa. Idan za ku iya cika waɗannan sharuddan, za ku iya tsara zamanku sannan ku ƙara shi a dandalin.",
     "pageSubtitle": "Samun karbuwa ilimi ta hanyar cibiya bai daya na bayani mai ginshiki",
     "pageTitle": "Tsallake Takardar ₿",
@@ -298,7 +298,7 @@
     }
   },
   "dashboard": {
-    "bCertificate": {
+    "bCert": {
       "grade": "Daraja",
       "noResults": "Har yanzu ba a haɗa kowanne daraja ko takaddar shaida da wannan asusun ba.\nIdan ka wuce jarrabawa kuma sakamakon ka ba ya samuwa bayan wani lokaci mai tsawo, da fatan za ka tuntube mu don samun taimako."
     },
@@ -432,8 +432,8 @@
       "retakeExam": "Sake yin jarabawa",
       "courseDiplomas": "Takardun shaidar ƙwararrun kwasa-kwasai",
       "courseDiplomasSubtitle": "A nan zaka/ki iya samun cikakkun bayanai game da duk gwaje-gwajen da ka/kika yi bayan kammala kwas ɗin akan dandalin.",
-      "bCertificate": "Takardar shaida ta ₿",
-      "bCertificateSubtitle": "A nan za ka iya samun cikakkun bayanai game da ajiyar ka da darajojin takardun shaida na ₿ da ka gabatar da kuma waɗanda za su zo nan gaba. Takardar shaida ta ₿ jarabawar tebur ce da Plan ₿ Network ke shiryawa don tantance matakin ka/ki gameda Bitcoin da batutuwan da suka shafe shi.",
+      "bCert": "Takardar shaida ta ₿",
+      "bCertSubtitle": "A nan za ka iya samun cikakkun bayanai game da ajiyar ka da darajojin takardun shaida na ₿ da ka gabatar da kuma waɗanda za su zo nan gaba. Takardar shaida ta ₿ jarabawar tebur ce da Plan ₿ Network ke shiryawa don tantance matakin ka/ki gameda Bitcoin da batutuwan da suka shafe shi.",
       "beingGraded": "Ana duba jarabawar ka/ki. Sakamakon zai kasance cikin makonni 1 ko 2."
     }
   },
@@ -511,7 +511,7 @@
     "betDescription": "Tarin abubuwan da za'a iya amfani da su don ayyukan ilimi",
     "conferencesDescription": "Tarin maimaici na taron Bitcoin tun daga Genesis Block",
     "podcastsDescription": "Bincika tsarin Bitcoin ta hanyar podcasts",
-    "bCertificateDescription": "Rubuta jarrabawar ₿ Certificate don tabbatar da ilimin Bitcoin ɗinka/ki",
+    "bCertDescription": "Rubuta jarrabawar ₿ Certificate don tabbatar da ilimin Bitcoin ɗinka/ki",
     "glossaryDescription": "Fahimci harshen Bitcoin",
     "nodeNetworkDescription": "Shiga cikin cibiyar al'umma ta duniya ta Plan B",
     "publicDescription": "Bincika makaloli na sadarwa na jama'a",
@@ -810,7 +810,7 @@
     "library": "Dakin karatu",
     "members": " . Mambobi",
     "mining": "Haka",
-    "bCertificate": "Takardar shaida ta ₿",
+    "bCert": "Takardar shaida ta ₿",
     "beginner": "Sabon shiga",
     "billing": "Biyan kudi",
     "book": "Littafi",

@@ -259,7 +259,7 @@
       "resultItsOk": ""
     }
   },
-  "bCertificate": {
+  "bCert": {
     "bookExam": "",
     "checkout": "",
     "knowledgeableBitcoin": "",
@@ -272,7 +272,7 @@
     "tweetText": "",
     "readChart": "",
     "organizeDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "challengeYourself": ""
   },
   "conferences": {
@@ -473,7 +473,7 @@
     "users": "",
     "about": "",
     "back": "",
-    "bCertificate": "",
+    "bCert": "",
     "beginner": "",
     "billing": "",
     "book": "",
@@ -496,7 +496,7 @@
     "time": ""
   },
   "dashboard": {
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     },
@@ -533,8 +533,8 @@
       "whereYouAre": ""
     },
     "credentials": {
-      "bCertificate": "",
-      "bCertificateSubtitle": "",
+      "bCert": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "completionDiplomas": "",
@@ -753,7 +753,7 @@
     "pageTitle": ""
   },
   "menu": {
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "betDescription": "",
     "login": "",
     "nodeNetworkDescription": "",

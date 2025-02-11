@@ -297,12 +297,12 @@
       "upcomingTicketSubtitle": ""
     },
     "credentials": {
-      "bCertificate": "",
+      "bCert": "",
       "courseDiplomasSubtitle": "",
       "downloadTicket": "",
       "globalCertifications": "",
       "retakeExam": "",
-      "bCertificateSubtitle": "",
+      "bCertSubtitle": "",
       "beingGraded": "",
       "courseDiplomas": "",
       "completionDiplomas": "",
@@ -339,7 +339,7 @@
       "emailChangeConfirmation": "",
       "saving": ""
     },
-    "bCertificate": {
+    "bCert": {
       "grade": "",
       "noResults": ""
     },
@@ -518,7 +518,7 @@
     "podcastsDescription": "Erkunde das Bitcoin-Ökosystem durch Podcasts",
     "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner",
     "conferencesDescription": "",
-    "bCertificateDescription": "",
+    "bCertDescription": "",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
@@ -759,7 +759,7 @@
     "teacher": "",
     "unified": "",
     "users": "",
-    "bCertificate": "",
+    "bCert": "",
     "onChainAddress": "",
     "view": "",
     "admins": "",
@@ -853,7 +853,7 @@
     "needHelp": "",
     "keepLooking": ""
   },
-  "bCertificate": {
+  "bCert": {
     "knowledgeableBitcoin": "",
     "noBookExam": "",
     "bookExam": "احجز جلسة امتحان",
@@ -864,7 +864,7 @@
     "organizeTitle": "",
     "pageTitle": "",
     "tweetText": "",
-    "bCertificateDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
+    "bCertDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
     "readChart": "",
     "organizeDescription": "",
     "challengeYourself": "تحدى نفسك وأكد مستواك!"
