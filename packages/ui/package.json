@@ -58,7 +58,7 @@
     "@storybook/test": "^8.5.3",
     "@types/react": "~19.0.8",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.2",
     "prop-types": "^15.8.1",
     "react-icons": "^5.4.0",
     "storybook": "^8.5.3",
