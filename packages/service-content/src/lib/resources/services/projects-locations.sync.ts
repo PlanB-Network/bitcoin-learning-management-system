@@ -29,7 +29,7 @@ const fetchProjectLocation = async (query: string) => {
   const res = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${q}`,
   );
-  console.log('Searching location for:', query);
+  console.log('Searching location for event:', query);
 
   const data = await res.json();
   return expectedResponseSchema.parse(data)?.[0];

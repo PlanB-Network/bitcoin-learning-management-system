@@ -166,7 +166,6 @@ const Buttons = ({
   let timezone: string;
   let formattedStartDate: string;
   let formattedTime: string;
-  let formattedCapacity: string;
 
   if (chapter) {
     timezone = chapter.timezone ? chapter.timezone : 'UTC';
@@ -175,9 +174,6 @@ const Buttons = ({
       chapter.startDate && chapter.endDate
         ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
         : '';
-    formattedCapacity = chapter.availableSeats
-      ? `limited to ${chapter.availableSeats} people`
-      : '';
   }
 
   const now = new Date();
@@ -200,7 +196,7 @@ const Buttons = ({
                     ...course,
                     formattedStartDate,
                     formattedTime,
-                    formattedCapacity,
+                    availableSeats: chapter.availableSeats,
                     userName,
                   });
                 } else {

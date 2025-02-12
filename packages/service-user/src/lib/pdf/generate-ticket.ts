@@ -1,5 +1,4 @@
 import type { PDFPageDrawTextOptions } from 'pdf-lib';
-import { rgb } from 'pdf-lib';
 import { imageSync } from 'qr-image';
 
 import {
@@ -10,13 +9,14 @@ import {
 
 export interface GenerateTicketOptions {
   title: string;
+  organizer?: string;
   addressLine1: string;
   addressLine2?: string | null;
   addressLine3?: string | null;
   formattedStartDate?: string;
   formattedTime?: string;
   liveLanguage: string | null;
-  formattedCapacity?: string;
+  availableSeats?: number | null;
   userName: string;
   purchaseDate?: string | null;
   ticketNumber?: string | null;
@@ -24,43 +24,30 @@ export interface GenerateTicketOptions {
 
 const pdfTemplateBytes = loadPdfTemplate('ticket-template');
 
-const grey = rgb(0.5, 0.5, 0.5); // 808080
-
 export async function generateTicket(options: GenerateTicketOptions) {
   void options;
 
   const { doc, fonts } = await newDocumentFromTemplate(pdfTemplateBytes);
 
   const conf = {
-    small: {
-      size: 10,
-      font: fonts.ibmPlexLight,
-    },
-    normal: {
-      size: 14,
-      font: fonts.ibmPlexRegular,
-      lineHeight: 20,
-    },
     title: {
       size: 20,
       font: fonts.ibmPlexSemiBold,
       lineHeight: 24,
     },
-    location: {
+    normal: {
       size: 14,
       font: fonts.ibmPlexMedium,
       lineHeight: 20,
     },
-    duration: {
+    small: {
       size: 12,
-      font: fonts.ibmPlexRegular,
+      font: fonts.ibmPlexMedium,
       lineHeight: 16,
     },
-    muted: {
-      size: 12,
-      font: fonts.ibmPlexRegular,
-      color: grey,
-      lineHeight: 16,
+    xs: {
+      size: 10,
+      font: fonts.ibmPlexLight,
     },
   } satisfies Record<string, PDFPageDrawTextOptions>;
 
@@ -94,52 +81,72 @@ export async function generateTicket(options: GenerateTicketOptions) {
     }
   }
 
+  // Organizer
+  {
+    const text = options.organizer ?? '';
+    const { font, size } = conf.normal;
+    const x = margin + 85;
+    const y = height - font.heightAtSize(size) - 238;
+    page.drawText(text, { x, y, ...conf.normal });
+  }
+
   // Location
   {
-    const { lineHeight } = conf.location;
+    const { lineHeight } = conf.normal;
     const { addressLine1: t1, addressLine2: t2, addressLine3: t3 } = options;
     const x = margin;
-    const y = height - 280 + (t3 ? lineHeight / 2 : 0);
+    const y = height - 330 + (t3 ? lineHeight / 2 : 0);
+
+    if (t2) {
+      page.drawText(t2, { x, y: y, ...conf.normal });
+    }
+
+    if (t3) {
+      page.drawText(t3, { x, y: y - lineHeight, ...conf.normal });
+    }
 
     if (t1) {
-      page.drawText(t1, { x, y, ...conf.location });
-      page.drawText(t2 ?? '', { x, y: y - lineHeight, ...conf.location });
-
-      if (t3) {
-        page.drawText(t3, { x, y: y - lineHeight * 2, ...conf.location });
-      }
+      page.drawText(t1, { x, y: y - lineHeight * 2, ...conf.normal });
     }
   }
 
   // Date and duration
   {
-    const { lineHeight } = conf.duration;
+    const { lineHeight } = conf.normal;
     const { formattedStartDate, formattedTime, addressLine3 } = options;
     const x = margin;
-    const y = height - 280 - 50 - (addressLine3 ? lineHeight / 3 : 0);
+    const y = height - 442 - (addressLine3 ? lineHeight / 3 : 0);
 
     if (formattedStartDate) {
-      page.drawText(formattedStartDate, { x, y, ...conf.duration });
+      page.drawText(formattedStartDate, { x, y, ...conf.normal });
     }
 
     if (formattedTime) {
-      page.drawText(formattedTime, { x, y: y - lineHeight, ...conf.duration });
+      page.drawText(formattedTime, { x, y: y - lineHeight, ...conf.normal });
     }
   }
 
-  // Instructions
+  // Language
   {
-    const { lineHeight } = conf.muted;
-    const { liveLanguage, formattedCapacity } = options;
-    const x = margin;
-    const y = height - 280 - 50 - 50;
+    const { liveLanguage } = options;
+    const x = margin + 65;
+    const y = height - 516;
 
     if (liveLanguage) {
-      page.drawText(liveLanguage, { x, y, ...conf.muted });
+      page.drawText(liveLanguage, { x, y, ...conf.small });
     }
+  }
 
-    if (formattedCapacity) {
-      page.drawText(formattedCapacity, { x, y: y - lineHeight, ...conf.muted });
+  // Capacity
+  {
+    const { lineHeight } = conf.small;
+    const { availableSeats } = options;
+    const x = margin + 115;
+    const y = height - 523;
+
+    if (availableSeats) {
+      const text = `${availableSeats} people`;
+      page.drawText(text, { x, y: y - lineHeight, ...conf.small });
     }
   }
 
@@ -149,7 +156,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const x = margin + 330;
     const y = height - 480;
     const labels = {
-      ...conf.small,
+      ...conf.xs,
       font: fonts.ibmPlexMedium,
     };
 
@@ -157,13 +164,13 @@ export async function generateTicket(options: GenerateTicketOptions) {
       const label = 'Ticket number:';
       const w = labels.font.widthOfTextAtSize(label, labels.size);
       page.drawText(label, { x, y, ...labels });
-      page.drawText(ticketNumber, { x: x + w + 5, y, ...conf.small });
+      page.drawText(ticketNumber, { x: x + w + 5, y, ...conf.xs });
     }
 
     if (purchaseDate) {
       const label = 'Purchased on:';
       const w = labels.font.widthOfTextAtSize(label, labels.size);
-      const config = { x, y: y - (ticketNumber ? 16 : 0), ...conf.small };
+      const config = { x, y: y - (ticketNumber ? 16 : 0), ...conf.xs };
       page.drawText(label, { ...config, ...labels });
       page.drawText(purchaseDate, { ...config, x: x + w + 5 });
     }
@@ -172,15 +179,11 @@ export async function generateTicket(options: GenerateTicketOptions) {
   // Display name
   {
     const { userName } = options;
-    const x = margin + 322;
-    const y = height - 280;
-
-    const label = 'Display name:';
+    const x = margin + 355;
+    const y = height - 230;
 
     const config = { x, y, ...conf.normal };
-
-    page.drawText(label, { ...config, font: fonts.ibmPlexSemiBold });
-    page.drawText(userName, { ...config, y: y - 20 });
+    page.drawText(userName, { ...config, y: y });
   }
 
   // QR code
@@ -191,9 +194,9 @@ export async function generateTicket(options: GenerateTicketOptions) {
     });
 
     const qr = await doc.embedPng(png);
-    const x = margin + 322;
-    const y = height - 500;
-    const size = 180;
+    const x = margin + 355;
+    const y = height - 415;
+    const size = 170;
 
     page.drawImage(qr, { x, y, width: size, height: size });
   }
