@@ -75,7 +75,9 @@ export const ModalPaymentSuccess = ({
               isBlack
               isLabelBold
               label={t('courses.payment.invoiceId')}
-              value={paymentData.id}
+              value={
+                paymentData.id === 'free' ? t('words.free') : paymentData.id
+              }
             />
           )}
         </div>

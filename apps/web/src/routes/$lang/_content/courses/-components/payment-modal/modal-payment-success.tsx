@@ -50,7 +50,9 @@ export const ModalPaymentSuccess = ({
               isBlack
               isLabelBold
               label={t('courses.payment.invoiceId')}
-              value={checkoutData.id}
+              value={
+                checkoutData.id === 'free' ? t('words.free') : checkoutData.id
+              }
             />
           )}
         </div>
