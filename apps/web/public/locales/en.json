@@ -397,9 +397,11 @@
       "accessLive": "Access the live",
       "billingSubtitle": "Download the invoices from your bookings here.",
       "billingTitle": "Billing history",
+      "cancelBookingTitle": "Are you sure you want to cancel this booking?",
       "invoiceDate": "Date",
       "invoiceTitle": "Title",
       "invoiceType": "Type",
+      "noGoBack": "No, go back",
       "noInvoice": "You currently have no invoices.",
       "noTicket": "You currently have no tickets.",
       "pastTicketTitle": "Past bookings",
@@ -408,7 +410,8 @@
       "ticketTitle": "Title",
       "ticketType": "Type",
       "upcomingTicketSubtitle": "Download your ticket here to attend your upcoming event. Please remember to bring it with you for entry.",
-      "upcomingTicketTitle": "Upcoming bookings"
+      "upcomingTicketTitle": "Upcoming bookings",
+      "yesCancel": "Yes, cancel"
     },
     "calendar": {
       "calendar": "Calendar",
