@@ -195,6 +195,78 @@ const getEventsQuery = () => sql<Searchable<Language>[]>`
   FROM content.events
 `;
 
+// Resource - Youtube Channels
+const getYoutubeChannelsQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'youtube_channel' as type,
+    LOWER(language) as language,
+    name as title,
+    description as body,
+    CONCAT(
+      '/',
+      language,
+      '/resources/channels/',
+      LOWER(REPLACE(name, ' ', '-')),
+      '-',
+      resource_id
+    ) as link
+  FROM content.youtube_channels
+`;
+
+// Resource - Conference Replays
+const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'conference_replay' as type,
+    LOWER(language) as language,
+    conferences.name as title,
+    conferences.description as body,
+    CONCAT(
+      '/',
+      LOWER(language),
+      '/resources/conferences/',
+      LOWER(REPLACE(conferences.name, ' ', '-')),
+      '-',
+      conferences.resource_id
+    ) as link
+  FROM content.conferences as conferences,
+  UNNEST(conferences.languages) as language
+`;
+
+// Resource - Projects
+const getProjectsQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'project' as type,
+    LOWER(language) as language,
+    name as title,
+    '' as body,
+    CONCAT(
+      '/',
+      language,
+      '/resources/projects/',
+      LOWER(REPLACE(name, ' ', '-')),
+      '-',
+      resource_id
+    ) as link
+  FROM content.projects,
+  UNNEST(projects.languages) as language
+`;
+
+// Resources - Lecture Replays
+const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'lecture_replay' as type,
+    'en' as language,
+    name as title,
+    description as body,
+    CONCAT(
+      '/',
+      'en',
+      '/resources/lectures/',
+      id
+    ) as link
+  FROM content.events
+`;
+
 const createInitIndexes = (client: TypesenseClient) => () => {
   const searchableSchema: CollectionCreateSchema = {
     name: 'searchable',
@@ -266,6 +338,10 @@ export const createIndexContent = ({ postgres, typesense }: Dependencies) => {
       ...(await postgres.exec(getGlossaryQuery())),
       ...(await postgres.exec(getNewslettersQuery())),
       ...(await postgres.exec(getEventsQuery())),
+      ...(await postgres.exec(getYoutubeChannelsQuery())),
+      ...(await postgres.exec(getConferenceReplaysQuery())),
+      ...(await postgres.exec(getProjectsQuery())),
+      ...(await postgres.exec(getLectureReplaysQuery())),
     ];
 
     await ingestData(data);
