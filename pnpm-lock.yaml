@@ -65,6 +65,9 @@ importers:
       '@blms/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
+      '@blms/service-common':
+        specifier: workspace:*
+        version: link:../../packages/service-common
       '@blms/service-content':
         specifier: workspace:*
         version: link:../../packages/service-content

@@ -23,6 +23,7 @@
     "@blms/redis": "workspace:*",
     "@blms/s3": "workspace:*",
     "@blms/schemas": "workspace:*",
+    "@blms/service-common": "workspace:*",
     "@blms/service-content": "workspace:*",
     "@blms/service-user": "workspace:*",
     "@trpc/server": "11.0.0-rc.730",

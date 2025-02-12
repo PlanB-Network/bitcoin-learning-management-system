@@ -1,0 +1,17 @@
+export const LANGUAGES_MAP: { [key: string]: string } = {
+  cs: 'Čeština',
+  de: 'Deutsch',
+  en: 'English',
+  es: 'Español',
+  et: 'Eesti keel',
+  fi: 'Suomi',
+  fr: 'Français',
+  id: 'Bahasa indonesia',
+  it: 'Italiano',
+  ja: '日本語',
+  nbno: 'Norsk bokmål',
+  pt: 'Português',
+  ru: 'Русский',
+  vi: 'Tiếng Việt',
+  zhhans: '简体中文',
+};

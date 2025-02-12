@@ -34,31 +34,31 @@ export async function generateTicket(options: GenerateTicketOptions) {
   const conf = {
     small: {
       size: 10,
-      font: fonts.rubikLight,
+      font: fonts.ibmPlexLight,
     },
     normal: {
       size: 14,
-      font: fonts.rubikRegular,
+      font: fonts.ibmPlexRegular,
       lineHeight: 20,
     },
     title: {
       size: 20,
-      font: fonts.rubikSemiBold,
+      font: fonts.ibmPlexSemiBold,
       lineHeight: 24,
     },
     location: {
       size: 14,
-      font: fonts.rubikMedium,
+      font: fonts.ibmPlexMedium,
       lineHeight: 20,
     },
     duration: {
       size: 12,
-      font: fonts.rubikRegular,
+      font: fonts.ibmPlexRegular,
       lineHeight: 16,
     },
     muted: {
       size: 12,
-      font: fonts.rubikRegular,
+      font: fonts.ibmPlexRegular,
       color: grey,
       lineHeight: 16,
     },
@@ -150,7 +150,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const y = height - 480;
     const labels = {
       ...conf.small,
-      font: fonts.rubikMedium,
+      font: fonts.ibmPlexMedium,
     };
 
     if (ticketNumber) {
@@ -179,7 +179,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
 
     const config = { x, y, ...conf.normal };
 
-    page.drawText(label, { ...config, font: fonts.rubikSemiBold });
+    page.drawText(label, { ...config, font: fonts.ibmPlexSemiBold });
     page.drawText(userName, { ...config, y: y - 20 });
   }
 

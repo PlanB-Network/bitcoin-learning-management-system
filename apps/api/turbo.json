@@ -4,6 +4,7 @@
   "tasks": {
     "check-types": {
       "dependsOn": [
+        "@blms/service-common#build-types",
         "@blms/service-content#build-types",
         "@blms/service-user#build-types",
         "@blms/opentimestamps#build-types",
@@ -14,6 +15,7 @@
     "build-types": {
       "outputs": ["dist/**"],
       "dependsOn": [
+        "@blms/service-common#build-types",
         "@blms/service-content#build-types",
         "@blms/service-user#build-types",
         "@blms/opentimestamps#build-types",
@@ -23,6 +25,7 @@
     },
     "build": {
       "dependsOn": [
+        "@blms/service-common#build",
         "@blms/service-content#build",
         "@blms/service-user#build",
         "@blms/opentimestamps#build",

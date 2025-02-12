@@ -68,17 +68,17 @@ export async function createPdf(options: PdfCertificateOptions) {
     },
     rubikWhite: {
       size: 16,
-      font: fonts.rubikRegular,
+      font: fonts.ibmPlexRegular,
       color: white,
     },
     courseName: {
       size: 50,
-      font: fonts.rubikRegular,
+      font: fonts.ibmPlexRegular,
       color: white,
     },
     userName: {
       size: 70,
-      font: fonts.style,
+      font: fonts.styleScript,
       color: orange,
     },
   } satisfies Record<string, MandatoryTextOptions>;
@@ -118,7 +118,7 @@ export async function createPdf(options: PdfCertificateOptions) {
 
   // Course Name
   {
-    const font = fonts.rubikRegular;
+    const font = fonts.ibmPlexRegular;
     const text = options.courseName;
     const { size } = conf.courseName;
     const width = font.widthOfTextAtSize(text, size);
@@ -135,7 +135,7 @@ export async function createPdf(options: PdfCertificateOptions) {
 
   // Full Name
   {
-    const font = fonts.style;
+    const font = fonts.styleScript;
     const { size } = conf.userName;
     const width = font.widthOfTextAtSize(options.fullName, size);
     const oneLine = width < (page.getWidth() - 2 * margin) * 0.7;
@@ -151,7 +151,7 @@ export async function createPdf(options: PdfCertificateOptions) {
 
   // Date
   {
-    const font = fonts.rubikRegular;
+    const font = fonts.ibmPlexRegular;
     const x = width - margin - font.widthOfTextAtSize(options.date, 16);
     textLeft(page, options.date, { x, y: 525, ...conf.rubikWhite });
   }

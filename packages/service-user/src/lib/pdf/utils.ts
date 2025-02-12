@@ -16,12 +16,22 @@ export const loadTxtTemplate = (name: string) => {
 };
 
 export const fontsBytes = {
-  mono: fs.readFileSync(join(dir, './fonts/JetBrainsMono.ttf')),
-  rubikLight: fs.readFileSync(join(dir, './fonts/Rubik-Light.ttf')),
-  rubikRegular: fs.readFileSync(join(dir, './fonts/Rubik-Regular.ttf')),
-  rubikMedium: fs.readFileSync(join(dir, './fonts/Rubik-Medium.ttf')),
-  rubikSemiBold: fs.readFileSync(join(dir, './fonts/Rubik-SemiBold.ttf')),
-  rubikBold: fs.readFileSync(join(dir, './fonts/Rubik-Bold.ttf')),
+  mono: fs.readFileSync(join(dir, './fonts/mono/JetBrainsMono.ttf')),
+  ibmPlexLight: fs.readFileSync(
+    join(dir, './fonts/ibm-plex/IBMPlexSans-Light.ttf'),
+  ),
+  ibmPlexRegular: fs.readFileSync(
+    join(dir, './fonts/ibm-plex/IBMPlexSans-Regular.ttf'),
+  ),
+  ibmPlexMedium: fs.readFileSync(
+    join(dir, './fonts/ibm-plex/IBMPlexSans-Medium.ttf'),
+  ),
+  ibmPlexSemiBold: fs.readFileSync(
+    join(dir, './fonts/ibm-plex/IBMPlexSans-SemiBold.ttf'),
+  ),
+  ibmPlexBold: fs.readFileSync(
+    join(dir, './fonts/ibm-plex/IBMPlexSans-Bold.ttf'),
+  ),
   styleScript: fs.readFileSync(join(dir, './fonts/StyleScript.otf')),
 };
 
@@ -31,12 +41,12 @@ export const newDocumentFromTemplate = async (buf: Buffer) => {
   doc.registerFontkit(fontkit);
 
   const fonts = {
-    style: await doc.embedFont(fontsBytes.styleScript),
-    rubikLight: await doc.embedFont(fontsBytes.rubikLight),
-    rubikRegular: await doc.embedFont(fontsBytes.rubikRegular),
-    rubikMedium: await doc.embedFont(fontsBytes.rubikMedium),
-    rubikSemiBold: await doc.embedFont(fontsBytes.rubikSemiBold),
-    rubikBold: await doc.embedFont(fontsBytes.rubikBold),
+    styleScript: await doc.embedFont(fontsBytes.styleScript),
+    ibmPlexLight: await doc.embedFont(fontsBytes.ibmPlexLight),
+    ibmPlexRegular: await doc.embedFont(fontsBytes.ibmPlexRegular),
+    ibmPlexMedium: await doc.embedFont(fontsBytes.ibmPlexMedium),
+    ibmPlexSemiBold: await doc.embedFont(fontsBytes.ibmPlexSemiBold),
+    ibmPlexBold: await doc.embedFont(fontsBytes.ibmPlexBold),
     mono: await doc.embedFont(fontsBytes.mono),
   };
 

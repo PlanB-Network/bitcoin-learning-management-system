@@ -5,6 +5,7 @@ import {
   eventPaymentSchema,
   userEventSchema,
 } from '@blms/schemas';
+import { LANGUAGES_MAP } from '@blms/service-common';
 import {
   createCalculateEventSeats,
   createGetEvent,
@@ -17,6 +18,7 @@ import {
   createSaveUserEvent,
   generateEventTicket,
 } from '@blms/service-user';
+
 import type {
   CalendarEventParticipant,
   CheckoutData,
@@ -61,7 +63,9 @@ const downloadEventTicketProcedure = studentProcedure
       addressLine3: event.addressLine3,
       formattedStartDate: formattedStartDate,
       formattedTime: formattedTime,
-      liveLanguage: '',
+      liveLanguage: event.languages
+        .map((code) => LANGUAGES_MAP[code])
+        .join(', '),
       formattedCapacity: formattedCapacity,
       userName: input.userName,
     }).then((buffer) => buffer.toString('base64'));
