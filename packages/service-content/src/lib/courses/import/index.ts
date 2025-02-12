@@ -323,7 +323,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
           if (
             parsedCourse.test_only === true &&
-            process.env.NODE_ENV === 'production'
+            process.env.PLANB_ENVIRONMENT === 'mainnet'
           ) {
             console.log('-- Sync: Ignore course', course.id);
             return;

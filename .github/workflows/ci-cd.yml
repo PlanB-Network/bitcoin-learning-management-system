@@ -132,6 +132,16 @@ jobs:
             cwd://${{ steps.meta-web.outputs.bake-file }}
           targets: web
 
+      - name: Prepare compose file with environment variables
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/mainnet" ]; then
+            sed -i 's/planbenvtoreplace/mainnet/g' docker/compose.yml
+          else
+            sed -i 's/planbenvtoreplace/testnet/g' docker/compose.yml
+          fi
+        env:
+          GITHUB_REF: ${{ github.ref }}
+
       - name: Copy Docker files to server
         uses: appleboy/scp-action@v0.1.7
         with:

@@ -12,6 +12,7 @@ x-defaults: &defaults
     REDIS_PORT: 6379
     POSTGRES_HOST: postgres
     POSTGRES_PORT: 5432
+    PLANB_ENVIRONMENT: planbenvtoreplace
 
   logging:
     driver: 'json-file'

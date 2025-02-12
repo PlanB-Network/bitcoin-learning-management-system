@@ -42,7 +42,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     if (
       parsedTutorial.test_only === true &&
-      process.env.NODE_ENV === 'production'
+      process.env.PLANB_ENVIRONMENT === 'mainnet'
     ) {
       console.log('-- Sync: Ignore tutorial', parsedTutorial.id);
       return;
