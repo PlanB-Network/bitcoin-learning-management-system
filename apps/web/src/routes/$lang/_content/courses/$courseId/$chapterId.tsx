@@ -756,7 +756,7 @@ function CourseChapter() {
                           formattedStartDate: `Start date: ${formatDate(chapter.course.startDate)}`,
                           formattedTime: `End date: ${formatDate(chapter.course.endDate)}`,
                           liveLanguage: chapter.liveLanguage,
-                          formattedCapacity: '',
+                          availableSeats: null,
                           userName: user?.username ?? '',
                         });
                         setDownloadedPdf(pdf);

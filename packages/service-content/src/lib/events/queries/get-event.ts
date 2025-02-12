@@ -6,7 +6,7 @@ export const getEventQuery = (id: string) => {
     SELECT
       e.*,
       COALESCE(
-        (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
+        (SELECT pr.name FROM content.projects pr WHERE pr.id = e.project_id LIMIT 1),
         ''
         ) AS project_name,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags,

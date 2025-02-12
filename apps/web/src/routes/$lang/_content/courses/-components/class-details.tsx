@@ -67,28 +67,14 @@ export const ClassDetails = ({
 
   const timezone = chapter.timezone ? chapter.timezone : undefined;
 
-  // const test = new Intl.DateTimeFormat(undefined, {
-  //   month: 'short',
-  //   day: 'numeric',
-  //   year: 'numeric',
-  //   hour: 'numeric',
-  //   minute: 'numeric',
-  //   hour12: true,
-  //   timeZoneName: 'short',
-  // }).format(new Date(chapter.endDate as Date));
-
   const formattedStartDate = chapter.startDate
     ? formatDate(chapter.startDate)
     : '';
-  ///////////////////////
 
   const formattedTime =
     chapter.startDate && chapter.endDate
       ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
       : '';
-  const formattedCapacity = chapter.availableSeats
-    ? `limited to ${chapter.availableSeats} people`
-    : '';
 
   return (
     <div className="flex flex-col mt-6 px-4 md:px-0">
@@ -171,7 +157,7 @@ export const ClassDetails = ({
                           ...course,
                           formattedStartDate,
                           formattedTime,
-                          formattedCapacity,
+                          availableSeats: chapter.availableSeats,
                           userName: user.username,
                         });
                         setDownloadedPdf(pdf);

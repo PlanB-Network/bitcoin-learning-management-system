@@ -337,7 +337,7 @@ const downloadChapterTicketProcedure = studentProcedure
       formattedStartDate: z.string().optional(),
       formattedTime: z.string().optional(),
       liveLanguage: z.string().nullable(),
-      formattedCapacity: z.string().optional(),
+      availableSeats: z.number().nullable(),
       userName: z.string(),
     }),
   )

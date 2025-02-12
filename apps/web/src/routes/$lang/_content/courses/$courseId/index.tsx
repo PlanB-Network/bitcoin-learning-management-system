@@ -663,7 +663,7 @@ function CourseDetails() {
               formattedStartDate: `Start date: ${formatDate(course.startDate)}`,
               formattedTime: `End date: ${formatDate(course.endDate)}`,
               liveLanguage: '',
-              formattedCapacity: '',
+              availableSeats: null,
               userName: user ? user.username : '',
             });
             setDownloadedPdf(pdf);

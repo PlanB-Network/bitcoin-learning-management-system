@@ -52,12 +52,10 @@ const downloadEventTicketProcedure = studentProcedure
       event.startDate && event.endDate
         ? `${formatTime(event.startDate, timezone)} to ${formatTime(event.endDate, timezone)}`
         : '';
-    const formattedCapacity = event.availableSeats
-      ? `limited to ${event.availableSeats} people`
-      : '';
 
     return generateEventTicket({
       title: event.name ? event.name : '',
+      organizer: event.projectName,
       addressLine1: event.addressLine1 ?? '',
       addressLine2: event.addressLine2,
       addressLine3: event.addressLine3,
@@ -66,7 +64,7 @@ const downloadEventTicketProcedure = studentProcedure
       liveLanguage: event.languages
         .map((code) => LANGUAGES_MAP[code])
         .join(', '),
-      formattedCapacity: formattedCapacity,
+      availableSeats: event.availableSeats,
       userName: input.userName,
     }).then((buffer) => buffer.toString('base64'));
   });

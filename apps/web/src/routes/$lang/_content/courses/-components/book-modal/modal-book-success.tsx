@@ -32,9 +32,6 @@ export const ModalBookSuccess = ({
     chapter.startDate && chapter.endDate
       ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
       : '';
-  const formattedCapacity = chapter.availableSeats
-    ? `limited to ${chapter.availableSeats} people`
-    : '';
 
   return (
     <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
@@ -67,7 +64,7 @@ export const ModalBookSuccess = ({
               ...course,
               formattedStartDate,
               formattedTime,
-              formattedCapacity,
+              availableSeats: chapter.availableSeats,
               userName: user?.username as string,
             });
             const link = document.createElement('a');
