@@ -10,6 +10,9 @@ type ActionOrPath = { action: () => void } | { path: string };
 export type NavigationElement = (NavigationBaseItem & {
   icon?: string;
   description?: string;
+  search?: {
+    [key: string]: string | number | boolean | string[] | number[] | boolean[];
+  };
 }) &
   ActionOrPath;
 

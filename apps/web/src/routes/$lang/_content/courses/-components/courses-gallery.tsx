@@ -1,4 +1,4 @@
-import { useLocation } from '@tanstack/react-router';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
@@ -12,11 +12,12 @@ import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
-  const location = useLocation();
+  const navigate = useNavigate();
 
   const uniqueTopics = Array.from(
     new Set(courses.map((course) => course.topic)),
   ).sort((a, b) => a.localeCompare(b));
+
   const topics = [
     { name: 'all', translation: t('words.all') },
     ...uniqueTopics.map((topic: string) => ({
@@ -41,41 +42,53 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
     { name: 'intermediate', translation: t('words.level.intermediate') },
   ];
 
-  const [activeLevels, setActiveLevels] = useState<Set<string>>(
-    new Set(['all']),
-  );
   const [filteredCourses, setFilteredCourses] = useState<JoinedCourse[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const featuredCourseId = 'btc101';
 
-  const getDefaultTopic = () => {
-    const hash = location.hash.replace('#', '').replaceAll('%20', ' ');
-    const validTopics = topics.map((topic) => topic.name);
-    return validTopics.includes(hash) ? hash : topics[0].name;
+  const {
+    topics: searchedTopics = 'all',
+    levels: searchedLevels = 'all',
+  }: { topics: string; levels: string } = useSearch({
+    strict: false,
+  });
+
+  const getDefaultValues = (
+    options: { name: string }[],
+    searchedValues?: string,
+  ) => {
+    const validValues = options.map((option) => option.name);
+    const separatedValues = searchedValues
+      ? searchedValues.split(',').map((value) => value.replaceAll('+', ' '))
+      : [];
+
+    return separatedValues.every((value) => validValues.includes(value))
+      ? new Set(separatedValues.map((value) => value.replaceAll('+', ' ')))
+      : new Set(['all']);
   };
 
   const [activeTopics, setActiveTopics] = useState<Set<string>>(
-    new Set([getDefaultTopic()]),
+    getDefaultValues(topics, searchedTopics),
+  );
+  const [activeLevels, setActiveLevels] = useState<Set<string>>(
+    getDefaultValues(levels, searchedLevels),
   );
 
-  // Sync topic with URL hash changes
   useEffect(() => {
-    if (courses.length > 0) {
-      const hash = location.hash.replace('#', '');
-      if (topics.some((topic) => topic.name === hash)) {
-        setActiveTopics(new Set([hash]));
-      }
-    }
-  }, [location.hash, courses]);
+    const search = new URLSearchParams(window.location.search);
 
-  useEffect(() => {
-    window.location.hash =
-      activeTopics.size === 1 && !activeTopics.has('all')
-        ? activeTopics.values().next().value!
-        : activeTopics.size > 1
-          ? 'filters'
-          : '';
-  }, [activeTopics]);
+    const topicsArray = Array.from(activeTopics);
+    search.set('topics', topicsArray.join(','));
+
+    const levelsArray = Array.from(activeLevels);
+    search.set('levels', levelsArray.join(','));
+
+    navigate({
+      to: '.',
+      search: Object.fromEntries(search),
+      resetScroll: false,
+    });
+  }, [activeTopics, activeLevels]);
 
   useEffect(() => {
     const reorderedCourses = [
@@ -111,11 +124,6 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   return (
     <>
       <div className="md:mt-12 max-w-[730px] lg:max-w-[1126px] mx-auto">
-        {/* Hidden div to improve hash scroll */}
-        <div
-          className="invisible block relative -top-16 md:-top-32"
-          id="filters"
-        />
         <p className="desktop-h6 mb-5">{t('courses.explorer.buildPath')}</p>
         <div className="max-md:hidden flex flex-col p-5 gap-8 bg-tertiary-10 rounded-[20px] max-w-[1126px] mx-auto">
           <div className="flex items-center gap-8 font-medium">
