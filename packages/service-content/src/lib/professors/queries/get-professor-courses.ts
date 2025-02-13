@@ -26,7 +26,9 @@ export const getProfessorCoursesQuery = ({
     whereClauses.push(sql`p.contributor_id = ${contributorId}`);
   }
   if (language !== undefined) {
-    whereClauses.push(sql`cl.language = LOWER(${language})`);
+    whereClauses.push(
+      sql`(cl.language = LOWER(${language}) OR cl.language = c.original_language)`,
+    );
   }
 
   whereClauses.push(sql`c.is_archived = false`);
@@ -36,7 +38,7 @@ export const getProfessorCoursesQuery = ({
   )}`;
 
   return sql<JoinedCourseWithProfessorsContributorIds[]>`
-    SELECT
+    SELECT DISTINCT ON (c.id)
       c.id,
       c.is_archived,
       cl.language,
@@ -90,35 +92,12 @@ export const getProfessorCoursesQuery = ({
 
     ${whereStatement}
 
-    GROUP BY
+    ORDER BY
       c.id,
-      cl.language,
-      c.level,
-      c.hours,
-      c.topic,
-      c.subtopic,
-      c.original_language,
-      c.requires_payment,
-      c.format,
-      c.online_price_dollars,
-      c.inperson_price_dollars,
-      c.paid_description,
-      c.paid_video_link,
-      c.start_date,
-      c.end_date,
-      c.contact,
-      c.available_seats,
-      c.remaining_seats,
-      c.number_of_rating,
-      c.sum_of_all_rating,
-      c.is_planb_school,
-      c.planb_school_markdown,
-      cl.name,
-      cl.goal,
-      cl.objectives,
-      cl.raw_description,
-      c.last_updated,
-      c.last_commit,
-      cp_agg.professors
+      CASE
+        WHEN ${language ? sql`cl.language = LOWER(${language})` : sql`false`} THEN 1
+        WHEN cl.language = c.original_language THEN 2
+        ELSE 3
+      END
   `;
 };

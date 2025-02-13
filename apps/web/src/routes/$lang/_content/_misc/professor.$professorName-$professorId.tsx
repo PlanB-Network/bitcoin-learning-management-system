@@ -55,12 +55,12 @@ function ProfessorDetail() {
 
   const categoryHash = window.location.hash.replace('#', '') || 'all';
 
-  const handleBackClick = () => {
+  const getBacklinkUrl = () => {
     if (categoryHash) {
-      navigate({ to: `/professors/${categoryHash}` });
-    } else {
-      navigate({ to: '/professors/all' });
+      return `/professors/${categoryHash}`;
     }
+
+    return '/professors/all';
   };
 
   useEffect(() => {
@@ -86,10 +86,7 @@ function ProfessorDetail() {
       )}
       {professor && (
         <div className="flex flex-col gap-1 items-start text-white">
-          <BackLink
-            label={t('professors.pageTitle')}
-            onClick={handleBackClick}
-          />
+          <BackLink to={getBacklinkUrl()} label={t('professors.pageTitle')} />
           <div className="flex w-full flex-col items-start">
             <AuthorCardFull professor={professor} className="mx-auto" />
           </div>
