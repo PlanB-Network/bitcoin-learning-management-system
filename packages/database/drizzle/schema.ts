@@ -271,7 +271,7 @@ export const usersJobTitles = users.table('job_titles', (t) => ({
 export const contentBlogs = content.table(
   'blogs',
   (t) => ({
-    id: t.uuid(),
+    id: t.uuid().primaryKey(),
     oldId: t.integer().unique().generatedAlwaysAsIdentity().notNull(),
     path: t.varchar({ length: 255 }).unique().notNull(),
 
@@ -298,10 +298,10 @@ export const contentBlogs = content.table(
 export const contentBlogsLocalized = content.table(
   'blogs_localized',
   (t) => ({
-    //  blogId: t
-    //    .uuid()
-    //    .notNull()
-    //    .references(() => contentBlogs.id),
+    blogId: t
+      .uuid()
+      // .notNull()
+      .references(() => contentBlogs.id),
     blogOldId: t
       .integer()
       .notNull()
@@ -321,6 +321,10 @@ export const contentBlogsLocalized = content.table(
 export const contentBlogTags = content.table(
   'blog_tags',
   (t) => ({
+    blogId: t
+      .uuid()
+      // .notNull()
+      .references(() => contentBlogs.id),
     blogOldId: t
       .integer()
       .notNull()

@@ -120,26 +120,39 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
           throw new Error(`Blog not found for path '${blog.path}'`);
         }
 
+        const id = await transaction<Blog[]>`
+        SELECT id FROM content.blogs WHERE path = ${blog.path}
+      `
+          .then(firstRow)
+          .then((row) => row?.id);
+
+        if (!id) {
+          throw new Error(`Blog not found for path '${blog.path}'`);
+        }
+
         for (const file of files) {
           try {
+            // TODO on conflict
             const header = matter(await file.load(), { excerpt: false });
 
             await transaction`
-          INSERT INTO content.blogs_localized (
-            blog_old_id, language, title, description, raw_content
-          )
-          VALUES (
-            ${oldId},
-            ${file.language?.toLowerCase()},
-            ${header.data.name},
-            ${header.data.description},
-            ${header.content.trim()}
-          )
-          ON CONFLICT (blog_old_id, language) DO UPDATE SET
-            title = EXCLUDED.title,
-            description = EXCLUDED.description,
-            raw_content = EXCLUDED.raw_content
-        `;
+              INSERT INTO content.blogs_localized (
+                blog_id, blog_old_id, language, title, description, raw_content
+              )
+              VALUES (
+                ${id},
+                ${oldId},
+                ${file.language?.toLowerCase()},
+                ${header.data.name},
+                ${header.data.description},
+                ${header.content.trim()}
+              )
+              ON CONFLICT (blog_old_id, language) DO UPDATE SET
+                blog_id = EXCLUDED.blog_id,
+                title = EXCLUDED.title,
+                description = EXCLUDED.description,
+                raw_content = EXCLUDED.raw_content
+            `;
           } catch (error) {
             errors.push(
               `Error processing file(blogs 2) ${file?.path} in blog ${blog.fullPath} : ${error}`,
