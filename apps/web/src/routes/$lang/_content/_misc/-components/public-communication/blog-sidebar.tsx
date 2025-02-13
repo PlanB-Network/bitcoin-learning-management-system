@@ -9,7 +9,7 @@ import MessageIcon from '../../../../../../assets/icons/icon-message.svg';
 import { AppContext } from '#src/providers/context.js';
 
 interface BlogSidebarProps {
-  currentBlogId: number;
+  currentBlogId: string;
   currentCategory: string;
 }
 
@@ -24,11 +24,9 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
     return null;
   }
 
-  console.log(`B -${currentBlogId}-`, blogs);
   const filteredBlogs = blogs.filter(
-    (blog) => blog.oldId !== currentBlogId && blog.category === currentCategory,
+    (blog) => blog.id !== currentBlogId && blog.category === currentCategory,
   );
-  console.log('F', filteredBlogs);
 
   return (
     <div className="mx-auto bg-newGray-6 p-2.5 rounded-2xl">

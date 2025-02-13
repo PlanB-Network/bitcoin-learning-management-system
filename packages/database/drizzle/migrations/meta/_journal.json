@@ -449,6 +449,20 @@
       "when": 1739458152288,
       "tag": "0063_graceful_plazm",
       "breakpoints": true
+    },
+    {
+      "idx": 64,
+      "version": "7",
+      "when": 1739459129486,
+      "tag": "0064_tough_the_spike",
+      "breakpoints": true
+    },
+    {
+      "idx": 65,
+      "version": "7",
+      "when": 1739459296988,
+      "tag": "0065_big_mantis",
+      "breakpoints": true
     }
   ]
 }

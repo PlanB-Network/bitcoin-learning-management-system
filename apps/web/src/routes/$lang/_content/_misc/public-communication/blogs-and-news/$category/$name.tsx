@@ -78,7 +78,7 @@ function SingleBlogDetail() {
             </div>
             <div className="max-w-[300px] mx-auto lg:max-w-[336px] flex-1">
               <BlogSidebar
-                currentBlogId={blog.oldId}
+                currentBlogId={blog.id}
                 currentCategory={blog.category}
               />
             </div>
