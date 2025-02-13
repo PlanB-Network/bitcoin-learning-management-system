@@ -220,7 +220,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
         INSERT INTO users.exam_timestamps (exam_attempt_id, txt, sig, hash, ots)
-        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots})
+        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots.buffer})
         RETURNING *;
       `,
     );
@@ -369,20 +369,22 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     },
     upgradeAllTimeStamps: async () => {
       const timestamps = await getAllPendingTimestamps();
+      if (timestamps.length) {
+        console.log('[Cron] Upgrade all timestamps', timestamps);
 
-      console.log('[Cron] Upgrade all timestamps', timestamps);
-
-      for (const { examAttemptId } of timestamps) {
-        await upgradeExamTimestamp(examAttemptId);
+        for (const { examAttemptId } of timestamps) {
+          await upgradeExamTimestamp(examAttemptId);
+        }
       }
     },
     validateAllTimeStamps: async () => {
       const timestamps = await getAllPendingTimestamps();
+      if (timestamps.length) {
+        console.log('[Cron] Validate all timestamps', timestamps);
 
-      console.log('[Cron] Validate all timestamps', timestamps);
-
-      for (const { examAttemptId } of timestamps) {
-        await validateExamTimestamp(examAttemptId);
+        for (const { examAttemptId } of timestamps) {
+          await validateExamTimestamp(examAttemptId);
+        }
       }
     },
     generateAllCertificates: async () => {
@@ -394,11 +396,12 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
             AND pdf_key IS NULL;
         `,
       );
+      if (timestamps.length) {
+        console.log('[Cron] Generate all certificates', timestamps);
 
-      console.log('[Cron] Generate all certificates', timestamps);
-
-      for (const { examAttemptId } of timestamps) {
-        await generatePdfCertificate(examAttemptId);
+        for (const { examAttemptId } of timestamps) {
+          await generatePdfCertificate(examAttemptId);
+        }
       }
     },
     generateAllThumbnails: async () => {
@@ -410,11 +413,12 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
             AND img_key IS NULL;
         `,
       );
+      if (docs.length) {
+        console.log('[Cron] Generate all certificates thumbnails', docs);
 
-      console.log('[Cron] Generate all certificates thumbnails', docs);
-
-      for (const { examAttemptId, pdfKey } of docs) {
-        await generateCertificateThumbnail(examAttemptId, pdfKey);
+        for (const { examAttemptId, pdfKey } of docs) {
+          await generateCertificateThumbnail(examAttemptId, pdfKey);
+        }
       }
     },
   };
