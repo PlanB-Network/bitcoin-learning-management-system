@@ -217,10 +217,12 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
     const { signature, ots, hash } = await timestamp({ text });
 
+    const otfBuffer = new Uint8Array(ots.buffer);
+
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
         INSERT INTO users.exam_timestamps (exam_attempt_id, txt, sig, hash, ots)
-        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots})
+        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${otfBuffer})
         RETURNING *;
       `,
     );
