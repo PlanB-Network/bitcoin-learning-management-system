@@ -272,7 +272,6 @@ export const contentBlogs = content.table(
   'blogs',
   (t) => ({
     id: t.uuid().primaryKey(),
-    oldId: t.integer().unique().generatedAlwaysAsIdentity().notNull(),
     path: t.varchar({ length: 255 }).unique().notNull(),
 
     name: t.varchar({ length: 255 }).notNull(),
@@ -300,12 +299,8 @@ export const contentBlogsLocalized = content.table(
   (t) => ({
     blogId: t
       .uuid()
-      // .notNull()
-      .references(() => contentBlogs.id),
-    blogOldId: t
-      .integer()
       .notNull()
-      .references(() => contentBlogs.oldId),
+      .references(() => contentBlogs.id),
     language: t.varchar({ length: 10 }).notNull(),
     title: t.text().notNull(),
     description: t.text(),
@@ -313,7 +308,7 @@ export const contentBlogsLocalized = content.table(
   }),
   (table) => ({
     pk: primaryKey({
-      columns: [table.blogOldId, table.language],
+      columns: [table.blogId, table.language],
     }),
   }),
 );
@@ -323,12 +318,8 @@ export const contentBlogTags = content.table(
   (t) => ({
     blogId: t
       .uuid()
-      // .notNull()
-      .references(() => contentBlogs.id),
-    blogOldId: t
-      .integer()
       .notNull()
-      .references(() => contentBlogs.oldId),
+      .references(() => contentBlogs.id),
     tagId: t
       .integer()
       .notNull()
@@ -336,7 +327,7 @@ export const contentBlogTags = content.table(
   }),
   (table) => ({
     pk: primaryKey({
-      columns: [table.blogOldId, table.tagId],
+      columns: [table.blogId, table.tagId],
     }),
   }),
 );

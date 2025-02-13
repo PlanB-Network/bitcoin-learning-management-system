@@ -110,16 +110,6 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
           return;
         }
 
-        const oldId = await transaction<Blog[]>`
-          SELECT old_id FROM content.blogs WHERE path = ${blog.path}
-        `
-          .then(firstRow)
-          .then((row) => row?.oldId);
-
-        if (!oldId) {
-          throw new Error(`Blog not found for path '${blog.path}'`);
-        }
-
         const id = await transaction<Blog[]>`
         SELECT id FROM content.blogs WHERE path = ${blog.path}
       `
@@ -132,23 +122,20 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
 
         for (const file of files) {
           try {
-            // TODO on conflict
             const header = matter(await file.load(), { excerpt: false });
 
             await transaction`
               INSERT INTO content.blogs_localized (
-                blog_id, blog_old_id, language, title, description, raw_content
+                blog_id, language, title, description, raw_content
               )
               VALUES (
                 ${id},
-                ${oldId},
                 ${file.language?.toLowerCase()},
                 ${header.data.name},
                 ${header.data.description},
                 ${header.content.trim()}
               )
-              ON CONFLICT (blog_old_id, language) DO UPDATE SET
-                blog_id = EXCLUDED.blog_id,
+              ON CONFLICT (blog_id, language) DO UPDATE SET
                 title = EXCLUDED.title,
                 description = EXCLUDED.description,
                 raw_content = EXCLUDED.raw_content

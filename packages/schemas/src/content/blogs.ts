@@ -14,7 +14,6 @@ export const blogTagSchema = createSelectSchema(contentBlogTags);
 export const joinedBlogLightSchema = blogSchema
   .pick({
     id: true,
-    oldId: true,
     path: true,
     name: true,
     category: true,
