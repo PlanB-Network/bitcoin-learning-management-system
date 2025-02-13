@@ -53,10 +53,12 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       throw new Error('Could not insert blog');
     }
 
-    const blogId = result.oldId;
+    const blogOldId = result.oldId;
+    const blogId = result.id;
+
     if (parsedBlog.tags && parsedBlog.tags.length > 0) {
       await transaction`
-        DELETE FROM content.blog_tags WHERE blog_old_id = ${blogId}
+        DELETE FROM content.blog_tags WHERE blog_old_id = ${blogOldId}
      `;
 
       await transaction`
@@ -67,8 +69,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       `;
 
       await transaction`
-        INSERT INTO content.blog_tags (blog_old_id, tag_id)
-          SELECT ${blogId}, id
+        INSERT INTO content.blog_tags (blog_id, blog_old_id, tag_id)
+          SELECT ${blogId}, ${blogOldId}, id
           FROM content.tags
           WHERE name = ANY(${parsedBlog.tags.map((tag) => tag.toLowerCase())})
         ON CONFLICT DO NOTHING
