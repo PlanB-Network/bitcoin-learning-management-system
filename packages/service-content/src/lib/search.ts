@@ -122,48 +122,34 @@ const getBooksQuery = () => sql<Searchable<Language>[]>`
       CONCAT(author, ': ', title) as title,
       original,
       description as body,
-      CONCAT(
-        '/',
-        language,
-        '/resources/books/',
-        book_id
-      ) as link
+      CONCAT('/', language, '/', r.path, '-', book_id) as link
     FROM content.books_localized
     JOIN content.books b ON b.resource_id = book_id
+    JOIN content.resources r ON r.id = book_id
   `;
 
 // Resource - Podcast
 const getPodcastsQuery = () => sql<Searchable<Language>[]>`
   SELECT
-      'podcast' as type,
-      LOWER(language) as language,
-      name as title,
-      description as body,
-      CONCAT(
-        '/',
-        language,
-        '/resources/podcasts/',
-        LOWER(REPLACE(name, ' ', '-')),
-        '-',
-        resource_id
-      ) as link
-    FROM content.podcasts
+    'podcast' as type,
+    LOWER(language) as language,
+    name as title,
+    description as body,
+    CONCAT('/', language, '/', r.path, '-', resource_id) as link
+  FROM content.podcasts as p
+    JOIN content.resources r ON r.id = p.resource_id
   `;
 
 // Resource - Glossary
 const getGlossaryQuery = () => sql<Searchable<Language>[]>`
   SELECT
     'glossary_word' as type,
-    LOWER(language) as language,
-    term as title,
-    definition as body,
-    CONCAT(
-      '/',
-      language,
-      '/resources/glossary/',
-      LOWER(REPLACE(term, ' ', '-'))
-    ) as link
-  FROM content.glossary_words_localized
+    LOWER(wl.language) as language,
+    wl.term as title,
+    wl.definition as body,
+    CONCAT('/', wl.language, '/', r.path) as link
+  FROM content.glossary_words_localized wl
+    JOIN content.resources r ON r.id = wl.glossary_word_id
 `;
 
 // Resource - newsletters
@@ -173,15 +159,9 @@ const getNewslettersQuery = () => sql<Searchable<Language>[]>`
     title,
     LOWER(language) as language,
     COALESCE(description, '') as body,
-    CONCAT(
-      '/',
-      language,
-      '/resources/newsletters/',
-      LOWER(REPLACE(REPLACE(title, '.', '-'), ' ', '-')),
-      '-',
-      resource_id
-    ) as link
-  FROM content.newsletters
+    CONCAT('/', language,  '/',  r.path, '-',  resource_id) as link
+  FROM content.newsletters as n
+    JOIN content.resources r ON r.id = n.resource_id
 `;
 
 // Category - Events (not multilingual)
@@ -202,15 +182,9 @@ const getYoutubeChannelsQuery = () => sql<Searchable<Language>[]>`
     LOWER(language) as language,
     name as title,
     description as body,
-    CONCAT(
-      '/',
-      language,
-      '/resources/channels/',
-      LOWER(REPLACE(name, ' ', '-')),
-      '-',
-      resource_id
-    ) as link
+    CONCAT('/', language, '/', r.path, '-', resource_id) as link
   FROM content.youtube_channels
+    JOIN content.resources r ON r.id = resource_id
 `;
 
 // Resource - Conference Replays
@@ -220,35 +194,23 @@ const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
     LOWER(language) as language,
     conferences.name as title,
     conferences.description as body,
-    CONCAT(
-      '/',
-      LOWER(language),
-      '/resources/conferences/',
-      LOWER(REPLACE(conferences.name, ' ', '-')),
-      '-',
-      conferences.resource_id
-    ) as link
-  FROM content.conferences as conferences,
+    CONCAT('/', LOWER(language), '/', r.path, '-', conferences.resource_id) as link
+  FROM content.conferences as conferences
+    JOIN content.resources as r ON r.id = conferences.resource_id,
   UNNEST(conferences.languages) as language
 `;
 
-// Resource - Projects
+// Resource - Projects  // TODO Add body
 const getProjectsQuery = () => sql<Searchable<Language>[]>`
   SELECT
     'project' as type,
-    LOWER(language) as language,
-    name as title,
-    '' as body,
-    CONCAT(
-      '/',
-      language,
-      '/resources/projects/',
-      LOWER(REPLACE(name, ' ', '-')),
-      '-',
-      resource_id
-    ) as link
-  FROM content.projects,
-  UNNEST(projects.languages) as language
+    LOWER(pl.language) as language,
+    p.name as title,
+    COALESCE(pl.description, '') as body,
+    CONCAT('/', pl.language, '/', r.path, '-', resource_id) as link
+  FROM content.projects_localized as pl
+    JOIN content.projects p ON p.id = pl.id
+    JOIN content.resources r ON r.id = p.resource_id
 `;
 
 // Resources - Lecture Replays
@@ -258,12 +220,7 @@ const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
     'en' as language,
     name as title,
     description as body,
-    CONCAT(
-      '/',
-      'en',
-      '/resources/lectures/',
-      id
-    ) as link
+    CONCAT('/', 'en', '/resources/lectures/', id) as link
   FROM content.events
 `;
 
