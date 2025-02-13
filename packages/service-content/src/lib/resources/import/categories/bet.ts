@@ -131,8 +131,8 @@ export const createProcessChangedBet = (
           }
         }
       })
-      .catch(() => {
-        return;
+      .catch((error) => {
+        console.error('Error during transaction:', error);
       });
   };
 };

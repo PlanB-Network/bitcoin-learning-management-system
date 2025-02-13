@@ -133,8 +133,8 @@ export const createProcessChangedProject = (
           return;
         }
       })
-      .catch(() => {
-        return;
+      .catch((error) => {
+        console.error('Error during transaction:', error);
       });
   };
 };

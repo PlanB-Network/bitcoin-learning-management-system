@@ -162,8 +162,8 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
           }
         }
       })
-      .catch(() => {
-        return;
+      .catch((error) => {
+        console.error('Error during transaction:', error);
       });
   };
 };

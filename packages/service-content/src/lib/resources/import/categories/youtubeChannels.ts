@@ -70,8 +70,8 @@ export const createProcessChangedYoutubeChannel = (
           );
         }
       })
-      .catch(() => {
-        return;
+      .catch((error) => {
+        console.error('Error during transaction:', error);
       });
   };
 };

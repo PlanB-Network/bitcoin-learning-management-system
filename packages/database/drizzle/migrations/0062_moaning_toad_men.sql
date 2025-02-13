@@ -1,0 +1,1 @@
+ALTER TABLE "content"."blogs" ADD COLUMN "id" uuid;

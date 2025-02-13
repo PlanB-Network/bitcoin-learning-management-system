@@ -12,7 +12,7 @@ const getBlog = (url: string, blogs: JoinedBlogLight[]) => {
   const match = url.match(pattern);
 
   if (match) {
-    const blogId = Number(match[1]);
+    const blogId = match[1];
     return blogs.find((blog) => blog.id === blogId) || null;
   }
 

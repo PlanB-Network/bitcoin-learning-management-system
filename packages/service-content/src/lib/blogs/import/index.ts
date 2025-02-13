@@ -110,14 +110,14 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
           return;
         }
 
-        const id = await transaction<Blog[]>`
-          SELECT id FROM content.blogs WHERE path = ${blog.path}
+        const oldId = await transaction<Blog[]>`
+          SELECT old_id FROM content.blogs WHERE path = ${blog.path}
         `
           .then(firstRow)
-          .then((row) => row?.id);
+          .then((row) => row?.oldId);
 
-        if (!id) {
-          throw new Error(`Blog not found for path ${blog.path}`);
+        if (!oldId) {
+          throw new Error(`Blog not found for path '${blog.path}'`);
         }
 
         for (const file of files) {
@@ -126,16 +126,16 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
 
             await transaction`
           INSERT INTO content.blogs_localized (
-            blog_id, language, title, description, raw_content
+            blog_old_id, language, title, description, raw_content
           )
           VALUES (
-            ${id},
+            ${oldId},
             ${file.language?.toLowerCase()},
             ${header.data.name},
             ${header.data.description},
             ${header.content.trim()}
           )
-          ON CONFLICT (blog_id, language) DO UPDATE SET
+          ON CONFLICT (blog_old_id, language) DO UPDATE SET
             title = EXCLUDED.title,
             description = EXCLUDED.description,
             raw_content = EXCLUDED.raw_content
@@ -147,8 +147,8 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
           }
         }
       })
-      .catch(() => {
-        return;
+      .catch((error) => {
+        console.error('Error during transaction:', error);
       });
   };
 };
@@ -160,8 +160,8 @@ export const createDeleteBlogs = ({ postgres }: Dependencies) => {
         sql`DELETE FROM content.blogs WHERE last_sync < ${sync_date}
       `,
       );
-    } catch {
-      errors.push('Error deleting blogs');
+    } catch (err: any) {
+      errors.push('Error deleting blogs', err);
     }
   };
 };

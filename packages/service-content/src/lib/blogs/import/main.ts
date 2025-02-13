@@ -7,6 +7,7 @@ import { yamlToObject } from '../../utils.js';
 import type { ChangedBlog } from './index.js';
 
 interface BlogMain {
+  id: string;
   date?: string;
   builder?: string;
   tags?: string[];
@@ -20,11 +21,13 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const lastUpdated = blog.files.sort((a, b) => b.time - a.time)[0];
 
+    // TODO on conflict with id when PK
     const result = await transaction<Blog[]>`
         INSERT INTO content.blogs (
-          path, name, category, author, last_updated, last_commit, last_sync, date
+          id, path, name, category, author, last_updated, last_commit, last_sync, date
         )
         VALUES (
+          ${parsedBlog.id},
           ${blog.path},
           ${blog.name},
           ${blog.category},
@@ -35,6 +38,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedBlog.date ? parsedBlog.date : null}
         )
         ON CONFLICT (path) DO UPDATE SET
+          id = EXCLUDED.id,
           name = EXCLUDED.name,
           category = EXCLUDED.category,
           author = EXCLUDED.author,
@@ -49,10 +53,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       throw new Error('Could not insert blog');
     }
 
-    const blogId = result.id;
+    const blogId = result.oldId;
     if (parsedBlog.tags && parsedBlog.tags.length > 0) {
       await transaction`
-        DELETE FROM content.blog_tags WHERE blog_id = ${blogId}
+        DELETE FROM content.blog_tags WHERE blog_old_id = ${blogId}
      `;
 
       await transaction`
@@ -63,7 +67,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       `;
 
       await transaction`
-        INSERT INTO content.blog_tags (blog_id, tag_id)
+        INSERT INTO content.blog_tags (blog_old_id, tag_id)
           SELECT ${blogId}, id
           FROM content.tags
           WHERE name = ANY(${parsedBlog.tags.map((tag) => tag.toLowerCase())})

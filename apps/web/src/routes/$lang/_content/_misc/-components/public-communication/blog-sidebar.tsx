@@ -9,7 +9,7 @@ import MessageIcon from '../../../../../../assets/icons/icon-message.svg';
 import { AppContext } from '#src/providers/context.js';
 
 interface BlogSidebarProps {
-  currentBlogId: number;
+  currentBlogId: string;
   currentCategory: string;
 }
 
