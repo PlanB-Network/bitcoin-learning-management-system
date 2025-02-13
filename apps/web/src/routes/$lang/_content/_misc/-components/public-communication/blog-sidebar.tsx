@@ -50,7 +50,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
             >
               <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">
                 <p className="subtitle-medium-16px text-gray-600 min-w-[73px]">
-                  {formatMonthYear(new Date(blog.lastUpdated))}
+                  {formatMonthYear(new Date(blog.date))}
                 </p>
                 <IoIosArrowForward size={16} className="text-black mx-1" />
                 <p className="subtitle-medium-med-16px truncate min-w-[183px] max-w-52">
