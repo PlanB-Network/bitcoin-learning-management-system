@@ -90,7 +90,9 @@ function DashboardStudentCourse() {
       text: t('courses.exam.examAndDiploma'),
     });
   }
-  tabs.push({ value: 'ratings', key: 'ratings', text: t('words.ratings') });
+  if (reviewChapterId) {
+    tabs.push({ value: 'ratings', key: 'ratings', text: t('words.ratings') });
+  }
 
   const getDefaultTab = () => {
     const hash = location.hash.replace('#', '');
