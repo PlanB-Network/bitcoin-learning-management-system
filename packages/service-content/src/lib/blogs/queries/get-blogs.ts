@@ -6,7 +6,6 @@ export const getBlogsQuery = (language?: string) => {
       SELECT
           b.id,
           b.path,
-          b.name,
           bl.language,
           b.category,
           b.author,
@@ -32,7 +31,6 @@ export const getBlogsQuery = (language?: string) => {
       GROUP BY
           b.id,
           b.path,
-          b.name,
           bl.language,
           b.category,
           b.author,

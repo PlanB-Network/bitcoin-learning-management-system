@@ -16,7 +16,6 @@ import {
 
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { assetUrl, trpc } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
@@ -61,7 +60,6 @@ function Book() {
     language: i18n.language ?? 'en',
   });
   const navigate = useNavigate();
-  const { navigateTo404 } = useNavigateMisc();
 
   const isScreenMd = useGreater('sm');
 
@@ -79,7 +77,7 @@ function Book() {
         to: `/resources/books/${formatNameForURL(book.title)}-${book.id}`,
       });
     }
-  }, [book, isFetched, navigateTo404, navigate, params.bookName]);
+  }, [book, isFetched, navigate, params.bookName]);
 
   function displayAbstract() {
     return (

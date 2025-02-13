@@ -463,6 +463,13 @@
       "when": 1739459296988,
       "tag": "0065_big_mantis",
       "breakpoints": true
+    },
+    {
+      "idx": 66,
+      "version": "7",
+      "when": 1739463417653,
+      "tag": "0066_safe_carlie_cooper",
+      "breakpoints": true
     }
   ]
 }

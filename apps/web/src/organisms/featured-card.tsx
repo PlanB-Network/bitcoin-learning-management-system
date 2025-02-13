@@ -9,6 +9,7 @@ import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.js';
 import { assetUrl } from '#src/utils/index.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 interface FeaturedCardProps {
   category: string;
@@ -68,7 +69,7 @@ export const FeaturedCard = ({
         className="w-full max-w-[738px] order-2 md:order-1"
       >
         <Link
-          to={`/public-communication/blogs-and-news/${latestBlog.category}/${latestBlog.name}`}
+          to={`/public-communication/blogs-and-news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <h2 className="text-darkOrange-5 mb-2 lg:mb-[22px] mobile-h2 lg:display-small-32px">
             {latestBlog.title}
@@ -108,7 +109,7 @@ export const FeaturedCard = ({
       <div className="mb-3 md:mr-5 lg:mr-0 lg:ml-5 lg:mb-0 w-fit mx-auto order-1 md:order-2">
         <Link
           key={latestBlog.id}
-          to={`/public-communication/blogs-and-news/${latestBlog.category}/${latestBlog.name}`}
+          to={`/public-communication/blogs-and-news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <img
             className="rounded-sm lg:rounded-[20px] lg:max-w-[404px]"

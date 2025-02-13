@@ -1,5 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import React, { Suspense } from 'react';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import React, { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
@@ -11,6 +11,7 @@ import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { FeaturedCard } from '#src/organisms/featured-card.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';
 import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';
 
@@ -19,18 +20,25 @@ const BlogMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name',
+  '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId',
 )({
   params: {
-    parse: (params) => ({
-      lang: z.string().parse(params.lang),
-      category: z.string().parse(params.category),
-      name: z.string().parse(params.name),
-    }),
-    stringify: ({ lang, category, name }) => ({
+    parse: (params) => {
+      const blogNameId = params['blogName-$blogId'];
+
+      const blogId = blogNameId.slice(-36);
+      const blogName = blogNameId.slice(0, -37);
+
+      return {
+        lang: z.string().parse(params.lang),
+        'blogName-$blogId': `${blogName}-${blogId}`,
+        blogName: z.string().parse(blogName),
+        blogId: z.string().parse(blogId),
+      };
+    },
+    stringify: ({ lang, blogName, blogId }) => ({
       lang: lang,
-      category: `${category}`,
-      name: `${name}`,
+      'blogName-$blogId': `${blogName}-${blogId}`,
     }),
   },
   component: SingleBlogDetail,
@@ -40,20 +48,22 @@ function SingleBlogDetail() {
   const { t, i18n } = useTranslation();
 
   const params = Route.useParams();
-  const name = params.name;
-  const category = params.category;
+  const blogId = params.blogId;
 
   const { data: blog, isFetched } = trpc.content.getBlog.useQuery({
-    name,
-    category,
+    id: blogId,
     language: i18n.language,
   });
 
-  if (isFetched && !blog) {
-    return (
-      <div>{t('publicCommunication.blogPageStrings.errorMessageNotFound')}</div>
-    );
-  }
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (blog && params.blogName !== formatNameForURL(blog.title)) {
+      navigate({
+        to: `/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`,
+      });
+    }
+  }, [blog, isFetched, navigate, params.bookName]);
 
   return (
     <PageLayout variant="light" footerVariant="light">
@@ -63,7 +73,7 @@ function SingleBlogDetail() {
           <Breadcrumbs blogTitle={blog.title} />
 
           <div className="text-start flex flex-col mx-auto lg:mx-0 md:flex-row w-full justify-between md:max-w-[1120px] align-top border-b-2 lg:border-b-0">
-            <FeaturedCard category={category} blog={blog} />
+            <FeaturedCard category={blog.category} blog={blog} />
           </div>
 
           <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row md:max-w-[1120px]">

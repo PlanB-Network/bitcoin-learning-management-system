@@ -5,6 +5,7 @@ import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { FeaturedCard } from '#src/organisms/featured-card.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { assetUrl } from '#src/utils/index.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 interface BlogListProps {
   category: string;
@@ -64,7 +65,7 @@ export const BlogList = ({ category }: BlogListProps) => {
                 buttonText={t(
                   'publicCommunication.blogPageStrings.blogListButtonText',
                 )}
-                buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+                buttonLink={`/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`}
                 tags={blog.tags}
                 category={blog.category}
                 excerpt={blog.description ?? ''}

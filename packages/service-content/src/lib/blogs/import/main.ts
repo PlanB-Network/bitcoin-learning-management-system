@@ -23,12 +23,11 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const result = await transaction<Blog[]>`
         INSERT INTO content.blogs (
-          id, path, name, category, author, last_updated, last_commit, last_sync, date
+          id, path, category, author, last_updated, last_commit, last_sync, date
         )
         VALUES (
           ${parsedBlog.id},
           ${blog.path},
-          ${blog.name},
           ${blog.category},
           ${parsedBlog.builder},
           ${lastUpdated.time},
@@ -38,7 +37,6 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         )
         ON CONFLICT (id) DO UPDATE SET
           path = EXCLUDED.path,
-          name = EXCLUDED.name,
           category = EXCLUDED.category,
           author = EXCLUDED.author,
           last_updated = EXCLUDED.last_updated,

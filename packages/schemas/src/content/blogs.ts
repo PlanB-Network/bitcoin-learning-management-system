@@ -15,7 +15,6 @@ export const joinedBlogLightSchema = blogSchema
   .pick({
     id: true,
     path: true,
-    name: true,
     category: true,
     author: true,
     lastUpdated: true,

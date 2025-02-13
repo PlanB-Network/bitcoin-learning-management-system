@@ -19,16 +19,14 @@ const getBlogsProcedure = publicProcedure
 const getBlogProcedure = publicProcedure
   .input(
     z.object({
-      category: z.string(),
-      name: z.string(),
+      id: z.string(),
       language: z.string(),
     }),
   )
 
   .query(({ ctx, input }) =>
     createGetBlog(ctx.dependencies)({
-      category: input.category,
-      name: input.name,
+      id: input.id,
       language: input.language,
     }),
   );

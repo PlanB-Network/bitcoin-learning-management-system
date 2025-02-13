@@ -268,31 +268,24 @@ export const usersJobTitles = users.table('job_titles', (t) => ({
 
 // BLOGS
 
-export const contentBlogs = content.table(
-  'blogs',
-  (t) => ({
-    id: t.uuid().primaryKey(),
-    path: t.varchar({ length: 255 }).unique().notNull(),
+export const contentBlogs = content.table('blogs', (t) => ({
+  id: t.uuid().primaryKey(),
+  path: t.varchar({ length: 255 }).unique().notNull(),
 
-    name: t.varchar({ length: 255 }).notNull(),
-    category: t.varchar({ length: 255 }).notNull(),
+  category: t.varchar({ length: 255 }).notNull(),
 
-    author: t.varchar({ length: 255 }),
+  author: t.varchar({ length: 255 }),
 
-    lastUpdated: t
-      .timestamp({
-        withTimezone: true,
-      })
-      .defaultNow()
-      .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-    date: t.timestamp({ withTimezone: true }).notNull(),
-  }),
-  (table) => ({
-    unqNameCategory: unique().on(table.name, table.category),
-  }),
-);
+  lastUpdated: t
+    .timestamp({
+      withTimezone: true,
+    })
+    .defaultNow()
+    .notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  date: t.timestamp({ withTimezone: true }).notNull(),
+}));
 
 export const contentBlogsLocalized = content.table(
   'blogs_localized',

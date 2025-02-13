@@ -36,6 +36,7 @@ import { AboutUs } from '../../molecules/about-us.tsx';
 import { CourseCard } from '../../organisms/course-card.tsx';
 
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { CurrentEvents } from './_content/events/-components/current-events.tsx';
 import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
 import { EventPaymentModal } from './_content/events/-components/event-payment-modal.tsx';
@@ -778,7 +779,7 @@ function Home() {
                       buttonText={t(
                         'publicCommunication.blogPageStrings.blogListButtonText',
                       )}
-                      buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+                      buttonLink={`/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`}
                       tags={blog.tags}
                       category={blog.category}
                       excerpt={blog.description ?? ''}
@@ -805,7 +806,7 @@ function Home() {
                 buttonText={t(
                   'publicCommunication.blogPageStrings.blogListButtonText',
                 )}
-                buttonLink={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+                buttonLink={`/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`}
                 tags={blog.tags}
                 category={blog.category}
                 excerpt={blog.description ?? ''}

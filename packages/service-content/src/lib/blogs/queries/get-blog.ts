@@ -1,16 +1,11 @@
 import { sql } from '@blms/database';
 import type { JoinedBlog } from '@blms/types';
 
-export const getBlogQuery = (
-  category: string,
-  name: string,
-  language?: string,
-) => {
+export const getBlogQuery = (id: string, language?: string) => {
   return sql<JoinedBlog[]>`
       SELECT
           b.id,
           b.path,
-          b.name,
           bl.language,
           b.category,
           b.author,
@@ -32,12 +27,11 @@ export const getBlogQuery = (
           WHERE bt.blog_id = b.id
       ) AS tag_agg ON TRUE
 
-      WHERE b.category = ${category} AND b.name = ${name}
+      WHERE b.id = ${id}
       ${language ? sql`AND bl.language = LOWER(${language})` : sql``}
       GROUP BY
           b.id,
           b.path,
-          b.name,
           bl.language,
           b.category,
           b.author,

@@ -7,6 +7,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import MessageIcon from '../../../../../../assets/icons/icon-message.svg';
 
 import { AppContext } from '#src/providers/context.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 interface BlogSidebarProps {
   currentBlogId: string;
@@ -44,7 +45,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
         {filteredBlogs.map((blog) => (
           <li key={blog.id} className="flex flex-row items-center">
             <Link
-              to={`/public-communication/blogs-and-news/${blog.category}/${blog.name}`}
+              to={`/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`}
               className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full max-w-[354px]"
             >
               <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">

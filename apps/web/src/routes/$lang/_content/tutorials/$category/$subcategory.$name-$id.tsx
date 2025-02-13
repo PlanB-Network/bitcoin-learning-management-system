@@ -42,7 +42,6 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const nameId = params['name-$id'];
-      // Extract the id from the name (36 chars since id is an uuid)
       const id = nameId.slice(-36);
       const name = nameId.slice(0, -37);
 

@@ -112,13 +112,10 @@ const BlogMarkdownBody = ({
               >
                 <img
                   src={assetUrl(blog.path, 'thumbnail.webp')}
-                  alt={blog.name}
+                  alt={blog.category}
                   className="size-20 rounded-full"
                 />
                 <div className="flex flex-col max-md:text-center">
-                  <span className="capitalize text-xl font-semibold text-darkOrange-5 mb-1">
-                    {blog.name}
-                  </span>
                   <p className="text-newBlack-3 text-xs font-light mb-2">
                     {blog.description}
                   </p>

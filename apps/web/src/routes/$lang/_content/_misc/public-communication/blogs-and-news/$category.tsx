@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-import Layout from '../../-layout.tsx';
-import { BlogList } from '../../../-components/public-communication/blog-list.tsx';
-import { DropdownMenu } from '../../../-components/public-communication/dropdown-menu.tsx';
-import { blogTabs } from '../../../-components/utils/public-communication-utils.tsx';
+import Layout from '../-layout.tsx';
+import { BlogList } from '../../-components/public-communication/blog-list.tsx';
+import { DropdownMenu } from '../../-components/public-communication/dropdown-menu.tsx';
+import { blogTabs } from '../../-components/utils/public-communication-utils.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_content/_misc/public-communication/blogs-and-news/$category/',
+  '/$lang/_content/_misc/public-communication/blogs-and-news/$category',
 )({
   params: {
     parse: (params) => ({
@@ -54,6 +54,7 @@ function BlogsCategory() {
       t(blogTabs.find((tab) => tab.id === selectedMainTab)?.label ?? ''),
   );
 
+  console.log('oooo');
   return (
     <Layout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">

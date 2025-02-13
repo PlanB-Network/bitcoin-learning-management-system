@@ -77,8 +77,8 @@ import { Route as LangContentMiscPublicCommunicationBlogsAndNewsIndexImport } fr
 import { Route as LangContentMiscProfessorsCategoryIndexImport } from './routes/$lang/_content/_misc/professors/$category/index';
 import { Route as LangContentTutorialsCategorySubcategoryNameIdImport } from './routes/$lang/_content/tutorials/$category/$subcategory.$name-$id';
 import { Route as LangContentMiscPublicCommunicationLegalsNameImport } from './routes/$lang/_content/_misc/public-communication/legals/$name';
-import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category/index';
-import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name';
+import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category';
+import { Route as LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
 
 // Create Virtual Routes
 
@@ -529,19 +529,21 @@ const LangContentMiscPublicCommunicationLegalsNameRoute =
     getParentRoute: () => LangContentMiscPublicCommunicationLegalsRoute,
   } as any);
 
-const LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute =
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport.update({
-    id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category/',
-    path: '/$lang/public-communication/blogs-and-news/$category/',
+const LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute =
+  LangContentMiscPublicCommunicationBlogsAndNewsCategoryImport.update({
+    id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category',
+    path: '/$lang/public-communication/blogs-and-news/$category',
     getParentRoute: () => rootRoute,
   } as any);
 
-const LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute =
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport.update({
-    id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name',
-    path: '/$lang/public-communication/blogs-and-news/$category/$name',
-    getParentRoute: () => rootRoute,
-  } as any);
+const LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute =
+  LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdImport.update(
+    {
+      id: '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId',
+      path: '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId',
+      getParentRoute: () => rootRoute,
+    } as any,
+  );
 
 // Populate the FileRoutesByPath interface
 
@@ -967,6 +969,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentTutorialsCategoryIndexImport;
       parentRoute: typeof rootRoute;
     };
+    '/$lang/_content/_misc/public-communication/blogs-and-news/$category': {
+      id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category';
+      path: '/$lang/public-communication/blogs-and-news/$category';
+      fullPath: '/$lang/public-communication/blogs-and-news/$category';
+      preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryImport;
+      parentRoute: typeof rootRoute;
+    };
     '/$lang/_content/_misc/public-communication/legals/$name': {
       id: '/$lang/_content/_misc/public-communication/legals/$name';
       path: '/$name';
@@ -1002,18 +1011,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscPublicCommunicationLegalsIndexImport;
       parentRoute: typeof LangContentMiscPublicCommunicationLegalsImport;
     };
-    '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name': {
-      id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name';
-      path: '/$lang/public-communication/blogs-and-news/$category/$name';
-      fullPath: '/$lang/public-communication/blogs-and-news/$category/$name';
-      preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/$lang/_content/_misc/public-communication/blogs-and-news/$category/': {
-      id: '/$lang/_content/_misc/public-communication/blogs-and-news/$category/';
-      path: '/$lang/public-communication/blogs-and-news/$category';
-      fullPath: '/$lang/public-communication/blogs-and-news/$category';
-      preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexImport;
+    '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId': {
+      id: '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
+      path: '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
+      fullPath: '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
+      preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdImport;
       parentRoute: typeof rootRoute;
     };
   }
@@ -1164,13 +1166,13 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/podcasts': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
-  '/$lang/public-communication/blogs-and-news/$category/$name': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
-  '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+  '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
 }
 
 export interface FileRoutesByTo {
@@ -1232,13 +1234,13 @@ export interface FileRoutesByTo {
   '/$lang/resources/podcasts': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
-  '/$lang/public-communication/blogs-and-news/$category/$name': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
-  '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+  '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
 }
 
 export interface FileRoutesById {
@@ -1303,13 +1305,13 @@ export interface FileRoutesById {
   '/$lang/_content/resources/podcasts/': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/_content/resources/projects/': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/_content/tutorials/$category/': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/_content/_misc/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/_content/_misc/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/_content/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/_content/_misc/professors/$category/': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/_content/_misc/public-communication/blogs-and-news/': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/_content/_misc/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
-  '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
-  '/$lang/_content/_misc/public-communication/blogs-and-news/$category/': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+  '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
 }
 
 export interface FileRouteTypes {
@@ -1374,13 +1376,13 @@ export interface FileRouteTypes {
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
+    | '/$lang/public-communication/blogs-and-news/$category'
     | '/$lang/public-communication/legals/$name'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/professors/$category'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals/'
-    | '/$lang/public-communication/blogs-and-news/$category/$name'
-    | '/$lang/public-communication/blogs-and-news/$category';
+    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/$lang'
@@ -1441,13 +1443,13 @@ export interface FileRouteTypes {
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
+    | '/$lang/public-communication/blogs-and-news/$category'
     | '/$lang/public-communication/legals/$name'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/professors/$category'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals'
-    | '/$lang/public-communication/blogs-and-news/$category/$name'
-    | '/$lang/public-communication/blogs-and-news/$category';
+    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
   id:
     | '__root__'
     | '/$lang/'
@@ -1510,13 +1512,13 @@ export interface FileRouteTypes {
     | '/$lang/_content/resources/podcasts/'
     | '/$lang/_content/resources/projects/'
     | '/$lang/_content/tutorials/$category/'
+    | '/$lang/_content/_misc/public-communication/blogs-and-news/$category'
     | '/$lang/_content/_misc/public-communication/legals/$name'
     | '/$lang/_content/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/_content/_misc/professors/$category/'
     | '/$lang/_content/_misc/public-communication/blogs-and-news/'
     | '/$lang/_content/_misc/public-communication/legals/'
-    | '/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name'
-    | '/$lang/_content/_misc/public-communication/blogs-and-news/$category/';
+    | '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
   fileRoutesById: FileRoutesById;
 }
 
@@ -1565,11 +1567,11 @@ export interface RootRouteChildren {
   LangContentResourcesPodcastsIndexRoute: typeof LangContentResourcesPodcastsIndexRoute;
   LangContentResourcesProjectsIndexRoute: typeof LangContentResourcesProjectsIndexRoute;
   LangContentTutorialsCategoryIndexRoute: typeof LangContentTutorialsCategoryIndexRoute;
+  LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   LangContentTutorialsCategorySubcategoryNameIdRoute: typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   LangContentMiscProfessorsCategoryIndexRoute: typeof LangContentMiscProfessorsCategoryIndexRoute;
   LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute;
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute;
+  LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -1643,16 +1645,16 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentResourcesProjectsIndexRoute,
   LangContentTutorialsCategoryIndexRoute:
     LangContentTutorialsCategoryIndexRoute,
+  LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute:
+    LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute,
   LangContentTutorialsCategorySubcategoryNameIdRoute:
     LangContentTutorialsCategorySubcategoryNameIdRoute,
   LangContentMiscProfessorsCategoryIndexRoute:
     LangContentMiscProfessorsCategoryIndexRoute,
   LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute:
     LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute:
-    LangContentMiscPublicCommunicationBlogsAndNewsCategoryNameRoute,
-  LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute:
-    LangContentMiscPublicCommunicationBlogsAndNewsCategoryIndexRoute,
+  LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute:
+    LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute,
 };
 
 export const routeTree = rootRoute
@@ -1709,11 +1711,11 @@ export const routeTree = rootRoute
         "/$lang/_content/resources/podcasts/",
         "/$lang/_content/resources/projects/",
         "/$lang/_content/tutorials/$category/",
+        "/$lang/_content/_misc/public-communication/blogs-and-news/$category",
         "/$lang/_content/tutorials/$category/$subcategory/$name-$id",
         "/$lang/_content/_misc/professors/$category/",
         "/$lang/_content/_misc/public-communication/blogs-and-news/",
-        "/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name",
-        "/$lang/_content/_misc/public-communication/blogs-and-news/$category/"
+        "/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId"
       ]
     },
     "/$lang/": {
@@ -1936,6 +1938,9 @@ export const routeTree = rootRoute
     "/$lang/_content/tutorials/$category/": {
       "filePath": "$lang/_content/tutorials/$category/index.tsx"
     },
+    "/$lang/_content/_misc/public-communication/blogs-and-news/$category": {
+      "filePath": "$lang/_content/_misc/public-communication/blogs-and-news/$category.tsx"
+    },
     "/$lang/_content/_misc/public-communication/legals/$name": {
       "filePath": "$lang/_content/_misc/public-communication/legals/$name.tsx",
       "parent": "/$lang/_content/_misc/public-communication/legals"
@@ -1953,11 +1958,8 @@ export const routeTree = rootRoute
       "filePath": "$lang/_content/_misc/public-communication/legals/index.tsx",
       "parent": "/$lang/_content/_misc/public-communication/legals"
     },
-    "/$lang/_content/_misc/public-communication/blogs-and-news/$category/$name": {
-      "filePath": "$lang/_content/_misc/public-communication/blogs-and-news/$category/$name.tsx"
-    },
-    "/$lang/_content/_misc/public-communication/blogs-and-news/$category/": {
-      "filePath": "$lang/_content/_misc/public-communication/blogs-and-news/$category/index.tsx"
+    "/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId": {
+      "filePath": "$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId.tsx"
     }
   }
 }

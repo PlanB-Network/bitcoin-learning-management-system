@@ -4,7 +4,6 @@
 export interface Blog {
   id: string;
   path: string;
-  name: string;
   category: string;
   author: string | null;
   lastUpdated: Date;
@@ -29,7 +28,6 @@ export interface BlogTag {
 export interface JoinedBlogLight {
   id: string;
   path: string;
-  name: string;
   category: string;
   author: string | null;
   lastUpdated: Date;
@@ -45,7 +43,6 @@ export interface JoinedBlogLight {
 export interface JoinedBlog {
   id: string;
   path: string;
-  name: string;
   category: string;
   author: string | null;
   lastUpdated: Date;
@@ -62,7 +59,6 @@ export interface JoinedBlog {
 export interface BlogWithTagDetails {
   id: string;
   path: string;
-  name: string;
   category: string;
   author: string | null;
   lastUpdated: Date;
