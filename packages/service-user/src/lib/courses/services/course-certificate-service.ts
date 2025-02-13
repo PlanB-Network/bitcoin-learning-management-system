@@ -220,7 +220,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
         INSERT INTO users.exam_timestamps (exam_attempt_id, txt, sig, hash, ots)
-        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots.buffer})
+        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots})
         RETURNING *;
       `,
     );
