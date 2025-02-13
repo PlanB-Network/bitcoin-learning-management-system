@@ -29,6 +29,7 @@ export interface BlogTag {
 
 export interface JoinedBlogLight {
   id: string | null;
+  oldId: number;
   path: string;
   name: string;
   category: string;
@@ -45,6 +46,7 @@ export interface JoinedBlogLight {
 
 export interface JoinedBlog {
   id: string | null;
+  oldId: number;
   path: string;
   name: string;
   category: string;
@@ -62,6 +64,7 @@ export interface JoinedBlog {
 
 export interface BlogWithTagDetails {
   id: string | null;
+  oldId: number;
   path: string;
   name: string;
   category: string;
